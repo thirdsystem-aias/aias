@@ -1,0 +1,18 @@
+==============================================================================
+AIAS Recovery Run
+Source: results_v2_20260504_132404.csv
+Started: 2026-05-04T13:46:46
+==============================================================================
+Total rows in source: 288
+Failed rows to retry: 95
+Failures by slot:
+  google_flash          38
+  openai_mini            9
+  openai_flagship       16
+  xai_grok              16
+  anthropic_sonnet       8
+  anthropic_opus         8
+==============================================================================
+  [  1/95] p1_functional      | google_flash         | run 4 -> FAILED [rate_limit_final] after 4 attempts (134.7s)
+  [  2/95] p1_functional      | google_flash         | run 7 -> FAILED [rate_limit_final] after 4 attempts (171.9s)
+  [  3/95] p1_functional      | google_flash         | run 8 

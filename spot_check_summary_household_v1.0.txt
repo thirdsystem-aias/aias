@@ -1,0 +1,8 @@
+Audit summary:
+  Sample size: 25
+  Strict agreement (Claude pre-read + user): 22/25 (88%)
+  Boundary cases noted (Claude flagged for review): 3
+  Items #12, #21, #22 — caveated/correction/historical adjacency
+  All 5 live_recommendation rows verified correct on independent review.
+  All boundary disagreements are within the aware-mode cluster.
+  Naive-phantom headline of 1.7% has zero classification errors.

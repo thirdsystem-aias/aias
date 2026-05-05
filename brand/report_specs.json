@@ -1,0 +1,413 @@
+{
+  "_meta": {
+    "schema_version": "1.1",
+    "purpose": "Defines the eight document types Third System produces. Each maps to an InDesign template family from design_tokens_template.json. The receiving chat should use these specs as production briefs.",
+    "naming_convention": "Third System / [Document Type] / [Subject] / v[Version]",
+    "version_history": [
+      "1.0 \u2014 initial spec, 8 document types",
+      "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence."
+    ]
+  },
+  "product_structure_summary": {
+    "_note": "High-level map of Third System's offering structure. The detailed specs for each product live in the 'documents' block below. This summary is the navigation layer.",
+    "three_layer_offering_model": {
+      "layer_1_public_research": {
+        "purpose": "Free, citable artifacts that establish Third System as a known research practice. Generate inbound flow that feeds Layer 3.",
+        "products": [
+          "cross_category_report",
+          "category_snapshot",
+          "about_third_system_one_pager",
+          "quarterly_tracker"
+        ],
+        "audience": "CMOs, brand strategists, journalists, academic peers, prospective clients",
+        "commercial_role": "No transaction. Builds authority and credibility."
+      },
+      "layer_2_methodology_and_frameworks": {
+        "purpose": "Free intellectual property published openly to establish that the measurement is rigorous and peer-reviewable.",
+        "products": [
+          "methodology_brief",
+          "tri_system_book_and_paper (separate spec \u2014 not in this file)"
+        ],
+        "audience": "Academic peers, clients evaluating credibility, journalists fact-checking findings",
+        "commercial_role": "No transaction. Establishes scientific defensibility."
+      },
+      "layer_3_commercial_diagnostics": {
+        "purpose": "Paid client engagements. The only revenue layer currently active.",
+        "products": [
+          "brand_diagnostic_report",
+          "sample_diagnostic",
+          "capabilities_deck"
+        ],
+        "audience": "Paying clients (CMO, brand director, head of brand strategy)",
+        "commercial_role": "Generates revenue. Pricing per AI Brand Visibility Diagnostic Pilot: $10\u201315K initial, $20\u201330K post-validation, $40K+ later."
+      }
+    },
+    "product_to_template_map": {
+      "_note": "Each product maps to one InDesign template family. Products marked 'NOT InDesign' use other design tools (slides, book interior).",
+      "_columns": [
+        "product",
+        "layer",
+        "format",
+        "template_family",
+        "frequency"
+      ],
+      "rows": [
+        [
+          "cross_category_report",
+          1,
+          "12\u201316 page report",
+          "C-Brochure",
+          "Quarterly"
+        ],
+        [
+          "category_snapshot",
+          1,
+          "2-page lead-gen",
+          "A-Snapshot",
+          "Per category, ~6/year"
+        ],
+        [
+          "about_third_system_one_pager",
+          1,
+          "1-page primer",
+          "A-Snapshot",
+          "Static, updated annually"
+        ],
+        [
+          "methodology_brief",
+          2,
+          "Tri-fold, 6 panels",
+          "E-Tri-fold",
+          "Versioned (v0.3, v0.4...)"
+        ],
+        [
+          "tri_system_book_and_paper",
+          2,
+          "Long-form publication",
+          "NOT InDesign \u2014 separate spec",
+          "One-time with revisions"
+        ],
+        [
+          "brand_diagnostic_report",
+          3,
+          "12\u201318 page client report",
+          "C-Brochure (custom cover)",
+          "Per engagement"
+        ],
+        [
+          "sample_diagnostic",
+          3,
+          "Anonymized client report",
+          "C-Brochure",
+          "Static, refreshed yearly"
+        ],
+        [
+          "capabilities_deck",
+          3,
+          "10\u201314 slide presentation",
+          "NOT InDesign \u2014 Keynote/Slides",
+          "Built when warranted"
+        ],
+        [
+          "quarterly_tracker",
+          1,
+          "16\u201324 page longitudinal",
+          "C-Brochure",
+          "Quarterly (Phase 2 future)"
+        ]
+      ]
+    },
+    "template_family_purposes": {
+      "A-Snapshot": "Single-page or 2-page communication. Front (1-col or 2-col) + Back layouts. Use for scan-and-share artifacts where the reader makes a quick engage/move-on decision.",
+      "B-Snapshot": "The back side of A-Snapshot. Used in pair with A-Snapshot; not a standalone product family.",
+      "C-Brochure": "Multi-page long-form report. Cover + body spreads. The flagship template family for any substantive publication. Most Third System reports use this.",
+      "E-Tri-fold": "Single Letter sheet folded into 6 panels. Foldable physical artifact, suited to authority pieces designed for in-person distribution (conferences, SVA, client meetings).",
+      "0-Cover": "Standalone cover treatments. Usable when a deliverable needs only a cover (rare). Not mapped to any current Third System product.",
+      "_unused_families": "The InDesign template includes additional master families (D-, F-, G- variants) not currently mapped to any Third System product. Don't introduce these until a product genuinely requires them \u2014 a smaller, intentionally-used template set is stronger than every possible layout half-used."
+    },
+    "persona_logic": {
+      "_note": "The InDesign template uses 'persona' to denote audience-tier variants of the same physical layout: Executive, Manager, Specialist. Third System maps these as follows.",
+      "executive_persona": {
+        "tone": "C-suite. Strategic implications first; methodological detail second.",
+        "products": [
+          "cross_category_report",
+          "brand_diagnostic_report"
+        ],
+        "default_body_master": "C-Brochure - Product - AB - Letter"
+      },
+      "manager_persona": {
+        "tone": "Operational. Clear findings, shareable up and across, light on theoretical framing.",
+        "products": [
+          "category_snapshot"
+        ],
+        "default_body_master": "A-Snapshot - Front - 2 Columns - Letter - Portrait + B-Snapshot - Back - Letter - Portrait"
+      },
+      "specialist_persona": {
+        "tone": "Technical. Methodology, registry construction, statistical caveats foregrounded.",
+        "products": [
+          "methodology_brief"
+        ],
+        "default_body_master": "E-Tri-Fold - Exterior + Interior - Letter"
+      }
+    },
+    "production_sprint_sequence": {
+      "_note": "Recommended build order. Not the same as production_priority_order below \u2014 that's a flat list. This is sprint-grouped so visual decisions cascade correctly.",
+      "sprint_1_foundation_visual_system": {
+        "products": [
+          "cross_category_report",
+          "about_third_system_one_pager"
+        ],
+        "rationale": "Sets the look. Every later product inherits the visual decisions made here. Build cross_category_report first; it carries the most weight."
+      },
+      "sprint_2_outreach_material": {
+        "products": [
+          "category_snapshot (one per published category, ~5 to start)"
+        ],
+        "rationale": "Lets Pablo start conversations. Strategy doc Week 3 calls for outreach \u2014 these are the artifacts that get attached to those messages."
+      },
+      "sprint_3_authority_artifact": {
+        "products": [
+          "methodology_brief"
+        ],
+        "rationale": "Establishes peer-reviewable credibility. Distributable at SVA, conferences, in client evaluation conversations."
+      },
+      "sprint_4_commercial_enablement": {
+        "products": [
+          "sample_diagnostic"
+        ],
+        "rationale": "Built once a paid pilot is in conversation. Anonymized version of the client deliverable, sent when prospects ask 'what does the deliverable look like?'"
+      },
+      "sprint_5_sales_tool_when_warranted": {
+        "products": [
+          "capabilities_deck"
+        ],
+        "rationale": "Don't build until you have warm leads. Shape becomes clear from what prospects actually ask about."
+      },
+      "deferred_until_triggered": {
+        "products": [
+          "brand_diagnostic_report (per client when one signs)",
+          "quarterly_tracker (Phase 2)",
+          "tri_system_book_and_paper (separate workstream)"
+        ],
+        "rationale": "Each has a specific trigger condition. Don't pre-build."
+      }
+    },
+    "navigation_to_detailed_specs": {
+      "_note": "The 'documents' block below contains the full spec for each product (page count, structure, logo use, footer type, disclaimer type, byline type, chart slots).",
+      "see_also": [
+        "third_system_brand.json \u2014 brand layer (palette, typography, logos, copy boilerplate, chart specs)",
+        "design_tokens_template.json \u2014 InDesign template extract (master spreads, paragraph styles, geometry)",
+        "HANDOFF_PROMPT.md \u2014 instructions for the receiving chat",
+        "v06_source_text.md \u2014 body content for the cross_category_report priority 1 build"
+      ]
+    }
+  },
+  "production_priority_order": [
+    "cross_category_report",
+    "category_snapshot",
+    "about_third_system_one_pager",
+    "methodology_brief",
+    "brand_diagnostic_report",
+    "sample_diagnostic",
+    "capabilities_deck",
+    "quarterly_tracker"
+  ],
+  "documents": {
+    "cross_category_report": {
+      "priority": 1,
+      "status": "REDESIGN \u2014 source content exists at v06_source_text.md (extracted from report_v0_6_cross.pdf)",
+      "name": "Cross-Category Findings",
+      "subtitle_pattern": "AI Presence Index v{version} across {N} Categories",
+      "current_version": "v0.6",
+      "purpose": "Flagship publication. Sets the visual system that every other deliverable inherits. Demonstrates pattern replication across categories.",
+      "audience": "CMOs, brand strategists, researchers, journalists, prospective clients.",
+      "page_count_target": "12\u201316 pages",
+      "page_size": "Letter portrait (8.5\" \u00d7 11\")",
+      "template_family": "C-Brochure (long-form)",
+      "preferred_master": "C-Brochure - Cover - Option 1 - Letter (cover) + C-Brochure - Product - AB - Letter (body)",
+      "structure": [
+        "Cover: title, version, date, byline_short, primary tagline, Third System / AI Presence Index lockup",
+        "Lead spread: 'For the first time, we can measure the moment that matters' standfirst, 5\u20136 sentence summary",
+        "Pattern sections (1 per pattern, 1\u20132 pages each): pattern statement, evidence across categories, strategic implication",
+        "Limitations section",
+        "What's next (Phase 2/3/4 roadmap)",
+        "Footer page: byline_long, methodology disclaimer, citation, datasets, contact"
+      ],
+      "logo_use": "Product lockup (THIRDSYSTEM_AIPT_Logo.svg) on cover. Wordmark (THIRDSYSTEM_Logo.svg) in running header from page 2.",
+      "footer_type": "public_report",
+      "disclaimer_type": "methodology_standard",
+      "byline_type": "report_masthead_long (cover) + report_cover_short (running)",
+      "chart_size_default": "3-col span (265pt / 3.68\") for inline charts; 6-col span (540pt / 7.5\") for full-width hero charts",
+      "image_handling": "All photo placeholders in template MUST be either left empty or filled with appropriate imagery \u2014 DO NOT render placeholder green/gray as design fills. For v0.6 redesign, no photography needed; replace placeholder rectangles with data visualizations or leave as whitespace.",
+      "chart_slots": {
+        "_note": "Charts referenced by this report, by canonical filename. The receiving chat embeds these by filename at the position indicated.",
+        "hero_p2_scatter": {
+          "filename": "chart_p2_6col.pdf",
+          "col_span": 6,
+          "position": "Pattern 2 section \u2014 full-width hero",
+          "purpose": "Cross-category Comparison vs Discovery scatter showing CEP-driven divergence"
+        },
+        "hero_p4_country": {
+          "filename": "chart_p4_spread.pdf",
+          "col_span": "spread",
+          "position": "Pattern 4 section \u2014 full-width two-panel",
+          "purpose": "Olive Oil + Skincare country-of-origin small multiples"
+        },
+        "inline_p1_variance": {
+          "filename": "chart_p1_3col.pdf",
+          "col_span": 3,
+          "position": "Pattern 1 section \u2014 inline alongside body text",
+          "purpose": "Per-model variance for top brands across categories"
+        },
+        "inline_p3_awareness_gap": {
+          "filename": "chart_p3_3col.pdf",
+          "col_span": 3,
+          "position": "Pattern 3 section \u2014 inline",
+          "purpose": "AI Presence vs consumer awareness divergence"
+        },
+        "inline_p5_default_reinforcement": {
+          "filename": "chart_p5_3col.pdf",
+          "col_span": 3,
+          "position": "Pattern 5 section \u2014 inline",
+          "purpose": "Default Reinforcement intensity across discourse-prompt alignment"
+        },
+        "inline_p6_phantom": {
+          "filename": "chart_p6_3col.pdf",
+          "col_span": 3,
+          "position": "Pattern 6 section \u2014 inline",
+          "purpose": "Mint phantom-brand persistence comparison"
+        }
+      }
+    },
+    "category_snapshot": {
+      "priority": 2,
+      "status": "NEW \u2014 produce a template, then one per published category",
+      "name_pattern": "{Category} Snapshot",
+      "example_names": [
+        "Personal Finance Apps Snapshot",
+        "Premium Olive Oil Snapshot",
+        "Skincare Snapshot"
+      ],
+      "purpose": "2-page lead-gen artifact. One headline finding, the leaderboard, one chart, footer with CTA. Designed to be shared on LinkedIn or attached to outreach emails.",
+      "audience": "Cold-outreach prospects, LinkedIn audience, conference attendees.",
+      "page_count_target": "2 pages (front + back)",
+      "page_size": "Letter portrait",
+      "template_family": "A-Snapshot",
+      "preferred_master": "A-Snapshot - Front - 2 Columns - Letter - Portrait + B-Snapshot - Back - Letter - Portrait",
+      "structure": [
+        "Front: category name, headline finding (1 sentence), 60-word context, leaderboard table, one chart at 3-col span, footnote with methodology version",
+        "Back: 'What this means for marketers' (3 short paragraphs), 'See your own exposure' soft CTA, contact block"
+      ],
+      "logo_use": "Wordmark on front, product lockup on back",
+      "footer_type": "general_short",
+      "disclaimer_type": "diagnostic_pilot",
+      "byline_type": "report_cover_short",
+      "chart_size_default": "3-col span (front), 6-col span if it's the hero",
+      "cta": "Curiosity-driven, not commercial. Sample: 'Want to know how your brand performs in AI mediation?' \u2192 hello@thirdsystem.ai"
+    },
+    "about_third_system_one_pager": {
+      "priority": 3,
+      "status": "NEW",
+      "name": "About Third System",
+      "purpose": "Standalone explainer attached to every cold email and outreach message. Answers: what is this practice, who runs it, what does it measure, why does it matter, what's available.",
+      "audience": "Anyone who's asked 'wait, what is Third System?'",
+      "page_count_target": "1 page",
+      "page_size": "Letter portrait",
+      "template_family": "A-Snapshot or 0-Cover",
+      "preferred_master": "A-Snapshot - Front - 2 Columns - Letter - Portrait",
+      "structure": [
+        "Header: product lockup, tagline_primary",
+        "Block 1 (33%): What it is \u2014 descriptions.medium_100w",
+        "Block 2 (33%): What it measures \u2014 naming_hierarchy explained in plain language, the six AIAS components",
+        "Block 3 (33%): Who runs it \u2014 byline_long, brief credibility line (Sharp / Wharton / SVA references)",
+        "Footer: contact, web, citation example"
+      ],
+      "logo_use": "Product lockup at top",
+      "footer_type": "public_report",
+      "disclaimer_type": "none_on_page (kept short and uncluttered)",
+      "byline_type": "report_masthead_long"
+    },
+    "methodology_brief": {
+      "priority": 4,
+      "status": "NEW \u2014 source content from methodology.md (when finalized; for now, draft from v06 limitations + 'what's next' sections)",
+      "name": "Methodology Brief",
+      "subtitle_pattern": "AI Availability Score (AIAS) v{version}",
+      "purpose": "Authority artifact. Folded tri-fold, distributable at SVA, conferences, in client meetings. Establishes that Third System has a real methodology.",
+      "audience": "Academic peers, brand strategy practitioners, clients evaluating credibility.",
+      "page_count_target": "Tri-fold (6 panels)",
+      "page_size": "Letter landscape, tri-fold",
+      "template_family": "E-Tri-fold",
+      "preferred_master": "E-Tri-Fold - Exterior - Letter + E-Tri-Fold - Interior - Letter",
+      "structure": [
+        "Panel 1 (cover): product lockup, methodology version, tagline_primary",
+        "Panel 2: The three systems framework (mental + physical + AI availability), Sharp anchor",
+        "Panel 3: The six AIAS components (one short paragraph each)",
+        "Panel 4: Measurement protocol (CEPs, prompts, registry construction)",
+        "Panel 5: Limitations + roadmap (Phase 2/3/4)",
+        "Panel 6 (back): byline_long, citation, datasets URL, contact"
+      ],
+      "logo_use": "Product lockup on cover, wordmark in interior",
+      "footer_type": "public_report",
+      "disclaimer_type": "methodology_standard",
+      "byline_type": "report_masthead_long",
+      "fold_orientation": "standard tri-fold (left flap \u2192 right flap \u2192 spread)"
+    },
+    "brand_diagnostic_report": {
+      "priority": 5,
+      "status": "NEW \u2014 produced per client engagement",
+      "name_pattern": "AI Brand Visibility Diagnostic \u2014 {Client}",
+      "purpose": "The $10\u201315K paid pilot deliverable. Same look and structure as Cross-Category Report but scoped to one client's category and competitive set.",
+      "audience": "Paying client (CMO, brand director, head of brand strategy).",
+      "page_count_target": "12\u201318 pages",
+      "page_size": "Letter portrait",
+      "template_family": "C-Brochure (long-form)",
+      "preferred_master": "C-Brochure - Cover - Option 1 (custom-cover) + C-Brochure - Product - AB - Letter",
+      "structure": [
+        "Cover: client name, category, version, byline, CONFIDENTIAL marker",
+        "Executive summary (1 page): 3 key findings, what to do about them",
+        "Category context (1\u20132 pages): competitive set, registry, prompt design",
+        "Findings (4\u20138 pages): per-pattern analysis specific to the client's position",
+        "Implications (2 pages): directional recommendations",
+        "Methodology + caveats",
+        "Appendix: full leaderboard, datasets reference"
+      ],
+      "logo_use": "Wordmark only (not the AIPT lockup) \u2014 keeps the focus on the client's situation, not on Third System's product",
+      "footer_type": "client_diagnostic_confidential",
+      "disclaimer_type": "diagnostic_pilot + methodology_standard",
+      "byline_type": "report_masthead_long",
+      "chart_size_default": "Same as cross-category report",
+      "delivery_mode": "PDF only, watermarked with client name"
+    },
+    "sample_diagnostic": {
+      "priority": 6,
+      "status": "NEW \u2014 produce after first paid pilot, anonymized",
+      "name": "Sample Diagnostic \u2014 Anonymized",
+      "purpose": "Sales tool. Send when prospect asks 'what does the deliverable look like?' Same structure as brand_diagnostic_report but with all identifying details replaced.",
+      "audience": "Prospective clients in evaluation phase.",
+      "page_count_target": "Same as brand_diagnostic_report",
+      "structure": "Mirror of brand_diagnostic_report. Replace client name with 'Illustrative Brand', category with a generic-sounding category, all specific data points lightly distorted to preserve confidentiality.",
+      "logo_use": "Wordmark",
+      "footer_type": "public_report",
+      "byline_type": "report_cover_short",
+      "watermark": "SAMPLE \u2014 anonymized for illustrative purposes"
+    },
+    "capabilities_deck": {
+      "priority": 7,
+      "status": "DEFER until inbound warrants \u2014 not part of initial production",
+      "name": "Third System Capabilities",
+      "purpose": "16:9 slide deck for warm intro meetings, partner conversations, conference pitches.",
+      "format": "Google Slides or Keynote, NOT InDesign",
+      "page_count_target": "10\u201314 slides",
+      "_note": "Don't build this until first 5 outreach conversations have happened \u2014 shape will become clear from what prospects actually ask about."
+    },
+    "quarterly_tracker": {
+      "priority": 8,
+      "status": "FUTURE \u2014 Phase 2 deliverable",
+      "name_pattern": "AI Availability Tracker \u2014 Q{N} {Year}",
+      "purpose": "Longitudinal report once Phase 2 produces time-series data across categories.",
+      "page_count_target": "16\u201324 pages",
+      "template_family": "C-Brochure (long-form)",
+      "_note": "Not needed yet. Specifying it here for system completeness."
+    }
+  }
+}

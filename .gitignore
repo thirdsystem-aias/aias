@@ -1,0 +1,15 @@
+# Generated outputs
+reports/output/*.pdf
+reports/output/_*.pdf
+
+# Python
+__pycache__/
+*.pyc
+venv/
+.venv/
+
+# OS
+.DS_Store
+
+# Local caches
+.cache/

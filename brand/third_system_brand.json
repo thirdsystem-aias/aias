@@ -1,0 +1,2279 @@
+{
+  "_meta": {
+    "schema_version": "1.4",
+    "purpose": "Third System brand boilerplate. Overrides the design_tokens_template.json defaults for any Third System-published deliverable. Locked content; edit only with intent.",
+    "owner": "Pablo Ulpiano Gonzalez Castro",
+    "version_history": [
+      "1.0 \u2014 initial draft, primary blue #25408F",
+      "1.1 \u2014 primary swapped to Indigo #37237B; partial data viz palette",
+      "1.2 \u2014 comprehensive data viz system fully adopted under the Third System brand: 35 named colors \u00d7 CMYK Coated/Uncoated/RGB/Hex/Pantone, 5 neutral tones, 5 grayscale tones, four chart schemes (Qualitative-Recommended, Qualitative-Standard, Sequential, Diverging), color-blindness-tested pairings, chart construction rules.",
+      "1.3 \u2014 added Black 10 grayscale tone; locked tier_color_semantics (Incumbent=Indigo, Mid-tier=Petro, Challenger=Copper Plate); added semantic_ui_colors (text/muted/grid) and python_constant_mapping for stable cross-chat constant naming.",
+      "1.4 \u2014 added chart_sizing_specifications: locked figsize-by-column-span table, DPI targets (300 print/144 screen), font-size scaling per column span, title/subtitle/source positioning formulas, output filename convention. Default output is print-first (300 DPI vector PDF) which renders correctly for both print and screen."
+    ]
+  },
+  "company": {
+    "legal_name": "Third System",
+    "trading_name": "Third System",
+    "abbreviations_internal": [
+      "TS",
+      "3rdS"
+    ],
+    "incorporation_status": "not_yet_incorporated",
+    "planned_structure": "NJ single-member LLC; trigger = first paying client",
+    "domicile_planned": "New Jersey, USA",
+    "domain": "thirdsystem.ai",
+    "tagline_primary": "Independent measurement for the AI mediation layer.",
+    "tagline_short": "Measurement for the AI mediation layer.",
+    "founder": {
+      "name": "Pablo Ulpiano Gonzalez Castro",
+      "title_short": "Principal Researcher",
+      "title_long": "Principal Researcher, Third System; Faculty, MPS Branding Program, School of Visual Arts",
+      "personal_site": "pablou.com",
+      "location": "Hopewell, NJ"
+    },
+    "contact": {
+      "email": "hello@thirdsystem.ai",
+      "web": "thirdsystem.ai",
+      "address_display": "Hopewell, NJ"
+    }
+  },
+  "descriptions": {
+    "ultra_short_15w": "Third System is an independent research practice measuring AI-mediated brand visibility.",
+    "short_50w": "Third System is an independent research practice measuring AI-mediated brand visibility. Founded by Pablo Ulpiano Gonzalez Castro, it extends Byron Sharp's brand growth science with a third system of brand presence \u2014 AI Availability \u2014 alongside the canonical Mental and Physical Availability. Methodology and findings published openly.",
+    "medium_100w": "Third System is an independent research practice that measures AI-mediated brand visibility. The practice extends Ehrenberg-Bass brand growth science into AI-mediated commerce by introducing AI Availability as a third system of brand presence, alongside the canonical Mental Availability and Physical Availability. Its operational metric is the AI Availability Score (AIAS), a 0\u2013100 composite across six measurable dimensions: Presence, Ranking, Consistency, Coverage, Grounding, and Sentiment. Measurements span software, physical goods, B2B and consumer categories. Methodology, datasets, and findings are published openly. Founded by Pablo Ulpiano Gonzalez Castro, faculty at SVA's MPS Branding Program.",
+    "long_150w": "Third System is an independent research practice that measures AI-mediated brand visibility. The practice extends Ehrenberg-Bass brand growth science into AI-mediated commerce by introducing AI Availability as a third system of brand presence \u2014 the conditions under which a brand surfaces in AI-generated recommendations \u2014 alongside the canonical Mental Availability (memory) and Physical Availability (distribution). Its operational metric is the AI Availability Score (AIAS), a 0\u2013100 composite across six measurable dimensions: Presence, Ranking, Consistency, Coverage, Grounding, and Sentiment. Measurements span categories selected to cover software and physical goods, B2B and consumer markets, identity-light and identity-heavy contexts, and globally fragmented production. Findings reveal structural effects on brand visibility that traditional measurement instruments cannot capture, with implications for brand strategy, valuation, and governance. Methodology, datasets, and findings are published openly at thirdsystem.ai. Founded and led by Pablo Ulpiano Gonzalez Castro."
+  },
+  "byline": {
+    "report_cover_short": {
+      "name": "Pablo Ulpiano Gonzalez Castro",
+      "affiliation": "Third System"
+    },
+    "report_masthead_long": {
+      "lines": [
+        "Pablo Ulpiano Gonzalez Castro",
+        "Principal Researcher, Third System",
+        "Faculty, MPS Branding Program, School of Visual Arts"
+      ]
+    },
+    "academic_paper": {
+      "name": "Pablo Ulpiano Gonzalez Castro",
+      "affiliations": [
+        "School of Visual Arts, MPS Branding Program (primary)",
+        "Samsung Electronics SEA, Brand Governance and Creative Strategy"
+      ],
+      "coi_disclosure": "The author is employed in brand strategy at Samsung Electronics SEA and teaches at the School of Visual Arts MPS Branding Program. The author's opinions are his own and do not represent the position of Samsung Electronics or any other organization. This research is independent and unrelated to that employment."
+    },
+    "commercial_outputs_disclosure": "OMIT Samsung. Affiliation listed as Third System + SVA only on reports, decks, website, outreach."
+  },
+  "footers": {
+    "public_report": "\u00a9 2026 Third System. Methodology and underlying datasets: thirdsystem.ai/methodology. Inquiries: hello@thirdsystem.ai. Findings may be cited with attribution.",
+    "client_diagnostic_confidential": "This document contains proprietary research prepared for {CLIENT} by Third System. Confidential. Not for redistribution without written permission. \u00a9 2026 Third System.",
+    "general_short": "\u00a9 2026 Third System \u00b7 thirdsystem.ai \u00b7 hello@thirdsystem.ai"
+  },
+  "disclaimers": {
+    "methodology_standard": "This report presents findings from Third System's AI Availability research program. The AI Availability Score (AIAS) is an early-stage measurement framework introduced in Tri-System Brand Growth (Gonzalez Castro, 2026). Findings should be used directionally. Construct validity \u2014 the correlation between AI Availability and consumer behavior \u2014 has not yet been established and is the subject of Phase 3 of the research program. Methodology is published in full and versioned at thirdsystem.ai/methodology (current: v0.3). Registry construction is curated and reflects the framework's view of each category's competitive set; revisions are documented in the methodology log.",
+    "diagnostic_pilot": "This is an early-stage diagnostic Gonzalez Castro, P. U. (2026)based on emerging measurement. It should be used directionally, not as a definitive decision system.",
+    "category_selection_caveat": "Category selection reflects the framework's research priorities, not customer-driven scoping. Client-commissioned diagnostics are scoped against the client's own competitive set.",
+    "forward_looking_research": "Phase 2 will extend longitudinal coverage and add categories selected to test specific framework predictions. Phase 3 will study construct validity through correlation with external brand-tracking data. Phase 4, contingent on Phase 3 results, will release the remaining five AIAS components."
+  },
+  "citation": {
+    "format": "Ulpiano Gonzalez Castro, P. (2026). {TITLE}, v{VERSION}. Third System. thirdsystem.ai/{SLUG}",
+    "example": "Ulpiano Gonzalez Castro, P. (2026). Cross-Category Findings: AI Presence Index v0.6. Third System. thirdsystem.ai/v06-cross-category"
+  },
+  "palette": {
+    "_overview": "Third System's brand and data viz palette. The brand layer (primary_brand, brand_supporting) governs covers, headlines, and layout. The data viz system (data_viz) governs charts and tables. The two are coordinated \u2014 the indigo family is both the brand identity and one of seven data viz families.",
+    "_color_blindness_note": "All data viz pairings have been tested for the three most common forms of color blindness (Deuteranopia, Protanopia, Tritanopia). Avoid red-green pairings as a value-encoding scheme; use the diverging schemes specified below instead.",
+    "primary_brand": {
+      "indigo": {
+        "hex": "#37237B",
+        "rgb": [
+          55,
+          35,
+          123
+        ],
+        "cmyk_coated": [
+          92,
+          100,
+          0,
+          20
+        ],
+        "cmyk_uncoated": [
+          88,
+          90,
+          0,
+          0
+        ],
+        "pantone": "2745 C",
+        "name": "Indigo",
+        "use": "Primary brand color. Logo, all headlines, key data points, accent rules, primary chart series."
+      }
+    },
+    "brand_supporting": {
+      "_note": "These are the indigo family from the data viz system, doubling as Third System's secondary brand colors. Use for subheads, dividers, soft backgrounds, secondary data series.",
+      "petro": {
+        "hex": "#6A6AB1",
+        "rgb": [
+          106,
+          106,
+          177
+        ],
+        "cmyk_coated": [
+          66,
+          63,
+          0,
+          0
+        ],
+        "cmyk_uncoated": [
+          53,
+          50,
+          0,
+          0
+        ],
+        "pantone": "7456 C",
+        "name": "Petro"
+      },
+      "amethyst": {
+        "hex": "#534F9E",
+        "rgb": [
+          83,
+          79,
+          158
+        ],
+        "cmyk_coated": [
+          80,
+          80,
+          2,
+          0
+        ],
+        "cmyk_uncoated": [
+          66,
+          62,
+          0,
+          0
+        ],
+        "pantone": "7670 C",
+        "name": "Amethyst"
+      },
+      "iris": {
+        "hex": "#908EC5",
+        "rgb": [
+          144,
+          142,
+          197
+        ],
+        "cmyk_coated": [
+          45,
+          43,
+          0,
+          0
+        ],
+        "cmyk_uncoated": [
+          34,
+          30,
+          0,
+          0
+        ],
+        "pantone": "271 C",
+        "name": "Iris"
+      },
+      "lavender_grey": {
+        "hex": "#BBB9DD",
+        "rgb": [
+          187,
+          185,
+          221
+        ],
+        "cmyk_coated": [
+          25,
+          24,
+          0,
+          0
+        ],
+        "cmyk_uncoated": [
+          26,
+          18,
+          0,
+          0
+        ],
+        "pantone": "7444 C",
+        "name": "Lavender Grey"
+      }
+    },
+    "anchor_black": {
+      "hex": "#231F20",
+      "rgb": [
+        35,
+        31,
+        32
+      ],
+      "name": "Soft Black",
+      "use": "Body text, secondary headlines, product-name lockups."
+    },
+    "paper_off_white": {
+      "hex": "#FAF7F2",
+      "name": "Paper",
+      "use": "Page background for screen-first reports. Use #FFFFFF for print."
+    },
+    "data_viz": {
+      "_note": "Third System data viz system. Seven color families \u00d7 five tints (Accent / Secondary / Tertiary 1 / Tertiary 2 / Tertiary 3). Use for charts, tables, maps, and any quantitative visualization. Do NOT use for body text or layout.",
+      "_usage_rules": [
+        "DO use for charts, graphs, tables, maps, icons/pictograms.",
+        "DO use selectively \u2014 limit number of colors to maximize chart readability.",
+        "DO apply one Accent color to highlight the most important data and use Complimentary (neutral/gray) colors for the remaining series.",
+        "DO check chart usability under colorblindness conditions (palette is pre-tested; pairings to be careful with are noted in the schemes below).",
+        "DO NOT use this palette for body text, table cells with no data encoding, or other graphics outside data visualization context.",
+        "DO NOT use Indigo as a chart series and as a headline color in the same view (creates ambiguity about whether the color is brand-anchor or data-encoding)."
+      ],
+      "families": {
+        "indigo": {
+          "_note": "Brand family. Doubles as primary data viz family.",
+          "accent": {
+            "hex": "#37237B",
+            "name": "Indigo",
+            "rgb": [
+              55,
+              35,
+              123
+            ],
+            "cmyk_coated": [
+              92,
+              100,
+              0,
+              20
+            ],
+            "cmyk_uncoated": [
+              88,
+              90,
+              0,
+              0
+            ],
+            "pantone": "2745 C"
+          },
+          "secondary": {
+            "hex": "#534F9E",
+            "name": "Amethyst",
+            "rgb": [
+              83,
+              79,
+              158
+            ],
+            "cmyk_coated": [
+              80,
+              80,
+              2,
+              0
+            ],
+            "cmyk_uncoated": [
+              66,
+              62,
+              0,
+              0
+            ],
+            "pantone": "7670 C"
+          },
+          "tertiary_1": {
+            "hex": "#6A6AB1",
+            "name": "Petro",
+            "rgb": [
+              106,
+              106,
+              177
+            ],
+            "cmyk_coated": [
+              66,
+              63,
+              0,
+              0
+            ],
+            "cmyk_uncoated": [
+              53,
+              50,
+              0,
+              0
+            ],
+            "pantone": "7456 C"
+          },
+          "tertiary_2": {
+            "hex": "#908EC5",
+            "name": "Iris",
+            "rgb": [
+              144,
+              142,
+              197
+            ],
+            "cmyk_coated": [
+              45,
+              43,
+              0,
+              0
+            ],
+            "cmyk_uncoated": [
+              34,
+              30,
+              0,
+              0
+            ],
+            "pantone": "271 C"
+          },
+          "tertiary_3": {
+            "hex": "#BBB9DD",
+            "name": "Lavender Grey",
+            "rgb": [
+              187,
+              185,
+              221
+            ],
+            "cmyk_coated": [
+              25,
+              24,
+              0,
+              0
+            ],
+            "cmyk_uncoated": [
+              26,
+              18,
+              0,
+              0
+            ],
+            "pantone": "7444 C"
+          }
+        },
+        "blue": {
+          "accent": {
+            "hex": "#007EAE",
+            "name": "Ocean",
+            "rgb": [
+              0,
+              126,
+              174
+            ],
+            "cmyk_coated": [
+              94,
+              34,
+              13,
+              6
+            ],
+            "cmyk_uncoated": [
+              79,
+              12,
+              8,
+              4
+            ],
+            "pantone": "7704 C"
+          },
+          "secondary": {
+            "hex": "#002B5F",
+            "name": "Navy",
+            "rgb": [
+              0,
+              43,
+              95
+            ],
+            "cmyk_coated": [
+              100,
+              75,
+              6,
+              50
+            ],
+            "cmyk_uncoated": [
+              100,
+              65,
+              0,
+              8
+            ],
+            "pantone": "654 C"
+          },
+          "tertiary_1": {
+            "hex": "#005E92",
+            "name": "Atlantic",
+            "rgb": [
+              0,
+              94,
+              146
+            ],
+            "cmyk_coated": [
+              100,
+              55,
+              13,
+              15
+            ],
+            "cmyk_uncoated": [
+              100,
+              12,
+              0,
+              20
+            ],
+            "pantone": "7691 C"
+          },
+          "tertiary_2": {
+            "hex": "#4F99C1",
+            "name": "Water Jet",
+            "rgb": [
+              79,
+              153,
+              193
+            ],
+            "cmyk_coated": [
+              66,
+              24,
+              9,
+              4
+            ],
+            "cmyk_uncoated": [
+              51,
+              12,
+              7,
+              3
+            ],
+            "pantone": "542 C"
+          },
+          "tertiary_3": {
+            "hex": "#A1C3DA",
+            "name": "Iceberg",
+            "rgb": [
+              161,
+              195,
+              218
+            ],
+            "cmyk_coated": [
+              34,
+              11,
+              5,
+              2
+            ],
+            "cmyk_uncoated": [
+              30,
+              3,
+              5,
+              2
+            ],
+            "pantone": "544 C"
+          }
+        },
+        "green": {
+          "accent": {
+            "hex": "#A4C032",
+            "name": "Tree",
+            "rgb": [
+              164,
+              192,
+              50
+            ],
+            "cmyk_coated": [
+              34,
+              0,
+              98,
+              10
+            ],
+            "cmyk_uncoated": [
+              32,
+              0,
+              93,
+              9
+            ],
+            "pantone": "7744 C"
+          },
+          "secondary": {
+            "hex": "#2C3B0D",
+            "name": "Forest",
+            "rgb": [
+              44,
+              59,
+              13
+            ],
+            "cmyk_coated": [
+              46,
+              18,
+              86,
+              80
+            ],
+            "cmyk_uncoated": [
+              58,
+              40,
+              92,
+              50
+            ],
+            "pantone": "5743 C"
+          },
+          "tertiary_1": {
+            "hex": "#586A2E",
+            "name": "Woodland",
+            "rgb": [
+              88,
+              106,
+              46
+            ],
+            "cmyk_coated": [
+              46,
+              18,
+              86,
+              48
+            ],
+            "cmyk_uncoated": [
+              31,
+              14,
+              81,
+              37
+            ],
+            "pantone": "7748 C"
+          },
+          "tertiary_2": {
+            "hex": "#7B9234",
+            "name": "Sycamore",
+            "rgb": [
+              123,
+              146,
+              52
+            ],
+            "cmyk_coated": [
+              40,
+              9,
+              92,
+              29
+            ],
+            "cmyk_uncoated": [
+              36,
+              11,
+              83,
+              9
+            ],
+            "pantone": "7495 C"
+          },
+          "tertiary_3": {
+            "hex": "#C5D582",
+            "name": "Pine Glade",
+            "rgb": [
+              197,
+              213,
+              130
+            ],
+            "cmyk_coated": [
+              20,
+              0,
+              59,
+              6
+            ],
+            "cmyk_uncoated": [
+              19,
+              0,
+              56,
+              5
+            ],
+            "pantone": "7492 C"
+          }
+        },
+        "warm": {
+          "accent": {
+            "hex": "#F36C35",
+            "name": "Copper Plate",
+            "rgb": [
+              243,
+              108,
+              53
+            ],
+            "cmyk_coated": [
+              0,
+              72,
+              88,
+              0
+            ],
+            "cmyk_uncoated": [
+              3,
+              73,
+              100,
+              0
+            ],
+            "pantone": "7578 C"
+          },
+          "secondary": {
+            "hex": "#712300",
+            "name": "Dark Sienna",
+            "rgb": [
+              113,
+              35,
+              0
+            ],
+            "cmyk_coated": [
+              0,
+              80,
+              100,
+              65
+            ],
+            "cmyk_uncoated": [
+              0,
+              86,
+              95,
+              57
+            ],
+            "pantone": "168 C"
+          },
+          "tertiary_1": {
+            "hex": "#BD4718",
+            "name": "Rust",
+            "rgb": [
+              189,
+              71,
+              24
+            ],
+            "cmyk_coated": [
+              0,
+              80,
+              100,
+              25
+            ],
+            "cmyk_uncoated": [
+              0,
+              75,
+              100,
+              20
+            ],
+            "pantone": "167 C"
+          },
+          "tertiary_2": {
+            "hex": "#F79668",
+            "name": "Melon",
+            "rgb": [
+              247,
+              150,
+              104
+            ],
+            "cmyk_coated": [
+              0,
+              50,
+              62,
+              0
+            ],
+            "cmyk_uncoated": [
+              0,
+              38,
+              60,
+              0
+            ],
+            "pantone": "163 C"
+          },
+          "tertiary_3": {
+            "hex": "#FBBD9C",
+            "name": "Peach Sorbet",
+            "rgb": [
+              251,
+              189,
+              156
+            ],
+            "cmyk_coated": [
+              0,
+              30,
+              37,
+              0
+            ],
+            "cmyk_uncoated": [
+              3,
+              26,
+              36,
+              0
+            ],
+            "pantone": "7415 C"
+          }
+        },
+        "magenta": {
+          "accent": {
+            "hex": "#C40067",
+            "name": "Rubine",
+            "rgb": [
+              196,
+              0,
+              103
+            ],
+            "cmyk_coated": [
+              0,
+              100,
+              15,
+              20
+            ],
+            "cmyk_uncoated": [
+              0,
+              88,
+              12,
+              14
+            ],
+            "pantone": "214 C"
+          },
+          "secondary": {
+            "hex": "#6A035C",
+            "name": "Maroon",
+            "rgb": [
+              106,
+              3,
+              92
+            ],
+            "cmyk_coated": [
+              44,
+              100,
+              4,
+              40
+            ],
+            "cmyk_uncoated": [
+              44,
+              99,
+              11,
+              25
+            ],
+            "pantone": "255 C"
+          },
+          "tertiary_1": {
+            "hex": "#D15983",
+            "name": "Ruby",
+            "rgb": [
+              209,
+              89,
+              131
+            ],
+            "cmyk_coated": [
+              0,
+              75,
+              12,
+              15
+            ],
+            "cmyk_uncoated": [
+              10,
+              81,
+              19,
+              5
+            ],
+            "pantone": "7634 C"
+          },
+          "tertiary_2": {
+            "hex": "#DE8BA5",
+            "name": "Sherbet",
+            "rgb": [
+              222,
+              139,
+              165
+            ],
+            "cmyk_coated": [
+              0,
+              50,
+              8,
+              10
+            ],
+            "cmyk_uncoated": [
+              0,
+              40,
+              8,
+              8
+            ],
+            "pantone": "693 C"
+          },
+          "tertiary_3": {
+            "hex": "#EDC0CC",
+            "name": "Pearl Pink",
+            "rgb": [
+              237,
+              192,
+              204
+            ],
+            "cmyk_coated": [
+              0,
+              25,
+              4,
+              5
+            ],
+            "cmyk_uncoated": [
+              4,
+              18,
+              4,
+              0
+            ],
+            "pantone": "677 C"
+          }
+        },
+        "teal": {
+          "accent": {
+            "hex": "#08C3A5",
+            "name": "Aqua",
+            "rgb": [
+              8,
+              195,
+              165
+            ],
+            "cmyk_coated": [
+              83,
+              0,
+              48,
+              0
+            ],
+            "cmyk_uncoated": [
+              69,
+              0,
+              46,
+              0
+            ],
+            "pantone": "2400 C"
+          },
+          "secondary": {
+            "hex": "#06423D",
+            "name": "Dark Teal",
+            "rgb": [
+              6,
+              66,
+              61
+            ],
+            "cmyk_coated": [
+              86,
+              0,
+              44,
+              71
+            ],
+            "cmyk_uncoated": [
+              86,
+              0,
+              48,
+              58
+            ],
+            "pantone": "3302 C"
+          },
+          "tertiary_1": {
+            "hex": "#0A6B5B",
+            "name": "Emerald",
+            "rgb": [
+              10,
+              107,
+              91
+            ],
+            "cmyk_coated": [
+              96,
+              32,
+              63,
+              26
+            ],
+            "cmyk_uncoated": [
+              95,
+              0,
+              60,
+              25
+            ],
+            "pantone": "7720 C"
+          },
+          "tertiary_2": {
+            "hex": "#06927C",
+            "name": "Jade",
+            "rgb": [
+              6,
+              146,
+              124
+            ],
+            "cmyk_coated": [
+              96,
+              0,
+              52,
+              22
+            ],
+            "cmyk_uncoated": [
+              90,
+              0,
+              58,
+              4
+            ],
+            "pantone": "7717 C"
+          },
+          "tertiary_3": {
+            "hex": "#99E4D7",
+            "name": "Turquoise",
+            "rgb": [
+              153,
+              228,
+              215
+            ],
+            "cmyk_coated": [
+              39,
+              0,
+              21,
+              0
+            ],
+            "cmyk_uncoated": [
+              36,
+              0,
+              23,
+              0
+            ],
+            "pantone": "7464 C"
+          }
+        },
+        "yellow": {
+          "accent": {
+            "hex": "#FFAC17",
+            "name": "Honey",
+            "rgb": [
+              255,
+              172,
+              23
+            ],
+            "cmyk_coated": [
+              0,
+              33,
+              100,
+              0
+            ],
+            "cmyk_uncoated": [
+              0,
+              23,
+              85,
+              0
+            ],
+            "pantone": "124 C"
+          },
+          "secondary": {
+            "hex": "#4B2514",
+            "name": "Chocolate",
+            "rgb": [
+              75,
+              37,
+              20
+            ],
+            "cmyk_coated": [
+              44,
+              78,
+              100,
+              59
+            ],
+            "cmyk_uncoated": [
+              41,
+              82,
+              94,
+              43
+            ],
+            "pantone": "7596 C"
+          },
+          "tertiary_1": {
+            "hex": "#8A4D1F",
+            "name": "Walnut",
+            "rgb": [
+              138,
+              77,
+              31
+            ],
+            "cmyk_coated": [
+              26,
+              70,
+              100,
+              24
+            ],
+            "cmyk_uncoated": [
+              16,
+              70,
+              100,
+              14
+            ],
+            "pantone": "1615 C"
+          },
+          "tertiary_2": {
+            "hex": "#D17925",
+            "name": "Honey Maple",
+            "rgb": [
+              209,
+              121,
+              37
+            ],
+            "cmyk_coated": [
+              0,
+              52,
+              100,
+              12
+            ],
+            "cmyk_uncoated": [
+              3,
+              50,
+              91,
+              10
+            ],
+            "pantone": "7565 C"
+          },
+          "tertiary_3": {
+            "hex": "#FED994",
+            "name": "Daffodil",
+            "rgb": [
+              254,
+              217,
+              148
+            ],
+            "cmyk_coated": [
+              0,
+              20,
+              56,
+              0
+            ],
+            "cmyk_uncoated": [
+              0,
+              14,
+              54,
+              0
+            ],
+            "pantone": "1345 C"
+          }
+        }
+      },
+      "complimentary_neutrals": {
+        "_note": "Warm neutrals. Use as low-saturation companions to the accent families when a chart needs muted secondary series. Numbered 1 (lightest) to 5 (darkest).",
+        "ts_neutral_1": {
+          "hex": "#CEC2B4",
+          "rgb": [
+            206,
+            194,
+            180
+          ],
+          "cmyk_coated": [
+            6,
+            10,
+            17,
+            16
+          ],
+          "cmyk_uncoated": [
+            3,
+            6,
+            9,
+            10
+          ],
+          "pantone": "7528 C",
+          "name": "TS Neutral 1"
+        },
+        "ts_neutral_2": {
+          "hex": "#B7A99A",
+          "rgb": [
+            183,
+            169,
+            154
+          ],
+          "cmyk_coated": [
+            10,
+            11,
+            17,
+            27
+          ],
+          "cmyk_uncoated": [
+            6,
+            13,
+            17,
+            19
+          ],
+          "pantone": "7529 C",
+          "name": "TS Neutral 2"
+        },
+        "ts_neutral_3": {
+          "hex": "#A39382",
+          "rgb": [
+            163,
+            147,
+            130
+          ],
+          "cmyk_coated": [
+            14,
+            19,
+            21,
+            39
+          ],
+          "cmyk_uncoated": [
+            9,
+            16,
+            22,
+            26
+          ],
+          "pantone": "7530 C",
+          "name": "TS Neutral 3"
+        },
+        "ts_neutral_4": {
+          "hex": "#7A6855",
+          "rgb": [
+            122,
+            104,
+            85
+          ],
+          "cmyk_coated": [
+            24,
+            34,
+            35,
+            60
+          ],
+          "cmyk_uncoated": [
+            14,
+            23,
+            33,
+            46
+          ],
+          "pantone": "7531 C",
+          "name": "TS Neutral 4"
+        },
+        "ts_neutral_5": {
+          "hex": "#473729",
+          "rgb": [
+            71,
+            55,
+            41
+          ],
+          "cmyk_coated": [
+            37,
+            53,
+            68,
+            83
+          ],
+          "cmyk_uncoated": [
+            14,
+            23,
+            33,
+            60
+          ],
+          "pantone": "7533 C",
+          "name": "TS Neutral 5"
+        }
+      },
+      "complimentary_grays": {
+        "_note": "Pure grays from K-channel only. Use as the most neutral possible secondary series, especially in 'highlight one Accent + everything else gray' compositions.",
+        "black_10": {
+          "hex": "#E5E5E5",
+          "rgb": [
+            229,
+            229,
+            229
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            10
+          ],
+          "name": "Black 10",
+          "use": "Lightest grayscale tone. Use for the most subtle grid lines, table dividers, and chart background fills."
+        },
+        "black_20": {
+          "hex": "#CCCCCC",
+          "rgb": [
+            204,
+            204,
+            204
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            20
+          ],
+          "name": "Black 20"
+        },
+        "black_40": {
+          "hex": "#999999",
+          "rgb": [
+            153,
+            153,
+            153
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            40
+          ],
+          "name": "Black 40"
+        },
+        "black_60": {
+          "hex": "#666666",
+          "rgb": [
+            102,
+            102,
+            102
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            60
+          ],
+          "name": "Black 60"
+        },
+        "black_80": {
+          "hex": "#333333",
+          "rgb": [
+            51,
+            51,
+            51
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            80
+          ],
+          "name": "Black 80"
+        },
+        "black_100": {
+          "hex": "#000000",
+          "rgb": [
+            0,
+            0,
+            0
+          ],
+          "cmyk_coated": [
+            0,
+            0,
+            0,
+            100
+          ],
+          "name": "Black 100"
+        }
+      },
+      "schemes": {
+        "_note": "Four schemes for different chart needs. Pick the scheme based on what the data is doing, not on aesthetic preference.",
+        "qualitative_recommended": {
+          "purpose": "For nominal or categorical data where one data point matters most. The recommended Third System default.",
+          "rule": "Use ONE Accent color to highlight the most important data; use Complimentary Grays or Neutrals for everything else. This creates clear visual hierarchy.",
+          "accent_choices": [
+            {
+              "name": "Ocean",
+              "hex": "#007EAE"
+            },
+            {
+              "name": "Honey",
+              "hex": "#FFAC17"
+            },
+            {
+              "name": "Rubine",
+              "hex": "#C40067"
+            },
+            {
+              "name": "Aqua",
+              "hex": "#08C3A5"
+            },
+            {
+              "name": "Copper Plate",
+              "hex": "#F36C35"
+            },
+            {
+              "name": "Tree",
+              "hex": "#A4C032"
+            },
+            {
+              "name": "Petro",
+              "hex": "#6A6AB1"
+            }
+          ],
+          "secondary_palette": "Use Complimentary Grays (Black 20, 40, 60, 80) OR Complimentary Neutrals (TS Neutral 1\u20135). Stay within ONE secondary palette per chart \u2014 don't mix grays and neutrals.",
+          "third_system_default_pairing": {
+            "accent_for_highlight": {
+              "name": "Indigo",
+              "hex": "#37237B"
+            },
+            "rest_of_data": "Black 20 (#CCCCCC) for surrounding values, escalating to Black 40/60/80 if multiple secondary series exist",
+            "note": "This pairing makes Indigo the brand-recognizable highlight color. Use this as the default for AIPT reports unless a specific narrative demands a different accent (e.g., Copper Plate to flag a 'surprising finding')."
+          },
+          "examples": [
+            "Ocean for highlight + Black 20 for the rest",
+            "Copper Plate for highlight + Black 20 for the rest",
+            "Honey for highlight + Black 20, 40, 60, 80 for the rest"
+          ]
+        },
+        "qualitative_standard": {
+          "purpose": "For nominal/categorical data where NO single data point can be chosen as most important. Use when you need 14 distinguishable colors that work together and across colorblindness conditions.",
+          "rule": "Use the colors in the order specified below, left-to-right. Stop using new colors as soon as your data set is covered.",
+          "ordered_colors": [
+            {
+              "position": 1,
+              "name": "Water Jet",
+              "hex": "#4F99C1"
+            },
+            {
+              "position": 2,
+              "name": "Navy",
+              "hex": "#002B5F"
+            },
+            {
+              "position": 3,
+              "name": "Honey",
+              "hex": "#FFAC17"
+            },
+            {
+              "position": 4,
+              "name": "Chocolate",
+              "hex": "#4B2514"
+            },
+            {
+              "position": 5,
+              "name": "Sherbet",
+              "hex": "#DE8BA5"
+            },
+            {
+              "position": 6,
+              "name": "Maroon",
+              "hex": "#6A035C"
+            },
+            {
+              "position": 7,
+              "name": "Aqua",
+              "hex": "#08C3A5"
+            },
+            {
+              "position": 8,
+              "name": "Dark Teal",
+              "hex": "#06423D"
+            },
+            {
+              "position": 9,
+              "name": "Melon",
+              "hex": "#F79668"
+            },
+            {
+              "position": 10,
+              "name": "Dark Sienna",
+              "hex": "#712300",
+              "line_chart_replacement": {
+                "name": "Rust",
+                "hex": "#BD4718",
+                "note": "For LINE CHARTS only, use Rust instead of Dark Sienna in position 10."
+              }
+            },
+            {
+              "position": 11,
+              "name": "Iris",
+              "hex": "#908EC5"
+            },
+            {
+              "position": 12,
+              "name": "Indigo",
+              "hex": "#37237B"
+            },
+            {
+              "position": 13,
+              "name": "Tree",
+              "hex": "#A4C032"
+            },
+            {
+              "position": 14,
+              "name": "Forest",
+              "hex": "#2C3B0D"
+            }
+          ]
+        },
+        "sequential": {
+          "purpose": "For ordered/quantitative data where one variable progresses from low to high. Each family runs from Dark (high values) to Light (low values), or vice versa as the data demands.",
+          "rule": "Pick ONE family. Use up to 5 tints. Light = low values, Dark = high values is the convention; reverse only if the data semantics require it.",
+          "third_system_default_family": "indigo",
+          "all_families": {
+            "indigo": [
+              "#37237B (Indigo, dark)",
+              "#534F9E (Amethyst)",
+              "#6A6AB1 (Petro)",
+              "#908EC5 (Iris)",
+              "#BBB9DD (Lavender Grey, light)"
+            ],
+            "blue": [
+              "#002B5F (Navy, dark)",
+              "#005E92 (Atlantic)",
+              "#007EAE (Ocean)",
+              "#4F99C1 (Water Jet)",
+              "#A1C3DA (Iceberg, light)"
+            ],
+            "green": [
+              "#2C3B0D (Forest, dark)",
+              "#586A2E (Woodland)",
+              "#7B9234 (Sycamore)",
+              "#A4C032 (Tree)",
+              "#C5D582 (Pine Glade, light)"
+            ],
+            "warm": [
+              "#712300 (Dark Sienna)",
+              "#BD4718 (Rust)",
+              "#F36C35 (Copper Plate)",
+              "#F79668 (Melon)",
+              "#FBBD9C (Peach Sorbet, light)"
+            ],
+            "magenta": [
+              "#6A035C (Maroon, dark)",
+              "#C40067 (Rubine)",
+              "#D15983 (Ruby)",
+              "#DE8BA5 (Sherbet)",
+              "#EDC0CC (Pearl Pink, light)"
+            ],
+            "teal": [
+              "#06423D (Dark Teal, dark)",
+              "#0A6B5B (Emerald)",
+              "#06927C (Jade)",
+              "#08C3A5 (Aqua)",
+              "#99E4D7 (Turquoise, light)"
+            ],
+            "yellow": [
+              "#4B2514 (Chocolate, dark)",
+              "#8A4D1F (Walnut)",
+              "#D17925 (Honey Maple)",
+              "#FFAC17 (Honey)",
+              "#FED994 (Daffodil, light)"
+            ]
+          },
+          "use_for": "Heatmaps, choropleth maps, ranked tables, time-series intensity, AIPT leaderboards (where higher Presence = darker color)."
+        },
+        "diverging": {
+          "purpose": "For data that has a meaningful midpoint and progresses outward in both directions (e.g., underperforming vs overperforming, gain vs loss, before vs after).",
+          "rule": "Use TWO different sequential families. They share a neutral midpoint (TS Neutral 2 at 40% opacity, hex #B7A99A). Avoid red-green pairings \u2014 they fail under colorblindness and carry inconsistent cultural meaning. Use one of the recommended pairings below.",
+          "midpoint": {
+            "hex": "#B7A99A",
+            "name": "TS Neutral 2 at 40% opacity",
+            "cmyk_coated": [
+              10,
+              11,
+              17,
+              27
+            ]
+          },
+          "recommended_pairings": [
+            {
+              "name": "Indigo \u2194 Warm",
+              "left": [
+                "#37237B (Indigo)",
+                "#6A6AB1 (Petro)",
+                "#BBB9DD (Lavender Grey)"
+              ],
+              "right": [
+                "#FBBD9C (Peach Sorbet)",
+                "#F36C35 (Copper Plate)",
+                "#712300 (Dark Sienna)"
+              ],
+              "use_for": "AIPT signature finding visualizations (e.g., a brand's AI Availability vs. its consumer awareness \u2014 Indigo side = AI-overrepresented, Warm side = AI-underrepresented)."
+            },
+            {
+              "name": "Blue \u2194 Yellow",
+              "left": [
+                "#002B5F (Navy)",
+                "#007EAE (Ocean)",
+                "#A1C3DA (Iceberg)"
+              ],
+              "right": [
+                "#FED994 (Daffodil)",
+                "#D17925 (Honey Maple)",
+                "#4B2514 (Chocolate)"
+              ],
+              "use_for": "Geographic data, before/after, regulatory increase/decrease."
+            },
+            {
+              "name": "Green \u2194 Indigo",
+              "left": [
+                "#2C3B0D (Forest)",
+                "#7B9234 (Sycamore)",
+                "#C5D582 (Pine Glade)"
+              ],
+              "right": [
+                "#BBB9DD (Lavender Grey)",
+                "#6A6AB1 (Petro)",
+                "#37237B (Indigo)"
+              ],
+              "use_for": "When neither pole should read as 'negative' \u2014 e.g., comparing two distinct categorical types."
+            },
+            {
+              "name": "Warm \u2194 Teal",
+              "left": [
+                "#712300 (Dark Sienna)",
+                "#F36C35 (Copper Plate)",
+                "#FBBD9C (Peach Sorbet)"
+              ],
+              "right": [
+                "#99E4D7 (Turquoise)",
+                "#06927C (Jade)",
+                "#06423D (Dark Teal)"
+              ],
+              "use_for": "Performance scoring tables (e.g., the credit-health-style ranking from the source guide). Universally legible across colorblindness conditions."
+            },
+            {
+              "name": "Magenta \u2194 Green",
+              "left": [
+                "#6A035C (Maroon)",
+                "#D15983 (Ruby)",
+                "#EDC0CC (Pearl Pink)"
+              ],
+              "right": [
+                "#C5D582 (Pine Glade)",
+                "#7B9234 (Sycamore)",
+                "#2C3B0D (Forest)"
+              ],
+              "use_for": "Two equally-weighted polarities."
+            },
+            {
+              "name": "Teal \u2194 Indigo",
+              "left": [
+                "#06423D (Dark Teal)",
+                "#06927C (Jade)",
+                "#99E4D7 (Turquoise)"
+              ],
+              "right": [
+                "#BBB9DD (Lavender Grey)",
+                "#6A6AB1 (Petro)",
+                "#37237B (Indigo)"
+              ],
+              "use_for": "Brand-aligned diverging when both sides should read as serious/data-anchored."
+            },
+            {
+              "name": "Yellow \u2194 Indigo",
+              "left": [
+                "#4B2514 (Chocolate)",
+                "#D17925 (Honey Maple)",
+                "#FED994 (Daffodil)"
+              ],
+              "right": [
+                "#BBB9DD (Lavender Grey)",
+                "#6A6AB1 (Petro)",
+                "#37237B (Indigo)"
+              ],
+              "use_for": "Rare; use when content semantics call for warm vs. cool but Indigo must be the dark anchor."
+            }
+          ],
+          "do_not_use": [
+            "Red \u2194 Green (fails Deuteranopia and Protanopia; carries inconsistent cultural meaning)",
+            "Two families from the same temperature side (e.g., Warm \u2194 Yellow \u2014 they bleed together)"
+          ]
+        }
+      }
+    },
+    "chart_palette_recommended": {
+      "_note": "Default chart palette for Third System data viz. The 'Indigo + everything else gray' pattern from the qualitative_recommended scheme. Use this for any chart where one data point should be the focal point.",
+      "primary_series": {
+        "name": "Indigo",
+        "hex": "#37237B"
+      },
+      "secondary_neutral": {
+        "name": "Black 20",
+        "hex": "#CCCCCC"
+      },
+      "tertiary_neutral": {
+        "name": "Black 40",
+        "hex": "#999999"
+      },
+      "quaternary_neutral": {
+        "name": "Black 60",
+        "hex": "#666666"
+      },
+      "axes_labels": {
+        "name": "Warm Gray",
+        "hex": "#6B6967"
+      },
+      "data_labels": {
+        "name": "Soft Black",
+        "hex": "#231F20"
+      },
+      "highlight_alternate": {
+        "name": "Copper Plate",
+        "hex": "#F36C35",
+        "use": "Use ONLY when Indigo is already serving as a brand-anchor color elsewhere on the page (e.g., headline) and a chart needs a different primary accent."
+      }
+    },
+    "chart_palette_extended": {
+      "_note": "When a qualitative chart needs more than three series and the qualitative_recommended scheme isn't enough, fall through to the qualitative_standard scheme. The order below is the canonical TS qualitative chart sequence.",
+      "ordered_series": [
+        {
+          "position": 1,
+          "name": "Water Jet",
+          "hex": "#4F99C1"
+        },
+        {
+          "position": 2,
+          "name": "Navy",
+          "hex": "#002B5F"
+        },
+        {
+          "position": 3,
+          "name": "Honey",
+          "hex": "#FFAC17"
+        },
+        {
+          "position": 4,
+          "name": "Chocolate",
+          "hex": "#4B2514"
+        },
+        {
+          "position": 5,
+          "name": "Sherbet",
+          "hex": "#DE8BA5"
+        },
+        {
+          "position": 6,
+          "name": "Maroon",
+          "hex": "#6A035C"
+        },
+        {
+          "position": 7,
+          "name": "Aqua",
+          "hex": "#08C3A5"
+        },
+        {
+          "position": 8,
+          "name": "Dark Teal",
+          "hex": "#06423D"
+        },
+        {
+          "position": 9,
+          "name": "Melon",
+          "hex": "#F79668"
+        },
+        {
+          "position": 10,
+          "name": "Dark Sienna",
+          "hex": "#712300",
+          "line_chart_use": "#BD4718 (Rust)"
+        },
+        {
+          "position": 11,
+          "name": "Iris",
+          "hex": "#908EC5"
+        },
+        {
+          "position": 12,
+          "name": "Indigo",
+          "hex": "#37237B"
+        },
+        {
+          "position": 13,
+          "name": "Tree",
+          "hex": "#A4C032"
+        },
+        {
+          "position": 14,
+          "name": "Forest",
+          "hex": "#2C3B0D"
+        }
+      ]
+    },
+    "tier_color_semantics": {
+      "_note": "Standardized brand-tier color encoding for Third System charts. When a chart distinguishes brands by competitive tier, use these exact colors. The mapping uses the brand-anchor (Indigo) for incumbents, the brand-family secondary (Petro) for mid-tier, and the diverging pair partner (Copper Plate) for challengers. This is the canonical AIPT tier encoding.",
+      "incumbent": {
+        "hex": "#37237B",
+        "name": "Indigo",
+        "tier_label": "Incumbent",
+        "use": "Established market leaders with high consumer awareness and high AI Presence. The dominant tier."
+      },
+      "midtier": {
+        "hex": "#6A6AB1",
+        "name": "Petro",
+        "tier_label": "Mid-tier",
+        "use": "Established brands without dominant category position. Same family as Incumbent, lower visual weight."
+      },
+      "challenger": {
+        "hex": "#F36C35",
+        "name": "Copper Plate",
+        "tier_label": "Challenger",
+        "use": "Emerging or DTC brands; high Discovery presence, lower Comparison presence. Visually contrasts with Incumbent."
+      }
+    },
+    "semantic_ui_colors": {
+      "_note": "Semantic color aliases for chart and document UI. These point at existing palette entries; keep them in sync if the underlying color ever changes.",
+      "color_text": {
+        "hex": "#231F20",
+        "name": "Soft Black",
+        "alias_for": "anchor_black",
+        "use": "All body text, axis labels with strong emphasis, primary data labels."
+      },
+      "color_muted": {
+        "hex": "#6B6967",
+        "name": "Warm Gray",
+        "alias_for": "neutral_warm_gray",
+        "use": "Secondary text, axis tick labels, captions, source citations, deemphasized labels."
+      },
+      "color_grid": {
+        "hex": "#CCCCCC",
+        "name": "Black 20",
+        "alias_for": "complimentary_grays.black_20",
+        "use": "Standard chart grid lines. Use Black 10 (#E5E5E5) for lighter grids when needed."
+      },
+      "color_grid_subtle": {
+        "hex": "#E5E5E5",
+        "name": "Black 10",
+        "alias_for": "complimentary_grays.black_10",
+        "use": "Subtle grid lines, faint table dividers, secondary chart structure."
+      }
+    },
+    "python_constant_mapping": {
+      "_note": "Canonical Python constant names for chart_style.py. Any chat building Third System chart code MUST use these exact names so code is portable across chats. Maps Python constant \u2192 hex value and the path in this brand JSON it sources from.",
+      "grayscale": {
+        "BLACK_10": {
+          "hex": "#E5E5E5",
+          "source": "palette.data_viz.complimentary_grays.black_10"
+        },
+        "BLACK_20": {
+          "hex": "#CCCCCC",
+          "source": "palette.data_viz.complimentary_grays.black_20"
+        },
+        "BLACK_40": {
+          "hex": "#999999",
+          "source": "palette.data_viz.complimentary_grays.black_40"
+        },
+        "BLACK_60": {
+          "hex": "#666666",
+          "source": "palette.data_viz.complimentary_grays.black_60"
+        },
+        "BLACK_80": {
+          "hex": "#333333",
+          "source": "palette.data_viz.complimentary_grays.black_80"
+        },
+        "BLACK_100": {
+          "hex": "#000000",
+          "source": "palette.data_viz.complimentary_grays.black_100"
+        }
+      },
+      "accent_per_family": {
+        "_note": "The 'accent' (most saturated) tint of each data viz family. Use the family name in the constant.",
+        "ACCENT_INDIGO": {
+          "hex": "#37237B",
+          "source": "palette.data_viz.families.indigo.accent"
+        },
+        "ACCENT_OCEAN": {
+          "hex": "#007EAE",
+          "source": "palette.data_viz.families.blue.accent"
+        },
+        "ACCENT_TREE": {
+          "hex": "#A4C032",
+          "source": "palette.data_viz.families.green.accent"
+        },
+        "ACCENT_COPPER_PLATE": {
+          "hex": "#F36C35",
+          "source": "palette.data_viz.families.warm.accent"
+        },
+        "ACCENT_RUBINE": {
+          "hex": "#C40067",
+          "source": "palette.data_viz.families.magenta.accent"
+        },
+        "ACCENT_AQUA": {
+          "hex": "#08C3A5",
+          "source": "palette.data_viz.families.teal.accent"
+        },
+        "ACCENT_HONEY": {
+          "hex": "#FFAC17",
+          "source": "palette.data_viz.families.yellow.accent"
+        }
+      },
+      "indigo_family_full": {
+        "_note": "The full indigo family is the brand identity. Each tint gets a constant.",
+        "INDIGO": {
+          "hex": "#37237B",
+          "source": "palette.data_viz.families.indigo.accent"
+        },
+        "AMETHYST": {
+          "hex": "#534F9E",
+          "source": "palette.data_viz.families.indigo.secondary"
+        },
+        "PETRO": {
+          "hex": "#6A6AB1",
+          "source": "palette.data_viz.families.indigo.tertiary_1"
+        },
+        "IRIS": {
+          "hex": "#908EC5",
+          "source": "palette.data_viz.families.indigo.tertiary_2"
+        },
+        "LAVENDER_GREY": {
+          "hex": "#BBB9DD",
+          "source": "palette.data_viz.families.indigo.tertiary_3"
+        }
+      },
+      "warm_neutrals": {
+        "NEUTRAL_1": {
+          "hex": "#CEC2B4",
+          "source": "palette.data_viz.complimentary_neutrals.ts_neutral_1"
+        },
+        "NEUTRAL_2": {
+          "hex": "#B7A99A",
+          "source": "palette.data_viz.complimentary_neutrals.ts_neutral_2"
+        },
+        "NEUTRAL_3": {
+          "hex": "#A39382",
+          "source": "palette.data_viz.complimentary_neutrals.ts_neutral_3"
+        },
+        "NEUTRAL_4": {
+          "hex": "#7A6855",
+          "source": "palette.data_viz.complimentary_neutrals.ts_neutral_4"
+        },
+        "NEUTRAL_5": {
+          "hex": "#473729",
+          "source": "palette.data_viz.complimentary_neutrals.ts_neutral_5"
+        }
+      },
+      "semantic_ui": {
+        "COLOR_TEXT": {
+          "hex": "#231F20",
+          "source": "palette.semantic_ui_colors.color_text"
+        },
+        "COLOR_MUTED": {
+          "hex": "#6B6967",
+          "source": "palette.semantic_ui_colors.color_muted"
+        },
+        "COLOR_GRID": {
+          "hex": "#CCCCCC",
+          "source": "palette.semantic_ui_colors.color_grid"
+        },
+        "COLOR_GRID_SUBTLE": {
+          "hex": "#E5E5E5",
+          "source": "palette.semantic_ui_colors.color_grid_subtle"
+        },
+        "COLOR_PAPER": {
+          "hex": "#FAF7F2",
+          "source": "palette.paper_off_white"
+        }
+      },
+      "tier_semantics": {
+        "_note": "Use these in any chart that visualizes brand tier (Incumbent / Mid-tier / Challenger). TIER_COLORS is a dict for indexed lookup.",
+        "COLOR_INCUMBENT": {
+          "hex": "#37237B",
+          "source": "palette.tier_color_semantics.incumbent"
+        },
+        "COLOR_MIDTIER": {
+          "hex": "#6A6AB1",
+          "source": "palette.tier_color_semantics.midtier"
+        },
+        "COLOR_CHALLENGER": {
+          "hex": "#F36C35",
+          "source": "palette.tier_color_semantics.challenger"
+        },
+        "TIER_COLORS": {
+          "incumbent": "#37237B",
+          "midtier": "#6A6AB1",
+          "challenger": "#F36C35"
+        }
+      },
+      "additional_recommended_constants": {
+        "_note": "Constants the parallel chat or any chart_style.py should also expose for completeness.",
+        "BRAND_INDIGO": {
+          "hex": "#37237B",
+          "source": "palette.primary_brand.indigo"
+        },
+        "MIDPOINT_NEUTRAL": {
+          "hex": "#B7A99A",
+          "source": "palette.data_viz.schemes.diverging.midpoint",
+          "use": "Diverging-scheme midpoint, used at 40% opacity"
+        }
+      }
+    }
+  },
+  "chart_construction_rules": {
+    "_note": "Beyond color, these are Third System's chart-construction principles. Drawn from the data viz guidelines source. Apply to all AIPT charts.",
+    "general_principles": [
+      "Build a clear understanding of who you are communicating to and what they need to know or do.",
+      "Choose the visual that best fits the data, not the one that looks most impressive.",
+      "Eliminate clutter. Anything that does not add informative value should be removed.",
+      "Focus attention where you want it through pre-attentive attributes: color, size, position.",
+      "Tell a story with a clear beginning, middle, end."
+    ],
+    "chart_type_selection": {
+      "single_or_two_numbers": "Use simple text. A bold number with a one-line caption is more powerful than a chart.",
+      "continuous_data_over_time": "Line chart.",
+      "categorical_data": "Bar chart (horizontal for long category labels) or column chart (vertical for short labels). MUST have a zero baseline.",
+      "part_to_whole": "Bar chart preferred over pie chart. If pie chart is required, no more than 5 segments, ordered largest first at 12 o'clock, descending clockwise, with data labels on each slice.",
+      "geographic_data": "Choropleth map with sequential or diverging scheme.",
+      "comparative_table": "Use sequential or diverging scheme to encode a value column.",
+      "avoid": [
+        "Donut charts",
+        "3D charts",
+        "Secondary y-axes",
+        "Pie charts with more than 5 segments"
+      ]
+    },
+    "axes_and_labels": [
+      "Always include a zero baseline on bar/column charts. Omitting it distorts perceived differences.",
+      "For line charts, a zero baseline is preferred but may be omitted if all values are far from zero AND the omission is clearly marked.",
+      "Place line labels next to lines (not in a separate legend) when there are 4+ series.",
+      "Aspect ratio matters: average line slope of ~45\u00b0 maximizes the discriminability of adjacent line segments. Don't squish line charts horizontally without considering this.",
+      "Always cite data source and extraction date underneath the chart for credibility."
+    ],
+    "color_application": [
+      "Default to qualitative_recommended scheme: one Indigo accent + grayscale for the rest. This is the Third System house style.",
+      "Use a different accent color (Copper Plate, Ocean, Rubine, Honey) only when Indigo is already serving as a brand-anchor color elsewhere on the page.",
+      "Limit total colors used in a chart to as few as possible. Three is plenty; five is the upper limit before the chart becomes difficult to read.",
+      "When using values of the same color (light to dark progression), the most important value should be the most saturated/darkest.",
+      "Color-blindness check: in any chart that encodes meaning by color (sequential or diverging), verify the chart still reads under Deuteranopia/Protanopia/Tritanopia simulation. The TS palette is pre-tested but custom pairings may not be."
+    ],
+    "narrative_structure": [
+      "Each chart needs a clear caption that says what the chart shows AND what the reader should take from it. 'Y-axis label' is not a caption.",
+      "If there is a single 'punchline' data point, use a colored callout label near it, not a separate legend entry.",
+      "Repeat key visual motifs across charts in the same report so readers learn to recognize Third System chart conventions."
+    ],
+    "data_viz_palette_usage_boundaries": [
+      "DO NOT use the data viz palette for body text or table cells that are not encoding data.",
+      "DO NOT use the data viz palette as decorative color in non-chart graphics.",
+      "DO NOT introduce additional colors beyond what's specified in the schemes.",
+      "DO use the brand layer (Indigo + supporting indigo family) for layout chrome (headers, dividers, lockups).",
+      "DO use the data viz layer for chart series, table value-encoding, map encoding, icon coding-by-category."
+    ],
+    "chart_sizing_specifications": {
+      "_overview": "Canonical chart sizing for Third System reports. Charts must be rendered at exact column-span widths so they drop cleanly into the 6-column page grid (540pt / 7.5\" content width on Letter portrait, after 36pt margins). The default output is print-first (300 DPI vector PDF) which downscales correctly for screen viewing.",
+      "page_geometry_reference": {
+        "_note": "Sources from design_tokens_template.json. Repeated here for chart-render context.",
+        "page_size": "Letter portrait (8.5\" \u00d7 11\")",
+        "margins_pt": 36,
+        "content_width_pt": 540,
+        "content_width_in": 7.5,
+        "content_height_pt": 720,
+        "content_height_in": 10.0,
+        "columns": 6,
+        "gutter_pt": 10,
+        "gutter_in": 0.139,
+        "column_width_pt": 81.67,
+        "column_width_in": 1.134
+      },
+      "figsize_by_column_span": {
+        "_note": "Use these exact figsize values in matplotlib (figsize is in inches). The width is calculated as: (column_count \u00d7 column_width) + ((column_count - 1) \u00d7 gutter). Heights are recommended defaults; chart-type-specific overrides allowed within \u00b115%.",
+        "1_column": {
+          "width_in": 1.13,
+          "default_height_in": 1.13,
+          "aspect_ratio": "1:1",
+          "use": "Sparkline, micro-chart, sidebar callout. Rare \u2014 usually too narrow for category leaderboards.",
+          "matplotlib_figsize": [
+            1.13,
+            1.13
+          ]
+        },
+        "2_column": {
+          "width_in": 2.41,
+          "default_height_in": 2.1,
+          "aspect_ratio": "1.15:1",
+          "use": "Inline mini-chart, side-by-side comparison panel.",
+          "matplotlib_figsize": [
+            2.41,
+            2.1
+          ]
+        },
+        "3_column_inline": {
+          "width_in": 3.68,
+          "default_height_in": 2.85,
+          "aspect_ratio": "1.29:1",
+          "use": "Standard inline chart for body pages. Half-width when set alongside body text. Default for category leaderboards in cross-category report.",
+          "matplotlib_figsize": [
+            3.68,
+            2.85
+          ]
+        },
+        "4_column": {
+          "width_in": 4.95,
+          "default_height_in": 3.71,
+          "aspect_ratio": "1.33:1",
+          "use": "Wider-than-body chart with margin notes alongside. Useful for charts that need more horizontal space without going full-width.",
+          "matplotlib_figsize": [
+            4.95,
+            3.71
+          ]
+        },
+        "6_column_hero": {
+          "width_in": 7.5,
+          "default_height_in": 5.0,
+          "aspect_ratio": "1.5:1",
+          "use": "Full-width hero chart. The visual centerpiece of a section. Default for cross-category scatter, country-of-origin small multiples, anything that needs to breathe.",
+          "matplotlib_figsize": [
+            7.5,
+            5.0
+          ]
+        },
+        "6_column_hero_tall": {
+          "width_in": 7.5,
+          "default_height_in": 6.5,
+          "aspect_ratio": "1.15:1",
+          "use": "Full-width when chart needs more vertical space \u2014 typically scatter plots with annotations, leaderboards with 15+ brands.",
+          "matplotlib_figsize": [
+            7.5,
+            6.5
+          ]
+        },
+        "6_column_hero_short": {
+          "width_in": 7.5,
+          "default_height_in": 3.5,
+          "aspect_ratio": "2.14:1",
+          "use": "Full-width landscape \u2014 bar charts with few categories, time-series with one short series, banner charts.",
+          "matplotlib_figsize": [
+            7.5,
+            3.5
+          ]
+        },
+        "spread_two_panel": {
+          "width_in": 7.5,
+          "default_height_in": 4.5,
+          "aspect_ratio": "1.67:1",
+          "use": "Two side-by-side panels at full content width. Each panel is roughly 3.5\" wide with 0.5\" wspace between. Use for comparative small multiples (e.g., Olive Oil + Skincare country-of-origin panels).",
+          "matplotlib_figsize": [
+            7.5,
+            4.5
+          ],
+          "subplots_layout": "fig, axes = plt.subplots(1, 2, figsize=(7.5, 4.5)); fig.subplots_adjust(wspace=0.18)"
+        }
+      },
+      "dpi_targets": {
+        "_note": "Default to 300 DPI vector PDF for print quality. PDF is resolution-independent for vector content but raster elements (embedded images) need 300 DPI minimum.",
+        "print": {
+          "dpi": 300,
+          "format": "PDF (vector)",
+          "use": "Final report output, print-ready files. The Third System default."
+        },
+        "screen_high": {
+          "dpi": 144,
+          "format": "PDF or PNG",
+          "use": "Screen-optimized PDF for digital distribution. Smaller file size, still sharp on retina displays."
+        },
+        "screen_standard": {
+          "dpi": 96,
+          "format": "PNG",
+          "use": "Web embedding, social media graphics. Use only when PDF isn't viable (e.g., LinkedIn images)."
+        },
+        "thumbnail": {
+          "dpi": 72,
+          "format": "PNG",
+          "use": "Preview thumbnails, table-of-contents teasers."
+        }
+      },
+      "font_size_scaling": {
+        "_note": "Font sizes within charts must scale with chart width to remain legible. Sizes are in matplotlib points (1pt = 1/72 in). These are the values that produce consistent visual weight across column spans.",
+        "by_column_span": {
+          "_columns": [
+            "element",
+            "1col",
+            "2col",
+            "3col",
+            "4col",
+            "6col"
+          ],
+          "title": [
+            10.0,
+            11.0,
+            11.5,
+            12.0,
+            13.0
+          ],
+          "subtitle": [
+            8.0,
+            8.5,
+            9.0,
+            9.5,
+            10.0
+          ],
+          "axis_label": [
+            7.0,
+            7.5,
+            8.0,
+            8.5,
+            9.0
+          ],
+          "axis_tick": [
+            6.5,
+            7.0,
+            7.5,
+            8.0,
+            8.5
+          ],
+          "data_label": [
+            6.5,
+            7.0,
+            7.5,
+            8.0,
+            8.5
+          ],
+          "legend": [
+            6.5,
+            7.0,
+            7.5,
+            8.0,
+            8.5
+          ],
+          "annotation": [
+            6.5,
+            7.0,
+            7.5,
+            7.5,
+            8.0
+          ],
+          "source_caption": [
+            6.0,
+            6.5,
+            6.5,
+            7.0,
+            7.0
+          ]
+        },
+        "default_3col_inline": {
+          "title": 11.5,
+          "subtitle": 9.0,
+          "axis_label": 8.0,
+          "axis_tick": 7.5,
+          "data_label": 7.5,
+          "legend": 7.5,
+          "annotation": 7.5,
+          "source_caption": 6.5
+        },
+        "default_6col_hero": {
+          "title": 13.0,
+          "subtitle": 10.0,
+          "axis_label": 9.0,
+          "axis_tick": 8.5,
+          "data_label": 8.5,
+          "legend": 8.5,
+          "annotation": 8.0,
+          "source_caption": 7.0
+        }
+      },
+      "padding_and_bbox": {
+        "_note": "Consistent padding around chart output ensures predictable embedding into the page grid.",
+        "savefig_params": {
+          "bbox_inches": "tight",
+          "pad_inches": 0.15,
+          "_rationale": "tight bbox eliminates excess whitespace; 0.15in padding gives a small visual buffer that the page grid then honors. Don't increase pad_inches above 0.20 \u2014 InDesign/page layout adds its own spacing."
+        },
+        "do_not": [
+          "Use bbox_inches='tight' WITHOUT pad_inches set \u2014 defaults to inconsistent whitespace",
+          "Use figure-level facecolor other than the paper color (#FAF7F2) or white",
+          "Add manual whitespace via subplots_adjust just to 'center' a chart \u2014 use the figsize spec instead"
+        ]
+      },
+      "title_subtitle_source_positioning": {
+        "_note": "Title, subtitle, and source citation positions are calculated as fractions of figure height. The formulas below scale correctly across column spans without hardcoded y-coordinates.",
+        "formulas": {
+          "title_y": "1.0 - (0.08 / figure_height_in)  # title sits 0.08in below top edge",
+          "subtitle_y": "1.0 - (0.18 / figure_height_in)  # subtitle 0.10in below title",
+          "source_y": "0.0 + (0.08 / figure_height_in)  # source 0.08in above bottom edge",
+          "_note": "Equivalent fractional positions for common figure heights:"
+        },
+        "lookup_table": {
+          "_columns": [
+            "fig_height_in",
+            "title_y",
+            "subtitle_y",
+            "source_y"
+          ],
+          "h_2.85": [
+            0.972,
+            0.937,
+            0.028
+          ],
+          "h_3.50": [
+            0.977,
+            0.949,
+            0.023
+          ],
+          "h_4.50": [
+            0.982,
+            0.96,
+            0.018
+          ],
+          "h_5.00": [
+            0.984,
+            0.964,
+            0.016
+          ],
+          "h_6.50": [
+            0.988,
+            0.972,
+            0.012
+          ]
+        },
+        "implementation_note": "Don't hardcode y values per chart. Compute them from figure_height_in. The functions editorial_title() and add_source() in chart_style.py should take figure as argument and derive positions from fig.get_figheight()."
+      },
+      "subplots_adjust_defaults": {
+        "_note": "Margin reserves around the plot area for title/subtitle/source space. Tuned to the figsize specs above.",
+        "single_panel": {
+          "top": 0.85,
+          "bottom": 0.18,
+          "left": 0.1,
+          "right": 0.95,
+          "_use": "Default for any single-panel chart at 3-col inline or 6-col hero size."
+        },
+        "two_panel_landscape": {
+          "top": 0.82,
+          "bottom": 0.2,
+          "left": 0.07,
+          "right": 0.97,
+          "wspace": 0.18,
+          "_use": "For spread_two_panel layouts (e.g., country-of-origin small multiples)."
+        },
+        "tall_with_legend_below": {
+          "top": 0.85,
+          "bottom": 0.22,
+          "left": 0.1,
+          "right": 0.95,
+          "_use": "When legend is positioned below the plot area at the bottom."
+        }
+      },
+      "output_filename_convention": {
+        "_note": "Predictable filenames let the typesetting chat reference charts without ambiguity. Format: chart_<pattern_id>_<col_span>col_<medium>.<ext>",
+        "format": "chart_<pattern_id>_<col_span>col_<medium>.<ext>",
+        "components": {
+          "pattern_id": "Short identifier matching the pattern or subject (e.g., p1, p2, p4, leaderboard_finance, scatter_country)",
+          "col_span": "Numeric column span (1, 2, 3, 4, 6) or 'spread' for two-panel layouts",
+          "medium": "'print' for 300 DPI / 'screen' for 144 DPI / omitted if a single output is rendered (defaults to print)",
+          "ext": "pdf for vector, png for raster"
+        },
+        "examples": [
+          "chart_p2_6col.pdf  \u2014 Pattern 2 cross-category scatter, 6-col hero, 300 DPI default",
+          "chart_p4_spread.pdf \u2014 Pattern 4 country-of-origin two-panel spread",
+          "chart_p1_3col.pdf  \u2014 Pattern 1 per-model variance, 3-col inline",
+          "chart_leaderboard_finance_3col.pdf \u2014 Personal finance leaderboard, 3-col inline",
+          "chart_p2_6col_screen.png \u2014 Pattern 2, 144 DPI PNG for web"
+        ],
+        "do_not": [
+          "Embed dates or version numbers in filenames \u2014 those go in the report metadata, not the chart filename",
+          "Use spaces or special characters",
+          "Use uppercase (filenames are lowercase by convention)"
+        ]
+      },
+      "rendering_workflow": {
+        "_note": "The standard workflow for generating any Third System chart.",
+        "steps": [
+          "1. Determine the column span the chart will occupy in the final report (3-col inline or 6-col hero is most common).",
+          "2. Set figsize from the figsize_by_column_span table \u2014 do NOT improvise figsize.",
+          "3. Set font sizes from font_size_scaling.by_column_span for that span.",
+          "4. Use subplots_adjust_defaults for margin reservation.",
+          "5. Compute title/subtitle/source y-positions from the formulas, not hardcoded values.",
+          "6. Save with savefig(filename, dpi=300, bbox_inches='tight', pad_inches=0.15) for print default.",
+          "7. Use the output_filename_convention exactly.",
+          "8. If both print and screen versions are needed, render twice \u2014 once at dpi=300 PDF, once at dpi=144 PDF (or PNG for web)."
+        ]
+      }
+    }
+  },
+  "typography": {
+    "primary_face": "Akkurat Pro",
+    "primary_weights_used": [
+      "Light",
+      "Regular",
+      "Bold"
+    ],
+    "rendering_fallback": "Inter (free, near-equivalent metrics). Where Akkurat Pro is licensed, register via pdfmetrics.registerFont(); where not, fall back to Inter, document the substitution in the rendering log.",
+    "system_is_monofont": true,
+    "_rationale": "Reports use Akkurat Pro only \u2014 no serif companion. Visually disciplined; signals the data is the star; avoids the agency-report feel of dual-typeface design systems. The book/paper may use a serif companion (Tiempos / Lyon / GT Sectra) for longform academic prose, but reports stay sans-only."
+  },
+  "logos": {
+    "primary_wordmark": {
+      "file": "THIRDSYSTEM_Logo.svg",
+      "description": "'Third System' wordmark, Akkurat Bold, Indigo #37237B.",
+      "viewbox": "0 0 118.61 18.57",
+      "use": "Default mark for everything. Headers, footers, document covers, business artifacts."
+    },
+    "product_lockup_aipt": {
+      "file": "THIRDSYSTEM_AIPT_Logo.svg",
+      "description": "Two-line lockup. Top: 'Third System' Akkurat Bold #37237B. Bottom: 'AI Presence Index' Akkurat Regular #231F20.",
+      "viewbox": "0 0 158.89 36.29",
+      "use": "Use on AIPT-specific deliverables (report covers, the v0.6 redesign, individual category snapshots).",
+      "convention_note": "The product-lockup pattern (brand bold indigo + product regular black, stacked) is the convention for any future Third System product (e.g. 'Third System / Brand Diagnostic', 'Third System / Methodology Brief')."
+    },
+    "minimum_clear_space": "1\u00d7 cap-height of the wordmark on all sides",
+    "do_not": [
+      "Apply gradients or effects",
+      "Use the wordmark in any color other than #37237B (or pure black/white for single-color reproduction)",
+      "Set the wordmark in any typeface other than Akkurat Bold",
+      "Stretch or skew",
+      "Place on a busy photographic background without sufficient contrast"
+    ]
+  },
+  "naming_hierarchy": {
+    "_note": "Lock these terms. Use consistently across all deliverables.",
+    "company": "Third System",
+    "company_abbreviations": "TS or 3rdS (internal use only \u2014 never in public-facing copy)",
+    "academic_framework": "Tri-System Brand Growth",
+    "concept": "AI Availability",
+    "metric": "AI Availability Score (AIAS)",
+    "metric_components_six": [
+      "Presence",
+      "Ranking",
+      "Consistency",
+      "Coverage",
+      "Grounding",
+      "Sentiment"
+    ],
+    "current_published_metric": "AI Presence Index",
+    "current_published_metric_relation": "The AI Presence Index measures the Presence component (academically: AI Mention Prevalence / AMP) of the full AIAS framework. Other components publish in Phase 4.",
+    "directional_indicator": "Share of Model (SOM)",
+    "commercial_pilot_offering": "AI Brand Visibility Diagnostic (Pilot)",
+    "future_full_series_name": "AI Availability Report (planned for when AIAS components beyond Presence ship)"
+  }
+}

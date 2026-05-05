@@ -1,0 +1,135 @@
+Reading: results_enriched_household_v1.0_20260504_162106.csv
+==============================================================================
+Manual review: BBB valence + entity-reference classification
+Model: gpt-5.4-mini (temperature 0)
+Checkpoint: manual_review_bbb_checkpoint.csv (saves every 10 rows)
+==============================================================================
+Found 110 responses mentioning BBB or aliases
+
+  [  1/110] p1_functional      | anthropic_sonnet   | run 1 -> live_with_caveat       | legacy_brand
+  [  2/110] p1_functional      | anthropic_sonnet   | run 2 -> live_with_caveat       | legacy_brand
+  [  3/110] p1_functional      | anthropic_sonnet   | run 3 -> live_with_caveat       | legacy_brand
+  [  4/110] p1_functional      | anthropic_sonnet   | run 4 -> live_with_caveat       | legacy_brand
+  [  5/110] p1_functional      | anthropic_sonnet   | run 5 -> live_with_caveat       | legacy_brand
+  [  6/110] p1_functional      | anthropic_sonnet   | run 6 -> live_with_caveat       | legacy_brand
+  [  7/110] p1_functional      | anthropic_sonnet   | run 7 -> live_with_caveat       | legacy_brand
+  [  8/110] p1_functional      | anthropic_sonnet   | run 8 -> live_with_caveat       | legacy_brand
+  [  9/110] p1_functional      | anthropic_opus     | run 1 -> live_with_caveat       | legacy_brand
+  [ 10/110] p1_functional      | anthropic_opus     | run 2 -> live_with_caveat       | legacy_brand
+  [ 11/110] p1_functional      | anthropic_opus     | run 3 -> live_with_caveat       | legacy_brand
+  [ 12/110] p1_functional      | anthropic_opus     | run 4 -> live_with_caveat       | legacy_brand
+  [ 13/110] p1_functional      | anthropic_opus     | run 5 -> live_with_caveat       | legacy_brand
+  [ 14/110] p1_functional      | anthropic_opus     | run 6 -> live_with_caveat       | legacy_brand
+  [ 15/110] p1_functional      | anthropic_opus     | run 7 -> live_with_caveat       | legacy_brand
+  [ 16/110] p1_functional      | anthropic_opus     | run 8 -> live_with_caveat       | legacy_brand
+  [ 17/110] p1_functional      | openai_mini        | run 1 -> historical_reference   | legacy_brand
+  [ 18/110] p1_functional      | openai_mini        | run 2 -> live_with_caveat       | legacy_brand
+  [ 19/110] p1_functional      | openai_mini        | run 3 -> ambiguous              | unclear
+  [ 20/110] p1_functional      | openai_mini        | run 4 -> live_with_caveat       | legacy_brand
+  [ 21/110] p1_functional      | openai_mini        | run 6 -> historical_reference   | legacy_brand
+  [ 22/110] p1_functional      | openai_mini        | run 7 -> live_with_caveat       | legacy_brand
+  [ 23/110] p1_functional      | openai_mini        | run 8 -> live_with_caveat       | legacy_brand
+  [ 24/110] p1_functional      | openai_flagship    | run 1 -> live_recommendation    | legacy_brand
+  [ 25/110] p1_functional      | openai_flagship    | run 3 -> live_recommendation    | legacy_brand
+  [ 26/110] p1_functional      | google_flash       | run 5 -> live_with_caveat       | both
+  [ 27/110] p1_functional      | xai_grok           | run 1 -> live_with_caveat       | legacy_brand
+  [ 28/110] p1_functional      | xai_grok           | run 2 -> live_with_caveat       | both
+  [ 29/110] p1_functional      | xai_grok           | run 3 -> live_with_caveat       | both
+  [ 30/110] p1_functional      | xai_grok           | run 4 -> live_with_caveat       | legacy_brand
+  [ 31/110] p1_functional      | xai_grok           | run 5 -> live_with_caveat       | both
+  [ 32/110] p1_functional      | xai_grok           | run 6 -> live_with_caveat       | legacy_brand
+  [ 33/110] p1_functional      | xai_grok           | run 7 -> live_with_caveat       | both
+  [ 34/110] p1_functional      | xai_grok           | run 8 -> live_with_caveat       | legacy_brand
+  [ 35/110] p2_contextual      | anthropic_sonnet   | run 1 -> live_with_caveat       | legacy_brand
+  [ 36/110] p2_contextual      | anthropic_sonnet   | run 2 -> status_correction      | legacy_brand
+  [ 37/110] p2_contextual      | anthropic_sonnet   | run 3 -> live_with_caveat       | legacy_brand
+  [ 38/110] p2_contextual      | anthropic_sonnet   | run 8 -> live_with_caveat       | legacy_brand
+  [ 39/110] p2_contextual      | anthropic_opus     | run 2 -> live_with_caveat       | legacy_brand
+  [ 40/110] p2_contextual      | anthropic_opus     | run 3 -> live_with_caveat       | legacy_brand
+  [ 41/110] p2_contextual      | anthropic_opus     | run 4 -> live_recommendation    | legacy_brand
+  [ 42/110] p2_contextual      | anthropic_opus     | run 5 -> live_with_caveat       | both
+  [ 43/110] p2_contextual      | anthropic_opus     | run 6 -> live_with_caveat       | both
+  [ 44/110] p2_contextual      | anthropic_opus     | run 7 -> live_with_caveat       | both
+  [ 45/110] p2_contextual      | anthropic_opus     | run 8 -> live_with_caveat       | both
+  [ 46/110] p2_contextual      | openai_mini        | run 1 -> status_correction      | legacy_brand
+  [ 47/110] p2_contextual      | openai_mini        | run 2 -> historical_reference   | legacy_brand
+  [ 48/110] p2_contextual      | openai_mini        | run 4 -> historical_reference   | legacy_brand
+  [ 49/110] p2_contextual      | openai_mini        | run 5 -> historical_reference   | legacy_brand
+  [ 50/110] p2_contextual      | openai_mini        | run 6 -> historical_reference   | legacy_brand
+  [ 51/110] p2_contextual      | openai_mini        | run 7 -> historical_reference   | legacy_brand
+  [ 52/110] p2_contextual      | openai_mini        | run 8 -> live_with_caveat       | legacy_brand
+  [ 53/110] p2_contextual      | google_flash       | run 6 -> live_with_caveat       | legacy_brand
+  [ 54/110] p2_contextual      | xai_grok           | run 1 -> live_with_caveat       | legacy_brand
+  [ 55/110] p2_contextual      | xai_grok           | run 2 -> live_with_caveat       | both
+  [ 56/110] p2_contextual      | xai_grok           | run 3 -> live_with_caveat       | both
+  [ 57/110] p2_contextual      | xai_grok           | run 4 -> live_with_caveat       | both
+  [ 58/110] p2_contextual      | xai_grok           | run 5 -> live_with_caveat       | legacy_brand
+  [ 59/110] p2_contextual      | xai_grok           | run 6 -> live_with_caveat       | legacy_brand
+  [ 60/110] p2_contextual      | xai_grok           | run 7 -> live_with_caveat       | both
+  [ 61/110] p2_contextual      | xai_grok           | run 8 -> live_with_caveat       | both
+  [ 62/110] p3_constraint      | anthropic_sonnet   | run 1 -> live_recommendation    | legacy_brand
+  [ 63/110] p3_constraint      | anthropic_sonnet   | run 5 -> live_recommendation    | legacy_brand
+  [ 64/110] p3_constraint      | anthropic_opus     | run 4 -> live_with_caveat       | both
+  [ 65/110] p3_constraint      | anthropic_opus     | run 6 -> live_with_caveat       | legacy_brand
+  [ 66/110] p3_constraint      | anthropic_opus     | run 7 -> live_with_caveat       | both
+  [ 67/110] p3_constraint      | openai_mini        | run 4 -> live_with_caveat       | legacy_brand
+  [ 68/110] p4_identity        | anthropic_sonnet   | run 1 -> historical_reference   | legacy_brand
+  [ 69/110] p4_identity        | anthropic_sonnet   | run 2 -> live_with_caveat       | legacy_brand
+  [ 70/110] p4_identity        | anthropic_sonnet   | run 3 -> live_with_caveat       | both
+  [ 71/110] p4_identity        | anthropic_sonnet   | run 5 -> historical_reference   | legacy_brand
+  [ 72/110] p4_identity        | anthropic_sonnet   | run 6 -> live_with_caveat       | legacy_brand
+  [ 73/110] p4_identity        | anthropic_sonnet   | run 8 -> live_with_caveat       | both
+  [ 74/110] p4_identity        | anthropic_opus     | run 1 -> historical_reference   | legacy_brand
+  [ 75/110] p4_identity        | anthropic_opus     | run 2 -> status_correction      | legacy_brand
+  [ 76/110] p4_identity        | anthropic_opus     | run 3 -> historical_reference   | legacy_brand
+  [ 77/110] p4_identity        | anthropic_opus     | run 4 -> status_correction      | legacy_brand
+  [ 78/110] p4_identity        | anthropic_opus     | run 5 -> historical_reference   | legacy_brand
+  [ 79/110] p4_identity        | anthropic_opus     | run 6 -> status_correction      | legacy_brand
+  [ 80/110] p4_identity        | anthropic_opus     | run 7 -> historical_reference   | legacy_brand
+  [ 81/110] p4_identity        | anthropic_opus     | run 8 -> historical_reference   | legacy_brand
+  [ 82/110] p4_identity        | openai_mini        | run 1 -> historical_reference   | legacy_brand
+  [ 83/110] p4_identity        | openai_mini        | run 2 -> historical_reference   | legacy_brand
+  [ 84/110] p4_identity        | openai_mini        | run 3 -> historical_reference   | legacy_brand
+  [ 85/110] p4_identity        | openai_mini        | run 4 -> historical_reference   | legacy_brand
+  [ 86/110] p4_identity        | openai_mini        | run 5 -> historical_reference   | legacy_brand
+  [ 87/110] p4_identity        | openai_mini        | run 6 -> historical_reference   | legacy_brand
+  [ 88/110] p4_identity        | openai_mini        | run 7 -> historical_reference   | legacy_brand
+  [ 89/110] p4_identity        | openai_mini        | run 8 -> historical_reference   | legacy_brand
+  [ 90/110] p4_identity        | openai_flagship    | run 1 -> live_with_caveat       | legacy_brand
+  [ 91/110] p4_identity        | openai_flagship    | run 2 -> status_correction      | legacy_brand
+  [ 92/110] p4_identity        | openai_flagship    | run 4 -> historical_reference   | legacy_brand
+  [ 93/110] p4_identity        | openai_flagship    | run 5 -> live_with_caveat       | legacy_brand
+  [ 94/110] p4_identity        | openai_flagship    | run 6 -> live_with_caveat       | both
+  [ 95/110] p4_identity        | google_flash       | run 1 -> live_with_caveat       | legacy_brand
+  [ 96/110] p4_identity        | google_flash       | run 3 -> live_with_caveat       | legacy_brand
+  [ 97/110] p4_identity        | google_flash       | run 6 -> live_with_caveat       | both
+  [ 98/110] p4_identity        | google_flash       | run 7 -> live_with_caveat       | legacy_brand
+  [ 99/110] p4_identity        | xai_grok           | run 1 -> live_with_caveat       | both
+  [100/110] p4_identity        | xai_grok           | run 2 -> live_with_caveat       | both
+  [101/110] p4_identity        | xai_grok           | run 3 -> live_with_caveat       | legacy_brand
+  [102/110] p4_identity        | xai_grok           | run 4 -> status_correction      | both
+  [103/110] p4_identity        | xai_grok           | run 5 -> live_with_caveat       | legacy_brand
+  [104/110] p4_identity        | xai_grok           | run 6 -> live_with_caveat       | both
+  [105/110] p4_identity        | xai_grok           | run 7 -> live_with_caveat       | both
+  [106/110] p4_identity        | xai_grok           | run 8 -> live_with_caveat       | legacy_brand
+  [107/110] p6_comparison      | anthropic_opus     | run 4 -> live_with_caveat       | legacy_brand
+  [108/110] p6_comparison      | openai_mini        | run 4 -> historical_reference   | legacy_brand
+  [109/110] p6_comparison      | google_flash       | run 3 -> historical_reference   | legacy_brand
+  [110/110] p6_comparison      | google_flash       | run 8 -> live_with_caveat       | both
+
+==============================================================================
+Manual review complete. Saved 110 rows to manual_review_bbb_20260504_170819.csv
+(Checkpoint also at manual_review_bbb_checkpoint.csv)
+
+VALENCE DISTRIBUTION:
+  live_with_caveat            72  ( 65.5%)
+  historical_reference        25  ( 22.7%)
+  status_correction            7  (  6.4%)
+  live_recommendation          5  (  4.5%)
+  ambiguous                    1  (  0.9%)
+
+ENTITY REFERENCE DISTRIBUTION:
+  legacy_brand                83  ( 75.5%)
+  both                        26  ( 23.6%)
+  unclear                      1  (  0.9%)
+==============================================================================

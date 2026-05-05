@@ -1,0 +1,297 @@
+Reading: results_v2_household_v1.0_final.csv
+Category: household goods retailers
+Registry: 21 brands
+Re-extracting 288 successful responses...
+
+  [  1/288] p1_functional      | anthropic_sonnet   | run 1 -> 10 known, 1 unknown
+  [  2/288] p1_functional      | anthropic_sonnet   | run 2 -> 10 known, 1 unknown
+  [  3/288] p1_functional      | anthropic_sonnet   | run 3 -> 10 known, 1 unknown
+  [  4/288] p1_functional      | anthropic_sonnet   | run 4 -> 10 known, 1 unknown
+  [  5/288] p1_functional      | anthropic_sonnet   | run 5 -> 11 known, 1 unknown
+  [  6/288] p1_functional      | anthropic_sonnet   | run 6 -> 11 known, 2 unknown
+  [  7/288] p1_functional      | anthropic_sonnet   | run 7 -> 10 known, 1 unknown
+  [  8/288] p1_functional      | anthropic_sonnet   | run 8 -> 10 known, 3 unknown
+  [  9/288] p1_functional      | anthropic_opus     | run 1 -> 10 known, 7 unknown
+  [ 10/288] p1_functional      | anthropic_opus     | run 2 -> 13 known, 7 unknown
+  [ 11/288] p1_functional      | anthropic_opus     | run 3 -> 12 known, 5 unknown
+  [ 12/288] p1_functional      | anthropic_opus     | run 4 -> 12 known, 5 unknown
+  [ 13/288] p1_functional      | anthropic_opus     | run 5 -> 12 known, 3 unknown
+  [ 14/288] p1_functional      | anthropic_opus     | run 6 -> 13 known, 5 unknown
+  [ 15/288] p1_functional      | anthropic_opus     | run 7 -> 13 known, 5 unknown
+  [ 16/288] p1_functional      | anthropic_opus     | run 8 -> 11 known, 4 unknown
+  [ 17/288] p1_functional      | openai_mini        | run 1 -> 6 known, 3 unknown
+  [ 18/288] p1_functional      | openai_mini        | run 2 -> 6 known, 2 unknown
+  [ 19/288] p1_functional      | openai_mini        | run 3 -> 6 known, 0 unknown
+  [ 20/288] p1_functional      | openai_mini        | run 4 -> 6 known, 3 unknown
+  [ 21/288] p1_functional      | openai_mini        | run 5 -> 6 known, 2 unknown
+  [ 22/288] p1_functional      | openai_mini        | run 6 -> 6 known, 4 unknown
+  [ 23/288] p1_functional      | openai_mini        | run 7 -> 6 known, 2 unknown
+  [ 24/288] p1_functional      | openai_mini        | run 8 -> 7 known, 0 unknown
+  [ 25/288] p1_functional      | openai_flagship    | run 1 -> 8 known, 2 unknown
+  [ 26/288] p1_functional      | openai_flagship    | run 2 -> 6 known, 3 unknown
+  [ 27/288] p1_functional      | openai_flagship    | run 3 -> 8 known, 3 unknown
+  [ 28/288] p1_functional      | openai_flagship    | run 4 -> 6 known, 8 unknown
+  [ 29/288] p1_functional      | openai_flagship    | run 5 -> 6 known, 5 unknown
+  [ 30/288] p1_functional      | openai_flagship    | run 6 -> 6 known, 3 unknown
+  [ 31/288] p1_functional      | openai_flagship    | run 7 -> 8 known, 7 unknown
+  [ 32/288] p1_functional      | openai_flagship    | run 8 -> 11 known, 3 unknown
+  [ 33/288] p1_functional      | google_flash       | run 1 -> 11 known, 7 unknown
+  [ 34/288] p1_functional      | google_flash       | run 2 -> 9 known, 15 unknown
+  [ 35/288] p1_functional      | google_flash       | run 3 -> 6 known, 6 unknown
+  [ 36/288] p1_functional      | google_flash       | run 4 -> 7 known, 11 unknown
+  [ 37/288] p1_functional      | google_flash       | run 5 -> 11 known, 8 unknown
+  [ 38/288] p1_functional      | google_flash       | run 6 -> 6 known, 14 unknown
+  [ 39/288] p1_functional      | google_flash       | run 7 -> 9 known, 14 unknown
+  [ 40/288] p1_functional      | google_flash       | run 8 -> 6 known, 6 unknown
+  [ 41/288] p1_functional      | xai_grok           | run 1 -> 7 known, 12 unknown
+  [ 42/288] p1_functional      | xai_grok           | run 2 -> 7 known, 15 unknown
+  [ 43/288] p1_functional      | xai_grok           | run 3 -> 7 known, 13 unknown
+  [ 44/288] p1_functional      | xai_grok           | run 4 -> 9 known, 8 unknown
+  [ 45/288] p1_functional      | xai_grok           | run 5 -> 7 known, 7 unknown
+  [ 46/288] p1_functional      | xai_grok           | run 6 -> 7 known, 10 unknown
+  [ 47/288] p1_functional      | xai_grok           | run 7 -> 6 known, 10 unknown
+  [ 48/288] p1_functional      | xai_grok           | run 8 -> 6 known, 7 unknown
+  [ 49/288] p2_contextual      | anthropic_sonnet   | run 1 -> 7 known, 1 unknown
+  [ 50/288] p2_contextual      | anthropic_sonnet   | run 2 -> 7 known, 2 unknown
+  [ 51/288] p2_contextual      | anthropic_sonnet   | run 3 -> 7 known, 0 unknown
+  [ 52/288] p2_contextual      | anthropic_sonnet   | run 4 -> 4 known, 4 unknown
+  [ 53/288] p2_contextual      | anthropic_sonnet   | run 5 -> 6 known, 4 unknown
+  [ 54/288] p2_contextual      | anthropic_sonnet   | run 6 -> 5 known, 5 unknown
+  [ 55/288] p2_contextual      | anthropic_sonnet   | run 7 -> 4 known, 1 unknown
+  [ 56/288] p2_contextual      | anthropic_sonnet   | run 8 -> 7 known, 1 unknown
+  [ 57/288] p2_contextual      | anthropic_opus     | run 1 -> 7 known, 8 unknown
+  [ 58/288] p2_contextual      | anthropic_opus     | run 2 -> 6 known, 3 unknown
+  [ 59/288] p2_contextual      | anthropic_opus     | run 3 -> 8 known, 8 unknown
+  [ 60/288] p2_contextual      | anthropic_opus     | run 4 -> 10 known, 4 unknown
+  [ 61/288] p2_contextual      | anthropic_opus     | run 5 -> 7 known, 4 unknown
+  [ 62/288] p2_contextual      | anthropic_opus     | run 6 -> 8 known, 7 unknown
+  [ 63/288] p2_contextual      | anthropic_opus     | run 7 -> 7 known, 7 unknown
+  [ 64/288] p2_contextual      | anthropic_opus     | run 8 -> 9 known, 7 unknown
+  [ 65/288] p2_contextual      | openai_mini        | run 1 -> 7 known, 6 unknown
+  [ 66/288] p2_contextual      | openai_mini        | run 2 -> 9 known, 0 unknown
+  [ 67/288] p2_contextual      | openai_mini        | run 3 -> 5 known, 2 unknown
+  [ 68/288] p2_contextual      | openai_mini        | run 4 -> 8 known, 2 unknown
+  [ 69/288] p2_contextual      | openai_mini        | run 5 -> 7 known, 2 unknown
+  [ 70/288] p2_contextual      | openai_mini        | run 6 -> 5 known, 3 unknown
+  [ 71/288] p2_contextual      | openai_mini        | run 7 -> 5 known, 4 unknown
+  [ 72/288] p2_contextual      | openai_mini        | run 8 -> 5 known, 0 unknown
+  [ 73/288] p2_contextual      | openai_flagship    | run 1 -> 5 known, 10 unknown
+  [ 74/288] p2_contextual      | openai_flagship    | run 2 -> 7 known, 4 unknown
+  [ 75/288] p2_contextual      | openai_flagship    | run 3 -> 7 known, 6 unknown
+  [ 76/288] p2_contextual      | openai_flagship    | run 4 -> 7 known, 10 unknown
+  [ 77/288] p2_contextual      | openai_flagship    | run 5 -> 7 known, 13 unknown
+  [ 78/288] p2_contextual      | openai_flagship    | run 6 -> 5 known, 13 unknown
+  [ 79/288] p2_contextual      | openai_flagship    | run 7 -> 5 known, 4 unknown
+  [ 80/288] p2_contextual      | openai_flagship    | run 8 -> 6 known, 7 unknown
+  [ 81/288] p2_contextual      | google_flash       | run 1 -> 6 known, 12 unknown
+  [ 82/288] p2_contextual      | google_flash       | run 2 -> 6 known, 9 unknown
+  [ 83/288] p2_contextual      | google_flash       | run 3 -> 6 known, 3 unknown
+  [ 84/288] p2_contextual      | google_flash       | run 4 -> 6 known, 16 unknown
+  [ 85/288] p2_contextual      | google_flash       | run 5 -> 5 known, 9 unknown
+  [ 86/288] p2_contextual      | google_flash       | run 6 -> 6 known, 5 unknown
+  [ 87/288] p2_contextual      | google_flash       | run 7 -> 6 known, 3 unknown
+  [ 88/288] p2_contextual      | google_flash       | run 8 -> 6 known, 12 unknown
+  [ 89/288] p2_contextual      | xai_grok           | run 1 -> 8 known, 21 unknown
+  [ 90/288] p2_contextual      | xai_grok           | run 2 -> 8 known, 16 unknown
+  [ 91/288] p2_contextual      | xai_grok           | run 3 -> 7 known, 16 unknown
+  [ 92/288] p2_contextual      | xai_grok           | run 4 -> 8 known, 15 unknown
+  [ 93/288] p2_contextual      | xai_grok           | run 5 -> 9 known, 19 unknown
+  [ 94/288] p2_contextual      | xai_grok           | run 6 -> 8 known, 21 unknown
+  [ 95/288] p2_contextual      | xai_grok           | run 7 -> 9 known, 23 unknown
+  [ 96/288] p2_contextual      | xai_grok           | run 8 -> 10 known, 17 unknown
+  [ 97/288] p3_constraint      | anthropic_sonnet   | run 1 -> 4 known, 6 unknown
+  [ 98/288] p3_constraint      | anthropic_sonnet   | run 2 -> 3 known, 7 unknown
+  [ 99/288] p3_constraint      | anthropic_sonnet   | run 3 -> 3 known, 6 unknown
+  [100/288] p3_constraint      | anthropic_sonnet   | run 4 -> 3 known, 8 unknown
+  [101/288] p3_constraint      | anthropic_sonnet   | run 5 -> 4 known, 7 unknown
+  [102/288] p3_constraint      | anthropic_sonnet   | run 6 -> 3 known, 9 unknown
+  [103/288] p3_constraint      | anthropic_sonnet   | run 7 -> 3 known, 10 unknown
+  [104/288] p3_constraint      | anthropic_sonnet   | run 8 -> 3 known, 6 unknown
+  [105/288] p3_constraint      | anthropic_opus     | run 1 -> 7 known, 14 unknown
+  [106/288] p3_constraint      | anthropic_opus     | run 2 -> 7 known, 15 unknown
+  [107/288] p3_constraint      | anthropic_opus     | run 3 -> 7 known, 16 unknown
+  [108/288] p3_constraint      | anthropic_opus     | run 4 -> 8 known, 14 unknown
+  [109/288] p3_constraint      | anthropic_opus     | run 5 -> 7 known, 24 unknown
+  [110/288] p3_constraint      | anthropic_opus     | run 6 -> 8 known, 23 unknown
+  [111/288] p3_constraint      | anthropic_opus     | run 7 -> 8 known, 14 unknown
+  [112/288] p3_constraint      | anthropic_opus     | run 8 -> 7 known, 19 unknown
+  [113/288] p3_constraint      | openai_mini        | run 1 -> 6 known, 10 unknown
+  [114/288] p3_constraint      | openai_mini        | run 2 -> 5 known, 4 unknown
+  [115/288] p3_constraint      | openai_mini        | run 3 -> 4 known, 0 unknown
+  [116/288] p3_constraint      | openai_mini        | run 4 -> 6 known, 14 unknown
+  [117/288] p3_constraint      | openai_mini        | run 5 -> 5 known, 11 unknown
+  [118/288] p3_constraint      | openai_mini        | run 6 -> 6 known, 18 unknown
+  [119/288] p3_constraint      | openai_mini        | run 7 -> 6 known, 12 unknown
+  [120/288] p3_constraint      | openai_mini        | run 8 -> 6 known, 10 unknown
+  [121/288] p3_constraint      | openai_flagship    | run 1 -> 4 known, 12 unknown
+  [122/288] p3_constraint      | openai_flagship    | run 2 -> 5 known, 12 unknown
+  [123/288] p3_constraint      | openai_flagship    | run 3 -> 5 known, 10 unknown
+  [124/288] p3_constraint      | openai_flagship    | run 4 -> 5 known, 10 unknown
+  [125/288] p3_constraint      | openai_flagship    | run 5 -> 5 known, 14 unknown
+  [126/288] p3_constraint      | openai_flagship    | run 6 -> 5 known, 10 unknown
+  [127/288] p3_constraint      | openai_flagship    | run 7 -> 5 known, 8 unknown
+  [128/288] p3_constraint      | openai_flagship    | run 8 -> 4 known, 17 unknown
+  [129/288] p3_constraint      | google_flash       | run 1 -> 7 known, 18 unknown
+  [130/288] p3_constraint      | google_flash       | run 2 -> 4 known, 24 unknown
+  [131/288] p3_constraint      | google_flash       | run 3 -> 6 known, 12 unknown
+  [132/288] p3_constraint      | google_flash       | run 4 -> 3 known, 17 unknown
+  [133/288] p3_constraint      | google_flash       | run 5 -> 6 known, 23 unknown
+  [134/288] p3_constraint      | google_flash       | run 6 -> 3 known, 25 unknown
+  [135/288] p3_constraint      | google_flash       | run 7 -> 4 known, 27 unknown
+  [136/288] p3_constraint      | google_flash       | run 8 -> 5 known, 22 unknown
+  [137/288] p3_constraint      | xai_grok           | run 1 -> 4 known, 19 unknown
+  [138/288] p3_constraint      | xai_grok           | run 2 -> 4 known, 20 unknown
+  [139/288] p3_constraint      | xai_grok           | run 3 -> 4 known, 19 unknown
+  [140/288] p3_constraint      | xai_grok           | run 4 -> 5 known, 11 unknown
+  [141/288] p3_constraint      | xai_grok           | run 5 -> 3 known, 13 unknown
+  [142/288] p3_constraint      | xai_grok           | run 6 -> 3 known, 14 unknown
+  [143/288] p3_constraint      | xai_grok           | run 7 -> 4 known, 18 unknown
+  [144/288] p3_constraint      | xai_grok           | run 8 -> 3 known, 19 unknown
+  [145/288] p4_identity        | anthropic_sonnet   | run 1 -> 11 known, 8 unknown
+  [146/288] p4_identity        | anthropic_sonnet   | run 2 -> 10 known, 9 unknown
+  [147/288] p4_identity        | anthropic_sonnet   | run 3 -> 9 known, 8 unknown
+  [148/288] p4_identity        | anthropic_sonnet   | run 4 -> 8 known, 9 unknown
+  [149/288] p4_identity        | anthropic_sonnet   | run 5 -> 9 known, 9 unknown
+  [150/288] p4_identity        | anthropic_sonnet   | run 6 -> 12 known, 6 unknown
+  [151/288] p4_identity        | anthropic_sonnet   | run 7 -> 8 known, 8 unknown
+  [152/288] p4_identity        | anthropic_sonnet   | run 8 -> 11 known, 6 unknown
+  [153/288] p4_identity        | anthropic_opus     | run 1 -> 14 known, 14 unknown
+  [154/288] p4_identity        | anthropic_opus     | run 2 -> 13 known, 26 unknown
+  [155/288] p4_identity        | anthropic_opus     | run 3 -> 11 known, 19 unknown
+  [156/288] p4_identity        | anthropic_opus     | run 4 -> 14 known, 9 unknown
+  [157/288] p4_identity        | anthropic_opus     | run 5 -> 12 known, 20 unknown
+  [158/288] p4_identity        | anthropic_opus     | run 6 -> 13 known, 18 unknown
+  [159/288] p4_identity        | anthropic_opus     | run 7 -> 14 known, 12 unknown
+  [160/288] p4_identity        | anthropic_opus     | run 8 -> 13 known, 18 unknown
+  [161/288] p4_identity        | openai_mini        | run 1 -> 13 known, 11 unknown
+  [162/288] p4_identity        | openai_mini        | run 2 -> 12 known, 14 unknown
+  [163/288] p4_identity        | openai_mini        | run 3 -> 12 known, 10 unknown
+  [164/288] p4_identity        | openai_mini        | run 4 -> 13 known, 19 unknown
+  [165/288] p4_identity        | openai_mini        | run 5 -> 8 known, 8 unknown
+  [166/288] p4_identity        | openai_mini        | run 6 -> 11 known, 8 unknown
+  [167/288] p4_identity        | openai_mini        | run 7 -> 8 known, 9 unknown
+  [168/288] p4_identity        | openai_mini        | run 8 -> 12 known, 7 unknown
+  [169/288] p4_identity        | openai_flagship    | run 1 -> 18 known, 49 unknown
+  [170/288] p4_identity        | openai_flagship    | run 2 -> 14 known, 17 unknown
+  [171/288] p4_identity        | openai_flagship    | run 3 -> 16 known, 41 unknown
+  [172/288] p4_identity        | openai_flagship    | run 4 -> 17 known, 40 unknown
+  [173/288] p4_identity        | openai_flagship    | run 5 -> 17 known, 45 unknown
+  [174/288] p4_identity        | openai_flagship    | run 6 -> 17 known, 28 unknown
+  [175/288] p4_identity        | openai_flagship    | run 7 -> 15 known, 27 unknown
+  [176/288] p4_identity        | openai_flagship    | run 8 -> 17 known, 37 unknown
+  [177/288] p4_identity        | google_flash       | run 1 -> 8 known, 17 unknown
+  [178/288] p4_identity        | google_flash       | run 2 -> 10 known, 19 unknown
+  [179/288] p4_identity        | google_flash       | run 3 -> 15 known, 29 unknown
+  [180/288] p4_identity        | google_flash       | run 4 -> 11 known, 17 unknown
+  [181/288] p4_identity        | google_flash       | run 5 -> 12 known, 23 unknown
+  [182/288] p4_identity        | google_flash       | run 6 -> 14 known, 21 unknown
+  [183/288] p4_identity        | google_flash       | run 7 -> 12 known, 20 unknown
+  [184/288] p4_identity        | google_flash       | run 8 -> 11 known, 20 unknown
+  [185/288] p4_identity        | xai_grok           | run 1 -> 12 known, 16 unknown
+  [186/288] p4_identity        | xai_grok           | run 2 -> 14 known, 20 unknown
+  [187/288] p4_identity        | xai_grok           | run 3 -> 8 known, 7 unknown
+  [188/288] p4_identity        | xai_grok           | run 4 -> 11 known, 21 unknown
+  [189/288] p4_identity        | xai_grok           | run 5 -> 8 known, 25 unknown
+  [190/288] p4_identity        | xai_grok           | run 6 -> 13 known, 18 unknown
+  [191/288] p4_identity        | xai_grok           | run 7 -> 12 known, 20 unknown
+  [192/288] p4_identity        | xai_grok           | run 8 -> 11 known, 15 unknown
+  [193/288] p5_discovery       | anthropic_sonnet   | run 1 -> 0 known, 10 unknown
+  [194/288] p5_discovery       | anthropic_sonnet   | run 2 -> 0 known, 9 unknown
+  [195/288] p5_discovery       | anthropic_sonnet   | run 3 -> 1 known, 12 unknown
+  [196/288] p5_discovery       | anthropic_sonnet   | run 4 -> 0 known, 6 unknown
+  [197/288] p5_discovery       | anthropic_sonnet   | run 5 -> 1 known, 8 unknown
+  [198/288] p5_discovery       | anthropic_sonnet   | run 6 -> 0 known, 11 unknown
+  [199/288] p5_discovery       | anthropic_sonnet   | run 7 -> 0 known, 5 unknown
+  [200/288] p5_discovery       | anthropic_sonnet   | run 8 -> 0 known, 6 unknown
+  [201/288] p5_discovery       | anthropic_opus     | run 1 -> 1 known, 16 unknown
+  [202/288] p5_discovery       | anthropic_opus     | run 2 -> 1 known, 22 unknown
+  [203/288] p5_discovery       | anthropic_opus     | run 3 -> 1 known, 15 unknown
+  [204/288] p5_discovery       | anthropic_opus     | run 4 -> 2 known, 18 unknown
+  [205/288] p5_discovery       | anthropic_opus     | run 5 -> 1 known, 19 unknown
+  [206/288] p5_discovery       | anthropic_opus     | run 6 -> 1 known, 19 unknown
+  [207/288] p5_discovery       | anthropic_opus     | run 7 -> 1 known, 13 unknown
+  [208/288] p5_discovery       | anthropic_opus     | run 8 -> 1 known, 20 unknown
+  [209/288] p5_discovery       | openai_mini        | run 1 -> 3 known, 29 unknown
+  [210/288] p5_discovery       | openai_mini        | run 2 -> 3 known, 28 unknown
+  [211/288] p5_discovery       | openai_mini        | run 3 -> 4 known, 23 unknown
+  [212/288] p5_discovery       | openai_mini        | run 4 -> 3 known, 28 unknown
+  [213/288] p5_discovery       | openai_mini        | run 5 -> 1 known, 24 unknown
+  [214/288] p5_discovery       | openai_mini        | run 6 -> 1 known, 31 unknown
+  [215/288] p5_discovery       | openai_mini        | run 7 -> 2 known, 18 unknown
+  [216/288] p5_discovery       | openai_mini        | run 8 -> 4 known, 28 unknown
+  [217/288] p5_discovery       | openai_flagship    | run 1 -> 0 known, 40 unknown
+  [218/288] p5_discovery       | openai_flagship    | run 2 -> 0 known, 41 unknown
+  [219/288] p5_discovery       | openai_flagship    | run 3 -> 0 known, 35 unknown
+  [220/288] p5_discovery       | openai_flagship    | run 4 -> 1 known, 31 unknown
+  [221/288] p5_discovery       | openai_flagship    | run 5 -> 0 known, 30 unknown
+  [222/288] p5_discovery       | openai_flagship    | run 6 -> 0 known, 29 unknown
+  [223/288] p5_discovery       | openai_flagship    | run 7 -> 0 known, 30 unknown
+  [224/288] p5_discovery       | openai_flagship    | run 8 -> 0 known, 42 unknown
+  [225/288] p5_discovery       | google_flash       | run 1 -> 0 known, 13 unknown
+  [226/288] p5_discovery       | google_flash       | run 2 -> 0 known, 12 unknown
+  [227/288] p5_discovery       | google_flash       | run 3 -> 0 known, 13 unknown
+  [228/288] p5_discovery       | google_flash       | run 4 -> 1 known, 10 unknown
+  [229/288] p5_discovery       | google_flash       | run 5 -> 0 known, 12 unknown
+  [230/288] p5_discovery       | google_flash       | run 6 -> 1 known, 14 unknown
+  [231/288] p5_discovery       | google_flash       | run 7 -> 0 known, 12 unknown
+  [232/288] p5_discovery       | google_flash       | run 8 -> 0 known, 20 unknown
+  [233/288] p5_discovery       | xai_grok           | run 1 -> 3 known, 17 unknown
+  [234/288] p5_discovery       | xai_grok           | run 2 -> 0 known, 8 unknown
+  [235/288] p5_discovery       | xai_grok           | run 3 -> 0 known, 10 unknown
+  [236/288] p5_discovery       | xai_grok           | run 4 -> 0 known, 9 unknown
+  [237/288] p5_discovery       | xai_grok           | run 5 -> 3 known, 19 unknown
+  [238/288] p5_discovery       | xai_grok           | run 6 -> 1 known, 8 unknown
+  [239/288] p5_discovery       | xai_grok           | run 7 -> 1 known, 8 unknown
+  [240/288] p5_discovery       | xai_grok           | run 8 -> 2 known, 13 unknown
+  [241/288] p6_comparison      | anthropic_sonnet   | run 1 -> 6 known, 0 unknown
+  [242/288] p6_comparison      | anthropic_sonnet   | run 2 -> 6 known, 1 unknown
+  [243/288] p6_comparison      | anthropic_sonnet   | run 3 -> 6 known, 0 unknown
+  [244/288] p6_comparison      | anthropic_sonnet   | run 4 -> 8 known, 1 unknown
+  [245/288] p6_comparison      | anthropic_sonnet   | run 5 -> 7 known, 0 unknown
+  [246/288] p6_comparison      | anthropic_sonnet   | run 6 -> 8 known, 1 unknown
+  [247/288] p6_comparison      | anthropic_sonnet   | run 7 -> 7 known, 0 unknown
+  [248/288] p6_comparison      | anthropic_sonnet   | run 8 -> 7 known, 0 unknown
+  [249/288] p6_comparison      | anthropic_opus     | run 1 -> 9 known, 1 unknown
+  [250/288] p6_comparison      | anthropic_opus     | run 2 -> 10 known, 2 unknown
+  [251/288] p6_comparison      | anthropic_opus     | run 3 -> 7 known, 3 unknown
+  [252/288] p6_comparison      | anthropic_opus     | run 4 -> 8 known, 2 unknown
+  [253/288] p6_comparison      | anthropic_opus     | run 5 -> 10 known, 2 unknown
+  [254/288] p6_comparison      | anthropic_opus     | run 6 -> 9 known, 5 unknown
+  [255/288] p6_comparison      | anthropic_opus     | run 7 -> 10 known, 1 unknown
+  [256/288] p6_comparison      | anthropic_opus     | run 8 -> 10 known, 1 unknown
+  [257/288] p6_comparison      | openai_mini        | run 1 -> 9 known, 2 unknown
+  [258/288] p6_comparison      | openai_mini        | run 2 -> 7 known, 0 unknown
+  [259/288] p6_comparison      | openai_mini        | run 3 -> 8 known, 4 unknown
+  [260/288] p6_comparison      | openai_mini        | run 4 -> 8 known, 2 unknown
+  [261/288] p6_comparison      | openai_mini        | run 5 -> 6 known, 0 unknown
+  [262/288] p6_comparison      | openai_mini        | run 6 -> 6 known, 2 unknown
+  [263/288] p6_comparison      | openai_mini        | run 7 -> 8 known, 2 unknown
+  [264/288] p6_comparison      | openai_mini        | run 8 -> 6 known, 2 unknown
+  [265/288] p6_comparison      | openai_flagship    | run 1 -> 7 known, 4 unknown
+  [266/288] p6_comparison      | openai_flagship    | run 2 -> 11 known, 9 unknown
+  [267/288] p6_comparison      | openai_flagship    | run 3 -> 9 known, 5 unknown
+  [268/288] p6_comparison      | openai_flagship    | run 4 -> 10 known, 4 unknown
+  [269/288] p6_comparison      | openai_flagship    | run 5 -> 7 known, 10 unknown
+  [270/288] p6_comparison      | openai_flagship    | run 6 -> 10 known, 5 unknown
+  [271/288] p6_comparison      | openai_flagship    | run 7 -> 10 known, 7 unknown
+  [272/288] p6_comparison      | openai_flagship    | run 8 -> 10 known, 8 unknown
+  [273/288] p6_comparison      | google_flash       | run 1 -> 6 known, 5 unknown
+  [274/288] p6_comparison      | google_flash       | run 2 -> 9 known, 6 unknown
+  [275/288] p6_comparison      | google_flash       | run 3 -> 10 known, 5 unknown
+  [276/288] p6_comparison      | google_flash       | run 4 -> 10 known, 6 unknown
+  [277/288] p6_comparison      | google_flash       | run 5 -> 6 known, 5 unknown
+  [278/288] p6_comparison      | google_flash       | run 6 -> 9 known, 2 unknown
+  [279/288] p6_comparison      | google_flash       | run 7 -> 9 known, 5 unknown
+  [280/288] p6_comparison      | google_flash       | run 8 -> 6 known, 4 unknown
+  [281/288] p6_comparison      | xai_grok           | run 1 -> 6 known, 0 unknown
+  [282/288] p6_comparison      | xai_grok           | run 2 -> 7 known, 13 unknown
+  [283/288] p6_comparison      | xai_grok           | run 3 -> 5 known, 0 unknown
+  [284/288] p6_comparison      | xai_grok           | run 4 -> 6 known, 17 unknown
+  [285/288] p6_comparison      | xai_grok           | run 5 -> 4 known, 9 unknown
+  [286/288] p6_comparison      | xai_grok           | run 6 -> 5 known, 18 unknown
+  [287/288] p6_comparison      | xai_grok           | run 7 -> 5 known, 0 unknown
+  [288/288] p6_comparison      | xai_grok           | run 8 -> 5 known, 1 unknown
+
+======================================================================
+Saved 288 rows to results_enriched_household_v1.0_20260504_162106.csv
+======================================================================

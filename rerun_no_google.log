@@ -1,0 +1,81 @@
+==============================================================================
+AIAS Recovery Run (Option B: skip Google)
+Source: results_v2_20260504_132404.csv
+Started: 2026-05-04T13:54:45
+==============================================================================
+Total rows in source: 288
+Failed rows to retry (excl. Google): 57
+Google failures skipped: 38
+Failures by slot (will retry):
+  openai_mini            9
+  openai_flagship       16
+  xai_grok              16
+  anthropic_sonnet       8
+  anthropic_opus         8
+==============================================================================
+  [  1/57] p5_discovery       | openai_mini          | run 8 -> OK (1 attempt, 11.3s)
+  [  2/57] p5_discovery       | openai_flagship      | run 1 -> OK (1 attempt, 55.0s)
+  [  3/57] p5_discovery       | openai_flagship      | run 2 -> OK (1 attempt, 56.6s)
+  [  4/57] p5_discovery       | openai_flagship      | run 3 -> OK (1 attempt, 51.8s)
+  [  5/57] p5_discovery       | openai_flagship      | run 4 -> OK (1 attempt, 66.0s)
+  [  6/57] p5_discovery       | openai_flagship      | run 5 -> OK (1 attempt, 52.1s)
+  [  7/57] p5_discovery       | openai_flagship      | run 6 -> OK (1 attempt, 52.5s)
+  [  8/57] p5_discovery       | openai_flagship      | run 7 -> OK (1 attempt, 67.4s)
+  [  9/57] p5_discovery       | openai_flagship      | run 8 -> OK (1 attempt, 52.6s)
+  [ 10/57] p5_discovery       | xai_grok             | run 1 -> OK (1 attempt, 22.3s)
+  [ 11/57] p5_discovery       | xai_grok             | run 2 -> OK (1 attempt, 25.1s)
+  [ 12/57] p5_discovery       | xai_grok             | run 3 -> OK (1 attempt, 25.4s)
+  [ 13/57] p5_discovery       | xai_grok             | run 4 -> OK (1 attempt, 25.0s)
+  [ 14/57] p5_discovery       | xai_grok             | run 5 -> OK (1 attempt, 27.6s)
+  [ 15/57] p5_discovery       | xai_grok             | run 6 -> OK (1 attempt, 27.0s)
+  [ 16/57] p5_discovery       | xai_grok             | run 7 -> OK (1 attempt, 27.2s)
+  [ 17/57] p5_discovery       | xai_grok             | run 8 -> OK (1 attempt, 26.7s)
+  [ 18/57] p6_comparison      | anthropic_sonnet     | run 1 -> OK (1 attempt, 10.1s)
+  [ 19/57] p6_comparison      | anthropic_sonnet     | run 2 -> OK (1 attempt, 10.0s)
+  [ 20/57] p6_comparison      | anthropic_sonnet     | run 3 -> OK (1 attempt, 9.1s)
+  [ 21/57] p6_comparison      | anthropic_sonnet     | run 4 -> OK (1 attempt, 10.7s)
+  [ 22/57] p6_comparison      | anthropic_sonnet     | run 5 -> OK (1 attempt, 16.7s)
+  [ 23/57] p6_comparison      | anthropic_sonnet     | run 6 -> OK (1 attempt, 11.6s)
+  [ 24/57] p6_comparison      | anthropic_sonnet     | run 7 -> OK (1 attempt, 12.9s)
+  [ 25/57] p6_comparison      | anthropic_sonnet     | run 8 -> OK (1 attempt, 10.0s)
+  [ 26/57] p6_comparison      | anthropic_opus       | run 1 -> OK (1 attempt, 16.3s)
+  [ 27/57] p6_comparison      | anthropic_opus       | run 2 -> OK (1 attempt, 14.7s)
+  [ 28/57] p6_comparison      | anthropic_opus       | run 3 -> OK (1 attempt, 13.7s)
+  [ 29/57] p6_comparison      | anthropic_opus       | run 4 -> OK (1 attempt, 13.1s)
+  [ 30/57] p6_comparison      | anthropic_opus       | run 5 -> OK (1 attempt, 16.2s)
+  [ 31/57] p6_comparison      | anthropic_opus       | run 6 -> OK (1 attempt, 16.1s)
+  [ 32/57] p6_comparison      | anthropic_opus       | run 7 -> OK (1 attempt, 16.3s)
+  [ 33/57] p6_comparison      | anthropic_opus       | run 8 -> OK (1 attempt, 15.8s)
+  [ 34/57] p6_comparison      | openai_mini          | run 1 -> OK (1 attempt, 6.8s)
+  [ 35/57] p6_comparison      | openai_mini          | run 2 -> OK (1 attempt, 7.2s)
+  [ 36/57] p6_comparison      | openai_mini          | run 3 -> OK (1 attempt, 9.3s)
+  [ 37/57] p6_comparison      | openai_mini          | run 4 -> OK (1 attempt, 7.6s)
+  [ 38/57] p6_comparison      | openai_mini          | run 5 -> OK (1 attempt, 9.8s)
+  [ 39/57] p6_comparison      | openai_mini          | run 6 -> OK (1 attempt, 6.3s)
+  [ 40/57] p6_comparison      | openai_mini          | run 7 -> OK (1 attempt, 8.8s)
+  [ 41/57] p6_comparison      | openai_mini          | run 8 -> OK (1 attempt, 6.9s)
+  [ 42/57] p6_comparison      | openai_flagship      | run 1 -> OK (1 attempt, 21.6s)
+  [ 43/57] p6_comparison      | openai_flagship      | run 2 -> OK (1 attempt, 26.1s)
+  [ 44/57] p6_comparison      | openai_flagship      | run 3 -> OK (1 attempt, 23.8s)
+  [ 45/57] p6_comparison      | openai_flagship      | run 4 -> OK (1 attempt, 25.4s)
+  [ 46/57] p6_comparison      | openai_flagship      | run 5 -> OK (1 attempt, 26.9s)
+  [ 47/57] p6_comparison      | openai_flagship      | run 6 -> OK (1 attempt, 22.7s)
+  [ 48/57] p6_comparison      | openai_flagship      | run 7 -> OK (1 attempt, 25.0s)
+  [ 49/57] p6_comparison      | openai_flagship      | run 8 -> OK (1 attempt, 19.0s)
+  [ 50/57] p6_comparison      | xai_grok             | run 1 -> OK (1 attempt, 18.0s)
+  [ 51/57] p6_comparison      | xai_grok             | run 2 -> OK (1 attempt, 17.2s)
+  [ 52/57] p6_comparison      | xai_grok             | run 3 -> OK (1 attempt, 15.9s)
+  [ 53/57] p6_comparison      | xai_grok             | run 4 -> OK (1 attempt, 20.5s)
+  [ 54/57] p6_comparison      | xai_grok             | run 5 -> OK (1 attempt, 16.2s)
+  [ 55/57] p6_comparison      | xai_grok             | run 6 -> OK (1 attempt, 19.6s)
+  [ 56/57] p6_comparison      | xai_grok             | run 7 -> OK (1 attempt, 18.9s)
+  [ 57/57] p6_comparison      | xai_grok             | run 8 -> OK (1 attempt, 13.8s)
+
+==============================================================================
+Recovery complete. Saved 57 rows to results_v2_20260504_132404_rerun_no_google.csv
+  ok:                 57
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+  google skipped:     38
+==============================================================================

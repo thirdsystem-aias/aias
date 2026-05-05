@@ -1,0 +1,104 @@
+Manual review:  manual_review_bbb_20260504_170819.csv
+Enriched data:  results_enriched_household_v1.0_20260504_162106.csv
+
+Slots: 6 (288 runs)
+CEPs:  6 (288 runs)
+Classifications: 110
+
+==============================================================================================================
+AIAS PHASE 2 - BBB CROSS-TAB ANALYSIS
+Generated: 2026-05-04 17:12
+==============================================================================================================
+
+--------------------------------------------------------------------------------------------------------------
+A. VALENCE x MODEL SLOT (count, % within slot's 48 runs)
+--------------------------------------------------------------------------------------------------------------
+Slot                    live_recomme  live_with_ca  status_corre  historical_r     ambiguous         ERROR     Total
+--------------------------------------------------------------------------------------------------------------
+anthropic_opus          1 ( 2.1%) 18 (37.5%)  3 ( 6.2%)  5 (10.4%)             -             -   27/48
+anthropic_sonnet        2 ( 4.2%) 15 (31.2%)  1 ( 2.1%)  2 ( 4.2%)             -             -   20/48
+google_flash                       -  7 (14.6%)             -  1 ( 2.1%)             -             -    8/48
+openai_flagship         2 ( 4.2%)  3 ( 6.2%)  1 ( 2.1%)  1 ( 2.1%)             -             -    7/48
+openai_mini                        -  6 (12.5%)  1 ( 2.1%) 16 (33.3%)  1 ( 2.1%)             -   24/48
+xai_grok                           - 23 (47.9%)  1 ( 2.1%)             -             -             -   24/48
+
+--------------------------------------------------------------------------------------------------------------
+B. ENTITY REFERENCE x MODEL SLOT (count, % within BBB-mention rows for that slot)
+--------------------------------------------------------------------------------------------------------------
+Slot                    legacy_brand          both  corporate_pa       unclear         ERROR  BBB rows
+--------------------------------------------------------------------------------------------------------------
+anthropic_opus         21 (77.8%)  6 (22.2%)             -             -             -   27
+anthropic_sonnet       18 (90.0%)  2 (10.0%)             -             -             -   20
+google_flash            5 (62.5%)  3 (37.5%)             -             -             -    8
+openai_flagship         6 (85.7%)  1 (14.3%)             -             -             -    7
+openai_mini            23 (95.8%)             -             -  1 ( 4.2%)             -   24
+xai_grok               10 (41.7%) 14 (58.3%)             -             -             -   24
+
+--------------------------------------------------------------------------------------------------------------
+C. VALENCE x CEP (count, % within CEP's 48 runs)
+--------------------------------------------------------------------------------------------------------------
+CEP                     live_recomme  live_with_ca  status_corre  historical_r     ambiguous         ERROR     Total
+--------------------------------------------------------------------------------------------------------------
+COMPARISON                         -  2 ( 4.2%)             -  2 ( 4.2%)             -             -    4/48
+CONSTRAINT_WITH         2 ( 4.2%)  4 ( 8.3%)             -             -             -             -    6/48
+CONTEXTUAL_WHEN         1 ( 2.1%) 19 (39.6%)  2 ( 4.2%)  5 (10.4%)             -             -   27/48
+DISCOVERY                          -             -             -             -             -             -    0/48
+FUNCTIONAL_WHY          2 ( 4.2%) 29 (60.4%)             -  2 ( 4.2%)  1 ( 2.1%)             -   34/48
+IDENTITY_HOW_FEELING               - 18 (37.5%)  5 (10.4%) 16 (33.3%)             -             -   39/48
+
+--------------------------------------------------------------------------------------------------------------
+D. VALENCE x ENTITY REFERENCE (count, % within row total)
+    Tests whether 'both' mentions correlate with caveat/correction (rebrand-aware)
+--------------------------------------------------------------------------------------------------------------
+Valence                 legacy_brand          both  corporate_pa       unclear         ERROR     Total
+--------------------------------------------------------------------------------------------------------------
+live_recommendation     5 (100.0%)             -             -             -             -    5
+live_with_caveat       47 (65.3%) 25 (34.7%)             -             -             -   72
+status_correction       6 (85.7%)  1 (14.3%)             -             -             -    7
+historical_reference   25 (100.0%)             -             -             -             -   25
+ambiguous                          -             -             -  1 (100.0%)             -    1
+
+--------------------------------------------------------------------------------------------------------------
+E. PER-SLOT ADJUSTED PRESENCE (denominator = 48 runs per slot)
+
+    naive_phantom    = live_recommendation only (AI treats BBB as fully live)
+    caveated_phantom = live_with_caveat (AI surfaces BBB, discloses closure)
+    aware            = historical_reference + status_correction (AI doesn't recommend)
+    raw_presence     = aggregate from analyze_v3 (any BBB mention, ignoring valence)
+--------------------------------------------------------------------------------------------------------------
+Slot                      naive%   caveated%    aware%  naive+cav%      raw%
+--------------------------------------------------------------------------------------------------------------
+anthropic_opus              2.1        37.5      16.7        39.6      56.2
+anthropic_sonnet            4.2        31.2       6.2        35.4      41.7
+google_flash                0.0        14.6       2.1        14.6      16.7
+openai_flagship             4.2         6.2       4.2        10.4      14.6
+openai_mini                 0.0        12.5      35.4        12.5      50.0
+xai_grok                    0.0        47.9       2.1        47.9      50.0
+
+--------------------------------------------------------------------------------------------------------------
+F. PER-CEP ADJUSTED PRESENCE (denominator = 48 runs per CEP, across 6 slots)
+--------------------------------------------------------------------------------------------------------------
+CEP                       naive%   caveated%    aware%  naive+cav%      raw%
+--------------------------------------------------------------------------------------------------------------
+COMPARISON                  0.0         4.2       4.2         4.2       8.3
+CONSTRAINT_WITH             4.2         8.3       0.0        12.5      12.5
+CONTEXTUAL_WHEN             2.1        39.6      14.6        41.7      56.2
+DISCOVERY                   0.0         0.0       0.0         0.0       0.0
+FUNCTIONAL_WHY              4.2        60.4       4.2        64.6      70.8
+IDENTITY_HOW_FEELING        0.0        37.5      43.8        37.5      81.2
+
+==============================================================================================================
+HEADLINE RECAP
+--------------------------------------------------------------------------------------------------------------
+  Total measurements:        288
+  BBB mentions (any kind):    110  ( 38.2%) <- raw Presence
+    naive phantom:              5  (  1.7%) <- AI presents BBB as fully live, no caveat
+    caveated phantom:          72  ( 25.0%) <- AI surfaces BBB but discloses closure/rebrand
+    aware (no recommend):      32  ( 11.1%) <- AI mentions BBB only as past/closed
+
+  Reframed phantom rate (naive + caveated):
+     26.7% of all measurements
+     70.0% of BBB-containing responses
+==============================================================================================================
+
+Saved cross-tab data: cross_tab_valence_20260504_171229.csv

@@ -1,0 +1,187 @@
+"""
+AIAS — Measurement Engine v2
+Adds: retry logic, rate-limit handling, methodology version metadata, robust error reporting.
+
+Phase 2: 6-model lineup, slot-keyed MODELS dict.
+4 providers: anthropic, openai, google, xai.
+"""
+import os, sys, json, csv, time
+from datetime import datetime
+from dotenv import load_dotenv
+from retry_helper import retry_call
+
+load_dotenv()
+
+OPENAI_KEY = os.getenv("OPENAI_API_KEY")
+ANTHROPIC_KEY = os.getenv("ANTHROPIC_API_KEY")
+GOOGLE_KEY = os.getenv("GOOGLE_API_KEY")
+XAI_KEY = os.getenv("XAI_API_KEY")
+
+# ----- METHODOLOGY METADATA -----
+METHODOLOGY_VERSION = "0.3"
+PROMPT_SET_VERSION = "household_v1.0"
+BRAND_REGISTRY_VERSION = "household_v1.0"
+RUNS_PER_PROMPT = 8
+TEMPERATURE = 0.7
+
+# Slot-keyed: each slot is a distinct (provider, model) pair.
+# supports_temperature=False for reasoning models (Opus 4.7, gpt-5.5) where
+# temperature is deprecated/unsupported by the provider.
+MODELS = {
+    "anthropic_sonnet": {"provider": "anthropic", "label": "Anthropic claude-sonnet-4-6", "model": "claude-sonnet-4-6", "supports_temperature": True},
+    "anthropic_opus":   {"provider": "anthropic", "label": "Anthropic claude-opus-4-7",   "model": "claude-opus-4-7",   "supports_temperature": False},
+    "openai_mini":      {"provider": "openai",    "label": "OpenAI gpt-5.4-mini",         "model": "gpt-5.4-mini",      "supports_temperature": True},
+    "openai_flagship":  {"provider": "openai",    "label": "OpenAI gpt-5.5",              "model": "gpt-5.5",           "supports_temperature": False},
+    "google_flash":     {"provider": "google",    "label": "Google gemini-2.5-flash",     "model": "gemini-2.5-flash",  "supports_temperature": True},
+    "xai_grok":         {"provider": "xai",       "label": "xAI grok-4-1-fast",           "model": "grok-4-1-fast",     "supports_temperature": True},
+}
+
+with open("brands.json") as f:
+    _raw = json.load(f)
+    BRANDS = _raw["brands"] if isinstance(_raw, dict) else _raw
+with open("prompts.json") as f:
+    _raw = json.load(f)
+    PROMPTS = _raw["prompts"] if isinstance(_raw, dict) else _raw
+
+
+def call_openai(prompt_text, model_string, use_temperature=True):
+    from openai import OpenAI
+    client = OpenAI(api_key=OPENAI_KEY)
+    kwargs = {
+        "model": model_string,
+        "messages": [{"role": "user", "content": prompt_text}],
+    }
+    if use_temperature:
+        kwargs["temperature"] = TEMPERATURE
+    r = client.chat.completions.create(**kwargs)
+    return r.choices[0].message.content
+
+
+def call_anthropic(prompt_text, model_string, use_temperature=True):
+    import anthropic
+    client = anthropic.Anthropic(api_key=ANTHROPIC_KEY)
+    kwargs = {
+        "model": model_string,
+        "max_tokens": 1024,
+        "messages": [{"role": "user", "content": prompt_text}],
+    }
+    if use_temperature:
+        kwargs["temperature"] = TEMPERATURE
+    m = client.messages.create(**kwargs)
+    return m.content[0].text
+
+
+def call_google(prompt_text, model_string, use_temperature=True):
+    from google import genai
+    from google.genai import types
+    client = genai.Client(api_key=GOOGLE_KEY)
+    config = types.GenerateContentConfig(temperature=TEMPERATURE) if use_temperature else None
+    r = client.models.generate_content(
+        model=model_string,
+        contents=prompt_text,
+        config=config,
+    )
+    return r.text
+
+
+def call_xai(prompt_text, model_string, use_temperature=True):
+    from openai import OpenAI
+    client = OpenAI(api_key=XAI_KEY, base_url="https://api.x.ai/v1")
+    kwargs = {
+        "model": model_string,
+        "messages": [{"role": "user", "content": prompt_text}],
+    }
+    if use_temperature:
+        kwargs["temperature"] = TEMPERATURE
+    r = client.chat.completions.create(**kwargs)
+    return r.choices[0].message.content
+
+
+CALLERS = {
+    "openai": call_openai,
+    "anthropic": call_anthropic,
+    "google": call_google,
+    "xai": call_xai,
+}
+
+
+def main():
+    print("=" * 78)
+    print(f"AIAS Measurement Run v{METHODOLOGY_VERSION}")
+    print(f"Started:  {datetime.now().isoformat(timespec='seconds')}")
+    print(f"Plan:     {len(PROMPTS)} prompts x {len(MODELS)} models x {RUNS_PER_PROMPT} runs = {len(PROMPTS)*len(MODELS)*RUNS_PER_PROMPT} calls")
+    print(f"Methodology: prompts={PROMPT_SET_VERSION}, registry={BRAND_REGISTRY_VERSION}, temp={TEMPERATURE}")
+    print(f"Models:")
+    for slot, info in MODELS.items():
+        temp_note = "" if info["supports_temperature"] else " (no temp)"
+        print(f"  - {slot:18s} -> {info['label']}{temp_note}")
+    print("=" * 78)
+
+    for name, key in [("OPENAI_API_KEY", OPENAI_KEY), ("ANTHROPIC_API_KEY", ANTHROPIC_KEY), ("GOOGLE_API_KEY", GOOGLE_KEY), ("XAI_API_KEY", XAI_KEY)]:
+        if not key:
+            print(f"ERROR: missing {name}"); sys.exit(1)
+
+    rows = []
+    call_idx = 0
+    total = len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT
+    status_counts = {"ok": 0, "rate_limit_final": 0, "transient_final": 0, "hard_error": 0}
+
+    for prompt in PROMPTS:
+        for slot, info in MODELS.items():
+            provider = info["provider"]
+            model_string = info["model"]
+            use_temp = info.get("supports_temperature", True)
+            for run_idx in range(RUNS_PER_PROMPT):
+                call_idx += 1
+                t0 = time.time()
+                print(f"  [{call_idx:3d}/{total}] {prompt['id']:18s} | {slot:18s} | run {run_idx+1}", end=" ", flush=True)
+
+                result, status, attempts = retry_call(CALLERS[provider], prompt["prompt"], model_string, use_temp)
+                elapsed = time.time() - t0
+                status_counts[status] = status_counts.get(status, 0) + 1
+
+                if status == "ok":
+                    raw = result
+                    note = f"OK ({attempts} attempt{'s' if attempts > 1 else ''}, {elapsed:.1f}s)"
+                else:
+                    raw = ""
+                    note = f"FAILED [{status}] after {attempts} attempts ({elapsed:.1f}s)"
+                print(f"-> {note}")
+
+                rows.append({
+                    "timestamp": datetime.now().isoformat(timespec='seconds'),
+                    "methodology_version": METHODOLOGY_VERSION,
+                    "prompt_set_version": PROMPT_SET_VERSION,
+                    "brand_registry_version": BRAND_REGISTRY_VERSION,
+                    "prompt_id": prompt["id"],
+                    "cep": prompt["cep"],
+                    "model_slot": slot,
+                    "provider": provider,
+                    "model_version": model_string,
+                    "temperature": TEMPERATURE if use_temp else "default",
+                    "run_idx": run_idx + 1,
+                    "call_status": status,
+                    "attempts": attempts,
+                    "elapsed_sec": round(elapsed, 2),
+                    "raw_response": raw.replace("\n", " ").replace("\t", " ") if raw else "",
+                })
+
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_path = f"results_v2_{timestamp}.csv"
+    with open(out_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        writer.writeheader()
+        writer.writerows(rows)
+
+    print()
+    print("=" * 78)
+    print(f"Run complete. Saved {len(rows)} rows to {out_path}")
+    print(f"  ok:                 {status_counts.get('ok', 0)}")
+    print(f"  rate_limit_final:   {status_counts.get('rate_limit_final', 0)}")
+    print(f"  transient_final:    {status_counts.get('transient_final', 0)}")
+    print(f"  hard_error:         {status_counts.get('hard_error', 0)}")
+    print("=" * 78)
+
+
+if __name__ == "__main__":
+    main()

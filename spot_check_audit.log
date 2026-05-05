@@ -1,0 +1,249 @@
+==============================================================================================================
+AIAS PHASE 2 - SPOT-CHECK SAMPLE FOR HUMAN AUDIT
+Source: manual_review_bbb_20260504_170819.csv
+Sample size: 25 of 110 (23%)
+Stratification:
+  live_recommendation         5 of 5 (100% of category)
+  live_with_caveat            6 of 72 (8% of category)
+  status_correction           7 of 7 (100% of category)
+  historical_reference        6 of 25 (24% of category)
+  ambiguous                   1 of 1 (100% of category)
+==============================================================================================================
+
+INSTRUCTIONS:
+  Read each quote below. The AI assigned a valence label. Decide:
+  - AGREE: AI's label is correct
+  - DISAGREE: AI's label is wrong (note what the correct label would be)
+  - UNCLEAR: too ambiguous to decide
+
+Categories reminder:
+  live_recommendation  = AI presents BBB as fully live, no caveat
+  live_with_caveat     = AI surfaces BBB but discloses closure/rebrand
+  status_correction    = AI explicitly says BBB is closed, does NOT recommend
+  historical_reference = AI mentions BBB only in past tense, not as current option
+  ambiguous            = cannot determine
+
+==============================================================================================================
+
+#1 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_flagship       CEP: FUNCTIONAL_WHY          Run: 1
+   AI valence: live_recommendation
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond / Wayfair — Good for bedding and kitchen items, especially online.
+
+#2 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_flagship       CEP: FUNCTIONAL_WHY          Run: 3
+   AI valence: live_recommendation
+   AI entity:  legacy_brand
+
+   QUOTE:
+     - **Bed Bath & Beyond/Wayfair** — good for online home basics, though prices can vary
+
+#3 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: CONTEXTUAL_WHEN         Run: 4
+   AI valence: live_recommendation
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond / Macy's – Wide range with frequent sales and registry perks.
+
+#4 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_sonnet      CEP: CONSTRAINT_WITH         Run: 1
+   AI valence: live_recommendation
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Target and Bed Bath & Beyond have predictable sale cycles
+
+#5 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_sonnet      CEP: CONSTRAINT_WITH         Run: 5
+   AI valence: live_recommendation
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Target and Bed Bath & Beyond discount heavily
+
+#6 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_sonnet      CEP: CONTEXTUAL_WHEN         Run: 2
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond / Zola - Note: BB&B went through bankruptcy, so Zola has absorbed much of
+     that market - Zola is now quite popular and lets you combine multiple stores
+
+#7 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_mini           CEP: CONTEXTUAL_WHEN         Run: 1
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Since the classic BBB registry landscape has changed, many couples now use: - Target - Amazon -
+     Macy’s - Nordstrom
+
+#8 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 2
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond replacement: Macy's, Kohl's, Target — absorbed a lot of that traffic after
+     BBB closed.
+
+#9 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 4
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond is gone, so people have shifted to Target, Amazon, Crate & Barrel, and
+     Williams Sonoma (higher end) for registries.
+
+#10 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 6
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond replacements — Now mostly Target, Amazon, or Macy's home section.
+
+#11 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_flagship       CEP: IDENTITY_HOW_FEELING    Run: 2
+   AI valence: status_correction
+   AI entity:  legacy_brand
+
+   QUOTE:
+     ### **Bed Bath & Beyond alternatives** Since Bed Bath & Beyond changed significantly, many
+     shoppers shifted to: - Target - Amazon - Walmart - Macy’s - Kohl’s - HomeGoods - Wayfair
+
+#12 ─────────────────────────────────────────────────────────────────────
+   Slot: xai_grok              CEP: IDENTITY_HOW_FEELING    Run: 4
+   AI valence: status_correction
+   AI entity:  both
+
+   QUOTE:
+     Bed Bath & Beyond (now part of Overstock): Linens, cookware, and small appliances. Still #2 on
+     registries despite bankruptcy; coupons make it addictive.
+
+#13 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_mini           CEP: FUNCTIONAL_WHY          Run: 3
+   AI valence: ambiguous
+   AI entity:  unclear
+
+   QUOTE:
+     Best quality for home textiles: Costco or Bed Bath & Beyond-style alternatives if available
+
+#14 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: CONSTRAINT_WITH         Run: 6
+   AI valence: live_with_caveat
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Sign up for store emails — Target, Bed Bath & Beyond (now online), and Kohl's send frequent
+     coupons
+
+#15 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_mini           CEP: FUNCTIONAL_WHY          Run: 7
+   AI valence: live_with_caveat
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond (if available near you) — lots of household essentials, though pricing can
+     vary
+
+#16 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_sonnet      CEP: CONTEXTUAL_WHEN         Run: 3
+   AI valence: live_with_caveat
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond - though check their current status as they've had business changes
+
+#17 ─────────────────────────────────────────────────────────────────────
+   Slot: xai_grok              CEP: CONTEXTUAL_WHEN         Run: 7
+   AI valence: live_with_caveat
+   AI entity:  both
+
+   QUOTE:
+     Bed Bath & Beyond (via BuyBuyBaby/Overstock integration) - **Why it's great**: Huge
+     variety—Ninja cookware, Dyson vacuums (kitchen adjacents), hotel-quality bedding. - **Perks**:
+     Price match, 1-year returns, VIP perks. Still active post-rebrand.
+
+#18 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_sonnet      CEP: FUNCTIONAL_WHY          Run: 8
+   AI valence: live_with_caveat
+   AI entity:  legacy_brand
+
+   QUOTE:
+     - **Bed Bath & Beyond** (now mostly online) - Specialty household focus
+
+#19 ─────────────────────────────────────────────────────────────────────
+   Slot: google_flash          CEP: FUNCTIONAL_WHY          Run: 5
+   AI valence: live_with_caveat
+   AI entity:  both
+
+   QUOTE:
+     Wayfair / Overstock: Similar to Amazon, these online retailers offer a massive selection of
+     home goods, often with good sales. (Note: Bed Bath & Beyond is now primarily an online retailer
+     through Overstock).
+
+#20 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 7
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     For kitchen, bedding, and household basics: - Bed Bath & Beyond replacements — many people now
+     use Amazon, Target, or HomeGoods for what they used to buy there.
+
+#21 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_flagship       CEP: IDENTITY_HOW_FEELING    Run: 4
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond — historically common, though its physical-store presence changed
+     significantly
+
+#22 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 8
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond replacements — now mostly Target, Amazon, or Macy's for registries
+
+#23 ─────────────────────────────────────────────────────────────────────
+   Slot: anthropic_opus        CEP: IDENTITY_HOW_FEELING    Run: 1
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond used to dominate this space; since its closure, Target, Amazon, and
+     Williams-Sonoma absorbed most of it.
+
+#24 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_mini           CEP: IDENTITY_HOW_FEELING    Run: 6
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond used to be huge for this, but now people often replace it with
+     Target/IKEA/Amazon or local equivalents.
+
+#25 ─────────────────────────────────────────────────────────────────────
+   Slot: openai_mini           CEP: IDENTITY_HOW_FEELING    Run: 1
+   AI valence: historical_reference
+   AI entity:  legacy_brand
+
+   QUOTE:
+     Bed Bath & Beyond used to be a classic for this; now people often replace it with Target,
+     Amazon, Costco, or local home stores
+
+Saved blank audit CSV: spot_check_audit_20260504_171624.csv
+
+After reading, you can either:
+  - Tell me the item numbers you disagree on (faster)
+  - Open the CSV in Excel/Numbers and fill in the verdict columns

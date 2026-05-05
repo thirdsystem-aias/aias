@@ -1,0 +1,109 @@
+Reading: results_enriched_household_v1.0_20260504_162106.csv
+
+==============================================================================================================
+AI PRESENCE INDEX v0.3 - household_goods_retail
+First of six AIAS components per the Tri-System framework
+Generated: 2026-05-04 16:41
+==============================================================================================================
+
+Methodology: Presence-only. Other columns are descriptive transparency only.
+Runs: anthropic_opus=48 | anthropic_sonnet=48 | google_flash=48 | openai_flagship=48 | openai_mini=48 | xai_grok=48 | total=288
+
+--------------------------------------------------------------------------------------------------------------
+LEADERBOARD (sorted by Presence)
+--------------------------------------------------------------------------------------------------------------
+#  Brand                 Tier           Presence   Consist   RankSOM  Primary%
+--------------------------------------------------------------------------------------------------------------
+1  Target                incumbent         83.7      97.6      47.7      44.1
+2  Amazon                incumbent         70.8      92.6      16.5      23.3
+3  IKEA                  incumbent         67.0      98.7      38.9      20.1
+4  Walmart               incumbent         64.9      94.5      27.6      11.8
+5  HomeGoods             incumbent         47.9      52.0       7.2       9.4
+6  Crate & Barrel        mid-tier          47.6      77.3      14.7      18.1
+7  Costco                incumbent         46.2      73.3       8.1       7.3
+8  Wayfair               incumbent         39.9      93.1       6.0       7.3
+9  Pottery Barn          mid-tier          38.9      67.4       5.1      10.8
+10 Williams-Sonoma       mid-tier          36.8      68.5       9.9      14.9
+11 Bed Bath & Beyond     incumbent         36.8      49.5       5.1       8.0
+12 West Elm              mid-tier          28.8      59.3       2.7       5.9
+13 Sur La Table          mid-tier          16.3      36.7       1.5       4.9
+14 Brooklinen            challenger        12.8      17.7       1.1       1.4
+15 Parachute             challenger        12.5      43.2       1.5       1.4
+16 Container Store       mid-tier           9.0       3.6       0.6       2.1
+17 Boll & Branch         challenger         5.9       9.6       0.9       0.7
+18 World Market          mid-tier           5.2       0.0       0.3       0.0
+19 Quince                challenger         5.2       0.0       0.9       0.0
+20 At Home               mid-tier           4.9       0.0       0.3       0.3
+21 Pier 1                mid-tier           0.0       0.0       0.0       0.0
+
+--------------------------------------------------------------------------------------------------------------
+PER-MODEL PRESENCE (top 10)
+--------------------------------------------------------------------------------------------------------------
+Brand                   anthropic_opus  anthropic_sonn    google_flash  openai_flagshi     openai_mini        xai_grok    Spread
+--------------------------------------------------------------------------------------------------------------
+Target                           83.3           81.2           83.3           83.3           83.3           87.5       6.2
+Amazon                           77.1           64.6           75.0           72.9           64.6           70.8      12.5
+IKEA                             66.7           66.7           66.7           66.7           66.7           68.8       2.1
+Walmart                          64.6           58.3           66.7           68.8           64.6           66.7      10.4
+HomeGoods                        64.6           22.9           62.5           66.7           56.2           14.6      52.1
+Crate & Barrel                   58.3           60.4           47.9           47.9           37.5           33.3      27.1
+Costco                           66.7           33.3           35.4           52.1           47.9           41.7      33.3
+Wayfair                          37.5           43.8           41.7           37.5           41.7           37.5       6.2
+Pottery Barn                     52.1           39.6           47.9           45.8           18.8           29.2      33.3
+Williams-Sonoma                  47.9           54.2           27.1           35.4           29.2           27.1      27.1
+
+--------------------------------------------------------------------------------------------------------------
+TOP BRANDS BY CEP
+--------------------------------------------------------------------------------------------------------------
+  COMPARISON             Target (100%) | IKEA (100%) | Amazon (92%)
+  CONSTRAINT_WITH        Target (100%) | Walmart (100%) | IKEA (100%)
+  CONTEXTUAL_WHEN        Crate & Barrel (100%) | Williams-Sonoma (100%) | Target (98%)
+  DISCOVERY              Quince (29%) | Parachute (21%) | Boll & Branch (15%)
+  FUNCTIONAL_WHY         Target (100%) | Walmart (100%) | Costco (100%)
+  IDENTITY_HOW_FEELING   Target (100%) | Amazon (100%) | IKEA (100%)
+
+--------------------------------------------------------------------------------------------------------------
+BBB & Pier 1 - per-CEP, per-slot detail (phantom-relevant)
+--------------------------------------------------------------------------------------------------------------
+CEP                     anthropic_opus  anthropic_sonn    google_flash  openai_flagshi     openai_mini        xai_grok
+--------------------------------------------------------------------------------------------------------------
+
+  Bed Bath & Beyond:
+  COMPARISON                       12.5            0.0           25.0            0.0           12.5            0.0
+  CONSTRAINT_WITH                  37.5           25.0            0.0            0.0           12.5            0.0
+  CONTEXTUAL_WHEN                  87.5           50.0           12.5            0.0           75.0          100.0
+  DISCOVERY                         0.0            0.0            0.0            0.0            0.0            0.0
+  FUNCTIONAL_WHY                  100.0          100.0           12.5           25.0           87.5          100.0
+  IDENTITY_HOW_FEELING             87.5           75.0           50.0           37.5          100.0          100.0
+
+  Pier 1:
+  COMPARISON                        0.0            0.0            0.0            0.0            0.0            0.0
+  CONSTRAINT_WITH                   0.0            0.0            0.0            0.0            0.0            0.0
+  CONTEXTUAL_WHEN                   0.0            0.0            0.0            0.0            0.0            0.0
+  DISCOVERY                         0.0            0.0            0.0            0.0            0.0            0.0
+  FUNCTIONAL_WHY                    0.0            0.0            0.0            0.0            0.0            0.0
+  IDENTITY_HOW_FEELING              0.0            0.0            0.0            0.0            0.0            0.0
+
+--------------------------------------------------------------------------------------------------------------
+UNKNOWN BRANDS (top 15)
+--------------------------------------------------------------------------------------------------------------
+  TJ Maxx                                  132 mentions
+  Marshalls                                129 mentions
+  Facebook Marketplace                     82 mentions
+  Craigslist                               73 mentions
+  Zola                                     59 mentions
+  Dollar Tree                              59 mentions
+  Macy's                                   52 mentions
+  Goodwill                                 52 mentions
+  Home Depot                               52 mentions
+  OfferUp                                  48 mentions
+  Sam's Club                               45 mentions
+  Threshold                                42 mentions
+  Dollar General                           39 mentions
+  Salvation Army                           38 mentions
+  Amazon Basics                            36 mentions
+
+==============================================================================================================
+Saved: presence_index_v0.3_household_v1.0_20260504_162106.csv
+Headline metric: Presence (raw mention rate, NOT normalized).
+==============================================================================================================
