@@ -66,15 +66,22 @@ Output: `~/aias/reports/output/v07_phantom_persistence.pdf` — 14 pages.
 
 ## Charts
 
-`build_charts_v07_bbb.py` produces five PDFs at locked figsize:
+`build_charts_v07_bbb.py` produces six PDFs at locked figsize:
 
 | File | Figsize | Slot key in build_report_v07 |
 | --- | --- | --- |
 | `chart_v07_leaderboard_6col.pdf` | 7.50 × 7.50 (6_col_hero_xl) | `hero_leaderboards` |
-| `chart_v07_f1_comparator_6col.pdf` | 7.50 × 5.00 (6_col_hero) | `hero_f1_comparator` |
-| `chart_v07_f2_valence_6col.pdf` | 7.50 × 5.00 (6_col_hero) | `hero_f2_valence` |
+| `chart_v07_f1_comparator_6col.pdf` | 7.50 × 3.50 (6_col_short) | `hero_f1_comparator` |
+| `chart_v07_f2_valence_6col.pdf` | 7.50 × 3.75 (6_col_hero_short) | `hero_f2_valence` |
 | `chart_v07_f3_freshness_4col.pdf` | 3.68 × 2.85 (3_col_inline) | `inline_f3_freshness` |
-| `chart_v07_f4_temporal_6col.pdf` | 7.50 × 5.00 (6_col_hero) | `hero_f4_temporal` |
+| `chart_v07_f4_temporal_6col.pdf` | 7.50 × 3.00 (6_col_compact) | `hero_f4_temporal` |
+| `chart_v07_f5_rebrand_6col.pdf` | 7.50 × 3.50 (6_col_short) | `hero_f5_rebrand` |
+
+**Why F4 uses the extra-compact 6_col_compact (3.00") size:** F4 is the most body-text-heavy finding (six paragraphs including the longest-running ones in the report). The chart needs to be small enough that the tail body BC fits below it on the same page even with real Akkurat Pro's slightly wider glyphs and taller line heights. Akkurat takes more vertical space per paragraph than the Inter fallback used in sandbox previews — without the extra margin (3.00" vs F2's 3.75"), F4's tail body overflows in the rendered PDF on the Mac, pushing F5 to start mid-page. The 36pt of margin built into 6_col_compact absorbs that font-metric difference.
+
+The chart generator pulls the Indigo color from `brand/third_system_brand.json`. Auto-detects Akkurat Pro the same way `build_report.py` does — falls back to Inter, then DejaVu Sans with a warning. Charts use **`pdf.fonttype = 3`** (Type 3 vector outlines) instead of TrueType so there are no font-name collisions when pypdf overlays them on the ReportLab base PDF — important for clean text rendering after merge.
+
+The v0.7 build adds two new figsize keys (`6_col_short` 7.50×3.50 and `6_col_hero_short` 7.50×3.75) to `CHART_FIGSIZE_IN` for compact full-width charts. The v0.6 keys are preserved unchanged.
 
 The chart generator pulls the Indigo color from `brand/third_system_brand.json`. Auto-detects Akkurat Pro the same way `build_report.py` does — falls back to Inter, then DejaVu Sans with a warning. Charts use **`pdf.fonttype = 3`** (Type 3 vector outlines) instead of TrueType so there are no font-name collisions when pypdf overlays them on the ReportLab base PDF — important for clean text rendering after merge.
 
@@ -89,22 +96,31 @@ Page  1   Cover (title, subtitle, byline, tagline)
 Page  2   Standfirst + lead deck + executive summary (10 paragraphs)
 Page  3   Household goods leaderboard (hero spread)
 Page  4   What we measured (methodology, 6 paragraphs)
-Page  5   Finding 01: The phantom replicates
-Page  6   Finding 01 chart (BBB vs Pier 1 comparator) + Finding 02 start
-Page  7   Finding 02: The phantom is not a knowledge gap. It is a recommendation slot.
-          + Finding 02 chart (per-model valence)
-Page  8   Finding 03: Newer models phantom-mention better, not less
-          + Finding 03 chart (within-lab freshness, inline)
-          + Finding 04 start
-Page  9   Finding 04: Different prompts activate different temporal frames
-          + Finding 04 chart (per-CEP temporal frames)
-Page 10   Finding 05: The rebrand has not propagated. The legacy brand has.
-          (text-only, no chart)
-Page 11   Limitations (7 paragraphs)
-Page 12   What's next (6 paragraphs)
-Page 13   Hypothesis scoring (table, 8 rows)
+Page  5   Finding 01 (sandwich): title + lead body + Figure 1 + tail body
+Page  6   Finding 02 (sandwich): title + lead body + Figure 2 + tail body
+Page  7   Finding 02 tail end + Finding 03 (inline): title + body wrapping Figure 3
+Page  8   Finding 04 (sandwich): title + lead body + Figure 4 + tail body
+Page  9   Finding 05 (sandwich): title + lead body + Figure 5 + tail body
+Page 10   Limitations (7 paragraphs)
+Page 11   What's next (6 paragraphs)
+Page 12   Hypothesis scoring (8-row table) + What each hypothesis was testing
+Page 13   What each hypothesis was testing (continued, H7–H8)
 Page 14   About the Third System / methodology / citation / datasets
 ```
+
+## Hero pattern: balanced-split sandwich layout
+
+Hero patterns (full-width charts) use a **sandwich layout with balanced split**: lead body paragraphs in 2 columns, then chart spanning both columns with caption, then tail body in 2 columns. Body splits roughly in half (`n_lead = (n+1) // 2`) so lead and tail each have substantial content (~3 paragraphs each) — well above BalancedColumns' minimum height threshold. This avoids the 1-paragraph spillover issue that occurred with `tail=1` configurations.
+
+Each hero finding occupies exactly one page when content fits within the figsize-dependent CondPageBreak threshold (560pt for `6_col_short`, 580pt for `6_col_hero_short`, etc.). The next finding then starts cleanly at the top of a fresh page.
+
+## Template-level fixes inherited by future reports
+
+Two corrections in `build_closing_story()` apply at the template level — copy-forward to future report build scripts:
+
+1. **Citation byline** uses surname-first Spanish-name convention: `Gonzalez Castro, P. U. (2026).` "Gonzalez Castro" is the surname pair, "Pablo Ulpiano" is the given-name pair. The hardcoded format here is the corrected template; brand JSON's `citation.format` field has the inverted legacy order.
+
+2. **Methodology version** is overridden at runtime via `REPORT_PROTOCOL_VERSION = "v1.0"` (or whatever protocol version applies to the report). Brand JSON's `methodology_standard` field hardcodes "(current: v0.3)" — left untouched so v0.6 builds inherit unchanged. Each report's build script overrides via string replacement. Future reports update the constant.
 
 ## Iteration loop
 

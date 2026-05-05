@@ -7,11 +7,12 @@ specification. Outputs go to <reports>/output/ and are picked up by
 build_report_v07.py via the _slot_lookup table.
 
 Charts:
-  chart_v07_leaderboard_6col.pdf   7.50 \u00d7 7.50  (6_col_hero_xl)  household-goods leaderboard
-  chart_v07_f1_comparator_6col.pdf 7.50 \u00d7 5.00  (6_col_hero)     BBB vs Pier 1 phantom comparator
-  chart_v07_f2_valence_6col.pdf    7.50 \u00d7 5.00  (6_col_hero)     per-model valence breakdown
-  chart_v07_f3_freshness_4col.pdf  3.68 \u00d7 2.85  (3_col_inline)   within-lab freshness pairs
-  chart_v07_f4_temporal_6col.pdf   7.50 \u00d7 5.00  (6_col_hero)     per-CEP temporal frame breakdown
+  chart_v07_leaderboard_6col.pdf   7.50 \u00d7 7.50  (6_col_hero_xl)     household-goods leaderboard
+  chart_v07_f1_comparator_6col.pdf 7.50 \u00d7 3.50  (6_col_short)       BBB vs Pier 1 phantom comparator
+  chart_v07_f2_valence_6col.pdf    7.50 \u00d7 3.75  (6_col_hero_short)  per-model valence breakdown
+  chart_v07_f3_freshness_4col.pdf  3.68 \u00d7 2.85  (3_col_inline)      within-lab freshness pairs
+  chart_v07_f4_temporal_6col.pdf   7.50 \u00d7 3.75  (6_col_hero_short)  per-CEP temporal frame breakdown
+  chart_v07_f5_rebrand_6col.pdf    7.50 \u00d7 3.50  (6_col_short)       rebrand reference distribution
 
 CRITICAL: bbox=None and pad_inches=0 on savefig so native figsize is preserved
 exactly. The build_report_v07.py overlay relies on chart PDFs being at locked
@@ -325,19 +326,22 @@ def chart_leaderboard():
 
 
 # ===========================================================================
-# Chart 2 (Finding 1) — BBB vs Pier 1 phantom comparator (6_col_hero: 7.50 \u00d7 5.00)
+# Chart 2 (Finding 1) — BBB vs Pier 1 phantom comparator (6_col_short: 7.50 × 3.50)
+#
+# Side-by-side filled-bar gauges showing BBB at 38.2% (phantom confirmed) vs
+# Pier 1 at 0.0% (phantom zero). Compact full-width hero — wider than inline
+# but shorter than the standard 5" hero.
 # ===========================================================================
 
 def chart_f1_comparator():
-    fig = plt.figure(figsize=(7.50, 5.00))
+    fig = plt.figure(figsize=(7.50, 3.50))
+    # Two side-by-side panels with axes positioned to leave room for the title
+    # block at the top (~0.5") and source line at the bottom (~0.2"). Panels
+    # extend high enough for header text above (transAxes y up to ~1.20).
+    left_ax  = fig.add_axes([0.10, 0.18, 0.34, 0.52])
+    right_ax = fig.add_axes([0.58, 0.18, 0.34, 0.52])
 
-    # Two side-by-side panels showing BBB and Pier 1 as filled-bar gauges.
-    # Axes intentionally low so figure title (y=0.93) and panel headers
-    # (transAxes y up to ~1.20) do not collide.
-    left_ax  = fig.add_axes([0.10, 0.13, 0.32, 0.50])
-    right_ax = fig.add_axes([0.58, 0.13, 0.32, 0.50])
-
-    def panel(ax, label, sub1, sub2, value, status_text, status_sub):
+    def panel(ax, label, sub1, value, status_text, status_sub):
         # Background frame box
         ax.add_patch(plt.Rectangle((0, 0), 1, 1, fill=False,
                                      edgecolor=GRAY_20, linewidth=0.8))
@@ -345,74 +349,65 @@ def chart_f1_comparator():
         for g in (0.25, 0.50, 0.75):
             ax.axhline(g, color=GRAY_20, linestyle=(0, (2, 3)),
                        linewidth=0.6, zorder=0)
-        # Filled bar
+        # Filled bar (or zero marker)
         if value > 0:
             ax.add_patch(plt.Rectangle((0, 0), 1, value / 100,
                                          color=INDIGO, zorder=2))
-            # Big % label inside bar
             ax.text(0.5, value / 200, f"{value:.1f}%",
-                    ha="center", va="center", fontsize=24,
+                    ha="center", va="center", fontsize=20,
                     fontweight="bold", color="white", zorder=3)
         else:
-            # Zero marker line
             ax.plot([0, 1], [0, 0], color=INDIGO, linewidth=2.5, zorder=2)
             ax.text(0.5, 0.45, "0.0%", ha="center", va="center",
-                    fontsize=24, fontweight="bold", color=INDIGO)
+                    fontsize=20, fontweight="bold", color=INDIGO)
 
         ax.set_xlim(0, 1)
         ax.set_ylim(0, 1)
         ax.set_xticks([])
-        ax.set_yticks([])
         ax.set_yticks([0, 0.25, 0.5, 0.75, 1.0])
-        ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7.5)
+        ax.set_yticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7)
         for s in ("top", "right", "bottom", "left"):
             ax.spines[s].set_visible(False)
         ax.tick_params(axis="y", which="both", length=0, pad=2)
 
-        # Header above panel
-        ax.text(0.5, 1.18, label, ha="center", va="bottom",
-                transform=ax.transAxes, fontsize=12, fontweight="bold",
+        # Header above panel — single line with brand + months since collapse
+        ax.text(0.5, 1.13, label, ha="center", va="bottom",
+                transform=ax.transAxes, fontsize=11, fontweight="bold",
                 color=INDIGO)
-        ax.text(0.5, 1.10, sub1, ha="center", va="bottom",
-                transform=ax.transAxes, fontsize=8, color=INDIGO)
-        ax.text(0.5, 1.04, sub2, ha="center", va="bottom",
+        ax.text(0.5, 1.04, sub1, ha="center", va="bottom",
                 transform=ax.transAxes, fontsize=8, color=INDIGO)
 
         # Status footer below panel
-        ax.text(0.5, -0.05, status_text, ha="center", va="top",
-                transform=ax.transAxes, fontsize=9, fontweight="bold",
+        ax.text(0.5, -0.08, status_text, ha="center", va="top",
+                transform=ax.transAxes, fontsize=8.5, fontweight="bold",
                 color=INDIGO)
-        ax.text(0.5, -0.11, status_sub, ha="center", va="top",
-                transform=ax.transAxes, fontsize=8, color=INDIGO)
+        ax.text(0.5, -0.18, status_sub, ha="center", va="top",
+                transform=ax.transAxes, fontsize=7.5, color=INDIGO)
 
     panel(left_ax, "Bed Bath & Beyond",
-          "Bankruptcy April 2023  \u00b7  ~37 months pre-measurement",
-          "Pre-collapse: ~$3.3B revenue, category-defining footprint",
+          "Bankruptcy April 2023  ·  ~37 months pre-measurement",
           38.2,
           "Phantom: confirmed",
           "110 of 288 measurements")
     panel(right_ax, "Pier 1",
-          "Bankruptcy February 2020  \u00b7  ~70 months pre-measurement",
-          "Pre-collapse: ~$1.5B revenue, smaller specialty footprint",
+          "Bankruptcy February 2020  ·  ~70 months pre-measurement",
           0.0,
           "Phantom: zero",
           "0 of 288 measurements")
 
-    # Delta marker between panels
-    fig.text(0.50, 0.38, "\u0394 38.2 pp", ha="center", va="center",
+    # Delta marker between panels (centered horizontally, mid-height of axes)
+    fig.text(0.50, 0.44, "Δ 38.2 pp", ha="center", va="center",
              fontsize=10, style="italic", color=INDIGO)
 
-    # Title and subtitle
-    fig.text(0.05, 0.93, "Two phantoms, two different fates",
-             fontsize=14, fontweight="bold", color=INDIGO, ha="left")
-    fig.text(0.05, 0.895,
-             "Bed Bath & Beyond and Pier 1 share a fate (collapse \u2192 online-only revival) but differ on years-since-collapse",
-             fontsize=8.5, color=INDIGO, ha="left")
-    fig.text(0.05, 0.875,
-             "and pre-collapse footprint. The phantom signal between them differs by 38.2 percentage points.",
+    # Title and subtitle (compact, single subtitle line)
+    fig.text(0.05, 0.92, "Two phantoms, two different fates",
+             fontsize=13, fontweight="bold", color=INDIGO, ha="left")
+    fig.text(0.05, 0.86,
+             "Same fate (collapse → online-only revival), different pre-collapse footprints — 38.2 pp gap.",
              fontsize=8.5, color=INDIGO, ha="left")
 
-    fig.text(0.05, 0.025, SOURCE_LINE, fontsize=7, style="italic",
+    # Source line
+    fig.text(0.05, 0.03, SOURCE_LINE, fontsize=7, style="italic",
              color=INDIGO, ha="left")
 
     save(fig, "chart_v07_f1_comparator_6col.pdf")
@@ -474,30 +469,32 @@ def _stacked_valence(ax, rows):
 
 
 def chart_f2_valence():
-    fig = plt.figure(figsize=(7.50, 5.00))
-    ax = fig.add_axes([0.27, 0.18, 0.65, 0.55])
+    fig = plt.figure(figsize=(7.50, 3.75))
+    # Tightened: axes top extends close to subtitle (y=0.85 vs subtitle at 0.88).
+    # Bottom 0.20 leaves room for axis labels + legend below + source.
+    ax = fig.add_axes([0.27, 0.20, 0.65, 0.65])
 
     _stacked_valence(ax, MODELS_VALENCE)
 
-    # Title + subtitle
-    fig.text(0.05, 0.93, "How each model handles Bed Bath & Beyond",
-             fontsize=14, fontweight="bold", color=INDIGO, ha="left")
-    fig.text(0.05, 0.895,
+    # Title + subtitle (close to top, single subtitle line)
+    fig.text(0.05, 0.94, "How each model handles Bed Bath & Beyond",
+             fontsize=13, fontweight="bold", color=INDIGO, ha="left")
+    fig.text(0.05, 0.88,
              "Per-model valence breakdown of BBB mentions (denominator: 48 measurements per model).",
-             fontsize=9, color=INDIGO, ha="left")
+             fontsize=8.5, color=INDIGO, ha="left")
 
-    # Legend (compact labels, sized to fit inside 7.5\" figure bounds)
+    # Legend (compact, fits inside 7.5" figure bounds)
     legend_elems = [
         Patch(facecolor=INDIGO,    label="Naive phantom"),
         Patch(facecolor=INDIGO_50, label="Caveated phantom"),
         Patch(facecolor=GRAY_40,   label="Aware (no recommendation)"),
     ]
     ax.legend(handles=legend_elems, loc="upper center",
-              bbox_to_anchor=(0.5, -0.15), ncol=3, frameon=False,
+              bbox_to_anchor=(0.5, -0.13), ncol=3, frameon=False,
               fontsize=8, handlelength=1.4, handleheight=1.0,
               columnspacing=1.2)
 
-    fig.text(0.05, 0.025, SOURCE_LINE, fontsize=7,
+    fig.text(0.05, 0.03, SOURCE_LINE, fontsize=7,
              style="italic", color=INDIGO, ha="left")
 
     save(fig, "chart_v07_f2_valence_6col.pdf")
@@ -591,24 +588,31 @@ CEPS_VALENCE = [
 
 
 def chart_f4_temporal():
-    fig = plt.figure(figsize=(7.50, 5.00))
-    ax = fig.add_axes([0.27, 0.18, 0.65, 0.55])
+    fig = plt.figure(figsize=(7.50, 3.00))
+    # Extra-compact (3.00") for body-heavy F4. Sized to give the tail BC
+    # ~50pt of additional vertical space vs F2's 3.75" — a margin needed
+    # because real Akkurat Pro has slightly wider glyphs and taller line
+    # heights than the Inter fallback used in sandbox previews. Without
+    # this margin, F4's tail BC overflows in the real PDF, pushing F5
+    # down to start mid-page instead of cleanly at top of next page.
+    #
+    # Axes y=0.20 to 0.85 (height 0.65 of fig) → axes height = 140pt for
+    # 6 horizontal bars. Each bar gets ~22pt of vertical space — readable
+    # at this density. Title block tightened to y=0.93 (was 0.94 at 3.75").
+    ax = fig.add_axes([0.27, 0.20, 0.65, 0.65])
 
     _stacked_valence(ax, CEPS_VALENCE)
 
     # Annotate the zero row (DISCOVERY) — placed past the 0.0% label.
-    ax.text(8, 0, "\u2014 zero mentions across 48 measurements \u2014",
+    ax.text(8, 0, "— zero mentions across 48 measurements —",
             va="center", fontsize=8, style="italic", color=GRAY_60)
 
-    # Title + subtitle
+    # Title + subtitle (tighter for compact chart)
     fig.text(0.05, 0.93, "The same brand, different temporal frames",
-             fontsize=14, fontweight="bold", color=INDIGO, ha="left")
-    fig.text(0.05, 0.895,
-             "Per-prompt valence breakdown of BBB mentions. Functional prompts activate BBB-as-current-online-retailer.",
-             fontsize=9, color=INDIGO, ha="left")
-    fig.text(0.05, 0.875,
-             "Identity prompts activate BBB-as-cultural-memory. Same brand, six prompts, six different cognitive-time slots.",
-             fontsize=9, color=INDIGO, ha="left")
+             fontsize=12, fontweight="bold", color=INDIGO, ha="left")
+    fig.text(0.05, 0.86,
+             "Per-prompt valence breakdown. Functional prompts get BBB-as-current; identity prompts get BBB-as-cultural-memory.",
+             fontsize=8, color=INDIGO, ha="left")
 
     legend_elems = [
         Patch(facecolor=INDIGO,    label="Naive phantom"),
@@ -616,14 +620,111 @@ def chart_f4_temporal():
         Patch(facecolor=GRAY_40,   label="Aware (no recommendation)"),
     ]
     ax.legend(handles=legend_elems, loc="upper center",
-              bbox_to_anchor=(0.5, -0.18), ncol=3, frameon=False,
-              fontsize=8, handlelength=1.6, handleheight=1.0,
-              columnspacing=1.5)
+              bbox_to_anchor=(0.5, -0.10), ncol=3, frameon=False,
+              fontsize=7.5, handlelength=1.4, handleheight=1.0,
+              columnspacing=1.2)
 
-    fig.text(0.05, 0.025, SOURCE_LINE, fontsize=7,
+    fig.text(0.05, 0.02, SOURCE_LINE, fontsize=6.5,
              style="italic", color=INDIGO, ha="left")
 
     save(fig, "chart_v07_f4_temporal_6col.pdf")
+
+
+# ===========================================================================
+# Chart 6 (Finding 5) — Rebrand reference distribution (6_col_short: 7.50 × 3.50)
+#
+# Three-row stacked horizontal bar chart showing how rebrand information
+# (Beyond, Inc.) appears in BBB mentions, broken down by valence category.
+# The structural finding: rebrand information lives almost exclusively in
+# caveated mentions; naive recommendations stay pure-legacy.
+# ===========================================================================
+
+# Aware-mode percentages are derived from the cross-tabulation:
+#   Total: 110 mentions → 83 legacy (75.5%), 26 both (23.6%), 1 unclear
+#   Naive (5):     5 legacy (100%), 0 both
+#   Caveated (72): 47 legacy (65.3%), 25 both (34.7%)
+#   Aware (33) =   31 legacy (94%),  1 both (3%), 1 unclear
+F5_REBRAND = [
+    # (label, legacy_only_pct, both_names_pct)
+    ("Naive (n=5)",        100.0,  0.0),
+    ("Caveated (n=72)",     65.3, 34.7),
+    ("Aware (n=33)",        94.0,  3.0),
+]
+
+
+def chart_f5_rebrand():
+    fig = plt.figure(figsize=(7.50, 3.50))
+    # Axes height 0.50 leaves room for title block (top) + legend/source
+    # (bottom). Same proportions as F1's compact hero.
+    ax = fig.add_axes([0.18, 0.20, 0.72, 0.50])
+
+    labels   = [r[0] for r in F5_REBRAND]
+    legacy   = [r[1] for r in F5_REBRAND]
+    both     = [r[2] for r in F5_REBRAND]
+
+    y = list(range(len(F5_REBRAND)))[::-1]   # top-to-bottom reading order
+    h = 0.55
+
+    # Stack: legacy first (indigo), then both names (lighter purple)
+    ax.barh(y, legacy, color=INDIGO,    height=h, edgecolor="none")
+    ax.barh(y, both,   left=legacy,
+            color=INDIGO_50, height=h, edgecolor="none")
+
+    # Per-segment value labels: legacy % inside the bar (white) when wide
+    # enough to fit, otherwise outside; "both" % outside to the right of
+    # the segment.
+    for i, (l, b) in enumerate(zip(legacy, both)):
+        # Legacy segment label
+        if l >= 25:
+            ax.text(l / 2, y[i], f"{l:.0f}%", va="center", ha="center",
+                    fontsize=10, fontweight="bold", color="white")
+        # Both names segment label (only if non-trivial)
+        if b >= 5:
+            ax.text(l + b / 2, y[i], f"{b:.0f}%", va="center", ha="center",
+                    fontsize=9, fontweight="bold", color=INDIGO)
+        elif b > 0:
+            # Tiny segment — annotate to the right of the stack
+            ax.text(l + b + 1.5, y[i], f"{b:.0f}%", va="center", ha="left",
+                    fontsize=8, fontweight="bold", color=INDIGO)
+
+    # Y labels (left of axis)
+    for i, lab in enumerate(labels):
+        ax.text(-2, y[i], lab, va="center", ha="right",
+                fontsize=10, fontweight="bold", color=INDIGO)
+
+    ax.set_xlim(0, 100)
+    ax.set_ylim(-0.55, len(F5_REBRAND) - 0.45)
+    ax.set_yticks([])
+    ax.set_xticks([0, 25, 50, 75, 100])
+    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=8)
+    ax.spines["left"].set_visible(False)
+    ax.spines["bottom"].set_color(INDIGO)
+    ax.tick_params(axis="x", length=2)
+
+    # Title + subtitle
+    fig.text(0.05, 0.92,
+             "Where the rebrand lives in AI's mentions of BBB",
+             fontsize=13, fontweight="bold", color=INDIGO, ha="left")
+    fig.text(0.05, 0.85,
+             "Of 110 BBB mentions, the rebrand information shows up almost only in caveats. "
+             "Naive recommendations stay pure-legacy.",
+             fontsize=8.5, color=INDIGO, ha="left")
+
+    # Legend
+    legend_elems = [
+        Patch(facecolor=INDIGO,    label="Legacy name only (Bed Bath & Beyond)"),
+        Patch(facecolor=INDIGO_50, label="Both names referenced (legacy + Beyond, Inc.)"),
+    ]
+    ax.legend(handles=legend_elems, loc="upper center",
+              bbox_to_anchor=(0.5, -0.18), ncol=2, frameon=False,
+              fontsize=8, handlelength=1.4, handleheight=1.0,
+              columnspacing=1.5)
+
+    # Source line
+    fig.text(0.05, 0.03, SOURCE_LINE, fontsize=7,
+             style="italic", color=INDIGO, ha="left")
+
+    save(fig, "chart_v07_f5_rebrand_6col.pdf")
 
 
 # ===========================================================================
@@ -640,8 +741,9 @@ def build_all():
     chart_f2_valence()
     chart_f3_freshness()
     chart_f4_temporal()
+    chart_f5_rebrand()
     print()
-    print("[charts] done. 5 charts generated for build_report_v07.py")
+    print("[charts] done. 6 charts generated for build_report_v07.py")
 
 
 if __name__ == "__main__":

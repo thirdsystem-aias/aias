@@ -125,7 +125,11 @@ CHART_FIGSIZE_IN = {
     "6_col_hero": (7.50, 5.00),
     "6_col_hero_tall": (7.50, 6.50),
     "6_col_hero_xl": (7.50, 7.50),    # used for leaderboards: 5 stacked panels
-    "spread": (7.50, 4.50),    # used for Pattern 4 country panel
+    "spread": (7.50, 4.50),           # used for v0.6 Pattern 4 country panel
+    # v0.7 additions: shorter heights for charts whose content doesn't need 5".
+    "6_col_short": (7.50, 3.50),      # F1, F5 — two/three-row compact comparisons
+    "6_col_hero_short": (7.50, 3.75), # F2 — multi-row stacked bars, tightened
+    "6_col_compact": (7.50, 3.00),    # F4 — extra-compact for body-heavy findings
 }
 
 # Body two-column flow uses 3+3: text spans columns 1-3, then 4-6, with the
@@ -1163,7 +1167,10 @@ def build_pattern_unified(pattern: dict, styles: dict,
       remaining space — no shrink-to-fit failures.
     """
     slot = pattern["chart_slot"]
-    is_hero = slot in ("hero_f1_comparator", "hero_f2_valence", "hero_f4_temporal")
+    is_hero = slot in (
+        "hero_f1_comparator", "hero_f2_valence",
+        "hero_f4_temporal", "hero_f5_rebrand",
+    )
 
     chart_path = None
     figsize_key = None
@@ -1179,6 +1186,32 @@ def build_pattern_unified(pattern: dict, styles: dict,
                 chart_path = None
 
     s: list = []
+
+    # CondPageBreak: ensure the title block has substantial space below it
+    # for body content. Threshold depends on whether this is a hero pattern.
+    #
+    # Non-hero (inline): require 200pt — title (~80pt) + ~120pt of lead body.
+    # This keeps the title from orphaning at the bottom of a page.
+    #
+    # Hero: require enough space for title + body + chart + caption all on
+    # one page. Without this, the body fills the page and the chart pushes
+    # to the next page \u2014 breaking the visual unity of the finding. The
+    # threshold is sized to the chart's figsize: a 6_col_short hero (7.50 ×
+    # 3.50, ~252pt) needs ~560pt total; 6_col_hero_short (7.50 × 3.75,
+    # ~270pt) needs ~580pt; legacy 6_col_hero (7.50 × 5.00, ~360pt) needs
+    # ~700pt and may not always fit on one page even with this guard.
+    if is_hero:
+        hero_reserve = {
+            "6_col_compact":    520,
+            "6_col_short":      560,
+            "6_col_hero_short": 580,
+            "6_col_hero":       700,
+            "spread":           640,
+        }
+        cond_threshold = hero_reserve.get(figsize_key, 500)
+    else:
+        cond_threshold = 200
+    s.append(CondPageBreak(cond_threshold))
 
     # Section title spans full width
     s.append(KeepTogether([
@@ -1207,21 +1240,34 @@ def build_pattern_unified(pattern: dict, styles: dict,
         )
 
         if is_hero:
-            # Hero: body BC + chart at end. needed=30 (much less than the
-            # default 72) means the body BC will start laying out even
-            # when there's only ~30pt of space left in the previous
-            # frame — putting the start of the body directly under the
-            # title rather than orphaning the title alone. The body BC
-            # naturally splits its content across pages, so the first
-            # one or two lines fit under the title and the rest overflows
-            # to the next page.
+            # Hero: sandwich layout with balanced lead/tail split.
+            #
+            # Body paragraphs split roughly in half (lead = ceil(n/2),
+            # tail = floor(n/2)). With 6 paragraphs: lead=3, tail=3. With 5
+            # paragraphs: lead=3, tail=2. With 4: lead=2, tail=2.
+            #
+            # Combined with the figsize-dependent CondPageBreak above, this
+            # produces unified hero findings: title + lead body + chart +
+            # tail body all land on the same page when content fits.
+            n_paragraphs = len(paragraphs)
+            n_lead = (n_paragraphs + 1) // 2  # ceil(n/2)
+            lead = paragraphs[:n_lead]
+            tail = paragraphs[n_lead:]
+
             s.append(BalancedColumns(
-                paragraphs, nCols=2, innerPadding=GUTTER,
+                lead, nCols=2, innerPadding=GUTTER,
                 spaceBefore=4, spaceAfter=10,
                 needed=30,
             ))
             s.append(Spacer(1, 8))
             s.append(chart_res)
+            if tail:
+                s.append(Spacer(1, 8))
+                s.append(BalancedColumns(
+                    tail, nCols=2, innerPadding=GUTTER,
+                    spaceBefore=4, spaceAfter=10,
+                    needed=30,
+                ))
         else:
             # NON-HERO: chart embedded in column 1 of BalancedColumns(2).
             # Text flows top-to-bottom in column 1 (with chart at top of
@@ -1236,17 +1282,18 @@ def build_pattern_unified(pattern: dict, styles: dict,
             # pattern's last page is small, BC defers to the next page;
             # when it's large, BC starts there and overflows naturally.
             # NON-HERO sandwich layout:
-            # - Lead BC with 2 lead paragraphs fills the leftover space on
+            # - Lead BC with 1-2 lead paragraphs fills the leftover space on
             #   the previous pattern's last page.
             # - Main BC has the chart at the top of col 1 + remaining body
             #   paragraphs flowing in col 1 below chart and col 2 from top.
             #
-            # When the previous pattern's leftover doesn't accommodate the
-            # main BC (needed=270), the main BC defers cleanly to the next
-            # page. The title and lead paragraphs stay on the previous
-            # page; the chart and the rest of the body follow on the next
-            # page where they have room to lay out without compression.
-            n_lead_inner = min(5, max(1, len(paragraphs) - 1))
+            # n_lead_inner kept small (2) so most of the body stays in the
+            # main BC alongside the chart. Without this, a long lead BC
+            # claims most of the available column space on the page where
+            # the finding starts, and the main BC (chart + rest) defers to
+            # the next page even when the chart could have fit on the
+            # current page.
+            n_lead_inner = min(2, max(1, len(paragraphs) - 1))
             lead = paragraphs[:n_lead_inner]
             rest = paragraphs[n_lead_inner:]
 
@@ -1296,9 +1343,16 @@ HERO_FIGURE_CAPTIONS = {
     ),
     "hero_f4_temporal": (
         "Figure 4 \u00b7 Per-CEP temporal frame breakdown. Functional prompts "
-        "produce BBB-as-current-online-retailer (60.4% caveated phantom). "
-        "Identity prompts produce BBB-as-cultural-memory (43.8% aware-mode). "
-        "Discovery prompts produce zero BBB mentions."
+        "produce BBB-as-current; identity prompts produce BBB-as-cultural-"
+        "memory; discovery prompts produce zero BBB mentions."
+    ),
+    "hero_f5_rebrand": (
+        "Figure 5 \u00b7 Rebrand reference distribution by valence type. "
+        "Naive recommendations are 100% legacy-name-only. The rebrand "
+        "information lives almost entirely in caveated mentions \u2014 "
+        "where it's deployed as part of the disclosure (\u201cnow operates "
+        "as Beyond, Inc.\u201d) rather than internalized into the "
+        "recommendation surface."
     ),
 }
 
@@ -1308,10 +1362,11 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     builder can reuse the table without duplicating it."""
     table = {
         # v0.7 Phase 2 BBB findings
-        "hero_f1_comparator":             ("chart_v07_f1_comparator_6col.pdf", "6_col_hero"),
-        "hero_f2_valence":                ("chart_v07_f2_valence_6col.pdf",    "6_col_hero"),
+        "hero_f1_comparator":             ("chart_v07_f1_comparator_6col.pdf", "6_col_short"),
+        "hero_f2_valence":                ("chart_v07_f2_valence_6col.pdf",    "6_col_hero_short"),
         "inline_f3_freshness":            ("chart_v07_f3_freshness_4col.pdf",  "3_col_inline"),
-        "hero_f4_temporal":               ("chart_v07_f4_temporal_6col.pdf",   "6_col_hero"),
+        "hero_f4_temporal":               ("chart_v07_f4_temporal_6col.pdf",   "6_col_compact"),
+        "hero_f5_rebrand":                ("chart_v07_f5_rebrand_6col.pdf",    "6_col_short"),
         # Hero spread used outside the pattern loop (build_leaderboards_spread)
         "hero_leaderboards":              ("chart_v07_leaderboard_6col.pdf",   "6_col_hero_xl"),
     }
@@ -1413,6 +1468,35 @@ def build_hypothesis_scoring_story(styles: dict) -> list:
         ]),
     )
     s.append(tbl)
+
+    # ----------------------------------------------------------------------
+    # Hypothesis details — fuller reasoning per H. Renders after the table on
+    # the same spread page if it fits, else flows to the next page naturally.
+    # ----------------------------------------------------------------------
+    if hasattr(content, "HYPOTHESIS_DETAILS"):
+        details = content.HYPOTHESIS_DETAILS
+        s.append(Spacer(1, 16))
+
+        # Sub-heading bound to the intro paragraph so they don't separate
+        s.append(KeepTogether([
+            Paragraph(details["heading"], styles["h2"]),
+            Spacer(1, 4),
+            Paragraph(details["intro"], styles["body_lead"]),
+        ]))
+        s.append(Spacer(1, 8))
+
+        # Per-hypothesis paragraphs. Render in a 2-column BalancedColumns so
+        # 8 short paragraphs fit compactly on the rest of the page rather
+        # than stretching down a single column.
+        h_paragraphs = []
+        for h_id, body in details["items"]:
+            h_paragraphs.append(Paragraph(body, styles["body"]))
+
+        s.append(BalancedColumns(
+            h_paragraphs, nCols=2, innerPadding=GUTTER,
+            spaceBefore=4, spaceAfter=8,
+        ))
+
     return s
 
 
@@ -1484,15 +1568,36 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         s.append(Paragraph(line, styles["body"]))
     s.append(Spacer(1, 10))
 
-    # Methodology disclaimer (verbatim from brand JSON)
+    # Methodology disclaimer.
+    #
+    # TEMPLATE-LEVEL FIXES (applied here, future reports inherit by copying
+    # this block):
+    #
+    # 1. Brand JSON's methodology_standard hardcodes "(current: v0.3)" \u2014 the
+    #    methodology version of the v0.6 cross-category report. Each report
+    #    follows a different protocol version; v0.7 Phase 2 BBB uses the AIAS
+    #    Presence Measurement Protocol v1.0 (locked 2026-05-04). We override
+    #    the version reference here per-report. Future reports update the
+    #    REPORT_PROTOCOL_VERSION constant below.
+    REPORT_PROTOCOL_VERSION = "v1.0"
+    methodology_text = brand["disclaimers"]["methodology_standard"].replace(
+        "(current: v0.3)",
+        f"(current: {REPORT_PROTOCOL_VERSION})",
+    )
     s.append(Paragraph("<b>Methodology</b>", styles["body_lead"]))
-    s.append(Paragraph(brand["disclaimers"]["methodology_standard"], styles["disclaimer"]))
+    s.append(Paragraph(methodology_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
 
     # Citation
+    #
+    # TEMPLATE-LEVEL FIX: surname-first byline order per Spanish-name
+    # convention. "Gonzalez Castro" is the surname pair, "Pablo Ulpiano" is
+    # the given-name pair. Citation form is "Gonzalez Castro, P. U. (year)."
+    # Brand JSON's citation.format field has the inverted order; this
+    # hardcoded version is the corrected template that future reports copy.
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
-        "Ulpiano Gonzalez Castro, P. (2026). "
+        "Gonzalez Castro, P. U. (2026). "
         "<i>Phantom Brand Persistence: AI Presence Index v0.7 \u2014 Bed Bath &amp; "
         "Beyond, designed for test</i>. "
         "Third System. thirdsystem.ai/v07-phantom-persistence"
@@ -1615,7 +1720,7 @@ def build(*, debug_layout: bool = False,
     print(f"[build_report_v07] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
         "hero_f1_comparator", "hero_f2_valence", "inline_f3_freshness",
-        "hero_f4_temporal",
+        "hero_f4_temporal", "hero_f5_rebrand",
         "hero_leaderboards",
     ]
     expected_files = set()

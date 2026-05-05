@@ -497,12 +497,11 @@ PATTERNS = [
 
     # ------------------------------------------------------------------
     # FINDING 5 — The rebrand has not propagated. The legacy brand has.
-    # (text-only, no chart)
     # ------------------------------------------------------------------
     {
         "number": 5,
         "title": "The rebrand has not propagated. The legacy brand has.",
-        "chart_slot": None,
+        "chart_slot": "hero_f5_rebrand",
         "paragraphs": [
             (
                 "H8 is confirmed: of 110 BBB mentions, 0% reference Beyond, "
@@ -599,6 +598,79 @@ HYPOTHESIS_SCORING = {
          "Beyond, Inc. &lt; 25% of BBB+Beyond",
          "0% strict \u00b7 23.6% inclusive",
          "Confirmed", "confirmed"),
+    ],
+}
+
+# What each hypothesis was testing — fuller reasoning per H. Rendered below
+# the scoring table on the same page (or following page if it overflows).
+# Each entry: (h_id, body_paragraph_with_inline_HTML)
+HYPOTHESIS_DETAILS = {
+    "heading": "What each hypothesis was testing",
+    "intro": (
+        "The pre-registration locked specific predictions for what Phase 2 "
+        "would find. Each hypothesis isolated a particular variable; the "
+        "results above are scored against those locked predictions, not "
+        "against post-hoc reasoning. The reasoning that motivated each "
+        "hypothesis is summarized below."
+    ),
+    "items": [
+        ("H1",
+         "<b>Phantom Presence \u2265 25%.</b> Tests whether the v0.6 Mint "
+         "phantom observation (44% mention rate in personal finance, 25 "
+         "months post-shutdown) generalizes to a different category. The "
+         "25% threshold equals roughly half the v0.6 signal \u2014 sufficient "
+         "evidence that phantom-brand-persistence is a structural property "
+         "of AI mediation rather than a one-category artefact."),
+        ("H2",
+         "<b>Cross-model spread \u2265 25 pts.</b> Tests whether phantom signal "
+         "varies meaningfully by model lineage. A wide spread suggests "
+         "training-pipeline differences across labs and models rather than "
+         "universal AI behavior. A narrow spread would suggest the phantom "
+         "is a property of the underlying training corpus shared across "
+         "frontier models."),
+        ("H3",
+         "<b>Sonnet &gt; Opus by \u2265 15 pts (within Anthropic).</b> Tests "
+         "the freshness hypothesis directly: do newer models phantom-mention "
+         "disrupted brands less? Holding the training pipeline constant "
+         "(both Anthropic), only training cutoff and reasoning capability "
+         "differ. A within-lab comparison is the cleanest test of freshness "
+         "alone."),
+        ("H4",
+         "<b>Within-OpenAI freshness (descriptive only).</b> Same logic "
+         "across OpenAI's mini\u2192flagship lineup. Reported descriptively "
+         "rather than directionally because gpt-5.4-mini and gpt-5.5 differ "
+         "on size as well as cutoff \u2014 the directional prediction would "
+         "confound two variables."),
+        ("H5",
+         "<b>Grok \u2265 Sonnet on phantom rate.</b> Tests training-cutoff "
+         "effect cross-lab. Grok 4.1 Fast carries the oldest cutoff in the "
+         "lineup (November 2024), spanning the active 2023\u20132024 "
+         "discourse around BBB's bankruptcy and rebrand. Sonnet's later "
+         "cutoff sees the same events more historicized. If cutoff matters, "
+         "Grok should produce more phantom mentions."),
+        ("H6",
+         "<b>BBB highest in p2/p6, lowest in p5.</b> Tests prompt-frame "
+         "sensitivity. Pre-registration predicted CONTEXTUAL_WHEN (registry "
+         "context, prompt 2) and COMPARISON (prompt 6) would maximize BBB "
+         "mentions \u2014 these frames most strongly activate BBB's pre-"
+         "collapse editorial slot. DISCOVERY (prompt 5, 'emerging brands') "
+         "should minimize them \u2014 the wrong cognitive frame for a "
+         "decades-old retailer."),
+        ("H7",
+         "<b>Pier 1 &lt; BBB AND Pier 1 &lt; 15%.</b> The structural "
+         "comparator. Tests whether pre-collapse footprint and years-since-"
+         "collapse are separable variables. Pier 1 collapsed 33 months "
+         "earlier than BBB, with a smaller pre-collapse retail footprint. "
+         "If the phantom is purely about being-defunct, Pier 1 should show "
+         "non-trivial phantom rates. If it's about pre-collapse editorial "
+         "weight, Pier 1 should be much lower."),
+        ("H8",
+         "<b>Beyond, Inc. &lt; 25% of BBB+Beyond mentions.</b> Tests rebrand "
+         "propagation. When AI surfaces the brand, does it use the legacy "
+         "name (Bed Bath &amp; Beyond) or the new corporate identity "
+         "(Beyond, Inc.)? A low Beyond, Inc. share indicates AI's "
+         "recommendation set has not internalized the rebrand \u2014 the "
+         "legacy entity remains the primary surface."),
     ],
 }
 
