@@ -1,17 +1,11 @@
 {
   "category": "premium_kitchen_knives",
-  "registry_version": "knives_v1.2",
+  "registry_version": "knives_v1.1",
   "registry_date": "2026-05-06",
-  "supersedes": "knives_v1.1 (revised post-extraction per §2.4); knives_v1.0 (locked pre-registration)",
+  "supersedes": "knives_v1.0 (locked 2026-05-06; revised post-extraction per protocol §2.4)",
   "designed_for_test": "pattern_4_discourse_language_bias",
-  "lineage_aggregates": [
-    "japanese",
-    "german",
-    "american"
-  ],
-  "exploratory_lineages": [
-    "japanese_hybrid"
-  ],
+  "lineage_aggregates": ["japanese", "german", "american"],
+  "exploratory_lineages": ["japanese_hybrid"],
   "registry_note": "Designed-for-test category for Pattern 4 (discourse-language bias) per AIAS Presence Measurement Protocol v1.1 §6.6 and §8.3. v1.1 revision applied after first-run extraction surfaced six Japanese makers in the unknown-mentions list at material frequencies (Miyabi at 90 mentions, Takamura at 48, Konosuke at 28, Korin at 21, Yu Kurosaki at 14, Nigara Hamono at 14 — collectively ~25% of all unknown mentions). Per protocol §2.4, registry expansion is the standard response when the unknown-mentions list affects the leaderboard.",
   "v1_1_revision_notes": {
     "changed_from_v1_0": "Added Miyabi as 'japanese_hybrid' (NOT in lineage_aggregates), and added Takamura, Konosuke, Korin, Yu Kurosaki, Nigara Hamono as standard japanese lineage.",
@@ -28,56 +22,40 @@
       "canonical": "Shun",
       "tier": "incumbent",
       "lineage": "japanese",
-      "aliases": [
-        "shun"
-      ],
+      "aliases": ["shun"],
       "registry_note": "Mass-market premium Japanese with heavy Williams-Sonoma distribution. Tests whether strong English-marketing alone escapes Pattern 4 for a Japanese-origin brand."
     },
     {
       "canonical": "Global",
       "tier": "incumbent",
       "lineage": "japanese",
-      "aliases": [
-        "global knives",
-        "global cutlery",
-        "global cromova"
-      ],
+      "aliases": ["global knives", "global cutlery", "global cromova"],
       "registry_note": "Yoshikin Japan; heavily English-distributed. Aliases narrow to avoid false-positive on the common word 'global'."
     },
     {
       "canonical": "Mac",
       "tier": "mid-tier",
       "lineage": "japanese",
-      "aliases": [
-        "mac knives",
-        "mac knife",
-        "mac chef knife"
-      ],
+      "aliases": ["mac knives", "mac knife", "mac chef knife"],
       "registry_note": "Strong chef-circle reputation in English. Aliases narrow to avoid false-positive on bare 'mac' (Macintosh, generic)."
     },
     {
       "canonical": "Tojiro",
       "tier": "mid-tier",
       "lineage": "japanese",
-      "aliases": [
-        "tojiro"
-      ]
+      "aliases": ["tojiro"]
     },
     {
       "canonical": "Misono",
       "tier": "mid-tier",
       "lineage": "japanese",
-      "aliases": [
-        "misono"
-      ]
+      "aliases": ["misono"]
     },
     {
       "canonical": "Masamoto",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "masamoto"
-      ],
+      "aliases": ["masamoto"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.0_locked",
       "registry_note": "High-end traditional Japanese maker, primarily Japanese-language marketing. Primary boundary-condition test for Pattern 4 (locked in pre-registration v1.0)."
@@ -86,10 +64,7 @@
       "canonical": "Sakai Takayuki",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "sakai takayuki",
-        "takayuki"
-      ],
+      "aliases": ["sakai takayuki", "takayuki"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.0_locked",
       "registry_note": "Handmade Sakai-style Japanese knives, niche English distribution. Locked v1.0 boundary-condition."
@@ -98,9 +73,7 @@
       "canonical": "Yoshihiro",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "yoshihiro"
-      ],
+      "aliases": ["yoshihiro"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.0_locked",
       "registry_note": "Boutique high-end Japanese, limited US-targeted English marketing. Locked v1.0 boundary-condition."
@@ -109,9 +82,7 @@
       "canonical": "Takamura",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "takamura"
-      ],
+      "aliases": ["takamura"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.1_added",
       "registry_note": "Traditional Japanese maker (Echizen). Surfaced 48 times in v1.0 unknown-mentions list. Added in v1.1 as additional boundary-condition test for H8 expanded denominator."
@@ -120,9 +91,7 @@
       "canonical": "Konosuke",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "konosuke"
-      ],
+      "aliases": ["konosuke"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.1_added",
       "registry_note": "Boutique Japanese (Sakai). Surfaced 28 times in v1.0 unknown-mentions list."
@@ -131,9 +100,7 @@
       "canonical": "Korin",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "korin"
-      ],
+      "aliases": ["korin"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.1_added",
       "registry_note": "Korin (NYC retailer house brand of traditional Japanese knives). Surfaced 21 times in v1.0 unknown-mentions list. Korin functions as both a retailer and a maker — boundary case but the AI surfaces it primarily as a brand."
@@ -142,10 +109,7 @@
       "canonical": "Yu Kurosaki",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "yu kurosaki",
-        "kurosaki"
-      ],
+      "aliases": ["yu kurosaki", "kurosaki"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.1_added",
       "registry_note": "Boutique Japanese smith (Echizen). Surfaced 14 times in v1.0 unknown-mentions list."
@@ -154,10 +118,7 @@
       "canonical": "Nigara Hamono",
       "tier": "challenger",
       "lineage": "japanese",
-      "aliases": [
-        "nigara hamono",
-        "nigara"
-      ],
+      "aliases": ["nigara hamono", "nigara"],
       "boundary_condition": "discourse_language_test",
       "boundary_set": "v1.1_added",
       "registry_note": "Boutique Japanese (Aomori). Surfaced 14 times in v1.0 unknown-mentions list."
@@ -166,9 +127,7 @@
       "canonical": "Miyabi",
       "tier": "incumbent",
       "lineage": "japanese_hybrid",
-      "aliases": [
-        "miyabi"
-      ],
+      "aliases": ["miyabi"],
       "boundary_condition": "japanese_german_hybrid_exploratory",
       "registry_note": "Japanese-branded knife line owned by Zwilling J.A. Henckels (German parent). v1.0 excluded Miyabi to preserve the lineage test from confound; the AI surfaced Miyabi 90 times in v1.0 extraction (third-most-mentioned brand overall), making the exclusion methodologically untenable for the published dataset. v1.1 adds Miyabi as 'japanese_hybrid' — NOT in lineage_aggregates per the v1.0 lock. Analysis treats Miyabi separately: if Miyabi Presence is between Japanese-aggregate and German-aggregate, that's evidence the German English-marketing budget restores Japanese-origin brand visibility. If Miyabi is closer to German-aggregate, the marketing-budget-language hypothesis (H5) generalizes. If Miyabi is closer to traditional Japanese, the lineage-of-origin signal is robust to the German-parent confound. Each outcome is publishable as an exploratory finding."
     },
@@ -176,209 +135,91 @@
       "canonical": "Wüsthof",
       "tier": "incumbent",
       "lineage": "german",
-      "aliases": [
-        "wusthof",
-        "wüsthof",
-        "wuesthof"
-      ],
+      "aliases": ["wusthof", "wüsthof", "wuesthof"],
       "registry_note": "The German Williams-Sonoma anchor. Iconic English-language presence."
     },
     {
       "canonical": "Henckels",
       "tier": "incumbent",
       "lineage": "german",
-      "aliases": [
-        "henckels",
-        "zwilling",
-        "zwilling j.a. henckels",
-        "zwilling henckels",
-        "j.a. henckels",
-        "ja henckels"
-      ],
+      "aliases": ["henckels", "zwilling", "zwilling j.a. henckels", "zwilling henckels", "j.a. henckels", "ja henckels"],
       "registry_note": "Collapses Zwilling J.A. Henckels (premium) and J.A. Henckels International (budget) into one canonical because the AI surfaces both interchangeably."
     },
     {
       "canonical": "Messermeister",
       "tier": "mid-tier",
       "lineage": "german",
-      "aliases": [
-        "messermeister"
-      ]
+      "aliases": ["messermeister"]
     },
     {
       "canonical": "Friedr. Dick",
       "tier": "challenger",
       "lineage": "german",
-      "aliases": [
-        "friedr. dick",
-        "friedr dick",
-        "f. dick",
-        "f dick"
-      ],
+      "aliases": ["friedr. dick", "friedr dick", "f. dick", "f dick"],
       "registry_note": "Aliases avoid bare 'dick' (false-positive risk)."
     },
     {
       "canonical": "Güde",
       "tier": "challenger",
       "lineage": "german",
-      "aliases": [
-        "gude",
-        "güde",
-        "guede"
-      ],
+      "aliases": ["gude", "güde", "guede"],
       "registry_note": "High-end forged German with limited English presence. German-side parallel to traditional Japanese boundary-condition tests (H5)."
     },
     {
       "canonical": "Cutco",
       "tier": "mid-tier",
       "lineage": "american",
-      "aliases": [
-        "cutco"
-      ],
+      "aliases": ["cutco"],
       "registry_note": "American mass-market premium, direct-sales channel."
     },
     {
       "canonical": "Misen",
       "tier": "mid-tier",
       "lineage": "american",
-      "aliases": [
-        "misen"
-      ],
+      "aliases": ["misen"],
       "registry_note": "Modern direct-to-consumer American challenger."
     },
     {
       "canonical": "Lamson",
       "tier": "challenger",
       "lineage": "american",
-      "aliases": [
-        "lamson",
-        "lamson cutlery",
-        "lamson sharp"
-      ],
+      "aliases": ["lamson", "lamson cutlery", "lamson sharp"],
       "registry_note": "Heritage American (since 1837)."
     },
     {
       "canonical": "Warther",
       "tier": "challenger",
       "lineage": "american",
-      "aliases": [
-        "warther",
-        "warther cutlery"
-      ],
+      "aliases": ["warther", "warther cutlery"],
       "registry_note": "Boutique American forged, regional/niche distribution."
     },
     {
       "canonical": "Made In",
       "tier": "challenger",
       "lineage": "american",
-      "aliases": [
-        "made in cookware",
-        "made in knives",
-        "madein"
-      ],
+      "aliases": ["made in cookware", "made in knives", "madein"],
       "registry_note": "Aliases narrow because 'made in' is a common preposition phrase."
     },
     {
       "canonical": "Victorinox",
       "tier": "mid-tier",
       "lineage": "shared",
-      "aliases": [
-        "victorinox"
-      ],
+      "aliases": ["victorinox"],
       "registry_note": "Swiss; spans professional and household markets. Shared-context (not in lineage aggregates)."
     },
     {
       "canonical": "Mercer",
       "tier": "challenger",
       "lineage": "shared",
-      "aliases": [
-        "mercer cutlery",
-        "mercer culinary"
-      ],
+      "aliases": ["mercer cutlery", "mercer culinary"],
       "registry_note": "American foodservice-focused. Shared-context."
     },
     {
       "canonical": "Dexter-Russell",
       "tier": "challenger",
       "lineage": "shared",
-      "aliases": [
-        "dexter-russell",
-        "dexter russell"
-      ],
+      "aliases": ["dexter-russell", "dexter russell"],
       "registry_note": "American professional/foodservice heritage. Shared-context."
-    },
-    {
-      "canonical": "Takeda",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "takeda",
-        "takeda hamono"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Boutique Japanese smith (Niimi/Okayama). Surfaced 10 times in v1.1 unknown-mentions list. Added in v1.2 as additional boundary-condition test."
-    },
-    {
-      "canonical": "Yoshikane",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "yoshikane",
-        "yoshikane hamono"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Traditional Japanese maker (Sanjo). Surfaced 8 times in v1.1 unknown-mentions list."
-    },
-    {
-      "canonical": "Kikuichi",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "kikuichi"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Traditional Japanese maker (Nara). Surfaced 7 times in v1.1 unknown-mentions list."
-    },
-    {
-      "canonical": "Nenox",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "nenox",
-        "nenohi"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Traditional Japanese maker (Sakai). Surfaced 7 times in v1.1 unknown-mentions list."
-    },
-    {
-      "canonical": "Togiharu",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "togiharu"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Traditional Japanese house brand (sold via Korin). Surfaced 6 times in v1.1 unknown-mentions list."
-    },
-    {
-      "canonical": "Mazaki",
-      "tier": "challenger",
-      "lineage": "japanese",
-      "aliases": [
-        "mazaki"
-      ],
-      "boundary_condition": "discourse_language_test",
-      "boundary_set": "v1.2_added",
-      "registry_note": "Boutique Japanese smith (Aichi). Surfaced 6 times in v1.1 unknown-mentions list."
     }
-  ],
-  "v1_2_revision_notes": {
-    "changed_from_v1_1": "Added 6 traditional Japanese makers as boundary-condition tests: Takeda, Yoshikane, Kikuichi, Nenox, Togiharu, Mazaki. Each surfaced in the v1.1 brands_unknown list at material rates (combined ~44 mentions). Per protocol §2.4, registry expansion is the standard response when unknown-mentions affect leaderboard interpretation.",
-    "preregistration_impact": "H1-H7 thresholds and operational definitions unchanged. H8 v1.2 expanded set has 14 boundary-condition brands (vs v1.1's 8 and v1.0's 3). All three versions reported in v0.8 results for transparency. v1.0_locked remains the pre-registration anchor; v1.1 and v1.2 are post-registration revisions explicitly disclosed as such."
-  }
+  ]
 }
