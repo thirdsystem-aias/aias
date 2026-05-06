@@ -1,3 +1,192 @@
+# v0.8 — Phase 2 Knives — Discourse-Language Bias
+
+**Date:** 6 May 2026
+**Protocol:** AIAS Presence Measurement Protocol v1.1
+**Pre-registration:** `pre_registration/PRE_REGISTRATION_knives_v1.0.md`
+(locked at git commit `d3e0989` before any data collection)
+**Final report:** `reports/output/v08_discourse_language.pdf`
+**Tag:** `v0.8-published`
+
+## What we did
+
+Designed-for-test measurement of Pattern 4 (discourse-language bias) on
+premium kitchen knives. The category was selected as the cleanest available
+structural test: Japan dominates premium production and chef reputation,
+English-language coverage is mediated through US/UK food media, and German
+and American knife brands provide structurally analogous English-discourse
+comparators on the same product.
+
+Six pre-registered prompts (FUNCTIONAL_WHY, CONTEXTUAL_WHEN,
+CONSTRAINT_WITH, IDENTITY_HOW_FEELING, DISCOVERY, COMPARISON) anchored to
+Category Entry Points per Protocol §3.1. Six frontier models from four
+labs: Claude Sonnet 4.6, Claude Opus 4.7, gpt-5.4-mini, gpt-5.5,
+Gemini 2.5 Flash, Grok 4.1 Fast. Eight runs each at temperature 0.7 where
+supported. **288 successful measurements** after a single-cell recovery
+cycle restored the initial 287/288 sweep to 100%.
+
+Registry expanded twice post-extraction per Protocol §2.4. v1.0 locked at
+21 brands across three lineages. v1.1 added five traditional Japanese
+makers + Miyabi as exploratory hybrid. v1.2 added six more boundary
+Japanese brands. Final canonical registry: 27 brands, scoring run against
+both v1.0 locked and v1.2 expanded for transparency.
+
+## Key findings
+
+**H7 reframed — confirmed at strongest possible level.** Of 262 named
+authority mentions across all 288 measurements (publications + retailers
++ online communities), **100% are English-language**. Sur La Table,
+Serious Eats, Williams-Sonoma, Wirecutter, Amazon, America's Test Kitchen,
+Japanese Knife Imports (a US-based English-language retailer — the only
+Japanese word in the authority list), Knifewear, Reddit, BladeHQ, Cook's
+Illustrated, Burrfection, KnifeCenter, ChefKnivestoGo. Zero non-English.
+Zero unclear. The strongest replication of the v0.6 preliminary Pattern 4
+signal in any AIAS measurement to date.
+
+**H3 + H5 + H8 outliers — marketing-language coverage operates within
+every lineage.** H3 confirmed at 44.3pp gap (mass-market Japanese 55.2%
+vs traditional Japanese 10.9%), 5x ratio. H5 confirmed at strongest level
+(Güde 0.0% vs Wüsthof+Henckels 62.0% mean). H8 v1.2 expanded set
+partially confirmed at 6.8% — held above the <5% threshold by exactly two
+outliers (Masamoto 18.1%, Takamura 16.7%), the only boundary-condition
+brands with substantial US-targeted English-language infrastructure. The
+remaining 12 boundary brands aggregate to ~5%. Three independent tests on
+different scales converge on the same mechanism: **brand-level marketing-
+language coverage, not lineage of origin, predicts AI Presence in
+cross-lingual categories.**
+
+**H1 disconfirmed at locked, partially confirmed at published — registry-
+construction-dependency is itself a finding.** v1.0 locked: jp 36.2% > de
+27.3% (8.9pp gap, opposite predicted direction). v1.2 published: jp 18.5%
+< de 27.3% (8.8pp gap, partial confirmation). The shift is entirely
+driven by registry expansion adding 11 boundary-condition Japanese brands
+at 2–10% Presence each. The locked-registry score is the formal pre-
+registration outcome (DISCONFIRMED). The mechanism findings (H3, H5, H7
+reframed, H8 within-cohort) do not depend on this choice and are robust
+across both registry versions.
+
+**H4 disconfirmed at headline, German-variance-in-p3 is the actual
+finding.** Japanese aggregate steady at 21.3% in p3 (constraint, Japanese-
+bias prompt) vs 22.8% baseline — ratio 0.93. But **German aggregate
+collapses to 2.1% in p3** while peaking at 45.8% in p4 (identity). The
+asymmetric variance is in German lineage, not Japanese. AI does recognize
+Japanese specialization for the constraint frame; what it does there is
+stop recommending German.
+
+**H6 descriptive — newer-models-surface-boundary-cases-better replicates
+v0.7 across both labs.** Within OpenAI: gpt-5.5 surfaces Japanese
+aggregate at 25.2% vs gpt-5.4-mini at 15.0% — 10.2pp toward boundary
+lineage. Within Anthropic: Opus 4.7 at 21.1% vs Sonnet 4.6 at 18.8% —
+2.3pp same direction. Cross-category replication of v0.7's "newer models
+phantom-mention better, not less" on a different boundary axis. Strongest
+cross-category replication in the AIAS measurement program to date.
+
+**H2 cannot evaluate — American comparator collapsed.** American aggregate
+0.6% across all prompts. AI does not recognize "American kitchen knives"
+as a meaningful category, regardless of brand. This is itself a finding
+about category discourse history shaping AI Presence.
+
+**Miyabi exploratory.** Japanese-branded knife line owned by Zwilling-
+Henckels (German parent). Surfaces at 31.6% — between Japanese aggregate
+(18.5%) and German aggregate (27.3%), closer to German. German English-
+marketing infrastructure restores Japanese-origin brand to German-
+aggregate-equivalent visibility but not to mass-market-Japanese leadership
+levels. Cross-cites to Tri-System §9.5a Corporate Portfolio Layer.
+
+## Methodology improvements
+
+**Registry-revision protocol exercised end-to-end.** v1.0 → v1.1 → v1.2
+expansions, all explicitly disclosed and scored against. Demonstrates the
+protocol's handling of the registry-construction-dependency phenomenon.
+
+**Mode classifier → AI cross-lab audit.** Five-mode taxonomy (brand /
+mixed / component / authority / refusal). Stratified 25-row sample
+classified blind by Claude Opus 4.7 from a second instance: 96% strict
+agreement on the macro brand-surfacing operational unit (which H1–H8
+score against), 68% on the underlying five-mode taxonomy. All eight
+strict-mode disagreements clustered on the brand-vs-mixed boundary,
+paralleling v0.7's caveated/correction/historical adjacency clustering.
+The strict-agreement gap is itself a finding about taxonomy granularity.
+
+**Auxiliary unknowns classifier.** Categorized every brands_unknown
+surface mention into knife_brand / publication / retailer / community /
+smith / product_term / other with English-language flag. Provided the
+operational denominator for the H7 reframe (262 authority mentions).
+
+**H7 reframe per Protocol §6.4.** Locked threshold (≥90% of authority-
+mode responses English) had insufficient denominator (2 of 96 p4+p5
+rows). Reframed to authority-naming across all responses, scored against
+the same 90% threshold. Documented and disclosed.
+
+**Per-finding `n_lead` override** in report builder. Per-finding
+parameter in content module controls how many body paragraphs precede
+the chart in the sandwich layout. F1, F2, F4 use `n_lead=0` (chart
+immediately after title); F3 uses `n_lead=3` (lead body fills page
+before chart defers to next page). Replaces v0.7's uniform `ceil(n/2)`
+heuristic with content-aware placement.
+
+## Deliverables
+
+- `data/knives/results_v2_knives_v1.0_final.csv` — 288 measurements
+- `data/knives/results_enriched_knives_20260506_142305.csv` — v1.2
+  registry brand extraction (255/288 brand-surfacing)
+- `data/knives/mode_classified_20260506_133013.csv` — 5-mode response
+  classification
+- `data/knives/audit_sample_mode_*.csv` — 25-row AI cross-lab audit
+- `data/knives/unknowns_classified_20260506_144000.csv` — authority-
+  class entity classification
+- `data/knives/scoring_tables_20260506_144051.csv` — H1–H8 formal
+  scoring
+- `registries/brands_knives.json` — v1.2 registry (27 brands, 4 lineages)
+- `pre_registration/PRE_REGISTRATION_knives_v1.0.md` — locked
+  pre-registration document
+- `reports/output/v08_discourse_language.pdf` — final report
+
+## Cross-references
+
+- **Tri-System Brand Growth (Ulpiano Gonzalez Castro, 2026)**:
+  - §9.5a Corporate Portfolio Layer — Miyabi exploratory observation
+    informs the AIAS aggregation formula (German parent infrastructure
+    elevates Japanese-origin brand to German-aggregate level)
+  - §9.5a boundary-condition matrix — Pattern 4 confirmed via one
+    designed-for-test category (knives) and two preliminary categories
+    (olive oil v0.6, skincare v0.6); promote from "preliminary" to
+    "confirmed (one designed-for-test, two preliminary)"
+  - Section 4.1a Identity Load moderator — Miyabi 31.6% vs Japanese
+    mass-market 55.2% suggests Identity Load attenuates Presence even
+    with German-parent English-marketing infrastructure
+- **AIAS Presence Measurement Protocol v1.1**: §2.4 (registry-revision
+  protocol exercised), §3.4 (mode classification taxonomy), §6.4
+  (hypothesis reframe convention)
+- **Methodology paper (planned)**: v0.6 cross-category baseline + v0.7
+  phantom-brand designed-for-test + v0.8 discourse-language designed-for-
+  test = three-dataset empirical spine demonstrating cross-category
+  replication of newer-models-surface-boundary-cases-better and the
+  recommendation-slot / marketing-language-coverage mechanism duality
+
+## Limitations
+
+Single category designed-for-test (knives). Combined with v0.6
+preliminary observations, the program now has one-category-confirmed-
+plus-two-preliminary for Pattern 4. The mechanism (brand-level marketing-
+language coverage) is not yet generalizable to all cross-lingual
+categories. Phase 3 will test additional cross-lingual categories
+(premium tea and traditional spirits identified as candidates). H1's
+registry-construction-dependency limits the headline lineage-aggregate
+test to a registry-version-qualified claim. American comparator collapse
+prevents the H2 robustness check ("Wüsthof effect" objection). p3
+component-mode contamination materialized modestly (5/48 pure-component;
+36/48 mixed) — handled via brand-surfacing operational unit.
+DISCOVERY prompt drift into folding/tactical knife brands documents an
+out-of-category leak in AI's "emerging knife brands" cognitive slot.
+Construct validity of AI Presence as a leading indicator of consumer
+behavior in cross-lingual categories remains unproven; Phase 3 will
+correlate against external consumer-tracking data.
+
+---
+
+
+---
+
 # Third System — Research Log
 
 **Started:** May 3, 2026
