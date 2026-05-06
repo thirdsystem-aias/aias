@@ -23,6 +23,61 @@ When an entry has all four, it's likely a paragraph or a figure in the methodolo
 
 ---
 
+## 2026-05-04 — Phase 2 v0.7: BBB phantom measurement
+
+**Doing:** Ran the first designed-for-test category from Phase 2 — Bed Bath & Beyond as a Pattern 6 (phantom-brand persistence) replication test of the v0.6 Mint observation. Single intensive session: pre-registration document locked → six-prompt × six-model × eight-run sweep (288 measurements) → manual valence review of every BBB mention → drafted v0.7 report. The session covered design, execution, analysis, and reframe in one continuous push.
+
+**Expected:** The v0.6 Mint finding would replicate at lower magnitude (Mint 44% → BBB ~25–35%, with the H1 floor pre-registered at ≥25%). Within-Anthropic freshness would show Sonnet > Opus by ≥15 points (newer model = fresher training = less phantom). Pier 1 as the structural comparator would land below 15%. The phantom mechanism would be naive lag — AI hasn't updated on the closure.
+
+**Observed:** BBB at 38.2% raw Presence — within four points of Mint and clearing H1 by 13 points. But the result fractured the naive-lag interpretation. Manual review of all 110 BBB mentions showed:
+- 1.7% naive_phantom (AI presents BBB as fully live, no caveat)
+- 25.0% live_with_caveat (AI surfaces BBB alongside disclosure of closure/rebrand)
+- 2.4% status_correction (AI explicitly says BBB is closed)
+- 8.7% historical_reference (past tense only)
+
+**88% of BBB mentions demonstrate AI knows the entity has changed.** The 38.2% headline is *not* AI being unaware. AI is informed, and surfaces BBB anyway, with disclaimer.
+
+H3 disconfirmed at raw level — Opus surfaced BBB *more* than Sonnet (56.2% vs 41.7%, reversing the predicted direction by 14.5 points). But Opus's mentions were 96% responsibly handled vs Sonnet's 90%. **Newer models phantom-mention better, not less.** Same pattern within-OpenAI — flagship gpt-5.5 had the lowest raw rate (14.6%) but gpt-5.4-mini (older, smaller) had the highest aware-mode rate.
+
+H7 confirmed in the strongest possible form: Pier 1 = 0.0% across all 288 measurements. Zero. The structural comparator carrying smaller pre-collapse footprint and longer time-since-collapse produces zero phantom signal in the same registry, against the same prompts, across the same models.
+
+H6 partially confirmed and produced a finding outside pre-registration: per-CEP analysis showed BBB occupies *different temporal frames* depending on the prompt. FUNCTIONAL prompts get BBB-as-current-online-retailer (70.8% Presence, mostly caveated). IDENTITY prompts get BBB-as-cultural-memory (81.2% Presence, 43.8% aware-mode). DISCOVERY produced zero BBB mentions. Same brand, six prompts, six different cognitive-time slots. The v0.6 framework didn't anticipate temporal-frame variance within a single brand.
+
+**Hypothesis:** The phantom is a **recommendation slot, not a knowledge gap**. BBB's accumulated editorial volume in AI training corpora — decades of comparison articles, registry guides, household-essentials listicles, store-by-store rankings — encoded a recommendation slot. The slot persists in AI's recommendation logic regardless of the entity's current operating status. When the entity changes, AI does not vacate the slot. AI fills the slot with disclaimer.
+
+This is structurally stronger than naive lag. Naive lag suggests training-data freshness as the variable to optimize. Recommendation-slot persistence suggests brand-mention pathways are reinforcement-encoded structures that retraining does not directly address. The same brand can live in different recommendation slots across different models — and across different prompts within the same model — even when every model's underlying knowledge of the entity is identical.
+
+**When the reframe emerged:** During manual review, not before. The pre-registration treated the phantom mechanism as naive lag (consistent with how the Mint finding had been framed in v0.6). The valence taxonomy was designed to *quantify* lag — the assumption was that a meaningful fraction of BBB mentions would be live_recommendation (the "AI doesn't know" case). When manual review of the first ~30 mentions showed live_with_caveat dominating, the reframe forced itself. Recording this matters for the methodology paper because the reframe is exploratory, not confirmatory, and the paper should be honest about that.
+
+**Why Pier 1 specifically as the structural comparator:** Considered Stadia and SVB during design. Stadia is a cleaner shutdown but the cloud-gaming category is too small for a proper registry comparison (only ~5 named competitors). SVB has the regulatory-category confound (banking would activate refusal modes that household goods doesn't). Pier 1 is structurally analogous to BBB on the dimension that matters — same fate (collapse → online-only revival under the same legacy domain) — but differs on the two variables we want to separate: pre-collapse footprint (~$1.5B revenue, smaller specialty) and time-since-collapse (70 months vs 37 months). Two variables not separable from a single brand; readable from the BBB-vs-Pier 1 contrast.
+
+**Why six models from four labs, not the v0.6 two-model design:** The v0.6 Anthropic-vs-OpenAI 42-point spread on Mint was the second-largest in the personal finance dataset and the cleanest per-model freshness signal. To test whether that pattern was specific to the Anthropic-OpenAI pair or a structural property of the AI ecosystem, Phase 2 needed within-lab generational pairs (Sonnet 4.6 / Opus 4.7; gpt-5.4-mini / gpt-5.5) plus cross-lab diversity (Google Gemini 2.5 Flash, xAI Grok 4.1 Fast as the oldest-cutoff comparator at November 2024). The lineup was designed to separate "newer model" from "specific lab" as variables. The within-Anthropic and within-OpenAI patterns turned out to point the same direction — newer = more responsible handling, not less raw frequency — which is a stronger structural finding than any single-pair difference.
+
+**Risk #2 from pre-registration materialized as predicted.** Walmart and Amazon ceiling-compressed the COMPARISON and FUNCTIONAL prompts at near-100% each, leaving BBB structurally constrained in the COMPARISON frame regardless of phantom strength. BBB COMPARISON Presence: 8.3%. The pre-registered risk identified this; the result confirmed it. This is the kind of methodological discipline the methodology paper will cite — predicting structural risks in writing before measurement, then observing whether they manifest.
+
+**Spot-check audit on naive-phantom labels.** The 1.7% naive-phantom rate is the headline for Finding 02 (the recommendation-slot reframe). Independent audit on a stratified 25-row sample produced 88% strict agreement with the AI classifier. All five live_recommendation rows verified correct on independent review. Three boundary disagreements clustered on caveated/correction/historical adjacency, none affecting the headline number. This is what makes Finding 02 defensible.
+
+**Failed-call recovery.** Initial sweep produced ~67% completion rate (192/288 successful) — the first time multi-lab + reasoning-model + temperature-handling complexity hit the runner. Pre-registered failed-call recovery cycle restored to 100%. Worth recording: the runner needed `supports_temperature: False` flags for both Opus 4.7 and gpt-5.5 (reasoning models that reject temperature parameter). The xAI integration uses the OpenAI SDK with a different base URL — two-line addition, no new SDK dependency.
+
+**Implication for protocol:** Phase 2 surfaces enough new methodology to justify a v1.1 increment. The new sections needed:
+- Pre-registration as standard practice (PRE_REGISTRATION_<category>_<version>.md template, eight-hypothesis structure, locked before measurement)
+- Manual valence review with five-level + four-level taxonomies
+- Multi-lab model lineup (six models, four labs, within-lab generational pairs, oldest-cutoff comparator) replacing the v0.6 two-model setup
+- Phantom-brand methodology (phantom subject + structural comparator + valence taxonomy + entity-reference taxonomy + per-CEP temporal-frame analysis) as a reproducible category-design pattern
+
+**Implication for framework:** The recommendation-slot reframe is the methodology paper's hero finding now. It says AI brand visibility is structurally different from any prior brand-visibility metric — not a measurement of consumer awareness, not a lagged indicator of consumer behavior, but a property of how AI mediation composes recommendation sets. The BBB-vs-Pier 1 contrast is the cleanest empirical demonstration in the AIAS dataset.
+
+**Implication for Tri-System paper:** §9.5a (Corporate Portfolio Layer) currently cites AIAS with naive-lag as the implicit phantom mechanism. Recommendation-slot persistence is a stronger argument for AIAS-as-third-availability-layer because it says AI mediation has its own reinforcement structure that retraining doesn't directly address — earning the "third availability layer" label rather than inheriting the existing mental/physical framing.
+
+**Promotion candidates for the methodology paper:**
+- Finding 02 (recommendation-slot reframe) → Discussion section, the central thesis
+- Finding 04 (per-CEP temporal frames) → Results section, novel sub-finding
+- BBB/Pier 1 contrast → Methods section, designed-for-test exemplar
+- Pre-registration document + spot-check audit → Methods section, rigor signal
+- The reframe-emerged-during-analysis story → Discussion section, exploratory honesty
+
+---
+
 ## 2026-05-03 — Phase C typesetting consolidation
 
 **Doing:** Pushing v0.6 cross-category findings report from drafted Markdown into a fully typeset PDF, using the build pipeline (`build_report.py`). Resolving layout fights — orphaned titles, font compression, hero-chart placement, sandwich vs body-then-chart for non-hero patterns. Tag this as the canonical v0.6 reference render.
@@ -203,7 +258,7 @@ Items that aren't dated entries but should not be lost.
 - **Within-prompt variance plateau.** `[VERIFY]` whether eight runs/prompt was empirically grounded (variance plateaus) or budget-driven. The methodology paper needs a defensible answer.
 - **Registry-revision threshold.** `[FILL]` the formal operational rule for triggering registry expansion. Currently described qualitatively as "unknown-mentions exceeding a level that affects the leaderboard."
 - **Diffuse-response disambiguation.** `[FILL]` the provisional rule for distinguishing prompt failure from structurally empty cognitive slots. Needs to live in §6 of the protocol. Provisional candidate: diffuse-but-coherent responses where the model articulates *why* it can't pick a clear leader count as structural; diffuse-and-incoherent responses where the model lists candidates without justification count as prompt failure.
-- **Phase 2 categories.** Two categories selected: one to test discourse-language bias (Pattern 4), one to test phantom-brand persistence (Pattern 6). Pattern 4 candidates: Japanese kitchen knives, French wine, Korean small electronics. Pattern 6 candidate: a category with a recent named disruption (Twitter→X, Bed Bath & Beyond). `[FILL: final selections and rationale once locked.]`
+- **Phase 2 categories.** Two categories selected: one to test discourse-language bias (Pattern 4), one to test phantom-brand persistence (Pattern 6). **Pattern 6 closed: Bed Bath & Beyond designed-for-test ran 2026-05-04, replicates the v0.6 Mint phantom finding at 38.2%, reframes the mechanism from naive lag to recommendation-slot persistence (see 2026-05-04 dated entry).** Pattern 4 still open. Pattern 4 candidates: Japanese kitchen knives, French wine, Korean small electronics. Selection deferred until methodology paper draft has substance.
 - **Construct validity.** Phase 3. The single biggest open question for the framework. Currently flagged in every report as "not yet established." The negative result (AI Presence ≠ marketing-budget-or-distribution) is the cleanest signal v0.6 produced; this is the place to start in Phase 3 design.
 - **Hosting decision for v1.0.** Personal GitHub vs. thirdsystem.ai vs. SSRN as the canonical reference URL. Affects how the protocol cites itself.
 - **Mode classifier as Phase 2 pre-step.** Operationalization of the three-modes formalization. Needs a decision on whether classification is automated (LLM-as-judge) or manual.
@@ -216,7 +271,15 @@ When an entry from this log becomes a paragraph or figure in *Measuring AI Avail
 
 | Log entry | Methodology paper section |
 |---|---|
-| _to be filled as drafting proceeds_ | |
+| 2026-04-29 v0.2 calibration error | Methods §3 — scale-construction cautionary tale |
+| 2026-04-30 / 2026-05-01 olive oil + skincare registry expansions | Methods §2.4 — registry-revision protocol |
+| 2026-05-04 BBB Finding 02 (recommendation-slot reframe) | Discussion §1 — central thesis of the paper |
+| 2026-05-04 BBB Finding 04 (per-CEP temporal frames) | Results §3 — novel within-brand sub-finding |
+| 2026-05-04 BBB/Pier 1 structural-comparator design | Methods §4 — designed-for-test exemplar |
+| 2026-05-04 BBB pre-registration + spot-check audit | Methods §5 — rigor signal |
+| 2026-05-04 reframe-during-analysis | Discussion §3 — exploratory honesty |
+| v0.6 maturity → discourse-coherence hypothesis revision | Results §1 — hypothesis dying cleanly between versions |
+| v0.6 negative result (AI Presence ≠ marketing/distribution) | Discussion §2 — construct-non-redundancy claim |
 
 ---
 

@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "schema_version": "1.4",
+    "schema_version": "1.5",
     "purpose": "Third System brand boilerplate. Overrides the design_tokens_template.json defaults for any Third System-published deliverable. Locked content; edit only with intent.",
     "owner": "Pablo Ulpiano Gonzalez Castro",
     "version_history": [
@@ -8,7 +8,8 @@
       "1.1 \u2014 primary swapped to Indigo #37237B; partial data viz palette",
       "1.2 \u2014 comprehensive data viz system fully adopted under the Third System brand: 35 named colors \u00d7 CMYK Coated/Uncoated/RGB/Hex/Pantone, 5 neutral tones, 5 grayscale tones, four chart schemes (Qualitative-Recommended, Qualitative-Standard, Sequential, Diverging), color-blindness-tested pairings, chart construction rules.",
       "1.3 \u2014 added Black 10 grayscale tone; locked tier_color_semantics (Incumbent=Indigo, Mid-tier=Petro, Challenger=Copper Plate); added semantic_ui_colors (text/muted/grid) and python_constant_mapping for stable cross-chat constant naming.",
-      "1.4 \u2014 added chart_sizing_specifications: locked figsize-by-column-span table, DPI targets (300 print/144 screen), font-size scaling per column span, title/subtitle/source positioning formulas, output filename convention. Default output is print-first (300 DPI vector PDF) which renders correctly for both print and screen."
+      "1.4 \u2014 added chart_sizing_specifications: locked figsize-by-column-span table, DPI targets (300 print/144 screen), font-size scaling per column span, title/subtitle/source positioning formulas, output filename convention. Default output is print-first (300 DPI vector PDF) which renders correctly for both print and screen.",
+      "1.5 \u2014 citation byline corrected to surname-first Spanish convention (Gonzalez Castro, P. U.) in citation.format and citation.example; cleaned corrupted byline injection from disclaimers.diagnostic_pilot."
     ]
   },
   "company": {
@@ -72,13 +73,13 @@
   },
   "disclaimers": {
     "methodology_standard": "This report presents findings from Third System's AI Availability research program. The AI Availability Score (AIAS) is an early-stage measurement framework introduced in Tri-System Brand Growth (Gonzalez Castro, 2026). Findings should be used directionally. Construct validity \u2014 the correlation between AI Availability and consumer behavior \u2014 has not yet been established and is the subject of Phase 3 of the research program. Methodology is published in full and versioned at thirdsystem.ai/methodology (current: v0.3). Registry construction is curated and reflects the framework's view of each category's competitive set; revisions are documented in the methodology log.",
-    "diagnostic_pilot": "This is an early-stage diagnostic Gonzalez Castro, P. U. (2026)based on emerging measurement. It should be used directionally, not as a definitive decision system.",
+    "diagnostic_pilot": "This is an early-stage diagnostic based on emerging measurement. It should be used directionally, not as a definitive decision system.",
     "category_selection_caveat": "Category selection reflects the framework's research priorities, not customer-driven scoping. Client-commissioned diagnostics are scoped against the client's own competitive set.",
     "forward_looking_research": "Phase 2 will extend longitudinal coverage and add categories selected to test specific framework predictions. Phase 3 will study construct validity through correlation with external brand-tracking data. Phase 4, contingent on Phase 3 results, will release the remaining five AIAS components."
   },
   "citation": {
-    "format": "Ulpiano Gonzalez Castro, P. (2026). {TITLE}, v{VERSION}. Third System. thirdsystem.ai/{SLUG}",
-    "example": "Ulpiano Gonzalez Castro, P. (2026). Cross-Category Findings: AI Presence Index v0.6. Third System. thirdsystem.ai/v06-cross-category"
+    "format": "Gonzalez Castro, P. U. (2026). {TITLE}, v{VERSION}. Third System. thirdsystem.ai/{SLUG}",
+    "example": "Gonzalez Castro, P. U. (2026). Cross-Category Findings: AI Presence Index v0.6. Third System. thirdsystem.ai/v06-cross-category"
   },
   "palette": {
     "_overview": "Third System's brand and data viz palette. The brand layer (primary_brand, brand_supporting) governs covers, headlines, and layout. The data viz system (data_viz) governs charts and tables. The two are coordinated \u2014 the indigo family is both the brand identity and one of seven data viz families.",

@@ -1,0 +1,37 @@
+{
+  "category": "household_goods_retail",
+  "prompt_set_version": "household_v1.0",
+  "prompt_set_date": "2026-05-03",
+  "prompts": [
+    {
+      "id": "p1_functional",
+      "cep": "FUNCTIONAL_WHY",
+      "prompt": "What's the best store to buy household essentials like bedding, towels, and kitchen basics?"
+    },
+    {
+      "id": "p2_contextual",
+      "cep": "CONTEXTUAL_WHEN",
+      "prompt": "We're getting married soon and want to set up a wedding registry for home goods. Which retailers have the best registries for things like cookware, bedding, and kitchen tools?"
+    },
+    {
+      "id": "p3_constraint",
+      "cep": "CONSTRAINT_WITH",
+      "prompt": "I'm furnishing my first apartment on a tight budget. Where can I get affordable bedding, kitchen basics, and storage solutions?"
+    },
+    {
+      "id": "p4_identity",
+      "cep": "IDENTITY_HOW_FEELING",
+      "prompt": "What stores do people actually shop at when setting up a household — moving in together, getting married, or buying a first home?"
+    },
+    {
+      "id": "p5_discovery",
+      "cep": "DISCOVERY",
+      "prompt": "What are some emerging or innovative home goods brands worth knowing about in 2026?"
+    },
+    {
+      "id": "p6_comparison",
+      "cep": "COMPARISON",
+      "prompt": "I'm setting up a new home and need to decide where to shop. Compare the leading household goods retailers and recommend the best one."
+    }
+  ]
+}

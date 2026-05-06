@@ -1,0 +1,43 @@
+{
+  "category": "premium_facial_skincare",
+  "registry_version": "v2-skincare",
+  "registry_date": "2026-04-30",
+  "reconstruction_note": "Source brands.json was not preserved in any iCloud snapshot. Reconstructed from AIAS Presence Measurement Protocol v1.1 §B.4 — 24 brands surfaced in v2-skincare CSVs (canonical) plus 6 traditional luxury brands cited in v0.6 findings as underperforming (likely registry entries that scored 0%) plus 1 K-beauty boundary-condition test brand. Total: 31 brands, matching the v0.5 narrative count.",
+  "brands": [
+    {"canonical": "CeraVe", "tier": "incumbent", "aliases": ["cerave"]},
+    {"canonical": "Cetaphil", "tier": "incumbent", "aliases": ["cetaphil"]},
+    {"canonical": "Neutrogena", "tier": "incumbent", "aliases": ["neutrogena"]},
+    {"canonical": "La Roche-Posay", "tier": "incumbent", "aliases": ["la roche-posay", "la roche posay", "lrp"]},
+    {"canonical": "Vanicream", "tier": "incumbent", "aliases": ["vanicream"]},
+    {"canonical": "Skinceuticals", "tier": "incumbent", "aliases": ["skinceuticals"]},
+    {"canonical": "Eucerin", "tier": "incumbent", "aliases": ["eucerin"]},
+
+    {"canonical": "Paula's Choice", "tier": "mid-tier", "aliases": ["paula's choice", "paulas choice"]},
+    {"canonical": "Drunk Elephant", "tier": "mid-tier", "aliases": ["drunk elephant"]},
+    {"canonical": "Tatcha", "tier": "mid-tier", "aliases": ["tatcha"]},
+    {"canonical": "The Ordinary", "tier": "mid-tier", "aliases": ["the ordinary"]},
+    {"canonical": "EltaMD", "tier": "mid-tier", "aliases": ["eltamd", "elta md"]},
+    {"canonical": "Bioderma", "tier": "mid-tier", "aliases": ["bioderma"]},
+    {"canonical": "Avène", "tier": "mid-tier", "aliases": ["avene", "avène"]},
+    {"canonical": "Aveeno", "tier": "mid-tier", "aliases": ["aveeno"]},
+    {"canonical": "First Aid Beauty", "tier": "mid-tier", "aliases": ["first aid beauty", "fab"]},
+
+    {"canonical": "Augustinus Bader", "tier": "challenger", "aliases": ["augustinus bader"]},
+    {"canonical": "Youth to the People", "tier": "challenger", "aliases": ["youth to the people"]},
+    {"canonical": "La Mer", "tier": "challenger", "aliases": ["la mer"]},
+    {"canonical": "Estée Lauder", "tier": "challenger", "aliases": ["estee lauder", "estée lauder"]},
+    {"canonical": "Lancôme", "tier": "challenger", "aliases": ["lancome", "lancôme"]},
+    {"canonical": "Clinique", "tier": "challenger", "aliases": ["clinique"]},
+    {"canonical": "Kiehl's", "tier": "challenger", "aliases": ["kiehl's", "kiehls"]},
+    {"canonical": "Sunday Riley", "tier": "challenger", "aliases": ["sunday riley"]},
+
+    {"canonical": "SK-II", "tier": "challenger", "aliases": ["sk-ii", "sk-2", "sk ii"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+    {"canonical": "Olay", "tier": "challenger", "aliases": ["olay"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+    {"canonical": "Origins", "tier": "challenger", "aliases": ["origins"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+    {"canonical": "Dermalogica", "tier": "challenger", "aliases": ["dermalogica"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+    {"canonical": "Murad", "tier": "challenger", "aliases": ["murad"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+    {"canonical": "Glossier", "tier": "challenger", "aliases": ["glossier"], "registry_note": "Cited in v0.6 findings as underperforming; likely 0% mention."},
+
+    {"canonical": "Beauty of Joseon", "tier": "challenger", "aliases": ["beauty of joseon"], "boundary_condition": "k_beauty_discourse_language_test", "registry_note": "Boundary-condition test for Pattern 4 (discourse-language bias). Scored 0% across all measurements per §8.3."}
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "category": "premium_facial_skincare",
+  "prompt_set_version": "v2-skincare",
+  "prompt_set_date": "2026-04-30",
+  "reconstruction_note": "Source prompts.json was not preserved in any iCloud snapshot. Reconstructed from AIAS Presence Measurement Protocol v1.1 §A.4. Reconstructions are supported by direct response echo in the v2-skincare CSVs (e.g., the p1_functional response opens with 'For normal-to-dry skin…' closely mirroring the prompt).",
+  "prompts": [
+    {
+      "id": "p1_functional",
+      "cep": "FUNCTIONAL_WHY",
+      "prompt": "What's the best moisturizer for normal-to-dry skin?"
+    },
+    {
+      "id": "p2_contextual",
+      "cep": "CONTEXTUAL_WHEN",
+      "prompt": "I'm in my late 30s and starting to notice fine lines. What skincare products should I use?"
+    },
+    {
+      "id": "p3_constraint",
+      "cep": "CONSTRAINT_WITH",
+      "prompt": "I have sensitive skin that reacts to fragrances and harsh ingredients. What skincare brands work for me?"
+    },
+    {
+      "id": "p4_identity",
+      "cep": "IDENTITY_HOW_FEELING",
+      "prompt": "What skincare brands do dermatologists actually recommend to their patients?"
+    },
+    {
+      "id": "p5_discovery",
+      "cep": "DISCOVERY",
+      "prompt": "What are some emerging skincare brands worth knowing about in 2026?"
+    },
+    {
+      "id": "p6_comparison",
+      "cep": "COMPARISON",
+      "prompt": "I'm building a skincare routine and want to invest in quality products. Compare the leading brands and recommend the best one."
+    }
+  ]
+}
