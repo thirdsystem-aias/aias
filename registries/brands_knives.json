@@ -1,13 +1,21 @@
 {
   "category": "premium_kitchen_knives",
-  "registry_version": "knives_v1.0",
+  "registry_version": "knives_v1.1",
   "registry_date": "2026-05-06",
+  "supersedes": "knives_v1.0 (locked 2026-05-06; revised post-extraction per protocol §2.4)",
   "designed_for_test": "pattern_4_discourse_language_bias",
   "lineage_aggregates": ["japanese", "german", "american"],
-  "registry_note": "Designed-for-test category for Pattern 4 (discourse-language bias) per AIAS Presence Measurement Protocol v1.1 §6.6 and §8.3. Three lineages structure the headline contrast: Japanese (subject — under-represented in English-language marketing despite culinary reputation), German (English-marketed European comparator — controls for the Pattern 4 hypothesis on a different language-of-origin), American (English-native comparator — controls for the German-specific 'Wüsthof effect' objection). Shared-context brands (Victorinox, Mercer, Dexter-Russell) provide a noise floor at the prompt level without participating in lineage aggregation.",
+  "exploratory_lineages": ["japanese_hybrid"],
+  "registry_note": "Designed-for-test category for Pattern 4 (discourse-language bias) per AIAS Presence Measurement Protocol v1.1 §6.6 and §8.3. v1.1 revision applied after first-run extraction surfaced six Japanese makers in the unknown-mentions list at material frequencies (Miyabi at 90 mentions, Takamura at 48, Konosuke at 28, Korin at 21, Yu Kurosaki at 14, Nigara Hamono at 14 — collectively ~25% of all unknown mentions). Per protocol §2.4, registry expansion is the standard response when the unknown-mentions list affects the leaderboard.",
+  "v1_1_revision_notes": {
+    "changed_from_v1_0": "Added Miyabi as 'japanese_hybrid' (NOT in lineage_aggregates), and added Takamura, Konosuke, Korin, Yu Kurosaki, Nigara Hamono as standard japanese lineage.",
+    "miyabi_treatment": "Exploratory fourth lineage. Miyabi is Japanese-branded (product origin, blade-style, brand identity) but Zwilling/Henckels-owned (German parent, German English-marketing apparatus). v1.0 excluded Miyabi to keep the lineage test unconfounded; v1.1 includes it as 'japanese_hybrid' — separate from the locked Japanese aggregate so H1–H8 scoring against pre-registration thresholds remains methodologically clean, but visible in analysis so the dataset reflects what the AI actually surfaced. The hybrid lineage is exploratory per protocol §6.4.",
+    "other_additions": "Takamura, Konosuke, Korin, Yu Kurosaki, and Nigara Hamono are unambiguously traditional Japanese makers with limited US-targeted English marketing — the exact class of brand H8 is testing. They surfaced unexpectedly at material rates. Adding them strengthens the boundary-condition test rather than weakening it.",
+    "preregistration_impact": "H1–H8 thresholds are unchanged. H3 mass-market vs traditional Japanese is unaffected (the comparison brands are unchanged). H8 'traditional Japanese collectively register < 5%' now has a denominator of 8 brands instead of 3. We will report H8 both with the v1.0 boundary set (3 brands, locked pre-registration) AND the v1.1 expanded set (8 brands, post-revision) for transparency."
+  },
   "exclusion_notes": {
-    "miyabi": "Excluded despite being a Japanese-branded knife line. Miyabi is owned by Zwilling J.A. Henckels (German parent), so its English-marketing budget is German-routed. Including it would confound the lineage-vs-marketing-language separation that the v0.8 measurement is designed to isolate. The exclusion is itself a methodological signal for the report.",
-    "bob_kramer": "Excluded for the same reason as Miyabi — distributed by Zwilling J.A. Henckels. American smith, German distribution apparatus."
+    "bob_kramer": "Excluded for the same reason Miyabi was excluded in v1.0 — distributed by Zwilling J.A. Henckels. American smith, German distribution apparatus. Did not surface in unknown-mentions list at material frequency, so not added as american_hybrid in v1.1. Worth noting in the report as a parallel exclusion that didn't trigger because it didn't surface.",
+    "vosteed_civivi_tactile_null": "Out of scope. Vosteed, Civivi, Tactile Knife Co., and Null Knives surfaced in the unknown-mentions list (combined ~78 mentions) but are folding/tactical knife brands, not premium kitchen knives. Documented as out-of-category to prevent registry drift."
   },
   "brands": [
     {
@@ -22,14 +30,14 @@
       "tier": "incumbent",
       "lineage": "japanese",
       "aliases": ["global knives", "global cutlery", "global cromova"],
-      "registry_note": "Yoshikin Japan; heavily English-distributed. Aliases narrow to avoid false-positive on the common word 'global' — the structured-output extractor handles contextual disambiguation per §5.1."
+      "registry_note": "Yoshikin Japan; heavily English-distributed. Aliases narrow to avoid false-positive on the common word 'global'."
     },
     {
       "canonical": "Mac",
       "tier": "mid-tier",
       "lineage": "japanese",
       "aliases": ["mac knives", "mac knife", "mac chef knife"],
-      "registry_note": "Strong chef-circle reputation in English. Aliases narrow to avoid false-positive on 'mac' (Macintosh, generic). Extractor disambiguates."
+      "registry_note": "Strong chef-circle reputation in English. Aliases narrow to avoid false-positive on bare 'mac' (Macintosh, generic)."
     },
     {
       "canonical": "Tojiro",
@@ -49,7 +57,8 @@
       "lineage": "japanese",
       "aliases": ["masamoto"],
       "boundary_condition": "discourse_language_test",
-      "registry_note": "High-end traditional Japanese maker, primarily Japanese-language marketing despite culinary reputation among professional chefs. Primary boundary-condition test for Pattern 4."
+      "boundary_set": "v1.0_locked",
+      "registry_note": "High-end traditional Japanese maker, primarily Japanese-language marketing. Primary boundary-condition test for Pattern 4 (locked in pre-registration v1.0)."
     },
     {
       "canonical": "Sakai Takayuki",
@@ -57,7 +66,8 @@
       "lineage": "japanese",
       "aliases": ["sakai takayuki", "takayuki"],
       "boundary_condition": "discourse_language_test",
-      "registry_note": "Handmade Sakai-style Japanese knives, niche English distribution. Primary boundary-condition test for Pattern 4."
+      "boundary_set": "v1.0_locked",
+      "registry_note": "Handmade Sakai-style Japanese knives, niche English distribution. Locked v1.0 boundary-condition."
     },
     {
       "canonical": "Yoshihiro",
@@ -65,21 +75,75 @@
       "lineage": "japanese",
       "aliases": ["yoshihiro"],
       "boundary_condition": "discourse_language_test",
-      "registry_note": "Boutique high-end Japanese, limited US-targeted English marketing. Primary boundary-condition test for Pattern 4."
+      "boundary_set": "v1.0_locked",
+      "registry_note": "Boutique high-end Japanese, limited US-targeted English marketing. Locked v1.0 boundary-condition."
+    },
+    {
+      "canonical": "Takamura",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["takamura"],
+      "boundary_condition": "discourse_language_test",
+      "boundary_set": "v1.1_added",
+      "registry_note": "Traditional Japanese maker (Echizen). Surfaced 48 times in v1.0 unknown-mentions list. Added in v1.1 as additional boundary-condition test for H8 expanded denominator."
+    },
+    {
+      "canonical": "Konosuke",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["konosuke"],
+      "boundary_condition": "discourse_language_test",
+      "boundary_set": "v1.1_added",
+      "registry_note": "Boutique Japanese (Sakai). Surfaced 28 times in v1.0 unknown-mentions list."
+    },
+    {
+      "canonical": "Korin",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["korin"],
+      "boundary_condition": "discourse_language_test",
+      "boundary_set": "v1.1_added",
+      "registry_note": "Korin (NYC retailer house brand of traditional Japanese knives). Surfaced 21 times in v1.0 unknown-mentions list. Korin functions as both a retailer and a maker — boundary case but the AI surfaces it primarily as a brand."
+    },
+    {
+      "canonical": "Yu Kurosaki",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["yu kurosaki", "kurosaki"],
+      "boundary_condition": "discourse_language_test",
+      "boundary_set": "v1.1_added",
+      "registry_note": "Boutique Japanese smith (Echizen). Surfaced 14 times in v1.0 unknown-mentions list."
+    },
+    {
+      "canonical": "Nigara Hamono",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["nigara hamono", "nigara"],
+      "boundary_condition": "discourse_language_test",
+      "boundary_set": "v1.1_added",
+      "registry_note": "Boutique Japanese (Aomori). Surfaced 14 times in v1.0 unknown-mentions list."
+    },
+    {
+      "canonical": "Miyabi",
+      "tier": "incumbent",
+      "lineage": "japanese_hybrid",
+      "aliases": ["miyabi"],
+      "boundary_condition": "japanese_german_hybrid_exploratory",
+      "registry_note": "Japanese-branded knife line owned by Zwilling J.A. Henckels (German parent). v1.0 excluded Miyabi to preserve the lineage test from confound; the AI surfaced Miyabi 90 times in v1.0 extraction (third-most-mentioned brand overall), making the exclusion methodologically untenable for the published dataset. v1.1 adds Miyabi as 'japanese_hybrid' — NOT in lineage_aggregates per the v1.0 lock. Analysis treats Miyabi separately: if Miyabi Presence is between Japanese-aggregate and German-aggregate, that's evidence the German English-marketing budget restores Japanese-origin brand visibility. If Miyabi is closer to German-aggregate, the marketing-budget-language hypothesis (H5) generalizes. If Miyabi is closer to traditional Japanese, the lineage-of-origin signal is robust to the German-parent confound. Each outcome is publishable as an exploratory finding."
     },
     {
       "canonical": "Wüsthof",
       "tier": "incumbent",
       "lineage": "german",
       "aliases": ["wusthof", "wüsthof", "wuesthof"],
-      "registry_note": "The German Williams-Sonoma anchor. Iconic English-language presence. Expected to dominate; the test is whether Japanese aggregate falls below this baseline."
+      "registry_note": "The German Williams-Sonoma anchor. Iconic English-language presence."
     },
     {
       "canonical": "Henckels",
       "tier": "incumbent",
       "lineage": "german",
       "aliases": ["henckels", "zwilling", "zwilling j.a. henckels", "zwilling henckels", "j.a. henckels", "ja henckels"],
-      "registry_note": "Collapses Zwilling J.A. Henckels (premium) and J.A. Henckels International (budget) into one canonical because the AI surfaces both interchangeably. Splitting would fragment the German signal artificially."
+      "registry_note": "Collapses Zwilling J.A. Henckels (premium) and J.A. Henckels International (budget) into one canonical because the AI surfaces both interchangeably."
     },
     {
       "canonical": "Messermeister",
@@ -92,28 +156,28 @@
       "tier": "challenger",
       "lineage": "german",
       "aliases": ["friedr. dick", "friedr dick", "f. dick", "f dick"],
-      "registry_note": "Aliases avoid bare 'dick' (false-positive risk). Extractor disambiguates contextually."
+      "registry_note": "Aliases avoid bare 'dick' (false-positive risk)."
     },
     {
       "canonical": "Güde",
       "tier": "challenger",
       "lineage": "german",
       "aliases": ["gude", "güde", "guede"],
-      "registry_note": "High-end forged German with limited English presence. German-side parallel to the traditional Japanese boundary-condition tests — if Güde also under-surfaces, the Pattern 4 effect is about marketing-language coverage, not about Japanese specifically."
+      "registry_note": "High-end forged German with limited English presence. German-side parallel to traditional Japanese boundary-condition tests (H5)."
     },
     {
       "canonical": "Cutco",
       "tier": "mid-tier",
       "lineage": "american",
       "aliases": ["cutco"],
-      "registry_note": "American mass-market premium, direct-sales channel. Strong US recognition outside chef-circle discourse."
+      "registry_note": "American mass-market premium, direct-sales channel."
     },
     {
       "canonical": "Misen",
       "tier": "mid-tier",
       "lineage": "american",
       "aliases": ["misen"],
-      "registry_note": "Modern direct-to-consumer American challenger; strong English-language marketing despite small footprint."
+      "registry_note": "Modern direct-to-consumer American challenger."
     },
     {
       "canonical": "Lamson",
@@ -134,28 +198,28 @@
       "tier": "challenger",
       "lineage": "american",
       "aliases": ["made in cookware", "made in knives", "madein"],
-      "registry_note": "Aliases narrow because 'made in' is a common preposition phrase ('made in USA', 'made in Japan'). Bare 'made in' excluded to avoid massive false-positive risk. Extractor disambiguates contextually."
+      "registry_note": "Aliases narrow because 'made in' is a common preposition phrase."
     },
     {
       "canonical": "Victorinox",
       "tier": "mid-tier",
       "lineage": "shared",
       "aliases": ["victorinox"],
-      "registry_note": "Swiss; spans professional and household markets. Treated as shared-context (not part of lineage aggregates) because Swiss origin is orthogonal to the Japanese-vs-German-vs-American test axis."
+      "registry_note": "Swiss; spans professional and household markets. Shared-context (not in lineage aggregates)."
     },
     {
       "canonical": "Mercer",
       "tier": "challenger",
       "lineage": "shared",
       "aliases": ["mercer cutlery", "mercer culinary"],
-      "registry_note": "American foodservice-focused. Treated as shared-context because its strong professional-channel positioning is orthogonal to the consumer-marketing-language test."
+      "registry_note": "American foodservice-focused. Shared-context."
     },
     {
       "canonical": "Dexter-Russell",
       "tier": "challenger",
       "lineage": "shared",
       "aliases": ["dexter-russell", "dexter russell"],
-      "registry_note": "American professional/foodservice heritage. Bare 'dexter' excluded to avoid false-positives. Treated as shared-context for the same reason as Mercer."
+      "registry_note": "American professional/foodservice heritage. Shared-context."
     }
   ]
 }
