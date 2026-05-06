@@ -1,0 +1,40 @@
+{
+  "category": "premium_kitchen_knives",
+  "prompt_set_version": "knives_v1.0",
+  "prompt_set_date": "2026-05-06",
+  "designed_for_test": "pattern_4_discourse_language_bias",
+  "design_note": "Six CEPs per AIAS Presence Measurement Protocol v1.1 §3.1, adapted for the premium kitchen knives category. Per the v0.7 design rule (no prompt may name the test subject — see protocol §6.6 component 4, citing the v0.6 Mint design error where naming Mint by name in the personal-finance Discovery prompt compromised that prompt's phantom signal), no prompt in this set names 'Japanese knives', 'Japanese brands', or any specific Japanese maker. p3 (CONSTRAINT_WITH) carries deliberate structural bias toward Japanese-style blade characteristics (sharp, precise, well-suited to fish and vegetables — the canonical Japanese-knife use case). The hypothesis structure treats this as a within-prompt high-water mark test for Japanese brands rather than a confound to be neutralized.",
+  "prompts": [
+    {
+      "id": "p1_functional",
+      "cep": "FUNCTIONAL_WHY",
+      "prompt": "What's the best chef's knife for an everyday home cook?"
+    },
+    {
+      "id": "p2_contextual",
+      "cep": "CONTEXTUAL_WHEN",
+      "prompt": "I'm setting up my first serious kitchen. What knife brand should I invest in?"
+    },
+    {
+      "id": "p3_constraint",
+      "cep": "CONSTRAINT_WITH",
+      "prompt": "I cook a lot of fish and vegetables and want a really sharp, precise knife. What should I get?",
+      "design_note": "Constraint framing leans toward Japanese-style blade characteristics (thin profile, hard steel, single- or asymmetric-bevel edges). Expected to be a within-prompt high-water mark for Japanese brand Presence. If Japanese brands fail to peak in p3, the AI does not recognize Japanese knife specialization at all — a stronger-edged version of the Pattern 4 finding."
+    },
+    {
+      "id": "p4_identity",
+      "cep": "IDENTITY_HOW_FEELING",
+      "prompt": "What knife brands do professional chefs actually use at home?"
+    },
+    {
+      "id": "p5_discovery",
+      "cep": "DISCOVERY",
+      "prompt": "What are some emerging or lesser-known knife brands worth knowing about in 2026?"
+    },
+    {
+      "id": "p6_comparison",
+      "cep": "COMPARISON",
+      "prompt": "I'm choosing a chef's knife and want quality I'll keep for years. Compare the leading brands and recommend the best one."
+    }
+  ]
+}

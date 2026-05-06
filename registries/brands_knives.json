@@ -1,0 +1,161 @@
+{
+  "category": "premium_kitchen_knives",
+  "registry_version": "knives_v1.0",
+  "registry_date": "2026-05-06",
+  "designed_for_test": "pattern_4_discourse_language_bias",
+  "lineage_aggregates": ["japanese", "german", "american"],
+  "registry_note": "Designed-for-test category for Pattern 4 (discourse-language bias) per AIAS Presence Measurement Protocol v1.1 §6.6 and §8.3. Three lineages structure the headline contrast: Japanese (subject — under-represented in English-language marketing despite culinary reputation), German (English-marketed European comparator — controls for the Pattern 4 hypothesis on a different language-of-origin), American (English-native comparator — controls for the German-specific 'Wüsthof effect' objection). Shared-context brands (Victorinox, Mercer, Dexter-Russell) provide a noise floor at the prompt level without participating in lineage aggregation.",
+  "exclusion_notes": {
+    "miyabi": "Excluded despite being a Japanese-branded knife line. Miyabi is owned by Zwilling J.A. Henckels (German parent), so its English-marketing budget is German-routed. Including it would confound the lineage-vs-marketing-language separation that the v0.8 measurement is designed to isolate. The exclusion is itself a methodological signal for the report.",
+    "bob_kramer": "Excluded for the same reason as Miyabi — distributed by Zwilling J.A. Henckels. American smith, German distribution apparatus."
+  },
+  "brands": [
+    {
+      "canonical": "Shun",
+      "tier": "incumbent",
+      "lineage": "japanese",
+      "aliases": ["shun"],
+      "registry_note": "Mass-market premium Japanese with heavy Williams-Sonoma distribution. Tests whether strong English-marketing alone escapes Pattern 4 for a Japanese-origin brand."
+    },
+    {
+      "canonical": "Global",
+      "tier": "incumbent",
+      "lineage": "japanese",
+      "aliases": ["global knives", "global cutlery", "global cromova"],
+      "registry_note": "Yoshikin Japan; heavily English-distributed. Aliases narrow to avoid false-positive on the common word 'global' — the structured-output extractor handles contextual disambiguation per §5.1."
+    },
+    {
+      "canonical": "Mac",
+      "tier": "mid-tier",
+      "lineage": "japanese",
+      "aliases": ["mac knives", "mac knife", "mac chef knife"],
+      "registry_note": "Strong chef-circle reputation in English. Aliases narrow to avoid false-positive on 'mac' (Macintosh, generic). Extractor disambiguates."
+    },
+    {
+      "canonical": "Tojiro",
+      "tier": "mid-tier",
+      "lineage": "japanese",
+      "aliases": ["tojiro"]
+    },
+    {
+      "canonical": "Misono",
+      "tier": "mid-tier",
+      "lineage": "japanese",
+      "aliases": ["misono"]
+    },
+    {
+      "canonical": "Masamoto",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["masamoto"],
+      "boundary_condition": "discourse_language_test",
+      "registry_note": "High-end traditional Japanese maker, primarily Japanese-language marketing despite culinary reputation among professional chefs. Primary boundary-condition test for Pattern 4."
+    },
+    {
+      "canonical": "Sakai Takayuki",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["sakai takayuki", "takayuki"],
+      "boundary_condition": "discourse_language_test",
+      "registry_note": "Handmade Sakai-style Japanese knives, niche English distribution. Primary boundary-condition test for Pattern 4."
+    },
+    {
+      "canonical": "Yoshihiro",
+      "tier": "challenger",
+      "lineage": "japanese",
+      "aliases": ["yoshihiro"],
+      "boundary_condition": "discourse_language_test",
+      "registry_note": "Boutique high-end Japanese, limited US-targeted English marketing. Primary boundary-condition test for Pattern 4."
+    },
+    {
+      "canonical": "Wüsthof",
+      "tier": "incumbent",
+      "lineage": "german",
+      "aliases": ["wusthof", "wüsthof", "wuesthof"],
+      "registry_note": "The German Williams-Sonoma anchor. Iconic English-language presence. Expected to dominate; the test is whether Japanese aggregate falls below this baseline."
+    },
+    {
+      "canonical": "Henckels",
+      "tier": "incumbent",
+      "lineage": "german",
+      "aliases": ["henckels", "zwilling", "zwilling j.a. henckels", "zwilling henckels", "j.a. henckels", "ja henckels"],
+      "registry_note": "Collapses Zwilling J.A. Henckels (premium) and J.A. Henckels International (budget) into one canonical because the AI surfaces both interchangeably. Splitting would fragment the German signal artificially."
+    },
+    {
+      "canonical": "Messermeister",
+      "tier": "mid-tier",
+      "lineage": "german",
+      "aliases": ["messermeister"]
+    },
+    {
+      "canonical": "Friedr. Dick",
+      "tier": "challenger",
+      "lineage": "german",
+      "aliases": ["friedr. dick", "friedr dick", "f. dick", "f dick"],
+      "registry_note": "Aliases avoid bare 'dick' (false-positive risk). Extractor disambiguates contextually."
+    },
+    {
+      "canonical": "Güde",
+      "tier": "challenger",
+      "lineage": "german",
+      "aliases": ["gude", "güde", "guede"],
+      "registry_note": "High-end forged German with limited English presence. German-side parallel to the traditional Japanese boundary-condition tests — if Güde also under-surfaces, the Pattern 4 effect is about marketing-language coverage, not about Japanese specifically."
+    },
+    {
+      "canonical": "Cutco",
+      "tier": "mid-tier",
+      "lineage": "american",
+      "aliases": ["cutco"],
+      "registry_note": "American mass-market premium, direct-sales channel. Strong US recognition outside chef-circle discourse."
+    },
+    {
+      "canonical": "Misen",
+      "tier": "mid-tier",
+      "lineage": "american",
+      "aliases": ["misen"],
+      "registry_note": "Modern direct-to-consumer American challenger; strong English-language marketing despite small footprint."
+    },
+    {
+      "canonical": "Lamson",
+      "tier": "challenger",
+      "lineage": "american",
+      "aliases": ["lamson", "lamson cutlery", "lamson sharp"],
+      "registry_note": "Heritage American (since 1837)."
+    },
+    {
+      "canonical": "Warther",
+      "tier": "challenger",
+      "lineage": "american",
+      "aliases": ["warther", "warther cutlery"],
+      "registry_note": "Boutique American forged, regional/niche distribution."
+    },
+    {
+      "canonical": "Made In",
+      "tier": "challenger",
+      "lineage": "american",
+      "aliases": ["made in cookware", "made in knives", "madein"],
+      "registry_note": "Aliases narrow because 'made in' is a common preposition phrase ('made in USA', 'made in Japan'). Bare 'made in' excluded to avoid massive false-positive risk. Extractor disambiguates contextually."
+    },
+    {
+      "canonical": "Victorinox",
+      "tier": "mid-tier",
+      "lineage": "shared",
+      "aliases": ["victorinox"],
+      "registry_note": "Swiss; spans professional and household markets. Treated as shared-context (not part of lineage aggregates) because Swiss origin is orthogonal to the Japanese-vs-German-vs-American test axis."
+    },
+    {
+      "canonical": "Mercer",
+      "tier": "challenger",
+      "lineage": "shared",
+      "aliases": ["mercer cutlery", "mercer culinary"],
+      "registry_note": "American foodservice-focused. Treated as shared-context because its strong professional-channel positioning is orthogonal to the consumer-marketing-language test."
+    },
+    {
+      "canonical": "Dexter-Russell",
+      "tier": "challenger",
+      "lineage": "shared",
+      "aliases": ["dexter-russell", "dexter russell"],
+      "registry_note": "American professional/foodservice heritage. Bare 'dexter' excluded to avoid false-positives. Treated as shared-context for the same reason as Mercer."
+    }
+  ]
+}
