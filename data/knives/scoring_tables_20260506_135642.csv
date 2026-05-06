@@ -1,0 +1,118 @@
+hypothesis,attribute,value
+H1,hypothesis,H1
+H1,claim,Japanese aggregate Presence < German aggregate by >= 15pp
+H1,thresholds.CONFIRMED,""">=15pp"""
+H1,thresholds.PARTIAL,"""5-15pp"""
+H1,thresholds.DISCONFIRMED,"""<5pp or jp >= de"""
+H1,jp_v10_locked,36.2
+H1,jp_v11_published,25.7
+H1,german_aggregate,27.2
+H1,gap_v10,-9.0
+H1,gap_v11,1.5
+H1,band_v10,DISCONFIRMED
+H1,band_v11,DISCONFIRMED
+H1,note,"Both registry versions disconfirm in the same direction. v1.1 expansion brought aggregates closer (jp=25.7%, de=27.2%) because the 5 added boundary-condition Japanese brands diluted the Japanese mean."
+H2,hypothesis,H2
+H2,claim,Japanese aggregate < American aggregate by >= 10pp
+H2,thresholds.CONFIRMED,""">=10pp"""
+H2,thresholds.PARTIAL,"""0-10pp"""
+H2,thresholds.DISCONFIRMED,"""jp >= us"""
+H2,japanese_aggregate,25.7
+H2,american_aggregate,0.6
+H2,gap,-25.1
+H2,band,CANNOT EVALUATE
+H2,note,"American comparator collapsed (aggregate <5%). The AI does not recognize ""American kitchen knives"" as a category at all, regardless of brand. This is itself a finding - AI Presence is shaped by category discourse history rather than just by language-of-marketing."
+H3,hypothesis,H3
+H3,claim,Mass-market Japanese >> Traditional Japanese by >= 30pp
+H3,thresholds.CONFIRMED,""">=30pp"""
+H3,thresholds.PARTIAL,"""15-30pp"""
+H3,thresholds.DISCONFIRMED,"""<15pp"""
+H3,mass_market_mean,55.2
+H3,traditional_mean_v10_locked,10.9
+H3,traditional_mean_v11_expanded,9.6
+H3,gap,44.3
+H3,gap_v11,45.6
+H3,band,CONFIRMED
+H3,note,Within-Japanese English-marketing exposure predicts Presence by ~5x ratio. This is the cleanest controlled test in the dataset.
+H4,hypothesis,H4
+H4,claim,Japanese aggregate peaks in p3 vs lineage-neutral baseline by >= 1.5x
+H4,thresholds.CONFIRMED,""">=1.5x"""
+H4,thresholds.PARTIAL,"""1.2-1.5x"""
+H4,thresholds.PARTIAL_LOW,"""1.0-1.2x"""
+H4,thresholds.DISCONFIRMED,"""<1.0x"""
+H4,p3_japanese,30.8
+H4,baseline_japanese_p1_p4_p6,31.0
+H4,ratio,0.99
+H4,band,DISCONFIRMED
+H4,per_cep_lineage_aggregates.p1_functional,"{""japanese"": 14.1, ""german"": 30.0, ""american"": 0.8, ""japanese_hybrid"": 4.2}"
+H4,per_cep_lineage_aggregates.p2_contextual,"{""japanese"": 25.2, ""german"": 41.7, ""american"": 1.2, ""japanese_hybrid"": 39.6}"
+H4,per_cep_lineage_aggregates.p3_constraint,"{""japanese"": 30.8, ""german"": 1.7, ""american"": 0.0, ""japanese_hybrid"": 31.2}"
+H4,per_cep_lineage_aggregates.p4_identity,"{""japanese"": 54.6, ""german"": 45.8, ""american"": 0.0, ""japanese_hybrid"": 50.0}"
+H4,per_cep_lineage_aggregates.p5_discovery,"{""japanese"": 5.1, ""german"": 0.8, ""american"": 0.0, ""japanese_hybrid"": 0.0}"
+H4,per_cep_lineage_aggregates.p6_comparison,"{""japanese"": 24.4, ""german"": 43.3, ""american"": 1.2, ""japanese_hybrid"": 64.6}"
+H5,hypothesis,H5
+H5,claim,Güde < 1/3 of (Wüsthof + Henckels mean) - tests whether Pattern 4 is about marketing-language coverage broadly
+H5,thresholds.CONFIRMED,"""<1/3"""
+H5,thresholds.PARTIAL,"""1/3-1/2"""
+H5,thresholds.DISCONFIRMED,""">=1/2"""
+H5,gude_presence,0.0
+H5,wusthof_henckels_mean,61.8
+H5,ratio,0.0
+H5,band,CONFIRMED
+H5,note,Gude under-surfacing alongside Wusthof/Henckels dominance means Pattern 4 generalizes beyond Japanese-vs-German lineage to limited-English-marketing-coverage regardless of national origin. Strongest version of the marketing-language-coverage finding.
+H6,hypothesis,H6
+H6,claim,Descriptive: within-lab generational behavior on lineage aggregates
+H6,band,DESCRIPTIVE
+H6,per_model_lineage_aggregates.anthropic_sonnet,"{""japanese"": 26.3, ""german"": 27.9, ""american"": 0.4}"
+H6,per_model_lineage_aggregates.anthropic_opus,"{""japanese"": 28.7, ""german"": 26.7, ""american"": 2.5}"
+H6,per_model_lineage_aggregates.openai_mini,"{""japanese"": 21.5, ""german"": 27.1, ""american"": 0.4}"
+H6,per_model_lineage_aggregates.openai_flagship,"{""japanese"": 33.0, ""german"": 29.2, ""american"": 0.0}"
+H6,per_model_lineage_aggregates.google_flash,"{""japanese"": 22.3, ""german"": 30.0, ""american"": 0.0}"
+H6,per_model_lineage_aggregates.xai_grok,"{""japanese"": 22.4, ""german"": 22.5, ""american"": 0.0}"
+H6,within_anthropic_jp_gap,2.4
+H6,within_openai_jp_gap,11.5
+H7,hypothesis,H7
+H7,claim_locked,>= 90% of named authority sources are English-language
+H7,locked_band,CANNOT EVALUATE
+H7,authority_mode_response_count,2
+H7,authority_mode_locked_note,"Pure authority-mode responses: 2/96 in p4+p5. Denominator too small for the locked threshold. Per protocol §6.4 reframe convention, the substantive question moves to authority-naming within mixed-mode responses."
+H7,claim_reframed,Authority-NAMING within mixed-mode responses skews English-language
+H7,reframed_band,DISCONFIRMED
+H7,authority_mention_total,434
+H7,authority_mention_english,31
+H7,english_fraction,0.071
+H7,top_authorities_named.Bestech,12
+H7,top_authorities_named.TRC Knives,11
+H7,top_authorities_named.Takeda,10
+H7,top_authorities_named.Artisan Cutlery,10
+H7,top_authorities_named.Yoshikane,8
+H7,top_authorities_named.Kikuichi,7
+H7,top_authorities_named.Nenox,7
+H7,top_authorities_named.Togiharu,6
+H7,top_authorities_named.Mazaki,6
+H7,top_authorities_named.Kubey,6
+H8,hypothesis,H8
+H8,claim,Traditional Japanese aggregate Presence < 5%
+H8,thresholds.CONFIRMED,"""<5%"""
+H8,thresholds.PARTIAL,"""5-15%"""
+H8,thresholds.DISCONFIRMED,""">=15%"""
+H8,v10_locked_aggregate,10.9
+H8,v10_locked_brands,"[""Masamoto"", ""Sakai Takayuki"", ""Yoshihiro""]"
+H8,v10_band,PARTIALLY CONFIRMED
+H8,v11_expanded_aggregate,9.6
+H8,v11_expanded_brands,"[""Konosuke"", ""Korin"", ""Masamoto"", ""Nigara Hamono"", ""Sakai Takayuki"", ""Takamura"", ""Yoshihiro"", ""Yu Kurosaki""]"
+H8,v11_band,PARTIALLY CONFIRMED
+H8,per_brand_presence.Konosuke,9.7
+H8,per_brand_presence.Korin,7.3
+H8,per_brand_presence.Masamoto,18.1
+H8,per_brand_presence.Nigara Hamono,5.9
+H8,per_brand_presence.Sakai Takayuki,10.8
+H8,per_brand_presence.Takamura,16.7
+H8,per_brand_presence.Yoshihiro,3.8
+H8,per_brand_presence.Yu Kurosaki,4.9
+EXPLORATORY_MIYABI,finding,Miyabi exploratory positioning
+EXPLORATORY_MIYABI,miyabi_presence,31.6
+EXPLORATORY_MIYABI,japanese_aggregate,25.7
+EXPLORATORY_MIYABI,japanese_mass_market,55.2
+EXPLORATORY_MIYABI,german_aggregate,27.2
+EXPLORATORY_MIYABI,narrative,CLOSE TO GERMAN: marketing-language hypothesis (H5) generalizes - German parent restores full Presence
