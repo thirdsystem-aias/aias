@@ -128,6 +128,7 @@ CHART_FIGSIZE_IN = {
     "6_col_hero": (7.50, 5.00),
     "6_col_hero_tall": (7.50, 6.50),
     "6_col_hero_xl": (7.50, 7.50),    # used for leaderboards: 5 stacked panels
+    "6_col_hero_xl_95": (7.125, 7.125),  # v0.8: 5% smaller leaderboard variant
     "spread": (7.50, 4.50),           # used for v0.6 Pattern 4 country panel
     # v0.7 additions: shorter heights for charts whose content doesn't need 5".
     "6_col_short": (7.50, 3.50),      # F1, F5 — two/three-row compact comparisons
@@ -1195,21 +1196,14 @@ def build_pattern_unified(pattern: dict, styles: dict,
 
     s: list = []
 
-    # CondPageBreak: ensure the title block has substantial space below it
-    # for body content. Threshold sized for tight packing — when a finding's
-    # title has at least ~200pt of space below it, the title and the lead
-    # body paragraphs render in the leftover space at the bottom of the
-    # previous finding's last page; the chart then flows to the next page
-    # via the natural BalancedColumns reflow.
-    #
-    # v0.7 thresholds were 520-700pt to force whole findings (title + body +
-    # chart) onto fresh pages. v0.8 prefers tight packing with content flow
-    # across page boundaries, so the thresholds drop to the minimum required
-    # to prevent title orphans.
-    if is_hero:
-        cond_threshold = 200
-    else:
-        cond_threshold = 150
+    # v0.8.2: cond_threshold = 50 (was 100) for the tightest packing the
+    # title block tolerates. Title KeepTogether is ~80pt — at threshold
+    # below that, KT will defer cleanly when there isn't enough room rather
+    # than placing an orphaned title. So setting threshold to 50 means:
+    # findings start in any leftover space \u226550pt; if the title block
+    # itself can't fit in that space, KT handles deferral. Eliminates dead
+    # space \u2265 50pt at end of previous findings.
+    cond_threshold = 50
     s.append(CondPageBreak(cond_threshold))
 
     # Section title spans full width
@@ -1239,26 +1233,26 @@ def build_pattern_unified(pattern: dict, styles: dict,
         )
 
         if is_hero:
-            # Hero: sandwich layout with balanced lead/tail split.
-            #
-            # Body paragraphs split roughly in half (lead = ceil(n/2),
-            # tail = floor(n/2)). With 6 paragraphs: lead=3, tail=3. With 5
-            # paragraphs: lead=3, tail=2. With 4: lead=2, tail=2.
-            #
-            # Combined with the figsize-dependent CondPageBreak above, this
-            # produces unified hero findings: title + lead body + chart +
-            # tail body all land on the same page when content fits.
+            # Hero: title \u2192 chart \u2192 body by default. Per-finding override
+            # via pattern["n_lead"] in the content module \u2014 some findings
+            # need lead body BEFORE the chart to fill leftover space on
+            # the current page (e.g., F3 wants 3 paragraphs before its
+            # chart so page 8 dead space gets filled by body before chart
+            # defers to page 9). Default 0 is "chart immediately after
+            # title," which pulls charts as early as possible.
             n_paragraphs = len(paragraphs)
-            n_lead = (n_paragraphs + 1) // 2  # ceil(n/2)
+            n_lead = pattern.get("n_lead", 0)
+            n_lead = max(0, min(n_lead, n_paragraphs))   # clamp to valid range
             lead = paragraphs[:n_lead]
             tail = paragraphs[n_lead:]
 
-            s.append(BalancedColumns(
-                lead, nCols=2, innerPadding=GUTTER,
-                spaceBefore=4, spaceAfter=10,
-                needed=30,
-            ))
-            s.append(Spacer(1, 8))
+            if lead:
+                s.append(BalancedColumns(
+                    lead, nCols=2, innerPadding=GUTTER,
+                    spaceBefore=4, spaceAfter=10,
+                    needed=30,
+                ))
+                s.append(Spacer(1, 8))
             s.append(chart_res)
             if tail:
                 s.append(Spacer(1, 8))
@@ -1308,8 +1302,11 @@ def build_pattern_unified(pattern: dict, styles: dict,
                     needed=30,
                 ))
 
-            # Main BC: chart at col 1 top, body wraps. needed=270 to
-            # ensure clean layout (no font compression).
+            # Main BC: chart at col 1 top, body wraps. needed=270 restored
+            # to prevent BC from collapsing to single-column when there
+            # isn't enough vertical space to balance content across two
+            # columns. v0.8.1 attempt to drop this to 30 caused F5 to
+            # render as one column \u2014 reverting to 270 (the v0.7 value).
             main_content: list = [chart_res, Spacer(1, 8)] + rest
             s.append(BalancedColumns(
                 main_content, nCols=2, innerPadding=GUTTER,
@@ -1369,7 +1366,7 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         "hero_f4_per_cep":                ("chart_v08_f4_per_cep_6col.pdf",            "6_col_hero_short"),
         "inline_f5_freshness":            ("chart_v08_f5_freshness_4col.pdf",          "3_col_inline"),
         # Hero spread used outside the pattern loop (build_leaderboards_spread)
-        "hero_leaderboards":              ("chart_v08_leaderboard_6col.pdf",           "6_col_hero_xl"),
+        "hero_leaderboards":              ("chart_v08_leaderboard_6col.pdf",           "6_col_hero_xl_95"),
     }
     return table.get(slot_key, (None, None))
 

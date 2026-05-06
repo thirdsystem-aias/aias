@@ -269,7 +269,11 @@ LEADERBOARD = [
 
 
 def chart_leaderboard():
-    fig = plt.figure(figsize=(7.50, 7.50))
+    # Figsize 5% smaller than v07's leaderboard (7.50 \u2192 7.125 in each
+    # axis) to give the page slightly more breathing room around the chart.
+    # The slot in build_report_v08.py uses figsize_key "6_col_hero_xl_95"
+    # which adds 7.125x7.125 to CHART_FIGSIZE_IN.
+    fig = plt.figure(figsize=(7.125, 7.125))
     # Axes y=0.15, height=0.74 — gives the bottom region (0..0.15)
     # enough room for x-axis tick labels (~0.12-0.14) AND the lineage
     # legend (~0.05-0.085) without collision. Top edge stays at 0.89

@@ -290,8 +290,9 @@ PATTERNS = [
     # ------------------------------------------------------------------
     {
         "number": 1,
-        "title": "Lineage isn\u2019t the variable. Marketing-language coverage is.",
+        "title": "Lineage isn\u2019t the variable. Marketing-language coverage\u00a0is.",
         "chart_slot": "hero_f1_lineage_aggregates",
+        "n_lead": 0,
         "paragraphs": [
             (
                 "The pre-registered H1 predicted Japanese-aggregate Presence "
@@ -378,8 +379,9 @@ PATTERNS = [
     # ------------------------------------------------------------------
     {
         "number": 2,
-        "title": "The discourse infrastructure is exclusively English.",
+        "title": "The discourse infrastructure is exclusively\u00a0English.",
         "chart_slot": "hero_f2_authorities",
+        "n_lead": 0,
         "paragraphs": [
             (
                 "When AI surfaces brands, it also names the publications, "
@@ -463,8 +465,9 @@ PATTERNS = [
     # ------------------------------------------------------------------
     {
         "number": 3,
-        "title": "Within every lineage, English-marketed brands surface; non-English-marketed ones don\u2019t.",
+        "title": "Within every lineage, English-marketed brands surface; non-English-marketed ones\u00a0don\u2019t.",
         "chart_slot": "hero_f3_within_lineage",
+        "n_lead": 3,
         "paragraphs": [
             (
                 "The pre-registered H3 predicted within-Japanese variance "
@@ -550,8 +553,9 @@ PATTERNS = [
     # ------------------------------------------------------------------
     {
         "number": 4,
-        "title": "The variance is in German. Japanese is the steady lineage.",
+        "title": "The variance is in German. Japanese is the steady\u00a0lineage.",
         "chart_slot": "hero_f4_per_cep",
+        "n_lead": 0,
         "paragraphs": [
             (
                 "The pre-registered H4 predicted Japanese aggregate would "
@@ -638,7 +642,7 @@ PATTERNS = [
     # ------------------------------------------------------------------
     {
         "number": 5,
-        "title": "Newer models surface boundary lineages more, not less.",
+        "title": "Newer models surface boundary lineages more, not\u00a0less.",
         "chart_slot": "inline_f5_freshness",
         "paragraphs": [
             (
