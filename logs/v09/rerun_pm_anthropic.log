@@ -1,0 +1,29 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/pm/results_v2_pm_20260507_015558.csv
+Category: pm
+Filter:   provider=anthropic
+Total rows in source: 288
+Cells to retry:       6
+Started:  2026-05-07T06:35:55
+==============================================================================
+  [  1/6] p6_comparison      | anthropic_opus       | run 3 -> OK (1 attempt, 23.5s)
+  [  2/6] p6_comparison      | anthropic_opus       | run 4 -> OK (1 attempt, 24.4s)
+  [  3/6] p6_comparison      | anthropic_opus       | run 5 -> OK (1 attempt, 21.4s)
+  [  4/6] p6_comparison      | anthropic_opus       | run 6 -> OK (1 attempt, 22.1s)
+  [  5/6] p6_comparison      | anthropic_opus       | run 7 -> OK (1 attempt, 21.3s)
+  [  6/6] p6_comparison      | anthropic_opus       | run 8 -> OK (1 attempt, 24.1s)
+
+==============================================================================
+Recovery complete. Saved 6 rows to data/pm/results_v2_pm_20260507_015558_rerun_anthropic_20260507_063824.csv
+  ok:                 6
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/pm/results_v2_pm_20260507_015558.csv
+  Recovery: data/pm/results_v2_pm_20260507_015558_rerun_anthropic_20260507_063824.csv
+  See merge step in your post-collection pipeline.
+==============================================================================

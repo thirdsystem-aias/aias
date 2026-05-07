@@ -1,0 +1,29 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/finance/results_v2_finance_20260507_175312.csv
+Category: finance
+Filter:   all providers
+Total rows in source: 288
+Cells to retry:       6
+Started:  2026-05-07T17:53:59
+==============================================================================
+  [  1/6] p3_constraint      | anthropic_opus       | run 3 -> OK (1 attempt, 11.2s)
+  [  2/6] p3_constraint      | anthropic_opus       | run 4 -> OK (1 attempt, 12.6s)
+  [  3/6] p3_constraint      | anthropic_opus       | run 5 -> OK (1 attempt, 9.7s)
+  [  4/6] p3_constraint      | anthropic_opus       | run 6 -> OK (1 attempt, 9.8s)
+  [  5/6] p3_constraint      | anthropic_opus       | run 7 -> OK (1 attempt, 52.8s)
+  [  6/6] p3_constraint      | anthropic_opus       | run 8 -> OK (1 attempt, 10.5s)
+
+==============================================================================
+Recovery complete. Saved 6 rows to data/finance/results_v2_finance_20260507_175312_rerun_20260507_175558.csv
+  ok:                 6
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/finance/results_v2_finance_20260507_175312.csv
+  Recovery: data/finance/results_v2_finance_20260507_175312_rerun_20260507_175558.csv
+  See merge step in your post-collection pipeline.
+==============================================================================

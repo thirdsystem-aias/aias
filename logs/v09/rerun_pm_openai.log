@@ -1,0 +1,56 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/pm/results_v2_pm_20260507_015558.csv
+Category: pm
+Filter:   provider=openai
+Total rows in source: 288
+Cells to retry:       33
+Started:  2026-05-07T07:41:43
+==============================================================================
+  [  1/33] p4_identity        | openai_flagship      | run 8 -> OK (1 attempt, 23.7s)
+  [  2/33] p5_discovery       | openai_mini          | run 1 -> OK (1 attempt, 6.4s)
+  [  3/33] p5_discovery       | openai_mini          | run 2 -> OK (1 attempt, 7.6s)
+  [  4/33] p5_discovery       | openai_mini          | run 3 -> OK (1 attempt, 6.3s)
+  [  5/33] p5_discovery       | openai_mini          | run 4 -> OK (1 attempt, 6.9s)
+  [  6/33] p5_discovery       | openai_mini          | run 5 -> OK (1 attempt, 11.5s)
+  [  7/33] p5_discovery       | openai_mini          | run 6 -> OK (1 attempt, 8.3s)
+  [  8/33] p5_discovery       | openai_mini          | run 7 -> OK (1 attempt, 7.1s)
+  [  9/33] p5_discovery       | openai_mini          | run 8 -> OK (1 attempt, 7.6s)
+  [ 10/33] p5_discovery       | openai_flagship      | run 1 -> OK (1 attempt, 35.3s)
+  [ 11/33] p5_discovery       | openai_flagship      | run 2 -> OK (1 attempt, 41.6s)
+  [ 12/33] p5_discovery       | openai_flagship      | run 3 -> OK (1 attempt, 58.9s)
+  [ 13/33] p5_discovery       | openai_flagship      | run 4 -> OK (1 attempt, 32.5s)
+  [ 14/33] p5_discovery       | openai_flagship      | run 5 -> OK (1 attempt, 38.6s)
+  [ 15/33] p5_discovery       | openai_flagship      | run 6 -> OK (1 attempt, 40.6s)
+  [ 16/33] p5_discovery       | openai_flagship      | run 7 -> OK (1 attempt, 46.4s)
+  [ 17/33] p5_discovery       | openai_flagship      | run 8 -> OK (1 attempt, 31.6s)
+  [ 18/33] p6_comparison      | openai_mini          | run 1 -> OK (1 attempt, 7.8s)
+  [ 19/33] p6_comparison      | openai_mini          | run 2 -> OK (1 attempt, 9.4s)
+  [ 20/33] p6_comparison      | openai_mini          | run 3 -> OK (1 attempt, 9.4s)
+  [ 21/33] p6_comparison      | openai_mini          | run 4 -> OK (1 attempt, 10.6s)
+  [ 22/33] p6_comparison      | openai_mini          | run 5 -> OK (1 attempt, 9.2s)
+  [ 23/33] p6_comparison      | openai_mini          | run 6 -> OK (1 attempt, 9.1s)
+  [ 24/33] p6_comparison      | openai_mini          | run 7 -> OK (1 attempt, 7.3s)
+  [ 25/33] p6_comparison      | openai_mini          | run 8 -> OK (1 attempt, 9.1s)
+  [ 26/33] p6_comparison      | openai_flagship      | run 1 -> OK (1 attempt, 49.7s)
+  [ 27/33] p6_comparison      | openai_flagship      | run 2 -> OK (1 attempt, 31.9s)
+  [ 28/33] p6_comparison      | openai_flagship      | run 3 -> OK (1 attempt, 31.2s)
+  [ 29/33] p6_comparison      | openai_flagship      | run 4 -> OK (1 attempt, 23.6s)
+  [ 30/33] p6_comparison      | openai_flagship      | run 5 -> OK (1 attempt, 38.6s)
+  [ 31/33] p6_comparison      | openai_flagship      | run 6 -> OK (1 attempt, 42.3s)
+  [ 32/33] p6_comparison      | openai_flagship      | run 7 -> OK (1 attempt, 32.2s)
+  [ 33/33] p6_comparison      | openai_flagship      | run 8 -> OK (1 attempt, 45.4s)
+
+==============================================================================
+Recovery complete. Saved 33 rows to data/pm/results_v2_pm_20260507_015558_rerun_openai_20260507_075726.csv
+  ok:                 33
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/pm/results_v2_pm_20260507_015558.csv
+  Recovery: data/pm/results_v2_pm_20260507_015558_rerun_openai_20260507_075726.csv
+  See merge step in your post-collection pipeline.
+==============================================================================
