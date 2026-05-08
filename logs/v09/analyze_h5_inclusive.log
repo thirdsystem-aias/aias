@@ -1,0 +1,73 @@
+Loading category × wave data...
+  pm         v06:   96 rows (96 matched-subset) - data/pm/mode_classified_20260507_195446.csv
+  pm         v09:  288 rows (96 matched-subset) - data/pm/mode_classified_20260507_200258.csv
+  running    v06:   96 rows (96 matched-subset) - data/running/mode_classified_20260507_200606.csv
+  running    v09:  288 rows (96 matched-subset) - data/running/mode_classified_20260507_201542.csv
+  oliveoil   v06:   96 rows (96 matched-subset) - data/oliveoil/mode_classified_20260507_194436.csv
+  oliveoil   v09:  288 rows (96 matched-subset) - data/oliveoil/mode_classified_20260507_195200.csv
+  skincare   v06:   96 rows (96 matched-subset) - data/skincare/mode_classified_20260507_201854.csv
+  skincare   v09:  288 rows (96 matched-subset) - data/skincare/mode_classified_20260507_202757.csv
+  finance    v06:   96 rows (96 matched-subset) - data/finance/mode_classified_20260507_193415.csv
+  finance    v09:  288 rows (96 matched-subset) - data/finance/mode_classified_20260507_194147.csv
+
+Scoring hypotheses...
+
+================================================================================
+AIAS v0.9 Pre-Registration Outcomes
+Generated: 2026-05-07T22:03:22
+Pre-registration: PRE_REGISTRATION_v09_rebaseline_v1.0.md (tag v0.9-prereg-locked)
+================================================================================
+
+H1: ≥70% of registry brands within ±5pp; ≥90% within ±10pp (matched subset, all 5 categories)
+  BAND: CONFIRMED
+  n_brand_deltas: 103
+  within_5pp_count: 91
+  within_5pp_pct: 88.3
+  within_10pp_count: 102
+  within_10pp_pct: 99.0
+
+H2: Top-3 brands at t₁ remain in top-5 at t₂ (per category, matched subset)
+  BAND: CONFIRMED
+  categories_confirmed: 5
+
+H3: Variance-rank-order across categories at t₂ has Spearman ρ ≥ 0.7 with t₁
+  BAND: CONFIRMED
+  spearman_rho: 0.8
+
+H4: Mint mention rate at t₂ vs t₁ in finance
+  BAND: STABILITY (predicted)
+  phantom_brand: Mint
+  category: finance
+  t1_presence_pct: 44.8
+  t2_presence_pct: 41.7
+  delta_pp: -3.1
+  note: Stability is the predicted outcome per pre-reg §2.H4 (corpus aging hypothesis).
+
+H5: Spanish olive oil ≤ 12.5pp AND K-beauty ≤ 5.0pp (matched subset, t₂)
+  BAND: PARTIALLY CONFIRMED
+  spanish_olive_oil_aggregate_pp: 14.2
+  spanish_olive_oil_threshold_pp: 12.5
+  spanish_passes: False
+  kbeauty_aggregate_pp: 1.0
+  kbeauty_threshold_pp: 5.0
+  kbeauty_passes: True
+  note: Spanish threshold = 25% × 50.0% IOC global production share. Brand lists supplied via CLI; move to registry lineage tags in future.
+
+H6: Per-brand sonnet-vs-mini spread at t₂ correlates with t₁ at Pearson r ≥ 0.7 per category
+  BAND: CONFIRMED
+  categories_confirmed: 5
+
+--------------------------------------------------------------------------------
+Hypothesis band totals: {'CONFIRMED': 4, 'STABILITY (predicted)': 1, 'PARTIALLY CONFIRMED': 1}
+--------------------------------------------------------------------------------
+
+Exploratory: mode_distribution per category (no formal threshold)
+  pm: brand: 14.6→21.9 (+7.3pp), authority: 81.2→77.1 (-4.1pp), mixed: 4.2→1.0 (-3.2pp)
+  running: authority: 4.2→1.0 (-3.2pp), brand: 63.5→66.7 (+3.2pp), component: 9.4→11.5 (+2.1pp)
+  oliveoil: brand: 35.4→27.1 (-8.3pp), mixed: 31.2→36.5 (+5.3pp), component: 20.8→26.0 (+5.2pp)
+  skincare: component: 30.2→24.0 (-6.2pp), mixed: 14.6→18.8 (+4.2pp), brand: 47.9→50.0 (+2.1pp)
+  finance: authority: 79.2→82.3 (+3.1pp), refusal: 2.1→0.0 (-2.1pp), brand: 16.7→15.6 (-1.1pp)
+================================================================================
+
+Wrote compact scoring table: scoring_tables_v09_20260507_220322.csv
+Wrote full results JSON:    scoring_full_v09_20260507_220322.json
