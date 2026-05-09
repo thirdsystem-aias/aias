@@ -1,0 +1,5 @@
+hypothesis,mapping,r_naive_t1_pct,r_naive_t2_pct,abs_delta_pp,band_pp,n_t1,n_t2,floor_cleared,status,rationale
+H1,primary,0.0,2.5,2.5,2.0,43,40,False,INDETERMINATE,"Effective-n floor (§3.4) breached: t1=43, t2=40, required ≥ 100 at both waves. H1 routed to descriptive disclosure path."
+H1,e3_sensitivity,0.0,2.5,2.5,2.0,43,40,False,INDETERMINATE,"Effective-n floor (§3.4) breached: t1=43, t2=40, required ≥ 100 at both waves. H1 routed to descriptive disclosure path."
+H2,primary,0.0,2.5,,,0,1,,FALSIFIED,"n_naive = 0 at t1 (n_naive,t1=0, n_naive,t2=1)"
+H2,e3_sensitivity,0.0,2.5,,,0,1,,FALSIFIED,"n_naive = 0 at t1 (n_naive,t1=0, n_naive,t2=1)"

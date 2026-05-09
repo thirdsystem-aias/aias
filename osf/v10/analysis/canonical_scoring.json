@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "generated_at": "2026-05-09T18:10:54",
+    "input_file": "/Users/pablou/aias/osf/v10/data/classifications.csv",
+    "total_rows": 83,
+    "pre_reg_lock": "git tag v0.10-prereg, commit 8767f44, 2026-05-09",
+    "deviations_log": "/Users/pablou/aias/osf/v10/DEVIATIONS.md"
+  },
+  "metrics_primary": {
+    "t1": {
+      "n_matched_mint": 43,
+      "n_naive": 0,
+      "n_caveated": 43,
+      "n_error": 0,
+      "r_naive_pct": 0.0,
+      "r_caveated_pct": 100.0
+    },
+    "t2": {
+      "n_matched_mint": 40,
+      "n_naive": 1,
+      "n_caveated": 39,
+      "n_error": 0,
+      "r_naive_pct": 2.5,
+      "r_caveated_pct": 97.5
+    }
+  },
+  "metrics_e3_sensitivity": {
+    "t1": {
+      "n_matched_mint": 43,
+      "n_naive": 0,
+      "n_caveated": 43,
+      "n_error": 0,
+      "r_naive_pct": 0.0,
+      "r_caveated_pct": 100.0
+    },
+    "t2": {
+      "n_matched_mint": 40,
+      "n_naive": 1,
+      "n_caveated": 39,
+      "n_error": 0,
+      "r_naive_pct": 2.5,
+      "r_caveated_pct": 97.5
+    }
+  },
+  "hypotheses": {
+    "H1_primary": {
+      "mapping": "primary",
+      "r_naive_t1_pct": 0.0,
+      "r_naive_t2_pct": 2.5,
+      "abs_delta_pp": 2.5,
+      "band_pp": 2.0,
+      "n_floor_required": 100,
+      "n_t1": 43,
+      "n_t2": 40,
+      "floor_cleared": false,
+      "status": "INDETERMINATE",
+      "rationale": "Effective-n floor (\u00a73.4) breached: t1=43, t2=40, required \u2265 100 at both waves. H1 routed to descriptive disclosure path."
+    },
+    "H1_e3_sensitivity": {
+      "mapping": "e3_sensitivity",
+      "r_naive_t1_pct": 0.0,
+      "r_naive_t2_pct": 2.5,
+      "abs_delta_pp": 2.5,
+      "band_pp": 2.0,
+      "n_floor_required": 100,
+      "n_t1": 43,
+      "n_t2": 40,
+      "floor_cleared": false,
+      "status": "INDETERMINATE",
+      "rationale": "Effective-n floor (\u00a73.4) breached: t1=43, t2=40, required \u2265 100 at both waves. H1 routed to descriptive disclosure path."
+    },
+    "H2_primary": {
+      "mapping": "primary",
+      "n_naive_t1": 0,
+      "n_naive_t2": 1,
+      "status": "FALSIFIED",
+      "rationale": "n_naive = 0 at t1 (n_naive,t1=0, n_naive,t2=1)"
+    },
+    "H2_e3_sensitivity": {
+      "mapping": "e3_sensitivity",
+      "n_naive_t1": 0,
+      "n_naive_t2": 1,
+      "status": "FALSIFIED",
+      "rationale": "n_naive = 0 at t1 (n_naive,t1=0, n_naive,t2=1)"
+    },
+    "H3_diagnostic": {
+      "gross_presence_t1_pct": 44.79,
+      "gross_presence_t2_pct": 41.67,
+      "delta_gross_pp": -3.12,
+      "delta_naive_pp": 2.5,
+      "directional_concordance": "decoupled",
+      "magnitude_ratio_naive_over_gross": 0.8013,
+      "note": "Diagnostic only per \u00a72 H3. No falsification status."
+    }
+  },
+  "borderline_count": 1
+}
