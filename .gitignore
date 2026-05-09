@@ -2,3 +2,9 @@ venv/
 reports/output/
 __pycache__/
 .DS_Store
+
+# OSF deposit staging (files are duplicates of source folders)
+osf_staging/
+
+# OSF CLI config (contains username + project ID)
+.osfcli.config
