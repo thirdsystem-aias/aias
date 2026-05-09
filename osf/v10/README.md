@@ -1,6 +1,6 @@
 # AIAS v0.10 — Naive-Phantom Rate Longitudinal Stability
 
-**Status.** Pre-registered, locked [YYYY-MM-DD] at git commit `[hash]`. Analysis status: [pre-analysis / in progress / complete — update at deposit].
+**Status.** Pre-registered, locked 2026-05-09 at git commit `8767f44`. Analysis status: pre-analysis.
 **Methodology.** AIAS Presence Measurement Protocol v1.1 (SSRN 6722319).
 **Scope.** Single-brand (Mint) designed-for-test extension applying the v0.7 caveat-classifier to v0.9 raw responses. No new measurement.
 **Author.** Pablo Ulpiano Gonzalez Castro.
@@ -70,7 +70,7 @@ Raw responses inherited from v0.9 (OSF project ec6wh, `/v09/data/responses/`, gi
 
 **COI.** The author is also Director of Corporate Brand Creative and Governance at Samsung Electronics America. The v0.10 study, like all AIAS program publications, is independent research developed outside the scope of that employment. Mint and Credit Karma are not Samsung properties.
 **Funding.** None.
-**Pre-registration discipline.** `PRE_REGISTRATION.md` locked at git commit `[hash]` on `[YYYY-MM-DD]`, prior to any application of the classifier to v0.9 responses. `DEVIATIONS.md` logs any post-lock changes.
+**Pre-registration discipline.** `PRE_REGISTRATION.md` locked at git commit `8767f44` on `2026-05-09`, prior to any application of the classifier to v0.9 responses. `DEVIATIONS.md` logs any post-lock changes.
 
 ## Contact
 

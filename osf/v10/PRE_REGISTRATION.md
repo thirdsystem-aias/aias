@@ -5,7 +5,7 @@
 **Version.** v0.10 pre-registration · draft for git lock
 **Methodology Protocol.** AIAS Presence Measurement Protocol v1.1 (SSRN 6722319)
 **Registry.** brands_pmtools_v0.6 (frozen)
-**Date drafted.** [YYYY-MM-DD]
+**Date drafted.** 2026-05-09
 **Lock target.** git commit prior to any application of the v0.7 caveat-classifier to v0.9 raw responses
 **Author.** Pablo Ulpiano Gonzalez Castro
 **Research entity.** Third System™
@@ -180,4 +180,4 @@ Any deviation from this pre-registration after git lock is logged in `/v10/DEVIA
 
 ## 11. Lock
 
-This document is locked at git commit `[hash-placeholder — to be inserted at lock time]` on `[YYYY-MM-DD]`, **prior to any application of the v0.7 caveat-classifier to the v0.9 Mint response subset**. No analysis output exists at the moment of lock.
+This document is locked at git commit `8767f44` on `2026-05-09`, **prior to any application of the v0.7 caveat-classifier to the v0.9 Mint response subset**. No analysis output exists at the moment of lock.
