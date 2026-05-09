@@ -1,35 +1,35 @@
 #!/usr/bin/env python3
 """
-Phase 2 Knives — Discourse-Language Bias v0.8 typesetting pipeline.
+v0.9 Longitudinal Re-Baseline — typesetting pipeline.
 
-Adapted from build_report_v07.py (v0.7 Phantom Brand Persistence) with
-minimal changes:
-  - Imports v08_knives_content instead of v07_bbb_content
+Adapted from build_report_v08.py (v0.8 Phase 2 Knives) with minimal changes:
+  - Imports v09_rebaseline_content instead of v09_rebaseline_content
   - Section label remains "FINDING"
-  - Hero check matches v08 hero slot keys (lineage / authorities / within-
-    lineage / per-CEP)
-  - HERO_FIGURE_CAPTIONS rewritten for v08 figures
-  - _slot_lookup table updated for chart_v08_*.pdf filenames
+  - Hero check matches v09 hero slot keys (drift / leaderboard / variance /
+    mint / pattern4 / spread / pattern1 / mode-dist / matrix)
+  - HERO_FIGURE_CAPTIONS rewritten for v09 figures
+  - _slot_lookup table updated for chart_v09_*.pdf filenames
+  - CHART_FIGSIZE_IN extended with v09 figsize keys (charts have varied
+    heights at the 6-column width: 4.00–4.75 inches)
   - Header right text, citation, output filename, doc metadata updated
-  - Leaderboards spread heading and intro rewritten for knives
-  - REPORT_PROTOCOL_VERSION bumped to v1.1 (the version v0.8 references)
+  - REPORT_PROTOCOL_VERSION stays at v1.1 (same protocol as v0.8)
 
 Inputs:
   - brand/third_system_brand.json        (v1.4)
   - brand/design_tokens_template.json    (IDML extract)
   - brand/report_specs.json              (priority-1 spec for cross_category_report)
-  - reports/output/chart_v08_*.pdf       (6 charts from build_charts_v08_knives.py)
+  - reports/output/chart_v09_*.pdf       (9 charts from build_charts_v09_rebaseline.py)
 
 Output:
-  - reports/output/v08_discourse_language.pdf
+  - reports/output/v09_longitudinal_rebaseline.pdf
 
-The v0.6 and v0.7 build_report scripts are left untouched. Run this for
-Phase 2 Knives:
+The v0.6, v0.7, and v0.8 build_report scripts are left untouched. Run this for
+v0.9 longitudinal re-baseline:
 
-    python3 build_charts_v08_knives.py
-    python3 build_report_v08.py
+    python3 build_charts_v09_rebaseline.py
+    python3 build_report_v09.py
 
-Locked rules followed (same as v0.6/v0.7):
+Locked rules followed (same as v0.6/v0.7/v0.8):
   - Image-placeholder rectangles in master spreads stay BLANK (no fill colors).
   - Template's #FF001A red is overridden to brand primary (Indigo #37237B per
     third_system_brand.json v1.4).
@@ -94,7 +94,7 @@ LOCKUP_SVG = BRAND_DIR / "THIRDSYSTEM_AIPT_Logo.svg"
 
 # Make `import v06_content` work regardless of working directory.
 sys.path.insert(0, str(SCRIPT_DIR))
-import v08_knives_content as content  # noqa: E402
+import v09_rebaseline_content as content  # noqa: E402
 import tsboilerplate as boilerplate  # noqa: E402
 
 # ---------------------------------------------------------------------------
@@ -134,6 +134,19 @@ CHART_FIGSIZE_IN = {
     "6_col_short": (7.50, 3.50),      # F1, F5 — two/three-row compact comparisons
     "6_col_hero_short": (7.50, 3.75), # F2 — multi-row stacked bars, tightened
     "6_col_compact": (7.50, 3.00),    # F4 — extra-compact for body-heavy findings
+    # v0.9 additions: charts have varied heights at the 6-col width (4.00 to
+    # 4.75 inches) plus a square 4.5-inch chart for the H4 Mint two-point
+    # plot. Each key reserves a slot whose height matches the chart's actual
+    # figsize so the pypdf overlay aligns at native resolution.
+    "6_col_v09_drift":      (7.50, 4.75),  # H1 drift scatter
+    "6_col_v09_leaderboard": (7.50, 6.50), # H2 leaderboard (5 stacked panels, fits printable area)
+    "6_col_v09_variance":   (7.50, 4.10),  # H3 within-category variance
+    "4_col_v09_mint":       (3.55, 3.20),  # H4 Mint persistence (1-column inline, fits in BC col 1)
+    "6_col_v09_pattern4":   (7.50, 4.40),  # H5 Pattern 4 sensitivity
+    "6_col_v09_h6":         (7.50, 4.00),  # H6 cross-model spread
+    "6_col_v09_pattern1":   (7.50, 4.20),  # post-hoc Pattern 1
+    "6_col_v09_modes":      (7.50, 4.50),  # mode distribution
+    "6_col_v09_matrix":     (7.50, 4.75),  # pattern replication matrix
 }
 
 # Body two-column flow uses 3+3: text spans columns 1-3, then 4-6, with the
@@ -968,7 +981,7 @@ class V06DocTemplate(BaseDocTemplate):
         c.setFont(self.font.regular, 7.5)
         c.setFillColor(HexColor(self.palette.soft_black))
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "Discourse-Language Bias \u00b7 v0.8 \u00b7 6 May 2026")
+                           "AI Presence Drift \u00b7 v0.9 \u00b7 8 May 2026")
 
         # Footer — public_report verbatim from third_system_brand.json
         footer_y = MARGIN - 18
@@ -1097,19 +1110,23 @@ def build_what_we_measured_story(styles: dict[str, ParagraphStyle]) -> list:
 
 def build_leaderboards_spread(styles: dict, manifest: ChartManifest,
                                chart_dir: Path, debug: bool) -> list:
-    """Single-page hero spread with the cross-category leaderboards chart.
-    Returns an empty list if the chart file is missing — caller should skip
-    the page break in that case rather than show a blank reservation.
+    """Single-page hero spread with the at-a-glance summary chart.
+
+    For v0.9 this slot renders the pattern replication matrix (the v0.6
+    framework × five categories matrix), which serves as the headline-at-
+    a-glance summary that the seven Findings then unpack. Function name is
+    inherited from v0.6/v0.7/v0.8 (where it rendered a leaderboards chart);
+    semantically it's the front-of-report summary spread.
 
     Heading+intro are kept together; chart+caption are kept together; but
     we don't bind the whole thing as one KeepTogether group because the
-    XL chart (8.5") plus heading would exceed the spread frame height."""
-    fname, figsize_key = _slot_lookup("hero_leaderboards")
+    chart plus heading would exceed the spread frame height."""
+    fname, figsize_key = _slot_lookup("hero_pattern_matrix")
     chart_path = chart_dir / fname
     if not chart_path.exists():
         warnings.warn(
-            f"Leaderboards hero chart missing ({chart_path.name}); "
-            f"skipping the leaderboards spread page entirely."
+            f"Summary spread chart missing ({chart_path.name}); "
+            f"skipping the summary spread page entirely."
         )
         return []
     w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
@@ -1117,26 +1134,36 @@ def build_leaderboards_spread(styles: dict, manifest: ChartManifest,
     s: list = []
     s.append(Spacer(1, 4))
     s.append(KeepTogether([
-        Paragraph("Premium kitchen knives leaderboard", styles["h1"]),
+        Paragraph("The framework holds across categories", styles["h1"]),
         Paragraph(
-            "Twenty-two of twenty-seven brands ordered by AI Presence, "
-            "colored by lineage. W\u00fcsthof at #1 (68.4%) and Mac at #2 "
-            "(66.3%) lead a closely-clustered top tier; G\u00fcde appears at "
-            "the bottom (0.0%) as the H5 control \u2014 the German-side "
-            "parallel to the boundary-condition Japanese makers. The four "
-            "lineage colors carry through every chart that follows.",
+            "Three of v0.6's six framework patterns are directly tested at "
+            "v0.9. <b>Pattern 1</b> (cross-model spread by category) "
+            "replicates across all five categories at Spearman <font name='Helvetica'>\u03c1</font> = "
+            "0.800 between t<sub size='6'>1</sub> and t<sub size='6'>2</sub>, and at <font name='Helvetica'>\u03c1</font> = 0.900 "
+            "against v0.6's narrative ordering. <b>Pattern 4</b> "
+            "(discourse-language bias) replicates strict in olive oil "
+            "(11.5pp Spanish, below the 12.5pp threshold) and in skincare "
+            "(1.0pp K-beauty, below the 5pp threshold). <b>Pattern 6</b> "
+            "(phantom-brand persistence) replicates in personal finance "
+            "with Mint at 41.7% gross Presence (\u22123.1pp from t<sub size='6'>1</sub>, "
+            "within the predicted stability band). The bottom row shows "
+            "brand-mode share at t<sub size='6'>2</sub> \u2014 how much of each "
+            "category's Presence is delivered as named-brand "
+            "recommendations versus mixed, component, or authority "
+            "modes.",
             styles["body_lead"]),
     ]))
     s.append(Spacer(1, 8))
     s.append(ChartReservation(
-        "hero_leaderboards", chart_path, w_in, h_in, manifest,
+        "hero_pattern_matrix", chart_path, w_in, h_in, manifest,
         debug=debug,
-        caption=("Figure A \u00b7 Twenty-two premium kitchen knife brands by "
-                 "AI Presence, lineage-colored. The mass-market English-"
-                 "marketed cohort (W\u00fcsthof, Mac, Shun, Henckels, "
-                 "Tojiro, Global) saturates the top; boundary-condition "
-                 "Japanese brands cluster in the 2\u201310% range; G\u00fcde "
-                 "at exactly 0.0% is the German-side boundary control."),
+        caption=("Figure A \u00b7 v0.6 framework pattern replication at "
+                 "v0.9, summary matrix. Rows are framework patterns "
+                 "directly tested at v0.9 plus a brand-mode-share row "
+                 "at t<sub size='6'>2</sub>; columns are the five categories. Cell "
+                 "intensity is proportional to magnitude. Patterns 2, 3, "
+                 "5 are not directly measured at v0.9 (see What\u2019s "
+                 "Next for v0.10+ candidates)."),
         caption_style=styles["hero_caption"],
     ))
     return s
@@ -1177,8 +1204,16 @@ def build_pattern_unified(pattern: dict, styles: dict,
     """
     slot = pattern["chart_slot"]
     is_hero = slot in (
+        # v0.6/v0.7/v0.8 slot names (kept so old reports still build)
         "hero_f1_lineage_aggregates", "hero_f2_authorities",
         "hero_f3_within_lineage", "hero_f4_per_cep",
+        # v0.9 slot names — Findings 1, 2, 3, 5, 6, 7 render full-width hero;
+        # Finding 4 (Mint) renders inline in column 1 because the chart is
+        # a small two-point comparison that reads better at column width.
+        "hero_f1_drift_scatter", "hero_f2_leaderboard",
+        "hero_f3_variance",
+        "hero_f5_pattern4",       "hero_f6_spread",
+        "hero_f7_pattern1",
     )
 
     chart_path = None
@@ -1203,8 +1238,16 @@ def build_pattern_unified(pattern: dict, styles: dict,
     # findings start in any leftover space \u226550pt; if the title block
     # itself can't fit in that space, KT handles deferral. Eliminates dead
     # space \u2265 50pt at end of previous findings.
-    cond_threshold = 50
-    s.append(CondPageBreak(cond_threshold))
+    #
+    # v0.9 addition: per-pattern force_page_break=True overrides CondPageBreak
+    # with an unconditional PageBreak. Used by Finding 4 (Mint), whose smaller
+    # inline chart wants to stay on a single page with its body text rather
+    # than starting in leftover space from Finding 3.
+    if pattern.get("force_page_break"):
+        s.append(PageBreak())
+    else:
+        cond_threshold = 50
+        s.append(CondPageBreak(cond_threshold))
 
     # Section title spans full width
     s.append(KeepTogether([
@@ -1222,9 +1265,11 @@ def build_pattern_unified(pattern: dict, styles: dict,
 
         w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
-        caption_text = (HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
-                        if is_hero
-                        else f"Figure {pattern['number']}.")
+        # Rich captions from HERO_FIGURE_CAPTIONS are used regardless of
+        # is_hero — what differs is just the style (hero_caption is larger;
+        # caption is the smaller inline-chart variant). Falls back to a
+        # generic "Figure N." string when no entry exists for the slot.
+        caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
             slot, chart_path, w_in, h_in, manifest,
             debug=debug,
@@ -1326,31 +1371,73 @@ def build_pattern_unified(pattern: dict, styles: dict,
 # Per-pattern figure descriptors used on hero spreads. Brief, factual,
 # distinct from the section title (which already appeared on the body page).
 HERO_FIGURE_CAPTIONS = {
-    "hero_f1_lineage_aggregates": (
-        "Figure 1 \u00b7 Lineage aggregate Presence at v1.0 locked vs v1.2 "
-        "published. JP aggregate falls from 36.2% to 18.5% as the registry "
-        "expands from 8 to 14 Japanese brands; DE stays at 27.3%. The H1 "
-        "headline outcome is registry-construction-dependent; the brand-"
-        "level mechanism is not."
+    "hero_f1_drift_scatter": (
+        "Figure 1 \u00b7 Per-brand t<sub size='6'>1</sub>\u2192t<sub size='6'>2</sub> drift across 5 "
+        "categories on the matched subset (n=103 brand-level deltas). "
+        "88.3% within \u00b15pp; 99.0% within \u00b110pp; no brand "
+        "exceeds \u00b120pp. The empirical noise floor of one-week AI "
+        "Presence measurement on the matched subset is approximately "
+        "\u00b15pp for the modal brand."
     ),
-    "hero_f2_authorities": (
-        "Figure 2 \u00b7 100% of 262 named authority mentions are English-"
-        "language. Top sources include Sur La Table, Serious Eats, "
-        "Williams-Sonoma, Wirecutter, Amazon, and America's Test Kitchen. "
-        "Even \u201cJapanese Knife Imports\u201d is a US-based English-"
-        "language retailer."
+    "hero_f2_leaderboard": (
+        "Figure 2 \u00b7 Top-3 brands at t<sub size='6'>1</sub> remain in top-5 at "
+        "t<sub size='6'>2</sub> across all 5 categories. Each panel is one category; "
+        "asterisk and copper coloring mark t<sub size='6'>1</sub> top-three brands. "
+        "Leaderboard composition preserved with no exceptions."
     ),
-    "hero_f3_within_lineage": (
-        "Figure 3 \u00b7 The marketing-language-coverage mechanism operates "
-        "within both lineages. Within Japanese: 5x ratio between mass-market "
-        "(55.2%) and traditional (10.9%). Within German: G\u00fcde at 0.0% "
-        "vs W\u00fcsthof+Henckels at 62.0% mean."
+    "hero_f3_variance": (
+        "Figure 3 \u00b7 Within-category brand-presence stdev at "
+        "t<sub size='6'>1</sub> vs t<sub size='6'>2</sub>; categories sorted by t<sub size='6'>2</sub> variance. "
+        "Personal finance highest dispersion at both waves; running "
+        "shoes lowest. Spearman <font name='Helvetica'>\u03c1</font> = 0.8 across the 5 categories, "
+        "above the 0.7 H3 threshold."
     ),
-    "hero_f4_per_cep": (
-        "Figure 4 \u00b7 Per-CEP brand-surfacing rate by lineage. Japanese "
-        "is the steady lineage across all six prompts; German collapses to "
-        "2.1% in p3 (constraint, Japanese-bias prompt) and dominates at "
-        "45.8% in p4 (identity)."
+    "hero_f4_mint": (
+        "Figure 4 \u00b7 Mint phantom-brand persistence at gross "
+        "Presence in personal finance. The \u00b15pp stability band "
+        "around t<sub size='6'>1</sub>'s 44.8% is shaded; t<sub size='6'>2</sub> lands at 41.7% "
+        "(\u22123.1pp). Predicted-stability outcome confirmed."
+    ),
+    "hero_f5_pattern4": (
+        "Figure 5 \u00b7 H5 Pattern 4 sensitivity. Strict Spanish "
+        "(Castillo de Canena, N\u00fa\u00f1ez de Prado) at 11.5pp "
+        "passes the 12.5pp threshold; +Graza pushes the cohort to "
+        "14.2pp and breaches. K-beauty at 1.0pp passes the 5pp "
+        "threshold. The 2.7-point swing between strict and inclusive "
+        "is entirely Graza \u2014 the diagnostic case isolating brand-"
+        "marketing-language from country-of-origin."
+    ),
+    "hero_f6_spread": (
+        "Figure 6 \u00b7 Per-brand cross-model spread (Sonnet vs gpt-"
+        "5.4-mini) Pearson correlation between t<sub size='6'>1</sub> and t<sub size='6'>2</sub> by "
+        "category. Dashed line marks the 0.7 H6 threshold; all 5 "
+        "categories clear it. Cross-model relative behavior is "
+        "preserved across the wave interval."
+    ),
+    "hero_f7_pattern1": (
+        "Figure 7 \u00b7 Post-hoc Pattern 1 cross-model spread by "
+        "category at t<sub size='6'>1</sub> and t<sub size='6'>2</sub>. Spearman <font name='Helvetica'>\u03c1</font> = 0.800 "
+        "(t<sub size='6'>1</sub>/t<sub size='6'>2</sub>); <font name='Helvetica'>\u03c1</font> = 0.900 (t<sub size='6'>2</sub> vs v0.6 narrative "
+        "ordering). Personal finance widens at t<sub size='6'>2</sub>; project "
+        "management narrows; both shifts within H1's empirical noise "
+        "floor but in directions that strengthen v0.6's stated "
+        "ordering."
+    ),
+    "hero_mode_distribution": (
+        "Figure 8 \u00b7 Exploratory mode-distribution shifts on the "
+        "matched subset. t<sub size='6'>1</sub> left, t<sub size='6'>2</sub> right per category. "
+        "Largest shifts in PM software (+7.3pp brand mode), olive oil "
+        "(\u22128.3pp brand mode), skincare (\u22126.2pp component "
+        "mode). Reported as a calibration baseline for a v0.10 pre-"
+        "registered mode-stability hypothesis."
+    ),
+    "hero_pattern_matrix": (
+        "Figure 9 \u00b7 v0.6 framework pattern replication summary "
+        "at v0.9. Pattern 1 cross-model spread replicates across all "
+        "5 categories; Pattern 4 discourse-language bias replicates "
+        "strict in the 2 cross-lingual categories where tested; "
+        "Pattern 6 phantom-brand replicates in personal finance "
+        "(Mint). Bottom row shows brand-mode share at t<sub size='6'>2</sub>."
     ),
 }
 
@@ -1359,14 +1446,16 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     """Map a slot_key to (filename, figsize_key). Centralized so the hero spread
     builder can reuse the table without duplicating it."""
     table = {
-        # v0.8 Phase 2 Knives findings
-        "hero_f1_lineage_aggregates":     ("chart_v08_f1_lineage_aggregates_6col.pdf", "6_col_short"),
-        "hero_f2_authorities":            ("chart_v08_f2_authorities_6col.pdf",        "6_col_hero_short"),
-        "hero_f3_within_lineage":         ("chart_v08_f3_within_lineage_6col.pdf",     "spread"),
-        "hero_f4_per_cep":                ("chart_v08_f4_per_cep_6col.pdf",            "6_col_hero_short"),
-        "inline_f5_freshness":            ("chart_v08_f5_freshness_4col.pdf",          "3_col_inline"),
-        # Hero spread used outside the pattern loop (build_leaderboards_spread)
-        "hero_leaderboards":              ("chart_v08_leaderboard_6col.pdf",           "6_col_hero_xl_95"),
+        # v0.9 Longitudinal Re-Baseline findings
+        "hero_f1_drift_scatter":      ("chart_v09_h1_drift_scatter_6col.pdf",        "6_col_v09_drift"),
+        "hero_f2_leaderboard":        ("chart_v09_h2_leaderboard_6col.pdf",          "6_col_v09_leaderboard"),
+        "hero_f3_variance":           ("chart_v09_h3_within_cat_variance_6col.pdf",  "6_col_v09_variance"),
+        "hero_f4_mint":               ("chart_v09_h4_mint_persistence_4col.pdf",     "4_col_v09_mint"),
+        "hero_f5_pattern4":           ("chart_v09_h5_pattern4_sensitivity_6col.pdf", "6_col_v09_pattern4"),
+        "hero_f6_spread":             ("chart_v09_h6_cross_model_spread_6col.pdf",   "6_col_v09_h6"),
+        "hero_f7_pattern1":           ("chart_v09_pattern1_spread_6col.pdf",         "6_col_v09_pattern1"),
+        "hero_mode_distribution":     ("chart_v09_mode_distribution_6col.pdf",       "6_col_v09_modes"),
+        "hero_pattern_matrix":        ("chart_v09_pattern_matrix_6col.pdf",          "6_col_v09_matrix"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1596,9 +1685,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "Gonzalez Castro, P. U. (2026). "
-        "<i>The English-Language Mediation Layer: AI Presence Index v0.8 "
-        "\u2014 Premium kitchen knives, designed for test</i>. "
-        "Third System. thirdsystem.ai/v08-discourse-language"
+        "<i>AI Presence Drift: AI Presence Index v0.9 "
+        "\u2014 Longitudinal re-baseline of five categories</i>. "
+        "Third System. thirdsystem.ai/v09-longitudinal-rebaseline"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1688,7 +1777,7 @@ def build(*, debug_layout: bool = False,
           chart_dir: Path | None = None,
           output_path: Path | None = None) -> Path:
     """
-    Build the v0.8 Phase 2 Knives report.
+    Build the v0.9 Longitudinal Re-Baseline report.
 
     debug_layout=True draws thin dashed borders around chart reservations to
     make geometry visible during review. Use False for production output.
@@ -1703,24 +1792,25 @@ def build(*, debug_layout: bool = False,
     font = register_typography()
     styles = build_paragraph_styles(font, palette, tokens)
 
-    print(f"[build_report_v08] palette: indigo={palette.indigo}, "
+    print(f"[build_report_v09] palette: indigo={palette.indigo}, "
           f"soft_black={palette.soft_black}, paper={palette.paper}")
-    print(f"[build_report_v08] typography: {font.name} "
+    print(f"[build_report_v09] typography: {font.name} "
           f"(brand_primary={font.is_brand_primary})")
 
     # Preconditions
     chart_dir = chart_dir or OUTPUT_DIR
-    output_path = output_path or (OUTPUT_DIR / "v08_discourse_language.pdf")
-    base_pdf = OUTPUT_DIR / "_v08_base.pdf"
+    output_path = output_path or (OUTPUT_DIR / "v09_longitudinal_rebaseline.pdf")
+    base_pdf = OUTPUT_DIR / "_v09_base.pdf"
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
     # Pre-flight: report which charts are present and which are missing.
-    print(f"[build_report_v08] chart pre-flight (looking in {chart_dir})")
+    print(f"[build_report_v09] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "hero_f1_lineage_aggregates", "hero_f2_authorities",
-        "hero_f3_within_lineage", "hero_f4_per_cep",
-        "inline_f5_freshness",
-        "hero_leaderboards",
+        "hero_f1_drift_scatter", "hero_f2_leaderboard",
+        "hero_f3_variance", "hero_f4_mint",
+        "hero_f5_pattern4", "hero_f6_spread",
+        "hero_f7_pattern1", "hero_mode_distribution",
+        "hero_pattern_matrix",
     ]
     expected_files = set()
     for sk in expected_slots:
@@ -1739,7 +1829,7 @@ def build(*, debug_layout: bool = False,
         if actual_charts:
             unexpected = [n for n in actual_charts if n not in expected_files]
             if unexpected:
-                print(f"[build_report_v08] chart files in dir not matched by any slot:")
+                print(f"[build_report_v09] chart files in dir not matched by any slot:")
                 for n in unexpected:
                     print(f"  [UNUSED ] {n}")
 
@@ -1749,7 +1839,7 @@ def build(*, debug_layout: bool = False,
         palette=palette, font=font, styles=styles,
         manifest=manifest,
         debug_layout=debug_layout,
-        title="The English-Language Mediation Layer \u2014 AI Presence Index v0.8",
+        title="AI Presence Drift \u2014 AI Presence Index v0.9",
         author=", ".join(content.CLOSING["byline_long"][:1]),
         subject="Independent measurement for the AI mediation layer.",
     )
@@ -1812,7 +1902,7 @@ def build(*, debug_layout: bool = False,
         story.append(f_)
 
     # --- Hypothesis scoring (replaces v0.6 aggregate matrix as the closing
-    # data summary). Uses HYPOTHESIS_SCORING from v08_knives_content. Renders
+    # data summary). Uses HYPOTHESIS_SCORING from v09_rebaseline_content. Renders
     # on the SPREAD template because the scoring table needs the full 540pt
     # content width \u2014 it does not fit in the body template's 3-col frames.
     if hasattr(content, "HYPOTHESIS_SCORING"):
@@ -1827,7 +1917,7 @@ def build(*, debug_layout: bool = False,
 
     # Build base PDF
     doc.build(story)
-    print(f"[build_report_v08] base PDF written: {base_pdf} "
+    print(f"[build_report_v09] base PDF written: {base_pdf} "
           f"({len(manifest.slots)} chart reservations)")
     for slot in manifest.slots:
         ok = "OK" if slot.chart_path.exists() else "MISSING"
@@ -1837,11 +1927,11 @@ def build(*, debug_layout: bool = False,
 
     # Pass 2 — overlay charts
     overlay_charts(base_pdf, manifest, output_path)
-    print(f"[build_report_v08] FINAL PDF written: {output_path}")
+    print(f"[build_report_v09] FINAL PDF written: {output_path}")
 
     # Page count check
     final_pages = len(PdfReader(str(output_path)).pages)
-    print(f"[build_report_v08] page count: {final_pages}")
+    print(f"[build_report_v09] page count: {final_pages}")
     if final_pages < 12 or final_pages > 22:
         warnings.warn(
             f"Page count {final_pages} is outside the 12-20 target band. "
@@ -1860,7 +1950,7 @@ if __name__ == "__main__":
                      help="Directory containing chart_*.pdf files. "
                           "Defaults to ./output relative to this script.")
     ap.add_argument("--output", type=Path, default=None,
-                     help="Output PDF path. Defaults to ./output/v08_discourse_language.pdf")
+                     help="Output PDF path. Defaults to ./output/v09_longitudinal_rebaseline.pdf")
     args = ap.parse_args()
     build(
         debug_layout=args.debug_layout,

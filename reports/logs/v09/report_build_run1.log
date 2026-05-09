@@ -1,0 +1,75 @@
+[fonts] scanned 970 font files across 12 dirs:
+  [ok] /Users/pablou/Library/Fonts
+  [ok] /Library/Fonts
+  [ok] /System/Library/Fonts
+  [ok] /System/Library/Fonts/Supplemental
+  [ok] /Users/pablou/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r
+  [--] /Users/pablou/Library/Application Support/Adobe/CoreSync/plugins/livetype/r
+  [ok] /Users/pablou/.fonts
+  [--] /Users/pablou/.fonts/Akkurat
+  [ok] /Users/pablou/.fonts/Inter
+  [--] /Users/pablou/.local/share/fonts
+  [--] /usr/share/fonts
+  [--] /usr/local/share/fonts
+[fonts] 7 Akkurat file(s) found:
+  - AkkuratPro-BoldItalic.otf -> classified as: bolditalic
+  - AkkuratPro-Italic.otf -> classified as: italic
+  - AkkuratLightPro-Regular.otf -> classified as: light
+  - AkkuratPro-Regular.otf -> classified as: regular
+  - AkkuratLightPro-Italic.otf -> classified as: italic
+  - AkkuratPro-Light.otf -> classified as: light
+  - AkkuratPro-Bold.otf -> classified as: bold
+  [register-info] AkkuratPro-Light.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Light loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Light.ttf
+  [register] Akkurat-Light          <- AkkuratPro-Light.otf
+  [register-info] AkkuratPro-Regular.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Regular loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Regular.ttf
+  [register] Akkurat-Regular        <- AkkuratPro-Regular.otf
+  [register-info] AkkuratPro-Bold.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Bold loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Bold.ttf
+  [register] Akkurat-Bold           <- AkkuratPro-Bold.otf
+  [register-info] AkkuratPro-Italic.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Italic loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Italic.ttf
+  [register] Akkurat-Italic         <- AkkuratPro-Italic.otf
+  [register-info] AkkuratPro-BoldItalic.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-BoldItalic loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-BoldItalic.ttf
+  [register] Akkurat-BoldItalic     <- AkkuratPro-BoldItalic.otf
+[fonts] using Akkurat Pro (brand-compliant)
+[build_report_v09] palette: indigo=#37237B, soft_black=#231F20, paper=#FAF7F2
+[build_report_v09] typography: Akkurat Pro (brand_primary=True)
+[build_report_v09] chart pre-flight (looking in /Users/pablou/aias/reports/output)
+  [FOUND  ] hero_f1_drift_scatter              -> chart_v09_h1_drift_scatter_6col.pdf
+  [FOUND  ] hero_f2_leaderboard                -> chart_v09_h2_leaderboard_6col.pdf
+  [FOUND  ] hero_f3_variance                   -> chart_v09_h3_within_cat_variance_6col.pdf
+  [FOUND  ] hero_f4_mint                       -> chart_v09_h4_mint_persistence_4col.pdf
+  [FOUND  ] hero_f5_pattern4                   -> chart_v09_h5_pattern4_sensitivity_6col.pdf
+  [FOUND  ] hero_f6_spread                     -> chart_v09_h6_cross_model_spread_6col.pdf
+  [FOUND  ] hero_f7_pattern1                   -> chart_v09_pattern1_spread_6col.pdf
+  [FOUND  ] hero_mode_distribution             -> chart_v09_mode_distribution_6col.pdf
+  [FOUND  ] hero_pattern_matrix                -> chart_v09_pattern_matrix_6col.pdf
+[build_report_v09] chart files in dir not matched by any slot:
+  [UNUSED ] chart_v08_f1_lineage_aggregates_6col.pdf
+  [UNUSED ] chart_v08_f2_authorities_6col.pdf
+  [UNUSED ] chart_v08_f3_within_lineage_6col.pdf
+  [UNUSED ] chart_v08_f4_per_cep_6col.pdf
+  [UNUSED ] chart_v08_f5_freshness_4col.pdf
+  [UNUSED ] chart_v08_leaderboard_6col.pdf
+Traceback (most recent call last):
+  File "/Users/pablou/aias/reports/build_report_v09.py", line 1927, in <module>
+    build(
+    ~~~~~^
+        debug_layout=args.debug_layout,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        chart_dir=args.chart_dir,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^
+        output_path=args.output,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "/Users/pablou/aias/reports/build_report_v09.py", line 1845, in build
+    for f_ in build_what_we_measured_story(styles):
+              ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "/Users/pablou/aias/reports/build_report_v09.py", line 1105, in build_what_we_measured_story
+    s.append(Paragraph(content.WHAT_WE_MEASURED["heading"], styles["h2"]))
+                       ~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^
+KeyError: 'heading'

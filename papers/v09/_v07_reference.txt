@@ -1,0 +1,621 @@
+                                    SSRN WORKING PAPER
+
+  A Designed-for-Test Measurement of Phantom-Brand Presence in
+                  Large Language Model Outputs
+Pre-Registered Evidence from Bed Bath & Beyond, with Pier 1 as Structural Comparator
+
+            Working Paper · Version 0.7 · Designed-for-Test (Household Goods)
+
+
+                             Pablo Ulpiano González Castro
+                  School of Visual Arts, MPS Branding Program, New York, NY
+                                  (primary academic affiliation)
+              Third System (research entity; data archive and methodology venue)
+                        Correspondence: hello@thirdsystem.ai · pablou.com
+
+
+                                          4 May 2026
+                    Working paper. Not under peer review. Pre-registered.
+Abstract
+This paper reports a designed-for-test measurement of brand visibility in large language model (LLM)
+outputs for Bed Bath & Beyond (BBB), thirty-seven months after the brand's Chapter 11 bankruptcy and
+online-only revival under post-acquisition ownership. Pier 1 — a smaller-footprint structural comparator
+with the same fate type but seventy months post-collapse — was added to the household-goods registry.
+Eight hypotheses with explicit numerical thresholds were committed to a pre-registration document
+locked on 4 May 2026 prior to any data collection. The measurement comprised six prompts × six models ×
+eight runs (n = 288 successful measurements after a pre-registered failed-call recovery cycle) across model
+lineups from Anthropic, OpenAI, Google, and xAI. BBB's aggregate raw AI Presence was 38.2 percent, with
+a cross-model spread of 41.6 percentage points; Pier 1 surfaced at 0.0 percent across the same prompts
+and models. Six of eight pre-registered hypotheses were confirmed at the raw-rate level. Manual valence
+review of every BBB mention (88 percent strict inter-rater agreement on a stratified 25-row spot-check
+audit) reframes the result: the naive-phantom rate is 1.7 percent, and 88 percent of BBB mentions are
+surfaced with disclaimer indicating awareness of the entity change. The paper develops recommendation-
+slot persistence — the proposition that brand-mention pathways become reinforcement-encoded
+structures that persist beyond entity changes — as a candidate hypothesis adjacent to but structurally
+distinct from existing AI-Surfacing hypotheses. The reframe is exploratory; construct validity remains open
+and is the proposed object of a Phase 3 designed-for-confirmation study.
+
+Keywords
+AI brand visibility; phantom brands; recommendation-slot persistence; pre-registered measurement;
+designed-for-test methodology; brand-visibility measurement; large language models; AIAS
+
+JEL Classification
+M31 (Marketing) — primary; L86 (Information and Internet Services; Computer Software); L81 (Retail and
+Wholesale Trade; e-Commerce); G33 (Bankruptcy; Liquidation)
+
+Paper status
+Working paper. Not under peer review. Designed-for-test follow-up study to González Castro (2026), "AI
+Presence Measurement Across Consumer Categories" [SSRN ID forthcoming, v0.6]. Companion empirical
+artifact to González Castro (2026), "Tri-System Brand Growth: The AI Mediation Layer" [SSRN ID
+forthcoming]. Methodological reference: González Castro (2026), "AIAS Presence Measurement Protocol
+v1.1" [SSRN ID forthcoming]. Pre-registration document (PRE_REGISTRATION_household_v1.0.md,
+locked 4 May 2026) and underlying datasets released alongside this paper.
+1. Introduction
+In the cross-category baseline reported as v0.6 of the AIAS measurement program (González Castro 2026,
+"AI Presence Measurement Across Consumer Categories"), a single-category observation emerged that no
+other pattern in the dataset captured. Mint, the personal finance application Intuit decommissioned in
+March 2024, appeared in 44 percent of model responses to category prompts about personal finance
+applications 25 months after the brand had ceased to operate as a current consumer product. The pattern
+was termed phantom-brand surfacing. The single-category basis prevented the observation from being
+claimed as a structural property of LLM-mediated brand visibility versus an artefact of one category's
+discourse profile.
+
+This paper reports a designed-for-test follow-up to that observation. Bed Bath & Beyond (BBB), a
+household-goods retailer that filed for Chapter 11 bankruptcy in April 2023, liquidated its physical stores,
+and was acquired through subsequent restructuring by Overstock — which rebranded itself to Beyond,
+Inc. and relaunched bedbathandbeyond.com as an online-only entity — was selected as the test subject.
+The category (household-goods retail) and the brand-disruption type (collapse plus online-only revival
+under post-acquisition ownership) differ structurally from the v0.6 Mint case (single-application
+decommissioning, no revival). Replication of phantom-brand surfacing across two such cases would
+substantially strengthen the claim that the pattern is a structural property of LLM-mediated brand visibility
+rather than a one-category observation.
+
+Pier 1 — a smaller-footprint household-goods retailer with the same broad fate type (collapse plus online-
+only revival) but a different combination of variables (smaller pre-collapse retail footprint; longer time-
+since-collapse, approximately 70 months) — was added to the household-goods registry as a structural
+comparator. Pier 1's inclusion enables a within-category test of whether pre-collapse footprint size and
+time-since-collapse function as separable drivers of phantom signal. The Mint v0.6 observation could not
+isolate these variables; the BBB plus Pier 1 design can.
+
+Eight hypotheses with explicit numerical thresholds were committed to a pre-registration document
+(PRE_REGISTRATION_household_v1.0.md) locked on 4 May 2026 prior to any data collection (Nosek et al.
+2018). The hypotheses isolated specific candidate mechanisms: phantom rate (H1), cross-model variance
+(H2), within-lab freshness effects (H3, H4), cross-lab cutoff effects (H5), prompt-frame sensitivity (H6),
+structural comparator effect (H7), and rebrand propagation (H8). Pre-registered predictions and
+outcomes are reported as Table 1 in §4.
+
+The headline empirical result confirms phantom replication. BBB's aggregate raw AI Presence was 38.2
+percent across all 288 successful measurements, within four percentage points of Mint's 44 percent in
+v0.6. The H1 pre-registered threshold of 25 percent was cleared by 13 percentage points. Pier 1 surfaced
+at exactly 0.0 percent across all 288 measurements (strongest possible form of H7).
+
+A second-stage manual valence review of every BBB mention reframes the result. Of 110 BBB mentions
+across 288 measurements, only 1.7 percent of measurements presented BBB as a current live retailer with
+no caveat (the naive-phantom rate). In 88 percent of BBB mentions, the model demonstrated knowledge
+that the entity had changed — surfacing the brand alongside acknowledgment of the closure, the rebrand,
+or the online-only status. The phantom is not a knowledge gap; it is a recommendation slot that the model
+fills with disclosure rather than vacates.
+
+This observation motivates the theoretical reframe developed in §5: recommendation-slot persistence,
+the proposition that brand-mention pathways in LLM outputs are reinforcement-encoded structures that
+persist beyond entity status changes, adjacent to but structurally distinct from existing AI-Surfacing
+hypotheses (Default Reinforcement; discourse-language bias; freshness-lag). The reframe is exploratory.
+Construct validity — whether consumers in disrupted categories act on caveated recommendations of
+defunct brands — remains open and is the proposed object of a Phase 3 designed-for-confirmation study.
+
+
+2. Method
+The measurement followed the AIAS Presence Measurement Protocol v1.0 (locked before v0.6 cross-
+category findings were published and used unchanged for this measurement; superseded for forward
+measurements by v1.1, González Castro 2026).
+
+2.1 Designed-for-Test Selection and Brand Registry
+The category was selected explicitly as a designed-for-test target for Pattern 6 (phantom-brand surfacing)
+from v0.6. BBB at approximately 37 months pre-measurement is the cleanest available test of whether the
+v0.6 Mint observation generalizes to a different category and disruption type.
+
+The household-goods brand registry comprises 21 retailers spanning four tiers. Seven incumbents (Target,
+Amazon, Walmart, Costco, IKEA, HomeGoods, Wayfair); the Williams-Sonoma Inc. corporate-portfolio
+mid-tier (Williams-Sonoma, Pottery Barn, West Elm) plus specialty retailers (Crate & Barrel, World Market,
+Sur La Table, Container Store, At Home); four direct-to-consumer challengers (Brooklinen, Parachute, Boll
+& Branch, Quince); the phantom test subject (Bed Bath & Beyond); and the structural comparator (Pier 1,
+which collapsed in 2020). The category boundary excludes pure furniture retailers, online marketplaces,
+and grocery, preserving BBB's pre-collapse cognitive slot of "where consumers go specifically for home
+essentials."
+
+2.2 Prompt Set
+Six prompts were anchored to Category Entry Points (CEPs) per AIAS Protocol §3.1: FUNCTIONAL_WHY
+("best store to buy household essentials"), CONTEXTUAL_WHEN ("wedding registry retailers"),
+CONSTRAINT_WITH ("affordable furnishing on a tight budget"), IDENTITY_HOW_FEELING ("stores people
+actually shop at when setting up a household"), DISCOVERY ("emerging or innovative home goods
+brands"), and COMPARISON ("compare leading household goods retailers"). Neither BBB nor Pier 1 was
+named in any prompt. Naming the test subject in the prompt was a v0.6 design issue (the v0.6 personal-
+finance discovery prompt named Mint by name) that compromised that specific prompt's phantom signal;
+the v0.7 design corrects this.
+2.3 Model Lineup
+Six frontier models from four labs spanned the production lineup as of May 2026: Anthropic Claude Sonnet
+4.6 and Anthropic Claude Opus 4.7 (within-Anthropic generational comparison), OpenAI gpt-5.4-mini and
+OpenAI gpt-5.5 (within-OpenAI mini-vs-flagship comparison), Google Gemini 2.5 Flash, and xAI Grok 4.1
+Fast. Grok 4.1 Fast carries the oldest knowledge cutoff in the lineup (November 2024), which spans the
+active 2023–2024 BBB bankruptcy and rebrand discourse. Within-lab pairs enable a clean test of freshness
+and reasoning effects with training-pipeline held approximately constant.
+
+2.4 Measurement Volume and Failed-Call Recovery
+Each prompt × model combination ran eight times at temperature 0.7 where supported, producing a
+target of 288 measurements. An initial 67 percent completion rate from API failures was restored to 100
+percent through a pre-registered failed-call recovery cycle, yielding 288 successful measurements (six
+prompts × six models × eight runs).
+
+2.5 Brand Mention Extraction
+Brand mentions were extracted using gpt-5.4-mini at temperature 0 with structured-output classification,
+producing canonical brand mentions per response with rank, sentiment, and primary-recommendation
+flags. Mentions of brands not in the registry were retained on an unknown-mentions list and used as a
+continuing diagnostic of registry completeness (see §6 Limitations on TJ Maxx and Marshalls).
+
+2.6 Manual Valence Review and Spot-Check Audit
+A second-stage manual review classified every BBB mention along two axes. The valence taxonomy
+comprised five levels: live_recommendation (BBB presented as fully live with no caveat); live_with_caveat
+(BBB surfaced with disclosure of the closure or rebrand); status_correction (model explicitly states BBB is
+closed and does not recommend it); historical_reference (BBB mentioned only in past tense as a former
+retailer); and ambiguous. The entity-reference taxonomy comprised four levels: legacy_brand (Bed Bath &
+Beyond name only); corporate_parent (Beyond, Inc. name only); both (both names referenced); unclear.
+
+A total of 110 BBB mentions were classified. An independent spot-check audit was conducted on a
+stratified 25-row sample drawn across the valence categories, producing 88 percent strict agreement with
+the gpt-5.4-mini-derived classifier. Three boundary disagreements clustered on the
+caveated/correction/historical adjacency. Zero disagreements occurred on the headline naive-phantom
+labels: all five live_recommendation rows verified correct on independent review. The classifier-vs-audit
+disagreement budget therefore does not affect the headline 1.7 percent naive-phantom rate but
+introduces a small uncertainty on aggregate aware-mode counts (treated in §6).
+
+2.7 Pre-Registration
+Eight    hypotheses   with     explicit  numerical       thresholds     were      locked     in
+PRE_REGISTRATION_household_v1.0.md on 2026-05-04, prior to any data collection. Each hypothesis
+isolated a specific candidate mechanism. Hypotheses, predicted thresholds, and outcomes are reported in
+Table 1 (§4).
+
+
+3. Results
+
+
+
+
+Figure A. Twenty-one household-goods retailers by AI Presence. Bed Bath & Beyond at #11 (36.8%) sits between
+Williams-Sonoma and West Elm; Pier 1 at #21 (0.0%) appears in zero of 288 measurements. The phantom signal is
+structurally specific.
+3.1 Finding 1 — Phantom-brand surfacing replicates
+   Note on aggregate Presence values. Two slightly different BBB Presence values appear in this paper.
+   Figure A reports 36.8% (structured-output extractor across the 21 retailers in the registry); the 38.2%
+   figure used throughout this section and §3.2–§3.5 derives from the manual valence review (110 BBB
+   mentions across 288 measurements). The 1.4-point gap reflects within-response repeated mentions
+   and edge cases that the manual review captured but the structured extractor missed. Both values are
+   preserved in the OSF deposit; the manifest documents the reconciliation.
+
+BBB's aggregate raw AI Presence across all 288 measurements was 38.2 percent — within four percentage
+points of Mint's 44 percent in v0.6 personal finance. The pre-registered H1 threshold of 25 percent was
+cleared by 13 percentage points in a category where the brand has not operated as a physical retailer for
+37 months.
+
+The result holds across model providers. Of the six models in the lineup, all six surfaced BBB at
+meaningfully non-zero rates: Anthropic Opus 4.7 at 56.2 percent, Anthropic Sonnet 4.6 at 41.7 percent,
+OpenAI gpt-5.4-mini at 50.0 percent, xAI Grok 4.1 Fast at 50.0 percent. The two lowest — Google Gemini
+2.5 Flash at 16.7 percent and OpenAI gpt-5.5 at 14.6 percent — surfaced BBB at rates substantially higher
+than the H1 floor.
+
+The household-goods leaderboard places BBB at #11 of 21 registered retailers, between Williams-Sonoma
+(36.8 percent) and West Elm (28.8 percent). BBB surfaces at rates above 13 of 21 registered live retailers
+including Brooklinen, Parachute, Container Store, Boll & Branch, Quince, and five others currently
+operating in the category.
+
+
+
+
+Figure 1. BBB and Pier 1 share a fate type (collapse plus online-only revival) but differ on years-since-collapse and pre-
+collapse footprint. BBB at 38.2 percent phantom; Pier 1 at exactly 0.0 percent across all 288 measurements.
+
+Pier 1 — added explicitly to test whether pre-collapse footprint size and time-since-collapse are separable
+variables — surfaced in zero of 288 measurements: across every model, every prompt, and every run. The
+phantom hypothesis is sharpened by this contrast: BBB at 38.2 percent and Pier 1 at 0.0 percent in the
+same registry, against the same prompts, across the same models. Two retailers with structurally similar
+fates but different pre-collapse footprints and different times-since-collapse produced dramatically
+different phantom signals.
+
+A single measurement cannot fully separate the two variables; both contribute. The result establishes that
+a brand's pre-collapse cumulative editorial weight matters for phantom persistence, and that a smaller
+pre-collapse footprint combined with longer time-since-collapse is consistent with a phantom signal that
+drops to zero. H7 was confirmed in its strongest possible form. Cross-model variance for BBB (41.6-
+percentage-point spread between Opus 4.7 at 56.2 percent and gpt-5.5 at 14.6 percent) confirmed H2
+(≥25-point threshold).
+
+3.2 Finding 2 — The phantom is a recommendation slot, not a knowledge gap
+Of 110 BBB mentions across 288 measurements, the valence breakdown is: 5 live_recommendation (4.5
+percent of BBB mentions, 1.7 percent of all measurements — the model presents BBB as fully live with no
+caveat); 72 live_with_caveat (65.5 percent of BBB mentions, 25.0 percent of all measurements — the
+model surfaces BBB with disclosure of the closure or rebrand); 7 status_correction (6.4 percent of BBB
+mentions, 2.4 percent of measurements — the model explicitly states BBB is closed and does not
+recommend it); and 25 historical_reference (22.7 percent of BBB mentions, 8.7 percent of measurements
+— the model mentions BBB only in past tense as a former retailer).
+
+The headline number that drove the v0.6 Mint finding — and that confirmed H1 in this measurement — is
+the raw mention rate, ignoring valence. At the valence level, the picture inverts. The model is not blindly
+recommending BBB as a live retailer. The model mostly surfaces BBB with explicit disclosure of the closure
+or rebrand. In 88 percent of BBB mentions, the model demonstrates knowledge that the entity has
+changed. The naive-phantom rate — model presenting BBB as fully live with no caveat — is 1.7 percent of
+all measurements. Yet the brand still surfaces in 38.2 percent of responses. The gap between the model's
+correct knowledge of the entity's status and the model's continued surfacing of the brand is where the
+structural finding sits.
+Figure 2. Per-model valence breakdown of BBB mentions (denominator: 48 measurements per model). Naive
+phantom is 1.7 percent of all measurements; caveated phantom is 25.0 percent. The model demonstrates knowledge
+that the entity has changed in 88 percent of mentions and surfaces the brand anyway, with disclosure.
+
+A theoretical reframe is proposed: phantom-as-recommendation-slot, not phantom-as-knowledge-gap.
+The phantom in LLM mediation, on this account, is not a lag in what the model knows. The phantom is in
+what the model's recommendation set is structured to fill. Bed Bath & Beyond's accumulated editorial
+volume in AI training corpora — decades of comparison articles, registry guides, household-essentials
+listicles, store-by-store rankings — encoded a recommendation slot. The slot persists in the model's
+response pathway regardless of the entity's current operating status. When the entity changes, the model
+does not vacate the slot; the model fills the slot with disclaimer.
+
+The construct-validity implication is that AI-mediated visibility outlasts entity integrity in disrupted
+categories. Brands that have collapsed, rebranded, or merged continue to occupy recommendation slots
+that consumers querying the model encounter, with disclosure. This represents a stronger structural claim
+than the naive lag interpretation offered for Mint in v0.6. Naive lag suggests training-data freshness as the
+variable to optimize. Recommendation-slot persistence suggests brand-mention pathways are
+reinforcement-encoded structures that retraining does not directly address. The same brand can occupy
+different recommendation slots across different models, and across different prompts within the same
+model, even when every model's underlying knowledge of the entity is identical (see §3.4 below).
+
+3.3 Finding 3 — Within-lab and cross-lab patterns in phantom handling
+The pre-registered H3 prediction — Anthropic Sonnet 4.6 BBB Presence > Anthropic Opus 4.7 BBB
+Presence by ≥15 points — was disconfirmed at the raw-Presence level. Opus surfaced BBB more often
+than Sonnet (56.2 percent vs. 41.7 percent), reversing the predicted direction by 14.5 points. The valence
+breakdown supports the underlying hypothesis at a different level. Of Opus's 27 BBB mentions, 96.3
+percent were handled responsibly (caveated phantom plus aware mode). Of Sonnet's 20 BBB mentions,
+90.0 percent were handled responsibly. Opus surfaces BBB more often, but a higher fraction of its
+mentions cluster in the aware-mode category (status correction or historical reference) rather than
+recommendation.
+
+
+
+
+Figure 3. Within-lab freshness comparison. Newer or larger models do not reduce raw phantom rate; they shift the
+per-mention valence distribution toward caveated or aware handling.
+
+The pattern requires a careful claim. Newer models do not necessarily phantom-mention less. They
+phantom-mention with different valence handling. The freshness/reasoning differential between Sonnet
+4.6 and Opus 4.7 appeared at the handling level — Opus is more likely to disclose the closure or historicize
+the mention — not at the frequency level. The recommendation slot persists; the disclosure improves.
+
+The within-OpenAI comparison (gpt-5.4-mini vs gpt-5.5; H4 reported descriptively in the pre-registration)
+shows the same structure. gpt-5.5 surfaced BBB at the lowest rate of any model in the lineup (14.6
+percent). The freshness-decay hypothesis would predict this is the cleanest model. Of those mentions, 4.2
+percent were naive-phantom and 6.2 percent were caveated. By contrast gpt-5.4-mini surfaced BBB at
+50.0 percent, with 35.4 percent in aware mode — the highest aware rate of any cell in the dataset. gpt-5.4-
+mini, the older and smaller OpenAI model, handled BBB more correctly per-mention than the newer
+flagship.
+
+The cross-lab comparison confirmed H5: Grok 4.1 Fast — with the oldest knowledge cutoff in the lineup
+(November 2024) — produced phantom Presence at 50.0 percent, edging Sonnet 4.6 at 41.7 percent by
+8.3 points. Grok's pattern is its own structural type: caveated-phantom rate of 47.9 percent (the highest of
+any model); aware rate of 2.1 percent (among the lowest). Grok almost always recommends BBB and
+almost always with caveat. Of Grok's BBB mentions, 58.3 percent explicitly reference both entity names —
+far higher than any other model. The candidate mechanism: Grok's older training cutoff captures the
+active 2023–2024 discourse around BBB's bankruptcy, the rebrand to Beyond, Inc., and the Overstock
+acquisition, locking in a "BBB-as-active-with-disclosure" pattern that newer models with later training data
+treat as more historicized.
+
+The observation suggests each lab's training pipeline produces a distinguishable phantom signature — a
+structural property of the lab and its training/instruction-tuning practices, not just of the model's
+generation. Anthropic models surface BBB at high rates with mostly responsible handling. Grok surfaces
+BBB at high rates with always-disclosed handling. OpenAI mini is the most aware model, handling BBB as
+past-tense in a third of mentions. OpenAI flagship and Gemini Flash mention BBB rarely but inconsistently
+when they do.
+
+3.4 Finding 4 — Prompt frame activates a temporal cognitive geometry
+Per-CEP analysis reveals an outcome outside the pre-registration: phantom valence varies systematically
+with the cognitive frame the prompt activates. The same brand, on the same models, with six different
+prompts occupied different temporal slots depending on what the prompt asked.
+
+In FUNCTIONAL_WHY prompts ("best store for bedding, towels, kitchen basics"), BBB raw Presence was
+70.8 percent, with 60.4 percent of measurements producing caveated-phantom recommendations — the
+model surfacing BBB-as-still-relevant-online-retailer alongside disclosure of the physical-store closure.
+Functional queries elicited BBB-as-current. In IDENTITY_HOW_FEELING prompts ("stores people actually
+shop at when setting up a household"), BBB raw Presence was 81.2 percent — the highest of any prompt
+— but 43.8 percent of measurements produced aware-mode mentions (historical references or
+corrections). Identity queries elicited BBB-as-cultural-memory.
+
+
+
+
+Figure 4. Per-CEP temporal frame breakdown. Functional prompts produce BBB-as-current; identity prompts produce
+BBB-as-cultural-memory; discovery prompts produce zero BBB mentions.
+
+This temporal cognitive geometry was not anticipated in the v0.6 framework. BBB lives in different prompt
+frames as different temporal entities. When the model is asked functionally, BBB surfaces as a current
+online retailer with disclosure. When the model is asked about cultural identity around home setup, BBB
+surfaces as a former retailer in past tense. Same brand, different prompts, different cognitive-time slots.
+
+The construct-validity implication is that AI-mediated visibility is not single-valued, even within a category.
+The same brand can simultaneously occupy a current-recommendation slot in one prompt frame and a
+historical-anchor slot in another. Consumers querying different frames will encounter materially different
+brand presentations. For disrupted brands, the geometry produces a particular pattern: continued
+recommendation in functional frames, continued historical anchoring in identity frames, and absence in
+comparison frames where live competitors saturate the surface.
+
+H6 was partially confirmed. Lowest activation was in DISCOVERY (0.0 percent, exactly as predicted) but
+highest activation was in IDENTITY (81.2 percent) and FUNCTIONAL (70.8 percent), not in CONTEXTUAL or
+COMPARISON as pre-registered. The COMPARISON-frame absence is explained by Risk #2 in the pre-
+registration design document: Walmart, Amazon, Target, and IKEA saturate the comparison frame at near-
+100 percent each, leaving structurally constrained headroom for BBB to surface in that prompt regardless
+of phantom strength.
+
+3.5 Finding 5 — The rebrand has not propagated; the legacy brand has
+H8 was confirmed. Of 110 BBB mentions, 0 percent referenced Beyond, Inc. as a corporate parent in
+isolation, 23.6 percent referenced both names with awareness they are related, and 75.5 percent
+referenced only the legacy "Bed Bath & Beyond" string. By either count — strict (Beyond, Inc. only) or
+inclusive (Beyond, Inc. mentioned at all) — the Beyond, Inc. share is below the 25-percent pre-registration
+threshold.
+
+The cross-tabulation with valence reveals the structure. Of the 5 naive-phantom mentions
+(live_recommendation), 100 percent referenced only the legacy name. The model in naive-
+recommendation mode has not internalized the rebrand. Of the 72 caveated-phantom mentions, 65.3
+percent reference only the legacy name and 34.7 percent reference both — caveated mentions are where
+the rebrand information lives, used to construct the caveat itself.
+Figure 5. Rebrand reference distribution by valence type. Naive recommendations are 100 percent legacy-name-only.
+The rebrand information lives almost entirely in caveated mentions — deployed as part of the disclosure ("now
+operates as Beyond, Inc.") rather than internalized into the recommendation surface.
+
+When the model knows about the rebrand, the rebrand information is deployed as part of the disclosure
+— for example, "Bed Bath & Beyond now operates as Beyond, Inc." — not as a replacement of the legacy
+name in the model's recommendation set. The recommendation set remains anchored on Bed Bath &
+Beyond. Beyond, Inc. functions as a footnote.
+
+For brand-strategy interpretation, this implies that rebranding a disrupted entity into a new corporate
+identity does not propagate into the model's recommendation surface at the same rate that the legacy
+brand persists. The new entity name occupies a footnote slot, not a recommendation slot. The finding is
+specific to a particular rebrand pattern (distressed parent acquired, online-only revival under legacy
+domain) and does not necessarily generalize to other rebrand types — organic name changes for live
+brands, acquisition rebrands without distress, holding-company consolidation. A Phase 3 follow-up will
+measure additional rebrand patterns to test how broadly this asymmetry holds.
+
+
+4. Pre-Registration Outcomes
+Eight     hypotheses      with     explicit     numerical   thresholds      were      locked     in
+PRE_REGISTRATION_household_v1.0.md on 2026-05-04, prior to any data collection. Five were
+confirmed; one was partially confirmed; one was disconfirmed at the level it was pre-registered but
+supported at a different level (handling rather than frequency); one was reported descriptively.
+Predictions and outcomes are reported in Table 1.
+
+Table 1. Pre-registered hypotheses, predictions, and outcomes.
+
+ H      Pre-registered prediction               Result                                       Status
+
+ H1     BBB Presence ≥ 25%                      38.2% raw · 26.7% naive+caveated · 1.7%      Confirmed
+ H      Pre-registered prediction              Result                                      Status
+
+                                               naive
+
+ H2     Cross-model spread ≥ 25 pts            41.6 pts (Opus 56.2 → flagship 14.6)        Confirmed
+
+ H3     Sonnet > Opus by ≥ 15 pts              Opus > Sonnet by 14.5 pts (raw); Opus       Disconfirmed at
+                                               more aware per-mention                      raw, supported at
+                                                                                           handling
+
+ H4     Within-OpenAI freshness (descriptive   mini > flagship by 35.4 pts (raw); mini     Descriptive:
+        only)                                  more aware per-mention                      opposite
+                                                                                           directions raw vs
+                                                                                           handling
+
+ H5     Grok ≥ Sonnet on phantom rate          Grok 50.0 > Sonnet 41.7 by 8.3 pts          Confirmed
+
+ H6     Highest in p2/p6, lowest in p5         Highest in p4 (81.2)/p1 (70.8); lowest in   Partially
+                                               p5 (0.0)                                    confirmed
+
+ H7     Pier 1 < BBB AND Pier 1 < 15%          Pier 1 = 0.0% across all 288 measurements   Confirmed
+                                                                                           (strongest form)
+
+ H8     Beyond, Inc. < 25% of BBB+Beyond       0% strict · 23.6% inclusive                 Confirmed
+
+
+
+
+Each hypothesis isolated a specific candidate mechanism. H1 tested whether the v0.6 Mint phantom
+observation generalizes to a different category, with the 25-percent threshold equal to roughly half the
+v0.6 signal — sufficient evidence that phantom-brand surfacing is a structural property of LLM mediation
+rather than a one-category artefact. H2 tested whether phantom signal varies meaningfully by model
+lineage; a wide spread suggests training-pipeline differences across labs and models. H3 tested the
+freshness hypothesis directly within Anthropic, with training pipeline approximately constant. H4
+reported the within-OpenAI mini-vs-flagship comparison descriptively because the two models differ on
+both size and cutoff. H5 tested cross-lab cutoff effects through Grok's November 2024 training cutoff. H6
+tested prompt-frame sensitivity. H7 — the structural comparator — tested whether pre-collapse footprint
+and time-since-collapse are separable variables. H8 tested rebrand propagation: whether the model's
+recommendation set has internalized the rebrand to Beyond, Inc.
+
+
+5. Discussion: Recommendation-Slot Persistence
+The v0.6 phantom-brand observation was framed as a property of training-data freshness: backward-
+looking corpora capture historical discourse, and a brand decommissioned after the corpus is collected
+continues to surface in responses for an indeterminate period. This framing predicts that the variable
+available for optimization is corpus freshness — that retraining or updating the model on more recent data
+will, over time, reduce phantom-mention rates.
+
+The v0.7 result is inconsistent with that prediction at the mechanism level. In 88 percent of BBB mentions,
+the model demonstrates knowledge that the entity has changed. The model's underlying representation
+of BBB is not stale. Yet the brand still surfaces in 38.2 percent of responses — frequently at saturation in
+functional and identity prompts, with structured disclosure of the closure or rebrand. The model knows
+the entity status. The brand surfaces anyway. Freshness is not the binding constraint.
+
+A candidate alternative framing — recommendation-slot persistence — is proposed. On this account,
+brand-mention pathways in LLM outputs function as reinforcement-encoded structures within the
+model's response-construction logic. Bed Bath & Beyond's decades of accumulated editorial volume —
+comparison articles, registry guides, household-essentials listicles, store-by-store rankings — encoded a
+recommendation slot for the household-goods category. The slot is a property of the model's response
+pathway, not a property of the model's factual knowledge of the entity. When the entity changes, the
+model does not vacate the slot. The model fills the slot with disclosure language, drawing on its updated
+factual knowledge to construct the caveat.
+
+This framing is offered as a candidate hypothesis adjacent to but structurally distinct from existing AI-
+Surfacing hypotheses (Default Reinforcement; discourse-language bias; freshness-lag). It is consistent
+with three observations from this measurement that the freshness-lag framing alone does not predict:
+
+(a) Within-lab generational comparisons (Sonnet 4.6 vs. Opus 4.7; gpt-5.4-mini vs. gpt-5.5) show that
+newer models phantom-mention with different valence distributions, not at lower frequencies. The
+recommendation slot persists across model generations within a lab; only the disclosure language
+changes.
+
+(b) Per-CEP variation (BBB at 81.2 percent in IDENTITY, 70.8 percent in FUNCTIONAL, 0.0 percent in
+DISCOVERY) shows that phantom signal depends on the cognitive frame the prompt activates. The slot is
+filled when the prompt activates a frame the brand was strongly editorially associated with (registry,
+household setup, kitchen basics) and is empty when the prompt activates a frame the brand never
+occupied (emerging-brands discovery).
+
+(c) Rebrand non-propagation (Beyond, Inc. at 0 percent strict, 23.6 percent inclusive) shows that updated
+factual information about the entity does not displace the legacy brand in the model's recommendation
+set; it occupies a footnote slot used to construct the caveat.
+
+The reframe is exploratory. It is offered as a candidate hypothesis to be tested in subsequent designed-for-
+test studies, including the longitudinal designs proposed in §7. The reframe predicts that retraining alone
+will not vacate phantom slots; it will redistribute the disclosure language used to fill them. A controlled
+test would measure the same disrupted brand on the same model across a major model update,
+comparing phantom Presence and valence distribution before and after. This is a direct test of the
+freshness-lag hypothesis the reframe is now contesting.
+
+Construct validity remains open. The phantom finding is a property of LLM mediation, not directly of
+consumer behavior. Whether consumers in disrupted categories act on caveated recommendations of
+defunct or rebranded entities — and at what rates such recommendations affect consideration, purchase
+intent, or category share — is the separate question the AIAS Phase 3 construct-validity program will
+address. Both possible outcomes are publishable: a strong correlation establishes AI Presence as a leading
+indicator of consumer behavior in disrupted categories; a weak correlation establishes the index as a
+measurement of LLM behavior with implications limited to channel optimization for AI-mediated visibility.
+Neither is established here.
+
+
+6. Limitations
+Six caveats apply to the findings reported here.
+
+Single category. Phase 2 measures one designed-for-test category. Together with the v0.6 Mint
+observation, the BBB result moves the program from one-category claim to two-category claim —
+substantively defensible, not yet generalizable. Replication across additional category-disruption types is
+required before the phantom-as-recommendation-slot framing can be claimed as a general property of
+LLM-mediated brand visibility.
+
+Inter-rater agreement on boundary cases. Manual review classifications used a single AI classifier (gpt-5.4-
+mini at temperature 0). The independent spot-check audit on a stratified 25-row sample produced 88
+percent strict agreement with three boundary disagreements clustering on the
+caveated/correction/historical adjacency. The disagreements do not affect the headline naive-phantom
+rate (1.7 percent; all five live_recommendation rows verified correct on independent review) but
+introduce a small uncertainty budget on aggregate aware-mode counts.
+
+Walmart and Amazon ceiling compression. Risk #2 in the pre-registration design document predicted that
+COMPARISON and FUNCTIONAL prompts would be ceiling-compressed by Walmart and Amazon at near-
+100 percent each, leaving constrained headroom for specialty brands including BBB. The prediction held.
+BBB's COMPARISON-prompt rate of 8.3 percent partly reflects this constraint and not phantom strength
+alone.
+
+Registry leakage. The unknown-mentions list includes TJ Maxx (132 mentions) and Marshalls (129
+mentions) as the highest unknowns — both TJX sister brands of HomeGoods, which is in the registry.
+Phase 3 measurements should add the TJX sister set to the registry. Threshold (Target's house brand)
+appears at 42 mentions, representing component-mode leakage rather than retailer-mode mentions; this
+does not affect BBB analysis.
+
+Single point in time. Each measurement reflects model behavior on 4 May 2026. The findings do not
+describe how AI brand visibility moves over time. The recommendation-slot persistence framing predicts
+that retraining alone will not vacate the slot; this prediction will be testable when the same models
+update.
+
+Construct validity unproven. AI Presence measures a real and stable property of the LLM tier, but whether
+that property correlates with consumer consideration, purchase intent, or sales is unknown. The phantom
+finding is a property of LLM mediation, not of consumer behavior; whether consumers in disrupted
+categories actually act on caveated recommendations of defunct brands is the separate question the AIAS
+Phase 3 construct-validity program will address.
+7. Future Research
+The recommendation-slot persistence framing, if it generalizes, predicts that retraining will not vacate
+phantom slots — only redistribute the disclosure language used to fill them. A controlled longitudinal test
+would measure the same disrupted brand on the same model across a major model update, comparing
+phantom Presence and valence distribution before and after. This is a direct test of the freshness-lag
+hypothesis the reframe contests.
+
+A construct-validity study correlating AI Presence and valence distribution against external consumer-
+tracking data is also priority. For BBB specifically, candidate validators include Google Trends, consumer-
+awareness surveys, and DTC brand-tracking instruments. The recommendation-slot persistence framing
+predicts that consumer awareness of BBB will be lower than AI Presence — the slot persists in the model
+even when consumer attention has moved on. If the prediction holds, AI Presence is a lagging indicator in
+disrupted categories. If it inverts, AI Presence is leading consumer behavior. Both findings are publishable;
+neither is established.
+
+The within-lab handling pattern (newer or smaller models showing different valence distributions than
+newer-flagship models within the same lab) suggests that LLM handling of disrupted brands is not a single-
+variable function of training cutoff or model size, but interacts with reasoning-mode and instruction-
+tuning practices. A measurement isolating model-size-vs-cutoff (running the same brand against same-
+cutoff models of different sizes within a lab) would clarify the mechanism.
+
+Additional rebrand patterns — organic name changes for live brands, acquisition rebrands without
+distress, holding-company consolidation — would extend the v0.7 H8 finding beyond the specific pattern
+measured here (distressed parent acquired, online-only revival under legacy domain). Candidate cases
+include the Twitter rebrand to X, the Facebook to Meta corporate rebrand, and several pharmaceutical
+brand transitions.
+
+
+References
+Bender, E. M., Gebru, T., McMillan-Major, A., & Shmitchell, S. (2021). On the dangers of stochastic parrots:
+Can language models be too big? Proceedings of the 2021 ACM Conference on Fairness, Accountability,
+and Transparency, 610–623.
+
+Brown, T. B., Mann, B., Ryder, N., et al. (2020). Language models are few-shot learners. Advances in Neural
+Information Processing Systems, 33.
+
+González Castro, P. U. (2026). Tri-System Brand Growth: The AI Mediation Layer. SSRN Working Paper
+[SSRN ID forthcoming].
+
+González Castro, P. U. (2026). AIAS Presence Measurement Protocol v1.1. SSRN Working Paper [SSRN ID
+forthcoming].
+
+González Castro, P. U. (2026). AI Presence Measurement Across Consumer Categories: A Cross-Category
+Baseline of Brand Visibility in Large Language Model Outputs. SSRN Working Paper [SSRN ID forthcoming,
+v0.6].
+Keller, K. L. (2013). Strategic Brand Management: Building, Measuring, and Managing Brand Equity (4th
+ed.). Pearson.
+
+Nosek, B. A., Ebersole, C. R., DeHaven, A. C., & Mellor, D. T. (2018). The preregistration revolution.
+Proceedings of the National Academy of Sciences, 115(11), 2600–2606.
+
+Romaniuk, J. (2023). Better Brand Health: Measures and Metrics for a How Brands Grow World. Oxford
+University Press.
+
+Romaniuk, J., & Sharp, B. (2016). How Brands Grow: Part 2 — Including Emerging Markets, Services,
+Durables, New and Luxury Brands. Oxford University Press.
+
+Sharp, B. (2010). How Brands Grow: What Marketers Don't Know. Oxford University Press.
+
+
+Declarations
+
+Conflict of Interest
+The author serves as Director, Corporate Brand Creative and Governance at Samsung Electronics America.
+The research presented here is independent of Samsung Electronics America and does not constitute
+Samsung research. No Samsung Electronics America data, personnel, or commercial interests influenced
+the design, conduct, analysis, or reporting of this study. Samsung Electronics America did not review the
+manuscript prior to posting.
+
+Funding
+Self-funded. No external funding sources contributed to this research.
+
+Data Availability
+Underlying datasets, the locked pre-registration document (PRE_REGISTRATION_household_v1.0.md,
+lock date 2026-05-04), and a detailed reconstruction manifest are deposited in an Open Science
+Framework project at https://osf.io/ec6wh/. The deposit contains aggregate analysis outputs (manual
+review distributions, per-brand Presence, valence and entity cross-tabulations, household-goods
+leaderboard, and per-CEP×per-model BBB grid). Provenance note: the original measurement run
+produced row-level CSV outputs in a code-execution environment that was disposed before the data was
+archived; the deposited CSVs are reconstructed from the printed transcript outputs of the measurement
+session. Aggregate analyses are fully recoverable; row-level data (response text, per-row brand extraction,
+per-row manual-review entity labels for status_correction / historical_reference / ambiguous categories,
+and per-row spot-check audit detail) is not. The OSF manifest documents recovery status, gaps, and
+known value discrepancies, including the leaderboard-vs-manual-review reconciliation discussed at the
+start of §3.1.
+Author Information
+Pablo Ulpiano González Castro is faculty in the MPS Branding Program at the School of Visual Arts, New
+York, where he teaches Brand Transformation through Human-Centered Methodologies. He maintains
+Third System (research entity; data archive and methodology venue) as the publication venue for the AIAS
+measurement program. Correspondence: hello@thirdsystem.ai · pablou.com.
+

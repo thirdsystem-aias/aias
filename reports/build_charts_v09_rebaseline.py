@@ -1,58 +1,77 @@
 #!/usr/bin/env python3
 """
-v0.8 Knives chart generator.
+v0.9 Re-Baseline chart generator (v14).
 
-Produces six PDF charts at locked figsize for the v0.8 report. Outputs go to
-<reports>/output/ and are picked up by build_report_v08.py via the
-_slot_lookup table.
+Standardized typography across all 9 charts using point-based offsets from
+figure edges, so the visual hierarchy is consistent regardless of figure
+height. This matches the v0.7 'Within-lab freshness' reference layout.
 
-Charts:
-  chart_v08_leaderboard_6col.pdf            7.50 \u00d7 7.50  (6_col_hero_xl)     knife leaderboard, lineage colored
-  chart_v08_f1_lineage_aggregates_6col.pdf  7.50 \u00d7 3.50  (6_col_short)       lineage aggregates v1.0 vs v1.2
-  chart_v08_f2_authorities_6col.pdf         7.50 \u00d7 3.75  (6_col_hero_short)  100% English-language authorities
-  chart_v08_f3_within_lineage_6col.pdf      7.50 \u00d7 4.50  (6_col_hero)        within-Japanese 5x ratio + G\u00fcde 0%
-  chart_v08_f4_per_cep_6col.pdf             7.50 \u00d7 3.75  (6_col_hero_short)  per-CEP \u00d7 lineage matrix
-  chart_v08_f5_freshness_4col.pdf           3.68 \u00d7 2.85  (3_col_inline)      within-lab generational gaps
+Layout pattern (all charts):
+  - Title:     13pt bold, dark, baseline 18pt from figure top, x=0.02
+  - Subtitle:  9.5pt italic gray, top of text 30pt from figure top
+               (close gap to title — visual pairing)
+  - [chart axes]
+  - Source 1:  7.5pt italic gray, baseline 28pt from figure bottom
+  - Source 2:  7pt   italic gray, baseline 14pt from figure bottom
+  Both source lines start at x=0.02 to fit within figure width regardless
+  of horizontal length.
 
-CRITICAL: bbox=None and pad_inches=0 on savefig so native figsize is preserved
-exactly. The build_report_v08.py overlay relies on chart PDFs being at locked
-dimensions; bbox_inches='tight' would invalidate the slot reservation.
-
-Color palette pulled from third_system_brand.json. Falls back to hardcoded
-constants if the JSON is missing.
+Charts (mapped to paper sections):
+  chart_v09_h1_drift_scatter_6col.pdf         §3.1 H1
+  chart_v09_h2_leaderboard_6col.pdf           §3.2 H2
+  chart_v09_h3_within_cat_variance_6col.pdf   §3.3 H3
+  chart_v09_h4_mint_persistence_4col.pdf      §3.4 H4
+  chart_v09_h5_pattern4_sensitivity_6col.pdf  §3.5 H5
+  chart_v09_h6_cross_model_spread_6col.pdf    §3.6 H6
+  chart_v09_pattern1_spread_6col.pdf          §3.7 post-hoc Pattern 1
+  chart_v09_mode_distribution_6col.pdf        §3.8 mode distribution
+  chart_v09_pattern_matrix_6col.pdf           sec 5 pattern matrix
 """
 from __future__ import annotations
 
+import csv
 import json
 import sys
 from pathlib import Path
+from statistics import mean, pstdev
 
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from matplotlib import font_manager
-from matplotlib.patches import Patch
-
-# ---------------------------------------------------------------------------
-# Paths
-# ---------------------------------------------------------------------------
+from matplotlib.patches import Rectangle
 
 SCRIPT_DIR = Path(__file__).resolve().parent
 AIAS_ROOT = SCRIPT_DIR.parent
+sys.path.insert(0, str(AIAS_ROOT))
+
+from analyze_v09 import (  # noqa: E402
+    load_all_data,
+    per_brand_presence,
+    filter_matched,
+    filter_slot,
+    pearson_r,
+    spearman_rho,
+    CATEGORIES,
+    MATCHED_SUBSET,
+    PHANTOM_BRAND,
+    PHANTOM_BRAND_CATEGORY,
+    SPANISH_OLIVE_OIL_THRESHOLD_PCT,
+    KBEAUTY_THRESHOLD_PCT,
+)
+
 BRAND_JSON = AIAS_ROOT / "brand" / "third_system_brand.json"
+DATA_ROOT = AIAS_ROOT / "data"
 OUTPUT_DIR = SCRIPT_DIR / "output"
 OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
-
-# ---------------------------------------------------------------------------
-# Brand palette (loaded from JSON; fallback to constants if not found)
-# ---------------------------------------------------------------------------
 
 _FALLBACK_PALETTE = {
     "indigo": "#37237B",
     "indigo_50": "#9B91BD",
     "indigo_25": "#CDC8DE",
     "copper": "#F36C35",
+    "petro": "#0E5C7C",
     "soft_black": "#231F20",
     "paper": "#FAF7F2",
     "black_20": "#CCCCCC",
@@ -66,835 +85,846 @@ def load_palette() -> dict:
         print(f"[charts] brand JSON not found at {BRAND_JSON}; using fallback palette",
               file=sys.stderr)
         return _FALLBACK_PALETTE
-
     with open(BRAND_JSON) as f:
         brand = json.load(f)
-
     palette = dict(_FALLBACK_PALETTE)
     pb = brand.get("palette", {}).get("primary_brand", {})
     if "indigo" in pb:
         palette["indigo"] = pb["indigo"].get("hex", palette["indigo"])
-
     for block_name in ("brand_supporting", "data_viz_palette_sp_global"):
         block = brand.get("palette", {}).get(block_name, {})
         if isinstance(block, dict):
-            def harvest(d):
-                for k, v in d.items():
-                    if isinstance(v, dict) and "hex" in v:
-                        kl = k.lower()
-                        if "copper" in kl:
-                            palette["copper"] = v["hex"]
-                        elif "soft" in kl and "black" in kl:
-                            palette["soft_black"] = v["hex"]
-                        elif kl == "paper" or "off-white" in kl or "paper" in kl:
-                            palette["paper"] = v["hex"]
-                    elif isinstance(v, dict):
-                        harvest(v)
-            harvest(block)
-
+            for key, val in block.items():
+                if isinstance(val, dict) and "hex" in val:
+                    palette.setdefault(key, val["hex"])
     return palette
 
 
 PALETTE = load_palette()
-INDIGO = PALETTE["indigo"]
-INDIGO_50 = PALETTE["indigo_50"]
-INDIGO_25 = PALETTE["indigo_25"]
-COPPER = PALETTE["copper"]
-SOFT_BLACK = PALETTE["soft_black"]
-GRAY_20 = PALETTE["black_20"]
-GRAY_40 = PALETTE["black_40"]
-GRAY_60 = PALETTE["black_60"]
 
-
-# ---------------------------------------------------------------------------
-# Lineage color encoding (v0.8 specific)
-# ---------------------------------------------------------------------------
-#
-# Japanese mass-market English-distributed: INDIGO (primary brand color)
-# Japanese boundary / traditional:          INDIGO_50 (lighter primary)
-# German mass-market English-distributed:   COPPER (highlight color)
-# German boundary / limited-English:        a lighter copper (we mix here)
-# American:                                 GRAY_60 (collapsed lineage)
-# Hybrid (Miyabi, Japanese-branded German-owned): INDIGO_25 (very light primary)
-# Shared (Victorinox, Mercer, Dexter):      GRAY_40 (neutral)
-
-# Light copper for German boundary brands; computed inline from COPPER if
-# no separate token exists. We use a pre-mixed hex that reads as ~50%
-# saturation of the brand's copper.
-COPPER_50 = "#F8B69A"   # light copper - 50% mixed with paper
-
-LINEAGE_COLOR = {
-    "japanese_mm":         INDIGO,
-    "japanese_boundary":   INDIGO_50,
-    "german_mm":           COPPER,
-    "german_boundary":     COPPER_50,
-    "american":            GRAY_60,
-    "hybrid":              INDIGO_25,
-    "shared":              GRAY_40,
-}
-
-
-# ---------------------------------------------------------------------------
-# Font registration
-# ---------------------------------------------------------------------------
 
 def register_fonts() -> str:
-    """Find Akkurat Pro on the host. Returns 'Akkurat Pro' if found,
-    else 'Inter' if available, else DejaVu Sans with a warning."""
-    candidate_dirs = [
-        Path.home() / "Library" / "Fonts",
-        Path("/Library/Fonts"),
-        Path.home() / ".fonts" / "Akkurat",
-        Path.home() / ".fonts",
-        Path("/usr/share/fonts"),
-    ]
-
-    akkurat_files = []
-    for d in candidate_dirs:
+    candidates = [Path.home() / ".fonts" / "Akkurat", Path.home() / "Library" / "Fonts"]
+    for d in candidates:
         if not d.exists():
             continue
-        for ext in ("*.otf", "*.ttf", "*.OTF", "*.TTF"):
-            for p in d.rglob(ext):
-                if "akkurat" in p.name.lower():
-                    akkurat_files.append(p)
-
-    if akkurat_files:
-        for fp in akkurat_files:
+        for ttf in d.glob("**/*Akkurat*.[ot]tf"):
             try:
-                font_manager.fontManager.addfont(str(fp))
+                font_manager.fontManager.addfont(str(ttf))
             except Exception:
                 pass
-        for candidate in ("Akkurat Pro", "Akkurat", "AkkuratPro"):
-            try:
-                font_manager.findfont(candidate, fallback_to_default=False)
-                print(f"[charts] using {candidate} ({len(akkurat_files)} files registered)")
-                return candidate
-            except Exception:
-                continue
-
-    try:
-        font_manager.findfont("Inter", fallback_to_default=False)
-        print("[charts] Akkurat Pro not found; using Inter")
-        return "Inter"
-    except Exception:
-        pass
-
-    print("[charts] WARNING: Akkurat Pro and Inter both unavailable. Falling back to DejaVu Sans.",
-          file=sys.stderr)
+    sans_candidates = ["Akkurat Pro", "Akkurat", "Inter", "Helvetica", "Arial", "DejaVu Sans"]
+    available = {f.name for f in font_manager.fontManager.ttflist}
+    for c in sans_candidates:
+        if c in available:
+            return c
     return "DejaVu Sans"
 
 
-FONT_FAMILY = register_fonts()
-
+SANS = register_fonts()
 plt.rcParams.update({
-    "font.family": FONT_FAMILY,
+    "font.family": SANS,
     "font.size": 9,
-    "axes.titlesize": 11,
+    "axes.titlesize": 10,
     "axes.labelsize": 9,
     "xtick.labelsize": 8,
     "ytick.labelsize": 8,
     "legend.fontsize": 8,
-    # Text/axis colors switched from INDIGO to SOFT_BLACK so titles,
-    # axis labels, tick labels, and any unspecified text default to a
-    # dark-text convention. INDIGO is now reserved for data fills (bars,
-    # dots) and data labels (per-bar value numbers); COPPER for accents.
-    "axes.edgecolor": SOFT_BLACK,
-    "axes.labelcolor": SOFT_BLACK,
-    "axes.titlecolor": SOFT_BLACK,
-    "xtick.color": SOFT_BLACK,
-    "ytick.color": SOFT_BLACK,
-    "text.color": SOFT_BLACK,
+    "axes.edgecolor": PALETTE["soft_black"],
+    "axes.labelcolor": PALETTE["soft_black"],
+    "xtick.color": PALETTE["soft_black"],
+    "ytick.color": PALETTE["soft_black"],
     "axes.spines.top": False,
     "axes.spines.right": False,
-    "axes.linewidth": 0.6,
-    "xtick.major.width": 0.6,
-    "ytick.major.width": 0.6,
-    "savefig.facecolor": "none",
-    "axes.facecolor": "none",
-    "figure.facecolor": "none",
-
-    # See v07 builder for rationale: Type 3 outlines, no shared font ref
-    # to prevent collision with ReportLab base PDF in pypdf overlay.
-    "pdf.fonttype": 3,
-    "ps.fonttype": 3,
-    "pdf.use14corefonts": False,
+    "mathtext.fontset": "stix",
 })
-
-SOURCE_LINE = "Source: Third System AI Presence Index v0.8  \u00b7  n=288 measurements (6 prompts \u00d7 6 models \u00d7 8 runs)  \u00b7  6 May 2026"
 
 
 def save(fig, name: str):
-    """Save at native figsize, no padding adjustment, so the slot reservation
-    in build_report_v08.py matches exactly."""
     out = OUTPUT_DIR / name
-    fig.savefig(str(out), format="pdf", bbox_inches=None, pad_inches=0,
-                transparent=True)
+    fig.savefig(out, bbox_inches=None, pad_inches=0.0, dpi=300)
     plt.close(fig)
-    print(f"[charts] wrote {name}  ({out.stat().st_size / 1024:.1f} KB)")
+    print(f"  wrote {out}", file=sys.stderr)
+
+
+# ---------------------------------------------------------------------------
+# Title / subtitle / source helpers — point-based offsets for consistency
+# across charts of different heights.
+# ---------------------------------------------------------------------------
+
+SOURCE_PROGRAM = "Third System AIAS measurement program · v0.9 Longitudinal Re-Baseline"
+SOURCE_DATE = "8 May 2026"
+
+
+def yt(pt, fig):
+    """Convert pt offset from top edge of figure to figure-fraction y."""
+    return 1.0 - pt / (fig.get_figheight() * 72.0)
+
+
+def yb(pt, fig):
+    """Convert pt offset from bottom edge of figure to figure-fraction y."""
+    return pt / (fig.get_figheight() * 72.0)
+
+
+def add_title_subtitle(fig, title, subtitle, *,
+                       title_fontsize=13.0,
+                       subtitle_fontsize=9.5,
+                       title_pt=18, subtitle_top_pt=30):
+    """Bold title and italic subtitle at figure level, tightly paired.
+
+    The default offsets create the v0.7 'Within-lab freshness' look:
+      - Title baseline at 18pt from top edge
+      - Subtitle text TOP at 30pt from top edge (so subtitle sits just below
+        the title with ~6pt visible gap given 13pt title height)
+    """
+    fig.text(0.02, yt(title_pt, fig), title,
+             ha="left", va="bottom",
+             fontsize=title_fontsize, fontweight="bold",
+             color=PALETTE["soft_black"])
+    fig.text(0.02, yt(subtitle_top_pt, fig), subtitle,
+             ha="left", va="top",
+             fontsize=subtitle_fontsize, fontstyle="italic",
+             color=PALETTE["black_60"])
+
+
+def add_source_line(fig, n_descriptor, *,
+                    line1_pt=18, line2_pt=10):
+    """Two-line source attribution at the figure bottom-left.
+
+    Lines sit 8pt apart at baseline so they read as one compact footer
+    block (visual row gap is ~1-2pt at 7pt font height — tight pairing,
+    not two separated lines).
+
+    Line 1 is a fixed program identifier shown across all charts.
+    Line 2 is the chart-specific sample descriptor + date — different per
+    chart so each footer carries useful sample-size context for that
+    specific visual.
+    """
+    fig.text(0.02, yb(line1_pt, fig),
+             "Source: Third System AIAS v0.9 Longitudinal Re-Baseline",
+             ha="left", va="bottom",
+             fontsize=7.5, color=PALETTE["black_60"], fontstyle="italic")
+    fig.text(0.02, yb(line2_pt, fig),
+             f"{n_descriptor} · {SOURCE_DATE}",
+             ha="left", va="bottom",
+             fontsize=7, color=PALETTE["black_60"], fontstyle="italic")
+
+
+def standard_top(fig):
+    """y of axes top: 55pt below figure top, leaving room for title+subtitle."""
+    return yt(55, fig)
+
+
+def standard_bottom(fig):
+    """y of axes bottom: 65pt above figure bottom.
+
+    The 65pt budget below the axes spine accommodates: ~37pt of x-axis area
+    (4pt labelpad + 16pt tick labels + 4pt + 9pt xlabel + 4pt) above the
+    source block, which itself occupies y=10 to ~y=26pt. This eliminates
+    the source/x-axis collision that earlier 48-50pt budgets caused.
+    """
+    return yb(65, fig)
+
+
+CATEGORY_DISPLAY = {
+    "pm": "PM software",
+    "running": "Running shoes",
+    "oliveoil": "Olive oil",
+    "skincare": "Skincare",
+    "finance": "Personal finance",
+}
+
+T1 = r"$t_1$"
+T2 = r"$t_2$"
+
+MODE_ORDER = ["brand", "mixed", "component", "authority", "refusal"]
+MODE_COLORS = {
+    "brand":     PALETTE["indigo"],
+    "mixed":     PALETTE["indigo_50"],
+    "component": PALETTE.get("petro", "#0E5C7C"),
+    "authority": PALETTE["copper"],
+    "refusal":   PALETTE["black_40"],
+}
+
+
+def load_mode_classified(cat: str) -> list[dict]:
+    path = DATA_ROOT / cat
+    if not path.exists():
+        return []
+    files = sorted(path.glob("mode_classified_*.csv"))
+    rows = []
+    for fp in files:
+        with open(fp) as f:
+            rows.extend(csv.DictReader(f))
+    return rows
+
+
+def mode_share(rows) -> dict:
+    counts = {m: 0 for m in MODE_ORDER}
+    for r in rows:
+        m = (r.get("primary_mode") or "").strip().lower()
+        if m in counts:
+            counts[m] += 1
+    total = sum(counts.values()) or 1
+    return {m: 100 * counts[m] / total for m in MODE_ORDER}
 
 
 # ===========================================================================
-# Chart 0 \u2014 Knife brand leaderboard (6_col_hero_xl: 7.50 \u00d7 7.50)
-#
-# 22 brands ordered by Presence, colored by lineage. G\u00fcde at 0% included
-# explicitly as the H5 control \u2014 the German boundary parallel that lets the
-# leaderboard tell the within-lineage story directly.
+# Chart 1 — H1 drift scatter
 # ===========================================================================
 
-LEADERBOARD = [
-    # (brand, presence_pct, lineage_key)
-    ("W\u00fcsthof",         68.4, "german_mm"),
-    ("Mac",                  66.3, "japanese_mm"),
-    ("Victorinox",           63.9, "shared"),
-    ("Shun",                 63.2, "japanese_mm"),
-    ("Henckels",             55.6, "german_mm"),
-    ("Tojiro",               53.8, "japanese_mm"),
-    ("Global",               47.2, "japanese_mm"),
-    ("Miyabi",               31.6, "hybrid"),
-    ("Misono",               26.0, "japanese_mm"),
-    ("Masamoto",             18.1, "japanese_boundary"),
-    ("Takamura",             16.7, "japanese_boundary"),
-    ("Mercer",               12.5, "shared"),
-    ("Messermeister",        11.5, "german_mm"),
-    ("Sakai Takayuki",       10.8, "japanese_boundary"),
-    ("Konosuke",              9.7, "japanese_boundary"),
-    ("Korin",                 8.3, "japanese_boundary"),
-    ("Nigara Hamono",         5.9, "japanese_boundary"),
-    ("Yu Kurosaki",           5.2, "japanese_boundary"),
-    ("Yoshihiro",             3.8, "japanese_boundary"),
-    ("Takeda",                3.5, "japanese_boundary"),
-    ("Yoshikane",             3.5, "japanese_boundary"),
-    ("G\u00fcde",             0.0, "german_boundary"),  # H5 control \u2014 must be visible
-]
+def chart_h1_drift_scatter(data):
+    fig, ax = plt.subplots(figsize=(7.50, 5.00))
 
-
-def chart_leaderboard():
-    # Figsize 5% smaller than v07's leaderboard (7.50 \u2192 7.125 in each
-    # axis) to give the page slightly more breathing room around the chart.
-    # The slot in build_report_v08.py uses figsize_key "6_col_hero_xl_95"
-    # which adds 7.125x7.125 to CHART_FIGSIZE_IN.
-    fig = plt.figure(figsize=(7.125, 7.125))
-    # Axes y=0.15, height=0.74 — gives the bottom region (0..0.15)
-    # enough room for x-axis tick labels (~0.12-0.14) AND the lineage
-    # legend (~0.05-0.085) without collision. Top edge stays at 0.89
-    # so title/subtitle layout is unchanged.
-    ax = fig.add_axes([0.27, 0.15, 0.55, 0.74])
-
-    names = [r[0] for r in LEADERBOARD]
-    values = [r[1] for r in LEADERBOARD]
-    lineages = [r[2] for r in LEADERBOARD]
-
-    y = list(range(len(names)))[::-1]
-    colors = [LINEAGE_COLOR[lk] for lk in lineages]
-
-    ax.barh(y, values, color=colors, height=0.7, edgecolor="none")
-
-    # Reference line at H1's calibration anchor (Wusthof + Henckels mean = 62%)
-    ax.axvline(62, color=GRAY_60, linestyle=(0, (2, 3)), linewidth=0.8, zorder=0)
-    ax.text(62, len(names) + 0.2, "W\u00fcsthof+Henckels mean (H5 anchor)",
-            color=GRAY_60, fontsize=7.5, ha="center", style="italic")
-
-    # Brand names on left
-    for i, (n, lk) in enumerate(zip(names, lineages)):
-        # Boldface mass-market and key controls; light for boundary tier
-        weight = "bold" if lk in ("japanese_mm", "german_mm", "hybrid") else "normal"
-        ax.text(-1, y[i], n, ha="right", va="center",
-                fontsize=8.5, fontweight=weight, color=SOFT_BLACK)
-
-    # Value labels on right of each bar
-    for i, (v, lk) in enumerate(zip(values, lineages)):
-        weight = "bold" if lk in ("japanese_mm", "german_mm") else "normal"
-        if v > 0:
-            ax.text(v + 1, y[i], f"{v:.1f}", ha="left", va="center",
-                    fontsize=8, fontweight=weight, color=INDIGO)
-        else:
-            # G\u00fcde marker
-            ax.scatter([0.4], [y[i]], s=14, color=COPPER, zorder=5)
-            ax.text(2.5, y[i], "0.0", ha="left", va="center",
-                    fontsize=8, fontweight="bold", color=COPPER)
-
-    # Annotations on key brands.
-    # Placed at x=30 (inside axes, well past the small bars they annotate
-    # at 0.0, 16.7, 18.1) so they don't get clipped at the right edge.
-    # Gray rather than indigo so they read as supporting context, not data.
-    annotations = {
-        "Masamoto": "outlier \u2014 US English distribution",
-        "Takamura": "outlier \u2014 chef-endorsed in EN",
-        "G\u00fcde":  "H5 control \u2014 0/288 mentions",
+    cat_colors = {
+        "pm":       PALETTE["indigo"],
+        "running":  PALETTE["copper"],
+        "oliveoil": PALETTE.get("petro", "#0E5C7C"),
+        "skincare": PALETTE["indigo_50"],
+        "finance":  PALETTE["soft_black"],
     }
-    for i, n in enumerate(names):
-        if n in annotations:
-            ax.text(30, y[i], annotations[n], ha="left", va="center",
-                    fontsize=7.5, style="italic", color=GRAY_60)
+
+    points = []
+    for cat in CATEGORIES:
+        v06 = filter_matched(data[(cat, "v06")]["rows"])
+        v09 = filter_matched(data[(cat, "v09")]["rows"])
+        registry = data[(cat, "v09")]["registry"]
+        bp_v06 = per_brand_presence(v06, registry)
+        bp_v09 = per_brand_presence(v09, registry)
+        for b in registry["all_brands"]:
+            t1 = bp_v06[b]
+            delta = bp_v09[b] - t1
+            points.append((cat, b, t1, delta))
+
+    ax.axhspan(-5, 5, color=PALETTE["indigo_25"], alpha=0.35, zorder=1,
+               label="+/-5pp band (H1 noise floor)")
+    ax.axhspan(-10, -5, color=PALETTE["indigo_25"], alpha=0.18, zorder=1)
+    ax.axhspan(5, 10, color=PALETTE["indigo_25"], alpha=0.18, zorder=1,
+               label="+/-10pp band")
+    ax.axhline(0, color=PALETTE["soft_black"], linewidth=0.7, zorder=2)
+
+    for cat in CATEGORIES:
+        cat_points = [(t1, d) for c, _, t1, d in points if c == cat]
+        if not cat_points:
+            continue
+        xs = [p[0] for p in cat_points]
+        ys = [p[1] for p in cat_points]
+        ax.scatter(xs, ys, s=22, alpha=0.75, color=cat_colors[cat],
+                   edgecolors="white", linewidths=0.5, zorder=3,
+                   label=CATEGORY_DISPLAY[cat])
 
     ax.set_xlim(0, 100)
-    ax.set_ylim(-0.6, len(names) - 0.4)
-    ax.set_yticks([])
-    ax.set_xticks([0, 25, 50, 75, 100])
-    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
-    ax.spines["left"].set_visible(False)
-    ax.spines["bottom"].set_color(SOFT_BLACK)
-    ax.tick_params(axis="x", which="both", length=2)
+    ax.set_ylim(-25, 25)
+    ax.set_xlabel(f"{T1} Presence (%)")
+    ax.set_ylabel(f"{T1} to {T2} delta (pp)")
+    ax.legend(loc="upper right", frameon=False, ncol=2, fontsize=7.5)
 
-    # Title and subtitle
-    fig.text(0.05, 0.965, "AI Presence \u2014 Premium Kitchen Knives",
-             fontsize=14, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.05, 0.935,
-             "22 of 27 brands ordered by Presence, colored by lineage. G\u00fcde shown as H5 control.",
-             fontsize=9, color=SOFT_BLACK, ha="left")
+    n5 = sum(1 for _, _, _, d in points if abs(d) <= 5)
+    n10 = sum(1 for _, _, _, d in points if abs(d) <= 10)
+    pct5 = 100 * n5 / len(points)
+    pct10 = 100 * n10 / len(points)
 
-    # Lineage legend (figure-level, centered just above source line).
-    # Previously placed at axes-relative bbox (1.0, -0.13) which rendered
-    # below the figure boundary and got clipped.
-    legend_elems = [
-        Patch(facecolor=INDIGO,    label="Japanese (English-marketed)"),
-        Patch(facecolor=INDIGO_50, label="Japanese (boundary)"),
-        Patch(facecolor=COPPER,    label="German (English-marketed)"),
-        Patch(facecolor=COPPER_50, label="German (boundary)"),
-        Patch(facecolor=INDIGO_25, label="Hybrid (JP-branded, DE-owned)"),
-        Patch(facecolor=GRAY_40,   label="Shared category"),
-    ]
-    fig.legend(handles=legend_elems, loc="lower center",
-               bbox_to_anchor=(0.5, 0.055), ncol=3, frameon=False,
-               fontsize=7, handlelength=1.2, handleheight=0.9,
-               columnspacing=1.0)
-
-    fig.text(0.05, 0.012, SOURCE_LINE, fontsize=7,
-             style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_leaderboard_6col.pdf")
+    fig.subplots_adjust(left=0.10, right=0.97,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Per-brand drift across five categories: H1 confirmed",
+                       f"{pct5:.1f}% within +/-5pp; {pct10:.1f}% within +/-10pp "
+                       f"(matched subset, n={len(points)} brand-level deltas)")
+    add_source_line(fig,
+                    f"H1 drift: n={len(points)} brand-level deltas across 5 categories")
+    save(fig, "chart_v09_h1_drift_scatter_6col.pdf")
 
 
 # ===========================================================================
-# Chart 1 (Finding 1) \u2014 Lineage aggregates (6_col_short: 7.50 \u00d7 3.50)
-#
-# Five vertical bars showing aggregate lineage Presence with the v1.0 vs v1.2
-# Japanese registry split visible. The H1 disconfirmation lives in the gap
-# between the two Japanese bars.
+# Chart 2 — H2 leaderboard
 # ===========================================================================
 
-LINEAGE_AGGREGATES = [
-    # (label, value, color_key, sublabel)
-    ("Japanese\nv1.0 locked\n(8 brands)",       36.2, "japanese_mm",       "registry locked"),
-    ("Japanese\nv1.2 published\n(14 brands)",   18.5, "japanese_boundary", "post-revision"),
-    ("German\n(5 brands)",                      27.3, "german_mm",         "stable across revisions"),
-    ("American\n(5 brands)",                     0.6, "american",          "comparator collapsed"),
-    ("Miyabi\nexploratory",                     31.6, "hybrid",            "n=1, JP-branded DE-owned"),
-]
+def _shorten(name: str, max_len: int = 26) -> str:
+    if len(name) <= max_len:
+        return name
+    return name[: max_len - 1] + "."
 
 
-def chart_f1_lineage_aggregates():
-    fig = plt.figure(figsize=(7.50, 3.50))
-    # Increased bottom margin (0.20 \u2192 0.18) since sublabels removed; main
-    # axes fits comfortably with x-tick labels only.
-    ax = fig.add_axes([0.08, 0.18, 0.86, 0.55])
+def chart_h2_leaderboard(data):
+    # Figsize 7.50x6.50: must fit the printable page area (~7.67" usable
+    # height) with room for title block above and caption below when
+    # rendered as a hero chart in the pattern flow. hspace 0.55 keeps
+    # panels close enough that 5 stacked categories read as a single
+    # leaderboard rather than 5 separate small charts.
+    fig, axes = plt.subplots(len(CATEGORIES), 1, figsize=(7.50, 6.50),
+                              gridspec_kw={"hspace": 0.55})
 
-    labels = [r[0] for r in LINEAGE_AGGREGATES]
-    values = [r[1] for r in LINEAGE_AGGREGATES]
-    colors = [LINEAGE_COLOR[r[2]] for r in LINEAGE_AGGREGATES]
+    for ax, cat in zip(axes, CATEGORIES):
+        v06 = filter_matched(data[(cat, "v06")]["rows"])
+        v09 = filter_matched(data[(cat, "v09")]["rows"])
+        registry = data[(cat, "v09")]["registry"]
+        bp_v06 = per_brand_presence(v06, registry)
+        bp_v09 = per_brand_presence(v09, registry)
 
-    x = list(range(len(labels)))
-    ax.bar(x, values, color=colors, width=0.65, edgecolor="none")
+        v06_top5 = sorted(bp_v06.items(), key=lambda kv: kv[1], reverse=True)[:5]
+        v09_top5 = sorted(bp_v09.items(), key=lambda kv: kv[1], reverse=True)[:5]
+        union = []
+        seen = set()
+        for b, _ in v06_top5 + v09_top5:
+            if b not in seen:
+                union.append(b)
+                seen.add(b)
+        union = sorted(union, key=lambda b: bp_v09[b], reverse=True)
+        v06_top3_brands = {b for b, _ in v06_top5[:3]}
 
-    # Value labels above bars
-    for i, v in enumerate(values):
-        ax.text(i, v + 1.5, f"{v:.1f}%", ha="center", va="bottom",
-                fontsize=11, fontweight="bold", color=INDIGO)
+        y_pos = list(range(len(union)))
+        bar_h = 0.4
+        t1_vals = [bp_v06[b] for b in union]
+        t2_vals = [bp_v09[b] for b in union]
 
-    # H1 threshold reference line at German aggregate
-    ax.axhline(27.3, color=COPPER, linestyle=(0, (2, 3)), linewidth=0.8, zorder=0)
-    ax.text(4.5, 28.5, "DE 27.3% \u2014 H1 anchor",
-            ha="right", va="bottom", fontsize=7.5, style="italic", color=COPPER)
+        ax.barh([y - bar_h / 2 for y in y_pos], t1_vals, height=bar_h,
+                color=PALETTE["indigo_50"], label=f"{T1} (v0.6)")
+        ax.barh([y + bar_h / 2 for y in y_pos], t2_vals, height=bar_h,
+                color=PALETTE["indigo"], label=f"{T2} (v0.9)")
 
-    # Registry-expansion callout: a simple bracket above bars 0\u20131 with
-    # gap label. Bracket sits above the taller bar (36.2%) so it doesn't
-    # collide with bar fills or value labels.
-    bracket_y = 42
-    ax.plot([0, 1], [bracket_y, bracket_y], color=GRAY_60, linewidth=0.8)
-    ax.plot([0, 0], [38.5, bracket_y], color=GRAY_60, linewidth=0.8)
-    ax.plot([1, 1], [21.0, bracket_y], color=GRAY_60, linewidth=0.8)
-    ax.text(0.5, bracket_y + 0.5, "registry expansion: \u201317.7pp",
-            ha="center", va="bottom", fontsize=7.5, style="italic", color=GRAY_60)
+        ytick_labels = [
+            f"* {_shorten(b)}" if b in v06_top3_brands else f"  {_shorten(b)}"
+            for b in union
+        ]
+        ax.set_yticks(y_pos)
+        ax.set_yticklabels(ytick_labels, fontsize=8, family="monospace")
+        for tlabel, brand in zip(ax.get_yticklabels(), union):
+            if brand in v06_top3_brands:
+                tlabel.set_color(PALETTE["copper"])
 
-    ax.set_xticks(x)
-    ax.set_xticklabels(labels, fontsize=8.5)
-    ax.set_ylim(0, 48)
-    ax.set_yticks([0, 10, 20, 30, 40])
-    ax.set_yticklabels(["0%", "10%", "20%", "30%", "40%"], fontsize=8)
-    ax.spines["bottom"].set_color(SOFT_BLACK)
-    ax.tick_params(axis="x", length=0, pad=2)
-    ax.tick_params(axis="y", length=2)
-
-    # Title + subtitle
-    fig.text(0.05, 0.93,
-             "H1 disconfirmation: Japanese aggregate depends on registry",
-             fontsize=12, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.05, 0.86,
-             "At locked v1.0, JP aggregate is higher than DE. At expanded v1.2, JP falls below DE by 8.8pp.",
-             fontsize=8.5, color=SOFT_BLACK, ha="left")
-
-    fig.text(0.05, 0.025, SOURCE_LINE, fontsize=7,
-             style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_f1_lineage_aggregates_6col.pdf")
-
-
-# ===========================================================================
-# Chart 2 (Finding 2) \u2014 100% English authority infrastructure
-# (6_col_hero_short: 7.50 \u00d7 3.75)
-#
-# Top 15 named authorities (publications + retailers + communities), with
-# 100% English callout. The hero number is "262 / 262 \u00b7 100%".
-# ===========================================================================
-
-AUTHORITIES = [
-    # (name, n_mentions, type)  \u2014 type unused in chart but documented
-    ("Sur La Table",            27, "retailer"),
-    ("Serious Eats",            22, "publication"),
-    ("Williams Sonoma",         22, "retailer"),
-    ("Wirecutter",              21, "publication"),
-    ("Amazon",                  21, "retailer"),
-    ("America's Test Kitchen",  13, "publication"),
-    ("Japanese Knife Imports",  13, "retailer"),
-    ("Knifewear",                8, "retailer"),
-    ("Reddit",                   7, "community"),
-    ("BladeHQ",                  7, "retailer"),
-    ("Cook's Illustrated",       6, "publication"),
-    ("Burrfection",              6, "community"),
-    ("KnifeCenter",              6, "retailer"),
-    ("ChefKnivestoGo",           5, "retailer"),
-    ("Blade HQ",                 5, "retailer"),
-]
-
-
-def chart_f2_authorities():
-    fig = plt.figure(figsize=(7.50, 3.75))
-
-    # Hero stat block — aligned with title at figure x=0.04 (the title's
-    # left edge). All text in this panel is left-aligned so the "1" of
-    # 100% lines up vertically with the "T" of the title.
-    hero_ax = fig.add_axes([0.04, 0.18, 0.18, 0.62])
-    hero_ax.axis("off")
-
-    # Hero number in COPPER for accent contrast against the indigo bars.
-    # All text left-aligned at hero_ax x=0.0 so the leftmost glyph (the
-    # "1" of 100%) sits at figure x=0.04, vertically aligning with the
-    # title's left edge.
-    hero_ax.text(0.0, 0.68, "100%",
-                 ha="left", va="center", fontsize=42,
-                 fontweight="bold", color=COPPER,
-                 transform=hero_ax.transAxes)
-    hero_ax.text(0.0, 0.46, "of authorities are",
-                 ha="left", va="center", fontsize=10,
-                 color=SOFT_BLACK, transform=hero_ax.transAxes)
-    hero_ax.text(0.0, 0.38, "English-language",
-                 ha="left", va="center", fontsize=10,
-                 fontweight="bold", color=SOFT_BLACK,
-                 transform=hero_ax.transAxes)
-    hero_ax.text(0.0, 0.30, "262 of 262 mentions",
-                 ha="left", va="center", fontsize=8,
-                 style="italic", color=GRAY_60,
-                 transform=hero_ax.transAxes)
-
-    # Authority bar chart — pulled closer to the hero (x=0.42 vs prior
-    # 0.55) to compress the dead space in the middle of the figure.
-    # Authority labels (longest: "America's Test Kitchen") are rendered
-    # at fontsize 7.5 so they fit in the narrower left-margin band.
-    bar_ax = fig.add_axes([0.42, 0.15, 0.50, 0.65])
-
-    names = [r[0] for r in AUTHORITIES]
-    counts = [r[1] for r in AUTHORITIES]
-    types = [r[2] for r in AUTHORITIES]
-
-    type_colors = {
-        "publication": INDIGO,
-        "retailer":    INDIGO_50,
-        "community":   INDIGO_25,
-    }
-    colors = [type_colors[t] for t in types]
-
-    y = list(range(len(names)))[::-1]
-    bar_ax.barh(y, counts, color=colors, height=0.7, edgecolor="none")
-
-    # Names on left (fontsize 7.5 to fit the narrower left margin)
-    for i, n in enumerate(names):
-        bar_ax.text(-0.6, y[i], n, ha="right", va="center",
-                    fontsize=7.5, color=SOFT_BLACK)
-
-    # Counts on right
-    for i, c in enumerate(counts):
-        bar_ax.text(c + 0.4, y[i], str(c), ha="left", va="center",
-                    fontsize=7.5, fontweight="bold", color=INDIGO)
-
-    bar_ax.set_xlim(0, 32)
-    bar_ax.set_ylim(-0.6, len(names) - 0.4)
-    bar_ax.set_yticks([])
-    bar_ax.set_xticks([0, 10, 20, 30])
-    bar_ax.set_xticklabels(["0", "10", "20", "30"], fontsize=7)
-    bar_ax.spines["left"].set_visible(False)
-    bar_ax.spines["bottom"].set_color(SOFT_BLACK)
-    bar_ax.tick_params(axis="x", length=2)
-
-    # Legend for the bar chart's color encoding
-    legend_elems = [
-        Patch(facecolor=INDIGO,    label="Publication"),
-        Patch(facecolor=INDIGO_50, label="Retailer"),
-        Patch(facecolor=INDIGO_25, label="Community"),
-    ]
-    bar_ax.legend(handles=legend_elems, loc="lower right",
-                  bbox_to_anchor=(1.0, -0.20), ncol=3, frameon=False,
-                  fontsize=7, handlelength=1.2, handleheight=0.9,
-                  columnspacing=1.0)
-
-    # Thin vertical separator between hero block and bar chart.
-    # Positioned at figure x=0.25 — past the hero panel right edge
-    # (0.22) and before the longest authority label
-    # ("America's Test Kitchen", left edge ~0.28). Spans most of the
-    # chart height to echo the bar_ax y-extent.
-    fig.add_artist(plt.Line2D([0.25, 0.25], [0.18, 0.80],
-                              color=GRAY_40, linewidth=0.5,
-                              transform=fig.transFigure))
-
-    # Title + subtitle (top-left, spanning both panels)
-    fig.text(0.04, 0.93,
-             "The discourse infrastructure is exclusively English",
-             fontsize=12, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.04, 0.87,
-             "Top 15 named authorities. Even \u201cJapanese Knife Imports\u201d is a US-based English-language retailer.",
-             fontsize=8, color=SOFT_BLACK, ha="left")
-
-    fig.text(0.04, 0.025, SOURCE_LINE, fontsize=7,
-             style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_f2_authorities_6col.pdf")
-
-
-# ===========================================================================
-# Chart 3 (Finding 3) \u2014 Within-lineage variance (6_col_hero: 7.50 \u00d7 4.50)
-#
-# Two-panel chart showing the marketing-language-coverage mechanism operating
-# within each major lineage. Top: within-Japanese 5x ratio (mass-market vs
-# traditional, with Masamoto/Takamura outliers visible). Bottom: within-German
-# parallel (W\u00fcsthof+Henckels mean vs G\u00fcde 0%).
-# ===========================================================================
-
-WITHIN_JAPANESE_GROUPS = [
-    # (group_label, mean, brand_dots: list of (brand, value))
-    ("Mass-market\n(Shun + Global)",
-     55.2,
-     [("Shun", 63.2), ("Global", 47.2)]),
-    ("Traditional / boundary\nv1.0 locked (3 brands)",
-     10.9,
-     [("Masamoto", 18.1), ("Sakai Takayuki", 10.8), ("Yoshihiro", 3.8)]),
-    ("Traditional / boundary\nv1.2 expanded (14 brands)",
-     6.8,
-     [("Masamoto", 18.1), ("Takamura", 16.7), ("Sakai Takayuki", 10.8),
-      ("Yoshihiro", 3.8), ("Yoshikane", 3.5)]),  # representative dots
-]
-
-WITHIN_GERMAN_GROUPS = [
-    ("Mass-market\n(W\u00fcsthof + Henckels)",
-     62.0,
-     [("W\u00fcsthof", 68.4), ("Henckels", 55.6)]),
-    ("Boundary\n(G\u00fcde, H5 control)",
-     0.0,
-     [("G\u00fcde", 0.0)]),
-]
-
-
-def chart_f3_within_lineage():
-    fig = plt.figure(figsize=(7.50, 4.50))
-
-    # Two panels stacked. Slightly more vertical room per panel and bigger
-    # gap between them so the group titles + H3/H5 subtitles have clear
-    # space above their respective panels.
-    top_ax    = fig.add_axes([0.21, 0.50, 0.65, 0.26])
-    bottom_ax = fig.add_axes([0.21, 0.15, 0.65, 0.18])
-
-    def panel(ax, groups, lineage_label):
-        labels = [g[0] for g in groups]
-        means  = [g[1] for g in groups]
-        dots   = [g[2] for g in groups]
-
-        y = list(range(len(groups)))[::-1]
-        h = 0.40
-
-        # Mean bars
-        if "German" in lineage_label:
-            bar_colors = [COPPER if "Mass-market" in lab else COPPER_50
-                          for lab in labels]
-        else:
-            bar_colors = [INDIGO if "Mass-market" in lab else INDIGO_50
-                          for lab in labels]
-        ax.barh(y, means, color=bar_colors, height=h, edgecolor="none",
-                alpha=0.55)
-
-        # Mean value labels: fixed position past the longest bar so they
-        # never collide with dots or annotations on top of bars.
-        # Top panel max is 55.2 so we put labels at x=68; bottom panel max
-        # is 62 so we put labels at x=72.
-        label_x = 72 if "German" in lineage_label else 68
-        for i, m in enumerate(means):
-            if m > 0:
-                ax.text(label_x, y[i], f"{m:.1f}% mean",
-                        ha="left", va="center", fontsize=9.5,
-                        fontweight="bold", color=INDIGO)
-            else:
-                ax.text(label_x, y[i],
-                        "0.0% mean \u2014 zero of 288",
-                        ha="left", va="center", fontsize=9,
-                        fontweight="bold", color=COPPER)
-
-        # Brand dots overlaid at smaller size + below bar centerline so
-        # they don't visually merge with the bar fill.
-        for i, brand_list in enumerate(dots):
-            for brand, val in brand_list:
-                ax.scatter([val], [y[i]], s=18, color=INDIGO,
-                           edgecolor="white", linewidth=0.7, zorder=4)
-
-        # Outlier annotation strategy: only label the highest-value outlier
-        # per row, alternating above/below to avoid collisions when two
-        # outliers fall close together.
-        # v1.0 row (3 brands): label Masamoto above
-        # v1.2 row (5+ brands): label Takamura above and Masamoto below,
-        #   to separate the two outliers vertically
-        for i, brand_list in enumerate(dots):
-            row_label = labels[i]
-            for brand, val in brand_list:
-                if brand == "Masamoto" and "v1.0" in row_label:
-                    ax.text(val, y[i] + 0.30, "Masamoto",
-                            ha="center", va="bottom", fontsize=6.5,
-                            color=GRAY_60, style="italic")
-                elif brand == "Takamura" and "v1.2" in row_label:
-                    ax.text(val, y[i] + 0.30, "Takamura",
-                            ha="center", va="bottom", fontsize=6.5,
-                            color=GRAY_60, style="italic")
-                elif brand == "Masamoto" and "v1.2" in row_label:
-                    ax.text(val, y[i] - 0.30, "Masamoto",
-                            ha="center", va="top", fontsize=6.5,
-                            color=GRAY_60, style="italic")
-
-        # Group labels on left
-        for i, lab in enumerate(labels):
-            ax.text(-2, y[i], lab, ha="right", va="center",
-                    fontsize=8, color=SOFT_BLACK)
-
+        ax.invert_yaxis()
         ax.set_xlim(0, 100)
-        ax.set_ylim(-0.6, len(groups) - 0.4)
-        ax.set_yticks([])
-        ax.set_xticks([0, 25, 50, 75, 100])
-        ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=7)
-        ax.spines["left"].set_visible(False)
-        ax.spines["bottom"].set_color(SOFT_BLACK)
-        ax.tick_params(axis="x", length=2)
+        ax.set_xlabel("Presence (%)" if cat == CATEGORIES[-1] else "")
+        ax.set_title(CATEGORY_DISPLAY[cat], loc="left", fontsize=9.5,
+                     fontweight="bold", pad=4)
+        if cat == CATEGORIES[0]:
+            ax.legend(loc="lower right", frameon=False, fontsize=7.5)
 
-    panel(top_ax, WITHIN_JAPANESE_GROUPS, "Japanese")
-    panel(bottom_ax, WITHIN_GERMAN_GROUPS, "German")
-
-    # Group headers for each panel, positioned ABOVE the panels with
-    # generous clearance so they don't collide with row labels.
-    # Top-panel axes spans y=0.50\u20130.76; group title at 0.81 sits well above.
-    # Bottom-panel axes spans y=0.15\u20130.33; group title at 0.40.
-    fig.text(0.04, 0.81, "Within Japanese lineage",
-             fontsize=10, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.04, 0.785, "H3: 44.3pp gap, 5x ratio",
-             fontsize=7.5, style="italic", color=GRAY_60, ha="left")
-
-    fig.text(0.04, 0.385, "Within German lineage",
-             fontsize=10, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.04, 0.36, "H5: G\u00fcde at zero, ratio undefined",
-             fontsize=7.5, style="italic", color=GRAY_60, ha="left")
-
-    # Title + subtitle (figure-level)
-    fig.text(0.04, 0.94,
-             "The mechanism operates within every lineage",
-             fontsize=12, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.04, 0.90,
-             "Brand-level marketing-language coverage predicts AI Presence inside each lineage cohort.",
-             fontsize=8.5, color=SOFT_BLACK, ha="left")
-
-    fig.text(0.04, 0.025, SOURCE_LINE, fontsize=6.5,
-             style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_f3_within_lineage_6col.pdf")
+    fig.subplots_adjust(left=0.24, right=0.97,
+                        top=yt(58, fig), bottom=yb(45, fig),
+                        hspace=0.55)
+    add_title_subtitle(fig,
+                       "Top-of-leaderboard stable in all 5 categories: H2 confirmed (5/5)",
+                       f"Top-3 brands at {T1} remained in top-5 at {T2} across every "
+                       f"category   (* and copper = brand was in $t_1$ top-3)")
+    add_source_line(fig,
+                    "H2 leaderboard: top brands by Presence, n=96 per category-wave")
+    save(fig, "chart_v09_h2_leaderboard_6col.pdf")
 
 
 # ===========================================================================
-# Chart 4 (Finding 4) \u2014 Per-CEP \u00d7 lineage matrix
-# (6_col_hero_short: 7.50 \u00d7 3.75)
-#
-# Heatmap-style matrix showing how each lineage performs across the six CEPs.
-# The German collapse in p3 and saturation in p4 is the focal observation.
+# Chart 3 — H3 within-category variance
 # ===========================================================================
 
-# Matrix from analyzer output:
-# Rows = lineages, Cols = CEPs (p1..p6)
-PER_CEP_MATRIX = {
-    # cep_label: {jp, de, us, hybrid}
-    "p1\nFunctional":   {"japanese":  9.8, "german": 30.0, "american": 0.8, "hybrid":  4.2},
-    "p2\nContextual":   {"japanese": 17.2, "german": 41.7, "american": 1.2, "hybrid": 39.6},
-    "p3\nConstraint":   {"japanese": 21.3, "german":  2.1, "american": 0.0, "hybrid": 31.2},
-    "p4\nIdentity":     {"japanese": 42.0, "german": 45.8, "american": 0.0, "hybrid": 50.0},
-    "p5\nDiscovery":    {"japanese":  4.2, "german":  0.8, "american": 0.0, "hybrid":  0.0},
-    "p6\nComparison":   {"japanese": 16.7, "german": 43.3, "american": 1.2, "hybrid": 64.6},
-}
+def chart_h3_within_cat_variance(data):
+    fig, ax = plt.subplots(figsize=(7.50, 4.30))
 
-LINEAGE_ROWS = [
-    # (lineage_key, display_label, color_key)
-    ("japanese", "Japanese", "japanese_mm"),
-    ("german",   "German",   "german_mm"),
-    ("american", "American", "american"),
-    ("hybrid",   "Miyabi",   "hybrid"),
-]
+    var_t1 = {}
+    var_t2 = {}
+    for cat in CATEGORIES:
+        registry = data[(cat, "v09")]["registry"]
+        bp_v06 = per_brand_presence(filter_matched(data[(cat, "v06")]["rows"]), registry)
+        bp_v09 = per_brand_presence(filter_matched(data[(cat, "v09")]["rows"]), registry)
+        var_t1[cat] = pstdev(bp_v06[b] for b in registry["all_brands"])
+        var_t2[cat] = pstdev(bp_v09[b] for b in registry["all_brands"])
 
+    cats_sorted = sorted(CATEGORIES, key=lambda c: var_t2[c], reverse=True)
+    x_pos = list(range(len(cats_sorted)))
+    bar_w = 0.38
+    t1_vals = [var_t1[c] for c in cats_sorted]
+    t2_vals = [var_t2[c] for c in cats_sorted]
 
-def chart_f4_per_cep():
-    fig = plt.figure(figsize=(7.50, 3.75))
-    ax = fig.add_axes([0.16, 0.20, 0.78, 0.55])
+    ax.bar([x - bar_w / 2 for x in x_pos], t1_vals, width=bar_w,
+           color=PALETTE["indigo_50"], label=f"{T1} (v0.6)",
+           edgecolor="white", linewidth=0.5)
+    ax.bar([x + bar_w / 2 for x in x_pos], t2_vals, width=bar_w,
+           color=PALETTE["indigo"], label=f"{T2} (v0.9)",
+           edgecolor="white", linewidth=0.5)
 
-    cep_labels = list(PER_CEP_MATRIX.keys())
-    n_ceps = len(cep_labels)
-    n_lineages = len(LINEAGE_ROWS)
+    for i, (t1, t2) in enumerate(zip(t1_vals, t2_vals)):
+        ax.text(i - bar_w / 2, t1 + 0.4, f"{t1:.1f}", ha="center", va="bottom",
+                fontsize=7.5, color=PALETTE["soft_black"])
+        ax.text(i + bar_w / 2, t2 + 0.4, f"{t2:.1f}", ha="center", va="bottom",
+                fontsize=7.5, color=PALETTE["soft_black"], fontweight="bold")
 
-    bar_w = 0.20  # group of 4 bars per CEP
-    group_centers = list(range(n_ceps))
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([CATEGORY_DISPLAY[c] for c in cats_sorted], fontsize=8.5)
+    ax.set_ylabel("Within-category brand-presence stdev (pp)")
+    ax.set_ylim(0, max(max(t1_vals), max(t2_vals)) * 1.30)
+    ax.legend(loc="upper right", frameon=False, fontsize=8)
 
-    for li, (lk, label, color_key) in enumerate(LINEAGE_ROWS):
-        offsets = [c + (li - (n_lineages - 1) / 2) * bar_w for c in group_centers]
-        values = [PER_CEP_MATRIX[c][lk] for c in cep_labels]
-        ax.bar(offsets, values, width=bar_w * 0.92,
-               color=LINEAGE_COLOR[color_key], edgecolor="none",
-               label=label)
+    t1_rank = {c: r for r, c in enumerate(
+        sorted(CATEGORIES, key=lambda c: var_t1[c], reverse=True), 1)}
+    t2_rank = {c: r for r, c in enumerate(cats_sorted, 1)}
+    rho = spearman_rho(t1_rank, t2_rank, CATEGORIES)
 
-    # Highlight p3 column (German collapse)
-    ax.axvspan(2 - 0.45, 2 + 0.45, color=GRAY_20, alpha=0.18, zorder=0)
-    ax.text(2, 53, "German\ncollapses\nto 2.1%", ha="center", va="top",
-            fontsize=7.5, style="italic", color=COPPER, fontweight="bold")
-
-    ax.set_xticks(group_centers)
-    ax.set_xticklabels(cep_labels, fontsize=8)
-    ax.set_ylim(0, 55)
-    ax.set_yticks([0, 10, 20, 30, 40, 50])
-    ax.set_yticklabels(["0%", "10%", "20%", "30%", "40%", "50%"], fontsize=8)
-    ax.spines["bottom"].set_color(SOFT_BLACK)
-    ax.tick_params(axis="x", length=0, pad=4)
-    ax.tick_params(axis="y", length=2)
-
-    # Title + subtitle
-    fig.text(0.05, 0.92,
-             "The variance is in German. Japanese is the steady lineage.",
-             fontsize=12, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.05, 0.86,
-             "Per-CEP brand-surfacing rate by lineage. p3 (constraint) collapses German; p4 (identity) peaks both.",
-             fontsize=8, color=SOFT_BLACK, ha="left")
-
-    # Legend (bottom, compact)
-    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.18), ncol=4,
-              frameon=False, fontsize=8, handlelength=1.2, handleheight=0.9,
-              columnspacing=1.5)
-
-    fig.text(0.05, 0.025, SOURCE_LINE, fontsize=6.5,
-             style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_f4_per_cep_6col.pdf")
+    fig.subplots_adjust(left=0.10, right=0.97,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Within-category brand-presence variance ordering preserves: H3 confirmed",
+                       f"Spearman rho ({T1} vs {T2} ranking across 5 categories) = "
+                       f"{rho:.2f}  (threshold 0.7+)")
+    add_source_line(fig,
+                    "H3 within-category brand-presence stdev, 5 categories × 2 waves")
+    save(fig, "chart_v09_h3_within_cat_variance_6col.pdf")
 
 
 # ===========================================================================
-# Chart 5 (Finding 5) \u2014 Within-lab freshness (3_col_inline: 3.68 \u00d7 2.85)
-#
-# Compact inline chart showing within-Anthropic and within-OpenAI generational
-# pairs. Each pair has older model on top, newer on bottom; the lineage
-# aggregate value shifts toward Japanese (boundary lineage) in the newer model.
+# Chart 4 — H4 Mint persistence (smaller chart, smaller title)
 # ===========================================================================
 
-FRESHNESS_PAIRS = {
-    # lab: [(model_label, japanese_aggregate_pct, is_newer)]
-    "Anthropic": [
-        ("Sonnet 4.6", 18.8, False),
-        ("Opus 4.7",   21.1, True),
-    ],
-    "OpenAI": [
-        ("gpt-5.4-mini", 15.0, False),
-        ("gpt-5.5",      25.2, True),
-    ],
-}
+def chart_h4_mint_persistence(data):
+    # Figsize 3.55 x 3.20 to fit inline in column 1 of the 2-column non-hero
+    # layout (BalancedColumns gives ~3.68" per column). Smaller than the rest
+    # of the suite intentionally — the chart shows only two points + stability
+    # band, which reads cleanly at this size.
+    fig, ax = plt.subplots(figsize=(3.55, 3.20))
 
+    cat = PHANTOM_BRAND_CATEGORY
+    v06 = filter_matched(data[(cat, "v06")]["rows"])
+    v09 = filter_matched(data[(cat, "v09")]["rows"])
+    registry = data[(cat, "v09")]["registry"]
+    bp_v06 = per_brand_presence(v06, registry)
+    bp_v09 = per_brand_presence(v09, registry)
+    t1 = bp_v06.get(PHANTOM_BRAND, 0)
+    t2 = bp_v09.get(PHANTOM_BRAND, 0)
 
-def chart_f5_freshness():
-    fig = plt.figure(figsize=(3.68, 2.85))
+    ax.axhspan(t1 - 5, t1 + 5, color=PALETTE["indigo_25"], alpha=0.35,
+               label="+/-5pp stability band")
 
-    top_ax    = fig.add_axes([0.30, 0.55, 0.58, 0.22])
-    bottom_ax = fig.add_axes([0.30, 0.18, 0.58, 0.22])
+    ax.plot([0, 1], [t1, t2], color=PALETTE["indigo"], linewidth=2.0,
+            marker="o", markersize=8, markerfacecolor=PALETTE["indigo"],
+            markeredgecolor="white", markeredgewidth=1.2, zorder=3)
 
-    def mini_pair(ax, rows):
-        labels = [r[0] for r in rows]
-        values = [r[1] for r in rows]
-        is_newer = [r[2] for r in rows]
-        y = list(range(len(rows)))[::-1]
-        h = 0.55
-        colors = [INDIGO if n else INDIGO_50 for n in is_newer]
-        ax.barh(y, values, color=colors, height=h, edgecolor="none")
-        for i, v in enumerate(values):
-            ax.text(v + 0.6, y[i], f"{v:.1f}%", va="center",
-                    fontsize=7, fontweight="bold", color=INDIGO)
-        for i, lab in enumerate(labels):
-            weight = "bold" if is_newer[i] else "normal"
-            ax.text(-0.6, y[i], lab, va="center", ha="right",
-                    fontsize=7, fontweight=weight, color=SOFT_BLACK)
-        # Gap annotation between rows
-        gap = values[1] - values[0]
-        if abs(gap) > 0.5:
-            sign = "+" if gap > 0 else ""
-            ax.text(max(values) + 6, 0.5, f"{sign}{gap:.1f}pp",
-                    va="center", ha="left", fontsize=6.5,
-                    style="italic", color=GRAY_60)
+    ax.text(0, t1 + 1.8, f"{t1:.1f}%", ha="center", fontsize=8.5,
+            color=PALETTE["soft_black"], fontweight="bold")
+    ax.text(1, t2 + 1.8, f"{t2:.1f}%", ha="center", fontsize=8.5,
+            color=PALETTE["soft_black"], fontweight="bold")
+    ax.text(0.5, (t1 + t2) / 2 - 4, f"delta = {t2 - t1:+.1f}pp",
+            ha="center", fontsize=8, fontstyle="italic", color=PALETTE["soft_black"])
 
-        ax.set_xlim(0, 32)
-        ax.set_ylim(-0.55, len(rows) - 0.45)
-        ax.set_yticks([])
-        ax.set_xticks([0, 10, 20, 30])
-        ax.set_xticklabels(["0%", "10%", "20%", "30%"], fontsize=6)
-        ax.spines["left"].set_visible(False)
-        ax.spines["bottom"].set_color(SOFT_BLACK)
-        ax.tick_params(axis="x", length=2)
+    ax.set_xticks([0, 1])
+    ax.set_xticklabels([f"{T1}\n(29 Apr)", f"{T2}\n(7 May)"])
+    ax.set_xlim(-0.3, 1.3)
+    ax.set_ylim(0, max(t1, t2) * 1.45)
+    ax.set_ylabel("Mint gross Presence (%)")
+    ax.legend(loc="lower left", frameon=False, fontsize=7)
 
-    mini_pair(top_ax, FRESHNESS_PAIRS["Anthropic"])
-    mini_pair(bottom_ax, FRESHNESS_PAIRS["OpenAI"])
-
-    fig.text(0.04, 0.81, "Anthropic", fontsize=8, fontweight="bold", color=SOFT_BLACK)
-    fig.text(0.04, 0.78, "Sonnet 4.6 \u2192 Opus 4.7", fontsize=6.5, color=SOFT_BLACK)
-    fig.text(0.04, 0.44, "OpenAI", fontsize=8, fontweight="bold", color=SOFT_BLACK)
-    fig.text(0.04, 0.41, "mini \u2192 5.5 (newer)", fontsize=6.5, color=SOFT_BLACK)
-
-    fig.text(0.04, 0.94, "Within-lab freshness",
-             fontsize=10, fontweight="bold", color=SOFT_BLACK, ha="left")
-    fig.text(0.04, 0.90,
-             "Newer surfaces JP boundary more",
-             fontsize=7, color=SOFT_BLACK, ha="left")
-
-    fig.text(0.04, 0.04, "Source: AIPI v0.8  \u00b7  6 May 2026",
-             fontsize=6, style="italic", color=SOFT_BLACK, ha="left")
-
-    save(fig, "chart_v08_f5_freshness_4col.pdf")
+    # Use standard helpers — chart 4 follows the same layout pattern as the
+    # rest of the suite, just at a smaller width since it shows only two
+    # data points. Two-line tick labels still fit because standard_bottom
+    # reserves 65pt below axes for x-axis content + source block.
+    fig.subplots_adjust(left=0.16, right=0.96,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Mint persists at gross Presence: H4 stability",
+                       f"{t1:.1f}% to {t2:.1f}% (delta {t2-t1:+.1f}pp; within +/-5pp band)")
+    add_source_line(fig,
+                    "H4 Mint gross Presence in personal finance, n=96 per wave")
+    save(fig, "chart_v09_h4_mint_persistence_4col.pdf")
 
 
 # ===========================================================================
-# Build all
+# Chart 5 — H5 Pattern 4 sensitivity
 # ===========================================================================
+
+def chart_h5_pattern4_sensitivity(data):
+    fig, ax = plt.subplots(figsize=(7.50, 4.40))
+
+    olive_rows = filter_matched(data[("oliveoil", "v09")]["rows"])
+    olive_reg = data[("oliveoil", "v09")]["registry"]
+    olive_bp = per_brand_presence(olive_rows, olive_reg)
+
+    skin_rows = filter_matched(data[("skincare", "v09")]["rows"])
+    skin_reg = data[("skincare", "v09")]["registry"]
+    skin_bp = per_brand_presence(skin_rows, skin_reg)
+
+    spanish_strict = ["Castillo de Canena", "Núñez de Prado"]
+    spanish_strict_in = [b for b in spanish_strict if b in olive_bp]
+    strict_agg = sum(olive_bp[b] for b in spanish_strict_in) / len(spanish_strict_in) if spanish_strict_in else 0
+
+    spanish_inclusive = spanish_strict + ["Graza"]
+    spanish_inclusive_in = [b for b in spanish_inclusive if b in olive_bp]
+    incl_agg = sum(olive_bp[b] for b in spanish_inclusive_in) / len(spanish_inclusive_in) if spanish_inclusive_in else 0
+
+    kbeauty_brands = ["Beauty of Joseon"]
+    kbeauty_in = [b for b in kbeauty_brands if b in skin_bp]
+    kbeauty_agg = sum(skin_bp[b] for b in kbeauty_in) / len(kbeauty_in) if kbeauty_in else 0
+
+    bars = [
+        ("Spanish olive oil\n(strict, n=2)", strict_agg, SPANISH_OLIVE_OIL_THRESHOLD_PCT, PALETTE["indigo"]),
+        ("Spanish olive oil\n(+ Graza, n=3)", incl_agg, SPANISH_OLIVE_OIL_THRESHOLD_PCT, PALETTE["indigo_50"]),
+        ("K-beauty skincare\n(n=1)", kbeauty_agg, KBEAUTY_THRESHOLD_PCT, PALETTE["copper"]),
+    ]
+
+    xs = list(range(len(bars)))
+    ax.bar(xs, [b[1] for b in bars], color=[b[3] for b in bars], width=0.55,
+           edgecolor="white", linewidth=0.5)
+
+    # Threshold dashed lines for ALL bars: Spanish 12.5pp on bars 1&2, K-beauty
+    # 5pp on bar 3. The 12.5pp line crossing through bar 2 (14.2pp) is the
+    # whole point — it's how the reader sees +Graza breaching the threshold.
+    for i, (_, _, thr, _) in enumerate(bars):
+        ax.hlines(thr, i - 0.32, i + 0.32, colors=PALETTE["soft_black"],
+                  linewidth=1.5, linestyles="dashed")
+
+    # ONE label per unique threshold value (not redundant per bar).
+    # 12.5pp Spanish: in the gap after bar 2, at threshold height.
+    #  5pp K-beauty: right of bar 3's dashed line (xlim extension gives room).
+    ax.text(1.34, SPANISH_OLIVE_OIL_THRESHOLD_PCT,
+            f"{SPANISH_OLIVE_OIL_THRESHOLD_PCT:.1f}pp threshold",
+            va="center", ha="left", fontsize=7.5,
+            color=PALETTE["soft_black"], fontstyle="italic")
+    ax.text(2.34, KBEAUTY_THRESHOLD_PCT,
+            f"{KBEAUTY_THRESHOLD_PCT:.1f}pp threshold",
+            va="center", ha="left", fontsize=7.5,
+            color=PALETTE["soft_black"], fontstyle="italic")
+
+    for i, (_, val, thr, _) in enumerate(bars):
+        passes = val <= thr
+        verdict = "passes" if passes else "breach"
+        color = PALETTE["soft_black"] if passes else PALETTE["copper"]
+        label_y = max(val, thr) + 1.0
+        ax.text(i, label_y, f"{val:.1f}pp\n{verdict}", ha="center", va="bottom",
+                fontsize=8, fontweight="bold", color=color)
+
+    ax.set_xticks(xs)
+    ax.set_xticklabels([b[0] for b in bars], fontsize=8)
+    ax.set_ylabel("Aggregate Presence (%)")
+    ax.set_ylim(0, 20)
+    # Explicit xlim — auto-fit clips at ~2.5, cutting off the "5.0pp
+    # threshold" label that sits to the right of the K-beauty bar.
+    ax.set_xlim(-0.55, 3.05)
+
+    fig.subplots_adjust(left=0.10, right=0.97,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Pattern 4 (v0.6 sec 4.4 refined): discourse-language coverage, not country of origin",
+                       "Strict passes both thresholds; +Graza breaches Spanish 12.5pp.")
+    add_source_line(fig,
+                    "H5 Pattern 4: Spanish + K-beauty aggregate Presence, n=96 per category")
+    save(fig, "chart_v09_h5_pattern4_sensitivity_6col.pdf")
+
+
+# ===========================================================================
+# Chart 6 — H6 cross-model spread Pearson r
+# ===========================================================================
+
+def chart_h6_cross_model_spread(data):
+    fig, ax = plt.subplots(figsize=(7.50, 4.10))
+
+    rs = []
+    for cat in CATEGORIES:
+        v06 = data[(cat, "v06")]["rows"]
+        v09 = data[(cat, "v09")]["rows"]
+        registry = data[(cat, "v09")]["registry"]
+        bp_sonnet_v06 = per_brand_presence(filter_slot(v06, "anthropic_sonnet"), registry)
+        bp_mini_v06 = per_brand_presence(filter_slot(v06, "openai_mini"), registry)
+        bp_sonnet_v09 = per_brand_presence(filter_slot(v09, "anthropic_sonnet"), registry)
+        bp_mini_v09 = per_brand_presence(filter_slot(v09, "openai_mini"), registry)
+        spread_v06 = [bp_sonnet_v06[b] - bp_mini_v06[b] for b in registry["all_brands"]]
+        spread_v09 = [bp_sonnet_v09[b] - bp_mini_v09[b] for b in registry["all_brands"]]
+        rs.append((cat, pearson_r(spread_v06, spread_v09)))
+
+    rs.sort(key=lambda kv: kv[1], reverse=True)
+    y_pos = list(range(len(rs)))
+    labels = [CATEGORY_DISPLAY[c] for c, _ in rs]
+    vals = [r for _, r in rs]
+    colors = [PALETTE["indigo"] if v >= 0.7 else PALETTE["copper"] for v in vals]
+
+    ax.barh(y_pos, vals, color=colors, height=0.55,
+            edgecolor="white", linewidth=0.5)
+    ax.axvline(0.7, color=PALETTE["soft_black"], linewidth=1.2, linestyle="dashed")
+    ax.text(0.71, -0.55, "0.70 threshold", fontsize=7.5,
+            fontstyle="italic", color=PALETTE["soft_black"], va="bottom")
+
+    for i, v in enumerate(vals):
+        ax.text(v + 0.012, i, f"{v:.2f}", va="center",
+                fontsize=8.5, color=PALETTE["soft_black"], fontweight="bold")
+
+    ax.set_yticks(y_pos)
+    ax.set_yticklabels(labels)
+    ax.invert_yaxis()
+    ax.set_xlim(0, 1.05)
+    ax.set_ylim(len(rs) - 0.5, -0.95)
+    ax.set_xlabel(f"Pearson r (sonnet-mini spread, {T1} vs {T2})")
+
+    fig.subplots_adjust(left=0.18, right=0.97,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Cross-model spread stable in all 5 categories: H6 confirmed (5/5)",
+                       f"Pearson r between sonnet-mini per-brand spread at "
+                       f"{T1} vs {T2}; threshold 0.7+")
+    add_source_line(fig,
+                    "H6 cross-model spread (sonnet vs mini), per-brand across 5 categories")
+    save(fig, "chart_v09_h6_cross_model_spread_6col.pdf")
+
+
+# ===========================================================================
+# Chart 7 — Post-hoc Pattern 1
+# ===========================================================================
+
+def chart_pattern1_spread(data):
+    fig, ax = plt.subplots(figsize=(7.50, 4.40))
+
+    spreads_t1 = {}
+    spreads_t2 = {}
+    for cat in CATEGORIES:
+        registry = data[(cat, "v09")]["registry"]
+        v06 = data[(cat, "v06")]["rows"]
+        v09 = data[(cat, "v09")]["rows"]
+        bp_sonnet_v06 = per_brand_presence(filter_slot(v06, "anthropic_sonnet"), registry)
+        bp_mini_v06 = per_brand_presence(filter_slot(v06, "openai_mini"), registry)
+        bp_sonnet_v09 = per_brand_presence(filter_slot(v09, "anthropic_sonnet"), registry)
+        bp_mini_v09 = per_brand_presence(filter_slot(v09, "openai_mini"), registry)
+        spreads_t1[cat] = mean(abs(bp_sonnet_v06[b] - bp_mini_v06[b])
+                                for b in registry["all_brands"])
+        spreads_t2[cat] = mean(abs(bp_sonnet_v09[b] - bp_mini_v09[b])
+                                for b in registry["all_brands"])
+
+    cats_sorted = sorted(CATEGORIES, key=lambda c: spreads_t2[c], reverse=True)
+    x_pos = list(range(len(cats_sorted)))
+    bar_w = 0.38
+    t1_vals = [spreads_t1[c] for c in cats_sorted]
+    t2_vals = [spreads_t2[c] for c in cats_sorted]
+
+    ax.bar([x - bar_w / 2 for x in x_pos], t1_vals, width=bar_w,
+           color=PALETTE["indigo_50"], label=f"{T1} (v0.6)",
+           edgecolor="white", linewidth=0.5)
+    ax.bar([x + bar_w / 2 for x in x_pos], t2_vals, width=bar_w,
+           color=PALETTE["indigo"], label=f"{T2} (v0.9)",
+           edgecolor="white", linewidth=0.5)
+
+    for i, (t1, t2) in enumerate(zip(t1_vals, t2_vals)):
+        ax.text(i - bar_w / 2, t1 + 0.3, f"{t1:.1f}", ha="center", va="bottom",
+                fontsize=7.5, color=PALETTE["soft_black"])
+        ax.text(i + bar_w / 2, t2 + 0.3, f"{t2:.1f}", ha="center", va="bottom",
+                fontsize=7.5, color=PALETTE["soft_black"], fontweight="bold")
+
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([CATEGORY_DISPLAY[c] for c in cats_sorted], fontsize=8.5)
+    ax.set_ylabel("Mean cross-model spread (pp)")
+    ax.set_ylim(0, max(max(t1_vals), max(t2_vals)) * 1.30)
+    ax.legend(loc="upper right", frameon=False, fontsize=8)
+
+    t1_rank = {c: r for r, c in enumerate(
+        sorted(CATEGORIES, key=lambda c: spreads_t1[c], reverse=True), 1)}
+    t2_rank = {c: r for r, c in enumerate(cats_sorted, 1)}
+    v06_predicted = ["finance", "oliveoil", "pm", "skincare", "running"]
+    v06_rank = {c: r for r, c in enumerate(v06_predicted, 1)}
+    rho_t1_t2 = spearman_rho(t1_rank, t2_rank, CATEGORIES)
+    rho_t2_v06 = spearman_rho(t2_rank, v06_rank, CATEGORIES)
+
+    fig.subplots_adjust(left=0.10, right=0.97,
+                        top=standard_top(fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "Pattern 1 cross-model spread by category replicates v0.6 ordering (post-hoc)",
+                       f"Spearman rho = {rho_t1_t2:.2f} ({T1} vs {T2});  "
+                       f"= {rho_t2_v06:.2f} ({T2} vs v0.6 narrative ordering)")
+    add_source_line(fig,
+                    "Pattern 1 post-hoc: mean |sonnet - mini| spread per category")
+    save(fig, "chart_v09_pattern1_spread_6col.pdf")
+
+
+# ===========================================================================
+# Chart 8 — Mode distribution (legend below; needs extra bottom margin)
+# ===========================================================================
+
+def chart_mode_distribution(data):
+    fig, ax = plt.subplots(figsize=(7.50, 4.80))
+
+    bar_w = 0.38
+    x_pos = list(range(len(CATEGORIES)))
+
+    shares_t1 = {}
+    shares_t2 = {}
+    for cat in CATEGORIES:
+        all_rows = load_mode_classified(cat)
+        if not all_rows:
+            print(f"[mode_chart] no mode_classified data for {cat}", file=sys.stderr)
+        t1_rows = [r for r in all_rows
+                   if r.get("model_slot") in MATCHED_SUBSET and r.get("wave") == "v06"]
+        t2_rows = [r for r in all_rows
+                   if r.get("model_slot") in MATCHED_SUBSET and r.get("wave") == "v09"]
+        shares_t1[cat] = mode_share(t1_rows)
+        shares_t2[cat] = mode_share(t2_rows)
+        print(f"[mode_chart] {cat}: t1 n={len(t1_rows)}, t2 n={len(t2_rows)}",
+              file=sys.stderr)
+
+    largest_shifts = []
+    for cat in CATEGORIES:
+        for mode in MODE_ORDER:
+            delta = shares_t2[cat][mode] - shares_t1[cat][mode]
+            if abs(delta) >= 5:
+                largest_shifts.append((cat, mode, delta))
+    largest_shifts.sort(key=lambda t: abs(t[2]), reverse=True)
+    top_three = largest_shifts[:3]
+
+    for i, cat in enumerate(CATEGORIES):
+        bottom = 0
+        for mode in MODE_ORDER:
+            v = shares_t1[cat][mode]
+            ax.bar(i - bar_w / 2, v, bottom=bottom, width=bar_w,
+                   color=MODE_COLORS[mode], edgecolor="white", linewidth=0.5,
+                   label=mode if i == 0 else None)
+            bottom += v
+        bottom = 0
+        for mode in MODE_ORDER:
+            v = shares_t2[cat][mode]
+            ax.bar(i + bar_w / 2, v, bottom=bottom, width=bar_w,
+                   color=MODE_COLORS[mode], edgecolor="white", linewidth=0.5)
+            bottom += v
+
+    ax.set_xticks(x_pos)
+    ax.set_xticklabels([CATEGORY_DISPLAY[c] for c in CATEGORIES], fontsize=8.5)
+    ax.set_ylabel("Mode share (%)")
+    ax.set_ylim(0, 100)
+
+    if top_three:
+        shifts_str = "; ".join(
+            f"{CATEGORY_DISPLAY[c]} {m} {d:+.1f}pp" for c, m, d in top_three
+        )
+    else:
+        shifts_str = "all category-mode shifts within +/-5pp"
+
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.10),
+              frameon=False, ncol=5, fontsize=8)
+
+    # Need extra bottom margin: legend below axes + two-line source
+    # Extra bottom margin: x-axis labels + legend below (bbox_to_anchor=-0.10)
+    # + 2-line source. Legend at -10% of axes height eats ~18-22pt; source
+    # block 10-26pt; need ~85pt total clearance below axes spine.
+    fig.subplots_adjust(left=0.10, right=0.97,
+                        top=standard_top(fig), bottom=yb(90, fig))
+    add_title_subtitle(fig,
+                       "Mode-distribution shifts (matched subset; exploratory, sec 3.8)",
+                       f"{T1} left, {T2} right per category. Largest shifts: {shifts_str}")
+    add_source_line(fig,
+                    "Mode-distribution shift: primary_mode share at t1 vs t2, n=96 per category")
+    save(fig, "chart_v09_mode_distribution_6col.pdf")
+
+
+# ===========================================================================
+# Chart 9 — Pattern replication matrix (4-row honest-coverage)
+# ===========================================================================
+
+def chart_pattern_replication_matrix(data):
+    fig, ax = plt.subplots(figsize=(7.50, 5.00))
+
+    spreads_t2 = {}
+    for cat in CATEGORIES:
+        registry = data[(cat, "v09")]["registry"]
+        v09 = data[(cat, "v09")]["rows"]
+        bp_sonnet = per_brand_presence(filter_slot(v09, "anthropic_sonnet"), registry)
+        bp_mini = per_brand_presence(filter_slot(v09, "openai_mini"), registry)
+        spreads_t2[cat] = mean(abs(bp_sonnet[b] - bp_mini[b])
+                                for b in registry["all_brands"])
+
+    p4_values = {
+        "pm": None, "running": None,
+        "oliveoil": ("11.5pp", True),
+        "skincare": ("1.0pp", True),
+        "finance": None,
+    }
+    p6_values = {
+        "pm": None, "running": None, "oliveoil": None, "skincare": None,
+        "finance": ("41.7%", True),
+    }
+
+    brand_mode_share = {}
+    for cat in CATEGORIES:
+        all_rows = load_mode_classified(cat)
+        t2_rows = [r for r in all_rows
+                   if r.get("model_slot") in MATCHED_SUBSET and r.get("wave") == "v09"]
+        share = mode_share(t2_rows)
+        brand_mode_share[cat] = share["brand"]
+
+    n_rows = 4
+    n_cols = len(CATEGORIES)
+    row_labels = [
+        "Pattern 1\ncross-model\nspread",
+        "Pattern 4\ndiscourse-\nlanguage bias",
+        "Pattern 6\nphantom-\nbrand",
+        "Brand-mode\nshare at $t_2$",
+    ]
+    p1_min, p1_max = 5.0, 18.0
+    mode_min, mode_max = 0.0, 80.0
+
+    for i in range(n_rows):
+        for j, cat in enumerate(CATEGORIES):
+            y = n_rows - 1 - i
+            if i == 0:
+                val = spreads_t2[cat]
+                alpha = min(1.0, max(0.20, (val - p1_min) / (p1_max - p1_min)))
+                color = PALETTE["indigo"]
+                cell_text = f"{val:.1f}pp"
+            elif i == 1:
+                v = p4_values[cat]
+                if v is None:
+                    color = PALETTE["black_20"]; alpha = 0.30
+                    cell_text = "not in\nscope"
+                else:
+                    color = PALETTE["copper"]; alpha = 0.85
+                    cell_text = f"confirmed\n{v[0]}"
+            elif i == 2:
+                v = p6_values[cat]
+                if v is None:
+                    color = PALETTE["black_20"]; alpha = 0.30
+                    cell_text = "not in\nscope"
+                else:
+                    color = PALETTE["copper"]; alpha = 0.85
+                    cell_text = f"confirmed\n{v[0]}"
+            else:
+                val = brand_mode_share[cat]
+                alpha = min(1.0, max(0.20, (val - mode_min) / (mode_max - mode_min)))
+                color = PALETTE["indigo"]
+                cell_text = f"{val:.0f}%"
+
+            rect = Rectangle((j, y), 1, 1,
+                             facecolor=color, alpha=alpha,
+                             edgecolor="white", linewidth=2.5)
+            ax.add_patch(rect)
+            text_color = "white" if alpha > 0.55 else PALETTE["soft_black"]
+            ax.text(j + 0.5, y + 0.5, cell_text,
+                    ha="center", va="center", fontsize=8.5,
+                    color=text_color, fontweight="bold")
+
+    ax.set_xlim(0, n_cols)
+    ax.set_ylim(0, n_rows)
+    ax.set_xticks([j + 0.5 for j in range(n_cols)])
+    ax.set_xticklabels([CATEGORY_DISPLAY[c] for c in CATEGORIES], fontsize=8.5)
+    ax.set_yticks([n_rows - 1 - i + 0.5 for i in range(n_rows)])
+    ax.set_yticklabels(row_labels, fontsize=8.5)
+    ax.tick_params(left=False, bottom=False)
+    ax.xaxis.tick_top()
+    for spine in ax.spines.values():
+        spine.set_visible(False)
+
+    fig.subplots_adjust(left=0.18, right=0.97,
+                        top=yt(70, fig), bottom=standard_bottom(fig))
+    add_title_subtitle(fig,
+                       "v0.6 pattern replication matrix at v0.9 (matched subset)",
+                       "Cell intensity proportional to magnitude. "
+                       "Patterns 2, 3, 5 not directly measured at v0.9 "
+                       "(noted in sec 7 future research).")
+    add_source_line(fig,
+                    "Pattern replication matrix: v0.6 Patterns 1/4/6 + brand-mode share at t2")
+    save(fig, "chart_v09_pattern_matrix_6col.pdf")
+
 
 def build_all():
-    print(f"[charts] palette: indigo={INDIGO}, copper={COPPER}, copper_50={COPPER_50}")
-    print(f"[charts] font: {FONT_FAMILY}")
-    print(f"[charts] output dir: {OUTPUT_DIR}")
-    print()
-    chart_leaderboard()
-    chart_f1_lineage_aggregates()
-    chart_f2_authorities()
-    chart_f3_within_lineage()
-    chart_f4_per_cep()
-    chart_f5_freshness()
-    print()
-    print("[charts] done. 6 charts generated for build_report_v08.py")
+    print(f"[charts] loading data from analyze_v09...", file=sys.stderr)
+    data = load_all_data()
+    chart_h1_drift_scatter(data)
+    chart_h2_leaderboard(data)
+    chart_h3_within_cat_variance(data)
+    chart_h4_mint_persistence(data)
+    chart_h5_pattern4_sensitivity(data)
+    chart_h6_cross_model_spread(data)
+    chart_pattern1_spread(data)
+    chart_mode_distribution(data)
+    chart_pattern_replication_matrix(data)
+    print(f"[charts] done. 9 PDFs in {OUTPUT_DIR}", file=sys.stderr)
 
 
 if __name__ == "__main__":

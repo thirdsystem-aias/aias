@@ -1,0 +1,81 @@
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_pattern_matrix_6col.pdf aspect mismatch: chart 540.0x360.0pt, reservation 540.0x342.0pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_h1_drift_scatter_6col.pdf aspect mismatch: chart 540.0x360.0pt, reservation 540.0x342.0pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_h2_leaderboard_6col.pdf aspect mismatch: chart 540.0x590.4pt, reservation 540.0x468.0pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_h3_within_cat_variance_6col.pdf aspect mismatch: chart 540.0x309.6pt, reservation 540.0x295.2pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_h4_mint_persistence_4col.pdf aspect mismatch: chart 324.0x324.0pt, reservation 255.6x230.4pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_h6_cross_model_spread_6col.pdf aspect mismatch: chart 540.0x295.2pt, reservation 540.0x288.0pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+/Users/pablou/aias/reports/build_report_v09.py:1746: UserWarning: Chart chart_v09_pattern1_spread_6col.pdf aspect mismatch: chart 540.0x316.8pt, reservation 540.0x302.4pt. Stretching to fit; verify the chart was rendered at locked figsize.
+  warnings.warn(
+[fonts] scanned 970 font files across 12 dirs:
+  [ok] /Users/pablou/Library/Fonts
+  [ok] /Library/Fonts
+  [ok] /System/Library/Fonts
+  [ok] /System/Library/Fonts/Supplemental
+  [ok] /Users/pablou/Library/Application Support/Adobe/CoreSync/plugins/livetype/.r
+  [--] /Users/pablou/Library/Application Support/Adobe/CoreSync/plugins/livetype/r
+  [ok] /Users/pablou/.fonts
+  [--] /Users/pablou/.fonts/Akkurat
+  [ok] /Users/pablou/.fonts/Inter
+  [--] /Users/pablou/.local/share/fonts
+  [--] /usr/share/fonts
+  [--] /usr/local/share/fonts
+[fonts] 7 Akkurat file(s) found:
+  - AkkuratPro-BoldItalic.otf -> classified as: bolditalic
+  - AkkuratPro-Italic.otf -> classified as: italic
+  - AkkuratLightPro-Regular.otf -> classified as: light
+  - AkkuratPro-Regular.otf -> classified as: regular
+  - AkkuratLightPro-Italic.otf -> classified as: italic
+  - AkkuratPro-Light.otf -> classified as: light
+  - AkkuratPro-Bold.otf -> classified as: bold
+  [register-info] AkkuratPro-Light.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Light loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Light.ttf
+  [register] Akkurat-Light          <- AkkuratPro-Light.otf
+  [register-info] AkkuratPro-Regular.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Regular loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Regular.ttf
+  [register] Akkurat-Regular        <- AkkuratPro-Regular.otf
+  [register-info] AkkuratPro-Bold.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Bold loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Bold.ttf
+  [register] Akkurat-Bold           <- AkkuratPro-Bold.otf
+  [register-info] AkkuratPro-Italic.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-Italic loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-Italic.ttf
+  [register] Akkurat-Italic         <- AkkuratPro-Italic.otf
+  [register-info] AkkuratPro-BoldItalic.otf has CFF outlines; converting to TTF…
+  [register-info] Akkurat-BoldItalic loaded from converted TTF at /Users/pablou/.cache/third_system_reports/fonts/AkkuratPro-BoldItalic.ttf
+  [register] Akkurat-BoldItalic     <- AkkuratPro-BoldItalic.otf
+[fonts] using Akkurat Pro (brand-compliant)
+[build_report_v09] palette: indigo=#37237B, soft_black=#231F20, paper=#FAF7F2
+[build_report_v09] typography: Akkurat Pro (brand_primary=True)
+[build_report_v09] chart pre-flight (looking in /Users/pablou/aias/reports/output)
+  [FOUND  ] hero_f1_drift_scatter              -> chart_v09_h1_drift_scatter_6col.pdf
+  [FOUND  ] hero_f2_leaderboard                -> chart_v09_h2_leaderboard_6col.pdf
+  [FOUND  ] hero_f3_variance                   -> chart_v09_h3_within_cat_variance_6col.pdf
+  [FOUND  ] hero_f4_mint                       -> chart_v09_h4_mint_persistence_4col.pdf
+  [FOUND  ] hero_f5_pattern4                   -> chart_v09_h5_pattern4_sensitivity_6col.pdf
+  [FOUND  ] hero_f6_spread                     -> chart_v09_h6_cross_model_spread_6col.pdf
+  [FOUND  ] hero_f7_pattern1                   -> chart_v09_pattern1_spread_6col.pdf
+  [FOUND  ] hero_mode_distribution             -> chart_v09_mode_distribution_6col.pdf
+  [FOUND  ] hero_pattern_matrix                -> chart_v09_pattern_matrix_6col.pdf
+[build_report_v09] chart files in dir not matched by any slot:
+  [UNUSED ] chart_v08_f1_lineage_aggregates_6col.pdf
+  [UNUSED ] chart_v08_f2_authorities_6col.pdf
+  [UNUSED ] chart_v08_f3_within_lineage_6col.pdf
+  [UNUSED ] chart_v08_f4_per_cep_6col.pdf
+  [UNUSED ] chart_v08_f5_freshness_4col.pdf
+  [UNUSED ] chart_v08_leaderboard_6col.pdf
+[build_report_v09] base PDF written: /Users/pablou/aias/reports/output/_v09_base.pdf (8 chart reservations)
+  [OK] hero_pattern_matrix                -> page  4 @(  36.0, 239.5)  540.0x 342.0pt  (chart_v09_pattern_matrix_6col.pdf)
+  [OK] hero_f1_drift_scatter              -> page  6 @(  36.0, 323.6)  540.0x 342.0pt  (chart_v09_h1_drift_scatter_6col.pdf)
+  [OK] hero_f2_leaderboard                -> page  7 @(  36.0, 175.6)  540.0x 468.0pt  (chart_v09_h2_leaderboard_6col.pdf)
+  [OK] hero_f3_variance                   -> page  8 @(  36.0, 259.0)  540.0x 295.2pt  (chart_v09_h3_within_cat_variance_6col.pdf)
+  [OK] hero_f4_mint                       -> page 10 @(  36.0, 286.2)  255.6x 230.4pt  (chart_v09_h4_mint_persistence_4col.pdf)
+  [OK] hero_f5_pattern4                   -> page 11 @(  36.0, 415.2)  540.0x 316.8pt  (chart_v09_h5_pattern4_sensitivity_6col.pdf)
+  [OK] hero_f6_spread                     -> page 12 @(  36.0, 173.4)  540.0x 288.0pt  (chart_v09_h6_cross_model_spread_6col.pdf)
+  [OK] hero_f7_pattern1                   -> page 13 @(  36.0, 225.2)  540.0x 302.4pt  (chart_v09_pattern1_spread_6col.pdf)
+[build_report_v09] FINAL PDF written: /Users/pablou/aias/reports/output/v09_longitudinal_rebaseline.pdf
+[build_report_v09] page count: 19
