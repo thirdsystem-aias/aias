@@ -1,0 +1,102 @@
+{
+  "search_metadata": {
+    "id": "6a000807d99612c67431d5cb",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/E_DWJHg9Mybz30dFGfuGJQ/6a000807d99612c67431d5cb.json",
+    "created_at": "2026-05-10 04:22:31 UTC",
+    "processed_at": "2026-05-10 04:22:31 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22todoist%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-01+2026-04-07%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/E_DWJHg9Mybz30dFGfuGJQ/6a000807d99612c67431d5cb.html",
+    "prettify_html_file": "https://serpapi.com/searches/E_DWJHg9Mybz30dFGfuGJQ/6a000807d99612c67431d5cb.prettify",
+    "total_time_taken": 3.24
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "todoist",
+    "hl": "en",
+    "date": "2026-04-01 2026-04-07",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 1, 2026",
+        "timestamp": "1775001600",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "70",
+            "extracted_value": 70
+          }
+        ]
+      },
+      {
+        "date": "Apr 2, 2026",
+        "timestamp": "1775088000",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "67",
+            "extracted_value": 67
+          }
+        ]
+      },
+      {
+        "date": "Apr 3, 2026",
+        "timestamp": "1775174400",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "62",
+            "extracted_value": 62
+          }
+        ]
+      },
+      {
+        "date": "Apr 4, 2026",
+        "timestamp": "1775260800",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "49",
+            "extracted_value": 49
+          }
+        ]
+      },
+      {
+        "date": "Apr 5, 2026",
+        "timestamp": "1775347200",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "61",
+            "extracted_value": 61
+          }
+        ]
+      },
+      {
+        "date": "Apr 6, 2026",
+        "timestamp": "1775433600",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "91",
+            "extracted_value": 91
+          }
+        ]
+      },
+      {
+        "date": "Apr 7, 2026",
+        "timestamp": "1775520000",
+        "values": [
+          {
+            "query": "todoist",
+            "value": "100",
+            "extracted_value": 100
+          }
+        ]
+      }
+    ]
+  }
+}

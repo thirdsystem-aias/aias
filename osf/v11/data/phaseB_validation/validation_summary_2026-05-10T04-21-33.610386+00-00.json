@@ -1,0 +1,187 @@
+{
+  "fetched_at": "2026-05-10T04:21:33.610386+00:00",
+  "validation_window": "2026-04-01 2026-04-07",
+  "results": [
+    {
+      "brand": "Asana",
+      "tier": "T1",
+      "status": "SKIP_PHASE_A"
+    },
+    {
+      "brand": "Monday",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 48,
+      "max": 100,
+      "mean": 75.9
+    },
+    {
+      "brand": "Jira",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 42,
+      "max": 100,
+      "mean": 71.4
+    },
+    {
+      "brand": "Trello",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 49,
+      "max": 100,
+      "mean": 69.9
+    },
+    {
+      "brand": "Confluence",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 36,
+      "max": 100,
+      "mean": 69.1
+    },
+    {
+      "brand": "Notion",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 60,
+      "max": 100,
+      "mean": 82.0
+    },
+    {
+      "brand": "ClickUp",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 48,
+      "max": 100,
+      "mean": 77.6
+    },
+    {
+      "brand": "Smartsheet",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 31,
+      "max": 100,
+      "mean": 74.0
+    },
+    {
+      "brand": "Airtable",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 59,
+      "max": 100,
+      "mean": 80.1
+    },
+    {
+      "brand": "Basecamp",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 63,
+      "max": 100,
+      "mean": 80.7
+    },
+    {
+      "brand": "Coda",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 71,
+      "max": 100,
+      "mean": 83.4
+    },
+    {
+      "brand": "Wrike",
+      "tier": "T2",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 56,
+      "max": 100,
+      "mean": 74.9
+    },
+    {
+      "brand": "Workfront",
+      "tier": "T2",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 33,
+      "max": 100,
+      "mean": 61.7
+    },
+    {
+      "brand": "Todoist",
+      "tier": "T2",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 49,
+      "max": 100,
+      "mean": 71.4
+    },
+    {
+      "brand": "GitHub Projects",
+      "tier": "T2",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 64,
+      "max": 100,
+      "mean": 84.0
+    },
+    {
+      "brand": "Linear",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 54,
+      "max": 100,
+      "mean": 87.0
+    },
+    {
+      "brand": "Height",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 63,
+      "max": 100,
+      "mean": 77.0
+    },
+    {
+      "brand": "Motion",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 47,
+      "max": 100,
+      "mean": 75.9
+    },
+    {
+      "brand": "Shortcut",
+      "tier": "T3",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    }
+  ]
+}
