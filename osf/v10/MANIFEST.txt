@@ -1,0 +1,90 @@
+v0.10 Naive-Phantom Rate Longitudinal Stability — file manifest
+================================================================
+
+OSF project:   ec6wh
+Path:          /v10/
+Version:       v1 (shipped 2026-05-09)
+Pre-reg lock:  2026-05-09 at git commit 8767f44 (tag: v0.10-prereg)
+
+Git lineage
+-----------
+  8767f44  v0.10 pre-registration lock (tag: v0.10-prereg)
+  aa75cce  Fill lock metadata
+  ae10279  Analysis complete (filter → classify → score → adjudicate)
+  69ed71e  Brand-format report + SSRN paper v1 + charts shipped
+
+Outcomes (one line)
+-------------------
+  H1 stability (|Δr_naive| ≤ 2pp; n≥100 floor):  INDETERMINATE (floor breach; routed to descriptive)
+  H2 persistence (r_naive > 0 at both waves):    FALSIFIED (n_naive,t1 = 0; n_naive,t2 = 1)
+  H3 co-movement (diagnostic):                   DECOUPLED (Δgross = −3.12pp; Δnaive = +2.50pp)
+
+File tree
+---------
+ROOT/
+├── README.md                              — overview, outcomes, reproducibility
+├── MANIFEST.txt                           — this file
+├── DEVIATIONS.md                          — four documented deviations from pre-reg
+├── PRE_REGISTRATION.md                    — pre-registration document (locked at 8767f44)
+│
+├── code/                                  — pipeline scripts
+│   ├── filter_v10.py                      — filter v0.9 raw responses to Mint × matched-subset
+│   ├── classify_v10.py                    — apply v0.7 caveat-classifier (LLM-only, T=0)
+│   ├── score_v10.py                       — pre-registered hypothesis evaluation
+│   ├── build_charts_v10_naivephantom.py   — chart builder (matplotlib → 3 PDFs)
+│   ├── build_report_v10.py                — brand-format report builder (ReportLab)
+│   └── v10_naivephantom_content.py        — structured content for brand-format report
+│
+├── data/                                  — measurement outputs
+│   ├── responses_mint.csv                 — 83 rows (43 t1, 40 t2)
+│   ├── classifications.csv                — 83 rows with valence + caveat fields
+│   └── adjudication_log.csv               — author review log (1 case; no override)
+│
+├── analysis/                              — scoring outputs
+│   ├── canonical_scoring.csv              — primary mapping
+│   ├── canonical_scoring.json             — primary mapping (JSON)
+│   ├── sensitivity_E3.csv                 — E3 sensitivity (identical; 0 ambiguous)
+│   └── borderline_review.csv              — pre-adjudication borderline list
+│
+├── registries/                            — locked configurations
+│   └── v07_caveat_classifier.json         — inherited v0.7 classifier (LLM-only spec)
+│
+└── papers/
+    ├── v10_ssrn_paper_v1.md               — SSRN paper source (markdown)
+    ├── v10_ssrn_paper_v1.pdf              — SSRN paper (16 pages, 3 figures embedded)
+    ├── v10_naivephantom_stability.pdf     — brand-format report (Third System layout)
+    ├── chart_v10_h2_naive_caveated.pdf    — Figure 1: H2 binary breakdown by wave
+    ├── chart_v10_valence_distribution.pdf — Figure 2: v0.7 5-class valence by wave
+    └── chart_v10_h3_decoupling.pdf        — Figure 3: H3 directional decoupling
+
+Cross-cited deposits
+--------------------
+  AI Availability foundational paper:        SSRN 6659000
+  AIAS Presence Measurement Protocol v1.1:   SSRN 6722319
+  v0.6 Cross-Category Findings:              SSRN 6720959
+  v0.7 Phantom-Brand BBB:                    SSRN 6721779
+  v0.8 Discourse-Language Knives:            SSRN 6728000
+  v0.9 Longitudinal Re-Baseline:             SSRN 6736878
+
+Reproducibility
+---------------
+Pipeline runs end-to-end on raw v0.9 responses with Python 3.14 and the
+following packages: openai, python-dotenv, matplotlib, reportlab, pypdf.
+
+Brand assets (Third System brand JSON, Akkurat Pro fonts) are not included
+in this deposit. The brand-format report (papers/v10_naivephantom_stability.pdf)
+cannot be regenerated without them; the SSRN paper PDF and chart PDFs can be.
+
+Citation
+--------
+Gonzalez Castro, P. U. (2026). Naive-Phantom Rate Longitudinal Stability:
+AI Presence Index v0.10 — Mint, designed-for-test extension. Third System.
+OSF project ec6wh, /v10/.
+
+Author
+------
+Pablo Ulpiano González Castro
+School of Visual Arts, MPS Branding Program, New York, NY (primary academic affiliation)
+Third System™ (research entity; data archive and methodology venue)
+Correspondence: pablou@pablou.com · pablou.com
+ORCID: 0009-0003-8968-9990
