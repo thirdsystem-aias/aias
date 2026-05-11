@@ -1,4 +1,23 @@
 brand_canonical,category,market_tier,search_input,target_tier,final_query_tier,acquisition_query,entity_label,lookup_ts,rationale
+Asana,pmsoftware,incumbent,Asana,T1,T1,/m/0c3z_p8,"Asana, Inc. — Software",2026-05-10T03:49:00Z,PIVOT BRAND. v0.11 Phase A validated; CV ~36% across 14-day combined window.
+Monday,pmsoftware,incumbent,Monday.com,T1,T1,/g/11h1m5p60w,monday.com — Software company,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. T1 brand-level Topic.
+Jira,pmsoftware,incumbent,Jira,T1,T1,/g/11bc5c0lmw,Jira — Software,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Trello,pmsoftware,incumbent,Trello,T1,T1,/m/0h665rh,Trello — Software,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Confluence,pmsoftware,incumbent,Confluence,T1,T1,/m/05nyz0,Confluence — Software,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Notion,pmsoftware,mid-tier,Notion,T1,T1,/g/11fd7dbddz,Notion — Productivity software,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+ClickUp,pmsoftware,mid-tier,ClickUp,T1,T1,/g/11g9n26732,ClickUp — Project management software company,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Smartsheet,pmsoftware,mid-tier,Smartsheet,T1,T1,/m/010h7t67,Smartsheet Inc — Software company,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Airtable,pmsoftware,mid-tier,Airtable,T1,T1,/g/11c3ypc1q3,Airtable — Web site,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Basecamp,pmsoftware,mid-tier,Basecamp,T1,T1,/m/0d04n6,Basecamp — Software,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Coda,pmsoftware,mid-tier,Coda,T1,T1,/g/11f3h7_jw9,Coda — Document editor,2026-05-10T04:17:11Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Wrike,pmsoftware,mid-tier,Wrike,T2,T2,wrike,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. T2 distinctive string.
+Workfront,pmsoftware,mid-tier,Workfront,T2,T2,workfront,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. T2 distinctive string.
+Todoist,pmsoftware,challenger,Todoist,T2,T2,todoist,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. Todoist-inverse reference case (v0.11: 1.04% AI Pres / 28 Trends rescaled).
+GitHub Projects,pmsoftware,challenger,GitHub Projects,T2,T2,github projects,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Linear,pmsoftware,challenger,Linear app,T3,T3,linear project management,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. T3 compound — Linear paradox reference case (v0.11: 86.5%/89.6% AI Pres / 1.88 Trends).
+Height,pmsoftware,challenger,Height app,T3,T3,height project management,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock. DEFUNCT 2025-09-24; retained per registry-frozen-ness; phantom brand.
+Motion,pmsoftware,challenger,Motion app,T3,T3,motion project management,,2026-05-10T04:12:26Z,Replicated from v0.11 §5.2.1 Phase B lock.
+Shortcut,pmsoftware,challenger,Shortcut,T3,EXCLUDED_E1a,shortcut project management,,2026-05-10T04:12:26Z,EXCLUDED_E1a inherited from v0.11 (Phase B validation: 'Google Trends hasn't returned any results for this query'). Exclusion carries forward.
 California Olive Ranch,oliveoil,incumbent,California Olive Ranch,T1,T1,/g/11cn92g97s,California Olive Ranch — Topic,2026-05-11T02:13:52Z,PIVOT BRAND. Phase A validated 2026-05-11: mean 83.5; CV 12.4%; PASS.
 Bertolli,oliveoil,incumbent,Bertolli olive oil,T1,T3,Bertolli olive oil,,2026-05-11T02:22:11Z,DOWNGRADE from T1 target. Phase B returned only product-line entities (Extra Light; Organic EVO; sauces); no brand-level Topic for Bertolli the olive oil. Compound restricts multi-category brand (pasta; sauces) to olive oil scope.
 Brightland,oliveoil,challenger,Brightland,T1,T1,/g/11ng0dpbrv,Brightland — Topic,2026-05-11T02:22:11Z,Phase B suggestion #1 brand-level Topic entity. Polysemy candidates (#5 Brightland Resort & Spa) disambiguated by Topic-mid.
