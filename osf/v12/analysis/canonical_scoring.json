@@ -1,0 +1,727 @@
+{
+  "meta": {
+    "generated_at": "2026-05-11T11:45:18.711626+00:00",
+    "v0_12_prereg_tag": "v0.12-prereg",
+    "matched_models": [
+      "claude-sonnet-4-6",
+      "gpt-5.4-mini"
+    ],
+    "n_responses_per_category_per_wave": {
+      "pmsoftware": {
+        "t1": 96,
+        "t2": 96
+      },
+      "oliveoil": {
+        "t1": 96,
+        "t2": 96
+      },
+      "running": {
+        "t1": 96,
+        "t2": 96
+      }
+    },
+    "e1a_exclusions": {
+      "pmsoftware": [
+        "Shortcut"
+      ],
+      "oliveoil": [
+        "Colonna",
+        "Frescobaldi Laudemio",
+        "Lucini",
+        "Manni",
+        "McEvoy Ranch",
+        "N\u00fa\u00f1ez de Prado",
+        "Olio Verde"
+      ],
+      "running": []
+    }
+  },
+  "per_category": {
+    "pmsoftware": {
+      "descriptive_only": false,
+      "correlations": {
+        "ww_t1": {
+          "n": 17,
+          "brands": [
+            "Asana",
+            "Monday",
+            "Jira",
+            "Trello",
+            "Confluence",
+            "Notion",
+            "ClickUp",
+            "Smartsheet",
+            "Wrike",
+            "Airtable",
+            "Basecamp",
+            "Coda",
+            "Workfront",
+            "Linear",
+            "Motion",
+            "Todoist",
+            "GitHub Projects"
+          ],
+          "spearman_rho": 0.5058722274550078,
+          "spearman_p_two_tailed": 0.038287454809353375,
+          "spearman_p_one_tailed": 0.019143727404676687,
+          "pearson_r": 0.5463529524716482,
+          "pearson_p_two_tailed": 0.02325919434038589,
+          "pearson_p_one_tailed": 0.011629597170192945,
+          "partial_spearman_rho": 0.41700775036688037,
+          "partial_spearman_p_one_tailed": 0.06100440089265802
+        },
+        "ww_t2": {
+          "n": 18,
+          "brands": [
+            "Asana",
+            "Monday",
+            "Jira",
+            "Trello",
+            "Confluence",
+            "Notion",
+            "ClickUp",
+            "Smartsheet",
+            "Wrike",
+            "Airtable",
+            "Basecamp",
+            "Coda",
+            "Workfront",
+            "Linear",
+            "Height",
+            "Motion",
+            "Todoist",
+            "GitHub Projects"
+          ],
+          "spearman_rho": 0.4816543256470345,
+          "spearman_p_two_tailed": 0.04297719206559001,
+          "spearman_p_one_tailed": 0.021488596032795005,
+          "pearson_r": 0.5331318736387469,
+          "pearson_p_two_tailed": 0.022711119060215883,
+          "pearson_p_one_tailed": 0.011355559530107941,
+          "partial_spearman_rho": 0.43405754278641745,
+          "partial_spearman_p_one_tailed": 0.046492303604439456
+        },
+        "us_t1": {
+          "n": 17,
+          "brands": [
+            "Asana",
+            "Monday",
+            "Jira",
+            "Trello",
+            "Confluence",
+            "Notion",
+            "ClickUp",
+            "Smartsheet",
+            "Wrike",
+            "Airtable",
+            "Basecamp",
+            "Coda",
+            "Workfront",
+            "Linear",
+            "Motion",
+            "Todoist",
+            "GitHub Projects"
+          ],
+          "spearman_rho": 0.48242936813392207,
+          "spearman_p_two_tailed": 0.049845931307350634,
+          "spearman_p_one_tailed": 0.024922965653675317,
+          "pearson_r": 0.5622740186145349,
+          "pearson_p_two_tailed": 0.018805182461586727,
+          "pearson_p_one_tailed": 0.009402591230793364,
+          "partial_spearman_rho": 0.41220127695244113,
+          "partial_spearman_p_one_tailed": 0.06340784329628912
+        },
+        "us_t2": {
+          "n": 17,
+          "brands": [
+            "Asana",
+            "Monday",
+            "Jira",
+            "Trello",
+            "Confluence",
+            "Notion",
+            "ClickUp",
+            "Smartsheet",
+            "Wrike",
+            "Airtable",
+            "Basecamp",
+            "Coda",
+            "Workfront",
+            "Linear",
+            "Height",
+            "Todoist",
+            "GitHub Projects"
+          ],
+          "spearman_rho": 0.41717822814436767,
+          "spearman_p_two_tailed": 0.09570772205779048,
+          "spearman_p_one_tailed": 0.04785386102889524,
+          "pearson_r": 0.5203051273396365,
+          "pearson_p_two_tailed": 0.032264024327219955,
+          "pearson_p_one_tailed": 0.016132012163609977,
+          "partial_spearman_rho": 0.3477303496446664,
+          "partial_spearman_p_one_tailed": 0.10204128336267815
+        }
+      },
+      "hypotheses": {
+        "H1_primary": {
+          "status": "FALSIFIED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "rho_t1": 0.5058722274550078,
+          "rho_t2": 0.4816543256470345,
+          "p_t1_one_tailed": 0.019143727404676687,
+          "p_t2_one_tailed": 0.021488596032795005,
+          "pass_t1": true,
+          "pass_t2": false,
+          "rationale": "t1: \u03c1=0.506 (>0.5? True), p1t=0.0191 (<0.05? True). t2: \u03c1=0.482, p1t=0.0215."
+        },
+        "H2": {
+          "status": "CONFIRMED",
+          "rho_t1": 0.5058722274550078,
+          "rho_t2": 0.4816543256470345,
+          "abs_delta_rho": 0.02421790180797334,
+          "threshold": 0.15,
+          "rationale": "|\u0394\u03c1| = |0.482 \u2212 0.506| = 0.024 \u2264 0.15"
+        },
+        "H3": {
+          "per_wave": {
+            "t1": {
+              "top3_ai": [
+                "Linear",
+                "Asana",
+                "Notion"
+              ],
+              "top5_trends": [
+                "Notion",
+                "Jira",
+                "Trello",
+                "ClickUp",
+                "Confluence"
+              ],
+              "top3_in_top5": [
+                "Notion"
+              ],
+              "n_in_top5": 1
+            },
+            "t2": {
+              "top3_ai": [
+                "Linear",
+                "Asana",
+                "Jira"
+              ],
+              "top5_trends": [
+                "Notion",
+                "Jira",
+                "Trello",
+                "ClickUp",
+                "Confluence"
+              ],
+              "top3_in_top5": [
+                "Jira"
+              ],
+              "n_in_top5": 1
+            }
+          },
+          "status_per_wave": {
+            "t1": "FALSIFIED",
+            "t2": "FALSIFIED"
+          },
+          "status": "FALSIFIED"
+        },
+        "H4": {
+          "status": "FALSIFIED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "partial_rho_t1": 0.41700775036688037,
+          "partial_rho_t2": 0.43405754278641745,
+          "p_t1_one_tailed": 0.06100440089265802,
+          "p_t2_one_tailed": 0.046492303604439456,
+          "pass_t1": false,
+          "pass_t2": false,
+          "rationale": "t1: \u03c1=0.417 (>0.5? False), p1t=0.0610 (<0.05? False). t2: \u03c1=0.434, p1t=0.0465."
+        },
+        "H1_us_sensitivity": {
+          "status": "FALSIFIED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "rho_t1": 0.48242936813392207,
+          "rho_t2": 0.41717822814436767,
+          "p_t1_one_tailed": 0.024922965653675317,
+          "p_t2_one_tailed": 0.04785386102889524,
+          "pass_t1": false,
+          "pass_t2": false,
+          "rationale": "t1: \u03c1=0.482 (>0.5? False), p1t=0.0249 (<0.05? True). t2: \u03c1=0.417, p1t=0.0479."
+        },
+        "H1_pearson_sensitivity": {
+          "status": "CONFIRMED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "r_t1": 0.5463529524716482,
+          "r_t2": 0.5331318736387469,
+          "p_t1_one_tailed": 0.011629597170192945,
+          "p_t2_one_tailed": 0.011355559530107941,
+          "pass_t1": true,
+          "pass_t2": true,
+          "rationale": "t1: \u03c1=0.546 (>0.5? True), p1t=0.0116 (<0.05? True). t2: \u03c1=0.533, p1t=0.0114."
+        }
+      },
+      "h6_diagnostics": {
+        "per_wave": {
+          "t1": {
+            "linear_style": [
+              "Linear"
+            ],
+            "todoist_style": [
+              "Todoist"
+            ],
+            "h6a_confirmed": true
+          },
+          "t2": {
+            "linear_style": [
+              "Linear"
+            ],
+            "todoist_style": [
+              "Basecamp",
+              "Todoist"
+            ],
+            "h6a_confirmed": true
+          }
+        },
+        "h6a_status": "CONFIRMED"
+      }
+    },
+    "oliveoil": {
+      "descriptive_only": true,
+      "correlations": {
+        "ww_t1": {
+          "n": 8,
+          "brands": [
+            "Bertolli",
+            "California Olive Ranch",
+            "Cobram Estate",
+            "Frantoio Muraglia",
+            "Castillo de Canena",
+            "Brightland",
+            "Graza",
+            "Kosterina"
+          ],
+          "spearman_rho": 0.16766767666785626,
+          "spearman_p_two_tailed": 0.6914653516467358,
+          "spearman_p_one_tailed": 0.3457326758233679,
+          "pearson_r": -0.10953617192741158,
+          "pearson_p_two_tailed": 0.7962565569040961,
+          "pearson_p_one_tailed": 0.6018717215479519,
+          "partial_spearman_rho": 0.011398451126743397,
+          "partial_spearman_p_one_tailed": 0.49145153188999435
+        },
+        "ww_t2": {
+          "n": 8,
+          "brands": [
+            "Bertolli",
+            "California Olive Ranch",
+            "Cobram Estate",
+            "Frantoio Muraglia",
+            "Castillo de Canena",
+            "Brightland",
+            "Graza",
+            "Kosterina"
+          ],
+          "spearman_rho": -0.09523809523809526,
+          "spearman_p_two_tailed": 0.8225054302036114,
+          "spearman_p_one_tailed": 0.5887472848981943,
+          "pearson_r": -0.23780708136534204,
+          "pearson_p_two_tailed": 0.570637163118652,
+          "pearson_p_one_tailed": 0.714681418440674,
+          "partial_spearman_rho": -0.24927057656664028,
+          "partial_spearman_p_one_tailed": 0.6830807744844657
+        },
+        "us_t1": {
+          "n": 7,
+          "brands": [
+            "Bertolli",
+            "California Olive Ranch",
+            "Cobram Estate",
+            "Frantoio Muraglia",
+            "Brightland",
+            "Graza",
+            "Kosterina"
+          ],
+          "spearman_rho": 0.03603749850782236,
+          "spearman_p_two_tailed": 0.938860561394214,
+          "spearman_p_one_tailed": 0.469430280697107,
+          "pearson_r": -0.08451614784185218,
+          "pearson_p_two_tailed": 0.8570328156904249,
+          "pearson_p_one_tailed": 0.5714835921547876,
+          "partial_spearman_rho": -0.26352690108492843,
+          "partial_spearman_p_one_tailed": 0.6658038922171186
+        },
+        "us_t2": {
+          "n": 7,
+          "brands": [
+            "Bertolli",
+            "California Olive Ranch",
+            "Cobram Estate",
+            "Frantoio Muraglia",
+            "Brightland",
+            "Graza",
+            "Kosterina"
+          ],
+          "spearman_rho": -0.3571428571428572,
+          "spearman_p_two_tailed": 0.43161135203832796,
+          "spearman_p_one_tailed": 0.784194323980836,
+          "pearson_r": -0.2703135719575489,
+          "pearson_p_two_tailed": 0.557681762598807,
+          "pearson_p_one_tailed": 0.7211591187005966,
+          "partial_spearman_rho": -0.6484994582799796,
+          "partial_spearman_p_one_tailed": 0.881736034760531
+        }
+      },
+      "hypotheses": {}
+    },
+    "running": {
+      "descriptive_only": false,
+      "correlations": {
+        "ww_t1": {
+          "n": 12,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka",
+            "On",
+            "Altra",
+            "Topo Athletic",
+            "Salomon",
+            "Norda"
+          ],
+          "spearman_rho": 0.8077053994398153,
+          "spearman_p_two_tailed": 0.0014844877771622554,
+          "spearman_p_one_tailed": 0.0007422438885811277,
+          "pearson_r": 0.4826540308479519,
+          "pearson_p_two_tailed": 0.11199292715997643,
+          "pearson_p_one_tailed": 0.055996463579988213,
+          "partial_spearman_rho": 0.4660146297250486,
+          "partial_spearman_p_one_tailed": 0.08731103185753675
+        },
+        "ww_t2": {
+          "n": 12,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka",
+            "On",
+            "Altra",
+            "Topo Athletic",
+            "Salomon",
+            "Norda"
+          ],
+          "spearman_rho": 0.7858755237792797,
+          "spearman_p_two_tailed": 0.0024432176135445105,
+          "spearman_p_one_tailed": 0.0012216088067722552,
+          "pearson_r": 0.49081493866734155,
+          "pearson_p_two_tailed": 0.10518285110527735,
+          "pearson_p_one_tailed": 0.052591425552638675,
+          "partial_spearman_rho": 0.4876074409479766,
+          "partial_spearman_p_one_tailed": 0.0764169819611421
+        },
+        "us_t1": {
+          "n": 12,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka",
+            "On",
+            "Altra",
+            "Topo Athletic",
+            "Salomon",
+            "Norda"
+          ],
+          "spearman_rho": 0.7789521634629794,
+          "spearman_p_two_tailed": 0.0028288098454790655,
+          "spearman_p_one_tailed": 0.0014144049227395328,
+          "pearson_r": 0.5735825815417526,
+          "pearson_p_two_tailed": 0.051187718504550145,
+          "pearson_p_one_tailed": 0.025593859252275072,
+          "partial_spearman_rho": 0.35869518790793864,
+          "partial_spearman_p_one_tailed": 0.15437694571551686
+        },
+        "us_t2": {
+          "n": 12,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka",
+            "On",
+            "Altra",
+            "Topo Athletic",
+            "Salomon",
+            "Norda"
+          ],
+          "spearman_rho": 0.5263190293668779,
+          "spearman_p_two_tailed": 0.07877314499701281,
+          "spearman_p_one_tailed": 0.039386572498506404,
+          "pearson_r": 0.5525964468672004,
+          "pearson_p_two_tailed": 0.06242613066694477,
+          "pearson_p_one_tailed": 0.031213065333472383,
+          "partial_spearman_rho": -0.4069257922991525,
+          "partial_spearman_p_one_tailed": 0.878409302680041
+        },
+        "ww_t1_raw_strict": {
+          "n": 7,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka"
+          ],
+          "spearman_rho": 0.2702812388086677,
+          "spearman_p_two_tailed": 0.5577307488053697,
+          "spearman_p_one_tailed": 0.27886537440268483,
+          "pearson_r": 0.3283819581102826,
+          "pearson_p_two_tailed": 0.4720866037604841,
+          "pearson_p_one_tailed": 0.23604330188024206,
+          "partial_spearman_rho": -0.18402997723822875,
+          "partial_spearman_p_one_tailed": 0.6164924274814326
+        },
+        "ww_t2_raw_strict": {
+          "n": 7,
+          "brands": [
+            "Nike",
+            "Adidas",
+            "Asics",
+            "New Balance",
+            "Brooks",
+            "Puma",
+            "Hoka"
+          ],
+          "spearman_rho": 0.10811249552346709,
+          "spearman_p_two_tailed": 0.8175332656241182,
+          "spearman_p_one_tailed": 0.4087666328120591,
+          "pearson_r": 0.31435547307358186,
+          "pearson_p_two_tailed": 0.4923062714793779,
+          "pearson_p_one_tailed": 0.24615313573968894,
+          "partial_spearman_rho": -0.5137466596040359,
+          "partial_spearman_p_one_tailed": 0.8120426655363521
+        }
+      },
+      "hypotheses": {
+        "H1_primary": {
+          "status": "CONFIRMED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "rho_t1": 0.8077053994398153,
+          "rho_t2": 0.7858755237792797,
+          "p_t1_one_tailed": 0.0007422438885811277,
+          "p_t2_one_tailed": 0.0012216088067722552,
+          "pass_t1": true,
+          "pass_t2": true,
+          "rationale": "t1: \u03c1=0.808 (>0.5? True), p1t=0.0007 (<0.05? True). t2: \u03c1=0.786, p1t=0.0012."
+        },
+        "H2": {
+          "status": "CONFIRMED",
+          "rho_t1": 0.8077053994398153,
+          "rho_t2": 0.7858755237792797,
+          "abs_delta_rho": 0.021829875660535625,
+          "threshold": 0.15,
+          "rationale": "|\u0394\u03c1| = |0.786 \u2212 0.808| = 0.022 \u2264 0.15"
+        },
+        "H3": {
+          "per_wave": {
+            "t1": {
+              "top3_ai": [
+                "Asics",
+                "Brooks",
+                "New Balance"
+              ],
+              "top5_trends": [
+                "Asics",
+                "Nike",
+                "Adidas",
+                "New Balance",
+                "Hoka"
+              ],
+              "top3_in_top5": [
+                "Asics",
+                "New Balance"
+              ],
+              "n_in_top5": 2
+            },
+            "t2": {
+              "top3_ai": [
+                "Asics",
+                "Brooks",
+                "Hoka"
+              ],
+              "top5_trends": [
+                "Asics",
+                "Adidas",
+                "Nike",
+                "New Balance",
+                "Brooks"
+              ],
+              "top3_in_top5": [
+                "Asics",
+                "Brooks"
+              ],
+              "n_in_top5": 2
+            }
+          },
+          "status_per_wave": {
+            "t1": "FALSIFIED",
+            "t2": "FALSIFIED"
+          },
+          "status": "FALSIFIED"
+        },
+        "H4": {
+          "status": "FALSIFIED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "partial_rho_t1": 0.4660146297250486,
+          "partial_rho_t2": 0.4876074409479766,
+          "p_t1_one_tailed": 0.08731103185753675,
+          "p_t2_one_tailed": 0.0764169819611421,
+          "pass_t1": false,
+          "pass_t2": false,
+          "rationale": "t1: \u03c1=0.466 (>0.5? False), p1t=0.0873 (<0.05? False). t2: \u03c1=0.488, p1t=0.0764."
+        },
+        "H1_us_sensitivity": {
+          "status": "CONFIRMED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "rho_t1": 0.7789521634629794,
+          "rho_t2": 0.5263190293668779,
+          "p_t1_one_tailed": 0.0014144049227395328,
+          "p_t2_one_tailed": 0.039386572498506404,
+          "pass_t1": true,
+          "pass_t2": true,
+          "rationale": "t1: \u03c1=0.779 (>0.5? True), p1t=0.0014 (<0.05? True). t2: \u03c1=0.526, p1t=0.0394."
+        },
+        "H1_pearson_sensitivity": {
+          "status": "FALSIFIED",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "r_t1": 0.4826540308479519,
+          "r_t2": 0.49081493866734155,
+          "p_t1_one_tailed": 0.055996463579988213,
+          "p_t2_one_tailed": 0.052591425552638675,
+          "pass_t1": false,
+          "pass_t2": false,
+          "rationale": "t1: \u03c1=0.483 (>0.5? False), p1t=0.0560 (<0.05? False). t2: \u03c1=0.491, p1t=0.0526."
+        },
+        "H1_raw_strict_sensitivity": {
+          "status": "INDETERMINATE",
+          "rationale": "n-floor breached: t1 n=7, t2 n=7 (hard floor=10)",
+          "threshold_rho": 0.5,
+          "threshold_p": 0.05,
+          "rho_t1": 0.2702812388086677,
+          "rho_t2": 0.10811249552346709
+        }
+      },
+      "h6_diagnostics": {
+        "per_wave": {
+          "t1": {
+            "linear_style": [
+              "Brooks"
+            ],
+            "todoist_style": [],
+            "h6a_confirmed": false
+          },
+          "t2": {
+            "linear_style": [
+              "Hoka"
+            ],
+            "todoist_style": [],
+            "h6a_confirmed": false
+          }
+        },
+        "h6a_status": "FALSIFIED"
+      }
+    }
+  },
+  "cross_category": {
+    "H5": {
+      "status": "FALSIFIED",
+      "applicable_categories": [
+        "pmsoftware",
+        "running"
+      ],
+      "confirmed_categories": [],
+      "rationale": "0 of 2 applicable categories show v0.11 signature (2-of-2 required)"
+    },
+    "H6": {
+      "status": "FALSIFIED",
+      "applicable_categories": [
+        "pmsoftware",
+        "running"
+      ],
+      "confirmed_categories": [
+        "pmsoftware"
+      ],
+      "rationale": "1 of 2 applicable categories confirm H6a (2-of-2 required)"
+    },
+    "per_category_signature": {
+      "pmsoftware": {
+        "applicable": true,
+        "signature_present": false,
+        "components": {
+          "rho_t1_under_0.5": false,
+          "rho_t2_under_0.5": true,
+          "p_t1_under_0.05": true,
+          "p_t2_under_0.05": true,
+          "h3_falsified_both": true
+        }
+      },
+      "oliveoil": {
+        "applicable": false,
+        "reason": "descriptive-only"
+      },
+      "running": {
+        "applicable": true,
+        "signature_present": false,
+        "components": {
+          "rho_t1_under_0.5": false,
+          "rho_t2_under_0.5": false,
+          "p_t1_under_0.05": true,
+          "p_t2_under_0.05": true,
+          "h3_falsified_both": true
+        }
+      }
+    }
+  },
+  "pooled_sensitivity": {
+    "t1": {
+      "n": 29,
+      "rho": 0.6237402063959554,
+      "p_two_tailed": 0.00030004781973619186
+    },
+    "t2": {
+      "n": 30,
+      "rho": 0.5802055382892385,
+      "p_two_tailed": 0.000776813802666452
+    }
+  },
+  "category_scale_mismatch_olive_oil": {
+    "n_scale_mismatch": 7,
+    "n_total": 15,
+    "scale_mismatch_index_pct": 46.7,
+    "table_path": "analysis/category_scale_mismatch_table.csv"
+  }
+}
