@@ -1,0 +1,21 @@
+{
+  "pre_reg": "v0.13-prereg-draft",
+  "pre_reg_section": "§4.2",
+  "category": "finance",
+  "pivot_role": "primary",
+  "pivot_canonical": "YNAB",
+  "query": "YNAB personal finance",
+  "geo": "",
+  "region_label": "worldwide",
+  "window": "2026-04-13 2026-04-19",
+  "test_timestamp_utc": "2026-05-11T20:44:42.418271+00:00",
+  "n_attempts": 3,
+  "http_status": 200,
+  "criteria": {
+    "mean_floor": 25.0,
+    "cv_ceiling_pct": 25.0
+  },
+  "phase_a_status": "FAIL_API",
+  "error": "SerpAPI error: Google Trends hasn't returned any results for this query.",
+  "daily_values": []
+}
