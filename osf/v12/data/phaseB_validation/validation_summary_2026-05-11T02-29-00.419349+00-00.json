@@ -1,0 +1,277 @@
+{
+  "fetched_at": "2026-05-11T02:29:00.419349+00:00",
+  "validation_window": "2026-04-01 2026-04-07",
+  "csv_source": "/Users/pablou/aias/osf/v12/registries/topic_id_resolution_log_v0.12.csv",
+  "phase_a_validated_skipped": [
+    "Asics",
+    "California Olive Ranch"
+  ],
+  "results": [
+    {
+      "brand": "California Olive Ranch",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "SKIP_PHASE_A"
+    },
+    {
+      "brand": "Bertolli",
+      "category": "oliveoil",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 65,
+      "max": 100,
+      "mean": 77.3
+    },
+    {
+      "brand": "Brightland",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 5,
+      "min": 0,
+      "max": 100,
+      "mean": 29.4
+    },
+    {
+      "brand": "Castillo de Canena",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 1,
+      "min": 0,
+      "max": 100,
+      "mean": 14.3
+    },
+    {
+      "brand": "Cobram Estate",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 53,
+      "max": 100,
+      "mean": 77.3
+    },
+    {
+      "brand": "Colonna",
+      "category": "oliveoil",
+      "tier": "T3",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Frantoio Muraglia",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Frescobaldi Laudemio",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Graza",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 73,
+      "max": 100,
+      "mean": 84.0
+    },
+    {
+      "brand": "Kosterina",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 1,
+      "min": 0,
+      "max": 100,
+      "mean": 14.3
+    },
+    {
+      "brand": "Lucini",
+      "category": "oliveoil",
+      "tier": "T3",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Manni",
+      "category": "oliveoil",
+      "tier": "T3",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "McEvoy Ranch",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Núñez de Prado",
+      "category": "oliveoil",
+      "tier": "T1",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Olio Verde",
+      "category": "oliveoil",
+      "tier": "T3",
+      "status": "FAIL_API",
+      "error": "Google Trends hasn't returned any results for this query."
+    },
+    {
+      "brand": "Asics",
+      "category": "running",
+      "tier": "T1",
+      "status": "SKIP_PHASE_A"
+    },
+    {
+      "brand": "Adidas",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 68,
+      "max": 100,
+      "mean": 85.0
+    },
+    {
+      "brand": "Altra",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 76,
+      "max": 100,
+      "mean": 89.0
+    },
+    {
+      "brand": "Brooks",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 84,
+      "max": 100,
+      "mean": 90.0
+    },
+    {
+      "brand": "Hoka",
+      "category": "running",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 72,
+      "max": 100,
+      "mean": 84.9
+    },
+    {
+      "brand": "New Balance",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 67,
+      "max": 100,
+      "mean": 86.9
+    },
+    {
+      "brand": "Nike",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 70,
+      "max": 100,
+      "mean": 79.1
+    },
+    {
+      "brand": "Norda",
+      "category": "running",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 36,
+      "max": 100,
+      "mean": 50.9
+    },
+    {
+      "brand": "On",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 77,
+      "max": 100,
+      "mean": 87.1
+    },
+    {
+      "brand": "Puma",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 67,
+      "max": 100,
+      "mean": 79.4
+    },
+    {
+      "brand": "Salomon",
+      "category": "running",
+      "tier": "T3",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 64,
+      "max": 100,
+      "mean": 78.6
+    },
+    {
+      "brand": "Saucony",
+      "category": "running",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 73,
+      "max": 100,
+      "mean": 85.3
+    },
+    {
+      "brand": "Topo Athletic",
+      "category": "running",
+      "tier": "T1",
+      "status": "PASS",
+      "n_points": 7,
+      "nonzero_points": 7,
+      "min": 74,
+      "max": 100,
+      "mean": 90.6
+    }
+  ]
+}

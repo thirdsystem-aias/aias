@@ -1,0 +1,55 @@
+{
+  "version": "0.12",
+  "source": "v0.9 deposit; brands returned by both claude-sonnet-4-6 and gpt-5.4-mini at v09",
+  "extraction_date": "2026-05-10",
+  "categories": {
+    "pmsoftware": {
+      "matched_subset_n": 17,
+      "matched_subset_brands": "TO_BE_POPULATED_FROM_V11_DEPOSIT",
+      "pivot": "Asana",
+      "note": "Replicate v0.11 matched subset (n=17 at v0.9 measurement)"
+    },
+    "oliveoil": {
+      "matched_subset_n": 15,
+      "matched_subset_brands": [
+        "Bertolli",
+        "Brightland",
+        "California Olive Ranch",
+        "Castillo de Canena",
+        "Cobram Estate",
+        "Colonna",
+        "Frantoio Muraglia",
+        "Frescobaldi Laudemio",
+        "Graza",
+        "Kosterina",
+        "Lucini",
+        "Manni",
+        "McEvoy Ranch",
+        "N\u00fa\u00f1ez de Prado",
+        "Olio Verde"
+      ],
+      "pivot": "California Olive Ranch",
+      "note": "Derived from /Users/pablou/aias/data/oliveoil/results_enriched_v09_20260507_184159.csv; brands appearing in brands_canonical for both sonnet and mini models at wave v09"
+    },
+    "running": {
+      "matched_subset_n": 13,
+      "matched_subset_brands": [
+        "Adidas",
+        "Altra",
+        "Asics",
+        "Brooks",
+        "Hoka",
+        "New Balance",
+        "Nike",
+        "Norda",
+        "On",
+        "Puma",
+        "Salomon",
+        "Saucony",
+        "Topo Athletic"
+      ],
+      "pivot": "Asics",
+      "note": "Derived from /Users/pablou/aias/data/running/results_enriched_v09_20260507_183238.csv; brands appearing in brands_canonical for both sonnet and mini models at wave v09. Brand-set composition caveat: Puma (lifestyle-heavy), Salomon (trail-primary), Topo Athletic and Norda (niche premium) at the soft edges of 'premium running shoes' framing; registry-freeze convention applies."
+    }
+  }
+}

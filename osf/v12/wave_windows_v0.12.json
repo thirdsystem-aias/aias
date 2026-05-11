@@ -1,0 +1,44 @@
+{
+  "version": "0.12",
+  "source": "Wave windows replicate v0.11 exactly per Decision 1; same windows used for all three v0.12 categories",
+  "v11_reference": "AIAS v0.11 PRE_REGISTRATION.md §5 (line 143-146); locked at git commit a039560 on 2026-05-10",
+  "windows": {
+    "t1": {
+      "start_date": "2026-04-27",
+      "end_date": "2026-05-03",
+      "weekday_pattern": "Mon-Sun",
+      "duration_days": 7,
+      "centred_on": "2026-04-30",
+      "rationale": "v0.6 AI Presence collection closing day (30 April 2026)"
+    },
+    "t2": {
+      "start_date": "2026-05-04",
+      "end_date": "2026-05-10",
+      "weekday_pattern": "Mon-Sun",
+      "duration_days": 7,
+      "centred_on": "2026-05-07",
+      "rationale": "v0.9 AI Presence collection day (7 May 2026)"
+    }
+  },
+  "window_properties": {
+    "disjoint": true,
+    "boundary": "3 May 2026 (t1 end) / 4 May 2026 (t2 start)",
+    "identical_weekday_composition": true,
+    "note": "Both windows have one of each Monday through Sunday — replicates v0.11 design ensuring weekday-pattern noise is identical across waves."
+  },
+  "acquisition_specification": {
+    "region_primary": "Worldwide",
+    "region_sensitivity": "US",
+    "granularity": "Daily",
+    "library": "SerpAPI Google Trends engine",
+    "engine_params": {
+      "engine": "google_trends",
+      "data_type": "TIMESERIES",
+      "geo_primary": "(empty for Worldwide)",
+      "geo_sensitivity": "US",
+      "no_cache": true
+    },
+    "categories_applied_to": ["pmsoftware", "oliveoil", "running"],
+    "note": "All three v0.12 categories acquired against the same locked window pair, in the same locked UTC acquisition session, following the same protocol. Per-bundle UTC timestamp, parameters, and rate-limit status captured at acquisition."
+  }
+}
