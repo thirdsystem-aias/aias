@@ -1,0 +1,483 @@
+{
+  "search_metadata": {
+    "id": "6a00734a71a90d35ae89d1a2",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/IBFBaOc2q22BbRW1-9_Zqw/6a00734a71a90d35ae89d1a2.json",
+    "created_at": "2026-05-10 12:00:10 UTC",
+    "processed_at": "2026-05-10 12:00:10 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22%2Fm%2F0c3z_p8%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fg%2F11h1m5p60w%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fg%2F11bc5c0lmw%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fm%2F0h665rh%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fm%2F05nyz0%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/IBFBaOc2q22BbRW1-9_Zqw/6a00734a71a90d35ae89d1a2.html",
+    "prettify_html_file": "https://serpapi.com/searches/IBFBaOc2q22BbRW1-9_Zqw/6a00734a71a90d35ae89d1a2.prettify",
+    "total_time_taken": 0.84
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "/m/0c3z_p8,/g/11h1m5p60w,/g/11bc5c0lmw,/m/0h665rh,/m/05nyz0",
+    "hl": "en",
+    "geo": "US",
+    "date": "2026-04-27 2026-05-10",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 27, 2026",
+        "timestamp": "1777248000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "37",
+            "extracted_value": 37
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "44",
+            "extracted_value": 44
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "85",
+            "extracted_value": 85
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "32",
+            "extracted_value": 32
+          }
+        ]
+      },
+      {
+        "date": "Apr 28, 2026",
+        "timestamp": "1777334400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "36",
+            "extracted_value": 36
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "33",
+            "extracted_value": 33
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "100",
+            "extracted_value": 100
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "32",
+            "extracted_value": 32
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "37",
+            "extracted_value": 37
+          }
+        ]
+      },
+      {
+        "date": "Apr 29, 2026",
+        "timestamp": "1777420800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "27",
+            "extracted_value": 27
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "92",
+            "extracted_value": 92
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "33",
+            "extracted_value": 33
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "38",
+            "extracted_value": 38
+          }
+        ]
+      },
+      {
+        "date": "Apr 30, 2026",
+        "timestamp": "1777507200",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "26",
+            "extracted_value": 26
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "89",
+            "extracted_value": 89
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "32",
+            "extracted_value": 32
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "35",
+            "extracted_value": 35
+          }
+        ]
+      },
+      {
+        "date": "May 1, 2026",
+        "timestamp": "1777593600",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "23",
+            "extracted_value": 23
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "77",
+            "extracted_value": 77
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "30",
+            "extracted_value": 30
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "29",
+            "extracted_value": 29
+          }
+        ]
+      },
+      {
+        "date": "May 2, 2026",
+        "timestamp": "1777680000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "13",
+            "extracted_value": 13
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "11",
+            "extracted_value": 11
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "29",
+            "extracted_value": 29
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "10",
+            "extracted_value": 10
+          }
+        ]
+      },
+      {
+        "date": "May 3, 2026",
+        "timestamp": "1777766400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "13",
+            "extracted_value": 13
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "9",
+            "extracted_value": 9
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "19",
+            "extracted_value": 19
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "33",
+            "extracted_value": 33
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "8",
+            "extracted_value": 8
+          }
+        ]
+      },
+      {
+        "date": "May 4, 2026",
+        "timestamp": "1777852800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "34",
+            "extracted_value": 34
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "83",
+            "extracted_value": 83
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "35",
+            "extracted_value": 35
+          }
+        ]
+      },
+      {
+        "date": "May 5, 2026",
+        "timestamp": "1777939200",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "37",
+            "extracted_value": 37
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "89",
+            "extracted_value": 89
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "30",
+            "extracted_value": 30
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "34",
+            "extracted_value": 34
+          }
+        ]
+      },
+      {
+        "date": "May 6, 2026",
+        "timestamp": "1778025600",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "38",
+            "extracted_value": 38
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "26",
+            "extracted_value": 26
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "93",
+            "extracted_value": 93
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "32",
+            "extracted_value": 32
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "36",
+            "extracted_value": 36
+          }
+        ]
+      },
+      {
+        "date": "May 7, 2026",
+        "timestamp": "1778112000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "33",
+            "extracted_value": 33
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "27",
+            "extracted_value": 27
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "92",
+            "extracted_value": 92
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "28",
+            "extracted_value": 28
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "37",
+            "extracted_value": 37
+          }
+        ]
+      },
+      {
+        "date": "May 8, 2026",
+        "timestamp": "1778198400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "22",
+            "extracted_value": 22
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "75",
+            "extracted_value": 75
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "37",
+            "extracted_value": 37
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "30",
+            "extracted_value": 30
+          }
+        ]
+      },
+      {
+        "date": "May 9, 2026",
+        "timestamp": "1778284800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "11",
+            "extracted_value": 11
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "21",
+            "extracted_value": 21
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "27",
+            "extracted_value": 27
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "9",
+            "extracted_value": 9
+          }
+        ]
+      },
+      {
+        "date": "May 10, 2026",
+        "timestamp": "1778371200",
+        "partial_data": true,
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "10",
+            "extracted_value": 10
+          },
+          {
+            "query": "/g/11h1m5p60w",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "/g/11bc5c0lmw",
+            "value": "21",
+            "extracted_value": 21
+          },
+          {
+            "query": "/m/0h665rh",
+            "value": "45",
+            "extracted_value": 45
+          },
+          {
+            "query": "/m/05nyz0",
+            "value": "8",
+            "extracted_value": 8
+          }
+        ]
+      }
+    ],
+    "averages": [
+      {
+        "query": "/m/0c3z_p8",
+        "value": 28
+      },
+      {
+        "query": "/g/11h1m5p60w",
+        "value": 23
+      },
+      {
+        "query": "/g/11bc5c0lmw",
+        "value": 69
+      },
+      {
+        "query": "/m/0h665rh",
+        "value": 33
+      },
+      {
+        "query": "/m/05nyz0",
+        "value": 27
+      }
+    ]
+  }
+}
