@@ -1,0 +1,31 @@
+scope,hypothesis,status,rationale
+pmsoftware,H1_primary,FALSIFIED,"t1: ρ=0.506 (>0.5? True), p1t=0.0191 (<0.05? True). t2: ρ=0.482, p1t=0.0215."
+pmsoftware,H2,CONFIRMED,|Δρ| = |0.482 − 0.506| = 0.024 ≤ 0.15
+pmsoftware,H3,FALSIFIED,
+pmsoftware,H4,FALSIFIED,"t1: ρ=0.417 (>0.5? False), p1t=0.0610 (<0.05? False). t2: ρ=0.434, p1t=0.0465."
+pmsoftware,H1_us_sensitivity,FALSIFIED,"t1: ρ=0.482 (>0.5? False), p1t=0.0249 (<0.05? True). t2: ρ=0.417, p1t=0.0479."
+pmsoftware,H1_pearson_sensitivity,CONFIRMED,"t1: ρ=0.546 (>0.5? True), p1t=0.0116 (<0.05? True). t2: ρ=0.533, p1t=0.0114."
+oliveoil,H1-H4,INDETERMINATE,Descriptive-only per pre-reg §3.6a (n-floor breached)
+running,H1_primary,CONFIRMED,"t1: ρ=0.808 (>0.5? True), p1t=0.0007 (<0.05? True). t2: ρ=0.786, p1t=0.0012."
+running,H2,CONFIRMED,|Δρ| = |0.786 − 0.808| = 0.022 ≤ 0.15
+running,H3,FALSIFIED,
+running,H4,FALSIFIED,"t1: ρ=0.466 (>0.5? False), p1t=0.0873 (<0.05? False). t2: ρ=0.488, p1t=0.0764."
+running,H1_us_sensitivity,CONFIRMED,"t1: ρ=0.779 (>0.5? True), p1t=0.0014 (<0.05? True). t2: ρ=0.526, p1t=0.0394."
+running,H1_pearson_sensitivity,FALSIFIED,"t1: ρ=0.483 (>0.5? False), p1t=0.0560 (<0.05? False). t2: ρ=0.491, p1t=0.0526."
+running,H1_raw_strict_sensitivity,INDETERMINATE,"n-floor breached: t1 n=7, t2 n=7 (hard floor=10)"
+skincare,H1_primary,FALSIFIED,"t1: ρ=0.282 (>0.5? False), p1t=0.0730 (<0.05? False). t2: ρ=0.332, p1t=0.0420."
+skincare,H2,CONFIRMED,|Δρ| = |0.332 − 0.282| = 0.050 ≤ 0.15
+skincare,H3,FALSIFIED,
+skincare,H4,FALSIFIED,"t1: ρ=-0.205 (>0.5? False), p1t=0.8425 (<0.05? False). t2: ρ=-0.117, p1t=0.7147."
+skincare,H1_us_sensitivity,FALSIFIED,"t1: ρ=0.151 (>0.5? False), p1t=0.2132 (<0.05? False). t2: ρ=0.171, p1t=0.1834."
+skincare,H1_pearson_sensitivity,CONFIRMED,"t1: ρ=0.686 (>0.5? True), p1t=0.0000 (<0.05? True). t2: ρ=0.679, p1t=0.0000."
+finance,H1_primary,FALSIFIED,"t1: ρ=0.168 (>0.5? False), p1t=0.2918 (<0.05? False). t2: ρ=0.094, p1t=0.3803."
+finance,H2,CONFIRMED,|Δρ| = |0.094 − 0.168| = 0.074 ≤ 0.15
+finance,H3,FALSIFIED,
+finance,H4,FALSIFIED,"t1: ρ=-0.159 (>0.5? False), p1t=0.6792 (<0.05? False). t2: ρ=-0.287, p1t=0.8035."
+finance,H1_us_sensitivity,FALSIFIED,"t1: ρ=0.203 (>0.5? False), p1t=0.2637 (<0.05? False). t2: ρ=0.049, p1t=0.4397."
+finance,H1_pearson_sensitivity,FALSIFIED,"t1: ρ=0.225 (>0.5? False), p1t=0.2297 (<0.05? False). t2: ρ=0.107, p1t=0.3638."
+cross_category,H5,FALSIFIED,1 of 4 applicable categories show v0.12 marginal signature (3-of-effective-N required)
+cross_category,H6,FALSIFIED,1 of 4 applicable categories show both Linear-style and Todoist-style brands (4-of-effective-N required)
+cross_category,H7,FALSIFIED,"2 of 5 categories classify cleanly (not unclassifiable, not boundary); H7 requires all 5."
+finance,H8,CONFIRMED,Cond1 (AI≥5% both waves): True. Cond2 (AI top-5 both waves): True. Cond3 (NOT Trends top-5 either wave): True. All three required for CONFIRMED.
