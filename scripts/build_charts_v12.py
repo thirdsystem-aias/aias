@@ -36,6 +36,7 @@ Run:
 """
 import json
 from pathlib import Path
+import textwrap
 
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
@@ -153,10 +154,20 @@ CATEGORY_PIVOT = {
 }
 
 
-def draw_title_and_subtitle(fig, title, subtitle, x=0.06, title_y=0.96, subtitle_y=0.91):
+def draw_title_and_subtitle(fig, title, subtitle, x=0.06, title_y=0.96,
+                              subtitle_y=0.91, wrap_width=130):
+    """Render title (bold) and subtitle (muted) at fixed figure-fraction positions.
+
+    Subtitle is wrapped to wrap_width characters using textwrap.fill, so callers
+    must reserve enough vertical space (i.e. bump figsize height + lower the
+    subplots_adjust top= argument) when subtitles are likely to span 2-3 lines.
+    """
     fig.text(x, title_y, title, ha="left", va="top",
              fontsize=13, color=TEXT, weight="bold")
-    fig.text(x, subtitle_y, subtitle, ha="left", va="top",
+    wrapped_subtitle = textwrap.fill(subtitle, width=wrap_width,
+                                       break_long_words=False,
+                                       break_on_hyphens=False)
+    fig.text(x, subtitle_y, wrapped_subtitle, ha="left", va="top",
              fontsize=9.5, color=MUTED)
 
 
@@ -175,7 +186,7 @@ def get_cat_paired(cat):
 # ============================================================================
 
 def chart_cross_category_scatter(wave):
-    fig, axes = plt.subplots(1, 3, figsize=(11.0, 5.0))
+    fig, axes = plt.subplots(1, 3, figsize=(11.0, 5.6))
 
     # Panels: PM | Running | Olive
     categories = ["pmsoftware", "running", "oliveoil"]
@@ -287,10 +298,10 @@ def chart_cross_category_scatter(wave):
                     "bidirectional boundary mismatch (PM software); strong correlation "
                     "with age-mediated structure (running shoes); scale mismatch — "
                     "many brands AI-present, Trends-undetectable (olive oil).")
-    draw_title_and_subtitle(fig, fig_title, fig_subtitle, x=0.03)
+    draw_title_and_subtitle(fig, fig_title, fig_subtitle, x=0.03, wrap_width=130)
     add_source(fig, x=0.03)
 
-    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.06, right=0.98, wspace=0.25)
+    fig.subplots_adjust(top=0.74, bottom=0.12, left=0.06, right=0.98, wspace=0.25)
 
     out = OUT_DIR / f"chart_v12_h1_cross_category_scatter_{wave}.pdf"
     fig.savefig(out, dpi=300)
@@ -330,7 +341,7 @@ def chart_rank_shift(cat, wave):
     n = len(df)
     extreme_threshold = max(5, int(n * 0.35))  # adaptive: ~35% of n
 
-    fig, ax = plt.subplots(figsize=(7.5, max(5.5, 0.45 * n + 2)))
+    fig, ax = plt.subplots(figsize=(7.5, max(6.0, 0.45 * n + 2.5)))
     x_left, x_right = 0.0, 1.0
 
     for _, row in df.sort_values("abs_diff").iterrows():
@@ -385,9 +396,9 @@ def chart_rank_shift(cat, wave):
     subtitle = ("Lines connect each brand's rank by AI Presence (left) to its "
                 "rank by Trends (right). Steep slopes = construct divergence. "
                 "Ties broken by the other variable.")
-    draw_title_and_subtitle(fig, title, subtitle)
+    draw_title_and_subtitle(fig, title, subtitle, wrap_width=92)
     add_source(fig)
-    fig.subplots_adjust(top=0.86, bottom=0.08, left=0.02, right=0.98)
+    fig.subplots_adjust(top=0.82, bottom=0.08, left=0.02, right=0.98)
 
     out = OUT_DIR / f"chart_v12_h3_rank_shift_{cat}_{wave}.pdf"
     fig.savefig(out, dpi=300)
@@ -426,7 +437,7 @@ def chart_partial_residual(cat, wave):
 
     df = df.assign(x_resid=resid(xr), y_resid=resid(yr))
 
-    fig, ax = plt.subplots(figsize=(7.5, 5.3))
+    fig, ax = plt.subplots(figsize=(7.5, 5.8))
     ax.grid(True, color=GRID_SUBTLE, linewidth=0.5, zorder=0)
     ax.axhline(0, color=GRID, linewidth=0.6, zorder=1)
     ax.axvline(0, color=GRID, linewidth=0.6, zorder=1)
@@ -475,10 +486,10 @@ def chart_partial_residual(cat, wave):
     else:
         subtitle = (f"Rank residuals after OLS on age + tier.\n"
                     f"Partial Spearman ρ = {pr:.3f}  (p₁ₜ = {pp:.4f}).")
-    draw_title_and_subtitle(fig, title, subtitle)
+    draw_title_and_subtitle(fig, title, subtitle, wrap_width=92)
     ax.legend(loc="lower right", frameon=False, fontsize=9)
     add_source(fig)
-    fig.subplots_adjust(top=0.82, bottom=0.13, left=0.10, right=0.96)
+    fig.subplots_adjust(top=0.77, bottom=0.12, left=0.10, right=0.96)
 
     out = OUT_DIR / f"chart_v12_h4_partial_residual_{cat}_{wave}.pdf"
     fig.savefig(out, dpi=300)
@@ -491,7 +502,7 @@ def chart_partial_residual(cat, wave):
 # ============================================================================
 
 def chart_h6_zones(wave):
-    fig, axes = plt.subplots(1, 2, figsize=(11.0, 5.2))
+    fig, axes = plt.subplots(1, 2, figsize=(11.0, 5.8))
 
     for ax, cat in zip(axes, ["pmsoftware", "running"]):
         df_cat = get_cat_paired(cat)
@@ -587,9 +598,9 @@ def chart_h6_zones(wave):
     fig_subtitle = ("Linear-style brands have high AI Presence but low Trends signal; "
                     "Todoist-style brands have the inverse pattern. H6 cross-category "
                     "requires both styles in 2-of-2 applicable categories.")
-    draw_title_and_subtitle(fig, fig_title, fig_subtitle, x=0.03)
+    draw_title_and_subtitle(fig, fig_title, fig_subtitle, x=0.03, wrap_width=130)
     add_source(fig, x=0.03)
-    fig.subplots_adjust(top=0.80, bottom=0.13, left=0.06, right=0.98, wspace=0.20)
+    fig.subplots_adjust(top=0.75, bottom=0.12, left=0.06, right=0.98, wspace=0.20)
 
     out = OUT_DIR / f"chart_v12_h6_zones_{wave}.pdf"
     fig.savefig(out, dpi=300)
@@ -606,7 +617,7 @@ def chart_scale_mismatch():
     df = mismatch_df.sort_values("ai_presence_t1_pct", ascending=True).copy()
     n = len(df)
 
-    fig, ax = plt.subplots(figsize=(9.0, max(5.5, 0.4 * n + 2)))
+    fig, ax = plt.subplots(figsize=(9.0, max(6.0, 0.4 * n + 2.5)))
 
     # Horizontal bars at t1 AI Presence
     y_positions = np.arange(n)
@@ -672,9 +683,9 @@ def chart_scale_mismatch():
                 f"Scale-mismatch index: {n_sm}/{n_tot} = {pct}% "
                 f"(brands with AI Presence ≥ 5% AND Trends below display threshold "
                 f"are marked ▶).")
-    draw_title_and_subtitle(fig, title, subtitle)
+    draw_title_and_subtitle(fig, title, subtitle, wrap_width=110)
     add_source(fig)
-    fig.subplots_adjust(top=0.88, bottom=0.10, left=0.22, right=0.96)
+    fig.subplots_adjust(top=0.84, bottom=0.09, left=0.22, right=0.96)
 
     out = OUT_DIR / "chart_v12_scale_mismatch_olive_oil.pdf"
     fig.savefig(out, dpi=300)
