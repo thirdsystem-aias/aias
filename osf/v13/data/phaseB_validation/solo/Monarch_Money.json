@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Monarch Money",
+  "category": "finance",
+  "query": "/g/11llqmms61",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:32:59.955902+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 99
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 95
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 86
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 33
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 27
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 27
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 66.71,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

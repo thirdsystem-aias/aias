@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Copilot",
+  "category": "finance",
+  "query": "/g/11q83qbj3d",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:33:10.032433+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 93
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 97
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 95
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 97
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 61
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 58
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 85.86,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

@@ -84,3 +84,65 @@ Pre-registration discipline distinguishes pre-lock drafting corrections from pos
 The Phase B disambiguation strategy for YNAB-as-brand (i.e., as a measured brand rather than as the pivot) is informed by this Phase A result: the bare query `YNAB` produces healthy signal at Worldwide region against the v0.13 wave windows, so Phase B should default to bare `YNAB` for YNAB's topic-ID resolution. Disambiguation only revisited if Phase B pytrends.suggestions() returns ambiguous results for bare `YNAB`. The decision is logged in `registries/topic_id_resolution_log_v0.13.csv` prior to acquisition lock.
 
 ---
+## Entry 2 — Phase B outcome: Quicken Simplifi EXCLUDED_E1a; §5.2 finance B2 padding amendment
+
+**Date.** 2026-05-11 (post-Phase-B, pre-acquisition-lock).
+
+**Affects.** Pre-registration §3.5 (Personal finance apps brand registry membership at acquisition), §5.2 (Bundle composition per category — finance B2). Personal finance category.
+
+**Pre-reg status at the time of this entry.** Locked at `v0.13-prereg` (commit `1a6294d`). This entry documents a post-lock pre-acquisition adjustment to bundle composition resulting from the §5.4 E1a mechanism operating as designed.
+
+### What happened
+
+Phase B (`scripts/phaseB_resolve_v13.py`) ran on 2026-05-11T21:22:39 UTC against the out-of-sample window 2026-04-13 to 2026-04-19, Worldwide. Two finance brands solo-failed and routed to E5 bundled rescue:
+
+- **Quicken Simplifi** (pytrends-derived topic-ID `/g/11xvvz6wpg`): solo SerpAPI returned `notEnoughSearchVolume`. E5 bundled rescue result: ALL_ZERO across the 7-day window. Final tier: **EXCLUDED_E1a**. Audit trail at:
+  - `data/phaseB_suggestions/Quicken_Simplifi.json`
+  - `data/phaseB_validation/solo/Quicken_Simplifi.json`
+  - `data/phaseB_validation/bundled/finance_e5_bundle_1.json`
+- **Lunch Money** (pytrends-derived topic-ID `/g/11x_bjn3_l`): solo SerpAPI returned `notEnoughSearchVolume`. E5 bundled rescue result: nonzero. Final tier: **PASS_E5** with acquisition_query `/g/11x_bjn3_l`. Retained in acquisition with E5 flag.
+
+The full canonical record is in `registries/topic_id_resolution_log_v0.13.csv`.
+
+### Empirical observation
+
+Quicken Simplifi is tagged `incumbent` in `registries/brands_finance.json`. Incumbent-tier brands falling below the E1a eligibility floor is unusual — most v0.6–v0.12 E1a exclusions have come from challenger-tier brands with naturally low search volume. Simplifi's exclusion at both the chosen pytrends topic-ID and the bundled rescue suggests one or more of:
+
+1. The chosen topic-ID `/g/11xvvz6wpg` may not capture the full set of "Quicken Simplifi" or "Simplifi" searches that real users issue. Alternative queries (e.g., bare `Simplifi`, `Quicken Simplifi app`) were not tested in Phase B; topic-ID resolution is single-pass per pre-reg §5.2.
+2. Simplifi's mass-market footprint may be smaller than its `incumbent` registry tier suggests. Simplifi is Intuit/Quicken's modern subscription replacement for the legacy Mint product (Mint was decommissioned in September 2025 and Simplifi was positioned as its successor); residual brand-search volume from that handoff may not have transferred at the magnitude anticipated when the registry was tier-labelled.
+3. Worldwide search volume for Simplifi may be substantially US-concentrated such that the Worldwide region returns insufficient signal, while US-region acquisition (the §13 sensitivity arm) might have shown signal. Phase B is Worldwide-only per §5.4; this is a known design choice, not a deviation.
+
+These hypotheses are recorded here as forward-pointers for a possible v0.14+ re-investigation. The v0.13 analysis treats Simplifi as EXCLUDED_E1a per the locked pre-reg without re-opening Phase B post-hoc.
+
+### Cascade: §5.2 B2 bundle composition amendment
+
+Per pre-reg §5.2, finance B2 was defined as: `YNAB + Quicken Simplifi + Rocket Money + PocketGuard + Goodbudget` (5 slots, including pivot). With Quicken Simplifi excluded by E1a, B2 has 3 non-pivot brand members + pivot = 4 slots. Per the v0.13 padding rule (§5.2, incumbent-tier brand-volume-comparable rule), the script `scripts/acquire_trends_v13.py` is amended to pad B2's vacated slot with NerdWallet (already an incumbent in B1, parallel to PAD_FIN_EMPOWER in B4):
+
+Amended B2 composition:
+
+> YNAB (pivot) + Rocket Money + PocketGuard + Goodbudget + `__pad_NerdWallet`
+
+The padding entry uses NerdWallet's canonical acquisition_query (looked up from `topic_id_resolution_log_v0.13.csv`), so NerdWallet appears in B1 as the canonical measurement and in B2 as scale-anchoring padding. Per `rescale_trends_v13.py` (inherited from v0.12 logic via `is_padding` flag), the B2 padding entry contributes zero rows to NerdWallet's per-brand within-window aggregation — only B1's canonical entry counts.
+
+### Files affected by this entry
+
+| File | Change |
+|---|---|
+| `scripts/acquire_trends_v13.py` | Added `PAD_FIN_NERDWALLET = ("__pad_NerdWallet", "NerdWallet")` constant. Replaced B2 members: removed `"Quicken Simplifi"`, appended `PAD_FIN_NERDWALLET`. |
+| `data/phaseB_suggestions/` | 47 per-brand JSONs (audit trail). |
+| `data/phaseB_validation/solo/` | 46 per-brand solo JSONs + 3 Mint-strategy JSONs. |
+| `data/phaseB_validation/bundled/` | 1 E5 bundle JSON. |
+| `registries/topic_id_resolution_log_v0.13.csv` | Canonical Phase B record; 47 rows, 14+1+1 PASS / PASS_E5 / EXCLUDED_E1a (skincare 31/0/0; finance 14/1/1). |
+
+### Effect on H1–H8
+
+- **H1, H2, H3, H4 (finance):** Quicken Simplifi is dropped from the finance brand set for these per-category tests. Effective finance brand set = 15 brands; analyses proceed against this set with the n_eligible threshold checks per §3.6a.
+- **H6 (Linear-style / Todoist-style cross-category):** Simplifi's absence from the finance scatter is recorded but does not affect H6 detection thresholds (the test is per-category, not per-brand).
+- **H7 (Three-regimes accounting):** Finance category's regime classification proceeds on the 15-brand set. Per pre-reg §3.6a, the n_PASS / n_matched_subset floor for descriptive-only routing is 0.6; with 15 of 15 PASS-eligible brands now in the acquisition set, the floor is met by design.
+- **H8 (Mint phantom-persistence):** Unaffected. Mint's Phase B disambiguation (Entry 1's pattern) resolved separately from Simplifi.
+
+### Methodological reflection
+
+The E1a mechanism in §5.4 is designed to surface exactly this kind of empirical observation pre-acquisition. The Simplifi result is the pre-reg working as intended — not a deviation in the strict sense. This entry documents the bundle-composition cascade for full transparency and records the Simplifi observation as a forward-pointer for v0.14+ investigation.
+
+---

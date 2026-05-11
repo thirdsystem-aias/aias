@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Murad",
+  "category": "skincare",
+  "query": "/g/113pjywv7",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:31:37.186299+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 74
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 72
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 79
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 74
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 86
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 83.57,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

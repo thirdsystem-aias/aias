@@ -1,0 +1,39 @@
+{
+  "brand_canonical": "Neutrogena",
+  "category": "skincare",
+  "tier_in_registry": "incumbent",
+  "pytrends_timestamp": "2026-05-11T21:22:51.015776+00:00",
+  "suggestions": [
+    {
+      "mid": "/m/0vtktqs",
+      "title": "Neutrogena",
+      "type": "Topic"
+    },
+    {
+      "mid": "/m/061t8w",
+      "title": "Neutrogena",
+      "type": "Cosmetics company"
+    },
+    {
+      "mid": "/g/11ltnfmx55",
+      "title": "Neutrogena Hydro Boost Water Gel",
+      "type": "Facial moisturizer"
+    },
+    {
+      "mid": "/g/11clzn13sg",
+      "title": "Hydro Boost",
+      "type": "Sunscreen"
+    },
+    {
+      "mid": "/g/11cjmlvcnh",
+      "title": "Neutrogena Dermatologics",
+      "type": "Topic"
+    }
+  ],
+  "chosen": {
+    "mid": "/m/061t8w",
+    "title": "Neutrogena",
+    "type": "Cosmetics company",
+    "rationale": "type='Cosmetics company' matches category keyword set"
+  }
+}

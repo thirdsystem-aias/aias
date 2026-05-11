@@ -1,0 +1,67 @@
+{
+  "category": "finance",
+  "bundle_id": 1,
+  "queries": [
+    "/m/02w_zr7",
+    "/g/11xvvz6wpg",
+    "/g/11x_bjn3_l"
+  ],
+  "member_names": [
+    "YNAB",
+    "Quicken Simplifi",
+    "Lunch Money"
+  ],
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:33:40.469804+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        93,
+        85,
+        81,
+        80,
+        100,
+        72,
+        70
+      ],
+      "max": 100,
+      "mean": 83.0,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 2,
+      "daily": [
+        0,
+        0,
+        5,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 5,
+      "mean": 0.71,
+      "all_zero": false
+    }
+  ]
+}
