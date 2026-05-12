@@ -1,0 +1,9 @@
+scope,hypothesis,status,rationale
+premium_tea,H1_primary,FALSIFIED,"t1: ρ=-0.066, p1t=0.6001. t2: ρ=-0.134, p1t=0.6961."
+premium_tea,H2,CONFIRMED,|Δρ| = 0.068 ≤ 0.15
+premium_tea,H3,FALSIFIED,
+premium_tea,H4,FALSIFIED,"t1: ρ=-0.084, p1t=0.6175. t2: ρ=-0.146, p1t=0.6980."
+premium_tea,H1_us_sensitivity,FALSIFIED,"t1: ρ=-0.076, p1t=0.6105. t2: ρ=0.011, p1t=0.4832."
+premium_tea,H7,Regime 4 candidate (matches neither Regime 1 nor 2),"ρ_t1=-0.066, ρ_t2=-0.134, partial_ρ_t1=-0.084, partial_ρ_t2=-0.146, Δ_t1=0.018, Δ_t2=0.012, n_t1=17, n_t2=17."
+premium_tea,H_Regime4_replication_primary,CONFIRMED,"C1 (n≥12 both waves): True (n_t1=17, n_t2=17). C2_trends (|ρ_AI~Trends|<0.35): True (t1=-0.066, t2=-0.134). C2_age (|ρ_AI~age|<0.35): True (t1=0.018, t2=-0.019). C3 (partial<0.0): True (t1=-0.084, t2=-0.146). Primary status uses C1+C2_trends+C3."
+premium_tea,H_Regime4_replication_tea_box_excluded,CONFIRMED,"C1 (n≥12 both waves): True (n_t1=16, n_t2=16). C2_trends (|ρ_AI~Trends|<0.35): True (t1=-0.011, t2=-0.129). C2_age (|ρ_AI~age|<0.35): True (t1=-0.014, t2=-0.050). C3 (partial<0.0): True (t1=-0.005, t2=-0.130). Primary status uses C1+C2_trends+C3."
