@@ -1,136 +1,237 @@
 {
   "category": "premium_tea",
-  "registry_version": "v1-premium_tea",
+  "registry_version": "v3-premium_tea",
   "brands": [
     {
-      "brand": "TWG Tea",
       "tradition": "chinese",
-      "aliases": ["TWG", "TWG Singapore"]
+      "aliases": [
+        "TWG Tea",
+        "TWG",
+        "TWG Singapore"
+      ],
+      "canonical": "TWG Tea"
     },
     {
-      "brand": "Ten Ren's Tea",
       "tradition": "chinese",
-      "aliases": ["Ten Ren", "Tenren", "天仁", "天仁茗茶"]
+      "aliases": [
+        "Ten Ren's Tea",
+        "Ten Ren",
+        "Tenren",
+        "天仁",
+        "天仁茗茶"
+      ],
+      "canonical": "Ten Ren's Tea"
     },
     {
-      "brand": "TenFu's Tea",
       "tradition": "chinese",
-      "aliases": ["TenFu", "Ten Fu", "天福", "天福茗茶"]
+      "aliases": [
+        "TenFu's Tea",
+        "TenFu",
+        "Ten Fu",
+        "天福",
+        "天福茗茶"
+      ],
+      "canonical": "TenFu's Tea"
     },
     {
-      "brand": "Jing Tea",
       "tradition": "chinese",
-      "aliases": ["Jing"]
+      "aliases": [
+        "Jing Tea",
+        "Jing"
+      ],
+      "canonical": "Jing Tea"
     },
     {
-      "brand": "Ippodo Tea",
       "tradition": "japanese",
-      "aliases": ["Ippodo", "一保堂", "一保堂茶舗"]
+      "aliases": [
+        "Ippodo Tea",
+        "Ippodo",
+        "一保堂",
+        "一保堂茶舗"
+      ],
+      "canonical": "Ippodo Tea"
     },
     {
-      "brand": "Marukyu Koyamaen",
       "tradition": "japanese",
-      "aliases": ["Marukyu", "Koyamaen", "丸久小山園"]
+      "aliases": [
+        "Marukyu Koyamaen",
+        "Marukyu",
+        "Koyamaen",
+        "丸久小山園"
+      ],
+      "canonical": "Marukyu Koyamaen"
     },
     {
-      "brand": "Lupicia",
       "tradition": "japanese",
-      "aliases": ["ルピシア"]
+      "aliases": [
+        "Lupicia",
+        "ルピシア"
+      ],
+      "canonical": "Lupicia"
     },
     {
-      "brand": "Ito En",
       "tradition": "japanese",
-      "aliases": ["Itoen", "Ito-En", "伊藤園"]
+      "aliases": [
+        "Ito En",
+        "Itoen",
+        "Ito-En",
+        "伊藤園"
+      ],
+      "canonical": "Ito En"
     },
     {
-      "brand": "Twinings",
       "tradition": "british",
-      "aliases": ["Twinings of London", "R. Twining and Company"]
+      "aliases": [
+        "Twinings",
+        "Twinings of London",
+        "R. Twining and Company"
+      ],
+      "canonical": "Twinings"
     },
     {
-      "brand": "Fortnum & Mason",
       "tradition": "british",
-      "aliases": ["Fortnum's", "Fortnums", "F&M"]
+      "aliases": [
+        "Fortnum & Mason",
+        "Fortnum's",
+        "Fortnums",
+        "F&M"
+      ],
+      "canonical": "Fortnum & Mason"
     },
     {
-      "brand": "Whittard of Chelsea",
       "tradition": "british",
-      "aliases": ["Whittard", "Whittards"]
+      "aliases": [
+        "Whittard of Chelsea",
+        "Whittard",
+        "Whittards"
+      ],
+      "canonical": "Whittard of Chelsea"
     },
     {
-      "brand": "Tea Pigs",
       "tradition": "british",
-      "aliases": ["TeaPigs", "teapigs"]
+      "aliases": [
+        "Tea Pigs",
+        "TeaPigs",
+        "teapigs"
+      ],
+      "canonical": "Tea Pigs"
     },
     {
-      "brand": "Postcard Teas",
       "tradition": "british",
-      "aliases": ["Postcard Tea"]
+      "aliases": [
+        "Postcard Teas",
+        "Postcard Tea"
+      ],
+      "canonical": "Postcard Teas"
     },
     {
-      "brand": "Makaibari",
       "tradition": "indian",
-      "aliases": ["Makaibari Tea Estate"]
+      "aliases": [
+        "Makaibari",
+        "Makaibari Tea Estate"
+      ],
+      "canonical": "Makaibari"
     },
     {
-      "brand": "Glenburn Tea Estate",
       "tradition": "indian",
-      "aliases": ["Glenburn", "Glenburn Estate"]
+      "aliases": [
+        "Glenburn Tea Estate",
+        "Glenburn",
+        "Glenburn Estate"
+      ],
+      "canonical": "Glenburn Tea Estate"
     },
     {
-      "brand": "Vahdam Teas",
       "tradition": "indian",
-      "aliases": ["Vahdam", "Vahdam India"]
+      "aliases": [
+        "Vahdam Teas",
+        "Vahdam",
+        "Vahdam India"
+      ],
+      "canonical": "Vahdam Teas"
     },
     {
-      "brand": "Tea Box",
       "tradition": "indian",
-      "aliases": ["TeaBox", "The Tea Box"]
+      "aliases": [
+        "Tea Box",
+        "TeaBox",
+        "The Tea Box"
+      ],
+      "canonical": "Tea Box"
     },
     {
-      "brand": "Harney & Sons",
       "tradition": "us_specialty",
-      "aliases": ["Harney", "Harney and Sons", "Harney and Sons Fine Teas"]
+      "aliases": [
+        "Harney & Sons",
+        "Harney",
+        "Harney and Sons",
+        "Harney and Sons Fine Teas"
+      ],
+      "canonical": "Harney & Sons"
     },
     {
-      "brand": "Rishi Tea",
       "tradition": "us_specialty",
-      "aliases": ["Rishi"]
+      "aliases": [
+        "Rishi Tea",
+        "Rishi"
+      ],
+      "canonical": "Rishi Tea"
     },
     {
-      "brand": "Numi Organic Tea",
       "tradition": "us_specialty",
-      "aliases": ["Numi", "Numi Tea"]
+      "aliases": [
+        "Numi Organic Tea",
+        "Numi",
+        "Numi Tea"
+      ],
+      "canonical": "Numi Organic Tea"
     },
     {
-      "brand": "Smith Teamaker",
       "tradition": "us_specialty",
-      "aliases": ["Smith", "Steven Smith Teamaker", "Steven Smith"]
+      "aliases": [
+        "Smith Teamaker",
+        "Smith",
+        "Steven Smith Teamaker",
+        "Steven Smith"
+      ],
+      "canonical": "Smith Teamaker"
     },
     {
-      "brand": "Republic of Tea",
       "tradition": "us_specialty",
-      "aliases": ["The Republic of Tea"]
-    }
-  ],
-  "alternates": [
+      "aliases": [
+        "Republic of Tea",
+        "The Republic of Tea"
+      ],
+      "canonical": "Republic of Tea"
+    },
     {
       "activation_order": 1,
-      "brand": "Wang De Chuan",
       "tradition": "chinese",
-      "aliases": ["王德傳", "王德傳茶莊", "Wang De Chuan Tea"]
+      "aliases": [
+        "Wang De Chuan",
+        "王德傳",
+        "王德傳茶莊",
+        "Wang De Chuan Tea"
+      ],
+      "canonical": "Wang De Chuan"
     },
     {
       "activation_order": 2,
-      "brand": "In Pursuit of Tea",
       "tradition": "chinese",
-      "aliases": ["IPOT"]
+      "aliases": [
+        "In Pursuit of Tea",
+        "IPOT"
+      ],
+      "canonical": "In Pursuit of Tea"
     },
     {
       "activation_order": 3,
-      "brand": "Yunnan Sourcing",
       "tradition": "chinese",
-      "aliases": ["Yunnan Sourcing Tea Shop"]
+      "aliases": [
+        "Yunnan Sourcing",
+        "Yunnan Sourcing Tea Shop"
+      ],
+      "canonical": "Yunnan Sourcing"
     }
   ]
 }
