@@ -1,0 +1,101 @@
+{
+  "category": "premium_tea",
+  "bundle_id": 3,
+  "queries": [
+    "/m/088hqg",
+    "/g/11ybl47plp",
+    "/g/11vkptvvf_",
+    "/g/11p9qrr4bk",
+    "/g/11sblpqx7_"
+  ],
+  "member_names": [
+    "Twinings",
+    "Vahdam Teas",
+    "Tea Box",
+    "Rishi Tea",
+    "Numi Organic Tea"
+  ],
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T13:14:08.539883+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        84,
+        100,
+        91,
+        86,
+        81,
+        83,
+        93
+      ],
+      "max": 100,
+      "mean": 88.29,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        0,
+        9,
+        0,
+        0,
+        0
+      ],
+      "max": 9,
+      "mean": 1.29,
+      "all_zero": false
+    },
+    {
+      "slot": 2,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 3,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 4,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    }
+  ]
+}

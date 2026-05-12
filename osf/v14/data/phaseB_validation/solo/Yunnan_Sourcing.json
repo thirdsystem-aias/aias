@@ -1,0 +1,51 @@
+{
+  "brand_canonical": "Yunnan Sourcing",
+  "category": "premium_tea",
+  "query": "Yunnan Sourcing",
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T15:44:58.177511+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 99
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 0
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 28.43,
+    "all_zero": false
+  },
+  "solo_status": "PASS",
+  "is_alternate": true,
+  "activation_order": 3
+}

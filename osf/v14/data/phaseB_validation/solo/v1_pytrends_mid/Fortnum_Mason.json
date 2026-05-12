@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Fortnum & Mason",
+  "category": "premium_tea",
+  "query": "/g/1hc88b9qp",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T13:11:55.277758+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 0
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 0
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 14.29,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}
