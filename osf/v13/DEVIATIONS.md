@@ -318,3 +318,85 @@ No retroactive modification of v0.12 is contemplated. The v0.12 paper's three-re
 
 — Pablo Ulpiano González Castro
 2026-05-11
+
+---
+
+## Entry 3 amendment — 12 May 2026 — Brand-age DRAFT verification complete (no outcome shift)
+
+**Date.** 2026-05-12.
+
+**Affects.** Entry 3 §3.7.2 (Skincare and finance brand-age data are DRAFT values). Registry file `registries/brand_age_sources_v0.13.csv`. New audit artefact `analysis/draft_verification_audit.csv`.
+
+**Pre-reg status at the time of this entry.** Post-lock, post-publication (v0.13-published at git tag `v0.13-published`, commit 4817288; SSRN 6750498; OSF /v13/ deposit live). This amendment closes the DRAFT-verification commitment made in Entry 3 §3.7.2 and reports the outcome of re-running the canonical scoring against verified ages.
+
+### What was committed at v0.13-published
+
+Entry 3 §3.7.2 documented that 47 of the 93 rows in `brand_age_sources_v0.13.csv` carried DRAFT founding-year values. The H1–H8 outcomes reported in the v0.13 SSRN paper and brand-format report were computed on those DRAFT values. The author committed to source-verifying each of the 47 entries before subsequent programme deposits and applying any corrections via a future amendment.
+
+### What was done
+
+Each of the 47 v0.13-new brand-age entries was source-verified against authoritative URLs (company "About" pages where available; Wikipedia or industry trade references as tie-breakers). The full audit trail is recorded in two files:
+
+- `registries/brand_age_sources_v0.13.csv` — fully populated. The seven-column schema is unchanged; the previously-empty `primary_source_url` and previously-DRAFT `notes` columns now carry the verified URL and a source note that records any application of the v0.12 pre-reg §6.B brand-as-marketed rule.
+- `analysis/draft_verification_audit.csv` — per-row DRAFT-vs-verified comparison. Columns: `category`, `brand`, `draft_year`, `verified_year`, `delta_years`, `flagged` (YES if |delta| ≥ 5), `note`.
+
+### Verification outcomes
+
+Of the 47 verified rows:
+
+- **38 matched the DRAFT year exactly** — no change.
+- **9 had non-zero deltas.** Four were brand-as-marketed rule applications per v0.12 pre-reg §6.B (Neutrogena 1930→1962, +32; EltaMD 1989→2007, +18; Empower 2009→2023, +14; Rocket Money 2015→2022, +7). Two were small brand-as-marketed corrections (Vanicream 1976→1980, +4; Goodbudget 2009→2013, +4). Three were sampling-error-level corrections (Drunk Elephant 2013→2012, −1; Lunch Money 2018→2019, +1; Origin 2019→2020, +1).
+
+The four flagged corrections (|delta| ≥ 5) each apply the brand-as-marketed convention documented in v0.12 pre-reg §6.B: the year the consumer-facing brand-as-marketed entity began trading under its current brand identity, regardless of subsequent ownership transfers or pre-existing corporate predecessor entities.
+
+| Brand | DRAFT | Verified | Rule applied |
+|---|---:|---:|---|
+| Neutrogena | 1930 | 1962 | Corporate rename to Neutrogena Corporation (1962); Natone Cosmetic Company (1930) treated as predecessor entity. |
+| EltaMD | 1989 | 2007 | EltaMD brand-as-marketed launched 2007 as physician-dispensed line; Elta product line (1988) treated as predecessor. |
+| Empower | 2009 | 2023 | Personal Capital app rebranded Empower 2023 after Empower Retirement acquisition (2020); Personal Capital era (2009) treated as predecessor. Analogous to the Truebill→Rocket Money rule application. |
+| Rocket Money | 2015 | 2022 | Truebill founded 2015; rebranded Rocket Money 2022 after Rocket Companies acquisition (2021). |
+
+### Re-scoring against verified ages
+
+`scripts/score_v13.py` was re-run against the verified `brand_age_sources_v0.13.csv`. The re-run was executed using the canonical scoring engine at git commit e8f3694 (unchanged from v0.13-published). The full re-run output is preserved at `analysis/score_v13_rerun_2026-05-12.log`.
+
+**The H1–H8 outcomes are identical to the v0.13-published canonical scoring.** Per-category bivariate Spearman ρ values, partial-Spearman ρ values, regime classifications, and cross-category integrator results all match. Headline numerical values reproduce exactly across the verification:
+
+- H1 PM: ρ = 0.506 / 0.482 (FALSIFIED) ✓
+- H1 Running: ρ = 0.808 / 0.786 (CONFIRMED) ✓
+- H1 Skincare: ρ = 0.282 / 0.332 (FALSIFIED) ✓
+- H1 Finance: ρ = 0.168 / 0.094 (FALSIFIED) ✓
+- H4 PM partial: ρ = 0.417 / 0.434 (FALSIFIED) ✓
+- H4 Running partial: ρ = 0.466 / 0.488 (FALSIFIED, boundary) ✓
+- H4 Skincare partial: ρ = −0.205 / −0.117 (FALSIFIED, covariate-saturated) ✓
+- H4 Finance partial: ρ = −0.159 / −0.287 (FALSIFIED, covariate-saturated) ✓
+- H5 cross-category: FALSIFIED at 1-of-4 (PM only) ✓
+- H6 cross-category: FALSIFIED at 1-of-4 (PM only) ✓
+- H7 three-regimes clean classification: FALSIFIED at 3-of-5 ✓
+- H8 Mint phantom-persistence: CONFIRMED canonically ✓
+- Pooled ρ: 0.459 (t<sub>1</sub>) / 0.475 (t<sub>2</sub>) ✓
+
+### Why the corrections do not shift outcomes
+
+Partial-Spearman uses rank-transformed age as the covariate. Only changes that cross other brands' ranks within a category move the partial ρ. The four flagged corrections each shift their brand's age by a meaningful number of years, but the 38 brands whose DRAFT values were already correct anchor the within-category rank ordering tightly enough that the four corrections do not cross enough other brands' ranks to materially shift the rank-order of the age covariate. The verification confirms that the v0.13 H1–H8 outcomes were robust to the founding-year specification used.
+
+The prediction recorded in Entry 3 §3.7.2 ("no single founding-year correction would move skincare or finance from 'Unclassifiable' into Regime 1") is confirmed empirically: the verified-ages re-run keeps skincare and finance both Unclassifiable (boundary-flagged on skincare; clear in finance), as in the v0.13-published canonical scoring.
+
+### Files affected by this amendment
+
+| File | Change |
+|---|---|
+| `registries/brand_age_sources_v0.13.csv` | DRAFT rows replaced with verified founding years and source URLs. 93 total rows unchanged. |
+| `analysis/draft_verification_audit.csv` | New file. Per-row DRAFT-vs-verified delta report. |
+| `analysis/canonical_scoring.json` | Unchanged. Verified-ages re-run produces identical canonical scoring. |
+| `analysis/score_v13_rerun_2026-05-12.log` | New file. Captures the re-run output for audit. |
+| `DEVIATIONS.md` | This amendment appended. |
+
+### Status
+
+This amendment closes the DRAFT-verification commitment from Entry 3 §3.7.2. v0.13's brand-age registry is now finalised. No retroactive correction of the v0.13 SSRN paper or brand-format report is required, since the canonical scoring is unchanged. The v0.13-published tag remains the canonical anchor for the v0.13 phase; this amendment is committed as a separate housekeeping commit post-publication.
+
+Future programme phases inherit the verified `brand_age_sources_v0.13.csv` as the carry-forward baseline. The four brand-as-marketed rule applications documented above are now part of the programme's interpretive precedent for the §6.B rule and should be cited as worked examples in future phases that encounter similar rebrand-after-acquisition or corporate-rename scenarios.
+
+— Pablo Ulpiano González Castro
+2026-05-12

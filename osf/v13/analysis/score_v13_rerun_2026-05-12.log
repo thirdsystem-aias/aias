@@ -1,0 +1,161 @@
+E1a exclusions by category (from Phase B locked CSVs):
+  pmsoftware: ['Shortcut']
+  oliveoil: ['Colonna', 'Frescobaldi Laudemio', 'Lucini', 'Manni', 'McEvoy Ranch', 'Núñez de Prado', 'Olio Verde']
+  running: (none)
+  skincare: (none)
+  finance: ['Quicken Simplifi']
+
+pmsoftware: t1 = results_enriched_v06_20260507_181205.csv; t2 = results_enriched_v09_20260507_181205.csv
+oliveoil: t1 = results_enriched_v06_20260507_184159.csv; t2 = results_enriched_v09_20260507_184159.csv
+running: t1 = results_enriched_v06_20260507_181205.csv; t2 = results_enriched_v09_20260507_183238.csv
+skincare: t1 = results_enriched_v06_20260507_185427.csv; t2 = results_enriched_v09_20260507_185427.csv
+finance: t1 = results_enriched_v06_20260507_190816.csv; t2 = results_enriched_v09_20260507_190816.csv
+
+Paired dataset: /Users/pablou/aias/osf/v13/analysis/per_brand_paired.csv (103 rows)
+
+================================================================================
+### CATEGORY: pmsoftware  (descriptive-only: False)
+================================================================================
+  worldwide t1: n=17  ρ=0.506  p1t=0.0191  r=0.546  partial_ρ=0.417
+  worldwide t2: n=18  ρ=0.482  p1t=0.0215  r=0.533  partial_ρ=0.434
+  US t1: n=17  ρ=0.482  p1t=0.0249  r=0.562  partial_ρ=0.412
+  US t2: n=17  ρ=0.417  p1t=0.0479  r=0.520  partial_ρ=0.348
+
+H1: FALSIFIED  (t1: ρ=0.506 (>0.5? True), p1t=0.0191 (<0.05? True). t2: ρ=0.482, p1t=0.0215.)
+H2: CONFIRMED  (|Δρ| = |0.482 − 0.506| = 0.024 ≤ 0.15)
+H3: FALSIFIED
+   t1: top3 AI=['Linear', 'Asana', 'Notion'] → in top5 Trends: 1/3
+   t2: top3 AI=['Linear', 'Asana', 'Jira'] → in top5 Trends: 1/3
+H4: FALSIFIED  (t1: ρ=0.417 (>0.5? False), p1t=0.0610 (<0.05? False). t2: ρ=0.434, p1t=0.0465.)
+H6 diagnostics: CONFIRMED
+   t1: Linear-style=['Linear']; Todoist-style=['Todoist']
+   t2: Linear-style=['Linear']; Todoist-style=['Basecamp', 'Todoist']
+
+Sensitivities:
+  H1 US-only:    FALSIFIED
+  H1 Pearson:    CONFIRMED
+
+================================================================================
+### CATEGORY: oliveoil  (descriptive-only: True)
+================================================================================
+  worldwide t1: n=8  ρ=0.168  p1t=0.3457  r=-0.110  partial_ρ=0.011
+  worldwide t2: n=8  ρ=-0.095  p1t=0.5887  r=-0.238  partial_ρ=-0.249
+  US t1: n=7  ρ=0.036  p1t=0.4694  r=-0.085  partial_ρ=-0.264
+  US t2: n=7  ρ=-0.357  p1t=0.7842  r=-0.270  partial_ρ=-0.648
+
+  (descriptive-only category — H1-H4 indeterminate per §3.6a)
+
+================================================================================
+### CATEGORY: running  (descriptive-only: False)
+================================================================================
+  worldwide t1: n=12  ρ=0.808  p1t=0.0007  r=0.483  partial_ρ=0.466
+  worldwide t2: n=12  ρ=0.786  p1t=0.0012  r=0.491  partial_ρ=0.488
+  US t1: n=12  ρ=0.779  p1t=0.0014  r=0.574  partial_ρ=0.359
+  US t2: n=12  ρ=0.526  p1t=0.0394  r=0.553  partial_ρ=-0.407
+
+H1: CONFIRMED  (t1: ρ=0.808 (>0.5? True), p1t=0.0007 (<0.05? True). t2: ρ=0.786, p1t=0.0012.)
+H2: CONFIRMED  (|Δρ| = |0.786 − 0.808| = 0.022 ≤ 0.15)
+H3: FALSIFIED
+   t1: top3 AI=['Asics', 'Brooks', 'New Balance'] → in top5 Trends: 2/3
+   t2: top3 AI=['Asics', 'Brooks', 'Hoka'] → in top5 Trends: 2/3
+H4: FALSIFIED  (t1: ρ=0.466 (>0.5? False), p1t=0.0873 (<0.05? False). t2: ρ=0.488, p1t=0.0764.)
+H6 diagnostics: FALSIFIED
+   t1: Linear-style=['Brooks']; Todoist-style=[]
+   t2: Linear-style=['Hoka']; Todoist-style=[]
+
+Sensitivities:
+  H1 US-only:    CONFIRMED
+  H1 Pearson:    FALSIFIED
+  H1 raw-strict: INDETERMINATE  (n_t1=7, n_t2=7)
+
+================================================================================
+### CATEGORY: skincare  (descriptive-only: False)
+================================================================================
+  worldwide t1: n=28  ρ=0.282  p1t=0.0730  r=0.686  partial_ρ=-0.207
+  worldwide t2: n=28  ρ=0.332  p1t=0.0420  r=0.679  partial_ρ=-0.115
+  US t1: n=30  ρ=0.151  p1t=0.2132  r=0.551  partial_ρ=-0.202
+  US t2: n=30  ρ=0.171  p1t=0.1834  r=0.534  partial_ρ=-0.172
+
+H1: FALSIFIED  (t1: ρ=0.282 (>0.5? False), p1t=0.0730 (<0.05? False). t2: ρ=0.332, p1t=0.0420.)
+H2: CONFIRMED  (|Δρ| = |0.332 − 0.282| = 0.050 ≤ 0.15)
+H3: FALSIFIED
+   t1: top3 AI=['CeraVe', 'La Roche-Posay', 'Neutrogena'] → in top5 Trends: 2/3
+   t2: top3 AI=['CeraVe', 'La Roche-Posay', 'Neutrogena'] → in top5 Trends: 2/3
+H4: FALSIFIED  (t1: ρ=-0.207 (>0.5? False), p1t=0.8452 (<0.05? False). t2: ρ=-0.115, p1t=0.7126.)
+H6 diagnostics: FALSIFIED
+   t1: Linear-style=[]; Todoist-style=['Clinique', 'Beauty of Joseon']
+   t2: Linear-style=[]; Todoist-style=['Clinique', 'Olay', 'Beauty of Joseon']
+
+Sensitivities:
+  H1 US-only:    FALSIFIED
+  H1 Pearson:    CONFIRMED
+
+================================================================================
+### CATEGORY: finance  (descriptive-only: False)
+================================================================================
+  worldwide t1: n=13  ρ=0.168  p1t=0.2918  r=0.225  partial_ρ=-0.019
+  worldwide t2: n=13  ρ=0.094  p1t=0.3803  r=0.107  partial_ρ=-0.132
+  US t1: n=12  ρ=0.203  p1t=0.2637  r=0.090  partial_ρ=0.075
+  US t2: n=12  ρ=0.049  p1t=0.4397  r=0.005  partial_ρ=-0.118
+
+H1: FALSIFIED  (t1: ρ=0.168 (>0.5? False), p1t=0.2918 (<0.05? False). t2: ρ=0.094, p1t=0.3803.)
+H2: CONFIRMED  (|Δρ| = |0.094 − 0.168| = 0.074 ≤ 0.15)
+H3: FALSIFIED
+   t1: top3 AI=['YNAB', 'Monarch Money', 'Copilot'] → in top5 Trends: 1/3
+   t2: top3 AI=['YNAB', 'Monarch Money', 'Empower'] → in top5 Trends: 1/3
+H4: FALSIFIED  (t1: ρ=-0.019 (>0.5? False), p1t=0.5216 (<0.05? False). t2: ρ=-0.132, p1t=0.6503.)
+H6 diagnostics: FALSIFIED
+   t1: Linear-style=[]; Todoist-style=['Origin', 'Cleo']
+   t2: Linear-style=[]; Todoist-style=['Origin', 'Cleo']
+
+Sensitivities:
+  H1 US-only:    FALSIFIED
+  H1 Pearson:    FALSIFIED
+
+================================================================================
+CROSS-CATEGORY HYPOTHESES
+================================================================================
+H5 (v0.12 marginal signature, 3-of-effective-N): FALSIFIED
+   1 of 4 applicable categories show v0.12 marginal signature (3-of-effective-N required)
+     pmsoftware: signature_present=True  ρ=(0.506,0.482)  H3_in_top5=(1,1)  linear=True
+     oliveoil: descriptive-only
+     running: signature_present=False  ρ=(0.808,0.786)  H3_in_top5=(2,2)  linear=True
+     skincare: signature_present=False  ρ=(0.282,0.332)  H3_in_top5=(2,2)  linear=False
+     finance: signature_present=False  ρ=(0.168,0.094)  H3_in_top5=(1,1)  linear=False
+
+H6 (Linear-style + Todoist-style, 4-of-effective-N): FALSIFIED
+   1 of 4 applicable categories show both Linear-style and Todoist-style brands (4-of-effective-N required)
+
+================================================================================
+H7 (Three-regimes accounting, clean classification): FALSIFIED
+================================================================================
+  ✓ pmsoftware    Regime 1 (Marginal direct)
+  ✓ oliveoil      Regime 3 (Scale-mismatch via §3.6a)
+  ✗ running       Regime 2 (Age-mediated strong)
+      (boundary flag — within 0.05 of a regime threshold)
+  ✗ skincare      Unclassifiable (matches neither Regime 1 nor 2)
+      (boundary flag — within 0.05 of a regime threshold)
+  ✗ finance       Unclassifiable (matches neither Regime 1 nor 2)
+      (boundary flag — within 0.05 of a regime threshold)
+
+================================================================================
+H8 (Mint phantom-persistence three-condition diagnostic): CONFIRMED
+================================================================================
+  C1 (AI ≥ 5.0% both waves): t1=44.8%, t2=41.7% → True
+  C2 (AI top-5 both waves): rank_t1=5, rank_t2=5 → True
+  C3 (NOT Trends top-5 either wave): t1=Mint not E1b-eligible at t1 (trivially satisfied per §11); t2=Mint not E1b-eligible at t2 (trivially satisfied per §11) → True
+
+================================================================================
+CATEGORY-SCALE MISMATCH FINDING — OLIVE OIL (7/15 = 46.7%)
+================================================================================
+
+  Pooled t1: n=70  ρ=0.459  p=0.0001
+  Pooled t2: n=71  ρ=0.475  p=0.0000
+
+Canonical scoring (JSON): /Users/pablou/aias/osf/v13/analysis/canonical_scoring.json
+Canonical scoring (CSV):       /Users/pablou/aias/osf/v13/analysis/canonical_scoring.csv
+Category-Scale Mismatch table: /Users/pablou/aias/osf/v13/analysis/category_scale_mismatch_table.csv
+H7 regime classification:      /Users/pablou/aias/osf/v13/analysis/h7_regime_classification.csv
+H8 Mint diagnostic:            /Users/pablou/aias/osf/v13/analysis/h8_mint_diagnostic.csv
+
+Scoring complete.
