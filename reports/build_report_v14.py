@@ -949,6 +949,9 @@ def build_pattern_unified(pattern: dict, styles: dict,
     else:
         s.append(CondPageBreak(80))
 
+    # Each finding starts on a fresh page (Pablo, 13 May)
+    s.append(PageBreak())
+
     # Heading: FINDING NN + pattern title (kept together)
     s.append(KeepTogether([
         Spacer(1, 4),
