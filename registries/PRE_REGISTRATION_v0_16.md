@@ -28,13 +28,17 @@ v0.16 brings the v1.2-formalized construct-validity panel — developed across v
 
 **Statement.** Brand AI Presence on the kitchen-knives substrate exhibits the canonical Regime 4 (Covariate-saturated weak) signature established on premium facial skincare (v0.11), personal finance apps (v0.13), and premium tea (v0.14, v0.15).
 
-**Decision rules (pre-registered).**
+**Operationalization.** Per AIAS Presence Measurement Protocol v1.2 §3.4 (SSRN 6761698) and v0.15-prereg canonical (cc9df0d). Condition 2 tests the bivariate relationship between AI Presence and Google Trends search interest as the canonical Regime 4 signature variable; brand age and tradition_cell enter as controls in Condition 3's partial correlation.
 
-| Verdict | Conditions (must hold at both waves t₁ and t₂) |
+**Decision rules (pre-registered).** All correlations are Spearman ρ on per-brand rank data. Conditions must hold at both waves t₁ and t₂.
+
+| Verdict | Conditions |
 |---|---|
-| **CONFIRMED** | (1) n_eligible ≥ 12 ∧ (2) bivariate ρ(brand_age, AI_presence) ∈ (−1, +0.35) ∧ (3) sign(ρ_t₁) = sign(ρ_t₂) ∧ (4) residual partial ρ(brand_age, AI_presence \| tier, tradition_cell) < 0 |
-| **PARTIAL** | Conditions (1), (2), (3) hold but (4) fails (positive partial after controls) — non-saturated weak signature; productive Regime-classification reassignment |
-| **FALSIFIED** | Condition (1) fails (n_eligible < 12) OR condition (2) fails (bivariate ρ ≥ 0.35) — productive falsification; methodology paper retains three-substrate Regime 4 floor (skincare, finance, tea) |
+| **CONFIRMED** | (1) n_eligible ≥ 12 ∧ (2) \|ρ(AI_presence, Trends)\| < 0.35 ∧ (3) partial ρ(AI_presence, Trends \| brand_age, tradition_cell) < 0 |
+| **PARTIAL** | Conditions (1) and (2) hold but (3) fails (positive partial after controls) — non-saturated weak signature; productive boundary finding. v0.16 refinement of v0.15's binary structure; strict sub-classification of v0.15-canonical FALSIFIED, not a contradiction |
+| **FALSIFIED** | Condition (1) fails (n_eligible < 12) OR condition (2) fails (\|ρ\| ≥ 0.35) — productive falsification; methodology paper retains three-substrate Regime 4 floor (skincare, finance, tea) |
+
+Controls in Condition 3's partial correlation: brand_age (continuous, rank-transformed) + tradition_cell (categorical, dummy-encoded with one reference cell omitted). Expected k_adj = 1 (age) + 4 (tradition dummies; 5 cells − 1 reference) = 5 covariates. df adjustment per v0.15-canonical implementation.
 
 ### H_Discourse_Language_carryforward
 
