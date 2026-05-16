@@ -15,7 +15,7 @@ Forked from build_report_v14.py with surgical changes:
     ships both SSRN paper figures and brand-format report figures; adds
     per-tradition small-multiples chart)
   - Slot name reshuffle to match v16 content pattern slots:
-      f2_sensitivity -> f3_primary_vs_sensitivity
+      f3_primary_vs_sensitivity -> f3_discourse_language (v0.16 substrate change)
       f3_per_category_rho -> f2_per_category
       f5_per_tradition (NEW)
   - CHART_FIGSIZE_IN extended with v0.16 figsize keys (5 entries)
@@ -142,7 +142,7 @@ CHART_FIGSIZE_IN = {
     # All produced by build_charts_v16.py (same script ships SSRN paper + report charts).
     "6_col_v16_regime4":            (7.50, 6.50),  # chart_v16_regime4_canonical.pdf (matches render)
     "6_col_v16_per_category":       (7.50, 7.20),  # chart_v16_per_category_rho_comparison.pdf (less stretch; render still 8.0)
-    "6_col_v16_sensitivity":        (7.50, 6.80),  # chart_v16_primary_vs_sensitivity.pdf (matches render)
+    "6_col_v16_discourse_language": (7.50, 4.70),  # chart_v16_discourse_language_pair.pdf (2-panel scatter)
     "6_col_v16_per_brand":          (7.50, 4.20),  # chart_v16_kitchen_knives_per_brand.pdf
     "6_col_v16_per_tradition":      (7.50, 7.20),  # chart_v16_kitchen_knives_per_tradition.pdf (reduced from 8.40 to fit spread frame)
 }
@@ -884,14 +884,20 @@ HERO_FIGURE_CAPTIONS = {
         "Regime 4 pattern; kitchen knives v0.16 (highlighted row) reads the panel-expansion robustness "
         "verdict \u2014 Regime 4 holds with bivariate intensified relative to v0.14."
     ),
-    "f3_primary_vs_sensitivity": (
-        "Figure 3 \u00b7 Primary vs Tea Box-excluded sensitivity. Each row shows bivariate "
-        "<font name='Helvetica'>\u03c1</font> (left, vs C2 threshold |<font name='Helvetica'>\u03c1</font>|<0.35) "
-        "and partial <font name='Helvetica'>\u03c1</font> (right, vs C3 threshold "
-        "<font name='Helvetica'>\u03c1</font><0) at one wave / region. Primary (n = 23, indigo filled) "
-        "uses the full eligible v0.16 panel; Tea Box-excluded (n = 22, petro open) drops the brand "
-        "whose rescaled Trends signal was confounded by generic 'tea box' gift-set language. Both "
-        "panels satisfy C2 + C3 at every wave; the Regime 4 verdict does not depend on Tea Box."
+    "f3_discourse_language": (
+        "Figure 3 \u00b7 H_Discourse_Language_carryforward \u2014 Japanese "
+        "tradition cell discourse-language pair scatter. Per-brand AI Presence "
+        "under English-anchored prompt (x-axis, knives_b3_en_jp) vs Japanese-"
+        "language prompt (y-axis, knives_b4_ja_01). Two panels: t<sub size=\'6\'>1"
+        "</sub> (left), t<sub size=\'6\'>2</sub> (right). Spearman "
+        "<font name=\'Helvetica\'>\u03c1</font> annotated per panel; identity "
+        "line y = x for reference. Verdict zones per pre-reg \u00a72: "
+        "<font name=\'Helvetica\'>\u03c1</font> < 0.85 = CARRY-FORWARD "
+        "CONFIRMED (v0.8 finding survives v1.2 protocol); "
+        "<font name=\'Helvetica\'>\u03c1</font> in [0.85, 0.95) = WEAKENED; "
+        "<font name=\'Helvetica\'>\u03c1</font> \u2265 0.95 = FALSIFIED-"
+        "favorable (pre-v1.2 protocol artefact corrected). [Caption to be "
+        "refined post-acquisition with verdict-conditional language.]"
     ),
     "f4_per_brand": (
         "Figure 4 \u00b7 Kitchen knives v0.16, per-brand AI Presence \u00d7 Trends rescaled at "
@@ -920,7 +926,7 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         # All 5 charts from build_charts_v16.py output (single script ships SSRN + report charts):
         "f1_regime4_canonical":       ("chart_v16_regime4_canonical.pdf",         "6_col_v16_regime4"),
         "f2_per_category":            ("chart_v16_per_category_rho_comparison.pdf", "6_col_v16_per_category"),
-        "f3_primary_vs_sensitivity":  ("chart_v16_primary_vs_sensitivity.pdf",    "6_col_v16_sensitivity"),
+        "f3_discourse_language":  ("chart_v16_discourse_language_pair.pdf", "6_col_v16_discourse_language"),
         "f4_per_brand":               ("chart_v16_kitchen_knives_per_brand.pdf",     "6_col_v16_per_brand"),
         "f5_per_tradition":           ("chart_v16_kitchen_knives_per_tradition.pdf", "6_col_v16_per_tradition"),
     }
@@ -983,7 +989,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
         w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
         is_hero = slot in (
             "f1_regime4_canonical", "f2_per_category",
-            "f3_primary_vs_sensitivity", "f4_per_brand",
+            "f3_discourse_language", "f4_per_brand",
             "f5_per_tradition",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
@@ -1246,7 +1252,7 @@ def build(*, debug_layout: bool = False,
     print(f"[build_report_v16] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
         "f1_regime4_canonical", "f2_per_category",
-        "f3_primary_vs_sensitivity", "f4_per_brand",
+        "f3_discourse_language", "f4_per_brand",
         "f5_per_tradition",
     ]
     expected_files = set()

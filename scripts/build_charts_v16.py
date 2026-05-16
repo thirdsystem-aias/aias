@@ -583,132 +583,143 @@ def chart_per_category_rho_comparison():
 
 
 # ============================================================================
-# CHART 3: Primary vs Tea Box-excluded sensitivity
+# CHART 3: H_Discourse_Language_carryforward — discourse-language pair scatter
 # ============================================================================
 
-def chart_primary_vs_sensitivity():
-    """Single-panel dot plot: 4 condition × 2 wave rows, primary (INDIGO)
-    and Tea Box-excluded (PETRO) markers side by side per row. Shows the
-    robustness of the Regime 4 verdict to Tea Box exclusion.
+def chart_discourse_language_pair():
+    """v0.16 chart 3 — H_Discourse_Language_carryforward visualization.
+
+    Two-panel scatter (t1 left, t2 right). Per-brand AI Presence under:
+        x: English-anchored prompt (knives_b3_en_jp)
+        y: Japanese-language prompt (knives_b4_ja_01)
+
+    Japanese tradition cell only (anchor cell for v0.8 finding,
+    SSRN 6728000).
+
+    Verdict zones (per pre-reg §2):
+        rho < 0.85          -> CARRY-FORWARD CONFIRMED
+        rho in [0.85, 0.95) -> CARRY-FORWARD WEAKENED
+        rho >= 0.95         -> CARRY-FORWARD FALSIFIED-favorable
+        n < 5               -> INCONCLUSIVE
+
+    Data sources:
+      - canonical_scoring.json["H_Discourse_Language_carryforward"]
+        for verdict + rho + japanese_brands_in_panel
+      - results_enriched_kitchen_knives_*.csv for per-brand presence
+        re-computation (mirrors score_v16.compute_presence_by_prompt)
     """
-    fig, ax = plt.subplots(figsize=(7.5, 6.8))
+    import pandas as pd
 
-    # Collect primary values from v0.14 scoring
-    rows = []
-    for wave_key, wave_label in [("ww_t1", "Worldwide t₁"),
-                                  ("ww_t2", "Worldwide t₂"),
-                                  ("us_t1", "US t₁"),
-                                  ("us_t2", "US t₂")]:
-        try:
-            rho_pri, prho_pri = get_v16_correlations(wave_key)
-        except KeyError:
-            rho_pri, prho_pri = None, None
-        rho_sen, prho_sen = get_v16_sensitivity_correlations(wave_key)
-        rows.append((wave_label, rho_pri, prho_pri, rho_sen, prho_sen))
+    hdl = v16_scoring.get("H_Discourse_Language_carryforward", {})
+    if not hdl:
+        print("  SKIP chart_discourse_language_pair: H_Discourse_Language_"
+              "carryforward not in canonical_scoring.json")
+        return None
 
-    y_positions = np.arange(len(rows))[::-1]
+    status         = hdl.get("status", "INDETERMINATE")
+    en_prompt      = hdl.get("en_prompt_id", "knives_b3_en_jp")
+    ja_prompt      = hdl.get("ja_prompt_id", "knives_b4_ja_01")
+    japanese_brands = hdl.get("japanese_brands_in_panel", [])
 
-    for i, (label, rho_pri, prho_pri, rho_sen, prho_sen) in enumerate(rows):
-        y = y_positions[i]
+    if not japanese_brands:
+        print("  SKIP chart_discourse_language_pair: no Japanese-cell brands")
+        return None
 
-        # Bivariate ρ — left half of plot (x in [-0.5, 0])
-        x_offset_bi = -0.30
-        if rho_pri is not None:
-            ax.scatter([x_offset_bi + rho_pri], [y], s=100, facecolor=INDIGO,
-                       edgecolor="white", linewidth=1.0, zorder=4,
-                       label="Primary" if i == 0 else None)
-            ax.text(x_offset_bi + rho_pri, y + 0.16, f"{rho_pri:+.3f}",
-                    fontsize=7.5, color=INDIGO, ha="center", va="bottom",
-                    weight="bold")
-        if rho_sen is not None:
-            ax.scatter([x_offset_bi + rho_sen], [y], s=70, facecolor="white",
-                       edgecolor=PETRO, linewidth=1.8, zorder=4,
-                       label="Tea Box-excluded" if i == 0 else None)
-            ax.text(x_offset_bi + rho_sen, y - 0.22, f"{rho_sen:+.3f}",
-                    fontsize=7.5, color=PETRO, ha="center", va="top",
-                    style="italic")
+    # Locate enrichment CSV (mirrors score_v16.py)
+    enriched_dir = Path.home() / "aias" / "data" / "kitchen_knives"
+    enriched_candidates = sorted(
+        enriched_dir.glob("results_enriched_kitchen_knives_*.csv"))
+    if not enriched_candidates:
+        print(f"  SKIP chart_discourse_language_pair: no enrichment CSV at "
+              f"{enriched_dir}")
+        return None
+    enriched = pd.read_csv(enriched_candidates[-1])
 
-        # Partial ρ — right half of plot (x in [0, +0.5])
-        x_offset_pa = 0.40
-        if prho_pri is not None:
-            ax.scatter([x_offset_pa + prho_pri], [y], s=100, facecolor=INDIGO,
-                       edgecolor="white", linewidth=1.0, zorder=4)
-            ax.text(x_offset_pa + prho_pri, y + 0.16, f"{prho_pri:+.3f}",
-                    fontsize=7.5, color=INDIGO, ha="center", va="bottom",
-                    weight="bold")
-        if prho_sen is not None:
-            ax.scatter([x_offset_pa + prho_sen], [y], s=70, facecolor="white",
-                       edgecolor=PETRO, linewidth=1.8, zorder=4)
-            ax.text(x_offset_pa + prho_sen, y - 0.22, f"{prho_sen:+.3f}",
-                    fontsize=7.5, color=PETRO, ha="center", va="top",
-                    style="italic")
+    # Same matched-models + wave splits as score_v16.py
+    MATCHED_MODELS = {"claude-sonnet-4-6", "gpt-5.4-mini"}
+    T1_RUN_IDX = {1, 2, 3, 4}
+    T2_RUN_IDX = {5, 6, 7, 8}
 
-        # Row divider
-        if i < len(rows) - 1:
-            ax.axhline(y - 0.5, color=GRID_SUBTLE, linewidth=0.4, zorder=1)
+    df = enriched[enriched["model_slot"].isin(MATCHED_MODELS)]
+    df = df[df["prompt_id"].isin([en_prompt, ja_prompt])]
+    df = df[df["brand"].isin(japanese_brands)]
 
-    # Column separator
-    ax.axvline(0.05, color=MUTED, linewidth=0.6, zorder=2)
+    fig, axes = plt.subplots(1, 2, figsize=(7.5, 4.7),
+                              sharex=True, sharey=True)
 
-    # Threshold reference: |bivariate| < 0.35 → at x_offset_bi ± 0.35
-    ax.axvline(-0.30 + 0.35, color=GRID, linewidth=0.5, linestyle=":", zorder=1)
-    ax.axvline(-0.30 - 0.35, color=GRID, linewidth=0.5, linestyle=":", zorder=1)
-    # Centered bivariate origin
-    ax.axvline(-0.30, color=GRID_SUBTLE, linewidth=0.4, linestyle="-", zorder=1)
-    # Threshold reference: partial < 0 → at x_offset_pa (since partial=0 maps there)
-    ax.axvline(0.40, color=COPPER_PLATE, linewidth=0.5, linestyle=":", zorder=1)
+    for i, (wave, ax, run_set) in enumerate(
+            zip(("t1", "t2"), axes, (T1_RUN_IDX, T2_RUN_IDX))):
+        wave_df = df[df["run_idx"].isin(run_set)]
+        en_vals, ja_vals, labels = [], [], []
+        for brand in japanese_brands:
+            en_rows = wave_df[(wave_df["brand"] == brand)
+                               & (wave_df["prompt_id"] == en_prompt)]
+            ja_rows = wave_df[(wave_df["brand"] == brand)
+                               & (wave_df["prompt_id"] == ja_prompt)]
+            if len(en_rows) == 0 or len(ja_rows) == 0:
+                continue
+            en_vals.append(en_rows["ai_brand_mentioned"].mean() * 100)
+            ja_vals.append(ja_rows["ai_brand_mentioned"].mean() * 100)
+            labels.append(brand)
 
-    # Panel labels (column headers)
-    ax.text(-0.30, len(rows) - 0.3, "Bivariate ρ (AI × Trends)",
-            fontsize=9, color=TEXT, weight="bold", ha="center", va="bottom")
-    ax.text(-0.30 + 0.35, len(rows) - 0.45,
-            r"$|\rho|<0.35$ (C2)", fontsize=7.5, color=GRID,
-            ha="center", va="bottom", style="italic")
-    ax.text(0.40, len(rows) - 0.3, "Partial ρ (controls: age, tradition)",
-            fontsize=9, color=TEXT, weight="bold", ha="center", va="bottom")
-    ax.text(0.40, len(rows) - 0.45, r"$\rho<0$ (C3)",
-            fontsize=7.5, color=COPPER_PLATE,
-            ha="center", va="bottom", style="italic")
+        # Identity line y = x
+        ax.plot([0, 100], [0, 100], color=GRID_SUBTLE, linewidth=0.6,
+                linestyle=":", zorder=1)
 
-    ax.set_yticks(y_positions)
-    ax.set_yticklabels([row[0] for row in rows],
-                       fontsize=10, color=TEXT, weight="bold")
-    ax.tick_params(axis="y", length=0, pad=8)
-    ax.set_xticks([])  # x-axis is dual-panel; numbers shown via labels
-    ax.set_xlim(-0.75, 0.85)
-    ax.set_ylim(-0.7, len(rows) - 0.2)
-    ax.spines["left"].set_visible(False)
-    ax.spines["bottom"].set_visible(False)
+        if en_vals:
+            ax.scatter(en_vals, ja_vals, s=85,
+                       facecolor=TRADITION_COLOR["japanese"],
+                       edgecolor="white", linewidth=1.2, zorder=4)
 
-    # Legend
-    legend_elements = [
-        Line2D([0], [0], marker="o", color="w", markerfacecolor=INDIGO,
-               markeredgecolor="white", markeredgewidth=0.5, markersize=10,
-               label="Primary (full v0.16 panel, n=28)"),
-        Line2D([0], [0], marker="o", color="w", markerfacecolor="white",
-               markeredgecolor=PETRO, markeredgewidth=1.8, markersize=9,
-               label="Tea Box-excluded (sensitivity, n=27)"),
-    ]
-    ax.legend(handles=legend_elements, loc="lower center",
-              bbox_to_anchor=(0.5, -0.10), ncol=2,
-              frameon=False, fontsize=8.5,
-              handletextpad=0.4, columnspacing=2.0)
+            texts = []
+            for x, y, name in zip(en_vals, ja_vals, labels):
+                t = ax.text(x, y, " " + name, fontsize=8.5, color=TEXT,
+                            ha="left", va="center", zorder=5)
+                texts.append(t)
+            if HAVE_ADJUST_TEXT and texts:
+                adjust_text(
+                    texts, ax=ax,
+                    arrowprops=dict(arrowstyle="-", color=GRID, lw=0.4),
+                    expand=(1.1, 1.3), iter_lim=100)
 
-    title = "Primary vs Tea Box-excluded sensitivity (v0.16 panel)"
-    subtitle = ("Each row shows bivariate ρ (left, vs C2 threshold |ρ|<0.35) and "
-                "partial ρ (right, vs C3 threshold ρ<0) at one wave / region. "
-                "Primary (indigo filled) uses the full v0.16 panel (n=28). "
-                "Tea Box-excluded (petro open) drops the brand whose rescaled "
-                "Trends signal was confounded by generic 'tea box' gift-set "
-                "language in v0.14. Tea Box sensitivity carried forward unchanged "
-                "from v0.14 as an inherited robustness check.")
+        # Annotate rho + n
+        wave_data = hdl.get("waves", {}).get(wave, {})
+        rho = wave_data.get("rho")
+        n   = wave_data.get("n")
+        rho_text = f"$\\rho$ = {rho:.3f}" if rho is not None else r"$\rho$ = N/A"
+        n_text   = f"  n = {n}" if n is not None else ""
+        ax.text(0.05, 0.95, rho_text + n_text,
+                transform=ax.transAxes, fontsize=10, color=TEXT,
+                va="top", ha="left", weight="bold")
+
+        ax.set_title("Wave $t_1$" if i == 0 else "Wave $t_2$",
+                     color=TEXT, weight="bold")
+        ax.set_xlabel(f"AI Presence — English ({en_prompt})",
+                      color=TEXT, fontsize=9)
+        if i == 0:
+            ax.set_ylabel(f"AI Presence — Japanese ({ja_prompt})",
+                          color=TEXT, fontsize=9)
+        ax.set_xlim(-5, 105)
+        ax.set_ylim(-5, 105)
+        ax.grid(True, color=GRID_SUBTLE, linewidth=0.4)
+
+    title = f"H_Discourse_Language_carryforward — Japanese cell — {status}"
+    subtitle = (
+        "Per-brand AI Presence: English-anchored prompt (x) vs Japanese-"
+        "language prompt (y), Japanese tradition cell. v0.8 finding "
+        "(SSRN 6728000) tested under v1.2 protocol with corrected eligibility "
+        "filtering. $\\rho$ < 0.85 = CARRY-FORWARD CONFIRMED; $\\rho$ in "
+        "[0.85, 0.95) = WEAKENED; $\\rho$ $\\geq$ 0.95 = FALSIFIED-favorable. "
+        "Identity line y = x for reference."
+    )
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
                             title_y=0.96, subtitle_y=0.91, wrap_width=92)
-    add_source(fig, x=0.06, y=0.025)
+    add_source(fig, x=0.06, y=0.020)
 
-    fig.subplots_adjust(top=0.74, bottom=0.13, left=0.21, right=0.95)
+    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.10, right=0.96,
+                        wspace=0.10)
 
-    out = OUT_DIR / "chart_v16_primary_vs_sensitivity.pdf"
+    out = OUT_DIR / "chart_v16_discourse_language_pair.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
     return out
@@ -983,8 +994,8 @@ if __name__ == "__main__":
     print(f"  HEADLINE  {p1.name}")
     p2 = chart_per_category_rho_comparison()
     print(f"  per_cat   {p2.name}")
-    p3 = chart_primary_vs_sensitivity()
-    print(f"  sensit    {p3.name}")
+    p3 = chart_discourse_language_pair()
+    print(f"  discourse    {p3.name}")
     p4 = chart_kitchen_knives_per_brand()
     print(f"  per_brand {p4.name}")
     p5 = chart_kitchen_knives_per_tradition()

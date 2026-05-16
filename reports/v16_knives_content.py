@@ -346,7 +346,7 @@ PATTERNS = [
     {
         "number": 2,
         "title": "H_Discourse_Language_carryforward FALSIFIED-favorable \u2014 registry expansion preserved AI Presence rankings",
-        "chart_slot": "f3_primary_vs_sensitivity",
+        "chart_slot": "f3_discourse_language",
         "n_lead": 2,
         "paragraphs": [
             (
