@@ -1,0 +1,257 @@
+{
+  "schema_version": "v1.2",
+  "phase": "v0.16",
+  "category": "kitchen_knives",
+  "prompt_set_lock_target_date": "TBD",
+  "languages": ["en", "ja", "de", "fr", "zh"],
+  "design_notes": {
+    "structure": "Five blocks: (1) English general baseline; (2) English use-case variants; (3) English tradition-anchored; (4) Tradition-native (paired with block 3 for H_Discourse_Language_carryforward); (5) Specificity/style variants.",
+    "h_discourse_language_pairing": "Block 3 (English tradition-anchored) and Block 4 (Tradition-native) are matched-pair prompts on the same underlying intent. Per-brand AI Presence is computed within each pair; the ρ across pairs feeds H_Discourse_Language_carryforward decision rules.",
+    "intent_categories": ["general_recommendation", "use_case_recommendation", "tradition_anchored", "specificity_variant"],
+    "carry_forward_base": "v0.15 prompt-set structure (premium tea), adapted for kitchen-knives category"
+  },
+  "blocks": {
+    "block_1_general_english": "General baseline English prompts. No tradition specification. Tests baseline recall and dominant-brand identification.",
+    "block_2_use_case_english": "English use-case variants (home cook, professional, sharpening, budget). Tests context-dependent surfacing.",
+    "block_3_tradition_anchored_english": "English prompts specifying tradition (Japanese, German, French, Chinese). Paired with Block 4 for H_Discourse_Language_carryforward.",
+    "block_4_tradition_native": "Native-language prompts for each tradition cell. Matched-pair counterpart to Block 3.",
+    "block_5_specificity_variants_english": "English style/specificity prompts (Damascus, gyuto, santoku, etc.). Tests sub-category surfacing."
+  },
+  "prompts": [
+    {
+      "prompt_id": "knives_b1_en_01",
+      "block": "block_1_general_english",
+      "language": "en",
+      "intent": "general_recommendation",
+      "prompt_text": "What are the best chef's knives to buy?",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b1_en_02",
+      "block": "block_1_general_english",
+      "language": "en",
+      "intent": "general_recommendation",
+      "prompt_text": "What are the top kitchen knife brands?",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b1_en_03",
+      "block": "block_1_general_english",
+      "language": "en",
+      "intent": "general_recommendation",
+      "prompt_text": "Which chef's knife should I buy?",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b1_en_04",
+      "block": "block_1_general_english",
+      "language": "en",
+      "intent": "general_recommendation",
+      "prompt_text": "Recommend a good kitchen knife.",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b2_en_01",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "intent": "use_case_recommendation",
+      "prompt_text": "What is the best chef's knife for a home cook?",
+      "tradition_anchor": null,
+      "use_case_anchor": "home_cook",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b2_en_02",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "intent": "use_case_recommendation",
+      "prompt_text": "What chef's knife do professional chefs use?",
+      "tradition_anchor": null,
+      "use_case_anchor": "professional",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b2_en_03",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "intent": "use_case_recommendation",
+      "prompt_text": "What is the best chef's knife under $100?",
+      "tradition_anchor": null,
+      "use_case_anchor": "budget_accessible",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b2_en_04",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "intent": "use_case_recommendation",
+      "prompt_text": "What is the best premium kitchen knife?",
+      "tradition_anchor": null,
+      "use_case_anchor": "premium",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b3_en_jp",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "intent": "tradition_anchored",
+      "prompt_text": "What are the best Japanese chef knives?",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_japanese"
+    },
+    {
+      "prompt_id": "knives_b3_en_de",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "intent": "tradition_anchored",
+      "prompt_text": "What are the best German chef knives?",
+      "tradition_anchor": "german",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_german"
+    },
+    {
+      "prompt_id": "knives_b3_en_fr",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "intent": "tradition_anchored",
+      "prompt_text": "What are the best French chef knives?",
+      "tradition_anchor": "french",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_french"
+    },
+    {
+      "prompt_id": "knives_b3_en_zh",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "intent": "tradition_anchored",
+      "prompt_text": "What are the best Chinese kitchen knives?",
+      "tradition_anchor": "chinese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_chinese"
+    },
+    {
+      "prompt_id": "knives_b4_ja_01",
+      "block": "block_4_tradition_native",
+      "language": "ja",
+      "intent": "tradition_anchored",
+      "prompt_text": "最高の日本の包丁は何ですか?",
+      "prompt_text_romanization": "Saikō no Nihon no hōchō wa nan desu ka?",
+      "prompt_text_gloss_en": "What is the best Japanese kitchen knife?",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_japanese"
+    },
+    {
+      "prompt_id": "knives_b4_de_01",
+      "block": "block_4_tradition_native",
+      "language": "de",
+      "intent": "tradition_anchored",
+      "prompt_text": "Was sind die besten deutschen Küchenmesser?",
+      "prompt_text_gloss_en": "What are the best German kitchen knives?",
+      "tradition_anchor": "german",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_german"
+    },
+    {
+      "prompt_id": "knives_b4_fr_01",
+      "block": "block_4_tradition_native",
+      "language": "fr",
+      "intent": "tradition_anchored",
+      "prompt_text": "Quels sont les meilleurs couteaux de cuisine français ?",
+      "prompt_text_gloss_en": "What are the best French kitchen knives?",
+      "tradition_anchor": "french",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_french"
+    },
+    {
+      "prompt_id": "knives_b4_zh_01",
+      "block": "block_4_tradition_native",
+      "language": "zh",
+      "intent": "tradition_anchored",
+      "prompt_text": "最好的中国菜刀是什么?",
+      "prompt_text_romanization": "Zuì hǎo de Zhōngguó càidāo shì shénme?",
+      "prompt_text_gloss_en": "What is the best Chinese cleaver/kitchen knife?",
+      "tradition_anchor": "chinese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_chinese"
+    },
+    {
+      "prompt_id": "knives_b5_en_01",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "intent": "specificity_variant",
+      "prompt_text": "What is the best Damascus chef's knife?",
+      "tradition_anchor": null,
+      "use_case_anchor": "style_damascus",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b5_en_02",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "intent": "specificity_variant",
+      "prompt_text": "What is the best gyuto knife?",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": "style_gyuto",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b5_en_03",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "intent": "specificity_variant",
+      "prompt_text": "What is the best santoku knife?",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": "style_santoku",
+      "discourse_language_pair_id": null
+    },
+    {
+      "prompt_id": "knives_b5_en_04",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "intent": "specificity_variant",
+      "prompt_text": "What is the best forged chef's knife?",
+      "tradition_anchor": null,
+      "use_case_anchor": "style_forged",
+      "discourse_language_pair_id": null
+    }
+  ],
+  "prompt_summary": {
+    "n_total": 20,
+    "by_block": {
+      "block_1_general_english": 4,
+      "block_2_use_case_english": 4,
+      "block_3_tradition_anchored_english": 4,
+      "block_4_tradition_native": 4,
+      "block_5_specificity_variants_english": 4
+    },
+    "by_language": {
+      "en": 16,
+      "ja": 1,
+      "de": 1,
+      "fr": 1,
+      "zh": 1
+    },
+    "discourse_language_pairs": [
+      {"pair_id": "pair_japanese", "en_prompt": "knives_b3_en_jp", "native_prompt": "knives_b4_ja_01"},
+      {"pair_id": "pair_german", "en_prompt": "knives_b3_en_de", "native_prompt": "knives_b4_de_01"},
+      {"pair_id": "pair_french", "en_prompt": "knives_b3_en_fr", "native_prompt": "knives_b4_fr_01"},
+      {"pair_id": "pair_chinese", "en_prompt": "knives_b3_en_zh", "native_prompt": "knives_b4_zh_01"}
+    ]
+  },
+  "open_questions_for_lock": [
+    "Confirm n_prompts per block matches v1.2 protocol canonical structure (current: 4 per block, 20 total). If v1.2 requires different per-block counts, adjust.",
+    "Confirm Block 4 native-language wording with native-language LLMs at pre-lock dry run (Pablo: Spanish-native; LLM verification required for ja/de/fr/zh).",
+    "Decide whether to add native-language use-case variants to Block 4 (currently one tradition_anchored prompt per language; could expand to 2-3 per language matching Block 2 use-case structure). Trade-off: more native-language coverage strengthens H_Discourse_Language_carryforward power; cost is acquisition volume × 14 LLMs × 2 waves.",
+    "Confirm Chinese cleaver/chef-knife terminology — 菜刀 (càidāo, cleaver/kitchen knife) vs 厨刀 (chúdāo, chef's knife). Current Block 4 uses 菜刀 which is the dominant vernacular; v1.2 §4 5-stage resolution must handle both terms."
+  ]
+}
