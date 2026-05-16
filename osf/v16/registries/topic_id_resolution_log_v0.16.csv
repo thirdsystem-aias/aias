@@ -1,0 +1,38 @@
+brand_canonical,brand_id,tradition_cell,tier,role,alternate_priority,final_query_tier,acquisition_query,topic_id_resolution_stage,notes
+Victorinox,victorinox,pivot,professional,pivot_primary,,,,,Primary pivot; Phase A validation required at acquisition lock (Swiss-Army-knife adjacency check per pre-reg §3/§6)
+Shun,shun,japanese,professional,panel,,,,,
+Global,global,japanese,professional,panel,,,,,
+Miyabi,miyabi,japanese,premium,panel,,,,,
+Mac,mac,japanese,professional,panel,,,,,
+Tojiro,tojiro,japanese,accessible,panel,,,,,
+Yoshihiro,yoshihiro,japanese,premium,panel,,,,,
+Wüsthof,wusthof,german,professional,panel,,,,,"Panel + fallback pivot. Per pre-reg §6, if Victorinox fails §4 at lock, Wüsthof inherits pivot role and exits German cell (cell collapses to n=4)."
+Zwilling J.A. Henckels,zwilling,german,professional,panel,,,,,
+Messermeister,messermeister,german,professional,panel,,,,,
+Güde,gude,german,premium,panel,,,,,
+Friedr. Dick,friedr_dick,german,professional,panel,,,,,
+Sabatier,sabatier,french,professional,panel,,,,,
+Opinel,opinel,french,accessible,panel,,,,,
+Laguiole,laguiole,french,professional,panel,,,,,
+Nogent (Goyon-Chazeau),nogent,french,professional,panel,,,,,
+Cutco,cutco,american_specialty,accessible,panel,,,,,
+Dalstrong,dalstrong,american_specialty,accessible,panel,,,,,
+Misen,misen,american_specialty,accessible,panel,,,,,
+New West KnifeWorks,new_west,american_specialty,premium,panel,,,,,
+Made In,made_in,american_specialty,professional,panel,,,,,
+CCK Chan Chi Kee,cck,chinese,value,panel,,,,,
+Shibazi (Shi Ba Zi Zuo),shibazi,chinese,value,panel,,,,,
+Sunlong,sunlong,chinese,value,panel,,,,,
+ZHEN,zhen,chinese,accessible,panel,,,,,
+Masamoto,masamoto,japanese,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Misono,misono,japanese,professional,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Tadafusa,tadafusa,japanese,premium,alternate,3,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Robert Herder,robert_herder,german,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Schmidt Brothers,schmidt_brothers,german,accessible,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Au Nain,au_nain,french,professional,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Goyon-Chazeau Le Thiers,goyon_chazeau_le_thiers,french,professional,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Bob Kramer,bob_kramer,american_specialty,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hammer Stahl,hammer_stahl,american_specialty,accessible,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hu Si Chao,hu_si_chao,chinese,value,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Dengjia,dengjia,chinese,value,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hengtai,hengtai,chinese,value,alternate,3,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
