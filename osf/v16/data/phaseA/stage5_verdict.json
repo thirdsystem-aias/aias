@@ -1,0 +1,29 @@
+{
+  "session_timestamp": "2026-05-16T23:54:14.178436+00:00",
+  "pivot_canonical": "Wüsthof",
+  "stage_results": {
+    "stage1_audit_n_suggestions": 5,
+    "stage2_stability_pass": false,
+    "stage2_cv_pct": 42.19,
+    "stage3_position_pass": false,
+    "stage3_pivot_to_ref_ratio": 0.0,
+    "stage4_adjacency_pass": false,
+    "stage4_chef_proportion": 0.004,
+    "stage4_swiss_army_proportion": 0.996
+  },
+  "verdict": "FAIL",
+  "action": "Activate Wüsthof fallback pivot per pre-reg §6",
+  "panel_cell_impact": "German tradition cell collapses to n=4 (Wüsthof exits panel; no within-cell alternate substitution per pre-reg §6)",
+  "thresholds_applied": {
+    "stage2_cv_threshold_pct": 30.0,
+    "stage3_pivot_to_ref_band": [
+      0.5,
+      5.0
+    ],
+    "stage4_chef_prop_min": 0.2,
+    "stage4_swiss_army_prop_max": 0.7
+  },
+  "next_steps": [
+    "MANUAL INTERVENTION REQUIRED — see fallback steps below"
+  ]
+}

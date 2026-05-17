@@ -1,0 +1,50 @@
+{
+  "brand": "Hengtai",
+  "category": "kitchen_knives",
+  "tradition_cell": "chinese",
+  "solo_query": "Hengtai",
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "window": "2026-05-10 2026-05-16",
+  "geo": "",
+  "test_timestamp": "2026-05-17T00:28:40.869065+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "solo_result": {
+    "daily": [
+      {
+        "date": "May 10, 2026",
+        "value": 75
+      },
+      {
+        "date": "May 11, 2026",
+        "value": 100
+      },
+      {
+        "date": "May 12, 2026",
+        "value": 72
+      },
+      {
+        "date": "May 13, 2026",
+        "value": 60
+      },
+      {
+        "date": "May 14, 2026",
+        "value": 66
+      },
+      {
+        "date": "May 15, 2026",
+        "value": 61
+      },
+      {
+        "date": "May 16, 2026",
+        "value": 42
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 68.0,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

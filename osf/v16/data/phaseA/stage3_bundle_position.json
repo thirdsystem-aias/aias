@@ -1,0 +1,24 @@
+{
+  "pivot_canonical": "Wüsthof",
+  "session_timestamp": "2026-05-16T23:54:06.354745+00:00",
+  "window": "2025-05-01 2026-04-30",
+  "query": "Wüsthof,Shun,Global,Miyabi,Zwilling J.A. Henckels",
+  "http_status": 200,
+  "serpapi_error": null,
+  "pivot_mean": 0,
+  "pivot_max": 0,
+  "ref_means": {
+    "Shun": 1,
+    "Global": 75.62,
+    "Miyabi": 0.6,
+    "Zwilling J.A. Henckels": 0
+  },
+  "ref_median": 0.8,
+  "pivot_to_ref_ratio": 0.0,
+  "ratio_band": [
+    0.5,
+    5.0
+  ],
+  "position_pass": false,
+  "position_rationale": "pivot/median(ref)=0.00 OUT OF [0.5, 5.0]: FAIL"
+}

@@ -1,0 +1,38 @@
+{
+  "brand": "Mac",
+  "category": "kitchen_knives",
+  "suggestions": [
+    {
+      "mid": "/g/1n36yxcmb",
+      "title": "Macy's",
+      "type": "Topic"
+    },
+    {
+      "mid": "/m/0zd6",
+      "title": "Macintosh",
+      "type": "Computer"
+    },
+    {
+      "mid": "/m/055yr",
+      "title": "macOS",
+      "type": "Operating system"
+    },
+    {
+      "mid": "/m/0dkw5",
+      "title": "Machine",
+      "type": "Topic"
+    },
+    {
+      "mid": "/m/0gfg3fc",
+      "title": "Porsche Macan",
+      "type": "Luxury"
+    }
+  ],
+  "chosen": {
+    "mid": "/g/1n36yxcmb",
+    "title": "Macy's",
+    "type": "Topic",
+    "rationale": "no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)"
+  },
+  "test_timestamp": "2026-05-17T00:22:21.504360+00:00"
+}

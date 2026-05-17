@@ -1,0 +1,17 @@
+{
+  "pivot_canonical": "Wüsthof",
+  "session_timestamp": "2026-05-16T23:54:11.174961+00:00",
+  "window": "2025-05-01 2026-04-30",
+  "query": "Wüsthof,Wüsthof chef knife,Swiss Army knife",
+  "http_status": 200,
+  "serpapi_error": null,
+  "pivot_mean": 20.47,
+  "chef_mean": 0.32,
+  "swiss_army_mean": 73.55,
+  "chef_proportion": 0.004,
+  "swiss_army_proportion": 0.996,
+  "chef_prop_min": 0.2,
+  "swiss_army_prop_max": 0.7,
+  "adjacency_pass": false,
+  "adjacency_rationale": "chef_prop=0.00 (need >= 0.2), sa_prop=1.00 (need <= 0.7): FAIL"
+}

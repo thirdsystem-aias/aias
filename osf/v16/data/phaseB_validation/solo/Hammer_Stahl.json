@@ -1,0 +1,50 @@
+{
+  "brand": "Hammer Stahl",
+  "category": "kitchen_knives",
+  "tradition_cell": "american_specialty",
+  "solo_query": "Hammer Stahl",
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "window": "2026-05-10 2026-05-16",
+  "geo": "",
+  "test_timestamp": "2026-05-17T00:28:24.608868+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "solo_result": {
+    "daily": [
+      {
+        "date": "May 10, 2026",
+        "value": 68
+      },
+      {
+        "date": "May 11, 2026",
+        "value": 77
+      },
+      {
+        "date": "May 12, 2026",
+        "value": 65
+      },
+      {
+        "date": "May 13, 2026",
+        "value": 52
+      },
+      {
+        "date": "May 14, 2026",
+        "value": 100
+      },
+      {
+        "date": "May 15, 2026",
+        "value": 88
+      },
+      {
+        "date": "May 16, 2026",
+        "value": 54
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 72.0,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

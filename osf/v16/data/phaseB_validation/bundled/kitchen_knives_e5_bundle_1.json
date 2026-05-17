@@ -1,0 +1,102 @@
+{
+  "category": "kitchen_knives",
+  "bundle_id": 1,
+  "queries": [
+    "Wüsthof",
+    "Friedr. Dick",
+    "Nogent (Goyon-Chazeau)",
+    "CCK Chan Chi Kee",
+    "Shibazi (Shi Ba Zi Zuo)"
+  ],
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "member_names": [
+    "Wüsthof",
+    "Friedr. Dick",
+    "Nogent (Goyon-Chazeau)",
+    "CCK Chan Chi Kee",
+    "Shibazi (Shi Ba Zi Zuo)"
+  ],
+  "window": "2026-05-10 2026-05-16",
+  "geo": "",
+  "test_timestamp": "2026-05-17T00:28:47.317976+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        45,
+        34,
+        33,
+        78,
+        100,
+        33,
+        34
+      ],
+      "max": 100,
+      "mean": 51.0,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 1,
+      "mean": 0.14,
+      "all_zero": false
+    },
+    {
+      "slot": 2,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 3,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 4,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    }
+  ]
+}
