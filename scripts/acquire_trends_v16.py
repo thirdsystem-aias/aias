@@ -84,18 +84,18 @@ REGIONS = [("worldwide", ""), ("US", "US")]
 
 # Bundle composition — MUST mirror rescale_trends_v16.py exactly.
 # 6 bundles × 5 keywords (pivot + 4 brands) = 6 SerpAPI calls per region.
-PIVOT = "Victorinox"
+PIVOT = "Wüsthof"
 BUNDLES = [
-    {"id": 1, "label": "japanese-1",
+    {"id": 1, "label": "japanese",
      "members": ["Shun", "Global", "Miyabi", "Mac"]},
     {"id": 2, "label": "japanese-german",
-     "members": ["Tojiro", "Yoshihiro", "Wüsthof", "Zwilling J.A. Henckels"]},
+     "members": ["Tojiro", "Yoshihiro", "Zwilling J.A. Henckels", "Messermeister"]},
     {"id": 3, "label": "german-french",
-     "members": ["Messermeister", "Güde", "Friedr. Dick", "Sabatier"]},
+     "members": ["Güde", "Friedr. Dick", "Sabatier", "Opinel"]},
     {"id": 4, "label": "french-american",
-     "members": ["Opinel", "Laguiole", "Nogent (Goyon-Chazeau)", "Cutco"]},
+     "members": ["Laguiole", "Nogent (Goyon-Chazeau)", "Cutco", "Dalstrong"]},
     {"id": 5, "label": "american",
-     "members": ["Dalstrong", "Misen", "New West KnifeWorks", "Made In"]},
+     "members": ["Misen", "New West KnifeWorks", "Made In"]},
     {"id": 6, "label": "chinese",
      "members": ["CCK Chan Chi Kee", "Shibazi (Shi Ba Zi Zuo)", "Sunlong", "ZHEN"]},
 ]

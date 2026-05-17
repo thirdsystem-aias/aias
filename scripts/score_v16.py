@@ -74,7 +74,7 @@ OUT_DIR.mkdir(parents=True, exist_ok=True)
 MATCHED_MODELS = {"claude-sonnet-4-6", "gpt-5.4-mini"}
 
 CATEGORY = "kitchen_knives"
-PIVOT = "Victorinox"
+PIVOT = "Wüsthof"
 CURRENT_YEAR = 2026  # for brand_age_years computation
 
 # Wave split (locked per v0.13 design — single acquisition split by run_idx)

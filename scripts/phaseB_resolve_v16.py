@@ -107,7 +107,7 @@ CATEGORY_TYPE_KEYWORDS = {
 }
 
 PIVOTS_CANONICAL = {
-    "kitchen_knives": "Victorinox",   # primary pivot per pre-reg §3
+    "kitchen_knives": "Wüsthof",   # primary pivot per pre-reg §3
 }
 
 # High-risk subset (per pre-reg §3 topic_id_notes) — surfaced in summary

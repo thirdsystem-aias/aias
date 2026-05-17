@@ -35,25 +35,26 @@ from pathlib import Path
 
 CATEGORIES = {
     "kitchen_knives": {
-        "pivot": "Victorinox",
+        "pivot": "Wüsthof",
         "bundles": [
             {"id": 1, "members": [
-                ("Victorinox", False), ("Shun", False), ("Global", False),
+                ("Wüsthof", False), ("Shun", False), ("Global", False),
                 ("Miyabi", False), ("Mac", False)]},
             {"id": 2, "members": [
-                ("Victorinox", False), ("Tojiro", False), ("Yoshihiro", False),
-                ("Wüsthof", False), ("Zwilling J.A. Henckels", False)]},
+                ("Wüsthof", False), ("Tojiro", False), ("Yoshihiro", False),
+                ("Zwilling J.A. Henckels", False), ("Messermeister", False)]},
             {"id": 3, "members": [
-                ("Victorinox", False), ("Messermeister", False), ("Güde", False),
-                ("Friedr. Dick", False), ("Sabatier", False)]},
+                ("Wüsthof", False), ("Güde", False), ("Friedr. Dick", False),
+                ("Sabatier", False), ("Opinel", False)]},
             {"id": 4, "members": [
-                ("Victorinox", False), ("Opinel", False), ("Laguiole", False),
-                ("Nogent (Goyon-Chazeau)", False), ("Cutco", False)]},
+                ("Wüsthof", False), ("Laguiole", False),
+                ("Nogent (Goyon-Chazeau)", False), ("Cutco", False),
+                ("Dalstrong", False)]},
             {"id": 5, "members": [
-                ("Victorinox", False), ("Dalstrong", False), ("Misen", False),
+                ("Wüsthof", False), ("Misen", False),
                 ("New West KnifeWorks", False), ("Made In", False)]},
             {"id": 6, "members": [
-                ("Victorinox", False), ("CCK Chan Chi Kee", False),
+                ("Wüsthof", False), ("CCK Chan Chi Kee", False),
                 ("Shibazi (Shi Ba Zi Zuo)", False), ("Sunlong", False),
                 ("ZHEN", False)]},
         ],

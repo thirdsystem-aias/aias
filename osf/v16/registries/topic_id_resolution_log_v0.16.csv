@@ -1,12 +1,12 @@
 brand_canonical,brand_id,tradition_cell,tier,role,alternate_priority,final_query_tier,acquisition_query,topic_id_resolution_stage,notes
-Victorinox,victorinox,pivot,professional,pivot_primary,,,,,Primary pivot; Phase A validation required at acquisition lock (Swiss-Army-knife adjacency check per pre-reg §3/§6)
+Victorinox,victorinox,pivot,professional,pivot_failed,,PIVOT_FAILED,,Phase A FAIL (substantive),"Primary pivot; Phase A validation required at acquisition lock (Swiss-Army-knife adjacency check per pre-reg §3/§6) | Phase A failure: Stage 4 chef_prop=0.093, sa_prop=0.907 (Swiss-Army-knife dominant). Fallback to Wüsthof activated per DEVIATIONS Entry 3."
 Shun,shun,japanese,professional,panel,,,,,
 Global,global,japanese,professional,panel,,,,,
 Miyabi,miyabi,japanese,premium,panel,,,,,
 Mac,mac,japanese,professional,panel,,,,,
 Tojiro,tojiro,japanese,accessible,panel,,,,,
 Yoshihiro,yoshihiro,japanese,premium,panel,,,,,
-Wüsthof,wusthof,german,professional,panel,,,,,"Panel + fallback pivot. Per pre-reg §6, if Victorinox fails §4 at lock, Wüsthof inherits pivot role and exits German cell (cell collapses to n=4)."
+Wüsthof,wusthof,german,professional,pivot_primary,,PIVOT,Wüsthof,Phase A advisory (DEVIATIONS Entry 3),"Panel + fallback pivot. Per pre-reg §6, if Victorinox fails §4 at lock, Wüsthof inherits pivot role and exits German cell (cell collapses to n=4). | Fallback pivot activated per DEVIATIONS Entry 3 (pre-reg §3 / §6 substantive amendment). Exits German tradition cell; German cell drops to n=4 with no within-cell alternate substitution."
 Zwilling J.A. Henckels,zwilling,german,professional,panel,,,,,
 Messermeister,messermeister,german,professional,panel,,,,,
 Güde,gude,german,premium,panel,,,,,
