@@ -178,7 +178,23 @@ def main():
         if not key:
             print(f"ERROR: missing {name}"); sys.exit(1)
 
-    rows = []
+    # INCREMENTAL_WRITE_ENABLED — CSV is opened here and written row-by-row
+    # inside the inner loop, so a mid-run crash preserves all rows up to the
+    # crash point. The end-of-run "save rows" block is replaced with a close.
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_path = output_dir / f"results_v2_{category}_{timestamp}.csv"
+    CSV_FIELDS = [
+        "timestamp", "category", "methodology_version", "prompt_set_version",
+        "brand_registry_version", "prompt_id", "cep", "model_slot", "provider",
+        "model_version", "temperature", "run_idx", "call_status", "attempts",
+        "elapsed_sec", "raw_response",
+    ]
+    csv_file = open(out_path, "w", newline="", encoding="utf-8")
+    csv_writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
+    csv_writer.writeheader()
+    csv_file.flush()
+    print(f"CSV (incremental): {out_path}")
+    rows_written = 0
     call_idx = 0
     total = len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT
     status_counts = {"ok": 0, "rate_limit_final": 0, "transient_final": 0, "hard_error": 0}
@@ -205,7 +221,7 @@ def main():
                     note = f"FAILED [{status}] after {attempts} attempts ({elapsed:.1f}s)"
                 print(f"-> {note}")
 
-                rows.append({
+                row = {
                     "timestamp": datetime.now().isoformat(timespec='seconds'),
                     "category": category,
                     "methodology_version": METHODOLOGY_VERSION,
@@ -222,18 +238,16 @@ def main():
                     "attempts": attempts,
                     "elapsed_sec": round(elapsed, 2),
                     "raw_response": raw.replace("\n", " ").replace("\t", " ") if raw else "",
-                })
+                }
+                csv_writer.writerow(row)
+                csv_file.flush()
+                rows_written += 1
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_path = output_dir / f"results_v2_{category}_{timestamp}.csv"
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(rows)
+    csv_file.close()
 
     print()
     print("=" * 78)
-    print(f"Run complete. Saved {len(rows)} rows to {out_path}")
+    print(f"Run complete. Saved {rows_written} rows to {out_path}")
     print(f"  ok:                 {status_counts.get('ok', 0)}")
     print(f"  rate_limit_final:   {status_counts.get('rate_limit_final', 0)}")
     print(f"  transient_final:    {status_counts.get('transient_final', 0)}")
