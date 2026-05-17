@@ -79,7 +79,7 @@ RETRY_DELAY_SEC      = 5
 # Acquisition window (TBD: Pablo confirms before run).
 # v0.13/v0.14/v0.15 used 2026-04-27 to 2026-05-10 for tea cross-phase
 # comparability. v0.16 is a fresh category; new window OK.
-ACQUISITION_WINDOW = "2026-05-04 2026-05-17"   # TBD: confirm before run
+ACQUISITION_WINDOW = "2026-05-03 2026-05-16"   # TBD: confirm before run
 REGIONS = [("worldwide", ""), ("US", "US")]
 
 # Bundle composition — MUST mirror rescale_trends_v16.py exactly.

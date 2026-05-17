@@ -66,10 +66,10 @@ REGIONS = ["worldwide", "US"]
 # Wave windows — Pablo sets these to bisect the ACQUISITION_WINDOW from
 # acquire_trends_v16.py. Default below assumes 14-day window split into
 # two 7-day waves. Adjust if window differs.
-T1_START = datetime(2026, 5,  4)
-T1_END   = datetime(2026, 5, 10)
-T2_START = datetime(2026, 5, 11)
-T2_END   = datetime(2026, 5, 17)
+T1_START = datetime(2026, 5,  3)
+T1_END   = datetime(2026, 5,  9)
+T2_START = datetime(2026, 5, 10)
+T2_END   = datetime(2026, 5, 16)
 
 # n-floor per v0.13 §3.6a; inherited unchanged
 N_FLOOR_HARD  = 10
