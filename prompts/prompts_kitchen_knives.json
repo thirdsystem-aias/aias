@@ -1,0 +1,208 @@
+{
+  "category": "kitchen_knives",
+  "prompt_set_version": "kitchen_knives_v0.16_legacy_adapter_v1",
+  "source_canonical": "prompts_knives_v0.16.json",
+  "adapter_note": "Derived from prompts_knives_v0.16.json (new schema with prompt_id/intent/prompt_text) for compatibility with run_aias_v2.py's prompt['id'], prompt['cep'], prompt['prompt'] access pattern. v0.16 file remains canonical; this is a regenerable build artifact.",
+  "prompts": [
+    {
+      "id": "knives_b1_en_01",
+      "cep": "GENERAL_RECOMMENDATION",
+      "prompt": "What are the best chef's knives to buy?",
+      "block": "block_1_general_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b1_en_02",
+      "cep": "GENERAL_RECOMMENDATION",
+      "prompt": "What are the top kitchen knife brands?",
+      "block": "block_1_general_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b1_en_03",
+      "cep": "GENERAL_RECOMMENDATION",
+      "prompt": "Which chef's knife should I buy?",
+      "block": "block_1_general_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b1_en_04",
+      "cep": "GENERAL_RECOMMENDATION",
+      "prompt": "Recommend a good kitchen knife.",
+      "block": "block_1_general_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": null,
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b2_en_01",
+      "cep": "USE_CASE_RECOMMENDATION",
+      "prompt": "What is the best chef's knife for a home cook?",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "home_cook",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b2_en_02",
+      "cep": "USE_CASE_RECOMMENDATION",
+      "prompt": "What chef's knife do professional chefs use?",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "professional",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b2_en_03",
+      "cep": "USE_CASE_RECOMMENDATION",
+      "prompt": "What is the best chef's knife under $100?",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "budget_accessible",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b2_en_04",
+      "cep": "USE_CASE_RECOMMENDATION",
+      "prompt": "What is the best premium kitchen knife?",
+      "block": "block_2_use_case_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "premium",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b3_en_jp",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "What are the best Japanese chef knives?",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_japanese"
+    },
+    {
+      "id": "knives_b3_en_de",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "What are the best German chef knives?",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "tradition_anchor": "german",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_german"
+    },
+    {
+      "id": "knives_b3_en_fr",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "What are the best French chef knives?",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "tradition_anchor": "french",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_french"
+    },
+    {
+      "id": "knives_b3_en_zh",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "What are the best Chinese kitchen knives?",
+      "block": "block_3_tradition_anchored_english",
+      "language": "en",
+      "tradition_anchor": "chinese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_chinese"
+    },
+    {
+      "id": "knives_b4_ja_01",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "最高の日本の包丁は何ですか?",
+      "block": "block_4_tradition_native",
+      "language": "ja",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_japanese"
+    },
+    {
+      "id": "knives_b4_de_01",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "Was sind die besten deutschen Küchenmesser?",
+      "block": "block_4_tradition_native",
+      "language": "de",
+      "tradition_anchor": "german",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_german"
+    },
+    {
+      "id": "knives_b4_fr_01",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "Quels sont les meilleurs couteaux de cuisine français ?",
+      "block": "block_4_tradition_native",
+      "language": "fr",
+      "tradition_anchor": "french",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_french"
+    },
+    {
+      "id": "knives_b4_zh_01",
+      "cep": "TRADITION_ANCHORED",
+      "prompt": "最好的中国菜刀是什么?",
+      "block": "block_4_tradition_native",
+      "language": "zh",
+      "tradition_anchor": "chinese",
+      "use_case_anchor": null,
+      "discourse_language_pair_id": "pair_chinese"
+    },
+    {
+      "id": "knives_b5_en_01",
+      "cep": "SPECIFICITY_VARIANT",
+      "prompt": "What is the best Damascus chef's knife?",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "style_damascus",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b5_en_02",
+      "cep": "SPECIFICITY_VARIANT",
+      "prompt": "What is the best gyuto knife?",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": "style_gyuto",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b5_en_03",
+      "cep": "SPECIFICITY_VARIANT",
+      "prompt": "What is the best santoku knife?",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "tradition_anchor": "japanese",
+      "use_case_anchor": "style_santoku",
+      "discourse_language_pair_id": null
+    },
+    {
+      "id": "knives_b5_en_04",
+      "cep": "SPECIFICITY_VARIANT",
+      "prompt": "What is the best forged chef's knife?",
+      "block": "block_5_specificity_variants_english",
+      "language": "en",
+      "tradition_anchor": null,
+      "use_case_anchor": "style_forged",
+      "discourse_language_pair_id": null
+    }
+  ]
+}
