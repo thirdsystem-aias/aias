@@ -93,11 +93,11 @@ BUNDLES = [
     {"id": 3, "label": "german-french",
      "members": ["Güde", "Friedr. Dick", "Sabatier", "Opinel"]},
     {"id": 4, "label": "french-american",
-     "members": ["Laguiole", "Nogent (Goyon-Chazeau)", "Cutco", "Dalstrong"]},
+     "members": ["Laguiole", "Au Nain", "Cutco", "Dalstrong"]},
     {"id": 5, "label": "american",
      "members": ["Misen", "New West KnifeWorks", "Made In"]},
     {"id": 6, "label": "chinese",
-     "members": ["CCK Chan Chi Kee", "Shibazi (Shi Ba Zi Zuo)", "Sunlong", "ZHEN"]},
+     "members": ["Sunlong", "ZHEN", "Hengtai"]},
 ]
 
 CATEGORY = "kitchen_knives"

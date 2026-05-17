@@ -380,6 +380,23 @@
       "role": "panel",
       "topic_id_notes": "Three-letter brand name in all-caps; v1.2 §4 5-stage resolution required to disambiguate from acronyms and the Mandarin word 'zhen' (真)",
       "alternate_priority": null
+    },
+    {
+      "brand_id": "au_nain",
+      "display_name": "Au Nain",
+      "tradition_cell": "french",
+      "founded": 1812,
+      "tier": "professional",
+      "role": "alternate"
+    },
+    {
+      "brand_id": "hengtai",
+      "display_name": "Hengtai",
+      "tradition_cell": "chinese",
+      "founded": null,
+      "tier": "value",
+      "role": "alternate",
+      "alternate_notes": "VERIFY founding date if activated"
     }
   ],
   "alternates": [
@@ -430,15 +447,6 @@
       "alternate_notes": "German-tradition lineage; US founding"
     },
     {
-      "brand_id": "au_nain",
-      "display_name": "Au Nain",
-      "tradition_cell": "french",
-      "founded": 1812,
-      "tier": "professional",
-      "role": "alternate",
-      "alternate_priority": 1
-    },
-    {
       "brand_id": "goyon_chazeau_le_thiers",
       "display_name": "Goyon-Chazeau Le Thiers",
       "tradition_cell": "french",
@@ -485,16 +493,6 @@
       "tier": "value",
       "role": "alternate",
       "alternate_priority": 2,
-      "alternate_notes": "VERIFY founding date if activated"
-    },
-    {
-      "brand_id": "hengtai",
-      "display_name": "Hengtai",
-      "tradition_cell": "chinese",
-      "founded": null,
-      "tier": "value",
-      "role": "alternate",
-      "alternate_priority": 3,
       "alternate_notes": "VERIFY founding date if activated"
     }
   ],

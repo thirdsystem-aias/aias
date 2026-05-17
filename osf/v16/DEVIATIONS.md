@@ -286,3 +286,105 @@ Per Entry 2 conditions of permissibility for pre-acquisition substantive amendme
 2. The amendment aligns with the intent of pre-reg §3 / §6 (Wüsthof fallback on Victorinox topic-ID failure). The literal text was unimplementable; the intent is preserved.
 3. The amendment is fully audited here. Original Victorinox-primary state is recoverable via `git show v0.16-prereg:registries/PRE_REGISTRATION_v0_16.md` and the `.bak` script. Diagnostic Phase A outputs are retained on disk.
 4. Cross-phase comparability is preserved. v0.16 remains a Regime 4 substrate-replication test under H_Regime4_replication_knives. Pivot identity changes do not affect the hypothesis conditions or their evaluation procedure.
+## Entry 4 — Alternate activation (Au Nain, Hengtai) per pre-reg §6 substitution order
+
+**Status.** Pre-acquisition routine event. Activates two pre-registered alternates per the substitution rules in pre-reg §3 (alternates list) and §6 (cell-collapse contingency). This is not a substantive amendment to the pre-registration; it is the pre-registered contingency firing.
+
+**Logged:** 17 May 2026 UTC (00:22 session start; Phase B completion).
+
+**No data has been collected against the affected pre-registration text.** Acquisition (`acquire_trends_v16.py`) has not been run. The amendment is pre-acquisition.
+
+---
+
+### Phase B per-cell outcomes that triggered the substitution
+
+`phaseB_resolve_v16.py` session at 2026-05-17T00:22:04Z produced the following per-cell eligibility result:
+
+| Tradition cell | Primary panel | PASS / PASS_E5 | EXCLUDED_E1a | Cell n |
+|---|---|---|---|---|
+| japanese | 6 | 6 | 0 | 6 |
+| german | 4 | 4 (1 via E5) | 0 | 4 |
+| french | 4 | 3 | 1 (Nogent (Goyon-Chazeau)) | 3 (underpower warning) |
+| american_specialty | 5 | 5 | 0 | 5 |
+| chinese | 4 | 2 | 2 (CCK Chan Chi Kee, Shibazi (Shi Ba Zi Zuo)) | 2 (cell collapse trigger per pre-reg §6) |
+
+French cell at n=3 is below the n≥4 cell-design floor (underpower warning). Chinese cell at n=2 triggers the pre-reg §6 cell-collapse rule (descriptive-only routing). Both cells are eligible for alternate-activation rescue per pre-reg §3.
+
+### Pre-reg §3 alternate lists (binding substitution order)
+
+> **Pre-registered alternates** (used in pre-registered substitution order if a primary brand fails topic-ID resolution or eligibility):
+> - Japanese cell: Masamoto, Misono, Tadafusa
+> - German cell: Schmidt Brothers (German-tradition lineage), Robert Herder
+> - French cell: **Au Nain, Goyon-Chazeau Le Thiers**
+> - American cell: Bob Kramer (Zwilling collaboration; high-end), Wüsthof Classic Ikon (excluded — duplicate), Hammer Stahl
+> - Chinese cell: **Hu Si Chao, Dengjia, Hengtai**
+
+### Substitution walks (per pre-reg priority order)
+
+**French (1 substitute needed for Nogent):**
+
+| Priority | Alternate | Phase B Stage 2 result | Outcome |
+|---|---|---|---|
+| 1 | Au Nain | PASS (n_days=7, mean=74.71) | **ACTIVATED** |
+
+Substitution complete with the 1st-priority alternate. French cell rises from n=3 to n=4. Cell fully eligible for inferential analysis.
+
+**Chinese (2 substitutes needed for CCK + Shibazi):**
+
+| Priority | Alternate | Phase B Stage 2 result | Outcome |
+|---|---|---|---|
+| 1 | Hu Si Chao | all-zero solo + all-zero E5 → EXCLUDED_E1a | Failed; continue walk |
+| 2 | Dengjia | all-zero solo + all-zero E5 → EXCLUDED_E1a | Failed; continue walk |
+| 3 | Hengtai | PASS (n_days=7, mean=68.0) | **ACTIVATED** |
+
+Substitution walk exhausted with 1 of 2 needed substitutes located. Chinese cell rises from n=2 (cell-collapse trigger) to n=3 (underpower warning, eligible for inferential analysis). Per pre-reg §6 spirit, escape from the n<3 cell-collapse routing is the threshold being met; further alternate activation is not possible (the pre-registered Chinese alternate list is exhausted).
+
+### Decisions
+
+1. **Au Nain promoted from `alternate` to `panel`.** Tradition cell: french. Activation rationale recorded in this entry; topic-ID resolution log updated.
+2. **Hengtai promoted from `alternate` to `panel`.** Tradition cell: chinese. Activation rationale recorded; topic-ID resolution log updated.
+3. **Chinese cell descriptive-routing flag is removed.** Cell n=3 retains an underpower warning (the per-cell tradition-dummy in partial correlation operates on n=3, which is below the typical n≥4 cell-design floor), but is eligible for inferential analysis. Cross-cell H_Regime4_replication_knives analyses include all 22 eligible non-pivot panel brands.
+4. **EXCLUDED_E1a primary brands remain in the registry** with their existing topic-ID resolution status. They are not replaced in the registry's panel array — they are dropped from the acquisition bundle composition (see §"Bundle composition impact" below).
+5. **Hu Si Chao and Dengjia retain `alternate` role with `TESTED_NOT_ACTIVATED` notes** documenting the failed activation walk. They are eligible for re-test in a future phase but not in v0.16.
+
+### Updated panel eligibility
+
+Total panel: 23 primary brands + 2 activated alternates = 25 enrolled. 3 EXCLUDED_E1a (Nogent, CCK, Shibazi) are dropped from bundle composition. **Total eligible: 22 brands (excluding pivot Wüsthof)**.
+
+| Tradition cell | Eligible brands |
+|---|---|
+| japanese (n=6) | Shun, Global, Miyabi, Mac, Tojiro, Yoshihiro |
+| german (n=4) | Zwilling J.A. Henckels, Messermeister, Güde, Friedr. Dick |
+| french (n=4) | Sabatier, Opinel, Laguiole, **Au Nain** |
+| american_specialty (n=5) | Cutco, Dalstrong, Misen, New West KnifeWorks, Made In |
+| chinese (n=3) | Sunlong, ZHEN, **Hengtai** *(underpower warning, n<4)* |
+
+H_Regime4_replication_knives Condition 1 (n_eligible ≥ 12) satisfied with substantial margin (22 ≥ 12).
+
+### Bundle composition impact (acquisition + rescale)
+
+To accommodate the substitutions while honoring Google Trends' 5-keyword-per-query limit, EXCLUDED_E1a brands are dropped from bundles before the activated alternates are inserted:
+
+| Bundle | Before | After |
+|---|---|---|
+| 4 (french-american) | Laguiole, Nogent (Goyon-Chazeau), Cutco, Dalstrong | Laguiole, **Au Nain**, Cutco, Dalstrong |
+| 6 (chinese) | CCK Chan Chi Kee, Shibazi (Shi Ba Zi Zuo), Sunlong, ZHEN | Sunlong, ZHEN, **Hengtai** *(4-keyword bundle, 3 panel brands + pivot)* |
+
+Bundles 1, 2, 3, 5 are unchanged. Total acquisition cost remains 6 bundles × 2 regions = 12 SerpAPI calls.
+
+### Audit trail
+
+- **Phase B session:** 2026-05-17T00:22:04Z, full outputs at `osf/v16/data/phaseB_*`
+- **Pre-reg basis:** pre-reg §3 (alternate lists), pre-reg §6 (cell-collapse contingency authorizing alternate activation)
+- **Activation walks:** documented in this entry's §"Substitution walks" section with Phase B Stage 2 evidence
+- **Registry updated:** `registries/brands_kitchen_knives_v0.16.json` — Au Nain + Hengtai moved from `alternates` → `panel`
+- **Topic-ID log updated:** `osf/v16/registries/topic_id_resolution_log_v0.16.csv` — Au Nain + Hengtai role: alternate → panel; notes updated with activation rationale
+- **Bundle composition updated:** `scripts/acquire_trends_v16.py` and `scripts/rescale_trends_v16.py` — bundles 4 and 6 modified
+- **Implementation amendment commit:** [pending — accompanies this entry]
+
+Per Entry 2 conditions of permissibility for pre-acquisition substantive amendments, all four hold:
+
+1. No data has been collected against the affected text. Acquisition has not been run.
+2. The amendment aligns with pre-reg §3 / §6 (alternate substitution order on primary failure; cell-collapse rescue). No interpretation gap; the literal pre-reg contingency fires.
+3. The amendment is fully audited here. Original primary panel composition and original alternate-list ordering recoverable via `git show v0.16-prereg:registries/PRE_REGISTRATION_v0_16.md` and `git show v0.16-prereg:registries/brands_kitchen_knives_v0.16.json`.
+4. Cross-phase comparability is preserved. v0.16 remains a Regime 4 substrate-replication test under H_Regime4_replication_knives. Alternate-activation changes panel membership without altering hypothesis conditions or evaluation procedure.

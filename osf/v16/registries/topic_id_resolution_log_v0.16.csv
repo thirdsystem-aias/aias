@@ -1,38 +1,38 @@
 brand_canonical,brand_id,tradition_cell,tier,role,alternate_priority,final_query_tier,acquisition_query,topic_id_resolution_stage,notes
 Victorinox,victorinox,pivot,professional,pivot_failed,,PIVOT_FAILED,,Phase A FAIL (substantive),"Primary pivot; Phase A validation required at acquisition lock (Swiss-Army-knife adjacency check per pre-reg §3/§6) | Phase A failure: Stage 4 chef_prop=0.093, sa_prop=0.907 (Swiss-Army-knife dominant). Fallback to Wüsthof activated per DEVIATIONS Entry 3."
-Shun,shun,japanese,professional,panel,,,,,
-Global,global,japanese,professional,panel,,,,,
-Miyabi,miyabi,japanese,premium,panel,,,,,
-Mac,mac,japanese,professional,panel,,,,,
-Tojiro,tojiro,japanese,accessible,panel,,,,,
-Yoshihiro,yoshihiro,japanese,premium,panel,,,,,
-Wüsthof,wusthof,german,professional,pivot_primary,,PIVOT,Wüsthof,Phase A advisory (DEVIATIONS Entry 3),"Panel + fallback pivot. Per pre-reg §6, if Victorinox fails §4 at lock, Wüsthof inherits pivot role and exits German cell (cell collapses to n=4). | Fallback pivot activated per DEVIATIONS Entry 3 (pre-reg §3 / §6 substantive amendment). Exits German tradition cell; German cell drops to n=4 with no within-cell alternate substitution."
-Zwilling J.A. Henckels,zwilling,german,professional,panel,,,,,
-Messermeister,messermeister,german,professional,panel,,,,,
-Güde,gude,german,premium,panel,,,,,
-Friedr. Dick,friedr_dick,german,professional,panel,,,,,
-Sabatier,sabatier,french,professional,panel,,,,,
-Opinel,opinel,french,accessible,panel,,,,,
-Laguiole,laguiole,french,professional,panel,,,,,
-Nogent (Goyon-Chazeau),nogent,french,professional,panel,,,,,
-Cutco,cutco,american_specialty,accessible,panel,,,,,
-Dalstrong,dalstrong,american_specialty,accessible,panel,,,,,
-Misen,misen,american_specialty,accessible,panel,,,,,
-New West KnifeWorks,new_west,american_specialty,premium,panel,,,,,
-Made In,made_in,american_specialty,professional,panel,,,,,
-CCK Chan Chi Kee,cck,chinese,value,panel,,,,,
-Shibazi (Shi Ba Zi Zuo),shibazi,chinese,value,panel,,,,,
-Sunlong,sunlong,chinese,value,panel,,,,,
-ZHEN,zhen,chinese,accessible,panel,,,,,
-Masamoto,masamoto,japanese,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Misono,misono,japanese,professional,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Tadafusa,tadafusa,japanese,premium,alternate,3,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Robert Herder,robert_herder,german,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Schmidt Brothers,schmidt_brothers,german,accessible,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Au Nain,au_nain,french,professional,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Goyon-Chazeau Le Thiers,goyon_chazeau_le_thiers,french,professional,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Bob Kramer,bob_kramer,american_specialty,premium,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Hammer Stahl,hammer_stahl,american_specialty,accessible,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Hu Si Chao,hu_si_chao,chinese,value,alternate,1,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Dengjia,dengjia,chinese,value,alternate,2,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
-Hengtai,hengtai,chinese,value,alternate,3,,,,TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Shun,shun,japanese,professional,panel,,PASS,Shun,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Legume'; audit only)
+Global,global,japanese,professional,panel,,PASS,Global,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Cutlery' matches category keyword set (audit only; not used as query) | HIGH_RISK §4 emphasis applied
+Miyabi,miyabi,japanese,premium,panel,,PASS,Miyabi,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)
+Mac,mac,japanese,professional,panel,,PASS,Mac,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | HIGH_RISK §4 emphasis applied
+Tojiro,tojiro,japanese,accessible,panel,,PASS,Tojiro,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Chef knife' matches category keyword set (audit only; not used as query)
+Yoshihiro,yoshihiro,japanese,premium,panel,,PASS,Yoshihiro,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)
+Wüsthof,wusthof,german,professional,pivot_primary,,PASS,Wüsthof,Stage 2 (solo),"DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Company' matches category keyword set (audit only; not used as query) | Panel + fallback pivot. Per pre-reg §6, if Victorinox fails §4 at lock, Wüsthof inherits pivot role and exits German cell (cell collapses to n=4). | Fallback pivot activated per DEVIATIONS Entry 3 (pre-reg §3 / §6 substantive amendment). Exits German tradition cell; German cell drops to n=4 with no within-cell alternate substitution."
+Zwilling J.A. Henckels,zwilling,german,professional,panel,,PASS,Zwilling J.A. Henckels,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Manufacturing company' matches category keyword set (audit only; not used as query)
+Messermeister,messermeister,german,professional,panel,,PASS,Messermeister,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Company' matches category keyword set (audit only; not used as query)
+Güde,gude,german,premium,panel,,PASS,Güde,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Machine industry company' matches category keyword set (audit only; not used as query) | HIGH_RISK §4 emphasis applied
+Friedr. Dick,friedr_dick,german,professional,panel,,PASS_E5,Friedr. Dick,Stage 3 (E5 bundle rescue),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Company' matches category keyword set (audit only; not used as query) | HIGH_RISK §4 emphasis applied
+Sabatier,sabatier,french,professional,panel,,PASS,Sabatier,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | HIGH_RISK §4 emphasis applied
+Opinel,opinel,french,accessible,panel,,PASS,Opinel,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Manufacturing company' matches category keyword set (audit only; not used as query)
+Laguiole,laguiole,french,professional,panel,,PASS,Laguiole,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | HIGH_RISK §4 emphasis applied
+Nogent (Goyon-Chazeau),nogent,french,professional,panel,,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | pytrends audit: pytrends returned no suggestions
+Cutco,cutco,american_specialty,accessible,panel,,PASS,Cutco,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Company' matches category keyword set (audit only; not used as query)
+Dalstrong,dalstrong,american_specialty,accessible,panel,,PASS,Dalstrong,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Company' matches category keyword set (audit only; not used as query)
+Misen,misen,american_specialty,accessible,panel,,PASS,Misen,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)
+New West KnifeWorks,new_west,american_specialty,premium,panel,,PASS,New West KnifeWorks,Stage 2 (solo),"DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Knife store in Jackson, Wyoming' matches category keyword set (audit only; not used as query)"
+Made In,made_in,american_specialty,professional,panel,,PASS,Made In,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | HIGH_RISK §4 emphasis applied
+CCK Chan Chi Kee,cck,chinese,value,panel,,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Cutlery store in Hong Kong' matches category keyword set (audit only; not used as query) | HIGH_RISK §4 emphasis applied
+Shibazi (Shi Ba Zi Zuo),shibazi,chinese,value,panel,,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Product line'; audit only)
+Sunlong,sunlong,chinese,value,panel,,PASS,Sunlong,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: type='Vehicle company' matches category keyword set (audit only; not used as query)
+ZHEN,zhen,chinese,accessible,panel,,PASS,ZHEN,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | HIGH_RISK §4 emphasis applied
+Masamoto,masamoto,japanese,premium,alternate,1,PASS,Masamoto,Stage 2 (solo),"DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Cutlery store in the Sumida, Tokyo, Japan' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)"
+Misono,misono,japanese,professional,alternate,2,PASS,Misono,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Tadafusa,tadafusa,japanese,premium,alternate,3,PASS,Tadafusa,Stage 2 (solo),"DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Blacksmith in Sanjo, Japan'; audit only) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)"
+Robert Herder,robert_herder,german,premium,alternate,1,PASS,Robert Herder,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Hunting knife' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Schmidt Brothers,schmidt_brothers,german,accessible,alternate,2,PASS,Schmidt Brothers,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Company' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Au Nain,au_nain,french,professional,panel,1,PASS,Au Nain,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query| pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)(default; activate only if §6 substitution triggers) | Activated as 1st-priority French alternate per DEVIATIONS Entry 4 (pre-reg §3 / §6 substitution order; Nogent (Goyon-Chazeau) EXCLUDED_E1a).
+Goyon-Chazeau Le Thiers,goyon_chazeau_le_thiers,french,professional,alternate,2,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Pocketknife' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Bob Kramer,bob_kramer,american_specialty,premium,alternate,1,PASS,Bob Kramer,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Knifesmith' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hammer Stahl,hammer_stahl,american_specialty,accessible,alternate,2,PASS,Hammer Stahl,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: type='Paring knife' matches category keyword set (audit only; not used as query) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hu Si Chao,hu_si_chao,chinese,value,alternate,1,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Book by Daniel Chidiac'; audit only) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Dengjia,dengjia,chinese,value,alternate,2,EXCLUDED_E1a,,Stage 3 (E5 all-zero),DEVIATIONS Entry 1: bare canonical query | TESTED_NOT_ACTIVATED | pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only) | TESTED_NOT_ACTIVATED (default; activate only if §6 substitution triggers)
+Hengtai,hengtai,chinese,value,panel,3,PASS,Hengtai,Stage 2 (solo),DEVIATIONS Entry 1: bare canonical query| pytrends audit: no category-keyword match; defaulted to first suggestion (type='Topic'; audit only)(default; activate only if §6 substitution triggers) | Activated as 3rd-priority Chinese alternate per DEVIATIONS Entry 4 (pre-reg §3 / §6 substitution order; CCK and Shibazi EXCLUDED_E1a; Hu Si Chao and Dengjia also EXCLUDED_E1a — Chinese alternate list exhausted at activation walk priority 3).

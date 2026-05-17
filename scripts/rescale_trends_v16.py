@@ -48,15 +48,14 @@ CATEGORIES = {
                 ("Sabatier", False), ("Opinel", False)]},
             {"id": 4, "members": [
                 ("Wüsthof", False), ("Laguiole", False),
-                ("Nogent (Goyon-Chazeau)", False), ("Cutco", False),
+                ("Au Nain", False), ("Cutco", False),
                 ("Dalstrong", False)]},
             {"id": 5, "members": [
                 ("Wüsthof", False), ("Misen", False),
                 ("New West KnifeWorks", False), ("Made In", False)]},
             {"id": 6, "members": [
-                ("Wüsthof", False), ("CCK Chan Chi Kee", False),
-                ("Shibazi (Shi Ba Zi Zuo)", False), ("Sunlong", False),
-                ("ZHEN", False)]},
+                ("Wüsthof", False), ("Sunlong", False),
+                ("ZHEN", False), ("Hengtai", False)]},
         ],
     },
 }
