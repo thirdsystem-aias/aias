@@ -150,6 +150,9 @@ def main():
     parser.add_argument("--category", required=True,
                         help="Category short name. Reads registries/brands_<cat>.json and prompts/prompts_<cat>.json. "
                              "Output goes to data/<cat>/.")
+    parser.add_argument("--missing-cells-file", default=None,
+                        help="Optional CSV with columns prompt_id,model_slot,run_idx — "
+                             "if provided, only fire these specific cells (surgical resume).")
     parser.add_argument("--output-dir", default=None,
                         help="Override output directory (default: data/<category>/)")
     args = parser.parse_args()
@@ -178,6 +181,17 @@ def main():
         if not key:
             print(f"ERROR: missing {name}"); sys.exit(1)
 
+    # MISSING_CELLS_FILTER_ENABLED — optional surgical resumption filter
+    cells_filter = None
+    if args.missing_cells_file:
+        import csv as _csv_filter
+        cells_filter = set()
+        with open(args.missing_cells_file) as _f:
+            for _r in _csv_filter.DictReader(_f):
+                cells_filter.add((_r["prompt_id"], _r["model_slot"], int(_r["run_idx"])))
+        print(f"Missing-cells filter loaded: {len(cells_filter)} cells to fire "
+              f"(from {args.missing_cells_file})")
+
     # INCREMENTAL_WRITE_ENABLED — CSV is opened here and written row-by-row
     # inside the inner loop, so a mid-run crash preserves all rows up to the
     # crash point. The end-of-run "save rows" block is replaced with a close.
@@ -196,7 +210,8 @@ def main():
     print(f"CSV (incremental): {out_path}")
     rows_written = 0
     call_idx = 0
-    total = len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT
+    total = (len(cells_filter) if cells_filter is not None
+             else len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT)
     status_counts = {"ok": 0, "rate_limit_final": 0, "transient_final": 0, "hard_error": 0}
 
     for prompt in PROMPTS:
@@ -205,6 +220,11 @@ def main():
             model_string = info["model"]
             use_temp = info.get("supports_temperature", True)
             for run_idx in range(RUNS_PER_PROMPT):
+                # MISSING_CELLS_FILTER_ENABLED — skip cells not in filter
+                if cells_filter is not None:
+                    cell_key = (prompt["id"], slot, run_idx + 1)
+                    if cell_key not in cells_filter:
+                        continue
                 call_idx += 1
                 t0 = time.time()
                 print(f"  [{call_idx:3d}/{total}] {prompt['id']:18s} | {slot:18s} | run {run_idx+1}", end=" ", flush=True)
