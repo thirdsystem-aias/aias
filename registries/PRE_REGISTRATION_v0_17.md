@@ -251,8 +251,8 @@ Publication sequence: scoring → charts → report PDF → SSRN paper → OSF d
 **Correspondence:** pablou@pablou.com · pablou.com
 **ORCID:** 0009-0003-8968-9990
 
-**Lock target:** git tag `v0.17-prereg` at commit `<HASH>` prior to any v0.17 LLM acquisition.
-**Lock date:** `<YYYY-MM-DD>` (populated at commit).
+**Lock target:** git tag `v0.17-prereg` at commit `c013ac1` prior to any v0.17 LLM acquisition.
+**Lock date:** `2026-05-19` (populated at commit).
 
 **Pre-registration declaration.** All §2 hypotheses, §3 panel, §5 analysis plan, and §6 contingencies are locked at the commit tagged `v0.17-prereg`. Decision rules C1, C2, C3 in §2.1 and the §2.2 conditional verdict matrix are immutable post-lock. Operational deviations from this pre-registration are recorded contemporaneously in `DEVIATIONS.md` per Protocol v1.3 §6.4.7.4. No verdict reframing post-acquisition.
 
