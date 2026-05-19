@@ -88,3 +88,46 @@ The 6-slot count is preserved. Provider diversity (Anthropic, OpenAI, Google) is
 **Discipline invariant.** Deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected.
 
 **Audit trail.** Patched script will be committed at `b5efea3`. Prior failing version preserved at git commit `12e66db` (Entry 2 patch).
+
+---
+
+## Entry 4 — Automation of Phase A C_P classification: v1.3 operator-judgement → provisional v1.4 LLM classifier (2026-05-19)
+
+**Event.** The v1.3 §6.4.2 Phase A C_P scoring rule specifies operator-judgement classification: the operator reads each row's `first_100_tokens` and assigns `anchored` ∈ {0, 1}. For v0.17 acquisition this would require 18 operator judgement calls (3 brands × 6 slots), scaling linearly with panel size and cascade depth in subsequent phases. Cross-phase scalability for the AIAS 1.0 programme requires removing operator-judgement from the Phase A loop.
+
+**Resolution.** Phase A C_P classification is automated via `scripts/classify_phase_a_auto_v1_4.py`. The script substitutes the v1.3 §6.4.2 operator step with a locked LLM classifier.
+
+**Locked classifier configuration:**
+
+| Parameter | Value |
+|---|---|
+| Model | `claude-opus-4-7` |
+| Temperature | `0` |
+| Max output tokens | `200` |
+| Prompt template | `CLASSIFIER_PROMPT_TEMPLATE` in `scripts/classify_phase_a_auto_v1_4.py` |
+| Output schema | `ANCHORED: <0\|1>\nRATIONALE: <≤25-word sentence>` |
+
+The classifier model, prompt, temperature, and output schema are the methodologically-locked elements. Any change to any of them in subsequent phases constitutes a further DEVIATIONS entry.
+
+**Departure from v1.3 §6.4.2 — explicit record.** v1.3 §6.4.2 as published reads (operationally): "Operator judgement is the canonical classifier per v1.3 §6.4.2 — no automated classification is specified." This Entry supersedes that step for v0.17 acquisition and all subsequent phases pending the v1.4 Methodology paper. The v1.4 paper (successor increment to SSRN 6797679) will formalise the automated-classifier rule as canonical Phase A protocol and retire the operator-judgement specification.
+
+**Methodological rationale.**
+
+1. **Cross-phase scalability.** Manual N-row classification is the binding constraint on per-phase throughput. v0.17 = 18 rows; v0.18 panel + cascade = 30–50 rows; v0.19+ similarly. Automation removes the linear cost.
+2. **Reproducibility.** Operator judgement is non-deterministic across sessions and across operators. A locked classifier (model + prompt + temperature) produces stable calls modulo upstream model changes — and upstream model changes are themselves documented as DEVIATIONS.
+3. **Audit-trail richness.** Each row's `anchoring_note` records the classifier's per-row one-sentence rationale, producing a structured audit trail superior to typical operator notes.
+4. **Cross-rater check capability.** The locked-prompt design enables future inter-rater reliability checks against alternative classifier models (e.g., gpt-4o, gemini-2.5-flash) as a robustness extension in v1.4 or v1.5.
+
+**Pre-reg §6.1 step 4 — supersession.** Pre-registration v0.17 r1 (commit `3ebe426`, tag `v0.17-prereg-r1`) §6.1 step 4 reads: *"Operator judgement is the canonical classifier per v1.3 §6.4.2 — no automated classification is specified."* This DEVIATIONS Entry 4 supersedes that step. Substantive hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 remain unchanged. The C_P supermajority threshold (5/6) and CONFIRMED/PARTIAL/FALSIFIED verdict structure are unchanged. The v0.17 paper's Methods section will reference DEVIATIONS Entry 4 alongside the canonical methodology citations (SSRN 6761698, SSRN 6797679, plus the forthcoming v1.4 paper).
+
+**Forward action for v1.4 Methodology paper:**
+
+1. Promote the automated classifier from "provisional" to canonical Phase A specification.
+2. Lock the classifier model + prompt + temperature as published-protocol artefacts.
+3. Run a v0.16 retrospective re-classification through the automated classifier to confirm continuity with the v1.3 Victorinox/Wüsthof worked example; report any divergence.
+4. Specify inter-rater reliability check option (second classifier model for robustness).
+5. Specify confidence-threshold / operator-override interface for genuine boundary cases the classifier flags as uncertain (deferred; not implemented at v0.17).
+
+**Reproducibility note.** Anthropic temperature=0 inference is low-variance but not strictly bit-deterministic at infrastructure level. Re-running the classifier against the same slot files should produce identical `anchored` values on stable classification cases; genuinely borderline rows may flip on rare occasions. Methodological assessment of re-run variance is a v1.4 follow-up.
+
+**Audit trail.** Script committed at `<HASH_AUTO_4>`. Filled ledger (after running the classifier) committed in same commit. Empty-ledger snapshot preserved at commit `2b31253` for re-derivation under any future protocol revision.
