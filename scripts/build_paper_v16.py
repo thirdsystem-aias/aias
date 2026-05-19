@@ -74,10 +74,18 @@ print()
 # ----------------------------------------------------------------------------
 
 UNICODE_SUBS = {
+    # PAPER_V16_EXTRA_UNICODE_SUBS — added ρ, ≥, ∧ for v0.16 (LMR fallback)
     "⊆": r"$\subseteq$",
     "▶": r"$\blacktriangleright$",
-    "ₜ": r"$_{t}$",   # Carlito ships ₁/₂ (digit subscripts) but not ₜ (Latin letter subscript)
-    "∈": r"$\in$",    # element-of — not in Carlito's math glyph set
+    "ₜ": r"$_{t}$",
+    "∈": r"$\in$",
+    "ρ": r"$\rho$",            # Greek rho — used throughout v0.16 paper
+    "≥": r"$\geq$",            # greater-than-or-equal — used in decision rules
+    "∧": r"$\land$",           # logical AND — used in decision rules
+    "≤": r"$\leq$",            # for completeness
+    "×": r"$\times$",          # times sign
+    "≠": r"$\neq$",            # not-equal
+    "·": r"$\cdot$",           # middle dot (used in correspondence line)
 }
 
 md = SOURCE.read_text()
@@ -133,11 +141,15 @@ print()
 # Step 4: Invoke pandoc
 # ----------------------------------------------------------------------------
 
+# PAPER_V16_CITEPROC_BIB — citeproc + references.bib wired in
+BIB_PATH = PAPERS_DIR / "references.bib"
 cmd = [
     "pandoc",
     "--pdf-engine=xelatex",
     f"--include-in-header={PREAMBLE}",
     f"--resource-path={V15_DIR}:{RESOURCE_BASE}",
+    "--citeproc",
+    f"--bibliography={BIB_PATH}",
     str(BUILD_MD),
     "-o", str(OUT_PDF),
 ]

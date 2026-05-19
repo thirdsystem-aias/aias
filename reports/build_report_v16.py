@@ -621,7 +621,12 @@ class ChartReservation(Flowable):
         self.slot_key = slot_key
         self.chart_path = chart_path
         self.chart_w_pt = width_in * 72.0
-        self.chart_h_pt = height_in * 72.0
+        # REPORT_V16_STUB_HEIGHT_CAP_400 — cap stub-pattern chart areas
+        # at 300pt. Chart renders at ~276pt (slightly smaller than Pattern
+        # 2's 311pt rendered), with 100pt shaved off slot height to pull
+        # caption and following content closer to the pattern title.
+        raw_h_pt = height_in * 72.0
+        self.chart_h_pt = 400.0 if raw_h_pt > 500.0 else raw_h_pt
         self.manifest = manifest
         self.debug = debug
         self.caption_p = (Paragraph(caption, caption_style)
@@ -998,7 +1003,9 @@ def build_pattern_unified(pattern: dict, styles: dict,
             slot, chart_path, w_in, h_in, manifest,
             debug=debug, caption=caption_text, caption_style=caption_style,
         )
-        chart_block = [Spacer(1, 8), chart_res, Spacer(1, 10)]
+        # REPORT_V16_CHART_BLOCK_NO_SPACERS — spacers removed so chart
+        # abuts title above and body paragraph abuts caption below.
+        chart_block = [chart_res]
 
     # Body text in 2-column balanced block
     paragraphs = [Paragraph(p, styles["body"]) for p in pattern["paragraphs"]]
@@ -1212,9 +1219,20 @@ def overlay_charts(base_pdf_path: Path, manifest: ChartManifest,
                 f"chart {chart_w:.1f}x{chart_h:.1f}pt, reservation "
                 f"{target_w:.1f}x{target_h:.1f}pt. Stretching to fit."
             )
-        scale = min(sx, sy)
+        # REPORT_V16_CHART_SCALE_092 — global 8% chart shrink within slot.
+        # REPORT_V16_STUB_CHART_ANCHOR_TOP — stub slots (h_pt > 350)
+        # anchor chart near top with 8pt margin so chart sits closer to
+        # the pattern title; remaining empty space falls below the chart.
+        # Patterns 1, 2 (h_pt 338-468) keep vertical centering.
+        scale = min(sx, sy) * 0.92
         offset_x = slot.x_pt + (target_w - chart_w * scale) / 2
-        offset_y = slot.y_pt + (target_h - chart_h * scale) / 2
+        if slot.h_pt > 350.0:
+            # REPORT_V16_STUB_CHART_FLUSH_TOP — chart flush at slot top
+            # (was 8pt margin, but visible movement was too subtle).
+            # All empty space within slot now falls below the chart.
+            offset_y = slot.y_pt + (target_h - chart_h * scale)
+        else:
+            offset_y = slot.y_pt + (target_h - chart_h * scale) / 2
         op = Transformation().scale(scale, scale).translate(offset_x, offset_y)
         writer.pages[slot.page_index].merge_transformed_page(chart_page, op)
 

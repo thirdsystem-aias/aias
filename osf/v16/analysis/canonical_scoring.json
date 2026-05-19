@@ -1,0 +1,201 @@
+{
+  "phase": "v0.16",
+  "category": "kitchen_knives",
+  "session_timestamp": "2026-05-18T20:31:20.426429+00:00",
+  "pre_reg_tag": "v0.16-prereg",
+  "pre_reg_commit": "511e339",
+  "methodology_base": "AIAS Protocol v1.2 (SSRN 6761698)",
+  "carry_forward_base": "v0.15 (SSRN 6768059)",
+  "correlations": {
+    "ww_t1": {
+      "n": 13,
+      "brands": [
+        "Tojiro",
+        "Yoshihiro",
+        "Zwilling J.A. Henckels",
+        "Messermeister",
+        "Güde",
+        "Sabatier",
+        "Opinel",
+        "Laguiole",
+        "Cutco",
+        "Dalstrong",
+        "Sunlong",
+        "ZHEN",
+        "Au Nain"
+      ],
+      "spearman_rho": 0.02216143007003597,
+      "spearman_p_two_tailed": 0.942712822429673,
+      "spearman_p_one_tailed": 0.4713564112148365,
+      "pearson_r": -0.31777509317868036,
+      "pearson_p_two_tailed": 0.2900330984069643,
+      "partial_spearman_rho": 0.10075386605288493,
+      "partial_spearman_p_one_tailed": 0.4061805456419675,
+      "ai_age_rho": 0.5069427128520728,
+      "ai_age_p_two_tailed": 0.07704474414403938,
+      "partial_n_traditions_in_slice": 5,
+      "partial_df_adj_k": 5
+    },
+    "ww_t2": {
+      "n": 13,
+      "brands": [
+        "Tojiro",
+        "Yoshihiro",
+        "Zwilling J.A. Henckels",
+        "Messermeister",
+        "Güde",
+        "Sabatier",
+        "Opinel",
+        "Laguiole",
+        "Cutco",
+        "Dalstrong",
+        "Sunlong",
+        "ZHEN",
+        "Au Nain"
+      ],
+      "spearman_rho": 0.0027818591145322815,
+      "spearman_p_two_tailed": 0.992803693882463,
+      "spearman_p_one_tailed": 0.4964018469412315,
+      "pearson_r": -0.3262928443134978,
+      "pearson_p_two_tailed": 0.27657048267982226,
+      "partial_spearman_rho": 0.08018681223350474,
+      "partial_spearman_p_one_tailed": 0.4251464889096166,
+      "ai_age_rho": 0.32547751640027694,
+      "ai_age_p_two_tailed": 0.27784307966367744,
+      "partial_n_traditions_in_slice": 5,
+      "partial_df_adj_k": 5
+    },
+    "us_t1": {
+      "n": 10,
+      "brands": [
+        "Tojiro",
+        "Yoshihiro",
+        "Zwilling J.A. Henckels",
+        "Messermeister",
+        "Sabatier",
+        "Opinel",
+        "Laguiole",
+        "Cutco",
+        "Dalstrong",
+        "ZHEN"
+      ],
+      "spearman_rho": -0.8807710121010884,
+      "spearman_p_two_tailed": 0.0007637917374575823,
+      "spearman_p_one_tailed": 0.9996181041312712,
+      "pearson_r": -0.48701181212714517,
+      "pearson_p_two_tailed": 0.15341165203849969,
+      "partial_spearman_rho": -0.9399493934058419,
+      "partial_spearman_p_one_tailed": 0.9912475654677662,
+      "ai_age_rho": 0.587180674734059,
+      "ai_age_p_two_tailed": 0.07430647010294694,
+      "partial_n_traditions_in_slice": 5,
+      "partial_df_adj_k": 5
+    },
+    "us_t2": {
+      "n": 10,
+      "brands": [
+        "Tojiro",
+        "Yoshihiro",
+        "Zwilling J.A. Henckels",
+        "Messermeister",
+        "Sabatier",
+        "Opinel",
+        "Laguiole",
+        "Cutco",
+        "Dalstrong",
+        "ZHEN"
+      ],
+      "spearman_rho": -0.8124038404635959,
+      "spearman_p_two_tailed": 0.004291450003001636,
+      "spearman_p_one_tailed": 0.9978542749984992,
+      "pearson_r": -0.4755795515365342,
+      "pearson_p_two_tailed": 0.16475572055623222,
+      "partial_spearman_rho": -0.7081851203025072,
+      "partial_spearman_p_one_tailed": 0.9096399957297941,
+      "ai_age_rho": 0.43697479297663117,
+      "ai_age_p_two_tailed": 0.20667987308962538,
+      "partial_n_traditions_in_slice": 5,
+      "partial_df_adj_k": 5
+    }
+  },
+  "H_Regime4_replication_knives": {
+    "label": "primary",
+    "status": "PARTIAL",
+    "condition_1_n_floor": {
+      "n_t1": 13,
+      "n_t2": 13,
+      "threshold": 12,
+      "satisfied": true
+    },
+    "condition_2_trends": {
+      "bivariate_rho_t1": 0.02216143007003597,
+      "bivariate_rho_t2": 0.0027818591145322815,
+      "threshold": 0.35,
+      "satisfied": true,
+      "interpretation": "|rho(AI_presence, Trends)| < 0.35 at both waves (per pre-reg §2; AIAS Protocol v1.2 §3.4)"
+    },
+    "condition_3_partial": {
+      "partial_rho_t1": 0.10075386605288493,
+      "partial_rho_t2": 0.08018681223350474,
+      "threshold": 0.0,
+      "satisfied": false,
+      "interpretation": "Partial rho(AI, Trends) controlling for brand_age + tradition_cell (k_adj=5 expected) at both waves < 0"
+    },
+    "rationale": "C1 (n>=12 both waves): True (n_t1=13, n_t2=13). C2 (|rho_AI~Trends|<0.35): True (t1=0.022, t2=0.003). C3 (partial<0.0): False (t1=0.101, t2=0.080)."
+  },
+  "H_Discourse_Language_carryforward": {
+    "label": "H_Discourse_Language_carryforward",
+    "japanese_brands_in_panel": [
+      "Shun",
+      "Global",
+      "Miyabi",
+      "Mac",
+      "Tojiro",
+      "Yoshihiro"
+    ],
+    "en_prompt_id": "knives_b3_en_jp",
+    "ja_prompt_id": "knives_b4_ja_01",
+    "n_floor": 5,
+    "thresholds": {
+      "confirmed_upper": 0.85,
+      "falsified_lower": 0.95
+    },
+    "waves": {
+      "t1": {
+        "n": 6,
+        "rho": 0.19674775073518594,
+        "p": 0.7086863948791924,
+        "brands": [
+          "Shun",
+          "Global",
+          "Miyabi",
+          "Mac",
+          "Tojiro",
+          "Yoshihiro"
+        ]
+      },
+      "t2": {
+        "n": 6,
+        "rho": -0.149270358506633,
+        "p": 0.7777574564301868,
+        "brands": [
+          "Shun",
+          "Global",
+          "Miyabi",
+          "Mac",
+          "Tojiro",
+          "Yoshihiro"
+        ]
+      }
+    },
+    "status": "CARRY-FORWARD CONFIRMED",
+    "rationale": "rho_t1=0.197, rho_t2=-0.149, n_t1=6, n_t2=6. Both waves below 0.85 threshold; v0.8 finding survives v1.2 protocol with corrected eligibility filtering."
+  },
+  "panel_size": 26,
+  "e1a_excluded": [
+    "CCK Chan Chi Kee",
+    "Nogent (Goyon-Chazeau)",
+    "Shibazi (Shi Ba Zi Zuo)"
+  ],
+  "japanese_cell_size": 6
+}

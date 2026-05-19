@@ -191,18 +191,26 @@ def compute_presence_split(enriched_path, registry_brands, t1_runs, t2_runs):
       brand, ai_t1_pct, ai_t2_pct, ai_t1_n, ai_t2_n
     """
     df = pd.read_csv(enriched_path)
-    df = df[df["model_slot"].isin(MATCHED_MODELS)]
+    df = df[df["model_version"].isin(MATCHED_MODELS)]  # SCORE_V16_FILTER_AND_HIT_FIX: was model_slot (wrong column)
 
     def compute_one_wave(d):
+        # SCORE_V16_BRANDS_CANONICAL_FIX — operate on brands_canonical
+        # pipe-separated wide form per Protocol §4.4; no separate
+        # 'brand'/'ai_brand_mentioned' column exists in the enriched CSV.
+        n = len(d)
         out = {}
         for brand in registry_brands:
-            brand_rows = d[d["brand"] == brand]
-            n = len(brand_rows)
-            if n == 0:
-                out[brand] = (None, 0)
-            else:
-                pct = brand_rows["ai_brand_mentioned"].mean() * 100
-                out[brand] = (round(pct, 2), n)
+            def hit(s, _b=brand):
+                # SCORE_V16_FILTER_AND_HIT_FIX — return int 0/1 not bool,
+                # so .apply(hit).sum() on any potential empty Series
+                # returns a proper int rather than '' (pandas 3.0.3 str
+                # dtype concat regression).
+                if pd.isna(s):
+                    return 0
+                return 1 if _b in str(s).split("|") else 0
+            c = int(d["brands_canonical"].apply(hit).sum())
+            pct = round(100.0 * c / n, 2) if n else None
+            out[brand] = (pct, n)
         return out
 
     t1 = compute_one_wave(df[df["run_idx"].isin(t1_runs)])
@@ -236,26 +244,32 @@ def compute_presence_by_prompt(enriched_path, prompt_ids, brand_list,
 
     Returns dict[brand][prompt_id][wave] -> pct (or None if no rows).
     """
+    # SCORE_V16_BY_PROMPT_FIX — operate on brands_canonical pipe-separated
+    # wide form per Protocol §4.4 (same fix pattern as compute_one_wave).
+    # Cannot pre-filter by brand since each row contains multiple brands.
     df = pd.read_csv(enriched_path)
-    df = df[df["model_slot"].isin(MATCHED_MODELS)]
+    df = df[df["model_version"].isin(MATCHED_MODELS)]
     df = df[df["prompt_id"].isin(prompt_ids)]
-    df = df[df["brand"].isin(brand_list)]
 
     out = {b: {p: {} for p in prompt_ids} for b in brand_list}
 
     for brand in brand_list:
+        def hit(s, _b=brand):
+            if pd.isna(s):
+                return 0
+            return 1 if _b in str(s).split("|") else 0
         for prompt_id in prompt_ids:
             for wave, run_set in [("t1", t1_runs), ("t2", t2_runs)]:
                 wave_rows = df[
-                    (df["brand"] == brand) &
                     (df["prompt_id"] == prompt_id) &
                     (df["run_idx"].isin(run_set))
                 ]
-                if len(wave_rows) == 0:
+                n = len(wave_rows)
+                if n == 0:
                     out[brand][prompt_id][wave] = None
                 else:
-                    out[brand][prompt_id][wave] = round(
-                        wave_rows["ai_brand_mentioned"].mean() * 100, 2)
+                    c = int(wave_rows["brands_canonical"].apply(hit).sum())
+                    out[brand][prompt_id][wave] = round(100.0 * c / n, 2)
     return out
 
 
@@ -324,7 +338,10 @@ def correlations(df, region, wave, exclude_brands=None):
     """
     exclude_brands = exclude_brands or set()
     elig_col = f"trends_{region}_{wave}_eligible"
-    elig = df[df[elig_col]].copy()
+    # SCORE_V16_ELIG_FILLNA_FIX — NaN in elig_col means "not eligible"
+    # (no upstream Trends data); treat as False rather than letting
+    # pandas reject the mask.
+    elig = df[df[elig_col].fillna(False).astype(bool)].copy()
     elig = elig[~elig["e1a_excluded"]]
     elig = elig[~elig["tested_not_activated"]]
     elig = elig[~elig["brand"].isin(exclude_brands)]

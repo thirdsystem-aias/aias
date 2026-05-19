@@ -1,0 +1,2 @@
+hypothesis,status,n_t1,n_t2,bivariate_rho_t1,bivariate_rho_t2,partial_rho_t1,partial_rho_t2,cond1_satisfied,cond2_satisfied,cond3_satisfied,rationale
+H_Regime4_replication_knives,PARTIAL,13,13,0.02216143007003597,0.0027818591145322815,0.10075386605288493,0.08018681223350474,True,True,False,"C1 (n>=12 both waves): True (n_t1=13, n_t2=13). C2 (|rho_AI~Trends|<0.35): True (t1=0.022, t2=0.003). C3 (partial<0.0): False (t1=0.101, t2=0.080)."

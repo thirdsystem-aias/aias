@@ -43,6 +43,9 @@ from pathlib import Path
 import matplotlib.font_manager as fm
 import matplotlib.pyplot as plt
 import numpy as np
+
+# CHARTS_V16_TRENDS_WW_TO_WORLDWIDE — column names align with v0.16
+# per_brand_paired.csv schema written by score_v16.py (region="worldwide").
 import pandas as pd
 from matplotlib import rcParams
 from matplotlib.patches import Rectangle
@@ -640,9 +643,10 @@ def chart_discourse_language_pair():
     T1_RUN_IDX = {1, 2, 3, 4}
     T2_RUN_IDX = {5, 6, 7, 8}
 
-    df = enriched[enriched["model_slot"].isin(MATCHED_MODELS)]
+    # CHARTS_V16_DISCOURSE_FIX — model_version filter (was model_slot);
+    # operate on brands_canonical wide form per Protocol §4.4.
+    df = enriched[enriched["model_version"].isin(MATCHED_MODELS)]
     df = df[df["prompt_id"].isin([en_prompt, ja_prompt])]
-    df = df[df["brand"].isin(japanese_brands)]
 
     fig, axes = plt.subplots(1, 2, figsize=(7.5, 4.7),
                               sharex=True, sharey=True)
@@ -652,14 +656,18 @@ def chart_discourse_language_pair():
         wave_df = df[df["run_idx"].isin(run_set)]
         en_vals, ja_vals, labels = [], [], []
         for brand in japanese_brands:
-            en_rows = wave_df[(wave_df["brand"] == brand)
-                               & (wave_df["prompt_id"] == en_prompt)]
-            ja_rows = wave_df[(wave_df["brand"] == brand)
-                               & (wave_df["prompt_id"] == ja_prompt)]
+            def hit(s, _b=brand):
+                if pd.isna(s):
+                    return 0
+                return 1 if _b in str(s).split("|") else 0
+            en_rows = wave_df[wave_df["prompt_id"] == en_prompt]
+            ja_rows = wave_df[wave_df["prompt_id"] == ja_prompt]
             if len(en_rows) == 0 or len(ja_rows) == 0:
                 continue
-            en_vals.append(en_rows["ai_brand_mentioned"].mean() * 100)
-            ja_vals.append(ja_rows["ai_brand_mentioned"].mean() * 100)
+            en_count = int(en_rows["brands_canonical"].apply(hit).sum())
+            ja_count = int(ja_rows["brands_canonical"].apply(hit).sum())
+            en_vals.append(100.0 * en_count / len(en_rows))
+            ja_vals.append(100.0 * ja_count / len(ja_rows))
             labels.append(brand)
 
         # Identity line y = x
@@ -703,7 +711,11 @@ def chart_discourse_language_pair():
         ax.set_ylim(-5, 105)
         ax.grid(True, color=GRID_SUBTLE, linewidth=0.4)
 
-    title = f"H_Discourse_Language_carryforward — Japanese cell — {status}"
+    # CHARTS_V16_F3_TITLE_LAYOUT — title wraps to 2 lines on em-dash;
+    # subtitle pushed down to clear two-line title; subplot top pushed
+    # down to clear multi-line subtitle without overlapping legend.
+    title = (f"H_Discourse_Language_carryforward —\n"
+             f"Japanese cell — {status}")
     subtitle = (
         "Per-brand AI Presence: English-anchored prompt (x) vs Japanese-"
         "language prompt (y), Japanese tradition cell. v0.8 finding "
@@ -713,10 +725,12 @@ def chart_discourse_language_pair():
         "Identity line y = x for reference."
     )
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
-                            title_y=0.96, subtitle_y=0.91, wrap_width=92)
+                            title_y=0.97, subtitle_y=0.84, wrap_width=92)
     add_source(fig, x=0.06, y=0.020)
 
-    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.10, right=0.96,
+    # CHARTS_V16_F3_SUBPLOT_TOP_065 — more clearance above plot for
+    # multi-line subtitle
+    fig.subplots_adjust(top=0.65, bottom=0.13, left=0.10, right=0.96,
                         wspace=0.10)
 
     out = OUT_DIR / "chart_v16_discourse_language_pair.pdf"
@@ -749,8 +763,8 @@ def chart_kitchen_knives_per_brand():
     plotted_tiers = set()
 
     for ax, wave in zip([ax1, ax2], ("t1", "t2")):
-        elig_col = f"trends_ww_{wave}_eligible"
-        mean_col = f"trends_ww_{wave}_mean"
+        elig_col = f"trends_worldwide_{wave}_eligible"
+        mean_col = f"trends_worldwide_{wave}_mean"
         ai_col   = f"ai_{wave}_pct"
 
         sub = eligible[eligible.get(elig_col, False)].copy()
@@ -873,9 +887,10 @@ def chart_kitchen_knives_per_tradition():
     every eligible brand in that tradition. Shared axes enable direct
     cross-tradition visual comparison of the AI-Trends pattern.
 
-    Layout: 2 rows x 3 cols. Cell order from TRADITION_LEVELS (pre-reg sec. 2):
-      [chinese,  japanese, british ]
-      [indian,   us_spec,  french  ]
+    Layout: 2 rows x 3 cols (5 cells fill 5 panels; 6th hidden).
+    Cell order from TRADITION_LEVELS (pre-reg sec. 3):
+      [japanese, german,  french   ]
+      [american, chinese, (hidden) ]
     """
     fig, axes = plt.subplots(2, 3, figsize=(7.5, 7.2),
                               sharex=False, sharey=False)
@@ -893,8 +908,8 @@ def chart_kitchen_knives_per_tradition():
 
         # Plot t1 (filled circle, on color) and t2 (open circle, white fill)
         for wave, mfc in [("t1", color), ("t2", "white")]:
-            elig_col = f"trends_ww_{wave}_eligible"
-            mean_col = f"trends_ww_{wave}_mean"
+            elig_col = f"trends_worldwide_{wave}_eligible"
+            mean_col = f"trends_worldwide_{wave}_mean"
             ai_col   = f"ai_{wave}_pct"
             wave_sub = trad_sub[trad_sub.get(elig_col, False)].copy()
             wave_sub = wave_sub.dropna(subset=[mean_col, ai_col])
@@ -910,10 +925,10 @@ def chart_kitchen_knives_per_tradition():
         # adjustText handles in-panel collisions with dots + other labels
         texts = []
         for _, row in trad_sub.iterrows():
-            elig_t1 = row.get("trends_ww_t1_eligible", False)
-            elig_t2 = row.get("trends_ww_t2_eligible", False)
-            t1_ai, t1_tr = row.get("ai_t1_pct"), row.get("trends_ww_t1_mean")
-            t2_ai, t2_tr = row.get("ai_t2_pct"), row.get("trends_ww_t2_mean")
+            elig_t1 = row.get("trends_worldwide_t1_eligible", False)
+            elig_t2 = row.get("trends_worldwide_t2_eligible", False)
+            t1_ai, t1_tr = row.get("ai_t1_pct"), row.get("trends_worldwide_t1_mean")
+            t2_ai, t2_tr = row.get("ai_t2_pct"), row.get("trends_worldwide_t2_mean")
             if elig_t1 and pd.notna(t1_ai) and pd.notna(t1_tr):
                 x, y = t1_ai, t1_tr
             elif elig_t2 and pd.notna(t2_ai) and pd.notna(t2_tr):
@@ -939,7 +954,14 @@ def chart_kitchen_knives_per_tradition():
                      loc="left", pad=4)
         ax.grid(True, color=GRID_SUBTLE, linewidth=0.4, zorder=0)
 
-    # Shared axis labels on bottom-row x and left-column y
+    # CHARTS_V16_HIDE_6TH_PANEL — TRADITION_LEVELS has 5 cells but the
+    # 2x3 grid reserves 6 panels. Hide the unused bottom-right panel so
+    # it doesn't render as an empty plot.
+    flat_axes[5].axis("off")
+
+    # Shared axis labels on bottom-row x and left-column y.
+    # axes[1, :] includes the hidden panel, but axis('off') already
+    # suppresses its label rendering — no special handling needed.
     for ax in axes[1, :]:
         ax.set_xlabel("AI Presence (%)", color=TEXT, fontsize=9)
     for ax in axes[:, 0]:
