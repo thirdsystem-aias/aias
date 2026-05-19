@@ -169,4 +169,4 @@ This is the framing that will go into the v1.4 Methodology paper. Entry 4's "tem
 
 **Forward action for v1.4 Methodology paper.** Add inter-run reproducibility assessment to the v1.4 paper's §6.4.2 specification: re-run the v0.17 classifier against the same 18-row ledger on a separate occasion and report any anchoring disagreements as the empirical floor of classifier non-determinism. This becomes the canonical robustness check rather than a sampling-parameter lock.
 
-**Audit trail.** Patched script committed at `<HASH_AUTO_5>`. Failing-version script preserved at commit `2097c9f`.
+**Audit trail.** Patched script committed at `9042dea`. Failing-version script preserved at commit `2097c9f`.
