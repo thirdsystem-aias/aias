@@ -54,4 +54,4 @@ A `FutureWarning` from `google.generativeai` also surfaced indicating the legacy
 
 **Discipline invariant.** This deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected. The deviation is documented contemporaneously per v1.3 §6.4.7.4 audit-log discipline.
 
-**Audit trail.** Patched script will be committed at `<HASH_PATCH>` on `v0.11-phase3-pilot`. Original (failing) script preserved in git history at commit `3ebe426`.
+**Audit trail.** Patched script will be committed at `12e66db` on `v0.11-phase3-pilot`. Original (failing) script preserved in git history at commit `3ebe426`.
