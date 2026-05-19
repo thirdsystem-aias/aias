@@ -1,10 +1,11 @@
-# AIAS™ Presence Measurement Protocol — Pre-Registration v0.17
+# AIAS™ Presence Measurement Protocol — Pre-Registration v0.17 (revision r1)
 
 **Substrate:** Premium kitchenware (cookware)
 **Programme position:** Identity-load moderator test; single-substrate same-IL replication of v0.16 knives PARTIAL
-**Protocol version:** Methodology v1.2 (SSRN 6761698; canonical four-regime taxonomy per §6) + v1.3 (SSRN 6797679; Phase A pivot validation per §6.4)
-**Lock target:** git tag `v0.17-prereg` at commit prior to LLM acquisition
+**Protocol version:** Methodology v1.2 (SSRN 6761698; canonical four-regime taxonomy per §6) + v1.3 (SSRN 6797679; Phase A pivot-validation specification per §6.4.2 anchoring rule)
+**Lock target:** git tag `v0.17-prereg-r1` at commit prior to LLM acquisition; original `v0.17-prereg` tag preserved at c013ac1 as audit trail
 **Pre-registrant:** Pablo Ulpiano González Castro
+**Revision note:** This is revision r1 of the v0.17 pre-registration. The original (commit c013ac1, tag `v0.17-prereg`) carried §3.3 and §6.1 content misaligned with v1.3 as published. See `osf/v17/DEVIATIONS.md` Entry 1 for the contemporaneous record of the revision and its scope.
 
 ---
 
@@ -39,7 +40,7 @@ A PARTIAL verdict on kitchenware would constitute the second medium-IL observati
 
 **Decision rules** (locked from v0.16):
 
-- **C1 — Panel adequacy:** worldwide n ≥ 12 brands surviving the 14-day Trends floor and Phase A pivot validation.
+- **C1 — Panel adequacy:** worldwide n ≥ 12 brands surviving the 14-day Trends floor and Phase A pivot validation per v1.3 §6.4.2.
 - **C2 — Bivariate band:** worldwide |ρ(AIAS Presence, Trends)| < 0.35 at both t1 and t2.
 - **C3 — Partial sign:** worldwide partial ρ(AIAS Presence, Trends | age, tradition) < 0 at both t1 and t2.
 
@@ -112,18 +113,7 @@ Noda Horo is a borderline inclusion — premium Japanese enamelware brand with c
 - American: very low (5-deep cascade; bounded override available at ordinal 3).
 - Japanese: moderate (3-deep cascade; bounded override available at ordinal 3; full collapse if all four brands fail Phase A).
 
-### §3.3 Stage 4 adjacency keywords
-
-Per v1.3 §6.4.5, Stage 4 adjacency keywords are pre-registered per substrate ahead of pivot validation. The kitchenware substrate's strongest adjacency-drift risk is the design/aesthetic-object overlap that surrounds premium cookware in lifestyle and interior coverage. The pre-registered keyword pair:
-
-- **Substrate keyword:** `cookware`
-- **Adjacent category keyword:** `kitchen design`
-
-Rationale. "Cookware" is the cleanest substrate-distinctive token across the panel (covers cast iron, multi-ply stainless, copper, carbon steel, enamelled sub-traditions without favoring any). "Kitchen design" captures the genuine adjacent-category drift risk for premium cookware: Le Creuset's well-known colour/aesthetic-object positioning, Staub's heritage-France design coupling, and (less acutely) Mauviel's copper-as-décor overlap. A high adjacent_proportion on this keyword would signal that the pivot brand's Trends signal is being driven by interior-design-context co-occurrence rather than cookware-substrate relevance, which is the discriminating test the Stage 4 mechanism is designed to enforce.
-
-The brand-specific adjacency drifts are not pre-registered as Stage 4 keywords because Stage 4 operates at the substrate level. Brand-specific drift is captured indirectly through Stage 3 bundle position (§6.4.4) where pivot_to_ref ratio outside [0.5, 5.0] surfaces brands whose Trends signal is dominated by non-substrate context.
-
-### §3.4 14-day Trends floor: anticipated drop risk
+### §3.3 14-day Trends floor: anticipated drop risk
 
 Per §2.3.1, US/worldwide divergence is expected. Pre-registered drop-risk assessment:
 
@@ -143,9 +133,9 @@ Per §2.3.1, US/worldwide divergence is expected. Pre-registered drop-risk asses
 
 Worldwide post-floor n expected at 13–15. US sub-panel post-floor n expected at 9–12, with foreign-tradition concentration. The US sub-panel may fall below C1 on its own — this is anticipated and is the precise mechanism that produces §2.3.1's pre-registered US/worldwide divergence reporting, not a panel-design failure.
 
-### §3.5 Registry artefact
+### §3.4 Registry artefact
 
-The canonical panel is committed to `~/aias/registries/brands_kitchenware_v0.17.json` at the same commit as this pre-registration. JSON schema mirrors `brands_knives_v0.16.json`: per-brand fields for `name`, `cell`, `pivot_ordinal`, `hq_country`, `substrate_sub_tradition`, `worldwide_drop_risk`, `us_drop_risk`, and a per-cell `cascade_depth` integer. The JSON is authoritative; this §3 table is the human-readable rendering.
+The canonical panel is committed to `~/aias/registries/brands_kitchenware_v0.17.json` at the same commit as this pre-registration. JSON schema mirrors `brands_knives_v0.16.json`: per-brand fields for `name`, `cell`, `pivot_ordinal`, `phase_a_role`, `hq_country`, `substrate_sub_tradition`, `worldwide_drop_risk`, `us_drop_risk`, and a per-cell `cascade_depth` integer. The JSON is authoritative; this §3 table is the human-readable rendering. The `stage_4_keywords` field present in the original registry is a vestige of the superseded §3.3 framing in the c013ac1 lock and is informational only — it has no operational role under v1.3 §6.4.2.
 
 ---
 
@@ -193,32 +183,42 @@ Scoring is committed to `~/aias/scripts/score_v17.py`, structured as `score_v16.
 
 ## §6 Pre-registered contingencies
 
-### §6.1 Phase A pivot validation
+### §6.1 Phase A pivot validation per v1.3 §6.4.2
 
-Phase A pivot validation proceeds per v1.3 §6.4 against the canonical five-stage protocol on the European, American, and Japanese cells in parallel. Per-cell validation operates on the cell's primary pivot candidate (Le Creuset, All-Clad, Vermicular respectively) under the canonical thresholds locked at v1.3 §6.4.6.3:
+Phase A pivot validation proceeds per v1.3 §6.4.2 against the canonical substrate-anchoring rule. The protocol is LLM-acquisition-based and operator-judgement-mediated; no Trends-based numeric stages are specified at v1.3.
 
-- Stage 1 (§6.4.2): KG entity-suggestion audit; diagnostic only.
-- Stage 2 (§6.4.3): baseline Trends stability; `cv_pct ≤ 30.0`.
-- Stage 3 (§6.4.4): bundle position; `pivot_to_ref_ratio ∈ [0.5, 5.0]`.
-- Stage 4 (§6.4.5): adjacency on pre-registered keyword pair `cookware` × `kitchen design`; `substrate_proportion ≥ 0.2` AND `adjacent_proportion ≤ 0.7`.
-- Stage 5 (§6.4.6.1): conjunction rule on Stages 2, 3, 4 — all three must pass for cell pivot lock.
+**Procedure per pivot candidate brand:**
+
+1. **Acquisition.** The brand is queried at 6 LLM model slots per Protocol v1.2 §5.2 canonical reference set, with a single canonical disambiguation query. The query form is held constant across all brands and phases per v0.16 precedent. Acquisition is implemented in `scripts/acquire_phase_a_v1_3.py` and writes per-slot response JSON files to `osf/v17/data/phase_a/<brand-slug>/slot_<N>.json` in the schema `{"model_id": str, "query": str, "response": str, "timestamp_utc": str}`.
+
+2. **Token truncation.** Each response is truncated to the first 100 whitespace-tokenised words. Whitespace tokenisation per v1.3 §6.4.2 is human-readable first-N-words slicing, not LLM-tokenisation.
+
+3. **Classification ledger generation.** `scripts/classify_phase_a_v1_3.py` (with v0.17 brand and archive constants) writes a CSV ledger at `osf/v17/classification_ledger.csv` with one row per (brand, slot) pair, columns `[brand, slot, model_id, query, first_100_tokens, anchored, anchoring_note]`. The `anchored` and `anchoring_note` columns are operator-filled.
+
+4. **Operator anchoring classification.** For each row, the operator reads `first_100_tokens` and judges: does the primary referent name a product, line, or attribute within the premium-cookware substrate? `anchored` column is filled as 1 (substrate-anchored) or 0 (not substrate-anchored). Optional rationale in `anchoring_note`. Operator judgement is the canonical classifier per v1.3 §6.4.2 — no automated classification is specified.
+
+5. **C_P tally.** Re-running `classify_phase_a_v1_3.py` against the filled ledger produces per-brand C_P verdict:
+   - **C_P PASSED:** anchoring count ≥ 5/6 (supermajority threshold per v1.3 §6.4.2)
+   - **C_P FAILED:** anchoring count ≤ 4/6
+
+A brand with `C_P PASSED` is eligible as Phase A pivot for its cell. A brand with `C_P FAILED` triggers the fallback cascade per §6.2.
 
 ### §6.2 Fallback activation per v1.3 §6.4.7
 
-On Stage 5 FAIL at the primary pivot candidate, fallback proceeds per v1.3 §6.4.7:
+On `C_P FAILED` at the primary pivot candidate, fallback proceeds per v1.3 §6.4.7:
 
-- **§6.4.7.1 Primary alternate activation.** First alternate in cell ordinal (Staub for European; Lodge for American; Iwachu for Japanese) activates as pivot candidate. Stages 2–4 re-run.
-- **§6.4.7.2 Bounded override.** If first alternate also fails Stage 5, bounded override is available — one-time per cell per phase. Override invocation requires operator judgement on whether the failure mode is methodological-edge or substantive-disqualification; the choice is documented at the time of decision in DEVIATIONS log per §6.4.7.4.
-- **§6.4.7.3 Cell collapse.** If bounded override is used and the next alternate also fails Stage 5, the cell collapses. Cell-collapse contingencies for v0.17:
+- **§6.4.7.1 Primary alternate activation.** First alternate in cell ordinal (Staub for European; Lodge for American; Iwachu for Japanese) activates as pivot candidate. New Phase A acquisition for the alternate brand; new ledger rows; new operator classification; new C_P tally.
+- **§6.4.7.2 Bounded override.** If the first alternate also returns `C_P FAILED`, bounded override is available — one-time per cell per phase. Override invocation requires operator judgement on whether the failure mode reflects a methodological-edge artifact (e.g., ambiguous truncation, off-target LLM response) or substantive substrate-disqualification of the brand. The choice is documented at the time of decision in `osf/v17/DEVIATIONS.md` per §6.4.7.4.
+- **§6.4.7.3 Cell collapse.** If bounded override is used and the next alternate also returns `C_P FAILED`, the cell collapses. Cell-collapse contingencies for v0.17:
   - European collapse: cell n=0; worldwide panel n=10; **C1 FAIL**; `H_Regime4_kitchenware` verdict FALSIFIED on panel inadequacy.
   - American collapse: cell n=0; worldwide panel n=10; **C1 FAIL**; same.
   - Japanese collapse: cell n=0; worldwide panel n=12; **C1 boundary HOLD** (exactly at n=12 floor); `H_Regime4_kitchenware` verdict proceeds on European + American panel; §2.3.2 tradition-cell reporting records Japanese cell as collapsed at Phase A.
 
 ### §6.3 DEVIATIONS log requirements per v1.3 §6.4.7.4
 
-Every fallback event — alternate activation, bounded override invocation, cell collapse — generates a DEVIATIONS log entry at the time of the event. Entry fields: event timestamp, cell affected, primary brand failure mode (Stage 2/3/4 metric value and threshold), alternate brand activated (or override invoked, or collapse triggered), operator judgement narrative if bounded override was used.
+Every fallback event — alternate activation, bounded override invocation, cell collapse — generates a DEVIATIONS log entry at the time of the event. Entry fields: event timestamp, cell affected, primary brand C_P count and failure mode, alternate brand activated (or override invoked, or collapse triggered), operator judgement narrative if bounded override was used.
 
-The v1.3 §6.4.7.4 audit-log requirements are mandatory; no fallback event proceeds without a contemporaneous DEVIATIONS entry. This is the v0.16 precedent (Entry 3 documented the Victorinox → Wüsthof → bounded override cascade) operationalised as standing protocol.
+The v1.3 §6.4.7.4 audit-log requirements are mandatory; no fallback event proceeds without a contemporaneous DEVIATIONS entry. This is the v0.16 retrospective scoring precedent operationalised as standing protocol.
 
 ---
 
@@ -228,6 +228,8 @@ Standard programme-spec set. All artefacts versioned `v17` or `v0.17` per pipeli
 
 | Artefact | Path | Function |
 |---|---|---|
+| Phase A acquisition | `~/aias/scripts/acquire_phase_a_v1_3.py` | Fresh 6-slot LLM acquisition for pivot candidates |
+| Phase A classifier | `~/aias/scripts/classify_phase_a_v1_3.py` | Ledger generation + C_P tally per v1.3 §6.4.2 |
 | Scoring | `~/aias/scripts/score_v17.py` | Canonical verdict against §2.1 decision rules |
 | Charts | `~/aias/scripts/build_charts_v17.py` | Five figures: panel composition; Trends t1/t2 stability; AIAS Presence distribution; ρ at t1 and t2 (bivariate + partial); per-cell ρ |
 | Report content | `~/aias/reports/v17_kitchenware_content.py` | Brand-format report copy |
@@ -239,7 +241,7 @@ Standard programme-spec set. All artefacts versioned `v17` or `v0.17` per pipeli
 | Git tag (post-pub) | `v0.17-published` | Tagged at commit carrying SSRN abstract ID in CHANGELOG |
 | Programme update | MSI WP bibliography | Cross-citation of v0.17 SSRN abstract ID + canonical methodology pair (6761698, 6797679) |
 
-Publication sequence: scoring → charts → report PDF → SSRN paper → OSF deposit → SSRN submission → SSRN abstract ID returned → git tag `v0.17-published` → push to `github.com/thirdsystem-aias/aias` → MSI WP cross-citation.
+Publication sequence: Phase A acquisition → ledger fill → C_P tally → cell-pivot lock → scoring → charts → report PDF → SSRN paper → OSF deposit → SSRN submission → SSRN abstract ID returned → git tag `v0.17-published` → push to `github.com/thirdsystem-aias/aias` → MSI WP cross-citation.
 
 ---
 
@@ -251,10 +253,12 @@ Publication sequence: scoring → charts → report PDF → SSRN paper → OSF d
 **Correspondence:** pablou@pablou.com · pablou.com
 **ORCID:** 0009-0003-8968-9990
 
-**Lock target:** git tag `v0.17-prereg` at commit `c013ac1` prior to any v0.17 LLM acquisition.
-**Lock date:** `2026-05-19` (populated at commit).
+**Lock target:** git tag `v0.17-prereg-r1` at commit `<HASH_R1>` prior to any v0.17 LLM acquisition.
+**Lock date:** `2026-05-19` (revision r1 date; original lock c013ac1 on 2026-05-19).
 
-**Pre-registration declaration.** All §2 hypotheses, §3 panel, §5 analysis plan, and §6 contingencies are locked at the commit tagged `v0.17-prereg`. Decision rules C1, C2, C3 in §2.1 and the §2.2 conditional verdict matrix are immutable post-lock. Operational deviations from this pre-registration are recorded contemporaneously in `DEVIATIONS.md` per Protocol v1.3 §6.4.7.4. No verdict reframing post-acquisition.
+**Pre-registration declaration.** All §2 hypotheses, §3 panel, §5 analysis plan, and §6 contingencies are locked at the commit tagged `v0.17-prereg-r1`. Decision rules C1, C2, C3 in §2.1 and the §2.2 conditional verdict matrix are immutable post-lock. Operational deviations from this pre-registration are recorded contemporaneously in `osf/v17/DEVIATIONS.md` per Protocol v1.3 §6.4.7.4. No verdict reframing post-acquisition.
+
+**Revision r1 declaration.** This revision corrects misalignment between the original v0.17 pre-registration (commit c013ac1, tag `v0.17-prereg`) and Protocol v1.3 as published at SSRN 6797679. §3.3 (Stage 4 adjacency keywords) removed and subsequent §3 subsections renumbered; §6.1 rewritten to specify v1.3 §6.4.2 C_P anchoring rule. Substantive hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unchanged from the original lock. See `osf/v17/DEVIATIONS.md` Entry 1 for the contemporaneous record. The discipline invariant (pre-registration locked at git commit before any LLM acquisition) is preserved: no v0.17 LLM acquisition occurred between the original lock at c013ac1 and this revision.
 
 **Declarations of interest.** The pre-registrant is employed by Samsung Electronics America in a corporate brand governance role. No Samsung-affiliated brands, no consumer-electronics brands, and no kitchenware-adjacent brands held by Samsung are included in the v0.17 panel. Samsung COI is disclosed in §Declarations of the published SSRN paper.
 
