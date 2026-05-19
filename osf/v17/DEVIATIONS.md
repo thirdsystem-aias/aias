@@ -215,4 +215,4 @@ This is the framing that will go into the v1.4 Methodology paper. Entry 4's "tem
 
 **v1.4 Methodology paper — cascade-pipeline note to add.** v1.4 (successor to SSRN 6797679) should explicitly specify the cascade-and-extend pipeline as the canonical Phase A workflow: ledger-extension preserves prior classifications across cascade rounds, providing an unbroken audit trail from the first acquisition through the final pivot-locked panel. Operator never re-classifies rows for a brand that has been definitively scored. This is a credibility-relevant property of the pipeline.
 
-**Audit trail.** Script upgrade committed at `<HASH_AUTO_6>`. Original v17 script preserved at commit `2b31253` for reproducibility against the pre-cascade state. Iwachu Phase A acquisition + classification + tally to follow in the next commit cycle.
+**Audit trail.** Script upgrade committed at `d09182c`. Original v17 script preserved at commit `2b31253` for reproducibility against the pre-cascade state. Iwachu Phase A acquisition + classification + tally to follow in the next commit cycle.
