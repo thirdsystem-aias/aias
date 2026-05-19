@@ -55,3 +55,36 @@ A `FutureWarning` from `google.generativeai` also surfaced indicating the legacy
 **Discipline invariant.** This deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected. The deviation is documented contemporaneously per v1.3 §6.4.7.4 audit-log discipline.
 
 **Audit trail.** Patched script will be committed at `12e66db` on `v0.11-phase3-pilot`. Original (failing) script preserved in git history at commit `3ebe426`.
+
+---
+
+## Entry 3 — Google slot 6 second patch (`gemini-2.0-flash` → `gemini-2.5-flash-lite`) (2026-05-19)
+
+**Event.** Second-pass acquisition (script commit `12e66db`) succeeded on slot 5 (`gemini-2.5-flash`) for all three primary pivots Le Creuset, All-Clad, Vermicular (3/3 calls). Slot 6 (`gemini-2.0-flash`) failed for all three brands with `ClientError: 404 NOT_FOUND` and the error message: *"This model models/gemini-2.0-flash is no longer available to new users. Please update your code to use a newer model for the latest features and improvements."* Google is restricting `gemini-2.0-flash` access to existing-account users; the `GOOGLE_API_KEY` associated with this acquisition is treated as a new-user account and cannot reach the model.
+
+Distinct failure mode from Entry 2: the prior failure was a sunset model identifier (no model at that path); this failure is an access-restriction on a still-existent model identifier. Both yield the same surface error code (404) but reflect different deprecation mechanics.
+
+**Detection.** Three sequential slot 6 attempts surfaced identical error wording. The fix path is explicitly stated in Google's error message: migrate to a newer model.
+
+**Resolution.** Patched `scripts/acquire_phase_a_v1_3.py` SLOTS row 6:
+
+- `model_id`: `gemini-2.0-flash` → `gemini-2.5-flash-lite`
+
+`gemini-2.5-flash-lite` is the current production-GA efficiency variant in the same model family as slot 5's `gemini-2.5-flash`. Same generation, lighter tier — closest natural successor in the flash branch.
+
+**Cumulative Google-tier degradation since original reference-set definition:**
+
+| Slot | Original (v1.3 design) | Entry 2 patch | Entry 3 patch |
+|---|---|---|---|
+| 5 | `gemini-1.5-pro` (high) | `gemini-2.5-flash` (mid) | `gemini-2.5-flash` (mid) |
+| 6 | `gemini-1.5-flash` (mid) | `gemini-2.0-flash` (mid) | `gemini-2.5-flash-lite` (efficient) |
+
+The 6-slot count is preserved. Provider diversity (Anthropic, OpenAI, Google) is preserved. The 3-provider × 2-tier balance is broken at the Google tier: Anthropic retains Opus+Sonnet (high+mid); OpenAI retains GPT-4o + GPT-4o-mini (high+mid); Google is now `gemini-2.5-flash` + `gemini-2.5-flash-lite` (mid+efficient, both flash-family). The C_P supermajority threshold (5/6) is unchanged in count but the underlying reference-set composition is structurally different from the v1.3 design intent.
+
+**Methodological note for cross-phase comparability.** If the v0.17 C_P verdicts surface tier-correlated anchoring patterns — i.e., flash-family Gemini systematically anchors differently than would have a pro-family Gemini — this becomes a methodological signal worth surfacing in the v1.4 Methodology re-cut. The v0.16 retrospective scoring used a different (and now-unreachable) reference set; cross-phase C_P comparison should be interpreted with this composition shift documented in the published v0.17 paper.
+
+**Acquisition status post-patch.** Slot files 1-5 for all three primary pivots are now on disk (15 successful slot files). The script's skip-existing logic ensures the third acquisition pass will attempt only slot 6 across the three brands — 3 additional API calls.
+
+**Discipline invariant.** Deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected.
+
+**Audit trail.** Patched script will be committed at `<HASH_PATCH_3>`. Prior failing version preserved at git commit `12e66db` (Entry 2 patch).

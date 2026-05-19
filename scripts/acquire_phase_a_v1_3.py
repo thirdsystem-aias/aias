@@ -70,7 +70,7 @@ SLOTS = [
     {"slot": 3, "provider": "openai",    "model_id": "gpt-4o"},
     {"slot": 4, "provider": "openai",    "model_id": "gpt-4o-mini"},
     {"slot": 5, "provider": "google",    "model_id": "gemini-2.5-flash"},
-    {"slot": 6, "provider": "google",    "model_id": "gemini-2.0-flash"},
+    {"slot": 6, "provider": "google",    "model_id": "gemini-2.5-flash-lite"},
 ]
 
 # OPERATOR REVIEW: Confirm this matches the v0.16 canonical disambiguation
