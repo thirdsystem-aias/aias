@@ -23,10 +23,18 @@ Usage:
 Pre-requisites:
     - ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY in environment
       (loaded via: source ~/.aias_env after fixing to export KEY=value format)
-    - Python packages: anthropic, openai, google-generativeai
+    - Python packages: anthropic, openai, google-genai
+      Install with: pip install --upgrade anthropic openai google-genai
+      (NOTE: google-genai supersedes google-generativeai, which was sunset 2025-11-30)
 
 Output layout:
     osf/v17/data/phase_a/<brand-slug>/slot_<N>.json
+
+Slot-skip behaviour:
+    On re-run, any slot_<N>.json that already exists on disk is skipped. This makes
+    the script idempotent and recovery-safe: a partial-failure first pass (e.g.,
+    Google slots down) can be completed by a second pass after patching the
+    affected provider, without re-billing the slots that already succeeded.
 
 OPERATOR REVIEW POINTS (search for "OPERATOR REVIEW"):
     1. SLOTS list — confirm models match v1.2 §5.2 canonical reference set
@@ -49,17 +57,20 @@ DEFAULT_REGISTRY = ROOT / "registries" / "brands_kitchenware_v0.17.json"
 # ---------------------------------------------------------------------------
 # Reference model slots
 # ---------------------------------------------------------------------------
-# OPERATOR REVIEW: These defaults are placeholders representing a balanced
-# 3-provider × 2-tier reference set. Confirm against v1.2 §5.2 spec (or your
-# smoke_test_llms.py config) and update model IDs if needed before --live.
+# OPERATOR REVIEW: 3-provider × 2-tier balance. Slot 5 and 6 updated post v0.17
+# first-run acquisition: original gemini-1.5-pro / gemini-1.5-flash returned 404
+# on current GOOGLE_API_KEY (model IDs sunset by Google). Replacement IDs are
+# current production-GA Gemini variants. See osf/v17/DEVIATIONS.md Entry 2.
+# If billing is enabled on GOOGLE_API_KEY, slot 5 can be upgraded to
+# "gemini-3.1-pro-preview" for a closer-to-original high+mid tier pairing.
 # ---------------------------------------------------------------------------
 SLOTS = [
     {"slot": 1, "provider": "anthropic", "model_id": "claude-opus-4-5"},
     {"slot": 2, "provider": "anthropic", "model_id": "claude-sonnet-4-5"},
     {"slot": 3, "provider": "openai",    "model_id": "gpt-4o"},
     {"slot": 4, "provider": "openai",    "model_id": "gpt-4o-mini"},
-    {"slot": 5, "provider": "google",    "model_id": "gemini-1.5-pro"},
-    {"slot": 6, "provider": "google",    "model_id": "gemini-1.5-flash"},
+    {"slot": 5, "provider": "google",    "model_id": "gemini-2.5-flash"},
+    {"slot": 6, "provider": "google",    "model_id": "gemini-2.0-flash"},
 ]
 
 # OPERATOR REVIEW: Confirm this matches the v0.16 canonical disambiguation
@@ -124,14 +135,18 @@ def call_openai(model_id: str, query: str) -> str:
 
 
 def call_google(model_id: str, query: str) -> str:
-    import google.generativeai as genai
-    genai.configure(api_key=os.environ["GOOGLE_API_KEY"])
-    model = genai.GenerativeModel(model_id)
-    resp = model.generate_content(
-        query,
-        generation_config={"max_output_tokens": MAX_TOKENS_OUT},
+    """
+    Google GenAI SDK call. Migrated from the sunset google.generativeai package
+    to the current google.genai SDK (per Google's 2025-11-30 deprecation). The
+    new client auto-detects GOOGLE_API_KEY or GEMINI_API_KEY from environment.
+    """
+    from google import genai
+    client = genai.Client()  # auto-picks GOOGLE_API_KEY / GEMINI_API_KEY
+    response = client.models.generate_content(
+        model=model_id,
+        contents=query,
     )
-    return resp.text
+    return response.text
 
 
 DISPATCH = {

@@ -26,3 +26,32 @@ Operational deviations from `PRE_REGISTRATION_v0_17.md` (locked at commit c013ac
 
 **Operator.** Pablo Ulpiano González Castro.
 **Detection method.** Routine reconciliation of pre-registration against canonical classifier `scripts/classify_phase_a_v1_3.py` during Phase A pipeline setup.
+
+---
+
+## Entry 2 — Google API integration patch (2026-05-19)
+
+**Event.** First-run live acquisition via `scripts/acquire_phase_a_v1_3.py --live` (commit `04b624f`) succeeded for 4 of 6 slots per brand (12 of 18 total calls across the 3 primary pivots Le Creuset, All-Clad, Vermicular). Anthropic slots (claude-opus-4-5, claude-sonnet-4-5) and OpenAI slots (gpt-4o, gpt-4o-mini) completed without error. Google slots failed across all three brands:
+
+- Slot 5 (`gemini-1.5-pro`): `NotFound: 404 models/gemini-1.5-pro is not found for API version v1beta`
+- Slot 6 (`gemini-1.5-flash`): `NotFound: 404 models/gemini-1.5-flash is not found for API version v1beta`
+
+A `FutureWarning` from `google.generativeai` also surfaced indicating the legacy package was sunset on 2025-11-30; the supported successor is `google.genai`.
+
+**Detection.** Live acquisition output surfaced both issues simultaneously. The `gemini-1.5-*` model identifiers used in the v0.17 acquire-script `SLOTS` list were sunset by Google between the v1.3 methodology paper draft window and v0.17 acquisition timestamp, and the legacy SDK no longer maps to current generation models.
+
+**Resolution.** Patched `scripts/acquire_phase_a_v1_3.py`:
+
+- Package: `google.generativeai` (sunset) → `google.genai` (currently-supported successor). Import line and `call_google` function rewritten against the new SDK's `genai.Client().models.generate_content(model=..., contents=...)` API.
+- Slot 5 `model_id`: `gemini-1.5-pro` → `gemini-2.5-flash` (current production-GA).
+- Slot 6 `model_id`: `gemini-1.5-flash` → `gemini-2.0-flash` (current production-GA).
+- Other slots (claude-opus-4-5, claude-sonnet-4-5, gpt-4o, gpt-4o-mini) unchanged.
+- Prerequisite added to docstring: `pip install --upgrade google-genai`.
+
+**Methodological impact on v1.3 §6.4.2 C_P anchoring.** The reference-set composition has changed at the Google-tier slots. The 6-slot count is preserved, and the 3-provider × 2-tier balance is preserved structurally, but the Google tier is degraded: both updated Google slots are flash-tier rather than the original pro+flash pairing. This is a tooling-driven deviation, not a methodological design choice — the original `gemini-1.5-pro` slot is no longer accessible on the GOOGLE_API_KEY associated with this acquisition (404, not 403, indicating model-availability rather than authorisation). The C_P supermajority threshold (5/6) is unchanged. Methodological re-evaluation of the canonical reference-set definition deferred to v0.18 Methodology re-cut; v1.3 §5.2 will be revisited if cross-phase comparability suffers.
+
+**Acquisition status post-patch.** Slot files 1-4 for all three primary pivots were successfully written to disk during the first acquisition pass (12 successful slot files). The script's skip-existing-file logic ensures the second pass will attempt only slots 5-6 for each brand — 6 additional API calls rather than re-running the full 18-call panel. Existing successful slot data is preserved unchanged.
+
+**Discipline invariant.** This deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected. The deviation is documented contemporaneously per v1.3 §6.4.7.4 audit-log discipline.
+
+**Audit trail.** Patched script will be committed at `<HASH_PATCH>` on `v0.11-phase3-pilot`. Original (failing) script preserved in git history at commit `3ebe426`.
