@@ -2,21 +2,25 @@
 """
 classify_phase_a_v17.py — v0.17 Phase A C_P scoring per v1.3 §6.4.2
 
-Phase-versioned copy of classify_phase_a_v1_3.py adapted for v0.17 premium
-kitchenware. Loads canonical disambiguation responses for the v0.17 primary
-pivots (Le Creuset, All-Clad, Vermicular) from osf/v17/data/phase_a/,
-truncates each response to first 100 tokens per the §6.4.2 anchoring rule,
-generates a classification ledger for operator anchoring decisions, and
-tallies per-brand C_P counts once filled.
+Phase-versioned ledger-management + C_P tally script for v0.17 premium kitchenware.
+Loads canonical disambiguation responses from osf/v17/data/phase_a/, truncates each
+response to first 100 tokens per §6.4.2, manages the classification ledger, and
+tallies per-brand C_P counts.
 
-Single entry point, behaviour auto-detects from ledger state:
-  - Ledger absent  → extract responses, generate ledger
-  - Ledger present, rows unfilled → instruct to fill
-  - Ledger fully filled → tally and print C_P verdict per brand
+Behaviour auto-detects from ledger state and BRANDS list:
+  - Ledger absent           → generate fresh ledger (all rows empty `anchored`)
+  - Ledger present, missing
+    brand-slot pairs        → EXTEND ledger; preserve existing fills; add new rows
+  - Ledger present, all
+    rows present but some
+    unfilled                → instruct to fill (manually or via auto-classifier)
+  - Ledger present, all
+    rows present and filled → tally and print C_P verdict per brand
 
-If a primary pivot returns C_P FAILED, the cascade per v1.3 §6.4.7 fires:
-acquire the cell's first alternate via acquire_phase_a_v1_3.py, add its slug
-to BRANDS, delete the ledger to regenerate, re-fill, re-tally.
+Cascade workflow: when a primary pivot returns C_P FAILED, append the cell's
+first alternate slug to BRANDS below, run this script (extends ledger with the
+alternate's 6 rows), then run scripts/classify_phase_a_auto_v1_4.py (fills only
+the new rows via idempotent skip-existing), then re-run this script to re-tally.
 
 Usage:
     python scripts/classify_phase_a_v17.py
@@ -35,13 +39,14 @@ ROOT = Path.home() / "aias"
 PHASE_A_DIR = ROOT / "osf" / "v17" / "data" / "phase_a"
 LEDGER_PATH = ROOT / "osf" / "v17" / "classification_ledger.csv"
 
-# v0.17 primary pivots per pre-reg §3.2 (commits 3ebe426 / v0.17-prereg-r1).
-# As cascade fires (any primary C_P FAILED), append the cell's first alternate
-# slug here, delete the ledger CSV, and re-run to extend. Alternates per cell:
-#   european alternate 1: staub
-#   american alternate 1: lodge
-#   japanese alternate 1: iwachu
-BRANDS = ["le-creuset", "all-clad", "vermicular"]
+# v0.17 panel per pre-reg §3.2 (commits 3ebe426 / v0.17-prereg-r1).
+# Starts with the three primary pivots. As cascade fires (any C_P FAILED),
+# append the failing cell's next alternate slug to this list. Alternates per
+# cell, in ordinal order:
+#   European: staub → mauviel → demeyere → fissler → de-buyer
+#   American: lodge → made-in → field-company → smithey → hestan
+#   Japanese: iwachu → sori-yanagi → noda-horo
+BRANDS = ["le-creuset", "all-clad", "vermicular", "iwachu"]
 
 TARGET_SLOTS = 6           # Reference model set size per Protocol v1.2 §5.2
 TOKEN_LIMIT = 100          # Per §6.4.2 anchoring decision rule
@@ -103,43 +108,86 @@ def first_n_tokens(text: str, n: int = TOKEN_LIMIT) -> str:
 
 
 # ---------------------------------------------------------------------------
-# Ledger generation
+# Ledger read / generate / extend
 # ---------------------------------------------------------------------------
 
-def generate_ledger() -> None:
+LEDGER_COLUMNS = ["brand", "slot", "model_id", "query", "first_100_tokens",
+                  "anchored", "anchoring_note"]
+
+
+def read_existing_ledger() -> list:
+    """Return list of existing ledger rows, or [] if ledger does not exist."""
+    if not LEDGER_PATH.exists():
+        return []
+    with LEDGER_PATH.open(encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def existing_key_set(rows: list) -> set:
+    """Set of (brand, slot:int) pairs present in ledger rows."""
+    return {(r["brand"], int(r["slot"])) for r in rows}
+
+
+def build_new_rows_for_brand(brand: str, existing_keys: set) -> list:
+    """Build rows for any (brand, slot) pairs not in existing_keys."""
+    new = []
+    for r in load_phase_a_responses(brand):
+        key = (r["brand"], r["slot"])
+        if key in existing_keys:
+            continue
+        new.append({
+            "brand": r["brand"],
+            "slot": str(r["slot"]),
+            "model_id": r["model_id"],
+            "query": r["query"],
+            "first_100_tokens": first_n_tokens(r["response"], TOKEN_LIMIT),
+            "anchored": "",
+            "anchoring_note": "",
+        })
+    return new
+
+
+def write_ledger(rows: list) -> None:
+    """Write rows to the ledger CSV, preserving the canonical column order."""
     LEDGER_PATH.parent.mkdir(parents=True, exist_ok=True)
-
-    rows = []
-    for brand in BRANDS:
-        for r in load_phase_a_responses(brand):
-            rows.append({
-                "brand": r["brand"],
-                "slot": r["slot"],
-                "model_id": r["model_id"],
-                "query": r["query"],
-                "first_100_tokens": first_n_tokens(r["response"], TOKEN_LIMIT),
-                "anchored": "",         # MANUAL FILL: 1 if substrate-anchored, 0 if not
-                "anchoring_note": "",   # MANUAL: optional reason for the classification
-            })
-
-    if not rows:
-        sys.exit("ERROR: no responses loaded. Check PHASE_A_DIR path and slot files.")
-
     with LEDGER_PATH.open("w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
+        writer = csv.DictWriter(f, fieldnames=LEDGER_COLUMNS)
         writer.writeheader()
         writer.writerows(rows)
 
-    print(f"\nLedger written: {LEDGER_PATH}")
-    print(f"  Rows: {len(rows)} (expected: {len(BRANDS) * TARGET_SLOTS})")
+
+def generate_or_extend_ledger(existing_rows: list, new_rows_by_brand: dict) -> None:
+    """
+    Write the ledger with existing rows preserved (with their fills intact) plus
+    any new rows appended (with empty `anchored` / `anchoring_note`).
+    """
+    new_rows = [r for brand_rows in new_rows_by_brand.values() for r in brand_rows]
+    all_rows = existing_rows + new_rows
+    if not all_rows:
+        sys.exit("ERROR: no responses loaded. Check PHASE_A_DIR path and slot files.")
+
+    write_ledger(all_rows)
+
+    is_fresh = not existing_rows
+    print(f"\nLedger {'written' if is_fresh else 'extended'}: {LEDGER_PATH}")
+    if is_fresh:
+        print(f"  Rows: {len(all_rows)} (expected: {len(BRANDS) * TARGET_SLOTS})")
+    else:
+        print(f"  Existing rows preserved: {len(existing_rows)}")
+        for brand, brand_rows in new_rows_by_brand.items():
+            if brand_rows:
+                print(f"  + {brand}: {len(brand_rows)} new rows")
+        print(f"  Total rows: {len(all_rows)}")
+
     print(f"\nNext steps:")
-    print(f"  1. Open ledger in spreadsheet or editor")
-    print(f"  2. For each row, read `first_100_tokens` and judge:")
+    print(f"  1. Auto-classify unfilled rows:")
+    print(f"       python scripts/classify_phase_a_auto_v1_4.py")
+    print(f"     (idempotent — skips already-classified rows; only fills new ones)")
+    print(f"  2. Or fill manually: for each new row, read `first_100_tokens` and judge")
     print(f"     - Does the primary referent name a product, line, or attribute")
     print(f"       within the {SUBSTRATE_PROMPT}?")
-    print(f"  3. Fill `anchored` column: 1 if substrate-anchored, 0 if not")
-    print(f"  4. Optionally note reason in `anchoring_note`")
-    print(f"  5. Re-run this script to tally")
+    print(f"     - Set `anchored` = 1 if yes, 0 if not")
+    print(f"  3. Re-run this script to tally")
 
 
 # ---------------------------------------------------------------------------
@@ -163,6 +211,9 @@ def tally(rows: list) -> None:
 
     for brand in counts:
         c = counts[brand]
+        if c["total"] == 0:
+            print(f"  {brand:14s} (no rows in ledger)")
+            continue
         if c["anchored"] >= PASS_THRESHOLD:
             verdict = "C_P PASSED"
         else:
@@ -176,20 +227,34 @@ def tally(rows: list) -> None:
 # ---------------------------------------------------------------------------
 
 def main() -> None:
-    if not LEDGER_PATH.exists():
-        generate_ledger()
+    existing_rows = read_existing_ledger()
+    existing_keys = existing_key_set(existing_rows)
+
+    # Determine which brands need new rows added (cascade extension)
+    new_rows_by_brand = {}
+    any_new = False
+    for brand in BRANDS:
+        new = build_new_rows_for_brand(brand, existing_keys)
+        new_rows_by_brand[brand] = new
+        if new:
+            any_new = True
+
+    if any_new or not existing_rows:
+        # Generate or extend
+        generate_or_extend_ledger(existing_rows, new_rows_by_brand)
         return
 
-    with LEDGER_PATH.open(encoding="utf-8") as f:
-        rows = list(csv.DictReader(f))
-
-    unfilled = [r for r in rows if r["anchored"].strip() not in ("0", "1")]
+    # All expected (brand, slot) pairs present in ledger — check fill state
+    unfilled = [r for r in existing_rows if r["anchored"].strip() not in ("0", "1")]
     if unfilled:
         print(f"\nLedger present at {LEDGER_PATH} with {len(unfilled)} unfilled rows.")
-        print(f"Fill `anchored` column (1=substrate-anchored, 0=not), then re-run.")
+        print(f"Fill `anchored` column via auto-classifier:")
+        print(f"  python scripts/classify_phase_a_auto_v1_4.py")
+        print(f"Or fill manually (1=substrate-anchored, 0=not), then re-run.")
         return
 
-    tally(rows)
+    # All filled — tally
+    tally(existing_rows)
 
 
 if __name__ == "__main__":

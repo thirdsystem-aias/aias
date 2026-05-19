@@ -170,3 +170,49 @@ This is the framing that will go into the v1.4 Methodology paper. Entry 4's "tem
 **Forward action for v1.4 Methodology paper.** Add inter-run reproducibility assessment to the v1.4 paper's §6.4.2 specification: re-run the v0.17 classifier against the same 18-row ledger on a separate occasion and report any anchoring disagreements as the empirical floor of classifier non-determinism. This becomes the canonical robustness check rather than a sampling-parameter lock.
 
 **Audit trail.** Patched script committed at `9042dea`. Failing-version script preserved at commit `2097c9f`.
+
+---
+
+## Entry 6 — Vermicular C_P FAILED → Japanese cell cascade activated (Iwachu) (2026-05-19)
+
+**Event.** First Phase A cascade event in the AIAS programme. Vermicular (Japanese cell primary pivot per pre-reg §3.2) returned C_P FAILED with anchoring count 4/6, below the 5/6 supermajority threshold per v1.3 §6.4.2. Le Creuset (European primary) and All-Clad (American primary) both C_P PASSED with 6/6. Cascade fires per v1.3 §6.4.7.1: first alternate in Japanese cell ordinal = Iwachu, activated for Phase A acquisition + classification.
+
+**Vermicular slot-level breakdown (committed in ledger at commit `9042dea`):**
+
+| Slot | Model | Anchored | Classifier rationale |
+|---|---|---|---|
+| 1 | claude-opus-4-5 | 1 | "Vermicular is a Japanese cookware brand" — direct substrate identity |
+| 2 | claude-sonnet-4-5 | 1 | "Vermicular is a Japanese premium cookware brand" — direct substrate identity |
+| 3 | gpt-4o | 1 | Defines Vermicular as a Japanese cookware brand |
+| 4 | gpt-4o-mini | **0** | Frames "vermicular" as a term with multiple meanings; non-substrate primary referent |
+| 5 | gemini-2.5-flash | **0** | Defines "vermicular" as an adjective meaning worm-like; etymological referent |
+| 6 | gemini-2.5-flash-lite | 1 | Defines Vermicular as a brand of high-quality cast iron cookware from Japan |
+
+**Substantive observation.** The failure pattern is methodologically clean — two mid-tier models (gpt-4o-mini, gemini-2.5-flash) led with non-substrate referents (a multi-meaning disambiguation, an adjective etymology), while higher-capacity siblings in the same vendors (gpt-4o, gemini-2.5-flash-lite — note the lite-vs-flash mid-tier flip in the Google family) led with the cookware brand identity. This is not a tier-monotonic pattern; it reflects training-set sparsity for the Vermicular brand on the LLM identity surface, which is exactly the property the C_P rule is designed to detect. Pre-registration §2.3.2 anticipated Japanese-cell structural fragility; Vermicular's failure is the first empirical confirmation.
+
+**Programme-level note.** This is also the first Phase A C_P FAILURE in the AIAS programme. v0.16 (kitchen knives) was retrospectively re-scored against the v1.3 §6.4.2 rule (per Methodology v1.3, SSRN 6797679) — no live cascade was executed. v0.17 is therefore the first phase to exercise §6.4.7.1 in production. The cascade plumbing is now battle-tested.
+
+**Resolution — activate Iwachu (Japanese cell ordinal 2).**
+
+1. Acquire 6-slot Phase A responses for Iwachu via `scripts/acquire_phase_a_v1_3.py --brands "Iwachu" --live`.
+2. Run `scripts/classify_phase_a_v17.py` — script auto-extends the existing ledger with 6 new Iwachu rows (preserves existing 18 rows with their fills per the v17 script upgrade documented below).
+3. Run `scripts/classify_phase_a_auto_v1_4.py` — idempotent classifier fills only the 6 new Iwachu rows; existing 18 are skipped.
+4. Re-run `scripts/classify_phase_a_v17.py` — tally over 24 rows; Iwachu verdict drives next step.
+
+**Conditional next steps:**
+- **Iwachu C_P PASSED (5/6 or 6/6).** Japanese cell pivot locked at Iwachu. Vermicular descoped from v0.17 panel. Proceed to Phase B (topic-ID resolution per Protocol v1.2 §4) on locked panel of {Le Creuset, All-Clad, Iwachu} plus the secondary alternates from each cell per §3.2.
+- **Iwachu C_P FAILED.** Bounded override per v1.3 §6.4.7.2 (one-time per cell per phase) becomes available — operator judgement on whether the failure is a methodological-edge anchoring noise or a substantive disqualification. DEVIATIONS Entry 7 territory. If override not invoked, cascade to Sori Yanagi (ordinal 3), then if also failed, Noda Horo (ordinal 4, borderline per pre-reg §2.3.2).
+- **Japanese cell collapse (all 4 alternates C_P FAIL).** Per §6.4.7.3, cell is dropped from v0.17 panel. Worldwide n drops from 16 → 12 (exactly at C1 boundary floor per §6.2). Decision rule structure unchanged but precision attenuated.
+
+**Script upgrade — `scripts/classify_phase_a_v17.py` extended for ledger-extension mode.** The original v17 script (committed at `2b31253`) regenerates the ledger from scratch on every run, which would wipe the existing 18 classifications when BRANDS is extended for cascade. Cascade workflow requires preserving existing classifications and only adding rows for the new brand(s). Script upgraded:
+
+- New state-detection logic in `main()`: ledger-absent vs ledger-incomplete (cascade extension) vs ledger-complete-but-unfilled vs ledger-complete-and-filled (tally path).
+- New helper `build_new_rows_for_brand()`: adds rows only for (brand, slot) pairs not already in the ledger. Existing rows preserved verbatim.
+- `generate_or_extend_ledger()`: writes the merged set (existing + new) preserving the canonical column order. Reports the delta clearly: "Existing rows preserved: N; + iwachu: 6 new rows; Total rows: N+6".
+- Auto-classifier `scripts/classify_phase_a_auto_v1_4.py` is already idempotent (skip-if-anchored-in-{0,1}), so it composes correctly with the extended ledger: only new unfilled rows get API calls.
+
+**This upgrade is methodological infrastructure, not a protocol change.** v1.3 §6.4.2's substantive content (TARGET_SLOTS=6, TOKEN_LIMIT=100, PASS_THRESHOLD=5) is unchanged. The upgrade only changes the script's handling of cascade-induced BRANDS extension. The pre-reg §3.2 panel composition is unaffected.
+
+**v1.4 Methodology paper — cascade-pipeline note to add.** v1.4 (successor to SSRN 6797679) should explicitly specify the cascade-and-extend pipeline as the canonical Phase A workflow: ledger-extension preserves prior classifications across cascade rounds, providing an unbroken audit trail from the first acquisition through the final pivot-locked panel. Operator never re-classifies rows for a brand that has been definitively scored. This is a credibility-relevant property of the pipeline.
+
+**Audit trail.** Script upgrade committed at `<HASH_AUTO_6>`. Original v17 script preserved at commit `2b31253` for reproducibility against the pre-cascade state. Iwachu Phase A acquisition + classification + tally to follow in the next commit cycle.
