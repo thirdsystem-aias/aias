@@ -20,9 +20,9 @@ Operational deviations from `PRE_REGISTRATION_v0_17.md` (locked at commit c013ac
 
 **Substantive impact on hypotheses.** None. §2.1 (`H_Regime4_kitchenware` C1/C2/C3 decision rules), §2.2 (`H_IdentityLoad_moderator` joint verdict matrix), and §2.3 (descriptive sensitivities) are unchanged. The panel composition in §3.2 (16 brands across European/American/Japanese cells with ordinal pivot priority) is unchanged.
 
-**Audit trail.** The original pre-registration (with the misaligned protocol references) is preserved in the repository at commit `c013ac1`, tag `v0.17-prereg`. The revised pre-registration is committed at `<HASH_R1>`, tagged `v0.17-prereg-r1`. Both tags remain on `origin/v0.11-phase3-pilot`.
+**Audit trail.** The original pre-registration (with the misaligned protocol references) is preserved in the repository at commit `c013ac1`, tag `v0.17-prereg`. The revised pre-registration is committed at `3ebe426`, tagged `v0.17-prereg-r1`. Both tags remain on `origin/v0.11-phase3-pilot`.
 
-**Discipline invariant.** The pre-acquisition lock invariant is preserved: no v0.17 LLM acquisition has occurred between the original lock at c013ac1 and this revision at `<HASH_R1>`. The corrected pre-registration sits ahead of any v0.17 data event in the operational sequence.
+**Discipline invariant.** The pre-acquisition lock invariant is preserved: no v0.17 LLM acquisition has occurred between the original lock at c013ac1 and this revision at `3ebe426`. The corrected pre-registration sits ahead of any v0.17 data event in the operational sequence.
 
 **Operator.** Pablo Ulpiano González Castro.
 **Detection method.** Routine reconciliation of pre-registration against canonical classifier `scripts/classify_phase_a_v1_3.py` during Phase A pipeline setup.
