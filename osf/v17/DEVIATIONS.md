@@ -131,3 +131,42 @@ The classifier model, prompt, temperature, and output schema are the methodologi
 **Reproducibility note.** Anthropic temperature=0 inference is low-variance but not strictly bit-deterministic at infrastructure level. Re-running the classifier against the same slot files should produce identical `anchored` values on stable classification cases; genuinely borderline rows may flip on rare occasions. Methodological assessment of re-run variance is a v1.4 follow-up.
 
 **Audit trail.** Script committed at `2097c9f`. Filled ledger (after running the classifier) committed in same commit. Empty-ledger snapshot preserved at commit `2b31253` for re-derivation under any future protocol revision.
+
+---
+
+## Entry 5 — Classifier API change: `temperature` deprecated on `claude-opus-4-7` (2026-05-19)
+
+**Event.** First live invocation of `scripts/classify_phase_a_auto_v1_4.py` (committed at `2097c9f` per Entry 4) failed on the first API call with `BadRequestError: 400 — temperature is deprecated for this model`. Anthropic deprecated the `temperature`, `top_p`, and `top_k` sampling parameters on `claude-opus-4-7` entirely (Anthropic API change April 2026); passing any value, including `0`, triggers a 400 invalid_request_error per Anthropic / AWS Bedrock model documentation.
+
+**Detection.** Single LLM call attempt at the top of the 18-row classification queue surfaced the 400. The dry-run preceding it did not catch the issue because dry-run does not exercise the API path.
+
+**Resolution.** Patched `scripts/classify_phase_a_auto_v1_4.py`:
+
+- Removed the `temperature=CLASSIFIER_TEMPERATURE` keyword argument from the `client.messages.create(...)` call.
+- Removed the `CLASSIFIER_TEMPERATURE = 0` constant.
+- Updated the `anchoring_note` tag from `[auto-classified by claude-opus-4-7 @ T=0]` to `[auto-classified by claude-opus-4-7]` to reflect that sampling temperature is no longer operator-controlled.
+- Updated docstring and startup banner to note that temperature is model-default (deprecated for this model) and that reproducibility commitments now rest on `(classifier model + prompt template)` constancy only.
+
+**Methodological framing.**
+
+Entry 4 specified `temperature = 0` as a methodological lock on classifier reproducibility. That lock is no longer enforceable for `claude-opus-4-7` via the API. Anthropic's documentation explicitly states that `temperature = 0` did not guarantee identical responses across invocations in any case — so the change is partly an honest API surface that matches the underlying non-determinism rather than an actual loss of guarantee. The reproducibility commitment for the AIAS Phase A automated classifier now reads:
+
+> Phase A C_P classification is reproducible at the *(classifier model identifier, prompt template)* level. Two invocations of `classify_phase_a_auto_v1_4.py` against the same ledger with the same classifier model and same prompt template should produce identical anchoring calls on stable classification cases. Genuinely borderline rows may flip on rare re-runs; methodological inter-run variance is a v1.4 follow-up assessment.
+
+This is the framing that will go into the v1.4 Methodology paper. Entry 4's "temperature = 0 / low-variance / deterministic" language is superseded by Entry 5.
+
+**Locked classifier configuration (current state):**
+
+| Parameter | Value | Notes |
+|---|---|---|
+| Model | `claude-opus-4-7` | Locked |
+| Sampling | model-default | Not configurable — temperature/top_p/top_k deprecated for this model |
+| Max output tokens | `200` | Locked |
+| Prompt template | `CLASSIFIER_PROMPT_TEMPLATE` in script | Locked |
+| Output schema | `ANCHORED: <0\|1>\nRATIONALE: <≤25-word sentence>` | Locked |
+
+**Impact on pre-registration and substantive hypotheses.** None on the substance. §2.1, §2.2, §2.3, §3.2 are unchanged. Entry 5 supersedes the `temperature = 0` line of Entry 4 only; the substitution of LLM classifier for operator judgement (the substantive Entry 4 deviation) stands.
+
+**Forward action for v1.4 Methodology paper.** Add inter-run reproducibility assessment to the v1.4 paper's §6.4.2 specification: re-run the v0.17 classifier against the same 18-row ledger on a separate occasion and report any anchoring disagreements as the empirical floor of classifier non-determinism. This becomes the canonical robustness check rather than a sampling-parameter lock.
+
+**Audit trail.** Patched script committed at `<HASH_AUTO_5>`. Failing-version script preserved at commit `2097c9f`.

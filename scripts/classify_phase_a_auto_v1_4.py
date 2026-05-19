@@ -4,9 +4,16 @@ classify_phase_a_auto_v1_4.py — Automated C_P anchoring classifier (provisiona
 
 Substitutes the v1.3 §6.4.2 operator-judgement Phase A classification step with
 a locked LLM classifier. Reads unfilled rows from a Phase A classification ledger,
-sends each row's `first_100_tokens` to Claude Opus 4.7 at temperature 0 with a
-locked classification prompt, writes back `anchored` (0/1) and `anchoring_note`
-(the model's one-sentence rationale).
+sends each row's `first_100_tokens` to Claude Opus 4.7 with a locked classification
+prompt, writes back `anchored` (0/1) and `anchoring_note` (the model's one-sentence
+rationale).
+
+NOTE: Claude Opus 4.7 deprecated the `temperature`, `top_p`, and `top_k` sampling
+parameters entirely (Anthropic API change 2026-04). Sampling is now model-default
+and not configurable via the API. Reproducibility commitment now rests on
+(classifier model + prompt template) constancy; per Anthropic documentation
+temperature=0 never provided bit-exact determinism in any case. See DEVIATIONS
+Entry 5 for the methodological record.
 
 DEVIATION FROM v1.3 § 6.4.2: v1.3 as published specifies operator-judgement only.
 This script implements the provisional v1.4 §6.4.2 revision (LLM-classifier-based
@@ -48,12 +55,16 @@ DEFAULT_SUBSTRATE = "premium-cookware substrate"
 # ---------------------------------------------------------------------------
 # Locked classifier configuration per provisional v1.4 §6.4.2
 # ---------------------------------------------------------------------------
-# These three constants define the C_P classification function. Any change to
-# any of them constitutes a DEVIATIONS entry under v1.4 protocol discipline.
+# These constants define the C_P classification function. Any change to any of
+# them constitutes a DEVIATIONS entry under v1.4 protocol discipline.
+#
+# NOTE: As of Anthropic API change 2026-04, claude-opus-4-7 no longer accepts
+# the temperature / top_p / top_k parameters — passing any value triggers a
+# 400 invalid_request_error. Sampling is model-default and not configurable.
+# Reproducibility now rests on (model + prompt) constancy only.
 # ---------------------------------------------------------------------------
 
 CLASSIFIER_MODEL = "claude-opus-4-7"
-CLASSIFIER_TEMPERATURE = 0
 CLASSIFIER_MAX_TOKENS = 200
 
 CLASSIFIER_PROMPT_TEMPLATE = """You are scoring an entry in an AIAS Phase A anchoring ledger per Protocol v1.4 § 6.4.2.
@@ -89,7 +100,6 @@ def classify_one(client, brand: str, first_100_tokens: str, substrate_prompt: st
     resp = client.messages.create(
         model=CLASSIFIER_MODEL,
         max_tokens=CLASSIFIER_MAX_TOKENS,
-        temperature=CLASSIFIER_TEMPERATURE,
         messages=[{"role": "user", "content": prompt}],
     )
     text = resp.content[0].text
@@ -147,7 +157,7 @@ def main():
     n_total = len(rows)
     n_to_do = len(to_classify)
     print(f"Phase A auto-classifier (provisional v1.4 §6.4.2)")
-    print(f"  Classifier: {CLASSIFIER_MODEL}, temperature={CLASSIFIER_TEMPERATURE}")
+    print(f"  Classifier: {CLASSIFIER_MODEL} (model-default sampling; temperature deprecated for this model)")
     print(f"  Ledger:     {args.ledger}")
     print(f"  Substrate:  {args.substrate}")
     print(f"  Rows total: {n_total}")
@@ -180,7 +190,7 @@ def main():
                 substrate_prompt=args.substrate,
             )
             row["anchored"] = anchored
-            tag = f"[auto-classified by {CLASSIFIER_MODEL} @ T={CLASSIFIER_TEMPERATURE}]"
+            tag = f"[auto-classified by {CLASSIFIER_MODEL}]"
             row["anchoring_note"] = f"{tag} {rationale}"
             print(f"{label}  anchored={anchored}  — {rationale}")
         except Exception as exc:
