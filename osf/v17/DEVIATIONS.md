@@ -130,4 +130,4 @@ The classifier model, prompt, temperature, and output schema are the methodologi
 
 **Reproducibility note.** Anthropic temperature=0 inference is low-variance but not strictly bit-deterministic at infrastructure level. Re-running the classifier against the same slot files should produce identical `anchored` values on stable classification cases; genuinely borderline rows may flip on rare occasions. Methodological assessment of re-run variance is a v1.4 follow-up.
 
-**Audit trail.** Script committed at `<HASH_AUTO_4>`. Filled ledger (after running the classifier) committed in same commit. Empty-ledger snapshot preserved at commit `2b31253` for re-derivation under any future protocol revision.
+**Audit trail.** Script committed at `2097c9f`. Filled ledger (after running the classifier) committed in same commit. Empty-ledger snapshot preserved at commit `2b31253` for re-derivation under any future protocol revision.
