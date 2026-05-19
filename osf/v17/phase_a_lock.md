@@ -1,7 +1,7 @@
 # Phase A Lock — v0.17 Premium Kitchenware
 
 **Status.** Phase A complete; operational panel locked for Phase B onward.
-**Locked at git commit.** `<HASH_AUTO_LOCK>` (tag: `v0.17-phase-a-locked`).
+**Locked at git commit.** `7aabb53` (tag: `v0.17-phase-a-locked`).
 **Substrate.** Premium kitchenware (per pre-reg §1).
 **Methodology.** AIAS Presence Measurement Protocol v1.3 §6.4.2 (operator-judgement classification) as superseded for Phase A by provisional v1.4 §6.4.2 (automated LLM classifier) per DEVIATIONS Entries 4–5.
 **Pre-registration of record.** `v0.17-prereg-r1` (commit `3ebe426`; §8 hash backfill at `04b624f`).
@@ -120,7 +120,7 @@ Full git commit trace, in order:
 | 8 | DEVIATIONS Entry 4 (operator-judgement → LLM classifier substitution) + classifier script created | `2097c9f` → `a6974e6` | — |
 | 9 | DEVIATIONS Entry 5 (temperature deprecation patch) + filled ledger for 18 rows | `9042dea` → `8fc966c` | — |
 | 10 | DEVIATIONS Entry 6 (Vermicular C_P FAILED → Iwachu cascade) + script upgrade + Iwachu slot files + extended ledger | `d09182c` → `1304237` | — |
-| 11 | Phase A lock (this document) | `<HASH_AUTO_LOCK>` | `v0.17-phase-a-locked` |
+| 11 | Phase A lock (this document) | `7aabb53` | `v0.17-phase-a-locked` |
 
 ---
 
