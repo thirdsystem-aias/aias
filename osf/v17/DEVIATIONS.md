@@ -87,4 +87,4 @@ The 6-slot count is preserved. Provider diversity (Anthropic, OpenAI, Google) is
 
 **Discipline invariant.** Deviation occurred during Phase A acquisition, before any Phase B / Phase D operations. Pre-registration hypotheses §2.1, §2.2, §2.3 and panel composition §3.2 are unaffected.
 
-**Audit trail.** Patched script will be committed at `<HASH_PATCH_3>`. Prior failing version preserved at git commit `12e66db` (Entry 2 patch).
+**Audit trail.** Patched script will be committed at `b5efea3`. Prior failing version preserved at git commit `12e66db` (Entry 2 patch).
