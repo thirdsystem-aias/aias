@@ -174,7 +174,7 @@ def chart_phase_b_mention_rates():
     tiers  = [d[3] for d in data]
     colors = [CELL_COLOR[d[1]] for d in data]
 
-    fig, ax = plt.subplots(figsize=(7.5, 8.0))
+    fig, ax = plt.subplots(figsize=(7.5, 9.0))
     y_pos = np.arange(len(brands))
     ax.barh(y_pos, rates, color=colors, edgecolor="white",
             linewidth=0.8, zorder=3)
@@ -218,10 +218,10 @@ def chart_phase_b_mention_rates():
                 "Japanese cell concentrated entirely at zero — the full-cell "
                 "collapse motivating the AMBIGUOUS Identity-Load verdict.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
-                            title_y=0.965, subtitle_y=0.930, wrap_width=100)
-    add_source(fig, x=0.06, y=0.030)
+                            title_y=0.965, subtitle_y=0.920, wrap_width=100)
+    add_source(fig, x=0.06, y=0.035)
 
-    fig.subplots_adjust(top=0.87, bottom=0.08, left=0.16, right=0.97)
+    fig.subplots_adjust(top=0.82, bottom=0.08, left=0.16, right=0.97)
     out = OUT_DIR / "chart_v17_phase_b_mention_rates.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
@@ -250,7 +250,7 @@ def chart_dissociation():
         "Vermicular": (4.00, -0.06, "japanese"),  # Phase B descope marker
     }
 
-    fig, ax = plt.subplots(figsize=(7.5, 6.8))
+    fig, ax = plt.subplots(figsize=(7.5, 7.5))
 
     # ---- Plot data points + their per-point labels --------------------------
     for brand, (x, y, cell) in PLACEMENT.items():
@@ -350,9 +350,9 @@ def chart_dissociation():
                 "Availability as a multi-component construct.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
                             title_y=0.965, subtitle_y=0.930, wrap_width=100)
-    add_source(fig, x=0.06, y=0.030)
+    add_source(fig, x=0.06, y=0.045)
 
-    fig.subplots_adjust(top=0.81, bottom=0.11, left=0.10, right=0.97)
+    fig.subplots_adjust(top=0.81, bottom=0.10, left=0.10, right=0.97)
     out = OUT_DIR / "chart_v17_dissociation.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
@@ -420,7 +420,7 @@ def chart_cell_collapse():
                 "inadequacy verdict for H$_\\mathrm{Regime4\\_kitchenware}$.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
                             title_y=0.965, subtitle_y=0.930, wrap_width=100)
-    add_source(fig, x=0.06, y=0.030)
+    add_source(fig, x=0.06, y=0.080)
 
     fig.subplots_adjust(top=0.74, bottom=0.13, left=0.09, right=0.97)
     out = OUT_DIR / "chart_v17_cell_collapse.pdf"
