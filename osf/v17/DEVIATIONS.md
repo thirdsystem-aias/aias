@@ -278,4 +278,4 @@ Vermicular was C_P FAILED at Phase A (DEVIATIONS Entry 6) and is descoped from t
 4. Specify the borderline-classification resolution mechanism: registries flag borderline brands with `borderline_resolution_at` pointing to the resolving phase; the phase's verdict is recorded in the resolution log's `borderline_resolution` column.
 5. Promote the per-query × per-slot mention matrix to canonical artefact — preserved for inter-LLM reliability analysis in v1.5+.
 
-**Audit trail.** Script committed at `<HASH_AUTO_7>`. Brand registry at commit (unchanged from `2b31253`). Phase A lock document at commit `8cdf0cd` referenced for descope authority.
+**Audit trail.** Script committed at `55e28ed`. Brand registry at commit (unchanged from `2b31253`). Phase A lock document at commit `8cdf0cd` referenced for descope authority.
