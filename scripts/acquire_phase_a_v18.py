@@ -14,6 +14,9 @@ import json
 from pathlib import Path
 from datetime import datetime, timezone
 
+# Bootstrap: make protocol/ importable when running from project root
+import _path  # noqa: F401
+
 # Canonical implementations from the shared protocol layer
 from protocol import PROTOCOL_VERSION
 from protocol.probe import probe_brand

@@ -44,6 +44,9 @@ from pathlib import Path
 from datetime import datetime, timezone
 from statistics import mean
 
+# Bootstrap: make protocol/ importable when running from project root
+import _path  # noqa: F401
+
 from protocol import PROTOCOL_VERSION
 from protocol.thresholds import (
     C1_PANEL_ADEQUACY_FLOOR,
