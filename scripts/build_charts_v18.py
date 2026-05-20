@@ -43,8 +43,14 @@ import matplotlib.patches as patches
 
 PHASE = "v0.18"
 
-# Locked chart figsize — must match report layout slot reservation
-CHART_FIGSIZE = (6.0, 4.0)
+# Locked chart figsize — must match report layout slot reservation.
+# Updated 2026-05-20: figsize raised from (6.0, 4.0) to (7.5, 5.5) so the
+# charts span the brand-format report's full 6-column content width (540pt
+# = 7.5in). Sub-width charts left-aligned in the wider report frame produced
+# a "postage stamp" effect with the caption also rendering at sub-width
+# (~1.5 of 2 columns). At 7.5in wide, chart and caption both span the full
+# content area.
+CHART_FIGSIZE = (7.5, 5.5)
 CHART_DPI = 300
 
 # Attribution footer — applied to every chart

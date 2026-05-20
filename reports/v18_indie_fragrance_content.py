@@ -55,11 +55,22 @@ COVER = {
 
 # ---------------------------------------------------------------------------
 # STANDFIRST — full-width callout on the lead spread (24pt bold indigo)
+# Sized to fill the 396pt lead_top frame (~13 lines at 28pt leading) so the
+# transition into the LEAD_DECK + EXEC_SUMMARY columns reads continuous,
+# not gapped. Earlier 2-sentence version left ~280pt of empty space between
+# the bottom of the callout and where the columns begin in lead_bottom.
 # ---------------------------------------------------------------------------
 
 STANDFIRST = (
-    "Nine cases of Recognition without Recall, on a same-language fragrance "
-    "substrate. The Iwachu pattern is not a cross-cultural artifact."
+    "Nine cases of Recognition without Recall, on a same-language indie-"
+    "fragrance substrate. The Iwachu pattern generalizes — it is not a "
+    "cross-cultural artifact but a measurable mechanism of AI-mediated "
+    "retrieval. Six of the nine cases concentrate in the highest-"
+    "Identity-Load cell, where 75% of brands exhibit the pattern. The "
+    "Identity-Load moderator operates across the three-leg v0.16 / v0.17 / "
+    "v0.18 history, bounded by substrate-specific qualifications. Three "
+    "pre-registered hypotheses; three PARTIAL verdicts that say more "
+    "together than apart."
 )
 
 

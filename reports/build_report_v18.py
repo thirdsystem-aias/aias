@@ -144,13 +144,14 @@ CHART_FIGSIZE_IN = {
     "6_col_v17_mention_rates":  (7.50, 9.00),
     "6_col_v17_cell_collapse":  (7.50, 5.40),
     "6_col_v17_dissociation":   (7.50, 7.50),
-    # v0.18 brand-format report keys — 3 charts at native figsize.
-    # All produced by build_charts_v18.py at CHART_FIGSIZE = (6.0, 4.0).
-    # If brand-format scale needs to grow, regenerate build_charts_v18.py
-    # at larger figsize (e.g. 7.5 × 5.0) and update these keys to match.
-    "6_col_v18_mention_rate_distribution": (6.00, 4.00),  # Phase B distribution per cell
-    "6_col_v18_cell_attrition":            (6.00, 4.00),  # Phase A→B brand survival
-    "6_col_v18_dissociation_scatter":      (6.00, 4.00),  # Recognition × Recall scatter
+    # v0.18 brand-format report keys — 3 charts at native figsize 7.5 × 5.5.
+    # Width matches the brand-format report's full 6-column content area
+    # (540pt = 7.5in) so charts span edge-to-edge and the caption flowing
+    # below inherits the full 2-column width. Updated 2026-05-20 from the
+    # initial (6.0, 4.0) which left the charts sub-width and left-aligned.
+    "6_col_v18_mention_rate_distribution": (7.50, 5.50),
+    "6_col_v18_cell_attrition":            (7.50, 5.50),
+    "6_col_v18_dissociation_scatter":      (7.50, 5.50),
 }
 
 BODY_LEFT_X = COL_X[0]
