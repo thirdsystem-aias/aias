@@ -127,6 +127,14 @@ PREAMBLE = r"""
 % AIAS Presence Measurement Protocol — Recognition x Recall Decomposition
 % =====================================================================
 
+% --- Pandoc template fallbacks ----------------------------------------
+% Pandoc's default LaTeX template references XMP metadata commands from
+% the hyperxmp package (typically not in baseline MacTeX/BasicTeX). Define
+% no-op fallbacks so the template compiles without requiring hyperxmp.
+\providecommand{\xmpquote}[1]{#1}
+\providecommand{\xmpcomma}{,}
+\providecommand{\xmpcolon}{:}
+
 % --- Line spacing (1.36 as specified by AIAS SSRN convention) ----------
 \usepackage{setspace}
 \setstretch{1.36}
