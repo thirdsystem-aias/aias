@@ -51,7 +51,10 @@ from protocol import PROTOCOL_VERSION
 from protocol.thresholds import (
     C1_PANEL_ADEQUACY_FLOOR,
     C2_REGIME4_MENTION_THRESHOLD,
+    C2_REGIME4_TOP2_SHARE_THRESHOLD,
+    C2_IL_GRADIENT_SEPARATION_MIN,
     C3_RANKING_COHERENCE_THRESHOLD,
+    C3_MIN_CELLS_CLEARING,
     DISSOCIATION_C_P_FLOOR,
     DISSOCIATION_MENTION_CEILING,
     RECOGNITION_RECALL_CORRELATION_THRESHOLD,
@@ -185,18 +188,34 @@ def _bootstrap_spearman_ci(
 # ============================================================
 
 def verdict_h_regime4(phase_a: dict, phase_b: dict) -> dict:
+    """
+    Within-phase Regime 4 verdict per pre-reg r4 §4.0 (full implementation).
+
+    Cascade: C1 (panel adequacy) → C2_within_cell → C2_il_gradient → C3.
+    Returns CONFIRMED / PARTIAL / FALSIFIED / NULL with diagnostic detail.
+    """
     cell_diagnostics = {}
     total_n = 0
+    cell_top2_shares = {}
+    cell_phase_d_rhos = {}
+    cell_n_post_attrition = {}
+
     for cell_name, a_cell in phase_a["cells"].items():
         b_cell = phase_b["cells"][cell_name]
         n = cell_panel_n(a_cell, b_cell)
         total_n += n
+        top2 = cell_mention_concentration(b_cell)
+        rho = cell_phase_d_rho(a_cell, b_cell)
+        cell_top2_shares[cell_name] = top2
+        cell_phase_d_rhos[cell_name] = rho
+        cell_n_post_attrition[cell_name] = n
         cell_diagnostics[cell_name] = {
             "n_post_attrition": n,
-            "mention_concentration_top2": cell_mention_concentration(b_cell),
-            "phase_d_rho": cell_phase_d_rho(a_cell, b_cell),
+            "mention_concentration_top2": top2,
+            "phase_d_rho": rho,
         }
 
+    # ---- C1: Panel adequacy ----
     if total_n < C1_PANEL_ADEQUACY_FLOOR:
         return {
             "verdict": "NULL",
@@ -205,23 +224,107 @@ def verdict_h_regime4(phase_a: dict, phase_b: dict) -> dict:
             "cell_diagnostics": cell_diagnostics,
         }
 
-    if C2_REGIME4_MENTION_THRESHOLD is None or C3_RANKING_COHERENCE_THRESHOLD is None:
-        return {
-            "verdict": "BLOCKED",
-            "resolved_at": "C2/C3",
-            "reason": (
-                "C2 and/or C3 thresholds still None in protocol/thresholds.py. "
-                "ONE-TIME LIFT needed: open your existing v17 score script, "
-                "find the C2 and C3 threshold constants, and copy the values "
-                "into protocol/thresholds.py. After that, all future phases "
-                "inherit. Do NOT add the values to this file."
-            ),
-            "cell_diagnostics": cell_diagnostics,
-        }
-    # C2/C3 evaluation lifts from v17 logic post-protocol-fill
-    return {
-        "verdict": "PENDING_PROTOCOL_FILL",
+    # ---- C2(a): within-cell — at least one cell clears top-2 share threshold ----
+    cells_meeting_c2_within = [
+        c for c, share in cell_top2_shares.items()
+        if share >= C2_REGIME4_TOP2_SHARE_THRESHOLD
+    ]
+    c2_within_pass = len(cells_meeting_c2_within) >= 1
+
+    # ---- C2(b): IL-gradient separation — Cell B share - Cell C share ≥ 0.10 ----
+    cell_b_share = cell_top2_shares.get("cell_b_indie_artisan", 0.0)
+    cell_c_share = cell_top2_shares.get("cell_c_mass_prestige", 0.0)
+    il_gradient_separation = cell_b_share - cell_c_share
+    c2_il_gradient_pass = il_gradient_separation >= C2_IL_GRADIENT_SEPARATION_MIN
+
+    # ---- C3: per-cell ρ ≥ threshold in ≥ 2 of 3 cells at n ≥ 5 ----
+    cells_clearing_c3 = []
+    cells_excluded_n_floor = []
+    for cell_name in phase_a["cells"]:
+        n = cell_n_post_attrition[cell_name]
+        rho = cell_phase_d_rhos[cell_name]
+        if n < PHASE_D_RHO_MIN_CELL_N:
+            cells_excluded_n_floor.append(cell_name)
+            continue
+        if rho is not None and rho >= C3_RANKING_COHERENCE_THRESHOLD:
+            cells_clearing_c3.append(cell_name)
+    c3_pass = len(cells_clearing_c3) >= C3_MIN_CELLS_CLEARING
+
+    # ---- Assemble extended diagnostics for the verdict payload ----
+    diagnostic_detail = {
         "cell_diagnostics": cell_diagnostics,
+        "C1_check": {
+            "total_n_post_attrition": total_n,
+            "floor": C1_PANEL_ADEQUACY_FLOOR,
+            "satisfied": True,
+        },
+        "C2_within_cell_check": {
+            "threshold": C2_REGIME4_TOP2_SHARE_THRESHOLD,
+            "cells_meeting_threshold": cells_meeting_c2_within,
+            "satisfied": c2_within_pass,
+        },
+        "C2_il_gradient_check": {
+            "cell_b_top2_share": cell_b_share,
+            "cell_c_top2_share": cell_c_share,
+            "separation": il_gradient_separation,
+            "min_required": C2_IL_GRADIENT_SEPARATION_MIN,
+            "satisfied": c2_il_gradient_pass,
+        },
+        "C3_check": {
+            "threshold_per_cell": C3_RANKING_COHERENCE_THRESHOLD,
+            "cells_clearing": cells_clearing_c3,
+            "cells_excluded_n_floor": cells_excluded_n_floor,
+            "min_cells_clearing_required": C3_MIN_CELLS_CLEARING,
+            "satisfied": c3_pass,
+        },
+    }
+
+    # ---- Verdict routing per pre-reg r4 §4.0 truth table ----
+    if not c2_within_pass:
+        return {
+            "verdict": "FALSIFIED",
+            "resolved_at": "C2_within_cell",
+            "reason": (
+                f"No cell meets top-2 share ≥ {C2_REGIME4_TOP2_SHARE_THRESHOLD}; "
+                f"observed shares: {cell_top2_shares}"
+            ),
+            **diagnostic_detail,
+        }
+
+    if not c2_il_gradient_pass:
+        return {
+            "verdict": "FALSIFIED",
+            "resolved_at": "C2_il_gradient",
+            "reason": (
+                f"IL-gradient separation Cell B − Cell C = "
+                f"{il_gradient_separation:.3f} < {C2_IL_GRADIENT_SEPARATION_MIN} "
+                f"(Cell B top-2 = {cell_b_share:.3f}, Cell C top-2 = {cell_c_share:.3f})"
+            ),
+            **diagnostic_detail,
+        }
+
+    if not c3_pass:
+        return {
+            "verdict": "PARTIAL",
+            "resolved_at": "C3",
+            "reason": (
+                f"C2 conditions met; C3 cells clearing ρ ≥ {C3_RANKING_COHERENCE_THRESHOLD} "
+                f"= {len(cells_clearing_c3)} < {C3_MIN_CELLS_CLEARING} required "
+                f"(clearing: {cells_clearing_c3}; excluded for n < {PHASE_D_RHO_MIN_CELL_N}: "
+                f"{cells_excluded_n_floor})"
+            ),
+            **diagnostic_detail,
+        }
+
+    return {
+        "verdict": "CONFIRMED",
+        "resolved_at": "C3",
+        "reason": (
+            f"All conditions met. C2 within-cell cleared by {cells_meeting_c2_within}. "
+            f"IL-gradient separation {il_gradient_separation:.3f} ≥ "
+            f"{C2_IL_GRADIENT_SEPARATION_MIN}. C3 cleared by {cells_clearing_c3}."
+        ),
+        **diagnostic_detail,
     }
 
 
@@ -330,21 +433,101 @@ def emit_verdict_md(verdicts: dict, out_path: Path) -> None:
         f"**Protocol version:** `{PROTOCOL_VERSION}`",
         f"**Scored:** {datetime.now(timezone.utc).isoformat()}",
         f"",
-        f"## H_Regime4_indie_fragrance (within-phase)",
+        f"---",
+        f"",
+        f"## H_Regime4_indie_fragrance (within-phase substantive)",
+        f"",
         f"**Verdict:** `{h_r4.get('verdict')}`",
+        f"**Resolved at:** {h_r4.get('resolved_at', 'n/a')}",
+        f"",
+        f"{h_r4.get('reason', '')}",
+        f"",
+    ]
+
+    # Per-cell diagnostics table
+    cd = h_r4.get("cell_diagnostics", {})
+    if cd:
+        lines.extend([
+            f"### Per-cell diagnostics",
+            f"",
+            f"| Cell | n post-attrition | Top-2 share (C2) | Phase D ρ (C3) |",
+            f"|---|---|---|---|",
+        ])
+        for cell, d in cd.items():
+            rho = d.get("phase_d_rho")
+            rho_str = f"{rho:.3f}" if rho is not None else "—"
+            lines.append(
+                f"| {cell} | {d.get('n_post_attrition', '—')} | "
+                f"{d.get('mention_concentration_top2', 0):.3f} | {rho_str} |"
+            )
+        lines.append("")
+
+    # Condition check breakdown
+    for check_name, check_label in [
+        ("C2_within_cell_check", "C2 — within-cell"),
+        ("C2_il_gradient_check", "C2 — IL-gradient separation"),
+        ("C3_check", "C3 — within-cell ranking coherence"),
+    ]:
+        c = h_r4.get(check_name)
+        if c:
+            lines.append(f"**{check_label}:** {'✓ satisfied' if c.get('satisfied') else '✗ not satisfied'}")
+            for k, v in c.items():
+                if k != "satisfied":
+                    lines.append(f"  - {k}: `{v}`")
+            lines.append("")
+
+    lines.extend([
+        f"---",
         f"",
         f"## H_IdentityLoad_moderator (three-leg joint v0.16 × v0.17 × v0.18)",
+        f"",
         f"**Joint verdict:** `{h_il.get('joint_verdict')}`",
         f"",
-        f"- v0.16: {PREDECESSOR_VERDICTS['v0.16']}",
-        f"- v0.17: {PREDECESSOR_VERDICTS['v0.17']}",
-        f"- v0.18: {h_il.get('v0_18_leg')}",
+        f"- v0.16: `{PREDECESSOR_VERDICTS['v0.16']}`",
+        f"- v0.17: `{PREDECESSOR_VERDICTS['v0.17']}`",
+        f"- v0.18: `{h_il.get('v0_18_leg')}`",
         f"",
         f"{h_il.get('narrative', '')}",
         f"",
+        f"---",
+        f"",
         f"## H_Recognition_Recall_dissociation_generalization (methodological)",
+        f"",
         f"**Verdict:** `{h_di.get('verdict')}`",
-    ]
+        f"",
+        f"{h_di.get('narrative', h_di.get('reason', ''))}",
+        f"",
+    ])
+
+    # Dissociation cases per cell
+    cases = h_di.get("cases_per_cell", {})
+    if cases:
+        total = sum(len(v) for v in cases.values())
+        lines.append(f"### Dissociation cases ({total} total)")
+        lines.append("")
+        for cell_name, cell_cases in cases.items():
+            if cell_cases:
+                lines.append(f"**{cell_name}** ({len(cell_cases)} case{'s' if len(cell_cases) != 1 else ''}):")
+                for c in cell_cases:
+                    lines.append(
+                        f"  - {c['brand']}: C_P={c['c_p_score']}/6, mentions={c['mention_count']}/18"
+                    )
+                lines.append("")
+            else:
+                lines.append(f"**{cell_name}**: 0 cases")
+                lines.append("")
+
+    # Correlation diagnostic if zero cases
+    if "spearman_rho_pooled" in h_di:
+        lines.extend([
+            f"### Recognition–Recall correlation (zero-case path)",
+            f"",
+            f"- Spearman ρ pooled: `{h_di.get('spearman_rho_pooled'):.3f}`",
+            f"- Bootstrap 95% CI: `{h_di.get('bootstrap_ci_95')}`",
+            f"- n_brands_pooled: `{h_di.get('n_brands_pooled')}`",
+            f"",
+        ])
+
     with out_path.open("w", encoding="utf-8") as f:
         f.write("\n".join(lines))
 
