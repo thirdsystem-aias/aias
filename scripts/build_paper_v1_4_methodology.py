@@ -175,6 +175,14 @@ PREAMBLE = r"""
 % --- Microtype for typographic refinement ------------------------------
 \usepackage{microtype}
 
+% --- Lenient line breaking for paths/identifiers in body text ----------
+% Long monospace strings (paths, constant names) don't break naturally.
+% \sloppy and \emergencystretch let LaTeX use larger inter-word spacing
+% when needed to avoid overfull boxes. This is the standard mitigation
+% for technical-writing line overflow.
+\sloppy
+\setlength{\emergencystretch}{3em}
+
 % --- Title formatting via titling package -----------------------------
 % Avoid redefining \maketitle directly — pandoc's default template handles
 % abstract emission separately (not via \@abstract), so a custom \maketitle
@@ -186,7 +194,7 @@ PREAMBLE = r"""
 \preauthor{\begin{center}\normalsize}
 \postauthor{\par\end{center}\vskip 1em}
 \predate{\begin{center}}
-\postdate{\par\end{center}\vskip 2em}
+\postdate{\par\end{center}\clearpage}
 
 % --- Abstract styling (pandoc emits \begin{abstract}...\end{abstract} when
 %     the YAML 'abstract' field is present; restyle that block).

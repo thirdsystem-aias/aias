@@ -141,7 +141,7 @@ In v1.3, the Phase A Recognition indicator $\rho_R(b, k)$ was determined by oper
 - **Model:** claude-opus-4-7
 - **Sampling:** model-default (the `temperature`, `top_p`, and `top_k` parameters were deprecated on this model in the April 2026 Anthropic API revision; sampling is now model-default and not configurable via the API)
 - **Maximum output tokens:** 200
-- **Prompt template:** locked in `scripts/classify_phase_a_auto_v1_4.py` (constant `CLASSIFIER_PROMPT_TEMPLATE`)
+- **Prompt template:** the `CLASSIFIER_PROMPT_TEMPLATE` constant, locked in the v1.4 classifier script
 - **Output schema:** two-line response, format `ANCHORED: <0 or 1>\nRATIONALE: <one short sentence, max 25 words>`
 
 The classifier reads $\tau(b, k)$ for each cell, returns $\rho_R(b, k) \in \{0, 1\}$, and writes a one-sentence rationale to the classification ledger as audit trail. The ledger column `anchoring_note` preserves this rationale for external review.
@@ -209,11 +209,13 @@ The tier vocabulary (PASS, PASS_E5, EXCLUDED_E1a) is preserved from the v0.13–
 
 ## 4.3 Mechanical Alias Generation
 
-For each brand canonical name, the protocol generates a mechanical alias set covering hyphen, space, and concatenation variants:
+For each brand canonical name $b$, the protocol generates a mechanical alias set $\text{aliases}(b)$ by composing three rules:
 
-$$\text{aliases}(b) = \{b, \text{lower}(b)\} \cup \begin{cases} \{b \text{ with hyphens } \to \text{ spaces}, b \text{ with hyphens removed}\} & \text{if } b \text{ contains hyphens} \\ \emptyset & \text{otherwise} \end{cases} \cup \begin{cases} \{b \text{ with spaces } \to \text{ hyphens}, b \text{ with spaces removed}\} & \text{if } b \text{ contains spaces} \\ \emptyset & \text{otherwise} \end{cases}$$
+1. **Canonical forms.** Always include $b$ and $\text{lower}(b)$.
+2. **Hyphen variants.** If $b$ contains hyphens, additionally include $b$ with hyphens replaced by spaces and $b$ with hyphens removed.
+3. **Space variants.** If $b$ contains spaces, additionally include $b$ with spaces replaced by hyphens and $b$ with spaces removed.
 
-For example, canonical "All-Clad" generates aliases {"All-Clad", "all-clad", "All Clad", "AllClad"}. Canonical "Made In" generates {"Made In", "made in", "Made-In", "MadeIn"}.
+For example, canonical "All-Clad" generates aliases \{"All-Clad", "all-clad", "All Clad", "AllClad"\}. Canonical "Made In" generates \{"Made In", "made in", "Made-In", "MadeIn"\}.
 
 **Mechanical alias generation is not semantic.** Variants like "Field and Company" or "Field Co." for canonical "Field Company" are not generated. Semantic aliases require registry-level alias entries. This is a documented limitation; the v1.4 brand registry schema specifies an optional `aliases` field for brands requiring semantic-variant matching. Mechanical alias generation handles the most common variant patterns at zero registry-maintenance cost; semantic-alias registration is recommended for brands with documented variant usage.
 
