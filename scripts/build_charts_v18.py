@@ -47,6 +47,13 @@ PHASE = "v0.18"
 CHART_FIGSIZE = (6.0, 4.0)
 CHART_DPI = 300
 
+# Attribution footer — applied to every chart
+SOURCE_LINE = (
+    "Source: AIAS™ Presence Measurement Protocol v1.4 (SSRN 6799479) · "
+    "v0.18-prereg-r1 · osf.io/ec6wh/v18/"
+)
+ATTRIBUTION_LINE = "Third\u00a0System™  ·  thirdsystem.ai"
+
 # Brand colors — Third System brand tokens
 # IL-gradient ordering: light (C, medium IL) → mid (A, medium-high) → dark (B, high IL)
 INDIGO_PRIMARY = "#37237B"
@@ -88,6 +95,34 @@ plt.rcParams.update({
     "legend.fontsize": 8,
     "legend.frameon": False,
 })
+
+
+# ============================================================
+# Chart chrome — subtitle + source footer (applied to every chart)
+# ============================================================
+
+def apply_chrome(fig, ax, title: str, subtitle: str) -> None:
+    """
+    Apply consistent chrome to a chart: bold title, italic subtitle below it,
+    source line at bottom-left, Third System attribution at bottom-right.
+    Title set via fig.suptitle / ax.text to allow the two-line title block.
+    """
+    # Title block: bold title, italic subtitle directly below
+    ax.set_title("")  # clear any per-axes title; we lay out the block manually
+    fig.suptitle(title, fontsize=11, fontweight="bold", y=0.985, ha="center")
+    fig.text(
+        0.5, 0.935, subtitle,
+        fontsize=9, style="italic", color="#444444", ha="center",
+    )
+    # Source footer (bottom-left) and attribution (bottom-right)
+    fig.text(
+        0.02, 0.012, SOURCE_LINE,
+        fontsize=6.5, color="#666666", ha="left",
+    )
+    fig.text(
+        0.98, 0.012, ATTRIBUTION_LINE,
+        fontsize=6.5, color="#666666", ha="right",
+    )
 
 
 # ============================================================
@@ -145,11 +180,18 @@ def chart_mention_rate_distribution(phase_b: dict, output_path: Path) -> None:
     ax.set_xticks(range(len(CELL_DISPLAY_ORDER)))
     ax.set_xticklabels([CELL_LABELS[c] for c in CELL_DISPLAY_ORDER], fontsize=8)
     ax.set_ylabel("Phase B mention count (max = 18)")
-    ax.set_title("Phase B mention rate distribution per cell")
     ax.set_ylim(-0.5, 18.5)
     ax.set_yticks([0, 2, 6, 12, 18])
 
-    fig.tight_layout()
+    apply_chrome(
+        fig, ax,
+        title="Phase B mention rate distribution per cell",
+        subtitle=(
+            "v0.18 indie fragrance — 24 brands × 3 cells, "
+            "IL-gradient ascending C → A → B"
+        ),
+    )
+    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
@@ -197,11 +239,18 @@ def chart_cell_attrition(phase_a: dict, phase_b: dict, output_path: Path) -> Non
     ax.set_xticks(x_positions)
     ax.set_xticklabels([CELL_LABELS[c] for c in CELL_DISPLAY_ORDER], fontsize=8)
     ax.set_ylabel("Brand count")
-    ax.set_title("Cell attrition: Phase A registered → Phase B mention-positive")
     ax.legend(loc="upper right")
     ax.set_ylim(0, 10)
 
-    fig.tight_layout()
+    apply_chrome(
+        fig, ax,
+        title="Cell attrition: Phase A registered → Phase B mention-positive",
+        subtitle=(
+            "Light bars: Phase A panel (n=8/cell). Dark bars: brands with "
+            "≥1 mention across 18 Phase B observations."
+        ),
+    )
+    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
@@ -263,14 +312,21 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
 
     ax.set_xlabel("Phase A C_P score (Recognition, max 6)")
     ax.set_ylabel("Phase B mention count (Recall, max 18)")
-    ax.set_title("Recognition × Recall dissociation scatter — v0.18 panel")
     ax.set_xlim(-0.3, 6.3)
     ax.set_ylim(-0.5, 18.5)
     ax.set_xticks(range(7))
     ax.set_yticks([0, 2, 6, 12, 18])
     ax.legend(loc="upper left", fontsize=7)
 
-    fig.tight_layout()
+    apply_chrome(
+        fig, ax,
+        title="Recognition × Recall dissociation scatter — v0.18 panel",
+        subtitle=(
+            "Shaded quadrant: Iwachu-pattern (C_P ≥ 5 ∧ mentions ≤ 2). "
+            "Black × = v0.17 Iwachu reference point."
+        ),
+    )
+    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
