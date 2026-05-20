@@ -26,29 +26,43 @@ C1_PANEL_ADEQUACY_FLOOR = 12
 
 
 # ============================================================
-# C2 — Regime 4 mention concentration (locked at v1.2)
+# C2 — Regime 4 mention concentration (locked r4, v1.4 framework)
 # ============================================================
-# Operationalizes the Regime 4 retrieval signature. The exact
-# operationalization (top-2-share vs. Gini vs. Herfindahl) is
-# protocol-canonical and consistent across phases.
-#
-# TODO ONE-TIME LIFT: Copy the locked value from your existing v17
-# scoring code (likely scripts/score_v17.py). After this lift,
-# never again — all future phases inherit.
+# v1.4 framework operationalization. Sourced from v0.18-prereg-r4 §4.0.
+# NOT lifted from v0.16 (v1.2 framework, different methodology).
 
-C2_REGIME4_MENTION_THRESHOLD: float | None = None  # TODO: lift from score_v17.py
-C2_OPERATIONALIZATION = "top_2_share"  # TODO: confirm against score_v17.py
+# Per-cell threshold: top-2 share of within-cell Phase B mentions
+C2_REGIME4_TOP2_SHARE_THRESHOLD = 0.50
+
+# Substantive IL-gradient guard: Cell B's top-2 share must exceed
+# Cell C's top-2 share by at least this much for H_Regime4_indie_fragrance
+# to CONFIRM (prevents uniform-concentration false positives)
+C2_IL_GRADIENT_SEPARATION_MIN = 0.10
+
+# Secondary informational metric (reported, not gated)
+C2_REGIME4_TOP3_SHARE_INFORMATIONAL = 0.65
+
+# Legacy alias preserved for backwards-compatibility with score_v18.py
+# (older drafts used the C2_REGIME4_MENTION_THRESHOLD name)
+C2_REGIME4_MENTION_THRESHOLD: float = C2_REGIME4_TOP2_SHARE_THRESHOLD
+C2_OPERATIONALIZATION = "top_2_share_with_il_gradient_guard"
 
 
 # ============================================================
-# C3 — Ranking coherence (locked at v1.2)
+# C3 — Within-cell ranking coherence (locked r4, v1.4 framework)
 # ============================================================
-# Operationalizes within-cell rank-order coherence between mention
-# rate and anchor-pivot prominence. Protocol-canonical.
-#
-# TODO ONE-TIME LIFT: Copy from score_v17.py.
+# v1.4 framework: Spearman ρ between within-cell Phase B mention rank
+# and within-cell Phase A C_P rank. Phase A C_P serves as the
+# in-protocol prominence anchor.
 
-C3_RANKING_COHERENCE_THRESHOLD: float | None = None  # TODO: lift from score_v17.py
+# Per-cell threshold (Cohen's "large effect" convention, matches §2.3's
+# Recognition–Recall correlation threshold for cross-use consistency)
+C3_RANKING_COHERENCE_THRESHOLD = 0.50
+
+# Cells must clear C3 in ≥ 2 of 3 cells at post-attrition cell n ≥ 5
+# (cells with n < 5 are not counted in either direction)
+C3_MIN_CELLS_CLEARING = 2
+C3_TOTAL_CELLS = 3
 
 
 # ============================================================

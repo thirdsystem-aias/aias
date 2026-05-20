@@ -1,7 +1,7 @@
 # v0.18 Pre-Registration — Indie Fragrance / IL-Gradient Substrate
 
 **Tag (intended):** `v0.18-prereg-r1`
-**Commit (backfill at lock):** `183386c`
+**Commit (backfill at lock):** `[TBD]`
 **Date:** 2026-05-20
 **Substrate:** Indie Fragrance (IL-Gradient Design — three cells)
 **Predecessors:** v0.17 Premium Kitchenware (SSRN 6802261), v0.16 Kitchen Knives (SSRN 6791999)
@@ -130,13 +130,13 @@ Phase B totals: 6 models × 3 queries = 18 Phase B observations per brand.
 
 The Cell C → A → B Regime 4 signature should strengthen monotonically along the IL gradient, with Cell B exhibiting the strongest signature.
 
-Operationalized against the canonical Regime 4 conditions (calibrated to indie fragrance panel):
+Operationalized through a three-condition cascade (full numerical specification in §4.0):
 
-- **C1 (panel adequacy):** worldwide n ≥ 12 post-attrition across the full panel
-- **C2 (Regime 4 retrieval signature):** per-cell mention concentration index meets pre-registered Regime 4 threshold
-- **C3 (ranking coherence):** per-cell Phase B mention-rank order coherent with anchor-pivot prominence
+- **C1 (panel adequacy):** worldwide post-attrition n ≥ 12. [Carried forward from v1.2; unchanged across v1.3 and v1.4.]
+- **C2 (Regime 4 mention concentration, v1.4 framework):** per-cell top-2 share ≥ 0.50 with a substantive IL-gradient separation guard (Cell B's share exceeds Cell C's share by ≥ 0.10). [Numerically locked in r4; see §4.0.]
+- **C3 (within-cell ranking coherence, v1.4 framework):** per-cell Spearman ρ ≥ 0.50 between Phase B mention rank and Phase A C_P rank, in ≥ 2 of 3 cells at post-attrition cell n ≥ 5. [Numerically locked in r4; see §4.0.]
 
-Conditions verbatim from v0.17; C1 floor recalibrated to ≥ 12 (unchanged; 8/8/8 → n=24 pre-floor survives 50% attrition).
+C2 and C3 are numerically locked in r4. v1.4 (SSRN 6799479) defined them conceptually; v0.17 FALSIFIED at C1 without exercising them, so v0.18 is the first phase reaching numerical operationalization. The thresholds are NOT lifted from v0.16's `score_v16.py` because v0.16 runs on the v1.2 framework (AI Presence × Google Trends correlation), which has different inputs and is superseded by v1.4. The 8/8/8 panel design (n=24 pre-floor) survives 50% attrition while still clearing C1.
 
 ### 2.2 H_IdentityLoad_moderator (three-leg joint, v0.16 × v0.17 × v0.18)
 
@@ -178,7 +178,42 @@ Pre-registered descriptive analyses (no formal verdict commitment; reported as s
 
 ## §4. Decision rules
 
-C1 / C2 / C3 verbatim from v0.17 protocol, with C1 floor n ≥ 12 (unchanged).
+### 4.0 C1 / C2 / C3 numerical specification (locked in pre-reg r4)
+
+The v1.4 framework (Recognition × Recall multi-component construct, SSRN 6799479) defines C1, C2, C3 conceptually but did not numerically lock C2 and C3, because v0.17 was the only prior phase running v1.4 and it FALSIFIED at C1 (n = 10 < floor 12) without exercising the downstream thresholds. v0.18 is the first phase reaching numerical operationalization of v1.4 C2/C3, and the thresholds below are locked ex-ante in r4.
+
+The thresholds are NOT lifted from v0.16's `score_v16.py`, because v0.16 operates on the v1.2 framework (AI Presence × Google Trends correlation, with conditions |ρ| < 0.35 and partial ρ < 0). v1.2's framework has different inputs, different operationalizations, and is superseded by v1.4 for v0.18 forward. v0.16's HR4_RHO_MAX = 0.35 and HR4_PARTIAL_MAX = 0.0 belong to v1.2 and are not portable to v0.18.
+
+**C1 — Panel adequacy.** Worldwide post-attrition n ≥ 12. Failure → NULL (panel inadequacy). [Locked at v1.2; carried forward unchanged across v1.3 and v1.4.]
+
+**C2 — Regime 4 mention concentration (v1.4 framework operationalization, locked r4).**
+
+- *Metric.* Per-cell top-2 share of within-cell Phase B mentions, computed as the sum of the top-2 brands' mention counts divided by the total mentions in the cell. The cell-level metric is the within-cell share; failure of C2 occurs when no cell meets the threshold OR when the IL-gradient monotonicity (C → A → B) is not respected.
+- *Threshold (Regime 4 signature present, per cell).* top-2 share ≥ 0.50. A cell meets C2 when its top-2 share clears 0.50.
+- *Threshold (substantive C2 for H_Regime4_indie_fragrance).* Cell B's top-2 share strictly greater than Cell C's top-2 share by at least 0.10 (substantive monotonic separation in the IL-gradient direction).
+- *Secondary informational metric (reported but not gated).* Per-cell top-3 share, with informational anchor at 0.65.
+- *Failure consequence.* C2 fails → H_Regime4_indie_fragrance FALSIFIED.
+- *Rationale.* The 0.50 cell-level threshold corresponds to the Pareto-style concentration the v1.4 paper identifies as Regime 4. The 0.10 IL-gradient separation guard prevents a cell-wise pass from producing a substantive CONFIRMED when all three cells are uniformly concentrated (which would not differentiate by Identity Load).
+
+**C3 — Within-cell ranking coherence (v1.4 framework operationalization, locked r4).**
+
+- *Metric.* Per-cell Spearman rank correlation between (a) within-cell Phase B mention count rank order and (b) within-cell Phase A C_P score rank order. Phase A C_P serves as the in-protocol prominence anchor since it is the v1.4 Recognition measure and is independent of Phase B Recall by construction.
+- *Threshold.* Per-cell ρ ≥ 0.50 (Cohen's "large effect" convention).
+- *Cells required.* C3 is satisfied when ≥ 2 of 3 cells clear the threshold at post-attrition cell n ≥ 5 (per the Phase D ρ minimum n rule in §4.1). Cells with post-attrition n < 5 are not counted toward C3 in either direction.
+- *Failure consequence.* C3 fails → H_Regime4_indie_fragrance PARTIAL (clears C1, C2, but not C3).
+- *Rationale.* The 0.50 Spearman threshold matches §2.3's Recognition–Recall correlation threshold — using the same statistical convention across the two different uses within this pre-reg keeps the framework internally coherent. The 2-of-3-cells rule absorbs single-cell sampling noise without requiring full unanimity.
+
+**Verdict logic (v1.4 framework, locked r4):**
+
+| C1 | C2 (within-cell) | C2 (IL-gradient separation) | C3 | H_Regime4_indie_fragrance verdict |
+|---|---|---|---|---|
+| Fail | — | — | — | **NULL** (panel inadequacy) |
+| Pass | Fail | — | — | **FALSIFIED** |
+| Pass | Pass | Fail | — | **FALSIFIED** (IL-gradient absent) |
+| Pass | Pass | Pass | Fail | **PARTIAL** (signature present, ranking incoherent) |
+| Pass | Pass | Pass | Pass | **CONFIRMED** |
+
+**Operationalization carry-forward to score_v18.py.** The numerical thresholds above are the source-of-truth for the C2/C3 entries in `protocol/thresholds.py`. The pre-reg locks the values; the protocol module imports them via the standard pattern. No values live in `score_v18.py` itself.
 
 ### 4.1 Phase D scoring plan (changed from v0.17)
 
@@ -265,11 +300,32 @@ Carry-forward citations for v0.18 SSRN paper Methods section and OSF v18/ README
 
 ---
 
-*End v0.18 pre-registration draft r3. Next action: final review by author; revisions tracked as r4 if needed; final lock at `git commit` + `git tag v0.18-prereg-r1` before any Phase A acquisition.*
+*End v0.18 pre-registration draft r4. Next action: final review by author; revisions tracked as r5 if needed; final lock at `git commit` + `git tag v0.18-prereg-r1` before any Phase A acquisition. NOTE: tag v0.18-prereg-r1 was already created at the r3 lock commit 183386c; this r4 revision will require a separate handling — either (a) the tag is moved forward to the r4 commit (re-locking; preserves single-tag clarity at the cost of tag mutability) or (b) a new tag v0.18-prereg-r2 is created at the r4 commit (preserves history of both r3 and r4 lock states). Convention is author's call.*
 
 ---
 
-## Appendix A — r1 → r2 → r3 changelog
+## Appendix A — r1 → r2 → r3 → r4 changelog
+
+### r3 → r4
+
+Closed one pre-registration gap surfaced when porting the canonical scoring layer to the `protocol/` architecture and inspecting `scripts/score_v16.py` for the C2/C3 threshold values:
+
+**§4.0 added — numerical specification of C1/C2/C3 for the v1.4 framework.** r3 specified C2/C3 as "verbatim from v0.17 protocol" — true conceptually (the v1.4 paper, SSRN 6799479, describes them) but not in code. v0.17 FALSIFIED at C1 (n=10 < floor 12) without exercising the downstream thresholds, so no v1.4 numerical thresholds were operationalized in v0.17's scoring code. v0.16's `score_v16.py` HR4_RHO_MAX = 0.35 and HR4_PARTIAL_MAX = 0.0 belong to the v1.2 framework (AI Presence × Google Trends correlation) and are not portable to v0.18, which runs on v1.4 multi-component (Recognition via Phase A C_P × Recall via Phase B mentions). v0.18 is the first phase reaching numerical operationalization of v1.4 C2/C3. r4 locks the following ex-ante:
+
+- **C1.** Worldwide post-attrition n ≥ 12. [Unchanged across v1.2 / v1.3 / v1.4.]
+- **C2.** Per-cell top-2 share of Phase B mentions ≥ 0.50, with substantive IL-gradient separation guard (Cell B share exceeds Cell C share by ≥ 0.10). Secondary informational metric: per-cell top-3 share at 0.65 anchor (not gated). Failure → FALSIFIED.
+- **C3.** Per-cell Spearman ρ ≥ 0.50 between within-cell Phase B mention rank and Phase A C_P rank, in ≥ 2 of 3 cells at post-attrition cell n ≥ 5. Failure → PARTIAL.
+- **Verdict logic.** Full C1×C2(within-cell)×C2(IL-gradient)×C3 truth table specified in §4.0.
+
+Rationale anchors:
+- C2 cell-level 0.50 corresponds to the Pareto-style concentration described in the v1.4 paper as Regime 4.
+- C2 IL-gradient 0.10 separation guard prevents uniformly-concentrated cells from spuriously CONFIRMING H_Regime4_indie_fragrance without differentiating by Identity Load.
+- C3 ρ ≥ 0.50 matches §2.3's Recognition–Recall correlation threshold — applying the same statistical convention across the two uses within this pre-reg keeps the framework internally coherent.
+- C3 2-of-3-cells rule absorbs single-cell sampling noise without requiring full unanimity.
+
+§2.1 brief description updated to point at §4.0 and to correct the misleading "verbatim from v0.17" phrasing.
+
+Lock handling: tag `v0.18-prereg-r1` was created at the r3 commit 183386c. The r4 revision is a substantive pre-acquisition update (no acquisition data exists yet, so this remains valid pre-registration). Two tag conventions are acceptable: (a) move `v0.18-prereg-r1` forward to the r4 commit, treating r1-r4 as iterative refinements of a single lock; or (b) create new tag `v0.18-prereg-r2` at the r4 commit, preserving both lock states in history. Convention choice is author's call at lock time.
 
 ### r2 → r3
 
