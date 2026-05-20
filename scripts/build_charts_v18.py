@@ -267,7 +267,7 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
     """
     fig, ax = plt.subplots(figsize=CHART_FIGSIZE, dpi=CHART_DPI)
 
-    # Iwachu-pattern dissociation quadrant: C_P ≥ 5 ∧ mentions ≤ 2
+    # Iwachu-pattern dissociation quadrant: C_P >= 5 and mentions <= 2
     # (annotation moved to subtitle; quadrant remains visually shaded)
     quadrant = patches.Rectangle(
         (DISSOCIATION_C_P_FLOOR - 0.5, -0.5),
@@ -315,7 +315,7 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
         fig, ax,
         title="Recognition × Recall dissociation scatter — v0.18 panel",
         subtitle=(
-            "Shaded quadrant: Iwachu-pattern (C_P ≥ 5 ∧ mentions ≤ 2). "
+            "Shaded quadrant: Iwachu-pattern (C_P ≥ 5 and mentions ≤ 2). "
             "Black × = v0.17 Iwachu reference point."
         ),
     )
