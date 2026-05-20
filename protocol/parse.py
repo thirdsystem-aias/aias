@@ -2,26 +2,27 @@
 protocol/parse.py — canonical brand-mention parsing for Phase B
 
 parse_brand_mentions() scans a Phase B response for occurrences of any
-registry brand. Detection rules are protocol-canonical and must be
-consistent across phases.
+registry brand. Detection rules are protocol-canonical (v1.4) and must
+be consistent across phases.
 
-Detection rules (v1.4 canonical):
-  1. Case-insensitive match
-  2. Accent-insensitive match (é → e, ç → c, ñ → n, etc.)
+Detection rules:
+  1. Case-insensitive
+  2. Accent-insensitive (é → e, ç → c, ñ → n, etc.)
   3. Possessive-stripping ("MFK's" → "MFK")
   4. Word-boundary anchored (no partial substring matches inside other words)
   5. First-occurrence-wins per brand for de-duplication
-  6. Rank derived from enumerated-list position when the response contains
-     a numbered/bulleted list; prose-only mentions get rank None
-
-ONE-TIME LIFT: The actual matching logic (regex patterns, list-position
-extraction) is in your existing v17 acquire_phase_b script. Lift the
-function body here once. Future phases inherit.
+  6. Aliases share the brand's mention slot — first canonical-or-alias hit wins
+  7. Rank derived from enumerated-list position when present; prose-only
+     mentions get rank None
 """
 
 import re
 import unicodedata
 
+
+# ============================================================
+# Main entry point
+# ============================================================
 
 def parse_brand_mentions(
     response_text: str,
@@ -37,26 +38,60 @@ def parse_brand_mentions(
         aliases: optional {canonical: [alias1, alias2, ...]} expansion map
 
     Returns:
-        List of mention records, one per detected brand (max one per brand):
+        List of mention records (max one per brand):
         [
             {
                 "canonical": str,           # canonical brand name
                 "matched_surface": str,     # exact text that triggered the match
-                "rank_in_response": int | None,  # 1-indexed enumeration position
-                "first_char_offset": int,   # for de-duplication and rank tie-break
-            },
-            ...
+                "rank_in_response": int | None,
+                "first_char_offset": int,
+            }, ...
         ]
     """
-    raise NotImplementedError(
-        "ONE-TIME LIFT: Copy parse_brand_mentions() body from your v17 "
-        "acquire_phase_b script. Detection rules are protocol-canonical "
-        "— do not reimplement, just port."
-    )
+    aliases = aliases or {}
+
+    # Pre-strip possessives across the entire response so "MFK's" matches "MFK"
+    text_stripped = strip_possessive(response_text)
+    text_norm = normalize(text_stripped)
+
+    # We keep an offset map so we can find the position in the ORIGINAL text
+    # after normalization. Simpler approach: search the normalized text and
+    # use offsets there for rank extraction against the original text (positions
+    # are usually within a few chars of each other after the simple transforms
+    # we apply; for rank extraction this is fine since lists are line-anchored).
+
+    mentions = []
+    for canonical in registry_canonical:
+        surfaces = [canonical] + aliases.get(canonical, [])
+        # Find earliest occurrence of any surface for this brand
+        best_hit = None  # (offset, matched_surface)
+        for surface in surfaces:
+            surface_norm = normalize(strip_possessive(surface))
+            # Word-boundary regex on normalized text
+            pattern = r"\b" + re.escape(surface_norm) + r"\b"
+            match = re.search(pattern, text_norm)
+            if match:
+                offset = match.start()
+                if best_hit is None or offset < best_hit[0]:
+                    best_hit = (offset, surface)
+
+        if best_hit is None:
+            continue
+
+        offset, surface = best_hit
+        rank = extract_list_position(text_stripped, offset)
+        mentions.append({
+            "canonical": canonical,
+            "matched_surface": surface,
+            "rank_in_response": rank,
+            "first_char_offset": offset,
+        })
+
+    return mentions
 
 
 # ============================================================
-# Helpers — already implemented; v17 lift only needs the main function
+# Helpers
 # ============================================================
 
 def normalize(text: str) -> str:
@@ -68,22 +103,23 @@ def normalize(text: str) -> str:
 
 
 def strip_possessive(text: str) -> str:
-    """Strip trailing possessive markers for matching ("MFK's" → "mfk")."""
+    """Strip trailing possessive markers ("MFK's" → "MFK", "Chanel's" → "Chanel")."""
     return re.sub(r"['\u2019]s\b", "", text)
 
 
 def extract_list_position(response_text: str, char_offset: int) -> int | None:
     """
-    Heuristic: if char_offset falls inside an enumerated list item (e.g.,
+    If char_offset falls inside an enumerated list item (e.g.,
     "3. Maison Francis Kurkdjian ..."), return the list number. Otherwise None.
 
-    Recognizes patterns:
-      "1. ", "1) ", "(1) ", "- ", "* ", "• " at start of line.
+    Recognizes "N. ", "N) ", "(N) " at the start of the line containing the offset.
+    Bullet markers ("- ", "* ", "• ") return None (not numerically ranked).
     """
-    # Find the start of the line containing char_offset
     line_start = response_text.rfind("\n", 0, char_offset) + 1
     line_prefix = response_text[line_start:char_offset + 1]
-    match = re.match(r"\s*(?:\(?(\d+)[.)]\s+)", line_prefix)
+    # Match enumeration at the start of the line: optional leading whitespace,
+    # optional opening paren, digits, then "." or ")", then a space.
+    match = re.match(r"\s*\(?(\d+)[.)]\s+", line_prefix)
     if match:
         return int(match.group(1))
     return None
