@@ -73,6 +73,7 @@ from reportlab.platypus import (
     CondPageBreak,
     Flowable,
     Frame,
+    FrameBreak,
     ImageAndFlowables,
     KeepTogether,
     NextPageTemplate,
@@ -742,10 +743,37 @@ class V15DocTemplate(BaseDocTemplate):
                               topPadding=0, bottomPadding=0,
                               showBoundary=0, id="spread")
 
+        # "lead" template: full-width top frame for STANDFIRST + 2-column
+        # bottom frames for LEAD_DECK + EXEC_SUMMARY. FrameBreak() in
+        # build_lead_story() forces the jump from lead_top to lead_bottom_left
+        # after STANDFIRST renders.
+        LEAD_TOP_H = 396.0  # ~5.5in — sized to safely fit 24pt STANDFIRST at full-width
+        lead_top_frame = Frame(MARGIN, body_top_y + (body_h - LEAD_TOP_H),
+                               CONTENT_W, LEAD_TOP_H,
+                               leftPadding=0, rightPadding=0,
+                               topPadding=0, bottomPadding=0,
+                               showBoundary=0, id="lead_top")
+        lead_bottom_h = body_h - LEAD_TOP_H
+        lead_bottom_left_frame = Frame(BODY_LEFT_X, body_top_y,
+                                       BODY_LEFT_W, lead_bottom_h,
+                                       leftPadding=0, rightPadding=0,
+                                       topPadding=0, bottomPadding=0,
+                                       showBoundary=0, id="lead_bottom_left")
+        lead_bottom_right_frame = Frame(BODY_RIGHT_X, body_top_y,
+                                        BODY_RIGHT_W, lead_bottom_h,
+                                        leftPadding=0, rightPadding=0,
+                                        topPadding=0, bottomPadding=0,
+                                        showBoundary=0, id="lead_bottom_right")
+
         self.addPageTemplates([
             PageTemplate(id="cover", frames=[cover_frame],
                          onPage=self._cover_decoration),
             PageTemplate(id="body", frames=[body_left_frame, body_right_frame],
+                         onPage=self._body_chrome),
+            PageTemplate(id="lead",
+                         frames=[lead_top_frame,
+                                 lead_bottom_left_frame,
+                                 lead_bottom_right_frame],
                          onPage=self._body_chrome),
             PageTemplate(id="spread", frames=[spread_frame],
                          onPage=self._body_chrome),
@@ -854,7 +882,11 @@ def build_cover_story(styles: dict[str, ParagraphStyle]) -> list:
 
 def build_lead_story(styles: dict[str, ParagraphStyle]) -> list:
     s = []
+    # STANDFIRST renders in the lead_top_frame (full-width, ~5.5in tall).
     s.append(Paragraph(content.STANDFIRST, styles["standfirst"]))
+    # FrameBreak forces the remaining content to flow into lead_bottom_left
+    # (3-col) and then lead_bottom_right (3-col) below the STANDFIRST.
+    s.append(FrameBreak())
     s.append(Paragraph(content.LEAD_DECK, styles["lead_deck"]))
     s.append(Spacer(1, 4))
     for p in content.EXEC_SUMMARY:
@@ -1290,12 +1322,16 @@ def build(*, debug_layout: bool = False,
     story: list = []
 
     # --- Cover ---
-    story.append(NextPageTemplate("body"))
+    story.append(NextPageTemplate("lead"))
     for f_ in build_cover_story(styles):
         story.append(f_)
     story.append(PageBreak())
 
     # --- Lead spread + exec summary ---
+    # The "lead" template has a full-width top frame for STANDFIRST and
+    # 2-col bottom frames for LEAD_DECK + EXEC_SUMMARY. build_lead_story
+    # inserts a FrameBreak() between STANDFIRST and LEAD_DECK to force
+    # the column-switch.
     for f_ in build_lead_story(styles):
         story.append(f_)
 
