@@ -1,48 +1,41 @@
-#!/usr/bin/env python3
+"""v0.17 chart generation for the brand-format report and SSRN paper.
+
+Produces three PDF charts visualising the v0.17 Premium Kitchenware program
+outcomes: FALSIFIED-on-panel-inadequacy substantive verdict and the
+Recognition-Recall dissociation methodological finding.
+
+Carries v0.16 chart conventions forward (Third System brand spec 1.5):
+  - Akkurat Pro + STIX mathtext, pdf.fonttype=42
+  - Cell-coloring for brand-level points (european / american / japanese)
+    drawn from palette.data_viz.schemes.qualitative_standard
+  - 7.5" wide hero figsizes (6-column page grid)
+  - Title 13pt bold + subtitle 9.5pt muted + source 7.5pt italic muted
+  - 300 DPI vector PDF output
+  - INDIGO reserved for chrome (title, headlines, post-state emphasis);
+    series colors drawn from qualitative palette
+
+Charts produced:
+  chart_v17_phase_b_mention_rates.pdf      (15-brand cross-cell distribution)
+  chart_v17_dissociation.pdf               (HEADLINE — Recognition x Recall)
+  chart_v17_cell_collapse.pdf              (Pre-vs-post per cell + C1 breach)
+
+Run:
+    python3 ~/aias/scripts/build_charts_v17.py
 """
-build_charts_v17.py — Matplotlib chart pipeline for v0.17 figures.
-
-Renders three PDF figures from data in reports/v17_kitchenware_content.py:
-
-    Figure 1: fig1_mention_rates.pdf
-        Phase B mention rate distribution across the 15-brand panel.
-        Horizontal bar chart, sorted descending, color-coded by cell.
-        Embedded location: SSRN paper §5.1 (Mentionability tier verdicts).
-
-    Figure 2: fig2_dissociation.pdf
-        Phase A C_P score vs Phase B mention rate scatter for the 4 tested
-        pivots. Iwachu highlighted as the canonical dissociation case.
-        Embedded location: SSRN paper §6.1 (Iwachu canonical case).
-
-    Figure 3: fig3_cell_collapse.pdf
-        Per-cell pre-Phase-A vs post-Phase-B brand survival summary.
-        Paired bar chart with worldwide n subtitle.
-        Embedded location: SSRN paper §5.3 (C1 floor breach).
-
-Output: papers/v0_17/figures/
-
-Brand tokens: Third System Indigo (#37237B primary). Akkurat font with
-sans-serif fallback. Output PDFs are sized for both pandoc \\includegraphics
-embedding (SSRN paper) and ReportLab two-pass overlay (brand-format report).
-
-Usage:
-    python scripts/build_charts_v17.py
-"""
-
 import sys
+import textwrap
 from pathlib import Path
+
+import matplotlib.font_manager as fm
+import matplotlib.pyplot as plt
+import numpy as np
+from matplotlib import rcParams
+from matplotlib.patches import Patch
 
 ROOT = Path.home() / "aias"
 sys.path.insert(0, str(ROOT / "reports"))
 
-import matplotlib
-matplotlib.use("Agg")  # No display required
-import matplotlib.pyplot as plt
-import matplotlib.font_manager as fm
-import numpy as np
-from matplotlib.patches import Patch
-
-from v17_kitchenware_content import (
+from v17_kitchenware_content import (  # noqa: E402
     load_phase_a_scores,
     load_phase_b_mention_rates,
     CELL_COUNTS,
@@ -51,135 +44,202 @@ from v17_kitchenware_content import (
     TOTAL_POST,
 )
 
-
 # ============================================================================
-# Output paths
-# ============================================================================
-
-FIGURES_DIR = ROOT / "papers" / "v0_17" / "figures"
-FIGURES_DIR.mkdir(parents=True, exist_ok=True)
-
-
-# ============================================================================
-# Third System brand tokens
+# Brand constants (per third_system_brand.json v1.5 python_constant_mapping)
 # ============================================================================
 
-INDIGO       = "#37237B"  # Primary — Third System brand
-INDIGO_LIGHT = "#7D6CB8"  # Lighter Indigo
-TEAL         = "#3A7C8A"  # Secondary
-ROSE         = "#A8485F"  # Tertiary
-GOLD         = "#C9A96E"  # Accent
-GREY_900     = "#1A1A1A"  # Text and axes
-GREY_500     = "#808080"  # Threshold lines
-GREY_300     = "#BFBFBF"  # Light grid
-GREY_200     = "#D9D9D9"  # Background bars
+# Indigo family (chrome — title, headlines, post-state emphasis)
+INDIGO         = "#37237B"
+AMETHYST       = "#534F9E"
+PETRO          = "#6A6AB1"
+IRIS           = "#908EC5"
+LAVENDER_GREY  = "#BBB9DD"
 
-CELL_COLORS = {
-    "european": INDIGO,
-    "american": TEAL,
-    "japanese": ROSE,
+# Qualitative palette (qualitative_standard, position-stable across reports)
+NAVY           = "#002B5F"   # qualitative_standard position 2
+HONEY          = "#FFAC17"   # position 3
+MAROON         = "#6A035C"   # position 6
+
+# Editorial chrome
+TEXT           = "#231F20"
+MUTED          = "#6B6967"
+GRID           = "#CCCCCC"
+GRID_SUBTLE    = "#E5E5E5"
+
+# Cell color assignment (cookware tradition cells in pre-reg sec. 2 order)
+CELL_COLOR = {
+    "european": NAVY,
+    "american": HONEY,
+    "japanese": MAROON,
+}
+
+CELL_LABEL = {
+    "european": "European",
+    "american": "American",
+    "japanese": "Japanese",
 }
 
 
 # ============================================================================
-# Font setup — Akkurat with sans-serif fallback
+# Font setup (Third System brand spec)
 # ============================================================================
 
-def setup_fonts() -> str:
-    """Register Akkurat if available; otherwise fall back to sans-serif."""
-    candidates = [
-        Path.home() / "Library" / "Fonts" / "Akkurat-Regular.ttf",
-        Path.home() / "Library" / "Fonts" / "AkkuratPro-Regular.otf",
-        Path.home() / ".fonts" / "Akkurat" / "Akkurat-Regular.ttf",
-    ]
-    for c in candidates:
-        if c.exists():
-            try:
-                fm.fontManager.addfont(str(c))
-                plt.rcParams["font.family"] = "Akkurat"
-                return f"Akkurat ({c.name})"
-            except Exception:
-                pass
-    plt.rcParams["font.family"] = "sans-serif"
-    plt.rcParams["font.sans-serif"] = ["Helvetica", "Arial", "DejaVu Sans"]
-    return "sans-serif fallback"
+def setup_font():
+    """Register Akkurat / Akkurat Pro / Inter from user font dirs and resolve
+    the canonical font NAME (not file path) that matplotlib's font manager
+    knows about. Returns the resolved font name or 'DejaVu Sans' fallback."""
+    for path in [Path.home() / ".fonts", Path.home() / "Library" / "Fonts"]:
+        if path.exists():
+            patterns = (
+                list(path.glob("Akkurat*.[ot]tf"))
+                + list(path.glob("Akkurat*/*.[ot]tf"))
+                + list(path.glob("Inter*.[ot]tf"))
+            )
+            for fp in patterns:
+                try:
+                    fm.fontManager.addfont(str(fp))
+                except Exception:
+                    pass
+    available = {f.name for f in fm.fontManager.ttflist}
+    for c in ("Akkurat Pro", "Akkurat Pro Regular", "Akkurat", "Inter"):
+        if c in available:
+            return c
+    return "DejaVu Sans"
 
 
-def setup_rcparams() -> None:
-    """Configure matplotlib rcParams for AIAS academic-paper figure style."""
-    plt.rcParams["axes.labelcolor"]  = GREY_900
-    plt.rcParams["axes.edgecolor"]   = GREY_500
-    plt.rcParams["xtick.color"]      = GREY_900
-    plt.rcParams["ytick.color"]      = GREY_900
-    plt.rcParams["axes.spines.top"]   = False
-    plt.rcParams["axes.spines.right"] = False
-    plt.rcParams["axes.titlesize"]   = 10
-    plt.rcParams["axes.labelsize"]   = 10
-    plt.rcParams["xtick.labelsize"]  = 9
-    plt.rcParams["ytick.labelsize"]  = 9
-    plt.rcParams["legend.fontsize"]  = 9
+FONT = setup_font()
+print(f"# Font in use: {FONT}")
+
+rcParams["font.family"]       = [FONT, "sans-serif"]
+rcParams["mathtext.fontset"]  = "stix"
+rcParams["axes.linewidth"]    = 0.6
+rcParams["axes.edgecolor"]    = MUTED
+rcParams["axes.labelcolor"]   = TEXT
+rcParams["xtick.color"]       = MUTED
+rcParams["ytick.color"]       = MUTED
+rcParams["xtick.labelsize"]   = 8.5
+rcParams["ytick.labelsize"]   = 8.5
+rcParams["axes.labelsize"]    = 9
+rcParams["axes.titlesize"]    = 10
+rcParams["axes.spines.top"]   = False
+rcParams["axes.spines.right"] = False
+rcParams["pdf.fonttype"]      = 42
 
 
 # ============================================================================
-# Figure 1 — Phase B mention-rate distribution (15-brand horizontal bar)
+# Paths and source line
 # ============================================================================
 
-def fig1_mention_rates() -> Path:
+V17_ROOT = ROOT / "osf" / "v17"
+OUT_DIR  = ROOT / "papers" / "v0_17" / "figures"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+SOURCE_LINE = ("Source: Third System AI Availability Score (AIAS) v0.17 \u00b7 "
+               "Phase B LLM-substrate measurement (May 2026) \u00b7 "
+               "Pre-reg locked at v0.17-prereg-r1 (commit 3ebe426); "
+               "Phase B locked at v0.17-phase-b-locked (commit 54c83ec).")
+
+
+# ============================================================================
+# Shared chart chrome (matches v16 draw_title_and_subtitle + add_source)
+# ============================================================================
+
+def draw_title_and_subtitle(fig, title, subtitle, x=0.06, title_y=0.96,
+                            subtitle_y=0.91, wrap_width=130):
+    fig.text(x, title_y, title, ha="left", va="top",
+             fontsize=13, color=TEXT, weight="bold")
+    wrapped_subtitle = textwrap.fill(subtitle, width=wrap_width,
+                                     break_long_words=False,
+                                     break_on_hyphens=False)
+    fig.text(x, subtitle_y, wrapped_subtitle, ha="left", va="top",
+             fontsize=9.5, color=MUTED)
+
+
+def add_source(fig, x=0.06, y=0.025):
+    fig.text(x, y, SOURCE_LINE, ha="left", va="top",
+             fontsize=7.5, color=MUTED, style="italic")
+
+
+# ============================================================================
+# CHART 1: Phase B mention rates across 15-brand panel
+# ============================================================================
+
+def chart_phase_b_mention_rates():
+    """Horizontal bar chart of Phase B mention rates for the 15-brand
+    operational panel. Sorted descending. Colored by tradition cell. PASS
+    threshold (1/6) shown as a vertical reference."""
     data = load_phase_b_mention_rates()
-    brands  = [d[0] for d in data]
-    rates   = [d[2] for d in data]
-    tiers   = [d[3] for d in data]
-    colors  = [CELL_COLORS[d[1]] for d in data]
+    brands = [d[0] for d in data]
+    rates  = [d[2] for d in data]
+    tiers  = [d[3] for d in data]
+    colors = [CELL_COLOR[d[1]] for d in data]
 
-    fig, ax = plt.subplots(figsize=(6.5, 5.8))
+    fig, ax = plt.subplots(figsize=(7.5, 6.5))
     y_pos = np.arange(len(brands))
-    ax.barh(y_pos, rates, color=colors, edgecolor=GREY_900, linewidth=0.4)
+    ax.barh(y_pos, rates, color=colors, edgecolor="white",
+            linewidth=0.8, zorder=3)
     ax.set_yticks(y_pos)
-    ax.set_yticklabels(brands)
-    ax.invert_yaxis()  # Highest rate at top
-    ax.set_xlabel("Phase B mention rate (mentions / 18 cells)")
+    ax.set_yticklabels(brands, color=TEXT)
+    ax.invert_yaxis()
+    ax.set_xlabel("Phase B mention rate (mentions / 18 cells)", color=TEXT)
     ax.set_xlim(0, 1.05)
+    ax.grid(True, axis="x", color=GRID_SUBTLE, linewidth=0.4, zorder=0)
 
-    # PASS threshold reference at 1/6
-    ax.axvline(1/6, color=GREY_500, linestyle="--", linewidth=1, alpha=0.7)
-    ax.text(1/6 + 0.012, -0.4, "PASS threshold (1/6)",
-            fontsize=8, color=GREY_500, va="top")
+    # PASS threshold (1/6)
+    ax.axvline(1/6, color=MUTED, linestyle="--", linewidth=0.7, alpha=0.8)
+    ax.text(1/6 + 0.012, len(brands) - 0.5, "PASS threshold (1/6)",
+            fontsize=7.5, color=MUTED, va="bottom", style="italic")
 
-    # Tier annotations on excluded/marginal bars
+    # Tier annotations
     for i, (brand, cell, rate, tier) in enumerate(data):
         if tier == "PASS_E5":
             ax.text(rate + 0.015, i, "PASS_E5",
-                    fontsize=7.5, color=GREY_900, va="center", style="italic")
+                    fontsize=7.5, color=TEXT, va="center", style="italic")
         elif tier == "EXCLUDED_E1a":
             ax.text(0.012, i, "EXCLUDED",
                     fontsize=7.5, color="white", va="center",
-                    bbox=dict(facecolor=GREY_900, edgecolor="none", pad=1.5))
+                    bbox=dict(facecolor=TEXT, edgecolor="none", pad=1.5))
 
-    # Cell legend
-    legend_elements = [
-        Patch(facecolor=INDIGO, label="European cell"),
-        Patch(facecolor=TEAL,   label="American cell"),
-        Patch(facecolor=ROSE,   label="Japanese cell"),
+    # Cell legend (matches v16 pattern: bottom, no frame, equal columns)
+    legend_handles = [
+        Patch(facecolor=CELL_COLOR[c], label=CELL_LABEL[c] + " cell")
+        for c in ("european", "american", "japanese")
     ]
-    ax.legend(handles=legend_elements, loc="lower right", frameon=False)
+    ax.legend(handles=legend_handles, loc="lower right",
+              ncol=3, frameon=False, fontsize=8.5,
+              handletextpad=0.4, columnspacing=2.0)
 
-    plt.tight_layout()
-    out = FIGURES_DIR / "fig1_mention_rates.pdf"
-    plt.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
-    plt.close()
+    # Title chrome
+    title = "Premium kitchenware — Phase B mention rates across the 15-brand panel"
+    subtitle = ("Cross-cell mention rate distribution under v0.17 LLM-substrate "
+                "Phase B (three category queries x six reference LLMs = 18 cells "
+                "per brand). European cell saturates the high-mention end; "
+                "American cell occupies mid-range with two long-tail exclusions; "
+                "Japanese cell concentrated entirely at zero — the full-cell "
+                "collapse motivating the AMBIGUOUS Identity-Load verdict.")
+    draw_title_and_subtitle(fig, title, subtitle, x=0.06,
+                            title_y=0.965, subtitle_y=0.925, wrap_width=110)
+    add_source(fig, x=0.06, y=0.020)
+
+    fig.subplots_adjust(top=0.84, bottom=0.08, left=0.16, right=0.97)
+    out = OUT_DIR / "chart_v17_phase_b_mention_rates.pdf"
+    fig.savefig(out, dpi=300)
+    plt.close(fig)
     print(f"  Wrote: {out.relative_to(ROOT)}")
     return out
 
 
 # ============================================================================
-# Figure 2 — Phase A vs Phase B dissociation scatter
+# CHART 2: Recognition x Recall dissociation (HEADLINE)
 # ============================================================================
 
-def fig2_dissociation() -> Path:
+def chart_dissociation():
+    """Scatter of Phase A C_P anchoring score vs Phase B mention rate for the
+    four pivots that received Phase A measurement. Iwachu highlighted as the
+    canonical dissociation case."""
     scores = load_phase_a_scores()
     rates  = {b: r for (b, c, r, t) in load_phase_b_mention_rates()}
 
-    # The four pivots that received Phase A measurement
     pivots = [
         ("Le Creuset", "european"),
         ("All-Clad",   "american"),
@@ -187,129 +247,166 @@ def fig2_dissociation() -> Path:
         ("Vermicular", "japanese"),
     ]
 
-    fig, ax = plt.subplots(figsize=(6.5, 5.8))
+    fig, ax = plt.subplots(figsize=(7.5, 5.5))
 
     for brand, cell in pivots:
-        color = CELL_COLORS[cell]
+        color = CELL_COLOR[cell]
         x = scores.get(brand, 0)
+
         if brand == "Vermicular":
-            # Vermicular failed at Phase A and was descoped before Phase B.
-            # Plot at x=4 (its actual C_P score), y=-0.06 (below-axis indicator).
-            ax.scatter([x], [-0.06], marker="x", s=140,
-                       color=GREY_500, linewidths=2.2, zorder=3)
-            ax.annotate(f"{brand}\n(C_P FAIL, descoped)",
-                        xy=(x, -0.06), xytext=(x + 0.25, 0.07),
-                        fontsize=8, color=GREY_500, ha="left",
-                        arrowprops=dict(arrowstyle="-", color=GREY_500, lw=0.6))
+            ax.scatter([x], [-0.06], marker="x", s=130,
+                       color=MUTED, linewidths=2.0, zorder=4)
+            ax.annotate(f"{brand}\n(C$_P$ FAIL — descoped)",
+                        xy=(x, -0.06), xytext=(x + 0.25, 0.10),
+                        fontsize=8.5, color=MUTED, ha="left",
+                        arrowprops=dict(arrowstyle="-", color=GRID,
+                                        lw=0.5, shrinkA=0, shrinkB=4))
             continue
 
         y = rates.get(brand, 0)
-        ax.scatter([x], [y], s=220, color=color, edgecolor=GREY_900,
-                   linewidth=1.4, zorder=3)
+        ax.scatter([x], [y], s=180, color=color, edgecolor="white",
+                   linewidth=1.2, zorder=4)
 
         if brand == "Iwachu":
-            # The canonical dissociation case — highlight with annotation
-            ax.annotate(brand, xy=(x, y), xytext=(x - 0.25, y + 0.06),
+            ax.annotate(brand, xy=(x, y), xytext=(x - 0.25, y + 0.08),
                         fontsize=11, color=color, fontweight="bold", ha="right")
-            ax.annotate("Recognition × Recall dissociation:\n"
+            ax.annotate("Recognition $\\times$ Recall dissociation:\n"
                         "full recognition (6/6), zero recall (0/18)",
-                        xy=(x, y), xytext=(4.5, 0.27),
+                        xy=(x, y), xytext=(4.6, 0.32),
                         fontsize=9, color=color, ha="left", style="italic",
-                        arrowprops=dict(arrowstyle="->", color=color, lw=1.0))
+                        arrowprops=dict(arrowstyle="->", color=color,
+                                        lw=0.9, shrinkA=2, shrinkB=4))
         else:
             ax.annotate(brand, xy=(x, y), xytext=(x - 0.25, y - 0.05),
-                        fontsize=10, color=color, ha="right")
+                        fontsize=9.5, color=color, ha="right")
 
     # Threshold reference lines
-    ax.axvline(5, color=GREY_500, linestyle="--", linewidth=1, alpha=0.6)
-    ax.text(5.08, 0.98, "Phase A supermajority (5/6)",
-            fontsize=8, color=GREY_500, va="top", rotation=90)
-    ax.axhline(1/6, color=GREY_500, linestyle="--", linewidth=1, alpha=0.6)
-    ax.text(0.2, 1/6 + 0.012, "Phase B PASS (1/6)",
-            fontsize=8, color=GREY_500, ha="left")
+    ax.axvline(5, color=MUTED, linestyle="--", linewidth=0.7, alpha=0.8)
+    ax.text(5.08, 0.97, "Phase A supermajority (5/6)",
+            fontsize=7.5, color=MUTED, va="top", rotation=90, style="italic")
+    ax.axhline(1/6, color=MUTED, linestyle="--", linewidth=0.7, alpha=0.8)
+    ax.text(0.2, 1/6 + 0.014, "Phase B PASS (1/6)",
+            fontsize=7.5, color=MUTED, ha="left", style="italic")
 
-    ax.set_xlabel("Phase A C_P anchoring score (out of 6 reference LLMs)")
-    ax.set_ylabel("Phase B mention rate (mentions / 18 cells)")
+    ax.set_xlabel("Phase A C$_P$ anchoring score (out of 6 reference LLMs)",
+                  color=TEXT)
+    ax.set_ylabel("Phase B mention rate (mentions / 18 cells)", color=TEXT)
     ax.set_xlim(-0.5, 6.6)
     ax.set_ylim(-0.18, 1.15)
     ax.set_xticks(range(7))
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
+    ax.grid(True, color=GRID_SUBTLE, linewidth=0.4, zorder=0)
 
-    # Quadrant labels (semantic)
-    ax.text(0.3, 1.08, "Low recognition\n+ high recall\n(empty quadrant)",
-            fontsize=7, color=GREY_500, ha="left", style="italic", alpha=0.7)
-    ax.text(6.3, 1.08, "Full Presence\n(recognition + recall)",
-            fontsize=7, color=GREY_500, ha="right", style="italic", alpha=0.7)
-    ax.text(6.3, -0.12, "Recognition only\n(dissociation)",
-            fontsize=7, color=GREY_500, ha="right", style="italic", alpha=0.7)
+    # Quadrant labels
+    ax.text(0.3, 1.10, "Low recognition + high recall\n(empty quadrant)",
+            fontsize=7, color=MUTED, ha="left", style="italic", alpha=0.7)
+    ax.text(6.3, 1.10, "Full Presence\n(recognition + recall)",
+            fontsize=7, color=MUTED, ha="right", style="italic", alpha=0.7)
+    ax.text(6.3, -0.13, "Recognition only\n(dissociation)",
+            fontsize=7, color=MUTED, ha="right", style="italic", alpha=0.7)
 
-    legend_elements = [
-        Patch(facecolor=INDIGO, label="European cell pivot"),
-        Patch(facecolor=TEAL,   label="American cell pivot"),
-        Patch(facecolor=ROSE,   label="Japanese cell pivot"),
+    # Cell legend
+    legend_handles = [
+        Patch(facecolor=CELL_COLOR[c], label=CELL_LABEL[c] + " cell pivot")
+        for c in ("european", "american", "japanese")
     ]
-    ax.legend(handles=legend_elements, loc="center right",
-              frameon=False, fontsize=8)
+    ax.legend(handles=legend_handles, loc="center right",
+              frameon=False, fontsize=8.5)
 
-    plt.tight_layout()
-    out = FIGURES_DIR / "fig2_dissociation.pdf"
-    plt.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
-    plt.close()
+    # Title chrome
+    title = "Recognition $\\times$ Recall dissociation — the Iwachu canonical case"
+    subtitle = ("The four pivot brands that received Phase A C$_P$ measurement, "
+                "plotted against Phase B mention rate. Le Creuset and All-Clad "
+                "occupy the full-Presence quadrant; Vermicular failed Phase A "
+                "(C$_P$ at 4/6) and was descoped before Phase B; Iwachu sits "
+                "alone in the recognition-only quadrant. The dissociation "
+                "motivates the v1.4 Methodology revision specifying AI "
+                "Availability as a multi-component construct.")
+    draw_title_and_subtitle(fig, title, subtitle, x=0.06,
+                            title_y=0.965, subtitle_y=0.925, wrap_width=108)
+    add_source(fig, x=0.06, y=0.025)
+
+    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.09, right=0.97)
+    out = OUT_DIR / "chart_v17_dissociation.pdf"
+    fig.savefig(out, dpi=300)
+    plt.close(fig)
     print(f"  Wrote: {out.relative_to(ROOT)}")
     return out
 
 
 # ============================================================================
-# Figure 3 — Per-cell collapse summary
+# CHART 3: Per-cell collapse — pre vs post Phase B
 # ============================================================================
 
-def fig3_cell_collapse() -> Path:
-    cells = ["European", "American", "Japanese"]
-    pre   = [CELL_COUNTS["european"]["pre"],
-             CELL_COUNTS["american"]["pre"],
-             CELL_COUNTS["japanese"]["pre"]]
-    post  = [CELL_COUNTS["european"]["post"],
-             CELL_COUNTS["american"]["post"],
-             CELL_COUNTS["japanese"]["post"]]
+def chart_cell_collapse():
+    """Paired bar chart of pre-Phase-A vs post-Phase-B brand counts per
+    tradition cell, with worldwide-n + C1 breach subtitle. Pre bars are
+    neutral grey; post bars are INDIGO (operational-outcome emphasis)."""
+    cells = ["european", "american", "japanese"]
+    pre   = [CELL_COUNTS[c]["pre"]  for c in cells]
+    post  = [CELL_COUNTS[c]["post"] for c in cells]
 
     x = np.arange(len(cells))
     width = 0.36
 
-    fig, ax = plt.subplots(figsize=(6.5, 4.5))
+    fig, ax = plt.subplots(figsize=(7.5, 4.8))
     bars_pre  = ax.bar(x - width/2, pre, width,
-                        label="Pre-Phase A (registered panel)",
-                        color=GREY_300, edgecolor=GREY_900, linewidth=0.5)
+                       label="Pre-Phase A (registered)",
+                       color=GRID, edgecolor="white", linewidth=0.8, zorder=3)
     bars_post = ax.bar(x + width/2, post, width,
-                        label="Post-Phase B (operational panel)",
-                        color=INDIGO, edgecolor=GREY_900, linewidth=0.5)
+                       label="Post-Phase B (operational)",
+                       color=INDIGO, edgecolor="white", linewidth=0.8, zorder=3)
 
-    # Bar value labels
-    for bars in [bars_pre, bars_post]:
+    # Value labels above bars
+    for bars in (bars_pre, bars_post):
         for bar in bars:
             h = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2, h + 0.12,
-                    str(int(h)), ha="center", fontsize=10, color=GREY_900)
+                    str(int(h)), ha="center", fontsize=9, color=TEXT)
+
+    # Cell-level attrition deltas under x-axis (callout when nonzero)
+    for i, c in enumerate(cells):
+        delta = pre[i] - post[i]
+        if delta > 0:
+            ax.text(i, -0.62, f"\u2212{delta}",
+                    ha="center", fontsize=8.5, color=MAROON, weight="bold")
 
     ax.set_xticks(x)
-    ax.set_xticklabels(cells)
-    ax.set_ylabel("Brand count")
-    ax.set_ylim(0, 8.0)
+    ax.set_xticklabels([CELL_LABEL[c] for c in cells], color=TEXT)
+    ax.set_ylabel("Brand count", color=TEXT)
+    ax.set_ylim(0, 7.5)
+    ax.grid(True, axis="y", color=GRID_SUBTLE, linewidth=0.4, zorder=0)
 
-    # Worldwide-n + C1 floor as subtitle
-    ax.set_title(
-        f"Worldwide n: pre-Phase-A {TOTAL_PRE}, post-Phase-B {TOTAL_POST}    "
-        f"(C1 floor: {C1_FLOOR}; BREACHED by {C1_FLOOR - TOTAL_POST})",
-        fontsize=9, color=GREY_900, pad=10, style="italic"
-    )
+    ax.legend(loc="upper right", frameon=False, fontsize=8.5)
 
-    ax.legend(loc="upper right", frameon=False)
-    ax.grid(axis="y", linestyle=":", color=GREY_300, alpha=0.6)
-    ax.set_axisbelow(True)
+    # Worldwide-n + C1 breach annotation (top-left of plot area)
+    deficit = C1_FLOOR - TOTAL_POST
+    breach_text = (f"Worldwide n: {TOTAL_PRE} \u2192 {TOTAL_POST}    "
+                   f"C1 floor: {C1_FLOOR}    "
+                   f"Breach deficit: {deficit}")
+    ax.text(0.03, 0.95, breach_text,
+            transform=ax.transAxes, fontsize=8.5, color=TEXT,
+            ha="left", va="top", weight="bold",
+            bbox=dict(facecolor="white", edgecolor=GRID,
+                      boxstyle="round,pad=0.5", linewidth=0.5))
 
-    plt.tight_layout()
-    out = FIGURES_DIR / "fig3_cell_collapse.pdf"
-    plt.savefig(out, dpi=300, bbox_inches="tight", facecolor="white")
-    plt.close()
+    # Title chrome
+    title = "Panel attrition by tradition cell — pre-Phase-A versus post-Phase-B"
+    subtitle = ("Worldwide n dropped from 16 to 10 across two attrition stages, "
+                "breaching the C1 adequacy floor of 12 by a deficit of 2. The "
+                "European cell remained intact; the American cell lost two "
+                "long-tail brands; the Japanese cell collapsed entirely "
+                "(Vermicular at Phase A; Iwachu, Sori Yanagi, Noda Horo at "
+                "Phase B). This pattern produces the FALSIFIED-on-panel-"
+                "inadequacy verdict for H$_\\mathrm{Regime4\\_kitchenware}$.")
+    draw_title_and_subtitle(fig, title, subtitle, x=0.06,
+                            title_y=0.965, subtitle_y=0.925, wrap_width=108)
+    add_source(fig, x=0.06, y=0.025)
+
+    fig.subplots_adjust(top=0.74, bottom=0.18, left=0.09, right=0.97)
+    out = OUT_DIR / "chart_v17_cell_collapse.pdf"
+    fig.savefig(out, dpi=300)
+    plt.close(fig)
     print(f"  Wrote: {out.relative_to(ROOT)}")
     return out
 
@@ -318,26 +415,21 @@ def fig3_cell_collapse() -> Path:
 # Main
 # ============================================================================
 
-def main() -> None:
-    font_used = setup_fonts()
-    setup_rcparams()
-
+def main():
     print("v0.17 chart build")
     print("=" * 60)
-    print(f"  Font:        {font_used}")
-    print(f"  Output dir:  {FIGURES_DIR.relative_to(ROOT)}")
-    print(f"  Brand color: Third System Indigo {INDIGO}")
+    print(f"  Font:        {FONT}")
+    print(f"  Output dir:  {OUT_DIR.relative_to(ROOT)}")
+    print(f"  Brand spec:  Third System v1.5 (Indigo {INDIGO})")
     print()
 
-    fig1_mention_rates()
-    fig2_dissociation()
-    fig3_cell_collapse()
+    chart_phase_b_mention_rates()
+    chart_dissociation()
+    chart_cell_collapse()
 
     print()
     print("=" * 60)
-    print(f"Done — 3 figures in {FIGURES_DIR.relative_to(ROOT)}")
-    print(f"Next: rebuild SSRN paper to embed via \\includegraphics:")
-    print(f"  python scripts/build_paper_v0_17.py")
+    print(f"Done. 3 figures in {OUT_DIR.relative_to(ROOT)}")
 
 
 if __name__ == "__main__":

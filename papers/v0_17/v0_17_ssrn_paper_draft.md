@@ -168,7 +168,7 @@ Figure 1 displays the per-brand mention-rate distribution across the 15-brand op
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.90\textwidth]{fig1_mention_rates.pdf}
+\includegraphics[width=0.90\textwidth]{chart_v17_phase_b_mention_rates.pdf}
 \caption{Phase B mention-rate distribution across the 15-brand operational panel. Mention rate is the proportion of $3 \times 6 = 18$ measurement cells (three category queries against the six-slot LLM reference panel) in which the brand was mentioned. Bars are sorted descending and color-coded by tradition cell. PASS threshold ($1/6$) is shown as a dashed vertical reference. EXCLUDED tags mark brands with zero mentions across all 18 cells.}
 \label{fig:phase_b_mention_rates}
 \end{figure}
@@ -187,7 +187,7 @@ Figure 2 summarizes the cell-level attrition pattern. The European cell remained
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.85\textwidth]{fig3_cell_collapse.pdf}
+\includegraphics[width=0.85\textwidth]{chart_v17_cell_collapse.pdf}
 \caption{Per-cell brand survival from registered panel (pre-Phase-A) to operational panel (post-Phase-B). Light grey bars show the pre-registered cell sizes; Indigo bars show the post-Phase-B eligible counts. Worldwide $n$ dropped from 16 to 10, below the C1 adequacy floor of 12. The European cell remained intact; the American cell lost two long-tail brands; the Japanese cell collapsed entirely.}
 \label{fig:cell_collapse}
 \end{figure}
@@ -214,7 +214,7 @@ Figure 3 plots Phase A C_P anchoring scores against Phase B mention rates for th
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.90\textwidth]{fig2_dissociation.pdf}
+\includegraphics[width=0.90\textwidth]{chart_v17_dissociation.pdf}
 \caption{Phase A C_P anchoring score (x-axis, out of 6 reference LLMs) versus Phase B mention rate (y-axis, mentions / 18 cells) for the four pivot brands that received Phase A measurement. Vermicular ($x=4$) failed the Phase A supermajority threshold (5/6) and was descoped before Phase B. Le Creuset, All-Clad, and Iwachu all achieved Phase A 6/6. Iwachu's Phase B mention rate of zero, while Le Creuset and All-Clad saturate Phase B, is the canonical Recognition--Recall dissociation case: full recognition anchoring without any recall presence in unprompted category retrieval.}
 \label{fig:dissociation}
 \end{figure}
