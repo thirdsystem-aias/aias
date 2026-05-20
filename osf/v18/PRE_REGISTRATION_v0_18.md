@@ -1,7 +1,7 @@
 # v0.18 Pre-Registration — Indie Fragrance / IL-Gradient Substrate
 
 **Tag (intended):** `v0.18-prereg-r1`
-**Commit (backfill at lock):** `[TBD]`
+**Commit (backfill at lock):** `183386c`
 **Date:** 2026-05-20
 **Substrate:** Indie Fragrance (IL-Gradient Design — three cells)
 **Predecessors:** v0.17 Premium Kitchenware (SSRN 6802261), v0.16 Kitchen Knives (SSRN 6791999)
