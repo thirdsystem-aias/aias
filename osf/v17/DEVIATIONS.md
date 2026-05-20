@@ -216,3 +216,66 @@ This is the framing that will go into the v1.4 Methodology paper. Entry 4's "tem
 **v1.4 Methodology paper — cascade-pipeline note to add.** v1.4 (successor to SSRN 6797679) should explicitly specify the cascade-and-extend pipeline as the canonical Phase A workflow: ledger-extension preserves prior classifications across cascade rounds, providing an unbroken audit trail from the first acquisition through the final pivot-locked panel. Operator never re-classifies rows for a brand that has been definitively scored. This is a credibility-relevant property of the pipeline.
 
 **Audit trail.** Script upgrade committed at `d09182c`. Original v17 script preserved at commit `2b31253` for reproducibility against the pre-cascade state. Iwachu Phase A acquisition + classification + tally to follow in the next commit cycle.
+
+---
+
+## Entry 7 — Phase B substrate pivot: Trends-substrate (v0.13–v0.15) → LLM-substrate (v0.17 onward) (2026-05-19)
+
+**Event.** v0.17 Phase B operationalization required resolving an inherited methodological ambiguity. The v1.3 protocol §5.2 inherits v0.15's Phase B specification as Trends-substrate (pytrends + SerpAPI signal validation against an out-of-sample window). v0.16 introduced LLM-substrate Phase A (the C_P pivot-validation rule) but did not specify an LLM-substrate analog for Phase B. v0.17's Phase A is fully LLM-substrate per the Methodology paper (SSRN 6761698) and its v1.3 update (6797679). Continuing Trends-substrate Phase B in v0.17 while Phase A is LLM-substrate would produce a methodologically incoherent pipeline — substrate mismatch between adjacent measurement stages.
+
+**Resolution.** v0.17 Phase B implemented as the LLM-substrate analog of v0.15 Phase B: `scripts/phaseB_resolve_v17.py`. Substrate-coherent pipeline: Phase A (LLM) → Phase B (LLM) → Phase D (LLM). v0.15's Phase B remains valid for its v0.13–v0.15 Trends-substrate research line; v0.17 onward use the LLM-substrate analog. The v1.4 Methodology paper (successor increment to SSRN 6797679) will formalize this as canonical Phase B specification.
+
+**Substrate-coherence rationale.**
+
+1. **Pipeline integrity.** Phase A's C_P rule established that the cell pivots have substrate-anchored LLM identity. Phase B's job — gating brands by measurability in the downstream substrate — must use the *same* substrate Phase D will use for scoring. Phase D uses LLM-mediated retrieval (per SSRN 6761698 §3); therefore Phase B must validate LLM mentionability.
+
+2. **Trend-signal independence.** A brand's Google Trends signal in an out-of-sample window measures *search interest* — a Physical Availability proxy. A brand's LLM mention rate in category queries measures *AI Availability* — the Third System variable the AIAS program is designed to estimate. These are conceptually adjacent but empirically distinct constructs. For v0.17's substantive hypothesis (Identity-Load moderator on the Premium Kitchenware substrate), the Phase D measurement must be on the AI Availability surface; Phase B gating on Trends signal would screen brands by the wrong construct.
+
+3. **Cross-phase grammar preserved.** Tier vocabulary (PASS / PASS_E5 / EXCLUDED_E1a) is preserved across the substrate pivot. Same column semantics in the resolution log CSV. v0.13–v0.15 Trends-substrate program and v0.16+ LLM-substrate program produce comparable resolution logs at the tier level even though the measurement substrate differs.
+
+**Locked methodology — provisional v1.4 §5.2.**
+
+| Parameter | Value | Notes |
+|---|---|---|
+| Reference set | 6-slot LLM panel | Matches Phase A (DEVIATIONS Entries 2–3) |
+| Category queries | 3 tradition-agnostic prompts | Hardcoded in script, locked at git commit |
+| Total measurement cells | 18 (= 3 queries × 6 slots) | |
+| Mention detection | Case-insensitive word-boundary regex | Aliases mechanically generated from canonical name |
+| Alias generation | Hyphen/space/concatenation variants | Semantic aliases require registry-level entries (future schema upgrade) |
+| PASS threshold | `mention_rate ≥ 1/6` | ≥1 mention per LLM on average across queries |
+| PASS_E5 range | `0 < mention_rate < 1/6` | Marginal but measurable |
+| EXCLUDED_E1a | `mention_rate = 0` | Not measurable at Phase B |
+| Response token budget | 1500 per call | Generous enough for multi-brand listings |
+| Caching | Per (query_id, slot_N) JSON | Idempotent across re-runs unless `--force` |
+
+**Locked category queries (v0.17 Phase B):**
+
+| ID | Text |
+|---|---|
+| `q1_best_brands` | What are the best premium cookware brands? Please list several with brief descriptions. |
+| `q2_serious_cooks` | Recommend high-quality cookware brands for serious home cooks. Name several specific brands. |
+| `q3_pro_chefs` | What cookware brands do professional chefs use? List several. |
+
+Tradition-agnostic by design (no "European", "American", or "Japanese" qualifier) so each cell competes for mention surface on equal terms. This is the construct Phase D will measure at t1 and t2 for the Spearman ρ analysis.
+
+**Noda Horo — Phase B borderline-classification resolution.**
+
+The brand registry flags Noda Horo with `"borderline_classification": true` and `"borderline_resolution_at": "phase_b_topic_id"`. This is a pre-registered Phase B resolution point: whether Noda Horo counts as in-scope cookware (vs out-of-scope enamelware) is decided by its Phase B mentionability tier.
+
+- **Resolution rule:** PASS or PASS_E5 → IN_SCOPE (cookware); EXCLUDED_E1a → OUT_OF_SCOPE (enamelware-only).
+- The `borderline_resolution` column in `topic_id_resolution_log_v0.17.csv` records the verdict explicitly.
+- If Noda Horo resolves OUT_OF_SCOPE, the Japanese cell drops to n=2 brands (Iwachu, Sori Yanagi). Worldwide n drops to 14. C1 floor (n ≥ 12) still holds with margin of 2.
+
+**Phase A descope application.**
+
+Vermicular was C_P FAILED at Phase A (DEVIATIONS Entry 6) and is descoped from the v0.17 operational panel. The brand registry at `registries/brands_kitchenware_v0.17.json` is *not* mutated — registries are immutable post-pre-reg lock per program discipline. Descope is applied at panel-load time in `phaseB_resolve_v17.py` via the hardcoded `PHASE_A_DESCOPED = {"Vermicular"}` constant. The set references `osf/v17/phase_a_lock.md` for audit trail; any future cascade events that add brands to the descope set update the constant in the script (with new DEVIATIONS entry) rather than the registry.
+
+**v1.4 Methodology paper forward action.**
+
+1. Formalize LLM-substrate Phase B as canonical §5.2; retain v0.13–v0.15 Trends-substrate Phase B as a documented historical specification for backward compatibility with the Premium Tea program.
+2. Specify the query-locking principle: category queries are hardcoded at script-commit time; modifications require new pre-reg or new DEVIATIONS entry.
+3. Specify the mechanical-alias-generation rule explicitly with worked examples (handles "All-Clad / All Clad / AllClad" but does not handle semantic variants like "Field & Company"; latter require registry-level alias entries).
+4. Specify the borderline-classification resolution mechanism: registries flag borderline brands with `borderline_resolution_at` pointing to the resolving phase; the phase's verdict is recorded in the resolution log's `borderline_resolution` column.
+5. Promote the per-query × per-slot mention matrix to canonical artefact — preserved for inter-LLM reliability analysis in v1.5+.
+
+**Audit trail.** Script committed at `<HASH_AUTO_7>`. Brand registry at commit (unchanged from `2b31253`). Phase A lock document at commit `8cdf0cd` referenced for descope authority.
