@@ -279,3 +279,57 @@ Vermicular was C_P FAILED at Phase A (DEVIATIONS Entry 6) and is descoped from t
 5. Promote the per-query × per-slot mention matrix to canonical artefact — preserved for inter-LLM reliability analysis in v1.5+.
 
 **Audit trail.** Script committed at `55e28ed`. Brand registry at commit (unchanged from `2b31253`). Phase A lock document at commit `8cdf0cd` referenced for descope authority.
+
+---
+
+## Entry 8 — Phase B outcome: Japanese cell full collapse + American partial attrition → C1 breach (2026-05-20)
+
+**Event.** Phase B mentionability validation completed (commits `55e28ed` / `9174d10`). Outcome:
+
+| Cell | Pre-Phase-B n | PASS | PASS_E5 | EXCLUDED_E1a | Post-Phase-B eligible n |
+|---|---|---|---|---|---|
+| European | 6 | 6 | 0 | 0 | 6 |
+| American | 6 | 4 | 0 | 2 | 4 |
+| Japanese | 3 | 0 | 0 | 3 | 0 |
+| **Worldwide** | **15** | **10** | **0** | **5** | **10** |
+
+Brands EXCLUDED_E1a at Phase B: Field Company, Smithey (American); Iwachu, Sori Yanagi, Noda Horo (Japanese).
+
+**Pre-registered C1 criterion** (pre-reg line 43): worldwide n ≥ 12 brands. **Observed**: n = 10. **C1 BREACHED** with deficit of 2 brands below floor.
+
+Pre-registered FALSIFIED criterion (pre-reg line 51): `¬C1 ∨ ¬C2`. Pre-registered joint verdict matrix (pre-reg line 63): `PARTIAL × FALSIFIED → AMBIGUOUS — kitchenware fails C1 or C2; H_IdentityLoad_moderator inconclusive pending v0.18 indie fragrance`. The pre-reg explicitly anticipated this outcome path; no protocol amendment or verdict reframing is required.
+
+**Per-brand mention rate breakdown** (sorted descending; canonical reference: `osf/v17/registries/topic_id_resolution_log_v0.17.csv`):
+
+| Brand | Cell | Total mentions | Mention rate | Tier |
+|---|---|---|---|---|
+| Le Creuset | european | 18/18 | 1.000 | PASS |
+| Mauviel | european | 18/18 | 1.000 | PASS |
+| All-Clad | american | 18/18 | 1.000 | PASS |
+| Staub | european | 17/18 | 0.944 | PASS |
+| Demeyere | european | 15/18 | 0.833 | PASS |
+| Lodge | american | 7/18 | 0.389 | PASS |
+| de Buyer | european | 6/18 | 0.333 | PASS |
+| Hestan | american | 6/18 | 0.333 | PASS |
+| Made In | american | 4/18 | 0.222 | PASS |
+| Fissler | european | 2/18 | 0.111 | PASS_E5 |
+| Field Company | american | 0/18 | 0.000 | EXCLUDED_E1a |
+| Smithey | american | 0/18 | 0.000 | EXCLUDED_E1a |
+| Iwachu | japanese | 0/18 | 0.000 | EXCLUDED_E1a |
+| Sori Yanagi | japanese | 0/18 | 0.000 | EXCLUDED_E1a |
+| Noda Horo | japanese | 0/18 | 0.000 | EXCLUDED_E1a |
+
+**Noda Horo borderline-classification resolution.** Per brand-registry `borderline_resolution_at: "phase_b_topic_id"`, Noda Horo's Phase B tier *is* the protocol-mandated borderline-classification verdict. Tier: EXCLUDED_E1a. **Resolution: OUT_OF_SCOPE (enamelware-only; not in-scope premium cookware).** Recorded in `topic_id_resolution_log_v0.17.csv` row 16 column `borderline_resolution`. Noda Horo descoped from operational panel for downstream Phase D scoring.
+
+**Methodological observation 1 — substrate-substitution attrition.** Pre-reg §3.2 line 85 anticipated 1–3 brands of Trends-substrate Phase B attrition: "conservative Trends-floor attrition (1–3 brands, concentrated in European and Japanese cells per §2.3.1) leaves a post-floor floor of n = 13–15". DEVIATIONS Entry 7 substituted LLM-substrate Phase B for Trends-substrate Phase B. Observed attrition: 5 brands. The substrate substitution increased Phase B attrition by ~2× the pre-reg's worst-case estimate. Methodological hypothesis: LLM-substrate Phase B (mentionability in unprompted category queries) has substantially higher natural attrition than Trends-substrate Phase B (signal in 14-day out-of-sample window) because LLM unprompted recall is concentrated on top-tier brands while Trends signal is more democratic. Forward action for v1.4 Methodology paper: re-calibrate panel over-provisioning for the LLM-substrate regime (v0.18 indie fragrance and beyond).
+
+**Methodological observation 2 — Phase A C_P ↛ Phase B mention rate dissociation.** Iwachu is the canonical case: Phase A C_P PASS at 6/6 anchoring (substrate identity unambiguous in all 6 reference LLMs); Phase B mention rate 0/18 (never surfaces in unprompted category retrieval). Phase A and Phase B are measuring dissociable constructs:
+
+- Phase A: recognition anchoring — given the brand name, does the LLM identify it as being in the substrate?
+- Phase B: recall presence — given the substrate, does the LLM spontaneously surface the brand?
+
+The Iwachu dissociation is the strongest empirical demonstration in the AIAS programme that AI Availability is *not* unidimensional. The composite AIAS (Presence, Ranking, Consistency, Coverage, Grounding, Sentiment) needs to formalize the distinction between recognition and recall components. Forward action for v1.4 Methodology paper and Tri-System monograph: AI Availability is at least two-component (recognition × recall); the AIAS composite should aggregate across both.
+
+**Methodological observation 3 — Western-LLM training-data bias as confound.** Three Japanese brands with established Identity Load via tradition, craft heritage, and provenance (Iwachu ~400-year nambu-tekki; Sori Yanagi designer-craft; Noda Horo enamelware) received 0/18 mentions despite Iwachu's Phase A C_P PASS. The Japanese-cell-collapse pattern is hard to disambiguate from Western-language training-data bias on this substrate. The IL moderator hypothesis as pre-registered cannot be tested at v0.17 because the C1 breach + cross-cultural confound combination produces an uninterpretable signal. v0.18 indie fragrance — entirely English-language category surface — is the clean same-language IL test the program needs. Pre-reg line 63 already routes there.
+
+**Audit trail.** Phase B script `scripts/phaseB_resolve_v17.py` at commit `55e28ed`. Resolution log `osf/v17/registries/topic_id_resolution_log_v0.17.csv` at commit `55e28ed`. DEVIATIONS Entry 7 (substrate substitution) at commit `9174d10`. This Entry 8 committed at `<HASH_AUTO_8>`.
