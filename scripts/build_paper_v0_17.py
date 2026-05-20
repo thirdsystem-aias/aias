@@ -2,7 +2,7 @@
 """
 build_paper_v1_4_methodology.py — Build v1.4 Methodology paper PDF.
 
-Builds papers/v1_4_methodology/v1_4_methodology_paper_draft.md into a
+Builds papers/v1_4_methodology/v0_17_ssrn_paper_draft.md into a
 publication-ready PDF using pandoc + xelatex.
 
 Modeled on scripts/build_paper_presence_methodology.py (which built SSRN 6761698,
@@ -16,7 +16,7 @@ is applied only to text outside math regions ($...$ inline math and $$...$$
 display math), so LaTeX math expressions in the source are passed through
 unchanged.
 
-Output: papers/v1_4_methodology/v1_4_methodology_paper.pdf
+Output: papers/v1_4_methodology/v0_17_ssrn_paper.pdf
 
 Usage:
     python scripts/build_paper_v1_4_methodology.py
@@ -41,11 +41,11 @@ from pathlib import Path
 # ============================================================================
 
 ROOT         = Path.home() / "aias"
-PAPER_DIR    = ROOT / "papers" / "v1_4_methodology"
-SOURCE       = PAPER_DIR / "v1_4_methodology_paper_draft.md"
-OUTPUT_PDF   = PAPER_DIR / "v1_4_methodology_paper.pdf"
-HEADER_TEX   = PAPER_DIR / ".header_v1_4.tex"        # ephemeral
-PROCESSED_MD = PAPER_DIR / ".v1_4_processed.md"       # ephemeral
+PAPER_DIR    = ROOT / "papers" / "v0_17"
+SOURCE       = PAPER_DIR / "v0_17_ssrn_paper_draft.md"
+OUTPUT_PDF   = PAPER_DIR / "v0_17_ssrn_paper.pdf"
+HEADER_TEX   = PAPER_DIR / ".header_v0_17.tex"        # ephemeral
+PROCESSED_MD = PAPER_DIR / ".v0_17_processed.md"       # ephemeral
 
 
 # ============================================================================
@@ -362,7 +362,7 @@ def main() -> None:
     )
     parser.add_argument(
         "--keep-tex", action="store_true",
-        help="Preserve intermediate .header_v1_4.tex and .v1_4_processed.md "
+        help="Preserve intermediate .header_v0_17.tex and .v0_17_processed.md "
              "files for debugging.",
     )
     args = parser.parse_args()
