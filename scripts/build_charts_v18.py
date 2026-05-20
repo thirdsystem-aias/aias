@@ -107,12 +107,13 @@ def apply_chrome(fig, ax, title: str, subtitle: str) -> None:
     source line at bottom-left, Third System attribution at bottom-right.
     Title set via fig.suptitle / ax.text to allow the two-line title block.
     """
-    # Title block: bold title, italic subtitle directly below
+    # Title block: bold title at top, italic subtitle with clear vertical gap
     ax.set_title("")  # clear any per-axes title; we lay out the block manually
-    fig.suptitle(title, fontsize=11, fontweight="bold", y=0.985, ha="center")
+    fig.suptitle(title, fontsize=11, fontweight="bold", y=0.96, ha="center")
     fig.text(
-        0.5, 0.935, subtitle,
-        fontsize=9, style="italic", color="#444444", ha="center",
+        0.5, 0.90, subtitle,
+        fontsize=9, style="italic", color="#444444",
+        ha="center", va="top",
     )
     # Source footer (bottom-left) and attribution (bottom-right)
     fig.text(
@@ -191,7 +192,7 @@ def chart_mention_rate_distribution(phase_b: dict, output_path: Path) -> None:
             "IL-gradient ascending C → A → B"
         ),
     )
-    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
+    fig.tight_layout(rect=[0, 0.045, 1, 0.86])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
@@ -250,7 +251,7 @@ def chart_cell_attrition(phase_a: dict, phase_b: dict, output_path: Path) -> Non
             "≥1 mention across 18 Phase B observations."
         ),
     )
-    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
+    fig.tight_layout(rect=[0, 0.045, 1, 0.86])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
@@ -326,7 +327,7 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
             "Black × = v0.17 Iwachu reference point."
         ),
     )
-    fig.tight_layout(rect=[0, 0.04, 1, 0.91])
+    fig.tight_layout(rect=[0, 0.045, 1, 0.86])
     fig.savefig(output_path, format="pdf", bbox_inches="tight")
     plt.close(fig)
 
