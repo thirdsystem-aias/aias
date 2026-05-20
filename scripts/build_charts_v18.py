@@ -268,6 +268,7 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
     fig, ax = plt.subplots(figsize=CHART_FIGSIZE, dpi=CHART_DPI)
 
     # Iwachu-pattern dissociation quadrant: C_P ≥ 5 ∧ mentions ≤ 2
+    # (annotation moved to subtitle; quadrant remains visually shaded)
     quadrant = patches.Rectangle(
         (DISSOCIATION_C_P_FLOOR - 0.5, -0.5),
         (6 + 0.5) - (DISSOCIATION_C_P_FLOOR - 0.5),
@@ -275,12 +276,6 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
         linewidth=0, facecolor="#FFE9C8", alpha=0.65, zorder=0,
     )
     ax.add_patch(quadrant)
-    ax.text(
-        5.95, DISSOCIATION_MENTION_CEILING - 0.05,
-        "Iwachu-pattern\ndissociation quadrant",
-        fontsize=7, color="#996633", ha="right", va="top",
-        style="italic",
-    )
 
     # Brand points colored by cell
     for cell_name in CELL_DISPLAY_ORDER:
@@ -302,13 +297,10 @@ def chart_dissociation_scatter(phase_a: dict, phase_b: dict, output_path: Path) 
             zorder=2,
         )
 
-    # Iwachu reference annotation (v0.17 anchor: C_P=6, mentions=0)
+    # Iwachu reference point (v0.17 anchor: C_P=6, mentions=0)
+    # X marker retained as visual; subtitle explains its meaning
     ax.scatter(
         [6], [0], marker="x", s=80, color="#444444", linewidth=1.4, zorder=3,
-    )
-    ax.text(
-        5.85, 0.3, "Iwachu (v0.17)",
-        fontsize=7, color="#444444", ha="right", va="bottom", style="italic",
     )
 
     ax.set_xlabel("Phase A C_P score (Recognition, max 6)")
