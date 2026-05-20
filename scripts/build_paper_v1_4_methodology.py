@@ -175,29 +175,25 @@ PREAMBLE = r"""
 % --- Microtype for typographic refinement ------------------------------
 \usepackage{microtype}
 
-% --- Title page: 16pt bold centered title with 21.76pt baseline --------
-% Per AIAS SSRN convention: title page is centered, parskip locally
-% adjusted to 10.36pt; body parskip restored after title page.
-\makeatletter
-\renewcommand{\maketitle}{%
-    \begin{titlepage}
-        \begin{center}
-            \vspace*{2em}
-            {\setlength{\parskip}{10.36pt}%
-             \fontsize{16}{21.76}\selectfont\bfseries\@title\par}
-            \vspace{2em}
-            {\normalsize\@author\par}
-            \vspace{1em}
-            {\@date\par}
-            \vspace{3em}
-            \begin{minipage}{0.85\textwidth}
-                \begin{center}\textbf{\large Abstract}\end{center}
-                \noindent\@abstract
-            \end{minipage}
-        \end{center}
-    \end{titlepage}
-}
-\makeatother
+% --- Title formatting via titling package -----------------------------
+% Avoid redefining \maketitle directly — pandoc's default template handles
+% abstract emission separately (not via \@abstract), so a custom \maketitle
+% that consumes \@abstract breaks the build. titling's pre/post hooks
+% adjust title formatting without disturbing pandoc's template path.
+\usepackage{titling}
+\pretitle{\begin{center}\fontsize{16}{21.76}\selectfont\bfseries}
+\posttitle{\par\end{center}\vskip 1.5em}
+\preauthor{\begin{center}\normalsize}
+\postauthor{\par\end{center}\vskip 1em}
+\predate{\begin{center}}
+\postdate{\par\end{center}\vskip 2em}
+
+% --- Abstract styling (pandoc emits \begin{abstract}...\end{abstract} when
+%     the YAML 'abstract' field is present; restyle that block).
+\renewenvironment{abstract}
+    {\begin{center}\textbf{\large Abstract}\end{center}%
+     \begin{quote}\noindent\ignorespaces}
+    {\end{quote}\vskip 1em}
 """
 
 
