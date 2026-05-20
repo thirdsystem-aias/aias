@@ -14,6 +14,7 @@ fontsize: 11pt
 linkcolor: black
 urlcolor: black
 header-includes:
+  - \usepackage{setspace}
   - \setstretch{1.36}
   - \setlength{\parskip}{8pt}
   - \setlength{\parindent}{0pt}
@@ -25,6 +26,8 @@ header-includes:
   - \titleformat{\section}{\bfseries\large}{\thesection}{1em}{}
   - \titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{1em}{}
 ---
+
+\newpage
 
 # Abstract
 
@@ -130,6 +133,10 @@ Phase B produced sharply differentiated Recall patterns across the three cells:
 
 The Recall data show a second IL-gradient signal, this time operating as **dissociation pattern** rather than as Pareto concentration. Cell B's high-Recognition brands (mean C_P 5.00/6) almost uniformly fail to surface in category-anchored Phase B queries. Cell A's high-Recognition brands surface broadly. Cell C's no-Recognition brands occasionally surface through general fragrance-discourse pathways (Tom Ford's broad cultural footprint, Chanel's signature-scent status) despite failing the niche-fragrance Recognition probe.
 
+![Phase B mention-rate distribution per cell. Box-and-whisker plots show within-cell distribution of brand mention counts across the 3 (query frames) × 6 (reference panel models) = 18 measurement cells. Cell A shows distributed Recall (Le Labo 17/18, MFK 16/18, Diptyque 15/18 lead a broad coverage). Cell B shows near-total Recall attrition (only D.S. & Durga with non-zero mentions, at 2/18). Cell C surfaces sporadically (Tom Ford 4, Chanel 3, Versace and Dior 1 each) despite failing the niche-fragrance Recognition probe — evidence of a parallel cultural-footprint Recall channel.](../../reports/figs/v18/chart_01_mention_rate_distribution.pdf){#fig:mention-rates width=100%}
+
+![Cell attrition from Phase A registered panel to Phase B mention-positive set. Light bars are the registered panel (n = 8 per cell); dark bars are brands with ≥ 1 mention across the 18 Phase B observations. Cell A retains 7/8 (only Memo Paris is mention-zero); Cell B retains 1/8 (D.S. & Durga alone); Cell C retains 4/8 (the four with cultural-footprint discourse channels). The cell-attrition pattern is non-monotonic across IL tiers — the IL-gradient operates as dissociation pattern at the high-IL tier rather than as Pareto concentration.](../../reports/figs/v18/chart_02_cell_attrition.pdf){#fig:cell-attrition width=100%}
+
 ## 3.3 Phase D — within-cell ρ (Recognition × Recall)
 
 Spearman rank correlation between Phase A C_P score and Phase B mention count, computed per cell (post-attrition n = 8 for all three cells; the n ≥ 5 minimum is satisfied):
@@ -168,6 +175,8 @@ The Iwachu-pattern threshold (Phase A C_P ≥ 5/6 ∧ Phase B mention rate ≤ 2
 **Cell C (0 cases).** By construction: the Iwachu-pattern threshold requires C_P ≥ 5/6, which no Cell C brand achieves (maximum is Tom Ford at 2/6). Cell C contributes zero to the dissociation pool because the asymmetric design of the multi-component construct captures Recognition-without-Recall, not Non-Recognition-with-Non-Recall.
 
 The cell distribution is markedly cell-clustered: 9 cases concentrate in Cells A (3) and B (6), with the Cell B share (6/8 = 75%) dominating. This pattern is itself substantive — dissociation appears most pronounced at the highest-IL tier, consistent with the moderator hypothesis though it does not formally satisfy the cross-cell generalization criterion (≥ 1 case in *every* cell).
+
+![Recognition × Recall dissociation scatter for the v0.18 panel. Phase A C_P score (Recognition, x-axis, 0–6 across the reference panel) versus Phase B mention count (Recall, y-axis, 0–18 across the three-frame query battery). Shaded quadrant: Iwachu-pattern threshold (C_P ≥ 5 and mentions ≤ 2). Black × marks the v0.17 Iwachu reference point (C_P = 6, mentions = 0). v0.18 contributes 9 cases to the shaded quadrant: 3 in Cell A (Comme des Garçons Parfums, Memo Paris, Etat Libre d'Orange) and 6 in Cell B (D.S. & Durga, Boy Smells, Heretic Parfum, Vyrao, Phlur, Snif). Cell C contributes zero by Recognition-floor design — no Cell C brand satisfies C_P ≥ 5/6.](../../reports/figs/v18/chart_03_dissociation_scatter.pdf){#fig:dissociation width=100%}
 
 ## 3.5 Verdict resolution
 
