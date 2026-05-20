@@ -135,7 +135,7 @@ OUT_DIR  = ROOT / "papers" / "v0_17" / "figures"
 OUT_DIR.mkdir(parents=True, exist_ok=True)
 
 SOURCE_LINE = ("Source: Third System AI Availability Score (AIAS) v0.17 \u00b7 "
-               "Phase B LLM-substrate measurement (May 2026) \u00b7 "
+               "Phase B LLM-substrate measurement (May 2026)\n"
                "Pre-reg locked at v0.17-prereg-r1 (commit 3ebe426); "
                "Phase B locked at v0.17-phase-b-locked (commit 54c83ec).")
 
@@ -174,7 +174,7 @@ def chart_phase_b_mention_rates():
     tiers  = [d[3] for d in data]
     colors = [CELL_COLOR[d[1]] for d in data]
 
-    fig, ax = plt.subplots(figsize=(7.5, 6.5))
+    fig, ax = plt.subplots(figsize=(7.5, 8.0))
     y_pos = np.arange(len(brands))
     ax.barh(y_pos, rates, color=colors, edgecolor="white",
             linewidth=0.8, zorder=3)
@@ -218,10 +218,10 @@ def chart_phase_b_mention_rates():
                 "Japanese cell concentrated entirely at zero — the full-cell "
                 "collapse motivating the AMBIGUOUS Identity-Load verdict.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
-                            title_y=0.965, subtitle_y=0.925, wrap_width=110)
-    add_source(fig, x=0.06, y=0.020)
+                            title_y=0.965, subtitle_y=0.930, wrap_width=100)
+    add_source(fig, x=0.06, y=0.030)
 
-    fig.subplots_adjust(top=0.84, bottom=0.08, left=0.16, right=0.97)
+    fig.subplots_adjust(top=0.87, bottom=0.08, left=0.16, right=0.97)
     out = OUT_DIR / "chart_v17_phase_b_mention_rates.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
@@ -236,84 +236,110 @@ def chart_phase_b_mention_rates():
 def chart_dissociation():
     """Scatter of Phase A C_P anchoring score vs Phase B mention rate for the
     four pivots that received Phase A measurement. Iwachu highlighted as the
-    canonical dissociation case."""
+    canonical dissociation case. Le Creuset and All-Clad sit at the same
+    underlying coordinate (6, 1.0); we jitter them slightly along x so both
+    are visible and individually labelable."""
     scores = load_phase_a_scores()
     rates  = {b: r for (b, c, r, t) in load_phase_b_mention_rates()}
 
-    pivots = [
-        ("Le Creuset", "european"),
-        ("All-Clad",   "american"),
-        ("Iwachu",     "japanese"),
-        ("Vermicular", "japanese"),
-    ]
+    # Visual positions (jittered for the (6, 1.0) overlap)
+    PLACEMENT = {
+        "Le Creuset": (5.82, 1.00, "european"),
+        "All-Clad":   (6.18, 1.00, "american"),
+        "Iwachu":     (6.00, 0.00, "japanese"),
+        "Vermicular": (4.00, -0.06, "japanese"),  # Phase B descope marker
+    }
 
-    fig, ax = plt.subplots(figsize=(7.5, 5.5))
+    fig, ax = plt.subplots(figsize=(7.5, 6.8))
 
-    for brand, cell in pivots:
+    # ---- Plot data points + their per-point labels --------------------------
+    for brand, (x, y, cell) in PLACEMENT.items():
         color = CELL_COLOR[cell]
-        x = scores.get(brand, 0)
 
         if brand == "Vermicular":
-            ax.scatter([x], [-0.06], marker="x", s=130,
+            # Descoped marker — not a point on the Phase B axis
+            ax.scatter([x], [y], marker="x", s=140,
                        color=MUTED, linewidths=2.0, zorder=4)
             ax.annotate(f"{brand}\n(C$_P$ FAIL — descoped)",
-                        xy=(x, -0.06), xytext=(x + 0.25, 0.10),
+                        xy=(x, y), xytext=(x + 0.25, 0.10),
                         fontsize=8.5, color=MUTED, ha="left",
                         arrowprops=dict(arrowstyle="-", color=GRID,
                                         lw=0.5, shrinkA=0, shrinkB=4))
             continue
 
-        y = rates.get(brand, 0)
         ax.scatter([x], [y], s=180, color=color, edgecolor="white",
                    linewidth=1.2, zorder=4)
 
-        if brand == "Iwachu":
-            ax.annotate(brand, xy=(x, y), xytext=(x - 0.25, y + 0.08),
-                        fontsize=11, color=color, fontweight="bold", ha="right")
-            ax.annotate("Recognition $\\times$ Recall dissociation:\n"
-                        "full recognition (6/6), zero recall (0/18)",
-                        xy=(x, y), xytext=(4.6, 0.32),
-                        fontsize=9, color=color, ha="left", style="italic",
-                        arrowprops=dict(arrowstyle="->", color=color,
-                                        lw=0.9, shrinkA=2, shrinkB=4))
-        else:
-            ax.annotate(brand, xy=(x, y), xytext=(x - 0.25, y - 0.05),
-                        fontsize=9.5, color=color, ha="right")
+        if brand == "Le Creuset":
+            # Above-left of the point
+            ax.annotate(brand, xy=(x, y), xytext=(-8, 14),
+                        textcoords="offset points",
+                        fontsize=10, color=color, fontweight="bold",
+                        ha="right", va="bottom")
+        elif brand == "All-Clad":
+            # Above-right of the point
+            ax.annotate(brand, xy=(x, y), xytext=(8, 14),
+                        textcoords="offset points",
+                        fontsize=10, color=color, fontweight="bold",
+                        ha="left", va="bottom")
+        elif brand == "Iwachu":
+            # Direct label below-right of the point
+            ax.annotate(brand, xy=(x, y), xytext=(10, -3),
+                        textcoords="offset points",
+                        fontsize=11, color=color, fontweight="bold",
+                        ha="left", va="top")
 
-    # Threshold reference lines
+    # ---- Dissociation callout (upper-middle empty area) ---------------------
+    # Positioned to be clear of all four data points and both threshold lines.
+    ax.annotate("Recognition $\\times$ Recall dissociation:\n"
+                "full recognition (6/6), zero recall (0/18)",
+                xy=(6.0, 0.04), xytext=(2.7, 0.55),
+                fontsize=9, color=MAROON, ha="left", va="center",
+                style="italic",
+                arrowprops=dict(arrowstyle="->", color=MAROON,
+                                lw=1.0, shrinkA=2, shrinkB=8,
+                                connectionstyle="arc3,rad=-0.15"))
+
+    # ---- Threshold reference lines ------------------------------------------
+    # Phase A supermajority (5/6): vertical dashed line. Label placed at
+    # mid-axis-height where there are no data points.
     ax.axvline(5, color=MUTED, linestyle="--", linewidth=0.7, alpha=0.8)
-    ax.text(5.08, 0.97, "Phase A supermajority (5/6)",
-            fontsize=7.5, color=MUTED, va="top", rotation=90, style="italic")
+    ax.text(4.92, 0.50, "Phase A supermajority (5/6)",
+            fontsize=7.5, color=MUTED, va="center", ha="right",
+            rotation=90, style="italic")
+    # Phase B PASS (1/6): horizontal dashed line. Label placed in upper-left.
     ax.axhline(1/6, color=MUTED, linestyle="--", linewidth=0.7, alpha=0.8)
-    ax.text(0.2, 1/6 + 0.014, "Phase B PASS (1/6)",
+    ax.text(0.2, 1/6 + 0.018, "Phase B PASS threshold (1/6)",
             fontsize=7.5, color=MUTED, ha="left", style="italic")
 
+    # ---- Axes ---------------------------------------------------------------
     ax.set_xlabel("Phase A C$_P$ anchoring score (out of 6 reference LLMs)",
                   color=TEXT)
     ax.set_ylabel("Phase B mention rate (mentions / 18 cells)", color=TEXT)
-    ax.set_xlim(-0.5, 6.6)
-    ax.set_ylim(-0.18, 1.15)
+    ax.set_xlim(-0.5, 6.8)
+    ax.set_ylim(-0.18, 1.18)
     ax.set_xticks(range(7))
     ax.set_yticks([0, 0.2, 0.4, 0.6, 0.8, 1.0])
     ax.grid(True, color=GRID_SUBTLE, linewidth=0.4, zorder=0)
 
-    # Quadrant labels
-    ax.text(0.3, 1.10, "Low recognition + high recall\n(empty quadrant)",
-            fontsize=7, color=MUTED, ha="left", style="italic", alpha=0.7)
-    ax.text(6.3, 1.10, "Full Presence\n(recognition + recall)",
-            fontsize=7, color=MUTED, ha="right", style="italic", alpha=0.7)
-    ax.text(6.3, -0.13, "Recognition only\n(dissociation)",
-            fontsize=7, color=MUTED, ha="right", style="italic", alpha=0.7)
+    # ---- Quadrant labels (outside data area, in the axis-extension margins) -
+    ax.text(-0.3, 1.13, "Low recognition + high recall (empty quadrant)",
+            fontsize=7.5, color=MUTED, ha="left", style="italic", alpha=0.7)
+    ax.text(6.7, 1.13, "Full Presence",
+            fontsize=7.5, color=MUTED, ha="right", style="italic", alpha=0.7)
+    ax.text(6.7, -0.15, "Recognition-only (dissociation)",
+            fontsize=7.5, color=MUTED, ha="right", style="italic", alpha=0.7)
 
-    # Cell legend
+    # ---- Cell legend --------------------------------------------------------
     legend_handles = [
         Patch(facecolor=CELL_COLOR[c], label=CELL_LABEL[c] + " cell pivot")
         for c in ("european", "american", "japanese")
     ]
-    ax.legend(handles=legend_handles, loc="center right",
+    ax.legend(handles=legend_handles, loc="lower left",
+              bbox_to_anchor=(0.01, 0.08),
               frameon=False, fontsize=8.5)
 
-    # Title chrome
+    # ---- Title chrome -------------------------------------------------------
     title = "Recognition $\\times$ Recall dissociation — the Iwachu canonical case"
     subtitle = ("The four pivot brands that received Phase A C$_P$ measurement, "
                 "plotted against Phase B mention rate. Le Creuset and All-Clad "
@@ -323,10 +349,10 @@ def chart_dissociation():
                 "motivates the v1.4 Methodology revision specifying AI "
                 "Availability as a multi-component construct.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
-                            title_y=0.965, subtitle_y=0.925, wrap_width=108)
-    add_source(fig, x=0.06, y=0.025)
+                            title_y=0.965, subtitle_y=0.930, wrap_width=100)
+    add_source(fig, x=0.06, y=0.030)
 
-    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.09, right=0.97)
+    fig.subplots_adjust(top=0.81, bottom=0.11, left=0.10, right=0.97)
     out = OUT_DIR / "chart_v17_dissociation.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
@@ -349,7 +375,7 @@ def chart_cell_collapse():
     x = np.arange(len(cells))
     width = 0.36
 
-    fig, ax = plt.subplots(figsize=(7.5, 4.8))
+    fig, ax = plt.subplots(figsize=(7.5, 5.4))
     bars_pre  = ax.bar(x - width/2, pre, width,
                        label="Pre-Phase A (registered)",
                        color=GRID, edgecolor="white", linewidth=0.8, zorder=3)
@@ -363,13 +389,6 @@ def chart_cell_collapse():
             h = bar.get_height()
             ax.text(bar.get_x() + bar.get_width()/2, h + 0.12,
                     str(int(h)), ha="center", fontsize=9, color=TEXT)
-
-    # Cell-level attrition deltas under x-axis (callout when nonzero)
-    for i, c in enumerate(cells):
-        delta = pre[i] - post[i]
-        if delta > 0:
-            ax.text(i, -0.62, f"\u2212{delta}",
-                    ha="center", fontsize=8.5, color=MAROON, weight="bold")
 
     ax.set_xticks(x)
     ax.set_xticklabels([CELL_LABEL[c] for c in cells], color=TEXT)
@@ -400,10 +419,10 @@ def chart_cell_collapse():
                 "Phase B). This pattern produces the FALSIFIED-on-panel-"
                 "inadequacy verdict for H$_\\mathrm{Regime4\\_kitchenware}$.")
     draw_title_and_subtitle(fig, title, subtitle, x=0.06,
-                            title_y=0.965, subtitle_y=0.925, wrap_width=108)
-    add_source(fig, x=0.06, y=0.025)
+                            title_y=0.965, subtitle_y=0.930, wrap_width=100)
+    add_source(fig, x=0.06, y=0.030)
 
-    fig.subplots_adjust(top=0.74, bottom=0.18, left=0.09, right=0.97)
+    fig.subplots_adjust(top=0.74, bottom=0.13, left=0.09, right=0.97)
     out = OUT_DIR / "chart_v17_cell_collapse.pdf"
     fig.savefig(out, dpi=300)
     plt.close(fig)
