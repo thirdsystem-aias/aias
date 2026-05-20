@@ -1,9 +1,9 @@
 # v0.17 Premium Kitchenware — Formal Substantive Verdicts
 
 **Status.** Verdicts locked per pre-registration. Substantive hypothesis FALSIFIED on panel inadequacy; joint Identity-Load moderator verdict AMBIGUOUS pending v0.18.
-**Locked at git commit.** `<HASH_AUTO_VERDICT>` (paired with `v0.17-phase-b-locked` tag).
+**Locked at git commit.** `afa950c` (paired with `v0.17-phase-b-locked` tag).
 **Pre-registration of record.** `v0.17-prereg-r1` (commit `3ebe426`).
-**Phase B lock of record.** `osf/v17/phase_b_lock.md` at commit `<HASH_AUTO_PB_LOCK>`.
+**Phase B lock of record.** `osf/v17/phase_b_lock.md` at commit `afa950c`.
 **Date locked.** 2026-05-20.
 
 This document records the formal substantive verdicts for v0.17 Premium Kitchenware against the pre-registered hypotheses and decision rules. Verdicts follow mechanically from observed Phase A and Phase B outcomes applied to immutable pre-reg §2.1 decision rules and §2.2 conditional verdict matrix. No post-acquisition reframing per pre-reg line 259's pre-registration declaration.

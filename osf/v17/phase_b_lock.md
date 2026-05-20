@@ -1,7 +1,7 @@
 # Phase B Lock — v0.17 Premium Kitchenware
 
 **Status.** Phase B complete; operational panel locked at 10 eligible brands; C1 worldwide-n floor BREACHED at n=10 < 12.
-**Locked at git commit.** `<HASH_AUTO_PB_LOCK>` (tag: `v0.17-phase-b-locked`).
+**Locked at git commit.** `afa950c` (tag: `v0.17-phase-b-locked`).
 **Substrate.** Premium kitchenware (per pre-reg §1).
 **Methodology.** v0.15 Phase B (Trends-substrate) as superseded by provisional v1.4 §5.2 (LLM-substrate) per DEVIATIONS Entry 7.
 **Pre-registration of record.** `v0.17-prereg-r1` (commit `3ebe426`; §8 hash backfill at `04b624f`).
@@ -135,7 +135,7 @@ Phase D scoring will proceed on the 10-brand worldwide panel under the FALSIFIED
 | 2 | DEVIATIONS Entry 7 HASH_AUTO_7 backfill | `9174d10` |
 | 3 | DEVIATIONS Entry 8 (Phase B outcome event record) | `1b560d2` |
 | 4 | DEVIATIONS Entry 8 HASH_AUTO_8 backfill | (post-commit) |
-| 5 | Phase B lock (this document) + v0.17 verdict document | `<HASH_AUTO_PB_LOCK>` |
+| 5 | Phase B lock (this document) + v0.17 verdict document | `afa950c` |
 | 6 | Phase B lock HASH backfill | (post-commit) |
 
 ---
