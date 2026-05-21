@@ -1,7 +1,7 @@
 # MANIFEST — AIAS™ v0.19 OSF Deposit
 
-Generated: 2026-05-21T12:13:23Z  
-Git HEAD at generation: `745f3e1` (745f3e1b0ff6c35bd7ed7897343f769d287d6cd3)  
+Generated: 2026-05-21T12:22:34Z  
+Git HEAD at generation: `e2f6edf` (e2f6edf37a729389320e186c8d27334b946f19eb)  
 Branch: `v0.18-il-gradient`  
 **WARNING:** working tree had uncommitted changes at generation:
   - `ata/kitchen_knives/missing_cells_v16.csv`
@@ -11,8 +11,6 @@ Branch: `v0.18-il-gradient`
   - `papers/v0_17/v0_17_ssrn_paper.pdf`
   - `papers/v0_17/v0_17_ssrn_paper_draft.md`
   - `protocol/providers.py`
-  - `reports/figs/v19/chart_01_cp_distribution.pdf`
-  - `reports/figs/v19/chart_03_channel_asymmetry.pdf`
   - `scripts/derive_missing_cells_v16.py`
   - `"Untitled 61.rtf"`
   - `data/kitchen_knives/results_enriched_kitchen_knives_20260518_150539.csv`
@@ -100,8 +98,8 @@ Re-run after committing for a clean manifest.
 | `phase_b_queries.jsonl` | 9,864 | `75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188` |
 | `phase_b_responses.jsonl` | 72,044 | `8b7459c779bd1a3dd19b428fa015835c37aac12e5628ace38d64a79d44519c5e` |
 | `phase_b_results.csv` | 23,622 | `2542f0e8117a44d02e072b56be24d758f63ede35d700dd163852b720d4739075` |
-| `reports/_v19_base.pdf` | 91,921 | `a272369594046383706b061b3efa66aebbde4d7ea0ba35e861b083319ab1331a` |
-| `reports/v19_audiophile.pdf` | 233,356 | `0e4bf317d8a6b3967d80a3505db8a6ea014b703f957a6ee828d681539dca7301` |
+| `reports/_v19_base.pdf` | 91,921 | `3a6fde3c68f652f4b10601ed9ae17546f68ac6a9ee1d7611e5d5000f0152813e` |
+| `reports/v19_audiophile.pdf` | 233,356 | `27c26a7121ba64cdc44c0fcec1af875237259d06c7d63575bdc10be7ae378aef` |
 | `run_v0_19.py` | 7,964 | `e716f6ffe78bc9f27389ad8ecdd24daa5287bd5ec0a7c3b9c3ed27e7a97d8c22` |
 | `score_v0_19.py` | 20,561 | `3595790dc5f5c70594c27443be8d06aae0297100eeaa8ec33faf6ade8486591f` |
 | `scoring_output_v0_19.txt` | 1,659 | `8bcb30dc26336ee6a245e553f33655b5e6fc7e7974387f1f8b82b5539ca388ed` |
