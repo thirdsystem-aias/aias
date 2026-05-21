@@ -2,7 +2,7 @@
 
 **Phase:** v0.19
 **Pre-reg tag:** `v0.19-prereg-r1`
-**Pre-reg commit:** `<COMMIT_HASH_TBD>`
+**Pre-reg commit:** `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890`
 **Deposit state:** PRE-ACQUISITION
 
 SHA256 hashes are computed against the locked artifacts at git commit and filled in below. Post-acquisition artifacts append rows as they are produced.

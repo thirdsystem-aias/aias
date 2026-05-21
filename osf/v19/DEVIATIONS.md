@@ -2,7 +2,7 @@
 
 **Phase:** v0.19
 **Pre-reg tag:** `v0.19-prereg-r1`
-**Pre-reg commit:** `<COMMIT_HASH_TBD>`
+**Pre-reg commit:** `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890`
 
 This document logs any departures from the pre-registered protocol that arise during Phase A or Phase B acquisition, or during scoring. Each entry is dated, anchored to a git commit reference, and routes per the DEVIATIONS Rules specified in §6 of `PRE_REGISTRATION_v0_19.md`.
 
@@ -27,7 +27,7 @@ The pre-registration carries six DEVIATIONS rules:
 
 **Description.** Phase A Recognition probe returned modal-share = 0.500 in Cell A_Heritage (4 of 8 brands at C_P = 6/6: Sennheiser, Beyerdynamic, Grado, Audio-Technica) and modal-share = 0.875 in Cell B_Boutique (7 of 8 brands at C_P = 6/6; only Spirit Torino at 5/6 below ceiling). Both cells fail the pre-registered C2 threshold of `cp_modal_share < 0.50`. Per DEVIATIONS Rule 4, both cells route H_C3 to UNDETERMINED. Panel is NOT substituted; the substantive finding stands: the audiophile-headphone substrate produces Recognition ceiling effects across both Heritage and Boutique tiers when the panel is populated with category-enrolled brands. Cell A_Heritage's failure at exactly the boundary (modal share = 0.500, not strictly less than 0.50, distinguished from PASS by a single brand at the ceiling) is itself a methodological finding regarding C2 operationalization sensitivity at mixed-shape distributions.
 
-**Lock state.** Pre-reg tag `v0.19-prereg-r1` at commit `<COMMIT_HASH_TBD>` unchanged. No revision triggered.
+**Lock state.** Pre-reg tag `v0.19-prereg-r1` at commit `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890` unchanged. No revision triggered.
 
 **Downstream implications.**
 - H_C3 verdict: **UNDETERMINED** (per §5.1 matrix; both cells fail C2 → routing).

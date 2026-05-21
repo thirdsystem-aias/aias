@@ -5,7 +5,7 @@
 **Phase:** v0.19
 **Pre-reg revision:** r1
 **Pre-reg tag (proposed):** `v0.19-prereg-r1`
-**Pre-reg commit:** `<COMMIT_HASH_TBD>` (assigned at git lock)
+**Pre-reg commit:** `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890` (assigned at git lock)
 **Branch:** `v0.19-c3-rescue`
 **OSF deposit location:** `osf.io/ec6wh/v19/`
 **Author:** Pablo Ulpiano González Castro
@@ -276,7 +276,7 @@ The DEVIATIONS protocol carries forward from v0.16 / v0.17 / v0.18. Five rules c
 
 ### 7.1 Pre-reg lock
 
-This document committed to branch `v0.19-c3-rescue`, tagged `v0.19-prereg-r1` at commit `<COMMIT_HASH_TBD>`. Pre-reg artifacts (this file + locked brand registry CSV + locked probe template files) deposited at `osf.io/ec6wh/v19/` prior to any Phase A API call.
+This document committed to branch `v0.19-c3-rescue`, tagged `v0.19-prereg-r1` at commit `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890`. Pre-reg artifacts (this file + locked brand registry CSV + locked probe template files) deposited at `osf.io/ec6wh/v19/` prior to any Phase A API call.
 
 ### 7.2 Acquisition order
 

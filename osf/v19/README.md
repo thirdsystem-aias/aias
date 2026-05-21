@@ -3,7 +3,7 @@
 **Phase:** v0.19 — C3 Rescue on Audiophile Headphones Substrate
 **Methodology base:** AIAS™ Presence Measurement Protocol v1.4 (SSRN 6799479)
 **Pre-reg tag:** `v0.19-prereg-r1`
-**Pre-reg commit:** `<COMMIT_HASH_TBD>`
+**Pre-reg commit:** `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890`
 **Branch:** `v0.19-c3-rescue`
 **Status (as of this deposit):** PRE-ACQUISITION — pre-registration locked; Phase A / Phase B acquisition pending.
 **Author:** Pablo Ulpiano González Castro
@@ -81,7 +81,7 @@ Methodology lineage:
 
 ## How to reproduce the v0.19 pipeline from this deposit
 
-1. **Clone the pre-reg lock state.** Checkout commit `<COMMIT_HASH_TBD>` on branch `v0.19-c3-rescue`, or download the locked artifacts (pre-reg + registry + thresholds + scoring + acquisition tooling) from this OSF deposit.
+1. **Clone the pre-reg lock state.** Checkout commit `2cbd36c6ed53b99c65490765d3d9f1a2eb49b890` on branch `v0.19-c3-rescue`, or download the locked artifacts (pre-reg + registry + thresholds + scoring + acquisition tooling) from this OSF deposit.
 
 2. **Generate query batches** against the locked panel:
    ```
