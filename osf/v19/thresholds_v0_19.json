@@ -1,0 +1,191 @@
+{
+  "phase": "v0.19",
+  "prereg_revision": "r1",
+  "prereg_tag": "v0.19-prereg-r1",
+  "prereg_commit": "<COMMIT_HASH_TBD>",
+  "methodology_base": "v1.4",
+  "methodology_base_ssrn": "6799479",
+  "branch": "v0.19-c3-rescue",
+  "osf_path": "osf.io/ec6wh/v19/",
+
+  "panel": {
+    "n_total": 16,
+    "n_per_cell": 8,
+    "cells": ["A_Heritage", "B_Boutique"],
+    "split_variable": "audiophile_headphone_product_line_emergence",
+    "split_threshold_year": 2008,
+    "il_tier": "uniform_audiophile_enthusiast"
+  },
+
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "reference_panel_size": 6,
+
+  "phase_a": {
+    "probe_template": "Is the brand [BRAND_NAME] commonly recognized as a brand of audiophile headphones? Answer yes or no.",
+    "cp_range": [0, 6],
+    "total_queries": 96,
+    "cascade_rule": "v1.4_section_6.4_five_stage_pivot_validation",
+    "pivot_anchor_threshold": 6
+  },
+
+  "phase_b": {
+    "frames": {
+      "q1_audiophile": {
+        "prompt": "What are the best audiophile headphones? List several with descriptions.",
+        "load_bearing": true,
+        "channel": "category_anchored"
+      },
+      "q2_enthusiast": {
+        "prompt": "Recommend high-quality headphones for serious music listening. Name several brands.",
+        "load_bearing": true,
+        "channel": "category_anchored"
+      },
+      "q3_reference": {
+        "prompt": "What headphones do audiophiles and reviewers consider reference-grade? List several.",
+        "load_bearing": true,
+        "channel": "category_anchored"
+      },
+      "q4_famous": {
+        "prompt": "What are the most famous headphone brands?",
+        "load_bearing": false,
+        "channel": "cultural_footprint"
+      },
+      "q5_popular": {
+        "prompt": "What headphone brands are most well-known among general consumers?",
+        "load_bearing": false,
+        "channel": "cultural_footprint"
+      },
+      "q6_iconic": {
+        "prompt": "Which headphone brands have the strongest cultural recognition?",
+        "load_bearing": false,
+        "channel": "cultural_footprint"
+      }
+    },
+    "observations_per_brand_load_bearing": 18,
+    "observations_per_brand_sensitivity": 18,
+    "observations_per_brand_total": 36,
+    "total_observations": 576,
+    "mention_detection_rules": "v1.4_canonical_brand_mention_detection"
+  },
+
+  "c1_panel_adequacy": {
+    "worldwide_min_post_attrition": 12,
+    "per_cell_min_post_attrition": 5,
+    "rationale": "Carries forward from v0.18; 25% attrition margin sufficient given headphone substrate coverage density"
+  },
+
+  "c2_within_cell_variance": {
+    "cp_modal_share_max": 0.50,
+    "mention_count_modal_share_max": 0.50,
+    "rationale": "New operationalization for v0.19; directly captures v0.18 Cell A (0.875 C_P modal share) and Cell B (0.875 mention modal share) degeneracy ex-ante"
+  },
+
+  "c3_ranking_coherence": {
+    "spearman_rho_min": 0.50,
+    "bootstrap_ci_lower_bound_min": 0.20,
+    "bootstrap_n_resamples": 10000,
+    "bootstrap_method": "percentile",
+    "rationale": "rho >= 0.50 carries forward from v0.18 unchanged. Bootstrap CI > 0.20 is new tightening operationalization to handle small-n point-estimate noise at n=8 per cell."
+  },
+
+  "iwachu_pattern": {
+    "cp_min": 5,
+    "cp_max_value": 6,
+    "category_anchored_mentions_max": 2,
+    "category_anchored_observations_total": 18,
+    "load_bearing_frames": ["q1_audiophile", "q2_enthusiast", "q3_reference"],
+    "rationale": "Carries forward from v0.17 / v0.18 unchanged"
+  },
+
+  "dissociation_replication_verdict": {
+    "replicated_min_cases": 5,
+    "partial_range_min": 1,
+    "partial_range_max": 4,
+    "not_replicated_value": 0,
+    "panel_n": 16,
+    "rationale": "REPLICATED at >= 5/16 (31%) calibrated for comparable prevalence to v0.18 (9/24 = 37.5%); PARTIAL starts at 1 because any non-zero case on third substrate family extends v1.4 anchor base"
+  },
+
+  "cultural_footprint_sensitivity": {
+    "load_bearing": false,
+    "k_threshold": 5,
+    "sensitivity_frames": ["q4_famous", "q5_popular", "q6_iconic"],
+    "sensitivity_observations_total": 18,
+    "type1_category_channel_preferred": {
+      "category_anchored_mentions_min": 5,
+      "cultural_footprint_mentions_max": 2
+    },
+    "type2_cultural_channel_preferred": {
+      "category_anchored_mentions_max": 2,
+      "cultural_footprint_mentions_min": 5
+    },
+    "verdict": null,
+    "output_format": "case_list_for_v1_5_methodology_paper"
+  },
+
+  "cross_cultural_robustness": {
+    "required": true,
+    "exclusion_brands": ["Stax", "HiFiMan"],
+    "exclusion_rationale": "Pre-flagged cross-cultural risk per v0.16 discourse-language carryforward finding",
+    "computation": "per-cell rho recomputed excluding flagged brand; primary rho retains all 8 cell brands",
+    "delta_rho_bounded_threshold": 0.10,
+    "verdict_routing": {
+      "bounded_if_max_delta_lt_0.10": "Cross-cultural risk bounded for v0.19",
+      "substantive_if_max_delta_geq_0.10": "Documented limitation for AIAS_1.0 substrate-coverage section"
+    }
+  },
+
+  "deviations_rules": {
+    "rule_1_panel_lock": "Panel of 16 brands fixed at pre-reg commit. No substitution post-lock.",
+    "rule_2_model_deprecation": "Closest-version successor model substituted; DEVIATIONS entry opened",
+    "rule_3_recognition_floor_cascade_exhaustion": "Documented as substrate-level pattern; alternates NOT invoked (v0.18 Entry 1 precedent)",
+    "rule_4_c2_variance_failure": "NEW for v0.19. Cell flagged variance-degenerate; routes H_C3 verdict to UNDETERMINED; panel NOT substituted",
+    "rule_5_borderline_classification_stands": "Focal and Final Audio retain pre-registered Cell B classification post-acquisition",
+    "rule_6_cross_cultural_robustness_required": "Stax / HiFiMan exclusion analysis required regardless of full-cell C3 outcome"
+  },
+
+  "hypothesis_verdict_matrices": {
+    "H_C3_Within_Cell_Variance": {
+      "primary": true,
+      "load_bearing": true,
+      "matrix": {
+        "both_cells_clear_c3": "PASS",
+        "one_cell_clear_other_fail_c3_passes_c2": "PARTIAL",
+        "both_cells_fail_c3_pass_c2": "FALSIFIED",
+        "c1_inadequate": "UNDETERMINED",
+        "c2_fails_either_cell": "UNDETERMINED"
+      },
+      "clear_definition": "spearman_rho >= 0.50 AND bootstrap_ci_lower_bound > 0.20",
+      "fail_definition": "C3 not met but C2 cleared"
+    },
+    "H_Recognition_Recall_Dissociation_Replication": {
+      "primary": false,
+      "load_bearing": true,
+      "matrix": {
+        "cases_geq_5": "REPLICATED",
+        "cases_1_to_4": "PARTIAL",
+        "cases_0": "NOT_REPLICATED"
+      }
+    },
+    "H_CulturalFootprint_Dissociation_Sensitivity": {
+      "primary": false,
+      "load_bearing": false,
+      "matrix": null,
+      "output": "type1_and_type2_case_lists_per_cell"
+    }
+  },
+
+  "shipping_artifacts_post_acquisition": [
+    "Third_System_brand_format_report_v0_19.pdf",
+    "v0_19_ssrn_paper_draft.md",
+    "OSF_deposit_complete (README, MANIFEST, data, registries, figures, code, DEVIATIONS log)",
+    "SSRN_submission_with_abstract_ID"
+  ]
+}
