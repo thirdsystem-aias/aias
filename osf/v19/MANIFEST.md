@@ -1,7 +1,7 @@
 # MANIFEST — AIAS™ v0.19 OSF Deposit
 
-Generated: 2026-05-21T12:07:19Z  
-Git HEAD at generation: `1362dbb` (1362dbb562d7d23611bf58e130f48d39436a4ef3)  
+Generated: 2026-05-21T12:13:23Z  
+Git HEAD at generation: `745f3e1` (745f3e1b0ff6c35bd7ed7897343f769d287d6cd3)  
 Branch: `v0.18-il-gradient`  
 **WARNING:** working tree had uncommitted changes at generation:
   - `ata/kitchen_knives/missing_cells_v16.csv`
@@ -100,13 +100,13 @@ Re-run after committing for a clean manifest.
 | `phase_b_queries.jsonl` | 9,864 | `75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188` |
 | `phase_b_responses.jsonl` | 72,044 | `8b7459c779bd1a3dd19b428fa015835c37aac12e5628ace38d64a79d44519c5e` |
 | `phase_b_results.csv` | 23,622 | `2542f0e8117a44d02e072b56be24d758f63ede35d700dd163852b720d4739075` |
-| `reports/_v19_base.pdf` | 91,919 | `de6ce8034e1b7ab556af2a34ee3a07f1eae53b9ddf20f5767ea24bec0dee2c5e` |
-| `reports/v19_audiophile.pdf` | 233,354 | `5812b3615f07d6b55eddaf0de97c72ad43b1665a01c9153fd7eb0315034cd5f4` |
+| `reports/_v19_base.pdf` | 91,921 | `a272369594046383706b061b3efa66aebbde4d7ea0ba35e861b083319ab1331a` |
+| `reports/v19_audiophile.pdf` | 233,356 | `0e4bf317d8a6b3967d80a3505db8a6ea014b703f957a6ee828d681539dca7301` |
 | `run_v0_19.py` | 7,964 | `e716f6ffe78bc9f27389ad8ecdd24daa5287bd5ec0a7c3b9c3ed27e7a97d8c22` |
 | `score_v0_19.py` | 20,561 | `3595790dc5f5c70594c27443be8d06aae0297100eeaa8ec33faf6ade8486591f` |
 | `scoring_output_v0_19.txt` | 1,659 | `8bcb30dc26336ee6a245e553f33655b5e6fc7e7974387f1f8b82b5539ca388ed` |
 | `thresholds_v0_19.json` | 7,178 | `542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61` |
-| **TOTAL (17 files)** | **561,809** | |
+| **TOTAL (17 files)** | **561,813** | |
 
 ## Verification
 
