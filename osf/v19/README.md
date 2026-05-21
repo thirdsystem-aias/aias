@@ -4,6 +4,8 @@ OSF deposit for the v0.19 phase of the AIAS™ Presence Measurement Protocol res
 
 Methodology base: Protocol v1.4 (SSRN 6799479) — Recognition × Recall multi-component AI Availability construct. Predecessor phases: v0.16 (SSRN 6791999), v0.17 (SSRN 6802261), v0.18 (SSRN 6806558).
 
+**SSRN abstract:** https://ssrn.com/abstract=6809182
+
 ## Phase state
 
 | Stage | Git ref | Commit |
@@ -12,6 +14,7 @@ Methodology base: Protocol v1.4 (SSRN 6799479) — Recognition × Recall multi-c
 | Phase A + Phase B acquired, scored | tag `v0.19-acquired` | `c56ea8b` |
 | Brand-format report rendered | (no tag) | `cbecd3c` |
 | SSRN paper compiled | (no tag) | `08664e7` |
+| SSRN submission | abstract ID 6809182 | published May 2026 |
 
 All commits on branch `v0.18-il-gradient` (working trunk).
 
@@ -73,11 +76,11 @@ Six LLMs (locked since v0.17, reused unchanged):
 **Brand-format report:**
 - `reports/v19_audiophile.pdf` — 14-page brand-format report companion (rendered via `~/aias/reports/build_report_v19.py`; figures at `~/aias/reports/figs/v19/chart_0{1,2,3}_*.pdf`)
 
-**SSRN paper:** maintained separately at `~/aias/papers/v0_19/v0_19_ssrn_paper.pdf`; not duplicated in the OSF deposit. Cross-referenced via SSRN abstract ID (forthcoming on submission).
+**SSRN paper:** maintained separately at `~/aias/papers/v0_19/v0_19_ssrn_paper.pdf`; not duplicated in the OSF deposit. SSRN abstract: https://ssrn.com/abstract=6809182.
 
 ## Citation
 
-Gonzalez Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate: AIAS v0.19*. Third System™. SSRN abstract ID forthcoming.
+González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate: AIAS v0.19*. Third System™. SSRN Working Paper. https://ssrn.com/abstract=6809182
 
 OSF DOI: assigned at deposit lock by Open Science Framework.
 

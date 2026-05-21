@@ -1,7 +1,7 @@
 # MANIFEST — AIAS™ v0.19 OSF Deposit
 
-Generated: 2026-05-21T12:22:34Z  
-Git HEAD at generation: `e2f6edf` (e2f6edf37a729389320e186c8d27334b946f19eb)  
+Generated: 2026-05-21T13:10:26Z  
+Git HEAD at generation: `eb92320` (eb9232077981fce5730dfb7e8aab3d6653f5cd47)  
 Branch: `v0.18-il-gradient`  
 **WARNING:** working tree had uncommitted changes at generation:
   - `ata/kitchen_knives/missing_cells_v16.csv`
@@ -10,6 +10,9 @@ Branch: `v0.18-il-gradient`
   - `osf/v15/PRE_REGISTRATION_v0_15.md`
   - `papers/v0_17/v0_17_ssrn_paper.pdf`
   - `papers/v0_17/v0_17_ssrn_paper_draft.md`
+  - `papers/v0_19/v0_19_ssrn_paper.pdf`
+  - `papers/v0_19/v0_19_ssrn_paper_draft.build.md`
+  - `papers/v0_19/v0_19_ssrn_paper_draft.md`
   - `protocol/providers.py`
   - `scripts/derive_missing_cells_v16.py`
   - `"Untitled 61.rtf"`
@@ -89,7 +92,7 @@ Re-run after committing for a clean manifest.
 |---|---:|---|
 | `DEVIATIONS.md` | 3,974 | `7c212db1894edbd8f8b1000e7a4dde07789f2d154ecc070463b7e80cdd8137a7` |
 | `PRE_REGISTRATION_v0_19.md` | 25,268 | `fe7a53a8faefa3a69a40662183750dc95f4807f5e5b9398c8f813837d7c8e208` |
-| `README.md` | 5,356 | `40ede4d163a026669ba7908be13150b21274a8e592158fa53ee51db85de14f4e` |
+| `README.md` | 5,481 | `15e3fb03293f04ad394bccdb3881bba80ffa913e2868983ac7e1d0b0d991e23e` |
 | `acquire_v0_19.py` | 13,867 | `fe95dfed8a791e2e586bb3ecf2e4f2b2a7f1ea3d0727c258bec3c852d128ef44` |
 | `panel_registry_v0_19.csv` | 1,561 | `4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44` |
 | `phase_a_queries.jsonl` | 21,946 | `276f8f5c16a9b28e813842601b5ecc416b78e6948bfefdf2df7d617b658c687e` |
@@ -104,7 +107,7 @@ Re-run after committing for a clean manifest.
 | `score_v0_19.py` | 20,561 | `3595790dc5f5c70594c27443be8d06aae0297100eeaa8ec33faf6ade8486591f` |
 | `scoring_output_v0_19.txt` | 1,659 | `8bcb30dc26336ee6a245e553f33655b5e6fc7e7974387f1f8b82b5539ca388ed` |
 | `thresholds_v0_19.json` | 7,178 | `542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61` |
-| **TOTAL (17 files)** | **561,813** | |
+| **TOTAL (17 files)** | **561,938** | |
 
 ## Verification
 
