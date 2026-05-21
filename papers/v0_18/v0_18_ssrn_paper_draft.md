@@ -1,14 +1,5 @@
 ---
 title: "Identity-Load Moderator Test and Recognition × Recall Dissociation Generalization on an English-Language Indie Fragrance Substrate"
-subtitle: "AIAS Presence Measurement Protocol, v0.18 — Multi-Component Construct Generalizes; Moderator Bounded"
-author:
-  - name: "Pablo Ulpiano González Castro"
-    affiliations:
-      - "School of Visual Arts, MPS Branding Program, New York, NY (primary academic affiliation)"
-      - "Third System™ (research entity; data archive and methodology venue)"
-    email: "pablou@pablou.com"
-    orcid: "0009-0003-8968-9990"
-date: "2026-05-XX [TBD at SSRN submission]"
 mainfont: Carlito
 fontsize: 11pt
 linkcolor: black
@@ -25,9 +16,44 @@ header-includes:
   - \usepackage{titlesec}
   - \titleformat{\section}{\bfseries\large}{\thesection}{1em}{}
   - \titleformat{\subsection}{\bfseries\normalsize}{\thesubsection}{1em}{}
+  - \renewcommand{\maketitle}{}
 ---
 
-\newpage
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\fontsize{16}{21.76}\selectfont\bfseries
+Identity-Load Moderator Test and Recognition × Recall Dissociation Generalization on an English-Language Indie Fragrance Substrate
+\par}
+
+\vspace{1.2em}
+
+{\large\itshape
+AIAS™ Presence Measurement Protocol, v0.18 --- Multi-Component Construct Generalizes; Moderator Bounded
+\par}
+
+\vfill
+
+{\large Pablo Ulpiano González Castro \par}
+
+\vspace{0.8em}
+
+\textit{School of Visual Arts, MPS Branding Program, New York, NY} \\
+\textit{(primary academic affiliation)} \\[0.3em]
+\textit{Third System™ (research entity; data archive and methodology venue)}
+
+\vspace{1.2em}
+
+Correspondence: \texttt{pablou@pablou.com} · \texttt{pablou.com} \\
+ORCID: \href{https://orcid.org/0009-0003-8968-9990}{0009-0003-8968-9990}
+
+\vfill
+
+{\large May 2026 \par}
+
+\vspace{1cm}
+\end{titlepage}
 
 # Abstract
 
