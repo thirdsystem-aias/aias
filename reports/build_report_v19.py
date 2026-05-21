@@ -879,6 +879,10 @@ def build_lead_story(styles: dict[str, ParagraphStyle]) -> list:
     s.append(FrameBreak())
     s.append(Paragraph(content.LEAD_DECK, styles["lead_deck"]))
     s.append(Spacer(1, 4))
+    # Switch to "body" template for any EXEC_SUMMARY overflow so continuation
+    # pages render two-column (body_left + body_right, both 3-col side-by-side)
+    # rather than spilling into the lead template's full-width lead_top_frame.
+    s.append(NextPageTemplate("body"))
     for p in content.EXEC_SUMMARY:
         s.append(Paragraph(p, styles["body"]))
     return s
