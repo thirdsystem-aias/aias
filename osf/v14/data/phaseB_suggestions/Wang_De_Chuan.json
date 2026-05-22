@@ -1,0 +1,40 @@
+{
+  "brand_canonical": "Wang De Chuan",
+  "category": "premium_tea",
+  "tier_in_registry": "chinese",
+  "pytrends_timestamp": "2026-05-12T15:44:31.827389+00:00",
+  "suggestions": [
+    {
+      "mid": "/g/11v9lc_qkg",
+      "title": "Wang De Chuan",
+      "type": "Topic"
+    },
+    {
+      "mid": "/g/11j43jnmg4",
+      "title": "Wang De Chuan",
+      "type": "Tea store in Chūō, Japan"
+    },
+    {
+      "mid": "/g/12bnlrxrn",
+      "title": "Contemporary Chinese Photography",
+      "type": "Book by Zheng Gu"
+    },
+    {
+      "mid": "/g/11vkb5r01",
+      "title": "Introduction to Tung's Acupuncture",
+      "type": "Book by Ching-chàng Tung, Chuan-Min Wang, and Jingzhang Dong"
+    },
+    {
+      "mid": "/g/11cm1jmg5v",
+      "title": "Wangdechuan",
+      "type": "Topic"
+    }
+  ],
+  "chosen": {
+    "mid": "/g/11j43jnmg4",
+    "title": "Wang De Chuan",
+    "type": "Tea store in Chūō, Japan",
+    "rationale": "type='Tea store in Chūō, Japan' matches category keyword set (audit only; not used as query)"
+  },
+  "note": "DEVIATIONS Entry 1: 'chosen' field is audit only; solo_query uses bare canonical brand name. Pre-reg §2 alternate."
+}

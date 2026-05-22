@@ -1,0 +1,89 @@
+{
+  "_metadata": {
+    "name": "v0.7 caveat classifier — parameterized for v0.10 (Mint)",
+    "purpose": "Reproduce v0.7's classifier configuration verbatim for inheritance under v0.10 pre-reg §5.",
+    "source_script": "/Users/pablou/aias/manual_review_bbb.py",
+    "v07_paper_ssrn_id": "6721779",
+    "parameterization_target": "Mint (Intuit's personal finance application, decommissioned March 2024)",
+    "v07_target_brand": "Bed Bath & Beyond (BBB) / Beyond, Inc.",
+    "deviations_logged_in": "/v10/DEVIATIONS.md (Deviations 1, 2, 3, 4)",
+    "lock_status": "Reproduced post-hoc relative to git tag v0.10-prereg (commit 8767f44). See DEVIATIONS.md."
+  },
+
+  "model": "gpt-5.4-mini",
+  "temperature": 0,
+  "timeout_seconds": 60,
+  "max_retries": 1,
+
+  "phantom_brand_aliases": [
+    "Mint",
+    "Mint.com",
+    "mint.com",
+    "Intuit Mint"
+  ],
+  "successor_product_aliases": [
+    "Credit Karma",
+    "creditkarma.com"
+  ],
+  "_alias_note": "Aliases used as a screening signal upstream (filter_v10.py uses brands_canonical). The classifier itself is the LLM call configured below.",
+
+  "system_prompt": "You are reviewing AI-generated responses about personal finance applications to classify how Mint is mentioned. Mint was Intuit's personal finance application; Intuit announced its decommissioning in November 2023 and shut it down in March 2024, migrating users to Credit Karma. Your job: read the response, find where Mint is mentioned, and classify (a) what the AI says about it (valence) and (b) which entity name is referenced. Quote the exact source sentence.",
+
+  "classification_tool": {
+    "type": "function",
+    "function": {
+      "name": "classify_mint_mention",
+      "description": "Classify how Mint (or its successor Credit Karma) is mentioned in an AI response.",
+      "parameters": {
+        "type": "object",
+        "properties": {
+          "valence": {
+            "type": "string",
+            "enum": [
+              "live_recommendation",
+              "live_with_caveat",
+              "status_correction",
+              "historical_reference",
+              "ambiguous"
+            ],
+            "description": "How the AI presents Mint:\n- live_recommendation: presents Mint as a currently-operating application to use, no caveats about decommissioning.\n- live_with_caveat: recommends Mint but acknowledges its shutdown, sunset, or migration to Credit Karma.\n- status_correction: explicitly notes Mint is decommissioned/shut down/sunset and does NOT recommend it.\n- historical_reference: mentions Mint only in past tense as a former application, not as a current option.\n- ambiguous: cannot determine from context."
+          },
+          "entity_reference": {
+            "type": "string",
+            "enum": ["legacy_brand", "successor_product", "both", "unclear"],
+            "description": "Which entity the mention specifically references:\n- legacy_brand: 'Mint', 'Mint.com', or 'Intuit Mint' — the original application.\n- successor_product: 'Credit Karma' — the migration target.\n- both: explicitly mentions both with awareness they are related (Mint→Credit Karma migration framing).\n- unclear: cannot tell from the quote which is being referenced."
+          },
+          "source_quote": {
+            "type": "string",
+            "description": "The exact sentence(s) from the response that mention Mint. Up to ~50 words. Used for human spot-checking."
+          }
+        },
+        "required": ["valence", "entity_reference", "source_quote"]
+      }
+    }
+  },
+
+  "v0_10_binary_mapping": {
+    "_purpose": "Maps v0.7's 5-class valence to v0.10's 2-class binary per Deviation 3.",
+    "primary_analysis": {
+      "live_recommendation": "naive",
+      "live_with_caveat": "caveated",
+      "status_correction": "caveated",
+      "historical_reference": "caveated",
+      "ambiguous": "naive"
+    },
+    "e3_sensitivity_analysis": {
+      "live_recommendation": "naive",
+      "live_with_caveat": "caveated",
+      "status_correction": "caveated",
+      "historical_reference": "caveated",
+      "ambiguous": "caveated"
+    }
+  },
+
+  "e5_rule": {
+    "_purpose": "Per pre-reg §5 E5: successor-product framing rule for Mint→Credit Karma.",
+    "rule": "If entity_reference is 'successor_product' OR 'both' AND the migration framing appears in the same paragraph as the Mint mention, classify as caveated regardless of valence.",
+    "_implementation_note": "Applied as a post-classifier override in classify_v10.py. Paragraph proximity is detected by splitting on double newlines."
+  }
+}

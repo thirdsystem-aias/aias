@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Drunk Elephant",
+  "category": "skincare",
+  "query": "/g/11g6qkqq0v",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:27:56.075320+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 74
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 76
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 71
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 73
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 65
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 88
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 78.14,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

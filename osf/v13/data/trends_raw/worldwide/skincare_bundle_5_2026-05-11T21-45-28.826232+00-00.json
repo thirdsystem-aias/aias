@@ -1,0 +1,481 @@
+{
+  "search_metadata": {
+    "id": "6a024e12eeabd3f9bbe8adb5",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/nntN8LYeiBDzmQ48pDW8Dw/6a024e12eeabd3f9bbe8adb5.json",
+    "created_at": "2026-05-11 21:45:54 UTC",
+    "processed_at": "2026-05-11 21:45:54 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22CeraVe%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fg%2F11h1y83h6r%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fm%2F03yml9x%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fm%2F02mr_1%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22%2Fm%2F05mxqz%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/nntN8LYeiBDzmQ48pDW8Dw/6a024e12eeabd3f9bbe8adb5.html",
+    "prettify_html_file": "https://serpapi.com/searches/nntN8LYeiBDzmQ48pDW8Dw/6a024e12eeabd3f9bbe8adb5.prettify",
+    "total_time_taken": 5.63
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "CeraVe,/g/11h1y83h6r,/m/03yml9x,/m/02mr_1,/m/05mxqz",
+    "hl": "en",
+    "date": "2026-04-27 2026-05-10",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 27, 2026",
+        "timestamp": "1777248000",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "76",
+            "extracted_value": 76
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "Apr 28, 2026",
+        "timestamp": "1777334400",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "71",
+            "extracted_value": 71
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "Apr 29, 2026",
+        "timestamp": "1777420800",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "72",
+            "extracted_value": 72
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "Apr 30, 2026",
+        "timestamp": "1777507200",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "71",
+            "extracted_value": 71
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "May 1, 2026",
+        "timestamp": "1777593600",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "76",
+            "extracted_value": 76
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 2, 2026",
+        "timestamp": "1777680000",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "86",
+            "extracted_value": 86
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "0",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 3, 2026",
+        "timestamp": "1777766400",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "80",
+            "extracted_value": 80
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "0",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 4, 2026",
+        "timestamp": "1777852800",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "79",
+            "extracted_value": 79
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 5, 2026",
+        "timestamp": "1777939200",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "74",
+            "extracted_value": 74
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 6, 2026",
+        "timestamp": "1778025600",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "100",
+            "extracted_value": 100
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "4",
+            "extracted_value": 4
+          }
+        ]
+      },
+      {
+        "date": "May 7, 2026",
+        "timestamp": "1778112000",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "77",
+            "extracted_value": 77
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "May 8, 2026",
+        "timestamp": "1778198400",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "75",
+            "extracted_value": 75
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "May 9, 2026",
+        "timestamp": "1778284800",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "80",
+            "extracted_value": 80
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      },
+      {
+        "date": "May 10, 2026",
+        "timestamp": "1778371200",
+        "values": [
+          {
+            "query": "CeraVe",
+            "value": "72",
+            "extracted_value": 72
+          },
+          {
+            "query": "/g/11h1y83h6r",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "/m/03yml9x",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "/m/02mr_1",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "/m/05mxqz",
+            "value": "3",
+            "extracted_value": 3
+          }
+        ]
+      }
+    ],
+    "averages": [
+      {
+        "query": "CeraVe",
+        "value": 78
+      },
+      {
+        "query": "/g/11h1y83h6r",
+        "value": 0
+      },
+      {
+        "query": "/m/03yml9x",
+        "value": 7
+      },
+      {
+        "query": "/m/02mr_1",
+        "value": 5
+      },
+      {
+        "query": "/m/05mxqz",
+        "value": 3
+      }
+    ]
+  }
+}

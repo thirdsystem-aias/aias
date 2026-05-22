@@ -1,0 +1,533 @@
+{
+  "results": [
+    {
+      "hypothesis": "H1",
+      "claim": "\u226570% of registry brands within \u00b15pp; \u226590% within \u00b110pp (matched subset, all 5 categories)",
+      "thresholds": {
+        "CONFIRMED": "\u226570% within \u00b15pp AND \u226590% within \u00b110pp",
+        "PARTIAL": "one of the two thresholds met",
+        "DISCONFIRMED": "neither met"
+      },
+      "n_brand_deltas": 103,
+      "within_5pp_count": 91,
+      "within_5pp_pct": 88.3,
+      "within_10pp_count": 102,
+      "within_10pp_pct": 99.0,
+      "band": "CONFIRMED",
+      "top_movers_top15": [
+        {
+          "category": "oliveoil",
+          "brand": "Brightland",
+          "delta_pp": -19.8
+        },
+        {
+          "category": "oliveoil",
+          "brand": "Frantoio Muraglia",
+          "delta_pp": 8.3
+        },
+        {
+          "category": "finance",
+          "brand": "Copilot",
+          "delta_pp": -8.3
+        },
+        {
+          "category": "oliveoil",
+          "brand": "Graza",
+          "delta_pp": -8.3
+        },
+        {
+          "category": "running",
+          "brand": "New Balance",
+          "delta_pp": -7.3
+        },
+        {
+          "category": "running",
+          "brand": "Salomon",
+          "delta_pp": 6.3
+        },
+        {
+          "category": "oliveoil",
+          "brand": "Olio Verde",
+          "delta_pp": 6.2
+        },
+        {
+          "category": "skincare",
+          "brand": "Cetaphil",
+          "delta_pp": 6.2
+        },
+        {
+          "category": "finance",
+          "brand": "Goodbudget",
+          "delta_pp": 6.2
+        },
+        {
+          "category": "pm",
+          "brand": "GitHub Projects",
+          "delta_pp": -5.2
+        },
+        {
+          "category": "finance",
+          "brand": "Lunch Money",
+          "delta_pp": 5.2
+        },
+        {
+          "category": "finance",
+          "brand": "Monarch Money",
+          "delta_pp": -5.2
+        },
+        {
+          "category": "pm",
+          "brand": "Shortcut",
+          "delta_pp": 4.2
+        },
+        {
+          "category": "oliveoil",
+          "brand": "Castillo de Canena",
+          "delta_pp": -4.2
+        },
+        {
+          "category": "oliveoil",
+          "brand": "Kosterina",
+          "delta_pp": 4.2
+        }
+      ]
+    },
+    {
+      "hypothesis": "H2",
+      "claim": "Top-3 brands at t\u2081 remain in top-5 at t\u2082 (per category, matched subset)",
+      "thresholds": {
+        "CONFIRMED": "5/5 categories",
+        "PARTIAL": "3-4/5",
+        "DISCONFIRMED": "\u22642/5"
+      },
+      "categories_confirmed": 5,
+      "per_category": {
+        "pm": {
+          "v06_top3": [
+            {
+              "brand": "Linear",
+              "pct": 86.5
+            },
+            {
+              "brand": "Asana",
+              "pct": 80.2
+            },
+            {
+              "brand": "Notion",
+              "pct": 79.2
+            }
+          ],
+          "v09_top5": [
+            {
+              "brand": "Linear",
+              "pct": 89.6
+            },
+            {
+              "brand": "Asana",
+              "pct": 81.2
+            },
+            {
+              "brand": "Jira",
+              "pct": 79.2
+            },
+            {
+              "brand": "Notion",
+              "pct": 78.1
+            },
+            {
+              "brand": "ClickUp",
+              "pct": 62.5
+            }
+          ],
+          "all_v06_top3_in_v09_top5": true
+        },
+        "running": {
+          "v06_top3": [
+            {
+              "brand": "Asics",
+              "pct": 80.2
+            },
+            {
+              "brand": "Brooks",
+              "pct": 80.2
+            },
+            {
+              "brand": "Saucony",
+              "pct": 78.1
+            }
+          ],
+          "v09_top5": [
+            {
+              "brand": "Asics",
+              "pct": 80.2
+            },
+            {
+              "brand": "Brooks",
+              "pct": 80.2
+            },
+            {
+              "brand": "Saucony",
+              "pct": 79.2
+            },
+            {
+              "brand": "Hoka",
+              "pct": 71.9
+            },
+            {
+              "brand": "New Balance",
+              "pct": 69.8
+            }
+          ],
+          "all_v06_top3_in_v09_top5": true
+        },
+        "oliveoil": {
+          "v06_top3": [
+            {
+              "brand": "California Olive Ranch",
+              "pct": 70.8
+            },
+            {
+              "brand": "Cobram Estate",
+              "pct": 49.0
+            },
+            {
+              "brand": "Brightland",
+              "pct": 45.8
+            }
+          ],
+          "v09_top5": [
+            {
+              "brand": "California Olive Ranch",
+              "pct": 67.7
+            },
+            {
+              "brand": "Cobram Estate",
+              "pct": 45.8
+            },
+            {
+              "brand": "Frantoio Muraglia",
+              "pct": 36.5
+            },
+            {
+              "brand": "Kosterina",
+              "pct": 31.2
+            },
+            {
+              "brand": "Brightland",
+              "pct": 26.0
+            }
+          ],
+          "all_v06_top3_in_v09_top5": true
+        },
+        "skincare": {
+          "v06_top3": [
+            {
+              "brand": "CeraVe",
+              "pct": 66.7
+            },
+            {
+              "brand": "La Roche-Posay",
+              "pct": 63.5
+            },
+            {
+              "brand": "Vanicream",
+              "pct": 44.8
+            }
+          ],
+          "v09_top5": [
+            {
+              "brand": "CeraVe",
+              "pct": 68.8
+            },
+            {
+              "brand": "La Roche-Posay",
+              "pct": 64.6
+            },
+            {
+              "brand": "Vanicream",
+              "pct": 47.9
+            },
+            {
+              "brand": "Neutrogena",
+              "pct": 40.6
+            },
+            {
+              "brand": "Cetaphil",
+              "pct": 37.5
+            }
+          ],
+          "all_v06_top3_in_v09_top5": true
+        },
+        "finance": {
+          "v06_top3": [
+            {
+              "brand": "YNAB",
+              "pct": 100.0
+            },
+            {
+              "brand": "Monarch Money",
+              "pct": 90.6
+            },
+            {
+              "brand": "Copilot",
+              "pct": 69.8
+            }
+          ],
+          "v09_top5": [
+            {
+              "brand": "YNAB",
+              "pct": 100.0
+            },
+            {
+              "brand": "Monarch Money",
+              "pct": 85.4
+            },
+            {
+              "brand": "Copilot",
+              "pct": 61.5
+            },
+            {
+              "brand": "Empower",
+              "pct": 61.5
+            },
+            {
+              "brand": "Mint",
+              "pct": 41.7
+            }
+          ],
+          "all_v06_top3_in_v09_top5": true
+        }
+      },
+      "band": "CONFIRMED"
+    },
+    {
+      "hypothesis": "H3",
+      "claim": "Variance-rank-order across categories at t\u2082 has Spearman \u03c1 \u2265 0.7 with t\u2081",
+      "thresholds": {
+        "CONFIRMED": "\u03c1 \u2265 0.7",
+        "PARTIAL": "0.4 \u2264 \u03c1 < 0.7",
+        "DISCONFIRMED": "\u03c1 < 0.4"
+      },
+      "spearman_rho": 0.8,
+      "v06_within_category_variance": {
+        "pm": 30.05,
+        "running": 32.26,
+        "oliveoil": 18.74,
+        "skincare": 17.81,
+        "finance": 32.08
+      },
+      "v09_within_category_variance": {
+        "pm": 30.61,
+        "running": 31.82,
+        "oliveoil": 17.36,
+        "skincare": 18.47,
+        "finance": 30.05
+      },
+      "v06_variance_rank_low_to_high": [
+        "skincare",
+        "oliveoil",
+        "pm",
+        "finance",
+        "running"
+      ],
+      "v09_variance_rank_low_to_high": [
+        "oliveoil",
+        "skincare",
+        "finance",
+        "pm",
+        "running"
+      ],
+      "band": "CONFIRMED"
+    },
+    {
+      "hypothesis": "H4",
+      "claim": "Mint mention rate at t\u2082 vs t\u2081 in finance",
+      "thresholds": {
+        "DECAY": "\u2264 \u22125pp",
+        "STABILITY (predicted)": "within \u00b15pp",
+        "ANTI-DECAY": "\u2265 +5pp"
+      },
+      "phantom_brand": "Mint",
+      "category": "finance",
+      "t1_presence_pct": 44.8,
+      "t2_presence_pct": 41.7,
+      "delta_pp": -3.1,
+      "band": "STABILITY (predicted)",
+      "note": "Stability is the predicted outcome per pre-reg \u00a72.H4 (corpus aging hypothesis)."
+    },
+    {
+      "hypothesis": "H5",
+      "claim": "Spanish olive oil \u2264 12.5pp AND K-beauty \u2264 5.0pp (matched subset, t\u2082)",
+      "thresholds": {
+        "CONFIRMED": "both met",
+        "PARTIAL": "one met",
+        "DISCONFIRMED": "neither met"
+      },
+      "spanish_olive_oil_aggregate_pp": 14.2,
+      "spanish_olive_oil_threshold_pp": 12.5,
+      "spanish_olive_oil_brands_used": [
+        "Castillo de Canena",
+        "N\u00fa\u00f1ez de Prado",
+        "Graza"
+      ],
+      "spanish_passes": false,
+      "kbeauty_aggregate_pp": 1.0,
+      "kbeauty_threshold_pp": 5.0,
+      "kbeauty_brands_used": [
+        "Beauty of Joseon"
+      ],
+      "kbeauty_passes": true,
+      "band": "PARTIALLY CONFIRMED",
+      "note": "Spanish threshold = 25% \u00d7 50.0% IOC global production share. Brand lists supplied via CLI; move to registry lineage tags in future."
+    },
+    {
+      "hypothesis": "H6",
+      "claim": "Per-brand sonnet-vs-mini spread at t\u2082 correlates with t\u2081 at Pearson r \u2265 0.7 per category",
+      "thresholds": {
+        "CONFIRMED": "\u22654/5 categories",
+        "PARTIAL": "2\u20133/5",
+        "DISCONFIRMED": "0\u20131/5"
+      },
+      "categories_confirmed": 5,
+      "per_category": {
+        "pm": {
+          "pearson_r": 0.954,
+          "r_ge_0_7": true,
+          "n_brands": 19
+        },
+        "running": {
+          "pearson_r": 0.92,
+          "r_ge_0_7": true,
+          "n_brands": 17
+        },
+        "oliveoil": {
+          "pearson_r": 0.91,
+          "r_ge_0_7": true,
+          "n_brands": 20
+        },
+        "skincare": {
+          "pearson_r": 0.927,
+          "r_ge_0_7": true,
+          "n_brands": 31
+        },
+        "finance": {
+          "pearson_r": 0.957,
+          "r_ge_0_7": true,
+          "n_brands": 16
+        }
+      },
+      "band": "CONFIRMED"
+    }
+  ],
+  "exploratory": {
+    "observation": "mode_distribution",
+    "note": "Exploratory per pre-reg \u00a73 \u2014 no thresholds. Provides v0.10 prior for a calibrated mode-stability hypothesis.",
+    "per_category": {
+      "pm": {
+        "authority": {
+          "v06_pct": 81.2,
+          "v09_pct": 77.1,
+          "delta_pp": -4.1
+        },
+        "brand": {
+          "v06_pct": 14.6,
+          "v09_pct": 21.9,
+          "delta_pp": 7.3
+        },
+        "mixed": {
+          "v06_pct": 4.2,
+          "v09_pct": 1.0,
+          "delta_pp": -3.2
+        }
+      },
+      "running": {
+        "authority": {
+          "v06_pct": 4.2,
+          "v09_pct": 1.0,
+          "delta_pp": -3.2
+        },
+        "brand": {
+          "v06_pct": 63.5,
+          "v09_pct": 66.7,
+          "delta_pp": 3.2
+        },
+        "component": {
+          "v06_pct": 9.4,
+          "v09_pct": 11.5,
+          "delta_pp": 2.1
+        },
+        "mixed": {
+          "v06_pct": 22.9,
+          "v09_pct": 20.8,
+          "delta_pp": -2.1
+        }
+      },
+      "oliveoil": {
+        "authority": {
+          "v06_pct": 12.5,
+          "v09_pct": 10.4,
+          "delta_pp": -2.1
+        },
+        "brand": {
+          "v06_pct": 35.4,
+          "v09_pct": 27.1,
+          "delta_pp": -8.3
+        },
+        "component": {
+          "v06_pct": 20.8,
+          "v09_pct": 26.0,
+          "delta_pp": 5.2
+        },
+        "mixed": {
+          "v06_pct": 31.2,
+          "v09_pct": 36.5,
+          "delta_pp": 5.3
+        }
+      },
+      "skincare": {
+        "authority": {
+          "v06_pct": 7.3,
+          "v09_pct": 7.3,
+          "delta_pp": 0.0
+        },
+        "brand": {
+          "v06_pct": 47.9,
+          "v09_pct": 50.0,
+          "delta_pp": 2.1
+        },
+        "component": {
+          "v06_pct": 30.2,
+          "v09_pct": 24.0,
+          "delta_pp": -6.2
+        },
+        "mixed": {
+          "v06_pct": 14.6,
+          "v09_pct": 18.8,
+          "delta_pp": 4.2
+        }
+      },
+      "finance": {
+        "authority": {
+          "v06_pct": 79.2,
+          "v09_pct": 82.3,
+          "delta_pp": 3.1
+        },
+        "brand": {
+          "v06_pct": 16.7,
+          "v09_pct": 15.6,
+          "delta_pp": -1.1
+        },
+        "mixed": {
+          "v06_pct": 2.1,
+          "v09_pct": 2.1,
+          "delta_pp": 0.0
+        },
+        "refusal": {
+          "v06_pct": 2.1,
+          "v09_pct": 0.0,
+          "delta_pp": -2.1
+        }
+      }
+    }
+  }
+}

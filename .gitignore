@@ -2,3 +2,32 @@ venv/
 reports/output/
 __pycache__/
 .DS_Store
+
+# OSF deposit staging (files are duplicates of source folders)
+osf_staging/
+
+# OSF CLI config (contains username + project ID)
+.osfcli.config
+.env
+sandbox/
+.env
+_v18_base.pdf
+osf/v*/reports/_v*_base.pdf
+
+# --- Added 2026-05-22 ---
+# Backup files
+*.bak
+*.bak[0-9]
+*.bak_*
+*~
+*.pdf~
+
+# Build intermediates
+*.build.md
+_*_base.pdf
+
+# Editor scratchpads
+Untitled*.rtf
+
+# Personal task notes
+tomorrow.md

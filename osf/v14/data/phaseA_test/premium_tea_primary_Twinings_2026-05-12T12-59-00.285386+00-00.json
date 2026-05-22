@@ -1,0 +1,21 @@
+{
+  "pre_reg": "v0.14-prereg",
+  "pre_reg_section": "§3",
+  "category": "premium_tea",
+  "pivot_role": "primary",
+  "pivot_canonical": "Twinings",
+  "query": "Twinings",
+  "geo": "",
+  "region_label": "worldwide",
+  "window": "2026-04-13 2026-04-19",
+  "test_timestamp_utc": "2026-05-12T12:59:00.285386+00:00",
+  "n_attempts": 3,
+  "http_status": 401,
+  "criteria": {
+    "mean_floor": 25.0,
+    "cv_ceiling_pct": 25.0
+  },
+  "phase_a_status": "FAIL_API",
+  "error": "401 Client Error: Unauthorized for url: https://serpapi.com/search?engine=google_trends&q=Twinings&data_type=TIMESERIES&date=2026-04-13+2026-04-19&geo=&no_cache=true&api_key=your_serpapi_key_here",
+  "daily_values": []
+}

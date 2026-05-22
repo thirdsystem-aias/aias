@@ -1,0 +1,31 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/pm/results_v2_pm_20260507_015558.csv
+Category: pm
+Filter:   provider=google
+Total rows in source: 288
+Cells to retry:       8
+Started:  2026-05-07T06:38:24
+==============================================================================
+  [  1/8] p6_comparison      | google_flash         | run 1 -> OK (1 attempt, 324.1s)
+  [  2/8] p6_comparison      | google_flash         | run 2 -> OK (1 attempt, 325.0s)
+  [  3/8] p6_comparison      | google_flash         | run 3 -> OK (1 attempt, 323.5s)
+  [  4/8] p6_comparison      | google_flash         | run 4 -> OK (1 attempt, 320.4s)
+  [  5/8] p6_comparison      | google_flash         | run 5 -> OK (1 attempt, 326.0s)
+  [  6/8] p6_comparison      | google_flash         | run 6 -> OK (1 attempt, 322.8s)
+  [  7/8] p6_comparison      | google_flash         | run 7 -> OK (1 attempt, 323.2s)
+  [  8/8] p6_comparison      | google_flash         | run 8 -> OK (1 attempt, 322.4s)
+
+==============================================================================
+Recovery complete. Saved 8 rows to data/pm/results_v2_pm_20260507_015558_rerun_google_20260507_072148.csv
+  ok:                 8
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/pm/results_v2_pm_20260507_015558.csv
+  Recovery: data/pm/results_v2_pm_20260507_015558_rerun_google_20260507_072148.csv
+  See merge step in your post-collection pipeline.
+==============================================================================

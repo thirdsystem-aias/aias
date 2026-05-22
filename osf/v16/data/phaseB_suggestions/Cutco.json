@@ -1,0 +1,38 @@
+{
+  "brand": "Cutco",
+  "category": "kitchen_knives",
+  "suggestions": [
+    {
+      "mid": "/g/11c4bh75t9",
+      "title": "Cutco",
+      "type": "Topic"
+    },
+    {
+      "mid": "/m/051y_6",
+      "title": "Cutco",
+      "type": "Company"
+    },
+    {
+      "mid": "/g/11bwfvlmww",
+      "title": "Shawn Inmon",
+      "type": "Author"
+    },
+    {
+      "mid": "/g/11mwqb5zj",
+      "title": "Jon Berghoff",
+      "type": "Author"
+    },
+    {
+      "mid": "/g/11bc6174kb",
+      "title": "Cutco Kitchen",
+      "type": "Topic"
+    }
+  ],
+  "chosen": {
+    "mid": "/m/051y_6",
+    "title": "Cutco",
+    "type": "Company",
+    "rationale": "type='Company' matches category keyword set (audit only; not used as query)"
+  },
+  "test_timestamp": "2026-05-17T00:23:25.855570+00:00"
+}

@@ -1,0 +1,184 @@
+{
+  "phase": "v0.17",
+  "substrate": "premium_kitchenware",
+  "lock_target": "v0.17-prereg",
+  "protocol_versions": {
+    "methodology_canonical": "v1.2",
+    "phase_a_pivot_validation": "v1.3"
+  },
+  "panel_n_worldwide_pre_floor": 16,
+  "stage_4_keywords": {
+    "substrate": "cookware",
+    "adjacent": "kitchen design"
+  },
+  "c1_floor_worldwide": 12,
+  "cells": {
+    "european": {
+      "n_brands": 6,
+      "cascade_depth": 5,
+      "brands": [
+        {
+          "name": "Le Creuset",
+          "pivot_ordinal": 1,
+          "phase_a_role": "primary_pivot",
+          "hq_country": "France",
+          "substrate_sub_tradition": "enamelled_cast_iron",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Staub",
+          "pivot_ordinal": 2,
+          "phase_a_role": "alternate_1",
+          "hq_country": "France",
+          "substrate_sub_tradition": "enamelled_cast_iron",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Mauviel",
+          "pivot_ordinal": 3,
+          "phase_a_role": "alternate_2",
+          "hq_country": "France",
+          "substrate_sub_tradition": "copper",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "moderate"
+        },
+        {
+          "name": "Demeyere",
+          "pivot_ordinal": 4,
+          "phase_a_role": "alternate_3",
+          "hq_country": "Belgium",
+          "substrate_sub_tradition": "multi_ply_stainless",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "moderate"
+        },
+        {
+          "name": "Fissler",
+          "pivot_ordinal": 5,
+          "phase_a_role": "alternate_4",
+          "hq_country": "Germany",
+          "substrate_sub_tradition": "multi_ply_stainless",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "moderate"
+        },
+        {
+          "name": "de Buyer",
+          "pivot_ordinal": 6,
+          "phase_a_role": "alternate_5",
+          "hq_country": "France",
+          "substrate_sub_tradition": "carbon_steel",
+          "worldwide_drop_risk": "moderate",
+          "us_drop_risk": "high"
+        }
+      ]
+    },
+    "american": {
+      "n_brands": 6,
+      "cascade_depth": 5,
+      "brands": [
+        {
+          "name": "All-Clad",
+          "pivot_ordinal": 1,
+          "phase_a_role": "primary_pivot",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "multi_ply_stainless",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Lodge",
+          "pivot_ordinal": 2,
+          "phase_a_role": "alternate_1",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "cast_iron",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Made In",
+          "pivot_ordinal": 3,
+          "phase_a_role": "alternate_2",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "dtc_multi_ply",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Field Company",
+          "pivot_ordinal": 4,
+          "phase_a_role": "alternate_3",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "cast_iron_refined",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Smithey",
+          "pivot_ordinal": 5,
+          "phase_a_role": "alternate_4",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "cast_iron_heritage",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        },
+        {
+          "name": "Hestan",
+          "pivot_ordinal": 6,
+          "phase_a_role": "alternate_5",
+          "hq_country": "USA",
+          "substrate_sub_tradition": "multi_ply_premium",
+          "worldwide_drop_risk": "low",
+          "us_drop_risk": "low"
+        }
+      ]
+    },
+    "japanese": {
+      "n_brands": 4,
+      "cascade_depth": 3,
+      "brands": [
+        {
+          "name": "Vermicular",
+          "pivot_ordinal": 1,
+          "phase_a_role": "primary_pivot",
+          "hq_country": "Japan",
+          "substrate_sub_tradition": "enamelled_cast_iron",
+          "worldwide_drop_risk": "moderate",
+          "us_drop_risk": "high"
+        },
+        {
+          "name": "Iwachu",
+          "pivot_ordinal": 2,
+          "phase_a_role": "alternate_1",
+          "hq_country": "Japan",
+          "substrate_sub_tradition": "nambu_tekki_cast_iron",
+          "worldwide_drop_risk": "moderate",
+          "us_drop_risk": "high"
+        },
+        {
+          "name": "Sori Yanagi",
+          "pivot_ordinal": 3,
+          "phase_a_role": "alternate_2",
+          "hq_country": "Japan",
+          "substrate_sub_tradition": "designer_stainless",
+          "worldwide_drop_risk": "moderate",
+          "us_drop_risk": "high"
+        },
+        {
+          "name": "Noda Horo",
+          "pivot_ordinal": 4,
+          "phase_a_role": "alternate_3",
+          "hq_country": "Japan",
+          "substrate_sub_tradition": "enamelware_borderline",
+          "worldwide_drop_risk": "high",
+          "us_drop_risk": "high",
+          "borderline_classification": true,
+          "borderline_resolution_at": "phase_b_topic_id"
+        }
+      ]
+    }
+  },
+  "excluded_cells": {
+    "chinese": "too_thin_at_premium_tier_panel_construction_excluded"
+  }
+}

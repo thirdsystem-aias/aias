@@ -26,7 +26,7 @@ GOOGLE_KEY = os.getenv("GOOGLE_API_KEY")
 XAI_KEY = os.getenv("XAI_API_KEY")
 
 # ----- METHODOLOGY METADATA -----
-METHODOLOGY_VERSION = "0.3"
+METHODOLOGY_VERSION = "0.4"
 RUNS_PER_PROMPT = 8
 TEMPERATURE = 0.7
 # PROMPT_SET_VERSION and BRAND_REGISTRY_VERSION are derived per-category at runtime
@@ -150,6 +150,9 @@ def main():
     parser.add_argument("--category", required=True,
                         help="Category short name. Reads registries/brands_<cat>.json and prompts/prompts_<cat>.json. "
                              "Output goes to data/<cat>/.")
+    parser.add_argument("--missing-cells-file", default=None,
+                        help="Optional CSV with columns prompt_id,model_slot,run_idx — "
+                             "if provided, only fire these specific cells (surgical resume).")
     parser.add_argument("--output-dir", default=None,
                         help="Override output directory (default: data/<category>/)")
     args = parser.parse_args()
@@ -178,9 +181,37 @@ def main():
         if not key:
             print(f"ERROR: missing {name}"); sys.exit(1)
 
-    rows = []
+    # MISSING_CELLS_FILTER_ENABLED — optional surgical resumption filter
+    cells_filter = None
+    if args.missing_cells_file:
+        import csv as _csv_filter
+        cells_filter = set()
+        with open(args.missing_cells_file) as _f:
+            for _r in _csv_filter.DictReader(_f):
+                cells_filter.add((_r["prompt_id"], _r["model_slot"], int(_r["run_idx"])))
+        print(f"Missing-cells filter loaded: {len(cells_filter)} cells to fire "
+              f"(from {args.missing_cells_file})")
+
+    # INCREMENTAL_WRITE_ENABLED — CSV is opened here and written row-by-row
+    # inside the inner loop, so a mid-run crash preserves all rows up to the
+    # crash point. The end-of-run "save rows" block is replaced with a close.
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    out_path = output_dir / f"results_v2_{category}_{timestamp}.csv"
+    CSV_FIELDS = [
+        "timestamp", "category", "methodology_version", "prompt_set_version",
+        "brand_registry_version", "prompt_id", "cep", "model_slot", "provider",
+        "model_version", "temperature", "run_idx", "call_status", "attempts",
+        "elapsed_sec", "raw_response",
+    ]
+    csv_file = open(out_path, "w", newline="", encoding="utf-8")
+    csv_writer = csv.DictWriter(csv_file, fieldnames=CSV_FIELDS)
+    csv_writer.writeheader()
+    csv_file.flush()
+    print(f"CSV (incremental): {out_path}")
+    rows_written = 0
     call_idx = 0
-    total = len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT
+    total = (len(cells_filter) if cells_filter is not None
+             else len(PROMPTS) * len(MODELS) * RUNS_PER_PROMPT)
     status_counts = {"ok": 0, "rate_limit_final": 0, "transient_final": 0, "hard_error": 0}
 
     for prompt in PROMPTS:
@@ -189,6 +220,11 @@ def main():
             model_string = info["model"]
             use_temp = info.get("supports_temperature", True)
             for run_idx in range(RUNS_PER_PROMPT):
+                # MISSING_CELLS_FILTER_ENABLED — skip cells not in filter
+                if cells_filter is not None:
+                    cell_key = (prompt["id"], slot, run_idx + 1)
+                    if cell_key not in cells_filter:
+                        continue
                 call_idx += 1
                 t0 = time.time()
                 print(f"  [{call_idx:3d}/{total}] {prompt['id']:18s} | {slot:18s} | run {run_idx+1}", end=" ", flush=True)
@@ -205,7 +241,7 @@ def main():
                     note = f"FAILED [{status}] after {attempts} attempts ({elapsed:.1f}s)"
                 print(f"-> {note}")
 
-                rows.append({
+                row = {
                     "timestamp": datetime.now().isoformat(timespec='seconds'),
                     "category": category,
                     "methodology_version": METHODOLOGY_VERSION,
@@ -222,18 +258,16 @@ def main():
                     "attempts": attempts,
                     "elapsed_sec": round(elapsed, 2),
                     "raw_response": raw.replace("\n", " ").replace("\t", " ") if raw else "",
-                })
+                }
+                csv_writer.writerow(row)
+                csv_file.flush()
+                rows_written += 1
 
-    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    out_path = output_dir / f"results_v2_{category}_{timestamp}.csv"
-    with open(out_path, "w", newline="", encoding="utf-8") as f:
-        writer = csv.DictWriter(f, fieldnames=list(rows[0].keys()))
-        writer.writeheader()
-        writer.writerows(rows)
+    csv_file.close()
 
     print()
     print("=" * 78)
-    print(f"Run complete. Saved {len(rows)} rows to {out_path}")
+    print(f"Run complete. Saved {rows_written} rows to {out_path}")
     print(f"  ok:                 {status_counts.get('ok', 0)}")
     print(f"  rate_limit_final:   {status_counts.get('rate_limit_final', 0)}")
     print(f"  transient_final:    {status_counts.get('transient_final', 0)}")

@@ -1,0 +1,118 @@
+{
+  "fetched_at": "2026-05-11T02:54:23.488900+00:00",
+  "pivot_mid": "/g/11cn92g97s",
+  "validation_window": "2026-04-01 2026-04-07",
+  "purpose": "Phase B bundled-validation diagnostic per PRE_REGISTRATION.md §3.4a and §5.4 E1a amendment",
+  "results": [
+    {
+      "bundle_id": "bundle1",
+      "brand": "California Olive Ranch (pivot)",
+      "query": "/g/11cn92g97s",
+      "mean": 86.9,
+      "nonzero_days": 7,
+      "total_days": 7,
+      "min": 72,
+      "max": 100,
+      "disposition": "PASS"
+    },
+    {
+      "bundle_id": "bundle1",
+      "brand": "Colonna",
+      "query": "Marina Colonna olive oil",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle1",
+      "brand": "Frantoio Muraglia",
+      "query": "/g/11s888kbqf",
+      "mean": 8.3,
+      "nonzero_days": 1,
+      "total_days": 7,
+      "min": 0,
+      "max": 58,
+      "disposition": "sparse (1/7) → PASS_E5"
+    },
+    {
+      "bundle_id": "bundle1",
+      "brand": "Frescobaldi Laudemio",
+      "query": "/g/11zb38xh15",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle1",
+      "brand": "Lucini",
+      "query": "Lucini olive oil",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle2",
+      "brand": "California Olive Ranch (pivot)",
+      "query": "/g/11cn92g97s",
+      "mean": 86.9,
+      "nonzero_days": 7,
+      "total_days": 7,
+      "min": 72,
+      "max": 100,
+      "disposition": "PASS"
+    },
+    {
+      "bundle_id": "bundle2",
+      "brand": "Manni",
+      "query": "Manni olive oil",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle2",
+      "brand": "McEvoy Ranch",
+      "query": "/g/11rcbll42v",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle2",
+      "brand": "Núñez de Prado",
+      "query": "/g/11g6qkzkv3",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    },
+    {
+      "bundle_id": "bundle2",
+      "brand": "Olio Verde",
+      "query": "Olio Verde Becchina",
+      "mean": 0.0,
+      "nonzero_days": 0,
+      "total_days": 7,
+      "min": 0,
+      "max": 0,
+      "disposition": "ALL_ZERO → E1a"
+    }
+  ]
+}

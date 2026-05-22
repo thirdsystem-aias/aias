@@ -1,0 +1,39 @@
+{
+  "brand_canonical": "Copilot",
+  "category": "finance",
+  "tier_in_registry": "challenger",
+  "pytrends_timestamp": "2026-05-11T21:26:45.123107+00:00",
+  "suggestions": [
+    {
+      "mid": "/g/11tsqm45vd",
+      "title": "Microsoft Copilot",
+      "type": "Topic"
+    },
+    {
+      "mid": "/m/07lph4",
+      "title": "First officer",
+      "type": "Aviation"
+    },
+    {
+      "mid": "/m/03hfy19",
+      "title": "Co-driver",
+      "type": "Topic"
+    },
+    {
+      "mid": "/g/11q83qbj3d",
+      "title": "GitHub Copilot",
+      "type": "Software"
+    },
+    {
+      "mid": "/g/11y3__0gml",
+      "title": "AI-Assisted Programming",
+      "type": "Book by Tom Taulli"
+    }
+  ],
+  "chosen": {
+    "mid": "/g/11q83qbj3d",
+    "title": "GitHub Copilot",
+    "type": "Software",
+    "rationale": "type='Software' matches category keyword set"
+  }
+}

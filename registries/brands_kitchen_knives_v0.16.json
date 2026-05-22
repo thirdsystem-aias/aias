@@ -1,0 +1,529 @@
+{
+  "schema_version": "v1.2",
+  "phase": "v0.16",
+  "category": "kitchen_knives",
+  "category_display": "Kitchen Knives",
+  "category_scope": "Chef's knife and adjacent kitchen cutlery. Excludes hunting, folding/pocket, and tactical knife use cases at topic-ID resolution per v1.2 §4.",
+  "registry_lock_target_date": "TBD",
+  "carry_forward_base": {
+    "phase": "v0.15",
+    "ssrn_id": "6768059",
+    "git_tag": "v0.15-published",
+    "commit": "TBD"
+  },
+  "methodology_base": {
+    "protocol_version": "v1.2",
+    "ssrn_id": "6761698"
+  },
+  "lineage_extension": {
+    "phase": "v0.8",
+    "ssrn_id": "6728000",
+    "note": "Discourse-Language Knives — v0.16 carries forward the substrate under v1.2 construct-validity panel"
+  },
+  "brand_age_convention": {
+    "rule": "brand-mark public introduction date",
+    "rule_definition": "Brand age is measured from the date the brand mark was publicly introduced to the kitchen-knives market, NOT from parent-enterprise founding or traditional-craft lineage. Convention chosen for consistency across panel; resolves the parent-company / acquired-brand / craft-tradition confound that occurs in knives but did not occur in v0.14/v0.15 tea (where company = brand mark coincidence held).",
+    "applied_cases": {
+      "shun": "Kai Group parent founded 1908; Shun brand mark publicly introduced c. 2002 (Kai USA Ltd.). Coded 2002.",
+      "miyabi": "Zwilling J.A. Henckels parent founded 1731; Miyabi brand mark introduced 2004. Coded 2004.",
+      "yoshihiro": "Sakai blacksmith tradition spans multiple generations; Yoshihiro Cutlery modern brand-bearing enterprise registered 1996. Coded 1996.",
+      "made_in": "Made In brand mark introduced 2017 (cookware); cutlery line launched 2019 as product extension. Brand-mark date used. Coded 2017.",
+      "shibazi": "'十八子' craft tradition older; Yangjiang Shibazi modern brand-bearing enterprise founded 1983. Coded 1983."
+    },
+    "rule_override": "If Pablo's v0.14/v0.15 convention differs, this file should be re-emitted with the corrected rule. The MSI WP cross-citation discussion should note any cross-phase convention divergence explicitly."
+  },
+  "tradition_cells": [
+    "japanese",
+    "german",
+    "french",
+    "american_specialty",
+    "chinese"
+  ],
+  "tiers": [
+    "premium",
+    "professional",
+    "accessible",
+    "value"
+  ],
+  "tier_definitions": {
+    "premium": "Hand-forged or artisan-scale production; typical chef knife > USD 250; restaurant high-end and connoisseur market",
+    "professional": "Industrial-scale production with restaurant-grade reputation; typical chef knife USD 100–250; mainstream professional adoption",
+    "accessible": "Industrial-scale production targeted at serious home cooks; typical chef knife USD 40–100",
+    "value": "Mass-market or regional-market production; typical chef knife < USD 40"
+  },
+  "pivot": {
+    "primary": {
+      "brand_id": "victorinox",
+      "display_name": "Victorinox",
+      "country_of_origin": "Switzerland",
+      "founded": 1884,
+      "founded_source": "Victorinox corporate history",
+      "rationale": "Chef-knife sub-category (Swiss Classic / Fibrox line) is the restaurant-industry workhorse with high global volume, broad search-interest base, and low brand-age signal interference. Swiss-Army-knife adjacency is a topic-ID concern (resolved at v1.2 §4 5-stage) rather than a search-interest stability concern."
+    },
+    "fallback": {
+      "brand_id": "wusthof_pivot",
+      "display_name": "Wüsthof",
+      "country_of_origin": "Germany",
+      "founded": 1814,
+      "rationale": "Cleaner in-category in-tradition anchor; substituted if Victorinox topic-ID resolution exceeds v1.2 §4 confusion threshold at lock. Substitution removes Wüsthof from the German tradition cell (cell collapses to n = 4, no within-cell alternate substitution, since pivot role precludes scoring)."
+    }
+  },
+  "panel": [
+    {
+      "brand_id": "shun",
+      "display_name": "Shun",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 2002,
+      "founded_source": "Shun brand mark introduction (Kai USA Ltd., subsidiary of Kai Group; parent Kai Industries 1908)",
+      "founded_flag": "Brand-mark convention applied: 2002 brand introduction used in place of Kai Group 1908 parent founding. See top-level brand_age_convention.",
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "global",
+      "display_name": "Global",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 1985,
+      "founded_source": "Yoshikin corporate history",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "May surface confusion with the generic word 'global'; v1.2 §4 5-stage resolution required",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "miyabi",
+      "display_name": "Miyabi",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 2004,
+      "founded_source": "Zwilling J.A. Henckels brand introduction date",
+      "founded_flag": "Subsidiary of Zwilling J.A. Henckels; manufactured in Seki, Japan, marketed independently. Founded date reflects brand introduction, not parent-company founding.",
+      "tier": "premium",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "mac",
+      "display_name": "Mac",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 1964,
+      "founded_source": "Mac Knife corporate history",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Two-letter brand name; v1.2 §4 5-stage resolution required to disambiguate from common acronyms",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "tojiro",
+      "display_name": "Tojiro",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 1953,
+      "founded_source": "Tojiro corporate history (Niigata)",
+      "founded_flag": null,
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "yoshihiro",
+      "display_name": "Yoshihiro",
+      "tradition_cell": "japanese",
+      "country_of_origin": "Japan",
+      "founded": 1996,
+      "founded_source": "Yoshihiro Cutlery corporate registration (modern enterprise; Sakai tradition centuries older)",
+      "founded_flag": "Brand-mark convention applied: 1996 modern enterprise registration used in place of Sakai blacksmith tradition lineage (centuries). See top-level brand_age_convention.",
+      "tier": "premium",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "wusthof",
+      "display_name": "Wüsthof",
+      "tradition_cell": "german",
+      "country_of_origin": "Germany",
+      "founded": 1814,
+      "founded_source": "Wüsthof corporate history",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Becomes pivot if Victorinox primary-pivot fails v1.2 §4 at lock. In pivot role, exits German cell (collapses to n = 4 with no alternate substitution).",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "zwilling",
+      "display_name": "Zwilling J.A. Henckels",
+      "tradition_cell": "german",
+      "country_of_origin": "Germany",
+      "founded": 1731,
+      "founded_source": "Zwilling J.A. Henckels corporate history (Solingen)",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Marketed in some markets as 'Zwilling' only and in others as 'Henckels' only; v1.2 §4 5-stage resolution must aggregate mention variants",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "messermeister",
+      "display_name": "Messermeister",
+      "tradition_cell": "german",
+      "country_of_origin": "Germany / United States",
+      "founded": 1981,
+      "founded_source": "Messermeister corporate history",
+      "founded_flag": "German-tradition lineage; US headquarters; cell assignment by manufacturing-tradition and stylistic lineage per v1.2 §4 cell-assignment rules",
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "gude",
+      "display_name": "Güde",
+      "tradition_cell": "german",
+      "country_of_origin": "Germany",
+      "founded": 1910,
+      "founded_source": "Franz Güde corporate history (Solingen)",
+      "founded_flag": null,
+      "tier": "premium",
+      "role": "panel",
+      "topic_id_notes": "Umlaut handling — v1.2 §4 5-stage resolution must aggregate 'Güde' and 'Gude' variants",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "friedr_dick",
+      "display_name": "Friedr. Dick",
+      "tradition_cell": "german",
+      "country_of_origin": "Germany",
+      "founded": 1778,
+      "founded_source": "Friedr. Dick corporate history (Esslingen)",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Mention variants: 'Friedr. Dick', 'F. Dick', 'Dick'. The bare 'Dick' variant is high-noise; v1.2 §4 5-stage resolution must require kitchen-knife context for inclusion.",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "sabatier",
+      "display_name": "Sabatier",
+      "tradition_cell": "french",
+      "country_of_origin": "France",
+      "founded": 1834,
+      "founded_source": "Thiers cutlery tradition (multiple producers; date approximate to Sabatier mark emergence)",
+      "founded_flag": "VERIFY — generic French mark used by multiple Thiers producers (Sabatier Aîné, K Sabatier, Lion Sabatier, etc.). Pre-registered topic-ID resolution per v1.2 §4 5-stage: aggregate all 'Sabatier' mentions where kitchen-knife context is decidable; exclude if maker-attribution is required for the mention to be substantive.",
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Highest topic-ID risk in panel; flagged for substitution if §4 confusion threshold exceeded at lock",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "opinel",
+      "display_name": "Opinel",
+      "tradition_cell": "french",
+      "country_of_origin": "France",
+      "founded": 1890,
+      "founded_source": "Opinel corporate history (Savoie)",
+      "founded_flag": null,
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": "Primarily folding/utility tradition; kitchen-knife line is the No. 102, No. 112, Parallèle, and Intempora series. v1.2 §4 5-stage resolution must filter to kitchen-cutlery context; folding-knife and pocket-knife mentions excluded.",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "laguiole",
+      "display_name": "Laguiole",
+      "tradition_cell": "french",
+      "country_of_origin": "France",
+      "founded": 1829,
+      "founded_source": "Laguiole regional tradition (date approximate to original Calmels design)",
+      "founded_flag": "VERIFY — Laguiole is a generic regional mark, not a single producer. Multiple makers (Forge de Laguiole, Laguiole en Aubrac, Claude Dozorme, etc.) produce under the name. Topic-ID resolution per v1.2 §4 5-stage required.",
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "High topic-ID risk; primarily folding-tradition; kitchen-knife lines exist but are secondary. Flagged for substitution if §4 confusion threshold exceeded.",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "nogent",
+      "display_name": "Nogent (Goyon-Chazeau)",
+      "tradition_cell": "french",
+      "country_of_origin": "France",
+      "founded": 1834,
+      "founded_source": "Goyon-Chazeau corporate history (Thiers)",
+      "founded_flag": null,
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "May surface confusion with 'Nogent-sur-Marne' or 'Nogent-le-Rotrou' geographic mentions; v1.2 §4 5-stage resolution required",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "cutco",
+      "display_name": "Cutco",
+      "tradition_cell": "american_specialty",
+      "country_of_origin": "United States",
+      "founded": 1949,
+      "founded_source": "Cutco Corporation corporate history (Olean, NY)",
+      "founded_flag": null,
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "dalstrong",
+      "display_name": "Dalstrong",
+      "tradition_cell": "american_specialty",
+      "country_of_origin": "Canada / global distribution",
+      "founded": 2012,
+      "founded_source": "Dalstrong corporate history",
+      "founded_flag": null,
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "misen",
+      "display_name": "Misen",
+      "tradition_cell": "american_specialty",
+      "country_of_origin": "United States",
+      "founded": 2015,
+      "founded_source": "Misen Kickstarter launch + corporate history",
+      "founded_flag": null,
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "new_west",
+      "display_name": "New West KnifeWorks",
+      "tradition_cell": "american_specialty",
+      "country_of_origin": "United States",
+      "founded": 1997,
+      "founded_source": "New West KnifeWorks corporate history (Jackson, WY)",
+      "founded_flag": null,
+      "tier": "premium",
+      "role": "panel",
+      "topic_id_notes": null,
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "made_in",
+      "display_name": "Made In",
+      "tradition_cell": "american_specialty",
+      "country_of_origin": "United States",
+      "founded": 2017,
+      "founded_source": "Made In Cookware corporate history (Austin, TX); knives line launched 2019",
+      "founded_flag": "Brand-mark convention applied: 2017 brand-mark introduction (cookware) used; cutlery line launched 2019 as product extension does not reset brand age. See top-level brand_age_convention.",
+      "tier": "professional",
+      "role": "panel",
+      "topic_id_notes": "Common phrase 'made in' is high-noise; v1.2 §4 5-stage resolution must require explicit brand-mark attribution",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "cck",
+      "display_name": "CCK Chan Chi Kee",
+      "tradition_cell": "chinese",
+      "country_of_origin": "Hong Kong",
+      "founded": 1947,
+      "founded_source": "Chan Chi Kee Cutlery corporate history",
+      "founded_flag": null,
+      "tier": "value",
+      "role": "panel",
+      "topic_id_notes": "Mention variants: 'CCK', 'Chan Chi Kee', '陳枝記'. v1.2 §4 5-stage must aggregate; 'CCK' bare is high-noise (excluded unless kitchen-knife context decidable).",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "shibazi",
+      "display_name": "Shibazi (Shi Ba Zi Zuo)",
+      "tradition_cell": "chinese",
+      "country_of_origin": "China",
+      "founded": 1983,
+      "founded_source": "Yangjiang Shibazi corporate history (modern enterprise; traditional craft lineage older)",
+      "founded_flag": "Brand-mark convention applied: 1983 modern enterprise used in place of older traditional craft lineage. See top-level brand_age_convention.",
+      "tier": "value",
+      "role": "panel",
+      "topic_id_notes": "Mention variants: 'Shibazi', 'Shi Ba Zi Zuo', '十八子作'. v1.2 §4 5-stage must aggregate.",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "sunlong",
+      "display_name": "Sunlong",
+      "tradition_cell": "chinese",
+      "country_of_origin": "China",
+      "founded": 1985,
+      "founded_source": "VERIFY — limited English-language corporate documentation",
+      "founded_flag": "VERIFY — founding date estimated from available sources; final lock requires Pablo confirmation against brand_age_sources file",
+      "tier": "value",
+      "role": "panel",
+      "topic_id_notes": "Generic English-language word collision risk; v1.2 §4 5-stage resolution must require kitchen-knife context",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "zhen",
+      "display_name": "ZHEN",
+      "tradition_cell": "chinese",
+      "country_of_origin": "Taiwan",
+      "founded": 2005,
+      "founded_source": "ZHEN Premium corporate history (Taiwan-tradition; US distribution)",
+      "founded_flag": "VERIFY — founding date approximate",
+      "tier": "accessible",
+      "role": "panel",
+      "topic_id_notes": "Three-letter brand name in all-caps; v1.2 §4 5-stage resolution required to disambiguate from acronyms and the Mandarin word 'zhen' (真)",
+      "alternate_priority": null
+    },
+    {
+      "brand_id": "au_nain",
+      "display_name": "Au Nain",
+      "tradition_cell": "french",
+      "founded": 1812,
+      "tier": "professional",
+      "role": "alternate"
+    },
+    {
+      "brand_id": "hengtai",
+      "display_name": "Hengtai",
+      "tradition_cell": "chinese",
+      "founded": null,
+      "tier": "value",
+      "role": "alternate",
+      "alternate_notes": "VERIFY founding date if activated"
+    }
+  ],
+  "alternates": [
+    {
+      "brand_id": "masamoto",
+      "display_name": "Masamoto",
+      "tradition_cell": "japanese",
+      "founded": 1845,
+      "tier": "premium",
+      "role": "alternate",
+      "alternate_priority": 1
+    },
+    {
+      "brand_id": "misono",
+      "display_name": "Misono",
+      "tradition_cell": "japanese",
+      "founded": 1935,
+      "tier": "professional",
+      "role": "alternate",
+      "alternate_priority": 2
+    },
+    {
+      "brand_id": "tadafusa",
+      "display_name": "Tadafusa",
+      "tradition_cell": "japanese",
+      "founded": 1948,
+      "tier": "premium",
+      "role": "alternate",
+      "alternate_priority": 3
+    },
+    {
+      "brand_id": "robert_herder",
+      "display_name": "Robert Herder",
+      "tradition_cell": "german",
+      "founded": 1872,
+      "tier": "premium",
+      "role": "alternate",
+      "alternate_priority": 1
+    },
+    {
+      "brand_id": "schmidt_brothers",
+      "display_name": "Schmidt Brothers",
+      "tradition_cell": "german",
+      "founded": 2009,
+      "tier": "accessible",
+      "role": "alternate",
+      "alternate_priority": 2,
+      "alternate_notes": "German-tradition lineage; US founding"
+    },
+    {
+      "brand_id": "goyon_chazeau_le_thiers",
+      "display_name": "Goyon-Chazeau Le Thiers",
+      "tradition_cell": "french",
+      "founded": 1834,
+      "tier": "professional",
+      "role": "alternate",
+      "alternate_priority": 2,
+      "alternate_notes": "Same parent as Nogent (panel); included as cell-level substitute if Sabatier or Laguiole fails §4"
+    },
+    {
+      "brand_id": "bob_kramer",
+      "display_name": "Bob Kramer",
+      "tradition_cell": "american_specialty",
+      "founded": 2002,
+      "tier": "premium",
+      "role": "alternate",
+      "alternate_priority": 1,
+      "alternate_notes": "Zwilling J.A. Henckels collaboration; high-end"
+    },
+    {
+      "brand_id": "hammer_stahl",
+      "display_name": "Hammer Stahl",
+      "tradition_cell": "american_specialty",
+      "founded": 2008,
+      "tier": "accessible",
+      "role": "alternate",
+      "alternate_priority": 2
+    },
+    {
+      "brand_id": "hu_si_chao",
+      "display_name": "Hu Si Chao",
+      "tradition_cell": "chinese",
+      "founded": null,
+      "tier": "value",
+      "role": "alternate",
+      "alternate_priority": 1,
+      "alternate_notes": "VERIFY founding date if activated"
+    },
+    {
+      "brand_id": "dengjia",
+      "display_name": "Dengjia",
+      "tradition_cell": "chinese",
+      "founded": null,
+      "tier": "value",
+      "role": "alternate",
+      "alternate_priority": 2,
+      "alternate_notes": "VERIFY founding date if activated"
+    }
+  ],
+  "panel_summary": {
+    "n_panel": 24,
+    "n_alternates": 12,
+    "cells": {
+      "japanese": 6,
+      "german": 5,
+      "french": 4,
+      "american_specialty": 5,
+      "chinese": 4
+    },
+    "tier_distribution": {
+      "premium": 4,
+      "professional": 11,
+      "accessible": 6,
+      "value": 3
+    },
+    "verify_flags": [
+      "sabatier (founded date approximate to generic-mark emergence + topic-ID)",
+      "laguiole (founded date approximate to generic-mark emergence + topic-ID)",
+      "sunlong (limited documentation; substitution-eligible if unresolvable)",
+      "zhen (founded date approximate)"
+    ],
+    "convention_applied": [
+      "shun (1908 → 2002, brand-mark introduction)",
+      "miyabi (2004 confirmed under convention)",
+      "yoshihiro (1996 confirmed under convention)",
+      "made_in (2017 confirmed under convention)",
+      "shibazi (1983 confirmed under convention)"
+    ]
+  }
+}

@@ -1,0 +1,45 @@
+========================================================================
+AIAS v0.19 — Canonical Scoring Output
+Pre-reg tag: v0.19-prereg-r1
+========================================================================
+
+[C1 — Panel Adequacy]
+  Worldwide n = 16 (floor 12): PASS
+  A_Heritage n = 8 (floor 5): PASS
+  B_Boutique n = 8 (floor 5): PASS
+
+[C2 — Within-cell variance adequacy]
+  A_Heritage:
+    C_P modal share = 0.500 (FAIL)
+    Mention-count modal share = 0.250 (PASS)
+    Cell C2: FAIL
+  B_Boutique:
+    C_P modal share = 0.875 (FAIL)
+    Mention-count modal share = 0.250 (PASS)
+    Cell C2: FAIL
+
+[C3 — Ranking coherence (Spearman ρ + 95% bootstrap CI)]
+  A_Heritage: SKIPPED (C2 failed)
+  B_Boutique: SKIPPED (C2 failed)
+
+[H_C3_Within_Cell_Variance verdict] → UNDETERMINED
+
+[H_Recognition_Recall_Dissociation_Replication]
+  Iwachu-pattern cases identified: 3
+    ZMF Headphones (B_Boutique): C_P=6/6, mentions=1/18
+    Spirit Torino (B_Boutique): C_P=5/6, mentions=0/18
+    Final Audio (B_Boutique): C_P=6/6, mentions=0/18
+  Verdict: PARTIAL
+
+[Cross-cultural robustness (DEVIATIONS Rule 6)]
+  A_Heritage: not applicable (Cell failed C2; robustness not computed)
+  B_Boutique: not applicable (Cell failed C2; robustness not computed)
+
+[H_CulturalFootprint_Dissociation_Sensitivity — descriptive]
+  Type 1 (category-channel-preferred): 3 cases
+    Audeze (B_Boutique): category=13/18, cultural=2/18
+    HiFiMan (B_Boutique): category=12/18, cultural=1/18
+    Dan Clark Audio (B_Boutique): category=5/18, cultural=0/18
+  Type 2 (cultural-channel-preferred): 0 cases
+
+========================================================================

@@ -1,0 +1,7 @@
+hypothesis,status,rationale
+H1_primary,FALSIFIED,"t1: ρ=0.496 (>0.5? False), p1t=0.0214 (<0.05? True). t2: ρ=0.476, p1t=0.0228."
+H2,CONFIRMED,|Δρ| = |0.476 − 0.496| = 0.020 ≤ 0.15
+H3,FALSIFIED,
+H4,FALSIFIED,"t1: ρ=0.407 (>0.5? False), p1t=0.0663 (<0.05? False). t2: ρ=0.428, p1t=0.0489."
+H1_us_sensitivity,FALSIFIED,"t1: ρ=0.489 (>0.5? False), p1t=0.0233 (<0.05? True). t2: ρ=0.455, p1t=0.0331."
+H1_pearson_sensitivity,CONFIRMED,"t1: ρ=0.544 (>0.5? True), p1t=0.0120 (<0.05? True). t2: ρ=0.533, p1t=0.0113."

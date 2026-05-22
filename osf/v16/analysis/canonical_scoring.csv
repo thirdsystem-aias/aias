@@ -1,0 +1,3 @@
+phase,category,hypothesis,status,rationale
+v0.16,kitchen_knives,H_Regime4_replication_knives,PARTIAL,"C1 (n>=12 both waves): True (n_t1=13, n_t2=13). C2 (|rho_AI~Trends|<0.35): True (t1=0.022, t2=0.003). C3 (partial<0.0): False (t1=0.101, t2=0.080)."
+v0.16,kitchen_knives,H_Discourse_Language_carryforward,CARRY-FORWARD CONFIRMED,"rho_t1=0.197, rho_t2=-0.149, n_t1=6, n_t2=6. Both waves below 0.85 threshold; v0.8 finding survives v1.2 protocol with corrected eligibility filtering."

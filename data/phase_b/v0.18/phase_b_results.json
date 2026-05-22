@@ -1,0 +1,2037 @@
+{
+  "phase": "v0.18",
+  "pre_reg_tag": "v0.18-prereg-r1",
+  "lock_commit": "183386c",
+  "protocol_version": "v1.4",
+  "acquired_at_utc": "2026-05-20T20:26:36.133293+00:00",
+  "frames": [
+    "q1_niche",
+    "q2_independent",
+    "q3_perfumistas"
+  ],
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "cells": {
+    "cell_a_designer_niche": {
+      "per_brand": [
+        {
+          "brand": "Maison Francis Kurkdjian",
+          "mention_count": 11,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 5,
+              "gpt-4o-mini": 5,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 5,
+              "gpt-4o-mini": 5,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 7,
+              "gpt-4o-mini": 7,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Le Labo",
+          "mention_count": 12,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 2,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 1,
+              "gpt-4o-mini": 1,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 2,
+              "gpt-4o-mini": 5,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Diptyque",
+          "mention_count": 7,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 3,
+              "gpt-4o-mini": 3,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 3,
+              "gpt-4o-mini": 3,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": 3,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Frederic Malle",
+          "mention_count": 10,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 7,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 9,
+              "gpt-4o-mini": 9,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Byredo",
+          "mention_count": 13,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 1,
+              "gpt-4o-mini": 4,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 2,
+              "gpt-4o-mini": 2,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 4,
+              "gpt-4o-mini": 6,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Comme des Garçons Parfums",
+          "mention_count": 2,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Memo Paris",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Etat Libre d'Orange",
+          "mention_count": 1,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        }
+      ]
+    },
+    "cell_b_indie_artisan": {
+      "per_brand": [
+        {
+          "brand": "D.S. & Durga",
+          "mention_count": 2,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Boy Smells",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Heretic Parfum",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Ellis Brooklyn",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Vyrao",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Henry Rose",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Phlur",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Snif",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        }
+      ]
+    },
+    "cell_c_mass_prestige": {
+      "per_brand": [
+        {
+          "brand": "Chanel",
+          "mention_count": 5,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 1,
+              "gpt-4o-mini": 1,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Dior",
+          "mention_count": 4,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": true,
+              "gpt-4o": true,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 5,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "YSL",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Tom Ford",
+          "mention_count": 6,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": true,
+              "gpt-4o-mini": true,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": true
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": 3,
+              "gpt-4o-mini": 4,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Givenchy",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Versace",
+          "mention_count": 1,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": true,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Marc Jacobs",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        },
+        {
+          "brand": "Calvin Klein",
+          "mention_count": 0,
+          "per_frame_per_model": {
+            "q1_niche": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q2_independent": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": false,
+              "claude-sonnet-4-5": false,
+              "gpt-4o": false,
+              "gpt-4o-mini": false,
+              "gemini-2.5-flash": false,
+              "gemini-2.5-flash-lite": false
+            }
+          },
+          "rank_per_frame": {
+            "q1_niche": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q2_independent": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            },
+            "q3_perfumistas": {
+              "claude-opus-4-5": null,
+              "claude-sonnet-4-5": null,
+              "gpt-4o": null,
+              "gpt-4o-mini": null,
+              "gemini-2.5-flash": null,
+              "gemini-2.5-flash-lite": null
+            }
+          }
+        }
+      ]
+    }
+  },
+  "_raw_query_records": {
+    "q1_niche__claude-opus-4-5": {
+      "response": {
+        "model": "claude-opus-4-5",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "# Notable Niche Fragrances\n\nHere are some well-regarded options across different styles:\n\n## Woody & Smoky\n- **Byredo Gypsy Water** – Light, fresh blend of juniper, pine, and sandalwood with a subtle smokiness\n- **Le Labo Santal 33** – Iconic sandalwood with cardamom, iris, and leather notes; often described as addictive\n\n## Oriental & Rich\n- **Maison Francis Kurkdjian Baccarat Rouge 540** – Amber, saffron, and cedarwood with a distinctive sweet-metallic quality\n- **Tom Ford Tobacco Vanille** – Warm, spicy tobacco with vanilla, cocoa, and dried fruit\n\n## Fresh & Clean\n- **Creed Aventus** – Pineapple, birch, and musk; popular for its confident, fresh projection\n- **Parfums de Marly Layton** – Apple, vanilla, and sandalwood; versatile and long-lasting\n\n## Floral & Unique\n- **Frederic Malle Portrait of a Lady** – Rose, patchouli, and sandalwood; complex and sophisticated\n- **Diptyque Philosykos** – Green fig leaves, wood, and coconut; natural and earthy\n\n## Avant-Garde\n- **Comme des Garçons 2** – Abstract aldehydes, ink, and metallic notes\n- **Imaginary Authors Saint Julep** – Mint julep cocktail inspiration; playful and fresh\n\nWould you like recommendations for a specific season, occasion, or scent profile?",
+        "tokens_in": 22,
+        "tokens_out": 377,
+        "latency_ms": 8978
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": null,
+          "first_char_offset": 347
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 214
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": null,
+          "first_char_offset": 885
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 784
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 111
+        },
+        {
+          "canonical": "Comme des Garçons Parfums",
+          "matched_surface": "Comme des Garçons",
+          "rank_in_response": null,
+          "first_char_offset": 985
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": null,
+          "first_char_offset": 471
+        }
+      ]
+    },
+    "q1_niche__claude-sonnet-4-5": {
+      "response": {
+        "model": "claude-sonnet-4-5",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "# Outstanding Niche Fragrances\n\n## **Creed Aventus**\nA modern classic with pineapple, birch, and musk. Smoky-fruity with excellent projection. Often considered the gateway to niche fragrances, though somewhat mainstream now.\n\n## **Le Labo Santal 33**\nCreamy sandalwood with violet, cardamom, and leather. Unisex and instantly recognizable. Has a cult following despite being polarizing.\n\n## **Byredo Gypsy Water**\nEthereal blend of pine needle, sandalwood, and vanilla. Fresh yet woody, evoking campfire memories. Light and sophisticated.\n\n## **Maison Francis Kurkdjian Baccarat Rouge 540**\nLuminous amber with saffron and cedarwood. Creates an \"aura\" effect that smells different up close versus in the air. Extremely popular and much-copied.\n\n## **Parfums de Marly Layton**\nApple, lavender, vanilla, and woods. Sweet but refined gourmand with excellent performance. Crowd-pleasing without being generic.\n\n## **Frederic Malle Portrait of a Lady**\nBold Turkish rose with patchouli, incense, and spices. Rich and luxurious. A masterpiece for rose lovers.\n\n## **Initio Oud for Greatness**\nOud and saffron with lavender. Sweet, powerful, and long-lasting. Not subtle but impressive.\n\n## **Amouage Interlude Man**\nComplex blend of amber, incense, oud, and spices. Dense, smoky, and challenging. For experienced fragrance enthusiasts.\n\nThese represent different styles—from fresh to gourmand to oriental—giving you various entry points into niche perfumery.",
+        "tokens_in": 22,
+        "tokens_out": 414,
+        "latency_ms": 11549
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": null,
+          "first_char_offset": 545
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 231
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 912
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 393
+        }
+      ]
+    },
+    "q1_niche__gpt-4o": {
+      "response": {
+        "model": "gpt-4o",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "Niche fragrances are created with a focus on artistry, exclusivity, and high-quality ingredients, often appealing to those who appreciate unique olfactory experiences. Here are some of the best niche fragrances, each offering something special:\n\n1. **Byredo Gypsy Water**  \n   - **Description**: This fragrance captures the essence of a free-spirited lifestyle and the romanticism of a bohemian existence. With notes of bergamot, lemon, juniper berries, incense, and pine needles, it offers a fresh, woody aromatic experience that's enchanting and earthy.\n\n2. **Le Labo Santal 33**  \n   - **Description**: An iconic unisex fragrance, Santal 33 combines the smoky, leathery aroma of sandalwood with cardamom and iris. It's layered with violet and amber, creating a warm, alluring scent with a distinctive and memorable trail.\n\n3. **Diptyque Philosykos**  \n   - **Description**: Inspired by the fig tree, this fragrance is fresh and green, with notes of fig leaves, milky sap, and warm bark. It's a clean, natural scent that evokes Mediterranean landscapes and warm summer breezes.\n\n4. **Amouage Interlude Man**  \n   - **Description**: Known for its complexity, Interlude Man includes spicy top notes of bergamot, oregano, and pimento berry oil, with a heart of amber, opoponax, and frankincense. These deep, smoky notes meld with leather and oud at the base, offering a dramatic and powerful scent.\n\n5. **Maison Francis Kurkdjian Baccarat Rouge 540**  \n   - **Description**: This fragrance blends saffron and jasmine floral accents with a warm, woody amber base. The result is a rich, luxurious aroma that is sweet yet balanced, providing an almost addictive sensory experience.\n\n6. **Serge Lutens Chergui**  \n   - **Description**: Inspired by the hot desert winds of Morocco, Chergui combines honey, musk, incense, tobacco leaf, hay, and rose. It's a warm, spicy scent that is both comforting and complex, perfect for evening wear.\n\n7. **Nasomatto Black Afgano**  \n   - **Description**: An intense and dark fragrance, Black Afgano channels the mysterious depth of oud, surrounded by cannabis, resins, and incense. It's a bold, provocative scent meant to evoke the effects of a narcotic.\n\n8. **Tauer Perfumes L'Air du Désert Marocain**  \n   - **Description**: This fragrance captures the mystique of the Moroccan desert evening. It features spicy coriander, cumin, and petitgrain, mixed with a heart of jasmine and rock rose, ending with a base of cedarwood, vetiver, and ambergris.\n\n9. **Escentric Molecules Molecule 01**  \n   - **Description**: Known for its single-ingredient formula, this fragrance utilizes Iso E Super to create a scent that enhances your natural skin smell. It's subtle, yet long-lasting, with a velvet-smooth and woody character that's both minimalist and intriguing.\n\n10. **Creed Aventus**  \n    - **Description**: Though on the border of niche and luxury, Aventus is celebrated for its bold, fruity opening of pineapple and blackcurrant, with a smoky, leather, and oakmoss finish. It's confident, powerful, and perfect for those who wish to make a strong impression.\n\nEach of these fragrances offers something distinct, designed for individuals who appreciate artisan craftsmanship and exceptional scent profiles.",
+        "tokens_in": 19,
+        "tokens_out": 722,
+        "latency_ms": 7746
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 5,
+          "first_char_offset": 1398
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": 2,
+          "first_char_offset": 560
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": 3,
+          "first_char_offset": 827
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 1,
+          "first_char_offset": 251
+        }
+      ]
+    },
+    "q1_niche__gpt-4o-mini": {
+      "response": {
+        "model": "gpt-4o-mini",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "Niche fragrances are unique, often artisanal perfumes that aren’t typically found in mainstream retailers. They often emphasize quality ingredients, creativity, and storytelling. Here are several highly regarded niche fragrances, along with their descriptions:\n\n1. **Amouage - Interlude Man**\n   - **Description**: Hailing from Oman, Amouage is known for its opulent scents. Interlude Man is a rich, complex fragrance that combines spices, amber, and wood. Its complex structure intertwines notes of bergamot, oregano, and pimento with a heart of incense and myrrh, resting on a base of leather, agarwood, and patchouli.\n\n2. **Creed - Aventus**\n   - **Description**: Aventus is one of the most celebrated fragrances from Creed, inspired by the life of a historic emperor. It's a captivating blend of pineapple, bergamot, black currant, and apple at the top, leading into a heart of birch, jasmine, and patchouli, rounded out with a powerful base of musk, oakmoss, and vanilla. This fragrance is often praised for its longevity and versatility.\n\n3. **Diptyque - Philosykos**\n   - **Description**: A homage to the fig tree, Philosykos encapsulates the essence of a Mediterranean summer. This fragrance beautifully layers fig leaves, fig fruit, and woody notes of cedar and white wood, creating a fresh, green scent that embodies both sweetness and earthiness, reminiscent of sun-drenched orchards.\n\n4. **Byredo - Gypsy Water**\n   - **Description**: Gypsy Water is a romantic, adventurous fragrance capturing the essence of a bohemian lifestyle. It blends notes of bergamot, juniper berries, lemon, and pepper, with a heart of incense, orris, and pine needles. The base features vanilla, sandalwood, and amber, creating a warm, earthy scent that evokes wanderlust.\n\n5. **Maison Francis Kurkdjian - Baccarat Rouge 540**\n   - **Description**: Baccarat Rouge 540 is an intriguing scent that balances floral and woody elements with a hint of sweetness. It features notes of jasmine, saffron, amberwood, and cedar, resulting in a sophisticated and luxurious fragrance that has gained a cult following for its distinctive presence and dramatic sillage.\n\n6. **Scent Saint - L'Artisan Parfumeur - Mure et Musc**\n   - **Description**: This fragrance is a perfect blend of juicy blackberry and musk, offering a fruity but understated scent. The fruity top notes give way to a soft, spicy heart and a warm, musky base, making it an excellent choice for those who enjoy sweet yet complex compositions.\n\n7. **L'Artisan Parfumeur - La Chasse aux Papillons**\n   - **Description**: A floral fragrance inspired by the idea of chasing butterflies in a lush garden. It opens with bright notes of citrus and green leaves, followed by a heart of lilac and linden blossom. The base features a light touch of musk, creating a refreshing and airy floral experience.\n\n8. **Tauer Perfumes - L’Air du Désert Marocain**\n   - **Description**: Named after the Moroccan desert, this fragrance captures the essence of sun-drenched sand and warm spices. It's a complex composition featuring notes of bergamot, coriander, and a mix of resinous and woody accords, providing a truly unique scent reminiscent of a sultry, dry landscape.\n\nThese fragrances stand out not only for their unique olfactory experiences but also for their ability to evoke emotions and memories, making them cherished additions to any fragrance collection.",
+        "tokens_in": 19,
+        "tokens_out": 741,
+        "latency_ms": 12078
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 5,
+          "first_char_offset": 1766
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": 3,
+          "first_char_offset": 1048
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 4,
+          "first_char_offset": 1400
+        }
+      ]
+    },
+    "q1_niche__gemini-2.5-flash": {
+      "response": {
+        "model": "gemini-2.5-flash",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "Defining the \"best\" niche fragrances is wonderfully subjective, as the whole point of niche is to cater to specific tastes and offer unique olfactive experiences beyond mainstream appeal. However, there are",
+        "tokens_in": 13,
+        "tokens_out": 38,
+        "latency_ms": 7027
+      },
+      "mentions": []
+    },
+    "q1_niche__gemini-2.5-flash-lite": {
+      "response": {
+        "model": "gemini-2.5-flash-lite",
+        "frame_query": "What are the best niche fragrances? List several with descriptions.",
+        "raw_response": "The world of niche fragrances is a treasure trove for those seeking scents that are unique, artistic, and often tell a story. Unlike mainstream perfumes, niche houses prioritize creativity, high-quality ingredients, and artistic expression over mass appeal and marketing. Here are some of the best niche fragrances, each with a distinct character:\n\n---\n\n### 1. **Le Labo Santal 33**\n\n*   **Description:** A modern classic that has become iconic in the niche world. Santal 33 is a creamy, woody, and leathery scent with a distinctive \"pencil shaving\" quality. It's unisex, with notes of Australian sandalwood, cedarwood, cardamom, violet, iris, and a hint of leather. It's known for its strong projection and longevity, making it a statement-making fragrance. It’s a scent that evokes images of cowboys, open fires, and a certain effortless cool.\n\n---\n\n### 2. **Byredo Gypsy Water**\n\n*   **Description:** A fragrance that aims to capture the romantic allure of the Romani lifestyle. Gypsy Water is a fresh, woody, and aromatic scent with a subtly sweet and powdery undertone. Key notes include bergamot, lemon, pepper, juniper berries, incense, pine needles, iris, amber, vanilla, and sandalwood. It's a versatile and comforting fragrance that feels both natural and sophisticated, often described as smelling like a walk through a pine forest after a rain.\n\n---\n\n### 3. **Creed Aventus**\n\n*   **Description:** While sometimes bordering on mainstream due to its immense popularity, Creed Aventus is undeniably a niche masterpiece that redefined modern masculine perfumery. It's a bold and charismatic fruity chypre with a distinctive smoky pineapple opening. Notes include blackcurrant, bergamot, apple, pineapple, birch, patchouli, jasmine, rose, musk, oakmoss, ambergris, and vanilla. It’s a scent of ambition, power, and success, renowned for its performance and addictive quality.\n\n---\n\n### 4. **Maison Francis Kurkdjian Baccarat Rouge 540**\n\n*   **Description:** A truly groundbreaking and highly sought-after fragrance that has achieved cult status. Baccarat Rouge 540 is an airy, sweet, and woody scent that’s difficult to pin down but utterly captivating. Its unique composition features notes of saffron, jasmine, amberwood, ambergris, fir resin, and cedar. It has a radiant, almost crystalline quality that is both sensual and ethereal, with incredible sillage and longevity.\n\n---\n\n### 5. **Parfums de Marly Layton**\n\n*   **Description:** A richly opulent and gourmand oriental fragrance that's both elegant and inviting. Layton opens with a vibrant blend of apple and lavender, transitioning into a heart of geranium and spices, and settling into a warm, vanillic, and woody base. Notes include apple, lavender, mandarin orange, bergamot, geranium, violet, jasmine, vanilla, tonka bean, sandalwood, cardamom, pepper, and patchouli. It’s a sophisticated scent that’s perfect for cooler weather and special occasions.\n\n---\n\n### 6. **Serge Lutens Chergui**\n\n*   **Description:** A warm, smoky, and sweet oriental fragrance that evokes the dry heat of the Moroccan desert. Chergui is a complex and intoxicating blend of hay, honey, tobacco, iris, rose, sandalwood, amber, and incense. It’s a mature and sophisticated scent that’s both comforting and alluring, with a unique dry sweetness that is absolutely addictive.\n\n---\n\n### 7. **Tom Ford Oud Wood**\n\n*   **Description:** A refined and elegant interpretation of the precious ingredient oud. Oud Wood is a woody and slightly spicy fragrance that feels luxurious and sophisticated. Key notes include exotic woods, oud, sandalwood, rosewood, tonka bean, amber, and vetiver. It’s a smooth and wearable oud that balances its depth with a subtle sweetness and creaminess, making it a popular choice for those new to oud.\n\n---\n\n### 8. **Amouage Interlude Man**\n\n*   **Description:** A powerful and complex fragrance that is often described as \"the blue beast\" for its intense aroma and performance. Interlude Man is a smoky, resinous, and spicy oriental that creates an olfactory journey. It features prominent notes of oregano, pepper, bergamot, incense, opoponax, amber, leather, patchouli, sandalwood, and agarwood (oud). It’s a bold and unapologetic scent for the adventurous wearer.\n\n---\n\n### 9. **Kilian Black Phantom (Memento Mori)**\n\n*   **Description:** A dark, gourmand, and intoxicating fragrance that explores the sweeter, more hedonistic side of life. Black Phantom is a rich blend of rum, sugar, dark chocolate, coffee, caramel, almond, and heliot",
+        "tokens_in": 13,
+        "tokens_out": 1024,
+        "latency_ms": 5292
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": null,
+          "first_char_offset": 1887
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 363
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 855
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": null,
+          "first_char_offset": 3315
+        }
+      ]
+    },
+    "q2_independent__claude-opus-4-5": {
+      "response": {
+        "model": "claude-opus-4-5",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "# High-Quality Independent Fragrance Brands\n\nHere are several well-regarded niche/independent fragrance houses:\n\n## Artisanal & Niche\n- **Zoologist** — creative, animal-themed concept fragrances\n- **Imaginary Authors** — literary-inspired, story-driven scents\n- **Slumberhouse** — dense, artistic compositions\n- **Sixteen92** — atmospheric, gothic-inspired perfumes\n- **Papillon Artisan Perfumes** — classically structured, complex blends\n\n## Established Independent Houses\n- **Tauer Perfumes** — Swiss house known for rich, lasting creations\n- **Parfums de Nicolaï** — founded by a Guerlain descendant\n- **Serge Lutens** — iconic artistic perfumery\n- **L'Artisan Parfumeur** — French niche pioneer\n- **Amouage** — luxurious Middle Eastern house\n\n## Smaller/Emerging\n- **House of Cherry Bomb**\n- **Etat Libre d'Orange** — unconventional, boundary-pushing\n- **Beaufort London** — bold, historical British themes\n- **January Scent Project**\n- **Olympic Orchids**\n\nWould you like recommendations based on specific scent preferences (woody, floral, fresh, etc.) or price range?",
+        "tokens_in": 21,
+        "tokens_out": 312,
+        "latency_ms": 8722
+      },
+      "mentions": [
+        {
+          "canonical": "Etat Libre d'Orange",
+          "matched_surface": "Etat Libre d'Orange",
+          "rank_in_response": null,
+          "first_char_offset": 798
+        }
+      ]
+    },
+    "q2_independent__claude-sonnet-4-5": {
+      "response": {
+        "model": "claude-sonnet-4-5",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "# Quality Independent Fragrance Brands\n\nHere are some excellent independent/niche fragrance houses:\n\n## **Byredo** (Sweden)\nMinimalist, contemporary scents with artistic sensibility. Known for Gypsy Water and Bal d'Afrique.\n\n## **Le Labo** (USA)\nHand-blended fragrances with cult following. Santal 33 is their signature scent.\n\n## **Diptyque** (France)\nParisian heritage brand famous for both candles and perfumes like Philosykos and Tam Dao.\n\n## **Maison Francis Kurkdjian** (France)\nLuxurious compositions from master perfumer Francis Kurkdjian. Baccarat Rouge 540 is iconic.\n\n## **Frederic Malle** (France)\n\"Editions de Parfums\" collaborating with top perfumers. Known for Portrait of a Lady.\n\n## **D.S. & Durga** (USA)\nBrooklyn-based with creative, story-driven scents. Debaser and Cowboy Grass are popular.\n\n## **Imaginary Authors** (USA)\nEach fragrance tells a fictional story. Playful, artistic approach.\n\n## **Serge Lutens** (France)\nBold, uncompromising compositions. A Chergui and La Fille de Berlin are standouts.\n\nThese brands prioritize quality ingredients and creative freedom over mass-market appeal. Prices typically range $150-400+ per bottle.",
+        "tokens_in": 21,
+        "tokens_out": 348,
+        "latency_ms": 8732
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": null,
+          "first_char_offset": 449
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 230
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": null,
+          "first_char_offset": 333
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 584
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 106
+        },
+        {
+          "canonical": "D.S. & Durga",
+          "matched_surface": "D.S. & Durga",
+          "rank_in_response": null,
+          "first_char_offset": 702
+        }
+      ]
+    },
+    "q2_independent__gpt-4o": {
+      "response": {
+        "model": "gpt-4o",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "Here are several high-quality independent fragrance brands known for their unique, artisanal scents:\n\n1. **Le Labo** - Known for their hand-blended, personalized fragrances, Le Labo offers unique scent experiences with a focus on craftsmanship.\n\n2. **Byredo** - A Swedish brand that combines high-quality ingredients with artistic expressions, Byredo is celebrated for its sophisticated and evocative fragrances.\n\n3. **Diptyque** - Although it originally started as a luxury candle maker, Diptyque has become famous for its elegant and timeless perfume offerings.\n\n4. **Serge Lutens** - Known for creating complex and deeply layered scents, Serge Lutens fragrances are often seen as unique olfactory experiences.\n\n5. **Maison Francis Kurkdjian** - Founded by renowned perfumer Francis Kurkdjian, this brand offers a range of luxurious and innovative fragrances.\n\n6. **Creed** - An independent brand with a rich history, Creed is famous for its exquisite fragrances and use of rare ingredients.\n\n7. **Frederic Malle** - As a publisher of perfume, Frederic Malle collaborates with top perfumers to create groundbreaking and elegant scents.\n\n8. **Escentric Molecules** - Known for their minimalist approach and science-oriented compositions, Escentric Molecules feature unique molecules as their focal point.\n\n9. **Arquiste** - This brand draws inspiration from historical events and places, crafting scents that tell compelling stories.\n\n10. **Juliette Has a Gun** - With a rebellious spirit and creative approach, this brand offers modern and versatile scents with a touch of whimsy.\n\nThese brands are esteemed for their creativity, quality, and innovation in the fragrance industry, offering something distinct from mainstream scents.",
+        "tokens_in": 18,
+        "tokens_out": 345,
+        "latency_ms": 4446
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 5,
+          "first_char_offset": 719
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": 1,
+          "first_char_offset": 107
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": 3,
+          "first_char_offset": 419
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": 7,
+          "first_char_offset": 1000
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 2,
+          "first_char_offset": 251
+        }
+      ]
+    },
+    "q2_independent__gpt-4o-mini": {
+      "response": {
+        "model": "gpt-4o-mini",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "Certainly! Here are several high-quality independent fragrance brands known for their unique and artistic scents:\n\n1. **Le Labo** - Known for its minimalist approach and handcrafted fragrances, each scent is blended fresh upon order, emphasizing quality and individuality.\n\n2. **Byredo** - Founded in Sweden, Byredo offers distinctive scents that often draw inspiration from memories and experiences, featuring a mix of modern and classic notes.\n\n3. **Diptyque** - Renowned for its luxury candles, Diptyque also produces exquisite perfumes that feature complex compositions and storytelling elements.\n\n4. **Kredos** - A niche fragrance house that focuses on luxury, artisanal scents, often with a focus on sustainable and high-quality ingredients.\n\n5. **Maison Francis Kurkdjian** - Founded by the acclaimed perfumer Francis Kurkdjian, this brand offers sophisticated and innovative fragrances that often blend classic techniques with modern twists.\n\n6. **Amouage** - Based in Oman, Amouage is known for its opulent and richly layered scents, often inspired by Arabian culture and history.\n\n7. **Ormonde Jayne** - A British brand that focuses on high-quality ingredients and artisanal craftsmanship, offering a range of complex and unique fragrances.\n\n8. **Tauer Perfumes** - Created by perfumer Andy Tauer, this brand is celebrated for its bold and intricate scents that often defy conventional fragrance norms.\n\n9. **Farmaesthetics** - This brand combines natural ingredients with a focus on wellness, offering unique scents inspired by the herbal traditions of the American South.\n\n10. **Susanne Lang** - Known for her creative approach to fragrance, her line includes a variety of sophisticated and expressive scents.\n\nThese brands exemplify the artistry of independent perfumery, each with its own distinct philosophy and style.",
+        "tokens_in": 18,
+        "tokens_out": 363,
+        "latency_ms": 5305
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 5,
+          "first_char_offset": 754
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": 1,
+          "first_char_offset": 120
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": 3,
+          "first_char_offset": 452
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 2,
+          "first_char_offset": 279
+        }
+      ]
+    },
+    "q2_independent__gemini-2.5-flash": {
+      "response": {
+        "model": "gemini-2.5-flash",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "You're in for a treat! The independent fragrance world is bursting with creativity, unique perspectives, and incredible quality. These brands often prioritize artistic vision over mass-market appeal, resulting in truly distinctive",
+        "tokens_in": 13,
+        "tokens_out": 40,
+        "latency_ms": 6752
+      },
+      "mentions": []
+    },
+    "q2_independent__gemini-2.5-flash-lite": {
+      "response": {
+        "model": "gemini-2.5-flash-lite",
+        "frame_query": "Recommend high-quality independent fragrance brands. Name several brands.",
+        "raw_response": "The world of independent fragrance is a treasure trove of creativity, artistry, and often, a more personal approach to scent creation. These brands prioritize unique olfactory profiles, high-quality ingredients, and a narrative that goes beyond mass-market appeal.\n\nHere are several high-quality independent fragrance brands that are consistently praised for their innovation, craftsmanship, and distinctive offerings:\n\n**Brands Known for Artistic and Complex Blends:**\n\n*   **Zoologist Fragrances:** Founded by Victor Wong, Zoologist is renowned for its incredibly conceptual and often avant-garde scents. They are known for their bold, animalic, and nature-inspired creations that challenge traditional perfumery. Think of scents that evoke specific animals or natural environments in a very artistic way.\n    *   **Notable Mentions:** *Bat, Tyrannosaurus Rex, Penguin,* and *Chipmunk*.\n\n*   **D.S. & Durga:** This husband-and-wife duo creates fragrances inspired by American folklore, music, and landscapes. Their scents are often narrative-driven and possess a distinct vintage or rustic charm, utilizing unique ingredient combinations.\n    *   **Notable Mentions:** *Bison Essential, Radio Bombay, Portrait of a Lady* (though this is Frederic Malle, D.S. & Durga has a similar artistic sensibility and often gets compared), and *Whispers in the Library*.\n\n*   **Olympic Orchids Artisan Perfumes:** Ellen Covey is a master of creating incredibly realistic and evocative nature scents. Her fragrances are often complex, earthy, and deeply inspired by the natural world, from forests to abstract botanical concepts.\n    *   **Notable Mentions:** *Blackbird, Yellowstone, Mardi Gras, Electric Feel*.\n\n*   **Bruno Jovanovic (often through various houses, but his independent spirit is key):** While he has worked with major houses, Bruno Jovanovic has a distinct artistic signature that shines through his independent projects. He's known for creating abstract, modern, and often challenging fragrances. It's worth exploring his work through brands like **Francesca Bianchi** or **Orenz & Fine**.\n\n**Brands Focused on Exquisite Ingredients and Refined Elegance:**\n\n*   **Francesca Bianchi:** Italian perfumer Francesca Bianchi is celebrated for her opulent, skin-scent-like, and often resinous fragrances. Her creations are known for their high concentration of natural ingredients, resulting in perfumes that are both complex and incredibly wearable, with a focus on sensuality and elegance.\n    *   **Notable Mentions:** *The Libertine, Sex and the Sea Neroli, Under My Skin*.\n\n*   **Orenz & Fine:** This brand emphasizes minimalist aesthetics and exceptional ingredient quality. Their scents are often clean, sophisticated, and focus on the nuanced interplay of high-end materials, creating a refined and understated luxury.\n    *   **Notable Mentions:** *Orens Eau de Parfum, Fougère d'Argent*.\n\n*   **Rogue Perfumery:** Manuel Cross is a perfumer with a passion for classic perfumery structures but with a modern, independent twist. His fragrances often feature beautiful fougères, chypres, and oriental-inspired scents that feel both timeless and contemporary.\n    *   **Notable Mentions:** *Dahab, Chypre, Fougère*.\n\n*   **Ensar Oud:** While primarily known for their exceptional oud oils, Ensar Oud has expanded into creating complex and artistic perfumes that often feature oud as a central, but not always dominant, note. Their creations are incredibly high-quality and exude a sense of luxury and exclusivity.\n    *   **Notable Mentions:** *Kashmira, Oud Yusuf, Amberwood*.\n\n**Brands with Unique Perspectives and Storytelling:**\n\n*   **Imaginary Authors:** This brand, founded by Josh Meyer, is all about storytelling through scent. Each fragrance is inspired by a fictional book or author, creating a rich narrative experience that enhances the olfactory journey. Their scents are often playful, imaginative, and thought-provoking.\n    *   **Notable Mentions:** *Memoirs of a Trespasser, The Cobra and the Canary, Telegrams of the Secret Service*.\n\n*   **M Mariah Perfume:** Mariah has a talent for creating deeply personal and emotionally resonant fragrances. Her scents often explore themes of memory, introspection, and natural elements, resulting in perfumes that feel both intimate and sophisticated.\n    *   **Notable Mentions:** *Rose Aloud, Lignum Vitae, Suede*.\n\n**When exploring these brands, keep these things in mind:**\n\n*   **Sampling is Key:** Independent fragrances can be very personal. It's highly recommended to purchase discovery sets or decants before committing to a full bottle.\n*   **Read Reviews (with a grain of salt):** Fragrance perception is subjective. Read reviews to get a sense of a scent's profile, but ultimately, trust your own nose.\n*   **Appreciate",
+        "tokens_in": 13,
+        "tokens_out": 1024,
+        "latency_ms": 6832
+      },
+      "mentions": [
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 1239
+        },
+        {
+          "canonical": "D.S. & Durga",
+          "matched_surface": "D.S. & Durga",
+          "rank_in_response": null,
+          "first_char_offset": 896
+        }
+      ]
+    },
+    "q3_perfumistas__claude-opus-4-5": {
+      "response": {
+        "model": "claude-opus-4-5",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "# Fragrances Often Recommended by Industry Insiders & Perfumistas\n\n## Classic/Benchmark Fragrances\n- **Chanel No. 5** - the iconic aldehyde floral\n- **Guerlain Shalimar** - foundational oriental\n- **Dior Eau Sauvage** - influential fresh masculine\n- **Chanel Pour Monsieur** - elegant citrus chypre\n\n## Niche Favorites\n- **Frederic Malle Portrait of a Lady** (rose/patchouli)\n- **Le Labo Santal 33** (sandalwood/leather)\n- **Byredo Gypsy Water** (woody/fresh)\n- **Creed Aventus** (fruity/smoky)\n- **Tom Ford Tobacco Vanille**\n\n## \"Insider\" Picks & Hidden Gems\n- **Serge Lutens Feminite du Bois** - groundbreaking cedar\n- **L'Artisan Parfumeur Passage d'Enfer** (incense/lily)\n- **Comme des Garçons 2** (abstract ink/aldehydes)\n- **Papillon Artisan Perfumes Salome**\n- **Tauer Perfumes L'Air du Desert Marocain**\n\n## Budget Recommendations from Enthusiasts\n- **Mugler Angel** (love-it-or-hate-it gourmand)\n- **Versace Pour Homme** (fresh versatile)\n- **Prada L'Homme** (clean powdery)\n\nWould you like recommendations for a specific style or occasion?",
+        "tokens_in": 24,
+        "tokens_out": 387,
+        "latency_ms": 8824
+      },
+      "mentions": [
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 380
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 323
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 425
+        },
+        {
+          "canonical": "Comme des Garçons Parfums",
+          "matched_surface": "Comme des Garçons",
+          "rank_in_response": null,
+          "first_char_offset": 680
+        },
+        {
+          "canonical": "Chanel",
+          "matched_surface": "Chanel",
+          "rank_in_response": null,
+          "first_char_offset": 103
+        },
+        {
+          "canonical": "Dior",
+          "matched_surface": "Dior",
+          "rank_in_response": null,
+          "first_char_offset": 199
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": null,
+          "first_char_offset": 499
+        },
+        {
+          "canonical": "Versace",
+          "matched_surface": "Versace",
+          "rank_in_response": null,
+          "first_char_offset": 909
+        }
+      ]
+    },
+    "q3_perfumistas__claude-sonnet-4-5": {
+      "response": {
+        "model": "claude-sonnet-4-5",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "# Fragrances Recommended by Industry Insiders & Perfumistas\n\n## Classic/Foundational Scents\n- **Chanel No. 5** - The iconic aldehydic floral\n- **Shalimar by Guerlain** - Legendary oriental vanilla\n- **Mitsouko by Guerlain** - Masterful chypre with peach notes\n- **Dior Homme Intense** - Modern iris benchmark\n- **Terre d'Hermès** - Sophisticated woody citrus\n\n## Niche Favorites\n- **Portrait of a Lady by Frédéric Malle** - Turkish rose and patchouli\n- **Santal 33 by Le Labo** - Cult favorite woody scent\n- **Aventus by Creed** - Fruity-smoky phenomenon (despite controversy)\n- **Bal d'Afrique by Byredo** - Vetiver and violet\n- **Jubilation XXV by Amouage** - Complex oriental\n\n## Underrated Gems\n- **L'Eau d'Issey by Issey Miyake** - Aquatic florals done right\n- **Encre Noire by Lalique** - Dark, vetiver-forward\n- **Reflection Man by Amouage** - Jasmine for men\n- **Narciso Rodriguez For Her** - Clean musk\n\n## Artisanal/Indie Darlings\n- **Zoologist** fragrances - Creative, animalic explorations\n- **Serge Lutens** line - Poetic, Middle Eastern-inspired\n\nPerfumistas often emphasize trying samples first and appreciating fragrance as wearable art rather than just compliment-getting.",
+        "tokens_in": 24,
+        "tokens_out": 407,
+        "latency_ms": 10240
+      },
+      "mentions": [
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 468
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 405
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 598
+        },
+        {
+          "canonical": "Chanel",
+          "matched_surface": "Chanel",
+          "rank_in_response": null,
+          "first_char_offset": 96
+        },
+        {
+          "canonical": "Dior",
+          "matched_surface": "Dior",
+          "rank_in_response": null,
+          "first_char_offset": 264
+        }
+      ]
+    },
+    "q3_perfumistas__gpt-4o": {
+      "response": {
+        "model": "gpt-4o",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "Industry insiders and perfumistas often recommend fragrances based on their unique composition, artistry, and lasting appeal. Here are several highly regarded fragrances that frequently receive praise:\n\n1. **Chanel No. 5** - A timeless classic known for its floral-aldehyde composition.\n2. **Le Labo Santal 33** - Esteemed for its rich sandalwood and spicy, leathery notes.\n3. **Tom Ford Black Orchid** - Celebrated for its dark, opulent blend featuring black truffle and ylang-ylang.\n4. **Byredo Gypsy Water** - Known for its fresh, woody scents with hints of bergamot and vanilla.\n5. **Dior Sauvage** - Popular for its fresh and spicy notes with a modern twist.\n6. **Creed Aventus** - A luxury fragrance known for its rich blend of pineapple, bergamot, and woody undertones.\n7. **Maison Francis Kurkdjian Baccarat Rouge 540** - Loved for its unique amber, floral, and woody aroma.\n8. **Jo Malone Peony & Blush Suede** - Appreciated for its delicate floral scent combined with a hint of suede.\n9. **Frederic Malle Portrait of a Lady** - Revered for its sophisticated blend of rose, patchouli, and incense.\n10. **Mugler Alien** - Notable for its distinctive combination of amber, jasmine, and wood.\n\nThese fragrances are often recommended for their complexity, quality of ingredients, and the artistry behind their creation. Preferences can vary widely, so it’s always a good idea to test a fragrance on your skin before making a purchase.",
+        "tokens_in": 21,
+        "tokens_out": 334,
+        "latency_ms": 9829
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 7,
+          "first_char_offset": 782
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": 2,
+          "first_char_offset": 292
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": 9,
+          "first_char_offset": 1000
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 4,
+          "first_char_offset": 490
+        },
+        {
+          "canonical": "Chanel",
+          "matched_surface": "Chanel",
+          "rank_in_response": 1,
+          "first_char_offset": 208
+        },
+        {
+          "canonical": "Dior",
+          "matched_surface": "Dior",
+          "rank_in_response": 5,
+          "first_char_offset": 588
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": 3,
+          "first_char_offset": 379
+        }
+      ]
+    },
+    "q3_perfumistas__gpt-4o-mini": {
+      "response": {
+        "model": "gpt-4o-mini",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "Certainly! Here are several fragrances that are often recommended by industry insiders and perfume enthusiasts (perfumistas):\n\n1. **Chanel No. 5** - A timeless classic known for its floral and aldehydic notes, it remains iconic and beloved.\n\n2. **Creed Aventus** - A modern classic with a blend of fruity and woody notes, it's often praised for its versatility and distinctive scent.\n\n3. **Diptyque Philosykos** - Celebrated for its fig note, this fragrance offers a fresh, green, and woody experience, embodying the Mediterranean.\n\n4. **Tom Ford Black Orchid** - A bold and sensual fragrance that combines dark floral notes with rich spices, perfect for those who enjoy statement scents.\n\n5. **Le Labo Santal 33** - Known for its creamy sandalwood accord, this fragrance has gained a cult following for its distinctive and unisex appeal.\n\n6. **Byredo Gypsy Water** - This scent evokes the spirit of adventure with notes of pine, juniper, and vanilla, making it a favorite among many.\n\n7. **Maison Francis Kurkdjian Baccarat Rouge 540** - Renowned for its unique blend of saffron, amberwood, and cedar, it's highly regarded for its complexity and longevity.\n\n8. **Jo Malone London Wood Sage & Sea Salt** - A fresh and natural scent that combines earthy and marine elements, perfect for everyday wear.\n\n9. **Frederic Malle Portrait of a Lady** - A rich, complex blend featuring rose, patchouli, and spices, it's a favorite among those who appreciate opulent fragrances.\n\n10. **Nishane Hacivat** - A niche fragrance celebrated for its fruity and woody composition, often lauded for its longevity and sillage.\n\nThese fragrances each have distinct characteristics that appeal to different preferences, making them popular among both casual wearers and fragrance aficionados.",
+        "tokens_in": 21,
+        "tokens_out": 382,
+        "latency_ms": 7674
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": 7,
+          "first_char_offset": 989
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": 5,
+          "first_char_offset": 693
+        },
+        {
+          "canonical": "Diptyque",
+          "matched_surface": "Diptyque",
+          "rank_in_response": 3,
+          "first_char_offset": 388
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": 9,
+          "first_char_offset": 1303
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": 6,
+          "first_char_offset": 843
+        },
+        {
+          "canonical": "Chanel",
+          "matched_surface": "Chanel",
+          "rank_in_response": 1,
+          "first_char_offset": 132
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": 4,
+          "first_char_offset": 536
+        }
+      ]
+    },
+    "q3_perfumistas__gemini-2.5-flash": {
+      "response": {
+        "model": "gemini-2.5-flash",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "Industry insiders and perfumistas often recommend fragrances that stand out for their artistry, unique composition, high-quality ingredients, or significant influence on the fragrance world. They appreciate complexity, longevity,",
+        "tokens_in": 15,
+        "tokens_out": 38,
+        "latency_ms": 6764
+      },
+      "mentions": []
+    },
+    "q3_perfumistas__gemini-2.5-flash-lite": {
+      "response": {
+        "model": "gemini-2.5-flash-lite",
+        "frame_query": "What fragrances do industry insiders and perfumistas recommend? List several.",
+        "raw_response": "Industry insiders and perfumistas have an incredibly vast and diverse range of preferences, but there are certain fragrances that consistently rise to the top of their recommendations due to their quality, innovation, historical significance, or sheer artistry. These aren't always the most mainstream or commercially successful, but rather those that resonate with a deep understanding and appreciation for perfumery.\n\nHere are several fragrances frequently recommended by industry insiders and perfumistas, spanning different categories and styles:\n\n**Classic & Timeless Masterpieces:**\n\n*   **Chanel No. 5 Eau de Parfum (Ernest Beaux):** A foundational scent in modern perfumery. Its revolutionary use of aldehydes and its complex floral-aldehydic profile make it a benchmark. Insiders appreciate its enduring elegance and the technical mastery behind its creation.\n*   **Guerlain Shalimar (Jacques Guerlain):** A legendary oriental fragrance, Shalimar is celebrated for its rich, smoky vanilla and citrus opening, creating an intoxicating and sensual aura. It's seen as a testament to the power of a perfectly balanced accord.\n*   **Dior Eau Sauvage (Edmond Roudnitska):** Often cited as the ultimate masculine citrus aromatic. Its bright, invigorating citrus and herbaceous notes, grounded by a vetiver base, are considered a masterclass in fresh, sophisticated perfumery.\n*   **Patou Joy (Henri Alméras):** Known as the \"costliest perfume in the world\" at its inception, Joy is an opulent floral bouquet dominated by the finest jasmine and rose. Perfumistas admire its unparalleled richness and the quality of its natural ingredients.\n\n**Modern Innovations & Artistic Statements:**\n\n*   **Maison Francis Kurkdjian Baccarat Rouge 540 (Francis Kurkdjian):** While incredibly popular, its inclusion here is for its innovative and polarizing nature. The blend of airy sweetness, saffron, and woody notes is unique and has spawned countless imitators, a testament to its impact.\n*   **Le Labo Santal 33 (Frank Voelkl):** Another scent that achieved mainstream success but is deeply admired by insiders for its distinctive dry, woody, and slightly leathery profile. It's seen as a masterclass in modern woody perfumery.\n*   **Byredo Gypsy Water (Ben Gorham):** A cult favorite for its ethereal, slightly sweet, and woody scent that evokes a bohemian spirit. Its simplicity and distinctive character are highly praised.\n*   **Frederic Malle Portrait of a Lady (Dominique Ropion):** A bold and opulent rose fragrance, it showcases the sheer power and complexity of rose absolute. Insiders admire its unapologetic intensity and the masterful execution by Ropion.\n*   **Serge Lutens Chergui (Christopher Sheldrake):** A warm, spicy, and hay-like oriental. Lutens' creations are often lauded for their artistic vision and unique olfactory narratives, and Chergui is a prime example of his distinctive style.\n\n**Niche & Under-the-Radar Gems:**\n\n*   **Tom Ford Oud Wood (Richard Herpin):** While Tom Ford is a mainstream brand, Oud Wood is revered in niche circles for its smooth, sophisticated, and accessible interpretation of oud. It paved the way for many other modern oud fragrances.\n*   **Parfums de Marly Layton (Nathalie Granchi):** A popular choice for its modern take on classic fougère structures, with notes of apple, vanilla, and cardamom creating a sweet, spicy, and woody allure.\n*   **Amouage Interlude Man (Pierre Negrin):** A powerhouse of incense, oud, and spices. It's appreciated for its bold complexity and the richness of its ingredients, representing a more adventurous side of perfumery.\n*   **Imaginary Authors Every Storm a Serenade (Josh Meyer):** This brand is known for its storytelling approach to perfumery. \"Every Storm a Serenade\" is a lauded example of a marine, woody, and slightly melancholic scent that captivates with its narrative and unique composition.\n*   **Olympic Orchids Artisan Perfumes Blackbird (Ellie Kovacs):** For those who appreciate darker, more naturalistic scents, Olympic Orchids is a highly respected indie house. \"Blackbird\" captures the essence of a damp forest floor with notes of blackberry, fir, and soil.\n\n**What makes these recommendations stand out?**\n\n*   **Quality of Ingredients:** Many of these fragrances utilize high-quality natural materials and well-synthesized aroma chemicals.\n*   **Innovative Compositions:** They often push boundaries, introduce new accords, or re-interpret classic structures in fresh ways.\n*   **Artistic Vision:** The perfumers and brands behind them often have a strong artistic intent and a desire to evoke specific emotions or stories.\n*   **Longevity and Sillage (when appropriate):** While not always",
+        "tokens_in": 15,
+        "tokens_out": 1024,
+        "latency_ms": 7669
+      },
+      "mentions": [
+        {
+          "canonical": "Maison Francis Kurkdjian",
+          "matched_surface": "Maison Francis Kurkdjian",
+          "rank_in_response": null,
+          "first_char_offset": 1693
+        },
+        {
+          "canonical": "Le Labo",
+          "matched_surface": "Le Labo",
+          "rank_in_response": null,
+          "first_char_offset": 1984
+        },
+        {
+          "canonical": "Frederic Malle",
+          "matched_surface": "Frederic Malle",
+          "rank_in_response": null,
+          "first_char_offset": 2421
+        },
+        {
+          "canonical": "Byredo",
+          "matched_surface": "Byredo",
+          "rank_in_response": null,
+          "first_char_offset": 2222
+        },
+        {
+          "canonical": "Chanel",
+          "matched_surface": "Chanel",
+          "rank_in_response": null,
+          "first_char_offset": 596
+        },
+        {
+          "canonical": "Dior",
+          "matched_surface": "Dior",
+          "rank_in_response": null,
+          "first_char_offset": 1135
+        },
+        {
+          "canonical": "Tom Ford",
+          "matched_surface": "Tom Ford",
+          "rank_in_response": null,
+          "first_char_offset": 2941
+        }
+      ]
+    }
+  }
+}

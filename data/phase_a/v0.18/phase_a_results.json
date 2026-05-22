@@ -1,0 +1,1922 @@
+{
+  "phase": "v0.18",
+  "substrate": "indie_fragrance_il_gradient",
+  "pre_reg_tag": "v0.18-prereg-r1",
+  "lock_commit": "183386c",
+  "protocol_version": "v1.4",
+  "acquired_at_utc": "2026-05-20T19:51:31.466465+00:00",
+  "category_anchor": "niche fragrance",
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "thresholds": {
+    "pivot": 6,
+    "dissociation_c_p_floor": 5
+  },
+  "cells": {
+    "cell_a_designer_niche": {
+      "cell": "cell_a_designer_niche",
+      "pivot": "Maison Francis Kurkdjian",
+      "pivot_cascade_exhausted": false,
+      "per_brand": [
+        {
+          "brand": "Maison Francis Kurkdjian",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 40,
+              "tokens_out": 4,
+              "latency_ms": 2405
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 40,
+              "tokens_out": 4,
+              "latency_ms": 1821
+            },
+            "gpt-4o": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 885
+            },
+            "gpt-4o-mini": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 844
+            },
+            "gemini-2.5-flash": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 30,
+              "tokens_out": 1,
+              "latency_ms": 3707
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Maison Francis Kurkdjian",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Maison Francis Kurkdjian\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 30,
+              "tokens_out": 1,
+              "latency_ms": 3358
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:46:55.300626+00:00"
+        },
+        {
+          "brand": "Le Labo",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Le Labo",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1897
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Le Labo",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 2382
+            },
+            "gpt-4o": {
+              "brand": "Le Labo",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 1,
+              "latency_ms": 925
+            },
+            "gpt-4o-mini": {
+              "brand": "Le Labo",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 922
+            },
+            "gemini-2.5-flash": {
+              "brand": "Le Labo",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 4273
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Le Labo",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Le Labo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 641
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:47:06.345080+00:00"
+        },
+        {
+          "brand": "Diptyque",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Diptyque",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1840
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Diptyque",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1844
+            },
+            "gpt-4o": {
+              "brand": "Diptyque",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 1222
+            },
+            "gpt-4o-mini": {
+              "brand": "Diptyque",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 615
+            },
+            "gemini-2.5-flash": {
+              "brand": "Diptyque",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 3070
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Diptyque",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Diptyque\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 612
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:47:15.551819+00:00"
+        },
+        {
+          "brand": "Frederic Malle",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Frederic Malle",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 37,
+              "tokens_out": 4,
+              "latency_ms": 1849
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Frederic Malle",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 37,
+              "tokens_out": 4,
+              "latency_ms": 1838
+            },
+            "gpt-4o": {
+              "brand": "Frederic Malle",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 922
+            },
+            "gpt-4o-mini": {
+              "brand": "Frederic Malle",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 586
+            },
+            "gemini-2.5-flash": {
+              "brand": "Frederic Malle",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 28,
+              "tokens_out": 1,
+              "latency_ms": 2790
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Frederic Malle",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Frederic Malle\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 28,
+              "tokens_out": 1,
+              "latency_ms": 1536
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:47:25.076259+00:00"
+        },
+        {
+          "brand": "Byredo",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Byredo",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1159
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Byredo",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1611
+            },
+            "gpt-4o": {
+              "brand": "Byredo",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 922
+            },
+            "gpt-4o-mini": {
+              "brand": "Byredo",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 1225
+            },
+            "gemini-2.5-flash": {
+              "brand": "Byredo",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2455
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Byredo",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Byredo\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 658
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:47:33.109651+00:00"
+        },
+        {
+          "brand": "Comme des Garçons Parfums",
+          "c_p_score": 5,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 41,
+              "tokens_out": 4,
+              "latency_ms": 1193
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 41,
+              "tokens_out": 4,
+              "latency_ms": 1833
+            },
+            "gpt-4o": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 36,
+              "tokens_out": 2,
+              "latency_ms": 1230
+            },
+            "gpt-4o-mini": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 36,
+              "tokens_out": 2,
+              "latency_ms": 1233
+            },
+            "gemini-2.5-flash": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 30,
+              "tokens_out": 1,
+              "latency_ms": 3183
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Comme des Garçons Parfums",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Comme des Garçons Parfums\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 30,
+              "tokens_out": 1,
+              "latency_ms": 798
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:47:42.585126+00:00"
+        },
+        {
+          "brand": "Memo Paris",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Memo Paris",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 2241
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Memo Paris",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1436
+            },
+            "gpt-4o": {
+              "brand": "Memo Paris",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 927
+            },
+            "gpt-4o-mini": {
+              "brand": "Memo Paris",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 929
+            },
+            "gemini-2.5-flash": {
+              "brand": "Memo Paris",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2455
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Memo Paris",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Memo Paris\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 16585
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:48:07.163443+00:00"
+        },
+        {
+          "brand": "Etat Libre d'Orange",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Etat Libre d'Orange",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 39,
+              "tokens_out": 4,
+              "latency_ms": 1399
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Etat Libre d'Orange",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 39,
+              "tokens_out": 4,
+              "latency_ms": 2284
+            },
+            "gpt-4o": {
+              "brand": "Etat Libre d'Orange",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 1231
+            },
+            "gpt-4o-mini": {
+              "brand": "Etat Libre d'Orange",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 2,
+              "latency_ms": 637
+            },
+            "gemini-2.5-flash": {
+              "brand": "Etat Libre d'Orange",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 28,
+              "tokens_out": 1,
+              "latency_ms": 1950
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Etat Libre d'Orange",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Etat Libre d'Orange\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 28,
+              "tokens_out": 1,
+              "latency_ms": 1865
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:48:16.534932+00:00"
+        }
+      ],
+      "cascade_log": [
+        {
+          "brand": "Maison Francis Kurkdjian",
+          "c_p_score": 6,
+          "status": "PIVOT_ANCHORED"
+        },
+        {
+          "brand": "Le Labo",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Diptyque",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Frederic Malle",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Byredo",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Comme des Garçons Parfums",
+          "c_p_score": 5,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Memo Paris",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Etat Libre d'Orange",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        }
+      ]
+    },
+    "cell_b_indie_artisan": {
+      "cell": "cell_b_indie_artisan",
+      "pivot": "D.S. & Durga",
+      "pivot_cascade_exhausted": false,
+      "per_brand": [
+        {
+          "brand": "D.S. & Durga",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "D.S. & Durga",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 39,
+              "tokens_out": 4,
+              "latency_ms": 1693
+            },
+            "claude-sonnet-4-5": {
+              "brand": "D.S. & Durga",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 39,
+              "tokens_out": 4,
+              "latency_ms": 1835
+            },
+            "gpt-4o": {
+              "brand": "D.S. & Durga",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 2,
+              "latency_ms": 931
+            },
+            "gpt-4o-mini": {
+              "brand": "D.S. & Durga",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 2,
+              "latency_ms": 1223
+            },
+            "gemini-2.5-flash": {
+              "brand": "D.S. & Durga",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 29,
+              "tokens_out": 1,
+              "latency_ms": 2758
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "D.S. & Durga",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"D.S. & Durga\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 29,
+              "tokens_out": 1,
+              "latency_ms": 613
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:48:25.593422+00:00"
+        },
+        {
+          "brand": "Boy Smells",
+          "c_p_score": 5,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Boy Smells",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1855
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Boy Smells",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 2142
+            },
+            "gpt-4o": {
+              "brand": "Boy Smells",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 924
+            },
+            "gpt-4o-mini": {
+              "brand": "Boy Smells",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 921
+            },
+            "gemini-2.5-flash": {
+              "brand": "Boy Smells",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 2448
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Boy Smells",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Boy Smells\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 3551
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:48:37.441241+00:00"
+        },
+        {
+          "brand": "Heretic Parfum",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Heretic Parfum",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 37,
+              "tokens_out": 4,
+              "latency_ms": 2595
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Heretic Parfum",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 37,
+              "tokens_out": 4,
+              "latency_ms": 1847
+            },
+            "gpt-4o": {
+              "brand": "Heretic Parfum",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 33,
+              "tokens_out": 2,
+              "latency_ms": 717
+            },
+            "gpt-4o-mini": {
+              "brand": "Heretic Parfum",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 33,
+              "tokens_out": 2,
+              "latency_ms": 810
+            },
+            "gemini-2.5-flash": {
+              "brand": "Heretic Parfum",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 2650
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Heretic Parfum",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Heretic Parfum\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 1960
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:48:48.025448+00:00"
+        },
+        {
+          "brand": "Ellis Brooklyn",
+          "c_p_score": 4,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Ellis Brooklyn",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1655
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Ellis Brooklyn",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1722
+            },
+            "gpt-4o": {
+              "brand": "Ellis Brooklyn",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 1607
+            },
+            "gpt-4o-mini": {
+              "brand": "Ellis Brooklyn",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 561
+            },
+            "gemini-2.5-flash": {
+              "brand": "Ellis Brooklyn",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 6121
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Ellis Brooklyn",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Ellis Brooklyn\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 779
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:00.474830+00:00"
+        },
+        {
+          "brand": "Vyrao",
+          "c_p_score": 6,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Vyrao",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1682
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Vyrao",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1637
+            },
+            "gpt-4o": {
+              "brand": "Vyrao",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 814
+            },
+            "gpt-4o-mini": {
+              "brand": "Vyrao",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 923
+            },
+            "gemini-2.5-flash": {
+              "brand": "Vyrao",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2760
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Vyrao",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Vyrao\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 622
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:08.916514+00:00"
+        },
+        {
+          "brand": "Henry Rose",
+          "c_p_score": 3,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Henry Rose",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1841
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Henry Rose",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1841
+            },
+            "gpt-4o": {
+              "brand": "Henry Rose",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 926
+            },
+            "gpt-4o-mini": {
+              "brand": "Henry Rose",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 925
+            },
+            "gemini-2.5-flash": {
+              "brand": "Henry Rose",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 4290
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Henry Rose",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Henry Rose\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 917
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:19.659433+00:00"
+        },
+        {
+          "brand": "Phlur",
+          "c_p_score": 5,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Phlur",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1844
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Phlur",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 2156
+            },
+            "gpt-4o": {
+              "brand": "Phlur",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 696
+            },
+            "gpt-4o-mini": {
+              "brand": "Phlur",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 687
+            },
+            "gemini-2.5-flash": {
+              "brand": "Phlur",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 5058
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Phlur",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Phlur\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 922
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:31.026846+00:00"
+        },
+        {
+          "brand": "Snif",
+          "c_p_score": 5,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Snif",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1848
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Snif",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1533
+            },
+            "gpt-4o": {
+              "brand": "Snif",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 940
+            },
+            "gpt-4o-mini": {
+              "brand": "Snif",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 549
+            },
+            "gemini-2.5-flash": {
+              "brand": "Snif",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 3423
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Snif",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Snif\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 618
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:39.944089+00:00"
+        }
+      ],
+      "cascade_log": [
+        {
+          "brand": "D.S. & Durga",
+          "c_p_score": 6,
+          "status": "PIVOT_ANCHORED"
+        },
+        {
+          "brand": "Boy Smells",
+          "c_p_score": 5,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Heretic Parfum",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Ellis Brooklyn",
+          "c_p_score": 4,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Vyrao",
+          "c_p_score": 6,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Henry Rose",
+          "c_p_score": 3,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Phlur",
+          "c_p_score": 5,
+          "status": "REGISTRY_PROBE"
+        },
+        {
+          "brand": "Snif",
+          "c_p_score": 5,
+          "status": "REGISTRY_PROBE"
+        }
+      ]
+    },
+    "cell_c_mass_prestige": {
+      "cell": "cell_c_mass_prestige",
+      "pivot": null,
+      "pivot_cascade_exhausted": true,
+      "per_brand": [
+        {
+          "brand": "Chanel",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Chanel",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1717
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Chanel",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1663
+            },
+            "gpt-4o": {
+              "brand": "Chanel",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 916
+            },
+            "gpt-4o-mini": {
+              "brand": "Chanel",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 631
+            },
+            "gemini-2.5-flash": {
+              "brand": "Chanel",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2961
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Chanel",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Chanel\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 707
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:49:48.544667+00:00"
+        },
+        {
+          "brand": "Dior",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Dior",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 2466
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Dior",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1506
+            },
+            "gpt-4o": {
+              "brand": "Dior",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 7708
+            },
+            "gpt-4o-mini": {
+              "brand": "Dior",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 919
+            },
+            "gemini-2.5-flash": {
+              "brand": "Dior",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2459
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Dior",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Dior\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 4285
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:50:07.892748+00:00"
+        },
+        {
+          "brand": "YSL",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "YSL",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1862
+            },
+            "claude-sonnet-4-5": {
+              "brand": "YSL",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1840
+            },
+            "gpt-4o": {
+              "brand": "YSL",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 922
+            },
+            "gpt-4o-mini": {
+              "brand": "YSL",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 921
+            },
+            "gemini-2.5-flash": {
+              "brand": "YSL",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 3986
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "YSL",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"YSL\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 7679
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:50:25.106295+00:00"
+        },
+        {
+          "brand": "Tom Ford",
+          "c_p_score": 2,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Tom Ford",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1850
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Tom Ford",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1842
+            },
+            "gpt-4o": {
+              "brand": "Tom Ford",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 929
+            },
+            "gpt-4o-mini": {
+              "brand": "Tom Ford",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes.",
+              "recognized": true,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 915
+            },
+            "gemini-2.5-flash": {
+              "brand": "Tom Ford",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "Yes",
+              "recognized": true,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 4290
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Tom Ford",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Tom Ford\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 14746
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:50:49.683909+00:00"
+        },
+        {
+          "brand": "Givenchy",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Givenchy",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1849
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Givenchy",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1837
+            },
+            "gpt-4o": {
+              "brand": "Givenchy",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 1231
+            },
+            "gpt-4o-mini": {
+              "brand": "Givenchy",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 559
+            },
+            "gemini-2.5-flash": {
+              "brand": "Givenchy",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 3431
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Givenchy",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Givenchy\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 919
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:50:59.513937+00:00"
+        },
+        {
+          "brand": "Versace",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Versace",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1854
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Versace",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 34,
+              "tokens_out": 4,
+              "latency_ms": 1834
+            },
+            "gpt-4o": {
+              "brand": "Versace",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 1234
+            },
+            "gpt-4o-mini": {
+              "brand": "Versace",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 1226
+            },
+            "gemini-2.5-flash": {
+              "brand": "Versace",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 3372
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Versace",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Versace\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2148
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:51:11.186764+00:00"
+        },
+        {
+          "brand": "Marc Jacobs",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Marc Jacobs",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 2157
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Marc Jacobs",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 35,
+              "tokens_out": 4,
+              "latency_ms": 1838
+            },
+            "gpt-4o": {
+              "brand": "Marc Jacobs",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 926
+            },
+            "gpt-4o-mini": {
+              "brand": "Marc Jacobs",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 31,
+              "tokens_out": 2,
+              "latency_ms": 759
+            },
+            "gemini-2.5-flash": {
+              "brand": "Marc Jacobs",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 2920
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Marc Jacobs",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Marc Jacobs\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 25,
+              "tokens_out": 1,
+              "latency_ms": 1533
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:51:21.325213+00:00"
+        },
+        {
+          "brand": "Calvin Klein",
+          "c_p_score": 0,
+          "per_model_responses": {
+            "claude-opus-4-5": {
+              "brand": "Calvin Klein",
+              "model": "claude-opus-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "no",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 1948
+            },
+            "claude-sonnet-4-5": {
+              "brand": "Calvin Klein",
+              "model": "claude-sonnet-4-5",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 33,
+              "tokens_out": 4,
+              "latency_ms": 2055
+            },
+            "gpt-4o": {
+              "brand": "Calvin Klein",
+              "model": "gpt-4o",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 919
+            },
+            "gpt-4o-mini": {
+              "brand": "Calvin Klein",
+              "model": "gpt-4o-mini",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No.",
+              "recognized": false,
+              "tokens_in": 32,
+              "tokens_out": 2,
+              "latency_ms": 914
+            },
+            "gemini-2.5-flash": {
+              "brand": "Calvin Klein",
+              "model": "gemini-2.5-flash",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 3376
+            },
+            "gemini-2.5-flash-lite": {
+              "brand": "Calvin Klein",
+              "model": "gemini-2.5-flash-lite",
+              "category": "niche fragrance",
+              "prompt": "Is the brand \"Calvin Klein\" commonly recognized as a niche fragrance? Answer with exactly one word: yes or no.",
+              "raw_response": "No",
+              "recognized": false,
+              "tokens_in": 26,
+              "tokens_out": 1,
+              "latency_ms": 923
+            }
+          },
+          "timestamp_utc": "2026-05-20T19:51:31.464349+00:00"
+        }
+      ],
+      "cascade_log": [
+        {
+          "brand": "Chanel",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Dior",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "YSL",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Tom Ford",
+          "c_p_score": 2,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Givenchy",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Versace",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Marc Jacobs",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        },
+        {
+          "brand": "Calvin Klein",
+          "c_p_score": 0,
+          "status": "PIVOT_CASCADE_FAIL"
+        }
+      ]
+    }
+  }
+}

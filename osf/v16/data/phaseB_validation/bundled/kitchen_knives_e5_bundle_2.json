@@ -1,0 +1,85 @@
+{
+  "category": "kitchen_knives",
+  "bundle_id": 2,
+  "queries": [
+    "Wüsthof",
+    "Goyon-Chazeau Le Thiers",
+    "Hu Si Chao",
+    "Dengjia"
+  ],
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "member_names": [
+    "Wüsthof",
+    "Goyon-Chazeau Le Thiers",
+    "Hu Si Chao",
+    "Dengjia"
+  ],
+  "window": "2026-05-10 2026-05-16",
+  "geo": "",
+  "test_timestamp": "2026-05-17T00:28:53.996785+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        46,
+        33,
+        33,
+        79,
+        100,
+        33,
+        35
+      ],
+      "max": 100,
+      "mean": 51.29,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 2,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 3,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    }
+  ]
+}

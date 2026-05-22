@@ -1,0 +1,7 @@
+metric,value,threshold,condition,satisfied
+AI Presence t1,44.79,>=5.0%,C1,True
+AI Presence t2,41.67,>=5.0%,C1,True
+AI rank t1,5.0,<=5,C2,True
+AI rank t2,5.0,<=5,C2,True
+Trends rank t1,,>5 OR not eligible,C3,True
+Trends rank t2,,>5 OR not eligible,C3,True

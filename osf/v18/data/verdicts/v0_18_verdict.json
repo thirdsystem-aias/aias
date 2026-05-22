@@ -1,0 +1,125 @@
+{
+  "phase": "v0.18",
+  "pre_reg_tag": "v0.18-prereg-r1",
+  "protocol_version": "v1.4",
+  "scored_at_utc": "2026-05-20T20:32:27.438507+00:00",
+  "verdicts": {
+    "H_Regime4_indie_fragrance": {
+      "verdict": "PARTIAL",
+      "resolved_at": "C3",
+      "reason": "C2 conditions met; C3 cells clearing ρ ≥ 0.5 = 1 < 2 required (clearing: ['cell_c_mass_prestige']; excluded for n < 5: [])",
+      "cell_diagnostics": {
+        "cell_a_designer_niche": {
+          "n_post_attrition": 8,
+          "mention_concentration_top2": 0.44642857142857145,
+          "phase_d_rho": 0.24743582965269675
+        },
+        "cell_b_indie_artisan": {
+          "n_post_attrition": 8,
+          "mention_concentration_top2": 1.0,
+          "phase_d_rho": 0.43355498476206006
+        },
+        "cell_c_mass_prestige": {
+          "n_post_attrition": 8,
+          "mention_concentration_top2": 0.6875,
+          "phase_d_rho": 0.6151246852292456
+        }
+      },
+      "C1_check": {
+        "total_n_post_attrition": 24,
+        "floor": 12,
+        "satisfied": true
+      },
+      "C2_within_cell_check": {
+        "threshold": 0.5,
+        "cells_meeting_threshold": [
+          "cell_b_indie_artisan",
+          "cell_c_mass_prestige"
+        ],
+        "satisfied": true
+      },
+      "C2_il_gradient_check": {
+        "cell_b_top2_share": 1.0,
+        "cell_c_top2_share": 0.6875,
+        "separation": 0.3125,
+        "min_required": 0.1,
+        "satisfied": true
+      },
+      "C3_check": {
+        "threshold_per_cell": 0.5,
+        "cells_clearing": [
+          "cell_c_mass_prestige"
+        ],
+        "cells_excluded_n_floor": [],
+        "min_cells_clearing_required": 2,
+        "satisfied": false
+      }
+    },
+    "H_IdentityLoad_moderator": {
+      "joint_verdict": "PARTIAL",
+      "predecessor_legs": {
+        "v0.16": "PARTIAL",
+        "v0.17": "FALSIFIED"
+      },
+      "v0_18_leg": "PARTIAL",
+      "narrative": "Moderator operates but bounded; substrate-specific qualifications"
+    },
+    "H_Recognition_Recall_dissociation_generalization": {
+      "verdict": "DISSOCIATION_PARTIAL",
+      "narrative": "Cases present but cell-clustered (2/3 cells)",
+      "cases_per_cell": {
+        "cell_a_designer_niche": [
+          {
+            "brand": "Comme des Garçons Parfums",
+            "c_p_score": 5,
+            "mention_count": 2
+          },
+          {
+            "brand": "Memo Paris",
+            "c_p_score": 6,
+            "mention_count": 0
+          },
+          {
+            "brand": "Etat Libre d'Orange",
+            "c_p_score": 6,
+            "mention_count": 1
+          }
+        ],
+        "cell_b_indie_artisan": [
+          {
+            "brand": "D.S. & Durga",
+            "c_p_score": 6,
+            "mention_count": 2
+          },
+          {
+            "brand": "Boy Smells",
+            "c_p_score": 5,
+            "mention_count": 0
+          },
+          {
+            "brand": "Heretic Parfum",
+            "c_p_score": 6,
+            "mention_count": 0
+          },
+          {
+            "brand": "Vyrao",
+            "c_p_score": 6,
+            "mention_count": 0
+          },
+          {
+            "brand": "Phlur",
+            "c_p_score": 5,
+            "mention_count": 0
+          },
+          {
+            "brand": "Snif",
+            "c_p_score": 5,
+            "mention_count": 0
+          }
+        ],
+        "cell_c_mass_prestige": []
+      },
+      "total_cases": 9
+    }
+  }
+}

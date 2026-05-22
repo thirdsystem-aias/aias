@@ -1,0 +1,102 @@
+{
+  "search_metadata": {
+    "id": "6a013f6fb9e869e2cadbb36b",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/iIHlObFgFU9eMzOeYyJfwg/6a013f6fb9e869e2cadbb36b.json",
+    "created_at": "2026-05-11 02:31:11 UTC",
+    "processed_at": "2026-05-11 02:31:11 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22On+Cloud+running+shoes%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-01+2026-04-07%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/iIHlObFgFU9eMzOeYyJfwg/6a013f6fb9e869e2cadbb36b.html",
+    "prettify_html_file": "https://serpapi.com/searches/iIHlObFgFU9eMzOeYyJfwg/6a013f6fb9e869e2cadbb36b.prettify",
+    "total_time_taken": 3.51
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "On Cloud running shoes",
+    "hl": "en",
+    "date": "2026-04-01 2026-04-07",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 1, 2026",
+        "timestamp": "1775001600",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "100",
+            "extracted_value": 100
+          }
+        ]
+      },
+      {
+        "date": "Apr 2, 2026",
+        "timestamp": "1775088000",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "80",
+            "extracted_value": 80
+          }
+        ]
+      },
+      {
+        "date": "Apr 3, 2026",
+        "timestamp": "1775174400",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "89",
+            "extracted_value": 89
+          }
+        ]
+      },
+      {
+        "date": "Apr 4, 2026",
+        "timestamp": "1775260800",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "100",
+            "extracted_value": 100
+          }
+        ]
+      },
+      {
+        "date": "Apr 5, 2026",
+        "timestamp": "1775347200",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "85",
+            "extracted_value": 85
+          }
+        ]
+      },
+      {
+        "date": "Apr 6, 2026",
+        "timestamp": "1775433600",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "79",
+            "extracted_value": 79
+          }
+        ]
+      },
+      {
+        "date": "Apr 7, 2026",
+        "timestamp": "1775520000",
+        "values": [
+          {
+            "query": "On Cloud running shoes",
+            "value": "77",
+            "extracted_value": 77
+          }
+        ]
+      }
+    ]
+  }
+}

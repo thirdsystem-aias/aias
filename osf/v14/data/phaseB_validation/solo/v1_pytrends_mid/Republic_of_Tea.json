@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Republic of Tea",
+  "category": "premium_tea",
+  "query": "/m/02ryyk",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T13:13:32.927113+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 26
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 82
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 34
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 30
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 28
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 30
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 47.14,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

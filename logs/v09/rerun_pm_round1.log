@@ -1,0 +1,11 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/pm/results_v2_pm_20260507_015558.csv
+Category: pm
+Filter:   all providers
+Total rows in source: 288
+Cells to retry:       55
+Started:  2026-05-07T06:34:58
+==============================================================================
+  [  1/55] p4_identity        | openai_flagship      | run 8 -> FAILED [rate_limit_final] after 4 attempts (33.1s)
+  [  2/55] p5_discovery       | openai_mini          | run 1 

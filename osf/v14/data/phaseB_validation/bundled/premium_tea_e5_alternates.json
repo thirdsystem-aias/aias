@@ -1,0 +1,68 @@
+{
+  "category": "premium_tea",
+  "bundle_label": "alternates",
+  "queries": [
+    "Twinings",
+    "Wang De Chuan",
+    "In Pursuit of Tea"
+  ],
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "member_names": [
+    "Twinings",
+    "Wang De Chuan",
+    "In Pursuit of Tea"
+  ],
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T15:45:02.945397+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        83,
+        90,
+        76,
+        96,
+        86,
+        86,
+        100
+      ],
+      "max": 100,
+      "mean": 88.14,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    },
+    {
+      "slot": 2,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    }
+  ]
+}

@@ -1,0 +1,466 @@
+{
+  "meta": {
+    "generated_at": "2026-05-12T21:11:09.667077+00:00",
+    "v0_14_prereg_tag": "v0.14-prereg",
+    "matched_models": [
+      "claude-sonnet-4-6",
+      "gpt-5.4-mini"
+    ],
+    "n_responses_t1": 48,
+    "n_responses_t2": 48,
+    "wave_split": {
+      "t1_runs": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "t2_runs": [
+        5,
+        6,
+        7,
+        8
+      ]
+    },
+    "e1a_exclusions": [
+      "Glenburn Tea Estate",
+      "In Pursuit of Tea",
+      "Makaibari",
+      "Postcard Teas",
+      "Ten Ren's Tea",
+      "TenFu's Tea",
+      "Vahdam Teas",
+      "Wang De Chuan"
+    ],
+    "tested_not_activated": []
+  },
+  "primary_analysis": {
+    "correlations": {
+      "ww_t1": {
+        "n": 17,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Tea Box",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": -0.06647556869524313,
+        "spearman_p_two_tailed": 0.7998907691114027,
+        "spearman_p_one_tailed": 0.6000546154442987,
+        "pearson_r": -0.21721810964687627,
+        "pearson_p_two_tailed": 0.4023326219119553,
+        "partial_spearman_rho": -0.08437196308266863,
+        "partial_spearman_p_one_tailed": 0.6175129988210797,
+        "ai_age_rho": 0.018197866261903763,
+        "ai_age_p_two_tailed": 0.944733533783314
+      },
+      "ww_t2": {
+        "n": 17,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Tea Box",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": -0.13415509086484223,
+        "spearman_p_two_tailed": 0.6077176816296924,
+        "spearman_p_one_tailed": 0.6961411591851538,
+        "pearson_r": -0.20093818497273347,
+        "pearson_p_two_tailed": 0.4393319992108536,
+        "partial_spearman_rho": -0.14586566150382185,
+        "partial_spearman_p_one_tailed": 0.6980196877660483,
+        "ai_age_rho": -0.019088800231584994,
+        "ai_age_p_two_tailed": 0.9420319603719696
+      },
+      "us_t1": {
+        "n": 16,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Tea Pigs",
+          "Tea Box",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": -0.07624349092751845,
+        "spearman_p_two_tailed": 0.7789840094747037,
+        "spearman_p_one_tailed": 0.6105079952626482,
+        "pearson_r": -0.14850704828275238,
+        "pearson_p_two_tailed": 0.5830733253595125,
+        "partial_spearman_rho": -0.10136785715181579,
+        "partial_spearman_p_one_tailed": 0.6348820376146342,
+        "ai_age_rho": 0.08752014573004704,
+        "ai_age_p_two_tailed": 0.7472240309487502
+      },
+      "us_t2": {
+        "n": 17,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Tea Box",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": 0.011077025851225504,
+        "spearman_p_two_tailed": 0.9663441547041806,
+        "spearman_p_one_tailed": 0.4831720773520903,
+        "pearson_r": -0.1078184531819813,
+        "pearson_p_two_tailed": 0.6804199451146898,
+        "partial_spearman_rho": 0.03287253765682524,
+        "partial_spearman_p_one_tailed": 0.453707423284764,
+        "ai_age_rho": -0.019088800231584994,
+        "ai_age_p_two_tailed": 0.9420319603719696
+      }
+    },
+    "hypotheses": {
+      "H1": {
+        "status": "FALSIFIED",
+        "threshold_rho": 0.5,
+        "threshold_p": 0.05,
+        "rho_t1": -0.06647556869524313,
+        "rho_t2": -0.13415509086484223,
+        "p_t1": 0.6000546154442987,
+        "p_t2": 0.6961411591851538,
+        "rationale": "t1: \u03c1=-0.066, p1t=0.6001. t2: \u03c1=-0.134, p1t=0.6961."
+      },
+      "H2": {
+        "status": "CONFIRMED",
+        "rho_t1": -0.06647556869524313,
+        "rho_t2": -0.13415509086484223,
+        "abs_delta_rho": 0.0676795221695991,
+        "threshold": 0.15,
+        "rationale": "|\u0394\u03c1| = 0.068 \u2264 0.15"
+      },
+      "H3": {
+        "per_wave": {
+          "t1": {
+            "top3_ai": [
+              "Harney & Sons",
+              "Yunnan Sourcing",
+              "Rishi Tea"
+            ],
+            "top5_trends": [
+              "Tea Box",
+              "Twinings",
+              "Harney & Sons",
+              "Ito En",
+              "Republic of Tea"
+            ],
+            "top3_in_top5": [
+              "Harney & Sons"
+            ],
+            "n_in_top5": 1
+          },
+          "t2": {
+            "top3_ai": [
+              "Yunnan Sourcing",
+              "Harney & Sons",
+              "Rishi Tea"
+            ],
+            "top5_trends": [
+              "Tea Box",
+              "Twinings",
+              "Harney & Sons",
+              "Republic of Tea",
+              "Ito En"
+            ],
+            "top3_in_top5": [
+              "Harney & Sons"
+            ],
+            "n_in_top5": 1
+          }
+        },
+        "status_per_wave": {
+          "t1": "FALSIFIED",
+          "t2": "FALSIFIED"
+        },
+        "status": "FALSIFIED"
+      },
+      "H4": {
+        "status": "FALSIFIED",
+        "threshold_rho": 0.5,
+        "threshold_p": 0.05,
+        "partial_rho_t1": -0.08437196308266863,
+        "partial_rho_t2": -0.14586566150382185,
+        "p_t1": 0.6175129988210797,
+        "p_t2": 0.6980196877660483,
+        "rationale": "t1: \u03c1=-0.084, p1t=0.6175. t2: \u03c1=-0.146, p1t=0.6980."
+      },
+      "H1_us": {
+        "status": "FALSIFIED",
+        "threshold_rho": 0.5,
+        "threshold_p": 0.05,
+        "rho_t1": -0.07624349092751845,
+        "rho_t2": 0.011077025851225504,
+        "p_t1": 0.6105079952626482,
+        "p_t2": 0.4831720773520903,
+        "rationale": "t1: \u03c1=-0.076, p1t=0.6105. t2: \u03c1=0.011, p1t=0.4832."
+      },
+      "H7": {
+        "regime_class": "Regime 4 candidate (matches neither Regime 1 nor 2)",
+        "boundary_flag": false,
+        "unclassifiable_flag": true,
+        "rationale": "\u03c1_t1=-0.066, \u03c1_t2=-0.134, partial_\u03c1_t1=-0.084, partial_\u03c1_t2=-0.146, \u0394_t1=0.018, \u0394_t2=0.012, n_t1=17, n_t2=17.",
+        "bivariate_rho_t1": -0.06647556869524313,
+        "bivariate_rho_t2": -0.13415509086484223,
+        "partial_rho_t1": -0.08437196308266863,
+        "partial_rho_t2": -0.14586566150382185,
+        "decrement_t1": 0.017896394387425504,
+        "decrement_t2": 0.011710570638979623,
+        "n_eligible_t1": 17,
+        "n_eligible_t2": 17
+      },
+      "H_Regime4_replication": {
+        "label": "primary",
+        "status": "CONFIRMED",
+        "status_age_version": "CONFIRMED",
+        "condition_1_n_floor": {
+          "n_t1": 17,
+          "n_t2": 17,
+          "threshold": 12,
+          "satisfied": true
+        },
+        "condition_2_trends": {
+          "bivariate_rho_t1": -0.06647556869524313,
+          "bivariate_rho_t2": -0.13415509086484223,
+          "threshold": 0.35,
+          "satisfied": true,
+          "interpretation": "v0.13-canonical: AI Presence ~ Trends correlation"
+        },
+        "condition_2_age": {
+          "ai_age_rho_t1": 0.018197866261903763,
+          "ai_age_rho_t2": -0.019088800231584994,
+          "threshold": 0.35,
+          "satisfied": true,
+          "interpretation": "Pre-reg literal: AI Presence ~ brand age correlation"
+        },
+        "condition_3_partial": {
+          "partial_rho_t1": -0.08437196308266863,
+          "partial_rho_t2": -0.14586566150382185,
+          "threshold": 0.0,
+          "satisfied": true,
+          "interpretation": "Partial AI~Trends controlling for age + premium_tier"
+        },
+        "rationale": "C1 (n\u226512 both waves): True (n_t1=17, n_t2=17). C2_trends (|\u03c1_AI~Trends|<0.35): True (t1=-0.066, t2=-0.134). C2_age (|\u03c1_AI~age|<0.35): True (t1=0.018, t2=-0.019). C3 (partial<0.0): True (t1=-0.084, t2=-0.146). Primary status uses C1+C2_trends+C3."
+      }
+    }
+  },
+  "tea_box_excluded_sensitivity": {
+    "correlations": {
+      "ww_t1": {
+        "n": 16,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": -0.01058615131099015,
+        "spearman_p_two_tailed": 0.968961827790504,
+        "spearman_p_one_tailed": 0.5155190861047481,
+        "pearson_r": -0.11573401713492783,
+        "pearson_p_two_tailed": 0.6695082572355829,
+        "partial_spearman_rho": -0.0049218293008662095,
+        "partial_spearman_p_one_tailed": 0.5066615039076654,
+        "ai_age_rho": -0.0143774952135111,
+        "ai_age_p_two_tailed": 0.9578537365320422
+      },
+      "ww_t2": {
+        "n": 16,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": -0.12860482541018173,
+        "spearman_p_two_tailed": 0.635022082450237,
+        "spearman_p_one_tailed": 0.6824889587748815,
+        "pearson_r": -0.14247935460912634,
+        "pearson_p_two_tailed": 0.598620392065316,
+        "partial_spearman_rho": -0.12950463462790554,
+        "partial_spearman_p_one_tailed": 0.6704842999015266,
+        "ai_age_rho": -0.04955670102205064,
+        "ai_age_p_two_tailed": 0.8553803696583194
+      },
+      "us_t1": {
+        "n": 15,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Tea Pigs",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": 0.00910929680983241,
+        "spearman_p_two_tailed": 0.974296818293851,
+        "spearman_p_one_tailed": 0.4871484091469255,
+        "pearson_r": 0.13341424892797127,
+        "pearson_p_two_tailed": 0.6354906509589696,
+        "partial_spearman_rho": -0.004119580792148594,
+        "partial_spearman_p_one_tailed": 0.5053283348828758,
+        "ai_age_rho": 0.0446754609960589,
+        "ai_age_p_two_tailed": 0.8743827238430748
+      },
+      "us_t2": {
+        "n": 16,
+        "brands": [
+          "TWG Tea",
+          "Jing Tea",
+          "Ippodo Tea",
+          "Marukyu Koyamaen",
+          "Lupicia",
+          "Ito En",
+          "Twinings",
+          "Fortnum & Mason",
+          "Whittard of Chelsea",
+          "Tea Pigs",
+          "Harney & Sons",
+          "Rishi Tea",
+          "Numi Organic Tea",
+          "Smith Teamaker",
+          "Republic of Tea",
+          "Yunnan Sourcing"
+        ],
+        "spearman_rho": 0.04286827513672724,
+        "spearman_p_two_tailed": 0.8747445428007914,
+        "spearman_p_one_tailed": 0.4373722714003957,
+        "pearson_r": 0.09377931979422566,
+        "pearson_p_two_tailed": 0.7297552131913939,
+        "partial_spearman_rho": 0.101332009640939,
+        "partial_spearman_p_one_tailed": 0.36516404127253865,
+        "ai_age_rho": -0.04955670102205064,
+        "ai_age_p_two_tailed": 0.8553803696583194
+      }
+    },
+    "H7": {
+      "regime_class": "Regime 4 candidate (matches neither Regime 1 nor 2)",
+      "boundary_flag": false,
+      "unclassifiable_flag": true,
+      "rationale": "\u03c1_t1=-0.011, \u03c1_t2=-0.129, partial_\u03c1_t1=-0.005, partial_\u03c1_t2=-0.130, \u0394_t1=-0.006, \u0394_t2=0.001, n_t1=16, n_t2=16.",
+      "bivariate_rho_t1": -0.01058615131099015,
+      "bivariate_rho_t2": -0.12860482541018173,
+      "partial_rho_t1": -0.0049218293008662095,
+      "partial_rho_t2": -0.12950463462790554,
+      "decrement_t1": -0.005664322010123941,
+      "decrement_t2": 0.0008998092177238126,
+      "n_eligible_t1": 16,
+      "n_eligible_t2": 16
+    },
+    "H_Regime4_replication": {
+      "label": "tea_box_excluded",
+      "status": "CONFIRMED",
+      "status_age_version": "CONFIRMED",
+      "condition_1_n_floor": {
+        "n_t1": 16,
+        "n_t2": 16,
+        "threshold": 12,
+        "satisfied": true
+      },
+      "condition_2_trends": {
+        "bivariate_rho_t1": -0.01058615131099015,
+        "bivariate_rho_t2": -0.12860482541018173,
+        "threshold": 0.35,
+        "satisfied": true,
+        "interpretation": "v0.13-canonical: AI Presence ~ Trends correlation"
+      },
+      "condition_2_age": {
+        "ai_age_rho_t1": -0.0143774952135111,
+        "ai_age_rho_t2": -0.04955670102205064,
+        "threshold": 0.35,
+        "satisfied": true,
+        "interpretation": "Pre-reg literal: AI Presence ~ brand age correlation"
+      },
+      "condition_3_partial": {
+        "partial_rho_t1": -0.0049218293008662095,
+        "partial_rho_t2": -0.12950463462790554,
+        "threshold": 0.0,
+        "satisfied": true,
+        "interpretation": "Partial AI~Trends controlling for age + premium_tier"
+      },
+      "rationale": "C1 (n\u226512 both waves): True (n_t1=16, n_t2=16). C2_trends (|\u03c1_AI~Trends|<0.35): True (t1=-0.011, t2=-0.129). C2_age (|\u03c1_AI~age|<0.35): True (t1=-0.014, t2=-0.050). C3 (partial<0.0): True (t1=-0.005, t2=-0.130). Primary status uses C1+C2_trends+C3."
+    }
+  }
+}

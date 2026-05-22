@@ -1,0 +1,256 @@
+{
+  "meta": {
+    "generated_at": "2026-05-10T12:44:49.103189+00:00",
+    "v0_11_prereg_lock_commit": "f20ade8",
+    "n_brands_in_registry": 19,
+    "n_brands_after_e1a": 18,
+    "pivot_brand": "Asana",
+    "ai_presence_source": {
+      "t1_file": "results_enriched_v06_20260507_181205.csv",
+      "t2_file": "results_enriched_v09_20260507_181205.csv",
+      "matched_models": [
+        "claude-sonnet-4-6",
+        "gpt-5.4-mini"
+      ],
+      "n_responses_t1": 96,
+      "n_responses_t2": 96
+    }
+  },
+  "n_floor": {
+    "threshold": 16,
+    "ww_t1": 17,
+    "ww_t2": 18,
+    "us_t1": 17,
+    "us_t2": 17,
+    "ww_t1_pass": true,
+    "ww_t2_pass": true
+  },
+  "correlations": {
+    "ww_t1": {
+      "n": 17,
+      "spearman_rho": 0.4960015498461296,
+      "spearman_p_two_tailed": 0.04287466090688567,
+      "spearman_p_one_tailed": 0.021437330453442836,
+      "pearson_r": 0.5436784614545029,
+      "pearson_p_two_tailed": 0.02408151865062155,
+      "pearson_p_one_tailed": 0.012040759325310775,
+      "partial_spearman_rho": 0.40655883900358,
+      "partial_spearman_p_one_tailed": 0.06631093220063222
+    },
+    "ww_t2": {
+      "n": 18,
+      "spearman_rho": 0.47648636077957707,
+      "spearman_p_two_tailed": 0.045594990126048,
+      "spearman_p_one_tailed": 0.022797495063024,
+      "pearson_r": 0.5334384476595588,
+      "pearson_p_two_tailed": 0.022618547865366913,
+      "pearson_p_one_tailed": 0.011309273932683456,
+      "partial_spearman_rho": 0.4283469524088057,
+      "partial_spearman_p_one_tailed": 0.04892938955175996
+    },
+    "us_t1": {
+      "n": 17,
+      "spearman_rho": 0.4885985416394709,
+      "spearman_p_two_tailed": 0.046579037817273995,
+      "spearman_p_one_tailed": 0.023289518908636998,
+      "pearson_r": 0.5605155415785312,
+      "pearson_p_two_tailed": 0.019261435924167035,
+      "pearson_p_one_tailed": 0.009630717962083517,
+      "partial_spearman_rho": 0.40721574631764335,
+      "partial_spearman_p_one_tailed": 0.06596838278630812
+    },
+    "us_t2": {
+      "n": 17,
+      "spearman_rho": 0.4554949406227032,
+      "spearman_p_two_tailed": 0.06615406639636676,
+      "spearman_p_one_tailed": 0.03307703319818338,
+      "pearson_r": 0.5295843140099934,
+      "pearson_p_two_tailed": 0.02879393753933215,
+      "pearson_p_one_tailed": 0.014396968769666075,
+      "partial_spearman_rho": 0.3729620669882216,
+      "partial_spearman_p_one_tailed": 0.08547198187993288
+    }
+  },
+  "brands_per_wave": {
+    "ww_t1": [
+      "Asana",
+      "Monday",
+      "Jira",
+      "Trello",
+      "Confluence",
+      "Notion",
+      "ClickUp",
+      "Smartsheet",
+      "Wrike",
+      "Airtable",
+      "Basecamp",
+      "Coda",
+      "Workfront",
+      "Linear",
+      "Motion",
+      "Todoist",
+      "GitHub Projects"
+    ],
+    "ww_t2": [
+      "Asana",
+      "Monday",
+      "Jira",
+      "Trello",
+      "Confluence",
+      "Notion",
+      "ClickUp",
+      "Smartsheet",
+      "Wrike",
+      "Airtable",
+      "Basecamp",
+      "Coda",
+      "Workfront",
+      "Linear",
+      "Height",
+      "Motion",
+      "Todoist",
+      "GitHub Projects"
+    ],
+    "us_t1": [
+      "Asana",
+      "Monday",
+      "Jira",
+      "Trello",
+      "Confluence",
+      "Notion",
+      "ClickUp",
+      "Smartsheet",
+      "Wrike",
+      "Airtable",
+      "Basecamp",
+      "Coda",
+      "Workfront",
+      "Linear",
+      "Motion",
+      "Todoist",
+      "GitHub Projects"
+    ],
+    "us_t2": [
+      "Asana",
+      "Monday",
+      "Jira",
+      "Trello",
+      "Confluence",
+      "Notion",
+      "ClickUp",
+      "Smartsheet",
+      "Wrike",
+      "Airtable",
+      "Basecamp",
+      "Coda",
+      "Workfront",
+      "Linear",
+      "Motion",
+      "Todoist",
+      "GitHub Projects"
+    ]
+  },
+  "hypotheses": {
+    "H1_primary": {
+      "status": "FALSIFIED",
+      "threshold_rho": 0.5,
+      "threshold_p": 0.05,
+      "rho_t1": 0.4960015498461296,
+      "rho_t2": 0.47648636077957707,
+      "p_t1_one_tailed": 0.021437330453442836,
+      "p_t2_one_tailed": 0.022797495063024,
+      "pass_t1": false,
+      "pass_t2": false,
+      "rationale": "t1: \u03c1=0.496 (>0.5? False), p1t=0.0214 (<0.05? True). t2: \u03c1=0.476, p1t=0.0228."
+    },
+    "H2": {
+      "status": "CONFIRMED",
+      "rho_t1": 0.4960015498461296,
+      "rho_t2": 0.47648636077957707,
+      "abs_delta_rho": 0.01951518906655253,
+      "threshold": 0.15,
+      "rationale": "|\u0394\u03c1| = |0.476 \u2212 0.496| = 0.020 \u2264 0.15"
+    },
+    "H3": {
+      "per_wave": {
+        "t1": {
+          "top3_ai": [
+            "Linear",
+            "Asana",
+            "Notion"
+          ],
+          "top5_trends": [
+            "Notion",
+            "Jira",
+            "Trello",
+            "ClickUp",
+            "Confluence"
+          ],
+          "top3_in_top5": [
+            "Notion"
+          ],
+          "n_in_top5": 1
+        },
+        "t2": {
+          "top3_ai": [
+            "Linear",
+            "Asana",
+            "Jira"
+          ],
+          "top5_trends": [
+            "Notion",
+            "Jira",
+            "Trello",
+            "ClickUp",
+            "Confluence"
+          ],
+          "top3_in_top5": [
+            "Jira"
+          ],
+          "n_in_top5": 1
+        }
+      },
+      "status_per_wave": {
+        "t1": "FALSIFIED",
+        "t2": "FALSIFIED"
+      },
+      "status": "FALSIFIED"
+    },
+    "H4": {
+      "status": "FALSIFIED",
+      "threshold_rho": 0.5,
+      "threshold_p": 0.05,
+      "partial_rho_t1": 0.40655883900358,
+      "partial_rho_t2": 0.4283469524088057,
+      "p_t1_one_tailed": 0.06631093220063222,
+      "p_t2_one_tailed": 0.04892938955175996,
+      "pass_t1": false,
+      "pass_t2": false,
+      "rationale": "t1: \u03c1=0.407 (>0.5? False), p1t=0.0663 (<0.05? False). t2: \u03c1=0.428, p1t=0.0489."
+    },
+    "H1_us_sensitivity": {
+      "status": "FALSIFIED",
+      "threshold_rho": 0.5,
+      "threshold_p": 0.05,
+      "rho_t1": 0.4885985416394709,
+      "rho_t2": 0.4554949406227032,
+      "p_t1_one_tailed": 0.023289518908636998,
+      "p_t2_one_tailed": 0.03307703319818338,
+      "pass_t1": false,
+      "pass_t2": false,
+      "rationale": "t1: \u03c1=0.489 (>0.5? False), p1t=0.0233 (<0.05? True). t2: \u03c1=0.455, p1t=0.0331."
+    },
+    "H1_pearson_sensitivity": {
+      "status": "CONFIRMED",
+      "threshold_rho": 0.5,
+      "threshold_p": 0.05,
+      "r_t1": 0.5436784614545029,
+      "r_t2": 0.5334384476595588,
+      "p_t1_one_tailed": 0.012040759325310775,
+      "p_t2_one_tailed": 0.011309273932683456,
+      "pass_t1": true,
+      "pass_t2": true,
+      "rationale": "t1: \u03c1=0.544 (>0.5? True), p1t=0.0120 (<0.05? True). t2: \u03c1=0.533, p1t=0.0113."
+    }
+  }
+}

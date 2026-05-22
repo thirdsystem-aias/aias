@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Olay",
+  "category": "skincare",
+  "query": "/m/07d8ml",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-11T21:31:19.594222+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 37
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 37
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 34
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 38
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 38
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 40
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 100
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 46.29,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

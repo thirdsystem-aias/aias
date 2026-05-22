@@ -1,0 +1,17 @@
+scope,hypothesis,status,rationale
+pmsoftware,H1_primary,FALSIFIED,"t1: ρ=0.506 (>0.5? True), p1t=0.0191 (<0.05? True). t2: ρ=0.482, p1t=0.0215."
+pmsoftware,H2,CONFIRMED,|Δρ| = |0.482 − 0.506| = 0.024 ≤ 0.15
+pmsoftware,H3,FALSIFIED,
+pmsoftware,H4,FALSIFIED,"t1: ρ=0.417 (>0.5? False), p1t=0.0610 (<0.05? False). t2: ρ=0.434, p1t=0.0465."
+pmsoftware,H1_us_sensitivity,FALSIFIED,"t1: ρ=0.482 (>0.5? False), p1t=0.0249 (<0.05? True). t2: ρ=0.417, p1t=0.0479."
+pmsoftware,H1_pearson_sensitivity,CONFIRMED,"t1: ρ=0.546 (>0.5? True), p1t=0.0116 (<0.05? True). t2: ρ=0.533, p1t=0.0114."
+oliveoil,H1-H4,INDETERMINATE,Descriptive-only per pre-reg §3.4a (n-floor breached)
+running,H1_primary,CONFIRMED,"t1: ρ=0.808 (>0.5? True), p1t=0.0007 (<0.05? True). t2: ρ=0.786, p1t=0.0012."
+running,H2,CONFIRMED,|Δρ| = |0.786 − 0.808| = 0.022 ≤ 0.15
+running,H3,FALSIFIED,
+running,H4,FALSIFIED,"t1: ρ=0.466 (>0.5? False), p1t=0.0873 (<0.05? False). t2: ρ=0.488, p1t=0.0764."
+running,H1_us_sensitivity,CONFIRMED,"t1: ρ=0.779 (>0.5? True), p1t=0.0014 (<0.05? True). t2: ρ=0.526, p1t=0.0394."
+running,H1_pearson_sensitivity,FALSIFIED,"t1: ρ=0.483 (>0.5? False), p1t=0.0560 (<0.05? False). t2: ρ=0.491, p1t=0.0526."
+running,H1_raw_strict_sensitivity,INDETERMINATE,"n-floor breached: t1 n=7, t2 n=7 (hard floor=10)"
+cross_category,H5,FALSIFIED,0 of 2 applicable categories show v0.11 signature (2-of-2 required)
+cross_category,H6,FALSIFIED,1 of 2 applicable categories confirm H6a (2-of-2 required)

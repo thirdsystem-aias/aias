@@ -1,0 +1,482 @@
+{
+  "search_metadata": {
+    "id": "6a034d9de6590e677ec6763e",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/C0kvSCJLEW4VtW9HDcYKuQ/6a034d9de6590e677ec6763e.json",
+    "created_at": "2026-05-12 15:56:13 UTC",
+    "processed_at": "2026-05-12 15:56:13 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22Twinings%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22Rishi+Tea%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22Numi+Organic+Tea%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22Smith+Teamaker%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22Republic+of+Tea%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/C0kvSCJLEW4VtW9HDcYKuQ/6a034d9de6590e677ec6763e.html",
+    "prettify_html_file": "https://serpapi.com/searches/C0kvSCJLEW4VtW9HDcYKuQ/6a034d9de6590e677ec6763e.prettify",
+    "total_time_taken": 1.38
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "Twinings,Rishi Tea,Numi Organic Tea,Smith Teamaker,Republic of Tea",
+    "hl": "en",
+    "geo": "US",
+    "date": "2026-04-27 2026-05-10",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 27, 2026",
+        "timestamp": "1777248000",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "76",
+            "extracted_value": 76
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "85",
+            "extracted_value": 85
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "0",
+            "extracted_value": 0
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "0",
+            "extracted_value": 0
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "100",
+            "extracted_value": 100
+          }
+        ]
+      },
+      {
+        "date": "Apr 28, 2026",
+        "timestamp": "1777334400",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "65",
+            "extracted_value": 65
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "41",
+            "extracted_value": 41
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "10",
+            "extracted_value": 10
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "49",
+            "extracted_value": 49
+          }
+        ]
+      },
+      {
+        "date": "Apr 29, 2026",
+        "timestamp": "1777420800",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "51",
+            "extracted_value": 51
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "42",
+            "extracted_value": 42
+          }
+        ]
+      },
+      {
+        "date": "Apr 30, 2026",
+        "timestamp": "1777507200",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "50",
+            "extracted_value": 50
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "37",
+            "extracted_value": 37
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "45",
+            "extracted_value": 45
+          }
+        ]
+      },
+      {
+        "date": "May 1, 2026",
+        "timestamp": "1777593600",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "44",
+            "extracted_value": 44
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "34",
+            "extracted_value": 34
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "3",
+            "extracted_value": 3
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "43",
+            "extracted_value": 43
+          }
+        ]
+      },
+      {
+        "date": "May 2, 2026",
+        "timestamp": "1777680000",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "49",
+            "extracted_value": 49
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "38",
+            "extracted_value": 38
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "41",
+            "extracted_value": 41
+          }
+        ]
+      },
+      {
+        "date": "May 3, 2026",
+        "timestamp": "1777766400",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "57",
+            "extracted_value": 57
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "44",
+            "extracted_value": 44
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "48",
+            "extracted_value": 48
+          }
+        ]
+      },
+      {
+        "date": "May 4, 2026",
+        "timestamp": "1777852800",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "52",
+            "extracted_value": 52
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "36",
+            "extracted_value": 36
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "44",
+            "extracted_value": 44
+          }
+        ]
+      },
+      {
+        "date": "May 5, 2026",
+        "timestamp": "1777939200",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "44",
+            "extracted_value": 44
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "35",
+            "extracted_value": 35
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "46",
+            "extracted_value": 46
+          }
+        ]
+      },
+      {
+        "date": "May 6, 2026",
+        "timestamp": "1778025600",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "48",
+            "extracted_value": 48
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "36",
+            "extracted_value": 36
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "46",
+            "extracted_value": 46
+          }
+        ]
+      },
+      {
+        "date": "May 7, 2026",
+        "timestamp": "1778112000",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "53",
+            "extracted_value": 53
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "41",
+            "extracted_value": 41
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "4",
+            "extracted_value": 4
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "53",
+            "extracted_value": 53
+          }
+        ]
+      },
+      {
+        "date": "May 8, 2026",
+        "timestamp": "1778198400",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "56",
+            "extracted_value": 56
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "40",
+            "extracted_value": 40
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "5",
+            "extracted_value": 5
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "6",
+            "extracted_value": 6
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "43",
+            "extracted_value": 43
+          }
+        ]
+      },
+      {
+        "date": "May 9, 2026",
+        "timestamp": "1778284800",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "75",
+            "extracted_value": 75
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "47",
+            "extracted_value": 47
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "9",
+            "extracted_value": 9
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "47",
+            "extracted_value": 47
+          }
+        ]
+      },
+      {
+        "date": "May 10, 2026",
+        "timestamp": "1778371200",
+        "values": [
+          {
+            "query": "Twinings",
+            "value": "52",
+            "extracted_value": 52
+          },
+          {
+            "query": "Rishi Tea",
+            "value": "50",
+            "extracted_value": 50
+          },
+          {
+            "query": "Numi Organic Tea",
+            "value": "7",
+            "extracted_value": 7
+          },
+          {
+            "query": "Smith Teamaker",
+            "value": "8",
+            "extracted_value": 8
+          },
+          {
+            "query": "Republic of Tea",
+            "value": "48",
+            "extracted_value": 48
+          }
+        ]
+      }
+    ],
+    "averages": [
+      {
+        "query": "Twinings",
+        "value": 55
+      },
+      {
+        "query": "Rishi Tea",
+        "value": 43
+      },
+      {
+        "query": "Numi Organic Tea",
+        "value": 5
+      },
+      {
+        "query": "Smith Teamaker",
+        "value": 6
+      },
+      {
+        "query": "Republic of Tea",
+        "value": 50
+      }
+    ]
+  }
+}

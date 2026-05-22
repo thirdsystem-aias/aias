@@ -1,0 +1,482 @@
+{
+  "search_metadata": {
+    "id": "6a01b2b3e6cb30cd2302aee9",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/s34SjZfgRU72GsAreJxl0A/6a01b2b3e6cb30cd2302aee9.json",
+    "created_at": "2026-05-11 10:42:59 UTC",
+    "processed_at": "2026-05-11 10:42:59 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22%2Fm%2F0c3z_p8%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22height+project+management%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22kanban%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22agile%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%2C%7B%22keyword%22%3A%22scrum%22%2C%22geo%22%3A%22US%22%2C%22time%22%3A%222026-04-27+2026-05-10%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/s34SjZfgRU72GsAreJxl0A/6a01b2b3e6cb30cd2302aee9.html",
+    "prettify_html_file": "https://serpapi.com/searches/s34SjZfgRU72GsAreJxl0A/6a01b2b3e6cb30cd2302aee9.prettify",
+    "total_time_taken": 6.45
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "/m/0c3z_p8,height project management,kanban,agile,scrum",
+    "hl": "en",
+    "geo": "US",
+    "date": "2026-04-27 2026-05-10",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 27, 2026",
+        "timestamp": "1777248000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "56",
+            "extracted_value": 56
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "20",
+            "extracted_value": 20
+          },
+          {
+            "query": "agile",
+            "value": "89",
+            "extracted_value": 89
+          },
+          {
+            "query": "scrum",
+            "value": "39",
+            "extracted_value": 39
+          }
+        ]
+      },
+      {
+        "date": "Apr 28, 2026",
+        "timestamp": "1777334400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "56",
+            "extracted_value": 56
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "31",
+            "extracted_value": 31
+          },
+          {
+            "query": "agile",
+            "value": "93",
+            "extracted_value": 93
+          },
+          {
+            "query": "scrum",
+            "value": "47",
+            "extracted_value": 47
+          }
+        ]
+      },
+      {
+        "date": "Apr 29, 2026",
+        "timestamp": "1777420800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "55",
+            "extracted_value": 55
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "20",
+            "extracted_value": 20
+          },
+          {
+            "query": "agile",
+            "value": "98",
+            "extracted_value": 98
+          },
+          {
+            "query": "scrum",
+            "value": "52",
+            "extracted_value": 52
+          }
+        ]
+      },
+      {
+        "date": "Apr 30, 2026",
+        "timestamp": "1777507200",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "53",
+            "extracted_value": 53
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "20",
+            "extracted_value": 20
+          },
+          {
+            "query": "agile",
+            "value": "93",
+            "extracted_value": 93
+          },
+          {
+            "query": "scrum",
+            "value": "46",
+            "extracted_value": 46
+          }
+        ]
+      },
+      {
+        "date": "May 1, 2026",
+        "timestamp": "1777593600",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "48",
+            "extracted_value": 48
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "19",
+            "extracted_value": 19
+          },
+          {
+            "query": "agile",
+            "value": "79",
+            "extracted_value": 79
+          },
+          {
+            "query": "scrum",
+            "value": "48",
+            "extracted_value": 48
+          }
+        ]
+      },
+      {
+        "date": "May 2, 2026",
+        "timestamp": "1777680000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "20",
+            "extracted_value": 20
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "10",
+            "extracted_value": 10
+          },
+          {
+            "query": "agile",
+            "value": "63",
+            "extracted_value": 63
+          },
+          {
+            "query": "scrum",
+            "value": "38",
+            "extracted_value": 38
+          }
+        ]
+      },
+      {
+        "date": "May 3, 2026",
+        "timestamp": "1777766400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "19",
+            "extracted_value": 19
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "12",
+            "extracted_value": 12
+          },
+          {
+            "query": "agile",
+            "value": "67",
+            "extracted_value": 67
+          },
+          {
+            "query": "scrum",
+            "value": "38",
+            "extracted_value": 38
+          }
+        ]
+      },
+      {
+        "date": "May 4, 2026",
+        "timestamp": "1777852800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "50",
+            "extracted_value": 50
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "20",
+            "extracted_value": 20
+          },
+          {
+            "query": "agile",
+            "value": "91",
+            "extracted_value": 91
+          },
+          {
+            "query": "scrum",
+            "value": "48",
+            "extracted_value": 48
+          }
+        ]
+      },
+      {
+        "date": "May 5, 2026",
+        "timestamp": "1777939200",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "54",
+            "extracted_value": 54
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "21",
+            "extracted_value": 21
+          },
+          {
+            "query": "agile",
+            "value": "90",
+            "extracted_value": 90
+          },
+          {
+            "query": "scrum",
+            "value": "44",
+            "extracted_value": 44
+          }
+        ]
+      },
+      {
+        "date": "May 6, 2026",
+        "timestamp": "1778025600",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "56",
+            "extracted_value": 56
+          },
+          {
+            "query": "height project management",
+            "value": "1",
+            "extracted_value": 1
+          },
+          {
+            "query": "kanban",
+            "value": "23",
+            "extracted_value": 23
+          },
+          {
+            "query": "agile",
+            "value": "100",
+            "extracted_value": 100
+          },
+          {
+            "query": "scrum",
+            "value": "49",
+            "extracted_value": 49
+          }
+        ]
+      },
+      {
+        "date": "May 7, 2026",
+        "timestamp": "1778112000",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "53",
+            "extracted_value": 53
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "22",
+            "extracted_value": 22
+          },
+          {
+            "query": "agile",
+            "value": "90",
+            "extracted_value": 90
+          },
+          {
+            "query": "scrum",
+            "value": "44",
+            "extracted_value": 44
+          }
+        ]
+      },
+      {
+        "date": "May 8, 2026",
+        "timestamp": "1778198400",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "49",
+            "extracted_value": 49
+          },
+          {
+            "query": "height project management",
+            "value": "<1",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "19",
+            "extracted_value": 19
+          },
+          {
+            "query": "agile",
+            "value": "85",
+            "extracted_value": 85
+          },
+          {
+            "query": "scrum",
+            "value": "43",
+            "extracted_value": 43
+          }
+        ]
+      },
+      {
+        "date": "May 9, 2026",
+        "timestamp": "1778284800",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "17",
+            "extracted_value": 17
+          },
+          {
+            "query": "height project management",
+            "value": "1",
+            "extracted_value": 1
+          },
+          {
+            "query": "kanban",
+            "value": "13",
+            "extracted_value": 13
+          },
+          {
+            "query": "agile",
+            "value": "58",
+            "extracted_value": 58
+          },
+          {
+            "query": "scrum",
+            "value": "26",
+            "extracted_value": 26
+          }
+        ]
+      },
+      {
+        "date": "May 10, 2026",
+        "timestamp": "1778371200",
+        "values": [
+          {
+            "query": "/m/0c3z_p8",
+            "value": "14",
+            "extracted_value": 14
+          },
+          {
+            "query": "height project management",
+            "value": "0",
+            "extracted_value": 0
+          },
+          {
+            "query": "kanban",
+            "value": "11",
+            "extracted_value": 11
+          },
+          {
+            "query": "agile",
+            "value": "54",
+            "extracted_value": 54
+          },
+          {
+            "query": "scrum",
+            "value": "25",
+            "extracted_value": 25
+          }
+        ]
+      }
+    ],
+    "averages": [
+      {
+        "query": "/m/0c3z_p8",
+        "value": 43
+      },
+      {
+        "query": "height project management",
+        "value": 0
+      },
+      {
+        "query": "kanban",
+        "value": 19
+      },
+      {
+        "query": "agile",
+        "value": 82
+      },
+      {
+        "query": "scrum",
+        "value": 42
+      }
+    ]
+  }
+}

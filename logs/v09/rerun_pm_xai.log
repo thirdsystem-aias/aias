@@ -1,0 +1,31 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/pm/results_v2_pm_20260507_015558.csv
+Category: pm
+Filter:   provider=xai
+Total rows in source: 288
+Cells to retry:       8
+Started:  2026-05-07T07:21:48
+==============================================================================
+  [  1/8] p6_comparison      | xai_grok             | run 1 -> OK (1 attempt, 27.9s)
+  [  2/8] p6_comparison      | xai_grok             | run 2 -> OK (1 attempt, 30.4s)
+  [  3/8] p6_comparison      | xai_grok             | run 3 -> OK (1 attempt, 30.5s)
+  [  4/8] p6_comparison      | xai_grok             | run 4 -> OK (1 attempt, 38.1s)
+  [  5/8] p6_comparison      | xai_grok             | run 5 -> OK (1 attempt, 30.2s)
+  [  6/8] p6_comparison      | xai_grok             | run 6 -> OK (1 attempt, 25.9s)
+  [  7/8] p6_comparison      | xai_grok             | run 7 -> OK (1 attempt, 34.1s)
+  [  8/8] p6_comparison      | xai_grok             | run 8 -> OK (1 attempt, 31.3s)
+
+==============================================================================
+Recovery complete. Saved 8 rows to data/pm/results_v2_pm_20260507_015558_rerun_xai_20260507_072612.csv
+  ok:                 8
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/pm/results_v2_pm_20260507_015558.csv
+  Recovery: data/pm/results_v2_pm_20260507_015558_rerun_xai_20260507_072612.csv
+  See merge step in your post-collection pipeline.
+==============================================================================

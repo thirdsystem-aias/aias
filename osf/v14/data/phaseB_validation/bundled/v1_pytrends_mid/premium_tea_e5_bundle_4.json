@@ -1,0 +1,50 @@
+{
+  "category": "premium_tea",
+  "bundle_id": 4,
+  "queries": [
+    "/m/088hqg",
+    "/g/11v61_b0p2"
+  ],
+  "member_names": [
+    "Twinings",
+    "Smith Teamaker"
+  ],
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T13:14:14.541326+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "slot_results": [
+    {
+      "slot": 0,
+      "daily": [
+        83,
+        100,
+        87,
+        90,
+        80,
+        84,
+        89
+      ],
+      "max": 100,
+      "mean": 87.57,
+      "all_zero": false
+    },
+    {
+      "slot": 1,
+      "daily": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "max": 0,
+      "mean": 0.0,
+      "all_zero": true
+    }
+  ]
+}

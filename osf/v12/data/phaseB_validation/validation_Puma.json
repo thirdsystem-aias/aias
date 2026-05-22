@@ -1,0 +1,102 @@
+{
+  "search_metadata": {
+    "id": "6a013f752f47f84d33dd500b",
+    "status": "Success",
+    "json_endpoint": "https://serpapi.com/searches/ggM6Tvsbw05LzcMqBguvnQ/6a013f752f47f84d33dd500b.json",
+    "created_at": "2026-05-11 02:31:17 UTC",
+    "processed_at": "2026-05-11 02:31:17 UTC",
+    "google_trends_url": "https://trends.google.com/trends/embed/explore/TIMESERIES?hl=en&tz=420&req=%7B%22comparisonItem%22%3A%5B%7B%22keyword%22%3A%22Puma+running+shoes%22%2C%22geo%22%3A%22%22%2C%22time%22%3A%222026-04-01+2026-04-07%22%7D%5D%2C%22category%22%3A0%2C%22property%22%3A%22%22%7D",
+    "raw_html_file": "https://serpapi.com/searches/ggM6Tvsbw05LzcMqBguvnQ/6a013f752f47f84d33dd500b.html",
+    "prettify_html_file": "https://serpapi.com/searches/ggM6Tvsbw05LzcMqBguvnQ/6a013f752f47f84d33dd500b.prettify",
+    "total_time_taken": 2.07
+  },
+  "search_parameters": {
+    "engine": "google_trends",
+    "q": "Puma running shoes",
+    "hl": "en",
+    "date": "2026-04-01 2026-04-07",
+    "tz": "420",
+    "data_type": "TIMESERIES"
+  },
+  "interest_over_time": {
+    "timeline_data": [
+      {
+        "date": "Apr 1, 2026",
+        "timestamp": "1775001600",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "75",
+            "extracted_value": 75
+          }
+        ]
+      },
+      {
+        "date": "Apr 2, 2026",
+        "timestamp": "1775088000",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "73",
+            "extracted_value": 73
+          }
+        ]
+      },
+      {
+        "date": "Apr 3, 2026",
+        "timestamp": "1775174400",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "67",
+            "extracted_value": 67
+          }
+        ]
+      },
+      {
+        "date": "Apr 4, 2026",
+        "timestamp": "1775260800",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "86",
+            "extracted_value": 86
+          }
+        ]
+      },
+      {
+        "date": "Apr 5, 2026",
+        "timestamp": "1775347200",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "100",
+            "extracted_value": 100
+          }
+        ]
+      },
+      {
+        "date": "Apr 6, 2026",
+        "timestamp": "1775433600",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "82",
+            "extracted_value": 82
+          }
+        ]
+      },
+      {
+        "date": "Apr 7, 2026",
+        "timestamp": "1775520000",
+        "values": [
+          {
+            "query": "Puma running shoes",
+            "value": "73",
+            "extracted_value": 73
+          }
+        ]
+      }
+    ]
+  }
+}

@@ -1,0 +1,49 @@
+{
+  "brand_canonical": "Twinings",
+  "category": "premium_tea",
+  "query": "Twinings",
+  "query_source": "bare_canonical_per_DEVIATIONS_Entry_1",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T15:34:27.181033+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 80
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 89
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 81
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 92
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 80
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 82
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 100
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 86.29,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

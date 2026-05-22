@@ -1,0 +1,57 @@
+{
+  "pre_reg": "v0.14-prereg",
+  "pre_reg_section": "§3",
+  "category": "premium_tea",
+  "pivot_role": "primary",
+  "pivot_canonical": "Twinings",
+  "query": "Twinings",
+  "geo": "",
+  "region_label": "worldwide",
+  "window": "2026-04-13 2026-04-19",
+  "test_timestamp_utc": "2026-05-12T13:00:24.226301+00:00",
+  "n_attempts": 1,
+  "http_status": 200,
+  "criteria": {
+    "mean_floor": 25.0,
+    "cv_ceiling_pct": 25.0
+  },
+  "daily_values": [
+    {
+      "date": "2026-04-13",
+      "value": 83
+    },
+    {
+      "date": "2026-04-14",
+      "value": 90
+    },
+    {
+      "date": "2026-04-15",
+      "value": 76
+    },
+    {
+      "date": "2026-04-16",
+      "value": 96
+    },
+    {
+      "date": "2026-04-17",
+      "value": 86
+    },
+    {
+      "date": "2026-04-18",
+      "value": 86
+    },
+    {
+      "date": "2026-04-19",
+      "value": 100
+    }
+  ],
+  "n_days": 7,
+  "mean": 88.14,
+  "sd": 8.05,
+  "cv_pct": 9.13,
+  "min": 76,
+  "max": 100,
+  "mean_pass": true,
+  "cv_pass": true,
+  "phase_a_status": "PASS"
+}

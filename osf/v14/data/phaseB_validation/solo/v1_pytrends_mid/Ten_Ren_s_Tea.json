@@ -1,0 +1,48 @@
+{
+  "brand_canonical": "Ten Ren's Tea",
+  "category": "premium_tea",
+  "query": "/m/0d6wfx",
+  "window": "2026-04-13 2026-04-19",
+  "geo": "",
+  "test_timestamp": "2026-05-12T13:10:15.465286+00:00",
+  "http_status": 200,
+  "n_attempts": 1,
+  "serpapi_error": null,
+  "serpapi_result": {
+    "daily": [
+      {
+        "date": "Apr 13, 2026",
+        "value": 71
+      },
+      {
+        "date": "Apr 14, 2026",
+        "value": 67
+      },
+      {
+        "date": "Apr 15, 2026",
+        "value": 73
+      },
+      {
+        "date": "Apr 16, 2026",
+        "value": 85
+      },
+      {
+        "date": "Apr 17, 2026",
+        "value": 100
+      },
+      {
+        "date": "Apr 18, 2026",
+        "value": 93
+      },
+      {
+        "date": "Apr 19, 2026",
+        "value": 94
+      }
+    ],
+    "n_days": 7,
+    "max": 100,
+    "mean": 83.29,
+    "all_zero": false
+  },
+  "solo_status": "PASS"
+}

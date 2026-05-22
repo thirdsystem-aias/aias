@@ -1,0 +1,464 @@
+{
+  "version": "0.12",
+  "source": "Pre-registered Trends query strategy for v0.12 construct-validity acquisition",
+  "protocol_reference": "Replicates v0.11 §5.2 (PRE_REGISTRATION.md, git tag v0.11-prereg) including T1/T2/T3 tier system",
+  "tier_definitions": {
+    "T1": "Topic ID. Where Google Trends has an entity (topic) ID corresponding unambiguously to the brand, the topic mid (e.g. /m/0c3z_p8) is passed as the query. Topic IDs aggregate Google's own canonical disambiguation across variant strings.",
+    "T2": "Distinctive search string. Where no topic ID exists but the brand string is low-noise, the bare brand name is used as the query.",
+    "T3": "Brand+category compound. Where no topic ID exists and the brand string is high-noise, the fixed compound `<brand> <category-anchor>` is used as the query, applied uniformly across all T3-tier brands within a category."
+  },
+  "category_anchors": {
+    "pmsoftware": "project management",
+    "oliveoil": "olive oil",
+    "running": "running shoes"
+  },
+  "region": {
+    "primary": "Worldwide",
+    "sensitivity": "US",
+    "note": "Replicates v0.11 §5 acquisition specification. Worldwide is the locked primary region for inference; US-only is acquired in the same session, deposited but not used in primary inference."
+  },
+  "categories": {
+    "pmsoftware": {
+      "pivot": "Asana",
+      "category_anchor": "project management",
+      "spec_source": "Replicated verbatim from v0.11 PRE_REGISTRATION.md §5.2.1, locked at git commit a039560 on 2026-05-10. No re-resolution at v0.12.",
+      "brands": {
+        "Asana": {
+          "tier_final": "T1",
+          "market_tier": "incumbent",
+          "query": "/m/0c3z_p8",
+          "entity_label": "Asana, Inc. — Software",
+          "phase_b_lookup_ts": "2026-05-10T03:49:00Z",
+          "status": "active",
+          "disambiguation": "PIVOT BRAND. Validated at v0.11 Phase A with mean within-window value 74.9 across the 14-day combined-wave window."
+        },
+        "Monday": {
+          "tier_final": "T1",
+          "market_tier": "incumbent",
+          "query": "/g/11h1m5p60w",
+          "entity_label": "monday.com — Software company",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Jira": {
+          "tier_final": "T1",
+          "market_tier": "incumbent",
+          "query": "/g/11bc5c0lmw",
+          "entity_label": "Jira — Software",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Trello": {
+          "tier_final": "T1",
+          "market_tier": "incumbent",
+          "query": "/m/0h665rh",
+          "entity_label": "Trello — Software",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Confluence": {
+          "tier_final": "T1",
+          "market_tier": "incumbent",
+          "query": "/m/05nyz0",
+          "entity_label": "Confluence — Software",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Notion": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/g/11fd7dbddz",
+          "entity_label": "Notion — Productivity software",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "ClickUp": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/g/11g9n26732",
+          "entity_label": "ClickUp — Project management software company",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Smartsheet": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/m/010h7t67",
+          "entity_label": "Smartsheet Inc — Software company",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Airtable": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/g/11c3ypc1q3",
+          "entity_label": "Airtable — Web site",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Basecamp": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/m/0d04n6",
+          "entity_label": "Basecamp — Software",
+          "phase_b_lookup_ts": "2026-05-10T04:12:26Z",
+          "status": "active"
+        },
+        "Coda": {
+          "tier_final": "T1",
+          "market_tier": "mid-tier",
+          "query": "/g/11f3h7_jw9",
+          "entity_label": "Coda — Document editor",
+          "phase_b_lookup_ts": "2026-05-10T04:17:11Z",
+          "status": "active"
+        },
+        "Wrike": {
+          "tier_final": "T2",
+          "market_tier": "mid-tier",
+          "query": "wrike",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active"
+        },
+        "Workfront": {
+          "tier_final": "T2",
+          "market_tier": "mid-tier",
+          "query": "workfront",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active"
+        },
+        "Todoist": {
+          "tier_final": "T2",
+          "market_tier": "challenger",
+          "query": "todoist",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active",
+          "disambiguation": "Todoist-inverse case in v0.11 (1.04% AI Presence, 28 Trends rescaled). Reference brand for H6 Todoist-style threshold derivation."
+        },
+        "GitHub Projects": {
+          "tier_final": "T2",
+          "market_tier": "challenger",
+          "query": "github projects",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active"
+        },
+        "Linear": {
+          "tier_final": "T3",
+          "market_tier": "challenger",
+          "query": "linear project management",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active",
+          "disambiguation": "Linear-paradox case in v0.11 (86.5%/89.6% AI Presence at t1/t2, 1.88 Trends rescaled). Reference brand for H6 Linear-style threshold derivation."
+        },
+        "Height": {
+          "tier_final": "T3",
+          "market_tier": "challenger",
+          "query": "height project management",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active",
+          "disambiguation": "Defunct brand (shut down 24 September 2025). Retained per registry-frozen-ness principle; phantom-brand framing analogous to Mint in v0.7 / v0.10. Pre-acquisition validation at v0.11 confirmed non-zero residual Trends signal."
+        },
+        "Motion": {
+          "tier_final": "T3",
+          "market_tier": "challenger",
+          "query": "motion project management",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "active"
+        },
+        "Shortcut": {
+          "tier_final": "T3",
+          "market_tier": "challenger",
+          "query": "shortcut project management",
+          "entity_label": null,
+          "phase_b_lookup_ts": null,
+          "status": "EXCLUDED_E1a",
+          "disambiguation": "Pre-acquisition excluded under E1a at v0.11 (Phase B validation: 'Google Trends hasn't returned any results for this query'). Locked query string retained for transparency but unused. Exclusion carries forward to v0.12."
+        }
+      }
+    },
+    "oliveoil": {
+      "pivot": "California Olive Ranch",
+      "category_anchor": "olive oil",
+      "brands": {
+        "Bertolli": {
+          "tier_target": "T1",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Bertolli olive oil",
+          "fallback_tier": "T3",
+          "disambiguation": "Bertolli also markets pasta, sauces, frozen meals; T3 compound restricts to olive oil context. T1 preferred since Google's Bertolli topic node typically resolves to the brand-as-entity across product lines — Phase B resolves which tier applies.",
+          "phase_b_status": "PASS"
+        },
+        "Brightland": {
+          "tier_target": "T1",
+          "market_tier": "challenger",
+          "fallback_query_term": "Brightland",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand name distinctive; T2 fallback expected to be clean if no T1 topic-mid resolves.",
+          "phase_b_status": "PASS"
+        },
+        "California Olive Ranch": {
+          "tier_target": "T1",
+          "market_tier": "incumbent",
+          "fallback_query_term": "California Olive Ranch",
+          "fallback_tier": "T2",
+          "disambiguation": "PIVOT BRAND. Name brand-specific; no polysemy risk. Indexed at 100 in pivot-rescaling.",
+          "phase_b_status": "PASS"
+        },
+        "Castillo de Canena": {
+          "tier_target": "T1",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Castillo de Canena",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific. Accented character (ñ) preserved in query; SerpAPI handles UTF-8 query strings.",
+          "phase_b_status": "PASS"
+        },
+        "Cobram Estate": {
+          "tier_target": "T1",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Cobram Estate",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific. 'Cobram' is also a Victoria, Australia town name (the brand's origin); Worldwide-primary region acquisition expected to surface brand-dominant signal.",
+          "phase_b_status": "PASS"
+        },
+        "Colonna": {
+          "tier_target": "T3",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Marina Colonna olive oil",
+          "fallback_tier": "T3",
+          "disambiguation": "Colonna is a common Italian surname (Pope Martin V, Roman noble family); single-term query produces severe polysemy. T3 compound required.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 4.2%. Niche-on-both."
+        },
+        "Frantoio Muraglia": {
+          "tier_target": "T2",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Frantoio Muraglia",
+          "fallback_tier": "T2",
+          "disambiguation": "'Frantoio' is the Italian generic word for oil mill (and an olive cultivar name) — but compound brand term 'Frantoio Muraglia' is sufficiently distinctive as T2.",
+          "phase_b_status": "PASS_E5",
+          "phase_b_note": "Solo FAIL_API; bundled marginal PASS (1/7 nonzero, mean 8.3). Included per bundled-rescue amendment; E5 sparsity flag set."
+        },
+        "Frescobaldi Laudemio": {
+          "tier_target": "T2",
+          "market_tier": "challenger",
+          "fallback_query_term": "Frescobaldi Laudemio",
+          "fallback_tier": "T2",
+          "disambiguation": "Frescobaldi alone refers to the wine business; 'Laudemio' alone is the consortium term used by multiple producers. Compound 'Frescobaldi Laudemio' resolves to the specific olive oil brand.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 22.9%. Scale-mismatch case."
+        },
+        "Graza": {
+          "tier_target": "T1",
+          "market_tier": "challenger",
+          "fallback_query_term": "Graza",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific; minimal polysemy. Brand name registered as distinctive trademark.",
+          "phase_b_status": "PASS"
+        },
+        "Kosterina": {
+          "tier_target": "T2",
+          "market_tier": "challenger",
+          "fallback_query_term": "Kosterina",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific; coined name (portmanteau of founder's name and husband's name). T1 unlikely to be available given recency.",
+          "phase_b_status": "PASS"
+        },
+        "Lucini": {
+          "tier_target": "T3",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Lucini olive oil",
+          "fallback_tier": "T3",
+          "disambiguation": "Lucini is a common Italian surname; T3 compound required.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 17.7%. Scale-mismatch case."
+        },
+        "Manni": {
+          "tier_target": "T3",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Manni olive oil",
+          "fallback_tier": "T3",
+          "disambiguation": "Manni is a common Italian surname (and a Pixar Cars character name); T3 compound required.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 3.1%. Niche-on-both."
+        },
+        "McEvoy Ranch": {
+          "tier_target": "T2",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "McEvoy Ranch",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific compound resolves cleanly to the Marin County olive oil brand.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 5.2%. Niche-on-both."
+        },
+        "Núñez de Prado": {
+          "tier_target": "T2",
+          "market_tier": "challenger",
+          "fallback_query_term": "Nunez de Prado",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific. Query without diacritics (transliterated 'Nunez') as fallback; Phase B validation confirms which form produces identifiable signal at scale.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 4.2%. Niche-on-both."
+        },
+        "Olio Verde": {
+          "tier_target": "T3",
+          "market_tier": "challenger",
+          "fallback_query_term": "Olio Verde Becchina",
+          "fallback_tier": "T3",
+          "disambiguation": "'Olio verde' is generic Italian for 'green oil'; severe polysemy risk. T3 compound with producer name 'Becchina' (Gianfranco Becchina) resolves to the brand.",
+          "phase_b_status": "EXCLUDED_E1a",
+          "phase_b_note": "Solo validation FAIL_API; bundled validation ALL_ZERO. AI Presence at v0.9 matched subset = 22.9%. Scale-mismatch case."
+        }
+      }
+    },
+    "running": {
+      "pivot": "Asics",
+      "category_anchor": "running shoes",
+      "brands": {
+        "Adidas": {
+          "tier_target": "T3",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Adidas running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "Severe polysemy: Adidas dominates football/soccer apparel, lifestyle (Stan Smith, Superstar, Samba), Yeezy, training. T3 compound restricts to running. CRITICAL FOR CONSTRUCT VALIDITY.",
+          "phase_b_status": "PASS"
+        },
+        "Altra": {
+          "tier_target": "T3",
+          "market_tier": "challenger",
+          "fallback_query_term": "Altra running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "'Altra' is generic Italian/Spanish word; also Altra Federal Credit Union, Altra Industrial Motion. T3 compound required.",
+          "phase_b_status": "PASS"
+        },
+        "Asics": {
+          "tier_target": "T1",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Asics",
+          "fallback_tier": "T2",
+          "disambiguation": "PIVOT BRAND. Asics is running-pure brand globally; non-running business small. T1 expected to resolve clean topic-mid; T2 fallback if topic-mid not available.",
+          "phase_b_status": "PASS"
+        },
+        "Brooks": {
+          "tier_target": "T3",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Brooks running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "Severe polysemy: Brooks Brothers (apparel), Mel Brooks (filmmaker), Brooks the surname. T3 compound essential.",
+          "phase_b_status": "PASS"
+        },
+        "Hoka": {
+          "tier_target": "T1",
+          "market_tier": "challenger",
+          "fallback_query_term": "Hoka",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific (formerly 'Hoka One One', rebranded 2021). Coined name with minimal polysemy.",
+          "phase_b_status": "PASS"
+        },
+        "New Balance": {
+          "tier_target": "T1",
+          "market_tier": "incumbent",
+          "fallback_query_term": "New Balance shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "T3 compound uses 'shoes' (not 'running shoes') since New Balance lifestyle queries (550s, 990s) form a large part of brand's Trends signal; restricting to running would exclude legitimate brand signal.",
+          "phase_b_status": "PASS"
+        },
+        "Nike": {
+          "tier_target": "T3",
+          "market_tier": "incumbent",
+          "fallback_query_term": "Nike running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "EXTREME polysemy: Nike covers basketball (Jordan), football, lifestyle, apparel, skateboarding (SB), Air Force, Cortez. T3 compound 'running shoes' restricts to running. CRITICAL FOR CONSTRUCT VALIDITY.",
+          "phase_b_status": "PASS"
+        },
+        "Norda": {
+          "tier_target": "T2",
+          "market_tier": "challenger",
+          "fallback_query_term": "Norda",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific coined name; minimal polysemy.",
+          "phase_b_status": "PASS"
+        },
+        "On": {
+          "tier_target": "T1",
+          "market_tier": "challenger",
+          "fallback_query_term": "On Cloud running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "CRITICAL: 'On' alone is English preposition; generates no usable Trends signal for brand identification. T1 topic-mid resolution ESSENTIAL. T3 fallback compound 'On Cloud running shoes' references brand's CloudTec line as product identifier. Analytic-exclusion candidate if neither resolves clean signal at Phase B.",
+          "phase_b_status": "PASS"
+        },
+        "Puma": {
+          "tier_target": "T3",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Puma running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "Puma the animal generates substantial Trends signal independent of brand; T3 compound 'running shoes' restricts to running.",
+          "phase_b_status": "PASS"
+        },
+        "Salomon": {
+          "tier_target": "T3",
+          "market_tier": "challenger",
+          "fallback_query_term": "Salomon running shoes",
+          "fallback_tier": "T3",
+          "disambiguation": "Salomon is primarily a ski/winter sports brand. T3 compound 'running shoes' restricts to running category.",
+          "phase_b_status": "PASS"
+        },
+        "Saucony": {
+          "tier_target": "T1",
+          "market_tier": "mid-tier",
+          "fallback_query_term": "Saucony",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific; near-zero polysemy.",
+          "phase_b_status": "PASS"
+        },
+        "Topo Athletic": {
+          "tier_target": "T2",
+          "market_tier": "challenger",
+          "fallback_query_term": "Topo Athletic",
+          "fallback_tier": "T2",
+          "disambiguation": "Brand-specific compound (avoid 'Topo' alone — topology, topographic, etc.). 'Topo Athletic' as compound resolves cleanly.",
+          "phase_b_status": "PASS"
+        }
+      }
+    }
+  },
+  "phase_b_validation_protocol": "Per v0.11 §5.2: each query string validated against out-of-sample window prior to lock. For v0.12, out-of-sample window proposed as 2026-04-01 to 2026-04-07 (replicates v0.11). Brands failing validation (E1a — no signal returned) excluded pre-acquisition and counted toward n-floor budget. Topic-mid resolution via pytrends.suggestions() recorded in registries/phaseB_suggestions_v0.12/. Per-brand validation outputs recorded in registries/phaseB_validation_v0.12/.",
+  "topic_mid_resolution_workflow": "(a) Call pytrends.suggestions(keyword=<brand_search_input>); (b) inspect candidate entities by title and type; (c) pick most specific brand-product entity (e.g. 'Software', 'Olive oil brand', 'Footwear company'); (d) for brands where no category-relevant entity surfaces, retry with domain-style search input (e.g. 'brightland.co', 'kosterina.com', 'graza.co'); (e) descend to T2 then T3 for brands where retries also surface no clean entity. Raw suggestion outputs deposited.",
+  "phase_b_summary": {
+    "validation_completed": "2026-05-11",
+    "olive_oil_e1a_excluded": [
+      "Colonna",
+      "Frescobaldi Laudemio",
+      "Lucini",
+      "Manni",
+      "McEvoy Ranch",
+      "Núñez de Prado",
+      "Olio Verde"
+    ],
+    "olive_oil_pass_with_e5_flag": [
+      "Frantoio Muraglia",
+      "Castillo de Canena",
+      "Kosterina"
+    ],
+    "olive_oil_pass_robust": [
+      "California Olive Ranch (pivot)",
+      "Bertolli",
+      "Brightland",
+      "Cobram Estate",
+      "Graza"
+    ],
+    "olive_oil_usable_n": 8,
+    "running_pass_all": true,
+    "running_usable_n": 13,
+    "category_routing": {
+      "pmsoftware": "H1-H6 normal evaluation",
+      "running": "H1-H6 normal evaluation",
+      "oliveoil": "Descriptive-only routing per §3.4 (n=8 below n=10 floor). Category-Scale Mismatch finding reported descriptively."
+    }
+  }
+}

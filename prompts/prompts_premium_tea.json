@@ -1,0 +1,37 @@
+{
+  "category": "premium_tea",
+  "prompt_set_version": "v1-premium_tea",
+  "prompt_set_date": "2026-05-12",
+  "prompts": [
+    {
+      "id": "p1_functional",
+      "cep": "FUNCTIONAL_WHY",
+      "prompt": "What's the best premium loose-leaf tea for daily drinking?"
+    },
+    {
+      "id": "p2_contextual",
+      "cep": "CONTEXTUAL_WHEN",
+      "prompt": "I'm in my late 30s and starting to take tea seriously. What premium tea brands should I explore?"
+    },
+    {
+      "id": "p3_constraint",
+      "cep": "CONSTRAINT_WITH",
+      "prompt": "I prefer organic, single-origin teas without artificial flavorings. What premium tea brands work for me?"
+    },
+    {
+      "id": "p4_identity",
+      "cep": "IDENTITY_HOW_FEELING",
+      "prompt": "What tea brands do tea sommeliers actually recommend to their clients?"
+    },
+    {
+      "id": "p5_discovery",
+      "cep": "DISCOVERY",
+      "prompt": "What are some emerging premium tea brands worth knowing about in 2026?"
+    },
+    {
+      "id": "p6_comparison",
+      "cep": "COMPARISON",
+      "prompt": "I'm building a serious tea collection and want to invest in quality. Compare the leading premium tea brands and recommend the best one."
+    }
+  ]
+}

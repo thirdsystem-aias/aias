@@ -1,0 +1,57 @@
+{
+  "pre_reg": "v0.13-prereg-draft",
+  "pre_reg_section": "§4.2",
+  "category": "skincare",
+  "pivot_role": "primary",
+  "pivot_canonical": "CeraVe",
+  "query": "CeraVe",
+  "geo": "",
+  "region_label": "worldwide",
+  "window": "2026-04-13 2026-04-19",
+  "test_timestamp_utc": "2026-05-11T20:51:17.073555+00:00",
+  "n_attempts": 1,
+  "http_status": 200,
+  "criteria": {
+    "mean_floor": 25.0,
+    "cv_ceiling_pct": 25.0
+  },
+  "daily_values": [
+    {
+      "date": "2026-04-13",
+      "value": 88
+    },
+    {
+      "date": "2026-04-14",
+      "value": 83
+    },
+    {
+      "date": "2026-04-15",
+      "value": 82
+    },
+    {
+      "date": "2026-04-16",
+      "value": 100
+    },
+    {
+      "date": "2026-04-17",
+      "value": 91
+    },
+    {
+      "date": "2026-04-18",
+      "value": 85
+    },
+    {
+      "date": "2026-04-19",
+      "value": 97
+    }
+  ],
+  "n_days": 7,
+  "mean": 89.43,
+  "sd": 6.95,
+  "cv_pct": 7.77,
+  "min": 82,
+  "max": 100,
+  "mean_pass": true,
+  "cv_pass": true,
+  "phase_a_status": "PASS"
+}

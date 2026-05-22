@@ -1,0 +1,28 @@
+==============================================================================
+Post-hoc Pattern 1 replication: cross-model spread by category, t1 vs t2
+==============================================================================
+
+Category     |  t1 spread |  t2 spread |    delta
+--------------------------------------------------
+pm           |     14.69pp |     13.27pp |   -1.43pp
+running      |      8.58pp |      6.99pp |   -1.59pp
+oliveoil     |     10.94pp |     11.88pp |   +0.94pp
+skincare     |      6.65pp |      7.19pp |   +0.54pp
+finance      |     13.02pp |     16.93pp |   +3.91pp
+
+t1 cross-model spread ranking (high to low): ['pm', 'finance', 'oliveoil', 'running', 'skincare']
+t2 cross-model spread ranking (high to low): ['finance', 'pm', 'oliveoil', 'skincare', 'running']
+
+Spearman ρ (cross-model spread ranking, t1 vs t2): 0.800
+
+Spearman ρ (t1 vs v0.6 narrative ordering): 0.600
+Spearman ρ (t2 vs v0.6 narrative ordering): 0.900
+
+v0.6 narrative ordering (high to low): ['finance', 'oliveoil', 'pm', 'skincare', 'running']
+
+==============================================================================
+Interpretation:
+- ρ ≥ 0.7 between t1 and t2: cross-model spread ranking preserves
+- ρ ≥ 0.7 between v0.9 and v0.6 narrative: original Pattern 1 ordering replicates
+- This test is post-hoc; not pre-registered; reported as exploratory
+==============================================================================

@@ -1,0 +1,24 @@
+==============================================================================
+AIAS Failed-Call Recovery
+Source:   data/oliveoil/results_v2_oliveoil_20260507_133755.csv
+Category: oliveoil
+Filter:   all providers
+Total rows in source: 288
+Cells to retry:       1
+Started:  2026-05-07T15:20:32
+==============================================================================
+  [  1/1] p6_comparison      | anthropic_opus       | run 6 -> OK (1 attempt, 15.4s)
+
+==============================================================================
+Recovery complete. Saved 1 rows to data/oliveoil/results_v2_oliveoil_20260507_133755_rerun_20260507_152049.csv
+  ok:                 1
+  rate_limit_final:   0
+  transient_final:    0
+  hard_error:         0
+==============================================================================
+
+Next: merge the recovery rows into the source dataset before extraction.
+  Original: data/oliveoil/results_v2_oliveoil_20260507_133755.csv
+  Recovery: data/oliveoil/results_v2_oliveoil_20260507_133755_rerun_20260507_152049.csv
+  See merge step in your post-collection pipeline.
+==============================================================================

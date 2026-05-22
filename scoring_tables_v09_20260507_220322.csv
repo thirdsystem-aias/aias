@@ -1,0 +1,7 @@
+hypothesis,claim,band,note
+H1,"≥70% of registry brands within ±5pp; ≥90% within ±10pp (matched subset, all 5 categories)",CONFIRMED,
+H2,"Top-3 brands at t₁ remain in top-5 at t₂ (per category, matched subset)",CONFIRMED,
+H3,Variance-rank-order across categories at t₂ has Spearman ρ ≥ 0.7 with t₁,CONFIRMED,
+H4,Mint mention rate at t₂ vs t₁ in finance,STABILITY (predicted),Stability is the predicted outcome per pre-reg §2.H4 (corpus aging hypothesis).
+H5,"Spanish olive oil ≤ 12.5pp AND K-beauty ≤ 5.0pp (matched subset, t₂)",PARTIALLY CONFIRMED,Spanish threshold = 25% × 50.0% IOC global production share. Brand lists supplied via CLI; move to registry lineage tags in future.
+H6,Per-brand sonnet-vs-mini spread at t₂ correlates with t₁ at Pearson r ≥ 0.7 per category,CONFIRMED,
