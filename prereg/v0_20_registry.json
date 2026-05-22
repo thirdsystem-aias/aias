@@ -1,0 +1,195 @@
+{
+  "phase": "v0.20",
+  "protocol_version": "v1.5",
+  "substrate": "skincare",
+  "design": "IL-gradient three-cell",
+  "lock_state": "v0.20-prereg-r1",
+  "panel_size_pre_floor": 24,
+  "panel_size_per_cell": 8,
+  "c1_floor": 12,
+  "predecessor_phase": "v0.19",
+  "predecessor_ssrn_id": "6809182",
+  "methodology_paper_ssrn_id": "6810758",
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "phase_a_probe_template": "Is the brand {BRAND} commonly recognized as a skincare brand? Answer yes or no.",
+  "phase_b_frames": {
+    "R_cat": {
+      "q1": "What are the best skincare brands? List several with descriptions.",
+      "q2": "What skincare brands do dermatologists recommend? Name several.",
+      "q3": "What skincare brands are most effective? Name several brands with descriptions."
+    },
+    "R_cult": {
+      "q4": "What skincare brands are popular right now? List several.",
+      "q5": "What skincare brands do celebrities and influencers use? Name several.",
+      "q6": "What viral or cult-favorite skincare brands have gained big followings? Name several."
+    }
+  },
+  "cells": {
+    "A": {
+      "label": "Prestige",
+      "il_tier": "medium",
+      "il_role": "middle_comparator",
+      "identity_function": "Status / signaling: La Mer-tier acquisition is part of what the purchase accomplishes",
+      "brands": [
+        {"name": "Estée Lauder", "cascade_order": 1, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Lancôme", "cascade_order": 2, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "La Mer", "cascade_order": 3, "conglomerate_parent": "Estée Lauder Companies", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Sisley", "cascade_order": 4, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Dior Beauty", "cascade_order": 5, "conglomerate_parent": "LVMH", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Chanel Beauty", "cascade_order": 6, "conglomerate_parent": "Chanel", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "La Prairie", "cascade_order": 7, "conglomerate_parent": "Beiersdorf", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Clé de Peau Beauté", "cascade_order": 8, "conglomerate_parent": "Shiseido", "borderline_classification": false, "borderline_rationale": null}
+      ],
+      "alternates": [
+        "Guerlain",
+        "Givenchy Beauty",
+        "Tom Ford Beauty",
+        "Armani Beauty",
+        "Helena Rubinstein"
+      ]
+    },
+    "B": {
+      "label": "Celebrity DTC / cult",
+      "il_tier": "high",
+      "il_role": "type_2_hunting_cell",
+      "identity_function": "Identity statement: brand is the identity; perfumistas-equivalent for skincare",
+      "brands": [
+        {"name": "Rare Beauty", "cascade_order": 1, "conglomerate_parent": null, "borderline_classification": true, "borderline_rationale": "Celebrity-founder (Selena Gomez) identity primary; Sephora-led distribution"},
+        {"name": "Rhode", "cascade_order": 2, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Fenty Skin", "cascade_order": 3, "conglomerate_parent": "LVMH / Kendo", "borderline_classification": true, "borderline_rationale": "Celebrity-founder (Rihanna) identity primary despite conglomerate ownership"},
+        {"name": "Goop", "cascade_order": 4, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Drunk Elephant", "cascade_order": 5, "conglomerate_parent": "Shiseido", "borderline_classification": true, "borderline_rationale": "Cult / clean-clinical indie identity retained post-acquisition"},
+        {"name": "Glossier", "cascade_order": 6, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Augustinus Bader", "cascade_order": 7, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Tower 28", "cascade_order": 8, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null}
+      ],
+      "alternates": [
+        "Kylie Skin",
+        "KKW Beauty",
+        "JLo Beauty",
+        "Pattern Beauty",
+        "Honest Beauty"
+      ]
+    },
+    "C": {
+      "label": "Clinical / dermatologist-recommended",
+      "il_tier": "low",
+      "il_role": "canonical_retrieval_baseline",
+      "identity_function": "Functional: barrier repair, retinol regimen, eczema treatment — selection separable from product identity",
+      "brands": [
+        {"name": "SkinCeuticals", "cascade_order": 1, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "La Roche-Posay", "cascade_order": 2, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Paula's Choice", "cascade_order": 3, "conglomerate_parent": "Unilever", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "CeraVe", "cascade_order": 4, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "The Ordinary", "cascade_order": 5, "conglomerate_parent": "Estée Lauder Companies / Deciem", "borderline_classification": true, "borderline_rationale": "Category-recognition (clinical actives, derm-recommended) is the primary classifier despite cult-brand connotations"},
+        {"name": "Cetaphil", "cascade_order": 6, "conglomerate_parent": "Galderma", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Eucerin", "cascade_order": 7, "conglomerate_parent": "Beiersdorf", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Bioderma", "cascade_order": 8, "conglomerate_parent": "NAOS", "borderline_classification": false, "borderline_rationale": null}
+      ],
+      "alternates": [
+        "Avène",
+        "Vichy",
+        "Aveeno",
+        "Differin",
+        "RoC"
+      ]
+    }
+  },
+  "coi_screen": {
+    "entry_id": "DEVIATIONS Entry 0",
+    "ex_ante": true,
+    "samsung_affiliated_brands_in_registry": 0,
+    "rationale": "Samsung historical beauty exposure via Cheil Industries spun off pre-2026; no current overlap with v0.20 registry",
+    "lock_state_unchanged": true
+  },
+  "thresholds": {
+    "n_floor_worldwide": 12,
+    "n_floor_per_cell_for_C3": 5,
+    "distinct_CP_min": 3,
+    "modal_CP_share_max": 0.625,
+    "IL_gradient_separation_min": 0.10,
+    "rho_C3_min": 0.50,
+    "C3_cells_clearing_min": 2,
+    "Iwachu_CP_min": 5,
+    "Iwachu_Rcat_max": 2,
+    "Type1_Rcat_min": 5,
+    "Type1_Rcult_max": 2,
+    "Type2_Rcat_max": 2,
+    "Type2_Rcult_min": 5,
+    "Type2_emerged_count_min": 3,
+    "Type2_partial_count_range": [1, 2]
+  },
+  "verdict_matrices": {
+    "H_Type2_emergence": {
+      "primary": true,
+      "novel_for_phase": "v0.20",
+      "matrix": [
+        {"condition": "Cell B Type 2 cases >= 3", "verdict": "EMERGED"},
+        {"condition": "Cell B Type 2 cases in [1, 2]", "verdict": "PARTIAL"},
+        {"condition": "Cell B Type 2 cases == 0 AND Cell B post-attrition n >= 5", "verdict": "FALSIFIED"},
+        {"condition": "Cell B post-attrition n < 5", "verdict": "UNDETERMINED"}
+      ]
+    },
+    "H_Regime4_skincare": {
+      "primary": false,
+      "first_prospective_v1_5_C2": true,
+      "matrix": [
+        {"condition": "C1 fails", "verdict": "FALSIFIED (panel inadequacy)"},
+        {"condition": "C1 ok AND C2 fails in >=2 cells", "verdict": "FALSIFIED (regime-floor failure)"},
+        {"condition": "C1 ok AND C2 fails in exactly 1 cell", "verdict": "PARTIAL"},
+        {"condition": "C1+C2 ok AND IL-gradient guard fails", "verdict": "PARTIAL (IL-gradient inadequate)"},
+        {"condition": "C1+C2+guard ok AND C3 fails", "verdict": "PARTIAL"},
+        {"condition": "All conditions clear", "verdict": "CONFIRMED"}
+      ]
+    },
+    "H_Dissociation_substrate_generalization": {
+      "primary": false,
+      "fourth_family_extension": true,
+      "matrix": [
+        {"condition": "Iwachu cases in >=2 of 3 cells", "verdict": "GENERALIZED"},
+        {"condition": "Iwachu cases in 1 of 3 cells", "verdict": "PARTIAL"},
+        {"condition": "Iwachu cases in 0 cells", "verdict": "NARROWED"}
+      ]
+    },
+    "H_IdentityLoad_moderator": {
+      "primary": false,
+      "joint_legs": ["v0.16", "v0.17", "v0.18", "v0.20"],
+      "v0_19_excluded_rationale": "uniform-IL design; no contribution to moderator",
+      "matrix": [
+        {"condition": "v0.20 CONFIRMED on H_Regime4 with monotonic IL signature C->A->B", "verdict": "CONFIRMED-bounded"},
+        {"condition": "v0.20 PARTIAL", "verdict": "PARTIAL"},
+        {"condition": "v0.20 FALSIFIED (not on panel inadequacy)", "verdict": "NARROWED"},
+        {"condition": "v0.20 FALSIFIED on panel inadequacy", "verdict": "INDETERMINATE"}
+      ]
+    }
+  },
+  "deviations_rules_carried_forward": {
+    "Rule_1_origin_phase": "v0.17",
+    "Rule_1_description": "Any deviation requires DEVIATIONS entry with timestamp, rationale, git commit; lock state preserved",
+    "Rule_2_origin_phase": "v0.17",
+    "Rule_2_description": "Post-lock deviations require OSF re-deposit of updated DEVIATIONS.md",
+    "Rule_3_origin_phase": "v0.18",
+    "Rule_3_description": "Phase A cascade exhaustion is substantive finding, not alternate-trigger",
+    "Rule_4_origin_phase": "v0.17",
+    "Rule_4_description": "If both/all cells fail C2 within-cell adequacy, C3 SKIPPED without computing per-cell rho; panel NOT substituted post-Phase-A",
+    "Rule_5_origin_phase": "v0.18",
+    "Rule_5_description": "Each cell pre-registers up to 5 alternates; invocation criteria per pre-reg sec 3.5"
+  },
+  "author": {
+    "first_name": "Pablo",
+    "middle_name": "Ulpiano",
+    "last_name": "González Castro",
+    "email": "pablou@pablou.com",
+    "orcid": "0009-0003-8968-9990",
+    "primary_affiliation": "School of Visual Arts, MPS Branding Program, New York, NY",
+    "secondary_affiliation": "Third System (research entity; data archive and methodology venue)"
+  },
+  "trademark_notice": "AIAS and Third System are trademarks of the research program."
+}
