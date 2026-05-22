@@ -1,0 +1,196 @@
+{
+  "phase": "v0.21",
+  "protocol_version": "v1.5",
+  "substrate": "cosmetics",
+  "design": "IL-gradient three-cell",
+  "lock_state": "v0.21-prereg-r1",
+  "panel_size_pre_floor": 24,
+  "panel_size_per_cell": 8,
+  "c1_floor": 12,
+  "predecessor_phase": "v0.20",
+  "predecessor_ssrn_id": "6811441",
+  "methodology_paper_ssrn_id": "6810758",
+  "phase_position": "fifth substrate family for Presence-component AIAS 1.0 anchor base; second prospective v1.5 phase",
+  "primary_mission": "Type 2 EMERGED pursuit (v0.20 returned PARTIAL with Cell B count = 2; v0.21 hunts for >= 3)",
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "phase_a_probe_template": "Is the brand {BRAND} commonly recognized as a cosmetics brand? Answer yes or no.",
+  "phase_b_frames": {
+    "R_cat": {
+      "q1": "What are the best cosmetics brands? List several with descriptions.",
+      "q2": "What makeup brands do professional makeup artists recommend? Name several.",
+      "q3": "What cosmetics brands are highest quality and most reliable? Name several brands with descriptions."
+    },
+    "R_cult": {
+      "q4": "What cosmetics brands are popular right now? List several.",
+      "q5": "What makeup brands do celebrities and influencers use? Name several.",
+      "q6": "What viral or cult-favorite makeup brands have gained big followings? Name several."
+    }
+  },
+  "cells": {
+    "A": {
+      "label": "Prestige",
+      "il_tier": "medium",
+      "il_role": "middle_comparator",
+      "identity_function": "Status / signaling: counter-purchase at department store, brand-association partially performs status acquisition",
+      "brands": [
+        {"name": "MAC Cosmetics", "cascade_order": 1, "conglomerate_parent": "Estée Lauder Companies", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "NARS", "cascade_order": 2, "conglomerate_parent": "Shiseido", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Bobbi Brown", "cascade_order": 3, "conglomerate_parent": "Estée Lauder Companies", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Tom Ford Beauty", "cascade_order": 4, "conglomerate_parent": "Estée Lauder Companies", "borderline_classification": true, "borderline_rationale": "Prestige beauty under luxury parent; counter-distribution primary classifier; primary-cosmetics identity in LLM corpora (no fragrance/skincare-extension dilution)"},
+        {"name": "Giorgio Armani Beauty", "cascade_order": 5, "conglomerate_parent": "L'Oréal Luxe (licensed)", "borderline_classification": true, "borderline_rationale": "Prestige beauty under L'Oréal Luxe licensing; counter-distribution primary classifier; primary-cosmetics identity in LLM corpora"},
+        {"name": "Hourglass", "cascade_order": 6, "conglomerate_parent": "Unilever Prestige", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Chantecaille", "cascade_order": 7, "conglomerate_parent": "Beiersdorf", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Laura Mercier", "cascade_order": 8, "conglomerate_parent": "Orveon", "borderline_classification": false, "borderline_rationale": null}
+      ],
+      "alternates": [
+        "Smashbox",
+        "Urban Decay",
+        "Too Faced"
+      ]
+    },
+    "B": {
+      "label": "Celebrity DTC / cult",
+      "il_tier": "high",
+      "il_role": "type_2_hunting_cell",
+      "identity_function": "Identity statement: founder- or celebrity-identity brand where brand identity is part of the product signal",
+      "brands": [
+        {"name": "Rare Beauty", "cascade_order": 1, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": "Celebrity-founder (Selena Gomez) identity primary; Sephora-led distribution. v0.20 Phase A failure (C_P = 0/6 under 'skincare' probe) is expected to resolve under v0.21's 'cosmetics' probe — descriptive side-test only."},
+        {"name": "Fenty Beauty", "cascade_order": 2, "conglomerate_parent": "LVMH / Kendo", "borderline_classification": false, "borderline_rationale": "Celebrity-founder (Rihanna) identity primary; conglomerate ownership does not displace primary positioning"},
+        {"name": "Haus Labs", "cascade_order": 3, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": "Celebrity-founder (Lady Gaga) identity primary"},
+        {"name": "Pat McGrath Labs", "cascade_order": 4, "conglomerate_parent": null, "borderline_classification": true, "borderline_rationale": "Founder-makeup-artist identity at prestige price-point; founder-identity primary classifier"},
+        {"name": "Charlotte Tilbury", "cascade_order": 5, "conglomerate_parent": "Puig", "borderline_classification": true, "borderline_rationale": "Founder-makeup-artist identity at prestige price-point; founder-identity primary classifier"},
+        {"name": "Huda Beauty", "cascade_order": 6, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": "Founder-celebrity / Instagram-native cult"},
+        {"name": "Kylie Cosmetics", "cascade_order": 7, "conglomerate_parent": "Coty (51%)", "borderline_classification": false, "borderline_rationale": "Celebrity-founder (Kylie Jenner) identity primary; conglomerate stake does not displace primary positioning"},
+        {"name": "Anastasia Beverly Hills", "cascade_order": 8, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": "Founder-identity (Anastasia Soare)"}
+      ],
+      "alternates": [
+        "Florence by Mills",
+        "Flower Beauty"
+      ]
+    },
+    "C": {
+      "label": "Drugstore / mass",
+      "il_tier": "low",
+      "il_role": "canonical_retrieval_baseline",
+      "identity_function": "Functional: drugstore acquisition, selection separable from product identity",
+      "brands": [
+        {"name": "Maybelline", "cascade_order": 1, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "L'Oréal Paris", "cascade_order": 2, "conglomerate_parent": "L'Oréal", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "CoverGirl", "cascade_order": 3, "conglomerate_parent": "Coty", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Revlon", "cascade_order": 4, "conglomerate_parent": "Revlon Inc.", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "NYX Professional Makeup", "cascade_order": 5, "conglomerate_parent": "L'Oréal", "borderline_classification": true, "borderline_rationale": "Drugstore distribution with semi-professional positioning; drugstore-distribution primary classifier"},
+        {"name": "e.l.f. Cosmetics", "cascade_order": 6, "conglomerate_parent": "e.l.f. Beauty Inc.", "borderline_classification": true, "borderline_rationale": "Drugstore price-point with cult following; drugstore-distribution primary classifier; flagged for retrospective dissociation review if Type 2 boundary case"},
+        {"name": "Wet n Wild", "cascade_order": 7, "conglomerate_parent": "Markwins Beauty Brands", "borderline_classification": false, "borderline_rationale": null},
+        {"name": "Milani Cosmetics", "cascade_order": 8, "conglomerate_parent": null, "borderline_classification": false, "borderline_rationale": null}
+      ],
+      "alternates": [
+        "Almay",
+        "Physicians Formula",
+        "Black Radiance"
+      ]
+    }
+  },
+  "coi_screen": {
+    "entry_id": "DEVIATIONS Entry 0",
+    "ex_ante": true,
+    "samsung_affiliated_brands_in_registry": 0,
+    "rationale": "Samsung Harman International (audio) has no cosmetics exposure. Samsung historical beauty/cosmetics activities via Cheil Industries (Hera, IOPE, Mamonde, Sulwhasoo, Espoir under Amorepacific licensing) were divested pre-2018; no current overlap with v0.21 registry.",
+    "lock_state_unchanged": true
+  },
+  "thresholds": {
+    "n_floor_worldwide": 12,
+    "n_floor_per_cell_for_C3": 5,
+    "distinct_CP_min": 3,
+    "modal_CP_share_max": 0.625,
+    "IL_gradient_separation_min": 0.10,
+    "rho_C3_min": 0.50,
+    "C3_cells_clearing_min": 2,
+    "Iwachu_CP_min": 5,
+    "Iwachu_Rcat_max": 2,
+    "Type1_Rcat_min": 5,
+    "Type1_Rcult_max": 2,
+    "Type2_Rcat_max": 2,
+    "Type2_Rcult_min": 5,
+    "Type2_emerged_count_min": 3,
+    "Type2_partial_count_range": [1, 2]
+  },
+  "verdict_matrices": {
+    "H_Type2_EMERGED_cosmetics": {
+      "primary": true,
+      "novel_for_phase": "v0.21",
+      "pursues": "v0.20 PARTIAL (Cell B Type 2 count = 2)",
+      "matrix": [
+        {"condition": "Cell B Type 2 cases >= 3", "verdict": "EMERGED"},
+        {"condition": "Cell B Type 2 cases in [1, 2]", "verdict": "PARTIAL"},
+        {"condition": "Cell B Type 2 cases == 0 AND Cell B post-attrition n >= 5", "verdict": "FALSIFIED"},
+        {"condition": "Cell B post-attrition n < 5", "verdict": "UNDETERMINED"}
+      ]
+    },
+    "H_Regime4_cosmetics": {
+      "primary": false,
+      "second_prospective_v1_5_C2": true,
+      "matrix": [
+        {"condition": "C1 fails", "verdict": "FALSIFIED (panel inadequacy)"},
+        {"condition": "C1 ok AND C2 fails in >=2 cells", "verdict": "FALSIFIED (regime-floor failure)"},
+        {"condition": "C1 ok AND C2 fails in exactly 1 cell", "verdict": "PARTIAL"},
+        {"condition": "C1+C2 ok AND IL-gradient guard fails", "verdict": "PARTIAL (IL-gradient inadequate)"},
+        {"condition": "C1+C2+guard ok AND C3 fails", "verdict": "PARTIAL"},
+        {"condition": "All conditions clear", "verdict": "CONFIRMED"}
+      ]
+    },
+    "H_Dissociation_substrate_generalization_5th_family": {
+      "primary": false,
+      "fifth_family_extension": true,
+      "programme_significance": "GENERALIZED here completes the five-family anchor base for Presence-component AIAS 1.0",
+      "matrix": [
+        {"condition": "Iwachu cases in >=2 of 3 cells", "verdict": "GENERALIZED"},
+        {"condition": "Iwachu cases in 1 of 3 cells", "verdict": "PARTIAL"},
+        {"condition": "Iwachu cases in 0 cells", "verdict": "NARROWED"}
+      ]
+    },
+    "H_IdentityLoad_moderator": {
+      "primary": false,
+      "joint_legs": ["v0.16", "v0.17", "v0.18", "v0.20", "v0.21"],
+      "v0_19_excluded_rationale": "uniform-IL design; no contribution to moderator (carry-forward from v0.20)",
+      "descriptive_only": true,
+      "matrix": [
+        {"condition": "v0.21 CONFIRMED on H_Regime4 with monotonic IL signature C->A->B", "verdict": "CONFIRMED-bounded"},
+        {"condition": "v0.21 PARTIAL", "verdict": "PARTIAL"},
+        {"condition": "v0.21 FALSIFIED (not on panel inadequacy)", "verdict": "NARROWED"},
+        {"condition": "v0.21 FALSIFIED on panel inadequacy", "verdict": "INDETERMINATE"}
+      ]
+    }
+  },
+  "deviations_rules_carried_forward": {
+    "Rule_1_origin_phase": "v0.17",
+    "Rule_1_description": "Any deviation requires DEVIATIONS entry with timestamp, rationale, git commit; lock state preserved",
+    "Rule_2_origin_phase": "v0.17",
+    "Rule_2_description": "Post-lock deviations require OSF re-deposit of updated DEVIATIONS.md",
+    "Rule_3_origin_phase": "v0.18",
+    "Rule_3_description": "Phase A cascade exhaustion is substantive finding, not alternate-trigger",
+    "Rule_4_origin_phase": "v0.17",
+    "Rule_4_description": "If both/all cells fail C2 within-cell adequacy, C3 SKIPPED without computing per-cell rho; panel NOT substituted post-Phase-A",
+    "Rule_5_origin_phase": "v0.18",
+    "Rule_5_description": "Each cell pre-registers up to 5 alternates; invocation criteria per pre-reg sec 3.5"
+  },
+  "side_tests_descriptive_only": {
+    "rare_beauty_substrate_anchor": "v0.20 Phase A returned Rare Beauty C_P = 0/6 under 'skincare brand?' probe; v0.21 re-runs Rare Beauty under 'cosmetics brand?' probe; clearing here demonstrates v0.20 failure was substrate-anchor mismatch, not brand absence. Descriptive; does not gate any pre-registered verdict."
+  },
+  "author": {
+    "first_name": "Pablo",
+    "middle_name": "Ulpiano",
+    "last_name": "González Castro",
+    "email": "pablou@pablou.com",
+    "orcid": "0009-0003-8968-9990",
+    "primary_affiliation": "School of Visual Arts, MPS Branding Program, New York, NY",
+    "secondary_affiliation": "Third System (research entity; data archive and methodology venue)"
+  },
+  "trademark_notice": "AIAS and Third System are trademarks of the research program."
+}
