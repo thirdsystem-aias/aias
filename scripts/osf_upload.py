@@ -8,6 +8,10 @@ ReadTimeout/ConnectionError, bumps timeouts to 180s for folder ops and
 600s for file uploads, and caches folder listings so that uploading 20
 files into one folder makes 1 list_contents call instead of 20.
 
+v0.21-patched: remote_folder may now be a slash-separated path (e.g.
+"v21/figures"). Each path component is created or found in sequence,
+since WaterButler does not support nested creation in a single call.
+
 Setup (one-time):
     1. Create OSF token at https://osf.io/settings/tokens with scope osf.full_write
     2. Export it:  export OSF_TOKEN='<token>'
@@ -17,8 +21,11 @@ Usage:
     # Dry run (shows what would be uploaded, makes no changes)
     python osf_upload.py ~/aias/osf/v12 v12 --dry-run
 
-    # Actual upload
+    # Actual upload, top-level
     python osf_upload.py ~/aias/osf/v12 v12
+
+    # Actual upload, nested destination (v21-style)
+    python osf_upload.py ~/aias/reports/figs/v21 v21/figures
 
 The script recursively walks the local directory and replicates the structure
 on OSF. Existing files are overwritten (PUT to the existing wb path).
@@ -192,6 +199,29 @@ def create_or_find_folder(name: str, parent_wb_path: str = "/") -> str:
     return new_path
 
 
+def create_or_find_path(remote_path: str, parent_wb_path: str = "/") -> str:
+    """Create or find a (possibly nested) folder path. Returns wb path of leaf.
+
+    Splits remote_path on '/' and walks each segment via create_or_find_folder,
+    using the previous segment's wb path as the parent for the next. WaterButler
+    does not support nested folder creation in a single PUT (returns 500), so
+    each level must be created separately.
+
+    Examples:
+        create_or_find_path("v21")          -> creates/finds /v21/
+        create_or_find_path("v21/figures")  -> creates/finds /v21/, then
+                                               /v21/figures/ inside it
+        create_or_find_path("a/b/c")        -> creates/finds three levels
+    """
+    components = [c for c in remote_path.strip("/").split("/") if c]
+    if not components:
+        return parent_wb_path
+    current = parent_wb_path
+    for component in components:
+        current = create_or_find_folder(component, current)
+    return current
+
+
 def upload_file(local: Path, parent_wb_path: str) -> None:
     """Upload local file to parent_wb_path. Overwrites if exists.
 
@@ -274,7 +304,7 @@ def main() -> None:
     ap.add_argument("local_dir", type=Path,
                     help="Local directory to upload (e.g. ~/aias/osf/v12)")
     ap.add_argument("remote_folder",
-                    help="Top-level OSF folder name (e.g. v12)")
+                    help="OSF destination path (e.g. v12, or v21/figures)")
     ap.add_argument("--dry-run", action="store_true",
                     help="Show what would be uploaded, no changes made")
     args = ap.parse_args()
@@ -293,8 +323,8 @@ def main() -> None:
     if DRY_RUN:
         print("** DRY RUN — no changes will be made **\n")
 
-    print(f"Top-level folder: /{args.remote_folder}/")
-    top_path = create_or_find_folder(args.remote_folder, "/")
+    print(f"Target folder: /{args.remote_folder.strip('/')}/")
+    top_path = create_or_find_path(args.remote_folder, "/")
     print(f"  wb path: {top_path}")
     print()
 
