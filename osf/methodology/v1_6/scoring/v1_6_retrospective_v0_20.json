@@ -1,0 +1,551 @@
+{
+  "phase": "v0.20",
+  "substrate": "skincare",
+  "protocol_version": "v1.6",
+  "lock_state": "v1.6-prereg-r1",
+  "scoring_timestamp": "2026-05-23T02:49:21.728462+00:00",
+  "inputs": {
+    "registry": "/Users/pablou/aias/prereg/v0_20_registry.json",
+    "phase_a": "/Users/pablou/aias/osf/v20/phase_a_results.csv",
+    "phase_b": "/Users/pablou/aias/osf/v20/phase_b_results.csv",
+    "output": "/Users/pablou/aias/methodology/v1_6/retrospective/v0_20/v1_6_retrospective_v0_20.json"
+  },
+  "phase_a": {
+    "per_brand": {
+      "Est\u00e9e Lauder": {
+        "cell": "A",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Lanc\u00f4me": {
+        "cell": "A",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "La Mer": {
+        "cell": "A",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Sisley": {
+        "cell": "A",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Dior Beauty": {
+        "cell": "A",
+        "cascade_order": 5,
+        "cp": 3,
+        "panel_responses": 6
+      },
+      "Chanel Beauty": {
+        "cell": "A",
+        "cascade_order": 6,
+        "cp": 3,
+        "panel_responses": 6
+      },
+      "La Prairie": {
+        "cell": "A",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Cl\u00e9 de Peau Beaut\u00e9": {
+        "cell": "A",
+        "cascade_order": 8,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Rare Beauty": {
+        "cell": "B",
+        "cascade_order": 1,
+        "cp": 0,
+        "panel_responses": 6
+      },
+      "Rhode": {
+        "cell": "B",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Fenty Skin": {
+        "cell": "B",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Goop": {
+        "cell": "B",
+        "cascade_order": 4,
+        "cp": 2,
+        "panel_responses": 6
+      },
+      "Drunk Elephant": {
+        "cell": "B",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Glossier": {
+        "cell": "B",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Augustinus Bader": {
+        "cell": "B",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Tower 28": {
+        "cell": "B",
+        "cascade_order": 8,
+        "cp": 2,
+        "panel_responses": 6
+      },
+      "SkinCeuticals": {
+        "cell": "C",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "La Roche-Posay": {
+        "cell": "C",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Paula's Choice": {
+        "cell": "C",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "CeraVe": {
+        "cell": "C",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "The Ordinary": {
+        "cell": "C",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Cetaphil": {
+        "cell": "C",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Eucerin": {
+        "cell": "C",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Bioderma": {
+        "cell": "C",
+        "cascade_order": 8,
+        "cp": 6,
+        "panel_responses": 6
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Prestige",
+        "il_tier": "medium",
+        "brands": [
+          {
+            "name": "Est\u00e9e Lauder",
+            "cp": 6
+          },
+          {
+            "name": "Lanc\u00f4me",
+            "cp": 6
+          },
+          {
+            "name": "La Mer",
+            "cp": 6
+          },
+          {
+            "name": "Sisley",
+            "cp": 6
+          },
+          {
+            "name": "Dior Beauty",
+            "cp": 3
+          },
+          {
+            "name": "Chanel Beauty",
+            "cp": 3
+          },
+          {
+            "name": "La Prairie",
+            "cp": 6
+          },
+          {
+            "name": "Cl\u00e9 de Peau Beaut\u00e9",
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 2,
+        "modal_cp": 6,
+        "modal_cp_share": 0.75,
+        "mean_cp": 5.25,
+        "n": 8
+      },
+      "B": {
+        "label": "Celebrity DTC / cult",
+        "il_tier": "high",
+        "brands": [
+          {
+            "name": "Rare Beauty",
+            "cp": 0
+          },
+          {
+            "name": "Rhode",
+            "cp": 6
+          },
+          {
+            "name": "Fenty Skin",
+            "cp": 6
+          },
+          {
+            "name": "Goop",
+            "cp": 2
+          },
+          {
+            "name": "Drunk Elephant",
+            "cp": 6
+          },
+          {
+            "name": "Glossier",
+            "cp": 6
+          },
+          {
+            "name": "Augustinus Bader",
+            "cp": 6
+          },
+          {
+            "name": "Tower 28",
+            "cp": 2
+          }
+        ],
+        "distinct_cp_count": 3,
+        "modal_cp": 6,
+        "modal_cp_share": 0.625,
+        "mean_cp": 4.25,
+        "n": 8
+      },
+      "C": {
+        "label": "Clinical / dermatologist-recommended",
+        "il_tier": "low",
+        "brands": [
+          {
+            "name": "SkinCeuticals",
+            "cp": 6
+          },
+          {
+            "name": "La Roche-Posay",
+            "cp": 6
+          },
+          {
+            "name": "Paula's Choice",
+            "cp": 6
+          },
+          {
+            "name": "CeraVe",
+            "cp": 6
+          },
+          {
+            "name": "The Ordinary",
+            "cp": 6
+          },
+          {
+            "name": "Cetaphil",
+            "cp": 6
+          },
+          {
+            "name": "Eucerin",
+            "cp": 6
+          },
+          {
+            "name": "Bioderma",
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 8
+      }
+    }
+  },
+  "phase_b": {
+    "per_brand": {
+      "Est\u00e9e Lauder": {
+        "cell": "A",
+        "r_cat": 1,
+        "r_cult": 0,
+        "delta": -1
+      },
+      "Lanc\u00f4me": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 0,
+        "delta": 0
+      },
+      "La Mer": {
+        "cell": "A",
+        "r_cat": 2,
+        "r_cult": 7,
+        "delta": 5
+      },
+      "Sisley": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 2,
+        "delta": 2
+      },
+      "Dior Beauty": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 0,
+        "delta": 0
+      },
+      "Chanel Beauty": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 0,
+        "delta": 0
+      },
+      "La Prairie": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 0,
+        "delta": 0
+      },
+      "Cl\u00e9 de Peau Beaut\u00e9": {
+        "cell": "A",
+        "r_cat": 0,
+        "r_cult": 0,
+        "delta": 0
+      },
+      "Rare Beauty": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 3,
+        "delta": 3
+      },
+      "Rhode": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 7,
+        "delta": 7
+      },
+      "Fenty Skin": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 4,
+        "delta": 4
+      },
+      "Goop": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 1,
+        "delta": 1
+      },
+      "Drunk Elephant": {
+        "cell": "B",
+        "r_cat": 13,
+        "r_cult": 17,
+        "delta": 4
+      },
+      "Glossier": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 3,
+        "delta": 3
+      },
+      "Augustinus Bader": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 7,
+        "delta": 7
+      },
+      "Tower 28": {
+        "cell": "B",
+        "r_cat": 0,
+        "r_cult": 1,
+        "delta": 1
+      },
+      "SkinCeuticals": {
+        "cell": "C",
+        "r_cat": 18,
+        "r_cult": 9,
+        "delta": -9
+      },
+      "La Roche-Posay": {
+        "cell": "C",
+        "r_cat": 17,
+        "r_cult": 10,
+        "delta": -7
+      },
+      "Paula's Choice": {
+        "cell": "C",
+        "r_cat": 10,
+        "r_cult": 11,
+        "delta": 1
+      },
+      "CeraVe": {
+        "cell": "C",
+        "r_cat": 18,
+        "r_cult": 17,
+        "delta": -1
+      },
+      "The Ordinary": {
+        "cell": "C",
+        "r_cat": 13,
+        "r_cult": 18,
+        "delta": 5
+      },
+      "Cetaphil": {
+        "cell": "C",
+        "r_cat": 6,
+        "r_cult": 2,
+        "delta": -4
+      },
+      "Eucerin": {
+        "cell": "C",
+        "r_cat": 3,
+        "r_cult": 0,
+        "delta": -3
+      },
+      "Bioderma": {
+        "cell": "C",
+        "r_cat": 2,
+        "r_cult": 0,
+        "delta": -2
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Prestige",
+        "il_tier": "medium",
+        "n": 8,
+        "mean_r_cat": 0.375,
+        "mean_r_cult": 1.125,
+        "mean_delta": 0.75,
+        "brand_deltas": [
+          -1,
+          0,
+          5,
+          2,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "B": {
+        "label": "Celebrity DTC / cult",
+        "il_tier": "high",
+        "n": 8,
+        "mean_r_cat": 1.625,
+        "mean_r_cult": 5.375,
+        "mean_delta": 3.75,
+        "brand_deltas": [
+          3,
+          7,
+          4,
+          1,
+          4,
+          3,
+          7,
+          1
+        ]
+      },
+      "C": {
+        "label": "Clinical / dermatologist-recommended",
+        "il_tier": "low",
+        "n": 8,
+        "mean_r_cat": 10.875,
+        "mean_r_cult": 8.375,
+        "mean_delta": -2.5,
+        "brand_deltas": [
+          -9,
+          -7,
+          1,
+          -1,
+          5,
+          -4,
+          -3,
+          -2
+        ]
+      }
+    }
+  },
+  "increment_1_substrate_classification": {
+    "rule": "distinct_eq_1_in_all_3_cells",
+    "distinct_cp_per_cell": {
+      "A": 2,
+      "B": 3,
+      "C": 1
+    },
+    "classification": "differential",
+    "routing": "standard C1 \u2192 C2 \u2192 IL-gradient guard \u2192 C3 sequence (v1.5)",
+    "regime4_verdict_if_uniform_saturation": null
+  },
+  "increment_2_h_il_direct": {
+    "per_cell": {
+      "A": {
+        "n": 8,
+        "mean_r_cat": 0.375,
+        "mean_r_cult": 1.125,
+        "delta": 0.75,
+        "ci_lo": -0.25,
+        "ci_hi": 2.125,
+        "ci_excludes_zero": false,
+        "direction": "positive"
+      },
+      "B": {
+        "n": 8,
+        "mean_r_cat": 1.625,
+        "mean_r_cult": 5.375,
+        "delta": 3.75,
+        "ci_lo": 2.25,
+        "ci_hi": 5.25,
+        "ci_excludes_zero": true,
+        "direction": "positive"
+      },
+      "C": {
+        "n": 8,
+        "mean_r_cat": 10.875,
+        "mean_r_cult": 8.375,
+        "delta": -2.5,
+        "ci_lo": -5.25,
+        "ci_hi": 0.375,
+        "ci_excludes_zero": false,
+        "direction": "negative"
+      }
+    },
+    "monotonic_gradient_check": false,
+    "verdict": "PARTIAL",
+    "reason": "Mixed signal: Cell A \u03b4=0.75, Cell B \u03b4=3.75 (no clear FALSIFIED or CONFIRMED path)",
+    "bootstrap": {
+      "n_iter": 10000,
+      "ci_method": "percentile",
+      "seed_base": 1621,
+      "per_cell_seed_offset": "ord(cell_id)"
+    }
+  },
+  "increment_3_phantom": null
+}
