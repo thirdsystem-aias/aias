@@ -1,304 +1,233 @@
-# AIAS Presence Measurement Protocol — Project Context
+# AIAS™ Measurement Program — Project Context for Claude Code
 
-**This file auto-loads at the start of every Claude Code session run from `~/aias/`. It is the durable project-scoped context for the AIAS research program.**
-
----
-
-## Project identity
-
-**AIAS™ (AI Availability Score)** is an independent academic research program operationalizing AI Availability — the brand-level probability of retrieval, recommendation, or selection by an AI intermediary — as a measurable construct alongside Ehrenberg-Bass Mental Availability and Physical Availability. The program is led by Pablo Ulpiano González Castro, Faculty in the MPS Branding Program at the School of Visual Arts (SVA), founder of Third System™, and Director of Corporate Brand Creative & Governance at Samsung Electronics America.
-
-**Samsung is the author's employer; it has no role in AIAS research.** Samsung is disclosed only in Declarations §Conflict of Interest, never in author blocks, abstracts, or body content.
-
-**Two parallel academic tracks run cross-referencing but independent:**
-1. **Tri-System Brand Growth** (theoretical) — MSI Working Paper, JAR short-form target
-2. **AIAS™ Presence Measurement Protocol** (methodological/empirical) — the work in this repository
-
-The full AIAS™ composite spans six components: **Presence** (current focus), Ranking, Consistency, Coverage, Grounding, Sentiment. Methodology paper v1.2 §7.4 frames the full composite as a multi-year arc, but **the current strategic target is to ship AIAS™ 1.0 (full six-component composite) within months, not years**, at a pace of approximately one phase per day. Treat this as the active operating tempo.
+This file gives Claude Code persistent context for the AIAS™ Presence Measurement Protocol research program. Loaded at session start.
 
 ---
 
-## Critical operating rules
+## Identity & affiliation
 
-These rules are non-negotiable. Violating them is a serious failure mode and will require throwing away work.
+**Author:** Pablo Ulpiano González Castro (accent on the á)
 
-### 1. Fork-don't-rebuild
+**Primary academic affiliation:** School of Visual Arts, MPS Branding Program, New York, NY
+**Secondary research entity:** Third System™ (research entity; data archive and methodology venue)
+**Employment:** Samsung Electronics America (Director, Corporate Brand Creative & Governance)
 
-**Each new phase forks from the prior phase, surgically.** Never rebuild build scripts, content modules, or layouts from scratch. The established Third System editorial design has shipped across 14+ reports (v0.6 through v0.20) with a consistent layout, typography, brand palette, page templates, and section structure. New phases inherit all of that by direct file copy + surgical text-level edits.
+### Samsung COI rule — non-negotiable
 
-**The phase-copy pattern (canonical):**
+Samsung is disclosed **only in Declarations §COI** of formal papers. **Never** in author blocks, affiliations, or front-matter. Pre-acquisition COI screen per phase is documented as DEVIATIONS Entry 0 (confirming no brand in the panel is Samsung-affiliated).
 
-```bash
-cp ~/aias/reports/build_report_vXX.py    ~/aias/reports/build_report_vYY.py
-cp ~/aias/reports/vXX_topic_content.py   ~/aias/reports/vYY_topic_content.py
-cp ~/aias/reports/build_charts_vXX.py    ~/aias/reports/build_charts_vYY.py
-cp ~/aias/scripts/run_acquisition_vXX.py ~/aias/scripts/run_acquisition_vYY.py
-cp ~/aias/scripts/score_vXX.py           ~/aias/scripts/score_vYY.py
-cp ~/aias/papers/v0_XX/v0_XX_ssrn_paper_draft.md  ~/aias/papers/v0_YY/
-cp ~/aias/reports/build_paper_v0_XX.py   ~/aias/reports/build_paper_v0_YY.py
-# Edit each with str_replace for: version strings, content imports,
-# chart filenames, citation, output filename, deposit root.
-# Leave structural code (layout, typography, brand colors, page templates) untouched.
+### Standard SSRN/paper author block
+
+```
+Pablo Ulpiano González Castro
+School of Visual Arts, MPS Branding Program, New York, NY (primary academic affiliation)
+Third System™ (research entity; data archive and methodology venue)
+Correspondence: pablou@pablou.com · pablou.com
+ORCID: 0009-0003-8968-9990 (linked: https://orcid.org/0009-0003-8968-9990)
 ```
 
-**Prior phases stay untouched.** Never edit `build_report_v19.py` to add v0.20 logic. Always copy → rename → edit the new file. The historical record matters.
+### Trademark convention
 
-### 2. Surgical precision over broad rewrites
-
-Use `str_replace` for targeted edits. Never write a build script from scratch. Never use broad rewrites that touch sections beyond what the change requires. If you find yourself rewriting more than 20% of a file's lines for a phase fork, you're doing it wrong — stop and re-anchor on the prior phase.
-
-### 3. Pre-registration discipline is non-negotiable
-
-Every phase's design (registry, hypotheses, decision rules, thresholds, verdict matrices) is locked at a **git commit + tag** before any data acquisition begins. Pre-reg artifacts live at `prereg/v0_NN_prereg.md` and `prereg/v0_NN_registry.json`. Tag pattern: `v0.NN-prereg-r1` (r2, r3 if revisions before first acquisition).
-
-Never modify pre-registration content after the git tag is pushed. Any changes after lock are documented as DEVIATIONS entries with explicit dispositions.
-
-### 4. Trademark convention
-
-Place `™` superscript after both "Third System" and "AIAS" on first prominent mention in formal documents, papers, proposals, applications, and websites. Subsequent mentions in the same document remain unmarked. Do not use ™ in casual conversation, internal notes, or after the first marked use within the same document.
-
-### 5. Samsung in Declarations only
-
-Author blocks in SSRN papers list **two affiliations only**:
-1. School of Visual Arts, MPS Branding Program, New York, NY (primary academic affiliation)
-2. Third System™ (research entity; data archive and methodology venue)
-
-Samsung Electronics America is disclosed in Declarations §Conflict of Interest. Never in author block, never in abstract, never in body content.
+Place ™ superscript after **"Third System"** and **"AIAS"** on first prominent mention in formal documents, papers, proposals, applications, and websites. Subsequent mentions in the same document are unmarked. Do not use ™ in casual conversation, internal notes, or after the first marked use within the same document.
 
 ---
 
-## File structure
+## Repo layout
 
 ```
 ~/aias/
-├── CLAUDE.md                                # This file
-├── brand/
-│   ├── third_system_brand.json              # v1.5 brand tokens (Indigo #37237B primary)
-│   ├── design_tokens_template.json          # IDML extract for paragraph styles
-│   ├── report_specs.json                    # Specs for brand-format report
-│   ├── THIRDSYSTEM_Logo.svg                 # Wordmark
-│   └── THIRDSYSTEM_AIPT_Logo.svg            # AIPT lockup
-├── prereg/                                  # Pre-registration artifacts per phase
-│   ├── v0_20_prereg.md
-│   ├── v0_20_registry.json
-│   ├── v0_21_mega_prompt.md                 # The v0.21 phase prompt
-│   └── ...
-├── scripts/
-│   ├── osf_upload_v2.py                     # OSF deposit (nested-folder safe)
-│   ├── run_acquisition_vNN.py               # Per-phase Phase A + Phase B runners
-│   ├── score_vNN.py                         # Per-phase scoring + verdict resolution
-│   ├── vNN_osf_deposit.sh                   # Per-phase final deposit runner
-│   └── ...
-├── reports/
-│   ├── build_report_vNN.py                  # Per-phase brand-format report builder
-│   ├── vNN_topic_content.py                 # Per-phase content module (11 attributes)
-│   ├── build_charts_vNN.py                  # Per-phase matplotlib chart generator
-│   ├── tsboilerplate.py                     # Shared "About the Third System" copy
-│   ├── output/                              # Build intermediates (not committed)
-│   └── figs/
-│       ├── v19/chart_01_*.pdf
-│       ├── v20/chart_01_*.pdf
-│       └── ...
-├── papers/                                  # SSRN paper sources per phase
-│   ├── v0_20/
-│   │   ├── v0_20_ssrn_paper_draft.md
-│   │   ├── v0_20_ssrn_paper.pdf
-│   │   ├── build_paper_v0_20.py
-│   │   └── ssrn_submission_packet_v0_20.md
-│   └── ...
-├── osf/                                     # Local mirror of OSF deposits
-│   ├── vNN/
-│   │   ├── phase_a_results.csv
-│   │   ├── phase_b_results.csv
-│   │   ├── vNN_verdicts.json
-│   │   └── reports/vNN_topic.pdf
-│   └── ...
-└── tomorrow.md                              # Running task list for next session
+├── scripts/             # acquisition runners, scorers, osf_upload.py
+├── papers/v0_NN/        # SSRN academic papers per phase
+├── papers/methodology/  # v1.N methodology papers (paths TBD per increment)
+├── reports/             # Third System brand-format managerial PDFs
+├── reports/figs/v21/    # chart PDFs per phase
+├── osf/v21/             # OSF staging tree (Phase A, Phase B, verdicts, registries)
+├── brand/               # third_system_brand.json (Indigo #37237B primary)
+└── methodology/v1_N/    # methodology paper drafts + outlines
 ```
 
----
-
-## The 13-step ship sequence
-
-Every phase follows this sequence end-to-end. Each step has a canonical fork source.
-
-| # | Step | Fork source | Lock point |
-|---|---|---|---|
-| 1 | Pre-reg artifact | Prior phase prereg/*.md | Author the new pre-reg document |
-| 2 | Git commit + tag | — | `git tag v0.NN-prereg-r1` |
-| 3 | OSF deposit pre-reg | `osf_upload_v2.py` | Files at `osf.io/ec6wh/vNN/prereg/` |
-| 4 | Run acquisition | `run_acquisition_vXX.py` | Phase A (n_brands × 6 models probes) + Phase B (6 frames × 6 models queries) |
-| 5 | Acquisition lock | — | `git tag v0.NN-acquisition-locked` |
-| 6 | Run scoring | `score_vXX.py` | Hypothesis verdicts written to `osf/vNN/vNN_verdicts.json` |
-| 7 | Build charts | `build_charts_vXX.py` | Three PDFs at `reports/figs/vNN/` |
-| 8 | Brand-format report | `build_report_vXX.py` + `vXX_topic_content.py` | `osf/vNN/reports/vNN_topic.pdf` |
-| 9 | SSRN paper draft + PDF | `v0_XX_ssrn_paper_draft.md` + `build_paper_v0_XX.py` | `papers/v0_NN/v0_NN_ssrn_paper.pdf` |
-| 10 | SSRN submission packet | `ssrn_submission_packet_v0_XX.md` | Webform paste-ready document |
-| 11 | SSRN submission | Manual webform submission | SSRN assigns abstract ID (1–3 days, typically same-day) |
-| 12 | Final OSF deposit | `vXX_osf_deposit.sh` | Charts + paper + scoring + report on `osf.io/ec6wh/vNN/` |
-| 13 | Memory backfill | Manual update to userMemories | Record SSRN ID, verdicts, commit hash |
+Build outputs land under their respective subdirs. Never write to `/Users/pablou/Downloads`.
 
 ---
 
-## Typography rules
+## Current state (May 2026)
 
-### Brand-format reports (ReportLab + Akkurat Pro)
+- **Latest phase shipped:** v0.21 cosmetics (SSRN 6815378, May 2026)
+  - 5-substrate-family anchor base now complete (kitchenware, fragrance, audio, skincare, cosmetics)
+  - Type 2 quadrant cleared EMERGED threshold for first time
+  - Phantom Brand Persistence reached strongest demonstration (Glossier 6/6 q6)
+- **Latest methodology paper shipped:** v1.6 (SSRN 6816340, May 2026)
+  - Three increments: substrate-level Recognition pre-screen, independent moderator pathway (`H_IdentityLoad_Direct`), Phantom Brand Persistence Phase B extension
+  - Retrospective scoring against v0.16–v0.21 corpus; v0.21 returned CONFIRMED for both `H_IdentityLoad_Direct` and `H_PhantomBrandPersistence` (Glossier validity anchor passed at R_phantom = 12)
+  - Pre-reg tag `v1.6-prereg-r1` (commit `f10616a`); OSF deposit at `osf.io/ec6wh/methodology/v1_6/`
+- **Active next deliverable:** AIAS™ 1.0 synthesis paper consolidating the 5-family anchor base under locked v1.6 methodology
 
-- Detect Akkurat Pro at `~/.fonts/Akkurat/` and `~/Library/Fonts/`. Inter is fallback; Helvetica is hard fallback (emits HARD WARNING).
-- OTF→TTF conversion via fontTools is automatic when needed; cached at `~/.cache/third_system_reports/fonts/`.
-- Subscripts use `<sub>N</sub>` markup, not Unicode ₁/₂ glyphs (Akkurat lacks them). Body: `<sub size='6'>1</sub>`; cover/18pt: `<sub size='10'>1</sub>`.
-- Wrap arrow connectors in NBSP (`\u00a0`) to prevent line splits.
-- Brand primary: Indigo `#37237B`.
+---
 
-### SSRN papers (pandoc + xelatex + Carlito)
+## Pre-registration discipline — non-negotiable
 
-- YAML: `mainfont: Carlito`, `fontsize: 11pt`.
-- Header includes: `\setstretch{1.36}`, `\parskip=8pt`, `\parindent=0pt`, `\usepackage{amssymb}` (for `$\checkmark$` and `$\times$` in verdict tables), `\renewcommand{\maketitle}{}` (suppresses pandoc's auto-titlepage).
-- Custom `\begin{titlepage}...\end{titlepage}` block with LOCAL `\setstretch{1.0}` + `\setlength{\parskip}{0pt}` overrides — without these the titlepage inflates ~35% and bleeds to page 2. This is the v0.19+ one-page-fit rule.
-- Title page centered with `\fontsize{16}{21.76}\selectfont\bfseries`; local `\parskip=10.36pt`.
-- `\floatplacement{figure}{H}`; `\captionsetup{labelfont={bf,it}, textfont=it, justification=raggedright}`.
-- `\titleformat{\section}{\bfseries\large}{\thesection}{1em}{}`; same pattern for subsection.
+Every phase follows this ship sequence:
 
-**Carlito glyph gaps requiring Unicode→LaTeX substitution in build_paper_vNN.py:**
+1. **Pre-registration** at git commit, tag `v0.NN-prereg-rN`. Locks panel, hypotheses, decision rules, verdict matrices, probe wording. Nothing else proceeds until this is in.
+2. **Acquisition** (Phase A 144 probes + Phase B 36 queries against locked panel). Tag `v0.NN-acquisition-locked` after acquisition is complete.
+3. **Canonical scoring + hypothesis verdict resolution** via `score_vNN.py`. Verdicts JSON to `~/aias/osf/vNN/`.
+4. **Third System brand-format report PDF** (managerial register; ReportLab + Akkurat Pro).
+5. **SSRN academic paper** (academic register; pandoc + xelatex + Carlito).
+6. **OSF deposit** at `osf.io/ec6wh/vNN/` via `~/aias/scripts/osf_upload.py`.
+7. **SSRN webform submission** → returns abstract ID (1–3 business days).
+8. **Cross-citation backfill** in dependent papers (Tri-System MSI WP, Routledge monograph).
 
-| Unicode | Replacement |
+For methodology papers (v1.N): no new acquisition; retrospective scoring against existing phase corpus. Same pre-reg discipline at git tag `v1.N-prereg-rN`.
+
+---
+
+## Two-register discipline — non-negotiable
+
+The same phase findings are written in **two intentionally divergent registers**:
+
+- **Academic register** (SSRN papers): formal H1/H2 hypothesis framing, ex-ante verdict matrices, methodology lineage, full citation chain. Standard scholarly voice.
+- **Managerial register** (Third System brand-format reports): P1–P5 propositional framing, executive-readable, brand-strategy framing. No academic hypothesis labels.
+
+These are **not inconsistent**. They are different registers for different audiences. Do not collapse them into a single artifact, and do not let academic-paper voice leak into report content (or vice versa).
+
+---
+
+## Build pipelines
+
+### Report build (ReportLab + pypdf two-pass)
+
+Per-phase three-file set in `~/aias/reports/`:
+
+- `build_report_vNN.py` — main builder; Pass 1 layouts body with chart slot reservations; Pass 2 overlays chart PDFs at locked figsize
+- `vNN_<topic>_content.py` — content module (STANDFIRST, EXEC_SUMMARY, PATTERNS, HYPOTHESIS_DETAILS, LIMITATIONS, WHATS_NEXT)
+- `build_charts_vNN.py` — matplotlib chart builder; outputs chart_NN.pdf to `~/aias/reports/figs/vNN/`
+
+**Font:** Akkurat Pro from `~/.fonts/Akkurat` and `~/Library/Fonts`, auto-detected. Register via `matplotlib.font_manager.fontManager.addfont()` at module top for charts; set `plt.rcParams['font.family']=['Akkurat Pro','sans-serif']`.
+
+**Brand tokens:** `~/aias/brand/third_system_brand.json`. Primary: Indigo #37237B.
+
+**Typography (Akkurat lacks subscript glyphs ₁/₂):** Subscripts via `<sub size='6'>1</sub>` markup (body) or `<sub size='10'>1</sub>` (cover/18pt). Do **not** add `rise='-N'` — default sub position is correct. Wrap arrow connectors with `\u00a0` (NBSP) to prevent line-splits.
+
+### SSRN paper build (pandoc + xelatex + Carlito)
+
+Per-phase two-file set in `~/aias/papers/v0_NN/`:
+
+- `build_paper_vNN.py` — thin pandoc wrapper; applies defensive Unicode→LaTeX substitutions for Carlito glyph gaps; outputs PDF
+- `v0_NN_ssrn_paper_draft.md` — paper body with YAML preamble
+
+**YAML preamble standard:** `mainfont: Carlito`, `fontsize: 11pt`, `geometry: [letterpaper, margin=1in]` (added v0.21+), `\setstretch{1.36}`, `\parskip 8pt`, `\parindent 0pt`, float/caption/titlesec packages, `\renewcommand{\maketitle}{}` (suppresses pandoc's auto-maketitle).
+
+**Titlepage block:** custom `\begin{titlepage}...\end{titlepage}` at body start. Always add `\setstretch{1.0}` AND `\setlength{\parskip}{0pt}` locally inside the block to override global preamble — without these the titlepage inflates ~35% and bleeds to page 2.
+
+**Figure references:** `![cap](../../reports/figs/vNN/chart_NN.pdf){#fig:label width=100%}`. Pandoc needs `--resource-path=papers/v0_NN` flag.
+
+**Carlito glyph-gap substitution dict** (canonical, in build_paper_vNN.py):
+
+| Char | LaTeX |
 |---|---|
-| `ₜ` (U+209C subscript t) | `$_{t}$` |
-| `∈` (U+2208) | `$\in$` |
-| `⊆` (U+2286) | `$\subseteq$` |
-| `▶` (U+25B6) | `$\blacktriangleright$` |
-| `→`, `←`, `↔`, `⇒` | `$\rightarrow$`, etc. |
-| `✓`, `✗` | `$\checkmark$`, `$\times$` |
-| `−` (U+2212 math minus) | `$-$` |
-| `⁻⁴` etc | `$^{-4}$` (rewrite compounds to decimal if possible) |
-| `ρ` | `$\rho$` |
+| ₜ U+209C | `$_{t}$` |
+| ∈ U+2208 | `$\in$` |
+| ∧ U+2227 | `$\wedge$` |
+| ∶ U+2236 | `$:$` |
+| ⊆ U+2286 | `$\subseteq$` |
+| ✓ U+2713 | `\checkmark` |
+| ✗ U+2717 | `$\times$` |
+| ▶ U+25B6 | `$\blacktriangleright$` |
+| ⁻ U+207B | `-` (rewrite compounds like `10⁻⁴` to decimal in source) |
+| ⁰¹²³⁴⁵⁶⁷⁸⁹ | `$^{N}$` |
 
-The substitution function should skip the YAML front-matter so escaped LaTeX in `header-includes` isn't double-processed.
+Add to dict on every new gap surfaced by xelatex `Missing character` warnings.
 
----
+### Acquisition runner
 
-## Charts (matplotlib editorial format)
+`~/aias/scripts/run_acquisition_vNN.py` — calls the 6-LLM panel (Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, GPT-4o-mini, Gemini 2.5 Flash, Gemini 2.5 Flash Lite) for both phases. Probe template + Phase B frames read dynamically from registry JSON. Outputs `phase_a_results.csv` (144 rows) and `phase_b_results.csv` (36 rows). Note: `google.generativeai` package deprecated; migrate to `google.genai` at v0.22.
 
-Per the Third System chart convention:
-- Title: bold, top-left, GRAY_TITLE
-- Subtitle: gray, immediately below title
-- Thin indigo (#37237B) separator rule below subtitle
-- Source line: italic gray at bottom, citing upstream SSRN IDs
-- Font: Akkurat Pro registered via `matplotlib.font_manager.fontManager.addfont()` from `~/.fonts/Akkurat/` and `~/Library/Fonts/`. Set `plt.rcParams['font.family'] = ['Akkurat Pro', 'sans-serif']`. Sans-serif fallback only when font unavailable.
-- Native figsize for v0.20 charts: `(7.5, 5.5)` inches (76 DPI default). This figsize key is preserved in `CHART_FIGSIZE_IN` in build_report_vNN.py for cross-version reuse.
+### Scorer
 
----
+`~/aias/scripts/score_vNN.py` — applies locked methodology version (currently v1.5; v1.6 in development). Outputs `vNN_verdicts.json` with the four hypothesis verdicts and supporting statistics.
 
-## SSRN submission standards
+### OSF upload (patched v0.21 for nested paths)
 
-### Author block
+`~/aias/scripts/osf_upload.py` — recursive uploader against WaterButler API. Project ID `ec6wh` hardcoded. Requires `OSF_TOKEN` env var with `osf.full_write` scope. Supports nested destination paths (e.g. `v21/figures`); each path component is created in sequence since WaterButler 500s on nested PUT.
 
-```
-Pablo Ulpiano González Castro (note: á carries acute accent)
-School of Visual Arts, MPS Branding Program, New York, NY
-(primary academic affiliation)
-Third System™ (research entity; data archive and methodology venue)
-Correspondence: pablou@pablou.com · pablou.com
-ORCID: 0009-0003-8968-9990 (linked)
-```
-
-### JEL codes
-
-- **M31** — Marketing (primary)
-- **L86** — Information and Internet Services
-- **L15** — Information and Product Quality
-- **D83** — Search; Learning; Information and Knowledge
-- **M37** — Advertising
-
-### Subject classifications (up to 7 eJournals)
-
-1. Marketing eJournal
-2. Marketing Strategy eJournal
-3. Consumer Behavior eJournal
-4. Advertising & Marketing Communications eJournal
-5. Information Systems & eBusiness eJournal
-6. Artificial Intelligence eJournal
-7. Decision-Making Under Risk & Uncertainty eJournal
-
-### Declarations
-
-- **COI:** Standard Samsung disclosure (employer; no role in research; pre-acquisition COI screen documented as DEVIATIONS Entry 0)
-- **Funder:** Self-funded
-- **Ethics:** Not applicable; no human subjects; public LLM APIs
-- **Data/code availability:** OSF `osf.io/ec6wh/vNN/` with commit hash and tag references
+Usage: `python ~/aias/scripts/osf_upload.py <local_dir> <remote_path>`. Standard deposit pattern per phase: `vNN/figures`, `vNN/paper`, `vNN/report`, `vNN/scoring`.
 
 ---
 
-## SSRN abstract ID registry
+## Methodology citation chain (canonical)
 
-| Phase | SSRN ID | Notes |
+Cite **all five** methodology papers in every phase paper's bibliography:
+
+- v1.2 — *Methodological Notes on Construct Validity and the Four-Regime Taxonomy*. SSRN 6761698.
+- v1.3 — *Phase A Pivot-Validation Specification*. SSRN 6797679.
+- v1.4 — *Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+- v1.5 — *Multi-Statistic C2 and Two-Channel Recall Decomposition*. SSRN 6810758.
+- v1.6 — *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension*. SSRN 6816340.
+
+Foundational: *Tri-System Brand Growth* (SSRN 6659000).
+
+---
+
+## Phase SSRN ID registry
+
+| Phase | Substrate | SSRN ID |
 |---|---|---|
-| Foundational | 6659000 | AI Availability — A Third System in Brand Availability Theory |
-| v1.2 (Methodology) | 6761698 | Presence Measurement Protocol: Construct Validity, Four-Regime Taxonomy |
-| v1.3 (Methodology) | 6797679 | Phase A Pivot-Validation Specification |
-| v1.4 (Methodology) | 6799479 | Recognition × Recall Decomposition (multi-component) |
-| v1.5 (Methodology) | 6810758 | Multi-Statistic C2 + Two-Channel Recall |
-| v0.16 (Kitchen knives) | 6791999 | Regime 4 Boundary + Discourse-Language Carryforward |
-| v0.17 (Premium kitchenware) | 6802261 | Panel Inadequacy + Recognition × Recall Dissociation anchor (Iwachu) |
-| v0.18 (Indie fragrance) | 6806558 | IL Moderator + Dissociation Generalization (second family) |
-| v0.19 (Audiophile electronics) | 6809182 | C3 Rescue + Dissociation Replication (third family) |
-| v0.20 (Skincare) | 6811441 | Type 2 Emergence + first prospective v1.5 C2 (fourth family) |
-| v0.21 (Cosmetics) | pending | Type 2 EMERGED pursuit (fifth family) |
+| v0.16 | Kitchen knives | 6791999 |
+| v0.17 | Premium kitchenware | 6802261 |
+| v0.18 | Indie fragrance | 6806558 |
+| v0.19 | Audiophile headphones | 6809182 |
+| v0.20 | Skincare | 6811441 |
+| v0.21 | Cosmetics | 6815378 |
+| — methodology papers — | | |
+| v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 
-URL pattern: `https://ssrn.com/abstract={id}`
+URL pattern: `https://ssrn.com/abstract={ID}`. New phase papers cite **all prior phases** plus the methodology chain.
 
 ---
 
-## Current state
+## SSRN submission packet template (Step 3 metadata)
 
-**Just shipped:** v0.20 (Skincare, SSRN 6811441, May 2026). Type 2 quadrant empirically populated for the first time (Glossier and Rhode in Cell B). First prospective v1.5 phase. Four substrate families anchored.
-
-**Next:** v0.21 (Cosmetics). Mega-prompt at `prereg/v0_21_mega_prompt.md`. Pursues Type 2 EMERGED to close the Presence-component AIAS™ 1.0 anchor base at five substrate families.
-
-**After v0.21:**
-1. Protocol v1.6 (moderator pathway independent of Regime 4) — ~1 day
-2. Synthesis paper consolidating five-family anchor base — ~3–5 days
-3. AIAS™ 1.0 Presence-component release packaging — ~1 day
-4. Pivot to remaining five composite components (Ranking, Consistency, Coverage, Grounding, Sentiment) — multi-week, methodology + empirical per component
+- **Keywords:** semicolon-separated. Always include: `AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass`. Add 5–7 phase-specific keywords.
+- **JEL primary:** M31. Secondary: L86, L15, D83, M37.
+- **eJournals (up to 7):** Marketing; Marketing Strategy; Consumer Behavior; Advertising & Marketing Communications; Information Systems & eBusiness; Artificial Intelligence; Decision-Making Under Risk & Uncertainty.
+- **Funder:** Self-funded.
+- **Ethics:** Not applicable; no human subjects.
 
 ---
 
-## Pre-flight checklist before any ship cycle
+## Chart conventions (matplotlib)
 
-Before starting a new phase:
+Editorial layout per `build_charts_vNN.py`:
 
-- [ ] Confirm I'm on a clean working tree (`git status`), or stash unrelated changes (`git stash push -u`)
-- [ ] Confirm I'm on the right branch (typically a new phase branch: `git checkout -b v0.NN-topic`)
-- [ ] Confirm API keys are loaded: `~/.api_keys` exports `ANTHROPIC_API_KEY`, `OPENAI_API_KEY`, `GOOGLE_API_KEY`
-- [ ] Confirm `OSF_TOKEN` is loaded in shell env (for the OSF deposit steps)
-- [ ] Confirm prior phase fork sources exist at `~/aias/reports/build_report_vXX.py` etc.
+- Title: **bold top-left**
+- Subtitle: gray below title
+- Thin Indigo (#37237B) horizontal separator rule
+- Source line: *italic gray* at bottom, citing upstream SSRN IDs and pre-reg tag
+- Akkurat Pro font registered at module top
 
----
+Cell color convention (cumulative across phases):
 
-## DON'T-DO list
-
-These are failure modes that have occurred and must not recur:
-
-1. **Don't rebuild build scripts from scratch.** Always fork from the prior phase. The established design has shipped 14+ times; new phases inherit it.
-2. **Don't mention Samsung outside Declarations §COI.** Not in author block, not in abstract, not in body content, not in OSF metadata.
-3. **Don't modify pre-registration after the git tag.** All post-tag changes are DEVIATIONS entries with explicit dispositions.
-4. **Don't push to main without review.** Phase work lives on phase branches; main is for shipped phases only.
-5. **Don't skip the COI screen.** Every phase opens with DEVIATIONS Entry 0 documenting the Samsung screen result before acquisition begins.
-6. **Don't generate Akkurat-incompatible glyphs in ReportLab.** Use `<sub>N</sub>`, not Unicode subscripts.
-7. **Don't generate Carlito-incompatible glyphs in pandoc paper builds without the substitution table.** Math symbols, checkmarks, math minus, subscripts all require LaTeX equivalents.
-8. **Don't store API keys in committed files.** They live in `~/.api_keys` (chmod 0600) or shell env, never in git.
-9. **Don't run scripts with broad `git add .`.** Always specify paths; the working tree often has uncommitted changes across multiple phase branches.
-10. **Don't assume verdicts before they're computed.** Pre-reg states predictions in §8 "Substantive predictions" as descriptive only; the actual verdicts come from the scorer's resolution of the locked verdict matrices, not from authorial expectation.
+- Cell A: Indigo (#37237B), prestige/heritage tier
+- Cell B: Purple/violet, celebrity-DTC/cult tier (high IL)
+- Cell C: Cyan/light blue, drugstore/mass tier (low IL)
 
 ---
 
-## How to use this file
+## Working preferences
 
-When starting any Claude Code session in `~/aias/`:
+- **Single unified build pipelines, no toggles.** Strong preference across all deliverables.
+- **Surgical precision over broad rewrites.** Edits scoped tightly. Always verify scope before executing major changes.
+- **Phase copy pattern:** copy prior build files with new version prefix, new registry, pre-reg locked at git commit before measurement. Prior phases left untouched.
+- **No emojis, no excessive bolding, no breathless tone** in deliverables. Direct, declarative voice. Reports are managerial; papers are academic; neither is salesy.
 
-1. This file loads automatically; the assistant should treat its conventions as binding.
-2. For a specific phase ship cycle, paste or reference the phase-specific mega-prompt (e.g. `prereg/v0_21_mega_prompt.md`).
-3. For ad-hoc questions, the assistant should anchor on the file structure, conventions, and registry sections above.
-4. Updates to this file land in commits with the message prefix `[CLAUDE.md]`.
+---
 
-The assistant should ask the user before making changes to this file. The user can also amend it directly between sessions.
+## When in doubt
+
+- The v1.6 outline (`~/aias/methodology/v1_6/aias_v1_6_outline.md`) is the active planning artifact for the next paper. Read it first when working on v1.6.
+- Prior phase deliverables (`~/aias/papers/v0_21/`, `~/aias/reports/v21_*`) are the structural template for new phase work.
+- The 5 decisions in the v1.6 outline gate drafting. Resolve those before producing draft prose.
+
+---
+
+*This file is the AIAS program's constitution for Claude Code sessions. Update when conventions change, when new phases ship (extend the SSRN registry), or when build pipelines evolve.*
