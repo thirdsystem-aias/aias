@@ -1,0 +1,928 @@
+{
+  "metadata": {
+    "paper": "AIAS 1.0 Synthesis",
+    "lock_state": "aias-1-0-outline-locked",
+    "lock_date": "2026-05-22",
+    "generated": "2026-05-23T04:00:23.262345+00:00",
+    "v1_6_boundary": {
+      "inc1": "narrative for v0.16–v0.19, scored for v0.20–v0.21",
+      "inc2": "scored for v0.20–v0.21 only; v0.16–v0.19 lack R_cult",
+      "inc3": "scored for v0.21 only"
+    },
+    "verdict_discipline": "Each phase's published verdict (PARTIAL/EMERGED/CONFIRMED/FALSIFIED/etc.) stands as the authority. The builder does NOT re-apply later-version thresholds retrospectively (D4 boundary). Where multiple counts could be reported (e.g., Type 2 all-cell dissociation count vs. verdict-driving Cell B count), both are surfaced with explicit labeling; the verdict label remains the authority for §4 prose.",
+    "cross_phase_synthesis_contributions": [
+      {
+        "topic": "Out-of-cell Type 2 as a cross-phase recurrent feature of the dissociation framework",
+        "contribution": "The synthesis's cross-phase all-cell dissociation count surfaces out-of-cell Type 2 cases that per-phase Cell-B-anchored verdict matrices correctly did not surface within their own scope. v0.20 La Mer (Cell A — Prestige; C_P=6, R_cat=2, R_cult=7) and v0.21 e.l.f. Cosmetics (Cell C — Drugstore/mass; C_P=6, R_cat=1, R_cult=9) jointly establish out-of-cell Type 2 as a recurrent feature of the dissociation framework across substrate families. The per-phase Cell B verdicts (PARTIAL for v0.20, EMERGED for v0.21) stand as the authoritative within-phase results; the synthesis adds the cross-phase algorithmic perspective alongside them.",
+        "framing": "Synthesis-layer contribution, not a correction to prior work. The pattern is visible only at the cross-phase view; no per-phase paper could have surfaced it within its own scope because each phase's verdict matrix is correctly Cell-B-anchored by construction.",
+        "synthesis_handling": "§4.4 (v0.20 anchor) and §4.5 (v0.21 anchor) surface both cases under the all-cell dissociation framework while preserving each phase's published verdict as the authority for its own H_Type2_emergence label. No erratum on either phase's SSRN deposit.",
+        "captured_at": "aias-1-0-data-build (step 2, post-La-Mer-verification)"
+      }
+    ],
+    "source_files": [
+      "osf/v20/v20_verdicts.json",
+      "osf/v21/v21_verdicts.json",
+      "methodology/v1_6/retrospective/v0_20/v1_6_retrospective_v0_20.json",
+      "methodology/v1_6/retrospective/v0_21/v1_6_retrospective_v0_21.json",
+      "PUBLISHED_REFERENCE (embedded in scripts/aias_1_0_synthesis_data.py for v0.16–v0.19)"
+    ]
+  },
+  "phases": [
+    {
+      "phase": "v0.16",
+      "substrate": "Kitchen knives",
+      "ssrn_id": "6791999",
+      "panel_design": "3-cell IL-gradient",
+      "source_type": "published_reference",
+      "v1_4_v1_5_verdicts": {
+        "H_Regime4": {
+          "verdict": "BOUNDARY",
+          "note": "Original Regime 4 boundary phase; discourse-language carryforward documented."
+        },
+        "H_IdentityLoad_moderator_leg": "PARTIAL"
+      },
+      "dissociation_counts": {
+        "iwachu": null,
+        "type_1": null,
+        "type_2": null,
+        "note": "Pre-v1.4 framework; dissociation quadrants not formalized at acquisition."
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "differential",
+          "basis": "Published Phase A C_P distributions show within-cell variance across cells."
+        },
+        "inc2": {
+          "verdict": null,
+          "status": "N/A — R_cult not collected (v1.5 prospective increment first acquired in v0.20)."
+        },
+        "inc3": {
+          "verdict": null,
+          "status": "N/A — Phantom out of v1.6 retrospective scope."
+        }
+      },
+      "source": "SSRN 6791999; v1.6 §5 table_data narrative."
+    },
+    {
+      "phase": "v0.17",
+      "substrate": "Premium kitchenware",
+      "ssrn_id": "6802261",
+      "panel_design": "3-cell IL-gradient",
+      "source_type": "published_reference",
+      "v1_4_v1_5_verdicts": {
+        "H_Regime4": {
+          "verdict": "FALSIFIED-on-panel-inadequacy",
+          "note": "Panel inadequacy at the Recognition layer drove the verdict."
+        },
+        "H_IdentityLoad_moderator_leg": "FALSIFIED-on-panel-inadequacy",
+        "H_Iwachu": {
+          "note": "First Iwachu dissociation case named (Japanese knives recognized at high C_P but sparse canonical Recall)."
+        }
+      },
+      "dissociation_counts": {
+        "iwachu": "present (single-channel framework)",
+        "type_1": null,
+        "type_2": null,
+        "note": "Iwachu pattern documented per-brand under v1.4 single-channel scoring; cross-quadrant counts not enumerated."
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "differential",
+          "basis": "Within-cell variance plus panel inadequacy; not uniform-saturation."
+        },
+        "inc2": {
+          "verdict": null,
+          "status": "N/A — R_cult not collected."
+        },
+        "inc3": {
+          "verdict": null,
+          "status": "N/A — Phantom out of v1.6 retrospective scope."
+        }
+      },
+      "source": "SSRN 6802261; v1.6 §5 table_data narrative."
+    },
+    {
+      "phase": "v0.18",
+      "substrate": "Indie fragrance",
+      "ssrn_id": "6806558",
+      "panel_design": "3-cell IL-gradient",
+      "source_type": "published_reference",
+      "v1_4_v1_5_verdicts": {
+        "H_Regime4": {
+          "verdict": "PARTIAL",
+          "note": "C_P modal share 0.69 worst cell; differential pattern."
+        },
+        "H_IdentityLoad_moderator_joint": "PARTIAL joint (3-leg with v0.16, v0.17)",
+        "H_Iwachu_multi_cell": {
+          "note": "First multi-cell Iwachu generalization in English-language substrate."
+        }
+      },
+      "dissociation_counts": {
+        "iwachu": "multi-cell (single-channel framework)",
+        "type_1": null,
+        "type_2": null,
+        "note": "Iwachu pattern surfaces in ≥2 cells under v1.4 single-channel scoring."
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "differential",
+          "basis": "C_P modal share 0.69 worst cell; not uniform."
+        },
+        "inc2": {
+          "verdict": null,
+          "status": "N/A — R_cult not collected."
+        },
+        "inc3": {
+          "verdict": null,
+          "status": "N/A — Phantom out of v1.6 retrospective scope."
+        }
+      },
+      "source": "SSRN 6806558; v1.6 §5 table_data narrative."
+    },
+    {
+      "phase": "v0.19",
+      "substrate": "Audiophile headphones",
+      "ssrn_id": "6809182",
+      "panel_design": "2-cell uniform-IL",
+      "source_type": "published_reference",
+      "v1_4_v1_5_verdicts": {
+        "H_Regime4": {
+          "verdict": "UNDETERMINED",
+          "note": "v1.4.x protocol; 2-cell Heritage/Boutique design; C2 FAILED → UNDETERMINED."
+        },
+        "H_IdentityLoad_moderator_leg": "Excluded from joint (uniform-IL design; no contribution)."
+      },
+      "dissociation_counts": {
+        "iwachu": null,
+        "type_1": null,
+        "type_2": null,
+        "note": "2-cell uniform-IL design; cross-quadrant dissociation framework not the focus."
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "mixed",
+          "basis": "Cell B modal_share 0.875 high but distinct ≠ 1 in either cell; not uniform-saturation."
+        },
+        "inc2": {
+          "verdict": null,
+          "status": "N/A — single-channel q1–q6 design; no R_cult / R_cat decomposition at acquisition."
+        },
+        "inc3": {
+          "verdict": null,
+          "status": "N/A — Phantom out of v1.6 retrospective scope."
+        }
+      },
+      "source": "SSRN 6809182; v1.6 §5 table_data narrative."
+    },
+    {
+      "phase": "v0.20",
+      "substrate": "Skincare",
+      "ssrn_id": "6811441",
+      "panel_design": "3-cell IL-gradient",
+      "source_type": "scored",
+      "v1_4_v1_5_verdicts": {
+        "H_Type2_emergence": {
+          "verdict": "PARTIAL",
+          "reason": "Cell B Type 2 count = 2 ∈ [1, 2]",
+          "cell_b_n": 8,
+          "cell_b_type2_count": 2,
+          "note": "verdict-driving Cell B count, per each phase's own prereg-r1 matrix; not the all-cell dissociation framework count below"
+        },
+        "H_Regime4": "FALSIFIED",
+        "H_Dissociation_substrate_generalization": "GENERALIZED",
+        "H_IdentityLoad_moderator": "NARROWED"
+      },
+      "dissociation_counts": {
+        "iwachu": 11,
+        "type_1": 1,
+        "type_2": 3,
+        "iwachu_cells": [
+          "A",
+          "B",
+          "C"
+        ],
+        "type_1_cells": [
+          "C"
+        ],
+        "type_2_cells": [
+          "A",
+          "B"
+        ],
+        "_note": "All-cell algorithmic counts from each phase's own scoring. Distinct from cell_b_type2_count under v1_4_v1_5_verdicts.H_Type2_emergence, which drives the published PARTIAL/EMERGED/etc. verdict."
+      },
+      "dissociation_brands": {
+        "iwachu": [
+          {
+            "brand": "Estée Lauder",
+            "cell": "A",
+            "r_cat": 1,
+            "r_cult": 0
+          },
+          {
+            "brand": "Lancôme",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "La Mer",
+            "cell": "A",
+            "r_cat": 2,
+            "r_cult": 7
+          },
+          {
+            "brand": "Sisley",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 2
+          },
+          {
+            "brand": "La Prairie",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "Clé de Peau Beauté",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "Rhode",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 7
+          },
+          {
+            "brand": "Fenty Skin",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 4
+          },
+          {
+            "brand": "Glossier",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 3
+          },
+          {
+            "brand": "Augustinus Bader",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 7
+          },
+          {
+            "brand": "Bioderma",
+            "cell": "C",
+            "r_cat": 2,
+            "r_cult": 0
+          }
+        ],
+        "type_1": [
+          {
+            "brand": "Cetaphil",
+            "cell": "C",
+            "r_cat": 6,
+            "r_cult": 2
+          }
+        ],
+        "type_2": [
+          {
+            "brand": "La Mer",
+            "cell": "A",
+            "r_cat": 2,
+            "r_cult": 7
+          },
+          {
+            "brand": "Rhode",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 7
+          },
+          {
+            "brand": "Augustinus Bader",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 7
+          }
+        ]
+      },
+      "type_2_out_of_cell_cases": [
+        {
+          "brand": "La Mer",
+          "cell": "A",
+          "r_cat": 2,
+          "r_cult": 7
+        }
+      ],
+      "phase_b_per_cell": {
+        "A": {
+          "label": "Prestige",
+          "il_tier": "medium",
+          "n": 8,
+          "mean_r_cat": 0.375,
+          "mean_r_cult": 1.125
+        },
+        "B": {
+          "label": "Celebrity DTC / cult",
+          "il_tier": "high",
+          "n": 8,
+          "mean_r_cat": 1.625,
+          "mean_r_cult": 5.375
+        },
+        "C": {
+          "label": "Clinical / dermatologist-recommended",
+          "il_tier": "low",
+          "n": 8,
+          "mean_r_cat": 10.875,
+          "mean_r_cult": 8.375
+        }
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "differential",
+          "distinct_cp_per_cell": {
+            "A": 2,
+            "B": 3,
+            "C": 1
+          },
+          "regime4_verdict_if_uniform_saturation": null
+        },
+        "inc2": {
+          "verdict": "PARTIAL",
+          "per_cell": {
+            "A": {
+              "n": 8,
+              "mean_r_cat": 0.375,
+              "mean_r_cult": 1.125,
+              "delta": 0.75,
+              "ci_lo": -0.25,
+              "ci_hi": 2.125,
+              "ci_excludes_zero": false,
+              "direction": "positive"
+            },
+            "B": {
+              "n": 8,
+              "mean_r_cat": 1.625,
+              "mean_r_cult": 5.375,
+              "delta": 3.75,
+              "ci_lo": 2.25,
+              "ci_hi": 5.25,
+              "ci_excludes_zero": true,
+              "direction": "positive"
+            },
+            "C": {
+              "n": 8,
+              "mean_r_cat": 10.875,
+              "mean_r_cult": 8.375,
+              "delta": -2.5,
+              "ci_lo": -5.25,
+              "ci_hi": 0.375,
+              "ci_excludes_zero": false,
+              "direction": "negative"
+            }
+          },
+          "monotonic_gradient_check": false
+        },
+        "inc3": {
+          "verdict": null,
+          "status": "out of v1.6 retrospective scope"
+        }
+      },
+      "source_paths": {
+        "verdicts": "osf/v20/v20_verdicts.json",
+        "retrospective": "methodology/v1_6/retrospective/v0_20/v1_6_retrospective_v0_20.json"
+      }
+    },
+    {
+      "phase": "v0.21",
+      "substrate": "Cosmetics",
+      "ssrn_id": "6815378",
+      "panel_design": "3-cell IL-gradient",
+      "source_type": "scored",
+      "v1_4_v1_5_verdicts": {
+        "H_Type2_emergence": {
+          "verdict": "EMERGED",
+          "reason": "Cell B Type 2 count = 3 ≥ 3",
+          "cell_b_n": 8,
+          "cell_b_type2_count": 3,
+          "note": "verdict-driving Cell B count, per each phase's own prereg-r1 matrix; not the all-cell dissociation framework count below"
+        },
+        "H_Regime4": "FALSIFIED",
+        "H_Dissociation_substrate_generalization": "GENERALIZED",
+        "H_IdentityLoad_moderator": "NARROWED"
+      },
+      "dissociation_counts": {
+        "iwachu": 13,
+        "type_1": 2,
+        "type_2": 4,
+        "iwachu_cells": [
+          "A",
+          "B",
+          "C"
+        ],
+        "type_1_cells": [
+          "A"
+        ],
+        "type_2_cells": [
+          "B",
+          "C"
+        ],
+        "_note": "All-cell algorithmic counts from each phase's own scoring. Distinct from cell_b_type2_count under v1_4_v1_5_verdicts.H_Type2_emergence, which drives the published PARTIAL/EMERGED/etc. verdict."
+      },
+      "dissociation_brands": {
+        "iwachu": [
+          {
+            "brand": "Tom Ford Beauty",
+            "cell": "A",
+            "r_cat": 2,
+            "r_cult": 4
+          },
+          {
+            "brand": "Giorgio Armani Beauty",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 1
+          },
+          {
+            "brand": "Hourglass",
+            "cell": "A",
+            "r_cat": 1,
+            "r_cult": 1
+          },
+          {
+            "brand": "Chantecaille",
+            "cell": "A",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "Rare Beauty",
+            "cell": "B",
+            "r_cat": 1,
+            "r_cult": 17
+          },
+          {
+            "brand": "Haus Labs",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 4
+          },
+          {
+            "brand": "Huda Beauty",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 11
+          },
+          {
+            "brand": "Kylie Cosmetics",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 5
+          },
+          {
+            "brand": "CoverGirl",
+            "cell": "C",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "Revlon",
+            "cell": "C",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "e.l.f. Cosmetics",
+            "cell": "C",
+            "r_cat": 1,
+            "r_cult": 9
+          },
+          {
+            "brand": "Wet n Wild",
+            "cell": "C",
+            "r_cat": 0,
+            "r_cult": 0
+          },
+          {
+            "brand": "Milani Cosmetics",
+            "cell": "C",
+            "r_cat": 0,
+            "r_cult": 0
+          }
+        ],
+        "type_1": [
+          {
+            "brand": "Bobbi Brown",
+            "cell": "A",
+            "r_cat": 8,
+            "r_cult": 0
+          },
+          {
+            "brand": "Laura Mercier",
+            "cell": "A",
+            "r_cat": 5,
+            "r_cult": 0
+          }
+        ],
+        "type_2": [
+          {
+            "brand": "Rare Beauty",
+            "cell": "B",
+            "r_cat": 1,
+            "r_cult": 17
+          },
+          {
+            "brand": "Huda Beauty",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 11
+          },
+          {
+            "brand": "Kylie Cosmetics",
+            "cell": "B",
+            "r_cat": 0,
+            "r_cult": 5
+          },
+          {
+            "brand": "e.l.f. Cosmetics",
+            "cell": "C",
+            "r_cat": 1,
+            "r_cult": 9
+          }
+        ]
+      },
+      "type_2_out_of_cell_cases": [
+        {
+          "brand": "e.l.f. Cosmetics",
+          "cell": "C",
+          "r_cat": 1,
+          "r_cult": 9
+        }
+      ],
+      "phase_b_per_cell": {
+        "A": {
+          "label": "Prestige",
+          "il_tier": "medium",
+          "n": 8,
+          "mean_r_cat": 5.75,
+          "mean_r_cult": 2.625
+        },
+        "B": {
+          "label": "Celebrity DTC / cult",
+          "il_tier": "high",
+          "n": 8,
+          "mean_r_cat": 3.875,
+          "mean_r_cult": 11.0
+        },
+        "C": {
+          "label": "Drugstore / mass",
+          "il_tier": "low",
+          "n": 8,
+          "mean_r_cat": 2.0,
+          "mean_r_cult": 3.0
+        }
+      },
+      "v1_6_retrospective": {
+        "inc1": {
+          "classification": "uniform-saturation",
+          "distinct_cp_per_cell": {
+            "A": 1,
+            "B": 1,
+            "C": 1
+          },
+          "regime4_verdict_if_uniform_saturation": "REGIME-4-UNAVAILABLE-AT-RECOGNITION"
+        },
+        "inc2": {
+          "verdict": "CONFIRMED",
+          "per_cell": {
+            "A": {
+              "n": 8,
+              "mean_r_cat": 5.75,
+              "mean_r_cult": 2.625,
+              "delta": -3.125,
+              "ci_lo": -6.0,
+              "ci_hi": -0.25,
+              "ci_excludes_zero": true,
+              "direction": "negative"
+            },
+            "B": {
+              "n": 8,
+              "mean_r_cat": 3.875,
+              "mean_r_cult": 11.0,
+              "delta": 7.125,
+              "ci_lo": 4.75,
+              "ci_hi": 10.25,
+              "ci_excludes_zero": true,
+              "direction": "positive"
+            },
+            "C": {
+              "n": 8,
+              "mean_r_cat": 2.0,
+              "mean_r_cult": 3.0,
+              "delta": 1.0,
+              "ci_lo": -0.5,
+              "ci_hi": 3.25,
+              "ci_excludes_zero": false,
+              "direction": "positive"
+            }
+          },
+          "monotonic_gradient_check": true
+        },
+        "inc3": {
+          "verdict": "CONFIRMED",
+          "K": 6,
+          "off_panel_passing_count": 6,
+          "off_panel_passing": [
+            {
+              "brand": "Urban Decay",
+              "r_phantom": 13
+            },
+            {
+              "brand": "Estée Lauder",
+              "r_phantom": 13
+            },
+            {
+              "brand": "Glossier",
+              "r_phantom": 12
+            },
+            {
+              "brand": "Too Faced",
+              "r_phantom": 9
+            },
+            {
+              "brand": "Make Up For Ever",
+              "r_phantom": 7
+            },
+            {
+              "brand": "Clinique",
+              "r_phantom": 6
+            }
+          ],
+          "validity_check": {
+            "anchor": "Glossier",
+            "anchor_min_required": 6,
+            "anchor_observed": 12,
+            "passes": true,
+            "note": "Per v1.6-prereg-r1: failure triggers pre-reg amendment, not silent re-tuning."
+          },
+          "vocab_size": 74,
+          "vocab_size_off_panel": 50
+        }
+      },
+      "source_paths": {
+        "verdicts": "osf/v21/v21_verdicts.json",
+        "retrospective": "methodology/v1_6/retrospective/v0_21/v1_6_retrospective_v0_21.json"
+      }
+    }
+  ],
+  "cross_phase_summary": {
+    "_labeling_note": "type_*_dissociation_count_by_phase reports the all-cell algorithmic count from each phase's own scoring (R_cat ≤ 2 ∧ R_cult ≥ 5 for Type 2, etc.). type_2_verdict_by_phase and type_2_cell_b_count_by_phase report the verdict-driving Cell B count per each phase's own prereg-r1 matrix — the number that maps to the published PARTIAL/EMERGED/FALSIFIED label. These can differ when out-of-cell cases exist (e.g., v0.20 La Mer in Cell A, v0.21 e.l.f. Cosmetics in Cell C). The published verdict is the authority.",
+    "iwachu_dissociation_count_by_phase": {
+      "v0.16": null,
+      "v0.17": "present (single-channel framework)",
+      "v0.18": "multi-cell (single-channel framework)",
+      "v0.19": null,
+      "v0.20": 11,
+      "v0.21": 13
+    },
+    "type_1_dissociation_count_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": 1,
+      "v0.21": 2
+    },
+    "type_2_dissociation_count_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": 3,
+      "v0.21": 4
+    },
+    "type_2_verdict_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": "PARTIAL",
+      "v0.21": "EMERGED"
+    },
+    "type_2_cell_b_count_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": 2,
+      "v0.21": 3
+    },
+    "inc1_classification_by_phase": {
+      "v0.16": "differential",
+      "v0.17": "differential",
+      "v0.18": "differential",
+      "v0.19": "mixed",
+      "v0.20": "differential",
+      "v0.21": "uniform-saturation"
+    },
+    "il_direct_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": "PARTIAL",
+      "v0.21": "CONFIRMED"
+    },
+    "phantom_by_phase": {
+      "v0.16": null,
+      "v0.17": null,
+      "v0.18": null,
+      "v0.19": null,
+      "v0.20": null,
+      "v0.21": "CONFIRMED"
+    },
+    "il_direct_deltas_by_phase_cell": {
+      "v0.20": {
+        "A": {
+          "delta": 0.75,
+          "ci_lo": -0.25,
+          "ci_hi": 2.125,
+          "ci_excludes_zero": false
+        },
+        "B": {
+          "delta": 3.75,
+          "ci_lo": 2.25,
+          "ci_hi": 5.25,
+          "ci_excludes_zero": true
+        },
+        "C": {
+          "delta": -2.5,
+          "ci_lo": -5.25,
+          "ci_hi": 0.375,
+          "ci_excludes_zero": false
+        }
+      },
+      "v0.21": {
+        "A": {
+          "delta": -3.125,
+          "ci_lo": -6.0,
+          "ci_hi": -0.25,
+          "ci_excludes_zero": true
+        },
+        "B": {
+          "delta": 7.125,
+          "ci_lo": 4.75,
+          "ci_hi": 10.25,
+          "ci_excludes_zero": true
+        },
+        "C": {
+          "delta": 1.0,
+          "ci_lo": -0.5,
+          "ci_hi": 3.25,
+          "ci_excludes_zero": false
+        }
+      }
+    },
+    "phantom_brands_v021": [
+      {
+        "brand": "Urban Decay",
+        "r_phantom": 13
+      },
+      {
+        "brand": "Estée Lauder",
+        "r_phantom": 13
+      },
+      {
+        "brand": "Glossier",
+        "r_phantom": 12
+      },
+      {
+        "brand": "Too Faced",
+        "r_phantom": 9
+      },
+      {
+        "brand": "Make Up For Ever",
+        "r_phantom": 7
+      },
+      {
+        "brand": "Clinique",
+        "r_phantom": 6
+      }
+    ],
+    "type_2_out_of_cell_cases_by_phase": {
+      "v0.16": [],
+      "v0.17": [],
+      "v0.18": [],
+      "v0.19": [],
+      "v0.20": [
+        {
+          "brand": "La Mer",
+          "cell": "A",
+          "r_cat": 2,
+          "r_cult": 7
+        }
+      ],
+      "v0.21": [
+        {
+          "brand": "e.l.f. Cosmetics",
+          "cell": "C",
+          "r_cat": 1,
+          "r_cult": 9
+        }
+      ]
+    },
+    "phantom_channel_signatures_v021": [
+      {
+        "brand": "Urban Decay",
+        "r_cat_phantom": 8,
+        "r_cult_phantom": 5,
+        "r_phantom": 13
+      },
+      {
+        "brand": "Estée Lauder",
+        "r_cat_phantom": 13,
+        "r_cult_phantom": 0,
+        "r_phantom": 13
+      },
+      {
+        "brand": "Glossier",
+        "r_cat_phantom": 0,
+        "r_cult_phantom": 12,
+        "r_phantom": 12
+      },
+      {
+        "brand": "Too Faced",
+        "r_cat_phantom": 3,
+        "r_cult_phantom": 6,
+        "r_phantom": 9
+      },
+      {
+        "brand": "Make Up For Ever",
+        "r_cat_phantom": 6,
+        "r_cult_phantom": 1,
+        "r_phantom": 7
+      },
+      {
+        "brand": "Clinique",
+        "r_cat_phantom": 6,
+        "r_cult_phantom": 0,
+        "r_phantom": 6
+      }
+    ]
+  },
+  "claim_layer_support": {
+    "L1_third_layer": [
+      "v0.16",
+      "v0.17",
+      "v0.18",
+      "v0.19",
+      "v0.20",
+      "v0.21"
+    ],
+    "L2_multi_component_recognition_recall": [
+      "v0.16",
+      "v0.17",
+      "v0.18",
+      "v0.19",
+      "v0.20",
+      "v0.21"
+    ],
+    "L3_two_channel": [
+      "v0.20",
+      "v0.21"
+    ],
+    "L4_three_quadrants": {
+      "iwachu_support": [
+        "v0.17",
+        "v0.18",
+        "v0.20",
+        "v0.21"
+      ],
+      "type_1_support": [
+        "v0.20",
+        "v0.21"
+      ],
+      "type_2_cell_b_support": [
+        "v0.20",
+        "v0.21"
+      ],
+      "type_2_emerged_published": [
+        "v0.21"
+      ]
+    },
+    "L5_il_moderator": [
+      "v0.18",
+      "v0.20",
+      "v0.21"
+    ],
+    "L5_il_direct_confirmed": [
+      "v0.21"
+    ],
+    "L6_phantom_persistence": [
+      "v0.21"
+    ],
+    "L7_presence_only_with_roadmap": "meta — applies to the whole construct, not anchored to specific phases."
+  }
+}
