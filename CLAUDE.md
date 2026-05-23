@@ -60,7 +60,21 @@ Build outputs land under their respective subdirs. Never write to `/Users/pablou
   - Three increments: substrate-level Recognition pre-screen, independent moderator pathway (`H_IdentityLoad_Direct`), Phantom Brand Persistence Phase B extension
   - Retrospective scoring against v0.16–v0.21 corpus; v0.21 returned CONFIRMED for both `H_IdentityLoad_Direct` and `H_PhantomBrandPersistence` (Glossier validity anchor passed at R_phantom = 12)
   - Pre-reg tag `v1.6-prereg-r1` (commit `f10616a`); OSF deposit at `osf.io/ec6wh/methodology/v1_6/`
-- **Active next deliverable:** AIAS™ 1.0 synthesis paper consolidating the 5-family anchor base under locked v1.6 methodology
+- **Latest synthesis paper shipped:** AIAS™ 1.0 (SSRN 6817841, May 2026) — *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol*
+  - Consolidates the 5-family anchor base (v0.16–v0.21) under locked v1.6 methodology
+  - Seven-layer construct claim L1–L7; L7 carries the Presence-only-with-multi-year-composite-roadmap positioning
+  - Cross-phase synthesis-layer contribution: La Mer (v0.20 Cell A) + e.l.f. Cosmetics (v0.21 Cell C) establish out-of-cell Type 2 as a recurrent feature of the dissociation framework
+  - Lock tags `aias-1-0-outline-locked` / `aias-1-0-data-locked` / `aias-1-0-charts-locked` / `aias-1-0-paper-locked`; OSF deposit at `osf.io/ec6wh/aias_1_0/`
+- **Active next deliverable:** Third System™ brand-format synthesis report (D6 parallel deliverable; 2-week stagger per outline OQ3 so the SSRN abstract ID is citable). After the report ships, v0.22 prospective phase under v1.6 lock.
+
+### AIAS™ 1.0 ship state milestones
+
+- Five-substrate empirical anchor base complete (kitchenware, fragrance, audio, skincare, cosmetics)
+- Six phase papers shipped (v0.16 → v0.21)
+- Five methodology papers shipped (v1.2 → v1.6)
+- Foundational construct claim staked under pre-registration discipline
+- Construct validity + behavioral correlate held as Phase 3 future work
+- Version-numbering discipline: AIAS™ 1.0 → 6.0 binds to measurement surface, not architectural ambition
 
 ---
 
@@ -180,6 +194,8 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.21 | Cosmetics | 6815378 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
+| — synthesis paper — | | |
+| AIAS™ 1.0 | Five-Substrate Foundational Construct Claim | 6817841 |
 
 URL pattern: `https://ssrn.com/abstract={ID}`. New phase papers cite **all prior phases** plus the methodology chain.
 
