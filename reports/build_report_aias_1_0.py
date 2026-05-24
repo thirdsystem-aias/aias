@@ -139,6 +139,15 @@ SPANS_PT = {n: span_pts(n) for n in range(1, COL_COUNT + 1)}
 # under-fill. v21 used 500.0 for phase-scale charts (max ~5.5" / 396pt).
 CHART_RESERVATION_HEIGHT_CLAMP_PT = 600.0
 
+# Width clamp mirrors the height clamp pattern. Synthesis charts render at
+# 11" native width (792pt) which exceeds the page content area (540pt at
+# the 0.5" MARGIN config). Without this clamp, ChartReservation stores the
+# raw 792pt in manifest.w_pt, and overlay_charts positions charts based on
+# that 792pt reservation — extending charts past the page right margin.
+# Clamping to CONTENT_W keeps charts inside the page margins; the chart-
+# overlay's proportional min(sx, sy) scaling then preserves chart aspect.
+CHART_RESERVATION_WIDTH_CLAMP_PT = CONTENT_W
+
 # Chart figsize spec (inches). AIAS 1.0 keys match native figsizes from
 # the synthesis paper chart builder + the P2 brand-format upgrade.
 CHART_FIGSIZE_IN = {
@@ -146,10 +155,17 @@ CHART_FIGSIZE_IN = {
     # Native figsizes match scripts/build_charts_aias_1_0.py for the 3 re-
     # used synthesis charts; P2 brand-format upgrade matches chart_06
     # native (11 × 8) for layout consistency.
-    "aias_1_0_anchor_base":      (11.0, 6.5),   # P1 — chart_02
+    "aias_1_0_anchor_base":      (11.0, 6.5),   # P1 — chart_02 (native)
     "aias_1_0_phantom_channel":  (11.0, 8.0),   # P2 — brand-format upgrade
-    "aias_1_0_type2_emergence":  (11.0, 7.5),   # P3 — chart_04
-    "aias_1_0_il_direct_forest": (11.0, 7.5),   # P4 — chart_05
+                                                # (native; signature chart kept
+                                                # at full size; P2 heading orphan
+                                                # on page 9 accepted per r2 triage)
+    "aias_1_0_type2_emergence":  (11.0, 6.5),   # P3 — chart_04 reduced from 7.5
+                                                # to fit heading + chart + caption
+                                                # on one page (no orphan)
+    "aias_1_0_il_direct_forest": (11.0, 6.5),   # P4 — chart_05 reduced from 7.5
+                                                # to fit heading + chart + caption
+                                                # on one page (no orphan)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -625,7 +641,7 @@ class ChartReservation(Flowable):
         Flowable.__init__(self)
         self.slot_key = slot_key
         self.chart_path = chart_path
-        self.chart_w_pt = width_in * 72.0
+        self.chart_w_pt = min(width_in * 72.0, CHART_RESERVATION_WIDTH_CLAMP_PT)
         raw_h_pt = height_in * 72.0
         self.chart_h_pt = 400.0 if raw_h_pt > CHART_RESERVATION_HEIGHT_CLAMP_PT else raw_h_pt
         self.manifest = manifest
@@ -866,7 +882,7 @@ def build_cover_story(styles: dict[str, ParagraphStyle]) -> list:
         f"{content.COVER['date']} &nbsp;&nbsp;·&nbsp;&nbsp; "
         f"{content.COVER['byline_short']}",
         styles["cover_byline"]))
-    s.append(Spacer(1, CONTENT_H * 0.18))
+    s.append(Spacer(1, CONTENT_H * 0.10))
     s.append(Paragraph(content.COVER["tagline"], styles["cover_tagline"]))
     return s
 
@@ -1014,12 +1030,9 @@ def build_pattern_unified(pattern: dict, styles: dict,
     s: list = []
     s.append(PageBreak())
 
-    s.append(KeepTogether([
-        Spacer(1, 4),
-        Paragraph(f"FINDING {pattern['number']:02d}", styles["pattern_number"]),
-        Paragraph(pattern["title"], styles["pattern_title"]),
-    ]))
-
+    # Build chart_block before assembling the heading so we can wrap
+    # heading + chart in a single KeepTogether (prevents orphan heading
+    # pages where chart breaks to next page leaving heading isolated).
     chart_block: list = []
     if chart_path is not None and figsize_key is not None:
         w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
@@ -1050,11 +1063,25 @@ def build_pattern_unified(pattern: dict, styles: dict,
     _flag = pattern.get("chart_after_text", False)
     print(f"[pattern {pattern['number']}] chart_after_text={_flag} "
           f"order={'text-then-chart' if _flag else 'chart-then-text'}")
+
+    heading_items = [
+        Spacer(1, 4),
+        Paragraph(f"FINDING {pattern['number']:02d}", styles["pattern_number"]),
+        Paragraph(pattern["title"], styles["pattern_title"]),
+    ]
+
     if _flag:
+        # text-then-chart mode: heading-only KeepTogether (chart isn't
+        # adjacent to heading; orphan heading is fine because text follows).
+        s.append(KeepTogether(heading_items))
         s.extend(text_block)
         s.extend(chart_block)
     else:
-        s.extend(chart_block)
+        # chart-then-text mode (default for AIAS 1.0): heading + chart wrapped
+        # in single KeepTogether so they break together to next page if needed.
+        # Prevents the orphan-heading-page failure where chart pushes to next
+        # page leaving heading alone (visible in r1 on pages 9/12/15).
+        s.append(KeepTogether(heading_items + chart_block))
         s.extend(text_block)
 
     return s

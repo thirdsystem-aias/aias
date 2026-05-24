@@ -88,11 +88,7 @@ STANDFIRST = (
     "phase, the protocol’s empirical anchor base spans five substrate "
     "families (kitchenware, indie fragrance, audiophile electronics, "
     "skincare, cosmetics) under one locked methodology version. AIAS™ "
-    "1.0 marks the milestone: the Presence component of the AIAS "
-    "construct is anchored, falsifiable, and replicable across substrate "
-    "families. The full six-component composite — Ranking, Consistency, "
-    "Coverage, Grounding, Sentiment — remains a multi-year roadmap, not "
-    "a present claim."
+    "1.0 anchors the Presence component across five substrate families."
 )
 
 
