@@ -277,6 +277,12 @@ Author. 2026d. "Panel Expansion Robustness of Regime 4: A Pre-Registered Replica
 
 Author. 2026e. "Premium Tea as the Third Regime 4 Datapoint: A Single-Category Replication of the v0.13 Covariate-Saturated Weak Finding (AIAS v0.14)." Working paper. [URL withheld for anonymous review]
 
+Author. 2026f. "Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate (AIAS v0.21)." Working paper. [URL withheld for anonymous review]
+
+Author. 2026g. "The AIAS Presence Measurement Protocol: Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension (v1.6)." Working paper. [URL withheld for anonymous review]
+
+Author. 2026h. "AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS Presence Measurement Protocol (AIAS 1.0)." Working paper. [URL withheld for anonymous review]
+
 Mosier, K. L., and L. J. Skitka. 1996. "Human Decision Makers and Automated Decision Aids: Made for Each Other?" In *Automation and Human Performance: Theory and Applications*, edited by R. Parasuraman and M. Mouloua, 201–220. Mahwah, NJ: Lawrence Erlbaum.
 
 Parasuraman, R., and D. H. Manzey. 2010. "Complacency and Bias in Human Use of Automation: An Attentional Integration." *Human Factors* 52 (3): 381–410.
