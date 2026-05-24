@@ -641,9 +641,32 @@ class ChartReservation(Flowable):
         Flowable.__init__(self)
         self.slot_key = slot_key
         self.chart_path = chart_path
-        self.chart_w_pt = min(width_in * 72.0, CHART_RESERVATION_WIDTH_CLAMP_PT)
+
+        # Compute requested slot dimensions with page-content clamps applied.
+        requested_w_pt = min(width_in * 72.0, CHART_RESERVATION_WIDTH_CLAMP_PT)
         raw_h_pt = height_in * 72.0
-        self.chart_h_pt = 400.0 if raw_h_pt > CHART_RESERVATION_HEIGHT_CLAMP_PT else raw_h_pt
+        requested_h_pt = 400.0 if raw_h_pt > CHART_RESERVATION_HEIGHT_CLAMP_PT else raw_h_pt
+
+        # Pre-compute the chart's actual rendered footprint at proportional
+        # fit-to-clamps. Sizing the reservation to match the rendered chart
+        # eliminates the chart-caption vertical gap that arose when the
+        # reserved slot exceeded the chart's actual size after fit-scaling.
+        # Without this pre-compute, slot reservation = figsize but actual
+        # chart = figsize × min(sx, sy) × overlay_padding — leaving white
+        # space inside slot, BETWEEN chart bottom and caption.
+        try:
+            reader = PdfReader(str(chart_path))
+            cb = reader.pages[0].mediabox
+            chart_w_native = float(cb.width)
+            chart_h_native = float(cb.height)
+            fit_scale = min(requested_w_pt / chart_w_native,
+                            requested_h_pt / chart_h_native)
+            self.chart_w_pt = chart_w_native * fit_scale
+            self.chart_h_pt = chart_h_native * fit_scale
+        except Exception:
+            # Fallback to requested dimensions if PDF read fails.
+            self.chart_w_pt = requested_w_pt
+            self.chart_h_pt = requested_h_pt
         self.manifest = manifest
         self.debug = debug
         self.caption_p = (Paragraph(caption, caption_style)
@@ -1280,7 +1303,14 @@ def overlay_charts(base_pdf_path: Path, manifest: ChartManifest,
                 f"chart {chart_w:.1f}x{chart_h:.1f}pt, reservation "
                 f"{target_w:.1f}x{target_h:.1f}pt. Stretching to fit."
             )
-        scale = min(sx, sy) * 0.92
+        # Scale chart to fill slot exactly (slot is pre-sized to chart's
+        # actual rendered footprint in ChartReservation.__init__).
+        # Removed the historical 0.92 padding factor; with slot now matching
+        # the chart's fit-to-clamps dimensions, the padding produced visible
+        # chart-caption gaps that were not acceptable for the synthesis
+        # report. Chart now sits flush within slot; caption is immediately
+        # below the chart with only the 4pt internal flowable padding.
+        scale = min(sx, sy)
         offset_x = slot.x_pt + (target_w - chart_w * scale) / 2
         if slot.h_pt > 350.0:
             offset_y = slot.y_pt + (target_h - chart_h * scale)
