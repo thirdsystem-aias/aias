@@ -39,9 +39,13 @@ Place ™ superscript after **"Third System"** and **"AIAS"** on first prominent
 ├── scripts/             # acquisition runners, scorers, osf_upload.py
 ├── papers/v0_NN/        # SSRN academic papers per phase
 ├── papers/methodology/  # v1.N methodology papers (paths TBD per increment)
-├── reports/             # Third System brand-format managerial PDFs
-├── reports/figs/v21/    # chart PDFs per phase
-├── osf/v21/             # OSF staging tree (Phase A, Phase B, verdicts, registries)
+├── papers/aias_1_0/     # AIAS™ 1.0 synthesis paper (five-substrate foundational construct claim)
+├── papers/tri_system/   # Tri-System™ MSI WP (foundational architectural paper, in-repo since AIAS 1.0 cycle)
+├── reports/             # Third System™ brand-format managerial PDFs
+├── reports/figs/vNN/    # per-phase chart PDFs
+├── reports/figs/aias_1_0/ # synthesis-paper chart PDFs
+├── osf/vNN/             # per-phase OSF staging tree (Phase A, Phase B, verdicts, reports)
+├── osf/aias_1_0/        # synthesis-paper OSF staging tree
 ├── brand/               # third_system_brand.json (Indigo #37237B primary)
 └── methodology/v1_N/    # methodology paper drafts + outlines
 ```
@@ -64,8 +68,11 @@ Build outputs land under their respective subdirs. Never write to `/Users/pablou
   - Consolidates the 5-family anchor base (v0.16–v0.21) under locked v1.6 methodology
   - Seven-layer construct claim L1–L7; L7 carries the Presence-only-with-multi-year-composite-roadmap positioning
   - Cross-phase synthesis-layer contribution: La Mer (v0.20 Cell A) + e.l.f. Cosmetics (v0.21 Cell C) establish out-of-cell Type 2 as a recurrent feature of the dissociation framework
-  - Lock tags `aias-1-0-outline-locked` / `aias-1-0-data-locked` / `aias-1-0-charts-locked` / `aias-1-0-paper-locked`; OSF deposit at `osf.io/ec6wh/aias_1_0/`
-- **Active next deliverable:** Third System™ brand-format synthesis report (D6 parallel deliverable; 2-week stagger per outline OQ3 so the SSRN abstract ID is citable). After the report ships, v0.22 prospective phase under v1.6 lock.
+  - Lock tags `aias-1-0-outline-locked` (36918dc) / `aias-1-0-data-locked` (7298411) / `aias-1-0-charts-locked` (5f6bf70) / `aias-1-0-paper-locked` (bdae263); OSF deposit at `osf.io/ec6wh/aias_1_0/`
+- **Latest brand-format report shipped:** AIAS 1.0 Third System brand-format synthesis report (May 2026, 22 pages)
+  - Three lock revisions: r1 (`aias-1-0-report-locked`, a199b93 — broken layout, preserved for pre-reg lineage); r2 (`aias-1-0-report-locked-r2`, ccfb7fe — partial layout fixes, preserved for lineage); r3 (`aias-1-0-report-locked-r3`, fd89ee6 — chart-caption gap + P2/P4 orphan resolution; **shipping version**)
+  - r3 resolved both remaining defects via a single root-cause fix to the report builder's ChartReservation pre-compute (see Build pipelines below). Deferred to future cycle: font glyph fallback for δ and ✓ in chart builder (cross-cuts SSRN paper); P5 vertical rhythm on the finding-tail page.
+- **Active next deliverable:** JAR submission of AIAS™ 1.0 synthesis paper (2–3 sessions, async). After JAR ships, v0.22 prospective phase under v1.6 methodology lock.
 
 ### AIAS™ 1.0 ship state milestones
 
@@ -75,6 +82,28 @@ Build outputs land under their respective subdirs. Never write to `/Users/pablou
 - Foundational construct claim staked under pre-registration discipline
 - Construct validity + behavioral correlate held as Phase 3 future work
 - Version-numbering discipline: AIAS™ 1.0 → 6.0 binds to measurement surface, not architectural ambition
+
+### AIAS™ 1.0 cycle-close lock-tag inventory
+
+| Tag | Commit | Status |
+|---|---|---|
+| `aias-1-0-outline-locked` | 36918dc | Outline lock |
+| `aias-1-0-data-locked` | 7298411 | Synthesis data lock |
+| `aias-1-0-charts-locked` | 5f6bf70 | Six figures lock |
+| `aias-1-0-paper-locked` | bdae263 | Synthesis paper lock (SSRN 6817841) |
+| `aias-1-0-report-locked` | a199b93 | Report r1 (original; broken layout, preserved for pre-reg lineage) |
+| `aias-1-0-report-locked-r2` | ccfb7fe | Report r2 (partial fixes, preserved for lineage) |
+| `aias-1-0-report-locked-r3` | fd89ee6 | Report r3 — **shipping version** |
+
+All seven tags pushed to origin. r1 and r2 are preserved (not retagged or deleted) so the lineage from broken-layout to shipping is auditable; r3 is the canonical reference for any downstream citation of the brand-format report.
+
+---
+
+## Pre-flight discipline — non-negotiable
+
+Every brand-format report render requires a page-by-page visual layout inspection of the rendered PDF before commit, tag, or OSF deposit. Numerical pre-flight (word counts, voice scans, citation completeness) catches content issues; visual pre-flight catches layout issues — orphan content, frame-iteration cascades, chart overflow, chart-caption gap. Both are required.
+
+Established under the AIAS™ 1.0 brand-format report r1→r2→r3 cycle: r1 shipped with four layout defects that the numerical pre-flight passed cleanly. The r3 ChartReservation root-cause fix only became possible after page-by-page visual inspection surfaced the pattern across all four chart pages simultaneously.
 
 ---
 
@@ -121,6 +150,8 @@ Per-phase three-file set in `~/aias/reports/`:
 **Brand tokens:** `~/aias/brand/third_system_brand.json`. Primary: Indigo #37237B.
 
 **Typography (Akkurat lacks subscript glyphs ₁/₂):** Subscripts via `<sub size='6'>1</sub>` markup (body) or `<sub size='10'>1</sub>` (cover/18pt). Do **not** add `rise='-N'` — default sub position is correct. Wrap arrow connectors with `\u00a0` (NBSP) to prevent line-splits.
+
+**ChartReservation pre-compute pattern (locked at AIAS™ 1.0 r3):** Pass 1 reserves chart slots at known dimensions; Pass 2 overlays chart PDFs into those slots. `ChartReservation` must pre-compute the final chart-rendered footprint (width and height) by reading the chart PDF mediabox and applying the fit-to-clamps proportional scale *before* slot allocation. Clamps: `CHART_RESERVATION_WIDTH_CLAMP_PT = CONTENT_W`, `CHART_RESERVATION_HEIGHT_CLAMP_PT = 600.0` for synthesis-scale (v21 phase-scale used 500.0). Chart-overlay scale = 1.0 (slot is already sized to the chart; no padding correction needed). Eliminates chart-caption gap and chart-page heading orphans simultaneously — the two defects that drove the AIAS™ 1.0 r1→r2→r3 lineage.
 
 ### SSRN paper build (pandoc + xelatex + Carlito)
 
@@ -240,9 +271,10 @@ Cell color convention (cumulative across phases):
 
 ## When in doubt
 
-- The v1.6 outline (`~/aias/methodology/v1_6/aias_v1_6_outline.md`) is the active planning artifact for the next paper. Read it first when working on v1.6.
-- Prior phase deliverables (`~/aias/papers/v0_21/`, `~/aias/reports/v21_*`) are the structural template for new phase work.
-- The 5 decisions in the v1.6 outline gate drafting. Resolve those before producing draft prose.
+- For program-level synthesis context, the AIAS™ 1.0 synthesis paper (`~/aias/papers/aias_1_0/aias_1_0_synthesis_paper_draft.md`) is the canonical statement of the five-substrate foundational construct claim and the L1–L7 seven-layer model.
+- For architectural framing context, the Tri-System™ MSI WP (`~/aias/papers/tri_system/jar_tri_system_v0_2_draft.md`, with JAR double-anonymous variant alongside) is the foundational architectural paper.
+- For new phase work, the v1.6 methodology paper (`~/aias/papers/v1_6/v1_6_ssrn_paper_draft.md`) is the active methodology lock.
+- Structural templates: `~/aias/papers/v0_21/` and `~/aias/reports/build_report_v21.py` / `~/aias/reports/v21_cosmetics_content.py` for phase work; `~/aias/papers/aias_1_0/` and `~/aias/reports/build_report_aias_1_0.py` / `~/aias/reports/aias_1_0_content.py` for synthesis work.
 
 ---
 
