@@ -1,0 +1,1116 @@
+{
+  "phase": "v0.21",
+  "scoring_timestamp": "2026-05-22T20:46:05.580931+00:00",
+  "lock_state": "v0.21-prereg-r1",
+  "registry_path": "/Users/pablou/aias/prereg/v0_21_registry.json",
+  "phase_a_source": "/Users/pablou/aias/osf/v21/phase_a_results.csv",
+  "phase_b_source": "/Users/pablou/aias/osf/v21/phase_b_results.csv",
+  "phase_a": {
+    "per_brand": {
+      "MAC Cosmetics": {
+        "cell": "A",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "NARS": {
+        "cell": "A",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Bobbi Brown": {
+        "cell": "A",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Tom Ford Beauty": {
+        "cell": "A",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Giorgio Armani Beauty": {
+        "cell": "A",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Hourglass": {
+        "cell": "A",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Chantecaille": {
+        "cell": "A",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Laura Mercier": {
+        "cell": "A",
+        "cascade_order": 8,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Rare Beauty": {
+        "cell": "B",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Fenty Beauty": {
+        "cell": "B",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Haus Labs": {
+        "cell": "B",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Pat McGrath Labs": {
+        "cell": "B",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Charlotte Tilbury": {
+        "cell": "B",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Huda Beauty": {
+        "cell": "B",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Kylie Cosmetics": {
+        "cell": "B",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Anastasia Beverly Hills": {
+        "cell": "B",
+        "cascade_order": 8,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Maybelline": {
+        "cell": "C",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "L'Or\u00e9al Paris": {
+        "cell": "C",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "CoverGirl": {
+        "cell": "C",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Revlon": {
+        "cell": "C",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "NYX Professional Makeup": {
+        "cell": "C",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "e.l.f. Cosmetics": {
+        "cell": "C",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Wet n Wild": {
+        "cell": "C",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Milani Cosmetics": {
+        "cell": "C",
+        "cascade_order": 8,
+        "cp": 6,
+        "panel_responses": 6
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Prestige",
+        "il_tier": "medium",
+        "brands": [
+          {
+            "name": "MAC Cosmetics",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "NARS",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Bobbi Brown",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Tom Ford Beauty",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Giorgio Armani Beauty",
+            "cascade_order": 5,
+            "cp": 6
+          },
+          {
+            "name": "Hourglass",
+            "cascade_order": 6,
+            "cp": 6
+          },
+          {
+            "name": "Chantecaille",
+            "cascade_order": 7,
+            "cp": 6
+          },
+          {
+            "name": "Laura Mercier",
+            "cascade_order": 8,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 8,
+        "pivot_brand": "MAC Cosmetics",
+        "cascade_exhausted": false
+      },
+      "B": {
+        "label": "Celebrity DTC / cult",
+        "il_tier": "high",
+        "brands": [
+          {
+            "name": "Rare Beauty",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "Fenty Beauty",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Haus Labs",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Pat McGrath Labs",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Charlotte Tilbury",
+            "cascade_order": 5,
+            "cp": 6
+          },
+          {
+            "name": "Huda Beauty",
+            "cascade_order": 6,
+            "cp": 6
+          },
+          {
+            "name": "Kylie Cosmetics",
+            "cascade_order": 7,
+            "cp": 6
+          },
+          {
+            "name": "Anastasia Beverly Hills",
+            "cascade_order": 8,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 8,
+        "pivot_brand": "Rare Beauty",
+        "cascade_exhausted": false
+      },
+      "C": {
+        "label": "Drugstore / mass",
+        "il_tier": "low",
+        "brands": [
+          {
+            "name": "Maybelline",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "L'Or\u00e9al Paris",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "CoverGirl",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Revlon",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "NYX Professional Makeup",
+            "cascade_order": 5,
+            "cp": 6
+          },
+          {
+            "name": "e.l.f. Cosmetics",
+            "cascade_order": 6,
+            "cp": 6
+          },
+          {
+            "name": "Wet n Wild",
+            "cascade_order": 7,
+            "cp": 6
+          },
+          {
+            "name": "Milani Cosmetics",
+            "cascade_order": 8,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 8,
+        "pivot_brand": "Maybelline",
+        "cascade_exhausted": false
+      }
+    }
+  },
+  "phase_b": {
+    "per_brand": {
+      "MAC Cosmetics": {
+        "cell": "A",
+        "cascade_order": 1,
+        "r_cat": 12,
+        "r_cult": 4,
+        "r_cat_by_frame": {
+          "q1": 5,
+          "q2": 5,
+          "q3": 2
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 4,
+          "q6": 0
+        }
+      },
+      "NARS": {
+        "cell": "A",
+        "cascade_order": 2,
+        "r_cat": 18,
+        "r_cult": 11,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 6,
+          "q3": 6
+        },
+        "r_cult_by_frame": {
+          "q4": 3,
+          "q5": 6,
+          "q6": 2
+        }
+      },
+      "Bobbi Brown": {
+        "cell": "A",
+        "cascade_order": 3,
+        "r_cat": 8,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 1,
+          "q2": 5,
+          "q3": 2
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Tom Ford Beauty": {
+        "cell": "A",
+        "cascade_order": 4,
+        "r_cat": 2,
+        "r_cult": 4,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 1,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 1,
+          "q5": 3,
+          "q6": 0
+        }
+      },
+      "Giorgio Armani Beauty": {
+        "cell": "A",
+        "cascade_order": 5,
+        "r_cat": 0,
+        "r_cult": 1,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 1,
+          "q6": 0
+        }
+      },
+      "Hourglass": {
+        "cell": "A",
+        "cascade_order": 6,
+        "r_cat": 1,
+        "r_cult": 1,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 1,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 1,
+          "q6": 0
+        }
+      },
+      "Chantecaille": {
+        "cell": "A",
+        "cascade_order": 7,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Laura Mercier": {
+        "cell": "A",
+        "cascade_order": 8,
+        "r_cat": 5,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 3,
+          "q3": 2
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Rare Beauty": {
+        "cell": "B",
+        "cascade_order": 1,
+        "r_cat": 1,
+        "r_cult": 17,
+        "r_cat_by_frame": {
+          "q1": 1,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 5
+        }
+      },
+      "Fenty Beauty": {
+        "cell": "B",
+        "cascade_order": 2,
+        "r_cat": 9,
+        "r_cult": 16,
+        "r_cat_by_frame": {
+          "q1": 5,
+          "q2": 3,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 4
+        }
+      },
+      "Haus Labs": {
+        "cell": "B",
+        "cascade_order": 3,
+        "r_cat": 0,
+        "r_cult": 4,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 3,
+          "q6": 1
+        }
+      },
+      "Pat McGrath Labs": {
+        "cell": "B",
+        "cascade_order": 4,
+        "r_cat": 4,
+        "r_cult": 10,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 3,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 2,
+          "q5": 6,
+          "q6": 2
+        }
+      },
+      "Charlotte Tilbury": {
+        "cell": "B",
+        "cascade_order": 5,
+        "r_cat": 12,
+        "r_cult": 17,
+        "r_cat_by_frame": {
+          "q1": 3,
+          "q2": 5,
+          "q3": 4
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 5
+        }
+      },
+      "Huda Beauty": {
+        "cell": "B",
+        "cascade_order": 6,
+        "r_cat": 0,
+        "r_cult": 11,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 4,
+          "q5": 4,
+          "q6": 3
+        }
+      },
+      "Kylie Cosmetics": {
+        "cell": "B",
+        "cascade_order": 7,
+        "r_cat": 0,
+        "r_cult": 5,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 4,
+          "q6": 1
+        }
+      },
+      "Anastasia Beverly Hills": {
+        "cell": "B",
+        "cascade_order": 8,
+        "r_cat": 5,
+        "r_cult": 8,
+        "r_cat_by_frame": {
+          "q1": 1,
+          "q2": 4,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 1,
+          "q5": 4,
+          "q6": 3
+        }
+      },
+      "Maybelline": {
+        "cell": "C",
+        "cascade_order": 1,
+        "r_cat": 7,
+        "r_cult": 5,
+        "r_cat_by_frame": {
+          "q1": 3,
+          "q2": 3,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 2,
+          "q5": 3,
+          "q6": 0
+        }
+      },
+      "L'Or\u00e9al Paris": {
+        "cell": "C",
+        "cascade_order": 2,
+        "r_cat": 3,
+        "r_cult": 4,
+        "r_cat_by_frame": {
+          "q1": 3,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 2,
+          "q5": 2,
+          "q6": 0
+        }
+      },
+      "CoverGirl": {
+        "cell": "C",
+        "cascade_order": 3,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Revlon": {
+        "cell": "C",
+        "cascade_order": 4,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "NYX Professional Makeup": {
+        "cell": "C",
+        "cascade_order": 5,
+        "r_cat": 5,
+        "r_cult": 6,
+        "r_cat_by_frame": {
+          "q1": 2,
+          "q2": 3,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 3,
+          "q5": 3,
+          "q6": 0
+        }
+      },
+      "e.l.f. Cosmetics": {
+        "cell": "C",
+        "cascade_order": 6,
+        "r_cat": 1,
+        "r_cult": 9,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 1,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 5,
+          "q5": 2,
+          "q6": 2
+        }
+      },
+      "Wet n Wild": {
+        "cell": "C",
+        "cascade_order": 7,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Milani Cosmetics": {
+        "cell": "C",
+        "cascade_order": 8,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Prestige",
+        "il_tier": "medium",
+        "n": 8,
+        "mean_r_cat": 5.75,
+        "mean_r_cult": 2.625,
+        "top2_r_cat_share": 0.6522,
+        "total_r_cat": 46
+      },
+      "B": {
+        "label": "Celebrity DTC / cult",
+        "il_tier": "high",
+        "n": 8,
+        "mean_r_cat": 3.875,
+        "mean_r_cult": 11.0,
+        "top2_r_cat_share": 0.6774,
+        "total_r_cat": 31
+      },
+      "C": {
+        "label": "Drugstore / mass",
+        "il_tier": "low",
+        "n": 8,
+        "mean_r_cat": 2.0,
+        "mean_r_cult": 3.0,
+        "top2_r_cat_share": 0.75,
+        "total_r_cat": 16
+      }
+    }
+  },
+  "phase_d_rho_per_cell": {
+    "A": {
+      "n": 8,
+      "rho": null,
+      "p_value": null
+    },
+    "B": {
+      "n": 8,
+      "rho": null,
+      "p_value": null
+    },
+    "C": {
+      "n": 8,
+      "rho": null,
+      "p_value": null
+    }
+  },
+  "v1_5_c2_per_cell": {
+    "A": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    },
+    "B": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    },
+    "C": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    }
+  },
+  "il_gradient_guard": {
+    "cell_b_top2_r_cat_share": 0.6774,
+    "cell_c_top2_r_cat_share": 0.75,
+    "separation": -0.0726,
+    "threshold": 0.1,
+    "passes": false
+  },
+  "dissociation": {
+    "iwachu": [
+      {
+        "brand": "Tom Ford Beauty",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 2,
+        "r_cult": 4
+      },
+      {
+        "brand": "Giorgio Armani Beauty",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 1
+      },
+      {
+        "brand": "Hourglass",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 1
+      },
+      {
+        "brand": "Chantecaille",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Rare Beauty",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 17
+      },
+      {
+        "brand": "Haus Labs",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 4
+      },
+      {
+        "brand": "Huda Beauty",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 11
+      },
+      {
+        "brand": "Kylie Cosmetics",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 5
+      },
+      {
+        "brand": "CoverGirl",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Revlon",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "e.l.f. Cosmetics",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 9
+      },
+      {
+        "brand": "Wet n Wild",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Milani Cosmetics",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      }
+    ],
+    "type_1": [
+      {
+        "brand": "Bobbi Brown",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 8,
+        "r_cult": 0
+      },
+      {
+        "brand": "Laura Mercier",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 5,
+        "r_cult": 0
+      }
+    ],
+    "type_2": [
+      {
+        "brand": "Rare Beauty",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 17
+      },
+      {
+        "brand": "Huda Beauty",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 11
+      },
+      {
+        "brand": "Kylie Cosmetics",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 5
+      },
+      {
+        "brand": "e.l.f. Cosmetics",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 9
+      }
+    ],
+    "iwachu_cells": [
+      "A",
+      "B",
+      "C"
+    ],
+    "type_1_cells": [
+      "A"
+    ],
+    "type_2_cells": [
+      "B",
+      "C"
+    ],
+    "iwachu_count": 13,
+    "type_1_count": 2,
+    "type_2_count": 4
+  },
+  "hypotheses": {
+    "H_Type2_emergence": {
+      "primary": true,
+      "novel_for_phase": "v0.20",
+      "verdict": "EMERGED",
+      "reason": "Cell B Type 2 count = 3 \u2265 3",
+      "cell_b_n": 8,
+      "cell_b_type2_count": 3,
+      "cell_b_type2_cases": [
+        {
+          "brand": "Rare Beauty",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 1,
+          "r_cult": 17
+        },
+        {
+          "brand": "Huda Beauty",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 0,
+          "r_cult": 11
+        },
+        {
+          "brand": "Kylie Cosmetics",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 0,
+          "r_cult": 5
+        }
+      ],
+      "all_type2_cases": [
+        {
+          "brand": "Rare Beauty",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 1,
+          "r_cult": 17
+        },
+        {
+          "brand": "Huda Beauty",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 0,
+          "r_cult": 11
+        },
+        {
+          "brand": "Kylie Cosmetics",
+          "cell": "B",
+          "cp": 6,
+          "r_cat": 0,
+          "r_cult": 5
+        },
+        {
+          "brand": "e.l.f. Cosmetics",
+          "cell": "C",
+          "cp": 6,
+          "r_cat": 1,
+          "r_cult": 9
+        }
+      ]
+    },
+    "H_Regime4_cosmetics": {
+      "primary": false,
+      "first_prospective_v1_5_C2": false,
+      "verdict": "FALSIFIED",
+      "reason": "C2 fails in 3 of 3 cells: ['A', 'B', 'C']",
+      "resolved_at": "C2 (regime-floor failure)",
+      "c1": {
+        "worldwide_n": 24,
+        "threshold": 12,
+        "passes": true
+      },
+      "c2_per_cell": {
+        "A": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        },
+        "B": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        },
+        "C": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        }
+      },
+      "c2_failing_cells": [
+        "A",
+        "B",
+        "C"
+      ],
+      "il_gradient_guard": {
+        "cell_b_top2_r_cat_share": 0.6774,
+        "cell_c_top2_r_cat_share": 0.75,
+        "separation": -0.0726,
+        "threshold": 0.1,
+        "passes": false
+      },
+      "c3": {
+        "rho_per_cell": {
+          "A": {
+            "n": 8,
+            "rho": null,
+            "p_value": null
+          },
+          "B": {
+            "n": 8,
+            "rho": null,
+            "p_value": null
+          },
+          "C": {
+            "n": 8,
+            "rho": null,
+            "p_value": null
+          }
+        },
+        "rho_threshold": 0.5,
+        "clearing_cells": [],
+        "failing_cells": [
+          "A",
+          "B",
+          "C"
+        ],
+        "passes": false
+      }
+    },
+    "H_Dissociation_substrate_generalization": {
+      "primary": false,
+      "fourth_family_extension": true,
+      "verdict": "GENERALIZED",
+      "reason": "Iwachu cases in 3 of 3 cells: ['A', 'B', 'C']",
+      "iwachu_count": 13,
+      "iwachu_cells": [
+        "A",
+        "B",
+        "C"
+      ],
+      "type_1_count": 2,
+      "type_1_cells": [
+        "A"
+      ]
+    },
+    "H_IdentityLoad_moderator": {
+      "primary": false,
+      "joint_legs": [
+        "v0.16 PARTIAL",
+        "v0.17 FALSIFIED-on-panel-inadequacy",
+        "v0.18 PARTIAL",
+        "v0.20 FALSIFIED",
+        "v0.21 FALSIFIED"
+      ],
+      "v0_19_excluded_rationale": "uniform-IL design; no contribution to moderator",
+      "verdict": "NARROWED",
+      "reason": "v0.21 FALSIFIED (not on panel inadequacy)",
+      "v0_21_leg_verdict": "FALSIFIED",
+      "il_signature": {
+        "cell_c_mean_cp": 6.0,
+        "cell_a_mean_cp": 6.0,
+        "cell_b_mean_cp": 6.0,
+        "monotonic_c_a_b": true
+      }
+    }
+  }
+}
