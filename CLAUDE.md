@@ -197,6 +197,8 @@ Add to dict on every new gap surfaced by xelatex `Missing character` warnings.
 
 Usage: `python ~/aias/scripts/osf_upload.py <local_dir> <remote_path>`. Standard deposit pattern per phase: `vNN/figures`, `vNN/paper`, `vNN/report`, `vNN/scoring`.
 
+**Local OSF staging convention.** The per-phase and synthesis-cycle OSF staging directories (`~/aias/osf/vNN/`, `~/aias/osf/aias_1_0/`) hold the upload-source files for OSF deposit, not a complete mirror of the deposit tree. Authoritative OSF state lives at `osf.io/ec6wh` — local staging may carry only the files newest to a given upload batch, not every file already in the deposit. To inspect OSF deposit completeness, query OSF directly (web UI or a read-only API call against `https://api.osf.io/v2/nodes/ec6wh/files/osfstorage/`). `osf_upload.py` is upload-only; it has no list/status mode. Source files (paper drafts, build scripts, content modules, chart builders) live at their canonical repo paths (`papers/`, `reports/`, `scripts/`) and are upload-sourced from there into staging at deposit time, not duplicated into local staging trees as authoritative copies.
+
 ---
 
 ## Methodology citation chain (canonical)
