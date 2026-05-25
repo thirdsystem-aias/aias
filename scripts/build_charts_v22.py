@@ -146,7 +146,7 @@ def build_chart_01(verdicts: dict, output_path: Path) -> None:
         title="Phase A Recognition (C_P) per brand, grouped by IL-tier cell",
         subtitle="v1.6 substrate Recognition pre-screen — uniform vs differential saturation across the four-cell automotive panel",
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 acquisition (May 2026). "
-                "v1.6 methodology per SSRN 6816340. Pre-registration v0.22-prereg-r1."),
+                "v1.6 methodology per SSRN 6816340. Pre-registration v0.22-prereg-r2."),
     )
 
     # Single tall axis for all brands, side panel for stats
@@ -516,22 +516,26 @@ def build_chart_04(verdicts: dict, output_path: Path) -> None:
 
     Tests H_Phantom_Defunct (lead hypothesis): do discontinued corporate
     brands surface in unprompted current-tense Recall as if currently
-    active? Threshold N=3 locked per v0.22-prereg-r1.
+    active? Threshold + max-R-scale read from verdicts (locked in
+    pre-reg v0.22-prereg-r2 at CONFIRMED >= 4 on max-18 scale).
     """
     phantom_data = verdicts["phantom_brand_persistence"]["cell_d"]
     h_status = verdicts.get("h_phantom_defunct_status", "TBD")
-    panel_n = verdicts.get("panel_n", 12)
-    threshold = 3  # H_Phantom_Defunct CONFIRMED floor (locked per v0.22-prereg-r1)
+    # max-R scale: max_r_channel = 3 R_cat probes × 6 models = 18
+    # (r1 used panel_n=12 single-model; r2 corrected to 6-model panel × 3 probes)
+    max_r = verdicts.get("max_r_channel", 18)
+    # H_Phantom_Defunct CONFIRMED floor locked at v0.22-prereg-r2 (N=4 on max-18)
+    threshold = verdicts.get("h_phantom_defunct_threshold", 4)
 
     fig = plt.figure(figsize=(11, 7.5))
     apply_editorial_layout(
         fig,
         title="Phantom Brand Persistence — defunct corporate brands",
         subtitle=(f"R_phantom_defunct = unprompted Recall mentions of "
-                  f"discontinued brands across the n={panel_n} panel"),
+                  f"discontinued brands across the 6-model panel × 3 R_cat probes (max {max_r})"),
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 (May 2026). "
                 "v1.6 Phantom Brand Persistence per SSRN 6816340 (Inc3). "
-                "Pre-registration v0.22-prereg-r1."),
+                "Pre-registration v0.22-prereg-r2."),
     )
 
     ax = fig.add_axes([0.16, 0.18, 0.66, 0.65])
@@ -561,10 +565,10 @@ def build_chart_04(verdicts: dict, output_path: Path) -> None:
             fontsize=8, color=INDIGO, va="top", ha="left", style="italic",
             fontweight="bold")
 
-    ax.set_xlim(0, panel_n)
-    ax.set_xticks(range(0, panel_n + 1, 2))
+    ax.set_xlim(0, max_r)
+    ax.set_xticks(range(0, max_r + 1, 2))
     ax.tick_params(axis="both", labelsize=9, length=0)
-    ax.set_xlabel(f"unprompted Recall mentions (n={panel_n} panel)",
+    ax.set_xlabel(f"unprompted Recall mentions (max {max_r}: 3 R_cat probes × 6 models)",
                   fontsize=10, color=GRAY_TITLE, labelpad=8)
     for spine in ("top", "right", "left"):
         ax.spines[spine].set_visible(False)
@@ -595,7 +599,7 @@ def build_chart_04(verdicts: dict, output_path: Path) -> None:
                  fontsize=9, fontweight="bold", color=GRAY_TITLE,
                  ha="left", va="top")
         fig.text(side_x, y_off - 0.022,
-                 f"  R_phantom = {count}/{panel_n}",
+                 f"  R_phantom = {count}/{max_r}",
                  fontsize=8, color=GRAY_TITLE, ha="left", va="top")
         fig.text(side_x, y_off - 0.040,
                  f"  {closure_dates.get(brand, '')}",

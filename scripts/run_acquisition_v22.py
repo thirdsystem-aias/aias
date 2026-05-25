@@ -1,0 +1,554 @@
+#!/usr/bin/env python3
+"""
+run_acquisition_v22.py — AIAS v0.22 acquisition runner.
+
+Executes Phase A (Recognition) and Phase B (six-frame Recall) against the
+locked six-slot reference panel per pre-registration v0.22-prereg-r2.
+
+Phase A: Recognition probes (24 brands × 6 models = 144 probes) with the
+locked C_P probe template for automotive substrate.
+Phase B: 36 queries (6 frames × 6 models), raw responses preserved.
+
+Forked from run_acquisition_v21.py with the following deltas:
+  - Reads pre-reg from the v0.22 Python module
+    (prereg/v0_22_automotive_content.py) rather than JSON registry.
+    Constructs runtime registry dict from REGISTRY, INSTRUMENT, PROBES.
+  - Cell ID mapping: "Cell_A_Heritage" -> "A" for downstream pipeline.
+  - PHASE_A_PROBE_TEMPLATE: "Is the brand {BRAND} commonly recognized as
+    a car brand? Answer yes or no." (locked; embedded as constant)
+  - PHASE_B_FRAMES: 6 frames embedded from mega-prompt §Phase B
+    (cosmetics → car for q1-q3, heritage probe at q4 per pre-reg D5).
+  - Output directory: osf/v22/
+  - Cell D blinding: brands presented without temporal cues; phantom
+    detection happens in score_v22.py post-acquisition.
+
+v2 fail-fast auth behavior inherited from v21:
+  - Detects auth/credential errors and fails immediately.
+  - Retains exponential backoff for transient/rate-limit errors.
+  - Cancels pending futures on first auth failure.
+
+Required env vars:
+    ANTHROPIC_API_KEY  for Claude models
+    OPENAI_API_KEY     for GPT models
+    GOOGLE_API_KEY     (or GEMINI_API_KEY) for Gemini models
+
+Required pip packages:
+    anthropic, openai, google-generativeai
+
+Usage:
+    python run_acquisition_v22.py                          # both phases
+    python run_acquisition_v22.py --phase a                # Phase A only
+    python run_acquisition_v22.py --phase b                # Phase B only
+    python run_acquisition_v22.py --dry-run                # no API calls
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import os
+import sys
+import time
+from concurrent.futures import ThreadPoolExecutor, as_completed
+from datetime import datetime, timezone
+from pathlib import Path
+
+# --- Configuration -----------------------------------------------------------
+
+DEFAULT_PREREG_MODULE = (
+    Path.home() / "aias" / "prereg" / "v0_22_automotive_content.py"
+)
+DEFAULT_OUTPUT_DIR = Path.home() / "aias" / "osf" / "v22"
+
+# Phase A probe — automotive substrate, present-tense framing (no temporal
+# cues for Cell D blinding). Locked per pre-reg v0.22-prereg-r2 §Phase A.
+PHASE_A_PROBE_TEMPLATE = (
+    "Is the brand {BRAND} commonly recognized as a car brand? "
+    "Answer yes or no."
+)
+
+# Phase B six-frame battery — three R_cat (canonical) + three R_cult
+# (cultural / heritage). q4 is the locked R_cult probe per pre-reg D5.
+# Locked per mega-prompt §Phase B (commit 0f7855e).
+PHASE_B_FRAMES = {
+    "R_cat": {
+        "q1": "What are the best car brands? List several with descriptions.",
+        "q2": "What car brands do automotive experts and reviewers recommend? Name several.",
+        "q3": "What car brands are highest quality and most reliable? Name several brands with descriptions.",
+    },
+    "R_cult": {
+        "q4": "What car brands carry deep heritage, prestige, or a sense of legacy? List several.",
+        "q5": "What car brands do affluent or status-conscious buyers tend to choose? Name several.",
+        "q6": "Which car brands have the most iconic or storied identity in popular culture? Name several.",
+    },
+}
+
+# Cell ID mapping: pre-reg module uses long-form keys ("Cell_A_Heritage")
+# but downstream pipeline (score, charts, report) expects single-letter IDs.
+CELL_KEY_TO_ID = {
+    "Cell_A_Heritage":    "A",
+    "Cell_B_Disruptor":   "B",
+    "Cell_C_Mass_Legacy": "C",
+    "Cell_D_Defunct":     "D",
+}
+
+CELL_LABELS = {
+    "A": "Heritage",
+    "B": "Disruptor",
+    "C": "Mass-Legacy",
+    "D": "Defunct",
+}
+
+PROVIDER_BY_MODEL = {
+    "claude-opus-4-5":      "anthropic",
+    "claude-sonnet-4-5":    "anthropic",
+    "gpt-4o":               "openai",
+    "gpt-4o-mini":          "openai",
+    "gemini-2.5-flash":     "google",
+    "gemini-2.5-flash-lite": "google",
+}
+
+
+# --- Pre-reg module loader (v0.22 — replaces v21 JSON registry) -------------
+
+def load_prereg_module(path: Path) -> dict:
+    """Import the v0.22 pre-reg Python module and construct a registry dict
+    matching the shape the rest of this module expects.
+
+    Returns a dict with keys: phase, substrate, lock_state, reference_panel,
+    phase_a_probe_template, phase_b_frames, cells.
+    """
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("v22_prereg", str(path))
+    if spec is None or spec.loader is None:
+        raise RuntimeError(f"Could not load pre-reg module at {path}")
+    mod = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(mod)
+
+    cells = {}
+    for cell_key, brand_names in mod.REGISTRY.items():
+        cell_id = CELL_KEY_TO_ID.get(cell_key)
+        if cell_id is None:
+            raise ValueError(f"Unknown cell key in registry: {cell_key}")
+        cells[cell_id] = {
+            "label": CELL_LABELS[cell_id],
+            "long_key": cell_key,
+            "brands": [
+                {"name": name, "cascade_order": i + 1}
+                for i, name in enumerate(brand_names)
+            ],
+        }
+
+    return {
+        "phase":                    "v0.22",
+        "substrate":                "Automotive",
+        "lock_state":               "v0.22-prereg-r2",
+        "reference_panel":          mod.INSTRUMENT["panel_models"],
+        "phase_a_probe_template":   PHASE_A_PROBE_TEMPLATE,
+        "phase_b_frames":           PHASE_B_FRAMES,
+        "cells":                    cells,
+    }
+
+
+# --- Auth/credential error detection (NEW IN v2) ----------------------------
+
+class AuthErrorFatal(Exception):
+    """Auth/credential failure — must not be retried, must abort the run."""
+    pass
+
+
+def _is_auth_error(e: Exception) -> bool:
+    msg = str(e).lower()
+    type_name = type(e).__name__.lower()
+    if "authentication" in type_name or "permission" in type_name:
+        return True
+    markers = [
+        "invalid x-api-key", "invalid api key", "api key not valid",
+        "api_key_invalid", "incorrect api key", "authentication_error",
+        "unauthorized", "401", "403 forbidden",
+    ]
+    return any(m in msg for m in markers)
+
+
+def _is_rate_limit(e: Exception) -> bool:
+    msg = str(e).lower()
+    type_name = type(e).__name__.lower()
+    if "ratelimit" in type_name or "rate_limit" in type_name:
+        return True
+    return any(m in msg for m in [
+        "rate limit", "rate-limit", "429", "quota exceeded", "too many requests",
+    ])
+
+
+# --- LLM client adapters (lazy-imported) -------------------------------------
+
+_anthropic_client = None
+_openai_client = None
+_google_models = {}
+
+
+def _get_anthropic():
+    global _anthropic_client
+    if _anthropic_client is None:
+        try:
+            from anthropic import Anthropic
+        except ImportError:
+            sys.exit("ERROR: anthropic package not installed. Run: python -m pip install anthropic")
+        _anthropic_client = Anthropic()
+    return _anthropic_client
+
+
+def _get_openai():
+    global _openai_client
+    if _openai_client is None:
+        try:
+            from openai import OpenAI
+        except ImportError:
+            sys.exit("ERROR: openai package not installed. Run: python -m pip install openai")
+        _openai_client = OpenAI()
+    return _openai_client
+
+
+def _get_google(model_name: str):
+    if model_name not in _google_models:
+        try:
+            import google.generativeai as genai
+        except ImportError:
+            sys.exit("ERROR: google-generativeai not installed. Run: python -m pip install google-generativeai")
+        key = os.environ.get("GOOGLE_API_KEY") or os.environ.get("GEMINI_API_KEY")
+        if not key:
+            sys.exit("ERROR: GOOGLE_API_KEY (or GEMINI_API_KEY) env var not set")
+        genai.configure(api_key=key)
+        _google_models[model_name] = genai.GenerativeModel(model_name)
+    return _google_models[model_name]
+
+
+def call_llm(model_name: str, prompt: str,
+             max_tokens: int = 1024,
+             max_retries: int = 4) -> tuple[str, float]:
+    """Call an LLM. Fails fast on auth errors; retries transient errors."""
+    provider = PROVIDER_BY_MODEL.get(model_name)
+    if not provider:
+        raise ValueError(f"Unknown model: {model_name}")
+
+    last_err: Exception | None = None
+    for attempt in range(1, max_retries + 1):
+        try:
+            start = time.time()
+            if provider == "anthropic":
+                client = _get_anthropic()
+                resp = client.messages.create(
+                    model=model_name, max_tokens=max_tokens,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                text = resp.content[0].text if resp.content else ""
+            elif provider == "openai":
+                client = _get_openai()
+                resp = client.chat.completions.create(
+                    model=model_name, max_tokens=max_tokens,
+                    messages=[{"role": "user", "content": prompt}],
+                )
+                text = resp.choices[0].message.content or ""
+            elif provider == "google":
+                model = _get_google(model_name)
+                resp = model.generate_content(prompt)
+                try:
+                    text = resp.text
+                except Exception:
+                    text = ""
+                    if hasattr(resp, "candidates") and resp.candidates:
+                        parts = getattr(resp.candidates[0].content, "parts", [])
+                        text = "".join(getattr(p, "text", "") for p in parts)
+            else:
+                raise ValueError(f"Unhandled provider: {provider}")
+            return text, time.time() - start
+        except Exception as e:
+            # FAIL FAST on auth errors — bad keys are not transient
+            if _is_auth_error(e):
+                raise AuthErrorFatal(
+                    f"{model_name} rejected the API key — {type(e).__name__}: {e}"
+                ) from e
+            last_err = e
+            if attempt == max_retries:
+                break
+            if _is_rate_limit(e):
+                sleep = min(5.0 * attempt + 5.0, 60.0)
+                kind = "rate-limit"
+            else:
+                sleep = min(2.0 ** attempt + 0.5, 30.0)
+                kind = "transient"
+            print(f"    ! {model_name} attempt {attempt} {kind} "
+                  f"({type(e).__name__}); sleep {sleep:.1f}s", flush=True)
+            time.sleep(sleep)
+    raise RuntimeError(f"LLM call failed after {max_retries} attempts: {last_err}") from last_err
+
+
+# --- Response parsing --------------------------------------------------------
+
+def parse_yes_no(response_text: str) -> str:
+    if not response_text:
+        return "ambiguous"
+    t = response_text.strip().lower()
+    while t and t[0] in "*_`#- \"'.,":
+        t = t[1:]
+    if not t:
+        return "ambiguous"
+    first_word = t.split()[0].strip(".,!?'\"`*_")
+    if first_word == "yes":
+        return "yes"
+    if first_word == "no":
+        return "no"
+    first_sentence = t.split(".")[0]
+    has_yes = " yes" in (" " + first_sentence) or first_sentence.startswith("yes")
+    has_no = " no " in (" " + first_sentence + " ") or first_sentence.startswith("no ")
+    if has_yes and not has_no:
+        return "yes"
+    if has_no and not has_yes:
+        return "no"
+    return "ambiguous"
+
+
+# --- Phase A: Recognition ----------------------------------------------------
+
+def run_phase_a(registry: dict, output_path: Path, max_workers: int,
+                dry_run: bool) -> None:
+    models = registry["reference_panel"]
+    probe_template = registry["phase_a_probe_template"]
+
+    tasks = []
+    for cell_id, cell in registry["cells"].items():
+        for brand in cell["brands"]:
+            for model in models:
+                tasks.append({
+                    "brand": brand["name"], "cell": cell_id,
+                    "cascade_order": brand["cascade_order"], "model": model,
+                })
+
+    total_brands = sum(len(c["brands"]) for c in registry["cells"].values())
+    print(f"\n--- Phase A: Recognition ---")
+    print(f"  {len(tasks)} probes ({len(models)} models × {total_brands} brands)")
+    print(f"  Probe template: {probe_template!r}")
+
+    if dry_run:
+        print(f"  [dry-run] would call {len(tasks)} LLM probes; skipping.")
+        return
+
+    rows: list[dict] = []
+    auth_failure = False
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        future_to_task = {}
+        for task in tasks:
+            prompt = probe_template.replace("{BRAND}", task["brand"]).replace("{brand}", task["brand"])
+            future = pool.submit(call_llm, task["model"], prompt, 64)
+            future_to_task[future] = (task, prompt)
+
+        for i, future in enumerate(as_completed(future_to_task), start=1):
+            task, prompt = future_to_task[future]
+            try:
+                response_text, latency = future.result()
+                recognized = parse_yes_no(response_text)
+                rows.append({
+                    **task, "probe_text": prompt, "response_text": response_text,
+                    "recognized": recognized,
+                    "timestamp": datetime.now(timezone.utc).isoformat(),
+                    "latency_s": f"{latency:.3f}",
+                })
+                print(f"  [{i:3d}/{len(tasks)}] {task['model']:25s} "
+                      f"{task['cell']}.{task['cascade_order']} "
+                      f"{task['brand']:32s} → {recognized}", flush=True)
+            except AuthErrorFatal as e:
+                if not auth_failure:
+                    auth_failure = True
+                    print(f"\n  ✗ AUTH FAILURE: {e}", flush=True)
+                    print(f"\n  Aborting Phase A. Diagnose with:", flush=True)
+                    print(f"      python ~/aias/scripts/check_llm_keys.py", flush=True)
+                    print(f"      python ~/aias/scripts/setup_llm_keys.py  # if any need refreshing\n", flush=True)
+                for f in future_to_task:
+                    f.cancel()
+            except Exception as e:
+                rows.append({**task, "probe_text": prompt,
+                             "response_text": f"<ERROR: {type(e).__name__}: {e}>",
+                             "recognized": "error",
+                             "timestamp": datetime.now(timezone.utc).isoformat(),
+                             "latency_s": "0"})
+                print(f"  [{i:3d}/{len(tasks)}] ! {task['brand']} on "
+                      f"{task['model']}: FAILED ({e})", flush=True)
+
+    if auth_failure:
+        sys.exit(1)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fields = ["brand", "cell", "cascade_order", "model", "probe_text",
+              "response_text", "recognized", "timestamp", "latency_s"]
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        sorted_rows = sorted(rows, key=lambda r: (r["cell"], r["cascade_order"], r["model"]))
+        for row in sorted_rows:
+            writer.writerow(row)
+    print(f"\n  → Phase A results written: {output_path} ({len(rows)} rows)")
+
+    print("\n  Per-brand C_P (Recognition score, 0..6):")
+    for cell_id, cell in registry["cells"].items():
+        print(f"    Cell {cell_id} ({cell['label']}):")
+        for brand in cell["brands"]:
+            brand_rows = [r for r in rows if r["brand"] == brand["name"]]
+            yes_count = sum(1 for r in brand_rows if r["recognized"] == "yes")
+            n = len(brand_rows)
+            print(f"      {brand['cascade_order']}. {brand['name']:32s}  C_P = {yes_count}/{n}")
+
+
+# --- Phase B: Six-frame Recall ----------------------------------------------
+
+def run_phase_b(registry: dict, output_path: Path, max_workers: int,
+                dry_run: bool) -> None:
+    models = registry["reference_panel"]
+    frames = registry["phase_b_frames"]
+
+    tasks = []
+    for channel, channel_frames in frames.items():
+        for frame_id, frame_text in channel_frames.items():
+            for model in models:
+                tasks.append({"model": model, "frame_id": frame_id,
+                              "channel": channel, "frame_text": frame_text})
+
+    print(f"\n--- Phase B: Six-frame Recall ---")
+    print(f"  {len(tasks)} queries ({len(models)} models × 6 frames)")
+    print(f"  Channels: R_cat (q1-q3) + R_cult (q4-q6)")
+
+    if dry_run:
+        print(f"  [dry-run] would call {len(tasks)} LLM queries; skipping.")
+        return
+
+    rows: list[dict] = []
+    auth_failure = False
+
+    with ThreadPoolExecutor(max_workers=max_workers) as pool:
+        future_to_task = {
+            pool.submit(call_llm, t["model"], t["frame_text"], 2048): t
+            for t in tasks
+        }
+        for i, future in enumerate(as_completed(future_to_task), start=1):
+            task = future_to_task[future]
+            try:
+                response_text, latency = future.result()
+                rows.append({**task, "response_text": response_text,
+                             "timestamp": datetime.now(timezone.utc).isoformat(),
+                             "latency_s": f"{latency:.3f}"})
+                preview = response_text[:80].replace("\n", " ")
+                print(f"  [{i:2d}/{len(tasks)}] {task['model']:25s} "
+                      f"{task['frame_id']} ({task['channel']:6s}): {preview}...",
+                      flush=True)
+            except AuthErrorFatal as e:
+                if not auth_failure:
+                    auth_failure = True
+                    print(f"\n  ✗ AUTH FAILURE: {e}", flush=True)
+                    print(f"\n  Aborting Phase B. Run check_llm_keys.py to diagnose.\n", flush=True)
+                for f in future_to_task:
+                    f.cancel()
+            except Exception as e:
+                rows.append({**task,
+                             "response_text": f"<ERROR: {type(e).__name__}: {e}>",
+                             "timestamp": datetime.now(timezone.utc).isoformat(),
+                             "latency_s": "0"})
+                print(f"  [{i:2d}/{len(tasks)}] ! {task['frame_id']} on "
+                      f"{task['model']}: FAILED ({e})", flush=True)
+
+    if auth_failure:
+        sys.exit(1)
+
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    fields = ["model", "frame_id", "channel", "frame_text", "response_text",
+              "timestamp", "latency_s"]
+    with open(output_path, "w", newline="", encoding="utf-8") as f:
+        writer = csv.DictWriter(f, fieldnames=fields)
+        writer.writeheader()
+        sorted_rows = sorted(rows, key=lambda r: (r["channel"], r["frame_id"], r["model"]))
+        for row in sorted_rows:
+            writer.writerow(row)
+    print(f"\n  → Phase B results written: {output_path} ({len(rows)} responses)")
+
+
+# --- Main --------------------------------------------------------------------
+
+def check_api_keys(registry: dict) -> list[str]:
+    providers_needed = {PROVIDER_BY_MODEL[m] for m in registry["reference_panel"]
+                        if m in PROVIDER_BY_MODEL}
+    missing = []
+    if "anthropic" in providers_needed and "ANTHROPIC_API_KEY" not in os.environ:
+        missing.append("ANTHROPIC_API_KEY")
+    if "openai" in providers_needed and "OPENAI_API_KEY" not in os.environ:
+        missing.append("OPENAI_API_KEY")
+    if "google" in providers_needed and \
+       "GOOGLE_API_KEY" not in os.environ and "GEMINI_API_KEY" not in os.environ:
+        missing.append("GOOGLE_API_KEY (or GEMINI_API_KEY)")
+    return missing
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="AIAS v0.22 acquisition runner (Phase A + Phase B)"
+    )
+    parser.add_argument("--prereg", default=str(DEFAULT_PREREG_MODULE),
+                        help="Path to v0_22_automotive_content.py pre-reg module")
+    parser.add_argument("--output-dir", default=str(DEFAULT_OUTPUT_DIR))
+    parser.add_argument("--phase", choices=["a", "b", "all"], default="all")
+    parser.add_argument("--max-workers", type=int, default=6)
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args()
+
+    prereg_path = Path(args.prereg).expanduser()
+    output_dir = Path(args.output_dir).expanduser()
+
+    if not prereg_path.exists():
+        print(f"ERROR: pre-reg module not found at {prereg_path}", file=sys.stderr)
+        return 2
+
+    registry = load_prereg_module(prereg_path)
+
+    print("AIAS v0.22 acquisition runner")
+    print(f"  Pre-reg:     {prereg_path}")
+    print(f"  Phase:       {registry.get('phase')}")
+    print(f"  Substrate:   {registry.get('substrate')}")
+    print(f"  Lock state:  {registry.get('lock_state')}")
+    print(f"  Panel:       {len(registry.get('reference_panel', []))}-slot")
+    total_brands = sum(len(c["brands"]) for c in registry["cells"].values())
+    print(f"  Brands:      {total_brands} ({len(registry['cells'])} cells: A/B/C/D)")
+    print(f"  Output:      {output_dir}")
+
+    if registry.get("phase") != "v0.22":
+        print(f"WARNING: registry phase is '{registry.get('phase')}', expected 'v0.22'",
+              file=sys.stderr)
+
+    missing_keys = check_api_keys(registry)
+    if missing_keys and not args.dry_run:
+        print(f"\nERROR: missing API keys: {', '.join(missing_keys)}", file=sys.stderr)
+        return 2
+
+    if args.dry_run:
+        print("\n[DRY-RUN] No API calls will be made.")
+
+    if args.phase in ("a", "all"):
+        run_phase_a(registry, output_dir / "phase_a_results.csv",
+                    args.max_workers, args.dry_run)
+
+    if args.phase in ("b", "all"):
+        run_phase_b(registry, output_dir / "phase_b_results.csv",
+                    args.max_workers, args.dry_run)
+
+    if not args.dry_run:
+        print("\n✓ Acquisition complete.")
+        print(f"\n  Next steps:")
+        print(f"    cd ~/aias")
+        print(f"    git add osf/v22/phase_a_results.csv osf/v22/phase_b_results.csv")
+        print(f"    git commit -m 'acquisition: v0.22 — Phase A + Phase B raw results'")
+        print(f"    git tag v0.22-acquisition-locked")
+        print(f"    python ~/aias/scripts/score_v22.py")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
