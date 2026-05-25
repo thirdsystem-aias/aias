@@ -1,0 +1,5 @@
+- AI Availability is measurable now: a pre-registered protocol anchored across five consumer-product categories tracks brand position inside AI-mediated retrieval with falsifiable, replicable verdicts.
+- Brand Recall in AI retrieval splits into two independently manageable channels — canonical authority (editorial, expert, clinical endorsement) and cultural footprint (social media, celebrity, community discourse).
+- Identity Load predicts which channel dominates: high-identity brands lead culturally; heritage brands lead canonically. The gradient locates the intervention pathway.
+- Off-panel brands persist in AI retrieval with channel signatures that track Identity Load — brand presence exceeds any single panel's scope.
+- Brand managers can audit a brand's channel position against its substrate's IL gradient and target the underperforming channel directly.
