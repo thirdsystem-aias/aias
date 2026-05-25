@@ -419,19 +419,34 @@ def build_chart_03(verdicts: dict, output_path: Path) -> None:
                    edgecolors="white", linewidth=1.0, zorder=3,
                    label=f"Cell {cell_id} — {CELL_LABELS_SHORT[cell_id]}")
 
-    # Annotate Type 2 cases by name — manual offsets to avoid overlap
-    # Use raw (non-jittered) positions for arrow endpoints
-    type2_cases = sorted(dissoc.get("type_2", []), key=lambda c: (c["r_cat"], c["r_cult"]))
-    offsets = [(2.8, 0.0), (3.0, 1.2), (3.0, -1.2), (3.0, 2.4), (3.0, -2.4)]
-    for case, (dx, dy) in zip(type2_cases, offsets):
-        x, y = case["r_cat"], case["r_cult"]
-        ax.annotate(f"{case['brand']}\n(R_cat={case['r_cat']}, R_cult={case['r_cult']})",
-                    xy=(x, y), xytext=(x + dx, y + dy),
-                    fontsize=8, color="#7B2DB3", fontweight="bold",
-                    ha="left", va="center", zorder=5,
-                    arrowprops=dict(arrowstyle="-", color="#7B2DB3",
-                                    lw=0.7, alpha=0.7,
-                                    connectionstyle="arc3,rad=0.15"))
+    # Annotate Type 2 cases — algorithmic vertical-column layout.
+    # Labels placed at a fixed x in mid-chart, distributed evenly along y.
+    # Replaces v21's 5-hand-tuned-offset scheme (which collapsed for v22's
+    # 7 Type 2 cases clustered at R_cat = 0).
+    type2_cases = sorted(dissoc.get("type_2", []), key=lambda c: -c["r_cult"])
+    n_cases = len(type2_cases)
+    if n_cases > 0:
+        label_x = 3.5    # data x-coord: in the gap between Type 2 quadrant
+                         # (x ≤ 2.3) and the canonical-Recall scatter cluster
+                         # (Cell A / Cell C brands typically scatter at x ≥ 5).
+                         # Avoids overlapping data points at mid-chart.
+        y_top, y_bot = 17.5, 6.5
+        if n_cases == 1:
+            y_positions = [12.0]
+        else:
+            y_step = (y_top - y_bot) / (n_cases - 1)
+            y_positions = [y_top - i * y_step for i in range(n_cases)]
+        for case, label_y in zip(type2_cases, y_positions):
+            x, y = case["r_cat"], case["r_cult"]
+            ax.annotate(
+                f"{case['brand']}  (R_cat={case['r_cat']}, R_cult={case['r_cult']})",
+                xy=(x, y), xytext=(label_x, label_y),
+                fontsize=8, color="#7B2DB3", fontweight="bold",
+                ha="left", va="center", zorder=5,
+                arrowprops=dict(arrowstyle="-", color="#7B2DB3",
+                                lw=0.7, alpha=0.6,
+                                connectionstyle="arc3,rad=0.2"),
+            )
 
     ax.set_xlim(-1, 19.5)
     ax.set_ylim(-1, 19.5)
