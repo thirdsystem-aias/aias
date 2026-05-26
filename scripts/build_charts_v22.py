@@ -117,7 +117,12 @@ def apply_editorial_layout(fig, title: str, subtitle: str, source: str,
                            rule_y: float = 0.910,
                            source_y: float = 0.025) -> None:
     """Standardized editorial header + footer. All other content must sit
-    within rule_y and source_y. Single-line subtitle assumed."""
+    within rule_y and source_y. Single-line subtitle assumed.
+    
+    NOTE: callers should pass source_y as the position immediately below
+    the chart's axes labels (and verdict-text line if present) so that
+    bbox_inches='tight' at savefig time crops away the trapped band that
+    would otherwise sit between axes-bottom and source-bottom."""
     fig.text(0.06, title_y, title, fontsize=14, fontweight="bold",
              color=GRAY_TITLE, ha="left", va="top")
     fig.text(0.06, subtitle_y, subtitle, fontsize=9.5,
@@ -147,6 +152,7 @@ def build_chart_01(verdicts: dict, output_path: Path) -> None:
         subtitle="v1.6 substrate Recognition pre-screen — uniform vs differential saturation across the four-cell automotive panel",
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 acquisition (May 2026). "
                 "v1.6 methodology per SSRN 6816340. Pre-registration v0.22-prereg-r2."),
+        source_y=0.025,  # axes_bottom=0.12 → source sits below x-axis label
     )
 
     # Single tall axis for all brands, side panel for stats
@@ -242,7 +248,7 @@ def build_chart_01(verdicts: dict, output_path: Path) -> None:
         # (pivot brand line dropped for v0.22 to fit 4-cell panel layout)
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, format="pdf", dpi=300)
+    fig.savefig(output_path, format="pdf", dpi=300, bbox_inches="tight", pad_inches=0.05)
     plt.close(fig)
     print(f"  ✓ {output_path.name}")
 
@@ -262,6 +268,7 @@ def build_chart_02(verdicts: dict, output_path: Path) -> None:
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 (May 2026). "
                 "Upstream phases: v0.17 SSRN 6802261, v0.18 SSRN 6806558, v0.19 SSRN 6809182, "
                 "v0.20 SSRN 6811441, v0.21 SSRN 6815378. v1.6 methodology per SSRN 6816340."),
+        source_y=0.020,  # 20pt below verdict text at y=0.06
     )
 
     # Scatter on left, Iwachu case list on right
@@ -345,15 +352,16 @@ def build_chart_02(verdicts: dict, output_path: Path) -> None:
             y_offset -= line_h * 0.85
         y_offset -= 0.012  # group spacing
 
-    # Bottom-of-chart summary headline (filled post-acquisition from verdicts)
-    fig.text(0.08, 0.067,
+    # Bottom-of-chart summary headline (filled post-acquisition from verdicts).
+    # Sits BELOW the x-axis label and ABOVE source line — verified 20pt gap.
+    fig.text(0.08, 0.06,
              f"H_Dissoc_substrate_generalization → {dissoc.get('h_status', 'TBD')}  "
              f"(automotive extends anchor base to 6 substrate families).",
              fontsize=9, color=INDIGO, fontweight="bold",
              ha="left", va="top")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, format="pdf", dpi=300)
+    fig.savefig(output_path, format="pdf", dpi=300, bbox_inches="tight", pad_inches=0.05)
     plt.close(fig)
     print(f"  ✓ {output_path.name}")
 
@@ -372,6 +380,7 @@ def build_chart_03(verdicts: dict, output_path: Path) -> None:
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 (May 2026). "
                 "v1.5 two-channel Recall per SSRN 6810758. Upstream: v0.21 SSRN 6815378. "
                 "v1.6 methodology per SSRN 6816340."),
+        source_y=0.020,  # 20pt below verdict text at y=0.06
     )
 
     ax = fig.add_axes([0.08, 0.13, 0.60, 0.72])
@@ -511,15 +520,16 @@ def build_chart_03(verdicts: dict, output_path: Path) -> None:
                  fontsize=8, color=CELL_COLORS[case["cell"]], ha="left", va="top")
         y_off -= 0.022
 
-    # Bottom headline (filled post-acquisition from verdicts)
-    fig.text(0.08, 0.067,
+    # Bottom headline (filled post-acquisition from verdicts).
+    # Sits BELOW the x-axis label and ABOVE source line — verified 20pt gap.
+    fig.text(0.08, 0.06,
              f"H_Type2_emergence → {dissoc.get('type_2_status', 'TBD')}  "
              f"(automotive heritage substrate test).",
              fontsize=9, color="#7B2DB3", fontweight="bold",
              ha="left", va="top")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, format="pdf", dpi=300)
+    fig.savefig(output_path, format="pdf", dpi=300, bbox_inches="tight", pad_inches=0.05)
     plt.close(fig)
     print(f"  ✓ {output_path.name}")
 
@@ -551,6 +561,7 @@ def build_chart_04(verdicts: dict, output_path: Path) -> None:
         source=("Source: AIAS™ Presence Measurement Protocol v0.22 (May 2026). "
                 "v1.6 Phantom Brand Persistence per SSRN 6816340 (Inc3). "
                 "Pre-registration v0.22-prereg-r2."),
+        source_y=0.020,  # 20pt below verdict text at y=0.07
     )
 
     ax = fig.add_axes([0.16, 0.18, 0.66, 0.65])
@@ -622,15 +633,16 @@ def build_chart_04(verdicts: dict, output_path: Path) -> None:
                  ha="left", va="top")
         y_off -= 0.075
 
-    # Bottom headline (filled post-acquisition from verdicts)
-    fig.text(0.08, 0.067,
+    # Bottom headline (filled post-acquisition from verdicts).
+    # Sits BELOW the x-axis label and ABOVE source line — verified 25pt gap.
+    fig.text(0.08, 0.07,
              f"H_Phantom_Defunct → {h_status}  "
              f"(lead hypothesis: pure-phantom upper-bound test on heritage substrate).",
              fontsize=9, color=INDIGO, fontweight="bold",
              ha="left", va="top")
 
     output_path.parent.mkdir(parents=True, exist_ok=True)
-    fig.savefig(output_path, format="pdf", dpi=300)
+    fig.savefig(output_path, format="pdf", dpi=300, bbox_inches="tight", pad_inches=0.05)
     plt.close(fig)
     print(f"  ✓ {output_path.name}")
 

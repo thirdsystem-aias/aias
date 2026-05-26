@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-v0.22 Automotive — typesetting pipeline.
+v0.23 Automotive — typesetting pipeline.
 
 Phantom Brand Persistence stress-test on a heritage-saturated automotive
 substrate (n=24, four cells: Heritage / Disruptor / Mass-Legacy / Defunct).
@@ -10,41 +10,41 @@ Oldsmobile, Plymouth, Mercury, Saturn — all closed 2001–2010) surface in
 unprompted current-tense Recall as if currently active. Cell D provides
 the pure-phantom upper-bound test that no prior substrate could support.
 Substrate anchor base extends 5 → 6 families.
-Brand-format report companion to the v0.22 SSRN paper (SSRN TBD).
+Brand-format report companion to the v0.23 SSRN paper (SSRN TBD).
 
 Forked from build_report_v21.py with surgical changes:
-  - Imports v22_automotive_content instead of v21_cosmetics_content
-  - HERO_FIGURE_CAPTIONS rewritten as v0.22 templates (4 entries; the
-    fourth — f4_phantom_defunct — is net new for v0.22)
-  - _slot_lookup table updated for the 4 v0.22 brand-format chart filenames
-    (all produced by build_charts_v22.py at reports/figs/v22/):
+  - Imports v23_automotive_content instead of v21_cosmetics_content
+  - HERO_FIGURE_CAPTIONS rewritten as v0.23 templates (4 entries; the
+    fourth — f4_phantom_defunct — is net new for v0.23)
+  - _slot_lookup table updated for the 4 v0.23 brand-format chart filenames
+    (all produced by build_charts_v23.py at reports/figs/v23/):
       f1_cp_distribution      -> chart_01_cp_distribution.pdf
       f2_dissociation_scatter -> chart_02_dissociation_scatter.pdf
       f3_channel_asymmetry    -> chart_03_channel_asymmetry.pdf
       f4_phantom_defunct      -> chart_04_phantom_defunct.pdf   (NEW)
-  - CHART_FIGSIZE_IN extended with v0.22 figsize keys (4 entries; v0.21
+  - CHART_FIGSIZE_IN extended with v0.23 figsize keys (4 entries; v0.21
     entries preserved for cross-version reuse)
-  - Header right text updated: "Phantom Brand Persistence · v0.22 · May 2026"
-  - Citation updated: v0.22 automotive, SSRN TBD
-  - Output filename: v22_automotive.pdf
+  - Header right text updated: "Phantom Brand Persistence · v0.23 · May 2026"
+  - Citation updated: v0.23 automotive, SSRN TBD
+  - Output filename: v23_automotive.pdf
   - REPORT_PROTOCOL_VERSION: v1.5 → v1.6 (first prospective v1.6 phase)
-  - Chart directory: reports/figs/v22/
-  - Deposit root: osf/v22/
-  - Page count target band: 8-14 pages (v0.22 has 4 findings vs v0.21's 3;
+  - Chart directory: reports/figs/v23/
+  - Deposit root: osf/v23/
+  - Page count target band: 8-14 pages (v0.23 has 4 findings vs v0.21's 3;
     band kept at 8-14 — the fourth finding may push toward the upper end)
 
 Inputs:
   - brand/third_system_brand.json        (v1.5+)
   - brand/design_tokens_template.json    (IDML extract)
-  - reports/figs/v22/chart_01_*.pdf      (4 brand-format charts; all from
-                                          build_charts_v22.py)
+  - reports/figs/v23/chart_01_*.pdf      (4 brand-format charts; all from
+                                          build_charts_v23.py)
 
 Output:
-  - osf/v22/reports/v22_automotive.pdf
+  - osf/v23/reports/v23_automotive.pdf
 
-Run for v0.22:
-    python3 ~/aias/scripts/build_charts_v22.py
-    python3 ~/aias/reports/build_report_v22.py
+Run for v0.23:
+    python3 ~/aias/scripts/build_charts_v23.py
+    python3 ~/aias/reports/build_report_v23.py
 
 Locked rules followed (same as v0.6 - v0.21):
   - Image-placeholder rectangles in master spreads stay BLANK (no fill colors).
@@ -110,9 +110,9 @@ SOURCE_TEXT = BRAND_DIR / "v06_source_text.md"
 WORDMARK_SVG = BRAND_DIR / "THIRDSYSTEM_Logo.svg"
 LOCKUP_SVG = BRAND_DIR / "THIRDSYSTEM_AIPT_Logo.svg"
 
-# Make `import v22_automotive_content` work regardless of working directory.
+# Make `import v23_automotive_content` work regardless of working directory.
 sys.path.insert(0, str(SCRIPT_DIR))
-import v22_automotive_content as content  # noqa: E402
+import v23_automotive_content as content  # noqa: E402
 import tsboilerplate as boilerplate  # noqa: E402
 
 # --- Akkurat Pro glyph-coverage fallback substitutions ----------------------
@@ -201,12 +201,12 @@ CHART_FIGSIZE_IN = {
     "6_col_v21_cp_distribution":      (7.50, 5.50),
     "6_col_v21_dissociation_scatter": (7.50, 5.50),
     "6_col_v21_channel_asymmetry":    (7.50, 5.50),
-    # v0.22 brand-format report keys — 4 charts at native figsize 7.5 × 5.5.
-    # Matches build_charts_v22.py figure sizes; chart_04 is net new for v0.22.
-    "6_col_v22_cp_distribution":      (7.50, 5.50),
-    "6_col_v22_dissociation_scatter": (7.50, 5.50),
-    "6_col_v22_channel_asymmetry":    (7.50, 5.50),
-    "6_col_v22_phantom_defunct":      (7.50, 5.50),
+    # v0.23 brand-format report keys — 4 charts at native figsize 7.5 × 5.5.
+    # Matches build_charts_v23.py figure sizes; chart_04 is net new for v0.23.
+    "6_col_v23_cp_distribution":      (7.50, 5.50),
+    "6_col_v23_dissociation_scatter": (7.50, 5.50),
+    "6_col_v23_channel_asymmetry":    (7.50, 5.50),
+    "6_col_v23_phantom_defunct":      (7.50, 5.50),
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -686,8 +686,8 @@ class ChartReservation(Flowable):
         raw_h_pt = height_in * 72.0
         nominal_h_pt = 400.0 if raw_h_pt > 500.0 else raw_h_pt
 
-        # v0.22: auto-size reservation height to match the actual chart PDF's
-        # aspect ratio. bbox_inches='tight' in build_charts_v22 produces
+        # v0.23: auto-size reservation height to match the actual chart PDF's
+        # aspect ratio. bbox_inches='tight' in build_charts_v23 produces
         # variable mediabox dimensions depending on side-panel content length,
         # so the stored CHART_FIGSIZE_IN aspect is no longer reliable. If the
         # chart PDF exists, read its mediabox and compute the height that
@@ -732,7 +732,7 @@ class ChartReservation(Flowable):
         if self.caption_p is not None:
             cw, ch = self.caption_p.wrap(reported_w, available_h)
             self._caption_w, self._caption_h = cw, ch
-            total_h = self.chart_h_pt + ch + 2   # was + 4 (v0.22 tightening)
+            total_h = self.chart_h_pt + ch + 2   # was + 4 (v0.23 tightening)
             self.drawWidth = reported_w
             self.drawHeight = total_h
             self.imageWidth = reported_w
@@ -816,7 +816,7 @@ class V15DocTemplate(BaseDocTemplate):
                               topPadding=0, bottomPadding=0,
                               showBoundary=0, id="spread")
 
-        # v0.22 lead-page layout — REVERTED to v0.21 / aias_1_0 working pattern:
+        # v0.23 lead-page layout — REVERTED to v0.21 / aias_1_0 working pattern:
         # ONE full-width lead_top frame (STANDFIRST renders as single-column,
         # full content-width block — NOT BalancedColumns) + 2 lead_bottom frames
         # at 3-col widths each (LEAD_DECK and EXEC_SUMMARY render as 2-column
@@ -886,9 +886,9 @@ class V15DocTemplate(BaseDocTemplate):
 
         c.setFont(self.font.regular, 7.5)
         c.setFillColor(HexColor(self.palette.soft_black))
-        # v0.22 header right text
+        # v0.23 header right text
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "Phantom Brand Persistence \u00b7 v0.22 \u00b7 May 2026")
+                           "Phantom Brand Persistence \u00b7 v0.23 \u00b7 May 2026")
 
         footer_y = MARGIN - 18
         c.setFont(self.font.light, 7)
@@ -992,10 +992,10 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
     return []
 
 
-# v0.22 brand-format report figure captions. Templates contain locked structural
+# v0.23 brand-format report figure captions. Templates contain locked structural
 # language (cell composition, hypothesis names, methodology refs) with placeholder
 # brackets for verdict-dependent values that must be filled post-acquisition
-# (Step 4 of the v0.22 workflow, after measurement yields verdicts).
+# (Step 4 of the v0.23 workflow, after measurement yields verdicts).
 HERO_FIGURE_CAPTIONS = {
     "f1_cp_distribution": (
         "Figure 1 \u00b7 Phase A Recognition (C_P) score per brand, per cell. "
@@ -1014,10 +1014,10 @@ HERO_FIGURE_CAPTIONS = {
     "f2_dissociation_scatter": (
         "Figure 2 \u00b7 Recognition \u00d7 Recall dissociation scatter \u2014 "
         "cumulative anchor base across six substrate families. Each colored "
-        "point is one v0.22 automotive brand: Phase A C_P (x-axis, 0\u20136) "
+        "point is one v0.23 automotive brand: Phase A C_P (x-axis, 0\u20136) "
         "versus Phase B category-anchored mention count (y-axis, 0\u201318). "
         "Shaded quadrant: Iwachu-pattern (C_P \u2265 5 \u2227 R_cat \u2264 2). "
-        "v0.22 contributes the 6th substrate family; the AIAS\u2122 v1.4/v1.5 "
+        "v0.23 contributes the 6th substrate family; the AIAS\u2122 v1.4/v1.5 "
         "multi-component construct now spans six substrate families. "
         "[TBD post-acquisition: Iwachu case count and per-cell distribution.]"
     ),
@@ -1025,7 +1025,7 @@ HERO_FIGURE_CAPTIONS = {
         "Figure 3 \u00b7 Channel asymmetry scatter. Per-brand category-"
         "anchored mentions (R_cat, x-axis, q1\u2013q3 \u00d7 6 models = max 18) "
         "versus cultural-footprint mentions (R_cult, y-axis, q4\u2013q6 "
-        "\u00d7 6 models = max 18). For the v0.22 automotive panel, the "
+        "\u00d7 6 models = max 18). For the v0.23 automotive panel, the "
         "R_cult channel probes heritage and prestige (\u2018What car brands "
         "carry deep heritage, prestige, or a sense of legacy?\u2019) \u2014 "
         "the substrate\u2019s primary cultural axis. Lower-right quadrant: "
@@ -1041,7 +1041,7 @@ HERO_FIGURE_CAPTIONS = {
         "brands. Horizontal bars show R_phantom_defunct per Cell D brand: "
         "the count of unprompted Recall mentions of discontinued corporate "
         "brands across the n=12 panel. Bars above the H_Phantom_Defunct "
-        "CONFIRMED threshold (N \u2265 3, locked per v0.22-prereg-r1) render "
+        "CONFIRMED threshold (N \u2265 3, locked per v0.23-prereg-r1) render "
         "in full Cell D color (faded indigo); bars below render at 40% "
         "opacity. Tested brands: Pontiac (closed 2010), Oldsmobile (2004), "
         "Plymouth (2001), Mercury (2010), Saturn (2010). This is the "
@@ -1059,24 +1059,24 @@ HERO_FIGURE_CAPTIONS = {
 
 
 def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
-    """Map a v0.22 brand-format slot_key to (filename, figsize_key)."""
+    """Map a v0.23 brand-format slot_key to (filename, figsize_key)."""
     table = {
-        # All 4 charts from build_charts_v22.py at reports/figs/v22/.
+        # All 4 charts from build_charts_v23.py at reports/figs/v23/.
         "f1_cp_distribution": (
             "chart_01_cp_distribution.pdf",
-            "6_col_v22_cp_distribution",
+            "6_col_v23_cp_distribution",
         ),
         "f2_dissociation_scatter": (
             "chart_02_dissociation_scatter.pdf",
-            "6_col_v22_dissociation_scatter",
+            "6_col_v23_dissociation_scatter",
         ),
         "f3_channel_asymmetry": (
             "chart_03_channel_asymmetry.pdf",
-            "6_col_v22_channel_asymmetry",
+            "6_col_v23_channel_asymmetry",
         ),
         "f4_phantom_defunct": (
             "chart_04_phantom_defunct.pdf",
-            "6_col_v22_phantom_defunct",
+            "6_col_v23_phantom_defunct",
         ),
     }
     return table.get(slot_key, (None, None))
@@ -1113,7 +1113,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
     chart_block: list = []
     if chart_path is not None and figsize_key is not None:
         w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
-        # v0.22 hero slot names — 4 findings pattern (one more than v0.18-v0.21)
+        # v0.23 hero slot names — 4 findings pattern (one more than v0.18-v0.21)
         is_hero = slot in (
             "f1_cp_distribution",
             "f2_dissociation_scatter",
@@ -1272,7 +1272,7 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         s.append(Paragraph(line, styles["body"]))
     s.append(Spacer(1, 10))
 
-    # v0.22 protocol version — v1.6 (Phantom Brand Persistence increment Inc3)
+    # v0.23 protocol version — v1.6 (Phantom Brand Persistence increment Inc3)
     REPORT_PROTOCOL_VERSION = "v1.6"
     methodology_text = brand["disclaimers"]["methodology_standard"].replace(
         "(current: v0.3)",
@@ -1283,12 +1283,12 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Spacer(1, 10))
 
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
-    # v0.22 citation
+    # v0.23 citation
     citation_text = (
         "Gonzalez Castro, P. U. (2026). "
         "<i>Phantom Brand Persistence on a Heritage-Saturated Automotive "
-        "Substrate: AIAS v0.22</i>. "
-        "Third System. thirdsystem.ai/v22-automotive (SSRN TBD)"
+        "Substrate: AIAS v0.23</i>. "
+        "Third System. thirdsystem.ai/v23-automotive (SSRN TBD)"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1367,18 +1367,18 @@ def overlay_charts(base_pdf_path: Path, manifest: ChartManifest,
                 f"chart {chart_w:.1f}x{chart_h:.1f}pt, reservation "
                 f"{target_w:.1f}x{target_h:.1f}pt. Stretching to fit."
             )
-        # v0.22: scale = min(sx, sy) — was * 0.92 (8% safety margin). The
+        # v0.23: scale = min(sx, sy) — was * 0.92 (8% safety margin). The
         # safety margin produced ~32pt of trapped whitespace at the bottom
         # of every chart reservation (since charts > 350pt are top-aligned),
         # widening the visual figure-to-caption gap. With CHART_FIGSIZE_IN
-        # matched to build_charts_v22.py figsize, the margin is unnecessary.
+        # matched to build_charts_v23.py figsize, the margin is unnecessary.
         scale = min(sx, sy)
         offset_x = slot.x_pt + (target_w - chart_w * scale) / 2
 
-        # v0.22: bullet-proof bottom-whitespace auto-crop. Detect any blank
+        # v0.23: bullet-proof bottom-whitespace auto-crop. Detect any blank
         # margin baked into the chart PDF below the source line and shift the
         # chart UP by that amount in the overlay. Charts saved with
-        # bbox_inches='tight' in build_charts_v22.py will have ~0pt blank
+        # bbox_inches='tight' in build_charts_v23.py will have ~0pt blank
         # margin; older charts (saved without tight bbox) get crop-corrected
         # at overlay time. Either path produces a tight figure-to-caption gap.
         bottom_blank_pt = _measure_chart_bottom_whitespace_pt(
@@ -1415,19 +1415,19 @@ def build(*, debug_layout: bool = False,
     font = register_typography()
     styles = build_paragraph_styles(font, palette, tokens)
 
-    print(f"[build_report_v22] palette: indigo={palette.indigo}, "
+    print(f"[build_report_v23] palette: indigo={palette.indigo}, "
           f"soft_black={palette.soft_black}, paper={palette.paper}")
-    print(f"[build_report_v22] typography: {font.name} "
+    print(f"[build_report_v23] typography: {font.name} "
           f"(brand_primary={font.is_brand_primary})")
 
-    V22_DEPOSIT_ROOT = AIAS_ROOT / "osf" / "v22"
-    # Charts live in reports/figs/v22/ (matches build_charts_v22.py default).
-    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v22")
-    output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v22_automotive.pdf")
-    base_pdf = output_path.parent / "_v22_base.pdf"
+    V22_DEPOSIT_ROOT = AIAS_ROOT / "osf" / "v23"
+    # Charts live in reports/figs/v23/ (matches build_charts_v23.py default).
+    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v23")
+    output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v23_automotive.pdf")
+    base_pdf = output_path.parent / "_v23_base.pdf"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
-    print(f"[build_report_v22] chart pre-flight (looking in {chart_dir})")
+    print(f"[build_report_v23] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
         "f1_cp_distribution", "f2_dissociation_scatter",
         "f3_channel_asymmetry", "f4_phantom_defunct",
@@ -1446,7 +1446,7 @@ def build(*, debug_layout: bool = False,
                                 and p.name.startswith("chart_"))
         unexpected = [n for n in actual_charts if n not in expected_files]
         if unexpected:
-            print(f"[build_report_v22] chart files in dir not used by brand-format report:")
+            print(f"[build_report_v23] chart files in dir not used by brand-format report:")
             for n in unexpected:
                 print(f"  [UNUSED ] {n}")
 
@@ -1455,7 +1455,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="Phantom Brand Persistence \u2014 AIAS v0.22 Automotive",
+        title="Phantom Brand Persistence \u2014 AIAS v0.23 Automotive",
         author=", ".join(content.CLOSING["byline_long"][:1]),
         subject="Independent measurement for the AI mediation layer.",
     )
@@ -1508,7 +1508,7 @@ def build(*, debug_layout: bool = False,
         story.append(f_)
 
     doc.build(story)
-    print(f"[build_report_v22] base PDF written: {base_pdf} "
+    print(f"[build_report_v23] base PDF written: {base_pdf} "
           f"({len(manifest.slots)} chart reservations)")
     for slot in manifest.slots:
         ok = "OK" if slot.chart_path.exists() else "MISSING"
@@ -1517,10 +1517,10 @@ def build(*, debug_layout: bool = False,
               f"{slot.w_pt:6.1f}x{slot.h_pt:6.1f}pt  ({slot.chart_path.name})")
 
     overlay_charts(base_pdf, manifest, output_path)
-    print(f"[build_report_v22] FINAL PDF written: {output_path}")
+    print(f"[build_report_v23] FINAL PDF written: {output_path}")
 
     final_pages = len(PdfReader(str(output_path)).pages)
-    print(f"[build_report_v22] page count: {final_pages}")
+    print(f"[build_report_v23] page count: {final_pages}")
     if final_pages < 8 or final_pages > 14:
         warnings.warn(
             f"Page count {final_pages} is outside the 8-14 target band."
@@ -1537,7 +1537,7 @@ if __name__ == "__main__":
     ap.add_argument("--chart-dir", type=Path, default=None,
                      help="Directory containing chart_*.pdf files.")
     ap.add_argument("--output", type=Path, default=None,
-                     help="Output PDF path. Defaults to ~/aias/osf/v22/reports/v22_automotive.pdf")
+                     help="Output PDF path. Defaults to ~/aias/osf/v23/reports/v23_automotive.pdf")
     args = ap.parse_args()
     build(
         debug_layout=args.debug_layout,

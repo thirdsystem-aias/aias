@@ -1,0 +1,1244 @@
+{
+  "phase": "v0.22",
+  "scoring_timestamp": "2026-05-25T17:57:19.700986+00:00",
+  "lock_state": "v0.22-prereg-r2",
+  "prereg_path": "/Users/pablou/aias/prereg/v0_22_automotive_content.py",
+  "phase_a_source": "/Users/pablou/aias/osf/v22/phase_a_results.csv",
+  "phase_b_source": "/Users/pablou/aias/osf/v22/phase_b_results.csv",
+  "panel_n": 6,
+  "max_c_p": 6,
+  "max_r_channel": 18,
+  "h_phantom_defunct_threshold": 4,
+  "h_phantom_defunct_status": "FALSIFIED",
+  "phase_a": {
+    "per_brand": {
+      "Mercedes-Benz": {
+        "cell": "A",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Jaguar": {
+        "cell": "A",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Cadillac": {
+        "cell": "A",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Rolls-Royce": {
+        "cell": "A",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Bentley": {
+        "cell": "A",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Porsche": {
+        "cell": "A",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "BMW": {
+        "cell": "A",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Tesla": {
+        "cell": "B",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Rivian": {
+        "cell": "B",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Lucid": {
+        "cell": "B",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Polestar": {
+        "cell": "B",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Fisker": {
+        "cell": "B",
+        "cascade_order": 5,
+        "cp": 5,
+        "panel_responses": 6
+      },
+      "Toyota": {
+        "cell": "C",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Honda": {
+        "cell": "C",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Ford": {
+        "cell": "C",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Chevrolet": {
+        "cell": "C",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Hyundai": {
+        "cell": "C",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Volkswagen": {
+        "cell": "C",
+        "cascade_order": 6,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Nissan": {
+        "cell": "C",
+        "cascade_order": 7,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Pontiac": {
+        "cell": "D",
+        "cascade_order": 1,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Oldsmobile": {
+        "cell": "D",
+        "cascade_order": 2,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Plymouth": {
+        "cell": "D",
+        "cascade_order": 3,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Mercury": {
+        "cell": "D",
+        "cascade_order": 4,
+        "cp": 6,
+        "panel_responses": 6
+      },
+      "Saturn": {
+        "cell": "D",
+        "cascade_order": 5,
+        "cp": 6,
+        "panel_responses": 6
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Heritage",
+        "brands": [
+          {
+            "name": "Mercedes-Benz",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "Jaguar",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Cadillac",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Rolls-Royce",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Bentley",
+            "cascade_order": 5,
+            "cp": 6
+          },
+          {
+            "name": "Porsche",
+            "cascade_order": 6,
+            "cp": 6
+          },
+          {
+            "name": "BMW",
+            "cascade_order": 7,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 7,
+        "pivot_brand": "Mercedes-Benz",
+        "cascade_exhausted": false
+      },
+      "B": {
+        "label": "Disruptor",
+        "brands": [
+          {
+            "name": "Tesla",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "Rivian",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Lucid",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Polestar",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Fisker",
+            "cascade_order": 5,
+            "cp": 5
+          }
+        ],
+        "distinct_cp_count": 2,
+        "modal_cp": 6,
+        "modal_cp_share": 0.8,
+        "mean_cp": 5.8,
+        "n": 5,
+        "pivot_brand": "Tesla",
+        "cascade_exhausted": false
+      },
+      "C": {
+        "label": "Mass-Legacy",
+        "brands": [
+          {
+            "name": "Toyota",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "Honda",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Ford",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Chevrolet",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Hyundai",
+            "cascade_order": 5,
+            "cp": 6
+          },
+          {
+            "name": "Volkswagen",
+            "cascade_order": 6,
+            "cp": 6
+          },
+          {
+            "name": "Nissan",
+            "cascade_order": 7,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 7,
+        "pivot_brand": "Toyota",
+        "cascade_exhausted": false
+      },
+      "D": {
+        "label": "Defunct",
+        "brands": [
+          {
+            "name": "Pontiac",
+            "cascade_order": 1,
+            "cp": 6
+          },
+          {
+            "name": "Oldsmobile",
+            "cascade_order": 2,
+            "cp": 6
+          },
+          {
+            "name": "Plymouth",
+            "cascade_order": 3,
+            "cp": 6
+          },
+          {
+            "name": "Mercury",
+            "cascade_order": 4,
+            "cp": 6
+          },
+          {
+            "name": "Saturn",
+            "cascade_order": 5,
+            "cp": 6
+          }
+        ],
+        "distinct_cp_count": 1,
+        "modal_cp": 6,
+        "modal_cp_share": 1.0,
+        "mean_cp": 6.0,
+        "n": 5,
+        "pivot_brand": "Pontiac",
+        "cascade_exhausted": false
+      }
+    }
+  },
+  "phase_b": {
+    "per_brand": {
+      "Mercedes-Benz": {
+        "cell": "A",
+        "cascade_order": 1,
+        "r_cat": 10,
+        "r_cult": 16,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 3,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 4
+        }
+      },
+      "Jaguar": {
+        "cell": "A",
+        "cascade_order": 2,
+        "r_cat": 0,
+        "r_cult": 10,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 3,
+          "q6": 1
+        }
+      },
+      "Cadillac": {
+        "cell": "A",
+        "cascade_order": 3,
+        "r_cat": 0,
+        "r_cult": 8,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 5,
+          "q5": 2,
+          "q6": 1
+        }
+      },
+      "Rolls-Royce": {
+        "cell": "A",
+        "cascade_order": 4,
+        "r_cat": 0,
+        "r_cult": 13,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 5,
+          "q6": 2
+        }
+      },
+      "Bentley": {
+        "cell": "A",
+        "cascade_order": 5,
+        "r_cat": 0,
+        "r_cult": 12,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 0
+        }
+      },
+      "Porsche": {
+        "cell": "A",
+        "cascade_order": 6,
+        "r_cat": 14,
+        "r_cult": 18,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 5,
+          "q3": 3
+        },
+        "r_cult_by_frame": {
+          "q4": 6,
+          "q5": 6,
+          "q6": 6
+        }
+      },
+      "BMW": {
+        "cell": "A",
+        "cascade_order": 7,
+        "r_cat": 12,
+        "r_cult": 10,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 5,
+          "q3": 1
+        },
+        "r_cult_by_frame": {
+          "q4": 2,
+          "q5": 6,
+          "q6": 2
+        }
+      },
+      "Tesla": {
+        "cell": "B",
+        "cascade_order": 1,
+        "r_cat": 7,
+        "r_cult": 6,
+        "r_cat_by_frame": {
+          "q1": 4,
+          "q2": 3,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 5,
+          "q6": 1
+        }
+      },
+      "Rivian": {
+        "cell": "B",
+        "cascade_order": 2,
+        "r_cat": 1,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 1,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Lucid": {
+        "cell": "B",
+        "cascade_order": 3,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Polestar": {
+        "cell": "B",
+        "cascade_order": 4,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Fisker": {
+        "cell": "B",
+        "cascade_order": 5,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Toyota": {
+        "cell": "C",
+        "cascade_order": 1,
+        "r_cat": 18,
+        "r_cult": 6,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 6,
+          "q3": 6
+        },
+        "r_cult_by_frame": {
+          "q4": 1,
+          "q5": 3,
+          "q6": 2
+        }
+      },
+      "Honda": {
+        "cell": "C",
+        "cascade_order": 2,
+        "r_cat": 18,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 6,
+          "q2": 6,
+          "q3": 6
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Ford": {
+        "cell": "C",
+        "cascade_order": 3,
+        "r_cat": 2,
+        "r_cult": 6,
+        "r_cat_by_frame": {
+          "q1": 1,
+          "q2": 1,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 6
+        }
+      },
+      "Chevrolet": {
+        "cell": "C",
+        "cascade_order": 4,
+        "r_cat": 0,
+        "r_cult": 7,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 1,
+          "q5": 0,
+          "q6": 6
+        }
+      },
+      "Hyundai": {
+        "cell": "C",
+        "cascade_order": 5,
+        "r_cat": 15,
+        "r_cult": 1,
+        "r_cat_by_frame": {
+          "q1": 4,
+          "q2": 6,
+          "q3": 5
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 1,
+          "q6": 0
+        }
+      },
+      "Volkswagen": {
+        "cell": "C",
+        "cascade_order": 6,
+        "r_cat": 1,
+        "r_cult": 6,
+        "r_cat_by_frame": {
+          "q1": 1,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 6
+        }
+      },
+      "Nissan": {
+        "cell": "C",
+        "cascade_order": 7,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Pontiac": {
+        "cell": "D",
+        "cascade_order": 1,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Oldsmobile": {
+        "cell": "D",
+        "cascade_order": 2,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Plymouth": {
+        "cell": "D",
+        "cascade_order": 3,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Mercury": {
+        "cell": "D",
+        "cascade_order": 4,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      },
+      "Saturn": {
+        "cell": "D",
+        "cascade_order": 5,
+        "r_cat": 0,
+        "r_cult": 0,
+        "r_cat_by_frame": {
+          "q1": 0,
+          "q2": 0,
+          "q3": 0
+        },
+        "r_cult_by_frame": {
+          "q4": 0,
+          "q5": 0,
+          "q6": 0
+        }
+      }
+    },
+    "per_cell": {
+      "A": {
+        "label": "Heritage",
+        "n": 7,
+        "mean_r_cat": 5.143,
+        "mean_r_cult": 12.429,
+        "top2_r_cat_share": 0.7222,
+        "total_r_cat": 36
+      },
+      "B": {
+        "label": "Disruptor",
+        "n": 5,
+        "mean_r_cat": 1.6,
+        "mean_r_cult": 1.2,
+        "top2_r_cat_share": 1.0,
+        "total_r_cat": 8
+      },
+      "C": {
+        "label": "Mass-Legacy",
+        "n": 7,
+        "mean_r_cat": 7.714,
+        "mean_r_cult": 3.714,
+        "top2_r_cat_share": 0.6667,
+        "total_r_cat": 54
+      },
+      "D": {
+        "label": "Defunct",
+        "n": 5,
+        "mean_r_cat": 0.0,
+        "mean_r_cult": 0.0,
+        "top2_r_cat_share": 0.0,
+        "total_r_cat": 0
+      }
+    }
+  },
+  "phase_d_rho_per_cell": {
+    "A": {
+      "n": 7,
+      "rho": null,
+      "p_value": null
+    },
+    "B": {
+      "n": 5,
+      "rho": 0.3953,
+      "p_value": 0.5101
+    },
+    "C": {
+      "n": 7,
+      "rho": null,
+      "p_value": null
+    },
+    "D": {
+      "n": 5,
+      "rho": null,
+      "p_value": null
+    }
+  },
+  "v1_5_c2_per_cell": {
+    "A": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    },
+    "B": {
+      "distinct_cp_count": 2,
+      "modal_cp_share": 0.8,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 2 < 3 AND modal_share 0.800 > 0.625"
+    },
+    "C": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    },
+    "D": {
+      "distinct_cp_count": 1,
+      "modal_cp_share": 1.0,
+      "distinct_ok": false,
+      "modal_ok": false,
+      "passes": false,
+      "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+    }
+  },
+  "il_gradient_guard": {
+    "cell_b_top2_r_cat_share": 1.0,
+    "cell_c_top2_r_cat_share": 0.6667,
+    "separation": 0.3333,
+    "threshold": 0.1,
+    "passes": true
+  },
+  "dissociation": {
+    "iwachu": [
+      {
+        "brand": "Jaguar",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 10
+      },
+      {
+        "brand": "Cadillac",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 8
+      },
+      {
+        "brand": "Rolls-Royce",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 13
+      },
+      {
+        "brand": "Bentley",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 12
+      },
+      {
+        "brand": "Rivian",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 0
+      },
+      {
+        "brand": "Lucid",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Polestar",
+        "cell": "B",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Fisker",
+        "cell": "B",
+        "cp": 5,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Ford",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 2,
+        "r_cult": 6
+      },
+      {
+        "brand": "Chevrolet",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 7
+      },
+      {
+        "brand": "Volkswagen",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 6
+      },
+      {
+        "brand": "Nissan",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Pontiac",
+        "cell": "D",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Oldsmobile",
+        "cell": "D",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Plymouth",
+        "cell": "D",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Mercury",
+        "cell": "D",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      },
+      {
+        "brand": "Saturn",
+        "cell": "D",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 0
+      }
+    ],
+    "type_1": [
+      {
+        "brand": "Honda",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 18,
+        "r_cult": 0
+      },
+      {
+        "brand": "Hyundai",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 15,
+        "r_cult": 1
+      }
+    ],
+    "type_2": [
+      {
+        "brand": "Jaguar",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 10
+      },
+      {
+        "brand": "Cadillac",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 8
+      },
+      {
+        "brand": "Rolls-Royce",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 13
+      },
+      {
+        "brand": "Bentley",
+        "cell": "A",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 12
+      },
+      {
+        "brand": "Ford",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 2,
+        "r_cult": 6
+      },
+      {
+        "brand": "Chevrolet",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 0,
+        "r_cult": 7
+      },
+      {
+        "brand": "Volkswagen",
+        "cell": "C",
+        "cp": 6,
+        "r_cat": 1,
+        "r_cult": 6
+      }
+    ],
+    "iwachu_cells": [
+      "A",
+      "B",
+      "C",
+      "D"
+    ],
+    "type_1_cells": [
+      "C"
+    ],
+    "type_2_cells": [
+      "A",
+      "C"
+    ],
+    "iwachu_count": 17,
+    "type_1_count": 2,
+    "type_2_count": 7,
+    "h_status": "GENERALIZED",
+    "type_2_status": "EMERGED"
+  },
+  "phantom_brand_persistence": {
+    "cell_a": {
+      "Mercedes-Benz": 10,
+      "Jaguar": 0,
+      "Cadillac": 0,
+      "Rolls-Royce": 0,
+      "Bentley": 0,
+      "Porsche": 14,
+      "BMW": 12
+    },
+    "cell_d": {
+      "Pontiac": 0,
+      "Oldsmobile": 0,
+      "Plymouth": 0,
+      "Mercury": 0,
+      "Saturn": 0
+    },
+    "cell_a_max": 14,
+    "cell_d_max": 0,
+    "cell_a_brands_above_8": [
+      "Mercedes-Benz",
+      "Porsche",
+      "BMW"
+    ],
+    "cell_a_brands_4_to_7": [],
+    "cell_d_brands_above_4": [],
+    "cell_d_brands_1_to_3": []
+  },
+  "hypotheses": {
+    "H_Phantom_Defunct": {
+      "primary": true,
+      "lead": true,
+      "verdict": "FALSIFIED",
+      "reason": "All Cell D brands R_phantom_defunct = 0",
+      "max_r_phantom_defunct": 0,
+      "cell_d_per_brand": {
+        "Pontiac": 0,
+        "Oldsmobile": 0,
+        "Plymouth": 0,
+        "Mercury": 0,
+        "Saturn": 0
+      },
+      "brands_above_confirmed_floor": [],
+      "brands_in_partial_band": [],
+      "threshold_history": {
+        "r1": "CONFIRMED >= 3 on assumed max-12 scale (single-model error)",
+        "r2": "CONFIRMED >= 4 on corrected max-18 scale (6-model panel)"
+      }
+    },
+    "H_Phantom_Brand_Persistence_heritage": {
+      "primary": false,
+      "verdict": "CONFIRMED",
+      "reason": "Cell A brand(s) ['Mercedes-Benz', 'Porsche', 'BMW'] reached R_phantom >= 8",
+      "max_r_phantom": 14,
+      "cell_a_per_brand": {
+        "Mercedes-Benz": 10,
+        "Jaguar": 0,
+        "Cadillac": 0,
+        "Rolls-Royce": 0,
+        "Bentley": 0,
+        "Porsche": 14,
+        "BMW": 12
+      },
+      "brands_above_confirmed_floor": [
+        "Mercedes-Benz",
+        "Porsche",
+        "BMW"
+      ],
+      "brands_in_partial_band": [],
+      "benchmark": "v0.21 Glossier R_phantom = 12"
+    },
+    "H_Regime4_automotive": {
+      "primary": false,
+      "verdict": "FALSIFIED",
+      "reason": "C2 fails in 4 of 4 cells: ['A', 'B', 'C', 'D']",
+      "resolved_at": "C2 (regime-floor failure)",
+      "c1": {
+        "worldwide_n": 24,
+        "threshold": 12,
+        "passes": true
+      },
+      "c2_per_cell": {
+        "A": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        },
+        "B": {
+          "distinct_cp_count": 2,
+          "modal_cp_share": 0.8,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 2 < 3 AND modal_share 0.800 > 0.625"
+        },
+        "C": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        },
+        "D": {
+          "distinct_cp_count": 1,
+          "modal_cp_share": 1.0,
+          "distinct_ok": false,
+          "modal_ok": false,
+          "passes": false,
+          "reason": "distinct_count 1 < 3 AND modal_share 1.000 > 0.625"
+        }
+      },
+      "c2_failing_cells": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "il_gradient_guard": {
+        "cell_b_top2_r_cat_share": 1.0,
+        "cell_c_top2_r_cat_share": 0.6667,
+        "separation": 0.3333,
+        "threshold": 0.1,
+        "passes": true
+      },
+      "c3": {
+        "rho_per_cell": {
+          "A": {
+            "n": 7,
+            "rho": null,
+            "p_value": null
+          },
+          "B": {
+            "n": 5,
+            "rho": 0.3953,
+            "p_value": 0.5101
+          },
+          "C": {
+            "n": 7,
+            "rho": null,
+            "p_value": null
+          },
+          "D": {
+            "n": 5,
+            "rho": null,
+            "p_value": null
+          }
+        },
+        "rho_threshold": 0.5,
+        "clearing_cells": [],
+        "failing_cells": [
+          "A",
+          "B",
+          "C",
+          "D"
+        ],
+        "passes": false
+      }
+    },
+    "H_Dissoc_substrate_generalization": {
+      "primary": false,
+      "sixth_family_extension": true,
+      "verdict": "GENERALIZED",
+      "reason": "Iwachu cases in ['A', 'B', 'C', 'D'] of 4 cells (includes Cell A or B); 6th substrate family",
+      "iwachu_count": 17,
+      "iwachu_cells": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "type_1_count": 2,
+      "type_1_cells": [
+        "C"
+      ],
+      "type_2_count": 7,
+      "type_2_cells": [
+        "A",
+        "C"
+      ]
+    },
+    "H_IdentityLoad_direct": {
+      "primary": false,
+      "verdict": "CONFIRMED",
+      "reason": "Cell A IL = 2.417 > Cell B IL = 0.750 (cult/cat ratio; R4-independent)",
+      "operationalization": "mean R_cult / mean R_cat per cell (R4-independent)",
+      "operationalization_note": "v1.6 Inc2 specifies 'R4-independent bootstrap'; bootstrap CI not implemented in this scoring runner pending v1.6 methodology paper detail. Interim sign-of-difference test on raw ratio.",
+      "il_per_cell": {
+        "A": 2.4167,
+        "B": 0.75,
+        "C": 0.4815,
+        "D": null
+      },
+      "predicted": "CONFIRMED (high IL: A, D; low IL: B)"
+    },
+    "H_SubstrateRecognition_PreScreen": {
+      "primary": false,
+      "classification": "UNIFORM SATURATION",
+      "verdict": "UNIFORM SATURATION",
+      "reason": "All cells modal C_P >= 5: {'A': 6, 'B': 6, 'C': 6, 'D': 6}",
+      "modal_per_cell": {
+        "A": 6,
+        "B": 6,
+        "C": 6,
+        "D": 6
+      },
+      "saturated_cells": [
+        "A",
+        "B",
+        "C",
+        "D"
+      ],
+      "differential_cells": [],
+      "predicted": "UNIFORM SATURATION (program-typical for culturally pervasive substrates)",
+      "note": "Non-directional classification probe."
+    }
+  }
+}

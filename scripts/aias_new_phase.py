@@ -1,0 +1,315 @@
+#!/usr/bin/env python3
+"""
+aias_new_phase.py — Scaffold a new AIAS phase by cloning the prior phase.
+
+One command bootstraps the entire build pipeline for a new phase from the
+prior phase's files, with version strings swapped throughout. Eliminates the
+build-pipeline-drift class of errors that cost time in v0.22 (improvised
+scripts, divergent paper builders, missing parent dirs, etc.).
+
+What gets scaffolded:
+
+  scripts/build_charts_vNN.py        ← copy from prior phase, version-swapped
+  scripts/build_paper_v0_NN.py       ← copy, version-swapped
+  reports/build_report_vNN.py        ← copy, version-swapped
+  reports/vNN_<substrate>_content.py ← skeleton (11-attr structure preserved)
+  prereg/v0_NN_<substrate>_content.py← skeleton (TBD fields marked)
+  prereg/v0_NN_mega_prompt.md        ← boilerplate sections
+  papers/v0_NN/v0_NN_ssrn_paper_draft.md ← canonical template
+                                          (YAML + titlepage + sections)
+  osf/vNN/                           ← directory tree (data/, prereg/, reports/,
+                                       figures/, scripts/, registries/, README)
+  reports/figs/vNN/                  ← chart output directory
+
+What does NOT get scaffolded (operator-authored):
+
+  - Pre-registration content (hypotheses, registry, thresholds, predictions)
+  - Mega-prompt design rationale
+  - Acquisition CSVs (these come from Phase A/B runs)
+  - Verdict JSON (comes from scoring)
+
+The intent: after running this, the operator has a working build pipeline
+that compiles cleanly with stub data. They then fill in the pre-registration
+content, run acquisition, populate verdicts.json, and the pipeline renders
+the phase end-to-end without further intervention.
+
+Usage:
+    python3 scripts/aias_new_phase.py \\
+        --from v0.22 --to v0.23 \\
+        --substrate "luxury watches" \\
+        [--substrate-slug luxury_watches] \\
+        [--dry-run]
+
+Examples:
+    # Scaffold v0.23 luxury watches from v0.22 automotive
+    python3 scripts/aias_new_phase.py --from v0.22 --to v0.23 --substrate "luxury watches"
+
+    # Preview without writing anything
+    python3 scripts/aias_new_phase.py --from v0.22 --to v0.23 --substrate "premium spirits" --dry-run
+"""
+
+from __future__ import annotations
+
+import argparse
+import re
+import shutil
+import sys
+from pathlib import Path
+
+AIAS_ROOT = Path.home() / "aias"
+
+
+def parse_version(v: str) -> tuple[str, str, str, str]:
+    """Parse 'v0.22' or 'v0_22' or '0.22' → ('v0.22', 'v0_22', 'v22', '0_22').
+
+    Returns (display, snake_full, snake_short, snake_no_v) for use in different contexts:
+      display     'v0.22'  — for prose, logs, comments
+      snake_full  'v0_22'  — for filenames like 'build_paper_v0_22.py', 'osf/v22/' paths
+      snake_short 'v22'    — for filenames like 'build_charts_v22.py', 'reports/figs/v22/'
+      snake_no_v  '0_22'   — rare, for some internal var names
+    """
+    v = v.strip().lstrip("v").replace("_", ".")
+    if "." not in v:
+        raise ValueError(f"Unrecognized version: {v!r}; expected like 'v0.22' or '0.22'")
+    major, minor = v.split(".", 1)
+    display = f"v{major}.{minor}"
+    snake_full = f"v{major}_{minor}"
+    # snake_short drops the major when major=='0' (so v0.22 → v22), keeps it otherwise
+    snake_short = f"v{minor}" if major == "0" else f"v{major}_{minor}"
+    snake_no_v = f"{major}_{minor}"
+    return display, snake_full, snake_short, snake_no_v
+
+
+def slugify(s: str) -> str:
+    """'luxury watches' → 'luxury_watches'; 'Premium Spirits' → 'premium_spirits'."""
+    return re.sub(r"[^a-z0-9]+", "_", s.lower()).strip("_")
+
+
+def version_swap(text: str, *,
+                 from_display: str, to_display: str,
+                 from_snake_full: str, to_snake_full: str,
+                 from_snake_short: str, to_snake_short: str) -> str:
+    """Replace all version strings in `text` with the new version.
+
+    Order matters: longer patterns first so 'v0.22' doesn't get partially matched
+    when looking for 'v22'.
+    """
+    replacements = [
+        (from_display, to_display),
+        (from_snake_full, to_snake_full),
+        (from_snake_short, to_snake_short),
+    ]
+    # Sort by length of source string DESCENDING so 'v0.22' (5 chars) replaces
+    # before 'v22' (3 chars).
+    replacements.sort(key=lambda r: -len(r[0]))
+    for src, dst in replacements:
+        text = text.replace(src, dst)
+    return text
+
+
+def clone_file(src_path: Path, dst_path: Path,
+               version_args: dict, *, root: Path,
+               dry_run: bool = False) -> None:
+    """Copy file with version strings swapped throughout content."""
+    if not src_path.exists():
+        print(f"  [skip] {src_path} not found", file=sys.stderr)
+        return
+    text = src_path.read_text(encoding="utf-8")
+    new_text = version_swap(text, **version_args)
+    if dry_run:
+        try:
+            rel = dst_path.relative_to(root)
+        except ValueError:
+            rel = dst_path
+        print(f"  [dry-run] would write: {rel}  ({len(new_text):,} chars)")
+        return
+    dst_path.parent.mkdir(parents=True, exist_ok=True)
+    dst_path.write_text(new_text, encoding="utf-8")
+    try:
+        rel = dst_path.relative_to(root)
+    except ValueError:
+        rel = dst_path
+    print(f"  [write] {rel}")
+
+
+def ensure_dir(path: Path, *, root: Path, dry_run: bool = False) -> None:
+    try:
+        rel = path.relative_to(root)
+    except ValueError:
+        rel = path
+    if dry_run:
+        print(f"  [dry-run] would mkdir: {rel}/")
+        return
+    path.mkdir(parents=True, exist_ok=True)
+    print(f"  [mkdir] {rel}/")
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(
+        description="Scaffold a new AIAS phase by cloning the prior phase's build pipeline."
+    )
+    parser.add_argument("--from", dest="from_v", required=True,
+                        help="Prior phase version, e.g. 'v0.22'")
+    parser.add_argument("--to", dest="to_v", required=True,
+                        help="New phase version, e.g. 'v0.23'")
+    parser.add_argument("--substrate", required=True,
+                        help="Substrate name, e.g. 'luxury watches' or 'premium spirits'")
+    parser.add_argument("--substrate-slug", default=None,
+                        help="Filename-safe slug. Default: derived from --substrate.")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Show what would be written without writing.")
+    parser.add_argument("--root", default=str(AIAS_ROOT),
+                        help=f"AIAS project root. Default: {AIAS_ROOT}")
+    args = parser.parse_args()
+
+    root = Path(args.root).expanduser().resolve()
+    if not root.exists():
+        print(f"ERROR: AIAS root not found: {root}", file=sys.stderr)
+        return 2
+
+    from_display, from_snake_full, from_snake_short, _ = parse_version(args.from_v)
+    to_display, to_snake_full, to_snake_short, _ = parse_version(args.to_v)
+    substrate_slug = args.substrate_slug or slugify(args.substrate)
+
+    version_args = dict(
+        from_display=from_display, to_display=to_display,
+        from_snake_full=from_snake_full, to_snake_full=to_snake_full,
+        from_snake_short=from_snake_short, to_snake_short=to_snake_short,
+    )
+
+    print(f"[aias_new_phase] scaffolding {to_display} from {from_display}")
+    print(f"  substrate: {args.substrate!r}  (slug: {substrate_slug!r})")
+    print(f"  root: {root}")
+    print(f"  version map: {from_display}→{to_display}, "
+          f"{from_snake_full}→{to_snake_full}, "
+          f"{from_snake_short}→{to_snake_short}")
+    print()
+
+    # ----- Discover prior-phase content files (varies by substrate name) -----
+    prior_substrate_content = list((root / "reports").glob(
+        f"{from_snake_short}_*_content.py"))
+    prior_substrate_content = [p for p in prior_substrate_content
+                                if not p.name.startswith("_")]
+    prior_substrate_prereg = list((root / "prereg").glob(
+        f"{from_snake_full}_*_content.py"))
+
+    # ----- Clone build pipeline files (version strings swapped) -----
+    print("[1/6] Cloning build pipeline scripts...")
+    pipeline_files = [
+        (root / "scripts" / f"build_charts_{from_snake_short}.py",
+         root / "scripts" / f"build_charts_{to_snake_short}.py"),
+        (root / "scripts" / f"build_paper_{from_snake_full}.py",
+         root / "scripts" / f"build_paper_{to_snake_full}.py"),
+        (root / "reports" / f"build_report_{from_snake_short}.py",
+         root / "reports" / f"build_report_{to_snake_short}.py"),
+    ]
+    for src, dst in pipeline_files:
+        clone_file(src, dst, version_args, root=root, dry_run=args.dry_run)
+
+    # ----- Clone content modules with substrate rename -----
+    print("\n[2/6] Cloning content modules...")
+    if prior_substrate_content:
+        src = prior_substrate_content[0]
+        dst = root / "reports" / f"{to_snake_short}_{substrate_slug}_content.py"
+        clone_file(src, dst, version_args, root=root, dry_run=args.dry_run)
+        if not args.dry_run:
+            # Annotate: this is a clone, fill in NEW content
+            content = dst.read_text(encoding="utf-8")
+            banner = (f"# NOTE: cloned from {src.name} on phase scaffold.\n"
+                      f"# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,\n"
+                      f"# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text\n"
+                      f"# must be re-written for the {to_display} {args.substrate}\n"
+                      f"# substrate. Do not ship this file as-is.\n\n")
+            dst.write_text(banner + content, encoding="utf-8")
+    else:
+        print(f"  [skip] no prior content module found for {from_snake_short}")
+
+    if prior_substrate_prereg:
+        src = prior_substrate_prereg[0]
+        dst = root / "prereg" / f"{to_snake_full}_{substrate_slug}_content.py"
+        clone_file(src, dst, version_args, root=root, dry_run=args.dry_run)
+
+    # ----- Clone mega-prompt -----
+    print("\n[3/6] Cloning mega-prompt...")
+    mp_src = root / "prereg" / f"{from_snake_full}_mega_prompt.md"
+    mp_dst = root / "prereg" / f"{to_snake_full}_mega_prompt.md"
+    clone_file(mp_src, mp_dst, version_args, root=root, dry_run=args.dry_run)
+
+    # ----- Clone SSRN paper draft and submission packet (templates) -----
+    print("\n[4/6] Cloning SSRN paper draft + submission packet templates...")
+    paper_src = root / "papers" / from_snake_full / f"{from_snake_full}_ssrn_paper_draft.md"
+    paper_dst = root / "papers" / to_snake_full / f"{to_snake_full}_ssrn_paper_draft.md"
+    clone_file(paper_src, paper_dst, version_args, root=root, dry_run=args.dry_run)
+
+    packet_src = root / "papers" / from_snake_full / f"ssrn_submission_packet_{from_snake_full}.md"
+    packet_dst = root / "papers" / to_snake_full / f"ssrn_submission_packet_{to_snake_full}.md"
+    clone_file(packet_src, packet_dst, version_args, root=root, dry_run=args.dry_run)
+
+    # ----- Create directory tree for new phase -----
+    print("\n[5/6] Creating directory tree...")
+    dirs_to_create = [
+        root / "papers" / to_snake_full,
+        root / "reports" / "figs" / to_snake_short,
+        root / "osf" / to_snake_short,
+        root / "osf" / to_snake_short / "data",
+        root / "osf" / to_snake_short / "prereg",
+        root / "osf" / to_snake_short / "reports",
+        root / "osf" / to_snake_short / "figures",
+        root / "osf" / to_snake_short / "scripts",
+        root / "osf" / to_snake_short / "registries",
+    ]
+    for d in dirs_to_create:
+        ensure_dir(d, root=root, dry_run=args.dry_run)
+
+    # ----- Write OSF README placeholder -----
+    print("\n[6/6] Writing OSF README placeholder...")
+    osf_readme = root / "osf" / to_snake_short / "README.md"
+    readme_content = (
+        f"# AIAS {to_display} — {args.substrate.title()}\n\n"
+        f"OSF deposit for AIAS™ Presence Measurement Protocol, {to_display}.\n\n"
+        f"**Status:** scaffolded by `aias_new_phase.py` on phase kickoff. "
+        f"Pre-registration not yet locked; acquisition not yet run.\n\n"
+        f"## Tree\n\n"
+        f"- `data/` — Phase A and Phase B acquisition CSVs\n"
+        f"- `prereg/` — locked pre-registration artifacts (content module + mega-prompt)\n"
+        f"- `reports/` — brand-format report PDF\n"
+        f"- `figures/` — chart PDFs (chart_01..04)\n"
+        f"- `scripts/` — scoring code\n"
+        f"- `registries/` — locked 24-brand registry\n\n"
+        f"## Pipeline\n\n"
+        f"1. Author pre-registration in `prereg/{to_snake_full}_{substrate_slug}_content.py`\n"
+        f"2. Lock at git tag `{to_display}-prereg-r1`\n"
+        f"3. Run acquisition: `python3 scripts/run_acquisition_{to_snake_short}.py`\n"
+        f"4. Score: `python3 scripts/score_{to_snake_short}.py`\n"
+        f"5. Build report: `python3 reports/build_report_{to_snake_short}.py`\n"
+        f"6. Build SSRN paper: `python3 scripts/build_paper_{to_snake_full}.py`\n"
+        f"7. Submit per `papers/{to_snake_full}/ssrn_submission_packet_{to_snake_full}.md`\n"
+        f"8. Final OSF deposit: `python3 ~/aias/scripts/osf_upload.py "
+        f"~/aias/osf/{to_snake_short} {to_snake_short}`\n"
+    )
+    if args.dry_run:
+        print(f"  [dry-run] would write README at {osf_readme}")
+    else:
+        osf_readme.write_text(readme_content, encoding="utf-8")
+        print(f"  [write] osf/{to_snake_short}/README.md")
+
+    # ----- Summary + next steps -----
+    print()
+    print(f"[aias_new_phase] ✓ {to_display} scaffold "
+          f"{'WOULD BE ' if args.dry_run else ''}complete.")
+    print()
+    print("Next steps:")
+    print(f"  1. Author pre-registration:")
+    print(f"     $ $EDITOR prereg/{to_snake_full}_{substrate_slug}_content.py")
+    print(f"     $ $EDITOR prereg/{to_snake_full}_mega_prompt.md")
+    print(f"  2. Lock at git tag:")
+    print(f"     $ git add prereg/ && git commit -m '{to_display} pre-reg r1'")
+    print(f"     $ git tag {to_display}-prereg-r1")
+    print(f"  3. Run acquisition (manual step, populates Phase A/B CSVs)")
+    print(f"  4. Score → verdicts → report → paper, fully automated downstream")
+
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
