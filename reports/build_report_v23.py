@@ -26,7 +26,7 @@ Forked from build_report_v21.py with surgical changes:
     entries preserved for cross-version reuse)
   - Header right text updated: "Phantom Brand Persistence · v0.23 · May 2026"
   - Citation updated: v0.23 automotive, SSRN TBD
-  - Output filename: v23_automotive.pdf
+  - Output filename: v23_premium_spirits.pdf
   - REPORT_PROTOCOL_VERSION: v1.5 → v1.6 (first prospective v1.6 phase)
   - Chart directory: reports/figs/v23/
   - Deposit root: osf/v23/
@@ -40,7 +40,7 @@ Inputs:
                                           build_charts_v23.py)
 
 Output:
-  - osf/v23/reports/v23_automotive.pdf
+  - osf/v23/reports/v23_premium_spirits.pdf
 
 Run for v0.23:
     python3 ~/aias/scripts/build_charts_v23.py
@@ -110,9 +110,9 @@ SOURCE_TEXT = BRAND_DIR / "v06_source_text.md"
 WORDMARK_SVG = BRAND_DIR / "THIRDSYSTEM_Logo.svg"
 LOCKUP_SVG = BRAND_DIR / "THIRDSYSTEM_AIPT_Logo.svg"
 
-# Make `import v23_automotive_content` work regardless of working directory.
+# Make `import v23_premium_spirits_content` work regardless of working directory.
 sys.path.insert(0, str(SCRIPT_DIR))
-import v23_automotive_content as content  # noqa: E402
+import v23_premium_spirits_content as content  # noqa: E402
 import tsboilerplate as boilerplate  # noqa: E402
 
 # --- Akkurat Pro glyph-coverage fallback substitutions ----------------------
@@ -1063,19 +1063,19 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     table = {
         # All 4 charts from build_charts_v23.py at reports/figs/v23/.
         "f1_cp_distribution": (
-            "chart_01_cp_distribution.pdf",
+            "chart_23_composite_bar.pdf",
             "6_col_v23_cp_distribution",
         ),
         "f2_dissociation_scatter": (
-            "chart_02_dissociation_scatter.pdf",
+            "chart_23_recall_scatter.pdf",
             "6_col_v23_dissociation_scatter",
         ),
         "f3_channel_asymmetry": (
-            "chart_03_channel_asymmetry.pdf",
+            "chart_23_channel_heatmap.pdf",
             "6_col_v23_channel_asymmetry",
         ),
         "f4_phantom_defunct": (
-            "chart_04_phantom_defunct.pdf",
+            "chart_23_conglomerate_box.pdf",
             "6_col_v23_phantom_defunct",
         ),
     }
@@ -1423,7 +1423,7 @@ def build(*, debug_layout: bool = False,
     V22_DEPOSIT_ROOT = AIAS_ROOT / "osf" / "v23"
     # Charts live in reports/figs/v23/ (matches build_charts_v23.py default).
     chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v23")
-    output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v23_automotive.pdf")
+    output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v23_premium_spirits.pdf")
     base_pdf = output_path.parent / "_v23_base.pdf"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
@@ -1537,7 +1537,7 @@ if __name__ == "__main__":
     ap.add_argument("--chart-dir", type=Path, default=None,
                      help="Directory containing chart_*.pdf files.")
     ap.add_argument("--output", type=Path, default=None,
-                     help="Output PDF path. Defaults to ~/aias/osf/v23/reports/v23_automotive.pdf")
+                     help="Output PDF path. Defaults to ~/aias/osf/v23/reports/v23_premium_spirits.pdf")
     args = ap.parse_args()
     build(
         debug_layout=args.debug_layout,
