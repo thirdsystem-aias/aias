@@ -225,6 +225,8 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.19 | Audiophile headphones | 6809182 |
 | v0.20 | Skincare | 6811441 |
 | v0.21 | Cosmetics | 6815378 |
+| v0.22 | Automotive | 6829118 |
+| v0.23 | Premium spirits | 6834298 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |
