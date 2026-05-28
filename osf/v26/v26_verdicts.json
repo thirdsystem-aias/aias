@@ -1,0 +1,100 @@
+{
+  "study": "v0.26 \u2014 AIAS Presence x Amazon BSR Predictive Validity",
+  "protocol_lock": "v1.6",
+  "amendment": "r2 \u2014 v0.17 dropped, v0.21 ceiling-only, v0.16 retrofitted",
+  "n_substrates_testable": 3,
+  "n_substrates_ceiling": 1,
+  "n_substrates_dropped": 1,
+  "n_brands_total": 90,
+  "n_listed": 88,
+  "n_absent": 2,
+  "per_substrate": {
+    "kitchen_knives": {
+      "spearman_rho": 0.04818299392906847,
+      "spearman_p": 0.8190915873725648,
+      "n_listed": 25
+    },
+    "audiophile_headphones": {
+      "spearman_rho": -0.11634629489488822,
+      "spearman_p": 0.6678529525845563,
+      "n_listed": 16
+    },
+    "skincare": {
+      "spearman_rho": 0.049318863109739416,
+      "spearman_p": 0.8231694562430871,
+      "n_listed": 23
+    },
+    "cosmetics": {
+      "spearman_rho": NaN,
+      "spearman_p": NaN,
+      "n_listed": 24,
+      "note": "ceiling effect \u2014 zero C_P variance"
+    }
+  },
+  "hypotheses": {
+    "H_PV_Primary": {
+      "hypothesis": "H_PV_Primary",
+      "label": "Per-substrate predictive validity",
+      "verdict": "FALSIFIED",
+      "passing_substrates": 0,
+      "testable_substrates": 3,
+      "thresholds": {
+        "rho": -0.4,
+        "p": 0.05,
+        "min_substrates": 2
+      },
+      "amendment": "r2: reduced from 5 to 3 testable substrates; threshold 2/3",
+      "details": {
+        "kitchen_knives": {
+          "rho": 0.0482,
+          "p": 0.819092,
+          "n": 25,
+          "meets_threshold": false
+        },
+        "audiophile_headphones": {
+          "rho": -0.1163,
+          "p": 0.667853,
+          "n": 16,
+          "meets_threshold": false
+        },
+        "skincare": {
+          "rho": 0.0493,
+          "p": 0.823169,
+          "n": 23,
+          "meets_threshold": false
+        }
+      }
+    },
+    "H_PV_Pooled": {
+      "hypothesis": "H_PV_Pooled",
+      "label": "Cross-substrate pooled correlation",
+      "verdict": "FALSIFIED",
+      "rho": -0.0002,
+      "p": 0.998173,
+      "n": 88,
+      "thresholds": {
+        "rho": -0.3,
+        "p": 0.01
+      },
+      "note": "Includes v0.21 ceiling brands in pooled set"
+    },
+    "H_PV_CellA": {
+      "hypothesis": "H_PV_CellA",
+      "label": "Cell A separation",
+      "verdict": "FALSIFIED",
+      "U": 516.0,
+      "p": 0.493173,
+      "median_cell_a": 51.09,
+      "median_other": 54.0,
+      "n_cell_a": 74,
+      "n_other": 14,
+      "correct_direction": true
+    },
+    "H_PV_Absent": {
+      "hypothesis": "H_PV_Absent",
+      "verdict": "UNDETERMINED",
+      "reason": "Fewer than 5 absent brands (2)",
+      "n_absent": 2
+    }
+  }
+}
