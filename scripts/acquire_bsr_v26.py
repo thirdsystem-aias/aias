@@ -272,26 +272,28 @@ def search_and_extract(page, brand: str, search_suffix: str, delay: float) -> di
             page.goto(search_url, wait_until="domcontentloaded", timeout=15000)
             time.sleep(delay)
 
-        # Step 2: Find product links from search results
-        product_links = page.query_selector_all(
-            'div[data-component-type="s-search-result"] h2 a'
-        )
+        # Step 2: Extract ASINs from search result cards
+        result_cards = page.query_selector_all('[data-component-type="s-search-result"][data-asin]')
+        asins = []
+        for card in result_cards[:5]:
+            asin = card.get_attribute('data-asin')
+            if asin and asin.strip():
+                asins.append(asin.strip())
 
-        if not product_links:
+        if not asins:
             record["notes"] = "No search results found"
             return record
 
-        # Step 3: Visit top 3 results, find best BSR
+        # Step 3: Visit product pages by ASIN, find best BSR
         best_bsr = None
         best_record = None
 
-        for i, link in enumerate(product_links[:3]):
-            href = link.get_attribute("href")
-            if not href:
-                continue
-            product_url = href if href.startswith("http") else f"https://www.amazon.com{href}"
-
-            page.goto(product_url, wait_until="domcontentloaded", timeout=15000)
+        for asin in asins[:3]:
+            product_url = f"https://www.amazon.com/dp/{asin}"
+            try:
+                page.goto(product_url, wait_until="networkidle", timeout=15000)
+            except Exception:
+                page.goto(product_url, wait_until="domcontentloaded", timeout=15000)
             time.sleep(delay)
 
             bsr_data = extract_bsr_from_page(page)
@@ -300,15 +302,15 @@ def search_and_extract(page, brand: str, search_suffix: str, delay: float) -> di
                     best_bsr = bsr_data["bsr_rank"]
                     best_record = {
                         "amazon_status": "listed",
-                        "asin": bsr_data.get("asin", ""),
+                        "asin": asin,
                         "product_title": bsr_data.get("product_title", ""),
                         "bsr_rank": bsr_data["bsr_rank"],
                         "bsr_category": bsr_data.get("bsr_category", ""),
-                        "listing_url": page.url,
+                        "listing_url": product_url,
                         "notes": bsr_data.get("notes", ""),
                     }
 
-            time.sleep(delay * 0.5)  # Shorter delay between product pages
+            time.sleep(delay * 0.5)
 
         if best_record:
             record.update(best_record)
