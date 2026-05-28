@@ -227,6 +227,8 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.21 | Cosmetics | 6815378 |
 | v0.22 | Automotive | 6829118 |
 | v0.23 | Premium spirits | 6834298 |
+| v0.24 | B2B SaaS | 6838802 |
+| v0.25 | B2B SaaS Construct Validity | 6842138 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |
