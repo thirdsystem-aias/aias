@@ -1,311 +1,188 @@
+#!/usr/bin/env python3
 """
-AIAS v0.26 — B2B SaaS Chart Builder
-Uses chart_style.py for all layout, color, and positioning decisions.
+v0.26 chart builder — C_P × Amazon BSR scatter (Figure 1)
+=========================================================
+Discriminant-validity scatter referenced as Figure 1 in
+papers/v0_26/v0_26_amazon_bsr_predictive_validity.md.
 
-Usage:
-    cd /Users/pablou/aias
-    python3 scripts/build_charts_v26.py
+2x2 grid: kitchen knives (v0.16), audiophile headphones (v0.19),
+skincare (v0.20), cosmetics (v0.21). One dot per listed brand.
+
+Sources mirror score_v26.py:
+    v0.16 → osf/v26/data/v16_cp_retrofit_aggregated.csv  (brand,cp,n_models)
+    v0.19 → osf/v19/phase_a_results.csv  (aggregate recognition_yes by brand)
+    v0.20 → osf/v20/v20_verdicts.json    (phase_a.per_brand.<brand>.cp)
+    v0.21 → osf/v21/v21_verdicts.json    (same)
+    BSR  → osf/v26/data/v26_bsr_<substrate>.csv  (listed brands only)
+
+Output:
+    reports/figs/v26/chart_26_cp_vs_bsr_scatter.pdf
 """
-import sys
+
+from collections import defaultdict
 from pathlib import Path
+import csv
+import json
+import sys
+
+import matplotlib.pyplot as plt
+import numpy as np
+from scipy.stats import spearmanr
 
 # Allow import of chart_style from scripts/
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import chart_style as cs
 
-import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
-import numpy as np
-
 cs.setup()
 
-PIPELINE_ROOT = Path(__file__).resolve().parent.parent
-FIGS_DIR = PIPELINE_ROOT / "reports" / "figs" / "v26"
-FIGS_DIR.mkdir(parents=True, exist_ok=True)
+AIAS_ROOT = Path(__file__).resolve().parent.parent
+OUT_DIR = AIAS_ROOT / "reports" / "figs" / "v26"
+OUT_DIR.mkdir(parents=True, exist_ok=True)
+OUT_PDF = OUT_DIR / "chart_26_cp_vs_bsr_scatter.pdf"
 
-PHASE = "v0.26 \u2014 B2B SaaS"
-COLORS = cs.cell_colors()
-INDIGO, WARM = cs.diverging_pair()
+PHASE = "v0.26"
 
-CELL_LABELS = {
-    "A": "Cell A: Enterprise Incumbents",
-    "B": "Cell B: High-Identity Challengers",
-    "C": "Cell C: Infrastructure / Dev Platform",
-    "D": "Cell D: Phantom (defunct)",
-}
-
-RECALL_DATA = [
-    ("Slack","B",33,30), ("Salesforce","A",36,25), ("HubSpot","A",33,21),
-    ("Workday","A",34,7), ("SAP","A",25,8), ("Oracle","A",26,8),
-    ("Notion","B",2,27), ("ServiceNow","A",17,8), ("Figma","B",1,23),
-    ("Snowflake","C",10,13), ("Zendesk","A",18,4), ("Datadog","C",7,8),
-    ("Linear","B",0,12), ("Stripe","C",4,6), ("Airtable","B",0,10),
-    ("Miro","B",0,8), ("MongoDB","C",1,4), ("Twilio","C",2,2),
-    ("Cloudflare","C",0,3), ("Quip","D",0,0), ("Yammer","D",0,0),
-    ("Wunderlist","D",0,0), ("HipChat","D",0,0), ("Stride","D",0,0),
+# Panel order, top-left → bottom-right
+SUBSTRATES = [
+    ("kitchen_knives",        "Kitchen knives (v0.16)"),
+    ("audiophile_headphones", "Audiophile headphones (v0.19)"),
+    ("skincare",              "Skincare (v0.20)"),
+    ("cosmetics",             "Cosmetics (v0.21)"),
 ]
 
 
-# ── Chart 1: Recall by Brand ──────────────────────────────────────────
+# -----------------------------------------------------------------------------
+# C_P loaders (one per substrate, matching score_v26.py provenance)
+# -----------------------------------------------------------------------------
 
-def build_chart_recall():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero_tall"])
-    fig.subplots_adjust(top=0.82, bottom=0.10, left=0.17, right=0.92)
-
-    n = len(RECALL_DATA)
-    brands = [d[0] for d in RECALL_DATA][::-1]
-    cells  = [d[1] for d in RECALL_DATA][::-1]
-    r_cats = [d[2] for d in RECALL_DATA][::-1]
-    r_cults= [d[3] for d in RECALL_DATA][::-1]
-    y_pos  = np.arange(n)
-    bh = 0.35
-
-    ax.barh(y_pos + bh/2, r_cats, bh, color=INDIGO,
-            label="R_cat (category)", edgecolor="none", zorder=3)
-    ax.barh(y_pos - bh/2, r_cults, bh, color=cs.PALETTE["indigo_t3"],
-            label="R_cult (cultural)", edgecolor="none", zorder=3)
-
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(brands, fontsize=cs.FONT_SIZES["axis_tick"])
-    for i, (lbl, cell) in enumerate(zip(ax.get_yticklabels(), cells)):
-        lbl.set_color(COLORS.get(cell, cs.BLACK))
-
-    ax.set_xlim(0, 38)
-    ax.set_xlabel("Mentions (out of 36 per channel)",
-                  fontsize=cs.FONT_SIZES["axis_label"], color=cs.BLACK, labelpad=8)
-    ax.legend(loc="lower right", fontsize=cs.FONT_SIZES["legend"])
-
-    # Cell legend — inside axes, bottom-left
-    handles = [mpatches.Patch(color=COLORS[c], label=CELL_LABELS[c])
-               for c in ["A","B","C","D"]]
-    ax.legend(handles=handles, loc="lower left", fontsize=7,
-              frameon=True, framealpha=0.9, ncol=1)
-
-    cs.add_header(fig,
-        "Recall by Brand",
-        "R_cat (category) and R_cult (cultural) mentions across 36 outputs per channel",
-        "Sorted by total recall descending. Slack and Salesforce dominate; "
-        "Cell D phantom brands show zero recall.")
-    cs.add_footer(fig, phase=PHASE)
-
-    # Bar legend (R_cat vs R_cult) — upper right
-    cat_patch = mpatches.Patch(color=INDIGO, label="R_cat (category)")
-    cult_patch = mpatches.Patch(color=cs.PALETTE["indigo_t3"], label="R_cult (cultural)")
-    fig.legend(handles=[cat_patch, cult_patch], loc="upper right",
-               bbox_to_anchor=(0.92, 0.82), fontsize=7, frameon=True, framealpha=0.9)
-
-    out = FIGS_DIR / "chart_24_recall_by_brand.pdf"
-    fig.savefig(out, **cs.SAVEFIG_PARAMS)
-    plt.close(fig)
-    print(f"  \u2713 {out.name}")
+def load_cp_kitchen_knives() -> dict[str, int]:
+    p = AIAS_ROOT / "osf" / "v26" / "data" / "v16_cp_retrofit_aggregated.csv"
+    out = {}
+    with open(p) as f:
+        for row in csv.DictReader(f):
+            out[row["brand"]] = int(row["cp"])
+    return out
 
 
-# ── Chart 2: MLT Frequency ────────────────────────────────────────────
-
-def build_chart_mlt():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    fig.subplots_adjust(top=0.82, bottom=0.18, left=0.38, right=0.92)
-
-    tokens = [
-        ("HubSpot: inbound marketing", 21), ("ServiceNow: workflow automation", 15),
-        ("Airtable: no-code", 10), ("Salesforce: Trailblazer", 9),
-        ("Notion: all-in-one workspace", 8), ("Salesforce: Einstein", 5),
-        ("Snowflake: Data Cloud", 4), ("Salesforce: Customer 360", 1),
-        ("Salesforce: Ohana", 1), ("ServiceNow: Now Platform", 1),
-    ]
-    labels = [t[0] for t in tokens][::-1]
-    counts = [t[1] for t in tokens][::-1]
-    y_pos = np.arange(len(labels))
-
-    ax.barh(y_pos, counts, color=INDIGO, height=0.6, edgecolor="none", zorder=3)
-
-    for y, c in zip(y_pos, counts):
-        ax.text(c + 0.4, y, str(c), va="center",
-                fontsize=cs.FONT_SIZES["data_label"], color=INDIGO)
-
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(labels, fontsize=cs.FONT_SIZES["axis_tick"])
-    ax.set_xlim(0, 25)
-    ax.set_xlabel("Appearances in Phase B outputs",
-                  fontsize=cs.FONT_SIZES["axis_label"], color=cs.BLACK, labelpad=8)
-
-    cs.add_header(fig,
-        "Marketing-Language Tokens in AI Recall Outputs",
-        "Frequency of pre-registered vendor-coined terms across 72 Phase B outputs",
-        '"Inbound marketing" fully category-absorbed; '
-        '"Trailblazer" retains Salesforce brand linkage.')
-    cs.add_footer(fig,
-        verdict="MLC = 55.6% \u2014 PARTIAL: strong absolute signal; "
-                "cross-substrate baseline pending.",
-        phase=PHASE)
-
-    out = FIGS_DIR / "chart_24_mlt_frequency.pdf"
-    fig.savefig(out, **cs.SAVEFIG_PARAMS)
-    plt.close(fig)
-    print(f"  \u2713 {out.name}")
+def load_cp_audiophile() -> dict[str, int]:
+    p = AIAS_ROOT / "osf" / "v19" / "phase_a_results.csv"
+    counts: dict[str, int] = defaultdict(int)
+    with open(p) as f:
+        for row in csv.DictReader(f):
+            counts[row["brand"]] += int(row["recognition_yes"])
+    return dict(counts)
 
 
-# ── Chart 3: Identity Load ────────────────────────────────────────────
-
-def build_chart_identity_load():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    fig.subplots_adjust(top=0.82, bottom=0.18, left=0.22, right=0.82)
-
-    cells_data = [
-        ("Cell C  (Infrastructure)", 4.0, 6.0),
-        ("Cell B  (Challengers)",    6.0, 18.3),
-        ("Cell A  (Enterprise)",     27.0, 11.6),
-    ]
-    y_pos = np.arange(len(cells_data))
-    bh = 0.45
-
-    for i, (label, r_cat, r_cult) in enumerate(cells_data):
-        ax.barh(i, -r_cat, bh, color=INDIGO, edgecolor="none", zorder=3)
-        ax.barh(i, r_cult, bh, color=WARM, edgecolor="none", zorder=3)
-        ax.text(-r_cat - 0.8, i, f"{r_cat:.0f}", va="center", ha="right",
-                fontsize=cs.FONT_SIZES["data_label"], color=INDIGO, fontweight="bold")
-        ax.text(r_cult + 0.8, i, f"{r_cult:.0f}", va="center", ha="left",
-                fontsize=cs.FONT_SIZES["data_label"], color=WARM, fontweight="bold")
-        cult_lead = r_cult - r_cat
-        sign = "+" if cult_lead >= 0 else ""
-        ax.text(26, i, f"cult-lead: {sign}{cult_lead:.1f}",
-                va="center", fontsize=cs.FONT_SIZES["annotation"], color=cs.BLACK)
-
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels([d[0] for d in cells_data],
-                       fontsize=cs.FONT_SIZES["axis_tick"])
-    ax.axvline(0, color=cs.BLACK, linewidth=0.6, zorder=2)
-    ax.set_xlim(-32, 32)
-    ax.set_xlabel("Mean mentions per cell (out of 36 per channel)",
-                  fontsize=cs.FONT_SIZES["axis_label"], color=cs.BLACK, labelpad=8)
-
-    # Channel direction labels — figure-level, between description and axes
-    fig.text(0.35, 0.795, "\u2190 R_cat (category)", ha="center",
-             fontsize=cs.FONT_SIZES["annotation"], color=INDIGO, fontweight="bold")
-    fig.text(0.65, 0.795, "R_cult (cultural) \u2192", ha="center",
-             fontsize=cs.FONT_SIZES["annotation"], color=WARM, fontweight="bold")
-
-    cs.add_header(fig,
-        "Identity Load: Category vs Cultural Recall by Cell",
-        "Mean R_cat and R_cult per cell (main cells only)",
-        "27.7-point separation between Cell A and Cell B \u2014 "
-        "strongest Identity Load signal in the program.")
-    cs.add_footer(fig,
-        verdict="H_IL_direct CONFIRMED \u2014 Cell B cult-lead (+12.3) "
-                "vs Cell A (\u221215.4).",
-        phase=PHASE)
-
-    out = FIGS_DIR / "chart_24_identity_load.pdf"
-    fig.savefig(out, **cs.SAVEFIG_PARAMS)
-    plt.close(fig)
-    print(f"  \u2713 {out.name}")
+def load_cp_from_verdicts(verdicts_path: Path) -> dict[str, int]:
+    with open(verdicts_path) as f:
+        d = json.load(f)
+    return {brand: entry["cp"] for brand, entry in d["phase_a"]["per_brand"].items()}
 
 
-# ── Chart 4: MLC by Model ─────────────────────────────────────────────
-
-def build_chart_mlc_by_model():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    fig.subplots_adjust(top=0.82, bottom=0.18, left=0.26, right=0.92)
-
-    models_data = [
-        ("Claude Sonnet 4.6", 3, 12), ("GPT-4o", 4, 12),
-        ("Claude Opus 4.7", 5, 12), ("GPT-4o-mini", 8, 12),
-        ("Gemini 2.5 Flash Lite", 10, 12), ("Gemini 2.5 Flash", 10, 12),
-    ]
-    y_pos = np.arange(len(models_data))
-    rates = [d[1]/d[2] for d in models_data]
-
-    ax.barh(y_pos, rates, color=INDIGO, height=0.55, edgecolor="none", zorder=3)
-    ax.axvline(0.556, color=WARM, linewidth=1.2, linestyle="--",
-               zorder=4, label="Overall MLC (55.6%)")
-
-    for i, (name, hits, total) in enumerate(models_data):
-        rate = hits/total
-        ax.text(rate + 0.015, i, f"{rate:.0%}  ({hits}/{total})",
-                va="center", fontsize=cs.FONT_SIZES["data_label"], color=INDIGO)
-
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels([d[0] for d in models_data],
-                       fontsize=cs.FONT_SIZES["axis_tick"])
-    ax.set_xlim(0, 1.05)
-    ax.set_xlabel("MLC rate", fontsize=cs.FONT_SIZES["axis_label"],
-                  color=cs.BLACK, labelpad=8)
-    ax.legend(loc="lower right", fontsize=cs.FONT_SIZES["legend"])
-
-    cs.add_header(fig,
-        "Marketing-Language Coverage by Model",
-        "Proportion of 12 outputs per model containing \u22651 MLT",
-        "Gemini models carry the most vendor-coined language; "
-        "Claude Sonnet carries the least.")
-    cs.add_footer(fig,
-        verdict="Permeability varies 3.3\u00d7 across models.",
-        phase=PHASE)
-
-    out = FIGS_DIR / "chart_24_mlc_by_model.pdf"
-    fig.savefig(out, **cs.SAVEFIG_PARAMS)
-    plt.close(fig)
-    print(f"  \u2713 {out.name}")
+CP_LOADERS = {
+    "kitchen_knives":        load_cp_kitchen_knives,
+    "audiophile_headphones": load_cp_audiophile,
+    "skincare":              lambda: load_cp_from_verdicts(AIAS_ROOT / "osf" / "v20" / "v20_verdicts.json"),
+    "cosmetics":             lambda: load_cp_from_verdicts(AIAS_ROOT / "osf" / "v21" / "v21_verdicts.json"),
+}
 
 
-# ── Chart 5: Phantom Recognition–Recall Gap ──────────────────────────
-
-def build_chart_phantom():
-    phantoms = [d for d in RECALL_DATA if d[1] == "D"]
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    fig.subplots_adjust(top=0.82, bottom=0.18, left=0.22, right=0.92)
-
-    brands = [d[0] for d in phantoms]
-    n = len(brands)
-    y_pos = np.arange(n)
-    bh = 0.35
-
-    recognition = [6] * n
-    recall_total = [d[2] + d[3] for d in phantoms]
-
-    ax.barh(y_pos + bh/2, recognition, bh, color=INDIGO,
-            label="Recognition (C_P out of 6)", edgecolor="none", zorder=3)
-    ax.barh(y_pos - bh/2, recall_total, bh, color=cs.PALETTE["gray_light"],
-            label="Total recall mentions (out of 72)", edgecolor="none", zorder=3)
-
-    for i in range(n):
-        ax.text(recognition[i] + 0.3, y_pos[i] + bh/2, "6/6",
-                va="center", fontsize=cs.FONT_SIZES["data_label"],
-                color=INDIGO, fontweight="bold")
-        ax.text(0.3, y_pos[i] - bh/2, "0",
-                va="center", fontsize=cs.FONT_SIZES["data_label"],
-                color=cs.PALETTE["gray"])
-
-    ax.set_yticks(y_pos)
-    ax.set_yticklabels(brands, fontsize=cs.FONT_SIZES["axis_tick"])
-    ax.set_xlim(0, 10)
-    ax.set_xlabel("Score", fontsize=cs.FONT_SIZES["axis_label"],
-                  color=cs.BLACK, labelpad=8)
-    ax.legend(loc="lower right", fontsize=cs.FONT_SIZES["legend"])
-
-    cs.add_header(fig,
-        "Phantom Brand Recognition–Recall Gap",
-        "All 5 defunct brands are recognized at 6/6 but never recalled",
-        "Models know these brands existed, describe their features and "
-        "discontinuation dates, yet never recommend them.")
-    cs.add_footer(fig,
-        verdict="Recognition–recommendation gap: 100% known, 0% recommended.",
-        phase=PHASE)
-
-    out = FIGS_DIR / "chart_24_phantom_gap.pdf"
-    fig.savefig(out, **cs.SAVEFIG_PARAMS)
-    plt.close(fig)
-    print(f"  ✓ {out.name}")
+def load_bsr(substrate: str) -> dict[str, int]:
+    """Listed brands only; absent rows skipped."""
+    p = AIAS_ROOT / "osf" / "v26" / "data" / f"v26_bsr_{substrate}.csv"
+    out = {}
+    with open(p) as f:
+        for row in csv.DictReader(f):
+            if row.get("amazon_status") != "listed":
+                continue
+            try:
+                out[row["brand"]] = int(row["bsr_rank"])
+            except (ValueError, KeyError):
+                continue
+    return out
 
 
-# ── Main ───────────────────────────────────────────────────────────────
+def merge_substrate(substrate: str) -> list[tuple[str, int, int]]:
+    cp = CP_LOADERS[substrate]()
+    bsr = load_bsr(substrate)
+    return [(brand, cp[brand], bsr[brand]) for brand in cp if brand in bsr]
+
+
+# -----------------------------------------------------------------------------
+# Chart
+# -----------------------------------------------------------------------------
+
+def build():
+    fig, axes = plt.subplots(2, 2, figsize=cs.FIGSIZE["hero_tall"])
+    axes_flat = axes.flatten()
+
+    rng = np.random.default_rng(seed=42)  # deterministic jitter
+
+    for ax, (substrate, panel_title) in zip(axes_flat, SUBSTRATES):
+        pairs = merge_substrate(substrate)
+        if not pairs:
+            ax.text(0.5, 0.5, "no data", ha="center", va="center",
+                    transform=ax.transAxes, color=cs.GRAY,
+                    fontsize=cs.FONT_SIZES["annotation"])
+            ax.set_title(panel_title, fontsize=cs.FONT_SIZES["axis_label"],
+                         color=cs.BLACK, loc="left", pad=4)
+            ax.set_xticks([]); ax.set_yticks([])
+            continue
+
+        brands, cps, bsrs = zip(*pairs)
+        cps_arr = np.array(cps, dtype=float)
+        bsrs_arr = np.array(bsrs, dtype=float)
+
+        # Slight horizontal jitter so points at same C_P don't overplot
+        jitter = rng.uniform(-0.15, 0.15, size=len(cps_arr))
+        x_plot = cps_arr + jitter
+
+        ax.scatter(x_plot, bsrs_arr,
+                   s=22, color=cs.INDIGO, alpha=0.75, edgecolors="none")
+
+        ax.set_yscale("log")
+        ax.set_xlim(-0.5, 6.5)
+        ax.set_xticks([0, 1, 2, 3, 4, 5, 6])
+        ax.set_xlabel(r"$C_P$ (0–6)", fontsize=cs.FONT_SIZES["axis_label"])
+        ax.set_ylabel("BSR (log scale)", fontsize=cs.FONT_SIZES["axis_label"])
+        ax.set_title(panel_title, fontsize=cs.FONT_SIZES["axis_label"],
+                     color=cs.BLACK, loc="left", pad=4)
+        ax.tick_params(axis="both", labelsize=cs.FONT_SIZES["axis_tick"])
+        ax.grid(True, which="major", axis="y", linestyle=":",
+                linewidth=0.5, color=cs.PALETTE["gray_light"], alpha=0.7)
+        ax.set_axisbelow(True)
+
+        # Annotation: ρ / p / n, or ceiling note for cosmetics
+        if len(set(cps_arr)) <= 1:
+            note = "ceiling: all $C_P=6$\n$\\rho$ undefined"
+        else:
+            rho, pval = spearmanr(cps_arr, bsrs_arr)
+            note = f"$\\rho = {rho:+.3f}$\n$p = {pval:.3f}$\n$n = {len(brands)}$"
+        ax.text(0.97, 0.97, note,
+                transform=ax.transAxes, ha="right", va="top",
+                fontsize=cs.FONT_SIZES["annotation"], color=cs.BLACK,
+                bbox=dict(facecolor="white",
+                          edgecolor=cs.PALETTE["gray_light"],
+                          boxstyle="round,pad=0.3", linewidth=0.5))
+
+    cs.add_header(
+        fig,
+        "AI Presence does not predict Amazon BSR",
+        r"$C_P$ (0–6) vs. Amazon Best Sellers Rank by substrate",
+        r"Listed brands only; one dot per brand. Spearman $\rho$ tests within-substrate monotonicity.",
+    )
+    cs.add_footer(
+        fig,
+        verdict=r"$\mathrm{H_{PV\_Primary}}$ FALSIFIED — 0 of 3 testable substrates met threshold.",
+        phase=PHASE,
+    )
+
+    plt.subplots_adjust(top=0.84, bottom=0.11, left=0.09, right=0.97,
+                        wspace=0.32, hspace=0.42)
+
+    fig.savefig(OUT_PDF, **cs.SAVEFIG_PARAMS)
+    print(f"✓ Wrote {OUT_PDF.relative_to(AIAS_ROOT)}  ({OUT_PDF.stat().st_size} bytes)")
+
 
 if __name__ == "__main__":
-    print("=" * 60)
-    print("AIAS v0.26 \u2014 Chart Builder (B2B SaaS)")
-    print("=" * 60)
-    build_chart_recall()
-    build_chart_mlt()
-    build_chart_identity_load()
-    build_chart_mlc_by_model()
-    build_chart_phantom()
-    print(f"\n\u2713 All charts \u2192 {FIGS_DIR}")
+    build()
