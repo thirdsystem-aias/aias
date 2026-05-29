@@ -186,7 +186,7 @@ if isinstance(content.HYPOTHESIS_DETAILS, str):
     _detail_paras = [p.strip() for p in content.HYPOTHESIS_DETAILS.split("\n\n") if p.strip()]
     content.HYPOTHESIS_DETAILS = {
         "heading": "Detailed hypothesis results",
-        "intro": _detail_paras[0] if _detail_paras else "",
+        "intro": "",
         "items": [(f"P{i+1}", p) for i, p in enumerate(_detail_paras)],
     }
 
@@ -209,9 +209,9 @@ if isinstance(content.CLOSING, str):
             "Third System™ (research entity)",
         ],
         "datasets": [
-            "Phase A recognition: osf.io/ec6wh/v26/data/v26_phase_a.csv",
-            "Phase B recall: osf.io/ec6wh/v26/data/v26_phase_b.csv",
-            "MLC coding: osf.io/ec6wh/v26/data/v26_mlc_coding.csv",
+            "BSR data: osf.io/ec6wh/v26/data/v26_bsr_master.csv",
+            "C_P retrofit: osf.io/ec6wh/v26/data/v16_cp_retrofit_aggregated.csv",
+            "Scoring verdicts: osf.io/ec6wh/v26/v26_verdicts.json",
         ],
         "methodology_log": "v1.6 (SSRN 6816340)",
         "closing_text": content.CLOSING,
@@ -1354,7 +1354,7 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         "González Castro, P. U. (2026). "
         "<i>What AI Presence Does Not Predict: Amazon Best Sellers Rank as "
         "Discriminant Validity Evidence for the AIAS Construct (v0.26)</i>. "
-        "Third System. thirdsystem.ai/v26 (SSRN TBD)"
+        "Third System. thirdsystem.ai/v26 (SSRN 6847678)"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))

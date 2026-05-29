@@ -130,49 +130,114 @@ PATTERNS = [
         "title": "Zero correlation, uniformly",
         "body": (
             "Within-substrate Spearman correlations: kitchen knives "
-            "rho\u00a0=\u00a0+0.048 (p\u00a0=\u00a00.819), "
-            "audiophile headphones rho\u00a0=\u00a0\u22120.116 "
-            "(p\u00a0=\u00a00.668), skincare rho\u00a0=\u00a0+0.049 "
-            "(p\u00a0=\u00a00.823). Pooled across 88 brands: "
-            "rho\u00a0=\u00a0\u22120.0002 (p\u00a0=\u00a00.998). "
+            "rho = +0.048 (p = 0.819, n = 25), audiophile headphones "
+            "rho = \u22120.116 (p = 0.668, n = 16), skincare "
+            "rho = +0.049 (p = 0.823, n = 23). Pooled across "
+            "88 brands: rho = \u22120.0002 (p = 0.998).\n\n"
+
             "The correlations are not merely non-significant \u2014 "
-            "they are effectively zero."
+            "they are effectively zero. Consider the kitchen knives "
+            "substrate: W\u00fcsthof (C<sub>P</sub> = 6, BSR 11,138) and "
+            "CCK Chan Chi Kee (C<sub>P</sub> = 5, BSR 963) both score "
+            "high on AI Presence, yet CCK outsells W\u00fcsthof on Amazon "
+            "by a factor of 11. Meanwhile Hengtai (C<sub>P</sub> = 0, "
+            "BSR 963) matches CCK\u2019s sales rank despite being "
+            "invisible to every language model in the panel.\n\n"
+
+            "In audiophile headphones, Dan Clark Audio (C<sub>P</sub> = 6, "
+            "BSR 56) and Sony (C<sub>P</sub> = 6, BSR 61) dominate "
+            "Amazon sales, but so does Beyerdynamic (BSR 136) and "
+            "Audio-Technica (BSR 126) \u2014 while Stax (C<sub>P</sub> = 6, "
+            "BSR 81,214) scores identically on AI Presence yet ranks "
+            "1,400 times lower on Amazon. AI Presence tells you nothing "
+            "about where a brand sits in the retail sales hierarchy."
         ),
     },
     {
         "id": "p2",
         "title": "The ceiling proves the point",
         "body": (
-            "In cosmetics, all 24 brands achieved C<sub>P</sub>\u00a0=\u00a06 "
-            "(full AI recognition), yet BSR ranged from 12 (Maybelline) "
-            "to 29,364 (Anastasia Beverly Hills). Full AI recognition "
-            "is compatible with any level of retail performance. "
-            "The two constructs are independent."
+            "In cosmetics, all 24 brands achieved C<sub>P</sub> = 6 "
+            "(full AI recognition), yet BSR varied from 12 (Maybelline) "
+            "to 29,364 (Anastasia Beverly Hills) \u2014 a 2,400-to-1 "
+            "ratio in sales velocity with identical AI Presence scores.\n\n"
+
+            "The mass-market brands dominate Amazon: Maybelline (BSR 12), "
+            "Revlon (35), L\u2019Or\u00e9al Paris (116), Wet n Wild (156), "
+            "e.l.f. Cosmetics (162), CoverGirl (191), NYX (195). "
+            "Meanwhile, prestige brands that language models know equally "
+            "well \u2014 Tom Ford Beauty (6,963), Giorgio Armani Beauty "
+            "(20,698), Anastasia Beverly Hills (29,364) \u2014 rank "
+            "orders of magnitude lower on Amazon.\n\n"
+
+            "This is a natural experiment: AI Presence is held constant "
+            "at the maximum while retail performance varies by three "
+            "orders of magnitude. The ceiling does not merely prevent "
+            "within-substrate correlation. It demonstrates the "
+            "independence of the two constructs. Full AI recognition "
+            "is compatible with any level of retail performance."
         ),
     },
     {
         "id": "p3",
         "title": "Convergent + discriminant = construct validity",
         "body": (
-            "v0.25 showed C<sub>P</sub> correlates strongly with Google "
-            "Trends search interest (rho\u00a0=\u00a00.74). This study "
-            "shows C<sub>P</sub> does not correlate with Amazon retail "
-            "performance (rho\u00a0\u2248\u00a00). Together, these "
-            "satisfy the Campbell\u2013Fiske requirements: AI Presence "
-            "converges with related salience measures and diverges from "
-            "unrelated commercial outcomes."
+            "The Campbell\u2013Fiske (1959) framework requires two "
+            "conditions for construct validity: a measure must correlate "
+            "with theoretically related measures (convergent) and must "
+            "not correlate with theoretically unrelated measures "
+            "(discriminant).\n\n"
+
+            "v0.25 established convergent validity: C<sub>P</sub> "
+            "correlated strongly with Google Trends search interest "
+            "on B2B SaaS (rho = 0.74, p < 0.001). Brands that consumers "
+            "search for are also brands that language models recognize. "
+            "Both measures tap an underlying brand-salience dimension.\n\n"
+
+            "This study establishes discriminant validity: C<sub>P</sub> "
+            "shows zero correlation with Amazon BSR (pooled rho = 0.000). "
+            "Brands that consumers buy on Amazon are not the same brands "
+            "that language models recognize.\n\n"
+
+            "Together, the two studies map the boundary of what AI "
+            "Presence measures. It captures brand salience within AI "
+            "knowledge systems \u2014 a dimension that converges with "
+            "search behavior but diverges from purchasing behavior. "
+            "This is the defining characteristic of a novel construct: "
+            "it is specific enough to fail where it should fail."
         ),
     },
     {
         "id": "p4",
         "title": "Different data-generating processes",
         "body": (
-            "LLM training corpora overrepresent editorial and enthusiast "
-            "discourse; Amazon BSR reflects pricing, distribution logistics, "
-            "Prime eligibility, and advertising spend. A brand can dominate "
-            "knife forums (high C<sub>P</sub>) without dominating Amazon "
-            "sales, and vice versa. The signals originate in fundamentally "
-            "different systems."
+            "The null result is theoretically coherent. LLM training "
+            "corpora overrepresent editorial, journalistic, and "
+            "enthusiast discourse. A brand can be extensively discussed "
+            "in knife forums, beauty publications, and audiophile "
+            "communities (producing high C<sub>P</sub>) without "
+            "dominating Amazon sales, which reflects pricing, "
+            "distribution logistics, Prime eligibility, advertising "
+            "spend, and consumer purchasing inertia.\n\n"
+
+            "Consider the skincare substrate. La Roche-Posay "
+            "(C<sub>P</sub> = 6, BSR 22) and Paula\u2019s Choice "
+            "(C<sub>P</sub> = 6, BSR 18) dominate Amazon with "
+            "dermatologist-recommended, mass-accessible products. "
+            "La Prairie (C<sub>P</sub> = 6, BSR 237,462) is equally "
+            "well-known to language models but ranks 10,000 times "
+            "lower on Amazon \u2014 because it is a prestige brand "
+            "that sells through department stores, not Amazon.\n\n"
+
+            "The signals originate in fundamentally different systems. "
+            "AI Presence tracks what language models were trained on "
+            "(editorial and encyclopedic content). Amazon BSR tracks "
+            "what consumers actually purchase in a specific retail "
+            "channel. These are independent dimensions of brand access, "
+            "each requiring its own strategy and its own metrics. "
+            "The Tri-System framework predicts exactly this: AI "
+            "Availability, Mental Availability, and Physical Availability "
+            "are three separate levers, not one."
         ),
     },
 ]
