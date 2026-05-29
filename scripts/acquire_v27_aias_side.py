@@ -61,9 +61,14 @@ def main():
     # --- canonical AIAS-side computation (verbatim via import) ---
     df = load_v24_presence()
 
+    # registry-consistent brand_id (verified: Phase A ids == v27_registry ids, 1:1)
+    da = pd.read_csv(V24_DATA / "v24_phase_a.csv")
+    brand_to_id = dict(zip(da["brand"], da["brand_id"]))
+
     # --- map prereg-named variables onto the canonical columns ---
     out = pd.DataFrame({
-        "brand": df["brand"],
+        "brand_id": df["brand"].map(brand_to_id),
+        "brand_name": df["brand"],
         "cell": df["cell"],
         "C_P": df["C_P"],                            # recognition (Null control), 0-6
         "recall_channel_som": df["R_cat_scaled"],    # PRIMARY: R_cat_scaled = (R_cat/36)*100
@@ -87,8 +92,8 @@ def main():
     print("\n" + "=" * 78)
     print("v0.27 AIAS-side per-brand table  (osf/v27/data/v0.27_aias_side.csv)")
     print("=" * 78)
-    show = out[["brand", "cell", "C_P", "recall_channel_som", "aias_composite",
-                "R_cat", "R_cult", "identity_load"]].copy()
+    show = out[["brand_id", "brand_name", "cell", "C_P", "recall_channel_som",
+                "aias_composite", "R_cat", "R_cult", "identity_load"]].copy()
     show["recall_channel_som"] = show["recall_channel_som"].round(2)
     show["aias_composite"] = show["aias_composite"].round(2)
     print(show.to_string(index=False))
