@@ -60,20 +60,27 @@ INSTRUMENT_PROTOCOL = {
         "trait": "ai_presence", "access": "free_no_account", "guaranteed": True,
         "variables": ["visibility_composite", "sentiment", "presence_quality",
                       "brand_recognition", "share_of_voice", "market_competition"],
+        "query_frame": "category-competitive (generic B2B-SaaS-leadership topic), matching AIAS R_cat; use within-category share_of_voice / market_competition dimensions, NOT the brand-absolute visibility grade, where the tool exposes them",
+        "construct_match": "loose - brand-entry tool; brand-absolute orientation is a looser match to R_cat's category-competitive recall; generic-vs-brand-specific gap is an expected I1 attenuation source",
     },
     "I2": {
         "name": "Profound", "role": "convergent_coprimary",
         "trait": "ai_presence", "access": "api_or_csv_if_obtained",
         "guaranteed": False, "reports_som": True,
         "variables": ["visibility_score", "share_of_model"],
+        "query_frame": "scope Share-of-Model to the generic B2B-SaaS-leadership topic cluster, matching AIAS R_cat",
+        "construct_match": "tight - Share-of-Model is natively per-topic-cluster competitive; cleanest available analog to R_cat",
     },
     "I3": {
         "name": "Brandwatch", "role": "discriminant_contrast",
         "trait": "web_mention_volume", "access": "export", "guaranteed": True,
         "variables": ["mention_volume"],
+        "query_frame": "n/a (discriminant; web/social mention volume by design)",
+        "construct_match": "intentional heterotrait (discriminant contrast)",
     },
     "pull_window_days": 7,        # instrument pulls within +/-7d of Phase B
     "coverage_gate_min_n": 12,    # covered n < 12 -> hypothesis UNDETERMINED
+    "construct_alignment_rule": ("Convergent instruments (I1, I2) are operated in the same category-competitive frame as AIAS R_cat (generic B2B-SaaS-leadership), NOT brand-absolute presence. If an instrument exposes only a brand-absolute score, that is recorded and its construct_match downgraded to 'loose', with the gap documented."),
 }
 
 PRIOR_PROXY_RHO = 0.74   # v0.25 AIAS x Google Trends anchor for the directional prediction
@@ -171,6 +178,13 @@ SCORING = {
     "som_denominator": "pooled, fixed /36 (NOT per-model-averaged)",
     "aias_composite_definition": "v0.25 presence_composite = mean(C_P_scaled, R_cat_scaled, R_cult_scaled); the recoverable inherited composite (full 6-component AIAS was never computed for v0.24)",
     "r_cult_handling": "excluded from convergent SOM; retained in identity_load = R_cult - R_cat",
+    "sensitivity_analysis": {
+        "name": "type2_construct_gap",
+        "rule": "exclude brands where (R_cat == 0 AND R_cult > 0) - the type-2 set: category-competitive-invisible but specialist/cult-salient",
+        "report": "primary rho on all covered brands PLUS this sensitivity rho; a RISE on exclusion = attenuation attributable to the generic-leadership vs brand-specific construct gap",
+        "scope": "convergent hypotheses only (H_CV3_Primary, H_CV3_Profound, H_CV3_SOM); NOT H_CV3_Discriminant",
+        "cell_d_handling": "Cell_D true-zeros (R_cat==0 AND R_cult==0) are RETAINED in primary - genuine concordant absence, not a construct artifact",
+    },
     "verdicts_out": "osf/v27/v0.27_verdicts.json",
 }
 
@@ -217,6 +231,17 @@ DEVIATIONS = [
                    "the rho_Trends=0.74 anchor."),
         "status": "fired",
     },
+    {
+        "entry": 4,
+        "trigger": ("AIAS-side derivation surfaced a two-tier zero floor: 5 Cell_D true-zeros "
+                    "(R_cat=0, R_cult=0) and 4 type-2 brands (R_cat=0, R_cult>0) that are "
+                    "category-competitive-invisible but specialist-salient."),
+        "action": ("Pre-pull, before any instrument data: (a) pinned instrument-query construct "
+                   "alignment to R_cat's category-competitive frame in INSTRUMENT_PROTOCOL; "
+                   "(b) added one rule-defined sensitivity rho (exclude R_cat=0 & R_cult>0) to SCORING; "
+                   "(c) added the construct-gap LIMITATION. No hypothesis or threshold changed."),
+        "status": "fired",
+    },
 ]
 
 # r2: LIMITATIONS block created fresh — the r1 conform-to-v0.26-schema pass dropped
@@ -231,4 +256,5 @@ LIMITATIONS = [
     "AIAS-side inherited from v0.24 (same month as instrument pulls); residual "
     "brand-level drift over the gap is a threat to convergent rho, mitigated but not "
     "removed by rank-based (Spearman) correlation.",
+    "R_cat (generic-leadership recall) and brand-entry instruments (notably HubSpot AEO Grader) operationalize 'AI presence' differently - category-competitive vs brand-absolute. For the type-2 set (R_cat=0, R_cult>0: e.g. Linear, Airtable, Miro, Cloudflare), AIAS reads 0 while a brand-absolute instrument may read non-trivial visibility, attenuating convergent rho. Mitigated by category-frame instrument scoping (tight for Profound) and a pre-registered type-2 sensitivity rho; residual gap is largest where an instrument yields only brand-absolute scores.",
 ]
