@@ -1,0 +1,82 @@
+{
+  "_meta": {
+    "phase": "v0.24",
+    "substrate": "B2B SaaS",
+    "panel_size": 24,
+    "pre_registered_at": "v0.24-prereg-r1",
+    "git_commit": "71516d2",
+    "methodology": "v1.6",
+    "methodology_ssrn": "6816340",
+    "cell_counts": {"A": 7, "B": 6, "C": 6, "D": 5},
+    "notes": "Slack (B5) is a Salesforce (A1) subsidiary. Maintained as separate entries because Slack operates as a distinct brand identity. Parent-subsidiary relationship is analytically noted, not a confound at Recognition/Recall measurement level."
+  },
+  "cells": {
+    "A": {
+      "label": "Enterprise Incumbents",
+      "rationale": "Established market position, high expected recognition, strong marketing-language footprints",
+      "brands": [
+        {"id": "A1", "name": "Salesforce"},
+        {"id": "A2", "name": "HubSpot"},
+        {"id": "A3", "name": "ServiceNow"},
+        {"id": "A4", "name": "Workday"},
+        {"id": "A5", "name": "SAP"},
+        {"id": "A6", "name": "Oracle"},
+        {"id": "A7", "name": "Zendesk"}
+      ]
+    },
+    "B": {
+      "label": "High-Identity Challengers",
+      "rationale": "Strong brand identity, community-driven adoption, predicted higher Identity Load",
+      "brands": [
+        {"id": "B1", "name": "Notion"},
+        {"id": "B2", "name": "Figma"},
+        {"id": "B3", "name": "Linear"},
+        {"id": "B4", "name": "Airtable"},
+        {"id": "B5", "name": "Slack"},
+        {"id": "B6", "name": "Miro"}
+      ]
+    },
+    "C": {
+      "label": "Infrastructure / Developer Platform",
+      "rationale": "Developer-facing positioning, infrastructure orientation, expected lower cultural-recall signal",
+      "brands": [
+        {"id": "C1", "name": "Datadog"},
+        {"id": "C2", "name": "Snowflake"},
+        {"id": "C3", "name": "Stripe"},
+        {"id": "C4", "name": "Twilio"},
+        {"id": "C5", "name": "Cloudflare"},
+        {"id": "C6", "name": "MongoDB"}
+      ]
+    },
+    "D": {
+      "label": "Phantom Candidates",
+      "rationale": "Defunct or absorbed B2B SaaS brands with expected training-data residue",
+      "brands": [
+        {"id": "D1", "name": "Quip", "status": "Acquired by Salesforce 2016; absorbed, no standalone product"},
+        {"id": "D2", "name": "Yammer", "status": "Acquired by Microsoft 2012; rebranded Viva Engage 2023; brand name dead"},
+        {"id": "D3", "name": "Wunderlist", "status": "Acquired by Microsoft; shut down June 2020; replaced by To Do"},
+        {"id": "D4", "name": "HipChat", "status": "Atlassian; shut down February 2019; replaced by Stride"},
+        {"id": "D5", "name": "Stride", "status": "Atlassian HipChat replacement; shut down February 2019; double extinction"}
+      ]
+    }
+  },
+  "model_panel": [
+    {"name": "Claude Opus 4.7", "provider": "anthropic", "model_id": "claude-opus-4-7"},
+    {"name": "Claude Sonnet 4.6", "provider": "anthropic", "model_id": "claude-sonnet-4-6"},
+    {"name": "GPT-4o", "provider": "openai", "model_id": "gpt-4o"},
+    {"name": "GPT-4o-mini", "provider": "openai", "model_id": "gpt-4o-mini"},
+    {"name": "Gemini 2.5 Flash", "provider": "google", "model_id": "gemini-2.5-flash"},
+    {"name": "Gemini 2.5 Flash Lite", "provider": "google", "model_id": "gemini-2.5-flash-lite"}
+  ],
+  "mlt_dictionary": {
+    "_note": "Marketing-language tokens — locked at pre-registration. No tokens added post-acquisition. Used for MLC coding of Phase B outputs.",
+    "Salesforce": ["Customer 360", "Trailblazer", "Einstein", "Ohana"],
+    "HubSpot": ["inbound marketing", "flywheel", "growth stack"],
+    "ServiceNow": ["Now Platform", "workflow automation"],
+    "Snowflake": ["Data Cloud", "data sharing economy"],
+    "Notion": ["all-in-one workspace", "connected workspace"],
+    "Figma": ["design in the browser", "multiplayer design"],
+    "Airtable": ["no-code", "spreadsheet-database"],
+    "Linear": ["issue tracking for modern teams"]
+  }
+}
