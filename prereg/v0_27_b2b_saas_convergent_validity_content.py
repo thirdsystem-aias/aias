@@ -44,9 +44,11 @@ SUBSTRATES = {
 # the v0.27 tree so the lock is self-contained.
 REGISTRY_SOURCE = "osf/v27/registries/v27_registry.json"
 
-# Fixed reference panel, held from v0.17 onward.
+# Reference panel as present in the inherited v0.24 Phase B corpus
+# (r2: corrected from a stale "4.5" listing to the actual model set in
+#  osf/v24/data/v24_phase_b.csv; sourced verbatim, not edited by hand).
 PANEL = [
-    "Claude Opus 4.5", "Claude Sonnet 4.5",
+    "Claude Opus 4.7", "Claude Sonnet 4.6",
     "GPT-4o", "GPT-4o-mini",
     "Gemini 2.5 Flash", "Gemini 2.5 Flash Lite",
 ]
@@ -165,6 +167,10 @@ SCORING = {
     "primary_family": ["H_CV3_Primary", "H_CV3_Profound", "H_CV3_SOM"],
     "aias_side_primary": "recall_channel_som",
     "aias_side_secondary": "aias_composite",
+    "som_definition": "recall_channel_som = R_cat_scaled = (R_cat/36)*100; pooled mention count over 6 category probes x 6 models; reuses score_v0_25.py:88-130 verbatim",
+    "som_denominator": "pooled, fixed /36 (NOT per-model-averaged)",
+    "aias_composite_definition": "v0.25 presence_composite = mean(C_P_scaled, R_cat_scaled, R_cult_scaled); the recoverable inherited composite (full 6-component AIAS was never computed for v0.24)",
+    "r_cult_handling": "excluded from convergent SOM; retained in identity_load = R_cult - R_cat",
     "verdicts_out": "osf/v27/v0.27_verdicts.json",
 }
 
@@ -187,4 +193,42 @@ DEVIATIONS = [
                    "or hypothesis changes to I1/I3."),
         "status": "armed",   # flips to 'fired' in r2 if triggered
     },
+    {
+        "entry": 1,
+        "trigger": "AIAS-side handling under-specified at r1.",
+        "action": ("recall_channel_som and aias_composite are COMPUTED from the inherited "
+                   "v0.24 Phase B corpus (osf/v24/data/v24_phase_b.csv), not freshly acquired. "
+                   "Timing window redefined: instrument pulls within +/-7d of EACH OTHER "
+                   "(not of Phase B); AIAS-side dated to v0.24 (same calendar month). "
+                   "v0.24->pull temporal gap moved to LIMITATIONS as a named threat-to-validity."),
+        "status": "fired",
+    },
+    {
+        "entry": 2,
+        "trigger": "PANEL string did not match the inherited v0.24 Phase B data.",
+        "action": "PANEL corrected to the actual model set present in v24_phase_b.csv (sourced verbatim).",
+        "status": "fired",
+    },
+    {
+        "entry": 3,
+        "trigger": "recall_channel_som denominator not pinned at r1 (R_cat alone vs two-channel fusion).",
+        "action": ("Pinned: recall_channel_som = R_cat_scaled, pooled /36, per score_v0_25.py:88-130 "
+                   "verbatim. Matches the v0.25 H_CV_Recall metric, preserving comparability to "
+                   "the rho_Trends=0.74 anchor."),
+        "status": "fired",
+    },
+]
+
+# r2: LIMITATIONS block created fresh — the r1 conform-to-v0.26-schema pass dropped
+# the original draft's LIMITATIONS var. First line authored at r2 (review); second
+# is the temporal-gap threat referenced by DEVIATIONS Entry 1.
+LIMITATIONS = [
+    "Convergent instruments (HubSpot AEO Grader, Profound, Brandwatch) report "
+    "continuously-refreshed live measurements, whereas the AIAS-side variable is a "
+    "single point-in-time measurement inherited from v0.24; convergent rho compares a "
+    "point measurement against continuously-refreshed instruments, which can attenuate "
+    "observed agreement.",
+    "AIAS-side inherited from v0.24 (same month as instrument pulls); residual "
+    "brand-level drift over the gap is a threat to convergent rho, mitigated but not "
+    "removed by rank-based (Spearman) correlation.",
 ]
