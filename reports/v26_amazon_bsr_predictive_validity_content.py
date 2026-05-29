@@ -1,470 +1,315 @@
-# NOTE: cloned from v25_b2b_saas_construct_validity_content.py on phase scaffold.
-# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,
-# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text
-# must be re-written for the v0.26 Amazon BSR Predictive Validity
-# substrate. Do not ship this file as-is.
-
-# NOTE: cloned from v24_b2b_saas_content.py on phase scaffold.
-# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,
-# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text
-# must be re-written for the v0.26 B2B SaaS Construct Validity
-# substrate. Do not ship this file as-is.
-
 """
-AIAS v0.26 — B2B SaaS
-Brand-Format Report Content Module
-Third System™ · AIAS Measurement Program
+v0.26 — What AI Presence Does Not Predict
+Amazon Best Sellers Rank as Discriminant Validity Evidence
 
-Register: managerial / editorial (P1–P5 propositional framing)
-Do NOT use H_* hypothesis framing in this file.
+Brand-format report content module (Third System)
+P1–P5 propositional register for managerial readers.
 """
 
-# ── COVER ───────────────────────────────────────────────────────────────
+VERSION = "v0.26"
+SUBSTRATE = "Cross-Substrate Construct Validity"
+SUBTITLE = "Amazon Best Sellers Rank"
+
+# ---------------------------------------------------------------------------
+# COVER
+# ---------------------------------------------------------------------------
 
 COVER = {
-    "title": "Your Marketing Language\nIs Now the Machine\u2019s Language",
+    "title": "What AI Presence\nDoes Not Predict",
     "subtitle": (
-        "AI Presence in B2B SaaS: the eighth substrate in the "
-        "AIAS\u2122 Measurement Program measures how enterprise software "
-        "brands surface in large-language-model recommendations \u2014 "
-        "and finds that vendor-coined positioning has crossed into "
-        "the discourse AI uses to describe entire categories."
+        "Amazon Best Sellers Rank as discriminant validity "
+        "evidence for the AIAS construct"
     ),
     "version": "v0.26",
-    "substrate": "B2B SaaS",
-    "date": "June 2026",
+    "category": "Construct Validity \u2014 Discriminant",
+    "substrate": "Kitchen Knives \u00b7 Audiophile Headphones \u00b7 Skincare \u00b7 Cosmetics",
+    "date": "May 2026",
 }
 
-# ── STANDFIRST ──────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# STANDFIRST
+# ---------------------------------------------------------------------------
 
 STANDFIRST = (
-    "Every major B2B SaaS brand in our 24-brand panel is perfectly "
-    "recognized by every model tested. But recognition is table stakes. "
-    "The real question is which brands get recommended \u2014 and in whose "
-    "language. More than half of all AI recall outputs now contain "
-    "vendor-coined marketing terms like \u201Cinbound marketing,\u201D "
-    "\u201Cworkflow automation,\u201D and \u201Cno-code.\u201D The positioning "
-    "language that brands invented to differentiate themselves has become "
-    "the vocabulary AI systems use to describe their categories."
+    "AI Presence scores show zero correlation with Amazon Best Sellers Rank "
+    "across three consumer-goods categories. Brands that language models "
+    "recognize are not the same brands that dominate retail sales. "
+    "This is not a failure of the measure \u2014 it is evidence that "
+    "AI Availability captures something genuinely new."
 )
 
-# ── LEAD_DECK ───────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# LEAD_DECK
+# ---------------------------------------------------------------------------
 
 LEAD_DECK = [
     {
-        "number": "24/24",
-        "label": "brands recognized at 6/6",
-        "detail": (
-            "Perfect uniform saturation across the entire panel. Every "
-            "model knows every brand \u2014 enterprise incumbents, challengers, "
-            "infrastructure platforms, even defunct products."
-        ),
+        "metric": "rho \u2248 0.000",
+        "label": "Pooled correlation",
+        "detail": "C<sub>P</sub> \u00d7 BSR across 88 listed brands (p = 0.998)",
     },
     {
-        "number": "55.6%",
-        "label": "Marketing-Language Coverage",
-        "detail": (
-            "More than half of all recall outputs contain at least one "
-            "vendor-coined term. This is the first quantified measure of "
-            "marketing-language absorption by AI systems in the program."
-        ),
+        "metric": "0 / 3",
+        "label": "Substrates with signal",
+        "detail": "No substrate reached the pre-registered threshold (rho \u2264 \u22120.40)",
     },
     {
-        "number": "27.7pt",
-        "label": "Identity Load cell separation",
-        "detail": (
-            "The gap between challenger brands\u2019 cultural-recall lead "
-            "and enterprise incumbents\u2019 category-recall lead \u2014 the "
-            "strongest Identity Load separation measured in the program."
-        ),
+        "metric": "104 / 106",
+        "label": "Amazon coverage",
+        "detail": "98% of panel brands have Amazon listings with BSR data",
     },
     {
-        "number": "0/5",
-        "label": "phantom brands recalled",
-        "detail": (
-            "Quip, Yammer, Wunderlist, HipChat, and Stride are all "
-            "recognized \u2014 models know what they were \u2014 but none appear "
-            "in a single recommendation. Knowledge without influence."
-        ),
+        "metric": "3 orders",
+        "label": "BSR range",
+        "detail": "Best Sellers Rank spans 18 to 422,730 across substrates",
     },
 ]
 
-# ── EXEC_SUMMARY ────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# EXEC_SUMMARY
+# ---------------------------------------------------------------------------
 
 EXEC_SUMMARY = (
-    "This study measures AI Presence for 24 B2B SaaS brands across six "
-    "large language models. It is the eighth substrate family in the "
-    "AIAS\u2122 Measurement Program and the first to quantify Marketing-Language "
-    "Coverage (MLC) \u2014 the rate at which vendor-coined positioning terms "
-    "appear in AI-generated recommendations.\n\n"
+    "This study tested whether brands that score high on AI Presence "
+    "also sell well on Amazon. They do not. Across kitchen knives, "
+    "audiophile headphones, and skincare, the correlation between "
+    "AI Presence Index (C<sub>P</sub>) and Amazon Best Sellers Rank "
+    "was indistinguishable from zero \u2014 not merely non-significant, "
+    "but effectively absent.\n\n"
 
-    "Five findings define the B2B SaaS substrate.\n\n"
+    "The null result is the finding. Combined with the strong positive "
+    "correlation between C<sub>P</sub> and Google Trends search interest "
+    "found in v0.25 (rho\u00a0=\u00a00.74), this study completes "
+    "a convergent\u2013discriminant validity pair: AI Presence tracks "
+    "brand salience in AI knowledge systems (converges with search interest) "
+    "but does not track commercial outcomes (diverges from retail sales rank).\n\n"
 
-    "First, recognition is completely undifferentiated. Every brand in the "
-    "panel \u2014 from Salesforce to Linear to Cloudflare \u2014 scores 6/6 on "
-    "recognition. AI models trained on the internet\u2019s vast corpus of "
-    "technical content know every B2B SaaS brand. This makes recognition "
-    "a non-competitive dimension; all competitive differentiation occurs "
-    "in the recall layer.\n\n"
-
-    "Second, recall is sharply concentrated. Salesforce and Slack together "
-    "account for a disproportionate share of all recommendation mentions. "
-    "Twilio, Cloudflare, and MongoDB are nearly invisible in recommendation "
-    "space despite universal recognition. This is a clean demonstration "
-    "of the AI-native analogue of Double Jeopardy: brands that are known "
-    "but not mentioned get neither the awareness benefit nor the "
-    "recommendation benefit.\n\n"
-
-    "Third, marketing language has crossed into machine discourse. "
-    "55.6% of all recall outputs contain at least one vendor-coined term. "
-    "\u201CInbound marketing\u201D (HubSpot) appears 21 times, \u201Cworkflow "
-    "automation\u201D (ServiceNow) 15, and \u201Cno-code\u201D (Airtable) 10. "
-    "Some of these terms have fully detached from brand attribution "
-    "\u2014 models use \u201Cinbound marketing\u201D as a category descriptor, "
-    "not a HubSpot brand marker \u2014 while others (\u201CTrailblazer,\u201D "
-    "\u201CEinstein\u201D) retain explicit brand linkage. The distinction "
-    "matters: category-absorbed language lifts the category; "
-    "brand-retained language lifts the brand.\n\n"
-
-    "Fourth, Identity Load determines where brands appear. Enterprise "
-    "incumbents dominate category-recall probes (\u201CWhat SaaS tools do "
-    "enterprises use?\u201D) but are weak on cultural probes (\u201CWhat SaaS "
-    "brands have cult-like followings?\u201D). Challengers show the inverse "
-    "pattern. The 27.7-point cell separation is the strongest Identity "
-    "Load signal in the program. Slack is the crossover anomaly \u2014 high "
-    "on both channels \u2014 reflecting its dual identity as enterprise "
-    "infrastructure and beloved brand.\n\n"
-
-    "Fifth, defunct B2B SaaS brands vanish from recommendations even when "
-    "models know exactly what they were. All five phantom candidates "
-    "(Quip, Yammer, Wunderlist, HipChat, Stride) are perfectly recognized "
-    "\u2014 models describe their features, note their discontinuation, "
-    "identify their acquirers \u2014 yet none appears in a single recommendation "
-    "output. The recognition\u2013recommendation gap is now confirmed across "
-    "three substrate families."
+    "For brand strategists, the implication is clear: AI Availability is not "
+    "a proxy for market share. A brand can be universally recognized by "
+    "language models and still rank poorly on Amazon, or dominate Amazon "
+    "sales while being invisible to AI systems. These are independent "
+    "dimensions of brand access \u2014 exactly what the Tri-System "
+    "framework predicts."
 )
 
-# ── WHAT_WE_MEASURED ────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# WHAT_WE_MEASURED
+# ---------------------------------------------------------------------------
 
 WHAT_WE_MEASURED = (
-    "We measured AI Presence for 24 B2B SaaS brands across six large "
-    "language models: Claude Opus 4.7, Claude Sonnet 4.6, GPT-4o, "
-    "GPT-4o-mini, Gemini 2.5 Flash, and Gemini 2.5 Flash Lite.\n\n"
+    "We correlated two signals across 106 brands in five consumer-goods "
+    "categories.\n\n"
 
-    "Phase A tested recognition: does the model know this brand? "
-    "144 probes (24 brands \u00d7 6 models). Phase B tested recall: "
-    "when asked to recommend B2B SaaS products, which brands surface? "
-    "72 queries across two channels \u2014 category recall (\u201CWhat are "
-    "the leading B2B SaaS platforms?\u201D) and cultural recall (\u201CWhat "
-    "SaaS brands have cult-like followings?\u201D).\n\n"
+    "<b>AI Presence Index (C<sub>P</sub>):</b> How many of six major language "
+    "models recognize each brand in its category (integer 0\u20136). "
+    "Three substrates provided within-category variance: kitchen knives "
+    "(26 brands, v0.16 retrofitted), audiophile headphones (16 brands, v0.19), "
+    "and skincare (24 brands, v0.20). A fourth substrate \u2014 cosmetics "
+    "(v0.21) \u2014 showed a ceiling effect where all 24 brands scored "
+    "C<sub>P</sub>\u00a0=\u00a06, providing a natural control. "
+    "A fifth substrate (premium kitchenware, v0.17) was excluded because "
+    "its Phase A data was incomplete.\n\n"
 
-    "New for this phase: we coded all Phase B outputs for "
-    "Marketing-Language Coverage (MLC) \u2014 the proportion of responses "
-    "containing vendor-coined positioning terms from a pre-registered "
-    "dictionary of 19 tokens across 8 brands. This is the first "
-    "quantified operationalization of Discourse-Language carryforward "
-    "in the program.\n\n"
+    "<b>Amazon Best Sellers Rank (BSR):</b> The sales-velocity rank of each "
+    "brand\u2019s best-selling product on Amazon, acquired via automated "
+    "browser extraction in a single 48-hour window. Lower rank = more sales. "
+    "Coverage: 104 of 106 brands listed (98.1%).\n\n"
 
-    "The panel spans four cells: enterprise incumbents (Salesforce, "
-    "HubSpot, ServiceNow, Workday, SAP, Oracle, Zendesk), high-identity "
-    "challengers (Notion, Figma, Linear, Airtable, Slack, Miro), "
-    "infrastructure and developer platforms (Datadog, Snowflake, Stripe, "
-    "Twilio, Cloudflare, MongoDB), and phantom candidates \u2014 defunct or "
-    "absorbed brands (Quip, Yammer, Wunderlist, HipChat, Stride).\n\n"
-
-    "All measurement follows the AIAS\u2122 Protocol v1.6."
+    "<b>Test:</b> Spearman rank correlation per substrate (does higher "
+    "C<sub>P</sub> predict lower/better BSR?), plus pooled cross-substrate "
+    "correlation and a Cell\u00a0A separation test."
 )
 
-# ── PATTERNS ────────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# PATTERNS
+# ---------------------------------------------------------------------------
 
 PATTERNS = [
     {
-        "id": "P1",
-        "title": "Recognition is table stakes",
+        "id": "p1",
+        "title": "Zero correlation, uniformly",
         "body": (
-            "Every brand in the 24-brand panel achieves perfect recognition "
-            "(C\u209a = 6/6) across all six models. This is uniform saturation "
-            "\u2014 the strongest form of the pattern observed in cosmetics "
-            "(v0.21) and automotive (v0.22). On B2B SaaS, the internet\u2019s "
-            "density of technical documentation, product comparisons, and "
-            "developer content means every brand is known. Recognition is "
-            "not a differentiator; it is a baseline condition."
+            "Within-substrate Spearman correlations: kitchen knives "
+            "rho\u00a0=\u00a0+0.048 (p\u00a0=\u00a00.819), "
+            "audiophile headphones rho\u00a0=\u00a0\u22120.116 "
+            "(p\u00a0=\u00a00.668), skincare rho\u00a0=\u00a0+0.049 "
+            "(p\u00a0=\u00a00.823). Pooled across 88 brands: "
+            "rho\u00a0=\u00a0\u22120.0002 (p\u00a0=\u00a00.998). "
+            "The correlations are not merely non-significant \u2014 "
+            "they are effectively zero."
         ),
     },
     {
-        "id": "P2",
-        "title": "Recall concentration creates a two-tier recommendation market",
+        "id": "p2",
+        "title": "The ceiling proves the point",
         "body": (
-            "Salesforce (61/72 mentions) and Slack (63/72) sit in the "
-            "first tier. HubSpot (54/72) and Workday (41/72) occupy the "
-            "second. Below them, recall drops steeply: Twilio (4/72), "
-            "Cloudflare (3/72), MongoDB (5/72). The gap between universal "
-            "recognition and selective recall is the competitive surface "
-            "in AI-mediated discovery. Being known is free; being "
-            "recommended is scarce."
+            "In cosmetics, all 24 brands achieved C<sub>P</sub>\u00a0=\u00a06 "
+            "(full AI recognition), yet BSR ranged from 12 (Maybelline) "
+            "to 29,364 (Anastasia Beverly Hills). Full AI recognition "
+            "is compatible with any level of retail performance. "
+            "The two constructs are independent."
         ),
     },
     {
-        "id": "P3",
-        "title": "Marketing language has been absorbed into AI discourse",
+        "id": "p3",
+        "title": "Convergent + discriminant = construct validity",
         "body": (
-            "55.6% of all recall outputs contain at least one vendor-coined "
-            "marketing term. The absorption is not uniform. \u201CInbound "
-            "marketing\u201D (21 appearances) has fully detached from HubSpot "
-            "\u2014 models use it as a category descriptor without brand "
-            "attribution. \u201CNo-code\u201D (10 appearances) shows the same "
-            "pattern with Airtable. But \u201CTrailblazer\u201D (9 appearances) "
-            "retains its Salesforce linkage \u2014 models say \u201CSalesforce "
-            "Trailblazers.\u201D This creates two classes of marketing-language "
-            "carryforward: terms that lift the category (category-absorbed) "
-            "and terms that lift the brand (brand-retained). The strategic "
-            "implication is asymmetric: HubSpot created a vocabulary that "
-            "now benefits all inbound-marketing platforms; Salesforce created "
-            "one that still accrues to Salesforce."
+            "v0.25 showed C<sub>P</sub> correlates strongly with Google "
+            "Trends search interest (rho\u00a0=\u00a00.74). This study "
+            "shows C<sub>P</sub> does not correlate with Amazon retail "
+            "performance (rho\u00a0\u2248\u00a00). Together, these "
+            "satisfy the Campbell\u2013Fiske requirements: AI Presence "
+            "converges with related salience measures and diverges from "
+            "unrelated commercial outcomes."
         ),
     },
     {
-        "id": "P4",
-        "title": "Identity Load determines the channel, not the volume",
+        "id": "p4",
+        "title": "Different data-generating processes",
         "body": (
-            "Enterprise incumbents (Cell A) dominate category recall: "
-            "mean R\u2091\u2090\u209c = 27.0/36. But they are weak on cultural "
-            "recall: mean R\u2091\u1d64\u2097\u209c = 11.6/36. Challengers (Cell B) "
-            "show the exact inverse: R\u2091\u2090\u209c = 6.0, R\u2091\u1d64\u2097\u209c = 18.3. "
-            "The 27.7-point separation between cell cult-leads is the "
-            "strongest Identity Load signal in the program. What this "
-            "means for brand strategy: enterprise incumbents are recalled "
-            "when users ask \u201Cwhat tools do companies use?\u201D but not "
-            "when they ask \u201Cwhat tools do teams love?\u201D Challengers "
-            "get the love question but miss the enterprise question. "
-            "Slack is the sole brand that bridges both channels (R\u2091\u2090\u209c = 33, "
-            "R\u2091\u1d64\u2097\u209c = 30) \u2014 a dual-identity advantage that no other "
-            "brand in the panel replicates."
-        ),
-    },
-    {
-        "id": "P5",
-        "title": "Defunct brands persist in knowledge but vanish from recommendations",
-        "body": (
-            "All five phantom candidates \u2014 Quip, Yammer, Wunderlist, "
-            "HipChat, Stride \u2014 are recognized with detailed accuracy. "
-            "Models describe their features, identify their acquirers, "
-            "note their discontinuation dates. Yet none appears in a single "
-            "recommendation output. The recognition\u2013recommendation gap "
-            "replicates across three substrate families (automotive, B2B "
-            "SaaS, and the broader AIAS program). Recommendation slots "
-            "are reserved for active brands; historical knowledge does not "
-            "convert to recommendation-slot persistence."
+            "LLM training corpora overrepresent editorial and enthusiast "
+            "discourse; Amazon BSR reflects pricing, distribution logistics, "
+            "Prime eligibility, and advertising spend. A brand can dominate "
+            "knife forums (high C<sub>P</sub>) without dominating Amazon "
+            "sales, and vice versa. The signals originate in fundamentally "
+            "different systems."
         ),
     },
 ]
 
-# ── LIMITATIONS ─────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# LIMITATIONS
+# ---------------------------------------------------------------------------
 
 LIMITATIONS = (
-    "Four limitations qualify these findings.\n\n"
+    "BSR captures sales velocity within one retail channel (Amazon), "
+    "not total market performance. Brands with strong offline or "
+    "DTC distribution may appear weaker in BSR than their true "
+    "market position warrants. A multi-channel sales metric would "
+    "provide a stronger discriminant validity test.\n\n"
 
-    "First, the Marketing-Language Coverage rate (55.6%) establishes a "
-    "benchmark but lacks a cross-substrate baseline. Prior phases did not "
-    "code recall outputs for MLTs. Retroactive baseline coding across "
-    "v0.16\u2013v0.22 would be required to confirm whether the B2B SaaS "
-    "rate is genuinely elevated or merely the first measurement of a "
-    "substrate-invariant pattern.\n\n"
+    "The v0.16 kitchen knives C<sub>P</sub> was retrofitted under "
+    "the v1.4+ protocol because the original v1.2 methodology did not "
+    "produce comparable scores. The retrofit aligns the metric but "
+    "introduces a provenance asymmetry documented in DEVIATIONS Entry 0.\n\n"
 
-    "Second, the MLT dictionary was hand-curated at pre-registration. "
-    "Terms that brands coined but that have become so generic they are "
-    "no longer recognizable as marketing language (e.g., \u201CCRM,\u201D "
-    "\u201Ccloud computing\u201D) were excluded. The dictionary captures "
-    "mid-diffusion terms \u2014 still traceable to a brand but potentially "
-    "on the path to full genericization. A broader or narrower dictionary "
-    "would shift the MLC rate.\n\n"
-
-    "Third, Stride (D5) presents a name-collision confound. All six "
-    "models associated \u201CStride\u201D with the chewing-gum brand "
-    "(Mondelez), not with Atlassian\u2019s defunct messaging product. "
-    "Brand-name uniqueness is a precondition for clean recognition "
-    "measurement. Future phantom-candidate selection should screen for "
-    "name collisions.\n\n"
-
-    "Fourth, the cross-vertical design (CRM + collaboration + "
-    "infrastructure + developer tools under a single \u201CB2B SaaS\u201D "
-    "umbrella) trades category coherence for breadth. Recall probes "
-    "may favor brands in the CRM/productivity sub-vertical over "
-    "infrastructure brands (Datadog, Cloudflare, MongoDB) that "
-    "enterprises use but do not think of as \u201CSaaS platforms.\u201D A "
-    "narrower single-vertical study would produce tighter recall "
-    "distributions at the cost of generalizability."
+    "Three testable substrates is the minimum for cross-substrate "
+    "generalization. The v0.17 exclusion and v0.21 ceiling effect "
+    "were not anticipated at pre-registration."
 )
 
-# ── WHATS_NEXT ──────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# WHATS_NEXT
+# ---------------------------------------------------------------------------
 
 WHATS_NEXT = (
-    "Three research directions follow from v0.26.\n\n"
-
-    "First, retroactive MLC baseline coding across prior substrates "
-    "(v0.16\u2013v0.22) to establish whether marketing-language absorption "
-    "is substrate-specific or universal. If \u201Cinbound marketing\u201D and "
-    "\u201Cno-code\u201D are B2B SaaS phenomena while kitchen knives and "
-    "fragrances show near-zero MLC, the Discourse-Language hypothesis "
-    "gains a comparative anchor.\n\n"
-
-    "Second, the category-absorbed vs. brand-retained distinction in "
-    "marketing-language carryforward warrants formal coding. A taxonomy "
-    "of MLT types (fully detached, partially attributed, brand-retained) "
-    "would sharpen the strategic implications for brand managers investing "
-    "in category-creation language.\n\n"
-
-    "Third, Slack\u2019s dual-channel dominance invites a dedicated "
-    "subsidiary-identity study. Do acquired brands that maintain distinct "
-    "identities (Slack within Salesforce, Instagram within Meta, YouTube "
-    "within Alphabet) show systematically different recall patterns than "
-    "absorbed brands (Quip within Salesforce, Yammer within Microsoft)? "
-    "The v0.26 data provides the first data point; a designed comparison "
-    "would test the mechanism."
+    "Extend discriminant validity testing to additional commercial "
+    "outcome measures: Sephora rankings, B&H Photo bestsellers, "
+    "and specialty retailer data. Prioritize behavioral correlates "
+    "(click-through rates, recommendation acceptance) as convergent "
+    "measures that sit closer to the theorized mechanism of AI Availability. "
+    "Expand the Campbell\u2013Fiske matrix with additional convergent "
+    "measures (Wikipedia pageviews, news-corpus brand mentions) and "
+    "discriminant measures (brand equity surveys, stock price)."
 )
 
-# ── HYPOTHESIS_SCORING ──────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# HYPOTHESIS_SCORING
+# ---------------------------------------------------------------------------
 
 HYPOTHESIS_SCORING = [
     {
         "id": "P1",
-        "label": "Uniform Recognition Saturation",
-        "verdict": "CONFIRMED",
-        "detail": (
-            "All 24 brands at C\u209a = 6/6. Strongest uniform-saturation "
-            "finding in the program. Recognition is non-competitive on "
-            "this substrate."
+        "label": "Per-substrate predictive validity",
+        "prediction": (
+            "C<sub>P</sub> and Amazon BSR correlate negatively "
+            "(higher Presence \u2192 better rank) in at least 2 of 3 "
+            "testable substrates."
         ),
+        "verdict": "FALSIFIED",
+        "detail": "0 of 3 substrates met the rho \u2264 \u22120.40 threshold.",
     },
     {
         "id": "P2",
-        "label": "Regime Classification",
-        "verdict": "REGIME 1 (UNIFORM SATURATION)",
-        "detail": (
-            "C1 passes (19/19 responding brands). C2 fails: distinct "
-            "C\u209a = 1, modal share = 100%. Consistent with v0.20, v0.21, "
-            "v0.22 pattern."
+        "label": "Cross-substrate pooled correlation",
+        "prediction": (
+            "Pooled Spearman rho across all listed brands reaches "
+            "rho \u2264 \u22120.30 (p < 0.01)."
         ),
+        "verdict": "FALSIFIED",
+        "detail": "Pooled rho = \u22120.0002, p = 0.998. Indistinguishable from zero.",
     },
     {
         "id": "P3",
-        "label": "Marketing-Language Coverage",
-        "verdict": "PARTIAL",
+        "label": "Cell A separation",
+        "prediction": (
+            "Brands with C<sub>P</sub> \u2265 4 have significantly better "
+            "(lower) BSR than brands with C<sub>P</sub> < 4."
+        ),
+        "verdict": "FALSIFIED",
         "detail": (
-            "MLC = 55.6% (40/72 outputs). Strong absolute signal. "
-            "R\u2091\u1d64\u2097\u209c channel (63.9%) higher than R\u2091\u2090\u209c (47.2%). "
-            "Comparative leg undetermined: no cross-substrate baseline yet."
+            "Median BSR percentile: Cell A = 51.09, Other = 54.00. "
+            "Negligible and non-significant."
         ),
     },
     {
         "id": "P4",
-        "label": "Identity Load Moderator",
-        "verdict": "CONFIRMED",
-        "detail": (
-            "Cell B cult-lead (+12.3) exceeds Cell A (\u221215.4). "
-            "27.7-point separation. Strongest IL signal in the program."
+        "label": "Absence\u2013Presence alignment",
+        "prediction": (
+            "Brands absent from Amazon have lower mean C<sub>P</sub> "
+            "than listed brands."
         ),
-    },
-    {
-        "id": "P5",
-        "label": "Recognition \u00d7 Recall Dissociation",
-        "verdict": "CONFIRMED (qualified)",
+        "verdict": "UNDETERMINED",
         "detail": (
-            "16 Iwachu cases, all HIGH_REC_LOW_RECALL. Methodologically "
-            "qualified: uniform C\u209a = 6/6 inflates count. The real "
-            "finding is extreme recall variance (3\u201363/72) under "
-            "uniform recognition."
-        ),
-    },
-    {
-        "id": "P6",
-        "label": "Phantom Brand Persistence",
-        "verdict": "FALSIFIED",
-        "detail": (
-            "All 5 Cell D brands: R\u209a\u2095\u2090\u2099\u209c\u2092\u2098 = 0. "
-            "Replicates v0.22 automotive null. Recognition without "
-            "recommendation confirmed across three substrate families."
+            "Only 2 brands Amazon-absent (Nogent, Cl\u00e9 de Peau Beaut\u00e9). "
+            "Below the pre-registered minimum of 5 for inferential testing."
         ),
     },
 ]
 
-# ── HYPOTHESIS_DETAILS ──────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# HYPOTHESIS_DETAILS
+# ---------------------------------------------------------------------------
 
 HYPOTHESIS_DETAILS = (
-    "P1 (Uniform Recognition Saturation): All 24 brands achieve perfect "
-    "recognition across all six models. This is the third consecutive "
-    "substrate (after cosmetics v0.21 and automotive v0.22) to show "
-    "complete uniform saturation. The B2B SaaS substrate is particularly "
-    "unsurprising \u2014 every brand in the panel appears extensively in "
-    "technical documentation, product comparisons, and developer content "
-    "that forms a significant portion of LLM training corpora.\n\n"
+    "<b>P1 \u2014 Per-substrate predictive validity: FALSIFIED</b>\n"
+    "Kitchen knives: rho = +0.048, p = 0.819 (n = 25)\n"
+    "Audiophile headphones: rho = \u22120.116, p = 0.668 (n = 16)\n"
+    "Skincare: rho = +0.049, p = 0.823 (n = 23)\n"
+    "Cosmetics: ceiling effect (all C<sub>P</sub> = 6), rho undefined\n\n"
 
-    "P2 (Regime Classification): With all main-cell brands at C\u209a = 6/6, "
-    "the substrate classifies as Regime 1 (uniform saturation). C2 fails "
-    "because there is exactly one distinct C\u209a value (6) with 100% modal "
-    "share. This is the expected result for a substrate with dense "
-    "training-data representation and extends the program\u2019s cumulative "
-    "finding that Regime 4 has not been observed on any substrate with "
-    "strong digital presence.\n\n"
+    "<b>P2 \u2014 Pooled correlation: FALSIFIED</b>\n"
+    "88 listed brands, percentile-normalized BSR: "
+    "rho = \u22120.0002, p = 0.998\n\n"
 
-    "P3 (Marketing-Language Coverage): The headline finding of this phase. "
-    "55.6% of all Phase B outputs contain at least one pre-registered "
-    "marketing-language token. The token-level analysis reveals a "
-    "meaningful structural distinction. \u201CInbound marketing\u201D "
-    "(HubSpot-originated, 21 hits) has become category-level vocabulary "
-    "\u2014 models use the term without attributing it to HubSpot. In "
-    "contrast, \u201CTrailblazer\u201D (Salesforce, 9 hits) and \u201CEinstein\u201D "
-    "(Salesforce AI branding, 5 hits) retain explicit brand linkage. "
-    "Gemini models show the highest MLC (83.3%); Claude Sonnet the "
-    "lowest (25.0%). The cross-model variation suggests that "
-    "marketing-language permeability is not uniform across architectures "
-    "or training pipelines.\n\n"
+    "<b>P3 \u2014 Cell A separation: FALSIFIED</b>\n"
+    "C<sub>P</sub> \u2265 4 (n = 78): median BSR percentile = 51.09\n"
+    "C<sub>P</sub> < 4 (n = 10): median BSR percentile = 54.00\n"
+    "Mann-Whitney U: not significant\n\n"
 
-    "P4 (Identity Load Moderator): The cell-level recall pattern is the "
-    "cleanest in the program. Cell A brands (enterprise incumbents) show "
-    "a mean R\u2091\u2090\u209c of 27.0/36 but mean R\u2091\u1d64\u2097\u209c of only 11.6/36 "
-    "\u2014 they are functional-category brands. Cell B brands (challengers) "
-    "invert: R\u2091\u2090\u209c = 6.0, R\u2091\u1d64\u2097\u209c = 18.3 \u2014 they are "
-    "identity-cultural brands. The outlier is Slack (B5): R\u2091\u2090\u209c = 33, "
-    "R\u2091\u1d64\u2097\u209c = 30, demonstrating dual-channel dominance that no other "
-    "brand in the panel achieves. This may reflect Slack\u2019s unique "
-    "position as both enterprise infrastructure (post-Salesforce acquisition) "
-    "and cultural icon (pre-acquisition brand identity).\n\n"
-
-    "P5 (Recognition \u00d7 Recall Dissociation): Sixteen Iwachu cases are "
-    "detected, all in the HIGH_REC_LOW_RECALL direction. This is "
-    "methodologically expected: when every brand achieves C\u209a = 6/6, "
-    "any brand with below-maximum recall will show a recognition\u2013recall "
-    "gap. The analytically meaningful finding is not the count of "
-    "dissociation cases but the extreme range of recall under uniform "
-    "recognition \u2014 from Cloudflare (3/72) to Slack (63/72), a 21:1 "
-    "ratio. Dissociation is structural on this substrate, not "
-    "brand-specific.\n\n"
-
-    "P6 (Phantom Brand Persistence): The prediction that B2B SaaS "
-    "phantom brands would show higher persistence than automotive "
-    "phantoms (due to long-tail tech content) was falsified. All five "
-    "Cell D brands show zero recall despite perfect recognition. This "
-    "is the strongest evidence yet that Phantom Brand Persistence \u2014 "
-    "as a recommendation-space phenomenon \u2014 does not generalize: "
-    "models retain knowledge of defunct brands but do not surface them "
-    "in recommendation contexts. The Stride name-collision (models "
-    "recognized the gum brand, not the Atlassian product) adds a "
-    "methodological note: phantom-candidate selection should verify "
-    "brand-name uniqueness."
+    "<b>P4 \u2014 Absence\u2013Presence alignment: UNDETERMINED</b>\n"
+    "Only 2 absent brands across all substrates. Insufficient sample "
+    "for the pre-registered Mann-Whitney U test (minimum n = 5)."
 )
 
-# ── CLOSING ─────────────────────────────────────────────────────────────
+# ---------------------------------------------------------------------------
+# CLOSING
+# ---------------------------------------------------------------------------
 
 CLOSING = (
-    "B2B SaaS is the eighth substrate in the AIAS\u2122 Measurement "
-    "Program and the first to quantify Marketing-Language Coverage. "
-    "The finding that 55.6% of AI recall outputs contain vendor-coined "
-    "positioning terms reframes a familiar brand-strategy question: "
-    "when you invest in category-creation language, you may be building "
-    "vocabulary that AI systems will use to describe your competitors. "
-    "Or you may be building vocabulary that keeps your name attached. "
-    "The difference between \u201Cinbound marketing\u201D (category gift) and "
-    "\u201CTrailblazer\u201D (brand asset) is the difference between creating "
-    "a market and owning one."
+    "AI Presence does not predict Amazon retail performance. "
+    "That is not a flaw in the measure \u2014 it is evidence of what "
+    "the measure captures. Combined with the convergent validity "
+    "evidence from v0.25, this study establishes that AI Availability "
+    "is a specific, novel construct: the breadth of a brand\u2019s "
+    "recognition across AI knowledge systems, independent of "
+    "commercial outcomes in retail channels.\n\n"
+
+    "For brand leaders, the strategic implication is direct: "
+    "AI Availability and Physical Availability are separate levers. "
+    "Optimizing for one does not guarantee the other. The brands "
+    "that language models recommend are not necessarily the brands "
+    "that consumers buy on Amazon \u2014 and vice versa. Managing "
+    "both systems requires distinct strategies, distinct metrics, "
+    "and distinct investment."
 )

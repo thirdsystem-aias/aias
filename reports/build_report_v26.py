@@ -123,7 +123,7 @@ import tsboilerplate as boilerplate  # noqa: E402
 if "byline_short" not in content.COVER:
     content.COVER["byline_short"] = "Pablo Ulpiano González Castro"
 if "tagline" not in content.COVER:
-    content.COVER["tagline"] = "AIAS™ Measurement Program · Eighth Substrate"
+    content.COVER["tagline"] = "AIAS™ Measurement Program · Discriminant Validity"
 
 # EXEC_SUMMARY: string → list of paragraphs
 if isinstance(content.EXEC_SUMMARY, str):
@@ -133,7 +133,7 @@ if isinstance(content.EXEC_SUMMARY, str):
 _LEAD_DECK_STATS = content.LEAD_DECK if isinstance(content.LEAD_DECK, list) else []
 if isinstance(content.LEAD_DECK, list):
     content.LEAD_DECK = " · ".join(
-        f"<b>{d['number']}</b> {d['label']}" for d in content.LEAD_DECK
+        f"<b>{d['metric']}</b> {d['label']}" for d in content.LEAD_DECK
         if isinstance(d, dict))
 
 # WHAT_WE_MEASURED: string → dict {heading, paragraphs}
@@ -143,11 +143,11 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
-    1: "f1_scatter_presence_trends",
-    2: "f2_correlation_matrix",
-    3: "f3_cell_comparison",
-    4: "f4_identity_load",
-    5: "f5_residual",
+    1: "f1_cp_vs_bsr_scatter",
+    2: None,
+    3: None,
+    4: None,
+    5: None,
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -177,7 +177,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
         _rows.append((h["id"], h["label"], h["detail"], h["verdict"], _status_class))
     content.HYPOTHESIS_SCORING = {
         "heading": "Hypothesis scoring",
-        "intro": "Six pre-registered propositions tested against the v0.26 B2B SaaS panel.",
+        "intro": "Four pre-registered propositions tested across the v0.26 cross-substrate panel (kitchen knives, audiophile headphones, skincare, cosmetics).",
         "rows": _rows,
     }
 
@@ -991,7 +991,7 @@ class V15DocTemplate(BaseDocTemplate):
         c.setFont(self.font.regular, 7.5)
         c.setFillColor(HexColor(self.palette.soft_black))
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "Marketing-Language Coverage \u00b7 v0.26 \u00b7 June 2026")
+                           "Discriminant Validity \u00b7 v0.26 \u00b7 May 2026")
 
         footer_y = MARGIN - 18
         c.setFont(self.font.light, 7)
@@ -1096,15 +1096,13 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
-    "f1_scatter_presence_trends": (
-        "Figure 1 \u00b7 Presence predicts search interest. "
-        "AIAS Presence composite vs. Google Trends (normalised to "
-        "Salesforce pivot), 24 B2B SaaS brands. "
-        "Spearman \u03C1\u2009=\u20090.74, p\u2009<\u20090.001. "
-        "Cell colour: A\u2009=\u2009Enterprise Incumbents (indigo), "
-        "B\u2009=\u2009High-Identity Challengers (warm), "
-        "C\u2009=\u2009Infrastructure/Dev Platforms (teal), "
-        "D\u2009=\u2009Phantom/Defunct (gray)."
+    "f1_cp_vs_bsr_scatter": (
+        "Figure 1 \u00b7 AI Presence does not predict Amazon BSR. "
+        "C_P (0\u20136) vs. Amazon Best Sellers Rank by substrate. "
+        "Each panel shows listed brands with Spearman rho annotated. "
+        "Kitchen knives, audiophile headphones, and skincare show "
+        "indistinguishable-from-zero correlations; cosmetics shows "
+        "the ceiling effect (all C_P\u2009=\u20096)."
     ),
     "f2_correlation_matrix": (
         "Figure 2 \u00b7 Component-level correlations. "
@@ -1143,24 +1141,8 @@ HERO_FIGURE_CAPTIONS = {
 def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     """Map a v0.26 brand-format slot_key to (filename, figsize_key)."""
     table = {
-        "f1_scatter_presence_trends": (
-            "chart_25_scatter_presence_trends.pdf",
-            "hero",
-        ),
-        "f2_correlation_matrix": (
-            "chart_25_correlation_matrix.pdf",
-            "hero_short",
-        ),
-        "f3_cell_comparison": (
-            "chart_25_cell_comparison.pdf",
-            "hero_short",
-        ),
-        "f4_identity_load": (
-            "chart_25_identity_load.pdf",
-            "hero_short",
-        ),
-        "f5_residual": (
-            "chart_25_residual.pdf",
+        "f1_cp_vs_bsr_scatter": (
+            "chart_26_cp_vs_bsr_scatter.pdf",
             "hero",
         ),
     }
@@ -1370,9 +1352,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>Marketing-Language Coverage on a B2B SaaS Substrate: "
-        "AIAS v0.26</i>. "
-        "Third System. thirdsystem.ai/v26-b2b-saas (SSRN TBD)"
+        "<i>What AI Presence Does Not Predict: Amazon Best Sellers Rank as "
+        "Discriminant Validity Evidence for the AIAS Construct (v0.26)</i>. "
+        "Third System. thirdsystem.ai/v26 (SSRN TBD)"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1531,7 +1513,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="Marketing-Language Coverage \u2014 AIAS v0.26 B2B SaaS",
+        title="What AI Presence Does Not Predict \u2014 AIAS v0.26",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )
