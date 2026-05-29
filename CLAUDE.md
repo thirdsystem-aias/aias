@@ -229,6 +229,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.23 | Premium spirits | 6834298 |
 | v0.24 | B2B SaaS | 6838802 |
 | v0.25 | B2B SaaS Construct Validity | 6842138 |
+| v0.26 | Amazon BSR Discriminant Validity | 6847678 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |
