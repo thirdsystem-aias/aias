@@ -144,9 +144,9 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
     1: "f1_cp_vs_bsr_scatter",
-    2: None,
-    3: None,
-    4: None,
+    2: "f2_cosmetics_ceiling",
+    3: "f3_convergent_vs_discriminant",
+    4: "f4_skincare_dgp_contrast",
     5: None,
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -1104,6 +1104,32 @@ HERO_FIGURE_CAPTIONS = {
         "indistinguishable-from-zero correlations; cosmetics shows "
         "the ceiling effect (all C_P\u2009=\u20096)."
     ),
+    "f2_cosmetics_ceiling": (
+        "Figure 2 \u00b7 The cosmetics ceiling. 24 cosmetics brands at "
+        "C_P\u2009=\u20096 (full AI recognition), sorted by Amazon BSR. "
+        "Mass-market brands (Maybelline BSR 12, Revlon 35, L\u2019Or\u00e9al 116) "
+        "dominate Amazon; prestige brands (Tom Ford 6,963, Anastasia "
+        "Beverly Hills 29,364) rank orders of magnitude lower at identical "
+        "AI Presence. Identical predictor, three-orders-of-magnitude outcome spread."
+    ),
+    "f3_convergent_vs_discriminant": (
+        "Figure 3 \u00b7 Convergent + discriminant validity. Left panel: "
+        "v0.25 B2B SaaS \u2014 AIAS Presence composite (v1.5) vs. Google "
+        "Trends search interest, rho\u2009=\u2009+0.741 (convergent). Right panel: "
+        "v0.26 pooled across 4 substrates \u2014 C_P (0\u20136) vs. within-substrate "
+        "BSR percentile, rho\u2009\u2248\u20090 (discriminant). Together, the two "
+        "studies establish that AI Presence converges with related salience "
+        "measures and diverges from unrelated commercial outcomes."
+    ),
+    "f4_skincare_dgp_contrast": (
+        "Figure 4 \u00b7 Skincare: channel-fit drives BSR, not AI Presence. "
+        "23 skincare brands sorted by Amazon BSR, color-coded by panel cell. "
+        "Clinical brands (Cell C \u2014 Paula\u2019s Choice, La Roche-Posay, "
+        "CeraVe) dominate Amazon; prestige brands (Cell A \u2014 La Prairie, "
+        "La Mer, Sisley) rank 10,000\u00d7 lower. The two cells span the same "
+        "C_P range (predominantly 6), yet their BSR distributions barely "
+        "overlap. Within constant AI Presence, channel-fit is the driver."
+    ),
     "f2_correlation_matrix": (
         "Figure 2 \u00b7 Component-level correlations. "
         "Spearman \u03C1 across AIAS components and Google Trends. "
@@ -1143,6 +1169,18 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     table = {
         "f1_cp_vs_bsr_scatter": (
             "chart_26_cp_vs_bsr_scatter.pdf",
+            "hero",
+        ),
+        "f2_cosmetics_ceiling": (
+            "chart_26_cosmetics_ceiling.pdf",
+            "hero",
+        ),
+        "f3_convergent_vs_discriminant": (
+            "chart_26_convergent_vs_discriminant.pdf",
+            "hero",
+        ),
+        "f4_skincare_dgp_contrast": (
+            "chart_26_skincare_dgp_contrast.pdf",
             "hero",
         ),
     }
