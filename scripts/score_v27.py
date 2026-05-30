@@ -214,8 +214,30 @@ def main():
                      "n": (sb["n"] if sb else None), "delta_vs_primary": delta}
     res["_sensitivity_type2_construct_gap"] = sens
 
+    # --- stride confound sensitivity (r5; drop D5 by id; convergent only) ---
+    stride_mask = (aias["brand_id"] == "D5")
+    stride_keep = aias.loc[~stride_mask].copy()
+    sens_s = {"rule": "exclude brand_id == 'D5' (Stride)",
+              "excluded_brand_ids": aias.loc[stride_mask, "brand_id"].tolist(),
+              "n_excluded": int(stride_mask.sum())}
+    def sens_block_s(inst, col):
+        if inst is None or col not in inst.columns:
+            return None
+        m = stride_keep.merge(inst[["brand_id", col]], on="brand_id", how="inner")
+        return spearman_block(m["recall_channel_som"], m[col])
+    for hid, inst, col in [("H_CV3_Primary", I1, "I1_sov"),
+                           ("H_CV3_Profound", I2, "I2_visibility"),
+                           ("H_CV3_SOM", I2, "I2_som")]:
+        sb = sens_block_s(inst, col)
+        prim = res[hid]["block"]
+        delta = (round(sb["rho"] - prim["rho"], 3)
+                 if sb and prim and not sb["undetermined"] and not prim["undetermined"] else None)
+        sens_s[hid] = {"rho": (sb["rho"] if sb and not sb["undetermined"] else None),
+                       "n": (sb["n"] if sb else None), "delta_vs_primary": delta}
+    res["_sensitivity_stride_confound"] = sens_s
+
     meta = {"generated": datetime.datetime.now().isoformat(timespec="seconds"),
-            "prereg": "v0.27-prereg-r3 (instruments may force r4)",
+            "prereg": "v0.27-prereg-r5",
             "instruments_present": {"I1": I1 is not None, "I2": I2 is not None, "I3": I3 is not None},
             "min_n": MIN_N, "n_boot": N_BOOT, "aias_brands": int(len(aias))}
     out = {"_meta": meta, "verdicts": res}
@@ -238,7 +260,10 @@ def main():
             if r.get("p_adj") is not None:
                 extra += f" p_adj={r['p_adj']:.4f}"
         print(f"  {hid:26s} {r['status']:12s}{extra}")
-    print(f"  type-2 excluded: {sens['n_excluded']} brands {sens['excluded_brand_ids']}")
+    print(f"  type-2 excluded: {sens['n_excluded']} brands {sens['excluded_brand_ids']}"
+          f"  | primary rho={sens['H_CV3_Primary']['rho']} delta={sens['H_CV3_Primary']['delta_vs_primary']}")
+    print(f"  stride excluded: {sens_s['n_excluded']} brands {sens_s['excluded_brand_ids']}"
+          f"  | primary rho={sens_s['H_CV3_Primary']['rho']} delta={sens_s['H_CV3_Primary']['delta_vs_primary']}")
     print(f"  Recognition_Null C_P sd={res['H_CV3_Recognition_Null']['C_P_sd']:.4f}")
     print(f"wrote {OUT}")
 

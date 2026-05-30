@@ -1,0 +1,139 @@
+{
+  "_meta": {
+    "generated": "2026-05-30T19:25:03",
+    "prereg": "v0.27-prereg-r5",
+    "instruments_present": {
+      "I1": true,
+      "I2": false,
+      "I3": false
+    },
+    "min_n": 12,
+    "n_boot": 10000,
+    "aias_brands": 24
+  },
+  "verdicts": {
+    "H_CV3_Primary": {
+      "block": {
+        "n": 24,
+        "rho": 0.29367447206343134,
+        "p": 0.1636685113005409,
+        "ci": [
+          -0.1714102621188536,
+          0.6381766259297619
+        ],
+        "undetermined": false
+      },
+      "p_adj": 0.1636685113005409,
+      "status": "FALSIFIED",
+      "locked_threshold": {
+        "confirmed": "rho >= 0.60 and p < 0.05",
+        "strong": "rho >= 0.74"
+      },
+      "implemented": "STRONG>=0.74 | CONFIRMED>=0.60&p_adj<.05 | FALSIFIED<0.30 or n.s. | else PARTIAL"
+    },
+    "H_CV3_Profound": {
+      "block": null,
+      "p_adj": null,
+      "status": "NOT_RUN",
+      "locked_threshold": {
+        "confirmed": "rho >= 0.60",
+        "strong": "rho >= 0.74"
+      },
+      "implemented": "STRONG>=0.74 | CONFIRMED>=0.60 | FALSIFIED<0.30 | else PARTIAL ; NOT_RUN if no Profound"
+    },
+    "H_CV3_SOM": {
+      "block": null,
+      "p_adj": null,
+      "status": "NOT_RUN",
+      "locked_threshold": {
+        "confirmed": "rho >= 0.70",
+        "strong": "rho >= 0.80"
+      },
+      "implemented": "STRONG>=0.80 | CONFIRMED>=0.70 | FALSIFIED<0.40 | else PARTIAL ; NOT_RUN if no Profound"
+    },
+    "H_CV3_Discriminant": {
+      "status": "NOT_RUN",
+      "block": null
+    },
+    "H_CV3_Component": {
+      "status": "EXPLORATORY",
+      "matrix": {
+        "recall_channel_som": {
+          "I1_sov": 0.294,
+          "I1_sentiment": 0.133,
+          "I1_presence_quality": 0.798,
+          "I1_brand_recognition": 0.748,
+          "I1_market_competition": 0.297
+        },
+        "aias_composite": {
+          "I1_sov": 0.326,
+          "I1_sentiment": 0.383,
+          "I1_presence_quality": 0.842,
+          "I1_brand_recognition": 0.792,
+          "I1_market_competition": 0.354
+        },
+        "identity_load": {
+          "I1_sov": 0.25,
+          "I1_sentiment": 0.536,
+          "I1_presence_quality": -0.317,
+          "I1_brand_recognition": -0.252,
+          "I1_market_competition": 0.264
+        }
+      },
+      "note": "inspect convergent (visibility-type) vs discriminant (sentiment) block structure manually"
+    },
+    "H_CV3_Recognition_Null": {
+      "status": "CONFIRMED",
+      "C_P_sd": 0.0,
+      "C_P_mean": 6.0,
+      "note": "ceiling -> zero variance -> excluded from primary (replicates v0.25)"
+    },
+    "_sensitivity_type2_construct_gap": {
+      "rule": "exclude R_cat==0 & R_cult>0",
+      "excluded_brand_ids": [
+        "B3",
+        "B4",
+        "B6",
+        "C5"
+      ],
+      "n_excluded": 4,
+      "H_CV3_Primary": {
+        "rho": 0.359004253025603,
+        "n": 20,
+        "delta_vs_primary": 0.065
+      },
+      "H_CV3_Profound": {
+        "rho": null,
+        "n": null,
+        "delta_vs_primary": null
+      },
+      "H_CV3_SOM": {
+        "rho": null,
+        "n": null,
+        "delta_vs_primary": null
+      }
+    },
+    "_sensitivity_stride_confound": {
+      "rule": "exclude brand_id == 'D5' (Stride)",
+      "excluded_brand_ids": [
+        "D5"
+      ],
+      "n_excluded": 1,
+      "H_CV3_Primary": {
+        "rho": 0.22265316789419212,
+        "n": 23,
+        "delta_vs_primary": -0.071
+      },
+      "H_CV3_Profound": {
+        "rho": null,
+        "n": null,
+        "delta_vs_primary": null
+      },
+      "H_CV3_SOM": {
+        "rho": null,
+        "n": null,
+        "delta_vs_primary": null
+      }
+    }
+  }
+}
