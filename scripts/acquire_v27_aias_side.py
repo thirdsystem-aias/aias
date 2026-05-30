@@ -69,7 +69,6 @@ def main():
     out = pd.DataFrame({
         "brand_id": df["brand"].map(brand_to_id),
         "brand_name": df["brand"],
-        "cell": df["cell"],
         "C_P": df["C_P"],                            # recognition (Null control), 0-6
         "recall_channel_som": df["R_cat_scaled"],    # PRIMARY: R_cat_scaled = (R_cat/36)*100
         "aias_composite": df["presence_composite"],  # SECONDARY: v0.25 presence_composite
@@ -78,7 +77,7 @@ def main():
         "R_cult": df["R_cult"],
         "R_cult_scaled": df["R_cult_scaled"],
         "identity_load": df["identity_load"],
-    }).sort_values(["cell", "recall_channel_som"], ascending=[True, False]).reset_index(drop=True)
+    }).sort_values("brand_id").reset_index(drop=True)
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     out.to_csv(OUT_CSV, index=False)
@@ -92,7 +91,7 @@ def main():
     print("\n" + "=" * 78)
     print("v0.27 AIAS-side per-brand table  (osf/v27/data/v0.27_aias_side.csv)")
     print("=" * 78)
-    show = out[["brand_id", "brand_name", "cell", "C_P", "recall_channel_som",
+    show = out[["brand_id", "brand_name", "C_P", "recall_channel_som",
                 "aias_composite", "R_cat", "R_cult", "identity_load"]].copy()
     show["recall_channel_som"] = show["recall_channel_som"].round(2)
     show["aias_composite"] = show["aias_composite"].round(2)
