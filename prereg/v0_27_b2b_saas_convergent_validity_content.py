@@ -185,6 +185,14 @@ SCORING = {
         "scope": "convergent hypotheses only (H_CV3_Primary, H_CV3_Profound, H_CV3_SOM); NOT H_CV3_Discriminant",
         "cell_d_handling": "Cell_D true-zeros (R_cat==0 AND R_cult==0) are RETAINED in primary - genuine concordant absence, not a construct artifact",
     },
+    "sensitivity_stride_confound": {
+        "name": "stride_confound",
+        "rule": "exclude brand_id == 'D5' (Stride)",
+        "report": "primary rho on all covered brands PLUS this sensitivity rho; reported parallel to type2_construct_gap",
+        "scope": "convergent hypotheses only (H_CV3_Primary; H_CV3_Profound/H_CV3_SOM are NOT_RUN under r4)",
+        "rationale": "I1 (HubSpot AEO free tier) cannot category-scope; 'Stride' is name-ambiguous (Stride gum, Stride Inc., Stride Bank) and may aggregate non-target entities rather than the defunct Atlassian product. Pre-specified, pre-verdict. Distinct threat from type2_construct_gap (name ambiguity vs construct misalignment).",
+        "primary_handling": "D5 retained in primary (Cell_D true-zero, per r3 cell_d_handling)",
+    },
     "verdicts_out": "osf/v27/v0.27_verdicts.json",
 }
 
@@ -244,6 +252,17 @@ DEVIATIONS = [
                    "(c) added the construct-gap LIMITATION. No hypothesis or threshold changed."),
         "status": "fired",
     },
+    {
+        "entry": 5,
+        "trigger": "Stride confound sensitivity (pre-specified, pre-verdict).",
+        "action": ("I1 (HubSpot AEO Grader, free tier) cannot category-scope queries, so "
+                   "\"Stride\" is ambiguous and its score may aggregate non-target entities "
+                   "(Stride gum, Stride Inc., Stride Bank) rather than the defunct Atlassian "
+                   "product. Stride (D5) retained in primary (Cell_D true-zero, per r3 "
+                   "cell_d_handling); parallel labeled stride_confound drops D5 by id. Distinct "
+                   "from type2_construct_gap. Decided before scoring."),
+        "status": "fired",
+    },
 ]
 
 # r2: LIMITATIONS block created fresh — the r1 conform-to-v0.26-schema pass dropped
@@ -259,4 +278,5 @@ LIMITATIONS = [
     "brand-level drift over the gap is a threat to convergent rho, mitigated but not "
     "removed by rank-based (Spearman) correlation.",
     "R_cat (generic-leadership recall) and brand-entry instruments (notably HubSpot AEO Grader) operationalize 'AI presence' differently - category-competitive vs brand-absolute. For the type-2 set (R_cat=0, R_cult>0: e.g. Linear, Airtable, Miro, Cloudflare), AIAS reads 0 while a brand-absolute instrument may read non-trivial visibility, attenuating convergent rho. Mitigated by category-frame instrument scoping (tight for Profound) and a pre-registered type-2 sensitivity rho; residual gap is largest where an instrument yields only brand-absolute scores.",
+    "I1 is brand-absolute, un-scopeable on the free tier. One brand, Stride (D5), carries a name-collision confound; its score may reflect non-target \"Stride\" entities. Retained in primary; a pre-specified stride_confound sensitivity excludes it, and the convergent estimate is [robust/sensitive] to the exclusion (Table X).",
 ]
