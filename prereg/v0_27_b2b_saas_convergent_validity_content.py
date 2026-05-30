@@ -202,10 +202,12 @@ DEVIATIONS = [
     {
         "entry": 0,
         "trigger": "Profound (I2) access not secured before acquisition.",
-        "action": ("Amend at v0.27-prereg-r2. I2 and H_CV3_SOM -> NOT_RUN. Study proceeds "
-                   "on I1 (HubSpot AEO, pre-committed floor) + I3 (Brandwatch). No threshold "
-                   "or hypothesis changes to I1/I3."),
-        "status": "armed",   # flips to 'fired' in r2 if triggered
+        "action": ("FIRED at v0.27-prereg-r4. Profound is enterprise-only; access declined as "
+                   "disproportionate to this study. I2 not acquired -> H_CV3_Profound and "
+                   "H_CV3_SOM -> NOT_RUN. Study proceeds on I1 (HubSpot AEO, pre-committed "
+                   "floor); I3 (Brandwatch) if obtained. No threshold or hypothesis changes to "
+                   "I1/I3. H_CV3_Component (exploratory, AIAS x I1 components) still runs."),
+        "status": "fired",
     },
     {
         "entry": 1,
