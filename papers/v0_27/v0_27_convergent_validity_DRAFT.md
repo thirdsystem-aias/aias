@@ -1,6 +1,6 @@
 ---
-title: "When AI Visibility Diverges from AI Availability"
-subtitle: "A Pre-Registered Null in Convergent Validity — Brand-Absolute AI Share-of-Voice versus Category-Competitive Recall (B2B SaaS, n = 24)"
+title: "A Pre-Registered Null on AI Share-of-Voice"
+subtitle: "AIAS Presence does not converge with the headline metric — an exploratory scan finds strong convergence on recognition and presence-quality (B2B SaaS, n = 24)"
 author: "Pablo Ulpiano González Castro"
 date: "May 2026"
 documentclass: article
@@ -16,6 +16,7 @@ header-includes:
   - \usepackage{booktabs}
   - \usepackage{titlesec}
   - \titleformat{\section}{\normalfont\large\bfseries}{\thesection}{0.6em}{}
+  - \renewcommand{\maketitle}{}
 ---
 
 <!--
@@ -38,10 +39,10 @@ DATA SLOTS still to fill from CC's outputs (marked [[SLOT: ...]] inline):
 \setlength{\parskip}{0pt}
 \centering
 \vspace*{2cm}
-{\LARGE\bfseries When AI Visibility Diverges from AI Availability\par}
+{\LARGE\bfseries A Pre-Registered Null on AI Share-of-Voice\par}
 \vspace{0.8em}
-{\large\itshape A Pre-Registered Null in Convergent Validity\par}
-{\large\itshape Brand-Absolute AI Share-of-Voice versus Category-Competitive Recall\par}
+{\large\itshape AIAS Presence does not converge with the headline metric\par}
+{\large\itshape An exploratory scan finds strong convergence on recognition and presence-quality (B2B SaaS, n = 24)\par}
 \vspace{1.2em}
 {\normalsize Working Paper $\cdot$ Version 0.27 $\cdot$ Designed-for-Test (B2B SaaS)\par}
 \vspace{2.5em}
@@ -57,7 +58,7 @@ DATA SLOTS still to fill from CC's outputs (marked [[SLOT: ...]] inline):
 
 # Abstract {-}
 
-This study tests the convergent validity of AIAS\textsuperscript{TM} Presence — an AI-availability measure operationalized as category-competitive recall share (recall-SOM) — against a third-party AI brand-visibility instrument. It extends a construct-validity program in which the same measure converged with Google Trends category-prominence (ρ = 0.74) and stood orthogonal to Amazon sales rank. Across 24 B2B SaaS brands, pre-registered before acquisition, AIAS recall-SOM was correlated (Spearman; 10,000-sample bootstrap; Holm) with Share-of-Voice from the HubSpot AEO Grader — the brand-absolute instrument pre-committed as the convergent floor. The primary hypothesis was falsified: ρ = 0.29 (n = 24, n.s.). The non-convergence was patterned rather than random. The largest violations came from "type-2" brands — visible under a brand-absolute prompt but absent from category-leadership recall — and a pre-specified sensitivity excluding them left the correlation below threshold (ρ = 0.36). A recognition-null control held: brand recognition sat at ceiling across all 24 brands and was orthogonal to the presence measure. The construct-matched instrument (share-of-model) was deferred on access and remains an open, pre-registered test. The result bounds the convergent domain of AIAS Presence and supports a reading in which it captures category-competitive AI presence — distinct from brand-absolute AI visibility, a distinction with direct consequences for how brands read the commercial "AI visibility" scores now entering the market.
+This study tests the convergent validity of AIAS\textsuperscript{TM} Presence — an AI-availability measure operationalized as category-competitive recall share (recall-SOM) — against a third-party AI brand-visibility instrument, extending a construct-validity program in which the same measure converged with Google Trends category-prominence (ρ = 0.74) and stood orthogonal to Amazon sales rank. Across 24 B2B SaaS brands, pre-registered before acquisition, AIAS recall-SOM was correlated (Spearman; 10,000-sample bootstrap; Holm) with Share-of-Voice from the HubSpot AEO Grader — the brand-absolute instrument pre-committed as the convergent floor. The primary hypothesis was falsified: ρ = 0.29 (n = 24, n.s.; 95% CI [−0.17, 0.64]). A pre-specified sensitivity excluding the four "type-2" brands — visible to a brand-absolute prompt, absent from category-leadership recall — left the correlation below threshold (ρ = 0.36). A recognition-null control held: brand recognition sat at ceiling across all 24 brands and was orthogonal to the presence measure. An exploratory scan of the instrument's remaining dimensions found strong convergence with its presence-quality (ρ = 0.80) and brand-recognition (ρ = 0.75) subscores but not its headline Share-of-Voice — suggesting the pre-registered metric is range-restricted and a weak convergent proxy, while AIAS recall tracks brand-knowledge facets of AI representation, of a piece with its prior convergence with search-interest prominence. These are flagged exploratory and pre-specified for confirmatory test. The construct-matched instrument (share-of-model) was deferred on access and remains an open, pre-registered test. The result cautions against reading the commercial "Share of Voice" scores now entering the market as AI availability.
 
 # Keywords {-}
 
@@ -81,7 +82,7 @@ A measure earns its place by validating against external criteria. Two prior pha
 
 This phase asks a question that is now commercially live. A class of "AI visibility" or "answer engine optimization" (AEO) tools has appeared, selling brands a score for how present they are inside ChatGPT, Perplexity, and Gemini. If AIAS Presence and these commercial instruments measure the same thing, the program gains a cheap external criterion and practitioners gain a bridge between the two. We pre-registered a convergent test of AIAS recall-SOM against the most accessible such instrument — the HubSpot AEO Grader — and pre-committed it as the convergent *floor*: a brand-absolute, un-category-scopeable, free-tier instrument whose construct match to recall-SOM we rated, in advance, as loose.
 
-The test failed. AIAS recall-SOM did not converge with the Grader's Share-of-Voice (ρ = 0.29, n.s.). We report that null as the result. The remainder of the paper does two things: it documents the failure under pre-registration discipline, and it examines the *structure* of the failure — which is not random, and which points toward a construct distinction with practical stakes.
+The test failed. AIAS recall-SOM did not converge with the Grader's Share-of-Voice (ρ = 0.29, n.s.). We report that null as the result. The remainder of the paper does two things: it documents the failure under pre-registration discipline, and it examines the structure of the failure — which is not random: the pre-registered metric is the weakest of the instrument's dimensions while others converge strongly, an exploratory result with practical stakes for how these scores are read.
 
 # 2. Method
 
@@ -99,7 +100,7 @@ Brand recognition (C_P) sits at ceiling: every brand scored 6/6 across the panel
 
 I1 is the HubSpot AEO Grader (free tier), which returns, for a queried brand, a perception profile across three engines (labeled as powering ChatGPT, Perplexity, and Gemini) on five dimensions: Brand Sentiment (/40), Presence Quality (/20), Brand Recognition (/20), Market Competition (/10), and Share of Voice (/10). The convergent variable is **I1_sov**, the mean of the three engines' Share-of-Voice subscore (0–10).
 
-Every brand was queried under a uniform frame — geography "United States," products/services "B2B SaaS," industry "Technology" — to hold the query context constant across the registry. This frame is logged as the r3 operational instantiation and matches the generic-leadership framing of R_cat. Collection ran within a single window [[SLOT 4: I1 collection date window]].
+Every brand was queried under a uniform frame — geography "United States," products/services "B2B SaaS," industry "Technology" — to hold the query context constant across the registry. This frame is logged as the r3 operational instantiation and matches the generic-leadership framing of R_cat. Collection ran in a single session on 2026-05-29.
 
 A pre-registered construct-match rating flagged I1 as **loose**: the Grader is *brand-absolute* — it scores how an engine characterizes a named brand in isolation — and cannot be category-scoped on the free tier. recall-SOM is *category-competitive*. The instrument was pre-committed as the convergent floor precisely because of this gap; a tight-match instrument (share-of-model) was specified separately as I2.
 
@@ -122,11 +123,38 @@ Cell-D true-zeros (R_cat = 0 and R_cult = 0: Quip, Yammer, Wunderlist, HipChat, 
 
 ## 3.1 Primary convergent test — FALSIFIED
 
-AIAS recall-SOM did not converge with I1_sov: **ρ = 0.294, n = 24, p_adj = 0.164** (Holm), 95% CI [[SLOT 1: bootstrap CI]]. The correlation is below the confirm threshold (0.60) and not significant. **H_CV3_Primary is falsified.**
+AIAS recall-SOM did not converge with I1_sov: **ρ = 0.294, n = 24, p_adj = 0.164** (Holm), 95% CI [−0.171, 0.638]. The correlation is below the confirm threshold (0.60) and not significant. **H_CV3_Primary is falsified.**
 
 The I1_sov distribution is informative on its own. Live brands cluster tightly between 5.67 and 8.33, with most between 7.0 and 8.0; the defunct Cell-D brands fall well below this band (Wunderlist and HipChat at 0.33, Yammer at 2.0). Much of the rank agreement that does exist is carried by this live/defunct separation — both measures rank dead brands low. Above that floor, the Grader's compressed live-brand range leaves little variance to track recall-SOM against. Per-brand pairs and rank disagreements are reported in Table 2.
 
-[[SLOT 2: Table 2 — per-brand (R_cat_scaled, I1_sov) pairs and rank-disagreement column, from CC dump]]
+**Table 2. Per-brand AIAS recall-SOM and I1 Share-of-Voice, with rank disagreement (sorted by recall-SOM).**
+
+| Brand | recall-SOM | I1 SoV | AIAS rank | I1 rank | Δrank |
+|---|---|---|---|---|---|
+| Salesforce | 100.0 | 7.67 | 1 | 4 | −3 |
+| Workday | 94.4 | 7.33 | 2 | 7 | −5 |
+| Slack | 91.7 | 5.67 | 3 | 18 | −15 |
+| HubSpot | 91.7 | 7.00 | 3 | 14 | −11 |
+| Oracle | 72.2 | 6.00 | 5 | 17 | −12 |
+| SAP | 69.4 | 7.00 | 6 | 14 | −8 |
+| Zendesk | 50.0 | 7.33 | 7 | 7 | +0 |
+| ServiceNow | 47.2 | 7.67 | 8 | 4 | +4 |
+| Snowflake | 27.8 | 7.33 | 9 | 7 | +2 |
+| Datadog | 19.4 | 7.00 | 10 | 14 | −4 |
+| Stripe | 11.1 | 8.00 | 11 | 2 | +9 |
+| Notion | 5.6 | 7.33 | 12 | 7 | +5 |
+| Twilio | 5.6 | 7.33 | 12 | 7 | +5 |
+| MongoDB | 2.8 | 8.00 | 14 | 2 | +12 |
+| Figma | 2.8 | 8.33 | 14 | 1 | +13 |
+| Wunderlist | 0.0 | 0.33 | 16 | 23 | −7 |
+| Quip | 0.0 | 4.67 | 16 | 19 | −3 |
+| Yammer | 0.0 | 2.00 | 16 | 22 | −6 |
+| HipChat | 0.0 | 0.33 | 16 | 23 | −7 |
+| Miro | 0.0 | 7.33 | 16 | 7 | +9 |
+| Cloudflare | 0.0 | 7.67 | 16 | 4 | +12 |
+| Airtable | 0.0 | 7.33 | 16 | 7 | +9 |
+| Linear | 0.0 | 4.67 | 16 | 19 | −3 |
+| Stride | 0.0 | 3.00 | 16 | 21 | −5 |
 
 ## 3.2 Type-2 sensitivity
 
@@ -142,9 +170,20 @@ Brand recognition (C_P) was at ceiling for all 24 brands (standard deviation = 0
 
 ## 3.5 Exploratory component analysis
 
-AIAS Presence was cross-correlated with the five I1 subscores (Sentiment, Presence Quality, Brand Recognition, Market Competition, Share of Voice) as an exploratory probe of where, if anywhere, the two instruments touch.
+AIAS Presence was cross-correlated (Spearman) with all six I1 dimensions as an exploratory probe of where the two instruments touch. The pattern is uneven (Table 3): the pre-registered Share-of-Voice metric is among the weakest matches, while presence quality and brand recognition converge strongly.
 
-[[SLOT 3: Table 3 — H_CV3_Component exploratory cross-correlations]]
+**Table 3. AIAS recall-SOM × I1 dimensions (exploratory; n = 24).**
+
+| I1 dimension | ρ | p |
+|---|---|---|
+| Presence Quality | +0.798 | < 0.001 |
+| Brand Recognition | +0.748 | < 0.001 |
+| Composite (/100) | +0.443 | 0.030 |
+| Market Competition | +0.297 | 0.159 |
+| Share of Voice (pre-registered) | +0.294 | 0.164 (n.s.) |
+| Sentiment | +0.133 | 0.536 |
+
+These correlations are exploratory under H_CV3_Component. They do not bear on H_CV3_Primary, which is fixed to Share-of-Voice and falsified; re-nominating a better-correlating dimension post-hoc is not available. The implications are taken up in §4 and pre-specified for confirmatory test in §6.
 
 ## 3.6 Pre-registered outcomes
 
@@ -163,19 +202,21 @@ AIAS Presence was cross-correlated with the five I1 subscores (Sentiment, Presen
 
 # 4. Discussion
 
-The pre-registered convergent test failed. AIAS recall-SOM and the HubSpot AEO Grader's Share-of-Voice do not co-rank (ρ = 0.29, n.s.), and the estimate is neither lifted to threshold by removing the predicted construct-gap cases nor robust to a plausible name confound. Taken at face value, this bounds the convergent domain of AIAS Presence: it does not converge with this instrument.
+The pre-registered convergent test failed. AIAS recall-SOM did not co-rank with the HubSpot AEO Grader's Share-of-Voice — the metric named in advance as the convergent variable — at ρ = 0.29 (n.s.), with a 95% CI that straddles zero. That is the result, and the strong correlations below do not change it.
 
-The structure of the failure is the interesting part. We flag the following as **post-hoc**. The pre-registered prediction was convergence; it failed. The interpretation below is motivated by the patterning of that failure, not by a pre-registered discriminant hypothesis, and we advance it as a hypothesis for confirmatory test — not a conclusion, and emphatically not a relabeling of the null as a discriminant success.
+They are worth stating plainly because they are striking. The exploratory scan (§3.5) found AIAS recall-SOM converging with two other dimensions of the same instrument — presence quality (ρ = 0.80) and brand recognition (ρ = 0.75), both above the program's 0.74 "strong" benchmark — while the headline Share-of-Voice it was tested against carried almost no rank information. The discipline here runs one way and we hold it: Share-of-Voice was the pre-registered metric, it failed, and re-nominating presence quality or brand recognition as "the" convergent variable after seeing which one worked is the forking-paths move pre-registration exists to prevent. These correlations are hypothesis-generating, not confirmatory.
 
-With that flag in place: the brands that break convergence hardest are exactly the type-2 cases — high brand-absolute Share-of-Voice, zero category-leadership recall. A brand-absolute instrument sees Linear, Airtable, Miro, and Cloudflare clearly; a category-competitive measure does not surface them when asked for category leaders. That is not measurement error in either instrument. It is the two instruments measuring different things. recall-SOM asks *does the brand win the category question?* The Grader asks *can the engine talk about the brand?* A brand can score well on the second while scoring zero on the first.
+The same discipline forces a second move, against an interpretation an earlier framing of this work reached for. It is tempting to read the Share-of-Voice null as evidence that AIAS Presence measures category-competitive presence and therefore diverges from brand-absolute AI visibility. The data refute that. Presence quality and brand recognition are brand-absolute subscores — computed on a single named brand in isolation, exactly like Share-of-Voice — and recall-SOM converges with them. AIAS Presence does not broadly diverge from brand-absolute measurement; it converges with most of this instrument's facets and fails on one. The category-versus-brand-absolute axis does not explain the pattern, so we drop it.
 
-This reading sits coherently beside the program's other two criterion tests. The *same* AIAS variable converged with Google Trends category-prominence (ρ = 0.74) and diverged from Amazon sales rank. The apparent tension — converges with Trends, not with the Grader, though both are brand-level external signals — resolves if the operative distinction is category-prominence versus brand-isolation. Google Trends tracks real-world search prominence, which moves with a brand's actual standing in its category; that is close to what recall-SOM captures. The Grader's brand-absolute Share-of-Voice tracks how much an engine will say about a brand in isolation, which is closer to training-document volume than to competitive standing. On that account, AIAS Presence aligns with category-prominence signals and diverges from brand-isolation signals and from sales rank — convergent where it should converge, discriminant where it should discriminate. The present null does not establish that arc, but it is consistent with it, and it sharpens the claim by showing where AIAS Presence stops tracking.
+What explains it is the metric, not the construct. The most likely mechanism is range restriction in Share-of-Voice: among live brands the subscore compresses into 4.67–8.33, most of them tied near 7.33, so nearly all its rank information is the live-versus-defunct split, leaving little to track category standing among salient brands. Presence quality and brand recognition spread across the live brands and move with recall. One detail sharpens this — the Grader's brand-recognition subscore carries real variance and tracks recall-SOM, even though AIAS's own recognition measure (C_P) is at ceiling on this substrate (§3.4); the two instruments operationalize "recognition" differently, and the Grader's graded version behaves like a prominence measure, which is what recall-SOM is.
 
-The practitioner consequence is direct. Commercial AEO and "AI visibility" scores of the brand-absolute kind measure something real — but not category-competitive AI presence. A brand can post a strong Grader score while being absent from the category-leadership answers its buyers actually receive. Read as "AI availability," these scores can mislead. The two should be read as complementary signals, not substitutes.
+Read against the program's prior confirmatory results, the exploratory pattern is coherent. The same AIAS variable converged with Google Trends category-prominence (ρ = 0.74) and stood orthogonal to Amazon sales rank. The dimensions it converges with here — presence quality, brand recognition — are prominence and knowledge facets, of a piece with the Trends result; the range-restricted competitive-share score it fails on, and the sales-rank criterion it correctly diverges from, are the exceptions the construct predicts. We advance this as a reading, not a finding: it rests on an exploratory scan and is offered to motivate a confirmatory pre-registration, not to claim convergent validity the pre-registered test did not deliver.
+
+The practitioner consequence is sharper than a clean convergence would have given. The "Share of Voice" headline these tools sell as AI visibility is, on this evidence, the weakest available proxy for category-competitive AI presence — compressed, tied across salient brands, and the one dimension that did not track recall. The recognition and presence-quality signals beneath it aligned far better. A brand managing to its Share-of-Voice number may be managing the least informative dial on the dashboard. The scores carry real signal; read as "AI availability," the headline is the wrong place to read it.
 
 # 5. Limitations
 
-The convergent claim rests on a single instrument that was pre-registered as a *loose* construct match. The strongest available test — convergence against a category-scoped, construct-matched instrument (share-of-model) — was never run. A loose-instrument null cannot distinguish "AIAS Presence converges with nothing" from "AIAS Presence does not converge with *brand-absolute* instruments." The tight-instrument test is the one that would separate these, and it is deferred, not answered (§6).
+The convergent claim rests on a single instrument that was pre-registered as a *loose* construct match. The strongest available test — convergence against a category-scoped, construct-matched instrument (share-of-model) — was never run. A single-instrument null on one dimension cannot, on its own, separate a genuine convergence failure from a metric artifact — which is what the exploratory scan suggests is in play, and what a category-scoped instrument would resolve. The tight-instrument test is the one that would separate these, and it is deferred, not answered (§6).
 
 The Grader is brand-absolute and un-scopeable on the free tier. One brand, Stride (D5), carries a name-collision confound; its score may reflect non-target "Stride" entities. Stride is retained in the primary, and the pre-specified `stride_confound` sensitivity excludes it; the convergent estimate is *sensitive* to that exclusion (§3.3) — a real weakness, reported rather than smoothed.
 
@@ -185,7 +226,7 @@ Other bounds: n = 24 is modest, though pre-registered and adequate for the plann
 
 The pre-registered, deferred test stands as the immediate next step: convergence of AIAS recall-SOM against a category-scoped share-of-model instrument (Profound, or a self-serve instrument with equivalent category scoping). That test is decisive in a way this one is not. If recall-SOM converges with a construct-matched instrument, the present null is itself evidence of construct specificity — AIAS Presence converges with category-competitive measures and diverges from brand-absolute ones — and the I1 failure becomes part of the validity story rather than a threat to it. If it fails to converge even with a tight instrument, AIAS Presence has a convergent-validity problem that this study could not, on its own, surface. Either outcome is informative; neither is reachable without the tight instrument.
 
-Beyond that: replication of the category-competitive / brand-absolute distinction across the program's other substrate families; completion of the discriminant arm (I3) for a full Campbell-Fiske matrix paired with v0.26; and, gated on construct-validity consolidation, extension from the Presence component to the full multi-component AIAS composite.
+Beyond that: a confirmatory pre-registration of the recognition and presence-quality convergence surfaced here — those dimensions fixed in advance, on a fresh substrate, to test whether they replicate; completion of the discriminant arm (I3) for a full Campbell-Fiske matrix paired with v0.26; and, gated on construct-validity consolidation, extension from the Presence component to the full multi-component AIAS composite.
 
 # References {-}
 
