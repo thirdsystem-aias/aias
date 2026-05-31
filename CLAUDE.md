@@ -230,12 +230,15 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.24 | B2B SaaS | 6838802 |
 | v0.25 | B2B SaaS Construct Validity | 6842138 |
 | v0.26 | Amazon BSR Discriminant Validity | 6847678 |
+| v0.27 | B2B SaaS Convergent Validity | 6854758 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |
 | AIAS™ 1.0 | Five-Substrate Foundational Construct Claim | 6817841 |
 
 URL pattern: `https://ssrn.com/abstract={ID}`. New phase papers cite **all prior phases** plus the methodology chain.
+
+v0.27 B2B SaaS Convergent Validity — SSRN 6854758. H_CV3_Primary FALSIFIED (rho=0.29); recognition null CONFIRMED; exploratory PQ 0.80 / BR 0.75 (convergence is rank-alignment, not range restriction — corrected pre-deposit).
 
 ---
 

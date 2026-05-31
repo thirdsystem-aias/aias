@@ -19,20 +19,6 @@ header-includes:
   - \renewcommand{\maketitle}{}
 ---
 
-<!--
-BUILD NOTE (delete before submission): YAML preamble + titlepage block below are
-reconstructed from the v0.20+ canonical conventions, not copied from v0.26's literal
-source. DIFF this preamble and the titlepage block against papers/v0.26/*.md before
-running build_paper_v27.py — keep v0.26's exact pandoc keys / header-includes if they
-differ. Content body (Abstract onward) is the deliverable.
-
-DATA SLOTS still to fill from CC's outputs (marked [[SLOT: ...]] inline):
-  1. Bootstrap 95% CI on primary rho (CI population bug fix first).
-  2. Table 2 — per-brand (R_cat_scaled, I1_sov) pairs + rank disagreements.
-  3. Table 3 — H_CV3_Component exploratory cross-correlations (AIAS x I1 subscores).
-  4. I1 collection date window (Method).
-  5. Pre-reg commit IDs are filled where known; verify against git log.
--->
 
 \begin{titlepage}
 \setstretch{1.0}
@@ -42,7 +28,8 @@ DATA SLOTS still to fill from CC's outputs (marked [[SLOT: ...]] inline):
 {\LARGE\bfseries A Pre-Registered Null on AI Share-of-Voice\par}
 \vspace{0.8em}
 {\large\itshape AIAS Presence does not converge with the headline metric\par}
-{\large\itshape An exploratory scan finds strong convergence on recognition and presence-quality (B2B SaaS, n = 24)\par}
+{\large\itshape An exploratory scan finds strong convergence on recognition and presence-quality\par}
+{\large\itshape (B2B SaaS, n = 24)\par}
 \vspace{1.2em}
 {\normalsize Working Paper $\cdot$ Version 0.27 $\cdot$ Designed-for-Test (B2B SaaS)\par}
 \vspace{2.5em}
