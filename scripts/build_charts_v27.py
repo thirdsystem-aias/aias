@@ -16,8 +16,8 @@ CC — VERIFY BEFORE FIRST RUN:
     self-contained and won't need changes.
   * CELL map below is a literal; reconcile against the registry SSOT (it should
     match, but the registry is the source of truth, not this file).
-  * FIGDIR is papers/v0_27/figs — adjust if the paper build expects figures
-    elsewhere; the .md includes use a path relative to the paper source.
+  * FIGDIRS = papers/v0_27/figs (SSRN paper) + reports/figs/v27 (brand-format
+    report). The .md figure includes use a path relative to the paper source.
 """
 from pathlib import Path
 import numpy as np
@@ -31,8 +31,20 @@ import chart_style as cs   # ~/aias/scripts/chart_style.py
 # --- paths --------------------------------------------------------------------
 ROOT   = Path("/Users/pablou/aias")
 DATA   = ROOT / "osf" / "v27" / "data"
-FIGDIR = ROOT / "papers" / "v0_27" / "figs"
-FIGDIR.mkdir(parents=True, exist_ok=True)
+# Two outputs: papers/ for the SSRN paper, reports/figs/v27/ for the Third System
+# brand-format report (CLAUDE.md per-phase chart convention).
+FIGDIRS = [
+    ROOT / "papers" / "v0_27" / "figs",
+    ROOT / "reports" / "figs" / "v27",
+]
+for _d in FIGDIRS:
+    _d.mkdir(parents=True, exist_ok=True)
+
+
+def savefig_all(fig, name):
+    """Write the figure to every output dir at the locked savefig params."""
+    for _d in FIGDIRS:
+        fig.savefig(_d / name, **cs.SAVEFIG_PARAMS)
 
 # --- brand tokens (cs.PALETTE; restated for readability) ----------------------
 INDIGO = "#37237B"   # incumbent / live competitive
@@ -114,7 +126,7 @@ cs.add_footer(
     verdict="Presence-quality and brand-recognition exceed the 0.74 strong benchmark; SoV does not.",
     phase="v0.27",
 )
-fig.savefig(FIGDIR / "v0_27_component_rho.pdf", **cs.SAVEFIG_PARAMS)
+savefig_all(fig, "v0_27_component_rho.pdf")
 plt.close(fig)
 
 # ============================================================================
@@ -165,10 +177,11 @@ cs.add_footer(
     verdict="H_CV3_Primary FALSIFIED \u2014 recall-SOM does not converge with brand-absolute SoV.",
     phase="v0.27",
 )
-fig.savefig(FIGDIR / "v0_27_scatter_recall_sov.pdf", **cs.SAVEFIG_PARAMS)
+savefig_all(fig, "v0_27_scatter_recall_sov.pdf")
 plt.close(fig)
 
-print("wrote:")
-print("  ", FIGDIR / "v0_27_scatter_recall_sov.pdf")
-print("  ", FIGDIR / "v0_27_component_rho.pdf")
+print("wrote to", len(FIGDIRS), "dirs:")
+for _d in FIGDIRS:
+    print("  ", _d / "v0_27_scatter_recall_sov.pdf")
+    print("  ", _d / "v0_27_component_rho.pdf")
 print("component rhos:", [(lab, round(v, 3)) for lab, v in rows])
