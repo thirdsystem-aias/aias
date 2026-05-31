@@ -156,6 +156,8 @@ The I1_sov distribution is informative on its own. Live brands cluster tightly b
 | Linear | 0.0 | 4.67 | 16 | 19 | −3 |
 | Stride | 0.0 | 3.00 | 16 | 21 | −5 |
 
+![AIAS recall-SOM against HubSpot Share-of-Voice (n = 24). The relationship is weak and not significant; much of the rank agreement is the live-versus-defunct split. Type-2 brands (R_cat = 0, specialist-salient) sit at zero recall yet mid-to-high Share-of-Voice; defunct phantoms sit at zero recall and low Share-of-Voice; Stride carries a name confound.](figs/v0_27_scatter_recall_sov.pdf){width=82%}
+
 ## 3.2 Type-2 sensitivity
 
 Excluding the four type-2 brands raised the correlation only to **ρ = 0.359 (n = 20, Δ = +0.065)** — still well below threshold. The direction matches the pre-registered prediction: the brand-absolute-visible / category-invisible cases do attenuate convergence, and removing them helps. But the lift is small, which means the non-convergence is broader than the type-2 cases alone. Even among ordinary brands, category-competitive recall and brand-absolute Share-of-Voice do not co-rank well.
@@ -184,6 +186,8 @@ AIAS Presence was cross-correlated (Spearman) with all six I1 dimensions as an e
 | Sentiment | +0.133 | 0.536 |
 
 These correlations are exploratory under H_CV3_Component. They do not bear on H_CV3_Primary, which is fixed to Share-of-Voice and falsified; re-nominating a better-correlating dimension post-hoc is not available. The implications are taken up in §4 and pre-specified for confirmatory test in §6.
+
+![Spearman correlation of AIAS recall-SOM with each HubSpot Grader dimension (exploratory, n = 24). The pre-registered convergent metric, Share-of-Voice, is among the weakest matches and below threshold; presence quality and brand recognition exceed the 0.74 "strong" benchmark. These are exploratory (H_CV3_Component) and do not bear on the falsified primary.](figs/v0_27_component_rho.pdf){width=82%}
 
 ## 3.6 Pre-registered outcomes
 
