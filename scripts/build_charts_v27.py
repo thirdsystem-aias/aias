@@ -111,15 +111,15 @@ ax.set_xlim(0, 0.9)
 ax.set_ylim(-0.6, len(rows) - 0.4)
 ax.set_xlabel("Spearman \u03c1 with AIAS recall-SOM")
 ax.legend(handles=[
-        Patch(facecolor=COPPER, label="Pre-registered metric (H_CV3_Primary \u2014 falsified)"),
-        Patch(facecolor=PETRO,  label="Exploratory (H_CV3_Component)"),
+        Patch(facecolor=COPPER, label="Pre-registered convergent metric (falsified)"),
+        Patch(facecolor=PETRO,  label="Exploratory dimensions"),
     ], loc="lower right", frameon=False, fontsize=ANNOT)
 
 cs.add_header(
     fig,
     "Where AIAS recall-SOM meets the HubSpot Grader's dimensions",
     r"Spearman $\rho$ of recall-SOM with each Grader dimension (n = 24)",
-    "Exploratory (H_CV3_Component); the pre-registered metric is Share of Voice.",
+    "Exploratory; the pre-registered metric is Share of Voice.",
 )
 cs.add_footer(
     fig,
@@ -183,7 +183,7 @@ cs.add_header(
 )
 cs.add_footer(
     fig,
-    verdict="H_CV3_Primary FALSIFIED \u2014 recall-SOM does not converge with brand-absolute SoV.",
+    verdict="Primary convergent test falsified \u2014 recall-SOM does not converge with brand-absolute Share-of-Voice.",
     phase="v0.27",
 )
 fig.subplots_adjust(left=0.13, right=0.97, top=0.80, bottom=0.18)
