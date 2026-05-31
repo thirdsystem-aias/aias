@@ -143,10 +143,10 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
-    1: "f1_scatter_recall_sov",   # Finding 1 — the primary null scatter
-    2: None,                      # Finding 2 — recognition ceiling (no chart)
-    3: "f2_component_rho",        # Finding 3 — exploratory component bar
-    4: None,                      # Finding 4 — metric-not-construct (no chart)
+    1: "f1_scatter_recall_sov",    # Finding 1 — the primary null scatter
+    2: "f2_recognition_ceiling",   # Finding 2 — recognition ceiling vs recall spread
+    3: "f3_component_rho",         # Finding 3 — exploratory component bar
+    4: "f4_recall_tracking",       # Finding 4 — rank-alignment (rank-rank)
     5: None,
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -1108,13 +1108,28 @@ HERO_FIGURE_CAPTIONS = {
         "left edge with mid-to-high Share-of-Voice; Stride carries a "
         "name-collision confound."
     ),
-    "f2_component_rho": (
-        "Figure 2 \u00b7 Where AIAS recall-SOM meets the Grader\u2019s dimensions. "
+    "f2_recognition_ceiling": (
+        "Figure 2 \u00b7 Recognition is at the ceiling; recall carries the variance. "
+        "AIAS recognition (C<sub>P</sub>, scaled 0\u2013100) vs. recall-SOM across 24 "
+        "B2B SaaS brands. Every brand scores 6/6 on recognition (sd\u2009=\u20090), so it "
+        "cannot rank brands; only recall-SOM separates them. Recognition therefore "
+        "enters as a null control, not a convergent variable."
+    ),
+    "f3_component_rho": (
+        "Figure 3 \u00b7 Where AIAS recall-SOM meets the Grader\u2019s dimensions. "
         "Spearman rho of recall-SOM against each HubSpot Grader dimension "
         "(exploratory, n\u2009=\u200924). The pre-registered metric, Share of "
         "Voice, is among the weakest; presence quality and brand recognition "
         "exceed the 0.74 \u201cstrong\u201d benchmark. Exploratory \u2014 does "
         "not bear on the falsified primary."
+    ),
+    "f4_recall_tracking": (
+        "Figure 4 \u00b7 Rank-alignment, not spread. Rank\u2013rank plots of AIAS "
+        "recall-SOM rank vs. HubSpot dimension rank (n\u2009=\u200924). Presence quality "
+        "hugs the perfect-agreement diagonal (rho\u2009=\u20090.80); Share of Voice "
+        "scatters off it (rho\u2009=\u20090.29). Share of Voice varies as much, but its "
+        "order does not match recall\u2019s \u2014 and it is tie-heavy (7 live brands "
+        "at 7.33/10)."
     ),
     "f2_correlation_matrix": (
         "Figure 2 \u00b7 Component-level correlations. "
@@ -1157,8 +1172,16 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
             "v0_27_scatter_recall_sov.pdf",
             "hero",
         ),
-        "f2_component_rho": (
+        "f2_recognition_ceiling": (
+            "v0_27_recognition_ceiling.pdf",
+            "hero",
+        ),
+        "f3_component_rho": (
             "v0_27_component_rho.pdf",
+            "hero",
+        ),
+        "f4_recall_tracking": (
+            "v0_27_recall_tracking.pdf",
             "hero",
         ),
     }
@@ -1198,7 +1221,9 @@ def build_pattern_unified(pattern: dict, styles: dict,
         # v0.27 hero slot names — 4 findings pattern (one more than v0.18-v0.21)
         is_hero = slot in (
             "f1_scatter_recall_sov",
-            "f2_component_rho",
+            "f2_recognition_ceiling",
+            "f3_component_rho",
+            "f4_recall_tracking",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")

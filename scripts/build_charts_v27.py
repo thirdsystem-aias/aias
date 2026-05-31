@@ -22,7 +22,7 @@ CC — VERIFY BEFORE FIRST RUN:
 from pathlib import Path
 import numpy as np
 import pandas as pd
-from scipy.stats import spearmanr
+from scipy.stats import spearmanr, rankdata
 import matplotlib.pyplot as plt
 from matplotlib.patches import Patch
 
@@ -190,8 +190,93 @@ fig.subplots_adjust(left=0.13, right=0.97, top=0.80, bottom=0.18)
 savefig_all(fig, "v0_27_scatter_recall_sov.pdf")
 plt.close(fig)
 
+# ============================================================================
+# Figure 2 (Finding 2) — recognition ceiling vs recall-SOM spread
+# ============================================================================
+cs.setup()
+fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+
+cp_scaled = (df["C_P"].astype(float) / 6.0) * 100.0    # all 24 brands -> 100
+som_vals  = df["recall_channel_som"].astype(float).to_numpy()
+_rng = np.random.default_rng(27)
+ax.scatter(cp_scaled, np.full(len(df), 1.0) + _rng.uniform(-0.15, 0.15, len(df)),
+           s=62, c=GREY, edgecolors="white", linewidths=0.6, zorder=3)
+ax.scatter(som_vals, np.full(len(df), 0.0) + _rng.uniform(-0.15, 0.15, len(df)),
+           s=62, c=INDIGO, edgecolors="white", linewidths=0.6, zorder=3)
+
+ax.set_yticks([0, 1])
+ax.set_yticklabels(["Recall-SOM", "Recognition ($C_P$)"])
+ax.set_ylim(-0.75, 1.75)
+ax.set_xlim(-4, 104)
+ax.set_xlabel("Score (0–100; recognition scaled from 0–6)")
+ax.annotate("all 24 brands at the ceiling · sd = 0", (100, 1.20),
+            ha="right", va="bottom", fontsize=ANNOT, color="#666666")
+ax.annotate("spread 0–100 — the variance-bearing measure", (0, -0.45),
+            ha="left", va="top", fontsize=ANNOT, color="#666666")
+
+cs.add_header(
+    fig,
+    "Recognition is at the ceiling; recall carries the variance",
+    r"AIAS recognition ($C_P$) vs. recall-SOM across 24 B2B SaaS brands",
+    "Recognition is saturated at 6/6 for every brand; only recall-SOM separates them.",
+)
+cs.add_footer(
+    fig,
+    verdict="Recognition enters as a null control; recall-SOM is the variance-bearing convergent variable.",
+    phase="v0.27",
+)
+fig.subplots_adjust(left=0.20, right=0.97, top=0.80, bottom=0.18)
+savefig_all(fig, "v0_27_recognition_ceiling.pdf")
+plt.close(fig)
+
+# ============================================================================
+# Figure 4 (Finding 4) — rank-alignment: whose ranking follows recall's
+# Honest mechanism for the SoV null: it is rank-misaligned with recall (and
+# tie-heavy), NOT range-restricted. Rank-rank plots make Spearman legible —
+# presence quality hugs the agreement diagonal; Share of Voice scatters off it.
+# ============================================================================
+cs.setup()
+fig, (axL, axR) = plt.subplots(1, 2, figsize=cs.FIGSIZE["spread"],
+                               sharex=True, sharey=True)
+
+xr = df["recall_channel_som"].astype(float).to_numpy()
+pq = (df["I1_presence_quality"].astype(float).to_numpy() / 20.0) * 100.0
+sv = (df["I1_sov"].astype(float).to_numpy() / 10.0) * 100.0
+rx = rankdata(xr)
+n  = len(df)
+
+for ax_, yv, title, col in ((axL, pq, "Presence Quality", INDIGO),
+                            (axR, sv, "Share of Voice", COPPER)):
+    ry = rankdata(yv)
+    rho = spearmanr(xr, yv)[0]
+    ax_.plot([1, n], [1, n], color=GREY, lw=1.0, ls="--", zorder=1)   # perfect agreement
+    ax_.scatter(rx, ry, s=42, c=col, edgecolors="white", linewidths=0.5, zorder=3)
+    ax_.set_xlim(0, n + 1)
+    ax_.set_ylim(0, n + 1)
+    ax_.set_xlabel("AIAS recall-SOM rank")
+    ax_.text(0.05, 0.95, f"{title}\n$\\rho$ = {rho:.2f}", transform=ax_.transAxes,
+             ha="left", va="top", fontsize=ANNOT, color=col, fontweight="bold")
+axL.set_ylabel("HubSpot dimension rank")
+
+cs.add_header(
+    fig,
+    "Presence quality’s ranking follows recall’s; Share of Voice’s doesn’t",
+    r"Rank–rank plots: AIAS recall-SOM rank vs. HubSpot dimension rank (n = 24)",
+    "Dashed line = perfect rank agreement. Presence quality hugs it; Share of Voice "
+    "scatters — its variation is real but rank-misaligned with recall.",
+)
+cs.add_footer(
+    fig,
+    verdict="The convergence gap is rank-alignment, not spread: Share of Voice varies as much, but its order does not match recall’s.",
+    phase="v0.27",
+)
+fig.subplots_adjust(left=0.10, right=0.97, top=0.78, bottom=0.16, wspace=0.16)
+savefig_all(fig, "v0_27_recall_tracking.pdf")
+plt.close(fig)
+
 print("wrote to", len(FIGDIRS), "dirs:")
 for _d in FIGDIRS:
-    print("  ", _d / "v0_27_scatter_recall_sov.pdf")
-    print("  ", _d / "v0_27_component_rho.pdf")
+    for _f in ("v0_27_scatter_recall_sov.pdf", "v0_27_recognition_ceiling.pdf",
+               "v0_27_component_rho.pdf", "v0_27_recall_tracking.pdf"):
+        print("  ", _d / _f)
 print("component rhos:", [(lab, round(v, 3)) for lab, v in rows])
