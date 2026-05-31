@@ -259,6 +259,12 @@ COL_COUNT = 6
 GUTTER = 10.0008
 COL_W = (CONTENT_W - (COL_COUNT - 1) * GUTTER) / COL_COUNT
 
+# r3 ChartReservation clamps (AIAS 1.0 pattern): the reserved slot is the chart's
+# actual mediabox footprint scaled to fit BOTH clamps proportionally, so the slot
+# matches the chart exactly — no pillarbox, no figure-to-caption gap, no stretch.
+CHART_RESERVATION_WIDTH_CLAMP_PT = CONTENT_W      # 540pt
+CHART_RESERVATION_HEIGHT_CLAMP_PT = 500.0          # phase-scale (synthesis used 600.0)
+
 COL_X = [MARGIN + i * (COL_W + GUTTER) for i in range(COL_COUNT)]
 
 def span_pts(n: int) -> float:
@@ -786,32 +792,29 @@ class ChartReservation(Flowable):
         Flowable.__init__(self)
         self.slot_key = slot_key
         self.chart_path = chart_path
-        self.chart_w_pt = width_in * 72.0
+        # r3 ChartReservation (AIAS 1.0 pattern): pre-compute the chart's rendered
+        # footprint from the PDF mediabox at the fit-to-clamps proportional scale,
+        # BEFORE slot allocation. The slot then equals the chart's actual aspect,
+        # so Pass 2 overlays at the exact fill scale (sx == sy) — no pillarbox, no
+        # figure-to-caption gap, no aspect stretch. bbox_inches='tight' in
+        # build_charts_v27 makes the stored CHART_FIGSIZE_IN aspect unreliable, so
+        # the mediabox is authoritative. Falls back to nominal if the chart is absent.
+        nominal_w_pt = width_in * 72.0
         raw_h_pt = height_in * 72.0
         nominal_h_pt = 400.0 if raw_h_pt > 500.0 else raw_h_pt
-
-        # v0.27: auto-size reservation height to match the actual chart PDF's
-        # aspect ratio. bbox_inches='tight' in build_charts_v27 produces
-        # variable mediabox dimensions depending on side-panel content length,
-        # so the stored CHART_FIGSIZE_IN aspect is no longer reliable. If the
-        # chart PDF exists, read its mediabox and compute the height that
-        # makes the chart fill the reservation width exactly at scale=sx.
-        # This eliminates the dead-space-below-chart that was producing the
-        # ~40-80pt figure-to-caption gap on charts 2-4.
-        adjusted_h = nominal_h_pt
+        self.chart_w_pt = nominal_w_pt
+        self.chart_h_pt = nominal_h_pt
         if chart_path.exists():
             try:
                 _r = PdfReader(str(chart_path))
                 _mb = _r.pages[0].mediabox
                 _cw, _ch = float(_mb.width), float(_mb.height)
-                # Height to match chart aspect at reservation width:
-                _h_at_reservation_w = self.chart_w_pt * (_ch / _cw)
-                # Cap at nominal so a very-tall chart doesn't break page flow;
-                # honor nominal as the MAX, use actual aspect when it's shorter.
-                adjusted_h = min(_h_at_reservation_w, nominal_h_pt)
+                _fit = min(CHART_RESERVATION_WIDTH_CLAMP_PT / _cw,
+                           CHART_RESERVATION_HEIGHT_CLAMP_PT / _ch)
+                self.chart_w_pt = _cw * _fit
+                self.chart_h_pt = _ch * _fit
             except Exception:
                 pass
-        self.chart_h_pt = adjusted_h
 
         self.manifest = manifest
         self.debug = debug
