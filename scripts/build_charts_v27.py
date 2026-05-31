@@ -105,7 +105,7 @@ for yp, v in zip(ypos, vals):
 
 for xt, txt in [(0.60, "confirm 0.60"), (0.74, "strong 0.74")]:
     ax.axvline(xt, color=GREY, lw=1, ls="--", zorder=1)
-    ax.text(xt, -0.55, txt, rotation=90, va="bottom", ha="right", fontsize=ANNOT, color="#666666")
+    ax.text(xt + 0.006, 1.7, txt, rotation=90, va="bottom", ha="left", fontsize=ANNOT - 1, color="#888888")
 
 ax.set_xlim(0, 0.9)
 ax.set_ylim(-0.6, len(rows) - 0.4)
@@ -126,6 +126,7 @@ cs.add_footer(
     verdict="Presence-quality and brand-recognition exceed the 0.74 strong benchmark; SoV does not.",
     phase="v0.27",
 )
+fig.subplots_adjust(left=0.13, right=0.97, top=0.80, bottom=0.18)
 savefig_all(fig, "v0_27_component_rho.pdf")
 plt.close(fig)
 
@@ -145,26 +146,34 @@ def style(row):
         return "Phantom (defunct)", dict(c="#FFFFFF", marker="o", s=72, edgecolors=GREY, linewidths=1.2)
     return "Live competitive", dict(c=INDIGO, marker="o", s=62, edgecolors="white", linewidths=0.8)
 
+# Jitter the coincident recall=0 cluster horizontally so its markers/labels
+# separate; non-zero recall values are left exact.
+np.random.seed(27)
+df["x_plot"] = df["recall_channel_som"].astype(float)
+_z = df["recall_channel_som"] == 0
+df.loc[_z, "x_plot"] = np.random.uniform(-2.4, 2.4, int(_z.sum()))
+
 seen = set()
 for _, r in df.iterrows():
     lab, st = style(r)
-    ax.scatter(r.recall_channel_som, r.I1_sov, zorder=3,
+    ax.scatter(r.x_plot, r.I1_sov, zorder=3,
                label=(lab if lab not in seen else None), **st)
     seen.add(lab)
 
+SCATTER_LABELS = {"Salesforce": (-6, 6, "right"), "Figma": (5, 5, "left"),
+                  "Linear": (7, 0, "left"), "Stride": (9, -1, "left")}
 for _, r in df.iterrows():
     nm = r.brand_name.strip()
-    if nm in TYPE2 or nm in {"Salesforce", "Figma", "Stripe", "Yammer", "Wunderlist"}:
-        ax.annotate(nm, (r.recall_channel_som, r.I1_sov), xytext=(4, 4),
-                    textcoords="offset points", fontsize=ANNOT, color="#333333")
+    if nm in SCATTER_LABELS:
+        dx, dy, ha = SCATTER_LABELS[nm]
+        ax.annotate(nm, (r.x_plot, r.I1_sov), xytext=(dx, dy),
+                    textcoords="offset points", fontsize=ANNOT, ha=ha, color="#333333")
 
 ax.set_xlim(-4, 104)
 ax.set_ylim(-0.4, 9)
 ax.set_xlabel("AIAS recall-SOM (category-leadership recall, 0\u2013100)")
 ax.set_ylabel("HubSpot Grader Share-of-Voice (mean of 3 engines, 0\u201310)")
-ax.text(0.98, 0.05, "\u03c1 = 0.29  (n = 24, n.s.)\nH_CV3_Primary falsified",
-        transform=ax.transAxes, ha="right", va="bottom", fontsize=ANNOT, color="#444444")
-ax.legend(loc="lower center", ncol=2, frameon=False, fontsize=ANNOT)
+ax.legend(loc="center right", frameon=True, framealpha=0.92, edgecolor="none", fontsize=ANNOT)
 
 cs.add_header(
     fig,
@@ -177,6 +186,7 @@ cs.add_footer(
     verdict="H_CV3_Primary FALSIFIED \u2014 recall-SOM does not converge with brand-absolute SoV.",
     phase="v0.27",
 )
+fig.subplots_adjust(left=0.13, right=0.97, top=0.80, bottom=0.18)
 savefig_all(fig, "v0_27_scatter_recall_sov.pdf")
 plt.close(fig)
 
