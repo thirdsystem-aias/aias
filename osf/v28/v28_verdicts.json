@@ -1,36 +1,126 @@
 {
   "_meta": {
-    "generated": "2026-05-31T22:44:22",
+    "generated": "2026-06-01T15:29:02",
     "study": "v0.28 / CV.04 BRAND discriminant validator",
     "seed": 280400,
     "n_boot": 10000,
     "min_n": 12,
     "convergent_benchmark": 0.74,
     "panel_n": 24,
-    "presence_present": false,
-    "presence_n_joined": 0,
+    "presence_present": true,
+    "presence_n_joined": 24,
     "lock_module": "matched",
     "validator_sha_note": "familiarity_1_7 + dprime frozen in v0_28_brand_validator.csv"
   },
   "verdicts": {
     "H_Disc_Familiarity": {
       "role": "PRIMARY",
-      "status": "NOT_RUN",
-      "n": 0,
-      "note": "no Presence data joined (acquisition pending)"
+      "status": "UNDETERMINED",
+      "point_verdict": "PARTIAL",
+      "n": 24,
+      "spearman_rho": 0.593,
+      "spearman_p": 0.00226,
+      "pearson_r": 0.5691,
+      "pearson_p": 0.00371,
+      "abs_rho": 0.593,
+      "bca_ci_95": [
+        0.1789,
+        0.8318
+      ],
+      "flags": {
+        "negative_correlation": false,
+        "ci_abs_interval": [
+          0.179,
+          0.832
+        ],
+        "ci_straddles_boundary": true,
+        "ci_excludes_reducibility": false,
+        "undetermined_reason": "BCa CI spans all three |rho| bands",
+        "provisional": false
+      },
+      "bands": "CONFIRMED |rho|<0.50 | PARTIAL 0.50-0.74 | FALSIFIED >=0.74"
     },
     "H_Disc_Recognition": {
       "role": "SECONDARY",
-      "status": "NOT_RUN",
-      "n": 0,
-      "note": "no Presence data joined (acquisition pending)"
+      "status": "CONFIRMED",
+      "point_verdict": "CONFIRMED",
+      "n": 24,
+      "spearman_rho": 0.3794,
+      "spearman_p": 0.06751,
+      "pearson_r": 0.4605,
+      "pearson_p": 0.02353,
+      "abs_rho": 0.3794,
+      "bca_ci_95": [
+        -0.0755,
+        0.7135
+      ],
+      "flags": {
+        "negative_correlation": false,
+        "ci_abs_interval": [
+          0.0,
+          0.713
+        ],
+        "ci_straddles_boundary": true,
+        "ci_excludes_reducibility": true,
+        "provisional": false
+      },
+      "bands": "CONFIRMED |rho|<0.50 | PARTIAL 0.50-0.74 | FALSIFIED >=0.74"
     },
     "H_Dissociation": {
       "role": "TERTIARY",
       "tier": "DESCRIPTIVE",
-      "status": "NOT_RUN",
-      "n": 0,
-      "note": "no Presence data joined (acquisition pending)"
+      "status": "FULL",
+      "n": 24,
+      "n_cases": 11,
+      "amplified": [
+        [
+          "Apple",
+          1.228
+        ],
+        [
+          "Microsoft",
+          1.15
+        ],
+        [
+          "HPE",
+          1.066
+        ],
+        [
+          "Netapp",
+          1.065
+        ]
+      ],
+      "suppressed": [
+        [
+          "Netflix",
+          -1.043
+        ],
+        [
+          "Instagram",
+          -1.05
+        ],
+        [
+          "Uber",
+          -1.253
+        ],
+        [
+          "Airbnb",
+          -1.052
+        ],
+        [
+          "Whirlpool",
+          -1.711
+        ],
+        [
+          "3M",
+          -1.031
+        ],
+        [
+          "QVC",
+          -1.559
+        ]
+      ],
+      "note": "Mechanically coupled to H_Disc_Familiarity; corroborating/illustrative, NOT independent. Non-gating; excluded from headline."
     }
   }
 }
