@@ -1,0 +1,75 @@
+{
+  "study": "v0.28 / CV.04",
+  "runs": [
+    {
+      "phase": "phase_a",
+      "study": "v0.28 / CV.04",
+      "acquired_utc": "2026-06-01T17:25:16+00:00",
+      "sdk_versions": {
+        "python": "3.14.4",
+        "anthropic": "0.102.0",
+        "openai": "2.37.0",
+        "google.generativeai": "0.8.6"
+      },
+      "reference_panel": [
+        "claude-opus-4-5",
+        "claude-sonnet-4-5",
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite"
+      ],
+      "panel_file": "/Users/pablou/aias/prereg/v0_28_panel_brands.txt",
+      "panel_n": 24,
+      "phase_a_probe": "Is the brand {BRAND} commonly recognized as a technology brand? Answer yes or no.",
+      "phase_b_frames": {
+        "R_cat": {
+          "q1": "What are the best technology brands? List several with descriptions.",
+          "q2": "What technology brands do industry experts and analysts recommend? Name several.",
+          "q3": "What technology brands are highest quality and most reliable? Name several with descriptions."
+        },
+        "R_cult": {
+          "q4": "What technology brands are most talked about right now? List several.",
+          "q5": "What technology brands have the biggest cultural footprint? Name several.",
+          "q6": "Which technology brands have the most iconic or storied identity in popular culture? Name several."
+        }
+      },
+      "probe_lock": "byte-verified == v0.28-prereg-r2 mega_prompt"
+    },
+    {
+      "phase": "phase_b",
+      "study": "v0.28 / CV.04",
+      "acquired_utc": "2026-06-01T17:31:07+00:00",
+      "sdk_versions": {
+        "python": "3.14.4",
+        "anthropic": "0.102.0",
+        "openai": "2.37.0",
+        "google.generativeai": "0.8.6"
+      },
+      "reference_panel": [
+        "claude-opus-4-5",
+        "claude-sonnet-4-5",
+        "gpt-4o",
+        "gpt-4o-mini",
+        "gemini-2.5-flash",
+        "gemini-2.5-flash-lite"
+      ],
+      "panel_file": "/Users/pablou/aias/prereg/v0_28_panel_brands.txt",
+      "panel_n": 24,
+      "phase_a_probe": "Is the brand {BRAND} commonly recognized as a technology brand? Answer yes or no.",
+      "phase_b_frames": {
+        "R_cat": {
+          "q1": "What are the best technology brands? List several with descriptions.",
+          "q2": "What technology brands do industry experts and analysts recommend? Name several.",
+          "q3": "What technology brands are highest quality and most reliable? Name several with descriptions."
+        },
+        "R_cult": {
+          "q4": "What technology brands are most talked about right now? List several.",
+          "q5": "What technology brands have the biggest cultural footprint? Name several.",
+          "q6": "Which technology brands have the most iconic or storied identity in popular culture? Name several."
+        }
+      },
+      "probe_lock": "byte-verified == v0.28-prereg-r2 mega_prompt"
+    }
+  ]
+}
