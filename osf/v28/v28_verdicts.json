@@ -1,0 +1,36 @@
+{
+  "_meta": {
+    "generated": "2026-05-31T22:44:22",
+    "study": "v0.28 / CV.04 BRAND discriminant validator",
+    "seed": 280400,
+    "n_boot": 10000,
+    "min_n": 12,
+    "convergent_benchmark": 0.74,
+    "panel_n": 24,
+    "presence_present": false,
+    "presence_n_joined": 0,
+    "lock_module": "matched",
+    "validator_sha_note": "familiarity_1_7 + dprime frozen in v0_28_brand_validator.csv"
+  },
+  "verdicts": {
+    "H_Disc_Familiarity": {
+      "role": "PRIMARY",
+      "status": "NOT_RUN",
+      "n": 0,
+      "note": "no Presence data joined (acquisition pending)"
+    },
+    "H_Disc_Recognition": {
+      "role": "SECONDARY",
+      "status": "NOT_RUN",
+      "n": 0,
+      "note": "no Presence data joined (acquisition pending)"
+    },
+    "H_Dissociation": {
+      "role": "TERTIARY",
+      "tier": "DESCRIPTIVE",
+      "status": "NOT_RUN",
+      "n": 0,
+      "note": "no Presence data joined (acquisition pending)"
+    }
+  }
+}
