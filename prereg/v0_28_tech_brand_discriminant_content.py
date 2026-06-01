@@ -416,6 +416,55 @@ DEVIATIONS = [
         ),
         "lock_state": "v0.28-prereg-r1",
     },
+    {
+        "entry_id": "Entry 2",
+        "type": "methodology pin (pre-acquisition): Presence-bridge recall denominator",
+        "ex_ante": True,
+        "logged_before_data_collection": True,
+        "revision": "r2",
+        "title": "Pin the raw->Presence bridge to v1.6-canonical /18 recall "
+                 "normalization (not v0.25's /36 literal)",
+        "finding": (
+            "The pinned Presence scalar reuses v0.25's presence_composite "
+            "(score_v0_25.py) = equal-weighted mean of each component's "
+            "fraction-of-max, *100. v0.25's code divides recall by 36. Empirical "
+            "check of osf/v24/data/v24_phase_b.csv (the corpus behind the rho=0.74 "
+            "anchor) shows that /36 came from a NON-canonical Phase B with 6 "
+            "distinct frames per channel x 6 models (6 distinct probe_num in each "
+            "of R_cat and R_cult). Protocol v1.6 canon is a SIX-frame battery = 3 "
+            "frames per channel, max 18 per channel, max 36 across both channels "
+            "(v1.6 SSRN 6816340: 'Phase B six-frame battery'; phantom layer "
+            "'R_cat_phantom (max 18, q1-q3)', 'R_cult_phantom (max 18, q4-q6)'). "
+            "The v0.28 r1 Phase B (q1-q3 R_cat, q4-q6 R_cult, max 18 each) is "
+            "therefore CORRECT per v1.6; v0.24/25's 6-frame/channel design was the "
+            "non-canonical instantiation."
+        ),
+        "pin": (
+            "v0.28 normalizes recall on /18 (fraction of the v1.6 max-18), keeping "
+            "the equal-weight fraction-of-max SEMANTIC of presence_composite but "
+            "NOT copying v0.25's /36 literal: "
+            "presence = mean(C_P/6, R_cat/18, R_cult/18) * 100. "
+            "Implemented in scripts/bridge_v28.py."
+        ),
+        "anchor_commensurability_caveat": (
+            "The rho=0.74 convergent anchor (v0.25) was computed on a non-canonical "
+            "6-cue-per-channel recall; v0.28 uses the canonical 3-cue-per-channel "
+            "recall. The discriminant-vs-benchmark comparison is therefore "
+            "APPROXIMATE on recall cue breadth (3 vs 6 cues/channel). Carried to "
+            "the paper's limitations section. Spearman is rank-based, so the "
+            "uniform /18 normalization does not alter within-v0.28 brand ranks; the "
+            "caveat concerns cross-study cue-breadth comparability, not internal "
+            "validity."
+        ),
+        "unchanged_from_r1": (
+            "EXPLICITLY UNCHANGED at r2: r1 Phase B (3 frames/channel) probe "
+            "wording; the frozen panel and validator; Phase A probe; the three "
+            "hypotheses and their |rho| bands; the Presence-composite definition "
+            "(equal-weight fraction-of-max mean). r2 pins ONLY the bridge "
+            "denominator and adds the bridge implementation."
+        ),
+        "lock_state": "v0.28-prereg-r2",
+    },
 ]
 
 # COI screen is DEVIATIONS Entry 0 above; this alias is kept for any downstream
