@@ -16,7 +16,7 @@ Forked from run_acquisition_v22.py with these deltas:
   3. Probes = v0.28 registered Tech probes (Phase A recognition + 6 Phase B
      frames, q1-q3 R_cat / q4-q6 R_cult). Byte-match the r2 mega_prompt; enforced.
   4. Phase B = 3 frames/channel (max 18) — matches the r2 bridge /18 normalization.
-  5. Output -> osf/v28/phase_a_results.csv + phase_b_results.csv (feeds bridge_v28.py).
+  5. Output -> osf/v28/data/phase_a_results.csv + phase_b_results.csv (feeds bridge_v28.py).
   6. Model ids unchanged from the locked six-slot panel.
 
 Required env vars: ANTHROPIC_API_KEY, OPENAI_API_KEY, GOOGLE_API_KEY (or GEMINI_API_KEY)
@@ -474,12 +474,14 @@ def main() -> int:
         return 2
     if args.dry_run:
         print("\n[DRY-RUN] No API calls will be made.")
+    # results live under osf/v28/data/ (same dir as run_metadata + what bridge_v28 reads)
+    data_dir = out / "data"
     if args.phase in ("a", "all"):
-        run_phase_a(panel, out / "phase_a_results.csv", args.max_workers, args.dry_run)
+        run_phase_a(panel, data_dir / "phase_a_results.csv", args.max_workers, args.dry_run)
         if not args.dry_run:
             write_run_metadata(out, "phase_a")
     if args.phase in ("b", "all"):
-        run_phase_b(out / "phase_b_results.csv", args.max_workers, args.dry_run)
+        run_phase_b(data_dir / "phase_b_results.csv", args.max_workers, args.dry_run)
         if not args.dry_run:
             write_run_metadata(out, "phase_b")
     if not args.dry_run:
