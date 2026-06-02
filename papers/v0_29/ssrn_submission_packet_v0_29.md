@@ -123,10 +123,10 @@ This synthesis deposits its verdict assembly, scoring code, figures, and pre-reg
 
 - **File:** `papers/v0_29/v0_29_ssrn_paper.pdf`
 - **Cover letter:** Not required for SSRN Working Paper submissions.
-- **Suggested citation (post-submission, fill in SSRN abstract ID):**
+- **Suggested citation (SSRN abstract ID 6870778):**
 
 ```
-González Castro, P. U. (2026). The Presence Component Is Construct-Valid. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). The Presence Component Is Construct-Valid: A Convergent–Discriminant (Campbell–Fiske) Baseline for AI Availability. SSRN Working Paper 6870778. https://ssrn.com/abstract=6870778
 ```
 
 ---

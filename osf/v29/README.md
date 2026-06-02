@@ -63,7 +63,7 @@ neither.
 
 ### References
 
-- SSRN paper: [pending abstract ID on submission]
+- SSRN paper: ssrn.com/abstract=6870778
 - Convergent component: ssrn.com/abstract=6842138 · Discriminant component: ssrn.com/abstract=6847678
 - Methodology: 6761698 · 6797679 · 6799479 · 6810758 · 6816340
 - AIAS™ 1.0 synthesis: 6817841
