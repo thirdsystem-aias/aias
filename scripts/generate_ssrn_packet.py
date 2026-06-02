@@ -113,7 +113,7 @@ def extract_section(body: str, heading_pattern: str) -> str | None:
     """
     pat = re.compile(
         rf"^#+ {heading_pattern}.*?$\n(.*?)(?=^#+ |\n\*\*[A-Z][A-Za-z ]+:\*\*|\Z)",
-        re.MULTILINE | re.DOTALL,
+        re.MULTILINE | re.DOTALL | re.IGNORECASE,
     )
     m = pat.search(body)
     return m.group(1).strip() if m else None
@@ -160,11 +160,29 @@ def generate_packet(phase_display: str, phase_snake: str,
     jel_codes_only = re.sub(r"\s*\(primary\)|\s*\(secondary\)|\.$", "", jel)
     jel_codes_only = re.sub(r",\s*", "; ", jel_codes_only)
 
-    # COI / Data-and-code availability: lift verbatim from Declarations
-    coi = extract_section(body, r"Conflict of interest") or "[COI NOT FOUND]"
+    # COI / Data-and-code availability: lift verbatim from Declarations.
+    # The AIAS paper convention places these as inline bold fields with a
+    # trailing PERIOD ("**Conflict of interest.** ...") under a "# Declarations"
+    # heading, not as standalone headings — so fall back to that form.
+    def _decl_field(label: str) -> str | None:
+        # matches "**Label.**" or "**Label:**", value runs to next bold field/heading
+        pat = re.compile(
+            rf"\*\*{re.escape(label)}[.:]\*\*\s*(.+?)"
+            rf"(?=\n\*\*[A-Z]|\n#+ |\Z)",
+            re.DOTALL,
+        )
+        m = pat.search(body)
+        return re.sub(r"\s+", " ", m.group(1)).strip() if m else None
+
+    coi = (extract_section(body, r"Conflict of interest")
+           or _decl_field("Conflict of interest")
+           or "[COI NOT FOUND]")
     coi = coi.strip()
 
-    data_avail = extract_section(body, r"Data and code availability") or ""
+    data_avail = (extract_section(body, r"Data and code availability")
+                  or _decl_field("Data and code availability")
+                  or _decl_field("Data availability")
+                  or "")
     data_avail = data_avail.strip()
 
     subject_class_block = "\n".join(f"{i}. **{n}**"
@@ -325,12 +343,16 @@ def main() -> int:
 
     if args.paper:
         paper_md = Path(args.paper).expanduser().resolve()
-        m = re.search(r"(v\d+_\d+)_ssrn_paper_draft\.md", paper_md.name)
-        if not m:
-            print(f"ERROR: cannot infer phase from paper filename {paper_md.name}", file=sys.stderr)
-            return 2
-        phase_snake = m.group(1)
-        phase_display = phase_snake.replace("_", ".")
+        if args.phase:
+            phase_display = args.phase.replace("_", ".")
+            phase_snake = phase_display.replace(".", "_")
+        else:
+            m = re.search(r"(v\d+_\d+)", paper_md.name)
+            if not m:
+                print(f"ERROR: cannot infer phase from paper filename {paper_md.name}; use --phase", file=sys.stderr)
+                return 2
+            phase_snake = m.group(1)
+            phase_display = phase_snake.replace("_", ".")
     elif args.phase:
         phase_display = args.phase.replace("_", ".")
         phase_snake = phase_display.replace(".", "_")

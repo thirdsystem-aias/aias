@@ -20,7 +20,7 @@ from pathlib import Path
 PIPELINE_ROOT = Path("/Users/pablou/aias")
 PAPER_DIR = PIPELINE_ROOT / "papers" / "v0_28"
 SOURCE_MD = PAPER_DIR / "v0_28_ssrn_paper_draft.md"
-OUTPUT_PDF = PAPER_DIR / "v0_28_ssrn_paper_draft.pdf"
+OUTPUT_PDF = PAPER_DIR / "v0_28_ssrn_paper.pdf"
 
 # ---------------------------------------------------------------------------
 # Unicode → LaTeX substitutions (Carlito glyph gaps)

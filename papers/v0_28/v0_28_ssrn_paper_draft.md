@@ -65,7 +65,7 @@ AI Availability --- the degree to which a brand is surfaced, recognized, and rec
 
 **Keywords:** AI availability; large language models; brand measurement; construct validity; discriminant validity; recognition memory; mental availability; AIAS; share of model; pre-registration
 
-**JEL classification:** M31 (primary); L86; L15; D83; M37
+**JEL codes:** M31 (primary); L86; L15; D83; M37
 
 **Paper status:** Pre-registered, blind-acquired, one-shot scored. All hypotheses, thresholds, panel, and the Presence definition were frozen at git tags before any model was queried; the validator was joined only at scoring. This is a single empirical cell of the AIAS construct-validity program, not a standalone validation of the full construct.
 
