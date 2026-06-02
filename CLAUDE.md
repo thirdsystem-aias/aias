@@ -292,3 +292,9 @@ Cell color convention (cumulative across phases):
 ---
 
 *This file is the AIAS program's constitution for Claude Code sessions. Update when conventions change, when new phases ship (extend the SSRN registry), or when build pipelines evolve.*
+
+## v0.29 (CV.05) — tag convention (DECIDED, not open)
+v0.29 is prereg-only. No post-scoring lifecycle tag (no v0.29-scoring-locked).
+Rationale: a synthesis with a deterministic verdict has no analytic degrees of
+freedom past the prereg lock, and the CV-family precedent (v0.25, v0.26) is
+prereg-tag-only. This is settled; do not re-surface it as an open item.
