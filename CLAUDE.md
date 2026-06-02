@@ -231,6 +231,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.25 | B2B SaaS Construct Validity | 6842138 |
 | v0.26 | Amazon BSR Discriminant Validity | 6847678 |
 | v0.27 | B2B SaaS Convergent Validity | 6854758 |
+| v0.28 | Tech BRAND Discriminant Validity (CV.04) | 6865478 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |
@@ -239,6 +240,8 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 URL pattern: `https://ssrn.com/abstract={ID}`. New phase papers cite **all prior phases** plus the methodology chain.
 
 v0.27 B2B SaaS Convergent Validity — SSRN 6854758. H_CV3_Primary FALSIFIED (rho=0.29); recognition null CONFIRMED; exploratory PQ 0.80 / BR 0.75 (convergence is rank-alignment, not range restriction — corrected pre-deposit).
+
+v0.28 Tech BRAND Discriminant Validity (CV.04) — SSRN 6865478. Discriminant test of AIAS Presence vs the BRAND human-norm database (familiarity 1–7, recognition d′) on a frozen 24-brand Technology panel (seed 280400). H_Disc_Recognition CONFIRMED (rho=0.379, |rho|<0.50, BCa CI upper 0.714 excludes the 0.74 reducibility threshold); H_Disc_Familiarity UNDETERMINED (rho=0.593, BCa CI [0.18, 0.83] spans all three bands at n=24); H_Dissociation FULL (descriptive). Presence pinned to v0.25 presence_composite at v1.6-canonical /18 recall (r2 Entry 2). Blind acquisition; one-shot scoring. Tags v0.28-prereg-r1/r2, -acquisition-locked, -results-locked.
 
 ---
 
