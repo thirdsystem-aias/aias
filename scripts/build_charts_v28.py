@@ -182,12 +182,21 @@ def _chrome(fig, title, subtitle=""):
             cs.setup()
         except Exception:                                    # noqa: BLE001
             pass
-    for fn, args in (("add_header", (fig, title, subtitle)), ("add_footer", (fig,))):
+    for fn, args, kwargs in (
+        ("add_header", (fig, title, subtitle), {}),
+        ("add_footer", (fig,), {"phase": "v0.28"}),   # else chart_style defaults to v0.24
+    ):
         f = getattr(cs, fn, None)
         if f is None:
             continue
         try:
-            f(*args)
+            f(*args, **kwargs)
+        except TypeError:
+            # older chart_style.add_footer without a phase kwarg — fall back
+            try:
+                f(*args)
+            except Exception as e:                           # noqa: BLE001
+                print(f"[warn] chart_style.{fn} signature mismatch ({e}); skipping — reconcile API")
         except Exception as e:                               # noqa: BLE001
             print(f"[warn] chart_style.{fn} signature mismatch ({e}); skipping — reconcile API")
 
@@ -241,14 +250,13 @@ def fig_verdict_bands(verdicts, fig_dir):
         ax.plot(rho_abs, y, "o", ms=11, color=INDIGO, mec="white", mew=1.4, zorder=4)
         ax.text(rho_abs, y + 0.17, f"|ρ| = {rho_abs:.3f}", ha="center", va="bottom",
                 fontsize=10, color=INK)
-        ax.text(0.995, y, verdict, ha="right", va="center", fontsize=10.5,
-                fontweight="bold", color=INK,
-                transform=ax.get_yaxis_transform())
+        ax.text(1.02, y, verdict, ha="left", va="center", fontsize=10,
+                fontweight="bold", color=INK)
 
     ax.set_yticks([0, 1])
     ax.set_yticklabels(["Recognition d′", "Familiarity"], fontsize=11)
     ax.set_ylim(-0.5, 1.6)
-    ax.set_xlim(0, 1.0)
+    ax.set_xlim(0, 1.18)
     ax.set_xlabel("|ρ|  (Spearman, Presence vs validator)", fontsize=11)
     ax.set_xticks([0, BAND_CONFIRMED, BAND_FALSIFIED, 1.0])
 
