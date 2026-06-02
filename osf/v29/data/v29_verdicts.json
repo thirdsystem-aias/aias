@@ -1,0 +1,57 @@
+{
+  "phase": "v0.29",
+  "project_id": "CV.05",
+  "protocol": "v1.6",
+  "design_class": "synthesis",
+  "hypothesis": "H_CV_Baseline",
+  "scored_at": "2026-06-02T12:49:47.179489+00:00",
+  "result": {
+    "verdict": "CONFIRMED",
+    "reason": "C1 significant AND C2 (|rho| < 0.20, n.s.) AND C3 > 0",
+    "C1_convergent": {
+      "rho": 0.7411,
+      "p": 3.4e-05,
+      "significant": true,
+      "pass": true
+    },
+    "C2_discriminant": {
+      "rho": -0.0002,
+      "p": 0.998173,
+      "below_ceiling": true,
+      "nonsignificant": true,
+      "pass": true
+    },
+    "C3_campbell_fiske_gap": {
+      "value": 0.7409,
+      "pass": true
+    },
+    "significance_asymmetry": true,
+    "MTMM_2x2": {
+      "monotrait_heteromethod_convergent": 0.7411,
+      "heterotrait_discriminant": -0.0002
+    }
+  },
+  "provenance": {
+    "lock_tag": "v0.29-prereg-r1",
+    "convergent": {
+      "source": "v0.25",
+      "ssrn": "6842138",
+      "prereg_tag": "v0.25-prereg-r1",
+      "file": "osf/v25/v25_verdicts.json",
+      "inherited_rho": 0.7411,
+      "inherited_p": 3.4e-05,
+      "n": 24
+    },
+    "discriminant": {
+      "source": "v0.26",
+      "ssrn": "6847678",
+      "prereg_tag": "v0.26-prereg-r2",
+      "file": "osf/v26/v26_verdicts.json",
+      "inherited_rho": -0.0002,
+      "inherited_p": 0.998173,
+      "n": 88
+    },
+    "note": "Synthesis of inherited locked verdicts; no acquisition. C3 = |rho_conv| - |rho_disc| with pooled discriminant as C2 referent."
+  },
+  "warnings": []
+}
