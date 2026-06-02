@@ -45,6 +45,14 @@ UNICODE_SUBS = [
     ("\u25B6", r"$\blacktriangleright$"),  # ▶
     ("\u2227", r"$\wedge$"),    # ∧
     ("\u2713", r"\checkmark"),   # ✓
+    # CV.04 glyph gaps surfaced by xelatex/Carlito on the v0.28 source:
+    ("ρ", r"$\rho$"),       # rho (19x; Carlito has no Greek)
+    ("′", r"$'$"),          # prime (d-prime recognition sensitivity)
+    ("−", "-"),             # minus sign -> ASCII hyphen
+    ("≫", r"$\gg$"),        # much-greater-than
+    ("→", r"$\rightarrow$"),# rightwards arrow
+    ("≈", r"$\approx$"),    # almost-equal
+    ("±", r"\textpm{}"),    # plus-minus (text-mode; $\pm$ breaks when followed by a digit in pandoc)
     ("₁", r"$_{1}$"),
     ("₂", r"$_{2}$"),
     ("₃", r"$_{3}$"),

@@ -15,6 +15,7 @@ header-includes: |
   \usepackage{caption}
   \captionsetup{font=small,labelfont=bf}
   \setstretch{1.08}
+  \renewcommand{\maketitle}{}
 ---
 
 <!--
