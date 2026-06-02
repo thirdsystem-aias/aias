@@ -44,7 +44,7 @@ A measurement instrument earns the label *valid* only when it correlates with wh
 ### Keywords (paste verbatim, semicolon-separated)
 
 ```
-AI Availability; AIAS; construct validity; convergent validity; discriminant validity; multitrait--multimethod; Campbell--Fiske; brand presence; large language models; share of model
+AI Availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; construct validity; convergent validity; discriminant validity; multitrait--multimethod; Campbell--Fiske; brand presence; large language models; share of model
 ```
 
 ### JEL codes (paste verbatim)
