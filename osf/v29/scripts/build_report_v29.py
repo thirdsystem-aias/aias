@@ -24,8 +24,8 @@ Forked from build_report_v21.py with surgical changes:
       f4_phantom_defunct      -> chart_04_phantom_defunct.pdf   (NEW)
   - CHART_FIGSIZE_IN extended with v0.29 figsize keys (4 entries; v0.21
     entries preserved for cross-version reuse)
-  - Header right text updated: "Phantom Brand Persistence · v0.29 · May 2026"
-  - Citation updated: v0.29 automotive, SSRN TBD
+  - Header right text updated: "Construct-Validity Baseline · v0.29 · June 2026"
+  - Citation: v0.29 CV.05 synthesis, SSRN 6870778
   - Output filename: v29_cv_baseline_report.pdf
   - REPORT_PROTOCOL_VERSION: v1.5 → v1.6 (first prospective v1.6 phase)
   - Chart directory: reports/figs/v29/
@@ -145,8 +145,8 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 _PATTERN_CHART_MAP = {
     1: "f1_mtmm_gap",          # P1 — strong-where-it-should-be -> the MTMM/C3-gap figure
     2: "f2_convergent",        # P2 — convergent leg -> the v0.25 scatter
-    3: None,                   # P3 — discriminant leg (text only; near-zero asserted)
-    4: None,                   # P4 — verdict (text only)
+    3: "f3_discriminant",      # P3 — discriminant leg -> signed-rho asymmetry axis
+    4: "f4_verdict",           # P4 — verdict -> conjunctive construct-validity gate
     5: None,
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -209,9 +209,9 @@ if isinstance(content.CLOSING, str):
             "Third System™ (research entity)",
         ],
         "datasets": [
-            "BSR data: osf.io/ec6wh/v29/data/v29_bsr_master.csv",
-            "C_P retrofit: osf.io/ec6wh/v29/data/v16_cp_retrofit_aggregated.csv",
-            "Scoring verdicts: osf.io/ec6wh/v29/v29_verdicts.json",
+            "Computed verdict: osf.io/ec6wh/v29/data/v29_verdicts.json",
+            "Convergent component (v0.25, SSRN 6842138): osf.io/ec6wh/v25",
+            "Discriminant component (v0.26, SSRN 6847678): osf.io/ec6wh/v26",
         ],
         "methodology_log": "v1.6 (SSRN 6816340)",
         "closing_text": content.CLOSING,
@@ -321,6 +321,8 @@ CHART_FIGSIZE_IN = {
     # v0.29 (CV.05) synthesis charts — native dims from chart_29_*.pdf mediaboxes.
     "v29_mtmm":                   (7.82, 3.60),
     "v29_convergent":             (7.30, 5.10),
+    "v29_discriminant":           (7.33, 3.90),
+    "v29_verdict":                (7.27, 4.70),
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1122,6 +1124,24 @@ HERO_FIGURE_CAPTIONS = {
         "asserted not re-plotted \u2014 a synthesis reports its components\u2019 locked "
         "results rather than re-deriving them."
     ),
+    "f3_discriminant": (
+        "Figure 3 \u00b7 The discriminant leg, on a signed-correlation axis. The "
+        "convergent coefficient (\u03C1 = 0.74, v0.25) sits well above zero with its "
+        "inherited 95% CI [0.40, 0.91] clearing both the null zone and zero; the "
+        "discriminant coefficient (\u03C1 = \u22120.0002, p = 0.998, n = 88, v0.26) sits "
+        "inside the pre-registered |\u03C1| < 0.20 null zone, indistinguishable from "
+        "zero. One CI excludes zero, the other leg is non-significant \u2014 the "
+        "inferential asymmetry that makes the gap meaningful rather than a weak "
+        "measure."
+    ),
+    "f4_verdict": (
+        "Figure 4 \u00b7 The conjunctive verdict. Three pre-registered conditions "
+        "\u2014 convergent positive and significant (C1), discriminant below the 0.20 "
+        "ceiling and non-significant (C2), and a strictly positive gap (C3) \u2014 each "
+        "hold, so their conjunction holds: H_CV_Baseline is CONFIRMED. The baseline "
+        "is an AND of all three, not a majority; the gate makes that decision rule "
+        "explicit."
+    ),
 }
 
 
@@ -1137,6 +1157,14 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         "f2_convergent": (
             "chart_29_convergent_scatter.pdf",
             "v29_convergent",
+        ),
+        "f3_discriminant": (
+            "chart_29_discriminant_asymmetry.pdf",
+            "v29_discriminant",
+        ),
+        "f4_verdict": (
+            "chart_29_verdict_gate.pdf",
+            "v29_verdict",
         ),
     }
     return table.get(slot_key, (None, None))
@@ -1174,7 +1202,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
         w_in, h_in = CHART_FIGSIZE_IN[figsize_key]
         # v0.29 hero slot names — 4 findings pattern (one more than v0.18-v0.21)
         # v0.29 (CV.05) — both charted patterns carry a hero figure
-        is_hero = slot in ("f1_mtmm_gap", "f2_convergent")
+        is_hero = slot in ("f1_mtmm_gap", "f2_convergent", "f3_discriminant", "f4_verdict")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = _sanitize_akkurat(
             HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}."))
@@ -1341,9 +1369,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>What AI Presence Does Not Predict: Amazon Best Sellers Rank as "
-        "Discriminant Validity Evidence for the AIAS Construct (v0.29)</i>. "
-        "Third System. thirdsystem.ai/v29 (SSRN 6847678)"
+        "<i>The Presence Component Is Construct-Valid: A Convergent–Discriminant "
+        "(Campbell–Fiske) Baseline for AI Availability (v0.29)</i>. "
+        "Third System. thirdsystem.ai/v29 (SSRN 6870778)"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1473,6 +1501,8 @@ def build(*, debug_layout: bool = False,
     expected_slots = [
         "f1_mtmm_gap",
         "f2_convergent",
+        "f3_discriminant",
+        "f4_verdict",
     ]
     expected_files = set()
     for sk in expected_slots:
@@ -1499,7 +1529,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="What AI Presence Does Not Predict \u2014 AIAS v0.29",
+        title="The Presence Component Is Construct-Valid \u2014 AIAS v0.29",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )

@@ -53,7 +53,7 @@ with their respective component deposits.
 - `README.md` — this file
 - `papers/` — SSRN synthesis paper (PDF)
 - `reports/` — Third System™ brand-format report (PDF)
-- `figures/` — `chart_29_mtmm_gap.pdf`, `chart_29_convergent_scatter.pdf`
+- `figures/` — `chart_29_mtmm_gap.pdf`, `chart_29_convergent_scatter.pdf`, `chart_29_discriminant_asymmetry.pdf`, `chart_29_verdict_gate.pdf`
 - `prereg/` — locked pre-registration content module + assembly spec
 - `scripts/` — synthesis scorer and build pipeline (paper, charts, report)
 - `data/` — `v29_verdicts.json` (the assembled MTMM matrix + verdict; the single computed output)
