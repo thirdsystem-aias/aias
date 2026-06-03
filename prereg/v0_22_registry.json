@@ -1,0 +1,138 @@
+{
+  "phase": "v0.22",
+  "substrate": "Automotive",
+  "lock_state": "v0.22-prereg-r2",
+  "reference_panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "panel_n": 6,
+  "max_c_p": 6,
+  "max_r_channel": 18,
+  "cells": {
+    "A": {
+      "label": "Heritage",
+      "long_key": "Cell_A_Heritage",
+      "brands": [
+        {
+          "name": "Mercedes-Benz",
+          "cascade_order": 1
+        },
+        {
+          "name": "Jaguar",
+          "cascade_order": 2
+        },
+        {
+          "name": "Cadillac",
+          "cascade_order": 3
+        },
+        {
+          "name": "Rolls-Royce",
+          "cascade_order": 4
+        },
+        {
+          "name": "Bentley",
+          "cascade_order": 5
+        },
+        {
+          "name": "Porsche",
+          "cascade_order": 6
+        },
+        {
+          "name": "BMW",
+          "cascade_order": 7
+        }
+      ]
+    },
+    "B": {
+      "label": "Disruptor",
+      "long_key": "Cell_B_Disruptor",
+      "brands": [
+        {
+          "name": "Tesla",
+          "cascade_order": 1
+        },
+        {
+          "name": "Rivian",
+          "cascade_order": 2
+        },
+        {
+          "name": "Lucid",
+          "cascade_order": 3
+        },
+        {
+          "name": "Polestar",
+          "cascade_order": 4
+        },
+        {
+          "name": "Fisker",
+          "cascade_order": 5
+        }
+      ]
+    },
+    "C": {
+      "label": "Mass-Legacy",
+      "long_key": "Cell_C_Mass_Legacy",
+      "brands": [
+        {
+          "name": "Toyota",
+          "cascade_order": 1
+        },
+        {
+          "name": "Honda",
+          "cascade_order": 2
+        },
+        {
+          "name": "Ford",
+          "cascade_order": 3
+        },
+        {
+          "name": "Chevrolet",
+          "cascade_order": 4
+        },
+        {
+          "name": "Hyundai",
+          "cascade_order": 5
+        },
+        {
+          "name": "Volkswagen",
+          "cascade_order": 6
+        },
+        {
+          "name": "Nissan",
+          "cascade_order": 7
+        }
+      ]
+    },
+    "D": {
+      "label": "Defunct",
+      "long_key": "Cell_D_Defunct",
+      "brands": [
+        {
+          "name": "Pontiac",
+          "cascade_order": 1
+        },
+        {
+          "name": "Oldsmobile",
+          "cascade_order": 2
+        },
+        {
+          "name": "Plymouth",
+          "cascade_order": 3
+        },
+        {
+          "name": "Mercury",
+          "cascade_order": 4
+        },
+        {
+          "name": "Saturn",
+          "cascade_order": 5
+        }
+      ]
+    }
+  }
+}
