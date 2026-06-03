@@ -1,5 +1,5 @@
 ---
-title: "AI Availability is Not Reducible to Recognition Memory --- and is Underpowered Against Familiarity at n = 24"
+title: "Recognition Saturates, Consistency Doesn't"
 author: "Pablo Ulpiano González Castro"
 date: "June 2026"
 mainfont: "Carlito"
@@ -20,9 +20,9 @@ header-includes: |
 
 <!--
   build: thin pandoc wrapper -> xelatex (Carlito). NO LaTeX from Python.
-  Figures expected at reports/figs/chart_28_*.pdf (adjust the path if the
-  build runs from a directory other than the repo root).
-  Titlepage is the first body block; Abstract is forced to page 2.
+  Figures expected at ../../reports/figs/v30/chart_30_*.pdf, resolved via
+  --resource-path=papers/v0_30. Titlepage is the first body block; Abstract
+  is forced to page 2.
 -->
 
 \begin{titlepage}
@@ -31,14 +31,14 @@ header-includes: |
 \centering
 \vspace*{1.2cm}
 
-{\LARGE\bfseries AI Availability is Not Reducible to Recognition Memory ---\\[2pt] and is Underpowered Against Familiarity at \textit{n} = 24\par}
+{\LARGE\bfseries Recognition Saturates, Consistency Doesn't\par}
 
 \vspace{0.5cm}
-{\large\itshape A pre-registered discriminant-validity test of AIAS\texttrademark{} Presence against human brand familiarity and recognition sensitivity\par}
+{\large\itshape An Instrument-Specification Pilot of the AIAS\texttrademark{} Consistency Component (CPC) across Skincare, Cosmetics, and Automotive\par}
 
 \vspace{0.4cm}
-{\normalsize Working Paper \textperiodcentered{} Version 1 \textperiodcentered{} Designed-for-Test (Technology)\par}
-{\normalsize AIAS Presence Measurement Protocol \textperiodcentered{} Construct-Validity Phase CV.04 (v0.30)\par}
+{\normalsize Working Paper \textperiodcentered{} Instrument-Specification Pilot\par}
+{\normalsize AIAS Presence Measurement Protocol \textperiodcentered{} Consistency Component CPC.01 (v0.30)\par}
 
 \vspace{1.0cm}
 {\large Pablo Ulpiano González Castro\par}
@@ -52,7 +52,7 @@ header-includes: |
 {\small ORCID: 0009-0003-8968-9990\par}
 
 \vspace{1.0cm}
-{\small Pre-registration: OSF \texttt{osf.io/ec6wh} \textperiodcentered{} tags \texttt{v0.30-prereg-r1 / r2}\\
+{\small Pre-registration: OSF \texttt{osf.io/ec6wh} \textperiodcentered{} tags \texttt{v0.30-prereg-r1 / r2}; results \texttt{v0.30-results-r2}\\
 Data, scoring, and verdicts deposited under \texttt{osf.io/ec6wh} (v30).\par}
 
 \vfill
@@ -61,165 +61,104 @@ Data, scoring, and verdicts deposited under \texttt{osf.io/ec6wh} (v30).\par}
 
 # Abstract {-}
 
-AI Availability --- the degree to which a brand is surfaced, recognized, and recalled by large language models --- has been proposed as a third measurable layer of brand availability alongside mental and physical availability. For the construct to earn that status it must be shown to be distinct from the human memory measures it superficially resembles. This paper reports a pre-registered discriminant-validity test of the AIAS\texttrademark{} Presence component against two human brand norms drawn from the published BRAND database: familiarity (1--7) and recognition sensitivity (\textit{d}′). Presence was composed blind from a six-model panel over 24 technology brands stratified by familiarity, joined to the validator only at a one-shot scoring step. Against recognition sensitivity, Presence is discriminant (Spearman ρ = 0.379, |ρ| < 0.50; BCa 95% CI upper 0.714 excludes the 0.74 reducibility threshold) --- CONFIRMED, though the interval is wide. Against familiarity the point estimate sits in the partial band (ρ = 0.593) but the BCa interval [0.179, 0.832] spans all three pre-registered bands, so the locked rule returns UNDETERMINED rather than a finding. A descriptive within-panel dissociation is full and bidirectional: Presence amplifies core-technology brands and suppresses consumer-famous but non-core-technology brands relative to familiarity. The enterprise-heavy panel and consumer-framed recall cues floored the recall channel, reducing Presence toward its recognition component; the familiarity question therefore remains open and is flagged for a higher-powered follow-up. The result pairs with the convergent (v0.25) and Amazon-BSR discriminant (v0.26) evidence as one cell of a multitrait--multimethod construct-validity program.
+The AIAS (AI Availability Score) program measures a brand's availability inside large language models. Its first component, Presence, captures whether a brand surfaces; its second, Consistency (CPC), captures how stably it surfaces across the model panel. This instrument-specification pilot defines Consistency as the cross-model dispersion of a brand's recall signal and tests it on three anchored substrates — skincare, cosmetics, and automotive — each measured against an identical six-model panel, reusing deposited data under a pre-registered analysis plan. Recall-based Consistency is defined for a majority of brands precisely where recognition has saturated and can no longer discriminate (confirmed), and corrected Consistency differs significantly across categories with the apparatus held fixed (confirmed). The raw measure is mechanically confounded with brand prominence, and a maximum-normalized (Bhatia–Davis) correction removes that confound — but this was testable in only one substrate, because the apparatus-homogeneous categories that sharpen the cross-category comparison are the mature categories in which recognition, the prominence variable, saturates. The confound hypotheses are therefore undetermined rather than confirmed. That tension — between the apparatus homogeneity a clean category comparison demands and the prominence variance a confound test requires — is the pilot's principal contribution, and it specifies the design the construct's validation must adopt.
 
-**Keywords:** AI availability; large language models; brand measurement; construct validity; discriminant validity; recognition memory; mental availability; AIAS; share of model; pre-registration
+**Keywords:** AI Availability; AI Availability Score; large language models; brand consistency; construct validity; coefficient of variation; brand measurement; generative AI search
 
-**JEL codes:** M31 (primary); L86; L15; D83; M37
+**JEL codes:** M31 (primary); M37, L15, L86, D83
 
-**Paper status:** Pre-registered, blind-acquired, one-shot scored. All hypotheses, thresholds, panel, and the Presence definition were frozen at git tags before any model was queried; the validator was joined only at scoring. This is a single empirical cell of the AIAS construct-validity program, not a standalone validation of the full construct.
+**Paper status:** Working paper · v0.30 (CPC.01). Pre-registered analysis; methodology and decision rules locked before scoring at git tags v0.30-prereg-r1 / r2, results at v0.30-results-r2. Pre-registration, data, scoring code, and verdicts deposited at OSF (osf.io/ec6wh).
 
 # 1. Introduction
 
-Ehrenberg-Bass theory frames brand growth through two forms of availability: mental availability, the propensity of a brand to be thought of in buying situations, and physical availability, the ease of finding and buying it (Sharp 2010; Romaniuk & Sharp 2022). A third layer has been proposed --- AI Availability, the propensity of a brand to be surfaced, recognized, and recalled by the large language models that increasingly mediate discovery and recommendation (González Castro 2026b). The AIAS\texttrademark{} (AI Availability Score) program operationalizes the first observable slice of this layer as **Presence**: a composite of whether models recognize a brand in its category and whether they recall it under category and cultural cues.
+The AIAS (AI Availability Score) program treats a brand's availability inside large language models as a measurable layer of brand growth, alongside the mental and physical availability of the Ehrenberg-Bass tradition. Its first component, Presence, established that the degree to which a fixed panel of models recognizes and recalls a brand can be measured reliably and varies systematically across categories. Presence captures only *whether* a brand surfaces, however — not how stably it does so. Two brands may share an identical Presence score while one appears in every model's response and the other in half of them, differing sharply in the reliability of their AI representation. That stability is the object of the second component, Consistency (CPC).
 
-A new construct earns its place only by surviving construct validation. Convergent evidence has been reported: AIAS Presence correlates with an external interest signal (Google Trends) at ρ ≈ 0.74 (González Castro 2026c). Convergence alone is insufficient. A measure that merely re-indexes how well known a brand already is would be redundant with existing, cheaper human norms --- it would have convergent validity and no discriminant validity. The multitrait--multimethod logic of Campbell and Fiske requires that a measure correlate less with conceptually distinct traits than with itself across methods (Campbell & Fiske 1959). Two human brand norms make the sharpest adversarial tests: **familiarity**, a direct fame rating, and **recognition sensitivity** (\textit{d}′), a signal-detection measure of how reliably people distinguish a real brand from a foil.
+Consistency is operationalized as the dispersion of a brand's recall signal across the model panel: a brand that surfaces evenly across all panel models is consistent; one that surfaces erratically is not. The natural statistic is the cross-model coefficient of variation, which carries a known hazard. On a bounded signal the coefficient of variation is mechanically coupled to its mean — dispersion is constrained near the floor and ceiling and maximized mid-range — so a raw measure registers low-frequency brands as inconsistent for an arithmetic reason rather than a substantive one. Establishing Consistency as a construct therefore requires more than computing a number: it requires showing the measure can be separated from sheer prominence, and that a principled correction restores that separation.
 
-This paper reports the discriminant cell of that program (phase CV.04). The pre-registered question is narrow and falsifiable: *is AIAS Presence reducible to human familiarity and to human recognition sensitivity?* The category was chosen to be adversarial. Technology brands are the case where AI fame and human fame should align most tightly --- model training corpora are saturated with technology discourse --- so if Presence is going to collapse into a familiarity proxy anywhere, it should collapse here. A discriminant result on an adversarial substrate is stronger than one on a forgiving one; an inconclusive result on it is honest about the limits of the present sample.
+This study is an instrument-specification pilot. It does not estimate population values but specifies the Consistency instrument, exposes its failure modes on real data, and hands a normalization recommendation to the forthcoming methodology lock. Four pre-registered hypotheses structure the test. H_CPC_Computable asks whether a recall-based consistency signal is definable in categories where recognition has saturated — where every brand is recognized by every model and recognition can no longer discriminate. H_CPC_LevelConfound asks whether the raw measure is contaminated by prominence. H_CPC_LevelCorrected asks whether a maximum-normalized (Bhatia–Davis) correction removes that contamination. H_CPC_SubstrateVariation asks whether Consistency, once corrected, varies across categories rather than behaving as a fixed brand trait.
+
+The pilot reuses already-deposited measurement data from three anchored substrates — skincare, cosmetics, and automotive — each measured against an identical six-model panel under a common protocol, with no new model queries. The substrates were selected for apparatus homogeneity, so that any cross-category difference in Consistency could be attributed to category rather than to measurement.
+
+The outcome is mixed in an informative way. H_CPC_Computable and H_CPC_SubstrateVariation are confirmed: recall yields a defined consistency signal precisely where recognition has gone dark, and corrected Consistency differs significantly across categories. The confound hypotheses are not. In the single substrate that retained variance in the prominence variable (skincare), the predicted pattern held cleanly — the raw measure was confounded with prominence, and the correction removed that confound — but in the two saturated substrates the confound test is mathematically undefined, because the prominence variable is constant. The headline confound claim is therefore UNDETERMINED, not because the instrument failed but because the same category homogeneity that sharpened the substrate-variation result eliminated the prominence variance the confound test requires. That tension — between the apparatus homogeneity a clean category comparison demands and the prominence variance a confound test demands — is the pilot's principal methodological contribution, and §5 develops it as a design constraint for the methodology lock.
 
 # 2. Method
 
-## 2.1 Design and pre-registration
+**2.1 Design and data.** The pilot analyses previously collected measurement data; no new model queries were issued. Three anchored substrates supply the data — skincare, cosmetics, and automotive — each a locked registry of 24 brands measured under a common protocol and deposited in the program's archive. All three were measured against an identical six-model reference panel (Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, GPT-4o-mini, Gemini 2.5 Flash, Gemini 2.5 Flash Lite) with identical two-channel recall instrumentation. This homogeneity is deliberate: holding the panel and instrument fixed across substrates ensures that any cross-substrate difference in Consistency is attributable to the substrate, not to the measurement. Each brand carries two prior signals — a Phase A recognition count and a Phase B two-channel recall record.
 
-The study follows the AIAS Presence Measurement Protocol v1.6 (González Castro 2026a). Every hypothesis, threshold, the brand panel, the validator, and the Presence composition rule were committed to git and pushed before any model was queried (tag `v0.30-prereg-r1`); a single amendment fixing a normalization denominator was committed before acquisition (tag `v0.30-prereg-r2`, see §2.5). Acquisition was run blind to the validator, and scoring --- the join of Presence to the human norms --- was executed exactly once, after the data were locked and deposited.
+**2.2 The consistency instrument.** For each brand *b* and model *m*, a recall signal $s(b,m)$ is the fraction of Phase B recall frames in which *b* surfaces in *m*'s response. The battery comprises six frames per model — three category-canonical (R_cat) and three cultural-footprint (R_cult) — so $s(b,m) \in [0,1]$. Mentions are detected with each substrate's own canonical matcher (case-insensitive, accent-stripped, possessive-aware, first-occurrence-wins), reused unchanged so detection matches each phase's original scoring. Each brand thus yields a six-element vector across the panel.
 
-## 2.2 Validator and panel
+Consistency is the dispersion of that vector. Because the six models constitute the full reference population, dispersion is the population standard deviation. Two forms are reported. The raw instrument is the cross-model coefficient of variation, $\mathrm{CPC}_{\mathrm{raw}} = \mathrm{SD}_m[s] / \mathrm{mean}_m[s]$. Because the coefficient of variation on a bounded signal is mechanically coupled to its mean, a level-corrected instrument is also computed: $\mathrm{CPC}_{\mathrm{corr}} = \mathrm{SD}_m[s] / \sqrt{\mu(1-\mu)}$, where $\mu = \mathrm{mean}_m[s]$. The denominator is the maximum standard deviation attainable by any [0,1] variable with mean $\mu$ — the Bhatia–Davis bound — so CPC_corr expresses dispersion as a fraction of the maximum possible at that level and is, in principle, freed from the mean-dependence that contaminates the raw measure. A level-residualized coefficient of variation (the raw measure regressed on $\mu$, residuals retained) is reported as a robustness variant.
 
-The validator is the published BRAND database, which provides familiarity ratings (1--7) and recognition sensitivity (\textit{d}′) from a signal-detection task for the Brand Finance US 500 roster (Raffaelli et al. 2025). From its technology category (80 brands), 70 had complete familiarity and \textit{d}′ data. One eligible brand, Harman, was removed by a frame-level conflict-of-interest screen (Samsung ownership; see Declarations), leaving 69. A panel of 24 was drawn stratified by familiarity tertile (eight per tertile) with a fixed random seed (280400). The panel spans the full familiarity range (1.00--6.83) and includes both consumer-facing brands (Apple, Google, Microsoft, Netflix, Instagram) and enterprise or industrial brands (Corning, VMware, HPE, NetApp, Jabil, Pitney Bowes, Parker-Hannifin, Lam Research, 3M).
+**2.3 Level variable and degenerate cells.** The confound is assessed against the brand's recognition count, L(*b*) = C_P $\in$ {0, …, 6}, from Phase A. Recognition is chosen deliberately over a recall-inclusive prominence measure: because the recall mean already appears inside the consistency statistic, correlating Consistency with a recall-based level would be partly tautological, whereas recognition is an independent signal. A brand is treated as consistency-undefined where μ = 0 (recall floor) or μ ≥ 0.98 (recall ceiling), since dispersion is uninformative at the bounds; the share of brands with a defined score — the coverage rate — is itself a reported outcome. For the coverage comparison, a recognition-based consistency is defined only where 0 < C_P < 6, since a brand recognized by all or none of the panel admits no recognition dispersion.
 
-## 2.3 Presence composition
+**2.4 Hypotheses and decision rules.** H_CPC_Computable holds if recall coverage is at least 50% in all three substrates and exceeds recognition coverage in automotive, the substrate predicted to saturate recognition most severely. H_CPC_LevelConfound holds if the Spearman correlation ρ(CPC_raw, L) is significant with |ρ| ≥ 0.30 in at least two of three substrates; H_CPC_LevelCorrected holds if |ρ(CPC_corr, L)| < 0.20 with at least 50% attenuation relative to the raw correlation, again in at least two of three. Correlations carry BCa 95% confidence intervals (10,000 resamples, seed 280400). A substrate in which L is constant — every brand at the recognition ceiling — admits no correlation, the statistic being undefined against a constant input; such a substrate is classed untestable rather than as evidence either way, and where fewer than two substrates are testable the two-of-three bar cannot be reached and the verdict is UNDETERMINED rather than FALSIFIED. H_CPC_SubstrateVariation holds if a Kruskal–Wallis test across the three corrected-consistency distributions is significant at p < .05. A non-confirmatory exploratory analysis compares the rank ordering of recognition-based and recall-based consistency where both are defined.
 
-Presence was composed from a fixed six-model panel held constant across the program since v0.17: `claude-opus-4-5`, `claude-sonnet-4-5`, `gpt-4o`, `gpt-4o-mini`, `gemini-2.5-flash`, and `gemini-2.5-flash-lite`. Two phases were run.
-
-*Phase A --- recognition.* Each brand was put to each model with a single recognition probe ("Is the brand *X* commonly recognized as a technology brand? Answer yes or no."). The brand's recognition count $C_P$ is the number of models answering yes (0--6). This yields 24 × 6 = 144 probes.
-
-*Phase B --- recall.* Six category-level recall frames were posed to each model, three keyed to category quality ($R_{cat}$: best / expert-chosen / highest-quality technology brands) and three to cultural salience ($R_{cult}$: most talked-about / biggest cultural footprint / most iconic). A brand scores a recall point each time it is named in a frame × model response, to a maximum of 18 per channel (3 frames × 6 models). This yields 6 × 6 = 36 recall queries.
-
-Presence is the equal-weight mean of the three fraction-of-maximum components, on a 0--100 scale:
-
-$$\text{Presence} = \frac{1}{3}\left(\frac{C_P}{6} + \frac{R_{cat}}{18} + \frac{R_{cult}}{18}\right)\times 100.$$
-
-This is the same composition that produced the convergent ρ ≈ 0.74 anchor in v0.25; it is forced by commensurability, not chosen post hoc.
-
-## 2.4 Hypotheses and decision rule
-
-Two gating hypotheses were registered, each testing reducibility of Presence to a human norm via Spearman rank correlation, banded on the absolute coefficient |ρ|:
-
-- **H_Disc_Familiarity** (primary) --- Presence vs familiarity.
-- **H_Disc_Recognition** (secondary) --- Presence vs \textit{d}′.
-
-Bands: |ρ| < 0.50 → **CONFIRMED** (discriminant); 0.50 ≤ |ρ| < 0.74 → **PARTIAL**; |ρ| ≥ 0.74 → **FALSIFIED** (reducible). The 0.74 ceiling is the convergent benchmark: a discriminant correlation at or above the level the measure shows with its *own* convergent criterion would indicate redundancy. Verdicts are gated on the point estimate. A BCa bootstrap 95% confidence interval (10,000 resamples, seed 280400) is reported as non-gating context, with two flags: `ci_excludes_reducibility` (CI upper < 0.74) and a provisional flag for any CONFIRMED whose CI upper reaches 0.74. A locked override returns **UNDETERMINED** when *n* < 12 or when the CI spans all three bands.
-
-A third, descriptive hypothesis, **H_Dissociation**, was registered as non-gating and excluded from the headline: the count of brands whose within-panel standardized Presence and familiarity diverge by more than one standard deviation in either direction (amplified, Presence ≫ familiarity; suppressed, familiarity ≫ Presence). It is mechanically coupled to the primary correlation and is reported as corroborating texture, not independent evidence.
-
-A directional prediction was registered: ρ in the 0.30--0.60 range (partial, modal), reflecting the adversarial choice of Technology.
-
-## 2.5 Normalization amendment
-
-The r2 amendment recorded one deviation. The v0.25 anchor normalized recall on a 36-frame Phase B; Protocol v1.6 canon is a 6-frame battery with three frames per channel (maximum 18 per channel). The r1 design correctly implements the v1.6 battery; the amendment pinned the bridge to normalize recall on the v1.6 maximum (/18), preserving the equal-weight semantic. The benchmark comparison to the v0.25 convergent anchor is therefore approximate on cue breadth (the anchor used more cues per channel), a point carried to §5.
+**2.5 Pre-registration.** Methodology, thresholds, and decision rules were committed to a version-controlled tag before any scoring code was run. An initial registration was amended before analysis when input certification revealed that one originally specified substrate had been measured on a different model generation and another on a single-channel recall instrument; the substrate set was replaced with the present doubly-homogeneous trio, all hypothesis definitions and thresholds carried forward unchanged. The amendment and its rationale are recorded in the pre-registration's deviations log.
 
 # 3. Results
 
-The panel joined 24-to-24 against the validator with no name-mismatch drops. Presence ranged from 0.0 (QVC) to 100.0 (Apple), with Microsoft (94.4) and Google (85.2) next; recognition $C_P$ varied genuinely across the panel (QVC 0, Flex and Whirlpool 1, Jabil 2, several enterprise brands 3--4, the consumer leaders 6), so the test is well powered on the predictor even where recall is sparse.
+Across the three substrates, recall yields a defined consistency score for a clear majority of brands while recognition yields almost none. Coverage is 79% in skincare, 79% in cosmetics, and 62% in automotive, against recognition-based coverage of 17%, 0%, and 4% respectively (Figure 1). Recognition has saturated: in cosmetics all 24 brands are recognized by every model, and in automotive 23 of 24 are, leaving recognition with no dispersion to measure. Recall-based consistency remains defined precisely where recognition has gone dark. Both conditions of H_CPC_Computable hold — coverage exceeds 50% in every substrate, and recall coverage exceeds recognition coverage in automotive (62% against 4%) — and the hypothesis is **confirmed**.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.95\textwidth]{reports/figs/chart_28_verdict_bands.pdf}
-\caption{Point |ρ| with BCa 95\% confidence interval for each gating hypothesis, against the three pre-registered bands. Familiarity's interval straddles all three bands (UNDETERMINED); Recognition's stops left of the 0.74 line (CONFIRMED). \textit{n} = 24, seed 280400.}
-\end{figure}
+![Recall yields a consistency signal where recognition cannot. Share of each 24-brand category with a defined consistency score, recall-based versus recognition-based. Recognition is saturated (cosmetics 24/24, automotive 23/24 fully recognized) and yields a usable score for almost no brands; recall-based consistency is defined for 79%, 79%, and 62% of brands across skincare, cosmetics, and automotive.](../../reports/figs/v30/chart_30_coverage.pdf){#fig:coverage width=100%}
 
-**Recognition (secondary) --- CONFIRMED.** Presence correlates with recognition sensitivity at ρ = 0.379 (|ρ| < 0.50), inside the discriminant band. The BCa interval is [−0.076, 0.714]; its absolute upper bound (0.714) sits below the 0.74 reducibility threshold, so `ci_excludes_reducibility` is true and the verdict is not provisional. The verdict is clean on the locked rule, but the interval is wide and reaches into the partial band --- this is confirmed discriminance, not a tight one, and should be read as such.
+The same saturation that confirms H_CPC_Computable constrains the confound test. The correlation between raw consistency and recognition level can be estimated only where recognition varies, and recognition varies only in skincare. There, the raw measure is significantly associated with prominence: ρ(CPC_raw, L) = −0.47 (p = .04), the negative sign indicating that less-recognized brands register as less consistent — the mechanical inflation the correction is designed to remove (Figure 2). In cosmetics and automotive the recognition level is constant across the recall-defined brands, so the correlation is undefined; these substrates are untestable for the confound rather than evidence against it. With one testable substrate, the two-of-three bar cannot be reached, and H_CPC_LevelConfound is **undetermined**.
 
-**Familiarity (primary) --- UNDETERMINED.** The point estimate is ρ = 0.593, inside the partial band, consistent with the registered prediction. But the BCa interval is [0.179, 0.832]: its lower bound falls in the CONFIRMED band and its upper bound in the FALSIFIED band, so the interval spans all three. The locked override fires and returns UNDETERMINED, overriding the partial point verdict. At *n* = 24 the data cannot distinguish a discriminant Presence from one reducible to familiarity; the honest reading is that the primary question is unresolved at this sample size, not that a partial relationship has been established.
+![Raw consistency tracks prominence where prominence varies. CPC_raw against recognition level L (C_P) for recall-defined brands. In skincare, where recognition varies, the two are correlated (ρ = −0.47, p = .04); in cosmetics and automotive every brand sits at full recognition, collapsing to a vertical stack where the correlation is undefined.](../../reports/figs/v30/chart_30_confound.pdf){#fig:confound width=100%}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.95\textwidth]{reports/figs/chart_28_discriminant_scatters.pdf}
-\caption{Presence against human familiarity (left) and recognition sensitivity \textit{d}′ (right), 24 brands. ρ is rank-based (Spearman); axes show raw values. Labelled points are the dissociation crossers.}
-\end{figure}
+Where the correction could be evaluated, it behaved as specified. In skincare the association with prominence fell from −0.47 to −0.13 (p = .59, no longer significant), an attenuation of 72%; the residualized robustness variant moved in the same direction (ρ = −0.27), corroborating that the bias is both real and removable (Figure 3). Considered alone, skincare satisfies both conditions of H_CPC_LevelCorrected (|ρ_corr| < 0.20 and attenuation ≥ 50%). But the hypothesis requires the pattern in at least two substrates, and only one is testable; H_CPC_LevelCorrected is therefore **undetermined**, with the single-substrate demonstration reported as supporting rather than confirmatory evidence.
 
-**Dissociation (descriptive) --- FULL.** Eleven of 24 brands cross the ±1 SD threshold in both directions (population SD, within-panel standardization). Four are amplified --- Apple (+1.23), Microsoft (+1.15), HPE (+1.07), NetApp (+1.07) --- all core-technology brands the panel surfaces more strongly than human familiarity does. Seven are suppressed --- Netflix (−1.04), Instagram (−1.05), Uber (−1.25), Airbnb (−1.05), Whirlpool (−1.71), 3M (−1.03), QVC (−1.56). The suppressed set splits into consumer-famous but non-core-technology brands (Netflix, Instagram, Uber, Airbnb) and human-familiar but low-AI-presence brands (Whirlpool, 3M, QVC). The pattern is systematic, not noise, and it reconciles with the recall-channel evidence: Netflix and Instagram surfaced under the cultural cues ($R_{cult}$) but not the quality cues ($R_{cat}$), while several enterprise brands showed the reverse.
+![The level correction removes the prominence bias (skincare). Raw (CPC_raw) and corrected (CPC_corr) consistency against recognition level for skincare brands. The Bhatia–Davis correction attenuates the association with prominence by 72% (ρ from −0.47 to −0.13, no longer significant).](../../reports/figs/v30/chart_30_correction.pdf){#fig:correction width=100%}
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.78\textwidth]{reports/figs/chart_28_dissociation.pdf}
-\caption{Within-panel standardized difference z(Presence) − z(familiarity) for all 24 brands, with ±1.0 thresholds. Amplified brands (Presence ≫ familiarity) and suppressed brands (familiarity ≫ Presence). Descriptive and non-gating.}
-\end{figure}
+With the measurement apparatus held identical across substrates, the corrected-consistency distributions differ significantly (Kruskal–Wallis H = 14.24, p < 0.001; Figure 4). Because the panel and instrument are constant, the difference is attributable to the substrate rather than to measurement, and H_CPC_SubstrateVariation is **confirmed**: Consistency is category-conditioned, not a property a brand carries uniformly across categories.
 
-Table 1 records the pre-registered outcomes.
+![Consistency differs by category. Corrected consistency (CPC_corr) per recall-defined brand, by category, with the model panel held identical across categories. The distributions differ significantly (Kruskal–Wallis H = 14.24, p < 0.001).](../../reports/figs/v30/chart_30_variation.pdf){#fig:variation width=100%}
 
-| Hypothesis | Role | ρ (signed) | \|ρ\| band | BCa 95% CI | Verdict |
-|---|---|---|---|---|---|
-| H_Disc_Familiarity | Primary (gating) | 0.593 | PARTIAL (point) | [0.179, 0.832] | **UNDETERMINED** |
-| H_Disc_Recognition | Secondary (gating) | 0.379 | CONFIRMED | [−0.076, 0.714] | **CONFIRMED** |
-| H_Dissociation | Tertiary (descriptive) | --- | --- | --- | **FULL** (11/24) |
+The pre-registered exploratory comparison of recognition-based and recall-based consistency rankings could not be computed: recognition-based consistency is defined for fewer than three brands across the trio — the same saturation that rendered the confound test untestable. Table 1 summarizes the per-substrate coverage and correlations.
 
-: Pre-registered outcomes. Verdicts gated on the point estimate; the UNDETERMINED override fires when the BCa interval spans all three bands. Dissociation is non-gating and excluded from the headline.
+Table: Per-substrate coverage and prominence correlations. Correlations are undefined where recognition level is constant across recall-defined brands.
+
+| Substrate | n (defined) | Recall coverage | Recognition coverage | ρ(CPC_raw, L) | ρ(CPC_corr, L) | Attenuation |
+|---|---|---|---|---|---|---|
+| Skincare | 19 | 79% | 17% | −0.47 (p = .04) | −0.13 (p = .59) | 72% |
+| Cosmetics | 19 | 79% | 0% | undefined (L constant) | — | — |
+| Automotive | 15 | 62% | 4% | undefined (L constant) | — | — |
 
 # 4. Discussion
 
-The two gating verdicts describe a measure that is distinct from one human norm and unresolved against the other --- and the reason for the asymmetry is the same fact in both cases.
+Two results establish Consistency as a construct worth measuring, and a third — the indeterminate one — locates the condition under which it can be validated.
 
-The panel was enterprise-heavy by construction (a familiarity-stratified draw from a category whose mass is industrial and B2B brands), and the recall frames were consumer-oriented ("best technology brands," "most iconic"). Those frames do not surface Jabil or Pitney Bowes or Parker-Hannifin. Recall therefore floored for most of the panel, and where recall floors, Presence reduces toward its recognition component $C_P$ (Figure 4). What the study actually tested, for most brands, was AI recognition against the two human norms.
+That H_CPC_Computable is confirmed is more consequential than a coverage statistic suggests. Recognition is the cheaper and more obvious signal, and in mature, high-identity categories it saturates: every serious brand is recognized by every model, and recognition ceases to discriminate. A consistency measure that merely tracked recognition would inherit that ceiling and go dark with it. Recall-based Consistency does not. It remains defined for a clear majority of brands exactly where recognition is exhausted — the first evidence that the component carries information the recognition channel cannot, a discriminant property established not by a low correlation but by the measure's survival where the prior signal collapses.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.95\textwidth]{reports/figs/chart_28_presence_composition.pdf}
-\caption{Presence decomposed into its three components for each brand. For most of the enterprise-heavy panel the recall channels contribute little and Presence reduces toward the recognition component $C_P$.}
-\end{figure}
+H_CPC_SubstrateVariation, also confirmed, establishes that this information has structure. With the panel and instrument held identical across categories, corrected Consistency still differs significantly between them; the difference cannot be a measurement artifact and is therefore a property of the category. Consistency is not a trait a brand carries uniformly wherever it appears — it is conditioned by the category in which the brand is being surfaced. A construct that varied randomly, or not at all, would not repay further measurement; one that varies systematically by category does.
 
-Read through that lens, the recognition result is the more interesting one. AI recognition --- does a model class a brand as a technology brand --- diverges from human recognition sensitivity (\textit{d}′) at ρ = 0.379. The two recognition measures are only moderately related; the model's category judgement is not a restatement of how reliably a person tells the brand from a foil. That is a substantive discriminant finding, and the wide interval is the honest qualifier on it.
+The confound results are where interpretation must be most disciplined. In the single substrate that retained variance in the prominence variable, the instrument behaved exactly as its design anticipates: the raw coefficient of variation was significantly and negatively associated with recognition (ρ = −0.47), meaning less-recognized brands were scored as less consistent for an arithmetic reason rather than a substantive one, and the Bhatia–Davis correction removed that association (to ρ = −0.13, n.s.), with the residualized variant corroborating the direction. This is a clean demonstration that the confound is real and that the correction works. It is not, however, a confirmation. A single substrate cannot establish that the correction generalizes across categories whose prominence distributions differ, and the pre-registered decision rule — requiring the pattern in at least two of three substrates — returns UNDETERMINED rather than read a general claim from one case. The program therefore carries the Bhatia–Davis correction forward as a provisional working normalization: demonstrated where it could be tested, pending confirmation where it could not.
 
-The familiarity result is what an underpowered adversarial test should look like when it refuses to overclaim. The point estimate leans toward partial discriminance, exactly as predicted, but the interval is too wide to exclude either a genuinely discriminant Presence or one that collapses into familiarity. The pre-registered override did its job: it converted a tempting partial point estimate into an explicit "unresolved." A study that reported ρ = 0.59 as a partial finding here would be reading more into 24 brands than 24 brands can bear.
+The reason it could not be tested is the pilot's central methodological finding. The substrate set was chosen for apparatus homogeneity, so that the category comparison underlying H_CPC_SubstrateVariation would be clean. But apparatus-homogeneous categories in a mature market are precisely the categories in which recognition saturates — and recognition is the variable against which the confound is assessed. The design choice that sharpened one validity test eliminated the variance the other required. This is not an accident of the categories selected; it is a structural tension for any dispersion measure whose confound is assessed against a bounded prominence signal. Wherever prominence saturates, the confound is simultaneously most suspected — the coefficient of variation being mechanically lowest at the ceiling — and least testable, there being no variance to test against. Validating Consistency therefore requires a substrate set selected deliberately to span prominence, not merely matched on apparatus, together with a level variable that retains variance where recognition does not.
 
-The dissociation supplies the qualitative complement the correlation cannot. Presence and familiarity do not merely correlate imperfectly; they diverge in a patterned way. The model layer over-weights core-technology identity (Apple, Microsoft, the enterprise infrastructure brands) and under-weights brands that are culturally famous without being category-canonical technology (Netflix, Instagram, Uber, Airbnb). This is the kind of structured divergence one would expect if AI Availability indexes something other than fame --- but it is mechanically coupled to the primary correlation and is offered as illustration, not proof.
-
-Placed in the construct-validity program, CV.04 contributes one multitrait--multimethod cell: discriminant from recognition sensitivity (confirmed), discriminant from familiarity (unresolved, flagged for replication at higher power). It sits beside the convergent evidence of v0.25 (Presence × Google Trends) and the discriminant evidence of v0.26 (Amazon BSR discriminant), which together form a Campbell--Fiske pairing of convergent and discriminant tests across methods.
+A final point bears on the correction's practical stakes. The bias it removes runs against less-recognized brands: the raw measure would score smaller brands as less consistent regardless of how stably they actually surface. An AI-availability diagnostic is most decision-relevant precisely for such brands, so a correction that restores fairness across the prominence range is not a statistical refinement but a precondition for the metric's usefulness.
 
 # 5. Limitations
 
-Three limitations bound the reading, and they compound.
+The confound results rest on a single testable substrate. The instrument's central mechanic — bias and its correction — was observable only in skincare, so the demonstration that the Bhatia–Davis correction removes the prominence bias, however clean, is a single case rather than a confirmed generalization. The category selection is the proximate cause: the trio was chosen for apparatus homogeneity and sits mid-to-high on brand identity, with no low-recognition category to preserve a prominence spread, so two of three substrates saturated the variable against which the confound is assessed.
 
-*Sample size.* At *n* = 24 the BCa intervals are wide enough that the primary hypothesis cannot be resolved. This is the binding constraint. The panel size was fixed by the requirement to stratify a single category by familiarity tertile while holding the six-model panel and probe battery constant; resolving the familiarity question requires a larger panel, which a future phase should supply.
+The level variable compounds this. Recognition count is a coarse ordinal on {0, …, 6} with no resolution above its ceiling; the same coarseness that keeps it independent of the recall mean — and so free of tautology — is what causes it to saturate and lose all variance in mature categories. A variable that discriminated among fully-recognized brands would have left the confound testable.
 
-*Recall floor and substrate.* The enterprise-heavy Technology panel under consumer-framed recall cues floored the recall channels, so Presence reduced toward recognition for most brands. The discriminant tests therefore largely evaluated AI recognition, not the full tri-component Presence construct, against the human norms. A consumer-category panel with richer recall would test the full construct against familiarity more cleanly, and is the natural next substrate.
-
-*Benchmark commensurability.* The 0.74 reducibility threshold is the v0.25 convergent anchor, which normalized recall over a wider per-channel cue set than the v1.6 battery used here. The threshold comparison is therefore approximate on cue breadth. It is used as a fixed, pre-registered decision boundary, not as a precise like-for-like quantity.
+The remaining limitations are of scope. Consistency is measured across models at a single point in time; cross-platform consistency — dispersion across deployment surfaces, with their retrieval and system-prompt augmentation — is defined in the protocol but not measured here, and temporal consistency is not addressed. The analysis reuses already-deposited measurement data rather than fresh acquisition, and each substrate contributes only 24 brands (15–19 with a defined score), limiting correlation power even where the confound is testable. None of these bound the two confirmed hypotheses, which rest on coverage and cross-substrate comparison rather than within-substrate correlation; they bound the confound pair specifically.
 
 # 6. Future Research
 
-The immediate priority is a higher-powered replication of the familiarity test on a consumer category where recall does not floor, so that the full Presence composite --- not its recognition component alone --- is what confronts familiarity. Two further cells would complete the discriminant matrix: a direct mental-availability comparison using category-entry-point measures, which requires a brand-level dataset the present study could not source without primary human-subjects collection; and a recognition-sensitivity replication on a substrate where AI and human recognition are expected to diverge more sharply. Consolidating these cells is the gate to expanding AIAS beyond the Presence component to the full multi-component composite.
+The pilot's indeterminate result is also its clearest instruction for what follows. Construct-validating Consistency requires a design that satisfies two demands the present one could meet only separately: a homogeneous measurement apparatus, so that category differences are real, and a spread of brand prominence, so that the confound test can run. These are reconcilable, but only by deliberate design rather than convenience.
 
-# References {-}
+Two pre-registered changes, fixed before any data is seen, would accomplish it. First, a graded prominence variable that retains variance where recognition saturates — drawn from a signal with resolution above the recognition ceiling, while remaining independent of the recall mean so the confound test stays non-tautological. Second, a category set spanning recognition levels from niche to ubiquitous, so that at least two substrates carry the prominence variance the test requires, with the panel and recall instrument held fixed across them. Together these resolve the apparatus-versus-prominence tension by construction.
 
-Campbell, D. T., & Fiske, D. W. (1959). Convergent and discriminant validation by the multitrait-multimethod matrix. *Psychological Bulletin*, 56(2), 81--105.
-
-Efron, B. (1987). Better bootstrap confidence intervals. *Journal of the American Statistical Association*, 82(397), 171--185.
-
-González Castro, P. U. (2026a). *AIAS Presence Measurement Protocol, Version 1.6.* SSRN Working Paper 6816340.
-
-González Castro, P. U. (2026b). *AIAS 1.0 Synthesis.* SSRN Working Paper 6817841.
-
-González Castro, P. U. (2026c). *Convergent validity of AIAS Presence (B2B SaaS).* SSRN Working Paper (v0.25).
-
-González Castro, P. U. (2026d). *Amazon BSR discriminant validity of AIAS Presence.* SSRN Working Paper 6847678 (v0.26).
-
-Raffaelli, Q., Bocchi, A., Estes, Z., & Adelman, J. S. (2025). The BRAND database: Familiarity and recognition norms for the Brand Finance US 500. *Behavior Research Methods*, 57(1), 17.
-
-Romaniuk, J., & Sharp, B. (2022). *How Brands Grow: Part 2* (rev. ed.). Oxford University Press.
-
-Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know.* Oxford University Press.
+This is the recommendation the pilot carries into the methodology lock: that cross-substrate Consistency validation mandate apparatus homogeneity and prominence spread jointly, with a saturation-robust level variable, as preconditions rather than as properties discovered after the fact. Beyond it lie the scopes deferred here — cross-platform consistency across deployment surfaces, and temporal consistency across measurement waves — each extending the construct along a dimension this pilot held fixed. The Bhatia–Davis correction carries forward as the provisional working normalization until the redesigned test either confirms it across categories or selects the residualized or agreement-coefficient alternative pre-registered in its place.
 
 # Declarations {-}
 
-**Conflict of interest.** The author is employed by Samsung Electronics America. Samsung had no role in the design, conduct, analysis, or reporting of this study. To prevent any conflict at the data level, the Samsung-owned brand Harman was removed from the eligible frame by a pre-registered screen before panel sampling.
+**Conflict of interest.** The author is employed by Samsung Electronics America; the research entity Third System is independent. The three substrates analysed (skincare, cosmetics, automotive) contain no Samsung-owned brands, and the employer had no role in the design, analysis, or reporting.
 
 **Funding.** Self-funded.
 
-**Ethics.** Not applicable; no human subjects. Data are public model outputs queried through provider APIs and a published, de-identified human-norms dataset (the BRAND database).
+**Ethics.** Not applicable; no human subjects; public APIs and LLM prompts only.
 
-**Pre-registration and data availability.** Pre-registration, acquisition data, scoring code, and verdicts are deposited at OSF (`osf.io/ec6wh`, v30), with the design frozen at git tags `v0.30-prereg-r1` and `v0.30-prereg-r2` prior to acquisition and the result at `v0.30-results-locked`.
-
-# Author Information {-}
-
-Pablo Ulpiano González Castro --- MPS Branding Program, School of Visual Arts, New York, NY (primary academic affiliation); Third System\texttrademark{} (research entity; data archive and methodology venue). Correspondence: pablou@pablou.com \textperiodcentered{} pablou.com. ORCID: 0009-0003-8968-9990.
+**Data and code availability.** Pre-registration, reused measurement data, scoring code, and verdicts are deposited at OSF (osf.io/ec6wh, v30), under tags v0.30-prereg-r1 / r2 and v0.30-results-r2.

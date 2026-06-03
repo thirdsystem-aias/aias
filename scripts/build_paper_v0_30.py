@@ -47,6 +47,7 @@ UNICODE_SUBS = [
     ("\u2713", r"\checkmark"),   # ✓
     # CV.04 glyph gaps surfaced by xelatex/Carlito on the v0.30 source:
     ("ρ", r"$\rho$"),       # rho (19x; Carlito has no Greek)
+    ("μ", r"$\mu$"),        # mu (CPC level/mean; Carlito has no Greek) — prose only; math uses \mu
     ("′", r"$'$"),          # prime (d-prime recognition sensitivity)
     ("−", "-"),             # minus sign -> ASCII hyphen
     ("≫", r"$\gg$"),        # much-greater-than
