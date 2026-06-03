@@ -1,0 +1,202 @@
+{
+  "phase": "v0.30",
+  "cpc_index": "CPC.01",
+  "lock": "v0.30-prereg-r2",
+  "scope": "CPC_model (confirmatory)",
+  "no_new_llm_calls": true,
+  "thresholds_source": "prereg/v0_30_cpc_instrument_pilot_content.py :: SCORING",
+  "trio": [
+    {
+      "key": "v0.20",
+      "name": "skincare"
+    },
+    {
+      "key": "v0.21",
+      "name": "cosmetics"
+    },
+    {
+      "key": "v0.22",
+      "name": "automotive"
+    }
+  ],
+  "coverage": {
+    "v0.20": {
+      "recall": 0.7916666666666666,
+      "recognition": 0.16666666666666666,
+      "n_brands": 24,
+      "frames_per_model": {
+        "claude-opus-4-5": 6,
+        "claude-sonnet-4-5": 6,
+        "gpt-4o": 6,
+        "gpt-4o-mini": 6,
+        "gemini-2.5-flash": 6,
+        "gemini-2.5-flash-lite": 6
+      }
+    },
+    "v0.21": {
+      "recall": 0.7916666666666666,
+      "recognition": 0.0,
+      "n_brands": 24,
+      "frames_per_model": {
+        "claude-opus-4-5": 6,
+        "claude-sonnet-4-5": 6,
+        "gpt-4o": 6,
+        "gpt-4o-mini": 6,
+        "gemini-2.5-flash": 6,
+        "gemini-2.5-flash-lite": 6
+      }
+    },
+    "v0.22": {
+      "recall": 0.625,
+      "recognition": 0.041666666666666664,
+      "n_brands": 24,
+      "frames_per_model": {
+        "claude-opus-4-5": 6,
+        "claude-sonnet-4-5": 6,
+        "gpt-4o": 6,
+        "gpt-4o-mini": 6,
+        "gemini-2.5-flash": 6,
+        "gemini-2.5-flash-lite": 6
+      }
+    }
+  },
+  "F1_H_CPC_Computable": {
+    "verdict": "CONFIRM",
+    "all_ge_floor": true,
+    "automotive_recall_gt_recognition": true,
+    "coverage_floor": 0.5
+  },
+  "F2_H_CPC_LevelConfound": {
+    "verdict": "UNDETERMINED",
+    "confirm_count": 1,
+    "n_testable": 1,
+    "confound_rho_min": 0.3,
+    "per_substrate": {
+      "v0.20": {
+        "rho": -0.4719589716785615,
+        "p": 0.04133249002668168,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 19,
+        "defined_n": 19,
+        "testable": true,
+        "undetermined": false,
+        "undetermined_reason": null,
+        "meets_F2": true
+      },
+      "v0.21": {
+        "rho": NaN,
+        "p": NaN,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 19,
+        "defined_n": 19,
+        "testable": false,
+        "undetermined": true,
+        "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+        "meets_F2": false
+      },
+      "v0.22": {
+        "rho": NaN,
+        "p": NaN,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 15,
+        "defined_n": 15,
+        "testable": false,
+        "undetermined": true,
+        "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+        "meets_F2": false
+      }
+    }
+  },
+  "F3_H_CPC_LevelCorrected": {
+    "verdict": "UNDETERMINED",
+    "confirm_count": 1,
+    "n_testable": 1,
+    "corrected_ceiling": 0.2,
+    "attenuation_confirm": 0.5,
+    "attenuation_floor": 0.3,
+    "per_substrate": {
+      "v0.20": {
+        "rho": -0.13133210823449323,
+        "p": 0.5920068416195889,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 19,
+        "defined_n": 19,
+        "testable": true,
+        "undetermined": false,
+        "undetermined_reason": null,
+        "attenuation": 0.7217298195065567,
+        "meets_F3": true,
+        "f3_falsify_flag": false,
+        "resid_rho": -0.26820575923583456,
+        "resid_p": 0.2669083829044204
+      },
+      "v0.21": {
+        "rho": NaN,
+        "p": NaN,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 19,
+        "defined_n": 19,
+        "testable": false,
+        "undetermined": true,
+        "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+        "attenuation": null,
+        "meets_F3": false,
+        "f3_falsify_flag": false,
+        "resid_rho": NaN,
+        "resid_p": NaN
+      },
+      "v0.22": {
+        "rho": NaN,
+        "p": NaN,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 15,
+        "defined_n": 15,
+        "testable": false,
+        "undetermined": true,
+        "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+        "attenuation": null,
+        "meets_F3": false,
+        "f3_falsify_flag": false,
+        "resid_rho": NaN,
+        "resid_p": NaN
+      }
+    }
+  },
+  "level_variable_note": "L = Phase A recognition C_P is SATURATED (C_P=6 for ~all brands) in cosmetics and automotive, so rho(CPC, L) is undefined there; only skincare is testable for F2/F3. See v1_7 forward note.",
+  "F4_H_CPC_SubstrateVariation": {
+    "verdict": "CONFIRM",
+    "kruskal_H": 14.244727345913672,
+    "kruskal_p": 0.0008068573485167226,
+    "kw_alpha": 0.05
+  },
+  "exploratory_recognition_vs_recall_concordance": {
+    "pooled": null,
+    "per_substrate": {}
+  },
+  "certified_inputs_sha256": {
+    "v0.20": {
+      "phase_a": "c8ad6335c982ec95883fffa6c3cb185170b3cdd80b8694377c9fb8afb47d390e",
+      "phase_b": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828"
+    },
+    "v0.21": {
+      "phase_a": "d470940aa497f55588588536173a128a3394af2a6f0bb6e94825738622167d0d",
+      "phase_b": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1"
+    },
+    "v0.22": {
+      "phase_a": "93c1b147c44b9031bfad3eb5806d50fd26404cf9c9b7cea95f2fd8a7a00c246a",
+      "phase_b": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35"
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 280400,
+    "method": "BCa",
+    "ci": "95%"
+  }
+}

@@ -75,4 +75,48 @@ amend the lock (e.g. r2 slot-based + commensurability caveat), swap the substrat
 or re-acquire v0.24 on the 4-5 panel, before any analysis runs.
 
 No `scripts/score_v30.py` was written. No `osf/v30/data/v30_cpc.csv` or
-`osf/v30/v30_cpc_verdicts.json` produced.
+`osf/v30/v30_cpc_verdicts.json` produced. **[Superseded by r2 — see below.]**
+
+---
+
+## STEP 1b — r2 resolution + v0.20 / v0.21 certification
+
+Blocker resolved by **r2 substrate-set amendment** (DEVIATIONS Entry 1, tag
+`v0.30-prereg-r2`): trio = **v0.20 skincare + v0.21 cosmetics + v0.22 automotive**
+(dropped v0.18 single-channel, v0.24 off-panel). Swap-in inputs certified:
+
+| Substrate | Phase | Path | sha256 |
+|---|---|---|---|
+| v0.20 | A | `osf/v20/phase_a_results.csv` | `c8ad6335c982ec95883fffa6c3cb185170b3cdd80b8694377c9fb8afb47d390e` |
+| v0.20 | B | `osf/v20/phase_b_results.csv` | `4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828` |
+| v0.21 | A | `osf/v21/phase_a_results.csv` | `d470940aa497f55588588536173a128a3394af2a6f0bb6e94825738622167d0d` |
+| v0.21 | B | `osf/v21/phase_b_results.csv` | `45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1` |
+| v0.22 | A | `osf/v22/phase_a_results.csv` | `93c1b147c44b9031bfad3eb5806d50fd26404cf9c9b7cea95f2fd8a7a00c246a` (STEP 1) |
+| v0.22 | B | `osf/v22/phase_b_results.csv` | `e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35` (STEP 1) |
+
+All three: 4.5 Claude pair + four shared non-Claude models; two-channel canonical
+recall (3 frames/channel, 6/model); 24 brands. Recall mentions extracted by
+**reusing each phase's own matcher** (`score_v20/21/22.py :: detect_mention`,
+v1.4 canonical rules).
+
+## STEP 2/3 — scoring (against v0.30-prereg-r2)
+
+Ran `scripts/score_v30.py` (thresholds single-sourced from the pre-reg `SCORING`
+dict). Outputs: `osf/v30/data/v30_cpc.csv`, `osf/v30/v30_cpc_verdicts.json`.
+
+| F | Hypothesis | Verdict | Basis |
+|---|---|---|---|
+| F1 | H_CPC_Computable | **CONFIRM** | recall coverage 79% / 79% / 62% (all ≥ 50%); automotive recall 62% ≫ recognition 4% |
+| F2 | H_CPC_LevelConfound | **UNDETERMINED** | testable only in skincare (1/1 confirms, ρ_raw=−0.472, p=.041); cosmetics & automotive: L=C_P saturated → ρ undefined |
+| F3 | H_CPC_LevelCorrected | **UNDETERMINED** | skincare confirms (ρ_corr=−0.131, p=.59; 72% attenuation); < 2 testable substrates → cannot reach ≥2/3 bar |
+| F4 | H_CPC_SubstrateVariation | **CONFIRM** | Kruskal–Wallis H=14.245, p=0.00081 |
+| — | recognition×recall concordance (exploratory) | not computable | recognition-CPC defined for < 3 brands total (saturation) |
+
+**Key finding (v1.7-forward):** the level variable L = Phase A recognition C_P is
+**saturated** (C_P = 6 for all 24 cosmetics brands; 23/24 automotive), so the
+headline confound test (F2/F3) is mathematically undefined in 2 of 3 substrates.
+The r2 swap to a doubly-homogeneous **mid-to-high-IL** trio — which made F4
+confound-free — is the same choice that removed recognition-level variance and
+made F2/F3 untestable. Apparatus-homogeneity (F4) and level-variance (F2/F3) pull
+in opposite directions on substrate selection. Where F2/F3 *could* be tested
+(skincare), the designed F2-then-F3 pattern held cleanly.
