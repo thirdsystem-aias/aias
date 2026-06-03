@@ -70,12 +70,16 @@ PHASE_SSRN_REGISTRY = {
     "v0.22": ("Automotive", 6829118),
     "v0.23": ("Premium spirits", 6834298),
     "v0.24": ("B2B SaaS", 6838802),
-    # v0.30 CPC instrument pilot. NOTE: not an "AI Presence in X" substrate paper;
-    # generate_upstream_phases() hardcodes that prefix, so this entry auto-renders
-    # as "AI Presence in Consistency component (CPC.01)" — its real title is
-    # "Recognition Saturates, Consistency Doesn't". Hand-correct in the next phase's
-    # _upstream_phases.md (or refine the generator to take a title override).
-    "v0.30": ("Consistency component (CPC.01)", 6875319),
+    # Entry schema: a value is either the legacy 2-tuple (substrate, ssrn_id) OR a
+    # dict carrying an optional `title` (or `short_title`) that overrides the
+    # "AI Presence in {substrate}" descriptor in generate_upstream_phases().
+    # v0.30 is an instrument pilot, not a substrate paper, so it sets its real title.
+    "v0.30": {
+        "substrate": "Consistency component (CPC.01)",
+        "ssrn_id": 6875319,
+        "title": 'Recognition Saturates, Consistency Doesn\'t — '
+                 'An Instrument-Specification Pilot of the AIAS Consistency Component (CPC)',
+    },
 }
 
 METHODOLOGY_SSRN_REGISTRY = {
@@ -194,11 +198,23 @@ def generate_upstream_phases(to_display: str) -> str:
         "## Phase papers",
         "",
     ]
-    for phase, (substrate, ssrn_id) in PHASE_SSRN_REGISTRY.items():
+    for phase, entry in PHASE_SSRN_REGISTRY.items():
         if phase >= to_display:
             break
+        # Entry is a legacy 2-tuple (substrate, ssrn_id) or a dict with an optional
+        # title/short_title. A title, when present, replaces the legacy
+        # "AI Presence in {substrate}" descriptor; otherwise the template renders
+        # (so v0.16–v0.29 are unaffected).
+        if isinstance(entry, dict):
+            substrate = entry.get("substrate", "")
+            ssrn_id = entry["ssrn_id"]
+            descriptor = (entry.get("title") or entry.get("short_title")
+                          or f"AI Presence in {substrate}")
+        else:
+            substrate, ssrn_id = entry
+            descriptor = f"AI Presence in {substrate}"
         lines.append(
-            f"- González Castro, P. U. (2026). *AI Presence in {substrate}: "
+            f"- González Castro, P. U. (2026). *{descriptor}: "
             f"AIAS {phase}*. Working Paper. SSRN {ssrn_id}. "
             f"https://ssrn.com/abstract={ssrn_id}"
         )
