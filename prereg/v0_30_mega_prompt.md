@@ -26,9 +26,9 @@ two-channel recall CSVs from:
 
 | Phase | Substrate | SSRN |
 |---|---|---|
-| v0.18 | indie fragrance | 6806558 |
+| v0.20 | skincare | 6811441 |
+| v0.21 | cosmetics | 6815378 |
 | v0.22 | automotive (heritage ceiling) | 6829118 |
-| v0.24 | B2B SaaS | 6838802 |
 
 **Reference panel (fixed from v0.17 onward, six models — the FULL reference
 population):** claude-opus-4-5, claude-sonnet-4-5, gpt-4o, gpt-4o-mini,
@@ -39,7 +39,7 @@ gemini-2.5-flash, gemini-2.5-flash-lite. Panel dispersion uses **population SD
 
 ## Scope lock (non-negotiable)
 
-- **No new LLM calls.** Every input already exists in the v0.18 / v0.22 / v0.24
+- **No new LLM calls.** Every input already exists in the v0.20 / v0.21 / v0.22
   deposits. Do not run acquisition; do not call any model.
 - **No brand selection, no acquisition.** Registries are reused verbatim.
 - **Recall is the primary CPC input.** Recognition enters only as (i) the F1
@@ -137,8 +137,8 @@ substrates and applies the locked decision rules — **no acquisition step**:
 
 ## Validation checks (post-analysis)
 
-1. **Input integrity:** sha256 + row/column counts of every reused v0.18 / v0.22
-   / v0.24 Phase A + Phase B CSV match the deposited files.
+1. **Input integrity:** sha256 + row/column counts of every reused v0.20 / v0.21
+   / v0.22 Phase A + Phase B CSV match the deposited files.
 2. **Panel membership:** all six reference-panel models present in every reused
    CSV.
 3. **Coverage + degenerate cells:** defined-CPC coverage rate and degenerate-cell

@@ -14,9 +14,9 @@ This is an ANALYSIS pre-registration: it is locked at a git tag BEFORE any
 scoring code runs. No new LLM calls; no brand selection; no acquisition. The
 study reuses, verbatim, the locked 24-brand registries and the already-deposited
 Phase A recognition + Phase B two-channel recall CSVs from three prior phases:
-  v0.18 (indie fragrance, SSRN 6806558)
-  v0.22 (automotive,      SSRN 6829118)
-  v0.24 (B2B SaaS,        SSRN 6838802)
+  v0.20 (skincare,   SSRN 6811441)
+  v0.21 (cosmetics,  SSRN 6815378)
+  v0.22 (automotive, SSRN 6829118)
 
 The designed outcome is F2-then-F3: demonstrate that raw cross-model CV is
 contaminated by Presence level, then show a level-correction neutralizes that
@@ -33,7 +33,7 @@ STUDY_TITLE = "AIAS CPC: A Level-Corrected Cross-Model Consistency Coefficient"
 STUDY_SUBTITLE = (
     "An analysis pre-registration specifying and stress-testing a "
     "coefficient-of-variation Consistency instrument (CPC) on anchored "
-    "v0.18 / v0.22 / v0.24 recall data, to recommend a normalization to the "
+    "v0.20 / v0.21 / v0.22 recall data, to recommend a normalization to the "
     "v1.7 methodology lock"
 )
 VERSION = "v0.30"
@@ -54,9 +54,9 @@ MTMM_CELL = (
 # Repurposed: the three reused source phases (data providers), not companion
 # MTMM studies.
 PAIRS_WITH = {
-    "v0.18": "indie fragrance (SSRN 6806558) — locked 24-brand registry; Phase A recognition + Phase B recall CSVs (CPC data source)",
+    "v0.20": "skincare (SSRN 6811441) — locked 24-brand registry; Phase A recognition + Phase B recall CSVs (CPC data source)",
+    "v0.21": "cosmetics (SSRN 6815378) — locked 24-brand registry; Phase A + Phase B CSVs (CPC data source)",
     "v0.22": "automotive (SSRN 6829118) — locked 24-brand registry; Phase A + Phase B CSVs (CPC data source; heritage-ceiling substrate)",
-    "v0.24": "B2B SaaS (SSRN 6838802) — locked 24-brand registry; Phase A + Phase B CSVs (CPC data source)",
 }
 
 # ---------------------------------------------------------------------------
@@ -70,8 +70,8 @@ PAIRS_WITH = {
 SEED = 280400
 
 # Repurposed file pointers (no new panel/validator in an analysis prereg):
-PANEL_FILE = "(reused) locked 24-brand registries from v0.18, v0.22, v0.24 — no new panel"
-VALIDATOR_FILE = "(reused) Phase A recognition + Phase B two-channel recall CSVs already deposited for v0.18 / v0.22 / v0.24"
+PANEL_FILE = "(reused) locked 24-brand registries from v0.20, v0.21, v0.22 — no new panel"
+VALIDATOR_FILE = "(reused) Phase A recognition + Phase B two-channel recall CSVs already deposited for v0.20 / v0.21 / v0.22"
 PRESENCE_FILE = "osf/v30/data/v30_cpc.csv"   # CPC output (brand, substrate, mu, sd, cpc_raw, cpc_corr, cpc_resid, L, defined)
 
 PANEL_N = 24   # per substrate; 3 substrates -> 72 brand-substrate cells before degenerate-cell exclusion
@@ -85,9 +85,9 @@ PANEL_N = 24   # per substrate; 3 substrates -> 72 brand-substrate cells before 
 BRAND_SOURCE = {
     "type": "reused anchored corpus — NO new acquisition, NO new LLM calls",
     "source_phases": {
-        "v0.18": "indie fragrance — SSRN 6806558",
+        "v0.20": "skincare — SSRN 6811441",
+        "v0.21": "cosmetics — SSRN 6815378",
         "v0.22": "automotive — SSRN 6829118",
-        "v0.24": "B2B SaaS — SSRN 6838802",
     },
     "registries": "locked 24-brand registries, reused verbatim (no brand selection)",
     "inputs": (
@@ -110,7 +110,7 @@ BRAND_SOURCE = {
 
 PANEL_CONSTRUCTION = {
     "selection": "NONE — registries reused verbatim; no brand selection, no acquisition",
-    "substrates": ["v0.18 indie fragrance", "v0.22 automotive", "v0.24 B2B SaaS"],
+    "substrates": ["v0.20 skincare", "v0.21 cosmetics", "v0.22 automotive"],
     "panel_n_per_substrate": PANEL_N,
     "brand_substrate_cells": 72,    # 24 x 3, before degenerate-cell exclusion
     "dispersion_population": "the fixed 6-model panel is the FULL reference population (population SD, divide by 6)",
@@ -372,12 +372,12 @@ VERIFICATION = {
     "policy": "binary cross-verification for every paper-grade figure",
     "tools": ["grep", "stat", "shasum", "wc"],
     "verify_targets": [
-        "sha256 + row/column counts of each reused v0.18 / v0.22 / v0.24 Phase A + Phase B CSV, vs the deposited files",
+        "sha256 + row/column counts of each reused v0.20 / v0.21 / v0.22 Phase A + Phase B CSV, vs the deposited files",
         "six-model reference-panel membership present in every reused CSV",
         "degenerate-cell counts (mu == 0 / mu >= 0.98) per substrate, independently re-derived",
         "defined-CPC coverage rate per substrate, independently re-counted (F1)",
     ],
-    "reused_csv_sha256": "TBD-at-lock — recorded at the v0.30-prereg-r1 commit against deposited files",
+    "reused_csv_sha256": "certified at r2 — full hashes in osf/v30/v30_run_log.md and DEVIATIONS Entry 1 (v0.20 / v0.21 / v0.22 Phase A + Phase B)",
     "uncertified_handling": "flag explicitly in artifact and paper",
 }
 
@@ -386,7 +386,7 @@ VERIFICATION = {
 # ---------------------------------------------------------------------------
 
 ANALYSIS_STEPS = [
-    "1. Load the reused Phase A recognition + Phase B recall CSVs for v0.18, v0.22, v0.24; "
+    "1. Load the reused Phase A recognition + Phase B recall CSVs for v0.20, v0.21, v0.22; "
     "verify integrity (sha256 + row/column counts vs deposited files).",
     "2. Build per-cell recall signal s(b,m) = fraction of Phase B recall probe-channel "
     "opportunities (6 probes x 2 channels) in which brand b surfaced in model m -> 6-vector per brand.",
@@ -407,8 +407,9 @@ ANALYSIS_STEPS = [
 # runs. Per program convention Entry 0 is the ex-ante scope lock. No new
 # acquisition occurs, so there is no per-phase COI sampling screen; the reused
 # registries carry the COI screens already applied in their source phases
-# (v0.18 / v0.22 / v0.24), and Samsung is disclosed only in Declarations COI of
-# the formal paper, never in the author block.
+# (v0.20 / v0.21 / v0.22 after the r2 substrate swap; see Entry 1), and Samsung
+# is disclosed only in Declarations COI of the formal paper, never in the author
+# block.
 
 DEVIATIONS = [
     {
@@ -423,7 +424,7 @@ DEVIATIONS = [
                 "DEFERRED (no platform harness in the pipeline)."
             ),
             "b": (
-                "No new LLM calls; reuse the existing v0.18 / v0.22 / v0.24 "
+                "No new LLM calls; reuse the existing v0.20 / v0.21 / v0.22 "
                 "Phase A + Phase B data verbatim."
             ),
             "c": (
@@ -438,6 +439,54 @@ DEVIATIONS = [
             "COI of the paper, never in the author block."
         ),
         "lock_state": "v0.30-prereg-r1",
+    },
+    {
+        "entry_id": "Entry 1",
+        "type": "substrate-set amendment (pre-analysis)",
+        "ex_ante": True,
+        "logged_before_any_scoring_code": True,
+        "revision": "r2",
+        "title": "Swap v0.18 + v0.24 -> v0.20 + v0.21 to restore a doubly-homogeneous apparatus",
+        "finding": (
+            "STEP-1 input certification (osf/v30/v30_run_log.md) showed two r1 substrates violate the "
+            "locked apparatus premise: v0.24 (B2B SaaS) was acquired on Opus 4.7 / Sonnet 4.6, not the "
+            "fixed 4.5 panel; v0.18 (indie fragrance) is single-channel (3 flat frames, no R_cat/R_cult). "
+            "Each breaks a literal r1 premise (panel 'fixed from v0.17 onward, present in every CSV'; "
+            "recall 'two-channel')."
+        ),
+        "resolution": (
+            "Substrate set amended v0.18 -> v0.20 (skincare, SSRN 6811441) and v0.24 -> v0.21 (cosmetics, "
+            "SSRN 6815378); v0.22 (automotive, SSRN 6829118) retained. Certification confirms v0.20 / "
+            "v0.21 / v0.22 are identical apparatus: 4.5 Claude pair + the four shared non-Claude models, "
+            "two-channel canonical recall (3 frames/channel, 6/model), 24 brands, locked registries, "
+            "reusable matchers (score_v20/21/22.py)."
+        ),
+        "consequence": (
+            "The r1 panel-identity and two-channel premises now hold literally across all three "
+            "substrates. No role-slot reframe and no F4 sensitivity are required; F4 (cross-substrate "
+            "CPC variation) is confound-free and stays exactly as locked in r1."
+        ),
+        "il_spread_note": (
+            "Trio leans mid-to-high IL (skincare mid; cosmetics, automotive mid-high); the niche/low-IL "
+            "anchor is forfeited. F1's saturation contrast is preserved: automotive saturates recognition "
+            "(heritage ceiling); skincare/cosmetics do not."
+        ),
+        "unchanged_from_r1": (
+            "EXPLICITLY UNCHANGED: all F1-F4 definitions and thresholds, CPC_raw / CPC_corr (Bhatia-Davis) "
+            "/ residualized-CV definitions, the degenerate-cell rule, CPC_model scope, no-new-LLM-calls. "
+            "r2 changes ONLY the three substrate identities and the provenance fields naming them."
+        ),
+        "certified_inputs": {
+            "v0.20": "phase_a c8ad6335c982ec95...; phase_b 4791113a93b8a258...",
+            "v0.21": "phase_a d470940aa497f555...; phase_b 45e4c3acca67f8c6...",
+            "v0.22": "certified at STEP 1 (run log)",
+        },
+        "v1_7_forward_note": (
+            "Pilot lesson for the v1.7 lock: deposited substrates vary in panel generation and recall "
+            "channel structure; v1.7 should mandate an apparatus-homogeneity screen (panel generation + "
+            "channel structure + frame count) as a precondition for any cross-substrate CPC comparison."
+        ),
+        "lock_state": "v0.30-prereg-r2",
     },
 ]
 
