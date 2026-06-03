@@ -123,7 +123,7 @@ import tsboilerplate as boilerplate  # noqa: E402
 if "byline_short" not in content.COVER:
     content.COVER["byline_short"] = "Pablo Ulpiano González Castro"
 if "tagline" not in content.COVER:
-    content.COVER["tagline"] = "AIAS™ Measurement Program · Discriminant Validity"
+    content.COVER["tagline"] = "AIAS™ Measurement Program"
 
 # EXEC_SUMMARY: string → list of paragraphs
 if isinstance(content.EXEC_SUMMARY, str):
@@ -143,10 +143,10 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
-    1: "f1_verdict_bands",
-    2: "f2_discriminant_scatters",
-    3: "f3_dissociation",
-    4: "f4_presence_composition",
+    1: "coverage",
+    2: "confound",
+    3: "correction",
+    4: "variation",
     5: None,
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -324,13 +324,13 @@ CHART_FIGSIZE_IN = {
     "6_col_v30_phantom_gap":      (7.50, 5.00),
     "hero":                       (7.50, 5.00),
     "hero_short":                 (7.50, 3.50),
-    # v0.30 CV.04 charts — native dims from chart_28_*.pdf mediaboxes
+    # v0.30 CPC charts — native dims from chart_30_*.pdf mediaboxes
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
-    "v30_verdict_bands":          (8.61, 3.50),
-    "v30_scatters":               (6.96, 5.10),
-    "v30_dissociation":           (7.88, 9.10),
-    "v30_composition":            (6.75, 5.10),
+    "v30_coverage":               (7.20, 5.10),
+    "v30_confound":               (7.20, 5.10),
+    "v30_correction":             (7.30, 4.60),
+    "v30_variation":              (7.20, 5.10),
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1018,7 +1018,7 @@ class V15DocTemplate(BaseDocTemplate):
         c.setFont(self.font.regular, 7.5)
         c.setFillColor(HexColor(self.palette.soft_black))
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "Discriminant Validity \u00b7 v0.30 \u00b7 May 2026")
+                           "The Consistency Component (CPC) \u00b7 v0.30 \u00b7 June 2026")
 
         footer_y = MARGIN - 18
         c.setFont(self.font.light, 7)
@@ -1123,64 +1123,48 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
-    "f1_verdict_bands": (
-        "Figure 1 \u00b7 Discriminant verdicts against the convergent benchmark. "
-        "|rho| for AIAS Presence vs. each BRAND human-norm measure, with BCa "
-        "95% confidence intervals, against the three decision bands "
-        "(CONFIRMED |rho| < 0.50; PARTIAL 0.50\u20130.74; FALSIFIED "
-        ">= 0.74, the v0.25 convergent anchor). Recognition memory (d'): "
-        "rho = 0.38, CONFIRMED. Familiarity: rho = 0.59, "
-        "UNDETERMINED \u2014 the CI [0.18, 0.83] spans all three bands at n = 24."
+    "coverage": (
+        "Figure 1 \u00b7 Recall yields a consistency signal where recognition cannot. "
+        "Share of each 24-brand category with a defined consistency score, "
+        "recall-based vs. recognition-based. Recognition has saturated (cosmetics "
+        "24/24, automotive 23/24 fully recognized), so it yields a usable "
+        "consistency score for almost no brands; recall-based consistency is defined "
+        "for 79% / 79% / 62% of brands across skincare, cosmetics, and automotive."
     ),
-    "f2_discriminant_scatters": (
-        "Figure 2 \u00b7 Presence vs. human brand norms. AIAS Presence (0\u2013100) "
-        "against BRAND familiarity (1\u20137, left) and recognition sensitivity d' "
-        "(right) across the 24 Technology-panel brands. Both relationships sit "
-        "below the convergent ceiling: Presence is distinct from recognition "
-        "memory (CONFIRMED) and inconclusively related to familiarity at this "
-        "sample size (UNDETERMINED)."
+    "confound": (
+        "Figure 2 \u00b7 Raw consistency tracks prominence \u2014 where prominence "
+        "still varies. Raw consistency (CPC_raw) against recognition level L (C_P) "
+        "for recall-defined brands. In skincare, where recognition still varies, raw "
+        "consistency correlates with prominence (rho = -0.47, p = .04); in cosmetics "
+        "and automotive every brand sits at full recognition, collapsing to a "
+        "vertical stack where the bias cannot be measured."
     ),
-    "f3_dissociation": (
-        "Figure 3 \u00b7 Where Presence and familiarity part ways. Within-panel "
-        "z(Presence) - z(familiarity) for all 24 brands. Eleven brands "
-        "cross the \u00b11.0 threshold in both directions (FULL dissociation): "
-        "Presence-amplified (Apple, Microsoft, HPE, Netapp) and "
-        "familiarity-amplified (Netflix, Instagram, Uber, Airbnb, Whirlpool, 3M, "
-        "QVC). Descriptive; illustrates the primary correlation rather than "
-        "testing it independently."
+    "correction": (
+        "Figure 3 \u00b7 The level-correction removes the prominence bias (skincare). "
+        "Skincare brands\u2019 raw (CPC_raw) and level-corrected (CPC_corr) "
+        "consistency against recognition level. The Bhatia\u2013Davis correction "
+        "attenuates the prominence bias by 72% (rho -0.47 \u2192 -0.13, no longer "
+        "significant)."
     ),
-    "f4_presence_composition": (
-        "Figure 4 \u00b7 What drives each brand\u2019s Presence. Per-brand Presence "
-        "decomposed into its three v1.6 components \u2014 Recognition C_P (/6), "
-        "category-recall R_cat (/18), and cultural-recall R_cult (/18), each "
-        "scaled to 0\u2013100 and averaged. Enterprise brands rest almost entirely "
-        "on Recognition with little recall; only a few consumer-facing brands "
-        "(Apple, Microsoft, Google) carry both recall channels."
+    "variation": (
+        "Figure 4 \u00b7 Consistency differs by category. Corrected consistency "
+        "(CPC_corr) per recall-defined brand, by category, with the model panel held "
+        "identical across categories. The distributions differ significantly "
+        "(Kruskal\u2013Wallis H = 14.24, p < 0.001) \u2014 consistency is "
+        "category-conditioned, not a fixed brand trait."
     ),
 }
 
 
 
 def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
-    """Map a v0.30 CV.04 brand-format slot_key to (filename, figsize_key).
-    Charts are produced by build_charts_v30.py at reports/figs/ (figs root)."""
+    """Map a v0.30 CPC brand-format slot_key (PATTERNS id) to (filename, figsize_key).
+    Charts are produced by build_charts_v30.py at reports/figs/v30/."""
     table = {
-        "f1_verdict_bands": (
-            "chart_28_verdict_bands.pdf",
-            "v30_verdict_bands",
-        ),
-        "f2_discriminant_scatters": (
-            "chart_28_discriminant_scatters.pdf",
-            "v30_scatters",
-        ),
-        "f3_dissociation": (
-            "chart_28_dissociation.pdf",
-            "v30_dissociation",
-        ),
-        "f4_presence_composition": (
-            "chart_28_presence_composition.pdf",
-            "v30_composition",
-        ),
+        "coverage":   ("chart_30_coverage.pdf",   "v30_coverage"),
+        "confound":   ("chart_30_confound.pdf",   "v30_confound"),
+        "correction": ("chart_30_correction.pdf", "v30_correction"),
+        "variation":  ("chart_30_variation.pdf",  "v30_variation"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1227,10 +1211,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
         is_hero = slot in (
-            "f1_verdict_bands",
-            "f2_discriminant_scatters",
-            "f3_dissociation",
-            "f4_presence_composition",
+            "coverage", "confound", "correction", "variation",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
@@ -1374,6 +1355,11 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s = []
     s.append(Spacer(1, CONTENT_H * 0.04))
 
+    # Closing statement — render CLOSING.closing_text if the content module sets it.
+    if isinstance(content.CLOSING, dict) and content.CLOSING.get("closing_text"):
+        s.append(Paragraph(content.CLOSING["closing_text"], styles["body_lead"]))
+        s.append(Spacer(1, 16))
+
     s.append(Paragraph("About the Third System", styles["h1"]))
     s.append(Spacer(1, 4))
     s.append(Paragraph(boilerplate.SYSTEM_OVERVIEW["medium"], styles["body_lead"]))
@@ -1397,9 +1383,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>AI Availability Is Not Recognition Memory — and Is Underpowered "
-        "Against Familiarity at n = 24: A Discriminant-Validity Test of AIAS "
-        "Presence Against Human Brand Norms (v0.30 / CV.04)</i>. "
+        "<i>Recognition Saturates, Consistency Doesn’t: An Instrument-Specification "
+        "Pilot of the AIAS Consistency Component (CPC) across Skincare, Cosmetics, "
+        "and Automotive (v0.30 / CPC.01)</i>. "
         "Third System. thirdsystem.ai/v30"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
@@ -1529,10 +1515,7 @@ def build(*, debug_layout: bool = False,
 
     print(f"[build_report_v30] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "f1_verdict_bands",
-        "f2_discriminant_scatters",
-        "f3_dissociation",
-        "f4_presence_composition",
+        "coverage", "confound", "correction", "variation",
     ]
     expected_files = set()
     for sk in expected_slots:
