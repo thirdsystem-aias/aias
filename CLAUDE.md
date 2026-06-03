@@ -233,6 +233,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.27 | B2B SaaS Convergent Validity | 6854758 |
 | v0.28 | Tech BRAND Discriminant Validity (CV.04) | 6865478 |
 | v0.29 | Presence Construct-Validity Baseline (CV.05) | 6870778 |
+| v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | — synthesis paper — | | |

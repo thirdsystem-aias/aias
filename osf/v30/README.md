@@ -34,4 +34,4 @@ doubly-homogeneous trio; DEVIATIONS Entry 1). All F1–F4 definitions and thresh
 ## Citation
 González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't: An Instrument-Specification
 Pilot of the AIAS Consistency Component (CPC) across Skincare, Cosmetics, and Automotive (v0.30 /
-CPC.01)*. Third System™. SSRN [id pending].
+CPC.01)*. Third System™. SSRN 6875319. https://ssrn.com/abstract=6875319

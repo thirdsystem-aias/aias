@@ -58,6 +58,40 @@ from pathlib import Path
 
 AIAS_ROOT = Path.home() / "aias"
 
+# Canonical SSRN ID registry — update when each phase ships.
+# Used to generate upstream-phases citation reference for new phases.
+PHASE_SSRN_REGISTRY = {
+    "v0.16": ("Kitchen knives", 6791999),
+    "v0.17": ("Premium kitchenware", 6802261),
+    "v0.18": ("Indie fragrance", 6806558),
+    "v0.19": ("Audiophile headphones", 6809182),
+    "v0.20": ("Skincare", 6811441),
+    "v0.21": ("Cosmetics", 6815378),
+    "v0.22": ("Automotive", 6829118),
+    "v0.23": ("Premium spirits", 6834298),
+    "v0.24": ("B2B SaaS", 6838802),
+    # v0.30 CPC instrument pilot. NOTE: not an "AI Presence in X" substrate paper;
+    # generate_upstream_phases() hardcodes that prefix, so this entry auto-renders
+    # as "AI Presence in Consistency component (CPC.01)" — its real title is
+    # "Recognition Saturates, Consistency Doesn't". Hand-correct in the next phase's
+    # _upstream_phases.md (or refine the generator to take a title override).
+    "v0.30": ("Consistency component (CPC.01)", 6875319),
+}
+
+METHODOLOGY_SSRN_REGISTRY = {
+    "v1.2": ("Construct Validity and Four-Regime Taxonomy", 6761698),
+    "v1.3": ("Phase A Pivot-Validation Specification", 6797679),
+    "v1.4": ("Recognition × Recall Decomposition", 6799479),
+    "v1.5": ("Multi-Statistic C2 and Two-Channel Recall", 6810758),
+    "v1.6": ("Substrate Pre-Screening, Independent Moderator, Phantom Extension", 6816340),
+}
+
+SYNTHESIS_SSRN_REGISTRY = {
+    "AIAS 1.0": ("Five-Substrate Foundational Construct Claim", 6817841),
+}
+
+FOUNDATIONAL_SSRN = ("Tri-System Brand Growth", 6659000)
+
 
 def parse_version(v: str) -> tuple[str, str, str, str]:
     """Parse 'v0.22' or 'v0_22' or '0.22' → ('v0.22', 'v0_22', 'v22', '0_22').
@@ -88,8 +122,10 @@ def slugify(s: str) -> str:
 def version_swap(text: str, *,
                  from_display: str, to_display: str,
                  from_snake_full: str, to_snake_full: str,
-                 from_snake_short: str, to_snake_short: str) -> str:
-    """Replace all version strings in `text` with the new version.
+                 from_snake_short: str, to_snake_short: str,
+                 from_substrate_slug: str = "",
+                 to_substrate_slug: str = "") -> str:
+    """Replace version strings and substrate slug in `text`.
 
     Order matters: longer patterns first so 'v0.22' doesn't get partially matched
     when looking for 'v22'.
@@ -99,6 +135,8 @@ def version_swap(text: str, *,
         (from_snake_full, to_snake_full),
         (from_snake_short, to_snake_short),
     ]
+    if from_substrate_slug and to_substrate_slug and from_substrate_slug != to_substrate_slug:
+        replacements.append((from_substrate_slug, to_substrate_slug))
     # Sort by length of source string DESCENDING so 'v0.22' (5 chars) replaces
     # before 'v22' (3 chars).
     replacements.sort(key=lambda r: -len(r[0]))
@@ -144,6 +182,50 @@ def ensure_dir(path: Path, *, root: Path, dry_run: bool = False) -> None:
     print(f"  [mkdir] {rel}/")
 
 
+def generate_upstream_phases(to_display: str) -> str:
+    """Generate a markdown reference file listing all prior phases, methodology,
+    and synthesis papers with SSRN IDs for bibliography cross-citation."""
+    lines = [
+        f"# Upstream Phases — citation reference for {to_display}",
+        "",
+        "Copy these into the paper bibliography. Every phase paper cites all prior phases",
+        "plus the full methodology chain.",
+        "",
+        "## Phase papers",
+        "",
+    ]
+    for phase, (substrate, ssrn_id) in PHASE_SSRN_REGISTRY.items():
+        if phase >= to_display:
+            break
+        lines.append(
+            f"- González Castro, P. U. (2026). *AI Presence in {substrate}: "
+            f"AIAS {phase}*. Working Paper. SSRN {ssrn_id}. "
+            f"https://ssrn.com/abstract={ssrn_id}"
+        )
+    lines += ["", "## Methodology papers", ""]
+    for ver, (title, ssrn_id) in METHODOLOGY_SSRN_REGISTRY.items():
+        lines.append(
+            f"- González Castro, P. U. (2026). *{title}*. "
+            f"AIAS Protocol {ver}. SSRN {ssrn_id}. "
+            f"https://ssrn.com/abstract={ssrn_id}"
+        )
+    lines += ["", "## Synthesis papers", ""]
+    for ver, (title, ssrn_id) in SYNTHESIS_SSRN_REGISTRY.items():
+        lines.append(
+            f"- González Castro, P. U. (2026). *{title}*. "
+            f"{ver}. SSRN {ssrn_id}. "
+            f"https://ssrn.com/abstract={ssrn_id}"
+        )
+    lines += ["", "## Foundational", ""]
+    title, ssrn_id = FOUNDATIONAL_SSRN
+    lines.append(
+        f"- González Castro, P. U. (2025). *{title}*. "
+        f"SSRN {ssrn_id}. https://ssrn.com/abstract={ssrn_id}"
+    )
+    lines.append("")
+    return "\n".join(lines)
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(
         description="Scaffold a new AIAS phase by cloning the prior phase's build pipeline."
@@ -171,25 +253,41 @@ def main() -> int:
     to_display, to_snake_full, to_snake_short, _ = parse_version(args.to_v)
     substrate_slug = args.substrate_slug or slugify(args.substrate)
 
+    # Detect prior substrate slug from existing content module filename.
+    # e.g. reports/v23_premium_spirits_content.py → "premium_spirits"
+    prior_content_files = list((root / "reports").glob(
+        f"{from_snake_short}_*_content.py"))
+    prior_content_files = [p for p in prior_content_files
+                           if not p.name.startswith("_")]
+    from_substrate_slug = ""
+    if prior_content_files:
+        # Extract slug: strip version prefix and _content.py suffix
+        fname = prior_content_files[0].stem  # e.g. "v23_premium_spirits_content"
+        prefix = from_snake_short + "_"      # e.g. "v23_"
+        suffix = "_content"
+        if fname.startswith(prefix) and fname.endswith(suffix):
+            from_substrate_slug = fname[len(prefix):-len(suffix)]
+
     version_args = dict(
         from_display=from_display, to_display=to_display,
         from_snake_full=from_snake_full, to_snake_full=to_snake_full,
         from_snake_short=from_snake_short, to_snake_short=to_snake_short,
+        from_substrate_slug=from_substrate_slug,
+        to_substrate_slug=substrate_slug,
     )
 
     print(f"[aias_new_phase] scaffolding {to_display} from {from_display}")
     print(f"  substrate: {args.substrate!r}  (slug: {substrate_slug!r})")
+    if from_substrate_slug:
+        print(f"  prior substrate slug: {from_substrate_slug!r} → {substrate_slug!r}")
     print(f"  root: {root}")
     print(f"  version map: {from_display}→{to_display}, "
           f"{from_snake_full}→{to_snake_full}, "
           f"{from_snake_short}→{to_snake_short}")
     print()
 
-    # ----- Discover prior-phase content files (varies by substrate name) -----
-    prior_substrate_content = list((root / "reports").glob(
-        f"{from_snake_short}_*_content.py"))
-    prior_substrate_content = [p for p in prior_substrate_content
-                                if not p.name.startswith("_")]
+    # ----- Discover prior-phase content files (already found above) -----
+    prior_substrate_content = prior_content_files
     prior_substrate_prereg = list((root / "prereg").glob(
         f"{from_snake_full}_*_content.py"))
 
@@ -244,6 +342,17 @@ def main() -> int:
     packet_src = root / "papers" / from_snake_full / f"ssrn_submission_packet_{from_snake_full}.md"
     packet_dst = root / "papers" / to_snake_full / f"ssrn_submission_packet_{to_snake_full}.md"
     clone_file(packet_src, packet_dst, version_args, root=root, dry_run=args.dry_run)
+
+    # ----- Generate upstream-phases citation reference -----
+    upstream_path = root / "papers" / to_snake_full / "_upstream_phases.md"
+    upstream_content = generate_upstream_phases(to_display)
+    if args.dry_run:
+        print(f"  [dry-run] would write: papers/{to_snake_full}/_upstream_phases.md  "
+              f"({len(upstream_content):,} chars)")
+    else:
+        upstream_path.parent.mkdir(parents=True, exist_ok=True)
+        upstream_path.write_text(upstream_content, encoding="utf-8")
+        print(f"  [write] papers/{to_snake_full}/_upstream_phases.md")
 
     # ----- Create directory tree for new phase -----
     print("\n[5/6] Creating directory tree...")
