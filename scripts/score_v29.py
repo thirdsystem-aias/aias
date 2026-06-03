@@ -6,7 +6,7 @@ SYNTHESIS scorer: NO acquisition, NO probes, NO CSVs. It reads the two inherited
 component verdict files, extracts the Presence-level (C_P) convergent and
 discriminant Spearman coefficients, assembles the 2x2 MTMM matrix, computes the
 Campbell-Fiske gap C3, applies the verdict logic locked in
-prereg/v0_29_cv_baseline_content.py, and writes osf/v29/v29_verdicts.json.
+prereg/v0_29_cv_baseline_content.py, and writes osf/v29/data/v29_verdicts.json.
 
 Inheritance contract (pinned against live JSON; lock v0.29-prereg-r1):
   C1 convergent   -> v0.25 H_CV_Primary  (hypotheses = LIST; find by name)
@@ -38,7 +38,7 @@ PREREG_TAG = "v0.29-prereg-r1"
 
 DEFAULT_V25 = "osf/v25/v25_verdicts.json"
 DEFAULT_V26 = "osf/v26/v26_verdicts.json"
-DEFAULT_OUT = "osf/v29/v29_verdicts.json"
+DEFAULT_OUT = "osf/v29/data/v29_verdicts.json"
 
 # soft sanity anchors (warn-only; catch an accidental file swap)
 EXPECT_CONV_RHO = 0.7411
