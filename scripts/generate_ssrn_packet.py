@@ -144,6 +144,7 @@ def generate_packet(phase_display: str, phase_snake: str,
     # Required fields with sensible fallbacks
     title = yaml.get("title", "[TITLE NOT FOUND IN YAML]")
     subtitle = yaml.get("subtitle", "")
+    date_prepared = yaml.get("date", "") or "[DATE NOT FOUND IN YAML]"
 
     # Abstract: prefer markdown `# Abstract {-}` section, fallback to YAML
     abstract = extract_section(body, r"Abstract\b") or yaml.get("abstract", "")
@@ -199,7 +200,7 @@ def generate_packet(phase_display: str, phase_snake: str,
 **Paper:** {title}
 **File to upload:** `papers/{phase_snake}/{phase_snake}_ssrn_paper.pdf`
 **Submission target:** SSRN — papers.ssrn.com → Submit a paper
-**Date prepared:** May 2026
+**Date prepared:** {date_prepared}
 
 ---
 

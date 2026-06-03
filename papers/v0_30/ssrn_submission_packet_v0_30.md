@@ -1,9 +1,9 @@
 # SSRN Submission Packet — AIAS™ v0.30
 
-**Paper:** AI Availability is Not Reducible to Recognition Memory --- and is Underpowered Against Familiarity at n = 24
+**Paper:** Recognition Saturates, Consistency Doesn't
 **File to upload:** `papers/v0_30/v0_30_ssrn_paper.pdf`
 **Submission target:** SSRN — papers.ssrn.com → Submit a paper
-**Date prepared:** May 2026
+**Date prepared:** June 2026
 
 ---
 
@@ -26,34 +26,34 @@
 ### Title (paste verbatim)
 
 ```
-AI Availability is Not Reducible to Recognition Memory --- and is Underpowered Against Familiarity at n = 24
+Recognition Saturates, Consistency Doesn't
 ```
 
 ### Subtitle (paste verbatim)
 
 ```
-
+An Instrument-Specification Pilot of the AIAS™ Consistency Component (CPC) across Skincare, Cosmetics, and Automotive
 ```
 
 ### Abstract (paste verbatim — matches paper page 2)
 
 ```
-AI Availability --- the degree to which a brand is surfaced, recognized, and recalled by large language models --- has been proposed as a third measurable layer of brand availability alongside mental and physical availability. For the construct to earn that status it must be shown to be distinct from the human memory measures it superficially resembles. This paper reports a pre-registered discriminant-validity test of the AIAS\texttrademark{} Presence component against two human brand norms drawn from the published BRAND database: familiarity (1--7) and recognition sensitivity (\textit{d}′). Presence was composed blind from a six-model panel over 24 technology brands stratified by familiarity, joined to the validator only at a one-shot scoring step. Against recognition sensitivity, Presence is discriminant (Spearman ρ = 0.379, |ρ| < 0.50; BCa 95% CI upper 0.714 excludes the 0.74 reducibility threshold) --- CONFIRMED, though the interval is wide. Against familiarity the point estimate sits in the partial band (ρ = 0.593) but the BCa interval [0.179, 0.832] spans all three pre-registered bands, so the locked rule returns UNDETERMINED rather than a finding. A descriptive within-panel dissociation is full and bidirectional: Presence amplifies core-technology brands and suppresses consumer-famous but non-core-technology brands relative to familiarity. The enterprise-heavy panel and consumer-framed recall cues floored the recall channel, reducing Presence toward its recognition component; the familiarity question therefore remains open and is flagged for a higher-powered follow-up. The result pairs with the convergent (v0.25) and Amazon-BSR discriminant (v0.26) evidence as one cell of a multitrait--multimethod construct-validity program.
+The AIAS (AI Availability Score) program measures a brand's availability inside large language models. Its first component, Presence, captures whether a brand surfaces; its second, Consistency (CPC), captures how stably it surfaces across the model panel. This instrument-specification pilot defines Consistency as the cross-model dispersion of a brand's recall signal and tests it on three anchored substrates — skincare, cosmetics, and automotive — each measured against an identical six-model panel, reusing deposited data under a pre-registered analysis plan. Recall-based Consistency is defined for a majority of brands precisely where recognition has saturated and can no longer discriminate (confirmed), and corrected Consistency differs significantly across categories with the apparatus held fixed (confirmed). The raw measure is mechanically confounded with brand prominence, and a maximum-normalized (Bhatia–Davis) correction removes that confound — but this was testable in only one substrate, because the apparatus-homogeneous categories that sharpen the cross-category comparison are the mature categories in which recognition, the prominence variable, saturates. The confound hypotheses are therefore undetermined rather than confirmed. That tension — between the apparatus homogeneity a clean category comparison demands and the prominence variance a confound test requires — is the pilot's principal contribution, and it specifies the design the construct's validation must adopt.
 ```
 
 ### Keywords (paste verbatim, semicolon-separated)
 
 ```
-AI availability; large language models; brand measurement; construct validity; discriminant validity; recognition memory; mental availability; AIAS; share of model; pre-registration
+AI Availability; AI Availability Score; large language models; brand consistency; construct validity; coefficient of variation; brand measurement; generative AI search
 ```
 
 ### JEL codes (paste verbatim)
 
 ```
-M31; L86; L15; D83; M37
+M31; M37; L15; L86; D83
 ```
 
-**JEL rationale (for your reference):** M31 (primary); L86; L15; D83; M37
+**JEL rationale (for your reference):** M31 (primary); M37, L15, L86, D83
 
 ---
 
@@ -96,7 +96,7 @@ ORCID: 0009-0003-8968-9990
 ### Declaration of Interest (paste verbatim)
 
 ```
-The author is employed by Samsung Electronics America. Samsung had no role in the design, conduct, analysis, or reporting of this study. To prevent any conflict at the data level, the Samsung-owned brand Harman was removed from the eligible frame by a pre-registered screen before panel sampling.
+The author is employed by Samsung Electronics America; the research entity Third System is independent. The three substrates analysed (skincare, cosmetics, automotive) contain no Samsung-owned brands, and the employer had no role in the design, analysis, or reporting.
 ```
 
 ### Funder (paste verbatim)
@@ -114,7 +114,7 @@ Not applicable. The research uses public LLM APIs and standard prompt batteries;
 ### Data and code availability (paste verbatim)
 
 ```
-
+Pre-registration, reused measurement data, scoring code, and verdicts are deposited at OSF (osf.io/ec6wh, v30), under tags v0.30-prereg-r1 / r2 and v0.30-results-r2.
 ```
 
 ---
@@ -123,19 +123,17 @@ Not applicable. The research uses public LLM APIs and standard prompt batteries;
 
 - **File:** `papers/v0_30/v0_30_ssrn_paper.pdf`
 - **Cover letter:** Not required for SSRN Working Paper submissions.
-- **Suggested citation:**
+- **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). AI Availability is Not Reducible to Recognition Memory --- and is Underpowered Against Familiarity at n = 24. SSRN Working Paper 6865478. https://ssrn.com/abstract=6865478
+González Castro, P. U. (2026). Recognition Saturates, Consistency Doesn't. SSRN Working Paper [ABSTRACT_ID].
 ```
-
-**SUBMITTED — SSRN abstract ID 6865478** (https://ssrn.com/abstract=6865478).
 
 ---
 
 ## Post-submission checklist
 
-1. **SSRN abstract ID captured:** 6865478 — registered in CLAUDE.md table + kickoff registry. ✓
+1. **Capture SSRN abstract ID** when SSRN returns it (URL format: `https://ssrn.com/abstract={ID}`).
 2. **Update memory:** add the v0.30 SSRN abstract ID entry to the recent_updates section of userMemories.
 3. **Run final OSF deposit:** `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/v30 v30`
 4. **Cross-citation** in next phase: this v0.30 SSRN ID gets added to next phase's paper bibliography upstream-phases line.

@@ -1,5 +1,6 @@
 ---
 title: "Recognition Saturates, Consistency Doesn't"
+subtitle: 'An Instrument-Specification Pilot of the AIAS™ Consistency Component (CPC) across Skincare, Cosmetics, and Automotive'
 author: "Pablo Ulpiano González Castro"
 date: "June 2026"
 mainfont: "Carlito"
