@@ -1,5 +1,6 @@
 ---
 title: "Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC)"
+date: "June 2026"
 mainfont: "Carlito"
 fontsize: 11pt
 geometry: margin=1in
@@ -117,7 +118,7 @@ Further work also includes the interaction of consistency with the program's exi
 
 # Declarations {-}
 
-**Conflict of interest.** The author is employed by Samsung Electronics America in a corporate brand-creative and governance role. The research reported here is conducted independently through Third System and is self-funded; Samsung Electronics America had no role in the study's design, data, analysis, or reporting. Where an examined category includes brands owned by or affiliated with Samsung Electronics America, this is disclosed as a competing interest; a single pre-registered instrument is applied uniformly across all brands, and no brand is singled out for differential treatment.
+**Conflict of interest.** The author is employed by Samsung Electronics America in a corporate brand-creative and governance role. Samsung Electronics America competes in the audiophile-headphones category through Harman International, the parent of AKG; to avoid a competing interest, AKG was substituted out of the v0.19 headphones panel before that phase's pre-registration lock (recorded in the v0.19 deviations log and Section 5 of the v0.19 paper), and no Samsung-owned or -affiliated brand appears among the brands scored in any category examined here. The research is conducted independently through Third System and is self-funded; Samsung Electronics America had no role in the study's design, data, analysis, or reporting. A single pre-registered instrument was applied uniformly across all brands in every category, and no brand was singled out for differential treatment.
 
 **Funding.** Self-funded.
 
