@@ -60,9 +60,9 @@ Brand-growth theory locates demand in two coordinates, mental and physical avail
 
 # 1. Introduction
 
-Ehrenberg-Bass brand science explains growth through two forms of availability. Mental availability is the probability that a brand comes to mind in a buying situation; physical availability is the ease of finding and buying it. Both presuppose a human searcher moving through memory and shelf space. Generative AI systems insert a new intermediary into that path. When a category question is posed to a large language model, the model returns a bounded set of brands, and those brands are the ones a buyer is likely to consider. The availability of a brand inside these outputs is therefore a third coordinate of growth, distinct from what a buyer already recalls and from what a buyer can physically reach.
+Ehrenberg-Bass brand science (Sharp, 2010; Romaniuk & Sharp, 2022) explains growth through two forms of availability. Mental availability is the probability that a brand comes to mind in a buying situation; physical availability is the ease of finding and buying it. Both presuppose a human searcher moving through memory and shelf space. Generative AI systems insert a new intermediary into that path. When a category question is posed to a large language model, the model returns a bounded set of brands, and those brands are the ones a buyer is likely to consider. The availability of a brand inside these outputs is therefore a third coordinate of growth, distinct from what a buyer already recalls and from what a buyer can physically reach.
 
-The AI Availability Score (AIAS) measures this coordinate as a multi-component construct. Its first component, Presence, asks whether a brand appears at all, and was established as a cross-category instrument in AIAS 1.0. Presence alone is incomplete. A brand that appears for one model and not another is available in a weaker sense than a brand that appears uniformly across the panel. Consistency (CPC) captures this property: the stability of a brand's recall across models, scored so that uniform recall approaches one and erratic recall approaches zero.
+The AI Availability Score (AIAS) measures this coordinate as a multi-component construct. Its first component, Presence, asks whether a brand appears at all, and was established as a cross-category instrument in AIAS 1.0 (González Castro, 2026, SSRN 6817841). Presence alone is incomplete. A brand that appears for one model and not another is available in a weaker sense than a brand that appears uniformly across the panel. Consistency (CPC) captures this property: the stability of a brand's recall across models, scored so that uniform recall approaches one and erratic recall approaches zero.
 
 Before Consistency can support comparison or diagnosis it requires a baseline, and two questions precede any substantive use. First, is CPC computable on real category data, or does it collapse to a near-constant that distinguishes nothing? Second, does it vary across product categories, or is consistency an artifact of measurement rather than a property of the market? This study answers both by rescoring committed recall data from prior AIAS phases under the locked Consistency instrument. No new model queries are issued; the contribution is the first cross-category reading of an instrument whose definition was fixed in advance.
 
@@ -70,7 +70,7 @@ Before Consistency can support comparison or diagnosis it requires a baseline, a
 
 This phase is a retroactive rescore. It introduces no new acquisition and draws entirely on recall data committed in earlier phases (v0.16 through v0.24), each probing twenty-four brands across a fixed model panel, with the exception of the headphone substrate, whose locked registry carries sixteen. The reference panel is the six-model set held fixed from v0.17 onward (Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, GPT-4o-mini, Gemini 2.5 Flash, and Gemini 2.5 Flash Lite).
 
-The Consistency instrument was locked at methodology version 1.7. The signal is Phase B recall only; recognition data play no part. For each brand a per-model recall count is formed, and consistency is the reciprocal one-plus coefficient of variation of those counts, CPC = 1 / (1 + CV), with CV the standard deviation over the mean. The coefficient is taken over the panel as a whole rather than a sample, so its population form applies. A floor governs sparse signal: brands whose mean recall falls below one mention are recorded as undefined rather than zero, and the count of undefined brands is reported for each category.
+The Consistency instrument was locked at methodology version 1.7 (González Castro, 2026, SSRN 6878818). The signal is Phase B recall only; recognition data play no part. For each brand a per-model recall count is formed, and consistency is the reciprocal one-plus coefficient of variation of those counts, CPC = 1 / (1 + CV), with CV the standard deviation over the mean. The coefficient is taken over the panel as a whole rather than a sample, so its population form applies. A floor governs sparse signal: brands whose mean recall falls below one mention are recorded as undefined rather than zero, and the count of undefined brands is reported for each category.
 
 Substrates differ in channel structure, which the baseline reconciles through a channel-agnostic per-model unit: the total mentions a model returns across all recall frames, irrespective of channel labeling. On a two-channel substrate this total equals the sum of the category and cultural channels, which is the locked v1.7 unit by construction, since the channels partition the frames without loss or duplication. The generalization therefore contains the locked unit as a special case rather than replacing it. A reconciliation gate enforces this identity as a precondition: recomputing consistency for the three two-channel substrates under the generalized unit reproduced the v1.7 values at exact integer-count identity across all seventy-two brands, confirming that the generalization introduces no instrument drift.
 
@@ -125,3 +125,46 @@ Further work also includes the interaction of consistency with the program's exi
 **Ethics.** Not applicable; no human subjects. The study uses public APIs and large-language-model prompts only.
 
 **Data and code availability.** Pre-registration, recall data, scoring code, and figures are deposited at the Open Science Framework (osf.io/ec6wh, v31 component). The methodology was locked at git tag `v0.31-prereg-r1` prior to scoring.
+
+
+# References {-}
+
+Romaniuk, J., & Sharp, B. (2022). *How Brands Grow: Part 2* (Rev. ed.). Oxford University Press.
+
+Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
+
+González Castro, P. U. (2025). *Tri-System Brand Growth*. SSRN 6659000.
+
+González Castro, P. U. (2026). *Construct Validity and the Four-Regime Taxonomy*. AIAS Protocol v1.2. SSRN 6761698.
+
+González Castro, P. U. (2026). *Phase A Pivot-Validation Specification*. AIAS Protocol v1.3. SSRN 6797679.
+
+González Castro, P. U. (2026). *Recognition and Recall Decomposition*. AIAS Protocol v1.4. SSRN 6799479.
+
+González Castro, P. U. (2026). *Multi-Statistic C2 and Two-Channel Recall Decomposition*. AIAS Protocol v1.5. SSRN 6810758.
+
+González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator, and Phantom Extension*. AIAS Protocol v1.6. SSRN 6816340.
+
+González Castro, P. U. (2026). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component*. AIAS Protocol v1.7. SSRN 6878818.
+
+González Castro, P. U. (2026). *AI Availability 1.0: Five-Substrate Foundational Construct Claim*. SSRN 6817841.
+
+González Castro, P. U. (2026). *AI Presence in Kitchen Knives*. AIAS v0.16. SSRN 6791999.
+
+González Castro, P. U. (2026). *AI Presence in Premium Kitchenware*. AIAS v0.17. SSRN 6802261.
+
+González Castro, P. U. (2026). *AI Presence in Indie Fragrance*. AIAS v0.18. SSRN 6806558.
+
+González Castro, P. U. (2026). *AI Presence in Audiophile Headphones*. AIAS v0.19. SSRN 6809182.
+
+González Castro, P. U. (2026). *AI Presence in Skincare*. AIAS v0.20. SSRN 6811441.
+
+González Castro, P. U. (2026). *AI Presence in Cosmetics*. AIAS v0.21. SSRN 6815378.
+
+González Castro, P. U. (2026). *AI Presence in Automotive*. AIAS v0.22. SSRN 6829118.
+
+González Castro, P. U. (2026). *AI Presence in Premium Spirits*. AIAS v0.23. SSRN 6834298.
+
+González Castro, P. U. (2026). *AI Presence in B2B SaaS*. AIAS v0.24. SSRN 6838802.
+
+González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't: An Instrument-Specification Pilot of the AIAS Consistency Component (CPC)*. AIAS v0.30. SSRN 6875319.
