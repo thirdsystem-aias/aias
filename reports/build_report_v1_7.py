@@ -1124,8 +1124,9 @@ def build_lead_story(styles: dict[str, ParagraphStyle]) -> list:
 def build_what_we_measured_story(styles: dict[str, ParagraphStyle]) -> list:
     s = []
     s.append(Paragraph(content.WHAT_WE_MEASURED["heading"], styles["h2"]))
-    for p in content.WHAT_WE_MEASURED["paragraphs"]:
-        s.append(Paragraph(p, styles["body"]))
+    s.append(Spacer(1, 6))
+    paras = [Paragraph(p, styles["body"]) for p in content.WHAT_WE_MEASURED["paragraphs"]]
+    s.append(BalancedColumns(paras, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
     return s
 
 
@@ -1341,8 +1342,9 @@ def build_limitations_story(styles: dict) -> list:
     s = []
     s.append(Spacer(1, 4))
     s.append(Paragraph(content.LIMITATIONS["heading"], styles["h1"]))
-    for p in content.LIMITATIONS["paragraphs"]:
-        s.append(Paragraph(p, styles["body"]))
+    s.append(Spacer(1, 6))
+    paras = [Paragraph(p, styles["body"]) for p in content.LIMITATIONS["paragraphs"]]
+    s.append(BalancedColumns(paras, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
     return s
 
 
@@ -1350,8 +1352,9 @@ def build_whats_next_story(styles: dict) -> list:
     s = []
     s.append(Spacer(1, 4))
     s.append(Paragraph(content.WHATS_NEXT["heading"], styles["h1"]))
-    for p in content.WHATS_NEXT["paragraphs"]:
-        s.append(Paragraph(p, styles["body"]))
+    s.append(Spacer(1, 6))
+    paras = [Paragraph(p, styles["body"]) for p in content.WHATS_NEXT["paragraphs"]]
+    s.append(BalancedColumns(paras, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
     return s
 
 
@@ -1563,7 +1566,7 @@ def build(*, debug_layout: bool = False,
         story.append(f_)
 
     # --- What we measured (methodology) ---
-    story.append(NextPageTemplate("body"))
+    story.append(NextPageTemplate("spread"))
     story.append(PageBreak())
     for f_ in build_what_we_measured_story(styles):
         story.append(f_)
@@ -1575,13 +1578,13 @@ def build(*, debug_layout: bool = False,
             pattern, styles, manifest, chart_dir, debug_layout))
 
     # --- Limitations ---
-    story.append(NextPageTemplate("body"))
+    story.append(NextPageTemplate("spread"))
     story.append(PageBreak())
     for f_ in build_limitations_story(styles):
         story.append(f_)
 
-    # --- What's next ---
-    story.append(PageBreak())
+    # --- What's next (shares the Limitations page) ---
+    story.append(Spacer(1, 20))
     for f_ in build_whats_next_story(styles):
         story.append(f_)
 
