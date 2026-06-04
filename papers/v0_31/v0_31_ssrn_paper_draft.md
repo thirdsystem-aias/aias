@@ -53,7 +53,7 @@ Brand-growth theory locates demand in two coordinates, mental and physical avail
 
 **Keywords:** AI availability; brand consistency; large language models; recall stability; coefficient of variation; cross-category measurement; Ehrenberg-Bass
 
-**JEL:** M31 (primary); L86; L15; D83; M37
+**JEL codes:** M31 (primary); L86; L15; D83; M37
 
 **Paper status:** Working paper. Pre-registered at `v0.31-prereg-r1`; retroactive rescore, no new data collection.
 

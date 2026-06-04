@@ -149,7 +149,10 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # five P-propositions (P1-P4 charted, P5 text-only). Build the finding list from
 # HYPOTHESIS_SCORING + HYPOTHESIS_DETAILS BEFORE either is reshaped below.
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
-content.PATTERNS = [{"label": h["proposition"], "text": content.HYPOTHESIS_DETAILS.get(h["id"], "")}
+_SCOPE_TITLE = {"P5": "Scope and boundaries"}   # body reframe; the scored table keeps the proposition
+content.PATTERNS = [{"label": _SCOPE_TITLE.get(h["id"], h["proposition"]),
+                     "text": content.HYPOTHESIS_DETAILS.get(h["id"], ""),
+                     "no_finding_label": h["id"] in _SCOPE_TITLE}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
     1: "within",   # P1 measurable          -> chart_02_cpc_within_substrate
@@ -170,6 +173,7 @@ if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
             "paragraphs": _paras,
             "chart_slot": _PATTERN_CHART_MAP.get(i + 1),
             "chart_after_text": False,
+            "no_finding_label": p.get("no_finding_label", False),
         })
     content.PATTERNS = _new_patterns
 
@@ -1190,11 +1194,11 @@ def build_pattern_unified(pattern: dict, styles: dict,
     s: list = []
     s.append(PageBreak())
 
-    s.append(KeepTogether([
-        Spacer(1, 4),
-        Paragraph(f"FINDING {pattern['number']:02d}", styles["pattern_number"]),
-        Paragraph(pattern["title"], styles["pattern_title"]),
-    ]))
+    _head = [Spacer(1, 4)]
+    if not pattern.get("no_finding_label"):
+        _head.append(Paragraph(f"FINDING {pattern['number']:02d}", styles["pattern_number"]))
+    _head.append(Paragraph(pattern["title"], styles["pattern_title"]))
+    s.append(KeepTogether(_head))
 
     chart_block: list = []
     if chart_path is not None and figsize_key is not None:
