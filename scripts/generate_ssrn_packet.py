@@ -146,6 +146,11 @@ def generate_packet(phase_display: str, phase_snake: str,
     subtitle = yaml.get("subtitle", "")
     date_prepared = yaml.get("date", "") or "[DATE NOT FOUND IN YAML]"
 
+    # OSF deposit segment: collapse v0_NN -> vNN (e.g. v0_30 -> v30) for phase
+    # trees; keep methodology-line stems as-is (v1_7 -> v1_7, matching osf/v1_7).
+    osf_seg = (phase_snake.replace("v0_", "v").replace("_", "")
+               if phase_snake.startswith("v0_") else phase_snake)
+
     # Abstract: prefer markdown `# Abstract {-}` section, fallback to YAML
     abstract = extract_section(body, r"Abstract\b") or yaml.get("abstract", "")
     abstract = re.sub(r"\n+", " ", abstract).strip()
@@ -316,7 +321,7 @@ Select these networks/eJournals on the SSRN classification picker:
 
 1. **Capture SSRN abstract ID** when SSRN returns it (URL format: `https://ssrn.com/abstract={{ID}}`).
 2. **Update memory:** add the {phase_display} SSRN abstract ID entry to the recent_updates section of userMemories.
-3. **Run final OSF deposit:** `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/{phase_snake.replace("v0_", "v").replace("_", "")} {phase_snake.replace("v0_", "v").replace("_", "")}`
+3. **Run final OSF deposit:** `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/{osf_seg} {osf_seg}`
 4. **Cross-citation** in next phase: this {phase_display} SSRN ID gets added to next phase's paper bibliography upstream-phases line.
 
 ---
