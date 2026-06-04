@@ -148,7 +148,7 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
     1: "dissociation",   # P1 consistency followed presence
-    2: None,             # P2 mechanism — text only
+    2: "coupling",       # P2 the link is arithmetic (CV ~ 1/sqrt(mean))
     3: "defined",        # P3 recognition–recall gap
     4: "phantom",        # P4 absent brands read as absent
 }
@@ -339,6 +339,7 @@ CHART_FIGSIZE_IN = {
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
     "v1_7_dissociation":          (7.20, 5.10),
+    "v1_7_coupling":              (7.20, 5.10),
     "v1_7_defined":               (7.20, 5.10),
     "v1_7_phantom":               (7.20, 5.10),
 }
@@ -1133,6 +1134,13 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
+    "coupling": (
+        "Finding 2 · The link is arithmetic. Each brand’s coefficient of variation "
+        "against its mean recall, beside the Poisson curve on which spread falls as the "
+        "square root of the mean. At the counts the panel produces the points track the "
+        "curve, so the spread a consistency score is built from is set by the average it "
+        "would otherwise add to."
+    ),
     "dissociation": (
         "Finding 1 \u00b7 Consistency rose with presence, not apart from it. Each "
         "brand\u2019s consistency score against its presence, across skincare, "
@@ -1160,6 +1168,7 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     Charts are produced by build_charts_v30.py at reports/figs/v30/."""
     table = {
         "dissociation": ("fig_02_cpc_dissociation.pdf", "v1_7_dissociation"),
+        "coupling":     ("fig_04_cv_mean_coupling.pdf",  "v1_7_coupling"),
         "defined":      ("fig_01_cpc_defined.pdf",      "v1_7_defined"),
         "phantom":      ("fig_03_phantom_null.pdf",     "v1_7_phantom"),
     }
@@ -1208,7 +1217,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
         is_hero = slot in (
-            "dissociation", "defined", "phantom",
+            "dissociation", "coupling", "defined", "phantom",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
@@ -1509,7 +1518,7 @@ def build(*, debug_layout: bool = False,
 
     print(f"[build_report_v30] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "dissociation", "defined", "phantom",
+        "dissociation", "coupling", "defined", "phantom",
     ]
     expected_files = set()
     for sk in expected_slots:

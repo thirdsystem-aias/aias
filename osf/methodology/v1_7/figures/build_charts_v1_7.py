@@ -5,8 +5,9 @@ Honest depiction of the r3-recorded outcomes:
   fig_01_cpc_defined      H_CPC_Defined      FALSIFIED (pooled defined-rate 57%)
   fig_02_cpc_dissociation H_CPC_Dissociates  FALSIFIED (|rho|=0.77 > 0.50)
   fig_03_phantom_null     H_CPC_PhantomNull   CONFIRMED (all 5 Cell-D -> N/A)
+  fig_04_cv_mean_coupling Finding 2 mechanism CV ~ 1/sqrt(mean) at low counts
 
-Reads osf/v1_7/data/v1_7_cpc.csv. House style via chart_style.py.
+Reads osf/methodology/v1_7/data/v1_7_cpc.csv. House style via chart_style.py.
 Outputs PDFs to reports/figs/v1_7/.
 """
 import sys, csv, json
@@ -24,12 +25,13 @@ SUB_NAME = {"v0.20": "skincare", "v0.21": "cosmetics", "v0.22": "automotive"}
 SUB_COLOR = {"v0.20": cs.INDIGO, "v0.21": cs.WARM, "v0.22": cs.TEAL}
 SOURCE_PHASE = "v1.7 (CPC.r3)"
 
-rows = list(csv.DictReader(open(ROOT / "osf/v1_7/data/v1_7_cpc.csv")))
+rows = list(csv.DictReader(open(ROOT / "osf/methodology/v1_7/data/v1_7_cpc.csv")))
 for r in rows:
     r["mean_r"] = float(r["mean_r"])
     r["in_market"] = (r["in_market"] == "True")
     r["is_phantom"] = (r["is_phantom"] == "True")
     r["cpc_score"] = float(r["cpc_score"]) if r["cpc_score"] not in ("", "None") else None
+    r["cpc_raw"] = float(r["cpc_raw"]) if r["cpc_raw"] not in ("", "None") else None
     r["presence_composite"] = float(r["presence_composite"])
 
 
@@ -145,6 +147,40 @@ def fig_03_phantom_null():
     return p
 
 
+def fig_04_cv_mean_coupling():
+    """Finding 2 mechanism: CV vs mean recall with the Poisson 1/sqrt(mean) curve."""
+    pts = [r for r in rows if r["in_market"] and r["cpc_raw"] is not None]
+    xs = np.array([r["mean_r"] for r in pts])
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    for s in ["v0.20", "v0.21", "v0.22"]:
+        sx = [r["mean_r"] for r in pts if r["substrate"] == s]
+        sy = [r["cpc_raw"] for r in pts if r["substrate"] == s]
+        ax.scatter(sx, sy, s=42, color=SUB_COLOR[s], alpha=0.85, edgecolor="white",
+                   linewidth=0.6, label=SUB_NAME[s], zorder=3)
+    # Poisson prediction: CV = 1/sqrt(mean) — the mechanical coupling the data hug
+    xc = np.linspace(max(xs.min(), 0.6), xs.max(), 120)
+    ax.plot(xc, 1.0 / np.sqrt(xc), color=cs.BLACK, lw=1.5, ls="--", zorder=2,
+            label="Poisson: CV = 1/$\\sqrt{\\mathrm{mean}}$")
+    ax.text(0.97, 0.95,
+            "rank correlation (CV, mean) = -0.77\n"
+            "spread is set by the average, so a\nCV score restates the average",
+            transform=ax.transAxes, ha="right", va="top",
+            fontsize=cs.FONT_SIZES["annotation"],
+            bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.PALETTE["gray_light"], lw=0.6))
+    ax.set_xlabel("mean combined recall  r  (across the six-model panel)")
+    ax.set_ylabel("CV  =  SD / mean   (the raw dispersion)")
+    ax.legend(loc="lower left", fontsize=cs.FONT_SIZES["legend"])
+    fig.subplots_adjust(**cs.MARGINS["single"])
+    cs.add_header(fig, "Spread is governed by the mean",
+                  "Coefficient of variation against mean recall, with the Poisson prediction",
+                  "At the counts models produce, CV approaches 1/√mean — so a CV-based score reparametrizes level.")
+    cs.add_footer(fig, verdict="The presence–consistency coupling is arithmetic, not incidental — it recurs for any low-count CV score.",
+                  phase=SOURCE_PHASE, protocol="v1.7-prereg-r2")
+    p = OUT / "fig_04_cv_mean_coupling.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig)
+    return p
+
+
 if __name__ == "__main__":
-    for fn in (fig_01_cpc_defined, fig_02_cpc_dissociation, fig_03_phantom_null):
+    for fn in (fig_01_cpc_defined, fig_02_cpc_dissociation, fig_03_phantom_null,
+               fig_04_cv_mean_coupling):
         print("wrote:", fn())
