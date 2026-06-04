@@ -36,7 +36,7 @@ Pablo Ulpiano González Castro
 
 \vspace{0.6em}
 
-SVA, MPS Branding Program, New York, NY \textit{(primary academic affiliation)}\\
+School of Visual Arts, MPS Branding Program, New York, NY \textit{(primary academic affiliation)}\\
 Third System\texttrademark{} (research entity; data archive and methodology venue)
 
 \vspace{1em}
@@ -63,7 +63,7 @@ AI Availability extends brand-science accounts of mental and physical availabili
 
 **Keywords:** AI Availability; AIAS; brand measurement; large language models; coefficient of variation; consistency; recall; pre-registration; negative result; mental availability
 
-**JEL classification:** M31 (primary); L86; L15; D83; M37
+**JEL codes:** M31 (primary); L86; L15; D83; M37
 
 **Paper status:** Working paper in the AIAS\texttrademark{} Measurement Program. Pre-registered; methodology locked at git tag `v1.7-prereg-r2`, falsification and redefinition escalation recorded at `v1.7-prereg-r3`. Data and code deposited at OSF (`osf.io/ec6wh`).
 
@@ -87,7 +87,7 @@ The recall signal is the two-channel measure carried forward from the Presence p
 
 ## 2.2 Pre-registration and the anchored set
 
-Methodology was locked at git commit before any consistency value was computed, in keeping with the programme's pre-registration discipline. The original registration named the full anchor base. A pre-computation audit of the stored recall data then established that the two-channel panel measure the instrument requires is present for only three anchored substrates: skincare, cosmetics, and automotive. The remaining substrates were excluded on data-availability grounds, and the exclusion was recorded as an amendment to the registration before computation rather than after inspection of results. One substrate carries no panel recall; three carry single-channel recall from which the combined count cannot be formed; one uses a non-canonical channel pair whose category-side construct differs from the panel standard; and one was run on an off-panel model set. The anchored set was narrowed to the three-substrate trio accordingly, matching the set used in the instrument's pilot (González Castro, 2026, SSRN 6875319). No re-acquisition was performed, and the exclusions are mechanical rather than result-driven.
+Methodology was locked at git commit before any consistency value was computed, in keeping with the programme's pre-registration discipline (protocol series: González Castro, 2026, SSRN 6761698, 6797679, 6799479, 6810758, 6816340). The original registration named the full anchor base. A pre-computation audit of the stored recall data then established that the two-channel panel measure the instrument requires is present for only three anchored substrates: skincare, cosmetics, and automotive. The remaining substrates were excluded on data-availability grounds, and the exclusion was recorded as an amendment to the registration before computation rather than after inspection of results. One substrate carries no panel recall; three carry single-channel recall from which the combined count cannot be formed; one uses a non-canonical channel pair whose category-side construct differs from the panel standard; and one was run on an off-panel model set. The anchored set was narrowed to the three-substrate trio accordingly, matching the set used in the instrument's pilot (González Castro, 2026, SSRN 6875319). No re-acquisition was performed, and the exclusions are mechanical rather than result-driven.
 
 ## 2.3 Computation
 
@@ -167,7 +167,7 @@ The escalation routes to the next methodology lock. The empirical baseline that 
 
 # Declarations {-}
 
-**Conflict of interest (§COI).** The author is employed by Samsung Electronics America. Samsung does not compete in the substrate categories examined here (skincare, cosmetics, automotive), and the employer had no role in the design, execution, analysis, or decision to publish. The research is conducted independently through Third System™.
+**Conflict of interest.** The author is employed by Samsung Electronics America. Samsung does not compete in the substrate categories examined here (skincare, cosmetics, automotive), and the employer had no role in the design, execution, analysis, or decision to publish. The research is conducted independently through Third System™.
 
 **Funding.** Self-funded.
 
@@ -186,6 +186,12 @@ González Castro, P. U. (2026). *Coefficient-of-variation consistency: instrumen
 González Castro, P. U. (2026). *AIAS 1.0: the Presence component.* SSRN Working Paper 6817841.
 
 González Castro, P. U. (2026). *The four-regime taxonomy (Protocol v1.2).* SSRN Working Paper 6761698.
+
+González Castro, P. U. (2026). *AIAS Presence Measurement Protocol, v1.3 (Phase A pivot-validation).* SSRN Working Paper 6797679.
+
+González Castro, P. U. (2026). *AIAS Presence Measurement Protocol, v1.4 (multi-component construct).* SSRN Working Paper 6799479.
+
+González Castro, P. U. (2026). *AIAS Presence Measurement Protocol, v1.5 (multi-statistic C₂ and two-channel recall).* SSRN Working Paper 6810758.
 
 Romaniuk, J., & Sharp, B. (2022). *How brands grow: Part 2* (Rev. ed.). Oxford University Press.
 

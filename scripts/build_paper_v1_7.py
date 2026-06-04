@@ -42,9 +42,9 @@ from pathlib import Path
 AIAS_ROOT = Path.home() / "aias"
 PAPER_DIR = AIAS_ROOT / "papers" / "v1_7"
 
-DEFAULT_SOURCE = PAPER_DIR / "v1_7_cpc_consistency.md"
-DEFAULT_OUTPUT = PAPER_DIR / "v1_7_cpc_consistency.pdf"
-DEFAULT_TEMP = PAPER_DIR / "_v1_7_cpc_consistency_pre.md"
+DEFAULT_SOURCE = PAPER_DIR / "v1_7_ssrn_paper_draft.md"
+DEFAULT_OUTPUT = PAPER_DIR / "v1_7_ssrn_paper.pdf"
+DEFAULT_TEMP = PAPER_DIR / "_v1_7_ssrn_paper_pre.md"
 
 RESOURCE_PATH = str(PAPER_DIR)
 
