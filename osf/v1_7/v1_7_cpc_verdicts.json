@@ -1,0 +1,306 @@
+{
+  "phase": "v1.7",
+  "component": "CPC",
+  "lock": "v1.7-prereg-r2",
+  "no_new_llm_calls": true,
+  "constants_source": "prereg/v1_7_cpc_consistency_content.py",
+  "anchored_set": [
+    {
+      "key": "v0.20",
+      "name": "skincare"
+    },
+    {
+      "key": "v0.21",
+      "name": "cosmetics"
+    },
+    {
+      "key": "v0.22",
+      "name": "automotive"
+    }
+  ],
+  "thresholds": {
+    "mu_floor": 1.0,
+    "dissociation_ceiling": 0.5,
+    "dispersion_ddof": 0,
+    "panel_n": 6
+  },
+  "r_range_note": "r=R_cat+R_cult is 0..6 (3+3 frames/channel), not the spec's annotated 0..12; CV is scale-invariant so CPC is unaffected.",
+  "presence_note": "Primary Presence = canonical presence_composite (mean of C_P/6, R_cat/18, R_cult/18); recognition-only and recall-level variants reported for robustness.",
+  "H_CPC_Defined": {
+    "verdict": "FALSIFIED",
+    "pooled_defined_rate": 0.5671641791044776,
+    "per_substrate": {
+      "v0.20": {
+        "in_market_n": 24,
+        "defined_n": 10,
+        "defined_rate": 0.4166666666666667,
+        "na_brands": [
+          "Est\u00e9e Lauder",
+          "Lanc\u00f4me",
+          "Sisley",
+          "Dior Beauty",
+          "Chanel Beauty",
+          "La Prairie",
+          "Cl\u00e9 de Peau Beaut\u00e9",
+          "Rare Beauty",
+          "Fenty Skin",
+          "Goop",
+          "Glossier",
+          "Tower 28",
+          "Eucerin",
+          "Bioderma"
+        ]
+      },
+      "v0.21": {
+        "in_market_n": 24,
+        "defined_n": 14,
+        "defined_rate": 0.5833333333333334,
+        "na_brands": [
+          "Giorgio Armani Beauty",
+          "Hourglass",
+          "Chantecaille",
+          "Laura Mercier",
+          "Haus Labs",
+          "Kylie Cosmetics",
+          "CoverGirl",
+          "Revlon",
+          "Wet n Wild",
+          "Milani Cosmetics"
+        ]
+      },
+      "v0.22": {
+        "in_market_n": 19,
+        "defined_n": 14,
+        "defined_rate": 0.7368421052631579,
+        "na_brands": [
+          "Rivian",
+          "Lucid",
+          "Polestar",
+          "Fisker",
+          "Nissan"
+        ]
+      }
+    }
+  },
+  "H_CPC_Dissociates": {
+    "verdict": "FALSIFIED",
+    "ceiling": 0.5,
+    "pooled": {
+      "composite": {
+        "rho": 0.7663522893480327,
+        "abs_rho": 0.7663522893480327,
+        "p": 2.0423789461484196e-08,
+        "ci_low": 0.6013848691344972,
+        "ci_high": 0.8848460459101015,
+        "n": 38
+      },
+      "recognition": {
+        "rho": NaN,
+        "abs_rho": NaN,
+        "p": NaN,
+        "ci_low": NaN,
+        "ci_high": NaN,
+        "n": 38
+      },
+      "recall_level": {
+        "rho": 0.7663176854351751,
+        "abs_rho": 0.7663176854351751,
+        "p": 2.0471932775548284e-08,
+        "ci_low": 0.60121088505312,
+        "ci_high": 0.8850843153710707,
+        "n": 38
+      },
+      "quadrants": {
+        "cpc_median": 0.7578982763068516,
+        "presence_median": 57.40740740740741,
+        "high_presence_low_cpc": [
+          "v0.20:Paula's Choice",
+          "v0.21:MAC Cosmetics",
+          "v0.22:Hyundai"
+        ],
+        "low_presence_high_cpc": [
+          "v0.22:Bentley",
+          "v0.22:Chevrolet",
+          "v0.22:Volkswagen"
+        ],
+        "off_diagonal_n": 6
+      }
+    },
+    "per_substrate": {
+      "v0.20": {
+        "composite": {
+          "rho": 0.9390418473114204,
+          "abs_rho": 0.9390418473114204,
+          "p": 5.6101819249314306e-05,
+          "ci_low": 0.6740938478604224,
+          "ci_high": 1.0,
+          "n": 10
+        },
+        "recognition": {
+          "rho": NaN,
+          "abs_rho": NaN,
+          "p": NaN,
+          "ci_low": NaN,
+          "ci_high": NaN,
+          "n": 10
+        },
+        "recall_level": {
+          "rho": 0.9390418473114204,
+          "abs_rho": 0.9390418473114204,
+          "p": 5.6101819249314306e-05,
+          "ci_low": 0.6740938478604224,
+          "ci_high": 1.0,
+          "n": 10
+        },
+        "quadrants": {
+          "cpc_median": 0.7968489496905815,
+          "presence_median": 77.77777777777777,
+          "high_presence_low_cpc": [],
+          "low_presence_high_cpc": [],
+          "off_diagonal_n": 0
+        },
+        "n_defined_in_market": 10
+      },
+      "v0.21": {
+        "composite": {
+          "rho": 0.8458149779735683,
+          "abs_rho": 0.8458149779735683,
+          "p": 0.00013796022531881787,
+          "ci_low": 0.5180180180180181,
+          "ci_high": 0.9640192779817951,
+          "n": 14
+        },
+        "recognition": {
+          "rho": NaN,
+          "abs_rho": NaN,
+          "p": NaN,
+          "ci_low": NaN,
+          "ci_high": NaN,
+          "n": 14
+        },
+        "recall_level": {
+          "rho": 0.8445429609366921,
+          "abs_rho": 0.8445429609366921,
+          "p": 0.00014451183362436789,
+          "ci_low": 0.5118936011938399,
+          "ci_high": 0.9632849504771233,
+          "n": 14
+        },
+        "quadrants": {
+          "cpc_median": 0.7387961250362586,
+          "presence_median": 56.48148148148148,
+          "high_presence_low_cpc": [],
+          "low_presence_high_cpc": [
+            "Bobbi Brown"
+          ],
+          "off_diagonal_n": 1
+        },
+        "n_defined_in_market": 14
+      },
+      "v0.22": {
+        "composite": {
+          "rho": 0.6367667248993574,
+          "abs_rho": 0.6367667248993574,
+          "p": 0.014333009934380393,
+          "ci_low": 0.16790951106858434,
+          "ci_high": 0.8782965597239877,
+          "n": 14
+        },
+        "recognition": {
+          "rho": NaN,
+          "abs_rho": NaN,
+          "p": NaN,
+          "ci_low": NaN,
+          "ci_high": NaN,
+          "n": 14
+        },
+        "recall_level": {
+          "rho": 0.6367667248993574,
+          "abs_rho": 0.6367667248993574,
+          "p": 0.014333009934380393,
+          "ci_low": 0.16790951106858434,
+          "ci_high": 0.8782965597239877,
+          "n": 14
+        },
+        "quadrants": {
+          "cpc_median": 0.7592080714932264,
+          "presence_median": 57.40740740740741,
+          "high_presence_low_cpc": [
+            "Hyundai"
+          ],
+          "low_presence_high_cpc": [
+            "Bentley"
+          ],
+          "off_diagonal_n": 2
+        },
+        "n_defined_in_market": 14
+      }
+    },
+    "any_off_diagonal": true
+  },
+  "H_CPC_PhantomNull": {
+    "verdict": "CONFIRM",
+    "n_phantoms": 5,
+    "phantom_cell_substrates": [
+      "v0.22"
+    ],
+    "offenders": [],
+    "phantoms": [
+      {
+        "brand": "Pontiac",
+        "substrate": "v0.22",
+        "mean_r": 0.0,
+        "cpc_status": "N/A"
+      },
+      {
+        "brand": "Oldsmobile",
+        "substrate": "v0.22",
+        "mean_r": 0.0,
+        "cpc_status": "N/A"
+      },
+      {
+        "brand": "Plymouth",
+        "substrate": "v0.22",
+        "mean_r": 0.0,
+        "cpc_status": "N/A"
+      },
+      {
+        "brand": "Mercury",
+        "substrate": "v0.22",
+        "mean_r": 0.0,
+        "cpc_status": "N/A"
+      },
+      {
+        "brand": "Saturn",
+        "substrate": "v0.22",
+        "mean_r": 0.0,
+        "cpc_status": "N/A"
+      }
+    ]
+  },
+  "reconciliation_vs_v0_30": {
+    "checked": 38,
+    "max_abs_diff": 2.220446049250313e-16,
+    "mismatches": []
+  },
+  "certified_inputs_sha256": {
+    "v0.20": {
+      "phase_a": "c8ad6335c982ec95883fffa6c3cb185170b3cdd80b8694377c9fb8afb47d390e",
+      "phase_b": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828"
+    },
+    "v0.21": {
+      "phase_a": "d470940aa497f55588588536173a128a3394af2a6f0bb6e94825738622167d0d",
+      "phase_b": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1"
+    },
+    "v0.22": {
+      "phase_a": "93c1b147c44b9031bfad3eb5806d50fd26404cf9c9b7cea95f2fd8a7a00c246a",
+      "phase_b": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35"
+    }
+  },
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 280400,
+    "method": "BCa",
+    "ci": "95%"
+  }
+}
