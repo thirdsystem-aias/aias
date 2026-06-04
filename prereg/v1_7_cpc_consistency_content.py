@@ -3,7 +3,8 @@ v1.7 — CPC Consistency Methodology Lock · Pre-registration content (r1)
 
 AIAS™ Measurement Program. This module encodes the locked CPC protocol:
 construct, computation, hypotheses, thresholds, verdict keys, and figure map.
-Methodology is fixed at git tag v1.7-prereg-r1. No new acquisition in v1.7.
+Methodology locked at git tag v1.7-prereg-r1, amended at v1.7-prereg-r2
+(anchored-set narrowing; see DEVIATIONS Entry 0). No new acquisition in v1.7.
 
 Lineage: extends v1.6 (SSRN 6816340); pilots from v0.30 (SSRN 6875319).
 """
@@ -17,7 +18,7 @@ METADATA = {
     "component": "CPC",                 # Consistency
     "extends": "v1.6",                  # SSRN 6816340
     "pilots_from": "v0.30",             # SSRN 6875319
-    "prereg_tag": "v1.7-prereg-r1",
+    "prereg_tag": "v1.7-prereg-r2",   # r1 7d94ac3; r2 narrows anchored set (Entry 0)
     "acquisition": False,               # reads existing Phase B recall data
     "register": "academic",             # paper + figures only; report deferred to AIAS 2.0
 }
@@ -52,6 +53,7 @@ COMPUTATION = {
     "per_model_unit": "combined_recall_count",   # R_cat + R_cult, range 0..12
     "panel_n": 6,                                # fixed six-model panel
     "dispersion": "coefficient_of_variation",    # sd / mean
+    "dispersion_ddof": 0,                        # population sd; 6 models = whole panel (v0.30 convention)
     "transform": "reciprocal_one_plus_cv",       # 1 / (1 + CV); bounded (0,1]
     "score_direction": "higher_is_more_consistent",
     "rejected_transforms": {
@@ -72,8 +74,10 @@ HYPOTHESES = [
     {
         "id": "H_CPC_Defined",
         "statement": (
-            "CPC computes (mean >= floor) and lands in (0,1] for in-market brands "
-            "across all eight anchored substrates (v0.16-v0.24)."
+            "CPC computes (mean >= floor) and lands in (0,1] for in-market brands across "
+            "the substrates carrying canonical two-channel (R_cat + R_cult) recall on the "
+            "fixed six-model panel: v0.20, v0.21, v0.22 — the set validated in the v0.30 "
+            "CPC pilot."
         ),
         "falsified_if": (
             "A material fraction of in-market brands return N/A -> floor is mis-set."
@@ -149,4 +153,24 @@ FIGURES = [
 # ---------------------------------------------------------------------------
 # DEVIATIONS — contemporaneous log (Entry 0 reserved for r1->r2 amendments)
 # ---------------------------------------------------------------------------
-DEVIATIONS = []  # none at r1
+DEVIATIONS = [
+    {
+        "entry": 0,
+        "amendment": "r1 -> r2",
+        "type": "pre-computation data-availability scope correction",
+        "summary": (
+            "r1 asserted H_CPC_Defined across all eight anchored substrates "
+            "(v0.16-v0.24). A pre-computation granularity audit (no CPC values "
+            "computed) found the locked input — two-channel R_cat+R_cult recall on "
+            "the canonical six-model panel — present only for v0.20-v0.22. "
+            "Exclusions on data-availability grounds: v0.16 (no LLM-panel recall); "
+            "v0.17-v0.19 (single-channel; r=R_cat+R_cult cannot be formed); v0.23 "
+            "(two-channel but non-canonical pair editorial-authority/cultural-cult; "
+            "channel-construct equivalence deferred to v0.31); v0.24 (off-panel "
+            "models, per v0.30). Anchored set narrowed to v0.20-v0.22. No "
+            "re-acquisition path in v1.7; cross-substrate recall back-fill logged "
+            "as future work. Exclusions are mechanical (input not formable), "
+            "decided before any computation — not result-driven."
+        ),
+    },
+]
