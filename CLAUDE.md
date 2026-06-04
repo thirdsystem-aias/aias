@@ -60,7 +60,10 @@ Build outputs land under their respective subdirs. Never write to `/Users/pablou
   - 5-substrate-family anchor base now complete (kitchenware, fragrance, audio, skincare, cosmetics)
   - Type 2 quadrant cleared EMERGED threshold for first time
   - Phantom Brand Persistence reached strongest demonstration (Glossier 6/6 q6)
-- **Latest methodology paper shipped:** v1.6 (SSRN 6816340, May 2026)
+- **Latest methodology paper shipped:** v1.7 CPC Consistency (SSRN 6878818, June 2026) — pre-registered **negative result**
+  - CV-based Consistency (CPC = 1/(1+CV) of cross-model recall) is **not independent of Presence**: pooled |ρ| = 0.77 > 0.50 ceiling, per-substrate +0.94/+0.85/+0.64; mechanical CV ≈ 1/√mean coupling at recall counts r∈0–6. Instrument **not adopted**; redefinition escalated to v1.8. H_CPC_PhantomNull confirmed; H_CPC_Defined falsified (57% defined-rate, recognition–recall gap).
+  - Anchored set v0.20–v0.22 (two-channel canonical trio); tags `v1.7-prereg-r1/r2/r3` (r2 scope-narrow, r3 falsification record); OSF deposit at `osf.io/ec6wh/methodology/v1_7/`
+- **Prior methodology paper:** v1.6 (SSRN 6816340, May 2026)
   - Three increments: substrate-level Recognition pre-screen, independent moderator pathway (`H_IdentityLoad_Direct`), Phantom Brand Persistence Phase B extension
   - Retrospective scoring against v0.16–v0.21 corpus; v0.21 returned CONFIRMED for both `H_IdentityLoad_Direct` and `H_PhantomBrandPersistence` (Glossier validity anchor passed at R_phantom = 12)
   - Pre-reg tag `v1.6-prereg-r1` (commit `f10616a`); OSF deposit at `osf.io/ec6wh/methodology/v1_6/`
