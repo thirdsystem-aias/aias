@@ -1,0 +1,193 @@
+{
+  "phase": "v0.31",
+  "lock": "v0.31-prereg-r1",
+  "no_new_llm_calls": true,
+  "instrument": "v1.7 CPC, channel-agnostic generalization (total per-model mentions across frames)",
+  "reconciliation_gate": {
+    "pass": true,
+    "checked": 72,
+    "max_abs_diff": 1.1102230246251565e-16,
+    "tolerance": 0.0,
+    "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+  },
+  "omnibus": {
+    "v0.19": {
+      "category": "audiophile headphones",
+      "n_brands": 16,
+      "n_defined": 8,
+      "n_undefined": 8,
+      "undefined_brands": [
+        "Dan Clark Audio",
+        "Denon",
+        "Final Audio",
+        "Koss",
+        "Meze",
+        "Spirit Torino",
+        "Stax",
+        "ZMF Headphones"
+      ],
+      "cpc_median": 0.6674406099710622
+    },
+    "v0.20": {
+      "category": "skincare",
+      "n_brands": 24,
+      "n_defined": 10,
+      "n_undefined": 14,
+      "undefined_brands": [
+        "Est\u00e9e Lauder",
+        "Lanc\u00f4me",
+        "Sisley",
+        "Dior Beauty",
+        "Chanel Beauty",
+        "La Prairie",
+        "Cl\u00e9 de Peau Beaut\u00e9",
+        "Rare Beauty",
+        "Fenty Skin",
+        "Goop",
+        "Glossier",
+        "Tower 28",
+        "Eucerin",
+        "Bioderma"
+      ],
+      "cpc_median": 0.7968489496905815
+    },
+    "v0.21": {
+      "category": "cosmetics",
+      "n_brands": 24,
+      "n_defined": 14,
+      "n_undefined": 10,
+      "undefined_brands": [
+        "Giorgio Armani Beauty",
+        "Hourglass",
+        "Chantecaille",
+        "Laura Mercier",
+        "Haus Labs",
+        "Kylie Cosmetics",
+        "CoverGirl",
+        "Revlon",
+        "Wet n Wild",
+        "Milani Cosmetics"
+      ],
+      "cpc_median": 0.7387961250362586
+    },
+    "v0.22": {
+      "category": "automotive",
+      "n_brands": 24,
+      "n_defined": 14,
+      "n_undefined": 10,
+      "undefined_brands": [
+        "Rivian",
+        "Lucid",
+        "Polestar",
+        "Fisker",
+        "Nissan",
+        "Pontiac",
+        "Oldsmobile",
+        "Plymouth",
+        "Mercury",
+        "Saturn"
+      ],
+      "cpc_median": 0.7592080714932264
+    },
+    "v0.23": {
+      "category": "premium spirits",
+      "n_brands": 24,
+      "n_defined": 9,
+      "n_undefined": 15,
+      "undefined_brands": [
+        "S01",
+        "S03",
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10",
+        "S12",
+        "S14",
+        "S16",
+        "S18",
+        "S21",
+        "S22",
+        "S23",
+        "S24"
+      ],
+      "cpc_median": 0.6012054320159286
+    }
+  },
+  "supplementary": {
+    "v0.18": {
+      "category": "indie fragrance",
+      "n_brands": 24,
+      "n_defined": 6,
+      "n_undefined": 18,
+      "note": "3-frame (0..3); descriptive only, excluded from omnibus KW"
+    },
+    "v0.17": {
+      "deferred": true,
+      "reason": "raw-text Phase B (slot JSON), canonical-6 panel confirmed; brand-scoring needs a kitchenware matcher/registry not present. Descriptive-only; out of omnibus regardless."
+    }
+  },
+  "excluded": {
+    "v0.16": "14-model legacy panel; Trends-validation Phase B (no per-model LLM recall)",
+    "v0.24": "off the locked six (opus-4-7 / sonnet-4-6)"
+  },
+  "H_CPC_Computable": {
+    "verdict": "CONFIRM",
+    "per_substrate": {
+      "v0.19": {
+        "n_defined": 8,
+        "cpc_variance": 0.0015334491007207365,
+        "distinct_cpc": 8,
+        "non_degenerate": true,
+        "cpc_min": 0.5651923175029236,
+        "cpc_max": 0.6909830056250527
+      },
+      "v0.20": {
+        "n_defined": 10,
+        "cpc_variance": 0.021846520610370432,
+        "distinct_cpc": 10,
+        "non_degenerate": true,
+        "cpc_min": 0.5222662922462574,
+        "cpc_max": 0.9399488694979569
+      },
+      "v0.21": {
+        "n_defined": 14,
+        "cpc_variance": 0.01521843882252791,
+        "distinct_cpc": 13,
+        "non_degenerate": true,
+        "cpc_min": 0.5,
+        "cpc_max": 0.8433869711737677
+      },
+      "v0.22": {
+        "n_defined": 14,
+        "cpc_variance": 0.010929042717670123,
+        "distinct_cpc": 10,
+        "non_degenerate": true,
+        "cpc_min": 0.6414298263637128,
+        "cpc_max": 1.0
+      },
+      "v0.23": {
+        "n_defined": 9,
+        "cpc_variance": 0.0050689584835400675,
+        "distinct_cpc": 8,
+        "non_degenerate": true,
+        "cpc_min": 0.44209062967510265,
+        "cpc_max": 0.6386979044864147
+      }
+    }
+  },
+  "H_CPC_CrossCategory": {
+    "verdict": "CONFIRM",
+    "kruskal_H": 21.5118895864716,
+    "kruskal_p": 0.00025061673431409515,
+    "alpha": 0.05,
+    "n_groups": 5,
+    "medians": {
+      "v0.19": 0.6674406099710622,
+      "v0.20": 0.7968489496905815,
+      "v0.21": 0.7387961250362586,
+      "v0.22": 0.7592080714932264,
+      "v0.23": 0.6012054320159286
+    }
+  }
+}
