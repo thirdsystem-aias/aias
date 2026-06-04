@@ -3,8 +3,11 @@ v1.7 — CPC Consistency Methodology Lock · Pre-registration content (r1)
 
 AIAS™ Measurement Program. This module encodes the locked CPC protocol:
 construct, computation, hypotheses, thresholds, verdict keys, and figure map.
-Methodology locked at git tag v1.7-prereg-r1, amended at v1.7-prereg-r2
-(anchored-set narrowing; see DEVIATIONS Entry 0). No new acquisition in v1.7.
+Methodology lineage: locked at git tag v1.7-prereg-r1, scope-amended at
+v1.7-prereg-r2 (anchored-set narrowing; DEVIATIONS Entry 0), falsification
+recorded at v1.7-prereg-r3 (DEVIATIONS Entry 1; the r2 methodology applied
+faithfully failed its pre-committed trigger — additive record, methodology
+unchanged). No new acquisition in v1.7.
 
 Lineage: extends v1.6 (SSRN 6816340); pilots from v0.30 (SSRN 6875319).
 """
@@ -171,6 +174,39 @@ DEVIATIONS = [
             "re-acquisition path in v1.7; cross-substrate recall back-fill logged "
             "as future work. Exclusions are mechanical (input not formable), "
             "decided before any computation — not result-driven."
+        ),
+    },
+    {
+        "entry": 1,
+        "amendment": "r2 -> r3",
+        "type": "post-computation falsification record + redefinition escalation",
+        "summary": (
+            "Locked r2 protocol applied to v0.20-v0.22. Computation verified: "
+            "reconciles with osf/v30/data/v30_cpc.csv at max|delta|=2.2e-16. "
+            "Outcomes — H_CPC_PhantomNull: CONFIRMED (all 5 Cell-D defunct brands "
+            "-> N/A). H_CPC_Defined: FALSIFIED (pooled defined-rate 57%; 43% of "
+            "in-market brands recognized-but-not-recalled, mean r < 1.0 -> N/A; "
+            "verified genuine, not a matcher artifact — e.g. Lancome, Chanel, Dior "
+            "Beauty at C_P=6 with ~0 recall). Recorded as a substantive recognition- "
+            "recall gap, not a floor mis-calibration; floor stays locked at 1.0. "
+            "H_CPC_Dissociates: FALSIFIED. Vs recognition C_P: undefined (C_P "
+            "saturated at 6 across all 38 defined brands). Vs recall-level/composite "
+            "Presence: pooled |rho|=0.766 (p=2e-8, 95% BCa [0.601, 0.885]); "
+            "per-substrate rho = +0.939 skincare, +0.846 cosmetics, +0.637 "
+            "automotive — all above the 0.50 ceiling. Mechanism verified: "
+            "rho(CV, mean r) = -0.766 exactly; at recall counts r in 0-6 the Poisson "
+            "CV ~ 1/sqrt(mean) coupling makes dispersion mean-dependent, so CV-based "
+            "consistency reparametrizes recall level rather than measuring a "
+            "mean-independent construct. The r1/r2 dissociation guarantee does not "
+            "hold empirically at these magnitudes. Per spec falsified_if "
+            "(|rho| >= 0.50 -> escalate), CV-based CPC is NOT adopted as the "
+            "canonical Consistency instrument; redefinition escalated to v1.8 "
+            "(must define Consistency on a mean-independent basis). "
+            "Annotation correction: r1/r2 annotated r in 0-12 (assumed 6 "
+            "probes/channel); actual structure is 3/channel, so r in 0-6. "
+            "CV scale-invariance leaves CPC values unaffected (reconciliation "
+            "holds); the smaller magnitude only deepens the coupling. No "
+            "re-acquisition, no result-driven spec change."
         ),
     },
 ]
