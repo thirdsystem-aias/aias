@@ -19,8 +19,8 @@ v1.7 (CPC) verdicts — lock v1.7-prereg-r2  |  trio: skincare / cosmetics / aut
   H_CPC_PhantomNull  : CONFIRM   (5 Cell-D phantoms; offenders=[])
 
   reconciliation vs v0.30 cpc_raw: checked 38 brands, max|Δ|=2.22e-16  -> OK
-  wrote: /Users/pablou/aias/osf/v1_7/data/v1_7_cpc.csv
-  wrote: /Users/pablou/aias/osf/v1_7/v1_7_cpc_verdicts.json
+  wrote: /Users/pablou/aias/osf/methodology/v1_7/data/v1_7_cpc.csv
+  wrote: /Users/pablou/aias/osf/methodology/v1_7/v1_7_cpc_verdicts.json
 ```
 
 ## Certified input hashes (SHA256)

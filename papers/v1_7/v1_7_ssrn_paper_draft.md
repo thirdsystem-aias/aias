@@ -167,13 +167,13 @@ The escalation routes to the next methodology lock. The empirical baseline that 
 
 # Declarations {-}
 
-**Conflict of interest.** The author is employed by Samsung Electronics America. Samsung does not compete in the substrate categories examined here (skincare, cosmetics, automotive), and the employer had no role in the design, execution, analysis, or decision to publish. The research is conducted independently through Third System™.
+**Conflict of interest.** The author is employed by Samsung Electronics America. Samsung markets no consumer brands in the skincare or cosmetics categories examined. In automotive, Samsung does not market vehicle marques of the kind measured here, though affiliated units participate in the automotive supply chain (Harman International in connected-vehicle and audio systems; Samsung SDI in vehicle batteries); this is disclosed for completeness. The employer had no role in the study's design, execution, analysis, or decision to publish, and the research is conducted independently through Third System™.
 
 **Funding.** Self-funded.
 
 **Ethics.** Not applicable; no human subjects. The study uses public APIs and language-model prompts.
 
-**Data and code availability.** Pre-registration artifacts, scoring code, the scored dataset, and figures are deposited at OSF (`osf.io/ec6wh/v1_7`). Consistency values reconcile with the pilot's recorded output to a maximum absolute difference of $2\times10^{-16}$.
+**Data and code availability.** Pre-registration artifacts, scoring code, the scored dataset, and figures are deposited at OSF (`osf.io/ec6wh/methodology/v1_7`). Consistency values reconcile with the pilot's recorded output to a maximum absolute difference of $2\times10^{-16}$.
 
 # References {-}
 

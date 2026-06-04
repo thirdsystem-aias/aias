@@ -23,9 +23,9 @@ retains spread even where recognition C_P saturates. We also record a
 recognition-only (C_P) and a recall-level (mean r) variant for robustness.
 
 Outputs:
-    osf/v1_7/data/v1_7_cpc.csv          per-brand CPC + presence components
-    osf/v1_7/v1_7_cpc_verdicts.json     three-finding verdicts + per-substrate rho
-    osf/v1_7/v1_7_run_log.md            certified input hashes + console summary
+    osf/methodology/v1_7/data/v1_7_cpc.csv          per-brand CPC + presence components
+    osf/methodology/v1_7/v1_7_cpc_verdicts.json     three-finding verdicts + per-substrate rho
+    osf/methodology/v1_7/v1_7_run_log.md            certified input hashes + console summary
 """
 import sys, json, csv, hashlib, warnings
 from pathlib import Path
@@ -244,7 +244,7 @@ def main():
           ("FALSIFIED" if offenders else "UNDETERMINED"))  # UNDETERMINED only if no phantom cell exists
 
     # ---- write per-brand CSV ----
-    out_dir = ROOT / "osf/v1_7/data"; out_dir.mkdir(parents=True, exist_ok=True)
+    out_dir = ROOT / "osf/methodology/v1_7/data"; out_dir.mkdir(parents=True, exist_ok=True)
     csv_path = out_dir / "v1_7_cpc.csv"
     cols = ["brand", "substrate", "cell", "cell_label", "in_market", "is_phantom",
             "r_per_model", "mean_r", "sd_pop", "cpc_raw", "cpc_score", "cpc_status",
@@ -307,7 +307,7 @@ def main():
         "certified_inputs_sha256": certified,
         "bootstrap": {"resamples": N_BOOT, "seed": SEED, "method": "BCa", "ci": "95%"},
     }
-    vpath = ROOT / "osf/v1_7/v1_7_cpc_verdicts.json"
+    vpath = ROOT / "osf/methodology/v1_7/v1_7_cpc_verdicts.json"
     with open(vpath, "w") as f:
         json.dump(verdicts, f, indent=2)
 
@@ -340,7 +340,7 @@ def main():
     out(f"  wrote: {csv_path}")
     out(f"  wrote: {vpath}")
 
-    log_path = ROOT / "osf/v1_7/v1_7_run_log.md"
+    log_path = ROOT / "osf/methodology/v1_7/v1_7_run_log.md"
     with open(log_path, "w") as f:
         f.write("# v1.7 CPC scoring run log\n\n```\n" + "\n".join(lines) + "\n```\n\n")
         f.write("## Certified input hashes (SHA256)\n\n")

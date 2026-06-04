@@ -96,7 +96,7 @@ ORCID: 0009-0003-8968-9990
 ### Declaration of Interest (paste verbatim)
 
 ```
-The author is employed by Samsung Electronics America. Samsung does not compete in the substrate categories examined here (skincare, cosmetics, automotive), and the employer had no role in the design, execution, analysis, or decision to publish. The research is conducted independently through Third System™.
+The author is employed by Samsung Electronics America. Samsung markets no consumer brands in the skincare or cosmetics categories examined. In automotive, Samsung does not market vehicle marques of the kind measured here, though affiliated units participate in the automotive supply chain (Harman International in connected-vehicle and audio systems; Samsung SDI in vehicle batteries); this is disclosed for completeness. The employer had no role in the study's design, execution, analysis, or decision to publish, and the research is conducted independently through Third System™.
 ```
 
 ### Funder (paste verbatim)
@@ -114,7 +114,7 @@ Not applicable. The research uses public LLM APIs and standard prompt batteries;
 ### Data and code availability (paste verbatim)
 
 ```
-Pre-registration artifacts, scoring code, the scored dataset, and figures are deposited at OSF (`osf.io/ec6wh/v1_7`). Consistency values reconcile with the pilot's recorded output to a maximum absolute difference of $2\times10^{-16}$.
+Pre-registration artifacts, scoring code, the scored dataset, and figures are deposited at OSF (`osf.io/ec6wh/methodology/v1_7`). Consistency values reconcile with the pilot's recorded output to a maximum absolute difference of $2\times10^{-16}$.
 ```
 
 ---
@@ -135,7 +135,7 @@ González Castro, P. U. (2026). Consistency without Independence. SSRN Working P
 
 1. **Capture SSRN abstract ID** when SSRN returns it (URL format: `https://ssrn.com/abstract={ID}`).
 2. **Update memory:** add the v1.7 SSRN abstract ID entry to the recent_updates section of userMemories.
-3. **Run final OSF deposit:** `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/v1_7 v1_7`
+3. **Run final OSF deposit:** `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/methodology/v1_7 methodology/v1_7`
 4. **Cross-citation** in next phase: this v1.7 SSRN ID gets added to next phase's paper bibliography upstream-phases line.
 
 ---
