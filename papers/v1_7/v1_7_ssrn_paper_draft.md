@@ -5,6 +5,11 @@ fontsize: 11pt
 mainfont: "Carlito"
 keywords: "AI Availability; AIAS; brand measurement; large language models; coefficient of variation; consistency; recall; pre-registration; negative result; mental availability"
 jel: "M31; L86; L15; D83; M37"
+linkcolor: black
+urlcolor: black
+geometry:
+  - letterpaper
+  - margin=1in
 header-includes:
   - \usepackage{setspace}
   - \usepackage{float}
