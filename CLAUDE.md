@@ -237,6 +237,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.28 | Tech BRAND Discriminant Validity (CV.04) | 6865478 |
 | v0.29 | Presence Construct-Validity Baseline (CV.05) | 6870778 |
 | v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
+| v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
@@ -257,6 +258,7 @@ v0.29 Presence Construct-Validity Baseline (CV.05) — SSRN 6870778. Synthesis (
 
 - **Keywords:** semicolon-separated. Always include: `AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass`. Add 5–7 phase-specific keywords.
 - **JEL primary:** M31. Secondary: L86, L15, D83, M37.
+- **JEL label (paper body):** the inline bold label MUST read exactly `**JEL codes:**` — the `generate_ssrn_packet.py` extraction key. Never author `JEL:` or `JEL classification:` (the generator silently misses them).
 - **eJournals (up to 7):** Marketing; Marketing Strategy; Consumer Behavior; Advertising & Marketing Communications; Information Systems & eBusiness; Artificial Intelligence; Decision-Making Under Risk & Uncertainty.
 - **Funder:** Self-funded.
 - **Ethics:** Not applicable; no human subjects.

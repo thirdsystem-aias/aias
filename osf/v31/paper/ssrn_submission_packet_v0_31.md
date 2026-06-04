@@ -126,7 +126,7 @@ Pre-registration, recall data, scoring code, and figures are deposited at the Op
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC). SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC). SSRN Working Paper 6880959.
 ```
 
 ---

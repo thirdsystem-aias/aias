@@ -118,7 +118,7 @@ Uses WaterButler API directly with `OSF_TOKEN` env var. Deposits the full vNN tr
    - Source `.md` is **self-contained**: YAML frontmatter carries all preamble (`mainfont: Carlito`, `fontsize: 11pt`, header-includes with `setspace`/`float`/`caption`/`titlesec` packages, `\setstretch{1.36}`, `\parskip 8pt`, `\parindent 0pt`, `\renewcommand{\maketitle}{}`, `\providecommand{\xmpquote}[1]{#1}` stub)
    - Custom `\begin{titlepage}...\end{titlepage}` block is **first body content** with local `\setstretch{1.0}` + `\setlength{\parskip}{0pt}` overrides (one-page-fit rule)
    - Abstract on page 2 via `# Abstract {-}` markdown header — **NOT in titlepage**
-   - Keywords + JEL codes + Paper status as inline bold paragraphs immediately after Abstract
+   - Keywords + JEL codes + Paper status as inline bold paragraphs immediately after Abstract. The JEL line's bold label MUST read exactly `**JEL codes:**` (the `generate_ssrn_packet.py` key) — never `JEL:` or `JEL classification:`, which the generator silently misses
    - Figures inline in §3 Results: `![cap](../../reports/figs/vNN/chart_NN_<topic>.pdf){#fig:label width=100%}` (use full filenames, not short names)
    - Unicode→LaTeX subs for Carlito gaps (handled automatically by build script): ₜ→`$_{t}$`, ∈→`$\in$`, ⊆→`$\subseteq$`, ▶→`$\blacktriangleright$`, ∧→`$\wedge$`, ✓→`\checkmark`, etc.
    - Compound forms like 10⁻⁴ → rewrite to decimal (0.0001) in source
@@ -152,7 +152,7 @@ SSRN 6761698 (v1.2 Four-Regime Taxonomy) · 6797679 (v1.3 Phase A Pivot-Validati
 ## SSRN abstract ID registry (for cross-citation)
 
 **Foundational:** 6659000
-**Phase papers:** v0.6=6720959 · v0.7=6721779 · v0.8=6728000 · v0.9=6736878 · v0.10=6741163 · v0.11=6745040 · v0.12=6748341 · v0.13=6750498 · v0.14=6755621 · v0.15=6768059 · v0.16=6791999 · v0.17=6802261 · v0.18=6806558 · v0.19=6809182 · v0.20=6811441 · v0.21=6815378 · v0.22=6829118 · v0.23=6834298 · v0.24=6838802 · v0.25=6842138 · v0.26=6847678 · v0.27=6854758 · v0.28=6865478 · v0.29=6870778 · v0.30=6875319
+**Phase papers:** v0.6=6720959 · v0.7=6721779 · v0.8=6728000 · v0.9=6736878 · v0.10=6741163 · v0.11=6745040 · v0.12=6748341 · v0.13=6750498 · v0.14=6755621 · v0.15=6768059 · v0.16=6791999 · v0.17=6802261 · v0.18=6806558 · v0.19=6809182 · v0.20=6811441 · v0.21=6815378 · v0.22=6829118 · v0.23=6834298 · v0.24=6838802 · v0.25=6842138 · v0.26=6847678 · v0.27=6854758 · v0.28=6865478 · v0.29=6870778 · v0.30=6875319 · v0.31=6880959
 **Methodology:** v1.1=6722319 · v1.2=6761698 · v1.3=6797679 · v1.4=6799479 · v1.5=6810758 · v1.6=6816340 · v1.7=6878818
 **Synthesis:** AIAS™ 1.0=6817841
 URL pattern: `https://ssrn.com/abstract={id}`
