@@ -126,7 +126,7 @@ Pre-registration artifacts, scoring code, the scored dataset, and figures are de
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Consistency without Independence. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Consistency without Independence. SSRN Working Paper 6878818.
 ```
 
 ---

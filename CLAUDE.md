@@ -236,6 +236,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
+| v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
 | — synthesis paper — | | |
 | AIAS™ 1.0 | Five-Substrate Foundational Construct Claim | 6817841 |
 
