@@ -19,8 +19,28 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import chart_style as cs
 cs.setup()
 
-OUT = ROOT / "reports" / "figs" / "v31"; OUT.mkdir(parents=True, exist_ok=True)
+OUT_PAPER = ROOT / "reports" / "figs" / "v31"
+OUT_REPORT = OUT_PAPER / "report"
+_MODE = "paper"          # set per-mode in __main__
+OUT = OUT_PAPER          # active output dir (switched with _MODE)
 SOURCE_PHASE = "v0.31 (CPC baseline)"
+
+# Two-register footers: academic (paper) vs managerial P1-P5 (report).
+# Same data, same layout; only the register text differs.
+FOOTERS = {
+    "paper": {
+        "gate":   "Reconciliation gate PASSED — 72/72 exact per-model count identity; scoring proceeded.",
+        "within": "H_CPC_Computable CONFIRMED — non-degenerate CPC variance in all five omnibus substrates.",
+        "cross":  "H_CPC_CrossCategory CONFIRMED — KW H=21.51, p=2.5e-04.",
+        "floor":  "Floor (mean r < 1.0 -> undefined) inherited from v1.7; undefined counts reported per substrate.",
+    },
+    "report": {
+        "gate":   "P4 · Confirmed — the consistency reading reproduces the program's prior instrument exactly across all shared brands.",
+        "within": "P1 · Established — consistency is well-defined and separates brands within every category.",
+        "cross":  "P2 · Established — consistency differs systematically across categories; spirits lowest, skincare highest.",
+        "floor":  "P3 · Documented — brands the panel almost never recalls, including category leaders, carry no reading.",
+    },
+}
 OMNI = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
 CAT = {"v0.19": "headphones", "v0.20": "skincare", "v0.21": "cosmetics",
        "v0.22": "automotive", "v0.23": "spirits", "v0.18": "fragrance"}
@@ -56,7 +76,10 @@ def chart_01_reconciliation_gate():
     ax.plot([lo, hi], [lo, hi], color=cs.GRAY, lw=1.0, ls="--", zorder=1, label="y = x (identity)")
     ax.scatter(xs, ys, s=46, color=cs.INDIGO, alpha=0.8, edgecolor="white", linewidth=0.6, zorder=3)
     ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
-    ax.text(0.04, 0.95, f"n = {len(xs)} defined trio brands\nmax |$\\Delta$| = 1.1e-16  (float noise)\nexact per-model count identity",
+    _ann = ("n = 38 shared brands\nevery brand on the identity line\nthe reading reproduces exactly"
+            if _MODE == "report" else
+            f"n = {len(xs)} defined trio brands\nmax |$\\Delta$| = 1.1e-16  (float noise)\nexact per-model count identity")
+    ax.text(0.04, 0.95, _ann,
             transform=ax.transAxes, ha="left", va="top", fontsize=cs.FONT_SIZES["annotation"],
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.PALETTE["gray_light"], lw=0.6))
     ax.set_xlabel("v1.7-published CPC"); ax.set_ylabel("v0.31 generalized CPC")
@@ -65,7 +88,7 @@ def chart_01_reconciliation_gate():
     cs.add_header(fig, "The generalization reproduces v1.7 exactly",
                   "Channel-agnostic CPC against v1.7's two-channel CPC, on v0.20/21/22",
                   "Every brand lands on y = x — the channel-agnostic unit contains the locked two-channel unit by construction.")
-    cs.add_footer(fig, verdict="Reconciliation gate PASSED — 72/72 exact per-model count identity; scoring proceeded.",
+    cs.add_footer(fig, verdict=FOOTERS[_MODE]["gate"],
                   phase=SOURCE_PHASE, protocol="v0.31-prereg-r1")
     p = OUT / "chart_01_reconciliation_gate.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
 
@@ -100,8 +123,10 @@ def chart_02_cpc_within_substrate():
     fig.subplots_adjust(**cs.MARGINS["single"])
     cs.add_header(fig, "Consistency is well-defined and varies within every category",
                   "Brand-level CPC for defined brands, by substrate, with medians (bar) and N",
-                  "Non-degenerate spread in all five substrates — the instrument is not a near-constant (H_CPC_Computable).")
-    cs.add_footer(fig, verdict="H_CPC_Computable CONFIRMED — non-degenerate CPC variance in all five omnibus substrates.",
+                  ("Non-degenerate spread in all five categories — the reading separates brands rather than flattening."
+                   if _MODE == "report" else
+                   "Non-degenerate spread in all five substrates — the instrument is not a near-constant (H_CPC_Computable)."))
+    cs.add_footer(fig, verdict=FOOTERS[_MODE]["within"],
                   phase=SOURCE_PHASE, protocol="v0.31-prereg-r1")
     p = OUT / "chart_02_cpc_within_substrate.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
 
@@ -119,7 +144,10 @@ def chart_03_cpc_cross_category():
         ax.scatter(np.full(len(vals), i) + jit, vals, s=20, color=COL[sub], alpha=0.7,
                    edgecolor="white", linewidth=0.4, zorder=3)
     kw = V["H_CPC_CrossCategory"]
-    ax.text(0.03, 0.04, f"Kruskal-Wallis  H = {kw['kruskal_H']:.2f},  p = {kw['kruskal_p']:.1e}  (k=5, alpha=0.05)",
+    _cann = ("Significant cross-category difference (p < 0.001)"
+             if _MODE == "report" else
+             f"Kruskal-Wallis  H = {kw['kruskal_H']:.2f},  p = {kw['kruskal_p']:.1e}  (k=5, alpha=0.05)")
+    ax.text(0.03, 0.04, _cann,
             transform=ax.transAxes, ha="left", va="bottom", fontsize=cs.FONT_SIZES["annotation"],
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.PALETTE["gray_light"], lw=0.6))
     ax.set_xticks(range(len(OMNI)))
@@ -128,8 +156,10 @@ def chart_03_cpc_cross_category():
     fig.subplots_adjust(**cs.MARGINS["single"])
     cs.add_header(fig, "Consistency differs systematically across categories",
                   "Distribution of defined-brand CPC by substrate",
-                  "Spirits least consistent, skincare most — significant cross-category variation (H_CPC_CrossCategory).")
-    cs.add_footer(fig, verdict=f"H_CPC_CrossCategory CONFIRMED — KW H={kw['kruskal_H']:.2f}, p={kw['kruskal_p']:.1e}.",
+                  ("Spirits least consistent, skincare most — a significant cross-category difference."
+                   if _MODE == "report" else
+                   "Spirits least consistent, skincare most — significant cross-category variation (H_CPC_CrossCategory)."))
+    cs.add_footer(fig, verdict=FOOTERS[_MODE]["cross"],
                   phase=SOURCE_PHASE, protocol="v0.31-prereg-r1")
     p = OUT / "chart_03_cpc_cross_category.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
 
@@ -159,12 +189,14 @@ def chart_04_defined_undefined_floor():
     cs.add_header(fig, "The floor sends near-zero-recall brands to undefined",
                   "Defined vs undefined CPC by substrate (omnibus | supplementary)",
                   "Undefined are recognized-but-unrecalled and defunct brands — excluded from the distribution, counted here.")
-    cs.add_footer(fig, verdict="Floor (mean r < 1.0 -> undefined) inherited from v1.7; undefined counts reported per substrate.",
+    cs.add_footer(fig, verdict=FOOTERS[_MODE]["floor"],
                   phase=SOURCE_PHASE, protocol="v0.31-prereg-r1")
     p = OUT / "chart_04_defined_undefined_floor.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
 
 
 if __name__ == "__main__":
-    for fn in (chart_01_reconciliation_gate, chart_02_cpc_within_substrate,
-               chart_03_cpc_cross_category, chart_04_defined_undefined_floor):
-        print("wrote:", fn())
+    for _m, _out in (("paper", OUT_PAPER), ("report", OUT_REPORT)):
+        _MODE = _m; OUT = _out; OUT.mkdir(parents=True, exist_ok=True)
+        for fn in (chart_01_reconciliation_gate, chart_02_cpc_within_substrate,
+                   chart_03_cpc_cross_category, chart_04_defined_undefined_floor):
+            print(f"[{_m}] wrote:", fn())
