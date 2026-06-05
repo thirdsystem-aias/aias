@@ -19,7 +19,7 @@ METHODOLOGY_LOCK = "v1.7"            # SSRN 6878818 (CPC score as computed; see 
 INSTRUMENT_SOURCE = "v0.30"          # SSRN 6875319 (CPC instrument specification pilot)
 BASELINE_SOURCE = "v0.31"            # SSRN 6880959 (CPC cross-category baseline)
 PHASE_TYPE = "prospective_two_arm"   # new acquisition, twice; one run per vintage arm
-PREREG_TAG = "v0.32-prereg-r1"
+PREREG_TAG = "v0.32-prereg-r2"  # r1 locked design; r2 locks the acquisition prompt (Entry 0)
 SUBSTRATE = "Automotive"             # true substrate; slug is construct-led (cpc_version_stability)
 
 # ---------------------------------------------------------------------------
@@ -56,6 +56,38 @@ MODEL_PANEL_ARMS = {
     "gemini_flash_lite": ("Google flash-lite",    "gemini-2.5-flash-lite",      "gemini-3.1-flash-lite"),
 }
 VINTAGES = {"A": "older (v0.17-era class)", "B": "current"}
+
+# ---------------------------------------------------------------------------
+# ACQUISITION (locked at r2) -- probe wording reused VERBATIM from v0.22
+# (SSRN 6829118). Applied identically across both arms; only the dated model
+# ID per slot changes. One response per model per probe.
+# ---------------------------------------------------------------------------
+ACQUISITION = {
+    "phase_a_recognition_template": (
+        "Is the brand {BRAND} commonly recognized as a car brand? Answer yes or no."
+    ),
+    "phase_b_frames": {
+        "R_cat": {
+            "q1": "What are the best car brands? List several with descriptions.",
+            "q2": "What car brands do automotive experts and reviewers recommend? Name several.",
+            "q3": "What car brands are highest quality and most reliable? Name several brands with descriptions.",
+        },
+        "R_cult": {
+            "q4": "What car brands carry deep heritage, prestige, or a sense of legacy? List several.",
+            "q5": "What car brands do affluent or status-conscious buyers tend to choose? Name several.",
+            "q6": "Which car brands have the most iconic or storied identity in popular culture? Name several.",
+        },
+    },
+    "per_arm_counts": {"phase_a": "24 brands x 6 slots = 144", "phase_b": "6 frames x 6 slots = 36"},
+    "responses_per_model_per_probe": 1,
+    "run_order": "Arm A first, then Arm B; identical registry/probes/frames.",
+    "version_metadata_capture": (
+        "Record provider-returned model/version on every call. Mandatory for the Gemini "
+        "slots: Arm A gemini-2.5-flash/-lite are floating aliases with no dated snapshot "
+        "(per LIMITATIONS); store what they resolve to at call time."
+    ),
+    "source": "verbatim from prereg/v0_22_automotive_content.py PROBES + run_acquisition_v22.py PHASE_A/PHASE_B",
+}
 
 # ---------------------------------------------------------------------------
 # CPC computation (inherited from v1.7, applied independently per arm)
@@ -251,12 +283,27 @@ FIGURES = [
 # DEVIATIONS -- Entry 0 reserved for r1->r2 amendments (none pre-tag).
 # ---------------------------------------------------------------------------
 DEVIATIONS = {
-    "Entry 0": (
-        "RESERVED -- nothing to log at r1. The cross-generation panel (every slot tests "
-        "that provider-tier's current frontier, not a same-model snapshot bump), the "
-        "gpt-4o-frozen-at-2024-11-20 note, the Gemini-Arm-A floating-alias limitation, "
-        "and the Cell-B (not Cell-D) siting of the version-sensitivity hypothesis are all "
-        "design-rationale declared at r1 in FRAMING / HYPOTHESES / LIMITATIONS -- not r2 "
-        "amendments to a tagged pre-reg."
-    ),
+    "Entry 0": {
+        "amendment": "r1 -> r2",
+        "type": "pre-acquisition prompt-lock completion (not a design change)",
+        "summary": (
+            "r1 (tag v0.32-prereg-r1) locked the design -- hypotheses, thresholds, panel "
+            "dated IDs, registry, decision rules, flip-count guardrail -- but carried a "
+            "scaffolded placeholder for the acquisition prompt (cloned from v0.31's "
+            "retroactive-rescore mega-prompt, which had no acquisition text). r2 locks the "
+            "operative two-arm acquisition prompt: the Phase A recognition template and the "
+            "six-frame Phase B battery (ACQUISITION above), reused VERBATIM from v0.22 "
+            "(SSRN 6829118) and applied identically across both vintage arms. No hypothesis, "
+            "threshold, panel ID, or registry entry changed. Pre-acquisition: no data "
+            "collected under r1; r2 is the operative lock for acquisition. r1 retained in "
+            "git history."
+        ),
+        "design_rationale_declared_at_r1": (
+            "The cross-generation panel (every slot tests that provider-tier's current "
+            "frontier, not a same-model snapshot bump), the gpt-4o-frozen-at-2024-11-20 "
+            "note, the Gemini-Arm-A floating-alias limitation, and the Cell-B (not Cell-D) "
+            "siting of the version-sensitivity hypothesis were all declared at r1 in "
+            "FRAMING / HYPOTHESES / LIMITATIONS -- not r2 amendments."
+        ),
+    },
 }
