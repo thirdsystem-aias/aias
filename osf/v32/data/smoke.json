@@ -1,0 +1,110 @@
+[
+  {
+    "arm": "A",
+    "slot": "claude_opus",
+    "model_id": "claude-opus-4-5-20251101",
+    "resolved_version": "claude-opus-4-5-20251101",
+    "verdict": "yes",
+    "latency_ms": 2247,
+    "response": "Yes"
+  },
+  {
+    "arm": "A",
+    "slot": "claude_sonnet",
+    "model_id": "claude-sonnet-4-5-20250929",
+    "resolved_version": "claude-sonnet-4-5-20250929",
+    "verdict": "yes",
+    "latency_ms": 1626,
+    "response": "Yes"
+  },
+  {
+    "arm": "A",
+    "slot": "gpt_4o",
+    "model_id": "gpt-4o-2024-11-20",
+    "resolved_version": "gpt-4o-2024-11-20",
+    "verdict": "yes",
+    "latency_ms": 2157,
+    "response": "Yes"
+  },
+  {
+    "arm": "A",
+    "slot": "gpt_4o_mini",
+    "model_id": "gpt-4o-mini-2024-07-18",
+    "resolved_version": "gpt-4o-mini-2024-07-18",
+    "verdict": "yes",
+    "latency_ms": 792,
+    "response": "Yes."
+  },
+  {
+    "arm": "A",
+    "slot": "gemini_flash",
+    "model_id": "gemini-2.5-flash",
+    "resolved_version": "gemini-2.5-flash",
+    "verdict": "yes",
+    "latency_ms": 2295,
+    "response": "Yes."
+  },
+  {
+    "arm": "A",
+    "slot": "gemini_flash_lite",
+    "model_id": "gemini-2.5-flash-lite",
+    "resolved_version": "gemini-2.5-flash-lite",
+    "verdict": "yes",
+    "latency_ms": 721,
+    "response": "Yes"
+  },
+  {
+    "arm": "B",
+    "slot": "claude_opus",
+    "model_id": "claude-opus-4-8",
+    "resolved_version": "claude-opus-4-8",
+    "verdict": "yes",
+    "latency_ms": 2147,
+    "response": "Yes."
+  },
+  {
+    "arm": "B",
+    "slot": "claude_sonnet",
+    "model_id": "claude-sonnet-4-6",
+    "resolved_version": "claude-sonnet-4-6",
+    "verdict": "yes",
+    "latency_ms": 1653,
+    "response": "Yes."
+  },
+  {
+    "arm": "B",
+    "slot": "gpt_4o",
+    "model_id": "gpt-5.5-2026-04-23",
+    "resolved_version": "gpt-5.5-2026-04-23",
+    "verdict": "yes",
+    "latency_ms": 3996,
+    "response": "Yes"
+  },
+  {
+    "arm": "B",
+    "slot": "gpt_4o_mini",
+    "model_id": "gpt-5.4-mini-2026-03-17",
+    "resolved_version": "gpt-5.4-mini-2026-03-17",
+    "verdict": "yes",
+    "latency_ms": 895,
+    "response": "Yes."
+  },
+  {
+    "arm": "B",
+    "slot": "gemini_flash",
+    "model_id": "gemini-3.5-flash",
+    "resolved_version": "gemini-3.5-flash",
+    "verdict": "yes",
+    "latency_ms": 1548,
+    "response": "Yes"
+  },
+  {
+    "arm": "B",
+    "slot": "gemini_flash_lite",
+    "model_id": "gemini-3.1-flash-lite",
+    "resolved_version": "gemini-3.1-flash-lite",
+    "verdict": "yes",
+    "latency_ms": 1018,
+    "response": "Yes."
+  }
+]
