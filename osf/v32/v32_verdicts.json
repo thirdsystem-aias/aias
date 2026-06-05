@@ -1,0 +1,618 @@
+{
+  "phase": "v0.32",
+  "prereg_tag": "v0.32-prereg-r2",
+  "coder": "v1.4 canonical detect_mention, verbatim from score_v22.py (symmetric across arms)",
+  "per_brand_cpc": {
+    "Mercedes-Benz": {
+      "cell": "A",
+      "cpc_A": 0.8304791528014628,
+      "cpc_B": 0.7759907622602041,
+      "counts_A": [
+        3,
+        3,
+        5,
+        5,
+        4,
+        4
+      ],
+      "counts_B": [
+        5,
+        4,
+        5,
+        5,
+        2,
+        3
+      ]
+    },
+    "Jaguar": {
+      "cell": "A",
+      "cpc_A": 0.662613645756624,
+      "cpc_B": 0.6339745962155614,
+      "counts_A": [
+        1,
+        1,
+        2,
+        3,
+        1,
+        1
+      ],
+      "counts_B": [
+        1,
+        1,
+        1,
+        2,
+        0,
+        1
+      ]
+    },
+    "Cadillac": {
+      "cell": "A",
+      "cpc_A": 0.5651923175029236,
+      "cpc_B": 0.5770565137270707,
+      "counts_A": [
+        1,
+        1,
+        1,
+        1,
+        0,
+        3
+      ],
+      "counts_B": [
+        3,
+        3,
+        3,
+        2,
+        0,
+        0
+      ]
+    },
+    "Rolls-Royce": {
+      "cell": "A",
+      "cpc_A": 0.8333333333333334,
+      "cpc_B": 0.8837564943045901,
+      "counts_A": [
+        3,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "counts_B": [
+        3,
+        3,
+        3,
+        3,
+        2,
+        3
+      ]
+    },
+    "Bentley": {
+      "cell": "A",
+      "cpc_A": 1.0,
+      "cpc_B": 0.8319256396465603,
+      "counts_A": [
+        2,
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "counts_B": [
+        3,
+        2,
+        2,
+        2,
+        3,
+        2
+      ]
+    },
+    "Porsche": {
+      "cell": "A",
+      "cpc_A": 0.9187896968583876,
+      "cpc_B": 0.9166666666666667,
+      "counts_A": [
+        6,
+        6,
+        5,
+        5,
+        5,
+        5
+      ],
+      "counts_B": [
+        5,
+        5,
+        6,
+        6,
+        6,
+        5
+      ]
+    },
+    "BMW": {
+      "cell": "A",
+      "cpc_A": 0.8549017743449044,
+      "cpc_B": 0.82276993258664,
+      "counts_A": [
+        5,
+        4,
+        6,
+        4,
+        4,
+        4
+      ],
+      "counts_B": [
+        4,
+        5,
+        5,
+        5,
+        3,
+        3
+      ]
+    },
+    "Tesla": {
+      "cell": "B",
+      "cpc_A": 0.6293206443961367,
+      "cpc_B": 0.6172177814626812,
+      "counts_A": [
+        2,
+        1,
+        5,
+        3,
+        1,
+        2
+      ],
+      "counts_B": [
+        4,
+        0,
+        3,
+        2,
+        1,
+        3
+      ]
+    },
+    "Rivian": {
+      "cell": "B",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        2,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    "Lucid": {
+      "cell": "B",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1
+      ]
+    },
+    "Polestar": {
+      "cell": "B",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Fisker": {
+      "cell": "B",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Toyota": {
+      "cell": "C",
+      "cpc_A": 0.8310625193750198,
+      "cpc_B": 0.8102824188718128,
+      "counts_A": [
+        4,
+        3,
+        5,
+        4,
+        3,
+        3
+      ],
+      "counts_B": [
+        5,
+        3,
+        5,
+        4,
+        3,
+        3
+      ]
+    },
+    "Honda": {
+      "cell": "C",
+      "cpc_A": 1.0,
+      "cpc_B": 0.8837564943045901,
+      "counts_A": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        3
+      ],
+      "counts_B": [
+        3,
+        3,
+        3,
+        3,
+        3,
+        2
+      ]
+    },
+    "Ford": {
+      "cell": "C",
+      "cpc_A": 0.75,
+      "cpc_B": 0.6666666666666666,
+      "counts_A": [
+        2,
+        1,
+        2,
+        2,
+        1,
+        1
+      ],
+      "counts_B": [
+        2,
+        2,
+        4,
+        1,
+        1,
+        2
+      ]
+    },
+    "Chevrolet": {
+      "cell": "C",
+      "cpc_A": 0.6103945037741196,
+      "cpc_B": 0.5227744249483388,
+      "counts_A": [
+        1,
+        2,
+        3,
+        2,
+        0,
+        1
+      ],
+      "counts_B": [
+        3,
+        3,
+        5,
+        1,
+        0,
+        0
+      ]
+    },
+    "Hyundai": {
+      "cell": "C",
+      "cpc_A": 0.7230810432392165,
+      "cpc_B": 0.765987081253247,
+      "counts_A": [
+        3,
+        2,
+        3,
+        2,
+        1,
+        4
+      ],
+      "counts_B": [
+        3,
+        1,
+        3,
+        3,
+        2,
+        3
+      ]
+    },
+    "Volkswagen": {
+      "cell": "C",
+      "cpc_A": 0.6339745962155614,
+      "cpc_B": 1.0,
+      "counts_A": [
+        1,
+        1,
+        2,
+        1,
+        0,
+        1
+      ],
+      "counts_B": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ]
+    },
+    "Nissan": {
+      "cell": "C",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        0
+      ]
+    },
+    "Pontiac": {
+      "cell": "D",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Oldsmobile": {
+      "cell": "D",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Plymouth": {
+      "cell": "D",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Mercury": {
+      "cell": "D",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    "Saturn": {
+      "cell": "D",
+      "cpc_A": null,
+      "cpc_B": null,
+      "counts_A": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "counts_B": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  },
+  "PRIMARY_H_ScoreRankStable": {
+    "rho": 0.7081497797356829,
+    "n_pairwise_complete": 14,
+    "threshold": 0.7,
+    "verdict": "CONFIRMED",
+    "interpretive_band": "rank-stable"
+  },
+  "SECONDARY_H_ScoreMagnitudeStable": {
+    "mean_abs_dCPC": 0.07691109661934326,
+    "mean_signed_dCPC": -0.009594125334504275,
+    "sd_cpc_A": 0.13786802057349262,
+    "threshold_0.5xSD": 0.06893401028674631,
+    "n_pairwise_complete": 14,
+    "verdict": "FALSIFIED"
+  },
+  "TERTIARY_H_EmergingInstability": {
+    "cell_flip_rate": {
+      "A": {
+        "na_in_A": 0,
+        "flipped_to_defined_in_B": 0,
+        "flip_rate": null,
+        "flipped_brands": []
+      },
+      "B": {
+        "na_in_A": 4,
+        "flipped_to_defined_in_B": 0,
+        "flip_rate": 0.0,
+        "flipped_brands": []
+      },
+      "C": {
+        "na_in_A": 1,
+        "flipped_to_defined_in_B": 0,
+        "flip_rate": 0.0,
+        "flipped_brands": []
+      },
+      "D": {
+        "na_in_A": 5,
+        "flipped_to_defined_in_B": 0,
+        "flip_rate": 0.0,
+        "flipped_brands": []
+      }
+    },
+    "cellB_highest_flip_rate": false,
+    "total_NA_to_defined_flips": 0,
+    "note": "no N/A->defined flips in any cell; the emerging-instability prediction (Cell-B brands e.g. Rivian/Fisker flipping N/A->defined under Arm B) was not observed.",
+    "primary_read": "Cell-B N/A->defined flip rate vs other cells",
+    "verdict": "FALSIFIED"
+  },
+  "DENOMINATORS": {
+    "n_pairwise_complete": 14,
+    "na_count_A": 10,
+    "na_brands_A": [
+      "Rivian",
+      "Lucid",
+      "Polestar",
+      "Fisker",
+      "Nissan",
+      "Pontiac",
+      "Oldsmobile",
+      "Plymouth",
+      "Mercury",
+      "Saturn"
+    ],
+    "na_count_B": 10,
+    "na_brands_B": [
+      "Rivian",
+      "Lucid",
+      "Polestar",
+      "Fisker",
+      "Nissan",
+      "Pontiac",
+      "Oldsmobile",
+      "Plymouth",
+      "Mercury",
+      "Saturn"
+    ],
+    "flips": {
+      "A_def_to_B_NA": {
+        "n": 0,
+        "brands": [],
+        "by_cell": {}
+      },
+      "B_def_to_A_NA": {
+        "n": 0,
+        "brands": [],
+        "by_cell": {}
+      }
+    },
+    "flip_guardrail": "High flip count materially qualifies any stability narrative regardless of rho (pre-reg NA_AND_FLIP_RULE)."
+  },
+  "SENSITIVITY_leave_one_provider_out": {
+    "drop_anthropic": {
+      "rho": 0.5121951219512195,
+      "n_pairwise": 14,
+      "band": "partially version-sensitive"
+    },
+    "drop_openai": {
+      "rho": 0.8221881954891387,
+      "n_pairwise": 12,
+      "band": "rank-stable"
+    },
+    "drop_google": {
+      "rho": 0.4816465716119631,
+      "n_pairwise": 14,
+      "band": "version-dominated"
+    }
+  }
+}
