@@ -1,202 +1,197 @@
 #!/usr/bin/env python3
 """
-v0.32 CPC cross-category baseline — figure builder (one per finding).
-  chart_01_reconciliation_gate   generalized vs v1.7 CPC, y=x (certifies identity)
-  chart_02_cpc_within_substrate  defined-brand CPC strip per substrate (H_CPC_Computable)
-  chart_03_cpc_cross_category    box per substrate + KW (H_CPC_CrossCategory)
-  chart_04_defined_undefined_floor  defined/undefined stacked bars (the floor)
+v0.32 CPC Version-Snapshot Stability — figure builder (one per finding).
 
-Reads osf/v32/data/v32_cpc.csv + osf/v32/v32_cpc_verdicts.json. House style via chart_style.py.
-Outputs PDFs to reports/figs/v32/.
+Reads osf/v32/v32_verdicts.json. Each figure carries its qualification visually:
+  fig_01 PRIMARY   — CPC_A x CPC_B scatter, y=x, rho + LOO-triplet inset.
+  fig_02 SECONDARY — signed dCPC per brand (diverging), 0.5*SD tolerance band.
+  fig_03 TERTIARY  — top: flip table honest zero; bottom: EXPLORATORY emerging
+                     recall A vs B with the floor line (rise that didn't cross),
+                     visually demarcated so it can't read as confirmatory.
+
+Outputs reports/figs/v32/chart_0{1,2,3}.pdf (canonical) + .png (pre-flight view).
 """
-import sys, csv, json, re
+from __future__ import annotations
+
+import json
+import sys
 from pathlib import Path
+
 import numpy as np
+import matplotlib
+matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+sys.path.insert(0, str(Path(__file__).parent))
+from chart_style import (setup, add_header, add_footer, PALETTE, FIGSIZE,
+                         SAVEFIG_PARAMS, cell_colors, INDIGO, WARM, GRAY, BLACK)
 
 ROOT = Path.home() / "aias"
-sys.path.insert(0, str(ROOT / "scripts"))
-import chart_style as cs
-cs.setup()
-
-OUT_PAPER = ROOT / "reports" / "figs" / "v32"
-OUT_REPORT = OUT_PAPER / "report"
-_MODE = "paper"          # set per-mode in __main__
-OUT = OUT_PAPER          # active output dir (switched with _MODE)
-SOURCE_PHASE = "v0.32 (CPC baseline)"
-
-# Two-register footers: academic (paper) vs managerial P1-P5 (report).
-# Same data, same layout; only the register text differs.
-FOOTERS = {
-    "paper": {
-        "gate":   "Reconciliation gate PASSED — 72/72 exact per-model count identity; scoring proceeded.",
-        "within": "H_CPC_Computable CONFIRMED — non-degenerate CPC variance in all five omnibus substrates.",
-        "cross":  "H_CPC_CrossCategory CONFIRMED — KW H=21.51, p=2.5e-04.",
-        "floor":  "Floor (mean r < 1.0 -> undefined) inherited from v1.7; undefined counts reported per substrate.",
-    },
-    "report": {
-        "gate":   "P4 · Confirmed — the consistency reading reproduces the program's prior instrument exactly across all shared brands.",
-        "within": "P1 · Established — consistency is well-defined and separates brands within every category.",
-        "cross":  "P2 · Established — consistency differs systematically across categories; spirits lowest, skincare highest.",
-        "floor":  "P3 · Documented — brands the panel almost never recalls, including category leaders, carry no reading.",
-    },
-}
-OMNI = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
-CAT = {"v0.19": "headphones", "v0.20": "skincare", "v0.21": "cosmetics",
-       "v0.22": "automotive", "v0.23": "spirits", "v0.18": "fragrance"}
-COL = {"v0.19": cs.PALETTE["blue"], "v0.20": cs.INDIGO, "v0.21": cs.WARM,
-       "v0.22": cs.TEAL, "v0.23": cs.PALETTE["magenta"], "v0.18": cs.PALETTE["gray"]}
-
-rows = list(csv.DictReader(open(ROOT / "osf/v32/data/v32_cpc.csv")))
-for r in rows:
-    r["mean_r"] = float(r["mean_r"])
-    r["cpc_score"] = float(r["cpc_score"]) if r["cpc_score"] not in ("", "None") else None
-V = json.load(open(ROOT / "osf/v32/v32_cpc_verdicts.json"))
-
-# v0.23 S-ID -> name (locked registry table)
-S2N = {m.group(1): m.group(2).strip() for m in
-       re.finditer(r"\|\s*(S\d{2})\s*\|\s*([^|]+?)\s*\|", open(ROOT / "prereg/v0_23_mega_prompt.md").read())}
+V = json.load(open(ROOT / "osf" / "v32" / "v32_verdicts.json"))
+OUTD = ROOT / "reports" / "figs" / "v32"
+OUTD.mkdir(parents=True, exist_ok=True)
+CELLC = cell_colors()
+CELL_LABEL = {"A": "Heritage", "B": "Disruptor", "C": "Mass-Legacy", "D": "Defunct"}
+PHASE = "v0.32"
 
 
-def defined(sub):
-    return [r for r in rows if r["substrate"] == sub and r["status"] == "defined" and r["cpc_score"] is not None]
+def save(fig, n):
+    pdf, png = OUTD / f"chart_0{n}.pdf", OUTD / f"chart_0{n}.png"
+    fig.savefig(pdf, **SAVEFIG_PARAMS)
+    fig.savefig(png, **SAVEFIG_PARAMS)
+    plt.close(fig)
+    print(f"  wrote {pdf.name} + {png.name}")
 
 
-def chart_01_reconciliation_gate():
-    v17 = {(r["substrate"], r["brand"]): r for r in csv.DictReader(
-        open(ROOT / "osf/methodology/v1_7/data/v1_7_cpc.csv"))}
-    xs, ys = [], []
-    for r in rows:
-        if r["substrate"] in ("v0.20", "v0.21", "v0.22") and r["cpc_score"] is not None:
-            ref = v17.get((r["substrate"], r["brand"]))
-            if ref and ref["cpc_score"] not in ("", "None"):
-                xs.append(float(ref["cpc_score"])); ys.append(r["cpc_score"])
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    lo, hi = 0.45, 1.02
-    ax.plot([lo, hi], [lo, hi], color=cs.GRAY, lw=1.0, ls="--", zorder=1, label="y = x (identity)")
-    ax.scatter(xs, ys, s=46, color=cs.INDIGO, alpha=0.8, edgecolor="white", linewidth=0.6, zorder=3)
-    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi); ax.set_aspect("equal")
-    _ann = ("n = 38 shared brands\nevery brand on the identity line\nthe reading reproduces exactly"
-            if _MODE == "report" else
-            f"n = {len(xs)} defined trio brands\nmax |$\\Delta$| = 1.1e-16  (float noise)\nexact per-model count identity")
-    ax.text(0.04, 0.95, _ann,
-            transform=ax.transAxes, ha="left", va="top", fontsize=cs.FONT_SIZES["annotation"],
-            bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.PALETTE["gray_light"], lw=0.6))
-    ax.set_xlabel("v1.7-published CPC"); ax.set_ylabel("v0.32 generalized CPC")
-    ax.legend(loc="lower right", fontsize=cs.FONT_SIZES["legend"])
-    fig.subplots_adjust(**cs.MARGINS["single"])
-    cs.add_header(fig, "The generalization reproduces v1.7 exactly",
-                  "Channel-agnostic CPC against v1.7's two-channel CPC, on v0.20/21/22",
-                  "Every brand lands on y = x — the channel-agnostic unit contains the locked two-channel unit by construction.")
-    cs.add_footer(fig, verdict=FOOTERS[_MODE]["gate"],
-                  phase=SOURCE_PHASE, protocol="v0.32-prereg-r1")
-    p = OUT / "chart_01_reconciliation_gate.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
+def pairwise():
+    out = []
+    for b, d in V["per_brand_cpc"].items():
+        if d["cpc_A"] is not None and d["cpc_B"] is not None:
+            out.append((b, d["cell"], d["cpc_A"], d["cpc_B"]))
+    return out
 
 
-def chart_02_cpc_within_substrate():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    rng = np.random.RandomState(280400)
-    for i, sub in enumerate(OMNI):
-        d = defined(sub); vals = [r["cpc_score"] for r in d]
-        jit = rng.uniform(-0.13, 0.13, len(vals))
-        ax.scatter(np.full(len(vals), i) + jit, vals, s=34, color=COL[sub],
-                   alpha=0.8, edgecolor="white", linewidth=0.5, zorder=3)
-        med = float(np.median(vals))
-        ax.plot([i - 0.25, i + 0.25], [med, med], color=cs.BLACK, lw=1.6, zorder=4)
-        ax.text(i, 1.03, f"n={len(vals)}", ha="center", va="bottom",
-                fontsize=cs.FONT_SIZES["data_label"], color=cs.GRAY)
-        # spirits median to the LEFT (its brand labels occupy the right)
-        mx, mha = (i - 0.27, "right") if sub == "v0.23" else (i + 0.27, "left")
-        ax.text(mx, med, f"{med:.2f}", ha=mha, va="center",
-                fontsize=cs.FONT_SIZES["annotation"], color=cs.BLACK)
-    # spirits labels: vertical stagger + leader lines (avoids overlap at clustered CPC)
-    sp = sorted(defined("v0.23"), key=lambda r: r["cpc_score"])
-    ypos = np.linspace(0.44, 0.70, len(sp))
-    for r, yl in zip(sp, ypos):
-        nm = S2N.get(r["brand"], r["brand"])
-        ax.plot([4.06, 4.20], [r["cpc_score"], yl], color=cs.PALETTE["magenta"], lw=0.4, alpha=0.55, zorder=2)
-        ax.annotate(nm, (4.24, yl), fontsize=6.2, color=cs.PALETTE["magenta"], va="center", ha="left")
-    ax.set_xticks(range(len(OMNI)))
-    ax.set_xticklabels([f"{s}\n{CAT[s]}" for s in OMNI])
-    ax.set_ylabel("CPC = 1 / (1 + CV)   (defined brands)")
-    ax.set_ylim(0.40, 1.08); ax.set_xlim(-0.5, 5.5)
-    fig.subplots_adjust(**cs.MARGINS["single"])
-    cs.add_header(fig, "Consistency is well-defined and varies within every category",
-                  "Brand-level CPC for defined brands, by substrate, with medians (bar) and N",
-                  ("Non-degenerate spread in all five categories — the reading separates brands rather than flattening."
-                   if _MODE == "report" else
-                   "Non-degenerate spread in all five substrates — the instrument is not a near-constant (H_CPC_Computable)."))
-    cs.add_footer(fig, verdict=FOOTERS[_MODE]["within"],
-                  phase=SOURCE_PHASE, protocol="v0.32-prereg-r1")
-    p = OUT / "chart_02_cpc_within_substrate.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
+# --- fig_01: PRIMARY rho scatter + LOO inset -------------------------------
+def fig01():
+    pw = pairwise()
+    p = V["PRIMARY_H_ScoreRankStable"]
+    fig, ax = plt.subplots(figsize=FIGSIZE["hero"])
+    plt.subplots_adjust(top=0.80, bottom=0.16, left=0.11, right=0.96)
+    lo, hi = 0.45, 1.0
+    ax.plot([lo, hi], [lo, hi], ls="--", lw=0.9, color=GRAY, zorder=1)
+    ax.text(hi - 0.005, hi - 0.02, "y = x", color=GRAY, fontsize=7.5,
+            ha="right", va="top", fontstyle="italic")
+    seen = set()
+    for b, c, a, bb in pw:
+        ax.scatter(a, bb, s=46, color=CELLC[c], edgecolor="white", linewidth=0.6,
+                   zorder=3, label=(CELL_LABEL[c] if c not in seen else None))
+        seen.add(c)
+        ax.annotate(b, (a, bb), fontsize=6.2, color=BLACK, xytext=(3, 3),
+                    textcoords="offset points")
+    ax.set_xlim(lo, hi); ax.set_ylim(lo, hi)
+    ax.set_xlabel("CPC — Arm A (older vintage)")
+    ax.set_ylabel("CPC — Arm B (current vintage)")
+    ax.set_aspect("equal")
+    ax.legend(loc="upper left", bbox_to_anchor=(0.02, 0.80), fontsize=7.5, framealpha=0.9)
+    # rho annotation
+    ax.text(0.03, 0.97, f"Spearman ρ = {p['rho']:.3f}   (n = {p['n_pairwise_complete']} pairwise-complete)\n"
+            f"verdict: {p['verdict']} — band: {p['interpretive_band']}",
+            transform=ax.transAxes, ha="left", va="top", fontsize=8.5,
+            color=INDIGO, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=INDIGO, lw=0.7))
+    # LOO inset — provider dependence
+    loo = V["SENSITIVITY_leave_one_provider_out"]
+    order = [("drop_openai", "drop OpenAI\n(4o→5.x jump)"), ("drop_anthropic", "drop Anthropic"),
+             ("drop_google", "drop Google")]
+    iax = fig.add_axes([0.60, 0.205, 0.30, 0.22])
+    vals = [loo[k]["rho"] for k, _ in order]
+    labs = [lab for _, lab in order]
+    cols = [PALETTE["teal"] if v >= 0.70 else WARM for v in vals]
+    iax.barh(range(len(vals)), vals, color=cols, height=0.62)
+    iax.axvline(0.70, color=BLACK, lw=0.8, ls=":")
+    iax.axvline(p["rho"], color=INDIGO, lw=1.0)
+    for i, v in enumerate(vals):
+        iax.text(v + 0.01, i, f"{v:.2f}", va="center", fontsize=6.5)
+    iax.set_yticks(range(len(labs))); iax.set_yticklabels(labs, fontsize=6.2)
+    iax.set_xlim(0, 1.0); iax.set_xticks([0, 0.5, 0.7, 1.0]); iax.tick_params(labelsize=6)
+    iax.set_title("leave-one-provider-out ρ  (dotted = 0.70)", fontsize=6.5, loc="left")
+    add_header(fig, "Rank-order stability across a two-generation model jump",
+               "PRIMARY · H_ScoreRankStable — CPC per brand, Arm A vs Arm B",
+               "ρ clears 0.70 but the inset shows it is provider-dependent: dropping the OpenAI 4o→5.x jump raises it to 0.82.")
+    add_footer(fig, verdict="PRIMARY CONFIRMED at ρ=0.708 — borderline; provider-dependent per leave-one-out.",
+               phase=PHASE, protocol="v1.7")
+    save(fig, 1)
 
 
-def chart_03_cpc_cross_category():
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    data = [[r["cpc_score"] for r in defined(s)] for s in OMNI]
-    bp = ax.boxplot(data, positions=range(len(OMNI)), widths=0.55, patch_artist=True,
-                    medianprops=dict(color=cs.BLACK, lw=1.6), showfliers=False)
-    for patch, sub in zip(bp["boxes"], OMNI):
-        patch.set_facecolor(COL[sub]); patch.set_alpha(0.35); patch.set_edgecolor(COL[sub])
-    rng = np.random.RandomState(280400)
-    for i, sub in enumerate(OMNI):
-        vals = data[i]; jit = rng.uniform(-0.10, 0.10, len(vals))
-        ax.scatter(np.full(len(vals), i) + jit, vals, s=20, color=COL[sub], alpha=0.7,
-                   edgecolor="white", linewidth=0.4, zorder=3)
-    kw = V["H_CPC_CrossCategory"]
-    _cann = ("Significant cross-category difference (p < 0.001)"
-             if _MODE == "report" else
-             f"Kruskal-Wallis  H = {kw['kruskal_H']:.2f},  p = {kw['kruskal_p']:.1e}  (k=5, alpha=0.05)")
-    ax.text(0.03, 0.04, _cann,
-            transform=ax.transAxes, ha="left", va="bottom", fontsize=cs.FONT_SIZES["annotation"],
-            bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.PALETTE["gray_light"], lw=0.6))
-    ax.set_xticks(range(len(OMNI)))
-    ax.set_xticklabels([f"{s}\n{CAT[s]}" for s in OMNI])
-    ax.set_ylabel("CPC  (defined brands)")
-    fig.subplots_adjust(**cs.MARGINS["single"])
-    cs.add_header(fig, "Consistency differs systematically across categories",
-                  "Distribution of defined-brand CPC by substrate",
-                  ("Spirits least consistent, skincare most — a significant cross-category difference."
-                   if _MODE == "report" else
-                   "Spirits least consistent, skincare most — significant cross-category variation (H_CPC_CrossCategory)."))
-    cs.add_footer(fig, verdict=FOOTERS[_MODE]["cross"],
-                  phase=SOURCE_PHASE, protocol="v0.32-prereg-r1")
-    p = OUT / "chart_03_cpc_cross_category.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
+# --- fig_02: SECONDARY signed dCPC diverging + tolerance band ---------------
+def fig02():
+    pw = pairwise()
+    s = V["SECONDARY_H_ScoreMagnitudeStable"]
+    thr = s["threshold_0.5xSD"]
+    rows = sorted([(b, c, bb - a) for b, c, a, bb in pw], key=lambda r: r[2])
+    fig, ax = plt.subplots(figsize=FIGSIZE["hero_tall"])
+    plt.subplots_adjust(top=0.82, bottom=0.14, left=0.20, right=0.96)
+    y = range(len(rows))
+    ax.axvspan(-thr, thr, color=PALETTE["indigo_t3"], alpha=0.45, zorder=0,
+               label=f"tolerance ±0.5·SD = ±{thr:.3f}")
+    for i, (b, c, d) in enumerate(rows):
+        ax.barh(i, d, color=CELLC[c], height=0.66,
+                edgecolor=(WARM if abs(d) > thr else "white"),
+                linewidth=(1.1 if abs(d) > thr else 0.5), zorder=2)
+    ax.axvline(0, color=BLACK, lw=0.8)
+    ax.set_yticks(list(y)); ax.set_yticklabels([b for b, _, _ in rows], fontsize=7.5)
+    ax.set_xlabel("signed ΔCPC  (Arm B − Arm A)")
+    ax.set_xlim(-0.22, 0.24)
+    ax.legend(loc="upper left", fontsize=7.5)
+    ax.text(0.98, 0.04,
+            f"mean |ΔCPC| = {s['mean_abs_dCPC']:.3f}  >  0.5·SD = {thr:.3f}   → {s['verdict']}\n"
+            f"signed mean ΔCPC = {s['mean_signed_dCPC']:+.3f}  (spread exceeds tolerance,\nbut ~centered — no net drift)",
+            transform=ax.transAxes, ha="right", va="bottom", fontsize=8.2, color=INDIGO,
+            bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=INDIGO, lw=0.7))
+    add_header(fig, "Magnitude shift exceeds the instrument's own tolerance",
+               "SECONDARY · H_ScoreMagnitudeStable — per-brand signed ΔCPC (sorted)",
+               "Bars outside the shaded band exceed half the Arm-A between-brand SD; outlined bars are the over-tolerance brands.")
+    add_footer(fig, verdict="SECONDARY FALSIFIED — mean|ΔCPC|=0.077 > 0.069; scattered, near-zero net drift.",
+               phase=PHASE, protocol="v1.7")
+    save(fig, 2)
 
 
-def chart_04_defined_undefined_floor():
-    order = OMNI + ["v0.18"]
-    defc = [sum(1 for r in rows if r["substrate"] == s and r["status"] == "defined") for s in order]
-    undc = [sum(1 for r in rows if r["substrate"] == s and r["status"] == "undefined") for s in order]
-    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    x = np.arange(len(order))
-    ax.bar(x, defc, color=cs.INDIGO, width=0.62, label="CPC defined")
-    ax.bar(x, undc, bottom=defc, color=cs.PALETTE["gray_light"], width=0.62, label="undefined (mean r < 1.0)")
-    for i, (d, u) in enumerate(zip(defc, undc)):
-        if d:
-            ax.text(i, d / 2, str(d), ha="center", va="center", color="white", fontsize=cs.FONT_SIZES["data_label"])
-        if u:
-            ax.text(i, d + u / 2, str(u), ha="center", va="center", color=cs.GRAY, fontsize=cs.FONT_SIZES["data_label"])
-        ax.text(i, d + u + 0.5, f"{d/(d+u)*100:.0f}%", ha="center", va="bottom",
-                fontweight="bold", fontsize=cs.FONT_SIZES["data_label"], color=cs.BLACK)
-    ax.axvline(4.5, color=cs.GRAY, lw=0.7, ls=":")
-    ax.text(4.6, 26, "supplementary\n(descriptive, 3-frame)",
-            color=cs.GRAY, fontsize=cs.FONT_SIZES["annotation"], va="top", ha="left")
-    ax.set_xticks(x); ax.set_xticklabels([f"{s}\n{CAT[s]}" for s in order])
-    ax.set_ylabel("brands"); ax.set_ylim(0, 28)
-    ax.legend(loc="upper left", fontsize=cs.FONT_SIZES["legend"])
-    fig.subplots_adjust(**cs.MARGINS["single"])
-    cs.add_header(fig, "The floor sends near-zero-recall brands to undefined",
-                  "Defined vs undefined CPC by substrate (omnibus | supplementary)",
-                  "Undefined are recognized-but-unrecalled and defunct brands — excluded from the distribution, counted here.")
-    cs.add_footer(fig, verdict=FOOTERS[_MODE]["floor"],
-                  phase=SOURCE_PHASE, protocol="v0.32-prereg-r1")
-    p = OUT / "chart_04_defined_undefined_floor.pdf"; fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig); return p
+# --- fig_03: TERTIARY flip-zero (top) + EXPLORATORY emerging recall (bottom) -
+def fig03():
+    t = V["TERTIARY_H_EmergingInstability"]
+    fig = plt.figure(figsize=FIGSIZE["hero_tall"])
+    plt.subplots_adjust(top=0.80, bottom=0.12, left=0.12, right=0.95, hspace=0.55)
+    # top — confirmatory: flip rate by cell (all zero)
+    axt = fig.add_subplot(2, 1, 1)
+    cells = ["A", "B", "C", "D"]
+    rates = [t["cell_flip_rate"][c]["flip_rate"] or 0.0 for c in cells]
+    nin = [t["cell_flip_rate"][c]["na_in_A"] for c in cells]
+    axt.bar(range(4), rates, color=[CELLC[c] for c in cells], width=0.6)
+    axt.set_ylim(0, 1.0)
+    axt.set_xticks(range(4))
+    axt.set_xticklabels([f"{CELL_LABEL[c]}\n(N/A in A: {n})" for c, n in zip(cells, nin)], fontsize=7.5)
+    axt.set_ylabel("N/A→defined flip rate")
+    for i, r in enumerate(rates):
+        axt.text(i, 0.03, "0", ha="center", fontsize=9, color=BLACK, fontweight="bold")
+    axt.set_title("Confirmatory test — flip rate by cell: zero everywhere",
+                  fontsize=9, loc="left", color=BLACK)
+    axt.text(0.99, 0.92, "TERTIARY FALSIFIED — no N/A→defined flips;\nidentical 10-brand N/A set in both arms",
+             transform=axt.transAxes, ha="right", va="top", fontsize=7.5, color=WARM)
+    # bottom — EXPLORATORY: emerging-brand mean recall A vs B, floor line
+    axb = fig.add_subplot(2, 1, 2)
+    axb.set_facecolor("#FBF1EC")  # tint to demarcate exploratory
+    emerging = ["Rivian", "Lucid", "Polestar", "Fisker"]  # sub-floor Cell-B
+    mA, mB = [], []
+    for b in emerging:
+        d = V["per_brand_cpc"][b]
+        mA.append(float(np.mean(d["counts_A"]))); mB.append(float(np.mean(d["counts_B"])))
+    x = np.arange(len(emerging)); w = 0.38
+    axb.bar(x - w / 2, mA, w, color=PALETTE["gray_light"], label="Arm A (older)")
+    axb.bar(x + w / 2, mB, w, color=WARM, label="Arm B (current)")
+    axb.axhline(1.0, color=BLACK, lw=1.0, ls="--")
+    axb.text(len(emerging) - 0.5, 1.02, "floor (mean = 1.0) → below = CPC N/A",
+             ha="right", va="bottom", fontsize=7, color=BLACK)
+    axb.set_xticks(x); axb.set_xticklabels(emerging, fontsize=7.5)
+    axb.set_ylabel("mean recall (0–6) across panel")
+    axb.set_ylim(0, 1.4)
+    axb.legend(loc="center right", fontsize=7.5)
+    # demarcation border + label
+    axb.add_patch(Rectangle((0, 0), 1, 1, transform=axb.transAxes, fill=False,
+                            edgecolor=WARM, lw=1.4, ls=(0, (4, 3)), zorder=10, clip_on=False))
+    axb.text(0.01, 0.98, "EXPLORATORY — not a confirmatory test", transform=axb.transAxes,
+             ha="left", va="top", fontsize=8, color=WARM, fontweight="bold")
+    axb.set_title("Exploratory — emerging-brand recall rose under Arm B but did not cross the floor",
+                  fontsize=9, loc="left", color=WARM)
+    add_header(fig, "Emerging-brand instability: predicted, but sub-floor",
+               "TERTIARY · H_EmergingInstability — Cell-B disruptors",
+               "Top: the locked flip test is zero. Bottom (exploratory): newer models recall Rivian/Lucid more, but below the v1.7 floor.")
+    add_footer(fig, verdict="TERTIARY FALSIFIED — zero floor-crossing flips; sub-floor rise is exploratory only.",
+               phase=PHASE, protocol="v1.7")
+    save(fig, 3)
 
 
 if __name__ == "__main__":
-    for _m, _out in (("paper", OUT_PAPER), ("report", OUT_REPORT)):
-        _MODE = _m; OUT = _out; OUT.mkdir(parents=True, exist_ok=True)
-        for fn in (chart_01_reconciliation_gate, chart_02_cpc_within_substrate,
-                   chart_03_cpc_cross_category, chart_04_defined_undefined_floor):
-            print(f"[{_m}] wrote:", fn())
+    setup()
+    print("building v0.32 figures (one per finding):")
+    fig01(); fig02(); fig03()
+    print("done.")
