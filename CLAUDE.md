@@ -238,6 +238,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.29 | Presence Construct-Validity Baseline (CV.05) | 6870778 |
 | v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
 | v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 |
+| v0.32 | CPC Version-Snapshot Stability — two-arm cross-generation test (CPC version-robustness) | 6898581 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |

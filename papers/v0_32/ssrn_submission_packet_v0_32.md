@@ -126,7 +126,7 @@ Pre-registration, locked registry, two-arm acquisition data (Phase A and Phase B
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Version-Snapshot Stability of an AI-Presence Consistency Score: A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Version-Snapshot Stability of an AI-Presence Consistency Score: A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization. SSRN Working Paper 6898581.
 ```
 
 ---
