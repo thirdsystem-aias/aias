@@ -63,10 +63,7 @@ ORCID: 0009-0003-8968-9990"""
 
 FUNDER = "Self-funded."
 
-ETHICS = (
-    "Not applicable. The research uses public LLM APIs and standard prompt "
-    "batteries; no human subjects, no personal data, no protected populations."
-)
+ETHICS = "Not applicable; no human subjects; public APIs and LLM prompts only."
 
 
 # ----- YAML frontmatter parsing ---------------------------------------------
@@ -144,6 +141,8 @@ def generate_packet(phase_display: str, phase_snake: str,
     # Required fields with sensible fallbacks
     title = yaml.get("title", "[TITLE NOT FOUND IN YAML]")
     subtitle = yaml.get("subtitle", "")
+    # SSRN has a single Title field; fold the subtitle in colon-joined when present.
+    full_title = f"{title}: {subtitle}" if subtitle else title
     date_prepared = yaml.get("date", "") or "[DATE NOT FOUND IN YAML]"
 
     # OSF deposit segment: collapse v0_NN -> vNN (e.g. v0_30 -> v30) for phase
@@ -189,6 +188,7 @@ def generate_packet(phase_display: str, phase_snake: str,
     data_avail = (extract_section(body, r"Data and code availability")
                   or _decl_field("Data and code availability")
                   or _decl_field("Data availability")
+                  or _decl_field("Data and pre-registration")
                   or "")
     data_avail = data_avail.strip()
 
@@ -196,7 +196,7 @@ def generate_packet(phase_display: str, phase_snake: str,
                                      for i, n in enumerate(SUBJECT_CLASSIFICATIONS, 1))
 
     citation_template = (
-        f"González Castro, P. U. (2026). {title}. "
+        f"González Castro, P. U. (2026). {full_title}. "
         f"SSRN Working Paper [ABSTRACT_ID]."
     )
 
@@ -226,13 +226,13 @@ def generate_packet(phase_display: str, phase_snake: str,
 
 ## Step 3 — Paper details
 
-### Title (paste verbatim)
+### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-{title}
+{full_title}
 ```
 
-### Subtitle (paste verbatim)
+### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
 
 ```
 {subtitle}

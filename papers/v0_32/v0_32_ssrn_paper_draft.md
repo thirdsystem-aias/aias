@@ -1,5 +1,6 @@
 ---
 title: "Version-Snapshot Stability of an AI-Presence Consistency Score"
+subtitle: "A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization"
 date: "June 2026"
 mainfont: "Carlito"
 fontsize: 11pt
@@ -173,4 +174,4 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 
 **Ethics.** Not applicable; no human subjects; public APIs and LLM prompts only.
 
-**Data and pre-registration.** Pre-registration, registry, acquisition data (both arms, version metadata preserved), scorer, and figures deposited at OSF (`osf.io/ec6wh/v32`). Pre-reg tags `v0.32-prereg-r1` (design), `v0.32-prereg-r2` (acquisition prompt).
+**Data and pre-registration.** Pre-registration, locked registry, two-arm acquisition data (Phase A and Phase B, both arms, provider-returned version metadata preserved), scoring code, and figures are deposited at the Open Science Framework (osf.io/ec6wh, v32 component). Methodology was locked at git tags v0.32-prereg-r1 (design) and v0.32-prereg-r2 (acquisition prompt) before any data were collected.

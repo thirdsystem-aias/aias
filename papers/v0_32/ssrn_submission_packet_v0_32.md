@@ -1,6 +1,6 @@
 # SSRN Submission Packet — AIAS™ v0.32
 
-**Paper:** Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC)
+**Paper:** Version-Snapshot Stability of an AI-Presence Consistency Score
 **File to upload:** `papers/v0_32/v0_32_ssrn_paper.pdf`
 **Submission target:** SSRN — papers.ssrn.com → Submit a paper
 **Date prepared:** June 2026
@@ -23,37 +23,37 @@
 
 ## Step 3 — Paper details
 
-### Title (paste verbatim)
+### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC)
+Version-Snapshot Stability of an AI-Presence Consistency Score: A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization
 ```
 
-### Subtitle (paste verbatim)
+### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
 
 ```
-
+A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization
 ```
 
 ### Abstract (paste verbatim — matches paper page 2)
 
 ```
-Brand-growth theory locates demand in two coordinates, mental and physical availability. As discovery migrates to generative systems, a third coordinate becomes measurable: the availability of a brand inside AI outputs. The AI Availability Score (AIAS) operationalizes this coordinate as a multi-component construct. Following the Presence component (AIAS 1.0), this study establishes a cross-category baseline for Consistency (CPC), defined as the stability of a brand's cross-model recall and scored as 1 / (1 + CV). CPC is computed retroactively across five anchored substrates by rescoring committed recall data under an instrument locked in advance, generalized to a channel-agnostic per-model unit and validated by exact reconciliation against the prior methodology. Two pre-registered hypotheses, computability and cross-category difference, are both supported (Kruskal–Wallis H = 21.51, p < 0.001). Consistency varies systematically by category, lowest in premium spirits and highest in skincare, and a recognition–recall inversion in spirits places several category-dominant brands below the recall floor.
+The AIAS™ (AI Availability Score) program operationalizes AI Availability as a measurable brand-growth layer alongside Mental and Physical Availability. Its Consistency component is presently scored by CPC = 1/(1+CV), the coefficient-of-variation transform locked in methodology version v1.7. v1.7 established that this score is not a mean-independent consistency construct — it is mechanically coupled to recall level (|ρ| with Presence = 0.77) — and did not adopt it; a mean-independent redefinition was escalated to v1.8. The present study sets construct validity aside to ask a logically prior question: is the v1.7 score even version-stable? A measure that moves with the model vintage on which it is taken cannot track a brand across time, whatever its construct status. A pre-registered two-arm design measured CPC on a fixed 24-brand automotive registry under two model-version snapshots — an older vintage and the current frontier — across a six-model panel, holding probe wording, registry, and frame battery identical and varying only the dated model identifier; the contrast was made deliberately maximal across model generations. Brand-mention extraction reused the prior coder verbatim (pre-registered); a pre-scoring spot-check confirmed symmetric extraction across arms. Rank-order stability cleared the registered threshold marginally (Spearman ρ = 0.708) but proved fragile under a pre-registered leave-one-provider-out analysis (ρ ranging 0.48–0.82), with instability concentrated in the gpt-4o→gpt-5.x jump. Magnitude stability was falsified (mean |ΔCPC| = 0.077, exceeding the 0.5·SD tolerance of 0.069), though with no net directional drift — version change reshuffles which brands read as consistent without shifting the overall level. The emerging-brand instability prediction was falsified: no brand crossed the recall floor between arms. The v1.7 CPC score is therefore at best partially and provider-dependently version-stable; version-fragility compounds the recall-coupling already identified in v1.7 as grounds for the v1.8 redefinition. The contribution is a characterization of the interim instrument, not a validation of it.
 ```
 
 ### Keywords (paste verbatim, semicolon-separated)
 
 ```
-AI availability; brand consistency; large language models; recall stability; coefficient of variation; cross-category measurement; Ehrenberg-Bass
+AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; brand presence; measurement stability; model versioning; coefficient of variation
 ```
 
 ### JEL codes (paste verbatim)
 
 ```
-M31; L86; L15; D83; M37
+M31; L86; M37; D83
 ```
 
-**JEL rationale (for your reference):** M31 (primary); L86; L15; D83; M37
+**JEL rationale (for your reference):** M31 (primary); L86; M37; D83
 
 ---
 
@@ -96,7 +96,7 @@ ORCID: 0009-0003-8968-9990
 ### Declaration of Interest (paste verbatim)
 
 ```
-The author is employed by Samsung Electronics America in a corporate brand-creative and governance role. Samsung Electronics America competes in the audiophile-headphones category through Harman International, the parent of AKG; to avoid a competing interest, AKG was substituted out of the v0.19 headphones panel before that phase's pre-registration lock (recorded in the v0.19 deviations log and Section 5 of the v0.19 paper), and no Samsung-owned or -affiliated brand appears among the brands scored in any category examined here. The research is conducted independently through Third System and is self-funded; Samsung Electronics America had no role in the study's design, data, analysis, or reporting. A single pre-registered instrument was applied uniformly across all brands in every category, and no brand was singled out for differential treatment.
+The author is employed by Samsung Electronics America in a corporate brand-creative and governance role. Samsung participates in the automotive sector as a component supplier rather than as a vehicle marque — through Harman International (in-vehicle audio and infotainment), Samsung SDI (battery cells), and Samsung Display (automotive displays) — but does not compete as an automotive brand, and no brand in the v0.22 registry scored here is Samsung-owned or -affiliated; a pre-acquisition conflict-of-interest screen confirmed this. The research is conducted independently through Third System and is self-funded; Samsung Electronics America had no role in the study's design, data, analysis, or reporting. A single pre-registered instrument was applied uniformly across all brands in both arms, and no brand was singled out for differential treatment.
 ```
 
 ### Funder (paste verbatim)
@@ -108,13 +108,13 @@ Self-funded.
 ### Ethics statement (paste verbatim)
 
 ```
-Not applicable. The research uses public LLM APIs and standard prompt batteries; no human subjects, no personal data, no protected populations.
+Not applicable; no human subjects; public APIs and LLM prompts only.
 ```
 
 ### Data and code availability (paste verbatim)
 
 ```
-Pre-registration, recall data, scoring code, and figures are deposited at the Open Science Framework (osf.io/ec6wh, v32 component). The methodology was locked at git tag `v0.32-prereg-r1` prior to scoring.
+Pre-registration, locked registry, two-arm acquisition data (Phase A and Phase B, both arms, provider-returned version metadata preserved), scoring code, and figures are deposited at the Open Science Framework (osf.io/ec6wh, v32 component). Methodology was locked at git tags v0.32-prereg-r1 (design) and v0.32-prereg-r2 (acquisition prompt) before any data were collected.
 ```
 
 ---
@@ -126,7 +126,7 @@ Pre-registration, recall data, scoring code, and figures are deposited at the Op
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC). SSRN Working Paper 6880959.
+González Castro, P. U. (2026). Version-Snapshot Stability of an AI-Presence Consistency Score: A Pre-Registered Two-Arm Cross-Generation Test of the v1.7 CPC Operationalization. SSRN Working Paper [ABSTRACT_ID].
 ```
 
 ---
