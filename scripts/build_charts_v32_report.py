@@ -9,10 +9,11 @@ restated, NOT softened. fig_03's sub-floor panel is re-badged "WATCH — not a
 measured effect" to hold P4's discipline (the exploratory signal must never
 read as confirmed).
 
-Proposition mapping: report_fig_01 -> P1 & P3 · report_fig_02 -> P2 ·
-report_fig_03 -> P4 · (P5 is the closing recommendation, not a figure.)
+Proposition mapping (figure per finding): report_fig_01 -> P1 · report_fig_02 -> P2 ·
+report_fig_03 -> P3 (leave-one-family-out sensitivity of P1) · report_fig_04 -> P4 ·
+(P5 is the closing recommendation, not a figure.)
 
-Outputs reports/figs/v32/report_fig_0{1,2,3}.pdf (+ .png for pre-flight view).
+Outputs reports/figs/v32/report_fig_0{1,2,3,4}.pdf (+ .png for pre-flight view).
 """
 from __future__ import annotations
 
@@ -79,28 +80,13 @@ def fig01():
     ax.legend(loc="upper left", bbox_to_anchor=(0.02, 0.80), fontsize=7.5, framealpha=0.9)
     ax.text(0.03, 0.97,
             "Broad order holds (rank agreement = 0.71)\n"
-            "but it is weak — the order shifts with the panel (see inset)",
+            "but it is weak — the order shifts with the panel (see Finding 3)",
             transform=ax.transAxes, ha="left", va="top", fontsize=8.5, color=INDIGO,
             bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=INDIGO, lw=0.7))
-    # LOO inset = the P3 evidence (panel only as stable as its most volatile family)
-    loo = V["SENSITIVITY_leave_one_provider_out"]
-    order = [("drop_openai", "drop OpenAI\n(largest jump)"), ("drop_anthropic", "drop Anthropic"),
-             ("drop_google", "drop Google")]
-    iax = fig.add_axes([0.60, 0.205, 0.30, 0.22])
-    vals = [loo[k]["rho"] for k, _ in order]
-    labs = [lab for _, lab in order]
-    cols = [PALETTE["teal"] if v >= 0.70 else WARM for v in vals]
-    iax.barh(range(len(vals)), vals, color=cols, height=0.62)
-    iax.axvline(p["rho"], color=INDIGO, lw=1.0)
-    for i, v in enumerate(vals):
-        iax.text(v + 0.01, i, f"{v:.2f}", va="center", fontsize=6.5)
-    iax.set_yticks(range(len(labs))); iax.set_yticklabels(labs, fontsize=6.2)
-    iax.set_xlim(0, 1.0); iax.set_xticks([0, 0.5, 1.0]); iax.tick_params(labelsize=6)
-    iax.set_title("drop one model family → order agreement", fontsize=6.5, loc="left")
     add_header(fig, "Standings hold their broad order across a model upgrade — but weakly",
                "Per-brand AI-consistency: older model panel vs current",
                "Treat a single reading as indicative, not definitive — the order shifts with the panel.")
-    add_footer(fig, verdict="Propositions 1 & 3 — order broadly holds, weakly; instability concentrates in the largest version jump.",
+    add_footer(fig, verdict="Proposition 1 — standings hold across an upgrade, but weakly.",
                phase=PHASE, protocol="v1.7")
     save(fig, 1)
 
@@ -137,8 +123,40 @@ def fig02():
     save(fig, 2)
 
 
-# --- report_fig_03: P4 — emerging brands a movement to WATCH, not measured ---
+# --- report_fig_03: P3 — leave-one-family-out sensitivity of P1's standings agreement ---
 def fig03():
+    p = V["PRIMARY_H_ScoreRankStable"]
+    loo = V["SENSITIVITY_leave_one_provider_out"]
+    # mirrors chart_01's LOO inset values/attribution; full panel = P1's rank agreement
+    rows = [
+        ("Full six-model panel", p["rho"]),
+        ("Drop OpenAI (largest jump)", loo["drop_openai"]["rho"]),
+        ("Drop Anthropic", loo["drop_anthropic"]["rho"]),
+        ("Drop Google", loo["drop_google"]["rho"]),
+    ]
+    fig, ax = plt.subplots(figsize=FIGSIZE["hero"])
+    plt.subplots_adjust(top=0.78, bottom=0.18, left=0.32, right=0.92)
+    for i, (lab, val) in enumerate(rows):
+        ax.barh(i, val, color=(PALETTE["teal"] if val >= 0.70 else WARM), height=0.62, zorder=2)
+        ax.text(val + 0.012, i, f"{val:.2f}", va="center", fontsize=9.5, color=BLACK, zorder=3)
+    ax.axvline(0.70, color=BLACK, lw=0.9, ls=":", zorder=1)
+    ax.text(0.70, -0.7, "stability line (0.70)", fontsize=7,
+            color=BLACK, ha="center", va="bottom", fontstyle="italic")
+    ax.set_yticks(range(len(rows))); ax.set_yticklabels([r[0] for r in rows], fontsize=8.5)
+    ax.invert_yaxis()  # full panel at top
+    ax.set_xlim(0, 1.0); ax.set_xticks([0, 0.25, 0.5, 0.70, 1.0])
+    ax.set_xlabel("Standings rank-agreement, older vs current panel (ρ)")
+    add_header(fig, "The wobble has an address",
+               "Leave-one-model-family-out sensitivity of the standings agreement (Finding 1)",
+               "Drop the family that made the largest version jump and the agreement clears the line; "
+               "drop a steadier family and it falls below.")
+    add_footer(fig, verdict="Proposition 3 — a robustness check on Finding 1's standings agreement, not an independent measurement.",
+               phase=PHASE, protocol="v1.7")
+    save(fig, 3)
+
+
+# --- report_fig_04: P4 — emerging brands a movement to WATCH, not measured ---
+def fig04():
     t = V["TERTIARY_H_EmergingInstability"]
     fig = plt.figure(figsize=FIGSIZE["hero_tall"])
     plt.subplots_adjust(top=0.80, bottom=0.12, left=0.12, right=0.95, hspace=0.55)
@@ -179,11 +197,11 @@ def fig03():
                "Rising under newer models, but below the level this measure registers: watch it, do not yet act on it.")
     add_footer(fig, verdict="Proposition 4 — a signal to watch, not a measured effect.",
                phase=PHASE, protocol="v1.7")
-    save(fig, 3)
+    save(fig, 4)
 
 
 if __name__ == "__main__":
     setup()
-    print("building v0.32 MANAGERIAL report figures (P1-P5):")
-    fig01(); fig02(); fig03()
+    print("building v0.32 MANAGERIAL report figures (figure-per-finding, P1-P4):")
+    fig01(); fig02(); fig03(); fig04()
     print("done.")

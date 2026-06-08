@@ -164,10 +164,10 @@ content.PATTERNS = [{"label": _FINDING_TITLE.get(h["id"], h["proposition"]),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
-    1: "rank",       # P1 standings hold weakly  -> report_fig_01 (rank + LOO inset)
+    1: "rank",       # P1 standings hold weakly  -> report_fig_01 (scatter)
     2: "magnitude",  # P2 score not reproducible -> report_fig_02
-    3: None,         # P3 instability localized  -> text only (LOO evidence is fig_01's inset, under P1)
-    4: "emerging",   # P4 emerging brands watch  -> report_fig_03
+    3: "loo",        # P3 instability localized  -> report_fig_03 (LOO sensitivity of P1)
+    4: "emerging",   # P4 emerging brands watch  -> report_fig_04
     5: None,         # P5 comparability choice   -> text only
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -341,9 +341,10 @@ CHART_FIGSIZE_IN = {
     # v0.32 CPC figures — native dims from chart_0*.pdf mediaboxes
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
-    "v32_rank":                   (6.806, 5.100),   # report_fig_01 mediabox 490.0x367.2pt (aspect honored)
+    "v32_rank":                   (6.250, 5.100),   # report_fig_01 mediabox 450.0x367.2pt (inset stripped)
+    "v32_loo":                    (7.018, 5.100),   # report_fig_03 mediabox 505.3x367.2pt (P3 LOO bars)
     "v32_magnitude":              (6.515, 5.972),   # report_fig_02 1.091 aspect, fitted to 430pt height
-    "v32_emerging":               (6.447, 5.972),   # report_fig_03 1.080 aspect, fitted to 430pt height
+    "v32_emerging":               (6.447, 5.972),   # report_fig_04 1.080 aspect, fitted to 430pt height
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1143,14 +1144,20 @@ HERO_FIGURE_CAPTIONS = {
     "rank": (
         "P1 \u00b7 Standings hold, weakly. Brands ranked by AI-consistency on the older "
         "model panel against the current one. The broad order holds (rank agreement 0.71), "
-        "but the inset shows it depends on which model family is in the panel \u2014 drop "
-        "the largest-jump provider and agreement rises, drop either other and it falls."
+        "but it is weak and depends on which model family is in the panel \u2014 Finding 3 "
+        "decomposes that dependence."
     ),
     "magnitude": (
         "P2 \u00b7 The score does not reproduce. Per-brand change in consistency from the "
         "older panel to the current. The typical move is larger than the gap separating one "
         "brand from the next, with no overall direction \u2014 newer models reshuffle which "
         "brands read as consistent rather than shifting the level."
+    ),
+    "loo": (
+        "P3 \u00b7 The wobble has an address. Leave-one-model-family-out sensitivity of the "
+        "standings agreement \u2014 a robustness check on Finding 1, not an independent result. "
+        "Dropping the family that made the largest version jump lifts agreement above the line; "
+        "dropping a steadier family drops it below."
     ),
     "emerging": (
         "P4 \u00b7 A movement to watch, not measured. Emerging-brand AI recall, older panel "
@@ -1167,7 +1174,8 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     table = {
         "rank":      ("report_fig_01.pdf", "v32_rank"),
         "magnitude": ("report_fig_02.pdf", "v32_magnitude"),
-        "emerging":  ("report_fig_03.pdf", "v32_emerging"),
+        "loo":       ("report_fig_03.pdf", "v32_loo"),
+        "emerging":  ("report_fig_04.pdf", "v32_emerging"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1214,7 +1222,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
         is_hero = slot in (
-            "rank", "magnitude", "emerging",
+            "rank", "magnitude", "loo", "emerging",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
@@ -1517,7 +1525,7 @@ def build(*, debug_layout: bool = False,
 
     print(f"[build_report_v30] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "rank", "magnitude", "emerging",
+        "rank", "magnitude", "loo", "emerging",
     ]
     expected_files = set()
     for sk in expected_slots:
