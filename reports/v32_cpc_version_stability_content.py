@@ -1,194 +1,206 @@
-# NOTE: cloned from v31_cpc_baseline_content.py on phase scaffold.
-# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,
-# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text
-# must be re-written for the v0.32 cpc version stability
-# substrate. Do not ship this file as-is.
-
 """
-v0.32 — CPC Cross-Category Baseline
+v0.32 — CPC Version-Snapshot Stability
 Third System™ brand-format report content module.
 
 Pure-data module. Managerial register (P1–P5 propositional framing; NOT the
-paper's H_* framing). Consumed by reports/build_report_v32.py (forked from v30);
-the builder maps the four v32 chart PDFs into the proposition slots:
+paper's H_* framing). Consumed by reports/build_report_v32.py; the builder maps
+the three v0.32 managerial chart PDFs into the proposition slots:
 
-    chart_01_reconciliation_gate      -> P4 (reproducible)
-    chart_02_cpc_within_substrate     -> P1 (measurable)
-    chart_03_cpc_cross_category       -> P2 (category-specific)
-    chart_04_defined_undefined_floor  -> P3 (recognition is not recall)
+    report_fig_01  -> P1 & P3  (standings hold weakly; instability in the largest jump — LOO inset)
+    report_fig_02  -> P2       (score not reproducible to the measure's resolution)
+    report_fig_03  -> P4       (emerging brands a movement to WATCH, not measured)
+    (P5 is the closing recommendation — no figure.)
 
 Same underlying findings as the SSRN paper, intentionally divergent register.
+Numbers held to osf/v32/v32_verdicts.json.
 """
 
 # ----------------------------------------------------------------------------
 COVER = {
     "eyebrow": "Third System™ · AIAS™ Measurement Program · v0.32",
-    "title": "Consistency, Category by Category",
-    "subtitle": "A cross-category baseline for AI Availability's Consistency reading (CPC)",
-    "deck": "How stably AI recalls a brand can be measured — and where market dominance stops predicting it.",
+    "title": "When the Models Change, What Holds?",
+    "subtitle": (
+        "AI brand-consistency rankings tested across a major model upgrade: the broad "
+        "order holds, the score itself does not reproduce, and the instability concentrates "
+        "in whichever model family jumps furthest — with consequences for tracking a brand "
+        "over time."
+    ),
+    "deck": "",
 }
 
 # ----------------------------------------------------------------------------
 STANDFIRST = (
-    "Generative systems now sit between buyers and brands. The AI Availability "
-    "program measures where a brand stands inside those systems. This report "
-    "establishes the first cross-category reading of the program's second "
-    "component, Consistency: how stably a brand is recalled across AI models, "
-    "measured across five categories on a single instrument fixed in advance."
+    "Generative AI increasingly decides which brands surface when a buyer asks for a "
+    "recommendation — and the models doing the deciding are retired and replaced every "
+    "few months. That puts a blunt question ahead of any AI-brand metric: when the model "
+    "changes, does the reading change with it? We tested one consistency measure across a "
+    "deliberately large model upgrade. The answer is useful, with a caution attached."
 )
 
 # ----------------------------------------------------------------------------
 LEAD_DECK = (
-    "A brand can be present in AI answers without being present reliably. One "
-    "model names it, another does not; one phrasing surfaces it, the next omits "
-    "it. Consistency captures that reliability as a single reading on a zero-to-one "
-    "scale, where a brand recalled uniformly across the model panel approaches one "
-    "and a brand recalled erratically approaches zero. Before the reading can "
-    "guide anything, two questions have to be answered: does it actually separate "
-    "brands, and does it behave differently across categories? Across five anchored "
-    "categories the answer to both is yes, and the categories order themselves in a "
-    "way that says more about how a category is discussed than about who leads it."
+    "An AI-availability reading earns its keep only if it tracks the brand, not the tool "
+    "beneath it. To test whether one does, we held twenty-four automotive brands fixed and "
+    "measured their AI-presence consistency twice — once on an older generation of the "
+    "six-model panel we use, once on the current frontier — changing nothing but the models. "
+    "The jump was deliberately large, to stress the measure rather than flatter it. Three "
+    "findings came back, and a fourth to watch. The broad order of brands held across the "
+    "upgrade, but only just. The consistency score for any given brand did not hold: it "
+    "moved, on average, by more than the gap separating one brand from the next. The "
+    "instability was not evenly spread — it concentrated in the single model family that "
+    "made the largest version jump. And the newest electric challengers are beginning to "
+    "register in AI recall, though not yet enough to move the measure."
 )
 
 # ----------------------------------------------------------------------------
+# Five takeaways (paragraphs; the builder splits EXEC_SUMMARY on blank lines).
 EXEC_SUMMARY = (
-    "Five propositions carry this baseline. Consistency is measurable: the reading "
-    "separates brands within every category examined rather than flattening to a "
-    "single value (P1). It is category-specific: spirits is the least consistent "
-    "category and skincare the most, with categories shaped by editorial and "
-    "cultural discourse scoring lower than utilitarian ones (P2). Recognition is "
-    "not recall: several of the most dominant brands in spirits, Johnnie Walker "
-    "among them, are known to the models yet barely recalled in the channels that "
-    "matter, and so carry no consistency reading at all (P3). The reading is "
-    "reproducible: it reproduces the program's prior instrument exactly where the "
-    "two overlap, so categories are comparable rather than re-defined study by "
-    "study (P4). And it is a floor rather than a forecast: the reading is taken "
-    "across models at a single point in time, and it covers the five categories "
-    "where the measurement is uniform (P5)."
+    "<b>Standings broadly survive an upgrade — weakly.</b> The order of brands on AI "
+    "consistency holds across a model change, but the margin is thin. Read a single ranking "
+    "as indicative, not settled. (P1)"
+    "\n\n"
+    "<b>The score does not reproduce.</b> A brand's consistency reading is not stable across "
+    "a model change to within the measure's own resolution — it can move more than the "
+    "spacing between brands. Don't over-read a period-to-period score change. (P2)"
+    "\n\n"
+    "<b>The wobble has an address.</b> Instability concentrates in whichever model family "
+    "makes the largest version jump; a panel is only as stable as its most volatile member. (P3)"
+    "\n\n"
+    "<b>Emerging brands: watch, don't act.</b> Electric challengers are gaining AI recall "
+    "under newer models but remain below the threshold this measure reads — a movement to "
+    "watch, not yet a measured effect. (P4)"
+    "\n\n"
+    "<b>Comparability is a choice.</b> A consistency reading is comparable across periods "
+    "only on a version-controlled panel — pinned, dated models migrated deliberately — or "
+    "the score partly reflects the tools rather than the brands. (P5)"
 )
 
 # ----------------------------------------------------------------------------
 WHAT_WE_MEASURED = (
-    "Consistency (CPC) is the stability of a brand's recall across a fixed panel of "
-    "six AI models. For each brand the analysis counts how often each model recalls "
-    "it across a set of category prompts, then scores the evenness of those counts: "
-    "uniform recall scores near one, lopsided recall near zero. The reading uses "
-    "recall only, not recognition, and was computed by rescoring recall data already "
-    "collected in earlier phases. No new model queries were issued. A floor handles "
-    "near-absent brands: any brand a model panel almost never recalls is marked "
-    "undefined rather than scored as zero, since the stability of an almost-empty "
-    "signal is not meaningful. Five categories met a common measurement standard and "
-    "form the comparable set: audiophile headphones, skincare, cosmetics, automotive, "
-    "and premium spirits."
+    "We measured consistency: how steadily a brand surfaces across the different AI models a "
+    "buyer might use, rather than depending on which model happens to answer. The test bed "
+    "was twenty-four automotive brands — a deliberate mix of heritage names, electric "
+    "challengers, mass-market makes, and discontinued marques — read across a panel of six "
+    "models from three providers. We ran the full measurement twice: once on an older "
+    "generation of those six models, once on the current generation, holding the brands, the "
+    "questions, and everything else fixed. Only the models changed, and we made the gap "
+    "between old and new deliberately large so the test would expose version sensitivity "
+    "rather than hide it. One note on what “consistency” counts: it reads from how "
+    "often each model names a brand unprompted across a battery of category and cultural "
+    "questions; a brand the models rarely name falls below a floor and carries no reading at all."
 )
 
 # ----------------------------------------------------------------------------
 PATTERNS = (
-    "Three patterns stand out. First, consistency is real and uneven within every "
-    "category; the reading discriminates among brands rather than assigning everyone "
-    "the same score. Second, categories differ systematically. Ordered by median, "
-    "consistency runs from premium spirits at 0.60, through headphones at 0.67, "
-    "cosmetics at 0.74, and automotive at 0.76, to skincare at 0.80. The categories "
-    "organized around critics and enthusiasts are the least consistent; the "
-    "utilitarian categories are the most. Third, and most consequential for brand "
-    "owners, recall does not follow market share. In spirits the global volume "
-    "leaders are largely absent from the recalled set: Johnnie Walker, the leading "
-    "Scotch by volume, is recalled so rarely that it has no consistency reading, and "
-    "Jack Daniel's, Bacardi, and Jameson sit in the same position. The brands that do "
-    "carry a reading mix large premium houses with smaller critical favorites. Being "
-    "known and being named are different things, and consistency measures the second."
+    "Four patterns came back. First, the standings broadly held: rank the brands by "
+    "consistency on the old models and on the new, and the two orders largely agree — but the "
+    "agreement is thin, and fragile. Second, the score itself did not hold. A given brand's "
+    "consistency reading moved between old and new models by more than the typical gap "
+    "separating one brand from the next, and in no consistent direction: newer models did not "
+    "make brands look uniformly more or less consistent, they reshuffled which brands read as "
+    "consistent. The measure is reproducible enough to rank by once, but not to track period "
+    "over period. Third, the instability has an address — it concentrated in the single "
+    "provider whose models made the largest version jump; remove that provider and the "
+    "standings snap back into agreement. A panel is only as steady as its most volatile member. "
+    "Fourth, and to watch rather than bank: the electric challengers are rising. Rivian and "
+    "Lucid, recalled essentially never by the older models, began to surface under the newer "
+    "ones — but not often enough to cross the floor where the measure starts reading. The "
+    "direction is right; the magnitude isn't there yet."
 )
 
 # ----------------------------------------------------------------------------
 LIMITATIONS = (
-    "This is a baseline, and its claims are bounded. The reading is taken across "
-    "models within a panel, not across the different AI platforms a buyer actually "
-    "uses, and it reflects a single point in time rather than a trend. Because "
-    "consistency is defined only for brands with enough recall to measure, each "
-    "category's reading describes its recalled brands, not its full roster. And the "
-    "comparable set is five categories; two more were observed on a coarser grid and "
-    "two were measured off-standard, so they are not part of the cross-category "
-    "comparison."
+    "Read these within their bounds. This is one category — automotive, chosen for its spread "
+    "of brand types; consistency may behave differently where the surrounding discourse is "
+    "denser or thinner. It is one moment in time: we changed the models but not the calendar, "
+    "so this isolates the effect of upgrading the models, not drift that would occur anyway. "
+    "And it rests on the fourteen brands that carried a reading; the other ten — discontinued "
+    "marques, the newest EVs, and even a mainstream name like Nissan — sat below the recall "
+    "floor, a reminder that this measure tracks how often a brand is named, not how large it "
+    "is. Most important to weigh: the consistency measure itself is an early version, one we "
+    "are actively redefining. These results are partly a stress test of the gauge and feed "
+    "that redefinition as much as they describe the market. Treat the propositions as "
+    "directionally sound and the exact scores as provisional."
 )
 
 # ----------------------------------------------------------------------------
 WHATS_NEXT = (
-    "Three extensions follow. A second measurement wave would turn this static "
-    "reading into a test of whether consistency holds over time and across model "
-    "version changes. A cross-platform reading would separate stability inside one "
-    "model family from stability across the systems buyers encounter. And the "
-    "recognition–recall gap, now seen in spirits and earlier in prestige skincare, "
-    "is worth treating as a diagnostic in its own right: a way to find brands that "
-    "are widely known yet quietly missing from the answers buyers receive."
+    "Three moves follow. We are redefining the consistency measure to remove a known "
+    "dependence on how often a brand is recalled, and the next step is to re-run this exact "
+    "old-versus-new test on the redefined version — version-robustness becomes a bar any "
+    "future gauge must clear before it can be trusted over time. We will widen the test beyond "
+    "automotive, to see whether the partial, provider-dependent stability here holds in "
+    "categories with denser or sparser discourse. And we will keep watching the challengers "
+    "below the floor: a sub-threshold rise, tracked deliberately, is the kind of signal that "
+    "becomes a measured shift before competitors notice it. For anyone using an AI-availability "
+    "reading operationally, the immediate move is the fifth proposition — control the panel: "
+    "pin the exact model versions you measure on, migrate them on a deliberate schedule rather "
+    "than letting them update underneath you, and record which versions produced each reading. "
+    "Otherwise a change in a brand's score is partly a change in the instrument."
 )
 
 # ----------------------------------------------------------------------------
-# Proposition scoring (managerial analogue of the paper's hypothesis table)
+# Proposition scoreboard — plain-language status (NEVER CONFIRMED/FALSIFIED).
 HYPOTHESIS_SCORING = [
-    {"id": "P1", "proposition": "Consistency is measurable.",
-     "verdict": "Established",
-     "basis": "Non-degenerate CPC variance in all five categories; the reading separates brands rather than flattening."},
-    {"id": "P2", "proposition": "Consistency is category-specific.",
-     "verdict": "Established",
-     "basis": "Cross-category difference is significant (Kruskal–Wallis H = 21.51, p < 0.001); spirits lowest, skincare highest."},
-    {"id": "P3", "proposition": "Recognition is not recall.",
-     "verdict": "Documented",
-     "basis": "Dominant spirits brands fall below the recall floor (Johnnie Walker mean recall 0.17); a gap also seen in prestige skincare."},
-    {"id": "P4", "proposition": "The reading is reproducible.",
-     "verdict": "Confirmed",
-     "basis": "Reproduces the prior locked instrument exactly across 72 overlapping brands; categories are comparable, not redefined."},
-    {"id": "P5", "proposition": "This is a floor, not a forecast.",
-     "verdict": "By design",
-     "basis": "Cross-model and single-wave; covers the five categories with uniform measurement geometry."},
+    {"id": "P1", "proposition": "Standings hold across a model upgrade",
+     "verdict": "Holds — weakly",
+     "basis": "Old-vs-new rank agreement 0.71 — clears the bar, but only just, and it leans on two of the three providers."},
+    {"id": "P2", "proposition": "The score reproduces across a model upgrade",
+     "verdict": "Does not hold",
+     "basis": "A brand's score moved 0.077 on average — more than 0.069, the gap separating brands — with no net direction."},
+    {"id": "P3", "proposition": "Instability is spread across the panel",
+     "verdict": "No — it concentrates in the largest jump",
+     "basis": "Drop the largest-jump provider and agreement rises to 0.82; drop either other and it falls to about 0.5."},
+    {"id": "P4", "proposition": "Emerging brands register on the measure",
+     "verdict": "Not yet — watch",
+     "basis": "Rivian and Lucid gained AI recall under newer models but stayed below the reading floor — no crossing."},
+    {"id": "P5", "proposition": "A reading is comparable over time as-is",
+     "verdict": "No — comparability needs a version-controlled panel",
+     "basis": "The score moves with the panel vintage; comparability is recoverable only by pinning and migrating versions deliberately."},
 ]
 
 # ----------------------------------------------------------------------------
 HYPOTHESIS_DETAILS = {
     "P1": (
-        "Within every category, the consistency reading spreads brands across a "
-        "real range rather than clustering at one value. Skincare runs from 0.52 to "
-        "0.94 and automotive from 0.64 to 1.00; even the tightest category, "
-        "headphones, spans 0.57 to 0.69. The instrument distinguishes brands, which "
-        "is the first thing any measure has to do."
+        "Ranked by consistency, the brands sit in nearly the same order on the old and new "
+        "models (rank correlation 0.71). But the margin is slim and the result leans on two of "
+        "the three providers; the third's models, taken alone, would put the orders in "
+        "substantial disagreement."
     ),
     "P2": (
-        "Median consistency differs across the five categories from 0.60 in spirits "
-        "to 0.80 in skincare, and the difference is statistically reliable "
-        "(Kruskal–Wallis H = 21.51, p < 0.001). The ordering tracks how a category "
-        "is talked about: categories driven by editorial authority and cultural "
-        "enthusiasm are recalled less consistently than utilitarian categories."
+        "Across the brands that carried a reading, the average score moved by 0.077 between old "
+        "and new models — larger than 0.069, the mark for half the spread between brands. The "
+        "moves had no net direction (they averaged near zero): newer models reshuffled which "
+        "brands read as consistent rather than raising or lowering all of them."
     ),
     "P3": (
-        "Consistency is built on recall, and recall does not follow sales. In "
-        "spirits, several volume leaders are recalled so rarely by the panel that "
-        "they have no defined reading: Johnnie Walker sits at a mean recall of 0.17, "
-        "alongside Jack Daniel's, Bacardi, and Jameson. The same recognition–recall "
-        "gap appeared earlier in prestige skincare. For a brand owner this is the "
-        "actionable signal: a brand can be universally recognized and still be "
-        "missing from the answers buyers actually receive."
+        "Removing the provider whose models jumped furthest — an older-to-current leap spanning "
+        "a full model-family change — raised the ranking agreement from 0.71 to 0.82; removing "
+        "either other provider dropped it to about 0.5. The instability lives in the largest jump."
     ),
     "P4": (
-        "The reading is anchored to the program's prior instrument. Recomputed on "
-        "the categories the two share, it reproduces the earlier values exactly "
-        "across all 72 brands. The generalization that lets the reading extend to "
-        "categories with different channel structures contains the prior definition "
-        "as a special case, so the cross-category numbers are comparable rather than "
-        "a fresh definition introduced for this study."
+        "Rivian and Lucid were recalled essentially never by the older models and began to be "
+        "named by the newer ones — Rivian's average mentions rose from zero to roughly "
+        "two-thirds of one across the panel. Real movement, but below the threshold at which "
+        "the measure begins to read, so it registers as no change."
     ),
     "P5": (
-        "The baseline reads consistency across models at one moment, for the five "
-        "categories where the measurement is uniform. It describes where brands "
-        "stand now, not whether they will hold, and it describes recalled brands "
-        "rather than full category rosters. Those are the boundaries the later "
-        "components and the longitudinal work are built to extend."
+        "Because the score moves with the models (P2) and the movement tracks the largest "
+        "version jump (P3), a reading taken on one panel vintage is not directly comparable to "
+        "one taken on another. Comparability is recoverable only by fixing the panel's versions "
+        "and migrating them deliberately."
     ),
 }
 
 # ----------------------------------------------------------------------------
 CLOSING = (
-    "Consistency joins Presence as a measurable coordinate of a brand's standing in "
-    "AI. The cross-category baseline shows the reading works, that it varies with "
-    "the character of a category, and that it surfaces a gap dominance alone hides: "
-    "being known is not being named. That gap is where the next questions, and the "
-    "next opportunities for brand owners, begin."
+    "The headline is not that AI brand-consistency is stable across model upgrades, nor that "
+    "it collapses. It is that the standings survive while the scores do not — and the "
+    "difference governs how the reading should be used. As a one-time ranking, the measure "
+    "separates brands meaningfully. As a tracker, it cannot yet tell a real change in a brand "
+    "from the turnover of the models beneath it, unless the panel is held still. For now, that "
+    "is the operative instruction: pin the versions, migrate them on your terms, and record "
+    "what produced each reading. The gauge is being sharpened; until it is, treat the order as "
+    "signal and the scores as provisional — and don't mistake the instrument moving for the "
+    "market moving."
 )

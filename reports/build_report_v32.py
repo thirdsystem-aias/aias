@@ -149,17 +149,26 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # five P-propositions (P1-P4 charted, P5 text-only). Build the finding list from
 # HYPOTHESIS_SCORING + HYPOTHESIS_DETAILS BEFORE either is reshaped below.
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
-_SCOPE_TITLE = {"P5": "Scope and boundaries"}   # body reframe; the scored table keeps the proposition
-content.PATTERNS = [{"label": _SCOPE_TITLE.get(h["id"], h["proposition"]),
+# FINDING headings state the finding (verdict direction), not the neutral
+# proposition — which the scored table keeps. P5 is reframed as scope (unnumbered).
+_FINDING_TITLE = {
+    "P1": "Standings hold \u2014 but only weakly",
+    "P2": "The score does not reproduce",
+    "P3": "The wobble has an address",
+    "P4": "Emerging brands: watch, don\u2019t act",
+    "P5": "Scope and boundaries",
+}
+_NO_FINDING_LABEL = {"P5"}
+content.PATTERNS = [{"label": _FINDING_TITLE.get(h["id"], h["proposition"]),
                      "text": content.HYPOTHESIS_DETAILS.get(h["id"], ""),
-                     "no_finding_label": h["id"] in _SCOPE_TITLE}
+                     "no_finding_label": h["id"] in _NO_FINDING_LABEL}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
-    1: "within",   # P1 measurable          -> chart_02_cpc_within_substrate
-    2: "cross",    # P2 category-specific    -> chart_03_cpc_cross_category
-    3: "floor",    # P3 recognition not recall -> chart_04_defined_undefined_floor
-    4: "gate",     # P4 reproducible         -> chart_01_reconciliation_gate
-    5: None,       # P5 floor-not-forecast   -> text only
+    1: "rank",       # P1 standings hold weakly  -> report_fig_01 (rank + LOO inset)
+    2: "magnitude",  # P2 score not reproducible -> report_fig_02
+    3: None,         # P3 instability localized  -> text only (LOO evidence is fig_01's inset, under P1)
+    4: "emerging",   # P4 emerging brands watch  -> report_fig_03
+    5: None,         # P5 comparability choice   -> text only
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -332,10 +341,9 @@ CHART_FIGSIZE_IN = {
     # v0.32 CPC figures — native dims from chart_0*.pdf mediaboxes
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
-    "v32_within":                 (7.20, 5.10),
-    "v32_cross":                  (7.20, 5.10),
-    "v32_floor":                  (7.20, 5.10),
-    "v32_gate":                   (7.20, 5.10),
+    "v32_rank":                   (6.806, 5.100),   # report_fig_01 mediabox 490.0x367.2pt (aspect honored)
+    "v32_magnitude":              (6.515, 5.972),   # report_fig_02 1.091 aspect, fitted to 430pt height
+    "v32_emerging":               (6.447, 5.972),   # report_fig_03 1.080 aspect, fitted to 430pt height
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1132,30 +1140,22 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
-    "within": (
-        "P1 \u00b7 Consistency is measurable. Brand-level consistency among defined "
-        "brands in each category, with category medians. The reading spreads brands "
-        "across a real range rather than flattening to one value \u2014 it "
-        "discriminates within every category."
+    "rank": (
+        "P1 \u00b7 Standings hold, weakly. Brands ranked by AI-consistency on the older "
+        "model panel against the current one. The broad order holds (rank agreement 0.71), "
+        "but the inset shows it depends on which model family is in the panel \u2014 drop "
+        "the largest-jump provider and agreement rises, drop either other and it falls."
     ),
-    "cross": (
-        "P2 \u00b7 Consistency is category-specific. The distribution of consistency by "
-        "category, ordered from spirits at the low end to skincare at the high end. The "
-        "difference is statistically reliable (Kruskal-Wallis H = 21.51, p < 0.001); "
-        "categories driven by editorial and cultural discourse score lower than "
-        "utilitarian ones."
+    "magnitude": (
+        "P2 \u00b7 The score does not reproduce. Per-brand change in consistency from the "
+        "older panel to the current. The typical move is larger than the gap separating one "
+        "brand from the next, with no overall direction \u2014 newer models reshuffle which "
+        "brands read as consistent rather than shifting the level."
     ),
-    "floor": (
-        "P3 \u00b7 Recognition is not recall. Defined versus undefined brands by "
-        "category. Brands a model panel almost never recalls fall below the floor and "
-        "carry no reading \u2014 in spirits these include volume leaders such as "
-        "Johnnie Walker, which dominance alone would not predict."
-    ),
-    "gate": (
-        "P4 \u00b7 The reading is reproducible. The generalized reading against the "
-        "prior locked instrument on the categories they share. All seventy-two brands "
-        "fall on the identity line, so the cross-category numbers are comparable rather "
-        "than redefined for this study."
+    "emerging": (
+        "P4 \u00b7 A movement to watch, not measured. Emerging-brand AI recall, older panel "
+        "versus current. No brand crossed the threshold the measure reads (top); recall is "
+        "rising beneath it (bottom). A signal to watch \u2014 not yet a measured effect."
     ),
 }
 
@@ -1165,10 +1165,9 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     """Map a v0.30 CPC brand-format slot_key (PATTERNS id) to (filename, figsize_key).
     Charts are produced by build_charts_v30.py at reports/figs/v30/."""
     table = {
-        "within": ("chart_02_cpc_within_substrate.pdf",   "v32_within"),
-        "cross":  ("chart_03_cpc_cross_category.pdf",     "v32_cross"),
-        "floor":  ("chart_04_defined_undefined_floor.pdf", "v32_floor"),
-        "gate":   ("chart_01_reconciliation_gate.pdf",    "v32_gate"),
+        "rank":      ("report_fig_01.pdf", "v32_rank"),
+        "magnitude": ("report_fig_02.pdf", "v32_magnitude"),
+        "emerging":  ("report_fig_03.pdf", "v32_emerging"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1215,7 +1214,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
         is_hero = slot in (
-            "within", "cross", "floor", "gate",
+            "rank", "magnitude", "emerging",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
@@ -1518,7 +1517,7 @@ def build(*, debug_layout: bool = False,
 
     print(f"[build_report_v30] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "within", "cross", "floor", "gate",
+        "rank", "magnitude", "emerging",
     ]
     expected_files = set()
     for sk in expected_slots:
@@ -1533,7 +1532,7 @@ def build(*, debug_layout: bool = False,
     if chart_dir.exists():
         actual_charts = sorted(p.name for p in chart_dir.iterdir()
                                 if p.is_file() and p.suffix.lower() == ".pdf"
-                                and p.name.startswith("chart_"))
+                                and p.name.startswith("report_fig_"))
         unexpected = [n for n in actual_charts if n not in expected_files]
         if unexpected:
             print(f"[build_report_v30] chart files in dir not used by brand-format report:")
@@ -1577,7 +1576,7 @@ def build(*, debug_layout: bool = False,
     # --- Patterns synthesis (the PATTERNS prose) ---
     if _PATTERN_PROSE:
         story.append(Spacer(1, 26))
-        story.append(Paragraph("Three patterns", styles["h1"]))
+        story.append(Paragraph("Four patterns", styles["h1"]))
         story.append(Spacer(1, 6))
         _pp = [Paragraph(_p.strip(), styles["body"]) for _p in _PATTERN_PROSE.split("\n\n") if _p.strip()]
         story.append(BalancedColumns(_pp, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
