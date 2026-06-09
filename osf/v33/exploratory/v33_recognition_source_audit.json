@@ -1,0 +1,130 @@
+{
+  "phase": "v0.33",
+  "kind": "post-hoc recognition-source audit (walled, exploratory)",
+  "not_in_confirmatory_lock": true,
+  "no_retag": true,
+  "confirmatory_reference": "osf/v33/v33_provider_asymmetry_verdicts.json",
+  "question": "Could a graded recognition signal have un-saturated eta^2_CP \u2014 i.e. is the Presence saturation a binarization artifact, or real recognition saturation?",
+  "recognition_source_inventory": {
+    "v0.19": {
+      "source": "osf/v19/phase_a_results.csv",
+      "field": "recognition_yes",
+      "type": "binary at source",
+      "value_set": [
+        "0",
+        "1"
+      ],
+      "graded_alternative": "none"
+    },
+    "v0.20": {
+      "source": "osf/v20/phase_a_results.csv",
+      "field": "recognized",
+      "type": "binary at source",
+      "value_set": [
+        "no",
+        "yes"
+      ],
+      "graded_alternative": "none"
+    },
+    "v0.21": {
+      "source": "osf/v21/phase_a_results.csv",
+      "field": "recognized",
+      "type": "binary at source",
+      "value_set": [
+        "yes"
+      ],
+      "graded_alternative": "none"
+    },
+    "v0.22": {
+      "source": "osf/v22/phase_a_results.csv",
+      "field": "recognized",
+      "type": "binary at source",
+      "value_set": [
+        "no",
+        "yes"
+      ],
+      "graded_alternative": "none"
+    },
+    "v0.23": {
+      "source": "osf/v23/data/v23_phase_a_scored.json",
+      "field": "r_level",
+      "type": "GRADED field, uniformly saturated",
+      "value_distribution": {
+        "R3": 144
+      },
+      "raw_graded_recognition_fields": [],
+      "graded_alternative": "r_level is the only graded recognition field in the program; it is all R3"
+    }
+  },
+  "eta2_CP_evidence": {
+    "n_brands": 112,
+    "n_with_recognition_variance": 10,
+    "n_saturated_eta2_CP_zero": 102,
+    "brands_with_any_recog_variance": [
+      {
+        "substrate": "v0.19",
+        "brand": "Denon",
+        "eta2_cp": 0.6667,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.19",
+        "brand": "Koss",
+        "eta2_cp": 0.25,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.19",
+        "brand": "Sony",
+        "eta2_cp": 0.25,
+        "above_floor": true
+      },
+      {
+        "substrate": "v0.19",
+        "brand": "Spirit Torino",
+        "eta2_cp": 0.4,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.19",
+        "brand": "Stax",
+        "eta2_cp": 0.4,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.20",
+        "brand": "Dior Beauty",
+        "eta2_cp": 0.6667,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.20",
+        "brand": "Chanel Beauty",
+        "eta2_cp": 0.6667,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.20",
+        "brand": "Goop",
+        "eta2_cp": 0.25,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.20",
+        "brand": "Tower 28",
+        "eta2_cp": 0.25,
+        "above_floor": false
+      },
+      {
+        "substrate": "v0.22",
+        "brand": "Fisker",
+        "eta2_cp": 0.4,
+        "above_floor": false
+      }
+    ],
+    "n_above_floor": 55,
+    "n_above_floor_with_recog_variance": 1,
+    "mean_eta2_CP_above_floor": 0.0045
+  },
+  "conclusion": "Saturation is REAL recognition saturation, not a binarization artifact. Four substrates record recognition as binary at source (no graded alternative exists to recover); the sole graded recognition field in the program (v0.23 r_level) is itself uniformly R3. A graded re-run would reproduce the identical eta^2_CP (\u22480). The Beyond_Presence gate's collapse is therefore a property of the recognition signal in this regime \u2014 recognition is near-universal among recalled brands \u2014 not of the pre-registered binary coding. This bounds when an AIAS Beyond-Presence contrast can be informative: it cannot function where recognition is saturated."
+}
