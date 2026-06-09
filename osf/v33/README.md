@@ -68,16 +68,14 @@ compare would have spuriously failed).
 
 ## Contents
 
-*(file tree — verify against the deposited directory)*
-
-- `prereg/` — pre-registration content and the re-analysis protocol (`v0.33-prereg-r1`)
+- `prereg/` — pre-registration content (`v0_33_provider_asymmetry_content.py`) and the re-analysis protocol (`v0_33_mega_prompt.md`); lock `v0.33-prereg-r1`
 - `data/v33_eta2.csv` — per-brand η² decomposition (112 brands; recall and recognition arms; defined-flag)
 - `v33_provider_asymmetry_verdicts.json` — the locked confirmatory verdicts
-- `scripts/` — `score_v33.py` (confirmatory scorer) and `audit_v33_recognition.py` (recognition-source audit)
+- `scripts/` — `score_v33.py` (confirmatory scorer), `audit_v33_recognition.py` (recognition-source audit), and the figure/report builders (`build_charts_v33.py`, `build_report_v33.py`)
 - `exploratory/` — the walled post-hoc recognition-source audit (not part of the confirmatory test)
-- `figures/` — the three finding charts (academic register)
-- `papers/` — the SSRN paper (`.md` source + built PDF)
-- `reports/v33_provider_asymmetry_report.pdf` — the Third System™ brand-format report (managerial register)
+- `figures/` — the three finding charts (academic register: `chart_01_eta2_null`, `chart_02_gate_arms`, `chart_03_provider_ranks`)
+- `papers/` — the SSRN paper (`v0_33_ssrn_paper_draft.md` + built `v0_33_ssrn_paper.pdf`)
+- `reports/v33_provider_asymmetry_report.pdf` — the Third System™ brand-format report (managerial register; carries a 4th descriptive figure not in the paper's pre-registered set)
 
 ---
 
