@@ -395,7 +395,8 @@ def main():
             "tier": "SECONDARY (underpowered N=5)", "verdict": H_ord,
             "kendalls_w": W_obs, "exact_p": W_p, "exact_null_size": W_tot,
             "within_pair_consistency": cons,
-            "provider_rank_table": {k: {p: int(r) for p, r in zip(provs, rank_mat[i])}
+            "provider_rank_table": {k: {p: (int(r) if float(r).is_integer() else float(r))
+                                         for p, r in zip(provs, rank_mat[i])}
                                     for i, k in enumerate(OMNI_ORDER)}},
         "H_Provider_Phantom": {"tier": "TERTIARY (exploratory, walled)", **phantom},
         "v0_18_concordance_aside": v18,
