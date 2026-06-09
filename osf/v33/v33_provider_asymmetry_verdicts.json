@@ -1,0 +1,201 @@
+{
+  "phase": "v0.33",
+  "title": "Provider-Asymmetric CPC",
+  "lock": "v0.33-prereg-r1",
+  "lock_commit": "c8f2736",
+  "no_new_llm_calls": true,
+  "seed": 280400,
+  "mc_draws": 10000,
+  "panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "provider_groups": {
+    "Anthropic": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5"
+    ],
+    "OpenAI": [
+      "gpt-4o",
+      "gpt-4o-mini"
+    ],
+    "Google": [
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ]
+  },
+  "n_brand_units": 112,
+  "reconciliation_gate": {
+    "checked": 72,
+    "mismatches": [],
+    "passed": true,
+    "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+    "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+    "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+  },
+  "computation_notes": [
+    "Zero-variance convention applied: SS_total==0 -> eta^2:=0 (not excluded).",
+    "v0.23 Phase A recognition is fully saturated (r_level set = ['R3']); binarized all-recognized, so eta^2_CP==0 for all v0.23 brands (zero-variance).",
+    "Ordinal within-pair consistency normalized by n_frames (=6 omnibus, =3 v0.18); SECONDARY/underpowered, reported descriptively.",
+    "v0.19 & v0.23 recall recompute has no external anchor (v0.31 provenance only)."
+  ],
+  "H_Provider_Asymmetry": {
+    "tier": "PRIMARY",
+    "verdict": "CONFIRMED",
+    "verdict_pre_loso": "CONFIRMED",
+    "mean_eta2_observed": 0.36025440115255475,
+    "mc_p_onesided": 0.0006999300069993001,
+    "null_mean": 0.2928849535804215,
+    "null_q95": 0.3254996315432617,
+    "per_substrate_mean_eta2": {
+      "v0.19": 0.33781203791755593,
+      "v0.20": 0.3943602432607831,
+      "v0.21": 0.3757190475406469,
+      "v0.22": 0.2826899509803922,
+      "v0.23": 0.4032099383183963
+    },
+    "n_brands": 112
+  },
+  "H_Provider_Beyond_Presence": {
+    "tier": "PRIMARY (gate)",
+    "verdict": "CONFIRMED",
+    "delta_eta2_observed": 0.5052916542325524,
+    "mc_p_onesided": 9.999000099990002e-05,
+    "mean_eta2_cvcpc_abovefloor": 0.509837108778007,
+    "mean_eta2_cp_abovefloor": 0.004545454545454545,
+    "null_mean": 0.3780425525201858,
+    "null_q95": 0.43271476906618217,
+    "n_abovefloor": 55
+  },
+  "H_Provider_Ordinal": {
+    "tier": "SECONDARY (underpowered N=5)",
+    "verdict": "UNINFORMATIVE (n.s.; N=5 underpowered)",
+    "kendalls_w": 0.31,
+    "exact_p": 0.18209876543209877,
+    "exact_null_size": 7776,
+    "within_pair_consistency": {
+      "v0.19": {
+        "Anthropic": 0.90625,
+        "OpenAI": 0.8541666666666667,
+        "Google": 0.65625
+      },
+      "v0.20": {
+        "Anthropic": 0.9375,
+        "OpenAI": 0.9375,
+        "Google": 0.9027777777777778
+      },
+      "v0.21": {
+        "Anthropic": 0.8541666666666666,
+        "OpenAI": 0.9027777777777778,
+        "Google": 0.8125
+      },
+      "v0.22": {
+        "Anthropic": 0.9375,
+        "OpenAI": 0.9305555555555557,
+        "Google": 0.9722222222222223
+      },
+      "v0.23": {
+        "Anthropic": 0.9097222222222223,
+        "OpenAI": 0.8958333333333334,
+        "Google": 0.888888888888889
+      }
+    },
+    "provider_rank_table": {
+      "v0.19": {
+        "Anthropic": 1,
+        "OpenAI": 2,
+        "Google": 3
+      },
+      "v0.20": {
+        "Anthropic": 1,
+        "OpenAI": 1,
+        "Google": 3
+      },
+      "v0.21": {
+        "Anthropic": 2,
+        "OpenAI": 1,
+        "Google": 3
+      },
+      "v0.22": {
+        "Anthropic": 2,
+        "OpenAI": 3,
+        "Google": 1
+      },
+      "v0.23": {
+        "Anthropic": 1,
+        "OpenAI": 2,
+        "Google": 3
+      }
+    }
+  },
+  "H_Provider_Phantom": {
+    "tier": "TERTIARY (exploratory, walled)",
+    "n_below_floor": 57,
+    "n_above_floor": 55,
+    "mean_eta2_below": 0.2159202095841361,
+    "mean_eta2_above": 0.509837108778007,
+    "note": "descriptive only; no confirmatory threshold (exploratory)",
+    "descriptive_mwu_p": 1.0790580672696049e-07
+  },
+  "v0_18_concordance_aside": {
+    "n_brands": 24,
+    "mean_eta2_cvcpc_3frame": 0.21802591463414633,
+    "provider_consistency_rank": [
+      "OpenAI",
+      "Anthropic",
+      "Google"
+    ],
+    "omnibus_provider_rank": [
+      "Anthropic",
+      "OpenAI",
+      "Google"
+    ],
+    "rank_order_agrees": false,
+    "note": "WALLED \u2014 3-frame geometry non-comparable; directional concordance only, not pooled into PRIMARY/delta/Kendall"
+  },
+  "loso": {
+    "survives_all": true,
+    "per_leftout": {
+      "v0.19": {
+        "left_out": "v0.19",
+        "n_brands": 96,
+        "mean_eta2": 0.3639947950250546,
+        "p": 0.00039996000399960006,
+        "significant": true
+      },
+      "v0.20": {
+        "left_out": "v0.20",
+        "n_brands": 88,
+        "mean_eta2": 0.35095280785031074,
+        "p": 0.0028997100289971,
+        "significant": true
+      },
+      "v0.21": {
+        "left_out": "v0.21",
+        "n_brands": 88,
+        "mean_eta2": 0.35603677031943876,
+        "p": 0.0006999300069993001,
+        "significant": true
+      },
+      "v0.22": {
+        "left_out": "v0.22",
+        "n_brands": 88,
+        "mean_eta2": 0.38140834210859914,
+        "p": 0.0025997400259974,
+        "significant": true
+      },
+      "v0.23": {
+        "left_out": "v0.23",
+        "n_brands": 88,
+        "mean_eta2": 0.34853925465277985,
+        "p": 0.0029997000299970002,
+        "significant": true
+      }
+    }
+  },
+  "deviations": []
+}
