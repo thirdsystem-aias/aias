@@ -1,17 +1,17 @@
 #!/usr/bin/env python3
 """
-v0.33 Provider-Asymmetric CPC — figure builder (one per finding).
-  chart_01_eta2_null      permutation-null of mean eta^2; observed modestly past q95 (H_Provider_Asymmetry)
-  chart_02_gate_arms      recall-arm vs recognition-arm eta^2 + nulls; the saturation collapse (H_Provider_Beyond_Presence)
-  chart_03_provider_ranks within-pair-consistency provider ranks by substrate + Kendall's W (H_Provider_Ordinal)
+v0.33 Provider-Asymmetric CPC — figure builder (one per finding), DUAL REGISTER.
+  chart_01_eta2_null / report_fig_01  permutation-null of mean eta^2 (H_Provider_Asymmetry / P1)
+  chart_02_gate_arms / report_fig_02  recall vs recognition eta^2; saturation collapse (Beyond_Presence / P2)
+  chart_03_provider_ranks / report_fig_03  within-pair consistency ranks + Kendall's W (Ordinal / P3)
 
 Reads osf/v33/data/v33_eta2.csv + osf/v33/v33_provider_asymmetry_verdicts.json.
 Regenerates the MC null deterministically (seed 280400) to match the locked verdicts.
-House style via chart_style.py. Outputs PDFs to reports/figs/v33/.
+House style via chart_style.py.
 
-NOTE: paper (academic) register only. The managerial P1-P5 report-register footers are
-swapped in at the step-6 report pass, not authored here (no findings-to-propositions
-mapping is locked yet).
+Two registers, identical plots, only the footer + filename differ:
+  paper  -> reports/figs/v33/        chart_0N_*.pdf      academic-register footer (H_* verdict)
+  report -> reports/figs/v33/report/ report_fig_0N.pdf   managerial P1-P5 footer
 """
 import sys, csv, json, itertools
 from pathlib import Path
@@ -23,7 +23,6 @@ sys.path.insert(0, str(ROOT / "scripts"))
 import chart_style as cs
 cs.setup()
 
-OUT = ROOT / "reports" / "figs" / "v33"
 SOURCE_PHASE = "v0.33 (Provider-Asymmetric CPC)"
 PROTOCOL = "v0.33-prereg-r1"
 SEED = 280400
@@ -33,16 +32,37 @@ OMNI = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
 CAT = {"v0.19": "headphones", "v0.20": "skincare", "v0.21": "cosmetics",
        "v0.22": "automotive", "v0.23": "spirits"}
 
-# academic-register footers (P1-P5 report register swapped at the report pass)
-FOOTERS = {
-    "eta2null": "H_Provider_Asymmetry CONFIRMED — mean eta^2 = 0.360 > null (p = 7e-4), robust across all five LOSO; modest excess over a high chance floor.",
-    "gatearms": "H_Provider_Beyond_Presence — numerical criterion met (delta eta^2 = 0.505, p = 1e-4) but saturation-collapsed; NOT a dissociation.",
-    "ranks":    "H_Provider_Ordinal UNINFORMATIVE — Kendall's W = 0.31, exact p = 0.18; underpowered at N = 5, not disconfirming.",
+OUT = {"paper": ROOT / "reports/figs/v33", "report": ROOT / "reports/figs/v33/report"}
+NAMES = {
+    "eta2null": {"paper": "chart_01_eta2_null.pdf",      "report": "report_fig_01.pdf"},
+    "gatearms": {"paper": "chart_02_gate_arms.pdf",      "report": "report_fig_02.pdf"},
+    "ranks":    {"paper": "chart_03_provider_ranks.pdf", "report": "report_fig_03.pdf"},
 }
+FOOTERS = {
+    "paper": {
+        "eta2null": "H_Provider_Asymmetry CONFIRMED — mean eta^2 = 0.360 > null (p = 7e-4), robust across all five LOSO; modest excess over a high chance floor.",
+        "gatearms": "H_Provider_Beyond_Presence — numerical criterion met (delta eta^2 = 0.505, p = 1e-4) but saturation-collapsed; NOT a dissociation.",
+        "ranks":    "H_Provider_Ordinal UNINFORMATIVE — Kendall's W = 0.31, exact p = 0.18; underpowered at N = 5, not disconfirming.",
+    },
+    "report": {  # P1-P5 managerial register (verbatim, locked)
+        "eta2null": "P1 SUPPORTED — provider shapes recall consistency reliably but modestly; a small excess over a high chance floor.",
+        "gatearms": "P2 NOT ESTABLISHED — the beyond-recognition test could not be run; recognition is saturated among recalled brands, so the gate measures recall alone.",
+        "ranks":    "P3 NOT SUPPORTED — no provider is reliably steadiest; rankings reshuffle and five categories cannot resolve them.",
+    },
+}
+_MODE = "paper"   # set in __main__
 
 # ---- load committed confirmatory outputs -----------------------------------
 rows = list(csv.DictReader(open(ROOT / "osf/v33/data/v33_eta2.csv")))
 V = json.load(open(ROOT / "osf/v33/v33_provider_asymmetry_verdicts.json"))
+
+
+def _save(fig, key):
+    cs.add_footer(fig, verdict=FOOTERS[_MODE][key], phase=SOURCE_PHASE, protocol=PROTOCOL)
+    OUT[_MODE].mkdir(parents=True, exist_ok=True)
+    p = OUT[_MODE] / NAMES[key][_MODE]
+    fig.savefig(p, **cs.SAVEFIG_PARAMS); plt.close(fig)
+    return p
 
 
 # ---- eta^2 over the 90-assignment labeled-pair space (matches score_v33) ----
@@ -69,9 +89,9 @@ def eta2_matrix(vectors):
 
 
 # =============================================================================
-def chart_01_eta2_null():
+def chart_eta2_null():
     recall = [json.loads(r["recall_per_model"]) for r in rows]
-    Ec = eta2_matrix(recall)                          # 112 x 90
+    Ec = eta2_matrix(recall)
     rng = np.random.default_rng(SEED)
     n = Ec.shape[0]
     idx = rng.integers(0, 90, size=(N_MC, n))
@@ -86,7 +106,6 @@ def chart_01_eta2_null():
     ax.axvline(nmean, color=cs.GRAY, lw=1.0, ls="--", zorder=3, label=f"null mean ({nmean:.3f})")
     ax.axvline(q95, color=cs.GRAY, lw=1.0, ls=":", zorder=3, label=f"null 95th pct ({q95:.3f})")
     ax.axvline(obs, color=cs.INDIGO, lw=2.0, zorder=5, label=f"observed ({obs:.3f})")
-    # LOSO refit means — robustness, just above the axis
     ymax = ax.get_ylim()[1]
     ax.scatter(loso, [ymax * 0.045] * len(loso), marker="v", s=34, color=cs.WARM,
                edgecolor="white", linewidth=0.5, zorder=6, label="LOSO refit means (5)")
@@ -102,12 +121,11 @@ def chart_01_eta2_null():
     cs.add_header(fig, "Provider organization of recall is significant but modest",
                   r"Permutation-null of mean $\eta^2$ across 112 brands ($\geq$10,000 draws); observed vs the null",
                   "The observed share sits just past the 95th percentile of a high chance floor — a reliable but small provider signal.")
-    cs.add_footer(fig, verdict=FOOTERS["eta2null"], phase=SOURCE_PHASE, protocol=PROTOCOL)
-    p_ = OUT / "chart_01_eta2_null.pdf"; fig.savefig(p_, **cs.SAVEFIG_PARAMS); plt.close(fig); return p_
+    return _save(fig, "eta2null")
 
 
 # =============================================================================
-def chart_02_gate_arms():
+def chart_gate_arms():
     af = [r for r in rows if r["defined"] == "True"]
     recall_af = [json.loads(r["recall_per_model"]) for r in af]
     recog_af = [json.loads(r["recog_per_model"]) for r in af]
@@ -115,7 +133,7 @@ def chart_02_gate_arms():
     rng = np.random.default_rng(SEED)
     n = Ec.shape[0]; idx = rng.integers(0, 90, size=(N_MC, n)); cols = np.arange(n)[None, :]
     recall_null, recog_null = Ec[cols, idx].mean(1), Ep[cols, idx].mean(1)
-    bands = {  # observed, null mean, null q95
+    bands = {
         "recall": (Ec[:, OBS_IDX].mean(), recall_null.mean(), np.quantile(recall_null, 0.95)),
         "recog":  (Ep[:, OBS_IDX].mean(), recog_null.mean(), np.quantile(recog_null, 0.95)),
     }
@@ -127,13 +145,12 @@ def chart_02_gate_arms():
     for x, key, col in zip(xs, ("recall", "recog"), colors):
         obs, nmean, q95 = bands[key]
         ax.bar(x, obs, width=0.5, color=col, alpha=0.85, zorder=3)
-        # null band: shaded [null mean, q95] across the bar; dashed line at null mean
         ax.add_patch(plt.Rectangle((x - 0.3, nmean), 0.6, q95 - nmean, facecolor=cs.GRAY,
                                    alpha=0.18, zorder=2, edgecolor="none"))
         ax.plot([x - 0.3, x + 0.3], [nmean, nmean], color=cs.GRAY, lw=1.1, ls="--", zorder=4)
         ax.text(x, obs + 0.015, f"{obs:.3f}", ha="center", va="bottom", fontweight="bold",
                 fontsize=cs.FONT_SIZES["annotation"], color=cs.BLACK)
-        label_y = nmean if nmean > 0.06 else 0.055   # keep the saturated-arm null label off the axis
+        label_y = nmean if nmean > 0.06 else 0.055
         ax.text(x + 0.33, label_y, f"null {nmean:.3f}\n(q95 {q95:.3f})", ha="left", va="center",
                 fontsize=cs.FONT_SIZES["data_label"], color=cs.GRAY)
     ax.set_xticks(xs); ax.set_xticklabels(labels)
@@ -149,28 +166,23 @@ def chart_02_gate_arms():
     cs.add_header(fig, "The Beyond-Presence gate collapses under recognition saturation",
                   r"Recall-arm vs recognition-arm $\eta^2$ among above-floor brands, each with its permutation null",
                   r"Recognition carries almost no provider variance ($\eta^2_{C_P}\approx 0$), so the paired gate measures recall asymmetry, not a contrast.")
-    cs.add_footer(fig, verdict=FOOTERS["gatearms"], phase=SOURCE_PHASE, protocol=PROTOCOL)
-    p_ = OUT / "chart_02_gate_arms.pdf"; fig.savefig(p_, **cs.SAVEFIG_PARAMS); plt.close(fig); return p_
+    return _save(fig, "gatearms")
 
 
 # =============================================================================
-def chart_03_provider_ranks():
+def chart_provider_ranks():
     from scipy import stats
     cons = V["H_Provider_Ordinal"]["within_pair_consistency"]
     W = V["H_Provider_Ordinal"]["kendalls_w"]; Wp = V["H_Provider_Ordinal"]["exact_p"]
-    # rank within each substrate (1 = most consistent); average ranks for ties (skincare)
     rankmat = np.array([stats.rankdata([-cons[k][p] for p in PROVS], method="average") for k in OMNI])
 
     fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    # heatmap: rank 1 (best) -> indigo, rank 3 (worst) -> light
     ax.imshow(rankmat, cmap="Purples_r", vmin=1, vmax=3, aspect="auto")
     for i, k in enumerate(OMNI):
         for j, prov in enumerate(PROVS):
             r = rankmat[i, j]
-            txt = f"{r:g}"
-            ax.text(j, i, txt, ha="center", va="center", fontweight="bold",
-                    fontsize=cs.FONT_SIZES["annotation"],
-                    color="white" if r <= 1.5 else cs.BLACK)
+            ax.text(j, i, f"{r:g}", ha="center", va="center", fontweight="bold",
+                    fontsize=cs.FONT_SIZES["annotation"], color="white" if r <= 1.5 else cs.BLACK)
             ax.text(j, i + 0.30, f"{cons[k][prov]:.2f}", ha="center", va="center",
                     fontsize=6.2, color="white" if r <= 1.5 else cs.GRAY)
     ax.set_xticks(range(len(PROVS))); ax.set_xticklabels(PROVS)
@@ -182,11 +194,10 @@ def chart_03_provider_ranks():
     cs.add_header(fig, "Provider consistency ranks are not stably ordered",
                   "Within-pair-consistency provider rank by substrate (1 = most consistent; cell sub-value = consistency)",
                   f"Kendall's W = {W:.2f} against the exact null (p = {Wp:.2f}) — underpowered at five substrates, uninformative about concordance.")
-    cs.add_footer(fig, verdict=FOOTERS["ranks"], phase=SOURCE_PHASE, protocol=PROTOCOL)
-    p_ = OUT / "chart_03_provider_ranks.pdf"; fig.savefig(p_, **cs.SAVEFIG_PARAMS); plt.close(fig); return p_
+    return _save(fig, "ranks")
 
 
 if __name__ == "__main__":
-    OUT.mkdir(parents=True, exist_ok=True)
-    for fn in (chart_01_eta2_null, chart_02_gate_arms, chart_03_provider_ranks):
-        print("wrote:", fn())
+    for _MODE in ("paper", "report"):
+        for fn in (chart_eta2_null, chart_gate_arms, chart_provider_ranks):
+            print(f"[{_MODE}] wrote:", fn())
