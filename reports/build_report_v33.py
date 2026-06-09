@@ -120,7 +120,7 @@ _PATTERN_CHART_MAP = {
     1: "asym",       # P1 provider asymmetry        -> report_fig_01 (eta^2 null)
     2: "gate",       # P2 beyond-presence gate      -> report_fig_02 (gate arms)
     3: "ranks",      # P3 provider rank stability   -> report_fig_03 (rank heatmap)
-    4: None,         # P4 obscurity is mechanical   -> text only
+    4: "phantom",    # P4 obscurity (mechanical)    -> report_fig_04 (report-only)
     5: None,         # P5 read the lens / scope     -> text only
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
@@ -299,6 +299,7 @@ CHART_FIGSIZE_IN = {
     "v33_asym":                   (7.977, 5.100),   # report_fig_01 eta^2 null (574.3x367.2pt)
     "v33_gate":                   (7.125, 5.100),   # report_fig_02 gate arms (513.0x367.2pt)
     "v33_ranks":                  (7.757, 5.100),   # report_fig_03 provider ranks (558.5x367.2pt)
+    "v33_phantom":                (8.460, 5.100),   # report_fig_04 phantom (609.1x367.2pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1110,6 +1111,12 @@ HERO_FIGURE_CAPTIONS = {
         "categories (skincare is a tie at the top); with only five categories, the "
         "pattern cannot be told from noise."
     ),
+    "phantom": (
+        "Obscurity is not a signature. Provider variance in recall consistency plotted "
+        "against how often each brand is recalled; rarely-recalled brands (left of the "
+        "floor) show small provider differences only because they have little recall "
+        "variation to partition — not a property of being obscure."
+    ),
 }
 
 
@@ -1121,6 +1128,7 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         "asym":  ("report_fig_01.pdf", "v33_asym"),
         "gate":  ("report_fig_02.pdf", "v33_gate"),
         "ranks": ("report_fig_03.pdf", "v33_ranks"),
+        "phantom": ("report_fig_04.pdf", "v33_phantom"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1144,10 +1152,8 @@ def build_pattern_unified(pattern: dict, styles: dict,
                 chart_path = None
 
     s: list = []
-    if slot:                  # charted findings (P1-P3) start a fresh page;
-        s.append(PageBreak())  # text-only findings (P4/P5) flow to pack naturally
-    else:
-        s.append(Spacer(1, 18))
+    s.append(PageBreak())   # each finding starts its own page (all four P1-P4 carry a
+                            # figure; P5 scope starts fresh, then the In-summary recap flows)
 
     _head = [Spacer(1, 4)]
     if not pattern.get("no_finding_label"):
@@ -1169,7 +1175,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             h_in = h_in * (_content_w_in / w_in)
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
-        is_hero = slot in ("asym", "gate", "ranks")
+        is_hero = slot in ("asym", "gate", "ranks", "phantom")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
@@ -1470,7 +1476,7 @@ def build(*, debug_layout: bool = False,
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[build_report_v33] chart pre-flight (looking in {chart_dir})")
-    expected_slots = ["asym", "gate", "ranks"]
+    expected_slots = ["asym", "gate", "ranks", "phantom"]
     expected_files = set()
     for sk in expected_slots:
         fname, _ = _slot_lookup(sk)

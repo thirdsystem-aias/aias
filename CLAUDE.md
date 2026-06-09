@@ -136,6 +136,8 @@ The same phase findings are written in **two intentionally divergent registers**
 
 These are **not inconsistent**. They are different registers for different audiences. Do not collapse them into a single artifact, and do not let academic-paper voice leak into report content (or vice versa).
 
+**Figure sets may diverge by register (deliberate).** The report (managerial) is not bound to the paper's pre-registered confirmatory figure set; it may carry an extra *descriptive* figure that visualizes an already-locked tertiary/exploratory verdict, provided the framing stays deflationary and the styling stays neutral (non-green). Example: v0.33 ships 3 figures in the paper (the pre-registered confirmatory set) but 4 in the report — the 4th visualizes the descriptive H_Provider_Phantom verdict ("obscurity is mechanical, not a signature"). Nothing post-hoc or confirmatory is smuggled into the report by doing this.
+
 ---
 
 ## Build pipelines

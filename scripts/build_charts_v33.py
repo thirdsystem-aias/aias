@@ -37,6 +37,7 @@ NAMES = {
     "eta2null": {"paper": "chart_01_eta2_null.pdf",      "report": "report_fig_01.pdf"},
     "gatearms": {"paper": "chart_02_gate_arms.pdf",      "report": "report_fig_02.pdf"},
     "ranks":    {"paper": "chart_03_provider_ranks.pdf", "report": "report_fig_03.pdf"},
+    "phantom":  {"report": "report_fig_04.pdf"},   # report-only (descriptive; not a paper figure)
 }
 FOOTERS = {
     "paper": {
@@ -48,6 +49,8 @@ FOOTERS = {
         "eta2null": "P1 SUPPORTED — provider shapes recall consistency reliably but modestly; a small excess over a high chance floor.",
         "gatearms": "P2 NOT ESTABLISHED — the beyond-recognition test could not be run; recognition is saturated among recalled brands, so the gate measures recall alone.",
         "ranks":    "P3 NOT SUPPORTED — no provider is reliably steadiest; rankings reshuffle and five categories cannot resolve them.",
+        # P4 footer — DRAFT, assembled from the locked P4 content (verdict + qualifier + detail); flagged for register edit.
+        "phantom":  "P4 NOT SUPPORTED — barely-recalled brands show smaller provider differences, but mechanically: little recall to vary means little for providers to differ on. Not a signature of obscurity.",
     },
 }
 _MODE = "paper"   # set in __main__
@@ -197,7 +200,48 @@ def chart_provider_ranks():
     return _save(fig, "ranks")
 
 
+# =============================================================================
+def chart_phantom():
+    """P4 (report-only, descriptive): provider-asymmetry eta^2 vs per-brand recall level.
+    Shows the below-floor/above-floor gap is MECHANICAL — low recall leaves little
+    variation for providers to differ on, so eta^2 is low, not a signature of obscurity."""
+    mean_r = np.array([float(r["mean_r"]) for r in rows])
+    eta = np.array([float(r["eta2_cvcpc"]) for r in rows])
+    below = np.array([r["defined"] != "True" for r in rows])
+    a = V["H_Provider_Phantom"]
+    m_below, m_above = a["mean_eta2_below"], a["mean_eta2_above"]
+
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    ax.scatter(mean_r[below], eta[below], s=34, color=cs.GRAY, alpha=0.75,
+               edgecolor="white", linewidth=0.4, zorder=3,
+               label=f"below recall floor ({int(below.sum())})")
+    ax.scatter(mean_r[~below], eta[~below], s=34, color=cs.INDIGO, alpha=0.8,
+               edgecolor="white", linewidth=0.4, zorder=3,
+               label=f"above floor ({int((~below).sum())})")
+    ax.axvline(1.0, color=cs.WARM, lw=1.1, ls="--", zorder=2)
+    ax.text(1.02, ax.get_ylim()[1] * 0.97, "recall floor (mean r = 1.0)", color=cs.WARM,
+            fontsize=cs.FONT_SIZES["data_label"], va="top", ha="left")
+    # group means as short reference bars
+    ax.plot([0, 1.0], [m_below, m_below], color=cs.GRAY, lw=1.6, zorder=4)
+    ax.text(0.04, m_below + 0.02, f"below-floor mean {m_below:.2f}", color=cs.GRAY,
+            fontsize=cs.FONT_SIZES["annotation"], va="bottom")
+    ax.plot([1.0, mean_r.max()], [m_above, m_above], color=cs.INDIGO, lw=1.6, zorder=4)
+    ax.text(mean_r.max(), m_above + 0.02, f"above-floor mean {m_above:.2f}", color=cs.INDIGO,
+            fontsize=cs.FONT_SIZES["annotation"], va="bottom", ha="right")
+    ax.set_xlabel("mean recall across the six models  (0–6 frames)")
+    ax.set_ylabel(r"provider variance share  $\eta^2$  (CV-CPC)")
+    ax.set_xlim(-0.15, mean_r.max() + 0.2); ax.set_ylim(-0.03, 1.03)
+    ax.legend(loc="upper center", fontsize=cs.FONT_SIZES["legend"])
+    fig.subplots_adjust(**cs.MARGINS["single"])
+    cs.add_header(fig, "Obscurity is mechanical, not a signature",
+                  r"Provider variance share $\eta^2$ against how often each brand is recalled, below vs above the floor",
+                  "Rarely-recalled brands show small provider differences because they have little recall variation to partition — not a distinct property of obscure brands.")
+    return _save(fig, "phantom")
+
+
 if __name__ == "__main__":
     for _MODE in ("paper", "report"):
         for fn in (chart_eta2_null, chart_gate_arms, chart_provider_ranks):
             print(f"[{_MODE}] wrote:", fn())
+        if _MODE == "report":     # P4 figure is report-only (descriptive)
+            print(f"[{_MODE}] wrote:", chart_phantom())
