@@ -1,0 +1,253 @@
+/Users/pablou/aias/scripts/run_acquisition_v34.py:66: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+I0610 10:10:52.402964 1096715 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.406816 1096716 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.409447 1096713 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.411919 1096714 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.442071 1096715 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.444375 1096716 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.445685 1096876 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(13, generation: 1)
+I0610 10:10:52.445717 1096876 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(14, generation: 1)
+I0610 10:10:52.447788 1096714 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.450002 1096713 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:10:52.451626 1096928 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(13, generation: 1)
+I0610 10:10:52.451655 1096928 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(14, generation: 1)
+run_acquisition_v34 — installing SDK provenance tee:
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+
+=== v21: Phase A (racq_v21) ===
+
+--- Phase A: Recognition ---
+  144 probes (6 models × 24 brands)
+  Probe template: 'Is the brand {BRAND} commonly recognized as a cosmetics brand? Answer yes or no.'
+  [  1/144] gemini-2.5-flash-lite     A.1 MAC Cosmetics                    → yes
+  [  2/144] gpt-4o-mini               A.1 MAC Cosmetics                    → yes
+  [  3/144] gpt-4o                    A.1 MAC Cosmetics                    → yes
+  [  4/144] gpt-4o                    A.2 NARS                             → yes
+  [  5/144] gemini-2.5-flash          A.1 MAC Cosmetics                    → yes
+  [  6/144] gpt-4o-mini               A.2 NARS                             → yes
+  [  7/144] gemini-2.5-flash-lite     A.2 NARS                             → yes
+  [  8/144] gemini-2.5-flash          A.2 NARS                             → yes
+  [  9/144] claude-opus-4-5           A.3 Bobbi Brown                      → yes
+  [ 10/144] gpt-4o                    A.3 Bobbi Brown                      → yes
+  [ 11/144] gpt-4o-mini               A.3 Bobbi Brown                      → yes
+  [ 12/144] claude-sonnet-4-5         A.3 Bobbi Brown                      → yes
+  [ 13/144] gemini-2.5-flash-lite     A.3 Bobbi Brown                      → yes
+  [ 14/144] claude-opus-4-5           A.2 NARS                             → yes
+  [ 15/144] claude-opus-4-5           A.1 MAC Cosmetics                    → yes
+  [ 16/144] gemini-2.5-flash          A.3 Bobbi Brown                      → yes
+  [ 17/144] claude-sonnet-4-5         A.2 NARS                             → yes
+  [ 18/144] gpt-4o                    A.4 Tom Ford Beauty                  → yes
+  [ 19/144] gemini-2.5-flash-lite     A.4 Tom Ford Beauty                  → yes
+  [ 20/144] gpt-4o-mini               A.4 Tom Ford Beauty                  → yes
+  [ 21/144] claude-sonnet-4-5         A.1 MAC Cosmetics                    → yes
+  [ 22/144] gpt-4o                    A.5 Giorgio Armani Beauty            → yes
+  [ 23/144] gemini-2.5-flash          A.4 Tom Ford Beauty                  → yes
+  [ 24/144] gpt-4o-mini               A.5 Giorgio Armani Beauty            → yes
+  [ 25/144] claude-sonnet-4-5         A.4 Tom Ford Beauty                  → yes
+  [ 26/144] gemini-2.5-flash-lite     A.5 Giorgio Armani Beauty            → yes
+  [ 27/144] gemini-2.5-flash          A.5 Giorgio Armani Beauty            → yes
+  [ 28/144] claude-opus-4-5           A.6 Hourglass                        → yes
+  [ 29/144] gpt-4o                    A.6 Hourglass                        → yes
+  [ 30/144] gpt-4o-mini               A.6 Hourglass                        → yes
+  [ 31/144] gemini-2.5-flash-lite     A.6 Hourglass                        → yes
+  [ 32/144] claude-opus-4-5           A.4 Tom Ford Beauty                  → yes
+  [ 33/144] claude-sonnet-4-5         A.5 Giorgio Armani Beauty            → yes
+  [ 34/144] gpt-4o                    A.7 Chantecaille                     → yes
+  [ 35/144] claude-opus-4-5           A.5 Giorgio Armani Beauty            → yes
+  [ 36/144] claude-sonnet-4-5         A.7 Chantecaille                     → yes
+  [ 37/144] gemini-2.5-flash-lite     A.7 Chantecaille                     → yes
+  [ 38/144] gemini-2.5-flash          A.6 Hourglass                        → yes
+  [ 39/144] gpt-4o-mini               A.7 Chantecaille                     → yes
+  [ 40/144] gpt-4o                    A.8 Laura Mercier                    → yes
+  [ 41/144] claude-sonnet-4-5         A.6 Hourglass                        → yes
+  [ 42/144] gpt-4o-mini               A.8 Laura Mercier                    → yes
+  [ 43/144] gemini-2.5-flash-lite     A.8 Laura Mercier                    → yes
+  [ 44/144] gemini-2.5-flash          A.7 Chantecaille                     → yes
+  [ 45/144] claude-opus-4-5           A.7 Chantecaille                     → yes
+  [ 46/144] gpt-4o                    B.1 Rare Beauty                      → yes
+  [ 47/144] gemini-2.5-flash          A.8 Laura Mercier                    → yes
+  [ 48/144] claude-sonnet-4-5         B.1 Rare Beauty                      → yes
+  [ 49/144] gpt-4o-mini               B.1 Rare Beauty                      → yes
+  [ 50/144] gemini-2.5-flash-lite     B.1 Rare Beauty                      → yes
+  [ 51/144] claude-opus-4-5           B.1 Rare Beauty                      → yes
+  [ 52/144] claude-opus-4-5           A.8 Laura Mercier                    → yes
+  [ 53/144] gpt-4o                    B.2 Fenty Beauty                     → yes
+  [ 54/144] gpt-4o-mini               B.2 Fenty Beauty                     → yes
+  [ 55/144] gemini-2.5-flash-lite     B.2 Fenty Beauty                     → yes
+  [ 56/144] gemini-2.5-flash          B.1 Rare Beauty                      → yes
+  [ 57/144] claude-sonnet-4-5         A.8 Laura Mercier                    → yes
+  [ 58/144] gemini-2.5-flash          B.2 Fenty Beauty                     → yes
+  [ 59/144] claude-sonnet-4-5         B.2 Fenty Beauty                     → yes
+  [ 60/144] claude-sonnet-4-5         B.3 Haus Labs                        → yes
+  [ 61/144] gpt-4o                    B.3 Haus Labs                        → yes
+  [ 62/144] gpt-4o-mini               B.3 Haus Labs                        → yes
+  [ 63/144] gemini-2.5-flash-lite     B.3 Haus Labs                        → yes
+  [ 64/144] gpt-4o                    B.4 Pat McGrath Labs                 → yes
+  [ 65/144] gpt-4o-mini               B.4 Pat McGrath Labs                 → yes
+  [ 66/144] gemini-2.5-flash          B.3 Haus Labs                        → yes
+  [ 67/144] gemini-2.5-flash-lite     B.4 Pat McGrath Labs                 → yes
+  [ 68/144] gemini-2.5-flash          B.4 Pat McGrath Labs                 → yes
+  [ 69/144] claude-opus-4-5           B.5 Charlotte Tilbury                → yes
+  [ 70/144] gpt-4o                    B.5 Charlotte Tilbury                → yes
+  [ 71/144] claude-opus-4-5           B.2 Fenty Beauty                     → yes
+  [ 72/144] gpt-4o-mini               B.5 Charlotte Tilbury                → yes
+  [ 73/144] gemini-2.5-flash-lite     B.5 Charlotte Tilbury                → yes
+  [ 74/144] gemini-2.5-flash          B.5 Charlotte Tilbury                → yes
+  [ 75/144] claude-opus-4-5           B.4 Pat McGrath Labs                 → yes
+  [ 76/144] claude-opus-4-5           B.3 Haus Labs                        → yes
+  [ 77/144] gpt-4o                    B.6 Huda Beauty                      → yes
+  [ 78/144] gpt-4o-mini               B.6 Huda Beauty                      → yes
+  [ 79/144] claude-sonnet-4-5         B.5 Charlotte Tilbury                → yes
+  [ 80/144] claude-sonnet-4-5         B.4 Pat McGrath Labs                 → yes
+  [ 81/144] gemini-2.5-flash-lite     B.6 Huda Beauty                      → yes
+  [ 82/144] gpt-4o                    B.7 Kylie Cosmetics                  → yes
+  [ 83/144] gemini-2.5-flash          B.6 Huda Beauty                      → yes
+  [ 84/144] claude-sonnet-4-5         B.7 Kylie Cosmetics                  → yes
+  [ 85/144] gpt-4o-mini               B.7 Kylie Cosmetics                  → yes
+  [ 86/144] gemini-2.5-flash-lite     B.7 Kylie Cosmetics                  → yes
+  [ 87/144] gemini-2.5-flash          B.7 Kylie Cosmetics                  → yes
+  [ 88/144] claude-opus-4-5           B.6 Huda Beauty                      → yes
+  [ 89/144] claude-sonnet-4-5         B.8 Anastasia Beverly Hills          → yes
+  [ 90/144] gpt-4o-mini               B.8 Anastasia Beverly Hills          → yes
+  [ 91/144] gpt-4o                    B.8 Anastasia Beverly Hills          → yes
+  [ 92/144] gemini-2.5-flash-lite     B.8 Anastasia Beverly Hills          → yes
+  [ 93/144] gemini-2.5-flash          B.8 Anastasia Beverly Hills          → yes
+  [ 94/144] gpt-4o                    C.1 Maybelline                       → yes
+  [ 95/144] claude-opus-4-5           B.8 Anastasia Beverly Hills          → yes
+  [ 96/144] claude-sonnet-4-5         B.6 Huda Beauty                      → yes
+  [ 97/144] gpt-4o-mini               C.1 Maybelline                       → yes
+  [ 98/144] gemini-2.5-flash-lite     C.1 Maybelline                       → yes
+  [ 99/144] gemini-2.5-flash          C.1 Maybelline                       → yes
+  [100/144] claude-opus-4-5           B.7 Kylie Cosmetics                  → yes
+  [101/144] gpt-4o                    C.2 L'Oréal Paris                    → yes
+  [102/144] claude-opus-4-5           C.1 Maybelline                       → yes
+  [103/144] gpt-4o-mini               C.2 L'Oréal Paris                    → yes
+  [104/144] gemini-2.5-flash-lite     C.2 L'Oréal Paris                    → yes
+  [105/144] gemini-2.5-flash          C.2 L'Oréal Paris                    → yes
+  [106/144] gpt-4o                    C.3 CoverGirl                        → yes
+  [107/144] claude-opus-4-5           C.3 CoverGirl                        → yes
+  [108/144] claude-opus-4-5           C.2 L'Oréal Paris                    → yes
+  [109/144] gemini-2.5-flash-lite     C.3 CoverGirl                        → yes
+  [110/144] gpt-4o-mini               C.3 CoverGirl                        → yes
+  [111/144] claude-sonnet-4-5         C.2 L'Oréal Paris                    → yes
+  [112/144] claude-sonnet-4-5         C.1 Maybelline                       → yes
+  [113/144] gpt-4o-mini               C.4 Revlon                           → yes
+  [114/144] gemini-2.5-flash          C.3 CoverGirl                        → yes
+  [115/144] gpt-4o                    C.4 Revlon                           → yes
+  [116/144] gemini-2.5-flash-lite     C.4 Revlon                           → yes
+  [117/144] claude-opus-4-5           C.4 Revlon                           → yes
+  [118/144] gpt-4o                    C.5 NYX Professional Makeup          → yes
+  [119/144] gemini-2.5-flash          C.4 Revlon                           → yes
+  [120/144] gpt-4o-mini               C.5 NYX Professional Makeup          → yes
+  [121/144] claude-sonnet-4-5         C.5 NYX Professional Makeup          → yes
+  [122/144] gemini-2.5-flash-lite     C.5 NYX Professional Makeup          → yes
+  [123/144] gemini-2.5-flash          C.5 NYX Professional Makeup          → yes
+  [124/144] claude-sonnet-4-5         C.3 CoverGirl                        → yes
+  [125/144] gpt-4o                    C.6 e.l.f. Cosmetics                 → yes
+  [126/144] gpt-4o-mini               C.6 e.l.f. Cosmetics                 → yes
+  [127/144] gemini-2.5-flash-lite     C.6 e.l.f. Cosmetics                 → yes
+  [128/144] gemini-2.5-flash          C.6 e.l.f. Cosmetics                 → yes
+  [129/144] claude-opus-4-5           C.5 NYX Professional Makeup          → yes
+  [130/144] claude-opus-4-5           C.7 Wet n Wild                       → yes
+  [131/144] gpt-4o-mini               C.7 Wet n Wild                       → yes
+  [132/144] gpt-4o                    C.7 Wet n Wild                       → yes
+  [133/144] gemini-2.5-flash-lite     C.7 Wet n Wild                       → yes
+  [134/144] claude-sonnet-4-5         C.7 Wet n Wild                       → yes
+  [135/144] claude-sonnet-4-5         C.4 Revlon                           → yes
+  [136/144] gpt-4o                    C.8 Milani Cosmetics                 → yes
+  [137/144] gemini-2.5-flash          C.7 Wet n Wild                       → yes
+  [138/144] gpt-4o-mini               C.8 Milani Cosmetics                 → yes
+  [139/144] gemini-2.5-flash-lite     C.8 Milani Cosmetics                 → yes
+  [140/144] claude-opus-4-5           C.6 e.l.f. Cosmetics                 → yes
+  [141/144] gemini-2.5-flash          C.8 Milani Cosmetics                 → yes
+  [142/144] claude-sonnet-4-5         C.6 e.l.f. Cosmetics                 → yes
+  [143/144] claude-sonnet-4-5         C.8 Milani Cosmetics                 → yes
+  [144/144] claude-opus-4-5           C.8 Milani Cosmetics                 → yes
+
+  → Phase A results written: /Users/pablou/aias/osf/v34/data/v21/phase_a_results.csv (144 rows)
+
+  Per-brand C_P (Recognition score, 0..6):
+    Cell A (Prestige):
+      1. MAC Cosmetics                     C_P = 6/6
+      2. NARS                              C_P = 6/6
+      3. Bobbi Brown                       C_P = 6/6
+      4. Tom Ford Beauty                   C_P = 6/6
+      5. Giorgio Armani Beauty             C_P = 6/6
+      6. Hourglass                         C_P = 6/6
+      7. Chantecaille                      C_P = 6/6
+      8. Laura Mercier                     C_P = 6/6
+    Cell B (Celebrity DTC / cult):
+      1. Rare Beauty                       C_P = 6/6
+      2. Fenty Beauty                      C_P = 6/6
+      3. Haus Labs                         C_P = 6/6
+      4. Pat McGrath Labs                  C_P = 6/6
+      5. Charlotte Tilbury                 C_P = 6/6
+      6. Huda Beauty                       C_P = 6/6
+      7. Kylie Cosmetics                   C_P = 6/6
+      8. Anastasia Beverly Hills           C_P = 6/6
+    Cell C (Drugstore / mass):
+      1. Maybelline                        C_P = 6/6
+      2. L'Oréal Paris                     C_P = 6/6
+      3. CoverGirl                         C_P = 6/6
+      4. Revlon                            C_P = 6/6
+      5. NYX Professional Makeup           C_P = 6/6
+      6. e.l.f. Cosmetics                  C_P = 6/6
+      7. Wet n Wild                        C_P = 6/6
+      8. Milani Cosmetics                  C_P = 6/6
+=== v21: Phase B (racq_v21) ===
+
+--- Phase B: Six-frame Recall ---
+  36 queries (6 models × 6 frames)
+  Channels: R_cat (q1-q3) + R_cult (q4-q6)
+  [ 1/36] claude-opus-4-5           q1 (R_cat ): # Top Cosmetics Brands  Here are several well-regarded cosmetics brands across d...
+  [ 2/36] gpt-4o                    q1 (R_cat ): There are numerous cosmetics brands that are highly regarded for their quality, ...
+  [ 3/36] gemini-2.5-flash-lite     q1 (R_cat ): Defining the "best" cosmetics brands is subjective, as it depends heavily on ind...
+  [ 4/36] gpt-4o-mini               q1 (R_cat ): Certainly! Here are several of the best cosmetics brands, each known for their q...
+  [ 5/36] gpt-4o                    q2 (R_cat ): Professional makeup artists often recommend a range of brands known for their hi...
+  [ 6/36] claude-sonnet-4-5         q1 (R_cat ): # Top Cosmetics Brands  ## **MAC Cosmetics** Professional-grade makeup known for...
+  [ 7/36] gemini-2.5-flash          q1 (R_cat ): Defining the "best" cosmetics brands is subjective, as it depends on individual ...
+  [ 8/36] claude-sonnet-4-5         q2 (R_cat ): # Professional Makeup Artist Favorites  Here are brands commonly recommended by ...
+  [ 9/36] claude-opus-4-5           q2 (R_cat ): Professional makeup artists frequently recommend these brands:  **High-End/Prest...
+  [10/36] gpt-4o-mini               q2 (R_cat ): Professional makeup artists often recommend a variety of makeup brands based on ...
+  [11/36] gemini-2.5-flash-lite     q2 (R_cat ): Professional makeup artists have a wide range of preferred brands, often based o...
+  [12/36] claude-sonnet-4-5         q3 (R_cat ): # High-Quality Cosmetics Brands  ## Luxury/Premium Tier  **La Mer** - Known for ...
+  [13/36] gemini-2.5-flash          q2 (R_cat ): Professional makeup artists curate their kits with a mix of brands chosen for th...
+  [14/36] gpt-4o                    q3 (R_cat ): The quality and reliability of cosmetics brands can be subjective and often depe...
+  [15/36] gpt-4o-mini               q3 (R_cat ): When it comes to high-quality and reliable cosmetics brands, several stand out d...
+  [16/36] claude-sonnet-4-5         q4 (R_cult): # Popular Cosmetics Brands Right Now  **Luxury/Prestige:** - Fenty Beauty (Rihan...
+  [17/36] gemini-2.5-flash-lite     q3 (R_cat ): Defining "highest quality" and "most reliable" in cosmetics can be subjective, a...
+  [18/36] claude-opus-4-5           q3 (R_cat ): # High-Quality Cosmetics Brands  Here are several well-regarded brands across di...
+  [19/36] gpt-4o                    q4 (R_cult): As of 2023, several cosmetics brands continue to enjoy popularity due to their i...
+  [20/36] claude-opus-4-5           q4 (R_cult): Here are several popular cosmetics brands right now:  **Prestige/High-End:** - C...
+  [21/36] gpt-4o-mini               q4 (R_cult): As of October 2023, several cosmetics brands continue to be popular and well-reg...
+  [22/36] gemini-2.5-flash-lite     q4 (R_cult): It's a dynamic market, and "popular" can mean different things (high sales, soci...
+  [23/36] gemini-2.5-flash          q3 (R_cat ): When it comes to "highest quality" and "most reliable" in cosmetics, several bra...
+  [24/36] claude-opus-4-5           q5 (R_cult): Here are some makeup brands commonly used and promoted by celebrities and influe...
+  [25/36] gpt-4o                    q5 (R_cult): Celebrities and influencers often use a range of makeup brands that vary widely ...
+  [26/36] gemini-2.5-flash          q4 (R_cult): The world of cosmetics is constantly evolving, driven by social media trends (es...
+  [27/36] gemini-2.5-flash-lite     q5 (R_cult): Celebrities and influencers use a wide array of makeup brands, often a mix of hi...
+  [28/36] claude-sonnet-4-5         q5 (R_cult): # Popular Makeup Brands Among Celebrities & Influencers  ## High-End/Luxury Bran...
+  [29/36] gemini-2.5-flash          q5 (R_cult): Celebrities and influencers use a wide range of makeup brands, often mixing high...
+  [30/36] gpt-4o-mini               q5 (R_cult): Celebrities and influencers often collaborate with or promote a variety of makeu...
+  [31/36] claude-opus-4-5           q6 (R_cult): Here are several makeup brands that have developed strong cult followings:  **In...
+  [32/36] gpt-4o                    q6 (R_cult): Several viral and cult-favorite makeup brands have gained significant followings...
+  [33/36] gemini-2.5-flash-lite     q6 (R_cult): The makeup world is constantly buzzing with new trends and cult favorites. Here ...
+  [34/36] gpt-4o-mini               q6 (R_cult): Several viral or cult-favorite makeup brands have gained significant followings ...
+  [35/36] claude-sonnet-4-5         q6 (R_cult): # Viral & Cult-Favorite Makeup Brands  Here are several brands that have gained ...
+  [36/36] gemini-2.5-flash          q6 (R_cult): You're asking about the powerhouses that have really tapped into social media tr...
+
+  → Phase B results written: /Users/pablou/aias/osf/v34/data/v21/phase_b_results.csv (36 responses)
+=== v21: done -> /Users/pablou/aias/osf/v34/data/v21 ===
+
+run_acquisition_v34: complete for ['v21']

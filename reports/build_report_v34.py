@@ -150,7 +150,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
         _rows.append((h["id"], h.get("proposition", ""), _status,
                       _SC_MAP.get(h.get("status_class", ""), "descriptive")))
     content.HYPOTHESIS_SCORING = {
-        "heading": "The five propositions, scored",
+        "heading": "The four propositions, scored",
         "intro": "Each proposition is the managerial reading of a locked result, scored for brand teams rather than reviewers.",
         "rows": _rows,
     }
@@ -178,9 +178,10 @@ if isinstance(content.CLOSING, str):
             "Third System™ (research entity)",
         ],
         "datasets": [
-            "Per-brand CPC: osf.io/ec6wh/v34/data/v34_cpc.csv",
-            "Verdicts: osf.io/ec6wh/v34/v34_cpc_verdicts.json",
-            "Scoring code: osf.io/ec6wh/v34/scripts/score_v0_34.py",
+            "Verdicts: osf.io/ec6wh/v34/v34_verdicts.json",
+            "Two-wave acquisition data: osf.io/ec6wh/v34/data/",
+            "Scoring code: osf.io/ec6wh/v34/scripts/score_v34.py",
+            "Pre-registration: osf.io/ec6wh/v34/prereg/ (tag v0.34-prereg-r1)",
         ],
         "methodology_log": "v0.34 (SSRN pending)",
         "closing_text": content.CLOSING,
@@ -293,13 +294,13 @@ CHART_FIGSIZE_IN = {
     "6_col_v30_phantom_gap":      (7.50, 5.00),
     "hero":                       (7.50, 5.00),
     "hero_short":                 (7.50, 3.50),
-    # v0.34 provider-asymmetry report figures — native dims from report_fig_0*.pdf mediaboxes
+    # v0.34 longitudinal t1->t2 report figures — native dims from report_fig_0*.pdf mediaboxes
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
-    "v34_asym":                   (7.977, 5.100),   # report_fig_01 eta^2 null (574.3x367.2pt)
-    "v34_gate":                   (7.125, 5.100),   # report_fig_02 gate arms (513.0x367.2pt)
-    "v34_ranks":                  (7.757, 5.100),   # report_fig_03 provider ranks (558.5x367.2pt)
-    "v34_phantom":                (8.460, 5.100),   # report_fig_04 phantom (609.1x367.2pt)
+    "v34_asym":                   (8.674, 3.300),   # report_fig_01 CPC t1/t2 stability (624.5x237.6pt)
+    "v34_gate":                   (7.675, 5.100),   # report_fig_02 residual gate saturation (552.6x367.2pt)
+    "v34_ranks":                  (8.561, 3.300),   # report_fig_03 presence stability (616.4x237.6pt)
+    "v34_phantom":                (7.200, 5.100),   # report_fig_04 phantom persistence (518.4x367.2pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1097,25 +1098,27 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 HERO_FIGURE_CAPTIONS = {
     "asym": (
-        "A real fingerprint, faintly pressed. The provider share of recall variation "
-        "sits just past the 95th percentile of its chance distribution — reliably above "
-        "chance across all five categories, but only modestly."
+        "The standings held. Each brand's recall-consistency score at the first wave "
+        "plotted against the second; points hug the diagonal in four of five "
+        "categories. Audiophile headphones (warm) is the lone miss — the smallest, "
+        "most fragmented panel."
     ),
     "gate": (
-        "The question that had no answer. The recall arm carries provider structure; "
-        "the recognition arm carries almost none, because every model recognizes these "
-        "brands — so with nothing to compare against, the gate measures recall alone."
+        "The question recognition wouldn't let us ask. Recall-consistency stability "
+        "before and after accounting for recognition; the two are identical wherever "
+        "recognition is saturated (four categories), so there is nothing to separate. "
+        "Only headphones — where recognition still varies — is informative, and there "
+        "consistency is steadier once recognition is removed."
     ),
     "ranks": (
-        "No provider stands out as steadiest. Consistency ranks reshuffle across "
-        "categories (skincare is a tie at the top); with only five categories, the "
-        "pattern cannot be told from noise."
+        "Recognition held where there was a ranking to hold. Recognition scores "
+        "wave-over-wave; strong wherever brands still differ, but two categories sit at "
+        "a perfect ceiling both waves, leaving nothing to rank."
     ),
     "phantom": (
-        "Obscurity is not a signature. Provider variance in recall consistency plotted "
-        "against how often each brand is recalled; rarely-recalled brands (left of the "
-        "floor) show small provider differences only because they have little recall "
-        "variation to partition — not a property of being obscure."
+        "Invisibility is the stickiest state. The share of brands below the recall "
+        "floor at the first wave that stayed below it at the second — 56 of 57 across "
+        "all five categories, a single mover in cosmetics."
     ),
 }
 
@@ -1346,8 +1349,8 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>Consistency, Category by Category: A Cross-Category Baseline for the "
-        "AIAS Consistency Component (CPC), v0.34</i>. "
+        "<i>The Standings Hold: Longitudinal t1-t2 Stability of AI Brand Recall "
+        "Consistency Across Five Categories (AIAS CPC, v0.34)</i>. "
         "Third System (SSRN pending). thirdsystem.ai/v34"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
@@ -1502,7 +1505,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="Consistency, Category by Category \u2014 AIAS v0.34",
+        title="The Standings Hold \u2014 AIAS CPC Longitudinal t1-t2 Stability (v0.34)",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )

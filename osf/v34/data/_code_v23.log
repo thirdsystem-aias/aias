@@ -1,0 +1,274 @@
+/Users/pablou/aias/scripts/run_acquisition_v34.py:66: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+[v23] locked recognition judge alias: claude-sonnet-4-5
+[v23] judge resolves -> claude-sonnet-4-5-20250929
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+[v23] score_phase_b (deterministic brand mentions; no LLM) ...
+
+  Phase B: 36 records to score
+    Scoring: [1/36] EA-1 → M1 — 4 brands mentioned
+      Elaborations: 4/4
+    Scoring: [2/36] EA-1 → M2 — 6 brands mentioned
+      Elaborations: 6/6
+    Scoring: [3/36] EA-1 → M3 — 3 brands mentioned
+      Elaborations: 3/3
+    Scoring: [4/36] EA-1 → M4 — 3 brands mentioned
+      Elaborations: 2/3
+    Scoring: [5/36] EA-1 → M5 — 1 brands mentioned
+      Elaborations: 1/1
+    Scoring: [6/36] EA-1 → M6 — 3 brands mentioned
+      Elaborations: 0/3
+    Scoring: [7/36] EA-2 → M1 — 3 brands mentioned
+      Elaborations: 3/3
+    Scoring: [8/36] EA-2 → M2 — 4 brands mentioned
+      Elaborations: 4/4
+    Scoring: [9/36] EA-2 → M3 — 2 brands mentioned
+      Elaborations: 2/2
+    Scoring: [10/36] EA-2 → M4 — 4 brands mentioned
+      Elaborations: 4/4
+    Scoring: [11/36] EA-2 → M5 — 0 brands mentioned
+      Elaborations: 0/0
+    Scoring: [12/36] EA-2 → M6 — 1 brands mentioned
+      Elaborations: 0/1
+    Scoring: [13/36] EA-3 → M1 — 4 brands mentioned
+      Elaborations: 3/4
+    Scoring: [14/36] EA-3 → M2 — 5 brands mentioned
+      Elaborations: 5/5
+    Scoring: [15/36] EA-3 → M3 — 8 brands mentioned
+      Elaborations: 8/8
+    Scoring: [16/36] EA-3 → M4 — 6 brands mentioned
+      Elaborations: 5/6
+    Scoring: [17/36] EA-3 → M5 — 0 brands mentioned
+      Elaborations: 0/0
+    Scoring: [18/36] EA-3 → M6 — 7 brands mentioned
+      Elaborations: 2/7
+    Scoring: [19/36] CC-1 → M1 — 2 brands mentioned
+      Elaborations: 1/2
+    Scoring: [20/36] CC-1 → M2 — 2 brands mentioned
+      Elaborations: 2/2
+    Scoring: [21/36] CC-1 → M3 — 1 brands mentioned
+      Elaborations: 0/1
+    Scoring: [22/36] CC-1 → M4 — 0 brands mentioned
+      Elaborations: 0/0
+    Scoring: [23/36] CC-1 → M5 — 0 brands mentioned
+      Elaborations: 0/0
+    Scoring: [24/36] CC-1 → M6 — 5 brands mentioned
+      Elaborations: 1/5
+    Scoring: [25/36] CC-2 → M1 — 2 brands mentioned
+      Elaborations: 2/2
+    Scoring: [26/36] CC-2 → M2 — 3 brands mentioned
+      Elaborations: 3/3
+    Scoring: [27/36] CC-2 → M3 — 6 brands mentioned
+      Elaborations: 6/6
+    Scoring: [28/36] CC-2 → M4 — 4 brands mentioned
+      Elaborations: 4/4
+    Scoring: [29/36] CC-2 → M5 — 3 brands mentioned
+      Elaborations: 3/3
+    Scoring: [30/36] CC-2 → M6 — 1 brands mentioned
+      Elaborations: 1/1
+    Scoring: [31/36] CC-3 → M1 — 1 brands mentioned
+      Elaborations: 1/1
+    Scoring: [32/36] CC-3 → M2 — 3 brands mentioned
+      Elaborations: 2/3
+    Scoring: [33/36] CC-3 → M3 — 3 brands mentioned
+      Elaborations: 3/3
+    Scoring: [34/36] CC-3 → M4 — 1 brands mentioned
+      Elaborations: 1/1
+    Scoring: [35/36] CC-3 → M5 — 1 brands mentioned
+      Elaborations: 1/1
+    Scoring: [36/36] CC-3 → M6 — 1 brands mentioned
+      Elaborations: 0/1
+
+  Phase B scoring complete: 103 total brand mentions across 36 responses
+[v23] score_phase_a (LLM recognition judge -> r_level) ...
+
+  Phase A: 144 records to score
+    Scoring: [1/144] S01 Johnnie Walker → M1 → R3
+    Scoring: [2/144] S01 Johnnie Walker → M2 → R3
+    Scoring: [3/144] S01 Johnnie Walker → M3 → R3
+    Scoring: [4/144] S01 Johnnie Walker → M4 → R3
+    Scoring: [5/144] S01 Johnnie Walker → M5 → R3
+    Scoring: [6/144] S01 Johnnie Walker → M6 → R3
+    Scoring: [7/144] S02 Hennessy → M1 → R3
+    Scoring: [8/144] S02 Hennessy → M2 → R3
+    Scoring: [9/144] S02 Hennessy → M3 → R3
+    Scoring: [10/144] S02 Hennessy → M4 → R3
+    Scoring: [11/144] S02 Hennessy → M5 → R3
+    Scoring: [12/144] S02 Hennessy → M6 → R3
+    Scoring: [13/144] S03 Jack Daniel's → M1 → R3
+    Scoring: [14/144] S03 Jack Daniel's → M2 → R3
+    Scoring: [15/144] S03 Jack Daniel's → M3 → R3
+    Scoring: [16/144] S03 Jack Daniel's → M4 → R3
+    Scoring: [17/144] S03 Jack Daniel's → M5 → R3
+    Scoring: [18/144] S03 Jack Daniel's → M6 → R3
+    Scoring: [19/144] S04 Patrón → M1 → R3
+    Scoring: [20/144] S04 Patrón → M2 → R3
+    Scoring: [21/144] S04 Patrón → M3 → R3
+    Scoring: [22/144] S04 Patrón → M4 → R3
+    Scoring: [23/144] S04 Patrón → M5 → R3
+    Scoring: [24/144] S04 Patrón → M6 → R3
+    ✓ Checkpoint: 24/144
+    Scoring: [25/144] S05 Grey Goose → M1 → R3
+    Scoring: [26/144] S05 Grey Goose → M2 → R3
+    Scoring: [27/144] S05 Grey Goose → M3 → R3
+    Scoring: [28/144] S05 Grey Goose → M4 → R3
+    Scoring: [29/144] S05 Grey Goose → M5 → R3
+    Scoring: [30/144] S05 Grey Goose → M6 → R3
+    Scoring: [31/144] S06 Bacardi → M1 → R3
+    Scoring: [32/144] S06 Bacardi → M2 → R3
+    Scoring: [33/144] S06 Bacardi → M3 → R3
+    Scoring: [34/144] S06 Bacardi → M4 → R3
+    Scoring: [35/144] S06 Bacardi → M5 → R3
+    Scoring: [36/144] S06 Bacardi → M6 → R3
+    Scoring: [37/144] S07 Bombay Sapphire → M1 → R3
+    Scoring: [38/144] S07 Bombay Sapphire → M2 → R3
+    Scoring: [39/144] S07 Bombay Sapphire → M3 → R3
+    Scoring: [40/144] S07 Bombay Sapphire → M4 → R3
+    Scoring: [41/144] S07 Bombay Sapphire → M5 → R3
+    Scoring: [42/144] S07 Bombay Sapphire → M6 → R3
+    Scoring: [43/144] S08 Jameson → M1 → R3
+    Scoring: [44/144] S08 Jameson → M2 → R3
+    Scoring: [45/144] S08 Jameson → M3 → R3
+    Scoring: [46/144] S08 Jameson → M4 → R3
+    Scoring: [47/144] S08 Jameson → M5 → R3
+    Scoring: [48/144] S08 Jameson → M6 → R3
+    ✓ Checkpoint: 48/144
+    Scoring: [49/144] S09 Lagavulin → M1 → R3
+    Scoring: [50/144] S09 Lagavulin → M2 → R3
+    Scoring: [51/144] S09 Lagavulin → M3 → R3
+    Scoring: [52/144] S09 Lagavulin → M4 → R3
+    Scoring: [53/144] S09 Lagavulin → M5 → R3
+    Scoring: [54/144] S09 Lagavulin → M6 → R3
+    Scoring: [55/144] S10 Clase Azul → M1 → R3
+    Scoring: [56/144] S10 Clase Azul → M2 → R3
+    Scoring: [57/144] S10 Clase Azul → M3 → R3
+    Scoring: [58/144] S10 Clase Azul → M4 → R3
+    Scoring: [59/144] S10 Clase Azul → M5 → R3
+    Scoring: [60/144] S10 Clase Azul → M6 → R3
+    Scoring: [61/144] S11 Hendrick's → M1 → R3
+    Scoring: [62/144] S11 Hendrick's → M2 → R3
+    Scoring: [63/144] S11 Hendrick's → M3 → R3
+    Scoring: [64/144] S11 Hendrick's → M4 → R3
+    Scoring: [65/144] S11 Hendrick's → M5 → R3
+    Scoring: [66/144] S11 Hendrick's → M6 → R3
+    Scoring: [67/144] S12 Woodford Reserve → M1 → R3
+    Scoring: [68/144] S12 Woodford Reserve → M2 → R3
+    Scoring: [69/144] S12 Woodford Reserve → M3 → R3
+    Scoring: [70/144] S12 Woodford Reserve → M4 → R3
+    Scoring: [71/144] S12 Woodford Reserve → M5 → R3
+    Scoring: [72/144] S12 Woodford Reserve → M6 → R3
+    ✓ Checkpoint: 72/144
+    Scoring: [73/144] S13 Monkey 47 → M1 → R3
+    Scoring: [74/144] S13 Monkey 47 → M2 → R3
+    Scoring: [75/144] S13 Monkey 47 → M3 → R3
+    Scoring: [76/144] S13 Monkey 47 → M4 → R3
+    Scoring: [77/144] S13 Monkey 47 → M5 → R3
+    Scoring: [78/144] S13 Monkey 47 → M6 → R3
+    Scoring: [79/144] S14 The Balvenie → M1 → R3
+    Scoring: [80/144] S14 The Balvenie → M2 → R3
+    Scoring: [81/144] S14 The Balvenie → M3 → R3
+    Scoring: [82/144] S14 The Balvenie → M4 → R3
+    Scoring: [83/144] S14 The Balvenie → M5 → R3
+    Scoring: [84/144] S14 The Balvenie → M6 → R3
+    Scoring: [85/144] S15 Rémy Martin → M1 → R3
+    Scoring: [86/144] S15 Rémy Martin → M2 → R3
+    Scoring: [87/144] S15 Rémy Martin → M3 → R3
+    Scoring: [88/144] S15 Rémy Martin → M4 → R3
+    Scoring: [89/144] S15 Rémy Martin → M5 → R3
+    Scoring: [90/144] S15 Rémy Martin → M6 → R3
+    Scoring: [91/144] S16 Casamigos → M1 → R3
+    Scoring: [92/144] S16 Casamigos → M2 → R3
+    Scoring: [93/144] S16 Casamigos → M3 → R3
+    Scoring: [94/144] S16 Casamigos → M4 → R3
+    Scoring: [95/144] S16 Casamigos → M5 → R3
+    Scoring: [96/144] S16 Casamigos → M6 → R3
+    ✓ Checkpoint: 96/144
+    Scoring: [97/144] S17 Fortaleza → M1 → R3
+    Scoring: [98/144] S17 Fortaleza → M2 → R3
+    Scoring: [99/144] S17 Fortaleza → M3 → R3
+    Scoring: [100/144] S17 Fortaleza → M4 → R3
+    Scoring: [101/144] S17 Fortaleza → M5 → R3
+    Scoring: [102/144] S17 Fortaleza → M6 → R3
+    Scoring: [103/144] S18 Compass Box → M1 → R3
+    Scoring: [104/144] S18 Compass Box → M2 → R3
+    Scoring: [105/144] S18 Compass Box → M3 → R3
+    Scoring: [106/144] S18 Compass Box → M4 → R3
+    Scoring: [107/144] S18 Compass Box → M5 → R3
+    Scoring: [108/144] S18 Compass Box → M6 → R3
+    Scoring: [109/144] S19 Nikka → M1 → R3
+    Scoring: [110/144] S19 Nikka → M2 → R3
+    Scoring: [111/144] S19 Nikka → M3 → R3
+    Scoring: [112/144] S19 Nikka → M4 → R3
+    Scoring: [113/144] S19 Nikka → M5 → R3
+    Scoring: [114/144] S19 Nikka → M6 → R3
+    Scoring: [115/144] S20 Del Maguey → M1 → R3
+    Scoring: [116/144] S20 Del Maguey → M2 → R3
+    Scoring: [117/144] S20 Del Maguey → M3 → R3
+    Scoring: [118/144] S20 Del Maguey → M4 → R3
+    Scoring: [119/144] S20 Del Maguey → M5 → R3
+    Scoring: [120/144] S20 Del Maguey → M6      Judge error: Connection error.
+ → R_ERR
+    ✓ Checkpoint: 120/144
+    Scoring: [121/144] S21 Fernet-Branca → M1      Judge error: Connection error.
+ → R_ERR
+    Scoring: [122/144] S21 Fernet-Branca → M2      Judge error: Connection error.
+ → R_ERR
+    Scoring: [123/144] S21 Fernet-Branca → M3      Judge error: Connection error.
+ → R_ERR
+    Scoring: [124/144] S21 Fernet-Branca → M4      Judge error: Connection error.
+ → R_ERR
+    Scoring: [125/144] S21 Fernet-Branca → M5      Judge error: Connection error.
+ → R_ERR
+    Scoring: [126/144] S21 Fernet-Branca → M6      Judge error: Connection error.
+ → R_ERR
+    Scoring: [127/144] S22 Redbreast → M1      Judge error: Connection error.
+ → R_ERR
+    Scoring: [128/144] S22 Redbreast → M2      Judge error: Connection error.
+ → R_ERR
+    Scoring: [129/144] S22 Redbreast → M3      Judge error: Connection error.
+ → R_ERR
+    Scoring: [130/144] S22 Redbreast → M4      Judge error: Connection error.
+ → R_ERR
+    Scoring: [131/144] S22 Redbreast → M5      Judge error: Connection error.
+ → R_ERR
+    Scoring: [132/144] S22 Redbreast → M6      Judge error: Connection error.
+ → R_ERR
+    Scoring: [133/144] S23 St. George Spirits → M1      Judge error: Connection error.
+ → R_ERR
+    Scoring: [134/144] S23 St. George Spirits → M2      Judge error: Connection error.
+ → R_ERR
+    Scoring: [135/144] S23 St. George Spirits → M3      Judge error: Connection error.
+ → R_ERR
+    Scoring: [136/144] S23 St. George Spirits → M4      Judge error: Connection error.
+ → R_ERR
+    Scoring: [137/144] S23 St. George Spirits → M5      Judge error: Connection error.
+ → R_ERR
+    Scoring: [138/144] S23 St. George Spirits → M6      Judge error: Connection error.
+ → R_ERR
+    Scoring: [139/144] S24 Mezcal Vago → M1      Judge error: Connection error.
+ → R_ERR
+    Scoring: [140/144] S24 Mezcal Vago → M2      Judge error: Connection error.
+ → R_ERR
+    Scoring: [141/144] S24 Mezcal Vago → M3      Judge error: Connection error.
+ → R_ERR
+    Scoring: [142/144] S24 Mezcal Vago → M4      Judge error: Connection error.
+ → R_ERR
+    Scoring: [143/144] S24 Mezcal Vago → M5      Judge error: Connection error.
+ → R_ERR
+    Scoring: [144/144] S24 Mezcal Vago → M6      Judge error: Connection error.
+ → R_ERR
+    ✓ Checkpoint: 144/144
+
+  Phase A scoring complete: {'R3': 119, 'R_ERR': 25}
+[v23] coded -> /Users/pablou/aias/osf/v34/data/v23/v23_phase_{a,b}_scored.json  (judge calls in sidecar, phase=A_judge)
+v34_code_t2: done

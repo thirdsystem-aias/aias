@@ -1,0 +1,309 @@
+/Users/pablou/aias/scripts/run_acquisition_v34.py:66: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+I0610 10:14:39.996507 1099528 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+F0610 10:14:40.000214 1099560 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+I0610 10:14:40.001056 1099531 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+F0610 10:14:40.003561 1099585 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+I0610 10:14:40.004235 1099529 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:14:40.006860 1099530 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+F0610 10:14:40.007512 1099606 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+*** Check failure stack trace: ***
+    @        0x10e9f32c4  absl::lts_20250512::log_internal::LogMessage::Flush()
+    @        0x10ec4a510  grpc_event_engine::experimental::AresResolver::~AresResolver()
+    @        0x10e69e8ac  grpc_event_engine::experimental::AresResolver::~AresResolver()
+    @        0x10e69e8bc  grpc_event_engine::experimental::AresResolver::~AresResolver()
+    @        0x10e69e998  grpc_event_engine::experimental::AresResolver::Orphan()
+    @        0x10e6bfe90  grpc_event_engine::experimental::PosixEventEngine::PosixDNSResolver::~PosixDNSResolver()
+    @        0x10e7bc184  grpc_core::(anonymous namespace)::EventEngineClientChannelDNSResolver::EventEngineDNSRequestWrapper::Orphan()
+    @        0x10e7c6e3c  grpc_core::PollingResolver::OnRequestCompleteLocked()
+    @        0x10e7c7868  absl::lts_20250512::internal_any_invocable::RemoteInvoker<>()
+    @        0x10e85b3ec  grpc_core::WorkSerializer::WorkSerializerImpl::Run()
+    @        0x10e6d4690  grpc_event_engine::experimental::WorkStealingThreadPool::ThreadState::Step()
+    @        0x10e6d4244  grpc_event_engine::experimental::WorkStealingThreadPool::ThreadState::ThreadBody()
+    @        0x10e6d4aa0  grpc_event_engine::experimental::WorkStealingThreadPool::WorkStealingThreadPoolImpl::StartThread()::$_0::__invoke()
+    @        0x10e8500f8  grpc_core::(anonymous namespace)::ThreadInternalsPosix::ThreadInternalsPosix()::{lambda()#1}::__invoke()
+    @        0x18da2ad38  _pthread_start
+    @        0x18da25cd0  thread_start
+F0610 10:14:40.009527 1099625 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+I0610 10:14:40.046232 1099530 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+F0610 10:14:40.049185 1099667 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+I0610 10:14:40.049253 1099531 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:15:42.637975 1099529 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:15:42.715507 1099528 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:15:42.718130 1101491 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(15, generation: 1)
+I0610 10:15:42.718191 1101491 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(14, generation: 1)
+run_acquisition_v34 — installing SDK provenance tee:
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+
+=== v22: Phase A ===
+AIAS v0.22 acquisition runner
+  Pre-reg:     /Users/pablou/aias/prereg/v0_22_automotive_content.py
+  Phase:       v0.22
+  Substrate:   Automotive
+  Lock state:  v0.22-prereg-r2
+  Panel:       6-slot
+  Brands:      24 (4 cells: A/B/C/D)
+  Output:      /Users/pablou/aias/osf/v34/data/v22
+
+--- Phase A: Recognition ---
+  144 probes (6 models × 24 brands)
+  Probe template: 'Is the brand {BRAND} commonly recognized as a car brand? Answer yes or no.'
+  [  1/144] gemini-2.5-flash-lite     A.1 Mercedes-Benz                    → yes
+  [  2/144] gpt-4o-mini               A.1 Mercedes-Benz                    → yes
+  [  3/144] gpt-4o                    A.1 Mercedes-Benz                    → yes
+  [  4/144] gpt-4o                    A.2 Jaguar                           → yes
+  [  5/144] claude-sonnet-4-5         A.1 Mercedes-Benz                    → yes
+  [  6/144] gemini-2.5-flash          A.1 Mercedes-Benz                    → yes
+  [  7/144] gpt-4o-mini               A.2 Jaguar                           → yes
+  [  8/144] claude-opus-4-5           A.2 Jaguar                           → yes
+  [  9/144] gemini-2.5-flash-lite     A.2 Jaguar                           → yes
+  [ 10/144] claude-sonnet-4-5         A.2 Jaguar                           → yes
+  [ 11/144] gemini-2.5-flash          A.2 Jaguar                           → yes
+  [ 12/144] gpt-4o                    A.3 Cadillac                         → yes
+  [ 13/144] gpt-4o-mini               A.3 Cadillac                         → yes
+  [ 14/144] gemini-2.5-flash-lite     A.3 Cadillac                         → yes
+  [ 15/144] claude-opus-4-5           A.3 Cadillac                         → yes
+  [ 16/144] gemini-2.5-flash          A.3 Cadillac                         → yes
+  [ 17/144] gpt-4o                    A.4 Rolls-Royce                      → yes
+  [ 18/144] gpt-4o-mini               A.4 Rolls-Royce                      → yes
+  [ 19/144] claude-sonnet-4-5         A.4 Rolls-Royce                      → yes
+  [ 20/144] gemini-2.5-flash-lite     A.4 Rolls-Royce                      → yes
+  [ 21/144] gemini-2.5-flash          A.4 Rolls-Royce                      → yes
+  [ 22/144] claude-sonnet-4-5         A.3 Cadillac                         → yes
+  [ 23/144] claude-opus-4-5           A.1 Mercedes-Benz                    → yes
+  [ 24/144] gpt-4o                    A.5 Bentley                          → yes
+  [ 25/144] claude-sonnet-4-5         A.5 Bentley                          → yes
+  [ 26/144] gemini-2.5-flash-lite     A.5 Bentley                          → yes
+  [ 27/144] gpt-4o-mini               A.5 Bentley                          → yes
+  [ 28/144] gpt-4o                    A.6 Porsche                          → yes
+  [ 29/144] claude-sonnet-4-5         A.6 Porsche                          → yes
+  [ 30/144] claude-opus-4-5           A.4 Rolls-Royce                      → yes
+  [ 31/144] claude-opus-4-5           A.6 Porsche                          → yes
+  [ 32/144] gemini-2.5-flash          A.5 Bentley                          → yes
+  [ 33/144] gpt-4o-mini               A.6 Porsche                          → yes
+  [ 34/144] gemini-2.5-flash-lite     A.6 Porsche                          → yes
+  [ 35/144] gpt-4o-mini               A.7 BMW                              → yes
+  [ 36/144] gemini-2.5-flash          A.6 Porsche                          → yes
+  [ 37/144] gemini-2.5-flash-lite     A.7 BMW                              → yes
+  [ 38/144] gemini-2.5-flash          A.7 BMW                              → yes
+  [ 39/144] gpt-4o                    A.7 BMW                              → yes
+  [ 40/144] gpt-4o                    B.1 Tesla                            → yes
+  [ 41/144] claude-opus-4-5           B.1 Tesla                            → yes
+  [ 42/144] gpt-4o-mini               B.1 Tesla                            → yes
+  [ 43/144] gemini-2.5-flash-lite     B.1 Tesla                            → yes
+  [ 44/144] gemini-2.5-flash          B.1 Tesla                            → yes
+  [ 45/144] claude-opus-4-5           A.7 BMW                              → yes
+  [ 46/144] claude-opus-4-5           A.5 Bentley                          → yes
+  [ 47/144] gpt-4o-mini               B.2 Rivian                           → yes
+  [ 48/144] gpt-4o                    B.2 Rivian                           → yes
+  [ 49/144] gemini-2.5-flash-lite     B.2 Rivian                           → yes
+  [ 50/144] claude-sonnet-4-5         B.2 Rivian                           → yes
+  [ 51/144] claude-sonnet-4-5         A.7 BMW                              → yes
+  [ 52/144] gpt-4o                    B.3 Lucid                            → yes
+  [ 53/144] claude-sonnet-4-5         B.1 Tesla                            → yes
+  [ 54/144] gpt-4o-mini               B.3 Lucid                            → yes
+  [ 55/144] claude-opus-4-5           B.3 Lucid                            → yes
+  [ 56/144] gemini-2.5-flash          B.2 Rivian                           → yes
+  [ 57/144] gemini-2.5-flash-lite     B.3 Lucid                            → yes
+  [ 58/144] claude-opus-4-5           B.2 Rivian                           → yes
+  [ 59/144] gpt-4o-mini               B.4 Polestar                         → yes
+  [ 60/144] gpt-4o                    B.4 Polestar                         → yes
+  [ 61/144] claude-sonnet-4-5         B.4 Polestar                         → yes
+  [ 62/144] gemini-2.5-flash-lite     B.4 Polestar                         → yes
+  [ 63/144] claude-opus-4-5           B.4 Polestar                         → yes
+  [ 64/144] gemini-2.5-flash          B.3 Lucid                            → yes
+  [ 65/144] gpt-4o                    B.5 Fisker                           → yes
+  [ 66/144] gpt-4o-mini               B.5 Fisker                           → yes
+  [ 67/144] gemini-2.5-flash-lite     B.5 Fisker                           → yes
+  [ 68/144] gemini-2.5-flash          B.4 Polestar                         → yes
+  [ 69/144] claude-sonnet-4-5         C.1 Toyota                           → yes
+  [ 70/144] gpt-4o                    C.1 Toyota                           → yes
+  [ 71/144] claude-sonnet-4-5         B.3 Lucid                            → yes
+  [ 72/144] gpt-4o-mini               C.1 Toyota                           → yes
+  [ 73/144] gemini-2.5-flash          B.5 Fisker                           → yes
+  [ 74/144] gemini-2.5-flash-lite     C.1 Toyota                           → yes
+  [ 75/144] gemini-2.5-flash          C.1 Toyota                           → yes
+  [ 76/144] claude-opus-4-5           C.1 Toyota                           → yes
+  [ 77/144] claude-opus-4-5           C.2 Honda                            → yes
+  [ 78/144] gpt-4o-mini               C.2 Honda                            → yes
+  [ 79/144] gpt-4o                    C.2 Honda                            → yes
+  [ 80/144] gemini-2.5-flash-lite     C.2 Honda                            → yes
+  [ 81/144] gemini-2.5-flash          C.2 Honda                            → yes
+  [ 82/144] claude-sonnet-4-5         B.5 Fisker                           → no
+  [ 83/144] claude-opus-4-5           B.5 Fisker                           → yes
+  [ 84/144] gpt-4o                    C.3 Ford                             → yes
+  [ 85/144] claude-opus-4-5           C.3 Ford                             → yes
+  [ 86/144] gpt-4o-mini               C.3 Ford                             → yes
+  [ 87/144] gemini-2.5-flash-lite     C.3 Ford                             → yes
+  [ 88/144] gpt-4o                    C.4 Chevrolet                        → yes
+  [ 89/144] gemini-2.5-flash          C.3 Ford                             → yes
+  [ 90/144] gpt-4o-mini               C.4 Chevrolet                        → yes
+  [ 91/144] gemini-2.5-flash-lite     C.4 Chevrolet                        → yes
+  [ 92/144] gemini-2.5-flash          C.4 Chevrolet                        → yes
+  [ 93/144] claude-sonnet-4-5         C.2 Honda                            → yes
+  [ 94/144] gpt-4o                    C.5 Hyundai                          → yes
+  [ 95/144] gpt-4o-mini               C.5 Hyundai                          → yes
+  [ 96/144] claude-sonnet-4-5         C.3 Ford                             → yes
+  [ 97/144] gemini-2.5-flash-lite     C.5 Hyundai                          → yes
+  [ 98/144] claude-opus-4-5           C.4 Chevrolet                        → yes
+  [ 99/144] gemini-2.5-flash          C.5 Hyundai                          → yes
+  [100/144] claude-sonnet-4-5         C.4 Chevrolet                        → yes
+  [101/144] gpt-4o                    C.6 Volkswagen                       → yes
+  [102/144] claude-sonnet-4-5         C.5 Hyundai                          → yes
+  [103/144] gemini-2.5-flash-lite     C.6 Volkswagen                       → yes
+  [104/144] gpt-4o-mini               C.6 Volkswagen                       → yes
+  [105/144] gemini-2.5-flash          C.6 Volkswagen                       → yes
+  [106/144] gpt-4o                    C.7 Nissan                           → yes
+  [107/144] gpt-4o-mini               C.7 Nissan                           → yes
+  [108/144] claude-opus-4-5           C.5 Hyundai                          → yes
+  [109/144] gemini-2.5-flash-lite     C.7 Nissan                           → yes
+  [110/144] gemini-2.5-flash          C.7 Nissan                           → yes
+  [111/144] claude-sonnet-4-5         C.6 Volkswagen                       → yes
+  [112/144] gpt-4o                    D.1 Pontiac                          → yes
+  [113/144] claude-sonnet-4-5         C.7 Nissan                           → yes
+  [114/144] gpt-4o-mini               D.1 Pontiac                          → yes
+  [115/144] gemini-2.5-flash-lite     D.1 Pontiac                          → yes
+  [116/144] claude-opus-4-5           C.6 Volkswagen                       → yes
+  [117/144] claude-opus-4-5           C.7 Nissan                           → yes
+  [118/144] gemini-2.5-flash          D.1 Pontiac                          → yes
+  [119/144] gpt-4o                    D.2 Oldsmobile                       → yes
+  [120/144] claude-sonnet-4-5         D.1 Pontiac                          → yes
+  [121/144] claude-opus-4-5           D.1 Pontiac                          → yes
+  [122/144] gemini-2.5-flash-lite     D.2 Oldsmobile                       → yes
+  [123/144] claude-sonnet-4-5         D.2 Oldsmobile                       → yes
+  [124/144] gpt-4o                    D.3 Plymouth                         → yes
+  [125/144] gpt-4o-mini               D.2 Oldsmobile                       → yes
+  [126/144] gpt-4o-mini               D.3 Plymouth                         → yes
+  [127/144] gemini-2.5-flash          D.2 Oldsmobile                       → yes
+  [128/144] gemini-2.5-flash-lite     D.3 Plymouth                         → yes
+  [129/144] claude-sonnet-4-5         D.4 Mercury                          → yes
+  [130/144] gpt-4o                    D.4 Mercury                          → yes
+  [131/144] gemini-2.5-flash          D.3 Plymouth                         → yes
+  [132/144] gpt-4o-mini               D.4 Mercury                          → yes
+  [133/144] gemini-2.5-flash-lite     D.4 Mercury                          → yes
+  [134/144] claude-sonnet-4-5         D.3 Plymouth                         → yes
+  [135/144] claude-opus-4-5           D.2 Oldsmobile                       → yes
+  [136/144] gemini-2.5-flash          D.4 Mercury                          → yes
+  [137/144] claude-opus-4-5           D.3 Plymouth                         → yes
+  [138/144] gpt-4o                    D.5 Saturn                           → yes
+  [139/144] gemini-2.5-flash-lite     D.5 Saturn                           → yes
+  [140/144] gpt-4o-mini               D.5 Saturn                           → yes
+  [141/144] gemini-2.5-flash          D.5 Saturn                           → yes
+  [142/144] claude-opus-4-5           D.4 Mercury                          → yes
+  [143/144] claude-opus-4-5           D.5 Saturn                           → yes
+  [144/144] claude-sonnet-4-5         D.5 Saturn                           → yes
+
+  → Phase A results written: /Users/pablou/aias/osf/v34/data/v22/phase_a_results.csv (144 rows)
+
+  Per-brand C_P (Recognition score, 0..6):
+    Cell A (Heritage):
+      1. Mercedes-Benz                     C_P = 6/6
+      2. Jaguar                            C_P = 6/6
+      3. Cadillac                          C_P = 6/6
+      4. Rolls-Royce                       C_P = 6/6
+      5. Bentley                           C_P = 6/6
+      6. Porsche                           C_P = 6/6
+      7. BMW                               C_P = 6/6
+    Cell B (Disruptor):
+      1. Tesla                             C_P = 6/6
+      2. Rivian                            C_P = 6/6
+      3. Lucid                             C_P = 6/6
+      4. Polestar                          C_P = 6/6
+      5. Fisker                            C_P = 5/6
+    Cell C (Mass-Legacy):
+      1. Toyota                            C_P = 6/6
+      2. Honda                             C_P = 6/6
+      3. Ford                              C_P = 6/6
+      4. Chevrolet                         C_P = 6/6
+      5. Hyundai                           C_P = 6/6
+      6. Volkswagen                        C_P = 6/6
+      7. Nissan                            C_P = 6/6
+    Cell D (Defunct):
+      1. Pontiac                           C_P = 6/6
+      2. Oldsmobile                        C_P = 6/6
+      3. Plymouth                          C_P = 6/6
+      4. Mercury                           C_P = 6/6
+      5. Saturn                            C_P = 6/6
+
+✓ Acquisition complete.
+
+  Next steps:
+    cd ~/aias
+    git add osf/v22/phase_a_results.csv osf/v22/phase_b_results.csv
+    git commit -m 'acquisition: v0.22 — Phase A + Phase B raw results'
+    git tag v0.22-acquisition-locked
+    python ~/aias/scripts/score_v22.py
+
+=== v22: Phase B ===
+AIAS v0.22 acquisition runner
+  Pre-reg:     /Users/pablou/aias/prereg/v0_22_automotive_content.py
+  Phase:       v0.22
+  Substrate:   Automotive
+  Lock state:  v0.22-prereg-r2
+  Panel:       6-slot
+  Brands:      24 (4 cells: A/B/C/D)
+  Output:      /Users/pablou/aias/osf/v34/data/v22
+
+--- Phase B: Six-frame Recall ---
+  36 queries (6 models × 6 frames)
+  Channels: R_cat (q1-q3) + R_cult (q4-q6)
+  [ 1/36] gemini-2.5-flash-lite     q1 (R_cat ): Determining the "best" car brands is subjective and depends heavily on individua...
+  [ 2/36] gpt-4o-mini               q1 (R_cat ): The "best" car brands can vary based on criteria such as reliability, performanc...
+  [ 3/36] gpt-4o                    q1 (R_cat ): The "best" car brands can vary depending on criteria such as reliability, perfor...
+  [ 4/36] gpt-4o                    q2 (R_cat ): Automotive experts and reviewers often recommend several car brands known for th...
+  [ 5/36] gemini-2.5-flash          q1 (R_cat ): Defining the "best" car brand is highly subjective, as it depends entirely on an...
+  [ 6/36] claude-opus-4-5           q1 (R_cat ): # Top Car Brands  Here are several well-regarded car brands, each with distinct ...
+  [ 7/36] claude-sonnet-4-5         q2 (R_cat ): # Commonly Recommended Car Brands by Automotive Experts  Based on reviews from m...
+  [ 8/36] gpt-4o-mini               q2 (R_cat ): Automotive experts and reviewers often recommend several car brands based on rel...
+  [ 9/36] gemini-2.5-flash-lite     q2 (R_cat ): Automotive experts and reviewers have a wide range of preferences and what they ...
+  [10/36] claude-sonnet-4-5         q1 (R_cat ): # Best Car Brands  Here are several top-tier automotive brands known for differe...
+  [11/36] claude-opus-4-5           q2 (R_cat ): Automotive experts and reviewers frequently recommend several brands, though opi...
+  [12/36] gpt-4o                    q3 (R_cat ): Determining the highest quality and most reliable car brands can depend on vario...
+  [13/36] gemini-2.5-flash          q2 (R_cat ): Automotive experts and reviewers tend to recommend brands that consistently exce...
+  [14/36] gemini-2.5-flash-lite     q3 (R_cat ): When it comes to car brands known for their high quality and exceptional reliabi...
+  [15/36] claude-opus-4-5           q3 (R_cat ): Here are several car brands known for high quality and reliability:  **Toyota** ...
+  [16/36] claude-sonnet-4-5         q3 (R_cat ): # Highest Quality and Most Reliable Car Brands  ## **Lexus** Toyota's luxury div...
+  [17/36] gpt-4o-mini               q3 (R_cat ): Several car brands are consistently recognized for their high quality and reliab...
+  [18/36] gemini-2.5-flash          q3 (R_cat ): When talking about "highest quality" and "most reliable" car brands, it's import...
+  [19/36] gpt-4o                    q4 (R_cult): Several car brands are renowned for their deep heritage, prestige, and a strong ...
+  [20/36] gpt-4o-mini               q4 (R_cult): Several car brands are renowned for their deep heritage, prestige, and legacy. H...
+  [21/36] claude-opus-4-5           q4 (R_cult): Here are several car brands known for deep heritage, prestige, or legacy:  **Eur...
+  [22/36] claude-sonnet-4-5         q4 (R_cult): # Car Brands with Deep Heritage and Prestige  **European Luxury:** - **Rolls-Roy...
+  [23/36] gemini-2.5-flash-lite     q4 (R_cult): You're looking for car brands that aren't just about getting from point A to poi...
+  [24/36] claude-opus-4-5           q5 (R_cult): Affluent and status-conscious buyers often gravitate toward these brands:  **Lux...
+  [25/36] gpt-4o-mini               q5 (R_cult): Affluent or status-conscious buyers often gravitate toward luxury and high-end c...
+  [26/36] gpt-4o                    q5 (R_cult): Affluent or status-conscious buyers often gravitate towards brands that are syno...
+  [27/36] claude-sonnet-4-5         q5 (R_cult): # Premium Car Brands for Affluent Buyers  Status-conscious and affluent buyers t...
+  [28/36] gemini-2.5-flash          q4 (R_cult): When we talk about deep heritage, prestige, and a sense of legacy in the automot...
+  [29/36] gemini-2.5-flash-lite     q5 (R_cult): Affluent and status-conscious buyers often gravitate towards brands that are per...
+  [30/36] gemini-2.5-flash          q5 (R_cult): Affluent and status-conscious buyers often choose car brands that signify luxury...
+  [31/36] gpt-4o                    q6 (R_cult): Several car brands have developed iconic and storied identities in popular cultu...
+  [32/36] claude-opus-4-5           q6 (R_cult): Here are several car brands with particularly iconic cultural identities:  **Fer...
+  [33/36] gpt-4o-mini               q6 (R_cult): Several car brands have developed iconic identities within popular culture, ofte...
+  [34/36] claude-sonnet-4-5         q6 (R_cult): # Car Brands with Iconic Cultural Identities  ## **Ferrari** The ultimate symbol...
+  [35/36] gemini-2.5-flash-lite     q6 (R_cult): Several car brands have transcended their functional purpose to become deeply em...
+  [36/36] gemini-2.5-flash          q6 (R_cult): Many car brands transcend their function as mere transportation to become deeply...
+
+  → Phase B results written: /Users/pablou/aias/osf/v34/data/v22/phase_b_results.csv (36 responses)
+
+✓ Acquisition complete.
+
+  Next steps:
+    cd ~/aias
+    git add osf/v22/phase_a_results.csv osf/v22/phase_b_results.csv
+    git commit -m 'acquisition: v0.22 — Phase A + Phase B raw results'
+    git tag v0.22-acquisition-locked
+    python ~/aias/scripts/score_v22.py
+=== v22: done -> /Users/pablou/aias/osf/v34/data/v22 ===
+
+run_acquisition_v34: complete for ['v22']

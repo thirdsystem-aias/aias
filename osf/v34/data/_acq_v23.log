@@ -1,0 +1,229 @@
+/Users/pablou/aias/scripts/run_acquisition_v34.py:66: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+run_acquisition_v34 — installing SDK provenance tee:
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+
+=== v23: Phase A ===
+
+============================================================
+PHASE A — Recognition (24 brands × 6 models = 144 probes)
+============================================================
+  Sending: [Phase A 1/144] S01 Johnnie Walker → M1 Claude Opus 4.5
+  Sending: [Phase A 2/144] S01 Johnnie Walker → M2 Claude Sonnet 4.5
+  Sending: [Phase A 3/144] S01 Johnnie Walker → M3 GPT-4o
+  Sending: [Phase A 4/144] S01 Johnnie Walker → M4 GPT-4o-mini
+  Sending: [Phase A 5/144] S01 Johnnie Walker → M5 Gemini 2.5 Flash
+  Sending: [Phase A 6/144] S01 Johnnie Walker → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 7/144] S02 Hennessy → M1 Claude Opus 4.5
+  Sending: [Phase A 8/144] S02 Hennessy → M2 Claude Sonnet 4.5
+  Sending: [Phase A 9/144] S02 Hennessy → M3 GPT-4o
+  Sending: [Phase A 10/144] S02 Hennessy → M4 GPT-4o-mini
+  Sending: [Phase A 11/144] S02 Hennessy → M5 Gemini 2.5 Flash
+  Sending: [Phase A 12/144] S02 Hennessy → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 12/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 13/144] S03 Jack Daniel's → M1 Claude Opus 4.5
+  Sending: [Phase A 14/144] S03 Jack Daniel's → M2 Claude Sonnet 4.5
+  Sending: [Phase A 15/144] S03 Jack Daniel's → M3 GPT-4o
+  Sending: [Phase A 16/144] S03 Jack Daniel's → M4 GPT-4o-mini
+  Sending: [Phase A 17/144] S03 Jack Daniel's → M5 Gemini 2.5 Flash
+  Sending: [Phase A 18/144] S03 Jack Daniel's → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 19/144] S04 Patrón → M1 Claude Opus 4.5
+  Sending: [Phase A 20/144] S04 Patrón → M2 Claude Sonnet 4.5
+  Sending: [Phase A 21/144] S04 Patrón → M3 GPT-4o
+  Sending: [Phase A 22/144] S04 Patrón → M4 GPT-4o-mini
+  Sending: [Phase A 23/144] S04 Patrón → M5 Gemini 2.5 Flash
+  Sending: [Phase A 24/144] S04 Patrón → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 24/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 25/144] S05 Grey Goose → M1 Claude Opus 4.5
+  Sending: [Phase A 26/144] S05 Grey Goose → M2 Claude Sonnet 4.5
+  Sending: [Phase A 27/144] S05 Grey Goose → M3 GPT-4o
+  Sending: [Phase A 28/144] S05 Grey Goose → M4 GPT-4o-mini
+  Sending: [Phase A 29/144] S05 Grey Goose → M5 Gemini 2.5 Flash
+  Sending: [Phase A 30/144] S05 Grey Goose → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 31/144] S06 Bacardi → M1 Claude Opus 4.5
+  Sending: [Phase A 32/144] S06 Bacardi → M2 Claude Sonnet 4.5
+  Sending: [Phase A 33/144] S06 Bacardi → M3 GPT-4o
+  Sending: [Phase A 34/144] S06 Bacardi → M4 GPT-4o-mini
+  Sending: [Phase A 35/144] S06 Bacardi → M5 Gemini 2.5 Flash
+  Sending: [Phase A 36/144] S06 Bacardi → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 36/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 37/144] S07 Bombay Sapphire → M1 Claude Opus 4.5
+  Sending: [Phase A 38/144] S07 Bombay Sapphire → M2 Claude Sonnet 4.5
+  Sending: [Phase A 39/144] S07 Bombay Sapphire → M3 GPT-4o
+  Sending: [Phase A 40/144] S07 Bombay Sapphire → M4 GPT-4o-mini
+  Sending: [Phase A 41/144] S07 Bombay Sapphire → M5 Gemini 2.5 Flash
+  Sending: [Phase A 42/144] S07 Bombay Sapphire → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 43/144] S08 Jameson → M1 Claude Opus 4.5
+  Sending: [Phase A 44/144] S08 Jameson → M2 Claude Sonnet 4.5
+  Sending: [Phase A 45/144] S08 Jameson → M3 GPT-4o
+  Sending: [Phase A 46/144] S08 Jameson → M4 GPT-4o-mini
+  Sending: [Phase A 47/144] S08 Jameson → M5 Gemini 2.5 Flash
+  Sending: [Phase A 48/144] S08 Jameson → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 48/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 49/144] S09 Lagavulin → M1 Claude Opus 4.5
+  Sending: [Phase A 50/144] S09 Lagavulin → M2 Claude Sonnet 4.5
+  Sending: [Phase A 51/144] S09 Lagavulin → M3 GPT-4o
+  Sending: [Phase A 52/144] S09 Lagavulin → M4 GPT-4o-mini
+  Sending: [Phase A 53/144] S09 Lagavulin → M5 Gemini 2.5 Flash
+  Sending: [Phase A 54/144] S09 Lagavulin → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 55/144] S10 Clase Azul → M1 Claude Opus 4.5
+  Sending: [Phase A 56/144] S10 Clase Azul → M2 Claude Sonnet 4.5
+  Sending: [Phase A 57/144] S10 Clase Azul → M3 GPT-4o
+  Sending: [Phase A 58/144] S10 Clase Azul → M4 GPT-4o-mini
+  Sending: [Phase A 59/144] S10 Clase Azul → M5 Gemini 2.5 Flash
+  Sending: [Phase A 60/144] S10 Clase Azul → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 60/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 61/144] S11 Hendrick's → M1 Claude Opus 4.5
+  Sending: [Phase A 62/144] S11 Hendrick's → M2 Claude Sonnet 4.5
+  Sending: [Phase A 63/144] S11 Hendrick's → M3 GPT-4o
+  Sending: [Phase A 64/144] S11 Hendrick's → M4 GPT-4o-mini
+  Sending: [Phase A 65/144] S11 Hendrick's → M5 Gemini 2.5 Flash
+  Sending: [Phase A 66/144] S11 Hendrick's → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 67/144] S12 Woodford Reserve → M1 Claude Opus 4.5
+  Sending: [Phase A 68/144] S12 Woodford Reserve → M2 Claude Sonnet 4.5
+  Sending: [Phase A 69/144] S12 Woodford Reserve → M3 GPT-4o
+  Sending: [Phase A 70/144] S12 Woodford Reserve → M4 GPT-4o-mini
+  Sending: [Phase A 71/144] S12 Woodford Reserve → M5 Gemini 2.5 Flash
+  Sending: [Phase A 72/144] S12 Woodford Reserve → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 72/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 73/144] S13 Monkey 47 → M1 Claude Opus 4.5
+  Sending: [Phase A 74/144] S13 Monkey 47 → M2 Claude Sonnet 4.5
+  Sending: [Phase A 75/144] S13 Monkey 47 → M3 GPT-4o
+  Sending: [Phase A 76/144] S13 Monkey 47 → M4 GPT-4o-mini
+  Sending: [Phase A 77/144] S13 Monkey 47 → M5 Gemini 2.5 Flash
+  Sending: [Phase A 78/144] S13 Monkey 47 → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 79/144] S14 The Balvenie → M1 Claude Opus 4.5
+  Sending: [Phase A 80/144] S14 The Balvenie → M2 Claude Sonnet 4.5
+  Sending: [Phase A 81/144] S14 The Balvenie → M3 GPT-4o
+  Sending: [Phase A 82/144] S14 The Balvenie → M4 GPT-4o-mini
+  Sending: [Phase A 83/144] S14 The Balvenie → M5 Gemini 2.5 Flash
+  Sending: [Phase A 84/144] S14 The Balvenie → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 84/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 85/144] S15 Rémy Martin → M1 Claude Opus 4.5
+  Sending: [Phase A 86/144] S15 Rémy Martin → M2 Claude Sonnet 4.5
+  Sending: [Phase A 87/144] S15 Rémy Martin → M3 GPT-4o
+  Sending: [Phase A 88/144] S15 Rémy Martin → M4 GPT-4o-mini
+  Sending: [Phase A 89/144] S15 Rémy Martin → M5 Gemini 2.5 Flash
+  Sending: [Phase A 90/144] S15 Rémy Martin → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 91/144] S16 Casamigos → M1 Claude Opus 4.5
+  Sending: [Phase A 92/144] S16 Casamigos → M2 Claude Sonnet 4.5
+  Sending: [Phase A 93/144] S16 Casamigos → M3 GPT-4o
+  Sending: [Phase A 94/144] S16 Casamigos → M4 GPT-4o-mini
+  Sending: [Phase A 95/144] S16 Casamigos → M5 Gemini 2.5 Flash
+  Sending: [Phase A 96/144] S16 Casamigos → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 96/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 97/144] S17 Fortaleza → M1 Claude Opus 4.5
+  Sending: [Phase A 98/144] S17 Fortaleza → M2 Claude Sonnet 4.5
+  Sending: [Phase A 99/144] S17 Fortaleza → M3 GPT-4o
+  Sending: [Phase A 100/144] S17 Fortaleza → M4 GPT-4o-mini
+  Sending: [Phase A 101/144] S17 Fortaleza → M5 Gemini 2.5 Flash
+  Sending: [Phase A 102/144] S17 Fortaleza → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 103/144] S18 Compass Box → M1 Claude Opus 4.5
+  Sending: [Phase A 104/144] S18 Compass Box → M2 Claude Sonnet 4.5
+  Sending: [Phase A 105/144] S18 Compass Box → M3 GPT-4o
+  Sending: [Phase A 106/144] S18 Compass Box → M4 GPT-4o-mini
+  Sending: [Phase A 107/144] S18 Compass Box → M5 Gemini 2.5 Flash
+  Sending: [Phase A 108/144] S18 Compass Box → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 108/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 109/144] S19 Nikka → M1 Claude Opus 4.5
+  Sending: [Phase A 110/144] S19 Nikka → M2 Claude Sonnet 4.5
+  Sending: [Phase A 111/144] S19 Nikka → M3 GPT-4o
+  Sending: [Phase A 112/144] S19 Nikka → M4 GPT-4o-mini
+  Sending: [Phase A 113/144] S19 Nikka → M5 Gemini 2.5 Flash
+  Sending: [Phase A 114/144] S19 Nikka → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 115/144] S20 Del Maguey → M1 Claude Opus 4.5
+  Sending: [Phase A 116/144] S20 Del Maguey → M2 Claude Sonnet 4.5
+  Sending: [Phase A 117/144] S20 Del Maguey → M3 GPT-4o
+  Sending: [Phase A 118/144] S20 Del Maguey → M4 GPT-4o-mini
+  Sending: [Phase A 119/144] S20 Del Maguey → M5 Gemini 2.5 Flash
+  Sending: [Phase A 120/144] S20 Del Maguey → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 120/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 121/144] S21 Fernet-Branca → M1 Claude Opus 4.5
+  Sending: [Phase A 122/144] S21 Fernet-Branca → M2 Claude Sonnet 4.5
+  Sending: [Phase A 123/144] S21 Fernet-Branca → M3 GPT-4o
+  Sending: [Phase A 124/144] S21 Fernet-Branca → M4 GPT-4o-mini
+  Sending: [Phase A 125/144] S21 Fernet-Branca → M5 Gemini 2.5 Flash
+  Sending: [Phase A 126/144] S21 Fernet-Branca → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 127/144] S22 Redbreast → M1 Claude Opus 4.5
+  Sending: [Phase A 128/144] S22 Redbreast → M2 Claude Sonnet 4.5
+  Sending: [Phase A 129/144] S22 Redbreast → M3 GPT-4o
+  Sending: [Phase A 130/144] S22 Redbreast → M4 GPT-4o-mini
+  Sending: [Phase A 131/144] S22 Redbreast → M5 Gemini 2.5 Flash
+  Sending: [Phase A 132/144] S22 Redbreast → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 132/144 saved to v23_phase_a_raw.json
+  Sending: [Phase A 133/144] S23 St. George Spirits → M1 Claude Opus 4.5
+  Sending: [Phase A 134/144] S23 St. George Spirits → M2 Claude Sonnet 4.5
+  Sending: [Phase A 135/144] S23 St. George Spirits → M3 GPT-4o
+  Sending: [Phase A 136/144] S23 St. George Spirits → M4 GPT-4o-mini
+  Sending: [Phase A 137/144] S23 St. George Spirits → M5 Gemini 2.5 Flash
+  Sending: [Phase A 138/144] S23 St. George Spirits → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase A 139/144] S24 Mezcal Vago → M1 Claude Opus 4.5
+  Sending: [Phase A 140/144] S24 Mezcal Vago → M2 Claude Sonnet 4.5
+  Sending: [Phase A 141/144] S24 Mezcal Vago → M3 GPT-4o
+  Sending: [Phase A 142/144] S24 Mezcal Vago → M4 GPT-4o-mini
+  Sending: [Phase A 143/144] S24 Mezcal Vago → M5 Gemini 2.5 Flash
+  Sending: [Phase A 144/144] S24 Mezcal Vago → M6 Gemini 2.5 Flash Lite
+  ✓ Checkpoint: 144/144 saved to v23_phase_a_raw.json
+
+✓ Phase A complete: 128 ok, 16 errors → /Users/pablou/aias/osf/v34/data/v23/v23_phase_a_raw.json
+
+✓ Acquisition complete. Raw data in osf/v23/data/
+
+=== v23: Phase B ===
+
+============================================================
+PHASE B — Two-channel Recall (6 probes × 6 models = 36 queries)
+============================================================
+  Sending: [Phase B 1/36] EA-1 Critical consensus → M1 Claude Opus 4.5
+  Sending: [Phase B 2/36] EA-1 Critical consensus → M2 Claude Sonnet 4.5
+  Sending: [Phase B 3/36] EA-1 Critical consensus → M3 GPT-4o
+  Sending: [Phase B 4/36] EA-1 Critical consensus → M4 GPT-4o-mini
+  Sending: [Phase B 5/36] EA-1 Critical consensus → M5 Gemini 2.5 Flash
+  Sending: [Phase B 6/36] EA-1 Critical consensus → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase B 7/36] EA-2 Awards authority → M1 Claude Opus 4.5
+  Sending: [Phase B 8/36] EA-2 Awards authority → M2 Claude Sonnet 4.5
+  Sending: [Phase B 9/36] EA-2 Awards authority → M3 GPT-4o
+  Sending: [Phase B 10/36] EA-2 Awards authority → M4 GPT-4o-mini
+  Sending: [Phase B 11/36] EA-2 Awards authority → M5 Gemini 2.5 Flash
+  Sending: [Phase B 12/36] EA-2 Awards authority → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase B 13/36] EA-3 Professional authority → M1 Claude Opus 4.5
+  Sending: [Phase B 14/36] EA-3 Professional authority → M2 Claude Sonnet 4.5
+  Sending: [Phase B 15/36] EA-3 Professional authority → M3 GPT-4o
+  Sending: [Phase B 16/36] EA-3 Professional authority → M4 GPT-4o-mini
+  Sending: [Phase B 17/36] EA-3 Professional authority → M5 Gemini 2.5 Flash
+  Sending: [Phase B 18/36] EA-3 Professional authority → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase B 19/36] CC-1 Enthusiast community → M1 Claude Opus 4.5
+  Sending: [Phase B 20/36] CC-1 Enthusiast community → M2 Claude Sonnet 4.5
+  Sending: [Phase B 21/36] CC-1 Enthusiast community → M3 GPT-4o
+  Sending: [Phase B 22/36] CC-1 Enthusiast community → M4 GPT-4o-mini
+  Sending: [Phase B 23/36] CC-1 Enthusiast community → M5 Gemini 2.5 Flash
+  Sending: [Phase B 24/36] CC-1 Enthusiast community → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase B 25/36] CC-2 Cultural resonance → M1 Claude Opus 4.5
+  Sending: [Phase B 26/36] CC-2 Cultural resonance → M2 Claude Sonnet 4.5
+  Sending: [Phase B 27/36] CC-2 Cultural resonance → M3 GPT-4o
+  Sending: [Phase B 28/36] CC-2 Cultural resonance → M4 GPT-4o-mini
+  Sending: [Phase B 29/36] CC-2 Cultural resonance → M5 Gemini 2.5 Flash
+  Sending: [Phase B 30/36] CC-2 Cultural resonance → M6 Gemini 2.5 Flash Lite
+  Sending: [Phase B 31/36] CC-3 Insider discovery → M1 Claude Opus 4.5
+  Sending: [Phase B 32/36] CC-3 Insider discovery → M2 Claude Sonnet 4.5
+  Sending: [Phase B 33/36] CC-3 Insider discovery → M3 GPT-4o
+  Sending: [Phase B 34/36] CC-3 Insider discovery → M4 GPT-4o-mini
+  Sending: [Phase B 35/36] CC-3 Insider discovery → M5 Gemini 2.5 Flash
+  Sending: [Phase B 36/36] CC-3 Insider discovery → M6 Gemini 2.5 Flash Lite
+
+✓ Phase B complete: 0 ok, 36 errors → /Users/pablou/aias/osf/v34/data/v23/v23_phase_b_raw.json
+
+✓ Acquisition complete. Raw data in osf/v23/data/
+=== v23: done -> /Users/pablou/aias/osf/v34/data/v23 ===
+
+run_acquisition_v34: complete for ['v23']

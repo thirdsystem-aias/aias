@@ -1,0 +1,252 @@
+/Users/pablou/aias/scripts/run_acquisition_v34.py:66: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+I0610 10:07:22.798744 1093920 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+F0610 10:07:22.802899 1093951 ares_resolver.cc:285] Check failed: channel_ != nullptr ((null) vs. (null)) 
+I0610 10:07:22.803581 1093921 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.818487 1093919 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.821387 1093922 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.841237 1093922 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.843732 1093920 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.845354 1093919 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+I0610 10:07:22.846578 1094106 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(21, generation: 1)
+I0610 10:07:22.846654 1094106 ev_poll_posix.cc:593] FD from fork parent still in poll list: fd(22, generation: 1)
+I0610 10:07:22.847289 1093921 fork_posix.cc:71] Other threads are currently calling into gRPC, skipping fork() handlers
+run_acquisition_v34 — installing SDK provenance tee:
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+
+=== v20: Phase A (racq_v20) ===
+
+--- Phase A: Recognition ---
+  144 probes (6 models × 24 brands)
+  Probe template: 'Is the brand {BRAND} commonly recognized as a skincare brand? Answer yes or no.'
+  [  1/144] gemini-2.5-flash-lite     A.1 Estée Lauder                     → yes
+  [  2/144] gpt-4o-mini               A.1 Estée Lauder                     → yes
+  [  3/144] gpt-4o                    A.1 Estée Lauder                     → yes
+  [  4/144] claude-sonnet-4-5         A.1 Estée Lauder                     → yes
+  [  5/144] gpt-4o                    A.2 Lancôme                          → yes
+  [  6/144] gpt-4o-mini               A.2 Lancôme                          → yes
+  [  7/144] gemini-2.5-flash          A.1 Estée Lauder                     → yes
+  [  8/144] gemini-2.5-flash-lite     A.2 Lancôme                          → yes
+  [  9/144] gemini-2.5-flash          A.2 Lancôme                          → yes
+  [ 10/144] claude-opus-4-5           A.3 La Mer                           → yes
+  [ 11/144] gpt-4o-mini               A.3 La Mer                           → yes
+  [ 12/144] gpt-4o                    A.3 La Mer                           → yes
+  [ 13/144] gemini-2.5-flash-lite     A.3 La Mer                           → yes
+  [ 14/144] claude-opus-4-5           A.1 Estée Lauder                     → yes
+  [ 15/144] gemini-2.5-flash          A.3 La Mer                           → yes
+  [ 16/144] claude-opus-4-5           A.4 Sisley                           → yes
+  [ 17/144] gpt-4o                    A.4 Sisley                           → yes
+  [ 18/144] gpt-4o-mini               A.4 Sisley                           → yes
+  [ 19/144] gemini-2.5-flash-lite     A.4 Sisley                           → yes
+  [ 20/144] claude-sonnet-4-5         A.3 La Mer                           → yes
+  [ 21/144] claude-opus-4-5           A.2 Lancôme                          → yes
+  [ 22/144] gemini-2.5-flash          A.4 Sisley                           → yes
+  [ 23/144] gpt-4o                    A.5 Dior Beauty                      → yes
+  [ 24/144] gpt-4o-mini               A.5 Dior Beauty                      → yes
+  [ 25/144] claude-sonnet-4-5         A.5 Dior Beauty                      → no
+  [ 26/144] gemini-2.5-flash-lite     A.5 Dior Beauty                      → no
+  [ 27/144] claude-sonnet-4-5         A.2 Lancôme                          → yes
+  [ 28/144] claude-sonnet-4-5         A.4 Sisley                           → yes
+  [ 29/144] gpt-4o                    A.6 Chanel Beauty                    → no
+  [ 30/144] gemini-2.5-flash          A.5 Dior Beauty                      → no
+  [ 31/144] gemini-2.5-flash-lite     A.6 Chanel Beauty                    → yes
+  [ 32/144] claude-opus-4-5           A.5 Dior Beauty                      → no
+  [ 33/144] claude-opus-4-5           A.7 La Prairie                       → yes
+  [ 34/144] gemini-2.5-flash          A.6 Chanel Beauty                    → no
+  [ 35/144] gpt-4o                    A.7 La Prairie                       → yes
+  [ 36/144] gpt-4o-mini               A.7 La Prairie                       → yes
+  [ 37/144] gemini-2.5-flash-lite     A.7 La Prairie                       → yes
+  [ 38/144] claude-sonnet-4-5         A.7 La Prairie                       → yes
+  [ 39/144] claude-opus-4-5           A.6 Chanel Beauty                    → no
+  [ 40/144] claude-sonnet-4-5         A.6 Chanel Beauty                    → no
+  [ 41/144] gpt-4o                    A.8 Clé de Peau Beauté               → yes
+  [ 42/144] gemini-2.5-flash          A.7 La Prairie                       → yes
+  [ 43/144] claude-opus-4-5           A.8 Clé de Peau Beauté               → yes
+  [ 44/144] gpt-4o-mini               A.8 Clé de Peau Beauté               → yes
+  [ 45/144] gemini-2.5-flash-lite     A.8 Clé de Peau Beauté               → yes
+  [ 46/144] claude-sonnet-4-5         A.8 Clé de Peau Beauté               → yes
+  [ 47/144] gpt-4o                    B.1 Rare Beauty                      → no
+  [ 48/144] gpt-4o-mini               B.1 Rare Beauty                      → no
+  [ 49/144] gemini-2.5-flash          A.8 Clé de Peau Beauté               → yes
+  [ 50/144] gemini-2.5-flash-lite     B.1 Rare Beauty                      → no
+  [ 51/144] claude-sonnet-4-5         B.1 Rare Beauty                      → no
+  [ 52/144] claude-opus-4-5           B.2 Rhode                            → yes
+  [ 53/144] gemini-2.5-flash          B.1 Rare Beauty                      → no
+  [ 54/144] gpt-4o                    B.2 Rhode                            → yes
+  [ 55/144] claude-sonnet-4-5         B.2 Rhode                            → yes
+  [ 56/144] gemini-2.5-flash-lite     B.2 Rhode                            → yes
+  [ 57/144] gpt-4o-mini               B.2 Rhode                            → yes
+  [ 58/144] gpt-4o                    B.3 Fenty Skin                       → yes
+  [ 59/144] gemini-2.5-flash          B.2 Rhode                            → yes
+  [ 60/144] claude-opus-4-5           B.3 Fenty Skin                       → yes
+  [ 61/144] gemini-2.5-flash-lite     B.3 Fenty Skin                       → yes
+  [ 62/144] gpt-4o-mini               B.3 Fenty Skin                       → yes
+  [ 63/144] claude-sonnet-4-5         B.3 Fenty Skin                       → yes
+  [ 64/144] gpt-4o                    B.4 Goop                             → yes
+  [ 65/144] gpt-4o-mini               B.4 Goop                             → no
+  [ 66/144] claude-opus-4-5           B.1 Rare Beauty                      → no
+  [ 67/144] gemini-2.5-flash          B.3 Fenty Skin                       → yes
+  [ 68/144] gemini-2.5-flash-lite     B.4 Goop                             → yes
+  [ 69/144] claude-opus-4-5           B.4 Goop                             → yes
+  [ 70/144] gemini-2.5-flash          B.4 Goop                             → no
+  [ 71/144] gpt-4o                    B.5 Drunk Elephant                   → yes
+  [ 72/144] gpt-4o-mini               B.5 Drunk Elephant                   → yes
+  [ 73/144] gemini-2.5-flash-lite     B.5 Drunk Elephant                   → yes
+  [ 74/144] gemini-2.5-flash          B.5 Drunk Elephant                   → yes
+  [ 75/144] claude-sonnet-4-5         B.5 Drunk Elephant                   → yes
+  [ 76/144] claude-opus-4-5           B.5 Drunk Elephant                   → yes
+  [ 77/144] gpt-4o                    B.6 Glossier                         → yes
+  [ 78/144] gpt-4o-mini               B.6 Glossier                         → yes
+  [ 79/144] gemini-2.5-flash-lite     B.6 Glossier                         → yes
+  [ 80/144] claude-sonnet-4-5         B.4 Goop                             → no
+  [ 81/144] claude-sonnet-4-5         B.7 Augustinus Bader                 → yes
+  [ 82/144] claude-opus-4-5           B.7 Augustinus Bader                 → yes
+  [ 83/144] claude-opus-4-5           B.6 Glossier                         → yes
+  [ 84/144] claude-sonnet-4-5         B.6 Glossier                         → yes
+  [ 85/144] gemini-2.5-flash-lite     B.7 Augustinus Bader                 → yes
+  [ 86/144] gpt-4o                    B.7 Augustinus Bader                 → yes
+  [ 87/144] gpt-4o-mini               B.7 Augustinus Bader                 → yes
+  [ 88/144] gemini-2.5-flash          B.6 Glossier                         → yes
+  [ 89/144] gpt-4o                    B.8 Tower 28                         → no
+  [ 90/144] gpt-4o-mini               B.8 Tower 28                         → yes
+  [ 91/144] gemini-2.5-flash          B.7 Augustinus Bader                 → yes
+  [ 92/144] gemini-2.5-flash-lite     B.8 Tower 28                         → yes
+  [ 93/144] claude-sonnet-4-5         C.1 SkinCeuticals                    → yes
+  [ 94/144] gpt-4o                    C.1 SkinCeuticals                    → yes
+  [ 95/144] claude-opus-4-5           C.1 SkinCeuticals                    → yes
+  [ 96/144] gpt-4o-mini               C.1 SkinCeuticals                    → yes
+  [ 97/144] gemini-2.5-flash-lite     C.1 SkinCeuticals                    → yes
+  [ 98/144] gemini-2.5-flash          B.8 Tower 28                         → yes
+  [ 99/144] gemini-2.5-flash          C.1 SkinCeuticals                    → yes
+  [100/144] gpt-4o                    C.2 La Roche-Posay                   → yes
+  [101/144] claude-sonnet-4-5         B.8 Tower 28                         → no
+  [102/144] gpt-4o-mini               C.2 La Roche-Posay                   → yes
+  [103/144] claude-opus-4-5           B.8 Tower 28                         → no
+  [104/144] gemini-2.5-flash-lite     C.2 La Roche-Posay                   → yes
+  [105/144] claude-opus-4-5           C.3 Paula's Choice                   → yes
+  [106/144] gemini-2.5-flash          C.2 La Roche-Posay                   → yes
+  [107/144] gpt-4o                    C.3 Paula's Choice                   → yes
+  [108/144] claude-sonnet-4-5         C.2 La Roche-Posay                   → yes
+  [109/144] gemini-2.5-flash-lite     C.3 Paula's Choice                   → yes
+  [110/144] gpt-4o-mini               A.6 Chanel Beauty                    → yes
+  [111/144] gpt-4o-mini               C.3 Paula's Choice                   → yes
+  [112/144] claude-opus-4-5           C.2 La Roche-Posay                   → yes
+  [113/144] gpt-4o-mini               C.4 CeraVe                           → yes
+  [114/144] gpt-4o                    C.4 CeraVe                           → yes
+  [115/144] gemini-2.5-flash-lite     C.4 CeraVe                           → yes
+  [116/144] gemini-2.5-flash          C.3 Paula's Choice                   → yes
+  [117/144] gemini-2.5-flash          C.4 CeraVe                           → yes
+  [118/144] claude-opus-4-5           C.5 The Ordinary                     → yes
+  [119/144] gpt-4o                    C.5 The Ordinary                     → yes
+  [120/144] gpt-4o-mini               C.5 The Ordinary                     → yes
+  [121/144] gemini-2.5-flash-lite     C.5 The Ordinary                     → yes
+  [122/144] claude-sonnet-4-5         C.3 Paula's Choice                   → yes
+  [123/144] gemini-2.5-flash          C.5 The Ordinary                     → yes
+  [124/144] gpt-4o                    C.6 Cetaphil                         → yes
+  [125/144] claude-sonnet-4-5         C.6 Cetaphil                         → yes
+  [126/144] gpt-4o-mini               C.6 Cetaphil                         → yes
+  [127/144] gemini-2.5-flash-lite     C.6 Cetaphil                         → yes
+  [128/144] claude-opus-4-5           C.4 CeraVe                           → yes
+  [129/144] gemini-2.5-flash          C.6 Cetaphil                         → yes
+  [130/144] claude-sonnet-4-5         C.4 CeraVe                           → yes
+  [131/144] gpt-4o-mini               C.7 Eucerin                          → yes
+  [132/144] gpt-4o                    C.7 Eucerin                          → yes
+  [133/144] claude-sonnet-4-5         C.7 Eucerin                          → yes
+  [134/144] gemini-2.5-flash-lite     C.7 Eucerin                          → yes
+  [135/144] claude-sonnet-4-5         C.5 The Ordinary                     → yes
+  [136/144] gpt-4o                    C.8 Bioderma                         → yes
+  [137/144] claude-opus-4-5           C.8 Bioderma                         → yes
+  [138/144] gpt-4o-mini               C.8 Bioderma                         → yes
+  [139/144] gemini-2.5-flash          C.7 Eucerin                          → yes
+  [140/144] claude-sonnet-4-5         C.8 Bioderma                         → yes
+  [141/144] claude-opus-4-5           C.7 Eucerin                          → yes
+  [142/144] gemini-2.5-flash-lite     C.8 Bioderma                         → yes
+  [143/144] gemini-2.5-flash          C.8 Bioderma                         → yes
+  [144/144] claude-opus-4-5           C.6 Cetaphil                         → yes
+
+  → Phase A results written: /Users/pablou/aias/osf/v34/data/v20/phase_a_results.csv (144 rows)
+
+  Per-brand C_P (Recognition score, 0..6):
+    Cell A (Prestige):
+      1. Estée Lauder                      C_P = 6/6
+      2. Lancôme                           C_P = 6/6
+      3. La Mer                            C_P = 6/6
+      4. Sisley                            C_P = 6/6
+      5. Dior Beauty                       C_P = 2/6
+      6. Chanel Beauty                     C_P = 2/6
+      7. La Prairie                        C_P = 6/6
+      8. Clé de Peau Beauté                C_P = 6/6
+    Cell B (Celebrity DTC / cult):
+      1. Rare Beauty                       C_P = 0/6
+      2. Rhode                             C_P = 6/6
+      3. Fenty Skin                        C_P = 6/6
+      4. Goop                              C_P = 3/6
+      5. Drunk Elephant                    C_P = 6/6
+      6. Glossier                          C_P = 6/6
+      7. Augustinus Bader                  C_P = 6/6
+      8. Tower 28                          C_P = 3/6
+    Cell C (Clinical / dermatologist-recommended):
+      1. SkinCeuticals                     C_P = 6/6
+      2. La Roche-Posay                    C_P = 6/6
+      3. Paula's Choice                    C_P = 6/6
+      4. CeraVe                            C_P = 6/6
+      5. The Ordinary                      C_P = 6/6
+      6. Cetaphil                          C_P = 6/6
+      7. Eucerin                           C_P = 6/6
+      8. Bioderma                          C_P = 6/6
+=== v20: Phase B (racq_v20) ===
+
+--- Phase B: Six-frame Recall ---
+  36 queries (6 models × 6 frames)
+  Channels: R_cat (q1-q3) + R_cult (q4-q6)
+  [ 1/36] gemini-2.5-flash-lite     q1 (R_cat ): The "best" skincare brands are highly subjective and depend on individual needs,...
+  [ 2/36] gpt-4o                    q1 (R_cat ): When it comes to skincare, people have a wide array of preferences and skin type...
+  [ 3/36] claude-sonnet-4-5         q1 (R_cat ): # Best Skincare Brands  ## **CeraVe** Dermatologist-developed and affordable, Ce...
+  [ 4/36] claude-opus-4-5           q1 (R_cat ): # Top Skincare Brands  Here are several well-regarded skincare brands across dif...
+  [ 5/36] gpt-4o                    q2 (R_cat ): Dermatologists often recommend skincare brands that are known for their effectiv...
+  [ 6/36] gpt-4o-mini               q2 (R_cat ): Dermatologists often recommend a variety of skincare brands known for their effi...
+  [ 7/36] gemini-2.5-flash          q1 (R_cat ): Defining the "best" skincare brands is highly subjective, as what works wonders ...
+  [ 8/36] claude-opus-4-5           q2 (R_cat ): Dermatologists often recommend these brands, which are known for being well-rese...
+  [ 9/36] claude-sonnet-4-5         q2 (R_cat ): # Dermatologist-Recommended Skincare Brands  Here are several brands frequently ...
+  [10/36] gpt-4o-mini               q1 (R_cat ): There are numerous skincare brands known for their effective formulations, innov...
+  [11/36] gemini-2.5-flash-lite     q2 (R_cat ): Dermatologists often recommend skincare brands that are known for their **scienc...
+  [12/36] gemini-2.5-flash          q2 (R_cat ): Dermatologists often recommend skincare brands that are generally **gentle, non-...
+  [13/36] claude-opus-4-5           q3 (R_cat ): # Effective Skincare Brands  Here are several well-regarded skincare brands acro...
+  [14/36] gpt-4o                    q3 (R_cat ): Effectiveness in skincare can vary based on individual skin types and concerns, ...
+  [15/36] gemini-2.5-flash-lite     q3 (R_cat ): The "most effective" skincare brand is highly subjective and depends on individu...
+  [16/36] claude-sonnet-4-5         q3 (R_cat ): # Effective Skincare Brands  Here are several well-regarded brands across differ...
+  [17/36] gpt-4o                    q4 (R_cult): As of 2023, some popular skincare brands include:  1. **The Ordinary** - Known f...
+  [18/36] claude-opus-4-5           q4 (R_cult): Here are several popular skincare brands right now:  **Mainstream/Accessible:** ...
+  [19/36] gemini-2.5-flash          q3 (R_cat ): Defining the "most effective" skincare brand is highly subjective, as effectiven...
+  [20/36] gpt-4o-mini               q4 (R_cult): As of 2023, several skincare brands are gaining popularity for their effective p...
+  [21/36] gemini-2.5-flash-lite     q4 (R_cult): The skincare landscape is always shifting, but here are several brands that are ...
+  [22/36] gpt-4o-mini               q3 (R_cat ): There are numerous skincare brands known for their effectiveness in addressing a...
+  [23/36] claude-sonnet-4-5         q4 (R_cult): # Popular Skincare Brands Right Now  ## Luxury/Premium - **La Mer** - Known for ...
+  [24/36] gemini-2.5-flash          q4 (R_cult): Skincare popularity can shift quickly, but here are several brands that are defi...
+  [25/36] gpt-4o                    q5 (R_cult): Celebrities and influencers often use a variety of skincare brands, and their ch...
+  [26/36] claude-opus-4-5           q5 (R_cult): Here are some skincare brands frequently mentioned by celebrities and influencer...
+  [27/36] gemini-2.5-flash-lite     q5 (R_cult): Celebrities and influencers use a wide range of skincare brands, and it's import...
+  [28/36] claude-sonnet-4-5         q5 (R_cult): # Popular Skincare Brands Among Celebrities & Influencers  ## Luxury/High-End Br...
+  [29/36] gpt-4o-mini               q5 (R_cult): Many celebrities and influencers are known to use and promote a variety of skinc...
+  [30/36] claude-opus-4-5           q6 (R_cult): Here are several skincare brands that have developed cult followings or viral po...
+  [31/36] gpt-4o                    q6 (R_cult): Several skincare brands have gained viral or cult-favorite status due to their e...
+  [32/36] gemini-2.5-flash          q5 (R_cult): It's important to remember that celebrity and influencer skincare routines are o...
+  [33/36] gemini-2.5-flash-lite     q6 (R_cult): There are many viral and cult-favorite skincare brands that have exploded in pop...
+  [34/36] claude-sonnet-4-5         q6 (R_cult): # Viral & Cult-Favorite Skincare Brands  ## K-Beauty Pioneers - **COSRX** - Know...
+  [35/36] gpt-4o-mini               q6 (R_cult): Several viral or cult-favorite skincare brands have gained significant following...
+  [36/36] gemini-2.5-flash          q6 (R_cult): The skincare landscape is constantly evolving, and several brands have mastered ...
+
+  → Phase B results written: /Users/pablou/aias/osf/v34/data/v20/phase_b_results.csv (36 responses)
+=== v20: done -> /Users/pablou/aias/osf/v34/data/v20 ===
+
+run_acquisition_v34: complete for ['v20']

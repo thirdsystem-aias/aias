@@ -1,158 +1,164 @@
-# NOTE: cloned from v33_provider_asymmetry_content.py on phase scaffold.
-# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,
-# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text
-# must be re-written for the v0.34 longitudinal t1-t2 omnibus
-# substrate. Do not ship this file as-is.
-
 """
-v0.34 - Provider-Asymmetric CPC - Brand-format report content module.
-Third System(TM) managerial register (P1-P5 propositional framing).
+v0.34 - CPC Longitudinal t1->t2 Stability - Brand-format report content module.
+Third System(TM) managerial register (P1-P4 propositional framing).
 
-Replaces the stale v0.32 clone. Authored against the locked verdicts
-(osf/v34/v34_longitudinal_t1_t2_omnibus_verdicts.json; commit fdceda9). Honest framing:
-  P1 - a real but faint provider fingerprint on recall consistency;
-  P2 - the "beyond recognition" question could NOT be answered (recognition saturated);
-  P3 - no provider is reliably the steadiest (unresolved, underpowered);
-  P4 - the faint-brand pattern is mechanical, not a signature;
-  P5 - the provider lens is informative only outside saturated recognition (the central lesson).
+Authored against the locked verdicts (osf/v34/v34_verdicts.json). Honest framing:
+  P1 - recall-consistency standings hold over weeks (SUPPORTED, 4/5 categories);
+  P2 - consistency moves independently of recognition (NOT ESTABLISHED; recognition saturated);
+  P3 - recognition standings hold over weeks (SUPPORTED WHERE MEASURABLE; 2/5 at ceiling);
+  P4 - AI invisibility persists (OBSERVED; descriptive, 56/57).
 
-Register: brand editorial voice, P1-P5 propositions (no H_* notation). No Samsung anywhere
+Register: brand editorial voice, P1-P4 propositions (no H_* notation). No Samsung anywhere
 (the COI disclosure lives in the SSRN paper's Declarations, not in this report). Statistics
-are translated to plain language; no Greek, subscripts, or logical operators, to stay clear
-of the Akkurat glyph gaps the builder otherwise has to patch.
+are translated to plain language; markup conventions per build_report: <sub> subscripts,
+NBSP-wrapped arrows.
 
 The 11 standard attributes follow: COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY,
 WHAT_WE_MEASURED, PATTERNS, LIMITATIONS, WHATS_NEXT, HYPOTHESIS_SCORING,
-HYPOTHESIS_DETAILS, CLOSING. (Prose attributes are strings; the two scoring attributes are
-lists of dicts - align types to build_report_v34.py when the builder is rewritten.)
+HYPOTHESIS_DETAILS, CLOSING.
 """
 
+# arrow wrapped in non-breaking spaces (prevents line-splits across the connector)
+_AR = " → "
+
 COVER = {
-    "title": "The Provider Fingerprint",
+    "title": "The Standings Hold",
     "subtitle": (
-        "Does the company that built an AI model leave a systematic mark on how "
-        "consistently it recalls brands? A pre-registered re-analysis across five "
-        "categories finds a real but faint signal - and a measurement blind spot "
-        "worth naming."
+        "Three weeks later, AI brand rankings barely moved - and the brands AI "
+        "couldn't see stayed invisible. A 112-brand, two-wave stability study across "
+        "six leading models."
     ),
 }
 
 STANDFIRST = (
-    "Three companies build the large language models most brands are now seen "
-    "through. We asked whether that authorship shows up as a consistent pattern in "
-    "how brands are recalled - and found that the more useful answer was about the "
-    "question we could not yet ask."
+    "If AI-generated brand recommendations reshuffled at random from week to week, no "
+    "one would need to manage them. They don't. Third System™ re-measured five "
+    "full category panels - 112 brands, six models, identical questions, twenty-one "
+    "days apart at most - and the standings held. Which brands the models recall, and "
+    "how consistently they recall them, is a stable property of the brand, not noise "
+    "in the machine."
 )
 
 LEAD_DECK = (
-    "AI Availability - how a brand surfaces inside large language models - is the "
-    "third front of brand availability, alongside the mental and physical "
-    "availability marketers already manage. Within it, Consistency asks how steadily "
-    "a brand is recalled across the models people actually use. Holding the models "
-    "fixed at a single moment, this study asked a narrower question: does the "
-    "provider behind a model - Anthropic, OpenAI, or Google - leave a systematic "
-    "fingerprint on that consistency?"
+    "A brand's AI recall-consistency rank held t<sub>1</sub>" + _AR + "t<sub>2</sub> "
+    "in four of five categories. Recognition sat at ceiling almost everywhere - every "
+    "established brand is “known”; the competition happens in recall. And "
+    "invisibility proved the stickiest state of all: 56 of 57 brands below the recall "
+    "floor at first measurement were still there three weeks later."
 )
 
 EXEC_SUMMARY = (
-    "The short answer is yes, but faintly - and the more important answer is that we "
-    "could not test the question that matters most.\n\n"
-    "Across 112 brands in five categories, which provider built a model does explain "
-    "a real, repeatable share of the variation in how consistently brands are "
-    "recalled. The effect is reliable but small: provider sits just above what the "
-    "structure of the test would produce by chance, and no further.\n\n"
-    "We then asked the sharper question - whether that provider pattern reflects "
-    "consistency over and above simple recognition, or merely restates which brands "
-    "the models already know. We could not answer it. Among the brands a model "
-    "recalls at all, recognition is effectively universal - every model recognizes "
-    "them - so there is no provider pattern in recognition to compare against. The "
-    "test we had pre-registered to settle this passed its arithmetic, but the "
-    "comparison was empty. Reporting that honestly, rather than as a win, is the "
-    "study's most useful result.\n\n"
-    "No single provider proved reliably the most consistent across categories, and "
-    "the smaller differences seen for lesser-known brands turned out to be mechanical "
-    "rather than meaningful."
+    "Three findings, one implication. First, stability: per-brand recall-consistency "
+    "rankings correlated strongly across waves in skincare, cosmetics, automotive, and "
+    "premium spirits (rank correlations 0.76-0.96); only audiophile headphones - the "
+    "smallest panel - failed the bar. Second, ceiling: AI recognition of established "
+    "brands is saturated. In four of five categories, effectively every brand was "
+    "recognized by every model, both waves. Recognition no longer discriminates; "
+    "recall does. Third, persistence of absence: brands that failed to surface in AI "
+    "recall at the first wave almost universally failed again at the second.\n\n"
+    "The implication: a brand's AI standing is a managed asset with inertia - it "
+    "neither decays in days nor improves by waiting. If your brand is absent from the "
+    "AI conversation today, that is its standing until something changes it."
 )
 
 WHAT_WE_MEASURED = (
-    "This is a re-analysis: no new model queries were run. It re-examines frozen "
-    "measurements from an earlier cross-category study - 112 brands across audiophile "
-    "headphones, skincare, cosmetics, automotive, and premium spirits - scored across "
-    "a fixed panel of six models, two each from Anthropic, OpenAI, and Google. For "
-    "each brand we asked how much of the model-to-model variation in recall is "
-    "organized by provider rather than scattered within each provider's own pair, and "
-    "whether the same pattern appears in plain recognition. The full method, the "
-    "questions to be tested, and the rules for judging them were locked and "
-    "time-stamped before any scoring, and every figure was checked back against the "
-    "original study."
+    "Two identical measurement waves, fifteen to twenty-one days apart, across five "
+    "locked category panels: audiophile headphones (16 brands), skincare, cosmetics, "
+    "automotive, and premium spirits (24 each). Each wave asked six leading AI models "
+    "- two each from Anthropic, OpenAI, and Google - the same recognition and recall "
+    "questions, word for word, under the AIAS™ measurement protocol. Recognition "
+    "asks whether a model knows the brand; recall asks whether the model surfaces it "
+    "unprompted when a buyer-style question is posed.\n\n"
+    "From per-model recall we compute a consistency score per brand; the study tests "
+    "whether each brand's scores, ranks, and visibility status at wave one predict "
+    "wave two. Probe wording, brand registries, and model identities were locked and "
+    "externally registered before a single second-wave call was made."
 )
 
 PATTERNS = (
-    "Three things to take away. Provider authorship shapes how consistently models "
-    "recall a brand - reliably, but faintly. Whether that shaping is about "
-    "consistency rather than familiarity could not be tested, because recognition is "
-    "already universal among the brands models recall. And no single provider proved "
-    "the steadiest. The faint and the unanswerable, not a bold provider effect, are "
-    "the honest results."
+    "The stability is not uniform - it is structured, and the structure is "
+    "informative. The four categories that passed are mature consumer categories with "
+    "deep editorial and review coverage; their AI standings look like settled "
+    "consensus. The one miss, audiophile headphones, combines the smallest panel with "
+    "the most enthusiast-driven, fragmented discourse - the conditions under which a "
+    "ranking plausibly should wobble. Meanwhile recognition's ceiling effect tells "
+    "brand teams where the game is: the models know your brand exists; the question is "
+    "whether they bring it up. And the near-perfect persistence of the invisible "
+    "cohort - fourteen of fourteen unsurfaced skincare brands still unsurfaced, "
+    "fifteen of fifteen spirits - is the strongest managerial signal in the study: AI "
+    "invisibility is a standing condition, not a sampling accident."
 )
 
 LIMITATIONS = (
-    "Three cautions frame these findings. First, scope: five categories and a "
-    "six-model panel can detect whether a provider effect exists, but not rank the "
-    "providers with confidence or generalize broadly. Second, the consistency score "
-    "used here is an inherited, not-yet-validated measure, treated as-is; this study "
-    "does not certify it. Third, and most consequentially, the recognition signal "
-    "available to us is all-or-nothing and saturated among recalled brands, so the "
-    "'beyond recognition' question is bounded by the instrument rather than settled - "
-    "a graded recognition signal simply does not exist in this data to push further. "
-    "The provider effect is also small, and should be read against the high baseline "
-    "the test's structure imposes."
+    "Honest boundaries. The consistency instrument remains entangled with "
+    "recognition-and-recall presence (a known limitation, documented in the program's "
+    "methodology track); this study measures the stability of the quantity, not its "
+    "validity as an independent construct. The interval is three weeks - stability "
+    "over quarters is a separate, unanswered question. Models were called by their "
+    "public names, as a real buyer's tool would; any silent provider-side version "
+    "change inside the window is part of what “stability” means here, by "
+    "design. Five categories and 16-24 brands per panel bound the precision of any "
+    "single category's result. And because recognition sat at ceiling, the study could "
+    "not cleanly test whether consistency moves independently of presence - one "
+    "category suggests it does; four could not speak."
 )
 
 WHATS_NEXT = (
-    "The clearest next move is a recognition signal with room to vary. The "
-    "beyond-recognition question is answerable only where recognition is not already "
-    "saturated, so a graded or scaled recognition measure - which this data does not "
-    "contain - is the prerequisite for any future claim that provider shapes "
-    "consistency rather than mere familiarity. Beyond that, a wider set of categories "
-    "would support the provider ranking this study could not resolve, and more models "
-    "per provider would lift the test off its high chance floor. Each feeds the "
-    "program's next-generation consistency instrument."
+    "The program's next methodology phase replaces the presence-entangled consistency "
+    "instrument with a mean-independent one - this study's ceiling effects are direct "
+    "evidence for why. The second wave also captured each provider's dated model "
+    "version per call, which the first wave could not; that establishes the baseline "
+    "for a future third wave able to separate “the model changed” from "
+    "“the answers drifted.” And the open managerial question is the "
+    "actionable one: if invisibility is sticky, what interventions move a brand across "
+    "the recall floor - and how long do they take to register?"
 )
 
 HYPOTHESIS_SCORING = [
-    {"id": "P1", "headline": "A real fingerprint, faintly pressed",
-     "proposition": "Provider identity shapes how consistently models recall a brand.",
-     "verdict": "SUPPORTED", "qualifier": "real but modest", "status_class": "positive"},
-    {"id": "P2", "headline": "The question that had no answer",
-     "proposition": "That provider effect reflects consistency beyond simple recognition.",
-     "verdict": "NOT ESTABLISHED", "qualifier": "untestable here - recognition saturated", "status_class": "neutral"},
-    {"id": "P3", "headline": "No provider stands out as steadiest",
-     "proposition": "One provider is reliably the most internally consistent across categories.",
-     "verdict": "NOT SUPPORTED", "qualifier": "unresolved; underpowered at five categories", "status_class": "neutral"},
-    {"id": "P4", "headline": "Obscurity is not a signature",
-     "proposition": "Lesser-known brands carry a distinct provider signature.",
-     "verdict": "NOT SUPPORTED", "qualifier": "the pattern is mechanical, not a signature", "status_class": "neutral"},
-    {"id": "P5", "headline": "Read the lens before the brand is known",
-     "proposition": "The provider lens is informative only where recognition is not yet saturated.",
-     "verdict": "SUPPORTED", "qualifier": "the study's central lesson", "status_class": "positive"},
+    {"id": "P1", "headline": "The standings held through the wait",
+     "proposition": "AI recall-consistency standings hold over weeks.",
+     "verdict": "SUPPORTED", "qualifier": "4 of 5 categories at or above the pre-registered bar",
+     "status_class": "positive"},
+    {"id": "P2", "headline": "The question recognition wouldn't let us ask",
+     "proposition": "Consistency moves independently of recognition.",
+     "verdict": "NOT ESTABLISHED",
+     "qualifier": "testable in only 1 of 5 categories - recognition saturated elsewhere; the one informative category is suggestive, not sufficient",
+     "status_class": "neutral"},
+    {"id": "P3", "headline": "Recognition held where there was a ranking to hold",
+     "proposition": "Recognition standings hold over weeks.",
+     "verdict": "SUPPORTED WHERE MEASURABLE",
+     "qualifier": "strong in all 3 categories with rank variation; 2 categories at a constant ceiling both waves - nothing to rank",
+     "status_class": "neutral"},
+    {"id": "P4", "headline": "Invisibility is the stickiest state",
+     "proposition": "AI invisibility persists.",
+     "verdict": "OBSERVED",
+     "qualifier": "descriptive; 56 of 57 below-floor brands retained the status; no pass/fail threshold was set",
+     "status_class": "neutral"},
 ]
 
 HYPOTHESIS_DETAILS = {
-    "P1": "The provider share of recall variation is reliably above chance and holds across all five categories, surviving every leave-one-category-out recheck. Its size is small - just above the high floor the three-pair structure imposes - so it reads as a dependable but minor influence.",
-    "P2": "The pre-registered gate met its number, but only because recognition contributed essentially nothing to compare against: among recalled brands, every model recognizes the brand, leaving no provider pattern in recognition. The gate therefore measured recall asymmetry alone, not a separation from recognition. We treat the beyond-recognition question as unanswered.",
-    "P3": "Provider consistency rankings change from category to category, and five categories are too few to distinguish a true ordering from noise. The result is read as uninformative rather than as evidence of parity.",
-    "P4": "Barely-recalled brands show smaller provider differences, but this follows mechanically from their having little recall variation to organize. It is not a distinct property of obscure brands.",
-    "P5": "Taken together, the provider lens is meaningful only where recognition still varies - the emerging-recognition regime. For universally recognized brands, today's recognition signal is too saturated to support the comparison. This is a scoping rule for measuring AI Availability Consistency, and the study's most portable conclusion.",
+    "P1": ("Rank correlations by category - headphones 0.42 (miss; smallest panel, "
+           "n=8 comparable brands), skincare 0.78, cosmetics 0.89, automotive 0.96, "
+           "spirits 0.76; the pre-registered bar was 0.70 in at least four of five."),
+    "P2": ("The test requires recognition to vary; in four categories every model "
+           "recognized at least nine in ten established brands both waves, collapsing "
+           "the test onto recall itself. In headphones - the only category with "
+           "recognition variation - consistency was more stable after recognition was "
+           "accounted for (0.61 vs 0.42), the study's one suggestive sign of an "
+           "independent consistency signal."),
+    "P3": ("Recognition rank correlations 0.81 / 0.99 / 1.00 where measurable; in "
+           "cosmetics and spirits every brand scored a perfect six of six models, both "
+           "waves - 100% exact match, but no ranking to test."),
+    "P4": ("Retention of below-floor status - 8/8, 14/14, 9/10, 10/10, 15/15; pooled "
+           "56/57 (98%). The single mover was one cosmetics brand."),
 }
 
 CLOSING = (
-    "The most valuable findings sometimes map their own edges. Provider authorship "
-    "leaves a faint, real mark on how consistently AI models recall a brand - worth "
-    "knowing, easy to overstate. But the question brands will most want answered - is "
-    "this about consistency, or just familiarity? - turns out to be unanswerable for "
-    "the brands that need it least, and answerable only for those still earning "
-    "recognition. That boundary, not the faint signal, is what to carry forward: "
-    "read the provider lens where recognition is still being won, and treat it with "
-    "caution once it has been."
+    "The first wave of this program established that AI systems hold measurable, "
+    "structured brand standings. This study establishes that those standings persist "
+    "- through three weeks, through whatever silent updates providers shipped, through "
+    "852 fresh probes. Stability is what makes a measurement worth managing: a number "
+    "that holds still long enough to be moved deliberately. The brands with the most "
+    "at stake are the ones the models never mention - because as of this measurement, "
+    "nothing about waiting changes that."
 )

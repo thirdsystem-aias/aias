@@ -1,9 +1,9 @@
 # SSRN Submission Packet — AIAS™ v0.34
 
-**Paper:** Provider-Asymmetric Consistency in AI Brand Availability
+**Paper:** Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity
 **File to upload:** `papers/v0_34/v0_34_ssrn_paper.pdf`
 **Submission target:** SSRN — papers.ssrn.com → Submit a paper
-**Date prepared:** [DATE NOT FOUND IN YAML]
+**Date prepared:** June 2026
 
 ---
 
@@ -26,25 +26,25 @@
 ### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-Provider-Asymmetric Consistency in AI Brand Availability: A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation
+Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.34)
 ```
 
 ### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
 
 ```
-A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation
+A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.34)
 ```
 
 ### Abstract (paste verbatim — matches paper page 2)
 
 ```
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third layer of brand availability, complementing the Mental and Physical Availability of the Ehrenberg-Bass tradition. Within the AIAS™ (AI Availability Score) program, the Consistency component is operationalized as CV-CPC, a coefficient-of-variation statistic over per-model recall; a prior methodology lock found CV-CPC strongly presence-coupled ($|\rho| = 0.77$) and did not adopt it as a validated Consistency instrument. This pre-registered re-analysis tests, across five panel-uniform substrates (112 brands; a fixed six-model panel spanning three providers --- Anthropic, OpenAI, and Google), whether the per-model recall structure underlying CV-CPC is systematically organized by provider, and whether any such organization exceeds the provider structure present in Presence (recognition). Between-provider organization of per-model recall is statistically robust but modest: the between-provider variance share exceeds its permutation null ($p < 0.001$) and survives all five leave-one-substrate-out refits, though its excess over a high small-group chance floor is small. The pre-registered Beyond-Presence gate met its criterion yet does not establish dissociation: binary recognition is saturated among recalled brands --- carrying negligible between-provider variance --- so the gate collapses onto the recall-asymmetry test rather than contrasting with Presence. This inverts the pre-registered directional prediction and reframes the gate's behavior as the study's principal methodological result: a Beyond-Presence contrast is uninformative wherever recognition is saturated. Provider rank-stability was uninformative as pre-registered, underpowered at five substrates. The study positions provider as a modest organizing factor in CV-CPC recall and bounds the conditions under which the AIAS Beyond-Presence gate can fire.
+Whether quantities derived from large language model (LLM) outputs are stable enough over time to function as brand-measurement instruments is an open empirical question. This study reports a pre-registered, two-wave longitudinal re-acquisition of the AIAS™ measurement protocol across five product-category panels (audiophile headphones, skincare, cosmetics, automotive, premium spirits; 112 brand units), re-running each panel's original acquisition pipeline verbatim 15–21 days after first measurement against a fixed six-model panel spanning three providers. Four hypotheses were pre-registered and externally anchored before re-acquisition. H_CPC_Temporal_Stability was CONFIRMED: per-brand rank order of the CV-based consistency quantity (CV-CPC) was stable in four of five categories (Spearman ρ = 0.76–0.96; the exception, the smallest panel, ρ = 0.42, n.s.). H_CPC_Drift_Beyond_Presence was MARGINAL by structural collapse: recognition saturation in four of five categories rendered Presence-residualization a no-op, leaving one informative category — in which residualized stability (ρ = 0.61) exceeded raw stability (ρ = 0.42). H_Presence_Temporal_Stability was MARGINAL by ceiling: rank stability was high wherever rank variance existed (ρ = 0.81–1.00), but two categories were recognition-constant in both waves. Phantom status (below-recall-floor) persisted in 56 of 57 brands. The findings characterize CV-CPC's temporal behavior without validating it as a Consistency instrument, document pervasive recognition-ceiling effects in consumer categories, and motivate the mean-independent instrument requirement of the forthcoming v1.8 methodology revision.
 ```
 
 ### Keywords (paste verbatim, semicolon-separated)
 
 ```
-AI Availability; AI Availability Score (AIAS); Consistency; CV-CPC; large language models; provider asymmetry; variance decomposition; recognition saturation; pre-registered re-analysis; brand availability; Ehrenberg-Bass; pre-registration
+AI availability; brand availability; AIAS; large language models; temporal stability; test–retest reliability; consistency; CV-CPC; recognition saturation; pre-registration; Ehrenberg-Bass; brand recall
 ```
 
 ### JEL codes (paste verbatim)
@@ -53,7 +53,7 @@ AI Availability; AI Availability Score (AIAS); Consistency; CV-CPC; large langua
 M31; L86; L15; D83; M37
 ```
 
-**JEL rationale (for your reference):** M31; L86; L15; D83; M37
+**JEL rationale (for your reference):** M31; L86, L15, D83, M37
 
 ---
 
@@ -96,7 +96,7 @@ ORCID: 0009-0003-8968-9990
 ### Declaration of Interest (paste verbatim)
 
 ```
-The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. This study is a secondary re-analysis of data assembled in earlier phases (v0.19--v0.23); it introduces no new brand selection or data collection. Two of the five re-analyzed substrates intersect businesses owned by Samsung Electronics: audiophile headphones, a category that includes brands of Harman International (a Samsung subsidiary), and automotive, where Samsung interests include Harman automotive systems and Samsung SDI. The brand registries were fixed under the locked protocol of the original phases, scoring is fully automated against those registries, and the analysis reported here was pre-registered (tag `v0.34-prereg-r1`) before any scoring; the author's affiliation played no role in registry construction, scoring, or the resulting verdicts. Samsung Electronics had no role in the design, conduct, analysis, or reporting of this work.
+The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. This study re-acquires measurements against brand registries fixed in earlier phases (v0.19--v0.23); it performs no new brand selection, and each registry carries its source-phase conflict-of-interest handling forward unchanged. Two items of record apply. In the automotive registry, Samsung subsidiaries hold tier-2/3 component supply relationships with several registry brands --- Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment) --- characterized in the source phase as non-competitive, with no brand-level overlap, and imposing no operational restriction on registry composition (v0.22 Declarations; screened in v0.22 DEVIATIONS Entry 0, Part B). In the audiophile-headphones registry, AKG was substituted with Denon before the v0.19 pre-registration lock because AKG's parent, Harman International, is a Samsung subsidiary. Acquisition, coding, and scoring are fully automated against the locked registries; the pre-registration was tagged and externally deposited before any second-wave call; and the author's affiliation played no role in registry construction, acquisition, scoring, or the resulting verdicts. Samsung Electronics had no role in the design, conduct, analysis, or reporting of this work.
 ```
 
 ### Funder (paste verbatim)
@@ -114,7 +114,7 @@ Not applicable; no human subjects; public APIs and LLM prompts only.
 ### Data and code availability (paste verbatim)
 
 ```
-Pre-registration, scoring code, per-brand outputs, and verdicts are deposited at OSF (`osf.io/ec6wh`, component `v34`): the locked pre-registration (`v0.34-prereg-r1`), the scorer (`score_v34.py`), the per-brand recall/recognition vectors and $\eta^2$ values (`v34_eta2.csv`), the verdicts (`v34_longitudinal_t1_t2_omnibus_verdicts.json`) including reconciliation and computation notes, and the post-hoc recognition-source audit.
+All materials are deposited at OSF, `ec6wh/v34`: the locked pre-registration (`v0.34-prereg-r1`, externally deposited before acquisition), both waves' acquisition outputs and the provenance sidecar, the acquisition manifest with per-substrate probe-set SHA-256 checksums, the scorer (`score_v34.py`), the verdicts (`v34_verdicts.json`), and the figure sources.
 ```
 
 ---
@@ -126,7 +126,7 @@ Pre-registration, scoring code, per-brand outputs, and verdicts are deposited at
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Provider-Asymmetric Consistency in AI Brand Availability: A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation. SSRN Working Paper 6909019. https://ssrn.com/abstract=6909019
+González Castro, P. U. (2026). Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.34). SSRN Working Paper [ABSTRACT_ID].
 ```
 
 ---

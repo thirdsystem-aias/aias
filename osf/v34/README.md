@@ -25,6 +25,22 @@ v1.7; **v0.31 (SSRN 6880959) is deliberately uncited** (by design).
 **v0.23 normalization footnote.** v0.23 recognition is scored as `r_level`; it is normalized
 to binary (R0→0, else→1) for C_P, identically in both waves.
 
+## t2 acquisition provenance (factual record)
+
+- **Acquisition spend = 852 LLM calls** (Phase A 672 + Phase B 180), the locked t2 wave across
+  the five substrates. Provenance sidecar `data/v34_provenance.csv` captures the provider-returned
+  dated id per successful call (Anthropic/OpenAI return dated snapshots; Gemini exposes the alias).
+  Errored calls are not teed, so sidecar row counts run below call counts.
+- **v0.23 coding is additional (not acquisition):** ~144 LLM recognition-judge calls
+  (`score_v0_23.judge_recognition`, pinned alias `claude-sonnet-4-5` — the same judge as t1),
+  tagged `A_judge` in the sidecar. These code raw responses into `r_level`; they are NOT part of
+  the 852-call acquisition figure. v0.23 Phase B recall coding is deterministic (string match).
+- **Transient-failure retries (network/DNS/503; faithful, same prompt + pinned model, temp=0):**
+  v0.19 Phase A 10 calls; v0.23 52 calls (all 36 Phase B + 16 Phase A, a network-window collapse);
+  v0.23 recognition-judge 25 R_ERR calls. All resolved to 0 residual errors before scoring.
+- **t2 acquisition dates:** all five substrates re-acquired 2026-06-10 (Δt 15–21 days; see
+  `v34_verdicts.json` `delta_t`).
+
 ## Tree
 
 - `data/` — Phase A and Phase B re-acquisition outputs (t₂), both waves' recomputed metrics

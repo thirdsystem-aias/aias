@@ -132,6 +132,27 @@ def extract_inline_field(body: str, label: str) -> str | None:
 
 # ----- Packet emission -------------------------------------------------------
 
+# --- Plain-text cleaning for SSRN paste fields (inverse of the build's UNICODE_SUBS) ---
+# SSRN's abstract/keyword fields are plain text; the paper source is LaTeX/markdown.
+# Map the macros that occur in abstract-register prose to Unicode, then drop math
+# delimiters and code-span backticks and normalize dashes. Local to the packet's
+# abstract + keywords fields only. Longest macros first so \geq/\leq are not clipped.
+_PACKET_PLAINTEXT_SUBS = {
+    r"\approx": "≈", r"\Delta": "Δ", r"\rho": "ρ", r"\eta": "η",
+    r"\geq": "≥", r"\leq": "≤", r"\ge": "≥", r"\le": "≤",
+}
+
+
+def clean_for_plaintext(s: str) -> str:
+    """Render a LaTeX/markdown field as plain text for SSRN paste."""
+    for macro, uni in _PACKET_PLAINTEXT_SUBS.items():
+        s = s.replace(macro, uni)
+    s = s.replace("$", "")                            # drop math delimiters (macros mapped)
+    s = s.replace("`", "")                            # drop code-span backticks
+    s = s.replace("---", "—").replace("--", "–")      # em-dash then en-dash (order matters)
+    return s
+
+
 def generate_packet(phase_display: str, phase_snake: str,
                     paper_md_path: Path) -> str:
     """Build the full packet markdown text."""
@@ -153,11 +174,11 @@ def generate_packet(phase_display: str, phase_snake: str,
 
     # Abstract: prefer markdown `# Abstract {-}` section, fallback to YAML
     abstract = extract_section(body, r"Abstract\b") or yaml.get("abstract", "")
-    abstract = re.sub(r"\n+", " ", abstract).strip()
+    abstract = clean_for_plaintext(re.sub(r"\n+", " ", abstract).strip())
 
     # Keywords + JEL: inline bold fields after abstract
     keywords = extract_inline_field(body, "Keywords") or "[KEYWORDS NOT FOUND]"
-    keywords = re.sub(r"\s+", " ", keywords).strip()
+    keywords = clean_for_plaintext(re.sub(r"\s+", " ", keywords).strip())
 
     jel = extract_inline_field(body, "JEL codes") or "[JEL NOT FOUND]"
     jel = re.sub(r"\s+", " ", jel).strip()
