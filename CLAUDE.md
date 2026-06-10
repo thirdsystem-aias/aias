@@ -14,7 +14,12 @@ This file gives Claude Code persistent context for the AIAS™ Presence Measurem
 
 ### Samsung COI rule — non-negotiable
 
-Samsung is disclosed **only in Declarations §COI** of formal papers. **Never** in author blocks, affiliations, or front-matter. Pre-acquisition COI screen per phase is documented as DEVIATIONS Entry 0 (confirming no brand in the panel is Samsung-affiliated).
+Samsung is disclosed **only in Declarations §COI** of formal papers. **Never** in author blocks, affiliations, or front-matter. Pre-acquisition COI screen per phase is documented as DEVIATIONS Entry 0 — documenting the COI **handling** for that panel, which is **not always a clean "no affiliation" finding**. Do not assert a blanket "no brand is Samsung-affiliated" claim; some substrates carry disclosed-but-non-disqualifying relationships (see canonical phrasings below). When a phase re-uses or carries forward a prior registry, conform its COI language to the **source phase's locked record**, not to memory — paraphrasing from memory has drifted before (e.g. "AKG and JBL" / "tier-2" both wrong).
+
+**Canonical COI phrasings (conform from these, verbatim/faithful; cite the source record):**
+
+- **v0.19 audiophile headphones — AKG→Denon substitution.** AKG was *substituted* with Denon **before the v0.19 pre-reg lock** (AKG owned by Harman International, a Samsung subsidiary, since 2016) to avoid appearance of conflict. Source: `osf/v19/PRE_REGISTRATION_v0_19.md` §2.3 + Declaration; recorded in **v0.19 DEVIATIONS Entry 1** and §5 of the SSRN paper. (NB: it was AKG only — **not** JBL.)
+- **v0.22 automotive — tier-2/3 supply-chain disclosure.** Samsung subsidiaries hold **tier-2/3** component supply relationships with several registry brands: **Harman International** (audio systems), **Samsung SDI** (battery cells), **Samsung Display** (infotainment); characterized as non-competitive with no brand-level overlap; **no operational restriction on registry composition** was imposed. Source: v0.22 locked Declarations §COI (`papers/v0_22/v0_22_ssrn_paper_draft.md`); screened in **v0.22 DEVIATIONS Entry 0 (Part B)**. (NB: names all **three** subsidiaries and the tier is **2/3**, not bare tier-2.)
 
 ### Standard SSRN/paper author block
 
@@ -122,6 +127,7 @@ Every phase follows this ship sequence:
 6. **OSF deposit** at `osf.io/ec6wh/vNN/` via `~/aias/scripts/osf_upload.py`.
 7. **SSRN webform submission** → returns abstract ID (1–3 business days).
 8. **Cross-citation backfill** in dependent papers (Tri-System MSI WP, Routledge monograph).
+9. **Phase-close fast-forward:** fast-forward `program-docs` to the closed phase branch (`git checkout program-docs && git merge --ff-only vN && git push origin program-docs`), then push. Skipping this is what caused the v0.34 branch-base blocker — `program-docs` had silently fallen 50 commits behind the latest phase.
 
 For methodology papers (v1.N): no new acquisition; retrospective scoring against existing phase corpus. Same pre-reg discipline at git tag `v1.N-prereg-rN`.
 
@@ -242,6 +248,7 @@ Foundational: *AI Availability: Extending Mental and Physical Availability into 
 | v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 — WITHDRAWN (inactive on SSRN; inputs archived at OSF) |
 | v0.32 | CPC Version-Snapshot Stability — two-arm cross-generation test (CPC version-robustness) | 6898581 |
 | v0.33 | Provider-Asymmetric CPC — re-analysis; between-provider variance decomposition (CPC.02) | 6909019 |
+| v0.34 | CPC Longitudinal t₁→t₂ Stability — first two-wave re-acquisition; CONFIRMED CV-CPC temporal stability + recognition-ceiling collapse (CPC.03) | 6915458 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
@@ -257,6 +264,8 @@ v0.28 Tech BRAND Discriminant Validity (CV.04) — SSRN 6865478. Discriminant te
 v0.29 Presence Construct-Validity Baseline (CV.05) — SSRN 6870778. Synthesis (no acquisition): assembles the v0.25 convergent leg (Presence × Google Trends, rho=0.7411, p=3.4e-05, n=24) and the v0.26 discriminant leg (Presence × Amazon BSR, rho=−0.0002, p=0.998, n=88) into a single Campbell–Fiske MTMM frame. C3 = |rho_conv| − |rho_disc| = 0.7409 > 0 with significance asymmetry intact; H_CV_Baseline CONFIRMED. Predictive validity NOT claimed (DEVIATIONS Entry 0 — needs a longitudinal t1→t2 criterion, gated to a later wave). Prereg-only tag v0.29-prereg-r1 (no scoring-locked tag — deterministic synthesis, CV-family precedent). OSF osf.io/ec6wh/v29.
 
 v0.33 Provider-Asymmetric CPC (CPC.02) — submitted to SSRN, abstract 6909019. Pre-registered re-analysis (no acquisition) of v0.31's frozen per-model inputs; 5-substrate panel-uniform omnibus (v0.19–v0.23, 112 brand units). PRIMARY H_Provider_Asymmetry CONFIRMED but modest (mean η²=0.360 vs 0.293 chance floor, MC p=7e-4, LOSO-robust). PRIMARY gate H_Provider_Beyond_Presence criterion-met (δη²=0.505, p=1e-4) but SATURATION-COLLAPSED — binary recognition is saturated among recalled brands, so the gate reduces to the recall arm and establishes no dissociation (the study's principal methodological finding). Ordinal UNINFORMATIVE (Kendall W=0.31, exact p=0.18; N=5). Phantom descriptive/mechanical. CV-CPC walled per v1.7 (not adopted). Reconciliation 72/72 bit-for-bit vs v1.7 r_per_model; v0.19/v0.23 provenance-only. Tag v0.33-prereg-r1; OSF osf.io/ec6wh/v33. Report carries a 4th descriptive figure (paper: 3, pre-registered). No DEVIATIONS.
+
+v0.34 CPC Longitudinal t₁→t₂ Stability (CPC.03) — SSRN 6915458. The program's **first externally anchored pre-registration** (tag v0.34-prereg-r1 pushed + OSF-deposited before the first t₂ call) and **first two-wave re-acquisition**: full verbatim re-run of the five omnibus substrates (v0.19–v0.23, 112 brand units) 15–21 days after t₁, fixed registries/wording, t₁-alias panel; 852 probes/wave. t₁-side parity gates passed (v1.7 r_per_model bit-for-bit for v0.20/21/22; frozen-input reproduction for v0.19/23) before acquisition. PRIMARY H_CPC_Temporal_Stability **CONFIRMED** (per-brand CV-CPC rank ρ≥0.70 in 4/5: 0.78/0.89/0.96/0.76; headphones 0.42 n.s., n=8 the miss). PRIMARY gate H_CPC_Drift_Beyond_Presence **MARGINAL by structural collapse** (recognition saturated ≥90% in 4/5 → residualization a no-op; only headphones informative, residual 0.61 > raw 0.42). SECONDARY H_Presence_Temporal_Stability **MARGINAL by ceiling** (ρ 0.81/0.99/1.00 where measurable; v0.21/v0.23 C_P constant 6/6 → undefined). TERTIARY phantom persistence 56/57 (0.98). The two saturation MARGINALs are the substantive result — they hand v1.8 its empirical mandate (mean-independent consistency instrument + graded recognition signal). v0.31 deliberately uncited (lineage via substrate phases + v1.7). Alias pinning (dated-snapshot infeasible — t₁ recorded aliases only); t₂ captures returned dated IDs as the t₃ baseline. Transient-failure retries (v19 ×10, v23 ×52, judge ×25) resolved to 0 residual before scoring; v23 recognition judge (claude-sonnet-4-5, 144 calls) is coding, not part of the 852. Entry 0 = COI carry-forward (v0.22 tier-2/3 Harman/SDI/Display; v0.19 AKG→Denon). OSF osf.io/ec6wh/v34.
 
 ---
 

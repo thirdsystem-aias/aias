@@ -29,6 +29,7 @@
 - **v0.35** — Naive-Phantom × CPC: do phantom-heavy brands have distinct CPC signatures?
 - **v0.36** — CPC regime / typology emergence: does CPC have its own regime structure or inherit Four-Regime Taxonomy?
 - **v1.8** — CPC typology methodology lock.
+  - *Upstream motivation queue (cite when drafting):* v1.7 (6878818 — CV-CPC not adopted; Presence-coupling ρ=0.77), v0.32 (6898581 — version-snapshot fragility), v0.33 (6909019 — provider saturation-collapse), v0.34 (6915458 — **temporal stability of CV-CPC rank order CONFIRMED, so the machinery reproduces; recognition-ceiling effects in 4/5 consumer categories structurally collapse both the Beyond-Presence gate and the Presence rank-test → demonstrated necessity of a mean-independent consistency instrument *and* a graded recognition signal**).
 - **v0.37** — CPC × Identity Load moderator test.
 - **v0.38** — CPC × Phantom Brand Persistence test.
 - **v0.39** — Presence × CPC dissociation: first cross-component diagnostic study.
