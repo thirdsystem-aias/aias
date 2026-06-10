@@ -241,6 +241,7 @@ Foundational: *AI Availability: Extending Mental and Physical Availability into 
 | v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
 | v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 — WITHDRAWN (inactive on SSRN; inputs archived at OSF) |
 | v0.32 | CPC Version-Snapshot Stability — two-arm cross-generation test (CPC version-robustness) | 6898581 |
+| v0.33 | Provider-Asymmetric CPC — re-analysis; between-provider variance decomposition (CPC.02) | 6909019 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
@@ -254,6 +255,8 @@ v0.27 B2B SaaS Convergent Validity — SSRN 6854758. H_CV3_Primary FALSIFIED (rh
 v0.28 Tech BRAND Discriminant Validity (CV.04) — SSRN 6865478. Discriminant test of AIAS Presence vs the BRAND human-norm database (familiarity 1–7, recognition d′) on a frozen 24-brand Technology panel (seed 280400). H_Disc_Recognition CONFIRMED (rho=0.379, |rho|<0.50, BCa CI upper 0.714 excludes the 0.74 reducibility threshold); H_Disc_Familiarity UNDETERMINED (rho=0.593, BCa CI [0.18, 0.83] spans all three bands at n=24); H_Dissociation FULL (descriptive). Presence pinned to v0.25 presence_composite at v1.6-canonical /18 recall (r2 Entry 2). Blind acquisition; one-shot scoring. Tags v0.28-prereg-r1/r2, -acquisition-locked, -results-locked.
 
 v0.29 Presence Construct-Validity Baseline (CV.05) — SSRN 6870778. Synthesis (no acquisition): assembles the v0.25 convergent leg (Presence × Google Trends, rho=0.7411, p=3.4e-05, n=24) and the v0.26 discriminant leg (Presence × Amazon BSR, rho=−0.0002, p=0.998, n=88) into a single Campbell–Fiske MTMM frame. C3 = |rho_conv| − |rho_disc| = 0.7409 > 0 with significance asymmetry intact; H_CV_Baseline CONFIRMED. Predictive validity NOT claimed (DEVIATIONS Entry 0 — needs a longitudinal t1→t2 criterion, gated to a later wave). Prereg-only tag v0.29-prereg-r1 (no scoring-locked tag — deterministic synthesis, CV-family precedent). OSF osf.io/ec6wh/v29.
+
+v0.33 Provider-Asymmetric CPC (CPC.02) — submitted to SSRN, abstract 6909019. Pre-registered re-analysis (no acquisition) of v0.31's frozen per-model inputs; 5-substrate panel-uniform omnibus (v0.19–v0.23, 112 brand units). PRIMARY H_Provider_Asymmetry CONFIRMED but modest (mean η²=0.360 vs 0.293 chance floor, MC p=7e-4, LOSO-robust). PRIMARY gate H_Provider_Beyond_Presence criterion-met (δη²=0.505, p=1e-4) but SATURATION-COLLAPSED — binary recognition is saturated among recalled brands, so the gate reduces to the recall arm and establishes no dissociation (the study's principal methodological finding). Ordinal UNINFORMATIVE (Kendall W=0.31, exact p=0.18; N=5). Phantom descriptive/mechanical. CV-CPC walled per v1.7 (not adopted). Reconciliation 72/72 bit-for-bit vs v1.7 r_per_model; v0.19/v0.23 provenance-only. Tag v0.33-prereg-r1; OSF osf.io/ec6wh/v33. Report carries a 4th descriptive figure (paper: 3, pre-registered). No DEVIATIONS.
 
 ---
 

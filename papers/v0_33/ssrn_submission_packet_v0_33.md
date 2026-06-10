@@ -126,7 +126,7 @@ Pre-registration, scoring code, per-brand outputs, and verdicts are deposited at
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Provider-Asymmetric Consistency in AI Brand Availability: A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Provider-Asymmetric Consistency in AI Brand Availability: A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation. SSRN Working Paper 6909019. https://ssrn.com/abstract=6909019
 ```
 
 ---

@@ -87,8 +87,7 @@ Tri-System foundation (SSRN 6659000). Cross-category CPC baseline — v0.31 (SSR
 
 ## Citation
 
-González Castro, P. U. (2026). *AIAS v0.33 — Provider-Asymmetric CPC: a
-pre-registered re-analysis.* SSRN [abstract ID backfilled on submission].
+González Castro, P. U. (2026). *Provider-Asymmetric Consistency in AI Brand Availability: A pre-registered re-analysis: modest between-provider structure in CV-CPC recall, and the limits of a Beyond-Presence gate under recognition saturation.* SSRN 6909019. https://ssrn.com/abstract=6909019
 
 Author: Pablo Ulpiano González Castro · pablou@pablou.com · pablou.com ·
 ORCID 0009-0003-8968-9990. Conflict-of-interest disclosure: see the paper's
