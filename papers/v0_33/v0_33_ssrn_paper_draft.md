@@ -43,7 +43,7 @@ AI Availability --- the discoverability and representation of a brand in the out
 
 Between-provider organization of per-model recall is statistically robust but modest: the between-provider variance share exceeds its permutation null ($p < 0.001$) and survives all five leave-one-substrate-out refits, though its excess over a high small-group chance floor is small. The pre-registered Beyond-Presence gate met its criterion yet does not establish dissociation: binary recognition is saturated among recalled brands --- carrying negligible between-provider variance --- so the gate collapses onto the recall-asymmetry test rather than contrasting with Presence. This inverts the pre-registered directional prediction and reframes the gate's behavior as the study's principal methodological result: a Beyond-Presence contrast is uninformative wherever recognition is saturated. Provider rank-stability was uninformative as pre-registered, underpowered at five substrates. The study positions provider as a modest organizing factor in CV-CPC recall and bounds the conditions under which the AIAS Beyond-Presence gate can fire.
 
-**Keywords:** AI Availability; AI Availability Score (AIAS); Consistency; CV-CPC; large language models; provider asymmetry; variance decomposition; recognition saturation; pre-registered re-analysis; brand availability
+**Keywords:** AI Availability; AI Availability Score (AIAS); Consistency; CV-CPC; large language models; provider asymmetry; variance decomposition; recognition saturation; pre-registered re-analysis; brand availability; Ehrenberg-Bass; pre-registration
 
 **JEL codes:** M31; L86; L15; D83; M37
 
@@ -57,13 +57,13 @@ Because CV-CPC is not a validated Consistency measure, this study does not attem
 
 The motivation is cross-sectional. A prior phase found CV-CPC version-stability to be provider-dependent --- confirmed in aggregate but fragile under leave-one-provider-out, the overall stability resting disproportionately on a single provider --- a result in the *temporal* dimension (v0.32; SSRN 6898581). The present study asks the orthogonal *cross-sectional* question at a single fixed model snapshot: holding versions constant, do providers differ systematically? The two dimensions are kept distinct throughout.
 
-The work is a pre-registered re-analysis: it issues no new model queries and is a secondary analysis of frozen per-model inputs from an earlier cross-category baseline (v0.31; SSRN 6880959), with the full methodology --- hypotheses, decomposition, null model, and decision rules --- locked at a tagged commit before any scoring was run. Three results follow. Between-provider organization of per-model recall is statistically robust but modest. The pre-registered Beyond-Presence gate meets its numerical criterion but does not establish a dissociation: among recalled brands, binary recognition proves saturated, so the gate collapses onto the recall-asymmetry test rather than contrasting with it. That collapse --- not the asymmetry itself --- is the study's principal contribution: it bounds the conditions under which a Beyond-Presence contrast can be informative at all.
+The work is a pre-registered re-analysis: it issues no new model queries and is a secondary analysis of frozen per-model inputs from an earlier cross-category baseline (v0.31; archived at OSF, osf.io/ec6wh/v33), with the full methodology --- hypotheses, decomposition, null model, and decision rules --- locked at a tagged commit before any scoring was run. Three results follow. Between-provider organization of per-model recall is statistically robust but modest. The pre-registered Beyond-Presence gate meets its numerical criterion but does not establish a dissociation: among recalled brands, binary recognition proves saturated, so the gate collapses onto the recall-asymmetry test rather than contrasting with it. That collapse --- not the asymmetry itself --- is the study's principal contribution: it bounds the conditions under which a Beyond-Presence contrast can be informative at all.
 
 # 2. Method
 
 ## 2.1 Design and data provenance
 
-The study is a secondary re-analysis; no language-model queries were issued. The frozen inputs are the per-model recall and recognition records assembled for an earlier cross-category CPC baseline (v0.31; SSRN 6880959), restricted to the five substrates carrying the program's canonical six-model panel: audiophile headphones (16 brands), skincare, cosmetics, automotive, and premium spirits (24 each), for 112 brand units. Three substrates fall outside the panel-uniform set: two are structurally incompatible (a 14-model legacy panel without per-model recall; off-panel model versions), and one remains unscored. A sixth substrate (indie fragrance) carries the panel but a non-comparable three-frame geometry and enters only as a walled descriptive concordance check.
+The study is a secondary re-analysis; no language-model queries were issued. The frozen inputs are the per-model recall and recognition records assembled for an earlier cross-category CPC baseline (v0.31; archived at OSF, osf.io/ec6wh/v33), restricted to the five substrates carrying the program's canonical six-model panel: audiophile headphones (16 brands), skincare, cosmetics, automotive, and premium spirits (24 each), for 112 brand units. Three substrates fall outside the panel-uniform set: two are structurally incompatible (a 14-model legacy panel without per-model recall; off-panel model versions), and one remains unscored. A sixth substrate (indie fragrance) carries the panel but a non-comparable three-frame geometry and enters only as a walled descriptive concordance check.
 
 Because the baseline's published outputs are brand-collapsed, per-model granularity was recovered by re-running its certified extraction across three heterogeneous input formats; this recompute is the operative path, not a fallback. As a reproducibility guardrail, recomputed per-model recall vectors for three substrates were required to reproduce the methodology-lock's stored per-model column bit-for-bit; the check passed for all 72 brands in scope (aligned by model name, the lock having stored models in sorted rather than panel order). The remaining two substrates have no external anchor and rest on the baseline's extraction provenance, which is stated rather than overclaimed.
 
@@ -137,29 +137,29 @@ The clearest implication is for the next Consistency instrument. The recall-arm 
 
 # References {-}
 
-*(Program-paper titles below are working descriptors pending confirmation against the SSRN registry; abstract IDs and URLs are canonical.)*
+*(Titles verified against the SSRN registry; abstract IDs and URLs are canonical. The v0.31 precursor's SSRN working paper has been withdrawn — its frozen per-model inputs are archived at OSF, osf.io/ec6wh/v33.)*
 
-González Castro, P. U. (2026). *Tri-System Brand Growth: AI Availability as a third brand-growth layer.* SSRN. https://ssrn.com/abstract=6659000
+González Castro, P. U. (2026). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval.* SSRN. https://ssrn.com/abstract=6659000
 
-González Castro, P. U. (2026). *AIAS 1.0: AI Availability Presence --- synthesis.* SSRN. https://ssrn.com/abstract=6817841
+González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol — Synthesis under Locked v1.6 Methodology.* SSRN. https://ssrn.com/abstract=6817841
 
-González Castro, P. U. (2026). *CV-CPC Consistency instrument specification pilot (v0.30).* SSRN. https://ssrn.com/abstract=6875319
+González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't — An Instrument-Specification Pilot of the AIAS™ Consistency Component (CPC) across Skincare, Cosmetics, and Automotive.* SSRN. https://ssrn.com/abstract=6875319
 
-González Castro, P. U. (2026). *AIAS methodology v1.2: Four-Regime Taxonomy.* SSRN. https://ssrn.com/abstract=6761698
+González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy.* SSRN. https://ssrn.com/abstract=6761698
 
-González Castro, P. U. (2026). *AIAS methodology v1.3: Phase A pivot-validation.* SSRN. https://ssrn.com/abstract=6797679
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification (v1.3).* SSRN. https://ssrn.com/abstract=6797679
 
-González Castro, P. U. (2026). *AIAS methodology v1.4: Multi-component construct.* SSRN. https://ssrn.com/abstract=6799479
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability.* SSRN. https://ssrn.com/abstract=6799479
 
-González Castro, P. U. (2026). *AIAS methodology v1.5: Multi-statistic C2 and two-channel recall.* SSRN. https://ssrn.com/abstract=6810758
+González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition.* SSRN. https://ssrn.com/abstract=6810758
 
-González Castro, P. U. (2026). *AIAS methodology v1.6: Recognition pre-screen, IL-Direct, and Phantom Brand Persistence.* SSRN. https://ssrn.com/abstract=6816340
+González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension.* SSRN. https://ssrn.com/abstract=6816340
 
-González Castro, P. U. (2026). *AIAS methodology v1.7: CPC methodology lock.* SSRN. https://ssrn.com/abstract=6878818
+González Castro, P. U. (2026). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component of AIAS™.* SSRN. https://ssrn.com/abstract=6878818
 
-González Castro, P. U. (2026). *CPC cross-category baseline (v0.31).* SSRN. https://ssrn.com/abstract=6880959
+González Castro, P. U. (2026). *Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC).* AIAS v0.31 — SSRN working paper withdrawn; frozen per-model inputs archived at OSF, osf.io/ec6wh/v33.
 
-González Castro, P. U. (2026). *CPC version-snapshot stability (v0.32).* SSRN. https://ssrn.com/abstract=6898581
+González Castro, P. U. (2026). *Version-Snapshot Stability of an AI-Presence Consistency Score.* SSRN. https://ssrn.com/abstract=6898581
 
 Romaniuk, J., & Sharp, B. (2022). *How Brands Grow: Part 2* (Rev. ed.). Oxford University Press.
 

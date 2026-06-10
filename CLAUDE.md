@@ -210,13 +210,13 @@ Usage: `python ~/aias/scripts/osf_upload.py <local_dir> <remote_path>`. Standard
 
 Cite **all five** methodology papers in every phase paper's bibliography:
 
-- v1.2 — *Methodological Notes on Construct Validity and the Four-Regime Taxonomy*. SSRN 6761698.
-- v1.3 — *Phase A Pivot-Validation Specification*. SSRN 6797679.
-- v1.4 — *Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
-- v1.5 — *Multi-Statistic C2 and Two-Channel Recall Decomposition*. SSRN 6810758.
+- v1.2 — *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy*. SSRN 6761698.
+- v1.3 — *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification (v1.3)*. SSRN 6797679.
+- v1.4 — *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+- v1.5 — *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition*. SSRN 6810758.
 - v1.6 — *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension*. SSRN 6816340.
 
-Foundational: *Tri-System Brand Growth* (SSRN 6659000).
+Foundational: *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval* (SSRN 6659000).
 
 ---
 
@@ -239,7 +239,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | v0.28 | Tech BRAND Discriminant Validity (CV.04) | 6865478 |
 | v0.29 | Presence Construct-Validity Baseline (CV.05) | 6870778 |
 | v0.30 | Consistency Component Instrument Pilot (CPC.01) | 6875319 |
-| v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 |
+| v0.31 | CPC Cross-Category Baseline — 5-substrate omnibus, channel-agnostic generalization | 6880959 — WITHDRAWN (inactive on SSRN; inputs archived at OSF) |
 | v0.32 | CPC Version-Snapshot Stability — two-arm cross-generation test (CPC version-robustness) | 6898581 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |

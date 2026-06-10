@@ -83,8 +83,7 @@ compare would have spuriously failed).
 
 CV-CPC specification — v0.30 (SSRN 6875319). Methodology lock and non-adoption —
 v1.7 (SSRN 6878818). AI Availability framework — AIAS 1.0 (SSRN 6817841);
-Tri-System foundation (SSRN 6659000). Cross-category CPC baseline — v0.31
-(SSRN 6880959). Model-version snapshot — v0.32 (SSRN 6898581).
+Tri-System foundation (SSRN 6659000). Cross-category CPC baseline — v0.31 (SSRN working paper withdrawn; frozen inputs archived in this OSF component). Model-version snapshot — v0.32 (SSRN 6898581).
 
 ## Citation
 
