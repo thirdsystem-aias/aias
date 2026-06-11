@@ -70,6 +70,21 @@ PHASE_SSRN_REGISTRY = {
     "v0.22": ("Automotive", 6829118),
     "v0.23": ("Premium spirits", 6834298),
     "v0.24": ("B2B SaaS", 6838802),
+    # v0.25–v0.29 are construct-validity studies (not substrate-presence papers), so each
+    # sets its real title. v0.25/v0.26 use the canonical registry short-form (their in-repo
+    # paper drafts carry a stale clone title); v0.27 has no draft yet. v0.31 is intentionally
+    # absent (WITHDRAWN on SSRN; lineage carried via substrate phases + v1.7, per v0.34).
+    "v0.25": {"substrate": "B2B SaaS Construct Validity", "ssrn_id": 6842138,
+              "title": "B2B SaaS Construct Validity"},
+    "v0.26": {"substrate": "Amazon BSR Discriminant Validity", "ssrn_id": 6847678,
+              "title": "Amazon BSR Discriminant Validity"},
+    "v0.27": {"substrate": "B2B SaaS Convergent Validity", "ssrn_id": 6854758,
+              "title": "B2B SaaS Convergent Validity"},
+    "v0.28": {"substrate": "Tech BRAND Discriminant Validity (CV.04)", "ssrn_id": 6865478,
+              "title": "AI Availability is Not Reducible to Recognition Memory --- "
+                       "and is Underpowered Against Familiarity at n = 24"},
+    "v0.29": {"substrate": "Presence Construct-Validity Baseline (CV.05)", "ssrn_id": 6870778,
+              "title": "The Presence Component Is Construct-Valid"},
     # Entry schema: a value is either the legacy 2-tuple (substrate, ssrn_id) OR a
     # dict carrying an optional `title` (or `short_title`) that overrides the
     # "AI Presence in {substrate}" descriptor in generate_upstream_phases().
@@ -80,6 +95,13 @@ PHASE_SSRN_REGISTRY = {
         "title": 'Recognition Saturates, Consistency Doesn\'t — '
                  'An Instrument-Specification Pilot of the AIAS Consistency Component (CPC)',
     },
+    # v0.31 intentionally omitted (WITHDRAWN). CPC re-analysis phases below set real titles.
+    "v0.32": {"substrate": "CPC Version-Snapshot Stability", "ssrn_id": 6898581,
+              "title": "Version-Snapshot Stability of an AI-Presence Consistency Score"},
+    "v0.33": {"substrate": "Provider-Asymmetric CPC (CPC.02)", "ssrn_id": 6909019,
+              "title": "Provider-Asymmetric Consistency in AI Brand Availability"},
+    "v0.34": {"substrate": "CPC Longitudinal t1->t2 Stability (CPC.03)", "ssrn_id": 6915458,
+              "title": "Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity"},
 }
 
 METHODOLOGY_SSRN_REGISTRY = {
@@ -88,6 +110,8 @@ METHODOLOGY_SSRN_REGISTRY = {
     "v1.4": ("Recognition × Recall Decomposition", 6799479),
     "v1.5": ("Multi-Statistic C2 and Two-Channel Recall", 6810758),
     "v1.6": ("Substrate Pre-Screening, Independent Moderator, Phantom Extension", 6816340),
+    "v1.7": ("CPC Consistency --- Pre-Registered Negative Result "
+             "(CV not independent of Presence)", 6878818),
 }
 
 SYNTHESIS_SSRN_REGISTRY = {
