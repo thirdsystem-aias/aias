@@ -1380,7 +1380,7 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         "<i>Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast: "
         "A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs "
         "(AIAS CPC, v0.35)</i>. "
-        "Third System (SSRN pending). thirdsystem.ai/v35"
+        "Third System. SSRN 6921758, https://ssrn.com/abstract=6921758"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
