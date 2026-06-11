@@ -47,6 +47,7 @@ UNICODE_SUBS = [
     ("\u2713", r"\checkmark"),   # ✓
     # CV.04 glyph gaps surfaced by xelatex/Carlito on the v0.35 source:
     ("ρ", r"$\rho$"),       # rho (19x; Carlito has no Greek)
+    ("δ", r"$\delta$"),     # delta (Cliff's delta, 23x; Carlito has no Greek)
     ("Δ", r"$\Delta$"),     # Delta (ΔCPC throughout; Carlito has no Greek)
     ("·", r"$\cdot$"),      # middle dot (0.5·SD tolerance)
     ("μ", r"$\mu$"),        # mu (CPC level/mean; Carlito has no Greek) — prose only; math uses \mu
@@ -55,6 +56,8 @@ UNICODE_SUBS = [
     ("≫", r"$\gg$"),        # much-greater-than
     ("→", r"$\rightarrow$"),# rightwards arrow
     ("≈", r"$\approx$"),    # almost-equal
+    ("√", r"$\surd$"),      # radical sign (1/√mean mechanical note)
+    ("⟺", r"$\Longleftrightarrow$"),  # iff (phantom flag <-> below-floor, §2.3)
     ("±", r"\textpm{}"),    # plus-minus (text-mode; $\pm$ breaks when followed by a digit in pandoc)
     ("₁", r"$_{1}$"),
     ("₂", r"$_{2}$"),

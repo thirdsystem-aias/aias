@@ -1,42 +1,12 @@
----
-title: "Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast"
-subtitle: "A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs"
-date: "June 2026"
-mainfont: "Carlito"
-fontsize: 11pt
-geometry: [letterpaper, margin=1in]
-header-includes: |
-  \usepackage{setspace}
-  \usepackage{float}
-  \usepackage{caption}
-  \usepackage{titlesec}
-  \setstretch{1.36}
-  \setlength{\parskip}{8pt}
-  \setlength{\parindent}{0pt}
-  \renewcommand{\maketitle}{}
-  \providecommand{\xmpquote}[1]{#1}
----
-
-\begin{titlepage}
-\setstretch{1.0}
-\setlength{\parskip}{0pt}
-\begin{center}
-
-{\LARGE \textbf{Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast}}\\[8pt]
-
-{\large A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs\\ (AIAS™ v0.35)}\\[28pt]
-
-Pablo Ulpiano González Castro\\[4pt]
-School of Visual Arts, MPS Branding Program, New York, NY \textit{(primary academic affiliation)}\\
-Third System™ (research entity; data archive and methodology venue)\\[8pt]
-Correspondence: pablou@pablou.com · pablou.com\\
-ORCID: 0009-0003-8968-9990\\[20pt]
-
-Pre-registration: \texttt{v0.35-prereg-r1} (externally anchored before analysis)\\
-Data and code: OSF \texttt{ec6wh/v35}\\
-
-\end{center}
-\end{titlepage}
+<!-- ======================================================================
+v0.35 SSRN paper — CERTIFIED BODY CONTENT (splice into cloned draft skeleton)
+Title:    Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast
+Subtitle: A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs
+All numbers certified against osf/v35/v35_verdicts.json @ 96dfd53.
+Splice rules: keep the cloned draft's YAML frontmatter + titlepage block
+(swap title/subtitle/date/version strings); conform section-header style to
+the cloned draft; this file supplies everything from Abstract to Declarations.
+====================================================================== -->
 
 # Abstract {-}
 
@@ -167,56 +137,10 @@ The direct successor is the v1.8 methodology revision, for which this study supp
 
 # Declarations {-}
 
-## Conflict of interest {-}
+**Conflict of interest.** The author is employed full-time as Director, Corporate Brand Creative and Governance, at Samsung Electronics America. v0.35 reuses the v0.19–v0.23 registries and inherits their conflict-of-interest screen (pre-registration DEVIATIONS Entry 0). Samsung subsidiaries hold tier-2/3 component supply relationships with several brands in the reused registries: Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment). These are non-competitive supply relationships; Samsung Electronics America does not produce or market passenger car brands and has no brand-level competitive overlap with any registry entry. No operational restriction on registry composition was imposed. Separately, AKG was substituted with Denon before the v0.19 pre-registration lock (AKG owned by Harman International, a Samsung subsidiary, since 2016) to avoid any appearance of conflict; the substitution preserved Cell A_Heritage's eight-brand composition, occurred prior to lock, and was AKG only (not JBL). Samsung had no role in study design, analysis, or reporting. The author's primary academic affiliation for this research is the School of Visual Arts MPS Branding Program; the research entity maintaining the data archive and methodology venue is Third System™.
 
-The author is employed full-time as Director, Corporate Brand Creative and Governance, at Samsung Electronics America. v0.35 reuses the v0.19–v0.23 registries and inherits their conflict-of-interest screen (pre-registration DEVIATIONS Entry 0). Samsung subsidiaries hold tier-2/3 component supply relationships with several brands in the reused registries: Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment). These are non-competitive supply relationships; Samsung Electronics America does not produce or market passenger car brands and has no brand-level competitive overlap with any registry entry. No operational restriction on registry composition was imposed. Separately, AKG was substituted with Denon before the v0.19 pre-registration lock (AKG owned by Harman International, a Samsung subsidiary, since 2016) to avoid any appearance of conflict; the substitution preserved Cell A_Heritage's eight-brand composition, occurred prior to lock, and was AKG only (not JBL). Samsung had no role in study design, analysis, or reporting. The author's primary academic affiliation for this research is the School of Visual Arts MPS Branding Program; the research entity maintaining the data archive and methodology venue is Third System™.
+**Funding.** Self-funded.
 
-## Funding {-}
+**Ethics.** Not applicable; no human subjects; the study analyzes archived outputs of public LLM APIs.
 
-Self-funded.
-
-## Ethics {-}
-
-Not applicable; no human subjects; the study analyzes archived outputs of public LLM APIs.
-
-## Data and code availability {-}
-
-All pre-registration artifacts, frozen input reconciliation logs, the phantom roster, scoring code, verdicts file, and figures are deposited at osf.io/ec6wh (v35/). The pre-registration is locked at git tag `v0.35-prereg-r1`, externally anchored prior to analysis. Upstream phase and methodology papers are indexed in the cross-citation registry (see `_upstream_phases.md`).
-
-# References {-}
-
-González Castro, P. U. (2026). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
-
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
-
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification* (v1.3). SSRN 6797679.
-
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
-
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
-
-González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
-
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Consistency --- A Pre-Registered Negative Result* (v1.7). SSRN 6878818.
-
-González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol* (AIAS 1.0). SSRN 6817841.
-
-González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't --- An Instrument-Specification Pilot of the AIAS™ Consistency Component (CPC) across Skincare, Cosmetics, and Automotive* (v0.30). SSRN 6875319.
-
-González Castro, P. U. (2026). *CPC Version-Snapshot Stability: A Two-Arm Cross-Generation Test* (v0.32). SSRN 6898581.
-
-González Castro, P. U. (2026). *Provider-Asymmetric CPC: A Pre-Registered Re-Analysis* (v0.33). SSRN 6909019.
-
-González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
-
-González Castro, P. U. (2026). *AI Presence in Skincare: AIAS v0.20*. SSRN 6811441.
-
-González Castro, P. U. (2026). *AI Presence in Cosmetics: AIAS v0.21*. SSRN 6815378.
-
-González Castro, P. U. (2026). *AIAS™ v0.22 --- Automotive Substrate: Phantom Brand Persistence on a Heritage-Saturated Category*. SSRN 6829118.
-
-González Castro, P. U. (2026). *AIAS™ v0.23 --- Premium Spirits Substrate*. SSRN 6834298.
-
-Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxford University Press.
-
-Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
+**Data and code availability.** All pre-registration artifacts, frozen input reconciliation logs, the phantom roster, scoring code, verdicts file, and figures are deposited at osf.io/ec6wh (v35/). The pre-registration is locked at git tag `v0.35-prereg-r1`, externally anchored prior to analysis. Upstream phase and methodology papers are indexed in the cross-citation registry (see `_upstream_phases.md`).

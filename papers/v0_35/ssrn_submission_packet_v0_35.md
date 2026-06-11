@@ -1,6 +1,6 @@
 # SSRN Submission Packet — AIAS™ v0.35
 
-**Paper:** Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity
+**Paper:** Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast
 **File to upload:** `papers/v0_35/v0_35_ssrn_paper.pdf`
 **Submission target:** SSRN — papers.ssrn.com → Submit a paper
 **Date prepared:** June 2026
@@ -26,25 +26,25 @@
 ### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.35)
+Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast: A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs
 ```
 
 ### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
 
 ```
-A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.35)
+A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs
 ```
 
 ### Abstract (paste verbatim — matches paper page 2)
 
 ```
-Whether quantities derived from large language model (LLM) outputs are stable enough over time to function as brand-measurement instruments is an open empirical question. This study reports a pre-registered, two-wave longitudinal re-acquisition of the AIAS™ measurement protocol across five product-category panels (audiophile headphones, skincare, cosmetics, automotive, premium spirits; 112 brand units), re-running each panel's original acquisition pipeline verbatim 15–21 days after first measurement against a fixed six-model panel spanning three providers. Four hypotheses were pre-registered and externally anchored before re-acquisition. H_CPC_Temporal_Stability was CONFIRMED: per-brand rank order of the CV-based consistency quantity (CV-CPC) was stable in four of five categories (Spearman ρ = 0.76–0.96; the exception, the smallest panel, ρ = 0.42, n.s.). H_CPC_Drift_Beyond_Presence was MARGINAL by structural collapse: recognition saturation in four of five categories rendered Presence-residualization a no-op, leaving one informative category — in which residualized stability (ρ = 0.61) exceeded raw stability (ρ = 0.42). H_Presence_Temporal_Stability was MARGINAL by ceiling: rank stability was high wherever rank variance existed (ρ = 0.81–1.00), but two categories were recognition-constant in both waves. Phantom status (below-recall-floor) persisted in 56 of 57 brands. The findings characterize CV-CPC's temporal behavior without validating it as a Consistency instrument, document pervasive recognition-ceiling effects in consumer categories, and motivate the mean-independent instrument requirement of the forthcoming v1.8 methodology revision.
+Phantom-flagged brands — recognized by large language models yet falling below the recall floor — recur across the AIAS™ measurement program's substrate base, and exploratory observations have suggested they may carry a distinct cross-model consistency signature. This study tests that hypothesis under pre-registration, as a re-analysis of frozen multi-substrate inputs (five categories; 112 brand units; six-model panel), using the CV-CPC quantity in its locked characterization status. Because the phantom flag and the metric are both recall-coupled by construction, the design assigns the raw contrast the role of manipulation check (it confirms as expected: pooled Cliff's δ = −0.838, p = 0.0001) and places all inferential weight on a gating hypothesis with two co-primary controls and a binding disagreement rule. The controls disagree. Residualized on the Presence measure C_P, the contrast survives (δ = −0.797, p = 0.0001); residualized on recall-mean, it vanishes (δ = +0.068, p = 0.655). The gate is UNDETERMINED, and the pre-registered finding is the flip itself: recognition is saturated among analyzable units in three of five substrates, rendering the C_P control inert, while the recall-mean control removes the axis defining the classification. The disagreement is stable under leave-one-substrate-out resampling and reproduces on a second wave. The phantom-signature question is thereby shown to be undecidable with the current instrument, and the result supplies the pre-registered empirical case for the mean-independent consistency instrument and graded recognition signal mandated for the next methodology revision: a recognition-anchored control cannot govern a recall-coupled metric.
 ```
 
 ### Keywords (paste verbatim, semicolon-separated)
 
 ```
-AI availability; brand availability; AIAS; large language models; temporal stability; test–retest reliability; consistency; CV-CPC; recognition saturation; pre-registration; Ehrenberg-Bass; brand recall
+AI Availability; brand availability; AIAS; Ehrenberg-Bass; consistency measurement; phantom brands; large language models; pre-registration; construct validity; brand growth
 ```
 
 ### JEL codes (paste verbatim)
@@ -53,7 +53,7 @@ AI availability; brand availability; AIAS; large language models; temporal stabi
 M31; L86; L15; D83; M37
 ```
 
-**JEL rationale (for your reference):** M31; L86, L15, D83, M37
+**JEL rationale (for your reference):** M31; L86; L15; D83; M37
 
 ---
 
@@ -96,7 +96,7 @@ ORCID: 0009-0003-8968-9990
 ### Declaration of Interest (paste verbatim)
 
 ```
-The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. This study re-acquires measurements against brand registries fixed in earlier phases (v0.19--v0.23); it performs no new brand selection, and each registry carries its source-phase conflict-of-interest handling forward unchanged. Two items of record apply. In the automotive registry, Samsung subsidiaries hold tier-2/3 component supply relationships with several registry brands --- Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment) --- characterized in the source phase as non-competitive, with no brand-level overlap, and imposing no operational restriction on registry composition (v0.22 Declarations; screened in v0.22 DEVIATIONS Entry 0, Part B). In the audiophile-headphones registry, AKG was substituted with Denon before the v0.19 pre-registration lock because AKG's parent, Harman International, is a Samsung subsidiary. Acquisition, coding, and scoring are fully automated against the locked registries; the pre-registration was tagged and externally deposited before any second-wave call; and the author's affiliation played no role in registry construction, acquisition, scoring, or the resulting verdicts. Samsung Electronics had no role in the design, conduct, analysis, or reporting of this work.
+The author is employed full-time as Director, Corporate Brand Creative and Governance, at Samsung Electronics America. v0.35 reuses the v0.19–v0.23 registries and inherits their conflict-of-interest screen (pre-registration DEVIATIONS Entry 0). Samsung subsidiaries hold tier-2/3 component supply relationships with several brands in the reused registries: Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment). These are non-competitive supply relationships; Samsung Electronics America does not produce or market passenger car brands and has no brand-level competitive overlap with any registry entry. No operational restriction on registry composition was imposed. Separately, AKG was substituted with Denon before the v0.19 pre-registration lock (AKG owned by Harman International, a Samsung subsidiary, since 2016) to avoid any appearance of conflict; the substitution preserved Cell A_Heritage's eight-brand composition, occurred prior to lock, and was AKG only (not JBL). Samsung had no role in study design, analysis, or reporting. The author's primary academic affiliation for this research is the School of Visual Arts MPS Branding Program; the research entity maintaining the data archive and methodology venue is Third System™.
 ```
 
 ### Funder (paste verbatim)
@@ -114,7 +114,7 @@ Not applicable; no human subjects; public APIs and LLM prompts only.
 ### Data and code availability (paste verbatim)
 
 ```
-All materials are deposited at OSF, `ec6wh/v35`: the locked pre-registration (`v0.35-prereg-r1`, externally deposited before acquisition), both waves' acquisition outputs and the provenance sidecar, the acquisition manifest with per-substrate probe-set SHA-256 checksums, the scorer (`score_v35.py`), the verdicts (`v35_verdicts.json`), and the figure sources.
+All pre-registration artifacts, frozen input reconciliation logs, the phantom roster, scoring code, verdicts file, and figures are deposited at osf.io/ec6wh (v35/). The pre-registration is locked at git tag `v0.35-prereg-r1`, externally anchored prior to analysis. Upstream phase and methodology papers are indexed in the cross-citation registry (see `_upstream_phases.md`).
 ```
 
 ---
@@ -126,7 +126,7 @@ All materials are deposited at OSF, `ec6wh/v35`: the locked pre-registration (`v
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories (AIAS™ v0.35). SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast: A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs. SSRN Working Paper [ABSTRACT_ID].
 ```
 
 ---
