@@ -1,0 +1,426 @@
+{
+  "phase": "v0.35",
+  "title": "Naive-Phantom x CPC: Do Phantom-Flagged Brands Carry a Distinct Consistency Signature?",
+  "lock": "v0.35-prereg-r1",
+  "lock_commit": "8b254f2",
+  "no_new_llm_calls": true,
+  "seed": 280400,
+  "rng_seeds": {
+    "raw": 280400,
+    "gate_cp": 280410,
+    "gate_rm": 280420,
+    "t2": 280430
+  },
+  "loso_seed_base": {
+    "raw": 280401,
+    "gate": 280440
+  },
+  "mc_draws": 10000,
+  "panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "n_brand_units": 112,
+  "metric": "CV-CPC = 1/(1+CV), CV=sd_pop/mean of 6-model recall (ddof=0); characterization quantity computed below floor; all-zero recall excluded (CV undefined)",
+  "phantom_flag": "status=='undefined' in v31_cpc.csv == mean_r<1.0 (frozen v0.31 archive)",
+  "reconciliation_gate": {
+    "v33_deposit": {
+      "v0.19": {
+        "n": 16,
+        "recall_sha256_consumed": "50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f",
+        "recall_sha256_deposit": "50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f",
+        "recall_match": true,
+        "recog_sha256_consumed": "ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d",
+        "recog_sha256_deposit": "ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d",
+        "recog_match": true,
+        "mismatches": []
+      },
+      "v0.20": {
+        "n": 24,
+        "recall_sha256_consumed": "90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd",
+        "recall_sha256_deposit": "90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd",
+        "recall_match": true,
+        "recog_sha256_consumed": "7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882",
+        "recog_sha256_deposit": "7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882",
+        "recog_match": true,
+        "mismatches": []
+      },
+      "v0.21": {
+        "n": 24,
+        "recall_sha256_consumed": "fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba",
+        "recall_sha256_deposit": "fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba",
+        "recall_match": true,
+        "recog_sha256_consumed": "09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79",
+        "recog_sha256_deposit": "09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79",
+        "recog_match": true,
+        "mismatches": []
+      },
+      "v0.22": {
+        "n": 24,
+        "recall_sha256_consumed": "2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4",
+        "recall_sha256_deposit": "2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4",
+        "recall_match": true,
+        "recog_sha256_consumed": "202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56",
+        "recog_sha256_deposit": "202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56",
+        "recog_match": true,
+        "mismatches": []
+      },
+      "v0.23": {
+        "n": 24,
+        "recall_sha256_consumed": "7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde",
+        "recall_sha256_deposit": "7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde",
+        "recall_match": true,
+        "recog_sha256_consumed": "59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd",
+        "recog_sha256_deposit": "59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd",
+        "recog_match": true,
+        "mismatches": []
+      }
+    },
+    "v17_anchor": {
+      "checked": 72,
+      "mismatches": [],
+      "passed": true,
+      "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+      "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+      "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+    },
+    "passed": true
+  },
+  "phantom_flag_consistency": {
+    "checked": 112,
+    "disagreements": []
+  },
+  "cpc_score_cross_check": {
+    "checked": 55,
+    "max_abs_err": 0.0
+  },
+  "enumeration": {
+    "v0.19": {
+      "flagged": 8,
+      "analyzable": 4,
+      "excluded_allzero": 4,
+      "non_phantom": 8,
+      "eligible_ge4": true,
+      "brands": 16
+    },
+    "v0.20": {
+      "flagged": 14,
+      "analyzable": 9,
+      "excluded_allzero": 5,
+      "non_phantom": 10,
+      "eligible_ge4": true,
+      "brands": 24
+    },
+    "v0.21": {
+      "flagged": 10,
+      "analyzable": 5,
+      "excluded_allzero": 5,
+      "non_phantom": 14,
+      "eligible_ge4": true,
+      "brands": 24
+    },
+    "v0.22": {
+      "flagged": 10,
+      "analyzable": 1,
+      "excluded_allzero": 9,
+      "non_phantom": 14,
+      "eligible_ge4": false,
+      "brands": 24
+    },
+    "v0.23": {
+      "flagged": 15,
+      "analyzable": 10,
+      "excluded_allzero": 5,
+      "non_phantom": 9,
+      "eligible_ge4": true,
+      "brands": 24
+    }
+  },
+  "eligible_substrates": [
+    "v0.19",
+    "v0.20",
+    "v0.21",
+    "v0.23"
+  ],
+  "attrition": {
+    "flagged": 57,
+    "analyzable_phantom": 29,
+    "excluded_all_zero": 28,
+    "non_phantom": 55,
+    "analysis_set_n": 84
+  },
+  "verdicts": {
+    "H_Phantom_CPC_Signature": {
+      "tier": "PRIMARY (raw arm; manipulation check)",
+      "verdict": "CONFIRMED",
+      "cliffs_delta": -0.8378378378378378,
+      "mc_p_twosided": 9.999000099990002e-05,
+      "n_phantom_analyzable": 29,
+      "n_nonphantom": 55,
+      "n_within_substrate_pairs": 296,
+      "per_substrate_delta": {
+        "v0.19": -0.9375,
+        "v0.20": -0.9555555555555556,
+        "v0.21": -0.8857142857142857,
+        "v0.22": -1.0,
+        "v0.23": -0.6222222222222222
+      },
+      "mechanistic_annotation": "mechanism predicts phantoms LOWER CV-CPC (delta<0); descriptive only",
+      "inferential_weight": "manipulation check only -- both arms recall-coupled by construction; the phase's inferential claim rests on the gate",
+      "verdict_pre_loso": "CONFIRMED"
+    },
+    "H_Phantom_Beyond_Presence": {
+      "tier": "PRIMARY (gating)",
+      "verdict": "UNDETERMINED (control flip)",
+      "control_flip": true,
+      "directional_lean": "FALSIFIED-or-marginal (rho=0.77 Presence-coupling, v1.7)",
+      "control_C_P": {
+        "verdict": "CONFIRMED",
+        "delta_resid": -0.7972972972972973,
+        "mc_p_twosided": 9.999000099990002e-05,
+        "per_substrate_delta": {
+          "v0.19": -0.9375,
+          "v0.20": -0.8222222222222222,
+          "v0.21": -0.8857142857142857,
+          "v0.22": -1.0,
+          "v0.23": -0.6222222222222222
+        },
+        "per_substrate_covariate_constant": {
+          "v0.19": false,
+          "v0.20": false,
+          "v0.21": true,
+          "v0.22": true,
+          "v0.23": true
+        }
+      },
+      "control_recall_mean": {
+        "verdict": "FALSIFIED",
+        "delta_resid": 0.06756756756756757,
+        "mc_p_twosided": 0.6546345365463454,
+        "per_substrate_delta": {
+          "v0.19": -0.125,
+          "v0.20": 0.3111111111111111,
+          "v0.21": -0.05714285714285714,
+          "v0.22": -0.5714285714285714,
+          "v0.23": 0.08888888888888889
+        },
+        "per_substrate_covariate_constant": {
+          "v0.19": false,
+          "v0.20": false,
+          "v0.21": false,
+          "v0.22": false,
+          "v0.23": false
+        }
+      },
+      "n": 84,
+      "finding_note": "control flip IS the finding; gate UNDETERMINED, routed to v1.8",
+      "verdict_pre_loso": "UNDETERMINED (control flip)"
+    },
+    "H_Phantom_Cross_Substrate": {
+      "tier": "SECONDARY (underpowered; per spec)",
+      "verdict": "UNINFORMATIVE (n.s.; underpowered N=4; 4/4 concordant, p=0.125)",
+      "eligible_substrates": [
+        "v0.19",
+        "v0.20",
+        "v0.21",
+        "v0.23"
+      ],
+      "per_substrate_delta_all": {
+        "v0.19": -0.9375,
+        "v0.20": -0.9555555555555556,
+        "v0.21": -0.8857142857142857,
+        "v0.22": -1.0,
+        "v0.23": -0.6222222222222222
+      },
+      "signs_eligible": {
+        "v0.19": -1,
+        "v0.20": -1,
+        "v0.21": -1,
+        "v0.23": -1
+      },
+      "n_negative": 4,
+      "n_positive": 0,
+      "binomial_p_twosided": 0.125,
+      "note": "raw-arm (CV-CPC) per-substrate delta (D3). Exact binomial sign test on eligible (>=4 analyzable) substrates only; full 5-substrate table reported regardless. 4 substrates cannot reach p<0.05 even at 4/4 (structural underpower)."
+    },
+    "H_Phantom_t2_Stability": {
+      "tier": "TERTIARY (exploratory; WALLED; descriptive only)",
+      "verdict": "DESCRIPTIVE",
+      "wall_note": "test-retest stability check on the v0.34 t2 near-replica panel (0.98 phantom persistence); NO independence claimed; quarantined from all PRIMARY/SECONDARY verdict logic; no confirmatory thresholds applied.",
+      "membership": "phantom flag frozen at t1; CV-CPC recomputed from t2 recall",
+      "raw_arm": {
+        "cliffs_delta": -0.8147058823529412,
+        "mc_p_twosided": 9.999000099990002e-05,
+        "n_phantom_analyzable": 33,
+        "n_nonphantom": 55,
+        "per_substrate_delta": {
+          "v0.19": -1.0,
+          "v0.20": -0.925,
+          "v0.21": -0.5476190476190477,
+          "v0.22": -1.0,
+          "v0.23": -0.8240740740740741
+        }
+      },
+      "gate_control_C_P": {
+        "delta_resid": -0.7911764705882353,
+        "mc_p_twosided": 9.999000099990002e-05
+      },
+      "gate_control_recall_mean": {
+        "delta_resid": 0.061764705882352944,
+        "mc_p_twosided": 0.6658334166583342
+      },
+      "t1_units_absent_from_t2": 0
+    }
+  },
+  "sensitivity": {
+    "loso_raw": {
+      "survives_all": true,
+      "per_leftout": {
+        "v0.19": {
+          "left_out": "v0.19",
+          "delta": -0.8257575757575758,
+          "p": 9.999000099990002e-05,
+          "verdict": "CONFIRMED",
+          "n": 72
+        },
+        "v0.20": {
+          "left_out": "v0.20",
+          "delta": -0.7864077669902912,
+          "p": 9.999000099990002e-05,
+          "verdict": "CONFIRMED",
+          "n": 65
+        },
+        "v0.21": {
+          "left_out": "v0.21",
+          "delta": -0.8230088495575221,
+          "p": 9.999000099990002e-05,
+          "verdict": "CONFIRMED",
+          "n": 65
+        },
+        "v0.22": {
+          "left_out": "v0.22",
+          "delta": -0.8297872340425532,
+          "p": 9.999000099990002e-05,
+          "verdict": "CONFIRMED",
+          "n": 69
+        },
+        "v0.23": {
+          "left_out": "v0.23",
+          "delta": -0.9320388349514563,
+          "p": 9.999000099990002e-05,
+          "verdict": "CONFIRMED",
+          "n": 65
+        }
+      },
+      "full_verdict": "CONFIRMED",
+      "fragile": false
+    },
+    "loso_gate": {
+      "survives_all": true,
+      "per_leftout": {
+        "v0.19": {
+          "left_out": "v0.19",
+          "verdict": "UNDETERMINED (control flip)",
+          "control_flip": true,
+          "delta_resid_C_P": -0.7803030303030303,
+          "p_C_P": 9.999000099990002e-05,
+          "delta_resid_recall_mean": 0.09090909090909091,
+          "p_recall_mean": 0.5718428157184282,
+          "n": 72
+        },
+        "v0.20": {
+          "left_out": "v0.20",
+          "verdict": "UNDETERMINED (control flip)",
+          "control_flip": true,
+          "delta_resid_C_P": -0.7864077669902912,
+          "p_C_P": 9.999000099990002e-05,
+          "delta_resid_recall_mean": -0.038834951456310676,
+          "p_recall_mean": 0.8396160383961604,
+          "n": 65
+        },
+        "v0.21": {
+          "left_out": "v0.21",
+          "verdict": "UNDETERMINED (control flip)",
+          "control_flip": true,
+          "delta_resid_C_P": -0.7699115044247787,
+          "p_C_P": 9.999000099990002e-05,
+          "delta_resid_recall_mean": 0.10619469026548672,
+          "p_recall_mean": 0.5335466453354665,
+          "n": 65
+        },
+        "v0.22": {
+          "left_out": "v0.22",
+          "verdict": "UNDETERMINED (control flip)",
+          "control_flip": true,
+          "delta_resid_C_P": -0.7872340425531915,
+          "p_C_P": 9.999000099990002e-05,
+          "delta_resid_recall_mean": 0.09929078014184398,
+          "p_recall_mean": 0.5173482651734826,
+          "n": 69
+        },
+        "v0.23": {
+          "left_out": "v0.23",
+          "verdict": "UNDETERMINED (control flip)",
+          "control_flip": true,
+          "delta_resid_C_P": -0.8737864077669902,
+          "p_C_P": 9.999000099990002e-05,
+          "delta_resid_recall_mean": 0.05825242718446602,
+          "p_recall_mean": 0.7525247475252475,
+          "n": 65
+        }
+      },
+      "full_verdict": "UNDETERMINED (control flip)",
+      "fragile": false
+    },
+    "threshold_reruns": {
+      "hi_0.2": {
+        "confirmed_threshold": 0.2,
+        "falsified_threshold": 0.15,
+        "H_Phantom_CPC_Signature": "CONFIRMED",
+        "H_Phantom_Beyond_Presence": "UNDETERMINED (control flip)",
+        "gate_control_C_P": "CONFIRMED",
+        "gate_control_recall_mean": "FALSIFIED"
+      },
+      "hi_0.4": {
+        "confirmed_threshold": 0.4,
+        "falsified_threshold": 0.15,
+        "H_Phantom_CPC_Signature": "CONFIRMED",
+        "H_Phantom_Beyond_Presence": "UNDETERMINED (control flip)",
+        "gate_control_C_P": "CONFIRMED",
+        "gate_control_recall_mean": "FALSIFIED"
+      }
+    }
+  },
+  "deviations": [
+    {
+      "id": "D1",
+      "title": "Pooled Cliff's delta = within-substrate cross-pair pooling",
+      "resolution": "Observed pooled delta = sum_s[#ph>non - #ph<non] / sum_s(n_ph,s*n_non,s); observed statistic respects strata; null permutes labels within substrate. Not strata-ignoring all-pairs (would break exchangeability)."
+    },
+    {
+      "id": "D2",
+      "title": "Rank-residualization fit population",
+      "resolution": "Fit over ALL analyzable units (phantom + non-phantom) within substrate so the residual carries the phantom contrast; not non-phantom-only."
+    },
+    {
+      "id": "D3",
+      "title": "Cross-substrate per-substrate delta arm",
+      "resolution": "Raw arm (CV-CPC), not residualized; binomial sign test on eligible (>=4) substrates."
+    }
+  ],
+  "computation_notes": [
+    "Phantom CV-CPC recomputed as 1/(1+sd_pop/mean) from re-extracted recall (cpc_score blank for undefined rows in v31_cpc.csv); defined-unit CV-CPC reproduces frozen cpc_score (max|err|=0.00e+00).",
+    "Population SD (ddof=0), CV=sd_pop/mean, per score_v0_31 convention.",
+    "Cliff's delta ties contribute 0; two-sided permutation p=(1+#{|d_perm|>=|d_obs|})/(N+1).",
+    "Opposite-direction significance falsifies the mechanism-signature claim (checked before the magnitude-CONFIRMED branch).",
+    "Rank residualization: OLS of avg-tie ranks; zero rank-variance covariate or n<3 -> centered ranks (no-op), mirroring score_v34.residualize. Recognition saturation -> C_P control near no-op; recall-mean control attenuates strongly (phantom flag IS low recall-mean) -> flip plausible.",
+    "v0.22 enters pooled analysis only (1 analyzable phantom < 4-floor); stratum min-cell=1, coarsely quantized null (15 within-stratum states) but valid.",
+    "Cross-substrate exact binomial on 4 eligible substrates cannot reach p<0.05 even at 4/4 (structural underpower; pre-acknowledged in the lock).",
+    "v0.23 Phase A recognition r_levels=['R3'] (binarized all-recognized; C_P saturated).",
+    "H_Phantom_t2_Stability is WALLED: descriptive only, no thresholds, quarantined from verdicts."
+  ]
+}

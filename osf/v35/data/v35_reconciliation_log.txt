@@ -1,0 +1,45 @@
+v0.35 RECONCILIATION GATE LOG  (lock v0.35-prereg-r1 @ 8b254f2)
+==============================================================================
+Binding gate; run after lock and before any contrast. ANY mismatch halts the phase.
+
+(a) Bit-for-bit vs v0.33 deposit (osf/v33/data/v33_eta2.csv), sha256 per substrate
+    over brand-sorted consumed per-model RECALL and RECOGNITION vectors.
+------------------------------------------------------------------------------
+  v0.19  n=16
+    recall  consumed 50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f
+            deposit  50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f   match=True
+    recog   consumed ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d
+            deposit  ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d   match=True
+  v0.20  n=24
+    recall  consumed 90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd
+            deposit  90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd   match=True
+    recog   consumed 7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882
+            deposit  7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882   match=True
+  v0.21  n=24
+    recall  consumed fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba
+            deposit  fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba   match=True
+    recog   consumed 09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79
+            deposit  09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79   match=True
+  v0.22  n=24
+    recall  consumed 2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4
+            deposit  2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4   match=True
+    recog   consumed 202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56
+            deposit  202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56   match=True
+  v0.23  n=24
+    recall  consumed 7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde
+            deposit  7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde   match=True
+    recog   consumed 59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd
+            deposit  59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd   match=True
+
+(b) v1.7 anchor: v0.20/0.21/0.22 recall == v1.7 r_per_model (by model name).
+    scope = those three phases only; v0.19 & v0.23 rest on v0.31 provenance.
+------------------------------------------------------------------------------
+    checked=72  mismatches=0  passed=True
+    reference=osf/methodology/v1_7/data/v1_7_cpc.csv
+
+(c) Phantom-flag consistency: status=='undefined' (v31_cpc.csv) == (mean_r < FLOOR).
+------------------------------------------------------------------------------
+    units checked=112  disagreements=0
+
+==============================================================================
+RESULT: PASS
