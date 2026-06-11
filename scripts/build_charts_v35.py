@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """
-v0.35 CPC Longitudinal t1->t2 Stability — figure builder (paper register).
-Forked from build_charts_v33.py; house style via chart_style.py.
+v0.35 Naive-Phantom x CPC Omnibus — figure builder (register-neutral).
 
-  chart_01_cpc_t1_t2_stability   H_CPC_Temporal_Stability (PRIMARY, CONFIRMED 4/5)
-  chart_02_residual_gate_saturation  H_CPC_Drift_Beyond_Presence (PRIMARY gate, MARGINAL)
-  chart_03_presence_stability    H_Presence_Temporal_Stability (SECONDARY, MARGINAL cap)
-  chart_04_phantom_persistence   H_Phantom_Temporal_Persistence (TERTIARY, descriptive)
+Six figures. Figure-internal text is register-neutral (construct names only —
+"gate", "raw arm", "C_P control", "recall-mean control"; no H_* / P-N labels);
+the host documents' captions carry register. SSOT: osf/v35/v35_verdicts.json —
+every numeric value is pulled programmatically. The ONLY hardcoded numeric
+constants are the locked verdict thresholds +/-0.15 / +/-0.30 (v0.35-prereg-r1)
+and the 0.20/0.40 sensitivity-band note (also read back from the JSON).
 
-Per-brand points reuse score_v35.wave_t1/wave_t2 + cv_cpc/c_p (no logic dup).
-Scalars (rho/p/flags/phantom) read from osf/v35/v35_verdicts.json.
-Outputs reports/figs/v35/chart_0N_<topic>.pdf  (+ _preview.png for inspection).
+  chart_01_gate_flip               gate: control flip -> UNDETERMINED (the headline)
+  chart_02_recognition_saturation  why it flips: C_P inert where recognition saturates
+  chart_03_raw_manipulation_check  raw arm + LOSO whiskers (labeled manipulation check)
+  chart_04_cross_substrate_concordance  per-substrate deltas; unanimous but underpowered
+  chart_05_t2_stability            t1 vs t2 replication of the whole structure (walled)
+  chart_06_roster_attrition        roster / attrition (report figure; paper §2 table)
+
+Outputs reports/figs/v35/chart_0N_*.pdf (+ _preview.png), copied to osf/v35/figures/.
 """
-import sys, json
+import sys, json, csv, shutil
 from pathlib import Path
 import numpy as np
 import matplotlib.pyplot as plt
@@ -21,228 +27,286 @@ ROOT = Path.home() / "aias"
 sys.path.insert(0, str(ROOT / "scripts"))
 import chart_style as cs
 cs.setup()
-import score_v35 as SC
 
-SOURCE_PHASE = "v0.35 (CPC Longitudinal t1->t2 Stability)"
+SOURCE_PHASE = "v0.35 (Naive-Phantom × CPC)"
 PROTOCOL = "v0.35-prereg-r1"
-OUT = {"paper": ROOT / "reports/figs/v35", "report": ROOT / "reports/figs/v35/report"}
-for _d in OUT.values():
-    _d.mkdir(parents=True, exist_ok=True)
-MODE = "paper"   # set by main loop; selects footer register + filename
+FIG_DIR = ROOT / "reports/figs/v35"
+DEPOSIT_DIR = ROOT / "osf/v35/figures"
+FIG_DIR.mkdir(parents=True, exist_ok=True)
+DEPOSIT_DIR.mkdir(parents=True, exist_ok=True)
 
-# Per-chart metadata: paper (H_*) vs report (P-register) footers + filenames.
-# Identical plots; only footer text and filename differ (v0.33 dual-register pattern).
-META = {
-    1: {"paper": "chart_01_cpc_t1_t2_stability", "report": "report_fig_01",
-        "paper_v": "H_CPC_Temporal_Stability: CONFIRMED — rho >= 0.70 in 4/5 substrates (MC permutation, 10k draws)",
-        "report_v": "P1 SUPPORTED — recall-consistency standings held in four of five categories; the miss is the smallest, most fragmented panel."},
-    2: {"paper": "chart_02_residual_gate_saturation", "report": "report_fig_02",
-        "paper_v": "H_CPC_Drift_Beyond_Presence: MARGINAL — residual rho >= 0.50 in 1/5 informative substrates (4/5 saturation-flagged)",
-        "report_v": "P2 NOT ESTABLISHED — the independence test could only run where recognition varies; four of five categories sat at the recognition ceiling."},
-    3: {"paper": "chart_03_presence_stability", "report": "report_fig_03",
-        "paper_v": "H_Presence_Temporal_Stability: MARGINAL — 3/5 measurable (all rho >= 0.80); 2/5 rank-degenerate at ceiling",
-        "report_v": "P3 SUPPORTED WHERE MEASURABLE — recognition standings held wherever there was a ranking to hold; two categories were a constant ceiling, both waves."},
-    4: {"paper": "chart_04_phantom_persistence", "report": "report_fig_04",
-        "paper_v": "H_Phantom_Temporal_Persistence: descriptive — pooled retention 56/57 = 0.98 (no threshold)",
-        "report_v": "P4 OBSERVED — brands below the recall floor stayed there, 56 of 57; AI invisibility is a standing condition, not a bad week."},
-}
+# locked verdict thresholds — the only hardcoded numeric constants
+LO, HI = 0.15, 0.30   # locked verdict thresholds, v0.35-prereg-r1
+
 OMNI = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
 CAT = {"v0.19": "headphones", "v0.20": "skincare", "v0.21": "cosmetics",
        "v0.22": "automotive", "v0.23": "spirits"}
 
+# ---- SSOT ----------------------------------------------------------------- #
 V = json.load(open(ROOT / "osf/v35/v35_verdicts.json"))
-PS = V["per_substrate"]
+VD = V["verdicts"]
+RAW = VD["H_Phantom_CPC_Signature"]
+GATE = VD["H_Phantom_Beyond_Presence"]
+CROSS = VD["H_Phantom_Cross_Substrate"]
+T2 = VD["H_Phantom_t2_Stability"]
+ENUM = V["enumeration"]
+ATT = V["attrition"]
+LOSO_RAW = V["sensitivity"]["loso_raw"]
+THR = V["sensitivity"]["threshold_reruns"]
+CP = GATE["control_C_P"]
+RM = GATE["control_recall_mean"]
 
-# per-brand waves (reuse scoring extraction verbatim)
-T1 = SC.wave_t1()
-T2 = SC.wave_t2()
+ROSTER = list(csv.DictReader(open(ROOT / "osf/v35/data/v35_phantom_roster.csv")))
 
 
-def _save(fig, key):
-    m = META[key]
-    verdict = m["paper_v"] if MODE == "paper" else m["report_v"]
-    fname = m[MODE]
+def d2(x):
+    return f"{x:+.2f}"
+
+
+def pfmt(p):
+    return "p<0.0001" if p < 1e-4 else f"p={p:.3f}"
+
+
+def _save(fig, fname, verdict):
     cs.add_footer(fig, verdict=verdict, phase=SOURCE_PHASE, protocol=PROTOCOL)
-    fig.savefig(OUT[MODE] / f"{fname}.pdf", **cs.SAVEFIG_PARAMS)
-    if MODE == "paper":   # preview PNG for inspection (paper register only)
-        fig.savefig(OUT[MODE] / f"{fname}_preview.png", dpi=120, bbox_inches="tight", pad_inches=0.15)
+    fig.savefig(FIG_DIR / f"{fname}.pdf", **cs.SAVEFIG_PARAMS)
+    fig.savefig(FIG_DIR / f"{fname}_preview.png", dpi=130, bbox_inches="tight", pad_inches=0.15)
     plt.close(fig)
-    print(f"  [{MODE}] wrote {fname}.pdf")
+    print(f"  wrote {fname}.pdf")
 
 
-def _pairs_cpc(s):
-    """(cvcpc_t1, cvcpc_t2) for brands defined (>=floor) in BOTH waves."""
-    w1, w2 = T1[s], T2[s]
-    xs, ys = [], []
-    for b in w1:
-        if b not in w2:
-            continue
-        a, c = SC.cv_cpc(w1[b]["recall"]), SC.cv_cpc(w2[b]["recall"])
-        if a is not None and c is not None:
-            xs.append(a); ys.append(c)
-    return np.array(xs), np.array(ys)
+def _bands(ax):
+    """Verdict-threshold chrome on a delta x-axis: FALSIFIED |d|<0.15 (shaded),
+    +/-0.30 CONFIRMED edges (dashed)."""
+    ax.axvspan(-LO, LO, color=cs.PALETTE["gray_light"], alpha=0.30, zorder=0)
+    for xv in (-HI, HI):
+        ax.axvline(xv, color=cs.GRAY, lw=0.8, ls="--", zorder=1)
+    for xv in (-LO, LO):
+        ax.axvline(xv, color=cs.PALETTE["gray_light"], lw=0.8, ls=":", zorder=1)
+    ax.axvline(0.0, color=cs.GRAY, lw=1.0, zorder=1)
 
 
-def _pairs_cp(s):
-    w1, w2 = T1[s], T2[s]
-    xs, ys = [], []
-    for b in w1:
-        if b not in w2:
-            continue
-        xs.append(SC.c_p(w1[b]["recog"])); ys.append(SC.c_p(w2[b]["recog"]))
-    return np.array(xs), np.array(ys)
-
-
-# ============================================================ fig1
+# ============================================================ chart_01
 def chart_01():
-    fig, axes = plt.subplots(1, 5, figsize=(8.6, 3.2))
-    for ax, s in zip(axes, OMNI):
-        d = PS[s]["cpc"]; rho = d["rho"]; p = d["mc_p"]; n = d["n_defined_both"]
-        miss = not (rho is not None and rho >= 0.70)
-        col = cs.WARM if miss else cs.INDIGO
-        x, y = _pairs_cpc(s)
-        ax.plot([0, 1], [0, 1], color=cs.PALETTE["gray_light"], lw=0.8, ls="--", zorder=1)
-        ax.scatter(x, y, s=26, color=col, alpha=0.8, edgecolor="white", linewidth=0.4, zorder=3)
-        ax.set_xlim(0, 1.02); ax.set_ylim(0, 1.02)
-        ax.set_xticks([0, 0.5, 1.0]); ax.set_yticks([0, 0.5, 1.0])
-        ax.tick_params(labelsize=6.5)
-        ax.set_title(f"{s} {CAT[s]}", fontsize=7.6, fontweight="bold", color=col, pad=4)
-        mark = "miss" if miss else "pass"
-        ptxt = f"p={p:.3f}" if p is not None else "p=n/a"
-        ax.text(0.04, 0.96, f"ρ={rho:.2f}\n{ptxt}\nn={n}\n{mark}",
-                transform=ax.transAxes, ha="left", va="top",
-                fontsize=6.6, color=col,
-                bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=col, lw=0.6))
-        if s == "v0.19":
-            ax.set_ylabel("CV-CPC  t2", fontsize=8)
-        ax.set_xlabel("t1", fontsize=7.5)
-    fig.subplots_adjust(top=0.60, bottom=0.26, left=0.055, right=0.985, wspace=0.32)
-    cs.add_header(fig, "CV-CPC rank order holds from t1 to t2 in four of five substrates",
-                  "Per-brand CV-CPC at t1 vs t2; identity diagonal dashed. Defined both waves (mean recall >= 1.0).",
-                  "Indigo = passes 0.70 criterion; warm = miss (v0.19, rho=0.42, n.s., n=8).")
-    _save(fig, 1)
-
-
-# ============================================================ fig2
-def chart_02():
     fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    ys = np.arange(len(OMNI))[::-1]
-    bw = 0.36
-    for i, s in enumerate(OMNI):
-        yy = ys[i]
-        raw = PS[s]["cpc"]["rho"]
-        res = PS[s]["gate"]["residual_rho"]
-        flagged = PS[s]["gate"]["saturation_flagged"]
-        raw_col = cs.PALETTE["gray_light"] if flagged else cs.INDIGO
-        res_col = cs.PALETTE["indigo_t2"] if flagged else cs.WARM
-        hatch = "//" if flagged else None
-        ax.barh(yy + bw / 2, raw, height=bw, color=raw_col, hatch=hatch,
-                edgecolor=cs.GRAY if flagged else "white", linewidth=0.5, zorder=3)
-        ax.barh(yy - bw / 2, res, height=bw, color=res_col, hatch=hatch,
-                edgecolor=cs.GRAY if flagged else "white", linewidth=0.5, zorder=3)
-        if flagged:
-            ax.text(max(raw, res) + 0.02, yy, "residual = raw  (C_P constant: residualization no-op)",
-                    va="center", ha="left", fontsize=6.6, color=cs.GRAY, fontstyle="italic")
-        else:
-            dd = PS[s]["gate"]["rho_delta_cpc_cp"]
-            ax.text(0.02, yy + bw / 2, "raw", va="center", ha="left", fontsize=6.4,
-                    color="white", fontweight="bold")
-            ax.text(0.02, yy - bw / 2, "residual", va="center", ha="left", fontsize=6.4,
-                    color="white", fontweight="bold")
-            ax.text(max(raw, res) + 0.02, yy,
-                    f"informative: residual {res:.2f} > raw {raw:.2f};  drift-coupling ρ={dd:.2f}",
-                    va="center", ha="left", fontsize=6.8, color=cs.WARM, fontweight="bold")
-        ax.text(-0.02, yy, f"{s} {CAT[s]}", va="center", ha="right",
-                fontsize=8, color=cs.BLACK)
-    ax.axvline(0.50, color=cs.GRAY, lw=1.0, ls=":", zorder=2)
-    ax.text(0.50, len(OMNI) - 0.32, "0.50 gate criterion", ha="center", va="bottom",
+    rows = [("C_P control", CP, cs.INDIGO), ("recall-mean control", RM, cs.WARM)]
+    ys = [1, 0]
+    _bands(ax)
+    for y, (name, arm, col) in zip(ys, rows):
+        d = arm["delta_resid"]
+        ax.barh(y, d, height=0.46, color=col, edgecolor="white", linewidth=0.6, zorder=3)
+        ax.text(-1.03, y + 0.30, name, va="bottom", ha="left", fontsize=9,
+                color=cs.BLACK, fontweight="bold")
+        end = d + (-0.02 if d < 0 else 0.02)
+        ax.text(end, y, f"{d2(d)}   {arm['verdict']}   {pfmt(arm['mc_p_twosided'])}",
+                va="center", ha=("right" if d < 0 else "left"), fontsize=8.4, color=col,
+                fontweight="bold")
+    # zone labels along the top
+    ax.text(0.0, 1.62, "FALSIFIED  |δ|<0.15", ha="center", va="bottom",
             fontsize=6.8, color=cs.GRAY)
-    ax.set_xlim(0, 1.55); ax.set_ylim(-0.7, len(OMNI) - 0.2)
-    ax.set_yticks([]); ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax.text(-(LO + HI) / 2, 1.62, "MARGINAL", ha="center", va="bottom", fontsize=6.8, color=cs.GRAY)
+    ax.text(-0.66, 1.62, "CONFIRMED  |δ|>=0.30", ha="center", va="bottom",
+            fontsize=6.8, color=cs.GRAY)
+    ax.text(-0.52, -0.78,
+            "Gate verdict: UNDETERMINED — control flip (pre-registered rule)",
+            ha="center", va="center", fontsize=9.2, color=cs.INDIGO, fontweight="bold",
+            bbox=dict(boxstyle="round,pad=0.5", fc="white", ec=cs.INDIGO, lw=1.0))
+    ax.set_xlim(-1.05, 0.55); ax.set_ylim(-1.05, 1.95)
+    ax.set_yticks([]); ax.set_xticks([-1.0, -0.5, 0.0, 0.5])
     ax.tick_params(labelsize=8)
-    ax.set_xlabel("Spearman ρ (t1 to t2 stability)", fontsize=9)
-    fig.subplots_adjust(top=0.80, bottom=0.20, left=0.12, right=0.97)
-    cs.add_header(fig, "The Beyond-Presence gate is informative in only one substrate",
-                  "Raw vs Presence-residualized CV-CPC stability. rho(dCV-CPC, dC_P) is null wherever C_P is constant.",
-                  "Hatched/muted = recognition-saturated (v0.20-v0.23): residual = raw. v0.19 is the lone informative substrate.")
-    _save(fig, 2)
+    ax.set_xlabel("Cliff's δ on residualized CV-CPC  (phantom − non-phantom)", fontsize=9)
+    fig.subplots_adjust(top=0.80, bottom=0.24, left=0.07, right=0.97)
+    cs.add_header(fig, "The gate verdict depends on which control is used",
+                  "Phantom vs non-phantom CV-CPC after within-substrate residualization, under each co-primary control.",
+                  "Identical procedure, two controls: recognition (C_P) and recall-mean. The verdicts disagree — the flip is the finding.")
+    _save(fig, "chart_01_gate_flip",
+          f"Gate UNDETERMINED — C_P control {CP['verdict']} ({d2(CP['delta_resid'])}) vs recall-mean "
+          f"{RM['verdict']} ({d2(RM['delta_resid'])}); pre-registered flip rule.")
 
 
-# ============================================================ fig3
-def chart_03():
-    fig, axes = plt.subplots(1, 5, figsize=(8.6, 3.2))
+# ============================================================ chart_02
+def chart_02():
+    analy = [r for r in ROSTER if r["group"] in ("phantom_analyzable", "non_phantom")]
     rng = np.random.default_rng(280400)
-    for ax, s in zip(axes, OMNI):
-        rho = PS[s]["presence"]["rho"]
-        degenerate = rho is None
-        if degenerate:
-            ax.text(0.5, 0.56, "C_P constant\n6/6, both waves", transform=ax.transAxes,
-                    ha="center", va="center", fontsize=7.8, color=cs.GRAY, fontweight="bold")
-            ax.text(0.5, 0.27, "exact match 100%", transform=ax.transAxes,
-                    ha="center", va="center", fontsize=7.2, color=cs.TEAL, fontstyle="italic")
-            ax.set_xticks([]); ax.set_yticks([])
-            for sp in ax.spines.values():
-                sp.set_edgecolor(cs.PALETTE["gray_light"])
-            ax.set_title(f"{s} {CAT[s]}", fontsize=7.6, fontweight="bold", color=cs.GRAY, pad=4)
-        else:
-            x, y = _pairs_cp(s)
-            jx = (rng.random(len(x)) - 0.5) * 0.22
-            jy = (rng.random(len(y)) - 0.5) * 0.22
-            ax.plot([0, 6], [0, 6], color=cs.PALETTE["gray_light"], lw=0.8, ls="--", zorder=1)
-            ax.scatter(x + jx, y + jy, s=22, color=cs.INDIGO, alpha=0.7,
-                       edgecolor="white", linewidth=0.3, zorder=3)
-            ax.set_xlim(-0.4, 6.4); ax.set_ylim(-0.4, 6.4)
-            ax.set_xticks([0, 3, 6]); ax.set_yticks([0, 3, 6]); ax.tick_params(labelsize=6.5)
-            pass80 = "pass" if rho >= 0.80 else "miss"
-            ax.text(0.04, 0.96, f"ρ={rho:.2f} {pass80}", transform=ax.transAxes,
-                    ha="left", va="top", fontsize=6.8, color=cs.INDIGO,
-                    bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=cs.INDIGO, lw=0.6))
-            ax.set_title(f"{s} {CAT[s]}", fontsize=7.6, fontweight="bold", color=cs.INDIGO, pad=4)
-        if s == "v0.19":
-            ax.set_ylabel("C_P  t2", fontsize=8)
-        if not degenerate:
-            ax.set_xlabel("t1", fontsize=7.5)
-    fig.subplots_adjust(top=0.60, bottom=0.26, left=0.055, right=0.985, wspace=0.32)
-    cs.add_header(fig, "Presence is stable where measurable; saturated to a constant in two substrates",
-                  "Per-brand C_P (0-6) at t1 vs t2; 0.80 criterion. Degenerate panels shown honestly (no fabricated rho).",
-                  "v0.21 & v0.23: C_P at the 6/6 recognition ceiling both waves — rank-degenerate; exact-match supplement instead.")
-    _save(fig, 3)
+    fig, (axL, axR) = plt.subplots(1, 2, figsize=(8.8, 4.6), sharey=True)
+    const = CP["per_substrate_covariate_constant"]
+    for ax, key, title, xlim, xticks in (
+        (axL, "c_p", "Presence control: recognition count C_P (0–6)", (-0.5, 6.5), [0, 3, 6]),
+        (axR, "mean_r", "Recall-mean control (per-model mean recall)", (-0.3, 6.5), [0, 3, 6])):
+        for si, s in enumerate(OMNI):
+            yrow = len(OMNI) - 1 - si
+            pts = [r for r in analy if r["substrate"] == s]
+            for r in pts:
+                xv = float(r[key])
+                ph = (r["flagged"] == "True")
+                jit = (rng.random() - 0.5) * 0.5
+                ax.scatter(xv, yrow + jit, s=24,
+                           color=(cs.WARM if ph else cs.INDIGO), alpha=0.8,
+                           edgecolor="white", linewidth=0.3, zorder=3)
+            if ax is axL and const[s]:
+                ax.text(3.0, yrow, "control no-op  (C_P constant)", va="center", ha="center",
+                        fontsize=6.6, color=cs.GRAY, fontstyle="italic")
+        ax.set_xlim(*xlim); ax.set_xticks(xticks); ax.tick_params(labelsize=7.5)
+        ax.set_title(title, fontsize=8.2, fontweight="bold", color=cs.BLACK, pad=5)
+    axL.set_yticks(range(len(OMNI)))
+    axL.set_yticklabels([f"{s} {CAT[s]}" for s in reversed(OMNI)], fontsize=7.6)
+    n_const = sum(1 for s in OMNI if const[s])
+    h_ph = plt.Line2D([], [], marker="o", ls="", color=cs.WARM, label="phantom (analyzable)", markersize=6)
+    h_no = plt.Line2D([], [], marker="o", ls="", color=cs.INDIGO, label="non-phantom", markersize=6)
+    axR.legend(handles=[h_ph, h_no], loc="lower right", fontsize=7.4, framealpha=0.9)
+    fig.subplots_adjust(top=0.78, bottom=0.16, left=0.13, right=0.975, wspace=0.08)
+    cs.add_header(fig, "Why the gate flips: the recognition control is inert where it is saturated",
+                  f"The {ATT['analysis_set_n']} analyzable units. Left: C_P collapses to a constant in "
+                  f"{n_const} of {len(OMNI)} substrates. Right: recall-mean separates the groups everywhere.",
+                  "A constant covariate cannot residualize anything out — the C_P control inherits the raw signal; recall-mean removes the axis that defines the flag.")
+    _save(fig, "chart_02_recognition_saturation",
+          f"Recognition saturated (C_P constant) in {n_const} of {len(OMNI)} substrates — the C_P control is a no-op there.")
 
 
-# ============================================================ fig4
+# ============================================================ chart_03
+def chart_03():
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    losos = [LOSO_RAW["per_leftout"][s]["delta"] for s in OMNI]
+    lo_d, hi_d = min(losos), max(losos)
+    d = RAW["cliffs_delta"]
+    _bands(ax)
+    y = 0.5
+    ax.errorbar(d, y, xerr=[[d - lo_d], [hi_d - d]], fmt="o", color=cs.INDIGO,
+                ms=13, capsize=6, elinewidth=2.0, mec="white", mew=0.8, zorder=4)
+    ax.text(d, y + 0.16, f"pooled δ = {d2(d)}   {pfmt(RAW['mc_p_twosided'])}   {RAW['verdict']}",
+            ha="center", va="bottom", fontsize=9, color=cs.INDIGO, fontweight="bold")
+    ax.text((lo_d + hi_d) / 2, y - 0.18,
+            f"leave-one-substrate-out range  [{d2(lo_d)}, {d2(hi_d)}]", ha="center", va="top",
+            fontsize=7.4, color=cs.GRAY)
+    hi20 = THR["hi_0.2"]; hi40 = THR["hi_0.4"]
+    ax.text(0.0, 0.06,
+            f"verdict unchanged at δ-thresholds {hi20['confirmed_threshold']:.2f} and "
+            f"{hi40['confirmed_threshold']:.2f} ({hi20['H_Phantom_CPC_Signature']})",
+            ha="center", va="bottom", fontsize=7.0, color=cs.GRAY, fontstyle="italic")
+    ax.text(0.0, 0.92, "FALSIFIED", ha="center", va="top", fontsize=6.8, color=cs.GRAY)
+    ax.text(-0.66, 0.92, "CONFIRMED  |δ|>=0.30", ha="center", va="top", fontsize=6.8, color=cs.GRAY)
+    ax.set_xlim(-1.05, 0.35); ax.set_ylim(0.0, 1.0)
+    ax.set_yticks([]); ax.set_xticks([-1.0, -0.5, 0.0])
+    ax.tick_params(labelsize=8)
+    ax.set_xlabel("Cliff's δ on CV-CPC  (phantom − non-phantom)", fontsize=9)
+    fig.subplots_adjust(top=0.80, bottom=0.24, left=0.06, right=0.97)
+    cs.add_header(fig, "Raw arm: a large phantom–non-phantom gap, by construction",
+                  "Manipulation check — confirms the known mechanical recall-coupling, not a Consistency signature.",
+                  f"Pooled Cliff's δ with leave-one-substrate-out whiskers. n={RAW['n_phantom_analyzable']} phantom vs "
+                  f"{RAW['n_nonphantom']} non-phantom, {RAW['n_within_substrate_pairs']} within-substrate pairs.")
+    _save(fig, "chart_03_raw_manipulation_check",
+          f"Raw arm {RAW['verdict']} ({d2(d)}, {pfmt(RAW['mc_p_twosided'])}) — manipulation check only; LOSO-stable.")
+
+
+# ============================================================ chart_04
 def chart_04():
     fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
-    labels = [f"{s}\n{CAT[s]}" for s in OMNI] + ["pooled"]
-    props, fracs, t1tot, rettot = [], [], 0, 0
-    for s in OMNI:
-        ph = PS[s]["phantom"]
-        props.append(ph["proportion"]); fracs.append(f"{ph['retained_t2']}/{ph['t1_phantom']}")
-        t1tot += ph["t1_phantom"]; rettot += ph["retained_t2"]
-    props.append(rettot / t1tot); fracs.append(f"{rettot}/{t1tot}")
-    xs = np.arange(len(labels))
-    cols = [cs.INDIGO] * len(OMNI) + [cs.WARM]
-    ax.bar(xs, props, color=cols, edgecolor="white", linewidth=0.6, width=0.66, zorder=3)
-    for x, pr, fr in zip(xs, props, fracs):
-        ax.text(x, pr + 0.012, f"{pr:.2f}", ha="center", va="bottom",
-                fontsize=8, fontweight="bold", color=cs.BLACK)
-        ax.text(x, pr / 2, fr, ha="center", va="center", fontsize=7.2,
-                color="white", fontweight="bold")
-    ax.annotate("the single flip (v0.21: 9/10)", xy=(2, 0.905), xytext=(2.15, 0.62),
-                fontsize=6.8, color=cs.GRAY,
-                arrowprops=dict(arrowstyle="->", color=cs.GRAY, lw=0.7))
-    ax.set_ylim(0, 1.14); ax.set_xticks(xs); ax.set_xticklabels(labels, fontsize=7.6)
-    ax.set_yticks([0, 0.5, 1.0]); ax.tick_params(axis="y", labelsize=8)
-    ax.set_ylabel("t1→t2 phantom retention", fontsize=9)
-    fig.subplots_adjust(top=0.80, bottom=0.18, left=0.10, right=0.96)
-    cs.add_header(fig, "Phantom status is near-perfectly persistent across the interval",
-                  "Share of t1 below-recall-floor (phantom) brands retaining phantom status at t2.",
-                  "Descriptive (tertiary); no confirmation threshold. Pooled 56/57.")
-    _save(fig, 4)
+    deltas = CROSS["per_substrate_delta_all"]
+    ys = np.arange(len(OMNI))[::-1]
+    v22_n = ENUM["v0.22"]["analyzable"]
+    elig = set(CROSS["eligible_substrates"])
+    for yy, s in zip(ys, OMNI):
+        d = deltas[s]
+        eligible = s in elig
+        col = cs.INDIGO if eligible else cs.PALETTE["gray_light"]
+        ax.barh(yy, d, height=0.6, color=col, hatch=(None if eligible else "//"),
+                edgecolor=("white" if eligible else cs.GRAY), linewidth=0.6, zorder=3)
+        ax.text(d - 0.02, yy, d2(d), va="center", ha="right", fontsize=8.2,
+                color=(cs.INDIGO if eligible else cs.GRAY), fontweight="bold")
+        lab = f"{s} {CAT[s]}" + ("" if eligible else f"   n={v22_n} analyzable — non-inferential")
+        ax.text(0.02, yy, lab, va="center", ha="left", fontsize=7.8,
+                color=(cs.BLACK if eligible else cs.GRAY))
+    _bands(ax)
+    p = CROSS["binomial_p_twosided"]
+    neg = CROSS["n_negative"]; ne = len(elig)
+    ax.text(-0.55, -1.0,
+            f"{neg}/{ne} concordant (all phantoms lower); exact binomial floor p={p:.3f}\n"
+            f"— significance unreachable at n={ne} substrates (pre-registered)",
+            ha="center", va="center", fontsize=7.4, color=cs.GRAY,
+            bbox=dict(boxstyle="round,pad=0.45", fc="white", ec=cs.GRAY, lw=0.8))
+    ax.set_xlim(-1.12, 0.12); ax.set_ylim(-1.6, len(OMNI) - 0.3)
+    ax.set_yticks([]); ax.set_xticks([-1.0, -0.5, 0.0])
+    ax.tick_params(labelsize=8)
+    ax.set_xlabel("Per-substrate Cliff's δ on CV-CPC  (raw arm)", fontsize=9)
+    fig.subplots_adjust(top=0.80, bottom=0.24, left=0.05, right=0.97)
+    cs.add_header(fig, "Per-substrate signs are unanimous but the test is structurally underpowered",
+                  "Raw-arm per-substrate Cliff's δ. Eligible (>=4 analyzable phantoms) substrates in indigo.",
+                  "v0.22 (hatched) has one analyzable phantom — pooled-only, non-inferential. Sign test runs on the four eligible substrates.")
+    _save(fig, "chart_04_cross_substrate_concordance",
+          f"Per-substrate δ {neg}/{ne} concordant negative; binomial floor p={p:.3f} (underpowered at n={ne}).")
+
+
+# ============================================================ chart_05
+def chart_05():
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    measures = [
+        ("raw arm", RAW["cliffs_delta"], T2["raw_arm"]["cliffs_delta"]),
+        ("C_P control", CP["delta_resid"], T2["gate_control_C_P"]["delta_resid"]),
+        ("recall-mean control", RM["delta_resid"], T2["gate_control_recall_mean"]["delta_resid"]),
+    ]
+    _bands(ax)
+    ys = np.arange(len(measures))[::-1]
+    for j, (yy, (name, t1v, t2v)) in enumerate(zip(ys, measures)):
+        ax.plot([t1v, t2v], [yy, yy], color=cs.PALETTE["gray_light"], lw=1.4, zorder=2)
+        ax.scatter(t1v, yy, s=70, color=cs.INDIGO, marker="o", edgecolor="white",
+                   linewidth=0.6, zorder=4, label=("t1" if j == 0 else None))
+        ax.scatter(t2v, yy, s=70, color=cs.WARM, marker="^", edgecolor="white",
+                   linewidth=0.6, zorder=4, label=("t2" if j == 0 else None))
+        ax.text(-1.03, yy + 0.22, name, va="bottom", ha="left", fontsize=8.4,
+                color=cs.BLACK, fontweight="bold")
+        ax.text(min(t1v, t2v) - 0.03, yy, f"t1 {d2(t1v)} → t2 {d2(t2v)}", va="center",
+                ha="right", fontsize=7.2, color=cs.GRAY)
+    ax.legend(loc="lower left", fontsize=7.6, framealpha=0.9)
+    ax.set_xlim(-1.05, 0.45); ax.set_ylim(-0.7, len(measures) - 0.2)
+    ax.set_yticks([]); ax.set_xticks([-1.0, -0.5, 0.0])
+    ax.tick_params(labelsize=8)
+    ax.set_xlabel("Cliff's δ (raw / residualized)  (phantom − non-phantom)", fontsize=9)
+    fig.subplots_adjust(top=0.80, bottom=0.22, left=0.06, right=0.97)
+    cs.add_header(fig, "The whole structure — including the flip — reproduces at t2",
+                  "Test-retest stability check; near-replica panel; descriptive only.",
+                  "t1 (circles) vs t2 (triangles) for the raw arm and both gate controls. The recall-mean control sits near zero in both waves.")
+    _save(fig, "chart_05_t2_stability",
+          "Walled test-retest check: raw arm and both controls reproduce at t2 — the flip replicates; descriptive only.")
+
+
+# ============================================================ chart_06  (report figure)
+def chart_06():
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    xs = np.arange(len(OMNI))
+    analyz = [ENUM[s]["analyzable"] for s in OMNI]
+    excl = [ENUM[s]["excluded_allzero"] for s in OMNI]
+    nonp = [ENUM[s]["non_phantom"] for s in OMNI]
+    ax.bar(xs, analyz, width=0.62, color=cs.WARM, edgecolor="white", linewidth=0.6,
+           label="phantom — analyzable", zorder=3)
+    ax.bar(xs, excl, bottom=analyz, width=0.62, color=cs.PALETTE["gray_light"], edgecolor="white",
+           linewidth=0.6, label="phantom — excluded (all-zero)", zorder=3)
+    ax.bar(xs, nonp, bottom=np.add(analyz, excl), width=0.62, color=cs.INDIGO, edgecolor="white",
+           linewidth=0.6, label="non-phantom", zorder=3)
+    for x, s in zip(xs, OMNI):
+        tot = ENUM[s]["brands"]
+        elig = ENUM[s]["eligible_ge4"]
+        tag = f"analyzable {ENUM[s]['analyzable']}  " + ("✓ eligible" if elig else "pooled-only")
+        ax.text(x, tot + 0.4, tag, ha="center", va="bottom", fontsize=7.0,
+                color=(cs.INDIGO if elig else cs.WARM), fontweight="bold")
+    ax.axhline(4, color=cs.GRAY, lw=0.9, ls=":", zorder=2)
+    ax.set_xticks(xs); ax.set_xticklabels([f"{s}\n{CAT[s]}" for s in OMNI], fontsize=7.6)
+    ax.set_ylim(0, 28); ax.set_yticks([0, 8, 16, 24]); ax.tick_params(axis="y", labelsize=8)
+    ax.set_ylabel("brand units", fontsize=9)
+    ax.legend(loc="upper center", ncol=3, fontsize=7.2, framealpha=0.9, bbox_to_anchor=(0.5, 1.04))
+    fig.subplots_adjust(top=0.78, bottom=0.16, left=0.08, right=0.97)
+    cs.add_header(fig, "Roster and attrition by substrate",
+                  f"{ATT['flagged']} phantom-flagged of {V['n_brand_units']} units; {ATT['excluded_all_zero']} excluded (all-zero recall, undefined CV); "
+                  f"analysis set {ATT['analyzable_phantom']} analyzable vs {ATT['non_phantom']} non-phantom.",
+                  "Per-substrate test requires >=4 analyzable phantoms; v0.22 (one) enters pooled analysis only.")
+    _save(fig, "chart_06_roster_attrition",
+          f"{ATT['flagged']} flagged, {ATT['analyzable_phantom']} analyzable, {ATT['excluded_all_zero']} all-zero excluded; "
+          f"v0.22 pooled-only. (Report figure; paper renders as §2 table.)")
 
 
 if __name__ == "__main__":
-    print("building v0.35 figures (dual register) -> reports/figs/v35/{,report/}")
-    for _m in ("paper", "report"):
-        MODE = _m
-        chart_01(); chart_02(); chart_03(); chart_04()
+    print("building v0.35 figures -> reports/figs/v35/  (register-neutral)")
+    chart_01(); chart_02(); chart_03(); chart_04(); chart_05(); chart_06()
+    for pdf in sorted(FIG_DIR.glob("chart_0*.pdf")):
+        shutil.copy(pdf, DEPOSIT_DIR / pdf.name)
+        print(f"  deposited {pdf.name} -> osf/v35/figures/")
     print("done")
