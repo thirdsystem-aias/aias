@@ -1,0 +1,1 @@
+The v0.31 SSRN paper (abstract 6880959) is WITHDRAWN/inactive. The frozen per-model inputs archived in this deposit remain valid archived data; CV-CPC's methodological status is fixed by v1.7 (SSRN 6878818): computation defined, instrument not adopted.
