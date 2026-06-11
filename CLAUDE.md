@@ -249,6 +249,7 @@ Foundational: *AI Availability: Extending Mental and Physical Availability into 
 | v0.32 | CPC Version-Snapshot Stability — two-arm cross-generation test (CPC version-robustness) | 6898581 |
 | v0.33 | Provider-Asymmetric CPC — re-analysis; between-provider variance decomposition (CPC.02) | 6909019 |
 | v0.34 | CPC Longitudinal t₁→t₂ Stability — first two-wave re-acquisition; CONFIRMED CV-CPC temporal stability + recognition-ceiling collapse (CPC.03) | 6915458 |
+| v0.35 | Naive-Phantom × CPC — re-analysis; pre-registered control-flip, gate UNDETERMINED (recognition control inert under saturation; recall-mean control annihilates the contrast) (CPC.04) | 6921758 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |

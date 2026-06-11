@@ -102,6 +102,10 @@ PHASE_SSRN_REGISTRY = {
               "title": "Provider-Asymmetric Consistency in AI Brand Availability"},
     "v0.34": {"substrate": "CPC Longitudinal t1->t2 Stability (CPC.03)", "ssrn_id": 6915458,
               "title": "Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity"},
+    "v0.35": {"substrate": "Naive-Phantom x CPC (CPC.04)", "ssrn_id": 6921758,
+              "title": "Control-Dependent Verdicts in a Phantom-Brand Consistency "
+                       "Contrast: A Pre-Registered Control-Flip Result on Frozen "
+                       "Multi-Substrate Inputs"},
 }
 
 METHODOLOGY_SSRN_REGISTRY = {

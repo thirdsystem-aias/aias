@@ -27,11 +27,11 @@
 - **v0.33** — Provider-asymmetric CPC: test whether CPC differs systematically by LLM provider.
 - **v0.34** — CPC longitudinal t₁→t₂: stability paralleling v0.9 Re-Baseline.
 - **v0.35** — Naive-Phantom × CPC: do phantom-heavy brands have distinct CPC signatures?
-- **v0.36** — CPC regime / typology emergence: does CPC have its own regime structure or inherit Four-Regime Taxonomy?
+- **v0.36** — CPC regime / typology emergence: does CPC have its own regime structure or inherit Four-Regime Taxonomy? *(Sequencing: decide whether regime analysis waits for the v1.8 instrument.)*
 - **v1.8** — CPC typology methodology lock.
-  - *Upstream motivation queue (cite when drafting):* v1.7 (6878818 — CV-CPC not adopted; Presence-coupling ρ=0.77), v0.32 (6898581 — version-snapshot fragility), v0.33 (6909019 — provider saturation-collapse), v0.34 (6915458 — **temporal stability of CV-CPC rank order CONFIRMED, so the machinery reproduces; recognition-ceiling effects in 4/5 consumer categories structurally collapse both the Beyond-Presence gate and the Presence rank-test → demonstrated necessity of a mean-independent consistency instrument *and* a graded recognition signal**).
+  - *Upstream motivation queue (cite when drafting):* v1.7 (6878818 — CV-CPC not adopted; Presence-coupling ρ=0.77), v0.32 (6898581 — version-snapshot fragility), v0.33 (6909019 — provider saturation-collapse), v0.34 (6915458 — **temporal stability of CV-CPC rank order CONFIRMED, so the machinery reproduces; recognition-ceiling effects in 4/5 consumer categories structurally collapse both the Beyond-Presence gate and the Presence rank-test → demonstrated necessity of a mean-independent consistency instrument *and* a graded recognition signal**), v0.35 (6921758 — pre-registered control-flip: C_P control inert under recognition saturation, recall-mean control annihilates the contrast; converts both v1.8 requirements (mean-independent instrument, graded recognition signal) into empirically-backed specifications; phantom-signature question designated as v1.8-instrument re-test, v0.35 frozen 84-unit analysis set as baseline).
 - **v0.37** — CPC × Identity Load moderator test.
-- **v0.38** — CPC × Phantom Brand Persistence test.
+- **v0.38** — CPC × Phantom Brand Persistence test. *(Designated v1.8-instrument re-test of the v0.35 phantom-signature question; v0.35 frozen 84-unit analysis set as the comparison baseline.)*
 - **v0.39** — Presence × CPC dissociation: first cross-component diagnostic study.
 - **v1.9** — Two-component composite weight calibration methodology.
 - **AIAS 2.0** — Two-component synthesis paper.

@@ -14,7 +14,7 @@ withdrawn and it is not cited as methodological authority.**
 
 **Status:** scored and locked. Pre-registration tag `v0.35-prereg-r1` (externally
 anchored before analysis); scoring, figures, brand-format report, and SSRN paper
-complete. **SSRN abstract ID pending.**
+complete. **SSRN abstract ID 6921758** (https://ssrn.com/abstract=6921758).
 
 ## Headline result
 
@@ -62,5 +62,5 @@ to binary (R0→0, else→1) for C_P, identically to the consuming phases.
 4. Build figures: `python3 reports/build_charts_v35.py`
 5. Build report: `python3 reports/build_report_v35.py`
 6. Build SSRN paper: `python3 scripts/build_paper_v0_35.py`
-7. Submit per `papers/v0_35/ssrn_submission_packet_v0_35.md` (SSRN abstract ID pending)
+7. Submit per `papers/v0_35/ssrn_submission_packet_v0_35.md` (SSRN 6921758)
 8. OSF deposit: `python3 ~/aias/scripts/osf_upload.py ~/aias/osf/v35 v35`
