@@ -111,17 +111,17 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # v0.35: the chart-bearing findings ARE the P-propositions (P1/P2/P3 charted,
 # P4/P5 text-only); headlines + detail come from the content module.
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
-_NO_FINDING_LABEL = {"P5"}
+_NO_FINDING_LABEL = set()
 content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
                      "text": content.HYPOTHESIS_DETAILS.get(h["id"], ""),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
-    1: "asym",       # P1 provider asymmetry        -> report_fig_01 (eta^2 null)
-    2: "gate",       # P2 beyond-presence gate      -> report_fig_02 (gate arms)
-    3: "ranks",      # P3 provider rank stability   -> report_fig_03 (rank heatmap)
-    4: "phantom",    # P4 obscurity (mechanical)    -> report_fig_04 (report-only)
-    5: None,         # P5 read the lens / scope     -> text only
+    1: "gate_flip",   # P1 -> chart_01_gate_flip
+    2: "saturation",  # P2 -> chart_02_recognition_saturation
+    3: "raw",         # P3 -> chart_03_raw_manipulation_check
+    4: "cross",       # P4 -> chart_04_cross_substrate_concordance
+    5: "t2",          # P5 -> chart_05_t2_stability
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -150,7 +150,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
         _rows.append((h["id"], h.get("proposition", ""), _status,
                       _SC_MAP.get(h.get("status_class", ""), "descriptive")))
     content.HYPOTHESIS_SCORING = {
-        "heading": "The four propositions, scored",
+        "heading": "The five propositions, scored",
         "intro": "Each proposition is the managerial reading of a locked result, scored for brand teams rather than reviewers.",
         "rows": _rows,
     }
@@ -251,6 +251,13 @@ SPANS_PT = {n: span_pts(n) for n in range(1, COL_COUNT + 1)}
 
 # Chart figsize spec (inches).
 CHART_FIGSIZE_IN = {
+    # v0.35 phantom-CPC report charts (native mediabox dims; aspect re-derived by ChartReservation)
+    "v35_gate_flip":  (7.662, 5.100),
+    "v35_saturation": (8.769, 4.700),
+    "v35_raw":        (7.275, 5.100),
+    "v35_cross":      (9.329, 5.100),
+    "v35_t2":         (7.275, 5.100),
+    "v35_roster":     (8.225, 5.100),
     # v0.11–v0.17 keys preserved for cross-version reuse (not used by v0.19 report)
     "6_col_v11_scatter":    (7.50, 5.00),
     "6_col_v11_rankshift":  (7.50, 6.50),
@@ -1083,12 +1090,24 @@ def build_lead_story(styles: dict[str, ParagraphStyle]) -> list:
     return s
 
 
-def build_what_we_measured_story(styles: dict[str, ParagraphStyle]) -> list:
+def build_what_we_measured_story(styles, manifest=None, chart_dir=None, debug=False) -> list:
     s = []
     s.append(Paragraph(content.WHAT_WE_MEASURED["heading"], styles["h2"]))
     s.append(Spacer(1, 6))
     paras = [Paragraph(p, styles["body"]) for p in content.WHAT_WE_MEASURED["paragraphs"]]
     s.append(BalancedColumns(paras, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
+    # chart_06 roster/attrition under the methodology prose
+    if manifest is not None and chart_dir is not None:
+        _fn, _fk = _slot_lookup("roster")
+        _cp = chart_dir / _fn
+        if _cp.exists():
+            _w, _h = CHART_FIGSIZE_IN[_fk]
+            _cw = CONTENT_W / 72.0
+            if _w > _cw:
+                _h *= _cw / _w; _w = _cw
+            s.append(Spacer(1, 8))
+            s.append(ChartReservation("roster", _cp, _w, _h, manifest, debug=debug,
+                     caption=HERO_FIGURE_CAPTIONS.get("roster", ""), caption_style=styles["caption"]))
     return s
 
 
@@ -1097,28 +1116,35 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
-    "asym": (
-        "The standings held. Each brand's recall-consistency score at the first wave "
-        "plotted against the second; points hug the diagonal in four of five "
-        "categories. Audiophile headphones (warm) is the lone miss — the smallest, "
-        "most fragmented panel."
+    "roster": (
+        "Of 112 brands, 57 are phantom-flagged and 28 of those were never recalled at "
+        "all - leaving 29 measurable phantoms against 55 non-phantoms. Automotive (one "
+        "measurable phantom) enters pooled analysis only; the other four clear the floor."
     ),
-    "gate": (
-        "The question recognition wouldn't let us ask. Recall-consistency stability "
-        "before and after accounting for recognition; the two are identical wherever "
-        "recognition is saturated (four categories), so there is nothing to separate. "
-        "Only headphones — where recognition still varies — is informative, and there "
-        "consistency is steadier once recognition is removed."
+    "gate_flip": (
+        "The same phantom gap, accounted for two ways. Controlled for recognition it "
+        "survives at full strength; controlled for recall volume it vanishes. The "
+        "controls disagree, so the verdict is undetermined - and the disagreement is the finding."
     ),
-    "ranks": (
-        "Recognition held where there was a ranking to hold. Recognition scores "
-        "wave-over-wave; strong wherever brands still differ, but two categories sit at "
-        "a perfect ceiling both waves, leaving nothing to rank."
+    "saturation": (
+        "Why the controls disagree. Recognition is maxed out in three of five categories, "
+        "so a recognition control has nothing to remove. Recall volume separates phantom "
+        "from non-phantom everywhere - because that is what the phantom label means."
     ),
-    "phantom": (
-        "Invisibility is the stickiest state. The share of brands below the recall "
-        "floor at the first wave that stayed below it at the second — 56 of 57 across "
-        "all five categories, a single mover in cosmetics."
+    "raw": (
+        "The raw phantom consistency gap, pooled across categories, with the category "
+        "leave-out range. Large and decisive - but labeled a manipulation check, because "
+        "both the label and the metric are built from recall."
+    ),
+    "cross": (
+        "Every category shows phantoms lower on consistency. With only four categories "
+        "eligible for the formal test, even perfect unanimity cannot clear the "
+        "significance bar - as the pre-registration stated in advance."
+    ),
+    "t2": (
+        "The second measurement wave reproduces the whole structure: the raw gap, its "
+        "survival under the recognition control, and its collapse under the recall "
+        "control. The flip is a stable property of the measurement, not a one-wave fluke."
     ),
 }
 
@@ -1128,10 +1154,12 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     """Map a v0.30 CPC brand-format slot_key (PATTERNS id) to (filename, figsize_key).
     Charts are produced by build_charts_v30.py at reports/figs/v30/."""
     table = {
-        "asym":  ("report_fig_01.pdf", "v35_asym"),
-        "gate":  ("report_fig_02.pdf", "v35_gate"),
-        "ranks": ("report_fig_03.pdf", "v35_ranks"),
-        "phantom": ("report_fig_04.pdf", "v35_phantom"),
+        "roster":     ("chart_06_roster_attrition.pdf",          "v35_roster"),
+        "gate_flip":  ("chart_01_gate_flip.pdf",                 "v35_gate_flip"),
+        "saturation": ("chart_02_recognition_saturation.pdf",    "v35_saturation"),
+        "raw":        ("chart_03_raw_manipulation_check.pdf",     "v35_raw"),
+        "cross":      ("chart_04_cross_substrate_concordance.pdf","v35_cross"),
+        "t2":         ("chart_05_t2_stability.pdf",               "v35_t2"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1178,7 +1206,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             h_in = h_in * (_content_w_in / w_in)
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
-        is_hero = slot in ("asym", "gate", "ranks", "phantom")
+        is_hero = slot in ("roster", "gate_flip", "saturation", "raw", "cross", "t2")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
@@ -1349,8 +1377,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>The Standings Hold: Longitudinal t1-t2 Stability of AI Brand Recall "
-        "Consistency Across Five Categories (AIAS CPC, v0.35)</i>. "
+        "<i>Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast: "
+        "A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs "
+        "(AIAS CPC, v0.35)</i>. "
         "Third System (SSRN pending). thirdsystem.ai/v35"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
@@ -1473,13 +1502,13 @@ def build(*, debug_layout: bool = False,
     V22_DEPOSIT_ROOT = AIAS_ROOT / "osf" / "v35"
     # v0.35 figures live in reports/figs/v35/ (build_charts_v35.py default
     # fig-dir), the same chart_0*.pdf the SSRN paper references.
-    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v35" / "report")
+    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v35")
     output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v35_phantom_cpc_omnibus_report.pdf")
     base_pdf = output_path.parent / "_v35_base.pdf"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[build_report_v35] chart pre-flight (looking in {chart_dir})")
-    expected_slots = ["asym", "gate", "ranks", "phantom"]
+    expected_slots = ["roster", "gate_flip", "saturation", "raw", "cross", "t2"]
     expected_files = set()
     for sk in expected_slots:
         fname, _ = _slot_lookup(sk)
@@ -1493,7 +1522,7 @@ def build(*, debug_layout: bool = False,
     if chart_dir.exists():
         actual_charts = sorted(p.name for p in chart_dir.iterdir()
                                 if p.is_file() and p.suffix.lower() == ".pdf"
-                                and p.name.startswith("report_fig_"))
+                                and p.name.startswith("chart_0"))
         unexpected = [n for n in actual_charts if n not in expected_files]
         if unexpected:
             print(f"[build_report_v35] chart files in dir not used by brand-format report:")
@@ -1505,7 +1534,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="The Standings Hold \u2014 AIAS CPC Longitudinal t1-t2 Stability (v0.35)",
+        title="The Question the Instrument Couldn\u2019t Answer \u2014 AIAS Naive-Phantom x CPC (v0.35)",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )
@@ -1525,7 +1554,7 @@ def build(*, debug_layout: bool = False,
     # --- What we measured (methodology) ---
     story.append(NextPageTemplate("spread"))
     story.append(PageBreak())
-    for f_ in build_what_we_measured_story(styles):
+    for f_ in build_what_we_measured_story(styles, manifest, chart_dir, debug_layout):
         story.append(f_)
 
     # --- Findings 1–3 ---

@@ -1,170 +1,49 @@
-# NOTE: cloned from v34_longitudinal_t1_t2_omnibus_content.py on phase scaffold.
-# All COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, PATTERNS,
-# LIMITATIONS, WHATS_NEXT, HYPOTHESIS_DETAILS, CLOSING text
-# must be re-written for the v0.35 phantom-cpc omnibus
-# substrate. Do not ship this file as-is.
-
 """
-v0.35 - CPC Longitudinal t1->t2 Stability - Brand-format report content module.
-Third System(TM) managerial register (P1-P4 propositional framing).
+v0.35 - Naive-Phantom x CPC Omnibus - Brand-format report content module.
+Third System(TM) managerial register (P1-P5 propositional framing).
+Mapped verbatim from reports/v35_report_copy_deck.md (certified copy deck).
+No Samsung anywhere (COI lives only in the SSRN paper Declarations).
 
-Authored against the locked verdicts (osf/v35/v35_verdicts.json). Honest framing:
-  P1 - recall-consistency standings hold over weeks (SUPPORTED, 4/5 categories);
-  P2 - consistency moves independently of recognition (NOT ESTABLISHED; recognition saturated);
-  P3 - recognition standings hold over weeks (SUPPORTED WHERE MEASURABLE; 2/5 at ceiling);
-  P4 - AI invisibility persists (OBSERVED; descriptive, 56/57).
-
-Register: brand editorial voice, P1-P4 propositions (no H_* notation). No Samsung anywhere
-(the COI disclosure lives in the SSRN paper's Declarations, not in this report). Statistics
-are translated to plain language; markup conventions per build_report: <sub> subscripts,
-NBSP-wrapped arrows.
-
-The 11 standard attributes follow: COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY,
-WHAT_WE_MEASURED, PATTERNS, LIMITATIONS, WHATS_NEXT, HYPOTHESIS_SCORING,
-HYPOTHESIS_DETAILS, CLOSING.
+Attributes: COVER, STANDFIRST, LEAD_DECK, EXEC_SUMMARY, WHAT_WE_MEASURED,
+PATTERNS, LIMITATIONS, WHATS_NEXT, HYPOTHESIS_SCORING, HYPOTHESIS_DETAILS, CLOSING.
+Finding body = deck [PATTERNS] narrative + [HYPOTHESIS_DETAILS] note (two paragraphs).
 """
-
-# arrow wrapped in non-breaking spaces (prevents line-splits across the connector)
-_AR = " → "
 
 COVER = {
-    "title": "The Standings Hold",
-    "subtitle": (
-        "Three weeks later, AI brand rankings barely moved - and the brands AI "
-        "couldn't see stayed invisible. A 112-brand, two-wave stability study across "
-        "six leading models."
-    ),
+    "title": "The Question the Instrument Couldn't Answer",
+    "subtitle": "Phantom brands, AI consistency, and a measurement test that flipped on its own control",
+    "tagline": "AIAS™ Measurement Program - Phase v0.35 - Third System™",
 }
 
-STANDFIRST = (
-    "If AI-generated brand recommendations reshuffled at random from week to week, no "
-    "one would need to manage them. They don't. Third System™ re-measured five "
-    "full category panels - 112 brands, six models, identical questions, twenty-one "
-    "days apart at most - and the standings held. Which brands the models recall, and "
-    "how consistently they recall them, is a stable property of the brand, not noise "
-    "in the machine."
-)
+STANDFIRST = "Some brands are recognized by AI models but never named by them — phantom brands. They score differently on consistency measures, and v0.35 asked the obvious question: is that difference real, or just an echo of how little AI recalls them? The pre-registered answer is neither yes nor no. The test itself cannot tell — and demonstrating that, with confirmatory rigor, is the deliverable."
 
-LEAD_DECK = (
-    "A brand's AI recall-consistency rank held t<sub>1</sub>" + _AR + "t<sub>2</sub> "
-    "in four of five categories. Recognition sat at ceiling almost everywhere - every "
-    "established brand is “known”; the competition happens in recall. And "
-    "invisibility proved the stickiest state of all: 56 of 57 brands below the recall "
-    "floor at first measurement were still there three weeks later."
-)
+LEAD_DECK = "This phase re-analyzed five frozen category panels — 112 brands, six AI models, no new model calls — to test whether phantom brands carry a distinct consistency signature. The design knew its own trap in advance: the phantom label and the consistency metric are both built from recall, so a raw comparison is rigged from the start. The inferential weight sat entirely on a gate with two controls and a binding rule: if the controls disagree, the verdict is undetermined and the disagreement is the finding. The controls disagreed. Controlled for recognition, the phantom gap survives at full strength. Controlled for recall itself, it vanishes. Same data, same procedure, opposite verdicts — stable across category leave-outs and reproduced wave to wave. The instrument, not the brands, is what got measured."
 
-EXEC_SUMMARY = (
-    "Three findings, one implication. First, stability: per-brand recall-consistency "
-    "rankings correlated strongly across waves in skincare, cosmetics, automotive, and "
-    "premium spirits (rank correlations 0.76-0.96); only audiophile headphones - the "
-    "smallest panel - failed the bar. Second, ceiling: AI recognition of established "
-    "brands is saturated. In four of five categories, effectively every brand was "
-    "recognized by every model, both waves. Recognition no longer discriminates; "
-    "recall does. Third, persistence of absence: brands that failed to surface in AI "
-    "recall at the first wave almost universally failed again at the second.\n\n"
-    "The implication: a brand's AI standing is a managed asset with inertia - it "
-    "neither decays in days nor improves by waiting. If your brand is absent from the "
-    "AI conversation today, that is its standing until something changes it."
-)
+EXEC_SUMMARY = "Phantom brands sit at the bottom of the AI consistency table — but the test designed to find out whether that is a real signature or a recall echo returned \"undetermined,\" by its own pre-registered rule, because its two controls flatly disagree.\n\nThe disagreement has a clean mechanical explanation. Recognition is maxed out: in three of five categories, every measurable brand is recognized by every model, so a recognition-based control has nothing to remove and waves the gap through. A recall-based control removes the very thing that defines a phantom brand, and the gap disappears with it.\n\nThe raw gap itself is enormous — phantom brands score far lower on consistency, unanimously, in every category, in both measurement waves. But the program's own rules label that a manipulation check, not a finding: the gap is built into how the pieces are defined.\n\nThe practical conclusion is about the measuring stick. A yes/no recognition signal cannot police a recall-based consistency metric. The next methodology revision (v1.8) now carries two requirements with pre-registered evidence behind them: a consistency measure that does not move with recall volume, and a graded recognition signal that still varies among well-known brands.\n\nThe phantom-signature question stays open — deliberately. It is now a designated re-test for the redesigned instrument, with this phase's frozen panel as the baseline."
 
-WHAT_WE_MEASURED = (
-    "Two identical measurement waves, fifteen to twenty-one days apart, across five "
-    "locked category panels: audiophile headphones (16 brands), skincare, cosmetics, "
-    "automotive, and premium spirits (24 each). Each wave asked six leading AI models "
-    "- two each from Anthropic, OpenAI, and Google - the same recognition and recall "
-    "questions, word for word, under the AIAS™ measurement protocol. Recognition "
-    "asks whether a model knows the brand; recall asks whether the model surfaces it "
-    "unprompted when a buyer-style question is posed.\n\n"
-    "From per-model recall we compute a consistency score per brand; the study tests "
-    "whether each brand's scores, ranks, and visibility status at wave one predict "
-    "wave two. Probe wording, brand registries, and model identities were locked and "
-    "externally registered before a single second-wave call was made."
-)
+WHAT_WE_MEASURED = "v0.35 is a re-analysis: no new AI queries, no new brands. The inputs are the program's frozen omnibus panels — audiophile headphones (16 brands), skincare (24), cosmetics (24), automotive (24), and premium spirits (24): 112 brand units measured across the same six-model panel used since v0.17. A phantom brand is one the models recognize when asked directly but do not surface when asked to name brands in the category — recognized, never recalled. The frozen classification flags 57 of the 112. Twenty-eight of those 57 were never recalled by any model even once: with no recall at all, a consistency-of-recall score cannot be computed, so the measurable phantom set is 29 brands against 55 non-phantoms. One category (automotive) had only one measurable phantom and enters pooled analysis only; the other four cleared the pre-set floor of 4 or more."
 
-PATTERNS = (
-    "The stability is not uniform - it is structured, and the structure is "
-    "informative. The four categories that passed are mature consumer categories with "
-    "deep editorial and review coverage; their AI standings look like settled "
-    "consensus. The one miss, audiophile headphones, combines the smallest panel with "
-    "the most enthusiast-driven, fragmented discourse - the conditions under which a "
-    "ranking plausibly should wobble. Meanwhile recognition's ceiling effect tells "
-    "brand teams where the game is: the models know your brand exists; the question is "
-    "whether they bring it up. And the near-perfect persistence of the invisible "
-    "cohort - fourteen of fourteen unsurfaced skincare brands still unsurfaced, "
-    "fifteen of fifteen spirits - is the strongest managerial signal in the study: AI "
-    "invisibility is a standing condition, not a sampling accident."
-)
+PATTERNS = ""  # findings render from HYPOTHESIS_SCORING (headline) + HYPOTHESIS_DETAILS (body)
 
-LIMITATIONS = (
-    "Honest boundaries. The consistency instrument remains entangled with "
-    "recognition-and-recall presence (a known limitation, documented in the program's "
-    "methodology track); this study measures the stability of the quantity, not its "
-    "validity as an independent construct. The interval is three weeks - stability "
-    "over quarters is a separate, unanswered question. Models were called by their "
-    "public names, as a real buyer's tool would; any silent provider-side version "
-    "change inside the window is part of what “stability” means here, by "
-    "design. Five categories and 16-24 brands per panel bound the precision of any "
-    "single category's result. And because recognition sat at ceiling, the study could "
-    "not cleanly test whether consistency moves independently of presence - one "
-    "category suggests it does; four could not speak."
-)
+LIMITATIONS = "The 28 phantom brands excluded for total silence are precisely the most extreme cases — the measurable phantom set is the moderate end of the phenomenon. The phantom flag itself captures \"recognized but below the recall floor,\" which mixes brands that are genuinely gone with brands that are merely obscure; this design cannot tell them apart. The hypothesis was partly motivated by exploratory glimpses in earlier phases of this same data family, and the second wave is a near-replica panel, not an independent replication. Scope is five consumer categories, measured in English, on one six-model panel, at one pair of time points. And the consistency quantity itself holds characterization status only — it was never adopted as an instrument, which is, in the end, what this phase demonstrates the wisdom of."
 
-WHATS_NEXT = (
-    "The program's next methodology phase replaces the presence-entangled consistency "
-    "instrument with a mean-independent one - this study's ceiling effects are direct "
-    "evidence for why. The second wave also captured each provider's dated model "
-    "version per call, which the first wave could not; that establishes the baseline "
-    "for a future third wave able to separate “the model changed” from "
-    "“the answers drifted.” And the open managerial question is the "
-    "actionable one: if invisibility is sticky, what interventions move a brand across "
-    "the recall floor - and how long do they take to register?"
-)
+WHATS_NEXT = "The findings route directly into v1.8, the consistency-methodology revision, which now carries two design requirements with confirmatory evidence behind them: the consistency instrument must not move mechanically with recall volume, and the presence control must be graded — capable of telling well-known brands apart instead of flatlining at \"yes, recognized.\" Once that instrument exists, the phantom-signature question returns as a designated re-test, with this phase's frozen 84-brand analysis set as the comparison baseline. Two further threads follow: separating gone-brands from merely-quiet brands inside the below-floor population, and asking whether consistency, properly measured, has a category structure of its own."
 
 HYPOTHESIS_SCORING = [
-    {"id": "P1", "headline": "The standings held through the wait",
-     "proposition": "AI recall-consistency standings hold over weeks.",
-     "verdict": "SUPPORTED", "qualifier": "4 of 5 categories at or above the pre-registered bar",
-     "status_class": "positive"},
-    {"id": "P2", "headline": "The question recognition wouldn't let us ask",
-     "proposition": "Consistency moves independently of recognition.",
-     "verdict": "NOT ESTABLISHED",
-     "qualifier": "testable in only 1 of 5 categories - recognition saturated elsewhere; the one informative category is suggestive, not sufficient",
-     "status_class": "neutral"},
-    {"id": "P3", "headline": "Recognition held where there was a ranking to hold",
-     "proposition": "Recognition standings hold over weeks.",
-     "verdict": "SUPPORTED WHERE MEASURABLE",
-     "qualifier": "strong in all 3 categories with rank variation; 2 categories at a constant ceiling both waves - nothing to rank",
-     "status_class": "neutral"},
-    {"id": "P4", "headline": "Invisibility is the stickiest state",
-     "proposition": "AI invisibility persists.",
-     "verdict": "OBSERVED",
-     "qualifier": "descriptive; 56 of 57 below-floor brands retained the status; no pass/fail threshold was set",
-     "status_class": "neutral"},
+    {"id": "P1", "headline": "The verdict depends on the control, and that is the finding", "proposition": "The gate verdict flips with the choice of control; the pre-registered disagreement rule declared it undetermined, and the flip is the finding.", "verdict": "ESTABLISHED", "qualifier": "", "status_class": "positive"},
+    {"id": "P2", "headline": "Why the flip happens: recognition has nowhere left to go", "proposition": "Recognition is saturated in three of five categories; the recognition control is structurally inert exactly where the comparison lives.", "verdict": "ESTABLISHED", "qualifier": "", "status_class": "positive"},
+    {"id": "P3", "headline": "The raw gap is huge, and built-in", "proposition": "The raw phantom consistency gap is large and decisive — and labeled a manipulation check, because both sides of it are built from recall.", "verdict": "OBSERVED, BY CONSTRUCTION", "qualifier": "", "status_class": "neutral"},
+    {"id": "P4", "headline": "Unanimous in direction, unprovable by design", "proposition": "Direction unanimous across all five categories; the formal cross-category test cannot reach significance at this scale, as pre-registered.", "verdict": "OBSERVED, UNDERPOWERED BY DESIGN", "qualifier": "", "status_class": "neutral"},
+    {"id": "P5", "headline": "Run it again, get the same picture", "proposition": "The entire structure — gap, survival under one control, collapse under the other — reproduces on the second wave.", "verdict": "OBSERVED", "qualifier": "", "status_class": "neutral"},
 ]
 
 HYPOTHESIS_DETAILS = {
-    "P1": ("Rank correlations by category - headphones 0.42 (miss; smallest panel, "
-           "n=8 comparable brands), skincare 0.78, cosmetics 0.89, automotive 0.96, "
-           "spirits 0.76; the pre-registered bar was 0.70 in at least four of five."),
-    "P2": ("The test requires recognition to vary; in four categories every model "
-           "recognized at least nine in ten established brands both waves, collapsing "
-           "the test onto recall itself. In headphones - the only category with "
-           "recognition variation - consistency was more stable after recognition was "
-           "accounted for (0.61 vs 0.42), the study's one suggestive sign of an "
-           "independent consistency signal."),
-    "P3": ("Recognition rank correlations 0.81 / 0.99 / 1.00 where measurable; in "
-           "cosmetics and spirits every brand scored a perfect six of six models, both "
-           "waves - 100% exact match, but no ranking to test."),
-    "P4": ("Retention of below-floor status - 8/8, 14/14, 9/10, 10/10, 15/15; pooled "
-           "56/57 (98%). The single mover was one cosmetics brand."),
+    "P1": "The gate test asked whether the phantom consistency gap survives once you account for how present a brand already is. Accounted for via recognition, the gap survives essentially intact (effect -0.80, decisive). Accounted for via recall volume, it collapses to nothing (+0.07, indistinguishable from noise). The pre-registered rule for disagreement fired: verdict undetermined, disagreement reported as the result. It held in every category leave-out and repeated in the second wave.\n\nIdentical residualization procedure, two controls. Recognition control: effect -0.80, p = 0.0001 — would read CONFIRMED. Recall-volume control: +0.07, p = 0.655 — reads FALSIFIED. Binding pre-registered rule: disagreement means UNDETERMINED, flip reported as the finding, routed to the v1.8 methodology revision. Stable in all five leave-one-category-out runs.",
+    "P2": "In three of five categories, every measurable brand — phantom or not — is recognized by all six models. A control that never varies cannot remove anything; it inherits whatever the raw data showed. Recall volume, by contrast, separates phantom from non-phantom in every category — because that separation is what the phantom label means. One control is blind, the other is circular. Neither can referee.\n\nRecognition count is constant across all measurable brands in cosmetics, automotive, and spirits — the control is a no-op there and inherits the raw signal. Recall volume separates phantom from non-phantom in every category, because the phantom flag is defined by it. The pairing demonstrates that a yes/no recognition signal cannot govern a recall-coupled metric.",
+    "P3": "Phantom brands score drastically lower on cross-model consistency: a pooled effect of -0.84 on a scale where -1 is total separation, decisive at 10,000 simulations. The program reports this as a manipulation check, not a discovery. The phantom label is defined by low recall, and the consistency metric mechanically drops when recall is low. The gap confirms the pipeline works; it does not yet tell you anything about the brands.\n\nPooled effect -0.84 (29 measurable phantoms vs 55 non-phantoms, 296 within-category pairs), p = 0.0001 at 10,000 simulations; leave-out range -0.93 to -0.79; verdict unchanged at stricter and looser thresholds. Reported as pipeline confirmation only, per the locked inferential-weight rule.",
+    "P4": "Every category shows phantoms lower — headphones -0.94, skincare -0.96, cosmetics -0.89, automotive -1.00 (one brand; illustrative only), spirits -0.62. With only four categories eligible for the formal cross-category test, even perfect unanimity cannot clear the significance bar (floor p = 0.125). The pre-registration said so in advance; the unanimity is reported as description, not proof.\n\nPer-category effects: headphones -0.94, skincare -0.96, cosmetics -0.89, automotive -1.00 (single measurable phantom, illustrative), spirits -0.62. Four eligible categories, 4-of-4 concordant, exact-test floor p = 0.125 — significance structurally unreachable, stated in the pre-registration.",
+    "P5": "On the second measurement wave, every element repeats: the big raw gap (-0.82), the recognition-controlled gap surviving (-0.79), the recall-controlled gap vanishing (+0.06), and the five-for-five negative direction. The flip is a stable property of the measurement structure, not a one-wave fluke.\n\nWave-two values: raw -0.82; recognition-controlled -0.79; recall-controlled +0.06 (noise); per-category direction negative five-for-five. No brand left the panel between waves; the measurable phantom set, recomputed from wave-two recall, grew from 29 to 33 as four silent brands picked up nonzero recall. Descriptive check, kept outside all verdict logic.",
 }
 
-CLOSING = (
-    "The first wave of this program established that AI systems hold measurable, "
-    "structured brand standings. This study establishes that those standings persist "
-    "- through three weeks, through whatever silent updates providers shipped, through "
-    "852 fresh probes. Stability is what makes a measurement worth managing: a number "
-    "that holds still long enough to be moved deliberately. The brands with the most "
-    "at stake are the ones the models never mention - because as of this measurement, "
-    "nothing about waiting changes that."
-)
+CLOSING = "The most useful thing a measurement program can publish is sometimes a precise account of what its instrument cannot yet measure. v0.35 set out to characterize phantom brands and ended up characterizing the yardstick — with pre-registered rigor, a binding rule that fired exactly as designed, and a result that converts an open question into an engineering specification. The phantom brands are still out there, still recognized, still unnamed. When the instrument is rebuilt to v1.8's requirements, the program will know precisely where to point it first."
+

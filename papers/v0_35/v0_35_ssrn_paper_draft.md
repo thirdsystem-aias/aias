@@ -185,27 +185,27 @@ All pre-registration artifacts, frozen input reconciliation logs, the phantom ro
 
 # References {-}
 
-González Castro, P. U. (2026). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
+González Castro, P. U. (2025). *Tri-System Brand Growth*. SSRN 6659000.
 
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
+González Castro, P. U. (2026). *Construct Validity and Four-Regime Taxonomy*. AIAS Protocol v1.2. SSRN 6761698.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification* (v1.3). SSRN 6797679.
+González Castro, P. U. (2026). *Phase A Pivot-Validation Specification*. AIAS Protocol v1.3. SSRN 6797679.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+González Castro, P. U. (2026). *Recognition × Recall Decomposition*. AIAS Protocol v1.4. SSRN 6799479.
 
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
+González Castro, P. U. (2026). *Multi-Statistic C2 and Two-Channel Recall*. AIAS Protocol v1.5. SSRN 6810758.
 
-González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
+González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator, Phantom Extension*. AIAS Protocol v1.6. SSRN 6816340.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Consistency --- A Pre-Registered Negative Result* (v1.7). SSRN 6878818.
+González Castro, P. U. (2026). *CPC Consistency --- Pre-Registered Negative Result (CV not independent of Presence)*. AIAS Protocol v1.7. SSRN 6878818.
 
-González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol* (AIAS 1.0). SSRN 6817841.
+González Castro, P. U. (2026). *Five-Substrate Foundational Construct Claim*. AIAS 1.0. SSRN 6817841.
 
-González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't --- An Instrument-Specification Pilot of the AIAS™ Consistency Component (CPC) across Skincare, Cosmetics, and Automotive* (v0.30). SSRN 6875319.
+González Castro, P. U. (2026). *AI Presence in Kitchen knives: AIAS v0.16*. SSRN 6791999.
 
-González Castro, P. U. (2026). *CPC Version-Snapshot Stability: A Two-Arm Cross-Generation Test* (v0.32). SSRN 6898581.
+González Castro, P. U. (2026). *AI Presence in Premium kitchenware: AIAS v0.17*. SSRN 6802261.
 
-González Castro, P. U. (2026). *Provider-Asymmetric CPC: A Pre-Registered Re-Analysis* (v0.33). SSRN 6909019.
+González Castro, P. U. (2026). *AI Presence in Indie fragrance: AIAS v0.18*. SSRN 6806558.
 
 González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
 
@@ -213,10 +213,26 @@ González Castro, P. U. (2026). *AI Presence in Skincare: AIAS v0.20*. SSRN 6811
 
 González Castro, P. U. (2026). *AI Presence in Cosmetics: AIAS v0.21*. SSRN 6815378.
 
-González Castro, P. U. (2026). *AIAS™ v0.22 --- Automotive Substrate: Phantom Brand Persistence on a Heritage-Saturated Category*. SSRN 6829118.
+González Castro, P. U. (2026). *AI Presence in Automotive: AIAS v0.22*. SSRN 6829118.
 
-González Castro, P. U. (2026). *AIAS™ v0.23 --- Premium Spirits Substrate*. SSRN 6834298.
+González Castro, P. U. (2026). *AI Presence in Premium spirits: AIAS v0.23*. SSRN 6834298.
 
-Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxford University Press.
+González Castro, P. U. (2026). *AI Presence in B2B SaaS: AIAS v0.24*. SSRN 6838802.
 
-Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
+González Castro, P. U. (2026). *B2B SaaS Construct Validity: AIAS v0.25*. SSRN 6842138.
+
+González Castro, P. U. (2026). *Amazon BSR Discriminant Validity: AIAS v0.26*. SSRN 6847678.
+
+González Castro, P. U. (2026). *B2B SaaS Convergent Validity: AIAS v0.27*. SSRN 6854758.
+
+González Castro, P. U. (2026). *AI Availability is Not Reducible to Recognition Memory --- and is Underpowered Against Familiarity at n = 24: AIAS v0.28*. SSRN 6865478.
+
+González Castro, P. U. (2026). *The Presence Component Is Construct-Valid: AIAS v0.29*. SSRN 6870778.
+
+González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't — An Instrument-Specification Pilot of the AIAS Consistency Component (CPC): AIAS v0.30*. SSRN 6875319.
+
+González Castro, P. U. (2026). *Version-Snapshot Stability of an AI-Presence Consistency Score: AIAS v0.32*. SSRN 6898581.
+
+González Castro, P. U. (2026). *Provider-Asymmetric Consistency in AI Brand Availability: AIAS v0.33*. SSRN 6909019.
+
+González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: AIAS v0.34*. SSRN 6915458.
