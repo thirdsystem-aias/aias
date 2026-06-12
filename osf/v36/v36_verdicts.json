@@ -1,0 +1,105 @@
+{
+  "phase": "v0.36",
+  "title": "CPC Regime Emergence: Does Cross-Model CPC Cluster Structure Recover the Per-Brand Presence-Regime Classification, Cluster Autonomously, or Collapse Under Saturation?",
+  "lock_tag": "v0.36-prereg-r2",
+  "metadata": {
+    "seed": 36,
+    "feature_note": "6-dim per-model feature = recall_per_model (per-model components of CV-CPC), z-scored within substrate per model; scalar CV-CPC = sensitivity arm.",
+    "clustering": "Ward/Euclidean; gap (Tibshirani 1-SE, uniform bbox ref, B=500, k in {1..8}); within-substrate permutation null n=10000; k-means 50 restarts (sensitivity).",
+    "n_defined_per_substrate": {
+      "v0.19": 8,
+      "v0.20": 10,
+      "v0.21": 14,
+      "v0.22": 14,
+      "v0.23": 9
+    },
+    "gate": {
+      "v23_labels_ok": true,
+      "determinism_ok": true,
+      "passed": true
+    },
+    "no_sklearn": "ARI/silhouette/k-means implemented in-script (deterministic)."
+  },
+  "selected_k": {
+    "omnibus_raw": 3,
+    "omnibus_mean_recall_residual": 2,
+    "v23_raw": 1,
+    "v23_residual": 1
+  },
+  "hypotheses": {
+    "H_RegimeInheritance": {
+      "scope": "v0.23 (n=24); ARI against frozen brand_details[].regime; within-substrate permutation null.",
+      "verdict": "NOT SUPPORTED",
+      "ari": 0.0,
+      "ari_null_pct": 0.0,
+      "ari_p": 1.0,
+      "n": 9,
+      "selected_k": 1,
+      "prediction": "SUPPORTED"
+    },
+    "H_RegimeAutonomy": {
+      "scope": "internal-structure criteria (gap k, silhouette, silhouette null) OMNIBUS (112); ARI<0.30 leg on v0.23 (n=24). Composed across scopes; each component reported with its scope.",
+      "verdict": "NOT SUPPORTED",
+      "omnibus_internal": {
+        "k": 3,
+        "silhouette": 0.2422,
+        "null_pct": 100.0
+      },
+      "v23_ari_below_0.30": true,
+      "mutually_exclusive_note": "moot if inheritance SUPPORTED"
+    },
+    "H_ResidualStructure": {
+      "scope": "v0.23 (n=24), residualized on composite_presence (PRIMARY). SECONDARY sensitivity (omnibus, 112): residualize 6-dim CPC on per-brand mean recall; sensitivity-only, never verdict-determining.",
+      "verdict": "NOT SUPPORTED",
+      "v23_residual": {
+        "k": 1,
+        "silhouette": 0.0,
+        "null_pct": 0.0
+      },
+      "omnibus_mean_recall_sensitivity": {
+        "verdict_sensitivity_only": "SUPPORTED",
+        "k": 2,
+        "silhouette": 0.2895,
+        "null_pct": 100.0
+      },
+      "prediction": "NOT SUPPORTED"
+    },
+    "H_SaturationDegeneracy": {
+      "scope": "OMNIBUS (112); saturated list = ANALYSIS_SET_SPEC['saturated_substrate_list']['operative'].",
+      "verdict": "NOT SUPPORTED",
+      "prediction": "SUPPORTED",
+      "per_substrate_cvcpc_variance": {
+        "v0.19": 0.00153,
+        "v0.20": 0.02185,
+        "v0.21": 0.01522,
+        "v0.22": 0.01093,
+        "v0.23": 0.00507
+      },
+      "per_substrate_gap_k": {
+        "v0.19": 2,
+        "v0.20": 3,
+        "v0.21": 2,
+        "v0.22": 4,
+        "v0.23": 1
+      },
+      "bf_levene_W": 9.5642,
+      "bf_levene_p_two_sided": 0.00316,
+      "bf_directional_p": 0.99967,
+      "dev_mean_saturated": 0.0952,
+      "dev_mean_unsaturated": 0.0243,
+      "criterion_a_variance": false,
+      "criterion_b_gap_majority": false,
+      "sat_substrates_k1": 1,
+      "uns_substrates_k2plus": 1
+    }
+  },
+  "verdict_matrix_cell": "Cell D",
+  "verdict_matrix_cell_verdict": "unstructured",
+  "omnibus_internal_structure_descriptor": {
+    "k": 3,
+    "silhouette": 0.2422,
+    "null_pct": 100.0,
+    "p": 0.0001
+  },
+  "predicted_net": "Cell A (borrowed structure) -- v0.23 inheritance SUPPORTED and v0.23 residual NOT SUPPORTED. Fifth empirical pillar for the v1.8 mean-independent instrument requirement. No re-tuning from r1."
+}
