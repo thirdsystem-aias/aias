@@ -1,12 +1,15 @@
 # ---------------------------------------------------------------------------
 # AIAS(TM) v0.36 -- CPC Regime Emergence -- PRE-REGISTRATION CONTENT (LOCK CANDIDATE)
 # Phase type: re-analysis (no new LLM acquisition; fully retrospective)
-# Lock tag: v0.36-prereg-r2   (supersedes r1; r1 remains the deposited record)
+# Lock tag: v0.36-prereg-r3   (supersedes r2/r1; earlier tags intact in history)
 #
 # r2 amends r1 for a data-lineage defect, a construct-identity correction, and
 # a recognition-commensurability finding -- all pre-scoring and outcome-blind
 # (see DEVIATIONS Entry 0). Hypotheses, thresholds, and predictions are
 # UNCHANGED; r2 assigns each locked criterion to its maximal executable scope.
+# r3 is a POST-RESULTS deviations-log addition (DEVIATIONS Entry 5) -- NOT
+# outcome-blind; it records the post-primary execution of the locked robustness
+# arms. No hypothesis, threshold, prediction, or primary verdict changes.
 #
 # NOTE TO OPERATOR (Claude Code): before commit, resolve every
 # <<CONFORM-VERBATIM: ...>> placeholder by pulling the EXACT locked text from
@@ -469,6 +472,18 @@ adopted).
 Entry 4 -- Scaffold trim:
 No-acquisition re-analysis; any acquisition / two-wave scaffolding carried by
 upstream templates is removed. Scaffold artifact, not a methodology amendment.
+
+Entry 5 -- Post-results deviations-log addition (r3) -- NOT outcome-blind;
+results were known at entry time. The locked sensitivity/robustness arms (scalar
+CV-CPC, k-means concordance, v0.35 84-unit verdict-concordance) were omitted from
+the primary r2 scoring run and executed in a second deterministic pass (same
+thresholds, seed=36, frozen inputs) after primary verdicts existed. No hypothesis,
+threshold, prediction, or primary verdict is changed; Cell D stands at the primary
+floor. The 84-unit arm returned DISCORDANT (silhouette 0.350, autonomy internal
+criteria met, configuration unmapped in the locked matrix) -- reported, not
+adjudicated, per the locked clause. This entry also records that the locked
+verdict matrix is non-exhaustive (autonomy + no-residual has no cell), a design
+gap surfaced by this arm.
 """
 
 # ---------------------------------------------------------------------------

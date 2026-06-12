@@ -1,7 +1,7 @@
 # AIAS™ v0.36 — Mega-Prompt: NOT APPLICABLE (No-Acquisition Re-Analysis)
 
 **Phase:** v0.36 — CPC Regime Emergence
-**Lock tag:** v0.36-prereg-r2 (supersedes r1; r1 remains the deposited record)
+**Lock tag:** v0.36-prereg-r3 (supersedes r2/r1; earlier tags intact in history; r3 = post-results deviations-log addition, DEVIATIONS Entry 5)
 
 This phase issues **no LLM acquisition calls**. It is a fully retrospective
 re-analysis (v0.33 / v0.35 pattern) of frozen quantities:
