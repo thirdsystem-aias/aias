@@ -23,6 +23,8 @@ _SAT = _H["H_SaturationDegeneracy"]
 _K = _V["selected_k"]
 _OMNI = _V["omnibus_internal_structure_descriptor"]
 _NDEF = _V["metadata"]["n_defined_per_substrate"]
+_SENS = _V["metadata"]["sensitivity"]            # post-primary robustness arms (r3 / Entry 5)
+_S84 = _SENS["v35_84unit_concordance"]
 _SAT_K = _SAT["per_substrate_gap_k"]
 _KSTR = "/".join(str(_SAT_K[s]) for s in ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"])
 _NDEF_TOT = sum(_NDEF.values())
@@ -195,6 +197,14 @@ PATTERNS = [
             "It is described here because it is real enough that the next instrument "
             "must explain it: there is something in how the models disagree about "
             "lesser-known brands, even if today’s metric cannot resolve it cleanly.",
+            "And the bar itself moves in a telling way. Loosen the recall floor to the "
+            "looser inclusion threshold used in the prior phase — every brand with any "
+            f"recall at all, {_S84['n_units']} of them — and the same signature clears "
+            f"the bar (silhouette {_S84['omnibus_silhouette']:.3f} against the locked "
+            "0.25). The unstructured reading holds at the stricter floor and dissolves "
+            "at the looser one. That the verdict turns on where the recall floor sits — "
+            "and the floor is a mean threshold — is itself the diagnostic. The "
+            "pre-registered verdict is unchanged; the floor-dependence is the finding.",
         ],
     },
     {
@@ -225,7 +235,15 @@ LIMITATIONS = (
     "signal. The mean-recall sensitivity arm was pre-specified as never "
     "verdict-determining and is treated accordingly. And the consistency quantity "
     "here holds characterization status only — it was never adopted as a "
-    "canonical instrument, which is, in the end, part of what this phase is the case for."
+    "canonical instrument, which is, in the end, part of what this phase is the case for.\n\n"
+
+    "Two further limitations surfaced in the robustness pass. The headline "
+    "unstructured verdict is sensitive to the recall floor: at the looser inclusion "
+    f"floor (any recall, {_S84['n_units']} units) the omnibus signature clears the "
+    "silhouette bar, so the verdict is reported as floor-dependent, not adjudicated. "
+    "And the locked verdict matrix proved non-exhaustive — an autonomy-supported, "
+    "no-residual outcome maps to no cell — a pre-registration design gap the primary "
+    "run masked and the robustness arm exposed, recorded here as a design lesson."
 )
 
 # ---------------------------------------------------------------------------
@@ -297,6 +315,18 @@ HYPOTHESIS_DETAILS = {
          f"with the directional test at p={_SAT['bf_directional_p']:.4f} (wrong sign). "
          f"Per-substrate cluster resolution {_KSTR} also fails criterion (b). Both "
          "legs miss; the prediction reversed."),
+        ("robustness",
+         "<b>Robustness (post-primary, deterministic; r3 / Entry 5).</b> The scalar "
+         f"CV-CPC arm selected k={_SENS['scalar_cvcpc_arm']['selected_k']} "
+         f"(ARI {_SENS['scalar_cvcpc_arm']['ari_vs_6dim_primary']:.2f} against the "
+         "6-dim primary) — the weak structure is multivariate, not in the scalar "
+         f"summary. K-means at k={_SENS['kmeans_arm']['k']} "
+         f"({_SENS['kmeans_arm']['restarts']} restarts) recovered the Ward partition "
+         f"at ARI {_SENS['kmeans_arm']['ari_vs_ward_primary']:.2f}. The pre-registered "
+         f"v0.35 {_S84['n_units']}-unit concordance check was discordant: at the "
+         f"inclusion floor the omnibus silhouette rose to {_S84['omnibus_silhouette']:.3f}, "
+         "clearing 0.25, so the configuration mapped to no defined matrix cell — the "
+         "Cell D verdict is recall-floor-sensitive."),
     ],
 }
 
