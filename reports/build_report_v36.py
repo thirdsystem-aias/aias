@@ -1331,8 +1331,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>The Structure That Wasn’t There: A Pre-Registered Test of CPC Regime "
-        "Emergence Against the Brand-Presence Hierarchy (AIAS CPC, v0.36)</i>. "
+        "<i>Does Cross-Platform Consistency Have Regime Structure? A Pre-Registered "
+        "Clustering Test Against a Frozen Brand-Presence Classification "
+        "(AIAS CPC, v0.36)</i>. "
         "Third System. Pre-registration osf.io/ec6wh/v36 (tag v0.36-prereg-r2)."
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))

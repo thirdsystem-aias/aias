@@ -170,7 +170,7 @@ def chart_01():
                   "Omnibus CPC structure is weak — above null, below the locked bar",
                   "Ward/Euclidean clustering of the 6-dim per-model CPC signal; gap selects k=3.",
                   "Silhouette 0.2422 exceeds the 95th-percentile null but falls under the 0.25 autonomy threshold — a near miss.")
-    footer(fig, "H_RegimeAutonomy NOT SUPPORTED — silhouette below locked 0.25 threshold (though above the permutation null).")
+    footer(fig, "Autonomy NOT SUPPORTED — silhouette below locked 0.25 threshold (though above the permutation null).")
     save(fig, "chart_01_omnibus_structure")
 
 
@@ -213,7 +213,7 @@ def chart_02():
                   "Inheritance is unevaluable at power — the floor leaves n=9",
                   "The CV-CPC computability floor reduces v0.23 from 24 brands to 9; gap then selects k=1.",
                   "With one cluster the Adjusted Rand Index against the Presence-quartile regime is 0 by construction.")
-    footer(fig, "H_RegimeInheritance NOT SUPPORTED — computability floor; test underpowered (n=9), recorded as-scored.")
+    footer(fig, "Inheritance NOT SUPPORTED — computability floor; test underpowered (n=9), recorded as-scored.")
     save(fig, "chart_02_inheritance_floor")
 
 
@@ -278,7 +278,7 @@ def chart_03():
                   "Saturation reversal — saturated substrates carry MORE CPC dispersion",
                   "Within-substrate CPC dispersion by substrate; indigo = saturated (v0.34), copper = unsaturated.",
                   "The pre-registered prediction (saturated collapse, lower dispersion) is reversed; criterion (b) also fails.")
-    footer(fig, "H_SaturationDegeneracy NOT SUPPORTED — direction reversed; variance higher where recognition saturates.")
+    footer(fig, "Saturation degeneracy NOT SUPPORTED — direction reversed; variance higher where recognition saturates.")
     save(fig, "chart_03_saturation_reversal")
 
 
@@ -303,7 +303,7 @@ def chart_04():
                   "Residual structure: primary says no, sensitivity arm diverges",
                   "Left: locked primary (v0.23, residualized on composite_presence). Right: omnibus mean-recall residual arm.",
                   "The verdict rests on the primary (k=1, no structure); the sensitivity arm (k=2) is reported but not verdict-determining.")
-    footer(fig, "H_ResidualStructure NOT SUPPORTED — primary arm (v0.23), as predicted.")
+    footer(fig, "Residual structure NOT SUPPORTED — primary arm (v0.23), as predicted.")
     save(fig, "chart_04_residual_divergence")
 
 
@@ -351,17 +351,18 @@ def chart_05():
     axm.set_xlim(-0.05, 2.05); axm.set_ylim(-0.5, 2.0)
     axm.set_aspect("equal")
 
-    # right ribbon: hypotheses + verdicts + scopes
-    order = [("H_RegimeInheritance", "v0.23 (n=9)"),
-             ("H_RegimeAutonomy", "omnibus + v0.23 ARI"),
-             ("H_ResidualStructure", "v0.23 primary"),
-             ("H_SaturationDegeneracy", "omnibus (112)")]
-    axr.text(0.0, 1.0, "Hypothesis verdicts", fontsize=cs.FONT_SIZES["subtitle"],
+    # right ribbon: plain-name verdicts + scopes (register-neutral; H_* re-attaches
+    # only in the SSRN paper figure captions). Keys index the SSOT; display is plain.
+    order = [("H_RegimeInheritance", "Inheritance", "v0.23 (n=9)"),
+             ("H_RegimeAutonomy", "Autonomy", "omnibus + v0.23 ARI"),
+             ("H_ResidualStructure", "Residual structure", "v0.23 primary"),
+             ("H_SaturationDegeneracy", "Saturation degeneracy", "omnibus (112)")]
+    axr.text(0.0, 1.0, "Verdicts", fontsize=cs.FONT_SIZES["subtitle"],
              fontweight="bold", va="top", color=cs.BLACK)
     yy = 0.88
-    for h, scope in order:
-        v = HYP[h]["verdict"]
-        axr.text(0.0, yy, h, fontsize=8.6, fontweight="bold", va="top", color=cs.BLACK)
+    for key, name, scope in order:
+        v = HYP[key]["verdict"]
+        axr.text(0.0, yy, name, fontsize=8.6, fontweight="bold", va="top", color=cs.BLACK)
         axr.text(0.0, yy - 0.055, f"{v}", fontsize=8.2, va="top", color=WARM)
         axr.text(0.0, yy - 0.105, f"scope: {scope}", fontsize=7.2, va="top",
                  color=GRAY, fontstyle="italic")
