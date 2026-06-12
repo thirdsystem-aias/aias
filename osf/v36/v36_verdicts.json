@@ -18,7 +18,42 @@
       "determinism_ok": true,
       "passed": true
     },
-    "no_sklearn": "ARI/silhouette/k-means implemented in-script (deterministic)."
+    "no_sklearn": "ARI/silhouette/k-means implemented in-script (deterministic).",
+    "sensitivity": {
+      "scalar_cvcpc_arm": {
+        "feature": "scalar CV-CPC, z-scored within substrate",
+        "selected_k": 1,
+        "ari_vs_6dim_primary": 0.0,
+        "n": 55
+      },
+      "kmeans_arm": {
+        "k": 3,
+        "restarts": 50,
+        "ari_vs_ward_primary": 0.4287
+      },
+      "v35_84unit_concordance": {
+        "set": "v0.35 frozen 84-unit analysis set (mean recall > 0; v0.35 floor)",
+        "n_units": 84,
+        "n_v23_defined": 19,
+        "verdict_cell": "unmapped",
+        "concordant_with_primary": false,
+        "inheritance": "NOT SUPPORTED",
+        "autonomy": "SUPPORTED",
+        "residual": "NOT SUPPORTED",
+        "saturation": "NOT SUPPORTED",
+        "omnibus_k": 3,
+        "omnibus_silhouette": 0.3498,
+        "inheritance_ari": 0.0,
+        "inheritance_k": 1,
+        "inheritance_n": 19
+      }
+    },
+    "deviations": [
+      {
+        "entry": "DEV-S1 (post-primary sensitivity execution)",
+        "text": "The locked sensitivity/robustness arms \u2014 scalar CV-CPC feature, k-means concordance at the gap-selected k, and the v0.35 84-unit verdict-concordance check \u2014 were executed in a second deterministic pass AFTER the primary scoring run (same thresholds, same seed=36, frozen inputs; pre-publication). They are robustness checks and do NOT alter any locked primary verdict (Cell D stands). The r2 scorer omitted them at the primary run; logged here for transparency. A canonical prereg DEVIATIONS amendment (v0.36-prereg-r3) is recommended to mirror this in the deposited pre-registration."
+      }
+    ]
   },
   "selected_k": {
     "omnibus_raw": 3,

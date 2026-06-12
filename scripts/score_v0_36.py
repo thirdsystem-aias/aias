@@ -409,6 +409,100 @@ def verdict_internal(struct, crit):
             and struct["silhouette_null_pct"] >= crit["silhouette_null_pct"])
 
 
+def _compose_cell(v_inh, v_aut, v_res):
+    if v_inh == "SUPPORTED" and v_res == "NOT SUPPORTED":
+        return "Cell A"
+    if v_inh == "SUPPORTED" and v_res == "SUPPORTED":
+        return "Cell B"
+    if v_aut == "SUPPORTED" and v_res == "SUPPORTED":
+        return "Cell C"
+    if v_inh == "NOT SUPPORTED" and v_aut == "NOT SUPPORTED" and v_res == "NOT SUPPORTED":
+        return "Cell D"
+    return "unmapped"
+
+
+# ---------------------------------------------------------------------------
+# Sensitivity / robustness pass (locked in CLUSTERING/SENSITIVITY; executed in a
+# second deterministic pass AFTER the primary run -- fresh rng off SEED so the
+# primary verdicts stay bit-for-bit identical).
+# ---------------------------------------------------------------------------
+def sensitivity_pass(spec, seed, units, X_omni, meta_omni, omni_labels, primary_cell):
+    H = spec.HYPOTHESES
+    cl = spec.CLUSTERING
+    omni_labels = np.asarray(omni_labels)
+    omni_k = int(len(np.unique(omni_labels)))
+    out = {}
+
+    # (1) Scalar CV-CPC feature arm: 1-dim scalar, z-scored within substrate;
+    #     gap-select k; agreement (ARI) with the 6-dim primary omnibus clustering.
+    subs = np.array([m["substrate"] for m in meta_omni])
+    scalar = np.array([m["cvcpc"] for m in meta_omni], dtype=float)
+    Xs = np.zeros((len(scalar), 1))
+    for s in np.unique(subs):
+        idx = np.where(subs == s)[0]
+        v = scalar[idx]; sd = v.std(ddof=0)
+        Xs[idx, 0] = (v - v.mean()) / sd if sd > 0 else 0.0
+    rng = np.random.default_rng(seed + 10)
+    k_scalar, *_ = gap_statistic(Xs, cl["k_selection"]["k_min"], cl["k_selection"]["k_max"],
+                                 cl["k_selection"]["reference_samples_B"], rng)
+    scalar_labels = ward_labels(Xs, k_scalar)
+    out["scalar_cvcpc_arm"] = {
+        "feature": "scalar CV-CPC, z-scored within substrate",
+        "selected_k": int(k_scalar),
+        "ari_vs_6dim_primary": round(adjusted_rand_index(scalar_labels, omni_labels), 4),
+        "n": int(len(scalar)),
+    }
+
+    # (2) K-means (50 restarts at the gap-selected k) concordance with Ward primary.
+    rng = np.random.default_rng(seed + 11)
+    km_labels, _ = kmeans_best(X_omni, omni_k, cl["kmeans_restarts"], rng)
+    out["kmeans_arm"] = {
+        "k": omni_k, "restarts": cl["kmeans_restarts"],
+        "ari_vs_ward_primary": round(adjusted_rand_index(km_labels, omni_labels), 4),
+    }
+
+    # (3) v0.35 frozen 84-unit set (mean recall > 0 -- v0.35's floor) verdict concordance.
+    units84 = []
+    for u in units:
+        m = float(u["recall6"].mean())
+        if m > 0.0:
+            u2 = dict(u)
+            u2["defined"] = True
+            u2["cvcpc"] = 1.0 / (1.0 + u["recall6"].std(ddof=0) / m)
+            units84.append(u2)
+    X84, meta84 = build_feature_matrix(units84)
+    rng = np.random.default_rng(seed + 12)
+    omni84 = internal_structure(X84, meta84, spec, rng, cl["permutation_null_n"], "v35_84_omnibus")
+    X23_84, meta23_84 = build_feature_matrix(units84, restrict_substrates=["v0.23"])
+    keep = [i for i, mm in enumerate(meta23_84) if mm.get("regime")]
+    X23_84 = X23_84[keep]; meta23_84 = [meta23_84[i] for i in keep]
+    rng = np.random.default_rng(seed + 13)
+    inh84 = inheritance_v23(X23_84, meta23_84, spec, rng)
+    X23_84r = residualize_within_substrate(X23_84, meta23_84, lambda mm: mm["composite"])
+    rng = np.random.default_rng(seed + 14)
+    res84 = internal_structure(X23_84r, meta23_84, spec, rng, cl["permutation_null_n"], "v35_84_v23_residual")
+    rng = np.random.default_rng(seed + 15)
+    sat84 = saturation_degeneracy(units84, spec, rng)
+    ac = H["H_RegimeAutonomy"]["criteria"]
+    v_inh84 = verdict_inheritance(inh84, H["H_RegimeInheritance"]["criteria"])
+    aut84 = (omni84["selected_k"] >= ac["k_min"] and omni84["silhouette"] >= ac["silhouette_min"]
+             and omni84["silhouette_null_pct"] >= ac["silhouette_null_pct"])
+    v_aut84 = "SUPPORTED" if (aut84 and inh84["ari"] < ac["ari_max"] and v_inh84 == "NOT SUPPORTED") else "NOT SUPPORTED"
+    v_res84 = "SUPPORTED" if verdict_internal(res84, H["H_ResidualStructure"]["criteria"]) else "NOT SUPPORTED"
+    cell84 = _compose_cell(v_inh84, v_aut84, v_res84)
+    out["v35_84unit_concordance"] = {
+        "set": "v0.35 frozen 84-unit analysis set (mean recall > 0; v0.35 floor)",
+        "n_units": int(len(meta84)), "n_v23_defined": int(len(meta23_84)),
+        "verdict_cell": cell84, "concordant_with_primary": bool(cell84 == primary_cell),
+        "inheritance": v_inh84, "autonomy": v_aut84, "residual": v_res84,
+        "saturation": sat84["verdict"],
+        "omnibus_k": omni84["selected_k"], "omnibus_silhouette": omni84["silhouette"],
+        "inheritance_ari": inh84["ari"], "inheritance_k": inh84["selected_k"],
+        "inheritance_n": inh84["n"],
+    }
+    return out
+
+
 # ---------------------------------------------------------------------------
 # Main
 # ---------------------------------------------------------------------------
@@ -635,6 +729,39 @@ def main():
             "null_pct": omni["silhouette_null_pct"], "p": omni["silhouette_p"]},
         "predicted_net": spec.PREDICTIONS["net"],
     }
+
+    # ---- Sensitivity / robustness pass (post-primary, deterministic) ----
+    print("\n[sensitivity] scalar arm · k-means concordance · v0.35 84-unit concordance")
+    sens = sensitivity_pass(spec, seed, units, X_omni, meta_omni, omni["labels"], cell)
+    verdicts["metadata"]["sensitivity"] = sens
+    verdicts["metadata"]["deviations"] = [{
+        "entry": "DEV-S1 (post-primary sensitivity execution)",
+        "text": ("The locked sensitivity/robustness arms — scalar CV-CPC feature, "
+                 "k-means concordance at the gap-selected k, and the v0.35 84-unit "
+                 "verdict-concordance check — were executed in a second deterministic "
+                 "pass AFTER the primary scoring run (same thresholds, same seed=%d, "
+                 "frozen inputs; pre-publication). They are robustness checks and do "
+                 "NOT alter any locked primary verdict (Cell D stands). The r2 scorer "
+                 "omitted them at the primary run; logged here for transparency. A "
+                 "canonical prereg DEVIATIONS amendment (v0.36-prereg-r3) is "
+                 "recommended to mirror this in the deposited pre-registration." % seed)
+    }]
+    with open(CSV_DIR / "sensitivity_summary.csv", "w", newline="") as f:
+        w = csv.writer(f); w.writerow(["arm", "key", "value"])
+        w.writerow(["scalar_cvcpc", "selected_k", sens["scalar_cvcpc_arm"]["selected_k"]])
+        w.writerow(["scalar_cvcpc", "ari_vs_6dim_primary", sens["scalar_cvcpc_arm"]["ari_vs_6dim_primary"]])
+        w.writerow(["kmeans", "ari_vs_ward_primary", sens["kmeans_arm"]["ari_vs_ward_primary"]])
+        w.writerow(["v35_84unit", "verdict_cell", sens["v35_84unit_concordance"]["verdict_cell"]])
+        w.writerow(["v35_84unit", "concordant_with_primary", sens["v35_84unit_concordance"]["concordant_with_primary"]])
+        w.writerow(["v35_84unit", "n_units", sens["v35_84unit_concordance"]["n_units"]])
+    print(f"        scalar arm: k={sens['scalar_cvcpc_arm']['selected_k']} "
+          f"ARI_vs_primary={sens['scalar_cvcpc_arm']['ari_vs_6dim_primary']}")
+    print(f"        k-means(k={sens['kmeans_arm']['k']},{sens['kmeans_arm']['restarts']}x): "
+          f"ARI_vs_ward={sens['kmeans_arm']['ari_vs_ward_primary']}")
+    print(f"        v35 84-unit ({sens['v35_84unit_concordance']['n_units']}u): "
+          f"cell={sens['v35_84unit_concordance']['verdict_cell']} "
+          f"concordant={sens['v35_84unit_concordance']['concordant_with_primary']}")
+
     with open(OUT_JSON, "w") as f:
         json.dump(verdicts, f, indent=2)
 
