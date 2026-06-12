@@ -132,7 +132,7 @@ All pre-registration artifacts (tags `v0.36-prereg-r1`, `r2`, `r3`), the verdict
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Does Cross-Platform Consistency Have Regime Structure? A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Does Cross-Platform Consistency Have Regime Structure? A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification. SSRN Working Paper 6927958. https://ssrn.com/abstract=6927958
 ```
 
 ---

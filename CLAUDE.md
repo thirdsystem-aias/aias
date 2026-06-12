@@ -250,6 +250,7 @@ Foundational: *AI Availability: Extending Mental and Physical Availability into 
 | v0.33 | Provider-Asymmetric CPC — re-analysis; between-provider variance decomposition (CPC.02) | 6909019 |
 | v0.34 | CPC Longitudinal t₁→t₂ Stability — first two-wave re-acquisition; CONFIRMED CV-CPC temporal stability + recognition-ceiling collapse (CPC.03) | 6915458 |
 | v0.35 | Naive-Phantom × CPC — re-analysis; pre-registered control-flip, gate UNDETERMINED (recognition control inert under saturation; recall-mean control annihilates the contrast) (CPC.04) | 6921758 |
+| v0.36 | CPC Regime Emergence — re-analysis; pre-registered clustering test of CV-CPC vs the v0.23 per-brand Presence-quartile regime (NOT the v1.2 substrate-level Trends taxonomy); Cell D (unstructured), borrowed-structure (Cell A) prediction falsified; verdict floor-sensitive; locked verdict matrix non-exhaustive (CPC.05) | 6927958 |
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
@@ -257,6 +258,8 @@ Foundational: *AI Availability: Extending Mental and Physical Availability into 
 | AIAS™ 1.0 | Five-Substrate Foundational Construct Claim | 6817841 |
 
 URL pattern: `https://ssrn.com/abstract={ID}`. New phase papers cite **all prior phases** plus the methodology chain.
+
+**Queued cross-citation:** v0.36=6927958 (https://ssrn.com/abstract=6927958) to be added to the **v0.37** (CPC × Identity Load moderator test) paper's bibliography upstream-phases line when drafted — no `papers/v0_37/` artifacts exist yet, so this note is the queue holder (all prior phases cited per convention).
 
 v0.27 B2B SaaS Convergent Validity — SSRN 6854758. H_CV3_Primary FALSIFIED (rho=0.29); recognition null CONFIRMED; exploratory PQ 0.80 / BR 0.75 (convergence is rank-alignment, not range restriction — corrected pre-deposit).
 
