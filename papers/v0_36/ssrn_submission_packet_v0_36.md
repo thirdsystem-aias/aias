@@ -26,7 +26,7 @@
 ### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-Does Cross-Platform Consistency Have Regime Structure?: A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification
+Does Cross-Platform Consistency Have Regime Structure? A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification
 ```
 
 ### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
@@ -107,8 +107,14 @@ Self-funded.
 
 ### Ethics statement (paste verbatim)
 
+<!-- PATCH (do not lose on re-emit): this Ethics line is hand-patched to the paper's
+     §Ethics wording and intentionally OVERRIDES generate_ssrn_packet.py's standing
+     ethics constant. v0.36 is a fully retrospective re-analysis with no new acquisition,
+     so the generator's generic "public APIs and LLM prompts only" boilerplate is
+     inaccurate here. Re-apply this override if the packet is regenerated. -->
+
 ```
-Not applicable; no human subjects; public APIs and LLM prompts only.
+Not applicable — no human subjects; fully retrospective re-analysis of archived outputs of public LLM APIs; no new acquisition calls.
 ```
 
 ### Data and code availability (paste verbatim)
@@ -126,7 +132,7 @@ All pre-registration artifacts (tags `v0.36-prereg-r1`, `r2`, `r3`), the verdict
 - **Suggested citation (post-submission, fill in SSRN abstract ID):**
 
 ```
-González Castro, P. U. (2026). Does Cross-Platform Consistency Have Regime Structure?: A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification. SSRN Working Paper [ABSTRACT_ID].
+González Castro, P. U. (2026). Does Cross-Platform Consistency Have Regime Structure? A Pre-Registered Clustering Test Against a Frozen Brand-Presence Classification. SSRN Working Paper [ABSTRACT_ID].
 ```
 
 ---
