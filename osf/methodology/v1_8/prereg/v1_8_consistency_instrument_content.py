@@ -27,7 +27,12 @@ scoring call is the one-way boundary, in place of an API acquisition call. The
 external anchor (git tag v1.8-prereg-r1 + OSF deposit) precedes that first
 scoring call, per the v0.33+ anchoring discipline.
 
-This is a FIRST lock: revision r1, no prior revisions. Upstream lineage: extends
+Revision r2. r1 (v1.8-prereg-r1) was the first lock; r2 (v1.8-prereg-r2) is a
+pre-scoring methodology-defect correction — the per-channel frame count F was
+mis-specified as 6 and is corrected to 3 against the frozen v0.34 Phase B
+structure (3 frames/channel; 6/model total), so per-channel M*F = 18 and the
+phi low-recall floor is pi_hat = 1/18 (DEVIATIONS Entry 1; no values computed).
+Upstream lineage: extends
 v1.7 (SSRN 6878818); failure cascade v0.32 (6898581), v0.33 (6909019),
 v0.34 (6915458), v0.35 (6921758), v0.36 (6927958). Feeds forward to v0.37+
 (emergence / typology on the redesigned instrument) and v1.9 (two-component
@@ -44,8 +49,8 @@ METADATA = {
     "component": "CPC",                          # Consistency — instrument redesign
     "extends": "v1.7",                           # SSRN 6878818 (CV-CPC negative result)
     "supersedes_instrument": "CV-CPC",           # falsified v1.7; not adopted
-    "revision": "r1",                            # FIRST lock — no prior revisions
-    "prereg_tag": "v1.8-prereg-r1",              # forward ref — true once tagged
+    "revision": "r2",                            # r1 first lock; r2 = pre-scoring F-correction (Entry 1)
+    "prereg_tag": "v1.8-prereg-r2",              # additive; r1 = v1.8-prereg-r1 (first lock)
     "acquisition": False,                        # frozen-set re-analysis; no probes
     "validation_sets": ["v0.34", "v0.35", "v0.36"],  # frozen; no acquisition
     "one_way_boundary": "first_scoring_call",    # external anchor precedes it
@@ -108,30 +113,33 @@ CONSTRUCT = {
 
 # ---------------------------------------------------------------------------
 # Computation
-#   brand b; six-model panel m in {1..M}, M=6; F=6 probe-frames per model;
-#   binary surfacing per (model, frame); per-model count k(b,m) in {0..F};
-#   pooled rate pi_hat_b = sum_m k(b,m) / (M*F). All instruments per channel.
+#   brand b; six-model panel m in {1..M}, M=6; 6 probe-frames per model total =
+#   3 R_cat + 3 R_cult, so F = frames_per_channel = 3 (the phi normalization
+#   constant, since instruments are computed per channel); binary surfacing per
+#   (model, frame); per-model count k(b,m) in {0..F}; pooled rate
+#   pi_hat_b = sum_m k(b,m) / (M*F), M*F = 6*3 = 18 PER CHANNEL.
 # ---------------------------------------------------------------------------
 COMPUTATION = {
     "panel_n": 6,                        # M, fixed six-model panel
-    "frames_per_model": 6,               # F, probe-frames per model
+    "frames_per_model": 6,               # TOTAL frames per model = 3 R_cat + 3 R_cult
+    "frames_per_channel": 3,             # F — the phi normalization constant (instruments per channel); M*F = 18
     "surfacing": "binary_per_model_frame",
-    "per_model_count": "k(b,m) in 0..F",
-    "pooled_rate": "pi_hat_b = sum_m k(b,m) / (M*F)",
+    "per_model_count": "k(b,m) in 0..F  (F = frames_per_channel = 3)",
+    "pooled_rate": "pi_hat_b = sum_m k(b,m) / (M*F); F = frames_per_channel = 3, so M*F = 18 PER CHANNEL",
     "per_channel": ["R_cat", "R_cult"],  # computed separately; channel as a factor
     "rho": "spearman",                   # program convention
     "pooling": "per-set, then pooled with set as a blocking factor; per-set rho reported alongside pooled",
 
     # --- phi: primary CPC — quasi-binomial between-model dispersion (Pearson chi2/df) ---
     "phi": {
-        "formula": "phi_b = [1/(M-1)] * sum_m (k(b,m) - F*pi_hat_b)^2 / [F*pi_hat_b*(1-pi_hat_b)]",
+        "formula": "phi_b = [1/(M-1)] * sum_m (k(b,m) - F*pi_hat_b)^2 / [F*pi_hat_b*(1-pi_hat_b)]  (F = frames_per_channel = 3)",
         "df": "M-1",
         "null_expectation": 1.0,         # E[phi]=1 under homogeneity (all models share pi_hat)
         "interpretation": "phi>1 -> models disagree (inconsistent); phi<1 -> agree beyond chance (consistent)",
         "mean_independent": True,        # denominator divides out binomial variance F*pi(1-pi)
         "defined_domain": "pi_hat in (0,1)  (>=1 surfacing, not full saturation)",
         "undefined_only_at": "true-zero floor (correct behavior; not a CV-style blowup)",
-        "low_recall_note": "a brand surfacing once total (pi_hat = 1/36) still yields a finite phi",
+        "low_recall_note": "a brand surfacing once in-channel (pi_hat = 1/18: one surfacing across 6 models x 3 frames within a channel) still yields a finite phi",
     },
 
     # --- J: positional diagnostic — mean pairwise Jaccard ---
@@ -315,7 +323,7 @@ ILLUSTRATION = {
         {
             "id": "low_recall_finite_phi",
             "label": "illustrative / synthetic",
-            "setup": "low-recall brand surfacing once total, pi_hat = 1/36",
+            "setup": "low-recall brand surfacing once within a channel, pi_hat = 1/18",
             "cv_cpc": "undefined / explosive (1/sqrt(mean) blowup)",
             "phi": "finite and defined",
             "demonstrates": "coverage gain — phi covers the low-recall segment CV cannot (H_LowRecallDefined)",
@@ -365,7 +373,7 @@ FIGURES = [
 ]
 
 # ---------------------------------------------------------------------------
-# DEVIATIONS — contemporaneous log (first lock; clean)
+# DEVIATIONS — contemporaneous log (additive; Entry 0 at r1 lock, Entry 1 r1->r2)
 # ---------------------------------------------------------------------------
 DEVIATIONS = [
     {
@@ -384,6 +392,24 @@ DEVIATIONS = [
             "deferral reflects data availability rather than an instrument defect. v1.8's empirical "
             "results reduce to phi + J — a clean, honest outcome. Resolved before any computation; "
             "not a methodology change and not result-driven."
+        ),
+    },
+    {
+        "entry": 1,
+        "amendment": "r1 -> r2",
+        "type": "pre-scoring methodology correction (no phi / J / R_grad values computed)",
+        "summary": (
+            "Pre-scoring methodology correction, caught before the one-way boundary (no phi/J "
+            "computed). r1 specified frames_per_model = 6 and a phi low-recall floor pi_hat = "
+            "1/36, but the frozen v0.34 Phase B acquisition has F = 3 frames per channel "
+            "(q1-q3 -> R_cat, q4-q6 -> R_cult; 6 per model total). Because all instruments are "
+            "computed per channel (channel_pooling prohibited), the per-channel phi denominator "
+            "uses F = 3, M*F = 18, and the minimum non-zero per-channel pi_hat = 1/18. The r1 "
+            "figures assumed 6 frames within a channel; corrected here. Same defect class as "
+            "v1.7's r3 frames-per-channel amendment. No hypotheses or thresholds change (all "
+            "F-independent); only the phi normalization constant and the ILLUSTRATION / "
+            "low-recall-note figures. The per-channel mandate is the binding design; the r1 "
+            "F=6 / pi_hat=1/36 figures were the arithmetic outlier, now reconciled."
         ),
     },
 ]

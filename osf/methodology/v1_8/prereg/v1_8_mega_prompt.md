@@ -4,7 +4,8 @@
 
 > This document locks the v1.8 instrument definitions, validation plan, hypotheses, verdict
 > matrix, and falsification criteria *before* any scoring run against the frozen sets. It is
-> the pre-registration anchor: the external git tag (`v1.8-prereg-r1`) and OSF deposit precede
+> the pre-registration anchor: the external git tag (`v1.8-prereg-r1`, amended pre-scoring at
+> `v1.8-prereg-r2` — frames-per-channel correction, DEVIATIONS Entry 1) and OSF deposit precede
 > any φ / J / R_grad computation, per the v0.33+ anchoring discipline (here the one-way boundary
 > is the first scoring call, since there is no API acquisition).
 
@@ -64,12 +65,13 @@ CV-CPC (CPC_raw = SD/mean; CPC_corr = SD/√(μ(1−μ))) was not adopted. The c
 
 ## 2. Instrument specifications (locked)
 
-Notation: brand *b*; six-model panel *m* ∈ {1..M}, M = 6; F = 6 probe-frames per model; binary
-surfacing per (model, frame). Per-model count k(b,m) ∈ {0..F}; pooled rate
-π̂_b = Σ_m k(b,m) / (M·F). **All instruments computed per channel** (R_cat, R_cult separately),
-with channel reported as a factor — pooling channels would blend the challenger / incumbent
-asymmetry (challengers populate the cultural channel, incumbents the category channel) and
-reintroduce confounding.
+Notation: brand *b*; six-model panel *m* ∈ {1..M}, M = 6; 6 probe-frames per model **total**
+(3 R_cat + 3 R_cult), so **F = 3 frames per channel** — the φ normalization constant, since
+instruments are computed per channel. Binary surfacing per (model, frame). Per-model count
+k(b,m) ∈ {0..F}; pooled rate π̂_b = Σ_m k(b,m) / (M·F), with **M·F = 18 per channel**.
+**All instruments computed per channel** (R_cat, R_cult separately), with channel reported as a
+factor — pooling channels would blend the challenger / incumbent asymmetry (challengers populate
+the cultural channel, incumbents the category channel) and reintroduce confounding.
 
 ### 2.1 φ — primary CPC (quasi-binomial between-model dispersion), inconsistency-oriented
 
@@ -81,7 +83,8 @@ Pearson dispersion (χ²/df, df = M−1) of per-model surfacing against the homo
 denominator divides out the binomial-expected variance F·π̂(1−π̂), removing the level coupling.
 **Defined** for all *b* with π̂_b ∈ (0,1) (≥1 surfacing, not full saturation); undefined only at
 the true-zero floor — which is correct behavior, not a CV-style blowup. A brand surfacing once
-total (π̂ = 1/36) still yields a finite φ.
+within a channel (π̂ = 1/18, i.e. one surfacing across the 6 models × 3 frames of a channel)
+still yields a finite φ.
 
 ### 2.2 J — positional diagnostic (mean pairwise Jaccard), consistency-oriented
 
@@ -170,13 +173,14 @@ Every reachable outcome mapped; no unmapped residual.
 
 ## 7. Pre-registration discipline
 
-- Scope lock → scaffold → **this spec locked at commit + tag `v1.8-prereg-r1`** → external anchor
+- Scope lock → scaffold → **this spec locked at commit + tag `v1.8-prereg-r1`**, amended
+  pre-scoring at **`v1.8-prereg-r2`** (frames-per-channel correction) → external anchor
   (tag push + OSF deposit) → scoring → figures → paper → brand report → OSF deposit → SSRN.
   ORDER LOCKED.
 - The external anchor precedes the **first scoring call** (v1.8's one-way boundary, in place of an
   API acquisition call).
 - Tags additive-only, never force-moved. r1 → r2 amendments only for methodology defects caught
-  pre-scoring, documented in DEVIATIONS Entry 0.
+  pre-scoring, documented as an additive DEVIATIONS entry (the F-correction is Entry 1).
 
 ---
 
@@ -194,6 +198,24 @@ Every reachable outcome mapped; no unmapped residual.
 
 ## DEVIATIONS
 
-*(contemporaneous; Entry 0 reserved for any pre-scoring methodology amendment caught after r1)*
+*(contemporaneous; additive log, mirrored in the locked content module — no values computed)*
 
-- *(none yet)*
+- **Entry 0 (r1 lock) — R_grad FORWARD-SPEC resolution.** A pre-scoring feasibility check on the
+  frozen recognition channel resolves H_GradedRecognition along its pre-committed FORWARD-SPEC
+  branch: the frozen v0.34 / v0.35 / v0.36 lock retains binary recognition only (hash-sealed at
+  v0.35), no re-scorable response text, so tiers 2–3 of R_grad cannot be derived retroactively.
+  R_grad is therefore DEFINED here and validated in a designated later fresh-collection phase
+  (v0.32 / v0.28 are the retained re-scorable-text corpora). The audit
+  `osf/v33/exploratory/v33_recognition_source_audit.json` confirms the recognition saturation is
+  REAL (v0.23 r_level uniformly R3), not a binarization artifact. v1.8's empirical results reduce
+  to φ + J. Not result-driven.
+- **Entry 1 (r1 → r2) — frames-per-channel correction.** Pre-scoring methodology correction,
+  caught before the one-way boundary (no φ / J computed). r1 specified F = 6 frames per model and a
+  φ low-recall floor π̂ = 1/36, but the frozen v0.34 Phase B acquisition has **F = 3 frames per
+  channel** (q1–q3 → R_cat, q4–q6 → R_cult; 6 per model total). Because all instruments are
+  computed per channel (channel pooling prohibited), the per-channel φ denominator uses F = 3,
+  **M·F = 18**, and the minimum non-zero per-channel **π̂ = 1/18**. The r1 figures assumed 6 frames
+  within a channel; corrected here. Same defect class as v1.7's r3 frames-per-channel amendment.
+  No hypotheses or thresholds change (all F-independent); only the φ normalization constant and the
+  ILLUSTRATION / low-recall-note figures. The per-channel mandate is the binding design; the r1
+  F = 6 / π̂ = 1/36 figures were the arithmetic outlier, now reconciled.
