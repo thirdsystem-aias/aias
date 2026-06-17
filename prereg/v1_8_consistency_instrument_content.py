@@ -9,13 +9,16 @@ criteria BEFORE any scoring run against the frozen analysis sets.
 
 Instrument family (locked):
   - phi    : primary CPC — quasi-binomial between-model dispersion
-             (inconsistency-oriented). Mean-independent by construction; defined
-             into the low-recall segment where CV is undefined.
+             (inconsistency-oriented), computed CHANNEL-AGNOSTICALLY (the six
+             probe frames per model pooled to a 0..6 count). Mean-independent by
+             construction; defined into the low-recall segment where CV is
+             undefined. A per-channel variant is retained as a SECONDARY
+             diagnostic on the canonical-channel substrates (v0.20-v0.22).
   - J      : positional diagnostic — mean pairwise Jaccard set-stability
              (consistency-oriented). Captures WHERE a brand surfaces.
   - R_grad : graded recognition (tiered depth), schema-conditional. FORWARD-SPEC
-             in r1 (frozen recognition channel retains binary verdicts only —
-             see DEVIATIONS Entry 0).
+             (frozen recognition channel retains binary verdicts only — see
+             DEVIATIONS Entry 0).
 
 Supersedes the v1.7 CV-CPC instrument (SSRN 6878818): pooled |rho(CV-CPC, mu)| =
 0.77 > the 0.50 dissociation ceiling; Poisson CV ~ 1/sqrt(mean) coupling at low
@@ -27,11 +30,15 @@ scoring call is the one-way boundary, in place of an API acquisition call. The
 external anchor (git tag v1.8-prereg-r1 + OSF deposit) precedes that first
 scoring call, per the v0.33+ anchoring discipline.
 
-Revision r2. r1 (v1.8-prereg-r1) was the first lock; r2 (v1.8-prereg-r2) is a
-pre-scoring methodology-defect correction — the per-channel frame count F was
-mis-specified as 6 and is corrected to 3 against the frozen v0.34 Phase B
-structure (3 frames/channel; 6/model total), so per-channel M*F = 18 and the
-phi low-recall floor is pi_hat = 1/18 (DEVIATIONS Entry 1; no values computed).
+Revision r3. Lock arc (all pre-scoring; no phi / J values computed): r1
+(v1.8-prereg-r1, first lock) specified PER-CHANNEL phi with F=6; r2
+(v1.8-prereg-r2) corrected the per-channel frame count to F=3 (Entry 1); r3
+(v1.8-prereg-r3) makes phi / J CHANNEL-AGNOSTIC as the primary instrument
+(frames pooled 0..6; F = frames_per_model = 6, M*F = 36, phi floor pi_hat =
+1/36) and demotes the per-channel variant to a secondary diagnostic on the
+canonical-channel substrates v0.20-v0.22 (Entry 2). This matches the certified
+channel-agnostic omnibus extraction and accommodates v0.23's non-canonical
+channels (cultural-cult / editorial-authority).
 Upstream lineage: extends
 v1.7 (SSRN 6878818); failure cascade v0.32 (6898581), v0.33 (6909019),
 v0.34 (6915458), v0.35 (6921758), v0.36 (6927958). Feeds forward to v0.37+
@@ -49,8 +56,8 @@ METADATA = {
     "component": "CPC",                          # Consistency — instrument redesign
     "extends": "v1.7",                           # SSRN 6878818 (CV-CPC negative result)
     "supersedes_instrument": "CV-CPC",           # falsified v1.7; not adopted
-    "revision": "r2",                            # r1 first lock; r2 = pre-scoring F-correction (Entry 1)
-    "prereg_tag": "v1.8-prereg-r2",              # additive; r1 = v1.8-prereg-r1 (first lock)
+    "revision": "r3",                            # r1 first lock; r2 F-correction (Entry 1); r3 channel-agnostic primary (Entry 2)
+    "prereg_tag": "v1.8-prereg-r3",              # additive; r1/r2 preserved at their tags
     "acquisition": False,                        # frozen-set re-analysis; no probes
     "validation_sets": ["v0.34", "v0.35", "v0.36"],  # frozen; no acquisition
     "one_way_boundary": "first_scoring_call",    # external anchor precedes it
@@ -79,19 +86,34 @@ CONSTRUCT = {
     "name": "Cross-model Presence Consistency (CPC) — redesigned",
     "definition": (
         "Mean-independent stability of a brand's per-model AI surfacing across the fixed "
-        "six-model reference panel, measured separately per channel."
+        "six-model reference panel, pooled across probe frames (channel-agnostic primary); a "
+        "per-channel variant is retained as a secondary diagnostic on the canonical-channel "
+        "substrates."
     ),
-    "primary": "phi",                   # quasi-binomial between-model dispersion (inconsistency-oriented)
-    "positional_diagnostic": "J",       # mean pairwise Jaccard set-stability (consistency-oriented)
-    "graded_recognition": "R_grad",     # tiered depth; schema-conditional (FORWARD-SPEC in r1)
-    "per_channel": ["R_cat", "R_cult"], # computed separately; channel reported as a factor
-    "channel_pooling": "prohibited",    # pooling blends challenger/incumbent asymmetry -> confound
+    "primary": "phi",                   # channel-agnostic between-model dispersion (inconsistency-oriented)
+    "positional_diagnostic": "J",       # channel-agnostic mean pairwise Jaccard (consistency-oriented)
+    "graded_recognition": "R_grad",     # tiered depth; schema-conditional (FORWARD-SPEC)
+    "channel_mode": "channel-agnostic (primary): the six probe frames per model pooled to a 0..6 count",
+    "secondary_diagnostic": {           # per-channel variant — diagnostic, non-gating
+        "what": "per-channel phi / J (R_cat, R_cult separately)",
+        "scope": "canonical two-channel substrates only: v0.20, v0.21, v0.22",
+        "excludes": (
+            "v0.23 (non-canonical channels cultural-cult / editorial-authority; channel-construct "
+            "equivalence with R_cat/R_cult was DEFERRED to v0.31 and is unvalidated) AND v0.19 "
+            "(single-channel — no R_cat/R_cult split exists)"
+        ),
+        "status": "reported alongside the channel-agnostic primary; does not gate any verdict",
+    },
     "rationale": (
-        "Challengers populate the cultural channel and incumbents the category channel; "
-        "pooling channels would reintroduce that asymmetry as a confound. phi divides out the "
-        "binomial-expected variance F*pi(1-pi), so consistency no longer reparametrizes recall "
-        "level (the v1.7 CV failure). J reads the positional facet phi cannot see; R_grad reads "
-        "a graded recognition signal finer than the saturated binary C_P."
+        "The primary instruments are channel-agnostic: the certified omnibus extraction "
+        "(score_v0_31 -> 0..6 per model) and all three validation framings are channel-agnostic by "
+        "construction, and v0.23's channels (cultural-cult / editorial-authority) are not "
+        "commensurable with R_cat / R_cult. phi is mean-independent by construction (it divides out "
+        "the binomial-expected variance F*pi(1-pi)), so the channel-mixing LEVEL confound that "
+        "originally motivated prohibiting channel pooling is already removed; the residual channel "
+        "signal is POSITIONAL, which is J's domain. The per-channel variant is therefore retained "
+        "only as a secondary diagnostic where channels are genuinely canonical (v0.20-v0.22). "
+        "R_grad reads a graded recognition signal finer than the saturated binary C_P."
     ),
     "supersedes": {
         "instrument": "CV-CPC (CPC_raw = SD/mean; CPC_corr = SD/sqrt(mu*(1-mu)))",
@@ -113,36 +135,45 @@ CONSTRUCT = {
 
 # ---------------------------------------------------------------------------
 # Computation
-#   brand b; six-model panel m in {1..M}, M=6; 6 probe-frames per model total =
-#   3 R_cat + 3 R_cult, so F = frames_per_channel = 3 (the phi normalization
-#   constant, since instruments are computed per channel); binary surfacing per
-#   (model, frame); per-model count k(b,m) in {0..F}; pooled rate
-#   pi_hat_b = sum_m k(b,m) / (M*F), M*F = 6*3 = 18 PER CHANNEL.
+#   brand b; six-model panel m in {1..M}, M=6; F = 6 probe-frames per model
+#   (3 R_cat + 3 R_cult), POOLED channel-agnostically for the primary instrument;
+#   binary surfacing per (model, frame); per-model count k(b,m) in {0..F};
+#   pooled rate pi_hat_b = sum_m k(b,m) / (M*F), M*F = 36. The per-channel
+#   SECONDARY diagnostic uses F = frames_per_channel = 3 (M*F = 18) on v0.20-v0.22.
 # ---------------------------------------------------------------------------
 COMPUTATION = {
     "panel_n": 6,                        # M, fixed six-model panel
-    "frames_per_model": 6,               # TOTAL frames per model = 3 R_cat + 3 R_cult
-    "frames_per_channel": 3,             # F — the phi normalization constant (instruments per channel); M*F = 18
+    "frames_per_model": 6,               # F (PRIMARY) — channel-agnostic frames per model; M*F = 36
+    "frames_per_channel": 3,             # F (SECONDARY per-channel diagnostic); M*F = 18, on v0.20-v0.22 only
+    "channel_mode": "channel-agnostic (primary): 6 frames pooled to 0..6 per model",
     "surfacing": "binary_per_model_frame",
-    "per_model_count": "k(b,m) in 0..F  (F = frames_per_channel = 3)",
-    "pooled_rate": "pi_hat_b = sum_m k(b,m) / (M*F); F = frames_per_channel = 3, so M*F = 18 PER CHANNEL",
-    "per_channel": ["R_cat", "R_cult"],  # computed separately; channel as a factor
+    "per_model_count": "k(b,m) in 0..F  (F = frames_per_model = 6; channel-agnostic primary)",
+    "pooled_rate": "pi_hat_b = sum_m k(b,m) / (M*F); F = frames_per_model = 6, so M*F = 36 (channel-agnostic primary)",
     "rho": "spearman",                   # program convention
     "pooling": "per-set, then pooled with set as a blocking factor; per-set rho reported alongside pooled",
 
     # --- phi: primary CPC — quasi-binomial between-model dispersion (Pearson chi2/df) ---
     "phi": {
-        "formula": "phi_b = [1/(M-1)] * sum_m (k(b,m) - F*pi_hat_b)^2 / [F*pi_hat_b*(1-pi_hat_b)]  (F = frames_per_channel = 3)",
+        "formula": "phi_b = [1/(M-1)] * sum_m (k(b,m) - F*pi_hat_b)^2 / [F*pi_hat_b*(1-pi_hat_b)]  (F = frames_per_model = 6, channel-agnostic primary)",
         "df": "M-1",
         "null_expectation": 1.0,         # E[phi]=1 under homogeneity (all models share pi_hat)
         "interpretation": "phi>1 -> models disagree (inconsistent); phi<1 -> agree beyond chance (consistent)",
         "mean_independent": True,        # denominator divides out binomial variance F*pi(1-pi)
         "defined_domain": "pi_hat in (0,1)  (>=1 surfacing, not full saturation)",
         "undefined_only_at": "true-zero floor (correct behavior; not a CV-style blowup)",
-        "low_recall_note": "a brand surfacing once in-channel (pi_hat = 1/18: one surfacing across 6 models x 3 frames within a channel) still yields a finite phi",
+        "low_recall_note": "a brand surfacing once total (pi_hat = 1/36: one surfacing across 6 models x 6 frames, channel-agnostic) still yields a finite phi",
     },
 
-    # --- J: positional diagnostic — mean pairwise Jaccard ---
+    # --- per-channel SECONDARY diagnostic (non-gating; canonical-channel substrates only) ---
+    "per_channel_secondary": {
+        "channels": ["R_cat", "R_cult"],    # computed separately
+        "F": 3,                             # frames_per_channel; M*F = 18 per channel
+        "scope": "v0.20, v0.21, v0.22 (canonical R_cat/R_cult)",
+        "excludes": "v0.23 (non-canonical channels) and v0.19 (single-channel; no R_cat/R_cult split)",
+        "status": "diagnostic only; not gating; reported alongside the channel-agnostic primary",
+    },
+
+    # --- J: positional diagnostic — mean pairwise Jaccard (channel-agnostic primary) ---
     "J": {
         "set": "S(b,m) = { frames where b surfaced under model m }",
         "formula": "J_b = mean over model pairs (m,m') of |S(b,m) intersect S(b,m')| / |S(b,m) union S(b,m')|",
@@ -236,7 +267,7 @@ HYPOTHESES = [
         "tier": "SECONDARY",
         "statement": "phi and J capture distinct facets.",
         "confirmed_threshold": "|rho(phi, J)| <= 0.70 AND >=1 identified discordant brand",
-        "directional_lean": "CONFIRMED (channel-asymmetry evidence)",
+        "directional_lean": "CONFIRMED (positional vs magnitude facet; per-channel asymmetry is the secondary-diagnostic view)",
         "figure": "fig_03_phi_j_dissociation",
     },
     {
@@ -293,7 +324,13 @@ VERDICT_KEYS = {
 # ---------------------------------------------------------------------------
 INTEGRATION = {
     "computed_in": "scoring_step",       # score_v1_8.py (to be authored) reads COMPUTATION + THRESHOLDS
-    "inputs": "frozen per-(brand, model, frame, channel) surfacing from v0.34 / v0.35 / v0.36",
+    "inputs": "frozen Phase B response_text over the v0.19-v0.23 omnibus (the shared basis of v0.34 / v0.35 / v0.36); binary surfacing is DERIVED, not pre-deposited",
+    "surfacing_extraction": (
+        "channel-agnostic per-model 0..6 counts via the certified omnibus lineage "
+        "(score_v0_31.counts_v19/v23 + score_v20/21/22 detect_mention, orchestrated as in score_v33, "
+        "with its reconciliation gate); the per-channel secondary diagnostic re-runs the certified "
+        "matcher per channel on v0.20-v0.22 only"
+    ),
     "reacquisition_required": False,
     "one_way_boundary": "first scoring call (in place of an API acquisition call); external anchor precedes it",
     "replaces": "v1.7 CV-CPC instrument",
@@ -323,18 +360,22 @@ ILLUSTRATION = {
         {
             "id": "low_recall_finite_phi",
             "label": "illustrative / synthetic",
-            "setup": "low-recall brand surfacing once within a channel, pi_hat = 1/18",
+            "setup": "low-recall brand surfacing once total, pi_hat = 1/36 (channel-agnostic: one across 6 models x 6 frames)",
             "cv_cpc": "undefined / explosive (1/sqrt(mean) blowup)",
             "phi": "finite and defined",
             "demonstrates": "coverage gain — phi covers the low-recall segment CV cannot (H_LowRecallDefined)",
         },
         {
-            "id": "channel_asymmetry_dissociation",
+            "id": "positional_dissociation",
             "label": "illustrative / synthetic",
-            "setup": "channel-asymmetry brand: strong in R_cult, ~zero in R_cat",
-            "phi": "magnitude facet (between-model dispersion)",
-            "J": "positional facet (where surfacing lands across frames)",
-            "demonstrates": "phi (magnitude) and J (positional) dissociate — facets non-redundant (H_PositionalDissociation)",
+            "setup": "brand with equal between-model surfacing magnitude but divergent frame positions across models",
+            "phi": "magnitude facet (between-model dispersion) — agreement, so phi is low",
+            "J": "positional facet (which frames) — disagreement, so J is low",
+            "demonstrates": (
+                "phi (magnitude) and J (positional) dissociate channel-agnostically — facets non-redundant "
+                "(H_PositionalDissociation); per-channel R_cat/R_cult asymmetry is the secondary-diagnostic "
+                "view of the same effect"
+            ),
         },
     ],
 }
@@ -373,7 +414,7 @@ FIGURES = [
 ]
 
 # ---------------------------------------------------------------------------
-# DEVIATIONS — contemporaneous log (additive; Entry 0 at r1 lock, Entry 1 r1->r2)
+# DEVIATIONS — contemporaneous log (additive; Entry 0 at r1 lock, Entry 1 r1->r2, Entry 2 r2->r3)
 # ---------------------------------------------------------------------------
 DEVIATIONS = [
     {
@@ -410,6 +451,42 @@ DEVIATIONS = [
             "F-independent); only the phi normalization constant and the ILLUSTRATION / "
             "low-recall-note figures. The per-channel mandate is the binding design; the r1 "
             "F=6 / pi_hat=1/36 figures were the arithmetic outlier, now reconciled."
+        ),
+    },
+    {
+        "entry": 2,
+        "amendment": "r2 -> r3",
+        "type": "pre-scoring design correction (no phi / J / R_grad values computed)",
+        "summary": (
+            "Pre-scoring design correction, caught before the one-way boundary (no phi/J computed). "
+            "r1 and r2 both specified PER-CHANNEL phi/J (R_cat, R_cult separately; channel pooling "
+            "prohibited). Inspecting the frozen omnibus channel structure exposed an internal "
+            "contradiction: the validation sets span v0.19-v0.23, but v0.23's two channels are "
+            "cultural-cult / editorial-authority, NOT R_cat / R_cult, so a per-channel R_cat/R_cult "
+            "instrument cannot span the stated omnibus; and v0.19 is single-channel (no R_cat/R_cult "
+            "split at all), so TWO of the five substrates break the per-channel framing. Mapping "
+            "v0.23's channels onto R_cat/R_cult is "
+            "the channel-construct equivalence v1.7 explicitly DEFERRED to v0.31 as unvalidated, and "
+            "was rejected. r3 resolves the contradiction by making phi / J CHANNEL-AGNOSTIC as the "
+            "PRIMARY instrument: the six frames per model are pooled to a 0..6 count (F = "
+            "frames_per_model = 6, M*F = 36, phi floor pi_hat = 1/36), matching the certified "
+            "channel-agnostic omnibus extraction (score_v0_31 -> 0..6 per model) on which all three "
+            "framings (v0.34 / v0.35 / v0.36) and v1.7's own CV-CPC were already built. The "
+            "per-channel variant is retained as a SECONDARY, non-gating diagnostic on the "
+            "canonical-channel substrates v0.20-v0.22 only. Justification that this is not a loss: "
+            "phi is mean-independent by construction, so the channel-mixing LEVEL confound that "
+            "originally motivated prohibiting pooling is already divided out; the residual channel "
+            "signal is positional, which is J's domain. Honest record of the arc: r1's F=6 was the "
+            "right number for the wrong reason (it assumed 6 frames per channel); r2 corrected F to 3, "
+            "which was correct FOR a per-channel instrument but the per-channel framing was itself the "
+            "error — it was specified from the out-of-sample v0.24 channel structure, not verified "
+            "against the v0.19-v0.23 omnibus the framings are built on. r3 restores F=6 for the "
+            "correct reason (channel-agnostic pooling, 6 frames per model). Root cause: locked (r1) "
+            "and amended (r2) before inspecting the omnibus channel structure. No thresholds change "
+            "(all F-independent); the primary instrument's channel mode, F, M*F, and the phi floor / "
+            "ILLUSTRATION figures change. All five substrates are retained channel-agnostically; the "
+            "'even v0.19 raw recognition is binary' note (corroborating Entry 0) goes to the paper's "
+            "methods, not a further lock bump."
         ),
     },
 ]

@@ -5,9 +5,10 @@
 > This document locks the v1.8 instrument definitions, validation plan, hypotheses, verdict
 > matrix, and falsification criteria *before* any scoring run against the frozen sets. It is
 > the pre-registration anchor: the external git tag (`v1.8-prereg-r1`, amended pre-scoring at
-> `v1.8-prereg-r2` — frames-per-channel correction, DEVIATIONS Entry 1) and OSF deposit precede
-> any φ / J / R_grad computation, per the v0.33+ anchoring discipline (here the one-way boundary
-> is the first scoring call, since there is no API acquisition).
+> `v1.8-prereg-r2` — frames-per-channel correction, Entry 1 — and `v1.8-prereg-r3` — channel-agnostic
+> primary instrument, Entry 2) and OSF deposit precede any φ / J / R_grad computation, per the v0.33+
+> anchoring discipline (here the one-way boundary is the first scoring call, since there is no API
+> acquisition).
 
 ---
 
@@ -65,13 +66,21 @@ CV-CPC (CPC_raw = SD/mean; CPC_corr = SD/√(μ(1−μ))) was not adopted. The c
 
 ## 2. Instrument specifications (locked)
 
-Notation: brand *b*; six-model panel *m* ∈ {1..M}, M = 6; 6 probe-frames per model **total**
-(3 R_cat + 3 R_cult), so **F = 3 frames per channel** — the φ normalization constant, since
-instruments are computed per channel. Binary surfacing per (model, frame). Per-model count
-k(b,m) ∈ {0..F}; pooled rate π̂_b = Σ_m k(b,m) / (M·F), with **M·F = 18 per channel**.
-**All instruments computed per channel** (R_cat, R_cult separately), with channel reported as a
-factor — pooling channels would blend the challenger / incumbent asymmetry (challengers populate
-the cultural channel, incumbents the category channel) and reintroduce confounding.
+Notation: brand *b*; six-model panel *m* ∈ {1..M}, M = 6; **F = 6 probe-frames per model**
+(3 R_cat + 3 R_cult), **pooled channel-agnostically** for the primary instrument — the φ
+normalization constant. Binary surfacing per (model, frame). Per-model count k(b,m) ∈ {0..F};
+pooled rate π̂_b = Σ_m k(b,m) / (M·F), with **M·F = 36**.
+
+**The primary instruments are channel-agnostic.** The certified omnibus extraction
+(`score_v0_31` → a 0..6 per-model count) and all three validation framings are channel-agnostic
+by construction, and v0.23's two channels (cultural-cult / editorial-authority) are not
+commensurable with R_cat / R_cult. Because φ is mean-independent by construction (it divides out
+the binomial variance F·π̂(1−π̂)), the channel-mixing *level* confound that would otherwise
+motivate splitting channels is already removed; the residual channel signal is *positional* —
+J's domain. **A per-channel variant of φ / J (R_cat, R_cult separately, F = 3, M·F = 18) is
+retained as a SECONDARY, non-gating diagnostic on the canonical two-channel substrates v0.20–v0.22
+only**; **v0.19** (single-channel — no R_cat/R_cult split) and **v0.23** (non-canonical channels;
+the R_cat/R_cult equivalence was deferred to v0.31, unvalidated) are both excluded from it.
 
 ### 2.1 φ — primary CPC (quasi-binomial between-model dispersion), inconsistency-oriented
 
@@ -83,8 +92,9 @@ Pearson dispersion (χ²/df, df = M−1) of per-model surfacing against the homo
 denominator divides out the binomial-expected variance F·π̂(1−π̂), removing the level coupling.
 **Defined** for all *b* with π̂_b ∈ (0,1) (≥1 surfacing, not full saturation); undefined only at
 the true-zero floor — which is correct behavior, not a CV-style blowup. A brand surfacing once
-within a channel (π̂ = 1/18, i.e. one surfacing across the 6 models × 3 frames of a channel)
-still yields a finite φ.
+total (π̂ = 1/36, i.e. one surfacing across the 6 models × 6 frames, channel-agnostic) still
+yields a finite φ. *(The secondary per-channel diagnostic uses F = 3, M·F = 18, π̂ floor = 1/18,
+on v0.20–v0.22.)*
 
 ### 2.2 J — positional diagnostic (mean pairwise Jaccard), consistency-oriented
 
@@ -93,7 +103,8 @@ still yields a finite φ.
 
 J ∈ [0,1]; J = 1 every model surfaces *b* in identical frames (positionally consistent);
 J → 0 disjoint frames. Defined for ≥1 surfacing across ≥2 models. Captures *where* a brand
-surfaces, not *how much* — the facet φ cannot see.
+surfaces, not *how much* — the facet φ cannot see. Computed channel-agnostically (over all six
+frames) for the primary; the per-channel J is part of the secondary diagnostic (v0.20–v0.22).
 
 *Pre-specified R1 contingency (locked, not post-hoc):* if |ρ(J, μ)| > 0.50 from small-set bias,
 fall back to chance-corrected Jaccard J_adj = (J − E[J|sizes]) / (1 − E[J|sizes]).
@@ -122,8 +133,12 @@ a clean and honest outcome.
 | **v0.35** (6921758) frozen 84-unit set | phantom-signature baseline (H_PhantomSignature) |
 | **v0.36** (6927958) label substrate | low-recall stress case (the 15/24 CV-undefined cohort) |
 
+All three sets are framings of one frozen omnibus (the v0.19–v0.23 five-substrate, six-model
+panel); the primary φ / J are channel-agnostic, so all five substrates — including v0.23 —
+participate. The per-channel secondary diagnostic runs on v0.20–v0.22 only.
+
 **Inclusion partition (pre-locked, pre-analysis):** φ / J computed for every brand with ≥1
-in-channel surfacing. True-zero brands are partitioned out *before* analysis and reported
+surfacing. True-zero brands are partitioned out *before* analysis and reported
 separately. The defined / undefined split is a **pre-specified partition, not a finding** — this
 avoids the v1.7 trap where the defined-rate emerged as a result.
 
@@ -137,7 +152,7 @@ avoids the v1.7 trap where the defined-rate emerged as a result.
 | **H_MeanIndependent** | PRIMARY | φ is mean-independent | \|ρ(φ, μ)\| ≤ 0.50, pooled across sets | CONFIRMED (risk: floor effects reintroduce coupling) |
 | **H_LowRecallDefined** | PRIMARY | φ extends defined coverage into the low-recall segment | φ defined for 100% of ≥1-surfacing brands AND φ-defined set strictly contains the CV-CPC-defined set, gain concentrated in the low-recall stratum | CONFIRMED |
 | **H_GradedRecognition** | PRIMARY* | tiered R_grad discriminates under C_P saturation and is not recall-mean in disguise | among C_P = M brands: Var(R_grad) > 0 spanning ≥2 tiers AND \|ρ(R_grad, μ)\| ≤ 0.50 | CONFIRMED if re-scorable; else FORWARD-SPEC |
-| **H_PositionalDissociation** | SECONDARY | φ and J capture distinct facets | \|ρ(φ, J)\| ≤ 0.70 AND ≥1 identified discordant brand | CONFIRMED (channel-asymmetry evidence) |
+| **H_PositionalDissociation** | SECONDARY | φ and J capture distinct facets | \|ρ(φ, J)\| ≤ 0.70 AND ≥1 identified discordant brand | CONFIRMED (positional vs magnitude facet; per-channel asymmetry = secondary-diagnostic view) |
 | **H_PhantomSignature** | TERTIARY (exploratory) | near-phantom (≥1-surfacing) brands carry a distinct φ / J signature vs the v0.35 84-unit baseline | no directional commitment | exploratory |
 
 \* PRIMARY if frozen recognition is re-scorable; FORWARD-SPEC otherwise.
@@ -174,13 +189,14 @@ Every reachable outcome mapped; no unmapped residual.
 ## 7. Pre-registration discipline
 
 - Scope lock → scaffold → **this spec locked at commit + tag `v1.8-prereg-r1`**, amended
-  pre-scoring at **`v1.8-prereg-r2`** (frames-per-channel correction) → external anchor
-  (tag push + OSF deposit) → scoring → figures → paper → brand report → OSF deposit → SSRN.
-  ORDER LOCKED.
+  pre-scoring at **`v1.8-prereg-r2`** (frames-per-channel correction) and **`v1.8-prereg-r3`**
+  (channel-agnostic primary instrument) → external anchor (tag push + OSF deposit) → scoring →
+  figures → paper → brand report → OSF deposit → SSRN. ORDER LOCKED.
 - The external anchor precedes the **first scoring call** (v1.8's one-way boundary, in place of an
   API acquisition call).
-- Tags additive-only, never force-moved. r1 → r2 amendments only for methodology defects caught
-  pre-scoring, documented as an additive DEVIATIONS entry (the F-correction is Entry 1).
+- Tags additive-only, never force-moved. Pre-scoring amendments (methodology or design defects
+  caught before the one-way boundary) are documented as additive DEVIATIONS entries (F-correction =
+  Entry 1; channel-agnostic primary = Entry 2).
 
 ---
 
@@ -217,5 +233,26 @@ Every reachable outcome mapped; no unmapped residual.
   **M·F = 18**, and the minimum non-zero per-channel **π̂ = 1/18**. The r1 figures assumed 6 frames
   within a channel; corrected here. Same defect class as v1.7's r3 frames-per-channel amendment.
   No hypotheses or thresholds change (all F-independent); only the φ normalization constant and the
-  ILLUSTRATION / low-recall-note figures. The per-channel mandate is the binding design; the r1
-  F = 6 / π̂ = 1/36 figures were the arithmetic outlier, now reconciled.
+  ILLUSTRATION / low-recall-note figures. *(Superseded in substance by Entry 2: r3 makes the primary
+  instrument channel-agnostic, which restores F = 6 for a different, correct reason; the per-channel
+  F = 3 figures here now describe the secondary diagnostic only.)*
+- **Entry 2 (r2 → r3) — channel-agnostic primary instrument.** Pre-scoring design correction, caught
+  before the one-way boundary (no φ / J computed). r1 and r2 both specified **per-channel** φ / J
+  (R_cat, R_cult separately; channel pooling prohibited). Inspecting the frozen omnibus channel
+  structure exposed an internal contradiction: the validation sets span v0.19–v0.23, but **v0.23's
+  channels are cultural-cult / editorial-authority, not R_cat / R_cult**, and **v0.19 is
+  single-channel** (no R_cat/R_cult split at all) — so two of the five substrates break the
+  per-channel framing and a per-channel R_cat/R_cult instrument cannot span the stated omnibus. Mapping v0.23's channels onto R_cat/R_cult is the
+  channel-construct equivalence v1.7 explicitly **deferred to v0.31 as unvalidated** — rejected. r3
+  resolves it by making φ / J **channel-agnostic** as the PRIMARY instrument: the six frames per model
+  pool to a 0..6 count (F = 6, **M·F = 36**, φ floor **π̂ = 1/36**), matching the certified
+  channel-agnostic omnibus extraction (`score_v0_31` → 0..6 per model) on which all three framings and
+  v1.7's own CV-CPC were already built. The per-channel variant is **retained as a SECONDARY,
+  non-gating diagnostic on v0.20–v0.22 only**. Not a loss: φ is mean-independent by construction, so
+  the channel-mixing *level* confound that motivated pooling-prohibition is already divided out; the
+  residual channel signal is positional (J's domain). Honest record of the arc: r1's F = 6 was the
+  right number for the wrong reason (assumed 6 frames/channel); r2's F = 3 was correct *for* a
+  per-channel instrument, but per-channel was itself the error — specified from the out-of-sample v0.24
+  channel structure, not verified against the v0.19–v0.23 omnibus the framings are built on; r3
+  restores F = 6 for the correct reason (channel-agnostic pooling). Root cause: locked (r1) and amended
+  (r2) before inspecting the omnibus channel structure. All five substrates retained channel-agnostically.
