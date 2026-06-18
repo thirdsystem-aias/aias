@@ -5,8 +5,9 @@
 > This document locks the v1.8 instrument definitions, validation plan, hypotheses, verdict
 > matrix, and falsification criteria *before* any scoring run against the frozen sets. It is
 > the pre-registration anchor: the external git tag (`v1.8-prereg-r1`, amended pre-scoring at
-> `v1.8-prereg-r2` — frames-per-channel correction, Entry 1 — and `v1.8-prereg-r3` — channel-agnostic
-> primary instrument, Entry 2) and OSF deposit precede any φ / J / R_grad computation, per the v0.33+
+> `v1.8-prereg-r2` — frames-per-channel correction, Entry 1 — `v1.8-prereg-r3` — channel-agnostic
+> primary instrument, Entry 2 — and `v1.8-prereg-r4` — H_LowRecallDefined structural verdict cell,
+> Entry 3) and OSF deposit precede any φ / J / R_grad computation, per the v0.33+
 > anchoring discipline (here the one-way boundary is the first scoring call, since there is no API
 > acquisition).
 
@@ -165,7 +166,7 @@ Every reachable outcome mapped; no unmapped residual.
 
 - **H_CV_Reproduces:** { CONFIRMED ≥0.50 · NULL <0.50 (data artifact — invalidates the comparison) }
 - **H_MeanIndependent:** { CONFIRMED ≤0.50 · FALSIFIED >0.50 }
-- **H_LowRecallDefined:** { CONFIRMED full recovery, zero residual undefined among ≥1-surfacing · PARTIAL recovery with residual undefined (implementation flag) · FALSIFIED no gain }
+- **H_LowRecallDefined:** { CONFIRMED 100% φ-defined among ≥1-surfacing ∧ φ-defined ⊋ CV-CPC_raw-defined ∧ non-empty low-recall gain · PARTIAL-IMPLEMENTATION a residual ≥1-surfacing brand undefined for a NON-ceiling reason — structurally unreachable given φ's totality on (0,1); fail-loud guard · FALSIFIED no gain over CV-CPC_raw-defined · PARTIAL-STRUCTURAL gain confirmed but strict containment broken SOLELY by the by-design π̂=1 ceiling exclusion (φ undefined at the ceiling where CV-CPC_raw is defined → non-nested defined sets; a structural property, not a defect) }
 - **H_GradedRecognition:** { CONFIRMED variance + distinct · FALSIFIED-circular variance but \|ρ(R_grad,μ)\| > 0.50 · FALSIFIED-degenerate no variance under saturation · FORWARD-SPEC frozen data not re-scorable }
 - **H_PositionalDissociation:** { CONFIRMED non-redundant + discordants exist · PARTIAL \|ρ\| ≤ 0.70 but no discordant brand · FALSIFIED \|ρ\| > 0.70 (redundant) }
 - **H_PhantomSignature:** { SIGNATURE-PRESENT · NULL · UNDETERMINED (insufficient non-zero phantoms) }
@@ -189,14 +190,15 @@ Every reachable outcome mapped; no unmapped residual.
 ## 7. Pre-registration discipline
 
 - Scope lock → scaffold → **this spec locked at commit + tag `v1.8-prereg-r1`**, amended
-  pre-scoring at **`v1.8-prereg-r2`** (frames-per-channel correction) and **`v1.8-prereg-r3`**
-  (channel-agnostic primary instrument) → external anchor (tag push + OSF deposit) → scoring →
+  pre-scoring at **`v1.8-prereg-r2`** (frames-per-channel correction), **`v1.8-prereg-r3`**
+  (channel-agnostic primary instrument), and **`v1.8-prereg-r4`** (H_LowRecallDefined structural
+  verdict cell) → external anchor (tag push + OSF deposit) → scoring →
   figures → paper → brand report → OSF deposit → SSRN. ORDER LOCKED.
 - The external anchor precedes the **first scoring call** (v1.8's one-way boundary, in place of an
   API acquisition call).
 - Tags additive-only, never force-moved. Pre-scoring amendments (methodology or design defects
   caught before the one-way boundary) are documented as additive DEVIATIONS entries (F-correction =
-  Entry 1; channel-agnostic primary = Entry 2).
+  Entry 1; channel-agnostic primary = Entry 2; H_LowRecallDefined structural verdict cell = Entry 3).
 
 ---
 
@@ -256,3 +258,20 @@ Every reachable outcome mapped; no unmapped residual.
   channel structure, not verified against the v0.19–v0.23 omnibus the framings are built on; r3
   restores F = 6 for the correct reason (channel-agnostic pooling). Root cause: locked (r1) and amended
   (r2) before inspecting the omnibus channel structure. All five substrates retained channel-agnostically.
+- **Entry 3 (r3 → r4) — H_LowRecallDefined structural verdict cell.** Pre-scoring, pre-boundary
+  verdict-matrix exhaustiveness correction, reasoned from the instrument's mathematical structure
+  with the boundary intact (no φ / J computed; surfaced during scorer construction). The r1–r3
+  three-cell matrix {CONFIRMED, PARTIAL (residual undefined — implementation flag), FALSIFIED} left a
+  reachable outcome unmapped. **φ is total on π̂ ∈ (0,1)**, so the *only* ≥1-surfacing brand that can
+  lack a φ is one at the **π̂ = 1 ceiling** (a by-design Fork-A exclusion); meanwhile CV-CPC_raw carries
+  v1.7's MU_FLOOR and stays defined there. So when the low-recall **gain holds AND a ceiling brand
+  exists**, the φ-defined and CV-CPC_raw-defined sets are **non-nested** → strict containment breaks —
+  an outcome that cannot be CONFIRMED (forbids residual), is not FALSIFIED (gain exists), and that the
+  lone PARTIAL cell misnamed an "implementation flag." r4 adds **[3] PARTIAL-STRUCTURAL** for exactly
+  this non-nested-by-design outcome, and re-scopes the original PARTIAL to **[1] PARTIAL-IMPLEMENTATION**
+  — a residual undefined for a NON-ceiling reason, structurally impossible given φ's totality and so
+  retained only as a fail-loud guard (its firing = an extraction/φ bug). **The CONFIRMED condition and
+  the make-or-break bar (H_MeanIndependent) are UNCHANGED**; r4 refines only the partial region. Root
+  cause: the r1–r3 matrix was specified before the φ-totality / saturation-ceiling / MU_FLOOR
+  interaction was fully worked through. Pre-registration refinement reasoned from logically reachable
+  outcomes of the instrument math — not result-tuning; no data peeked; the boundary holds.
