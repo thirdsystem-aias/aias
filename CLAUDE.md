@@ -60,13 +60,8 @@ Build outputs land under their respective subdirs. Never write to `/Users/pablou
   - 5-substrate-family anchor base now complete (kitchenware, fragrance, audio, skincare, cosmetics)
   - Type 2 quadrant cleared EMERGED threshold for first time
   - Phantom Brand Persistence reached strongest demonstration (Glossier 6/6 q6)
-- **Latest methodology paper shipped:** v1.7 CPC Consistency (SSRN 6878818, June 2026) — pre-registered **negative result**
-  - CV-based Consistency (CPC = 1/(1+CV) of cross-model recall) is **not independent of Presence**: pooled |ρ| = 0.77 > 0.50 ceiling, per-substrate +0.94/+0.85/+0.64; mechanical CV ≈ 1/√mean coupling at recall counts r∈0–6. Instrument **not adopted**; redefinition escalated to v1.8. H_CPC_PhantomNull confirmed; H_CPC_Defined falsified (57% defined-rate, recognition–recall gap).
-  - Anchored set v0.20–v0.22 (two-channel canonical trio); tags `v1.7-prereg-r1/r2/r3` (r2 scope-narrow, r3 falsification record); OSF deposit at `osf.io/ec6wh/methodology/v1_7/`
-- **Prior methodology paper:** v1.6 (SSRN 6816340, May 2026)
-  - Three increments: substrate-level Recognition pre-screen, independent moderator pathway (`H_IdentityLoad_Direct`), Phantom Brand Persistence Phase B extension
-  - Retrospective scoring against v0.16–v0.21 corpus; v0.21 returned CONFIRMED for both `H_IdentityLoad_Direct` and `H_PhantomBrandPersistence` (Glossier validity anchor passed at R_phantom = 12)
-  - Pre-reg tag `v1.6-prereg-r1` (commit `f10616a`); OSF deposit at `osf.io/ec6wh/methodology/v1_6/`
+- **Latest methodology paper shipped:** v1.8 — CPC Consistency Instrument Redesign (mean-independent φ on a quasi-binomial dispersion basis; SSRN 6963359).
+- **Prior:** v1.7 — CV-CPC methodology lock (falsified CV-CPC as the Consistency instrument; SSRN 6878818).
 - **Latest synthesis paper shipped:** AIAS™ 1.0 (SSRN 6817841, May 2026) — *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol*
   - Consolidates the 5-family anchor base (v0.16–v0.21) under locked v1.6 methodology
   - Seven-layer construct claim L1–L7; L7 carries the Presence-only-with-multi-year-composite-roadmap positioning
@@ -240,6 +235,7 @@ Foundational: *Tri-System Brand Growth* (SSRN 6659000).
 | — methodology papers — | | |
 | v1.6 | Three increments (Recognition regime, IL Direct, Phantom) | 6816340 |
 | v1.7 | CPC Consistency — pre-registered negative result (CV not independent of Presence; redefinition escalated to v1.8) | 6878818 |
+| v1.8 | CPC Consistency Instrument Redesign — mean-independent φ (quasi-binomial dispersion); remediates the v1.7 CV-CPC falsification, |ρ(φ,μ)|=0.091 vs 0.682; H_MeanIndependent CONFIRMED | 6963359 |
 | — synthesis paper — | | |
 | AIAS™ 1.0 | Five-Substrate Foundational Construct Claim | 6817841 |
 
