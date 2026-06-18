@@ -30,15 +30,19 @@ scoring call is the one-way boundary, in place of an API acquisition call. The
 external anchor (git tag v1.8-prereg-r1 + OSF deposit) precedes that first
 scoring call, per the v0.33+ anchoring discipline.
 
-Revision r3. Lock arc (all pre-scoring; no phi / J values computed): r1
+Revision r4. Lock arc (all pre-scoring; no phi / J values computed): r1
 (v1.8-prereg-r1, first lock) specified PER-CHANNEL phi with F=6; r2
 (v1.8-prereg-r2) corrected the per-channel frame count to F=3 (Entry 1); r3
 (v1.8-prereg-r3) makes phi / J CHANNEL-AGNOSTIC as the primary instrument
 (frames pooled 0..6; F = frames_per_model = 6, M*F = 36, phi floor pi_hat =
 1/36) and demotes the per-channel variant to a secondary diagnostic on the
-canonical-channel substrates v0.20-v0.22 (Entry 2). This matches the certified
-channel-agnostic omnibus extraction and accommodates v0.23's non-canonical
-channels (cultural-cult / editorial-authority).
+canonical-channel substrates v0.20-v0.22 (Entry 2); r4 (v1.8-prereg-r4) adds a
+fourth H_LowRecallDefined verdict cell (PARTIAL-STRUCTURAL) for the reachable
+gain-holds / saturation-ceiling-breaks-containment outcome the r1-r3 three-cell
+matrix left unmapped, and makes the original "implementation flag" PARTIAL an
+explicit fail-loud guard (Entry 3). This matches the certified channel-agnostic
+omnibus extraction and accommodates v0.23's non-canonical channels
+(cultural-cult / editorial-authority).
 Upstream lineage: extends
 v1.7 (SSRN 6878818); failure cascade v0.32 (6898581), v0.33 (6909019),
 v0.34 (6915458), v0.35 (6921758), v0.36 (6927958). Feeds forward to v0.37+
@@ -56,8 +60,8 @@ METADATA = {
     "component": "CPC",                          # Consistency — instrument redesign
     "extends": "v1.7",                           # SSRN 6878818 (CV-CPC negative result)
     "supersedes_instrument": "CV-CPC",           # falsified v1.7; not adopted
-    "revision": "r3",                            # r1 first lock; r2 F-correction (Entry 1); r3 channel-agnostic primary (Entry 2)
-    "prereg_tag": "v1.8-prereg-r3",              # additive; r1/r2 preserved at their tags
+    "revision": "r4",                            # r3 channel-agnostic primary (Entry 2); r4 H_LowRecallDefined 4th cell (Entry 3)
+    "prereg_tag": "v1.8-prereg-r4",              # additive; r1/r2/r3 preserved at their tags
     "acquisition": False,                        # frozen-set re-analysis; no probes
     "validation_sets": ["v0.34", "v0.35", "v0.36"],  # frozen; no acquisition
     "one_way_boundary": "first_scoring_call",    # external anchor precedes it
@@ -297,9 +301,10 @@ VERDICT_KEYS = {
         "FALSIFIED (|rho| > 0.50)",
     ],
     "H_LowRecallDefined": [
-        "CONFIRMED (full recovery; zero residual undefined among >=1-surfacing)",
-        "PARTIAL (recovery with residual undefined — implementation flag)",
-        "FALSIFIED (no gain over the CV-CPC-defined set)",
+        "CONFIRMED (full recovery; 100% phi-defined among >=1-surfacing AND phi-defined strictly contains CV-CPC_raw-defined AND non-empty low-recall gain)",
+        "PARTIAL-IMPLEMENTATION (a residual >=1-surfacing brand is undefined for a reason OTHER than the saturation ceiling — an implementation defect; structurally unreachable given phi totality on (0,1); retained as a fail-loud guard)",
+        "FALSIFIED (no gain over the CV-CPC_raw-defined set — vacuous extension)",
+        "PARTIAL-STRUCTURAL (low-recall gain confirmed, but strict containment is broken SOLELY by the by-design pi_hat=1 ceiling exclusion: phi undefined at the ceiling where CV-CPC_raw is defined, so the two defined sets are non-nested; a structural property of the instrument pair, not a defect)",
     ],
     "H_GradedRecognition": [
         "CONFIRMED (variance under saturation + distinct from mu)",
@@ -487,6 +492,35 @@ DEVIATIONS = [
             "ILLUSTRATION figures change. All five substrates are retained channel-agnostically; the "
             "'even v0.19 raw recognition is binary' note (corroborating Entry 0) goes to the paper's "
             "methods, not a further lock bump."
+        ),
+    },
+    {
+        "entry": 3,
+        "amendment": "r3 -> r4",
+        "type": "pre-scoring verdict-matrix exhaustiveness correction (no phi / J / R_grad values computed)",
+        "summary": (
+            "Pre-scoring, pre-boundary verdict-matrix correction, reasoned from the instrument's "
+            "mathematical structure with the one-way boundary intact (no phi/J computed; surfaced "
+            "during scorer construction). The r1-r3 H_LowRecallDefined matrix had three cells "
+            "{CONFIRMED, PARTIAL (residual undefined - implementation flag), FALSIFIED}. Working the "
+            "instrument domains exposed a reachable outcome with no truthful cell: phi is TOTAL on "
+            "pi_hat in (0,1), so the ONLY >=1-surfacing brand that can lack a phi is one at the "
+            "pi_hat=1 ceiling (a by-design Fork-A exclusion); meanwhile CV-CPC_raw carries v1.7's "
+            "MU_FLOOR and stays defined at the ceiling. So when the low-recall gain holds AND a "
+            "ceiling brand exists, the phi-defined and CV-CPC_raw-defined sets are non-nested -> "
+            "strict containment breaks. That outcome cannot be CONFIRMED (forbids residual), is not "
+            "FALSIFIED (gain exists), and the only PARTIAL cell named it an 'implementation flag' - "
+            "but the sole reachable trigger is the structural ceiling, which that wording misnames. "
+            "r4 adds a fourth cell, PARTIAL-STRUCTURAL, for exactly this non-nested-by-design "
+            "outcome, and re-scopes the original PARTIAL to PARTIAL-IMPLEMENTATION: a residual "
+            "undefined for a NON-ceiling reason, which is structurally impossible given phi's "
+            "totality and is therefore retained only as a fail-loud guard (it firing would mean an "
+            "extraction/phi bug, not a legitimate partial). The CONFIRMED condition and the "
+            "make-or-break bar (H_MeanIndependent) are UNCHANGED; r4 refines only the partial region. "
+            "Root cause: the r1-r3 matrix was specified before the phi-totality / saturation-ceiling "
+            "/ MU_FLOOR interaction was fully worked through. This is pre-registration refinement "
+            "reasoned from logically reachable outcomes of the instrument math, not result-tuning - "
+            "no data was peeked at; the boundary holds."
         ),
     },
 ]
