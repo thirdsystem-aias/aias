@@ -1,0 +1,135 @@
+{
+  "prereg_tag": "v1.8-prereg-r4",
+  "method": "frozen artifacts materialized read-only via `git show <source_commit>:<src_path> > dest`; working_tree_hash verified == blob at source; data copies are NOT committed to v1.8",
+  "reconciliation": "v1.7 gate passed 72/0 (v0.20-0.22); v0.19 & v0.23 via certified extractors + Stage-0 frame-sum backstop",
+  "artifacts": [
+    {
+      "artifact": "score_v33.py",
+      "source_commit": "fdceda9526fb4a803ea9b51bc78c19b09ab1b140",
+      "source_commit_short": "fdceda9",
+      "src_path": "scripts/score_v33.py",
+      "dest": "scripts/score_v33.py",
+      "working_tree_hash": "77bbfb4cd74a157fce8465ceec8e97d933088a5c"
+    },
+    {
+      "artifact": "score_v0_31.py",
+      "source_commit": "ffa604a63e8354f8787acb4596ec4ba976db649a",
+      "source_commit_short": "ffa604a",
+      "src_path": "scripts/score_v0_31.py",
+      "dest": "scripts/score_v0_31.py",
+      "working_tree_hash": "4faf16c89b278ae0d219f604c25375267f08d6ad"
+    },
+    {
+      "artifact": "v0_33_provider_asymmetry_content.py",
+      "source_commit": "c8f27369d4e23b31a936d189afd2632ceae7f73e",
+      "source_commit_short": "c8f2736",
+      "src_path": "prereg/v0_33_provider_asymmetry_content.py",
+      "dest": "prereg/v0_33_provider_asymmetry_content.py",
+      "working_tree_hash": "45d72cd094f9c532309d0219ef9763f7b03e83b8"
+    },
+    {
+      "artifact": "v0_31_cpc_baseline_content.py",
+      "source_commit": "dbbe5fe9604e0c6bcb1400b888c292cab6e462a4",
+      "source_commit_short": "dbbe5fe",
+      "src_path": "prereg/v0_31_cpc_baseline_content.py",
+      "dest": "prereg/v0_31_cpc_baseline_content.py",
+      "working_tree_hash": "ca238017cf5c436441c7772bc5dd80c7b3c62cf1"
+    },
+    {
+      "artifact": "t1_phase_b_v19",
+      "source_commit": "c56ea8b0a708512f2c43db09b8536ada79630497",
+      "source_commit_short": "c56ea8b",
+      "src_path": "osf/v19/phase_b_results.csv",
+      "dest": "osf/v19/phase_b_results.csv",
+      "working_tree_hash": "8293c2962f942960779747e1c16c9a6c8eb050af"
+    },
+    {
+      "artifact": "t1_phase_b_v20",
+      "source_commit": "3a8b07637ec4ab903048e8b2099829281fd04f65",
+      "source_commit_short": "3a8b076",
+      "src_path": "osf/v20/phase_b_results.csv",
+      "dest": "osf/v20/phase_b_results.csv",
+      "working_tree_hash": "9ed9ffeba2cd78b6e9cfcb551738cd93e2b957de"
+    },
+    {
+      "artifact": "t1_phase_b_v21",
+      "source_commit": "a785b276b836fa4d66c4da3baa76d707c062f88b",
+      "source_commit_short": "a785b27",
+      "src_path": "osf/v21/phase_b_results.csv",
+      "dest": "osf/v21/phase_b_results.csv",
+      "working_tree_hash": "70c008262a1acee4dddcae72490d533e80e2463c"
+    },
+    {
+      "artifact": "t1_phase_b_v22",
+      "source_commit": "1a974f987b13507dc3bb82920a62719e56883479",
+      "source_commit_short": "1a974f9",
+      "src_path": "osf/v22/phase_b_results.csv",
+      "dest": "osf/v22/phase_b_results.csv",
+      "working_tree_hash": "8e9cab2fb3a096684685f836fef29d4256ff1fa2"
+    },
+    {
+      "artifact": "t1_phase_b_v23",
+      "source_commit": "28879cd48a4bafb0fac3cd34052b13eafd4eb131",
+      "source_commit_short": "28879cd",
+      "src_path": "osf/v23/data/v23_phase_b_scored.json",
+      "dest": "osf/v23/data/v23_phase_b_scored.json",
+      "working_tree_hash": "2e8561aaf63cb6725638f42802293a0035f6dee8"
+    },
+    {
+      "artifact": "v33_eta2",
+      "source_commit": "418579f5a6b253b405df712f8eb34a6927471f2c",
+      "source_commit_short": "418579f",
+      "src_path": "osf/v33/data/v33_eta2.csv",
+      "dest": "osf/v33/data/v33_eta2.csv",
+      "working_tree_hash": "3d7413851c803f9e0cd9e1aa0b4778992bff8cf3"
+    },
+    {
+      "artifact": "v35_phantom_roster",
+      "source_commit": "96dfd5360f4c5717299112dff86a4d0f469ff7fb",
+      "source_commit_short": "96dfd53",
+      "src_path": "osf/v35/data/v35_phantom_roster.csv",
+      "dest": "osf/v35/data/v35_phantom_roster.csv",
+      "working_tree_hash": "9d8fc603e1f6bf63938e30dab0506107ab779e77"
+    },
+    {
+      "artifact": "t2_phase_b_v19",
+      "source_commit": "342171d83583f895322dd3344268de8a686ed312",
+      "source_commit_short": "342171d",
+      "src_path": "osf/v34/data/v19/phase_b_results.csv",
+      "dest": "osf/v34/data/v19/phase_b_results.csv",
+      "working_tree_hash": "19b3390783d9fa394bc950948912a04b204ed6c7"
+    },
+    {
+      "artifact": "t2_phase_b_v20",
+      "source_commit": "342171d83583f895322dd3344268de8a686ed312",
+      "source_commit_short": "342171d",
+      "src_path": "osf/v34/data/v20/phase_b_results.csv",
+      "dest": "osf/v34/data/v20/phase_b_results.csv",
+      "working_tree_hash": "121bb0978697a58c32932d3f139d73736a4e1077"
+    },
+    {
+      "artifact": "t2_phase_b_v21",
+      "source_commit": "342171d83583f895322dd3344268de8a686ed312",
+      "source_commit_short": "342171d",
+      "src_path": "osf/v34/data/v21/phase_b_results.csv",
+      "dest": "osf/v34/data/v21/phase_b_results.csv",
+      "working_tree_hash": "c81091aae983000f26a59f9cb67000831888c2a7"
+    },
+    {
+      "artifact": "t2_phase_b_v22",
+      "source_commit": "342171d83583f895322dd3344268de8a686ed312",
+      "source_commit_short": "342171d",
+      "src_path": "osf/v34/data/v22/phase_b_results.csv",
+      "dest": "osf/v34/data/v22/phase_b_results.csv",
+      "working_tree_hash": "e55110bbc6af3ced43cbcabeb624df800fbdce70"
+    },
+    {
+      "artifact": "t2_phase_b_v23",
+      "source_commit": "342171d83583f895322dd3344268de8a686ed312",
+      "source_commit_short": "342171d",
+      "src_path": "osf/v34/data/v23/v23_phase_b_scored.json",
+      "dest": "osf/v34/data/v23/v23_phase_b_scored.json",
+      "working_tree_hash": "b4ba62325bada5a3baece4a4fe89a1cdee771d02"
+    }
+  ]
+}

@@ -1,0 +1,370 @@
+{
+  "prereg_tag": "v1.8-prereg-r4",
+  "revision": "r4",
+  "instrument": "phi (channel-agnostic primary), J, CV-CPC baseline; per-channel secondary",
+  "constants": {
+    "M": 6,
+    "F_primary": 6,
+    "MF_primary": 36,
+    "F_per_channel": 3
+  },
+  "reconciliation_gate": {
+    "checked": 72,
+    "mismatches": [],
+    "passed": true,
+    "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+    "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+    "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+  },
+  "frame_resolved_substrates": {
+    "v0.19": true,
+    "v0.20": true,
+    "v0.21": true,
+    "v0.22": true,
+    "v0.23": true
+  },
+  "two_wave_reproducibility": {
+    "phi_t1_t2_rank_agreement": {
+      "rho": 0.6453869683902722,
+      "abs_rho": 0.6453869683902722,
+      "p": 4.502021032477755e-11,
+      "n": 83
+    },
+    "n_pairs": 83
+  },
+  "secondary_per_channel": {
+    "scope": "v0.20, v0.21, v0.22 (canonical R_cat/R_cult)",
+    "excludes": "v0.23 (non-canonical channels) and v0.19 (single-channel; no R_cat/R_cult split)",
+    "status": "diagnostic only; not gating; reported alongside the channel-agnostic primary",
+    "per_substrate": {
+      "v0.20": {
+        "R_cat": 9,
+        "R_cult": 15
+      },
+      "v0.21": {
+        "R_cat": 14,
+        "R_cult": 17
+      },
+      "v0.22": {
+        "R_cat": 8,
+        "R_cult": 12
+      }
+    }
+  },
+  "verdicts": {
+    "H_CV_Reproduces": {
+      "verdict": "CONFIRMED (|rho| >= 0.50)",
+      "stat": {
+        "rho": -0.6822887846481871,
+        "abs_rho": 0.6822887846481871,
+        "p": 9.66855204286549e-09,
+        "n": 55
+      },
+      "threshold": "|rho(CV-CPC_raw, mu)| >= 0.5"
+    },
+    "H_MeanIndependent": {
+      "verdict": "CONFIRMED (|rho| <= 0.50)",
+      "stat": {
+        "per_framing": {
+          "v0.34": {
+            "rho": -0.08232812314127262,
+            "abs_rho": 0.08232812314127262,
+            "p": 0.45656870398871746,
+            "n": 84
+          },
+          "v0.35": {
+            "rho": -0.08232812314127262,
+            "abs_rho": 0.08232812314127262,
+            "p": 0.45656870398871746,
+            "n": 84
+          },
+          "v0.36": {
+            "rho": 0.10723587176680571,
+            "abs_rho": 0.10723587176680571,
+            "p": 0.5797967125832154,
+            "n": 29
+          }
+        },
+        "pooled": {
+          "rho": 0.09068336683203117,
+          "abs_rho": 0.09068336683203117,
+          "p": 0.2050427918905931,
+          "n": 197
+        }
+      },
+      "threshold": "|rho(phi, mu)| <= 0.5 (pooled, make-or-break)",
+      "make_or_break": true,
+      "escalation_triggered": false,
+      "escalation_status": "N/A (pass) \u2014 H_MeanIndependent CONFIRMED; beta-binomial ICC NOT entered",
+      "escalation_path_if_falsified": "beta-binomial ICC / overdispersion rho, re-entered before any instrument lock"
+    },
+    "H_LowRecallDefined": {
+      "verdict": "CONFIRMED (full recovery; 100% phi-defined among >=1-surfacing AND phi-defined strictly contains CV-CPC_raw-defined AND non-empty low-recall gain)",
+      "stat": {
+        "n_nonzero_surfacing": 84,
+        "phi_defined": 84,
+        "cv_raw_defined": 55,
+        "gain_set_size": 29,
+        "gain_nonempty": true,
+        "gain_brands": [
+          {
+            "substrate": "v0.19",
+            "brand": "Dan Clark Audio",
+            "pi_hat": 0.1388888888888889,
+            "mu_count": 0.8333333333333334,
+            "cpc_corr": 2.5952810774495587
+          },
+          {
+            "substrate": "v0.19",
+            "brand": "Meze",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 2.371708245126285
+          },
+          {
+            "substrate": "v0.19",
+            "brand": "Stax",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 1.5
+          },
+          {
+            "substrate": "v0.19",
+            "brand": "ZMF Headphones",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Est\u00e9e Lauder",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Sisley",
+            "pi_hat": 0.05555555555555555,
+            "mu_count": 0.3333333333333333,
+            "cpc_corr": 2.057983021710106
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Rare Beauty",
+            "pi_hat": 0.08333333333333333,
+            "mu_count": 0.5,
+            "cpc_corr": 1.8090680674665818
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Fenty Skin",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 1.5
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Goop",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Glossier",
+            "pi_hat": 0.08333333333333333,
+            "mu_count": 0.5,
+            "cpc_corr": 2.7633971188310302
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Tower 28",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Eucerin",
+            "pi_hat": 0.08333333333333333,
+            "mu_count": 0.5,
+            "cpc_corr": 1.8090680674665818
+          },
+          {
+            "substrate": "v0.20",
+            "brand": "Bioderma",
+            "pi_hat": 0.05555555555555555,
+            "mu_count": 0.3333333333333333,
+            "cpc_corr": 2.057983021710106
+          },
+          {
+            "substrate": "v0.21",
+            "brand": "Giorgio Armani Beauty",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.21",
+            "brand": "Hourglass",
+            "pi_hat": 0.05555555555555555,
+            "mu_count": 0.3333333333333333,
+            "cpc_corr": 3.253956867279843
+          },
+          {
+            "substrate": "v0.21",
+            "brand": "Laura Mercier",
+            "pi_hat": 0.1388888888888889,
+            "mu_count": 0.8333333333333334,
+            "cpc_corr": 2.5952810774495587
+          },
+          {
+            "substrate": "v0.21",
+            "brand": "Haus Labs",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 2.371708245126285
+          },
+          {
+            "substrate": "v0.21",
+            "brand": "Kylie Cosmetics",
+            "pi_hat": 0.1388888888888889,
+            "mu_count": 0.8333333333333334,
+            "cpc_corr": 1.987054880161641
+          },
+          {
+            "substrate": "v0.22",
+            "brand": "Rivian",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S01",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S03",
+            "pi_hat": 0.1388888888888889,
+            "mu_count": 0.8333333333333334,
+            "cpc_corr": 1.0776318121606496
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S06",
+            "pi_hat": 0.05555555555555555,
+            "mu_count": 0.3333333333333333,
+            "cpc_corr": 2.057983021710106
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S08",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S09",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 2.3717082451262845
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S10",
+            "pi_hat": 0.1388888888888889,
+            "mu_count": 0.8333333333333334,
+            "cpc_corr": 2.5952810774495587
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S12",
+            "pi_hat": 0.027777777777777776,
+            "mu_count": 0.16666666666666666,
+            "cpc_corr": 2.267786838055364
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S22",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 2.371708245126285
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S23",
+            "pi_hat": 0.05555555555555555,
+            "mu_count": 0.3333333333333333,
+            "cpc_corr": 2.057983021710106
+          },
+          {
+            "substrate": "v0.23",
+            "brand": "S24",
+            "pi_hat": 0.1111111111111111,
+            "mu_count": 0.6666666666666666,
+            "cpc_corr": 2.371708245126285
+          }
+        ],
+        "coverage_full": true,
+        "phi_contains_cv_raw": true,
+        "n_saturated_ceiling": 0,
+        "saturation_breaks_containment": false,
+        "mu_floor": 1.0,
+        "target": 1.0,
+        "note": "CONFIRMED needs non-empty gain AND no ceiling break; gain_brands list confirms they are genuinely low-recall (pi_hat) and gives the CPC_corr same-domain contrast"
+      },
+      "threshold": "phi-defined strictly-contains CV-CPC_raw-defined with a NON-EMPTY low-recall gain set"
+    },
+    "H_GradedRecognition": {
+      "verdict": "FORWARD-SPEC (frozen data not re-scorable)",
+      "stat": {
+        "status": "FORWARD-SPEC",
+        "reason": "frozen recognition binary by probe design (DEVIATIONS Entry 0)"
+      },
+      "threshold": "n/a (forward-spec)"
+    },
+    "H_PositionalDissociation": {
+      "verdict": "CONFIRMED (non-redundant + discordants exist)",
+      "stat": {
+        "rho": -0.4025454211840846,
+        "abs_rho": 0.4025454211840846,
+        "p": 0.0003771818623575618,
+        "n": 74,
+        "n_discordant_union": 9,
+        "discordant_per_framing": {
+          "v0.34": 9,
+          "v0.35": 9,
+          "v0.36": 1
+        },
+        "rule": "|cons_pct(phi) - cons_pct(J)| >= 0.50 within framing",
+        "j_substrates": [
+          "v0.19",
+          "v0.20",
+          "v0.21",
+          "v0.22",
+          "v0.23"
+        ]
+      },
+      "threshold": "|rho(phi, J)| <= 0.7 AND >=1 discordant brand (percentile rule)"
+    },
+    "H_PhantomSignature": {
+      "verdict": "NULL",
+      "stat": {
+        "n_phantom_defined": 29,
+        "n_84_baseline": 84,
+        "disjoint_contrast": {
+          "phantom_analyzable": 29,
+          "non_phantom": 55
+        },
+        "note": "exploratory; no directional commitment; disjoint 29-vs-55 contrast reported descriptively"
+      },
+      "threshold": "exploratory"
+    }
+  }
+}
