@@ -2,6 +2,8 @@
 # AIAS(TM) v0.37 -- Identity-Load (IL-Direct) x CPC -- PRE-REGISTRATION CONTENT
 # Phase type: re-analysis (no new LLM acquisition; v0.33 pattern)
 # Lock tag: v0.37-prereg-r1
+# Amended at v0.37-prereg-r2 (additive; r1 frozen at 2f381f7).
+#   r2 = verdict-matrix exhaustiveness completion of the FALSIFIED row; see DEVIATIONS Entry 2.
 #
 # NOTE TO OPERATOR (Claude Code): before commit, resolve every
 # <<CONFORM-VERBATIM: ...>> placeholder by pulling the EXACT locked text from
@@ -217,6 +219,26 @@ falsification. This is explicitly NOT a control-flip -> UNDETERMINED gate: that
 machinery was a CV-CPC recall-coupling artifact, and phi's mean-independence
 retires it.
 
+[r2 amendment -- see DEVIATIONS Entry 2] Partial-arm computation and bands, pinned:
+  Method (SINGLE authoritative computation): partial Spearman via inversion of the
+  4-variable Spearman rank-correlation matrix over {IL-Direct, phi, C_P, recall-mean};
+  the IL-Direct x phi partial = -P[IL,phi] / sqrt(P[IL,IL] * P[phi,phi]) from the
+  precision matrix P. The 4x4 precision-matrix inversion partials out C_P and
+  recall-mean SIMULTANEOUSLY and is ORDER-INDEPENDENT; it IS the locked computation.
+  The pairwise-recursive two-control formula is population-equivalent but is NOT the
+  locked computation -- it can differ in finite samples by computation order, and the
+  verdict can hinge on which side of 0.30 the partial lands. One method, no ambiguity.
+  Inference: the SAME within-substrate stratified permutation as the primary --
+  IL-Direct labels permuted WITHIN substrate, phi / C_P / recall-mean held fixed,
+  >= 10,000 MC draws, TWO-SIDED; p_perm is the partial's two-sided permutation p.
+  Bands (symmetric to the primary; govern the raw-FALSIFIED verdict-matrix row):
+    partial CONFIRMED : |rho_partial| >= 0.30 AND p_perm < .05
+    partial NULL      : |rho_partial| < 0.15
+    partial MIDDLE    : 0.15 <= |rho_partial| < 0.30, OR |rho_partial| >= 0.30
+                        with p_perm >= .05
+  The CONFIRMED-branch attenuation cut above (|rho_partial| < 0.15 when the raw
+  primary rho >= 0.30) is UNCHANGED; these bands add the raw-FALSIFIED row mapping only.
+
 H_IL_Cross_Substrate -- SECONDARY, descriptive-only.
 Per-substrate rho sign consistency across the trio. N = 3 -> NO inferential
 claim (below the v0.33 underpowered-ordinal precedent). The per-substrate rho
@@ -253,6 +275,16 @@ Robustness (reported, not gating the verdict):
 
 MARGINAL is acknowledged as a plausible MODAL outcome on fixed data and is a
 publishable, honestly-indeterminate result routed forward.
+
+Partial-arm (H_IL_Presence_Robustness) [r2]: partial Spearman via 4-variable
+rank-correlation-matrix inversion over {IL-Direct, phi, C_P, recall-mean};
+inference by the SAME within-substrate stratified permutation as the primary
+(>= 10,000 MC, two-sided). Verdict-matrix bands for the partial are pinned in
+H_IL_Presence_Robustness (r2). Permutation determinism: the MC seed is pinned in
+the SCORER (not this lock -- pinning an arbitrary integer would over-constrain the
+lock); every permutation p is reported with its Monte Carlo standard error, and
+any |rho| within ~2 MC-SE of the .05 boundary is flagged seed-sensitive
+(rationale: DEVIATIONS Entry 2).
 """
 
 # ---------------------------------------------------------------------------
@@ -278,16 +310,22 @@ positive claim arises from a suppression-only or threshold-edge pattern.
   MARGINAL
     -> Weak-but-present (modal-plausible). Reported; routed forward.
 
-  FALSIFIED
-    x partial ALSO null:
+  FALSIFIED  (raw |rho| < 0.15; partial bands per H_IL_Presence_Robustness r2)
+    x partial NULL  (|rho_partial| < 0.15):
         -> CLEAN NULL. IL-Direct orthogonal to phi-consistency. Negative result
-           reported.
-    x partial CONFIRMED while raw FALSIFIED:
+           reported. This is the ONLY FALSIFIED-row cell that reads as a clean negative.
+    x partial CONFIRMED  (|rho_partial| >= 0.30 & p_perm < .05)
+      OR partial MIDDLE  (0.15 <= |rho_partial| < 0.30, or |rho_partial| >= 0.30
+                          with p_perm >= .05):
         -> *** SUPPRESSION CELL -> UNDETERMINED-pending-suppression-diagnosis. ***
-           A presence-suppression-only signal. Do NOT claim a clean
-           IL -> consistency effect from it. (This is v0.37's analog of v0.36's
-           unmappable-cell trap: reachable, explicitly assigned, mapped to
-           UNDETERMINED, never to a positive.)
+           ANY non-null presence-controlled partial under a null raw arm is the
+           suppression signature: the presence control revealed structure the raw
+           masked. Do NOT claim a clean IL -> consistency effect, and do NOT wave it
+           through as CLEAN NULL. Mapped conservatively toward UNDETERMINED -- the
+           v0.36 lesson: reachable cell, explicitly assigned, never a positive, and a
+           weak-but-present partial is NOT a clean negative.
+           [r2 -- DEVIATIONS Entry 2: completes the FALSIFIED row that r1 split only on
+           the raw-CONFIRMED-branch attenuation cut.]
 """
 
 # ---------------------------------------------------------------------------
@@ -363,6 +401,56 @@ IL-Direct x phi moderation design authored here. v0.34 two-wave acquisition
 scaffolding removed (v0.37 is a no-acquisition re-analysis). The v1.8 phi/J
 instrument is v0.37's adopted DV BY ORIGINAL DESIGN -- not a deviation from a
 prior adopted instrument.
+
+Entry 2 -- r2 amendment: verdict-matrix exhaustiveness completion (PRE-ACQUISITION; no --run).
+Caught by pre-acquisition inspection of the seated scorer against the locked matrix --
+BEFORE any scoring call. The blinding boundary is intact: no --run has occurred and no
+verdict has been computed, so amending the lock now is fully legitimate. This is an
+r1 -> r2 amendment working as intended: a methodology under-specification caught
+pre-acquisition and fixed in the LOCK, not in code.
+
+WHAT WAS UNDER-SPECIFIED (GAP-A): the VERDICT_MATRIX FALSIFIED row split on "partial
+CONFIRMED vs partial null," but H_IL_Presence_Robustness (r1) defined the partial cut
+(|rho_partial| < 0.15) ONLY conditioned on the raw-CONFIRMED branch (the attenuation
+case). In the raw-FALSIFIED row the partial-CONFIRMED / partial-null boundary was never
+pinned and the 0.15-0.30 partial-middle was unmapped -- a REACHABLE cell (this trio is
+heavily saturated, so the raw arm can land FALSIFIED while a presence-controlled partial
+survives) deciding UNDETERMINED-pending-suppression vs CLEAN NULL, a headline-level
+difference. Exactly the unmappable-cell trap this module already invokes by name (v0.36).
+
+WHAT r2 PINS (a completion to design intent already on record -- NOT a verdict change):
+  - "partial CONFIRMED" = |rho_partial| >= 0.30 AND p_perm < .05, SYMMETRIC to the
+    primary band (CONFIRMED means the same thing on both axes; no second, looser
+    threshold introduced).
+  - FALSIFIED-row mapping: partial NULL (|rho_partial| < 0.15) -> CLEAN NULL;
+    EVERYTHING else (partial CONFIRMED or partial MIDDLE) ->
+    UNDETERMINED-pending-suppression-diagnosis.
+  - Conservative-direction rationale: under a null raw arm, a partial that is NOT
+    ESTABLISHED AS NULL routes to diagnosis (UNDETERMINED), never to a clean negative.
+    Only partial-also-null (|rho_partial| < 0.15) is CLEAN NULL. On the partial MIDDLE
+    specifically -- including the large-but-not-significant case (|rho_partial| >= 0.30
+    with p_perm >= .05) -- the routing is UNDETERMINED rather than CLEAN NULL because
+    under a null raw arm we have NO positive evidence the partial is genuinely zero, and
+    suppression is precisely the regime where the marginal (raw) test is underpowered
+    while the conditional structure is real. Insufficient evidence to establish null
+    routes to diagnosis, not to clean-negative. The cell asserts we CANNOT RULE OUT a
+    conditional signal -- not that one is established.
+
+GAP-B (folded in): the partial Spearman's inference is pinned to the SAME within-substrate
+stratified permutation as the primary (IL-Direct labels permuted within substrate,
+>= 10,000 draws, two-sided); the partial METHOD is named (4-variable Spearman
+rank-correlation-matrix inversion). Transcription, not a design choice.
+
+GAP-C (recorded, NOT locked): the permutation MC seed is an implementation-determinism
+choice pinned IN THE SCORER with a comment, not in this lock. The scorer reports every
+permutation p with its Monte Carlo standard error so boundary fragility (any |rho| within
+~2 MC-SE of .05) is auditable rather than hidden behind a single draw. This entry records
+WHY a bare p is insufficient at the boundary.
+
+SCOPE: this amendment touches H_IL_Presence_Robustness, the VERDICT_MATRIX FALSIFIED row,
+and DECISION_RULES only. The PRIMARY H_IL_Consistency bands, the n-floor (45), the sign
+convention, LOSO, the supplementary contrast, and Entry 0 COI carry-forward are UNCHANGED.
+r1 stays frozen at 2f381f7 as the original lock; r2 is additive.
 """
 
 # ---------------------------------------------------------------------------
