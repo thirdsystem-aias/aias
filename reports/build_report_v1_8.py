@@ -147,10 +147,10 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 
 # PATTERNS: {id, title, body} → {number, title, paragraphs, chart_slot}
 _PATTERN_CHART_MAP = {
-    1: "dissociation",   # P1 consistency followed presence
-    2: "coupling",       # P2 the link is arithmetic (CV ~ 1/sqrt(mean))
-    3: "defined",        # P3 recognition–recall gap
-    4: "phantom",        # P4 absent brands read as absent
+    1: "mean_independence",  # P1 evenness now reads on its own        -> chart_01
+    2: "coverage",           # P2 reaches the low-recall brands        -> chart_02
+    3: "dissociation",       # P3 how evenly vs where                  -> chart_03
+    4: "two_wave",           # P4 stable across measurements           -> chart_04
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -220,11 +220,12 @@ if isinstance(content.CLOSING, str):
             "Third System™ (research entity)",
         ],
         "datasets": [
-            "Per-brand CPC: osf.io/ec6wh/methodology/v1_8/data/v1_8_cpc.csv",
-            "Verdicts: osf.io/ec6wh/methodology/v1_8/v1_8_cpc_verdicts.json",
+            "Per-brand instrument table: osf.io/ec6wh/methodology/v1_8/v1_8_instrument_table.csv",
+            "Verdicts: osf.io/ec6wh/methodology/v1_8/v1_8_verdicts.json",
             "Scoring code: osf.io/ec6wh/methodology/v1_8/scoring/score_v1_8.py",
+            "Materialization manifest: osf.io/ec6wh/methodology/v1_8/v1_8_materialization_manifest.json",
         ],
-        "methodology_log": "v1.8 (SSRN 6878818)",
+        "methodology_log": "v1.8 - results-locked v1.8-results-r1 (commit 85d2202); SSRN pending",
         "closing_text": content.CLOSING,
     }
 
@@ -239,7 +240,7 @@ if isinstance(content.CLOSING, dict):
             # split a single string into lines on ' / ' or newline; else wrap as 1-item list
             parts = [p.strip() for p in _v.replace("\n", " / ").split(" / ") if p.strip()]
             content.CLOSING[_k] = parts or [_v]
-    content.CLOSING.setdefault("methodology_log", "v1.8 (SSRN 6878818)")
+    content.CLOSING.setdefault("methodology_log", "v1.8 - results-locked v1.8-results-r1 (commit 85d2202); SSRN pending")
 
 # --- Akkurat Pro glyph-coverage fallback substitutions ----------------------
 # Akkurat lacks several Unicode symbols. Substitute before any Paragraph parse.
@@ -335,13 +336,11 @@ CHART_FIGSIZE_IN = {
     "6_col_v30_phantom_gap":      (7.50, 5.00),
     "hero":                       (7.50, 5.00),
     "hero_short":                 (7.50, 3.50),
-    # v1.8 CPC figures — native dims from fig_0*.pdf mediaboxes
-    # (ChartReservation pre-computes the real footprint from the PDF mediabox;
-    #  these keys set the reservation width, aspect honored from the chart).
-    "v1_8_dissociation":          (7.20, 5.10),
-    "v1_8_coupling":              (7.20, 5.10),
-    "v1_8_defined":               (7.20, 5.10),
-    "v1_8_phantom":               (7.20, 5.10),
+    # v1.8 CPC redesign figures — chart_0{1..4}_*.pdf from build_charts_v1_8.py.
+    # ChartReservation re-derives the real footprint from each PDF mediabox; this
+    # key sets the reservation width (7.5in = full content column), aspect honored
+    # per-chart (chart_01 is the two-panel spread; 02-04 are hero).
+    "v1_8_chart":                 (7.50, 5.00),
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1134,31 +1133,29 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
     return []
 
 
-HERO_FIGURE_CAPTIONS = {
-    "coupling": (
-        "Finding 2 · The link is arithmetic. Each brand’s coefficient of variation "
-        "against its mean recall, beside the Poisson curve on which spread falls as the "
-        "square root of the mean. At the counts the panel produces the points track the "
-        "curve, so the spread a consistency score is built from is set by the average it "
-        "would otherwise add to."
+HERO_FIGURE_CAPTIONS = {   # author-supplied final captions (managerial, glyph-free)
+    "mean_independence": (
+        "Left: the redesigned measure plotted against presence level, flat across the "
+        "range at a correlation of 0.091. Right: the measure it replaces, against the "
+        "same level, sloping at 0.682. The same brands sit on both sides; what changes "
+        "is the instrument, not the data."
+    ),
+    "coverage": (
+        "Where each measure can be computed across the range of recall. The redesigned "
+        "measure covers all eighty-four brands that surface at all, twenty-nine of them "
+        "recalled too rarely for the older measure, which reaches only fifty-five. The "
+        "gain is exactly the sparse, low-recall band a stability reading most needs."
     ),
     "dissociation": (
-        "Finding 1 \u00b7 Consistency rose with presence, not apart from it. Each "
-        "brand\u2019s consistency score against its presence, across skincare, "
-        "cosmetics, and automotive. The two move together (pooled rank correlation "
-        "0.77), so a consistency score of this construction carries no information "
-        "that presence does not."
+        "How evenly a brand surfaces, plotted against where it surfaces, one point per "
+        "brand. The two readings move apart at a correlation of 0.403, well below the "
+        "line at which one would be redundant; the nine ringed brands sit steady on one "
+        "reading and scattered on the other."
     ),
-    "defined": (
-        "Finding 3 \u00b7 Recognized is not recalled. Share of in-market brands with a "
-        "usable consistency score, by category. Many brands every model recognizes "
-        "draw too little spontaneous mention to score \u2014 the gap widest among "
-        "prestige labels \u2014 so a recall-based reading is undefined for them."
-    ),
-    "phantom": (
-        "Finding 4 \u00b7 Absent brands read as absent. Defunct brands drew no mention "
-        "across the panel and returned no consistency score, shown beside the "
-        "in-market recall spread for reference \u2014 the boundary behaving as designed."
+    "two_wave": (
+        "Each brand's evenness at a first measurement against a second, on the same "
+        "panel. The points cluster along the line of equality at a correlation of 0.645, "
+        "moderate, enough to show the ordering is not an accident of a single draw."
     ),
 }
 
@@ -1168,10 +1165,10 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
     """Map a v0.30 CPC brand-format slot_key (PATTERNS id) to (filename, figsize_key).
     Charts are produced by build_charts_v30.py at reports/figs/v30/."""
     table = {
-        "dissociation": ("fig_02_cpc_dissociation.pdf", "v1_8_dissociation"),
-        "coupling":     ("fig_04_cv_mean_coupling.pdf",  "v1_8_coupling"),
-        "defined":      ("fig_01_cpc_defined.pdf",      "v1_8_defined"),
-        "phantom":      ("fig_03_phantom_null.pdf",     "v1_8_phantom"),
+        "mean_independence": ("chart_01_mean_independence.pdf", "v1_8_chart"),
+        "coverage":          ("chart_02_defined_coverage.pdf",  "v1_8_chart"),
+        "dissociation":      ("chart_03_phi_j_dissociation.pdf", "v1_8_chart"),
+        "two_wave":          ("chart_04_two_wave.pdf",           "v1_8_chart"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1218,7 +1215,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
         is_hero = slot in (
-            "dissociation", "coupling", "defined", "phantom",
+            "mean_independence", "coverage", "dissociation", "two_wave",
         )
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
@@ -1390,9 +1387,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>Consistency without Independence: A Pre-Registered Test of "
-        "Coefficient-of-Variation as the Consistency Component of AIAS (v1.8)</i>. "
-        "Third System (SSRN 6878818). thirdsystem.ai/methodology/v1_8"
+        "<i>A Mean-Independent Consistency Instrument for Cross-Model AI Presence: "
+        "Redesigning CPC on a Quasi-Binomial Dispersion Basis</i>. "
+        "Third System (SSRN pending). thirdsystem.ai/methodology/v1_8"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1521,7 +1518,7 @@ def build(*, debug_layout: bool = False,
 
     print(f"[build_report_v30] chart pre-flight (looking in {chart_dir})")
     expected_slots = [
-        "dissociation", "coupling", "defined", "phantom",
+        "mean_independence", "coverage", "dissociation", "two_wave",
     ]
     expected_files = set()
     for sk in expected_slots:
@@ -1548,7 +1545,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="Measuring Presence Twice \u2014 AIAS v1.8 CPC",
+        title="How Evenly, Not Just How Much \u2014 AIAS v1.8 CPC",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )
