@@ -1,7 +1,7 @@
 # AIAS™ v0.37 — Mega-Prompt: NOT APPLICABLE (No-Acquisition Re-Analysis)
 
 **Phase:** v0.37 — Identity-Load (IL-Direct) × CPC
-**Lock tag:** v0.37-prereg-r1
+**Lock tag:** v0.37-prereg-r2 (amends r1; r1 frozen at 2f381f7)
 
 This phase issues **no LLM acquisition calls**. It is a re-analysis (v0.33
 pattern) of frozen per-brand t₁ quantities:
