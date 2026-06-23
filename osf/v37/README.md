@@ -2,7 +2,7 @@
 
 OSF deposit for AIAS™ Presence Measurement Protocol, v0.37.
 
-**Status:** Pre-registration LOCKED at git tag `v0.37-prereg-r1` (2f381f7); acquisition not yet run. Design: Identity-Load × CPC — φ DV (v1.8 mean-independent), IL-Direct moderator, trio n=72.
+**Status:** Pre-registration LOCKED at git tag `v0.37-prereg-r2` (87ee3c2), amending r1 (2f381f7, frozen); acquisition not yet run. Design: Identity-Load × CPC — φ DV (v1.8 mean-independent), IL-Direct moderator, trio n=72. r2 = pre-acquisition verdict-matrix exhaustiveness completion of the FALSIFIED row (no --run; no verdict scored); see DEVIATIONS Entry 2.
 
 ## Tree
 
