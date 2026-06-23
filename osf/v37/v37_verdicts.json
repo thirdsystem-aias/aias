@@ -1,0 +1,164 @@
+{
+  "prereg_tag": "v0.37-prereg-r2",
+  "design": "Identity-Load (IL-Direct) x phi moderation, trio n<=72",
+  "constants": {
+    "M": 6,
+    "F": 6,
+    "MF": 36,
+    "rho_confirm": 0.3,
+    "rho_falsify": 0.15,
+    "alpha": 0.05,
+    "mc_draws": 10000,
+    "perm_seed": 370037,
+    "n_floor": 45
+  },
+  "reconciliation_gate": {
+    "checked": 72,
+    "mismatches": [],
+    "passed": true,
+    "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+    "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+    "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+  },
+  "descriptive_J": {
+    "frame_resolved": {
+      "v0.20": true,
+      "v0.21": true,
+      "v0.22": true,
+      "v0.23": true
+    },
+    "v23_walled": {
+      "frame_resolved": true,
+      "n_brands": 24,
+      "j_defined": 16,
+      "note": "v0.23 walled descriptive J (non-verdict)"
+    },
+    "note": "J is descriptive, non-verdict (METRIC_DEFINITION 'reported where frame-resolved')"
+  },
+  "verdicts": {
+    "H_IL_Consistency": {
+      "verdict": "FALSIFIED",
+      "primary_band_raw": "FALSIFIED",
+      "headline_cell": "CLEAN-NULL",
+      "stat": {
+        "rho": -0.008056996072772264,
+        "p_perm": 0.9552,
+        "mc_se": 0.0020686459339384292,
+        "seed_sensitive_at_alpha": false,
+        "n": 53,
+        "predicted_sign": "rho>0 (IL up -> consistency down)"
+      },
+      "loso": {
+        "per_drop": [
+          {
+            "dropped": "v0.20",
+            "rho": -0.11211511004604754,
+            "n": 34
+          },
+          {
+            "dropped": "v0.21",
+            "rho": 0.08685096545947467,
+            "n": 34
+          },
+          {
+            "dropped": "v0.22",
+            "rho": -0.017632817989431573,
+            "n": 38
+          }
+        ],
+        "nonsurvival": true,
+        "downgrade": null
+      },
+      "realized_n": {
+        "pooled_analyzable_n": 53,
+        "n_floor": 45,
+        "per_substrate": {
+          "v0.20": {
+            "trio_brands": 24,
+            "analyzable": 19,
+            "fragile": false
+          },
+          "v0.21": {
+            "trio_brands": 24,
+            "analyzable": 19,
+            "fragile": false
+          },
+          "v0.22": {
+            "trio_brands": 24,
+            "analyzable": 15,
+            "fragile": false
+          }
+        },
+        "fork_a_saturation_diagnostic": {
+          "v0.20": {
+            "n_zero_floor": 5,
+            "n_saturation_ceiling": 0,
+            "n_analyzable": 19,
+            "excluded_il_mean": 0.0,
+            "included_il_mean": 0.8421052631578947,
+            "n_excluded": 5
+          },
+          "v0.21": {
+            "n_zero_floor": 5,
+            "n_saturation_ceiling": 0,
+            "n_analyzable": 19,
+            "excluded_il_mean": 0.0,
+            "included_il_mean": 2.1052631578947367,
+            "n_excluded": 5
+          },
+          "v0.22": {
+            "n_zero_floor": 9,
+            "n_saturation_ceiling": 0,
+            "n_analyzable": 15,
+            "excluded_il_mean": 0.0,
+            "included_il_mean": 1.4,
+            "n_excluded": 9
+          }
+        },
+        "il_direct_source_sha256": "a09d00b8144a6e028b0bfe4d3fb7a7f42fa4597843377c457bd171ea697b0a99",
+        "il_direct_reconciliation": "first-run-baseline-to-be-recorded",
+        "il_direct_reconciliation_note": "DV-side bit-for-bit = Stage-0 r_per_model gate (DECISION-2); IL axis = SHA256 baseline with halt-on-mismatch on reuse (clause 3, same footing as DV-side inputs)."
+      }
+    },
+    "H_IL_Presence_Robustness": {
+      "verdict": "partial_NULL",
+      "role": "SECONDARY (robustness; not a gate). Feeds the verdict-matrix cell.",
+      "stat": {
+        "rho_partial": 0.003572689778499136,
+        "p_perm": 0.9804,
+        "mc_se": 0.0013862121049824933,
+        "seed_sensitive_at_alpha": false,
+        "n": 53,
+        "method": "4-var Spearman rank-correlation-matrix inversion (r2 single locked computation)"
+      }
+    },
+    "H_IL_Cross_Substrate": {
+      "verdict": "DESCRIPTIVE (N=3 substrates; no inferential claim)",
+      "per_substrate": {
+        "v0.20": {
+          "rho": 0.13692584848023573,
+          "n": 19
+        },
+        "v0.21": {
+          "rho": -0.171579825594788,
+          "n": 19
+        },
+        "v0.22": {
+          "rho": -0.12466372726728965,
+          "n": 15
+        }
+      }
+    },
+    "H_IL_t2_Stability": {
+      "verdict": "DESCRIPTIVE (walled; no confirmatory threshold)",
+      "phi_t1_t2_rank_agreement": 0.6374441524362076,
+      "n_pairs": 52
+    },
+    "SUPPLEMENTARY_IL_CVCPC": {
+      "role": "SUPPLEMENTARY-ILLUSTRATIVE \u2014 non-gating (touches no verdict)",
+      "rho_il_cvcpc": 0.12883449883449885,
+      "n": 38,
+      "note": "retired v1.7 instrument; shown for the 'only the instrument that worked' objection"
+    }
+  }
+}
