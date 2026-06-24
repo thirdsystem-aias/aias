@@ -51,6 +51,9 @@ UNICODE_SUBS = [
     ("Δ", r"$\Delta$"),     # Delta (ΔCPC throughout; Carlito has no Greek)
     ("·", r"$\cdot$"),      # middle dot (0.5·SD tolerance)
     ("μ", r"$\mu$"),        # mu (CPC level/mean; Carlito has no Greek) — prose only; math uses \mu
+    ("π̂", r"$\hat{\pi}$"),  # π̂ pi-hat (π + combining circumflex; MUST precede bare π) — v0.37 Fork-A
+    ("φ", r"$\varphi$"),    # φ phi — the v0.37 DV (60x); Carlito has no Greek
+    ("π", r"$\pi$"),        # bare π safety net (after π̂)
     ("′", r"$'$"),          # prime (d-prime recognition sensitivity)
     ("−", "-"),             # minus sign -> ASCII hyphen
     ("≫", r"$\gg$"),        # much-greater-than
