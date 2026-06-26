@@ -35,4 +35,5 @@ tomorrow.md
 
 # --- Added 2026-06-26 ---
 # Chart-build preview PNGs (throwaway; PDFs are the committed deliverable)
-reports/figs/v*/*_preview.png
+# any depth under reports/figs/ — covers both paper (figs/vNN/) and report (figs/vNN/report/)
+reports/figs/**/*_preview.png

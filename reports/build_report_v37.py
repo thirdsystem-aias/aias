@@ -1,20 +1,21 @@
 #!/usr/bin/env python3
 """
-v0.37 Provider-Asymmetric CPC — brand-format report typesetting pipeline.
+v0.37 Identity-Load × CPC — brand-format report typesetting pipeline.
 
-Third System managerial-register companion to the v0.37 SSRN paper. Renders the
-P1-P5 propositions (P1/P2/P3 charted, P4/P5 text-only) from
-v37_cpc_identity_load_moderator_content.py, with three report-register figures from
-build_charts_v37.py (report mode):
+Third System managerial-register companion to the v0.37 SSRN paper (the
+component-dissociation null). Renders the four P-propositions — each one charted —
+from v37_cpc_identity_load_moderator_content.py, with the four figures from
+scripts/build_charts_v37.py:
 
-  asym  -> report_fig_01.pdf   (P1 eta^2 permutation null)
-  gate  -> report_fig_02.pdf   (P2 recall vs recognition arms; saturation collapse)
-  ranks -> report_fig_03.pdf   (P3 within-pair consistency rank heatmap)
+  P1 dissociation  -> chart_03_dissociation.pdf      (identity moves visibility, not consistency)
+  P2 powered_null  -> chart_02_precise_null.pdf      (a real absence, not a weak test)
+  P3 cross         -> chart_04_cross_substrate.pdf   (no category is the exception)
+  P4 floor         -> chart_01_floor_not_ceiling.pdf (recognized but never named)
 
-Charts live in reports/figs/v37/report/; output to osf/v37/reports/.
+Charts live in reports/figs/v37/; output to osf/v37/reports/.
 
 Run:
-    python3 ~/aias/scripts/build_charts_v37.py     # both registers
+    python3 ~/aias/scripts/build_charts_v37.py
     python3 ~/aias/reports/build_report_v37.py
 """
 
@@ -108,8 +109,9 @@ if isinstance(content.WHAT_WE_MEASURED, str):
     _paras = [p.strip() for p in content.WHAT_WE_MEASURED.split("\n\n") if p.strip()]
     content.WHAT_WE_MEASURED = {"heading": "What we measured", "paragraphs": _paras}
 
-# v0.37: the chart-bearing findings ARE the P-propositions (P1/P2/P3 charted,
-# P4/P5 text-only); headlines + detail come from the content module.
+# v0.37: the chart-bearing findings ARE the P-propositions — all FOUR carry a
+# figure; headlines + detail come from the content module. Order is the managerial
+# arc (the dissociation lead, then the powered null, the no-category-escape, the floor).
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
 _NO_FINDING_LABEL = set()
 content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
@@ -117,11 +119,10 @@ content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
-    1: "gate_flip",   # P1 -> chart_01_gate_flip
-    2: "saturation",  # P2 -> chart_02_recognition_saturation
-    3: "raw",         # P3 -> chart_03_raw_manipulation_check
-    4: "cross",       # P4 -> chart_04_cross_substrate_concordance
-    5: "t2",          # P5 -> chart_05_t2_stability
+    1: "dissociation",  # P1 -> chart_03_dissociation
+    2: "powered_null",  # P2 -> chart_02_precise_null
+    3: "cross",         # P3 -> chart_04_cross_substrate
+    4: "floor",         # P4 -> chart_01_floor_not_ceiling
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -150,7 +151,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
         _rows.append((h["id"], h.get("proposition", ""), _status,
                       _SC_MAP.get(h.get("status_class", ""), "descriptive")))
     content.HYPOTHESIS_SCORING = {
-        "heading": "The five propositions, scored",
+        "heading": "The four propositions, scored",
         "intro": "Each proposition is the managerial reading of a locked result, scored for brand teams rather than reviewers.",
         "rows": _rows,
     }
@@ -179,9 +180,9 @@ if isinstance(content.CLOSING, str):
         ],
         "datasets": [
             "Verdicts: osf.io/ec6wh/v37/v37_verdicts.json",
-            "Two-wave acquisition data: osf.io/ec6wh/v37/data/",
-            "Scoring code: osf.io/ec6wh/v37/scripts/score_v37.py",
-            "Pre-registration: osf.io/ec6wh/v37/prereg/ (tag v0.37-prereg-r1)",
+            "Analysis set: osf.io/ec6wh/v37/v37_il_phi_analysis_set.csv",
+            "Scoring code: osf.io/ec6wh/v37/scripts/score_v0_37.py",
+            "Pre-registration: osf.io/ec6wh/v37/prereg/ (tag v0.37-prereg-r2)",
         ],
         "methodology_log": "v0.37 (SSRN pending)",
         "closing_text": content.CLOSING,
@@ -251,13 +252,13 @@ SPANS_PT = {n: span_pts(n) for n in range(1, COL_COUNT + 1)}
 
 # Chart figsize spec (inches).
 CHART_FIGSIZE_IN = {
-    # v0.37 phantom-CPC report charts (native mediabox dims; aspect re-derived by ChartReservation)
-    "v37_gate_flip":  (7.662, 5.100),
-    "v37_saturation": (8.769, 4.700),
-    "v37_raw":        (7.275, 5.100),
-    "v37_cross":      (9.329, 5.100),
-    "v37_t2":         (7.275, 5.100),
-    "v37_roster":     (8.225, 5.100),
+    # v0.37 Identity-Load × CPC REPORT-register figures (managerial vocabulary), native
+    # mediabox dims (in); aspect re-derived from the PDF mediabox by ChartReservation,
+    # width clamped to the content column. One figure per proposition.
+    "v37_dissociation": (8.853, 4.500),   # report_fig_01_dissociation
+    "v37_powered_null": (7.275, 5.100),   # report_fig_02_precise_null
+    "v37_cross":        (7.275, 5.100),   # report_fig_03_cross_substrate (report-only)
+    "v37_floor":        (7.320, 5.100),   # report_fig_04_floor
     # v0.11–v0.17 keys preserved for cross-version reuse (not used by v0.19 report)
     "6_col_v11_scatter":    (7.50, 5.00),
     "6_col_v11_rankshift":  (7.50, 6.50),
@@ -301,13 +302,6 @@ CHART_FIGSIZE_IN = {
     "6_col_v30_phantom_gap":      (7.50, 5.00),
     "hero":                       (7.50, 5.00),
     "hero_short":                 (7.50, 3.50),
-    # v0.37 longitudinal t1->t2 report figures — native dims from report_fig_0*.pdf mediaboxes
-    # (ChartReservation pre-computes the real footprint from the PDF mediabox;
-    #  these keys set the reservation width, aspect honored from the chart).
-    "v37_asym":                   (8.674, 3.300),   # report_fig_01 CPC t1/t2 stability (624.5x237.6pt)
-    "v37_gate":                   (7.675, 5.100),   # report_fig_02 residual gate saturation (552.6x367.2pt)
-    "v37_ranks":                  (8.561, 3.300),   # report_fig_03 presence stability (616.4x237.6pt)
-    "v37_phantom":                (7.200, 5.100),   # report_fig_04 phantom persistence (518.4x367.2pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1096,18 +1090,8 @@ def build_what_we_measured_story(styles, manifest=None, chart_dir=None, debug=Fa
     s.append(Spacer(1, 6))
     paras = [Paragraph(p, styles["body"]) for p in content.WHAT_WE_MEASURED["paragraphs"]]
     s.append(BalancedColumns(paras, nCols=2, innerPadding=GUTTER, spaceBefore=4, spaceAfter=8))
-    # chart_06 roster/attrition under the methodology prose
-    if manifest is not None and chart_dir is not None:
-        _fn, _fk = _slot_lookup("roster")
-        _cp = chart_dir / _fn
-        if _cp.exists():
-            _w, _h = CHART_FIGSIZE_IN[_fk]
-            _cw = CONTENT_W / 72.0
-            if _w > _cw:
-                _h *= _cw / _w; _w = _cw
-            s.append(Spacer(1, 8))
-            s.append(ChartReservation("roster", _cp, _w, _h, manifest, debug=debug,
-                     caption=HERO_FIGURE_CAPTIONS.get("roster", ""), caption_style=styles["caption"]))
+    # v0.37 carries no separate roster/attrition chart — the four figures are all bound
+    # to the four propositions; "What we measured" is prose-only.
     return s
 
 
@@ -1116,50 +1100,43 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 
 HERO_FIGURE_CAPTIONS = {
-    "roster": (
-        "Of 112 brands, 57 are phantom-flagged and 28 of those were never recalled at "
-        "all - leaving 29 measurable phantoms against 55 non-phantoms. Automotive (one "
-        "measurable phantom) enters pooled analysis only; the other four clear the floor."
+    "dissociation": (
+        "Identity load already moves whether AI surfaces a brand at all — the confirmed "
+        "Presence effect on the left. The same identity signal has no relationship to how "
+        "consistently the models surface it, on the right. Two different measurements, one "
+        "read: identity positioning buys visibility, not cross-model consistency."
     ),
-    "gate_flip": (
-        "The same phantom gap, accounted for two ways. Controlled for recognition it "
-        "survives at full strength; controlled for recall volume it vanishes. The "
-        "controls disagree, so the verdict is undetermined - and the disagreement is the finding."
-    ),
-    "saturation": (
-        "Why the controls disagree. Recognition is maxed out in three of five categories, "
-        "so a recognition control has nothing to remove. Recall volume separates phantom "
-        "from non-phantom everywhere - because that is what the phantom label means."
-    ),
-    "raw": (
-        "The raw phantom consistency gap, pooled across categories, with the category "
-        "leave-out range. Large and decisive - but labeled a manipulation check, because "
-        "both the label and the metric are built from recall."
+    "powered_null": (
+        "The association between identity load and cross-model consistency, set against the "
+        "size of effect this test could have detected. The estimate sits at zero and the "
+        "detectable range was well within reach — a real absence, not a test too weak to "
+        "find one."
     ),
     "cross": (
-        "Every category shows phantoms lower on consistency. With only four categories "
-        "eligible for the formal test, even perfect unanimity cannot clear the "
-        "significance bar - as the pre-registration stated in advance."
+        "Each category on its own. The associations disagree in sign and all sit near zero: "
+        "no overall effect, and none hiding inside a particular category either — there is no "
+        "“but it works in my category” exception being averaged away."
     ),
-    "t2": (
-        "The second measurement wave reproduces the whole structure: the raw gap, its "
-        "survival under the recognition control, and its collapse under the recall "
-        "control. The flip is a stable property of the measurement, not a one-wave fluke."
+    "floor": (
+        "The brands set aside from the consistency measure. They are recognized by the "
+        "models — most of them by all six — yet never named when the models list the "
+        "category. Being known is not the same as being named; the measure can only speak "
+        "to brands the models actually surface."
     ),
 }
 
 
 
 def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
-    """Map a v0.30 CPC brand-format slot_key (PATTERNS id) to (filename, figsize_key).
-    Charts are produced by build_charts_v30.py at reports/figs/v30/."""
+    """Map a v0.37 brand-format slot_key (PATTERNS id) to (filename, figsize_key).
+    REPORT-register figures (managerial vocabulary) produced by
+    scripts/build_charts_v37.py at reports/figs/v37/report/ — NOT the paper's
+    academic chart_*.pdf, which stay in the SSRN paper's confirmatory set."""
     table = {
-        "roster":     ("chart_06_roster_attrition.pdf",          "v37_roster"),
-        "gate_flip":  ("chart_01_gate_flip.pdf",                 "v37_gate_flip"),
-        "saturation": ("chart_02_recognition_saturation.pdf",    "v37_saturation"),
-        "raw":        ("chart_03_raw_manipulation_check.pdf",     "v37_raw"),
-        "cross":      ("chart_04_cross_substrate_concordance.pdf","v37_cross"),
-        "t2":         ("chart_05_t2_stability.pdf",               "v37_t2"),
+        "dissociation": ("report_fig_01_dissociation.pdf",   "v37_dissociation"),
+        "powered_null": ("report_fig_02_precise_null.pdf",   "v37_powered_null"),
+        "cross":        ("report_fig_03_cross_substrate.pdf", "v37_cross"),
+        "floor":        ("report_fig_04_floor.pdf",           "v37_floor"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1205,8 +1182,8 @@ def build_pattern_unified(pattern: dict, styles: dict,
         if w_in > _content_w_in:
             h_in = h_in * (_content_w_in / w_in)
             w_in = _content_w_in
-        # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
-        is_hero = slot in ("roster", "gate_flip", "saturation", "raw", "cross", "t2")
+        # v0.37: all four findings carry a hero chart
+        is_hero = slot in ("dissociation", "powered_null", "cross", "floor")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
@@ -1377,10 +1354,9 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast: "
-        "A Pre-Registered Control-Flip Result on Frozen Multi-Substrate Inputs "
-        "(AIAS CPC, v0.37)</i>. "
-        "Third System. SSRN 6921758, https://ssrn.com/abstract=6921758"
+        "<i>Identity Load Does Not Moderate Cross-Model Consistency: "
+        "A Pre-Registered Component-Dissociation Null (AIAS™ v0.37)</i>. "
+        "Third System. SSRN submission pending."
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1500,15 +1476,16 @@ def build(*, debug_layout: bool = False,
           f"(brand_primary={font.is_brand_primary})")
 
     V22_DEPOSIT_ROOT = AIAS_ROOT / "osf" / "v37"
-    # v0.37 figures live in reports/figs/v37/ (build_charts_v37.py default
-    # fig-dir), the same chart_0*.pdf the SSRN paper references.
-    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v37")
+    # v0.37 REPORT-register figures live in reports/figs/v37/report/ (managerial
+    # vocabulary; built by scripts/build_charts_v37.py report mode). The paper's
+    # academic chart_*.pdf in reports/figs/v37/ are left untouched for the SSRN paper.
+    chart_dir = chart_dir or (AIAS_ROOT / "reports" / "figs" / "v37" / "report")
     output_path = output_path or (V22_DEPOSIT_ROOT / "reports" / "v37_cpc_identity_load_moderator_report.pdf")
     base_pdf = output_path.parent / "_v37_base.pdf"
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[build_report_v37] chart pre-flight (looking in {chart_dir})")
-    expected_slots = ["roster", "gate_flip", "saturation", "raw", "cross", "t2"]
+    expected_slots = ["dissociation", "powered_null", "cross", "floor"]
     expected_files = set()
     for sk in expected_slots:
         fname, _ = _slot_lookup(sk)
@@ -1534,7 +1511,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="The Question the Instrument Couldn\u2019t Answer \u2014 AIAS Naive-Phantom x CPC (v0.37)",
+        title="The Lever That Moves Visibility, Not Consistency \u2014 AIAS Identity-Load x CPC (v0.37)",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )
@@ -1557,7 +1534,7 @@ def build(*, debug_layout: bool = False,
     for f_ in build_what_we_measured_story(styles, manifest, chart_dir, debug_layout):
         story.append(f_)
 
-    # --- Findings 1–3 ---
+    # --- Findings 1–4 ---
     story.append(NextPageTemplate("spread"))
     for pattern in content.PATTERNS:
         story.extend(build_pattern_unified(
