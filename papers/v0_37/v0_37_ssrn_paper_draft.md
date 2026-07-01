@@ -50,7 +50,7 @@ Identity Load — the degree to which a brand surfaces through cultural rather t
 
 # 1. Introduction
 
-The AIAS™ Measurement Program operationalizes AI availability as a multi-component brand-growth construct rather than a single quantity. Presence — whether and how strongly a brand is retrieved by a panel of large language models — is the program's anchored first component, validated across a multi-substrate base under Protocol v1.6 (SSRN 6816340). Consistency — whether that retrieval is stable across models rather than idiosyncratic to any one — is a candidate second component. Its standing as a distinct component, rather than a re-description of Presence, is the open question, and settling it requires dissociation evidence: a variable that moves one component while leaving the other unmoved.
+The AIAS™ Measurement Program operationalizes AI availability as a multi-component brand-growth construct (Sharp 2010; Romaniuk & Sharp 2022) rather than a single quantity. Presence — whether and how strongly a brand is retrieved by a panel of large language models — is the program's anchored first component, validated across a multi-substrate base under Protocol v1.6 (SSRN 6816340). Consistency — whether that retrieval is stable across models rather than idiosyncratic to any one — is a candidate second component. Its standing as a distinct component, rather than a re-description of Presence, is the open question, and settling it requires dissociation evidence: a variable that moves one component while leaving the other unmoved.
 
 Identity Load supplies a sharp test of that distinctness. IL-Direct — the per-brand recall asymmetry δ = R_cult − R_cat between cultural and category-canonical retrieval channels — is a confirmed moderator on the Presence side. Under Protocol v1.6's H_IdentityLoad_Direct (SSRN 6816340), cultural-channel-led brands surfaced markedly more through identity-laden frames: the hypothesis returned CONFIRMED on cosmetics (v0.21 Cell B δ = +7.12, 95% CI excluding 0; Cell A δ = −3.13 in the predicted negative direction) and automotive (v0.22), and PARTIAL on skincare (v0.20) — across the same trio later analyzed here. If Consistency were merely Presence under another name, IL-Direct should carry to it: a brand surfacing idiosyncratically by channel might plausibly surface idiosyncratically across model corpora — predicting a positive IL-Direct → φ association.
 
@@ -206,50 +206,56 @@ All pre-registration artifacts, input-reconciliation logs, the analysis-set CSV,
 
 # References {-}
 
-*Citation titles are sourced from each cited paper's own submission draft; live SSRN verification was unavailable (the abstract pages returned HTTP 403). SSRN abstract IDs are given where recorded in the paper's OSF deposit record, and otherwise marked [SSRN ID pending] for verification at submission. Entries marked [pending] could not be sourced from an in-repository primary artifact and must be completed before submission.*
+*Titles and SSRN abstract IDs are verified against each paper's primary record (submission-draft front matter, OSF deposit record, or direct confirmation); abstract IDs and URLs are canonical. The v0.31 precursor's SSRN working paper has been withdrawn — its frozen per-model inputs are archived at OSF, osf.io/ec6wh/v33.*
 
 ## Methodology {-}
 
-González Castro, P. U. (2026). *[A methodology-chain paper (labeled v1.2 per the program registry, version-attribution unverified) — title and SSRN ID pending verification; no draft in repository].*
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN Working Paper 6761698. https://ssrn.com/abstract=6761698
 
-González Castro, P. U. (2026). *[A methodology-chain paper (labeled v1.3 per the program registry, version-attribution unverified) — title and SSRN ID pending verification; draft lacks a title field].*
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification* (v1.3). SSRN Working Paper 6797679. https://ssrn.com/abstract=6797679
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability.* AIAS™ Protocol v1.4. SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Recognition × Recall Decomposition and Multi-Component AI Availability* (v1.4). SSRN Working Paper 6799479. https://ssrn.com/abstract=6799479
 
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition.* AIAS™ Protocol v1.5. SSRN Working Paper [SSRN ID pending]. (Title from a build-intermediate, not the submission draft; confirm against the source draft at submission.)
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Multi-Statistic C2 and Two-Channel Recall Decomposition* (v1.5). SSRN Working Paper 6810758. https://ssrn.com/abstract=6810758
 
-González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension.* AIAS™ Protocol v1.6. SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (v1.6). SSRN Working Paper 6816340. https://ssrn.com/abstract=6816340
 
-González Castro, P. U. (2026). *Consistency without Independence.* AIAS™ Protocol v1.7. SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Consistency — A Pre-Registered Negative Result* (v1.7). SSRN Working Paper 6878818. https://ssrn.com/abstract=6878818
 
 González Castro, P. U. (in preparation). *The mean-independent consistency instrument (φ).* AIAS™ Protocol v1.8.
 
-González Castro, P. U. *[Foundational AIAS™ paper (AI Availability) — title and SSRN ID pending verification; no draft in repository].*
+González Castro, P. U. (2026). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval.* SSRN Working Paper 6659000. https://ssrn.com/abstract=6659000
 
 ## Phase papers {-}
 
 González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate* (AIAS™ v0.19). SSRN Working Paper 6809182. https://ssrn.com/abstract=6809182
 
-González Castro, P. U. (2026). *Type 2 Emergence and First Prospective v1.5 C2 Calibration on a Skincare IL-Gradient Substrate* (AIAS™ v0.20). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Type 2 Emergence and First Prospective v1.5 C2 Calibration on a Skincare IL-Gradient Substrate* (AIAS™ v0.20). SSRN Working Paper 6811441. https://ssrn.com/abstract=6811441
 
-González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate* (AIAS™ v0.21). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate* (AIAS™ v0.21). SSRN Working Paper 6815378. https://ssrn.com/abstract=6815378
 
-González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate — Cell D_Defunct as Pure-Phantom Upper-Bound Test* (AIAS™ v0.22). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate — Cell D_Defunct as Pure-Phantom Upper-Bound Test* (AIAS™ v0.22). SSRN Working Paper 6829118. https://ssrn.com/abstract=6829118
 
-González Castro, P. U. (2026). *[AIAS™ v0.23 premium spirits — title and SSRN ID pending verification; draft title field stale (carries the v0.22 title)].*
+González Castro, P. U. (2026). *Recognition Ceiling, Recall-Driven Regime Classification, and the Conglomerate Ownership Hypothesis Across 24 Brands and Six Large Language Models* (AIAS™ v0.23, Premium Spirits). SSRN Working Paper 6834298. https://ssrn.com/abstract=6834298
 
 González Castro, P. U. (2026). *Recognition Saturates, Consistency Doesn't* (AIAS™ v0.30). SSRN Working Paper 6875319. https://ssrn.com/abstract=6875319
 
-González Castro, P. U. (2026). *Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC)* (AIAS™ v0.31). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Consistency Across Categories: A Cross-Category Baseline for the AIAS™ Consistency Component (CPC).* AIAS v0.31 — SSRN working paper withdrawn; frozen per-model inputs archived at OSF, osf.io/ec6wh/v33.
 
-González Castro, P. U. (2026). *Version-Snapshot Stability of an AI-Presence Consistency Score* (AIAS™ v0.32). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Version-Snapshot Stability of an AI-Presence Consistency Score* (AIAS™ v0.32). SSRN Working Paper 6898581. https://ssrn.com/abstract=6898581
 
 González Castro, P. U. (2026). *Provider-Asymmetric Consistency in AI Brand Availability* (AIAS™ v0.33). SSRN Working Paper 6909019. https://ssrn.com/abstract=6909019
 
-González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity* (AIAS™ v0.34). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity* (AIAS™ v0.34). SSRN Working Paper 6915458. https://ssrn.com/abstract=6915458
 
 González Castro, P. U. (2026). *Control-Dependent Verdicts in a Phantom-Brand Consistency Contrast* (AIAS™ v0.35). SSRN Working Paper 6921758. https://ssrn.com/abstract=6921758
 
 ## Synthesis {-}
 
-González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability* (AIAS™ 1.0). SSRN Working Paper [SSRN ID pending].
+González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability* (AIAS™ 1.0). SSRN Working Paper 6817841. https://ssrn.com/abstract=6817841
+
+## Foundational {-}
+
+Romaniuk, J., & Sharp, B. (2022). *How Brands Grow: Part 2* (Revised ed.). Oxford University Press.
+
+Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know.* Oxford University Press.
