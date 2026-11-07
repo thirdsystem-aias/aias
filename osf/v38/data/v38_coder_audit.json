@@ -100,7 +100,7 @@
     "ambiguous_items": [
       "P3|M3 'electric roaster with infrared technology' (the Bullet has an IR bean probe)"
     ],
-    "automated_candidates_rejected": "B5? no; P3|M1, P3|M5, P4|M5, P5|M2: heating terms in the window belonged to other roasters or to generic advice"
+    "automated_candidates_rejected": "P3|M1, P3|M5, P4|M5, P5|M2: the heating terms in the window belonged to other roasters or to generic advice, not to the Bullet"
   },
   "D4_batch": {
     "correct": 36,
@@ -109,7 +109,7 @@
       "B2|M2 '1/2 lb batches' (understates; max 1 kg)",
       "P1|M2 'roasts 1-1.5 kg batches (2-3 lbs)' (overstates; max 1 kg)"
     ],
-    "note": "Automated candidates flagged 18 'incorrect'; 14 of these were quantities belonging to adjacent roasters or to the user's weekly volume, 2 were typical-batch statements (E1|M6 'typically 1 lb') rather than capacity claims"
+    "note": "Automated extraction flagged 18 'incorrect' candidates: 2 confirmed incorrect; 8 were correct 1 kg claims sitting next to larger quantities for other roasters or for the user's weekly volume; 8 carried no capacity claim for the Bullet. Of 30 automated 'correct', 2 carried no Bullet capacity claim (E1|M1; E1|M6 'typically 1 lb')."
   },
   "other_observations_not_preregistered": [
     "Price anchors are R1-era: answers that price the Bullet cluster around $3,000-3,500; Sweet Maria's lists the R2 at $4,099 and the R2 Pro at $5,299 (accessed 2026-11-07).",
