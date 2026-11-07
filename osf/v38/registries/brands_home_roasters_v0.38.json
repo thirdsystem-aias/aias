@@ -1,0 +1,535 @@
+{
+  "phase": "v0.38",
+  "substrate": "Home coffee roasters (residential and prosumer; batch <= ~1.2 kg)",
+  "focal_brand": "R01",
+  "flags_legend": {
+    "i": "case-insensitive",
+    "": "case-sensitive"
+  },
+  "exclusion_semantics": "a match is discarded if an exclusion pattern (case-insensitive) occurs within `window` characters before or after it",
+  "brands": [
+    {
+      "id": "R01",
+      "brand": "Aillio",
+      "segment": "prosumer",
+      "status": "active (focal)",
+      "aliases": [
+        {
+          "pattern": "\\bA(?:illio|ilio|illo|llio)\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bBullet\\s+(?:R1|R2|V2)\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bBullet\\s+roaster\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R02",
+      "brand": "Hottop",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bHot\\s?Top\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R03",
+      "brand": "Kaffelogic",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bKaffe\\s?logic\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bNano\\s?7e?\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R04",
+      "brand": "Behmor",
+      "segment": "home-entry",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bBehmor\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R05",
+      "brand": "Fresh Roast",
+      "segment": "home-entry",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bFreshRoast\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bFresh Roast\\b",
+          "flags": ""
+        },
+        {
+          "pattern": "\\bSR[- ]?(?:500|540|700|800)\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R06",
+      "brand": "Gene Cafe",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bGene\\s?Caf[eé]\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bCBR[- ]?(?:101|1200)\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R07",
+      "brand": "Ikawa",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bIkawa\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R08",
+      "brand": "Roest",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bRoest\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R09",
+      "brand": "Stronghold",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bStronghold\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R10",
+      "brand": "Nucleus",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bNucleus\\s+(?:Link|Coffee)\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R11",
+      "brand": "Kaleido",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bKaleido\\b",
+          "flags": ""
+        },
+        {
+          "pattern": "\\bSniper\\s+M\\d+\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R12",
+      "brand": "Huky",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bHuky\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R13",
+      "brand": "Quest",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bQuest\\s+M3s?\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R14",
+      "brand": "Sandbox Smart",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bSandbox\\s+Smart\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bSandbox\\s+R[12]\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R15",
+      "brand": "Kaldi",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bKaldi\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": [
+        {
+          "pattern": "goat|legend|herd",
+          "window": 40
+        }
+      ]
+    },
+    {
+      "id": "R16",
+      "brand": "Nuvo Eco",
+      "segment": "home-entry",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bNuvo\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R17",
+      "brand": "Santoker",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bSantoker\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R18",
+      "brand": "Skywalker",
+      "segment": "enthusiast",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bSkywalker\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R19",
+      "brand": "Coffee-Tech Engineering",
+      "segment": "prosumer",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bCoffee-Tech\\b",
+          "flags": ""
+        },
+        {
+          "pattern": "\\bCoffee Tech Engineering\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bGhibli\\s+R\\d+\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R20",
+      "brand": "Sweet Maria's Popper",
+      "segment": "home-entry",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bPopper\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": [
+        {
+          "pattern": "popcorn",
+          "window": 30
+        }
+      ]
+    },
+    {
+      "id": "R21",
+      "brand": "Diedrich",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bDiedrich\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R22",
+      "brand": "Mill City Roasters",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bMill\\s+City\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R23",
+      "brand": "San Franciscan",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bSan Franciscan\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R24",
+      "brand": "Probat",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bProbat\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R25",
+      "brand": "Giesen",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bGiesen\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R26",
+      "brand": "Loring",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bLoring\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R27",
+      "brand": "Bellwether",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bBellwether\\b",
+          "flags": ""
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R28",
+      "brand": "US Roaster Corp",
+      "segment": "commercial-spillover",
+      "status": "active",
+      "aliases": [
+        {
+          "pattern": "\\bUS\\s+Roaster\\s+Corp",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bUSRC\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R29",
+      "brand": "Hearthware (i-Roast)",
+      "segment": "discontinued",
+      "status": "discontinued (Sweet Maria's: i-Roast 2 'long gone')",
+      "aliases": [
+        {
+          "pattern": "\\bHearthware\\b",
+          "flags": "i"
+        },
+        {
+          "pattern": "\\bi-?Roast\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R30",
+      "brand": "Nesco",
+      "segment": "discontinued",
+      "status": "discontinued (CR-1010 2014; CR-04-13 recalled 2021)",
+      "aliases": [
+        {
+          "pattern": "\\bNesco\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R31",
+      "brand": "Jiawanshun",
+      "segment": "home-entry",
+      "status": "active (Amazon-native)",
+      "aliases": [
+        {
+          "pattern": "\\bJiawanshun\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    },
+    {
+      "id": "R32",
+      "brand": "DYVEE",
+      "segment": "home-entry",
+      "status": "active (Amazon-native)",
+      "aliases": [
+        {
+          "pattern": "\\bDYVEE\\b",
+          "flags": "i"
+        }
+      ],
+      "exclusions": []
+    }
+  ],
+  "aillio_generation_coding": {
+    "anchors": [
+      {
+        "pattern": "\\bA(?:illio|ilio|illo|llio)\\b",
+        "flags": "i"
+      },
+      {
+        "pattern": "\\bBullet\\b",
+        "flags": ""
+      }
+    ],
+    "r1_family_tokens": [
+      {
+        "pattern": "\\bR1\\b",
+        "flags": ""
+      },
+      {
+        "pattern": "\\bV1\\b",
+        "flags": ""
+      },
+      {
+        "pattern": "\\bV2\\b",
+        "flags": ""
+      },
+      {
+        "pattern": "\\bClassic\\b",
+        "flags": ""
+      }
+    ],
+    "r2_family_tokens": [
+      {
+        "pattern": "\\bR2(?:\\s?Pro)?\\b",
+        "flags": ""
+      }
+    ],
+    "attribution_window_chars": 60,
+    "attribution_rule": "token attributed to Aillio iff an anchor ends within the 60 characters preceding the token and no other registry brand alias match lies between that anchor and the token"
+  },
+  "grounding_fact_sheet": {
+    "heating": "induction (all Bullet generations)",
+    "max_batch": {
+      "R1/R1 V2/R2": "1 kg (2.2 lb)",
+      "R2 Pro": "1.2 kg (2.65 lb)"
+    },
+    "sources": [
+      "Daily Coffee News, 2024-07-03 (R2/R2 Pro introduction)",
+      "Sweet Maria's Aillio Bullet product page and Coffee Library (accessed 2026-11-07)"
+    ]
+  }
+}

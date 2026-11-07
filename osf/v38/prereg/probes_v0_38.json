@@ -1,0 +1,171 @@
+{
+  "phase": "v0.38",
+  "decoding": {
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "system_prompt": null,
+    "calls_per_cell": 1
+  },
+  "tier_labels": {
+    "B": "Beginner / general",
+    "E": "Enthusiast",
+    "P": "Prosumer / micro-roastery",
+    "K": "Aillio probe"
+  },
+  "probes": [
+    {
+      "probe_id": "B1",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "What's the best home coffee roaster?",
+      "sha256": "cce67789d8c70b6dcaa8fbb18663357e21dedf634aca06d329bf467a473ae7e0"
+    },
+    {
+      "probe_id": "B2",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "I want to start roasting my own coffee beans at home. Which roaster should I buy?",
+      "sha256": "a25fac71b1b0afba57c81ecb337eeb05f23d2761f97e1ccb6819a11415196c74"
+    },
+    {
+      "probe_id": "B3",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "Can you recommend a good coffee roaster for home use?",
+      "sha256": "9583c967a00dcedf7dbd099f15c3169ba6e08a5b2777437be56edffe26057263"
+    },
+    {
+      "probe_id": "B4",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "What are the best coffee roasters for beginners?",
+      "sha256": "fa012c5eb050469fe738079dd648daaf3f682baa3427e4d5b39bb2007b87af0a"
+    },
+    {
+      "probe_id": "B5",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "I'm new to home roasting. What roaster would you suggest I start with?",
+      "sha256": "53dd530ac88e2db7dcca1a167dc6b8b8f33faf8b98b1783e90cf1f109bdcc0fe"
+    },
+    {
+      "probe_id": "B6",
+      "tier": "B",
+      "kind": "recommendation",
+      "prompt": "I'm thinking about buying a coffee roaster for my kitchen. What are my best options?",
+      "sha256": "97880cebccfd63febe6c36f3aac1be9f5e105b09c688227c5c63295ff10edbb8"
+    },
+    {
+      "probe_id": "E1",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "I'm an experienced home roaster looking to upgrade. Which roaster should I get?",
+      "sha256": "79c0945fe0997889e95670840ad670dfaeb2da6f85a5cd42636661e66806fe77"
+    },
+    {
+      "probe_id": "E2",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "What's the best home coffee roaster for someone who wants full control over roast profiles?",
+      "sha256": "1b7b98d405ba09b9d8d208ecf26c40d64a55438ec80d01afe570cde665a49768"
+    },
+    {
+      "probe_id": "E3",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "Which home coffee roasters do serious hobbyists recommend?",
+      "sha256": "153ba35edf450105c2a2cbe0a7fb6db11a61da8c87889dd4f8e021ac0b88c3aa"
+    },
+    {
+      "probe_id": "E4",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "I'm an espresso enthusiast and want to roast my own beans. Which roaster is best?",
+      "sha256": "f35a6e806a511ac83d9fe4dfdf407da6fb8de7f414e00203ec5596af515ef6a4"
+    },
+    {
+      "probe_id": "E5",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "Money isn't the main concern. What's the best home coffee roaster I can buy?",
+      "sha256": "451eb3bc6b4ab604969540dd9cc10b08cff20da79fc6c4976cc5ef9a00280217"
+    },
+    {
+      "probe_id": "E6",
+      "tier": "E",
+      "kind": "recommendation",
+      "prompt": "What do advanced home roasters consider the best roaster on the market?",
+      "sha256": "14af136fde7106473ae26e444542b029e7f77c4383dceb48051d1281e33be35c"
+    },
+    {
+      "probe_id": "P1",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "What's the best roaster for starting a small coffee roasting business from home?",
+      "sha256": "1bfec57c54ed2000e6cb5653785f199f8545a48886cdb3c4a053c349e80b4e0b"
+    },
+    {
+      "probe_id": "P2",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "Can you recommend a small-batch roaster for a home-based micro-roastery?",
+      "sha256": "617e2420d2efe861716c5b22f1f52599f69289b1fb9a4353e9b0a23798444bd8"
+    },
+    {
+      "probe_id": "P3",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "Which compact roaster should I buy to start selling my coffee at farmers markets?",
+      "sha256": "5e72ade2384dd3af9fb8d76700fce88e9eb35d0354510a686c11e7416d083865"
+    },
+    {
+      "probe_id": "P4",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "What roaster would you recommend for sample roasting at a small café?",
+      "sha256": "a275bc087c25aa429da16eb88ed566abb29b220a6b6ff5898c25bf6a20664879"
+    },
+    {
+      "probe_id": "P5",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "I roast about 5 kg a week for friends and family and want something more professional. Which roaster should I buy?",
+      "sha256": "d0f80f69192ba464e294ea221ec73f66398de212a97957c9a9ed9738eecf78ae"
+    },
+    {
+      "probe_id": "P6",
+      "tier": "P",
+      "kind": "recommendation",
+      "prompt": "What roaster should I buy to scale up from home roasting to supplying a small café?",
+      "sha256": "ab15632e0596d1a8494feb708d2d3784e7c7d130c6b3287a117cba808a37718f"
+    },
+    {
+      "probe_id": "K1",
+      "tier": "K",
+      "kind": "aillio_probe",
+      "prompt": "What is the newest Aillio Bullet roaster model?",
+      "sha256": "072e130bdd1ac46d3e69dfb91064beb1e8638811fe362abe957588a314a8f4d7"
+    },
+    {
+      "probe_id": "K2",
+      "tier": "K",
+      "kind": "aillio_probe",
+      "prompt": "Which coffee roaster models does Aillio currently sell?",
+      "sha256": "1958497c7d0273a76619d011c436fd9a9359f1c7ebd5d399303b265ae73e2112"
+    },
+    {
+      "probe_id": "K3",
+      "tier": "K",
+      "kind": "aillio_probe",
+      "prompt": "I've decided to buy an Aillio Bullet. Which model should I get?",
+      "sha256": "62869fa79519475ed64a30c43eefe821371f5bbc3793022b3103fbe577305cd0"
+    },
+    {
+      "probe_id": "K4",
+      "tier": "K",
+      "kind": "aillio_probe",
+      "prompt": "Is the Aillio Bullet R1 still in production?",
+      "sha256": "591db1760c75573cc6153f45c3f7e3c1c5a5205bd147662fbc652505b116d054"
+    }
+  ]
+}
