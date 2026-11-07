@@ -18,3 +18,15 @@ Contemporaneous record of any departure from PRE_REGISTRATION_v0_38.md (tag `v0.
 - **Not a deviation.** Decoding is exactly as pre-registered (§4.4) and unchanged since v0.23; no configuration was changed mid-run.
 - **Programme-level scope.** The same pattern is visible in v0.23 raw data, which does not store finish reasons: only 1 of 6 Phase B and 3 of 24 Phase A M5 answers end cleanly, and M5 answers average 1,546 / 2,170 characters against 2,297–8,761 for the other five models. Earlier phases that used this configuration likely under-observe M5 mentions late in an answer.
 - **Handling in v0.38.** M5 Presence is a lower bound. Confirmatory statistics are computed as locked; the report flags M5 truncation and adds a descriptive five-model sensitivity check (excluding M5), labelled post hoc.
+
+## Correction to Note 1 — 2026-11-07 (after acquisition)
+- 19 of 22 Gemini 2.5 Flash calls ended at the cap (`MAX_TOKENS`), not every call: all 18 recommendation answers and K3. The three short answers (K1, K2, K4) ended normally. One Gemini 2.5 Flash-Lite answer (E1) also reached the cap.
+
+## Entry 2 — 2026-11-07 (after scoring): D2 reported from the audited reading
+- **What happened.** The coder audit (§5.6) agreed with the automated generation code on 86 of 86 responses, but the K4 regex mis-coded 2 of 6 answers (Sonnet 4.5: "Superseded" → audited "Current"; Gemini 2.5 Flash: "Unclear" → audited "Current"). Overall disagreement 2 of 92 audited codes (2.2%), under the 10% threshold.
+- **Handling.** D2 is descriptive; the report shows the audited reading (all six models say the R1 is still in production) and discloses the automated codes. No confirmatory verdict uses K4.
+- **Record.** `osf/v38/data/v38_coder_audit.json`.
+
+## Entry 3 — 2026-11-07 (after scoring): post hoc five-model sensitivity (excluding Gemini 2.5 Flash)
+- **Why.** Note 1: Gemini 2.5 Flash recommendation answers are truncated (1.5 registry brands per answer vs 3.9–6.2 for the other models).
+- **Result (descriptive, not a verdict).** Aillio Presence: beginner 43.3%, enthusiast/prosumer 71.7% (Δ = 0.283). Behmor enthusiast/prosumer 66.7%, so Aillio's margin narrows from 0.111 (locked, six models) to 0.050 (five models). The locked verdicts stand; the report states the five-model margin.

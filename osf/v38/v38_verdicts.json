@@ -1,0 +1,123 @@
+{
+  "phase": "v0.38",
+  "prereg_tag": "v0.38-prereg-r1",
+  "H_Tier": {
+    "verdict": "CONFIRMED",
+    "delta": 0.3194,
+    "p_one_sided": 0.0001,
+    "presence_B": 0.3611,
+    "presence_E": 0.6667,
+    "presence_P": 0.6944,
+    "presence_EP": 0.6806,
+    "n_B": 36,
+    "n_EP": 72,
+    "per_model_delta": {
+      "M1": 0.3333,
+      "M2": 0.5,
+      "M3": 0.5,
+      "M4": 0.0,
+      "M5": 0.5,
+      "M6": 0.0833
+    },
+    "models_positive": 5,
+    "rule": "CONFIRMED d>=0.20 & p<.05; PARTIAL 0<d<0.20 & p<.05; UNDETERMINED d>0 & p>=.05; FALSIFIED d<=0"
+  },
+  "H_Default": {
+    "verdict": "CONFIRMED",
+    "aillio_presence_EP": 0.6806,
+    "margin_over_next": 0.1112,
+    "leaders": [
+      "R01"
+    ],
+    "top5": [
+      [
+        "Aillio",
+        0.6806
+      ],
+      [
+        "Behmor",
+        0.5694
+      ],
+      [
+        "Hottop",
+        0.5139
+      ],
+      [
+        "Gene Cafe",
+        0.4861
+      ],
+      [
+        "Mill City Roasters",
+        0.375
+      ]
+    ],
+    "aillio_first_mention_share_EP": 0.4167,
+    "aillio_mean_first_pos_EP": 2.102,
+    "rule": "CONFIRMED rank 1 & margin>=0.10; PARTIAL rank 1 (incl. tie) & margin<0.10; FALSIFIED not rank 1"
+  },
+  "H_LegacySlot": {
+    "verdict": "UNDETERMINED",
+    "legacy_share": null,
+    "k": 0,
+    "n": 0,
+    "wilson95": [
+      null,
+      null
+    ],
+    "r2_aware_models": [],
+    "per_model": {
+      "M1": {
+        "k_r1_only": 16,
+        "n_specified": 16,
+        "n_both": 0,
+        "n_r2_only": 0
+      },
+      "M2": {
+        "k_r1_only": 15,
+        "n_specified": 15,
+        "n_both": 0,
+        "n_r2_only": 0
+      },
+      "M3": {
+        "k_r1_only": 9,
+        "n_specified": 9,
+        "n_both": 0,
+        "n_r2_only": 0
+      },
+      "M4": {
+        "k_r1_only": 0,
+        "n_specified": 0,
+        "n_both": 0,
+        "n_r2_only": 0
+      },
+      "M5": {
+        "k_r1_only": 6,
+        "n_specified": 6,
+        "n_both": 0,
+        "n_r2_only": 0
+      },
+      "M6": {
+        "k_r1_only": 16,
+        "n_specified": 16,
+        "n_both": 0,
+        "n_r2_only": 0
+      }
+    },
+    "control_pre_boundary": {
+      "k": 9,
+      "n": 9
+    },
+    "rule": "R2-aware models only; CONFIRMED >=0.50; PARTIAL 0.20-0.50; FALSIFIED <0.20; UNDETERMINED n<10 or no aware model"
+  },
+  "MC_Boundary": {
+    "pass": true,
+    "r2_share": 0.0,
+    "k_r2": 0,
+    "n_specified": 17,
+    "pre_boundary_r2_aware": {
+      "M3": false,
+      "M4": false
+    },
+    "rule": "pass if R2-family share <= 0.10 (or zero R2 tokens) among pre-boundary generation-specified responses"
+  }
+}

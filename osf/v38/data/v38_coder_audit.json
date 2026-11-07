@@ -1,0 +1,119 @@
+{
+  "phase": "v0.38",
+  "procedure": "Pre-registration section 5.6. Analyst read all 24 Aillio-probe responses and all 62 recommendation responses that mention Aillio (Aillio windows, +/-160..220 chars), and recorded agreement with the locked automated codes. Confirmatory verdicts use the automated coding.",
+  "analyst": "Claude (Anthropic), working under the pre-registrant's direction",
+  "date": "2026-11-07",
+  "generation_code_agreement": {
+    "aillio_probes": "24/24",
+    "recommendations_mentioning_aillio": "62/62"
+  },
+  "k4_code_agreement": "4/6",
+  "k4_corrections": [
+    {
+      "model": "M2 Claude Sonnet 4.5",
+      "automated": "Superseded",
+      "audited": "Current",
+      "reason": "regex matched 'discontinuation' inside a conditional ('unless there's been a recent announcement about discontinuation...'); the answer states the R1 was still produced and is likely still available"
+    },
+    {
+      "model": "M5 Gemini 2.5 Flash",
+      "automated": "Unclear",
+      "audited": "Current",
+      "reason": "'still very much in production' not matched by the 'still in production' pattern"
+    }
+  ],
+  "overall_disagreement": "2 of 92 audited codes (2.2%), below the 10% threshold in section 5.6; no sensitivity re-computation required",
+  "probe_labels": {
+    "K1_newest_model": {
+      "M1": "Bullet R1 V2",
+      "M2": "Bullet R1 V2",
+      "M3": "Bullet R1 V2",
+      "M4": "Bullet R1 V2",
+      "M5": "Bullet R1 V2 (says revisions 'don't warrant ... an \"R2\"')",
+      "M6": "Bullet R1 V2"
+    },
+    "K2_current_lineup": {
+      "M1": "Bullet R1",
+      "M2": "R1 V2 and 'R1 V2.5'",
+      "M3": "Bullet R1",
+      "M4": "R1 V2 and 'R1 V2+'",
+      "M5": "Bullet R1 only",
+      "M6": "Bullet R1 V2"
+    },
+    "K3_which_to_buy": {
+      "M1": "R1 V2",
+      "M2": "R1 V2 / 'V2.5'",
+      "M3": "R1 V2",
+      "M4": "R1 V2 or 'V2.5'",
+      "M5": "R1 V2, or an 'upcoming R1 V3'",
+      "M6": "R1 V2"
+    },
+    "K4_R1_still_made": {
+      "M1": "Yes",
+      "M2": "Yes (as of April 2024)",
+      "M3": "Yes (as of October 2023)",
+      "M4": "Yes (as of October 2023)",
+      "M5": "Yes",
+      "M6": "Yes"
+    }
+  },
+  "D1_K3_recommended_generation": {
+    "M1": "R1",
+    "M2": "R1",
+    "M3": "R1",
+    "M4": "R1",
+    "M5": "R1",
+    "M6": "R1"
+  },
+  "D2_K4_audited": {
+    "M1": "Current",
+    "M2": "Current",
+    "M3": "Current",
+    "M4": "Current",
+    "M5": "Current",
+    "M6": "Current"
+  },
+  "self_reported_cutoffs": {
+    "M1": "early 2025",
+    "M2": "April 2024",
+    "M3": "not stated / October 2023",
+    "M4": "October 2023",
+    "M5": "not stated",
+    "M6": "not stated"
+  },
+  "D4_heating": {
+    "correct": 6,
+    "incorrect": 2,
+    "ambiguous": 1,
+    "correct_items": [
+      "B3|M6 induction",
+      "E2|M3 induction",
+      "E2|M5 induction-heated drum",
+      "E4|M6 induction (+ 'hot air')",
+      "E5|M5 induction-heated drum",
+      "P2|M3 induction"
+    ],
+    "incorrect_items": [
+      "B5|M6 listed among hot-air fluid-bed roasters",
+      "P6|M6 'a 1kg fluid-bed roaster'"
+    ],
+    "ambiguous_items": [
+      "P3|M3 'electric roaster with infrared technology' (the Bullet has an IR bean probe)"
+    ],
+    "automated_candidates_rejected": "B5? no; P3|M1, P3|M5, P4|M5, P5|M2: heating terms in the window belonged to other roasters or to generic advice"
+  },
+  "D4_batch": {
+    "correct": 36,
+    "incorrect": 2,
+    "incorrect_items": [
+      "B2|M2 '1/2 lb batches' (understates; max 1 kg)",
+      "P1|M2 'roasts 1-1.5 kg batches (2-3 lbs)' (overstates; max 1 kg)"
+    ],
+    "note": "Automated candidates flagged 18 'incorrect'; 14 of these were quantities belonging to adjacent roasters or to the user's weekly volume, 2 were typical-batch statements (E1|M6 'typically 1 lb') rather than capacity claims"
+  },
+  "other_observations_not_preregistered": [
+    "Price anchors are R1-era: answers that price the Bullet cluster around $3,000-3,500; Sweet Maria's lists the R2 at $4,099 and the R2 Pro at $5,299 (accessed 2026-11-07).",
+    "Gemini 2.5 Flash-Lite files the Bullet under beginner/affordable options in two beginner answers (B1, B5).",
+    "Unregistered roaster brand noticed in audited windows: BC Roasters (P3|M1)."
+  ]
+}

@@ -1,0 +1,497 @@
+probe_id,tier,model_slot,brand_id,brand,segment,position
+B1,B,M1,R05,Fresh Roast,home-entry,1
+B1,B,M1,R16,Nuvo Eco,home-entry,2
+B1,B,M1,R04,Behmor,home-entry,3
+B1,B,M1,R15,Kaldi,enthusiast,4
+B1,B,M1,R01,Aillio,prosumer,5
+B1,B,M1,R12,Huky,enthusiast,6
+B1,B,M2,R05,Fresh Roast,home-entry,1
+B1,B,M2,R04,Behmor,home-entry,2
+B1,B,M2,R01,Aillio,prosumer,3
+B1,B,M3,R04,Behmor,home-entry,1
+B1,B,M3,R05,Fresh Roast,home-entry,2
+B1,B,M3,R06,Gene Cafe,enthusiast,3
+B1,B,M3,R02,Hottop,enthusiast,4
+B1,B,M3,R30,Nesco,discontinued,5
+B1,B,M4,R04,Behmor,home-entry,1
+B1,B,M4,R02,Hottop,enthusiast,2
+B1,B,M4,R05,Fresh Roast,home-entry,3
+B1,B,M4,R06,Gene Cafe,enthusiast,4
+B1,B,M4,R30,Nesco,discontinued,5
+B1,B,M5,R05,Fresh Roast,home-entry,1
+B1,B,M5,R06,Gene Cafe,enthusiast,2
+B1,B,M5,R02,Hottop,enthusiast,3
+B1,B,M6,R01,Aillio,prosumer,1
+B1,B,M6,R06,Gene Cafe,enthusiast,2
+B1,B,M6,R04,Behmor,home-entry,3
+B1,B,M6,R02,Hottop,enthusiast,4
+B1,B,M6,R13,Quest,enthusiast,5
+B1,B,M6,R05,Fresh Roast,home-entry,6
+B2,B,M1,R05,Fresh Roast,home-entry,1
+B2,B,M1,R16,Nuvo Eco,home-entry,2
+B2,B,M1,R04,Behmor,home-entry,3
+B2,B,M1,R15,Kaldi,enthusiast,4
+B2,B,M1,R01,Aillio,prosumer,5
+B2,B,M1,R22,Mill City Roasters,commercial-spillover,6
+B2,B,M2,R05,Fresh Roast,home-entry,1
+B2,B,M2,R04,Behmor,home-entry,2
+B2,B,M2,R01,Aillio,prosumer,3
+B2,B,M2,R15,Kaldi,enthusiast,4
+B2,B,M3,R30,Nesco,discontinued,1
+B2,B,M3,R05,Fresh Roast,home-entry,2
+B2,B,M3,R04,Behmor,home-entry,3
+B2,B,M3,R06,Gene Cafe,enthusiast,4
+B2,B,M4,R05,Fresh Roast,home-entry,1
+B2,B,M4,R04,Behmor,home-entry,2
+B2,B,M4,R02,Hottop,enthusiast,3
+B2,B,M4,R30,Nesco,discontinued,4
+B2,B,M5,R05,Fresh Roast,home-entry,1
+B2,B,M6,R06,Gene Cafe,enthusiast,1
+B2,B,M6,R05,Fresh Roast,home-entry,2
+B2,B,M6,R04,Behmor,home-entry,3
+B2,B,M6,R01,Aillio,prosumer,4
+B2,B,M6,R02,Hottop,enthusiast,5
+B2,B,M6,R23,San Franciscan,commercial-spillover,6
+B2,B,M6,R13,Quest,enthusiast,7
+B2,B,M6,R22,Mill City Roasters,commercial-spillover,8
+B3,B,M1,R05,Fresh Roast,home-entry,1
+B3,B,M1,R16,Nuvo Eco,home-entry,2
+B3,B,M1,R04,Behmor,home-entry,3
+B3,B,M1,R01,Aillio,prosumer,4
+B3,B,M1,R15,Kaldi,enthusiast,5
+B3,B,M2,R05,Fresh Roast,home-entry,1
+B3,B,M2,R04,Behmor,home-entry,2
+B3,B,M3,R05,Fresh Roast,home-entry,1
+B3,B,M3,R04,Behmor,home-entry,2
+B3,B,M3,R06,Gene Cafe,enthusiast,3
+B3,B,M3,R02,Hottop,enthusiast,4
+B3,B,M4,R04,Behmor,home-entry,1
+B3,B,M4,R02,Hottop,enthusiast,2
+B3,B,M4,R06,Gene Cafe,enthusiast,3
+B3,B,M4,R05,Fresh Roast,home-entry,4
+B3,B,M4,R30,Nesco,discontinued,5
+B3,B,M5,R05,Fresh Roast,home-entry,1
+B3,B,M5,R04,Behmor,home-entry,2
+B3,B,M6,R04,Behmor,home-entry,1
+B3,B,M6,R06,Gene Cafe,enthusiast,2
+B3,B,M6,R01,Aillio,prosumer,3
+B3,B,M6,R23,San Franciscan,commercial-spillover,4
+B3,B,M6,R02,Hottop,enthusiast,5
+B4,B,M2,R05,Fresh Roast,home-entry,1
+B4,B,M2,R04,Behmor,home-entry,2
+B4,B,M3,R05,Fresh Roast,home-entry,1
+B4,B,M3,R30,Nesco,discontinued,2
+B4,B,M3,R04,Behmor,home-entry,3
+B4,B,M3,R06,Gene Cafe,enthusiast,4
+B4,B,M3,R16,Nuvo Eco,home-entry,5
+B5,B,M1,R05,Fresh Roast,home-entry,1
+B5,B,M1,R16,Nuvo Eco,home-entry,2
+B5,B,M1,R04,Behmor,home-entry,3
+B5,B,M2,R05,Fresh Roast,home-entry,1
+B5,B,M2,R04,Behmor,home-entry,2
+B5,B,M3,R30,Nesco,discontinued,1
+B5,B,M3,R05,Fresh Roast,home-entry,2
+B5,B,M3,R04,Behmor,home-entry,3
+B5,B,M3,R06,Gene Cafe,enthusiast,4
+B5,B,M4,R05,Fresh Roast,home-entry,1
+B5,B,M4,R04,Behmor,home-entry,2
+B5,B,M4,R06,Gene Cafe,enthusiast,3
+B5,B,M4,R02,Hottop,enthusiast,4
+B5,B,M5,R05,Fresh Roast,home-entry,1
+B5,B,M6,R01,Aillio,prosumer,1
+B5,B,M6,R06,Gene Cafe,enthusiast,2
+B5,B,M6,R05,Fresh Roast,home-entry,3
+B5,B,M6,R04,Behmor,home-entry,4
+B5,B,M6,R02,Hottop,enthusiast,5
+B6,B,M1,R05,Fresh Roast,home-entry,1
+B6,B,M1,R16,Nuvo Eco,home-entry,2
+B6,B,M1,R06,Gene Cafe,enthusiast,3
+B6,B,M1,R04,Behmor,home-entry,4
+B6,B,M1,R15,Kaldi,enthusiast,5
+B6,B,M1,R01,Aillio,prosumer,6
+B6,B,M2,R05,Fresh Roast,home-entry,1
+B6,B,M2,R16,Nuvo Eco,home-entry,2
+B6,B,M2,R04,Behmor,home-entry,3
+B6,B,M2,R15,Kaldi,enthusiast,4
+B6,B,M2,R01,Aillio,prosumer,5
+B6,B,M2,R03,Kaffelogic,enthusiast,6
+B6,B,M3,R30,Nesco,discontinued,1
+B6,B,M3,R05,Fresh Roast,home-entry,2
+B6,B,M3,R04,Behmor,home-entry,3
+B6,B,M3,R06,Gene Cafe,enthusiast,4
+B6,B,M3,R01,Aillio,prosumer,5
+B6,B,M4,R04,Behmor,home-entry,1
+B6,B,M4,R05,Fresh Roast,home-entry,2
+B6,B,M4,R02,Hottop,enthusiast,3
+B6,B,M4,R06,Gene Cafe,enthusiast,4
+B6,B,M4,R30,Nesco,discontinued,5
+B6,B,M5,R05,Fresh Roast,home-entry,1
+B6,B,M6,R05,Fresh Roast,home-entry,1
+B6,B,M6,R04,Behmor,home-entry,2
+B6,B,M6,R06,Gene Cafe,enthusiast,3
+B6,B,M6,R01,Aillio,prosumer,4
+B6,B,M6,R02,Hottop,enthusiast,5
+B6,B,M6,R13,Quest,enthusiast,6
+B6,B,M6,R15,Kaldi,enthusiast,7
+E1,E,M1,R04,Behmor,home-entry,1
+E1,E,M1,R05,Fresh Roast,home-entry,2
+E1,E,M1,R01,Aillio,prosumer,3
+E1,E,M1,R03,Kaffelogic,enthusiast,4
+E1,E,M1,R13,Quest,enthusiast,5
+E1,E,M1,R22,Mill City Roasters,commercial-spillover,6
+E1,E,M1,R15,Kaldi,enthusiast,7
+E1,E,M1,R07,Ikawa,prosumer,8
+E1,E,M2,R01,Aillio,prosumer,1
+E1,E,M2,R15,Kaldi,enthusiast,2
+E1,E,M2,R22,Mill City Roasters,commercial-spillover,3
+E1,E,M2,R12,Huky,enthusiast,4
+E1,E,M2,R21,Diedrich,commercial-spillover,5
+E1,E,M2,R24,Probat,commercial-spillover,6
+E1,E,M3,R04,Behmor,home-entry,1
+E1,E,M3,R06,Gene Cafe,enthusiast,2
+E1,E,M3,R30,Nesco,discontinued,3
+E1,E,M3,R05,Fresh Roast,home-entry,4
+E1,E,M3,R11,Kaleido,prosumer,5
+E1,E,M3,R01,Aillio,prosumer,6
+E1,E,M3,R07,Ikawa,prosumer,7
+E1,E,M4,R04,Behmor,home-entry,1
+E1,E,M4,R05,Fresh Roast,home-entry,2
+E1,E,M4,R02,Hottop,enthusiast,3
+E1,E,M4,R06,Gene Cafe,enthusiast,4
+E1,E,M4,R24,Probat,commercial-spillover,5
+E1,E,M4,R21,Diedrich,commercial-spillover,6
+E1,E,M6,R02,Hottop,enthusiast,1
+E1,E,M6,R06,Gene Cafe,enthusiast,2
+E1,E,M6,R04,Behmor,home-entry,3
+E1,E,M6,R01,Aillio,prosumer,4
+E1,E,M6,R22,Mill City Roasters,commercial-spillover,5
+E1,E,M6,R23,San Franciscan,commercial-spillover,6
+E1,E,M6,R13,Quest,enthusiast,7
+E1,E,M6,R07,Ikawa,prosumer,8
+E1,E,M6,R21,Diedrich,commercial-spillover,9
+E2,E,M1,R01,Aillio,prosumer,1
+E2,E,M1,R15,Kaldi,enthusiast,2
+E2,E,M1,R05,Fresh Roast,home-entry,3
+E2,E,M1,R12,Huky,enthusiast,4
+E2,E,M2,R01,Aillio,prosumer,1
+E2,E,M2,R15,Kaldi,enthusiast,2
+E2,E,M2,R05,Fresh Roast,home-entry,3
+E2,E,M2,R04,Behmor,home-entry,4
+E2,E,M2,R02,Hottop,enthusiast,5
+E2,E,M3,R06,Gene Cafe,enthusiast,1
+E2,E,M3,R04,Behmor,home-entry,2
+E2,E,M3,R02,Hottop,enthusiast,3
+E2,E,M3,R01,Aillio,prosumer,4
+E2,E,M3,R14,Sandbox Smart,enthusiast,5
+E2,E,M4,R04,Behmor,home-entry,1
+E2,E,M4,R02,Hottop,enthusiast,2
+E2,E,M4,R06,Gene Cafe,enthusiast,3
+E2,E,M4,R21,Diedrich,commercial-spillover,4
+E2,E,M5,R01,Aillio,prosumer,1
+E2,E,M5,R02,Hottop,enthusiast,2
+E2,E,M6,R07,Ikawa,prosumer,1
+E2,E,M6,R22,Mill City Roasters,commercial-spillover,2
+E2,E,M6,R06,Gene Cafe,enthusiast,3
+E2,E,M6,R01,Aillio,prosumer,4
+E2,E,M6,R02,Hottop,enthusiast,5
+E2,E,M6,R04,Behmor,home-entry,6
+E3,E,M1,R01,Aillio,prosumer,1
+E3,E,M1,R15,Kaldi,enthusiast,2
+E3,E,M1,R12,Huky,enthusiast,3
+E3,E,M1,R05,Fresh Roast,home-entry,4
+E3,E,M1,R03,Kaffelogic,enthusiast,5
+E3,E,M2,R01,Aillio,prosumer,1
+E3,E,M2,R15,Kaldi,enthusiast,2
+E3,E,M2,R04,Behmor,home-entry,3
+E3,E,M2,R05,Fresh Roast,home-entry,4
+E3,E,M3,R04,Behmor,home-entry,1
+E3,E,M3,R06,Gene Cafe,enthusiast,2
+E3,E,M3,R02,Hottop,enthusiast,3
+E3,E,M3,R05,Fresh Roast,home-entry,4
+E3,E,M3,R07,Ikawa,prosumer,5
+E3,E,M3,R11,Kaleido,prosumer,6
+E3,E,M4,R04,Behmor,home-entry,1
+E3,E,M4,R02,Hottop,enthusiast,2
+E3,E,M4,R06,Gene Cafe,enthusiast,3
+E3,E,M4,R05,Fresh Roast,home-entry,4
+E3,E,M4,R16,Nuvo Eco,home-entry,5
+E3,E,M5,R05,Fresh Roast,home-entry,1
+E3,E,M5,R06,Gene Cafe,enthusiast,2
+E3,E,M5,R04,Behmor,home-entry,3
+E3,E,M6,R01,Aillio,prosumer,1
+E3,E,M6,R06,Gene Cafe,enthusiast,2
+E3,E,M6,R02,Hottop,enthusiast,3
+E3,E,M6,R23,San Franciscan,commercial-spillover,4
+E3,E,M6,R22,Mill City Roasters,commercial-spillover,5
+E3,E,M6,R05,Fresh Roast,home-entry,6
+E3,E,M6,R04,Behmor,home-entry,7
+E4,E,M1,R05,Fresh Roast,home-entry,1
+E4,E,M1,R04,Behmor,home-entry,2
+E4,E,M1,R15,Kaldi,enthusiast,3
+E4,E,M1,R01,Aillio,prosumer,4
+E4,E,M1,R12,Huky,enthusiast,5
+E4,E,M1,R22,Mill City Roasters,commercial-spillover,6
+E4,E,M2,R05,Fresh Roast,home-entry,1
+E4,E,M2,R04,Behmor,home-entry,2
+E4,E,M2,R01,Aillio,prosumer,3
+E4,E,M2,R15,Kaldi,enthusiast,4
+E4,E,M3,R04,Behmor,home-entry,1
+E4,E,M3,R06,Gene Cafe,enthusiast,2
+E4,E,M3,R30,Nesco,discontinued,3
+E4,E,M3,R05,Fresh Roast,home-entry,4
+E4,E,M3,R16,Nuvo Eco,home-entry,5
+E4,E,M3,R02,Hottop,enthusiast,6
+E4,E,M4,R05,Fresh Roast,home-entry,1
+E4,E,M4,R04,Behmor,home-entry,2
+E4,E,M4,R02,Hottop,enthusiast,3
+E4,E,M4,R06,Gene Cafe,enthusiast,4
+E4,E,M4,R24,Probat,commercial-spillover,5
+E4,E,M4,R21,Diedrich,commercial-spillover,6
+E4,E,M5,R05,Fresh Roast,home-entry,1
+E4,E,M5,R06,Gene Cafe,enthusiast,2
+E4,E,M5,R02,Hottop,enthusiast,3
+E4,E,M6,R05,Fresh Roast,home-entry,1
+E4,E,M6,R04,Behmor,home-entry,2
+E4,E,M6,R06,Gene Cafe,enthusiast,3
+E4,E,M6,R02,Hottop,enthusiast,4
+E4,E,M6,R01,Aillio,prosumer,5
+E4,E,M6,R13,Quest,enthusiast,6
+E4,E,M6,R23,San Franciscan,commercial-spillover,7
+E5,E,M1,R01,Aillio,prosumer,1
+E5,E,M1,R03,Kaffelogic,enthusiast,2
+E5,E,M1,R22,Mill City Roasters,commercial-spillover,3
+E5,E,M1,R12,Huky,enthusiast,4
+E5,E,M2,R01,Aillio,prosumer,1
+E5,E,M2,R15,Kaldi,enthusiast,2
+E5,E,M2,R04,Behmor,home-entry,3
+E5,E,M3,R07,Ikawa,prosumer,1
+E5,E,M3,R01,Aillio,prosumer,2
+E5,E,M4,R04,Behmor,home-entry,1
+E5,E,M4,R02,Hottop,enthusiast,2
+E5,E,M4,R06,Gene Cafe,enthusiast,3
+E5,E,M4,R05,Fresh Roast,home-entry,4
+E5,E,M4,R30,Nesco,discontinued,5
+E5,E,M5,R01,Aillio,prosumer,1
+E5,E,M6,R06,Gene Cafe,enthusiast,1
+E5,E,M6,R02,Hottop,enthusiast,2
+E5,E,M6,R07,Ikawa,prosumer,3
+E5,E,M6,R23,San Franciscan,commercial-spillover,4
+E6,E,M1,R01,Aillio,prosumer,1
+E6,E,M1,R12,Huky,enthusiast,2
+E6,E,M1,R22,Mill City Roasters,commercial-spillover,3
+E6,E,M1,R03,Kaffelogic,enthusiast,4
+E6,E,M1,R13,Quest,enthusiast,5
+E6,E,M2,R01,Aillio,prosumer,1
+E6,E,M2,R15,Kaldi,enthusiast,2
+E6,E,M2,R04,Behmor,home-entry,3
+E6,E,M2,R02,Hottop,enthusiast,4
+E6,E,M3,R04,Behmor,home-entry,1
+E6,E,M3,R06,Gene Cafe,enthusiast,2
+E6,E,M3,R02,Hottop,enthusiast,3
+E6,E,M3,R01,Aillio,prosumer,4
+E6,E,M3,R07,Ikawa,prosumer,5
+E6,E,M4,R04,Behmor,home-entry,1
+E6,E,M4,R02,Hottop,enthusiast,2
+E6,E,M4,R06,Gene Cafe,enthusiast,3
+E6,E,M4,R05,Fresh Roast,home-entry,4
+E6,E,M5,R01,Aillio,prosumer,1
+E6,E,M5,R07,Ikawa,prosumer,2
+E6,E,M5,R02,Hottop,enthusiast,3
+E6,E,M6,R02,Hottop,enthusiast,1
+E6,E,M6,R06,Gene Cafe,enthusiast,2
+E6,E,M6,R23,San Franciscan,commercial-spillover,3
+E6,E,M6,R01,Aillio,prosumer,4
+E6,E,M6,R04,Behmor,home-entry,5
+P1,P,M1,R04,Behmor,home-entry,1
+P1,P,M1,R05,Fresh Roast,home-entry,2
+P1,P,M1,R01,Aillio,prosumer,3
+P1,P,M1,R12,Huky,enthusiast,4
+P1,P,M1,R22,Mill City Roasters,commercial-spillover,5
+P1,P,M2,R01,Aillio,prosumer,1
+P1,P,M2,R05,Fresh Roast,home-entry,2
+P1,P,M2,R04,Behmor,home-entry,3
+P1,P,M3,R04,Behmor,home-entry,1
+P1,P,M3,R06,Gene Cafe,enthusiast,2
+P1,P,M3,R02,Hottop,enthusiast,3
+P1,P,M3,R22,Mill City Roasters,commercial-spillover,4
+P1,P,M4,R04,Behmor,home-entry,1
+P1,P,M4,R02,Hottop,enthusiast,2
+P1,P,M4,R06,Gene Cafe,enthusiast,3
+P1,P,M4,R05,Fresh Roast,home-entry,4
+P1,P,M4,R21,Diedrich,commercial-spillover,5
+P1,P,M6,R02,Hottop,enthusiast,1
+P1,P,M6,R06,Gene Cafe,enthusiast,2
+P1,P,M6,R01,Aillio,prosumer,3
+P1,P,M6,R22,Mill City Roasters,commercial-spillover,4
+P1,P,M6,R23,San Franciscan,commercial-spillover,5
+P1,P,M6,R21,Diedrich,commercial-spillover,6
+P1,P,M6,R24,Probat,commercial-spillover,7
+P2,P,M1,R01,Aillio,prosumer,1
+P2,P,M1,R15,Kaldi,enthusiast,2
+P2,P,M1,R04,Behmor,home-entry,3
+P2,P,M1,R12,Huky,enthusiast,4
+P2,P,M1,R22,Mill City Roasters,commercial-spillover,5
+P2,P,M2,R01,Aillio,prosumer,1
+P2,P,M2,R15,Kaldi,enthusiast,2
+P2,P,M2,R22,Mill City Roasters,commercial-spillover,3
+P2,P,M2,R25,Giesen,commercial-spillover,4
+P2,P,M3,R01,Aillio,prosumer,1
+P2,P,M3,R12,Huky,enthusiast,2
+P2,P,M3,R22,Mill City Roasters,commercial-spillover,3
+P2,P,M3,R06,Gene Cafe,enthusiast,4
+P2,P,M3,R04,Behmor,home-entry,5
+P2,P,M4,R04,Behmor,home-entry,1
+P2,P,M4,R02,Hottop,enthusiast,2
+P2,P,M4,R06,Gene Cafe,enthusiast,3
+P2,P,M4,R05,Fresh Roast,home-entry,4
+P2,P,M4,R21,Diedrich,commercial-spillover,5
+P2,P,M5,R01,Aillio,prosumer,1
+P2,P,M5,R02,Hottop,enthusiast,2
+P2,P,M5,R06,Gene Cafe,enthusiast,3
+P2,P,M6,R01,Aillio,prosumer,1
+P2,P,M6,R04,Behmor,home-entry,2
+P2,P,M6,R02,Hottop,enthusiast,3
+P2,P,M6,R06,Gene Cafe,enthusiast,4
+P2,P,M6,R23,San Franciscan,commercial-spillover,5
+P2,P,M6,R22,Mill City Roasters,commercial-spillover,6
+P3,P,M1,R01,Aillio,prosumer,1
+P3,P,M1,R15,Kaldi,enthusiast,2
+P3,P,M1,R12,Huky,enthusiast,3
+P3,P,M1,R22,Mill City Roasters,commercial-spillover,4
+P3,P,M1,R09,Stronghold,prosumer,5
+P3,P,M1,R23,San Franciscan,commercial-spillover,6
+P3,P,M1,R21,Diedrich,commercial-spillover,7
+P3,P,M2,R01,Aillio,prosumer,1
+P3,P,M2,R12,Huky,enthusiast,2
+P3,P,M2,R04,Behmor,home-entry,3
+P3,P,M2,R22,Mill City Roasters,commercial-spillover,4
+P3,P,M2,R24,Probat,commercial-spillover,5
+P3,P,M2,R21,Diedrich,commercial-spillover,6
+P3,P,M3,R01,Aillio,prosumer,1
+P3,P,M3,R06,Gene Cafe,enthusiast,2
+P3,P,M3,R04,Behmor,home-entry,3
+P3,P,M3,R02,Hottop,enthusiast,4
+P3,P,M3,R14,Sandbox Smart,enthusiast,5
+P3,P,M4,R04,Behmor,home-entry,1
+P3,P,M4,R02,Hottop,enthusiast,2
+P3,P,M4,R05,Fresh Roast,home-entry,3
+P3,P,M4,R06,Gene Cafe,enthusiast,4
+P3,P,M4,R16,Nuvo Eco,home-entry,5
+P3,P,M5,R01,Aillio,prosumer,1
+P3,P,M5,R22,Mill City Roasters,commercial-spillover,2
+P3,P,M6,R04,Behmor,home-entry,1
+P3,P,M6,R06,Gene Cafe,enthusiast,2
+P3,P,M6,R02,Hottop,enthusiast,3
+P3,P,M6,R22,Mill City Roasters,commercial-spillover,4
+P3,P,M6,R01,Aillio,prosumer,5
+P3,P,M6,R23,San Franciscan,commercial-spillover,6
+P4,P,M1,R01,Aillio,prosumer,1
+P4,P,M1,R12,Huky,enthusiast,2
+P4,P,M1,R07,Ikawa,prosumer,3
+P4,P,M1,R13,Quest,enthusiast,4
+P4,P,M1,R24,Probat,commercial-spillover,5
+P4,P,M1,R23,San Franciscan,commercial-spillover,6
+P4,P,M2,R07,Ikawa,prosumer,1
+P4,P,M2,R06,Gene Cafe,enthusiast,2
+P4,P,M2,R01,Aillio,prosumer,3
+P4,P,M3,R07,Ikawa,prosumer,1
+P4,P,M3,R01,Aillio,prosumer,2
+P4,P,M3,R12,Huky,enthusiast,3
+P4,P,M3,R22,Mill City Roasters,commercial-spillover,4
+P4,P,M3,R13,Quest,enthusiast,5
+P4,P,M4,R04,Behmor,home-entry,1
+P4,P,M4,R02,Hottop,enthusiast,2
+P4,P,M4,R06,Gene Cafe,enthusiast,3
+P4,P,M4,R05,Fresh Roast,home-entry,4
+P4,P,M4,R21,Diedrich,commercial-spillover,5
+P4,P,M5,R01,Aillio,prosumer,1
+P4,P,M5,R07,Ikawa,prosumer,2
+P4,P,M6,R01,Aillio,prosumer,1
+P4,P,M6,R07,Ikawa,prosumer,2
+P4,P,M6,R02,Hottop,enthusiast,3
+P4,P,M6,R06,Gene Cafe,enthusiast,4
+P4,P,M6,R04,Behmor,home-entry,5
+P5,P,M1,R01,Aillio,prosumer,1
+P5,P,M1,R15,Kaldi,enthusiast,2
+P5,P,M1,R22,Mill City Roasters,commercial-spillover,3
+P5,P,M1,R24,Probat,commercial-spillover,4
+P5,P,M2,R01,Aillio,prosumer,1
+P5,P,M2,R15,Kaldi,enthusiast,2
+P5,P,M2,R12,Huky,enthusiast,3
+P5,P,M3,R06,Gene Cafe,enthusiast,1
+P5,P,M3,R04,Behmor,home-entry,2
+P5,P,M3,R02,Hottop,enthusiast,3
+P5,P,M3,R01,Aillio,prosumer,4
+P5,P,M3,R22,Mill City Roasters,commercial-spillover,5
+P5,P,M4,R04,Behmor,home-entry,1
+P5,P,M4,R02,Hottop,enthusiast,2
+P5,P,M4,R06,Gene Cafe,enthusiast,3
+P5,P,M4,R24,Probat,commercial-spillover,4
+P5,P,M4,R21,Diedrich,commercial-spillover,5
+P5,P,M4,R26,Loring,commercial-spillover,6
+P5,P,M6,R22,Mill City Roasters,commercial-spillover,1
+P5,P,M6,R02,Hottop,enthusiast,2
+P5,P,M6,R23,San Franciscan,commercial-spillover,3
+P5,P,M6,R21,Diedrich,commercial-spillover,4
+P5,P,M6,R25,Giesen,commercial-spillover,5
+P5,P,M6,R24,Probat,commercial-spillover,6
+P5,P,M6,R01,Aillio,prosumer,7
+P6,P,M1,R01,Aillio,prosumer,1
+P6,P,M1,R15,Kaldi,enthusiast,2
+P6,P,M1,R22,Mill City Roasters,commercial-spillover,3
+P6,P,M1,R12,Huky,enthusiast,4
+P6,P,M2,R01,Aillio,prosumer,1
+P6,P,M2,R12,Huky,enthusiast,2
+P6,P,M2,R22,Mill City Roasters,commercial-spillover,3
+P6,P,M2,R24,Probat,commercial-spillover,4
+P6,P,M2,R21,Diedrich,commercial-spillover,5
+P6,P,M2,R25,Giesen,commercial-spillover,6
+P6,P,M2,R26,Loring,commercial-spillover,7
+P6,P,M3,R22,Mill City Roasters,commercial-spillover,1
+P6,P,M3,R21,Diedrich,commercial-spillover,2
+P6,P,M3,R24,Probat,commercial-spillover,3
+P6,P,M3,R25,Giesen,commercial-spillover,4
+P6,P,M3,R26,Loring,commercial-spillover,5
+P6,P,M3,R23,San Franciscan,commercial-spillover,6
+P6,P,M4,R24,Probat,commercial-spillover,1
+P6,P,M4,R21,Diedrich,commercial-spillover,2
+P6,P,M4,R26,Loring,commercial-spillover,3
+P6,P,M4,R04,Behmor,home-entry,4
+P6,P,M4,R02,Hottop,enthusiast,5
+P6,P,M4,R23,San Franciscan,commercial-spillover,6
+P6,P,M6,R02,Hottop,enthusiast,1
+P6,P,M6,R06,Gene Cafe,enthusiast,2
+P6,P,M6,R01,Aillio,prosumer,3
+P6,P,M6,R23,San Franciscan,commercial-spillover,4
+P6,P,M6,R22,Mill City Roasters,commercial-spillover,5
+P6,P,M6,R28,US Roaster Corp,commercial-spillover,6
+P6,P,M6,R24,Probat,commercial-spillover,7
+P6,P,M6,R25,Giesen,commercial-spillover,8
+P6,P,M6,R07,Ikawa,prosumer,9
+P6,P,M6,R21,Diedrich,commercial-spillover,10
+P6,P,M6,R26,Loring,commercial-spillover,11
+K1,K,M1,R01,Aillio,prosumer,1
+K1,K,M2,R01,Aillio,prosumer,1
+K1,K,M3,R01,Aillio,prosumer,1
+K1,K,M4,R01,Aillio,prosumer,1
+K1,K,M5,R01,Aillio,prosumer,1
+K1,K,M6,R01,Aillio,prosumer,1
+K2,K,M1,R01,Aillio,prosumer,1
+K2,K,M2,R01,Aillio,prosumer,1
+K2,K,M3,R01,Aillio,prosumer,1
+K2,K,M4,R01,Aillio,prosumer,1
+K2,K,M5,R01,Aillio,prosumer,1
+K2,K,M6,R01,Aillio,prosumer,1
+K3,K,M1,R01,Aillio,prosumer,1
+K3,K,M1,R22,Mill City Roasters,commercial-spillover,2
+K3,K,M2,R01,Aillio,prosumer,1
+K3,K,M3,R01,Aillio,prosumer,1
+K3,K,M4,R01,Aillio,prosumer,1
+K3,K,M5,R01,Aillio,prosumer,1
+K3,K,M6,R01,Aillio,prosumer,1
+K4,K,M1,R01,Aillio,prosumer,1
+K4,K,M2,R01,Aillio,prosumer,1
+K4,K,M3,R01,Aillio,prosumer,1
+K4,K,M4,R01,Aillio,prosumer,1
+K4,K,M5,R01,Aillio,prosumer,1
+K4,K,M6,R01,Aillio,prosumer,1
