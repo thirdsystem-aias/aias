@@ -314,8 +314,9 @@ FIGURE_CAPTIONS = {
     "ranking": (f"Brands named in constraint-framed answers. The 2024–25 models answer a café that cannot vent with drum "
                 f"makers and rank Bellwether seventh; current assistants without search name Bellwether in "
                 f"{_pc(C_S0)} of those answers and first in {FIRST_S0} of {N_C_S0}."),
-    "search": ("Left: Bellwether's share of café recommendations for each current assistant, without and with web search "
-               "(12 paired questions each). Right: what search adds to direct questions about Bellwether."),
+    "search": ("Top: Bellwether's share of café recommendations for each current assistant, without and with web search "
+               "(12 paired questions each). Bottom: what the answers say about Bellwether. Search leaves the share flat and "
+               "brings in the facts that changed after the models were trained."),
     "lineup": ("Four direct questions about Bellwether, answered by each model as read by an analyst. The 2024–25 models do "
                "not know the Shop Roaster, and three say it needs venting. Current assistants know it; with search they "
                "name the October 2026 model and its 1.5 kg batch."),

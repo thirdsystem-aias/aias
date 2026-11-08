@@ -43,22 +43,22 @@ FOCAL = "B01"
 PHASE, PROTOCOL = "v0.39", "v1.2"
 
 TEXT = {
-    "frame": {"title": "Before any brand is named, the older models tell cafés to vent",
+    "frame": {"title": "Venting in 34 of 36 older-model answers; a ventless option in none",
               "subtitle": "How answers to “should my café roast in-house?” questions treat venting",
               "description": "Analyst-audited classification of every answer: 6 questions x 6 models (2024–25) or x 3 models (current)."},
-    "constraint": {"title": "Bellwether appears when the café names the barrier",
+    "constraint": {"title": "From 0% to 25% on older models; from 67% to 89% on current ones",
                    "subtitle": "Share of café roaster recommendations that name Bellwether, generic vs constraint questions",
                    "description": "Constraint questions state no gas line, no venting, smoke or air-quality rules. Bars pool models; dots show each model."},
-    "ranking": {"title": "Older models answer the constraint with drums; current ones with Bellwether",
+    "ranking": {"title": "Seventh on older models, first on current assistants",
                 "subtitle": "Share of constraint-framed café answers naming each brand (top eight in each panel)",
                 "description": "Six questions per model: no gas line, no ductwork, can't vent, least smoke, air-quality rules, best electric roaster."},
-    "search": {"title": "Search adds currency, not presence",
-               "subtitle": "What changes when the current assistants can search the web",
-               "description": "Left: café recommendations (generic and constraint, 12 per model). Right: direct questions about Bellwether."},
-    "lineup": {"title": "Asked directly, older models guess; current ones know the Shop Roaster",
+    "search": {"title": "With web search, the share stays flat and the facts update",
+               "subtitle": "Claude Opus 5.5, GPT-6 Astra and Gemini 4 Argon, each question asked without and with web search",
+               "description": "Hollow circle: without search. Filled circle: with search. Counts at right."},
+    "lineup": {"title": "No older model names the Shop Roaster; all three current ones do",
                "subtitle": "Each model's answer to four direct questions about Bellwether, as read by the analyst",
                "description": "Indigo: matches the current Shop Roaster or lineup. Gray: no answer, a range, or an older machine. Orange: wrong or invented."},
-    "showfloor": {"title": "Six roaster makers on the show floor, five on the AI shelf",
+    "showfloor": {"title": "Loring and Mill City hold steady; Air-Motion is never named",
                   "subtitle": "Share of café and roastery recommendation answers naming each Coffee Fest Dallas-Fort Worth exhibitor",
                   "description": "Recommendation answers: 18 questions per model (generic café, constraint and production roastery)."},
 }
@@ -204,69 +204,70 @@ def fig_ranking(t, names, out):
 
 
 def fig_search(coded, a, t, out):
+    ok = [r for r in coded if r["arm"] == "C" and r["status"] == "ok"]
     agg = defaultdict(lambda: [0, 0])
-    for r in coded:
-        if r["arm"] == "C" and r["tier"] in ("G", "C") and r["status"] == "ok":
-            c = agg[(r["model_slot"], r["condition"])]
-            c[0] += int(r["bellwether"])
-            c[1] += 1
-    h = 4.4
-    fig = plt.figure(figsize=(7.5, h))
-    gs = fig.add_gridspec(1, 2, width_ratios=[1.0, 1.15], left=0.15, right=0.975, top=1 - 1.3 / h, bottom=0.95 / h, wspace=0.55)
-    ax = fig.add_subplot(gs[0, 0])
-    ys = [2, 1, 0]
-    for y, m in zip(ys, CURRENT):
-        s0 = agg[(m, "S0")][0] / agg[(m, "S0")][1]
-        s1 = agg[(m, "S1")][0] / agg[(m, "S1")][1]
-        ax.plot([s0, s1], [y, y], color=P["gray_light"], linewidth=2, zorder=1)
-        ax.scatter([s0], [y], s=46, color=P["indigo"], zorder=3, edgecolor="white", linewidth=0.6)
-        ax.scatter([s1], [y], s=46, color=P["indigo_t2"], zorder=3, edgecolor="white", linewidth=0.6, marker="D")
-        lo, hi = min(s0, s1), max(s0, s1)
-        if abs(s1 - s0) < 0.005:
-            ax.text(s0, y + 0.3, pct(s0) + " (both)", ha="right", fontsize=7.8, color=P["indigo"])
-        else:
-            ax.text(s0, y + 0.3, pct(s0), ha="center", fontsize=7.8, color=P["indigo"])
-            ax.text(s1, y - 0.42, pct(s1), ha="center", fontsize=7.8, color=P["indigo_t1"])
-    ax.set_yticks(ys)
-    ax.set_yticklabels([MODEL[m] for m in CURRENT], fontsize=8.2)
-    ax.set_xlim(0, 1.05)
-    ax.set_ylim(-0.8, 2.7)
-    ax.set_xticks([0, 0.5, 1.0])
-    ax.set_xticklabels(["0%", "50%", "100%"], fontsize=CS.FONT_SIZES["axis_tick"])
-    for sp in ("left", "top", "right"):
-        ax.spines[sp].set_visible(False)
-    ax.tick_params(axis="y", length=0)
-    ax.set_title("Café answers naming Bellwether", fontsize=8.6, loc="left", fontweight="bold", pad=6)
-    handles = [Line2D([0], [0], marker="o", color="w", markerfacecolor=P["indigo"], markersize=7, label="No search"),
-               Line2D([0], [0], marker="D", color="w", markerfacecolor=P["indigo_t2"], markersize=6, label="With search")]
-    fig.legend(handles=handles, loc="lower center", bbox_to_anchor=(0.5, 0.07), ncol=2, fontsize=7.6, frameon=False)
-
-    ax2 = fig.add_subplot(gs[0, 1])
+    for r in ok:
+        if r["tier"] in ("G", "C"):
+            for key in ((r["model_slot"], r["condition"]), ("ALL", r["condition"])):
+                agg[key][0] += int(r["bellwether"])
+                agg[key][1] += 1
+    named = {c: sum(int(r["bellwether"]) for r in ok if r["condition"] == c) for c in ("S0", "S1")}
     lab = a["k_probe_labels"]
     mk = t["descriptives"]["D7_retrieval"]["markers_2026_in_K1_K2"]
-    n26 = {c: sum(1 for k in mk if k.endswith("|" + c) and k.split("|")[1] in CURRENT) for c in ("S0", "S1")}
-    k5 = {c: sum(1 for m in CURRENT if "(correct)" in lab["K5_batch"][f"{m}|{c}"]) for c in ("S0", "S1")}
     d3 = a["D3_claim_reproduction"]
-    uniq_s1 = len(d3["reproduced_as_fact"]) + len(d3["reproduced_with_attribution"])
-    rows = [("Lineup answers naming the\nOct 2026 Shop Roaster", n26["S0"], n26["S1"], 6),
-            ("Batch size stated correctly\n(1.5 kg)", k5["S0"], k5["S1"], 3),
-            ("Answers repeating “the only\nventless roaster”", 0, uniq_s1, None)]
-    ys2 = [2, 1, 0]
-    for y, (txt, a0, a1, n) in zip(ys2, rows):
-        den = n if n else max(a1, 1)
-        for j, (val, col) in enumerate(((a0, P["indigo"]), (a1, P["indigo_t2"]))):
-            yy = y + (0.17 if j == 0 else -0.17)
-            ax2.barh(yy, val / den if den else 0, height=0.3, color=col, zorder=2)
-            lbl = f"{val} of {n}" if n else f"{val} answers"
-            ax2.text((val / den if den else 0) + 0.03, yy, lbl, va="center", fontsize=7.6, color=P["gray"])
-    ax2.set_yticks(ys2)
-    ax2.set_yticklabels([r[0] for r in rows], fontsize=7.8)
-    ax2.set_xlim(0, 1.45)
-    ax2.set_xticks([])
-    for sp in ("left", "top", "right", "bottom"):
-        ax2.spines[sp].set_visible(False)
-    ax2.tick_params(axis="y", length=0)
-    ax2.set_title("Direct questions about Bellwether", fontsize=8.6, loc="left", fontweight="bold", pad=6)
+    claims = d3["reproduced_as_fact"] + d3["reproduced_with_attribution"]
+    uniq = {c: sum(1 for x in claims if x.split(" ")[0].endswith("|" + c)) for c in ("S0", "S1")}
+    conds = ("S0", "S1")
+    pres = [(MODEL[m], {c: tuple(agg[(m, c)]) for c in conds}) for m in CURRENT] + \
+           [("All three", {c: tuple(agg[("ALL", c)]) for c in conds})]
+    facts = [
+        ("Says it needs no venting", {c: (sum(1 for m in CURRENT if lab["K3_venting"][f"{m}|{c}"] == "No (correct)"), 3) for c in conds}),
+        ("Names the Oct 2026 Shop Roaster", {c: (sum(1 for k in mk if k.endswith("|" + c) and k.split("|")[1] in CURRENT), 6) for c in conds}),
+        ("Gives the 1.5 kg batch size", {c: (sum(1 for m in CURRENT if lab["K5_batch"][f"{m}|{c}"] == "1.5 kg (correct)"), 3) for c in conds}),
+        ("Repeats \u201cthe only ventless roaster\u201d", {c: (uniq[c], named[c]) for c in conds}),
+    ]
+    h = 5.4
+    fig = plt.figure(figsize=(7.5, h))
+    gs = fig.add_gridspec(2, 1, left=0.33, right=0.71, top=1 - 1.72 / h, bottom=0.42 / h, hspace=0.95)
+    lx = getattr(CS, "LEFT_X", 0.05)
+    panels = [(fig.add_subplot(gs[0, 0]), pres, "Is Bellwether named?",
+               "Café recommendations, generic and constraint questions (12 per model)", True),
+              (fig.add_subplot(gs[1, 0]), facts, "Do the answers carry the current facts?",
+               "Direct questions about Bellwether; the last row counts every answer that names it", False)]
+    for ax, rows, head, sub, as_pct in panels:
+        n = len(rows)
+        ys = list(range(n))[::-1]
+        for y, (label, v) in zip(ys, rows):
+            (k0, n0), (k1, n1) = v["S0"], v["S1"]
+            x0, x1 = k0 / n0, k1 / n1
+            ax.plot([x0, x1], [y, y], color=P["gray_light"], linewidth=2.4, zorder=1, solid_capstyle="round")
+            ax.scatter([x0], [y], s=100, facecolor="white", edgecolor=P["indigo"], linewidth=1.6, zorder=3)
+            ax.scatter([x1], [y], s=44, color=P["indigo"], zorder=4)
+            bold = label == "All three"
+            for xc, txt in ((1.14, pct(x0) if as_pct else f"{k0} of {n0}"), (1.42, pct(x1) if as_pct else f"{k1} of {n1}")):
+                ax.text(xc, y, txt, transform=ax.get_yaxis_transform(), ha="center", va="center", fontsize=8.2,
+                        color=P["black"], fontweight="bold" if bold else "normal")
+        ax.set_yticks(ys)
+        ax.set_yticklabels([r[0] for r in rows], fontsize=8.3)
+        for tl in ax.get_yticklabels():
+            if tl.get_text() == "All three":
+                tl.set_fontweight("bold")
+        if as_pct:
+            ax.axhline(0.5, color=P["gray_light"], linewidth=0.7, zorder=0)
+        ax.set_xlim(-0.03, 1.03)
+        ax.set_ylim(-0.6, n - 0.4)
+        ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+        ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"], fontsize=CS.FONT_SIZES["axis_tick"])
+        ax.grid(axis="x", color=P["gray_light"], linewidth=0.5, zorder=0)
+        for sp in ("left", "top", "right"):
+            ax.spines[sp].set_visible(False)
+        ax.tick_params(axis="y", length=0)
+        for xc, txt in ((1.14, "Without\nsearch"), (1.42, "With\nsearch")):
+            ax.text(xc, n - 0.42, txt, transform=ax.get_yaxis_transform(), ha="center", va="bottom", fontsize=7.4,
+                    color=P["gray"], linespacing=1.05)
+        pos = ax.get_position()
+        fig.text(lx, pos.y1 + 0.40 / h, head, fontsize=9.2, fontweight="bold", color=P["black"], ha="left", va="bottom")
+        fig.text(lx, pos.y1 + 0.22 / h, sub, fontsize=7.6, color=P["gray"], ha="left", va="bottom")
     CS.add_header(fig, **TEXT["search"])
     CS.add_footer(fig, verdict="", phase=PHASE, protocol=PROTOCOL)
     save(fig, out, "report_fig_04_search.pdf")
@@ -368,6 +369,19 @@ def fig_showfloor(t, names, strata, out):
     save(fig, out, "report_fig_06_showfloor.pdf")
 
 
+def check_titles(v, t, a, names):
+    fr = a["frame_classification"]["summary"]["L|S0"]
+    assert (fr["counts"]["venting required"], fr["n"], fr["ventless_raised"]) == (34, 36, 0)
+    bw = {c: t["presence"][c]["presence"]["B01"] for c in ("L|S0|G", "L|S0|C", "C|S0|G", "C|S0|C")}
+    assert [round(100 * bw[c]) for c in ("L|S0|G", "L|S0|C", "C|S0|G", "C|S0|C")] == [0, 25, 67, 89]
+    assert v["H_CEPDefault"]["rank"] == 7 and v["H_CEPDefault"]["current_arm_descriptive"]["S0"]["rank"] == 1
+    lab = a["k_probe_labels"]
+    assert not any("Shop Roaster" in lab[k][m] for k in ("K1_newest", "K2_lineup") for m in LEGACY)
+    assert all("Shop Roaster" in lab["K1_newest"][f"{m}|S0"] for m in CURRENT)
+    d5 = t["descriptives"]["D5_show_floor_vs_ai_shelf"]
+    assert all(d5[c]["show_floor_presence"]["Air-Motion Roasters"] == 0 for c in d5)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--root", default=str(ROOT / "osf/v39"))
@@ -375,6 +389,7 @@ def main():
     args = ap.parse_args()
     CS.setup()
     v, t, a, coded, names, strata = load(Path(args.root))
+    check_titles(v, t, a, names)
     out = Path(args.out)
     fig_frame(a, out)
     fig_constraint(t, out)
