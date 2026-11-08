@@ -1,0 +1,606 @@
+{
+ "phase": "v0.39",
+ "procedure": "Pre-registration section 5.7. After scoring and before drafting, the analyst checked the locked automated codes against (a) every Bellwether or Stronghold match (binding; recorded in v39_audit_commonnoun.json), (b) all 72 K responses for D1-D3 and (c) all 72 F responses for the frame classification of section 2.3. Reading lists from scripts/audit_worklist_v0_39.py give the sentences bearing on each code (generation tokens, venting and ventless lexicon hits, capacity and power statements, uniqueness windows); the full answer was read wherever a passage was ambiguous or truncated. Confirmatory verdicts use the automated coding (and the section 3.3 audit for B01/B06).",
+ "analyst": "Claude (Anthropic), working under the pre-registrant's direction",
+ "date": "2026-11-08",
+ "section_3_3": {
+  "responses": 174,
+  "matches": {
+   "B01": 532,
+   "B06": 136
+  },
+  "removed": 0,
+  "record": "osf/v39/data/v39_audit_commonnoun.json"
+ },
+ "frame_classification": {
+  "classes": [
+   "venting required",
+   "venting machine-dependent (ventless option raised, no brand)",
+   "ventless option named (with brand)",
+   "venting not discussed"
+  ],
+  "by_response": {
+   "F1|M1|S0": {
+    "class": "venting required"
+   },
+   "F1|M2|S0": {
+    "class": "venting required"
+   },
+   "F1|M3|S0": {
+    "class": "venting required"
+   },
+   "F1|M4|S0": {
+    "class": "venting required"
+   },
+   "F1|M5|S0": {
+    "class": "venting required"
+   },
+   "F1|M6|S0": {
+    "class": "venting required"
+   },
+   "F2|M1|S0": {
+    "class": "venting required"
+   },
+   "F2|M2|S0": {
+    "class": "venting required"
+   },
+   "F2|M3|S0": {
+    "class": "venting required"
+   },
+   "F2|M4|S0": {
+    "class": "venting required"
+   },
+   "F2|M5|S0": {
+    "class": "venting not discussed",
+    "note": "answer ends at the 2,048-token cap before reaching installation"
+   },
+   "F2|M6|S0": {
+    "class": "venting required"
+   },
+   "F3|M1|S0": {
+    "class": "venting required"
+   },
+   "F3|M2|S0": {
+    "class": "venting required"
+   },
+   "F3|M3|S0": {
+    "class": "venting required"
+   },
+   "F3|M4|S0": {
+    "class": "venting required"
+   },
+   "F3|M5|S0": {
+    "class": "venting required"
+   },
+   "F3|M6|S0": {
+    "class": "venting required"
+   },
+   "F4|M1|S0": {
+    "class": "venting required"
+   },
+   "F4|M2|S0": {
+    "class": "venting required"
+   },
+   "F4|M3|S0": {
+    "class": "venting required"
+   },
+   "F4|M4|S0": {
+    "class": "venting required"
+   },
+   "F4|M5|S0": {
+    "class": "venting required"
+   },
+   "F4|M6|S0": {
+    "class": "venting required"
+   },
+   "F5|M1|S0": {
+    "class": "venting required"
+   },
+   "F5|M2|S0": {
+    "class": "venting required"
+   },
+   "F5|M3|S0": {
+    "class": "venting required"
+   },
+   "F5|M4|S0": {
+    "class": "venting not discussed",
+    "note": "complete answer; costs only, no infrastructure"
+   },
+   "F5|M5|S0": {
+    "class": "venting required"
+   },
+   "F5|M6|S0": {
+    "class": "venting required"
+   },
+   "F6|M1|S0": {
+    "class": "venting required"
+   },
+   "F6|M2|S0": {
+    "class": "venting required"
+   },
+   "F6|M3|S0": {
+    "class": "venting required"
+   },
+   "F6|M4|S0": {
+    "class": "venting required"
+   },
+   "F6|M5|S0": {
+    "class": "venting required"
+   },
+   "F6|M6|S0": {
+    "class": "venting required"
+   },
+   "F1|C1|S0": {
+    "class": "venting required"
+   },
+   "F1|C2|S0": {
+    "class": "venting required"
+   },
+   "F1|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Sonofresco"
+    ]
+   },
+   "F2|C1|S0": {
+    "class": "venting required"
+   },
+   "F2|C2|S0": {
+    "class": "venting required",
+    "note": "ventless-lexicon match is a negation ('electric does not automatically mean ventless'); no ventless option raised"
+   },
+   "F2|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F3|C1|S0": {
+    "class": "venting required"
+   },
+   "F3|C2|S0": {
+    "class": "venting required"
+   },
+   "F3|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F4|C1|S0": {
+    "class": "venting required"
+   },
+   "F4|C2|S0": {
+    "class": "venting required"
+   },
+   "F4|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold",
+     "Aillio"
+    ]
+   },
+   "F5|C1|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ]
+   },
+   "F5|C2|S0": {
+    "class": "venting required"
+   },
+   "F5|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ],
+    "note": "Stronghold S7 and Mill City / Aillio listed in the same 'electric, ventless, or countertop' sentence; attribution ambiguous"
+   },
+   "F6|C1|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ],
+    "note": "Loring named alongside for 'built-in emission control'"
+   },
+   "F6|C2|S0": {
+    "class": "venting required"
+   },
+   "F6|C3|S0": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold",
+     "Loring"
+    ]
+   },
+   "F1|C1|S1": {
+    "class": "venting required"
+   },
+   "F1|C2|S1": {
+    "class": "venting required"
+   },
+   "F1|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F2|C1|S1": {
+    "class": "venting required"
+   },
+   "F2|C2|S1": {
+    "class": "venting machine-dependent (ventless option raised, no brand)"
+   },
+   "F2|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F3|C1|S1": {
+    "class": "venting required"
+   },
+   "F3|C2|S1": {
+    "class": "venting required"
+   },
+   "F3|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold",
+     "Aillio (with smoke scrubber)"
+    ]
+   },
+   "F4|C1|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ]
+   },
+   "F4|C2|S1": {
+    "class": "venting machine-dependent (ventless option raised, no brand)",
+    "note": "Bellwether named only as a capacity reference"
+   },
+   "F4|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F5|C1|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ]
+   },
+   "F5|C2|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ]
+   },
+   "F5|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold"
+    ]
+   },
+   "F6|C1|S1": {
+    "class": "venting machine-dependent (ventless option raised, no brand)"
+   },
+   "F6|C2|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether"
+    ]
+   },
+   "F6|C3|S1": {
+    "class": "ventless option named (with brand)",
+    "ventless_brands": [
+     "Bellwether",
+     "Stronghold",
+     "Typhoon (unregistered)"
+    ]
+   }
+  },
+  "summary": {
+   "L|S0": {
+    "n": 36,
+    "counts": {
+     "venting required": 34,
+     "venting not discussed": 2
+    },
+    "ventless_raised": 0,
+    "ventless_named_with_brand": 0
+   },
+   "C|S0": {
+    "n": 18,
+    "counts": {
+     "venting required": 10,
+     "ventless option named (with brand)": 8
+    },
+    "ventless_raised": 8,
+    "ventless_named_with_brand": 8
+   },
+   "C|S1": {
+    "n": 18,
+    "counts": {
+     "venting required": 5,
+     "ventless option named (with brand)": 10,
+     "venting machine-dependent (ventless option raised, no brand)": 3
+    },
+    "ventless_raised": 13,
+    "ventless_named_with_brand": 10
+   }
+  },
+  "automated_disagreements": [
+   "F2|C2|S0"
+  ]
+ },
+ "k_probe_labels": {
+  "K1_newest": {
+   "M1": "Doesn't know",
+   "M2": "Doesn't know",
+   "M3": "Doesn't know",
+   "M4": "Doesn't know",
+   "M5": "“Series 3”",
+   "M6": "Doesn't know",
+   "C1|S0": "Unsure; mentions Shop Roaster",
+   "C2|S0": "Shop Roaster (2024)",
+   "C3|S0": "Shop Roaster (2024)",
+   "C1|S1": "New Shop Roaster (Oct 2026)",
+   "C2|S1": "New Shop Roaster (Oct 2026)",
+   "C3|S1": "New Shop Roaster (Oct 2026)"
+  },
+  "K2_lineup": {
+   "M1": "Doesn't know",
+   "M2": "Doesn't know",
+   "M3": "Reads it as a coffee seller",
+   "M4": "Reads it as a coffee seller",
+   "M5": "Series 1 and 2",
+   "M6": "Reads it as a coffee seller",
+   "C1|S0": "Unsure",
+   "C2|S0": "Shop Roaster + Series 2",
+   "C3|S0": "Shop Roaster + Series 2",
+   "C1|S1": "Shop Roaster only",
+   "C2|S1": "Shop Roaster only",
+   "C3|S1": "Shop Roaster only"
+  },
+  "K3_venting": {
+   "M1": "No (correct)",
+   "M2": "Yes: a 6-inch duct (wrong)",
+   "M3": "No (correct)",
+   "M4": "Yes (wrong)",
+   "M5": "No (correct)",
+   "M6": "Yes: burns gas (wrong)",
+   "C1|S0": "No (correct)",
+   "C2|S0": "No (correct)",
+   "C3|S0": "No (correct)",
+   "C1|S1": "No (correct)",
+   "C2|S1": "No (correct)",
+   "C3|S1": "No (correct)"
+  },
+  "K4_which_model": {
+   "M1": "Doesn't know",
+   "M2": "Generic advice",
+   "M3": "Generic advice",
+   "M4": "Invented 1, 5 and 12 kg models",
+   "M5": "Series 2",
+   "M6": "Series 1 or Series 2",
+   "C1|S0": "Can't confirm lineup",
+   "C2|S0": "Shop Roaster or a larger model",
+   "C3|S0": "Shop Roaster",
+   "C1|S1": "New Shop Roaster; avoid Series 1",
+   "C2|S1": "Shop Roaster + continuous kit",
+   "C3|S1": "Shop Roaster"
+  },
+  "K5_batch": {
+   "M1": "0.5–1.4 kg (wrong)",
+   "M2": "4.5–7 kg (wrong)",
+   "M3": "2.7 kg (Series 2 figure)",
+   "M4": "5–12 lb (wrong)",
+   "M5": "3 kg (wrong)",
+   "M6": "1 kg (wrong)",
+   "C1|S0": "1–3 kg (range)",
+   "C2|S0": "2.7 kg (Series 2 figure)",
+   "C3|S0": "Series 2 2.7 kg; Shop 1.6 kg",
+   "C1|S1": "1.5 kg (correct)",
+   "C2|S1": "1.5 kg (correct)",
+   "C3|S1": "1.5 kg (correct)"
+  }
+ },
+ "D1_generation": {
+  "shop_aware_audited": {
+   "M1": false,
+   "M2": false,
+   "M3": false,
+   "M4": false,
+   "M5": false,
+   "M6": false,
+   "C1|S0": true,
+   "C2|S0": true,
+   "C3|S0": true,
+   "C1|S1": true,
+   "C2|S1": true,
+   "C3|S1": true
+  },
+  "shop_aware_agreement": "12/12",
+  "k1_k2_k4_code_agreement": "31/36",
+  "k1_k2_k4_disagreements": [
+   "K1|C3|S0 (automated Shop-only; also names the Series 2 as a previous model: Both)",
+   "K1|C1|S1 (automated Shop-only; also names the Series 2 as the earlier flagship: Both)",
+   "K2|C3|S1 (automated Shop-only; also names 'Series I and Series II', Roman numerals: Both)",
+   "K4|C2|S0 (automated Unspecified; recommends the Shop Roaster: Shop-only)",
+   "K4|C3|S1 (automated Shop-only; also names the 'Gen 1 and Gen 2' models it replaced: Both)"
+  ],
+  "note": "No disagreement changes Shop-awareness: every current-arm model is Shop-aware in both conditions; no legacy model is.",
+  "labelling_note": "K2 answers naming both the Shop Roaster and the Series 2 are labelled consistent with the fact sheet, which lists both machines. Whether the Series 2 is still sold new is not established (a web check on 2026-11-08 was inconclusive), so no answer is scored wrong on that ground; answers giving the Series 2's 2.7 kg batch as Bellwether's capacity are labelled as an older machine's figure, not as wrong."
+ },
+ "D2_K3_ventilation": {
+  "audited": {
+   "correct": [
+    "M1",
+    "M3",
+    "M5",
+    "C1|S0",
+    "C2|S0",
+    "C3|S0",
+    "C1|S1",
+    "C2|S1",
+    "C3|S1"
+   ],
+   "incorrect": [
+    "M2",
+    "M4",
+    "M6"
+   ],
+   "hedged": []
+  },
+  "automated_disagreements": [
+   "K3|M2|S0",
+   "K3|M6|S0"
+  ]
+ },
+ "D2_K5_capacity": {
+  "audited": {
+   "correct_current_generation": [
+    "C1|S1",
+    "C2|S1",
+    "C3|S1"
+   ],
+   "approximately_correct": [
+    "C3|S0 (Shop Roaster stated as 1.6 kg; Series 2 as 2.7 kg)"
+   ],
+   "series2_figure_without_generation": [
+    "M3",
+    "C2|S0"
+   ],
+   "range_spanning_generations": [
+    "C1|S0"
+   ],
+   "incorrect": [
+    "M1",
+    "M2",
+    "M4",
+    "M5",
+    "M6"
+   ]
+  },
+  "automated_disagreements": [
+   "K5|M1|S0 (automated 'Shop Roaster' from the upper end of a wrong 0.5-1.4 kg range)",
+   "K5|C1|S1 (automated 'other': largest quantity is the 20 kg continuous-roasting hopper)",
+   "K5|C3|S1 (same)"
+  ]
+ },
+ "D2_power_claims": "All 28 flagged windows were read. Every power requirement stated for a Bellwether machine matches the fact sheet (Shop Roaster 200-240 V, 30 A; Series 2 240 V single-phase or 208 V three-phase, 50 A); none contradicts it.",
+ "D3_claim_reproduction": {
+  "reproduced_as_fact": [
+   "C2|C3|S1 'essentially the only dedicated plug-and-play manufacturer'",
+   "C4|C1|S1 'basically your only choice' with no way to vent",
+   "C4|C3|S1 'the only mainstream commercial production roaster'",
+   "C6|C3|S1 'stop looking at everything else and get the Bellwether'"
+  ],
+  "reproduced_with_attribution": [
+   "C5|C1|S1 'Bellwether says ... the only commercial ventless coffee roaster'",
+   "K3|C1|S1 'Bellwether calls its Shop Roaster ... the only commercial ventless coffee roaster'",
+   "C6|C1|S1 'billed as the only electric, ventless, automatic commercial coffee roaster'",
+   "C2|C1|S1 forum quote 'the only system I've seen that's truly smokeless'"
+  ],
+  "contradicted": [
+   "K6|C1|S1 'Bellwether calls it the only machine of its kind, but other ventless electric roasters have existed' (cites Carbine Coffee, 2018)"
+  ],
+  "note": "All nine explicit uniqueness statements are in the current arm with search (S1). Answers that group Stronghold or others with Bellwether as 'ventless' (D4) contradict the claim implicitly.",
+  "automated_candidates": "14 windows flagged; 9 are uniqueness statements, the rest are 'first pick' / 'first option' phrasing"
+ },
+ "D4_ventless_attribution": {
+  "rule": "Audited at line level. Verifiable only against the locked fact sheet (section 3.5), which holds a specification for Air-Motion alone (vented); Air-Motion is never named. All other attributions are therefore labelled unverifiable.",
+  "described_as_ventless_or_no_venting": {
+   "Stronghold": 10,
+   "Diedrich": 2,
+   "Ikawa": 2,
+   "Aillio": 1,
+   "Loring": 1,
+   "US Roaster Corp": 1,
+   "Mill City Roasters": 1,
+   "Giesen": 1,
+   "Sonofresco": 1
+  },
+  "ventless_with_add_on_smoke_filter": {
+   "Stronghold": 5,
+   "Aillio": 2
+  },
+  "described_as_smokeless_only": {
+   "Loring": 15
+  },
+  "stated_to_need_venting": {
+   "Stronghold": 9,
+   "Loring": 4,
+   "Roest": 3,
+   "Aillio": 1,
+   "Ikawa": 1
+  },
+  "unverifiable": true,
+  "observations": [
+   "All 15 Stronghold ventless attributions (10 bare, 5 with an add-on smoke filter) come from Gemini 4 Argon (C3): 8 without search, 7 with search.",
+   "Claude Opus 5.5 with search states in 7 answers that Stronghold 'still requires exhaust venting' (once citing Bellwether's comparison page); Gemini 4 Argon says so in 2 search-enabled answers; Claude Opus 5.5 without search hedges twice ('confirm with the dealer', 'depends on your jurisdiction').",
+   "Loring is described as 'smokeless' in 15 answers (8 legacy-arm, 7 current-arm), which is an emissions claim, not a no-venting claim; 4 current-arm answers state that Loring needs an exhaust installation.",
+   "Gemini 2.5 Flash-Lite (M6) describes Diedrich, Mill City and Giesen as configurable for 'ventless operation' with an afterburner, and US Roaster Corp as having a 'Ventless' series."
+  ],
+  "hedged_or_contested": {
+   "Stronghold": 2
+  }
+ },
+ "D7_launch_coverage": {
+  "s1_responses_citing_2026_launch_coverage": [
+   "K1|C1|S1",
+   "K1|C2|S1",
+   "K2|C1|S1",
+   "K4|C1|S1",
+   "K4|C2|S1"
+  ],
+  "share_of_s1": "5/90",
+  "sources": [
+   "prnewswire.com (2026 release)",
+   "sprudge.com",
+   "coffeegeography.com (2026-10-17)",
+   "totalfood.com",
+   "bellwethercoffee.com/blog/the-new-shop-roaster"
+  ],
+  "note": "Gemini grounding titles carry only the source domain, so launch coverage cannot be identified from Gemini citations; Gemini 4 Argon's S1 answers to K1 and K2 nevertheless carry 2026-model markers."
+ },
+ "overall_disagreement": "11 of 132 audited codes (8.3%): 1 F frame code, 5 K1/K2/K4 generation codes, 2 K3 and 3 K5 candidates. Below the 10% threshold in section 5.7; no sensitivity re-computation required. No disagreement touches a confirmatory verdict.",
+ "unregistered_brands_noticed": {
+  "Coffee Crafters (Valenta)": 18,
+  "Typhoon": 15,
+  "IMF": 11,
+  "Buhler": 4,
+  "Neuhaus Neotec": 3,
+  "Bideli": 3,
+  "Kaffelogic": 3,
+  "Rubasse": 2,
+  "Scolari": 2,
+  "Huky": 2,
+  "Carbine Coffee": 1,
+  "Kapok": 1,
+  "home roasters named in cafe answers (legacy arm only unless noted)": {
+   "Behmor": 20,
+   "Hottop": "20 (incl. current arm S1)",
+   "Gene Cafe": 10
+  }
+ },
+ "other_observations_not_preregistered": [
+  "Invented Bellwether models: 'Series 3' (Gemini 2.5 Flash K1; Gemini 4 Argon K1 S0 as the flagship, G5 S1 'Series 3 / Compact', R1 S1 'Series III'); '1kg, 5kg and 12kg' models (GPT-4o-mini K4).",
+  "Three legacy models (GPT-4o, GPT-4o-mini, Gemini 2.5 Flash-Lite) read K2 as a question about which coffees Bellwether sells.",
+  "With search, current models quote the Shop Roaster's list prices ($14,900; $19,900 with the continuous-roasting kit) and Q1 2027 delivery for the new model.",
+  "Gemini 4 Argon searched in 12 of 30 S1 calls; Claude Opus 5.5 in 25; GPT-6 Astra in 30."
+ ]
+}

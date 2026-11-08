@@ -1,0 +1,361 @@
+key,probe_id,tier,kind,arm,condition,model_slot,model_name,boundary,status,served_model,finish_reason,n_brands,brands_in_order,bellwether,bellwether_first_pos,show_floor_any,gen_code,preshop_tokens,shop_tokens,series1_named,markers_2026,vent,ventless,k3_candidate,k5_qty_kg,k5_class,power_claim,price_caveat,unique_claim_candidate,ventless_other_brands,n_searches,n_sources,cites_bellwether_domain,response_chars
+F1|M1|S0,F1,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1338
+F1|M2|S0,F1,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1209
+F1|M3|S0,F1,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2384
+F1|M4|S0,F1,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2582
+F1|M5|S0,F1,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3458
+F1|M6|S0,F1,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,7050
+F1|C1|S0,F1,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3676
+F1|C2|S0,F1,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3205
+F1|C3|S0,F1,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,2,B01;B35,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B35,,,,4757
+F1|C1|S1,F1,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,0,0,0,3492
+F1|C2|S1,F1,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B07,0,,0,Absent,,,0,,1,0,,,,,,,,1,42,0,3954
+F1|C3|S1,F1,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B05;B09;B07;B08;B01;B06,1,5,1,Unspecified,,,0,,1,1,,,,0,0,0,B06,0,0,0,4681
+F2|M1|S0,F2,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,4,B02;B05;B07;B09,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1259
+F2|M2|S0,F2,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1516
+F2|M3|S0,F2,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2394
+F2|M4|S0,F2,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2955
+F2|M5|S0,F2,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1436
+F2|M6|S0,F2,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,7364
+F2|C1|S0,F2,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,9,B07;B08;B10;B09;B04;B01;B02;B05;B11,1,6,1,Unspecified,,,0,,1,0,,,,0,1,0,,,,,5006
+F2|C2|S0,F2,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,4259
+F2|C3|S0,F2,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B09;B07;B05;B08;B01;B06;B34,1,5,1,Unspecified,,,0,,1,1,,,,0,1,0,B06,,,,7385
+F2|C1|S1,F2,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B07;B08;B10;B05;B11;B09;B02,0,,1,Absent,,,0,,1,0,,,,,,,,0,0,0,3829
+F2|C2|S1,F2,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,1,,,,,,,,2,76,0,4629
+F2|C3|S1,F2,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B05;B09;B07;B08;B01;B06,1,5,1,Unspecified,,,0,,1,1,,,,0,0,0,B06,0,0,0,6994
+F3|M1|S0,F3,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1428
+F3|M2|S0,F3,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1700
+F3|M3|S0,F3,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2933
+F3|M4|S0,F3,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3450
+F3|M5|S0,F3,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3541
+F3|M6|S0,F3,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,8479
+F3|C1|S0,F3,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,4991
+F3|C2|S0,F3,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3473
+F3|C3|S0,F3,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,2,B01;B06,1,1,1,Unspecified,,,0,,1,1,,,,1,1,1,B06,,,,6601
+F3|C1|S1,F3,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,0,0,0,3968
+F3|C2|S1,F3,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,2,58,0,4372
+F3|C3|S1,F3,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,3,B01;B06;B02,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,B02;B06,0,0,0,5881
+F4|M1|S0,F4,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1232
+F4|M2|S0,F4,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1366
+F4|M3|S0,F4,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2247
+F4|M4|S0,F4,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1816
+F4|M5|S0,F4,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3967
+F4|M6|S0,F4,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,4501
+F4|C1|S0,F4,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3516
+F4|C2|S0,F4,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2503
+F4|C3|S0,F4,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,3,B01;B06;B02,1,1,1,Unspecified,,,0,,1,1,,,,1,1,0,B02;B06,,,,4894
+F4|C1|S1,F4,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B07;B10;B08;B09;B01,1,5,1,Unspecified,,,0,,1,1,,,,0,1,0,B07;B08;B09;B10,0,0,0,3037
+F4|C2|S1,F4,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B05,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,2,58,1,2850
+F4|C3|S1,F4,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,4,B01;B06;B02;B05,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B06,0,0,0,4901
+F5|M1|S0,F5,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1126
+F5|M2|S0,F5,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1207
+F5|M3|S0,F5,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2169
+F5|M4|S0,F5,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,2277
+F5|M5|S0,F5,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,5,B02;B05;B07;B04;B09,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2399
+F5|M6|S0,F5,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.MAX_TOKENS,4,B07;B04;B09;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,7112
+F5|C1|S0,F5,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,9,B05;B11;B17;B14;B09;B10;B07;B04;B01,1,9,1,Unspecified,,,0,,1,1,,,,0,1,0,B04;B07;B09;B10;B14,,,,3060
+F5|C2|S0,F5,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2314
+F5|C3|S0,F5,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,9,B01;B06;B05;B02;B07;B08;B10;B09;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B02;B05;B06,,,,6509
+F5|C1|S1,F5,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,1,10,1,2625
+F5|C2|S1,F5,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B05,1,1,1,Shop-only,,Shop Roaster,0,Q1 2027,1,1,,,,1,1,0,,2,68,1,3157
+F5|C3|S1,F5,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B01;B06;B05;B07;B08;B09,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B06,0,0,0,5195
+F6|M1|S0,F6,F,frame,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B07;B09;B10,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1352
+F6|M2|S0,F6,F,frame,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,3,B09;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1499
+F6|M3|S0,F6,F,frame,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3160
+F6|M4|S0,F6,F,frame,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,3907
+F6|M5|S0,F6,F,frame,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2910
+F6|M6|S0,F6,F,frame,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,9210
+F6|C1|S0,F6,F,frame,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B10;B07;B09;B08;B04;B01;B06,1,6,1,Unspecified,,,0,,1,1,,,,0,0,0,B04;B06;B08;B09,,,,6425
+F6|C2|S0,F6,F,frame,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,4721
+F6|C3|S0,F6,F,frame,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B09;B07;B05;B08;B01;B06;B04,1,5,1,Unspecified,,,0,,1,1,,,,0,1,0,B04;B06,,,,6147
+F6|C1|S1,F6,F,frame,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,0,,0,,0,Absent,,,0,,1,1,,,,,,,,0,0,0,4562
+F6|C2|S1,F6,F,frame,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,,2,66,1,6701
+F6|C3|S1,F6,F,frame,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B09;B07;B05;B01;B06;B34;B04,1,4,1,Unspecified,,,0,,1,1,,,,0,0,0,B06,0,0,0,6241
+G1|M1|S0,G1,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,7,B02;B05;B09;B10;B07;B04;B08,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1053
+G1|M2|S0,G1,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B09;B04;B07;B10;B02;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1095
+G1|M3|S0,G1,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,6,B09;B07;B04;B10;B05;B08,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2064
+G1|M4|S0,G1,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1909
+G1|M5|S0,G1,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,4266
+G1|M6|S0,G1,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,7,B09;B04;B10;B07;B05;B02;B08,0,,1,Absent,,,0,,0,0,,,,,,,,,,,6774
+G1|C1|S0,G1,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B07;B08;B04;B10;B09;B02;B06,0,,1,Absent,,,0,,1,1,,,,,,,B04;B10,,,,2341
+G1|C2|S0,G1,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B07;B09;B10;B01,1,4,1,Unspecified,,,0,,1,0,,,,0,1,0,,,,,783
+G1|C3|S0,G1,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,8,B01;B06;B04;B08;B07;B09;B05;B02,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,5171
+G1|C1|S1,G1,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B16;B07;B11;B09;B10;B04;B08,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,2556
+G1|C2|S1,G1,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,0,0,,,,,,,,1,19,0,416
+G1|C3|S1,G1,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B06;B07;B05;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,B06,0,0,0,3645
+G2|M1|S0,G2,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,7,B02;B05;B07;B11;B09;B04;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,926
+G2|M2|S0,G2,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B02;B05;B07;B09;B10;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1109
+G2|M3|S0,G2,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B09;B07;B05;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2738
+G2|M4|S0,G2,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,4,B07;B09;B04;B10,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2416
+G2|M5|S0,G2,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,510
+G2|M6|S0,G2,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,7,B11;B05;B02;B09;B12;B10;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,8334
+G2|C1|S0,G2,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B01;B02;B05;B07;B08;B11;B10;B09;B06;B04,1,1,1,Unspecified,,,0,,1,1,,,,1,1,0,B07;B08,,,,3525
+G2|C2|S0,G2,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B07;B10;B09,0,,0,Absent,,,0,,1,1,,,,,,,,,,,1976
+G2|C3|S0,G2,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,9,B01;B06;B05;B07;B08;B10;B09;B34;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,6255
+G2|C1|S1,G2,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B16;B10;B15;B05;B07;B08;B11;B09,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,2926
+G2|C2|S1,G2,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,0,,,,,,,,1,23,0,1039
+G2|C3|S1,G2,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,12,B01;B06;B05;B08;B09;B07;B10;B34;B35;B02;B28;B11,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,0,0,0,4754
+G3|M1|S0,G3,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,4,B02;B05;B07;B09,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1156
+G3|M2|S0,G3,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,2,B02;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1214
+G3|M3|S0,G3,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,6,B05;B07;B09;B10;B17;B35,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1820
+G3|M4|S0,G3,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1757
+G3|M5|S0,G3,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1795
+G3|M6|S0,G3,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,4,B02;B05;B08;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,6961
+G3|C1|S0,G3,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B01;B06;B02;B08;B07;B10;B11;B05;B09;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,3089
+G3|C2|S0,G3,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B05;B07;B01,1,3,1,Unspecified,,,0,,1,0,,,,0,1,0,,,,,1907
+G3|C3|S0,G3,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B05;B02;B06;B07,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,4553
+G3|C1|S1,G3,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,6,B15;B02;B10;B07;B05;B09,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,2666
+G3|C2|S1,G3,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B05,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,,2,45,1,2376
+G3|C3|S1,G3,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,10,B01;B06;B02;B13;B05;B08;B07;B10;B09;B34,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,,0,0,0,6247
+G4|M1|S0,G4,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,5,B05;B07;B09;B08;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1208
+G4|M2|S0,G4,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,4,B02;B05;B09;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1156
+G4|M3|S0,G4,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B05;B02;B12;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2004
+G4|M4|S0,G4,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,3,B07;B09;B04,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2106
+G4|M5|S0,G4,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1025
+G4|M6|S0,G4,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,4,B07;B09;B04;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,6038
+G4|C1|S0,G4,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B02;B05;B07;B08;B11;B10;B09,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2886
+G4|C2|S0,G4,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1796
+G4|C3|S0,G4,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B01;B02;B05;B08;B07;B34,1,1,1,Both,Series 2,Shop Roaster,0,new Shop Roaster,1,1,,,,0,1,0,,,,,4740
+G4|C1|S1,G4,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B16;B07;B10;B09;B08,0,,0,Absent,,,0,,1,0,,,,,,,,1,9,0,2770
+G4|C2|S1,G4,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B05;B01,1,2,1,Shop-only,,Shop Roaster,0,Q1 2027,1,1,,,,1,1,0,,3,84,1,3106
+G4|C3|S1,G4,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B01;B02;B13;B05;B07;B08;B35,1,1,1,Both,Series 2,Shop Roaster,0,,1,1,,,,0,1,0,,0,0,0,4508
+G5|M1|S0,G5,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,5,B09;B10;B04;B07;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1163
+G5|M2|S0,G5,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B09;B07;B10;B05;B11,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1196
+G5|M3|S0,G5,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,7,B07;B09;B04;B05;B10;B08;B17,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1890
+G5|M4|S0,G5,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1484
+G5|M5|S0,G5,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,3499
+G5|M6|S0,G5,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,6253
+G5|C1|S0,G5,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,13,B02;B05;B07;B08;B01;B06;B10;B09;B11;B17;B18;B04;B12,1,5,1,Unspecified,,,0,,1,1,,,,0,0,0,B08,,,,2510
+G5|C2|S0,G5,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,263
+G5|C3|S0,G5,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,11,B01;B06;B07;B09;B10;B08;B02;B05;B13;B04;B34,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,5877
+G5|C1|S1,G5,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B01;B07;B10;B04;B05;B06;B09;B12,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,1,,2,18,1,2559
+G5|C2|S1,G5,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,0,0,,,,,,,,1,25,0,258
+G5|C3|S1,G5,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,11,B01;B06;B04;B34;B09;B05;B07;B08;B10;B02;B13,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,0,0,0,6065
+G6|M1|S0,G6,G,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,7,B02;B05;B12;B09;B10;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,908
+G6|M2|S0,G6,G,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B09;B07;B04;B10;B02;B05,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1086
+G6|M3|S0,G6,G,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B09;B07;B04;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2421
+G6|M4|S0,G6,G,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,4,B07;B09;B04;B10,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2727
+G6|M5|S0,G6,G,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,1236
+G6|M6|S0,G6,G,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,7,B09;B10;B04;B05;B08;B12;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,5337
+G6|C1|S0,G6,G,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B01;B05;B07;B08;B10;B09;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B05;B07;B08;B10,,,,3102
+G6|C2|S0,G6,G,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B07;B10;B09;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2037
+G6|C3|S0,G6,G,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,8,B01;B06;B04;B34;B05;B07;B09;B10,1,1,1,Both,Series 2,Shop Roaster,0,,1,1,,,,0,1,0,,,,,4878
+G6|C1|S1,G6,G,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B07;B10;B09;B11;B05;B04;B15,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,3726
+G6|C2|S1,G6,G,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B07;B05;B04,0,,1,Absent,,,0,,1,0,,,,,,,,1,24,0,1970
+G6|C3|S1,G6,G,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B05;B08;B07;B04;B01;B06,1,5,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,B04,0,0,0,4947
+C1|M1|S0,C1,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,4,B02;B06;B04;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1282
+C1|M2|S0,C1,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,4,B02;B05;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1053
+C1|M3|S0,C1,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,3,B12;B02;B15,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1567
+C1|M4|S0,C1,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,3,B07;B09;B17,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1480
+C1|M5|S0,C1,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,2,B04;B22,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1860
+C1|M6|S0,C1,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,4,B07;B04;B05;B12,0,,1,Absent,,,0,,1,0,,,,,,,,,,,7590
+C1|C1|S0,C1,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B01;B06;B02;B10;B05,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2400
+C1|C2|S0,C1,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B01;B02;B06,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B02,,,,1831
+C1|C3|S0,C1,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,4,B01;B06;B05;B02,1,1,1,Unspecified,,,0,,1,1,,,,1,0,0,,,,,4815
+C1|C1|S1,C1,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,6,B01;B06;B16;B07;B15;B02,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,0,,1,9,1,2563
+C1|C2|S1,C1,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster,0,Q1 2027,1,1,,,,1,1,0,,2,66,1,2252
+C1|C3|S1,C1,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B06;B05;B07;B02,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,,2,9,1,6175
+C2|M1|S0,C2,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B35;B02;B12,0,,1,Absent,,,0,,1,1,,,,,,,,,,,1276
+C2|M2|S0,C2,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,3,B34;B12;B02,0,,1,Absent,,,0,,1,1,,,,,,,,,,,1336
+C2|M3|S0,C2,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,2,B12;B02,0,,1,Absent,,,0,,1,1,,,,,,,B12,,,,1639
+C2|M4|S0,C2,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B09,0,,0,Absent,,,0,,1,1,,,,,,,B09,,,,1356
+C2|M5|S0,C2,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,2,B01;B06,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,1945
+C2|M6|S0,C2,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,3,B11;B07;B12,0,,0,Absent,,,0,,1,1,,,,,,,B07;B11;B12,,,,7449
+C2|C1|S0,C2,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B01;B35;B06;B12;B13,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,B06;B12;B13;B35,,,,2170
+C2|C2|S0,C2,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,1,1,,,,,1341
+C2|C3|S0,C2,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,3,B01;B06;B12,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B06;B12,,,,4746
+C2|C1|S1,C2,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,4,B01;B12;B02;B06,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,1,B02;B12,2,18,1,2652
+C2|C2|S1,C2,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B13,1,1,1,Shop-only,,Shop Roaster,0,Q1 2027,1,1,,,,0,0,0,B13,1,35,1,2465
+C2|C3|S1,C2,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B01;B02;B12;B13;B06;B10;B05,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,,,,0,1,0,B06;B12;B13,1,5,1,3530
+C3|M1|S0,C3,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B02;B01;B06,1,2,1,Unspecified,,,0,,1,1,,,,0,1,0,B02,,,,1368
+C3|M2|S0,C3,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,5,B02;B13;B04;B07;B09,0,,1,Absent,,,0,,1,1,,,,,,,B02;B09;B13,,,,1297
+C3|M3|S0,C3,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,2006
+C3|M4|S0,C3,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2033
+C3|M5|S0,C3,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,2130
+C3|M6|S0,C3,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B05;B11;B01;B07;B09;B10,1,3,1,Unspecified,,,0,,1,1,,,,0,0,1,B05;B07;B09;B10;B11,,,,8307
+C3|C1|S0,C3,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,4,B01;B06;B12;B02,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,B06;B12,,,,3035
+C3|C2|S0,C3,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,2848
+C3|C3|S0,C3,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,9,B01;B06;B05;B09;B07;B08;B02;B12;B13,1,1,1,Unspecified,,,0,,1,1,,,,1,0,0,B05;B06;B07;B08;B09,,,,4394
+C3|C1|S1,C3,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,4,B01;B06;B02;B12,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,0,B06,2,18,1,3084
+C3|C2|S1,C3,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B01;B05;B13,1,1,1,Shop-only,,Shop Roaster,0,Q1 2027,1,1,,,,1,0,1,B13,2,78,1,3555
+C3|C3|S1,C3,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B01;B06;B02;B09;B05;B07;B08,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,B02;B06,0,0,0,4588
+C4|M1|S0,C4,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B04;B01;B06,1,2,1,Unspecified,,,0,,1,1,,,,0,0,0,B06,,,,1349
+C4|M2|S0,C4,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,5,B04;B07;B09;B10;B02,0,,1,Absent,,,0,,1,1,,,,,,,B04;B07,,,,1381
+C4|M3|S0,C4,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B04;B01;B12;B06,1,2,1,Unspecified,,,0,,1,1,,,,0,0,0,B12,,,,1513
+C4|M4|S0,C4,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,4,B07;B09;B12;B02,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1279
+C4|M5|S0,C4,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,8,B04;B01;B09;B07;B10;B22;B11;B05,1,2,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2814
+C4|M6|S0,C4,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B10;B09;B04;B05;B07;B08,0,,1,Absent,,,0,,1,1,,,,,,,B04,,,,5858
+C4|C1|S0,C4,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B01;B04;B06;B07;B09;B08;B10;B05,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,2778
+C4|C2|S0,C4,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,0,1,B04,,,,2176
+C4|C3|S0,C4,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B01;B06;B09;B07;B10;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,B06,,,,5143
+C4|C1|S1,C4,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B01;B06;B13;B12;B04,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,0,,2,19,1,2543
+C4|C2|S1,C4,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B01;B04;B13,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,,,,0,1,1,B13,2,76,1,2686
+C4|C3|S1,C4,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B02;B13;B06;B04,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,,,,0,0,1,B04,1,3,1,4160
+C5|M1|S0,C5,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,0,,,,0,1,0,,,,,1268
+C5|M2|S0,C5,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B07;B09;B10;B01;B13,1,5,1,Unspecified,,,0,,1,0,,,,0,0,0,,,,,1324
+C5|M3|S0,C5,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,2102
+C5|M4|S0,C5,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,3,B09;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1402
+C5|M5|S0,C5,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,4,B09;B10;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2788
+C5|M6|S0,C5,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B09;B10;B04;B07;B05;B01,1,6,1,Unspecified,,,0,,1,1,,,,0,0,0,B04;B05,,,,7389
+C5|C1|S0,C5,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B01;B06;B04;B09;B07;B10;B08;B11;B12;B13,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,2450
+C5|C2|S0,C5,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,1,,,,,,,,,,,724
+C5|C3|S0,C5,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,4,B01;B04;B06;B07,1,1,1,Both,Series 2,Shop Roaster,0,new Shop Roaster,1,1,,,,0,0,0,,,,,3989
+C5|C1|S1,C5,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B01;B04;B07;B09;B10,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,0,1,,1,9,1,2910
+C5|C2|S1,C5,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,0,,0,,0,Absent,,,0,,1,1,,,,,,,,1,22,0,904
+C5|C3|S1,C5,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B01;B04;B06;B05;B07;B09;B08,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,0,0,,1,5,1,4021
+C6|M1|S0,C6,C,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,4,B02;B10;B09;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1205
+C6|M2|S0,C6,C,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B09;B07;B10;B05;B02,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1121
+C6|M3|S0,C6,C,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,5,B04;B07;B09;B05;B12,0,,1,Absent,,,0,,0,1,,,,,,,B04;B07,,,,2332
+C6|M4|S0,C6,C,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,4,B07;B09;B04;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2333
+C6|M5|S0,C6,C,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,1749
+C6|M6|S0,C6,C,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,5,B10;B09;B04;B05;B02,0,,1,Absent,,,0,,1,0,,,,,,,,,,,7756
+C6|C1|S0,C6,C,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B01;B06;B02;B10;B09;B15;B05;B08,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2949
+C6|C2|S0,C6,C,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B06;B01;B02,1,2,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2596
+C6|C3|S0,C6,C,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B06;B04;B05;B02,1,1,1,Both,Series 2,Shop Roaster,0,,1,1,,,,1,1,0,B04;B06,,,,6089
+C6|C1|S1,C6,C,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B01;B16;B06;B10;B07;B02;B15,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,1,1,1,,1,9,1,3203
+C6|C2|S1,C6,C,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B06,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,Q1 2027,1,1,,,,1,1,0,,2,67,1,3153
+C6|C3|S1,C6,C,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B06;B02;B05;B07,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,,2,10,1,5391
+R1|M1|S0,R1,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B09;B10;B04,0,,1,Absent,,,0,,1,1,,,,,,,B04;B10,,,,1269
+R1|M2|S0,R1,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B09;B07;B10;B05;B18,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1282
+R1|M3|S0,R1,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,6,B09;B04;B07;B10;B05;B08,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2424
+R1|M4|S0,R1,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,6,B09;B07;B04;B08;B05;B17,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2694
+R1|M5|S0,R1,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,1,B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2820
+R1|M6|S0,R1,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B07;B04;B09;B10;B05;B02,0,,1,Absent,,,0,,1,0,,,,,,,,,,,7607
+R1|C1|S0,R1,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B04;B09;B10;B07;B08;B11;B05;B06,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3810
+R1|C2|S0,R1,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B04;B09;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3306
+R1|C3|S0,R1,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,8,B09;B10;B07;B08;B04;B06;B01;B05,1,7,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,6380
+R1|C1|S1,R1,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,6,B04;B09;B10;B07;B16;B12,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,3961
+R1|C2|S1,R1,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B04;B07;B09;B05,0,,1,Absent,,,0,,1,0,,,,,,,,3,94,0,3236
+R1|C3|S1,R1,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B09;B10;B07;B08;B04;B01,1,6,1,Unspecified,,,0,,1,1,,,,0,1,0,B04,0,0,0,5642
+R2|M1|S0,R2,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,4,B04;B09;B10;B07,0,,1,Absent,,,0,,1,1,,,,,,,B04;B09,,,,1132
+R2|M2|S0,R2,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,4,B09;B07;B04;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1250
+R2|M3|S0,R2,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B09;B07;B04;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1938
+R2|M4|S0,R2,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,5,B09;B07;B04;B10;B17,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2467
+R2|M5|S0,R2,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,0,0,,,,,,,,,,,488
+R2|M6|S0,R2,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,7,B09;B10;B04;B05;B07;B17;B11,0,,1,Absent,,,0,,1,0,,,,,,,,,,,8293
+R2|C1|S0,R2,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,8,B04;B07;B09;B10;B08;B11;B05;B17,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3657
+R2|C2|S0,R2,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,5,B05;B07;B09;B10;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2353
+R2|C3|S0,R2,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B09;B07;B05;B10;B04;B34,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3692
+R2|C1|S1,R2,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,7,B04;B10;B09;B07;B08;B11;B05,0,,1,Absent,,,0,,1,0,,,,,,,,1,10,0,3314
+R2|C2|S1,R2,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B05;B07;B04,0,,1,Absent,,,0,,1,0,,,,,,,,2,63,0,2913
+R2|C3|S1,R2,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,10,B07;B05;B09;B08;B10;B04;B34;B11;B17;B18,0,,1,Absent,,,0,,1,1,,,,,,,,0,0,0,6097
+R3|M1|S0,R3,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,7,B09;B04;B10;B07;B11;B27;B18,0,,1,Absent,,,0,,1,1,,,,,,,B04;B10,,,,1289
+R3|M2|S0,R3,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B09;B07;B10;B05;B18,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1385
+R3|M3|S0,R3,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,7,B09;B07;B04;B10;B05;B08;B24,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1987
+R3|M4|S0,R3,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,7,B09;B07;B04;B08;B17;B10;B22,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2469
+R3|M5|S0,R3,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,5,B09;B04;B10;B07;B08,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3020
+R3|M6|S0,R3,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B09;B04;B10;B05;B07;B08,0,,1,Absent,,,0,,0,0,,,,,,,,,,,6293
+R3|C1|S0,R3,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B09;B04;B10;B07;B08;B11;B29;B17;B05;B27,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3121
+R3|C2|S0,R3,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,6,B09;B04;B07;B10;B27;B24,0,,1,Absent,,,0,,1,0,,,,,,,,,,,4138
+R3|C3|S0,R3,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B09;B07;B10;B04;B05;B24;B08,0,,1,Absent,,,0,,1,0,,,,,,,,,,,6005
+R3|C1|S1,R3,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B09;B04;B10;B07;B08;B11;B22;B17;B14;B15,0,,1,Absent,,,0,,1,0,,,,,,,,1,10,0,3009
+R3|C2|S1,R3,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,5,B07;B04;B09;B05;B10,0,,1,Absent,,,0,,0,0,,,,,,,,2,72,0,4212
+R3|C3|S1,R3,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B09;B04;B07;B10;B24;B05,0,,1,Absent,,,0,,1,0,,,,,,,,0,0,0,6984
+R4|M1|S0,R4,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,3,B04;B01;B10,1,2,1,Unspecified,,,0,,1,1,,,,0,0,0,B10,,,,1531
+R4|M2|S0,R4,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,4,B04;B09;B10;B07,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1288
+R4|M3|S0,R4,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,4,B04;B01;B09;B07,1,2,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,1819
+R4|M4|S0,R4,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,5,B04;B07;B09;B10;B22,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1926
+R4|M5|S0,R4,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,2,B04;B02,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2672
+R4|M6|S0,R4,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,3,B09;B10;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,7782
+R4|C1|S0,R4,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,5,B04;B06;B01;B02;B09,1,3,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,3219
+R4|C2|S0,R4,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,3,B04;B01;B06,1,2,1,Unspecified,,,0,,1,0,,,,0,0,0,,,,,2615
+R4|C3|S0,R4,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,4,B01;B04;B06;B09,1,1,1,Both,Series 2,Shop Roaster,0,,1,1,,,,0,0,0,B04;B06,,,,4316
+R4|C1|S1,R4,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,4,B04;B01;B05;B10,1,2,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,1,0,B05,2,18,1,3341
+R4|C2|S1,R4,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B04;B09,0,,1,Absent,,,0,,1,1,,,,,,,B04,4,131,0,3977
+R4|C3|S1,R4,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B06;B10;B09;B04,1,1,1,Both,Series 2,Shop Roaster,0,,1,1,,,,0,0,0,B09;B10,3,18,1,5234
+R5|M1|S0,R5,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,7,B02;B05;B07;B11;B09;B04;B10,0,,1,Absent,,,0,,1,1,,,,,,,B04,,,,1280
+R5|M2|S0,R5,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,5,B09;B07;B05;B04;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,1378
+R5|M3|S0,R5,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,5,B09;B07;B04;B05;B10,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2373
+R5|M4|S0,R5,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,5,B09;B07;B04;B08;B22,0,,1,Absent,,,0,,0,0,,,,,,,,,,,2564
+R5|M5|S0,R5,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,0,,0,,0,Absent,,,0,,1,0,,,,,,,,,,,2339
+R5|M6|S0,R5,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,4,B07;B09;B04;B05,0,,1,Absent,,,0,,1,0,,,,,,,,,,,8307
+R5|C1|S0,R5,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,10,B07;B08;B10;B05;B01;B04;B09;B11;B17;B16,1,5,1,Unspecified,,,0,,1,1,,,,0,0,0,B05;B07;B08;B10,,,,4688
+R5|C2|S0,R5,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B07;B09;B10;B04,0,,1,Absent,,,0,,1,0,,,,,,,,,,,3118
+R5|C3|S0,R5,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,11,B05;B08;B22;B11;B09;B10;B07;B04;B34;B01;B06,1,10,1,Unspecified,,,0,,1,1,,,,0,1,1,B04,,,,5140
+R5|C1|S1,R5,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,6,B05;B07;B10;B11;B09;B02,0,,1,Absent,,,0,,1,0,,,,,,,,1,9,0,3272
+R5|C2|S1,R5,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B07;B05;B04;B09,0,,1,Absent,,,0,,1,0,,,,,,,,2,66,0,3402
+R5|C3|S1,R5,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,6,B04;B09;B07;B05;B08;B01,1,6,1,Unspecified,,,0,,1,1,,,,1,1,0,B04,0,0,0,5178
+R6|M1|S0,R6,R,recommendation,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,6,B09;B04;B10;B07;B08;B34,0,,1,Absent,,,0,,0,1,,,,,,,B04;B10,,,,1248
+R6|M2|S0,R6,R,recommendation,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,6,B04;B09;B07;B10;B18;B05,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1295
+R6|M3|S0,R6,R,recommendation,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,6,B09;B04;B07;B10;B05;B08,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1637
+R6|M4|S0,R6,R,recommendation,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,5,B09;B07;B04;B08;B17,0,,1,Absent,,,0,,0,0,,,,,,,,,,,1852
+R6|M5|S0,R6,R,recommendation,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,8,B09;B04;B10;B07;B22;B11;B05;B12,0,,1,Absent,,,0,,1,0,,,,,,,,,,,4047
+R6|M6|S0,R6,R,recommendation,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,6,B09;B04;B10;B05;B07;B08,0,,1,Absent,,,0,,1,1,,,,,,,B04,,,,5461
+R6|C1|S0,R6,R,recommendation,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,12,B09;B04;B10;B07;B08;B11;B05;B17;B18;B06;B01;B12,1,11,1,Unspecified,,,0,,1,1,,,,0,0,0,B12,,,,2914
+R6|C2|S0,R6,R,recommendation,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B04;B09;B07;B10,0,,1,Absent,,,0,,1,0,,,,,,,,,,,2821
+R6|C3|S0,R6,R,recommendation,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,7,B09;B04;B10;B07;B05;B08;B06,0,,1,Absent,,,0,,1,0,,,,,,,,,,,4779
+R6|C1|S1,R6,R,recommendation,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,12,B09;B01;B04;B10;B07;B11;B08;B34;B06;B12;B16;B15,1,2,1,Unspecified,,,0,,1,1,,,,0,0,0,,1,9,1,3113
+R6|C2|S1,R6,R,recommendation,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,4,B04;B09;B10;B07,0,,1,Absent,,,0,,0,0,,,,,,,,3,93,0,3373
+R6|C3|S1,R6,R,recommendation,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,8,B04;B07;B09;B10;B05;B08;B01;B34,1,7,1,Unspecified,,,0,,1,1,,,,0,0,0,,0,0,0,5132
+K1|M1|S0,K1,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,0,0,,,,,414
+K1|M2|S0,K1,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,554
+K1|M3|S0,K1,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,0,0,,,,,384
+K1|M4|S0,K1,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,230
+K1|M5|S0,K1,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,0,0,,,,,223
+K1|M6|S0,K1,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,752
+K1|C1|S0,K1,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,1,1,,,,0,0,0,,,,,1165
+K1|C2|S0,K1,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,0,1,,,,0,0,0,,,,,369
+K1|C3|S0,K1,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,,,,1,1,0,,,,,1632
+K1|C1|S1,K1,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,new Shop Roaster;deep bronze;Q1 2027;Coffee Fest Dallas;Bellwether app,1,1,,,,0,1,0,,1,10,0,1495
+K1|C2|S1,K1,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster,0,Deep Bronze;Q1 2027,1,1,,,,0,0,0,,1,36,1,1189
+K1|C3|S1,K1,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster,0,Deep Bronze;Q1 2027;Bellwether App,1,1,,,,1,0,0,,3,7,1,1322
+K2|M1|S0,K2,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,0,0,,,,,580
+K2|M2|S0,K2,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,760
+K2|M3|S0,K2,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,433
+K2|M4|S0,K2,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,372
+K2|M5|S0,K2,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.STOP,1,B01,1,1,1,PreShop-only,Series 1,,1,,0,1,,,,0,0,0,,,,,433
+K2|M6|S0,K2,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,353
+K2|C1|S0,K2,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,1064
+K2|C2|S0,K2,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Both,Series 2,Shop Roaster,0,,0,1,,,,0,0,0,,,,,566
+K2|C3|S0,K2,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Both,Series 2,Shop Roaster,0,,0,1,,,,0,0,0,,,,,654
+K2|C1|S1,K2,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Both,Series 2,Shop Roaster;Shop Roaster;Shop Roaster,0,new Shop Roaster;new Shop Roaster;deep bronze;Bellwether app,1,1,,,,0,1,0,,1,9,1,1910
+K2|C2|S1,K2,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,new Shop Roaster;Deep Bronze;Q1 2027,0,1,,,,0,1,0,,1,36,1,1011
+K2|C3|S1,K2,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster;Shop Roaster,0,Deep Bronze,1,1,,,,1,1,0,,4,10,1,1266
+K3|M1|S0,K3,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,906
+K3|M2|S0,K3,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,1172
+K3|M3|S0,K3,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,573
+K3|M4|S0,K3,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,1,0,venting-mentioned,,,0,0,0,,,,,507
+K3|M5|S0,K3,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,2518
+K3|M6|S0,K3,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,1775
+K3|C1|S0,K3,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,1,1,0,,,,,1555
+K3|C2|S0,K3,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,0,0,,,,,725
+K3|C3|S0,K3,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,1,1,no-venting-claimed,,,0,1,0,,,,,1757
+K3|C1|S1,K3,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,1,1,no-venting-claimed,,,0,1,1,,1,10,1,1337
+K3|C2|S1,K3,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,1,1,no-venting-claimed,,,0,0,0,,1,35,1,896
+K3|C3|S1,K3,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,no-venting-claimed,,,1,0,0,,1,5,1,1706
+K4|M1|S0,K4,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,1,0,,,,,769
+K4|M2|S0,K4,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,1464
+K4|M3|S0,K4,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2062
+K4|M4|S0,K4,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,1,0,,,,,1828
+K4|M5|S0,K4,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,1,B01,1,1,1,PreShop-only,Series 1;Series 1;Series 2;Series 1,,1,,0,1,,,,0,1,0,,,,,2354
+K4|M6|S0,K4,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,PreShop-only,Series 1;Series 2,,1,,1,1,,,,0,1,0,,,,,4191
+K4|C1|S0,K4,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,1,0,,,,,2049
+K4|C2|S0,K4,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,1,0,,,,,952
+K4|C3|S0,K4,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster;Shop Roaster,0,,1,1,,,,0,1,0,,,,,4682
+K4|C1|S1,K4,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Both,Series 1,Shop Roaster,1,New Shop Roaster;new Shop Roaster;Q1 2027,1,1,,,,1,1,0,,1,9,1,2460
+K4|C2|S1,K4,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,0,0,,,,0,1,0,,1,31,1,2678
+K4|C3|S1,K4,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,0,0,,,,0,1,0,,3,15,1,2997
+K5|M1|S0,K5,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,1,,1.4,Shop Roaster,0,0,0,,,,,626
+K5|M2|S0,K5,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,0,,7.0,other,0,0,0,,,,,675
+K5|M3|S0,K5,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,2.722,Series 2,0,0,0,,,,,244
+K5|M4|S0,K5,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,5.443,other,0,0,0,,,,,398
+K5|M5|S0,K5,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,0,,3.0,other,0,0,0,,,,,322
+K5|M6|S0,K5,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,0,,1.0,other,0,0,0,,,,,227
+K5|C1|S0,K5,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,0,1,,3.0,other,0,0,0,,,,,629
+K5|C2|S0,K5,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Unspecified,,,0,,0,0,,2.722,Series 2,0,0,0,,,,,258
+K5|C3|S0,K5,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,0,0,,2.722,Series 2,0,0,0,,,,,1241
+K5|C1|S1,K5,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Shop-only,,Shop Roaster,0,,0,0,,48.0,other,0,0,0,,1,9,1,1205
+K5|C2|S1,K5,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,PreShop-only,Series 2,,0,,0,0,,2.722,Series 2,0,0,0,,2,37,1,555
+K5|C3|S1,K5,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Both,Series 1;Series 2,Shop Roaster,1,,0,0,,20.0,other,0,0,0,,4,9,1,1236
+K6|M1|S0,K6,K,bellwether_probe,L,S0,M1,Claude Opus 4.5,post,ok,claude-opus-4-5-20251101,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,729
+K6|M2|S0,K6,K,bellwether_probe,L,S0,M2,Claude Sonnet 4.5,post,ok,claude-sonnet-4-5-20250929,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,1141
+K6|M3|S0,K6,K,bellwether_probe,L,S0,M3,GPT-4o,pre,ok,gpt-4o-2024-08-06,stop,1,B01,1,1,1,Unspecified,,,0,,1,0,,,,0,0,0,,,,,1792
+K6|M4|S0,K6,K,bellwether_probe,L,S0,M4,GPT-4o-mini,pre,ok,gpt-4o-mini-2024-07-18,stop,1,B01,1,1,1,Unspecified,,,0,,0,0,,,,0,0,0,,,,,1924
+K6|M5|S0,K6,K,bellwether_probe,L,S0,M5,Gemini 2.5 Flash,post,ok,gemini-2.5-flash,FinishReason.MAX_TOKENS,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,1,0,,,,,2660
+K6|M6|S0,K6,K,bellwether_probe,L,S0,M6,Gemini 2.5 Flash Lite,post,ok,gemini-2.5-flash-lite,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,0,1,,,,0,1,0,,,,,4376
+K6|C1|S0,K6,K,bellwether_probe,C,S0,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,2795
+K6|C2|S0,K6,K,bellwether_probe,C,S0,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,,,,2511
+K6|C3|S0,K6,K,bellwether_probe,C,S0,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,1,B01,1,1,1,Unspecified,,,0,,1,1,,,,1,1,0,,,,,4412
+K6|C1|S1,K6,K,bellwether_probe,C,S1,C1,Claude Opus 5.5,post,ok,claude-opus-5-5,end_turn,2,B01;B06,1,1,1,Unspecified,,,0,,1,1,,,,1,1,1,,1,9,1,2804
+K6|C2|S1,K6,K,bellwether_probe,C,S1,C2,GPT-6 Astra,post,ok,gpt-6-astra,completed,2,B01;B04,1,1,1,Unspecified,,,0,,1,1,,,,0,0,0,,2,68,1,3281
+K6|C3|S1,K6,K,bellwether_probe,C,S1,C3,Gemini 4 Argon,post,ok,gemini-4-argon,FinishReason.STOP,5,B01;B09;B07;B05;B06,1,1,1,Shop-only,,Shop Roaster;Shop Roaster,0,,1,1,,,,1,1,0,B05;B07;B09,2,12,1,5048

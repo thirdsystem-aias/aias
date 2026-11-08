@@ -1,0 +1,180 @@
+{
+  "phase": "v0.39",
+  "prereg_tag": "v0.39-prereg-r1",
+  "status": "FINAL",
+  "audit_complete": true,
+  "n_unaudited": 0,
+  "H_CEP": {
+    "verdict": "CONFIRMED",
+    "delta": 0.25,
+    "p_one_sided": 0.0015,
+    "presence_G": 0.0,
+    "presence_C": 0.25,
+    "n_G": 36,
+    "n_C": 36,
+    "per_model_delta": {
+      "M1": 0.5,
+      "M2": 0.1667,
+      "M3": 0.1667,
+      "M4": 0.0,
+      "M5": 0.3333,
+      "M6": 0.3333
+    },
+    "models_positive": 5,
+    "current_arm_descriptive": {
+      "S0": {
+        "G": 0.6667,
+        "C": 0.8889
+      },
+      "S1": {
+        "G": 0.5,
+        "C": 0.9444
+      }
+    },
+    "rule": "CONFIRMED d>=0.20 & p<.05; PARTIAL 0<d<0.20 & p<.05; UNDETERMINED d>0 & p>=.05; FALSIFIED d<=0"
+  },
+  "H_CEPDefault": {
+    "verdict": "FALSIFIED",
+    "bellwether_presence_C": 0.25,
+    "margin_over_next": -0.25,
+    "rank": 7,
+    "top5": [
+      [
+        "Loring",
+        0.5
+      ],
+      [
+        "Diedrich",
+        0.5
+      ],
+      [
+        "Probat",
+        0.4722
+      ],
+      [
+        "Aillio",
+        0.3611
+      ],
+      [
+        "Giesen",
+        0.3056
+      ]
+    ],
+    "first_mention_share_C": 0.0556,
+    "mean_first_pos_C": 2.667,
+    "current_arm_descriptive": {
+      "S0": {
+        "bellwether_presence": 0.8889,
+        "rank": 1,
+        "top5": [
+          [
+            "Bellwether",
+            0.8889
+          ],
+          [
+            "Stronghold",
+            0.7778
+          ],
+          [
+            "Aillio",
+            0.4444
+          ],
+          [
+            "Loring",
+            0.3333
+          ],
+          [
+            "Mill City Roasters",
+            0.3333
+          ]
+        ]
+      },
+      "S1": {
+        "bellwether_presence": 0.9444,
+        "rank": 1,
+        "top5": [
+          [
+            "Bellwether",
+            0.9444
+          ],
+          [
+            "Stronghold",
+            0.6667
+          ],
+          [
+            "Aillio",
+            0.5
+          ],
+          [
+            "Diedrich",
+            0.3889
+          ],
+          [
+            "Mill City Roasters",
+            0.3333
+          ]
+        ]
+      }
+    },
+    "rule": "CONFIRMED rank 1 & margin>=0.10; PARTIAL rank 1 (incl. tie) & margin<0.10; FALSIFIED not rank 1"
+  },
+  "H_Frame": {
+    "verdict": "CONFIRMED",
+    "vent_share": 0.9444,
+    "ventless_share": 0.0,
+    "n": 36,
+    "vent_wilson95": [
+      0.8186,
+      0.9846
+    ],
+    "ventless_wilson95": [
+      0.0,
+      0.0964
+    ],
+    "current_arm_descriptive": {
+      "S0": {
+        "vent_share": 1.0,
+        "ventless_share": 0.5
+      },
+      "S1": {
+        "vent_share": 1.0,
+        "ventless_share": 0.7222
+      }
+    },
+    "rule": "CONFIRMED vent>=0.50 & ventless<=0.10; PARTIAL exactly one; FALSIFIED neither"
+  },
+  "H_Search": {
+    "verdict": "FALSIFIED",
+    "delta": -0.0556,
+    "p_one_sided": 0.89062,
+    "n_pairs": 36,
+    "b_s1_only": 2,
+    "c_s0_only": 4,
+    "presence_S0": 0.7778,
+    "presence_S1": 0.7222,
+    "per_model_delta": {
+      "C1": -0.25,
+      "C2": 0.0833,
+      "C3": 0.0
+    },
+    "rule": "exact one-sided McNemar; CONFIRMED d>=0.20 & p<.05; PARTIAL 0<d<0.20 & p<.05; UNDETERMINED d>0 & p>=.05; FALSIFIED d<=0"
+  },
+  "MC_Constraint": {
+    "pass": true,
+    "ventless_share_G": 0.0,
+    "ventless_share_C": 0.5278,
+    "difference": 0.5278,
+    "rule": "pass if ventless share C - G >= 0.20 (legacy arm)"
+  },
+  "MC_Boundary": {
+    "pass": true,
+    "shop_share": null,
+    "k_shop": 0,
+    "n_specified": 0,
+    "pre_boundary_shop_aware": {
+      "M3": false,
+      "M4": false
+    },
+    "rule": "pass if Shop-only/Both share <= 0.10 (or zero Shop tokens) among pre-boundary generation-specified responses"
+  }
+}
