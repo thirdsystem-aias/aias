@@ -1,0 +1,725 @@
+{
+ "phase": "v0.39",
+ "status": "locked at tag v0.39-prereg-r1 (2026-11-08)",
+ "substrate": "Commercial coffee roasters for cafés, retailers and specialty roasteries (US market): sample, shop and production machines",
+ "focal_brand": "B01",
+ "flags_legend": {
+  "i": "case-insensitive",
+  "": "case-sensitive"
+ },
+ "exclusion_semantics": "a match is discarded if an exclusion pattern (case-insensitive) occurs within `window` characters before or after it",
+ "inclusion_rule": {
+  "S": "Show floor: every roasting-machine maker, or its exclusive distributor, on the Coffee Fest Dallas-Fort Worth 2026 exhibitor list (139 exhibitors; snapshot 2026-11-08)",
+  "A": "AI shelf: v0.38 registry brands in the prosumer and commercial-spillover segments, plus unregistered commercial roaster brands named in v0.38's 132 panel answers",
+  "M": "Market: manufacturers with a brand collection page in the Coffee Equipment Pros 'Roasters by Manufacturer' index (the show-floor distributor's marketplace; snapshot 2026-11-08); one-off product listings excluded",
+  "D": "Claim holders: makers whose own materials market in-store or on-site retail roasting, found in the pre-lock fact check",
+  "precedence": "A brand's stratum is its first qualifying route in the order S, A, M, D"
+ },
+ "resolved_at_lock": [
+  "Show-floor stratum kept as listed, six brands (pre-registrant, 2026-11-08): Toper stays in A, Sonofresco in D, Wiltronic Corporation not added",
+  "Brands with 'status to verify' keep that label; segment and status labels enter no test"
+ ],
+ "audited_brands": [
+  "B01",
+  "B06"
+ ],
+ "brands": [
+  {
+   "id": "B01",
+   "brand": "Bellwether",
+   "stratum": "S",
+   "segment": "shop",
+   "status": "active (focal)",
+   "aliases": [
+    {
+     "pattern": "\\bBellwether\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Case-sensitive; every match audited for common-noun use (§3.3). Booth DE 210."
+  },
+  {
+   "id": "B02",
+   "brand": "Aillio",
+   "stratum": "S",
+   "segment": "micro",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bA(?:illio|ilio|illo|llio)\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bBullet\\s+(?:R1|R2|V2)\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bBullet\\s+roaster\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38",
+   "note": "Booth DE 225."
+  },
+  {
+   "id": "B03",
+   "brand": "Air-Motion Roasters",
+   "stratum": "S",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bAir[- ]Motion\\b",
+     "flags": ""
+    },
+    {
+     "pattern": "\\bAMR\\s?-?(?:3|6|12|20)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Booth DE 332, exhibited by its exclusive North American distributor Coffee Equipment Pros."
+  },
+  {
+   "id": "B04",
+   "brand": "Loring",
+   "stratum": "S",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bLoring\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B05",
+   "brand": "Mill City Roasters",
+   "stratum": "S",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bMill\\s+City\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B06",
+   "brand": "Stronghold",
+   "stratum": "S",
+   "segment": "shop",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bStronghold\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38",
+   "note": "Case-sensitive; every match audited for common-noun use (§3.3). On the floor via RoasTronix, its US distributor."
+  },
+  {
+   "id": "B07",
+   "brand": "Diedrich",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bDiedrich\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B08",
+   "brand": "San Franciscan",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bSan Franciscan\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B09",
+   "brand": "Probat",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bProbat(?:ino|one)?\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38",
+   "note": "v0.38 alias widened to catch Probatino/Probatone (new phase; not a v0.38 amendment)."
+  },
+  {
+   "id": "B10",
+   "brand": "Giesen",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bGiesen\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B11",
+   "brand": "US Roaster Corp",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bUS\\s+Roaster\\s+Corp",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bUSRC\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bU\\.S\\.\\s+Roaster\\s+Corp",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B12",
+   "brand": "Ikawa",
+   "stratum": "A",
+   "segment": "sample",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bIkawa\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B13",
+   "brand": "Roest",
+   "stratum": "A",
+   "segment": "sample",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bRoest\\b",
+     "flags": ""
+    },
+    {
+     "pattern": "\\bROEST\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B14",
+   "brand": "Coffee-Tech Engineering",
+   "stratum": "A",
+   "segment": "shop",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bCoffee-Tech\\b",
+     "flags": ""
+    },
+    {
+     "pattern": "\\bCoffee Tech Engineering\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bGhibli\\s+R\\d+\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38",
+   "note": "Also a claim holder: markets smokeless roasting technology (D4)."
+  },
+  {
+   "id": "B15",
+   "brand": "Kaleido",
+   "stratum": "A",
+   "segment": "micro",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bKaleido\\b",
+     "flags": ""
+    },
+    {
+     "pattern": "\\bSniper\\s+M\\d+\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B16",
+   "brand": "Santoker",
+   "stratum": "A",
+   "segment": "micro",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bSantoker\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "carried_from": "v0.38"
+  },
+  {
+   "id": "B17",
+   "brand": "Toper",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bToper\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Named in 2 v0.38 answers. Kept in stratum A at lock (pre-registrant, 2026-11-08)."
+  },
+  {
+   "id": "B18",
+   "brand": "Has Garanti",
+   "stratum": "A",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bHas\\s?Garanti\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bGaranti\\s+(?:coffee\\s+)?roasters?\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "note": "Named in 1 v0.38 answer. Bare 'Garanti' not matched (bank-name collision)."
+  },
+  {
+   "id": "B19",
+   "brand": "BC Roasters",
+   "stratum": "A",
+   "segment": "micro",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bBC\\s+Roasters?\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Named in 3 v0.38 answers (all M1)."
+  },
+  {
+   "id": "B20",
+   "brand": "Buckeye",
+   "stratum": "A",
+   "segment": "production",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bBuckeye\\s+(?:Coffee\\s+)?Roast(?:ers?|ing)\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "note": "Named in 1 v0.38 answer."
+  },
+  {
+   "id": "B21",
+   "brand": "North",
+   "stratum": "A",
+   "segment": "micro",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bNorth\\s+(?:TJ-?\\d+|(?:coffee\\s+)?roasters?)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Taiwanese maker (TJ-067 named in 1 v0.38 answer). Requires a model number or 'roaster' context."
+  },
+  {
+   "id": "B22",
+   "brand": "Ambex",
+   "stratum": "M",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bAmbex\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B23",
+   "brand": "ARC",
+   "stratum": "M",
+   "segment": "sample",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bARC[- ]?(?:\\d{3,4}|sample\\s+roasters?)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Requires a model number or 'sample roaster' context."
+  },
+  {
+   "id": "B24",
+   "brand": "Joper",
+   "stratum": "M",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bJoper\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B25",
+   "brand": "Lilla",
+   "stratum": "M",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bLilla\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B26",
+   "brand": "Öztürkbay",
+   "stratum": "M",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\b(?:Ö|O)zt(?:ü|u)rkbay\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B27",
+   "brand": "Petroncini",
+   "stratum": "M",
+   "segment": "production",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bPetroncini\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B28",
+   "brand": "Primo",
+   "stratum": "M",
+   "segment": "production",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bPrimo\\s+(?:Ranger|XR-?\\d*|(?:coffee\\s+)?roasters?|Roasting)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Requires a model or 'roaster' context."
+  },
+  {
+   "id": "B29",
+   "brand": "Proaster",
+   "stratum": "M",
+   "segment": "production",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bProaster\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B30",
+   "brand": "Trabattoni",
+   "stratum": "M",
+   "segment": "production",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bTrabattoni\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B31",
+   "brand": "Vittoria",
+   "stratum": "M",
+   "segment": "production",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bVittoria\\s+(?:coffee\\s+)?roasters?\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "note": "Requires 'roaster' context (Vittoria Coffee, the Australian coffee brand, is not a match)."
+  },
+  {
+   "id": "B32",
+   "brand": "Jabez Burns",
+   "stratum": "M",
+   "segment": "legacy",
+   "status": "historic (vintage used machines)",
+   "aliases": [
+    {
+     "pattern": "\\bJabez\\s+Burns\\b",
+     "flags": "i"
+    },
+    {
+     "pattern": "\\bBurns\\s+(?:Thermalo|(?:coffee\\s+)?roasters?|No\\.?\\s?\\d+)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B33",
+   "brand": "Royal",
+   "stratum": "M",
+   "segment": "legacy",
+   "status": "historic (vintage used machines)",
+   "aliases": [
+    {
+     "pattern": "\\bRoyal\\s+(?:No\\.?\\s?\\d+|(?:coffee\\s+)?roasters?)\\b",
+     "flags": ""
+    }
+   ],
+   "exclusions": [],
+   "note": "Requires a model or 'roaster' context (Royal Coffee, the green-coffee importer, is not a match)."
+  },
+  {
+   "id": "B34",
+   "brand": "Sivetz",
+   "stratum": "M",
+   "segment": "legacy",
+   "status": "status to verify",
+   "aliases": [
+    {
+     "pattern": "\\bSivetz\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  },
+  {
+   "id": "B35",
+   "brand": "Sonofresco",
+   "stratum": "D",
+   "segment": "in-store retail",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bSonofresco\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": [],
+   "note": "Owned by Coffee Holding (booth DE 420). Kept in stratum D at lock (pre-registrant, 2026-11-08)."
+  },
+  {
+   "id": "B36",
+   "brand": "Java Master",
+   "stratum": "D",
+   "segment": "in-store retail",
+   "status": "active",
+   "aliases": [
+    {
+     "pattern": "\\bJava\\s?Master\\b",
+     "flags": "i"
+    }
+   ],
+   "exclusions": []
+  }
+ ],
+ "bellwether_generation_coding": {
+  "anchors": [
+   {
+    "pattern": "\\bBellwether\\b",
+    "flags": ""
+   }
+  ],
+  "preshop_tokens": [
+   {
+    "pattern": "\\bSeries\\s?(?:1|2|One|Two)\\b",
+    "flags": "i"
+   },
+   {
+    "pattern": "\\boriginal\\s+Bellwether(?:\\s+(?:Coffee\\s+)?roaster)?\\b",
+    "flags": "i"
+   }
+  ],
+  "shop_tokens": [
+   {
+    "pattern": "\\bShop\\s+Roaster\\b",
+    "flags": ""
+   }
+  ],
+  "model_2026_markers": [
+   {
+    "pattern": "\\bnew\\s+Shop\\s+Roaster\\b",
+    "flags": "i"
+   },
+   {
+    "pattern": "\\bdeep\\s+bronze\\b",
+    "flags": "i"
+   },
+   {
+    "pattern": "\\bQ1\\s+2027\\b",
+    "flags": "i"
+   },
+   {
+    "pattern": "\\bCoffee\\s+Fest\\s+(?:Dallas|DFW)\\b",
+    "flags": "i"
+   },
+   {
+    "pattern": "\\bBellwether\\s+app\\b",
+    "flags": "i"
+   }
+  ],
+  "attribution_window_chars": 60,
+  "attribution_rule": "token attributed to Bellwether iff an anchor ends within the 60 characters preceding the token and no other registry brand alias match lies between that anchor and the token",
+  "codes": [
+   "PreShop-only",
+   "Shop-only",
+   "Both",
+   "Unspecified",
+   "Absent"
+  ],
+  "note": "Shop tokens are case-sensitive so the generic phrase 'shop roaster' is not read as Bellwether's product name."
+ },
+ "frame_lexicons": {
+  "flags": "i",
+  "venting": [
+   "\\bvent(?:s|ed|ing|ilation|ilate|ilated)?\\b",
+   "\\bexhausts?\\b",
+   "\\bduct(?:s|ing|work)?\\b",
+   "\\bchimneys?\\b",
+   "\\bflues?\\b",
+   "\\bafterburners?\\b",
+   "\\bcatalytic\\b",
+   "\\bhoods?\\b"
+  ],
+  "ventless": [
+   "\\bventless\\b",
+   "\\bvent[- ]free\\b",
+   "\\bsmokeless\\b",
+   "\\bsmoke[- ]free\\b",
+   "\\bzero[- ]emissions?\\b",
+   "\\b(?:no|without(?:\\s+any)?|without\\s+the\\s+need\\s+for)\\s+(?:external\\s+|outside\\s+)?(?:venting|ventilation|vents?|ducting|ductwork|ducts|exhaust|chimney|hood)\\b",
+   "\\b(?:does\\s+not|doesn't|do\\s+not|don't|won't|will\\s+not|never)\\s+(?:need|require)s?\\s+(?:any\\s+|an?\\s+)?(?:external\\s+|outside\\s+)?(?:venting|ventilation|vents?|ducting|ductwork|exhaust|chimney|hood)\\b",
+   "\\bno\\s+need\\s+(?:for|to)\\s+(?:an?\\s+)?(?:vent|venting|ventilation|ducting|ductwork|exhaust)\\b"
+  ]
+ },
+ "grounding_fact_sheet": {
+  "Shop Roaster": {
+   "batch": "1.5 kg (3.3 lb)",
+   "roasts_per_hour": "3-4",
+   "power": "200-240 VAC single phase, 30 A circuit, 5 kW; NEMA L6-30P",
+   "ventilation": "no external exhaust, ductwork or gas line; internal afterburner",
+   "certifications": "UL 197, UL 710, NSF 4, CE",
+   "announced": "2024-03-07"
+  },
+  "Series 2": {
+   "batch": "2.7 kg (6 lb)",
+   "power": "240 V single phase or 208 V three phase, 50 A circuit",
+   "announced": "2022-02"
+  },
+  "Series 1": {
+   "launched": "2018 (US)",
+   "support": "technical and software support ended 2026-01-01"
+  },
+  "new Shop Roaster (2026)": {
+   "announced": "2026-10-15",
+   "public_debut": "Coffee Fest Dallas-Fort Worth, 2026-10-17/18, booth 210",
+   "deliveries": "from Q1 2027",
+   "specs": "not published in the launch release"
+  },
+  "competitor_specs_for_D4": {
+   "Air-Motion Roasters": "spec sheet lists an exhaust exit pipe (AMR12: 247 mm); vented machine"
+  }
+ },
+ "sources": [
+  "Bellwether, 'Bellwether Roaster Specifications' (published 2026-02-13, modified 2026-06-19) and Shop Roaster technical specifications PDF",
+  "Bellwether FAQ (Series 1 end of support; Series 2 power) and Series 2 page; accessed 2026-11-08",
+  "Sprudge, 'Bellwether Announces New Smaller Footprint Shop Roaster' (2024-03-07)",
+  "Sprudge, 'Bellwether Debuts New Shop Roaster ...' (2026-10-15)",
+  "Daily Coffee News (2022-02-15), Bellwether Series 2; Global Coffee Report (2019-09-05; 2022)",
+  "Kokoquest, Coffee Fest Dallas Fort Worth 2026 exhibitor list (accessed 2026-11-08)",
+  "Coffee Equipment Pros, Roasters by Manufacturer index (accessed 2026-11-08)",
+  "Daily Coffee News (2025-05-29), Air-Motion Roasters; Air-Motion AMR12 specification page",
+  "Perfect Daily Grind (2023-09-11), RoasTronix / Stronghold US distribution",
+  "Coffee-Tech Engineering llms.txt; Java Master (BusinessWire / CSNews); Sonofresco (Benzinga; DCN 2014, 2020)"
+ ]
+}

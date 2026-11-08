@@ -1,0 +1,298 @@
+{
+ "phase": "v0.39",
+ "status": "locked at tag v0.39-prereg-r1 (2026-11-08)",
+ "tier_labels": {
+  "F": "Frame: in-house roasting decision (no brand asked)",
+  "G": "Café roaster recommendation, no constraint",
+  "C": "Café roaster recommendation under the infrastructure constraint (gas / venting / smoke / air quality / electric)",
+  "R": "Production roastery recommendation (contrast)",
+  "K": "Bellwether probe (brand named)"
+ },
+ "arms": {
+  "L": {
+   "label": "legacy fixed panel (v0.17-v0.38)",
+   "models": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6"
+   ],
+   "decoding": {
+    "temperature": 0.0,
+    "max_output_tokens": 2048,
+    "system_prompt": null,
+    "calls_per_cell": 1
+   },
+   "conditions": [
+    "S0"
+   ]
+  },
+  "C": {
+   "label": "current assistants",
+   "models": [
+    "C1",
+    "C2",
+    "C3"
+   ],
+   "decoding": {
+    "temperature": "provider default (not set)",
+    "reasoning_effort": "provider default (not set)",
+    "max_output_tokens": 16384,
+    "system_prompt": null,
+    "calls_per_cell": 1
+   },
+   "conditions": [
+    "S0",
+    "S1"
+   ]
+  }
+ },
+ "conditions": {
+  "S0": "no tools",
+  "S1": {
+   "anthropic": {
+    "type": "web_search_20250305",
+    "name": "web_search",
+    "max_uses": 5,
+    "user_location": {
+     "type": "approximate",
+     "country": "US"
+    }
+   },
+   "openai": {
+    "type": "web_search",
+    "search_context_size": "medium",
+    "user_location": {
+     "type": "approximate",
+     "country": "US"
+    },
+    "include": [
+     "web_search_call.action.sources"
+    ]
+   },
+   "google": {
+    "tool": "google_search",
+    "note": "provider defaults"
+   }
+  }
+ },
+ "calls": {
+  "L": 180,
+  "C": 180,
+  "total": 360
+ },
+ "probes": [
+  {
+   "probe_id": "F1",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "I own a coffee shop. Should we start roasting our own coffee in-house?",
+   "sha256": "66c5f5a96c90bf551507c7181906f27cd83aa96bdea0b15b94e213216f520eed"
+  },
+  {
+   "probe_id": "F2",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "What do I need to start roasting coffee inside my café?",
+   "sha256": "90eec057f0047182d2b1fc77e2c91a04fe9ad4627cd961d0b78b763dda463f3d"
+  },
+  {
+   "probe_id": "F3",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "What are the requirements for installing a coffee roaster in a café?",
+   "sha256": "7deeeb549a7e44c4ca2ee5af77d04b522dcf765d279b7d3fed947da9928f5313"
+  },
+  {
+   "probe_id": "F4",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "Is it realistic for a small café to roast its own beans?",
+   "sha256": "f1b0a462bc16fcac8551582d83ab34c6631557172fe4fd45402245077a9313b8"
+  },
+  {
+   "probe_id": "F5",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "How much does it cost to start roasting coffee in a café?",
+   "sha256": "bed6286dd99e62de00fe7355c7cfa0b97ec533f74698630d4d2adb04b88ec87c"
+  },
+  {
+   "probe_id": "F6",
+   "tier": "F",
+   "kind": "frame",
+   "prompt": "We want to roast coffee in our retail store where customers can watch. What's involved?",
+   "sha256": "39f6371efcc146dd26f7e9a8aae0242a49725833500b06b9dcbbb6b4f7ffe136"
+  },
+  {
+   "probe_id": "G1",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "What's the best coffee roaster for a café?",
+   "sha256": "5f2ecedcea5cc57211f91cd715ec75ec554d5755a0ee589fd8b6fbbb2ca3d08d"
+  },
+  {
+   "probe_id": "G2",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "I run a coffee shop and want to roast our own beans. Which roaster should I buy?",
+   "sha256": "212d2b9e9023d0f8e516e02abe5031b1697e549899c994cbfe1d1be27d341972"
+  },
+  {
+   "probe_id": "G3",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "Can you recommend a commercial coffee roaster for a small café?",
+   "sha256": "abc20be63f9b3e04e20144a8480a3bcdc6a148239908a616c9dec417589712d3"
+  },
+  {
+   "probe_id": "G4",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "Which roaster should a café buy to roast about 50 pounds of coffee a week?",
+   "sha256": "cd4700bb5f0068b7530a15387d164ea50d20d08d3221917c350f07a614ae505c"
+  },
+  {
+   "probe_id": "G5",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "What shop roasters do café owners recommend?",
+   "sha256": "4552178fad0c15ea606ae4ec161df6775d46c2268206e92c6c4e0c13096de1f7"
+  },
+  {
+   "probe_id": "G6",
+   "tier": "G",
+   "kind": "recommendation",
+   "prompt": "We have two cafés and want to roast for both locations. What roaster should we get?",
+   "sha256": "29400fbd94a0ae2bf99ce2d7bae2267d88a696b04f11e80ea95908402a42e5ef"
+  },
+  {
+   "probe_id": "C1",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "What's the best coffee roaster for a café that doesn't have a gas line?",
+   "sha256": "ecba79859aaffce0fc20e2f5502133e42b2308a42db4cf87f2dc167656736cf7"
+  },
+  {
+   "probe_id": "C2",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "Can you recommend a coffee roaster we can use in our café without installing ventilation or ductwork?",
+   "sha256": "29720e41a344b779e2b8fba4303f341c379615211167294753d7864ff60cc019"
+  },
+  {
+   "probe_id": "C3",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "We lease our café space and can't vent through the roof. What roaster options do we have?",
+   "sha256": "e6ad2682606e220c565762a064873a5209268fab76e403f68d2919efbccc662f"
+  },
+  {
+   "probe_id": "C4",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "Which commercial coffee roaster produces the least smoke for roasting indoors in a café?",
+   "sha256": "bc92f045c5daff185471c4b1221a62c6a46ec422d6933f92f40cc281e496acc0"
+  },
+  {
+   "probe_id": "C5",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "Our city has strict air-quality rules. Which roaster can we use to roast in our shop?",
+   "sha256": "914e72c4f89219e90096cfc52665c310b40f0eeec227c691d83cfee0a1dfb605"
+  },
+  {
+   "probe_id": "C6",
+   "tier": "C",
+   "kind": "recommendation",
+   "prompt": "What's the best electric coffee roaster for a coffee shop?",
+   "sha256": "1d4b25c33cb7def8e3b7b991de46d27fecb46b0aeed28baa3ec596948fde16ec"
+  },
+  {
+   "probe_id": "R1",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "What's the best production coffee roaster for a growing specialty roastery?",
+   "sha256": "d6a3a4399f7e876c5c18b110afa3806bd1e0dc508eb569fd30c74b3d9033c660"
+  },
+  {
+   "probe_id": "R2",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "We roast about 500 pounds of coffee a week and need a bigger roaster. What should we buy?",
+   "sha256": "999cb518610b6a5aa6e07b0282297fa6037da2e3171640400636701d03ddaad1"
+  },
+  {
+   "probe_id": "R3",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "Which commercial coffee roasters are the most reliable for a wholesale roastery?",
+   "sha256": "79a3520977928cd12300f32378124f799468cdf210c5cfa3b72d4f30740454fd"
+  },
+  {
+   "probe_id": "R4",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "What's the most energy-efficient, lowest-emission production coffee roaster?",
+   "sha256": "b32e1cf1d18a6f1defa948afd1cf6641914df25ea8e785ef5f9b805bc9f1c4b9"
+  },
+  {
+   "probe_id": "R5",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "Which roaster should a new roasting company buy to supply local cafés and grocery stores?",
+   "sha256": "23cf7826cdc36241619f695e109d7b9ee46cf54da4e7a925925896ba35ea2189"
+  },
+  {
+   "probe_id": "R6",
+   "tier": "R",
+   "kind": "recommendation",
+   "prompt": "What do professional roasters consider the best commercial coffee roaster on the market?",
+   "sha256": "58cd30b9ae1d77c5469410c6f77a3a30f656148145f5f26b2185166d5eeadbee"
+  },
+  {
+   "probe_id": "K1",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "What is Bellwether Coffee's newest roaster?",
+   "sha256": "bcd1679695160335a5bf04f81613193c32c6a7857021ea432d85e4b51dbf9df2"
+  },
+  {
+   "probe_id": "K2",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "Which coffee roasters does Bellwether Coffee currently sell?",
+   "sha256": "c60b8b88ef2dfc12dea574f13cf8d00f421438ffa955bcf2d330b3ccda90550b"
+  },
+  {
+   "probe_id": "K3",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "Does the Bellwether coffee roaster need ventilation?",
+   "sha256": "ecf5a5ca5bb0b718e6970a82501f107984cf9034950705238712ba2c566bded9"
+  },
+  {
+   "probe_id": "K4",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "I've decided to buy a Bellwether roaster for my café. Which model should I get?",
+   "sha256": "38ee1f43fe0cf31b05d2595b65c24ed7fade62671839838d9dbc38ea066fbdc6"
+  },
+  {
+   "probe_id": "K5",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "How much coffee can a Bellwether roaster roast per batch?",
+   "sha256": "c1466465578d43bdfc70da9dea6ef642774550fec4902496393ea344b1050020"
+  },
+  {
+   "probe_id": "K6",
+   "tier": "K",
+   "kind": "bellwether_probe",
+   "prompt": "How is Bellwether's coffee roaster different from other commercial roasters?",
+   "sha256": "a7bc0969a71f6c289162c13907743c601c15e411d8c6ca61515cf231a1a2a365"
+  }
+ ]
+}
