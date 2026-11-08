@@ -37,3 +37,7 @@
 | H_ILDirect | Falsified (ceiling) |
 | H_C2_TwoChannel | Supported (borderline) |
 | H_ConglomeratePortfolio | Falsified |
+
+## Corrections
+
+See `ERRATA.md` (8 November 2026). No data, scores, hypotheses or verdicts changed.

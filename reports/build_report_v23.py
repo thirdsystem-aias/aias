@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """
-v0.23 Automotive — typesetting pipeline.
+v0.23 Premium Spirits — typesetting pipeline.
 
-Phantom Brand Persistence stress-test on a heritage-saturated automotive
-substrate (n=24, four cells: Heritage / Disruptor / Mass-Legacy / Defunct).
-First prospective phase under v1.6 methodology lock. The lead hypothesis
-H_Phantom_Defunct tests whether discontinued corporate brands (Pontiac,
-Oldsmobile, Plymouth, Mercury, Saturn — all closed 2001–2010) surface in
-unprompted current-tense Recall as if currently active. Cell D provides
-the pure-phantom upper-bound test that no prior substrate could support.
-Substrate anchor base extends 5 → 6 families.
-Brand-format report companion to the v0.23 SSRN paper (SSRN TBD).
+Brand-format report for AIAS v0.23 (24 premium spirits brands, six LLMs,
+Protocol v1.6), companion to the working paper "AIAS Presence Index v0.23:
+Premium Spirits".
+
+Corrected 2026-11-08. This script was forked from the automotive builder,
+and its first build (May 2026) imported an automotive copy of the content
+module and kept the automotive captions, header text, citation and PDF
+title. The content module is now the spirits adapter
+(v23_premium_spirits_content.py, which imports
+v0_23_premium_spirits_content.py), and the captions, header, citation and
+title below are the spirits ones. The wrong May build is kept as
+osf/v23/reports/_superseded_v23_premium_spirits_automotive.pdf.
+The fork history below is unchanged.
 
 Forked from build_report_v21.py with surgical changes:
   - Imports v23_automotive_content instead of v21_cosmetics_content
@@ -121,6 +125,15 @@ import tsboilerplate as boilerplate  # noqa: E402
 # Add new entries here as additional missing glyphs are discovered.
 _AKKURAT_SUBS = {
     "\u2227": "&amp;",   # logical-and ∧ → ampersand entity (renders as &)
+    # v0.23 spirits content sets thin spaces (U+2009), which Akkurat lacks:
+    # spaced em dashes take normal spaces (as in the series), the rest
+    # (p = 0.28) take no-break spaces.
+    "\u2009\u2014\u2009": " \u2014 ",
+    "\u2009": "\u00a0",
+    # Akkurat maps ≤ and ≥ to a placeholder glyph (same outline as
+    # Δ and ∫); set them in Helvetica, which falls back to Symbol.
+    "\u2264": "<font name='Helvetica'>\u2264</font>",
+    "\u2265": "<font name='Helvetica'>\u2265</font>",
 }
 
 def _sanitize_akkurat(obj):
@@ -888,7 +901,7 @@ class V15DocTemplate(BaseDocTemplate):
         c.setFillColor(HexColor(self.palette.soft_black))
         # v0.23 header right text
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "Phantom Brand Persistence \u00b7 v0.23 \u00b7 May 2026")
+                           "Premium Spirits \u00b7 v0.23 \u00b7 May 2026")
 
         footer_y = MARGIN - 18
         c.setFont(self.font.light, 7)
@@ -992,68 +1005,38 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
     return []
 
 
-# v0.23 brand-format report figure captions. Templates contain locked structural
-# language (cell composition, hypothesis names, methodology refs) with placeholder
-# brackets for verdict-dependent values that must be filled post-acquisition
-# (Step 4 of the v0.23 workflow, after measurement yields verdicts).
+# v0.23 figure captions (Premium Spirits). Wording follows the working
+# paper's figure captions and each chart's own title and subtitle. The recall
+# scatter plots the 19 brands with any recall (the paper's caption says 18).
+# Rewritten 2026-11-08: the first build kept the automotive placeholders.
 HERO_FIGURE_CAPTIONS = {
     "f1_cp_distribution": (
-        "Figure 1 \u00b7 Phase A Recognition (C_P) score per brand, per cell. "
-        "Each point is one brand; the automotive substrate is tested for the "
-        "v1.6 substrate Recognition pre-screen (Inc1) outcome \u2014 uniform "
-        "saturation across cells (predicted) vs differential saturation. "
-        "Cell A_Heritage (n=7): Mercedes-Benz, Jaguar, Cadillac, Rolls-Royce, "
-        "Bentley, Porsche, BMW. Cell B_Disruptor (n=5): Tesla, Rivian, Lucid, "
-        "Polestar, Fisker. Cell C_Mass-Legacy (n=7): Toyota, Honda, Ford, "
-        "Chevrolet, Hyundai, Volkswagen, Nissan. Cell D_Defunct (n=5): "
-        "Pontiac, Oldsmobile, Plymouth, Mercury, Saturn \u2014 discontinued "
-        "corporate brands tested as a pure-phantom panel."
-        "  [TBD post-acquisition: per-cell mean C_P, distinct count, modal "
-        "share, v1.5 C2 status.]"
+        "Figure 1 \u00b7 AI Presence composite score by brand, Protocol "
+        "v1.6, Premium Spirits (v0.23). Bars are colored by regime; dashed "
+        "lines mark the quartile thresholds (Q25 = 58.28, Q50 = 64.22, "
+        "Q75 = 67.50). All four regimes are populated (6/6/6/6). Recognition "
+        "is at ceiling; recall drives the distribution."
     ),
     "f2_dissociation_scatter": (
-        "Figure 2 \u00b7 Recognition \u00d7 Recall dissociation scatter \u2014 "
-        "cumulative anchor base across six substrate families. Each colored "
-        "point is one v0.23 automotive brand: Phase A C_P (x-axis, 0\u20136) "
-        "versus Phase B category-anchored mention count (y-axis, 0\u201318). "
-        "Shaded quadrant: Iwachu-pattern (C_P \u2265 5 \u2227 R_cat \u2264 2). "
-        "v0.23 contributes the 6th substrate family; the AIAS\u2122 v1.4/v1.5 "
-        "multi-component construct now spans six substrate families. "
-        "[TBD post-acquisition: Iwachu case count and per-cell distribution.]"
+        "Figure 2 \u00b7 Recall frequency vs mean slot position (1 = first "
+        "mentioned), colored by regime. Brands with zero recall are excluded "
+        "(n = 19 plotted); bubble size indicates elaboration count. "
+        "Patr\u00f3n leads on recall frequency; Lagavulin and Redbreast lead "
+        "on slot position (always first when mentioned)."
     ),
     "f3_channel_asymmetry": (
-        "Figure 3 \u00b7 Channel asymmetry scatter. Per-brand category-"
-        "anchored mentions (R_cat, x-axis, q1\u2013q3 \u00d7 6 models = max 18) "
-        "versus cultural-footprint mentions (R_cult, y-axis, q4\u2013q6 "
-        "\u00d7 6 models = max 18). For the v0.23 automotive panel, the "
-        "R_cult channel probes heritage and prestige (\u2018What car brands "
-        "carry deep heritage, prestige, or a sense of legacy?\u2019) \u2014 "
-        "the substrate\u2019s primary cultural axis. Lower-right quadrant: "
-        "Type 1 (canonical-preferred; R_cat \u2265 5 \u2227 R_cult \u2264 2). "
-        "Upper-left quadrant: Type 2 (cultural-preferred; R_cat \u2264 2 "
-        "\u2227 R_cult \u2265 5). Cell A_Heritage R_phantom is the supporting "
-        "test for H_Phantom_Brand_Persistence_heritage; threshold ladder "
-        "\u2265 8 CONFIRMED / 4\u20137 PARTIAL / < 4 FALSIFIED. "
-        "[TBD post-acquisition: Type 1 / Type 2 case lists and verdicts.]"
+        "Figure 3 \u00b7 Recall mentions by channel and brand: "
+        "editorial-authority (EA) vs cultural-cult (CC), sorted by total "
+        "recall. Overlap = 0.80. The channels converge in this "
+        "high-familiarity substrate; channel-exclusive brands (red outlines), "
+        "such as R\u00e9my Martin (10 EA / 0 CC) and Jack Daniel\u2019s "
+        "(0 EA / 5 CC), are exceptions."
     ),
     "f4_phantom_defunct": (
-        "Figure 4 \u00b7 Phantom Brand Persistence \u2014 defunct corporate "
-        "brands. Horizontal bars show R_phantom_defunct per Cell D brand: "
-        "the count of unprompted Recall mentions of discontinued corporate "
-        "brands across the n=12 panel. Bars above the H_Phantom_Defunct "
-        "CONFIRMED threshold (N \u2265 3, locked per v0.23-prereg-r1) render "
-        "in full Cell D color (faded indigo); bars below render at 40% "
-        "opacity. Tested brands: Pontiac (closed 2010), Oldsmobile (2004), "
-        "Plymouth (2001), Mercury (2010), Saturn (2010). This is the "
-        "pure-phantom upper-bound test for AIAS\u2122 Phantom Brand "
-        "Persistence \u2014 the first measurement of whether the AI mediation "
-        "layer surfaces documentably dead corporate brands as if currently "
-        "active. No prior AIAS substrate (kitchen knives, kitchenware, indie "
-        "fragrance, audiophile headphones, skincare, cosmetics) supports this "
-        "test; automotive is uniquely positioned because corporate-brand "
-        "death is documented and dated. "
-        "[TBD post-acquisition: H_Phantom_Defunct verdict and per-brand "
-        "R_phantom_defunct counts.]"
+        "Figure 4 \u00b7 Composite Presence by ownership structure: "
+        "conglomerate (n = 14) vs independent (n = 10), brand points "
+        "overlaid. H_ConglomeratePortfolio falsified: a 4.6% lift that is "
+        "not significant (t = 0.59, p = 0.28)."
     ),
 }
 
@@ -1203,7 +1186,7 @@ def build_hypothesis_scoring_story(styles: dict) -> list:
     lavender = HexColor("#BBB9DD")
     tbl = Table(
         table_data,
-        colWidths=[44, 165, 195, 136],
+        colWidths=[98, 160, 172, 110],  # v0.23: fits the longest hypothesis ID
         style=TableStyle([
             ("LINEABOVE",  (0, 0), (-1, 0), 1.2, indigo),
             ("LINEBELOW",  (0, 0), (-1, 0), 0.5, indigo),
@@ -1283,12 +1266,14 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Spacer(1, 10))
 
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
-    # v0.23 citation
+    # v0.23 citation: the working paper's own title (SSRN posting to confirm)
     citation_text = (
-        "Gonzalez Castro, P. U. (2026). "
-        "<i>Phantom Brand Persistence on a Heritage-Saturated Automotive "
-        "Substrate: AIAS v0.23</i>. "
-        "Third System. thirdsystem.ai/v23-automotive (SSRN TBD)"
+        "Gonz\u00e1lez Castro, P. U. (2026). "
+        "<i>AIAS Presence Index v0.23: Premium Spirits. Recognition Ceiling, "
+        "Recall-Driven Regime Classification, and the Conglomerate Ownership "
+        "Hypothesis Across 24 Brands and Six Large Language Models</i>. "
+        "Working paper. Third System. Data and pre-registration: "
+        "osf.io/ec6wh/v23/"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1455,7 +1440,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="Phantom Brand Persistence \u2014 AIAS v0.23 Automotive",
+        title="The Recognition Ceiling \u2014 AIAS v0.23 Premium Spirits",
         author=", ".join(content.CLOSING["byline_long"][:1]),
         subject="Independent measurement for the AI mediation layer.",
     )
@@ -1473,8 +1458,10 @@ def build(*, debug_layout: bool = False,
         story.append(f_)
 
     # --- What we measured (methodology) ---
+    # v0.23: conditional break, so a short executive-summary spill does not
+    # leave a near-empty page before this section.
     story.append(NextPageTemplate("body"))
-    story.append(PageBreak())
+    story.append(CondPageBreak(CONTENT_H * 0.45))
     for f_ in build_what_we_measured_story(styles):
         story.append(f_)
 

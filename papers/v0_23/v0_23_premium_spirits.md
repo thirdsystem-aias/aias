@@ -42,7 +42,7 @@ header-includes:
 
 \vspace{1.5cm}
 
-{\large\bfseries Pablo Ulpiano Gonz\'{a}lez Castro}
+{\large\bfseries Pablo Ulpiano González Castro}
 
 \vspace{0.4cm}
 
@@ -59,12 +59,18 @@ ORCID: 0009-0003-8968-9990
 
 \vspace{0.3cm}
 
-{\normalsize May 2026}
+{\normalsize May 2026 (revised 8 November 2026)}
 
 \vspace{1.5cm}
 
 {\small
 This paper is part of the AIAS (AI Availability Score) Measurement Program operated by Third System. The program measures brand visibility within large language model outputs using a standardized, pre-registered protocol. This is the seventh substrate-level Presence phase (v0.23), examining 24 premium spirits brands under Protocol v1.6.
+}
+
+\vspace{0.8cm}
+
+{\small
+\textbf{Revision note, 8 November 2026.} This version corrects errors in the May 2026 text: five brands, not six, received no recall mentions, and Jameson received one (Sections 1 and 4.2); 19 brands, not 18, received at least one recall mention and are plotted in Figure 3 (Section 3.4); and the six prior phases named in Section 1 and the references now carry their correct categories (v0.17 was premium kitchenware, not kitchen knives, and so on through v0.22, automotive). Accented names (González, Patrón, Rémy Martin) now print correctly. No data, scores, hypotheses or verdicts changed.
 }
 
 \end{titlepage}
@@ -81,19 +87,19 @@ This paper reports AIAS Presence Index v0.23, measuring AI Presence for 24 premi
 
 # 1. Introduction
 
-The AI Availability Score (AIAS) measurement program quantifies brand visibility within large language model (LLM) outputs through a standardized two-phase protocol. Phase A measures Recognition --- whether an LLM can identify and describe a brand --- while Phase B measures Recall --- whether an LLM surfaces a brand in category-level recommendation contexts. Prior phases have examined six substrate families: kitchen knives (v0.17; Gonz\'{a}lez Castro, 2026g), kitchenware (v0.18; Gonz\'{a}lez Castro, 2026h), indie fragrance (v0.19; Gonz\'{a}lez Castro, 2026i), audiophile headphones (v0.20; Gonz\'{a}lez Castro, 2026j), skincare (v0.21; Gonz\'{a}lez Castro, 2026k), and cosmetics (v0.22; Gonz\'{a}lez Castro, 2026l). Each substrate revealed characteristic Presence distributions shaped by the interaction of training-corpus density, editorial coverage, and enthusiast-community attention.
+The AI Availability Score (AIAS) measurement program quantifies brand visibility within large language model (LLM) outputs through a standardized two-phase protocol. Phase A measures Recognition --- whether an LLM can identify and describe a brand --- while Phase B measures Recall --- whether an LLM surfaces a brand in category-level recommendation contexts. Prior phases have examined six substrate families: premium kitchenware (v0.17; González Castro, 2026g), indie fragrance (v0.18; González Castro, 2026h), audiophile headphones (v0.19; González Castro, 2026i), skincare (v0.20; González Castro, 2026j), cosmetics (v0.21; González Castro, 2026k), and automotive (v0.22; González Castro, 2026l). Each substrate revealed characteristic Presence distributions shaped by the interaction of training-corpus density, editorial coverage, and enthusiast-community attention.
 
 This paper reports v0.23, which introduces premium spirits as the seventh substrate family. The selection is motivated by two structural properties of the category. First, premium spirits brands span a wide ownership spectrum --- from global conglomerates (Diageo, Pernod Ricard, Bacardi Ltd., LVMH, Brown-Forman) to independent craft producers --- enabling a direct test of whether conglomerate-scale media coverage translates into higher AI Presence. Second, the category is expected to populate both editorial-authority and cultural-cult recall channels densely, given the coexistence of a mature professional review ecosystem (Whisky Advocate, the San Francisco World Spirits Competition) and active enthusiast communities (bourbon collectors, mezcal aficionados, bartender culture).
 
-The phase tests six hypotheses under Protocol v1.6 (Gonz\'{a}lez Castro, 2026f). Five are standard across all Presence phases: four-regime classification (H\_Regime4), recognition pre-screen gate (H\_RecognitionPrescreen), phantom brand persistence (H\_Phantom), recognition--recall correlation (H\_ILDirect), and two-channel recall divergence (H\_C2\_TwoChannel). One is substrate-specific: H\_ConglomeratePortfolio, which predicts that brands owned by top-five global spirits conglomerates exhibit higher mean AI Presence composite scores than independent brands, driven by training-corpus density from conglomerate-level media coverage.
+The phase tests six hypotheses under Protocol v1.6 (González Castro, 2026f). Five are standard across all Presence phases: four-regime classification (H\_Regime4), recognition pre-screen gate (H\_RecognitionPrescreen), phantom brand persistence (H\_Phantom), recognition--recall correlation (H\_ILDirect), and two-channel recall divergence (H\_C2\_TwoChannel). One is substrate-specific: H\_ConglomeratePortfolio, which predicts that brands owned by top-five global spirits conglomerates exhibit higher mean AI Presence composite scores than independent brands, driven by training-corpus density from conglomerate-level media coverage.
 
-The principal finding is structural: premium spirits is the first AIAS substrate where all 24 registry brands achieve rich recognition (R3) across all six LLMs, collapsing the Recognition axis entirely. The Presence distribution is driven exclusively by Recall --- which brands AI systems recommend, not which they can describe. This recognition ceiling exposes a recognition--recall gap with direct implications for brand strategy: six brands that LLMs can characterize in expert detail are never surfaced in recommendation contexts.
+The principal finding is structural: premium spirits is the first AIAS substrate where all 24 registry brands achieve rich recognition (R3) across all six LLMs, collapsing the Recognition axis entirely. The Presence distribution is driven exclusively by Recall --- which brands AI systems recommend, not which they can describe. This recognition ceiling exposes a recognition--recall gap with direct implications for brand strategy: five brands that LLMs can characterize in expert detail are never surfaced in recommendation contexts, and a sixth (Jameson) only once.
 
 # 2. Methodology
 
 ## 2.1 Protocol and Instrument
 
-Measurement follows AIAS Protocol v1.6 (Gonz\'{a}lez Castro, 2026f), which specifies a two-phase architecture. Phase A (Recognition) issues single-shot probes at temperature 0.0 to each model in the reference panel, requesting detailed information about a named brand within its spirit-type category. Each response is scored on a four-level scale (R0--R3) by an LLM judge (Claude Sonnet 4.5) using a standardized rubric. The substrate Recognition pre-screen gate (introduced in v1.6) flags brands scoring R0 across five or more of six models for exclusion from the composite denominator.
+Measurement follows AIAS Protocol v1.6 (González Castro, 2026f), which specifies a two-phase architecture. Phase A (Recognition) issues single-shot probes at temperature 0.0 to each model in the reference panel, requesting detailed information about a named brand within its spirit-type category. Each response is scored on a four-level scale (R0--R3) by an LLM judge (Claude Sonnet 4.5) using a standardized rubric. The substrate Recognition pre-screen gate (introduced in v1.6) flags brands scoring R0 across five or more of six models for exclusion from the composite denominator.
 
 Phase B (Recall) issues six category-level probes --- three framed through editorial authority (critical consensus, awards authority, professional authority) and three through cultural-cult channels (enthusiast community, cultural resonance, insider discovery) --- to each model. Responses are scored for brand mention (binary), slot position (ordinal rank of first mention), and elaboration (whether the model provides at least one specific claim beyond bare mention). The two-channel architecture enables measurement of channel overlap via the C2 statistic.
 
@@ -103,7 +109,7 @@ The six-model reference panel has been fixed since v0.17: Claude Opus 4.5 and Cl
 
 ## 2.3 Registry
 
-The 24-brand registry samples across 12 spirit types (Scotch, cognac, Tennessee whiskey, tequila, vodka, rum, gin, Irish whiskey, bourbon, Japanese whisky, mezcal, amaro) in three tiers: Global-dominant (8 brands), Premium-enthusiast (8 brands), and Craft-cult-emerging (8 brands). Conglomerate ownership is coded binary: brands owned by the top-five global spirits groups (Diageo, Pernod Ricard, Bacardi Ltd., LVMH/Mo\"{e}t Hennessy, Brown-Forman) are coded 1 (n = 14); all others are coded 0 (n = 10).
+The 24-brand registry samples across 12 spirit types (Scotch, cognac, Tennessee whiskey, tequila, vodka, rum, gin, Irish whiskey, bourbon, Japanese whisky, mezcal, amaro) in three tiers: Global-dominant (8 brands), Premium-enthusiast (8 brands), and Craft-cult-emerging (8 brands). Conglomerate ownership is coded binary: brands owned by the top-five global spirits groups (Diageo, Pernod Ricard, Bacardi Ltd., LVMH/Moët Hennessy, Brown-Forman) are coded 1 (n = 14); all others are coded 0 (n = 10).
 
 ## 2.4 Cell Architecture
 
@@ -131,7 +137,7 @@ Phase B generated 110 brand mentions across 36 queries. Composite Presence score
 
 ![AI Presence Composite Score by Brand. Protocol v1.6, Premium Spirits (v0.23). All four regimes populated (6/6/6/6). Recognition at ceiling; recall drives the distribution.](../../reports/figs/v23/chart_23_composite_bar.pdf){#fig:composite width=100%}
 
-The Dominant regime comprises Patr\'{o}n (71.19), Hendrick's (69.23), Hennessy (68.85), Fortaleza (68.84), R\'{e}my Martin (68.76), and Grey Goose (67.78). Notably, two of six Dominant brands --- Fortaleza and Hendrick's --- are coded independent under the conglomerate rule. Fortaleza, a Craft-cult-emerging tier brand, outranks every Bacardi Ltd. brand in the registry.
+The Dominant regime comprises Patrón (71.19), Hendrick's (69.23), Hennessy (68.85), Fortaleza (68.84), Rémy Martin (68.76), and Grey Goose (67.78). Notably, two of six Dominant brands --- Fortaleza and Hendrick's --- are coded independent under the conglomerate rule. Fortaleza, a Craft-cult-emerging tier brand, outranks every Bacardi Ltd. brand in the registry.
 
 The Absent regime contains Bombay Sapphire, The Balvenie, Casamigos, Compass Box, Fernet-Branca, and Jameson --- all scoring composite values of 40.0 (the first five) or 57.63 (Jameson, with a single cultural-cult mention). These brands are fully characterized in AI knowledge but invisible in AI recommendation behavior.
 
@@ -141,15 +147,15 @@ The editorial-authority channel surfaced 15 unique brands; the cultural-cult cha
 
 ![Recall Mentions by Channel and Brand. Editorial-Authority vs Cultural-Cult. Overlap = 0.80; channel-exclusive brands (red outlines) are exceptions.](../../reports/figs/v23/chart_23_channel_heatmap.pdf){#fig:heatmap width=100%}
 
-Channel-exclusive patterns are the exception rather than the rule but are empirically informative. R\'{e}my Martin exhibits pure editorial-authority recall (10 EA mentions, 0 CC), consistent with the brand's prominence in spirits competition circuits and critical review publications. Jack Daniel's exhibits pure cultural-cult recall (0 EA, 5 CC), consistent with its position as a cultural icon whose recommendation pathway runs through community association rather than expert endorsement. Del Maguey skews heavily editorial (8 EA, 1 CC), suggesting that mezcal's AI recommendation pathway is mediated primarily through professional and critical channels rather than enthusiast community discussion.
+Channel-exclusive patterns are the exception rather than the rule but are empirically informative. Rémy Martin exhibits pure editorial-authority recall (10 EA mentions, 0 CC), consistent with the brand's prominence in spirits competition circuits and critical review publications. Jack Daniel's exhibits pure cultural-cult recall (0 EA, 5 CC), consistent with its position as a cultural icon whose recommendation pathway runs through community association rather than expert endorsement. Del Maguey skews heavily editorial (8 EA, 1 CC), suggesting that mezcal's AI recommendation pathway is mediated primarily through professional and critical channels rather than enthusiast community discussion.
 
 ## 3.4 Recall Frequency and Slot Position
 
-Among the 18 brands with at least one recall mention, Patr\'{o}n leads on recall frequency (mentioned in 30.6\% of Phase B probes), followed by Hennessy (27.8\%), R\'{e}my Martin (27.8\%), Grey Goose (25.0\%), Hendrick's (25.0\%), Fortaleza (25.0\%), and Del Maguey (25.0\%). Slot position --- the ordinal rank at which a brand first appears in a model's response --- provides a secondary measure of recommendation priority. Lagavulin and Redbreast achieve a mean slot position of 1.0, indicating that when mentioned, they are consistently the first brand named (Figure 3).
+Among the 19 brands with at least one recall mention, Patrón leads on recall frequency (mentioned in 30.6\% of Phase B probes), followed by Hennessy (27.8\%), Rémy Martin (27.8\%), Grey Goose (25.0\%), Hendrick's (25.0\%), Fortaleza (25.0\%), and Del Maguey (25.0\%). Slot position --- the ordinal rank at which a brand first appears in a model's response --- provides a secondary measure of recommendation priority. Lagavulin and Redbreast achieve a mean slot position of 1.0, indicating that when mentioned, they are consistently the first brand named (Figure 3).
 
-![Recall Frequency vs Mean Slot Position. Brands with zero recall excluded (n = 18 plotted). Bubble size indicates elaboration count.](../../reports/figs/v23/chart_23_recall_scatter.pdf){#fig:scatter width=100%}
+![Recall Frequency vs Mean Slot Position. Brands with zero recall excluded (n = 19 plotted). Bubble size indicates elaboration count.](../../reports/figs/v23/chart_23_recall_scatter.pdf){#fig:scatter width=100%}
 
-The combination of high recall frequency and early slot position characterizes the strongest AI Presence profiles: Patr\'{o}n (recall rate 0.306, mean slot 2.18) and Hendrick's (recall rate 0.250, mean slot 1.89) occupy the upper-left quadrant of the frequency--position space.
+The combination of high recall frequency and early slot position characterizes the strongest AI Presence profiles: Patrón (recall rate 0.306, mean slot 2.18) and Hendrick's (recall rate 0.250, mean slot 1.89) occupy the upper-left quadrant of the frequency--position space.
 
 ## 3.5 Conglomerate Ownership and AI Presence
 
@@ -184,7 +190,7 @@ The methodological implication is that the AIAS composite weighting scheme --- w
 
 ## 4.2 The Recognition--Recall Gap
 
-The most strategically consequential finding is the gap between recognition and recall. Six brands that LLMs describe in expert detail --- The Balvenie, Bombay Sapphire, Casamigos, Compass Box, Fernet-Branca, and (marginally) Jameson --- are absent from recommendation outputs. This gap is invisible to traditional brand-tracking methods that measure awareness as a unitary construct. The AIAS two-phase architecture surfaces it by design.
+The most strategically consequential finding is the gap between recognition and recall. Six brands that LLMs describe in expert detail --- The Balvenie, Bombay Sapphire, Casamigos, Compass Box, Fernet-Branca, and (marginally) Jameson --- are absent or nearly absent from recommendation outputs. This gap is invisible to traditional brand-tracking methods that measure awareness as a unitary construct. The AIAS two-phase architecture surfaces it by design.
 
 The Balvenie is a particularly instructive case: a highly regarded Scotch single malt with strong critic endorsement and collector following, yet it generates zero recall across both channels and all six models. The absence is unlikely to reflect low training-corpus representation --- The Balvenie is widely discussed in spirits media. A more plausible explanation is that the brand's mention context in training data is predominantly descriptive (tasting notes, distillery history) rather than recommendatory, such that LLMs encode the brand as an object of knowledge rather than an object of recommendation.
 
@@ -208,7 +214,7 @@ The recognition ceiling collapses the Recognition axis and renders H\_ILDirect s
 
 H\_C2\_TwoChannel's overlap coefficient of 0.80 falls at the exact upper boundary of the pre-registered support range. A threshold of 0.75 would flip the verdict from supported to falsified. The result should be interpreted as borderline.
 
-Conglomerate coding uses a binary top-five rule. William Grant \& Sons (Hendrick's, The Balvenie), R\'{e}my Cointreau (R\'{e}my Martin), and Asahi Group (Nikka) are coded independent despite being multinational producers. Alternative coding schemes could shift H\_ConglomeratePortfolio's outcome.
+Conglomerate coding uses a binary top-five rule. William Grant \& Sons (Hendrick's, The Balvenie), Rémy Cointreau (Rémy Martin), and Asahi Group (Nikka) are coded independent despite being multinational producers. Alternative coding schemes could shift H\_ConglomeratePortfolio's outcome.
 
 The 24-brand registry is a purposive sample spanning 12 spirit types. Some types have one or two representatives, limiting subcategory-level inference. Pan-spirits breadth is purchased at the cost of within-type depth.
 
@@ -246,28 +252,28 @@ Self-funded.
 
 # References
 
-Gonz\'{a}lez Castro, P. U. (2026a). AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval. Working Paper. Available at SSRN: https://ssrn.com/abstract=6659000
+González Castro, P. U. (2026a). AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval. Working Paper. Available at SSRN: https://ssrn.com/abstract=6659000
 
-Gonz\'{a}lez Castro, P. U. (2026b). AIAS Protocol v1.2: A Four-Regime Taxonomy for AI Brand Presence. Working Paper. Available at SSRN: https://ssrn.com/abstract=6761698
+González Castro, P. U. (2026b). AIAS Protocol v1.2: A Four-Regime Taxonomy for AI Brand Presence. Working Paper. Available at SSRN: https://ssrn.com/abstract=6761698
 
-Gonz\'{a}lez Castro, P. U. (2026c). AIAS Protocol v1.3: Phase A Pivot-Validation. Working Paper. Available at SSRN: https://ssrn.com/abstract=6797679
+González Castro, P. U. (2026c). AIAS Protocol v1.3: Phase A Pivot-Validation. Working Paper. Available at SSRN: https://ssrn.com/abstract=6797679
 
-Gonz\'{a}lez Castro, P. U. (2026d). AIAS Protocol v1.4: Multi-Component Construct. Working Paper. Available at SSRN: https://ssrn.com/abstract=6799479
+González Castro, P. U. (2026d). AIAS Protocol v1.4: Multi-Component Construct. Working Paper. Available at SSRN: https://ssrn.com/abstract=6799479
 
-Gonz\'{a}lez Castro, P. U. (2026e). AIAS Protocol v1.5: Multi-Statistic C2 and Two-Channel Recall. Working Paper. Available at SSRN: https://ssrn.com/abstract=6810758
+González Castro, P. U. (2026e). AIAS Protocol v1.5: Multi-Statistic C2 and Two-Channel Recall. Working Paper. Available at SSRN: https://ssrn.com/abstract=6810758
 
-Gonz\'{a}lez Castro, P. U. (2026f). AIAS Protocol v1.6: Substrate Recognition Pre-Screen, IL Direct, and Phantom Brand Persistence. Working Paper. Available at SSRN: https://ssrn.com/abstract=6816340
+González Castro, P. U. (2026f). AIAS Protocol v1.6: Substrate Recognition Pre-Screen, IL Direct, and Phantom Brand Persistence. Working Paper. Available at SSRN: https://ssrn.com/abstract=6816340
 
-Gonz\'{a}lez Castro, P. U. (2026g). AIAS Presence Index v0.17: Kitchen Knives. Working Paper. Available at SSRN: https://ssrn.com/abstract=6802261
+González Castro, P. U. (2026g). AIAS Presence Index v0.17: Premium Kitchenware. Working Paper. Available at SSRN: https://ssrn.com/abstract=6802261
 
-Gonz\'{a}lez Castro, P. U. (2026h). AIAS Presence Index v0.18: Kitchenware. Working Paper. Available at SSRN: https://ssrn.com/abstract=6806558
+González Castro, P. U. (2026h). AIAS Presence Index v0.18: Indie Fragrance. Working Paper. Available at SSRN: https://ssrn.com/abstract=6806558
 
-Gonz\'{a}lez Castro, P. U. (2026i). AIAS Presence Index v0.19: Indie Fragrance. Working Paper. Available at SSRN: https://ssrn.com/abstract=6809182
+González Castro, P. U. (2026i). AIAS Presence Index v0.19: Audiophile Headphones. Working Paper. Available at SSRN: https://ssrn.com/abstract=6809182
 
-Gonz\'{a}lez Castro, P. U. (2026j). AIAS Presence Index v0.20: Audiophile Headphones. Working Paper. Available at SSRN: https://ssrn.com/abstract=6811441
+González Castro, P. U. (2026j). AIAS Presence Index v0.20: Skincare. Working Paper. Available at SSRN: https://ssrn.com/abstract=6811441
 
-Gonz\'{a}lez Castro, P. U. (2026k). AIAS Presence Index v0.21: Skincare. Working Paper. Available at SSRN: https://ssrn.com/abstract=6815378
+González Castro, P. U. (2026k). AIAS Presence Index v0.21: Cosmetics. Working Paper. Available at SSRN: https://ssrn.com/abstract=6815378
 
-Gonz\'{a}lez Castro, P. U. (2026l). AIAS Presence Index v0.22: Cosmetics. Working Paper. Available at SSRN: https://ssrn.com/abstract=6829118
+González Castro, P. U. (2026l). AIAS Presence Index v0.22: Automotive. Working Paper. Available at SSRN: https://ssrn.com/abstract=6829118
 
-Gonz\'{a}lez Castro, P. U. (2026m). AIAS 1.0: AI Availability Score --- Presence Component. Working Paper. Available at SSRN: https://ssrn.com/abstract=6817841
+González Castro, P. U. (2026m). AIAS 1.0: AI Availability Score --- Presence Component. Working Paper. Available at SSRN: https://ssrn.com/abstract=6817841

@@ -4,6 +4,12 @@ Brand-format report content module (Third System™)
 Protocol v1.6 | Scored 2026-05-26
 
 11 content attributes for build_report_v23.py
+
+Corrected 2026-11-08 (erratum; see osf/v23/ERRATA.md). The lead deck,
+the executive summary and P2 said six brands were never recommended or
+scored the 40.0 floor. Five did (Bombay Sapphire, The Balvenie,
+Casamigos, Compass Box, Fernet-Branca); Jameson had one recall mention
+(composite 57.63). No data, scores, hypotheses or verdicts changed.
 """
 
 # ---------------------------------------------------------------------------
@@ -39,7 +45,7 @@ LEAD_DECK = [
     "\u2014\u2009a universal ceiling never observed in the prior six substrates.",
 
     "Recall, not recognition, drives the entire Presence distribution: "
-    "composite scores range from 40.0 (zero recall) to 71.2, with six brands "
+    "composite scores range from 40.0 (zero recall) to 71.2, with five brands "
     "perfectly known yet never recommended.",
 
     "Fortaleza, an independent craft tequila brand, lands in the Dominant "
@@ -75,7 +81,7 @@ EXEC_SUMMARY = (
     "Sapphire, The Balvenie, Casamigos, Compass Box, and Fernet-Branca, plus "
     "Jameson at the margin\u2009\u2014\u2009register zero or near-zero recall "
     "despite flawless recognition. These are brands that AI systems can "
-    "describe in expert detail but never surface in recommendation contexts. "
+    "describe in expert detail but rarely or never surface in recommendation contexts. "
     "The recognition\u2013recall gap is the actionable finding for brand "
     "strategists operating in this category.\n\n"
 
@@ -133,7 +139,7 @@ PATTERNS = (
     "by who gets recommended, not who gets recognized.\n\n"
 
     "P2. Known but never recommended: the recognition\u2013recall gap.\n"
-    "Six brands score a composite of 40.0, the floor value representing "
+    "Five brands score a composite of 40.0, the floor value representing "
     "perfect recognition with zero recall: Bombay Sapphire, The Balvenie, "
     "Casamigos, Compass Box, and Fernet-Branca (plus Jameson at 57.63 with "
     "a single mention). These brands exist fully in AI\u2019s knowledge base "
