@@ -11,3 +11,13 @@
 **Handling (Pablo's decision, 2026-11-09 07:31 CT):** proceed with OSF as the external anchor. Before the first t3 call, this file and `git_anchor_*.json` (tag object, commit and tree hashes, and the SHA-256 of every locked file) were deposited on OSF, which timestamps them. The tag is pushed to GitHub as soon as access exists; the pushed tag must resolve to the recorded hashes, which anyone can check.
 
 **Effect on inference:** none. The pre-registration content and its timestamp precede all t3 data; only the order of the two external anchors changes.
+
+## Entry 2 — collection interrupted by a restart of the acquisition Mac (recorded 2026-11-09T14:30:22Z, before resuming)
+
+**Type:** procedural; contemporaneous.
+
+**What happened:** the Mac restarted at about 14:26 UTC on 2026-11-09, during v0.23 Phase A (132 of 144 recognition calls done, all ok, checkpointed). v0.20, v0.21 and v0.22 had completed before it (chain log: exit 0 at 13:34:57, 13:36:06 and 13:37:19 UTC). v0.19 had not started.
+
+**Handling:** the v0.23 runner (byte-locked) checkpoints but cannot resume, and editing it is not permitted. The 132 interrupted v0.23 answers are archived unchanged in `osf/v41/data/_interrupted_v23_2026-11-09/` and are NOT used. v0.23 is re-run in full (Phase A 144 + Phase B 36) with the locked runner, then v0.19, by the same chain (`run_t3_chain.sh v23 v19`), probe parity re-checked before each. The provenance sidecar keeps the interrupted calls' rows (their timestamps precede the restart). The t3 date is unchanged (2026-11-09).
+
+**Effect on inference:** none expected; the analysed v0.23 wave is one complete, uninterrupted run. Same-day re-asking of the same probes is noted as a limitation (the models were asked 132 of the v0.23 recognition questions twice on the same day; answers from the first, interrupted pass are not analysed).
