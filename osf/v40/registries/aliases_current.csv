@@ -1,0 +1,37 @@
+category,unit,brand,aliases,collision_notes
+airline,AA,American Airlines,American Airlines|American,"'American' also in American Express, Bank of America; require airline context."
+airline,DL,Delta Air Lines,Delta Air Lines|Delta,
+airline,UA,United Airlines,United Airlines|United,'United' is a common word; require airline context.
+airline,WN,Southwest Airlines,Southwest Airlines|Southwest,'Southwest' is geographic.
+airline,AS,Alaska Airlines,Alaska Airlines|Alaska,'Alaska' is geographic.
+airline,HA,Hawaiian Airlines,Hawaiian Airlines|Hawaiian,Brand of Alaska Air Group (control).
+airline,B6,JetBlue,JetBlue|JetBlue Airways,
+airline,F9,Frontier Airlines,Frontier Airlines|Frontier,'Frontier' is a common word.
+airline,G4,Allegiant Air,Allegiant Air|Allegiant,
+airline,SY,Sun Country Airlines,Sun Country Airlines|Sun Country,Owned by Allegiant since 2026-05-13 (control).
+airline,MX,Breeze Airways,Breeze Airways|Breeze,'Breeze' is a common word.
+bank,1039502,Chase (JPMorgan Chase),Chase|JPMorgan Chase|JPMorgan|J.P. Morgan,
+bank,1073757,Bank of America,Bank of America|BofA|BoA,
+bank,1120754,Wells Fargo,Wells Fargo,
+bank,1951350,Citi,Citibank|Citi,
+bank,1119794,U.S. Bank,U.S. Bank|US Bank|U.S. Bancorp,
+bank,2277860,Capital One,Capital One|Capital One 360,"Holder also contains Discover (control, separate brand)."
+bank,2162966,Morgan Stanley,Morgan Stanley|E*TRADE,Brokerage-sweep holder (decision D4).
+bank,2380443,Goldman Sachs / Marcus,Marcus|Marcus by Goldman Sachs|Goldman Sachs,Apple Card/Apple Savings are Goldman-issued: alias decision D12.
+bank,1069778,PNC,PNC|PNC Bank,Holder now contains BBVA USA's and FirstBank's former branches.
+bank,1074156,Truist,Truist,Successor of ghosts SunTrust and BB&T.
+bank,1238565,TD Bank,TD Bank|TD,"'TD' alone is ambiguous (TD Ameritrade, Canada)."
+bank,1026632,Charles Schwab,Schwab|Charles Schwab|Schwab Bank,Brokerage-sweep holder (decision D4).
+bank,1070345,Fifth Third,Fifth Third|Fifth Third Bank,Holder contains Comerica since 2026-02-01.
+bank,1068191,Huntington,Huntington|Huntington Bank,Holder contains Cadence since 2026-02.
+bank,1231333,BMO,BMO|BMO Bank,"'BMO Harris' is a ghost alias, not a current one."
+bank,1132449,Citizens,Citizens|Citizens Bank|Citizens Access,Collides with First Citizens.
+bank,1075612,First Citizens,First Citizens|First Citizens Bank|CIT,'SVB' and 'Silicon Valley Bank' are ghost aliases.
+bank,1037003,M&T Bank,M&T|M&T Bank,
+bank,1275216,American Express,American Express|Amex,Savings brand of Amex.
+bank,1068025,KeyBank,KeyBank|Key Bank,
+bank,1562859,Ally,Ally|Ally Bank,
+bank,1857108,HSBC,HSBC|HSBC Bank,
+bank,3242838,Regions,Regions|Regions Bank,'Regions' is a common word.
+bank,4795461,UBS,UBS,Brokerage-sweep holder (decision D4).
+bank,6073350,Pinnacle,Pinnacle|Pinnacle Bank,Holder contains Synovus since 2026-01-02; whether the Synovus name survives is unverified.

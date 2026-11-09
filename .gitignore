@@ -37,3 +37,8 @@ tomorrow.md
 # Chart-build preview PNGs (throwaway; PDFs are the committed deliverable)
 # any depth under reports/figs/ — covers both paper (figs/vNN/) and report (figs/vNN/report/)
 reports/figs/**/*_preview.png
+
+# --- Added 2026-11-08 ---
+# v0.40 raw public data (BTS T-100, BTS On-Time, FDIC SOD; about 502 MB). Checksums: osf/v40/registries/RAW_DATA_SHA256.txt
+osf/v40/data/raw/bts/
+osf/v40/data/raw/fdic/sod_*.csv.gz

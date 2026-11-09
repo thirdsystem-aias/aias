@@ -1,0 +1,47 @@
+type,cert,last_sod_old,class,reason
+rename,33143,2005,outside window,Rename in 2005.
+rename,33318,2005,below floor,MBNA America Bank -> FIA Card Services; 2005.
+rename,33143,2006,not an exit,Legal-form change; stem 'Countrywide' kept (R6).
+exit,57443,2006,not an exit,Internal consolidation; stem 'Citibank' kept (R6); 2006.
+exit,26800,2006,outside window,Branches converted to Regions during 2007 (Regions 10-K FY2007 https://www.sec.gov/Archives/edgar/data/0001281761/000119312508038935/d10k.htm); last conversion 2007-12-06 (secondary).
+rename,27076,2007,outside window (edge),World Savings: deposits moved to Wachovia and branches rebranded 2007-10-11 (secondary https://localwiki.org/davis/World_Savings_Bank); thrift renamed 2007-12-31 (FDIC). Decision D9.
+exit,21140,2007,ghost,COMMERCE
+exit,15985,2007,ghost,NORTHFORK
+rename,18409,2007,below floor,TD Banknorth -> TD Bank (2008-05-31).
+exit,32633,2008,ghost,WAMU
+exit,33143,2008,ghost,COUNTRYWIDE
+rename,22826,2008,not an exit,Union Bank of California -> Union Bank; stem 'Union Bank' kept (R6).
+rename,639,2008,custody rule,The Bank of New York -> BNY Mellon (R9).
+rename,32992,2008,not an exit,Legal-form change.
+exit,15407,2008,ghost,LASALLE (with 22488)
+exit,33869,2009,ghost,WACHOVIA
+exit,6557,2009,ghost,NATCITY
+exit,27374,2009,brand persists,Merrill Lynch Bank USA merged into BofA 2009-07-01 (FDIC); the Merrill brand continues. Decision D10.
+exit,993,2009,not an exit,Fifth Third charter consolidation; stem kept (verify FDIC record).
+rename,29950,2011,not an exit,Legal-form change.
+rename,16571,2011,not an exit,Harris -> BMO Harris; stem 'Harris' kept.
+exit,1020,2011,below floor,M&I merged into BMO Harris 2011-07-05 (FDIC).
+exit,35489,2012,ghost,INGDIRECT
+rename,57957,2013,not an exit,RBS Citizens -> Citizens Bank; stem 'Citizens' kept (R6).
+rename,29950,2013,ghost,SOVEREIGN
+exit,33318,2014,not a consumer brand,FIA Card Services: Bank of America's card charter (verify).
+rename,22826,2014,not an exit,Union Bank -> MUFG Union Bank; stem kept.
+rename,19048,2018,ghost,BBVACOMPASS
+rename,2270,2018,below floor,ZB -> Zions Bancorporation.
+rename,57450,2019,not an exit,Legal-form change.
+rename,9846,2019,ghost,BBT
+exit,867,2019,ghost,SUNTRUST
+rename,6672,2019,not an exit,Legal-form change.
+rename,27471,2019,not an exit,Spelling of the legal name.
+exit,19048,2021,below floor,BBVA USA merged into PNC 2021-10-08 (FDIC); covered by the BBVA Compass ghost (D7).
+exit,30746,2021,below floor,E*TRADE Bank.
+exit,24735,2022,ghost,SVB
+exit,59017,2022,ghost,FIRSTREPUBLIC
+rename,27471,2022,not an exit,Spelling of the legal name.
+exit,57053,2022,ghost,SIGNATURE
+exit,22826,2022,ghost,UNIONBANK
+exit,33954,2022,below floor,Capital One charter consolidation.
+exit,3514,2022,below floor,Bank of the West merged into BMO Harris 2023-02-02 (FDIC).
+rename,16571,2023,ghost,BMOHARRIS
+exit,5649,2024,control,DISCOVER (brand retained).
+rename,57565,2025,not an exit,Legal-form change.
