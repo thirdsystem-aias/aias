@@ -1,0 +1,1233 @@
+{
+  "phase": "v0.40",
+  "status": "DRAFT for Pablo's review (2026-11-08); locks at tag v0.40-prereg-r1",
+  "tier_labels": {
+    "AG": "Airline recommendation, generic (RQ1)",
+    "AN": "Airline recommendation, by need",
+    "AR": "Airline recommendation, by Census region",
+    "BG": "Bank recommendation, generic (RQ1)",
+    "BN": "Bank recommendation, by need",
+    "BR": "Bank recommendation, by Census region",
+    "K": "Recognition probe, one per ghost and per control",
+    "S": "Status probe, one per ghost and per control"
+  },
+  "arms": {
+    "L": {
+      "label": "legacy fixed panel (v0.17-v0.39)",
+      "models": [
+        "M1",
+        "M2",
+        "M3",
+        "M4",
+        "M5",
+        "M6"
+      ],
+      "decoding": {
+        "temperature": 0.0,
+        "max_output_tokens": 2048,
+        "system_prompt": null,
+        "runs_per_cell": 3,
+        "M5_gemini_2_5_flash": "thinking_budget 0 (primary); plus one pass per probe at the v0.39 setting (provider-default thinking), reported, not tested"
+      },
+      "conditions": [
+        "S0"
+      ]
+    },
+    "C": {
+      "label": "current assistants",
+      "models": [
+        "C1",
+        "C2",
+        "C3"
+      ],
+      "decoding": {
+        "temperature": "provider default",
+        "reasoning_effort": "provider default",
+        "max_output_tokens": 16384,
+        "system_prompt": null,
+        "runs_per_cell": 3
+      },
+      "conditions": [
+        "S0",
+        "S1"
+      ]
+    }
+  },
+  "conditions": {
+    "S0": "no tools",
+    "S1": {
+      "anthropic": {
+        "type": "web_search_20250305",
+        "name": "web_search",
+        "max_uses": 5,
+        "user_location": {
+          "type": "approximate",
+          "country": "US"
+        }
+      },
+      "openai": {
+        "type": "web_search",
+        "search_context_size": "medium",
+        "user_location": {
+          "type": "approximate",
+          "country": "US"
+        },
+        "include": [
+          "web_search_call.action.sources"
+        ]
+      },
+      "google": {
+        "tool": "google_search",
+        "note": "provider defaults"
+      }
+    }
+  },
+  "calls": {
+    "per_probe": {
+      "L": 19,
+      "C": 18,
+      "total": 37
+    },
+    "L": 1786,
+    "C": 1692,
+    "total": 3478
+  },
+  "subjects": [
+    {
+      "subject_id": "TZ",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "ATA Airlines",
+      "name_in_probe": "ATA Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "NW",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "Northwest Airlines",
+      "name_in_probe": "Northwest Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "CO",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "Continental Airlines",
+      "name_in_probe": "Continental Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "FL",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "AirTran Airways",
+      "name_in_probe": "AirTran Airways",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "US",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "US Airways",
+      "name_in_probe": "US Airways",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "VX",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "Virgin America",
+      "name_in_probe": "Virgin America",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "NK",
+      "category": "airline",
+      "role": "ghost",
+      "registry_brand": "Spirit Airlines",
+      "name_in_probe": "Spirit Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "HA",
+      "category": "airline",
+      "role": "control",
+      "registry_brand": "Hawaiian Airlines",
+      "name_in_probe": "Hawaiian Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "SY",
+      "category": "airline",
+      "role": "control",
+      "registry_brand": "Sun Country Airlines",
+      "name_in_probe": "Sun Country Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "COMMERCE",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Commerce Bank (Philadelphia)",
+      "name_in_probe": "Commerce Bank (Philadelphia)",
+      "name_source": "FDIC CERT 21140: Commerce Bank, National Association, Philadelphia, PA; https://api.fdic.gov/banks/institutions?filters=CERT:21140"
+    },
+    {
+      "subject_id": "NORTHFORK",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "North Fork Bank",
+      "name_in_probe": "North Fork Bank",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "LASALLE",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "LaSalle Bank",
+      "name_in_probe": "LaSalle Bank",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "WAMU",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Washington Mutual",
+      "name_in_probe": "Washington Mutual",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "COUNTRYWIDE",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Countrywide",
+      "name_in_probe": "Countrywide Bank",
+      "name_source": "registry alias"
+    },
+    {
+      "subject_id": "NATCITY",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "National City",
+      "name_in_probe": "National City Bank",
+      "name_source": "registry alias"
+    },
+    {
+      "subject_id": "WACHOVIA",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Wachovia",
+      "name_in_probe": "Wachovia",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "INGDIRECT",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "ING Direct",
+      "name_in_probe": "ING Direct",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "SOVEREIGN",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Sovereign Bank",
+      "name_in_probe": "Sovereign Bank",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "BBVACOMPASS",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "BBVA Compass",
+      "name_in_probe": "BBVA Compass",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "SUNTRUST",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "SunTrust",
+      "name_in_probe": "SunTrust",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "BBT",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "BB&T",
+      "name_in_probe": "BB&T",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "UNIONBANK",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Union Bank (MUFG Union Bank)",
+      "name_in_probe": "MUFG Union Bank",
+      "name_source": "FDIC CERT 22826: MUFG Union Bank, National Association, San Francisco, CA; https://api.fdic.gov/banks/institutions?filters=CERT:22826"
+    },
+    {
+      "subject_id": "SIGNATURE",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Signature Bank",
+      "name_in_probe": "Signature Bank (New York)",
+      "name_source": "FDIC CERT 57053: Signature Bank, New York, NY; https://api.fdic.gov/banks/institutions?filters=CERT:57053"
+    },
+    {
+      "subject_id": "FIRSTREPUBLIC",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "First Republic Bank",
+      "name_in_probe": "First Republic Bank",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "BMOHARRIS",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "BMO Harris",
+      "name_in_probe": "BMO Harris Bank",
+      "name_source": "registry alias"
+    },
+    {
+      "subject_id": "SVB",
+      "category": "bank",
+      "role": "ghost",
+      "registry_brand": "Silicon Valley Bank",
+      "name_in_probe": "Silicon Valley Bank",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "DISCOVER",
+      "category": "bank",
+      "role": "control",
+      "registry_brand": "Discover",
+      "name_in_probe": "Discover Bank",
+      "name_source": "registry alias"
+    },
+    {
+      "subject_id": "AA",
+      "category": "airline",
+      "role": "incumbent",
+      "registry_brand": "American Airlines",
+      "name_in_probe": "American Airlines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "DL",
+      "category": "airline",
+      "role": "incumbent",
+      "registry_brand": "Delta Air Lines",
+      "name_in_probe": "Delta Air Lines",
+      "name_source": "registry brand"
+    },
+    {
+      "subject_id": "JPMC",
+      "category": "bank",
+      "role": "incumbent",
+      "registry_brand": "Chase (JPMorgan Chase)",
+      "holder_rssd": "1039502",
+      "name_in_probe": "Chase Bank",
+      "name_source": "consumer name of the JPMorgan Chase holder"
+    },
+    {
+      "subject_id": "BAC",
+      "category": "bank",
+      "role": "incumbent",
+      "registry_brand": "Bank of America",
+      "holder_rssd": "1073757",
+      "name_in_probe": "Bank of America",
+      "name_source": "registry brand"
+    }
+  ],
+  "probes": [
+    {
+      "probe_id": "AG1",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "What are the best airlines in the United States?",
+      "sha256": "a817aae9240ee965a292b24538ecb1a4f84806af927d10284c1c835917291113"
+    },
+    {
+      "probe_id": "AG2",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which airline should I fly for trips within the US?",
+      "sha256": "6e83179e6c743a4e9986b56aa2ea3a435165c310a61efd8288b4c140988d5388"
+    },
+    {
+      "probe_id": "AG3",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Can you recommend a few good US airlines?",
+      "sha256": "b07d380a42129747ed2c1fc4c3a04093cbbd60bab701cfac61842a0cb30b3601"
+    },
+    {
+      "probe_id": "AG4",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "I'm booking a domestic flight in the US. Which airlines should I consider?",
+      "sha256": "aa0e4259fcbc57167dd9e2704f235d804f1e056c208e74576846212397bae774"
+    },
+    {
+      "probe_id": "AG5",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "What are the top US airlines for domestic travel?",
+      "sha256": "dce194e38b21a06772d8584a84fd4b8e1fc1e0eb7f24bb40e140cddbd28850eb"
+    },
+    {
+      "probe_id": "AG6",
+      "tier": "AG",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline would you recommend, and why?",
+      "sha256": "c2d2057d871a59809d9175b38f78220feae610a07e4c73af90071004afdbb44c"
+    },
+    {
+      "probe_id": "AN1",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline is best for cheap fares?",
+      "sha256": "48f76c3dc452e2a2fac8c8e1aa63f83f26d727a5081851828b2e2232a30a5889"
+    },
+    {
+      "probe_id": "AN2",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline has the best frequent flyer program?",
+      "sha256": "16185704be6ffcc5b30aa9b0c3c13a53f3c0bc4bbb17f1363fde1f6a74195265"
+    },
+    {
+      "probe_id": "AN3",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline is the most comfortable to fly in economy?",
+      "sha256": "e6cc54871dc77c91851bd70f2b0e353c8d538cb7e3f218d61d75c793e7f57d0c"
+    },
+    {
+      "probe_id": "AN4",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline is the most reliable for on-time arrivals?",
+      "sha256": "8f23451684844be8fe28a0595eb89fd21adde21e3c763ff49fb9475ca80dae20"
+    },
+    {
+      "probe_id": "AN5",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline has the best customer service?",
+      "sha256": "ee815583443e6cf4a14993b55564c0a4954271726046ed61618496bd8da6b2d4"
+    },
+    {
+      "probe_id": "AN6",
+      "tier": "AN",
+      "kind": "recommendation",
+      "category": "airline",
+      "prompt": "Which US airline is best for flying with young children?",
+      "sha256": "f4535bb64a253525f4c4e61c7d5618bc8a78c0e9778f61414e46339df04ae7f7"
+    },
+    {
+      "probe_id": "AR1",
+      "tier": "AR",
+      "kind": "recommendation",
+      "category": "airline",
+      "region": "Northeast",
+      "prompt": "I live in the Northeast of the United States. Which airline should I fly most of the time?",
+      "sha256": "db8ca5cac6a6074aad97722a1ce392e4b6ccb87927b69a570cef99fbdfd839c1"
+    },
+    {
+      "probe_id": "AR2",
+      "tier": "AR",
+      "kind": "recommendation",
+      "category": "airline",
+      "region": "Midwest",
+      "prompt": "I live in the Midwest of the United States. Which airline should I fly most of the time?",
+      "sha256": "37074eb90def07b71d1d4776252484b3c359b210b75b96a8083798208078bfa6"
+    },
+    {
+      "probe_id": "AR3",
+      "tier": "AR",
+      "kind": "recommendation",
+      "category": "airline",
+      "region": "South",
+      "prompt": "I live in the South of the United States. Which airline should I fly most of the time?",
+      "sha256": "b133af0d4440ae84c8942481de0121c8b8118104121e15cbf8677ad5d2b26894"
+    },
+    {
+      "probe_id": "AR4",
+      "tier": "AR",
+      "kind": "recommendation",
+      "category": "airline",
+      "region": "West",
+      "prompt": "I live in the West of the United States. Which airline should I fly most of the time?",
+      "sha256": "2cfd6cf83a8d310b447a7d3b8e0e993ecc45be5099a37bd574c16de22ff09df6"
+    },
+    {
+      "probe_id": "BG1",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "What are the best banks in the United States?",
+      "sha256": "049ff984d1ffcf2d2d5e0f29a2e86ff36638b0f71355c76dfd7cad21bd933459"
+    },
+    {
+      "probe_id": "BG2",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which bank should I open a checking account with in the US?",
+      "sha256": "929a63cbff227c267b49d39f6317b9bfb7d8e57c83723e8e296e65c210a7eef8"
+    },
+    {
+      "probe_id": "BG3",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Can you recommend a few good US banks?",
+      "sha256": "d5cb16c0f10f88b7f8a92d76e8e3d212bc1a8743721e6c7f771abf3d3d54d615"
+    },
+    {
+      "probe_id": "BG4",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "I'm switching banks in the US. Which banks should I consider?",
+      "sha256": "bfbbfb90be0aeadb0f1becae00562ca60ec2427ff39df6318ce182b3cf603e03"
+    },
+    {
+      "probe_id": "BG5",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "What are the top US banks for everyday banking?",
+      "sha256": "8157513e88ccfe11364ecfc54ac5fb9bed780b3ecd5c7c8987266d58b552a535"
+    },
+    {
+      "probe_id": "BG6",
+      "tier": "BG",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank would you recommend, and why?",
+      "sha256": "b0bc7bf0decaa22d6ec3e283449de545e8f9e5b018f84163800973aaed902129"
+    },
+    {
+      "probe_id": "BN1",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank is best for a high-yield savings account?",
+      "sha256": "a39d531ca9aeff5674d779af67497a68c6012ebdd3c300cd2a9c450ce0441f7a"
+    },
+    {
+      "probe_id": "BN2",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank has the lowest fees on checking accounts?",
+      "sha256": "9f48e0b338891416bc15018a58bb8a68a3207376618a36951870a9d536e04e7d"
+    },
+    {
+      "probe_id": "BN3",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank is best for a small business?",
+      "sha256": "0c3ed020c053af5e1b96b80d8876f1153ca1cdd5dc72f439db5860a93068ec81"
+    },
+    {
+      "probe_id": "BN4",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank is best for a college student's first account?",
+      "sha256": "0dc44a02de78ea13bbd667242dd2d225d8e2193350260e8ed2cacadb35f06cbe"
+    },
+    {
+      "probe_id": "BN5",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank is best for getting a mortgage?",
+      "sha256": "3194f4882ab1e0c1eaf6c4c756665a19b1e57df865ec01f6176540d00e5707fe"
+    },
+    {
+      "probe_id": "BN6",
+      "tier": "BN",
+      "kind": "recommendation",
+      "category": "bank",
+      "prompt": "Which US bank has the most branches and ATMs across the country?",
+      "sha256": "46c08d59c7ff0ba20c5b9c32a14d55428c7df90d80046bad3ea52410a2ef252c"
+    },
+    {
+      "probe_id": "BR1",
+      "tier": "BR",
+      "kind": "recommendation",
+      "category": "bank",
+      "region": "Northeast",
+      "prompt": "I live in the Northeast of the United States. Which bank should I use?",
+      "sha256": "2c87790ce2376dd7e772b7fd921fa4c74aeb85e04eea2965a40c7091bd74b708"
+    },
+    {
+      "probe_id": "BR2",
+      "tier": "BR",
+      "kind": "recommendation",
+      "category": "bank",
+      "region": "Midwest",
+      "prompt": "I live in the Midwest of the United States. Which bank should I use?",
+      "sha256": "f164f75e8235101effed4333d3ce1368baffc5ecc03f339b2f05458241fcc858"
+    },
+    {
+      "probe_id": "BR3",
+      "tier": "BR",
+      "kind": "recommendation",
+      "category": "bank",
+      "region": "South",
+      "prompt": "I live in the South of the United States. Which bank should I use?",
+      "sha256": "d1fd686238dd06536b3c39718b2fd61a8d0a41f32a959d33b38ed3e329841744"
+    },
+    {
+      "probe_id": "BR4",
+      "tier": "BR",
+      "kind": "recommendation",
+      "category": "bank",
+      "region": "West",
+      "prompt": "I live in the West of the United States. Which bank should I use?",
+      "sha256": "64193fd51d740a834dcefe39ed6eee1b7eb940e158d32753d2c55ca8cc1e3f4f"
+    },
+    {
+      "probe_id": "K_TZ",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "TZ",
+      "subject_role": "ghost",
+      "prompt": "What is ATA Airlines?",
+      "sha256": "add39653d0817a5d5ac4de7a847e6e55128bcad498b07ab948551657a8834f49"
+    },
+    {
+      "probe_id": "K_NW",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "NW",
+      "subject_role": "ghost",
+      "prompt": "What is Northwest Airlines?",
+      "sha256": "be860ee5cf5cb45f5a5961cbae04294474d6ad81e666f303c4526806d3cd2c0d"
+    },
+    {
+      "probe_id": "K_CO",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "CO",
+      "subject_role": "ghost",
+      "prompt": "What is Continental Airlines?",
+      "sha256": "212b542b15c1b4aa79b9883168ee1fc21c38847dcd9adb91c67e407ce7185453"
+    },
+    {
+      "probe_id": "K_FL",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "FL",
+      "subject_role": "ghost",
+      "prompt": "What is AirTran Airways?",
+      "sha256": "66215326fee3c63f026cded944bc215304e5ed6548f997cf2d2c98839f955c83"
+    },
+    {
+      "probe_id": "K_US",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "US",
+      "subject_role": "ghost",
+      "prompt": "What is US Airways?",
+      "sha256": "cdabe5f05ac217c7e620a645ade4c7be0da450564e6dd58b24410316f17bfae0"
+    },
+    {
+      "probe_id": "K_VX",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "VX",
+      "subject_role": "ghost",
+      "prompt": "What is Virgin America?",
+      "sha256": "694e1cc880b14b3884d069219b3848f081dfb4009db60a66354ac0e3da75fc0b"
+    },
+    {
+      "probe_id": "K_NK",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "NK",
+      "subject_role": "ghost",
+      "prompt": "What is Spirit Airlines?",
+      "sha256": "c23fcbd4d1420ff8dfe6518ea3e5003c8f29379538601f7af9da2db8fd463a36"
+    },
+    {
+      "probe_id": "K_HA",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "HA",
+      "subject_role": "control",
+      "prompt": "What is Hawaiian Airlines?",
+      "sha256": "b191650572bdb230e525463ea8d5b0459adf4598641e025bbf3772291cc63b7b"
+    },
+    {
+      "probe_id": "K_SY",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "SY",
+      "subject_role": "control",
+      "prompt": "What is Sun Country Airlines?",
+      "sha256": "73cc2c06d8995449f413fd0a4f244dfd4e6a9d108dce59246333a83153fbf66e"
+    },
+    {
+      "probe_id": "K_COMMERCE",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "COMMERCE",
+      "subject_role": "ghost",
+      "prompt": "What is Commerce Bank (Philadelphia)?",
+      "sha256": "df4754248989077bddf9ea9c8166f1fbb2fbbdcaa96e0a305feb7acb129e7bdb"
+    },
+    {
+      "probe_id": "K_NORTHFORK",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "NORTHFORK",
+      "subject_role": "ghost",
+      "prompt": "What is North Fork Bank?",
+      "sha256": "fa341b98e96ca296f607475dab45dad5638d48e58df906d04e950642b5591cfd"
+    },
+    {
+      "probe_id": "K_LASALLE",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "LASALLE",
+      "subject_role": "ghost",
+      "prompt": "What is LaSalle Bank?",
+      "sha256": "9b4a37f24a2014d57235d0995a0ec0e6fe6da299c553c393eef5833c8229d3a4"
+    },
+    {
+      "probe_id": "K_WAMU",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "WAMU",
+      "subject_role": "ghost",
+      "prompt": "What is Washington Mutual?",
+      "sha256": "00a24b29e0ab144a24ec0b3ef43b95392218a5713b8650c0a4f30c45195df725"
+    },
+    {
+      "probe_id": "K_COUNTRYWIDE",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "COUNTRYWIDE",
+      "subject_role": "ghost",
+      "prompt": "What is Countrywide Bank?",
+      "sha256": "e18bf6451c10e4dc15da1213186dd26cff8ce3a4c62c3cb1ae4fcc3185f5f62f"
+    },
+    {
+      "probe_id": "K_NATCITY",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "NATCITY",
+      "subject_role": "ghost",
+      "prompt": "What is National City Bank?",
+      "sha256": "7e753d0a0bbef33aaadd7120f71771a9f41d695e6df4125d96f51e8201f7cf5e"
+    },
+    {
+      "probe_id": "K_WACHOVIA",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "WACHOVIA",
+      "subject_role": "ghost",
+      "prompt": "What is Wachovia?",
+      "sha256": "4e4278a4642c32ec2b336c29fdb8a2a4a1998815227022cfe9ba3c1ae5b831bf"
+    },
+    {
+      "probe_id": "K_INGDIRECT",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "INGDIRECT",
+      "subject_role": "ghost",
+      "prompt": "What is ING Direct?",
+      "sha256": "b4f3e7a357137258093221b873111287819ccb8604bf31d7d4ae5ce15d966af5"
+    },
+    {
+      "probe_id": "K_SOVEREIGN",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "SOVEREIGN",
+      "subject_role": "ghost",
+      "prompt": "What is Sovereign Bank?",
+      "sha256": "64da6a1dc4b08f610e7c9fc3d62f268c13452f9859abbc8a29c7210f89ffb1cc"
+    },
+    {
+      "probe_id": "K_BBVACOMPASS",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "BBVACOMPASS",
+      "subject_role": "ghost",
+      "prompt": "What is BBVA Compass?",
+      "sha256": "25ee90afdb67e320cd38af944d5b8cda90048aab643e0dd37a7363399a7d0651"
+    },
+    {
+      "probe_id": "K_SUNTRUST",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "SUNTRUST",
+      "subject_role": "ghost",
+      "prompt": "What is SunTrust?",
+      "sha256": "2d780d4a75af8813a51d65a7e41e4212e075c368fbb2ac11381ce61f86a84179"
+    },
+    {
+      "probe_id": "K_BBT",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "BBT",
+      "subject_role": "ghost",
+      "prompt": "What is BB&T?",
+      "sha256": "ec69df41d5f903349808ed0e5b41a1a2fdc38eb1c8fb33b9850f00e623512089"
+    },
+    {
+      "probe_id": "K_UNIONBANK",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "UNIONBANK",
+      "subject_role": "ghost",
+      "prompt": "What is MUFG Union Bank?",
+      "sha256": "1e77fe3e746cc0f004b23518479ee78f6ca918768dc326afe71a57aab6223812"
+    },
+    {
+      "probe_id": "K_SIGNATURE",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "SIGNATURE",
+      "subject_role": "ghost",
+      "prompt": "What is Signature Bank (New York)?",
+      "sha256": "c1d9ba71222352a26f645806b845368bd4a2f178ccc295a566cc663dce2d5406"
+    },
+    {
+      "probe_id": "K_FIRSTREPUBLIC",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "FIRSTREPUBLIC",
+      "subject_role": "ghost",
+      "prompt": "What is First Republic Bank?",
+      "sha256": "64ff54dee6b337fee458927cb08b91a6a663cb4ffe5979361faf9408c154f52d"
+    },
+    {
+      "probe_id": "K_BMOHARRIS",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "BMOHARRIS",
+      "subject_role": "ghost",
+      "prompt": "What is BMO Harris Bank?",
+      "sha256": "740d8356b5384a451e286307eab0d9d97ecbc8188a3cbb83ebb0ab59283c940f"
+    },
+    {
+      "probe_id": "K_SVB",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "SVB",
+      "subject_role": "ghost",
+      "prompt": "What is Silicon Valley Bank?",
+      "sha256": "48d106f34cd2914f6bc0a62c794e2a45931ad5b9a436862c3a9886bc3edbeb73"
+    },
+    {
+      "probe_id": "K_DISCOVER",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "DISCOVER",
+      "subject_role": "control",
+      "prompt": "What is Discover Bank?",
+      "sha256": "12aafe1ba9849ea69d80db92e7b883db5dc8857f9271f9ba8d40a797e79a3854"
+    },
+    {
+      "probe_id": "K_AA",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "AA",
+      "subject_role": "incumbent",
+      "prompt": "What is American Airlines?",
+      "sha256": "355402f1c51a7db1ccf074976bc2dd53a99f3eac0c8c290dbd8905dd2f3ae551"
+    },
+    {
+      "probe_id": "K_DL",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "airline",
+      "subject_id": "DL",
+      "subject_role": "incumbent",
+      "prompt": "What is Delta Air Lines?",
+      "sha256": "894d25eb944d1e6d8027ce8ac71b55ed5aba799ab3107e7f757b01e85978fcea"
+    },
+    {
+      "probe_id": "K_JPMC",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "JPMC",
+      "subject_role": "incumbent",
+      "prompt": "What is Chase Bank?",
+      "sha256": "c13780b15dd6c2e6849f8f884dcae54a5a472da2e0abd671fdeecf76c6c99b6d"
+    },
+    {
+      "probe_id": "K_BAC",
+      "tier": "K",
+      "kind": "recognition",
+      "category": "bank",
+      "subject_id": "BAC",
+      "subject_role": "incumbent",
+      "prompt": "What is Bank of America?",
+      "sha256": "dbcc8e672bcf4675a4f35fea7a55f7b2f6df3fd74b1d5c80b61c74d603a303ab"
+    },
+    {
+      "probe_id": "S_TZ",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "TZ",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with ATA Airlines?",
+      "sha256": "3ed6c10dbea9eee7c55514fc760aa142dc7a63badfcb18e017820810a54d4d79"
+    },
+    {
+      "probe_id": "S_NW",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "NW",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with Northwest Airlines?",
+      "sha256": "186b6e3e0be9da875e242b9a34765c8f28a772bdec6f69b4328798e0ee6eba14"
+    },
+    {
+      "probe_id": "S_CO",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "CO",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with Continental Airlines?",
+      "sha256": "84f3a12a9bfe72b5accc579e37b67c612f977fa38d19d4dc93f58cba9b02be9e"
+    },
+    {
+      "probe_id": "S_FL",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "FL",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with AirTran Airways?",
+      "sha256": "b103b872ad7e9cf9d793b5fa4887b7388cff02da962df94fe10eb1cae14e219f"
+    },
+    {
+      "probe_id": "S_US",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "US",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with US Airways?",
+      "sha256": "301b384ace91058f1c8ee4f407ed68aafa398b6b01e4789dbe058c8ae932a005"
+    },
+    {
+      "probe_id": "S_VX",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "VX",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with Virgin America?",
+      "sha256": "839df0c5094d29f88aae43c2bd914d98138f6fcebbd626ee9554093ba0e71899"
+    },
+    {
+      "probe_id": "S_NK",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "NK",
+      "subject_role": "ghost",
+      "prompt": "Can I still book a flight with Spirit Airlines?",
+      "sha256": "3ba1d9d28acfd31b62493e4950bb0ba311fab00ea90719d23fd2c5b09473dbf6"
+    },
+    {
+      "probe_id": "S_HA",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "HA",
+      "subject_role": "control",
+      "prompt": "Can I still book a flight with Hawaiian Airlines?",
+      "sha256": "bb17a6908a077e63bc044afc70dcdcab09273184b4a985cd244870b0402a3620"
+    },
+    {
+      "probe_id": "S_SY",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "SY",
+      "subject_role": "control",
+      "prompt": "Can I still book a flight with Sun Country Airlines?",
+      "sha256": "f1d5413318f2b95b963c18a167a5993602d42012aa1b5f447590753b63696b66"
+    },
+    {
+      "probe_id": "S_COMMERCE",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "COMMERCE",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Commerce Bank (Philadelphia)?",
+      "sha256": "491f67d2e911dbe1f5843e716e12233fac41f9f65157e896b7319b824690a0d7"
+    },
+    {
+      "probe_id": "S_NORTHFORK",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "NORTHFORK",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with North Fork Bank?",
+      "sha256": "7c926188855c6ce11c18bfbf01356c918e0fd0ac4bad81a4eb435114b7a8d53f"
+    },
+    {
+      "probe_id": "S_LASALLE",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "LASALLE",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with LaSalle Bank?",
+      "sha256": "3aa57b36d667090d2fdfcfae8fe0cb472f53589465bd4b0dcd4d599a79848bb7"
+    },
+    {
+      "probe_id": "S_WAMU",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "WAMU",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Washington Mutual?",
+      "sha256": "02c5fbe288a7e09e86f677f77d247202ad5d11ec79c214daef867f79b90478d9"
+    },
+    {
+      "probe_id": "S_COUNTRYWIDE",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "COUNTRYWIDE",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Countrywide Bank?",
+      "sha256": "585b2b1173ad889832d25bcdb279ffa7ecfc33ec974ced138dec44a3e1ed4a77"
+    },
+    {
+      "probe_id": "S_NATCITY",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "NATCITY",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with National City Bank?",
+      "sha256": "b6ecdc8a2a3f37ce20991a5a59d508489f9acdf00ba7bf786129c5cb43f58502"
+    },
+    {
+      "probe_id": "S_WACHOVIA",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "WACHOVIA",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Wachovia?",
+      "sha256": "eaaa62d697dfe9d498e8bb6f650c1b27f8cc895470b8ce7cf1b0abfc0abcb212"
+    },
+    {
+      "probe_id": "S_INGDIRECT",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "INGDIRECT",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with ING Direct?",
+      "sha256": "b55816a4ad35714b95e4d9f67342e21f4d5793c55dd57d80f7c53b0d9a1264ae"
+    },
+    {
+      "probe_id": "S_SOVEREIGN",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "SOVEREIGN",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Sovereign Bank?",
+      "sha256": "130eab751a338593e01094212990aebcaa0ea1262e1584e2448b814fcb08f245"
+    },
+    {
+      "probe_id": "S_BBVACOMPASS",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "BBVACOMPASS",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with BBVA Compass?",
+      "sha256": "0479f1c5146c06302441f4e50e2180de3426b7bacf1d2627161a452099ffe321"
+    },
+    {
+      "probe_id": "S_SUNTRUST",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "SUNTRUST",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with SunTrust?",
+      "sha256": "c357e8b70aebf5b9abf6f8784335b3d5848109f6cbdd7861caeb06a46c7853df"
+    },
+    {
+      "probe_id": "S_BBT",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "BBT",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with BB&T?",
+      "sha256": "ee1701195b536de21530a30adcb8321f93d1d7bdfb73ac9d3e6340f73c2dbcfb"
+    },
+    {
+      "probe_id": "S_UNIONBANK",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "UNIONBANK",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with MUFG Union Bank?",
+      "sha256": "8e4713fe503ddef11b4732bf078312fcfcebdc7b76cc113ccbe0422f825abad4"
+    },
+    {
+      "probe_id": "S_SIGNATURE",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "SIGNATURE",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Signature Bank (New York)?",
+      "sha256": "9392ca86775ebd9e333f1c7a7cd457b5a0a4cedab84bb3f8b737ada7696f3c92"
+    },
+    {
+      "probe_id": "S_FIRSTREPUBLIC",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "FIRSTREPUBLIC",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with First Republic Bank?",
+      "sha256": "108c52c75713cd6104e65f08b2794e540680616353d09e7ecaad3d422448bbf7"
+    },
+    {
+      "probe_id": "S_BMOHARRIS",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "BMOHARRIS",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with BMO Harris Bank?",
+      "sha256": "2578421866abcc5da289d4f8430fb52f7ce0fae9a65eebd05aad6a4334646b40"
+    },
+    {
+      "probe_id": "S_SVB",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "SVB",
+      "subject_role": "ghost",
+      "prompt": "Can I still open an account with Silicon Valley Bank?",
+      "sha256": "06e9e17357ee2043677d261b3466fc633b798256a99dc7dd61d226d6d5416c1b"
+    },
+    {
+      "probe_id": "S_DISCOVER",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "DISCOVER",
+      "subject_role": "control",
+      "prompt": "Can I still open an account with Discover Bank?",
+      "sha256": "cd986baf4e181eecec478941e24a79eb68663a6957a54e7e8077e2f4d9f69411"
+    },
+    {
+      "probe_id": "S_AA",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "AA",
+      "subject_role": "incumbent",
+      "prompt": "Can I still book a flight with American Airlines?",
+      "sha256": "b03e498200de4608338922c1d8ff279066565daee1946f787ea24d87159ab75f"
+    },
+    {
+      "probe_id": "S_DL",
+      "tier": "S",
+      "kind": "status",
+      "category": "airline",
+      "subject_id": "DL",
+      "subject_role": "incumbent",
+      "prompt": "Can I still book a flight with Delta Air Lines?",
+      "sha256": "bafb6bcd034f5a2079503789551806c3e2f29238bc7eb47e7e047d47fd3bf531"
+    },
+    {
+      "probe_id": "S_JPMC",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "JPMC",
+      "subject_role": "incumbent",
+      "prompt": "Can I still open an account with Chase Bank?",
+      "sha256": "71a03d0f888e9b582ed654e6760e500d25e49d4a77494457767cc236abd0e740"
+    },
+    {
+      "probe_id": "S_BAC",
+      "tier": "S",
+      "kind": "status",
+      "category": "bank",
+      "subject_id": "BAC",
+      "subject_role": "incumbent",
+      "prompt": "Can I still open an account with Bank of America?",
+      "sha256": "2f0342d026761f7d35cf8a5a5ebef30c7ebca9a8eb730197fc6063e2d8205572"
+    }
+  ]
+}
