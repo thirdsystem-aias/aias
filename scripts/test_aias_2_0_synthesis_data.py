@@ -80,16 +80,55 @@ def unit():
     found, err = B.origin_tags(B.STAGE2_TAGS, runner=fake("", rc=128))
     check("origin_tags reports a git failure as not anchored", found == {} and err)
 
+    every = lambda tags: {t: (True, "fake") for t in tags}            # noqa: E731
     with tempfile.TemporaryDirectory() as td:
         a, b = Path(td) / "v41.json", Path(td) / "v19.json"
-        ok, reasons, _ = B.stage2_gate(a, b, runner=fake(both))
+        ok, reasons, _ = B.stage2_gate(a, b, anchors=every)
         check("gate closed when verdict files are missing", not ok and len([r for r in reasons if r.startswith("missing")]) == 2)
         a.write_text("{}"); b.write_text("{}")
-        one = "a" * 40 + "\trefs/tags/v0.41-prereg-r1\n"
-        ok, reasons, _ = B.stage2_gate(a, b, runner=fake(one))
-        check("gate closed when one tag is not on origin", not ok and reasons == ["tag v1.9-prereg-r1 not on origin"], reasons)
-        ok, reasons, _ = B.stage2_gate(a, b, runner=fake(both))
-        check("gate open with both files and both tags on origin", ok and not reasons, reasons)
+        half = lambda tags: {t: (t == "v0.41-prereg-r1", "fake") for t in tags}  # noqa: E731
+        ok, reasons, _ = B.stage2_gate(a, b, anchors=half)
+        check("gate closed when one lock is not anchored", not ok and reasons == ["v1.9-prereg-r1 not externally anchored: fake"], reasons)
+        ok, reasons, _ = B.stage2_gate(a, b, anchors=every)
+        check("gate open with both files and both locks anchored", ok and not reasons, reasons)
+
+        # OSF public-API walk (with pagination) returns the stored SHA-256
+        def folder(name, href):
+            return {"attributes": {"name": name, "kind": "folder"}, "relationships": {"files": {"links": {"related": {"href": href}}}}}
+        pages = {
+            B.OSF_API_ROOT: {"data": [folder("v40", "x")], "links": {"next": "root2"}},
+            "root2": {"data": [folder("methodology", "m")], "links": {"next": None}},
+            "m": {"data": [folder("v1_9", "m19")], "links": {}},
+            "m19": {"data": [folder("anchor", "anc")], "links": {}},
+            "anc": {"data": [{"attributes": {"name": "git_anchor_v1_9.json", "kind": "file",
+                                             "extra": {"hashes": {"sha256": "f" * 64}}}}], "links": {}},
+        }
+        check("osf_sha256 walks folders and pages", B.osf_sha256(B.OSF_ANCHORS["v1.9-prereg-r1"][1], pages.get) == "f" * 64)
+        check("osf_sha256 returns None for an absent file", B.osf_sha256(["methodology", "v1_9", "anchor", "nope.json"], pages.get) is None)
+
+        # osf_anchor_ok: OSF bytes match AND the anchor names the local tag object
+        anc = Path(td) / "git_anchor_v1_9.json"
+        anc.write_text(json.dumps({"tag": "v1.9-prereg-r1", "tag_object": "1" * 40}))
+        sha = B.sha256(anc)
+        saved = dict(B.OSF_ANCHORS)
+        B.OSF_ANCHORS["v1.9-prereg-r1"] = (str(anc), saved["v1.9-prereg-r1"][1])   # ROOT / absolute path = that path
+        pages["anc"]["data"][0]["attributes"]["extra"]["hashes"]["sha256"] = sha
+        try:
+            ok, how = B.osf_anchor_ok("v1.9-prereg-r1", getter=pages.get, runner=fake("1" * 40 + "\n"))
+            check("OSF anchor accepted when bytes and tag object match", ok, how)
+            ok, how = B.osf_anchor_ok("v1.9-prereg-r1", getter=pages.get, runner=fake("2" * 40 + "\n"))
+            check("OSF anchor refused when the local tag moved", not ok and "tag object" in how, how)
+            pages["anc"]["data"][0]["attributes"]["extra"]["hashes"]["sha256"] = "0" * 64
+            ok, how = B.osf_anchor_ok("v1.9-prereg-r1", getter=pages.get, runner=fake("1" * 40 + "\n"))
+            check("OSF anchor refused when the OSF bytes differ", not ok and "different" in how, how)
+        finally:
+            B.OSF_ANCHORS.clear(); B.OSF_ANCHORS.update(saved)
+
+    # anchor_status: origin first; a tag absent on origin falls back to the OSF anchor
+    st = B.anchor_status(B.STAGE2_TAGS, runner=fake("a" * 40 + "\trefs/tags/v0.41-prereg-r1\n"),
+                         getter=lambda url: {"data": [], "links": {}})
+    check("anchor_status: origin hit for v0.41", st["v0.41-prereg-r1"][0] and st["v0.41-prereg-r1"][1].startswith("origin"))
+    check("anchor_status: v1.9 falls back to OSF and is refused here", not st["v1.9-prereg-r1"][0], st["v1.9-prereg-r1"][1])
 
 
 def parity():

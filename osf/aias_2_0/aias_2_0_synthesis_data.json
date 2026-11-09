@@ -1,7 +1,7 @@
 {
   "phase": "AIAS 2.0 synthesis",
   "outline_tag": "aias-2-0-outline-locked",
-  "built_at_utc": "2026-11-09T13:34:30+00:00",
+  "built_at_utc": "2026-11-09T13:41:13+00:00",
   "status": "pre-t3",
   "spec": {
     "consistency_score": "C_phi rated at >= 6 total mentions (v1.9 SELECTED_CONSISTENCY)",
@@ -3827,12 +3827,18 @@
     "reasons": [
       "missing osf/v41/v41_verdicts.json",
       "missing osf/methodology/v1_9/v1_9_verdicts.json",
-      "tag v0.41-prereg-r1 not on origin",
-      "tag v1.9-prereg-r1 not on origin"
+      "v0.41-prereg-r1 not externally anchored: not on origin (absent); osf/v41/anchor/git_anchor_v0_41.json not in this tree (merge the phase branch first)",
+      "v1.9-prereg-r1 not externally anchored: not on origin (absent); osf/methodology/v1_9/anchor/git_anchor_v1_9.json not in this tree (merge the phase branch first)"
     ],
     "origin": {
-      "found": {},
-      "error": null
+      "v0.41-prereg-r1": {
+        "anchored": false,
+        "how": "not on origin (absent); osf/v41/anchor/git_anchor_v0_41.json not in this tree (merge the phase branch first)"
+      },
+      "v1.9-prereg-r1": {
+        "anchored": false,
+        "how": "not on origin (absent); osf/methodology/v1_9/anchor/git_anchor_v1_9.json not in this tree (merge the phase branch first)"
+      }
     },
     "class": {
       "class": null,

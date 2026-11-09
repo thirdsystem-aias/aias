@@ -14,9 +14,13 @@ Reads locked records only; every input is hashed into the output.
             score_v41.wave_metrics). Before anything is written, t1/t2 must reproduce the
             locked Stage 1 values in v1_9_calibration.json exactly (PARITY A1-A5).
   stage2    osf/v41/v41_verdicts.json and osf/methodology/v1_9/v1_9_verdicts.json are read
-            only when both exist AND both prereg tags are on origin (git ls-remote against
-            the remote URL, not the local tag). The outline's section-5 class is then
-            computed mechanically (classify()).
+            only when both exist AND both locks are externally anchored, checked against the
+            remotes, never the local tag alone: the prereg tag is on origin (git ls-remote
+            against the URL), OR (v0.41/v1.9 DEVIATIONS Entry 1, Pablo's decision of Nov 9,
+            07:31 CT) the git-anchor JSON in this tree is on OSF byte for byte (public API
+            SHA-256) and names the local tag object. The outline's section-5 class is then
+            computed mechanically (classify()). At the data lock, merge v0.41 and v1.9 into
+            aias-2.0 first so the t3 data, both verdict files and both anchor files are here.
 
 Outputs (osf/aias_2_0/): aias_2_0_synthesis_data.json, aias_2_0_profiles.csv.
 status = "pre-t3" until the Stage 2 section is complete; the data lock tag
@@ -205,20 +209,88 @@ def origin_tags(tags, url=ORIGIN_URL, runner=subprocess.run):
     return found, None
 
 
-def stage2_gate(v41_path, v19_path, skip_origin=False, runner=subprocess.run):
+# OSF git anchors (v0.41 / v1.9 DEVIATIONS Entry 1): tag -> (path in this tree, OSF path parts)
+OSF_ANCHORS = {
+    "v0.41-prereg-r1": ("osf/v41/anchor/git_anchor_v0_41.json", ["v41", "anchor", "git_anchor_v0_41.json"]),
+    "v1.9-prereg-r1": ("osf/methodology/v1_9/anchor/git_anchor_v1_9.json",
+                       ["methodology", "v1_9", "anchor", "git_anchor_v1_9.json"]),
+}
+OSF_API_ROOT = "https://api.osf.io/v2/nodes/ec6wh/files/osfstorage/"
+
+
+def _osf_get(url):
+    import urllib.request
+    with urllib.request.urlopen(url, timeout=60) as r:
+        return json.loads(r.read().decode("utf-8"))
+
+
+def osf_sha256(parts, getter=_osf_get):
+    """SHA-256 OSF stores for the file at osfstorage/<parts...> (public API), or None."""
+    url = OSF_API_ROOT
+    for i, name in enumerate(parts):
+        hit = None
+        while url and hit is None:
+            d = getter(url)
+            hit = next((it for it in d.get("data", []) if it["attributes"]["name"] == name), None)
+            url = None if hit else (d.get("links") or {}).get("next")
+        if hit is None:
+            return None
+        if i == len(parts) - 1:
+            return ((hit["attributes"].get("extra") or {}).get("hashes") or {}).get("sha256")
+        url = hit["relationships"]["files"]["links"]["related"]["href"]
+    return None
+
+
+def _local_tag_object(tag, runner=subprocess.run):
+    r = runner(["git", "-C", str(ROOT), "rev-parse", "-q", "--verify", f"refs/tags/{tag}"],
+               capture_output=True, text=True)
+    return r.stdout.strip() if r.returncode == 0 else None
+
+
+def osf_anchor_ok(tag, getter=_osf_get, runner=subprocess.run):
+    rel, parts = OSF_ANCHORS[tag]
+    p = ROOT / rel
+    if not p.exists():
+        return False, f"{rel} not in this tree (merge the phase branch first)"
+    local = sha256(p)
+    try:
+        remote = osf_sha256(parts, getter)
+    except Exception as e:
+        return False, f"OSF check failed: {type(e).__name__}: {e}"
+    if remote != local:
+        return False, f"OSF copy of {rel} missing or different (osf {remote}, local {local})"
+    rec = json.load(open(p))
+    obj = _local_tag_object(tag, runner)
+    if obj is None or rec.get("tag_object") != obj:
+        return False, f"anchor names tag object {rec.get('tag_object')}, local {tag} is {obj}"
+    return True, f"OSF git anchor ({'/'.join(parts)}, sha256 {local[:12]}…)"
+
+
+def anchor_status(tags, runner=subprocess.run, getter=_osf_get):
+    """tag -> (anchored?, how): origin first, then the OSF git anchor."""
+    found, err = origin_tags(tags, runner=runner)
+    out = {}
+    for t in tags:
+        if t in found:
+            out[t] = (True, f"origin {found[t][:12]}")
+        else:
+            ok, how = osf_anchor_ok(t, getter=getter, runner=runner)
+            out[t] = (ok, how if ok else f"not on origin ({err or 'absent'}); {how}")
+    return out
+
+
+def stage2_gate(v41_path, v19_path, skip_origin=False, anchors=None):
+    """anchors: callable(tags) -> {tag: (ok, how)}; default anchor_status (the real remotes)."""
     reasons = []
     for p in (v41_path, v19_path):
         if not Path(p).exists():
             reasons.append(f"missing {Path(p).relative_to(ROOT) if str(p).startswith(str(ROOT)) else p}")
-    origin = {}
     if skip_origin:
         origin = {"skipped": "test mode (--skip-origin)"}
     else:
-        found, err = origin_tags(STAGE2_TAGS, runner=runner)
-        origin = {"found": found, "error": err}
-        for t in STAGE2_TAGS:
-            if t not in found:
-                reasons.append(f"tag {t} not on origin")
+        st = (anchors or anchor_status)(STAGE2_TAGS)
+        origin = {t: {"anchored": ok, "how": how} for t, (ok, how) in st.items()}
+        reasons += [f"{t} not externally anchored: {how}" for t, (ok, how) in st.items() if not ok]
     return (not reasons), reasons, origin
 
 
