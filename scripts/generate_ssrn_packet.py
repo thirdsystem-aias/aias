@@ -143,6 +143,32 @@ _PACKET_PLAINTEXT_SUBS = {
 }
 
 
+def inline_footnotes(s: str) -> str:
+    """Turn pandoc inline footnotes '^[...]' into ' (Note: ...)' for plain-text
+    paste fields (SSRN's declaration boxes have no footnotes). Bracket-matched,
+    so a note may itself contain [brackets]."""
+    out, i = [], 0
+    while True:
+        j = s.find("^[", i)
+        if j < 0:
+            out.append(s[i:])
+            return "".join(out)
+        depth, k = 0, j + 1
+        while k < len(s):
+            if s[k] == "[":
+                depth += 1
+            elif s[k] == "]":
+                depth -= 1
+                if depth == 0:
+                    break
+            k += 1
+        if k >= len(s):            # unbalanced: leave the rest untouched
+            out.append(s[i:])
+            return "".join(out)
+        out.append(s[i:j].rstrip() + " (Note: " + s[j + 2:k].strip() + ")")
+        i = k + 1
+
+
 def clean_for_plaintext(s: str) -> str:
     """Render a LaTeX/markdown field as plain text for SSRN paste."""
     for macro, uni in _PACKET_PLAINTEXT_SUBS.items():
@@ -204,14 +230,14 @@ def generate_packet(phase_display: str, phase_snake: str,
     coi = (extract_section(body, r"Conflict of interest")
            or _decl_field("Conflict of interest")
            or "[COI NOT FOUND]")
-    coi = coi.strip()
+    coi = inline_footnotes(coi.strip())
 
     data_avail = (extract_section(body, r"Data and code availability")
                   or _decl_field("Data and code availability")
                   or _decl_field("Data availability")
                   or _decl_field("Data and pre-registration")
                   or "")
-    data_avail = data_avail.strip()
+    data_avail = inline_footnotes(data_avail.strip())
 
     subject_class_block = "\n".join(f"{i}. **{n}**"
                                      for i, n in enumerate(SUBJECT_CLASSIFICATIONS, 1))
