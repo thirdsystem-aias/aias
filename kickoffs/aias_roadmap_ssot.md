@@ -1,188 +1,189 @@
-# AIAS™ 2.0 → 6.0 — Sequential SSOT Roadmap
+# AIAS™ 2.0 → 6.0 Program Roadmap — SSOT (v2)
 
-> Single source of truth. CV.NN (construct validity) and EXP.NN (cross-cutting expansion) folded into the v0.NN sequence per program convention (every measurement/research phase paper is a v0.NN). Methodology papers (v1.NN / v2.NN), synthesis papers (AIAS X.0), and non-research tracks (PA, PB, PC, PD, MONO, JAR, JOUR) retain their own labels.
-
----
-
-## PHASE A — Close out 1.0 substrate base (Presence-only)
-
-- **v0.22** — Presence substrate expansion: automotive. First prospective phase under v1.6 lock; extends anchor base from 5 → 6 families; stress-tests Phantom Brand Persistence on heritage-heavy substrate (Mercedes, Jaguar, Cadillac).
-- **v0.23** — Presence substrate expansion: premium spirits. 7th family; tests substrate where editorial-authority and cultural-cult channels both populate densely.
-- **v0.24** — Presence substrate expansion: B2B SaaS or financial services. 8th family; stress-tests Discourse-Language carryforward on substrate with strong marketing-language signal.
-
-## PHASE B — Phase 3 Construct Validity *(formerly CV.01–CV.05)*
-
-- **v0.25** — Predictive validity pilot: AIAS Presence × Google Trends on PM software substrate (existing v0.6/v0.9 data; no new LLM calls).
-- **v0.26** — Predictive validity: AIAS Presence × Amazon Best Sellers rank on applicable substrates.
-- **v0.27** — Convergent validity: AIAS Presence × third-party AI brand visibility instruments (Profound, Brandwatch, etc.).
-- **v0.28** — Discriminant validity: AIAS Presence × Mental Availability survey instruments (YouGov BrandIndex or Romaniuk CEP-anchored measures).
-- **v0.29** — Phase 3 baseline synthesis paper: predictive + convergent + discriminant validity claim for Presence.
-
-## PHASE C — AIAS 2.0: Consistency (CPC)
-
-- **v0.30** — CPC instrument specification pilot: formal CV-based definition, cross-model vs. cross-platform distinction, pilot measurement across 2–3 anchored substrates.
-- **v1.7** — CPC methodology lock: protocol for CV computation, normalization choice, integration into existing Phase A / Phase B pipeline.
-- **v0.31** — CPC cross-category baseline: retroactive CPC across all 8 anchored substrates (v0.16–v0.24).
-- **v0.32** — CPC × model-version stability: test CPC behavior across LLM version snapshots (designed-for-test).
-- **v0.33** — Provider-asymmetric CPC: test whether CPC differs systematically by LLM provider.
-- **v0.34** — CPC longitudinal t₁→t₂: stability paralleling v0.9 Re-Baseline.
-- **v0.35** — Naive-Phantom × CPC: do phantom-heavy brands have distinct CPC signatures?
-- **v0.36** — CPC regime / typology emergence (6927958): pre-registered clustering test of CV-CPC against the v0.23 per-brand Presence-quartile regime — NOT the v1.2 substrate-level Trends taxonomy; 'regime' construct overloading disambiguated in-phase (three constructs). Outcome: Cell D (unstructured), falsifying the pre-registered borrowed-structure (Cell A) prediction; headline verdict shown floor-sensitive (silhouette 0.350 at the n=84 inclusion floor); locked verdict matrix found non-exhaustive (autonomy + no-residual unmapped).
-- **v1.8** — CPC typology methodology lock.
-  - *Upstream motivation queue (cite when drafting):* v1.7 (6878818 — CV-CPC not adopted; Presence-coupling ρ=0.77), v0.32 (6898581 — version-snapshot fragility), v0.33 (6909019 — provider saturation-collapse), v0.34 (6915458 — **temporal stability of CV-CPC rank order CONFIRMED, so the machinery reproduces; recognition-ceiling effects in 4/5 consumer categories structurally collapse both the Beyond-Presence gate and the Presence rank-test → demonstrated necessity of a mean-independent consistency instrument *and* a graded recognition signal**), v0.35 (6921758 — pre-registered control-flip: C_P control inert under recognition saturation, recall-mean control annihilates the contrast; converts both v1.8 requirements (mean-independent instrument, graded recognition signal) into empirically-backed specifications; phantom-signature question designated as v1.8-instrument re-test, v0.35 frozen 84-unit analysis set as baseline), v0.36 (6927958 — regime falsification, Cell D; four instrument pathologies: CV computability floor erases low-recall coverage (15/24 in the label substrate), saturation direction reversal (dispersion HIGHER under saturation, Levene p=.003), structure visible only under mean removal, floor-dependent headline verdict. Adds the THIRD v1.8 requirement: defined coverage over the low-recall segment (alongside mean-independence and graded recognition). Institutional rule adopted: verdict-matrix exhaustiveness check at pre-registration.).
-- **v0.37** — CPC × Identity Load moderator test.
-- **v0.38** — CPC × Phantom Brand Persistence test. *(Designated v1.8-instrument re-test of the v0.35 phantom-signature question; v0.35 frozen 84-unit analysis set as the comparison baseline.)*
-- **v0.39** — Presence × CPC dissociation: first cross-component diagnostic study.
-- **v1.9** — Two-component composite weight calibration methodology.
-- **AIAS 2.0** — Two-component synthesis paper.
-- **AIAS 2.0 report** — Third System brand-format managerial report.
-
-## PHASE D — AIAS 3.0: Ranking (RS)
-
-- **v0.40** — RS pipeline build: response-order extraction infrastructure; backfill rank data into v0.16–v0.24 where feasible.
-- **v0.41** — RS instrument specification: modal rank vs. mean rank vs. rank-band assignment vs. inverse-rank-weighted; pilot validation.
-- **v1.10** — RS methodology lock.
-- **v0.42** — RS cross-category baseline across 8 substrates.
-- **v0.43** — Light Buyer Paradox empirical test: framework's rank-sensitivity prediction tested under measurement.
-- **v0.44** — RS × prompt-phrasing stability.
-- **v0.45** — RS × model-version stability.
-- **v0.46** — RS × Phantom Brand band-occupancy: do phantoms cluster at specific rank bands?
-- **v0.47** — Presence × RS dissociation: when high-rank brands have low Presence and vice versa.
-- **v0.48** — RS regime / typology emergence.
-- **v1.11** — RS typology methodology lock.
-- **v0.49** — RS substrate replication: automotive.
-- **v0.50** — RS × Identity Load.
-- **v0.51** — RS × Discourse-Language carryforward.
-- **v0.52** — Three-way Presence × CPC × RS diagnostic.
-- **v1.12** — Three-component composite calibration methodology.
-- **AIAS 3.0** — Three-component synthesis paper.
-- **AIAS 3.0 report** — Third System brand-format managerial report.
-- **v0.53** — Predictive validity update: three-component AIAS vs. behavioral outcomes *(formerly CV.06)*.
-
-## PHASE E — Productization Phase A (parallel from now)
-
-- **PA.01** — Content-codegen automation: phase paper content module template generator (regression target: v0.10 content file).
-- **PA.02** — Chart-scaffolding automation: matplotlib chart-builder template generator with Akkurat + Indigo brand tokens.
-- **PA.03** — Paper-templating automation: pandoc/xelatex paper builder template with Carlito + titlepage + Unicode-substitution rules baked in.
-- **PA.04** — OSF deposit automation: extend osf_upload.py to full per-phase deposit packaging.
-
-## PHASE F — AIAS 4.0: Sentiment (AMS)
-
-- **v0.54** — AMS classifier infrastructure: sentiment classifier choice, validation against human-annotated test set, calibration.
-- **v0.55** — AMS instrument specification: sentiment-of-framing vs. sentiment-of-source vs. composite; pilot validation.
-- **v1.13** — AMS methodology lock.
-- **v0.56** — AMS cross-category baseline.
-- **v0.57** — AMS × classifier disagreement: cross-classifier reliability test.
-- **v0.58** — AMS × model-version stability.
-- **v0.59** — AMS × prompt sentiment-priming sensitivity.
-- **v0.60** — AMS × Phantom Brand valence signature.
-- **v0.61** — AMS regime / typology emergence.
-- **v1.14** — AMS typology methodology lock.
-- **v0.62** — AMS substrate replication: luxury.
-- **v0.63** — AMS substrate replication: regulated category (pharma or financial).
-- **v0.64** — AMS × Identity Load.
-- **v0.65** — AMS × Discourse-Language review-tone carryforward.
-- **v0.66** — Four-component dissociation studies.
-- **v1.15** — Four-component composite calibration methodology.
-- **AIAS 4.0** — Four-component synthesis paper.
-- **AIAS 4.0 report** — Third System brand-format managerial report.
-- **AIAS 4.0 playbook** — Practitioner Playbook v1 (diagnostic typology now actionable).
-- **v0.67** — Convergent validity: four-component AIAS vs. YouGov BrandIndex *(formerly CV.07)*.
-
-## PHASE G — Cross-cutting expansion *(formerly EXP.01–EXP.05)*
-
-- **v0.68** — Non-English substrate: French full panel (Mariage Frères / Palais des Thés substrate or new).
-- **v0.69** — Non-English substrate: Mandarin or Japanese full panel.
-- **v0.70** — Panel-construction sensitivity study: vary panel-build rules, test Recognition × Recall verdict stability.
-- **v0.71** — Cross-cultural Identity Load study.
-- **v0.72** — Model-transition longitudinal study: AIAS behavior across major LLM version releases.
-
-## PHASE H — AIAS 5.0: Coverage (CEP)
-
-- **v0.73** — CEP taxonomy specification: substrate-specific CEP set definitions for 4 anchored substrates.
-- **v0.74** — CEP measurement pipeline build: per-CEP rolldown infrastructure.
-- **v0.75** — CEP instrument specification.
-- **v1.16** — CEP methodology lock (decision point: roll to v2.x methodology generation).
-- **v0.76** — CEP cross-category baseline.
-- **v0.77** — CEP × CEP-set sensitivity: instrument robustness to CEP taxonomy choice.
-- **v0.78** — CEP × prompt-phrasing variation.
-- **v0.79** — CEP × Phantom Brand CEP-occupancy signature.
-- **v0.80** — CEP regime / typology emergence.
-- **v2.1** — CEP typology methodology lock.
-- **v0.81** — CEP substrate replication: automotive.
-- **v0.82** — CEP substrate replication: B2B SaaS.
-- **v0.83** — CEP × Identity Load.
-- **v0.84** — Five-component dissociation studies.
-- **v2.2** — Five-component composite calibration methodology.
-- **AIAS 5.0** — Five-component synthesis paper.
-- **AIAS 5.0 report** — Third System brand-format managerial report.
-- **v0.85** — Predictive validity at five-component composite *(formerly CV.08)*.
-
-## PHASE I — Productization Phase B (post-AIAS 4.0)
-
-- **PB.01** — Push-button category measurement pipeline: new substrate → registry → run → scored output → draft report, minimum intervention.
-- **PB.02** — Internal Samsung dashboard pilot: AIAS reading as continuous dashboard for one brand team.
-
-## PHASE J — AIAS 6.0: Grounding (SDC)
-
-- **v0.86** — SDC infrastructure: schema.org and knowledge graph audit pipeline.
-- **v0.87** — SDC infrastructure: source citation tracing pipeline (where LLMs cite) and source attribution inference (where they don't).
-- **v0.88** — SDC instrument specification.
-- **v2.3** — SDC methodology lock.
-- **v0.89** — SDC cross-category baseline.
-- **v0.90** — SDC × structured-data gap signature: brands with rich vs. sparse structured-data presence.
-- **v0.91** — SDC × source-coverage longitudinal stability.
-- **v0.92** — SDC × Phantom Brand grounding signature: do phantoms have distinct grounding profiles?
-- **v0.93** — SDC regime / typology emergence.
-- **v2.4** — SDC typology methodology lock.
-- **v0.94** — SDC substrate replication.
-- **v0.95** — SDC × Identity Load.
-- **v0.96** — Six-component dissociation studies.
-- **v2.5** — Six-component composite calibration methodology.
-- **AIAS 6.0** — Six-component holistic-construct synthesis paper (the working-model paper).
-- **AIAS 6.0 report** — Third System brand-format managerial report (the holistic-working-model report).
-
-## PHASE K — Phase 3 closeout (post-6.0)
-
-- **v0.97** — Predictive validity with full six-component AIAS composite *(formerly CV.09)*.
-- **v0.98** — Discriminant validity vs. Mental Availability and Physical Availability (the third-system claim defended at full instrument) *(formerly CV.10)*.
-- **v0.99** — Phase 3 Construct Validity synthesis paper *(formerly CV.11)*.
-
-## PHASE L — Translation track (interleaved throughout)
-
-- **MONO.01** — Routledge monograph: Phase 1 acquisitions outreach package to Alex Atkinson.
-- **MONO.02** — Routledge monograph: Phase 2 chapter-by-chapter production (post-contract).
-- **JAR.01** — Tri-System short-form paper: JAR submission status tracking (currently in review).
-- **JOUR.01** — AIAS 1.0 synthesis to JM or JMR after Phase 3 baseline lands.
-- **JOUR.02–06** — Component synthesis papers to JAR / Marketing Letters / IJRM (one per whole-version release).
-
-## PHASE M — Productization Phase C–D (post-AIAS 5.0)
-
-- **PC.01** — External pilot client adoption: 1–2 agency or brand-side partners.
-- **PD.01** — API / SaaS productization scoping: foundation entity vs. commercial entity decision.
-- **PD.02** — API / SaaS productization build.
+Nov 8, 2026 · Supersedes v1 (which incorrectly started forward planning at v0.22 — in reality v0.22–v0.37 are already shipped and v0.38–v0.40 are in flight).
 
 ---
 
-## Tally
+## Program status at Nov 8, 2026
 
-- **v0.NN phase papers:** v0.22 → v0.99 (78 projects)
-- **v1.NN methodology papers:** v1.7 → v1.16 (10 projects)
-- **v2.NN methodology papers:** v2.1 → v2.5 (5 projects)
-- **AIAS X.0 synthesis papers:** 2.0, 3.0, 4.0, 5.0, 6.0 (5 projects)
-- **AIAS X.0 brand-format reports:** 5 projects + 1 playbook
-- **Productization (PA / PB / PC / PD):** 9 projects
-- **Translation (MONO / JAR / JOUR):** ~10 projects
+### Shipped
 
-**Total: ~123 sequential projects across 13 phases.**
+- **Framework paper** — "AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval" — SSRN 6659000, May 2026
+- **AIAS 1.0 synthesis** — Presence component construct claim — SSRN 6817841, May 2026
+- **MSI Working Paper** — "Tri-System Brand Growth: The AI Mediation Layer" — Report 26-132, Oct 15, 2026
+- **Presence anchor base** — v0.6–v0.24, 16 substrate families (PM software, running shoes, olive oil, skincare, finance apps, household goods, kitchen knives, premium tea, premium kitchenware, indie fragrance, audiophile headphones, cosmetics, automotive, premium spirits, B2B SaaS, tech brands)
+- **Phase 3 Construct Validity for Presence** — v0.25–v0.29 (predictive × Google Trends, predictive × Amazon BSR, convergent, discriminant, CV baseline)
+- **Consistency (CPC) component development** — v0.30 CPC instrument pilot · v0.31 CPC baseline · v0.32 CPC version stability · v0.33 provider asymmetry · v0.34 longitudinal t₁→t₂ · v0.35 phantom CPC omnibus · v0.36 CPC regime emergence · v0.37 CPC × Identity Load moderator
+- **Methodology locks** — v1.1 through v1.8
 
-## Open decisions before kicking off the first chat
+### In pipeline
 
-- **v0.22 substrate** — automotive vs. premium spirits vs. CE-outside-audio. Locks in the Phantom Brand stress-test direction.
-- **Sequencing of PHASE B (v0.25–v0.29)** — now folded into the linear sequence after PHASE A; CV work runs as v0.NN phase papers using existing data, not parallel.
-- **CPC component-order commitment** — confirming Consistency as the 2.0 component (vs. Ranking-first if managerial-decision-relevance trumps engineering-cost as the ordering principle).
-- **v2.x rollover** — when methodology numbering rolls from v1.x to v2.x; current plan locks at the AIAS 5.0 boundary (v1.16 → v2.1).
+- **v0.38 Aillio home roasters** — written, held (reads as addressed to one brand)
+- **v0.39 Bellwether commercial roasters** — written, held (same reason)
+- **v0.40 Ghost brands flagship** — in design per mega-prompt; US airlines + US retail banks; tests MSI P1 reinforcement + brand afterlife; targeted for Dec 14 website launch
+
+---
+
+## Immediate priorities — ready to ship, no new measurement
+
+Three deliverables sit on the critical path before v0.41 should open:
+
+1. **AIAS 2.0 synthesis paper** — two-component construct claim binding Presence (shipped as 1.0) + Consistency (component build through v0.37 / v1.8). Writes itself off existing work. **This is the most important deliverable not yet on the record.**
+2. **Phase 3 CV synthesis paper** — binds v0.25–v0.29 into one validity-claim paper for Presence. Check whether v0.29 "CV baseline" already serves this role or whether a standalone synthesis is still owed.
+3. **v0.40 Ghost Brands flagship** — execute per mega-prompt; both categories (airlines + banks) locked before Nov 24 for legacy-arm acquisition deadline.
+
+Decision point: whether **v0.25 rebuild** (the B2B SaaS CV paper that carries v0.24 text) ships before v0.41 or is treated as a footnote erratum. Same pattern as the v0.23 Nov 8 rebuild.
+
+---
+
+## Forward v0.NN sequence (from v0.41)
+
+Component-build arc below. Category/flagship study slots are opportunistic — insert at any v0.NN; the spine still reaches AIAS 6.0 in sequence.
+
+### PHASE N — Ranking (RS) component → AIAS 3.0
+
+- **v0.41** — RS pipeline build: response-order extraction infrastructure; backfill rank data into v0.22–v0.24 and v0.30–v0.37 substrates where feasible
+- **v0.42** — RS instrument specification pilot: modal rank vs. mean rank vs. rank-band assignment vs. inverse-rank-weighted; pilot measurement across 2–3 anchored substrates
+- **v1.9** — RS methodology lock
+- **v0.43** — RS cross-category baseline: retroactive RS across 8+ anchored substrates
+- **v0.44** — Light Buyer Paradox empirical test: framework's rank-sensitivity prediction tested under measurement
+- **v0.45** — RS × model-version stability (designed-for-test)
+- **v0.46** — RS × prompt-phrasing stability
+- **v0.47** — RS × Phantom Brand band-occupancy: do phantoms cluster at specific rank bands?
+- **v0.48** — Presence × RS dissociation diagnostic
+- **v0.49** — RS × Identity Load moderator test
+- **v0.50** — RS regime / typology emergence (does RS inherit Four-Regime Taxonomy or have its own?)
+- **v1.10** — RS typology methodology lock + two → three-component composite calibration
+- **AIAS 3.0** — Three-component synthesis paper (Presence + CPC + RS)
+- **AIAS 3.0 report** — Third System brand-format managerial report
+- **v0.51** — Predictive validity update: three-component composite vs. behavioral outcomes
+
+### PHASE O — Sentiment (AMS) component → AIAS 4.0
+
+- **v0.52** — AMS classifier infrastructure: sentiment classifier choice (in-house vs. off-the-shelf vs. LLM-as-judge), validation against human-annotated test set, calibration
+- **v0.53** — AMS instrument specification: sentiment-of-framing vs. sentiment-of-source vs. composite; pilot validation
+- **v1.11** — AMS methodology lock
+- **v0.54** — AMS cross-category baseline
+- **v0.55** — AMS × classifier disagreement reliability
+- **v0.56** — AMS × model-version stability
+- **v0.57** — AMS × prompt sentiment-priming sensitivity
+- **v0.58** — AMS × Phantom Brand valence signature
+- **v0.59** — AMS × Identity Load moderator
+- **v0.60** — AMS regime / typology emergence
+- **v1.12** — AMS typology methodology lock + three → four-component composite calibration
+- **v0.61** — Four-component dissociation studies
+- **AIAS 4.0** — Four-component synthesis paper
+- **AIAS 4.0 report** — Third System brand-format managerial report
+- **AIAS 4.0 playbook** — Practitioner Playbook v1 (diagnostic typology now actionable)
+
+### PHASE P — Cross-cutting expansion (slot into the v0.62–v0.68 range)
+
+- **v0.NN** — Non-English substrate: French full panel
+- **v0.NN** — Non-English substrate: Mandarin or Japanese full panel
+- **v0.NN** — Panel-construction sensitivity study: vary panel-build rules, test Recognition × Recall verdict stability
+- **v0.NN** — Cross-cultural Identity Load study (collectivist vs. individualist markets)
+- **v0.NN** — Model-transition longitudinal study: AIAS behavior across major LLM version releases
+
+### PHASE Q — Coverage (CEP) component → AIAS 5.0
+
+- **v0.NN** — CEP taxonomy specification: substrate-specific CEP set definitions for 4 anchored substrates
+- **v0.NN** — CEP measurement pipeline build: per-CEP rolldown infrastructure
+- **v0.NN** — CEP instrument specification
+- **v1.NN** — CEP methodology lock *(decision point: roll to v2.x methodology generation — likely cleanest here)*
+- **v0.NN** — CEP cross-category baseline
+- **v0.NN** — CEP × CEP-set sensitivity (instrument robustness to CEP taxonomy choice)
+- **v0.NN** — CEP × prompt-phrasing variation
+- **v0.NN** — CEP × Phantom Brand CEP-occupancy signature
+- **v0.NN** — CEP × Identity Load moderator
+- **v0.NN** — CEP regime / typology emergence
+- **v2.NN** — CEP typology methodology lock + four → five-component composite calibration
+- **v0.NN** — Five-component dissociation studies
+- **AIAS 5.0** — Five-component synthesis paper
+- **AIAS 5.0 report** — Third System brand-format managerial report
+- **v0.NN** — Predictive validity update: five-component composite vs. behavioral outcomes
+
+### PHASE R — Grounding (SDC) component → AIAS 6.0
+
+- **v0.NN** — SDC infrastructure: schema.org and knowledge graph audit pipeline
+- **v0.NN** — SDC infrastructure: source citation tracing pipeline (where LLMs cite) and source attribution inference (where they don't)
+- **v0.NN** — SDC instrument specification
+- **v2.NN** — SDC methodology lock
+- **v0.NN** — SDC cross-category baseline
+- **v0.NN** — SDC × structured-data gap signature: brands with rich vs. sparse structured-data presence
+- **v0.NN** — SDC × source-coverage longitudinal stability
+- **v0.NN** — SDC × Phantom Brand grounding signature
+- **v0.NN** — SDC × Identity Load moderator
+- **v0.NN** — SDC regime / typology emergence
+- **v2.NN** — SDC typology methodology lock + five → six-component composite calibration
+- **v0.NN** — Six-component dissociation studies
+- **AIAS 6.0** — Six-component holistic-construct synthesis paper (the working-model paper)
+- **AIAS 6.0 report** — Third System brand-format managerial report (the holistic-working-model report)
+
+### PHASE S — Phase 3 closeout (post-6.0)
+
+- **v0.NN** — Predictive validity with full six-component AIAS composite
+- **v0.NN** — Discriminant validity vs. Mental Availability and Physical Availability (the third-system claim defended at full instrument)
+- **Phase 3 Construct Validity final synthesis paper**
+
+---
+
+## Category/flagship study slots (opportunistic, insert at any v0.NN)
+
+Use when business/outreach timing or genuine curiosity makes a non-component-arc study higher value than the next spine item. Each absorbs the current v0.NN; spine continues at the next.
+
+**Likely candidates:**
+
+- **Roaster re-run under v1.8 instrument** — replaces held v0.38/v0.39 with the current consistency-instrument lock; could re-enter the public record cleanly.
+- **Second flagship after Ghost Brands** — candidate substrates: insurance, consumer banking at higher resolution, direct-to-consumer SaaS, airlines deep-dive, pharma, luxury.
+- **Business-driven substrate** — whatever category a prospective client or partner engagement calls for; use the independence/measure-only framing from the Nov 2026 marketing literature.
+- **Academic-collaboration substrate** — if SVA or external collaborators bring a category.
+
+These don't disrupt the spine. The spine just picks up at the next untaken v0.NN.
+
+---
+
+## Non-v0.NN parallel tracks
+
+### Productization
+
+- **PA.01** — Content-codegen automation (phase paper content module template generator)
+- **PA.02** — Chart-scaffolding automation (matplotlib with Akkurat + Indigo brand tokens)
+- **PA.03** — Paper-templating automation (pandoc + xelatex + Carlito with Unicode-substitution rules)
+- **PA.04** — OSF deposit automation (extend osf_upload.py to full per-phase packaging)
+- **PB.01** — Push-button category measurement pipeline (post-AIAS 4.0)
+- **PB.02** — Internal Samsung dashboard pilot (post-AIAS 4.0)
+- **PC.01** — External pilot client adoption: 1–2 agency or brand-side partners (post-AIAS 5.0)
+- **PD.01** — API / SaaS productization scoping: foundation entity vs. commercial entity decision
+- **PD.02** — API / SaaS productization build
+
+### Translation / publication
+
+- **MONO.01** — Routledge monograph: Phase 1 acquisitions outreach package to Alex Atkinson
+- **MONO.02** — Routledge monograph: Phase 2 chapter-by-chapter production (post-contract)
+- **JAR.01** — Tri-System short-form paper JAR submission tracking (currently in review)
+- **JOUR.01** — AIAS 1.0 synthesis to JM or JMR after Phase 3 baseline lands
+- **JOUR.02–06** — Component synthesis papers to JAR / Marketing Letters / IJRM (one per whole-version release)
+
+---
+
+## Program completion target
+
+At current cadence (~6 deliverables/month sustained May–Nov 2026), the full forward arc to AIAS 6.0 = 14–18 months. Target: Q2 2028.
+
+Substantially faster possible if PA.01–PA.04 automation lands early (every subsequent component build amortizes against it).
+
+---
+
+## Open decisions before v0.41 opens
+
+- **AIAS 2.0 synthesis paper** — is this already drafted or does it need to start now? If not drafted, this is literally the next chat, before any new v0.NN.
+- **Phase 3 CV synthesis** — is v0.29 "CV baseline" already the binding paper, or is a separate synthesis owed?
+- **v0.25 rebuild** — ships as a standalone correction before v0.41, or treated as footnote erratum?
+- **v0.38/v0.39 fate** — re-run under v1.8 instrument with independence framing, or retire?
+- **Second flagship category study** — slot immediately after v0.40 (to maintain outreach momentum) or wait until after the RS build has started?
+
+---
 
 ## Standard kickoff prompt
 
-Use `kickoffs/aias_project_kickoff_prompt.md` for each chat. Fill in two placeholders: `{PROJECT_ID}` and `{ONE-LINE DESCRIPTION FROM SSOT}` (copy from the bullet above).
+Use `kickoffs/aias_project_kickoff_prompt.md` for each new chat. Fill in `{PROJECT_ID}` and `{ONE-LINE DESCRIPTION}` from the bullet above.
