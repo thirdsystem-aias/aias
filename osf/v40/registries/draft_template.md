@@ -55,6 +55,7 @@
 3. **Sun Country moved to primary sources (D15).** Allegiant's release of 2026-05-13 (IR site, and Exhibit 99.1 of an SEC filing) confirms the close and says both airlines keep their brands for now.
 4. **The builder now assembles this draft** from `registries/draft_template.md` and the generated tables, into `registries/out/v0_40_registry_draft.md`.
 5. **Moved into the pipeline** under `osf/v40/` (scripts, registries, data), following the v0.39 layout. The Samsung disclosure moved from the front matter to section 9, per the program's conflict-of-interest rule.
+6. **Commerce Bank's label** now carries its FDIC main-office city, Philadelphia, instead of "NJ", which had no source. The probes use the same name (D11).
 
 **r0, 2026-11-08, against the earlier draft**
 
