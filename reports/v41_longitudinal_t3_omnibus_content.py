@@ -20,8 +20,8 @@ COVER = {
     "title": "Five Months On",
     "subtitle": (
         "The same 112 brands, the same six AI models, the same questions, five months "
-        "apart. The standings held, and the brands the models never mention are still "
-        "not mentioned."
+        "apart. The standings held, and the brands the models rarely mention still "
+        "rarely come up."
     ),
 }
 
@@ -51,10 +51,10 @@ EXEC_SUMMARY = (
     "independence: when a brand's Consistency moved, its Presence did not move with "
     "it. The two scores are separate signals, which is why the program now reports them "
     "side by side rather than blended into one number. The observation: almost every "
-    "brand the models did not name in June was still unnamed in November.\n\n"
+    "brand the models rarely named in June was still rarely named in November.\n\n"
     "The implication for brand teams: a brand's standing in AI answers has inertia "
     "measured in months, not weeks. It does not drift away on its own, and it does not "
-    "improve by waiting. Absence in particular is a durable condition."
+    "improve by waiting. Being rarely named is a particularly durable condition."
 )
 
 WHAT_WE_MEASURED = (
@@ -123,8 +123,8 @@ HYPOTHESIS_SCORING = [
      "verdict": "SUPPORTED",
      "qualifier": "change in one is unrelated to change in the other (0.03 across 80 brands)",
      "status_class": "positive"},
-    {"id": "P5", "headline": "Invisibility lasts",
-     "proposition": "AI invisibility persists over five months.",
+    {"id": "P5", "headline": "Low visibility lasts",
+     "proposition": "Being rarely named by AI persists over five months.",
      "verdict": "OBSERVED",
      "qualifier": "descriptive; 56 of 58 below-floor brands kept the status; no pass mark was set",
      "status_class": "neutral"},
@@ -151,8 +151,8 @@ HYPOTHESIS_DETAILS = {
            "November with how far its Presence rank moved. The two movements were "
            "unrelated (0.03). Even at a single point in time the two scores are only "
            "weakly related (0.15), which supports reporting them separately."),
-    "P5": ("Brands below the recall floor in June that were still below it in November: "
-           "headphones 8 of 8, skincare 15 of 15, cosmetics 9 of 10, automotive 10 of 10, "
+    "P5": ("The recall floor is fewer than one mention per model on average. Brands below "
+           "it in June that were still below it in November: headphones 8 of 8, skincare 15 of 15, cosmetics 9 of 10, automotive 10 of 10, "
            "spirits 14 of 15. Pooled, 56 of 58 (97%). Over the first three weeks the "
            "figure was 56 of 57."),
 }

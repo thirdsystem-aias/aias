@@ -71,7 +71,21 @@ META = {
     4: {"paper": "chart_04_drift_dissociation", "report": "report_fig_04",
         "paper_v": "H_Drift_Dissociation: CONFIRMED — ρ(change in φ rank, change in π̂ rank) = {rho:+.3f} (n = {n}, p = {p:.3f})",
         "report_v": "P4 SUPPORTED — when a brand's consistency changes, its presence does not change with it: two separate signals."},
+    5: {"paper": None, "report": "report_fig_05", "paper_v": "",
+        "report_v": "P5 OBSERVED — almost every brand AI rarely named in June was still rarely named in November (descriptive)."},
 }
+
+
+REPORT_TITLE = {   # report register: describe the chart; never restate the finding's headline
+    "Consistency keeps its brand order over five months": "Consistency score, June against November",
+    "Presence keeps its brand order in every category": "Presence, June against November, by category",
+    "Five months is as stable as three weeks": "Rank stability over three time spans",
+    "Consistency and Presence change independently": "Change in Consistency against change in Presence",
+}
+
+
+def _header(fig, title, subtitle, desc=""):
+    cs.add_header(fig, REPORT_TITLE.get(title, title) if MODE == "report" else title, subtitle, desc)
 
 
 def _save(fig, key, **fmt):
@@ -157,7 +171,7 @@ def chart_01():
             transform=ax.transAxes, ha="left", va="top", fontsize=8, color=cs.INDIGO,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.INDIGO, lw=0.6))
     fig.subplots_adjust(top=0.80, bottom=0.17, left=0.10, right=0.97)
-    cs.add_header(fig, "Consistency keeps its brand order over five months",
+    _header(fig, "Consistency keeps its brand order over five months",
                   "Per-brand φ (between-model dispersion; lower = more consistent), June vs November 2026, φ defined in both waves.",
                   "The order beats both nulls: shuffled brands and models scrambled within each question. Dashed: no change.")
     _save(fig, 1, rho=h["rho"], n=h["n"], p=h["p_perm"], pf=fn["p_frame"])
@@ -166,7 +180,12 @@ def chart_01():
 # ============================================================ fig2
 def chart_02():
     h = H["H_Presence_LongHorizon"]; ps = h["per_substrate"]
-    fig, axes = plt.subplots(1, 5, figsize=(8.6, 3.3))
+    if MODE == "report":
+        fig, grid = plt.subplots(2, 3, figsize=(7.5, 5.6))
+        axes = list(grid.flat)
+        axes[5].axis("off")
+    else:
+        fig, axes = plt.subplots(1, 5, figsize=(8.6, 3.3))
     for ax, s in zip(axes, OMNI):
         xs, ys = [], []
         for br, m in W["t2"][s].items():
@@ -181,11 +200,22 @@ def chart_02():
         ax.set_title(f"{s} {CAT[s]}", fontsize=7.6, fontweight="bold", color=cs.INDIGO, pad=4)
         ax.text(0.04, 0.96, f"ρ={rho:.2f}\nn={ps[s]['n']}", transform=ax.transAxes, ha="left", va="top",
                 fontsize=6.8, color=cs.INDIGO, bbox=dict(boxstyle="round,pad=0.3", fc="white", ec=cs.INDIGO, lw=0.6))
-        if s == "v0.19":
-            ax.set_ylabel("recall share π̂, t₃", fontsize=8)
-        ax.set_xlabel("t₂", fontsize=7.5)
-    fig.subplots_adjust(top=0.60, bottom=0.26, left=0.06, right=0.985, wspace=0.32)
-    cs.add_header(fig, "Presence keeps its brand order in every category",
+        if MODE == "report":
+            if s in ("v0.19", "v0.22"):
+                ax.set_ylabel("November", fontsize=8)
+            ax.set_xlabel("June", fontsize=7.5)
+            ax.tick_params(labelsize=7.5)
+        else:
+            if s == "v0.19":
+                ax.set_ylabel("recall share π̂, t₃", fontsize=8)
+            ax.set_xlabel("t₂", fontsize=7.5)
+    if MODE == "report":
+        axes[5].text(0.05, 0.55, "Each dot is one brand.\nOn the dashed line, its share\nwas the same in both months.",
+                     transform=axes[5].transAxes, fontsize=8, color=cs.GRAY, va="center")
+        fig.subplots_adjust(top=0.78, bottom=0.14, left=0.08, right=0.985, wspace=0.32, hspace=0.42)
+    else:
+        fig.subplots_adjust(top=0.60, bottom=0.26, left=0.06, right=0.985, wspace=0.32)
+    _header(fig, "Presence keeps its brand order in every category",
                   "Per-brand recall share π̂ (share of the 36 model × question answers that name the brand), June vs November.",
                   "Criterion: ρ of at least 0.70 in at least four of five categories; all five pass.")
     vals = [ps[s]["rho"] for s in OMNI]
@@ -229,7 +259,7 @@ def chart_03():
             transform=ax.transAxes, ha="right", va="bottom", fontsize=7.6, color=cs.INDIGO,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.INDIGO, lw=0.6))
     fig.subplots_adjust(top=0.80, bottom=0.14, left=0.09, right=0.97)
-    cs.add_header(fig, "Five months is as stable as three weeks",
+    _header(fig, "Five months is as stable as three weeks",
                   "Rank stability by horizon for four instruments; whiskers = descriptive 95% bootstrap intervals (2,000 resamples).",
                   "φ and J: pooled Spearman; π̂ and C_P: pooled within-category ranks. Pairwise definedness per horizon.")
     _save(fig, 3, dphi=hd["phi"]["D"], dpi=hd["pi_hat"]["D"])
@@ -264,10 +294,39 @@ def chart_04():
             transform=ax.transAxes, ha="left", va="top", fontsize=8, color=cs.INDIGO,
             bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.INDIGO, lw=0.6))
     fig.subplots_adjust(top=0.80, bottom=0.18, left=0.10, right=0.97)
-    cs.add_header(fig, "Consistency and Presence change independently",
+    _header(fig, "Consistency and Presence change independently",
                   "Per-brand change in within-category percentile rank, June to November, brands with φ defined in both waves.",
                   "No relationship: a brand gaining or losing presence does not gain or lose consistency with it.")
     _save(fig, 4, rho=h["rho"], n=h["n"], p=h["p_perm_two_sided"])
+
+
+# ============================================================ fig5 (report register only)
+def chart_05():
+    h = H["H_Phantom_LongPersistence"]; ps = h["per_substrate"]; po = h["pooled"]
+    fig, ax = plt.subplots(figsize=(7.5, 4.2))
+    ys = np.arange(len(OMNI))[::-1]
+    for y, s in zip(ys, OMNI):
+        n, k = ps[s]["t2_phantom"], ps[s]["retained_t3"]
+        ax.barh(y, k, color=cs.INDIGO, height=0.55, zorder=2)
+        if n > k:
+            ax.barh(y, n - k, left=k, color=cs.WARM, height=0.55, zorder=2)
+        ax.text(n + 0.3, y, f"{k} of {n}", va="center", fontsize=8.5, color=cs.INDIGO)
+    ax.set_yticks(ys); ax.set_yticklabels([f"{s} {CAT[s]}" for s in OMNI], fontsize=8.5)
+    ax.set_xlim(0, 23); ax.set_xlabel("brands below the recall floor in June", fontsize=8.5)
+    ax.tick_params(axis="x", labelsize=8)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    from matplotlib.patches import Patch
+    ax.legend(handles=[Patch(color=cs.INDIGO, label="still below it in November"),
+                       Patch(color=cs.WARM, label="above it in November")], loc="upper center", bbox_to_anchor=(0.45, -0.2), ncol=2, fontsize=7.8, frameon=False)
+    ax.text(0.99, 0.42, f"pooled: {po['retained_t3']} of {po['t2_phantom']} ({100 * po['proportion']:.0f}%)\n"
+            f"May to June, three weeks: {h['v0_34_reference_t1_t2'].replace('/', ' of ')}", transform=ax.transAxes, ha="right", va="center",
+            fontsize=8, color=cs.INDIGO, bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=cs.INDIGO, lw=0.6))
+    fig.subplots_adjust(top=0.76, bottom=0.27, left=0.21, right=0.97)
+    cs.add_header(fig, "Brands below the recall floor, June and November",
+                  "Brands averaging under one mention per model in June, and whether they were still below that in November.",
+                  "Descriptive: no pass mark was set.")
+    _save(fig, 5)
 
 
 if __name__ == "__main__":
@@ -275,4 +334,6 @@ if __name__ == "__main__":
     for _m in ("paper", "report"):
         MODE = _m
         chart_01(); chart_02(); chart_03(); chart_04()
+        if MODE == "report":
+            chart_05()
     print("done")

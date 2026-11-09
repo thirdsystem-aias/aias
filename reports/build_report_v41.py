@@ -113,7 +113,7 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # v0.41: the chart-bearing findings ARE the P-propositions (P1/P2/P3 charted,
 # P4/P5 text-only); headlines + detail come from the content module.
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
-_NO_FINDING_LABEL = {"P5"}
+_NO_FINDING_LABEL = set()
 content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
                      "text": content.HYPOTHESIS_DETAILS.get(h["id"], ""),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
@@ -123,7 +123,7 @@ _PATTERN_CHART_MAP = {
     2: "gate",       # P2 presence order holds       -> report_fig_02
     3: "ranks",      # P3 no fading with time        -> report_fig_03
     4: "phantom",    # P4 two separate signals       -> report_fig_04
-    5: None,         # P5 invisibility persists      -> text only
+    5: "p5",         # P5 low visibility persists    -> report_fig_05
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -300,9 +300,10 @@ CHART_FIGSIZE_IN = {
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
     "v41_asym":                   (7.719, 5.100),   # report_fig_01 phi t2->t3 rank order (555.8x367.2pt)
-    "v41_gate":                   (8.631, 3.400),   # report_fig_02 presence t2->t3 by category (621.4x244.8pt)
+    "v41_gate":                   (7.481, 5.700),   # report_fig_02 presence t2->t3 by category, 3+2 grid (538.6x410.4pt)
     "v41_ranks":                  (7.502, 5.100),   # report_fig_03 horizon comparison (540.1x367.2pt)
     "v41_phantom":                (7.280, 5.100),   # report_fig_04 drift dissociation (524.2x367.2pt)
+    "v41_p5":                     (7.275, 4.300),   # report_fig_05 below-floor persistence (523.8x309.6pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1107,8 +1108,8 @@ HERO_FIGURE_CAPTIONS = {
     ),
     "gate": (
         "Each brand's Presence (the share of question-and-model answers that name it) "
-        "in June against November, one panel per category. Every category keeps its "
-        "order, with correlations from 0.93 to 0.98."
+        "in June against November, one panel per category, with each category's rank "
+        "correlation in its corner."
     ),
     "ranks": (
         "Rank stability at three horizons: three weeks (May to June), five months (June "
@@ -1120,6 +1121,11 @@ HERO_FIGURE_CAPTIONS = {
         "How far each brand's Consistency rank moved from June to November against how "
         "far its Presence rank moved. The cloud has no direction: a brand gaining or "
         "losing Presence did not gain or lose Consistency with it."
+    ),
+    "p5": (
+        "The brands each category's models rarely named in June, and how many of them were "
+        "still below the recall floor in November. Only two, one in cosmetics and one in "
+        "spirits, moved above it."
     ),
 }
 
@@ -1133,6 +1139,7 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         "gate":  ("report_fig_02.pdf", "v41_gate"),
         "ranks": ("report_fig_03.pdf", "v41_ranks"),
         "phantom": ("report_fig_04.pdf", "v41_phantom"),
+        "p5":    ("report_fig_05.pdf", "v41_p5"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1179,7 +1186,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             h_in = h_in * (_content_w_in / w_in)
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
-        is_hero = slot in ("asym", "gate", "ranks", "phantom")
+        is_hero = slot in ("asym", "gate", "ranks", "phantom", "p5")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
@@ -1480,7 +1487,7 @@ def build(*, debug_layout: bool = False,
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[build_report_v41] chart pre-flight (looking in {chart_dir})")
-    expected_slots = ["asym", "gate", "ranks", "phantom"]
+    expected_slots = ["asym", "gate", "ranks", "phantom", "p5"]
     expected_files = set()
     for sk in expected_slots:
         fname, _ = _slot_lookup(sk)
