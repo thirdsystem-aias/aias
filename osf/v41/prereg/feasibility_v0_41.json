@@ -1,0 +1,398 @@
+{
+ "phase": "v0.41-feasibility",
+ "purpose": "pre-lock technical check (non-acquisition; no study probe sent)",
+ "run_utc": "2026-11-09T05:23:09.931236+00:00",
+ "environment": {
+  "python": "3.14.4",
+  "platform": "macOS-27.3-arm64-arm-64bit-Mach-O",
+  "anthropic": "0.97.0",
+  "openai": "2.33.0",
+  "google_genai": "1.74.0",
+  "google_generativeai": "0.8.6"
+ },
+ "prompt": "Reply with the single word: ready",
+ "records": [
+  {
+   "path": "P19",
+   "alias": "claude-opus-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 14, 'tokens_out': 4, 'latency_ms': 1334, 'model': 'claude-opus-4-5', 'finish_reason': 'end_turn'}",
+   "error": null,
+   "seconds": 1.4
+  },
+  {
+   "path": "P19",
+   "alias": "claude-sonnet-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 14, 'tokens_out': 4, 'latency_ms': 911, 'model': 'claude-sonnet-4-5', 'finish_reason': 'end_turn'}",
+   "error": null,
+   "seconds": 0.91
+  },
+  {
+   "path": "P19",
+   "alias": "gpt-4o",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 14, 'tokens_out': 1, 'latency_ms': 1779, 'model': 'gpt-4o', 'finish_reason': 'stop'}",
+   "error": null,
+   "seconds": 1.8
+  },
+  {
+   "path": "P19",
+   "alias": "gpt-4o-mini",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 14, 'tokens_out': 1, 'latency_ms': 810, 'model': 'gpt-4o-mini', 'finish_reason': 'stop'}",
+   "error": null,
+   "seconds": 0.81
+  },
+  {
+   "path": "P19",
+   "alias": "gemini-2.5-flash",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 8, 'tokens_out': 1, 'latency_ms': 549, 'model': 'gemini-2.5-flash', 'finish_reason': '1'}",
+   "error": null,
+   "seconds": 0.55
+  },
+  {
+   "path": "P19",
+   "alias": "gemini-2.5-flash-lite",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "{'raw_response': 'ready', 'tokens_in': 8, 'tokens_out': 1, 'latency_ms': 248, 'model': 'gemini-2.5-flash-lite', 'finish_reason': '1'}",
+   "error": null,
+   "seconds": 0.25
+  },
+  {
+   "path": "P20",
+   "alias": "claude-opus-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 0.99
+  },
+  {
+   "path": "P20",
+   "alias": "claude-sonnet-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 0.95
+  },
+  {
+   "path": "P20",
+   "alias": "gpt-4o",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "Ready",
+   "error": null,
+   "seconds": 0.54
+  },
+  {
+   "path": "P20",
+   "alias": "gpt-4o-mini",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "Ready.",
+   "error": null,
+   "seconds": 0.48
+  },
+  {
+   "path": "P20",
+   "alias": "gemini-2.5-flash",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 1.27
+  },
+  {
+   "path": "P20",
+   "alias": "gemini-2.5-flash-lite",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 0.32
+  },
+  {
+   "path": "P23",
+   "alias": "claude-opus-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 1.18
+  },
+  {
+   "path": "P23",
+   "alias": "claude-sonnet-4-5",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 1.01
+  },
+  {
+   "path": "P23",
+   "alias": "gpt-4o",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "Ready",
+   "error": null,
+   "seconds": 0.88
+  },
+  {
+   "path": "P23",
+   "alias": "gpt-4o-mini",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 0.78
+  },
+  {
+   "path": "P23",
+   "alias": "gemini-2.5-flash",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 2.6
+  },
+  {
+   "path": "P23",
+   "alias": "gemini-2.5-flash-lite",
+   "prompt": "Reply with the single word: ready",
+   "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+   "status": "ok",
+   "response": "ready",
+   "error": null,
+   "seconds": 0.38
+  }
+ ],
+ "served": [
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "1",
+   "alias": "claude-opus-4-5",
+   "returned_model_id": "claude-opus-4-5-20251101",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:54.218076+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "2",
+   "alias": "claude-sonnet-4-5",
+   "returned_model_id": "claude-sonnet-4-5-20250929",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:55.130533+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "3",
+   "alias": "gpt-4o",
+   "returned_model_id": "gpt-4o-2024-08-06",
+   "finish_reason": "stop",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:56.927938+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "4",
+   "alias": "gpt-4o-mini",
+   "returned_model_id": "gpt-4o-mini-2024-07-18",
+   "finish_reason": "stop",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:57.738984+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "5",
+   "alias": "models/gemini-2.5-flash",
+   "returned_model_id": "gemini-2.5-flash",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:58.289316+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P19",
+   "call_index": "6",
+   "alias": "models/gemini-2.5-flash-lite",
+   "returned_model_id": "gemini-2.5-flash-lite",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:58.537658+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "1",
+   "alias": "claude-opus-4-5",
+   "returned_model_id": "claude-opus-4-5-20251101",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:22:59.531331+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "2",
+   "alias": "claude-sonnet-4-5",
+   "returned_model_id": "claude-sonnet-4-5-20250929",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:00.486023+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "3",
+   "alias": "gpt-4o",
+   "returned_model_id": "gpt-4o-2024-08-06",
+   "finish_reason": "stop",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:01.031031+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "4",
+   "alias": "gpt-4o-mini",
+   "returned_model_id": "gpt-4o-mini-2024-07-18",
+   "finish_reason": "stop",
+   "output_tokens": "2",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:01.510673+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "5",
+   "alias": "models/gemini-2.5-flash",
+   "returned_model_id": "gemini-2.5-flash",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:02.779908+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P20",
+   "call_index": "6",
+   "alias": "models/gemini-2.5-flash-lite",
+   "returned_model_id": "gemini-2.5-flash-lite",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:03.095457+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "1",
+   "alias": "claude-opus-4-5",
+   "returned_model_id": "claude-opus-4-5-20251101",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:04.279487+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "2",
+   "alias": "claude-sonnet-4-5",
+   "returned_model_id": "claude-sonnet-4-5-20250929",
+   "finish_reason": "end_turn",
+   "output_tokens": "4",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:05.286080+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "3",
+   "alias": "gpt-4o",
+   "returned_model_id": "gpt-4o-2024-08-06",
+   "finish_reason": "stop",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:06.167021+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "4",
+   "alias": "gpt-4o-mini",
+   "returned_model_id": "gpt-4o-mini-2024-07-18",
+   "finish_reason": "stop",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:06.950052+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "5",
+   "alias": "gemini-2.5-flash",
+   "returned_model_id": "gemini-2.5-flash",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "22",
+   "timestamp": "2026-11-09T05:23:09.545313+00:00"
+  },
+  {
+   "substrate": "feas",
+   "phase": "P23",
+   "call_index": "6",
+   "alias": "gemini-2.5-flash-lite",
+   "returned_model_id": "gemini-2.5-flash-lite",
+   "finish_reason": "STOP",
+   "output_tokens": "1",
+   "thinking_tokens": "",
+   "timestamp": "2026-11-09T05:23:09.928592+00:00"
+  }
+ ],
+ "n_ok": 18,
+ "n_calls": 18
+}
