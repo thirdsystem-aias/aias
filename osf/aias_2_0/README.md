@@ -1,8 +1,9 @@
 # osf/aias_2_0 — AIAS™ 2.0 synthesis (staging for osf.io/ec6wh/aias_2_0/)
 
-**Status (Nov 9, 2026): pre-t₃.** Outline r1 committed on branch `aias-2.0` and tagged locally
-`aias-2-0-outline-locked`; its anchor (tag push + deposit of the outline to `aias_2_0/prereg/`)
-waits for Pablo's go, together with the `v0.41-prereg-r1` / `v1.9-prereg-r1` push.
+**Status (Nov 9, 2026): pre-t₃ results.** Outline r1 committed on branch `aias-2.0` and tagged
+locally `aias-2-0-outline-locked` (13:27:44 UTC, before the first t₃ call). GitHub push is
+unavailable, so the anchor is an OSF deposit of `prereg/` and `anchor/` (see
+`anchor/DEVIATIONS.md`, Entry 1); the deposit waits for Pablo's go.
 
 ## Files
 
@@ -25,6 +26,10 @@ t₁/t₂ profiles reproduce the locked v1.9 Stage 1 values exactly (parity A1�
 
 ## Deposit plan (each deposit is a gate)
 
-- `prereg/` ← `papers/aias_2_0/aias_2_0_synthesis_outline.md` (at the outline anchor)
+- **Now, on Pablo's go:** `prereg/` (byte-identical copy of the locked outline) and `anchor/`
+  (`DEVIATIONS.md`, `git_anchor_aias_2_0_outline.json`), on the Mac:
+  `zsh -ic 'cd ~/aias && python3 scripts/osf_upload.py <tree>/osf/aias_2_0/prereg aias_2_0/prereg && python3 scripts/osf_upload.py <tree>/osf/aias_2_0/anchor aias_2_0/anchor'`
+  (`<tree>` = a checkout of branch `aias-2.0`), then confirm each file's SHA-256 on OSF equals
+  the one in `git_anchor_aias_2_0_outline.json`. Claim "deposited" only after that check.
 - `scoring/` ← `aias_2_0_synthesis_data.json`, `aias_2_0_profiles.csv`, `inputs/` (at the data lock)
 - `figures/`, `paper/`, `report/` ← later locks
