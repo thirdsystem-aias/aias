@@ -1,21 +1,23 @@
 #!/usr/bin/env python3
 """
-v0.41 Provider-Asymmetric CPC — brand-format report typesetting pipeline.
+v0.41 Long-Horizon Stability t1->t2->t3 — brand-format report typesetting pipeline.
 
 Third System managerial-register companion to the v0.41 SSRN paper. Renders the
-P1-P5 propositions (P1/P2/P3 charted, P4/P5 text-only) from
-v41_longitudinal_t3_omnibus_content.py, with three report-register figures from
+P1-P5 propositions (P1-P4 charted, P5 text-only) from
+v41_longitudinal_t3_omnibus_content.py, with four report-register figures from
 build_charts_v41.py (report mode):
 
-  asym  -> report_fig_01.pdf   (P1 eta^2 permutation null)
-  gate  -> report_fig_02.pdf   (P2 recall vs recognition arms; saturation collapse)
-  ranks -> report_fig_03.pdf   (P3 within-pair consistency rank heatmap)
+  asym    -> report_fig_01.pdf   (P1 Consistency rank order t2 -> t3)
+  gate    -> report_fig_02.pdf   (P2 Presence rank order t2 -> t3, by category)
+  ranks   -> report_fig_03.pdf   (P3 three-week vs five-month horizon)
+  phantom -> report_fig_04.pdf   (P4 change in Consistency vs change in Presence)
 
+Slot keys are inherited from the v0.33/v0.34 builders; only the figures changed.
 Charts live in reports/figs/v41/report/; output to osf/v41/reports/.
 
-Run:
-    python3 ~/aias/scripts/build_charts_v41.py     # both registers
-    python3 ~/aias/reports/build_report_v41.py
+Run (from the worktree root, AIAS_ROOT pointing at it):
+    python3 scripts/build_charts_v41.py     # both registers
+    python3 reports/build_report_v41.py
 """
 
 from __future__ import annotations
@@ -90,7 +92,7 @@ if "tagline" not in content.COVER:
 content.COVER.setdefault("subtitle", "")
 content.COVER.setdefault("deck", "")
 if "date" not in content.COVER:
-    content.COVER["date"] = "June 2026"
+    content.COVER["date"] = "November 2026"
 
 # EXEC_SUMMARY: string → list of paragraphs
 if isinstance(content.EXEC_SUMMARY, str):
@@ -117,11 +119,11 @@ content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
                     for h in content.HYPOTHESIS_SCORING]
 _PATTERN_CHART_MAP = {
-    1: "asym",       # P1 provider asymmetry        -> report_fig_01 (eta^2 null)
-    2: "gate",       # P2 beyond-presence gate      -> report_fig_02 (gate arms)
-    3: "ranks",      # P3 provider rank stability   -> report_fig_03 (rank heatmap)
-    4: "phantom",    # P4 obscurity (mechanical)    -> report_fig_04 (report-only)
-    5: None,         # P5 read the lens / scope     -> text only
+    1: "asym",       # P1 consistency order holds    -> report_fig_01
+    2: "gate",       # P2 presence order holds       -> report_fig_02
+    3: "ranks",      # P3 no fading with time        -> report_fig_03
+    4: "phantom",    # P4 two separate signals       -> report_fig_04
+    5: None,         # P5 invisibility persists      -> text only
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -150,7 +152,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
         _rows.append((h["id"], h.get("proposition", ""), _status,
                       _SC_MAP.get(h.get("status_class", ""), "descriptive")))
     content.HYPOTHESIS_SCORING = {
-        "heading": "The four propositions, scored",
+        "heading": "The five propositions, scored",
         "intro": "Each proposition is the managerial reading of a locked result, scored for brand teams rather than reviewers.",
         "rows": _rows,
     }
@@ -179,7 +181,7 @@ if isinstance(content.CLOSING, str):
         ],
         "datasets": [
             "Verdicts: osf.io/ec6wh/v41/v41_verdicts.json",
-            "Two-wave acquisition data: osf.io/ec6wh/v41/data/",
+            "Third-wave acquisition data: osf.io/ec6wh/v41/data/",
             "Scoring code: osf.io/ec6wh/v41/scripts/score_v41.py",
             "Pre-registration: osf.io/ec6wh/v41/prereg/ (tag v0.41-prereg-r1)",
         ],
@@ -294,13 +296,13 @@ CHART_FIGSIZE_IN = {
     "6_col_v30_phantom_gap":      (7.50, 5.00),
     "hero":                       (7.50, 5.00),
     "hero_short":                 (7.50, 3.50),
-    # v0.41 longitudinal t1->t2 report figures — native dims from report_fig_0*.pdf mediaboxes
+    # v0.41 long-horizon t1->t2->t3 report figures — native dims from report_fig_0*.pdf mediaboxes
     # (ChartReservation pre-computes the real footprint from the PDF mediabox;
     #  these keys set the reservation width, aspect honored from the chart).
-    "v41_asym":                   (8.674, 3.300),   # report_fig_01 CPC t1/t2 stability (624.5x237.6pt)
-    "v41_gate":                   (7.675, 5.100),   # report_fig_02 residual gate saturation (552.6x367.2pt)
-    "v41_ranks":                  (8.561, 3.300),   # report_fig_03 presence stability (616.4x237.6pt)
-    "v41_phantom":                (7.200, 5.100),   # report_fig_04 phantom persistence (518.4x367.2pt)
+    "v41_asym":                   (7.719, 5.100),   # report_fig_01 phi t2->t3 rank order (555.8x367.2pt)
+    "v41_gate":                   (8.631, 3.400),   # report_fig_02 presence t2->t3 by category (621.4x244.8pt)
+    "v41_ranks":                  (7.502, 5.100),   # report_fig_03 horizon comparison (540.1x367.2pt)
+    "v41_phantom":                (7.280, 5.100),   # report_fig_04 drift dissociation (524.2x367.2pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -988,7 +990,7 @@ class V15DocTemplate(BaseDocTemplate):
         c.setFont(self.font.regular, 7.5)
         c.setFillColor(HexColor(self.palette.soft_black))
         c.drawRightString(PAGE_W - MARGIN, header_y - 8,
-                           "AIAS\u2122 Consistency (CPC) \u00b7 v0.41 \u00b7 June 2026")
+                           "AIAS\u2122 Consistency and Presence \u00b7 v0.41 \u00b7 November 2026")
 
         footer_y = MARGIN - 18
         c.setFont(self.font.light, 7)
@@ -1098,27 +1100,26 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 
 HERO_FIGURE_CAPTIONS = {
     "asym": (
-        "The standings held. Each brand's recall-consistency score at the first wave "
-        "plotted against the second; points hug the diagonal in four of five "
-        "categories. Audiophile headphones (warm) is the lone miss — the smallest, "
-        "most fragmented panel."
+        "Each brand's Consistency score in June plotted against November, for the 80 "
+        "brands scored in both waves; lower means the six models agree more. Points "
+        "follow the dashed no-change line, with visible spread around it. One headphones brand sits off "
+        "the scale, at the maximum score in both waves."
     ),
     "gate": (
-        "The question recognition wouldn't let us ask. Recall-consistency stability "
-        "before and after accounting for recognition; the two are identical wherever "
-        "recognition is saturated (four categories), so there is nothing to separate. "
-        "Only headphones — where recognition still varies — is informative, and there "
-        "consistency is steadier once recognition is removed."
+        "Each brand's Presence (the share of question-and-model answers that name it) "
+        "in June against November, one panel per category. Every category keeps its "
+        "order, with correlations from 0.93 to 0.98."
     ),
     "ranks": (
-        "Recognition held where there was a ranking to hold. Recognition scores "
-        "wave-over-wave; strong wherever brands still differ, but two categories sit at "
-        "a perfect ceiling both waves, leaving nothing to rank."
+        "Rank stability at three horizons: three weeks (May to June), five months (June "
+        "to November) and five and a half months (May to November). Bars show the range "
+        "of plausible values. For both Consistency and Presence the differences between "
+        "horizons are small and fall within those ranges."
     ),
     "phantom": (
-        "Invisibility is the stickiest state. The share of brands below the recall "
-        "floor at the first wave that stayed below it at the second — 56 of 57 across "
-        "all five categories, a single mover in cosmetics."
+        "How far each brand's Consistency rank moved from June to November against how "
+        "far its Presence rank moved. The cloud has no direction: a brand gaining or "
+        "losing Presence did not gain or lose Consistency with it."
     ),
 }
 
@@ -1336,8 +1337,8 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         s.append(Paragraph(line, styles["body"]))
     s.append(Spacer(1, 10))
 
-    # v1.7 is itself the governing methodology lock for this report
-    REPORT_PROTOCOL_VERSION = "v1.7"
+    # v1.8 is the governing Consistency lock for this report (Presence: v1.6)
+    REPORT_PROTOCOL_VERSION = "v1.8"
     methodology_text = brand["disclaimers"]["methodology_standard"].replace(
         "(current: v0.3)",
         f"(current: {REPORT_PROTOCOL_VERSION})",
@@ -1349,8 +1350,8 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     s.append(Paragraph("<b>Citation</b>", styles["body_lead"]))
     citation_text = (
         "González Castro, P. U. (2026). "
-        "<i>The Standings Hold: Longitudinal t1-t2 Stability of AI Brand Recall "
-        "Consistency Across Five Categories (AIAS CPC, v0.41)</i>. "
+        "<i>Five Months On: Long-Horizon Stability of AI Brand Consistency "
+        "and Presence Across Five Categories (AIAS v0.41)</i>. "
         "Third System (SSRN pending). thirdsystem.ai/v41"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
@@ -1505,7 +1506,7 @@ def build(*, debug_layout: bool = False,
         str(base_pdf),
         palette=palette, font=font, styles=styles,
         manifest=manifest, debug_layout=debug_layout,
-        title="The Standings Hold \u2014 AIAS CPC Longitudinal t1-t2 Stability (v0.41)",
+        title="Five Months On \u2014 AIAS Long-Horizon Stability of Consistency and Presence (v0.41)",
         author=content.CLOSING["byline_long"][0],
         subject="Independent measurement for the AI mediation layer.",
     )
