@@ -1,0 +1,116 @@
+{
+  "reference_files": {
+    "v1_8_instrument_table.csv": {
+      "sha256": "2d0ea5e83b01a39d1b120fe75b79178b78c85a649837f0d40a473a38f041f6e6",
+      "match": true
+    },
+    "v1_8_verdicts.json": {
+      "sha256": "a280385f1868cfdff06d6c3dfae6eb4288fb1a6ad01129d6d23320a3b88b7e78",
+      "match": true
+    }
+  },
+  "P1": {
+    "gate": "P1",
+    "passed": true,
+    "rows_checked": 112,
+    "max_abs_diff": 0.0,
+    "k_vector_mismatches_info_only": 0,
+    "problems": []
+  },
+  "P2": {
+    "gate": "P2",
+    "passed": true,
+    "rho": 0.6453869683902721,
+    "n": 83,
+    "reference": {
+      "rho": 0.6453869683902722,
+      "n": 83,
+      "prereg": [
+        0.6454,
+        83
+      ]
+    }
+  },
+  "P3": {
+    "gate": "P3",
+    "passed": true,
+    "per_substrate": {
+      "v0.19": {
+        "rho": 0.4191691916696407,
+        "n": 8,
+        "ref_rho": 0.4191691916696407,
+        "ref_n": 8,
+        "match": true
+      },
+      "v0.20": {
+        "rho": 0.7833333333333333,
+        "n": 9,
+        "ref_rho": 0.7833333333333333,
+        "ref_n": 9,
+        "match": true
+      },
+      "v0.21": {
+        "rho": 0.8901098901098901,
+        "n": 13,
+        "ref_rho": 0.8901098901098902,
+        "ref_n": 13,
+        "match": true
+      },
+      "v0.22": {
+        "rho": 0.9601793410322754,
+        "n": 14,
+        "ref_rho": 0.9601793410322754,
+        "ref_n": 14,
+        "match": true
+      },
+      "v0.23": {
+        "rho": 0.7615129419677079,
+        "n": 9,
+        "ref_rho": 0.7615129419677079,
+        "ref_n": 9,
+        "match": true
+      }
+    },
+    "failed": []
+  },
+  "P4": {
+    "gate": "P4",
+    "passed": true,
+    "artifacts": {
+      "osf/v19/phase_a_queries.jsonl": {
+        "sha256": "276f8f5c16a9b28e813842601b5ecc416b78e6948bfefdf2df7d617b658c687e",
+        "match": true
+      },
+      "osf/v19/phase_b_queries.jsonl": {
+        "sha256": "75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188",
+        "match": true
+      },
+      "osf/v19/thresholds_v0_19.json": {
+        "sha256": "542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61",
+        "match": true
+      },
+      "prereg/v0_20_registry.json": {
+        "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+        "match": true
+      },
+      "prereg/v0_21_registry.json": {
+        "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+        "match": true
+      },
+      "prereg/v0_22_automotive_content.py": {
+        "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+        "match": true
+      },
+      "scripts/run_acquisition_v22.py": {
+        "sha256": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe",
+        "match": true
+      },
+      "scripts/acquire_v0_23.py": {
+        "sha256": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+        "match": true
+      }
+    },
+    "failed": []
+  },
+  "all_passed": true
+}

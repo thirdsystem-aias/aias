@@ -3,7 +3,8 @@ v0.41 - Long-Horizon Stability t1->t2->t3: A Last Wave on the Retiring Six-Model
 Pre-Registration Content Module
 AIAS(TM) Measurement Program - Third System(TM)
 
-DRAFT r1 (Nov 9, 2026) - NOT LOCKED. Lock = tag v0.41-prereg-r1, pushed, plus the
+DRAFT r1 (Nov 9, 2026; amended the same day while building the scorer, see
+SCORER_NOTES) - NOT LOCKED. Lock = tag v0.41-prereg-r1, pushed, plus the
 OSF deposit of osf/v41/prereg/, before the first study call (Pablo's go).
 
 PROSPECTIVE LONGITUDINAL re-acquisition (third wave). Full re-acquisition at t3
@@ -196,9 +197,12 @@ HYPOTHESES = [
      "statistic": "Pooled Spearman rho(phi_t2, phi_t3) over brands phi-defined in BOTH waves "
                   "(computed exactly as v1.8's two-wave statistic). Null: stratified permutation "
                   "(t3 values permuted WITHIN substrate), 10,000 draws, one-sided, seed 410041.",
-     "confirmed_iff": "rho >= 0.50 AND p_perm < 0.05",
+     "confirmed_iff": "rho >= 0.50 AND p_perm < 0.05 AND p_frame < 0.05 (SCORER_NOTES S2)",
      "falsified_iff": "rho < 0.30 OR p_perm >= 0.05",
-     "marginal": "otherwise (0.30 <= rho < 0.50 with p_perm < 0.05)",
+     "marginal": "otherwise (rho >= 0.30 with p_perm < 0.05, and rho < 0.50 or p_frame >= 0.05)",
+     "frame_structure_null": "p_frame = share of 10,000 within-frame model shuffles of the t3 answers "
+                             "(one permutation per frame, applied to all brands; pi_hat preserved; "
+                             "seed 410045) whose rho(phi_t2, phi_shuffled) >= the observed rho",
      "undetermined_iff": "fewer than 40 brands phi-defined in both waves",
      "sensitivity": "pooled within-substrate-rank Spearman (v0.37 convention); leave-one-"
                     "substrate-out range; without any snapshot-mismatched model (MC_Snapshot).",
@@ -260,12 +264,50 @@ MANIPULATION_CHECKS = [
                                      "did not record finish reasons, so no wave contrast."},
 ]
 
+SCORER_NOTES = """
+Added Nov 9, 2026 while building and testing osf/v41/scripts/score_v41.py (76/76 tests,
+osf/v41/scripts/tests/). The pre-registration is still a draft; these lock with it.
+S1 Seeds: H_Presence_LongHorizon permutations 410043 (one stream per substrate, spawned
+   in substrate order); H_Drift_Dissociation 410044; frame-structure null 410045.
+S2 Frame-structure null for H_Phi_LongHorizon. Pre-lock calibration on the frozen t2
+   wave (osf/v41/prereg/frame_structure_floor_v0_41.json, 1,000 draws): permuting which
+   model gave which answer within each frame, while each frame keeps the brands it
+   elicits, leaves rho(phi_t2, phi_shuffled) at mean 0.39 (95th percentile 0.55; 12% of
+   draws >= 0.50; 84% >= 0.30), and the brand-label permutation null calls nearly all of
+   them significant. rho >= 0.50 with p_perm < .05 therefore does not by itself show that
+   models keep their consistency patterns. CONFIRMED also requires p_frame < .05
+   (HYPOTHESES). On test data, the real t1 wave scored as t3 (rho 0.645) gives
+   p_frame 0.002; a model-shuffled t2 scored as t3 (rho 0.49) gives 0.15.
+S3 Degenerate statistics: no rank variance in either variable (for example, no change
+   between waves) gives UNDETERMINED with the reason recorded. The n >= 40 floor of
+   H_Phi_LongHorizon also applies to the phi arm of H_Horizon_Decay and to
+   H_Drift_Dissociation.
+S4 H_Drift_Dissociation baseline: both deltas share the t2 ranks, so a t2 coupling of
+   phi and pi_hat ranks produces delta coupling without co-movement. Reported beside the
+   verdict, descriptive: rho(phi_t2, pi_hat_t2) on within-substrate percentile ranks
+   (v1.8: |rho(phi, mu)| = 0.091).
+S5 H_Horizon_Decay bootstrap: brand units resampled with replacement within substrate;
+   each statistic recomputed on the resample (pi_hat re-ranked within substrate);
+   percentile 95% CI; degenerate resamples dropped and counted.
+S6 Parity: P2 needs n equal and rho equal to four decimals; P3 needs n equal and
+   |rho difference| <= 1e-9 (undefined equals undefined). The P1/P2 references are the
+   v1.8 outputs, which are not on this branch line; copies frozen from branch v1.8
+   (commit 21ce11c) are in osf/v41/registries/ and SHA-256-checked at scoring.
+   Pre-lock run, 2026-11-09: P1-P4 pass (osf/v41/prereg/parity_gates_v0_41.json).
+S7 Residual failures: a model with no t3 responses is dropped (MODEL_DROP_RULE); a
+   model with some residual failures halts scoring until logged retries resolve them
+   (v0.34 precedent) or a DEVIATIONS decision is recorded.
+S8 Coding: v0.19 parsing and v0.23 judge coding at t3 run through
+   osf/v41/scripts/v41_code_t3.py (fork of v34_code_t2.py) before scoring.
+"""
+
 SCORING = """
 Output: osf/v41/v41_verdicts.json (parity gates, per-hypothesis verdicts, all rho values
 with permutation p and n, the three-wave table, manipulation checks) and
 osf/v41/v41_three_wave_table.csv (brand x wave: k vector, pi_hat, phi, J, C_P, CV-CPC,
 phantom flag). Scorer: osf/v41/scripts/score_v41.py (fork of score_v34.py with the
-v1.8 phi/J kernel from score_v0_37.py), tested on synthetic t3 data before the lock.
+v1.8 phi/J kernel from score_v0_37.py), tested on synthetic t3 data before the lock
+(osf/v41/scripts/tests/: test_score_v41.py, make_synthetic_t3.py, frame_structure_floor_v41.py).
 Spearman with average ranks; pairwise definedness per statistic; counts of brands
 undefined in either wave reported per substrate.
 """
