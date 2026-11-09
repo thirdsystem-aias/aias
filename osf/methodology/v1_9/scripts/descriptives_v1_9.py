@@ -29,11 +29,14 @@ def main():
     out = V.OUT / "v1_9_unit_table.csv"
     with open(out, "w", newline="") as f:
         w = csv.writer(f)
-        w.writerow(["wave", "substrate", "brand", "mentions", "P", "C_star", "A_add_descriptive"])
+        w.writerow(["wave", "substrate", "brand", "mentions", "P", "C_star", "A_add_descriptive", "C_phi_unfloored"])
         for name, wave in (("t1", t1), ("t2", t2), ("t3", t3)):
-            for r in V.unit_table(S.wave_metrics(wave, full), V.SELECTED_SPEC):
+            wm = S.wave_metrics(wave, full)
+            for r in V.unit_table(wm, V.SELECTED_SPEC):
+                raw = V.c_phi(wm[r["s"]][r["b"]])   # unfloored C_phi (descriptive; None when phi is undefined)
                 w.writerow([name, r["s"], r["b"], r["n"], f"{r['P']:.4f}",
-                            "" if r["C"] is None else f"{r['C']:.4f}", f"{r['A']:.4f}"])
+                            "" if r["C"] is None else f"{r['C']:.4f}", f"{r['A']:.4f}",
+                            "" if raw is None else f"{raw:.4f}"])
     print(f"wrote {out}")
 
 

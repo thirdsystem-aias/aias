@@ -49,6 +49,8 @@ VERDICT = {
     1: "P1 NOT SUPPORTED: no combined score passed all three tests; every candidate failed at least one.",
     2: "P2 SUPPORTED: Presence spreads across the whole scale while rated Consistency sits high, so an average follows Presence.",
     3: "P3 SUPPORTED: both reported scores held their order over five months and stayed separate (tested blind).",
+    4: "P4 LOCKED RULE: below six mentions the score reflects chance, not agreement, so those brands are not rated.",
+    5: "P5 DECIDED: Presence and Consistency are reported side by side, not combined.",
 }
 
 
@@ -85,7 +87,7 @@ def chart_01():
     a2.text(0.02, 0.985, "shaded = fails", transform=a2.transAxes, ha="left", va="top",
             fontsize=7.2, color=GRAY, fontstyle="italic")
     fig.subplots_adjust(top=0.72, bottom=0.19, left=0.25, right=0.97, wspace=0.08)
-    cs.add_header(fig, "No single score passed",
+    cs.add_header(fig, "Eight candidate scores against two limits",
                   "The eight pre-specified ways to combine the two scores, tested on the May and June waves.",
                   "Each row: Consistency score · rule for brands with few mentions · how the two scores are combined.")
     _save(fig, 1, "report_fig_01")
@@ -116,7 +118,7 @@ def chart_02():
     a2.set_xlim(0, 100)
     a2.set_xlabel("score (0 to 100)", fontsize=8.5)
     fig.subplots_adjust(top=0.78, bottom=0.18, left=0.09, right=0.97, hspace=0.18)
-    cs.add_header(fig, "Why one number repeats Presence",
+    cs.add_header(fig, "How the two scores spread, November",
                   "Distribution of each score across the five categories, November 2026.",
                   "Averaging a score that spreads wide with one that sits high ranks brands by the wide one.")
     _save(fig, 2, "report_fig_02")
@@ -155,13 +157,76 @@ def chart_03():
         ax.spines[s].set_visible(False)
     ax.tick_params(axis="y", length=0)
     fig.subplots_adjust(top=0.74, bottom=0.21, left=0.25, right=0.97)
-    cs.add_header(fig, "Two reliable scores, kept apart",
-                  "Blind check on the November wave, under the rules fixed before it was collected.",
+    cs.add_header(fig, "Blind check on the November wave",
+                  "Scored under rules fixed before the November answers were collected.",
                   "Shaded band: how stable Consistency looks from the structure of the questions alone (average to 95th percentile).")
     _save(fig, 3, "report_fig_03")
 
 
+# ============================================================ fig4
+def chart_04():
+    t1 = [r for r in ROWS if r["wave"] == "t1" and r["C_phi_unfloored"]]
+    n = np.array([int(r["mentions"]) for r in t1]); c = np.array([float(r["C_phi_unfloored"]) for r in t1])
+    rng = np.random.default_rng(1909)
+    x = n + rng.uniform(-0.25, 0.25, len(n))
+    fig, ax = plt.subplots(figsize=(7.5, 4.4))
+    ax.axvspan(0.4, 5.5, color=cs.PALETTE["gray_light"], alpha=0.35, lw=0, zorder=0)
+    ax.text(3.0, 4, "not rated", ha="center", va="bottom", fontsize=7.6, color=GRAY)
+    ax.axvline(5.5, color=cs.PALETTE["warm"], lw=1.0, ls="--", zorder=1)
+    ax.scatter(x[n < 6], c[n < 6], s=26, color=cs.PALETTE["indigo_t2"], edgecolor="white", lw=0.4, zorder=3)
+    ax.scatter(x[n >= 6], c[n >= 6], s=26, color=INDIGO, edgecolor="white", lw=0.4, zorder=3)
+    for lo, hi in ((1, 2), (3, 5), (6, 18), (19, 36)):
+        m = (n >= lo) & (n <= hi)
+        if m.any():
+            ax.plot([lo - 0.3, hi + 0.3], [c[m].mean()] * 2, color=cs.PALETTE["warm"], lw=1.6, zorder=4)
+            if hi <= 5:   # the two narrow unrated bands: stacked labels at the left
+                ax.text(0.7, 112 if lo == 1 else 104.5, f"{lo}–{hi}: avg {c[m].mean():.0f}", ha="left",
+                        va="bottom", fontsize=7.2, color=cs.PALETTE["warm_t1"])
+            else:
+                ax.text((lo + hi) / 2, 106, f"{lo}–{hi}: avg {c[m].mean():.0f}", ha="center", va="bottom",
+                        fontsize=7.2, color=cs.PALETTE["warm_t1"])
+    ax.set_xlim(0.4, 36.6); ax.set_ylim(0, 119)
+    ax.set_xlabel("total mentions across the six models (out of 36)", fontsize=8.5)
+    ax.set_ylabel("Consistency score (0 to 100)", fontsize=8.5)
+    ax.tick_params(labelsize=8)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    fig.subplots_adjust(top=0.76, bottom=0.21, left=0.09, right=0.97)
+    cs.add_header(fig, "Consistency score by number of mentions, May",
+                  "Every named brand in the May wave, scored without the six-mention rule; lines show each band's average.",
+                  "Brands named once or twice look as consistent as any: at those counts the score reflects chance.")
+    _save(fig, 4, "report_fig_04")
+
+
+# ============================================================ fig5
+def chart_05():
+    t3 = [r for r in ROWS if r["wave"] == "t3"]
+    rated = [r for r in t3 if r["C_star"]]; unr = [r for r in t3 if not r["C_star"]]
+    rho = H["H_Dissociation_t3"]["rho"]
+    fig, ax = plt.subplots(figsize=(7.5, 4.6))
+    ax.scatter([float(r["P"]) for r in rated], [float(r["C_star"]) for r in rated], s=30, color=INDIGO,
+               edgecolor="white", lw=0.4, zorder=3, label=f"rated on both ({len(rated)} brands)")
+    ax.scatter([float(r["P"]) for r in unr], [-9] * len(unr), s=18, marker="|", color=GRAY, zorder=3,
+               label=f"Presence only, Consistency not rated ({len(unr)})")
+    ax.axhline(-4, color=cs.PALETTE["gray_light"], lw=0.6)
+    ax.set_xlim(0, 100); ax.set_ylim(-14, 105)
+    ax.set_yticks([0, 25, 50, 75, 100])
+    ax.set_xlabel("Presence (0 to 100)", fontsize=8.5); ax.set_ylabel("Consistency (0 to 100)", fontsize=8.5)
+    ax.tick_params(labelsize=8)
+    for sp in ("top", "right"):
+        ax.spines[sp].set_visible(False)
+    ax.legend(loc="upper center", bbox_to_anchor=(0.5, -0.17), ncol=2, fontsize=7.8, frameon=False)
+    ax.text(0.02, 0.97, f"rank correlation between the two: {rho:.2f}", transform=ax.transAxes,
+            ha="left", va="top", fontsize=8, color=INDIGO,
+            bbox=dict(boxstyle="round,pad=0.4", fc="white", ec=INDIGO, lw=0.6))
+    fig.subplots_adjust(top=0.77, bottom=0.25, left=0.09, right=0.97)
+    cs.add_header(fig, "Every brand on both scores, November",
+                  "Each dot is a brand: how often AI names it (across) and how much the six models agree on it (up).",
+                  "Brands too rarely named to rate sit on the strip below, with their Presence only.")
+    _save(fig, 5, "report_fig_05")
+
+
 if __name__ == "__main__":
     print("building v1.9 report figures -> reports/figs/v1_9/report/")
-    chart_01(); chart_02(); chart_03()
+    chart_01(); chart_02(); chart_03(); chart_04(); chart_05()
     print("done")

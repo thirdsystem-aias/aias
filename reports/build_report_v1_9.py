@@ -112,7 +112,7 @@ if isinstance(content.WHAT_WE_MEASURED, str):
 # v1.9: the chart-bearing findings ARE the P-propositions (P1/P2/P3 charted,
 # P4/P5 text-only); headlines + detail come from the content module.
 _PATTERN_PROSE = content.PATTERNS if isinstance(content.PATTERNS, str) else ""
-_NO_FINDING_LABEL = {"P5"}
+_NO_FINDING_LABEL = set()
 content.PATTERNS = [{"label": h.get("headline", h["proposition"]),
                      "text": content.HYPOTHESIS_DETAILS.get(h["id"], ""),
                      "no_finding_label": h["id"] in _NO_FINDING_LABEL}
@@ -121,8 +121,8 @@ _PATTERN_CHART_MAP = {
     1: "asym",       # P1 no single score passed     -> report_fig_01
     2: "gate",       # P2 why: spread                -> report_fig_02
     3: "ranks",      # P3 two reliable scores        -> report_fig_03
-    4: None,         # P4 the floor at six mentions  -> text only
-    5: None,         # P5 what changes in reporting  -> text only
+    4: "phantom",    # P4 the floor at six mentions  -> report_fig_04
+    5: "p5",         # P5 two scores, side by side   -> report_fig_05
 }
 if content.PATTERNS and isinstance(content.PATTERNS[0], dict):
     _new_patterns = []
@@ -301,6 +301,8 @@ CHART_FIGSIZE_IN = {
     "v19_asym":                   (7.380, 4.700),   # report_fig_01 Stage 1 grid (531.4x338.4pt)
     "v19_gate":                   (7.430, 4.700),   # report_fig_02 score spread (534.9x338.4pt)
     "v19_ranks":                  (7.389, 4.000),   # report_fig_03 Stage 2 (532.0x288.0pt)
+    "v19_p4":                     (7.313, 4.500),   # report_fig_04 score by mentions (526.5x324.0pt)
+    "v19_p5":                     (7.406, 4.700),   # report_fig_05 both scores (533.3x338.4pt)
 }
 
 BODY_LEFT_X = COL_X[0]
@@ -1115,6 +1117,16 @@ HERO_FIGURE_CAPTIONS = {
         "existed. Both reported scores kept their brand order from June, Consistency by "
         "more than the question structure alone produces, and the two stayed unrelated."
     ),
+    "phantom": (
+        "Every brand named at least once in May, with its Consistency score computed "
+        "without the six-mention rule. Brands named once or twice score as high as brands "
+        "named often, because at those counts agreement cannot be told apart from chance."
+    ),
+    "p5": (
+        "How the two scores look side by side in November. Brands spread across both "
+        "axes with no common direction; the brands too rarely named to rate keep their "
+        "Presence and are marked as not rated."
+    ),
 }
 
 
@@ -1126,6 +1138,8 @@ def _slot_lookup(slot_key: str) -> tuple[str | None, str | None]:
         "asym":  ("report_fig_01.pdf", "v19_asym"),
         "gate":  ("report_fig_02.pdf", "v19_gate"),
         "ranks": ("report_fig_03.pdf", "v19_ranks"),
+        "phantom": ("report_fig_04.pdf", "v19_p4"),
+        "p5":    ("report_fig_05.pdf", "v19_p5"),
     }
     return table.get(slot_key, (None, None))
 
@@ -1172,7 +1186,7 @@ def build_pattern_unified(pattern: dict, styles: dict,
             h_in = h_in * (_content_w_in / w_in)
             w_in = _content_w_in
         # v0.30 CV.04 hero slot names (all four findings carry a hero chart)
-        is_hero = slot in ("asym", "gate", "ranks", "phantom")
+        is_hero = slot in ("asym", "gate", "ranks", "phantom", "p5")
         caption_style = styles["hero_caption"] if is_hero else styles["caption"]
         caption_text = HERO_FIGURE_CAPTIONS.get(slot, f"Figure {pattern['number']}.")
         chart_res = ChartReservation(
@@ -1473,7 +1487,7 @@ def build(*, debug_layout: bool = False,
     output_path.parent.mkdir(parents=True, exist_ok=True)
 
     print(f"[build_report_v1_9] chart pre-flight (looking in {chart_dir})")
-    expected_slots = ["asym", "gate", "ranks"]
+    expected_slots = ["asym", "gate", "ranks", "phantom", "p5"]
     expected_files = set()
     for sk in expected_slots:
         fname, _ = _slot_lookup(sk)
