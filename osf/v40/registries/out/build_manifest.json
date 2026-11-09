@@ -1,0 +1,64 @@
+{
+  "builder": "build_registry_v0_40.py",
+  "run_utc": "2026-11-09T00:09:08",
+  "freeze": "2026-11-08",
+  "floor_pct": 0.5,
+  "window_start": "2008-01-01",
+  "t100_months": "2007-01..2026-07",
+  "airline_window": "2025-08..2026-07",
+  "ontime_files": [
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_10.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_11.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_12.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_8.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2025_9.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_1.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_2.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_3.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_4.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_5.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_6.zip",
+    "On_Time_Marketing_Carrier_On_Time_Performance_Beginning_January_2018_2026_7.zip"
+  ],
+  "ontime_months_match_t100": true,
+  "regional_operators": [
+    "9E",
+    "C5",
+    "G7",
+    "MQ",
+    "OH",
+    "OO",
+    "PT",
+    "QX",
+    "YV",
+    "YX"
+  ],
+  "regional_share_pct": 7.918,
+  "sod_years": "2005..2026",
+  "sod_total_deposits_tn": 19.05,
+  "counts": {
+    "airline_brands": 11,
+    "airline_holders": 10,
+    "airline_ghosts": 7,
+    "bank_holders": 25,
+    "bank_ghosts": 17,
+    "controls": 3
+  },
+  "inputs": {
+    "exit_events.csv": "a965dd10abea74e1",
+    "model_cutoffs.csv": "e59f07a03243bbb6",
+    "aliases_current.csv": "60e4504c58ef234f",
+    "airline_scan_class.csv": "41daefae6617e304",
+    "bank_scan_class.csv": "684b0e712bb55b16"
+  },
+  "bank_scan_unclassified": 0,
+  "scan_ghosts_match_events": {
+    "airline": true,
+    "bank": true
+  },
+  "status_check": {
+    "charters": 36,
+    "events_after_sod": 3,
+    "errors": 0
+  }
+}

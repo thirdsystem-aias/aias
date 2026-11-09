@@ -1,0 +1,887 @@
+{
+  "phase": "v0.40",
+  "purpose": "pre-lock technical check (non-acquisition; no study probe sent)",
+  "run_utc": "2026-11-09T00:22:29.008111+00:00",
+  "reused_code": "osf/v39/scripts/acquire_v0_39.py",
+  "prompts": {
+    "S0": "Reply with the single word: ready",
+    "S1": [
+      "Use web search to find today's date in Coordinated Universal Time. Reply with the date only.",
+      "Search the web for the current top headline on bbc.com and give the source URL."
+    ]
+  },
+  "records": [
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "1",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M1",
+      "model_name": "Claude Opus 4.5",
+      "model_id": "claude-opus-4-5",
+      "provider": "anthropic",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "claude-opus-4-5-20251101",
+      "finish_reason": "end_turn",
+      "tokens_in": 14,
+      "tokens_out": 4,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 1.92,
+      "ts_start": "2026-11-09T00:20:37.671408+00:00",
+      "ts_end": "2026-11-09T00:20:39.596325+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "2",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M2",
+      "model_name": "Claude Sonnet 4.5",
+      "model_id": "claude-sonnet-4-5",
+      "provider": "anthropic",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "claude-sonnet-4-5-20250929",
+      "finish_reason": "end_turn",
+      "tokens_in": 14,
+      "tokens_out": 4,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 0.7,
+      "ts_start": "2026-11-09T00:20:41.601569+00:00",
+      "ts_end": "2026-11-09T00:20:42.302036+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "3",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M3",
+      "model_name": "GPT-4o",
+      "model_id": "gpt-4o",
+      "provider": "openai",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting)",
+      "response": "Ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gpt-4o-2024-08-06",
+      "finish_reason": "stop",
+      "tokens_in": 14,
+      "tokens_out": 1,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 7.62,
+      "ts_start": "2026-11-09T00:20:44.307350+00:00",
+      "ts_end": "2026-11-09T00:20:51.929828+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "4",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M4",
+      "model_name": "GPT-4o-mini",
+      "model_id": "gpt-4o-mini",
+      "provider": "openai",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gpt-4o-mini-2024-07-18",
+      "finish_reason": "stop",
+      "tokens_in": 14,
+      "tokens_out": 1,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 0.42,
+      "ts_start": "2026-11-09T00:20:52.934917+00:00",
+      "ts_end": "2026-11-09T00:20:53.356188+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "5",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M5",
+      "model_name": "Gemini 2.5 Flash",
+      "model_id": "gemini-2.5-flash",
+      "provider": "google",
+      "setting": "temperature 0, max output 2,048, thinking budget 0 (v0.40 primary)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-2.5-flash",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 8,
+      "tokens_out": 1,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 0.96,
+      "ts_start": "2026-11-09T00:20:54.359212+00:00",
+      "ts_end": "2026-11-09T00:20:55.319285+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "6",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M5",
+      "model_name": "Gemini 2.5 Flash",
+      "model_id": "gemini-2.5-flash",
+      "provider": "google",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting); provider-default thinking (v0.40 extra pass)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-2.5-flash",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 8,
+      "tokens_out": 1,
+      "tokens_thought": 16,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 0.59,
+      "ts_start": "2026-11-09T00:20:56.324375+00:00",
+      "ts_end": "2026-11-09T00:20:56.914594+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "7",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "L",
+      "condition": "S0",
+      "model_slot": "M6",
+      "model_name": "Gemini 2.5 Flash Lite",
+      "model_id": "gemini-2.5-flash-lite",
+      "provider": "google",
+      "setting": "temperature 0, max output 2,048 (v0.39 legacy setting)",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-2.5-flash-lite",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 8,
+      "tokens_out": 1,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 0.3,
+      "ts_start": "2026-11-09T00:20:57.914974+00:00",
+      "ts_end": "2026-11-09T00:20:58.217762+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "8",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "C",
+      "condition": "S0",
+      "model_slot": "C1",
+      "model_name": "Claude Opus 5.5",
+      "model_id": "claude-opus-5-5",
+      "provider": "anthropic",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), no tools",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "claude-opus-5-5",
+      "finish_reason": "end_turn",
+      "tokens_in": 18,
+      "tokens_out": 4,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 1.32,
+      "ts_start": "2026-11-09T00:20:59.219094+00:00",
+      "ts_end": "2026-11-09T00:21:00.536051+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "10",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "C",
+      "condition": "S0",
+      "model_slot": "C2",
+      "model_name": "GPT-6 Astra",
+      "model_id": "gpt-6-astra",
+      "provider": "openai",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), no tools",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gpt-6-astra",
+      "finish_reason": "completed",
+      "tokens_in": 13,
+      "tokens_out": 5,
+      "tokens_thought": 0,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 1.77,
+      "ts_start": "2026-11-09T00:21:02.541355+00:00",
+      "ts_end": "2026-11-09T00:21:04.312231+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "12",
+      "probe_id": "FEAS",
+      "kind": "feasibility",
+      "prompt": "Reply with the single word: ready",
+      "prompt_sha256": "88306951b18d4726ab2a341566edd12498c5a9dfe96dffa3362cbb0075bad5a0",
+      "arm": "C",
+      "condition": "S0",
+      "model_slot": "C3",
+      "model_name": "Gemini 4 Argon",
+      "model_id": "gemini-4-argon",
+      "provider": "google",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), no tools",
+      "response": "ready",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-4-argon",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 38,
+      "tokens_out": 5,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": null,
+      "latency_s": 5.78,
+      "ts_start": "2026-11-09T00:21:05.313333+00:00",
+      "ts_end": "2026-11-09T00:21:11.091228+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "9",
+      "probe_id": "FEAS-S1a",
+      "kind": "feasibility",
+      "prompt": "Use web search to find today's date in Coordinated Universal Time. Reply with the date only.",
+      "prompt_sha256": "bbef9a855df45c058b0d0935510a753d4fa779c93dc32ac31db2b35fa00168fd",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C1",
+      "model_name": "Claude Opus 5.5",
+      "model_id": "claude-opus-5-5",
+      "provider": "anthropic",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "November 9, 2026\n\nThe pages I found were cached and showed an earlier date (Sunday, November 8, 2026), so they don't reflect the live clock. Nov 9 comes from my system's current date.",
+      "status": "ok",
+      "error": null,
+      "served_model": "claude-opus-5-5",
+      "finish_reason": "end_turn",
+      "tokens_in": 13283,
+      "tokens_out": 271,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 1,
+        "queries": [
+          "current UTC date today"
+        ],
+        "sources": [
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%2B03:30",
+            "title": "UTC%2B03:30",
+            "page_age": null
+          },
+          {
+            "url": "https://www.timeanddate.com/time/zone/timezone/utc",
+            "title": "Time Zone in UTC, Time Zone (Coordinated Universal Time)",
+            "page_age": "27 days ago"
+          },
+          {
+            "url": "https://www.utctime.net/",
+            "title": "UTC Time Now",
+            "page_age": "152 days ago"
+          },
+          {
+            "url": "https://www.timeanddate.com/worldclock/timezone/utc",
+            "title": "Current UTC — Coordinated Universal Time",
+            "page_age": "42 days ago"
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%E2%88%9212:00",
+            "title": "UTC%E2%88%9212:00",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%E2%88%9209:00",
+            "title": "UTC%E2%88%9209:00",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%2B06:30",
+            "title": "UTC%2B06:30",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%2B09:30",
+            "title": "UTC%2B09:30",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/UTC%2B00:00",
+            "title": "UTC%2B00:00",
+            "page_age": null
+          }
+        ],
+        "citations": [
+          {
+            "url": "https://www.timeanddate.com/worldclock/timezone/utc",
+            "title": "Current UTC — Coordinated Universal Time"
+          }
+        ],
+        "errors": []
+      },
+      "latency_s": 5.31,
+      "ts_start": "2026-11-09T00:21:12.097181+00:00",
+      "ts_end": "2026-11-09T00:21:17.408284+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "11",
+      "probe_id": "FEAS-S1a",
+      "kind": "feasibility",
+      "prompt": "Use web search to find today's date in Coordinated Universal Time. Reply with the date only.",
+      "prompt_sha256": "bbef9a855df45c058b0d0935510a753d4fa779c93dc32ac31db2b35fa00168fd",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C2",
+      "model_name": "GPT-6 Astra",
+      "model_id": "gpt-6-astra",
+      "provider": "openai",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "November 9, 2026",
+      "status": "ok",
+      "error": null,
+      "served_model": "gpt-6-astra",
+      "finish_reason": "completed",
+      "tokens_in": 4543,
+      "tokens_out": 37,
+      "tokens_thought": 26,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 1,
+        "queries": [
+          "time: {\"utc_offset\":\"+00:00\"}",
+          "time: {\"utc_offset\":\"+00:00\"}"
+        ],
+        "sources": [
+          {
+            "url": null,
+            "title": null
+          }
+        ],
+        "citations": [],
+        "errors": []
+      },
+      "latency_s": 2.65,
+      "ts_start": "2026-11-09T00:21:19.417987+00:00",
+      "ts_end": "2026-11-09T00:21:22.071422+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "13",
+      "probe_id": "FEAS-S1a",
+      "kind": "feasibility",
+      "prompt": "Use web search to find today's date in Coordinated Universal Time. Reply with the date only.",
+      "prompt_sha256": "bbef9a855df45c058b0d0935510a753d4fa779c93dc32ac31db2b35fa00168fd",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C3",
+      "model_name": "Gemini 4 Argon",
+      "model_id": "gemini-4-argon",
+      "provider": "google",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "November 9, 2026",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-4-argon",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 237,
+      "tokens_out": 36,
+      "tokens_thought": 130,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 0,
+        "queries": [],
+        "sources": [],
+        "citations": [],
+        "errors": []
+      },
+      "latency_s": 9.4,
+      "ts_start": "2026-11-09T00:21:23.075830+00:00",
+      "ts_end": "2026-11-09T00:21:32.477081+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "9",
+      "probe_id": "FEAS-S1b",
+      "kind": "feasibility",
+      "prompt": "Search the web for the current top headline on bbc.com and give the source URL.",
+      "prompt_sha256": "7a245e2f1937e0c0e6e0fa4b811bd61284dc1c898f05cd320ab627e1716f64a9",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C1",
+      "model_name": "Claude Opus 5.5",
+      "model_id": "claude-opus-5-5",
+      "provider": "anthropic",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "Those results are irrelevant. Let me try a more targeted search.I couldn't find the current top headline on bbc.com. I tried three searches, but none of them returned BBC's homepage or a story clearly marked as its lead headline for today, November 9, 2026. I got unrelated news-bulletin pages from other sites, Wikipedia articles about BBC programmes, and BBC articles from earlier in 2026. None of those were today's top story.\n\nI'm not going to pick a headline and attach a URL to it, because I can't confirm it's the one BBC is leading with. The homepage changes throughout the day, and search engines usually don't index it in real time, so this kind of question is hard to answer through search.\n\nTo see the current top headline, go straight to:\n- https://www.bbc.com/news (international edition)\n- https://www.bbc.co.uk/news (UK edition)\n\nThe lead story is the large one at the top of the page. If you paste the headline here or tell me the topic, I can search for more coverage of it.",
+      "status": "ok",
+      "error": null,
+      "served_model": "claude-opus-5-5",
+      "finish_reason": "end_turn",
+      "tokens_in": 61634,
+      "tokens_out": 588,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 3,
+        "queries": [
+          "BBC News top story today",
+          "bbc.com news November 9 2026",
+          "BBC News breaking news today"
+        ],
+        "sources": [
+          {
+            "url": "https://www.euronews.com/tag/top-stories?p=78",
+            "title": "top stories",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/index.php/tag/top-stories?p=103",
+            "title": "top stories",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/index.php/tag/top-stories?p=51",
+            "title": "top stories",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/index.php/tag/top-stories?p=50",
+            "title": "top stories",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/index.php/tag/top-stories?p=121",
+            "title": "top stories",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/tag/world-news?p=110",
+            "title": "world news",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/tag/world-news?p=82",
+            "title": "world news",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/tag/world-news?p=135",
+            "title": "world news",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/tag/world-news?p=146",
+            "title": "world news",
+            "page_age": null
+          },
+          {
+            "url": "https://www.euronews.com/index.php/tag/world-news?p=141",
+            "title": "world news",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/2026_in_Scottish_television",
+            "title": "2026 in Scottish television",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/BBC_News_at_Nine",
+            "title": "BBC News at Nine",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/2026_in_Trinidad_and_Tobago",
+            "title": "2026 in Trinidad and Tobago",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Timeline_of_the_BBC_News_Channel",
+            "title": "Timeline of the BBC News Channel",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/2024_in_Scottish_television",
+            "title": "2024 in Scottish television",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/The_Nine_(BBC_Scotland)",
+            "title": "The Nine (BBC Scotland)",
+            "page_age": null
+          },
+          {
+            "url": "https://pro.imdb.com/title/tt34676235",
+            "title": "Episode dated 14 November 2024's primary photo",
+            "page_age": null
+          },
+          {
+            "url": "https://pro.imdb.com/title/tt34882429",
+            "title": "Episode dated 29 November 2024's primary photo",
+            "page_age": null
+          },
+          {
+            "url": "https://pro.imdb.com/title/tt34823493/details",
+            "title": "Episode dated 26 November 2024's primary photo",
+            "page_age": null
+          },
+          {
+            "url": "https://pro.imdb.com/title/tt23897318",
+            "title": "Episode dated 25 November 2022's primary photo",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/BBC_News_Now",
+            "title": "BBC News Now",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/World_News_Today",
+            "title": "World News Today",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Timeline_of_the_BBC_News_Channel",
+            "title": "Timeline of the BBC News Channel",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/The_World_Today_(TV_news_programme)",
+            "title": "The World Today (TV news programme)",
+            "page_age": null
+          },
+          {
+            "url": "https://en.wikipedia.org/wiki/Business_Today_(BBC_News_programme)",
+            "title": "Business Today (BBC News programme)",
+            "page_age": null
+          },
+          {
+            "url": "https://stripe.jhu.edu/news/stay-tuned-breaking-news-to-disrupt-your-day-at-930-am-eastern",
+            "title": "Stay Tuned: Breaking News To Disrupt Your Day At 9:30 AM Eastern - Jhu Innovations",
+            "page_age": null
+          },
+          {
+            "url": "https://stripe.jhu.edu/news/breaking-news-30-day-forecast-unlocks-weathers-hidden-agenda",
+            "title": "Breaking News: 30-Day Forecast Unlocks Weather's Hidden Agenda - Jhu Innovations",
+            "page_age": null
+          },
+          {
+            "url": "https://modmedia.blog.gov.uk/search/VIPREG2024+1xbet+today+promo+code+El+Salvador/page/26",
+            "title": "modmedia.blog.gov.uk",
+            "page_age": null
+          },
+          {
+            "url": "https://modmedia.blog.gov.uk/search/VIPREG2024+1xbet+promo+code+india+today+Tanzania/page/27",
+            "title": "modmedia.blog.gov.uk",
+            "page_age": null
+          },
+          {
+            "url": "https://stripe.jhu.edu/news/breaking-judybyington-restoredrepublic-shocking-facts-revealed-%e2%80%93-what-you-didnt-know",
+            "title": "Breaking: #JudyByington #RestoredRepublic: Shocking Facts Revealed! – What You Didn't Know! - Jhu Innovations",
+            "page_age": null
+          }
+        ],
+        "citations": [],
+        "errors": []
+      },
+      "latency_s": 10.04,
+      "ts_start": "2026-11-09T00:21:33.482698+00:00",
+      "ts_end": "2026-11-09T00:21:43.527754+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "11",
+      "probe_id": "FEAS-S1b",
+      "kind": "feasibility",
+      "prompt": "Search the web for the current top headline on bbc.com and give the source URL.",
+      "prompt_sha256": "7a245e2f1937e0c0e6e0fa4b811bd61284dc1c898f05cd320ab627e1716f64a9",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C2",
+      "model_name": "GPT-6 Astra",
+      "model_id": "gpt-6-astra",
+      "provider": "openai",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "I searched, but **couldn’t verify BBC.com’s current top headline**: the homepage blocks my browsing tool, and the search results didn’t establish which story is leading.\n\nSource URL to check directly: https://www.bbc.com/",
+      "status": "ok",
+      "error": null,
+      "served_model": "gpt-6-astra",
+      "finish_reason": "completed",
+      "tokens_in": 12631,
+      "tokens_out": 131,
+      "tokens_thought": 78,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 1,
+        "queries": [
+          "site:bbc.com \"November 9, 2026\" news",
+          "site:bbc.com \"November 9, 2026\" news",
+          "site:bbc.com BBC Home breaking news latest"
+        ],
+        "sources": [
+          {
+            "url": "https://www.bbc.com",
+            "title": null,
+            "action": "open_page"
+          },
+          {
+            "url": "https://help.bbc.com/hc/en-us/articles/39027623773331-What-types-of-news-content-will-be-available",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_east_africa/day/2026-09-11",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_core/day/2026-11-07",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_news_internet/day/2026-09-07",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_core/week/2026-09-28",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_news_internet/week/2026-09-26",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_americas/day/2026-09-13",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_core/week/2026-10-12",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/schedules/bbc_world_service_news_internet/day/2026-10-20",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/episode/w1730nkv07l6vpx",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/episode/w1730nlmc57kjnj",
+            "title": null
+          },
+          {
+            "url": "https://wspartners.bbc.com/episode/w1730nkv07lg3gn",
+            "title": null
+          }
+        ],
+        "citations": [],
+        "errors": []
+      },
+      "latency_s": 9.19,
+      "ts_start": "2026-11-09T00:21:45.533710+00:00",
+      "ts_end": "2026-11-09T00:21:54.724105+00:00"
+    },
+    {
+      "phase": "v0.40-feasibility",
+      "setup": "13",
+      "probe_id": "FEAS-S1b",
+      "kind": "feasibility",
+      "prompt": "Search the web for the current top headline on bbc.com and give the source URL.",
+      "prompt_sha256": "7a245e2f1937e0c0e6e0fa4b811bd61284dc1c898f05cd320ab627e1716f64a9",
+      "arm": "C",
+      "condition": "S1",
+      "model_slot": "C3",
+      "model_name": "Gemini 4 Argon",
+      "model_id": "gemini-4-argon",
+      "provider": "google",
+      "setting": "provider defaults, max output 16,384 (v0.39 current-arm setting), provider web search",
+      "response": "The leading stories on **BBC News** (`bbc.com`) include:\n\n* **Nvidia launches investigation into CEO's affair with suspected Chinese spy** (also broadcast as *\"Security alert as Nvidia boss admits affair with suspected Chinese spy\"*): Nvidia has opened an internal probe into CEO Jensen Huang following allegations that he was targeted in a Chinese intelligence operation. In a memo to employees, Huang admitted to having been unfaithful to his wife and apologized to his family and the company.\n* **Killing of six people in Krakow square 'constitutes terrorist offence', says Polish prosecutor**: Polish authorities are investigating a mass shooting in Krakow's Main Market Square that left six people dead—including a British citizen—and 16 injured. Police also discovered the bodies of the 25-year-old suspect's parents and sister at his home, with officials stating the attacker appeared to be motivated by far-right, ultra-nationalist ideologies.\n\n**Source URLs:**\n* **BBC News Homepage:** https://www.bbc.com/news\n* **BBC News Official Video Broadcasts:** \n  * [Security alert as Nvidia boss admits affair with suspected Chinese spy | BBC News (YouTube)](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8v1tsxFTO0GJY0l9wIUUky7Y0ZrB-uxInmvm7J0jMOGpPZ6OcfN-Vm4ptJvc1O21D-EPyDp7i6Q6j3eoPIwJlIMhFRNJtDYqvPPD7u0RqPPlo2ly5xRMA1l3JWTAM-jzT)\n  * [Krakow shooting leaves six dead, including British citizen | BBC News (YouTube)](https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAedprfAAT_bWG4s3uE_LAVOTcSvgkb_4-GSgoWwZZULYhb0vwmrd-ruKw3BUnTMIpqN9ylMTbZ3IIFxI0MxelGi6GdIwgixPQ3LmyQJoC1EyRBDcgdIelqMfuKtQQyhQS)",
+      "status": "ok",
+      "error": null,
+      "served_model": "gemini-4-argon",
+      "finish_reason": "FinishReason.STOP",
+      "tokens_in": 236,
+      "tokens_out": 712,
+      "tokens_thought": null,
+      "attempts": 1,
+      "empty_retry": false,
+      "paused_continued": false,
+      "search": {
+        "n_searches": 3,
+        "queries": [
+          "\"BBC News\" Krakow shooting",
+          "\"BBC News\" Nvidia boss Chinese spy",
+          "\"bbc.co.uk/news\""
+        ],
+        "sources": [
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8v1tsxFTO0GJY0l9wIUUky7Y0ZrB-uxInmvm7J0jMOGpPZ6OcfN-Vm4ptJvc1O21D-EPyDp7i6Q6j3eoPIwJlIMhFRNJtDYqvPPD7u0RqPPlo2ly5xRMA1l3JWTAM-jzT",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFL_vsVZEWKmw6ePONGclhQzdrB3cTLn8y3Lkt78KMsGsTwSi_N0djS7zTL74dIY91gUiZop4L5GKG_Z2KI5BkTWn4pSfuFWim8CNDy0hTaM29hrl-dmrH5605jRtNPbemje4T8A--WCgvlJiEwV2pivmwFG2g1JXPyPwVzEDr1WZbiVzC1lBkh",
+            "title": "cbsnews.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOWTxU19ngmd45oPjbcYq6Ce_GGhQC4l2IwuT9Mb3NimOhHgzyLNOl8jjUU2ygClCnwmbHLkC2PtvTiyFJlxY6j3TJr1Ez32ct-oXZGy_73IQTj3RAIrm31ozJMdk3gu2sSBQYCuNeZzt_4d7J66uL8v_gVRuTTCivONnjHq7WDTVst4NwqE1dUcLyZQ==",
+            "title": "ground.news"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAedprfAAT_bWG4s3uE_LAVOTcSvgkb_4-GSgoWwZZULYhb0vwmrd-ruKw3BUnTMIpqN9ylMTbZ3IIFxI0MxelGi6GdIwgixPQ3LmyQJoC1EyRBDcgdIelqMfuKtQQyhQS",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH9n6MkgPwtTc8N6PSoERLAekw8doJvTo5vFFGnp1fcTkyN8DTIVwuZwYmE8lR0HmY2SxAMVdWMXmrY4zurVgt-H031CLM36XgHPkJEdAbRoXwB6rGT2VTeAiRuAJEbmFcN2DWhacrO7WBrEEAivykfKIPWY2qbHePQhwI97nUSXdmGMQcQeFhERQSZa9G2eUHdvba3ugLBt9XwzJ2Ha3vH1r36ZgeOkMwO5M-_L0Q8iVuq1mFh_sD5JO8=",
+            "title": "tinyg.info"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaTPubdkM8p8XFFmT6S8NXJjeFJwzlFfXWe96wqejsj7NJEcYs8rszyfQlXy1NsSvSt1mbamIUJ-6-OmUejKMgI8b_tNNQjyndjEqG-_kXAQlGo3Rcp6TCPts8e6qR4ulR",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfqHruagSPFgT2YCmzxzAj7kf93qlG6Cp3cTjNTKyHIrGStowREmfnZH4vs00RwDov-rEKy_CGMtfOJXHeRzsE2CXn-DYMitRBmeJbRYnsjCiAwGbQaQ0HlAGLjYjehcGfyls=",
+            "title": "wikipedia.org"
+          }
+        ],
+        "citations": [
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8v1tsxFTO0GJY0l9wIUUky7Y0ZrB-uxInmvm7J0jMOGpPZ6OcfN-Vm4ptJvc1O21D-EPyDp7i6Q6j3eoPIwJlIMhFRNJtDYqvPPD7u0RqPPlo2ly5xRMA1l3JWTAM-jzT",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFL_vsVZEWKmw6ePONGclhQzdrB3cTLn8y3Lkt78KMsGsTwSi_N0djS7zTL74dIY91gUiZop4L5GKG_Z2KI5BkTWn4pSfuFWim8CNDy0hTaM29hrl-dmrH5605jRtNPbemje4T8A--WCgvlJiEwV2pivmwFG2g1JXPyPwVzEDr1WZbiVzC1lBkh",
+            "title": "cbsnews.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOWTxU19ngmd45oPjbcYq6Ce_GGhQC4l2IwuT9Mb3NimOhHgzyLNOl8jjUU2ygClCnwmbHLkC2PtvTiyFJlxY6j3TJr1Ez32ct-oXZGy_73IQTj3RAIrm31ozJMdk3gu2sSBQYCuNeZzt_4d7J66uL8v_gVRuTTCivONnjHq7WDTVst4NwqE1dUcLyZQ==",
+            "title": "ground.news"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFL_vsVZEWKmw6ePONGclhQzdrB3cTLn8y3Lkt78KMsGsTwSi_N0djS7zTL74dIY91gUiZop4L5GKG_Z2KI5BkTWn4pSfuFWim8CNDy0hTaM29hrl-dmrH5605jRtNPbemje4T8A--WCgvlJiEwV2pivmwFG2g1JXPyPwVzEDr1WZbiVzC1lBkh",
+            "title": "cbsnews.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEOWTxU19ngmd45oPjbcYq6Ce_GGhQC4l2IwuT9Mb3NimOhHgzyLNOl8jjUU2ygClCnwmbHLkC2PtvTiyFJlxY6j3TJr1Ez32ct-oXZGy_73IQTj3RAIrm31ozJMdk3gu2sSBQYCuNeZzt_4d7J66uL8v_gVRuTTCivONnjHq7WDTVst4NwqE1dUcLyZQ==",
+            "title": "ground.news"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAedprfAAT_bWG4s3uE_LAVOTcSvgkb_4-GSgoWwZZULYhb0vwmrd-ruKw3BUnTMIpqN9ylMTbZ3IIFxI0MxelGi6GdIwgixPQ3LmyQJoC1EyRBDcgdIelqMfuKtQQyhQS",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH9n6MkgPwtTc8N6PSoERLAekw8doJvTo5vFFGnp1fcTkyN8DTIVwuZwYmE8lR0HmY2SxAMVdWMXmrY4zurVgt-H031CLM36XgHPkJEdAbRoXwB6rGT2VTeAiRuAJEbmFcN2DWhacrO7WBrEEAivykfKIPWY2qbHePQhwI97nUSXdmGMQcQeFhERQSZa9G2eUHdvba3ugLBt9XwzJ2Ha3vH1r36ZgeOkMwO5M-_L0Q8iVuq1mFh_sD5JO8=",
+            "title": "tinyg.info"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQGaTPubdkM8p8XFFmT6S8NXJjeFJwzlFfXWe96wqejsj7NJEcYs8rszyfQlXy1NsSvSt1mbamIUJ-6-OmUejKMgI8b_tNNQjyndjEqG-_kXAQlGo3Rcp6TCPts8e6qR4ulR",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQH9n6MkgPwtTc8N6PSoERLAekw8doJvTo5vFFGnp1fcTkyN8DTIVwuZwYmE8lR0HmY2SxAMVdWMXmrY4zurVgt-H031CLM36XgHPkJEdAbRoXwB6rGT2VTeAiRuAJEbmFcN2DWhacrO7WBrEEAivykfKIPWY2qbHePQhwI97nUSXdmGMQcQeFhERQSZa9G2eUHdvba3ugLBt9XwzJ2Ha3vH1r36ZgeOkMwO5M-_L0Q8iVuq1mFh_sD5JO8=",
+            "title": "tinyg.info"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQHfqHruagSPFgT2YCmzxzAj7kf93qlG6Cp3cTjNTKyHIrGStowREmfnZH4vs00RwDov-rEKy_CGMtfOJXHeRzsE2CXn-DYMitRBmeJbRYnsjCiAwGbQaQ0HlAGLjYjehcGfyls=",
+            "title": "wikipedia.org"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQG8v1tsxFTO0GJY0l9wIUUky7Y0ZrB-uxInmvm7J0jMOGpPZ6OcfN-Vm4ptJvc1O21D-EPyDp7i6Q6j3eoPIwJlIMhFRNJtDYqvPPD7u0RqPPlo2ly5xRMA1l3JWTAM-jzT",
+            "title": "youtube.com"
+          },
+          {
+            "url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQEAedprfAAT_bWG4s3uE_LAVOTcSvgkb_4-GSgoWwZZULYhb0vwmrd-ruKw3BUnTMIpqN9ylMTbZ3IIFxI0MxelGi6GdIwgixPQ3LmyQJoC1EyRBDcgdIelqMfuKtQQyhQS",
+            "title": "youtube.com"
+          }
+        ],
+        "errors": []
+      },
+      "latency_s": 32.27,
+      "ts_start": "2026-11-09T00:21:55.727788+00:00",
+      "ts_end": "2026-11-09T00:22:28.002312+00:00"
+    }
+  ]
+}

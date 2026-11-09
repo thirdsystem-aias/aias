@@ -1,0 +1,47 @@
+type,cert,old_name,new_name,last_sod_old,share_pct,holder,class,reason
+rename,33143,"Treasury Bank, National Association","Countrywide Bank, National Association",2005,0.5159,COUNTRYWIDE FINANCIAL CORPORATION,outside window,Rename in 2005.
+rename,33318,"MBNA America Bank, National Association","FIA Card Services, National Association",2005,0.4924,MBNA CORPORATION,below floor,MBNA America Bank -> FIA Card Services; 2005.
+rename,33143,"Countrywide Bank, National Association","Countrywide Bank, FSB",2006,0.7854,COUNTRYWIDE FINANCIAL CORPORATION,not an exit,Legal-form change; stem 'Countrywide' kept (R6).
+exit,57443,"Citibank (West), FSB",,2006,0.6171,CITIGROUP INC.,not an exit,Internal consolidation; stem 'Citibank' kept (R6); 2006.
+exit,26800,AmSouth Bank,,2006,0.5546,AMSOUTH BANCORPORATION,outside window,Branches converted to Regions during 2007 (Regions 10-K FY2007 https://www.sec.gov/Archives/edgar/data/0001281761/000119312508038935/d10k.htm); last conversion 2007-12-06 (secondary).
+rename,27076,"World Savings Bank, FSB","Wachovia Mortgage, FSB",2007,1.0929,WACHOVIA CORPORATION,outside window (edge),World Savings: deposits moved to Wachovia and branches rebranded 2007-10-11 (secondary https://localwiki.org/davis/World_Savings_Bank); thrift renamed 2007-12-31 (FDIC). Decision D9.
+exit,21140,"Commerce Bank, National Association",,2007,0.5987,"COMMERCE BANCORP, INC.",ghost,COMMERCE
+exit,15985,North Fork Bank,,2007,0.5679,CAPITAL ONE FINANCIAL CORPORATION,ghost,NORTHFORK
+rename,18409,"TD BankNorth, National Association","TD Bank, National Association",2007,0.4192,"TORONTO-DOMINION BANK, THE",below floor,TD Banknorth -> TD Bank (2008-05-31).
+exit,32633,Washington Mutual Bank,,2008,2.6115,Washington Mutual Bank,ghost,WAMU
+exit,33143,"Countrywide Bank, FSB",,2008,0.9017,"Countrywide Bank, FSB",ghost,COUNTRYWIDE
+rename,22826,"Union Bank of California, National Association","Union Bank, National Association",2008,0.5806,"MITSUBISHI UFJ FINANCIAL GROUP, INC.",not an exit,Union Bank of California -> Union Bank; stem 'Union Bank' kept (R6).
+rename,639,The Bank of New York,The Bank of New York Mellon,2008,0.4919,"BANK OF NEW YORK MELLON CORPORATION, THE",custody rule,The Bank of New York -> BNY Mellon (R9).
+rename,32992,Morgan Stanley Bank,"Morgan Stanley Bank, National Association",2008,0.4237,Morgan Stanley Bank,not an exit,Legal-form change.
+exit,15407,LaSalle Bank National Association,,2008,0.4212,BANK OF AMERICA CORPORATION,ghost,LASALLE (with 22488)
+exit,33869,"Wachovia Bank, National Association",,2009,5.2144,WELLS FARGO & COMPANY,ghost,WACHOVIA
+exit,6557,National City Bank,,2009,1.3379,"PNC FINANCIAL SERVICES GROUP, INC., THE",ghost,NATCITY
+exit,27374,Merrill Lynch Bank USA,,2009,0.7645,BANK OF AMERICA CORPORATION,brand persists,Merrill Lynch Bank USA merged into BofA 2009-07-01 (FDIC); the Merrill brand continues. Decision D10.
+exit,993,Fifth Third Bank,,2009,0.5484,FIFTH THIRD BANCORP,not an exit,Fifth Third charter consolidation; stem kept (verify FDIC record).
+rename,29950,Sovereign Bank,"Sovereign Bank, National Association",2011,0.5776,"BANCO SANTANDER, S.A.",not an exit,Legal-form change.
+rename,16571,Harris National Association,BMO Harris Bank National Association,2011,0.4426,BANK OF MONTREAL,not an exit,Harris -> BMO Harris; stem 'Harris' kept.
+exit,1020,M&I Marshall and Ilsley Bank,,2011,0.4114,MARSHALL & ILSLEY CORPORATION,below floor,M&I merged into BMO Harris 2011-07-05 (FDIC).
+exit,35489,"ING Bank, fsb",,2012,0.9631,CAPITAL ONE FINANCIAL CORPORATION,ghost,INGDIRECT
+rename,57957,"RBS Citizens, National Association","Citizens Bank, National Association",2013,0.8048,UK FINANCIAL INVESTMENTS LIMITED,not an exit,RBS Citizens -> Citizens Bank; stem 'Citizens' kept (R6).
+rename,29950,"Sovereign Bank, National Association","Santander Bank, N.A.",2013,0.5252,"BANCO SANTANDER, S.A.",ghost,SOVEREIGN
+exit,33318,"FIA Card Services, National Association",,2014,1.0939,BANK OF AMERICA CORPORATION,not a consumer brand,FIA Card Services: Bank of America's card charter (verify).
+rename,22826,"Union Bank, National Association","MUFG Union Bank, National Association",2014,0.8032,"MITSUBISHI UFJ FINANCIAL GROUP, INC.",not an exit,Union Bank -> MUFG Union Bank; stem kept.
+rename,19048,Compass Bank,BBVA USA,2018,0.5729,"BANCO BILBAO VIZCAYA ARGENTARIA, S.A.",ghost,BBVACOMPASS
+rename,2270,"ZB, National Association","Zions Bancorporation, N.A.",2018,0.4383,ZIONS BANCORPORATION,below floor,ZB -> Zions Bancorporation.
+rename,57450,Charles Schwab Bank,"Charles Schwab Bank, SSB",2019,1.5242,"CHARLES SCHWAB CORPORATION, THE",not an exit,Legal-form change.
+rename,9846,Branch Banking and Trust Company,Truist Bank,2019,1.3144,BB&T CORPORATION,ghost,BBT
+exit,867,SunTrust Bank,,2019,1.2686,"SUNTRUST BANKS, INC.",ghost,SUNTRUST
+rename,6672,Fifth Third Bank,"Fifth Third Bank, National Association",2019,1.0140,FIFTH THIRD BANCORP,not an exit,Legal-form change.
+rename,27471,American Express National  Bank,American Express National Bank,2019,0.5650,AMERICAN EXPRESS COMPANY,not an exit,Spelling of the legal name.
+exit,19048,Bbva Usa,,2021,0.4769,"PNC FINANCIAL SERVICES GROUP, INC., THE",below floor,BBVA USA merged into PNC 2021-10-08 (FDIC); covered by the BBVA Compass ghost (D7).
+exit,30746,E*trade Bank,,2021,0.4094,MORGAN STANLEY,below floor,E*TRADE Bank.
+exit,24735,Silicon Valley Bank,,2022,0.9644,SVB FINANCIAL GROUP,ghost,SVB
+exit,59017,First Republic Bank,,2022,0.9131,First Republic Bank,ghost,FIRSTREPUBLIC
+rename,27471,American Express National Bank,American Express National  Bank,2022,0.5764,AMERICAN EXPRESS COMPANY,not an exit,Spelling of the legal name.
+exit,57053,Signature Bank,,2022,0.5741,Signature Bank,ghost,SIGNATURE
+exit,22826,"Mufg Union Bank, National Association",,2022,0.5092,"MITSUBISHI UFJ FINANCIAL GROUP, INC.",ghost,UNIONBANK
+exit,33954,"Capital One Bank (Usa), National Association",,2022,0.4689,CAPITAL ONE FINANCIAL CORPORATION,below floor,Capital One charter consolidation.
+exit,3514,Bank of The West,,2022,0.4415,BNP PARIBAS,below floor,Bank of the West merged into BMO Harris 2023-02-02 (FDIC).
+rename,16571,BMO Harris Bank National Association,BMO Bank National Association,2023,1.1711,BANK OF MONTREAL,ghost,BMOHARRIS
+exit,5649,Discover Bank,,2024,0.6439,DISCOVER FINANCIAL SERVICES,control,DISCOVER (brand retained).
+rename,57565,UBS Bank USA,"UBS Bank USA, National Association",2025,0.5438,UBS GROUP AG,not an exit,Legal-form change.
