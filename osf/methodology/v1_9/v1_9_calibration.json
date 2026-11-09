@@ -1,0 +1,433 @@
+{
+  "phase": "v1.9",
+  "stage": "1 (calibration on frozen t1/t2; declared, not a test)",
+  "parity_gates_v0_41": {
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "P4": true
+  },
+  "presence_retest_t1_t2": 0.9695933242098346,
+  "presence_retest_n": 112,
+  "constants": {
+    "kappa": 6,
+    "C0": 50.0,
+    "floor_n": 6,
+    "K1": 0.5,
+    "K2": 0.95,
+    "K3_slack": 5.0,
+    "tie": 0.01
+  },
+  "candidates": [
+    {
+      "spec": "C_phi+FLOOR+ADD",
+      "consistency": "C_phi",
+      "low_count": "FLOOR",
+      "form": "ADD",
+      "t1": {
+        "K1": {
+          "rho": 0.07293925573105668,
+          "n": 55,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.971220479242514,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 2.314814814814806,
+          "dP": 2.314814814814806,
+          "pass": true,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.5089285714285714
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.08153268408519941,
+          "n": 54,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.9749692326190192,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 2.6681286549707615,
+          "dP": 2.6681286549707615,
+          "pass": true,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.5178571428571429
+      },
+      "retest_A": 0.9617399528524805,
+      "retest_A_n": 112,
+      "retest_C": 0.7357486264955685,
+      "retest_C_n": 53,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phi+FLOOR+MOD",
+      "consistency": "C_phi",
+      "low_count": "FLOOR",
+      "form": "MOD",
+      "t1": {
+        "K1": {
+          "rho": 0.07293925573105668,
+          "n": 55,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.9886359906148291,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 1.157407407407403,
+          "dP": 2.314814814814806,
+          "pass": true,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.5089285714285714
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.08153268408519941,
+          "n": 54,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.9915740229973076,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 1.3340643274853807,
+          "dP": 2.6681286549707615,
+          "pass": true,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.5178571428571429
+      },
+      "retest_A": 0.9709590762302865,
+      "retest_A_n": 112,
+      "retest_C": 0.7357486264955685,
+      "retest_C_n": 53,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phi+SHRINK+ADD",
+      "consistency": "C_phi",
+      "low_count": "SHRINK",
+      "form": "ADD",
+      "t1": {
+        "K1": {
+          "rho": 0.714575294890955,
+          "n": 84,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9503711636287958,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 14.16814741769723,
+          "dP": 2.314814814814806,
+          "pass": false,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.25
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.7731622914053013,
+          "n": 88,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9718455882441072,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 15.006996950827126,
+          "dP": 2.6681286549707615,
+          "pass": false,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.21428571428571427
+      },
+      "retest_A": 0.9607823624580109,
+      "retest_A_n": 112,
+      "retest_C": 0.882194739657584,
+      "retest_C_n": 83,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phi+SHRINK+MOD",
+      "consistency": "C_phi",
+      "low_count": "SHRINK",
+      "form": "MOD",
+      "t1": {
+        "K1": {
+          "rho": 0.714575294890955,
+          "n": 84,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9884416613999253,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 10.395269218798619,
+          "dP": 2.314814814814806,
+          "pass": false,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.25
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.7731622914053013,
+          "n": 88,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9931943778515543,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 10.446656732868584,
+          "dP": 2.6681286549707615,
+          "pass": false,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.21428571428571427
+      },
+      "retest_A": 0.9733328201901428,
+      "retest_A_n": 112,
+      "retest_C": 0.882194739657584,
+      "retest_C_n": 83,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phiJ+FLOOR+ADD",
+      "consistency": "C_phiJ",
+      "low_count": "FLOOR",
+      "form": "ADD",
+      "t1": {
+        "K1": {
+          "rho": 0.4555709849318898,
+          "n": 55,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.9774215272566347,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 2.314814814814806,
+          "dP": 2.314814814814806,
+          "pass": true,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.5089285714285714
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.5296591081244733,
+          "n": 54,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.977566530318183,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 2.6681286549707615,
+          "dP": 2.6681286549707615,
+          "pass": true,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.5178571428571429
+      },
+      "retest_A": 0.9675820601877408,
+      "retest_A_n": 112,
+      "retest_C": 0.8675010241154734,
+      "retest_C_n": 53,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phiJ+FLOOR+MOD",
+      "consistency": "C_phiJ",
+      "low_count": "FLOOR",
+      "form": "MOD",
+      "t1": {
+        "K1": {
+          "rho": 0.4555709849318898,
+          "n": 55,
+          "pass": true
+        },
+        "K2": {
+          "rho": 0.9921789844581111,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 1.157407407407403,
+          "dP": 2.314814814814806,
+          "pass": true,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.5089285714285714
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.5296591081244733,
+          "n": 54,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9971592856071578,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 1.3340643274853807,
+          "dP": 2.6681286549707615,
+          "pass": true,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.5178571428571429
+      },
+      "retest_A": 0.9703286832676257,
+      "retest_A_n": 112,
+      "retest_C": 0.8675010241154734,
+      "retest_C_n": 53,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phiJ+SHRINK+ADD",
+      "consistency": "C_phiJ",
+      "low_count": "SHRINK",
+      "form": "ADD",
+      "t1": {
+        "K1": {
+          "rho": 0.5243859743628217,
+          "n": 84,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9438954067854827,
+          "n": 112,
+          "pass": true
+        },
+        "K3": {
+          "dA": 13.93180287988211,
+          "dP": 2.314814814814806,
+          "pass": false,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.25
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.5006570178389583,
+          "n": 88,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9463072848074385,
+          "n": 112,
+          "pass": true
+        },
+        "K3": {
+          "dA": 14.291052678381302,
+          "dP": 2.6681286549707615,
+          "pass": false,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.21428571428571427
+      },
+      "retest_A": 0.9378814023232213,
+      "retest_A_n": 112,
+      "retest_C": 0.8076086228410586,
+      "retest_C_n": 83,
+      "passes_all": false
+    },
+    {
+      "spec": "C_phiJ+SHRINK+MOD",
+      "consistency": "C_phiJ",
+      "low_count": "SHRINK",
+      "form": "MOD",
+      "t1": {
+        "K1": {
+          "rho": 0.5243859743628217,
+          "n": 84,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9912974028038533,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 10.30773420479302,
+          "dP": 2.314814814814806,
+          "pass": false,
+          "n_low": 14,
+          "n_zero": 28
+        },
+        "share_C_not_rated": 0.25
+      },
+      "t2": {
+        "K1": {
+          "rho": 0.5006570178389583,
+          "n": 88,
+          "pass": false
+        },
+        "K2": {
+          "rho": 0.9950574650231788,
+          "n": 112,
+          "pass": false
+        },
+        "K3": {
+          "dA": 10.245991671522406,
+          "dP": 2.6681286549707615,
+          "pass": false,
+          "n_low": 19,
+          "n_zero": 24
+        },
+        "share_C_not_rated": 0.21428571428571427
+      },
+      "retest_A": 0.974331160866117,
+      "retest_A_n": 112,
+      "retest_C": 0.8076086228410586,
+      "retest_C_n": 83,
+      "passes_all": false
+    }
+  ],
+  "selected": null,
+  "selection_note": "no candidate passes K1-K3 at both waves: v1.9 locks 'no composite'"
+}

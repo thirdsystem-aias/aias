@@ -3,9 +3,10 @@ v1.9 - Two-Component AIAS Composite Calibration (Presence x Consistency)
 Pre-Registration Content Module
 AIAS(TM) Measurement Program - Third System(TM)
 
-DRAFT r1 (Nov 9, 2026) - NOT LOCKED. Target lock: with v0.40/v0.41 on Mon Nov 16, 2026
-(tag v1.9-prereg-r1, pushed, plus the OSF deposit of osf/methodology/v1_9/prereg/),
-BEFORE the first t3 call of v0.41, so the t2->t3 confirmation is blind.
+LOCKED r1 (Nov 9, 2026): tag v1.9-prereg-r1, pushed, plus the OSF deposit of
+osf/methodology/v1_9/prereg/, BEFORE the first t3 call of v0.41, so the t2->t3
+confirmation is blind. Stage 1 was run before the lock (STAGE1_RESULT); the Stage 2
+hypotheses were revised for its outcome before the lock.
 
 METHODOLOGY LOCK (no new acquisition). Two stages:
   Stage 1 - CALIBRATION on the frozen t1 (May 2026) and t2 (Jun 10, 2026) waves of the
@@ -136,31 +137,51 @@ statistics and the full 8-row table are written into this module (SELECTED, belo
 the lock commit.
 """
 
-SELECTED = "TBD - filled by the Stage 1 run before the lock (osf/methodology/v1_9/v1_9_calibration.json)"
+SELECTED = None   # Stage 1 outcome: NO COMPOSITE (see STAGE1_RESULT)
+SELECTED_CONSISTENCY = "C_phi+FLOOR"   # the locked Consistency score C* (see STAGE1_RESULT)
+
+STAGE1_RESULT = """
+Run 2026-11-09 ~06:30 UTC (score_v1_9.py --stage1; full table in
+osf/methodology/v1_9/prereg/v1_9_calibration.json). v0.41 parity gates P1-P4 passed first.
+No candidate passes K1-K3 at both waves, so under the selection rule v1.9 locks NO SINGLE
+COMPOSITE: AIAS 2.0 reports Presence and Consistency as two scores side by side.
+Pablo confirmed this outcome on Nov 9, 2026 (12:15 am CT) before the lock.
+
+- FLOOR variants pass K1 (|rho(C*, P)| 0.07-0.53) and K3 but fail K2: rho(A, P) =
+  0.971-0.997. Presence spans 0-100 while rated Consistency mostly sits at 60-100, so any
+  0-100 average ranks brands almost exactly as Presence does.
+- SHRINK variants fail K1 (C_phi+SHRINK: rho(C*, P) 0.715 / 0.773) and K3 (dA 10-14 vs
+  dP + 5 = 7.3): shrinking toward 50 by mention count ties Consistency to Presence.
+- Consistency score: C_phi+FLOOR is the only Consistency score that is both separable
+  from Presence (rho 0.073 at t1, 0.082 at t2) and more reliable than raw phi (retest
+  t1->t2 0.736 vs 0.533 unfloored). C_phiJ+FLOOR retests higher (0.868) but sits on the
+  K1 line (0.456 / 0.530): J tracks Presence. LOCKED: C* = C_phi, rated only for brands
+  with >= 6 total mentions; not rated otherwise.
+- Presence retest t1->t2: 0.970.
+"""
 
 # ===========================================================================
 # STAGE 2 - CONFIRMATION (t2 -> t3, v0.41; locked specification only)
 # Verdicts CONFIRMED / MARGINAL / FALSIFIED; UNDETERMINED if v0.41 halts or n floors fail.
 # ===========================================================================
-HYPOTHESES = [
-    {"tag": "H_Composite_Reliability", "tier": "PRIMARY",
-     "statement": "The locked two-component score keeps its brand order over ~5 months.",
-     "statistic": "rho(A_t2, A_t3), within-substrate ranks pooled, all units in both waves; "
-                  "one-sided stratified permutation (t3 permuted within substrate), 10,000 "
-                  "draws, seed 190019.",
-     "confirmed_iff": "rho >= 0.80 AND p_perm < .05 AND rho >= rho(P_t2, P_t3) - 0.05",
+HYPOTHESES = [   # revised for the Stage 1 outcome (no composite); the A-based test is dropped
+    {"tag": "H_Presence_Score_Reliability", "tier": "PRIMARY",
+     "statement": "The Presence score P keeps its brand order over ~5 months.",
+     "statistic": "rho(P_t2, P_t3), within-substrate ranks pooled, all units in both waves; "
+                  "one-sided stratified permutation (t3 ranks permuted within substrate), "
+                  "10,000 draws, seed 190019.",
+     "confirmed_iff": "rho >= 0.80 AND p_perm < .05",
      "falsified_iff": "rho < 0.60 OR p_perm >= .05",
-     "marginal": "otherwise (including rho >= 0.80 but more than 0.05 below Presence alone)",
-     "rationale": "Adding Consistency is worth it only if the composite stays nearly as "
-                  "reliable as Presence; the 0.05 margin is the cost the program accepts for "
-                  "a second dimension."},
+     "marginal": "otherwise",
+     "note": "P includes recognition C_P; v0.41 H_Presence_LongHorizon tests recall pi_hat "
+             "per substrate. Not double-counted: this tests the score AIAS 2.0 reports."},
     {"tag": "H_Dissociation_t3", "tier": "PRIMARY",
      "statement": "Consistency stays separable from Presence at t3.",
      "statistic": "|rho(C*_t3, P_t3)|, within-substrate ranks, units with C* rated.",
      "confirmed_iff": "|rho| <= 0.30",
      "falsified_iff": "|rho| >= 0.50",
      "marginal": "otherwise"},
-    {"tag": "H_Consistency_Reliability", "tier": "SECONDARY",
+    {"tag": "H_Consistency_Reliability", "tier": "PRIMARY",
      "statement": "The selected Consistency score C* is reliable beyond frame structure.",
      "statistic": "rho(C*_t2, C*_t3) (within-substrate ranks, rated in both) against the v0.41 "
                   "within-frame model-shuffle null applied to C* (10,000 draws, seed 190020).",
@@ -169,10 +190,12 @@ HYPOTHESES = [
      "marginal": "otherwise",
      "note": "Not double-counted with v0.41 H_Phi_LongHorizon: that tests raw phi; this tests "
              "the calibrated score that enters AIAS 2.0."},
-    {"tag": "H_NoWindfall_t3", "tier": "SECONDARY",
-     "statement": "The low-count rule still holds on new data.",
-     "statistic": "K3 recomputed at t3.",
-     "confirmed_iff": "K3 passes", "falsified_iff": "K3 fails", "marginal": "-- n/a --"},
+    {"tag": "H_NoComposite_t3", "tier": "SECONDARY (descriptive)",
+     "statement": "The Stage 1 outcome replicates: the best FLOOR composite still ranks brands "
+                  "almost exactly as Presence does.",
+     "statistic": "rho(A, P) at t3 for C_phi+FLOOR+ADD (within-substrate ranks).",
+     "confirmed_iff": "-- descriptive; reported against the K2 line 0.95 --",
+     "falsified_iff": "-- n/a --"},
 ]
 
 DESCRIPTIVES = [
@@ -184,10 +207,11 @@ DESCRIPTIVES = [
 ]
 
 PREDICTIONS = """
-Stage 1: lean C_phi + FLOOR or SHRINK + ADD; K3 is the binding constraint for ADD.
-H_Composite_Reliability: lean CONFIRMED on rho >= 0.80, at risk on the 0.05 margin
-(t1->t2: P 0.97 vs naive composite 0.91). H_Dissociation_t3: lean CONFIRMED (0.10 / -0.04
-so far). H_Consistency_Reliability: lean MARGINAL (frame structure, v0.41 S2).
+Written before Stage 1 (kept for the record): lean C_phi + FLOOR or SHRINK + ADD; that
+prediction failed on K2 (see STAGE1_RESULT).
+Stage 2: H_Presence_Score_Reliability lean CONFIRMED (0.97 over three weeks).
+H_Dissociation_t3 lean CONFIRMED (0.07 / 0.08 so far). H_Consistency_Reliability lean
+MARGINAL: five months is long, and part of phi's stability is frame structure (v0.41 S2).
 """
 
 LIMITATIONS = """
@@ -207,5 +231,5 @@ DEVIATIONS = [
      "anchor_preamble": "Stage 1 run and SELECTED filled -> content lock -> commit -> tag "
                         "v1.9-prereg-r1 -> push -> OSF deposit -> both remotes verified -> only "
                         "then the first v0.41 t3 call.",
-     "lock_state": "DRAFT (not locked)"},
+     "lock_state": "LOCKED r1 (2026-11-09)"},
 ]
