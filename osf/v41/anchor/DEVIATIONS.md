@@ -21,3 +21,9 @@
 **Handling:** the v0.23 runner (byte-locked) checkpoints but cannot resume, and editing it is not permitted. The 132 interrupted v0.23 answers are archived unchanged in `osf/v41/data/_interrupted_v23_2026-11-09/` and are NOT used. v0.23 is re-run in full (Phase A 144 + Phase B 36) with the locked runner, then v0.19, by the same chain (`run_t3_chain.sh v23 v19`), probe parity re-checked before each. The provenance sidecar keeps the interrupted calls' rows (their timestamps precede the restart). The t3 date is unchanged (2026-11-09).
 
 **Effect on inference:** none expected; the analysed v0.23 wave is one complete, uninterrupted run. Same-day re-asking of the same probes is noted as a limitation (the models were asked 132 of the v0.23 recognition questions twice on the same day; answers from the first, interrupted pass are not analysed).
+
+## Entry 3 — coding environment for v0.23 (recorded 2026-11-09T16:15:14Z, before scoring)
+
+**Type:** procedural; coding, not acquisition.
+
+The t3 collection finished at 15:36:40 UTC (chain log: v23 exit 0 at 15:31:04, v19 exit 0 at 15:36:40): 852 of 852 study calls returned (v0.20–v0.22 540, v0.23 180, v0.19 132). v0.19 parsing ran under the phase venv (~/aias/.venv-v41). The v0.23 coding script (`scripts/score_v0_23.py`, unchanged) imports numpy, which that venv lacks, so v0.23 coding (deterministic Phase B mention scan; Phase A recognition judge, alias `claude-sonnet-4-5`, as at t1 and t2) ran under the main venv (~/aias/venv: Python 3.14.4, anthropic 0.97.0, the same SDK version as the phase venv). Judge calls are logged in the provenance sidecar (phase A_judge). No coding rule, prompt or model changed.

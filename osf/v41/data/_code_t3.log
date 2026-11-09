@@ -1,0 +1,20 @@
+[v19] parse-phase-a ...
+Wrote 96 Phase A result rows to /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_a_results.csv
+[v19] parse-phase-b ...
+Wrote 576 Phase B result rows to /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_b_results.csv
+  (157 mentions across 576 brand × frame × model observations)
+[v19] coded -> /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_{a,b}_results.csv
+Traceback (most recent call last):
+  File "/Users/pablou/aias/_worktrees/v0.41/osf/v41/scripts/v41_code_t3.py", line 90, in <module>
+    code_v23()
+    ~~~~~~~~^^
+  File "/Users/pablou/aias/_worktrees/v0.41/osf/v41/scripts/v41_code_t3.py", line 51, in code_v23
+    m = _load(ROOT / "scripts/score_v0_23.py", "sc23")
+  File "/Users/pablou/aias/_worktrees/v0.41/osf/v41/scripts/v41_code_t3.py", line 34, in _load
+    spec.loader.exec_module(m)
+    ~~~~~~~~~~~~~~~~~~~~~~~^^^
+  File "<frozen importlib._bootstrap_external>", line 759, in exec_module
+  File "<frozen importlib._bootstrap>", line 491, in _call_with_frames_removed
+  File "/Users/pablou/aias/_worktrees/v0.41/scripts/score_v0_23.py", line 39, in <module>
+    import numpy as np
+ModuleNotFoundError: No module named 'numpy'
