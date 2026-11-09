@@ -17,7 +17,8 @@ from pathlib import Path
 # ---------------------------------------------------------------------------
 # Paths
 # ---------------------------------------------------------------------------
-PIPELINE_ROOT = Path("/Users/pablou/aias")
+import os
+PIPELINE_ROOT = Path(os.environ.get("AIAS_ROOT", "/Users/pablou/aias"))
 PAPER_DIR = PIPELINE_ROOT / "papers" / "v0_41"
 SOURCE_MD = PAPER_DIR / "v0_41_ssrn_paper_draft.md"
 OUTPUT_PDF = PAPER_DIR / "v0_41_ssrn_paper.pdf"
@@ -60,6 +61,9 @@ UNICODE_SUBS = [
     ("₂", r"$_{2}$"),
     ("₃", r"$_{3}$"),
     ("ₜ", r"$_{t}$"),
+    ("φ", r"$\varphi$"),
+    ("π̂", r"$\hat\pi$"),
+    ("⁻", "-"),
 ]
 
 
