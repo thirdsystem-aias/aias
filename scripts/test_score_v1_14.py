@@ -369,6 +369,13 @@ class Refusals(unittest.TestCase):
         finally:
             S.PREREG_TAG = keep
 
+    def test_write_anchor_refuses_to_overwrite(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "git_anchor_v1_14.json"
+            p.write_text("{}")
+            with self.assertRaises(S.Halt):
+                S.write_anchor("", anchor=p)
+
     def test_anchor_path_is_in_v1_14_anchor_folder(self):
         self.assertEqual(S.ANCHOR_FILE.parent, S.ROOT / S.V114 / "anchor")
 

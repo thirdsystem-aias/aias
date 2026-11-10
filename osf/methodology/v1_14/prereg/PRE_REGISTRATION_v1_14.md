@@ -206,7 +206,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## 13. Files
 
-`prereg/PRE_REGISTRATION_v1_14.md` (this file); `prereg/LOCK_MANIFEST_v1_14.sha256`; `calibration/calibration_v1_14.json` and its run log; `anchor/DEVIATIONS.md`; `README.md`; `scripts/score_v1_14.py` and `scripts/test_score_v1_14.py` (31 tests: synthetic t4-shaped data for Stage 1 and Stage 2, and the exact reproduction of v1.10's S3 for MODE); `scripts/score_v1_10.py` (imported unchanged) with v1.10's input manifest, the five omnibus registry files, v1.10's verdicts file (which pins its rank tables), its COI flag file and the profiles table, all listed in the lock manifest.
+`prereg/PRE_REGISTRATION_v1_14.md` (this file); `prereg/LOCK_MANIFEST_v1_14.sha256`; `calibration/calibration_v1_14.json` and its run log; `anchor/DEVIATIONS.md`; `README.md`; `scripts/score_v1_14.py` and `scripts/test_score_v1_14.py` (32 tests: synthetic t4-shaped data for Stage 1 and Stage 2, and the exact reproduction of v1.10's S3 for MODE); `scripts/score_v1_10.py` (imported unchanged) with v1.10's input manifest, the five omnibus registry files, v1.10's verdicts file (which pins its rank tables), its COI flag file and the profiles table, all listed in the lock manifest.
 
 ## 14. Choices made in drafting (for the pre-registrant)
 

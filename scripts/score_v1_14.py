@@ -1110,6 +1110,57 @@ def lock_status(anchor: Path = ANCHOR_FILE) -> tuple[bool, list[str]]:
     return (not why), why
 
 
+COMPONENT_TAGS = {"Coverage": "v1.12-prereg-r", "Grounding": "v1.13-prereg-r", "Sentiment": "v1.11-prereg-r"}
+
+
+def _git(*args) -> str:
+    r = subprocess.run(["git", "-C", str(ROOT), *args], capture_output=True, text=True)
+    if r.returncode != 0:
+        raise Halt(f"git {' '.join(args)} failed: {r.stderr.strip()[:200]}")
+    return r.stdout.strip()
+
+
+def write_anchor(osf_note: str = "", anchor: Path = ANCHOR_FILE) -> dict:
+    """Section 0 / 5.4: written right after the tag is pushed and before Stage 1. Records the tag object,
+    commit, tree, remote ref, the SHA-256 and git blob of every locked file, and the activation of the
+    component legs (a leg is active iff that component's pre-registration tag is on origin now, i.e. before
+    the v1.14 lock commit was anchored, and its score is defined on the N3 panel at t4; the Sentiment
+    leg is inactive: v1.11's locked score is defined on the archived waves only)."""
+    if anchor.exists():
+        raise Halt(f"anchor already written: {anchor}")
+    bad = verify_lock_manifest()
+    if bad:
+        raise Halt("lock manifest does not verify: " + "; ".join(bad))
+    remote = _git("ls-remote", "--tags", "origin", PREREG_TAG)
+    if f"refs/tags/{PREREG_TAG}" not in remote:
+        raise Halt(f"tag {PREREG_TAG} is not on origin")
+    commit = _git("rev-parse", f"{PREREG_TAG}^{{commit}}")
+    if _git("rev-parse", "HEAD") != commit:
+        raise Halt("HEAD is not the tagged commit")
+    remote_tags = _git("ls-remote", "--tags", "origin")
+    act = {}
+    for name, prefix in COMPONENT_TAGS.items():
+        tags = sorted({ln.split("refs/tags/")[1].removesuffix("^{}") for ln in remote_tags.splitlines()
+                       if f"refs/tags/{prefix}" in ln})
+        defined_on_t4 = name != "Sentiment"
+        act[name] = {"tags_on_origin": tags, "latest": tags[-1] if tags else None,
+                     "commit": _git("rev-parse", f"{tags[-1]}^{{commit}}") if tags else None,
+                     "score_defined_on_N3_at_t4": defined_on_t4, "active": bool(tags) and defined_on_t4}
+    files = {}
+    for line in LOCK_MANIFEST.read_text().splitlines():
+        h, f = line.split("  ", 1)
+        files[f] = {"sha256": h, "git_blob": git_blob_bytes((ROOT / f).read_bytes())}
+    doc = {"tag": PREREG_TAG, "tag_object": _git("rev-parse", PREREG_TAG), "commit": commit,
+           "tree": _git("rev-parse", f"{commit}^{{tree}}"), "branch": "v1.14",
+           "tagger_date": _git("for-each-ref", f"refs/tags/{PREREG_TAG}", "--format=%(taggerdate:iso-strict)"),
+           "remote_tag_ref": remote.splitlines()[0], "recorded_utc": _now(),
+           "repository": "https://github.com/thirdsystem-aias/aias", "osf_deposit": osf_note,
+           "lock_manifest_sha256": sha256_bytes(LOCK_MANIFEST.read_bytes()), "locked_files": files,
+           "activation": act}
+    _write_json(anchor, doc)
+    return doc
+
+
 def read_components(specs) -> dict:
     """--component NAME=path.csv (columns substrate, brand, value): a component's locked score per unit."""
     out = {}
@@ -1268,8 +1319,14 @@ def main(argv=None):
     ap.add_argument("--v042-scored-ref")
     ap.add_argument("--t5-ref"), ap.add_argument("--t5-raw"), ap.add_argument("--t5-probes")
     ap.add_argument("--component", action="append", help="NAME=path.csv (substrate, brand, value)")
+    ap.add_argument("--write-anchor", action="store_true", help="after the tag is pushed: anchor/git_anchor_v1_14.json")
+    ap.add_argument("--osf-note", default="", help="OSF deposit location, recorded in the anchor")
     a = ap.parse_args(argv)
     try:
+        if a.write_anchor:
+            d = write_anchor(a.osf_note)
+            print(json.dumps({k: d[k] for k in ("tag", "tag_object", "commit", "tree", "activation")}, indent=1))
+            return 0
         if a.calibration:
             run_calibration()
             return 0
