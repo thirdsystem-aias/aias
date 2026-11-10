@@ -1,10 +1,10 @@
-# AIAS™ v0.40 brand registry, draft r1
+# AIAS™ v0.40 brand registry, draft r2
 
 **Study.** Leaders, challengers and ghosts. Two US categories reshaped by mergers and failures.
 
-**Status.** Decisions adopted, not frozen. Pablo adopted every recommendation in section 6 on 2026-11-08. The freeze date goes in at lock: tag `v0.40-prereg-r1`, OSF deposit ec6wh → `v40/prereg/`, before any study probe.
+**Status.** Decisions adopted, not frozen; the D4 exclusion criterion is open (section 6). Pablo adopted every recommendation in section 6 on 2026-11-08. The freeze date goes in at lock: tag `v0.40-prereg-r1`, OSF deposit ec6wh → `v40/prereg/`, before any study probe.
 
-**Built.** 2026-11-08 with `osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-08 --status-check`, which also assembles this draft. The builder computes every share, floor test, window test and gap below. Only dates and their sources are entered by hand (`registries/exit_events.csv`, `registries/model_cutoffs.csv`), each with a URL and a source type.
+**Built.** 2026-11-08 (r1) and 2026-11-09 (r2, sources only) with `osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-08 --status-check`, which also assembles this draft. The builder computes every share, floor test, window test and gap below. Only dates and their sources are entered by hand (`registries/exit_events.csv`, `registries/model_cutoffs.csv`), each with a URL and a source type.
 
 ## 1. What the registry holds
 
@@ -48,6 +48,14 @@
 
 ## 5. Changes
 
+**r2, 2026-11-09**
+
+1. **Primary sources for four D17 dates; no date moved.** The US Airways cutover (American Airlines Group's third-quarter 2015 release, 8-K Exhibit 99.1: "On Oct. 17, the Company completed its transition to a single reservations system"), ING Direct's rebrand (Capital One 2012 Annual Report: Capital One 360 launched on February 1, 2013), Spirit's cessation (Spirit Aviation Holdings release of 2026-05-02, 8-K Exhibit 99.1) and the Northwest certificate (Delta FY2009 10-K: NWA merged into Delta on 2009-12-31; Delta's 2009 results release: certificate received at year end).
+2. **Month now primary, day still secondary** for LaSalle (Bank of America's first-quarter 2008 release: LaSalle converts to the Bank of America brand in May), Washington Mutual (JPMorgan 8-K deck: the October wave covers California, Arizona, Nevada and Colorado) and Truist (FY2021 10-K, accepted 2022-02-22: final core bank conversion completed in February 2022).
+3. **Context source upgraded.** Spirit's second Chapter 11 petition (2025-08-29) is now cited from Spirit's own 8-K instead of a third-party copy.
+4. **D4 checked against each holder's own filing.** Only Schwab's shows most of its deposits swept from brokerage accounts (section 6, D4). The criterion is open.
+5. **Rebuilt.** Every share, floor test, window test and gap is unchanged; only source text changed.
+
 **r1, 2026-11-08**
 
 1. **Decisions adopted.** Pablo adopted every recommendation in section 6 (D1 to D19). No share, floor, window or gap changes.
@@ -76,7 +84,7 @@ Each item gives the issue, what the data shows and the decision. Pablo adopted e
 - **D1 Airline share basis.** Allocated brand share (regional flying credited to the brand that sells it) puts American first: 21.11% against Delta's 19.80%. Operating-carrier share puts Delta first: 17.90% against American's 17.74%. *Adopted:* allocated share as primary, operating share as a pre-registered sensitivity. Name American as the leader for H_Amplify, and Delta in the sensitivity.
 - **D2 Airline share units.** Hawaiian inside Alaska is forced by the data. Sun Country still reports on its own, although Allegiant has owned it since 2026-05-13. *Adopted:* Sun Country separate in the primary analysis and inside Allegiant as a sensitivity (Allegiant 2.12% → 2.67%). A retained brand's mentions count toward its share unit.
 - **D3 North Fork enters by its brand date only** (legal 2007-08-01, brand 2008-03-10). *Adopted:* keep; it drops out in the legal-date sensitivity.
-- **D4 Brokerage-sweep holders.** Morgan Stanley (2.52%), Goldman Sachs (2.48%), Charles Schwab (1.36%) and UBS (0.57%) enter by the deposit rule, hold their deposits in one to five offices and are seldom named as retail banks. Their AI share will sit far below their deposit share and pull the log-log slope down. *Adopted:* keep them by rule and pre-register the slope with and without these four. *Open before lock:* a citation for each of the four for the exclusion criterion (deposits held as brokerage sweep deposits).
+- **D4 Brokerage-sweep holders.** Morgan Stanley (2.52%), Goldman Sachs (2.48%), Charles Schwab (1.36%) and UBS (0.57%) enter by the deposit rule, hold their deposits in one to five offices and are seldom named as retail banks. Their AI share will sit far below their deposit share and pull the log-log slope down. *Adopted:* keep them by rule and pre-register the slope with and without these four. *Checked 2026-11-09 against each holder's own filing:* Charles Schwab, 90.9% of bank deposits swept from brokerage accounts ($232.4bn of $255.7bn; FY2025 10-K, note 12). Morgan Stanley, 35.0% brokerage sweep deposits ($145.2bn of $415.5bn), with time deposits (mostly brokered CDs) at 24.0%; its FY2025 10-K says deposits are primarily sourced from Wealth Management clients. UBS, sweep deposits of USD 41.5bn at 2025-12-31 (all in USD; UBS first-quarter 2026 report) against $104.6bn of deposits at UBS Bank USA (FDIC): at most 39.7%. Goldman Sachs, deposit sweep programs 6.9% ($34.4bn of $501.4bn; FY2025 10-K), while consumer deposits (Marcus and Apple Card) are 41.5%; at GS Bank USA on 2026-06-30, sweep is 8% and consumer 39% of $500bn. The criterion as worded holds for Schwab only. The office count does not separate the four either: American Express (0.90%) and Ally (0.82%) also hold their deposits in one office. *Open before lock:* Pablo chooses the criterion and the set.
 - **D5 Multi-charter shares (R6).** Changes three shares (section 5, item 3) and no floor decision. *Adopted:* adopt.
 - **D6 Silicon Valley Bank.** Every model cutoff falls between SVB's legal exit (2023-03-10) and its brand exit (2026-10-06). SVB therefore changes sign between the primary and legal-date analyses for all nine models: brand gaps run from −36.2 to −3.2 months, legal gaps from +6.7 to +39.7. *Adopted:* keep SVB as a ghost and analyse it with Spirit as a post-cutoff exit in the primary run; the legal-date sensitivity treats it as a pre-cutoff failure. Note that this leaves Discover as the only living-brand control for banks.
 - **D7 BBVA Compass chain.** Compass Bank became BBVA USA on 2019-06-10, and BBVA USA merged into PNC on 2021-10-08 (0.477% at its last SOD, below the floor). The brand rollout began 2019-06-10; its completion date was not found. *Adopted:* one ghost, BBVA Compass, with BBVA USA and Compass Bank as aliases. The correct status answer today is PNC.
@@ -89,7 +97,7 @@ Each item gives the issue, what the data shows and the decision. Pablo adopted e
 - **D14 Brand date** is the issuer-named cutover, or the final operation when none is named. One-day choices fall below the month resolution of the cutoffs. *Adopted:* adopt.
 - **D15 Sun Country as a living control.** *Adopted:* add it. Closed in r1: Allegiant's release of 2026-05-13 confirms the close and says both airlines keep their brands for now.
 - **D16 Near-floor holders.** USAA (0.483%), RBC (0.473%), Synchrony (0.451%), Western Alliance (0.432%), Santander (0.415%) and Zions (0.402%) fall below the floor. *Adopted:* keep the floor and code their mentions as "other". USAA will be named often; say so in the paper.
-- **D17 Secondary-only dates.** LaSalle (2008-05-05), the US Airways cutover (2015-10-17), ING Direct (2013-02-01), Spirit's cessation (statement quoted by the press), the Northwest certificate (2009-12-31), and the day (not the month) of the final Washington Mutual and Truist conversions. None of them changes a window or floor decision. *Adopted:* upgrade any for which a primary turns up; otherwise lock with the source type shown. *Open before lock:* the search for primaries.
+- **D17 Secondary-only dates.** LaSalle (2008-05-05), the US Airways cutover (2015-10-17), ING Direct (2013-02-01), Spirit's cessation (statement quoted by the press), the Northwest certificate (2009-12-31), and the day (not the month) of the final Washington Mutual and Truist conversions. None of them changes a window or floor decision. *Adopted:* upgrade any for which a primary turns up; otherwise lock with the source type shown. *Done 2026-11-09 (r2):* primaries for the US Airways cutover, ING Direct, Spirit and the Northwest certificate; for LaSalle, Washington Mutual and Truist the month is now primary and the day stays secondary. No date moved.
 - **D18 Model lifecycle.** Opus 4.5 retires not sooner than 2026-11-24, and Sonnet 4.5 retires on 2026-11-30. GPT-4o and GPT-4o mini shut down on 2027-01-14 (OpenAI deprecations page, notice of 2026-10-14, re-confirmed in r1); the page names dated snapshots only, so every call logs the snapshot it returns. Gemini 2.5 Flash and Flash-Lite are not deprecated on the Gemini API, but access is limited to prior users; Vertex AI's October 2026 retirement does not apply if the run stays on the Developer API with the v0.39 project. *Adopted:* keep the legacy arm finishing before 2026-11-24, with Gemini on the Developer API and the v0.39 project. Closed in r1.
 - **D19 Probe budget.** SVB (ghost) and Sun Country (control) add four probes if controls receive the recognition and status pair. That is about 150 calls (about 37 per probe), taking the study to roughly 90 probes and 3,350 calls. *Adopted:* accept.
 
@@ -97,7 +105,7 @@ Each item gives the issue, what the data shows and the decision. Pablo adopted e
 
 1. Pablo's calls on D1 to D19: done on 2026-11-08, every recommendation adopted.
 2. Done on 2026-11-08: v0.40 scaffolded, cloned v0.39 content removed, registry placed in `osf/v40/`.
-3. Upgrade secondary dates where a primary turns up (D17), and cite the brokerage-sweep criterion (D4). D15 and D18 closed in r1.
+3. D17 done in r2. D4: Pablo chooses the exclusion criterion, since only Schwab's filing shows most deposits swept from brokerage accounts. D15 and D18 closed in r1.
 4. Set the freeze date, re-run `build --freeze <date> --status-check`, and commit inputs, outputs and the manifest.
 5. Tag `v0.40-prereg-r1` and deposit to OSF (ec6wh → `v40/prereg/`).
 6. Finish the legacy arm before 2026-11-24 (Opus 4.5's earliest retirement; Sonnet 4.5 retires 2026-11-30).
