@@ -1,0 +1,21 @@
+AIAS v1.13 Part II -- audit_v1_13.py --dry-run (synthetic fixtures; nothing fetched)
+run (real clock, UTC): 2026-11-10T15:13:41+00:00; Python 3.14.4; audit_v1_13.py SHA-256 585359ca5c6dc0c04638e78f929d27cf2a4ccebdff129d96d6aefa760bb4a17e; fixtures/audit/manifest.json SHA-256 9f9a06d6049d744dcdb3e408198fb30c6b7af77a17a0e982896f5c55887f8b28
+User-Agent: AIAS research crawler; https://thirdsystem.ai
+fixture units: 7; simulated requests: 43 (retries 3); socket/DNS attempts blocked: 0
+minimum gap between requests to one site host: 10.0 s (rule >= 10.0); to the Wikidata API: 1.0 s (rule >= 1.0); between any two requests: 1.0 s (rule >= 1.0)
+simulated duration: 363 s; raw HTML files written (temporary, deleted): 8
+
+unit | P1 outcome | P2 | P3 | robots decisions | i1..i8 | SDRI / site / kg | qid
+v19|FX1 Fixture Audio | ok | ok | ok | - | [1, 1, 1, 1, 1, 1, 1, 1] | 100.0 / 100.0 / 100.0 | Q00001 (chosen)
+v20|FX2 Fixture Skin | ok | robots_disallowed | ok | robots_disallowed | [1, 1, 1, 1, 1, 1, 0, 1] | 87.5 / 100.0 / 66.66666666666667 | Q00003 (chosen)
+v21|FX3 Fixture Glow | robots_unavailable | None | None | robots_unavailable | [None, None, None, None, None, 0, 0, 0] | None / None / 0.0 | None (none)
+v22|FX4 Fixture Motors | blocked | None | None | - | [None, None, None, None, None, 1, 0, 1] | None / None / 66.66666666666667 | Q00004 (tie, adjudicated)
+v22|FX5 Fixture Phantom | None | None | None | - | [None, None, None, None, None, 1, 0, 1] | None / None / 66.66666666666667 | Q00006 (chosen)
+v23|FX6 Fixture Spirits | ok | ok | ok | - | [0, 0, 1, 0, 0, 0, 0, 0] | 12.5 / 20.0 / 0.0 | None (none)
+v20|FX7 Fixture Loop | too_many_redirects | None | None | - | [None, None, None, None, None, None, None, None] | None / None / None | None (error)
+
+check: no network attempt: PASS
+check: host gap >= 10 s: PASS
+check: global gap >= 1 s: PASS
+check: all requests from fixtures: PASS
+check: indicators as the fixtures expect: PASS

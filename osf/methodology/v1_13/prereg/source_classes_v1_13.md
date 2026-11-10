@@ -1,6 +1,6 @@
-# AIAS v1.13 — Source classification rule (DRAFT r1, 2026-11-10; frozen at the Part I lock)
+# AIAS v1.13 — Source classification rule (DRAFT r1, sent to Pablo for the 24-hour review, 2026-11-10; frozen at the Part I lock)
 
-Applies to every cited or retrieved URL in a t4 S1 record [RE-ANALYSIS: t4]. Written before any t4 answer exists and before v0.42's own S1 domain descriptives are computed. The fenced `classes:` blocks below are the **machine copy**: `score_v1_13.py` reads them from this file, so the anchored SHA-256 of this file pins the rule. No domain is added, moved or removed after the first t4 S1 record is read; later additions run only as a labelled exploratory sensitivity.
+Applies to every retrieved URL (`search.sources`, the primary field) and every cited URL (`search.citations`, sensitivity S2) in a t4 S1 record [RE-ANALYSIS: t4]. Written before any t4 answer exists and before v0.42's own S1 domain descriptives are computed; no search-on answer was read to write it (the declared v0.39 pilot was dropped before it was run). The fenced `classes:` blocks below are the **machine copy**: `score_v1_13.py` reads them from this file, so the anchored SHA-256 of this file pins the rule. No domain is added, moved or removed after the first t4 S1 record is read; later additions run only as a labelled exploratory sensitivity.
 
 ## 1. URL normalisation (U1–U6)
 
@@ -13,7 +13,7 @@ Applies to every cited or retrieved URL in a t4 S1 record [RE-ANALYSIS: t4]. Wri
 
 ## 2. Class precedence (first match wins)
 
-1. **brand_owned**: registrable domain ∈ D_b for any brand b of the answer's substrate (`registries/brand_domains_v1_13.csv`). For a brand's own-domain share, only that brand's D_b counts. A brand page on a third-party platform (e.g. a social profile, a marketplace storefront) is **not** brand-owned.
+1. **brand_owned**: registrable domain ∈ D_b for any brand b of the answer's substrate (`registries/brand_domains_v1_13.csv`, rows with status RESOLVED: domain and aliases). For a brand's own-domain share, only that brand's D_b counts. A brand page on a third-party platform (e.g. a social profile, a marketplace storefront) is **not** brand-owned.
 2. **reference**: `classes:reference` domains, any `*.wikipedia.org`, and the TLD rule: registrable domain ending `.gov`, `.edu`, `.gov.uk`, `.ac.uk`, `.mil`.
 3. **forum_ugc**: `classes:forum_ugc` (forums, Q&A, social, video, user-review platforms).
 4. **news**: `classes:news`.
@@ -63,4 +63,4 @@ amazon.com amazon.co.uk amazon.ca walmart.com target.com bestbuy.com crutchfield
 
 - Overlaps are resolved by precedence (§2): e.g. `bloomberg.com` is news, `crutchfield.com/learn` is review_editorial by path override only if listed in `path_overrides` (it is listed under review_editorial as a host+path entry and is treated as a path override by the scorer; plain `crutchfield.com` is retailer).
 - Entries containing `/` in any list are host+path prefixes and are checked before plain domains (§2, item 5).
-- TODO before lock: the runner may add domains to these lists from the v0.39 pilot (Stage P) and from category knowledge; every addition before the lock is logged in the change log of the pre-registration. None after.
+- Before the lock the runner may add domains to these lists from category knowledge only (no search-on answer is read; the v0.39 pilot was dropped); every addition is logged in the change log of the pre-registration. None after the first t4 S1 record is read. None was added between the draft and sending (2026-11-10).

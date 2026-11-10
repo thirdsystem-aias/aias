@@ -1,0 +1,14 @@
+<!doctype html>
+<!-- SYNTHETIC FIXTURE for audit_v1_13.py --dry-run. One broken JSON-LD block; a Product node carrying sameAs
+     (not an Organization or Brand node, so it does not count); no Organization on the home page. -->
+<html lang="en"><head><meta charset="utf-8"><title>Fixture Spirits</title>
+<script type="application/ld+json">{ "@type": "Organization", broken </script>
+<script type="application/ld+json">
+{"@context": "https://schema.org", "@type": "Product", "name": "Rye",
+ "sameAs": ["https://www.wikidata.org/wiki/Q00099"]}
+</script></head>
+<body>
+<a href="/our-story">Our story</a>
+<a href="/spirits/rye">Rye</a>
+<a href="/cart">Cart</a>
+</body></html>
