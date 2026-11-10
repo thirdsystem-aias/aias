@@ -116,6 +116,23 @@ class TestStability(Base):
         with self.assertRaises(SC.Halt):
             SC.score(self.t4, self.t5_same, CFG, extras={"t4_brand_table": d / "bad.csv"})
 
+    def test_descriptives_and_served_change(self):
+        out, _ = SC.score(self.t4, self.t5_same, CFG)
+        d = out["descriptives"]
+        self.assertIn(f"t5|{GPT}|S0|B", d["answer_form"])
+        self.assertGreater(d["answer_form"][f"t5|{GPT}|S0|B"]["registry_brands_named_per_answer"], 0)
+        self.assertEqual(d["answer_form"][f"t5|{GPT}|S0|A"]["phase_a_non_answers"], 0)
+        self.assertEqual(d["cited_domains"][FAB]["jaccard"], 1.0)
+        self.assertTrue(all(np.isfinite(v["rho_star"]) for v in d["disattenuated_rho_S0"].values()))
+        self.assertFalse(any(v["flag_changed"] for v in out["manipulation_checks_t5"]["MC_Served_change"].values()))
+        b = self.base
+        t5_snap = MS.wave(lambda m, c, r: MS.noisy(b[m], m, c, r, 5), self.tmp / "t5snap", "t5", T5_T0,
+                          served=lambda s: s["model"] + "-2026-12-01" if s["model"] == GPT else s["model"])
+        out2, _ = SC.score(self.t4, t5_snap, CFG)
+        self.assertTrue(out2["manipulation_checks_t5"]["MC_Served_change"][GPT]["flag_changed"])
+        self.assertEqual(out2["manipulation_checks_t5"]["MC_Served"]["n_mismatched"], 0)   # dated snapshot accepted
+        self.assertEqual(out2["verdicts"]["H_Stab_Presence"]["panel"], "N3")
+
     def test_mc_gap(self):
         out, _ = SC.score(self.t4, self.t5_same, CFG)
         g = out["manipulation_checks_t5"]["MC_Gap"]

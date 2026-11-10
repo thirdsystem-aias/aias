@@ -75,6 +75,7 @@ class Wave:
         self.excl = S.excluded_set(self.mcs["MC_Complete"])
         self.D = S.Data(brands, A, B, excluded=self.served_excl)
         self.A = [r for r in A if r["call_id"] not in self.served_excl]
+        self.B = [r for r in B if r["call_id"] not in self.served_excl]
 
 
 def brands_list():
@@ -310,6 +311,16 @@ def mc_gap(w4, w5):
             "pass": GAP_DAYS[0] <= d <= GAP_DAYS[1], "rule": f"{GAP_DAYS[0]}-{GAP_DAYS[1]} days, else flagged"}
 
 
+def served_change(w4, w5):
+    """MC_Served (addition): per model, the served IDs seen at each wave; flagged if t5's differ from t4's."""
+    out = {}
+    for m in MODELS:
+        s4 = sorted({str(r.get("served_model")) for r in w4.calls if r["model_requested"] == m and C.is_answered(r)})
+        s5 = sorted({str(r.get("served_model")) for r in w5.calls if r["model_requested"] == m and C.is_answered(r)})
+        out[m] = {"t4": s4, "t5": s5, "flag_changed": s4 != s5}
+    return out
+
+
 def mc_probe_parity(w5, probes_path=K.PROBES_PATH):
     """t5 prompts equal the t4 probe file byte for byte (v1.14 section 6); halts otherwise."""
     t4 = C.load_probe_map(ROOT / "osf/v42/prereg/probes_v0_42.jsonl")
@@ -376,7 +387,73 @@ def descriptives(w4, w5):
                 search[f"{wn}|{m}"] = {"calls": len(rs), "searches_per_call": statistics.mean(S._search_n(r) for r in rs),
                                        "sources_per_call": statistics.mean(len((r.get("search") or {}).get("sources") or []) for r in rs)}
     cost = {wn: round(sum(BG.record_cost(r) for r in w.raw), 4) for wn, w in (("t4", w4), ("t5", w5))}
-    return {"run_to_run_reliability": rel, "floor_persistence": floor, "search": search, "cost_usd_recorded": cost}
+    return {"run_to_run_reliability": rel, "floor_persistence": floor, "search": search, "cost_usd_recorded": cost,
+            "answer_form": answer_form(w4, w5), "cited_domains": cited_domain_overlap(w4, w5)}
+
+
+REFUSAL_REASONS = ("refusal", "safety", "content_filter")
+
+
+def answer_form(w4, w5):
+    """Descriptive 4: words per answer, registry brands named per Phase B answer, finish reasons, refusals and
+    Phase A non-answers (v0.19-v0.22 answers the yes/no parser cannot code), per wave x model x condition x phase."""
+    out = {}
+    for wn, w in (("t4", w4), ("t5", w5)):
+        named = collections.Counter()
+        for r in w.B:
+            named[r["call_id"]] += int(r["mentioned"])
+        labels = {r["call_id"]: r.get("label") for r in w.A}
+        for m in MODELS:
+            for c in ("S0", "S1"):
+                for ph in ("A", "B"):
+                    rs = [r for r in w.calls if r["model_requested"] == m and r["condition"] == c and r["phase"] == ph
+                          and C.is_answered(r) and r["call_id"] not in w.served_excl]
+                    if not rs:
+                        continue
+                    fr = collections.Counter(str(r.get("finish_reason")) for r in rs)
+                    d = {"answers": len(rs), "words_per_answer": statistics.mean(len((r.get("text") or "").split()) for r in rs),
+                         "finish_reasons": dict(fr),
+                         "refusals": sum(n for k, n in fr.items() if any(x in k.lower() for x in REFUSAL_REASONS))}
+                    if ph == "B":
+                        d["registry_brands_named_per_answer"] = statistics.mean(named.get(r["call_id"], 0) for r in rs)
+                    else:
+                        yn = [labels.get(r["call_id"]) for r in rs if r["substrate"] != "v23"]
+                        d["phase_a_non_answers"] = sum(1 for x in yn if x not in ("yes", "no"))
+                    out[f"{wn}|{m}|{c}|{ph}"] = d
+    return out
+
+
+def cited_domain_overlap(w4, w5, top=20):
+    """Descriptive 5: Jaccard overlap of the `top` most-cited domains (S1 citations) per model, t4 vs t5."""
+    tops = {}
+    for wn, w in (("t4", w4), ("t5", w5)):
+        for m in MODELS:
+            cnt = collections.Counter()
+            for r in w.calls:
+                if r["model_requested"] == m and r["condition"] == "S1" and C.is_answered(r):
+                    for cit in ((r.get("search") or {}).get("citations") or []):
+                        d = S._domain(cit.get("url") or "")
+                        if d:
+                            cnt[d] += 1
+            tops[(wn, m)] = [d for d, _ in cnt.most_common(top)]
+    out = {}
+    for m in MODELS:
+        a, b = set(tops[("t4", m)]), set(tops[("t5", m)])
+        out[m] = {"t4_top": tops[("t4", m)], "t5_top": tops[("t5", m)],
+                  "jaccard": (len(a & b) / len(a | b)) if (a | b) else None}
+    return out
+
+
+def disattenuated(h_presence, desc):
+    """Descriptive 1 (second half): rho*_m = rho_m / sqrt(rel3_t4 * rel3_t5), S0, per model."""
+    out = {}
+    for m, v in (h_presence.get("per_model") or {}).items():
+        r4 = desc["run_to_run_reliability"].get(f"t4|{m}|S0", {}).get("rel3", NAN)
+        r5 = desc["run_to_run_reliability"].get(f"t5|{m}|S0", {}).get("rel3", NAN)
+        ok = np.isfinite(r4) and np.isfinite(r5) and r4 > 0 and r5 > 0
+        out[m] = {"rho": v["rho"], "rel3_t4": r4, "rel3_t5": r5,
+                  "rho_star": v["rho"] / float(np.sqrt(r4 * r5)) if ok else NAN}
+    return out
 
 
 # =========================================================================== orchestration
@@ -418,6 +495,8 @@ def score(t4, t5, cfg, extras=None, enforce=True):
            "seeds": SEEDS, "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
            "models_excluded": {"t4": sorted(f"{m}|{c}" for m, c in w4.excl), "t5": sorted(f"{m}|{c}" for m, c in w5.excl)},
            "manipulation_checks_t5": mcs, "verdicts": hyps, "parts": parts, "descriptives": descriptives(w4, w5)}
+    out["descriptives"]["disattenuated_rho_S0"] = disattenuated(hyps["H_Stab_Presence"], out["descriptives"])
+    out["manipulation_checks_t5"]["MC_Served_change"] = served_change(w4, w5)
     rows = []
     pis = {f"pi_{w.name}_{c}": S.pi_hat(w.D, common_models(w4, w5, c) or MODELS, c) for w in (w4, w5) for c in ("S0", "S1")}
     phis = {f"phi_{w.name}_S0": S.phi_panel(w.D, MODELS, "S0") for w in (w4, w5)}
