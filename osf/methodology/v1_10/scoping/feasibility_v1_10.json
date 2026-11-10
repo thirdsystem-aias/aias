@@ -1,0 +1,66 @@
+{
+  "phase": "v1.10",
+  "kind": "declared parsing feasibility (development sample only)",
+  "excluded_from_confirmatory": [
+    "v0.17 phase B (18)",
+    "v0.18 phase B (18)"
+  ],
+  "results": [
+    {
+      "set": "v0.17 B",
+      "answers": 18,
+      "with_text": 18,
+      "registry_brands": 16,
+      "registry_brands_found_at_least_once": 10,
+      "share_any_list_items": 1.0,
+      "share_numbered_list": 0.444,
+      "share_list_structured": 1.0,
+      "share_rankable_prose_only": 0.0,
+      "brands_named_per_answer_mean": 6.17,
+      "brands_named_per_answer_median": 6.0,
+      "brands_named_per_answer_range": [
+        4,
+        8
+      ],
+      "share_answers_ge1_brand": 1.0,
+      "share_answers_rankable_ge2": 1.0,
+      "share_items_without_registry_brand": 0.51,
+      "share_list_answers_with_intro_mention": 0.0,
+      "share_pairs_named_twice_or_more": 0.55,
+      "share_list_pairs_not_leading_an_item": 0.027,
+      "share_rankable_with_tie_primary": 0.0,
+      "share_rankable_rules_differ": 0.111,
+      "mean_kendall_tau_primary_vs_first_mention": 0.958,
+      "nested_match_events": 0
+    },
+    {
+      "set": "v0.18 B",
+      "answers": 18,
+      "with_text": 18,
+      "registry_brands": 24,
+      "registry_brands_found_at_least_once": 11,
+      "share_any_list_items": 0.833,
+      "share_numbered_list": 0.333,
+      "share_list_structured": 0.722,
+      "share_rankable_prose_only": 0.056,
+      "brands_named_per_answer_mean": 4,
+      "brands_named_per_answer_median": 4.0,
+      "brands_named_per_answer_range": [
+        0,
+        7
+      ],
+      "share_answers_ge1_brand": 0.833,
+      "share_answers_rankable_ge2": 0.778,
+      "share_items_without_registry_brand": 0.659,
+      "share_list_answers_with_intro_mention": 0.0,
+      "share_pairs_named_twice_or_more": 0.125,
+      "share_list_pairs_not_leading_an_item": 0.0,
+      "share_rankable_with_tie_primary": 0.0,
+      "share_rankable_rules_differ": 0.0,
+      "mean_kendall_tau_primary_vs_first_mention": 1.0,
+      "nested_match_events": 0,
+      "detector_parity_cells": 432,
+      "detector_parity_agreement": 0.9954
+    }
+  ]
+}
