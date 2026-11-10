@@ -1,0 +1,52 @@
+{
+  "phase": "v1.11",
+  "kind": "offline token count of the judge requests (no model call)",
+  "created_utc": "2026-11-10T16:13:40+00:00",
+  "tokenizer": "tiktoken 0.14.0 o200k_base",
+  "units_sha256": "1243e8e15e2dc6afc894197de9819d149d934e3883bc9f504e8fdfbbbb9c08b8",
+  "system_prompt_tokens": 63,
+  "user_template_fixed_tokens": 609,
+  "rules_after_text_tokens": 584,
+  "reply_tokens": {
+    "maximal_valid": 53,
+    "typical": 38
+  },
+  "by_block": {
+    "E": {
+      "units": 4365,
+      "tokens_total": 3476972,
+      "tokens_mean": 796.6,
+      "tokens_median": 767,
+      "tokens_max": 1171,
+      "request_chars_total": 15660107,
+      "chars_per_token": 4.504
+    },
+    "F": {
+      "units": 2781,
+      "tokens_total": 2135692,
+      "tokens_mean": 768.0,
+      "tokens_median": 756,
+      "tokens_max": 1009,
+      "request_chars_total": 9739817,
+      "chars_per_token": 4.56
+    },
+    "R": {
+      "units": 432,
+      "tokens_total": 792891,
+      "tokens_mean": 1835.4,
+      "tokens_median": 1688.0,
+      "tokens_max": 2734,
+      "request_chars_total": 3727403,
+      "chars_per_token": 4.701
+    }
+  },
+  "judged_units": 7578,
+  "tokens_total": 6405555,
+  "tokens_by_role": {
+    "J1 main": 6405555,
+    "J1 repeat": 322835,
+    "J2 main": 3280213,
+    "J2 repeat": 166994
+  },
+  "chars_per_token_all": 4.547
+}

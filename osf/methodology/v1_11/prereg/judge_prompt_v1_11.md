@@ -1,15 +1,28 @@
-# v1.11 judge prompt and output schema (DRAFT r0, not locked)
+# v1.11 judge prompt and output schema (r1, pre-lock; locked with the pre-registration)
 
-The exact text sent to both judges (J1 primary, J2 reliability) for every unit. It is generated from, and tested byte-identical to, `SYSTEM_PROMPT`, `USER_TEMPLATE`, `TEXT_TYPES` and `OUTPUT_SCHEMA` in `scripts/score_v1_11.py` (`test_prompt_md_matches_script`). Placeholders in braces are filled per unit; nothing else varies. Model IDs: **TO VERIFY at lock** (PRE_REGISTRATION_v1_11.md §4.2).
+The exact text sent to both judges (J1 primary, J2 reliability) for every unit. It is generated from, and tested byte-identical to, `SYSTEM_PROMPT`, `USER_TEMPLATE`, `TEXT_TYPES`, `OUTPUT_SCHEMA` and `CATEGORY_LABELS` in `scripts/score_v1_11.py` (`test_prompt_md_matches_script`). Placeholders in braces are filled per unit; nothing else varies. The prompt text is unchanged from draft r0; only the judges and call parameters below changed (runner decision 1, then the budget redesign, decision 21, 2026-11-10).
 
-## Call parameters (fixed)
+## Judges (PRE_REGISTRATION_v1_11.md §4.2)
 
-- temperature 0; maximum output 200 tokens; no tools; no web search; extended reasoning off (or the vendor's minimum, recorded).
+| Role | Model | ID | Endpoint | Reasoning parameter sent (lowest documented effort) |
+|---|---|---|---|---|
+| J1 (primary) | Claude Opus 5.5 | `claude-opus-5-5` | Anthropic Message Batches API | `output_config.effort = "low"` (thinking cannot be disabled) |
+| J2 (reliability) | GPT-6.1 Sol | `gpt-6.1-sol` | OpenAI Batch API, `/v1/responses` | `reasoning.effort = "low"` |
+| Alternate (replaces J1 or J2 only under §4.2) | Gemini 4 Argon | `gemini-4-argon` | synchronous `generate_content` | `thinking_config.thinking_level = "low"` |
+
+IDs and effort values as read on the vendors' documentation on 2026-11-10 (sources in PRE_REGISTRATION §4.2); prices and the cost design in §7.
+
+## Call parameters (fixed; `JUDGE_CALL_POLICY` and `judge_v1_11.request_kwargs`)
+
+- No sampling parameter is sent to any judge: no temperature, no top_p, no top_k. Claude Opus 5.5 cannot switch thinking off (Anthropic's effort page, 2026-11-10); GPT-6.1 Sol is sent no temperature; Gemini 4 Argon ignores temperature. Each call's full parameter set is recorded with its output (`request`), together with the served model ID, finish reason, token counts including reasoning, the endpoint and, for batch calls, the batch ID.
+- Reasoning at the lowest effort each vendor documents for the model (table above), fixed for the whole run.
+- The request body is the same in batch and synchronous mode (Anthropic: `{"custom_id", "params": <request>}`; OpenAI: one JSONL line `{"custom_id", "method": "POST", "url": "/v1/responses", "body": <request>}`).
+- Maximum output 4,096 tokens, reasoning included (output cap, PRE_REGISTRATION §4.2 and §7; was 16,384); a reply cut by the cap is invalid output; no tools; no web search.
 - System message = SYSTEM_PROMPT; one user message = USER_TEMPLATE filled; no prior turns.
-- Where the vendor supports schema-constrained output, OUTPUT_SCHEMA is passed as the response schema; the prompt text is unchanged.
+- Prompt-only JSON for every judge: no response schema is sent (the vendors' schema features differ and are not documented in the program's records for these models); OUTPUT_SCHEMA below defines validity.
 - The judge never sees the answering model, the wave, the answer set, or any AIAS score.
 - `{text_type}` is TEXT_TYPES["recognition"] for v0.23 recognition answers and TEXT_TYPES["mention"] for mention windows.
-- `{question}` is the exact user prompt that produced the answer; `{category}` is the registry's category description; `{brand}` is the registry display name.
+- `{question}` is the exact user prompt that produced the answer (frame text, recorded prompt, or the phase's prompt file by prompt id); `{category}` is CATEGORY_LABELS[set category] below; `{brand}` is the registry display name.
 
 ## SYSTEM_PROMPT
 
@@ -67,6 +80,30 @@ Reply with one JSON object with exactly these keys:
 ```
 <!-- END TEXT_TYPES -->
 
+## CATEGORY_LABELS
+
+The registry's category in plain words (OMNI substrate ids and early-category codes as keys).
+
+<!-- BEGIN CATEGORY_LABELS -->
+```json
+{
+  "v0.19": "audiophile headphones",
+  "v0.20": "skincare",
+  "v0.21": "cosmetics",
+  "v0.22": "automotive",
+  "v0.23": "premium spirits",
+  "pm": "project management software",
+  "finance": "personal finance apps",
+  "oliveoil": "premium olive oil",
+  "running": "running shoes",
+  "skincare": "premium facial skincare",
+  "household": "household goods retail",
+  "knives": "premium kitchen knives",
+  "premium_tea": "premium tea"
+}
+```
+<!-- END CATEGORY_LABELS -->
+
 ## OUTPUT_SCHEMA
 
 <!-- BEGIN OUTPUT_SCHEMA -->
@@ -115,7 +152,8 @@ Reply with one JSON object with exactly these keys:
 2. `refers_to_brand` false requires valence 0, `evaluative` false, `mixed` false.
 3. `evaluative` false requires valence 0 and `mixed` false.
 4. An evidence quote over 20 words is flagged, not rejected.
-5. Invalid output: up to 2 retries with identical input, then JUDGE_FAIL (excluded, counted; > 2% of a set's units halts the run before scoring).
+5. The served model ID must equal the requested ID (or a dated snapshot of it); otherwise the response counts as invalid.
+6. Invalid output (including an empty answer or a served-ID mismatch): up to 2 retries with identical input, then JUDGE_FAIL (excluded, counted; > 2% of a set's units, per judge, halts the run before scoring). An API error that persists through the transient-retry policy is re-sent once; a unit never answered is UNJUDGED (counted).
 
 ## Scoring of a valid output
 

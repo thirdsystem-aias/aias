@@ -1,6 +1,6 @@
 # v1.11 feasibility count (parsing only, development sample)
 
-DRAFT r0, Nov 10, 2026. Script: `osf/methodology/v1_11/scoping/feasibility_v1_11.py` (output `feasibility_v1_11.json` beside it), using the unit code of `scripts/score_v1_11.py`.
+r0, Nov 10, 2026. Script: `osf/methodology/v1_11/scoping/feasibility_v1_11.py` (output `feasibility_v1_11.json` beside it), using the unit code of `scripts/score_v1_11.py`. Re-run on Nov 10 with the r1 scorer (brand matches located on the whole answer, PRE_REGISTRATION §4.1): the output file is byte-identical. The planning rates below served draft r0's cost estimate only; r1's §7 uses the exact counts of the unit build U0 on the frozen inputs.
 
 **Declaration.** Parsing only, on a development sample that every v1.11 confirmatory analysis excludes. No model call, no valence, and nothing computed on Presence, Consistency, Ranking, separability or stability. No confirmatory input (v0.23 recognition, omnibus frames, early category sets) was parsed; the manifest builder read their bytes for hashes and their CSV headers only.
 

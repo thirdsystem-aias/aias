@@ -1,0 +1,677 @@
+{
+  "phase": "v1.11",
+  "created_utc": "2026-11-10T16:37:49+00:00",
+  "units_sha256": "1243e8e15e2dc6afc894197de9819d149d934e3883bc9f504e8fdfbbbb9c08b8",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "endpoints": {
+    "J1": "batch",
+    "J2": "batch"
+  },
+  "prices_usd_per_mtok": {
+    "claude-opus-5-5": [
+      4.0,
+      20.0
+    ],
+    "claude-sonnet-5-5": [
+      2.0,
+      10.0
+    ],
+    "claude-fable-5-2": [
+      8.0,
+      40.0
+    ],
+    "gpt-6-astra": [
+      10.0,
+      50.0
+    ],
+    "gpt-6.1-sol": [
+      2.0,
+      10.0
+    ],
+    "gemini-4-argon": [
+      2.0,
+      10.0
+    ]
+  },
+  "prices_batch_usd_per_mtok": {
+    "claude-opus-5-5": [
+      2.0,
+      10.0
+    ],
+    "claude-sonnet-5-5": [
+      1.0,
+      5.0
+    ],
+    "claude-fable-5-2": [
+      4.0,
+      20.0
+    ],
+    "gpt-6-astra": [
+      5.0,
+      25.0
+    ],
+    "gpt-6.1-sol": [
+      1.0,
+      5.0
+    ],
+    "gemini-4-argon": [
+      1.0,
+      5.0
+    ]
+  },
+  "price_changes": {
+    "gemini-4-argon": [
+      "2026-12-01T00:00:00+00:00",
+      [
+        4.0,
+        20.0
+      ]
+    ]
+  },
+  "price_changes_batch": {
+    "gemini-4-argon": [
+      "2026-12-01T00:00:00+00:00",
+      [
+        2.0,
+        10.0
+      ]
+    ]
+  },
+  "price_sources": {
+    "anthropic": "https://platform.claude.com/docs/en/about-claude/pricing (accessed 2026-11-10)",
+    "openai": "https://developers.openai.com/api/docs/pricing (accessed 2026-11-10; Standard and Batch tabs)",
+    "google": "https://ai.google.dev/gemini-api/docs/pricing (accessed 2026-11-10; Standard and Batch tabs)"
+  },
+  "planning": {
+    "tokens_in": "request characters x tokens per character (o200k measurement, prereg/token_counts_v1_11.json, x vendor factor)",
+    "tokens_per_char": {
+      "J1": 0.2859027930503629,
+      "J2": 0.2419177479656917
+    },
+    "o200k_chars_per_token": 4.547,
+    "vendor_token_factor": {
+      "anthropic": 1.3,
+      "openai": 1.1,
+      "google": 1.1
+    },
+    "visible_output_tokens": 100,
+    "reasoning_tokens": 270,
+    "reasoning_basis": "p90 of GPT-6 Astra reasoning tokens at default effort on the program's probes, osf/v42/prereg/cost_inputs_v0_42.txt (mean 176, max 375); no judge-task measurement exists",
+    "overhead": 1.15,
+    "cache_discount_assumed": false
+  },
+  "calls_by_phase_role": {
+    "A/J1": 3213,
+    "A/J2": 3213,
+    "A2/J1": 161,
+    "A2/J2": 161,
+    "B/J1": 4365,
+    "B/J2": 437,
+    "B2/J1": 218,
+    "B2/J2": 23
+  },
+  "scenarios_by_reasoning_tokens": {
+    "0": {
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "tokens_out_by_role": {
+        "J1": 795700,
+        "J2": 383400
+      },
+      "usd": 31.206227,
+      "usd_with_overhead": 35.887161049999996,
+      "calls_with_overhead": 13560
+    },
+    "176": {
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "tokens_out_by_role": {
+        "J1": 2196132,
+        "J2": 1058184
+      },
+      "usd": 48.584467000000075,
+      "usd_with_overhead": 55.872137050000084,
+      "calls_with_overhead": 13560
+    },
+    "270": {
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "tokens_out_by_role": {
+        "J1": 2944090,
+        "J2": 1418580
+      },
+      "usd": 57.866027000000074,
+      "usd_with_overhead": 66.54593105000008,
+      "calls_with_overhead": 13560
+    },
+    "375": {
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "tokens_out_by_role": {
+        "J1": 3779575,
+        "J2": 1821150
+      },
+      "usd": 68.23372700000009,
+      "usd_with_overhead": 78.46878605000009,
+      "calls_with_overhead": 13560
+    }
+  },
+  "break_even_reasoning_tokens_pause": 388.48481255184095,
+  "break_even_reasoning_tokens_cap": 564.6171231437929,
+  "input_only_usd": 21.332227000000096,
+  "designs": {
+    "prepared r1: J1 claude-opus-5-5 + J2 gpt-6-astra, synchronous": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gpt-6-astra"
+      },
+      "batch": {
+        "J1": false,
+        "J2": false
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 124.63493689999984,
+        "176": 195.64495289999957,
+        "270": 233.57075689999894,
+        "375": 275.93468689999935
+      },
+      "usd": {
+        "0": 108.37820599999988,
+        "176": 170.12604599999963,
+        "270": 203.1050059999991,
+        "375": 239.94320599999946
+      }
+    },
+    "same pair through the batch APIs": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gpt-6-astra"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 62.31746844999992,
+        "176": 97.82247644999978,
+        "270": 116.78537844999947,
+        "375": 137.96734344999967
+      },
+      "usd": {
+        "0": 54.18910299999994,
+        "176": 85.06302299999982,
+        "270": 101.55250299999955,
+        "375": 119.97160299999973
+      }
+    },
+    "both flagships, batch: J1 claude-fable-5-2 + J2 gpt-6-astra": {
+      "roles": {
+        "J1": "claude-fable-5-2",
+        "J2": "gpt-6-astra"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 91.59705264999987,
+        "176": 143.20702865000035,
+        "270": 170.7714476499989,
+        "375": 201.56149015000028
+      },
+      "usd": {
+        "0": 79.6496109999999,
+        "176": 124.52785100000033,
+        "270": 148.49691099999905,
+        "375": 175.27086100000025
+      }
+    },
+    "CHOSEN, batch: J1 claude-opus-5-5 + J2 gpt-6.1-sol (J2: R, F and 10% of E)": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gpt-6.1-sol"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 35.887161049999996,
+        "176": 55.872137050000084,
+        "270": 66.54593105000008,
+        "375": 78.46878605000009
+      },
+      "usd": {
+        "0": 31.206227,
+        "176": 48.584467000000075,
+        "270": 57.866027000000074,
+        "375": 68.23372700000009
+      }
+    },
+    "chosen pair after reduction (4): R and F only, plus the Paper B E units (J1); the H1 gate's units": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gpt-6.1-sol"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 24,
+        "j2_e_share": 0.05,
+        "e_half": true,
+        "e_none": true
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 7085,
+      "calls_by_role": {
+        "J1": 3711,
+        "J2": 3374
+      },
+      "tokens_in_by_role": {
+        "J1": 4393827,
+        "J2": 3425049
+      },
+      "usd_with_overhead": {
+        "0": 20.252308449999987,
+        "176": 31.17786045000003,
+        "270": 37.01309845000008,
+        "375": 43.53118345000015
+      },
+      "usd": {
+        "0": 17.61070299999999,
+        "176": 27.11118300000003,
+        "270": 32.18530300000007,
+        "375": 37.853203000000136
+      }
+    },
+    "chosen pair with J2 on every E window too": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gpt-6.1-sol"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 1.0,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 15914,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 7957
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 7405989
+      },
+      "usd_with_overhead": {
+        "0": 42.37174654999984,
+        "176": 66.52919855000019,
+        "270": 79.43147405000018,
+        "375": 93.84359029999982
+      },
+      "usd": {
+        "0": 36.844996999999864,
+        "176": 57.85147700000017,
+        "270": 69.07084700000016,
+        "375": 81.60312199999984
+      }
+    },
+    "cheaper J1, batch: J1 claude-sonnet-5-5 + J2 gpt-6.1-sol": {
+      "roles": {
+        "J1": "claude-sonnet-5-5",
+        "J2": "gpt-6.1-sol"
+      },
+      "batch": {
+        "J1": true,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-11-22T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 21.247368950000002,
+        "176": 33.179860949999984,
+        "270": 39.55289645000003,
+        "375": 46.67171269999989
+      },
+      "usd": {
+        "0": 18.475973000000003,
+        "176": 28.852052999999987,
+        "270": 34.393823000000026,
+        "375": 40.584097999999905
+      }
+    },
+    "alternate replaces J2 (gemini-4-argon, synchronous, Dec 1 prices)": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gemini-4-argon"
+      },
+      "batch": {
+        "J1": true,
+        "J2": false
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-12-01T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 8751754,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 55.709891599999985,
+        "176": 87.33489159999976,
+        "270": 104.22551659999955,
+        "375": 123.09270409999986
+      },
+      "usd": {
+        "0": 48.44338399999999,
+        "176": 75.9433839999998,
+        "270": 90.63088399999961,
+        "375": 107.0371339999999
+      }
+    },
+    "alternate replaces J2, after reduction (4)": {
+      "roles": {
+        "J1": "claude-opus-5-5",
+        "J2": "gemini-4-argon"
+      },
+      "batch": {
+        "J1": true,
+        "J2": false
+      },
+      "plan_params": {
+        "e_cap": 24,
+        "j2_e_share": 0.05,
+        "e_half": true,
+        "e_none": true
+      },
+      "priced_at": "2026-12-01T12:00:00+00:00",
+      "calls": 7085,
+      "calls_by_role": {
+        "J1": 3711,
+        "J2": 3374
+      },
+      "tokens_in_by_role": {
+        "J1": 4393827,
+        "J2": 3425049
+      },
+      "usd_with_overhead": {
+        "0": 37.88887750000003,
+        "176": 59.05789349999993,
+        "270": 70.36407249999976,
+        "375": 82.99331499999998
+      },
+      "usd": {
+        "0": 32.946850000000026,
+        "176": 51.35468999999994,
+        "270": 61.1861499999998,
+        "375": 72.1681
+      }
+    },
+    "alternate replaces J1 (gemini-4-argon, synchronous, Dec 1 prices)": {
+      "roles": {
+        "J1": "gemini-4-argon",
+        "J2": "gpt-6.1-sol"
+      },
+      "batch": {
+        "J1": false,
+        "J2": true
+      },
+      "plan_params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "priced_at": "2026-12-01T12:00:00+00:00",
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 7405989,
+        "J2": 3828719
+      },
+      "usd_with_overhead": {
+        "0": 58.97622624999959,
+        "176": 95.06617024999956,
+        "270": 114.34148124999996,
+        "375": 135.87241375000013
+      },
+      "usd": {
+        "0": 51.28367499999965,
+        "176": 82.66623499999962,
+        "270": 99.42737499999997,
+        "375": 118.14992500000012
+      }
+    }
+  },
+  "binding_rule_preview": {
+    "r270": {
+      "params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "reductions_applied": [],
+      "steps": [
+        {
+          "params": {
+            "e_cap": 36,
+            "j2_e_share": 0.1,
+            "e_half": false,
+            "e_none": false
+          },
+          "calls": 11791,
+          "calls_by_role": {
+            "J1": 7957,
+            "J2": 3834
+          },
+          "tokens_in_by_role": {
+            "J1": 8751754,
+            "J2": 3828719
+          },
+          "tokens_out_by_role": {
+            "J1": 2944090,
+            "J2": 1418580
+          },
+          "usd": 57.866027000000074,
+          "usd_with_overhead": 66.54593105000008,
+          "calls_with_overhead": 13560
+        }
+      ],
+      "fits": true,
+      "jobs_sha256": "661ab05659f545ff5bbac11672101e9f25012cca0f51e0dca7bf3d3b09169ef3"
+    },
+    "r375": {
+      "params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "reductions_applied": [],
+      "steps": [
+        {
+          "params": {
+            "e_cap": 36,
+            "j2_e_share": 0.1,
+            "e_half": false,
+            "e_none": false
+          },
+          "calls": 11791,
+          "calls_by_role": {
+            "J1": 7957,
+            "J2": 3834
+          },
+          "tokens_in_by_role": {
+            "J1": 8751754,
+            "J2": 3828719
+          },
+          "tokens_out_by_role": {
+            "J1": 3779575,
+            "J2": 1821150
+          },
+          "usd": 68.23372700000009,
+          "usd_with_overhead": 78.46878605000009,
+          "calls_with_overhead": 13560
+        }
+      ],
+      "fits": true,
+      "jobs_sha256": "661ab05659f545ff5bbac11672101e9f25012cca0f51e0dca7bf3d3b09169ef3"
+    }
+  },
+  "worst_case_per_call": {
+    "claude-opus-5-5": 0.068358,
+    "gpt-6.1-sol": 0.03415
+  },
+  "batch_max_requests": 500,
+  "guard_simulations": {
+    "every call at its worst case, no approval": {
+      "calls_sent": 2139,
+      "spend": 80.03811499999998,
+      "stopped": "PAUSED: recorded spend $80.04 reached $80.00 (the pause threshold); ask Pablo, then resume with --approve-past-pause"
+    },
+    "every call at its worst case, approval past the pause": {
+      "calls_sent": 2672,
+      "spend": 99.99819999999998,
+      "stopped": "CAP: $100.00 spent + $0.00 in flight + $0.0481 worst case would pass $100"
+    },
+    "planning cost (r = 270), no approval": {
+      "calls_sent": 11791,
+      "spend": 57.86602700000004,
+      "stopped": null
+    }
+  },
+  "cap_usd": 100.0,
+  "pause_usd": 80.0,
+  "plan_target_usd": 80.0,
+  "cap_calls": 30000
+}

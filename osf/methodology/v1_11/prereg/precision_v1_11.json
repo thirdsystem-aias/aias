@@ -1,0 +1,59 @@
+{
+  "phase": "v1.11",
+  "kind": "synthetic precision check (no model call, no real valence)",
+  "seed": 111030,
+  "bootstrap_draws": 1000,
+  "synthetic_valence_mix": {
+    "-2": 0.01,
+    "-1": 0.04,
+    "0": 0.45,
+    "1": 0.4,
+    "2": 0.1
+  },
+  "p_same_valence": 0.4837,
+  "synthetic_alpha_population": 0.68,
+  "judged_units": {
+    "R+F": 3213,
+    "E": 4365
+  },
+  "alpha_precision": {
+    "E 5%": {
+      "pairs_pooled": 3431,
+      "alpha_pooled_ci95_half_width": 0.0173,
+      "pairs_E_block": 218,
+      "alpha_E_block_ci95_half_width": 0.0792
+    },
+    "E 10% (design)": {
+      "pairs_pooled": 3649,
+      "alpha_pooled_ci95_half_width": 0.0172,
+      "pairs_E_block": 436,
+      "alpha_E_block_ci95_half_width": 0.0401
+    },
+    "E 20%": {
+      "pairs_pooled": 4086,
+      "alpha_pooled_ci95_half_width": 0.0151,
+      "pairs_E_block": 873,
+      "alpha_E_block_ci95_half_width": 0.0331
+    },
+    "E 100%": {
+      "pairs_pooled": 7578,
+      "alpha_pooled_ci95_half_width": 0.0111,
+      "pairs_E_block": 4365,
+      "alpha_E_block_ci95_half_width": 0.0151
+    }
+  },
+  "brand_rho": {
+    "F_brand_wave_cells_with_at_least_6_windows": 163,
+    "fisher_z_ci95_at_rho_0_80": [
+      0.737,
+      0.849
+    ],
+    "note": "F is judged in full by J2: independent of the E share"
+  },
+  "thresholds": {
+    "alpha_confirmed": 0.667,
+    "alpha_falsified_below": 0.5,
+    "brand_rho_confirmed": 0.8,
+    "brand_rho_falsified_below": 0.6
+  }
+}

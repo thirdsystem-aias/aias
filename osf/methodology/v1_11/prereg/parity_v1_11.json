@@ -1,0 +1,621 @@
+{
+  "phase": "v1.11",
+  "kind": "pre-lock parity: parse completion, mention parity, unit join (key columns)",
+  "declaration": "Computed before the lock on the frozen inputs. Uses the normaliser, the registry matchers, the list-item parser and the segmenter only; no window, no valence, no judge output, and no P, C* or rank value was computed, read or printed.",
+  "created_utc": "2026-11-10T16:37:20+00:00",
+  "dry_run": false,
+  "manifest_sha256": "fff8a9f3f7cb5e055e7bab64b581c83d2941d2aaf1d922a0facb91dc9275b416",
+  "parse_completion": {
+    "R t1 v0.23": {
+      "rows": 144,
+      "with_text": 144,
+      "missing_cells": 0,
+      "parsed_without_exception": 144,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "R t2 v0.23": {
+      "rows": 144,
+      "with_text": 144,
+      "missing_cells": 0,
+      "parsed_without_exception": 144,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "R t3 v0.23": {
+      "rows": 144,
+      "with_text": 144,
+      "missing_cells": 0,
+      "parsed_without_exception": 144,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 pm": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 finance": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 oliveoil": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 running": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 skincare": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v1.0 household": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v1.0 knives": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.14 premium_tea": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    }
+  },
+  "mention_parity_F": {
+    "OMNI t1 v0.19": {
+      "certified_record": "osf/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "certified_mentions": 166,
+      "e2_mentions": 166,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.20": {
+      "certified_record": "scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 222,
+      "e2_mentions": 222,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.21": {
+      "certified_record": "scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 226,
+      "e2_mentions": 226,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.22": {
+      "certified_record": "scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 217,
+      "e2_mentions": 217,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.23": {
+      "certified_record": "osf/v23/data/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 110,
+      "e2_mentions": 110,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.19": {
+      "certified_record": "osf/v34/data/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "certified_mentions": 159,
+      "e2_mentions": 159,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.20": {
+      "certified_record": "scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 215,
+      "e2_mentions": 215,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.21": {
+      "certified_record": "scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 234,
+      "e2_mentions": 234,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.22": {
+      "certified_record": "scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 220,
+      "e2_mentions": 220,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.23": {
+      "certified_record": "osf/v34/data/v23/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 103,
+      "e2_mentions": 103,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.19": {
+      "certified_record": "osf/v41/data/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "certified_mentions": 157,
+      "e2_mentions": 157,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.20": {
+      "certified_record": "scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 221,
+      "e2_mentions": 221,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.21": {
+      "certified_record": "scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 215,
+      "e2_mentions": 215,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.22": {
+      "certified_record": "scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 214,
+      "e2_mentions": 214,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.23": {
+      "certified_record": "osf/v41/data/v23/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "certified_mentions": 102,
+      "e2_mentions": 102,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    }
+  },
+  "concordance_E_brands_canonical": {
+    "EARLY-6 v0.9 pm": {
+      "cells": 5472,
+      "agree": 5355,
+      "agreement": 0.9786184210526315,
+      "named_by_E2_only": 31,
+      "named_by_brands_canonical_only": 86,
+      "note": "descriptive; brands_canonical (LLM function calling) never builds a unit"
+    },
+    "EARLY-6 v0.9 finance": {
+      "cells": 4608,
+      "agree": 4316,
+      "agreement": 0.9366319444444444,
+      "named_by_E2_only": 292,
+      "named_by_brands_canonical_only": 0,
+      "note": "descriptive; brands_canonical (LLM function calling) never builds a unit"
+    },
+    "EARLY-6 v0.9 oliveoil": {
+      "cells": 5760,
+      "agree": 5742,
+      "agreement": 0.996875,
+      "named_by_E2_only": 3,
+      "named_by_brands_canonical_only": 15,
+      "note": "descriptive; brands_canonical (LLM function calling) never builds a unit"
+    },
+    "EARLY-6 v0.9 running": {
+      "cells": 4896,
+      "agree": 4646,
+      "agreement": 0.948937908496732,
+      "named_by_E2_only": 248,
+      "named_by_brands_canonical_only": 2,
+      "note": "descriptive; brands_canonical (LLM function calling) never builds a unit"
+    },
+    "EARLY-6 v0.9 skincare": {
+      "cells": 8928,
+      "agree": 8918,
+      "agreement": 0.9988799283154122,
+      "named_by_E2_only": 8,
+      "named_by_brands_canonical_only": 2,
+      "note": "descriptive; brands_canonical (LLM function calling) never builds a unit"
+    },
+    "EARLY-6 v1.0 household": {
+      "available": false
+    },
+    "EARLY-6 v1.0 knives": {
+      "available": false
+    },
+    "EARLY-6 v0.14 premium_tea": {
+      "available": false
+    }
+  },
+  "questions": {
+    "R t1 v0.23": {
+      "answers_with_question": 144,
+      "distinct_questions": 24
+    },
+    "R t2 v0.23": {
+      "answers_with_question": 144,
+      "distinct_questions": 24
+    },
+    "R t3 v0.23": {
+      "answers_with_question": 144,
+      "distinct_questions": 24
+    },
+    "OMNI t1 v0.19": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t1 v0.20": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t1 v0.21": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t1 v0.22": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t1 v0.23": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t2 v0.19": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t2 v0.20": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t2 v0.21": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t2 v0.22": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t2 v0.23": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t3 v0.19": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t3 v0.20": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t3 v0.21": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t3 v0.22": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "OMNI t3 v0.23": {
+      "answers_with_question": 36,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.9 pm": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.9 finance": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.9 oliveoil": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.9 running": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.9 skincare": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v1.0 household": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v1.0 knives": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    },
+    "EARLY-6 v0.14 premium_tea": {
+      "answers_with_question": 288,
+      "distinct_questions": 6
+    }
+  },
+  "join": {
+    "F_vs_aias_2_0_profiles": {
+      "per_wave": {
+        "t1": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        },
+        "t2": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        },
+        "t3": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        }
+      },
+      "other_waves_in_table": [],
+      "passes": true
+    },
+    "F_vs_v1_9_unit_table": {
+      "per_wave": {
+        "t1": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        },
+        "t2": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        },
+        "t3": {
+          "profile_units": 112,
+          "registry_units": 112,
+          "matched": 112,
+          "duplicates": [],
+          "only_in_profiles": [],
+          "only_in_registries": [],
+          "one_to_one": true
+        }
+      },
+      "other_waves_in_table": [],
+      "passes": true
+    },
+    "R_vs_aias_2_0_profiles": {
+      "t1": {
+        "recognition_brands": 24,
+        "in_profiles": 24
+      },
+      "t2": {
+        "recognition_brands": 24,
+        "in_profiles": 24
+      },
+      "t3": {
+        "recognition_brands": 24,
+        "in_profiles": 24
+      }
+    }
+  },
+  "summary": {
+    "parse_100pct_all_sets": true,
+    "answers_with_text": {
+      "R": 432,
+      "F": 540,
+      "E": 2304
+    },
+    "F_mention_parity_min": 1.0,
+    "F_join_1to1_all_waves": true,
+    "F_join_v1_9_table_1to1": true,
+    "R_brands_in_profiles": true
+  }
+}
