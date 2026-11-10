@@ -1,0 +1,325 @@
+{
+  "label": "EXPLORATORY / DESCRIPTIVE - added after the lock (DEVIATIONS Entry 2); changes no verdict",
+  "rule": "Denon unit removed; answers not re-ranked",
+  "denon_profiles_aias_2_0": {
+    "t1": {
+      "P": "16.666667",
+      "C_star": "",
+      "rated": "0",
+      "n_mentions": "0"
+    },
+    "t2": {
+      "P": "14.814815",
+      "C_star": "",
+      "rated": "0",
+      "n_mentions": "2"
+    },
+    "t3": {
+      "P": "16.666667",
+      "C_star": "",
+      "rated": "0",
+      "n_mentions": "0"
+    }
+  },
+  "waves": {
+    "t1": {
+      "with_denon": {
+        "registry_size": 16,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 4.0,
+          "q75": 7.0,
+          "max": 9
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5,
+        "R_star_MNP": {
+          "median": 47.133458646616546,
+          "q25": 41.46655427905428,
+          "q75": 56.57118055555556,
+          "min": 23.97959183673469,
+          "max": 80.33333333333333
+        },
+        "leader_share_most_frequent_first": 0.5666666666666667,
+        "leader_herfindahl": 0.4822222222222222,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            80.33333333333333
+          ],
+          [
+            "Sony",
+            58.30853174603175
+          ],
+          [
+            "Audeze",
+            55.992063492063494
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": []
+      },
+      "without_denon": {
+        "registry_size": 15,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 4.0,
+          "q75": 7.0,
+          "max": 9
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5333333333333333,
+        "R_star_MNP": {
+          "median": 47.133458646616546,
+          "q25": 41.46655427905428,
+          "q75": 56.57118055555556,
+          "min": 23.97959183673469,
+          "max": 80.33333333333333
+        },
+        "leader_share_most_frequent_first": 0.5666666666666667,
+        "leader_herfindahl": 0.4822222222222222,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            80.33333333333333
+          ],
+          [
+            "Sony",
+            58.30853174603175
+          ],
+          [
+            "Audeze",
+            55.992063492063494
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": []
+      },
+      "with_denon_matches_scorer_baseline": {
+        "brands_rated": true,
+        "median_named": true,
+        "leader_share": true,
+        "herfindahl": true,
+        "R_star_median": true
+      }
+    },
+    "t2": {
+      "with_denon": {
+        "registry_size": 16,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 5.5,
+          "q25": 3.25,
+          "q75": 7.0,
+          "max": 10
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5,
+        "R_star_MNP": {
+          "median": 46.33249791144528,
+          "q25": 36.358343776106935,
+          "q75": 56.45865683229813,
+          "min": 15.11904761904761,
+          "max": 83.22222222222221
+        },
+        "leader_share_most_frequent_first": 0.6666666666666666,
+        "leader_herfindahl": 0.5555555555555556,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            83.22222222222221
+          ],
+          [
+            "Sony",
+            62.41200828157349
+          ],
+          [
+            "Beyerdynamic",
+            54.47420634920634
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": [
+          {
+            "answer": "claude-sonnet-4-5|q2_enthusiast|",
+            "k_mid": 9.0,
+            "n_named": 10
+          },
+          {
+            "answer": "gemini-2.5-flash-lite|q3_reference|",
+            "k_mid": 6.0,
+            "n_named": 6
+          }
+        ]
+      },
+      "without_denon": {
+        "registry_size": 15,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 3.25,
+          "q75": 7.0,
+          "max": 9
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5333333333333333,
+        "R_star_MNP": {
+          "median": 46.33249791144528,
+          "q25": 36.358343776106935,
+          "q75": 56.45865683229813,
+          "min": 15.11904761904761,
+          "max": 83.22222222222221
+        },
+        "leader_share_most_frequent_first": 0.6666666666666666,
+        "leader_herfindahl": 0.5555555555555556,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            83.22222222222221
+          ],
+          [
+            "Sony",
+            62.41200828157349
+          ],
+          [
+            "Beyerdynamic",
+            54.47420634920634
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": [
+          {
+            "answer": "claude-sonnet-4-5|q2_enthusiast|",
+            "k_mid": 9.0,
+            "n_named": 10
+          },
+          {
+            "answer": "gemini-2.5-flash-lite|q3_reference|",
+            "k_mid": 6.0,
+            "n_named": 6
+          }
+        ]
+      },
+      "with_denon_matches_scorer_baseline": {
+        "brands_rated": true,
+        "median_named": true,
+        "leader_share": true,
+        "herfindahl": true,
+        "R_star_median": true
+      }
+    },
+    "t3": {
+      "with_denon": {
+        "registry_size": 16,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 3.0,
+          "q75": 7.0,
+          "max": 10
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5,
+        "R_star_MNP": {
+          "median": 46.082727072310405,
+          "q25": 37.656622023809526,
+          "q75": 55.48626142376141,
+          "min": 16.26984126984126,
+          "max": 80.83333333333333
+        },
+        "leader_share_most_frequent_first": 0.6,
+        "leader_herfindahl": 0.4955555555555555,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            80.83333333333333
+          ],
+          [
+            "Sony",
+            66.09848484848484
+          ],
+          [
+            "Beyerdynamic",
+            51.94885361552027
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": []
+      },
+      "without_denon": {
+        "registry_size": 15,
+        "rankable_answers": 30,
+        "registry_brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 3.0,
+          "q75": 7.0,
+          "max": 10
+        },
+        "brands_rated": 8,
+        "rated_share_of_registry": 0.5333333333333333,
+        "R_star_MNP": {
+          "median": 46.082727072310405,
+          "q25": 37.656622023809526,
+          "q75": 55.48626142376141,
+          "min": 16.26984126984126,
+          "max": 80.83333333333333
+        },
+        "leader_share_most_frequent_first": 0.6,
+        "leader_herfindahl": 0.4955555555555555,
+        "top3_by_R_star": [
+          [
+            "Sennheiser",
+            80.83333333333333
+          ],
+          [
+            "Sony",
+            66.09848484848484
+          ],
+          [
+            "Beyerdynamic",
+            51.94885361552027
+          ]
+        ],
+        "flagged_brand_in_rankable_answers": []
+      },
+      "with_denon_matches_scorer_baseline": {
+        "brands_rated": true,
+        "median_named": true,
+        "leader_share": true,
+        "herfindahl": true,
+        "R_star_median": true
+      }
+    }
+  },
+  "S7_gate_statistics": {
+    "H1": {
+      "t1": [
+        0.27502824001915777,
+        0.27502824001915777
+      ],
+      "t2": [
+        0.3659391254379848,
+        0.3659391254379848
+      ],
+      "t3": [
+        0.3073115823602121,
+        0.3073115823602121
+      ]
+    },
+    "H2": {
+      "t1": [
+        0.25166696081277057,
+        0.25166696081277057
+      ],
+      "t2": [
+        0.11926986520653732,
+        0.11926986520653732
+      ],
+      "t3": [
+        0.141533327395192,
+        0.141533327395192
+      ]
+    },
+    "H3": [
+      0.8967629046369204,
+      0.8967629046369204
+    ]
+  }
+}
