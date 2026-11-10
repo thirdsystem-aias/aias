@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-score_v1_12.py -- AIAS(TM) v1.12 Coverage Paper A: scorer CORE (pre-registration draft r1).
+score_v1_12.py -- AIAS(TM) v1.12 Coverage Paper A: scorer (pre-registration draft r1).
 
 Transcribes PRE_REGISTRATION_v1_12.md section 2.3 (model coverage, raw Cov, pi_cov), 2.4 (beta, Cov*,
 rating floors, the exact Rasch-type null of r1 and the equal-weight null of S3), 2.5 (rho_w,
@@ -8,10 +8,12 @@ permutation p, bootstrap, n floor), 3 (verdict and gate rules) and 4 (MC_Situati
 N1 (section 2.4). THE PRE-REGISTRATION PROSE IS AUTHORITATIVE; where it is silent the simplest faithful
 option is taken and listed in SCORER_NOTES.
 
-Not in this core (written before the lock and added to the lock manifest): reading the v1.12 raw record and
-coding it with v0.42's coder, the comparators P_N3, C*_N3 and pi_N3 from v0.42's locked outputs, parity
-gates P1-P3, the other section 4 checks, the section 5 descriptives, the section 7.4 sensitivities and a
---run mode. Nothing here reads v1.12 or t4 answers, and nothing here calls any API.
+Added before the lock (2026-11-10, in a separate block that the core and N1 do not use): the coding step with
+v0.42's coder (section 2.3; byte-identical copy code_t4_v0_42.py, git blob 2d36735d, checked at every load), the
+comparators P_N3, C*_N3, pi_N3 and the fallback (2.6), parity gates P1-P3 (7.2), the other section 4 checks, the
+drop rule (7.3), H1-H8 and the gate on the primary panel and repeated on C3 and A4 (3), the section 5 descriptives,
+the section 7.4 sensitivities S1-S10, and the --code / --brandfree / --parity-p1 / --synthetic / --run modes.
+Nothing here calls a model API; --run and the coding of the real record refuse before the lock.
 
 SCORER_NOTES (choices where the pre-registration is silent)
  N1  Input unit: one answered CEP call = (substrate, model, CEP probe ID, run, set of registry brands named).
@@ -52,8 +54,73 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N12 S8 mid-p variant: beta_mid = 2 [P0(C < c) + 0.5 P0(C = c)] - 1, P0 = the null distribution of C given n
      from the same Monte Carlo draws (weighted) or exact (equal weights: P(C = k) = [x^n y^k]
      prod_j (1 + y((1 + x)^s_j - 1)) / C(S, n)). Cov*_mid = 50 (1 + mean beta_mid), same floors.
+ --- added before the lock (pipeline block; to be logged as clarifications at the lock) ---
+ N13 Coder: a byte-identical copy of v0.42's code_t4_v0_42.py sits beside this file; its git blob (2d36735d) and
+     SHA-256 (d0e4e685) are checked at every load and a mismatch refuses. AIAS_ROOT is set to this repository so
+     the coder's certified substrate modules (identical blobs on branches v1.12 and v0.42) are read from here;
+     its HOME shim may re-execute the entry script. The real record is coded only if the blob equals the coder
+     at tag v0.42-prereg-r1 (section 2.3).
+ N14 Coverage answers are coded through the coder's Phase B path, unchanged (code_calls, strip=True): certified
+     mention detection on the answer text with URLs removed; the probe ID stands in for the frame; CEP and C0
+     answers alike. Deduplication = the coder's rule (last answered attempt, else the last attempt).
+ N15 P1 = the coder's own parity_p2 on the t3 omnibus answers (no API: the v0.23 judge is replayed from the locked
+     outputs); the v1.12 criterion is zero mention mismatches with URL removal off (as v0.42 P2; URL-on changes
+     listed). Recognition parity is reported but not required (v1.12 codes no recognition).
+ N16 Analysis set: deduplicated calls of the design (4 models x 75 probes x runs 1-3, S0) that the coder coded as
+     answered and whose served ID is the requested ID or a dated snapshot (acquire_v1_12.answered); an answered
+     call without a served ID is excluded with the mismatches (MC_Served). Everything else is a missing cell.
+ N17 MC_Complete per model: analysed calls / 225 (CEP and C0 calls); a model below 0.90 leaves every panel
+     (section 7.3); Fable below -> C3 is primary; a primary panel of two models caps PASS at MARGINAL (N10).
+     The Cov* floor "at least 2 of the 3 panel models" stays 2 on two-model panels and on A4.
+ N18 Comparators (section 2.6, shared with v1.13): pi_hat = v0.42 brand-table column pi_N3_S0; C_P/3 = recognized /
+     coded S0 Phase A rows of the N3 models (rows with no code, e.g. v0.23 without the judge, leave the
+     denominator; none -> P not computed); C* from phi_N3_S0 when phi_partition_N3_S0 is "defined" (strictly), 100
+     when "saturated", NOT RATED otherwise or with fewer than 6 N3 S0 Phase B mentions. Coded rows of calls that
+     v0.42 excludes (outside its r2 design; served-ID mismatch, a missing served ID not excluded, as v0.42 N11) are
+     dropped, so the comparators use v0.42's own analysis set.
+ N19 Fallback (section 2.6): t4 counts as "scored" when v0.42's verdict file exists; "N3 fails v0.42's drop rule" =
+     an N3 model listed with S0 in its models_excluded_condition. Then H1 uses the published AIAS 2.0 t3 P and H2
+     its t3 C* where rated == 1, labelled cross-panel in the gate label; P2 is then not applicable.
+ N20 P2: pi_hat and phi recomputed from v0.42's coded Phase B table (score_v0_42.pi_hat / phi_panel transcribed,
+     score_v41.phi_m's reduced-panel branch transcribed; unit tests check both) must equal the brand table exactly.
+     P3: every raw line's prompt equals the probe file's prompt and carries the probe file's SHA-256. A failed gate
+     (or, in --run, a missing or failed P1 record) halts before any statistic.
+ N21 MC_RegistryShare and MC_Defunct on the primary panel's analysed CEP answers. MC_Settings: every raw line of the
+     design carries acquire_v1_12.SETTINGS. MC_Truncation: score_v0_42's finish-reason rule, per model.
+ N22 MC_Defunct: flagged when the share of automotive CEP answers naming ANY cell D brand exceeds 5%; each brand's
+     share is reported.
+ N23 MC_Window: span from the first start to the last finish over every raw line of the design <= 72 h; every line
+     inside acquire_v1_12.WINDOWS (which exclude 2026-11-17 to 11-22 12:00 UTC); no line overlapping [t4's first
+     start, t4's last finish]; without a t4 raw file the overlap is not checked (reported None).
+ N24 MC_Positive: raw Cov (k = 2) of the primary panel against pi_cov over all units (raw Cov has no floor).
+ N25 H4 halves: Cov* on each half's 7 CEPs (its own leave-b-out delta fit on those CEPs), floor 7, primary panel.
+     H7: P from aias_2_0_profiles.csv (wave t3). H8: Cov* on N3 and on C3 from the same tables; UNDETERMINED if
+     Fable or Opus left the panel. The gate is repeated on C3 and A4 (all legs but H8, their own MC_Situation).
+ N26 Sensitivity seeds: each re-uses its hypothesis seed (as v0.42 N4).
+ N27 Sensitivities: rho_w and verdicts of the legs each touches; permutation p only where a verdict needs it (H4);
+     no bootstrap. S1: raw Cov (k = 2) through H1-H3. S2: floors 6 and 28 on the full Cov* (H1-H3; the half floor
+     stays 7). S3, S4, S8, S9, S10: H1-H4. S5: H1-H4 with each category left out, ranges of rho_w. S6: Cov* and
+     pi_cov on the 12 CEPs left after dropping one W, floor 14, H1-H3. S7: H1 with pi_hat_N3 and with the N3 S0
+     t4 mention total in place of P_N3 (not computed under the fallback).
+ N28 Section 5 "non-registry brand mentions (count only)": NOT COMPUTED -- no detector for brands outside the
+     registries is pre-registered.
+ N29 S4: beta averaged over the panel models with n >= 1 and c_max > c_min; same rating rule; a rated unit with no
+     such model is NOT RATED in S4.
+ N30 H5/H6 are active only when their locked score is supplied (--h5 / --h6, as recorded at the lock); an active
+     leg without a score is UNDETERMINED with that reason.
+ N31 Section 5 choices: missing cells = 45 per (category, model) minus analysed CEP and C0 answers; words per answer
+     over analysed CEP and C0 answers (whitespace split); registry brands per CEP answer; per-W coverage = number
+     of the W's two CEPs covered by >= 2 primary-panel models (the raw-Cov rule); "CEPs with no registry brand" =
+     answered CEPs none of whose answered runs names one; run reliability per model on per-run shares of answered
+     CEP answers naming the brand (centred rho_w, categories with >= 5 units); C0 agreement = mean Jaccard of
+     each CEP answer with the same model-run's C0 answer; spend = usd_billed of every raw line.
 
 Modes:  --calibrate-n1   run N1 exactly as section 2.4 states; writes prereg/calibration_N1_v1_12.json
+        --code           code data/v112_raw.jsonl (or --raw) with v0.42's coder -> data/coded (or --coded)
+        --brandfree      MC_BrandFree on the 75 probes -> anchor/mc_brandfree_v1_12.json (or --out)
+        --parity-p1      parity gate P1 -> anchor/parity_P1_v1_12.json (or --out)
+        --synthetic DIR  score synthetic files (DIR/v112_raw.jsonl, DIR/coded, DIR/t4/...) -> DIR/_score
+        --run            score the real record (refuses unless tag v1.12-prereg-r1 is on origin and P1-P3 pass)
 """
 import argparse
 import collections
@@ -915,22 +982,1151 @@ def run_n1(out_path=N1_PATH, **kw):
     return rec
 
 
+
+# =========================================================================== pipeline (added before the lock)
+# Sections 2.3 (coding), 2.6 (comparators), 4 (checks), 5 (descriptives), 7.2 (parity gates), 7.3 (drop rule) and 7.4
+# (sensitivities), and the --code / --brandfree / --parity-p1 / --synthetic / --run modes. Nothing in this block is
+# used by the core above or by calibration N1. SCORER_NOTES N13-N33 list the choices made here.
+import csv          # noqa: E402
+import os           # noqa: E402
+import re           # noqa: E402
+import subprocess   # noqa: E402
+
+DESIGN_DIR = ROOT / "osf/methodology/v1_12"
+PROBES_PATH = DESIGN_DIR / "prereg/probes_v1_12.jsonl"
+RAW_PATH = DESIGN_DIR / "data/v112_raw.jsonl"
+CODED_DIR = DESIGN_DIR / "data/coded"
+ANCHOR_DIR = DESIGN_DIR / "anchor"
+P1_PATH = ANCHOR_DIR / "parity_P1_v1_12.json"
+BRANDFREE_PATH = ANCHOR_DIR / "mc_brandfree_v1_12.json"
+VERDICTS_PATH = DESIGN_DIR / "v112_verdicts.json"
+UNIT_TABLE_PATH = DESIGN_DIR / "v112_unit_table.csv"
+PROFILES_PATH = ROOT / "osf/aias_2_0/aias_2_0_profiles.csv"
+T4_DEFAULTS = {"raw": ROOT / "osf/v42/data/t4_raw.jsonl", "coded": ROOT / "osf/v42/data/coded",
+               "brand_table": ROOT / "osf/v42/v42_brand_table.csv", "verdicts": ROOT / "osf/v42/v42_verdicts.json"}
+CODER_FILE = HERE / "code_t4_v0_42.py"                        # byte-identical copy of v0.42's coder (section 2.3)
+CODER_BLOB = "2d36735d512cf9e13b74010ba5a7f655fc7de0bc"
+CODER_SHA256 = "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220"
+V042_TAG, V042_CODER_PATH = "v0.42-prereg-r1", "osf/v42/scripts/code_t4_v0_42.py"
+PREREG_TAG = "v1.12-prereg-r1"
+RAW_SUB = {"v0.19": "v19", "v0.20": "v20", "v0.21": "v21", "v0.22": "v22", "v0.23": "v23"}
+MODELS4 = [FABLE, OPUS55, GPT6, GEM4]
+T4_N3 = [FABLE, GPT6, GEM4]                                    # v0.42 r2 panel
+CALLS_PER_MODEL, CALLS_TOTAL = 225, 900                        # section 6.2
+COMPLETE_SHARE, DROP_SHARE = 0.98, 0.90                       # MC_Complete; drop rule (section 7.3)
+TRUNC_FLAG, REGISTRY_SHARE_FLAG, DEFUNCT_MAX, POSITIVE_MIN, MAX_SPAN_HOURS = 0.05, 0.50, 0.05, 0.50, 72
+DEFUNCT = ("Pontiac", "Oldsmobile", "Plymouth", "Mercury", "Saturn")   # v0.22 cell D (MC_Defunct)
+DENON = ("v0.19", "Denon")                                    # S10 (section 8)
+C_STAR_DIVISOR, C_STAR_MIN_MENTIONS, F_FRAMES = 9.0, 6, 6     # section 2.6
+MENTION_FIELDS = ["call_id", "substrate", "probe_id", "model", "run", "brand", "mentioned"]
+ALL_LEGS = PRIMARY_LEGS + CONDITIONAL_LEGS + ["H7_Sep_Presence_Legacy", "H8_Panel_Replication"]
+
+
+class Refused(RuntimeError):
+    pass
+
+
+class Halt(RuntimeError):
+    pass
+
+
+class Cfg:
+    def __init__(self, n_perm=N_PERM, n_boot=N_BOOT):
+        self.n_perm, self.n_boot = n_perm, n_boot
+
+
+def read_jsonl(path):
+    out = []
+    with open(path, encoding="utf-8") as f:
+        for line in f:
+            if line.strip():
+                try:
+                    out.append(json.loads(line))
+                except json.JSONDecodeError:
+                    continue
+    return out
+
+
+def read_csv_rows(path):
+    with open(path, newline="", encoding="utf-8") as f:
+        return list(csv.DictReader(f))
+
+
+def _num(v):
+    try:
+        x = float(v)
+    except (TypeError, ValueError):
+        return None
+    return x if math.isfinite(x) else None
+
+
+# --------------------------------------------------------------------------- the coder (section 2.3)
+def git_blob_sha1(data):
+    """git's object id of a file's bytes (what `git hash-object` prints)."""
+    return hashlib.sha1(b"blob %d\0" % len(data) + data).hexdigest()
+
+
+def verify_coder(path=None):
+    path = CODER_FILE if path is None else path
+    data = Path(path).read_bytes()
+    blob, sha = git_blob_sha1(data), hashlib.sha256(data).hexdigest()
+    return {"file": Path(path).name, "git_blob": blob, "sha256": sha, "pinned_git_blob": CODER_BLOB,
+            "pinned_sha256": CODER_SHA256, "match": blob == CODER_BLOB and sha == CODER_SHA256}
+
+
+def coder_blob_at_tag(tag=V042_TAG):
+    """Section 2.3: the pinned blob re-checked against v0.42's tag (local git) before any v1.12 answer is coded."""
+    try:
+        r = subprocess.run(["git", "-C", str(ROOT), "rev-parse", f"{tag}:{V042_CODER_PATH}"], capture_output=True,
+                           text=True, timeout=60)
+        got = r.stdout.strip() if r.returncode == 0 else None
+    except (OSError, subprocess.SubprocessError):
+        got = None
+    return {"tag": tag, "blob_at_tag": got, "pinned": CODER_BLOB, "match": got == CODER_BLOB}
+
+
+def load_coder():
+    """Import the byte-identical copy of v0.42's coder. Its own bootstrap may re-execute this script under a HOME shim
+    so that ~/aias resolves to ROOT (the certified substrate modules read ~/aias paths); SCORER_NOTES N13."""
+    v = verify_coder()
+    if not v["match"]:
+        raise Refused(f"{CODER_FILE.name} is not v0.42's coder (blob {CODER_BLOB[:8]}, SHA-256 {CODER_SHA256[:8]}): {v}")
+    os.environ["AIAS_ROOT"] = str(ROOT)
+    if str(HERE) not in sys.path:
+        sys.path.insert(0, str(HERE))
+    import code_t4_v0_42 as C   # noqa: E402
+    return C
+
+
+def to_t4_record(rec):
+    """A v1.12 call record in the shape v0.42's coder reads: every Coverage answer goes through the coder's Phase B
+    path (certified mention detection on the answer text, URLs removed); the probe stands in for the frame (N14)."""
+    return {"call_id": rec["call_id"], "substrate": RAW_SUB[rec["substrate"]], "phase": "B",
+            "probe_id": rec["probe_id"], "frame_id": rec["probe_id"], "model_requested": rec["model_requested"],
+            "condition": rec.get("condition") or "S0", "run": rec["run"], "text": rec.get("text") or "",
+            "status": rec.get("status"), "error": rec.get("error")}
+
+
+def code_coverage(raw_records, C):
+    """Deduplicate (coder rule) and code the Coverage answers. Returns (mention rows, deduplicated calls)."""
+    calls = C.dedupe_calls([r for r in raw_records if r.get("substrate") in RAW_SUB])
+    _a, B = C.code_calls([to_t4_record(r) for r in calls], probes={}, strip=True)
+    rows = [{"call_id": r["call_id"], "substrate": r["substrate"], "probe_id": r["probe_id"], "model": r["model"],
+             "run": int(r["run"]), "brand": r["brand"], "mentioned": int(r["mentioned"])} for r in B]
+    return rows, calls
+
+
+def registry_from_coder(C):
+    """{substrate: {brand key: display name}}: the coder's registry keys (v0.23: ids, named from its REGISTRY)."""
+    out = {}
+    for sub in CATS:
+        keys = C.brand_names_for(sub)
+        names = {b["id"]: b["brand"] for b in C._modules()["S23"].REGISTRY} if sub == "v0.23" else {}
+        out[sub] = {k: names.get(k, k) for k in keys}
+    return out
+
+
+def write_coded(rows, registry, record, out_dir):
+    out = Path(out_dir)
+    out.mkdir(parents=True, exist_ok=True)
+    with open(out / "v112_mentions.csv", "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=MENTION_FIELDS)
+        w.writeheader()
+        for r in rows:
+            w.writerow({k: r[k] for k in MENTION_FIELDS})
+    (out / "registry_v1_12.json").write_text(json.dumps(registry, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
+    (out / "coding_record_v1_12.json").write_text(json.dumps(record, indent=2) + "\n", encoding="utf-8")
+    return out
+
+
+def read_coded(coded_dir):
+    rows = read_csv_rows(Path(coded_dir) / "v112_mentions.csv")
+    for r in rows:
+        r["run"], r["mentioned"] = int(r["run"]), int(r["mentioned"])
+    registry = json.loads((Path(coded_dir) / "registry_v1_12.json").read_text(encoding="utf-8"))
+    return rows, registry
+
+
+def run_code(raw_path=RAW_PATH, out_dir=CODED_DIR):
+    """--code. The real record is coded only if the pinned blob equals the coder at tag v0.42-prereg-r1 (section 2.3);
+    any difference is logged in anchor/DEVIATIONS.md before coding, so this refuses."""
+    from datetime import datetime, timezone
+    tag = coder_blob_at_tag()
+    if Path(raw_path).resolve() == RAW_PATH.resolve() and not tag["match"]:
+        raise Refused(f"coder blob at tag {V042_TAG} is {tag['blob_at_tag']}, pinned {CODER_BLOB}: log the difference in "
+                      f"anchor/DEVIATIONS.md before coding (section 2.3)")
+    C = load_coder()
+    raw = read_jsonl(raw_path)
+    rows, calls = code_coverage(raw, C)
+    rec = {"phase": PHASE_ID, "step": "coding (section 2.3)", "coder": verify_coder(), "coder_at_v042_tag": tag,
+           "raw": str(raw_path), "raw_sha256": sha256_file(raw_path), "raw_lines": len(raw),
+           "calls_deduplicated": len(calls), "answered_calls_coded": len({r["call_id"] for r in rows}),
+           "mention_rows": len(rows), "url_removal": True, "coded_utc": datetime.now(timezone.utc).isoformat()}
+    write_coded(rows, registry_from_coder(C), rec, out_dir)
+    return rec
+
+
+def brandfree_check(probes, C):
+    """MC_BrandFree: every substrate's certified detector (all registry aliases) on all 75 probe texts."""
+    recs = [{"call_id": f"BF|{p['probe_id']}|{sub}", "substrate": raw, "phase": "B", "probe_id": p["probe_id"],
+             "frame_id": p["probe_id"], "model_requested": "-", "condition": "S0", "run": 1, "text": p["prompt"],
+             "status": "ok", "error": None} for p in probes for sub, raw in RAW_SUB.items()]
+    _a, B = C.code_calls(recs, probes={}, strip=False)
+    hits = [[r["probe_id"], r["substrate"], r["brand"]] for r in B if r["mentioned"]]
+    reg = registry_from_coder(C)
+    return {"check": "MC_BrandFree (section 4)", "rule": "0 alias matches in all 75 probes; a hit blocks the lock",
+            "probes": len(probes), "probes_sha256": sha256_file(PROBES_PATH), "detector_runs": len(recs),
+            "registry_sizes": {s: len(v) for s, v in reg.items()}, "hits": hits, "passed": not hits,
+            "coder": verify_coder(), "registry": reg}
+
+
+def run_parity_p1(out_path=P1_PATH):
+    """P1 (section 7.2): the v1.12 coder on the t3 omnibus answers reproduces the locked t3 mention codes exactly, as
+    v0.42's P2 (URL removal off; the URL-on changes listed). Runs the coder's own parity_p2 (no API call; the v0.23
+    judge is replayed from the locked outputs) and adds the v1.12 criterion (N15)."""
+    C = load_coder()
+    tag = coder_blob_at_tag()
+    r = C.parity_p2(out_path=out_path)
+    off = r["url_removal_off"]
+    r["v1_12"] = {"gate": "P1", "criterion": "url_removal_off total_mention_mismatches == 0 (mention codes; v1.12 codes "
+                  "no recognition) and coder blob pinned", "mention_cells": off["total_mention_cells"],
+                  "mention_mismatches": off["total_mention_mismatches"], "coder": verify_coder(),
+                  "coder_at_v042_tag": tag,
+                  "passed": bool(off["total_mention_mismatches"] == 0 and verify_coder()["match"])}
+    Path(out_path).write_text(json.dumps(r, indent=2, ensure_ascii=False), encoding="utf-8")
+    return r
+
+
+# --------------------------------------------------------------------------- design and the analysis set
+def load_probes(path=PROBES_PATH):
+    return [json.loads(line) for line in Path(path).read_text(encoding="utf-8").splitlines() if line.strip()]
+
+
+def probe_design(probes):
+    """CEP IDs per substrate in file order (14), halves A/B (7 each), W of each CEP, the control probe C0."""
+    d = {"ceps": collections.defaultdict(list), "half": {"A": collections.defaultdict(list),
+                                                         "B": collections.defaultdict(list)},
+         "w": {}, "control": {}, "role": {}, "sub": {}, "prompt": {}}
+    for p in probes:
+        pid, sub = p["probe_id"], p["substrate"]
+        d["role"][pid], d["sub"][pid], d["prompt"][pid] = p["role"], sub, p["prompt"]
+        if p["role"] == "CEP":
+            d["ceps"][sub].append(pid)
+            d["half"][p["half"]][sub].append(pid)
+            d["w"][pid] = p["w"]
+        else:
+            d["control"][sub] = pid
+    d["ceps"] = dict(d["ceps"])
+    d["half"] = {h: dict(v) for h, v in d["half"].items()}
+    return d
+
+
+def is_answered(rec):
+    """= code_t4_v0_42.is_answered (status ok, non-empty text, no error)."""
+    return (rec.get("status") == "ok") and bool((rec.get("text") or "").strip()) and not rec.get("error")
+
+
+def dedupe_calls(records):
+    """= code_t4_v0_42.dedupe_calls: one record per call_id, the last answered attempt, else the last attempt."""
+    best = {}
+    for r in records:
+        cid = r["call_id"]
+        if cid not in best or is_answered(r) or not is_answered(best[cid]):
+            best[cid] = r
+    return list(best.values())
+
+
+def served_ok(requested, served):
+    """= acquire_v1_12.served_ok / score_v0_42.served_ok: the requested ID or a dated snapshot of it."""
+    s = (served or "").strip().removeprefix("models/")
+    return s == requested or re.fullmatch(re.escape(requested) + r"-(\d{4}-\d{2}-\d{2}|\d{8})", s) is not None
+
+
+def in_design(rec, design):
+    pid = rec.get("probe_id")
+    return (rec.get("model_requested") in MODELS4 and pid in design["role"]
+            and design["sub"][pid] == rec.get("substrate") and rec.get("run") in RUNS
+            and (rec.get("condition") or "S0") == "S0")
+
+
+def build_analysis(calls, mention_rows, design):
+    """Analysis set (N16): deduplicated calls of the design, answered (coded by the coder), served ID accepted."""
+    coded, named = set(), collections.defaultdict(set)
+    for r in mention_rows:
+        coded.add(r["call_id"])
+        if r["mentioned"]:
+            named[r["call_id"]].add(r["brand"])
+    out = {"cep": {}, "ctl": {}, "calls": {}, "outside_design": [], "served_mismatch": [], "answered_not_coded": [],
+           "ok_without_served_id": 0}
+    for r in calls:
+        cid = r["call_id"]
+        if not in_design(r, design):
+            out["outside_design"].append(cid)
+            continue
+        if not is_answered(r):
+            continue
+        if not served_ok(r["model_requested"], r.get("served_model")):
+            out["served_mismatch"].append({"call_id": cid, "requested": r["model_requested"],
+                                           "served": r.get("served_model")})
+            out["ok_without_served_id"] += int(not r.get("served_model"))
+            continue
+        if cid not in coded:
+            out["answered_not_coded"].append(cid)
+            continue
+        pid, m, run, sub = r["probe_id"], r["model_requested"], int(r["run"]), r["substrate"]
+        out["calls"][cid] = r
+        if design["role"][pid] == "CEP":
+            out["cep"][(sub, m, pid, run)] = frozenset(named[cid])
+        else:
+            out["ctl"][(sub, m, run)] = frozenset(named[cid])
+    return out
+
+
+def answered_per_model(A):
+    per = collections.Counter()
+    for k in A["cep"]:
+        per[k[1]] += 1
+    for k in A["ctl"]:
+        per[k[1]] += 1
+    return {m: int(per.get(m, 0)) for m in MODELS4}
+
+
+def select_panels(dropped):
+    """Section 7.3: a model below 90% leaves the panel statistics; Claude Fable 5.2 dropped -> C3 replaces N3."""
+    primary = "C3" if FABLE in dropped else "N3"
+    panels = {name: [m for m in PANELS[name] if m not in dropped] for name in PANELS}
+    return primary, panels
+
+
+# --------------------------------------------------------------------------- section 4 checks
+def _acquire():
+    if str(HERE) not in sys.path:
+        sys.path.insert(0, str(HERE))
+    import acquire_v1_12 as AQ   # noqa: E402  (constants only: SETTINGS, WINDOWS; nothing is sent)
+    return AQ
+
+
+def _truncated(rec):
+    """= score_v0_42._truncated (N11 there)."""
+    fr = str(rec.get("finish_reason") or "").lower()
+    return "max_tokens" in fr or "max_output_tokens" in fr or fr == "length"
+
+
+def _ts(s):
+    from datetime import datetime
+    return datetime.fromisoformat(s) if s else None
+
+
+def mc_complete(A):
+    per = answered_per_model(A)
+    n = sum(per.values())
+    per_model = {m: {"answered": per[m], "expected": CALLS_PER_MODEL, "share": per[m] / CALLS_PER_MODEL,
+                     "below_90pct": per[m] / CALLS_PER_MODEL < DROP_SHARE} for m in MODELS4}
+    return {"answered": n, "expected": CALLS_TOTAL, "share": n / CALLS_TOTAL, "pass": n / CALLS_TOTAL >= COMPLETE_SHARE,
+            "per_model": per_model, "dropped_models": [m for m in MODELS4 if per_model[m]["below_90pct"]],
+            "rule": "pass iff >= 98% of the 900 calls answered (non-empty text, accepted served ID); a model below 90% "
+                    "leaves the panel statistics (section 7.3)"}
+
+
+def mc_served(A):
+    return {"n_mismatched": len(A["served_mismatch"]), "mismatched": A["served_mismatch"][:50],
+            "of_which_without_served_id": A["ok_without_served_id"], "excluded": len(A["served_mismatch"]),
+            "pass": not A["served_mismatch"]}
+
+
+def mc_settings(raw_design, calls_design):
+    AQ = _acquire()
+    bad = [r["call_id"] for r in raw_design if r.get("settings") != AQ.SETTINGS]
+    tok = {}
+    for m in MODELS4:
+        rs = [r for r in calls_design if r.get("model_requested") == m and is_answered(r)]
+        th = [r.get("thinking_tokens") for r in rs if r.get("thinking_tokens") is not None]
+        out = [r.get("output_tokens") for r in rs if r.get("output_tokens") is not None]
+        tok[m] = {"answered_calls": len(rs), "reasoning_tokens_recorded": len(th),
+                  "reasoning_tokens_total": int(sum(th)) if th else None,
+                  "reasoning_tokens_mean": float(np.mean(th)) if th else None,
+                  "output_tokens_mean": float(np.mean(out)) if out else None}
+    return {"records": len(raw_design), "records_without_recorded_settings": len(bad), "examples": bad[:20],
+            "share_with_settings": (1 - len(bad) / len(raw_design)) if raw_design else None,
+            "pass": bool(raw_design) and not bad, "settings": AQ.SETTINGS, "reasoning_tokens_per_model": tok}
+
+
+def mc_truncation(calls_design):
+    out = {}
+    for m in MODELS4:
+        rs = [r for r in calls_design if r.get("model_requested") == m]
+        k = sum(1 for r in rs if _truncated(r))
+        out[m] = {"calls": len(rs), "at_cap": k, "share": k / len(rs) if rs else None,
+                  "flag_above_5pct": bool(rs and k / len(rs) > TRUNC_FLAG)}
+    return out
+
+
+def mc_registry_share(A, panel):
+    out = {}
+    for sub in CATS:
+        vals = [bool(s) for (s_, m, _p, _r), s in A["cep"].items() if s_ == sub and m in panel]
+        per_m = {}
+        for m in panel:
+            v = [bool(s) for (s_, mm, _p, _r), s in A["cep"].items() if s_ == sub and mm == m]
+            per_m[m] = float(np.mean(v)) if v else None
+        share = float(np.mean(vals)) if vals else None
+        out[sub] = {"cep_answers": len(vals), "share_naming_registry_brand": share, "per_model": per_m,
+                    "flag_below_0_50": bool(share is not None and share < REGISTRY_SHARE_FLAG)}
+    return out
+
+
+def mc_defunct(A, panel, sub="v0.22"):
+    ans = [s for (s_, m, _p, _r), s in A["cep"].items() if s_ == sub and m in panel]
+    n = len(ans)
+    per = {b: (sum(1 for s in ans if b in s) / n if n else None) for b in DEFUNCT}
+    anyshare = sum(1 for s in ans if s & set(DEFUNCT)) / n if n else None
+    return {"automotive_cep_answers": n, "share_naming_each": per, "share_naming_any": anyshare,
+            "flagged": bool(anyshare is not None and anyshare > DEFUNCT_MAX),
+            "rule": "flagged if the share of automotive CEP answers naming any cell D brand exceeds 5% (N22)"}
+
+
+def mc_positive(raw_cov_map, pi_map):
+    keys, x, y, g, info = paired(raw_cov_map, pi_map)
+    rho = rho_w(x, y, g) if info["n"] >= 3 else NAN
+    return {"rho_w_raw_cov_pi_cov": rho, "n": info["n"], "n_categories": info["n_categories"],
+            "flagged": not (_finite(rho) and abs(rho) >= POSITIVE_MIN),
+            "rule": "raw Cov (k = 2) must give |rho_w(Cov, pi_cov)| >= 0.50; otherwise the gate's sensitivity is flagged"}
+
+
+def mc_window(raw_design, t4_window):
+    AQ = _acquire()
+    iv = [(r["call_id"], _ts(r.get("started_utc")), _ts(r.get("finished_utc"))) for r in raw_design]
+    iv = [(c, a, b or a) for c, a, b in iv if a is not None]
+    if not iv:
+        return {"pass": False, "reason": "no timestamps"}
+    first, last = min(a for _c, a, _b in iv), max(b for _c, _a, b in iv)
+    span = (last - first).total_seconds() / 3600
+    outside = [c for c, a, b in iv if not (AQ.in_window(a) and AQ.in_window(b))]
+    res = {"first_call_utc": first.isoformat(), "last_call_utc": last.isoformat(), "span_hours": span,
+           "within_72h": span <= MAX_SPAN_HOURS, "calls_outside_section_6_7_windows": len(outside),
+           "examples_outside": outside[:20]}
+    if t4_window:
+        t0, t1 = _ts(t4_window[0]), _ts(t4_window[1])
+        ov = [c for c, a, b in iv if a <= t1 and b >= t0]
+        res.update(t4_first_call_utc=t4_window[0], t4_last_call_utc=t4_window[1], calls_overlapping_t4=len(ov),
+                   no_t4_overlap=not ov)
+    else:
+        res.update(calls_overlapping_t4=None, no_t4_overlap=None)
+    res["pass"] = bool(res["within_72h"] and not outside and res["no_t4_overlap"] is not False)
+    res["rule"] = ("all calls within 72 hours; every call inside the section 6.7 windows (so none during 2026-11-17 "
+                   "to 2026-11-21); none overlapping t4 (N23)")
+    return res
+
+
+# --------------------------------------------------------------------------- comparators (section 2.6) and P2
+def t4_in_design(rec):
+    """= score_v0_42.in_design (r2, its N15)."""
+    if rec.get("model_requested") not in T4_N3 or rec.get("condition") not in ("S0", "S1"):
+        return False
+    if rec.get("phase") == "B":
+        return rec.get("run") in RUNS
+    if rec.get("phase") == "A":
+        return (rec.get("condition"), rec.get("run")) == ("S0", 1)
+    return False
+
+
+def t4_excluded(t4_raw):
+    """v0.42's analysis exclusions: calls outside its design and answered calls with another served ID (a missing
+    served ID is listed there, not excluded). Returns (excluded call_ids, (first start, last finish) of t4)."""
+    calls = dedupe_calls(t4_raw)
+    excl = set()
+    for r in calls:
+        if not t4_in_design(r):
+            excl.add(r["call_id"])
+        elif is_answered(r) and r.get("served_model") and not served_ok(r["model_requested"], r["served_model"]):
+            excl.add(r["call_id"])
+    st = sorted(r["started_utc"] for r in t4_raw if r.get("started_utc"))
+    en = sorted(r["finished_utc"] for r in t4_raw if r.get("finished_utc"))
+    return excl, ((st[0], en[-1]) if st and en else None)
+
+
+def read_t4_coded(coded_dir):
+    A, B = [], []
+    for raw in RAW_SUB.values():
+        for ph, acc in (("a", A), ("b", B)):
+            p = Path(coded_dir) / f"{raw}_phase_{ph}.csv"
+            if not p.exists():
+                continue
+            for r in read_csv_rows(p):
+                r["run"] = int(r["run"])
+                if ph == "a":
+                    r["recognized"] = None if r["recognized"] in ("", None) else int(r["recognized"])
+                else:
+                    r["mentioned"] = int(r["mentioned"])
+                acc.append(r)
+    return A, B
+
+
+def t4_counts(coded_b, excluded, cond="S0"):
+    """k per (model, run, substrate, brand) and answered Phase B call_ids per (model, run, substrate)."""
+    k, ans = collections.defaultdict(int), collections.defaultdict(set)
+    for r in coded_b:
+        if r["call_id"] in excluded or r["condition"] != cond:
+            continue
+        ans[(r["model"], r["run"], r["substrate"])].add(r["call_id"])
+        k[(r["model"], r["run"], r["substrate"], r["brand"])] += int(r["mentioned"])
+    return k, ans
+
+
+def pi_hat_t4(k, ans, units, models=T4_N3):
+    """= score_v0_42.pi_hat: sum_m sum_r k / answered Phase B calls."""
+    out = {}
+    for (s, b) in units:
+        num = sum(k.get((m, r, s, b), 0) for m in models for r in RUNS)
+        den = sum(len(ans.get((m, r, s), ())) for m in models for r in RUNS)
+        out[(s, b)] = num / den if den else NAN
+    return out
+
+
+def phi_m_reduced(counts_vec):
+    """= score_v41.phi_m for a panel of M' != 6 models (the reduced-panel branch)."""
+    k = np.asarray(counts_vec, float)
+    m = len(k)
+    if m == 6:
+        raise ValueError("six-model panels use score_v41.phi_of")
+    pi = float(k.sum() / (m * F_FRAMES))
+    if pi <= 0.0:
+        return None, pi, "zero"
+    if pi >= 1.0:
+        return None, pi, "saturated"
+    phi = float(((k - F_FRAMES * pi) ** 2).sum() / (F_FRAMES * pi * (1.0 - pi)) / (m - 1))
+    return phi, pi, "defined"
+
+
+def phi_panel_t4(k, ans, units, models=T4_N3):
+    """= score_v0_42.phi_runs / phi_panel: {(sub, brand): (phi or None, partition, per-run partitions)}."""
+    out = {}
+    for (s, b) in units:
+        runs = []
+        for r in RUNS:
+            if any(len(ans.get((m, r, s), ())) != F_FRAMES for m in models):
+                runs.append((None, "missing"))
+                continue
+            phi, _pi, part = phi_m_reduced([k.get((m, r, s, b), 0) for m in models])
+            runs.append((phi, part))
+        vals = [p for p, part in runs if part == "defined"]
+        parts = [part for _, part in runs]
+        if len(vals) >= 2:
+            out[(s, b)] = (float(np.mean(vals)), "defined", parts)
+        elif parts and all(p == "zero" for p in parts):
+            out[(s, b)] = (None, "zero", parts)
+        elif parts and all(p == "saturated" for p in parts):
+            out[(s, b)] = (None, "saturated", parts)
+        else:
+            out[(s, b)] = (None, "undefined", parts)
+    return out
+
+
+def parity_p2(brand_table, coded_b, excluded):
+    """P2 (section 7.2): pi_hat_{N3,S0} and phi_{N3,S0} recomputed from v0.42's coded Phase B table equal the
+    brand table's pi_N3_S0, phi_N3_S0 and phi_partition_N3_S0 exactly."""
+    units = [(r["substrate"], r["brand"]) for r in brand_table]
+    k, ans = t4_counts(coded_b, excluded)
+    pi, ph = pi_hat_t4(k, ans, units), phi_panel_t4(k, ans, units)
+    bad = []
+    for r in brand_table:
+        u = (r["substrate"], r["brand"])
+        tp, tphi, tpart = _num(r.get("pi_N3_S0")), _num(r.get("phi_N3_S0")), (r.get("phi_partition_N3_S0") or "")
+        mp = pi[u] if _finite(pi[u]) else None
+        if tp != mp or tphi != ph[u][0] or tpart != ph[u][1]:
+            bad.append({"unit": list(u), "table": [tp, tphi, tpart], "recomputed": [mp, ph[u][0], ph[u][1]]})
+    return {"gate": "P2", "units": len(units), "mismatches": len(bad), "examples": bad[:10],
+            "passed": bool(units) and not bad}
+
+
+def comparators_t4(brand_table, coded_a, coded_b, excluded, models=T4_N3):
+    """Section 2.6: P_N3 = 100 (C_P/3 + 2 pi_hat) / 3 and C*_N3 = 100 (1 - phi / 9) (100 if saturated; NOT RATED if
+    zero or undefined; rated only with >= 6 N3 S0 recall mentions); pi_hat_N3 and the t4 mention total (S7)."""
+    pi, phi = {}, {}
+    for r in brand_table:
+        u = (r["substrate"], r["brand"])
+        pi[u] = _num(r.get("pi_N3_S0"))
+        part = (r.get("phi_partition_N3_S0") or "").strip()
+        v = _num(r.get("phi_N3_S0"))
+        phi[u] = v if (part == "defined" and v is not None) else (0.0 if part == "saturated" else None)
+    rec = collections.defaultdict(lambda: [0, 0])
+    for r in coded_a:
+        if r["condition"] != "S0" or r["model"] not in models or r["call_id"] in excluded or r["recognized"] is None:
+            continue
+        t = rec[(r["substrate"], r["brand"])]
+        t[0] += int(r["recognized"])
+        t[1] += 1
+    ment = collections.Counter()
+    for r in coded_b:
+        if r["condition"] == "S0" and r["model"] in models and r["call_id"] not in excluded and r["run"] in RUNS:
+            ment[(r["substrate"], r["brand"])] += int(r["mentioned"])
+    P, C = {}, {}
+    for u in pi:
+        n_rec = rec[u][1] if u in rec else 0
+        P[u] = 100.0 * (rec[u][0] / n_rec + 2.0 * pi[u]) / 3.0 if (pi[u] is not None and n_rec) else None
+        C[u] = 100.0 * (1.0 - phi[u] / C_STAR_DIVISOR) if (phi[u] is not None and ment[u] >= C_STAR_MIN_MENTIONS) \
+            else None
+    return {"P": P, "C": C, "pi_hat": dict(pi), "t4_mentions": {u: int(ment[u]) for u in pi},
+            "recognition": {u: list(v) for u, v in rec.items()}}
+
+
+def legacy_t3(profiles_rows):
+    """Published AIAS 2.0 t3 values (legacy panel): P, and C* where rated."""
+    P, C = {}, {}
+    for r in profiles_rows:
+        if r.get("wave") != "t3":
+            continue
+        u = (r["substrate"], r["brand"])
+        P[u] = _num(r.get("P"))
+        C[u] = _num(r.get("C_star")) if str(r.get("rated")).strip() == "1" else None
+    return P, C
+
+
+def choose_comparators(t4, profiles_rows):
+    """Section 2.6 fallback: t4 not scored (no v0.42 verdicts file) or an N3 model excluded by v0.42's drop rule in S0
+    -> H1 and H2 use the published AIAS 2.0 t3 values, labelled cross-panel."""
+    lp, lc = legacy_t3(profiles_rows or [])
+    reason = None
+    if t4 is None:
+        reason = "t4 (v0.42) outputs not available at analysis"
+    else:
+        gone = [x for x in t4["verdicts"].get("models_excluded_condition", [])
+                if x.split("|")[0] in T4_N3 and x.split("|")[-1] == "S0"]
+        if gone:
+            reason = f"N3 failed v0.42's drop rule in S0: {gone}"
+    if reason:
+        return {"source": "AIAS 2.0 t3 (legacy panel)", "cross_panel": True, "reason": reason, "P": lp, "C": lc,
+                "pi_hat": {}, "t4_mentions": {}, "legacy_P": lp}
+    c = comparators_t4(t4["brand_table"], t4["coded_a"], t4["coded_b"], t4["excluded"])
+    return dict(c, source="t4 (v0.42, N3, S0)", cross_panel=False, reason=None, legacy_P=lp)
+
+
+def parity_p3(raw_all, design, probes_path=PROBES_PATH):
+    """P3: the probes sent equal probes_v1_12.jsonl byte for byte (every raw line's prompt and the file's SHA-256)."""
+    sha = sha256_file(probes_path)
+    unknown = [r.get("call_id") for r in raw_all if r.get("probe_id") not in design["prompt"]]
+    bad_prompt = [r.get("call_id") for r in raw_all if r.get("probe_id") in design["prompt"]
+                  and r.get("prompt") != design["prompt"][r["probe_id"]]]
+    bad_sha = [r.get("call_id") for r in raw_all if r.get("probes_sha256") != sha]
+    return {"gate": "P3", "records": len(raw_all), "probes_sha256": sha, "unknown_probe": unknown[:20],
+            "prompt_mismatch": bad_prompt[:20], "probes_sha256_mismatch": bad_sha[:20],
+            "passed": bool(raw_all) and not (unknown or bad_prompt or bad_sha)}
+
+
+# --------------------------------------------------------------------------- hypothesis legs (section 3)
+VERDICT_FN = {"sep": verdict_separability, "rel": verdict_reliability, "rep": verdict_replication}
+H13 = ["H1_Sep_Presence", "H2_Sep_Consistency", "H3_Sep_NamingRate"]
+H14 = H13 + ["H4_Reliability"]
+
+
+def _rho_only(xd, yd, seed, sided, n_perm, transform=None, centred=True):
+    """rho_w with the n floor and (n_perm > 0) the permutation p; no bootstrap (sensitivities, N27)."""
+    keys, x, y, g, info = paired(xd, yd)
+    out = dict(info, sided=sided, seed=seed, below_n_floor=below_n_floor(info), centred=centred)
+    rho = rho_w(x, y, g, centred) if info["n"] >= 3 else NAN
+    out["rho_w"] = rho
+    if transform is not None:
+        out["transformed"] = transform(rho) if _finite(rho) else NAN
+    ok = bool(n_perm) and info["n"] >= 3 and _finite(rho)
+    out["p_perm"] = perm_p(x, y, g, rho, seed, sided, n_perm, centred) if ok else NAN
+    out["n_perm"] = n_perm if ok else 0
+    return out
+
+
+def run_leg(kind, xd, yd, seed, n_perm=N_PERM, n_boot=N_BOOT, centred=True, exclude=()):
+    """One leg: kind "sep" (two-sided, separability bands), "rel" (H4: one-sided, rel = 2r / (1 + r)) or "rep" (H8)."""
+    xd = {k: v for k, v in xd.items() if k not in exclude}
+    sided = "two" if kind == "sep" else "one"
+    tf = spearman_brown_half if kind == "rel" else None
+    t = rho_test(xd, yd, seed, sided, n_perm, n_boot, tf, centred) if n_boot > 0 else \
+        _rho_only(xd, yd, seed, sided, n_perm, tf, centred)
+    t["verdict"] = VERDICT_FN[kind](t)
+    return t
+
+
+def cov_star_room(tab, sub, b, panel, floor=FLOOR_FULL, min_models=MIN_MODELS_NAMED):
+    """S4: Cov* with beta averaged only over the models with room to vary (n >= 1 and c_max > c_min); same rating
+    rule; a rated unit with no such model is NOT RATED in S4 (N29)."""
+    base = cov_star(tab, sub, b, panel, floor, min_models)
+    betas = [r["beta"] for r in (tab.get((sub, b, m)) for m in panel) if r and r["n"] >= 1 and r["cmax"] > r["cmin"]]
+    return 50.0 * (1.0 + float(np.mean(betas))) if base["rated"] and betas else None
+
+
+def cov_map(tab, panel, floor=FLOOR_FULL, key="beta", room_only=False):
+    if not room_only:
+        return cov_star_map(tab, panel, floor, MIN_MODELS_NAMED, key)
+    units = sorted({(s, b) for (s, b, _m) in tab})
+    return {u: cov_star_room(tab, u[0], u[1], panel, floor) for u in units}
+
+
+def coverage_maps(tabs, panel, floor=FLOOR_FULL, key="beta", room_only=False):
+    """Cov* (14 CEPs), Cov*_A and Cov*_B (7 CEPs each, floor 7; H4) and pi_cov for one panel."""
+    return {"cov": cov_map(tabs["full"], panel, floor, key, room_only),
+            "covA": cov_map(tabs["A"], panel, FLOOR_HALF, key, room_only),
+            "covB": cov_map(tabs["B"], panel, FLOOR_HALF, key, room_only),
+            "pi": pi_cov_map(tabs["full"], panel)}
+
+
+def legs_for(maps, comp, cfg, active=None, extra=None, which=None, n_boot=None, centred=True, exclude=()):
+    """H1-H4, H5/H6 (active only) and H7 on one panel's maps. comp: {"P", "C", "legacy_P"}; extra: {H5/H6: map}."""
+    active, extra = active or {}, extra or {}
+    which = which or (PRIMARY_LEGS + CONDITIONAL_LEGS + ["H7_Sep_Presence_Legacy"])
+    n_boot = cfg.n_boot if n_boot is None else n_boot
+    spec = {"H1_Sep_Presence": ("sep", "cov", comp["P"]), "H2_Sep_Consistency": ("sep", "cov", comp["C"]),
+            "H3_Sep_NamingRate": ("sep", "cov", maps["pi"]), "H4_Reliability": ("rel", "covA", maps.get("covB")),
+            "H7_Sep_Presence_Legacy": ("sep", "cov", comp["legacy_P"])}
+    out = {}
+    for h in which:
+        if h in CONDITIONAL_LEGS:
+            if not active.get(h):
+                out[h] = {"verdict": "INACTIVE", "reason": "activation rule (section 3): tag not pushed before the lock"}
+                continue
+            if extra.get(h) is None:
+                out[h] = {"verdict": "UNDETERMINED", "reason": "leg active but no locked score was supplied (N30)"}
+                continue
+            kind, x, y = "sep", maps["cov"], extra[h]
+        else:
+            kind, xk, y = spec[h]
+            x = maps[xk]
+        out[h] = run_leg(kind, x, y, SEEDS[h], cfg.n_perm, n_boot, centred, exclude)
+    return out
+
+
+def h8_leg(tabs, panels, dropped, cfg):
+    """H8: rho_w(Cov*_N3, Cov*_C3) on the units rated on both; one-sided; seed 112008."""
+    gone = [m for m in (FABLE, OPUS55) if m in dropped]
+    if gone:
+        return {"verdict": "UNDETERMINED", "reason": f"{gone} left the panel statistics (section 7.3)"}
+    return run_leg("rep", cov_star_map(tabs["full"], panels["N3"]), cov_star_map(tabs["full"], panels["C3"]),
+                   SEEDS["H8_Panel_Replication"], cfg.n_perm, cfg.n_boot)
+
+
+def evaluate_panel(name, panel, tabs, comp, A, cfg, active, extra, h6_cross_panel=False, h8=None):
+    maps = coverage_maps(tabs, panel)
+    legs = legs_for(maps, comp, cfg, active, extra)
+    if h8 is not None:
+        legs["H8_Panel_Replication"] = h8
+    msit = mc_situation(A["cep"], A["ctl"], panel)
+    verdicts = {h: legs[h]["verdict"] for h in legs}
+    g = gate(msit["passed"], verdicts, active, h6_cross_panel, two_model=len(panel) == 2)
+    if comp.get("cross_panel"):
+        g["notes"].append("H1 and H2 computed cross-panel against the published AIAS 2.0 t3 values (section 2.6 fallback: "
+                          f"{comp.get('reason')})")
+        g["label"] += " (H1, H2 cross-panel)"
+    if len(panel) == 2:
+        g["label"] += " (two-model)"
+    return {"panel": name, "models": panel, "two_model": len(panel) == 2, "MC_Situation": msit, "legs": legs,
+            "verdicts": verdicts, "gate": g, "maps": maps}
+
+
+# --------------------------------------------------------------------------- sensitivities (section 7.4)
+def sensitivities(tabs, panel, comp, A, design, cfg, base, active=None, extra=None):
+    """S1-S10 on the primary panel: rho_w and verdicts of the legs each one touches; p only where a verdict needs it
+    (H4); no bootstrap (N27). Verdict changes against the primary verdicts are listed."""
+    out = {}
+    units = sorted({(s, b) for (s, b, _m) in tabs["rasch"]["full"]})
+
+    def legs(maps, which, **kw):
+        return legs_for(maps, comp, cfg, active, extra, which=which, n_boot=0, **kw)
+
+    def summary(ls):
+        return {"rho_w": {h: l.get("rho_w") for h, l in ls.items()}, "n": {h: l.get("n") for h, l in ls.items()},
+                "verdicts": {h: l["verdict"] for h, l in ls.items()},
+                "verdict_changes": {h: [base[h], l["verdict"]] for h, l in ls.items() if l["verdict"] != base.get(h)}}
+
+    prim = coverage_maps(tabs["rasch"], panel)
+    raw2 = {u: raw_cov(A["cep"], u[0], u[1], panel, design["ceps"][u[0]], 2) for u in units}
+    out["S1_raw_Cov_k2"] = summary(legs(dict(prim, cov=raw2), H13))
+    for fl in FLOOR_SENS:
+        out[f"S2_floor_{fl}"] = summary(legs(dict(prim, cov=cov_star_map(tabs["rasch"]["full"], panel, fl)), H13))
+    out["S3_equal_weight_null"] = summary(legs(coverage_maps(tabs["equal"], panel), H14))
+    out["S4_room_to_vary"] = summary(legs(coverage_maps(tabs["rasch"], panel, room_only=True), H14))
+    s5 = {}
+    for c in CATS:
+        ex = tuple(u for u in units if u[0] == c)
+        s5[c] = summary(legs(prim, H14, exclude=ex))
+    rng = {}
+    for h in H14:
+        v = [s5[c]["rho_w"][h] for c in CATS if _finite(s5[c]["rho_w"][h])]
+        rng[h] = [min(v), max(v)] if v else None
+    out["S5_leave_one_category_out"] = {"per_category_left_out": s5, "rho_w_range": rng,
+                                        "verdict_changes": {c: s5[c]["verdict_changes"] for c in CATS
+                                                            if s5[c]["verdict_changes"]}}
+    s6 = {}
+    for w in W_TYPES:
+        t = tabs["wout"][w]
+        s6[w] = summary(legs({"cov": cov_star_map(t, panel), "pi": pi_cov_map(t, panel)}, H13))
+    out["S6_leave_one_W_out"] = {"per_W_left_out": s6,
+                                 "verdict_changes": {w: s6[w]["verdict_changes"] for w in W_TYPES if s6[w]["verdict_changes"]}}
+    s7 = {}
+    for name, alt in (("pi_hat_N3", comp.get("pi_hat")), ("t4_mentions_N3_S0", comp.get("t4_mentions"))):
+        if not alt:
+            s7[name] = {"status": "NOT_COMPUTED", "reason": "t4 comparators not used (section 2.6 fallback)"}
+            continue
+        s7[name] = summary({"H1_Sep_Presence": run_leg("sep", prim["cov"], alt, SEEDS["H1_Sep_Presence"], 0, 0)})
+    out["S7_presence_alternatives"] = s7
+    out["S8_mid_p"] = summary(legs(coverage_maps(tabs["rasch"], panel, key="beta_mid"), H14))
+    out["S9_uncentred_rho_w"] = summary(legs(prim, H14, centred=False))
+    out["S10_without_Denon"] = summary(legs(prim, H14, exclude=(DENON,)))
+    return out
+
+
+# --------------------------------------------------------------------------- descriptives (section 5)
+def distribution(vals):
+    v = [float(x) for x in vals if _finite(x)]
+    if not v:
+        return {"n": 0}
+    q1, med, q3 = (float(x) for x in np.percentile(v, [25, 50, 75]))
+    return {"n": len(v), "median": med, "q1": q1, "q3": q3, "min": min(v), "max": max(v)}
+
+
+def run_reliability(A, units, design, model):
+    """rel1 = mean rho_w over the three run pairs of each brand's per-run covered-CEP share (share of the model's
+    answered CEP answers in that run naming the brand); rel3 = 3 rel1 / (1 + 2 rel1)."""
+    share = {}
+    for r in RUNS:
+        sh = {}
+        for (s, b) in units:
+            ans = [st for (s_, m, _p, rr), st in A["cep"].items() if s_ == s and m == model and rr == r]
+            sh[(s, b)] = (sum(1 for st in ans if b in st) / len(ans)) if ans else NAN
+        share[r] = sh
+    pairs = {}
+    for r1, r2 in itertools.combinations(RUNS, 2):
+        keys, x, y, g, info = paired(share[r1], share[r2])
+        pairs[f"{r1}-{r2}"] = rho_w(x, y, g) if info["n"] >= 3 else NAN
+    vals = [v for v in pairs.values() if _finite(v)]
+    rel1 = float(np.mean(vals)) if vals else NAN
+    rel3 = 3 * rel1 / (1 + 2 * rel1) if _finite(rel1) and 1 + 2 * rel1 > 0 else NAN
+    return {"rel1": rel1, "rel3": rel3, "run_pairs": pairs}
+
+
+def descriptives(A, design, tabs, units, panels, primary, raw_design):
+    d = {"note": "descriptive only; no verdicts (section 5)",
+         "non_registry_brand_mentions": "NOT COMPUTED: the pre-registration asks for a count but names no detector for "
+                                        "brands outside the registries (N28; clarification to settle at the lock)"}
+    per = {}
+    for sub in CATS:
+        for m in MODELS4:
+            cep = {k: s for k, s in A["cep"].items() if k[0] == sub and k[1] == m}
+            ctl = {k: s for k, s in A["ctl"].items() if k[0] == sub and k[1] == m}
+            texts = [r["text"] for r in A["calls"].values() if r["substrate"] == sub and r["model_requested"] == m]
+            ceps = sorted({k[2] for k in cep})
+            empty = [j for j in ceps if not any(s for k, s in cep.items() if k[2] == j)]
+            c0j = [v for k, s in cep.items() if (sub, m, k[3]) in A["ctl"]
+                   for v in [jaccard(s, A["ctl"][(sub, m, k[3])])] if v is not None]
+            betas = [tabs["full"][(sub, b, m)]["beta"] for (s, b) in units if s == sub
+                     and (sub, b, m) in tabs["full"] and tabs["full"][(sub, b, m)]["n"] >= 1]
+            per[f"{sub}|{m}"] = {
+                "cep_answers": len(cep), "control_answers": len(ctl),
+                "missing_cells": len(design["ceps"].get(sub, [])) * len(RUNS) + len(RUNS) - len(cep) - len(ctl),
+                "words_per_answer_mean": float(np.mean([len(t.split()) for t in texts])) if texts else None,
+                "registry_brands_named_per_cep_answer_mean": float(np.mean([len(s) for s in cep.values()])) if cep else None,
+                "share_of_ceps_with_no_registry_brand": len(empty) / len(ceps) if ceps else None,
+                "mean_jaccard_cep_answer_vs_C0": float(np.mean(c0j)) if c0j else None,
+                "beta_distribution": distribution(betas)}
+    d["per_category_model"] = per
+    pan = {}
+    for name, models in panels.items():
+        for sub in CATS:
+            us = [u for u in units if u[0] == sub]
+            cs = {u: cov_star(tabs["full"], sub, u[1], models) for u in us}
+            cep = {k: s for k, s in A["cep"].items() if k[0] == sub and k[1] in models}
+            ceps = sorted({k[2] for k in cep})
+            empty = [j for j in ceps if not any(s for k, s in cep.items() if k[2] == j)]
+            pan[f"{sub}|{name}"] = {
+                "models": models, "units": len(us), "rated": sum(1 for v in cs.values() if v["rated"]),
+                "cov_star": distribution([v["cov_star"] for v in cs.values()]),
+                **{f"raw_cov_k{k}": distribution([raw_cov(A["cep"], sub, u[1], models, design["ceps"][sub], k)
+                                                  for u in us]) for k in (1, 2, 3)},
+                "share_of_ceps_no_registry_brand_in_any_panel_answer": len(empty) / len(ceps) if ceps else None}
+    d["per_category_panel"] = pan
+    pm = panels[primary]
+    d["per_W_coverage_primary_panel"] = {
+        f"{u[0]}|{u[1]}": {w: sum(1 for j in design["ceps"][u[0]] if design["w"][j] == w
+                                  and sum(model_covers(A["cep"], u[0], m, j, u[1]) for m in pm) >= 2) for w in W_TYPES}
+        for u in units}
+    d["run_to_run_reliability"] = {m: run_reliability(A, units, design, m) for m in MODELS4}
+    spend = {}
+    for m in MODELS4:
+        rs = [r for r in raw_design if r.get("model_requested") == m]
+        spend[m] = {"records": len(rs), "input_tokens": int(sum(r.get("input_tokens") or 0 for r in rs)),
+                    "output_tokens": int(sum(r.get("output_tokens") or 0 for r in rs)),
+                    "thinking_tokens": int(sum(r.get("thinking_tokens") or 0 for r in rs)),
+                    "usd_billed": float(sum(r.get("usd_billed") or 0.0 for r in rs))}
+    d["tokens_and_spend"] = {"per_model": spend, "total_usd": float(sum(v["usd_billed"] for v in spend.values())),
+                             "basis": "usd_billed of every raw line (every attempt), list prices (section 6.6)"}
+    return d
+
+
+# --------------------------------------------------------------------------- orchestration
+def build_tables(A, design, brands_by_sub, models=MODELS4):
+    """beta tables: Rasch-type null (primary) and equal weights (S3), on the 14 CEPs and on each half (H4), and the
+    leave-one-W-out tables (S6)."""
+    full, halves = design["ceps"], design["half"]
+    tabs = {}
+    for null in ("rasch", "equal"):
+        tabs[null] = {"full": coverage_table(A["cep"], brands_by_sub, full, models, null),
+                      "A": coverage_table(A["cep"], brands_by_sub, halves["A"], models, null),
+                      "B": coverage_table(A["cep"], brands_by_sub, halves["B"], models, null)}
+    tabs["wout"] = {w: coverage_table(A["cep"], brands_by_sub,
+                                      {s: [p for p in full[s] if design["w"][p] != w] for s in full}, models)
+                    for w in W_TYPES}
+    return tabs
+
+
+def unit_rows(units, tabs, prim, comp, panels, primary, A, design):
+    pm = panels[primary]
+    cs_by = {name: cov_star_map(tabs["rasch"]["full"], ms) for name, ms in panels.items()}
+    mid = cov_star_map(tabs["rasch"]["full"], pm, key="beta_mid")
+    eq = cov_star_map(tabs["equal"]["full"], pm)
+    rows = []
+    for u in units:
+        c = cov_star(tabs["rasch"]["full"], u[0], u[1], pm)
+        r = {"substrate": u[0], "brand": u[1], "primary_panel": primary, "cov_star": c["cov_star"], "rated": int(c["rated"]),
+             "n_b": c["n_b"], "models_naming": c["models_naming"], "mean_beta": c["mean_beta"],
+             "pi_cov": prim["maps"]["pi"].get(u)}
+        for k in (1, 2, 3):
+            r[f"raw_cov_k{k}"] = raw_cov(A["cep"], u[0], u[1], pm, design["ceps"][u[0]], k)
+        r.update(cov_star_A=prim["maps"]["covA"].get(u), cov_star_B=prim["maps"]["covB"].get(u), cov_star_mid_S8=mid.get(u),
+                 cov_star_equal_S3=eq.get(u))
+        for name in panels:
+            r[f"cov_star_{name}"] = cs_by[name].get(u)
+        r.update(comparator_source=comp["source"], P_comparator=comp["P"].get(u), C_star_comparator=comp["C"].get(u),
+                 pi_hat_N3_S0=comp["pi_hat"].get(u), t4_mentions_N3_S0=comp["t4_mentions"].get(u),
+                 P_t3_legacy=comp["legacy_P"].get(u))
+        rows.append(r)
+    return rows
+
+
+def score_coverage(inp, cfg=None, gates=None, with_sensitivities=True):
+    """inp: raw (every v112_raw line), mentions (coded rows), registry ({sub: {key: name}}), probes, t4 (load_t4 dict or
+    None), t4_window, profiles (AIAS 2.0 profile rows), active / extra (H5, H6), h6_cross_panel, brandfree (record).
+    gates: {"P1": record, "require_p1": bool, "enforce": bool}. Returns (verdict document, unit rows)."""
+    cfg, gates = cfg or Cfg(), gates or {}
+    design = probe_design(inp["probes"])
+    raw_all = inp["raw"]
+    raw_design = [r for r in raw_all if in_design(r, design)]
+    calls = dedupe_calls(raw_all)
+    calls_design = [r for r in calls if in_design(r, design)]
+    A = build_analysis(calls, inp["mentions"], design)
+    brands = {s: list(inp["registry"][s]) for s in CATS if s in inp["registry"]}
+    units = sorted((s, b) for s in brands for b in brands[s])
+    t4 = inp.get("t4")
+    comp = choose_comparators(t4, inp.get("profiles"))
+    p1 = gates.get("P1") or {"gate": "P1", "status": "SKIPPED (not supplied)", "passed": None}
+    gate_rec = {"P1": p1, "P2": parity_p2(t4["brand_table"], t4["coded_b"], t4["excluded"]) if not comp["cross_panel"]
+                else {"gate": "P2", "status": "NOT_APPLICABLE: section 2.6 fallback comparators", "passed": None},
+                "P3": parity_p3(raw_all, design, inp.get("probes_path", PROBES_PATH))}
+    failed = [k for k, v in gate_rec.items() if v.get("passed") is False]
+    if gates.get("require_p1") and p1.get("passed") is not True:
+        failed.append("P1")
+    if gates.get("enforce", True) and failed:
+        raise Halt(f"parity gate(s) {sorted(set(failed))} failed: no v1.12 statistic is computed (section 7.2); log the "
+                   f"fix in anchor/DEVIATIONS.md first. {json.dumps(_clean({k: gate_rec[k] for k in set(failed)}))[:1500]}")
+    mcc = mc_complete(A)
+    dropped = mcc["dropped_models"]
+    primary, panels = select_panels(dropped)
+    tabs = build_tables(A, design, brands)
+    active, extra = inp.get("active") or {}, inp.get("extra") or {}
+    h6x = bool(inp.get("h6_cross_panel"))
+    prim = evaluate_panel(primary, panels[primary], tabs["rasch"], comp, A, cfg, active, extra, h6x,
+                          h8_leg(tabs["rasch"], panels, dropped, cfg))
+    repeats = {name: evaluate_panel(name, panels[name], tabs["rasch"], comp, A, cfg, active, extra, h6x)
+               for name in ("C3", "A4") if name != primary}
+    pm = panels[primary]
+    raw2 = {u: raw_cov(A["cep"], u[0], u[1], pm, design["ceps"][u[0]], 2) for u in units}
+    status = collections.Counter(v["delta_status"] for v in tabs["rasch"]["full"].values())
+    mcs = {"MC_BrandFree": inp.get("brandfree") or {"status": "run at the lock: --brandfree (anchor/mc_brandfree_v1_12.json)"},
+           "MC_Complete": mcc, "MC_Served": mc_served(A), "MC_Settings": mc_settings(raw_design, calls_design),
+           "MC_Truncation": mc_truncation(calls_design), "MC_RegistryShare": mc_registry_share(A, pm),
+           "MC_Situation": prim["MC_Situation"], "MC_Defunct": mc_defunct(A, pm),
+           "MC_Positive": mc_positive(raw2, prim["maps"]["pi"]),
+           "MC_Window": mc_window(raw_design, inp.get("t4_window") or (t4 or {}).get("window"))}
+    base = {h: prim["verdicts"][h] for h in H14}
+    doc = {"phase": PHASE_ID, "prereg": "osf/methodology/v1_12/prereg/PRE_REGISTRATION_v1_12.md", "prereg_tag": PREREG_TAG,
+           "seeds": dict(SEEDS, bootstrap=SEED_BOOT), "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
+           "panels": panels, "primary_panel": primary, "models_dropped_section_7_3": dropped,
+           "parity_gates": gate_rec, "comparators": {"source": comp["source"], "cross_panel": comp["cross_panel"],
+                                                     "reason": comp["reason"]},
+           "paper_A_verdict": prim["gate"], "verdicts": prim["verdicts"],
+           "legs": prim["legs"], "MC": mcs,
+           "delta_fits": {"status_counts": dict(status),
+                          "set_to_zero": int(sum(v for k, v in status.items() if k != "ok"))},
+           "gate_repeated_on": {n: {"models": r["models"], "gate": r["gate"], "verdicts": r["verdicts"],
+                                    "MC_Situation_passed": r["MC_Situation"]["passed"],
+                                    "rho_w": {h: l.get("rho_w") for h, l in r["legs"].items()}}
+                                for n, r in repeats.items()},
+           "analysis_set": {"answered_calls_analysed": len(A["calls"]), "outside_design": len(A["outside_design"]),
+                            "served_mismatch_excluded": len(A["served_mismatch"]),
+                            "answered_not_coded": A["answered_not_coded"][:20], "raw_lines": len(raw_all)}}
+    if with_sensitivities:
+        sens = sensitivities(tabs, pm, comp, A, design, cfg, base, active, extra)
+        doc["sensitivities"] = sens
+        doc["verdict_changes_under_sensitivities"] = {
+            k: v["verdict_changes"] for k, v in sens.items() if isinstance(v, dict) and v.get("verdict_changes")}
+    doc["descriptives"] = descriptives(A, design, tabs["rasch"], units, panels, primary, raw_design)
+    return doc, unit_rows(units, tabs, prim, comp, panels, primary, A, design)
+
+
+def _clean(o):
+    if isinstance(o, (float, np.floating)):
+        return float(o) if math.isfinite(float(o)) else None
+    if isinstance(o, np.bool_):
+        return bool(o)
+    if isinstance(o, np.integer):
+        return int(o)
+    if isinstance(o, dict):
+        return {("|".join(map(str, k)) if isinstance(k, tuple) else str(k)): _clean(v) for k, v in o.items()}
+    if isinstance(o, (set, frozenset)):
+        return [_clean(v) for v in sorted(o)]
+    if isinstance(o, (list, tuple)):
+        return [_clean(v) for v in o]
+    return o
+
+
+def write_outputs(doc, rows, verdicts_path, table_path):
+    Path(verdicts_path).parent.mkdir(parents=True, exist_ok=True)
+    Path(verdicts_path).write_text(json.dumps(_clean(doc), indent=2, ensure_ascii=False, allow_nan=False) + "\n",
+                                   encoding="utf-8")
+    fields = list(rows[0]) if rows else []
+    with open(table_path, "w", newline="", encoding="utf-8") as f:
+        w = csv.DictWriter(f, fieldnames=fields)
+        w.writeheader()
+        for r in rows:
+            w.writerow({k: ("" if v is None or (isinstance(v, float) and not math.isfinite(v)) else v) for k, v in r.items()})
+
+
+def load_t4(raw, coded, brand_table, verdicts):
+    """v0.42's locked outputs. Returns (dict or None, window of t4 or None, missing paths)."""
+    window = t4_excluded(read_jsonl(raw))[1] if Path(raw).exists() else None
+    missing = [str(p) for p in (raw, coded, brand_table, verdicts) if not Path(p).exists()]
+    if missing:
+        return None, window, missing
+    t4_raw = read_jsonl(raw)
+    excl, window = t4_excluded(t4_raw)
+    ca, cb = read_t4_coded(coded)
+    return ({"coded_a": ca, "coded_b": cb, "brand_table": read_csv_rows(brand_table), "excluded": excl,
+             "verdicts": json.loads(Path(verdicts).read_text(encoding="utf-8")), "window": window}, window, [])
+
+
+def read_extra(path):
+    return {(r["substrate"], r["brand"]): _num(r.get("value")) for r in read_csv_rows(path)} if path else None
+
+
+def _ls_remote_tag(tag):
+    r = subprocess.run(["git", "-C", str(ROOT), "ls-remote", "--tags", "origin", tag], capture_output=True, text=True,
+                       timeout=60)
+    if r.returncode != 0:
+        raise Refused(f"git ls-remote failed ({r.stderr.strip()[:200]}); cannot verify tag {tag}")
+    return r.stdout
+
+
+def tag_on_origin(tag=PREREG_TAG):
+    return f"refs/tags/{tag}" in _ls_remote_tag(tag)
+
+
+def run_score(raw_path, coded_dir, t4_paths, verdicts_path, table_path, cfg, real, extra_paths=None,
+              h6_cross_panel=False):
+    if real and not tag_on_origin():
+        raise Refused(f"tag {PREREG_TAG} is not on origin: the v1.12 record is not scored before the lock")
+    mentions, registry = read_coded(coded_dir)
+    t4, window, missing = load_t4(**t4_paths)
+    extra = {h: read_extra(p) for h, p in (extra_paths or {}).items() if p}
+    gates = {"enforce": True, "require_p1": real}
+    if P1_PATH.exists() and real:
+        gates["P1"] = json.loads(P1_PATH.read_text(encoding="utf-8")).get("v1_12")
+    bf = json.loads(BRANDFREE_PATH.read_text(encoding="utf-8")) if BRANDFREE_PATH.exists() else None
+    if bf:
+        bf.pop("registry", None)
+    inp = {"raw": read_jsonl(raw_path), "mentions": mentions, "registry": registry, "probes": load_probes(),
+           "t4": t4, "t4_window": window, "t4_missing": missing,
+           "profiles": read_csv_rows(PROFILES_PATH) if PROFILES_PATH.exists() else None,
+           "active": {h: True for h in extra}, "extra": extra, "h6_cross_panel": h6_cross_panel, "brandfree": bf}
+    doc, rows = score_coverage(inp, cfg, gates)
+    doc["inputs"] = {"raw": str(raw_path), "raw_sha256": sha256_file(raw_path), "coded": str(coded_dir),
+                     "t4": {k: str(v) for k, v in t4_paths.items()}, "t4_missing": missing,
+                     "scorer_sha256": sha256_file(__file__), "coder": verify_coder()}
+    write_outputs(doc, rows, verdicts_path, table_path)
+    return doc
+
+
 def main():
-    ap = argparse.ArgumentParser(description="AIAS v1.12 Coverage Paper A scorer (core)")
+    ap = argparse.ArgumentParser(description="AIAS v1.12 Coverage Paper A scorer")
     ap.add_argument("--calibrate-n1", action="store_true", help="run calibration N1 (section 2.4)")
-    ap.add_argument("--out", default=str(N1_PATH))
+    ap.add_argument("--code", action="store_true", help="code the Coverage answers with v0.42's coder (section 2.3)")
+    ap.add_argument("--brandfree", action="store_true", help="MC_BrandFree on the 75 probes (section 4)")
+    ap.add_argument("--parity-p1", action="store_true", help="parity gate P1 on the t3 omnibus answers (section 7.2)")
+    ap.add_argument("--synthetic", metavar="DIR", help="score DIR/v112_raw.jsonl, DIR/coded and DIR/t4/* (synthetic "
+                                                       "files only); outputs in DIR/_score")
+    ap.add_argument("--run", action="store_true", help="score the real record (refuses unless the prereg tag is on origin)")
+    ap.add_argument("--raw", default=str(RAW_PATH))
+    ap.add_argument("--coded", default=str(CODED_DIR))
+    for k, v in T4_DEFAULTS.items():
+        ap.add_argument(f"--t4-{k.replace('_', '-')}", default=str(v))
+    ap.add_argument("--h5", help="CSV substrate,brand,value: v1.10's locked R* (activates H5)")
+    ap.add_argument("--h6", help="CSV substrate,brand,value: v1.11's locked S (activates H6)")
+    ap.add_argument("--h6-cross-panel", action="store_true")
+    ap.add_argument("--draws", type=int, default=None, help="permutation/bootstrap draws (tests only)")
+    ap.add_argument("--out", default=None)
     a = ap.parse_args()
-    if not a.calibrate_n1:
-        ap.print_help()
-        return 1
-    rec = run_n1(a.out)
-    s = rec["statistic_r1"]
-    print(f"N1 {s['result']}: pooled centred rho_w(Cov*, pi_cov) = {s['pooled_centred_rho_w']:.4f} (rule |rho_w| <= "
-          f"{N1_RULE_RHO}); max |decile mean Cov* - 50| = {s['max_abs_decile_deviation_from_50']:.2f} (rule <= "
-          f"{N1_RULE_DECILE}); mean signed per-category rho = {rec['per_category_rho']['mean_signed']:.4f}; "
-          f"{s['n_units']} rated units; delta fits set to 0: {rec['delta_fit']['failures_set_to_zero']}; "
-          f"runtime {rec['runtime_seconds']} s -> {a.out}")
-    return 0 if s["result"] == "PASS" else 2
+    if a.calibrate_n1:
+        out = a.out or str(N1_PATH)
+        rec = run_n1(out)
+        s = rec["statistic_r1"]
+        print(f"N1 {s['result']}: pooled centred rho_w(Cov*, pi_cov) = {s['pooled_centred_rho_w']:.4f} (rule |rho_w| <= "
+              f"{N1_RULE_RHO}); max |decile mean Cov* - 50| = {s['max_abs_decile_deviation_from_50']:.2f} (rule <= "
+              f"{N1_RULE_DECILE}); mean signed per-category rho = {rec['per_category_rho']['mean_signed']:.4f}; "
+              f"{s['n_units']} rated units; delta fits set to 0: {rec['delta_fit']['failures_set_to_zero']}; "
+              f"runtime {rec['runtime_seconds']} s -> {out}")
+        return 0 if s["result"] == "PASS" else 2
+    try:
+        if a.code:
+            rec = run_code(a.raw, a.out or a.coded)
+            print(f"coded {rec['calls_deduplicated']} calls ({rec['answered_calls_coded']} answered) -> "
+                  f"{rec['mention_rows']} mention rows in {a.out or a.coded}")
+            return 0
+        if a.brandfree:
+            C = load_coder()
+            rec = brandfree_check(load_probes(), C)
+            out = Path(a.out or BRANDFREE_PATH)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            out.write_text(json.dumps(rec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+            print(f"MC_BrandFree {'PASS' if rec['passed'] else 'FAIL'}: {rec['probes']} probes x 5 detectors, "
+                  f"hits={rec['hits']} -> {out}")
+            return 0 if rec["passed"] else 2
+        if a.parity_p1:
+            out = Path(a.out or P1_PATH)
+            out.parent.mkdir(parents=True, exist_ok=True)
+            r = run_parity_p1(out)["v1_12"]
+            print(f"P1 {'PASS' if r['passed'] else 'FAIL'}: mention cells={r['mention_cells']} "
+                  f"mismatches={r['mention_mismatches']} -> {out}")
+            return 0 if r["passed"] else 2
+        if a.synthetic or a.run:
+            cfg = Cfg(a.draws, a.draws) if a.draws else Cfg()
+            ex = {"H5_Sep_Ranking": a.h5, "H6_Sep_Sentiment": a.h6}
+            if a.synthetic:
+                d = Path(a.synthetic).resolve()
+                t4p = {"raw": d / "t4/t4_raw.jsonl", "coded": d / "t4/coded", "brand_table": d / "t4/v42_brand_table.csv",
+                       "verdicts": d / "t4/v42_verdicts.json"}
+                doc = run_score(d / "v112_raw.jsonl", d / "coded", t4p, d / "_score/v112_verdicts.json",
+                                d / "_score/v112_unit_table.csv", cfg, False, ex, a.h6_cross_panel)
+                dest = d / "_score"
+            else:
+                t4p = {"raw": a.t4_raw, "coded": a.t4_coded, "brand_table": a.t4_brand_table, "verdicts": a.t4_verdicts}
+                doc = run_score(a.raw, a.coded, t4p, VERDICTS_PATH, UNIT_TABLE_PATH, cfg, True, ex, a.h6_cross_panel)
+                dest = VERDICTS_PATH.parent
+            print(f"Paper A: {doc['paper_A_verdict']['label']} -> {dest}")
+            for h, v in doc["verdicts"].items():
+                print(f"  {h}: {v}")
+            return 0
+    except Refused as e:
+        print(f"[v1.12] REFUSED: {e}", file=sys.stderr)
+        return 3
+    except Halt as e:
+        print(f"[v1.12] HALT: {e}", file=sys.stderr)
+        return 4
+    ap.print_help()
+    return 1
 
 
 if __name__ == "__main__":
