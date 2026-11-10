@@ -1,0 +1,159 @@
+brand,cell,cascade_order,model,probe_text,response_text,recognized,timestamp,latency_s
+Estée Lauder,A,1,claude-opus-4-5,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:46.124504+00:00,63.857
+Estée Lauder,A,1,claude-sonnet-4-5,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:46.195318+00:00,63.927
+Estée Lauder,A,1,gemini-2.5-flash,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:47.143438+00:00,64.874
+Estée Lauder,A,1,gemini-2.5-flash-lite,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:45.358808+00:00,63.089
+Estée Lauder,A,1,gpt-4o,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:46.877506+00:00,64.607
+Estée Lauder,A,1,gpt-4o-mini,Is the brand Estée Lauder commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:46.973749+00:00,64.706
+Lancôme,A,2,claude-opus-4-5,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:46.290579+00:00,0.931
+Lancôme,A,2,claude-sonnet-4-5,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:46.962579+00:00,0.838
+Lancôme,A,2,gemini-2.5-flash,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:49.189020+00:00,2.314
+Lancôme,A,2,gemini-2.5-flash-lite,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:47.168871+00:00,0.233
+Lancôme,A,2,gpt-4o,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:46.935630+00:00,0.741
+Lancôme,A,2,gpt-4o-mini,Is the brand Lancôme commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:47.168035+00:00,0.877
+La Mer,A,3,claude-opus-4-5,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:47.627220+00:00,0.664
+La Mer,A,3,claude-sonnet-4-5,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:47.766084+00:00,0.792
+La Mer,A,3,gemini-2.5-flash,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:48.764630+00:00,1.596
+La Mer,A,3,gemini-2.5-flash-lite,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:47.871481+00:00,0.258
+La Mer,A,3,gpt-4o,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:47.883667+00:00,0.740
+La Mer,A,3,gpt-4o-mini,Is the brand La Mer commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:47.612177+00:00,0.444
+Sisley,A,4,claude-opus-4-5,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:48.551094+00:00,0.924
+Sisley,A,4,claude-sonnet-4-5,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:48.486288+00:00,0.720
+Sisley,A,4,gemini-2.5-flash,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:51.067054+00:00,2.666
+Sisley,A,4,gemini-2.5-flash-lite,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:48.715117+00:00,0.229
+Sisley,A,4,gpt-4o,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:48.893417+00:00,1.024
+Sisley,A,4,gpt-4o-mini,Is the brand Sisley commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:48.393310+00:00,0.510
+Dior Beauty,A,5,claude-opus-4-5,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,No,no,2026-11-09T13:33:49.187565+00:00,0.635
+Dior Beauty,A,5,claude-sonnet-4-5,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,"No.
+
+Dior Beauty is primarily recognized as a luxury makeup and fragrance brand, though they do offer skincare products as well.",no,2026-11-09T13:33:50.610445+00:00,1.895
+Dior Beauty,A,5,gemini-2.5-flash,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:51.570951+00:00,2.384
+Dior Beauty,A,5,gemini-2.5-flash-lite,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:49.516674+00:00,0.328
+Dior Beauty,A,5,gpt-4o,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:49.655387+00:00,0.891
+Dior Beauty,A,5,gpt-4o-mini,Is the brand Dior Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:49.514332+00:00,0.621
+Chanel Beauty,A,6,claude-opus-4-5,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,"No
+
+Chanel Beauty is more commonly recognized as a makeup/cosmetics and fragrance brand rather than primarily a skincare brand, though they do offer skincare products as part of their beauty line.",no,2026-11-09T13:33:51.113573+00:00,1.599
+Chanel Beauty,A,6,claude-sonnet-4-5,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,"No.
+
+Chanel Beauty is primarily recognized as a luxury cosmetics and fragrance brand, though they do offer skincare products as part of their range.",no,2026-11-09T13:33:51.243495+00:00,1.726
+Chanel Beauty,A,6,gemini-2.5-flash,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:55.648821+00:00,5.038
+Chanel Beauty,A,6,gemini-2.5-flash-lite,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,No,no,2026-11-09T13:33:51.080324+00:00,0.251
+Chanel Beauty,A,6,gpt-4o,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:50.168309+00:00,0.513
+Chanel Beauty,A,6,gpt-4o-mini,Is the brand Chanel Beauty commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:50.828884+00:00,0.660
+La Prairie,A,7,claude-opus-4-5,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:51.758443+00:00,0.699
+La Prairie,A,7,claude-sonnet-4-5,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:51.868810+00:00,0.789
+La Prairie,A,7,gemini-2.5-flash,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:53.073296+00:00,1.503
+La Prairie,A,7,gemini-2.5-flash-lite,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:51.904170+00:00,0.237
+La Prairie,A,7,gpt-4o,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:51.666364+00:00,0.553
+La Prairie,A,7,gpt-4o-mini,Is the brand La Prairie commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:51.802161+00:00,0.559
+Clé de Peau Beauté,A,8,claude-opus-4-5,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:52.373997+00:00,0.615
+Clé de Peau Beauté,A,8,claude-sonnet-4-5,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:52.684321+00:00,0.882
+Clé de Peau Beauté,A,8,gemini-2.5-flash,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:55.001413+00:00,2.718
+Clé de Peau Beauté,A,8,gemini-2.5-flash-lite,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:52.603526+00:00,0.230
+Clé de Peau Beauté,A,8,gpt-4o,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:52.282600+00:00,0.414
+Clé de Peau Beauté,A,8,gpt-4o-mini,Is the brand Clé de Peau Beauté commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:52.459926+00:00,0.556
+Rare Beauty,B,1,claude-opus-4-5,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,No,no,2026-11-09T13:33:53.364506+00:00,0.904
+Rare Beauty,B,1,claude-sonnet-4-5,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,"No.
+
+Rare Beauty is commonly recognized as a makeup/cosmetics brand, founded by Selena Gomez. While they may have some skincare-adjacent products, they are primarily known for makeup.",no,2026-11-09T13:33:54.423947+00:00,1.819
+Rare Beauty,B,1,gemini-2.5-flash,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:55.387397+00:00,2.201
+Rare Beauty,B,1,gemini-2.5-flash-lite,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:53.602197+00:00,0.238
+Rare Beauty,B,1,gpt-4o,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:53.186174+00:00,0.501
+Rare Beauty,B,1,gpt-4o-mini,Is the brand Rare Beauty commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:53.537623+00:00,0.464
+Rhode,B,2,claude-opus-4-5,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:54.103516+00:00,0.566
+Rhode,B,2,claude-sonnet-4-5,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:54.486857+00:00,0.884
+Rhode,B,2,gemini-2.5-flash,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:55.197785+00:00,0.711
+Rhode,B,2,gemini-2.5-flash-lite,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:55.050187+00:00,0.288
+Rhode,B,2,gpt-4o,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:54.762263+00:00,0.658
+Rhode,B,2,gpt-4o-mini,Is the brand Rhode commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:55.093804+00:00,0.671
+Fenty Skin,B,3,claude-opus-4-5,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:55.645107+00:00,0.645
+Fenty Skin,B,3,claude-sonnet-4-5,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:56.007267+00:00,0.956
+Fenty Skin,B,3,gemini-2.5-flash,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:57.223984+00:00,1.837
+Fenty Skin,B,3,gemini-2.5-flash-lite,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:55.823852+00:00,0.243
+Fenty Skin,B,3,gpt-4o,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:55.580434+00:00,0.487
+Fenty Skin,B,3,gpt-4o-mini,Is the brand Fenty Skin commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:56.009065+00:00,0.812
+Goop,B,4,claude-opus-4-5,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:56.590786+00:00,0.945
+Goop,B,4,claude-sonnet-4-5,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,"No.
+
+Goop is primarily recognized as a wellness and lifestyle brand, not specifically as a skincare brand, though it does sell some skincare products among many other categories.",no,2026-11-09T13:33:57.166501+00:00,1.518
+Goop,B,4,gemini-2.5-flash,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:58.515499+00:00,2.506
+Goop,B,4,gemini-2.5-flash-lite,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:56.594076+00:00,0.276
+Goop,B,4,gpt-4o,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:56.317792+00:00,0.494
+Goop,B,4,gpt-4o-mini,Is the brand Goop commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:56.517066+00:00,0.511
+Drunk Elephant,B,5,claude-opus-4-5,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:57.338564+00:00,0.821
+Drunk Elephant,B,5,claude-sonnet-4-5,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:57.340205+00:00,0.749
+Drunk Elephant,B,5,gemini-2.5-flash,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:58.677002+00:00,1.510
+Drunk Elephant,B,5,gemini-2.5-flash-lite,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:57.441928+00:00,0.218
+Drunk Elephant,B,5,gpt-4o,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:57.163972+00:00,0.570
+Drunk Elephant,B,5,gpt-4o-mini,Is the brand Drunk Elephant commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:57.770470+00:00,0.606
+Glossier,B,6,claude-opus-4-5,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:58.143554+00:00,0.805
+Glossier,B,6,claude-sonnet-4-5,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:58.411131+00:00,1.071
+Glossier,B,6,gemini-2.5-flash,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:01.409164+00:00,3.468
+Glossier,B,6,gemini-2.5-flash-lite,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:58.382095+00:00,0.239
+Glossier,B,6,gpt-4o,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:57.941471+00:00,0.500
+Glossier,B,6,gpt-4o-mini,Is the brand Glossier commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:58.315035+00:00,0.545
+Augustinus Bader,B,7,claude-opus-4-5,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:58.955757+00:00,0.641
+Augustinus Bader,B,7,claude-sonnet-4-5,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:59.019241+00:00,0.637
+Augustinus Bader,B,7,gemini-2.5-flash,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:00.499496+00:00,1.823
+Augustinus Bader,B,7,gemini-2.5-flash-lite,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:59.167455+00:00,0.211
+Augustinus Bader,B,7,gpt-4o,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:59.076513+00:00,0.665
+Augustinus Bader,B,7,gpt-4o-mini,Is the brand Augustinus Bader commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:59.007136+00:00,0.492
+Tower 28,B,8,claude-opus-4-5,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,"No
+
+Tower 28 is commonly recognized as a **makeup/beauty brand**, known for its clean cosmetics like lip glosses, blushes, and bronzers, rather than primarily as a skincare brand (though they do offer some skincare products).",no,2026-11-09T13:34:01.472002+00:00,2.464
+Tower 28,B,8,claude-sonnet-4-5,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,"No.
+
+Tower 28 is primarily recognized as a makeup/color cosmetics brand, though they do have some skincare-adjacent products.",no,2026-11-09T13:34:00.390223+00:00,1.371
+Tower 28,B,8,gemini-2.5-flash,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:02.394994+00:00,2.763
+Tower 28,B,8,gemini-2.5-flash-lite,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:33:59.987656+00:00,0.213
+Tower 28,B,8,gpt-4o,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,No.,no,2026-11-09T13:33:59.631631+00:00,0.555
+Tower 28,B,8,gpt-4o-mini,Is the brand Tower 28 commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:33:59.774588+00:00,0.607
+SkinCeuticals,C,1,claude-opus-4-5,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:00.860546+00:00,0.873
+SkinCeuticals,C,1,claude-sonnet-4-5,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:01.052154+00:00,0.662
+SkinCeuticals,C,1,gemini-2.5-flash,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:03.769122+00:00,2.717
+SkinCeuticals,C,1,gemini-2.5-flash-lite,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:01.369923+00:00,0.292
+SkinCeuticals,C,1,gpt-4o,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:01.077745+00:00,0.579
+SkinCeuticals,C,1,gpt-4o-mini,Is the brand SkinCeuticals commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:01.403995+00:00,0.544
+La Roche-Posay,C,2,claude-opus-4-5,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:02.043298+00:00,0.673
+La Roche-Posay,C,2,claude-sonnet-4-5,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:02.206588+00:00,0.801
+La Roche-Posay,C,2,gemini-2.5-flash,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:03.414353+00:00,1.570
+La Roche-Posay,C,2,gemini-2.5-flash-lite,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:02.317885+00:00,0.279
+La Roche-Posay,C,2,gpt-4o,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:01.844079+00:00,0.434
+La Roche-Posay,C,2,gpt-4o-mini,Is the brand La Roche-Posay commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:02.038951+00:00,0.567
+Paula's Choice,C,3,claude-opus-4-5,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:02.770355+00:00,0.727
+Paula's Choice,C,3,claude-sonnet-4-5,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:03.050102+00:00,0.845
+Paula's Choice,C,3,gemini-2.5-flash,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:04.529539+00:00,1.760
+Paula's Choice,C,3,gemini-2.5-flash-lite,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:03.063008+00:00,0.257
+Paula's Choice,C,3,gpt-4o,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:02.805887+00:00,0.488
+Paula's Choice,C,3,gpt-4o-mini,Is the brand Paula's Choice commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:02.917897+00:00,0.523
+CeraVe,C,4,claude-opus-4-5,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:03.857368+00:00,0.940
+CeraVe,C,4,claude-sonnet-4-5,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:03.756759+00:00,0.706
+CeraVe,C,4,gemini-2.5-flash,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:04.754969+00:00,1.216
+CeraVe,C,4,gemini-2.5-flash-lite,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:04.024452+00:00,0.268
+CeraVe,C,4,gpt-4o,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:03.539932+00:00,0.477
+CeraVe,C,4,gpt-4o-mini,Is the brand CeraVe commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:03.945513+00:00,0.531
+The Ordinary,C,5,claude-opus-4-5,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:04.561476+00:00,0.793
+The Ordinary,C,5,claude-sonnet-4-5,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:04.748280+00:00,0.891
+The Ordinary,C,5,gemini-2.5-flash,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:05.921852+00:00,1.392
+The Ordinary,C,5,gemini-2.5-flash-lite,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:04.808935+00:00,0.248
+The Ordinary,C,5,gpt-4o,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:04.575554+00:00,0.631
+The Ordinary,C,5,gpt-4o-mini,Is the brand The Ordinary commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:04.604652+00:00,0.581
+Cetaphil,C,6,claude-opus-4-5,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:05.500343+00:00,0.925
+Cetaphil,C,6,claude-sonnet-4-5,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:05.345935+00:00,0.741
+Cetaphil,C,6,gemini-2.5-flash,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.100329+00:00,1.291
+Cetaphil,C,6,gemini-2.5-flash-lite,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:05.475933+00:00,0.259
+Cetaphil,C,6,gpt-4o,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:05.215912+00:00,0.468
+Cetaphil,C,6,gpt-4o-mini,Is the brand Cetaphil commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:05.301121+00:00,0.546
+Eucerin,C,7,claude-opus-4-5,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.278285+00:00,0.977
+Eucerin,C,7,claude-sonnet-4-5,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.080160+00:00,0.734
+Eucerin,C,7,gemini-2.5-flash,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.412535+00:00,0.491
+Eucerin,C,7,gemini-2.5-flash-lite,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.259090+00:00,0.288
+Eucerin,C,7,gpt-4o,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:05.971002+00:00,0.496
+Eucerin,C,7,gpt-4o-mini,Is the brand Eucerin commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:06.013853+00:00,0.513
+Bioderma,C,8,claude-opus-4-5,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.597985+00:00,0.584
+Bioderma,C,8,claude-sonnet-4-5,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:06.830404+00:00,0.750
+Bioderma,C,8,gemini-2.5-flash,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:08.720727+00:00,2.443
+Bioderma,C,8,gemini-2.5-flash-lite,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes,yes,2026-11-09T13:34:06.748780+00:00,0.336
+Bioderma,C,8,gpt-4o,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:06.624385+00:00,0.525
+Bioderma,C,8,gpt-4o-mini,Is the brand Bioderma commonly recognized as a skincare brand? Answer yes or no.,Yes.,yes,2026-11-09T13:34:06.900803+00:00,0.642

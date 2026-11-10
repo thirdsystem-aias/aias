@@ -1,0 +1,168 @@
+run_acquisition_v41 — installing SDK provenance tee:
+  patched: anthropic Messages.create
+  patched: openai Completions.create
+/Users/pablou/aias/_worktrees/v0.41/osf/v41/scripts/run_acquisition_v41.py:93: FutureWarning: 
+
+All support for the `google.generativeai` package has ended. It will no longer be receiving 
+updates or bug fixes. Please switch to the `google.genai` package as soon as possible.
+See README for more details:
+
+https://github.com/google-gemini/deprecated-generative-ai-python/blob/main/README.md
+
+  import google.generativeai as gga
+  patched: google.generativeai GenerativeModel.generate_content
+  patched: google.genai Models.generate_content
+
+=== v19: Phase A ===
+Phase A: 96 queries in batch (96 pending).
+Output: /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_a_responses.jsonl
+----------------------------------------------------------------------
+  [  1/96] ✓ phase_a__sennheiser__claude-opus-4-5                          1170ms  'Yes'
+  [  2/96] ✓ phase_a__sennheiser__claude-sonnet-4-5                        2516ms  'Yes.'
+  [  3/96] ✓ phase_a__sennheiser__gpt-4o                                    917ms  'Yes.'
+  [  4/96] ✓ phase_a__sennheiser__gpt-4o-mini                               834ms  'Yes.'
+  [  5/96] ✓ phase_a__sennheiser__gemini-2.5-flash                         2961ms  'Yes.'
+  [  6/96] ✓ phase_a__sennheiser__gemini-2.5-flash-lite                     245ms  'Yes'
+  [  7/96] ✓ phase_a__beyerdynamic__claude-opus-4-5                         867ms  'Yes'
+  [  8/96] ✓ phase_a__beyerdynamic__claude-sonnet-4-5                      2079ms  'Yes.'
+  [  9/96] ✓ phase_a__beyerdynamic__gpt-4o                                  629ms  'Yes.'
+  [ 10/96] ✓ phase_a__beyerdynamic__gpt-4o-mini                             548ms  'Yes.'
+  [ 11/96] ✓ phase_a__beyerdynamic__gemini-2.5-flash                       2277ms  'Yes'
+  [ 12/96] ✓ phase_a__beyerdynamic__gemini-2.5-flash-lite                   319ms  'Yes'
+  [ 13/96] ✓ phase_a__denon__claude-opus-4-5                               1105ms  'Yes'
+  [ 14/96] ✓ phase_a__denon__claude-sonnet-4-5                             2458ms  'No.'
+  [ 15/96] ✓ phase_a__denon__gpt-4o                                         711ms  'Yes.'
+  [ 16/96] ✓ phase_a__denon__gpt-4o-mini                                    599ms  'Yes.'
+  [ 17/96] ✓ phase_a__denon__gemini-2.5-flash                              5687ms  'No.  While Denon does produce well-regarded audiophile headp'
+  [ 18/96] ✓ phase_a__denon__gemini-2.5-flash-lite                          254ms  'No'
+  [ 19/96] ✓ phase_a__grado__claude-opus-4-5                               1141ms  'Yes'
+  [ 20/96] ✓ phase_a__grado__claude-sonnet-4-5                             1228ms  'Yes.'
+  [ 21/96] ✓ phase_a__grado__gpt-4o                                         815ms  'Yes.'
+  [ 22/96] ✓ phase_a__grado__gpt-4o-mini                                    675ms  'Yes.'
+  [ 23/96] ✓ phase_a__grado__gemini-2.5-flash                              3013ms  'Yes.'
+  [ 24/96] ✓ phase_a__grado__gemini-2.5-flash-lite                          245ms  'Yes'
+  [ 25/96] ✓ phase_a__sony__claude-opus-4-5                                 675ms  'Yes'
+  [ 26/96] ✓ phase_a__sony__claude-sonnet-4-5                               804ms  'No.'
+  [ 27/96] ✓ phase_a__sony__gpt-4o                                         1049ms  'No.'
+  [ 28/96] ✓ phase_a__sony__gpt-4o-mini                                     915ms  'Yes.'
+  [ 29/96] ✓ phase_a__sony__gemini-2.5-flash                               4680ms  'No.'
+  [ 30/96] ✓ phase_a__sony__gemini-2.5-flash-lite                           261ms  'No'
+  [ 31/96] ✓ phase_a__audio_technica__claude-opus-4-5                       991ms  'Yes'
+  [ 32/96] ✓ phase_a__audio_technica__claude-sonnet-4-5                    1719ms  'Yes.'
+  [ 33/96] ✓ phase_a__audio_technica__gpt-4o                                846ms  'Yes.'
+  [ 34/96] ✓ phase_a__audio_technica__gpt-4o-mini                           517ms  'Yes.'
+  [ 35/96] ✓ phase_a__audio_technica__gemini-2.5-flash                     3261ms  'Yes'
+  [ 36/96] ✓ phase_a__audio_technica__gemini-2.5-flash-lite                 216ms  'Yes'
+  [ 37/96] ✓ phase_a__stax__claude-opus-4-5                                 715ms  'Yes'
+  [ 38/96] ✓ phase_a__stax__claude-sonnet-4-5                              1218ms  'Yes.'
+  [ 39/96] ✓ phase_a__stax__gpt-4o                                          578ms  'Yes.'
+  [ 40/96] ✓ phase_a__stax__gpt-4o-mini                                     546ms  'Yes.'
+  [ 41/96] ✓ phase_a__stax__gemini-2.5-flash                               2897ms  'Yes'
+  [ 42/96] ✓ phase_a__stax__gemini-2.5-flash-lite                           299ms  'No'
+  [ 43/96] ✓ phase_a__koss__claude-opus-4-5                                 794ms  'Yes'
+  [ 44/96] ✓ phase_a__koss__claude-sonnet-4-5                              1025ms  'No.'
+  [ 45/96] ✓ phase_a__koss__gpt-4o                                          547ms  'No.'
+  [ 46/96] ✓ phase_a__koss__gpt-4o-mini                                     578ms  'Yes.'
+  [ 47/96] ✓ phase_a__koss__gemini-2.5-flash                               5570ms  'No.  While Koss has a long history and some specific models '
+  [ 48/96] ✓ phase_a__koss__gemini-2.5-flash-lite                           218ms  'No'
+  [ 49/96] ✓ phase_a__audeze__claude-opus-4-5                               935ms  'Yes'
+  [ 50/96] ✓ phase_a__audeze__claude-sonnet-4-5                             724ms  'Yes.'
+  [ 51/96] ✓ phase_a__audeze__gpt-4o                                        579ms  'Yes.'
+  [ 52/96] ✓ phase_a__audeze__gpt-4o-mini                                   442ms  'Yes.'
+  [ 53/96] ✓ phase_a__audeze__gemini-2.5-flash                             3365ms  'Yes.'
+  [ 54/96] ✓ phase_a__audeze__gemini-2.5-flash-lite                         345ms  'Yes'
+  [ 55/96] ✓ phase_a__hifiman__claude-opus-4-5                             1033ms  'Yes'
+  [ 56/96] ✓ phase_a__hifiman__claude-sonnet-4-5                            837ms  'Yes.'
+  [ 57/96] ✓ phase_a__hifiman__gpt-4o                                       586ms  'Yes.'
+  [ 58/96] ✓ phase_a__hifiman__gpt-4o-mini                                  512ms  'Yes.'
+  [ 59/96] ✓ phase_a__hifiman__gemini-2.5-flash                            2166ms  'Yes.'
+  [ 60/96] ✓ phase_a__hifiman__gemini-2.5-flash-lite                        494ms  'Yes'
+  [ 61/96] ✓ phase_a__focal__claude-opus-4-5                               1123ms  'Yes'
+  [ 62/96] ✓ phase_a__focal__claude-sonnet-4-5                             1025ms  'Yes.'
+  [ 63/96] ✓ phase_a__focal__gpt-4o                                         714ms  'Yes.'
+  [ 64/96] ✓ phase_a__focal__gpt-4o-mini                                    715ms  'Yes.'
+  [ 65/96] ✓ phase_a__focal__gemini-2.5-flash                              2455ms  'Yes.'
+  [ 66/96] ✓ phase_a__focal__gemini-2.5-flash-lite                          260ms  'Yes'
+  [ 67/96] ✓ phase_a__meze__claude-opus-4-5                                 767ms  'Yes'
+  [ 68/96] ✓ phase_a__meze__claude-sonnet-4-5                               949ms  'Yes.'
+  [ 69/96] ✓ phase_a__meze__gpt-4o                                          675ms  'Yes.'
+  [ 70/96] ✓ phase_a__meze__gpt-4o-mini                                     729ms  'Yes.'
+  [ 71/96] ✓ phase_a__meze__gemini-2.5-flash                               1702ms  'Yes'
+  [ 72/96] ✓ phase_a__meze__gemini-2.5-flash-lite                           445ms  'Yes'
+  [ 73/96] ✓ phase_a__zmf_headphones__claude-opus-4-5                      1024ms  'Yes'
+  [ 74/96] ✓ phase_a__zmf_headphones__claude-sonnet-4-5                     942ms  'Yes.'
+  [ 75/96] ✓ phase_a__zmf_headphones__gpt-4o                                530ms  'Yes.'
+  [ 76/96] ✓ phase_a__zmf_headphones__gpt-4o-mini                           705ms  'Yes.'
+  [ 77/96] ✓ phase_a__zmf_headphones__gemini-2.5-flash                     2525ms  'Yes.'
+  [ 78/96] ✓ phase_a__zmf_headphones__gemini-2.5-flash-lite                 280ms  'Yes'
+  [ 79/96] ✓ phase_a__spirit_torino__claude-opus-4-5                        746ms  'Yes'
+  [ 80/96] ✓ phase_a__spirit_torino__claude-sonnet-4-5                      879ms  'Yes.'
+  [ 81/96] ✓ phase_a__spirit_torino__gpt-4o                                 759ms  'Yes.'
+  [ 82/96] ✓ phase_a__spirit_torino__gpt-4o-mini                            642ms  'Yes.'
+  [ 83/96] ✓ phase_a__spirit_torino__gemini-2.5-flash                      2971ms  'No.'
+  [ 84/96] ✓ phase_a__spirit_torino__gemini-2.5-flash-lite                  266ms  'Yes'
+  [ 85/96] ✓ phase_a__final_audio__claude-opus-4-5                         1133ms  'Yes'
+  [ 86/96] ✓ phase_a__final_audio__claude-sonnet-4-5                        951ms  'Yes.'
+  [ 87/96] ✓ phase_a__final_audio__gpt-4o                                   791ms  'Yes.'
+  [ 88/96] ✓ phase_a__final_audio__gpt-4o-mini                              716ms  'Yes.'
+  [ 89/96] ✓ phase_a__final_audio__gemini-2.5-flash                        2190ms  'Yes.'
+  [ 90/96] ✓ phase_a__final_audio__gemini-2.5-flash-lite                    291ms  'Yes'
+  [ 91/96] ✓ phase_a__dan_clark_audio__claude-opus-4-5                      997ms  'Yes'
+  [ 92/96] ✓ phase_a__dan_clark_audio__claude-sonnet-4-5                   1013ms  'Yes.'
+  [ 93/96] ✓ phase_a__dan_clark_audio__gpt-4o                               726ms  'Yes.'
+  [ 94/96] ✓ phase_a__dan_clark_audio__gpt-4o-mini                          612ms  'Yes.'
+  [ 95/96] ✓ phase_a__dan_clark_audio__gemini-2.5-flash                    3196ms  'Yes.'
+  [ 96/96] ✓ phase_a__dan_clark_audio__gemini-2.5-flash-lite                242ms  'Yes'
+----------------------------------------------------------------------
+Phase A acquisition complete.
+  Successes: 96
+  Errors:    0
+  Output:    /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_a_responses.jsonl
+=== v19: Phase B ===
+Phase B: 36 queries in batch (36 pending).
+Output: /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_b_responses.jsonl
+----------------------------------------------------------------------
+  [  1/36] ✓ phase_b__q1_audiophile__claude-opus-4-5                       8553ms  '# Top Audiophile Headphones  ## Open-Back (Best for Home Lis'
+  [  2/36] ✓ phase_b__q1_audiophile__claude-sonnet-4-5                    12109ms  '# Best Audiophile Headphones  Here are some highly regarded '
+  [  3/36] ✓ phase_b__q1_audiophile__gpt-4o                                8252ms  'Audiophile headphones are designed to deliver the highest qu'
+  [  4/36] ✓ phase_b__q1_audiophile__gpt-4o-mini                          10137ms  'Audiophile headphones are designed to deliver superior sound'
+  [  5/36] ✓ phase_b__q1_audiophile__gemini-2.5-flash                      5528ms  '"Best" in audiophile headphones is highly subjective, depend'
+  [  6/36] ✓ phase_b__q1_audiophile__gemini-2.5-flash-lite                 4712ms  'The "best" audiophile headphones are a deeply personal and o'
+  [  7/36] ✓ phase_b__q2_enthusiast__claude-opus-4-5                       6520ms  '# Recommended Headphone Brands for Serious Listening  Here a'
+  [  8/36] ✓ phase_b__q2_enthusiast__claude-sonnet-4-5                    10914ms  '# High-Quality Headphones for Serious Listening  ## Over-Ear'
+  [  9/36] ✓ phase_b__q2_enthusiast__gpt-4o                                4015ms  "For serious music listening, you'll want headphones that off"
+  [ 10/36] ✓ phase_b__q2_enthusiast__gpt-4o-mini                           5685ms  'When it comes to high-quality headphones for serious music l'
+  [ 11/36] ✓ phase_b__q2_enthusiast__gemini-2.5-flash                      5532ms  "For serious music listening, you're looking for headphones t"
+  [ 12/36] ✓ phase_b__q2_enthusiast__gemini-2.5-flash-lite                 3633ms  'For serious music listening, the goal is to find headphones '
+  [ 13/36] ✓ phase_b__q3_reference__claude-opus-4-5                        6558ms  'Here are headphones widely considered reference-grade by aud'
+  [ 14/36] ✓ phase_b__q3_reference__claude-sonnet-4-5                     10333ms  '# Reference-Grade Headphones  Here are headphones widely con'
+  [ 15/36] ✓ phase_b__q3_reference__gpt-4o                                 2817ms  'Audiophiles and reviewers often consider the following headp'
+  [ 16/36] ✓ phase_b__q3_reference__gpt-4o-mini                            7082ms  'Audiophiles and reviewers often classify certain headphones '
+  [ 17/36] ✓ phase_b__q3_reference__gemini-2.5-flash                       5713ms  'Audiophiles and reviewers consider "reference-grade" headpho'
+  [ 18/36] ✓ phase_b__q3_reference__gemini-2.5-flash-lite                  4461ms  'Audiophiles and reviewers consider headphones "reference-gra'
+  [ 19/36] ✓ phase_b__q4_famous__claude-opus-4-5                           4229ms  'Here are some of the most famous headphone brands:  **Premiu'
+  [ 20/36] ✓ phase_b__q4_famous__claude-sonnet-4-5                         7378ms  '# Most Famous Headphone Brands  Here are the leading headpho'
+  [ 21/36] ✓ phase_b__q4_famous__gpt-4o                                    3868ms  'There are several headphone brands that are well-known for t'
+  [ 22/36] ✓ phase_b__q4_famous__gpt-4o-mini                               4126ms  'Some of the most famous headphone brands known for their qua'
+  [ 23/36] ✓ phase_b__q4_famous__gemini-2.5-flash                          5630ms  'When it comes to famous headphone brands, several stand out '
+  [ 24/36] ✓ phase_b__q4_famous__gemini-2.5-flash-lite                     3857ms  'The headphone market is vast and diverse, with brands excell'
+  [ 25/36] ✓ phase_b__q5_popular__claude-opus-4-5                          7101ms  'Here are some of the most well-known headphone brands among '
+  [ 26/36] ✓ phase_b__q5_popular__claude-sonnet-4-5                        7573ms  '# Most Well-Known Headphone Brands  Among general consumers,'
+  [ 27/36] ✓ phase_b__q5_popular__gpt-4o                                   4099ms  'Several headphone brands are widely recognized among general'
+  [ 28/36] ✓ phase_b__q5_popular__gpt-4o-mini                              6132ms  'As of October 2023, several headphone brands are particularl'
+  [ 29/36] ✓ phase_b__q5_popular__gemini-2.5-flash                         5765ms  'Among general consumers, the most well-known headphone brand'
+  [ 30/36] ✓ phase_b__q5_popular__gemini-2.5-flash-lite                    3395ms  "When it comes to general consumers, meaning people who aren'"
+  [ 31/36] ✓ phase_b__q6_iconic__claude-opus-4-5                           8230ms  'This is an interesting question that touches on brand awaren'
+  [ 32/36] ✓ phase_b__q6_iconic__claude-sonnet-4-5                         7811ms  '# Headphone Brands with Strong Cultural Recognition  ## Top '
+  [ 33/36] ✓ phase_b__q6_iconic__gpt-4o                                    4027ms  'Several headphone brands have strong cultural recognition du'
+  [ 34/36] ✓ phase_b__q6_iconic__gpt-4o-mini                               4160ms  'Several headphone brands have achieved strong cultural recog'
+  [ 35/36] ✓ phase_b__q6_iconic__gemini-2.5-flash                          6040ms  'When it comes to the strongest cultural recognition, meaning'
+  [ 36/36] ✓ phase_b__q6_iconic__gemini-2.5-flash-lite                     4403ms  'Several headphone brands have achieved significant cultural '
+----------------------------------------------------------------------
+Phase B acquisition complete.
+  Successes: 36
+  Errors:    0
+  Output:    /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19/phase_b_responses.jsonl
+=== v19: acquisition done -> /Users/pablou/aias/_worktrees/v0.41/osf/v41/data/v19 (parse to results.csv done separately) ===
+
+run_acquisition_v41: complete for ['v19']

@@ -3,9 +3,10 @@ v0.41 - Long-Horizon Stability t1->t2->t3: A Last Wave on the Retiring Six-Model
 Pre-Registration Content Module
 AIAS(TM) Measurement Program - Third System(TM)
 
-DRAFT r1 (Nov 9, 2026; amended the same day while building the scorer, see
-SCORER_NOTES) - NOT LOCKED. Lock = tag v0.41-prereg-r1, pushed, plus the
-OSF deposit of osf/v41/prereg/, before the first study call (Pablo's go).
+LOCKED r1 (Nov 9, 2026; amended the same day while building the scorer, see
+SCORER_NOTES, before the lock). Lock = tag v0.41-prereg-r1, pushed, plus the OSF
+deposit of osf/v41/prereg/, before the first study call (Pablo's go, Nov 9, 12:15 am CT).
+Locked together with v1.9 (tag v1.9-prereg-r1), whose Stage 2 uses these t3 data.
 
 PROSPECTIVE LONGITUDINAL re-acquisition (third wave). Full re-acquisition at t3
 (November 2026) of the five panel-uniform omnibus substrates first acquired at t1
@@ -37,7 +38,7 @@ PREREG_TAG = "v0.41-prereg-r1"
 # Temporal anchors -----------------------------------------------------------
 T1 = "original substrate-phase acquisition, 2026-05-20..05-26 (per substrate below)"
 T2 = "v0.34 re-acquisition, 2026-06-10 14:07-17:14 UTC (osf/v34/data/v34_provenance.csv)"
-T3 = "v0.41 re-acquisition, first call >= the anchored lock (planned 2026-11-17..11-21), recorded at run time"
+T3 = "v0.41 re-acquisition, first call after the anchored lock (2026-11-09, brought forward from the planned 2026-11-17..21 by Pablo's go), recorded at run time"
 
 LINEAGE = """
 t1 substrate lineage: v0.19 audiophile headphones (SSRN 6809182), v0.20 skincare
@@ -148,7 +149,7 @@ ACQUISITION = {
                    "(support ended upstream; still served on 2026-11-09, 18/18 feasibility "
                    "calls ok); it is kept to honour the verbatim commitment.",
     "window": "One continuous run of all five substrates (t2 took ~3 h), after the lock is "
-              "anchored and outside v0.40's acquisition window, no later than 2026-11-21. "
+              "anchored (2026-11-09, before v0.40's acquisition starts), no later than 2026-11-21. "
               "Transient failures (network, 429, 5xx) are retried with the same prompt, "
               "alias and parameters and logged; auth or quota failures halt the run.",
     "byte_fidelity_lock": "osf/v41/prereg/acquisition_manifest_v41.md (8 SHA-256 checksums; "
@@ -165,8 +166,8 @@ DESIGN = {
         "(path C), with the same recognition judge as t1/t2. phi and J use the v1.8 "
         "kernel as carried verbatim into score_v0_37.py (phi_of, jaccard_of)."
     ),
-    "waves": ["t1 (May 2026)", "t2 (2026-06-10)", "t3 (planned 2026-11-17..21)"],
-    "delta_t_days_approx": {"t1->t2": "15-21", "t2->t3": "~160", "t1->t3": "~175-185"},
+    "waves": ["t1 (May 2026)", "t2 (2026-06-10)", "t3 (2026-11-09)"],
+    "delta_t_days_approx": {"t1->t2": "15-21", "t2->t3": "~152", "t1->t3": "~167-173"},
     "delta_t_role": "Descriptive covariate; the horizon contrast is H_Horizon_Decay.",
 }
 
@@ -394,6 +395,6 @@ DEVIATIONS = [
                             "(5) osf_upload.py osf/v41/prereg -> osf.io/ec6wh/v41/prereg/; "
                             "(6) verify BOTH remotes resolve; (7) ONLY THEN the first t3 call. "
                             "OSF_TOKEN confirmed present before (5)."),
-        "lock_state": "DRAFT (not locked)",
+        "lock_state": "LOCKED r1 (2026-11-09)",
     },
 ]

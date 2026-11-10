@@ -1,0 +1,533 @@
+{
+  "phase": "v0.41",
+  "title": "Long-Horizon Stability t1->t2->t3",
+  "prereg_tag": "v0.41-prereg-r1",
+  "locks": {
+    "presence": "v1.6",
+    "consistency": "v1.8"
+  },
+  "panel": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "panel_used": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite"
+  ],
+  "models_dropped": [],
+  "seeds": {
+    "phi": 410041,
+    "bootstrap": 410042,
+    "presence": 410043,
+    "drift": 410044
+  },
+  "mc_draws": 10000,
+  "bootstrap_resamples": 10000,
+  "parity_gates": {
+    "reference_files": {
+      "v1_8_instrument_table.csv": {
+        "sha256": "2d0ea5e83b01a39d1b120fe75b79178b78c85a649837f0d40a473a38f041f6e6",
+        "match": true
+      },
+      "v1_8_verdicts.json": {
+        "sha256": "a280385f1868cfdff06d6c3dfae6eb4288fb1a6ad01129d6d23320a3b88b7e78",
+        "match": true
+      }
+    },
+    "P1": {
+      "gate": "P1",
+      "passed": true,
+      "rows_checked": 112,
+      "max_abs_diff": 0.0,
+      "k_vector_mismatches_info_only": 0,
+      "problems": []
+    },
+    "P2": {
+      "gate": "P2",
+      "passed": true,
+      "rho": 0.6453869683902721,
+      "n": 83,
+      "reference": {
+        "rho": 0.6453869683902722,
+        "n": 83,
+        "prereg": [
+          0.6454,
+          83
+        ]
+      }
+    },
+    "P3": {
+      "gate": "P3",
+      "passed": true,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.4191691916696407,
+          "n": 8,
+          "ref_rho": 0.4191691916696407,
+          "ref_n": 8,
+          "match": true
+        },
+        "v0.20": {
+          "rho": 0.7833333333333333,
+          "n": 9,
+          "ref_rho": 0.7833333333333333,
+          "ref_n": 9,
+          "match": true
+        },
+        "v0.21": {
+          "rho": 0.8901098901098901,
+          "n": 13,
+          "ref_rho": 0.8901098901098902,
+          "ref_n": 13,
+          "match": true
+        },
+        "v0.22": {
+          "rho": 0.9601793410322754,
+          "n": 14,
+          "ref_rho": 0.9601793410322754,
+          "ref_n": 14,
+          "match": true
+        },
+        "v0.23": {
+          "rho": 0.7615129419677079,
+          "n": 9,
+          "ref_rho": 0.7615129419677079,
+          "ref_n": 9,
+          "match": true
+        }
+      },
+      "failed": []
+    },
+    "P4": {
+      "gate": "P4",
+      "passed": true,
+      "artifacts": {
+        "osf/v19/phase_a_queries.jsonl": {
+          "sha256": "276f8f5c16a9b28e813842601b5ecc416b78e6948bfefdf2df7d617b658c687e",
+          "match": true
+        },
+        "osf/v19/phase_b_queries.jsonl": {
+          "sha256": "75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188",
+          "match": true
+        },
+        "osf/v19/thresholds_v0_19.json": {
+          "sha256": "542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61",
+          "match": true
+        },
+        "prereg/v0_20_registry.json": {
+          "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+          "match": true
+        },
+        "prereg/v0_21_registry.json": {
+          "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+          "match": true
+        },
+        "prereg/v0_22_automotive_content.py": {
+          "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+          "match": true
+        },
+        "scripts/run_acquisition_v22.py": {
+          "sha256": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe",
+          "match": true
+        },
+        "scripts/acquire_v0_23.py": {
+          "sha256": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+          "match": true
+        }
+      },
+      "failed": []
+    },
+    "all_passed": true
+  },
+  "manipulation_checks": {
+    "MC_ProbeParity": {
+      "status": "PASS",
+      "source": "PARITY P4 recomputed at scoring"
+    },
+    "MC_Snapshot": {
+      "status": "PASS",
+      "per_model": {
+        "claude-opus-4-5": {
+          "t2": "claude-opus-4-5-20251101",
+          "t3": [
+            "claude-opus-4-5-20251101"
+          ],
+          "match": true
+        },
+        "claude-sonnet-4-5": {
+          "t2": "claude-sonnet-4-5-20250929",
+          "t3": [
+            "claude-sonnet-4-5-20250929"
+          ],
+          "match": true
+        },
+        "gpt-4o": {
+          "t2": "gpt-4o-2024-08-06",
+          "t3": [
+            "gpt-4o-2024-08-06"
+          ],
+          "match": true
+        },
+        "gpt-4o-mini": {
+          "t2": "gpt-4o-mini-2024-07-18",
+          "t3": [
+            "gpt-4o-mini-2024-07-18"
+          ],
+          "match": true
+        }
+      },
+      "n_match": 4,
+      "mismatched": []
+    },
+    "MC_Completeness": {
+      "expected_total": 852,
+      "ok_total": 852,
+      "status": "PASS",
+      "per_model": {
+        "claude-opus-4-5": {
+          "expected": 142,
+          "ok": 142
+        },
+        "claude-sonnet-4-5": {
+          "expected": 142,
+          "ok": 142
+        },
+        "gpt-4o": {
+          "expected": 142,
+          "ok": 142
+        },
+        "gpt-4o-mini": {
+          "expected": 142,
+          "ok": 142
+        },
+        "gemini-2.5-flash": {
+          "expected": 142,
+          "ok": 142
+        },
+        "gemini-2.5-flash-lite": {
+          "expected": 142,
+          "ok": 142
+        }
+      },
+      "unavailable_models": [],
+      "partially_failed_models": [],
+      "short_cells": []
+    },
+    "MC_Truncation": {
+      "status": "DESCRIPTIVE",
+      "per_model": {
+        "gemini-2.5-flash-lite": {
+          "calls": 164,
+          "truncated": 10,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.06097560975609756
+        },
+        "claude-opus-4-5": {
+          "calls": 164,
+          "truncated": 18,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.10975609756097561
+        },
+        "claude-sonnet-4-5": {
+          "calls": 193,
+          "truncated": 1,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.0051813471502590676
+        },
+        "gpt-4o": {
+          "calls": 164,
+          "truncated": 0,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.0
+        },
+        "gpt-4o-mini": {
+          "calls": 164,
+          "truncated": 0,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.0
+        },
+        "gemini-2.5-flash": {
+          "calls": 164,
+          "truncated": 58,
+          "finish_reason_missing": 0,
+          "share_truncated": 0.35365853658536583
+        }
+      },
+      "note": "t1/t2 recorded no finish reasons; no wave contrast"
+    }
+  },
+  "verdicts": {
+    "H_Phi_LongHorizon": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.6806643811207408,
+      "p_perm": 9.999000099990002e-05,
+      "p_mc_se": 9.999000099990002e-05,
+      "n": 80,
+      "frame_structure_null": {
+        "p_frame": 9.999000099990002e-05,
+        "null_mean": 0.35709488073921136,
+        "null_p95": 0.5094847360022983,
+        "null_max": 0.6607237276546056,
+        "draws": 10000,
+        "seed": 410045
+      },
+      "rule": "CONFIRMED iff rho >= 0.50 AND p_perm < .05 AND p_frame < .05 (SCORER_NOTES S2); FALSIFIED iff rho < 0.30 OR p_perm >= .05; else MARGINAL",
+      "n_per_substrate": {
+        "v0.19": 12,
+        "v0.20": 16,
+        "v0.21": 19,
+        "v0.22": 15,
+        "v0.23": 18
+      },
+      "sensitivity": {
+        "pooled_within_substrate_rank_rho": 0.6286151995058789,
+        "leave_one_substrate_out": {
+          "v0.19": 0.6541579058741032,
+          "v0.20": 0.7296036617198862,
+          "v0.21": 0.6787881885053477,
+          "v0.22": 0.6371540981959121,
+          "v0.23": 0.6847405507724452
+        },
+        "loso_range": [
+          0.6371540981959121,
+          0.7296036617198862
+        ]
+      }
+    },
+    "H_Presence_LongHorizon": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "n_ge_070": 5,
+      "n_lt_050": 0,
+      "n_undefined": 0,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.9439504065480042,
+          "p_perm": 9.999000099990002e-05,
+          "n": 16
+        },
+        "v0.20": {
+          "rho": 0.9411548284163881,
+          "p_perm": 9.999000099990002e-05,
+          "n": 24
+        },
+        "v0.21": {
+          "rho": 0.9413869294719631,
+          "p_perm": 9.999000099990002e-05,
+          "n": 24
+        },
+        "v0.22": {
+          "rho": 0.9764816297124751,
+          "p_perm": 9.999000099990002e-05,
+          "n": 24
+        },
+        "v0.23": {
+          "rho": 0.9268276971279107,
+          "p_perm": 9.999000099990002e-05,
+          "n": 24
+        }
+      }
+    },
+    "H_Horizon_Decay": {
+      "tier": "SECONDARY",
+      "phi": {
+        "n": 80,
+        "rho_t1_t2": 0.6563074188904829,
+        "rho_t1_t3": 0.6378001341617113,
+        "D": 0.01850728472877161,
+        "ci95": [
+          -0.13234909098437841,
+          0.16814289938386334
+        ],
+        "boot_dropped_degenerate": 0,
+        "verdict": "MARGINAL"
+      },
+      "pi_hat": {
+        "n": 112,
+        "rho_t1_t2": 0.9653753616072284,
+        "rho_t1_t3": 0.9630744176166537,
+        "D": 0.0023009439905746776,
+        "ci95": [
+          -0.025439812488873264,
+          0.032393237759366915
+        ],
+        "boot_dropped_degenerate": 0,
+        "verdict": "MARGINAL"
+      },
+      "reported_alongside": {
+        "phi": {
+          "t1_t2": {
+            "rho": 0.6453869683902721,
+            "n": 83,
+            "statistic": "pooled Spearman"
+          },
+          "t2_t3": {
+            "rho": 0.6806643811207408,
+            "n": 80,
+            "statistic": "pooled Spearman"
+          },
+          "t1_t3": {
+            "rho": 0.6351356004674689,
+            "n": 81,
+            "statistic": "pooled Spearman"
+          }
+        },
+        "pi_hat": {
+          "t1_t2": {
+            "rho": 0.9653753616072284,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          },
+          "t2_t3": {
+            "rho": 0.9484577961604258,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          },
+          "t1_t3": {
+            "rho": 0.9630744176166537,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          }
+        },
+        "J": {
+          "t1_t2": {
+            "rho": 0.7186990539951229,
+            "n": 71,
+            "statistic": "pooled Spearman"
+          },
+          "t2_t3": {
+            "rho": 0.8007361066949132,
+            "n": 69,
+            "statistic": "pooled Spearman"
+          },
+          "t1_t3": {
+            "rho": 0.799588068550369,
+            "n": 69,
+            "statistic": "pooled Spearman"
+          }
+        },
+        "C_P": {
+          "t1_t2": {
+            "rho": 0.9566776162908305,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          },
+          "t2_t3": {
+            "rho": 0.865220775006494,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          },
+          "t1_t3": {
+            "rho": 0.8955126958549771,
+            "n": 112,
+            "statistic": "pooled within-substrate-rank Spearman"
+          }
+        }
+      }
+    },
+    "H_Drift_Dissociation": {
+      "tier": "SECONDARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.03239999371046976,
+      "p_perm_two_sided": 0.7773222677732227,
+      "p_mc_se": 0.004160436993839914,
+      "n": 80,
+      "baseline_coupling_t2_rho": 0.15148228106230816,
+      "baseline_note": "rho(phi_t2, pi_hat_t2) on within-substrate percentile ranks; descriptive, not verdict-bearing"
+    },
+    "H_Phantom_LongPersistence": {
+      "tier": "TERTIARY (descriptive)",
+      "verdict": "DESCRIPTIVE",
+      "per_substrate": {
+        "v0.19": {
+          "t2_phantom": 8,
+          "retained_t3": 8,
+          "proportion": 1.0
+        },
+        "v0.20": {
+          "t2_phantom": 15,
+          "retained_t3": 15,
+          "proportion": 1.0
+        },
+        "v0.21": {
+          "t2_phantom": 10,
+          "retained_t3": 9,
+          "proportion": 0.9
+        },
+        "v0.22": {
+          "t2_phantom": 10,
+          "retained_t3": 10,
+          "proportion": 1.0
+        },
+        "v0.23": {
+          "t2_phantom": 15,
+          "retained_t3": 14,
+          "proportion": 0.9333333333333333
+        }
+      },
+      "pooled": {
+        "t2_phantom": 58,
+        "retained_t3": 56,
+        "proportion": 0.9655172413793104
+      },
+      "v0_34_reference_t1_t2": "56/57"
+    }
+  },
+  "snapshot_sensitivity": null,
+  "delta_t": [
+    {
+      "substrate": "v0.19",
+      "t1": "2026-05-20",
+      "t2": "2026-06-10",
+      "t3": "2026-11-09",
+      "days_t1_t2": 21,
+      "days_t2_t3": 152,
+      "days_t1_t3": 173
+    },
+    {
+      "substrate": "v0.20",
+      "t1": "2026-05-21",
+      "t2": "2026-06-10",
+      "t3": "2026-11-09",
+      "days_t1_t2": 20,
+      "days_t2_t3": 152,
+      "days_t1_t3": 172
+    },
+    {
+      "substrate": "v0.21",
+      "t1": "2026-05-22",
+      "t2": "2026-06-10",
+      "t3": "2026-11-09",
+      "days_t1_t2": 19,
+      "days_t2_t3": 152,
+      "days_t1_t3": 171
+    },
+    {
+      "substrate": "v0.22",
+      "t1": "2026-05-25",
+      "t2": "2026-06-10",
+      "t3": "2026-11-09",
+      "days_t1_t2": 16,
+      "days_t2_t3": 152,
+      "days_t1_t3": 168
+    },
+    {
+      "substrate": "v0.23",
+      "t1": "2026-05-26",
+      "t2": "2026-06-10",
+      "t3": "2026-11-09",
+      "days_t1_t2": 15,
+      "days_t2_t3": 152,
+      "days_t1_t3": 167
+    }
+  ]
+}

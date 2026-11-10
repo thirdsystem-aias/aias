@@ -2,8 +2,8 @@
 
 **Phase:** v0.41 — Long-Horizon Stability t₁→t₂→t₃ (last wave on the retiring six-model panel)
 **Prepared:** 2026-11-09 · **Branch base:** `66db425` (branch v0.39 tip, the v0.23 erratum commit)
-**Status:** PRE-EXECUTION RECORD (draft r1). No t₃ runner has executed. Anchored with the
-pre-registration (`v0.41-prereg-r1`) before the first study call.
+**Status:** PRE-EXECUTION RECORD (locked r1, 2026-11-09). No t₃ runner has executed. Anchored with
+the pre-registration (`v0.41-prereg-r1`) before the first study call.
 
 ## Probe-set provenance + checksums (SHA-256)
 
@@ -55,12 +55,12 @@ gemini-2.5-flash and gemini-2.5-flash-lite (undated, as at t₂). No study probe
 
 ## Δt
 
-| Substrate | t₁ | t₂ | t₃ (planned) | t₂→t₃ (days, approx) |
+| Substrate | t₁ | t₂ | t₃ | t₂→t₃ (days) |
 |---|---|---|---|---|
-| v0.19 | 2026-05-20 | 2026-06-10 | 2026-11-17..21 | ~160 |
-| v0.20 | 2026-05-21 | 2026-06-10 | 2026-11-17..21 | ~160 |
-| v0.21 | 2026-05-22 | 2026-06-10 | 2026-11-17..21 | ~160 |
-| v0.22 | 2026-05-25 | 2026-06-10 | 2026-11-17..21 | ~160 |
-| v0.23 | 2026-05-26 | 2026-06-10 | 2026-11-17..21 | ~160 |
+| v0.19 | 2026-05-20 | 2026-06-10 | 2026-11-09 | 152 |
+| v0.20 | 2026-05-21 | 2026-06-10 | 2026-11-09 | 152 |
+| v0.21 | 2026-05-22 | 2026-06-10 | 2026-11-09 | 152 |
+| v0.22 | 2026-05-25 | 2026-06-10 | 2026-11-09 | 152 |
+| v0.23 | 2026-05-26 | 2026-06-10 | 2026-11-09 | 152 |
 
 Deadline: complete before 2026-11-24 (earliest Claude Opus 4.5 retirement).
