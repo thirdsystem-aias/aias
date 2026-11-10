@@ -1,0 +1,25 @@
+call_anthropic_current sampling params present: none (temperature/top_p/top_k not sent)
+model              cond phase run1 run2 run3  total
+claude-fable-5-2   S0   A      112  112  112    336
+claude-fable-5-2   S0   B       30   30   30     90
+claude-fable-5-2   S1   A      112  112  112    336
+claude-fable-5-2   S1   B       30   30   30     90
+claude-opus-5-5    S0   A      112  112  112    336
+claude-opus-5-5    S0   B       30   30   30     90
+claude-opus-5-5    S1   A      112  112  112    336
+claude-opus-5-5    S1   B       30   30   30     90
+gpt-6-astra        S0   A      112  112  112    336
+gpt-6-astra        S0   B       30   30   30     90
+gpt-6-astra        S1   A      112  112  112    336
+gpt-6-astra        S1   B       30   30   30     90
+gemini-4-argon     S0   A      112  112  112    336
+gemini-4-argon     S0   B       30   30   30     90
+gemini-4-argon     S1   A      112  112  112    336
+gemini-4-argon     S1   B       30   30   30     90
+
+TOTAL calls: 3408 (expected 3408) -> OK
+by model: {'claude-fable-5-2': 852, 'claude-opus-5-5': 852, 'gpt-6-astra': 852, 'gemini-4-argon': 852}
+by condition: {'S0': 1704, 'S1': 1704}  by phase: {'A': 2688, 'B': 720}
+estimated prompt tokens (chars/4, excl. tool/search overhead): ~98,064
+output-token ceiling at max_output_tokens=16384: 55,836,672 (upper bound, not an estimate)
+nothing sent.

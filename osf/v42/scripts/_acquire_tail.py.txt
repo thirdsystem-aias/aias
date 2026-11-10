@@ -1,0 +1,237 @@
+
+
+# ======================= v0.42 wrapper (new) =======================
+
+CURRENT_DISPATCH = {"anthropic": call_anthropic_current, "openai": call_openai_current, "google": call_google_current}
+
+
+def load_probes():
+    probes = [json.loads(l) for l in PROBES_PATH.read_text(encoding="utf-8").splitlines() if l.strip()]
+    if len(probes) != 142:
+        sys.exit(f"ABORT: expected 142 probes, found {len(probes)}")
+    return probes
+
+
+def call_id(substrate, phase, probe_id, model, cond, run):
+    return f"{substrate}|{phase}|{probe_id}|{model}|{cond}|{run}"
+
+
+def build_specs(probes):
+    """Deterministic order: model (panel order), run, condition, probe (file order)."""
+    specs = []
+    for m in PANEL:
+        for run in RUNS:
+            for cond in CONDITIONS:
+                for p in probes:
+                    specs.append({
+                        "call_id": call_id(p["substrate"], p["phase"], p["probe_id"], m["model_id"], cond, run),
+                        "substrate": p["substrate"], "phase": p["phase"], "probe_id": p["probe_id"],
+                        "brand_id": p.get("brand_id"), "frame_id": p.get("frame_id"),
+                        "model": m, "condition": cond, "run": run,
+                        "system": p.get("system"), "prompt": p["prompt"],
+                    })
+    ids = [s["call_id"] for s in specs]
+    if len(set(ids)) != len(ids):
+        sys.exit("ABORT: duplicate call_id")
+    return specs
+
+
+def _invoke(model, cond, prompt, system):
+    return _call_with_retry(CURRENT_DISPATCH[model["provider"]], model["model_id"], prompt, cond == "S1", system)
+
+
+def send_call(spec):
+    model, cond = spec["model"], spec["condition"]
+    ts_start = _now()
+    out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
+    empty_retry = False
+    if out is not None and not out["text"].strip():
+        empty_retry = True
+        out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
+        attempts += a2
+        if out2 is not None:
+            out = out2
+        if err2:
+            err = err2
+    ts_end = _now()
+    time.sleep(PAUSE[model["provider"]])
+    status = "error" if out is None else ("empty" if not out["text"].strip() else "ok")
+    out = out or {}
+    return {
+        "call_id": spec["call_id"], "substrate": spec["substrate"], "phase": spec["phase"],
+        "probe_id": spec["probe_id"], "brand_id": spec["brand_id"], "frame_id": spec["frame_id"],
+        "model_requested": model["model_id"], "provider": model["provider"],
+        "served_model": out.get("served_model"), "condition": cond, "run": spec["run"],
+        "system": spec["system"], "prompt": spec["prompt"],
+        "text": out.get("text", ""), "status": status, "error": err,
+        "finish_reason": out.get("finish_reason"),
+        "input_tokens": out.get("tokens_in"), "output_tokens": out.get("tokens_out"),
+        "thinking_tokens": out.get("tokens_thought"),
+        "search": out.get("search") if cond == "S1" else None,
+        "paused_continued": out.get("paused_continued", False),
+        "attempts": attempts, "empty_retry": empty_retry,
+        "started_utc": ts_start, "finished_utc": ts_end,
+    }
+
+
+def require_keys():
+    if not os.environ.get("GOOGLE_API_KEY") and os.environ.get("GEMINI_API_KEY"):
+        os.environ["GOOGLE_API_KEY"] = os.environ["GEMINI_API_KEY"]  # call_google_current reads GOOGLE_API_KEY
+    missing = [v for v in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GOOGLE_API_KEY") if not os.environ.get(v)]
+    if missing:
+        sys.exit(f"ERROR: missing environment variables: {', '.join(missing)}")
+
+
+def confirm_no_sampling_params():
+    """claude-fable-5-2 must not get temperature/top_p/top_k: check the copied function's source."""
+    src = inspect.getsource(call_anthropic_current)
+    bad = [w for w in ("temperature", "top_p", "top_k") if w in src]
+    return bad
+
+
+# ----------------------------------------------------------------- dry run
+def dry_run():
+    probes = load_probes()
+    specs = build_specs(probes)
+    bad = confirm_no_sampling_params()
+    print(f"call_anthropic_current sampling params present: {bad or 'none (temperature/top_p/top_k not sent)'}")
+    c = Counter((s["model"]["model_id"], s["condition"], s["phase"], s["run"]) for s in specs)
+    print(f"{'model':18s} {'cond':4s} {'phase':5s} " + " ".join(f"run{r}" for r in RUNS) + "  total")
+    for m in PANEL:
+        for cond in CONDITIONS:
+            for ph in "AB":
+                row = [c[(m["model_id"], cond, ph, r)] for r in RUNS]
+                print(f"{m['model_id']:18s} {cond:4s} {ph:5s} " + " ".join(f"{x:4d}" for x in row) + f"  {sum(row):5d}")
+    print(f"\nTOTAL calls: {len(specs)} (expected {EXPECTED_TOTAL}) -> {'OK' if len(specs) == EXPECTED_TOTAL else 'MISMATCH'}")
+    print("by model:", {m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"]) for m in PANEL})
+    print("by condition:", dict(Counter(s["condition"] for s in specs)), " by phase:", dict(Counter(s["phase"] for s in specs)))
+    inp = sum((len(s["prompt"]) + len(s["system"] or "")) / 4 for s in specs)
+    print(f"estimated prompt tokens (chars/4, excl. tool/search overhead): ~{int(inp):,}")
+    print(f"output-token ceiling at max_output_tokens={CURRENT_MAX_TOKENS}: {len(specs) * CURRENT_MAX_TOKENS:,} (upper bound, not an estimate)")
+    print("nothing sent.")
+    return 0 if len(specs) == EXPECTED_TOTAL else 1
+
+
+# ----------------------------------------------------------------- feasibility
+def feasibility():
+    """Neutral, non-category prompts only. No study probe is ever sent here."""
+    require_keys()
+    plan = [(m, "S0", FEASIBILITY_PROMPT) for m in PANEL]
+    plan += [(m, "S1", p) for p in FEASIBILITY_SEARCH_PROMPTS for m in PANEL]
+    recs = []
+    for i, (m, cond, prompt) in enumerate(plan):
+        spec = {"call_id": f"FEAS|{i}|{m['model_id']}|{cond}", "substrate": "-", "phase": "-", "probe_id": f"FEAS-{i}",
+                "brand_id": None, "frame_id": None, "model": m, "condition": cond, "run": 1, "system": None, "prompt": prompt}
+        r = send_call(spec)
+        s = r.get("search") or {}
+        rec = {"model": m["model_id"], "condition": cond, "prompt": prompt, "served_model": r["served_model"],
+               "finish_reason": r["finish_reason"], "input_tokens": r["input_tokens"], "output_tokens": r["output_tokens"],
+               "thinking_tokens": r["thinking_tokens"], "n_searches": s.get("n_searches") if cond == "S1" else None,
+               "n_sources": len(s.get("sources", [])) if cond == "S1" else None,
+               "reply": r["text"].strip()[:120], "status": r["status"], "error": r["error"], "ok": r["status"] == "ok"}
+        recs.append(rec)
+        print(f"  {m['model_id']:17s} {cond} ok={rec['ok']} served={rec['served_model']} fr={rec['finish_reason']} "
+              f"tok_in={rec['input_tokens']} tok_out={rec['output_tokens']} think={rec['thinking_tokens']} "
+              f"searches={rec['n_searches']} err={rec['error']} reply={rec['reply'][:50]!r}", flush=True)
+    out = {"phase": "v0.42", "purpose": "pre-lock feasibility check (non-acquisition; no study probe sent)",
+           "run_utc": _now(), "prompts": {"S0": FEASIBILITY_PROMPT, "S1": FEASIBILITY_SEARCH_PROMPTS}, "records": recs}
+    FEASIBILITY_PATH.parent.mkdir(parents=True, exist_ok=True)
+    FEASIBILITY_PATH.write_text(json.dumps(out, ensure_ascii=False, indent=2), encoding="utf-8")
+    ok = sum(r["ok"] for r in recs)
+    print(f"\nFeasibility: {ok}/{len(recs)} ok -> {FEASIBILITY_PATH}")
+    return 0
+
+
+# ----------------------------------------------------------------- collect
+def prereg_guard():
+    """Refuse unless the prereg tag is on origin and the anchor file names its commit."""
+    r = subprocess.run(["git", "ls-remote", "--tags", "origin", PREREG_TAG], cwd=ROOT, capture_output=True, text=True)
+    if r.returncode != 0:
+        sys.exit(f"REFUSED: git ls-remote failed: {r.stderr.strip()}")
+    shas = {}
+    for line in r.stdout.splitlines():
+        sha, ref = line.split("\t")
+        shas[ref] = sha
+    tag_ref = f"refs/tags/{PREREG_TAG}"
+    if tag_ref not in shas:
+        sys.exit(f"REFUSED: tag {PREREG_TAG} not found on origin")
+    commit = shas.get(tag_ref + "^{}", shas[tag_ref])  # peeled commit for annotated tags
+    if not ANCHOR_PATH.exists():
+        sys.exit(f"REFUSED: anchor file missing: {ANCHOR_PATH}")
+    text = ANCHOR_PATH.read_text(encoding="utf-8")
+    if commit not in text and shas[tag_ref] not in text:
+        sys.exit(f"REFUSED: {ANCHOR_PATH.name} does not name the commit of {PREREG_TAG} ({commit})")
+    return commit
+
+
+def done_ids():
+    done = set()
+    if RAW_PATH.exists():
+        for line in RAW_PATH.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if (r.get("text") or "").strip() and not r.get("error"):
+                done.add(r["call_id"])
+    return done
+
+
+def collect(max_conc):
+    commit = prereg_guard()
+    print(f"prereg guard passed: {PREREG_TAG} -> {commit}")
+    require_keys()
+    specs = build_specs(load_probes())
+    done = done_ids()
+    todo = [s for s in specs if s["call_id"] not in done]
+    print(f"{len(specs)} specs, {len(done)} already done, {len(todo)} to send")
+    RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
+    lock = threading.Lock()
+    counter = Counter()
+
+    def write(rec):
+        with lock:
+            with open(RAW_PATH, "a", encoding="utf-8") as f:
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                f.flush()
+                os.fsync(f.fileno())
+            counter[rec["model_requested"], rec["status"]] += 1
+
+    def one(spec):
+        rec = send_call(spec)
+        write(rec)
+        s = rec.get("search") or {}
+        print(f"  {rec['call_id']} {rec['status']} out={rec['output_tokens']} fr={rec['finish_reason']}"
+              + (f" searches={s.get('n_searches')}" if rec["condition"] == "S1" else ""), flush=True)
+
+    def worker(model_id):
+        mine = [s for s in todo if s["model"]["model_id"] == model_id]
+        with ThreadPoolExecutor(max_workers=max_conc) as pool:
+            list(pool.map(one, mine))
+
+    with ThreadPoolExecutor(max_workers=len(PANEL)) as pool:
+        list(pool.map(worker, [m["model_id"] for m in PANEL]))
+    print("done:", dict(counter))
+    return 0
+
+
+def main():
+    ap = argparse.ArgumentParser(description="AIAS v0.42 t4 acquisition")
+    ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--feasibility", action="store_true", help="neutral prompts only; never a study probe")
+    ap.add_argument("--collect", action="store_true", help="guarded: needs the prereg tag on origin + anchor file")
+    ap.add_argument("--max-concurrency", type=int, default=1, help="concurrent calls per model (default 1)")
+    a = ap.parse_args()
+    if sum([a.dry_run, a.feasibility, a.collect]) != 1:
+        ap.error("choose exactly one of --dry-run / --feasibility / --collect")
+    if a.dry_run:
+        return dry_run()
+    if a.feasibility:
+        return feasibility()
+    return collect(a.max_concurrency)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

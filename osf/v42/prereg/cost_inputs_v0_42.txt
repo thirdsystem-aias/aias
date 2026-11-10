@@ -1,0 +1,25 @@
+records 360 arms {'L': 180, 'C': 180}
+('claude-opus-5-5', 'S0') status {'ok': 30} n_calls 30
+   in    n=30 mean=31.4 p90=37.0 max=40
+   out   n=30 mean=1636.9 p90=2234.5 max=2749
+   think not recorded
+('claude-opus-5-5', 'S1') status {'ok': 30} n_calls 30
+   in    n=30 mean=14827.3 p90=22951.5 max=34637
+   out   n=30 mean=1599.5 p90=1975.2 max=2482
+   think not recorded
+('gemini-4-argon', 'S0') status {'ok': 30} n_calls 30
+   in    n=30 mean=47.2 p90=52.1 max=55
+   out   n=30 mean=1165.8 p90=1577.7 max=1849
+   think not recorded
+('gemini-4-argon', 'S1') status {'ok': 30} n_calls 30
+   in    n=30 mean=232.2 p90=237.1 max=240
+   out   n=30 mean=1206.9 p90=1582.8 max=1980
+   think n=6 mean=62.2 p90=96.5 max=115
+('gpt-6-astra', 'S0') status {'ok': 30} n_calls 30
+   in    n=30 mean=21.3 p90=26.0 max=28
+   out   n=30 mean=619.0 p90=911.1 max=1028
+   think n=30 mean=176.1 p90=270.2 max=375
+('gpt-6-astra', 'S1') status {'ok': 30} n_calls 30
+   in    n=30 mean=19200.1 p90=26269.5 max=37832
+   out   n=30 mean=750.7 p90=1104.9 max=1512
+   think n=30 mean=197.4 p90=310.9 max=497

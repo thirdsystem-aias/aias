@@ -1,0 +1,174 @@
+{
+  "exported_total": 142,
+  "exported_A": 112,
+  "exported_B": 30,
+  "artifact_checksum_count": 8,
+  "artifact_checksums_all_match": true,
+  "artifact_checksums": [
+    {
+      "artifact": "osf/v19/phase_a_queries.jsonl",
+      "manifest_sha256": "276f8f5c16a9b28e813842601b5ecc416b78e6948bfefdf2df7d617b658c687e",
+      "current_sha256": "276f8f5c16a9b28e813842601b5ecc416b78e6948bfefdf2df7d617b658c687e",
+      "match": true
+    },
+    {
+      "artifact": "osf/v19/phase_b_queries.jsonl",
+      "manifest_sha256": "75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188",
+      "current_sha256": "75e4838dee08d6862118b6d4ef19d3f38b2d061e8059afc402eab88f874c4188",
+      "match": true
+    },
+    {
+      "artifact": "osf/v19/thresholds_v0_19.json",
+      "manifest_sha256": "542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61",
+      "current_sha256": "542fd89b9406d18bb8635baa64d99fa1ce0999cd183f16aa56d3fb023cf6aa61",
+      "match": true
+    },
+    {
+      "artifact": "prereg/v0_20_registry.json",
+      "manifest_sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+      "current_sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+      "match": true
+    },
+    {
+      "artifact": "prereg/v0_21_registry.json",
+      "manifest_sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+      "current_sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+      "match": true
+    },
+    {
+      "artifact": "prereg/v0_22_automotive_content.py",
+      "manifest_sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+      "current_sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+      "match": true
+    },
+    {
+      "artifact": "scripts/run_acquisition_v22.py",
+      "manifest_sha256": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe",
+      "current_sha256": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe",
+      "match": true
+    },
+    {
+      "artifact": "scripts/acquire_v0_23.py",
+      "manifest_sha256": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+      "current_sha256": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+      "match": true
+    }
+  ],
+  "per_substrate": {
+    "v19": {
+      "exported": 22,
+      "exported_A": 16,
+      "exported_B": 6,
+      "recorded_rows": 132,
+      "recorded_units": 0,
+      "exact_matches": 0,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "not_recorded": "all 22 exported (no prompt text in t3 data)",
+      "unexpected_units": [],
+      "prompt_text_recorded_in_t3": false,
+      "note": "osf/v41/data/v19/*_responses.jsonl stores query_id/brand/frame + response but no prompt text; prompt parity rests on the artifact checksums plus query_id coverage",
+      "recorded_query_ids_equal_artifact_query_ids": true
+    },
+    "v20": {
+      "exported": 30,
+      "exported_A": 24,
+      "exported_B": 6,
+      "recorded_rows": 180,
+      "recorded_units": 30,
+      "exact_matches": 180,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "not_recorded": [],
+      "unexpected_units": []
+    },
+    "v21": {
+      "exported": 30,
+      "exported_A": 24,
+      "exported_B": 6,
+      "recorded_rows": 180,
+      "recorded_units": 30,
+      "exact_matches": 180,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "not_recorded": [],
+      "unexpected_units": []
+    },
+    "v22": {
+      "exported": 30,
+      "exported_A": 24,
+      "exported_B": 6,
+      "recorded_rows": 180,
+      "recorded_units": 30,
+      "exact_matches": 180,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "not_recorded": [],
+      "unexpected_units": []
+    },
+    "v23": {
+      "exported": 30,
+      "exported_A": 24,
+      "exported_B": 6,
+      "recorded_rows": 180,
+      "recorded_units": 30,
+      "exact_matches": 180,
+      "mismatch_count": 0,
+      "mismatches": [],
+      "not_recorded": [],
+      "unexpected_units": []
+    }
+  },
+  "legacy_settings": {
+    "system_prompts": "None. Every legacy runner sends a single user message; system = null for all 142 probes.",
+    "v19": {
+      "source": "protocol/providers.py",
+      "max_tokens": 1024,
+      "temperature": "provider default (not set)",
+      "note": "Gemini via google.generativeai generation_config max_output_tokens=1024; 3 attempts, 1/2/4 s backoff"
+    },
+    "v20_v21_v22": {
+      "source": "call_llm in scripts/run_acquisition_v2{0,1,2}.py",
+      "observed_max_tokens_at_stub_boundary": {
+        "v20": {
+          "A": [
+            64
+          ],
+          "B": [
+            2048
+          ]
+        },
+        "v21": {
+          "A": [
+            64
+          ],
+          "B": [
+            2048
+          ]
+        },
+        "v22": {
+          "A": [
+            64
+          ],
+          "B": [
+            2048
+          ]
+        }
+      },
+      "temperature": "provider default (not set)",
+      "note": "Phase A max_tokens=64, Phase B 2048 (Gemini: no cap passed); v22 dispatcher run_v22 loads the prereg module via the runner default path ~/aias/prereg (main tree), not the worktree"
+    },
+    "v23": {
+      "source": "scripts/acquire_v0_23.py call_*",
+      "max_tokens": 2048,
+      "temperature": 0.0,
+      "note": "temperature=0.0 and max_tokens=2048 for all three providers; Phase A prompt interpolates spirit_type"
+    },
+    "cannot_carry_over_to_t4": [
+      "v0.23 temperature=0.0 (t4 leaves temperature at provider default; claude-fable-5-2 must not receive temperature)",
+      "legacy max_tokens: v0.19 1024; v0.20-22 Phase A 64 / Phase B 2048; v0.23 2048 (t4 uses 16,384 max output)",
+      "legacy calls had no tools (S0-like); t4 adds an S1 web-search condition",
+      "legacy google.generativeai (deprecated) SDK path for v0.19-v0.22; t4 uses google-genai"
+    ]
+  }
+}
