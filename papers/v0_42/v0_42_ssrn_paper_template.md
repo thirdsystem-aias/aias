@@ -357,7 +357,7 @@ The Consistency comparison is undetermined (§3.3), so whether Consistency carri
 
 {% switch CASE_SEARCH %}
 {% case ROBUST %}
-Web search left the Presence ordering intact: on these models, what each provider's search adds to an answer does not reorder which brands are named most. Presence measured with search on and with search off rank brands alike, although the level shift of §3.4 still separates them.
+Web search left the Presence ordering intact: on these models, what each provider's search adds to an answer does not reorder which brands are named most. Presence measured with search on and with search off rank brands alike; any difference in level between the two conditions is the shift reported in §3.4.
 {% case SENSITIVE %}
 Web search changed the Presence ordering in part. Presence measured with search on is therefore not interchangeable with Presence measured without it, and the condition has to be stated with every score.
 {% case DOMINATED %}

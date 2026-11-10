@@ -58,7 +58,7 @@ COVER = {
 STANDFIRST = (
     "Every AI brand measure rests on the models that produce it, and those models are replaced. In November the "
     "six models behind the AIAS measurements since May 2026 begin to retire. We asked their successors, the "
-    "newest flagship model of each of the three largest providers, the same questions about the same 112 brands, "
+    "newest flagship model of Anthropic, OpenAI and Google, the same questions about the same 112 brands, "
     "with and without their own web search, to see whether brand standings survive the switch, and how much the "
     "new models' answers vary when the same question is asked again."
 )
@@ -156,8 +156,8 @@ WHATS_NEXT = (
     "own registration and budget. The run-to-run figures in this report are the yardstick for those waves: a change "
     "smaller than the variation between repeated runs is not a change.\n\n"
     "The answers collected here are also the starting material for four further measures of AI availability "
-    "(where a brand appears in a list, how it is described, how fully it is covered, and which sources the answers "
-    "cite), each tested in its own study."
+    "(where a brand appears in a list, how it is described, and which sources and citations stand behind the "
+    "answers), each tested in its own study."
 )
 
 _P1_HEAD = {"CONFIRMED": "Brand standings carried over to the newest models",
