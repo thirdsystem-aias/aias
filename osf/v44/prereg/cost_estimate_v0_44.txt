@@ -1,0 +1,17 @@
+AIAS v0.44 cost estimate (DRAFT r0; no model called). Phase B probes 48, Phase A probes 159; 3 models.
+
+adopted: N3, Phase B S0 x3, Phase A S0 x1 (Gemini at Dec-1 price)  calls   909   central $  30.10   high $  59.00   (within pause at high)
+adopted, Gemini at November price                                  calls   909   central $  27.24   high $  52.44   (within pause at high)
+adopted + Phase B S1 x1                                            calls  1053   central $  54.59   high $ 113.02   (over $100 at high)
+adopted + Phase B S1 x3                                            calls  1341   central $ 103.55   high $ 221.05   (over $100 at high)
+Phase B S0 x2 (instead of x3)                                      calls   765   central $  23.52   high $  46.87   (within pause at high)
+Phase B S0 x1 (instead of x3)                                      calls   621   central $  16.95   high $  34.75   (within pause at high)
+Phase A S0 x3 (instead of x1)                                      calls  1863   central $  50.84   high $ 104.26   (over $100 at high)
+
+Adopted design by model and block (US$ central / high):
+  claude-fable-5-2   B    S0  calls  144  per call 0.0750 / 0.1490  total  10.81 /  21.46  [t4 prices]
+  claude-fable-5-2   A_yn S0  calls  159  per call 0.0344 / 0.0789  total   5.47 /  12.55  [t4 prices]
+  gpt-6-astra        B    S0  calls  144  per call 0.0349 / 0.0511  total   5.03 /   7.36  [t4 prices]
+  gpt-6-astra        A_yn S0  calls  159  per call 0.0193 / 0.0284  total   3.07 /   4.51  [t4 prices]
+  gemini-4-argon     B    S0  calls  144  per call 0.0271 / 0.0524  total   3.90 /   7.55  [t5 prices]
+  gemini-4-argon     A_yn S0  calls  159  per call 0.0115 / 0.0350  total   1.83 /   5.57  [t5 prices]

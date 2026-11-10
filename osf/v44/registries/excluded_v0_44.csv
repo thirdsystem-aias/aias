@@ -1,0 +1,25 @@
+industry,excluded,source_position,reason
+INS,Southern Farm Bureau Cas Grp,NAIC24 rank 24,"The ""Farm Bureau"" name is shared by several separate state Farm Bureau insurers; a mention cannot be attributed to this group."
+INS,CSAA Ins Grp; Automobile Club MI Grp,"NAIC24 ranks 14, 18",Pooled into the AAA unit (same consumer brand).
+HOT,Accor,H325 rank 6,No US count in the sources; global rooms would misplace it in a US registry.
+HOT,"Third-party management companies (e.g. Aimbridge, Highgate, HEI, Remington, Concord, Crescent, Pyramid, HHM)",H325 various,Operate hotels under other companies' brands; no guest-facing brand of their own.
+HOT,"Consortia (Preferred Hotels & Resorts, The Leading Hotels of the World, Keytel, HotelREZ, Global Hotel Alliance)",H325 various,"Marketing affiliations of independent hotels, not hotel brands."
+HOT,Marcus Hotels & Resorts; hihotels by Hospitality International,"H325 ranks 136, 114",Operator or house of franchise brands with no single guest-facing name; removed before the S sample was drawn.
+HOT,Starwood Hotels (H325 rank 151),H325 rank 151,"Name collides with Starwood Hotels & Resorts, merged into Marriott in 2016; mentions cannot be attributed."
+HOT,Omni Hotels & Resorts; Loews Hotels,not in either source,Not listed in the sources used; no dated size figure.
+HOT,"Shilla (The Shilla, Shilla Stay)",not in either US source,Samsung affiliate (Hotel Shilla); not a US brand in the sources; would be excluded on COI grounds in any case (DEVIATIONS Entry 0).
+GRO,Walmart; Costco; Target; BJ's Wholesale Club; Amazon.com; Meijer,"NRF ranks 1, 3, 8, 26, 2, 21","Mass merchants, warehouse clubs, e-commerce or supercenters, not supermarket or grocery-store formats."
+GRO,Royal Ahold Delhaize USA; Northeast Grocery; Chedraui; My Demoulas,"NRF ranks 13, 55, 57, 81",Company name is not a store banner; banner-level sales are not in the source.
+GRO,Dollar General; Family Dollar; Dollar Tree; 7-Eleven; Alimentation Couche-Tard; Casey's,NRF various,Dollar or convenience formats (convenience chains are in the CVF registry).
+GRO,Defense Commissary Agency,NRF rank 85,Government commissary system.
+GRO,Trader Joe's; Whole Foods Market,not separately listed in NRF 2026,No separate entry in the source (Whole Foods is within Amazon.com).
+QSR,"QSR 50 ranks 15-19, 21-24, 26-29, 31-34, 36-39, 41-44, 46-49",QSR 50 2025,Not drawn by the systematic S sample (every 5th rank from 20).
+APR,Dick's Sporting Goods; Academy Sports; Bass Pro,"NRF ranks 27, 76, 58","Sporting-goods retailers, not apparel or department stores."
+APR,Ulta Beauty; Sephora,"NRF ranks 41, 52",Beauty retailers (cosmetics already measured by the programme).
+APR,Signet Jewelers; Bath & Body Works; Tapestry,"NRF ranks 74, 65, 95","Jewelry or personal-care retailers, or a brand owner (Coach is a unit of the FAS registry)."
+PHA,BrightSpring Health Services,DCI rank 9,Long-term-care and infusion pharmacy operator; no consumer pharmacy brand under that name.
+PHA,Ahold Delhaize (pharmacies),DCI rank 15,Pharmacies operate under several store banners; no single pharmacy brand.
+CVF,bp America; Shell; Sunoco LP,"CSP ranks 5, 31, 33",Oil-major fuel brands: the count covers company-operated sites only and misstates the brand's footprint.
+CVF,EG America; GPM Investments; United Pacific/Rocket; Anabi Oil; Sunshine Gasoline Distributors; United Refining; H&S Energy; Bolla Corp.; CrossAmerica Partners; The Cigarette Store Corp.; Global Partners; Nouria Energy; Majors Management; Refuel Operating; FEMSA; Par Mar Oil; G&M Oil,CSP various,"Holding, distributor or multi-banner operator; the store banner is not established from the source."
+CVF,Meijer Gas Stations,CSP rank 36,Part of the Meijer supercenter chain.
+FAS,Nike; Zara; Uniqlo; H&M; Adidas,"Interbrand 2026 (apparel, not luxury)",Mass-market apparel or sportswear (running shoes already measured); outside the luxury frame.

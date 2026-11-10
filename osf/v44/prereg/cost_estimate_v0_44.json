@@ -1,0 +1,587 @@
+{
+ "accessed": "2026-11-10",
+ "per_call_source": "osf/v42/prereg/cost_estimate_v0_42_r2.json",
+ "n_phase_b_probes": 48,
+ "n_phase_a_probes": 159,
+ "cap_usd": 100.0,
+ "pause_usd": 80.0,
+ "designs": {
+  "adopted: N3, Phase B S0 x3, Phase A S0 x1 (Gemini at Dec-1 price)": {
+   "calls": 909,
+   "central": 30.102142079999997,
+   "high": 58.996160520000004,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 10.806696,
+     "usd_high": 21.459715199999998,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 5.026662,
+     "usd_high": 7.3568880000000005,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 3.9011572800000005,
+     "usd_high": 7.5499459200000025,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 1.8303634799999997,
+     "usd_high": 5.570914800000001,
+     "price_basis": "t5"
+    }
+   ]
+  },
+  "adopted, Gemini at November price": {
+   "calls": 909,
+   "central": 27.2363817,
+   "high": 52.43573016,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 10.806696,
+     "usd_high": 21.459715199999998,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 5.026662,
+     "usd_high": 7.3568880000000005,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.013545685000000002,
+     "usd_per_call_high": 0.02621509000000001,
+     "usd_central": 1.9505786400000003,
+     "usd_high": 3.7749729600000013,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.005755859999999999,
+     "usd_per_call_high": 0.017518600000000002,
+     "usd_central": 0.9151817399999999,
+     "usd_high": 2.7854574000000003,
+     "price_basis": "t4"
+    }
+   ]
+  },
+  "adopted + Phase B S1 x1": {
+   "calls": 1053,
+   "central": 54.58512048,
+   "high": 113.01514356,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 10.806696,
+     "usd_high": 21.459715199999998,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 48,
+     "usd_per_call_central": 0.21330818000000001,
+     "usd_per_call_high": 0.5989962,
+     "usd_central": 10.23879264,
+     "usd_high": 28.7518176,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 5.026662,
+     "usd_high": 7.3568880000000005,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 48,
+     "usd_per_call_central": 0.2630835,
+     "usd_per_call_high": 0.44579700000000005,
+     "usd_central": 12.628008000000001,
+     "usd_high": 21.398256000000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 3.9011572800000005,
+     "usd_high": 7.5499459200000025,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 48,
+     "usd_per_call_central": 0.03367037,
+     "usd_per_call_high": 0.08060228,
+     "usd_central": 1.6161777599999998,
+     "usd_high": 3.86890944,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 1.8303634799999997,
+     "usd_high": 5.570914800000001,
+     "price_basis": "t5"
+    }
+   ]
+  },
+  "adopted + Phase B S1 x3": {
+   "calls": 1341,
+   "central": 103.55107728000002,
+   "high": 221.05310964,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 10.806696,
+     "usd_high": 21.459715199999998,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 144,
+     "usd_per_call_central": 0.21330818000000001,
+     "usd_per_call_high": 0.5989962,
+     "usd_central": 30.716377920000003,
+     "usd_high": 86.2554528,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 5.026662,
+     "usd_high": 7.3568880000000005,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 144,
+     "usd_per_call_central": 0.2630835,
+     "usd_per_call_high": 0.44579700000000005,
+     "usd_central": 37.884024000000004,
+     "usd_high": 64.19476800000001,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 3.9011572800000005,
+     "usd_high": 7.5499459200000025,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 144,
+     "usd_per_call_central": 0.03367037,
+     "usd_per_call_high": 0.08060228,
+     "usd_central": 4.84853328,
+     "usd_high": 11.60672832,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 1.8303634799999997,
+     "usd_high": 5.570914800000001,
+     "price_basis": "t5"
+    }
+   ]
+  },
+  "Phase B S0 x2 (instead of x3)": {
+   "calls": 765,
+   "central": 23.52397032,
+   "high": 46.87397748000001,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 96,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 7.204464,
+     "usd_high": 14.306476799999999,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 96,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 3.351108,
+     "usd_high": 4.904592,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 96,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 2.6007715200000003,
+     "usd_high": 5.033297280000002,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 1.8303634799999997,
+     "usd_high": 5.570914800000001,
+     "price_basis": "t5"
+    }
+   ]
+  },
+  "Phase B S0 x1 (instead of x3)": {
+   "calls": 621,
+   "central": 16.945798559999997,
+   "high": 34.75179444,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 48,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 3.602232,
+     "usd_high": 7.153238399999999,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 5.466655319999998,
+     "usd_high": 12.548025600000003,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 48,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 1.675554,
+     "usd_high": 2.452296,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 3.0706080000000004,
+     "usd_high": 4.510671,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 48,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 1.3003857600000002,
+     "usd_high": 2.516648640000001,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 159,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 1.8303634799999997,
+     "usd_high": 5.570914800000001,
+     "price_basis": "t5"
+    }
+   ]
+  },
+  "Phase A S0 x3 (instead of x1)": {
+   "calls": 1863,
+   "central": 50.83739568,
+   "high": 104.25538332000002,
+   "rows": [
+    {
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.0750465,
+     "usd_per_call_high": 0.14902579999999999,
+     "usd_central": 10.806696,
+     "usd_high": 21.459715199999998,
+     "price_basis": "t4"
+    },
+    {
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 477,
+     "usd_per_call_central": 0.03438147999999999,
+     "usd_per_call_high": 0.07891840000000001,
+     "usd_central": 16.399965959999996,
+     "usd_high": 37.64407680000001,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.034907375,
+     "usd_per_call_high": 0.0510895,
+     "usd_central": 5.026662,
+     "usd_high": 7.3568880000000005,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 477,
+     "usd_per_call_central": 0.019312000000000003,
+     "usd_per_call_high": 0.028369000000000002,
+     "usd_central": 9.211824000000002,
+     "usd_high": 13.532013000000001,
+     "price_basis": "t4"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 144,
+     "usd_per_call_central": 0.027091370000000004,
+     "usd_per_call_high": 0.05243018000000002,
+     "usd_central": 3.9011572800000005,
+     "usd_high": 7.5499459200000025,
+     "price_basis": "t5"
+    },
+    {
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 477,
+     "usd_per_call_central": 0.011511719999999998,
+     "usd_per_call_high": 0.035037200000000004,
+     "usd_central": 5.491090439999999,
+     "usd_high": 16.712744400000002,
+     "price_basis": "t5"
+    }
+   ]
+  }
+ }
+}
