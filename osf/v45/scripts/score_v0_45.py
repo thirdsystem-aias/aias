@@ -385,9 +385,23 @@ def descriptives(w4, w5):
             rs = [r for r in w.calls if r["model_requested"] == m and r["condition"] == "S1" and C.is_answered(r)]
             if rs:
                 search[f"{wn}|{m}"] = {"calls": len(rs), "searches_per_call": statistics.mean(S._search_n(r) for r in rs),
-                                       "sources_per_call": statistics.mean(len((r.get("search") or {}).get("sources") or []) for r in rs)}
+                                       "sources_per_call": statistics.mean(len((r.get("search") or {}).get("sources") or []) for r in rs),
+                                       "citations_per_call": statistics.mean(len((r.get("search") or {}).get("citations") or []) for r in rs),
+                                       "share_with_citation": statistics.mean(int(bool((r.get("search") or {}).get("citations"))) for r in rs)}
     cost = {wn: round(sum(BG.record_cost(r) for r in w.raw), 4) for wn, w in (("t4", w4), ("t5", w5))}
+    by_block = collections.defaultdict(float)
+    for wn, w in (("t4", w4), ("t5", w5)):
+        for r in w.raw:
+            by_block[f"{wn}|{r.get('model_requested')}|{r.get('phase')}-{r.get('condition')} run {r.get('run')}"] += BG.record_cost(r)
+    recog = {}
+    for wn, w in (("t4", w4), ("t5", w5)):
+        for m in MODELS:
+            codes = [int(r["recognized"]) for r in w.A if r["model"] == m and r["condition"] == "S0"
+                     and r.get("recognized") not in (None, "")]
+            recog[f"{wn}|{m}"] = {"coded": len(codes), "share_recognized": (sum(codes) / len(codes)) if codes else None}
     return {"run_to_run_reliability": rel, "floor_persistence": floor, "search": search, "cost_usd_recorded": cost,
+            "cost_usd_by_model_block": {k: round(v, 4) for k, v in sorted(by_block.items())},
+            "recognition_share_by_model": recog,
             "answer_form": answer_form(w4, w5), "cited_domains": cited_domain_overlap(w4, w5)}
 
 

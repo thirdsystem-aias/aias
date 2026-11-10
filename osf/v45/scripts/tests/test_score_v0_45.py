@@ -123,6 +123,9 @@ class TestStability(Base):
         self.assertGreater(d["answer_form"][f"t5|{GPT}|S0|B"]["registry_brands_named_per_answer"], 0)
         self.assertEqual(d["answer_form"][f"t5|{GPT}|S0|A"]["phase_a_non_answers"], 0)
         self.assertEqual(d["cited_domains"][FAB]["jaccard"], 1.0)
+        self.assertEqual(d["recognition_share_by_model"][f"t5|{GEM}"]["share_recognized"], 1.0)
+        self.assertEqual(d["search"][f"t5|{GPT}"]["citations_per_call"], 1)
+        self.assertTrue(any(k.startswith("t5|claude-fable-5-2|B-S1 run 3") for k in d["cost_usd_by_model_block"]))
         self.assertTrue(all(np.isfinite(v["rho_star"]) for v in d["disattenuated_rho_S0"].values()))
         self.assertFalse(any(v["flag_changed"] for v in out["manipulation_checks_t5"]["MC_Served_change"].values()))
         b = self.base
@@ -275,6 +278,16 @@ class TestJudge(unittest.TestCase):
         self.assertTrue(res["verdict"]["pass"])
         bad = K.run_j1("claude-sonnet-5-5", FakeInner(lambda kw: "R0"), t3, t4)
         self.assertFalse(bad["verdict"]["pass"])
+
+    def test_judge_and_parity_refuse_before_lock(self):
+        import subprocess as sp
+        root = HERE.parents[3]
+        py = sys.executable
+        r = sp.run([py, "-B", str(HERE.parent / "code_t5_v0_45.py"), "--parity", "claude-sonnet-5-5",
+                    "--t4-raw", "/nonexistent", "--t4-coded", "/nonexistent"], cwd=root, capture_output=True, text=True,
+                   timeout=120)
+        self.assertEqual(r.returncode, 3, r.stderr[-400:])
+        self.assertIn("not on origin", r.stderr)
 
     def test_agreement_and_rule(self):
         a = K.agreement([("R2", "R3"), ("R0", "R0"), ("R1", "R0"), ("R_ERR", "R2")])

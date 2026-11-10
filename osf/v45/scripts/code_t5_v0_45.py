@@ -25,8 +25,9 @@ subset, with no R_ERR left. Candidates in order: claude-sonnet-5-5, then claude-
 t5 judge and also re-codes the t4 v0.23 answers (judge held constant across waves for the Presence comparison).
 No candidate passes: v0.23 recognition is not coded at t5 (section 5.4).
 
-NEVER calls a model API unless --judge / --parity is given with a real client (tests use fakes only).
-Modes: --code RAW OUTDIR [--judge MODEL] | --parity MODEL --t4-raw FILE --t4-coded DIR (real clients only after the lock)
+NEVER calls a model API unless --judge / --parity is given (both refuse before the lock; tests use fakes only).
+Modes: --code RAW OUTDIR [--judge MODEL] | --parity MODEL --t4-raw FILE --t4-coded DIR (J1 record in
+osf/v45/data/judge_parity_J1_v0_45.json: every run, and the first passing candidate with its t4 codes)
 """
 import hashlib
 import json
@@ -168,16 +169,42 @@ def tag_on_origin():
     return r.returncode == 0 and f"refs/tags/{PREREG_TAG}" in r.stdout
 
 
+def parity_main(model, t4_raw, t4_coded, out=J1_PATH):
+    """J1 with the real judge API (after the lock only). Candidates are tried in CANDIDATES order by the caller."""
+    if not tag_on_origin():
+        print(f"[v45] REFUSED: tag {PREREG_TAG} not on origin; J1 makes paid calls only after the lock", file=sys.stderr)
+        return 3
+    import anthropic
+    t4_calls = C.dedupe_calls(C.read_raw(t4_raw))
+    A4, _ = C.read_tables(t4_coded)
+    res = run_j1(model, anthropic.Anthropic(), t3_v23_records(), t4_v23_records(t4_calls, A4, C.load_probe_map(PROBES_PATH)))
+    hist = json.loads(Path(out).read_text(encoding="utf-8")) if Path(out).exists() else {"runs": []}
+    hist["runs"].append(res)
+    if res["verdict"]["pass"] and not hist.get("judge"):
+        hist.update({"judge": model, "verdict": res["verdict"], "t4_codes": res["t4_codes"]})
+    Path(out).parent.mkdir(parents=True, exist_ok=True)
+    Path(out).write_text(json.dumps(hist, indent=2), encoding="utf-8")
+    print(f"J1 {model}: {'PASS' if res['verdict']['pass'] else 'FAIL'} {res['verdict']} -> {out}")
+    return 0 if res["verdict"]["pass"] else 2
+
+
 def main():
     import argparse
     ap = argparse.ArgumentParser(description="AIAS v0.45 t5 coder (v0.42's coder + successor v0.23 judge)")
     ap.add_argument("--code", nargs=2, metavar=("RAW", "OUTDIR"))
     ap.add_argument("--judge", choices=CANDIDATES, default=None)
+    ap.add_argument("--parity", choices=CANDIDATES, default=None, help="run J1 for one candidate (paid; after the lock)")
+    ap.add_argument("--t4-raw", default=None)
+    ap.add_argument("--t4-coded", default=None)
     a = ap.parse_args()
     ok, blob = coder_blob_ok()
     if not ok:
         print(f"[v45] HALT: v0.42 coder blob {blob} != pin {CODER_BLOB_PIN}", file=sys.stderr)
         return 4
+    if a.parity:
+        if not (a.t4_raw and a.t4_coded):
+            ap.error("--parity needs --t4-raw and --t4-coded")
+        return parity_main(a.parity, a.t4_raw, a.t4_coded)
     if not a.code:
         ap.error("--code RAW OUTDIR")
     raw, out = Path(a.code[0]), Path(a.code[1])
@@ -188,6 +215,10 @@ def main():
     if a.judge:
         if raw.resolve() != REAL_RAW.resolve():
             ap.error("--judge only on the real t5 file (tests use fakes)")
+        j1 = json.loads(J1_PATH.read_text(encoding="utf-8")) if J1_PATH.exists() else {}
+        if j1.get("judge") != a.judge:
+            print(f"[v45] REFUSED: {a.judge} has not passed J1 ({J1_PATH})", file=sys.stderr)
+            return 3
         import anthropic
         inner = anthropic.Anthropic()
     A, B = code_t5(C.dedupe_calls(C.read_raw(raw)), a.judge, inner)
