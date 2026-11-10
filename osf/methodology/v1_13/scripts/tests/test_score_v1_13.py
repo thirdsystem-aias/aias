@@ -503,7 +503,7 @@ class TestStageC1Synthetic(unittest.TestCase):
 
     def test_v042_pins(self):
         self.assertEqual(S.V042_PINS["osf/v42/scripts/code_t4_v0_42.py"], "2d36735d512cf9e13b74010ba5a7f655fc7de0bc")
-        self.assertEqual(S.V042_PINS["osf/v42/scripts/score_v0_42.py"], "9e2c86c167d18981f0ac6c63ce8480f8c005205a")
+        self.assertEqual(S.V042_PINS["osf/v42/scripts/score_v0_42.py"], "3bbe58db0db26763e6d5f9f022c09fcaa13fef03")
         self.assertEqual(set(S.PANELS), {"N3"})
         self.assertFalse(hasattr(S, "g_a_map"))
 
