@@ -1,0 +1,105 @@
+{
+  "tag": "v1.14-prereg-r1",
+  "tag_object": "8398ab2d6519d1a75e42ad17dcc0a719ec41d69f",
+  "commit": "20fbc3423a4c328d14234f4c7c6d3aaecdce501a",
+  "tree": "87510a1ba5067a90954b3adaf2711dbea64c704d",
+  "branch": "v1.14",
+  "tagger_date": "2026-11-10T13:42:58-06:00",
+  "remote_tag_ref": "8398ab2d6519d1a75e42ad17dcc0a719ec41d69f\trefs/tags/v1.14-prereg-r1",
+  "recorded_utc": "2026-11-10T19:43:54+00:00",
+  "repository": "https://github.com/thirdsystem-aias/aias",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_14/prereg, methodology/v1_14/calibration, methodology/v1_14/anchor)",
+  "lock_manifest_sha256": "030d956544238eaa84f384802c22585b82bda2f6060c024c120113bbf7ad8f6c",
+  "locked_files": {
+    "osf/methodology/v1_14/prereg/PRE_REGISTRATION_v1_14.md": {
+      "sha256": "f47cd17618353a7b98b4185088606e6f93d20d8bd1d5c86c02bdf1da7aaa6a22",
+      "git_blob": "6c32b0f88d6e3d9bbd669a406bcc45554308a7d2"
+    },
+    "osf/methodology/v1_14/README.md": {
+      "sha256": "52072357a2297693901ce2d59144bfe722d85e073ac8de4c96c4ddd89afce64e",
+      "git_blob": "06209e799dbdd61a93099eae42aa569a4432d9c2"
+    },
+    "osf/methodology/v1_14/anchor/DEVIATIONS.md": {
+      "sha256": "cfd6084ed514f3da4fb7fee8816c154a020cb8c2c12cb563e51cfc8e4b3cea23",
+      "git_blob": "7b54bb89c6aba1fb8125f8875e0bee46ee21b95c"
+    },
+    "osf/methodology/v1_14/calibration/calibration_v1_14.json": {
+      "sha256": "7a84cabc502eb1c7de728935f9c0b6cdddade7c81ede28f0a2615dd4d7501081",
+      "git_blob": "07c70dc86c3686f405a5403a7cef1b75e8fee181"
+    },
+    "scripts/score_v1_14.py": {
+      "sha256": "681257b827d324946c7a2c51c1a75f248b50db636a57f887c7eaaff314bc3ed5",
+      "git_blob": "c479004c58de79ef017b25c4725e433f74dc42b2"
+    },
+    "scripts/test_score_v1_14.py": {
+      "sha256": "8354c5b4ba79802110a3451e134dc2e550f375b6fba1ec5f60e144b9037c85ce",
+      "git_blob": "dd625e88bc138452d0980c20df7e9908e56b5d17"
+    },
+    "scripts/score_v1_10.py": {
+      "sha256": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+      "git_blob": "0f8b981b2895a325b50629c85f8e0e6ce8e876f5"
+    },
+    "osf/methodology/v1_10/registries/INPUTS_MANIFEST_v1_10.json": {
+      "sha256": "2b10fc421d962c58e7ac1e6ee2256ff397bffe466c2da88d5ad7f0594988513c",
+      "git_blob": "062df519204e340c6e5b4433773d50d0a5d2a2a9"
+    },
+    "osf/v19/panel_registry_v0_19.csv": {
+      "sha256": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
+      "git_blob": "66b41acc9edbeeb777987aae8e8916cdbe4a643b"
+    },
+    "prereg/v0_20_registry.json": {
+      "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+      "git_blob": "7a33141421a9d453ee1e6d2be375c35cc9678453"
+    },
+    "prereg/v0_21_registry.json": {
+      "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+      "git_blob": "63198885831ab64420ee4657597cc24db8264e0b"
+    },
+    "prereg/v0_22_automotive_content.py": {
+      "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+      "git_blob": "9e5b15f9038b38e463b1cb573b92ea4dd32319fb"
+    },
+    "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json": {
+      "sha256": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d",
+      "git_blob": "5d6df9c6b7afe07d1b23b4c28bd35449a3e77080"
+    },
+    "osf/methodology/v1_10/outputs/v1_10_verdicts.json": {
+      "sha256": "d4250ba79a6acfb9e211dbc561311da9fc07581bebf871dea3dbe149d6bdcb28",
+      "git_blob": "43912b998ac00dd3f3197a3f8a6163003a15a3bc"
+    },
+    "osf/methodology/v1_10/anchor/coi_flags_v1_10.json": {
+      "sha256": "02ad158d0ad9d2c660aa0e2f253c75ee637441ad7ba158f4df30110b127e28a1",
+      "git_blob": "90b58120502a6d4f04b2583cbf5b58b6bb8bd3e9"
+    },
+    "osf/aias_2_0/aias_2_0_profiles.csv": {
+      "sha256": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e",
+      "git_blob": "d5652ad454c9c9d554c9f2ef658acefd8b6e83af"
+    }
+  },
+  "activation": {
+    "Coverage": {
+      "tags_on_origin": [],
+      "latest": null,
+      "commit": null,
+      "score_defined_on_N3_at_t4": true,
+      "active": false
+    },
+    "Grounding": {
+      "tags_on_origin": [],
+      "latest": null,
+      "commit": null,
+      "score_defined_on_N3_at_t4": true,
+      "active": false
+    },
+    "Sentiment": {
+      "tags_on_origin": [
+        "v1.11-prereg-r1"
+      ],
+      "latest": "v1.11-prereg-r1",
+      "commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
+      "score_defined_on_N3_at_t4": false,
+      "active": false
+    }
+  },
+  "lock_record": "Locked Tue 2026-11-10 before v0.42 (t4) is locked: no t4 answer exists, and no rank position or Ranking statistic has been computed on a t4 answer. Tags v1.12-prereg-r* and v1.13-prereg-r* do not exist at this lock, so the Coverage and Grounding component legs are inactive; the Sentiment leg is inactive (v1.11 scores the archived waves only). Lock authorised by the coordinator under Pablo's decision of Nov 10, 2026, 12:27 pm."
+}
