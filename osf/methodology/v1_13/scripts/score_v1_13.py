@@ -73,7 +73,8 @@ SCORER_NOTES (choices where the pre-registration is silent)
      separate "answered" filter (N13's "answered calls only" is replaced). C* only when phi_partition_N3_<c> is
      "defined" (strictly; a blank partition is NOT RATED, no longer read as defined); saturated = 100; mention count
      over runs 1-3. G* (section 2.4) and its answered-answer rule (N1) are unchanged.
- N17 H4's Ranking measure is v1.14's locked R* (tag v1.14-prereg-r1 -> 20fbc342; ACTIVATION_TAG), read from v1.14's
+ N17 H4's Ranking measure is v1.14's locked R* (tag v1.14-prereg-r2 -> a5feb4b1 since section 12 (y), which superseded
+     v1.14-prereg-r1 -> 20fbc342 before any t4 answer existed; ACTIVATION_TAG), read from v1.14's
      Stage 1 output (osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json; --h4-stage1), never recomputed here:
      R*_S1 (v1.14's separate search-on R*, rated at >= 6 rankable mentions, its own floor) because H4 is defined on
      the t4 N3 S1 category answers and is downgrade-only, as v1.14's own S1 leg is. v1.14 units (coder substrate,
@@ -147,7 +148,7 @@ DENON = ("v19", "Denon")                                        # S11 (COI, sect
 HOUSE_PORTAL_UNITS = {("v20", "A.5"), ("v20", "A.6"), ("v23", "S09")}   # D4: dior.com, chanel.com, malts.com (section 2.3)
 GATE_LEGS = ("H1_Sep_Presence", "H2_Sep_Consistency", "H3_Run_Reliability")
 CONDITIONAL_LEGS = ("H4_Sep_Ranking", "H5_Sep_Sentiment", "H6_Sep_Coverage")
-ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.14-prereg-r1",          # N17 (was v1.10-prereg-r2)
+ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.14-prereg-r2",          # N17 (was v1.10-prereg-r2; r1 -> r2: section 12 (y))
                   "H5_Sep_Sentiment": None,                     # N20: a pre-registered t4 Sentiment score (none yet;
                                                                 # v1.11-prereg-r1 scores the archived waves only)
                   "H6_Sep_Coverage": "v1.12-prereg-r1"}        # or a later revision (section 3)
@@ -1022,7 +1023,7 @@ def read_sdri(path, units):
 
 
 # =========================================================================== H4: v1.14's R* (clarification of 2026-11-10, N17-N19)
-V114_PREREG_TAG = "v1.14-prereg-r1"                    # pushed 2026-11-10 (tag object 8398ab2d, commit 20fbc342)
+V114_PREREG_TAG = "v1.14-prereg-r2"                    # commit a5feb4b1 (r1 = 20fbc342, superseded before any t4 answer; section 12 (y))
 V114_STAGE1_REL = "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"   # written once by score_v1_14.py --stage 1
 V114_RANK_TABLE = "rank_table_t4_v1_14.csv"            # beside the Stage 1 file; SHA-256 recorded in the Stage 1 file
 V114_FLOOR = 6                                         # v1.14 section 3.1 rating floor (rankable mentions)

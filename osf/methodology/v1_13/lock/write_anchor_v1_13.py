@@ -34,7 +34,7 @@ CLASSES = f"{PH}/prereg/source_classes_v1_13.md"
 PART_II_FILES = [f"{PH}/prereg/website_audit_protocol_v1_13.md", f"{PH}/registries/wikidata_types_v1_13.csv",
                  f"{PH}/prereg/dry_run_audit_v1_13.txt", f"{PH}/scripts/audit_v1_13.py",
                  f"{PH}/scripts/tests/test_audit_v1_13.py", DOMAINS, CLASSES]   # fixtures added from the manifest
-V114_TAG, V114_COMMIT = "v1.14-prereg-r1", "20fbc3423a4c328d14234f4c7c6d3aaecdce501a"
+V114_TAG, V114_COMMIT = "v1.14-prereg-r2", "a5feb4b1c4b9e9d19979129afcfd616a50b88c64"   # section 12 (y); r1 was 20fbc342
 V114_FILES = ["osf/methodology/v1_14/prereg/PRE_REGISTRATION_v1_14.md", "scripts/score_v1_14.py"]
 V112_TAG = "v1.12-prereg-r1"
 V112_FILES = ["osf/methodology/v1_12/prereg/PRE_REGISTRATION_v1_12.md", "osf/methodology/v1_12/scripts/score_v1_12.py"]

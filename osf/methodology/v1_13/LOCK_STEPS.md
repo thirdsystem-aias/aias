@@ -4,7 +4,7 @@ Prepared 2026-11-10 by the runner (lane 10). Everything below runs in the worktr
 
 **Order on Wednesday:** v1.12 (its own `LOCK_STEPS.md`) → **v1.13 (this file)** → v0.42 (t4), whose collection starts right after its lock. Do not start v1.13 until v1.12's tag is on origin; do not let v0.42 tag before v1.13's step 4 is done.
 
-State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`; lock records); §12 (x) by lane 13 (H6's Cov\* reader, `--h6-cov`, N21; `write_anchor_v1_13.py` records v1.12's scorer SHA-256 at its tag); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` rebuilt (21 files, both parts, paths from the repository root); 90 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
+State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`; lock records); §12 (x) by lane 13 (H6's Cov\* reader, `--h6-cov`, N21; `write_anchor_v1_13.py` records v1.12's scorer SHA-256 at its tag); §12 (y) on Nov 10 evening (H4 names `v1.14-prereg-r2` → `a5feb4b1`, the v1.14 re-lock; manifest rebuilt); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` rebuilt (21 files, both parts, paths from the repository root); 90 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
 
 ## 0. Preconditions (stop if any fails)
 
@@ -14,17 +14,17 @@ State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10�
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git branch --show-current && git status --short --untracked-files=no && git log --oneline -3
    ```
-   Expect `v1.13`, no tracked changes, HEAD = the lane-13 commit (H6 reader, §12 (x)) on top of the lane-10 lock-prep commit `9a003b6`. `osf/methodology/v1_13/_osf_stage_draft/` and `_osf_stage_draft_r1/` are untracked earlier staging copies: leave them, never upload them.
+   Expect `v1.13`, no tracked changes, HEAD = the v1.14-r2 reference commit (§12 (y), Nov 10 evening) on top of the lane-13 commit (H6 reader, §12 (x)) and the lane-10 lock-prep commit `9a003b6`. `osf/methodology/v1_13/_osf_stage_draft/` and `_osf_stage_draft_r1/` are untracked earlier staging copies: leave them, never upload them.
 4. **Remote tags (read-only):**
    ```
-   cd /Users/pablou/aias/_worktrees/v1.13 && git ls-remote --tags origin v1.13-prereg-r1 v1.13-audit-r1 v1.12-prereg-r1 v1.14-prereg-r1 v0.42-prereg-r1
+   cd /Users/pablou/aias/_worktrees/v1.13 && git ls-remote --tags origin v1.13-prereg-r1 v1.13-audit-r1 v1.12-prereg-r1 v1.14-prereg-r2 v0.42-prereg-r1
    ```
-   Expect: no `v1.13-*`; `v1.14-prereg-r1` with peeled commit `20fbc3423a4c328d14234f4c7c6d3aaecdce501a` (H4 active, downgrading only if v1.14's Stage 1 is SEPARABLE); **`v1.12-prereg-r1` present** (pushed by the v1.12 lock minutes earlier; H6 activation, step 2); `v0.42-prereg-r1` absent (v0.42 locks after v1.13; its pins are re-checked in step 9).
+   Expect: no `v1.13-*`; `v1.14-prereg-r2` with peeled commit `a5feb4b1c4b9e9d19979129afcfd616a50b88c64` (H4 active, downgrading only if v1.14's Stage 1 is SEPARABLE; §12 (y): r2 superseded `v1.14-prereg-r1` → `20fbc342`; if `v1.14-prereg-r2` is absent or peels to another commit, stop and report); **`v1.12-prereg-r1` present** (pushed by the v1.12 lock minutes earlier; H6 activation, step 2); `v0.42-prereg-r1` absent (v0.42 locks after v1.13; its pins are re-checked in step 9).
 5. **H5 stays inactive:** compare the tag list with the 2026-11-10 baseline. If a new tag pre-registers a **Sentiment score on the t4 answers**, H5's activation must be decided before the lock (§3, §12 (i)): stop and report.
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git ls-remote --tags origin | grep -v "\^{}" | sed "s#.*refs/tags/##" | grep -E "^v(0\.4|1\.)"
    ```
-   Baseline (2026-11-10, ~3:15 pm CT): `v0.41-acquisition-locked v0.41-prereg-r1 v0.41-scoring-locked v1.10-prereg-r1 v1.10-prereg-r2 v1.11-prereg-r1 v1.14-prereg-r1` (plus older v1.3–v1.9 tags). Expected new: `v1.12-prereg-r1` only.
+   Baseline (2026-11-10, ~3:15 pm CT): `v0.41-acquisition-locked v0.41-prereg-r1 v0.41-scoring-locked v1.10-prereg-r1 v1.10-prereg-r2 v1.11-prereg-r1 v1.14-prereg-r1` (plus older v1.3–v1.9 tags). Expected new: `v1.14-prereg-r2` (the v1.14 re-lock, §12 (y)) and `v1.12-prereg-r1` only.
 6. **v0.42 pins:** fetch v0.42 (read-only for this worktree), then step 1d checks the blobs.
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git fetch origin v0.42 && git log --oneline -1 origin/v0.42 && git rev-parse "origin/v0.42:osf/v42/scripts/code_t4_v0_42.py" "origin/v0.42:osf/v42/scripts/score_v0_42.py"
@@ -37,7 +37,7 @@ a. Manifest:
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && shasum -a 256 -c osf/methodology/v1_13/prereg/LOCK_MANIFEST_v1_13.sha256 | grep -vc ": OK$"; wc -l < osf/methodology/v1_13/prereg/LOCK_MANIFEST_v1_13.sha256
    ```
-   Expect `0` failures and `21` lines. Spot values (after §12 (x)): prereg `c5a55d25…`, `brand_domains_v1_13.csv` `38198fdf…`, `score_v1_13.py` `7d37f1c3…`, `test_clarification_v1_13.py` `61860249…`, `audit_v1_13.py` `37ed8830…`, `DEVIATIONS.md` `bc1e5509…`.
+   Expect `0` failures and `21` lines. Spot values (after §12 (y), 2026-11-10 evening): prereg `eb6dd7e6…`, `brand_domains_v1_13.csv` `38198fdf…`, `score_v1_13.py` `e2bf8542…`, `test_clarification_v1_13.py` `cd49b42e…`, `audit_v1_13.py` `37ed8830…`, `DEVIATIONS.md` `bc1e5509…`.
 
 b. (Only if a manifested file changed) rebuild, then re-check with a.:
    ```
@@ -55,7 +55,7 @@ d. Records agree with the files:
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_13/lock/check_records_v1_13.py; echo EXIT $?
    ```
-   Expect nine `OK` lines (0 manifest mismatches; 112 units, 0 UNRESOLVED; D_b SHA-256 = the §2.3 pin; coder and scorer pins = origin/v0.42; v1.14 → `20fbc342`; dry-run record names the current audit script and fixture manifest; activation constants) and `EXIT 0`.
+   Expect nine `OK` lines (0 manifest mismatches; 112 units, 0 UNRESOLVED; D_b SHA-256 = the §2.3 pin; coder and scorer pins = origin/v0.42; v1.14-prereg-r2 → `a5feb4b1` (FAIL until that tag exists locally: run v1.14's `LOCK_STEPS_r2.md` and `git fetch origin --tags` first); dry-run record names the current audit script and fixture manifest; activation constants) and `EXIT 0`.
 
 e. Audit guard (simulated; no network, no write):
    ```
@@ -96,7 +96,7 @@ Part I (`score_v1_13.py --stage C1` refuses without it; MQ7 reads its `locked_fi
 ```
 cd /Users/pablou/aias/_worktrees/v1.13 && PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_13/lock/write_anchor_v1_13.py
 ```
-Writes `anchor/git_anchor_v1_13.json`: tag, tag object, commit, tree, the 21 files plus the manifest (SHA-256 and git blob at the tag), H4 ACTIVE (v1.14 → `20fbc342`, its score files' blobs), H5 INACTIVE, H6 ACTIVE (v1.12's tag, commit, tagger date before the lock commit, its prereg and scorer blobs, the scorer's SHA-256 at the tag, which `--h6-cov` checks), the v0.42 pins (tag absent at this lock: re-checked in step 9 and by MQ7), `t4_raw_sha256` null (recorded before the first read). It refuses if the tag is not on origin, a file differs from the manifest, v1.14's tag moved, or the H6 order fails.
+Writes `anchor/git_anchor_v1_13.json`: tag, tag object, commit, tree, the 21 files plus the manifest (SHA-256 and git blob at the tag), H4 ACTIVE (v1.14-prereg-r2 → `a5feb4b1`, its score files' blobs), H5 INACTIVE, H6 ACTIVE (v1.12's tag, commit, tagger date before the lock commit, its prereg and scorer blobs, the scorer's SHA-256 at the tag, which `--h6-cov` checks), the v0.42 pins (tag absent at this lock: re-checked in step 9 and by MQ7), `t4_raw_sha256` null (recorded before the first read). It refuses if the tag is not on origin, a file differs from the manifest, v1.14's tag moved, or the H6 order fails.
 
 Part II (if 3b was done; `--collect` reads `commit` and `brand_domains_sha256`):
 ```

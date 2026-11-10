@@ -3,7 +3,8 @@
 (run `git fetch origin v0.42` first so that origin/v0.42 is current).
 
 LOCK_MANIFEST all OK; D_b has no UNRESOLVED row and its SHA-256 equals the section 2.3 pin; the scorer's v0.42 pins
-equal the blobs on origin/v0.42 (and at tag v0.42-prereg-r1 if it exists locally); v1.14-prereg-r1 -> 20fbc342;
+equal the blobs on origin/v0.42 (and at tag v0.42-prereg-r1 if it exists locally); v1.14-prereg-r2 -> a5feb4b1
+(section 12 (y); r1 -> 20fbc342 superseded);
 the dry-run record names the current audit script and fixture manifest; the scorer's activation constants.
 """
 import hashlib
@@ -45,13 +46,13 @@ for path, blob in S.V042_PINS.items():
     at_tag = git("rev-parse", f"{S.V042_TAG}:{path}")
     if at_tag is not None:
         checks.append((f"{Path(path).name}: pin {blob[:8]} == {S.V042_TAG} {at_tag[:8]}", at_tag == blob))
-v114 = git("rev-parse", "v1.14-prereg-r1^{commit}")
-checks.append((f"v1.14-prereg-r1 -> {str(v114)[:8]}", v114 == "20fbc3423a4c328d14234f4c7c6d3aaecdce501a"))
+v114 = git("rev-parse", "v1.14-prereg-r2^{commit}")
+checks.append((f"v1.14-prereg-r2 -> {str(v114)[:8]}", v114 == "a5feb4b1c4b9e9d19979129afcfd616a50b88c64"))
 rec = (D / "prereg/dry_run_audit_v1_13.txt").read_text(encoding="utf-8")
 checks.append(("dry-run record names current audit_v1_13.py", sha(D / "scripts/audit_v1_13.py") in rec))
 checks.append(("dry-run record names current fixture manifest", sha(D / "scripts/fixtures/audit/manifest.json") in rec))
-checks.append(("activation constants: H4 v1.14-prereg-r1, H5 None, H6 v1.12-prereg-r1",
-               S.ACTIVATION_TAG == {"H4_Sep_Ranking": "v1.14-prereg-r1", "H5_Sep_Sentiment": None,
+checks.append(("activation constants: H4 v1.14-prereg-r2, H5 None, H6 v1.12-prereg-r1",
+               S.ACTIVATION_TAG == {"H4_Sep_Ranking": "v1.14-prereg-r2", "H5_Sep_Sentiment": None,
                                     "H6_Sep_Coverage": "v1.12-prereg-r1"}))
 for name, ok in checks:
     print(("OK   " if ok else "FAIL ") + name)

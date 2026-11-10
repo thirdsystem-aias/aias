@@ -129,7 +129,7 @@ class TestRankingSource(unittest.TestCase):
         self.tmp.cleanup()
 
     def test_activation_tag_is_v114(self):
-        self.assertEqual(S.ACTIVATION_TAG["H4_Sep_Ranking"], "v1.14-prereg-r1")
+        self.assertEqual(S.ACTIVATION_TAG["H4_Sep_Ranking"], "v1.14-prereg-r2")   # section 12 (y)
 
     def test_missing_stage1_is_blindness_guard(self):
         with self.assertRaises(S.BlindnessGuard):
