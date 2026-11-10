@@ -181,7 +181,7 @@ if isinstance(content.CLOSING, str):
         "datasets": [
             "Synthesis data: osf.io/ec6wh/aias_2_0/aias_2_0_synthesis_data.json",
             "Per-brand profiles: osf.io/ec6wh/aias_2_0/aias_2_0_profiles.csv",
-            "November test results: osf.io/ec6wh/methodology/v1_9/v1_9_verdicts.json (and v0.41 verdicts, osf.io/ec6wh/v41)",
+            "November test results: osf.io/ec6wh/methodology/v1_9/scoring/v1_9_verdicts.json and osf.io/ec6wh/v41/scoring/v41_verdicts.json",
             "Pre-registration: synthesis outline tag aias-2-0-outline-locked; v1.9-prereg-r1; v0.41-prereg-r1",
         ],
         "methodology_log": "AIAS 2.0 synthesis (November 2026)",
