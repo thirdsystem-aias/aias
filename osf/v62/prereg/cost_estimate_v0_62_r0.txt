@@ -1,0 +1,45 @@
+AIAS v0.62 cost estimate (draft r0; no model called). Per language: 30 category questions x 3 runs + 112 brand questions x 1 run, 3 models (N3), search off (S0).
+Language factor (assumption, not measured): central FR 1.25 JA 1.50; high FR 1.50 JA 2.00.
+Judge reserve (144 v0.23 recognition codings, Claude Sonnet 4.5): $1.32, included where Phase A is collected.
+
+design                                                                          calls   expected       high
+ADOPTED: FR+JA, Phase B S0 x3, Phase A S0 x1, November prices                    1212      54.42     130.06
+ADOPTED, December prices (Gemini 4 Argon 4/20)                                   1212      60.06     145.92
+adopted at language factor 1.0 (English token counts), November                  1212      39.94      74.89
+French only, November                                                             606      24.80      55.84
+Japanese only, November                                                           606      29.62      74.23
+block 1 only: Phase B S0 run 1, FR+JA, November                                   180      10.19      23.76
+block 1 only: Phase B S0 run 1, FR+JA, December                                   180      11.31      26.52
+blocks 1-3 only: Phase B S0 x3, no Phase A, November (fallback F1)                540      30.57      71.29
+blocks 1-3 only: Phase B S0 x3, no Phase A, December                              540      33.92      79.55
+Phase B S0 x2 + Phase A x1, November (fallback F2)                               1032      44.23     106.30
+Phase B S0 x1 + Phase A x1, November (not adopted: no phi, no run noise)          852      34.04      82.53
+Phase B S0 x3 + Phase A x3, November (not adopted)                               2556      99.50     244.97
+adopted + Phase B S1 x1, November (not adopted)                                  1392      95.36     245.37
+adopted + Phase B S1 x3 (the full t4 design), November (not adopted)             1752     177.23     475.99
+
+Projection-pause ratio (adopted / block 1, central): November 5.3413, December 5.3122
+Block-1 spend above which the projection pause triggers ($80 / ratio): November $14.98, December $15.06
+Break-even uniform language factor on the HIGH per-call basis: November 1.07 ($80) / 1.34 ($100); December 0.95 ($80) / 1.19 ($100)
+
+ADOPTED: FR+JA, Phase B S0 x3, Phase A S0 x1, November prices, by language x model (US$ expected / high):
+  fr  claude-fable-5-2   calls  202   14.48 /  35.90
+  fr  gpt-6-astra        calls  202    7.10 /  12.48
+  fr  gemini-4-argon     calls  202    2.56 /   6.80
+  ja  claude-fable-5-2   calls  202   17.37 /  47.87
+  ja  gpt-6-astra        calls  202    8.52 /  16.64
+  ja  gemini-4-argon     calls  202    3.08 /   9.06
+  phase B       calls  540   30.57 /  71.29
+  phase A_yn    calls  528   14.39 /  38.44
+  phase A_open  calls  144    8.15 /  19.01
+
+ADOPTED, December prices (Gemini 4 Argon 4/20), by language x model (US$ expected / high):
+  fr  claude-fable-5-2   calls  202   14.48 /  35.90
+  fr  gpt-6-astra        calls  202    7.10 /  12.48
+  fr  gemini-4-argon     calls  202    5.13 /  13.59
+  ja  claude-fable-5-2   calls  202   17.37 /  47.87
+  ja  gpt-6-astra        calls  202    8.52 /  16.64
+  ja  gemini-4-argon     calls  202    6.15 /  18.12
+  phase B       calls  540   33.92 /  79.55
+  phase A_yn    calls  528   15.78 /  43.84
+  phase A_open  calls  144    9.04 /  21.21

@@ -1,0 +1,3 @@
+# v0.62 in plain words (draft r0, for Pablo)
+
+We ask the same AI models the same questions as the English November wave, translated into French and Japanese: five categories, 30 category questions three times, 112 brand questions once, search off. Then we check whether brands come out in the same order as in English. Presence is the main test; Consistency comes second; Ranking only if its redesign passes. We also report which categories shift by language. 1,212 calls, expected $54 at November prices or $60 at December prices, under the $100 cap; the guard protects the main tests even if Japanese answers cost twice as much. A model translated the questions; I suggest a native speaker checks them. Denon stays in, disclosed, with results also shown without it.
