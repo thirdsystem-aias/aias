@@ -1,4 +1,4 @@
-# AIAS v1.13 — Source classification rule (DRAFT r1, sent to Pablo for the 24-hour review, 2026-11-10; frozen at the Part I lock)
+# AIAS v1.13 — Source classification rule (DRAFT r1, to be sent to Pablo for the 24-hour review, 2026-11-10; frozen at the Part I lock)
 
 Applies to every retrieved URL (`search.sources`, the primary field) and every cited URL (`search.citations`, sensitivity S2) in a t4 S1 record [RE-ANALYSIS: t4]. Written before any t4 answer exists and before v0.42's own S1 domain descriptives are computed; no search-on answer was read to write it (the declared v0.39 pilot was dropped before it was run). The fenced `classes:` blocks below are the **machine copy**: `score_v1_13.py` reads them from this file, so the anchored SHA-256 of this file pins the rule. No domain is added, moved or removed after the first t4 S1 record is read; later additions run only as a labelled exploratory sensitivity.
 

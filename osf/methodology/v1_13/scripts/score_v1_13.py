@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 score_v1_13.py -- AIAS(TM) v1.13 Grounding Paper A, Part I: scorer CORE
-(DRAFT r1, sent to Pablo for the 24-hour review, 2026-11-10).
+(DRAFT r1, to be sent to Pablo for the 24-hour review; 2026-11-10).
 
 Stdlib only. No network, no model call. Transcribes PRE_REGISTRATION_v1_13.md section 2 (answers, P and C* at
 t4, source classification, per-brand statistics), section 3 (rho_w, permutation, bootstrap, verdicts, gate,
@@ -52,12 +52,19 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N12 MQ5 on the primary G* map: share of rated units at 0 > 0.80, or >= 3 substrates whose rated units carry at
      most one distinct G* value. MQ2: share of a model's category answers with >= 1 entry in the primary field.
      MQ6 on the rated units.
- N13 P at t4: recognition share = recognized / coded N3 Phase A rows of b in condition c (v0.42 coder table,
-     answered calls only); pi_hat = column pi_N3_<c> of v0.42's brand table; P = 100 (share + 2 pi_hat) / 3.
-     C* = 100 (1 - phi / 7.2) from column phi_N3_<c>, rated iff phi is defined and the coded N3 Phase B rows of
-     condition c carry >= 6 mentions of b.
- N14 Panel: N3 primary. A model dropped by MQ2 (< 0.10) or Gemini dropped by MQ4 (> 0.20 unresolved) leaves the
-     primary G*; the gate is computed on the remaining models and labelled.
+ N13 P at t4 (shared definition with v1.12, section 2.2, clarification of 2026-11-10): recognition share
+     C_P/3 = recognized / coded N3 Phase A rows of b in S0 (t4 r2 collects Phase A in S0, one run, so this is the
+     share of N3 models whose one S0 answer codes b as recognized; answered calls only; models without a coded
+     answer leave the denominator; no coded row -> P not computed). The same S0 recognition share enters P_S0 and
+     P_S1 (no Phase A in S1). pi_hat = column pi_N3_<c> of v0.42's brand table (three Phase B runs);
+     P_c = 100 (C_P/3 + 2 pi_hat_c) / 3. C*_c = 100 (1 - phi / 9) from column phi_N3_<c> when
+     phi_partition_N3_<c> is "defined"; 100 when it is "saturated" (v1.9 partition); NOT RATED when "zero" or
+     "undefined"; rated only if the coded N3 Phase B rows of condition c carry >= 6 mentions of b (v1.9 floor).
+     9 = phi_max = F M / (M - 1) for F = 6 frames and M = 3 models (v1.9's rule on a reduced panel).
+ N14 Panel: N3 only (t4 r2 collects no Claude Opus 5.5; A4 and C3 do not exist). A model dropped by MQ2 (< 0.10)
+     or Gemini dropped by MQ4 (> 0.20 unresolved) leaves the primary G*; the gate is computed on the remaining
+     models and labelled.
+ N15 G_A (Phase A with search) is not computed: t4 r2 collects Phase A in S0 only.
 """
 import argparse
 import csv
@@ -93,12 +100,14 @@ SEEDS = {"H1_Sep_Presence": 113001, "H2_Sep_Consistency": 113002, "H3_Run_Reliab
          "H7_Struct_Gap": 113007, "bootstrap": 113008, "sensitivities": 113009, "reserved": 113010}
 MQ2_FLAG, MQ2_DROP, MQ3_FLAG, MQ3_LOW, MQ4_DROP = 0.25, 0.10, 0.40, 0.60, 0.20
 MQ5_ZERO_SHARE, MQ5_FLAT_SUBSTRATES, MQ6_FLAG = 0.80, 3, 0.50
-C_STAR_DIVISOR, C_STAR_MIN_MENTIONS = 7.2, 6
-FABLE, OPUS55, GPT6, GEM4 = "claude-fable-5-2", "claude-opus-5-5", "gpt-6-astra", "gemini-4-argon"
-PANELS = {"N3": (FABLE, GPT6, GEM4), "C3": (OPUS55, GPT6, GEM4), "A4": (FABLE, OPUS55, GPT6, GEM4)}
+C_STAR_DIVISOR, C_STAR_MIN_MENTIONS = 9.0, 6                  # phi_max = 6 * 3 / (3 - 1) (v1.9, M = 3)
+RECOGNITION_CONDITION = "S0"                                    # t4 r2: Phase A in S0, one run (v0.42 C13)
+FABLE, GPT6, GEM4 = "claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"
+PANELS = {"N3": (FABLE, GPT6, GEM4)}                            # t4 r2 (v0.42 C11): no C3, no A4
 SUBSTRATES = ("v19", "v20", "v21", "v22", "v23")
 CODER_SUB = {"v19": "v0.19", "v20": "v0.20", "v21": "v0.21", "v22": "v0.22", "v23": "v0.23"}
 DENON = ("v19", "Denon")                                        # S11 (COI, section 11)
+HOUSE_PORTAL_UNITS = {("v20", "A.5"), ("v20", "A.6"), ("v23", "S09")}   # D4: dior.com, chanel.com, malts.com (section 2.3)
 GATE_LEGS = ("H1_Sep_Presence", "H2_Sep_Consistency", "H3_Run_Reliability")
 CONDITIONAL_LEGS = ("H4_Sep_Ranking", "H5_Sep_Sentiment", "H6_Sep_Coverage")
 ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.10-prereg-r2", "H5_Sep_Sentiment": "v1.11-prereg-r1",
@@ -428,20 +437,7 @@ def brand_descriptives(answers, units, stats):
     return out
 
 
-def g_a_map(phase_a_answers, units, floor=FLOOR_G):
-    """G_A: own-domain share over grounded Phase A answers about b (A4), rated iff >= floor grounded answers.
-    phase_a_answers: dicts {unit, sources}."""
-    out = {}
-    for key, u in units.items():
-        grounded = [a for a in phase_a_answers if a["unit"] == key and resolved_domains(a["sources"])]
-        if u["status"] != "RESOLVED":
-            out[key] = {"grounded": len(grounded), "own": None, "G_A": None, "rated": False}
-            continue
-        own = sum(1 for a in grounded if resolved_domains(a["sources"]) & u["domains"])
-        rated = len(grounded) >= floor
-        out[key] = {"grounded": len(grounded), "own": own, "rated": rated,
-                    "G_A": (100.0 * own / len(grounded)) if grounded else None}
-    return out
+# G_A (Phase A with search) was removed on 2026-11-10: t4 r2 collects Phase A in S0 only (N15).
 
 
 # =========================================================================== statistics (section 3 conventions)
@@ -852,13 +848,13 @@ def pi_t4(brand_table, units, cond):
 
 
 def p_t4(brand_table, coded_a, units, cond, models, answered_ids=None):
-    """N13: P_c = 100 (recognition share + 2 pi_hat) / 3 on N3 in condition c."""
+    """N13: P_c = 100 (C_P/3 + 2 pi_hat_c) / 3 on N3; C_P/3 from the S0 Phase A answers in every condition."""
     byc = _by_coder(units)
     pi = {byc[(r["substrate"], r["brand"])]: _num(r.get(f"pi_N3_{cond}")) for r in brand_table
           if (r["substrate"], r["brand"]) in byc}
     rec = {}
     for r in coded_a:
-        if r["condition"] != cond or r["model"] not in models:
+        if r["condition"] != RECOGNITION_CONDITION or r["model"] not in models:
             continue
         if answered_ids is not None and r["call_id"] not in answered_ids:
             continue
@@ -880,10 +876,22 @@ def p_t4(brand_table, coded_a, units, cond, models, answered_ids=None):
 
 
 def c_star_t4(brand_table, coded_b, units, cond, models, answered_ids=None):
-    """N13: C* = 100 (1 - phi / 7.2), rated iff phi defined and >= 6 N3 Phase B mentions in condition c."""
+    """N13: C* = 100 (1 - phi / 9) if phi is defined, 100 if saturated (v1.9), else NOT RATED; and only with
+    >= 6 N3 Phase B mentions in condition c."""
     byc = _by_coder(units)
-    phi = {byc[(r["substrate"], r["brand"])]: _num(r.get(f"phi_N3_{cond}")) for r in brand_table
-           if (r["substrate"], r["brand"]) in byc}
+    phi = {}
+    for r in brand_table:
+        k = byc.get((r["substrate"], r["brand"]))
+        if k is None:
+            continue
+        part = (r.get(f"phi_partition_N3_{cond}") or "").strip()
+        v = _num(r.get(f"phi_N3_{cond}"))
+        if part == "saturated":
+            phi[k] = 0.0                                   # C* = 100 (v1.9: no dispersion)
+        elif part in ("defined", "") and v is not None:    # "" = older tables without the partition column
+            phi[k] = v
+        else:
+            phi[k] = None
     ment = {}
     for r in coded_b:
         if r["condition"] != cond or r["model"] not in models:
@@ -1022,15 +1030,15 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     for r in s1_all:                                   # MQ1: every answered S1 record parses (exceptions halt)
         answer_sources(r, classes, set(), PRIMARY_FIELD)
         answer_sources(r, classes, set(), CITED_FIELD)
-    cat_a4 = select_calls(recs, PANELS["A4"], "S1", "B")
-    answers_a4 = build_answers(cat_a4, named, units, classes)
-    mq2 = mq2_search_use(answers_a4, PANELS["A4"])
-    mq4 = mq4_google(answers_a4)
+    cat_n3 = select_calls(recs, PANELS["N3"], "S1", "B")
+    answers_n3 = build_answers(cat_n3, named, units, classes)
+    mq2 = mq2_search_use(answers_n3, PANELS["N3"])
+    mq4 = mq4_google(answers_n3)
     dropped = [m for m in PANELS["N3"] if mq2[m]["dropped_from_g_star"]]
     if mq4["drop_gemini"] and GEM4 not in dropped:
         dropped.append(GEM4)
     models = [m for m in PANELS["N3"] if m not in dropped]
-    answers = [a for a in answers_a4 if a["model"] in models]
+    answers = [a for a in answers_n3 if a["model"] in models]
     n3 = PANELS["N3"]
     P = {c: p_t4(inp["brand_table"], inp["coded_a"], units, c, n3, answered) for c in ("S0", "S1")}
     C = {c: c_star_t4(inp["brand_table"], inp["coded_b"], units, c, n3, answered) for c in ("S0", "S1")}
@@ -1042,10 +1050,11 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
            "legs": prim["legs"], "H3": prim["H3"], "MQ": {
                "MQ1_parsed_s1_records": len(s1_all), "MQ2": mq2, "MQ3": mq3_class_coverage(answers), "MQ4": mq4,
                "MQ5": prim["mq5"], "MQ6": mq6_coupling(prim["stats"], pi_t4(inp["brand_table"], units, "S1")),
-               "MQ8": mq8_citations_vs_sources([r for r in cat_a4], classes)},
-           "units": {f"{k[0]}|{k[1]}": v for k, v in prim["stats"].items()},
+               "MQ8": mq8_citations_vs_sources([r for r in cat_n3], classes)},
+           "units": {f"{k[0]}|{k[1]}": dict(v, house_portal_domain=k in HOUSE_PORTAL_UNITS)
+                     for k, v in prim["stats"].items()},
            "descriptives": {f"{k[0]}|{k[1]}": v for k, v in brand_descriptives(answers, units, prim["stats"]).items()},
-           "baseline": baseline(answers_a4, units, brand_stats(answers_a4, units))}
+           "baseline": baseline(answers_n3, units, brand_stats(answers_n3, units))}
     if not sensitivities:
         return doc
     sp = {k: SEEDS["sensitivities"] for k in SEEDS}
@@ -1056,20 +1065,19 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
         sens[name] = {"verdicts": r["verdicts"], "gate": r["gate"]["verdict"],
                       "rho": {h: [l["rho_w"] for l in r["legs"][h]] for h in r["legs"]}, "rel3": r["H3"]["rel3"]}
     run("S1_denominator_m", answers, denominator="m")
-    run("S2_citations", build_answers([r for r in cat_a4 if r["model_requested"] in models], named, units, classes,
+    run("S2_citations", build_answers([r for r in cat_n3 if r["model_requested"] in models], named, units, classes,
                                       CITED_FIELD))
-    run("S3_A4", answers_a4)
-    run("S3_C3", [a for a in answers_a4 if a["model"] in PANELS["C3"]])
+    # S3 (panels A4 and C3) removed: t4 r2 collects no Claude Opus 5.5 (v0.42 C11)
     for fl in FLOOR_SENS:
         run(f"S4_floor_{fl}", answers, floor=fl)
     s5 = [m for m in PANELS["N3"] if m not in dropped or m == GEM4] if GEM4 in dropped else \
         [m for m in models if m != GEM4]
-    run("S5_gemini_" + ("kept" if GEM4 in dropped else "dropped"), [a for a in answers_a4 if a["model"] in s5])
+    run("S5_gemini_" + ("kept" if GEM4 in dropped else "dropped"), [a for a in answers_n3 if a["model"] in s5])
     if inp.get("profiles"):
         P3, C3 = legacy_t3(inp["profiles"], units)
         run("S7_legacy_t3", answers, P={"S0": P3, "S1": P3}, C={"S0": C3, "S1": C3})
     sens["S8_leave_one_substrate_out"] = loso(answers, units, P, C, n_perm)
-    run("S9_text_urls", build_answers([r for r in cat_a4 if r["model_requested"] in models], named, units, classes,
+    run("S9_text_urls", build_answers([r for r in cat_n3 if r["model_requested"] in models], named, units, classes,
                                       PRIMARY_FIELD, with_text_urls=True))
     run("S10_uncentred", answers, centred=False)
     run("S11_without_Denon", answers, exclude=(DENON,))
@@ -1099,7 +1107,7 @@ def _tag_exists(tag):
 
 V042_TAG = "v0.42-prereg-r1"
 V042_PINS = {"osf/v42/scripts/code_t4_v0_42.py": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
-             "osf/v42/scripts/score_v0_42.py": "884b02cd64438ec031f3967c6b2120c25bc286a3"}   # git blobs (section 0)
+             "osf/v42/scripts/score_v0_42.py": "9e2c86c167d18981f0ac6c63ce8480f8c005205a"}   # git blobs at 527899e (section 0)
 
 
 def v042_pins_ok():

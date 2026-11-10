@@ -1,4 +1,4 @@
-# AIAS v1.13 — Structured-data audit protocol (DRAFT r1, sent to Pablo for the 24-hour review, 2026-11-10) [NEW WEB DATA: audit]
+# AIAS v1.13 — Structured-data audit protocol (DRAFT r1, to be sent to Pablo for the 24-hour review, 2026-11-10) [NEW WEB DATA: audit]
 
 Part II of the v1.13 pre-registration. **New web data**: runs only after its own lock (tag `v1.13-audit-r1`), the OSF anchor, and **24 hours after Pablo receives the locked text**. No paid model, no API key, no spend. Nothing in this file has been run against the web; no website has been fetched while drafting it. The script is `osf/methodology/v1_13/scripts/audit_v1_13.py`; its dry run reads synthetic fixtures only (§8).
 
@@ -10,9 +10,9 @@ The 112 brand units of the five omnibus registries (v0.19–v0.23), unchanged. v
 
 Built before the Part I lock, offline, and never looked up at analysis time (runner decision 1, 2026-11-10):
 
-1. For each registry unit, the registrable domain (U2/U4 of `source_classes_v1_13.md`) of an official-site URL recorded in a committed repository file, with its source (path, line, git blob, URL). URLs that occur only inside model answers are not records. No brand page is fetched to build or check the list.
-2. A unit with no such record is **UNRESOLVED**; ambiguous units are listed with the reason, not guessed. The runner decides every UNRESOLVED row before the pre-registration is sent: a domain with its source, or **NONE** (no own domain). Each decision is logged in the pre-registration's change log.
-3. Frozen as `registries/brand_domains_v1_13.csv` (columns: `substrate, brand_id, brand, coder_key, status, domain, aliases, source, ambiguity, runner_decision`; aliases `;`-separated), SHA-256 in the pre-registration (§2.3) and in both anchors. Status as built: 2 RESOLVED, 110 UNRESOLVED, 18 ambiguities listed.
+1. For each registry unit, the registrable domain (U2/U4 of `source_classes_v1_13.md`) of the brand's official-site URL as given by a dated, citable public record, by the decision rules D1–D6 of the pre-registration (§2.3): Wikidata P856 of the brand's own item; else the English Wikipedia infobox website; else web-search results listing pages on the brand's own domain (results read, not opened), corroborated where needed by a third-party directory. Each row carries its source and access date. URLs that occur only inside model answers are not records. No brand page (and no robots.txt) is fetched to build or check the list.
+2. A unit with no such record is **UNRESOLVED**; ambiguous units are listed with the reason, not guessed. The runner decides every UNRESOLVED and flagged row before the pre-registration is sent: a domain with its source, or **NONE** (no own domain). Each decision is written in the row's `runner_decision` column and logged in the pre-registration's change log.
+3. Frozen as `registries/brand_domains_v1_13.csv` (columns: `substrate, brand_id, brand, coder_key, status, domain, aliases, source, ambiguity, runner_decision`; aliases `;`-separated), SHA-256 in the pre-registration (§2.3) and in both anchors. Status after the runner's decisions (2026-11-10; pre-registration §2.3, §12): 107 RESOLVED, 5 NONE (the five v0.22 cell D brands), 0 UNRESOLVED; SHA-256 `38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a`.
 
 During the audit (Stage A), the registrable domain of P1's final URL after redirects and the domains of Wikidata P856 are recorded as **verified aliases** for sensitivity S6 only.
 

@@ -2,7 +2,7 @@
 """
 audit_v1_13.py -- AIAS(TM) v1.13 Grounding Paper A, Part II: structured-data audit of the registry brands' own
 websites and of their public Wikidata records (prereg/website_audit_protocol_v1_13.md).
-DRAFT r1, sent to Pablo for the 24-hour review (2026-11-10). Nothing has been fetched while writing this file.
+DRAFT r1, to be sent to Pablo for the 24-hour review (2026-11-10). Nothing has been fetched while writing this file.
 
 Stdlib only. No model, no API key, no spend.
 

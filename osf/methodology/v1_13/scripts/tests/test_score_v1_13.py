@@ -364,7 +364,8 @@ PROVIDER = {"claude-fable-5-2": "anthropic", "claude-opus-5-5": "anthropic", "gp
 
 
 def synthetic_t4(seed=7, p_tracks_g=False):
-    """5 substrates x 8 units (v19 includes a unit 'Denon'), 4 models x 3 runs x 6 frames, S0 and S1."""
+    """5 substrates x 8 units (v19 includes a unit 'Denon'), the 3 N3 models x 3 runs x 6 frames, S0 and S1
+    (Phase A rows in both conditions here; the scorer reads S0 recognition only)."""
     rng = random.Random(seed)
     units, theta = {}, {}
     for s in S.SUBSTRATES:
@@ -377,7 +378,7 @@ def synthetic_t4(seed=7, p_tracks_g=False):
     records, coded_a, coded_b, table = [], [], [], []
     for s in S.SUBSTRATES:
         keys = [k for k in units if k[0] == s]
-        for m in S.PANELS["A4"]:
+        for m in S.PANELS["N3"]:
             for run in (1, 2, 3):
                 for cond in ("S0", "S1"):
                     for f in range(6):
@@ -430,7 +431,8 @@ class TestStageC1Synthetic(unittest.TestCase):
         self.assertFalse(d["MQ"]["MQ4"]["drop_gemini"])
         self.assertEqual(d["MQ"]["MQ4"]["unresolved_share"], 0.0)
         self.assertEqual(d["legs"]["H1_Sep_Presence"][0]["n"], 40)
-        for name in ("S1_denominator_m", "S2_citations", "S3_A4", "S3_C3", "S4_floor_3", "S4_floor_10",
+        self.assertFalse(any(n.startswith("S3") for n in d["sensitivities"]))   # A4/C3 removed (t4 r2)
+        for name in ("S1_denominator_m", "S2_citations", "S4_floor_3", "S4_floor_10",
                      "S5_gemini_dropped", "S8_leave_one_substrate_out", "S9_text_urls", "S10_uncentred",
                      "S11_without_Denon"):
             self.assertIn(name, d["sensitivities"])
@@ -464,7 +466,52 @@ class TestStageC1Synthetic(unittest.TestCase):
         row = next(r for r in inp["brand_table"] if r["substrate"] == "v0.20" and r["brand"] == "B3")
         self.assertAlmostEqual(P[k], 100 * (1 + 2 * float(row["pi_N3_S0"])) / 3)
         Cs = S.c_star_t4(inp["brand_table"], inp["coded_b"], inp["units"], "S1", S.PANELS["N3"])
-        self.assertAlmostEqual(Cs[k], 100 * (1 - float(row["phi_N3_S1"]) / 7.2))
+        self.assertAlmostEqual(Cs[k], 100 * (1 - float(row["phi_N3_S1"]) / 9))
+
+    def test_shared_p_definition_s0_recognition(self):
+        """P_S1 uses the S0 Phase A recognition (t4 r2 has no Phase A in S1); C_P/3 = share of N3 models."""
+        inp = synthetic_t4()
+        k = ("v20", "B3")
+        coded_a = [r for r in inp["coded_a"] if r["condition"] == "S0" and r["run"] == "1"]
+        for r in coded_a:
+            if r["substrate"] == "v0.20" and r["brand"] == "B3" and r["model"] == S.GEM4:
+                r["recognized"] = "0"
+        row = next(r for r in inp["brand_table"] if r["substrate"] == "v0.20" and r["brand"] == "B3")
+        P1 = S.p_t4(inp["brand_table"], coded_a, inp["units"], "S1", S.PANELS["N3"])
+        self.assertAlmostEqual(P1[k], 100 * (2 / 3 + 2 * float(row["pi_N3_S1"])) / 3)
+        a_s1_only = [dict(r, condition="S1") for r in coded_a]
+        self.assertIsNone(S.p_t4(inp["brand_table"], a_s1_only, inp["units"], "S1", S.PANELS["N3"])[k])
+        miss = [r for r in coded_a if not (r["brand"] == "B3" and r["model"] == S.GPT6)]
+        P2 = S.p_t4(inp["brand_table"], miss, inp["units"], "S0", S.PANELS["N3"])
+        self.assertAlmostEqual(P2[k], 100 * (1 / 2 + 2 * float(row["pi_N3_S0"])) / 3)   # coded models only
+
+    def test_c_star_partitions(self):
+        inp = synthetic_t4()
+        rows = [r for r in inp["brand_table"] if r["substrate"] == "v0.20"]
+        rows[0].update(phi_partition_N3_S0="defined", phi_N3_S0="4.5")
+        rows[1].update(phi_partition_N3_S0="saturated", phi_N3_S0="")
+        rows[2].update(phi_partition_N3_S0="zero", phi_N3_S0="")
+        rows[3].update(phi_partition_N3_S0="undefined", phi_N3_S0="")
+        Cs = S.c_star_t4(inp["brand_table"], inp["coded_b"], inp["units"], "S0", S.PANELS["N3"])
+        keys = [("v20", r["brand"]) for r in rows[:4]]
+        self.assertAlmostEqual(Cs[keys[0]], 50.0)
+        self.assertEqual(Cs[keys[1]], 100.0)
+        self.assertIsNone(Cs[keys[2]])
+        self.assertIsNone(Cs[keys[3]])
+        self.assertEqual(S.C_STAR_DIVISOR, 6 * 3 / (3 - 1))
+
+    def test_v042_pins(self):
+        self.assertEqual(S.V042_PINS["osf/v42/scripts/code_t4_v0_42.py"], "2d36735d512cf9e13b74010ba5a7f655fc7de0bc")
+        self.assertEqual(S.V042_PINS["osf/v42/scripts/score_v0_42.py"], "9e2c86c167d18981f0ac6c63ce8480f8c005205a")
+        self.assertEqual(set(S.PANELS), {"N3"})
+        self.assertFalse(hasattr(S, "g_a_map"))
+
+    def test_house_portal_flag(self):
+        self.assertEqual(S.HOUSE_PORTAL_UNITS, {("v20", "A.5"), ("v20", "A.6"), ("v23", "S09")})
+        units = S.load_brand_domains()
+        self.assertEqual({k: units[k]["domains"] & {"dior.com", "chanel.com", "malts.com"} for k in S.HOUSE_PORTAL_UNITS},
+                         {("v20", "A.5"): {"dior.com"}, ("v20", "A.6"): {"chanel.com"}, ("v23", "S09"): {"malts.com"}})
+        self.assertEqual(S.unresolved_units(units), [] if isinstance(S.unresolved_units(units), list) else set())
 
 
 class TestGuard(unittest.TestCase):
