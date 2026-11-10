@@ -3,7 +3,8 @@
 score_v1_14.py - AIAS v1.14, Ranking (redesigned measure): the modal-position statistic,
 pre-registered after v1.10's sensitivity check, confirmed blind on the t4 and t5 waves.
 
-STATUS: r1 draft (2026-11-10), to be locked at tag v1.14-prereg-r1. Rules transcribed from
+STATUS: r2 (2026-11-10), to be locked at tag v1.14-prereg-r2 (r1 superseded before any t4 answer existed:
+crash fix in Stage 1's unit listing; DEVIATIONS Entry 1). Rules transcribed from
 osf/methodology/v1_14/prereg/PRE_REGISTRATION_v1_14.md (section cited inline).
 
 What is new here and what is reused
@@ -54,7 +55,7 @@ import score_v1_10 as R  # noqa: E402  (v1.10's locked code, imported unchanged)
 # TRANSCRIBED CONSTANTS
 # ===========================================================================
 PHASE_ID = "v1.14"
-PREREG_TAG = "v1.14-prereg-r1"
+PREREG_TAG = "v1.14-prereg-r2"   # r1 (20fbc342) superseded before any t4 answer existed (DEVIATIONS Entry 1)
 ROOT = Path(__file__).resolve().parents[1]
 V114 = "osf/methodology/v1_14"
 V110 = R.V110
@@ -997,8 +998,8 @@ def stage1_core(raw_records, brand_table, coded_a, coded_b, v042_verdicts, regis
                                            [k[0] for k in keys])
     res["STAGE1_VERDICT"] = stage1_verdict(h1["verdict"], h2["verdict"], comp_v, h4["verdict"])
     res["component_legs"] = comp_v
-    res["units"] = [{"substrate": k[0], "brand": k[1], "n_ranked_S0": U["S0"][k]["n_ranked"],
-                     "rated_S0": U["S0"][k]["rated"], "R_star_S0": U["S0"][k][STAT],
+    res["units"] = [{"substrate": k[0], "brand": k[1], "n_ranked_S0": U["S0"].get(k, {}).get("n_ranked", 0),
+                     "rated_S0": U["S0"].get(k, {}).get("rated", False), "R_star_S0": U["S0"].get(k, {}).get(STAT),
                      "n_ranked_S1": U["S1"].get(k, {}).get("n_ranked", 0),
                      "R_star_S1": U["S1"].get(k, {}).get(STAT), "P_S0": comp["S0"]["P"].get(k),
                      "C_star_S0": comp["S0"]["C"].get(k), "P_S1": comp["S1"]["P"].get(k)}
@@ -1096,8 +1097,9 @@ def verify_lock_manifest(path: Path = LOCK_MANIFEST, root: Path = ROOT) -> list[
 
 
 def lock_status(anchor: Path = ANCHOR_FILE) -> tuple[bool, list[str]]:
-    """Stage 1 and Stage 2 on real data need: tag v1.14-prereg-r1, the anchor file (written after the push
-    and the OSF deposit), tag v0.42-acquisition-locked, and every locked file unchanged."""
+    """Stage 1 and Stage 2 on real data need: tag v1.14-prereg-r2, the anchor file (written after the push
+    and the OSF deposit; r1's anchor is kept as anchor/git_anchor_v1_14_r1.json and does not satisfy this check),
+    tag v0.42-acquisition-locked, and every locked file unchanged."""
     why = []
     if not tag_exists(PREREG_TAG):
         why.append(f"git tag {PREREG_TAG} does not exist")

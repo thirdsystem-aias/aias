@@ -37,9 +37,10 @@ def _answer_text(rng, brands, pres, pos, with_url=False):
     return "\n".join(lines), set(named)
 
 
-def build_wave(base: Path, seed=7, served_mismatch=True):
+def build_wave(base: Path, seed=7, served_mismatch=True, s1_only=()):
     """A synthetic t4-shaped tree: osf/v42/data/t4_raw.jsonl, coded tables, brand table, verdicts, probes.
-    Position propensity is independent of presence (separable by construction)."""
+    Position propensity is independent of presence (separable by construction). Brands in `s1_only` are
+    never named in a search-off (S0) answer (r2 test; the default leaves every answer unchanged)."""
     rng = np.random.default_rng(seed)
     raw, codedA, codedB, probes = [], [], [], []
     pres = {b: float(p) for s in SUBS for b, p in zip(BRANDS[s], rng.uniform(0.35, 0.95, 8))}
@@ -63,7 +64,8 @@ def build_wave(base: Path, seed=7, served_mismatch=True):
                 for run in S.RUNS:
                     for f in FRAMES:
                         cid = f"{raw_s}|B|{f}|{m}|{cond}|{run}"
-                        txt, named = _answer_text(rng, BRANDS[s], pres, pos, with_url=(cond == "S1"))
+                        brands = [b for b in BRANDS[s] if not (cond == "S0" and b in s1_only)]
+                        txt, named = _answer_text(rng, brands, pres, pos, with_url=(cond == "S1"))
                         rec = {"call_id": cid, "substrate": raw_s, "phase": "B", "probe_id": f, "brand_id": None,
                                "frame_id": f, "model_requested": m, "served_model": m, "condition": cond,
                                "run": run, "text": txt, "status": "ok", "error": None}
@@ -340,6 +342,55 @@ class Stages(unittest.TestCase):
                             log=lambda *a: None, boot=False, shuffle_draws=0, expected_units=40)
         self.assertEqual(res["H1_Sep_Presence"]["verdict"], "UNDETERMINED")
         self.assertEqual(res["H2_Sep_Consistency"]["verdict"], "UNDETERMINED")
+
+
+class R2Fixes(unittest.TestCase):
+    """r2 (DEVIATIONS Entry 1): crash fixes made before any t4 answer existed; synthetic data only."""
+
+    def test_brand_ranked_only_with_search_on(self):
+        # A brand ranked in search-on (S1) answers but never named in a search-off (S0) answer. r1 raised KeyError
+        # in Stage 1's unit listing (after every statistic, before any file was written). r2 lists it with
+        # n_ranked_S0 0, rated_S0 False, R_star_S0 None; Stage 2's late component leg reads that listing.
+        tmp = Path(tempfile.mkdtemp(prefix="v114r2_"))
+        try:
+            x = ("v0.20", BRANDS["v0.20"][0])
+            t4 = build_wave(tmp / "t4", seed=7, s1_only=(x[1],))
+            t5 = tmp / "t5"
+            shutil.copytree(t4, t5)
+            s1 = S.run_stage1(dry=True, t4_dir=t4, registries=REGISTRIES, outdir=tmp / "out/stage1",
+                              expected_units=40, log=lambda *a: None, shuffle_draws=0, boot=False,
+                              activation={"Coverage": {"active": True}})
+            units = {(u["substrate"], u["brand"]): u for u in s1["units"]}
+            self.assertEqual((units[x]["n_ranked_S0"], units[x]["rated_S0"], units[x]["R_star_S0"]), (0, False, None))
+            self.assertGreater(units[x]["n_ranked_S1"], 0)
+            self.assertIsNotNone(units[x]["R_star_S1"])
+            self.assertTrue((tmp / "out/stage1/stage1_v1_14.json").exists())
+            cov = tmp / "coverage.csv"
+            with open(cov, "w", newline="") as fh:
+                w = csv.writer(fh)
+                w.writerow(["substrate", "brand", "value"])
+                for i, (s, b) in enumerate(sorted(units)):
+                    w.writerow([s, b, float(i % 7)])
+            s2 = S.run_stage2(dry=True, t4_dir=t4, t5_dir=t5, registries=REGISTRIES, outdir=tmp / "out/stage2",
+                              stage1_file=tmp / "out/stage1/stage1_v1_14.json", component_specs=[f"Coverage={cov}"],
+                              log=lambda *a: None, boot=False)
+            late = s2["component_legs_completed_at_stage2"]["Coverage"]
+            per_sub = {}
+            for (s, _b), u in units.items():
+                per_sub[s] = per_sub.get(s, 0) + int(bool(u["rated_S0"]))
+            self.assertEqual(late["n"], sum(n for n in per_sub.values() if n >= 5))   # S0-rated units only
+        finally:
+            shutil.rmtree(tmp, ignore_errors=True)
+
+    def test_lock_guards_name_r2(self):
+        # Stage 1 / Stage 2 refusals and --write-anchor name the r2 tag; r1's anchor is kept under its own name, so
+        # it cannot satisfy the anchor check (the r2 anchor is written by --write-anchor after the r2 tag is pushed)
+        self.assertEqual(S.PREREG_TAG, "v1.14-prereg-r2")
+        self.assertEqual(S.ANCHOR_FILE.name, "git_anchor_v1_14.json")
+        r1 = S.ANCHOR_FILE.parent / "git_anchor_v1_14_r1.json"
+        self.assertEqual(json.loads(r1.read_text())["tag"], "v1.14-prereg-r1")
+        if S.ANCHOR_FILE.exists():
+            self.assertEqual(json.loads(S.ANCHOR_FILE.read_text())["tag"], S.PREREG_TAG)
 
 
 class Refusals(unittest.TestCase):

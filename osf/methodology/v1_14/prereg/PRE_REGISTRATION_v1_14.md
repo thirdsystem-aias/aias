@@ -1,6 +1,6 @@
 # AIAS v1.14 — Ranking, redesigned measure: the modal-position statistic, confirmed blind on t4 and t5
 
-AIAS™ Measurement Program — Third System™. Pre-registration **r1, draft** (2026-11-10). To be locked at git tag `v1.14-prereg-r1` and deposited on OSF before any rank position is computed on a t4 answer.
+AIAS™ Measurement Program — Third System™. Pre-registration **r2** (2026-11-10). To be locked at git tag `v1.14-prereg-r2` (r1, locked at `v1.14-prereg-r1` the same day, was superseded before any t4 answer existed; DEVIATIONS Entry 1) and deposited on OSF before any rank position is computed on a t4 answer.
 
 **Pre-registrant:** Pablo Ulpiano González Castro
 
@@ -11,8 +11,8 @@ AIAS™ Measurement Program — Third System™. Pre-registration **r1, draft** 
 | PHASE_ID | v1.14 |
 | PHASE_TYPE | methodology lock; calibration on archived answers (allowed before the lock) and **confirmation on two unseen waves**: t4 (v0.42) and t5 (the next repeat wave). No collection of its own, no model call, no spend. |
 | Decision of record | Pablo, control panel, Tue Nov 10, 2026, 12:27 pm (“ranking redesign — do as you suggest”): “(1) pre-register a new Ranking measure (v1.14) with the modal-position statistic as the declared candidate, stating openly that it was found in v1.10's sensitivity check on the three archived waves; (2) because it was chosen after seeing those waves, its separability and reliability gates are confirmed blind on data it has not seen: the t4 wave (and t5 for retest), scored once after the lock, the v1.9 pattern; the archived waves are reported as calibration only; (3) no Ranking Paper B and no AIAS 3.0 calibration until the redesigned measure passes; if it fails too, report it and bring the options here. The v1.10 Paper A stays published as the negative result.” |
-| Status | r1 draft on branch `v1.14` (from `v1.10` @ `bad8c41`). Calibration run on 2026-11-10 (§4). Not locked; no t4 answer exists (v0.42 locks Wed Nov 11 ~11 am CT and collects Nov 11–13). |
-| Locks on | content lock → `prereg/LOCK_MANIFEST_v1_14.sha256` → commit → tag `v1.14-prereg-r1` → push branch and tag → `anchor/git_anchor_v1_14.json` (tag object, commit, tree, UTC time, SHA-256 of every locked file, activation record of §5.4) → OSF deposit of `osf/methodology/v1_14/prereg/`, `calibration/`, `anchor/`, SHA-256 verified on OSF → Stage 1 only after tag `v0.42-acquisition-locked` exists (§9). |
+| Status | r2 on branch `v1.14` (from `v1.10` @ `bad8c41`); r1 (tag `v1.14-prereg-r1`, commit `20fbc342`) was superseded before any t4 answer existed by a crash fix in Stage 1's unit listing (DEVIATIONS Entry 1). Calibration run on 2026-11-10 (§4). Not locked; no t4 answer exists (v0.42 locks Wed Nov 11 ~11 am CT and collects Nov 11–13). |
+| Locks on | content lock → `prereg/LOCK_MANIFEST_v1_14.sha256` → commit → tag `v1.14-prereg-r2` → push branch and tag → `anchor/git_anchor_v1_14.json` (tag object, commit, tree, UTC time, SHA-256 of every locked file, activation record of §5.4) → OSF deposit of `osf/methodology/v1_14/prereg/`, `calibration/`, `anchor/`, SHA-256 verified on OSF → Stage 1 only after tag `v0.42-acquisition-locked` exists (§9). |
 | Locked inputs | Extractor E0–E7, registries, rating floor, ρ_w convention, nulls, bands and seeds: v1.10 (tag `v1.10-prereg-r2`), imported unchanged from `scripts/score_v1_10.py` (git blob `0f8b981b…`, byte-identical to the tag). Presence and Consistency at t4: the definition v1.12 and v1.13 share (§5.2). |
 | Feeds forward | Only after a PASS (§8): Ranking Paper B and the Presence × Consistency × Ranking calibration of AIAS 3.0, each under its own pre-registration. |
 
@@ -169,7 +169,7 @@ Secondary results (other than H4_S1's downgrade), descriptives, sensitivities an
 
 1. Now (allowed): `--calibration` on the archived waves (§4).
 2. Lock (§0). The lock should precede the end of t4's collection (Nov 13). If it is later, the lock record states that no rank position or Ranking statistic had been computed on a t4 answer by any program script. To keep Stage 1 blind, no Ranking statistic is computed on a t4 answer before it, including v1.12's H5 and v1.13's H4, which apply v1.10's MNP to t4 answers if active.
-3. **Stage 1** (`--stage 1 --v042-scored-ref <ref>`): refuses unless tag `v1.14-prereg-r1` and `anchor/git_anchor_v1_14.json` exist, tag `v0.42-acquisition-locked` exists, every file in `LOCK_MANIFEST_v1_14.sha256` is unchanged, and v0.42's coder blob at the acquisition tag equals the pin; **runs once** (refuses if `outputs/stage1/stage1_v1_14.json` exists). Writes the verdicts, the hashed t4 rank table and the unit table with R\*_S0.
+3. **Stage 1** (`--stage 1 --v042-scored-ref <ref>`): refuses unless tag `v1.14-prereg-r2` and `anchor/git_anchor_v1_14.json` exist, tag `v0.42-acquisition-locked` exists, every file in `LOCK_MANIFEST_v1_14.sha256` is unchanged, and v0.42's coder blob at the acquisition tag equals the pin; **runs once** (refuses if `outputs/stage1/stage1_v1_14.json` exists). Writes the verdicts, the hashed t4 rank table and the unit table with R\*_S0.
 4. **Stage 2** (`--stage 2 --t5-ref <tag> --t5-raw <path> --t5-probes <path>`): refuses before Stage 1, without the lock files, or unless the t5 tag ends in `-acquisition-locked` and exists; checks question parity and the t4 rank-table hash; runs once.
 
 ## 10. Deviations policy
