@@ -140,6 +140,7 @@ def extract_inline_field(body: str, label: str) -> str | None:
 _PACKET_PLAINTEXT_SUBS = {
     r"\approx": "≈", r"\Delta": "Δ", r"\rho": "ρ", r"\eta": "η",
     r"\geq": "≥", r"\leq": "≤", r"\ge": "≥", r"\le": "≤",
+    "^*": "*",                                        # starred symbols, e.g. R^* -> R*
 }
 
 

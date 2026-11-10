@@ -11,6 +11,8 @@ header-includes: |
   \usepackage{caption}
   \usepackage{titlesec}
   \usepackage{needspace}
+  \usepackage{etoolbox}
+  \AtBeginEnvironment{longtable}{\setstretch{1.1}}
   \setstretch{1.36}
   \setlength{\parskip}{8pt}
   \setlength{\parindent}{0pt}
@@ -126,7 +128,7 @@ The pre-registration was drafted, its open questions settled on 10 November 2026
 
 The scorer enforces the order of operations: manifest verification; rank extraction on every frozen set, with each per-answer rank table written and hashed; the data-quality checks; Stage S on early-panel rank tables only, writing a hashed selection file; and only then Stage C, whose first act re-extracts every set, checks that the rank tables are byte-identical to the Stage S tables, and joins the gate's units 1:1 to the Presence and Consistency table. The function that reads $P$ and $C^*$ refuses to run before the selection file exists.
 
-The deviations record has three entries. Entry 0, written before the lock, carries forward each category's source-phase conflict-of-interest handling and announces a re-check of registry-brand ownership. Entry 1 records the move from r1 to r2. Entry 2, written after Stage S and before Stage C, records the re-check's result (one flagged brand, Denon in the headphones registry; see Declarations), keeps the primary analysis unchanged, applies the pre-registered sensitivity S7 to the flagged brand, and adds, as descriptive, the report of every headphone result without it.
+The deviations record has four entries. Entry 0, written before the lock, carries forward each category's source-phase conflict-of-interest handling and announces a re-check of registry-brand ownership. Entry 1 records the move from r1 to r2. Entry 2, written after Stage S and before Stage C, records the re-check's result (one flagged brand, Denon in the headphones registry; see Declarations), keeps the primary analysis unchanged, applies the pre-registered sensitivity S7 to the flagged brand, and adds, as descriptive, the report of every headphone result without it. Entry 3, written after Stage C, discloses that the early answer files store responses without line breaks, so that every early answer is ordered by first mention (§7.2); nothing is recomputed.
 
 # 5. Stage S: selecting the statistic
 
@@ -137,8 +139,6 @@ Selection uses EARLY-6 rank tables only: no Presence, no Consistency, no OMNI da
 ## 5.2 Result
 
 Stage S ran on 10 November 2026 (13:57 UTC), after the r2 lock and anchor. All nine categories entered, with 138 units (12 to 20 per category). Table 1 reports the reliabilities.
-
-\needspace{14\baselineskip}
 
 Table: Stage S split-half reliability (Spearman--Brown) of the six candidates on EARLY-6, odd against even runs, lead-item rule. S8 drops the two knife sets (ordinary-word aliases; 113 units); S9 uses the uncentred rank convention of v0.37--v0.41. Both are reported next to the selection and cannot change it.
 
@@ -163,9 +163,9 @@ These figures were read from `outputs/selection_v1_10.json` and checked by recom
 
 All pooled statistics use $\rho_w$, the pooled within-category Spearman correlation: average ranks are computed within each category, centred on the category's mean rank $(m_c + 1)/2$, and $\rho_w$ is the Pearson correlation of the pooled centred ranks. Centring departs from the v0.37--v0.41 convention: when categories contribute different numbers of units, uncentred pooling adds a between-category component, so that the statistic is above zero in expectation even when no category shows any association. The uncentred values are reported as sensitivity S9. Only categories with at least five units in a comparison enter. Permutation $p$-values are $(h + 1)/(N + 1)$. Bootstrap intervals (units resampled within category, 2,000 draws, seed 110020, 90% percentile) are reported, not used for verdicts. Values are compared unrounded.
 
-## 6.2 Hypotheses
+\needspace{22\baselineskip}
 
-\needspace{12\baselineskip}
+## 6.2 Hypotheses
 
 Table: Stage C hypotheses. $R^*$ is rated MNP; OMNI waves $t_1$, $t_2$, $t_3$. Separability (H1, H2, H4): CONFIRMED iff $|\rho_w| \le 0.30$ (for H1 and H2 at every wave with at least 30 units), FALSIFIED iff $|\rho_w| \ge 0.50$ (at any such wave), MARGINAL otherwise; UNDETERMINED with fewer than two such waves (H1, H2) or fewer than 30 units (H4). Stability (H3, H5, H6): CONFIRMED iff $\rho_w \ge 0.50$ and both nulls give $p < .05$; FALSIFIED iff $\rho_w < 0.30$ or either null gives $p \ge .05$; MARGINAL otherwise; UNDETERMINED below 30 units.
 
@@ -200,9 +200,9 @@ Stage C reads the 31 hashed rank tables (`outputs/rank_tables/`, re-extracted an
 
 Stage C ran once, on 10 November 2026, after DEVIATIONS Entry 2 and the flag file were anchored. Re-extraction reproduced all 31 rank tables byte for byte, and the gate's units joined the Presence and Consistency table 1:1 (112 of 112 per wave). Every number below is read from `outputs/v1_10_verdicts.json`; §7.6 reports the independent re-computation.
 
-## 7.1 The gate
-
 \needspace{14\baselineskip}
+
+## 7.1 The gate
 
 Table: Gate hypotheses. $\rho_w$ = pooled within-category Spearman correlation on centred ranks; $R^*$ = rated MNP. H1 and H2: two-sided permutation $p$ ($R^*$ permuted within category, 10,000 draws). H3: one-sided $p$ for both nulls (10,000 draws each; 0.0001 is the smallest value 10,000 draws can return). 90% intervals: units resampled within category (2,000 draws); reported, not used for verdicts.
 
@@ -226,11 +226,11 @@ Both controls behaved as designed. The positive control MQ6 passed: the penalise
 - **H5 (five-month stability): CONFIRMED.** $\rho_w(R^*_{t_2}, R^*_{t_3})$ = 0.846 ($n$ = 52; both nulls $p$ = 0.0001; 90% interval [0.651, 0.920]). Descriptively, $t_1 \rightarrow t_3$: 0.940 ($n$ = 52).
 - **H6 (eight-day stability, early panel): CONFIRMED.** Between v0.6 and v0.9 on the two shared models, $\rho_w$ = 0.830 ($n$ = 65; both nulls $p$ = 0.0001; 90% interval [0.668, 0.919]).
 
-The early panel's positions are first-mention positions. In every early answer file (all nine EARLY-6 sets and the five EARLY-2 sets) the archived text stores each response with its line breaks collapsed, so rule E3 finds no list items, no answer is list-structured, and E6 orders every early answer by first mention (the list-structured share is 0 in all fourteen early sets, against 0.64 to 1.00 in the OMNI sets). This is E6 applied as written, not an extraction error, and it agrees with MQ3's median $\tau$ of 1.0. It means that Stage S, H4 and H6 rest on first-mention order. It was noticed when the baseline was read, after Stage C; no rule or result was changed. On the gate set, where answers keep their line breaks, the first-mention rule (S1) gives almost the same gate statistics as the lead-item rule (Table 4).
+The early panel's positions are first-mention positions. In every early answer file (all nine EARLY-6 sets and the five EARLY-2 sets) the archived text stores each response with its line breaks collapsed, so rule E3 finds no list items, no answer is list-structured, and E6 orders every early answer by first mention (the list-structured share is 0 in all fourteen early sets, against 0.64 to 1.00 in the OMNI sets). This is E6 applied as written, not an extraction error, and it agrees with MQ3's median $\tau$ of 1.0. It means that Stage S, H4 and H6 rest on first-mention order. It was noticed when the baseline was read, after Stage C, and is recorded in DEVIATIONS Entry 3; no rule or result was changed. On the gate set, where answers keep their line breaks, the first-mention rule (S1) gives almost the same gate statistics as the lead-item rule (Table 4).
+
+\needspace{18\baselineskip}
 
 ## 7.3 Sensitivities
-
-\needspace{16\baselineskip}
 
 Table: Sensitivities of the gate statistics. $\rho_w$ for H1 and H2 at $t_1$ / $t_2$ / $t_3$; H3 = $t_1 \rightarrow t_2$. S3, S4 and S6--S9 use the primary H4 verdict (FALSIFIED) in the gate rule, so a sensitivity under which H1--H3 are all CONFIRMED still gives a MARGINAL gate. S6 and S7 are identical to the primary analysis (see text). S9 uses uncentred ranks.
 
@@ -252,9 +252,9 @@ Sensitivities never change a verdict; the scorer lists eight verdict changes und
 
 S5 places the recall arm next to Presence: $\rho_w(R^*, \hat\pi)$ = 0.291, 0.387 and 0.333, slightly above $\rho_w(R^*, P)$ at every wave (within a wave $\hat\pi$ is proportional to total mentions, so the two give the same values). The coupling therefore runs through how often a brand is named, not through recognition. S6 is identical to the primary analysis because v0.41 flagged no served model. S7 is identical to the primary analysis because Denon is never rated: it is named in no rankable answer at $t_1$ or $t_3$ and in two at $t_2$, below the floor of six, so removing it removes no unit from any correlation. At Stage S, S8 and S9 would also have selected MNP (§5.2).
 
-## 7.4 Cross-category baseline
-
 \needspace{14\baselineskip}
+
+## 7.4 Cross-category baseline
 
 Table: Baseline, gate set (LEGACY-6), values at $t_1$ / $t_2$ / $t_3$. Rankable share = answers naming at least two registry brands, of 36. Brands named = median registry brands per rankable answer. Leader share = share of rankable answers led by the most frequent first-named brand. Highest $R^*$ = rated brand with the highest MNP.
 
@@ -323,7 +323,7 @@ For reporting, the consequence is direct. The program does not add Ranking to th
 
 This is a re-analysis of answers already in the record, and Presence and Consistency for the gate's units were published before it; the lock, the order of operations enforced in code and the blind selection on a different panel are the protections. Archived position data exist (model-extracted rankings in the early files, a per-mention rank in the v0.19 coded files, slot positions in the v0.23 scored files); the scorer never reads them, except the early rankings for the MQ3 concordance check.
 
-The early answer files store each response with its line breaks collapsed, so every early answer is ordered by first mention; Stage S, H4 and H6 therefore rest on first-mention order, while the gate rests on the lead-item rule. This was noticed after Stage C and is reported, not corrected; a redesign or Paper B that uses the early panel should restore line structure from the providers' raw responses, if they exist, under a new pre-registration.
+The early answer files store each response with its line breaks collapsed, so every early answer is ordered by first mention; Stage S, H4 and H6 therefore rest on first-mention order, while the gate rests on the lead-item rule. This was noticed after Stage C and is reported (DEVIATIONS Entry 3), not corrected; a redesign or Paper B that uses the early panel should restore line structure from the providers' raw responses, if they exist, under a new pre-registration.
 
 The gate's precision is limited. Each comparison rests on 52 to 55 rated brands, 8 to 14 per category, and the 90% intervals for H1 are 0.39 to 0.51 wide. The $t_3$ value of H1 (0.307) lies just above the confirmation line, and single categories move the verdicts (S4). Ranking is rated only for brands with at least six rankable mentions, so about half of the brands in these categories have no Ranking score, much as v1.9 found for Consistency.
 
@@ -397,11 +397,11 @@ González Castro, P. U. (2026). *Identity Load Does Not Moderate Cross-Model Con
 
 González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (v0.41). SSRN 7685100 (submitted).
 
-González Castro, P. U. (2026). *AI Presence Measurement Across Consumer Categories: A Cross-Category Baseline of Brand Visibility in Large Language Model Outputs* (v0.6). Working paper; copy at thirdsystem.ai and OSF `ec6wh`.
+González Castro, P. U. (2026). *AI Presence Measurement Across Consumer Categories: A Cross-Category Baseline of Brand Visibility in Large Language Model Outputs* (v0.6). Working paper; copy at thirdsystem.ai, `files/papers/v06_ssrn_paper.pdf`.
 
 González Castro, P. U. (2026). *A Designed-for-Test Measurement of Phantom-Brand Presence in Large Language Model Outputs: Pre-Registered Evidence from Bed Bath & Beyond, with Pier 1 as Structural Comparator* (v0.7). SSRN 6721779.
 
-González Castro, P. U. (2026). *A Designed-for-Test Measurement of Discourse-Language Bias in Large Language Model Brand Recommendations* (v0.8). SSRN 6728000.
+González Castro, P. U. (2026). *A Designed-for-Test Measurement of Discourse-Language Bias in Large Language Model Brand Recommendations: Pre-Registered Evidence from Premium Kitchen Knives, with Marketing-Language Coverage as the Candidate Mechanism* (v0.8). SSRN 6728000.
 
 González Castro, P. U. (2026). *AI Presence Drift: A Longitudinal Re-Baseline of Five Brand Categories* (v0.9). SSRN 6736878.
 
@@ -409,15 +409,15 @@ González Castro, P. U. (2026). *Premium Tea as the Third Regime 4 Datapoint: A 
 
 González Castro, P. U. (2026). *Regime 4 Boundary and Discourse-Language Carryforward on the Kitchen-Knives Substrate* (v0.16). SSRN 6791999.
 
-González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
+González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate* (v0.19). SSRN 6809182.
 
-González Castro, P. U. (2026). *AI Presence in Skincare: AIAS v0.20*. SSRN 6811441.
+González Castro, P. U. (2026). *Type 2 Emergence and First Prospective v1.5 C2 Calibration on a Skincare IL-Gradient Substrate* (v0.20). SSRN 6811441.
 
-González Castro, P. U. (2026). *AI Presence in Cosmetics: AIAS v0.21*. SSRN 6815378.
+González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate* (v0.21). SSRN 6815378.
 
-González Castro, P. U. (2026). *AIAS™ v0.22 --- Automotive Substrate: Phantom Brand Persistence on a Heritage-Saturated Category*. SSRN 6829118.
+González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate: Cell D\_Defunct as Pure-Phantom Upper-Bound Test* (v0.22). SSRN 6829118.
 
-González Castro, P. U. (2026). *AIAS™ v0.23 --- Premium Spirits Substrate*. SSRN 6834298.
+González Castro, P. U. (2026). *AIAS Presence Index v0.23: Premium Spirits* (v0.23). SSRN 6834298.
 
 Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxford University Press.
 
