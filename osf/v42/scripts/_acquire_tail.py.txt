@@ -5,6 +5,109 @@
 CURRENT_DISPATCH = {"anthropic": call_anthropic_current, "openai": call_openai_current, "google": call_google_current}
 BATCH_POLL_SECONDS = 60
 EMPTY_RESENDS = 1          # an empty answer is re-sent once (as send_call in r1)
+BATCH_LOG = ROOT / "osf" / "v42" / "data" / "t4_batches.jsonl"   # journal: batches created / recorded (C26)
+PAID_COLLECTION = re.compile(r"acquire_v[0-9][0-9_.]*\.py\b.*--collect")   # the pattern of acquire_v1_12.py
+WINDOW_HOURS = 72
+WINDOW_HARD_END = datetime(2026, 11, 16, 23, 59, 59, tzinfo=timezone.utc)   # v0.40 collects 2026-11-17 to 11-21
+DEADLINE = None            # set by collect(); no new request is started after it (None: no check, e.g. in tests)
+
+
+# ----------------------------------------------------------------- collection guards (C26)
+def collection_deadline(raw_path):
+    """The earlier of 72 hours after the first recorded call (else now) and WINDOW_HARD_END."""
+    first = None
+    if Path(raw_path).exists():
+        for line in Path(raw_path).read_text(encoding="utf-8").splitlines():
+            try:
+                t = json.loads(line).get("started_utc")
+                t = datetime.fromisoformat(t) if t else None
+            except (json.JSONDecodeError, ValueError, TypeError, AttributeError):
+                continue
+            if t is not None and (first is None or t < first):
+                first = t
+    start = first or datetime.now(timezone.utc)
+    return min(start + timedelta(hours=WINDOW_HOURS), WINDOW_HARD_END)
+
+
+def past_deadline(ledger=None, now=None):
+    if DEADLINE is None or (now or datetime.now(timezone.utc)) <= DEADLINE:
+        return False
+    if ledger is not None:
+        ledger.halt("stop", f"collection window ended at {DEADLINE.isoformat()}")
+    return True
+
+
+def process_table():
+    r = subprocess.run(["ps", "-axo", "pid=,ppid=,command="], capture_output=True, text=True)
+    rows = {}
+    for line in r.stdout.splitlines():
+        parts = line.strip().split(None, 2)
+        if len(parts) >= 2 and parts[0].isdigit() and parts[1].isdigit():
+            rows[int(parts[0])] = (int(parts[1]), parts[2] if len(parts) == 3 else "")
+    return rows
+
+
+def other_collection_guard(rows=None, me=None):
+    """One paid collection on the machine at a time (pre-registration header): refuse while any acquire_v*.py --collect
+    runs outside this process's own family (itself, its ancestors, its descendants)."""
+    rows = process_table() if rows is None else rows
+    me = os.getpid() if me is None else me
+    family, p = {me}, me
+    while p in rows and rows[p][0] > 0 and rows[p][0] not in family:
+        p = rows[p][0]
+        family.add(p)
+    desc, grew = {me}, True
+    while grew:
+        grew = False
+        for pid, (ppid, _) in rows.items():
+            if ppid in desc and pid not in desc:
+                desc.add(pid)
+                grew = True
+    family |= desc
+    others = [(pid, cmd) for pid, (ppid, cmd) in rows.items() if pid not in family and PAID_COLLECTION.search(cmd)]
+    if others:
+        sys.exit("REFUSED: another paid collection is running: " + "; ".join(f"{p} {c[:120]}" for p, c in others))
+    return sorted(family)
+
+
+def _journal(path, event):
+    if path is None:
+        return
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(event, ensure_ascii=False) + "\n")
+        f.flush()
+        os.fsync(f.fileno())
+
+
+def open_batches(path):
+    """Batches the journal records as created but not as recorded (a run stopped while they were in flight)."""
+    created, recorded = {}, set()
+    if path is not None and Path(path).exists():
+        for line in Path(path).read_text(encoding="utf-8").splitlines():
+            try:
+                ev = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if ev.get("event") == "created":
+                created[ev["batch_id"]] = ev
+            elif ev.get("event") == "recorded":
+                recorded.add(ev["batch_id"])
+    return [ev for bid, ev in created.items() if bid not in recorded]
+
+
+def written_batch_requests(raw_path):
+    """(batch_id, custom_id) of every raw line already written (so a recovered batch never writes a line twice)."""
+    out = set()
+    if raw_path is not None and Path(raw_path).exists():
+        for line in Path(raw_path).read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if r.get("batch_id"):
+                out.add((r["batch_id"], r.get("custom_id")))
+    return out
 
 
 def load_probes():
@@ -177,16 +280,19 @@ def _batch_message_out(spec, m, client, ledger):
 TRANSIENT_BATCH_ERRORS = ("api_error", "overloaded_error", "rate_limit_error", "timeout_error")
 
 
-def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep):
+def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep, journal=None):
     """Send `specs` (one model, one block) through the Message Batches API under the budget guard.
     Each attempt is one raw line. Transient errors and expired requests are re-sent up to MAX_ATTEMPTS attempts;
-    an empty answer is re-sent once. Returns 'done' | 'pause' | 'stop'."""
+    an empty answer is re-sent once. With `journal`, every created batch is journaled before it is polled and marked
+    recorded once its lines are written (recover_batches). Returns 'done' | 'pause' | 'stop'."""
     if client is None:
         import anthropic
         client = anthropic.Anthropic()
     poll = BATCH_POLL_SECONDS if poll is None else poll
     pending = [(s, 1, 0) for s in specs]          # (spec, attempt number, empty re-sends so far)
     while pending:
+        if past_deadline(ledger):
+            return "stop"
         model_id, cond = pending[0][0]["model"]["model_id"], pending[0][0]["condition"]
         st, k, tok = ledger.fit(BG.worst_case(model_id, cond, "batch"), len(pending))
         if st == "wait":
@@ -206,44 +312,80 @@ def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time
                 write(_record(s, None, "error", f"batch create failed: {type(e).__name__}: {e}"[:500], att, ne > 0,
                               ts_start, _now(), [], {"batch_id": None, "custom_id": cid}))
             return "stop"
-        while True:
-            b = client.messages.batches.retrieve(b.id)
-            if getattr(b, "processing_status", None) == "ended":
-                break
-            sleep(poll)
-        ts_end = getattr(b, "ended_at", None)
-        ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
-        results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
-        retry, spent = [], 0.0
-        for cid, (s, att, ne) in ids.items():
-            res = results.get(cid)
-            rtype = getattr(res, "type", "missing")
-            extra = {"batch_id": b.id, "custom_id": cid}
-            if rtype == "succeeded":
-                out, parts, note = _batch_message_out(s, res.message, client, ledger)
-                empty = not out["text"].strip()
-                rec = _record(s, out, "empty" if empty else "ok", note, att, ne > 0, ts_start, ts_end, parts, extra)
-                if empty and ne < EMPTY_RESENDS:
-                    retry.append((s, att + 1, ne + 1))
-            else:
-                err = getattr(res, "error", None)
-                etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
-                rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
-                              ts_start, ts_end, [], extra)
-                transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
-                if transient and att < MAX_ATTEMPTS:
-                    retry.append((s, att + 1, ne))
-            write(rec)
-            spent += rec["cost_usd"]
+        _journal(journal, {"event": "created", "batch_id": b.id, "utc": ts_start,
+                           "requests": [{"custom_id": cid, "call_id": s["call_id"], "attempt": att, "empty_resends": ne}
+                                        for cid, (s, att, ne) in ids.items()]})
+        retry, spent = _finish_batch(b.id, ids, client, ledger, write, ts_start, poll, sleep)
         ledger.settle(tok, spent)
+        _journal(journal, {"event": "recorded", "batch_id": b.id, "utc": _now()})
         pending = retry + pending
     return "done"
+
+
+def recover_batches(specs, ledger, write, journal, raw_path, client=None, poll=None, sleep=time.sleep, log=print):
+    """Before any new request: every batch the journal shows as created but not recorded (the run that created it
+    stopped while it was in flight) is polled until it ends and its results are written and costed exactly as
+    run_anthropic_batch writes them; lines already written for it are not written again. Re-sends of its failed or
+    empty requests are left to the collection pass (the call is not done). Returns the number of batches recovered."""
+    todo = open_batches(journal)
+    if not todo:
+        return 0
+    if client is None:
+        import anthropic
+        client = anthropic.Anthropic()
+    poll = BATCH_POLL_SECONDS if poll is None else poll
+    by_id = {s["call_id"]: s for s in specs}
+    seen = written_batch_requests(raw_path)
+    for ev in todo:
+        ids = {r["custom_id"]: (by_id[r["call_id"]], r["attempt"], r["empty_resends"]) for r in ev["requests"]
+               if (ev["batch_id"], r["custom_id"]) not in seen}
+        log(f"recovering batch {ev['batch_id']} (created {ev['utc']}): {len(ids)} of {len(ev['requests'])} results to record")
+        _, spent = _finish_batch(ev["batch_id"], ids, client, ledger, write, ev["utc"], poll, sleep)
+        ledger.settle(None, spent)
+        _journal(journal, {"event": "recorded", "batch_id": ev["batch_id"], "utc": _now(), "recovered": True})
+    return len(todo)
+
+
+def _finish_batch(batch_id, ids, client, ledger, write, ts_start, poll, sleep):
+    """Poll one batch until it ends, then write one raw line per request in `ids`. -> (retry list, USD written)."""
+    while True:
+        b = client.messages.batches.retrieve(batch_id)
+        if getattr(b, "processing_status", None) == "ended":
+            break
+        sleep(poll)
+    ts_end = getattr(b, "ended_at", None)
+    ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
+    results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
+    retry, spent = [], 0.0
+    for cid, (s, att, ne) in ids.items():
+        res = results.get(cid)
+        rtype = getattr(res, "type", "missing")
+        extra = {"batch_id": b.id, "custom_id": cid}
+        if rtype == "succeeded":
+            out, parts, note = _batch_message_out(s, res.message, client, ledger)
+            empty = not out["text"].strip()
+            rec = _record(s, out, "empty" if empty else "ok", note, att, ne > 0, ts_start, ts_end, parts, extra)
+            if empty and ne < EMPTY_RESENDS:
+                retry.append((s, att + 1, ne + 1))
+        else:
+            err = getattr(res, "error", None)
+            etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
+            rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
+                          ts_start, ts_end, [], extra)
+            transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
+            if transient and att < MAX_ATTEMPTS:
+                retry.append((s, att + 1, ne))
+        write(rec)
+        spent += rec["cost_usd"]
+    return retry, spent
 
 
 def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
     """Send `specs` (one model, one block) one at a time under the budget guard. Returns 'done' | 'pause' | 'stop'."""
     sender = sender or send_call
     for s in specs:
+        if past_deadline(ledger):
+            return "stop"
         while True:
             st, tok = ledger.reserve(BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
             if st != "wait":
@@ -383,11 +525,21 @@ def block_cost(raw_path, block):
     return tot
 
 
-def run_collection(specs, ledger, raw_path, runners, log=print):
-    """Blocks in order; within a block one worker per model in parallel (runners[mode](specs, ledger, write)).
-    After the projection block, pause if spend + 2 x that block's cost > cap (unless approved).
-    Returns 'done' | 'pause' | 'stop'."""
-    done = done_ids(raw_path)
+def blocks_started(raw_path):
+    """(phase, condition, run) of every block with at least one raw line."""
+    out = set()
+    if raw_path.exists():
+        for line in raw_path.read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            out.add((r.get("phase"), r.get("condition"), r.get("run")))
+    return out
+
+
+def make_writer(raw_path, log=print):
+    """Thread-safe append of one raw line (fsynced), with a one-line log."""
     raw_path.parent.mkdir(parents=True, exist_ok=True)
     lock = threading.Lock()
 
@@ -400,6 +552,16 @@ def run_collection(specs, ledger, raw_path, runners, log=print):
         s = rec.get("search") or {}
         log(f"  {rec['call_id']} {rec['status']} out={rec['output_tokens']} fr={rec['finish_reason']} "
             f"${rec['cost_usd']:.4f}" + (f" searches={s.get('n_searches')}" if rec["condition"] == "S1" else ""))
+    return write
+
+
+def run_collection(specs, ledger, raw_path, runners, log=print, write=None):
+    """Blocks in order; within a block one worker per model in parallel (runners[mode](specs, ledger, write)).
+    After the projection block, pause if spend + 2 x that block's cost > cap (unless approved).
+    Returns 'done' | 'pause' | 'stop'."""
+    done = done_ids(raw_path)
+    write = write or make_writer(raw_path, log)
+    started = blocks_started(raw_path)    # blocks with any raw line before this invocation sent anything
 
     for bi, block in enumerate(BLOCKS):
         todo = [s for s in specs if s["block"] == bi and s["call_id"] not in done]
@@ -413,7 +575,9 @@ def run_collection(specs, ledger, raw_path, runners, log=print):
                 if st in res:
                     log(f"HALT ({st}) in block {bi + 1}: {ledger.summary()}")
                     return st
-        if block == PROJECTION_BLOCK and not ledger.approved("projection"):
+        # The projection rule is applied once, when block B-S1 run 1 is complete and no later block has started; a
+        # resumed run whose later blocks already have lines passed it (or had it approved) earlier (C26).
+        if block == PROJECTION_BLOCK and not ledger.approved("projection") and not (started & set(BLOCKS[bi + 1:])):
             bc = block_cost(raw_path, block)
             proj = ledger.spent() + 2 * bc
             if any(s["block"] > bi and s["call_id"] not in done for s in specs) and proj > ledger.cap:
@@ -424,17 +588,26 @@ def run_collection(specs, ledger, raw_path, runners, log=print):
 
 
 def collect(approve_past_80=None, approve_projection=None):
+    global DEADLINE
+    other_collection_guard()
     commit = prereg_guard()
-    print(f"prereg guard passed: {PREREG_TAG} -> {commit}")
+    print(f"prereg guard passed: {PREREG_TAG} -> {commit}; no other paid collection running")
     require_keys()
+    DEADLINE = collection_deadline(RAW_PATH)
+    print(f"collection window: no new request after {DEADLINE.isoformat()}")
     ledger = BG.Ledger(RAW_PATH, STATE_PATH)
     if approve_past_80:
         ledger.approve("past_80", approve_past_80)
     if approve_projection:
         ledger.approve("projection", approve_projection)
     specs = build_specs(load_probes())
+    write = make_writer(RAW_PATH)
+    n = recover_batches(specs, ledger, write, BATCH_LOG, RAW_PATH)
+    if n:
+        print(f"recovered {n} batch(es) left in flight by an earlier run; budget {ledger.summary()}")
     print(f"{len(specs)} specs, {len(done_ids())} already done; budget {ledger.summary()}")
-    st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync})
+    st = run_collection(specs, ledger, RAW_PATH, {"batch": partial(run_anthropic_batch, journal=BATCH_LOG),
+                                                  "standard": run_sync}, write=write)
     print("result:", st, ledger.summary())
     return {"done": 0, "pause": 5, "stop": 6}[st]
 

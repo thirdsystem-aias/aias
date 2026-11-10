@@ -23,26 +23,38 @@ case is reserved before it is sent; hard stop at $100; no new request once spend
 
 Output (append-only, one JSON line per attempt, resumable): osf/v42/data/t4_raw.jsonl
 Budget state (approvals): osf/v42/data/t4_budget_state.json
+Batch journal (created / recorded Message Batches): osf/v42/data/t4_batches.jsonl
+
+Collection guards added before the lock (2026-11-10, clarification C26; no design, panel, probe, budget rule or
+decision rule changed): (1) one paid collection at a time: --collect refuses while any other `acquire_v*.py --collect`
+runs on the machine (its own shell, ancestors and descendants are not counted: macOS `caffeinate <utility>` makes
+caffeinate a CHILD of the utility, with the same command line); (2) every billed request is costed even after an
+interruption: a batch created by a run that stopped before recording its results is fetched and recorded before any
+new request (journal above); (3) window: no new request after the earlier of 72 hours from the first recorded call and
+2026-11-16 23:59:59 UTC (v0.40 collects from 11-17).
 
 Modes:
   --dry-run       build specs, print the call matrix and the cost estimate, send nothing
   --feasibility   send ONLY neutral prompts (never a study probe); writes prereg/feasibility_v0_42.json
                   (run once on 2026-11-10 under r1 with four models; not to be re-run)
   --collect       refused unless tag v0.42-prereg-r1 exists on origin AND
-                  osf/v42/anchor/osf_anchor_v0_42.json names that tag's commit
+                  osf/v42/anchor/osf_anchor_v0_42.json names that tag's commit, and while another paid
+                  collection runs; exit 0 done, 5 paused ($80 or projection), 6 stopped ($100 or window)
 """
 import argparse
 import hashlib
 import inspect
 import json
 import os
+import re
 import subprocess
 import sys
 import threading
 import time
 from collections import Counter, defaultdict
 from concurrent.futures import ThreadPoolExecutor
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+from functools import partial
 from pathlib import Path
 
 ROOT = Path(os.environ.get("AIAS_ROOT", str(Path(__file__).resolve().parents[3])))

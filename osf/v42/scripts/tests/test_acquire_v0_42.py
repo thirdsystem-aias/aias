@@ -337,6 +337,107 @@ class TestCollectionFlow(Base):
                 AQ.prereg_guard()
 
 
+class TestCollectionGuardsC26(Base):
+    """Clarification C26 (2026-11-10, before the lock): one paid collection at a time, interrupted-batch recovery,
+    collection window."""
+
+    def test_one_paid_collection_family_excluded(self):
+        rows = {1: (0, "/sbin/launchd"),
+                10: (1, "zsh -ic cd /x && caffeinate -dimsu python3 osf/v42/scripts/acquire_v0_42.py --collect"),
+                11: (10, "/Library/.../Python osf/v42/scripts/acquire_v0_42.py --collect"),          # this process
+                12: (11, "caffeinate -dimsu python3 osf/v42/scripts/acquire_v0_42.py --collect"),     # its caffeinate
+                13: (1, "python3 osf/v42/scripts/acquire_v0_42.py --dry-run"),
+                14: (1, "python3 osf/methodology/v1_12/scripts/acquire_v1_12.py --dry-run")}
+        self.assertEqual(AQ.other_collection_guard(rows, me=11), [1, 10, 11, 12])
+        for other in ("python3 osf/methodology/v1_12/scripts/acquire_v1_12.py --collect",
+                      "python3 osf/v40/scripts/acquire_v0_40.py --collect --workers 4",
+                      "/Library/.../Python /Users/pablou/aias/_worktrees/v0.42/osf/v42/scripts/acquire_v0_42.py --collect"):
+            with self.assertRaises(SystemExit) as cm:
+                AQ.other_collection_guard({**rows, 20: (1, other)}, me=11)
+            self.assertIn("another paid collection", str(cm.exception))
+
+    def test_window_deadline_and_stop_before_sending(self):
+        self.assertEqual(AQ.collection_deadline(self.raw).tzinfo is not None, True)
+        self.write({"call_id": "x", "started_utc": "2026-11-12T00:00:00+00:00"})
+        self.write({"call_id": "y", "started_utc": "2026-11-11T22:00:00+00:00"})
+        self.assertEqual(AQ.collection_deadline(self.raw).isoformat(), "2026-11-14T22:00:00+00:00")
+        late = Path(self.tmp.name) / "late.jsonl"
+        late.write_text(json.dumps({"started_utc": "2026-11-15T00:00:00+00:00"}) + "\n")
+        self.assertEqual(AQ.collection_deadline(late), AQ.WINDOW_HARD_END)
+        client = FakeClient(lambda cid, p, n: ok(message(blocks_s1())))
+        with mock.patch.object(AQ, "DEADLINE", AQ.datetime(2026, 11, 1, tzinfo=AQ.timezone.utc)):
+            L = self.ledger()
+            self.assertEqual(AQ.run_anthropic_batch([spec()], L, self.write, client=client, poll=0, sleep=lambda s: None), "stop")
+            self.assertEqual(client.batches.created, [])
+            self.assertIn("window", L.halt_reason)
+            sent = []
+            self.assertEqual(AQ.run_sync([spec(model=GPT)], self.ledger(), self.write, sender=sent.append), "stop")
+            self.assertEqual(sent, [])
+
+    def test_interrupted_batch_is_recovered_once_and_costed(self):
+        journal = Path(self.tmp.name) / "batches.jsonl"
+        client = FakeClient(lambda cid, p, n: ok(message(blocks_s1())))
+        real_retrieve = client.batches.retrieve
+
+        def killed(bid):
+            raise KeyboardInterrupt("run stopped while the batch was in flight")
+        client.batches.retrieve = killed
+        specs = [spec(i=i) for i in range(3)]
+        with self.assertRaises(KeyboardInterrupt):
+            AQ.run_anthropic_batch(specs, self.ledger(), self.write, client=client, poll=0, sleep=lambda s: None,
+                                   journal=journal)
+        self.assertEqual(self.written, [])                              # billed, nothing recorded yet
+        self.assertEqual([e["batch_id"] for e in AQ.open_batches(journal)], ["batch_1"])
+        # a line of the batch already written before the stop is not written again
+        client.batches.retrieve = real_retrieve
+        first = AQ.open_batches(journal)[0]["requests"][0]
+        partial = AQ._record(specs[0], {"text": "x", "served_model": "claude-fable-5-2", "finish_reason": "end_turn",
+                                        "tokens_in": 1000, "tokens_out": 200, "tokens_thought": None,
+                                        "paused_continued": False, "search": None}, "ok", None, 1, False,
+                             "t0", "t1", [], {"batch_id": "batch_1", "custom_id": first["custom_id"]})
+        self.write(partial)
+        L = self.ledger()
+        n = AQ.recover_batches(specs, L, self.write, journal, self.raw, client=client, poll=0, sleep=lambda s: None,
+                               log=lambda *a: None)
+        self.assertEqual(n, 1)
+        self.assertEqual(len(client.batches.created), 1)                # nothing re-sent
+        recs = [r for r in self.written if r.get("batch_id") == "batch_1"]
+        self.assertEqual(len(recs), 3)
+        self.assertEqual(len({r["custom_id"] for r in recs}), 3)
+        want = (1000 * 4 + 200 * 20) / 1e6 + 0.010
+        self.assertAlmostEqual(L.actual, 2 * want, places=12)          # the two recovered lines are costed
+        self.assertEqual(AQ.open_batches(journal), [])
+        self.assertEqual(AQ.recover_batches(specs, L, self.write, journal, self.raw, client=client, poll=0,
+                                            sleep=lambda s: None, log=lambda *a: None), 0)
+
+    def test_projection_not_reapplied_once_a_later_block_started(self):
+        """Fake rehearsal finding: after an $80 pause in block 7, the resumed run re-applied the projection rule with
+        the spend of blocks 6-7 included and paused again. The rule applies once, before block 6 starts."""
+        specs = AQ.build_specs(AQ.load_probes())
+        flow = TestCollectionFlow()
+        cost = lambda s: 0.40 if s["condition"] == "S1" else 0.01          # projection would exceed $100 now
+        with mock.patch.object(BG, "record_cost", side_effect=lambda r: r.get("cost_usd", 0.0)):
+            for s in specs:                                                # blocks 1-5 done, block 6 begun
+                if s["block"] <= 4 or (s["block"] == 5 and s["model"]["model_id"] == "gpt-6-astra"):
+                    self.write({"call_id": s["call_id"], "phase": s["phase"], "condition": s["condition"],
+                                "run": s["run"], "status": "ok", "text": "x", "error": None, "cost_usd": cost(s)})
+            L = self.ledger(pause_at=1000)
+            runner = flow._runner(cost)
+            st = AQ.run_collection(specs, L, self.raw, {"batch": runner, "standard": runner}, log=lambda *a: None)
+        self.assertNotIn("projection", L.halt_reason or "")
+        self.assertIn(("B", "S1", 3), AQ.blocks_started(self.raw))
+        self.assertIn(st, ("done", "stop"))
+
+    def test_journal_marks_normal_batches_recorded(self):
+        journal = Path(self.tmp.name) / "batches.jsonl"
+        client = FakeClient(lambda cid, p, n: ok(message(blocks_s1())))
+        AQ.run_anthropic_batch([spec(i=i) for i in range(2)], self.ledger(), self.write, client=client, poll=0,
+                               sleep=lambda s: None, journal=journal)
+        ev = [json.loads(l)["event"] for l in journal.read_text().splitlines()]
+        self.assertEqual(ev, ["created", "recorded"])
+        self.assertEqual(AQ.open_batches(journal), [])
+
+
 class TestCostEstimate(unittest.TestCase):
     def test_adopted_design_and_hand_check(self):
         basis = CE.load_basis()
