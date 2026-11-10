@@ -1,6 +1,6 @@
-model_id,model,calls,usd_per_M_in,usd_per_M_out,note,tokens_in_central,tokens_out_central,usd_central,tokens_in_high,tokens_out_high,usd_high,tokens_in_worst_cap,tokens_out_worst_cap,usd_worst_cap
-claude-fable-5-2,Claude Fable 5.2,225,8,40,,80,1000,9.14,80,2500,22.64,80,16384,147.6
-claude-opus-5-5,Claude Opus 5.5,225,4,20,,80,1000,4.57,80,2500,11.32,80,16384,73.8
-gpt-6-astra,GPT-6 Astra,225,10,50,,80,1000,11.43,80,2500,28.3,80,16384,184.5
-gemini-4-argon,Gemini 4 Argon (to Nov 30),225,2,10,price until 2026-11-30,80,1000,2.29,80,2500,5.66,80,16384,36.9
-gemini-4-argon,Gemini 4 Argon (from Nov 30),225,4,20,price from 2026-11-30; fallback window only,80,1000,4.57,80,2500,11.32,80,16384,73.8
+model_id,model,calls,usd_per_M_in,usd_per_M_out,note,basis,tokens_in,tokens_out_expected,usd_expected,tokens_out_high,usd_high,tokens_out_worst_cap,usd_worst_cap
+claude-fable-5-2,Claude Fable 5.2,225,8,40,,no recorded figure at defaults: r0 scenarios,80,1000,9.14,2500,22.64,16384,147.6
+claude-opus-5-5,Claude Opus 5.5,225,4,20,,cost_inputs_v0_42.txt S0 out mean / p90,80,1636.9,7.44,2234.5,10.13,16384,73.8
+gpt-6-astra,GPT-6 Astra,225,10,50,,"cost_inputs_v0_42.txt S0 out mean / p90 (includes reasoning, mean 176.1)",80,619.0,7.14,911.1,10.43,16384,184.5
+gemini-4-argon,Gemini 4 Argon (through Nov 30),225,2,10,$2/$10 through 2026-11-30,cost_inputs_v0_42.txt S0 out mean / p90 (thinking not recorded),80,1165.8,2.66,1577.7,3.59,16384,36.9
+gemini-4-argon,Gemini 4 Argon (from Dec 1),225,4,20,$4/$20 from 2026-12-01 (after both windows; reference),cost_inputs_v0_42.txt S0 out mean / p90 (thinking not recorded),80,1165.8,5.32,1577.7,7.17,16384,73.8

@@ -1,0 +1,20 @@
+acquire_v1_12.py --dry-run at 2026-11-10T13:34:15+00:00 (no network call, no provider SDK import)
+probe file osf/methodology/v1_12/prereg/probes_v1_12.jsonl: 75 probes (70 CEP + 5 control), sha256 79fc981b8ce38bb35c05f4cf475adc734c5727f537039f7b3746b3cd23c9349e
+model              run1 run2 run3  total
+claude-fable-5-2     75   75   75    225
+claude-opus-5-5      75   75   75    225
+gpt-6-astra          75   75   75    225
+gemini-4-argon       75   75   75    225
+TOTAL calls: 900 (expected 900) -> OK
+decoding parameters in the copied call functions: none (temperature, top_p, top_k, reasoning effort and thinking settings are not sent)
+settings written to every record: {"temperature": "provider default (not sent)", "top_p": "provider default (not sent)", "top_k": "provider default (not sent)", "reasoning_effort": "provider default (not sent)", "max_output_tokens": 16384, "system_prompt": null, "tools": null, "condition": "S0"}
+worst case per request claude-fable-5-2: $0.6570 (from 2026-12-01: $0.6570)
+worst case per request claude-opus-5-5: $0.3285 (from 2026-12-01: $0.3285)
+worst case per request gpt-6-astra: $0.8212 (from 2026-12-01: $0.8212)
+worst case per request gemini-4-argon: $0.1642 (from 2026-12-01: $0.3285)
+guard simulation, every request at the 16,384-token cap, without approval: 163 calls sent, spend $80.64; then: PAUSED: recorded spend $80.64 reached $80; ask Pablo, then resume with --approve-past-80
+guard simulation, every request at the 16,384-token cap, with approval past $80: 242 calls sent, spend $119.24; then: CAP: $119.24 spent + $0.00 in flight + $0.82 worst case would pass $120
+prereg guard (local check only): tag v1.12-prereg-r1 absent; anchor file absent -> --collect would be REFUSED
+collection windows (UTC): 2026-11-14 00:00 to 2026-11-16 23:59; 2026-11-22 12:00 to 2026-11-29 23:59; now outside
+raw record osf/methodology/v1_12/data/v112_raw.jsonl: absent (nothing collected)
+provider SDKs imported: none; nothing sent.
