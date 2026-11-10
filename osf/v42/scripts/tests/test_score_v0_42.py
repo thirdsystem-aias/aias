@@ -23,10 +23,10 @@ import score_v0_42 as S            # noqa: E402
 import numpy as np                 # noqa: E402
 
 T3 = S.load_t3_table()
-L = {m: M.from_t3(T3, i) for m, i in zip(M.MODELS, (0, 1, 2, 4))}   # fable<-opus4.5, opus55<-sonnet4.5, gpt6<-gpt-4o, gem4<-flash
+L = {m: M.from_t3(T3, i) for m, i in zip(M.MODELS, (0, 2, 4))}   # fable<-opus4.5, gpt6<-gpt-4o, gem4<-flash
 CFG = S.Cfg(200, 200)
 GATES = {"passed": True, "enforce": False}
-N3, C3 = S.PANELS["N3"], S.PANELS["C3"]
+N3 = S.PANELS["N3"]
 
 
 def run(kfn, cfg=CFG, **kw):
@@ -159,7 +159,7 @@ class TestGuard(unittest.TestCase):
         with tempfile.TemporaryDirectory() as d:
             M.build(copy_t3, outdir=d)
             with mock.patch.object(C, "_ls_remote_tag", side_effect=AssertionError("must not be asked")):
-                self.assertEqual(len(C.read_raw(Path(d) / "t4_raw.jsonl")), 3408)
+                self.assertEqual(len(C.read_raw(Path(d) / "t4_raw.jsonl")), 876)
 
     def test_cli_synthetic_end_to_end(self):
         with tempfile.TemporaryDirectory() as d:
@@ -215,7 +215,7 @@ class TestPhiRule(unittest.TestCase):
         return S.Data(list(T3), A, B)
 
     def test_two_of_three_runs_mean(self):
-        gpt_run3_v20 = lambda s: s["model"] == M.MODELS[2] and s["condition"] == "S0" and s["run"] == 3 and s["substrate"] == "v20" and s["phase"] == "B"
+        gpt_run3_v20 = lambda s: s["model"] == M.MODELS[1] and s["condition"] == "S0" and s["run"] == 3 and s["substrate"] == "v20" and s["phase"] == "B"
         D = self._D(gpt_run3_v20)
         ph = S.phi_panel(D, N3, "S0")
         full = S.phi_panel(self._D(None), N3, "S0")
@@ -233,7 +233,7 @@ class TestPhiRule(unittest.TestCase):
         self.assertGreater(n_def, 3)
 
     def test_fewer_than_two_runs_is_undefined(self):
-        d = lambda s: s["model"] == M.MODELS[2] and s["condition"] == "S0" and s["run"] in (2, 3) and s["substrate"] == "v20" and s["phase"] == "B"
+        d = lambda s: s["model"] == M.MODELS[1] and s["condition"] == "S0" and s["run"] in (2, 3) and s["substrate"] == "v20" and s["phase"] == "B"
         ph = S.phi_panel(self._D(d), N3, "S0")
         for (s, b), (phi, part, runs) in ph.items():
             if s == "v0.20":
@@ -251,7 +251,7 @@ class TestPhiRule(unittest.TestCase):
                 k[bkey] = min(6, base[bkey] + 1) if base[bkey] < 6 else base[bkey] - 1
                 return k
             return L[m]
-        raw, A, B = M.build(kfn, drop=lambda s: s["model"] == M.MODELS[3] and s["condition"] == "S0" and s["run"] == 3
+        raw, A, B = M.build(kfn, drop=lambda s: s["model"] == M.MODELS[2] and s["condition"] == "S0" and s["run"] == 3
                             and s["substrate"] == "v20" and s["phase"] == "B")
         D = S.Data(list(T3), A, B)
         phi, part, runs = S.phi_panel(D, N3, "S0")[bkey]
@@ -288,31 +288,24 @@ class TestMissingCallsAndDropRule(unittest.TestCase):
                     return seen["n"] <= n
                 return False
             return f
-        out42, *_ = run(copy_t3, fail=failing(42))      # 384/426 = 90.14 %: retained
-        out43, *_ = run(copy_t3, fail=failing(43))      # 383/426 = 89.9 %: excluded
+        out42, *_ = run(copy_t3, fail=failing(20))      # 182/202 = 90.10 %: retained
+        out43, *_ = run(copy_t3, fail=failing(21))      # 181/202 = 89.6 %: excluded
         self.assertNotIn("claude-fable-5-2|S0", out42["models_excluded_condition"])
         self.assertIn("claude-fable-5-2|S0", out43["models_excluded_condition"])
         self.assertEqual(out42["verdicts"]["H_Gen_Presence"]["panel_used"], "N3")
 
-    def test_fable_excluded_c3_replaces_n3(self):
-        out, *_ = run(copy_t3, fail=lambda s: s["model"] == M.MODELS[0] and s["condition"] == "S0")
-        for h in ("H_Gen_Presence", "H_Gen_Phi"):
-            v = out["verdicts"][h]
-            self.assertEqual(v["panel_used"], "C3")
-            self.assertTrue(v["substituted"])
-            self.assertIn(v["verdict"], ("CONFIRMED", "FALSIFIED", "MARGINAL"))
-        self.assertEqual(out["verdicts"]["H_Version_Presence"]["verdict"], "UNDETERMINED")   # needs both Claude models
-
-    def test_gpt_or_gemini_excluded_makes_gen_undetermined(self):
-        for victim in (M.MODELS[2], M.MODELS[3]):
+    def test_any_n3_model_excluded_makes_gen_undetermined(self):
+        for victim in M.MODELS:                       # r2: no fallback panel (C3 removed)
             out, *_ = run(copy_t3, fail=lambda s, v=victim: s["model"] == v and s["condition"] == "S0")
             self.assertEqual(out["verdicts"]["H_Gen_Presence"]["verdict"], "UNDETERMINED")
             self.assertEqual(out["verdicts"]["H_Gen_Phi"]["verdict"], "UNDETERMINED")
+            self.assertIn(victim, out["verdicts"]["H_Gen_Presence"]["reason"])
 
-    def test_opus_excluded_version_undetermined_gen_unaffected(self):
-        out, *_ = run(copy_t3, fail=lambda s: s["model"] == M.MODELS[1] and s["condition"] == "S0")
-        self.assertEqual(out["verdicts"]["H_Version_Presence"]["verdict"], "UNDETERMINED")
+    def test_s1_exclusion_leaves_primary_on_n3(self):
+        out, *_ = run(copy_t3, fail=lambda s: s["model"] == M.MODELS[0] and s["condition"] == "S1")
         self.assertEqual(out["verdicts"]["H_Gen_Presence"]["panel_used"], "N3")
+        al = out["verdicts"]["H_Gen_Presence"]["reported_alongside"]["variants"]["N3_S1"]
+        self.assertTrue(al["reduced_panel"])
 
 
 class TestGenPresenceBranches(unittest.TestCase):
@@ -353,8 +346,8 @@ class TestGenPresenceBranches(unittest.TestCase):
     def test_alongside_items_present(self):
         out, *_ = run(copy_t3)
         al = out["verdicts"]["H_Gen_Presence"]["reported_alongside"]
-        self.assertEqual(set(al["variants"]), {"C3_S0", "N3_S1"})
-        self.assertEqual(len(al["per_provider_generation_pairs"]), 4)       # Fable, Opus 5.5, GPT-6, Gemini 4
+        self.assertEqual(set(al["variants"]), {"N3_S1"})
+        self.assertEqual(len(al["per_provider_generation_pairs"]), 3)       # Fable 5.2, GPT-6 Astra, Gemini 4 Argon
         self.assertIsNotNone(al["level_shift_delta"]["ci95"])
         self.assertEqual(set(al["per_substrate_rho"]), set(S.OMNI))
 
@@ -364,58 +357,14 @@ class TestGenPresenceBranches(unittest.TestCase):
         self.assertGreater(out["verdicts"]["H_Gen_Presence"]["delta"], 0.0)
 
 
-class TestVersionBranches(unittest.TestCase):
-    def kf(self, opus):
-        return lambda m, c, r: L[M.MODELS[0]] if m == M.MODELS[0] else (opus(c, r) if m == M.MODELS[1] else L[m])
-
-    def test_confirmed_identical_versions_reliable_runs(self):
-        out, *_ = run(self.kf(lambda c, r: L[M.MODELS[0]]))
-        v = out["verdicts"]["H_Version_Presence"]
-        self.assertEqual(v["verdict"], "CONFIRMED")
-        self.assertAlmostEqual(v["rel1_fable"], 1.0)
-        self.assertAlmostEqual(v["rho_FO"], 1.0)
-        self.assertAlmostEqual(v["rho_star"], 1.0)
-
-    def test_falsified_version_dependent(self):
-        out, *_ = run(self.kf(lambda c, r: M.shuffled(L[M.MODELS[0]], 77)))
-        v = out["verdicts"]["H_Version_Presence"]
-        self.assertAlmostEqual(v["rel1_opus"], 1.0)
-        self.assertEqual(v["verdict"], "FALSIFIED")
-        self.assertLess(v["rho_star"], 0.60)
-
-    def test_undetermined_low_run_agreement(self):
-        out, *_ = run(self.kf(lambda c, r: M.shuffled(L[M.MODELS[0]], 500 + r)))
-        v = out["verdicts"]["H_Version_Presence"]
-        self.assertLessEqual(v["rel1_opus"], 0.20)
-        self.assertEqual(v["verdict"], "UNDETERMINED")
-
-    def test_marginal_in_between(self):
-        for frac in (0.4, 0.5, 0.6, 0.7, 0.8):
-            raw, A, B = M.build(self.kf(lambda c, r, f=frac: M.mixed(L[M.MODELS[0]], f, 3)))
-            D = S.Data(list(T3), A, B)
-            t = S.version_test(D, "S0", S.Cfg(10, 10))
-            if t["verdict"] == "MARGINAL":
-                break
-        else:
-            self.fail("no mixing fraction produced MARGINAL")
-        out, *_ = run(self.kf(lambda c, r, f=frac: M.mixed(L[M.MODELS[0]], f, 3)))
-        v = out["verdicts"]["H_Version_Presence"]
-        self.assertEqual(v["verdict"], "MARGINAL")
-        self.assertTrue(0.60 <= v["rho_star"] < 0.80 or v["rho_FO"] < 0.60)
-
-    def test_disattenuation_uses_both_reliabilities(self):
-        for rel, want in ((1.0, 1.0), (0.5, 0.75)):
-            self.assertAlmostEqual(S.rel3_of(rel), want)             # 3r / (1 + 2r)
-        self.assertEqual(S.verdict_version(0.9, 0.9, 0.59, 1.4), "MARGINAL")          # rho* not capped, rho_FO < 0.60
-        self.assertEqual(S.verdict_version(0.9, 0.9, 0.6, 0.8), "CONFIRMED")
-        self.assertEqual(S.verdict_version(0.9, 0.2, 0.9, 0.9), "UNDETERMINED")        # rel1 <= 0.20
-        self.assertEqual(S.verdict_version(0.9, 0.9, 0.5, 0.59), "FALSIFIED")
-
-    def test_recognition_agreement_alongside(self):
-        out, *_ = run(copy_t3, recog=lambda m, c, r, s, b: 1 if (m != M.MODELS[1] or len(b) % 3) else 0)
-        ra = out["verdicts"]["H_Version_Presence"]["reported_alongside"]["recognition_agreement"]["S0"]
-        self.assertLess(ra["share_alike"], 1.0)
-        self.assertGreater(ra["n_brands"], 50)
+class TestVersionRemoved(unittest.TestCase):
+    def test_version_hypothesis_and_opus_removed(self):
+        out, *_ = run(copy_t3)
+        self.assertEqual(set(out["verdicts"]), {"H_Gen_Presence", "H_Gen_Phi", "H_Search_Presence"})
+        self.assertNotIn(420042, S.SEEDS.values())
+        self.assertEqual(S.MODELS, ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"])
+        self.assertEqual(set(out["panels"]), {"L6", "N3"})
+        self.assertIn("revision r2", out["prereg"])
 
 
 class TestPhiBranches(unittest.TestCase):
@@ -470,12 +419,12 @@ class TestPhiBranches(unittest.TestCase):
     def test_alongside_mean_independence_and_partitions(self):
         out, *_ = run(copy_t3)
         al = out["verdicts"]["H_Gen_Phi"]["reported_alongside"]
-        self.assertEqual(set(al["mean_independence_S0"]), {"N3", "C3"})
+        self.assertEqual(set(al["mean_independence_S0"]), {"N3"})
         self.assertIn("flag_ge_0_50", al["mean_independence_S0"]["N3"])
-        self.assertEqual(set(al["partition_counts"]), {"N3_S0", "N3_S1", "C3_S0", "C3_S1", "L6_t3"})
+        self.assertEqual(set(al["partition_counts"]), {"N3_S0", "N3_S1", "L6_t3"})
         pc = al["partition_counts"]["N3_S0"]["brand_level"]
         self.assertEqual(sum(pc.values()), 112)
-        self.assertIn("C3_S0", al["variants"])
+        self.assertEqual(al["variants"], {})
 
 
 class TestSearchBranches(unittest.TestCase):
@@ -504,7 +453,7 @@ class TestSearchBranches(unittest.TestCase):
         v = out["verdicts"]["H_Search_Presence"]
         self.assertLess(v["ci95_rho"][0], 0.80)
         self.assertGreaterEqual(v["ci95_rho"][1], 0.50)
-        self.assertIn("C3", v["reported_alongside"])
+        self.assertNotIn("C3", v["reported_alongside"])
         self.assertEqual(set(v["per_model"]), set(N3))
 
     def test_label_rule(self):
@@ -523,15 +472,18 @@ class TestManipulationChecksAndDescriptives(unittest.TestCase):
         bad = lambda s: "gpt-6-sol" if (s["model"] == "gpt-6-astra" and s["condition"] == "S1" and s["run"] == 1) else s["model"]
         out, *_ = run(copy_t3, served=bad)
         mc = out["manipulation_checks"]["MC_Served"]
-        self.assertEqual(mc["n_mismatched"], 142)
+        self.assertEqual(mc["n_mismatched"], 30)
         self.assertFalse(mc["pass"])
-        self.assertEqual(out["manipulation_checks"]["MC_Complete"]["per_model_condition"]["gpt-6-astra|S1"]["answered"], 284)
+        self.assertEqual(out["manipulation_checks"]["MC_Complete"]["per_model_condition"]["gpt-6-astra|S1"]["answered"], 60)
 
     def test_mc_all_pass_on_clean_data(self):
         out, *_ = run(copy_t3)
         mc = out["manipulation_checks"]
         self.assertTrue(mc["MC_Complete"]["pass"])
-        self.assertEqual(mc["MC_Complete"]["answered"], 3408)
+        self.assertEqual(mc["MC_Complete"]["answered"], 876)
+        self.assertEqual(mc["MC_Complete"]["per_model_condition"]["claude-fable-5-2|S0"]["expected"], 202)
+        self.assertEqual(mc["MC_Complete"]["per_model_condition"]["claude-fable-5-2|S1"]["expected"], 90)
+        self.assertEqual(mc["MC_Complete"]["outside_design"]["n"], 0)
         self.assertTrue(mc["MC_Served"]["pass"])
         self.assertTrue(mc["MC_Window"]["pass"])
         self.assertEqual(mc["MC_Search"]["gpt-6-astra"]["share"], 1.0)
@@ -545,14 +497,22 @@ class TestManipulationChecksAndDescriptives(unittest.TestCase):
         first = collections.Counter()
 
         def f(s):
-            if s["model"] == M.MODELS[3] and s["condition"] == "S1":
+            if s["model"] == M.MODELS[2] and s["condition"] == "S1":
                 first["n"] += 1
-                return first["n"] <= 100                      # 100 of 3408 = 2.9 % lost
+                return first["n"] <= 30                       # 30 of 876 = 3.4 % lost
             return False
         out, *_ = run(copy_t3, fail=f)
         self.assertFalse(out["manipulation_checks"]["MC_Complete"]["pass"])
-        self.assertAlmostEqual(out["manipulation_checks"]["MC_Complete"]["share"], 3308 / 3408)
-        self.assertIn("gemini-4-argon|S1", out["models_excluded_condition"])        # 326/426 = 76.5 % < 90 %
+        self.assertAlmostEqual(out["manipulation_checks"]["MC_Complete"]["share"], 846 / 876)
+        self.assertIn("gemini-4-argon|S1", out["models_excluded_condition"])        # 60/90 = 66.7 % < 90 %
+
+    def test_calls_outside_design_not_counted(self):
+        out, raw, A, B = run(copy_t3, phase_a_everywhere=True)
+        mc = out["manipulation_checks"]["MC_Complete"]
+        self.assertEqual(len(raw), 876 + 3 * 112 * 5)               # Phase A in the five other condition-runs
+        self.assertEqual(mc["answered"], 876)
+        self.assertEqual(mc["outside_design"]["n"], 3 * 112 * 5)
+        self.assertTrue(mc["pass"])
 
     def test_parity_gate_blocks_scoring(self):
         raw, A, B = M.build(copy_t3)
@@ -563,14 +523,17 @@ class TestManipulationChecksAndDescriptives(unittest.TestCase):
         out, *_ = run(copy_t3)
         d = out["descriptives"]
         c = d["6_cost"]["per_model_condition"]
-        self.assertEqual(c["claude-fable-5-2|S0"]["input_tokens"], 426 * 100)
-        self.assertAlmostEqual(c["claude-fable-5-2|S0"]["est_usd"], 426 * 100 * 8 / 1e6 + 426 * 50 * 40 / 1e6, places=9)
-        self.assertEqual(c["gemini-4-argon|S0"]["output_tokens_billed"], 426 * 60)       # thinking billed as output
-        self.assertIn("ESTIMATE", d["6_cost"])
+        self.assertEqual(c["claude-fable-5-2|S0"]["input_tokens"], 202 * 100)
+        self.assertAlmostEqual(c["claude-fable-5-2|S0"]["usd"], 202 * 100 * 8 / 1e6 + 202 * 50 * 40 / 1e6, places=9)
+        self.assertEqual(c["gemini-4-argon|S0"]["output_tokens_billed"], 202 * 60)       # thinking billed as output
+        self.assertAlmostEqual(c["gpt-6-astra|S1"]["usd"], 90 * (100 * 10 + 50 * 50) / 1e6 + 90 * 2 * 0.010, places=9)
+        self.assertAlmostEqual(c["gemini-4-argon|S1"]["usd"], 90 * (100 * 2 + 60 * 10) / 1e6 + 90 * 2 * 0.014, places=9)
+        self.assertIn("BASIS", d["6_cost"])
         s = d["5_search"]["claude-fable-5-2"]
         self.assertEqual(s["searches_per_call"], 2.0)
         self.assertEqual(s["top20_cited_domains"][0][0], "cited.example")                 # www. dropped
         self.assertEqual(d["1_run_reliability"]["claude-fable-5-2|S0"]["rel1"], 1.0)
+        self.assertIsNone(d["1_run_reliability"]["claude-fable-5-2|S0"]["recognition_pairwise_agreement"])
         self.assertEqual(d["2_recognition"]["t4"]["claude-fable-5-2|S0"]["share"], 1.0)
         fp = d["3_floor_persistence"]
         self.assertGreater(fp["share_below_t3_still_below_t4"], 0.5)

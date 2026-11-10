@@ -1,8 +1,10 @@
 
 
-# ======================= v0.42 wrapper (new) =======================
+# ======================= v0.42 wrapper (new; revised for pre-registration r2) =======================
 
 CURRENT_DISPATCH = {"anthropic": call_anthropic_current, "openai": call_openai_current, "google": call_google_current}
+BATCH_POLL_SECONDS = 60
+EMPTY_RESENDS = 1          # an empty answer is re-sent once (as send_call in r1)
 
 
 def load_probes():
@@ -17,19 +19,20 @@ def call_id(substrate, phase, probe_id, model, cond, run):
 
 
 def build_specs(probes):
-    """Deterministic order: model (panel order), run, condition, probe (file order)."""
+    """r2 matrix in collection order: block (BLOCKS order), then model (panel order), then probe (file order)."""
     specs = []
-    for m in PANEL:
-        for run in RUNS:
-            for cond in CONDITIONS:
-                for p in probes:
-                    specs.append({
-                        "call_id": call_id(p["substrate"], p["phase"], p["probe_id"], m["model_id"], cond, run),
-                        "substrate": p["substrate"], "phase": p["phase"], "probe_id": p["probe_id"],
-                        "brand_id": p.get("brand_id"), "frame_id": p.get("frame_id"),
-                        "model": m, "condition": cond, "run": run,
-                        "system": p.get("system"), "prompt": p["prompt"],
-                    })
+    for bi, (phase, cond, run) in enumerate(BLOCKS):
+        for m in PANEL:
+            for p in probes:
+                if p["phase"] != phase:
+                    continue
+                specs.append({
+                    "call_id": call_id(p["substrate"], p["phase"], p["probe_id"], m["model_id"], cond, run),
+                    "substrate": p["substrate"], "phase": p["phase"], "probe_id": p["probe_id"],
+                    "brand_id": p.get("brand_id"), "frame_id": p.get("frame_id"),
+                    "model": m, "condition": cond, "run": run, "block": bi,
+                    "system": p.get("system"), "prompt": p["prompt"],
+                })
     ids = [s["call_id"] for s in specs]
     if len(set(ids)) != len(ids):
         sys.exit("ABORT: duplicate call_id")
@@ -40,24 +43,17 @@ def _invoke(model, cond, prompt, system):
     return _call_with_retry(CURRENT_DISPATCH[model["provider"]], model["model_id"], prompt, cond == "S1", system)
 
 
-def send_call(spec):
-    model, cond = spec["model"], spec["condition"]
-    ts_start = _now()
-    out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
-    empty_retry = False
-    if out is not None and not out["text"].strip():
-        empty_retry = True
-        out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
-        attempts += a2
-        if out2 is not None:
-            out = out2
-        if err2:
-            err = err2
-    ts_end = _now()
-    time.sleep(PAUSE[model["provider"]])
-    status = "error" if out is None else ("empty" if not out["text"].strip() else "ok")
+def _part(out, mode, cond):
+    """Usage of one billed request, for budget_v0_42.record_cost."""
+    s = out.get("search") or {}
+    return {"mode": mode, "input_tokens": out.get("tokens_in"), "output_tokens": out.get("tokens_out"),
+            "thinking_tokens": out.get("tokens_thought"), "n_searches": (s.get("n_searches") or 0) if cond == "S1" else 0}
+
+
+def _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, parts, extra=None):
     out = out or {}
-    return {
+    model, cond = spec["model"], spec["condition"]
+    rec = {
         "call_id": spec["call_id"], "substrate": spec["substrate"], "phase": spec["phase"],
         "probe_id": spec["probe_id"], "brand_id": spec["brand_id"], "frame_id": spec["frame_id"],
         "model_requested": model["model_id"], "provider": model["provider"],
@@ -71,7 +67,194 @@ def send_call(spec):
         "paused_continued": out.get("paused_continued", False),
         "attempts": attempts, "empty_retry": empty_retry,
         "started_utc": ts_start, "finished_utc": ts_end,
+        "mode": model.get("mode", "standard"), "usage_parts": parts,
     }
+    rec.update(extra or {})
+    rec["cost_usd"] = BG.record_cost(rec)
+    return rec
+
+
+def send_call(spec):
+    """Synchronous call (GPT-6 Astra, Gemini 4 Argon; and the feasibility check). As r1, plus the usage of every
+    billed request (an empty first answer is billed too) in `usage_parts`."""
+    model, cond = spec["model"], spec["condition"]
+    ts_start = _now()
+    out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
+    parts = [_part(out, "standard", cond)] if out is not None else []
+    empty_retry = False
+    if out is not None and not out["text"].strip():
+        empty_retry = True
+        out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
+        attempts += a2
+        if out2 is not None:
+            out = out2
+            parts.append(_part(out2, "standard", cond))
+        if err2:
+            err = err2
+    ts_end = _now()
+    time.sleep(PAUSE[model["provider"]])
+    status = "error" if out is None else ("empty" if not out["text"].strip() else "ok")
+    return _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, parts)
+
+
+# ----------------------------------------------------------------- Anthropic Message Batches (Claude Fable 5.2)
+def anthropic_params(spec):
+    """Request parameters of one batched request: exactly the keyword arguments call_anthropic_current sends."""
+    kw = {"model": spec["model"]["model_id"], "max_tokens": CURRENT_MAX_TOKENS,
+          "messages": [{"role": "user", "content": spec["prompt"]}]}
+    if spec["system"]:
+        kw["system"] = spec["system"]
+    if spec["condition"] == "S1":
+        kw["tools"] = [S1_ANTHROPIC]
+    return kw
+
+
+def parse_anthropic_blocks(blocks, search):
+    """Text and search record from Anthropic content blocks: the parsing of call_anthropic_current, unchanged."""
+    s = _empty_search()
+    text = []
+    for b in blocks:
+        t = getattr(b, "type", None)
+        if t == "text":
+            text.append(b.text)
+            for c in (getattr(b, "citations", None) or []):
+                url = getattr(c, "url", None)
+                if url:
+                    s["citations"].append({"url": url, "title": getattr(c, "title", None)})
+        elif t == "server_tool_use" and getattr(b, "name", "") == "web_search":
+            s["n_searches"] += 1
+            inp = getattr(b, "input", None) or {}
+            s["queries"].append(inp.get("query") if isinstance(inp, dict) else str(inp))
+        elif t == "web_search_tool_result":
+            content = getattr(b, "content", None)
+            if isinstance(content, list):
+                for res in content:
+                    s["sources"].append({"url": getattr(res, "url", None), "title": getattr(res, "title", None),
+                                         "page_age": getattr(res, "page_age", None)})
+            else:
+                s["errors"].append(str(getattr(content, "error_code", content)))
+    return "".join(text), (s if search else None)
+
+
+def _searches_in(blocks):
+    return sum(1 for b in blocks if getattr(b, "type", None) == "server_tool_use" and getattr(b, "name", "") == "web_search")
+
+
+def _batch_message_out(spec, m, client, ledger):
+    """Turn a succeeded batch message into the call-function output; a pause_turn is continued once,
+    synchronously, with identical tools (section 4.4), under the budget guard. -> (out, parts, note)"""
+    search = spec["condition"] == "S1"
+    blocks = list(m.content)
+    parts = [{"mode": "batch", "input_tokens": m.usage.input_tokens, "output_tokens": m.usage.output_tokens,
+              "thinking_tokens": None, "n_searches": _searches_in(blocks) if search else 0}]
+    paused, note = False, None
+    if m.stop_reason == "pause_turn":
+        st, tok = ledger.reserve(BG.worst_case(spec["model"]["model_id"], spec["condition"], "standard"))
+        if st == "ok":
+            paused = True
+            kw = anthropic_params(spec)
+            msgs = kw.pop("messages")
+            try:
+                m2 = client.messages.create(messages=msgs + [{"role": "assistant", "content": m.content}], **kw)
+                b2 = list(m2.content)
+                blocks += b2
+                parts.append({"mode": "standard", "input_tokens": m2.usage.input_tokens,
+                              "output_tokens": m2.usage.output_tokens, "thinking_tokens": None,
+                              "n_searches": _searches_in(b2) if search else 0})
+                m = m2
+            except Exception as e:  # recorded; the call keeps its first part
+                note = f"pause_turn continuation failed: {type(e).__name__}: {e}"[:500]
+            ledger.settle(tok, 0.0)
+        else:
+            note = f"pause_turn not continued: budget guard {st}"
+    text, srec = parse_anthropic_blocks(blocks, search)
+    out = {"text": text, "served_model": m.model, "finish_reason": m.stop_reason,
+           "tokens_in": sum(p["input_tokens"] or 0 for p in parts), "tokens_out": sum(p["output_tokens"] or 0 for p in parts),
+           "tokens_thought": None, "paused_continued": paused, "search": srec}
+    return out, parts, note
+
+
+TRANSIENT_BATCH_ERRORS = ("api_error", "overloaded_error", "rate_limit_error", "timeout_error")
+
+
+def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep):
+    """Send `specs` (one model, one block) through the Message Batches API under the budget guard.
+    Each attempt is one raw line. Transient errors and expired requests are re-sent up to MAX_ATTEMPTS attempts;
+    an empty answer is re-sent once. Returns 'done' | 'pause' | 'stop'."""
+    if client is None:
+        import anthropic
+        client = anthropic.Anthropic()
+    poll = BATCH_POLL_SECONDS if poll is None else poll
+    pending = [(s, 1, 0) for s in specs]          # (spec, attempt number, empty re-sends so far)
+    while pending:
+        model_id, cond = pending[0][0]["model"]["model_id"], pending[0][0]["condition"]
+        st, k, tok = ledger.fit(BG.worst_case(model_id, cond, "batch"), len(pending))
+        if st == "wait":
+            sleep(5)
+            continue
+        if st != "ok":
+            return st
+        chunk, pending = pending[:k], pending[k:]
+        ids = {f"v42-{i:04d}-a{att}": (s, att, ne) for i, (s, att, ne) in enumerate(chunk)}
+        reqs = [{"custom_id": cid, "params": anthropic_params(s)} for cid, (s, _, _) in ids.items()]
+        ts_start = _now()
+        try:
+            b = client.messages.batches.create(requests=reqs)
+        except Exception as e:
+            ledger.settle(tok, 0.0)
+            for cid, (s, att, ne) in ids.items():
+                write(_record(s, None, "error", f"batch create failed: {type(e).__name__}: {e}"[:500], att, ne > 0,
+                              ts_start, _now(), [], {"batch_id": None, "custom_id": cid}))
+            return "stop"
+        while True:
+            b = client.messages.batches.retrieve(b.id)
+            if getattr(b, "processing_status", None) == "ended":
+                break
+            sleep(poll)
+        ts_end = getattr(b, "ended_at", None)
+        ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
+        results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
+        retry, spent = [], 0.0
+        for cid, (s, att, ne) in ids.items():
+            res = results.get(cid)
+            rtype = getattr(res, "type", "missing")
+            extra = {"batch_id": b.id, "custom_id": cid}
+            if rtype == "succeeded":
+                out, parts, note = _batch_message_out(s, res.message, client, ledger)
+                empty = not out["text"].strip()
+                rec = _record(s, out, "empty" if empty else "ok", note, att, ne > 0, ts_start, ts_end, parts, extra)
+                if empty and ne < EMPTY_RESENDS:
+                    retry.append((s, att + 1, ne + 1))
+            else:
+                err = getattr(res, "error", None)
+                etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
+                rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
+                              ts_start, ts_end, [], extra)
+                transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
+                if transient and att < MAX_ATTEMPTS:
+                    retry.append((s, att + 1, ne))
+            write(rec)
+            spent += rec["cost_usd"]
+        ledger.settle(tok, spent)
+        pending = retry + pending
+    return "done"
+
+
+def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
+    """Send `specs` (one model, one block) one at a time under the budget guard. Returns 'done' | 'pause' | 'stop'."""
+    sender = sender or send_call
+    for s in specs:
+        while True:
+            st, tok = ledger.reserve(BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
+            if st != "wait":
+                break
+            sleep(5)
+        if st != "ok":
+            return st
+        rec = sender(s)
+        write(rec)
+        ledger.settle(tok, rec["cost_usd"])
+    return "done"
 
 
 def require_keys():
@@ -83,10 +266,9 @@ def require_keys():
 
 
 def confirm_no_sampling_params():
-    """claude-fable-5-2 must not get temperature/top_p/top_k: check the copied function's source."""
-    src = inspect.getsource(call_anthropic_current)
-    bad = [w for w in ("temperature", "top_p", "top_k") if w in src]
-    return bad
+    """claude-fable-5-2 must not get temperature/top_p/top_k: check the copied function and the batch builder."""
+    src = inspect.getsource(call_anthropic_current) + inspect.getsource(anthropic_params)
+    return [w for w in ("temperature", "top_p", "top_k") if w in src]
 
 
 # ----------------------------------------------------------------- dry run
@@ -94,20 +276,28 @@ def dry_run():
     probes = load_probes()
     specs = build_specs(probes)
     bad = confirm_no_sampling_params()
-    print(f"call_anthropic_current sampling params present: {bad or 'none (temperature/top_p/top_k not sent)'}")
-    c = Counter((s["model"]["model_id"], s["condition"], s["phase"], s["run"]) for s in specs)
-    print(f"{'model':18s} {'cond':4s} {'phase':5s} " + " ".join(f"run{r}" for r in RUNS) + "  total")
-    for m in PANEL:
-        for cond in CONDITIONS:
-            for ph in "AB":
-                row = [c[(m["model_id"], cond, ph, r)] for r in RUNS]
-                print(f"{m['model_id']:18s} {cond:4s} {ph:5s} " + " ".join(f"{x:4d}" for x in row) + f"  {sum(row):5d}")
+    print(f"sampling params in call_anthropic_current / anthropic_params: {bad or 'none (temperature/top_p/top_k not sent)'}")
+    print(f"{'block':22s} " + " ".join(f"{m['model_id']:>17s}" for m in PANEL) + "  total")
+    for bi, (ph, cond, run) in enumerate(BLOCKS):
+        row = [sum(1 for s in specs if s["block"] == bi and s["model"]["model_id"] == m["model_id"]) for m in PANEL]
+        print(f"{bi + 1}. Phase {ph} {cond} run {run}      " + " ".join(f"{x:17d}" for x in row) + f"  {sum(row):5d}")
     print(f"\nTOTAL calls: {len(specs)} (expected {EXPECTED_TOTAL}) -> {'OK' if len(specs) == EXPECTED_TOTAL else 'MISMATCH'}")
-    print("by model:", {m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"]) for m in PANEL})
+    print("by model:", {m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"]) for m in PANEL},
+          " modes:", {m["model_id"]: m["mode"] for m in PANEL})
     print("by condition:", dict(Counter(s["condition"] for s in specs)), " by phase:", dict(Counter(s["phase"] for s in specs)))
-    inp = sum((len(s["prompt"]) + len(s["system"] or "")) / 4 for s in specs)
-    print(f"estimated prompt tokens (chars/4, excl. tool/search overhead): ~{int(inp):,}")
-    print(f"output-token ceiling at max_output_tokens={CURRENT_MAX_TOKENS}: {len(specs) * CURRENT_MAX_TOKENS:,} (upper bound, not an estimate)")
+    print("\nworst-case reservation per request (USD; input/output/searches at the practical bounds of budget_v0_42.WORST):")
+    for m in PANEL:
+        print(f"  {m['model_id']:17s} {m['mode']:8s} S0 {BG.worst_case(m['model_id'], 'S0', m['mode']):.3f}"
+              f"  S1 {BG.worst_case(m['model_id'], 'S1', m['mode']):.3f}")
+    print(f"budget: pause at ${BG.PAUSE_AT_USD:.0f}, hard stop at ${BG.BUDGET_CAP_USD:.0f}; judge reserve ${BG.JUDGE_RESERVE_USD:.2f}"
+          f"; projection pause after block B-S1 run 1")
+    try:
+        import cost_estimate_v0_42 as CE
+        basis = CE.load_basis()
+        d = CE.cost_of(CE.DESIGNS[next(iter(CE.DESIGNS))], basis, "t4")
+        print(f"cost estimate (cost_estimate_v0_42.py, t4 prices): central ${d['central']:.2f}, high ${d['high']:.2f}")
+    except Exception as e:
+        print(f"cost estimate unavailable: {type(e).__name__}: {e}")
     print("nothing sent.")
     return 0 if len(specs) == EXPECTED_TOTAL else 1
 
@@ -164,65 +354,100 @@ def prereg_guard():
     return commit
 
 
-def done_ids():
+def done_ids(raw_path=None):
     done = set()
-    if RAW_PATH.exists():
-        for line in RAW_PATH.read_text(encoding="utf-8").splitlines():
+    raw_path = RAW_PATH if raw_path is None else raw_path
+    if raw_path.exists():
+        for line in raw_path.read_text(encoding="utf-8").splitlines():
             if not line.strip():
                 continue
             try:
                 r = json.loads(line)
             except json.JSONDecodeError:
                 continue
-            if (r.get("text") or "").strip() and not r.get("error"):
+            if (r.get("text") or "").strip() and not r.get("error") and r.get("status", "ok") == "ok":
                 done.add(r["call_id"])
     return done
 
 
-def collect(max_conc):
-    commit = prereg_guard()
-    print(f"prereg guard passed: {PREREG_TAG} -> {commit}")
-    require_keys()
-    specs = build_specs(load_probes())
-    done = done_ids()
-    todo = [s for s in specs if s["call_id"] not in done]
-    print(f"{len(specs)} specs, {len(done)} already done, {len(todo)} to send")
-    RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
+def block_cost(raw_path, block):
+    """Actual cost of every raw line of one (phase, condition, run) block."""
+    ph, cond, run = block
+    tot = 0.0
+    if raw_path.exists():
+        for line in raw_path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                r = json.loads(line)
+                if r.get("phase") == ph and r.get("condition") == cond and r.get("run") == run:
+                    tot += BG.record_cost(r)
+    return tot
+
+
+def run_collection(specs, ledger, raw_path, runners, log=print):
+    """Blocks in order; within a block one worker per model in parallel (runners[mode](specs, ledger, write)).
+    After the projection block, pause if spend + 2 x that block's cost > cap (unless approved).
+    Returns 'done' | 'pause' | 'stop'."""
+    done = done_ids(raw_path)
+    raw_path.parent.mkdir(parents=True, exist_ok=True)
     lock = threading.Lock()
-    counter = Counter()
 
     def write(rec):
         with lock:
-            with open(RAW_PATH, "a", encoding="utf-8") as f:
+            with open(raw_path, "a", encoding="utf-8") as f:
                 f.write(json.dumps(rec, ensure_ascii=False) + "\n")
                 f.flush()
                 os.fsync(f.fileno())
-            counter[rec["model_requested"], rec["status"]] += 1
-
-    def one(spec):
-        rec = send_call(spec)
-        write(rec)
         s = rec.get("search") or {}
-        print(f"  {rec['call_id']} {rec['status']} out={rec['output_tokens']} fr={rec['finish_reason']}"
-              + (f" searches={s.get('n_searches')}" if rec["condition"] == "S1" else ""), flush=True)
+        log(f"  {rec['call_id']} {rec['status']} out={rec['output_tokens']} fr={rec['finish_reason']} "
+            f"${rec['cost_usd']:.4f}" + (f" searches={s.get('n_searches')}" if rec["condition"] == "S1" else ""))
 
-    def worker(model_id):
-        mine = [s for s in todo if s["model"]["model_id"] == model_id]
-        with ThreadPoolExecutor(max_workers=max_conc) as pool:
-            list(pool.map(one, mine))
+    for bi, block in enumerate(BLOCKS):
+        todo = [s for s in specs if s["block"] == bi and s["call_id"] not in done]
+        if todo:
+            log(f"block {bi + 1} {block}: {len(todo)} calls to send; {ledger.summary()}")
+            groups = [[s for s in todo if s["model"]["model_id"] == m["model_id"]] for m in PANEL]
+            groups = [(g, runners[g[0]["model"]["mode"]]) for g in groups if g]
+            with ThreadPoolExecutor(max_workers=len(groups)) as pool:
+                res = list(pool.map(lambda gr: gr[1](gr[0], ledger, write), groups))
+            for st in ("stop", "pause"):
+                if st in res:
+                    log(f"HALT ({st}) in block {bi + 1}: {ledger.summary()}")
+                    return st
+        if block == PROJECTION_BLOCK and not ledger.approved("projection"):
+            bc = block_cost(raw_path, block)
+            proj = ledger.spent() + 2 * bc
+            if any(s["block"] > bi and s["call_id"] not in done for s in specs) and proj > ledger.cap:
+                ledger.halt("pause", f"projection: spend ${ledger.spent():.2f} + 2 x block cost ${bc:.2f} = ${proj:.2f} > ${ledger.cap:.0f}")
+                log(f"PAUSE (projection) after block {bi + 1}: {ledger.summary()}")
+                return "pause"
+    return "done"
 
-    with ThreadPoolExecutor(max_workers=len(PANEL)) as pool:
-        list(pool.map(worker, [m["model_id"] for m in PANEL]))
-    print("done:", dict(counter))
-    return 0
+
+def collect(approve_past_80=None, approve_projection=None):
+    commit = prereg_guard()
+    print(f"prereg guard passed: {PREREG_TAG} -> {commit}")
+    require_keys()
+    ledger = BG.Ledger(RAW_PATH, STATE_PATH)
+    if approve_past_80:
+        ledger.approve("past_80", approve_past_80)
+    if approve_projection:
+        ledger.approve("projection", approve_projection)
+    specs = build_specs(load_probes())
+    print(f"{len(specs)} specs, {len(done_ids())} already done; budget {ledger.summary()}")
+    st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync})
+    print("result:", st, ledger.summary())
+    return {"done": 0, "pause": 5, "stop": 6}[st]
 
 
 def main():
-    ap = argparse.ArgumentParser(description="AIAS v0.42 t4 acquisition")
+    ap = argparse.ArgumentParser(description="AIAS v0.42 t4 acquisition (pre-registration r2)")
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--feasibility", action="store_true", help="neutral prompts only; never a study probe")
     ap.add_argument("--collect", action="store_true", help="guarded: needs the prereg tag on origin + anchor file")
-    ap.add_argument("--max-concurrency", type=int, default=1, help="concurrent calls per model (default 1)")
+    ap.add_argument("--approve-past-80", metavar="NOTE", default=None,
+                    help="record the pre-registrant's OK to continue past $80 (who/when), then collect")
+    ap.add_argument("--approve-projection", metavar="NOTE", default=None,
+                    help="record the pre-registrant's OK to continue after the S1 projection pause, then collect")
     a = ap.parse_args()
     if sum([a.dry_run, a.feasibility, a.collect]) != 1:
         ap.error("choose exactly one of --dry-run / --feasibility / --collect")
@@ -230,7 +455,7 @@ def main():
         return dry_run()
     if a.feasibility:
         return feasibility()
-    return collect(a.max_concurrency)
+    return collect(a.approve_past_80, a.approve_projection)
 
 
 if __name__ == "__main__":

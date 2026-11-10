@@ -1,25 +1,21 @@
-call_anthropic_current sampling params present: none (temperature/top_p/top_k not sent)
-model              cond phase run1 run2 run3  total
-claude-fable-5-2   S0   A      112  112  112    336
-claude-fable-5-2   S0   B       30   30   30     90
-claude-fable-5-2   S1   A      112  112  112    336
-claude-fable-5-2   S1   B       30   30   30     90
-claude-opus-5-5    S0   A      112  112  112    336
-claude-opus-5-5    S0   B       30   30   30     90
-claude-opus-5-5    S1   A      112  112  112    336
-claude-opus-5-5    S1   B       30   30   30     90
-gpt-6-astra        S0   A      112  112  112    336
-gpt-6-astra        S0   B       30   30   30     90
-gpt-6-astra        S1   A      112  112  112    336
-gpt-6-astra        S1   B       30   30   30     90
-gemini-4-argon     S0   A      112  112  112    336
-gemini-4-argon     S0   B       30   30   30     90
-gemini-4-argon     S1   A      112  112  112    336
-gemini-4-argon     S1   B       30   30   30     90
+sampling params in call_anthropic_current / anthropic_params: none (temperature/top_p/top_k not sent)
+block                   claude-fable-5-2       gpt-6-astra    gemini-4-argon  total
+1. Phase B S0 run 1                     30                30                30     90
+2. Phase B S0 run 2                     30                30                30     90
+3. Phase B S0 run 3                     30                30                30     90
+4. Phase A S0 run 1                    112               112               112    336
+5. Phase B S1 run 1                     30                30                30     90
+6. Phase B S1 run 2                     30                30                30     90
+7. Phase B S1 run 3                     30                30                30     90
 
-TOTAL calls: 3408 (expected 3408) -> OK
-by model: {'claude-fable-5-2': 852, 'claude-opus-5-5': 852, 'gpt-6-astra': 852, 'gemini-4-argon': 852}
-by condition: {'S0': 1704, 'S1': 1704}  by phase: {'A': 2688, 'B': 720}
-estimated prompt tokens (chars/4, excl. tool/search overhead): ~98,064
-output-token ceiling at max_output_tokens=16384: 55,836,672 (upper bound, not an estimate)
+TOTAL calls: 876 (expected 876) -> OK
+by model: {'claude-fable-5-2': 292, 'gpt-6-astra': 292, 'gemini-4-argon': 292}  modes: {'claude-fable-5-2': 'batch', 'gpt-6-astra': 'standard', 'gemini-4-argon': 'standard'}
+by condition: {'S0': 606, 'S1': 270}  by phase: {'B': 540, 'A': 336}
+
+worst-case reservation per request (USD; input/output/searches at the practical bounds of budget_v0_42.WORST):
+  claude-fable-5-2  batch    S0 0.336  S1 1.028
+  gpt-6-astra       standard S0 0.839  S1 2.419
+  gemini-4-argon    standard S0 0.168  S1 0.604
+budget: pause at $80, hard stop at $100; judge reserve $0.50; projection pause after block B-S1 run 1
+cost estimate (cost_estimate_v0_42.py, t4 prices): central $63.97, high $135.62
 nothing sent.

@@ -1,0 +1,41 @@
+== designs
+  r2 (adopted): N3, Fable via Batch API; B S0x3, B S1x3, A S0x1
+     calls   876  t4 central $  63.97 high $ 135.62   t5/t6 central $  67.27 high $ 142.60
+  r2 with Fable synchronous (no batch)
+     calls   876  t4 central $  92.91 high $ 207.52   t5/t6 central $  96.21 high $ 214.50
+  r2 with Opus 5.5 in place of Fable (synchronous)
+     calls   876  t4 central $  48.59 high $  83.75   t5/t6 central $  51.89 high $  90.73
+  r2 with Opus 5.5 in place of Fable (Batch API)
+     calls   876  t4 central $  41.35 high $  71.75   t5/t6 central $  44.65 high $  78.73
+  r2 with Phase A S0 x3 runs
+     calls  1548  t4 central $  80.36 high $ 168.45   t5/t6 central $  85.32 high $ 179.77
+  r2 with B S1 x2 runs
+     calls   786  t4 central $  49.08 high $ 102.68   t5/t6 central $  51.96 high $ 108.84
+  r1 as drafted: 4 models, 142 probes x S0/S1 x 3 runs, synchronous
+     calls  3408  t4 central $ 378.47 high $ 718.12   t5/t6 central $ 386.83 high $ 737.63
+== addons
+  H_Version_Presence add-on: Opus 5.5, B S0 x3 (90 calls), Batch API
+     calls    90  t4 central $   1.69 high $   2.24   t5/t6 central $   1.69 high $   2.24
+  H_Version_Presence add-on: Opus 5.5, B S0 x3 (90 calls), synchronous
+     calls    90  t4 central $   3.38 high $   4.48   t5/t6 central $   3.38 high $   4.48
+  H_Version_Presence standalone: Fable + Opus 5.5, B S0 x3 (180 calls), Batch API
+     calls   180  t4 central $   8.45 high $  15.65   t5/t6 central $   8.45 high $  15.65
+  Phase A S1 x1 run on N3 (336 calls)
+     calls   336  t4 central $  50.60 high $  88.71   t5/t6 central $  51.73 high $  91.44
+  Phase A S0 runs 2-3 on N3 (672 calls)
+     calls   672  t4 central $  16.39 high $  32.83   t5/t6 central $  18.05 high $  37.17
+
+== adopted design, per cell (t4 prices)
+  claude-fable-5-2  batch    B      S0 x3   90 calls  $0.0750/$0.1490 per call  -> $  6.75 / $ 13.41
+  claude-fable-5-2  batch    B      S1 x3   90 calls  $0.2133/$0.5990 per call  -> $ 19.20 / $ 53.91
+  claude-fable-5-2  batch    A_yn   S0 x1   88 calls  $0.0344/$0.0789 per call  -> $  3.03 / $  6.94
+  claude-fable-5-2  batch    A_open S0 x1   24 calls  $0.0750/$0.1490 per call  -> $  1.80 / $  3.58
+  gpt-6-astra       standard B      S0 x3   90 calls  $0.0349/$0.0511 per call  -> $  3.14 / $  4.60
+  gpt-6-astra       standard B      S1 x3   90 calls  $0.2631/$0.4458 per call  -> $ 23.68 / $ 40.12
+  gpt-6-astra       standard A_yn   S0 x1   88 calls  $0.0193/$0.0284 per call  -> $  1.70 / $  2.50
+  gpt-6-astra       standard A_open S0 x1   24 calls  $0.0349/$0.0511 per call  -> $  0.84 / $  1.23
+  gemini-4-argon    standard B      S0 x3   90 calls  $0.0135/$0.0262 per call  -> $  1.22 / $  2.36
+  gemini-4-argon    standard B      S1 x3   90 calls  $0.0198/$0.0534 per call  -> $  1.78 / $  4.81
+  gemini-4-argon    standard A_yn   S0 x1   88 calls  $0.0058/$0.0175 per call  -> $  0.51 / $  1.54
+  gemini-4-argon    standard A_open S0 x1   24 calls  $0.0135/$0.0262 per call  -> $  0.33 / $  0.63
+wrote osf/v42/prereg/cost_estimate_v0_42_r2.json

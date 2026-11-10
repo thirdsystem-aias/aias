@@ -1,8 +1,12 @@
 #!/usr/bin/env python3
 """
-score_v0_42.py -- AIAS(TM) v0.42 scorer (t4 wave). Transcribes PRE_REGISTRATION_v0_42.md section 2 and 5.
-THE PRE-REGISTRATION PROSE IS AUTHORITATIVE; where it is silent the simplest faithful option is taken and
+score_v0_42.py -- AIAS(TM) v0.42 scorer (t4 wave). Transcribes PRE_REGISTRATION_v0_42.md (revision r2) sections 2
+and 5. THE PRE-REGISTRATION PROSE IS AUTHORITATIVE; where it is silent the simplest faithful option is taken and
 listed below (SCORER_NOTES).
+
+r2 (2026-11-10, $100 rule): panel N3 only (Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon); Claude Opus 5.5, the C3
+panel and H_Version_Presence are removed; Phase A is collected in S0, run 1 only; expected calls 876 (S0: 30 x 3 +
+112 = 202 per model; S1: 30 x 3 = 90 per model). Notes N6, N8 and N12 are revised accordingly; N15 is new.
 
 SCORER_NOTES (choices where the pre-registration is silent)
  N1  Helpers phi_m / phi_of / spearman / within_ranks / pooled_within_rho / _pearson / load_wave are IMPORTED
@@ -13,26 +17,24 @@ SCORER_NOTES (choices where the pre-registration is silent)
      (float tolerance for exact ties); p = (1 + hits) / (draws + 1).
  N3  Bootstrap: brands resampled with replacement within substrate (v41 _decay scheme); several statistics of one
      test are taken on the SAME resamples; draws where a statistic is non-finite are dropped for that statistic
-     and counted. H_Version: rel1/rel3/rho* are recomputed on every resample.
+     and counted.
  N4  Each alongside variant of a hypothesis re-uses that hypothesis' seed (fresh generator per test).
      Seed 420045 (descriptives) is recorded but unused: no descriptive carries an interval.
  N5  "Answered call" = deduplicated raw call with status ok, non-empty text, no error, served ID accepted
      (MC_Served). Phase B rates use the answered calls of each (model, run, substrate) as denominator; the
      answered set is the set of call_ids present in the coded Phase B table. Duplicate lines of one call_id
      (re-run pass): the last answered attempt, else the last attempt.
- N6  Model x condition is excluded if answered / 426 < 0.90 (426 = 142 probes x 3 runs; a call absent from the
-     raw file counts as unanswered). H_Gen_* use S0: Fable excluded -> C3 replaces N3; GPT-6 Astra or Gemini 4
-     Argon excluded (or Fable and Opus 5.5 both) -> UNDETERMINED. H_Version needs both Claude models in S0
-     (S1 alongside: in S1). Alongside variants (C3, S1) use the models of the named panel retained in that
-     condition (flagged reduced_panel); H_Search uses the models retained in BOTH conditions; none -> NOT_COMPUTED.
+ N6  Model x condition is excluded if answered / expected < 0.90 (expected per model: S0 202 = 30 x 3 + 112,
+     S1 90 = 30 x 3; a call absent from the raw file counts as unanswered). H_Gen_* use S0: any N3 model excluded
+     -> UNDETERMINED (r2: no C3 fallback). The S1 alongside variant uses the N3 models retained in S1 (flagged
+     reduced_panel); H_Search uses the models retained in BOTH conditions; none -> NOT_COMPUTED.
  N7  phi per run needs all models of the panel to have all 6 Phase B answers in that substrate; otherwise the run
      is undefined for that substrate. Brand phi = mean over defined runs if >= 2 of 3 are defined else None.
      Brand partition label: "defined" (phi available); else "zero"/"saturated" if every run is zero/saturated;
      else "undefined" (fewer than 2 defined runs, e.g. missing calls or mixed partitions).
- N8  rel1: mean of pooled-within rho over the run pairs for which >= 3 brands have both rates; k/6 uses the
-     answered-call denominator; rel1 NaN -> H_Version UNDETERMINED. Recognition agreement between versions:
-     brands coded alike by the majority of answered runs; brands with a tie or no answered run are excluded.
-     Recognition agreement across runs (descriptive 1): mean over brands of the share of agreeing run pairs.
+ N8  rel1 (descriptive 1): mean of pooled-within rho over the run pairs for which >= 3 brands have both rates;
+     k/6 uses the answered-call denominator. Recognition agreement across runs: mean over brands of the share of
+     agreeing run pairs -- not computable in r2 (Phase A has one run); reported as None.
  N9  Descriptive 3 "the reverse": of the brands below the floor on N3,S0 at t4 (6*pi_hat < 1), the share that were
      below it at t3; the share of above-floor t3 brands that fall below is also given.
  N10 Refusals (descriptive 4): finish reasons containing refusal / content_filter / safety / prohibited / blocklist;
@@ -40,11 +42,14 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N11 MC_Truncation: finish reason (lower-case) contains "max_tokens" or "max_output_tokens", or equals "length".
      MC_Served: a call with status ok and no served ID is listed, not excluded. Dated snapshot = requested +
      "-YYYY-MM-DD" or "-YYYYMMDD". A leading "models/" is ignored.
- N12 Cost: input tokens x input price + output tokens x output price; Google thinking tokens are billed as output
-     (its candidate count excludes them), for the others output already includes thinking. Search-tool fees
-     excluded. List prices as in section 4.5; labelled an ESTIMATE.
+ N12 Cost (descriptive 6): budget_v0_42.record_cost of every raw line (every attempt): the recorded usage of each
+     billed request (`usage_parts`: batch or standard token prices; Google thinking tokens billed as output; search
+     fees per recorded search), at the list prices of section 4.5 -- the same function as the collection guard.
  N13 Domains (descriptive 5): host of each citation URL, lower-case, leading "www." dropped.
  N14 NaN rho (degenerate data) -> verdict UNDETERMINED (the rules are silent).
+ N15 (r2) Seed 420042 (H_Version_Presence) is retired with the hypothesis; the other seeds are unchanged. The
+     manipulation checks count only calls of the design (Phase B: S0/S1, runs 1-3; Phase A: S0, run 1) and of the
+     N3 models; any other raw line is reported as `outside_design` and not analysed.
 
 Modes: --parity-p1 | --synthetic DIR | --run   (--run refuses unless tag v0.42-prereg-r1 is on origin)
 """
@@ -70,6 +75,7 @@ from urllib.parse import urlparse  # noqa: E402
 import numpy as np      # noqa: E402
 
 import score_v41 as sv  # noqa: E402
+import budget_v0_42 as BG  # noqa: E402
 
 phi_m, phi_of, spearman, within_ranks, pooled_within_rho, _pearson, load_wave = (
     sv.phi_m, sv.phi_of, sv.spearman, sv.within_ranks, sv.pooled_within_rho, sv._pearson, sv.load_wave)
@@ -78,23 +84,22 @@ PHASE_ID = "v0.42"
 OMNI = sv.OMNI
 F = 6
 RUNS = (1, 2, 3)
-EXPECTED_PER_MODEL_COND = 142 * 3
-EXPECTED_TOTAL = 3408
+PHASE_A_DESIGN = {("S0", 1)}                       # r2: Phase A in S0, run 1 only
+EXPECTED_PER_MODEL_COND = {"S0": 30 * 3 + 112, "S1": 30 * 3}
+EXPECTED_TOTAL = 876
 N_PERM = 10_000
 N_BOOT = 10_000
-SEEDS = {"H_Gen_Presence": 420041, "H_Version_Presence": 420042, "H_Gen_Phi": 420043,
-         "H_Search_Presence": 420044, "descriptives": 420045}
-FABLE, OPUS55, GPT6, GEM4 = "claude-fable-5-2", "claude-opus-5-5", "gpt-6-astra", "gemini-4-argon"
-MODELS = [FABLE, OPUS55, GPT6, GEM4]
-PANELS = {"N3": [FABLE, GPT6, GEM4], "C3": [OPUS55, GPT6, GEM4]}
+SEEDS = {"H_Gen_Presence": 420041, "H_Gen_Phi": 420043,
+         "H_Search_Presence": 420044, "descriptives": 420045}   # 420042 retired with H_Version_Presence (r2)
+FABLE, GPT6, GEM4 = "claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"
+MODELS = [FABLE, GPT6, GEM4]
+PANELS = {"N3": [FABLE, GPT6, GEM4]}
 CONDS = ["S0", "S1"]
 import score_v0_31 as S31   # noqa: E402
 L6 = list(S31.PANEL)   # claude-opus-4-5, claude-sonnet-4-5, gpt-4o, gpt-4o-mini, gemini-2.5-flash, gemini-2.5-flash-lite
 PROVIDER_PAIRS = {  # legacy indices in L6 order -> new models (section 2.2 "per-provider generation pairs")
-    "Anthropic": ((0, 1), [FABLE, OPUS55]), "OpenAI": ((2, 3), [GPT6]), "Google": ((4, 5), [GEM4])}
-PRICES = {FABLE: (8.0, 40.0), OPUS55: (4.0, 20.0), GPT6: (10.0, 50.0), GEM4: (2.0, 10.0)}  # USD / Mtok in, out
+    "Anthropic": ((0, 1), [FABLE]), "OpenAI": ((2, 3), [GPT6]), "Google": ((4, 5), [GEM4])}
 GEN_CONF, GEN_P, GEN_FALS = 0.70, 0.05, 0.50
-VER_REL_MIN, VER_CONF_STAR, VER_CONF_FO, VER_FALS_STAR = 0.20, 0.80, 0.60, 0.60
 PHI_CONF, PHI_FALS, PHI_N_FLOOR = 0.50, 0.30, 40
 SEARCH_LO, SEARCH_HI = 0.80, 0.50
 DROP_SHARE = 0.90
@@ -344,18 +349,6 @@ def verdict_phi(n, rho, p):
     return "MARGINAL"
 
 
-def verdict_version(rel1_a, rel1_b, rho_fo, rho_star):
-    if not (np.isfinite(rel1_a) and np.isfinite(rel1_b)) or rel1_a <= VER_REL_MIN or rel1_b <= VER_REL_MIN:
-        return "UNDETERMINED"
-    if not (np.isfinite(rho_fo) and np.isfinite(rho_star)):
-        return "UNDETERMINED"
-    if rho_star >= VER_CONF_STAR and rho_fo >= VER_CONF_FO:
-        return "CONFIRMED"
-    if rho_star < VER_FALS_STAR:
-        return "FALSIFIED"
-    return "MARGINAL"
-
-
 def label_search(ci):
     if ci is None:
         return "UNDETERMINED"
@@ -390,38 +383,6 @@ def model_arrays(D, model, cond, keys):
     return K, Nn
 
 
-def version_test(D, cond, cfg, seed=SEEDS["H_Version_Presence"]):
-    """Fable 5.2 vs Opus 5.5: rho_FO, run reliabilities, disattenuated rho*, bootstrap intervals, verdict."""
-    keys0 = D.brands
-    KF, NF = model_arrays(D, FABLE, cond, keys0)
-    KO, NO = model_arrays(D, OPUS55, cond, keys0)
-    ok = (NF.sum(0) > 0) & (NO.sum(0) > 0)
-    keys = [k for k, o in zip(keys0, ok) if o]
-    KF, NF, KO, NO = KF[:, ok], NF[:, ok], KO[:, ok], NO[:, ok]
-    g = np.array([k[0] for k in keys])
-
-    def stats(i):
-        yF, yO = KF[:, i].sum(0) / NF[:, i].sum(0), KO[:, i].sum(0) / NO[:, i].sum(0)
-        rho = pooled_within_rho(yF, yO, g[i])
-        r1f, r1o = rel1_of(KF[:, i], NF[:, i], g[i]), rel1_of(KO[:, i], NO[:, i], g[i])
-        prod = rel3_of(r1f) * rel3_of(r1o)
-        star = rho / math.sqrt(prod) if np.isfinite(prod) and prod > 0 else NAN
-        return {"rho_FO": rho, "rho_star": star, "rel1_fable": r1f, "rel1_opus": r1o}
-
-    n = len(keys)
-    if n < 3:
-        return {"verdict": "UNDETERMINED", "reason": "fewer than 3 brands with answers", "n": n}
-    full = stats(np.arange(n))
-    boot = bootstrap(g, seed, cfg.n_boot, stats)
-    v = verdict_version(full["rel1_fable"], full["rel1_opus"], full["rho_FO"], full["rho_star"])
-    return {"verdict": v, "n": n, "condition": cond, **full,
-            "rel3_fable": rel3_of(full["rel1_fable"]), "rel3_opus": rel3_of(full["rel1_opus"]),
-            "ci95_rho_FO": boot["rho_FO"]["ci95"], "ci95_rho_star": boot["rho_star"]["ci95"],
-            "bootstrap": {k: {kk: vv for kk, vv in b.items() if kk != "ci95"} for k, b in boot.items()},
-            "rule": "UNDETERMINED if rel1<=0.20 for either; CONFIRMED if rho*>=0.80 and rho_FO>=0.60; "
-                    "FALSIFIED if rho*<0.60; else MARGINAL (rho* not capped)"}
-
-
 def recognition_codes(D, model, cond):
     """{(sub, brand): [recognized per answered run]}."""
     out = collections.defaultdict(list)
@@ -429,21 +390,6 @@ def recognition_codes(D, model, cond):
         if r["model"] == model and r["condition"] == cond:
             out[(r["substrate"], r["brand"])].append(int(r["recognized"]))
     return out
-
-
-def recognition_agreement(D, cond, m1=FABLE, m2=OPUS55):
-    c1, c2 = recognition_codes(D, m1, cond), recognition_codes(D, m2, cond)
-    same = n = ties = 0
-    for key in set(c1) & set(c2):
-        def maj(v):
-            return None if not v or sum(v) * 2 == len(v) else int(sum(v) * 2 > len(v))
-        a, b = maj(c1[key]), maj(c2[key])
-        if a is None or b is None:
-            ties += 1
-            continue
-        n += 1
-        same += a == b
-    return {"share_alike": same / n if n else None, "n_brands": n, "n_excluded_tie_or_missing": ties}
 
 
 # =========================================================================== manipulation checks / drop rule
@@ -457,11 +403,25 @@ def _truncated(rec):
     return "max_tokens" in fr or "max_output_tokens" in fr or fr == "length"
 
 
+def in_design(rec):
+    """r2 design: N3 models; Phase B in S0/S1, runs 1-3; Phase A in S0, run 1 (N15)."""
+    if rec.get("model_requested") not in MODELS or rec.get("condition") not in CONDS:
+        return False
+    if rec.get("phase") == "B":
+        return rec.get("run") in RUNS
+    if rec.get("phase") == "A":
+        return (rec.get("condition"), rec.get("run")) in PHASE_A_DESIGN
+    return False
+
+
 def manipulation_checks(calls_all):
-    """calls_all: deduplicated raw records (before the served-ID exclusion). Returns (mcs, excluded_call_ids)."""
+    """calls_all: deduplicated raw records (before the served-ID exclusion). Returns (mcs, excluded_call_ids).
+    Calls outside the r2 design are counted in `outside_design` and excluded from the analysis (N15)."""
+    outside = [r["call_id"] for r in calls_all if not in_design(r)]
+    calls_all = [r for r in calls_all if in_design(r)]
     per = collections.defaultdict(lambda: {"calls": 0, "answered": 0})
     mism, missing = [], []
-    excluded = set()
+    excluded = set(outside)
     for r in calls_all:
         if C.is_answered(r):
             if not r.get("served_model"):
@@ -474,16 +434,18 @@ def manipulation_checks(calls_all):
         d["calls"] += 1
         d["answered"] += int(C.is_answered(r) and r["call_id"] not in excluded)
     n_ans = sum(d["answered"] for d in per.values())
-    per_mc = {f"{m}|{c}": {**d, "share_of_expected": d["answered"] / EXPECTED_PER_MODEL_COND,
-                           "excluded_below_90pct": d["answered"] / EXPECTED_PER_MODEL_COND < DROP_SHARE}
+    per_mc = {f"{m}|{c}": {**d, "expected": EXPECTED_PER_MODEL_COND[c],
+                           "share_of_expected": d["answered"] / EXPECTED_PER_MODEL_COND[c],
+                           "excluded_below_90pct": d["answered"] / EXPECTED_PER_MODEL_COND[c] < DROP_SHARE}
               for (m, c), d in sorted(per.items())}
     for m in MODELS:                                   # a model x condition with no call at all is also short
         for c in CONDS:
-            per_mc.setdefault(f"{m}|{c}", {"calls": 0, "answered": 0, "share_of_expected": 0.0,
-                                           "excluded_below_90pct": True})
+            per_mc.setdefault(f"{m}|{c}", {"calls": 0, "answered": 0, "expected": EXPECTED_PER_MODEL_COND[c],
+                                           "share_of_expected": 0.0, "excluded_below_90pct": True})
     mcs = {"MC_Complete": {"answered": n_ans, "expected": EXPECTED_TOTAL, "share": n_ans / EXPECTED_TOTAL,
                            "pass": n_ans / EXPECTED_TOTAL >= COMPLETE_SHARE, "per_model_condition": per_mc,
-                           "below_90pct": [k for k, v in per_mc.items() if v["excluded_below_90pct"]]},
+                           "below_90pct": [k for k, v in per_mc.items() if v["excluded_below_90pct"]],
+                           "outside_design": {"n": len(outside), "call_ids": outside[:50]}},
            "MC_Served": {"n_mismatched": len(mism), "mismatched": mism[:50],
                          "ok_calls_without_served_id": len(missing), "excluded_from_analysis": len(excluded),
                          "pass": not mism}}
@@ -526,12 +488,9 @@ def _models_ok(models, cond, excl):
 
 def gen_panel(excl, cond="S0"):
     """Section 5.4: panel for H_Gen_*. Returns (name, models, note) or (None, None, reason)."""
-    if (GPT6, cond) in excl or (GEM4, cond) in excl:
-        return None, None, "GPT-6 Astra or Gemini 4 Argon excluded (answered < 90%): hypothesis UNDETERMINED"
-    if (FABLE, cond) in excl:
-        if (OPUS55, cond) in excl:
-            return None, None, "Claude Fable 5.2 and Claude Opus 5.5 both excluded: UNDETERMINED"
-        return "C3", PANELS["C3"], "Claude Fable 5.2 excluded: C3 replaces N3 (declared fallback)"
+    gone = [m for m in PANELS["N3"] if (m, cond) in excl]
+    if gone:
+        return None, None, f"{', '.join(gone)} excluded (answered < 90%): hypothesis UNDETERMINED (r2: no fallback panel)"
     return "N3", PANELS["N3"], None
 
 
@@ -553,7 +512,7 @@ def h_gen_presence(D, t3, excl, cfg):
                    verdict=verdict_gen(t["rho"], t.get("p_perm")),
                    rule="CONFIRMED if rho>=0.70 and p<0.05; FALSIFIED if rho<0.50; MARGINAL otherwise")
     alt = {}
-    for label, panel, cond in (("C3_S0", "C3", "S0"), ("N3_S1", "N3", "S1")):
+    for label, panel, cond in (("N3_S1", "N3", "S1"),):
         ms = _models_ok(PANELS[panel], cond, excl)
         if not ms:
             alt[label] = {"status": "NOT_COMPUTED", "reason": "all models excluded"}
@@ -573,21 +532,6 @@ def h_gen_presence(D, t3, excl, cfg):
     out["reported_alongside"] = {"variants": alt, "per_provider_generation_pairs": pairs,
                                  "level_shift_delta": {"delta": out.get("delta"), "ci95": out.get("ci95_delta")},
                                  "per_substrate_rho": out.get("per_substrate")}
-    return out
-
-
-def h_version(D, excl, cfg):
-    out = {"tier": "PRIMARY", "seed": SEEDS["H_Version_Presence"]}
-    if (FABLE, "S0") in excl or (OPUS55, "S0") in excl:
-        out.update(verdict="UNDETERMINED", reason="needs both Claude models in S0; one is excluded (answered < 90%)")
-    else:
-        out.update(version_test(D, "S0", cfg))
-    s1 = {"recognition_agreement": {c: recognition_agreement(D, c) for c in CONDS}}
-    if (FABLE, "S1") in excl or (OPUS55, "S1") in excl:
-        s1["S1"] = {"status": "NOT_COMPUTED", "reason": "a Claude model is excluded in S1"}
-    else:
-        s1["S1"] = version_test(D, "S1", cfg)
-    out["reported_alongside"] = s1
     return out
 
 
@@ -624,13 +568,7 @@ def h_gen_phi(D, t3, excl, cfg):
                    verdict=verdict_phi(t["n"], t["rho"], t.get("p_perm")),
                    rule="UNDETERMINED if n<40; CONFIRMED if rho>=0.50 and p<0.05; FALSIFIED if rho<0.30; else MARGINAL")
     alt, indep, parts = {}, {}, {}
-    ms = _models_ok(PANELS["C3"], "S0", excl)
-    if ms:
-        t, _ = test(ms, "S0")
-        alt["C3_S0"] = {"models": ms, **t, "verdict_if_primary": verdict_phi(t["n"], t["rho"], t.get("p_perm"))}
-    else:
-        alt["C3_S0"] = {"status": "NOT_COMPUTED"}
-    for pn in ("N3", "C3"):
+    for pn in ("N3",):
         ms = _models_ok(PANELS[pn], "S0", excl)
         if not ms:
             continue
@@ -640,7 +578,7 @@ def h_gen_phi(D, t3, excl, cfg):
         r = pooled_within_rho(a, b, g) if len(keys) >= 3 else NAN
         indep[pn] = {"n": len(keys), "rho_pw_phi_pi": r, "abs": abs(r) if np.isfinite(r) else None,
                      "flag_ge_0_50": bool(np.isfinite(r) and abs(r) >= MEAN_INDEP_FLAG)}
-    for pn in ("N3", "C3"):
+    for pn in ("N3",):
         for cond in CONDS:
             ms = _models_ok(PANELS[pn], cond, excl)
             if not ms:
@@ -673,7 +611,7 @@ def h_search(D, excl, cfg):
                 "per_model": per_model}
 
     out.update(one("N3"))
-    out["reported_alongside"] = {"C3": one("C3")}
+    out["reported_alongside"] = {"per_substrate_rho": out.get("per_substrate")}
     out["rule"] = "search-robust if CI lower >= 0.80; search-dominated if CI upper < 0.50; else search-sensitive"
     return out
 
@@ -719,7 +657,8 @@ def descriptives(D, B, calls, raw_all, t3, excl, legacy_recog=None):
                     ag.append(np.mean([a == b for a, b in itertools.combinations(runs, 2)]))
             rel[f"{m}|{c}"] = {"rel1": r1, "rel3": rel3_of(r1),
                                "recognition_pairwise_agreement": float(np.mean(ag)) if ag else None,
-                               "recognition_brands_with_>=2_runs": len(ag)}
+                               "recognition_brands_with_>=2_runs": len(ag),
+                               "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"}
     d["1_run_reliability"] = rel
     # 2. recognition share beside legacy models
     shares = {}
@@ -801,16 +740,19 @@ def descriptives(D, B, calls, raw_all, t3, excl, legacy_recog=None):
     for m in MODELS:
         for c in CONDS:
             rs = [r for r in raw_all if r["model_requested"] == m and r["condition"] == c]
-            tin = sum(r.get("input_tokens") or 0 for r in rs)
-            tout = sum((r.get("output_tokens") or 0) + ((r.get("thinking_tokens") or 0) if m == GEM4 else 0) for r in rs)
-            pin, pout = PRICES[m]
-            usd = tin * pin / 1e6 + tout * pout / 1e6
+            parts = [p for r in rs for p in (r.get("usage_parts") if r.get("usage_parts") is not None
+                                             else ([BG.legacy_part(r)] if r.get("input_tokens") is not None else []))]
+            tin = sum(p.get("input_tokens") or 0 for p in parts)
+            tout = sum((p.get("output_tokens") or 0) + ((p.get("thinking_tokens") or 0) if m == GEM4 else 0) for p in parts)
+            usd = sum(BG.record_cost(r) for r in rs)
             tot += usd
             cost[f"{m}|{c}"] = {"records": len(rs), "records_with_tokens": sum(1 for r in rs if r.get("input_tokens") is not None),
-                                "input_tokens": tin, "output_tokens_billed": tout, "est_usd": usd}
-    d["6_cost"] = {"ESTIMATE": "tokens x list prices ($8/$40 Fable 5.2, $4/$20 Opus 5.5, $10/$50 GPT-6 Astra, "
-                               "$2/$10 Gemini 4 Argon per Mtok in/out); search-tool fees excluded; all raw attempts",
-                   "per_model_condition": cost, "total_est_usd": tot}
+                                "billed_requests": len(parts), "input_tokens": tin, "output_tokens_billed": tout,
+                                "searches_billed": sum(p.get("n_searches") or 0 for p in parts), "usd": usd}
+    d["6_cost"] = {"BASIS": "recorded usage of every billed request (usage_parts) x list prices of section 4.5 "
+                            "(budget_v0_42.record_cost: batch/standard token prices, Google thinking billed as output, "
+                            "search fees); all raw attempts; the v0.23 judge's spend is not in the raw file",
+                   "per_model_condition": cost, "total_usd": tot}
     return d
 
 
@@ -837,11 +779,11 @@ def score_t4(raw_all, A, B, t3, cfg, gates):
     excl = excluded_set(mcs["MC_Complete"])
     brands = list(t3)
     D = Data(brands, A, B, excluded=served_excl)
-    hyps = {"H_Gen_Presence": h_gen_presence(D, t3, excl, cfg), "H_Version_Presence": h_version(D, excl, cfg),
+    hyps = {"H_Gen_Presence": h_gen_presence(D, t3, excl, cfg),
             "H_Gen_Phi": h_gen_phi(D, t3, excl, cfg), "H_Search_Presence": h_search(D, excl, cfg)}
     desc = descriptives(D, [r for r in B if r["call_id"] not in served_excl], calls, raw_all, t3, excl)
     mcs["MC_Parity"] = {"passed": bool(gates.get("passed")), "detail": gates.get("detail")}
-    out = {"phase": PHASE_ID, "prereg": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md (revision r1)",
+    out = {"phase": PHASE_ID, "prereg": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md (revision r2)",
            "prereg_tag": C.PREREG_TAG, "seeds": SEEDS, "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
            "panels": {"L6": L6, **PANELS}, "models_excluded_condition": sorted(f"{m}|{c}" for m, c in excl),
            "manipulation_checks": mcs, "verdicts": hyps, "descriptives": desc}
@@ -851,7 +793,7 @@ def score_t4(raw_all, A, B, t3, cfg, gates):
 def brand_rows(D, t3, excl):
     pis = {f"pi_{m}_{c}": pi_hat(D, [m], c) for m in MODELS for c in CONDS}
     panels = {}
-    for pn in ("N3", "C3"):
+    for pn in ("N3",):
         for c in CONDS:
             ms = _models_ok(PANELS[pn], c, excl)
             if ms:

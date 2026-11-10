@@ -6,7 +6,9 @@ and the coder's coded tables). Synthetic only: never touches osf/v42/data/. No m
 A "k map" is {(substrate, brand): k in 0..6} for one (model, condition, run). Phase B answers list the brands whose
 k exceeds the frame index (frame i lists brands with k > i), so the coder reproduces k from the raw text.
 
-  build(kfn, outdir=None, drop=None, fail=None, recog=None, served=None) -> (raw, A, B)
+  build(kfn, outdir=None, drop=None, fail=None, recog=None, served=None, phase_a_everywhere=False) -> (raw, A, B)
+    r2 design (pre-registration r2): N3 models; Phase B in S0/S1 x runs 1-3; Phase A in S0, run 1 only
+    (phase_a_everywhere=True adds Phase A in every condition and run, i.e. calls outside the r2 design).
     kfn(model, cond, run) -> k map            drop(call_spec) -> True: call absent from raw and coded
     fail(call_spec) -> True: raw line with status 'error', nothing coded
     recog(model, cond, run, sub, brand) -> 0/1   served(call_spec) -> served model id
@@ -20,9 +22,8 @@ sys.path.insert(0, str(HERE.parent))
 import code_t4_v0_42 as C   # noqa: E402
 import numpy as np          # noqa: E402
 
-MODELS = ["claude-fable-5-2", "claude-opus-5-5", "gpt-6-astra", "gemini-4-argon"]
-PROVIDER = {"claude-fable-5-2": "anthropic", "claude-opus-5-5": "anthropic", "gpt-6-astra": "openai",
-            "gemini-4-argon": "google"}
+MODELS = ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"]
+PROVIDER = {"claude-fable-5-2": "anthropic", "gpt-6-astra": "openai", "gemini-4-argon": "google"}
 CONDS = ["S0", "S1"]
 RUNS = [1, 2, 3]
 
@@ -33,7 +34,8 @@ def brand_name(sub, b):
     return b
 
 
-def build(kfn, outdir=None, drop=None, fail=None, recog=None, served=None, t0="2026-11-12T00:00:00+00:00"):
+def build(kfn, outdir=None, drop=None, fail=None, recog=None, served=None, t0="2026-11-12T00:00:00+00:00",
+          phase_a_everywhere=False):
     probes = [json.loads(l) for l in open(C.PROBES_PATH, encoding="utf-8") if l.strip()]
     frame_ids = {}
     for x in probes:
@@ -45,6 +47,8 @@ def build(kfn, outdir=None, drop=None, fail=None, recog=None, served=None, t0="2
             for cond in CONDS:
                 kmap = kfn(m, cond, run)
                 for p in probes:
+                    if p["phase"] == "A" and not phase_a_everywhere and (cond, run) != ("S0", 1):
+                        continue
                     sub = C.SUB_MAP[p["substrate"]]
                     cid = f"{p['substrate']}|{p['phase']}|{p['probe_id']}|{m}|{cond}|{run}"
                     spec = {"call_id": cid, "model": m, "condition": cond, "run": run, "substrate": p["substrate"],
@@ -133,6 +137,6 @@ if __name__ == "__main__":
     import score_v0_42 as S
     out = Path(sys.argv[1]) if len(sys.argv) > 1 else Path("/tmp/synthetic_t4")
     t3 = S.load_t3_table()
-    L = {m: from_t3(t3, i) for m, i in zip(MODELS, (0, 1, 2, 4))}
+    L = {m: from_t3(t3, i) for m, i in zip(MODELS, (0, 2, 4))}
     raw, A, B = build(lambda m, c, r: L[m], out)
     print(f"synthetic t4 written to {out}: {len(raw)} raw calls, {len(A)} Phase A rows, {len(B)} Phase B rows")
