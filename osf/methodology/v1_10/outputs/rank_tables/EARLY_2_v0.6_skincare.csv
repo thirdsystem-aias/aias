@@ -1,0 +1,903 @@
+set,panel,wave,category,model,frame,run_idx,answer_id,status,missing_reason,n_named,rankable,list_structured,numbered_list,rule,brand,k_mid,k_min,q
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,lead_item,Eucerin,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,lead_item,Neutrogena,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,first_mention,Eucerin,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,first_mention,Neutrogena,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|1,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,lead_item,First Aid Beauty,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,lead_item,Neutrogena,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,lead_item,Vanicream,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,first_mention,First Aid Beauty,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,first_mention,Neutrogena,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|2,ok,,5,1,0,0,first_mention,Vanicream,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,lead_item,Neutrogena,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,lead_item,Vanicream,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,first_mention,Neutrogena,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|3,ok,,4,1,0,0,first_mention,Vanicream,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,lead_item,Cetaphil,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,lead_item,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,lead_item,Vanicream,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,first_mention,Cetaphil,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,first_mention,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|4,ok,,4,1,0,0,first_mention,Vanicream,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,lead_item,First Aid Beauty,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,lead_item,Neutrogena,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,first_mention,First Aid Beauty,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,first_mention,Neutrogena,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|5,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,lead_item,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,lead_item,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,first_mention,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,first_mention,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|6,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,lead_item,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,lead_item,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,first_mention,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,first_mention,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|7,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,lead_item,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,lead_item,Neutrogena,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,lead_item,Vanicream,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,first_mention,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,first_mention,Neutrogena,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p1_functional,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p1_functional|8,ok,,4,1,0,0,first_mention,Vanicream,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,lead_item,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,lead_item,Kiehl's,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,lead_item,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,first_mention,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,first_mention,Kiehl's,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,first_mention,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|1,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,Eucerin,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,First Aid Beauty,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,La Roche-Posay,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,lead_item,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,Eucerin,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,First Aid Beauty,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,La Roche-Posay,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|2,ok,,7,1,0,0,first_mention,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,Eucerin,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,First Aid Beauty,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,lead_item,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,Eucerin,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,First Aid Beauty,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|3,ok,,7,1,0,0,first_mention,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,lead_item,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,lead_item,Kiehl's,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,lead_item,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,first_mention,First Aid Beauty,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,first_mention,Kiehl's,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,first_mention,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|4,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,Cetaphil,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,First Aid Beauty,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,La Roche-Posay,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,lead_item,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,Cetaphil,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,First Aid Beauty,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,La Roche-Posay,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|5,ok,,7,1,0,0,first_mention,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,lead_item,Eucerin,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,lead_item,La Roche-Posay,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,lead_item,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,lead_item,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,first_mention,Eucerin,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,first_mention,La Roche-Posay,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,first_mention,Neutrogena,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|6,ok,,5,1,0,0,first_mention,Vanicream,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,First Aid Beauty,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,lead_item,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,First Aid Beauty,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,Tatcha,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|7,ok,,7,1,0,0,first_mention,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,Eucerin,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,First Aid Beauty,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,La Roche-Posay,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,lead_item,Vanicream,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,Cetaphil,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,Eucerin,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,First Aid Beauty,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,La Roche-Posay,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,Neutrogena,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p1_functional,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p1_functional|8,ok,,7,1,0,0,first_mention,Vanicream,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|1,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|1,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|2,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|2,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|3,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|3,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|4,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|4,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|5,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|5,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|6,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|6,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|7,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|7,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|8,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p2_contextual,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p2_contextual|8,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|1,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|1,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|2,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|2,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|3,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|3,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|4,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|4,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|5,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|5,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|6,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|6,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|7,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|7,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|8,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p2_contextual,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p2_contextual|8,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,First Aid Beauty,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,The Ordinary,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,First Aid Beauty,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,The Ordinary,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|1,ok,,9,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Aveeno,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Aveeno,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|2,ok,,9,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Aveeno,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Avène,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Bioderma,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Cetaphil,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Aveeno,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Avène,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Bioderma,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Cetaphil,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|3,ok,,9,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,Cetaphil,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,Eucerin,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,The Ordinary,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,Cetaphil,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,Eucerin,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,The Ordinary,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|4,ok,,8,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Aveeno,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Cetaphil,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Eucerin,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Aveeno,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Cetaphil,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Eucerin,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|5,ok,,8,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Aveeno,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Bioderma,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Cetaphil,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Eucerin,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Aveeno,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Bioderma,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Cetaphil,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Eucerin,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|6,ok,,8,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,The Ordinary,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,Avène,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,Bioderma,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,CeraVe,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,Cetaphil,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,Eucerin,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,First Aid Beauty,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,The Ordinary,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|7,ok,,9,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,Cetaphil,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,First Aid Beauty,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,The Ordinary,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,Avène,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,Bioderma,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,CeraVe,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,Cetaphil,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,First Aid Beauty,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,The Ordinary,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p3_constraint,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p3_constraint|8,ok,,8,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,First Aid Beauty,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,Neutrogena,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,Paula's Choice,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,lead_item,Vanicream,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,First Aid Beauty,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,Neutrogena,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,Paula's Choice,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|1,ok,,6,1,0,0,first_mention,Vanicream,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,lead_item,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,lead_item,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,first_mention,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,first_mention,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|2,ok,,4,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,lead_item,Avène,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,lead_item,CeraVe,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,lead_item,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,lead_item,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,first_mention,Avène,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,first_mention,CeraVe,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,first_mention,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,first_mention,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|3,ok,,5,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,lead_item,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,lead_item,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,first_mention,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,first_mention,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|4,ok,,4,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,lead_item,Avène,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,lead_item,CeraVe,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,lead_item,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,lead_item,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,first_mention,Avène,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,first_mention,CeraVe,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,first_mention,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,first_mention,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|5,ok,,5,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,lead_item,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,lead_item,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,first_mention,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,first_mention,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|6,ok,,4,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,lead_item,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,lead_item,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,first_mention,Avène,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,first_mention,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|7,ok,,4,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,lead_item,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,lead_item,Cetaphil,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,lead_item,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,lead_item,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,first_mention,CeraVe,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,first_mention,Cetaphil,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,first_mention,La Roche-Posay,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p3_constraint,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p3_constraint|8,ok,,4,1,0,0,first_mention,Vanicream,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Aveeno,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Bioderma,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Cetaphil,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,EltaMD,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Eucerin,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,La Roche-Posay,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Neutrogena,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,lead_item,Vanicream,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Aveeno,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Bioderma,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Cetaphil,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,EltaMD,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Eucerin,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,La Roche-Posay,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Neutrogena,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|1,ok,,9,1,0,0,first_mention,Vanicream,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Aveeno,7.0,7,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Avène,10.0,10,0.9
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Bioderma,8.0,8,0.7
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Cetaphil,2.0,2,0.1
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,EltaMD,6.0,6,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Eucerin,9.0,9,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Neutrogena,5.0,5,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Skinceuticals,11.0,11,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,lead_item,Vanicream,4.0,4,0.3
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Aveeno,7.0,7,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Avène,10.0,10,0.9
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Bioderma,8.0,8,0.7
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Cetaphil,2.0,2,0.1
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,EltaMD,6.0,6,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Eucerin,9.0,9,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Neutrogena,5.0,5,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Skinceuticals,11.0,11,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|2,ok,,11,1,0,0,first_mention,Vanicream,4.0,4,0.3
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Cetaphil,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,lead_item,Vanicream,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Cetaphil,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|3,ok,,9,1,0,0,first_mention,Vanicream,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Aveeno,6.0,6,0.5555555555555556
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Bioderma,9.0,9,0.8888888888888888
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Cetaphil,2.0,2,0.1111111111111111
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,EltaMD,8.0,8,0.7777777777777778
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Eucerin,7.0,7,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,La Roche-Posay,3.0,3,0.2222222222222222
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Neutrogena,5.0,5,0.4444444444444444
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Skinceuticals,10.0,10,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,lead_item,Vanicream,4.0,4,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Aveeno,6.0,6,0.5555555555555556
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Bioderma,9.0,9,0.8888888888888888
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Cetaphil,2.0,2,0.1111111111111111
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,EltaMD,8.0,8,0.7777777777777778
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Eucerin,7.0,7,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,La Roche-Posay,3.0,3,0.2222222222222222
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Neutrogena,5.0,5,0.4444444444444444
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Skinceuticals,10.0,10,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|4,ok,,10,1,0,0,first_mention,Vanicream,4.0,4,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,lead_item,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|5,ok,,9,1,0,0,first_mention,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,lead_item,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|6,ok,,9,1,0,0,first_mention,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Cetaphil,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,EltaMD,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Eucerin,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,lead_item,Vanicream,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Cetaphil,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,EltaMD,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Eucerin,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|7,ok,,9,1,0,0,first_mention,Vanicream,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,lead_item,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Aveeno,7.0,7,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Bioderma,9.0,9,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Cetaphil,2.0,2,0.125
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,EltaMD,6.0,6,0.625
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Eucerin,8.0,8,0.875
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,La Roche-Posay,3.0,3,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Neutrogena,5.0,5,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p4_identity,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p4_identity|8,ok,,9,1,0,0,first_mention,Vanicream,4.0,4,0.375
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,lead_item,Cetaphil,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,lead_item,EltaMD,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,lead_item,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,lead_item,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,first_mention,Cetaphil,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,first_mention,EltaMD,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,first_mention,La Roche-Posay,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|1,ok,,5,1,0,0,first_mention,Neutrogena,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,lead_item,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|2,ok,,6,1,0,0,first_mention,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,lead_item,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|3,ok,,6,1,0,0,first_mention,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,Neutrogena,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,Skinceuticals,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,lead_item,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,La Roche-Posay,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,Neutrogena,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,Skinceuticals,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|4,ok,,7,1,0,0,first_mention,Vanicream,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,Aveeno,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,lead_item,Skinceuticals,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,Aveeno,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|5,ok,,7,1,0,0,first_mention,Skinceuticals,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,Paula's Choice,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,lead_item,Skinceuticals,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,Paula's Choice,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|6,ok,,7,1,0,0,first_mention,Skinceuticals,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,Eucerin,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,lead_item,Vanicream,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,Cetaphil,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,EltaMD,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,Eucerin,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,La Roche-Posay,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,Neutrogena,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|7,ok,,7,1,0,0,first_mention,Vanicream,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,lead_item,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,Cetaphil,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,EltaMD,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,La Roche-Posay,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,Neutrogena,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p4_identity,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p4_identity|8,ok,,6,1,0,0,first_mention,Skinceuticals,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|1,ok,,2,1,0,0,lead_item,Augustinus Bader,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|1,ok,,2,1,0,0,lead_item,Tatcha,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|1,ok,,2,1,0,0,first_mention,Augustinus Bader,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|1,ok,,2,1,0,0,first_mention,Tatcha,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|2,ok,,2,1,0,0,lead_item,Tatcha,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|2,ok,,2,1,0,0,lead_item,The Ordinary,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|2,ok,,2,1,0,0,first_mention,Tatcha,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|2,ok,,2,1,0,0,first_mention,The Ordinary,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|3,ok,,1,0,0,0,lead_item,Tatcha,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|3,ok,,1,0,0,0,first_mention,Tatcha,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|4,ok,,2,1,0,0,lead_item,Tatcha,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|4,ok,,2,1,0,0,lead_item,Youth to the People,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|4,ok,,2,1,0,0,first_mention,Tatcha,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|4,ok,,2,1,0,0,first_mention,Youth to the People,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|5,ok,,2,1,0,0,lead_item,Augustinus Bader,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|5,ok,,2,1,0,0,lead_item,Youth to the People,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|5,ok,,2,1,0,0,first_mention,Augustinus Bader,2.0,2,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|5,ok,,2,1,0,0,first_mention,Youth to the People,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|6,ok,,1,0,0,0,lead_item,Augustinus Bader,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|6,ok,,1,0,0,0,first_mention,Augustinus Bader,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|7,ok,,1,0,0,0,lead_item,Augustinus Bader,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|7,ok,,1,0,0,0,first_mention,Augustinus Bader,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|8,ok,,1,0,0,0,lead_item,Drunk Elephant,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p5_discovery,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p5_discovery|8,ok,,1,0,0,0,first_mention,Drunk Elephant,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|1,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|1,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|2,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|2,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|3,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|3,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|4,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|4,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|5,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|5,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|6,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|6,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|7,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|7,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|8,ok,,0,0,0,0,lead_item,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p5_discovery,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p5_discovery|8,ok,,0,0,0,0,first_mention,,,,
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,lead_item,Augustinus Bader,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,lead_item,CeraVe,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,lead_item,Drunk Elephant,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,lead_item,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,lead_item,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,first_mention,Augustinus Bader,5.0,5,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,first_mention,CeraVe,3.0,3,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,first_mention,Drunk Elephant,4.0,4,0.75
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,first_mention,La Roche-Posay,2.0,2,0.25
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,1,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|1,ok,,5,1,0,0,first_mention,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,lead_item,CeraVe,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,lead_item,Drunk Elephant,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,lead_item,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,lead_item,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,first_mention,CeraVe,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,first_mention,Drunk Elephant,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,first_mention,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,2,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|2,ok,,4,1,0,0,first_mention,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,lead_item,CeraVe,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,lead_item,Drunk Elephant,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,lead_item,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,lead_item,Skinceuticals,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,first_mention,CeraVe,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,first_mention,Drunk Elephant,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,first_mention,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,3,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|3,ok,,4,1,0,0,first_mention,Skinceuticals,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,Augustinus Bader,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,CeraVe,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,Drunk Elephant,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,La Mer,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,La Roche-Posay,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,lead_item,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,Augustinus Bader,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,CeraVe,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,Drunk Elephant,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,La Mer,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,La Roche-Posay,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,4,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|4,ok,,6,1,0,0,first_mention,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,Augustinus Bader,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,CeraVe,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,Drunk Elephant,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,Skinceuticals,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,lead_item,The Ordinary,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,Augustinus Bader,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,CeraVe,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,Drunk Elephant,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,Skinceuticals,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,5,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|5,ok,,6,1,0,0,first_mention,The Ordinary,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,CeraVe,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,Clinique,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,Estée Lauder,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,lead_item,The Ordinary,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,CeraVe,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,Clinique,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,Estée Lauder,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,6,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|6,ok,,7,1,0,0,first_mention,The Ordinary,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,lead_item,CeraVe,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,lead_item,Drunk Elephant,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,lead_item,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,lead_item,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,first_mention,CeraVe,4.0,4,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,first_mention,Drunk Elephant,3.0,3,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,first_mention,La Roche-Posay,2.0,2,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,7,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|7,ok,,4,1,0,0,first_mention,Skinceuticals,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,CeraVe,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,Estée Lauder,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,Lancôme,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,Skinceuticals,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,lead_item,The Ordinary,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,CeraVe,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,Estée Lauder,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,La Roche-Posay,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,Lancôme,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,Skinceuticals,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,gpt-5.4-mini,p6_comparison,8,EARLY-2 v0.6 skincare::gpt-5.4-mini|p6_comparison|8,ok,,7,1,0,0,first_mention,The Ordinary,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,Drunk Elephant,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,Paula's Choice,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,Skinceuticals,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,Tatcha,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,lead_item,Vanicream,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,Drunk Elephant,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,Paula's Choice,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,Skinceuticals,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,Tatcha,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,1,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|1,ok,,7,1,0,0,first_mention,Vanicream,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,CeraVe,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,Drunk Elephant,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,La Mer,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,Neutrogena,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,Paula's Choice,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,Skinceuticals,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,Tatcha,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,lead_item,The Ordinary,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,CeraVe,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,Drunk Elephant,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,La Mer,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,Neutrogena,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,Paula's Choice,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,Skinceuticals,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,Tatcha,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,2,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|2,ok,,8,1,0,0,first_mention,The Ordinary,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,Drunk Elephant,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,La Roche-Posay,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,Skinceuticals,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,lead_item,Tatcha,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,Drunk Elephant,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,La Roche-Posay,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,Skinceuticals,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,3,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|3,ok,,6,1,0,0,first_mention,Tatcha,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,Drunk Elephant,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,La Roche-Posay,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,Skinceuticals,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,lead_item,The Ordinary,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,Drunk Elephant,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,La Roche-Posay,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,Skinceuticals,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,4,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|4,ok,,6,1,0,0,first_mention,The Ordinary,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,Neutrogena,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,Paula's Choice,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,Skinceuticals,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,lead_item,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,Drunk Elephant,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,Neutrogena,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,Paula's Choice,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,Skinceuticals,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,5,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|5,ok,,7,1,0,0,first_mention,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,Drunk Elephant,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,Paula's Choice,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,Skinceuticals,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,lead_item,The Ordinary,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,Drunk Elephant,7.0,7,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,La Roche-Posay,2.0,2,0.16666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,Paula's Choice,3.0,3,0.3333333333333333
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,Skinceuticals,5.0,5,0.6666666666666666
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,Tatcha,6.0,6,0.8333333333333334
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,6,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|6,ok,,7,1,0,0,first_mention,The Ordinary,4.0,4,0.5
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,Drunk Elephant,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,La Roche-Posay,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,Neutrogena,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,Paula's Choice,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,Skinceuticals,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,The Ordinary,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,lead_item,Vanicream,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,Drunk Elephant,6.0,6,0.7142857142857143
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,La Roche-Posay,2.0,2,0.14285714285714285
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,Neutrogena,3.0,3,0.2857142857142857
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,Paula's Choice,5.0,5,0.5714285714285714
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,Skinceuticals,4.0,4,0.42857142857142855
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,The Ordinary,7.0,7,0.8571428571428571
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,7,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|7,ok,,8,1,0,0,first_mention,Vanicream,8.0,8,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,Drunk Elephant,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,La Roche-Posay,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,Skinceuticals,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,lead_item,The Ordinary,6.0,6,1.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,CeraVe,1.0,1,0.0
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,Drunk Elephant,5.0,5,0.8
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,La Roche-Posay,2.0,2,0.2
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,Paula's Choice,3.0,3,0.4
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,Skinceuticals,4.0,4,0.6
+EARLY-2 v0.6 skincare,EARLY-2,v0.6,skincare,claude-sonnet-4-6,p6_comparison,8,EARLY-2 v0.6 skincare::claude-sonnet-4-6|p6_comparison|8,ok,,6,1,0,0,first_mention,The Ordinary,6.0,6,1.0

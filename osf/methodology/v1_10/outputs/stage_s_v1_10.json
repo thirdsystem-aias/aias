@@ -1,0 +1,1574 @@
+{
+  "phase": "v1.10",
+  "stage": "S",
+  "created_utc": "2026-11-10T13:57:38+00:00",
+  "dry_run": false,
+  "manifest_sha256": "2b10fc421d962c58e7ac1e6ee2256ff397bffe466c2da88d5ad7f0594988513c",
+  "rank_tables": {
+    "OMNI t1 v0.19": {
+      "path": "rank_tables/OMNI_t1_v0.19.csv",
+      "sha256": "65efbce172f72523c4277de9850549b83b0fcc845386d33a1f053a0815757a0d",
+      "rows": 344
+    },
+    "OMNI t1 v0.20": {
+      "path": "rank_tables/OMNI_t1_v0.20.csv",
+      "sha256": "66fbbe7a869c44c51dd10c54cb19f7e52c277bac643b324c7ef17aacf1a8e561",
+      "rows": 444
+    },
+    "OMNI t1 v0.21": {
+      "path": "rank_tables/OMNI_t1_v0.21.csv",
+      "sha256": "cd51e2ec40e5e91188478d8b60ad366fff4f13e946f2ab3b97fcfcb4a6478479",
+      "rows": 452
+    },
+    "OMNI t1 v0.22": {
+      "path": "rank_tables/OMNI_t1_v0.22.csv",
+      "sha256": "43e22dafad683d6da2e29c411fcc5b6fee20ad71888eab15185ab859ef314bd8",
+      "rows": 434
+    },
+    "OMNI t1 v0.23": {
+      "path": "rank_tables/OMNI_t1_v0.23.csv",
+      "sha256": "423f3029e5bc9fc3342cceaf1a794670b195d27ab3306f28b5c9a57edad26493",
+      "rows": 232
+    },
+    "OMNI t2 v0.19": {
+      "path": "rank_tables/OMNI_t2_v0.19.csv",
+      "sha256": "9f68a0749306d2c1a41061a6e791c168c701f89dd30c8b816245fa9989c0e885",
+      "rows": 330
+    },
+    "OMNI t2 v0.20": {
+      "path": "rank_tables/OMNI_t2_v0.20.csv",
+      "sha256": "11e9d015d2996a8c662f55141e15e06773b5bc31f25ebb40a835283f017d96bd",
+      "rows": 430
+    },
+    "OMNI t2 v0.21": {
+      "path": "rank_tables/OMNI_t2_v0.21.csv",
+      "sha256": "81ba328bd2bd6d916e2ddab288202542a24ad8921e17d4e31a02abf2b1763725",
+      "rows": 470
+    },
+    "OMNI t2 v0.22": {
+      "path": "rank_tables/OMNI_t2_v0.22.csv",
+      "sha256": "dbf1f7e412a77f7e90bcfaa33c4302c78b0ded41a532a077cf45309a78e8a05c",
+      "rows": 440
+    },
+    "OMNI t2 v0.23": {
+      "path": "rank_tables/OMNI_t2_v0.23.csv",
+      "sha256": "0fa55fa2ba0e8bfbf8350920f4de1d26e1fdfad9f7fafc8a5d290499284be279",
+      "rows": 214
+    },
+    "OMNI t3 v0.19": {
+      "path": "rank_tables/OMNI_t3_v0.19.csv",
+      "sha256": "e8a9546efa0ef04cdb2e334b08194658a27c539f028c54de694d4f38821313ad",
+      "rows": 326
+    },
+    "OMNI t3 v0.20": {
+      "path": "rank_tables/OMNI_t3_v0.20.csv",
+      "sha256": "2806064abeaa15a047ade1abeb71e67406bebad953c14b4ec6b807feeedfa178",
+      "rows": 442
+    },
+    "OMNI t3 v0.21": {
+      "path": "rank_tables/OMNI_t3_v0.21.csv",
+      "sha256": "8600a16a54b0118adbd070965e1dda06034bc49f4f13c646b98c79302a3cb9e9",
+      "rows": 430
+    },
+    "OMNI t3 v0.22": {
+      "path": "rank_tables/OMNI_t3_v0.22.csv",
+      "sha256": "7fc7e15b9b5b9ff5b0fc2338fa764b08d53b9a9c0b4bb631f7b0e9319b9fedef",
+      "rows": 428
+    },
+    "OMNI t3 v0.23": {
+      "path": "rank_tables/OMNI_t3_v0.23.csv",
+      "sha256": "149758c75c1d76783b31d0f41b8f8e762e76928f62a57aebf3ae3a741f8e14bf",
+      "rows": 218
+    },
+    "EARLY-6 v0.9 pm": {
+      "path": "rank_tables/EARLY_6_v0.9_pm.csv",
+      "sha256": "361ec541fef59232f4b082468955dff1f64b4c66313c2c3fae0d2406910cf78e",
+      "rows": 3990
+    },
+    "EARLY-6 v0.9 finance": {
+      "path": "rank_tables/EARLY_6_v0.9_finance.csv",
+      "sha256": "058930e6586f3a88365ffad5bc76459893f3b0428e367f657d28e77fbf690740",
+      "rows": 3834
+    },
+    "EARLY-6 v0.9 oliveoil": {
+      "path": "rank_tables/EARLY_6_v0.9_oliveoil.csv",
+      "sha256": "0ba0814251c447d6576c5e038eb724141082a67a0b6980f6a6581355f1baeb89",
+      "rows": 2366
+    },
+    "EARLY-6 v0.9 running": {
+      "path": "rank_tables/EARLY_6_v0.9_running.csv",
+      "sha256": "89b489e1bd5e53d278b2956c392b44a1ba7e9dba88cddfcc11980e5793715873",
+      "rows": 3732
+    },
+    "EARLY-6 v0.9 skincare": {
+      "path": "rank_tables/EARLY_6_v0.9_skincare.csv",
+      "sha256": "521ab4f7313bb9cd4e972950354c8e76cc0e7310a0c945859497472fa7acc812",
+      "rows": 3378
+    },
+    "EARLY-6 v1.0 household": {
+      "path": "rank_tables/EARLY_6_v1.0_household.csv",
+      "sha256": "de13e03dbf136f947ce2c0e6fa525d0298c2d179a5d920a5d1f224e2b684e249",
+      "rows": 4236
+    },
+    "EARLY-6 v1.0 knives": {
+      "path": "rank_tables/EARLY_6_v1.0_knives.csv",
+      "sha256": "75172f08e2e14088ab6102b1bfdbaf233568d7ebfe6d439e04acb8001730125a",
+      "rows": 3054
+    },
+    "EARLY-6 v0.14 premium_tea": {
+      "path": "rank_tables/EARLY_6_v0.14_premium_tea.csv",
+      "sha256": "f5bcab0ca8dfa4f208cfd27c5229608cf59a7d2f050ae6191f826b1c7ac3b8ec",
+      "rows": 2646
+    },
+    "EARLY-6 v0.16 kitchen_knives": {
+      "path": "rank_tables/EARLY_6_v0.16_kitchen_knives.csv",
+      "sha256": "6121717a9eac7f8795203d1c664b5c22c20f0138edd90cedd8b33b7b34f53353",
+      "rows": 3791
+    },
+    "EARLY-2 v0.6 pm": {
+      "path": "rank_tables/EARLY_2_v0.6_pm.csv",
+      "sha256": "86c4df1fc900de7742014b1ea56c5fb4744fc8d02aa6189a1c277653fdb38f54",
+      "rows": 1184
+    },
+    "EARLY-2 v0.6 finance": {
+      "path": "rank_tables/EARLY_2_v0.6_finance.csv",
+      "sha256": "dc7d61e8e42b4ff761f98aa657a57cf8e0a8f816fa7fb53e8f6b39f1a20b9031",
+      "rows": 1066
+    },
+    "EARLY-2 v0.6 oliveoil": {
+      "path": "rank_tables/EARLY_2_v0.6_oliveoil.csv",
+      "sha256": "4f036e0bd0160132ffbf6043d118bc40b2c85791c06ac1e82dda85531f47ab92",
+      "rows": 742
+    },
+    "EARLY-2 v0.6 running": {
+      "path": "rank_tables/EARLY_2_v0.6_running.csv",
+      "sha256": "102cb3169c141c3e40dcbb012d46d875294513c476ca36c2b50c09ab416b2797",
+      "rows": 1190
+    },
+    "EARLY-2 v0.6 skincare": {
+      "path": "rank_tables/EARLY_2_v0.6_skincare.csv",
+      "sha256": "9c873fb1d9b7d602826445803b1a607b2561936d1c0ccd02060df5f326b83d08",
+      "rows": 902
+    },
+    "PAPER-B v0.32 arm A": {
+      "path": "rank_tables/PAPER_B_v0.32_arm_A.csv",
+      "sha256": "c057e40fc7e090c52ffc3136c086d642175ee9e59ef0a935453fc31b0595773c",
+      "rows": 440
+    },
+    "PAPER-B v0.32 arm B": {
+      "path": "rank_tables/PAPER_B_v0.32_arm_B.csv",
+      "sha256": "0ed936bfe9c0646efef7b7abad704c4a43dafeb8d9463b2e8617b614ca039305",
+      "rows": 470
+    }
+  },
+  "data_quality": {
+    "MQ1": {
+      "OMNI t1 v0.19": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 30,
+        "rankable_share": 0.8333333333333334,
+        "flag_below_0.50": false
+      },
+      "OMNI t1 v0.20": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t1 v0.21": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 35,
+        "rankable_share": 0.9722222222222222,
+        "flag_below_0.50": false
+      },
+      "OMNI t1 v0.22": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t1 v0.23": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 24,
+        "rankable_share": 0.6666666666666666,
+        "flag_below_0.50": false
+      },
+      "OMNI t2 v0.19": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 30,
+        "rankable_share": 0.8333333333333334,
+        "flag_below_0.50": false
+      },
+      "OMNI t2 v0.20": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t2 v0.21": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 35,
+        "rankable_share": 0.9722222222222222,
+        "flag_below_0.50": false
+      },
+      "OMNI t2 v0.22": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t2 v0.23": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 24,
+        "rankable_share": 0.6666666666666666,
+        "flag_below_0.50": false
+      },
+      "OMNI t3 v0.19": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 30,
+        "rankable_share": 0.8333333333333334,
+        "flag_below_0.50": false
+      },
+      "OMNI t3 v0.20": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t3 v0.21": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t3 v0.22": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "OMNI t3 v0.23": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 23,
+        "rankable_share": 0.6388888888888888,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.9 pm": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 288,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.9 finance": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 282,
+        "rankable_share": 0.9791666666666666,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.9 oliveoil": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 245,
+        "rankable_share": 0.8506944444444444,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.9 running": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 285,
+        "rankable_share": 0.9895833333333334,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.9 skincare": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 219,
+        "rankable_share": 0.7604166666666666,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v1.0 household": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 267,
+        "rankable_share": 0.9270833333333334,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v1.0 knives": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 238,
+        "rankable_share": 0.8263888888888888,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.14 premium_tea": {
+        "answers": 288,
+        "with_text": 288,
+        "missing": 0,
+        "parsed": 288,
+        "rankable": 246,
+        "rankable_share": 0.8541666666666666,
+        "flag_below_0.50": false
+      },
+      "EARLY-6 v0.16 kitchen_knives": {
+        "answers": 515,
+        "with_text": 334,
+        "missing": 181,
+        "parsed": 334,
+        "rankable": 318,
+        "rankable_share": 0.9520958083832335,
+        "flag_below_0.50": false
+      },
+      "EARLY-2 v0.6 pm": {
+        "answers": 96,
+        "with_text": 96,
+        "missing": 0,
+        "parsed": 96,
+        "rankable": 96,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "EARLY-2 v0.6 finance": {
+        "answers": 96,
+        "with_text": 96,
+        "missing": 0,
+        "parsed": 96,
+        "rankable": 94,
+        "rankable_share": 0.9791666666666666,
+        "flag_below_0.50": false
+      },
+      "EARLY-2 v0.6 oliveoil": {
+        "answers": 96,
+        "with_text": 96,
+        "missing": 0,
+        "parsed": 96,
+        "rankable": 73,
+        "rankable_share": 0.7604166666666666,
+        "flag_below_0.50": false
+      },
+      "EARLY-2 v0.6 running": {
+        "answers": 96,
+        "with_text": 96,
+        "missing": 0,
+        "parsed": 96,
+        "rankable": 96,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "EARLY-2 v0.6 skincare": {
+        "answers": 96,
+        "with_text": 96,
+        "missing": 0,
+        "parsed": 96,
+        "rankable": 68,
+        "rankable_share": 0.7083333333333334,
+        "flag_below_0.50": false
+      },
+      "PAPER-B v0.32 arm A": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      },
+      "PAPER-B v0.32 arm B": {
+        "answers": 36,
+        "with_text": 36,
+        "missing": 0,
+        "parsed": 36,
+        "rankable": 36,
+        "rankable_share": 1.0,
+        "flag_below_0.50": false
+      }
+    },
+    "MQ1_parse_only": {
+      "COI-HOLD v0.28": {
+        "rows": 36,
+        "with_text": 36,
+        "parsed": 36,
+        "note": "COI screen pending: parse completion only, never analysed"
+      }
+    },
+    "MQ2": {
+      "per_set": {
+        "OMNI t1 v0.19": {
+          "against": "coded mention file osf/v19/phase_b_results.csv",
+          "cells": 576,
+          "agree": 576,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t1 v0.20": {
+          "against": "certified detector scripts/score_v20.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t1 v0.21": {
+          "against": "certified detector scripts/score_v21.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t1 v0.22": {
+          "against": "certified detector scripts/score_v22.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t1 v0.23": {
+          "against": "coded mention file osf/v23/data/v23_phase_b_scored.json",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t2 v0.19": {
+          "against": "coded mention file osf/v34/data/v19/phase_b_results.csv",
+          "cells": 576,
+          "agree": 576,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t2 v0.20": {
+          "against": "certified detector scripts/score_v20.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t2 v0.21": {
+          "against": "certified detector scripts/score_v21.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t2 v0.22": {
+          "against": "certified detector scripts/score_v22.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t2 v0.23": {
+          "against": "coded mention file osf/v34/data/v23/v23_phase_b_scored.json",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t3 v0.19": {
+          "against": "coded mention file osf/v41/data/v19/phase_b_results.csv",
+          "cells": 576,
+          "agree": 576,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t3 v0.20": {
+          "against": "certified detector scripts/score_v20.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t3 v0.21": {
+          "against": "certified detector scripts/score_v21.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t3 v0.22": {
+          "against": "certified detector scripts/score_v22.py",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 1.0,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        },
+        "OMNI t3 v0.23": {
+          "against": "coded mention file osf/v41/data/v23/v23_phase_b_scored.json",
+          "cells": 864,
+          "agree": 864,
+          "agreement": 1.0,
+          "required": 0.98,
+          "passes": true,
+          "coded_cells_without_answer_text": 0,
+          "disagreements": []
+        }
+      },
+      "excluded_from_gate": [],
+      "halt": []
+    },
+    "MQ3": {
+      "EARLY-6 v0.9 pm": {
+        "available": true,
+        "answers_compared": 288,
+        "median_tau": 1.0,
+        "flag_review": false
+      },
+      "EARLY-6 v0.9 finance": {
+        "available": true,
+        "answers_compared": 277,
+        "median_tau": 1.0,
+        "flag_review": false
+      },
+      "EARLY-6 v0.9 oliveoil": {
+        "available": true,
+        "answers_compared": 245,
+        "median_tau": 1.0,
+        "flag_review": false
+      },
+      "EARLY-6 v0.9 running": {
+        "available": true,
+        "answers_compared": 282,
+        "median_tau": 1.0,
+        "flag_review": false
+      },
+      "EARLY-6 v0.9 skincare": {
+        "available": true,
+        "answers_compared": 219,
+        "median_tau": 1.0,
+        "flag_review": false
+      },
+      "EARLY-6 v1.0 household": {
+        "available": false
+      },
+      "EARLY-6 v1.0 knives": {
+        "available": false
+      },
+      "EARLY-6 v0.14 premium_tea": {
+        "available": false
+      },
+      "EARLY-6 v0.16 kitchen_knives": {
+        "available": false
+      },
+      "EARLY-2 v0.6 pm": {
+        "available": false
+      },
+      "EARLY-2 v0.6 finance": {
+        "available": false
+      },
+      "EARLY-2 v0.6 oliveoil": {
+        "available": false
+      },
+      "EARLY-2 v0.6 running": {
+        "available": false
+      },
+      "EARLY-2 v0.6 skincare": {
+        "available": false
+      }
+    },
+    "MQ4": {
+      "OMNI t1 v0.19": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t1 v0.20": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t1 v0.21": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t1 v0.22": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t1 v0.23": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t2 v0.19": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t2 v0.20": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t2 v0.21": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t2 v0.22": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t2 v0.23": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t3 v0.19": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t3 v0.20": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t3 v0.21": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t3 v0.22": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "OMNI t3 v0.23": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "shortfall_vs_36": 0
+      },
+      "EARLY-6 v0.9 pm": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.9 finance": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.9 oliveoil": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.9 running": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.9 skincare": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v1.0 household": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v1.0 knives": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.14 premium_tea": {
+        "rows": 288,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 288,
+        "cells_without_row": 0
+      },
+      "EARLY-6 v0.16 kitchen_knives": {
+        "rows": 515,
+        "missing": 181,
+        "by_reason": {
+          "status:transient_final": 181
+        },
+        "by_model": {
+          "grok-4-1-fast": 26,
+          "claude-sonnet-4-6": 32,
+          "claude-opus-4-7": 32,
+          "gpt-5.4-mini": 32,
+          "gpt-5.5": 32,
+          "gemini-2.5-flash": 27
+        },
+        "duplicate_cells": 0,
+        "cells": [
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_03|7",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_03|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|1",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|2",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|3",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|4",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|5",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|6",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|7",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b2_en_04|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|1",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|2",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|3",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|4",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|5",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|6",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|7",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_jp|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|1",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|2",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|3",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|4",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|5",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|6",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|7",
+          "EARLY-6 v0.16 kitchen_knives::grok-4-1-fast|knives_b3_en_de|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-sonnet-4-6|knives_b3_en_fr|8",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|1",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|2",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|3",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|4",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|5",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|6",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|7",
+          "EARLY-6 v0.16 kitchen_knives::claude-opus-4-7|knives_b3_en_fr|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.4-mini|knives_b3_en_fr|8",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|1",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|2",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|3",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|4",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|5",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|6",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|7",
+          "EARLY-6 v0.16 kitchen_knives::gpt-5.5|knives_b3_en_fr|8",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_fr|1",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_fr|2",
+          "EARLY-6 v0.16 kitchen_knives::gemini-2.5-flash|knives_b3_en_fr|3"
+        ],
+        "design_grid": 528,
+        "cells_without_row": 13
+      },
+      "EARLY-2 v0.6 pm": {
+        "rows": 96,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 96,
+        "cells_without_row": 0
+      },
+      "EARLY-2 v0.6 finance": {
+        "rows": 96,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 96,
+        "cells_without_row": 0
+      },
+      "EARLY-2 v0.6 oliveoil": {
+        "rows": 96,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 96,
+        "cells_without_row": 0
+      },
+      "EARLY-2 v0.6 running": {
+        "rows": 96,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 96,
+        "cells_without_row": 0
+      },
+      "EARLY-2 v0.6 skincare": {
+        "rows": 96,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": [],
+        "design_grid": 96,
+        "cells_without_row": 0
+      },
+      "PAPER-B v0.32 arm A": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": []
+      },
+      "PAPER-B v0.32 arm B": {
+        "rows": 36,
+        "missing": 0,
+        "by_reason": {},
+        "by_model": {},
+        "duplicate_cells": 0,
+        "cells": []
+      }
+    },
+    "MQ5": {
+      "OMNI t1 v0.19": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t1 v0.20": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t1 v0.21": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t1 v0.22": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t1 v0.23": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [
+          "hendrick'",
+          "jack daniel'"
+        ],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t2 v0.19": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t2 v0.20": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t2 v0.21": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t2 v0.22": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t2 v0.23": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [
+          "hendrick'",
+          "jack daniel'"
+        ],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t3 v0.19": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t3 v0.20": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t3 v0.21": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t3 v0.22": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "OMNI t3 v0.23": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [
+          "hendrick'",
+          "jack daniel'"
+        ],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.9 pm": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.9 finance": {
+        "nested_match_events": 81,
+        "answers_with_nested_matches": 44,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.9 oliveoil": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.9 running": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.9 skincare": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v1.0 household": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [
+          "beyond, inc."
+        ],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v1.0 knives": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {
+          "global": [
+            "Global"
+          ],
+          "mac": [
+            "Mac"
+          ],
+          "made in": [
+            "Made In"
+          ]
+        },
+        "registry_notes": []
+      },
+      "EARLY-6 v0.14 premium_tea": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-6 v0.16 kitchen_knives": {
+        "nested_match_events": 21,
+        "answers_with_nested_matches": 21,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [
+          "nogent (goyon-chazeau)",
+          "shibazi (shi ba zi zuo)"
+        ],
+        "canonical_names_ending_non_word": [
+          "Nogent (Goyon-Chazeau)",
+          "Shibazi (Shi Ba Zi Zuo)"
+        ],
+        "ordinary_word_aliases": {
+          "global": [
+            "Global"
+          ],
+          "mac": [
+            "Mac"
+          ],
+          "made in": [
+            "Made In"
+          ],
+          "dick": [
+            "Friedr. Dick"
+          ],
+          "kramer": [
+            "Bob Kramer"
+          ],
+          "new west": [
+            "New West KnifeWorks"
+          ]
+        },
+        "registry_notes": []
+      },
+      "EARLY-2 v0.6 pm": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-2 v0.6 finance": {
+        "nested_match_events": 19,
+        "answers_with_nested_matches": 13,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-2 v0.6 oliveoil": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-2 v0.6 running": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "EARLY-2 v0.6 skincare": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "PAPER-B v0.32 arm A": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      },
+      "PAPER-B v0.32 arm B": {
+        "nested_match_events": 0,
+        "answers_with_nested_matches": 0,
+        "aliases_shared_by_two_brands": {},
+        "aliases_ending_non_word": [],
+        "canonical_names_ending_non_word": [],
+        "ordinary_word_aliases": {},
+        "registry_notes": []
+      }
+    },
+    "MQ8": {
+      "per_category": {
+        "pm": {
+          "prompt_ids_identical": true,
+          "prompt_texts_identical": true,
+          "passes": true,
+          "prompt_files": {
+            "v0.6": "osf/methodology/v1_10/registries/v06_prompts/prompts_pm_v0_6.json",
+            "v0.9": "prompts/prompts_pm.json"
+          },
+          "differing_ids": []
+        },
+        "finance": {
+          "prompt_ids_identical": true,
+          "prompt_texts_identical": true,
+          "passes": true,
+          "prompt_files": {
+            "v0.6": "osf/methodology/v1_10/registries/v06_prompts/prompts_finance_v0_6.json",
+            "v0.9": "prompts/prompts_finance.json"
+          },
+          "differing_ids": []
+        },
+        "oliveoil": {
+          "prompt_ids_identical": true,
+          "prompt_texts_identical": true,
+          "passes": true,
+          "prompt_files": {
+            "v0.6": "osf/methodology/v1_10/registries/v06_prompts/prompts_oliveoil_v0_6.json",
+            "v0.9": "prompts/prompts_oliveoil.json"
+          },
+          "differing_ids": []
+        },
+        "running": {
+          "prompt_ids_identical": true,
+          "prompt_texts_identical": true,
+          "passes": true,
+          "prompt_files": {
+            "v0.6": "osf/methodology/v1_10/registries/v06_prompts/prompts_running_v0_6.json",
+            "v0.9": "prompts/prompts_running.json"
+          },
+          "differing_ids": []
+        },
+        "skincare": {
+          "prompt_ids_identical": true,
+          "prompt_texts_identical": true,
+          "passes": true,
+          "prompt_files": {
+            "v0.6": "osf/methodology/v1_10/registries/v06_prompts/prompts_skincare_v0_6.json",
+            "v0.9": "prompts/prompts_skincare.json"
+          },
+          "differing_ids": []
+        }
+      },
+      "passes": true
+    },
+    "MQ9": {
+      "finish_reason_stored": {
+        "OMNI t1 v0.19": false,
+        "OMNI t1 v0.20": false,
+        "OMNI t1 v0.21": false,
+        "OMNI t1 v0.22": false,
+        "OMNI t1 v0.23": false,
+        "OMNI t2 v0.19": false,
+        "OMNI t2 v0.20": false,
+        "OMNI t2 v0.21": false,
+        "OMNI t2 v0.22": false,
+        "OMNI t2 v0.23": false,
+        "OMNI t3 v0.19": false,
+        "OMNI t3 v0.20": false,
+        "OMNI t3 v0.21": false,
+        "OMNI t3 v0.22": false,
+        "OMNI t3 v0.23": false,
+        "EARLY-6 v0.9 pm": false,
+        "EARLY-6 v0.9 finance": false,
+        "EARLY-6 v0.9 oliveoil": false,
+        "EARLY-6 v0.9 running": false,
+        "EARLY-6 v0.9 skincare": false,
+        "EARLY-6 v1.0 household": false,
+        "EARLY-6 v1.0 knives": false,
+        "EARLY-6 v0.14 premium_tea": false,
+        "EARLY-6 v0.16 kitchen_knives": false,
+        "EARLY-2 v0.6 pm": false,
+        "EARLY-2 v0.6 finance": false,
+        "EARLY-2 v0.6 oliveoil": false,
+        "EARLY-2 v0.6 running": false,
+        "EARLY-2 v0.6 skincare": false,
+        "PAPER-B v0.32 arm A": false,
+        "PAPER-B v0.32 arm B": false
+      },
+      "note": "No analysed set stores a finish reason. No answer file stores the token cap; caps are documented in each phase's scripts. Kept: positions before any cut are valid."
+    }
+  },
+  "selection_file": "selection_v1_10.json",
+  "selection_sha256": "b161d5d9acb191a3f7f55f5b88d48577b321dbc1e9c59db702113bd731ef0e39"
+}
