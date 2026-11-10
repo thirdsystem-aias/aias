@@ -1,8 +1,8 @@
 {
   "phase": "AIAS 2.0 synthesis",
   "outline_tag": "aias-2-0-outline-locked",
-  "built_at_utc": "2026-11-09T13:41:13+00:00",
-  "status": "pre-t3",
+  "built_at_utc": "2026-11-10T02:58:55+00:00",
+  "status": "complete",
   "spec": {
     "consistency_score": "C_phi rated at >= 6 total mentions (v1.9 SELECTED_CONSISTENCY)",
     "presence_score": "P = 100*(C_P/6 + 2*pi_hat)/3 (v0.25 presence_composite)",
@@ -162,6 +162,52 @@
       "rho_Cstar_P": 0.08153268408519941,
       "rho_Cstar_P_n": 54,
       "rho_A_P_descriptive": 0.9749692326190192,
+      "rho_A_P_n": 112
+    },
+    "t3": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 46.99074074074075,
+          "mean_C_rated": 64.78204665704666
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 46.45061728395063,
+          "mean_C_rated": 88.50210097817583
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 13,
+          "share_rated": 0.5416666666666666,
+          "mean_P": 49.92283950617283,
+          "mean_C_rated": 77.4021070335173
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 49.151234567901234,
+          "mean_C_rated": 93.08817051059349
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 10,
+          "share_rated": 0.4166666666666667,
+          "mean_P": 41.20370370370371,
+          "mean_C_rated": 74.50871659204994
+        }
+      },
+      "n_units": 112,
+      "n_rated": 54,
+      "share_not_rated": 0.5178571428571429,
+      "rho_Cstar_P": 0.18949782059932604,
+      "rho_Cstar_P_n": 54,
+      "rho_A_P_descriptive": 0.969272869350446,
       "rho_A_P_n": 112
     }
   },
@@ -3823,27 +3869,413 @@
     }
   },
   "stage2": {
-    "status": "pending",
-    "reasons": [
-      "missing osf/v41/v41_verdicts.json",
-      "missing osf/methodology/v1_9/v1_9_verdicts.json",
-      "v0.41-prereg-r1 not externally anchored: not on origin (absent); osf/v41/anchor/git_anchor_v0_41.json not in this tree (merge the phase branch first)",
-      "v1.9-prereg-r1 not externally anchored: not on origin (absent); osf/methodology/v1_9/anchor/git_anchor_v1_9.json not in this tree (merge the phase branch first)"
-    ],
+    "status": "complete",
+    "reasons": [],
     "origin": {
       "v0.41-prereg-r1": {
-        "anchored": false,
-        "how": "not on origin (absent); osf/v41/anchor/git_anchor_v0_41.json not in this tree (merge the phase branch first)"
+        "anchored": true,
+        "how": "origin 4e79167c3f02"
       },
       "v1.9-prereg-r1": {
-        "anchored": false,
-        "how": "not on origin (absent); osf/methodology/v1_9/anchor/git_anchor_v1_9.json not in this tree (merge the phase branch first)"
+        "anchored": true,
+        "how": "origin 58c01297b8fb"
       }
     },
+    "panel_used": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v19_verdicts": {
+      "H_Presence_Score_Reliability": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.9542888066830918,
+        "p_perm": 9.999000099990002e-05,
+        "n": 112
+      },
+      "H_Dissociation_t3": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.18949782059932604,
+        "n": 54
+      },
+      "H_Consistency_Reliability": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.6473238536507431,
+        "n": 52,
+        "frame_structure_null": {
+          "p_frame": 0.008099190080991902,
+          "null_mean": 0.43783685713432124,
+          "null_p95": 0.5849157274563637,
+          "draws": 10000,
+          "seed": 190020
+        }
+      },
+      "H_NoComposite_t3": {
+        "tier": "SECONDARY (descriptive)",
+        "verdict": "DESCRIPTIVE",
+        "rho_A_P": 0.969272869350446,
+        "n": 112,
+        "k2_line": 0.95
+      }
+    },
+    "v41_verdicts": {
+      "H_Phi_LongHorizon": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.6806643811207408,
+        "p_perm": 9.999000099990002e-05,
+        "p_mc_se": 9.999000099990002e-05,
+        "n": 80,
+        "frame_structure_null": {
+          "p_frame": 9.999000099990002e-05,
+          "null_mean": 0.35709488073921136,
+          "null_p95": 0.5094847360022983,
+          "null_max": 0.6607237276546056,
+          "draws": 10000,
+          "seed": 410045
+        },
+        "rule": "CONFIRMED iff rho >= 0.50 AND p_perm < .05 AND p_frame < .05 (SCORER_NOTES S2); FALSIFIED iff rho < 0.30 OR p_perm >= .05; else MARGINAL",
+        "n_per_substrate": {
+          "v0.19": 12,
+          "v0.20": 16,
+          "v0.21": 19,
+          "v0.22": 15,
+          "v0.23": 18
+        },
+        "sensitivity": {
+          "pooled_within_substrate_rank_rho": 0.6286151995058789,
+          "leave_one_substrate_out": {
+            "v0.19": 0.6541579058741032,
+            "v0.20": 0.7296036617198862,
+            "v0.21": 0.6787881885053477,
+            "v0.22": 0.6371540981959121,
+            "v0.23": 0.6847405507724452
+          },
+          "loso_range": [
+            0.6371540981959121,
+            0.7296036617198862
+          ]
+        }
+      },
+      "H_Presence_LongHorizon": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "n_ge_070": 5,
+        "n_lt_050": 0,
+        "n_undefined": 0,
+        "per_substrate": {
+          "v0.19": {
+            "rho": 0.9439504065480042,
+            "p_perm": 9.999000099990002e-05,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.9411548284163881,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.9413869294719631,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.9764816297124751,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.9268276971279107,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          }
+        }
+      },
+      "H_Horizon_Decay": {
+        "tier": "SECONDARY",
+        "phi": {
+          "n": 80,
+          "rho_t1_t2": 0.6563074188904829,
+          "rho_t1_t3": 0.6378001341617113,
+          "D": 0.01850728472877161,
+          "ci95": [
+            -0.13234909098437841,
+            0.16814289938386334
+          ],
+          "boot_dropped_degenerate": 0,
+          "verdict": "MARGINAL"
+        },
+        "pi_hat": {
+          "n": 112,
+          "rho_t1_t2": 0.9653753616072284,
+          "rho_t1_t3": 0.9630744176166537,
+          "D": 0.0023009439905746776,
+          "ci95": [
+            -0.025439812488873264,
+            0.032393237759366915
+          ],
+          "boot_dropped_degenerate": 0,
+          "verdict": "MARGINAL"
+        },
+        "reported_alongside": {
+          "phi": {
+            "t1_t2": {
+              "rho": 0.6453869683902721,
+              "n": 83,
+              "statistic": "pooled Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.6806643811207408,
+              "n": 80,
+              "statistic": "pooled Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.6351356004674689,
+              "n": 81,
+              "statistic": "pooled Spearman"
+            }
+          },
+          "pi_hat": {
+            "t1_t2": {
+              "rho": 0.9653753616072284,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.9484577961604258,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.9630744176166537,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            }
+          },
+          "J": {
+            "t1_t2": {
+              "rho": 0.7186990539951229,
+              "n": 71,
+              "statistic": "pooled Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.8007361066949132,
+              "n": 69,
+              "statistic": "pooled Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.799588068550369,
+              "n": 69,
+              "statistic": "pooled Spearman"
+            }
+          },
+          "C_P": {
+            "t1_t2": {
+              "rho": 0.9566776162908305,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.865220775006494,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.8955126958549771,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            }
+          }
+        }
+      },
+      "H_Drift_Dissociation": {
+        "tier": "SECONDARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.03239999371046976,
+        "p_perm_two_sided": 0.7773222677732227,
+        "p_mc_se": 0.004160436993839914,
+        "n": 80,
+        "baseline_coupling_t2_rho": 0.15148228106230816,
+        "baseline_note": "rho(phi_t2, pi_hat_t2) on within-substrate percentile ranks; descriptive, not verdict-bearing"
+      },
+      "H_Phantom_LongPersistence": {
+        "tier": "TERTIARY (descriptive)",
+        "verdict": "DESCRIPTIVE",
+        "per_substrate": {
+          "v0.19": {
+            "t2_phantom": 8,
+            "retained_t3": 8,
+            "proportion": 1.0
+          },
+          "v0.20": {
+            "t2_phantom": 15,
+            "retained_t3": 15,
+            "proportion": 1.0
+          },
+          "v0.21": {
+            "t2_phantom": 10,
+            "retained_t3": 9,
+            "proportion": 0.9
+          },
+          "v0.22": {
+            "t2_phantom": 10,
+            "retained_t3": 10,
+            "proportion": 1.0
+          },
+          "v0.23": {
+            "t2_phantom": 15,
+            "retained_t3": 14,
+            "proportion": 0.9333333333333333
+          }
+        },
+        "pooled": {
+          "t2_phantom": 58,
+          "retained_t3": 56,
+          "proportion": 0.9655172413793104
+        },
+        "v0_34_reference_t1_t2": "56/57"
+      }
+    },
+    "v41_manipulation_checks": {
+      "MC_ProbeParity": {
+        "status": "PASS",
+        "source": "PARITY P4 recomputed at scoring"
+      },
+      "MC_Snapshot": {
+        "status": "PASS",
+        "per_model": {
+          "claude-opus-4-5": {
+            "t2": "claude-opus-4-5-20251101",
+            "t3": [
+              "claude-opus-4-5-20251101"
+            ],
+            "match": true
+          },
+          "claude-sonnet-4-5": {
+            "t2": "claude-sonnet-4-5-20250929",
+            "t3": [
+              "claude-sonnet-4-5-20250929"
+            ],
+            "match": true
+          },
+          "gpt-4o": {
+            "t2": "gpt-4o-2024-08-06",
+            "t3": [
+              "gpt-4o-2024-08-06"
+            ],
+            "match": true
+          },
+          "gpt-4o-mini": {
+            "t2": "gpt-4o-mini-2024-07-18",
+            "t3": [
+              "gpt-4o-mini-2024-07-18"
+            ],
+            "match": true
+          }
+        },
+        "n_match": 4,
+        "mismatched": []
+      },
+      "MC_Completeness": {
+        "expected_total": 852,
+        "ok_total": 852,
+        "status": "PASS",
+        "per_model": {
+          "claude-opus-4-5": {
+            "expected": 142,
+            "ok": 142
+          },
+          "claude-sonnet-4-5": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gpt-4o": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gpt-4o-mini": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gemini-2.5-flash": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gemini-2.5-flash-lite": {
+            "expected": 142,
+            "ok": 142
+          }
+        },
+        "unavailable_models": [],
+        "partially_failed_models": [],
+        "short_cells": []
+      },
+      "MC_Truncation": {
+        "status": "DESCRIPTIVE",
+        "per_model": {
+          "gemini-2.5-flash-lite": {
+            "calls": 164,
+            "truncated": 10,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.06097560975609756
+          },
+          "claude-opus-4-5": {
+            "calls": 164,
+            "truncated": 18,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.10975609756097561
+          },
+          "claude-sonnet-4-5": {
+            "calls": 193,
+            "truncated": 1,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0051813471502590676
+          },
+          "gpt-4o": {
+            "calls": 164,
+            "truncated": 0,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0
+          },
+          "gpt-4o-mini": {
+            "calls": 164,
+            "truncated": 0,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0
+          },
+          "gemini-2.5-flash": {
+            "calls": 164,
+            "truncated": 58,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.35365853658536583
+          }
+        },
+        "note": "t1/t2 recorded no finish reasons; no wave contrast"
+      }
+    },
+    "descriptive_retest_t2_t3": {
+      "C_star": [
+        0.6473238536507431,
+        52
+      ],
+      "P": [
+        0.9542888066830918,
+        112
+      ]
+    },
+    "consistency_check": {
+      "rho_Cstar_P_t3_matches_v19": true
+    },
     "class": {
-      "class": null,
+      "class": "A",
       "flags": [],
-      "why": "Stage 2 not available yet (see reasons)"
+      "why": "H_Dissociation_t3 CONFIRMED, H_Consistency_Reliability CONFIRMED"
     }
   },
   "inputs_sha256": {
@@ -3858,6 +4290,8 @@
     "osf/methodology/v1_7/v1_7_cpc_verdicts.json": "2ad30dd2ec04dfa1583c44b183ee1caa04a57b35cf3dc7024c1369ad49777742",
     "osf/v41/registries/v1_8_verdicts.json": "a280385f1868cfdff06d6c3dfae6eb4288fb1a6ad01129d6d23320a3b88b7e78",
     "osf/v37/v37_verdicts.json": "7f46c853a2395b7f6bf1b4ab83d0786f8afa3c36eb6d41d6e45085a4d3103461",
-    "osf/methodology/v1_9/v1_9_calibration.json": "4d2ddb982a3372fa4f8c68e5bcf1a9511684186568fb6d37fbc2562b612388bf"
+    "osf/methodology/v1_9/v1_9_calibration.json": "4d2ddb982a3372fa4f8c68e5bcf1a9511684186568fb6d37fbc2562b612388bf",
+    "/sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json": "0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2",
+    "/sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json": "3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d"
   }
 }
