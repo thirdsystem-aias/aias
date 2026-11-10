@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """Synthetic tests for the clarification of 2026-11-10 (section 12 (f)-(h); SCORER_NOTES N16-N19): P and C* on
 v0.42's own analysis set with "defined" partitions only (as v1.12), and H4 on v1.14's locked R*_S1 read from
-v1.14's Stage 1 output, with v1.10's MNP beside it (non-gating) and the blindness guard. No t4 data, no network.
+v1.14's Stage 1 output, with v1.10's MNP beside it (non-gating) and the blindness guard; section 12 (x), N21: H6 on
+v1.12's Cov* read from its scored unit table (format refusals, PENDING, C1/C2, hashes). No t4 data, no network.
 Run:
     PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s osf/methodology/v1_13/scripts/tests -v
 """
@@ -10,6 +11,7 @@ import hashlib
 import io
 import json
 import random
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -224,6 +226,187 @@ class TestRankingSource(unittest.TestCase):
         rec_["conditional_legs"]["H5_Sep_Sentiment"]["t4_answers"] = True
         self.assertTrue(S.activation(rec_)["H5_Sep_Sentiment"])
         self.assertIsNone(S.ACTIVATION_TAG["H5_Sep_Sentiment"])
+
+
+# =========================================================================== H6: v1.12's Cov* reader (section 12 (x), N21)
+FAKE_V112_SCORER_SHA = "ab" * 32
+
+
+def write_v112(d, units, values=None, seed=5, header=None, doc_over=None, row_over=None, extra_rows=()):
+    """A v1.12-shaped scored output (unit table + v112_verdicts.json, as score_v1_12.write_outputs writes them).
+    values: {v1.13 unit: Cov* or None}; otherwise random. row_over: {column: value} applied to the first row."""
+    rng = random.Random(seed)
+    d = Path(d)
+    d.mkdir(parents=True, exist_ok=True)
+    cols = list(header or S.V112_UNIT_COLUMNS)
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=cols, lineterminator="\r\n", extrasaction="ignore")
+    w.writeheader()
+    for i, k in enumerate(sorted(units)):
+        v = values.get(k) if values is not None else (rng.uniform(0, 100) if rng.random() < 0.85 else None)
+        r = {c: "" for c in cols}
+        r.update(substrate=S.CODER_SUB[k[0]], brand=units[k]["coder_key"], primary_panel="N3",
+                 cov_star="" if v is None else v, rated=int(v is not None), cov_star_N3="" if v is None else v,
+                 cov_star_C3=rng.uniform(0, 100), comparator_source="t4 (v0.42, N3, S0)")
+        if i == 0 and row_over:
+            r.update(row_over)
+        w.writerow(r)
+    for r in extra_rows:
+        w.writerow(r)
+    p = d / "v112_unit_table.csv"
+    p.write_text(buf.getvalue(), encoding="utf-8")
+    doc = {"phase": "v1.12", "prereg_tag": "v1.12-prereg-r1", "primary_panel": "N3", "models_dropped_section_7_3": [],
+           "paper_A_verdict": {"verdict": "PASS", "label": "PASS"},
+           "parity_gates": {"P1": {"gate": "P1", "passed": True}, "P2": {"passed": True}, "P3": {"passed": True}},
+           "inputs": {"raw": "osf/methodology/v1_12/data/v112_raw.jsonl", "raw_sha256": "cd" * 32,
+                      "scorer_sha256": FAKE_V112_SCORER_SHA}}
+    for k, v in (doc_over or {}).items():
+        doc[k] = v
+    (d / "v112_verdicts.json").write_text(json.dumps(doc, indent=2) + "\n", encoding="utf-8")
+    return p
+
+
+class TestCoverageSource(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.inp = synthetic_t4()
+        self.units = self.inp["units"]
+        self.n = 0
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def _dir(self):
+        self.n += 1
+        return Path(self.tmp.name) / f"c{self.n}"
+
+    def read(self, p, sha=FAKE_V112_SCORER_SHA):
+        return S.read_v112_cov(p, sha, "f" * 40)
+
+    def test_reads_values_and_records_hashes(self):
+        vals = {k: (None if i % 5 == 0 else float(i)) for i, k in enumerate(sorted(self.units))}
+        p = write_v112(self._dir(), self.units, vals)
+        src = self.read(p)
+        self.assertEqual(src["sha256"], hashlib.sha256(p.read_bytes()).hexdigest())
+        self.assertEqual(src["verdicts_sha256"], hashlib.sha256((p.parent / "v112_verdicts.json").read_bytes()).hexdigest())
+        self.assertEqual((src["v1_12_commit"], src["scorer_sha256"], src["column"], src["condition"]),
+                         ("f" * 40, FAKE_V112_SCORER_SHA, "cov_star_N3", "S0"))
+        self.assertEqual(S.ranking_map(src, self.units), vals)          # blank = NOT RATED (None)
+        rec = S.coverage_record(src, self.units)
+        self.assertNotIn("values", rec)
+        self.assertEqual((rec["units_matched"], rec["units_matched_rated"]),
+                         (len(vals), sum(v is not None for v in vals.values())))
+
+    def test_format_errors_refused(self):
+        u = self.units
+        bad = {
+            "header": dict(header=list(S.V112_UNIT_COLUMNS[:-1])),
+            "header_order": dict(header=["brand", "substrate"] + list(S.V112_UNIT_COLUMNS[2:])),
+            "phase": dict(doc_over={"phase": "v1.13"}),
+            "tag": dict(doc_over={"prereg_tag": "v1.12-prereg-r0"}),
+            "scorer": dict(doc_over={"inputs": {"scorer_sha256": "00" * 32}}),
+            "synthetic_P1": dict(doc_over={"parity_gates": {"P1": {"status": "SKIPPED (not supplied)", "passed": None}}}),
+            "substrate": dict(row_over={"substrate": "v19"}),
+            "range": dict(row_over={"cov_star_N3": 100.5}),
+            "text": dict(row_over={"cov_star_N3": "n/a"}),
+            "nan": dict(row_over={"cov_star_N3": "nan"}),
+            "panel": dict(row_over={"primary_panel": "C3"}),
+            "rated": dict(row_over={"rated": "yes"}),
+            "duplicate": dict(extra_rows=[{"substrate": S.CODER_SUB[sorted(u)[0][0]], "brand": u[sorted(u)[0]]["coder_key"],
+                                           "primary_panel": "N3", "rated": 0}]),
+        }
+        for name, kw in bad.items():
+            with self.subTest(name), self.assertRaises(S.Refused):
+                self.read(write_v112(self._dir(), u, **kw))
+        p = write_v112(self._dir(), u)
+        (p.parent / "v112_verdicts.json").unlink()
+        with self.assertRaises(S.Refused):
+            self.read(p)                                                  # no verdict file beside it
+        p = write_v112(self._dir(), u)
+        p.write_bytes(b"\xff\xfe" + p.read_bytes())
+        with self.assertRaises(S.Refused):
+            self.read(p)                                                  # not UTF-8
+        with self.assertRaises(S.Refused):
+            self.read(write_v112(self._dir(), u), sha=None)               # no tagged scorer hash to compare
+        with self.assertRaises(S.Refused):
+            S.v112_scorer_sha256(None)                                    # lock record without v1.12's commit
+        with self.assertRaises(S.Refused):
+            self.read(Path(self.tmp.name) / "absent.csv")
+
+    def test_load_coverage_source_uses_the_lock_record_commit(self):
+        p = write_v112(self._dir(), self.units)
+        anchor = {"conditional_legs": {"H6_Sep_Coverage": {"pushed_before_lock": True, "commit": "e" * 40}}}
+        seen = []
+        orig = S.v112_scorer_sha256
+        S.v112_scorer_sha256 = lambda c: seen.append(c) or FAKE_V112_SCORER_SHA
+        try:
+            src = S.load_coverage_source(p, anchor)
+            S.v112_scorer_sha256 = lambda c: "00" * 32                    # another scorer at the tag: refused
+            with self.assertRaises(S.Refused):
+                S.load_coverage_source(p, anchor)
+        finally:
+            S.v112_scorer_sha256 = orig
+        self.assertEqual((seen, src["v1_12_commit"]), (["e" * 40], "e" * 40))
+        with self.assertRaises(S.Refused):
+            S.load_coverage_source(p, {"conditional_legs": {"H6_Sep_Coverage": {"pushed_before_lock": True}}})
+
+    def _answers(self, doc):
+        recs = S.dedupe_calls(self.inp["records"])
+        return S.build_answers(S.select_calls(recs, doc["panel_models"], "S1", "B"),
+                               S.named_index(self.inp["coded_b"], self.units), self.units, self.inp["classes"])
+
+    def test_stage_c1_computed(self):
+        src = self.read(write_v112(self._dir(), self.units))
+        act = {"H4_Sep_Ranking": False, "H5_Sep_Sentiment": False, "H6_Sep_Coverage": True}
+        doc = S.stage_c1(dict(self.inp, active=act, coverage_source=src), n_perm=99, n_boot=0, sensitivities=False)
+        gs = {(k.split("|")[0], k.split("|")[1]): (v["G_star"] if v["rated"] else None) for k, v in doc["units"].items()}
+        want = S.sep_leg(gs, S.ranking_map(src, self.units), S.SEEDS["H6_Sep_Coverage"], 0, 0)
+        leg = doc["legs"]["H6_Sep_Coverage"][0]
+        self.assertEqual(leg["n"], want["n"])
+        self.assertAlmostEqual(leg["rho_w"], want["rho_w"], places=12)
+        self.assertEqual(doc["verdicts"]["H6_Sep_Coverage"], S.sep_verdict([leg]))
+        self.assertNotIn("H6_Sep_Coverage", doc["reasons"])
+        self.assertEqual(doc["H6_coverage_source"]["sha256"], src["sha256"])
+        c2 = S.stage_c2_coverage(doc, self._answers(doc), self.units, src)
+        self.assertEqual(c2["note"], "computed at Stage C1")
+        json.dumps(doc, default=str)
+
+    def test_stage_c1_pending_then_c2(self):
+        act = {"H4_Sep_Ranking": False, "H5_Sep_Sentiment": False, "H6_Sep_Coverage": True}
+        doc = S.stage_c1(dict(self.inp, active=act), n_perm=0, n_boot=0, sensitivities=False)
+        self.assertEqual(doc["verdicts"]["H6_Sep_Coverage"], "UNDETERMINED")
+        self.assertTrue(doc["reasons"]["H6_Sep_Coverage"].startswith("PENDING"))
+        self.assertEqual(doc["H6_coverage_source"]["status"], "PENDING")
+        answers = self._answers(doc)
+        none = S.stage_c2_coverage(doc, answers, self.units, None, unavailable="v1.12 halted at P1")
+        self.assertEqual((none["H6_Sep_Coverage"], none["handed_to_paper_B"], none["reason"]),
+                         ("UNDETERMINED", True, "v1.12 halted at P1"))
+        self.assertIn("score not available", S.stage_c2_coverage(doc, answers, self.units, None)["reason"])
+        # Cov* identical in order to G*: FALSIFIED; a PASS is re-issued as MARGINAL (downgrade only)
+        gs = S.gstar_map(S.brand_stats(answers, self.units))
+        top = max(v for v in gs.values() if v is not None) or 1.0
+        src = self.read(write_v112(self._dir(), self.units, {k: (None if v is None else 100 * v / top)
+                                                             for k, v in gs.items()}))
+        doc_pass = dict(doc, gate=dict(doc["gate"], verdict="PASS"))
+        c2 = S.stage_c2_coverage(doc_pass, answers, self.units, src, n_perm=49, n_boot=0)
+        self.assertEqual(c2["H6_Sep_Coverage"], "FALSIFIED")
+        self.assertEqual((c2["gate_reissued"]["before"], c2["gate_reissued"]["after"]), ("PASS", "MARGINAL"))
+        self.assertEqual(c2["H6_coverage_source"]["sha256"], src["sha256"])
+        for before in ("MARGINAL", "FAIL", "UNDETERMINED"):           # never upgrades; chains after H4's re-issue
+            self.assertEqual(S.stage_c2_coverage(doc_pass, answers, self.units, src, before=before, n_perm=0,
+                                                 n_boot=0)["gate_reissued"]["after"], before)
+        inactive = dict(doc, gate=dict(doc["gate"], active=dict(act, H6_Sep_Coverage=False)))
+        self.assertEqual(S.stage_c2_coverage(inactive, answers, self.units, src), {"H6_Sep_Coverage": "INACTIVE"})
+
+    @unittest.skipUnless(subprocess.run(["git", "rev-parse", "--verify", "-q", "5fd87f6^{commit}"], cwd=str(S.PHASE),
+                                        capture_output=True).returncode == 0, "v1.12 commit 5fd87f6 not in this clone")
+    def test_scorer_hash_read_from_git(self):
+        sha = S.v112_scorer_sha256("5fd87f6")
+        blob = subprocess.run(["git", "show", f"5fd87f6:{S.V112_SCORER_REL}"], cwd=str(S.PHASE),
+                              capture_output=True).stdout
+        self.assertEqual(sha, hashlib.sha256(blob).hexdigest())
+        with self.assertRaises(S.Refused):
+            S.v112_scorer_sha256("0" * 40)
 
 
 if __name__ == "__main__":

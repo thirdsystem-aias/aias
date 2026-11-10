@@ -15,9 +15,10 @@ their anchored SHA-256 and v0.42's coder and scorer match their pinned blobs at 
 row of brand_domains_v1_13.csv is UNRESOLVED, so nothing here can read t4 data by accident. The tests run the
 core on synthetic records only.
 
-Not in this core (added at the Part I lock, when the activation record names the files): readers for the
-comparator scores of active H4-H6 (until then an active leg is UNDETERMINED, "score not available"); the S6 alias
-merge from Part II's verified aliases (Stage C2).
+Comparator readers: H4 reads v1.14's Stage 1 output (N17-N19), H6 reads v1.12's scored unit table (N21); H5 has
+no reader (INACTIVE, N20). An active leg whose score does not exist is PENDING at Stage C1, computed at Stage C2,
+else UNDETERMINED ("score not available", N10). Not in this core: the S6 alias merge from Part II's verified
+aliases (Stage C2).
 
 SCORER_NOTES (choices where the pre-registration is silent)
  N1  Answered S1 answer = one record per call_id (the last answered attempt, else the last attempt, as v0.42's
@@ -91,6 +92,16 @@ SCORER_NOTES (choices where the pre-registration is silent)
      pre-registration of a locked Sentiment score on the t4 answers (conditional_legs.H5_Sep_Sentiment.t4_answers);
      v1.11-prereg-r1 defines its score on the archived waves only, so it does not activate H5; the cross-panel
      fallback to v1.11's t3 score is withdrawn.
+ --- clarification of 2026-11-10 (before the lock; section 12 (x)) ---
+ N21 H6's Cov* reader (--h6-cov): v1.12's scored unit table (osf/methodology/v1_12/v112_unit_table.csv, written by
+     score_v1_12.py --run), column cov_star_N3 (v1.12's Cov* on N3, S0; blank = NOT RATED, its own floor and rated
+     set), keyed on (coder substrate, coder brand key) -> v1.13 units through coder_key (N3). Refused unless the
+     header is v1.12's unit-table header, v112_verdicts.json beside it has phase v1.12, prereg_tag v1.12-prereg-r1,
+     scorer SHA-256 = score_v1_12.py at the v1.12 tag commit named in the lock record, and parity gate P1 passed (a
+     synthetic run never passes it), and every row is well formed (value blank or 0-100). The table's and the verdict
+     file's SHA-256 and v1.12's commit go to H6_coverage_source. As H4: PENDING at Stage C1 without it, computed at
+     Stage C2 (gate re-issued downgrade-only, after H4's re-issue), else UNDETERMINED (--h6-unavailable REASON) and
+     handed to Paper B. No v1.12 verdict conditions H6.
 """
 import argparse
 import csv
@@ -1141,6 +1152,119 @@ def h4_gates(src):
     return bool(src) and str(src.get("stage1_verdict") or "").startswith("SEPARABLE")
 
 
+# =========================================================================== H6: v1.12's Cov* (clarification of 2026-11-10, N21)
+V112_PREREG_TAG = "v1.12-prereg-r1"
+V112_SCORER_REL = "osf/methodology/v1_12/scripts/score_v1_12.py"
+V112_UNIT_TABLE_REL = "osf/methodology/v1_12/v112_unit_table.csv"   # score_v1_12.py --run (write_outputs)
+V112_VERDICTS = "v112_verdicts.json"                                 # beside the unit table
+V112_UNIT_COLUMNS = ("substrate", "brand", "primary_panel", "cov_star", "rated", "n_b", "models_naming", "mean_beta",
+                     "pi_cov", "raw_cov_k1", "raw_cov_k2", "raw_cov_k3", "cov_star_A", "cov_star_B", "cov_star_mid_S8",
+                     "cov_star_equal_S3", "cov_star_N3", "cov_star_C3", "cov_star_A4", "comparator_source",
+                     "P_comparator", "C_star_comparator", "pi_hat_N3_S0", "t4_mentions_N3_S0", "P_t3_legacy")
+H6_COLUMN, H6_PANEL, H6_CONDITION = "cov_star_N3", "N3", "S0"   # section 3: v1.12's Cov* (112 units, N3, S0)
+
+
+def v112_scorer_sha256(commit):
+    """SHA-256 of score_v1_12.py at v1.12's tag commit (local git only)."""
+    if not commit:
+        raise Refused("HALT: the lock record names no v1.12 tag commit: H6's Cov* cannot be traced to the tagged scorer")
+    r = subprocess.run(["git", "show", f"{commit}:{V112_SCORER_REL}"], cwd=str(PHASE), capture_output=True)
+    if r.returncode or not r.stdout:
+        raise Refused(f"HALT: {V112_SCORER_REL} not readable at v1.12 commit {commit}")
+    return hashlib.sha256(r.stdout).hexdigest()
+
+
+def read_v112_cov(path, scorer_sha256, v112_commit=None):
+    """v1.12's locked Cov* per v1.12 unit (coder substrate, coder brand key) from its unit table (N21). Refuses a file
+    that is not the tagged v1.12 scorer's real output: header other than V112_UNIT_COLUMNS, v112_verdicts.json missing
+    beside it, phase / prereg_tag not v1.12's, scorer SHA-256 different from score_v1_12.py at the tag, parity gate
+    P1 not passed (a synthetic run never passes P1), or a malformed row. Value = cov_star_N3; blank = NOT RATED."""
+    if not path or not Path(path).exists():
+        raise Refused(f"v1.12 Cov* output {path or V112_UNIT_TABLE_REL} does not exist")
+    data = Path(path).read_bytes()
+    vpath = Path(path).parent / V112_VERDICTS
+    if not vpath.exists():
+        raise Refused(f"HALT: {vpath} missing: {path} cannot be traced to v1.12's scorer")
+    vdata = vpath.read_bytes()
+    try:
+        rows = list(csv.reader(data.decode("utf-8").splitlines()))
+        doc = json.loads(vdata.decode("utf-8"))
+    except (UnicodeDecodeError, ValueError, csv.Error) as e:
+        raise Refused(f"HALT: {path} or {vpath} is not v1.12 output ({e})")
+    if not rows or tuple(rows[0]) != V112_UNIT_COLUMNS:
+        raise Refused(f"HALT: {path}: header is not score_v1_12.py's unit table ({rows[0] if rows else 'empty'})")
+    if not isinstance(doc, dict) or doc.get("phase") != "v1.12" or doc.get("prereg_tag") != V112_PREREG_TAG:
+        raise Refused(f"HALT: {vpath} is not v1.12's verdict file (phase/prereg_tag)")
+    got = (doc.get("inputs") or {}).get("scorer_sha256")
+    if not scorer_sha256 or got != scorer_sha256:
+        raise Refused(f"HALT: {vpath} was written by a scorer with SHA-256 {got}, not score_v1_12.py at the v1.12 tag "
+                      f"({scorer_sha256})")
+    p1 = (doc.get("parity_gates") or {}).get("P1") or {}
+    if p1.get("passed") is not True:
+        raise Refused(f"HALT: {vpath}: parity gate P1 not passed ({p1.get('status')}): not v1.12's scored record")
+    col, ppos, rpos = V112_UNIT_COLUMNS.index(H6_COLUMN), V112_UNIT_COLUMNS.index("primary_panel"), \
+        V112_UNIT_COLUMNS.index("rated")
+    subs, vals = set(CODER_SUB.values()), {}
+    for i, r in enumerate(rows[1:], 2):
+        if len(r) != len(V112_UNIT_COLUMNS) or r[0] not in subs or not r[1] or r[ppos] != doc.get("primary_panel") \
+                or r[rpos] not in ("0", "1"):
+            raise Refused(f"HALT: {path} line {i} is malformed for v1.12's unit table")
+        k = (r[0], r[1])
+        if k in vals:
+            raise Refused(f"HALT: {path} line {i}: duplicate unit {k}")
+        v = _num(r[col]) if r[col] != "" else None
+        if r[col] != "" and (v is None or not 0.0 <= v <= 100.0):
+            raise Refused(f"HALT: {path} line {i}: {H6_COLUMN} = {r[col]!r} is not a Cov* value (0-100 or blank)")
+        vals[k] = v
+    pav = doc.get("paper_A_verdict") or {}
+    return {"file": str(path), "sha256": hashlib.sha256(data).hexdigest(), "verdicts_file": str(vpath),
+            "verdicts_sha256": hashlib.sha256(vdata).hexdigest(), "prereg_tag": V112_PREREG_TAG,
+            "v1_12_commit": v112_commit, "scorer_sha256": scorer_sha256, "column": H6_COLUMN, "panel": H6_PANEL,
+            "condition": H6_CONDITION, "v1_12_primary_panel": doc.get("primary_panel"),
+            "v1_12_models_dropped": doc.get("models_dropped_section_7_3"),
+            "v1_12_paper_A_verdict": pav.get("label") or pav.get("verdict"),
+            "v1_12_raw_sha256": (doc.get("inputs") or {}).get("raw_sha256"),
+            "units_in_table": len(vals), "rated_units": sum(v is not None for v in vals.values()), "values": vals}
+
+
+def load_coverage_source(path, anchor):
+    """N21: H6's input at Stage C1/C2 from the lock record (v1.12's tag commit) and the unit table given."""
+    leg = ((anchor or {}).get("conditional_legs") or {}).get("H6_Sep_Coverage") or {}
+    commit = leg.get("commit")
+    return read_v112_cov(path, v112_scorer_sha256(commit), commit)
+
+
+def coverage_record(src, units, unavailable=None):
+    """N21: where H6's Cov* came from (file and verdict-file SHA-256, v1.12's commit and scorer SHA-256); no values."""
+    if src is None:
+        return {"measure": f"{H6_COLUMN} of {V112_PREREG_TAG} ({H6_PANEL}, {H6_CONDITION})", "status": "PENDING",
+                "reason": unavailable or "v1.12's Cov* output not supplied: computed at Stage C2 (N21)"}
+    rec = {k: v for k, v in src.items() if k != "values"}
+    rec["measure"] = f"{H6_COLUMN} of {V112_PREREG_TAG} ({H6_PANEL}, {H6_CONDITION}; its own floor and rated set)"
+    m = ranking_map(src, units)
+    rec["units_matched"], rec["units_matched_rated"] = len(m), sum(v is not None for v in m.values())
+    return rec
+
+
+def stage_c2_coverage(doc_c1, answers, units, src, before=None, n_perm=N_PERM, n_boot=N_BOOT, unavailable=None):
+    """N21: an active H6 not computed at Stage C1 is computed at C2 from v1.12's Cov*; the gate verdict is re-issued
+    (downgrade only: PASS -> MARGINAL if H6 is FALSIFIED). Without the score by C2: UNDETERMINED (Paper B)."""
+    if not (doc_c1.get("gate", {}).get("active") or {}).get("H6_Sep_Coverage"):
+        return {"H6_Sep_Coverage": "INACTIVE"}
+    if doc_c1.get("H6_coverage_source", {}).get("sha256"):
+        return {"H6_Sep_Coverage": doc_c1["verdicts"]["H6_Sep_Coverage"], "note": "computed at Stage C1"}
+    if src is None:
+        return {"H6_Sep_Coverage": "UNDETERMINED", "handed_to_paper_B": True, "reason": unavailable or
+                "v1.12's Cov* output did not exist by Stage C2: score not available, handed to Paper B (section 3, N10)"}
+    gs = gstar_map(brand_stats(answers, units))
+    leg = sep_leg(gs, ranking_map(src, units), SEEDS["H6_Sep_Coverage"], n_perm, n_boot)
+    v = sep_verdict([leg])
+    before = before or doc_c1["gate"]["verdict"]
+    after = "MARGINAL" if (before == "PASS" and v == "FALSIFIED") else before
+    return {"H6_Sep_Coverage": v, "leg": leg, "H6_coverage_source": coverage_record(src, units),
+            "gate_reissued": {"before": before, "after": after, "rule": "downgrade only (section 3)"}}
+
+
 # =========================================================================== gate statistics, baseline, stages
 def gate_statistics(answers, units, P, C, comparators=None, active=None, n_perm=N_PERM, n_boot=N_BOOT,
                     centred=True, exclude=(), floor=FLOOR_G, denominator="g", seeds=None, gating=None):
@@ -1259,10 +1383,16 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     if active.get("H4_Sep_Ranking") and rank_src is not None:
         comps["H4_Sep_Ranking"] = ranking_map(rank_src, units)
     gating = {"H4_Sep_Ranking": h4_gates(rank_src)}          # N19: downgrades only if v1.14 Stage 1 is SEPARABLE
+    cov_src = inp.get("coverage_source")               # N21: v1.12's Cov* (None until v1.12 is scored)
+    if active.get("H6_Sep_Coverage") and cov_src is not None:
+        comps["H6_Sep_Coverage"] = ranking_map(cov_src, units)
     prim = gate_statistics(answers, units, P, C, comps, active, n_perm, n_boot, gating=gating)
     if active.get("H4_Sep_Ranking") and rank_src is None:
         prim["reasons"]["H4_Sep_Ranking"] = ("PENDING: v1.14's Stage 1 output does not exist yet; the leg does not run "
                                              "before it (blindness guard, N18) and is computed at Stage C2")
+    if active.get("H6_Sep_Coverage") and cov_src is None:
+        prim["reasons"]["H6_Sep_Coverage"] = ("PENDING: v1.12's Cov* output does not exist yet (Coverage collects Nov "
+                                              "14-16 and scores after); computed at Stage C2 (N21)")
     doc = {"phase": PHASE_ID, "stage": "C1", "primary_field": PRIMARY_FIELD, "panel_models": models,
            "dropped_models": dropped, "gate": prim["gate"], "verdicts": prim["verdicts"], "reasons": prim["reasons"],
            "legs": prim["legs"], "H3": prim["H3"], "MQ": {
@@ -1275,6 +1405,8 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
            "baseline": baseline(answers_n3, units, brand_stats(answers_n3, units))}
     if active.get("H4_Sep_Ranking"):
         doc["H4_ranking_source"] = ranking_record(rank_src, prim["g_star"], units, n_perm, inp.get("h4_unavailable"))
+    if active.get("H6_Sep_Coverage"):
+        doc["H6_coverage_source"] = coverage_record(cov_src, units, inp.get("h6_unavailable"))
     if not sensitivities:
         return doc
     sp = {k: SEEDS["sensitivities"] for k in SEEDS}
@@ -1367,10 +1499,14 @@ def _load_inputs(a, anchor):
     rank_src = None                                    # N18: no Ranking input until v1.14's Stage 1 output exists
     if active.get("H4_Sep_Ranking") and getattr(a, "h4_stage1", None) and Path(a.h4_stage1).exists():
         rank_src = load_ranking_source(a.h4_stage1, H4_CONDITION, allow_dry=False)
+    cov_src = None                                     # N21: no Cov* input until v1.12's scored output exists
+    if active.get("H6_Sep_Coverage") and getattr(a, "h6_cov", None) and Path(a.h6_cov).exists():
+        cov_src = load_coverage_source(a.h6_cov, anchor)
     return {"records": read_jsonl(a.t4), "coded_a": coded_a, "coded_b": coded_b,
             "brand_table": read_csv(a.brand_table), "units": units, "classes": classes,
             "active": active, "comparators": {}, "ranking_source": rank_src,
-            "h4_unavailable": getattr(a, "h4_unavailable", None)}
+            "h4_unavailable": getattr(a, "h4_unavailable", None), "coverage_source": cov_src,
+            "h6_unavailable": getattr(a, "h6_unavailable", None)}
 
 
 def main(argv=None):
@@ -1384,6 +1520,10 @@ def main(argv=None):
     ap.add_argument("--h4-stage1", help=f"v1.14's Stage 1 output ({V114_STAGE1_REL}, {V114_RANK_TABLE} beside it): "
                                         f"H4's R*_S1 (N17); absent -> H4 waits for Stage C2 (N18)")
     ap.add_argument("--h4-unavailable", metavar="REASON", help="Stage C2: record why v1.14's Stage 1 output does not exist")
+    ap.add_argument("--h6-cov", metavar="FILE", help=f"v1.12's scored unit table ({V112_UNIT_TABLE_REL}, {V112_VERDICTS} "
+                                                     f"beside it): H6's Cov* ({H6_COLUMN}; N21); absent -> H6 waits for "
+                                                     f"Stage C2")
+    ap.add_argument("--h6-unavailable", metavar="REASON", help="Stage C2: record why v1.12's Cov* output does not exist")
     a = ap.parse_args(argv)
     if not a.stage:
         print(__doc__)
@@ -1404,6 +1544,9 @@ def main(argv=None):
     collected = Path(a.sdri).exists()
     c2 = stage_c2(doc, answers, units, p_s0, read_sdri(a.sdri, units) if collected else {}, collected)
     c2["ranking"] = stage_c2_ranking(doc, answers, units, inp["ranking_source"], unavailable=inp["h4_unavailable"])
+    c2["coverage"] = stage_c2_coverage(doc, answers, units, inp["coverage_source"],
+                                       before=(c2["ranking"].get("gate_reissued") or {}).get("after"),
+                                       unavailable=inp["h6_unavailable"])
     c2["appended_utc"] = datetime.now(timezone.utc).isoformat()
     doc["stage_C2"] = c2
     Path(a.out).write_text(json.dumps(doc, indent=2, default=str), encoding="utf-8")

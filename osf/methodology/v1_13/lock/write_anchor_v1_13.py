@@ -57,6 +57,11 @@ def sha(rel):
     return hashlib.sha256((ROOT / rel).read_bytes()).hexdigest()
 
 
+def blob_sha256(spec):
+    r = subprocess.run(["git", "-C", str(ROOT), "show", spec], capture_output=True)
+    return hashlib.sha256(r.stdout).hexdigest() if r.returncode == 0 and r.stdout else None
+
+
 def now_utc():
     return datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -123,9 +128,12 @@ def legs(commit_date, testing, h6_inactive=None):
                      f"REASON with the runner's decision logged in section 12")
         h6.update({"pushed_before_lock": before, "v1.12_tagger_date": v112_date, "v1.13_lock_commit_date": commit_date,
                    "score_definition_files": {p: git("rev-parse", f"{V112_TAG}:{p}", check=False) for p in V112_FILES},
-                   "score": "v1.12's locked Cov* on its own collection (112 units, N3, S0); score_v1_13.py has no Cov* "
-                            "reader at the lock, so the leg stays UNDETERMINED 'score not available' until one is "
-                            "supplied (N10)",
+                   "scorer_sha256_at_tag": blob_sha256(f"{V112_TAG}:{V112_FILES[1]}"),
+                   "score": "v1.12's locked Cov* on its own collection (112 units, N3, S0): score_v1_13.py --h6-cov "
+                            "reads column cov_star_N3 of osf/methodology/v1_12/v112_unit_table.csv, refusing it unless "
+                            "v112_verdicts.json beside it names this scorer SHA-256 and a passed P1 (section 12 (x), "
+                            "N21); PENDING at Stage C1 until it exists, computed at Stage C2, else UNDETERMINED and "
+                            "handed to Paper B (section 3, N10)",
                    "status": "ACTIVE (v1.12-prereg-r1 pushed before the v1.13 lock commit)" if before else
                              "INACTIVE (TEST_ONLY reading: lock commit older than v1.12's tag)"})
     else:

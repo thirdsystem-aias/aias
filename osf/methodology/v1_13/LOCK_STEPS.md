@@ -4,7 +4,7 @@ Prepared 2026-11-10 by the runner (lane 10). Everything below runs in the worktr
 
 **Order on Wednesday:** v1.12 (its own `LOCK_STEPS.md`) → **v1.13 (this file)** → v0.42 (t4), whose collection starts right after its lock. Do not start v1.13 until v1.12's tag is on origin; do not let v0.42 tag before v1.13's step 4 is done.
 
-State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`; lock records); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` built (21 files, both parts, paths from the repository root); 84 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
+State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`; lock records); §12 (x) by lane 13 (H6's Cov\* reader, `--h6-cov`, N21; `write_anchor_v1_13.py` records v1.12's scorer SHA-256 at its tag); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` rebuilt (21 files, both parts, paths from the repository root); 90 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
 
 ## 0. Preconditions (stop if any fails)
 
@@ -14,7 +14,7 @@ State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10�
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git branch --show-current && git status --short --untracked-files=no && git log --oneline -3
    ```
-   Expect `v1.13`, no tracked changes, HEAD = the lane-10 lock-prep commit. `osf/methodology/v1_13/_osf_stage_draft/` and `_osf_stage_draft_r1/` are untracked earlier staging copies: leave them, never upload them.
+   Expect `v1.13`, no tracked changes, HEAD = the lane-13 commit (H6 reader, §12 (x)) on top of the lane-10 lock-prep commit `9a003b6`. `osf/methodology/v1_13/_osf_stage_draft/` and `_osf_stage_draft_r1/` are untracked earlier staging copies: leave them, never upload them.
 4. **Remote tags (read-only):**
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git ls-remote --tags origin v1.13-prereg-r1 v1.13-audit-r1 v1.12-prereg-r1 v1.14-prereg-r1 v0.42-prereg-r1
@@ -37,7 +37,7 @@ a. Manifest:
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && shasum -a 256 -c osf/methodology/v1_13/prereg/LOCK_MANIFEST_v1_13.sha256 | grep -vc ": OK$"; wc -l < osf/methodology/v1_13/prereg/LOCK_MANIFEST_v1_13.sha256
    ```
-   Expect `0` failures and `21` lines. Spot values: prereg `5d286a1f…`, `brand_domains_v1_13.csv` `38198fdf…`, `score_v1_13.py` `fdf6852a…`, `audit_v1_13.py` `37ed8830…`, `DEVIATIONS.md` `bc1e5509…`.
+   Expect `0` failures and `21` lines. Spot values (after §12 (x)): prereg `c5a55d25…`, `brand_domains_v1_13.csv` `38198fdf…`, `score_v1_13.py` `7d37f1c3…`, `test_clarification_v1_13.py` `61860249…`, `audit_v1_13.py` `37ed8830…`, `DEVIATIONS.md` `bc1e5509…`.
 
 b. (Only if a manifested file changed) rebuild, then re-check with a.:
    ```
@@ -49,7 +49,7 @@ c. Tests (under 1 s):
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && PYTHONDONTWRITEBYTECODE=1 python3 -m unittest discover -s osf/methodology/v1_13/scripts/tests -p "test_*.py" > /tmp/v113_tests.log 2>&1; tail -3 /tmp/v113_tests.log
    ```
-   Expect `Ran 84 tests` and `OK` (43 scorer, 13 clarification, 28 audit).
+   Expect `Ran 90 tests` and `OK` (43 scorer, 19 clarification, 28 audit).
 
 d. Records agree with the files:
    ```
@@ -96,7 +96,7 @@ Part I (`score_v1_13.py --stage C1` refuses without it; MQ7 reads its `locked_fi
 ```
 cd /Users/pablou/aias/_worktrees/v1.13 && PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_13/lock/write_anchor_v1_13.py
 ```
-Writes `anchor/git_anchor_v1_13.json`: tag, tag object, commit, tree, the 21 files plus the manifest (SHA-256 and git blob at the tag), H4 ACTIVE (v1.14 → `20fbc342`, its score files' blobs), H5 INACTIVE, H6 ACTIVE (v1.12's tag, commit, tagger date before the lock commit, its prereg and scorer blobs), the v0.42 pins (tag absent at this lock: re-checked in step 9 and by MQ7), `t4_raw_sha256` null (recorded before the first read). It refuses if the tag is not on origin, a file differs from the manifest, v1.14's tag moved, or the H6 order fails.
+Writes `anchor/git_anchor_v1_13.json`: tag, tag object, commit, tree, the 21 files plus the manifest (SHA-256 and git blob at the tag), H4 ACTIVE (v1.14 → `20fbc342`, its score files' blobs), H5 INACTIVE, H6 ACTIVE (v1.12's tag, commit, tagger date before the lock commit, its prereg and scorer blobs, the scorer's SHA-256 at the tag, which `--h6-cov` checks), the v0.42 pins (tag absent at this lock: re-checked in step 9 and by MQ7), `t4_raw_sha256` null (recorded before the first read). It refuses if the tag is not on origin, a file differs from the manifest, v1.14's tag moved, or the H6 order fails.
 
 Part II (if 3b was done; `--collect` reads `commit` and `brand_domains_sha256`):
 ```
@@ -140,5 +140,5 @@ cd /Users/pablou/aias/_worktrees/v1.13 && PYTHONDONTWRITEBYTECODE=1 python3 osf/
 
 - Report: tag objects, lock commit, anchor commit(s), the OSF verifications, the receipt time.
 - **v0.42 pins:** after v0.42 tags, `git fetch origin refs/tags/v0.42-prereg-r1:refs/tags/v0.42-prereg-r1` and run step 1d again: it adds two lines comparing the pins with the blobs at the tag. A difference is logged in `anchor/DEVIATIONS.md` before Stage C1 (§0); MQ7 halts Stage C1 on it.
-- **Stage C1** only after t4 is complete and its raw file's SHA-256 is recorded; H4 waits for v1.14's Stage 1 output (PENDING at C1); H6 has no Cov\* reader in `score_v1_13.py` and stays UNDETERMINED ("score not available", N10) unless one is added under a logged deviation.
+- **Stage C1** only after t4 is complete and its raw file's SHA-256 is recorded; H4 waits for v1.14's Stage 1 output (PENDING at C1); H6 waits for v1.12's scored output (Coverage collects Nov 14–16): pass `--h6-cov osf/methodology/v1_12/v112_unit_table.csv` (path on the v1.12 worktree; `v112_verdicts.json` beside it) at C1 if it exists, else at C2; without it by C2, `--h6-unavailable "REASON"` (UNDETERMINED, Paper B; §12 (x), N21). The reader refuses output whose scorer SHA-256 differs from `score_v1_12.py` at v1.12's tag, so a post-lock change to v1.12's scorer makes H6 UNDETERMINED unless logged as a deviation.
 - **Part II audit:** `audit_v1_13.py --collect --pass 1` refuses until tag `v1.13-audit-r1` is local and on origin, `audit_anchor_v1_13.json` names its commit and the D_b SHA-256, `audit_receipt_v1_13.json` is at least 24 h old, and the clock is outside 2026-11-17 00:00Z–2026-11-22 12:00Z with pass 1's 72 h ending before 2026-11-17 00:00Z (so pass 1 must start between receipt + 24 h and 2026-11-14 00:00Z, else from 2026-11-22 12:00Z). It runs longer than one shell call: launch it detached with `nice -n 10` (protocol §4). Pass 2 (P1 only) 7 days after pass 1 started, outside the blocked period.
