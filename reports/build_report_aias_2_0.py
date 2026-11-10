@@ -88,7 +88,7 @@ import tsboilerplate as boilerplate  # noqa: E402
 # COVER: add missing keys the cover story builder expects
 if "byline_short" not in content.COVER:
     content.COVER["byline_short"] = "Pablo Ulpiano González Castro"
-content.COVER["tagline"] = "AIAS\u2122 2.0 synthesis"
+content.COVER["tagline"] = "AIAS 2.0 synthesis"
 content.COVER.setdefault("subtitle", "")
 content.COVER.setdefault("deck", "")
 if "date" not in content.COVER:
@@ -152,7 +152,7 @@ if isinstance(content.HYPOTHESIS_SCORING, list) and content.HYPOTHESIS_SCORING a
                       _SC_MAP.get(h.get("status_class", ""), "descriptive")))
     content.HYPOTHESIS_SCORING = {
         "heading": "The five propositions, scored",
-        "intro": "Each proposition is the managerial reading of a locked result, scored for brand teams rather than reviewers.",
+        "intro": "Each line states one result in plain terms and where it stands.",
         "rows": _rows,
     }
 
@@ -181,7 +181,7 @@ if isinstance(content.CLOSING, str):
         "datasets": [
             "Synthesis data: osf.io/ec6wh/aias_2_0/aias_2_0_synthesis_data.json",
             "Per-brand profiles: osf.io/ec6wh/aias_2_0/aias_2_0_profiles.csv",
-            "Stage 2 verdicts: osf.io/ec6wh/methodology/v1_9/v1_9_verdicts.json (and v0.41 verdicts, osf.io/ec6wh/v41)",
+            "November test results: osf.io/ec6wh/methodology/v1_9/v1_9_verdicts.json (and v0.41 verdicts, osf.io/ec6wh/v41)",
             "Pre-registration: synthesis outline tag aias-2-0-outline-locked; v1.9-prereg-r1; v0.41-prereg-r1",
         ],
         "methodology_log": "AIAS 2.0 synthesis (November 2026)",
@@ -1102,24 +1102,26 @@ def build_leaderboards_spread(styles, manifest, chart_dir, debug):
 HERO_FIGURE_CAPTIONS = {
     "link": (
         "How closely each brand's Consistency tracks its Presence, within categories, in "
-        "each of the three waves. All three readings sit well below the 0.30 pass mark "
-        "(0.073 in May, 0.082 in June, 0.189 in November): knowing a brand's Presence says "
+        "each of the three waves. All three readings sit below the 0.30 pass mark, the "
+        "November reading highest (0.073 in May, 0.082 in June, 0.189 in November): knowing "
+        "a brand's Presence says "
         "little about its Consistency."
     ),
     "order": (
         "How well each score kept its brand order from June to November. Presence "
         "(0.954, 112 brands) is far above its pass mark. Consistency (0.647, 52 brands) is "
-        "above its pass mark and above the 0.585 that shuffled answers reach in 95 of 100 "
+        "above its pass mark and above the 0.585 that shuffled answers stay under in 95 of 100 "
         "tries, so its stability is not only a product of the questions."
     ),
     "naming": (
         "How much each agreement measure moves with how often a brand is named. The first "
         "measure tracked naming frequency (0.682, 55 brands) and was replaced; the current "
-        "measure does not (0.091, 197 brands)."
+        "measure does not (0.091, pooled over 197 brand readings from three analysis sets "
+        "covering the 84 brands named at least once)."
     ),
     "rated": (
         "The share of brands the six models name at least six times, and so can be rated for "
-        "Consistency, by category and wave. In each wave 55, 54 and 54 of the 112 brands "
+        "Consistency, by category and wave. In May, June and November, 55, 54 and 54 of the 112 brands "
         "are rated; by category the share runs from 38% to 58%."
     ),
     "combined": (
@@ -1357,7 +1359,7 @@ def build_closing_story(styles: dict, brand: dict) -> list:
     methodology_text = brand["disclaimers"]["methodology_standard"].replace(
         "(current: v0.3)",
         f"(current: {REPORT_PROTOCOL_VERSION})",
-    )
+    ).replace("Gonzalez Castro", "González Castro")  # shared boilerplate drops the accent
     s.append(Paragraph("<b>Methodology</b>", styles["body_lead"]))
     s.append(Paragraph(methodology_text, styles["disclaimer"]))
     s.append(Spacer(1, 10))
@@ -1370,6 +1372,8 @@ def build_closing_story(styles: dict, brand: dict) -> list:
         "Third System (SSRN pending). thirdsystem.ai/methodology"
     )
     s.append(Paragraph(citation_text, styles["disclaimer"]))
+    s.append(Paragraph("Declarations, including conflicts of interest, are in the paper.",
+                       styles["disclaimer"]))
     s.append(Spacer(1, 10))
 
     s.append(Paragraph("<b>Underlying datasets</b>", styles["body_lead"]))

@@ -31,7 +31,10 @@ need("v1.7 defined rate", f"{L['v1.7']['record']['H_CPC_Defined']['pooled_define
 v18 = L["v1.8"]["record"]["verdicts"]
 need("v1.8 CV reproduces", f"|ρ(CV-CPC, μ)| = {f3(v18['H_CV_Reproduces']['stat']['abs_rho'])}, n = {v18['H_CV_Reproduces']['stat']['n']}")
 mi = v18["H_MeanIndependent"]["stat"]["pooled"]
-need("v1.8 mean-independent", f"pooled |ρ(φ, μ)| = {f3(mi['abs_rho'])}, n = {mi['n']}")
+pf = v18["H_MeanIndependent"]["stat"]["per_framing"]
+need("v1.8 mean-independent", f"pooled |ρ(φ, μ)| = {f3(mi['abs_rho'])} over {mi['n']} brand observations from three analysis sets; "
+     f"{f3(pf['v0.34']['abs_rho'])}, {f3(pf['v0.35']['abs_rho'])} and {f3(pf['v0.36']['abs_rho'])} within sets)",
+     len(pf) == 3 and sum(x["n"] for x in pf.values()) == mi["n"])
 lr = v18["H_LowRecallDefined"]["stat"]
 need("v1.8 defined", f"({lr['phi_defined']} of {lr['n_nonzero_surfacing']}, against {lr['cv_raw_defined']} for CV-CPC)")
 pdis = v18["H_PositionalDissociation"]["stat"]
@@ -40,7 +43,7 @@ need("K1 t1", f"{f3(S['t1']['rho_Cstar_P'])} in May (n = {S['t1']['rho_Cstar_P_n
 need("K1 t2", f"{f3(S['t2']['rho_Cstar_P'])} in June (n = {S['t2']['rho_Cstar_P_n']})")
 dis = V["H_Dissociation_t3"]
 need("DIS", f"{f3(abs(dis['rho']))} in November (n = {dis['n']})", dis["verdict"] == "CONFIRMED")
-need("abstract three waves", f"(|ρ| = {f3(S['t1']['rho_Cstar_P'])}, {f3(S['t2']['rho_Cstar_P'])} and {f3(abs(dis['rho']))})")
+need("abstract three waves", f"(|ρ| = {f3(S['t1']['rho_Cstar_P'])} and {f3(S['t2']['rho_Cstar_P'])} in the two calibration waves, {f3(abs(dis['rho']))} in the confirmatory wave)")
 dr = W["H_Drift_Dissociation"]
 need("drift", f"ρ = {f3(dr['rho'])}, n = {dr['n']}; H_Drift_Dissociation CONFIRMED", dr["verdict"] == "CONFIRMED")
 need("drift baseline", f"June coupling of {f3(dr['baseline_coupling_t2_rho'])}")
@@ -103,6 +106,30 @@ v33 = L["v0.33"]["record"]["H_Provider_Asymmetry"]
 need("v0.33", f"= {f3(v33['mean_eta2_observed'])}, MC p = {v33['mc_p_onesided']:.4f}")
 v34 = L["v0.34"]["record"]["verdicts"]["H_CPC_Temporal_Stability"]["per_substrate_rho"]
 need("v0.34", f"ρ {min(v for k, v in v34.items() if k != 'v0.19'):.2f}–{max(v34.values()):.2f} in four of five categories; headphones {v34['v0.19']:.2f}")
+
+# --- added Nov 10, 2026 (Fable review fixes) ---
+tr = V41["manipulation_checks"]["MC_Truncation"]["per_model"]
+pc = lambda m: f"{tr[m]['truncated'] / tr[m]['calls'] * 100:.1f}%"  # noqa: E731
+need("truncation (B2)", f"{pc('gemini-2.5-flash')} for Gemini 2.5 Flash ({tr['gemini-2.5-flash']['truncated']} of {tr['gemini-2.5-flash']['calls']} logged calls), "
+     f"{pc('claude-opus-4-5')} for Claude Opus 4.5, {pc('gemini-2.5-flash-lite')} for Gemini 2.5 Flash Lite, {pc('claude-sonnet-4-5')} for Claude Sonnet 4.5 "
+     "and zero for both GPT-4o models", tr["gpt-4o"]["truncated"] == 0 == tr["gpt-4o-mini"]["truncated"])
+need("Gemini undated", "the two Gemini models carry no dated identifier",
+     not any("gemini" in m for m in mc["MC_Snapshot"]["per_model"]))
+v33b = L["v0.33"]["record"].get("H_Provider_Beyond_Presence") or json.load(open(ROOT / "osf/v33/v33_provider_asymmetry_verdicts.json"))["H_Provider_Beyond_Presence"]
+need("v0.33 beyond (S4)", f"($\\delta\\eta^2$ = {f3(v33b['delta_eta2_observed'])}, MC p = {v33b['mc_p_onesided']:.4f})")
+need("S2 phi moved", f"raw φ moved the other way ({f3(tw['rho'])} to {f3(phl['rho'])})")
+need("S2 decay upper", f"(up to {f3(dec['phi']['ci95'][1])})")
+k2_both = [k for k, c in C.items() if c["t1"]["K2"]["pass"] and c["t2"]["K2"]["pass"]]
+jsa = C["C_phiJ+SHRINK+ADD"]
+need("only K2 pass (4.5)", f"({f3(jsa['t1']['K2']['rho'])} and {f3(jsa['t2']['K2']['rho'])}), failed K1 and K3",
+     k2_both == ["C_phiJ+SHRINK+ADD"] and not jsa["t1"]["K1"]["pass"] and not jsa["t2"]["K1"]["pass"]
+     and not jsa["t1"]["K3"]["pass"] and not jsa["t2"]["K3"]["pass"])
+need("B1 abstract", "no candidate composite of the two scores both carries information Presence does not and keeps Consistency separate",
+     not any(all(c[w]["K1"]["pass"] and c[w]["K2"]["pass"] for w in ("t1", "t2")) for c in C.values()))
+v37n = L["v0.37"]["record"]["verdicts"]["H_IL_Consistency"]
+ps37 = v37n.get("realized_n", {}).get("per_substrate", {})
+need("v0.37 three categories (S6)", f"on {v37n['stat']['n']} brands in three categories",
+     len(ps37) == 3 and sum(x["analyzable"] for x in ps37.values()) == v37n["stat"]["n"])
 
 fails = [(l, s) for l, s, t in checks if not t or (s and s not in TEXT)]
 for l, s in fails:
