@@ -1,0 +1,103 @@
+# ----------------------------------------------------------------- dry run
+def dry_run(out=print):
+    probes = load_probes()
+    specs = build_specs(probes)
+    total = expected_total(probes)
+    bad = confirm_no_sampling_params()
+    out(f"AIAS v0.62 acquisition: DRY RUN (nothing is sent). ROOT = {ROOT}")
+    out(f"headphones option: {P.HEADPHONES_OPTION}; window: {WINDOW_DATES[0]}..{WINDOW_DATES[1]} US Central; "
+        f"blackout {BLACKOUT_DATES[0]}..{BLACKOUT_DATES[1]}")
+    out(f"sampling params in call_anthropic_current / anthropic_params: {bad or 'none (temperature/top_p/top_k not sent)'}")
+    out(f"max output tokens per request: {CURRENT_MAX_TOKENS}")
+    out(f"{'block':26s} " + " ".join(f"{m['model_id']:>17s}" for m in PANEL) + "  total")
+    for bi, (kind, cond, run) in enumerate(BLOCKS):
+        row = [sum(1 for s in specs if s["block"] == bi and s["model"]["model_id"] == m["model_id"]) for m in PANEL]
+        out(f"{bi + 1}. {kind:6s} {cond} run {run}          " + " ".join(f"{x:17d}" for x in row) + f"  {sum(row):5d}")
+    out(f"TOTAL calls: {len(specs)} (expected {total}) -> {'OK' if len(specs) == total else 'MISMATCH'}")
+    out("by language: " + json.dumps(dict(Counter(s["language"] for s in specs))) +
+        "  by model: " + json.dumps({m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"])
+                                     for m in PANEL}) + "  modes: " + json.dumps({m["model_id"]: m["mode"] for m in PANEL}))
+    out("by substrate (all models, both languages): " + json.dumps(dict(Counter(s["substrate"] for s in specs))))
+    out(f"fallback F1 (no Phase A): {expected_total(probes, drop_phase_a=True)} calls; "
+        f"fallback F2 (no Phase B run 3): {expected_total(probes, drop_run3=True)} calls")
+    out("worst-case reservation per request (USD; 2,000 input tokens, output at the cap):")
+    for m in PANEL:
+        out(f"  {m['model_id']:17s} {m['mode']:8s} S0 {BG.worst_case(m['model_id'], 'S0', m['mode'], '2026-11-29'):.4f}"
+            f" (Nov)  {BG.worst_case(m['model_id'], 'S0', m['mode'], '2026-12-01'):.4f} (Dec)")
+    out(f"budget: pause at ${BG.PAUSE_AT_USD:.0f}, hard stop at ${BG.BUDGET_CAP_USD:.0f}; judge reserve "
+        f"${BG.JUDGE_RESERVE_USD:.4f} (counted in the spend from the first call)")
+    try:
+        ce = cost_estimate()
+        for k in ("option_%s_nov" % P.HEADPHONES_OPTION, "option_%s_dec" % P.HEADPHONES_OPTION):
+            d = ce["designs"][k]
+            out(f"cost estimate [{k}]: {d['calls']} calls, central ${d['central']:.2f}, high ${d['high']:.2f}")
+        out(f"projection pause after block 1: call spend x {projection_ratio(when_utc='2026-11-29'):.4f} (Nov) / "
+            f"x {projection_ratio(when_utc='2026-12-01'):.4f} (Dec) > ${BG.PAUSE_AT_USD:.0f}")
+    except Exception as e:
+        out(f"cost estimate unavailable: {type(e).__name__}: {e}")
+    ok, why = window_check()
+    out(f"guard (state now, informational): anchor file {'present' if ANCHOR_PATH.exists() else 'MISSING'}; "
+        f"window: {why}; other collections running: {len(other_collections())}")
+    out("nothing sent.")
+    return 0 if len(specs) == total else 1
+
+
+# ----------------------------------------------------------------- collect
+def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_phase_a=None, window=None,
+            deviation_entry=None):
+    global DEADLINE_UTC
+    commit = prereg_guard()
+    print(f"prereg guard passed: {PREREG_TAG} -> {commit}; anchor {ANCHOR_PATH}")
+    P.validate()
+    dates = WINDOW_DATES
+    if window:
+        if deviation_entry is None:
+            sys.exit("REFUSED: --window needs --deviation-entry")
+        dates = declared_window(window[0], window[1], deviation_entry)
+    ok, why = window_check(dates=dates)
+    if not ok:
+        sys.exit(f"REFUSED: {why}")
+    others = other_collections()
+    if others:
+        sys.exit("REFUSED: another paid collection is running: " + "; ".join(f"{p} {c[:120]}" for p, c in others))
+    DEADLINE_UTC = deadline(dates)
+    print(f"window ok: {why}")
+    require_keys()
+    ledger = BG.Ledger(RAW_PATH, STATE_PATH)
+    for kind, note in (("past_80", approve_past_80), ("projection", approve_projection), ("drop_run3", drop_run3),
+                       ("drop_phase_a", drop_phase_a)):
+        if note:
+            ledger.approve(kind, note)
+    record_window(dates, deviation_entry)
+    specs = build_specs(load_probes(), drop_run3=ledger.approved("drop_run3"),
+                        drop_phase_a=ledger.approved("drop_phase_a"))
+    print(f"{len(specs)} specs (headphones option {P.HEADPHONES_OPTION}), {len(done_ids())} already done; "
+          f"budget {ledger.summary()}")
+    st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync},
+                        projection_ratio(when_utc=first_call_utc() or datetime.now(timezone.utc)))
+    print("result:", st, ledger.summary())
+    return {"done": 0, "pause": 5, "stop": 6}[st]
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description="AIAS v0.62 acquisition (pre-registration r1 draft); default --dry-run")
+    ap.add_argument("--dry-run", action="store_true", help="the default: print the matrix and guards, send nothing")
+    ap.add_argument("--collect", action="store_true", help="guarded paid collection")
+    ap.add_argument("--approve-past-80", metavar="NOTE", default=None)
+    ap.add_argument("--approve-projection", metavar="NOTE", default=None)
+    ap.add_argument("--drop-run-3", metavar="NOTE", default=None, help="fallback F2")
+    ap.add_argument("--drop-phase-a", metavar="NOTE", default=None, help="fallback F1")
+    ap.add_argument("--window", nargs=2, metavar=("START", "END"), default=None)
+    ap.add_argument("--deviation-entry", default=None)
+    a = ap.parse_args(argv)
+    if a.dry_run and a.collect:
+        ap.error("choose one of --dry-run / --collect")
+    if not a.collect:
+        if any([a.approve_past_80, a.approve_projection, a.drop_run_3, a.drop_phase_a, a.window]):
+            ap.error("approvals and --window apply to --collect only")
+        return dry_run()
+    return collect(a.approve_past_80, a.approve_projection, a.drop_run_3, a.drop_phase_a, a.window, a.deviation_entry)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

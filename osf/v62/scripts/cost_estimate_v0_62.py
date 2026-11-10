@@ -1,4 +1,10 @@
-"""AIAS v0.62 (non-English wave, draft r0): calls, cost estimate and design trade-off. No model is called.
+"""AIAS v0.62 (non-English wave, r1 draft): calls, cost estimate and design trade-off. No model is called.
+
+r1 changes (from r0): (1) the by-phase lines now list the judge reserve as its own line and print the sum check, so
+that the phase lines add up to the adopted total (r0 printed the phase lines without the $1.32 reserve: $58.74 +
+$1.32 = $60.06 December); (2) designs and projection ratios for the three headphones options (params_v0_62);
+(3) the spend as the budget guard counts it (calls + judge reserve) at the end of blocks 1-3; (4) outputs
+cost_estimate_v0_62_r1.json/.txt (the r0 files are kept unchanged).
 
 Per-call basis: the t4 wave's measured-basis figures (v0.42 r2, design "r2 (adopted)"), read from
 osf/v62/inputs/cost_estimate_v0_42_r2.json (byte copy of v0.42 commit 527899e, SHA-256 checked below).
@@ -20,11 +26,15 @@ Judge reserve (v0.23 open recognition answers, coding not acquisition): 24 answe
 = 144 calls on Claude Sonnet 4.5 (3/15 standard), at v0.42 r2's per-answer bound (1,500 input and 10 output
 tokens) times the high JA factor (2.00) for input.
 
-Run: python3 osf/v62/scripts/cost_estimate_v0_62.py -> osf/v62/prereg/cost_estimate_v0_62_r0.json and .txt
+Run: python3 osf/v62/scripts/cost_estimate_v0_62.py -> osf/v62/prereg/cost_estimate_v0_62_r1.json and .txt
 """
 import hashlib
 import json
 import os
+import sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+import params_v0_62 as P  # noqa: E402
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 V62 = os.path.normpath(os.path.join(HERE, '..'))
@@ -59,7 +69,13 @@ def judge_reserve():
     return j['calls'] * (j['in_tokens'] * j['usd_in_per_m'] + j['out_tokens'] * j['usd_out_per_m']) / 1e6
 
 
-def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planning', judge=True):
+def n_probes(option='A'):
+    """(Phase B, A yes/no, A open) probes per language under a headphones option (A: 30/88/24; B: 30/87/24;
+    C: 24/72/24)."""
+    return (N_B - (6 if option == 'C' else 0), N_AYN - {'A': 0, 'B': 1, 'C': 16}[option], N_AOPEN)
+
+
+def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planning', judge=True, option='A'):
     """factor='planning' -> central basis x central factor, high basis x high factor; 'english' -> factor 1."""
     rows, tc, th, calls = [], 0.0, 0.0, 0
     for lg in langs:
@@ -67,8 +83,9 @@ def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planni
         fh = FACTOR['english' if factor == 'english' else 'high'][lg]
         for m in MODELS:
             wave = GEM_ROWS[month] if m == 'gemini-4-argon' else 't4'
-            for phase, cond, n in (('B', 'S0', N_B * b_runs), ('A_yn', 'S0', N_AYN * a_runs),
-                                   ('A_open', 'S0', N_AOPEN * a_runs), ('B', 'S1', N_B * s1_runs)):
+            nb, nyn, nop = n_probes(option)
+            for phase, cond, n in (('B', 'S0', nb * b_runs), ('A_yn', 'S0', nyn * a_runs),
+                                   ('A_open', 'S0', nop * a_runs), ('B', 'S1', nb * s1_runs)):
                 if n == 0:
                     continue
                 c, h = pc[(wave, m, phase, cond)]
@@ -107,18 +124,26 @@ def main():
         ('plus_s1_x1_nov', 'adopted + Phase B S1 x1, November (not adopted)', dict(month='nov', s1_runs=1)),
         ('plus_s1_x3_nov', 'adopted + Phase B S1 x3 (the full t4 design), November (not adopted)', dict(month='nov', s1_runs=3)),
     ]
+    for o in ('A', 'B', 'C'):
+        for mo, mname in (('nov', 'November'), ('dec', 'December')):
+            spec.append(('option_%s_%s' % (o, mo), 'headphones option %s, %s prices' % (o, mname), dict(month=mo, option=o)))
+            spec.append(('option_%s_block1_%s' % (o, mo), 'headphones option %s, block 1 only, %s' % (o, mname),
+                         dict(month=mo, option=o, b_runs=1, a_runs=0)))
     designs = {}
     for key, label, kw in spec:
         d = design(pc, **kw)
         d['label'] = label
         designs[key] = d
     proj = {m: designs['adopted_' + m]['central'] / designs['block1_' + m]['central'] for m in ('nov', 'dec')}
+    proj_opt = {o: {m: designs['option_%s_%s' % (o, m)]['central'] / designs['option_%s_block1_%s' % (o, m)]['central']
+                    for m in ('nov', 'dec')} for o in ('A', 'B', 'C')}
     be = {m: {'pause_80': break_even(pc, m, PAUSE), 'cap_100': break_even(pc, m, CAP)} for m in ('nov', 'dec')}
     out = {'accessed': '2026-11-10', 'per_call_source': 'osf/v62/inputs/cost_estimate_v0_42_r2.json [' + SRC_DESIGN + '] sha256 ' + s,
            'language_factor_assumption': FACTOR, 'judge': dict(JUDGE, reserve_usd=judge_reserve()),
            'cap_usd': CAP, 'pause_usd': PAUSE, 'designs': designs,
-           'projection_ratio_adopted_to_block1_central': proj, 'break_even_uniform_factor_on_high_basis': be}
-    L = ['AIAS v0.62 cost estimate (draft r0; no model called). Per language: 30 category questions x 3 runs + 112 brand '
+           'projection_ratio_adopted_to_block1_central': proj, 'projection': proj_opt,
+           'headphones_option_in_params': P.HEADPHONES_OPTION, 'break_even_uniform_factor_on_high_basis': be}
+    L = ['AIAS v0.62 cost estimate (r1 draft; no model called). Per language: 30 category questions x 3 runs + 112 brand '
          'questions x 1 run, 3 models (N3), search off (S0).',
          'Language factor (assumption, not measured): central FR %.2f JA %.2f; high FR %.2f JA %.2f.'
          % (FACTOR['central']['fr'], FACTOR['central']['ja'], FACTOR['high']['fr'], FACTOR['high']['ja']),
@@ -139,13 +164,27 @@ def main():
                 rs = [r for r in d['rows'] if r['language'] == lg and r['model'] == m]
                 L.append('  %-3s %-18s calls %4d  %6.2f / %6.2f' % (lg, m, sum(r['calls'] for r in rs),
                                                                   sum(r['usd_central'] for r in rs), sum(r['usd_high'] for r in rs)))
+        sc, sh = 0.0, 0.0
         for ph in ('B', 'A_yn', 'A_open'):
             rs = [r for r in d['rows'] if r['phase'] == ph]
-            L.append('  phase %-7s calls %4d  %6.2f / %6.2f' % (ph, sum(r['calls'] for r in rs),
-                                                             sum(r['usd_central'] for r in rs), sum(r['usd_high'] for r in rs)))
+            c, h = sum(r['usd_central'] for r in rs), sum(r['usd_high'] for r in rs)
+            sc, sh = sc + c, sh + h
+            L.append('  phase %-7s calls %4d  %6.2f / %6.2f' % (ph, sum(r['calls'] for r in rs), c, h))
+        L.append('  judge reserve      (144)  %6.2f / %6.2f' % (d['judge_reserve'], d['judge_reserve']))
+        L.append('  sum of the lines above    %6.2f / %6.2f  (= total %6.2f / %6.2f)' % (
+            sc + d['judge_reserve'], sh + d['judge_reserve'], d['central'], d['high']))
+        b = [r for r in d['rows'] if r['phase'] == 'B']
+        bc, bh = sum(r['usd_central'] for r in b), sum(r['usd_high'] for r in b)
+        L.append('  spend as the guard counts it at the end of blocks 1-3 (Phase B + judge reserve): %6.2f / %6.2f'
+                 '  (pause at $%.0f)' % (bc + d['judge_reserve'], bh + d['judge_reserve'], PAUSE))
+    L += ['', 'Headphones options (params_v0_62.HEADPHONES_OPTION = %s):' % P.HEADPHONES_OPTION]
+    for o in ('A', 'B', 'C'):
+        n, d = designs['option_%s_nov' % o], designs['option_%s_dec' % o]
+        L.append('  option %s: %4d calls; November %6.2f / %6.2f; December %6.2f / %6.2f; projection ratio Nov %.4f Dec %.4f'
+                 % (o, n['calls'], n['central'], n['high'], d['central'], d['high'], proj_opt[o]['nov'], proj_opt[o]['dec']))
     os.makedirs(PRE, exist_ok=True)
-    json.dump(out, open(os.path.join(PRE, 'cost_estimate_v0_62_r0.json'), 'w', encoding='utf-8'), indent=1)
-    open(os.path.join(PRE, 'cost_estimate_v0_62_r0.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
+    json.dump(out, open(os.path.join(PRE, 'cost_estimate_v0_62_r1.json'), 'w', encoding='utf-8'), indent=1)
+    open(os.path.join(PRE, 'cost_estimate_v0_62_r1.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
     print('\n'.join(L))
 
 

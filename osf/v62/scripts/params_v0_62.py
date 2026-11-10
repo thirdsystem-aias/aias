@@ -1,0 +1,60 @@
+"""AIAS v0.62 -- the pre-registrant's open choices, one parameter each (r1 draft).
+
+Changing a choice is a one-line edit of this file, logged in the pre-registration's change log (and, after the
+lock, as a DEVIATIONS entry). acquire_v0_62.py, cost_estimate_v0_62.py, code_v0_62.py and score_v0_62.py read
+these values; nothing else in the code needs to change.
+
+HEADPHONES_OPTION (DEVIATIONS Entry 0, Part C; pre-registration section 9 question 3):
+  "A"  registry unchanged, Denon included and disclosed; sensitivities S-Denon and S-Headphones   (default, r0)
+  "B"  as A, but the Denon brand question (Phase A) is not asked; Denon dropped from every test (111 units)
+  "C"  the headphones category (v0.19) is not collected; tests on 96 units in four categories
+WINDOW: the collection window, inclusive US Central dates (pre-registration section 5.5; section 9 question 2).
+  Default 2026-11-29 .. 2026-12-02 (before t5). It may never touch the machine's blackout (BLACKOUT, the v0.40
+  collection, 2026-11-17 .. 2026-11-21) and must start after the lock.
+"""
+from datetime import date
+
+HEADPHONES_OPTION = "A"                      # "A" | "B" | "C"
+WINDOW = ("2026-11-29", "2026-12-02")        # inclusive, US Central
+
+BLACKOUT = ("2026-11-17", "2026-11-21")      # inclusive, US Central: never collect (v0.40's booking)
+DENON = ("v19", "Denon")                     # (substrate, brand_id) of the unit flagged in DEVIATIONS Entry 0
+HEADPHONES = "v19"
+
+
+def validate(option=None, window=None):
+    """Raise ValueError if a choice is not admissible. Returns (option, window)."""
+    option = HEADPHONES_OPTION if option is None else option
+    window = WINDOW if window is None else tuple(window)
+    if option not in ("A", "B", "C"):
+        raise ValueError(f"HEADPHONES_OPTION must be A, B or C, not {option!r}")
+    a, b = date.fromisoformat(window[0]), date.fromisoformat(window[1])
+    if b < a:
+        raise ValueError("WINDOW ends before it starts")
+    x, y = date.fromisoformat(BLACKOUT[0]), date.fromisoformat(BLACKOUT[1])
+    if a <= y and b >= x:
+        raise ValueError(f"WINDOW {window} overlaps the blackout {BLACKOUT}")
+    return option, window
+
+
+def excluded_probe(substrate, phase, brand_id, option=None):
+    """True if the headphones option removes this probe from the design."""
+    option = HEADPHONES_OPTION if option is None else option
+    if option == "C" and substrate == HEADPHONES:
+        return True
+    if option == "B" and phase == "A" and (substrate, brand_id) == DENON:
+        return True
+    return False
+
+
+def excluded_unit(substrate, brand, option=None):
+    """True if the headphones option removes this unit from every test (B: Denon; C: the v0.19 category)."""
+    option = HEADPHONES_OPTION if option is None else option
+    if option == "C" and substrate in (HEADPHONES, "v0.19"):
+        return True
+    if option == "B" and substrate in (HEADPHONES, "v0.19") and brand == DENON[1]:
+        return True
+    return False
+
+
+validate()
