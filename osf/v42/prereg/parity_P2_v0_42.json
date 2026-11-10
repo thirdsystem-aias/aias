@@ -1,0 +1,82 @@
+{
+  "gate": "P2",
+  "passed": true,
+  "inputs": "osf/v41/data (t3 raw answers); locked codes via score_v41.load_wave (mentions, v0.19/v0.20-22 recognition) and v23_phase_a_scored.json (v0.23 judge)",
+  "t3_calls_recoded": {
+    "v19_A": 96,
+    "v19_B": 36,
+    "v20_A": 144,
+    "v20_B": 36,
+    "v21_A": 144,
+    "v21_B": 36,
+    "v22_A": 144,
+    "v22_B": 36,
+    "v23_A": 144,
+    "v23_B": 36
+  },
+  "total_calls": 852,
+  "url_removal_off": {
+    "per_substrate": {
+      "v0.19": {
+        "mention_cells": 576,
+        "mention_mismatches": 0,
+        "mention_examples": [],
+        "recognition_cells": 96,
+        "recognition_mismatches": 0
+      },
+      "v0.20": {
+        "mention_cells": 864,
+        "mention_mismatches": 0,
+        "mention_examples": [],
+        "recognition_cells": 144,
+        "recognition_mismatches": 0,
+        "label_cells": 144,
+        "label_mismatches": 0
+      },
+      "v0.21": {
+        "mention_cells": 864,
+        "mention_mismatches": 0,
+        "mention_examples": [],
+        "recognition_cells": 144,
+        "recognition_mismatches": 0,
+        "label_cells": 144,
+        "label_mismatches": 0
+      },
+      "v0.22": {
+        "mention_cells": 864,
+        "mention_mismatches": 0,
+        "mention_examples": [],
+        "recognition_cells": 144,
+        "recognition_mismatches": 0,
+        "label_cells": 144,
+        "label_mismatches": 0
+      },
+      "v0.23": {
+        "mention_cells": 864,
+        "mention_mismatches": 0,
+        "mention_examples": [],
+        "recognition_cells": 144,
+        "recognition_mismatches": 0
+      }
+    },
+    "v0_19_ambiguous_recognition_answers": 0,
+    "v0_20_22_unanswered_status_calls": 0,
+    "v0_23_recognition": "NOT re-judged: the coder's judge path ran score_v0_23.score_phase_a against a MOCK client that replays the locked t3 judge outputs (v23_phase_a_scored.json); mock replies consumed=144, unused=0, locked R_ERR=0",
+    "total_mention_cells": 4032,
+    "total_mention_mismatches": 0,
+    "total_recognition_cells": 672,
+    "total_recognition_mismatches": 0
+  },
+  "url_removal_on": {
+    "t3_phase_b_answers_containing_a_url": 0,
+    "t3_phase_a_answers_containing_a_url": 0,
+    "changed_mention_codes": [],
+    "n_changed_mention_codes": 0,
+    "changed_recognition_codes_phase_b_only_stripping": [],
+    "n_changed_recognition_codes": 0,
+    "diagnostic_recognition_also_stripped": {
+      "changed": [],
+      "n_changed": 0
+    }
+  }
+}
