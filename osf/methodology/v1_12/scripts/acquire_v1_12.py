@@ -15,7 +15,8 @@ tokens; no system prompt; no tools. Every record carries the settings sent (MC_S
 
 Cost guard (section 6.6): before every request it adds that request's worst case (200 input and 16,384 output
 tokens at list price) to the spend so far plus the requests in flight, and does not send the request if the sum
-passes US$120. Once the recorded spend reaches US$80 nothing more is sent until Pablo approves; the run is resumed
+passes US$100 (hard cap: programme rule of 2026-11-10, "at most $100 of paid model calls per paper"; the draft's
+$120 is superseded). Once the recorded spend reaches US$80 nothing more is sent until Pablo approves; the run is resumed
 with --approve-past-80 "<who, when>", which is logged. Spend = recorded tokens at list price (Gemini thinking tokens
 billed as output); a request that ends in a client-side timeout is counted at its worst case. Gemini 4 Argon is
 priced at $2/$10 per million tokens through 2026-11-30 and $4/$20 from 2026-12-01. Unsent calls are missing cells.
@@ -24,8 +25,13 @@ Modes:
   --dry-run   build and check the 900 call specs, the probe file, the decoding settings and the cost guard; no
               network call and no provider SDK import; writes prereg/dry_run_acquire_v1_12.txt
   --collect   refused unless tag v1.12-prereg-r1 is on origin and osf/methodology/v1_12/anchor/osf_anchor_v1_12.json
-              names its commit; sends only inside a collection window; resumable (answered calls are skipped; a
-              call is sent in at most two passes: the main pass and one re-run pass)
+              names its commit; refused until t4 (v0.42) is complete: anchor/t4_complete_v1_12.json records t4's raw
+              file, its SHA-256 and its last call, the file still has that SHA-256 (t4 wrote nothing since) and no
+              t4 call finished after the recorded last call, which is in the past; refused while another paid
+              collection (any acquire_v*.py --collect) runs on this machine; sends only inside a collection window
+              (2026-11-14 00:00 to 11-16 23:59 UTC, else 11-22 12:00 to 11-29 23:59 UTC; never 11-17 to 11-21,
+              v0.40), checked again before every request; resumable (answered calls are skipped; a call is sent in
+              at most two passes: the main pass and one re-run pass)
 """
 import argparse
 import hashlib
@@ -49,6 +55,8 @@ RAW_PATH = V112 / "data" / "v112_raw.jsonl"
 GUARD_LOG = V112 / "data" / "v112_guard_log.jsonl"
 ANCHOR_PATH = V112 / "anchor" / "osf_anchor_v1_12.json"
 DRY_RUN_PATH = V112 / "prereg" / "dry_run_acquire_v1_12.txt"
+T4_RECORD = V112 / "anchor" / "t4_complete_v1_12.json"       # section 6.7: written after t4's last call
+PAID_COLLECTION = re.compile(r"acquire_v[0-9][0-9_.]*\.py\b.*--collect")
 PREREG_TAG = "v1.12-prereg-r1"
 
 PANEL = [
@@ -64,7 +72,7 @@ SETTINGS = {"temperature": "provider default (not sent)", "top_p": "provider def
             "max_output_tokens": 16384, "system_prompt": None, "tools": None, "condition": "S0"}
 SENT_PARAM_WORDS = ("temperature", "top_p", "top_k", "reasoning_effort", "\"reasoning\"", "effort",
                     "thinking_config", "thinking_budget")
-CAP_USD, PAUSE_USD = 120.0, 80.0
+CAP_USD, PAUSE_USD = 100.0, 80.0                            # section 6.6 ($100 rule of 2026-11-10)
 IN_WORST, OUT_WORST = 200, 16384
 PRICES = {"claude-fable-5-2": (8.0, 40.0), "claude-opus-5-5": (4.0, 20.0), "gpt-6-astra": (10.0, 50.0),
           "gemini-4-argon": (2.0, 10.0)}                       # US$ per 1M tokens in / out (vendor pages, Nov 10)
@@ -315,6 +323,67 @@ def in_window(when):
     return any(a <= when <= b for a, b in WINDOWS)
 
 
+def _utcnow():
+    """The clock of every window and guard check (one function, so the tests can set it)."""
+    return datetime.now(timezone.utc)
+
+
+def _sha256(path):
+    h = hashlib.sha256()
+    with open(path, "rb") as f:
+        for chunk in iter(lambda: f.read(1 << 20), b""):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def t4_guard(now):
+    """Section 6.7: v1.12 starts only after t4's last call is logged. Reads anchor/t4_complete_v1_12.json
+    {t4_raw_path, t4_raw_sha256, t4_last_call_utc, recorded_by}; refuses unless the t4 raw file still has that
+    SHA-256, no t4 record finished after t4_last_call_utc, and t4_last_call_utc is before now."""
+    if not T4_RECORD.exists():
+        sys.exit(f"REFUSED: {T4_RECORD.name} missing: t4 (v0.42) is not recorded as complete (section 6.7)")
+    rec = json.loads(T4_RECORD.read_text(encoding="utf-8"))
+    raw = Path(rec.get("t4_raw_path") or "")
+    if not raw.is_file():
+        sys.exit(f"REFUSED: t4 raw file not found: {raw}")
+    if _sha256(raw) != rec.get("t4_raw_sha256"):
+        sys.exit("REFUSED: t4 raw file changed since t4 was recorded complete (t4 may still be collecting)")
+    last = datetime.fromisoformat(rec["t4_last_call_utc"])
+    latest = None
+    for line in raw.read_text(encoding="utf-8").splitlines():
+        try:
+            t = json.loads(line).get("finished_utc")
+        except (json.JSONDecodeError, AttributeError):
+            continue
+        if t:
+            t = datetime.fromisoformat(t)
+            latest = t if latest is None or t > latest else latest
+    if latest is not None and latest > last:
+        sys.exit(f"REFUSED: a t4 call finished at {latest.isoformat()}, after the recorded last call {last.isoformat()}")
+    if not last < now:
+        sys.exit("REFUSED: t4's recorded last call is not in the past")
+    return rec
+
+
+def running_commands():
+    r = subprocess.run(["ps", "-axo", "pid=,command="], capture_output=True, text=True)
+    out = []
+    for line in r.stdout.splitlines():
+        pid, _, cmd = line.strip().partition(" ")
+        if pid.isdigit():
+            out.append((int(pid), cmd))
+    return out
+
+
+def other_collection_guard(commands=None):
+    """Section 6.7: one paid collection on the Mac at a time (any acquire_v*.py --collect but this process)."""
+    me = {os.getpid(), os.getppid()}
+    others = [(pid, cmd) for pid, cmd in (running_commands() if commands is None else commands)
+              if pid not in me and PAID_COLLECTION.search(cmd)]
+    if others:
+        sys.exit("REFUSED: another paid collection is running: " + "; ".join(f"{p} {c[:120]}" for p, c in others))
+
+
 class Guard:
     """Section 6.6 cost guard and section 6.7 windows, checked before every request."""
 
@@ -354,7 +423,7 @@ def _guarded(provider):
     fn = CURRENT_DISPATCH[provider]
 
     def request(model_id, prompt, search, system=None):
-        when = datetime.now(timezone.utc)
+        when = _utcnow()
         w = GUARD.reserve(model_id, when)
         try:
             out = fn(model_id, prompt, search, system)
@@ -501,8 +570,12 @@ def _log_guard(event):
 def collect(max_conc, approval):
     commit = prereg_guard()
     print(f"prereg guard passed: {PREREG_TAG} -> {commit}")
-    if not in_window(datetime.now(timezone.utc)):
+    now = _utcnow()
+    if not in_window(now):
         sys.exit("REFUSED: outside the collection windows (section 6.7)")
+    t4 = t4_guard(now)
+    print(f"t4 guard passed: t4 last call {t4['t4_last_call_utc']}")
+    other_collection_guard()
     require_keys()
     probes, sha = load_probes()
     specs = build_specs(probes)
@@ -607,6 +680,9 @@ def dry_run():
         f"{'checked against origin' if tag_local and ANCHOR_PATH.exists() else 'REFUSED'}")
     say("collection windows (UTC): " + "; ".join(f"{a:%Y-%m-%d %H:%M} to {b:%Y-%m-%d %H:%M}" for a, b in WINDOWS)
         + f"; now {'inside' if in_window(now) else 'outside'}")
+    say(f"t4 completion record {T4_RECORD.relative_to(ROOT)}: {'present' if T4_RECORD.exists() else 'absent'} -> "
+        f"--collect {'checks it against the t4 raw file' if T4_RECORD.exists() else 'would be REFUSED'}; "
+        f"--collect also refuses while another acquire_v*.py --collect runs")
     say(f"raw record {RAW_PATH.relative_to(ROOT)}: {'exists' if RAW_PATH.exists() else 'absent (nothing collected)'}")
     sdk = [m for m in ("anthropic", "openai", "google.genai") if m in sys.modules]
     say(f"provider SDKs imported: {', '.join(sdk) if sdk else 'none'}; nothing sent.")
@@ -620,7 +696,7 @@ def main():
     ap.add_argument("--collect", action="store_true", help="guarded: prereg tag on origin + anchor file + window")
     ap.add_argument("--max-concurrency", type=int, default=1, help="concurrent calls per model (default 1)")
     ap.add_argument("--approve-past-80", default=None, metavar="WHO_WHEN",
-                    help="Pablo's recorded approval to spend past $80 (the $120 cap stays)")
+                    help="Pablo's recorded approval to spend past $80 (the $100 cap stays)")
     a = ap.parse_args()
     if a.dry_run == a.collect:
         ap.error("choose exactly one of --dry-run / --collect")
