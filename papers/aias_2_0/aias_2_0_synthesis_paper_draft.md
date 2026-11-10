@@ -218,7 +218,7 @@ Four steps follow. First, the profile is to be recalibrated on a new reference p
 
 ## Conflict of interest {-}
 
-The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. This synthesis re-reports measurements taken against brand registries fixed in earlier phases (v0.19--v0.23); it performs no new brand selection, and each registry carries its source-phase conflict-of-interest handling forward unchanged. Two items of record apply. In the automotive registry, Samsung subsidiaries hold tier-2/3 component supply relationships with several registry brands --- Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment) --- characterized in the source phase as non-competitive, with no brand-level overlap, and imposing no operational restriction on registry composition (v0.22 Declarations; screened in v0.22 DEVIATIONS Entry 0, Part B). In the audiophile-headphones registry, AKG was substituted with Denon before the v0.19 pre-registration lock because AKG's parent, Harman International, is a Samsung subsidiary (v0.19 pre-registration §2.3; v0.19 DEVIATIONS Entry 1). All statistics reported here were computed automatically from locked verdict files; the synthesis outline was locked and deposited before any third-wave score existed; and, apart from the AKG substitution noted above, the author's affiliation played no role in registry construction, scoring, or the resulting verdicts. Samsung Electronics had no role in the design, conduct, analysis, or reporting of this work.
+The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. This synthesis re-reports measurements taken against brand registries fixed in earlier phases (v0.19--v0.23); it performs no new brand selection, and each registry carries its source-phase conflict-of-interest handling forward unchanged. Two items of record apply. In the automotive registry, Samsung subsidiaries hold tier-2/3 component supply relationships with several registry brands --- Harman International (audio systems), Samsung SDI (battery cells), and Samsung Display (infotainment) --- characterized in the source phase as non-competitive, with no brand-level overlap, and imposing no operational restriction on registry composition (v0.22 Declarations; screened in v0.22 DEVIATIONS Entry 0, Part B). In the audiophile-headphones registry, AKG was substituted with Denon before the v0.19 pre-registration lock because AKG's parent, Harman International, is a Samsung subsidiary (v0.19 pre-registration §2.3; v0.19 DEVIATIONS Entry 1). Correction (November 10, 2026): Denon, which replaced AKG in the v0.19 registry, has itself been owned by Harman International, a wholly owned subsidiary of Samsung Electronics, since September 23, 2025, when Harman completed its acquisition of Sound United from Masimo (Harman International, 2025); the v0.19 headphones registry therefore includes one Samsung-group brand. The substitution did not achieve its purpose, and this was not noticed until November 10, 2026. All statistics reported here were computed automatically from locked verdict files; the synthesis outline was locked and deposited before any third-wave score existed; and, apart from the AKG substitution noted above, the author's affiliation played no role in registry construction, scoring, or the resulting verdicts. Samsung Electronics had no role in the design, conduct, analysis, or reporting of this work.
 
 ## Funding {-}
 
@@ -230,7 +230,7 @@ Not applicable; no human subjects. The study analyses responses of large languag
 
 ## Use of AI tools {-}
 
-The author used Anthropic's Claude to assist with analysis code, drafting and editing of text, and figure production. The study design, pre-registered hypotheses and decision rules, and all interpretations are the author's; the author reviewed all content and takes full responsibility for it.
+During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it.
 
 ## Data and code availability {-}
 
@@ -299,6 +299,8 @@ González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and P
 González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate --- Cell D_Defunct as Pure-Phantom Upper-Bound Test* (v0.22). SSRN 6829118.
 
 González Castro, P. U. (2026). *AIAS Presence Index v0.23: Premium Spirits Recognition Ceiling, Recall-driven Regime Classification, and the Conglomerate Ownership Hypothesis across 24 Brands and Six Large Language Models*. SSRN 6834298.
+
+Harman International. (2025, September 23). *HARMAN Completes Sound United Acquisition to Expand Premium Audio Leadership* \[Press release\]. Business Wire. <https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership>
 
 McCullagh, P., & Nelder, J. A. (1989). *Generalized Linear Models* (2nd ed.). Chapman and Hall.
 
