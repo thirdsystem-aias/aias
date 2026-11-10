@@ -2,10 +2,10 @@
   "phase": "v1.10",
   "kind": "pre-lock parity: MQ1 parse completion, MQ2 mention parity, unit join",
   "declaration": "Computed before the lock on the frozen inputs. Uses normalisation, the registry matcher and the list-item parser only; no rank position, no rank statistic, and no P or C* value was computed, read or printed.",
-  "created_utc": "2026-11-10T13:45:43+00:00",
+  "created_utc": "2026-11-10T13:54:18+00:00",
   "dry_run": false,
   "manifest": "INPUTS_MANIFEST_v1_10.json",
-  "manifest_sha256": "993de748f84ff0a1212130d473c66820b5bffc59a14ac1b833d6646ea3af0690",
+  "manifest_sha256": "2b10fc421d962c58e7ac1e6ee2256ff397bffe466c2da88d5ad7f0594988513c",
   "MQ1_parse_completion": {
     "OMNI t1 v0.19": {
       "rows": 36,

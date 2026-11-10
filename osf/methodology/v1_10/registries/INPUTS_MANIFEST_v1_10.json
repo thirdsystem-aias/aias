@@ -1,9 +1,9 @@
 {
   "phase": "v1.10",
-  "status": "DRAFT r1 (not locked)",
+  "status": "r2 (locked at v1.10-prereg-r2)",
   "base_branch": "aias-2.0",
   "base_commit": "894ccee9c65e3341c541191ac7ec1de48313a72a",
-  "built_on_head": "87fb279099f62c2566ad5192df99a1f2f992ef77",
+  "built_on_head": "d67cc41c48f51082f74dc804b38d57bd8c12ad11",
   "branch": "v1.10",
   "answer_counts_source": "Try system book/archive_inventory_scan.csv (n_answers_with_text), Nov 10, 2026",
   "decisions_applied": [
@@ -876,10 +876,10 @@
       "role": "registry_choice_evidence",
       "path": "osf/methodology/v1_10/registries/REGISTRY_CHOICES_v1_10.md",
       "answers_with_text": null,
-      "git_blob": "9e27833e8a2281541bf86b7b8e70f65cf334294e",
+      "git_blob": "a1bc24dd77d7aefd03e7619d9e6abf178618be0a",
       "on_base_commit": false,
-      "sha256": "1e77f17a6d761931594d230d1a8957b37b737c824bf0ce5fee73b5b6f4ec6e5e",
-      "bytes": 14266
+      "sha256": "5fcda3c3ee1c225c1c24e64ec42bf774485b74f5b637a40de7b37a2ecfbfb2d0",
+      "bytes": 14295
     },
     {
       "set": "v1.10 registry choices",

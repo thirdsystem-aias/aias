@@ -122,7 +122,7 @@ for e in F:
 if problems:
     sys.exit("STOP (frozen input changed since the base commit):\n" + "\n".join(problems))
 OUT.write_text(json.dumps({
-    "phase": "v1.10", "status": "DRAFT r1 (not locked)",
+    "phase": "v1.10", "status": "r2 (locked at v1.10-prereg-r2)",
     "base_branch": "aias-2.0", "base_commit": BASE, "built_on_head": head, "branch": "v1.10",
     "answer_counts_source": "Try system book/archive_inventory_scan.csv (n_answers_with_text), Nov 10, 2026",
     "decisions_applied": ["held studies v0.38 and v0.39 excluded entirely (decision 10)",

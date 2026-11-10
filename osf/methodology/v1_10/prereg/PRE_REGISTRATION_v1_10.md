@@ -1,6 +1,6 @@
 # AIAS v1.10 — Ranking, Paper A: instrument, cross-category baseline, separability gate
 
-AIAS™ Measurement Program — Third System™. Pre-registration **r1** (2026-11-10). Locked at git tag `v1.10-prereg-r1` and deposited on OSF before any rank statistic was computed on confirmatory data.
+AIAS™ Measurement Program — Third System™. Pre-registration **r2** (2026-11-10). Locked at git tag `v1.10-prereg-r2` (r1, tagged the same morning, was superseded before any computation; DEVIATIONS Entry 1) and deposited on OSF before any rank statistic was computed on confirmatory data.
 
 ## 0. Status, scope and lineage
 
@@ -8,8 +8,8 @@ AIAS™ Measurement Program — Third System™. Pre-registration **r1** (2026-1
 |---|---|
 | PHASE_ID | v1.10 |
 | PHASE_TYPE | methodology lock; **re-analysis of archived answers** (no new acquisition, no model calls, no spend) |
-| Status | r1. Drafted by the runner's sub-agent on branch `v1.10` (from `aias-2.0`, commit `894ccee`); open questions settled by the runner on 2026-11-10 (§15). A re-analysis of archived answers: it locks without waiting for the author's read (program rule, Nov 9); any later correction is logged in DEVIATIONS. |
-| Locks on | content lock → `prereg/LOCK_MANIFEST_v1_10.sha256` → commit → tag `v1.10-prereg-r1` → push branch and tag to GitHub → `anchor/git_anchor_v1_10.json` (tag object, commit, tree, UTC time, SHA-256 of every locked file) → OSF deposit of `osf/methodology/v1_10/prereg/`, `registries/` and `anchor/`, SHA-256 verified on OSF → only then the first confirmatory computation (`score_v1_10.py --stage S`), which refuses to run without the tag and the anchor file. |
+| Status | r2 (r1 superseded before any computation, §15 item 17). Drafted by the runner's sub-agent on branch `v1.10` (from `aias-2.0`, commit `894ccee`); open questions settled by the runner on 2026-11-10 (§15). A re-analysis of archived answers: it locks without waiting for the author's read (program rule, Nov 9); any later correction is logged in DEVIATIONS. |
+| Locks on | content lock → `prereg/LOCK_MANIFEST_v1_10.sha256` → commit → tag `v1.10-prereg-r2` → push branch and tag to GitHub → `anchor/git_anchor_v1_10.json` (tag object, commit, tree, UTC time, SHA-256 of every locked file) → OSF deposit of `osf/methodology/v1_10/prereg/`, `registries/` and `anchor/`, SHA-256 verified on OSF → only then the first confirmatory computation (`score_v1_10.py --stage S`), which refuses to run without the tag and the anchor file. |
 | Locked inputs | Presence: protocol v1.6 (P = 100·(C_P/6 + 2·π̂)/3). Consistency: v1.8 φ, scaled by v1.9 to C_φ = 100(1 − φ/7.2), rated only with ≥ 6 total mentions (C*). Both read from `osf/aias_2_0/aias_2_0_profiles.csv`; neither is recomputed or re-weighted here. |
 | Feeds forward | Ranking Paper B (only if the gate passes); the three-component calibration (Presence × Consistency × Ranking) at the AIAS 3.0 release. Numbering follows the FAST TRACK plan (Nov 9): v1.11 is Sentiment Paper A, so v1.9's forward reference to a "v1.11" calibration is superseded. |
 
@@ -83,7 +83,7 @@ v0.5 `archive/old_data` (pre-program, category uncertain); v0.10 `responses_mint
 
 ## 3. Order of operations (enforced by the scorer)
 
-The scorer refuses Stage S and Stage C unless tag `v1.10-prereg-r1` and `anchor/git_anchor_v1_10.json` exist; `--dry-run` runs the whole pipeline on synthetic replicas of every file format only (`dryrun/`).
+The scorer refuses Stage S and Stage C unless tag `v1.10-prereg-r2` and `anchor/git_anchor_v1_10.json` exist; `--dry-run` runs the whole pipeline on synthetic replicas of every file format only (`dryrun/`).
 
 1. `verify_manifest()`: every file matches its SHA-256 and git blob, else **halt**.
 2. Rank extraction (Section 4) on every frozen set; per-answer rank table written with its SHA-256.
@@ -242,3 +242,4 @@ Paper B is pre-registered separately and only after a PASS (or a MARGINAL with P
 14. Shuffle nulls of H3, H5 and H6: 10,000 draws; MQ7 keeps 2,000 (a control).
 15. The v0.5 archive stays excluded.
 16. Added before the lock: centred ρ_w (§7) with S9; S7 (COI re-check); S8 (knife sets at Stage S); H4 two-sided; MQ5 alias lists.
+17. r2 (2026-11-10, before any computation): r1's input manifest pinned the pre-edit hash of the documentation file `registries/REGISTRY_CHOICES_v1_10.md`, whose header line was changed at the content lock; Stage S halted at manifest verification, as designed, before any extraction. r2 rebuilds the input manifest and the parity record and moves the tag; no rule, threshold, input data file or analysis step changed.

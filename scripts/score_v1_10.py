@@ -3,7 +3,7 @@
 score_v1_10.py - AIAS v1.10, Ranking component, Paper A
 (instrument specification + cross-category baseline + separability gate).
 
-STATUS: r1 (2026-11-10), locked at tag v1.10-prereg-r1. Constants are transcribed from
+STATUS: r1 (2026-11-10), locked at tag v1.10-prereg-r2 (r1 superseded before any computation; DEVIATIONS Entry 1). Constants are transcribed from
 osf/methodology/v1_10/prereg/PRE_REGISTRATION_v1_10.md (section cited inline) and from
 the runner's settled decisions of 2026-11-10: primary position rule lead-item (E6),
 first-mention = S1; floors 6 rankable mentions / 30 units / 5 units per category;
@@ -59,7 +59,7 @@ import numpy as np
 # TRANSCRIBED CONSTANTS (r1, including the runner decisions of 2026-11-10)
 # ===========================================================================
 PHASE_ID = "v1.10"
-PREREG_TAG = "v1.10-prereg-r1"
+PREREG_TAG = "v1.10-prereg-r2"
 ROOT = Path(__file__).resolve().parents[1]
 V110 = "osf/methodology/v1_10"
 MANIFEST = ROOT / V110 / "registries/INPUTS_MANIFEST_v1_10.json"

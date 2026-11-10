@@ -15,4 +15,12 @@ The EARLY-6 and EARLY-2 registries (PM software, personal finance, olive oil, ru
 
 **Pre-lock record.** Development sample: v0.17 and v0.18 phase B (36 answers) were parsed for feasibility (`prereg/feasibility_v1_10.md`); both are excluded from every confirmatory analysis. Pre-lock parity on the real files (`prereg/parity_v1_10.json`, §9a): MQ1, MQ2 and the unit join only; the rank extractor was never called on a real answer file. Disclosed exposures during the schema survey: two rows of the published AIAS 2.0 profiles table (P and C\* of two v0.19 brands at t1) were printed once; the distinct values of the v0.9 PM `primary_recommendation` column (brand names, no counts) and the first distinct values of the v0.19 coded `rank` column (values not linked to brands) were printed. No rank statistic was computed from them.
 
-**Anchor preamble.** Content lock → `prereg/LOCK_MANIFEST_v1_10.sha256` → commit → tag `v1.10-prereg-r1` → push → `anchor/git_anchor_v1_10.json` → OSF deposit of `prereg/`, `registries/`, `anchor/` with SHA-256 verified → only then `score_v1_10.py --stage S` (it refuses without the tag and the anchor file).
+**Anchor preamble.** Content lock → `prereg/LOCK_MANIFEST_v1_10.sha256` → commit → tag `v1.10-prereg-r2` → push → `anchor/git_anchor_v1_10.json` → OSF deposit of `prereg/`, `registries/`, `anchor/` with SHA-256 verified → only then `score_v1_10.py --stage S` (it refuses without the tag and the anchor file).
+
+## Entry 1 — r1 superseded by r2 before any computation (2026-11-10)
+
+**Type:** ex ante for r2 (no rank extraction, no statistic computed under r1).
+
+**What happened.** Tag `v1.10-prereg-r1` (commit 672365b) was pushed and deposited on OSF at 07:50–07:55 CT. The first `score_v1_10.py --stage S` run halted at `verify_manifest()`: `INPUTS_MANIFEST_v1_10.json` pinned `registries/REGISTRY_CHOICES_v1_10.md` at its hash from before the content lock, when the runner had changed that file's header line from "Draft r1, 2026-11-10." to "r1, 2026-11-10 (locked with the pre-registration)." No loader reads that file; the halt is the designed response to any hash mismatch.
+
+**Change.** r2 rebuilds the input manifest (and the parity record that carries the manifest hash), updates the tag named in the scorer's refusal check, and is tagged `v1.10-prereg-r2`. No rule, threshold, seed, input data file or analysis step changed. r1 stays in the record (tag and OSF versions).
