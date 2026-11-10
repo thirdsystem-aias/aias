@@ -38,7 +38,7 @@ Ranking, Paper A: Pre-Registered Instrument Specification, Cross-Category Baseli
 ### Abstract (paste verbatim — matches paper page 2)
 
 ```
-The AIAS™ program measures AI brand availability with two validated components, Presence (how often a fixed panel of language models names a brand) and Consistency (how evenly the models name it). This paper tests a third: Ranking, where a brand sits in an answer's list of brands, given that it is named. A deterministic extractor recovered positions from 3,766 archived answers with text (100% parsed; mention sets identical to the certified Presence detectors). A rank statistic was selected by a pre-registered rule on a separate panel, blind to Presence and Consistency: mean normalised position (MNP), with split-half reliability 0.951 over 138 brands in nine categories, which fell to -0.017 when brand order was shuffled within answers. The confirmatory gate ran on five categories and three waves of a six-model panel (52–55 rated brands per comparison). Ranking is separable from Consistency (pooled within-category ρ = 0.252, 0.119, 0.142; CONFIRMED) and holds its brand order over three weeks far beyond what list composition produces (ρ = 0.897, both nulls p = 0.0001; CONFIRMED) and over five months (ρ = 0.846). It is not cleanly separable from Presence: ρ(R*, P) = 0.275, 0.366 and 0.307, inside the confirmation band at the first wave only (MARGINAL). On the early panel, Ranking tracked recall share at ρ = 0.663 (FALSIFIED). The gate is therefore MARGINAL: the program does not add Ranking as a component on this evidence, and a Paper B proceeds only on the author's recorded decision, with separability from Presence as its first confirmatory test. Brands that models name more often tend to be named earlier.
+The AIAS™ program measures AI brand availability with two validated components, Presence (how often a fixed panel of language models names a brand) and Consistency (how evenly the models name it). This paper tests a third: Ranking, where a brand sits in an answer's list of brands, given that it is named. A deterministic extractor recovered positions from 3,766 archived answers with text (100% parsed; mention sets identical to the certified Presence detectors). A rank statistic was selected by a pre-registered rule on a separate panel, blind to Presence and Consistency: mean normalised position (MNP), with split-half reliability 0.951 over 138 brands in nine categories, which fell to −0.017 when brand order was shuffled within answers. The confirmatory gate ran on five categories and three waves of a six-model panel (52–55 rated brands per comparison). Ranking is separable from Consistency (pooled within-category ρ = 0.252, 0.119, 0.142; CONFIRMED) and holds its brand order over three weeks beyond what list composition produces (ρ = 0.897; both nulls p = 0.0001, the smallest attainable; CONFIRMED) and, as a secondary test, over five months (ρ = 0.846). It is not cleanly separable from Presence: ρ(R*, P) = 0.275, 0.366 and 0.307, inside the confirmation band at the first wave only (MARGINAL). On the early panel, where archived answers lost their line breaks and positions are first-mention positions, Ranking tracked recall share at ρ = 0.663 (secondary; FALSIFIED). The gate is therefore MARGINAL: the program does not add Ranking as a component on this evidence, and a Paper B proceeds only on the author's recorded decision, with separability from Presence as its first confirmatory test. Brands that models name more often tend to be named earlier.
 ```
 
 ### Keywords (paste verbatim, semicolon-separated)
@@ -53,7 +53,7 @@ AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; lar
 M31; L86; L15; D83; M37
 ```
 
-**JEL rationale (for your reference):** M31; L86, L15, D83, M37
+**JEL rationale (for your reference):** M31; L86; L15; D83; M37
 
 ---
 
@@ -114,7 +114,7 @@ Self-funded.
 ### Ethics statement (paste verbatim)
 
 ```
-Not applicable; no human subjects; public APIs and LLM prompts only.
+Not applicable; no human subjects.
 ```
 
 ### Data and code availability (paste verbatim)

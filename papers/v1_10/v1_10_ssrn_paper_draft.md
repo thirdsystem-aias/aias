@@ -43,17 +43,17 @@ Materials: OSF \texttt{ec6wh/methodology/v1\_10}\\
 
 # Abstract {-}
 
-The AIAS™ program measures AI brand availability with two validated components, Presence (how often a fixed panel of language models names a brand) and Consistency (how evenly the models name it). This paper tests a third: Ranking, where a brand sits in an answer's list of brands, given that it is named. A deterministic extractor recovered positions from 3,766 archived answers with text (100% parsed; mention sets identical to the certified Presence detectors). A rank statistic was selected by a pre-registered rule on a separate panel, blind to Presence and Consistency: mean normalised position (MNP), with split-half reliability 0.951 over 138 brands in nine categories, which fell to $-0.017$ when brand order was shuffled within answers. The confirmatory gate ran on five categories and three waves of a six-model panel (52--55 rated brands per comparison). Ranking is separable from Consistency (pooled within-category $\rho$ = 0.252, 0.119, 0.142; CONFIRMED) and holds its brand order over three weeks far beyond what list composition produces ($\rho$ = 0.897, both nulls $p$ = 0.0001; CONFIRMED) and over five months ($\rho$ = 0.846). It is not cleanly separable from Presence: $\rho(R^*, P)$ = 0.275, 0.366 and 0.307, inside the confirmation band at the first wave only (MARGINAL). On the early panel, Ranking tracked recall share at $\rho$ = 0.663 (FALSIFIED). The gate is therefore MARGINAL: the program does not add Ranking as a component on this evidence, and a Paper B proceeds only on the author's recorded decision, with separability from Presence as its first confirmatory test. Brands that models name more often tend to be named earlier.
+The AIAS™ program measures AI brand availability with two validated components, Presence (how often a fixed panel of language models names a brand) and Consistency (how evenly the models name it). This paper tests a third: Ranking, where a brand sits in an answer's list of brands, given that it is named. A deterministic extractor recovered positions from 3,766 archived answers with text (100% parsed; mention sets identical to the certified Presence detectors). A rank statistic was selected by a pre-registered rule on a separate panel, blind to Presence and Consistency: mean normalised position (MNP), with split-half reliability 0.951 over 138 brands in nine categories, which fell to −0.017 when brand order was shuffled within answers. The confirmatory gate ran on five categories and three waves of a six-model panel (52--55 rated brands per comparison). Ranking is separable from Consistency (pooled within-category $\rho$ = 0.252, 0.119, 0.142; CONFIRMED) and holds its brand order over three weeks beyond what list composition produces ($\rho$ = 0.897; both nulls $p$ = 0.0001, the smallest attainable; CONFIRMED) and, as a secondary test, over five months ($\rho$ = 0.846). It is not cleanly separable from Presence: $\rho(R^*, P)$ = 0.275, 0.366 and 0.307, inside the confirmation band at the first wave only (MARGINAL). On the early panel, where archived answers lost their line breaks and positions are first-mention positions, Ranking tracked recall share at $\rho$ = 0.663 (secondary; FALSIFIED). The gate is therefore MARGINAL: the program does not add Ranking as a component on this evidence, and a Paper B proceeds only on the author's recorded decision, with separability from Presence as its first confirmatory test. Brands that models name more often tend to be named earlier.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; ranking; list position; separability; measurement reliability
 
-**JEL codes:** M31; L86, L15, D83, M37
+**JEL codes:** M31; L86; L15; D83; M37
 
 **Paper status:** Pre-registered methodology study (tag `v1.10-prereg-r2`). Re-analysis of archived answers: no new data collection and no model calls. The statistic was selected (Stage S) after the lock, blind to Presence and Consistency; the confirmatory gate (Stage C) ran once, after the conflict-of-interest re-check was logged and anchored (DEVIATIONS Entry 2). Gate verdict: MARGINAL (not passed). Part of the AIAS measurement program.
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2022). The Tri-System framework describes the AI Availability Score (AIAS) as a 0--100 score built from several dimensions (MSI Working Paper 26-132). The program has validated two of them. Presence, how often a fixed panel of models recognizes and names a brand, was anchored across five product categories under the v1.6 protocol (SSRN 6816340; AIAS 1.0, SSRN 6817841). Consistency, whether the panel's models agree about a brand, reached a usable instrument only after its first version was falsified for moving with recall (v1.7, SSRN 6878818) and replaced by the mean-independent dispersion statistic $\varphi$ (v1.8, SSRN 6963359). The v1.9 calibration found that no composite of the two carried information Presence did not, and locked the reporting of two scores side by side (SSRN 7685126). The AIAS 2.0 synthesis reports them that way and shows them separable: within category, $|\rho(C^*, P)|$ = 0.073, 0.082 and 0.189 at the three waves, as published.
+AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2022). The Tri-System framework describes the AI Availability Score (AIAS) as a 0--100 score built from several dimensions (González Castro, 2026, MSI Working Paper, Report No. 26-132). The program has validated two of them. Presence, how often a fixed panel of models recognizes and names a brand, was anchored across five product categories under the v1.6 protocol (SSRN 6816340; AIAS 1.0, SSRN 6817841). Consistency, whether the panel's models agree about a brand, reached a usable instrument only after its first version was falsified for moving with recall (v1.7, SSRN 6878818) and replaced by the mean-independent dispersion statistic $\varphi$ (v1.8, SSRN 6963359). The v1.9 calibration found that no composite of the two carried information Presence did not, and locked the reporting of two scores side by side (SSRN 7685126, submitted). The AIAS 2.0 synthesis reports them that way and shows them separable: within category, $|\rho(C^*, P)|$ = 0.073, 0.082 and 0.189 at the three waves, as published.
 
 This paper opens the third component. Ranking is where a brand sits in an answer's ordered list of brands, *given that the brand is named*. Whether a brand is named at all is Presence's information; how evenly the models name it is Consistency's. A third component is worth adding only if it carries information neither of the first two carries, and the program's own record shows how easily that condition fails: the first Consistency instrument was reliable and looked plausible, yet it largely re-expressed recall (pooled $\rho$ = 0.766 against a 0.50 ceiling; v1.7). Ranking faces a specific version of that risk. In consumer markets, brands with more buyers also tend to score higher on loyalty and attitude measures (the Double Jeopardy pattern; Ehrenberg, Goodhardt & Barwise, 1990), and the brands a model names most often may also be the ones it names first. If so, a ranking score would add little to Presence.
 
@@ -85,7 +85,9 @@ For each named brand in a rankable answer the extractor records $k_{\text{mid}}$
 
 ## 2.3 Candidate statistics
 
-For brand $b$ in category $c$, over its rankable answers $A_b$, six candidates were fixed in advance, each oriented so that higher means nearer the top:
+For brand $b$ in category $c$, over its rankable answers $A_b$, six candidates were fixed in advance, each oriented so that higher means nearer the top (Table 1).
+
+Table: Candidate rank statistics.
 
 | Id | Statistic | Definition |
 |:-----|:-------------------------------|:----------------------------------------------|
@@ -138,7 +140,7 @@ Selection uses EARLY-6 rank tables only: no Presence, no Consistency, no OMNI da
 
 ## 5.2 Result
 
-Stage S ran on 10 November 2026 (13:57 UTC), after the r2 lock and anchor. All nine categories entered, with 138 units (12 to 20 per category). Table 1 reports the reliabilities.
+Stage S ran on 10 November 2026 (13:57 UTC), after the r2 lock and anchor. All nine categories entered, with 138 units (12 to 20 per category). Table 2 reports the reliabilities.
 
 Table: Stage S split-half reliability (Spearman--Brown) of the six candidates on EARLY-6, odd against even runs, lead-item rule. S8 drops the two knife sets (ordinary-word aliases; 113 units); S9 uses the uncentred rank convention of v0.37--v0.41. Both are reported next to the selection and cannot change it.
 
@@ -153,7 +155,7 @@ Table: Stage S split-half reliability (Spearman--Brown) of the six candidates on
 
 Every candidate cleared the 0.50 floor by a wide margin. IRW was the most reliable (0.9655); MNP, TOP3 and MR fell within the 0.02 window below it, and the tie went to MNP, the first in the pre-registered order. MNP is therefore the statistic of Stage C: $R^* = 100\,(1 - \overline{q})$, rated at six or more rankable mentions. Without the two knife sets (S8) and under the uncentred convention (S9) the rule would also have selected MNP.
 
-**Negative control (MQ7).** With the order of the named brands shuffled at random within every answer (2,000 draws, seed 110030), the mean split-half reliability of MNP fell from 0.9506 to $-0.0170$, far below the 0.20 limit (S9: 0.1160). The reliability of the selected score is therefore a property of where the models place brands, not of which brands appear together in an answer or how long the lists are.
+**Negative control (MQ7).** With the order of the named brands shuffled at random within every answer (2,000 draws, seed 110030), the mean split-half reliability of MNP fell from 0.9506 to −0.0170, far below the 0.20 limit (S9: 0.1160). The reliability of the selected score is therefore a property of where the models place brands, not of which brands appear together in an answer or how long the lists are.
 
 These figures were read from `outputs/selection_v1_10.json` and checked by recomputing the six reliabilities from the hashed rank tables, which reproduced them exactly; the selection file's hash matches the Stage S record.
 
@@ -163,9 +165,15 @@ These figures were read from `outputs/selection_v1_10.json` and checked by recom
 
 All pooled statistics use $\rho_w$, the pooled within-category Spearman correlation: average ranks are computed within each category, centred on the category's mean rank $(m_c + 1)/2$, and $\rho_w$ is the Pearson correlation of the pooled centred ranks. Centring departs from the v0.37--v0.41 convention: when categories contribute different numbers of units, uncentred pooling adds a between-category component, so that the statistic is above zero in expectation even when no category shows any association. The uncentred values are reported as sensitivity S9. Only categories with at least five units in a comparison enter. Permutation $p$-values are $(h + 1)/(N + 1)$. Bootstrap intervals (units resampled within category, 2,000 draws, seed 110020, 90% percentile) are reported, not used for verdicts. Values are compared unrounded.
 
-\needspace{22\baselineskip}
+\needspace{10\baselineskip}
 
 ## 6.2 Hypotheses
+
+Table 3 lists the hypotheses. In H4, $\hat\pi$ is the share of a category's answers with text that name the brand, Presence's recall arm, because no recognition probes exist for the early studies. H3's second null is the decisive one: shuffling the order of the named brands within every answer keeps list composition and list length and destroys position, so a stability that survives it is a stability of position.
+
+\newpage
+
+\begingroup\small
 
 Table: Stage C hypotheses. $R^*$ is rated MNP; OMNI waves $t_1$, $t_2$, $t_3$. Separability (H1, H2, H4): CONFIRMED iff $|\rho_w| \le 0.30$ (for H1 and H2 at every wave with at least 30 units), FALSIFIED iff $|\rho_w| \ge 0.50$ (at any such wave), MARGINAL otherwise; UNDETERMINED with fewer than two such waves (H1, H2) or fewer than 30 units (H4). Stability (H3, H5, H6): CONFIRMED iff $\rho_w \ge 0.50$ and both nulls give $p < .05$; FALSIFIED iff $\rho_w < 0.30$ or either null gives $p \ge .05$; MARGINAL otherwise; UNDETERMINED below 30 units.
 
@@ -178,7 +186,8 @@ Table: Stage C hypotheses. $R^*$ is rated MNP; OMNI waves $t_1$, $t_2$, $t_3$. S
 | H5 Rank stability, 5 months | secondary | $\rho_w(R^*_{t_2}, R^*_{t_3})$; $t_1 \rightarrow t_3$ descriptive | as H3 (110005; 110010) |
 | H6 Early stability, 8 days | secondary | $\rho_w$ between v0.6 and v0.9 $R^*$, two shared models | as H3 (110006; 110010) |
 
-In H4, $\hat\pi$ is the share of a category's answers with text that name the brand, Presence's recall arm, because no recognition probes exist for the early studies. H3's second null is the decisive one: shuffling the order of the named brands within every answer keeps list composition and list length and destroys position, so a stability that survives it is a stability of position.
+\endgroup
+
 
 ## 6.3 Gate
 
@@ -200,7 +209,7 @@ Stage C reads the 31 hashed rank tables (`outputs/rank_tables/`, re-extracted an
 
 Stage C ran once, on 10 November 2026, after DEVIATIONS Entry 2 and the flag file were anchored. Re-extraction reproduced all 31 rank tables byte for byte, and the gate's units joined the Presence and Consistency table 1:1 (112 of 112 per wave). Every number below is read from `outputs/v1_10_verdicts.json`; §7.6 reports the independent re-computation.
 
-\needspace{14\baselineskip}
+\newpage
 
 ## 7.1 The gate
 
@@ -212,8 +221,8 @@ Table: Gate hypotheses. $\rho_w$ = pooled within-category Spearman correlation o
 | | $t_2$ | 0.366 | 54 | 0.017 | [0.094, 0.603] | |
 | | $t_3$ | 0.307 | 54 | 0.042 | [0.101, 0.487] | MARGINAL |
 | H2 Separable from Consistency | $t_1$ | 0.252 | 55 | 0.094 | [0.008, 0.446] | |
-| | $t_2$ | 0.119 | 54 | 0.460 | [$-0.124$, 0.348] | |
-| | $t_3$ | 0.142 | 54 | 0.356 | [$-0.119$, 0.360] | CONFIRMED |
+| | $t_2$ | 0.119 | 54 | 0.460 | [−0.124, 0.348] | |
+| | $t_3$ | 0.142 | 54 | 0.356 | [−0.119, 0.360] | CONFIRMED |
 | H3 Rank stability, 3 weeks | $t_1 \rightarrow t_2$ | 0.897 | 53 | perm 0.0001; shuffle 0.0001 | [0.761, 0.943] | CONFIRMED |
 
 **The gate is MARGINAL: it is not passed.** H2 and H3 are CONFIRMED; H1 is MARGINAL. Ranking's correlation with Presence is positive at every wave --- brands with higher Presence tend to be placed higher --- and it lies inside the confirmation band ($\le 0.30$) only at $t_1$. At $t_2$ (0.366) and $t_3$ (0.307, compared unrounded) it falls between the confirmation and falsification lines. The association is distinguishable from zero at $t_2$ and $t_3$ ($p$ = 0.017 and 0.042), and the 90% intervals reach 0.51 and 0.60 at $t_1$ and $t_2$, so values in the falsification band cannot be excluded at those waves.
@@ -226,11 +235,13 @@ Both controls behaved as designed. The positive control MQ6 passed: the penalise
 - **H5 (five-month stability): CONFIRMED.** $\rho_w(R^*_{t_2}, R^*_{t_3})$ = 0.846 ($n$ = 52; both nulls $p$ = 0.0001; 90% interval [0.651, 0.920]). Descriptively, $t_1 \rightarrow t_3$: 0.940 ($n$ = 52).
 - **H6 (eight-day stability, early panel): CONFIRMED.** Between v0.6 and v0.9 on the two shared models, $\rho_w$ = 0.830 ($n$ = 65; both nulls $p$ = 0.0001; 90% interval [0.668, 0.919]).
 
-The early panel's positions are first-mention positions. In every early answer file (all nine EARLY-6 sets and the five EARLY-2 sets) the archived text stores each response with its line breaks collapsed, so rule E3 finds no list items, no answer is list-structured, and E6 orders every early answer by first mention (the list-structured share is 0 in all fourteen early sets, against 0.64 to 1.00 in the OMNI sets). This is E6 applied as written, not an extraction error, and it agrees with MQ3's median $\tau$ of 1.0. It means that Stage S, H4 and H6 rest on first-mention order. It was noticed when the baseline was read, after Stage C, and is recorded in DEVIATIONS Entry 3; no rule or result was changed. On the gate set, where answers keep their line breaks, the first-mention rule (S1) gives almost the same gate statistics as the lead-item rule (Table 4).
+The early panel's positions are first-mention positions. In every early answer file (all nine EARLY-6 sets and the five EARLY-2 sets) the archived text stores each response with its line breaks collapsed, so rule E3 finds no list items, no answer is list-structured, and E6 orders every early answer by first mention (the list-structured share is 0 in all fourteen early sets, against 0.64 to 1.00 in the OMNI sets). This is E6 applied as written, not an extraction error, and it agrees with MQ3's median $\tau$ of 1.0. It means that Stage S, H4 and H6 rest on first-mention order. It was noticed when the baseline was read, after Stage C, and is recorded in DEVIATIONS Entry 3; no rule or result was changed. On the gate set, where answers keep their line breaks, the first-mention rule (S1) gives almost the same gate statistics as the lead-item rule (Table 5).
 
 \needspace{18\baselineskip}
 
 ## 7.3 Sensitivities
+
+\begingroup\small
 
 Table: Sensitivities of the gate statistics. $\rho_w$ for H1 and H2 at $t_1$ / $t_2$ / $t_3$; H3 = $t_1 \rightarrow t_2$. S3, S4 and S6--S9 use the primary H4 verdict (FALSIFIED) in the gate rule, so a sensitivity under which H1--H3 are all CONFIRMED still gives a MARGINAL gate. S6 and S7 are identical to the primary analysis (see text). S9 uses uncentred ranks.
 
@@ -240,40 +251,50 @@ Table: Sensitivities of the gate statistics. $\rho_w$ for H1 and H2 at $t_1$ / $
 | S1 first-mention rule | 0.270 / 0.366 / 0.307 | 0.242 / 0.119 / 0.142 | 0.893 | MARGINAL |
 | S2 floor 3 | 0.352 / 0.326 / 0.434 | 0.252 / 0.119 / 0.142 | 0.907 | MARGINAL |
 | S2 floor 10 | **0.558 / 0.635** / 0.219 | **0.411** / 0.126 / 0.253 | 0.883 | **FAIL** |
-| S3 IRW | 0.293 / 0.351 / 0.379 | 0.175 / 0.034 / 0.137 | 0.942 | MARGINAL |
-| S3 TOP3 | 0.364 / 0.289 / 0.261 | 0.153 / 0.127 / 0.160 | 0.822 | MARGINAL |
+| S3 IRW | 0.293 / 0.351 / 0.379 | 0.175 / 0.034 / 0.136 | 0.942 | MARGINAL |
+| S3 TOP3 | 0.363 / 0.289 / 0.261 | 0.153 / 0.127 / 0.160 | 0.822 | MARGINAL |
 | S3 MR | 0.283 / 0.443 / 0.427 | 0.189 / 0.017 / 0.165 | 0.861 | MARGINAL |
-| S3 TOP1 | 0.325 / 0.301 / 0.366 | 0.001 / $-0.063$ / 0.137 | 0.932 | MARGINAL |
+| S3 TOP1 | 0.325 / 0.301 / 0.366 | 0.001 / −0.063 / 0.137 | 0.932 | MARGINAL |
 | S3 MODE | **0.093 / 0.247 / 0.206** | 0.191 / 0.042 / 0.099 | 0.858 | MARGINAL |
-| S4 range, leave one category out | 0.231--0.318 / 0.281--0.440 / 0.078--0.472 | 0.102--0.337 / 0.004--0.180 / $-0.072$--0.220 | 0.884--0.933 | MARGINAL (all five) |
+| S4 range, leave one category out | 0.231--0.318 / 0.281--0.440 / 0.078--0.472 | 0.102--0.337 / 0.004--0.180 / −0.072--0.220 | 0.884--0.933 | MARGINAL (all five) |
 | S9 uncentred ranks | 0.363 / 0.452 / 0.384 | **0.342** / 0.238 / 0.235 | 0.909 | MARGINAL |
 
-Sensitivities never change a verdict; the scorer lists eight verdict changes under them (bold in Table 4). Raising the rating floor to ten rankable mentions (S2; 31--34 brands per wave) moves H1 into the falsification band at $t_1$ and $t_2$ (0.558 and 0.635), H2 to MARGINAL and the gate to FAIL. Among the candidate statistics (S3), only the coarse modal rank keeps H1 inside the confirmation band (0.093, 0.247, 0.206); every other candidate, including the one with the highest reliability (IRW), is MARGINAL on H1. Leaving out automotive (S4) brings H1 inside the band (0.261, 0.281, 0.280); leaving out headphones or spirits moves H2 to MARGINAL (0.306 and 0.337 at $t_1$), and so does the uncentred convention (S9; 0.342 at $t_1$). Under S9 every other verdict is unchanged (H4 0.681, H5 0.864, H6 0.846; MQ6 passes).
+\endgroup
 
-S5 places the recall arm next to Presence: $\rho_w(R^*, \hat\pi)$ = 0.291, 0.387 and 0.333, slightly above $\rho_w(R^*, P)$ at every wave (within a wave $\hat\pi$ is proportional to total mentions, so the two give the same values). The coupling therefore runs through how often a brand is named, not through recognition. S6 is identical to the primary analysis because v0.41 flagged no served model. S7 is identical to the primary analysis because Denon is never rated: it is named in no rankable answer at $t_1$ or $t_3$ and in two at $t_2$, below the floor of six, so removing it removes no unit from any correlation. At Stage S, S8 and S9 would also have selected MNP (§5.2).
+No sensitivity changes a reported verdict. The scorer lists eight cases in which a verdict would differ under a sensitivity: five are in bold in Table 5, and the three leave-one-category-out cases are given here. Raising the rating floor to ten rankable mentions (S2; 31--34 brands per wave) would move H1 into the falsification band at $t_1$ and $t_2$ (0.558 and 0.635), H2 to MARGINAL and the gate to FAIL. Among the candidate statistics (S3), only the coarse modal rank would keep H1 inside the confirmation band (0.093, 0.247, 0.206); every other candidate, including the one with the highest reliability (IRW), is MARGINAL on H1, as the selected statistic is. Leaving out automotive (S4) would bring H1 inside the band (0.261, 0.281, 0.280); leaving out headphones or spirits would move H2 to MARGINAL (0.306 and 0.337 at $t_1$), and so would the uncentred convention (S9; 0.342 at $t_1$). Under S9 every other verdict is unchanged (H4 0.681, H5 0.864, H6 0.846; MQ6 passes).
+
+S5 places the recall arm next to Presence: $\rho_w(R^*, \hat\pi)$ = 0.291, 0.387 and 0.333, slightly above $\rho_w(R^*, P)$ at every wave (within a wave $\hat\pi$ is proportional to total mentions, so the two give the same values). The coupling is therefore at least as strong with how often a brand is named as with Presence; the recognition arm was not tested separately. S6 is identical to the primary analysis because v0.41 flagged no served model. S7 is identical to the primary analysis because Denon is never rated: it is named in no rankable answer at $t_1$ or $t_3$ and in two at $t_2$, below the floor of six, so removing it removes no unit from any correlation. At Stage S, S8 and S9 would also have selected MNP (§5.2).
 
 \needspace{14\baselineskip}
 
 ## 7.4 Cross-category baseline
 
-Table: Baseline, gate set (LEGACY-6), values at $t_1$ / $t_2$ / $t_3$. Rankable share = answers naming at least two registry brands, of 36. Brands named = median registry brands per rankable answer. Leader share = share of rankable answers led by the most frequent first-named brand. Highest $R^*$ = rated brand with the highest MNP.
+\begingroup\footnotesize\setlength{\tabcolsep}{4pt}
 
-| Category | Rankable share | Brands named | Rated / registry | Median $R^*$ | Leader share | Highest $R^*$ |
-|:-------------|:-------------:|:-----------:|:-----------:|:-------------:|:-------------:|:-------------------|
-| Headphones (v0.19) | 0.83 / 0.83 / 0.83 | 6 / 5.5 / 5 | 8 / 8 / 8 of 16 | 47.1 / 46.3 / 46.1 | 0.57 / 0.67 / 0.60 | Sennheiser at all three |
-| Skincare (v0.20) | 1.00 / 1.00 / 1.00 | 6 / 6 / 6 | 10 / 9 / 9 of 24 | 53.2 / 56.6 / 58.1 | 0.42 / 0.47 / 0.39 | La Mer at all three |
-| Cosmetics (v0.21) | 0.97 / 0.97 / 1.00 | 5 / 7 / 6 | 14 / 14 / 13 of 24 | 50.0 / 44.8 / 47.0 | 0.26 / 0.26 / 0.25 | Tom Ford Beauty; MAC Cosmetics at $t_3$ |
-| Automotive (v0.22) | 1.00 / 1.00 / 1.00 | 6.5 / 6 / 6 | 14 / 14 / 14 of 24 | 51.1 / 50.0 / 50.0 | 0.44 / 0.44 / 0.47 | Toyota at all three |
-| Spirits (v0.23) | 0.67 / 0.67 / 0.64 | 4 / 3.5 / 4 | 9 / 9 / 10 of 24 | 43.7 / 46.4 / 47.5 | 0.21 / 0.21 / 0.22 | Hendrick's; Nikka at $t_2$ |
+Table: Baseline, gate set (LEGACY-6), values at $t_1$/$t_2$/$t_3$. Rankable share = answers naming at least two registry brands, of 36. Brands named = median registry brands per rankable answer. Rated (registry) = brands rated at each wave, registry size in brackets. Leader share = share of rankable answers led by the most frequent first-named brand. Highest $R^*$ = rated brand with the highest MNP; (all) = at all three waves.
 
-\needspace{16\baselineskip}
+| Category | Rankable share | Brands named | Rated (registry) | Median $R^*$ | Leader share | Highest $R^*$ |
+|:--------------|:--------------:|:-----------:|:------------:|:--------------:|:--------------:|:---------------------|
+| Headphones (v0.19) | 0.83/0.83/0.83 | 6/5.5/5 | 8/8/8\ (16) | 47.1/46.3/46.1 | 0.57/0.67/0.60 | Sennheiser (all) |
+| Skincare (v0.20) | 1.00/1.00/1.00 | 6/6/6 | 10/9/9\ (24) | 53.2/56.6/58.1 | 0.42/0.47/0.39 | La Mer (all) |
+| Cosmetics (v0.21) | 0.97/0.97/1.00 | 5/7/6 | 14/14/13\ (24) | 50.0/44.8/47.0 | 0.26/0.26/0.25 | Tom Ford Beauty; MAC Cosmetics ($t_3$) |
+| Automotive (v0.22) | 1.00/1.00/1.00 | 6.5/6/6 | 14/14/14\ (24) | 51.1/50.0/50.0 | 0.44/0.44/0.47 | Toyota (all) |
+| Spirits (v0.23) | 0.67/0.67/0.64 | 4/3.5/4 | 9/9/10\ (24) | 43.7/46.4/47.5 | 0.21/0.21/0.22 | Hendrick's; Nikka ($t_2$) |
 
-Table: Baseline, early panels (EARLY-6, nine sets; EARLY-2, five sets). Columns as in Table 5; HHI = Herfindahl index of first-named brands. Every early answer is ordered by first mention (§7.2).
+\endgroup
+
+Rankable answers name a median of 3.5 to 7 registry brands, fewest in spirits and olive oil. First place is concentrated in some categories: in headphones (0.57--0.67), kitchen knives (0.68) and early-panel skincare (0.59--0.65) one brand opens more than half of the rankable answers, while in spirits, cosmetics and premium tea the most frequent leader opens about a quarter or fewer. The highest-ranked brand is the same at all three gate waves in three of five categories. Within the legacy panel, the share of list-structured answers ranges by model from 0.63 (Gemini 2.5 Flash) to 1.00 (Claude Sonnet 4.5), and mean list length from 5.3 to 6.3 registry brands per rankable answer.
+
+\newpage
+
+\begingroup\small
+
+Table: Baseline, early panels (EARLY-6, nine sets; EARLY-2, five sets). Columns as in Table 6; HHI = Herfindahl index of first-named brands. Every early answer is ordered by first mention (§7.2).
 
 | Set | Rankable share | Brands named | Rated / registry | Median $R^*$ | Leader share | HHI | Highest $R^*$ |
 |:------------------------|:-----:|:---:|:-------:|:-----:|:-----:|:-----:|:-----------------------|
 | EARLY-6 PM software | 1.00 | 6 | 17 / 19 | 40.7 | 0.41 | 0.25 | Linear |
-| EARLY-6 personal finance | 0.98 | 7 | 14 / 16 | 37.6 | 0.39 | 0.29 | YNAB |
+| EARLY-6 personal finance | 0.98 | 7 | 14 / 16 | 37.6 | 0.39 | 0.28 | YNAB |
 | EARLY-6 olive oil | 0.85 | 4 | 16 / 20 | 44.2 | 0.39 | 0.20 | Frescobaldi Laudemio |
 | EARLY-6 running shoes | 0.99 | 6 | 15 / 17 | 34.1 | 0.56 | 0.36 | Norda |
 | EARLY-6 skincare | 0.76 | 7 | 22 / 31 | 37.1 | 0.65 | 0.46 | CeraVe |
@@ -287,7 +308,8 @@ Table: Baseline, early panels (EARLY-6, nine sets; EARLY-2, five sets). Columns 
 | EARLY-2 running shoes | 1.00 | 6 | 11 / 17 | 63.4 | 0.47 | 0.28 | Adidas |
 | EARLY-2 skincare | 0.71 | 6 | 16 / 31 | 35.6 | 0.59 | 0.40 | CeraVe |
 
-Rankable answers name a median of 3.5 to 7 registry brands, fewest in spirits and olive oil. How concentrated first place is varies by category: in headphones (0.57--0.67), kitchen knives (0.68) and skincare in the early panels (0.59--0.65) one brand opens more than half of all rankable answers, while in spirits, cosmetics and premium tea the most frequent leader opens about a quarter or fewer. The highest-ranked brand is the same at all three gate waves in three of five categories. Within the legacy panel, model style differs: the share of list-structured answers ranges from 0.63 (Gemini 2.5 Flash) to 1.00 (Claude Sonnet 4.5), and mean list length from 5.3 to 6.3 registry brands per rankable answer.
+\endgroup
+
 
 ## 7.5 Headphone results without Denon (exploratory)
 
@@ -305,13 +327,13 @@ Table: Headphones (v0.19) with and without Denon. Denon's positions at $t_2$: 9t
 
 ## 7.6 Independent re-computation
 
-H1, H2, H3 and S7 were recomputed with separate code, from the hashed rank tables and the profiles table, without the scorer. The correlations and unit counts agree exactly at every wave (H1 0.27503, 0.36594, 0.30731; H2 0.25167, 0.11927, 0.14153; H3 0.89676, $n$ = 53), as does S7. The permutation $p$-values, re-drawn with a different seed (10,000 draws), agree within Monte Carlo error (differences of at most 0.009, each under two Monte Carlo standard errors; the largest relative to its error is H2 at $t_1$, 0.102 against 0.094); no shuffled or permuted draw reached the observed H3 value in either computation.
+H1, H2, H3 and S7 were recomputed with separate code, from the hashed rank tables and the profiles table, without the scorer. The correlations and unit counts agree exactly at every wave (H1 0.27503, 0.36594, 0.30731 with $n$ = 55, 54, 54; H2 0.25167, 0.11927, 0.14153 with $n$ = 55, 54, 54; H3 0.89676 with $n$ = 53), as does S7. The check is reported for transparency; its code is not part of the deposit.
 
 # 8. Discussion
 
 The gate answers the question it was built for, and the answer is not yet. Ranking, as measured here, is a reliable reading of where models place a brand: its split-half reliability is 0.95, it collapses to zero when position is shuffled, and brand order holds over three weeks and five months well beyond what list composition produces. It is also distinct from Consistency. But it is not cleanly distinct from Presence. The correlation is modest --- 0.27 to 0.37 within category, far from the 0.77 at which the first Consistency instrument was falsified --- yet it sits above the line the program drew for a separate component at two of the three waves.
 
-The pattern is the one the pre-registration named as the main risk. Brands that the models name more often tend to be named earlier, and the link runs through recall, not recognition (S5). It is strongest in the early panel (0.663) and, at $t_1$ and $t_2$, among the brands named often enough to be rated at a floor of ten (0.558 and 0.635; 0.219 at $t_3$). The pre-registration expected a stricter floor to weaken the correlation by restricting the range of Presence; at two of three waves it strengthened it instead, which suggests that among frequently named brands position and frequency are not less tied than among the rest. A plausible mechanism, not tested here, is that models open an answer with the brands most typical of the category, and those are also the brands they name across most prompts. In marketing terms, this is a Double-Jeopardy-like regularity in AI answers: the brands with more presence also get the better positions.
+The pattern is the one the pre-registration named as the main risk. Brands that the models name more often tend to be named earlier, and it is at least as strong with the recall arm as with Presence (S5). It is strongest in the early panel (0.663) and, at $t_1$ and $t_2$, among the brands named often enough to be rated at a floor of ten (0.558 and 0.635; 0.219 at $t_3$). The pre-registration noted that a stricter floor could lower the correlation by restricting the range of Presence; at two of three waves the correlation was higher instead (at a floor of ten, spirits has fewer than five rated brands and drops out at every wave), which suggests that among frequently named brands position and frequency are not less tied than among the rest. A plausible mechanism, not tested here, is that models open an answer with the brands most typical of the category, and those are also the brands they name across most prompts. In marketing terms, this resembles a Double Jeopardy regularity in AI answers: the brands with more presence also get the better positions.
 
 The predictions written before Stage S fared as follows. Stage S was expected to select MNP or IRW: it selected MNP, with IRW tied. H1 was expected to be MARGINAL and was. H2 and H3 were expected to be CONFIRMED and were. H5 was expected to be MARGINAL over five months and was CONFIRMED (0.846). The positive control was expected to pass and did.
 
@@ -331,7 +353,7 @@ Rank is among registry brands only: in the development sample 51--66% of top-lev
 
 # 10. What follows
 
-The gate is MARGINAL, so the pre-registered rule applies: the result is reported as it stands, Ranking is not added to the reported AIAS components, and Paper B proceeds only on the author's recorded decision, with separability from Presence (H1) as its first confirmatory test. Without that decision, the instrument is redesigned under a new pre-registration, as the program does with any component that does not pass its gate. Either way, the next study inherits the locked extractor and its tests, the selected statistic and floor, the hashed rank tables (including the frozen v0.32 arms for model-version stability), $R^*$ by wave beside $P$ and $C^*$, the null distributions and the verdict file. A redesign would need to address the coupling found here directly, for example by measuring position within strata of recall, and would have to show, as v1.8 did for Consistency, that the redesigned score is separable from recall by construction and not by adjustment. The fourth wave on the newest models will show whether the coupling is a property of the legacy panel or of AI answers generally.
+The gate is MARGINAL, so the pre-registered rule applies: the result is reported as it stands, Ranking is not added to the reported AIAS components, and Paper B proceeds only on the author's recorded decision, with separability from Presence (H1) as its first confirmatory test. Otherwise, under the program's plan, the instrument is redesigned under a new pre-registration. Either way, the next study inherits the locked extractor and its tests, the selected statistic and floor, the hashed rank tables (including the frozen v0.32 arms for model-version stability), $R^*$ by wave beside $P$ and $C^*$, the null distributions and the verdict file. A redesign would need to address the coupling found here directly, for example by measuring position within strata of recall, and would have to show, as v1.8 did for Consistency, that the redesigned score is separable from recall by construction and not by adjustment. The fourth wave on the newest models will show whether the coupling is a property of the legacy panel or of AI answers generally.
 
 # Declarations {-}
 
@@ -390,6 +412,8 @@ González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Co
 González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol* (AIAS 1.0). SSRN 6817841.
 
 González Castro, P. U. (2026). *Presence and Consistency: A Two-Component Measurement of AI Availability* (AIAS 2.0). Working paper; OSF `ec6wh/aias_2_0`.
+
+González Castro, P. U. (2026). *Version-Snapshot Stability of an AI-Presence Consistency Score* (v0.32). SSRN 6898581.
 
 González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Recall Consistency Quantity: A Pre-Registered Longitudinal Re-Acquisition Across Five Product Categories* (v0.34). SSRN 6915458.
 

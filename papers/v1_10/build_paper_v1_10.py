@@ -52,7 +52,7 @@ UNICODE_SUBS = [
     ("Δ", r"$\Delta$"),
     ("·", r"$\cdot$"),                     # middle dot
     ("′", r"$'$"),                         # prime
-    ("−", "-"),                            # minus sign -> hyphen
+    # U+2212 minus is kept as text: Carlito has the glyph (a text minus, not math mode)
     ("≫", r"$\gg$"),
     ("→", r"$\rightarrow$"),
     ("≈", r"$\approx$"),

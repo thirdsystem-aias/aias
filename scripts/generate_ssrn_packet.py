@@ -63,7 +63,7 @@ ORCID: 0009-0003-8968-9990"""
 
 FUNDER = "Self-funded."
 
-ETHICS = "Not applicable; no human subjects; public APIs and LLM prompts only."
+ETHICS = "Not applicable; no human subjects."  # CLAUDE.md packet template
 
 
 # ----- YAML frontmatter parsing ---------------------------------------------
