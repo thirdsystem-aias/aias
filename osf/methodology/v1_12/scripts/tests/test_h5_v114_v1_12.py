@@ -30,7 +30,8 @@ RANK_COLS = ["answer_id", "wave", "condition", "category", "model", "frame", "ru
              "rankable", "list_structured", "rule", "brand", "k_mid", "k_min"]
 
 
-def write_stage1(d, registry=None, seed=7, dry_run=True, excluded_subs=(), r_from=None, phase="v1.14"):
+def write_stage1(d, registry=None, seed=7, dry_run=True, excluded_subs=(), r_from=None, phase="v1.14",
+                 verdict="MARGINAL"):
     """A v1.14-shaped Stage 1 file (fields as score_v1_14.run_stage1 writes them) and its rank table. Returns
     (stage1 path, {unit: list of (k_mid, n) S0 lead-item rows})."""
     registry = registry or synth_registry()
@@ -60,9 +61,10 @@ def write_stage1(d, registry=None, seed=7, dry_run=True, excluded_subs=(), r_fro
                     if cond == "S0":
                         rows.append((kmid, n_named))
             obs[k] = rows
-            r0 = float(r_from[k]) if r_from and k in r_from else float(-rng.integers(1, 6))
-            units.append({"substrate": sub, "brand": b, "n_ranked_S0": n_s0, "rated_S0": n_s0 >= 6,
-                          "R_star_S0": r0 if n_s0 else None, "n_ranked_S1": n_s1,
+            forced = bool(r_from) and r_from.get(k) is not None
+            r0 = float(r_from[k]) if forced else float(-rng.integers(1, 6))
+            units.append({"substrate": sub, "brand": b, "n_ranked_S0": n_s0, "rated_S0": n_s0 >= 6 or forced,
+                          "R_star_S0": r0 if (n_s0 or forced) else None, "n_ranked_S1": n_s1,
                           "R_star_S1": float(-rng.integers(1, 6)) if n_s1 else None, "P_S0": None, "C_star_S0": None,
                           "P_S1": None})
     w.writerow(["a_missing", "t4", "S0", "v0.20", S.GPT6, "F2", 2, "missing", 0, 0, 0, "", "", "", ""])
@@ -70,7 +72,7 @@ def write_stage1(d, registry=None, seed=7, dry_run=True, excluded_subs=(), r_fro
     (d / S.V114_RANK_TABLE).write_bytes(rt)
     doc = {"phase": phase, "stage": "1", "created_utc": "2026-11-14T00:00:00+00:00", "prereg_tag": S.V114_PREREG_TAG,
            "dry_run": dry_run, "rank_table_t4_sha256": hashlib.sha256(rt).hexdigest(),
-           "gate_excluded_substrates": list(excluded_subs), "STAGE1_VERDICT": "MARGINAL",
+           "gate_excluded_substrates": list(excluded_subs), "STAGE1_VERDICT": verdict,
            "H1_Sep_Presence": {"verdict": "MARGINAL"}, "H2_Sep_Consistency": {"verdict": "CONFIRMED"},
            "H4_Sep_Presence_S1": {"verdict": "CONFIRMED"}, "component_legs": {"Coverage": "INACTIVE"}, "units": units}
     p = d / "stage1_v1_14.json"
@@ -177,14 +179,46 @@ class TestScoreWithH5(unittest.TestCase):
     def tearDownClass(cls):
         cls.tmp.cleanup()
 
-    def test_h5_uses_v114_r_star_and_gates(self):
+    def test_h5_uses_v114_r_star_reported_not_gating_when_marginal(self):
         leg = self.doc["legs"]["H5_Sep_Ranking"]
         cov = {(r["substrate"], r["brand"]): r["cov_star"] for r in self.rows}
         _k, x, y, g, info = S.paired(cov, self.src["values"])
         self.assertEqual(leg["n"], info["n"])
         self.assertAlmostEqual(leg["rho_w"], S.rho_w(x, y, g), places=12)
         self.assertTrue(leg["centred"])
-        self.assertIn("H5_Sep_Ranking", self.doc["paper_A_verdict"]["legs"])
+        # v1.14 Stage 1 = MARGINAL: H5 computed and reported, not in the gate (N35)
+        self.assertNotIn("H5_Sep_Ranking", self.doc["paper_A_verdict"]["legs"])
+        self.assertEqual(self.doc["paper_A_verdict"]["h5_reported_not_gating"], leg["verdict"])
+        self.assertFalse(self.doc["H5_ranking_source"]["h5_gates"])
+
+    def test_h5_gates_only_when_v114_separable(self):
+        self.assertTrue(S.h5_gates({"stage1_verdict": "SEPARABLE (Stage 2 pending)"}))
+        for v in ("MARGINAL", "FAIL", "UNDETERMINED", None):
+            self.assertFalse(S.h5_gates({"stage1_verdict": v}))
+        self.assertFalse(S.h5_gates(None))
+        # R* in the same order as Cov*: H5 FALSIFIED; it fails the gate only when v1.14 is SEPARABLE
+        inp = inputs(2)
+        d = S.probe_design(inp["probes"])
+        A = S.build_analysis(S.dedupe_calls(inp["raw"]), inp["mentions"], d)
+        tabs = S.build_tables(A, d, {s: list(v) for s, v in inp["registry"].items()})
+        cov = S.cov_star_map(tabs["rasch"]["full"], S.PANELS["N3"])
+        out = {}
+        for verdict in ("SEPARABLE (Stage 2 pending)", "FAIL"):
+            p, _ = write_stage1(Path(self.tmp.name) / verdict[:4], inp["registry"], r_from=cov, verdict=verdict)
+            src = S.load_ranking_source(p, "S0", allow_dry=True)
+            run = dict(inp, active={"H5_Sep_Ranking": True}, extra={"H5_Sep_Ranking": src["values"]}, h5_source=src)
+            doc, _ = S.score_coverage(run, S.Cfg(19, 0), {"enforce": True}, with_sensitivities=False)
+            self.assertEqual(doc["verdicts"]["H5_Sep_Ranking"], "FALSIFIED")
+            out[verdict] = doc["paper_A_verdict"]
+        self.assertIn("H5_Sep_Ranking", out["SEPARABLE (Stage 2 pending)"]["legs"])
+        self.assertIn(out["SEPARABLE (Stage 2 pending)"]["verdict"], {"FAIL", "INSTRUMENT FAIL"})
+        self.assertNotIn("H5_Sep_Ranking", out["FAIL"]["legs"])
+        self.assertEqual(out["FAIL"]["h5_reported_not_gating"], "FALSIFIED")
+
+    def test_h6_cross_panel_withdrawn(self):
+        with self.assertRaises(S.Refused):
+            S.run_score("/nonexistent/raw.jsonl", "/nonexistent/coded", S.T4_DEFAULTS, "/dev/null", "/dev/null",
+                        S.Cfg(9, 9), False, {}, h6_cross_panel=True)
 
     def test_source_record_and_mnp_non_gating(self):
         rec = self.doc["H5_ranking_source"]
@@ -205,6 +239,7 @@ class TestScoreWithH5(unittest.TestCase):
         inp.update(active={"H5_Sep_Ranking": True}, extra={}, h5_source=None, h5_unavailable="Stage 1 halted (test)")
         doc, _ = S.score_coverage(inp, S.Cfg(19, 0), {"enforce": True}, with_sensitivities=False)
         self.assertEqual(doc["verdicts"]["H5_Sep_Ranking"], "UNDETERMINED")
+        self.assertNotIn("H5_Sep_Ranking", doc["paper_A_verdict"]["legs"])     # Stage 1 halted: not gating (N35)
         self.assertEqual(doc["H5_ranking_source"]["status"], "NOT_AVAILABLE")
         self.assertIn("Stage 1 halted", doc["H5_ranking_source"]["reason"])
 

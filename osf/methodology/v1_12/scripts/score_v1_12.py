@@ -127,8 +127,14 @@ SCORER_NOTES (choices where the pre-registration is silent)
      printed, never enters the gate.
  N34 Blindness guard: with H5 active (--run: tag v1.14-prereg-r1 exists; synthetic: a Stage 1 file is given) and no
      Stage 1 file, the run refuses before reading any record (exit 3); --h5-unavailable REASON instead scores with H5
-     UNDETERMINED (N30), logged. v1.12 computes no rank statistic on a t4 answer. H5 enters the gate as section 3
-     states whatever v1.14's verdict; v1.14's Stage 1 verdict is printed beside it.
+     UNDETERMINED (N30), logged. v1.12 computes no rank statistic on a t4 answer.
+ N35 (refinement R1, decision-rule change) H5 gates only when v1.14's Stage 1 interim verdict (STAGE1_VERDICT) is
+     "SEPARABLE (Stage 2 pending)". With MARGINAL, FAIL or UNDETERMINED, or with Stage 1 halted (--h5-unavailable),
+     H5 is computed where possible and reported (verdict, rho_w, h5_reported_not_gating in the gate record) but is left
+     out of the gate on every panel; it never gates or downgrades. v1.14's final PASS/FAIL comes at its Stage 2 (t5).
+ N36 (refinement R2, decision-rule change) H6 is active only with a locked Sentiment score on the t4 N3 answers from
+     a pre-registration tagged before the v1.12 lock (--h6). v1.11's locked score is defined on the archived waves
+     only, so it does not activate H6; the cross-panel fallback (--h6-cross-panel) is withdrawn and refused.
 
 Modes:  --calibrate-n1   run N1 exactly as section 2.4 states; writes prereg/calibration_N1_v1_12.json
         --code           code data/v112_raw.jsonl (or --raw) with v0.42's coder -> data/coded (or --coded)
@@ -1716,14 +1722,19 @@ def h8_leg(tabs, panels, dropped, cfg):
                    SEEDS["H8_Panel_Replication"], cfg.n_perm, cfg.n_boot)
 
 
-def evaluate_panel(name, panel, tabs, comp, A, cfg, active, extra, h6_cross_panel=False, h8=None):
+def evaluate_panel(name, panel, tabs, comp, A, cfg, active, extra, h6_cross_panel=False, h8=None, h5_gates=True):
     maps = coverage_maps(tabs, panel)
     legs = legs_for(maps, comp, cfg, active, extra)
     if h8 is not None:
         legs["H8_Panel_Replication"] = h8
     msit = mc_situation(A["cep"], A["ctl"], panel)
     verdicts = {h: legs[h]["verdict"] for h in legs}
-    g = gate(msit["passed"], verdicts, active, h6_cross_panel, two_model=len(panel) == 2)
+    gate_active = dict(active, H5_Sep_Ranking=bool(active.get("H5_Sep_Ranking")) and h5_gates)   # N35
+    g = gate(msit["passed"], verdicts, gate_active, h6_cross_panel, two_model=len(panel) == 2)
+    if active.get("H5_Sep_Ranking") and not h5_gates:
+        g["notes"].append(f"H5_Sep_Ranking ({verdicts.get('H5_Sep_Ranking')}) reported, not gating: v1.14's Stage 1 "
+                          f"verdict is not SEPARABLE (N35)")
+        g["h5_reported_not_gating"] = verdicts.get("H5_Sep_Ranking")
     if comp.get("cross_panel"):
         g["notes"].append("H1 and H2 computed cross-panel against the published AIAS 2.0 t3 values (section 2.6 fallback: "
                           f"{comp.get('reason')})")
@@ -1944,9 +1955,10 @@ def score_coverage(inp, cfg=None, gates=None, with_sensitivities=True):
     tabs = build_tables(A, design, brands)
     active, extra = inp.get("active") or {}, inp.get("extra") or {}
     h6x = bool(inp.get("h6_cross_panel"))
+    h5g = h5_gates(inp.get("h5_source"))
     prim = evaluate_panel(primary, panels[primary], tabs["rasch"], comp, A, cfg, active, extra, h6x,
-                          h8_leg(tabs["rasch"], panels, dropped, cfg))
-    repeats = {name: evaluate_panel(name, panels[name], tabs["rasch"], comp, A, cfg, active, extra, h6x)
+                          h8_leg(tabs["rasch"], panels, dropped, cfg), h5_gates=h5g)
+    repeats = {name: evaluate_panel(name, panels[name], tabs["rasch"], comp, A, cfg, active, extra, h6x, h5_gates=h5g)
                for name in ("C3", "A4") if name != primary}
     pm = panels[primary]
     raw2 = {u: raw_cov(A["cep"], u[0], u[1], pm, design["ceps"][u[0]], 2) for u in units}
@@ -1986,17 +1998,23 @@ def score_coverage(inp, cfg=None, gates=None, with_sensitivities=True):
     return doc, unit_rows(units, tabs, prim, comp, panels, primary, A, design)
 
 
+def h5_gates(src):
+    """N35: H5 gates only when v1.14's Stage 1 interim verdict is SEPARABLE ("SEPARABLE (Stage 2 pending)")."""
+    return bool(src) and str(src.get("stage1_verdict") or "").startswith("SEPARABLE")
+
+
 def h5_source_record(src, cov, cfg, unavailable=None):
     """N32-N34: where H5's R* came from, v1.14's own verdicts printed next to H5, and v1.10's MNP against Cov* as a
     non-gating comparability figure (centred rho_w, same seed; its band reading never enters the gate)."""
     if src is None:
         return {"measure": f"R*_{H5_CONDITION} of {V114_PREREG_TAG} (modal position)", "status": "NOT_AVAILABLE",
-                "reason": unavailable or "v1.14 Stage 1 output not supplied"}
+                "reason": unavailable or "v1.14 Stage 1 output not supplied", "h5_gates": False}
     rec = {k: v for k, v in src.items() if k not in ("values", "MNP")}
     rec["measure"] = f"R*_{src['condition']} of {V114_PREREG_TAG} (modal position, lead-item rule, floor 6)"
-    rec["reading"] = ("v1.14 Stage 1 verdict printed beside H5; H5 enters the gate as section 3 states whatever that "
-                      "verdict; if v1.14 is not SEPARABLE/PASS, a CONFIRMED H5 is reported as separability from v1.14's "
-                      "R* only, not from a validated Ranking component")
+    rec["h5_gates"] = h5_gates(src)
+    rec["reading"] = ("H5 gates only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise (MARGINAL, FAIL, "
+                      "UNDETERMINED, or Stage 1 halted) H5 is computed where possible and reported, and neither gates "
+                      "nor downgrades (N35). v1.14's final PASS/FAIL comes at its Stage 2 (t5)")
     m = src.get("MNP") or {}
     if m.get("status") == "COMPUTED":
         t = run_leg("sep", cov, m["values"], SEEDS["H5_Sep_Ranking"], cfg.n_perm, 0)
@@ -2171,6 +2189,9 @@ def run_score(raw_path, coded_dir, t4_paths, verdicts_path, table_path, cfg, rea
               h6_cross_panel=False, h5_stage1=None, h5_unavailable=None):
     if real and not tag_on_origin():
         raise Refused(f"tag {PREREG_TAG} is not on origin: the v1.12 record is not scored before the lock")
+    if h6_cross_panel:
+        raise Refused("the cross-panel Sentiment fallback (v1.11's archived-wave score) was withdrawn by the "
+                      "clarification of 2026-11-10 (N36): H6 is active only with a locked Sentiment score on the t4 answers")
     extra_paths = dict(extra_paths or {})
     extra_paths.pop("H5_Sep_Ranking", None)          # H5 reads v1.14's Stage 1 output only (N32)
     h5_active, h5_map, h5_src = h5_inputs(h5_stage1, real, h5_unavailable)
@@ -2217,8 +2238,10 @@ def main():
                                         f"H5's R*_S0 (N32)")
     ap.add_argument("--h5-unavailable", metavar="REASON", help="score with H5 UNDETERMINED (N30) when v1.14's Stage 1 "
                                                                  "output cannot exist; logged")
-    ap.add_argument("--h6", help="CSV substrate,brand,value: v1.11's locked S (activates H6)")
-    ap.add_argument("--h6-cross-panel", action="store_true")
+    ap.add_argument("--h6", help="CSV substrate,brand,value: a locked Sentiment score on the t4 N3 answers, from a "
+                                 "pre-registration tagged before the v1.12 lock (activates H6; N36). v1.11's archived-wave "
+                                 "score does not activate H6")
+    ap.add_argument("--h6-cross-panel", action="store_true", help="withdrawn (N36): refused")
     ap.add_argument("--draws", type=int, default=None, help="permutation/bootstrap draws (tests only)")
     ap.add_argument("--out", default=None)
     a = ap.parse_args()
