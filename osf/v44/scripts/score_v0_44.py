@@ -49,6 +49,9 @@ SCORER_NOTES (choices where the pre-registration is silent)
      the permutation use the same rho_pw. phi kernel, pi_hat and bootstrap are imported unchanged.
  N16 Before ranking, values are rounded to 10 decimals: phi of mirror-image count vectors (e.g. [4,5,6] and
      [0,1,2]) is equal in exact arithmetic but not always in floating point, which would split a tie.
+ N17 (r1, C10) H_Tier (and each of its variants) and H_Separation also report `rho_uncentred_comparability`, r0's
+     uncentred statistic (score_v41.pooled_within_rho), for comparability with v0.41/v0.42. Non-gating: no verdict,
+     threshold or p-value uses it.
 
 Modes: --parity-p1 | --synthetic DIR | --run   (--run refuses unless tag v0.44-prereg-r1 is on origin, and if the
 verdicts file already exists)
@@ -133,6 +136,12 @@ def rho_pw(x, y, groups):
     if len(x) < 3:
         return NAN
     return sv._pearson(centred_ranks(x, groups), centred_ranks(y, groups))
+
+
+def uncentred(x, y, groups):
+    """r0's statistic (score_v41.pooled_within_rho, uncentred), reported beside rho_pw for comparability with
+    v0.41/v0.42 only: NON-GATING, no verdict reads it (note N17)."""
+    return sv.pooled_within_rho(np.asarray(x, float), np.asarray(y, float), groups) if len(x) >= 3 else NAN
 
 
 def perm_p(x, y, g, obs, seed, n_draws):
@@ -315,7 +324,7 @@ def _rank_test(xd, yd, keys, seed, cfg):
     keys, x, y, g = pair_arrays({k: xd[k] for k in keys}, {k: yd[k] for k in keys})
     n = len(keys)
     rho = rho_pw(x, y, g) if n >= 3 else NAN
-    t = {"n": n, "rho": rho}
+    t = {"n": n, "rho": rho, "rho_uncentred_comparability": uncentred(x, y, g)}
     if n >= 3 and np.isfinite(rho):
         t["p_perm"] = perm_p(x, y, g, rho, seed, cfg.n_perm)
         b = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": rho_pw(x[i], y[i], g[i])})
@@ -388,6 +397,7 @@ def h_separation(V, registry, cfg, undetermined=None):
     if n >= 3 and np.isfinite(rho):
         ci = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": rho_pw(x[i], y[i], g[i])})["rho"]["ci95"]
     out = {"tier": "PRIMARY", "seed": seed, "n_rated": n, "rho": rho, "ci95_rho": ci,
+           "rho_uncentred_comparability": uncentred(x, y, g),
            "rule": "UNDETERMINED if < 40 rated units; CONFIRMED if |rho| <= 0.50 and the 95% interval lies inside "
                    "(-0.70, 0.70); FALSIFIED if |rho| > 0.50; MARGINAL otherwise"}
     out["verdict"] = "UNDETERMINED" if undetermined else verdict_sep(n, rho, ci)

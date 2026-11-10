@@ -206,6 +206,18 @@ class TestHypotheses(unittest.TestCase):
         self.assertAlmostEqual(row["phi_b"], 1.2)              # k = [4, 5, 6] in every run
         self.assertAlmostEqual(row["c_phi"], 100 * (1 - 1.2 / 9))
 
+    def test_uncentred_comparability_value_is_reported_and_non_gating(self):
+        v = V(self.tier)
+        for h in ("H_Tier", "H_Separation"):
+            self.assertIn("rho_uncentred_comparability", v[h])
+            self.assertTrue(np.isfinite(v[h]["rho_uncentred_comparability"]))
+        self.assertIn("rho_uncentred_comparability", v["H_Tier"]["reported_alongside"]["eligible_rank"])
+        sep = v["H_Separation"]
+        self.assertNotAlmostEqual(sep["rho_uncentred_comparability"], sep["rho"], places=6)   # unequal sizes
+        self.assertEqual(sep["verdict"], S.verdict_sep(sep["n_rated"], sep["rho"], sep["ci95_rho"]))  # gates on rho
+        t = v["H_Tier"]
+        self.assertEqual(t["verdict"], S.verdict_tier(t["rho"], t["p_perm"]))
+
     def test_manipulation_checks_pass_on_clean_data(self):
         mc = self.tier["manipulation_checks"]
         self.assertTrue(mc["MC_Complete"]["pass"])

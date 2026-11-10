@@ -56,14 +56,15 @@ test_separation_computed_on_rated_units (test_code_score_v0_44.TestHypotheses.te
 test_served_mismatch_excluded_dated_snapshot_accepted (test_code_score_v0_44.TestHypotheses.test_served_mismatch_excluded_dated_snapshot_accepted) ... ok
 test_spread_in_four_industries_is_marginal (test_code_score_v0_44.TestHypotheses.test_spread_in_four_industries_is_marginal) ... ok
 test_tier_pattern_confirms_spread_and_tier (test_code_score_v0_44.TestHypotheses.test_tier_pattern_confirms_spread_and_tier) ... ok
+test_uncentred_comparability_value_is_reported_and_non_gating (test_code_score_v0_44.TestHypotheses.test_uncentred_comparability_value_is_reported_and_non_gating) ... ok
 test_window_checks (test_code_score_v0_44.TestHypotheses.test_window_checks) ... ok
 test_phi_max_and_c_phi (test_code_score_v0_44.TestKernel.test_phi_max_and_c_phi) ... ok
 test_rho_pw_centred (test_code_score_v0_44.TestKernel.test_rho_pw_centred) ... ok
 test_verdict_rules (test_code_score_v0_44.TestKernel.test_verdict_rules) ... ok
 
 ----------------------------------------------------------------------
-Ran 61 tests in 17.834s
+Ran 62 tests in 18.097s
 
 OK
-RESULT OK 61 failures 0 errors 0
+RESULT OK 62 failures 0 errors 0
 EXIT 0
