@@ -247,6 +247,19 @@ class TestEndToEndSynthetic(unittest.TestCase):
         b = S.structure(sc, self.ALL, mentions=men, n_perm=100, boot=False)
         self.assertEqual(repr(a), repr(b))
 
+    def test_carried_pair_parity_on_paper_a_units(self):
+        sc, _ = S.synthetic(seed=600999)
+        units_a = [u for u in sc if u[0] != "v0.19"]                 # a Paper A that dropped v0.19
+        sub = {u: sc[u] for u in units_a}
+        ref = S.s_test(sub, "P", "R", n_perm=0, boot=False)
+        carried = {("P", "R"): {"rho": ref["rho"], "verdict": "CONFIRMED", "source": "v1.14 H1",
+                                "units": [list(u) for u in units_a]}}
+        res = S.structure(sc, self.ALL, carried=carried, n_perm=0, boot=False)
+        self.assertEqual(res["S_tests"]["PxR"]["source"], "v1.14 H1")
+        bad = {("P", "R"): dict(carried[("P", "R")], units=None)}   # all units: rho differs -> halt
+        with self.assertRaises(S.Halt):
+            S.structure(sc, self.ALL, carried=bad, n_perm=0, boot=False)
+
     def test_composite_equals_presence_when_nothing_else_rated(self):
         sc = {u: {"P": float(i), "C": None} for i, u in enumerate(units())}
         cc = S.composite_check(sc, ["P", "C"], {u: 0 for u in sc})

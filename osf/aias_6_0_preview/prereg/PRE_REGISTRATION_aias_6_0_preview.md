@@ -61,7 +61,7 @@ The Preview computes no component score of its own. It reads each unit-level sco
 |---|---|---|---|---|
 | **Presence** | P_S0 = 100·(C_P/3 + 2·π̂_N3,S0)/3; C_P/3 = share of N3 models coding the brand recognized in their one S0 brand answer (the definition shared by v1.12 §2.6, v1.13 §2.2 and v1.14 §5.2; `score_v1_14.comparators`). Defined for every unit with a coded brand answer. | t4 category answers S0 (3 models × 6 questions × 3 runs per category) and brand answers S0 (one run) | `osf/v42/v42_brand_table.csv` (`pi_N3_S0`) and `osf/v42/data/coded/*_phase_a.csv` at v0.42's scored commit; raw answers at tag `v0.42-acquisition-locked` | protocol v1.6; `v0.42-prereg-r1` (pending) |
 | **Consistency** | C\*_S0 = 100·(1 − φ_N3,S0/9) when v0.42's partition is `defined`; 100 when `saturated`; NOT RATED when `zero` or `undefined`; rated only with ≥ 6 N3 S0 category-answer mentions (shared definition, as above) | as Presence | `osf/v42/v42_brand_table.csv` (`phi_N3_S0`, `phi_partition_N3_S0`) and `osf/v42/data/coded/*_phase_b.csv` | v1.8 φ; v1.9 C\* (tag `v1.9-prereg-r1`); `v0.42-prereg-r1` (pending) |
-| **Ranking** | R\*_S0 = v1.14's modal position (higher = nearer the top), rated at ≥ 6 rankable mentions | t4 category answers S0 | `osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json`, `units[]` fields `R_star_S0`, `rated_S0` (Stage 1, scored once); the final gate from the Stage 2 output when it exists | `v1.14-prereg-r1` (locked 2026-11-10; anchor commit `4643d56`) |
+| **Ranking** | R\*_S0 = v1.14's modal position (higher = nearer the top), rated at ≥ 6 rankable mentions | t4 category answers S0 | `osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json`: `units[]` fields `R_star_S0`, `rated_S0` (and `P_S0`, `C_star_S0` for MQ_Parity) and the interim verdict `STAGE1_VERDICT` (Stage 1, scored once); the final `GATE` from the Stage 2 output when it exists | `v1.14-prereg-r1` (locked 2026-11-10; anchor commit `4643d56`) |
 | **Sentiment** | S_t4 = v1.11's score (mean unit score of the brand's mention windows, rated at ≥ 6 valid units) applied to the t4 answers, **if** a t4 Sentiment score is pre-registered and locked (§3.4); otherwise the Preview has no Sentiment score on N3 | t4 category answers S0 (proposed) | the t4 Sentiment study's own scored output (path fixed in its pre-registration) | `v1.11-prereg-r1` (instrument; locked); the t4 extension: not yet pre-registered |
 | **Coverage** | Cov\* = v1.12 §2.4 (breadth across 14 buying situations against a situation-blind null; 50 = situation-blind), rated at ≥ 14 mentions and ≥ 2 of 3 models | v1.12's own S0 collection on the same models (75 probes; 900 calls including its Claude Opus 5.5 continuity arm; Cov\* uses the N3 answers) | v1.12's scored unit table (column `cov_star_N3`) and verdict file; exact paths pinned at r1 (§16) | `v1.12-prereg-r1` (pending) |
 | **Grounding** | G\* = 100 × own-domain share of the grounded S1 answers naming the brand, rated at g_b ≥ 6 and only for units with a recorded own domain | t4 category answers S1 (their search records) | v1.13's `v1_13_verdicts.json` and unit table (Stage C1; Stage C2 appends); exact paths pinned at r1 (§16) | `v1.13-prereg-r1` (pending) |
@@ -138,7 +138,7 @@ Where a rule needs an order, it is the order in which the components entered the
 
 ### 6.2 Pairwise separability (S-tests)
 
-Every pair of K is tested with ρ_w on its pairwise-complete set (§2 conventions and bands). **Carried pairs:** where a component's Paper A has issued a verdict on exactly the same statistic (same two scores, same condition, same rated units), the Preview carries that verdict and recomputes the statistic as a parity check (MQ_Parity: equal within 10⁻⁹, else the run halts). **Every other pair is the Preview's own PRIMARY test.** The (P, C\*) pair is named **H_PC_N3**.
+Every pair of K is tested with ρ_w on its pairwise-complete set (§2 conventions and bands). **Carried pairs:** where a component's Paper A has issued a verdict on exactly the same statistic (same two scores, same condition, same rated units), the Preview carries that verdict and recomputes the statistic on that Paper A's own unit set (after its exclusions, for example a substrate it removed from its gate legs) as a parity check (MQ_Parity: equal within 10⁻⁹, else the run halts). **Every other pair is the Preview's own PRIMARY test.** The (P, C\*) pair is named **H_PC_N3**.
 
 | Seed | Pair | Expected source of the verdict (when both members are in K) |
 |---|---|---|
@@ -261,7 +261,7 @@ This document is locked and anchored (§0) **before any t4-based component score
 Each input is read with `git show` from its scored reference and logged with its git blob and SHA-256 in `outputs/inputs_read_aias_6_0_preview.json`:
 
 1. v0.42: tag `v0.42-acquisition-locked` (raw answers) and the scored commit (brand table, coded tables, `v42_verdicts.json`: H_Gen_Presence, H_Gen_Phi, drop rule).
-2. v1.14: `stage1_v1_14.json` (interim verdict, units with R\*_S0, P_S0 and C\*_S0) and, when it exists, the Stage 2 output (final gate).
+2. v1.14: `stage1_v1_14.json` (`STAGE1_VERDICT`; `units[]` with `R_star_S0`, `rated_S0`, `P_S0`, `C_star_S0`) and, when it exists, the Stage 2 output (`GATE`).
 3. v1.12: its verdict file (GATE) and unit table with `cov_star_N3`.
 4. v1.13: `v1_13_verdicts.json` (GATE; C2 appendix if issued) and its unit table with G\*.
 5. v1.11: Stage J and Stage C outputs (H1–H5; for the gate reading of §4.1); Sentiment Paper B's verdict if it exists.
@@ -302,7 +302,7 @@ Checks (each halts unless stated):
 | Scenario | Windows | Calls per judge | Input tokens per request | r | Estimate (J1 + J2) |
 |---|---|---|---|---|---|
 | Archived naming density (5.15 windows per answer, v1.11 U0 for the omnibus answers) | 1,390 | 1,460 | 768 (v1.11's measured omnibus mean) | 270 | **$14.09** |
-| same | 1,390 | 1,460 | 1,050 (a window at the 1,500-character cap) | 375 (largest reasoning count in the programme's probes) | $18.49 |
+| same | 1,390 | 1,460 | 1,050 (bound: v1.11's 647 fixed prompt tokens plus about 330 for a window at the 1,500-character cap at 4.547 characters per token, plus the question; v1.11 §7) | 375 (largest reasoning count in the programme's probes) | $18.49 |
 | Every brand named in ≥ 36 of its 54 answers (cap binds for all 112 units) | 4,032 | 4,234 | 768 | 270 | $40.86 |
 | same, with requests at the window cap and r = 375 | 4,032 | 4,234 | 1,050 | 375 | **$53.61** |
 
@@ -352,7 +352,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## 16. Files, and what r1 must add before the lock
 
-**In this draft (r0):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, sensitivities SA–SC, hashed reads from git references, MQ_Blind, lock-manifest text, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (29 synthetic-data tests, all passing at r0; outputs only to temporary directories); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
+**In this draft (r0):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, sensitivities SA–SC, hashed reads from git references, MQ_Blind, lock-manifest text, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (30 synthetic-data tests, all passing at r0; outputs only to temporary directories); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
 
 **r1, before the lock (after v1.12, v1.13 and v0.42 lock on Wed Nov 11):**
 

@@ -337,7 +337,12 @@ def structure(scores: dict, states: dict, carried: dict | None = None, panel_ok:
     for i, a in enumerate(K):
         for b in K[i + 1:]:
             key = pair_key(a, b)
-            s_res[key] = carry(s_test(scores, a, b, n_perm, boot), carried.get(key))
+            c = carried.get(key)
+            if c and c.get("units") is not None:      # parity on the Paper A's own unit set
+                sub = {tuple(u): scores[tuple(u)] for u in c["units"] if tuple(u) in scores}
+                s_res[key] = carry(s_test(sub, a, b, n_perm, boot), c)
+            else:
+                s_res[key] = carry(s_test(scores, a, b, n_perm, boot), c)
     uk = complete_profile(scores, K)
     i_res = {}
     for x in K[1:]:
