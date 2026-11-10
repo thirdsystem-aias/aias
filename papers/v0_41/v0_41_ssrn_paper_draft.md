@@ -187,6 +187,10 @@ Self-funded. No external funding supported this research.
 
 Not applicable; no human subjects. The study queries large language models under their public interfaces.
 
+## Use of AI tools {-}
+
+The author used Anthropic's Claude to assist with analysis code, drafting and editing of text, and figure production. The study design, pre-registered hypotheses and decision rules, and all interpretations are the author's; the author reviewed all content and takes full responsibility for it.
+
 ## Data and code availability {-}
 
 Materials are deposited at OSF, `ec6wh/v41`: the locked pre-registration and its anchor record (tag, commit and file hashes), the acquisition manifest with probe-set checksums, the pre-lock feasibility check, parity record and frame-structure calibration, and the deviations record. At publication the deposit adds the $t_3$ acquisition outputs and provenance sidecar, the scorer (`score_v41.py`) and its test suite, the verdicts (`v41_verdicts.json`), the three-wave table and the figure sources.
