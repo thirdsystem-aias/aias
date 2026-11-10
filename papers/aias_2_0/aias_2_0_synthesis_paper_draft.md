@@ -228,6 +228,10 @@ Self-funded. No external funding supported this research.
 
 Not applicable; no human subjects. The study analyses responses of large language models queried under their public interfaces.
 
+## Use of AI tools {-}
+
+The author used Anthropic's Claude to assist with analysis code, drafting and editing of text, and figure production. The study design, pre-registered hypotheses and decision rules, and all interpretations are the author's; the author reviewed all content and takes full responsibility for it.
+
 ## Data and code availability {-}
 
 Materials are deposited at OSF, `ec6wh/aias_2_0`: the locked outline and its anchor record (tag, commit and file hashes) and deviations record. At publication the deposit adds the synthesis data (`aias_2_0_synthesis_data.json`), the per-brand profiles (`aias_2_0_profiles.csv`), the builder and its tests (`aias_2_0_synthesis_data.py`), and the figure builder. The underlying records are deposited with their source studies (OSF `ec6wh/v19`--`v23`, `v29`--`v37`, `v41`, `methodology/v1_7`, `methodology/v1_8`, `methodology/v1_9`).
