@@ -54,7 +54,7 @@ SCORER_NOTES (choices where the pre-registration is silent)
      MQ6 on the rated units.
  N13 P at t4 (shared definition with v1.12, section 2.2, clarification of 2026-11-10): recognition share
      C_P/3 = recognized / coded N3 Phase A rows of b in S0 (t4 r2 collects Phase A in S0, one run, so this is the
-     share of N3 models whose one S0 answer codes b as recognized; answered calls only; models without a coded
+     share of N3 models whose one S0 answer codes b as recognized; v0.42's analysis set, N16; models without a coded
      answer leave the denominator; no coded row -> P not computed). The same S0 recognition share enters P_S0 and
      P_S1 (no Phase A in S1). pi_hat = column pi_N3_<c> of v0.42's brand table (three Phase B runs);
      P_c = 100 (C_P/3 + 2 pi_hat_c) / 3. C*_c = 100 (1 - phi / 9) from column phi_N3_<c> when
@@ -65,6 +65,26 @@ SCORER_NOTES (choices where the pre-registration is silent)
      or Gemini dropped by MQ4 (> 0.20 unresolved) leaves the primary G*; the gate is computed on the remaining
      models and labelled.
  N15 G_A (Phase A with search) is not computed: t4 r2 collects Phase A in S0 only.
+ --- clarification of 2026-11-10 (before the lock; section 12 (f)-(h)) ---
+ N16 Comparator edge cases aligned with v1.12 (its N18): P and C* read the coded rows of v0.42's own analysis set,
+     i.e. every call except those v0.42 excludes (t4_excluded = v1.12's: outside v0.42's r2 design, or answered and
+     served by another model ID; a missing served ID is not excluded), deduplicated as v0.42's coder does; no
+     separate "answered" filter (N13's "answered calls only" is replaced). C* only when phi_partition_N3_<c> is
+     "defined" (strictly; a blank partition is NOT RATED, no longer read as defined); saturated = 100; mention count
+     over runs 1-3. G* (section 2.4) and its answered-answer rule (N1) are unchanged.
+ N17 H4's Ranking measure is v1.14's locked R* (tag v1.14-prereg-r1 -> 20fbc342; ACTIVATION_TAG), read from v1.14's
+     Stage 1 output (osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json; --h4-stage1), never recomputed here:
+     R*_S1 (v1.14's separate search-on R*, rated at >= 6 rankable mentions, its own floor) because H4 is defined on
+     the t4 N3 S1 category answers and is downgrade-only, as v1.14's own S1 leg is. v1.14 units (coder substrate,
+     brand) map to v1.13 units through coder_key; units in v1.14's gate_excluded_substrates are NOT RATED. The file's
+     SHA-256 and v1.14's Stage 1 verdicts are written to H4_ranking_source; a dry-run Stage 1 file is refused.
+ N18 Blindness guard: H4 does not run before v1.14's Stage 1 output exists. At Stage C1 without it, H4 is PENDING
+     (verdict UNDETERMINED, reason recorded) and is computed at Stage C2 (section 3's C1/C2 rule), which re-issues the
+     gate downgrade-only; without it by Stage C2, UNDETERMINED and handed to Paper B. v1.13 computes no rank
+     statistic on a t4 answer. v1.10's MNP is reported beside H4 as a non-gating comparability figure from v1.14's
+     hashed t4 rank table (lead-item, S1, floor 6; SHA-256 must equal the Stage 1 record, else halt).
+ N19 H4 downgrades the gate as section 3 states whatever v1.14's verdict; v1.14's Stage 1 verdict is printed beside
+     it; if v1.14 has not passed, H4 is reported as separability from v1.14's R* only.
 """
 import argparse
 import csv
@@ -110,7 +130,7 @@ DENON = ("v19", "Denon")                                        # S11 (COI, sect
 HOUSE_PORTAL_UNITS = {("v20", "A.5"), ("v20", "A.6"), ("v23", "S09")}   # D4: dior.com, chanel.com, malts.com (section 2.3)
 GATE_LEGS = ("H1_Sep_Presence", "H2_Sep_Consistency", "H3_Run_Reliability")
 CONDITIONAL_LEGS = ("H4_Sep_Ranking", "H5_Sep_Sentiment", "H6_Sep_Coverage")
-ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.10-prereg-r2", "H5_Sep_Sentiment": "v1.11-prereg-r1",
+ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.14-prereg-r1", "H5_Sep_Sentiment": "v1.11-prereg-r1",   # H4: N17 (was v1.10-prereg-r2)
                   "H6_Sep_Coverage": "v1.12-prereg-r1"}        # or a later revision (section 3)
 VERDICTS = {"CONFIRMED", "MARGINAL", "FALSIFIED", "UNDETERMINED", "INACTIVE"}
 STATUSES = ("RESOLVED", "UNRESOLVED", "NONE")
@@ -847,16 +867,56 @@ def pi_t4(brand_table, units, cond):
             if (r["substrate"], r["brand"]) in byc}
 
 
-def p_t4(brand_table, coded_a, units, cond, models, answered_ids=None):
-    """N13: P_c = 100 (C_P/3 + 2 pi_hat_c) / 3 on N3; C_P/3 from the S0 Phase A answers in every condition."""
+T4_RUNS = (1, 2, 3)
+
+
+def v042_answered(rec):
+    """= code_t4_v0_42.is_answered (status ok, non-empty text, no error); the served ID is checked by t4_excluded."""
+    return rec.get("status") == "ok" and bool((rec.get("text") or "").strip()) and not rec.get("error")
+
+
+def t4_in_design(rec):
+    """= score_v0_42.in_design (r2, its N15) = v1.12 t4_in_design."""
+    if rec.get("model_requested") not in PANELS["N3"] or rec.get("condition") not in ("S0", "S1"):
+        return False
+    if rec.get("phase") == "B":
+        return rec.get("run") in T4_RUNS
+    if rec.get("phase") == "A":
+        return (rec.get("condition"), rec.get("run")) == ("S0", 1)
+    return False
+
+
+def t4_excluded(records):
+    """N16 (clarification of 2026-11-10, as v1.12 t4_excluded): v0.42's own analysis exclusions. One record per call
+    (v0.42's dedupe: last answered attempt, else last attempt); excluded = calls outside v0.42's design and answered
+    calls served by another model ID (a missing served ID is not excluded, as v0.42 N11). The comparators read the
+    coded rows of every other call."""
+    best = {}
+    for r in records:
+        cid = r["call_id"]
+        if cid not in best or v042_answered(r) or not v042_answered(best[cid]):
+            best[cid] = r
+    excl = set()
+    for cid, r in best.items():
+        if not t4_in_design(r):
+            excl.add(cid)
+        elif v042_answered(r) and r.get("served_model") and not served_ok(r.get("model_requested"), r["served_model"]):
+            excl.add(cid)
+    return excl
+
+
+def p_t4(brand_table, coded_a, units, cond, models, excluded=None):
+    """N13/N16: P_c = 100 (C_P/3 + 2 pi_hat_c) / 3 on N3; C_P/3 from the S0 Phase A answers in every condition, on
+    v0.42's analysis set (coded rows of calls in `excluded` are dropped)."""
     byc = _by_coder(units)
+    excluded = excluded or set()
     pi = {byc[(r["substrate"], r["brand"])]: _num(r.get(f"pi_N3_{cond}")) for r in brand_table
           if (r["substrate"], r["brand"]) in byc}
     rec = {}
     for r in coded_a:
         if r["condition"] != RECOGNITION_CONDITION or r["model"] not in models:
             continue
-        if answered_ids is not None and r["call_id"] not in answered_ids:
+        if r["call_id"] in excluded:
             continue
         if r.get("recognized") in ("", None):
             continue
@@ -875,10 +935,12 @@ def p_t4(brand_table, coded_a, units, cond, models, answered_ids=None):
     return out
 
 
-def c_star_t4(brand_table, coded_b, units, cond, models, answered_ids=None):
-    """N13: C* = 100 (1 - phi / 9) if phi is defined, 100 if saturated (v1.9), else NOT RATED; and only with
-    >= 6 N3 Phase B mentions in condition c."""
+def c_star_t4(brand_table, coded_b, units, cond, models, excluded=None):
+    """N13/N16: C* = 100 (1 - phi / 9) if v0.42's partition is "defined" (strictly; a blank partition is NOT RATED),
+    100 if "saturated" (v1.9), else NOT RATED; and only with >= 6 N3 Phase B mentions in condition c on v0.42's
+    analysis set (rows of calls in `excluded` dropped; runs 1-3)."""
     byc = _by_coder(units)
+    excluded = excluded or set()
     phi = {}
     for r in brand_table:
         k = byc.get((r["substrate"], r["brand"]))
@@ -888,7 +950,7 @@ def c_star_t4(brand_table, coded_b, units, cond, models, answered_ids=None):
         v = _num(r.get(f"phi_N3_{cond}"))
         if part == "saturated":
             phi[k] = 0.0                                   # C* = 100 (v1.9: no dispersion)
-        elif part in ("defined", "") and v is not None:    # "" = older tables without the partition column
+        elif part == "defined" and v is not None:          # N16: as v1.12 N18, "defined" only
             phi[k] = v
         else:
             phi[k] = None
@@ -896,7 +958,7 @@ def c_star_t4(brand_table, coded_b, units, cond, models, answered_ids=None):
     for r in coded_b:
         if r["condition"] != cond or r["model"] not in models:
             continue
-        if answered_ids is not None and r["call_id"] not in answered_ids:
+        if r["call_id"] in excluded or int(r["run"]) not in T4_RUNS:
             continue
         k = byc.get((r["substrate"], r["brand"]))
         if k is not None:
@@ -928,6 +990,127 @@ def read_sdri(path, units):
         if k in units and str(r.get("phantom", "0")) != "1":
             out[k] = _num(r.get("SDRI"))
     return out
+
+
+# =========================================================================== H4: v1.14's R* (clarification of 2026-11-10, N17-N19)
+V114_PREREG_TAG = "v1.14-prereg-r1"                    # pushed 2026-11-10 (tag object 8398ab2d, commit 20fbc342)
+V114_STAGE1_REL = "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"   # written once by score_v1_14.py --stage 1
+V114_RANK_TABLE = "rank_table_t4_v1_14.csv"            # beside the Stage 1 file; SHA-256 recorded in the Stage 1 file
+V114_FLOOR = 6                                         # v1.14 section 3.1 rating floor (rankable mentions)
+H4_CONDITION = "S1"                                    # H4 is defined on the t4 N3 S1 category answers -> R*_S1
+
+
+class BlindnessGuard(Refused):
+    """The Ranking leg does not run before v1.14's Stage 1 output exists (v1.14 section 9, item 2)."""
+
+
+def read_v114_stage1(path, condition=H4_CONDITION, allow_dry=False):
+    """v1.14's locked R* per v1.14 unit (coder substrate, brand) from its Stage 1 output (N17). Refuses
+    (BlindnessGuard) while the file does not exist. "S1": R*_S1 where n_ranked_S1 >= 6 (v1.14's floor); "S0": R*_S0
+    where rated_S0. Units of a substrate in v1.14's gate_excluded_substrates are NOT RATED here too."""
+    if not path or not Path(path).exists():
+        raise BlindnessGuard(f"v1.14 Stage 1 output {path or V114_STAGE1_REL} does not exist: the Ranking leg does not run "
+                             f"before it (blindness guard, v1.14 section 9 item 2)")
+    data = Path(path).read_bytes()
+    doc = json.loads(data.decode("utf-8"))
+    if doc.get("phase") != "v1.14" or str(doc.get("stage")) != "1" or doc.get("prereg_tag") != V114_PREREG_TAG:
+        raise Refused(f"HALT: {path} is not v1.14's Stage 1 output")
+    if doc.get("dry_run") and not allow_dry:
+        raise Refused(f"HALT: {path} is a v1.14 dry run, not its Stage 1 on t4")
+    excl = set(doc.get("gate_excluded_substrates") or [])
+    vals = {}
+    for u in doc.get("units") or []:
+        k = (u["substrate"], u["brand"])
+        if condition == "S0":
+            v, ok = _num(u.get("R_star_S0")), bool(u.get("rated_S0"))
+        else:
+            v, ok = _num(u.get("R_star_S1")), int(u.get("n_ranked_S1") or 0) >= V114_FLOOR
+        vals[k] = v if (ok and v is not None and k[0] not in excl) else None
+    verd = lambda h: (doc.get(h) or {}).get("verdict")                                # noqa: E731
+    return {"file": str(path), "sha256": hashlib.sha256(data).hexdigest(), "condition": condition,
+            "prereg_tag": doc.get("prereg_tag"), "created_utc": doc.get("created_utc"), "dry_run": bool(doc.get("dry_run")),
+            "stage1_verdict": doc.get("STAGE1_VERDICT"),
+            "v1_14_verdicts": {"H1_Sep_Presence": verd("H1_Sep_Presence"), "H2_Sep_Consistency": verd("H2_Sep_Consistency"),
+                               "H4_Sep_Presence_S1": verd("H4_Sep_Presence_S1"), "components": doc.get("component_legs")},
+            "gate_excluded_substrates": sorted(excl), "rated_units": sum(v is not None for v in vals.values()),
+            "rank_table_t4_sha256": doc.get("rank_table_t4_sha256"), "values": vals}
+
+
+def mnp_from_rank_table(path, expected_sha256, condition=H4_CONDITION, excluded_subs=(), floor=V114_FLOOR):
+    """v1.10's MNP = 100 (1 - mean (k_mid - 1) / (n - 1)) over a unit's rankable lead-item rows in `condition`, rated at
+    >= 6, from v1.14's hashed t4 rank table: the non-gating comparability figure (N18). Missing table -> not computed;
+    a SHA-256 different from the Stage 1 record halts."""
+    if not path or not Path(path).exists():
+        return {"status": "NOT_COMPUTED", "reason": f"rank table {path} not found", "values": {}}
+    data = Path(path).read_bytes()
+    sha = hashlib.sha256(data).hexdigest()
+    if expected_sha256 and sha != expected_sha256:
+        raise Refused(f"HALT: v1.14 rank table {path}: SHA-256 {sha} differs from the Stage 1 record {expected_sha256}")
+    acc = {}
+    for r in csv.DictReader(data.decode("utf-8").splitlines()):
+        if (r.get("rule") != "lead_item" or r.get("condition") != condition or r.get("status") != "ok"
+                or str(r.get("rankable")) != "1" or not r.get("brand") or r.get("k_mid") in ("", None)):
+            continue
+        acc.setdefault((r["category"], r["brand"]), []).append((float(r["k_mid"]) - 1.0) / (float(r["n_named"]) - 1.0))
+    vals = {k: (100.0 * (1.0 - sum(q) / len(q)) if len(q) >= floor and k[0] not in set(excluded_subs) else None)
+            for k, q in acc.items()}
+    return {"status": "COMPUTED", "file": str(path), "sha256": sha, "condition": condition, "floor": floor,
+            "rated_units": sum(v is not None for v in vals.values()), "values": vals}
+
+
+def load_ranking_source(stage1_path, condition=H4_CONDITION, allow_dry=False):
+    src = read_v114_stage1(stage1_path, condition, allow_dry)
+    src["MNP"] = mnp_from_rank_table(Path(stage1_path).parent / V114_RANK_TABLE, src["rank_table_t4_sha256"], condition,
+                                     src["gate_excluded_substrates"])
+    return src
+
+
+def ranking_map(src_values, units):
+    """v1.14 unit keys (coder substrate, coder brand) -> v1.13 unit keys through coder_key (N3); unmatched -> absent."""
+    vals = src_values["values"] if isinstance(src_values, dict) and "values" in src_values else src_values
+    byc = _by_coder(units)
+    return {byc[k]: v for k, v in vals.items() if k in byc}
+
+
+def ranking_record(src, g_star, units, n_perm=N_PERM, unavailable=None):
+    """N17-N19: H4's source (file, SHA-256, v1.14's Stage 1 verdicts) and v1.10's MNP against G* (non-gating)."""
+    if src is None:
+        return {"measure": f"R*_{H4_CONDITION} of {V114_PREREG_TAG}", "status": "PENDING",
+                "reason": unavailable or "v1.14 Stage 1 output not supplied: computed at Stage C2 (N18)"}
+    rec = {k: v for k, v in src.items() if k not in ("values", "MNP")}
+    rec["measure"] = f"R*_{src['condition']} of {V114_PREREG_TAG} (modal position, lead-item rule, floor 6)"
+    rec["units_matched"] = sum(1 for v in ranking_map(src, units).values() if v is not None)
+    rec["reading"] = ("v1.14 Stage 1 verdict printed beside H4; H4 downgrades the gate as section 3 states whatever "
+                      "that verdict; if v1.14 has not passed, H4 reports separability from v1.14's R* only")
+    m = src.get("MNP") or {}
+    if m.get("status") == "COMPUTED":
+        leg = sep_leg(g_star, ranking_map(m, units), SEEDS["H4_Sep_Ranking"], n_perm, 0)
+        rec["MNP_comparability_non_gating"] = {"rho_w": leg["rho_w"], "n": leg["n"], "p": leg["p"],
+                                               "band_reading": sep_verdict([leg]), "rank_table_sha256": m["sha256"],
+                                               "gating": False}
+    else:
+        rec["MNP_comparability_non_gating"] = {"status": m.get("status", "NOT_COMPUTED"), "reason": m.get("reason"),
+                                               "gating": False}
+    return rec
+
+
+def stage_c2_ranking(doc_c1, answers, units, src, n_perm=N_PERM, n_boot=N_BOOT, unavailable=None):
+    """N18: an active H4 not computed at Stage C1 is computed at C2 from v1.14's Stage 1 output; the gate verdict is
+    re-issued (downgrade only: PASS -> MARGINAL if H4 is FALSIFIED). Without the output by C2: UNDETERMINED (Paper B)."""
+    if not (doc_c1.get("gate", {}).get("active") or {}).get("H4_Sep_Ranking"):
+        return {"H4_Sep_Ranking": "INACTIVE"}
+    if doc_c1.get("H4_ranking_source", {}).get("sha256"):
+        return {"H4_Sep_Ranking": doc_c1["verdicts"]["H4_Sep_Ranking"], "note": "computed at Stage C1"}
+    if src is None:
+        return {"H4_Sep_Ranking": "UNDETERMINED", "reason": unavailable or
+                "v1.14 Stage 1 output did not exist by Stage C2: handed to Paper B (section 3)"}
+    gs = gstar_map(brand_stats(answers, units))
+    leg = sep_leg(gs, ranking_map(src, units), SEEDS["H4_Sep_Ranking"], n_perm, n_boot)
+    v = sep_verdict([leg])
+    before = doc_c1["gate"]["verdict"]
+    after = "MARGINAL" if (before == "PASS" and v == "FALSIFIED") else before
+    return {"H4_Sep_Ranking": v, "leg": leg, "H4_ranking_source": ranking_record(src, gs, units, n_perm),
+            "gate_reissued": {"before": before, "after": after, "rule": "downgrade only (section 3)"}}
 
 
 # =========================================================================== gate statistics, baseline, stages
@@ -1024,7 +1207,6 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     if unresolved_units(units):
         raise Refused(f"REFUSED: {len(unresolved_units(units))} D_b rows are UNRESOLVED")
     recs = dedupe_calls(inp["records"])
-    answered = {r["call_id"] for r in recs if is_answered(r)}
     named = named_index(inp["coded_b"], units)
     s1_all = [r for r in recs if r.get("condition") == "S1" and is_answered(r)]
     for r in s1_all:                                   # MQ1: every answered S1 record parses (exceptions halt)
@@ -1040,11 +1222,18 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     models = [m for m in PANELS["N3"] if m not in dropped]
     answers = [a for a in answers_n3 if a["model"] in models]
     n3 = PANELS["N3"]
-    P = {c: p_t4(inp["brand_table"], inp["coded_a"], units, c, n3, answered) for c in ("S0", "S1")}
-    C = {c: c_star_t4(inp["brand_table"], inp["coded_b"], units, c, n3, answered) for c in ("S0", "S1")}
+    excluded = t4_excluded(inp["records"])             # N16: v0.42's own analysis set for P and C*
+    P = {c: p_t4(inp["brand_table"], inp["coded_a"], units, c, n3, excluded) for c in ("S0", "S1")}
+    C = {c: c_star_t4(inp["brand_table"], inp["coded_b"], units, c, n3, excluded) for c in ("S0", "S1")}
     active = inp.get("active") or {leg: False for leg in CONDITIONAL_LEGS}
-    comps = inp.get("comparators") or {}
+    comps = dict(inp.get("comparators") or {})
+    rank_src = inp.get("ranking_source")               # N17: v1.14's Stage 1 output (None until it exists)
+    if active.get("H4_Sep_Ranking") and rank_src is not None:
+        comps["H4_Sep_Ranking"] = ranking_map(rank_src, units)
     prim = gate_statistics(answers, units, P, C, comps, active, n_perm, n_boot)
+    if active.get("H4_Sep_Ranking") and rank_src is None:
+        prim["reasons"]["H4_Sep_Ranking"] = ("PENDING: v1.14's Stage 1 output does not exist yet; the leg does not run "
+                                             "before it (blindness guard, N18) and is computed at Stage C2")
     doc = {"phase": PHASE_ID, "stage": "C1", "primary_field": PRIMARY_FIELD, "panel_models": models,
            "dropped_models": dropped, "gate": prim["gate"], "verdicts": prim["verdicts"], "reasons": prim["reasons"],
            "legs": prim["legs"], "H3": prim["H3"], "MQ": {
@@ -1055,6 +1244,8 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
                      for k, v in prim["stats"].items()},
            "descriptives": {f"{k[0]}|{k[1]}": v for k, v in brand_descriptives(answers, units, prim["stats"]).items()},
            "baseline": baseline(answers_n3, units, brand_stats(answers_n3, units))}
+    if active.get("H4_Sep_Ranking"):
+        doc["H4_ranking_source"] = ranking_record(rank_src, prim["g_star"], units, n_perm, inp.get("h4_unavailable"))
     if not sensitivities:
         return doc
     sp = {k: SEEDS["sensitivities"] for k in SEEDS}
@@ -1141,9 +1332,14 @@ def _load_inputs(a, anchor):
             p = Path(a.coded) / f"{sub}_phase_{ph}.csv"
             if p.exists():
                 acc.extend(read_csv(p))
+    active = activation(anchor)
+    rank_src = None                                    # N18: no Ranking input until v1.14's Stage 1 output exists
+    if active.get("H4_Sep_Ranking") and getattr(a, "h4_stage1", None) and Path(a.h4_stage1).exists():
+        rank_src = load_ranking_source(a.h4_stage1, H4_CONDITION, allow_dry=False)
     return {"records": read_jsonl(a.t4), "coded_a": coded_a, "coded_b": coded_b,
             "brand_table": read_csv(a.brand_table), "units": units, "classes": classes,
-            "active": activation(anchor), "comparators": {}}
+            "active": active, "comparators": {}, "ranking_source": rank_src,
+            "h4_unavailable": getattr(a, "h4_unavailable", None)}
 
 
 def main(argv=None):
@@ -1154,6 +1350,9 @@ def main(argv=None):
     ap.add_argument("--brand-table", help="v0.42 brand table (pi_N3_<c>, phi_N3_<c>)")
     ap.add_argument("--sdri", default=str(PHASE / "audit" / "v1_13_sdri.csv"), help="Stage C2: audit output")
     ap.add_argument("--out", default=str(PHASE / "v1_13_verdicts.json"))
+    ap.add_argument("--h4-stage1", help=f"v1.14's Stage 1 output ({V114_STAGE1_REL}, {V114_RANK_TABLE} beside it): "
+                                        f"H4's R*_S1 (N17); absent -> H4 waits for Stage C2 (N18)")
+    ap.add_argument("--h4-unavailable", metavar="REASON", help="Stage C2: record why v1.14's Stage 1 output does not exist")
     a = ap.parse_args(argv)
     if not a.stage:
         print(__doc__)
@@ -1168,12 +1367,12 @@ def main(argv=None):
     doc = json.loads(Path(a.out).read_text(encoding="utf-8"))          # Stage C2 appends to the C1 file
     units = inp["units"]
     recs = dedupe_calls(inp["records"])
-    answered = {r["call_id"] for r in recs if is_answered(r)}
     answers = build_answers(select_calls(recs, doc["panel_models"], "S1", "B"),
                             named_index(inp["coded_b"], units), units, inp["classes"])
-    p_s0 = p_t4(inp["brand_table"], inp["coded_a"], units, "S0", PANELS["N3"], answered)
+    p_s0 = p_t4(inp["brand_table"], inp["coded_a"], units, "S0", PANELS["N3"], t4_excluded(inp["records"]))
     collected = Path(a.sdri).exists()
     c2 = stage_c2(doc, answers, units, p_s0, read_sdri(a.sdri, units) if collected else {}, collected)
+    c2["ranking"] = stage_c2_ranking(doc, answers, units, inp["ranking_source"], unavailable=inp["h4_unavailable"])
     c2["appended_utc"] = datetime.now(timezone.utc).isoformat()
     doc["stage_C2"] = c2
     Path(a.out).write_text(json.dumps(doc, indent=2, default=str), encoding="utf-8")

@@ -411,7 +411,8 @@ def synthetic_t4(seed=7, p_tracks_g=False):
         for k in keys:
             pi = theta[k] if p_tracks_g else rng.random()
             table.append({"substrate": S.CODER_SUB[s], "brand": k[1], "pi_N3_S0": str(pi), "pi_N3_S1": str(pi),
-                          "phi_N3_S0": str(rng.uniform(0, 5)), "phi_N3_S1": str(rng.uniform(0, 5))})
+                          "phi_N3_S0": str(rng.uniform(0, 5)), "phi_N3_S1": str(rng.uniform(0, 5)),
+                          "phi_partition_N3_S0": "defined", "phi_partition_N3_S1": "defined"})   # v0.42 writes it (N16)
     return {"records": records, "coded_a": coded_a, "coded_b": coded_b, "brand_table": table, "units": units,
             "classes": C, "active": {l: False for l in S.CONDITIONAL_LEGS}}
 
