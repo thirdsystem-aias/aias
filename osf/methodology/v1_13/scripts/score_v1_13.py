@@ -83,8 +83,14 @@ SCORER_NOTES (choices where the pre-registration is silent)
      gate downgrade-only; without it by Stage C2, UNDETERMINED and handed to Paper B. v1.13 computes no rank
      statistic on a t4 answer. v1.10's MNP is reported beside H4 as a non-gating comparability figure from v1.14's
      hashed t4 rank table (lead-item, S1, floor 6; SHA-256 must equal the Stage 1 record, else halt).
- N19 H4 downgrades the gate as section 3 states whatever v1.14's verdict; v1.14's Stage 1 verdict is printed beside
-     it; if v1.14 has not passed, H4 is reported as separability from v1.14's R* only.
+ N19 (refinement R1, decision-rule change) H4 may downgrade the gate only when v1.14's Stage 1 interim verdict
+     (STAGE1_VERDICT) is "SEPARABLE (Stage 2 pending)". With MARGINAL, FAIL or UNDETERMINED, or with Stage 1 halted,
+     H4 is computed where possible and reported (verdict, rho_w; gate["gating"], a note) and neither gates nor
+     downgrades, at C1 and at C2. v1.14's final PASS/FAIL comes at its Stage 2 (t5).
+ N20 (refinement R2, decision-rule change) H5 (Sentiment) is active only if the lock record marks a pushed
+     pre-registration of a locked Sentiment score on the t4 answers (conditional_legs.H5_Sep_Sentiment.t4_answers);
+     v1.11-prereg-r1 defines its score on the archived waves only, so it does not activate H5; the cross-panel
+     fallback to v1.11's t3 score is withdrawn.
 """
 import argparse
 import csv
@@ -130,7 +136,9 @@ DENON = ("v19", "Denon")                                        # S11 (COI, sect
 HOUSE_PORTAL_UNITS = {("v20", "A.5"), ("v20", "A.6"), ("v23", "S09")}   # D4: dior.com, chanel.com, malts.com (section 2.3)
 GATE_LEGS = ("H1_Sep_Presence", "H2_Sep_Consistency", "H3_Run_Reliability")
 CONDITIONAL_LEGS = ("H4_Sep_Ranking", "H5_Sep_Sentiment", "H6_Sep_Coverage")
-ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.14-prereg-r1", "H5_Sep_Sentiment": "v1.11-prereg-r1",   # H4: N17 (was v1.10-prereg-r2)
+ACTIVATION_TAG = {"H4_Sep_Ranking": "v1.14-prereg-r1",          # N17 (was v1.10-prereg-r2)
+                  "H5_Sep_Sentiment": None,                     # N20: a pre-registered t4 Sentiment score (none yet;
+                                                                # v1.11-prereg-r1 scores the archived waves only)
                   "H6_Sep_Coverage": "v1.12-prereg-r1"}        # or a later revision (section 3)
 VERDICTS = {"CONFIRMED", "MARGINAL", "FALSIFIED", "UNDETERMINED", "INACTIVE"}
 STATUSES = ("RESOLVED", "UNRESOLVED", "NONE")
@@ -716,10 +724,13 @@ def activation(lock_record):
     """{leg: bool} from the lock record: active iff the leg's tag (or a later revision) was pushed before the
     v1.13 lock commit, as recorded at the lock (section 3, activation rule)."""
     legs = (lock_record or {}).get("conditional_legs") or {}
-    return {leg: bool((legs.get(leg) or {}).get("pushed_before_lock")) for leg in CONDITIONAL_LEGS}
+    out = {leg: bool((legs.get(leg) or {}).get("pushed_before_lock")) for leg in CONDITIONAL_LEGS}
+    # N20: a Sentiment leg needs a locked Sentiment score on the t4 answers (v1.11's is archived-waves only)
+    out["H5_Sep_Sentiment"] = out["H5_Sep_Sentiment"] and bool((legs.get("H5_Sep_Sentiment") or {}).get("t4_answers"))
+    return out
 
 
-def gate(verdicts, active):
+def gate(verdicts, active, gating=None):
     """Paper A verdict (section 3, gate rule; N8 order)."""
     for k, v in verdicts.items():
         if v not in VERDICTS:
@@ -732,18 +743,25 @@ def gate(verdicts, active):
         verdict = "UNDETERMINED"
     elif all(v == "CONFIRMED" for v in h.values()):
         verdict = "PASS"
-        bad = [leg for leg in CONDITIONAL_LEGS if active.get(leg) and verdicts.get(leg) == "FALSIFIED"]
+        gating = gating or {}
+        bad = [leg for leg in CONDITIONAL_LEGS if active.get(leg) and gating.get(leg, True)
+               and verdicts.get(leg) == "FALSIFIED"]
         if bad:
             verdict = "MARGINAL"
             notes.append("PASS downgraded to MARGINAL: " + ", ".join(bad) + " FALSIFIED")
     else:
         verdict = "MARGINAL"
+    for leg in CONDITIONAL_LEGS:
+        if active.get(leg) and (gating or {}).get(leg) is False:
+            notes.append(f"{leg} ({verdicts.get(leg)}) reported, not downgrading: v1.14's Stage 1 verdict is not "
+                         f"SEPARABLE (N19)")
     if verdict == "MARGINAL":
         notes.append("Paper B only on Pablo's recorded decision")
     for leg in CONDITIONAL_LEGS:
         if not active.get(leg) and verdicts.get(leg, "INACTIVE") != "INACTIVE":
             raise ValueError(f"{leg} is inactive but carries a verdict")
-    return {"verdict": verdict, "legs": h, "active": dict(active), "notes": notes}
+    return {"verdict": verdict, "legs": h, "active": dict(active), "notes": notes,
+            "gating": {leg: bool(active.get(leg)) and (gating or {}).get(leg, True) for leg in CONDITIONAL_LEGS}}
 
 
 # =========================================================================== manipulation and quality checks (section 4)
@@ -1080,8 +1098,10 @@ def ranking_record(src, g_star, units, n_perm=N_PERM, unavailable=None):
     rec = {k: v for k, v in src.items() if k not in ("values", "MNP")}
     rec["measure"] = f"R*_{src['condition']} of {V114_PREREG_TAG} (modal position, lead-item rule, floor 6)"
     rec["units_matched"] = sum(1 for v in ranking_map(src, units).values() if v is not None)
-    rec["reading"] = ("v1.14 Stage 1 verdict printed beside H4; H4 downgrades the gate as section 3 states whatever "
-                      "that verdict; if v1.14 has not passed, H4 reports separability from v1.14's R* only")
+    rec["h4_gates"] = h4_gates(src)
+    rec["reading"] = ("H4 may downgrade the gate only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise "
+                      "(MARGINAL, FAIL, UNDETERMINED, or Stage 1 halted) it is computed where possible and reported, and "
+                      "neither gates nor downgrades (N19). v1.14's final PASS/FAIL comes at its Stage 2 (t5)")
     m = src.get("MNP") or {}
     if m.get("status") == "COMPUTED":
         leg = sep_leg(g_star, ranking_map(m, units), SEEDS["H4_Sep_Ranking"], n_perm, 0)
@@ -1108,14 +1128,22 @@ def stage_c2_ranking(doc_c1, answers, units, src, n_perm=N_PERM, n_boot=N_BOOT, 
     leg = sep_leg(gs, ranking_map(src, units), SEEDS["H4_Sep_Ranking"], n_perm, n_boot)
     v = sep_verdict([leg])
     before = doc_c1["gate"]["verdict"]
-    after = "MARGINAL" if (before == "PASS" and v == "FALSIFIED") else before
+    gates = h4_gates(src)
+    after = "MARGINAL" if (gates and before == "PASS" and v == "FALSIFIED") else before
     return {"H4_Sep_Ranking": v, "leg": leg, "H4_ranking_source": ranking_record(src, gs, units, n_perm),
-            "gate_reissued": {"before": before, "after": after, "rule": "downgrade only (section 3)"}}
+            "h4_gates": gates,
+            "gate_reissued": {"before": before, "after": after,
+                              "rule": "downgrade only (section 3), and only if v1.14's Stage 1 is SEPARABLE (N19)"}}
+
+
+def h4_gates(src):
+    """N19: H4 may downgrade only when v1.14's Stage 1 interim verdict is SEPARABLE ("SEPARABLE (Stage 2 pending)")."""
+    return bool(src) and str(src.get("stage1_verdict") or "").startswith("SEPARABLE")
 
 
 # =========================================================================== gate statistics, baseline, stages
 def gate_statistics(answers, units, P, C, comparators=None, active=None, n_perm=N_PERM, n_boot=N_BOOT,
-                    centred=True, exclude=(), floor=FLOOR_G, denominator="g", seeds=None):
+                    centred=True, exclude=(), floor=FLOOR_G, denominator="g", seeds=None, gating=None):
     """H1-H6 legs, verdicts and gate on one set of category answers. P, C: {"S0": map, "S1": map}.
     comparators: {leg: map or None} for active H4-H6. exclude: unit keys left out of every correlation."""
     seeds = seeds or SEEDS
@@ -1146,7 +1174,7 @@ def gate_statistics(answers, units, P, C, comparators=None, active=None, n_perm=
         legs[leg] = [sep_leg(gs, comp, seeds[leg], n_perm, n_boot, centred, exclude=exclude)]
         verdicts[leg] = sep_verdict(legs[leg])
     return {"stats": stats, "g_star": gs, "mq5": mq5, "legs": legs, "H3": h3, "verdicts": verdicts,
-            "reasons": reasons, "gate": gate(verdicts, active)}
+            "reasons": reasons, "gate": gate(verdicts, active, gating)}
 
 
 def _median_iqr(vals):
@@ -1230,7 +1258,8 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     rank_src = inp.get("ranking_source")               # N17: v1.14's Stage 1 output (None until it exists)
     if active.get("H4_Sep_Ranking") and rank_src is not None:
         comps["H4_Sep_Ranking"] = ranking_map(rank_src, units)
-    prim = gate_statistics(answers, units, P, C, comps, active, n_perm, n_boot)
+    gating = {"H4_Sep_Ranking": h4_gates(rank_src)}          # N19: downgrades only if v1.14 Stage 1 is SEPARABLE
+    prim = gate_statistics(answers, units, P, C, comps, active, n_perm, n_boot, gating=gating)
     if active.get("H4_Sep_Ranking") and rank_src is None:
         prim["reasons"]["H4_Sep_Ranking"] = ("PENDING: v1.14's Stage 1 output does not exist yet; the leg does not run "
                                              "before it (blindness guard, N18) and is computed at Stage C2")
@@ -1252,7 +1281,8 @@ def stage_c1(inp, n_perm=N_PERM, n_boot=N_BOOT, sensitivities=True):
     sens = {}
 
     def run(name, ans, **kw):
-        r = gate_statistics(ans, units, kw.pop("P", P), kw.pop("C", C), comps, active, n_perm, 0, seeds=sp, **kw)
+        r = gate_statistics(ans, units, kw.pop("P", P), kw.pop("C", C), comps, active, n_perm, 0, seeds=sp,
+                            gating=gating, **kw)
         sens[name] = {"verdicts": r["verdicts"], "gate": r["gate"]["verdict"],
                       "rho": {h: [l["rho_w"] for l in r["legs"][h]] for h in r["legs"]}, "rel3": r["H3"]["rel3"]}
     run("S1_denominator_m", answers, denominator="m")

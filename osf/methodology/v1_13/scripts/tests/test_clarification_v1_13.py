@@ -74,7 +74,7 @@ class TestAnalysisSet(unittest.TestCase):
         self.assertIsNone(S.c_star_t4(bt, rows4, UNITS, "S0", S.PANELS["N3"])[("v20", "B3")])
 
 
-def write_stage1(d, units, seed=3, dry_run=True, excluded_subs=(), r1_from=None):
+def write_stage1(d, units, seed=3, dry_run=True, excluded_subs=(), r1_from=None, verdict="FAIL"):
     """v1.14-shaped Stage 1 file (fields as score_v1_14.run_stage1 writes them) and its rank table, keyed on the
     coder substrate and brand. r1_from: {v1.13 unit: value} to set R*_S1."""
     rng = random.Random(seed)
@@ -109,7 +109,7 @@ def write_stage1(d, units, seed=3, dry_run=True, excluded_subs=(), r1_from=None)
     (d / S.V114_RANK_TABLE).write_bytes(rt)
     doc = {"phase": "v1.14", "stage": "1", "prereg_tag": S.V114_PREREG_TAG, "created_utc": "2026-11-14T00:00:00+00:00",
            "dry_run": dry_run, "rank_table_t4_sha256": hashlib.sha256(rt).hexdigest(),
-           "gate_excluded_substrates": list(excluded_subs), "STAGE1_VERDICT": "FAIL",
+           "gate_excluded_substrates": list(excluded_subs), "STAGE1_VERDICT": verdict,
            "H1_Sep_Presence": {"verdict": "FALSIFIED"}, "H2_Sep_Consistency": {"verdict": "CONFIRMED"},
            "H4_Sep_Presence_S1": {"verdict": "MARGINAL"}, "component_legs": {"Grounding": "INACTIVE"}, "units": out}
     p = d / "stage1_v1_14.json"
@@ -187,17 +187,43 @@ class TestRankingSource(unittest.TestCase):
                                   self.inp["classes"])
         none = S.stage_c2_ranking(doc, answers, self.inp["units"], None)
         self.assertEqual(none["H4_Sep_Ranking"], "UNDETERMINED")
-        # R*_S1 identical in order to G*: FALSIFIED, and a PASS is re-issued as MARGINAL (downgrade only)
+        # R*_S1 identical in order to G*: FALSIFIED. With v1.14 SEPARABLE a PASS is re-issued as MARGINAL (downgrade
+        # only); with v1.14 FAIL (or MARGINAL / UNDETERMINED) H4 is reported and does not downgrade (N19)
         gs = S.gstar_map(S.brand_stats(answers, self.inp["units"]))
-        p2, _ = write_stage1(Path(self.tmp.name) / "c2", self.inp["units"], r1_from=gs)
-        src = S.load_ranking_source(p2, "S1", allow_dry=True)
         doc_pass = dict(doc, gate=dict(doc["gate"], verdict="PASS"))
-        c2 = S.stage_c2_ranking(doc_pass, answers, self.inp["units"], src, n_perm=49, n_boot=0)
-        self.assertEqual(c2["H4_Sep_Ranking"], "FALSIFIED")
-        self.assertEqual(c2["gate_reissued"], {"before": "PASS", "after": "MARGINAL", "rule": "downgrade only (section 3)"})
-        doc_fail = dict(doc, gate=dict(doc["gate"], verdict="FAIL"))
-        self.assertEqual(S.stage_c2_ranking(doc_fail, answers, self.inp["units"], src, 0, 0)["gate_reissued"]["after"],
-                         "FAIL")
+        after = {}
+        for v in ("SEPARABLE (Stage 2 pending)", "FAIL", "MARGINAL", "UNDETERMINED"):
+            p2, _ = write_stage1(Path(self.tmp.name) / v[:4], self.inp["units"], r1_from=gs, verdict=v)
+            src = S.load_ranking_source(p2, "S1", allow_dry=True)
+            c2 = S.stage_c2_ranking(doc_pass, answers, self.inp["units"], src, n_perm=49, n_boot=0)
+            self.assertEqual(c2["H4_Sep_Ranking"], "FALSIFIED")
+            after[v] = c2["gate_reissued"]["after"]
+            if v.startswith("SEPARABLE"):
+                doc_fail = dict(doc, gate=dict(doc["gate"], verdict="FAIL"))
+                self.assertEqual(S.stage_c2_ranking(doc_fail, answers, self.inp["units"], src, 0, 0)
+                                 ["gate_reissued"]["after"], "FAIL")
+        self.assertEqual(after, {"SEPARABLE (Stage 2 pending)": "MARGINAL", "FAIL": "PASS", "MARGINAL": "PASS",
+                                 "UNDETERMINED": "PASS"})
+
+    def test_gate_downgrade_only_when_separable(self):
+        v = {"H1_Sep_Presence": "CONFIRMED", "H2_Sep_Consistency": "CONFIRMED", "H3_Run_Reliability": "CONFIRMED",
+             "H4_Sep_Ranking": "FALSIFIED", "H5_Sep_Sentiment": "INACTIVE", "H6_Sep_Coverage": "INACTIVE"}
+        act = {"H4_Sep_Ranking": True, "H5_Sep_Sentiment": False, "H6_Sep_Coverage": False}
+        self.assertEqual(S.gate(v, act, {"H4_Sep_Ranking": True})["verdict"], "MARGINAL")
+        g = S.gate(v, act, {"H4_Sep_Ranking": False})
+        self.assertEqual(g["verdict"], "PASS")
+        self.assertFalse(g["gating"]["H4_Sep_Ranking"])
+        self.assertTrue(any("not downgrading" in n for n in g["notes"]))
+        self.assertTrue(S.h4_gates({"stage1_verdict": "SEPARABLE (Stage 2 pending)"}))
+        self.assertFalse(S.h4_gates({"stage1_verdict": "MARGINAL"}))
+        self.assertFalse(S.h4_gates(None))
+
+    def test_sentiment_leg_needs_t4_score(self):
+        rec_ = {"conditional_legs": {"H5_Sep_Sentiment": {"tag": "v1.11-prereg-r1", "pushed_before_lock": True}}}
+        self.assertFalse(S.activation(rec_)["H5_Sep_Sentiment"])          # archived-wave score: inactive (N20)
+        rec_["conditional_legs"]["H5_Sep_Sentiment"]["t4_answers"] = True
+        self.assertTrue(S.activation(rec_)["H5_Sep_Sentiment"])
+        self.assertIsNone(S.ACTIVATION_TAG["H5_Sep_Sentiment"])
 
 
 if __name__ == "__main__":
