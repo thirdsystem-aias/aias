@@ -1,0 +1,23 @@
+{
+  "phase": "v1.10",
+  "purpose": "Sensitivity S7 input (pre-registration section 10): units removed from every H1-H3 correlation, answers not re-ranked. Not a frozen input (decision 12).",
+  "written_by": "osf/methodology/v1_10/anchor/DEVIATIONS.md, Entry 2 (2026-11-10)",
+  "checked_on": "2026-11-10",
+  "flagged": [
+    {
+      "substrate": "v0.19",
+      "brand": "Denon",
+      "registry": "osf/v19/panel_registry_v0_19.csv",
+      "cell": "A_Heritage",
+      "reason": "Owned by Harman International, a wholly owned subsidiary of Samsung Electronics, since 2025-09-23 (Harman completed its acquisition of Sound United from Masimo). Chosen for v0.19 in place of AKG.",
+      "source": "HARMAN press release, Business Wire, 2025-09-23: https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership"
+    }
+  ],
+  "not_flagged_disclosed": [
+    {
+      "substrate": "v0.22",
+      "note": "Tier-2/3 supply relationships (Harman International audio systems, Samsung SDI battery cells, Samsung Display infotainment); non-competitive, no brand-level overlap, no restriction on registry composition (v0.22 DEVIATIONS Entry 0 Part B). Supply, not ownership: no v0.22 brand is flagged."
+    }
+  ],
+  "additional_reporting": "Headphone (v0.19) results also reported without Denon, same rule, descriptive (Pablo, 2026-11-10 07:21 CT; DEVIATIONS Entry 2)."
+}
