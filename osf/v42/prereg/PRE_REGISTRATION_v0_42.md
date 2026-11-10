@@ -226,4 +226,14 @@ Every test, including failures and undetermined results, with per-substrate brea
 
 **Change log**
 
-- (none yet)
+- **2026-11-10, clarifications C1–C9 (no hypothesis, threshold, panel, probe or decision rule changed; found while writing and testing the scorer, before any t₄ answer exists).**
+  - C1 (§5.1). v0.23 Phase B mentions are coded by the deterministic brand matching of `score_v0_23.score_phase_b`; its optional LLM elaboration step enters no v0.42 statistic and is not run (`dry_run=True`). Parity gate P2 shows the deterministic codes reproduce t₃ exactly.
+  - C2 (§2.7, item 3). "The reverse" = the share of brands above the floor at t₃ that fall below it at t₄. Also reported: the share of brands below the floor at t₄ that were below it at t₃.
+  - C3 (§5.4). The C3 fallback applies per condition: S0 for `H_Gen_Presence` and `H_Gen_Phi`, S1 in their S1 variants.
+  - C4 (§2.3). Every bootstrap resample recomputes rel1, rel3, ρ_FO and ρ*; all statistics of one test share the same resamples.
+  - C5 (§2.6, MC_Served). The re-run of a call served by another model happens in the collection's re-run pass; the scorer excludes any such call that remains.
+  - C6 (§2.7, item 4). A refusal = a call whose finish reason or content flag marks a refusal or a safety block (Anthropic `refusal`; OpenAI refusal content; Google `SAFETY` or a blocked prompt); a non-answer = a v0.19–v0.22 Phase A answer that the yes/no parser cannot code.
+  - C7 (§2.7, item 1). Recognition agreement across runs = for each brand, the share of run pairs with the same code, averaged over brands.
+  - C8 (§2.3). In the version recognition agreement, a brand with no majority (possible only when a run is missing) is left out and counted.
+  - C9 (§5.3, P2). For v0.20–v0.22 the t₃ mention codes exist only as the frame sets that `score_v41.load_wave` derives from the t₃ answers; P2 compares the t₄ coder with those. "Answered" (§5.4) = status ok, non-empty text and an accepted served ID. A permutation draw counts as a hit if ρ_perm ≥ ρ_obs − 10⁻¹². Seed 420045 is recorded; no descriptive needs a random draw.
+- **2026-11-10, scorer built and parity gates run on t₃ only.** `code_t4_v0_42.py`, `score_v0_42.py` and 55 unit tests (all pass). P1: the scorer reproduces v0.41's t₃ k, π̂ and φ for 112 of 112 brands exactly (φ defined for 83). P2: the t₄ coder recodes all 852 t₃ answers with 0 mismatches (4,032 mention cells, 672 recognition cells; the v0.23 judge replayed from its locked t₃ outputs, not re-run); URL removal changes no t₃ code (no t₃ answer contains a URL). Records: `osf/v42/prereg/parity_P1_v0_42.json`, `parity_P2_v0_42.json`.
