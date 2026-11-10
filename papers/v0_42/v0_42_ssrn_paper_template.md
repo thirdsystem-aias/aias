@@ -20,6 +20,9 @@ header-includes: |
   \clubpenalty=10000
   \renewcommand{\topfraction}{0.9}
   \renewcommand{\bottomfraction}{0.8}
+  \makeatletter\def\fps@figure{tbp}\makeatother
+  \usepackage{booktabs}
+  \usepackage{array}
   \renewcommand{\textfraction}{0.07}
   \renewcommand{\floatpagefraction}{0.8}
   \makeatletter\setlength{\@fptop}{0pt}\setlength{\@fpsep}{14pt}\makeatother
@@ -48,14 +51,14 @@ Data and code: OSF \texttt{ec6wh/v42}\\
 
 # Abstract {-}
 
-Brand measures read from the answers of large language models (LLMs) can serve as a tracking metric only if they survive the replacement of the models that produce them. This pre-registered study is the fourth wave ($t_4$) of the AIAS measurement programme's five-category omnibus (audiophile headphones, skincare, cosmetics, automotive and premium spirits; 112 brands) and the first on the newest generally available flagship model of each provider: Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon. The 30 category questions were asked verbatim with web search off and on, in three runs each, and the 112 brand questions once with search off (876 calls); the answers were compared with the third wave ($t_3$), collected on 9 November 2026 on a retiring six-model panel. {{MC_ANSWERED}} of the 876 calls were answered.
+Brand measures read from the answers of large language models (LLMs) can serve as a tracking metric only if they survive the replacement of the models that produce them. This pre-registered study is the fourth wave (t₄) of the AIAS measurement programme's five-category omnibus (audiophile headphones, skincare, cosmetics, automotive and premium spirits; 112 brands) and the first on the newest generally available flagship model of each provider: Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon. The 30 category questions were asked verbatim with web search off and on, in three runs each, and the 112 brand questions once with search off (876 calls); the answers were compared with the third wave (t₃), collected on 9 November 2026 on a retiring six-model panel. {{MC_ANSWERED}} of the 876 calls were answered.
 {% switch CASE_GEN %}
 {% case CONFIRMED %}
-Recall Presence ordered brands on the newest models as it had on the retiring panel (`H_Gen_Presence` CONFIRMED: pooled within-category $\rho = {{GEN_RHO}}$, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, $p = {{GEN_P}}$, $n = {{GEN_N}}$).
+Recall Presence ordered brands on the newest models as it had on the retiring panel (`H_Gen_Presence` CONFIRMED: pooled within-category ρ = {{GEN_RHO}}, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, p = {{GEN_P}}, n = {{GEN_N}}).
 {% case MARGINAL %}
-The newest models' Presence ordering fell between the pre-registered bars (`H_Gen_Presence` MARGINAL: pooled within-category $\rho = {{GEN_RHO}}$, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, $p = {{GEN_P}}$, $n = {{GEN_N}}$): related to the retiring panel's ordering, but not meeting the confirmation rule of $\rho \geq 0.70$ with $p < .05$.
+The newest models' Presence ordering fell between the pre-registered bars (`H_Gen_Presence` MARGINAL: pooled within-category ρ = {{GEN_RHO}}, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, p = {{GEN_P}}, n = {{GEN_N}}): related to the retiring panel's ordering, but not meeting the confirmation rule of ρ ≥ 0.70 with p < .05.
 {% case FALSIFIED %}
-The newest models did not reproduce the retiring panel's Presence ordering (`H_Gen_Presence` FALSIFIED: pooled within-category $\rho = {{GEN_RHO}}$, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, $n = {{GEN_N}}$, below the pre-registered falsification bar of 0.50); under the pre-registered rationale the new panel starts its own series.
+The newest models did not reproduce the retiring panel's Presence ordering (`H_Gen_Presence` FALSIFIED: pooled within-category ρ = {{GEN_RHO}}, 95% interval {{GEN_CI_LO}} to {{GEN_CI_HI}}, n = {{GEN_N}}, below the pre-registered falsification bar of 0.50); under the pre-registered rationale the new panel starts its own series.
 {% case UNDETERMINED_EXCLUDED %}
 `H_Gen_Presence` was UNDETERMINED because {{EXCL_S0_NAMES}} answered fewer than 90% of its search-off calls; the pre-registered drop rule leaves no fallback panel.
 {% case UNDETERMINED_DEGENERATE %}
@@ -63,13 +66,13 @@ The newest models did not reproduce the retiring panel's Presence ordering (`H_G
 {% endswitch %}
 {% switch CASE_PHI %}
 {% case CONFIRMED %}
-The Consistency instrument $\varphi$ kept its brand order across the change of generation (`H_Gen_Phi` CONFIRMED: $\rho = {{PHI_RHO}}$, $p = {{PHI_P}}$, $n = {{PHI_N}}$).
+The Consistency instrument φ kept its brand order across the change of generation (`H_Gen_Phi` CONFIRMED: ρ = {{PHI_RHO}}, p = {{PHI_P}}, n = {{PHI_N}}).
 {% case MARGINAL %}
-The brand order of the Consistency instrument $\varphi$ fell between the pre-registered bars (`H_Gen_Phi` MARGINAL: $\rho = {{PHI_RHO}}$, $p = {{PHI_P}}$, $n = {{PHI_N}}$).
+The brand order of the Consistency instrument φ fell between the pre-registered bars (`H_Gen_Phi` MARGINAL: ρ = {{PHI_RHO}}, p = {{PHI_P}}, n = {{PHI_N}}).
 {% case FALSIFIED %}
-The Consistency instrument $\varphi$ did not keep its brand order across the change of generation (`H_Gen_Phi` FALSIFIED: $\rho = {{PHI_RHO}}$, below the bar of 0.30, $n = {{PHI_N}}$).
+The Consistency instrument φ did not keep its brand order across the change of generation (`H_Gen_Phi` FALSIFIED: ρ = {{PHI_RHO}}, below the bar of 0.30, n = {{PHI_N}}).
 {% case UNDETERMINED_FLOOR %}
-`H_Gen_Phi` was UNDETERMINED: $\varphi$ was defined on both panels for {{PHI_N}} brands, below the pre-registered floor of 40.
+`H_Gen_Phi` was UNDETERMINED: φ was defined on both panels for {{PHI_N}} brands, below the pre-registered floor of 40.
 {% case UNDETERMINED_EXCLUDED %}
 `H_Gen_Phi` was UNDETERMINED under the same drop rule.
 {% case UNDETERMINED_DEGENERATE %}
@@ -77,15 +80,15 @@ The Consistency instrument $\varphi$ did not keep its brand order across the cha
 {% endswitch %}
 {% switch CASE_SEARCH %}
 {% case ROBUST %}
-Turning on each provider's web search left the Presence ordering intact (search-robust: $\rho_S = {{S_RHO}}$, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
+Turning on each provider's web search left the Presence ordering intact (search-robust: ρ = {{S_RHO}}, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
 {% case SENSITIVE %}
-Web search changed the Presence ordering in part (search-sensitive: $\rho_S = {{S_RHO}}$, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
+Web search changed the Presence ordering in part (search-sensitive: ρ = {{S_RHO}}, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
 {% case DOMINATED %}
-Web search reordered brands by Presence (search-dominated: $\rho_S = {{S_RHO}}$, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
+Web search reordered brands by Presence (search-dominated: ρ = {{S_RHO}}, 95% interval {{S_CI_LO}} to {{S_CI_HI}}).
 {% case UNDETERMINED|NOT_COMPUTED %}
 The search contrast could not be read: {{S_WHY}}.
 {% endswitch %}
-Run-to-run reliability of recall, the noise floor for the planned $t_5$ and $t_6$ waves, ranged from {{REL1_MIN}} to {{REL1_MAX}} (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
+Run-to-run reliability of recall, the noise floor for the planned t₅ and t₆ waves, ranged from {{REL1_MIN}} to {{REL1_MAX}} (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; model generations; cross-generation stability; web search; test--retest reliability; brand recall; consistency
 
@@ -199,8 +202,6 @@ All three parity gates passed before any $t_4$ statistic was computed (P1, P2 an
 
 {% if MCS_ANY_FLAG %}`MC_Search` flagged {{MCS_FLAGGED}}: search was used in fewer than 25% of its S1 calls, and its S1 results are marked "search rarely used" throughout.{% else %}Every model used web search in at least 25% of its answered S1 calls (`MC_Search`; Table 2).{% endif %} {% if MCT_ANY_FLAG %}`MC_Truncation` flagged {{MCT_FLAGGED}}, which ended more than 5% of calls at the output cap.{% else %}No model × condition ended more than 5% of its calls at the output cap (`MC_Truncation`).{% endif %} The first call started at {{WIN_FIRST}} and the last ended at {{WIN_LAST}} (UTC), a span of {{WIN_SPAN}} hours, and `MC_Window` {% if WIN_PASS %}passed{% else %}failed{% endif %}. Recorded spend on all billed requests, at the list prices of the pre-registration, was {{COST_TOTAL}}, or {{BUDGET_SPEND}} with the {{BUDGET_RESERVE}} reserve for the recognition judge, and `MC_Budget` {% if BUDGET_PASS %}passed{% else %}failed{% endif %}. {{BUDGET_APPROVALS}}
 
-\needspace{20\baselineskip}
-
 Table: Calls answered, output-cap endings and search use, by model and condition. Answered: status ok, non-empty text and an accepted served ID; expected: 202 (S0) and 90 (S1) per model.
 
 {{TABLE_MC}}
@@ -227,8 +228,6 @@ The statistic was undefined on the data, and the verdict is **UNDETERMINED**.
 {% endswitch %}
 
 {% if GEN_S1_PRESENT %}With search on in place of search off, the same comparison gives $\rho_{\text{pw}} = {{GEN_S1_RHO}}$ (95% interval {{GEN_S1_CI_LO}} to {{GEN_S1_CI_HI}}; $p_{\text{perm}} = {{GEN_S1_P}}$){% if GEN_S1_REDUCED %} on a reduced panel ({{GEN_S1_MODELS}}){% endif %}, which would read {{GEN_S1_VERDICT}} under the primary rule; this variant is reported alongside and decides nothing.{% else %}The search-on variant was not computed: no model was retained in S1.{% endif %} Per provider, the legacy pair pooled against its new model gives {{PAIRS_SENTENCE}}. Table 3 gives the per-substrate correlations and Figure 1 the per-brand values.
-
-\needspace{14\baselineskip}
 
 Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside).
 
@@ -266,8 +265,6 @@ The statistic was undefined on the data, and the verdict is **UNDETERMINED**.
 
 {{PARTITION_SENTENCE}} {% if MI_PRESENT %}On N3 with search off, $|\rho_{\text{pw}}(\varphi, \hat\pi)| = {{MI_ABS}}$ ($n = {{MI_N}}$; uncentred {{MI_UNC}}), {% if MI_FLAG %}at or above the v1.7 ceiling of 0.50: on this panel $\varphi$ is flagged as not mean-independent.{% else %}below the v1.7 ceiling of 0.50, so the mean-independence flag is not raised.{% endif %}{% else %}Mean-independence was not computed (no N3 model retained in S0).{% endif %} Table 4 gives the per-substrate correlations and Figure 2 the per-brand values.
 
-\needspace{14\baselineskip}
-
 Table: Consistency $\varphi$, $t_3$ against $t_4$ (newest models, search off), Spearman $\rho$ within each substrate, over brands with $\varphi$ defined on both panels.
 
 {{TABLE_PHI_SUB}}
@@ -292,9 +289,7 @@ The interval's upper bound is below 0.50, and the pre-declared label is **search
 {% case UNDETERMINED|NOT_COMPUTED %}
 No label applies.
 {% endswitch %}
-{% if MCS_ANY_FLAG %}The search-on answers of {{MCS_FLAGGED}} are flagged "search rarely used" (§3.1).{% endif %} Table 5 gives the result per model; the per-substrate correlations are in Figure 3.
-
-\needspace{10\baselineskip}
+{% if MCS_ANY_FLAG %}The search-on answers of {{MCS_FLAGGED}} are flagged "search rarely used" (§3.1).{% endif %} Table 5 gives the result per model. {{S_PER_SUB_SENTENCE}} Figure 3 shows the per-brand values.
 
 Table: Recall Presence with search off against search on, per model (newest models, three runs each).
 
@@ -306,8 +301,6 @@ Table: Recall Presence with search off against search on, per model (newest mode
 
 **Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: {{REL_SENTENCE}} Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
 
-\needspace{14\baselineskip}
-
 Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean.
 
 {{TABLE_REL}}
@@ -315,8 +308,6 @@ Table: Run-to-run reliability of recall per model and condition (descriptive 1).
 ![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. {{FIG4_CAPTION}}]({{FIG_DIR}}/chart_04_run_reliability.pdf){#fig:rel width=100%}
 
 **Recognition.** Table 7 gives the share of brands coded as recognized by each model with search off at $t_4$, beside each legacy model at $t_3$. {{RECOG_NOTE}}
-
-\needspace{18\baselineskip}
 
 Table: Share of the 112 brands coded as recognized (descriptive 2): newest models at $t_4$ (search off, one run) and legacy models at $t_3$.
 
@@ -328,19 +319,13 @@ Table: Share of the 112 brands coded as recognized (descriptive 2): newest model
 
 **Answer form, search records and cost.** Tables 8 to 10 report the remaining descriptives: words per answer, registry brands named per Phase B answer, finish reasons and non-answers (descriptive 4); searches, sources and citations per S1 call (descriptive 5, with the 20 most-cited domains per model in Appendix Table 11); and tokens, searches and spend per model and condition from the recorded usage (descriptive 6).
 
-\needspace{18\baselineskip}
-
-Table: Answer form per model and condition (descriptive 4). Words: mean words per answer; brands: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy.
+Table: Answer form per model and condition (descriptive 4). Words: mean words per Phase A and Phase B answer; brands per B: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy.
 
 {{TABLE_FORM}}
-
-\needspace{10\baselineskip}
 
 Table: Search records per model, answered S1 calls (descriptive 5).
 
 {{TABLE_SEARCHDESC}}
-
-\needspace{16\baselineskip}
 
 Table: Recorded usage and spend per model and condition (descriptive 6), all billed requests at the list prices of the pre-registration; the v0.23 recognition judge is not in the raw file and is covered by its reserve.
 
@@ -451,9 +436,9 @@ Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxfor
 
 Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
 
-# Appendix {-}
+\clearpage
 
-\needspace{10\baselineskip}
+# Appendix {-}
 
 Table: The 20 most-cited domains per model in the answered search-on calls (descriptive 5), with citation counts.
 

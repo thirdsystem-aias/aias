@@ -161,6 +161,7 @@ def md_table(header, rows, align=None):
     align = align or ["l"] + ["r"] * (len(header) - 1)
     vis = lambda t: len(re.sub(r"\$[^$]*\$|\\[a-z]+|[{}`]", "x", t))      # visible width, roughly
     widths = [max(4, min(60, max([vis(header[j])] + [vis(r[j]) for r in rows]))) for j in range(len(header))]
+    widths[0] += 4                                   # first column (model / substrate names) never wraps
     sep = ["|:" + "-" * w if a == "l" else "|" + "-" * w + ":" for a, w in zip(align, widths)]
     lines = ["| " + " | ".join(header) + " |", "".join(sep) + "|"]
     lines += ["| " + " | ".join(r) + " |" for r in rows]
@@ -431,6 +432,12 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
             "the bootstrap interval was not defined on the data"
         val.word("S_WHY", why, S + ["reason"])
         val.word("FIG3_CAPTION", "No label applies (§3.4).", S)
+    ps = hs.get("per_substrate") or {}
+    bits = [f"{VV.CAT_SHORT[s_].lower()} {val.put('S_SUB_' + s_.replace('.', ''), 'verdicts', S + ['per_substrate', s_, 'rho'], VV.r3)}"
+            for s_ in VV.SUBS if VV.has(ps, [s_, "rho"])]
+    val.word("S_PER_SUB_SENTENCE", ("Within substrate, the Spearman correlation between search off and search on was "
+                                    + ", ".join(bits[:-1]) + " and " + bits[-1] + ".") if len(bits) > 1 else "",
+             S + ["per_substrate"])
     cl = Cells(val)
     rows = []
     for m in VV.N3:
@@ -511,7 +518,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
             k = f"{m}|{c}"
             pk = D + ["4_answer_form", k]
             if k not in form:
-                rows.append([VV.MODEL_NAME[m], c] + ["--"] * 7)
+                rows.append([VV.MODEL_NAME[m], c] + ["--"] * 5)
                 continue
             fr = ", ".join(f"{name} {cl.f('verdicts', pk + ['finish_reasons', name], VV.i0)}"
                            for name in sorted(form[k].get("finish_reasons") or {}))
@@ -520,12 +527,12 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
                          cl.f("verdicts", pk + ["words_per_answer_B_mean"], VV.f1),
                          cl.f("verdicts", pk + ["registry_brands_named_per_phase_B_answer"], VV.f1),
                          fr.replace("_", "\\_") or "--",
-                         cl.f("verdicts", na + ["phase_A_no_yes_or_no_v0_19_to_v0_22"], VV.i0),
-                         cl.f("verdicts", na + ["refusals_by_finish_reason"], VV.i0),
-                         cl.f("verdicts", na + ["unanswered_calls_error_or_empty"], VV.i0)])
-    val.table("TABLE_FORM", md_table(["Model", "Cond.", "Words (A)", "Words (B)", "Brands per B answer",
-                                      "Finish reasons", "Non-answers", "Refusals", "Unanswered"], rows,
-                                     ["l", "l", "r", "r", "r", "l", "r", "r", "r"]), cl.cells)
+                         " / ".join([cl.f("verdicts", na + ["phase_A_no_yes_or_no_v0_19_to_v0_22"], VV.i0),
+                                     cl.f("verdicts", na + ["refusals_by_finish_reason"], VV.i0),
+                                     cl.f("verdicts", na + ["unanswered_calls_error_or_empty"], VV.i0)])])
+    val.table("TABLE_FORM", md_table(["Model", "Cond.", "Words (A)", "Words (B)", "Brands per B",
+                                      "Finish reasons", "Non-answers / refusals / unanswered"], rows,
+                                     ["l", "l", "r", "r", "r", "l", "r"]), cl.cells)
     sd = V["descriptives"]["5_search"]
     cl = Cells(val)
     rows, drows = [], []

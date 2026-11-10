@@ -313,11 +313,12 @@ CHART_FIGSIZE_IN = {
     "v41_p5":                     (7.275, 4.300),   # report_fig_05 below-floor persistence (523.8x309.6pt)
     # v0.42 report figures (build_charts_v42.py report mode); ChartReservation re-derives the footprint from
     # each PDF's mediabox, these keys only seed the reservation width.
-    "v42_fig1":                   (7.50, 5.00),
-    "v42_fig2":                   (7.50, 5.00),
-    "v42_fig3":                   (7.50, 4.60),
-    "v42_fig4":                   (7.50, 3.90),
-    "v42_fig5":                   (7.50, 3.70),
+    # Heights are caps above each chart's tight-bbox height, so the reservation follows the mediabox aspect.
+    "v42_fig1":                   (7.50, 5.40),
+    "v42_fig2":                   (7.50, 5.40),
+    "v42_fig3":                   (7.50, 5.00),
+    "v42_fig4":                   (7.50, 4.30),
+    "v42_fig5":                   (7.50, 4.10),
 }
 
 BODY_LEFT_X = COL_X[0]

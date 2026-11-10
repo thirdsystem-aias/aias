@@ -98,7 +98,8 @@ def main(argv=None):
     tmp = a.output.parent / "_build_tmp_v0_42.md"
     tmp.write_text(apply_subs(raw), encoding="utf-8")
     cmd = ["pandoc", str(tmp), "-o", str(a.output), "--pdf-engine=xelatex",
-           f"--resource-path={PAPER_DIR}:{a.source.parent}", "--standalone"]
+           f"--resource-path={PAPER_DIR}:{a.source.parent}", "--standalone",
+           f"--lua-filter={PAPER_DIR / 'tables_as_tabular.lua'}"]
     print(f"Building: {a.source} -> {a.output}")
     r = subprocess.run(cmd, capture_output=True, text=True, cwd=str(PAPER_DIR))
     tmp.unlink(missing_ok=True)

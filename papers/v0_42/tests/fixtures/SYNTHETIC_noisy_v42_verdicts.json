@@ -1,0 +1,841 @@
+{
+  "phase": "v0.42",
+  "prereg": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md (revision r2)",
+  "prereg_tag": "v0.42-prereg-r1",
+  "rho_pw_statistic": "rho_pw = Pearson r of within-substrate average ranks CENTRED on each substrate's mean rank, pooled over brands (decision statistic; Clarification of 2026-11-10). rho_uncentred_v041 = score_v41.pooled_within_rho (uncentred), reported for comparability with v0.41, never gating.",
+  "seeds": {
+    "H_Gen_Presence": 420041,
+    "H_Gen_Phi": 420043,
+    "H_Search_Presence": 420044,
+    "descriptives": 420045
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 10000
+  },
+  "panels": {
+    "L6": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "N3": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ]
+  },
+  "models_excluded_condition": [],
+  "manipulation_checks": {
+    "MC_Complete": {
+      "answered": 876,
+      "expected": 876,
+      "share": 1.0,
+      "pass": true,
+      "per_model_condition": {
+        "claude-fable-5-2|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "claude-fable-5-2|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gemini-4-argon|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gemini-4-argon|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gpt-6-astra|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gpt-6-astra|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        }
+      },
+      "below_90pct": [],
+      "outside_design": {
+        "n": 0,
+        "call_ids": []
+      }
+    },
+    "MC_Served": {
+      "n_mismatched": 0,
+      "mismatched": [],
+      "ok_calls_without_served_id": 0,
+      "excluded_from_analysis": 0,
+      "pass": true
+    },
+    "MC_Search": {
+      "claude-fable-5-2": {
+        "s1_answered_calls": 90,
+        "with_search": 90,
+        "share": 1.0,
+        "flag_search_rarely_used": false
+      },
+      "gpt-6-astra": {
+        "s1_answered_calls": 90,
+        "with_search": 90,
+        "share": 1.0,
+        "flag_search_rarely_used": false
+      },
+      "gemini-4-argon": {
+        "s1_answered_calls": 90,
+        "with_search": 90,
+        "share": 1.0,
+        "flag_search_rarely_used": false
+      }
+    },
+    "MC_Truncation": {
+      "claude-fable-5-2|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "claude-fable-5-2|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gemini-4-argon|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gemini-4-argon|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gpt-6-astra|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gpt-6-astra|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      }
+    },
+    "MC_Window": {
+      "first_call_utc": "2026-11-12T00:00:00+00:00",
+      "last_call_utc": "2026-11-12T12:00:00+00:00",
+      "span_hours": 12.0,
+      "pass": true
+    },
+    "MC_Parity": {
+      "passed": true,
+      "detail": "SKIPPED_SYNTHETIC"
+    }
+  },
+  "verdicts": {
+    "H_Gen_Presence": {
+      "tier": "PRIMARY",
+      "seed": 420041,
+      "panel_used": "N3",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "substituted": false,
+      "substitution_note": null,
+      "n": 112,
+      "rho": 0.8773952473229446,
+      "rho_uncentred_v041": 0.8826843160672777,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.9574722848003513,
+          "n": 16
+        },
+        "v0.20": {
+          "rho": 0.8681572419455289,
+          "n": 24
+        },
+        "v0.21": {
+          "rho": 0.857307668765806,
+          "n": 24
+        },
+        "v0.22": {
+          "rho": 0.9502016051764709,
+          "n": 24
+        },
+        "v0.23": {
+          "rho": 0.8108594977881131,
+          "n": 24
+        }
+      },
+      "p_perm": 9.999000099990002e-05,
+      "n_perm": 10000,
+      "ci95_rho": [
+        0.7877716518032836,
+        0.9206968935315323
+      ],
+      "delta": -0.014136904761904764,
+      "ci95_delta": [
+        -0.03133473875661376,
+        0.0021494708994708963
+      ],
+      "bootstrap": {
+        "rho": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        },
+        "delta": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "verdict": "CONFIRMED",
+      "rule": "CONFIRMED if rho>=0.70 and p<0.05; FALSIFIED if rho<0.50; MARGINAL otherwise",
+      "reported_alongside": {
+        "variants": {
+          "N3_S1": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "reduced_panel": false,
+            "n": 112,
+            "rho": 0.6401794061557129,
+            "rho_uncentred_v041": 0.6557809793266106,
+            "per_substrate": {
+              "v0.19": {
+                "rho": 0.5371344347155367,
+                "n": 16
+              },
+              "v0.20": {
+                "rho": 0.759665206874199,
+                "n": 24
+              },
+              "v0.21": {
+                "rho": 0.6388033757495868,
+                "n": 24
+              },
+              "v0.22": {
+                "rho": 0.755219829807904,
+                "n": 24
+              },
+              "v0.23": {
+                "rho": 0.4367165416136188,
+                "n": 24
+              }
+            },
+            "p_perm": 9.999000099990002e-05,
+            "n_perm": 10000,
+            "ci95_rho": [
+              0.47702395420774735,
+              0.7511735113338914
+            ],
+            "delta": -0.014136904761904769,
+            "ci95_delta": [
+              -0.04902447089947091,
+              0.01926256613756613
+            ],
+            "bootstrap": {
+              "rho": {
+                "n_draws": 10000,
+                "dropped_nonfinite": 0
+              },
+              "delta": {
+                "n_draws": 10000,
+                "dropped_nonfinite": 0
+              }
+            },
+            "verdict_if_primary": "MARGINAL"
+          }
+        },
+        "per_provider_generation_pairs": {
+          "Anthropic: legacy pair -> claude-fable-5-2": {
+            "n": 112,
+            "rho": 0.8174434242164555,
+            "rho_uncentred_v041": 0.825683157359068
+          },
+          "OpenAI: legacy pair -> gpt-6-astra": {
+            "n": 112,
+            "rho": 0.8349744266383604,
+            "rho_uncentred_v041": 0.8424437391200977
+          },
+          "Google: legacy pair -> gemini-4-argon": {
+            "n": 112,
+            "rho": 0.6744800327102152,
+            "rho_uncentred_v041": 0.6910170664133842
+          }
+        },
+        "level_shift_delta": {
+          "delta": -0.014136904761904764,
+          "ci95": [
+            -0.03133473875661376,
+            0.0021494708994708963
+          ]
+        },
+        "per_substrate_rho": {
+          "v0.19": {
+            "rho": 0.9574722848003513,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.8681572419455289,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.857307668765806,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.9502016051764709,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.8108594977881131,
+            "n": 24
+          }
+        }
+      }
+    },
+    "H_Gen_Phi": {
+      "tier": "SECONDARY",
+      "seed": 420043,
+      "panel_used": "N3",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "substituted": false,
+      "substitution_note": null,
+      "n": 78,
+      "rho": 0.4659809416815841,
+      "rho_uncentred_v041": 0.5010157838580725,
+      "p_perm": 9.999000099990002e-05,
+      "ci95_rho": [
+        0.21891294026647745,
+        0.6524090823218014
+      ],
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.610479943754795,
+          "n": 11
+        },
+        "v0.20": {
+          "rho": 0.20304114490161002,
+          "n": 15
+        },
+        "v0.21": {
+          "rho": 0.6016693847476707,
+          "n": 19
+        },
+        "v0.22": {
+          "rho": 0.37407993440945303,
+          "n": 16
+        },
+        "v0.23": {
+          "rho": 0.49473801749719576,
+          "n": 17
+        }
+      },
+      "verdict": "MARGINAL",
+      "rule": "UNDETERMINED if n<40; CONFIRMED if rho>=0.50 and p<0.05; FALSIFIED if rho<0.30; else MARGINAL",
+      "reported_alongside": {
+        "variants": {},
+        "mean_independence_S0": {
+          "N3": {
+            "n": 85,
+            "rho_pw_phi_pi": 0.21603957650807443,
+            "abs": 0.21603957650807443,
+            "flag_ge_0_50": false,
+            "rho_pw_phi_pi_uncentred_v041": 0.2753392899981979
+          }
+        },
+        "partition_counts": {
+          "N3_S0": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "brand_level": {
+              "defined": 85,
+              "zero": 11,
+              "saturated": 0,
+              "undefined": 16
+            },
+            "per_run_partitions": {
+              "defined": 257,
+              "zero": 78,
+              "saturated": 1
+            }
+          },
+          "N3_S1": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "brand_level": {
+              "defined": 95,
+              "zero": 2,
+              "saturated": 0,
+              "undefined": 15
+            },
+            "per_run_partitions": {
+              "defined": 281,
+              "zero": 55
+            }
+          },
+          "L6_t3": {
+            "defined": 83,
+            "zero": 29
+          }
+        }
+      }
+    },
+    "H_Search_Presence": {
+      "tier": "SECONDARY",
+      "seed": 420044,
+      "question": "two-sided; labels, no confirm/falsify",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "n": 112,
+      "rho": 0.5387402168622127,
+      "rho_uncentred_v041": 0.5585774905478618,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.5892537578709307,
+          "n": 16
+        },
+        "v0.20": {
+          "rho": 0.6626637554585153,
+          "n": 24
+        },
+        "v0.21": {
+          "rho": 0.5944772754661433,
+          "n": 24
+        },
+        "v0.22": {
+          "rho": 0.6683395315110344,
+          "n": 24
+        },
+        "v0.23": {
+          "rho": 0.20969128889689498,
+          "n": 24
+        }
+      },
+      "ci95_rho": [
+        0.36701340486602224,
+        0.6622306358918333
+      ],
+      "delta": -2.9738116731030977e-18,
+      "ci95_delta": [
+        -0.02744708994708995,
+        0.026289682539682533
+      ],
+      "bootstrap": {
+        "rho": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        },
+        "delta": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "label": "search-sensitive",
+      "per_model": {
+        "claude-fable-5-2": {
+          "n": 112,
+          "rho": 0.4703777635464676,
+          "rho_uncentred_v041": 0.4937648975757576,
+          "delta": 0.0
+        },
+        "gpt-6-astra": {
+          "n": 112,
+          "rho": 0.4010484502832714,
+          "rho_uncentred_v041": 0.42737544087243645,
+          "delta": 4.956352788505163e-19
+        },
+        "gemini-4-argon": {
+          "n": 112,
+          "rho": 0.5846746185589646,
+          "rho_uncentred_v041": 0.6075023349100502,
+          "delta": 1.982541115402065e-18
+        }
+      },
+      "reported_alongside": {
+        "per_substrate_rho": {
+          "v0.19": {
+            "rho": 0.5892537578709307,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.6626637554585153,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.5944772754661433,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.6683395315110344,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.20969128889689498,
+            "n": 24
+          }
+        }
+      },
+      "rule": "search-robust if CI lower >= 0.80; search-dominated if CI upper < 0.50; else search-sensitive"
+    }
+  },
+  "descriptives": {
+    "seed_reserved": 420045,
+    "note": "descriptive only; no verdicts",
+    "1_run_reliability": {
+      "claude-fable-5-2|S0": {
+        "rel1": 0.588121268512057,
+        "rel3": 0.8107385898029713,
+        "rel1_uncentred_v041": 0.6081233467176748,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "claude-fable-5-2|S1": {
+        "rel1": 0.2340660618748546,
+        "rel3": 0.47829359106393093,
+        "rel1_uncentred_v041": 0.27126213285276174,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gpt-6-astra|S0": {
+        "rel1": 0.5910304014852635,
+        "rel3": 0.8125764424355224,
+        "rel1_uncentred_v041": 0.6108473453421243,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gpt-6-astra|S1": {
+        "rel1": 0.22797246074108454,
+        "rel3": 0.4697412464799957,
+        "rel1_uncentred_v041": 0.26538166293363613,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gemini-4-argon|S0": {
+        "rel1": 0.538537851037851,
+        "rel3": 0.7778308472334483,
+        "rel1_uncentred_v041": 0.5675065391531796,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gemini-4-argon|S1": {
+        "rel1": 0.24267399267399267,
+        "rel3": 0.49013563501849566,
+        "rel1_uncentred_v041": 0.2902157920549288,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      }
+    },
+    "2_recognition": {
+      "t4": {
+        "claude-fable-5-2|S0": {
+          "recognized": 112,
+          "coded_answers": 112,
+          "share": 1.0
+        },
+        "claude-fable-5-2|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        },
+        "gpt-6-astra|S0": {
+          "recognized": 112,
+          "coded_answers": 112,
+          "share": 1.0
+        },
+        "gpt-6-astra|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        },
+        "gemini-4-argon|S0": {
+          "recognized": 112,
+          "coded_answers": 112,
+          "share": 1.0
+        },
+        "gemini-4-argon|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        }
+      },
+      "t3_legacy": {
+        "claude-opus-4-5": {
+          "recognized": 108,
+          "brands": 112,
+          "share": 0.9642857142857143
+        },
+        "claude-sonnet-4-5": {
+          "recognized": 103,
+          "brands": 112,
+          "share": 0.9196428571428571
+        },
+        "gpt-4o": {
+          "recognized": 108,
+          "brands": 112,
+          "share": 0.9642857142857143
+        },
+        "gpt-4o-mini": {
+          "recognized": 110,
+          "brands": 112,
+          "share": 0.9821428571428571
+        },
+        "gemini-2.5-flash": {
+          "recognized": 104,
+          "brands": 112,
+          "share": 0.9285714285714286
+        },
+        "gemini-2.5-flash-lite": {
+          "recognized": 106,
+          "brands": 112,
+          "share": 0.9464285714285714
+        }
+      },
+      "note": "v0.23 t4 recognition is blank until the judge has been run (coder --judge)"
+    },
+    "3_floor_persistence": {
+      "panel_t4": "N3",
+      "below_floor_t3": 58,
+      "below_floor_t4": 62,
+      "below_both": 53,
+      "share_below_t3_still_below_t4": 0.9137931034482759,
+      "reverse_share_below_t4_that_were_below_t3": 0.8548387096774194,
+      "share_above_t3_now_below_t4": 0.16666666666666666,
+      "floor": "t3: mean k per model < 1; t4: mean k per model-run (6 * pi_hat) < 1"
+    },
+    "4_answer_form": {
+      "claude-fable-5-2|S0": {
+        "words_per_answer_A_mean": 1.4285714285714286,
+        "words_per_answer_B_mean": 10.233333333333333,
+        "registry_brands_named_per_phase_B_answer": 5.6,
+        "finish_reasons": {
+          "end_turn": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "claude-fable-5-2|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 10.366666666666667,
+        "registry_brands_named_per_phase_B_answer": 5.6,
+        "finish_reasons": {
+          "end_turn": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gemini-4-argon|S0": {
+        "words_per_answer_A_mean": 1.4285714285714286,
+        "words_per_answer_B_mean": 7.766666666666667,
+        "registry_brands_named_per_phase_B_answer": 3.3666666666666667,
+        "finish_reasons": {
+          "end_turn": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gemini-4-argon|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 7.411111111111111,
+        "registry_brands_named_per_phase_B_answer": 3.3666666666666667,
+        "finish_reasons": {
+          "end_turn": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gpt-6-astra|S0": {
+        "words_per_answer_A_mean": 1.4285714285714286,
+        "words_per_answer_B_mean": 9.922222222222222,
+        "registry_brands_named_per_phase_B_answer": 5.233333333333333,
+        "finish_reasons": {
+          "end_turn": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gpt-6-astra|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 10.122222222222222,
+        "registry_brands_named_per_phase_B_answer": 5.233333333333333,
+        "finish_reasons": {
+          "end_turn": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      }
+    },
+    "5_search": {
+      "claude-fable-5-2": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 2.0,
+        "sources_per_call": 1.0,
+        "citations_per_call": 1.0,
+        "share_with_citation": 1.0,
+        "top20_cited_domains": [
+          [
+            "cited.example",
+            90
+          ]
+        ]
+      },
+      "gpt-6-astra": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 2.0,
+        "sources_per_call": 1.0,
+        "citations_per_call": 1.0,
+        "share_with_citation": 1.0,
+        "top20_cited_domains": [
+          [
+            "cited.example",
+            90
+          ]
+        ]
+      },
+      "gemini-4-argon": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 2.0,
+        "sources_per_call": 1.0,
+        "citations_per_call": 1.0,
+        "share_with_citation": 1.0,
+        "top20_cited_domains": [
+          [
+            "cited.example",
+            90
+          ]
+        ]
+      }
+    },
+    "6_cost": {
+      "BASIS": "recorded usage of every billed request (usage_parts) x list prices of section 4.5 (budget_v0_42.record_cost: batch/standard token prices, Google thinking billed as output, search fees); all raw attempts; the v0.23 judge's spend is not in the raw file",
+      "per_model_condition": {
+        "claude-fable-5-2|S0": {
+          "records": 202,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 20200,
+          "output_tokens_billed": 10100,
+          "searches_billed": 0,
+          "usd": 0.5656
+        },
+        "claude-fable-5-2|S1": {
+          "records": 90,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 9000,
+          "output_tokens_billed": 4500,
+          "searches_billed": 180,
+          "usd": 2.052
+        },
+        "gpt-6-astra|S0": {
+          "records": 202,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 20200,
+          "output_tokens_billed": 10100,
+          "searches_billed": 0,
+          "usd": 0.707
+        },
+        "gpt-6-astra|S1": {
+          "records": 90,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 9000,
+          "output_tokens_billed": 4500,
+          "searches_billed": 180,
+          "usd": 2.115
+        },
+        "gemini-4-argon|S0": {
+          "records": 202,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 20200,
+          "output_tokens_billed": 12120,
+          "searches_billed": 0,
+          "usd": 0.16160000000000002
+        },
+        "gemini-4-argon|S1": {
+          "records": 90,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 9000,
+          "output_tokens_billed": 5400,
+          "searches_billed": 180,
+          "usd": 2.592
+        }
+      },
+      "total_usd": 8.193200000000001
+    }
+  }
+}
