@@ -1,0 +1,354 @@
+{
+  "phase": "v1.10",
+  "kind": "v0.23 inline registry, extracted programmatically",
+  "source": {
+    "path": "scripts/score_v0_23.py",
+    "registry_line": 60,
+    "brand_patterns_line": 88,
+    "git_blob": "526e84de694dc5ce13f6ab4a304cd22c9b4a6847",
+    "sha256": "ee348a97e670ef0b602f216c6de72b3a648799ed1723b95c59a7e1b680f79d6e",
+    "cross_check": {
+      "path": "scripts/acquire_v0_23.py",
+      "registry_line": 61,
+      "ids_and_names_identical": true
+    }
+  },
+  "coder_note": "score_v0_23.find_brand_mentions matched these regexes on response_text.lower() (no accent stripping); v1.10 matches the expanded aliases with \\b...\\b on v1.4-normalised text (E1/E2). MQ2 measures the agreement (floor 0.98 per wave).",
+  "expansion_rules": [
+    "\\s+ -> one space",
+    "[\\s-]* -> '', ' ', '-'",
+    "x? -> with and without x",
+    "[oó] / [eé] -> both letters",
+    "(the\\s+)? -> with and without 'the '",
+    "every alias is matched in full by its source regex (checked)"
+  ],
+  "unit_key": "id (the brand key of osf/aias_2_0/aias_2_0_profiles.csv for v0.23)",
+  "brands": [
+    {
+      "id": "S01",
+      "brand": "Johnnie Walker",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bjohnnie\\s+walker\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Johnnie Walker",
+        "johnnie walker"
+      ]
+    },
+    {
+      "id": "S02",
+      "brand": "Hennessy",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bhennessy\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Hennessy",
+        "hennessy"
+      ]
+    },
+    {
+      "id": "S03",
+      "brand": "Jack Daniel's",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bjack\\s+daniel'?s?\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Jack Daniel's",
+        "jack daniel",
+        "jack daniel'",
+        "jack daniel's",
+        "jack daniels"
+      ]
+    },
+    {
+      "id": "S04",
+      "brand": "Patrón",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bpatr[oó]n\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Patrón",
+        "patron",
+        "patrón"
+      ]
+    },
+    {
+      "id": "S05",
+      "brand": "Grey Goose",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bgrey\\s+goose\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Grey Goose",
+        "grey goose"
+      ]
+    },
+    {
+      "id": "S06",
+      "brand": "Bacardi",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bbacardi\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Bacardi",
+        "bacardi"
+      ]
+    },
+    {
+      "id": "S07",
+      "brand": "Bombay Sapphire",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bbombay\\s+sapphire\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Bombay Sapphire",
+        "bombay sapphire"
+      ]
+    },
+    {
+      "id": "S08",
+      "brand": "Jameson",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bjameson\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Jameson",
+        "jameson"
+      ]
+    },
+    {
+      "id": "S09",
+      "brand": "Lagavulin",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\blagavulin\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Lagavulin",
+        "lagavulin"
+      ]
+    },
+    {
+      "id": "S10",
+      "brand": "Clase Azul",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bclase\\s+azul\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Clase Azul",
+        "clase azul"
+      ]
+    },
+    {
+      "id": "S11",
+      "brand": "Hendrick's",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bhendrick'?s?\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Hendrick's",
+        "hendrick",
+        "hendrick'",
+        "hendrick's",
+        "hendricks"
+      ]
+    },
+    {
+      "id": "S12",
+      "brand": "Woodford Reserve",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bwoodford\\s+reserve\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Woodford Reserve",
+        "woodford reserve"
+      ]
+    },
+    {
+      "id": "S13",
+      "brand": "Monkey 47",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bmonkey\\s+47\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Monkey 47",
+        "monkey 47"
+      ]
+    },
+    {
+      "id": "S14",
+      "brand": "The Balvenie",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\b(the\\s+)?balvenie\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "The Balvenie",
+        "balvenie",
+        "the balvenie"
+      ]
+    },
+    {
+      "id": "S15",
+      "brand": "Rémy Martin",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\br[eé]my\\s+martin\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Rémy Martin",
+        "remy martin",
+        "rémy martin"
+      ]
+    },
+    {
+      "id": "S16",
+      "brand": "Casamigos",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bcasamigos\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Casamigos",
+        "casamigos"
+      ]
+    },
+    {
+      "id": "S17",
+      "brand": "Fortaleza",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bfortaleza\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Fortaleza",
+        "fortaleza"
+      ]
+    },
+    {
+      "id": "S18",
+      "brand": "Compass Box",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bcompass\\s+box\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Compass Box",
+        "compass box"
+      ]
+    },
+    {
+      "id": "S19",
+      "brand": "Nikka",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bnikka\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Nikka",
+        "nikka"
+      ]
+    },
+    {
+      "id": "S20",
+      "brand": "Del Maguey",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bdel\\s+maguey\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Del Maguey",
+        "del maguey"
+      ]
+    },
+    {
+      "id": "S21",
+      "brand": "Fernet-Branca",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bfernet[\\s-]*branca\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Fernet-Branca",
+        "fernet branca",
+        "fernet-branca",
+        "fernetbranca"
+      ]
+    },
+    {
+      "id": "S22",
+      "brand": "Redbreast",
+      "conglomerate": 1,
+      "source_patterns": [
+        "\\bredbreast\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Redbreast",
+        "redbreast"
+      ]
+    },
+    {
+      "id": "S23",
+      "brand": "St. George Spirits",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bst\\.?\\s+george\\s+spirits?\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "St. George Spirits",
+        "st george spirit",
+        "st george spirits",
+        "st. george spirit",
+        "st. george spirits"
+      ]
+    },
+    {
+      "id": "S24",
+      "brand": "Mezcal Vago",
+      "conglomerate": 0,
+      "source_patterns": [
+        "\\bmezcal\\s+vago\\b"
+      ],
+      "canonical_matched_by_source_regex": true,
+      "aliases": [
+        "Mezcal Vago",
+        "mezcal vago"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,458 @@
+{
+  "phase": "v1.10",
+  "kind": "pre-lock parity: MQ1 parse completion, MQ2 mention parity, unit join",
+  "declaration": "Computed before the lock on the frozen inputs. Uses normalisation, the registry matcher and the list-item parser only; no rank position, no rank statistic, and no P or C* value was computed, read or printed.",
+  "created_utc": "2026-11-10T13:45:43+00:00",
+  "dry_run": false,
+  "manifest": "INPUTS_MANIFEST_v1_10.json",
+  "manifest_sha256": "993de748f84ff0a1212130d473c66820b5bffc59a14ac1b833d6646ea3af0690",
+  "MQ1_parse_completion": {
+    "OMNI t1 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t1 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t2 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.19": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.20": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.21": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.22": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "OMNI t3 v0.23": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 pm": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 finance": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 oliveoil": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 running": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.9 skincare": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v1.0 household": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v1.0 knives": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.14 premium_tea": {
+      "rows": 288,
+      "with_text": 288,
+      "missing_cells": 0,
+      "parsed_without_exception": 288,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-6 v0.16 kitchen_knives": {
+      "rows": 515,
+      "with_text": 334,
+      "missing_cells": 181,
+      "parsed_without_exception": 334,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-2 v0.6 pm": {
+      "rows": 96,
+      "with_text": 96,
+      "missing_cells": 0,
+      "parsed_without_exception": 96,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-2 v0.6 finance": {
+      "rows": 96,
+      "with_text": 96,
+      "missing_cells": 0,
+      "parsed_without_exception": 96,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-2 v0.6 oliveoil": {
+      "rows": 96,
+      "with_text": 96,
+      "missing_cells": 0,
+      "parsed_without_exception": 96,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-2 v0.6 running": {
+      "rows": 96,
+      "with_text": 96,
+      "missing_cells": 0,
+      "parsed_without_exception": 96,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "EARLY-2 v0.6 skincare": {
+      "rows": 96,
+      "with_text": 96,
+      "missing_cells": 0,
+      "parsed_without_exception": 96,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "COI-HOLD v0.28": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "PAPER-B v0.32 arm A": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    },
+    "PAPER-B v0.32 arm B": {
+      "rows": 36,
+      "with_text": 36,
+      "missing_cells": 0,
+      "parsed_without_exception": 36,
+      "completion": 1.0,
+      "exceptions": []
+    }
+  },
+  "MQ2_mention_parity": {
+    "OMNI t1 v0.19": {
+      "against": "coded mention file osf/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.20": {
+      "against": "certified detector scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.21": {
+      "against": "certified detector scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.22": {
+      "against": "certified detector scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t1 v0.23": {
+      "against": "coded mention file osf/v23/data/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.19": {
+      "against": "coded mention file osf/v34/data/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.20": {
+      "against": "certified detector scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.21": {
+      "against": "certified detector scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.22": {
+      "against": "certified detector scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t2 v0.23": {
+      "against": "coded mention file osf/v34/data/v23/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.19": {
+      "against": "coded mention file osf/v41/data/v19/phase_b_results.csv",
+      "cells": 576,
+      "agree": 576,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.20": {
+      "against": "certified detector scripts/score_v20.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.21": {
+      "against": "certified detector scripts/score_v21.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.22": {
+      "against": "certified detector scripts/score_v22.py",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 1.0,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    },
+    "OMNI t3 v0.23": {
+      "against": "coded mention file osf/v41/data/v23/v23_phase_b_scored.json",
+      "cells": 864,
+      "agree": 864,
+      "agreement": 1.0,
+      "required": 0.98,
+      "passes": true,
+      "coded_cells_without_answer_text": 0,
+      "disagreements": []
+    }
+  },
+  "MQ2_join": {
+    "per_wave": {
+      "t1": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      },
+      "t2": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      },
+      "t3": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      }
+    },
+    "other_waves_in_table": [],
+    "passes": true
+  },
+  "summary": {
+    "MQ1_all_sets_parse_100pct": true,
+    "MQ2_detector_sets_100pct": true,
+    "MQ2_coded_sets_ge_0.98": true,
+    "MQ2_join_1to1_all_waves": true
+  }
+}

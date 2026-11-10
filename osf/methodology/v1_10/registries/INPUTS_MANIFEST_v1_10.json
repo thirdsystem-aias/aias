@@ -3,273 +3,39 @@
   "status": "DRAFT r1 (not locked)",
   "base_branch": "aias-2.0",
   "base_commit": "894ccee9c65e3341c541191ac7ec1de48313a72a",
+  "built_on_head": "87fb279099f62c2566ad5192df99a1f2f992ef77",
   "branch": "v1.10",
   "answer_counts_source": "Try system book/archive_inventory_scan.csv (n_answers_with_text), Nov 10, 2026",
+  "decisions_applied": [
+    "held studies v0.38 and v0.39 excluded entirely (decision 10)",
+    "v0.23 inline registry pinned as v0_23_registry_v1_10.json with its source (decision 8)",
+    "registry per early set per REGISTRY_CHOICES_v1_10.md (decision 4)",
+    "COI flag file for S7 is not a frozen input (decision 12)"
+  ],
   "files": [
-    {
-      "set": "EARLY-6 v0.9 pm",
-      "role": "answers",
-      "path": "data/pm/results_enriched_v09_20260507_181205.csv",
-      "answers_with_text": 288,
-      "git_blob": "ddd777a8122f0b621c7b94f2c6c5e25636666164",
-      "sha256": "239cacd1f452a81da8feee824c28606172d195b25a9eec41a6c4f8e088a2008f",
-      "bytes": 1284636
-    },
-    {
-      "set": "EARLY-6 v0.9 pm",
-      "role": "registry",
-      "path": "osf_staging/v09/registries/brands_pm.json",
-      "answers_with_text": null,
-      "git_blob": "71f4c8f837674e7bfcb15c0ceee107639fcdbafd",
-      "sha256": "c8e58dfacc8e763eea72cc943c2bd46f8b380805ec7fed5d83e3fb1f949cdea7",
-      "bytes": 1801
-    },
-    {
-      "set": "EARLY-6 v0.9 finance",
-      "role": "answers",
-      "path": "data/finance/results_enriched_v09_20260507_190816.csv",
-      "answers_with_text": 288,
-      "git_blob": "0c20f9bb9e7cb3dd4dff3c364b1be9dc5094c2aa",
-      "sha256": "88469b4add49ac59212ae8d7d5273525892f6abdeebd301e03ca1f14ad2b265a",
-      "bytes": 1185131
-    },
-    {
-      "set": "EARLY-6 v0.9 finance",
-      "role": "registry",
-      "path": "osf_staging/v09/registries/brands_finance.json",
-      "answers_with_text": null,
-      "git_blob": "0276fe81ee71a96e8771087102fc56d755412708",
-      "sha256": "505631439f985d7de399f7371bafc9036d215412ae7208c6550b1783fe12fbd1",
-      "bytes": 2195
-    },
-    {
-      "set": "EARLY-6 v0.9 oliveoil",
-      "role": "answers",
-      "path": "data/oliveoil/results_enriched_v09_20260507_184159.csv",
-      "answers_with_text": 288,
-      "git_blob": "85b37c8c249bd6927f6e0dc586ab5238d1081948",
-      "sha256": "7d348fcfae80ebaeaf19e5488b2a89708041a5fd015f45cb821d9837d6742af9",
-      "bytes": 945764
-    },
-    {
-      "set": "EARLY-6 v0.9 oliveoil",
-      "role": "registry",
-      "path": "osf_staging/v09/registries/brands_oliveoil.json",
-      "answers_with_text": null,
-      "git_blob": "7906f62500d3d114234d5f5e384beacbf8bd488d",
-      "sha256": "8538f7debdc15c0e8075692c04fb8ca048833eb6ec52f6b93fb1ac8918993d9f",
-      "bytes": 2698
-    },
-    {
-      "set": "EARLY-6 v0.9 running",
-      "role": "answers",
-      "path": "data/running/results_enriched_v09_20260507_183238.csv",
-      "answers_with_text": 288,
-      "git_blob": "ce551cf0576ef9bc6b358077d57bf51142c3bd61",
-      "sha256": "e787ada126073fb1d297bc2bf866603ad2560221f4eb1864d08e960901968504",
-      "bytes": 973411
-    },
-    {
-      "set": "EARLY-6 v0.9 running",
-      "role": "registry",
-      "path": "osf_staging/v09/registries/brands_running.json",
-      "answers_with_text": null,
-      "git_blob": "09bec00aeb13fb2b2ff9e27d8e0c7aef0002beac",
-      "sha256": "623ffa83a1127b2d0e76f83ce899d00fbf0b02b4638825f623e9e8a477a974c0",
-      "bytes": 2154
-    },
-    {
-      "set": "EARLY-6 v0.9 skincare",
-      "role": "answers",
-      "path": "data/skincare/results_enriched_v09_20260507_185427.csv",
-      "answers_with_text": 288,
-      "git_blob": "a2ce7bc8e1f3db4be7b0d71ea3253ac7f049e3d2",
-      "sha256": "97dd36fd5a23f8dcf8d287f2d13baf475d8f5150dadc2f42d15b659d442783eb",
-      "bytes": 1070057
-    },
-    {
-      "set": "EARLY-6 v0.9 skincare",
-      "role": "registry",
-      "path": "osf_staging/v09/registries/brands_skincare.json",
-      "answers_with_text": null,
-      "git_blob": "68c178ee1d0c30d8bc7865809cc22154333693d2",
-      "sha256": "5a0341180f28e04531431d7ccbbcab57c5ed6210d27fd142dc1b685f6e50277d",
-      "bytes": 3861
-    },
-    {
-      "set": "EARLY-6 v1.0 household",
-      "role": "answers",
-      "path": "data/household/results_v2_household_v1.0_merged.csv",
-      "answers_with_text": 250,
-      "git_blob": "dee9cd0a7fa43de8a150f83f91917ab9440c3e76",
-      "sha256": "942ba6153faa7fee465eeb411e514654d3092d9e70423d939577c630ff555ad0",
-      "bytes": 737633
-    },
-    {
-      "set": "EARLY-6 v1.0 household",
-      "role": "registry",
-      "path": "registries/brands_household.json",
-      "answers_with_text": null,
-      "git_blob": "6a06047f5cc5cee95ea2c05a011ce35557c8b46b",
-      "sha256": "9d1deabf7ebed73a071494b88b217392d5e4e1051f23d96002d5a9e17b8c17eb",
-      "bytes": 2883
-    },
-    {
-      "set": "EARLY-6 v1.0 knives",
-      "role": "answers",
-      "path": "data/knives/results_v2_knives_v1.0_final.csv",
-      "answers_with_text": 288,
-      "git_blob": "65e55a4839bd9125609c63149938d10b7439eee2",
-      "sha256": "72b406431403a012b0a95cf54939893da26b24f20d6eed2592510e531819c9f2",
-      "bytes": 960217
-    },
-    {
-      "set": "EARLY-6 v1.0 knives",
-      "role": "registry",
-      "path": "registries/brands_knives_v1.0.json",
-      "answers_with_text": null,
-      "git_blob": "7d270ca48a026611340e15978103453d94264f65",
-      "sha256": "977ce9dc535cca5b7ad49aabb19bca93f4508079d3b47197907f0a5fe34d7d75",
-      "bytes": 7799
-    },
-    {
-      "set": "EARLY-6 v0.14 premium_tea",
-      "role": "answers",
-      "path": "data/premium_tea/results_v2_premium_tea_20260512_161817_filled.csv",
-      "answers_with_text": 288,
-      "git_blob": "18614fb2bc73da7b104de2c1c585527735c19c95",
-      "sha256": "4384ed866c383738ccc13e227cef257666207d60f8d367e16bff9f2d30602ef9",
-      "bytes": 1016368
-    },
-    {
-      "set": "EARLY-6 v0.14 premium_tea",
-      "role": "registry",
-      "path": "registries/brands_premium_tea.json",
-      "answers_with_text": null,
-      "git_blob": "3632a736253b6bd6cf570273b4ef8b9eba7109c5",
-      "sha256": "bee8017ba387033677913c558ef919ffa2b8675569c51957389bb00de9f00b75",
-      "bytes": 4577,
-      "symlink_to": "/Users/pablou/aias/osf/v14/registries/brands_premium_tea.json",
-      "content_path_on_base": "osf/v14/registries/brands_premium_tea.json",
-      "content_git_blob": "f0343b925258b85522506cb6c7514686455b315b",
-      "warning": "content not pinned by git on this branch: link points outside the worktree; copy the content into the v1.10 tree before the lock"
-    },
-    {
-      "set": "EARLY-6 v0.16 kitchen_knives",
-      "role": "answers",
-      "path": "data/kitchen_knives/results_v2_kitchen_knives_20260516_212400.csv",
-      "answers_with_text": 334,
-      "git_blob": "1d68cd05f83d6a43db619d7eaa37ea5014e5c406",
-      "sha256": "c7f31836ca2b8be701bc214693ca9a026cd13418b390049a3bf28525b972f9bc",
-      "bytes": 889913
-    },
-    {
-      "set": "EARLY-6 v0.16 kitchen_knives",
-      "role": "registry",
-      "path": "registries/brands_kitchen_knives_v0.16.json",
-      "answers_with_text": null,
-      "git_blob": "f2d51f6c800f0ed338cce66c06ed4751f2c71e0e",
-      "sha256": "b626a66d2ba28daa8c7a026da31d7449704c96166a4bbce6b92c9c09948f8286",
-      "bytes": 21090
-    },
-    {
-      "set": "EARLY-2 v0.6 pm",
-      "role": "answers",
-      "path": "data/pm/results_v2_20260429_181007.csv",
-      "answers_with_text": 96,
-      "git_blob": "606ab0f21ace8bf28d680c1198f74b83882a01cf",
-      "sha256": "1ab711a6f530acbdfba0794ddb51aac543795002ed9e897bd5de24a3aff12250",
-      "bytes": 258543
-    },
-    {
-      "set": "EARLY-2 v0.6 pm",
-      "role": "registry",
-      "path": "registries/brands_pm.json",
-      "answers_with_text": null,
-      "git_blob": "71f4c8f837674e7bfcb15c0ceee107639fcdbafd",
-      "sha256": "c8e58dfacc8e763eea72cc943c2bd46f8b380805ec7fed5d83e3fb1f949cdea7",
-      "bytes": 1801
-    },
-    {
-      "set": "EARLY-2 v0.6 finance",
-      "role": "answers",
-      "path": "data/finance/results_v2_20260430_181613.csv",
-      "answers_with_text": 96,
-      "git_blob": "9a1852bc8dc1947e13d1f591a3b8460ace934705",
-      "sha256": "8b04fee46aa65724b3930af3da8b33be64aaeb6b8bd4cb26625b25eda7fca21c",
-      "bytes": 216152
-    },
-    {
-      "set": "EARLY-2 v0.6 finance",
-      "role": "registry",
-      "path": "registries/brands_finance.json",
-      "answers_with_text": null,
-      "git_blob": "0276fe81ee71a96e8771087102fc56d755412708",
-      "sha256": "505631439f985d7de399f7371bafc9036d215412ae7208c6550b1783fe12fbd1",
-      "bytes": 2195
-    },
-    {
-      "set": "EARLY-2 v0.6 oliveoil",
-      "role": "answers",
-      "path": "data/oliveoil/_pre_revision/results_v2_20260430_085246.csv",
-      "answers_with_text": 96,
-      "git_blob": "984a650412715067e69d125d99c2cd73e658874d",
-      "sha256": "106547d9db6eead6739ec84438e3f98b4b9cdb7f15c3c67280c4708cb164df20",
-      "bytes": 190234
-    },
-    {
-      "set": "EARLY-2 v0.6 oliveoil",
-      "role": "registry",
-      "path": "registries/brands_oliveoil.json",
-      "answers_with_text": null,
-      "git_blob": "7906f62500d3d114234d5f5e384beacbf8bd488d",
-      "sha256": "8538f7debdc15c0e8075692c04fb8ca048833eb6ec52f6b93fb1ac8918993d9f",
-      "bytes": 2698
-    },
-    {
-      "set": "EARLY-2 v0.6 running",
-      "role": "answers",
-      "path": "data/running/results_v2_20260429_205023.csv",
-      "answers_with_text": 96,
-      "git_blob": "43f9ddaca8ca91361b002a3a79e747f6f50b8fd0",
-      "sha256": "3529286445f5c28fd7ec48dd92f3465e4deeca670560bc025237a171fa30d94c",
-      "bytes": 196638
-    },
-    {
-      "set": "EARLY-2 v0.6 running",
-      "role": "registry",
-      "path": "registries/brands_running.json",
-      "answers_with_text": null,
-      "git_blob": "09bec00aeb13fb2b2ff9e27d8e0c7aef0002beac",
-      "sha256": "623ffa83a1127b2d0e76f83ce899d00fbf0b02b4638825f623e9e8a477a974c0",
-      "bytes": 2154
-    },
-    {
-      "set": "EARLY-2 v0.6 skincare",
-      "role": "answers",
-      "path": "data/skincare/results_v2_20260430_175139.csv",
-      "answers_with_text": 96,
-      "git_blob": "e652b816140b8d64690907a8e81abd7499f05966",
-      "sha256": "8abf4b8e035c361acff7cf628e5769a1abeb115baa59c85158574b77390fac9e",
-      "bytes": 198767
-    },
-    {
-      "set": "EARLY-2 v0.6 skincare",
-      "role": "registry",
-      "path": "registries/brands_skincare.json",
-      "answers_with_text": null,
-      "git_blob": "68c178ee1d0c30d8bc7865809cc22154333693d2",
-      "sha256": "5a0341180f28e04531431d7ccbbcab57c5ed6210d27fd142dc1b685f6e50277d",
-      "bytes": 3861
-    },
     {
       "set": "OMNI t1 v0.19",
       "role": "answers",
       "path": "osf/v19/phase_b_responses.jsonl",
       "answers_with_text": 36,
       "git_blob": "8d43ec8aadaab2561afc08c8605d0fb85bb1ad12",
+      "on_base_commit": true,
       "sha256": "8b7459c779bd1a3dd19b428fa015835c37aac12e5628ace38d64a79d44519c5e",
       "bytes": 72044
+    },
+    {
+      "set": "OMNI t1 v0.19",
+      "role": "registry",
+      "path": "osf/v19/panel_registry_v0_19.csv",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.19",
+        "OMNI t3 v0.19"
+      ],
+      "git_blob": "66b41acc9edbeeb777987aae8e8916cdbe4a643b",
+      "on_base_commit": true,
+      "sha256": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
+      "bytes": 1561
     },
     {
       "set": "OMNI t1 v0.19",
@@ -277,6 +43,7 @@
       "path": "osf/v19/phase_b_results.csv",
       "answers_with_text": null,
       "git_blob": "8293c2962f942960779747e1c16c9a6c8eb050af",
+      "on_base_commit": true,
       "sha256": "2542f0e8117a44d02e072b56be24d758f63ede35d700dd163852b720d4739075",
       "bytes": 23622
     },
@@ -286,8 +53,37 @@
       "path": "osf/v20/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "9ed9ffeba2cd78b6e9cfcb551738cd93e2b957de",
+      "on_base_commit": true,
       "sha256": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828",
       "bytes": 104769
+    },
+    {
+      "set": "OMNI t1 v0.20",
+      "role": "registry",
+      "path": "prereg/v0_20_registry.json",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.20",
+        "OMNI t3 v0.20"
+      ],
+      "git_blob": "7a33141421a9d453ee1e6d2be375c35cc9678453",
+      "on_base_commit": true,
+      "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+      "bytes": 10584
+    },
+    {
+      "set": "OMNI t1 v0.20",
+      "role": "certified_detector",
+      "path": "scripts/score_v20.py",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.20",
+        "OMNI t3 v0.20"
+      ],
+      "git_blob": "7acbab37629aed9d68fd9244edda1517b7926d90",
+      "on_base_commit": true,
+      "sha256": "a0b288d5721ebf259e216c7e72af6d85f0e8414e8d3534552bf7c583196b9110",
+      "bytes": 26002
     },
     {
       "set": "OMNI t1 v0.21",
@@ -295,8 +91,37 @@
       "path": "osf/v21/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "70c008262a1acee4dddcae72490d533e80e2463c",
+      "on_base_commit": true,
       "sha256": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1",
       "bytes": 105252
+    },
+    {
+      "set": "OMNI t1 v0.21",
+      "role": "registry",
+      "path": "prereg/v0_21_registry.json",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.21",
+        "OMNI t3 v0.21"
+      ],
+      "git_blob": "63198885831ab64420ee4657597cc24db8264e0b",
+      "on_base_commit": true,
+      "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+      "bytes": 12574
+    },
+    {
+      "set": "OMNI t1 v0.21",
+      "role": "certified_detector",
+      "path": "scripts/score_v21.py",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.21",
+        "OMNI t3 v0.21"
+      ],
+      "git_blob": "fd0d90168b2a36db57620bc2cb01c6ef8bc84142",
+      "on_base_commit": true,
+      "sha256": "993317fcbaf1d64cdd1b7b4cb69bfa602dd675829b2a6fc06bbf1a83252a7e92",
+      "bytes": 26049
     },
     {
       "set": "OMNI t1 v0.22",
@@ -304,8 +129,37 @@
       "path": "osf/v22/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "8e9cab2fb3a096684685f836fef29d4256ff1fa2",
+      "on_base_commit": true,
       "sha256": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35",
       "bytes": 97446
+    },
+    {
+      "set": "OMNI t1 v0.22",
+      "role": "registry",
+      "path": "prereg/v0_22_automotive_content.py",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.22",
+        "OMNI t3 v0.22"
+      ],
+      "git_blob": "9e5b15f9038b38e463b1cb573b92ea4dd32319fb",
+      "on_base_commit": true,
+      "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+      "bytes": 13665
+    },
+    {
+      "set": "OMNI t1 v0.22",
+      "role": "certified_detector",
+      "path": "scripts/score_v22.py",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.22",
+        "OMNI t3 v0.22"
+      ],
+      "git_blob": "913bbca739abb92d3369681271b630cf9b4ec79d",
+      "on_base_commit": true,
+      "sha256": "b03bc55b74cf4aa402412f4313217fa057568365505245cbb0fb25a7f5fccdb9",
+      "bytes": 40773
     },
     {
       "set": "OMNI t1 v0.23",
@@ -313,8 +167,23 @@
       "path": "osf/v23/data/v23_phase_b_raw.json",
       "answers_with_text": 36,
       "git_blob": "5dd93b3fd6db94d544dc82e05938e1f8739a343e",
+      "on_base_commit": true,
       "sha256": "e8c045ed30689a5245be4256253ab1ef6ba197954bdf7bf5b5813e46625afc12",
       "bytes": 160304
+    },
+    {
+      "set": "OMNI t1 v0.23",
+      "role": "registry",
+      "path": "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json",
+      "answers_with_text": null,
+      "also_used_by": [
+        "OMNI t2 v0.23",
+        "OMNI t3 v0.23"
+      ],
+      "git_blob": "5d6df9c6b7afe07d1b23b4c28bd35449a3e77080",
+      "on_base_commit": false,
+      "sha256": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d",
+      "bytes": 7978
     },
     {
       "set": "OMNI t1 v0.23",
@@ -322,6 +191,7 @@
       "path": "osf/v23/data/v23_phase_b_scored.json",
       "answers_with_text": null,
       "git_blob": "2e8561aaf63cb6725638f42802293a0035f6dee8",
+      "on_base_commit": true,
       "sha256": "2fd1400891c4aff0707ff58d11d2e055c2ab5242972512888f3c69b742e7c9e6",
       "bytes": 180768
     },
@@ -331,6 +201,7 @@
       "path": "osf/v34/data/v19/phase_b_responses.jsonl",
       "answers_with_text": 36,
       "git_blob": "2aa30163dbc262b8bbcf890a874c2c43ebbb45ab",
+      "on_base_commit": true,
       "sha256": "e5a7ef944db42164f7944a65ccfcd0be05d5486893dd55715bdcf079ddfb8acf",
       "bytes": 72701
     },
@@ -340,6 +211,7 @@
       "path": "osf/v34/data/v19/phase_b_results.csv",
       "answers_with_text": null,
       "git_blob": "19b3390783d9fa394bc950948912a04b204ed6c7",
+      "on_base_commit": true,
       "sha256": "ba751c6cce5c264d37f4cfc0ca19dc1ef37d68570e0eb2e9b4b70429187b6129",
       "bytes": 23616
     },
@@ -349,6 +221,7 @@
       "path": "osf/v34/data/v20/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "121bb0978697a58c32932d3f139d73736a4e1077",
+      "on_base_commit": true,
       "sha256": "504dfc5ace742cb27d0d3a764b617b12cb816f607850d165801b64b68fcc8a78",
       "bytes": 103430
     },
@@ -358,6 +231,7 @@
       "path": "osf/v34/data/v21/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "c81091aae983000f26a59f9cb67000831888c2a7",
+      "on_base_commit": true,
       "sha256": "f27f4a5f0e2da0b110be2f2e3b85437e391f7354f87ec3e2d9ea5872e6f87ed1",
       "bytes": 107849
     },
@@ -367,6 +241,7 @@
       "path": "osf/v34/data/v22/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "e55110bbc6af3ced43cbcabeb624df800fbdce70",
+      "on_base_commit": true,
       "sha256": "7976de5d76ab5a21729a04bdc3d3f4e12afc7b6e0350dcabcedd99dc329c189a",
       "bytes": 100091
     },
@@ -376,6 +251,7 @@
       "path": "osf/v34/data/v23/v23_phase_b_raw.json",
       "answers_with_text": 36,
       "git_blob": "ffcb67d3526f719077f5bc9addbc5d3c844cdb71",
+      "on_base_commit": true,
       "sha256": "8185abf8cac579ea7a424cd6b349878ba6246ed8ab35d1ef190508073e51399d",
       "bytes": 157908
     },
@@ -385,6 +261,7 @@
       "path": "osf/v34/data/v23/v23_phase_b_scored.json",
       "answers_with_text": null,
       "git_blob": "b4ba62325bada5a3baece4a4fe89a1cdee771d02",
+      "on_base_commit": true,
       "sha256": "f5e7a07e698378d69b08131aa6538748c104fa83e3e4cc4a8f2e2616015dd7cb",
       "bytes": 178164
     },
@@ -394,6 +271,7 @@
       "path": "osf/v41/data/v19/phase_b_responses.jsonl",
       "answers_with_text": 36,
       "git_blob": "9822c31d087a039edcfb73dd4c6bc0f88f098513",
+      "on_base_commit": true,
       "sha256": "7cd150dc643f9c56e298fbc885cfd27e8ec0c47f48953bb9d9d4225d80cd71dd",
       "bytes": 72639
     },
@@ -403,6 +281,7 @@
       "path": "osf/v41/data/v19/phase_b_results.csv",
       "answers_with_text": null,
       "git_blob": "d2162623bcb27bf78a045529723d18ba6db453df",
+      "on_base_commit": true,
       "sha256": "7d49164eab4600b0e97a2d023b47bfc682e7db222fcf7cdf06b371e12ebb07e6",
       "bytes": 23621
     },
@@ -412,6 +291,7 @@
       "path": "osf/v41/data/v20/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "56bdf1ae41996cbd26ac473c0245569945fe5903",
+      "on_base_commit": true,
       "sha256": "c313569ec31f9789363d863062e56a1a8cd77a4293c75189dc3acd2a1dfcc9c8",
       "bytes": 107419
     },
@@ -421,6 +301,7 @@
       "path": "osf/v41/data/v21/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "439e7be44c9e0d07dab2a1eea50872db5e7ef7af",
+      "on_base_commit": true,
       "sha256": "aeb8a2a2a7846f12467cafaff582a9deb73ddbedacf598f6da23e0e6dff23c69",
       "bytes": 102916
     },
@@ -430,6 +311,7 @@
       "path": "osf/v41/data/v22/phase_b_results.csv",
       "answers_with_text": 36,
       "git_blob": "39c6104ec3933104702a6a3640aafd9b58426e6e",
+      "on_base_commit": true,
       "sha256": "a5bffb31acfd0d97226e2658001f1adecbf64448b512fd32e037a85d84bde94b",
       "bytes": 102679
     },
@@ -439,6 +321,7 @@
       "path": "osf/v41/data/v23/v23_phase_b_raw.json",
       "answers_with_text": 36,
       "git_blob": "a0c829a7216dfbc10a70b2e130d90165487fe328",
+      "on_base_commit": true,
       "sha256": "1fa10275de9998140ebeb8e787bdcc42409a3079efc654b16275f5a7f26b945a",
       "bytes": 155606
     },
@@ -448,87 +331,466 @@
       "path": "osf/v41/data/v23/v23_phase_b_scored.json",
       "answers_with_text": null,
       "git_blob": "6c40657f61745f65a2b97697a0f2f012b73c5ba8",
+      "on_base_commit": true,
       "sha256": "2fcff8fb1f7cc57c1ad5056e366a2eccffe8767c1dba95d12cfc0d054e34d52d",
       "bytes": 175806
     },
     {
-      "set": "OMNI registries",
-      "role": "registry",
-      "path": "osf/v19/panel_registry_v0_19.csv",
-      "answers_with_text": null,
-      "git_blob": "66b41acc9edbeeb777987aae8e8916cdbe4a643b",
-      "sha256": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
-      "bytes": 1561
+      "set": "EARLY-6 v0.9 pm",
+      "role": "answers",
+      "path": "data/pm/results_enriched_v09_20260507_181205.csv",
+      "answers_with_text": 288,
+      "git_blob": "ddd777a8122f0b621c7b94f2c6c5e25636666164",
+      "on_base_commit": true,
+      "sha256": "239cacd1f452a81da8feee824c28606172d195b25a9eec41a6c4f8e088a2008f",
+      "bytes": 1284636
     },
     {
-      "set": "OMNI registries",
+      "set": "EARLY-6 v0.9 pm",
       "role": "registry",
-      "path": "prereg/v0_20_registry.json",
+      "path": "osf_staging/v09/registries/brands_pm.json",
       "answers_with_text": null,
-      "git_blob": "7a33141421a9d453ee1e6d2be375c35cc9678453",
-      "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
-      "bytes": 10584
+      "git_blob": "71f4c8f837674e7bfcb15c0ceee107639fcdbafd",
+      "on_base_commit": true,
+      "sha256": "c8e58dfacc8e763eea72cc943c2bd46f8b380805ec7fed5d83e3fb1f949cdea7",
+      "bytes": 1801
     },
     {
-      "set": "OMNI registries",
-      "role": "registry",
-      "path": "prereg/v0_21_registry.json",
+      "set": "EARLY-6 v0.9 pm",
+      "role": "prompts_MQ8",
+      "path": "prompts/prompts_pm.json",
       "answers_with_text": null,
-      "git_blob": "63198885831ab64420ee4657597cc24db8264e0b",
-      "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
-      "bytes": 12574
+      "git_blob": "d45ebcb51b62d92598c98ca8d813b475df7bb9ce",
+      "on_base_commit": true,
+      "sha256": "d8012e5d7ad80b532a26e9f8562c69b7a5419c71f529779191b764b3b6f6d6d3",
+      "bytes": 1026
     },
     {
-      "set": "OMNI registries",
+      "set": "EARLY-6 v0.9 finance",
+      "role": "answers",
+      "path": "data/finance/results_enriched_v09_20260507_190816.csv",
+      "answers_with_text": 288,
+      "git_blob": "0c20f9bb9e7cb3dd4dff3c364b1be9dc5094c2aa",
+      "on_base_commit": true,
+      "sha256": "88469b4add49ac59212ae8d7d5273525892f6abdeebd301e03ca1f14ad2b265a",
+      "bytes": 1185131
+    },
+    {
+      "set": "EARLY-6 v0.9 finance",
       "role": "registry",
-      "path": "prereg/v0_22_automotive_content.py",
+      "path": "osf_staging/v09/registries/brands_finance.json",
       "answers_with_text": null,
-      "git_blob": "9e5b15f9038b38e463b1cb573b92ea4dd32319fb",
-      "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
-      "bytes": 13665
+      "git_blob": "0276fe81ee71a96e8771087102fc56d755412708",
+      "on_base_commit": true,
+      "sha256": "505631439f985d7de399f7371bafc9036d215412ae7208c6550b1783fe12fbd1",
+      "bytes": 2195
+    },
+    {
+      "set": "EARLY-6 v0.9 finance",
+      "role": "prompts_MQ8",
+      "path": "prompts/prompts_finance.json",
+      "answers_with_text": null,
+      "git_blob": "7e764ddfb0d06f00dca2f003f8ee1f03cbbcb2d5",
+      "on_base_commit": true,
+      "sha256": "57917ce9c8294d098c76586890ce1b750079fcfddc163a625c1b4418ed9160a6",
+      "bytes": 1024
+    },
+    {
+      "set": "EARLY-6 v0.9 oliveoil",
+      "role": "answers",
+      "path": "data/oliveoil/results_enriched_v09_20260507_184159.csv",
+      "answers_with_text": 288,
+      "git_blob": "85b37c8c249bd6927f6e0dc586ab5238d1081948",
+      "on_base_commit": true,
+      "sha256": "7d348fcfae80ebaeaf19e5488b2a89708041a5fd015f45cb821d9837d6742af9",
+      "bytes": 945764
+    },
+    {
+      "set": "EARLY-6 v0.9 oliveoil",
+      "role": "registry",
+      "path": "osf_staging/v09/registries/brands_oliveoil.json",
+      "answers_with_text": null,
+      "git_blob": "7906f62500d3d114234d5f5e384beacbf8bd488d",
+      "on_base_commit": true,
+      "sha256": "8538f7debdc15c0e8075692c04fb8ca048833eb6ec52f6b93fb1ac8918993d9f",
+      "bytes": 2698
+    },
+    {
+      "set": "EARLY-6 v0.9 oliveoil",
+      "role": "prompts_MQ8",
+      "path": "prompts/prompts_oliveoil.json",
+      "answers_with_text": null,
+      "git_blob": "c07cf8bffaf5c835e64d786843d06349ccea5816",
+      "on_base_commit": true,
+      "sha256": "12ae75ca90c8b93e6cc86192bdb8168ca9c4ac55776a5a99e6645c98abdaf04d",
+      "bytes": 944
+    },
+    {
+      "set": "EARLY-6 v0.9 running",
+      "role": "answers",
+      "path": "data/running/results_enriched_v09_20260507_183238.csv",
+      "answers_with_text": 288,
+      "git_blob": "ce551cf0576ef9bc6b358077d57bf51142c3bd61",
+      "on_base_commit": true,
+      "sha256": "e787ada126073fb1d297bc2bf866603ad2560221f4eb1864d08e960901968504",
+      "bytes": 973411
+    },
+    {
+      "set": "EARLY-6 v0.9 running",
+      "role": "registry",
+      "path": "osf_staging/v09/registries/brands_running.json",
+      "answers_with_text": null,
+      "git_blob": "09bec00aeb13fb2b2ff9e27d8e0c7aef0002beac",
+      "on_base_commit": true,
+      "sha256": "623ffa83a1127b2d0e76f83ce899d00fbf0b02b4638825f623e9e8a477a974c0",
+      "bytes": 2154
+    },
+    {
+      "set": "EARLY-6 v0.9 running",
+      "role": "prompts_MQ8",
+      "path": "prompts/prompts_running.json",
+      "answers_with_text": null,
+      "git_blob": "d2b2b820f31c69003a4c50943d68a2b1d931dd64",
+      "on_base_commit": true,
+      "sha256": "52d8f81b08a17433ff737afa0232f0196b6dd4373dfca257b6aa5af846695d59",
+      "bytes": 995
+    },
+    {
+      "set": "EARLY-6 v0.9 skincare",
+      "role": "answers",
+      "path": "data/skincare/results_enriched_v09_20260507_185427.csv",
+      "answers_with_text": 288,
+      "git_blob": "a2ce7bc8e1f3db4be7b0d71ea3253ac7f049e3d2",
+      "on_base_commit": true,
+      "sha256": "97dd36fd5a23f8dcf8d287f2d13baf475d8f5150dadc2f42d15b659d442783eb",
+      "bytes": 1070057
+    },
+    {
+      "set": "EARLY-6 v0.9 skincare",
+      "role": "registry",
+      "path": "osf_staging/v09/registries/brands_skincare.json",
+      "answers_with_text": null,
+      "git_blob": "68c178ee1d0c30d8bc7865809cc22154333693d2",
+      "on_base_commit": true,
+      "sha256": "5a0341180f28e04531431d7ccbbcab57c5ed6210d27fd142dc1b685f6e50277d",
+      "bytes": 3861
+    },
+    {
+      "set": "EARLY-6 v0.9 skincare",
+      "role": "prompts_MQ8",
+      "path": "prompts/prompts_skincare.json",
+      "answers_with_text": null,
+      "git_blob": "8d4e2c6bdf4a41d0562e5064d2596d10872b0859",
+      "on_base_commit": true,
+      "sha256": "61423676522e1a27a99c8bef88ead4792a9238a302b4117423a119b254ee5d34",
+      "bytes": 1537
+    },
+    {
+      "set": "EARLY-6 v1.0 household",
+      "role": "answers",
+      "path": "data/household/results_v2_household_v1.0_final.csv",
+      "answers_with_text": 288,
+      "git_blob": "8d5f6149412558b26cc9eeaf127c2d4f6a3bedcc",
+      "on_base_commit": true,
+      "sha256": "9c8ded86ba1e60bf28ebfd91b666a688f24de8d57b3523bd05ff309b5e2b9f4a",
+      "bytes": 1010511
+    },
+    {
+      "set": "EARLY-6 v1.0 household",
+      "role": "registry",
+      "path": "registries/brands_household.json",
+      "answers_with_text": null,
+      "git_blob": "6a06047f5cc5cee95ea2c05a011ce35557c8b46b",
+      "on_base_commit": true,
+      "sha256": "9d1deabf7ebed73a071494b88b217392d5e4e1051f23d96002d5a9e17b8c17eb",
+      "bytes": 2883
+    },
+    {
+      "set": "EARLY-6 v1.0 knives",
+      "role": "answers",
+      "path": "data/knives/results_v2_knives_v1.0_final.csv",
+      "answers_with_text": 288,
+      "git_blob": "65e55a4839bd9125609c63149938d10b7439eee2",
+      "on_base_commit": true,
+      "sha256": "72b406431403a012b0a95cf54939893da26b24f20d6eed2592510e531819c9f2",
+      "bytes": 960217
+    },
+    {
+      "set": "EARLY-6 v1.0 knives",
+      "role": "registry",
+      "path": "registries/brands_knives_v1.0.json",
+      "answers_with_text": null,
+      "git_blob": "7d270ca48a026611340e15978103453d94264f65",
+      "on_base_commit": true,
+      "sha256": "977ce9dc535cca5b7ad49aabb19bca93f4508079d3b47197907f0a5fe34d7d75",
+      "bytes": 7799
+    },
+    {
+      "set": "EARLY-6 v0.14 premium_tea",
+      "role": "answers",
+      "path": "data/premium_tea/results_v2_premium_tea_20260512_161817_filled.csv",
+      "answers_with_text": 288,
+      "git_blob": "18614fb2bc73da7b104de2c1c585527735c19c95",
+      "on_base_commit": true,
+      "sha256": "4384ed866c383738ccc13e227cef257666207d60f8d367e16bff9f2d30602ef9",
+      "bytes": 1016368
+    },
+    {
+      "set": "EARLY-6 v0.14 premium_tea",
+      "role": "registry",
+      "path": "osf/v14/registries/brands_premium_tea.json",
+      "answers_with_text": null,
+      "git_blob": "f0343b925258b85522506cb6c7514686455b315b",
+      "on_base_commit": true,
+      "sha256": "bee8017ba387033677913c558ef919ffa2b8675569c51957389bb00de9f00b75",
+      "bytes": 4577
+    },
+    {
+      "set": "EARLY-6 v0.16 kitchen_knives",
+      "role": "answers",
+      "path": "data/kitchen_knives/results_v2_kitchen_knives_20260516_212400.csv",
+      "answers_with_text": 334,
+      "git_blob": "1d68cd05f83d6a43db619d7eaa37ea5014e5c406",
+      "on_base_commit": true,
+      "sha256": "c7f31836ca2b8be701bc214693ca9a026cd13418b390049a3bf28525b972f9bc",
+      "bytes": 889913
+    },
+    {
+      "set": "EARLY-6 v0.16 kitchen_knives",
+      "role": "registry",
+      "path": "registries/brands_kitchen_knives.json",
+      "answers_with_text": null,
+      "git_blob": "f91e78e054e7e8e3286072c34e192fa24838a16c",
+      "on_base_commit": true,
+      "sha256": "60a284007c706d00d26a9d5d739de3026cd5b78d3f876cebb2596bcc858aeaca",
+      "bytes": 6432
+    },
+    {
+      "set": "EARLY-2 v0.6 pm",
+      "role": "answers",
+      "path": "data/pm/results_v2_20260429_181007.csv",
+      "answers_with_text": 96,
+      "git_blob": "606ab0f21ace8bf28d680c1198f74b83882a01cf",
+      "on_base_commit": true,
+      "sha256": "1ab711a6f530acbdfba0794ddb51aac543795002ed9e897bd5de24a3aff12250",
+      "bytes": 258543
+    },
+    {
+      "set": "EARLY-2 v0.6 pm",
+      "role": "registry",
+      "path": "registries/brands_pm.json",
+      "answers_with_text": null,
+      "git_blob": "71f4c8f837674e7bfcb15c0ceee107639fcdbafd",
+      "on_base_commit": true,
+      "sha256": "c8e58dfacc8e763eea72cc943c2bd46f8b380805ec7fed5d83e3fb1f949cdea7",
+      "bytes": 1801
+    },
+    {
+      "set": "EARLY-2 v0.6 pm",
+      "role": "prompts_MQ8",
+      "path": "osf/methodology/v1_10/registries/v06_prompts/prompts_pm_v0_6.json",
+      "answers_with_text": null,
+      "git_blob": "8945977b47d04b0b31c9f49455ef9c45bef7a6c6",
+      "on_base_commit": false,
+      "sha256": "806b4442d3adb06355ed1f2ddd4e53d3972b12d7df670aad138b91c15f77d3d8",
+      "bytes": 1015
+    },
+    {
+      "set": "EARLY-2 v0.6 finance",
+      "role": "answers",
+      "path": "data/finance/results_v2_20260430_181613.csv",
+      "answers_with_text": 96,
+      "git_blob": "9a1852bc8dc1947e13d1f591a3b8460ace934705",
+      "on_base_commit": true,
+      "sha256": "8b04fee46aa65724b3930af3da8b33be64aaeb6b8bd4cb26625b25eda7fca21c",
+      "bytes": 216152
+    },
+    {
+      "set": "EARLY-2 v0.6 finance",
+      "role": "registry",
+      "path": "registries/brands_finance.json",
+      "answers_with_text": null,
+      "git_blob": "0276fe81ee71a96e8771087102fc56d755412708",
+      "on_base_commit": true,
+      "sha256": "505631439f985d7de399f7371bafc9036d215412ae7208c6550b1783fe12fbd1",
+      "bytes": 2195
+    },
+    {
+      "set": "EARLY-2 v0.6 finance",
+      "role": "prompts_MQ8",
+      "path": "osf/methodology/v1_10/registries/v06_prompts/prompts_finance_v0_6.json",
+      "answers_with_text": null,
+      "git_blob": "c9d1154571913d832789b065656024d9b4b5a71e",
+      "on_base_commit": false,
+      "sha256": "0e192490369c8f775f9328721e89729f62f4da69b97f8c00b15e9c03446223f0",
+      "bytes": 1012
+    },
+    {
+      "set": "EARLY-2 v0.6 oliveoil",
+      "role": "answers",
+      "path": "data/oliveoil/results_v2_20260430_091539.csv",
+      "answers_with_text": 96,
+      "git_blob": "0715fa61aa404627bef401e76a983651dd05383f",
+      "on_base_commit": true,
+      "sha256": "622a784c7afa2bbc25d63c43dfb5410abf0aacf20d89ffed1048986b49334b34",
+      "bytes": 191489
+    },
+    {
+      "set": "EARLY-2 v0.6 oliveoil",
+      "role": "registry",
+      "path": "registries/brands_oliveoil.json",
+      "answers_with_text": null,
+      "git_blob": "7906f62500d3d114234d5f5e384beacbf8bd488d",
+      "on_base_commit": true,
+      "sha256": "8538f7debdc15c0e8075692c04fb8ca048833eb6ec52f6b93fb1ac8918993d9f",
+      "bytes": 2698
+    },
+    {
+      "set": "EARLY-2 v0.6 oliveoil",
+      "role": "prompts_MQ8",
+      "path": "osf/methodology/v1_10/registries/v06_prompts/prompts_oliveoil_v0_6.json",
+      "answers_with_text": null,
+      "git_blob": "5e40cf49586cde7f1b000f69f81e4815ef298009",
+      "on_base_commit": false,
+      "sha256": "a4efb3a9f43b9073619bf8c2c36b2f90c268bd0a3757b8652527eacaeb92ecc1",
+      "bytes": 932
+    },
+    {
+      "set": "EARLY-2 v0.6 running",
+      "role": "answers",
+      "path": "data/running/results_v2_20260429_205023.csv",
+      "answers_with_text": 96,
+      "git_blob": "43f9ddaca8ca91361b002a3a79e747f6f50b8fd0",
+      "on_base_commit": true,
+      "sha256": "3529286445f5c28fd7ec48dd92f3465e4deeca670560bc025237a171fa30d94c",
+      "bytes": 196638
+    },
+    {
+      "set": "EARLY-2 v0.6 running",
+      "role": "registry",
+      "path": "registries/brands_running.json",
+      "answers_with_text": null,
+      "git_blob": "09bec00aeb13fb2b2ff9e27d8e0c7aef0002beac",
+      "on_base_commit": true,
+      "sha256": "623ffa83a1127b2d0e76f83ce899d00fbf0b02b4638825f623e9e8a477a974c0",
+      "bytes": 2154
+    },
+    {
+      "set": "EARLY-2 v0.6 running",
+      "role": "prompts_MQ8",
+      "path": "osf/methodology/v1_10/registries/v06_prompts/prompts_running_v0_6.json",
+      "answers_with_text": null,
+      "git_blob": "1a44cbe2a28a8f72fda5be202c7258976cfbd792",
+      "on_base_commit": false,
+      "sha256": "027addd1db84e961201a3ea3f17eb55d542a91a29c1e6f8803f8a6d188eaf456",
+      "bytes": 984
+    },
+    {
+      "set": "EARLY-2 v0.6 skincare",
+      "role": "answers",
+      "path": "data/skincare/results_v2_20260430_175139.csv",
+      "answers_with_text": 96,
+      "git_blob": "e652b816140b8d64690907a8e81abd7499f05966",
+      "on_base_commit": true,
+      "sha256": "8abf4b8e035c361acff7cf628e5769a1abeb115baa59c85158574b77390fac9e",
+      "bytes": 198767
+    },
+    {
+      "set": "EARLY-2 v0.6 skincare",
+      "role": "registry",
+      "path": "registries/brands_skincare.json",
+      "answers_with_text": null,
+      "git_blob": "68c178ee1d0c30d8bc7865809cc22154333693d2",
+      "on_base_commit": true,
+      "sha256": "5a0341180f28e04531431d7ccbbcab57c5ed6210d27fd142dc1b685f6e50277d",
+      "bytes": 3861
+    },
+    {
+      "set": "EARLY-2 v0.6 skincare",
+      "role": "prompts_MQ8",
+      "path": "osf/methodology/v1_10/registries/v06_prompts/prompts_skincare_v0_6.json",
+      "answers_with_text": null,
+      "git_blob": "8d4e2c6bdf4a41d0562e5064d2596d10872b0859",
+      "on_base_commit": false,
+      "sha256": "61423676522e1a27a99c8bef88ead4792a9238a302b4117423a119b254ee5d34",
+      "bytes": 1537
+    },
+    {
+      "set": "COI-HOLD v0.28",
+      "role": "answers",
+      "path": "osf/v28/data/phase_b_results.csv",
+      "answers_with_text": 36,
+      "analysed": false,
+      "note": "COI screen pending (technology panel; v0.43 decision): MQ1 parse completion only, no rank extraction or output",
+      "git_blob": "f8d2bfb740f44faf379821200ba95c00eb5662b0",
+      "on_base_commit": true,
+      "sha256": "b111c8e0c8b92f1f5eec11d778761f5ef217a8e9dd56ae2d8cbbdc83614536a9",
+      "bytes": 110819
+    },
+    {
+      "set": "COI-HOLD v0.28",
+      "role": "registry",
+      "path": "prereg/v0_28_panel_brands.txt",
+      "answers_with_text": null,
+      "git_blob": "f04672e2cd476f9d282ce194a24a03016e90630b",
+      "on_base_commit": true,
+      "sha256": "602f6cd70cd19f9c740f1ee5f8befead09f2140bc7d50012f6636abd0c1ae0b7",
+      "bytes": 233
+    },
+    {
+      "set": "PAPER-B v0.32 arm A",
+      "role": "answers",
+      "path": "osf/v32/data/phase_b_A.csv",
+      "answers_with_text": 36,
+      "analysed": false,
+      "note": "frozen now, rank table only; analysed in Paper B",
+      "git_blob": "8d5e57736a4cb753e8d83cedb03469e53f683dba",
+      "on_base_commit": true,
+      "sha256": "65d88842d5e01c6af7357ee6a0e35ca5fd7cd8699ff57479f333867ea43302d9",
+      "bytes": 100641
+    },
+    {
+      "set": "PAPER-B v0.32 arm A",
+      "role": "registry",
+      "path": "registries/v0_32_registry.json",
+      "answers_with_text": null,
+      "also_used_by": [
+        "PAPER-B v0.32 arm B"
+      ],
+      "git_blob": "3e7fbd77bde9e0828dc5fa74287dee3117f7d36b",
+      "on_base_commit": true,
+      "sha256": "7d7803e62566c23b7cef5de1b4160d7b8eab43f594ba1a3b6cf6191fdd3b0d36",
+      "bytes": 3778
+    },
+    {
+      "set": "PAPER-B v0.32 arm B",
+      "role": "answers",
+      "path": "osf/v32/data/phase_b_B.csv",
+      "answers_with_text": 36,
+      "analysed": false,
+      "note": "frozen now, rank table only; analysed in Paper B",
+      "git_blob": "e2a867603bfd7dbe80e2674f0ec9546ef6c1dd29",
+      "on_base_commit": true,
+      "sha256": "db9f1a90f5775c00f22880781b84c9c407a6f51ee2615e9d052d92fbb1fa7080",
+      "bytes": 101212
     },
     {
       "set": "OMNI detectors",
-      "role": "certified_detector",
-      "path": "scripts/score_v20.py",
-      "answers_with_text": null,
-      "git_blob": "7acbab37629aed9d68fd9244edda1517b7926d90",
-      "sha256": "a0b288d5721ebf259e216c7e72af6d85f0e8414e8d3534552bf7c583196b9110",
-      "bytes": 26002
-    },
-    {
-      "set": "OMNI detectors",
-      "role": "certified_detector",
-      "path": "scripts/score_v21.py",
-      "answers_with_text": null,
-      "git_blob": "fd0d90168b2a36db57620bc2cb01c6ef8bc84142",
-      "sha256": "993317fcbaf1d64cdd1b7b4cb69bfa602dd675829b2a6fc06bbf1a83252a7e92",
-      "bytes": 26049
-    },
-    {
-      "set": "OMNI detectors",
-      "role": "certified_detector",
-      "path": "scripts/score_v22.py",
-      "answers_with_text": null,
-      "git_blob": "913bbca739abb92d3369681271b630cf9b4ec79d",
-      "sha256": "b03bc55b74cf4aa402412f4313217fa057568365505245cbb0fb25a7f5fccdb9",
-      "bytes": 40773
-    },
-    {
-      "set": "OMNI detectors",
-      "role": "certified_detector",
+      "role": "certified_detector_reference",
       "path": "scripts/score_v0_31.py",
       "answers_with_text": null,
       "git_blob": "4faf16c89b278ae0d219f604c25375267f08d6ad",
+      "on_base_commit": true,
       "sha256": "193ac0e0c98593d00fe252e4f78674cb212de9124d4e7486a26295880337460b",
       "bytes": 14876
     },
     {
       "set": "OMNI detectors",
-      "role": "certified_detector",
+      "role": "certified_detector_reference",
       "path": "scripts/score_v33.py",
       "answers_with_text": null,
       "git_blob": "77bbfb4cd74a157fce8465ceec8e97d933088a5c",
+      "on_base_commit": true,
       "sha256": "c6b9720496d8abf78450ce297482c27f6e9b1aba76c3452e7964183c7b7fd866",
       "bytes": 22214
     },
@@ -538,89 +800,176 @@
       "path": "osf/aias_2_0/aias_2_0_profiles.csv",
       "answers_with_text": null,
       "git_blob": "d5652ad454c9c9d554c9f2ef658acefd8b6e83af",
+      "on_base_commit": true,
       "sha256": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e",
       "bytes": 16540
     },
     {
-      "set": "HELD v0.38",
-      "role": "answers",
-      "path": "osf/v38/data/v38_raw.json",
-      "answers_with_text": 132,
-      "git_blob": "41924db7253953ab00973b0365e8075e1d643005",
-      "sha256": "2c159167b47603d6c0e3101bb4869fc6dc2e2ae3e9ce7376a06bff92d31be6da",
-      "bytes": 414184
-    },
-    {
-      "set": "HELD v0.38",
-      "role": "registry",
-      "path": "osf/v38/registries/brands_home_roasters_v0.38.json",
+      "set": "S6 sensitivity",
+      "role": "sensitivity_input",
+      "path": "osf/v41/v41_verdicts.json",
       "answers_with_text": null,
-      "git_blob": "e5e103038036c0d3f248a499ed5d0334c2a18cb9",
-      "sha256": "c8d8205bd51642e67fb4d2c2fa2f9dcae61abb533712ebc78e4c6bcf36152923",
-      "bytes": 11137
+      "note": "v0.41 MC_Snapshot 'mismatched' list = models dropped in S6",
+      "git_blob": "a3829970987fcb96a1066bd02759d5d09a6f9582",
+      "on_base_commit": true,
+      "sha256": "0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2",
+      "bytes": 13740
     },
     {
-      "set": "HELD v0.39",
-      "role": "answers",
-      "path": "osf/v39/data/v39_raw.json",
-      "answers_with_text": 360,
-      "git_blob": "447ee7ba63a4597c05c8b317f5f04ede94a46e00",
-      "sha256": "fbc3db92166dae7a7d9062ec0fcaebf0fe244251e83ecdab27bfabe8216f6e43",
-      "bytes": 1926931
-    },
-    {
-      "set": "HELD v0.39",
-      "role": "registry",
-      "path": "osf/v39/registries/brands_commercial_roasters_v0.39.json",
+      "set": "EARLY-6 v0.14 premium_tea",
+      "role": "registry_symlink_not_read",
+      "path": "registries/brands_premium_tea.json",
       "answers_with_text": null,
-      "git_blob": "6d17aa1a4a0576ea7cddc9d15fefa50293ed8e1e",
-      "sha256": "ff902163f21b1cd6f1e067e2ca58d3c6776a0f387fda61c57af3ad0ec751307f",
-      "bytes": 16855
+      "note": "committed symlink into the main working tree; the loader reads osf/v14/registries/brands_premium_tea.json",
+      "git_blob": "3632a736253b6bd6cf570273b4ef8b9eba7109c5",
+      "on_base_commit": true,
+      "symlink_to": "/Users/pablou/aias/osf/v14/registries/brands_premium_tea.json",
+      "sha256": "ebc55ac8714adf081624198dc289402b1d1e9584a7ffe0f07580252bcfd79388",
+      "bytes": 61,
+      "sha256_of": "link text"
     },
     {
-      "set": "BASELINE v0.28",
-      "role": "answers",
-      "path": "osf/v28/data/phase_b_results.csv",
-      "answers_with_text": 36,
-      "git_blob": "f8d2bfb740f44faf379821200ba95c00eb5662b0",
-      "sha256": "b111c8e0c8b92f1f5eec11d778761f5ef217a8e9dd56ae2d8cbbdc83614536a9",
-      "bytes": 110819
-    },
-    {
-      "set": "BASELINE v0.28",
-      "role": "registry",
-      "path": "prereg/v0_28_panel_brands.txt",
+      "set": "EARLY-6 v0.16 kitchen_knives",
+      "role": "registry_reference_not_loaded",
+      "path": "registries/brands_kitchen_knives_v0.16.json",
       "answers_with_text": null,
-      "git_blob": "f04672e2cd476f9d282ce194a24a03016e90630b",
-      "sha256": "602f6cd70cd19f9c740f1ee5f8befead09f2140bc7d50012f6636abd0c1ae0b7",
-      "bytes": 233
+      "note": "v0.16 panel registry (no aliases) used by scripts/score_v16.py for its brand list; see REGISTRY_CHOICES",
+      "git_blob": "f2d51f6c800f0ed338cce66c06ed4751f2c71e0e",
+      "on_base_commit": true,
+      "sha256": "b626a66d2ba28daa8c7a026da31d7449704c96166a4bbce6b92c9c09948f8286",
+      "bytes": 21090
     },
     {
-      "set": "PAPER-B v0.32 arm A",
-      "role": "answers",
-      "path": "osf/v32/data/phase_b_A.csv",
-      "answers_with_text": 36,
-      "git_blob": "8d5e57736a4cb753e8d83cedb03469e53f683dba",
-      "sha256": "65d88842d5e01c6af7357ee6a0e35ca5fd7cd8699ff57479f333867ea43302d9",
-      "bytes": 100641
-    },
-    {
-      "set": "PAPER-B v0.32 arm B",
-      "role": "answers",
-      "path": "osf/v32/data/phase_b_B.csv",
-      "answers_with_text": 36,
-      "git_blob": "e2a867603bfd7dbe80e2674f0ec9546ef6c1dd29",
-      "sha256": "db9f1a90f5775c00f22880781b84c9c407a6f51ee2615e9d052d92fbb1fa7080",
-      "bytes": 101212
-    },
-    {
-      "set": "PAPER-B v0.32",
-      "role": "registry",
-      "path": "registries/v0_32_registry.json",
+      "set": "OMNI t1-t3 v0.23",
+      "role": "registry_source",
+      "path": "scripts/score_v0_23.py",
       "answers_with_text": null,
-      "git_blob": "3e7fbd77bde9e0828dc5fa74287dee3117f7d36b",
-      "sha256": "7d7803e62566c23b7cef5de1b4160d7b8eab43f594ba1a3b6cf6191fdd3b0d36",
-      "bytes": 3778
+      "note": "REGISTRY (line 60) and BRAND_PATTERNS (line 88) extracted into v0_23_registry_v1_10.json",
+      "git_blob": "526e84de694dc5ce13f6ab4a304cd22c9b4a6847",
+      "on_base_commit": true,
+      "sha256": "ee348a97e670ef0b602f216c6de72b3a648799ed1723b95c59a7e1b680f79d6e",
+      "bytes": 28226
+    },
+    {
+      "set": "OMNI t1-t3 v0.23",
+      "role": "registry_source",
+      "path": "scripts/acquire_v0_23.py",
+      "answers_with_text": null,
+      "note": "REGISTRY cross-check (line 61)",
+      "git_blob": "a9347905033560fe1d4990082ed3d91aa25eb8f4",
+      "on_base_commit": true,
+      "sha256": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+      "bytes": 17046
+    },
+    {
+      "set": "v1.10 registry inputs",
+      "role": "registry_builder",
+      "path": "osf/methodology/v1_10/registries/build_registry_inputs_v1_10.py",
+      "answers_with_text": null,
+      "git_blob": "1cad881f124f10770768b4a82a43ee019028d787",
+      "on_base_commit": false,
+      "sha256": "9e8779dd299094082b126babca5b0120cf9ea5ce874e1cd3cdcd253789b6f403",
+      "bytes": 7015
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "osf/methodology/v1_10/registries/REGISTRY_CHOICES_v1_10.md",
+      "answers_with_text": null,
+      "git_blob": "9e27833e8a2281541bf86b7b8e70f65cf334294e",
+      "on_base_commit": false,
+      "sha256": "1e77f17a6d761931594d230d1a8957b37b737c824bf0ce5fee73b5b6f4ec6e5e",
+      "bytes": 14266
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "run_aias_v2.py",
+      "answers_with_text": null,
+      "git_blob": "740dbe0c8d0cd144901c15cffd0ad477561d2f4a",
+      "on_base_commit": true,
+      "sha256": "035e03149a92cb45f03cfa4004c680ff759653a042d8cad95eae4152ab8a0a11",
+      "bytes": 12293
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "enrich.py",
+      "answers_with_text": null,
+      "git_blob": "61ce4968e14f6dd622353490a39d4fbe41ae5d69",
+      "on_base_commit": true,
+      "sha256": "4f56aa8cfa55ceb1baf4b94bf0af45ed85c355a8d981bfdb7731ada1a5741a1d",
+      "bytes": 11484
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "extract_v09.py",
+      "answers_with_text": null,
+      "git_blob": "d88048a64f4a3bb070ec37530f18a35185ebf132",
+      "on_base_commit": true,
+      "sha256": "3a9c8f67f2917a5a850f20b0a9428a8050e5ea04b1bfe37c3901e74dc1028277",
+      "bytes": 10193
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "analyze_v08.py",
+      "answers_with_text": null,
+      "git_blob": "8fcc2a327ddf753100b3ee084f03399671570f1f",
+      "on_base_commit": true,
+      "sha256": "dce76e17271c8dd150bec8645567ce64afd739c9659e4064c09fc76769de5c3e",
+      "bytes": 27954
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "apply_v1.2_registry.py",
+      "answers_with_text": null,
+      "git_blob": "768c2e4b76f2aec9d58a564d9adf68a826a590e6",
+      "on_base_commit": true,
+      "sha256": "e3720cc232096a36dca56ea4e69e0b1e1e488b7608e4659ed5616c9c6fd083c0",
+      "bytes": 6276
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "cleanup_aias_pre_v08.sh",
+      "answers_with_text": null,
+      "git_blob": "a6ca1154ba0db2d5cf78d2263c2be307b339a03f",
+      "on_base_commit": true,
+      "sha256": "f5bacb3c43cac5f653b7559fa8a9f0e02a6a25a0523ae995c5e20f8988ccc232",
+      "bytes": 14736
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "registries/README.md",
+      "answers_with_text": null,
+      "git_blob": "b49490983888904bacc042246c7dba490a181a8e",
+      "on_base_commit": true,
+      "sha256": "dcccb9e6367d202f6db16492c07256819c6939341ce47b930f565df44c465804",
+      "bytes": 1972
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "scripts/score_v16.py",
+      "answers_with_text": null,
+      "git_blob": "354407c9194f89f8ac1facea3aeedcae94dfff0d",
+      "on_base_commit": true,
+      "sha256": "26ae9ecccd491fbbddd33009b421585d97cd2155414ec139ab94f466ce6e4361",
+      "bytes": 30575
+    },
+    {
+      "set": "v1.10 registry choices",
+      "role": "registry_choice_evidence",
+      "path": "scripts/derive_brands_kitchen_knives_legacy.py",
+      "answers_with_text": null,
+      "git_blob": "a6c8e4d18d7626fc60d5ad7a0c8958a790b975cb",
+      "on_base_commit": true,
+      "sha256": "a23a5ee7290714268ead080e21370fd59c2d24065429480c12fb3f0518eeb68a",
+      "bytes": 7590
     },
     {
       "set": "DEV v0.18 (excluded)",
@@ -628,6 +977,7 @@
       "path": "data/phase_b/v0.18/phase_b_results.json",
       "answers_with_text": 18,
       "git_blob": "b4d20ed12aba4dd8c6ca1260833545ffda8482e7",
+      "on_base_commit": true,
       "sha256": "8d9ea35a6b2ac2816ec7d70575421216404dd37003b15fd86f064196e6490d12",
       "bytes": 99219
     },
@@ -637,6 +987,7 @@
       "path": "registries/brands_kitchenware_v0.17.json",
       "answers_with_text": null,
       "git_blob": "0e741952d8b180dff854f46044f51361ebad0a8b",
+      "on_base_commit": true,
       "sha256": "e2063d3e6bd54222cd244dffd770299e19c90808590441d618e6692d803ccf37",
       "bytes": 5460
     },
@@ -646,6 +997,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_1.json",
       "answers_with_text": 1,
       "git_blob": "dbe08f8347cbaa3982236d0ee2d045387e8f84b6",
+      "on_base_commit": true,
       "sha256": "5aa2077d2b78fdf50f209f86d965d4cc439e1e9fab0f063c4456382172a9fda3",
       "bytes": 1655
     },
@@ -655,6 +1007,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_2.json",
       "answers_with_text": 1,
       "git_blob": "52fa17ccb076fda101ca018db44e42fdaf57a079",
+      "on_base_commit": true,
       "sha256": "da96ee1e5fe12e06cba651a5ffeeb44619ca604f063ee0f6695ac42843fa2a03",
       "bytes": 1913
     },
@@ -664,6 +1017,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_3.json",
       "answers_with_text": 1,
       "git_blob": "bf268eb70abd7219c7643b97ed7c8c7d55ecd4bd",
+      "on_base_commit": true,
       "sha256": "6137bce0d64e7fdd3717d96887dbed8423fe7b07ec40f2b2b22722349e9cabe1",
       "bytes": 2453
     },
@@ -673,6 +1027,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_4.json",
       "answers_with_text": 1,
       "git_blob": "66d75071c3760a6923f2aac2cffb275cd15b1cad",
+      "on_base_commit": true,
       "sha256": "46a83f4540c1e4920ffd75fb72c7e2aa8ea2f1d4166ba2f59984f197ce03e2b0",
       "bytes": 3369
     },
@@ -682,6 +1037,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_5.json",
       "answers_with_text": 1,
       "git_blob": "698ad94dc3284b41fa24f0be9770a9275c3b511f",
+      "on_base_commit": true,
       "sha256": "f1cf034bc704f7bb77faf9dda517d78ca6b55b47b8ccea2536029e9be3d04118",
       "bytes": 4633
     },
@@ -691,6 +1047,7 @@
       "path": "osf/v17/data/phaseB_queries/q1_best_brands/slot_6.json",
       "answers_with_text": 1,
       "git_blob": "7d319f1e46430ce0b94e4732c8d0d14c31c88e09",
+      "on_base_commit": true,
       "sha256": "ed069da8363650242fd61f25632ccf8c802fa612dbc3783b2d625c81b9fa6974",
       "bytes": 5914
     },
@@ -700,6 +1057,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_1.json",
       "answers_with_text": 1,
       "git_blob": "a5713e6afdfaf1bdf0a5966a8115a2baa4fd1d6f",
+      "on_base_commit": true,
       "sha256": "cdb3c3a47134ed0198d74ac101ae61cce9241b47bad9b61acbb3ee248dba3282",
       "bytes": 1514
     },
@@ -709,6 +1067,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_2.json",
       "answers_with_text": 1,
       "git_blob": "dc2c8063f050cc389a80bc7a0633886b6edfce39",
+      "on_base_commit": true,
       "sha256": "99039ff51b97fbd537e274d853ea398018f9afe26d95641f868cd650351dc530",
       "bytes": 1570
     },
@@ -718,6 +1077,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_3.json",
       "answers_with_text": 1,
       "git_blob": "05c52a28e43f1a01c22ed8d8d4df0554e9bb74a0",
+      "on_base_commit": true,
       "sha256": "24512d3eebbbc8493c90d10fc26115d30e5928c043879ed4d29fbb93ae9101ac",
       "bytes": 2353
     },
@@ -727,6 +1087,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_4.json",
       "answers_with_text": 1,
       "git_blob": "dadf75d1cb0fe8db469bf8a8e5c30c76ca82fdc4",
+      "on_base_commit": true,
       "sha256": "c1cd31abec8023378fc4a37c68bfb42ae2e51bfe934efa386789212da8b9ed3a",
       "bytes": 2329
     },
@@ -736,6 +1097,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_5.json",
       "answers_with_text": 1,
       "git_blob": "b1c6d84850e6263c5e4d54526554e50b02c9d05c",
+      "on_base_commit": true,
       "sha256": "310db347aab436d3938dc24847ebcfaec61b5a54701b752f3742290b12852cb4",
       "bytes": 5880
     },
@@ -745,6 +1107,7 @@
       "path": "osf/v17/data/phaseB_queries/q2_serious_cooks/slot_6.json",
       "answers_with_text": 1,
       "git_blob": "b41e5054da0ed07087e86c8e91afbe84ed0695df",
+      "on_base_commit": true,
       "sha256": "861cbeddb66f88f1145cf90121f35471d8a7a36978485bc2b67f20698b3585ca",
       "bytes": 6951
     },
@@ -754,6 +1117,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_1.json",
       "answers_with_text": 1,
       "git_blob": "d9b147a68edf0c90c9ce8d9f05b584f8b6525671",
+      "on_base_commit": true,
       "sha256": "2be88f54281d8ed3b0b5dbd127301dee6b067204380bdfe73c5e54011bdc3de9",
       "bytes": 995
     },
@@ -763,6 +1127,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_2.json",
       "answers_with_text": 1,
       "git_blob": "2cb1feedc031ed8e432d5adfa97c352e45373d15",
+      "on_base_commit": true,
       "sha256": "d701526f3ddfc1260e48950cab35f837feb80b320a105a10709fd54b614724d3",
       "bytes": 1459
     },
@@ -772,6 +1137,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_3.json",
       "answers_with_text": 1,
       "git_blob": "3abb40fc90126f3e5b8c3b2fba760626ad5de23f",
+      "on_base_commit": true,
       "sha256": "e733a3c390b6e283e204c6b0587855024324f62e9fc87d80117414ed8ec9e536",
       "bytes": 1866
     },
@@ -781,6 +1147,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_4.json",
       "answers_with_text": 1,
       "git_blob": "74d028a8089d4bf0cb2f3988a69346e61d8f7eff",
+      "on_base_commit": true,
       "sha256": "2d83f04a0b90c03187bc0b2236b0959e3cacdb40bef0c32e6365c77575c95d0e",
       "bytes": 1844
     },
@@ -790,6 +1157,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_5.json",
       "answers_with_text": 1,
       "git_blob": "9d642e6c8cdbfbdb2ba94a26e5410aa9e817c022",
+      "on_base_commit": true,
       "sha256": "9eb94c54cb83839c9ec3f7900ae8fd1a449479142dde3da3720e48cfe5c21001",
       "bytes": 3322
     },
@@ -799,6 +1167,7 @@
       "path": "osf/v17/data/phaseB_queries/q3_pro_chefs/slot_6.json",
       "answers_with_text": 1,
       "git_blob": "7329a4f760903591e164d417eb2e543ec97cce9c",
+      "on_base_commit": true,
       "sha256": "def44aabcaed64204022e6e5e530cda86f9662446a7d23566ea0f51a92376329",
       "bytes": 5358
     }
