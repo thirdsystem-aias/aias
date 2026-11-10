@@ -1,0 +1,23 @@
+{
+  "created_utc": "2026-11-10",
+  "inputs": [
+    {
+      "file": "v1_9_unit_table.csv",
+      "source": "v1.9:osf/methodology/v1_9/v1_9_unit_table.csv",
+      "commit": "b9b8271",
+      "sha256": "3a02f957f9126aca4aaf9a949132f54fd44dc3262b32293451cee1cf99d29de7"
+    },
+    {
+      "file": "v41_three_wave_table.csv",
+      "source": "v0.41:osf/v41/v41_three_wave_table.csv",
+      "commit": "80e675b",
+      "sha256": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219"
+    },
+    {
+      "file": "v23_registry_names.csv",
+      "source": "v0.41:osf/v23/scripts/acquire_v0_23.py (REGISTRY id->brand, extracted)",
+      "commit": "80e675b",
+      "sha256": "710c83a9ce84872bbde2e95825450c8b857359ae319f35ccc7e76c5dd07b497c"
+    }
+  ]
+}
