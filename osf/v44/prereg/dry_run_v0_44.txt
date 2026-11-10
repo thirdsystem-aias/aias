@@ -1,0 +1,22 @@
+AIAS v0.44 acquisition: DRY RUN (nothing is sent). ROOT = /Users/pablou/aias/_worktrees/v0.44
+sampling params in call_anthropic_current / anthropic_params: none (temperature/top_p/top_k not sent)
+max output tokens per request: 16384
+block                     claude-fable-5-2       gpt-6-astra    gemini-4-argon  total
+1. Phase B S0 run 1                       48                48                48    144
+2. Phase B S0 run 2                       48                48                48    144
+3. Phase B S0 run 3                       48                48                48    144
+4. Phase A S0 run 1                      159               159               159    477
+TOTAL calls: 909 (expected 909) -> OK
+by model: {"claude-fable-5-2": 303, "gpt-6-astra": 303, "gemini-4-argon": 303}  modes: {"claude-fable-5-2": "batch", "gpt-6-astra": "standard", "gemini-4-argon": "standard"}
+by industry (all models): {"INS": 123, "HOT": 114, "GRO": 114, "QSR": 117, "APR": 102, "PHA": 102, "CVF": 111, "FAS": 126}
+without Phase B run 3 (projection fallback): 765 calls
+worst-case reservation per request (USD; 2,000 input tokens, output at the cap):
+  claude-fable-5-2  batch    S0 0.3357 (Nov)  0.3357 (Dec)
+  gpt-6-astra       standard S0 0.8392 (Nov)  0.8392 (Dec)
+  gemini-4-argon    standard S0 0.1678 (Nov)  0.3357 (Dec)
+budget: pause at $80, hard stop at $100; judge reserve $0.00
+cost estimate [adopted]: 909 calls, central $27.24, high $52.44
+cost estimate [adopted_december]: 909 calls, central $30.10, high $59.00
+projection pause after block 1: spend x 4.5945 > $80
+guard (state now, informational): anchor file MISSING; window: before the collection window (2026-11-24 US Central); other collections running: 0
+nothing sent.

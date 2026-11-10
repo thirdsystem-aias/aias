@@ -1,0 +1,3 @@
+# v0.44 in plain words (for Pablo; not part of the OSF deposit)
+
+The study asks whether AI models know brands the same way in eight industries we have never measured: car insurance, hotels, grocery, fast food, clothing and department stores, pharmacies, convenience stores and gas stations, and fashion and luxury (159 brands, ranked from public market data). The three newest models (Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon) get 909 questions, web search off. Expected cost $27, worst case $52 ($59 if it slips into December); cap $100, pause at $80. Pharmacies stay in, with Samsung Bioepis's supply link to CVS and Express Scripts disclosed; type "drop pharmacies" to remove them. It locks 24 hours after you receive it unless you type "hold"; collection runs Nov 24–28.

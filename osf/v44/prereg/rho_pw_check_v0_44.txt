@@ -1,0 +1,5 @@
+units 156 {np.str_('INS'): 22, np.str_('HOT'): 20, np.str_('GRO'): 19, np.str_('QSR'): 21, np.str_('APR'): 16, np.str_('PHA'): 15, np.str_('CVF'): 19, np.str_('FAS'): 24}
+null, y independent of tier (4000 draws): uncentred mean 0.0560 (sd 0.0809); centred mean -0.0021 (sd 0.0842)
+y = tier + N(0, 0.5): uncentred 0.8556, centred 0.8471, difference 0.0085
+y = tier + N(0, 1.0): uncentred 0.6335, centred 0.6118, difference 0.0217
+y = tier + N(0, 2.0): uncentred 0.3891, centred 0.3528, difference 0.0362

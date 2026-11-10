@@ -1,0 +1,69 @@
+test_batch_is_split_to_fit_under_the_cap (test_acquire_v0_44.TestBatchPath.test_batch_is_split_to_fit_under_the_cap) ... ok
+test_deadline_stops_batches (test_acquire_v0_44.TestBatchPath.test_deadline_stops_batches) ... ok
+test_empty_resent_once_transient_retried_invalid_not (test_acquire_v0_44.TestBatchPath.test_empty_resent_once_transient_retried_invalid_not) ... ok
+test_happy_path_costs_at_batch_prices (test_acquire_v0_44.TestBatchPath.test_happy_path_costs_at_batch_prices) ... ok
+test_no_projection_pause_at_central_estimate (test_acquire_v0_44.TestCollectionFlow.test_no_projection_pause_at_central_estimate) ... ok
+test_projection_pause_then_drop_run3 (test_acquire_v0_44.TestCollectionFlow.test_projection_pause_then_drop_run3) ... ok
+test_projection_ratio_by_date (test_acquire_v0_44.TestCollectionFlow.test_projection_ratio_by_date) ... ok
+test_estimates_reproduce_and_fit (test_acquire_v0_44.TestCostEstimate.test_estimates_reproduce_and_fit) ... ok
+test_approvals_need_collect (test_acquire_v0_44.TestDesign.test_approvals_need_collect) ... ok
+test_batch_params_equal_sync_call_kwargs (test_acquire_v0_44.TestDesign.test_batch_params_equal_sync_call_kwargs) ... ok
+test_copied_block_is_byte_identical_to_v042 (test_acquire_v0_44.TestDesign.test_copied_block_is_byte_identical_to_v042) ... ok
+test_default_mode_is_dry_run_and_sends_nothing (test_acquire_v0_44.TestDesign.test_default_mode_is_dry_run_and_sends_nothing) ... ok
+test_drop_run3_and_counts_from_industry_list (test_acquire_v0_44.TestDesign.test_drop_run3_and_counts_from_industry_list) ... ok
+test_matrix_909_and_order (test_acquire_v0_44.TestDesign.test_matrix_909_and_order) ... ok
+test_model_ids_are_v042_r2_ids (test_acquire_v0_44.TestDesign.test_model_ids_are_v042_r2_ids) ... ok
+test_no_sampling_params_cap_and_tag (test_acquire_v0_44.TestDesign.test_no_sampling_params_cap_and_tag) ... ok
+test_probe_file_must_match_industry_list (test_acquire_v0_44.TestDesign.test_probe_file_must_match_industry_list) ... ok
+test_72_hour_deadline_from_first_call (test_acquire_v0_44.TestGuards.test_72_hour_deadline_from_first_call) ... ok
+test_collect_refused_without_anchor_before_any_network (test_acquire_v0_44.TestGuards.test_collect_refused_without_anchor_before_any_network) ... ok
+test_collect_refused_without_tag_or_wrong_commit (test_acquire_v0_44.TestGuards.test_collect_refused_without_tag_or_wrong_commit) ... ok
+test_declared_window_needs_a_deviations_entry (test_acquire_v0_44.TestGuards.test_declared_window_needs_a_deviations_entry) ... ok
+test_other_collections_detected_ancestors_ignored (test_acquire_v0_44.TestGuards.test_other_collections_detected_ancestors_ignored) ... ok
+test_record_window_into_state (test_acquire_v0_44.TestGuards.test_record_window_into_state) ... ok
+test_window_bounds_and_checks (test_acquire_v0_44.TestGuards.test_window_bounds_and_checks) ... ok
+test_hard_stop (test_acquire_v0_44.TestLedger.test_hard_stop) ... ok
+test_pause_at_80_and_approvals (test_acquire_v0_44.TestLedger.test_pause_at_80_and_approvals) ... ok
+test_prices_november_december (test_acquire_v0_44.TestLedger.test_prices_november_december) ... ok
+test_run_sync_stops_before_the_cap_and_at_deadline (test_acquire_v0_44.TestSyncPath.test_run_sync_stops_before_the_cap_and_at_deadline) ... ok
+test_send_call_bills_the_empty_first_answer (test_acquire_v0_44.TestSyncPath.test_send_call_bills_the_empty_first_answer) ... ok
+test_audit_exports_case_sensitive_matches_only (test_code_score_v0_44.TestCoder.test_audit_exports_case_sensitive_matches_only) ... ok
+test_coder_reproduces_k_and_recognition (test_code_score_v0_44.TestCoder.test_coder_reproduces_k_and_recognition) ... ok
+test_dedupe_prefers_last_answered_attempt (test_code_score_v0_44.TestCoder.test_dedupe_prefers_last_answered_attempt) ... ok
+test_parser_is_the_certified_file (test_code_score_v0_44.TestCoder.test_parser_is_the_certified_file) ... ok
+test_probe_parity (test_code_score_v0_44.TestCoder.test_probe_parity) ... ok
+test_real_raw_refused_without_tag (test_code_score_v0_44.TestCoder.test_real_raw_refused_without_tag) ... [v44] REFUSED: refusing to read /Users/pablou/aias/_worktrees/v0.44/osf/v44/data/v44_raw.jsonl: tag v0.44-prereg-r1 is not on origin
+ok
+test_registry_and_aliases (test_code_score_v0_44.TestCoder.test_registry_and_aliases) ... ok
+test_strip_urls_is_a_byte_copy_of_v042 (test_code_score_v0_44.TestCoder.test_strip_urls_is_a_byte_copy_of_v042) ... ok
+test_urls_removed_before_matching (test_code_score_v0_44.TestCoder.test_urls_removed_before_matching) ... ok
+test_whole_word_case_rules_and_normalisation (test_code_score_v0_44.TestCoder.test_whole_word_case_rules_and_normalisation) ... ok
+test_cli_synthetic_end_to_end (test_code_score_v0_44.TestGatesAndCli.test_cli_synthetic_end_to_end) ... ok
+test_p1_on_locked_t3 (test_code_score_v0_44.TestGatesAndCli.test_p1_on_locked_t3) ... ok
+test_parity_gate_blocks_scoring (test_code_score_v0_44.TestGatesAndCli.test_parity_gate_blocks_scoring) ... ok
+test_real_run_refused_without_tag_or_when_already_scored (test_code_score_v0_44.TestGatesAndCli.test_real_run_refused_without_tag_or_when_already_scored) ... ok
+test_boundary_90_percent_keeps_model (test_code_score_v0_44.TestHypotheses.test_boundary_90_percent_keeps_model) ... ok
+test_descriptives_present (test_code_score_v0_44.TestHypotheses.test_descriptives_present) ... ok
+test_dispersion_falling_with_presence_falsifies_separation (test_code_score_v0_44.TestHypotheses.test_dispersion_falling_with_presence_falsifies_separation) ... ok
+test_drop_rule_phase_b_makes_primaries_undetermined (test_code_score_v0_44.TestHypotheses.test_drop_rule_phase_b_makes_primaries_undetermined) ... ok
+test_drop_run3_design (test_code_score_v0_44.TestHypotheses.test_drop_run3_design) ... ok
+test_fewer_than_40_rated_is_undetermined (test_code_score_v0_44.TestHypotheses.test_fewer_than_40_rated_is_undetermined) ... ok
+test_flat_presence_falsifies_spread (test_code_score_v0_44.TestHypotheses.test_flat_presence_falsifies_spread) ... ok
+test_manipulation_checks_pass_on_clean_data (test_code_score_v0_44.TestHypotheses.test_manipulation_checks_pass_on_clean_data) ... ok
+test_pharmacies_dropped_registry_needs_no_code_change (test_code_score_v0_44.TestHypotheses.test_pharmacies_dropped_registry_needs_no_code_change) ... ok
+test_reversed_tier_falsifies (test_code_score_v0_44.TestHypotheses.test_reversed_tier_falsifies) ... ok
+test_separation_computed_on_rated_units (test_code_score_v0_44.TestHypotheses.test_separation_computed_on_rated_units) ... ok
+test_served_mismatch_excluded_dated_snapshot_accepted (test_code_score_v0_44.TestHypotheses.test_served_mismatch_excluded_dated_snapshot_accepted) ... ok
+test_spread_in_four_industries_is_marginal (test_code_score_v0_44.TestHypotheses.test_spread_in_four_industries_is_marginal) ... ok
+test_tier_pattern_confirms_spread_and_tier (test_code_score_v0_44.TestHypotheses.test_tier_pattern_confirms_spread_and_tier) ... ok
+test_window_checks (test_code_score_v0_44.TestHypotheses.test_window_checks) ... ok
+test_phi_max_and_c_phi (test_code_score_v0_44.TestKernel.test_phi_max_and_c_phi) ... ok
+test_rho_pw_centred (test_code_score_v0_44.TestKernel.test_rho_pw_centred) ... ok
+test_verdict_rules (test_code_score_v0_44.TestKernel.test_verdict_rules) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 17.834s
+
+OK
+RESULT OK 61 failures 0 errors 0
+EXIT 0

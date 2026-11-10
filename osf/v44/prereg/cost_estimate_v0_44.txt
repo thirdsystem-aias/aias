@@ -1,17 +1,58 @@
-AIAS v0.44 cost estimate (DRAFT r0; no model called). Phase B probes 48, Phase A probes 159; 3 models.
+AIAS v0.44 cost estimate (pre-registration draft r1; no model called). Phase B probes 48, Phase A probes 159; 3 models.
 
-adopted: N3, Phase B S0 x3, Phase A S0 x1 (Gemini at Dec-1 price)  calls   909   central $  30.10   high $  59.00   (within pause at high)
-adopted, Gemini at November price                                  calls   909   central $  27.24   high $  52.44   (within pause at high)
-adopted + Phase B S1 x1                                            calls  1053   central $  54.59   high $ 113.02   (over $100 at high)
-adopted + Phase B S1 x3                                            calls  1341   central $ 103.55   high $ 221.05   (over $100 at high)
-Phase B S0 x2 (instead of x3)                                      calls   765   central $  23.52   high $  46.87   (within pause at high)
-Phase B S0 x1 (instead of x3)                                      calls   621   central $  16.95   high $  34.75   (within pause at high)
-Phase A S0 x3 (instead of x1)                                      calls  1863   central $  50.84   high $ 104.26   (over $100 at high)
+ADOPTED: N3, Phase B S0 x3, Phase A S0 x1, November prices (planning) calls   909   central $  27.24   high $  52.44   (within pause at high)
+adopted, December prices (collection slips past 2026-11-30)    calls   909   central $  30.10   high $  59.00   (within pause at high)
+block 1 only (Phase B S0 run 1), November prices               calls   144   central $   5.93   high $  10.86   (within pause at high)
+block 1 only (Phase B S0 run 1), December prices               calls   144   central $   6.58   high $  12.12   (within pause at high)
+adopted without Phase B run 3 (projection fallback), Nov       calls   765   central $  21.31   high $  41.57   (within pause at high)
+adopted without Phase B run 3, December prices                 calls   765   central $  23.52   high $  46.87   (within pause at high)
+pharmacies dropped (7 industries), November prices             calls   807   central $  24.06   high $  46.36   (within pause at high)
+pharmacies dropped (7 industries), December prices             calls   807   central $  26.59   high $  52.17   (within pause at high)
+adopted + Phase B S1 x1, November prices                       calls  1053   central $  51.05   high $ 105.15   (over $100 at high)
+adopted + Phase B S1 x3, November prices                       calls  1341   central $  98.69   high $ 210.57   (over $100 at high)
+Phase B S0 x2 (instead of x3), November prices                 calls   765   central $  21.31   high $  41.57   (within pause at high)
+Phase B S0 x1 (instead of x3), November prices                 calls   621   central $  15.38   high $  30.71   (within pause at high)
+Phase A S0 x3 (instead of x1), November prices                 calls  1863   central $  46.14   high $  92.12   (over $80 pause at high)
 
-Adopted design by model and block (US$ central / high):
-  claude-fable-5-2   B    S0  calls  144  per call 0.0750 / 0.1490  total  10.81 /  21.46  [t4 prices]
-  claude-fable-5-2   A_yn S0  calls  159  per call 0.0344 / 0.0789  total   5.47 /  12.55  [t4 prices]
-  gpt-6-astra        B    S0  calls  144  per call 0.0349 / 0.0511  total   5.03 /   7.36  [t4 prices]
-  gpt-6-astra        A_yn S0  calls  159  per call 0.0193 / 0.0284  total   3.07 /   4.51  [t4 prices]
-  gemini-4-argon     B    S0  calls  144  per call 0.0271 / 0.0524  total   3.90 /   7.55  [t5 prices]
-  gemini-4-argon     A_yn S0  calls  159  per call 0.0115 / 0.0350  total   1.83 /   5.57  [t5 prices]
+Projection pause ratio (adopted / block 1, central): November 4.5945, December 4.5761
+Block-1 spend above which the projection pause triggers ($80 / ratio): November $17.41, December $17.48
+
+Totals by model and by phase, ADOPTED: N3, Phase B S0 x3, Phase A S0 x1, November prices (planning) (US$ central / high):
+  claude-fable-5-2   calls  303   16.27 /  34.01
+  gpt-6-astra        calls  303    8.10 /  11.87
+  gemini-4-argon     calls  303    2.87 /   6.56
+  phase B            calls  432   17.78 /  32.59
+  phase A_yn         calls  477    9.45 /  19.84
+
+Totals by model and by phase, adopted, December prices (collection slips past 2026-11-30) (US$ central / high):
+  claude-fable-5-2   calls  303   16.27 /  34.01
+  gpt-6-astra        calls  303    8.10 /  11.87
+  gemini-4-argon     calls  303    5.73 /  13.12
+  phase B            calls  432   19.73 /  36.37
+  phase A_yn         calls  477   10.37 /  22.63
+
+By industry, adopted design (calls; US$ central / high, November | December):
+  INS  calls  123    3.59 /   6.94 |   3.97 /   7.82
+  HOT  calls  114    3.41 /   6.57 |   3.77 /   7.39
+  GRO  calls  114    3.41 /   6.57 |   3.77 /   7.39
+  QSR  calls  117    3.47 /   6.69 |   3.84 /   7.53
+  APR  calls  102    3.17 /   6.07 |   3.51 /   6.82
+  PHA  calls  102    3.17 /   6.07 |   3.51 /   6.82
+  CVF  calls  111    3.35 /   6.45 |   3.71 /   7.25
+  FAS  calls  126    3.65 /   7.07 |   4.03 /   7.96
+
+Adopted design by model and block, ADOPTED: N3, Phase B S0 x3, Phase A S0 x1, November prices (planning) (US$ central / high):
+  claude-fable-5-2   B    S0  calls  144  per call 0.0750 / 0.1490  total  10.81 /  21.46  [t4 rows]
+  claude-fable-5-2   A_yn S0  calls  159  per call 0.0344 / 0.0789  total   5.47 /  12.55  [t4 rows]
+  gpt-6-astra        B    S0  calls  144  per call 0.0349 / 0.0511  total   5.03 /   7.36  [t4 rows]
+  gpt-6-astra        A_yn S0  calls  159  per call 0.0193 / 0.0284  total   3.07 /   4.51  [t4 rows]
+  gemini-4-argon     B    S0  calls  144  per call 0.0135 / 0.0262  total   1.95 /   3.77  [t4 rows]
+  gemini-4-argon     A_yn S0  calls  159  per call 0.0058 / 0.0175  total   0.92 /   2.79  [t4 rows]
+
+Adopted design by model and block, adopted, December prices (collection slips past 2026-11-30) (US$ central / high):
+  claude-fable-5-2   B    S0  calls  144  per call 0.0750 / 0.1490  total  10.81 /  21.46  [t4 rows]
+  claude-fable-5-2   A_yn S0  calls  159  per call 0.0344 / 0.0789  total   5.47 /  12.55  [t4 rows]
+  gpt-6-astra        B    S0  calls  144  per call 0.0349 / 0.0511  total   5.03 /   7.36  [t4 rows]
+  gpt-6-astra        A_yn S0  calls  159  per call 0.0193 / 0.0284  total   3.07 /   4.51  [t4 rows]
+  gemini-4-argon     B    S0  calls  144  per call 0.0271 / 0.0524  total   3.90 /   7.55  [t5 rows]
+  gemini-4-argon     A_yn S0  calls  159  per call 0.0115 / 0.0350  total   1.83 /   5.57  [t5 rows]
