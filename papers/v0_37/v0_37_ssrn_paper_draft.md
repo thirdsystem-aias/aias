@@ -200,6 +200,10 @@ Self-funded.
 
 Not applicable; no human subjects; public APIs and LLM prompts only.
 
+## Use of AI tools {-}
+
+The author used Anthropic's Claude to assist with analysis code, drafting and editing of text, and figure production. The study design, pre-registered hypotheses and decision rules, and all interpretations are the author's; the author reviewed all content and takes full responsibility for it.
+
 ## Data and code availability {-}
 
 All pre-registration artifacts, input-reconciliation logs, the analysis-set CSV, scoring code, the verdicts file, and figures are deposited at osf.io/ec6wh (v37/). The pre-registration is locked at git tag `v0.37-prereg-r2` (amending r1), externally anchored prior to analysis. Upstream phase and methodology papers are listed in the references below.
