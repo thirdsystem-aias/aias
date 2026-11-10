@@ -1006,7 +1006,7 @@
       }
     ]
   },
-  "runtime_seconds": 41.8,
+  "runtime_seconds": 40.4,
   "history": {
     "r0": {
       "draft": "r0",
@@ -1037,11 +1037,11 @@
       "why_replaced": "the length weights (about 1.9-fold across CEPs) do not reproduce how a situation-blind brand spreads (CEP odds exp(d_j), up to 7.4-fold): E too high, mean beta -0.03 to -0.05 at n = 5-25"
     }
   },
-  "run_started_utc": "2026-11-10T13:29:26.938566+00:00",
-  "run_finished_utc": "2026-11-10T13:30:08.730070+00:00",
+  "run_started_utc": "2026-11-10T20:36:29.684309+00:00",
+  "run_finished_utc": "2026-11-10T20:37:10.043095+00:00",
   "code": {
     "file": "osf/methodology/v1_12/scripts/score_v1_12.py",
-    "sha256": "d97c46f71933422b7b8cfc4b5354598daa990cbfcead6650a4a9649129a9dd0a"
+    "sha256": "7fd288bfdf8deb746645b0764f1f32a889549521b1474aa5612d2102361ed49f"
   },
   "environment": {
     "python": "3.14.4",
