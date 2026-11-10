@@ -1,0 +1,50 @@
+{
+  "all_exact": true,
+  "fields": {
+    "C_star": {
+      "n_blank": 173,
+      "n_checked": 336,
+      "n_float_exact": 336,
+      "n_string_exact": 336
+    },
+    "P": {
+      "n_blank": 0,
+      "n_checked": 336,
+      "n_float_exact": 336,
+      "n_string_exact": 336
+    },
+    "cell": {
+      "n_checked": 336,
+      "n_string_exact": 336
+    },
+    "mentions": {
+      "n_blank": 0,
+      "n_checked": 336,
+      "n_float_exact": 336,
+      "n_string_exact": 336
+    },
+    "pi_hat": {
+      "n_blank": 0,
+      "n_checked": 336,
+      "n_float_exact": 336,
+      "n_string_exact": 336
+    }
+  },
+  "mismatches": [],
+  "n_units": 112,
+  "non_v23_search_name_equals_unit": true,
+  "rare_beauty_substrates": [
+    "v0.20",
+    "v0.21"
+  ],
+  "substrate_counts_as_expected": true,
+  "unit_set_equal_v19_v41": true,
+  "units_per_substrate": {
+    "v0.19": 16,
+    "v0.20": 24,
+    "v0.21": 24,
+    "v0.22": 24,
+    "v0.23": 24
+  },
+  "v23_names_match_registry": true
+}
