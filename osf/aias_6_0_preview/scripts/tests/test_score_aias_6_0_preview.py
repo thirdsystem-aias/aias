@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Synthetic-data tests for score_aias_6_0_preview.py (AIAS 6.0 Preview, r0 skeleton).
-No program data are read. Run: python3 -I osf/aias_6_0_preview/scripts/tests/test_score_aias_6_0_preview.py
+"""Synthetic-data tests for score_aias_6_0_preview.py (AIAS 6.0 Preview, r1).
+No program data are read: every repository used here is a scratch git repository in a temporary directory, and
+every output goes to a temporary directory. Run:
+python3 -I osf/aias_6_0_preview/scripts/tests/test_score_aias_6_0_preview.py
 """
+import copy
+import csv
 import hashlib
+import io
+import json
 import math
+import os
+import subprocess
 import sys
 import tempfile
 import unittest
@@ -268,8 +276,15 @@ class TestEndToEndSynthetic(unittest.TestCase):
 
 
 class TestCliAndLocks(unittest.TestCase):
-    def test_run_refuses_in_r0(self):
-        self.assertEqual(S.main(["--run"]), 2)
+    def test_run_refuses_without_the_lock(self):
+        # r1: --run refuses before reading anything when tag and anchor are absent (MQ_Lock). A scratch repository
+        # is used, never the program repository, so that this test can never score real data.
+        with tempfile.TemporaryDirectory() as d:
+            subprocess.run(["git", "-C", d, "init", "-q"], check=True)
+            with self.assertRaises(S.Halt) as cm:
+                S.run(root=Path(d), refs={}, out_dir=Path(d) / "out", log=lambda *a: None)
+            self.assertIn("MQ_Lock", str(cm.exception))
+            self.assertFalse((Path(d) / "out").exists())
 
     def test_dry_run_writes_only_to_out(self):
         with tempfile.TemporaryDirectory() as d:
@@ -334,6 +349,634 @@ class TestSensitivitiesAndLockHelpers(unittest.TestCase):
                              hashlib.sha256((root / "late.csv").read_bytes()).hexdigest())
             with self.assertRaises(S.Halt):
                 S.mq_blind(root, "no-such-tag", [])
+
+
+# =====================================================================================================
+# r1: a synthetic repository holding every component's scored output at its own ref (no program data)
+# =====================================================================================================
+V114_BLOB = "c479004c58de79ef017b25c4725e433f74dc42b2"   # scripts/score_v1_14.py at tag v1.14-prereg-r1
+MODELS3 = ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"]
+SUBS = {"v0.19": 16, "v0.20": 24, "v0.21": 24, "v0.22": 24, "v0.23": 24}
+RAWSUB = {"v0.19": "v19", "v0.20": "v20", "v0.21": "v21", "v0.22": "v22", "v0.23": "v23"}
+QUIET = lambda *a, **k: None  # noqa: E731
+
+
+def git(d, *args, date="2026-11-10T09:00:00-06:00"):
+    env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@example.org", GIT_COMMITTER_NAME="t",
+               GIT_COMMITTER_EMAIL="t@example.org", GIT_AUTHOR_DATE=date, GIT_COMMITTER_DATE=date)
+    return subprocess.run(["git", "-C", str(d), "-c", "commit.gpgsign=false", "-c", "tag.gpgsign=false", *args],
+                          check=True, capture_output=True, text=True, env=env).stdout.strip()
+
+
+def write(root, rel, data):
+    p = Path(root) / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_bytes(data if isinstance(data, bytes) else data.encode("utf-8"))
+
+
+def csv_text(rows, fields=None):
+    fields = fields or list(rows[0])
+    buf = io.StringIO()
+    w = csv.DictWriter(buf, fieldnames=fields, lineterminator="\n")
+    w.writeheader()
+    for r in rows:
+        w.writerow({k: ("" if r.get(k) is None else r.get(k)) for k in fields})
+    return buf.getvalue()
+
+
+def sha(text):
+    return hashlib.sha256(text.encode("utf-8") if isinstance(text, str) else text).hexdigest()
+
+
+def commit(d, msg, date, tag=None):
+    git(d, "add", "-A", date=date)
+    git(d, "commit", "-q", "-m", msg, date=date)
+    if tag:
+        git(d, "tag", "-a", tag, "-m", tag, date=date)
+    return git(d, "rev-parse", "HEAD")
+
+
+def unit_names():
+    out = []
+    for s, n in SUBS.items():
+        for i in range(n):
+            b = f"B{i:02d}"
+            if s == "v0.19" and i == 0:
+                b = "Denon"
+            if s == "v0.22" and i < 5:
+                b = S.DEFUNCT_V022[i]
+            if s in ("v0.20", "v0.21") and i == 0:
+                b = "Rare Beauty"
+            out.append((s, b))
+    return out
+
+
+class Synth:
+    """Every input of the Preview, synthetic, committed at the refs the real run will name."""
+    LOCK_DATE, A_DATE, S_DATE = "2026-11-11T15:00:00-06:00", "2026-11-14T12:00:00-06:00", "2026-11-15T12:00:00-06:00"
+
+    def __init__(self, d, seed=11, preview_tag="before", h5_gates=True, h6_at_c2=False, cross_panel=False,
+                 dropped_s0=False, stage2=False):
+        self.d = Path(d)
+        rng = np.random.default_rng(seed)
+        U = self.units = unit_names()
+        git(self.d, "init", "-q")
+        for rel, t in {"osf/v42/scripts/score_v0_42.py": "# stub: v42_brand_table.csv v42_verdicts.json\n",
+                       "osf/v42/scripts/code_t4_v0_42.py": "# stub coder\n",
+                       "scripts/score_v1_14.py": "# stub: stage1_v1_14.json rank_table_t4_v1_14.csv stage2_v1_14.json\n",
+                       "osf/methodology/v1_12/scripts/score_v1_12.py": "# stub: v112_unit_table.csv v112_verdicts.json\n",
+                       "osf/methodology/v1_13/scripts/score_v1_13.py": "# stub: v1_13_verdicts.json\n",
+                       "scripts/score_v1_11.py": "# stub: stage_j_v1_11.json v1_11_verdicts.json\n"}.items():
+            write(self.d, rel, t)
+        cells, dom, prof = [], [], []
+        for i, (s, b) in enumerate(U):
+            cell = "" if s in ("v0.19", "v0.23") else ("D" if b in S.DEFUNCT_V022 else "ABC"[i % 3])
+            cells.append({"substrate": s, "brand": b, "cell": cell, "wave": "t3"})
+            dom.append({"substrate": RAWSUB[s], "brand_id": f"id{i:03d}", "brand": b, "coder_key": b,
+                        "status": "NONE" if b in S.DEFUNCT_V022 else "RESOLVED"})
+        self.bid = {u: f"{RAWSUB[u[0]]}|id{i:03d}" for i, u in enumerate(U)}
+        for w in ("t1", "t2", "t3"):
+            for s, b in U:
+                rated = int(rng.random() < 0.5)
+                prof.append({"wave": w, "substrate": s, "brand": b, "P": round(float(rng.uniform(10, 90)), 6),
+                             "C_star": round(float(rng.uniform(10, 90)), 6) if rated else "", "rated": rated})
+        write(self.d, "osf/v41/v41_three_wave_table.csv", csv_text(cells))
+        write(self.d, "osf/methodology/v1_13/registries/brand_domains_v1_13.csv", csv_text(dom))
+        self.prof_text = csv_text(prof)
+        write(self.d, "osf/aias_2_0/aias_2_0_profiles.csv", self.prof_text)
+        write(self.d, "osf/methodology/v1_12/anchor/osf_anchor_v1_12.json", json.dumps(
+            {"conditional_legs": {"H5_Sep_Ranking": {"status": "ACTIVE (tag pushed before this lock)"}}}))
+        write(self.d, "osf/methodology/v1_13/anchor/git_anchor_v1_13.json", json.dumps(
+            {"conditional_legs": {"H4_Sep_Ranking": {"pushed_before_lock": True},
+                                  "H6_Sep_Coverage": {"pushed_before_lock": True}}}))
+        self.lock_commit = commit(self.d, "component locks", self.LOCK_DATE)
+        for t in ("v0.42-prereg-r1", "v1.14-prereg-r1", "v1.12-prereg-r1", "v1.13-prereg-r1", "v1.11-prereg-r1",
+                  "aias-2-0-data-locked"):
+            git(self.d, "tag", "-a", t, "-m", t, date=self.LOCK_DATE)
+        if preview_tag == "before":
+            git(self.d, "tag", "-a", S.PREREG_TAG, "-m", "preview lock", date="2026-11-11T18:00:00-06:00")
+        # --- t4 raw (acquisition tag) ---
+        A_rows, B_rows, raw = [], [], []
+        p_b = {u: float(rng.uniform(0.05, 0.8)) for u in U}
+        for s in SUBS:
+            brands = [u for u in U if u[0] == s]
+            for cond in ("S0", "S1"):
+                for m in MODELS3:
+                    for run in (1, 2, 3):
+                        for f in (1, 2):
+                            cid = f"B|{cond}|{m}|{run}|{s}|{f}"
+                            raw.append({"call_id": cid, "phase": "B", "condition": cond, "run": run,
+                                        "model_requested": m, "served_model": m, "status": "ok", "text": "answer"})
+                            B_rows += [{"call_id": cid, "substrate": s, "condition": cond, "model": m, "run": run,
+                                        "brand": u[1], "mentioned": int(rng.random() < p_b[u])} for u in brands]
+            for m in MODELS3:
+                for u in brands:
+                    cid = f"A|{m}|{s}|{u[1]}"
+                    raw.append({"call_id": cid, "phase": "A", "condition": "S0", "run": 1, "model_requested": m,
+                                "served_model": m, "status": "ok", "text": "answer"})
+                    A_rows.append({"call_id": cid, "substrate": s, "condition": "S0", "model": m, "run": 1,
+                                   "brand": u[1], "recognized": int(rng.random() < 0.7)})
+        raw[0]["served_model"] = "another-model"            # one served-ID mismatch: v0.42's analysis set drops it
+        write(self.d, "osf/v42/data/t4_raw.jsonl", "".join(json.dumps(r) + "\n" for r in raw))
+        commit(self.d, "t4 raw", self.A_DATE, "v0.42-acquisition-locked")
+        # --- v0.42 scoring (coded tables, brand table, verdicts) ---
+        for s in SUBS:
+            write(self.d, f"osf/v42/data/coded/{RAWSUB[s]}_phase_a.csv", csv_text([r for r in A_rows if r["substrate"] == s]))
+            write(self.d, f"osf/v42/data/coded/{RAWSUB[s]}_phase_b.csv", csv_text([r for r in B_rows if r["substrate"] == s]))
+        bt = []
+        for u in U:
+            row = {"substrate": u[0], "brand": u[1]}
+            for cond in ("S0", "S1"):
+                x = rng.random()
+                part = "defined" if x < 0.75 else ("saturated" if x < 0.8 else ("zero" if x < 0.9 else "undefined"))
+                row.update({f"pi_N3_{cond}": round(float(rng.uniform(0, 0.6)), 6),
+                            f"phi_N3_{cond}": round(float(rng.uniform(0.2, 3.0)), 6) if part == "defined" else "",
+                            f"phi_partition_N3_{cond}": part})
+            bt.append(row)
+        self.bt_text = csv_text(bt)
+        write(self.d, "osf/v42/v42_brand_table.csv", self.bt_text)
+        write(self.d, "osf/v42/v42_verdicts.json", json.dumps({
+            "phase": "v0.42", "verdicts": {"H_Gen_Presence": {"verdict": "CONFIRMED"}, "H_Gen_Phi": {"verdict": "MARGINAL"}},
+            "models_excluded_condition": ["gemini-4-argon|S0"] if dropped_s0 else []}))
+        commit(self.d, "t4 scored", self.S_DATE, "v0.42-scoring-locked")
+        excluded = S.V14.excluded_calls(S.V14.dedupe_calls(raw))
+        bt_read = list(csv.DictReader(io.StringIO(self.bt_text)))
+        comp = S.V14.comparators(bt_read, A_rows, B_rows, excluded, "S0")
+        self.P, self.C, self.ment = comp["P"], comp["C"], comp["mentions"]
+        # --- v1.14 Stage 1 (and Stage 2) ---
+        listed = [u for u in U if self.ment[u] >= 1]          # v1.14 lists units with a rankable mention
+        self.R = {u: None for u in U}
+        rank_rows, units_json = [], []
+        for u in listed:
+            r0 = float(-rng.integers(1, 6)) if self.ment[u] >= 6 else None
+            self.R[u] = r0
+            units_json.append({"substrate": u[0], "brand": u[1], "n_ranked_S0": int(self.ment[u]),
+                               "rated_S0": r0 is not None, "R_star_S0": r0, "n_ranked_S1": int(self.ment[u]),
+                               "R_star_S1": r0, "P_S0": self.P[u], "C_star_S0": self.C[u], "P_S1": None})
+            if r0 is not None:
+                for j in range(6):
+                    k = int(rng.integers(1, 6))
+                    rank_rows.append({"answer_id": f"t4::{u[1]}{j}", "wave": "t4", "condition": "S0",
+                                      "category": u[0], "model": MODELS3[j % 3], "frame": "q1", "run_idx": 1 + j % 3,
+                                      "status": "ok", "n_named": 5, "rankable": 1, "list_structured": 1,
+                                      "rule": "lead_item", "brand": u[1], "k_mid": repr(float(k)), "k_min": k})
+        self.rt_text = csv_text(rank_rows, S.V14.RANK_COLS)
+        sc = {u: {"P": self.P[u], "C": self.C[u], "R": self.R[u]} for u in U}
+        h = {n: S.s_test(sc, a, "R", 0, False) for n, a in (("H1_Sep_Presence", "P"), ("H2_Sep_Consistency", "C"))}
+        s1 = {"phase": "v1.14", "stage": "1", "prereg_tag": "v1.14-prereg-r1", "dry_run": False,
+              "inputs_read": {"v0.42-scoring-locked:osf/v42/v42_brand_table.csv": {"sha256": sha(self.bt_text)}},
+              "rank_table_t4_sha256": sha(self.rt_text), "gate_excluded_substrates": [],
+              "STAGE1_VERDICT": "SEPARABLE (Stage 2 pending)", "units": units_json,
+              **{n: {"rho": t["rho"], "n": t["n"], "verdict": t["verdict"]} for n, t in h.items()}}
+        self.s1_text = json.dumps(s1, indent=1)
+        write(self.d, "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json", self.s1_text)
+        write(self.d, "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv", self.rt_text)
+        if stage2:
+            write(self.d, "osf/methodology/v1_14/outputs/stage2/stage2_v1_14.json", json.dumps(
+                {"stage": "2", "dry_run": False, "stage1_sha256": sha(self.s1_text), "GATE": "PASS",
+                 "H3_Retest_Reliability": {"verdict": "CONFIRMED", "rho": 0.71, "n": 50}}))
+        commit(self.d, "v1.14 stage 1", "2026-11-16T12:00:00-06:00", "v114-scored")
+        # --- v1.12 ---
+        self.Cov = {u: (float(rng.uniform(20, 80)) if (self.ment[u] >= 3 and rng.random() < 0.85) else None) for u in U}
+        self.ut_text = csv_text([{"substrate": u[0], "brand": u[1], "primary_panel": "N3", "cov_star": self.Cov[u],
+                                  "rated": int(self.Cov[u] is not None), "cov_star_N3": self.Cov[u]} for u in U])
+        sc2 = {u: dict(sc[u], Cov=self.Cov[u]) for u in U}
+        t12 = {n: S.s_test(sc2, a, "Cov", 0, False) for n, a in (("H1_Sep_Presence", "P"), ("H2_Sep_Consistency", "C"),
+                                                                  ("H5_Sep_Ranking", "R"))}
+        pa_legs = {"H1_Sep_Presence": t12["H1_Sep_Presence"]["verdict"], "H3_Sep_NamingRate": "CONFIRMED",
+                   "H2_Sep_Consistency": t12["H2_Sep_Consistency"]["verdict"], "H4_Reliability": "CONFIRMED"}
+        if h5_gates:
+            pa_legs["H5_Sep_Ranking"] = t12["H5_Sep_Ranking"]["verdict"]
+        write(self.d, "osf/methodology/v1_12/v112_unit_table.csv", self.ut_text)
+        write(self.d, "osf/methodology/v1_12/v112_verdicts.json", json.dumps({
+            "phase": "v1.12", "prereg_tag": "v1.12-prereg-r1", "parity_gates": {"P1": {"passed": True}},
+            "primary_panel": "N3", "comparators": {"cross_panel": cross_panel}, "models_dropped_section_7_3": [],
+            "paper_A_verdict": {"verdict": "PASS", "label": "PASS", "legs": pa_legs, "inactive": ["H6_Sep_Sentiment"]},
+            "verdicts": {n: t["verdict"] for n, t in t12.items()}, "legs": {n: {"rho_w": t["rho"]} for n, t in t12.items()},
+            "H5_ranking_source": {"sha256": sha(self.s1_text)}}))
+        commit(self.d, "v1.12 scored", "2026-11-17T12:00:00-06:00", "v112-scored")
+        # --- v1.13 ---
+        self.G = {u: (float(rng.uniform(0, 100)) if (u[1] not in S.DEFUNCT_V022 and self.ment[u] >= 2
+                                                     and rng.random() < 0.9) else None) for u in U}
+        sc3 = {u: dict(sc2[u], G=self.G[u]) for u in U}
+        t13 = {n: S.s_test(sc3, a, "G", 0, False) for n, a in (("H1_Sep_Presence", "P"), ("H2_Sep_Consistency", "C"),
+                                                                ("H6_Sep_Coverage", "Cov"))}
+        legs = {"H1_Sep_Presence": [{"rho_w": 0.05}, {"rho_w": t13["H1_Sep_Presence"]["rho"]}],
+                "H2_Sep_Consistency": [{"rho_w": 0.04}, {"rho_w": t13["H2_Sep_Consistency"]["rho"]}],
+                "H4_Sep_Ranking": [{"rho_w": 0.11}]}
+        verd = {"H1_Sep_Presence": t13["H1_Sep_Presence"]["verdict"], "H3_Run_Reliability": "CONFIRMED",
+                "H2_Sep_Consistency": t13["H2_Sep_Consistency"]["verdict"], "H4_Sep_Ranking": "CONFIRMED",
+                "H5_Sep_Sentiment": "INACTIVE", "H6_Sep_Coverage": t13["H6_Sep_Coverage"]["verdict"]}
+        doc = {"phase": "v1.13", "stage": "C1", "verdicts": verd, "legs": legs, "dropped_models": [],
+               "gate": {"verdict": "PASS", "active": {"H4_Sep_Ranking": True, "H5_Sep_Sentiment": False,
+                                                      "H6_Sep_Coverage": True}},
+               "units": {self.bid[u]: {"G_star": self.G[u], "rated": self.G[u] is not None} for u in U},
+               "H4_ranking_source": {"sha256": sha(self.s1_text)}, "H6_coverage_source": {"sha256": sha(self.ut_text)}}
+        if h6_at_c2:
+            verd["H6_Sep_Coverage"] = "UNDETERMINED"
+            doc["H6_coverage_source"] = {"status": "PENDING"}
+            doc["stage_C2"] = {"ranking": {"H4_Sep_Ranking": "CONFIRMED", "note": "computed at Stage C1"},
+                               "coverage": {"H6_Sep_Coverage": "FALSIFIED", "leg": {"rho_w": t13["H6_Sep_Coverage"]["rho"]},
+                                            "H6_coverage_source": {"sha256": sha(self.ut_text)},
+                                            "gate_reissued": {"before": "PASS", "after": "MARGINAL"}}}
+        else:
+            legs["H6_Sep_Coverage"] = [{"rho_w": t13["H6_Sep_Coverage"]["rho"]}]
+        write(self.d, "osf/methodology/v1_13/v1_13_verdicts.json", json.dumps(doc))
+        commit(self.d, "v1.13 scored", "2026-11-18T12:00:00-06:00", "v113-scored")
+        # --- v1.11 (legacy waves) ---
+        sj = {"phase": "v1.11", "stage": "J", "scores": {"J1": {
+            **{f"F|t3|{s}|{b}": {"S": float(rng.uniform(40, 90)), "rated": True} for (s, b) in U if self.ment[(s, b)] >= 2},
+            "F|t2|v0.19|Denon": {"S": 50.0, "rated": True}}}}
+        self.sj_text = json.dumps(sj)
+        write(self.d, "osf/methodology/v1_11/outputs/stage_j_v1_11.json", self.sj_text)
+        write(self.d, "osf/methodology/v1_11/outputs/v1_11_verdicts.json", json.dumps({
+            "phase": "v1.11", "stage": "C", "prereg_tag": "v1.11-prereg-r1", "dry_run": False,
+            "VERDICTS": {"H1": "CONFIRMED", "H2": "CONFIRMED", "H3": "CONFIRMED", "H4": "CONFIRMED", "H5": "PENDING"},
+            "stage_j_sha256": sha(self.sj_text), "noise_guard_applied": False}))
+        commit(self.d, "v1.11 scored", "2026-11-19T12:00:00-06:00", "v111-scored")
+        if preview_tag == "late":
+            git(self.d, "tag", "-a", S.PREREG_TAG, "-m", "late preview lock", date="2026-11-20T12:00:00-06:00")
+        self.refs = {"v0.42": "v0.42-scoring-locked", "v1.14": "v114-scored", "v1.12": "v112-scored",
+                     "v1.13": "v113-scored", "v1.11": "v111-scored"}
+
+    def inputs(self):
+        I = copy.deepcopy(S.INPUTS)
+        for name in ("v0.42", "v1.14", "v1.12", "v1.13", "v1.11"):
+            sp = I[name]
+            sp["lock_commit"] = self.lock_commit
+            for fld, bfld in S.PIN_BLOBS:
+                if sp.get(fld):
+                    sp[bfld] = git(self.d, "rev-parse", f"{sp['lock_tag']}:{sp[fld]}")
+        I["v1.12"]["h5_active_at_lock"] = True
+        I["v1.13"]["h4_active_at_lock"] = I["v1.13"]["h6_active_at_lock"] = True
+        I["aias_2_0"].update(commit=self.lock_commit, sha256=sha(self.prof_text))
+        return I
+
+
+class TestPinsAndReaders(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        cls.syn = Synth(cls.tmp.name)
+        cls.I = cls.syn.inputs()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_imported_v1_14_is_the_locked_file(self):
+        self.assertEqual(git_blob(Path(S.V14.__file__)), V114_BLOB)
+
+    def test_real_pins_pending_only_for_the_wednesday_locks(self):
+        # r1 leaves exactly these six values PENDING; the coordinator fills them after the Nov 11 locks
+        pend = {f"{n}.{k}" for n, sp in S.INPUTS.items() if isinstance(sp, dict) for k, v in sp.items() if v == S.PENDING}
+        self.assertLessEqual(pend, {"v0.42.lock_commit", "v1.12.h5_active_at_lock", "v1.12.lock_commit",
+                                    "v1.13.h4_active_at_lock", "v1.13.h6_active_at_lock", "v1.13.lock_commit"})
+        for name in ("v1.14", "v1.11"):                               # locked components: fully pinned now
+            self.assertNotIn(S.PENDING, S.INPUTS[name].values())
+        self.assertIsNone(S.INPUTS["S_t4"])                            # not pre-registered at r1 (section 3.4)
+
+    def test_pins(self):
+        root = self.syn.d
+        self.assertEqual(S.pin_problems(root, self.I), [])
+        bad = copy.deepcopy(self.I)
+        bad["v1.12"]["scorer_blob"] = "0" * 40
+        bad["v1.13"]["lock_commit"] = S.PENDING
+        probs = S.pin_problems(root, bad)
+        self.assertEqual(len(probs), 2)
+        self.assertTrue(any("score_v1_12.py" in p for p in probs) and any("PENDING" in p for p in probs))
+        rep = S.pin_report(root, self.I)
+        self.assertTrue(rep["v1.12"]["h5_active_at_lock"])
+        self.assertTrue(rep["v1.13"]["h4_active_at_lock"] and rep["v1.13"]["h6_active_at_lock"])
+        self.assertTrue(all(rep["v1.12"]["output_names_in_tagged_scorer"].values()))
+        self.assertEqual(rep["problems"], [])
+
+    def test_read_v042_recomputes_comparators_on_the_analysis_set(self):
+        rd = S.Reader(self.syn.d)
+        v = S.read_v042(rd, self.I["v0.42"], "v0.42-scoring-locked")
+        self.assertEqual(v["n_excluded_calls"], 1)                    # the served-ID mismatch
+        self.assertEqual(v["P_S0"], self.syn.P)
+        self.assertEqual(v["C_S0"], self.syn.C)
+        self.assertEqual(len(v["keys"]), 112)
+        self.assertEqual(v["cells"][("v0.22", "Pontiac")], "D")
+        self.assertTrue(all(k.split(":", 1)[0] in ("v0.42-scoring-locked", "v0.42-acquisition-locked") for k in rd.log))
+        with self.assertRaises(S.Halt):                               # scorer blob at the ref must equal the pin
+            S.read_v042(S.Reader(self.syn.d), dict(self.I["v0.42"], scorer_blob="1" * 40), "v0.42-scoring-locked")
+
+    def test_read_v114(self):
+        v = S.read_v114(S.Reader(self.syn.d), self.I["v1.14"], "v114-scored")
+        self.assertEqual(v["STAGE1_VERDICT"], "SEPARABLE (Stage 2 pending)")
+        self.assertIsNone(v["GATE"])
+        self.assertEqual(S.gate_ranking(v["GATE"], v["STAGE1_VERDICT"]), S.PASS_RETEST)
+        rated = {u for u, x in self.syn.R.items() if x is not None}
+        self.assertEqual({u for u, x in v["R_S0"].items() if x is not None}, rated)
+        self.assertEqual({u for u, x in v["MNP_S0"].items() if x is not None}, rated)   # 6 rankable rows each
+        self.assertLess(len(v["keys"]), 112)                          # v1.14 lists only units with a mention
+
+    def test_read_v112_carried_rules(self):
+        v = S.read_v112(S.Reader(self.syn.d), self.I["v1.12"], "v112-scored")
+        self.assertEqual(set(v["carried"]), {("P", "Cov"), ("C", "Cov"), ("R", "Cov")})
+        self.assertEqual(v["gate"], "PASS")
+        self.assertTrue(v["h5_active"])
+
+    def test_read_v113_maps_units_and_carries_s0_legs(self):
+        v = S.read_v113(S.Reader(self.syn.d), self.I["v1.13"], "v113-scored")
+        self.assertEqual(sorted(v["keys"]), sorted(self.syn.units))    # (v19, id) -> (v0.19, coder key)
+        self.assertEqual(v["G"], self.syn.G)
+        self.assertEqual(set(v["carried"]), {("P", "G"), ("C", "G"), ("Cov", "G")})
+        self.assertNotEqual(v["carried"][("P", "G")]["rho"], 0.05)    # the S0 leg (index 1), not the S1 leg
+        self.assertEqual(v["H4_printed"]["rho_w"], 0.11)
+
+    def test_read_v111(self):
+        v = S.read_v111(S.Reader(self.syn.d), self.I["v1.11"], "v111-scored")
+        self.assertEqual(S.gate_sentiment(v["H"], True), S.PASS_AI)   # H5 PENDING does not block
+        self.assertEqual(S.gate_sentiment(v["H"], False), S.NOT_RUN)  # no S_t4: not on N3
+        self.assertTrue(all(k in self.syn.units for k in v["keys"]))
+        self.assertNotIn(("v0.19", "Denon"), [k for k in v["keys"] if self.syn.ment[k] < 2])
+
+    def test_aias20_pin(self):
+        a = S.read_aias20(S.Reader(self.syn.d), self.I["aias_2_0"])
+        self.assertEqual(len(a["keys"]), 112)
+        with self.assertRaises(S.Halt):
+            S.read_aias20(S.Reader(self.syn.d), dict(self.I["aias_2_0"], sha256="0" * 64))
+
+
+class TestReaderVariants(unittest.TestCase):
+    def test_v112_no_h5_carry_unless_it_gated_and_none_cross_panel(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, h5_gates=False)
+            v = S.read_v112(S.Reader(syn.d), syn.inputs()["v1.12"], "v112-scored")
+            self.assertEqual(set(v["carried"]), {("P", "Cov"), ("C", "Cov")})
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, cross_panel=True)
+            self.assertEqual(S.read_v112(S.Reader(syn.d), syn.inputs()["v1.12"], "v112-scored")["carried"], {})
+
+    def test_v113_gate_as_last_issued_and_h6_from_stage_c2(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, h6_at_c2=True)
+            v = S.read_v113(S.Reader(syn.d), syn.inputs()["v1.13"], "v113-scored")
+            self.assertEqual(v["gate"], "MARGINAL")
+            self.assertEqual(v["carried"][("Cov", "G")]["verdict"], "FALSIFIED")
+
+    def test_dry_run_or_tampered_stage1_halts(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d)
+            I = syn.inputs()
+            s1 = json.loads(syn.s1_text)
+            write(syn.d, "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json", json.dumps(dict(s1, dry_run=True)))
+            commit(syn.d, "dry", "2026-11-21T12:00:00-06:00", "v114-dry")
+            with self.assertRaises(S.Halt):
+                S.read_v114(S.Reader(syn.d), I["v1.14"], "v114-dry")
+            write(syn.d, "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json", syn.s1_text)
+            write(syn.d, "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv", syn.rt_text + "x\n")
+            commit(syn.d, "tampered", "2026-11-21T13:00:00-06:00", "v114-tampered")
+            with self.assertRaises(S.Halt):
+                S.read_v114(S.Reader(syn.d), I["v1.14"], "v114-tampered")
+
+
+class TestDataLockChecks(unittest.TestCase):
+    def test_mq_join(self):
+        U = unit_names()
+        rep = S.mq_join({"a": U, "b": list(reversed(U))}, {"v1.14": U[:50]})
+        self.assertEqual(rep["tables"]["v1.14"]["units_not_listed"], 62)
+        with self.assertRaises(S.Halt):
+            S.mq_join({"a": U, "b": U[:-1]}, {})                       # a unit missing
+        with self.assertRaises(S.Halt):
+            S.mq_join({"a": U, "b": U + [U[0]]}, {})                   # a duplicate
+        with self.assertRaises(S.Halt):
+            S.mq_join({"a": U}, {"v1.11": U[:3] + [("v0.19", "Unknown")]})   # a key outside the 112
+
+    def test_mq_parity_comparators_is_exact(self):
+        k = [("v0.19", "A"), ("v0.19", "B")]
+        mine = {"P_S0": {k[0]: 40.0, k[1]: 50.0}, "C_S0": {k[0]: None, k[1]: 70.0}}
+        theirs = {"keys": k, "P_S0": {k[0]: 40.0, k[1]: 50.0}, "C_S0": {k[0]: None, k[1]: 70.0}}
+        self.assertTrue(S.mq_parity_comparators(mine, theirs)["passes"])
+        with self.assertRaises(S.Halt):
+            S.mq_parity_comparators(mine, dict(theirs, P_S0={k[0]: 40.0, k[1]: 50.0 + 1e-12}))
+        with self.assertRaises(S.Halt):
+            S.mq_parity_comparators(mine, dict(theirs, C_S0={k[0]: 10.0, k[1]: 70.0}))
+
+    def test_activation_and_cross_records(self):
+        I = copy.deepcopy(S.INPUTS)
+        I["v1.12"]["h5_active_at_lock"] = True
+        with self.assertRaises(S.Halt):
+            S.check_activation({"h5_active": False}, None, I)
+        v042 = {"brand_table_sha256": "a"}
+        v114 = {"inputs_read": {"x:osf/v42/v42_brand_table.csv": {"sha256": "b"}}, "stage1_sha256": "s"}
+        with self.assertRaises(S.Halt):
+            S.cross_checks(v042, v114, None, None, I)
+        ok = S.cross_checks({"brand_table_sha256": "b"}, v114, {"h5_stage1_sha256": "s", "unit_table_sha256": "u"},
+                            {"h4_stage1_sha256": None, "h6_unit_table_sha256": "u"}, I)
+        self.assertEqual(ok["v1.13_H4_read_the_same_v114_stage1"], "not recorded")
+
+
+class TestDescriptivesAndSensitivities(unittest.TestCase):
+    ALL = {"R": S.PASS_RETEST, "S": S.PASS_AI, "Cov": S.PASS, "G": S.PASS}
+
+    def test_d3_dimensions(self):
+        sc, _ = S.synthetic(seed=600999, overlap={"C": ("P", 0.99)})
+        d = S.d3_dimensions(sc, ["P", "C", "R", "Cov"], n_draws=50)
+        self.assertAlmostEqual(sum(d["eigenvalues"]), 4.0, places=9)
+        self.assertGreater(d["eigenvalues"][0], 1.7)                   # P and C nearly one dimension
+        self.assertTrue(1.0 <= d["participation_ratio"] < 4.0)
+        self.assertGreaterEqual(d["parallel_analysis"]["n_above_null_p95"], 1)
+
+    def test_d5_bridge_and_d6(self):
+        U = unit_names()
+        rng = np.random.default_rng(5)
+        p3 = {u: float(rng.uniform(0, 90)) for u in U}
+        p4 = {u: v + 3.0 for u, v in p3.items()}
+        b = S.d5_bridge(p4, {u: None for u in U}, p3, {u: None for u in U}, n_boot=200)
+        self.assertAlmostEqual(b["P_level_shift"]["mean_t4_minus_t3"], 3.0)
+        self.assertAlmostEqual(b["P_level_shift"]["ci90"][0], 3.0)
+        self.assertAlmostEqual(b["rho_P"]["rho"], 1.0)
+        self.assertTrue(b["rho_C_star"]["below_n_floor"])
+        d6 = S.d6_retest(None, {u: {"P": p4[u]} for u in U}, {"P": p3})
+        self.assertEqual(d6["P"]["band"], "stable")
+        self.assertIn("not supplied", d6["G"]["status"])
+
+    def test_d9_and_profile(self):
+        sc, men = S.synthetic(seed=600999)
+        u0 = sorted(sc)[0]
+        sc[("v0.19", "Denon")] = sc.pop(u0)
+        K = ["P", "C", "R", "Cov", "G"]
+        d9 = S.d9_coverage(sc, dict(self.ALL, S=S.NOT_RUN), K, {}, men)
+        self.assertIn("v0.19|Denon", d9["reported_apart"])
+        self.assertEqual(sum(sum(v.values()) for v in d9["rated_parts_per_unit"]["K"].values()), 112)
+        sh = d9["rated_share_by_presence_tercile"]["P"]
+        self.assertEqual(sh, {"low": 1.0, "middle": 1.0, "high": 1.0})
+        rows = S.d4_profile_rows(sc, {"P": {"label": "published AIAS component"}}, {})
+        self.assertEqual(len(rows), 112)
+        self.assertEqual(rows[0]["P_rated"], 1)
+
+    def test_composite_extensions(self):
+        sc, men = S.synthetic(seed=600999)
+        res = S.structure(sc, self.ALL, mentions=men, n_perm=0, boot=False)
+        cc = res["composite_check"]
+        self.assertAlmostEqual(sum(cc["variance_shares_U_K"].values()), 1.0, places=9)
+        self.assertTrue(cc["K1_passes"])
+        self.assertEqual(cc["floor_set"]["n"], res["U_K"]["n"])
+
+    def test_sensitivities_sd_to_sh(self):
+        sc, _ = S.synthetic(seed=600999)
+        prim = S.structure(sc, self.ALL, n_perm=0, boot=False)
+        mnp = {u: (s["R"] + 1.0 if s["R"] is not None else None) for u, s in sc.items()}   # same order as R*
+        out = S.sensitivities(sc, self.ALL, extra={
+            "MNP": mnp, "S_legacy": {u: s["S"] for u, s in sc.items()}, "S_legacy_state": S.PASS_AI,
+            "S1": {"P": {u: s["P"] for u, s in sc.items()}, "C": {u: s["C"] for u, s in sc.items()},
+                   "R": {u: s["R"] for u, s in sc.items()}}}, primary=prim)
+        for k in ("SD_S_tests_on_U_K", "SE_without_Sentiment", "SF_Ranking_by_MNP", "SG_Sentiment_legacy_panel",
+                  "SH_search_on_variants"):
+            self.assertIn(k, out)
+        self.assertEqual(out["SF_Ranking_by_MNP"]["S_tests"]["PxR"][0], prim["S_tests"]["PxR"]["rho"])
+        self.assertEqual(out["SH_search_on_variants"]["H_Structure"], prim["H_Structure"]["verdict"])
+        self.assertNotIn("S", out["SE_without_Sentiment"]["status"])
+        self.assertIsInstance(out["verdict_changes"], list)
+        ov = S.sensitivities(sc, self.ALL, extra={"MNP": {u: (sc[u]["P"] if sc[u]["R"] is not None else None)
+                                                          for u in sc}}, primary=prim)
+        self.assertTrue(any(c["sensitivity"] == "SF_Ranking_by_MNP" for c in ov["verdict_changes"]))
+
+
+class TestRunEndToEnd(unittest.TestCase):
+    def test_full_run_on_a_synthetic_repository(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, stage2=True)
+            out = Path(d) / "out"
+            doc = S.run(syn.d, syn.refs, out, syn.inputs(), n_perm=50, n_boot=0, n_pa=20, require_lock=False, log=QUIET)
+            self.assertEqual(sorted(p.name for p in out.iterdir()), sorted(S.OUT_NAMES.values()))
+            self.assertEqual(doc["K"], ["P", "C", "R", "Cov", "G"])      # S: no S_t4 -> NOT RUN
+            self.assertEqual(doc["gate_states"]["R"], S.PASS)            # Stage 2 GATE exists
+            src = {k: v["source"] for k, v in doc["structure"]["S_tests"].items()}
+            self.assertEqual(src["PxR"], "v1.14 H1_Sep_Presence")
+            self.assertEqual(src["RxCov"], "v1.12 H5_Sep_Ranking")
+            self.assertTrue(src["PxG"].startswith("v1.13 H1_Sep_Presence"))
+            self.assertEqual(src["RxG"], "Preview")
+            self.assertTrue(doc["MQ_Parity_comparators"]["passes"])
+            self.assertTrue(doc["MQ_Blind"]["ok"])
+            self.assertIn(doc["structure"]["H_Structure"]["verdict"], ("CONFIRMED", "PARTIAL", "FALSIFIED", "UNDETERMINED"))
+            self.assertEqual(doc["descriptives"]["D6_retest"]["R"]["record"]["verdict"], "CONFIRMED")
+            self.assertEqual(doc["labels"]["P"]["bridge"], "continues the published series")
+            gates = json.loads((out / S.OUT_NAMES["gates"]).read_text())
+            self.assertEqual(gates["K"], doc["K"])
+            ins = json.loads((out / S.OUT_NAMES["inputs"]).read_text())["inputs_read"]
+            self.assertIn("v114-scored:osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json", ins)
+            with self.assertRaises(S.Halt):                               # scored once
+                S.run(syn.d, syn.refs, out, syn.inputs(), n_perm=0, n_boot=0, n_pa=0, require_lock=False, log=QUIET)
+            bad = syn.inputs()
+            bad["v1.13"]["unit_map_blob"] = "2" * 40
+            with self.assertRaises(S.Halt):                               # a pin that does not match
+                S.run(syn.d, syn.refs, Path(d) / "out2", bad, n_perm=0, n_boot=0, n_pa=0, require_lock=False, log=QUIET)
+
+    def test_late_inputs_are_exploratory_and_dropped_model_stops_structure(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, preview_tag="late")
+            doc = S.run(syn.d, syn.refs, Path(d) / "o", syn.inputs(), n_perm=0, n_boot=0, n_pa=0,
+                        require_lock=False, log=QUIET)
+            self.assertFalse(doc["MQ_Blind"]["ok"])
+            self.assertEqual(doc["structure"]["S_tests"]["RxG"].get("label"), "exploratory (MQ_Blind)")
+            self.assertNotIn("label", doc["structure"]["S_tests"]["PxR"])   # carried: keeps its source's label
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d, dropped_s0=True)
+            doc = S.run(syn.d, syn.refs, Path(d) / "o", syn.inputs(), n_perm=0, n_boot=0, n_pa=0,
+                        require_lock=False, log=QUIET)
+            self.assertEqual(doc["structure"]["H_Structure"]["verdict"], "UNDETERMINED")
+            self.assertEqual(doc["structure"]["wording_class"], "U")
+
+    def test_sentiment_joins_k_when_s_t4_is_locked_and_scored(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d)
+            rng = np.random.default_rng(3)
+            rows = [{"substrate": u[0], "brand": u[1], "rated": int(syn.ment[u] >= 2),
+                     "S": round(float(rng.uniform(30, 90)), 4) if syn.ment[u] >= 2 else ""} for u in syn.units]
+            write(syn.d, "osf/s_t4/s_t4_unit_table.csv", csv_text(rows))
+            commit(syn.d, "S_t4 scored", "2026-12-01T12:00:00-06:00", "s-t4-scored")
+            git(syn.d, "tag", "-a", "s-t4-prereg-r1", "-m", "S_t4 lock", "HEAD~1", date="2026-11-21T12:00:00-06:00")
+            s_t4 = {"ref": "s-t4-scored", "path": "osf/s_t4/s_t4_unit_table.csv", "column": "S", "rated_col": "rated",
+                    "lock_tag": "s-t4-prereg-r1"}
+            doc = S.run(syn.d, syn.refs, Path(d) / "o", syn.inputs(), s_t4=s_t4, n_perm=0, n_boot=0, n_pa=0,
+                        require_lock=False, log=QUIET)
+            self.assertEqual(doc["K"], S.ORDER)
+            self.assertEqual(doc["gate_states"]["S"], S.PASS_AI)          # v1.11 H1-H4 CONFIRMED, H5 PENDING
+            self.assertEqual(doc["structure"]["S_tests"]["SxG"]["source"], "Preview")
+            self.assertNotIn("S", doc["sensitivities"]["SE_without_Sentiment"]["status"])
+            self.assertEqual(doc["sensitivities"]["SG_Sentiment_legacy_panel"]["state_of_Sentiment"], S.PASS_AI)
+            with self.assertRaises(S.Halt):                               # an S_t4 without its lock tag
+                S.run(syn.d, syn.refs, Path(d) / "o2", syn.inputs(), s_t4=dict(s_t4, lock_tag="no-such-tag"),
+                      n_perm=0, n_boot=0, n_pa=0, require_lock=False, log=QUIET)
+
+    def test_parity_failure_halts(self):
+        with tempfile.TemporaryDirectory() as d:
+            syn = Synth(d)
+            s1 = json.loads(syn.s1_text)
+            s1["units"][0]["P_S0"] = (s1["units"][0]["P_S0"] or 0.0) + 1e-9
+            write(syn.d, "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json", json.dumps(s1))
+            commit(syn.d, "off", "2026-11-21T12:00:00-06:00", "v114-off")
+            with self.assertRaises(S.Halt) as cm:
+                S.run(syn.d, dict(syn.refs, **{"v1.14": "v114-off"}), Path(d) / "o", syn.inputs(), n_perm=0,
+                      n_boot=0, n_pa=0, require_lock=False, log=QUIET)
+            self.assertIn("MQ_Parity", str(cm.exception))
+
+
+def preview_repo(d):
+    """A scratch repository with the Preview's lock files at their real relative paths and a bare origin."""
+    root = Path(d) / "repo"
+    root.mkdir()
+    git(root, "init", "-q")
+    files = [S.DEVIATIONS_REL, f"{S.PREVIEW}/prereg/PRE_REGISTRATION_aias_6_0_preview.md"]
+    write(root, files[0], "# DEVIATIONS\n\n## Entry 0\n")
+    write(root, files[1], "pre-registration\n")
+    write(root, S.MANIFEST_REL, S.lock_manifest_text(files, root))
+    commit(root, "content lock", "2026-11-11T17:00:00-06:00")
+    git(root, "tag", "-a", S.PREREG_TAG, "-m", "lock", date="2026-11-11T17:05:00-06:00")
+    origin = Path(d) / "origin.git"
+    subprocess.run(["git", "init", "-q", "--bare", str(origin)], check=True)
+    git(root, "remote", "add", "origin", str(origin))
+    return root, files
+
+
+class TestLockTooling(unittest.TestCase):
+    def test_verify_manifest_and_deviations_append_only(self):
+        with tempfile.TemporaryDirectory() as d:
+            root, files = preview_repo(d)
+            self.assertEqual(S.verify_manifest(root, S.MANIFEST_REL, S.PREREG_TAG), [])
+            p = root / files[0]
+            p.write_text(p.read_text() + "\n## Entry 1\n")              # a post-lock entry (section 14)
+            self.assertEqual(S.verify_manifest(root, S.MANIFEST_REL, S.PREREG_TAG), [])
+            self.assertTrue(S.verify_manifest(root, S.MANIFEST_REL, None))   # without the tag: exact only
+            p.write_text("# DEVIATIONS (edited)\n")                    # the locked text edited: refused
+            self.assertTrue(S.verify_manifest(root, S.MANIFEST_REL, S.PREREG_TAG))
+            p.write_text("# DEVIATIONS\n\n## Entry 0\n")
+            (root / files[1]).write_text("changed\n")
+            self.assertTrue(any("PRE_REGISTRATION" in b for b in S.verify_manifest(root, S.MANIFEST_REL, S.PREREG_TAG)))
+
+    def test_write_anchor_and_mq_lock(self):
+        with tempfile.TemporaryDirectory() as d:
+            root, files = preview_repo(d)
+            self.assertFalse(S.mq_lock(root)["ok"])                     # no anchor yet
+            with self.assertRaises(S.Halt):                             # tag not pushed yet
+                S.write_anchor(root, "osf note", inputs={})
+            git(root, "push", "-q", "origin", "HEAD:refs/heads/aias-6.0-preview")
+            git(root, "push", "-q", "origin", f"refs/tags/{S.PREREG_TAG}")
+            late = {"v0.42": {"brand_table": files[1]}}                 # a "t4 score file" already in the repo
+            with self.assertRaises(S.Halt) as cm:
+                S.write_anchor(root, "osf note", inputs=late)
+            self.assertIn("late", str(cm.exception))
+            doc = S.write_anchor(root, "osf note", inputs={})
+            self.assertEqual(doc["commit"], git(root, "rev-parse", "HEAD"))
+            self.assertEqual(set(doc["locked_files"]), set(files))
+            self.assertEqual(doc["lock_manifest_sha256"], sha((root / S.MANIFEST_REL).read_bytes()))
+            self.assertEqual(doc["t4_based_score_files_in_repository"], [])
+            with self.assertRaises(S.Halt):
+                S.write_anchor(root, "osf note", inputs={})             # written once
+            self.assertTrue(S.mq_lock(root)["ok"])
+            (root / files[1]).write_text("changed after the lock\n")
+            self.assertFalse(S.mq_lock(root)["ok"])
+
+    def test_lock_files_cover_section_16(self):
+        self.assertEqual(sorted(Path(f).name for f in S.LOCK_FILES), sorted([
+            "PRE_REGISTRATION_aias_6_0_preview.md", "precision_aias_6_0_preview.json",
+            "precision_aias_6_0_preview.py", "score_aias_6_0_preview.py", "test_score_aias_6_0_preview.py",
+            "DEVIATIONS.md", "README.md", "score_v1_10.py", "score_v1_14.py"]))
 
 
 if __name__ == "__main__":

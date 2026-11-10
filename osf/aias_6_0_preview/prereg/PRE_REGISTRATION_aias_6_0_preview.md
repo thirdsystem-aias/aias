@@ -1,6 +1,6 @@
 # AIAS™ 6.0 Preview — the provisional six-part synthesis: pre-registration (analysis plan)
 
-AIAS™ Measurement Program — Third System™. Pre-registration **r0, draft for review** (2026-11-10). To be locked at git tag `aias-6-0-preview-prereg-r1` and deposited on OSF (`osf.io/ec6wh`, folder `aias_6_0_preview/`) **before any t4-based component score exists** (§11). Nothing here reads a t4 answer or a t4 score: none exists (v0.42 locks no earlier than Wed 2026-11-11, about 3 pm CT, and collects after its lock).
+AIAS™ Measurement Program — Third System™. Pre-registration **r1, lock candidate** (2026-11-10: r0 of the same day, plus the scripts, tests and lock tooling of §16 and the ex-ante clarifications C1–C2 logged in `anchor/DEVIATIONS.md`; no design change). To be locked at git tag `aias-6-0-preview-prereg-r1` and deposited on OSF (`osf.io/ec6wh`, folder `aias_6_0_preview/`) **before any t4-based component score exists** (§11). Nothing here reads a t4 answer or a t4 score: none exists (v0.42 locks no earlier than Wed 2026-11-11, about 3 pm CT, and collects after its lock).
 
 **Pre-registrant:** Pablo Ulpiano González Castro
 
@@ -11,7 +11,7 @@ AIAS™ Measurement Program — Third System™. Pre-registration **r0, draft fo
 | PHASE_ID | AIAS 6.0 Preview (programme study list #68, per the coordinator's brief of 2026-11-10) |
 | PHASE_TYPE | Synthesis of locked component scores with its own confirmatory structure tests. No collection, no model call, no spend (§12). |
 | Decision of record | Pablo, Nov 9, 2026, 10:30 pm CT (CLAUDE.md, "Plan for speed"): per component, Paper A (instrument, baseline, separability gate) → Paper B only if A passes → release (calibration + synthesis); "The four Paper A's are built in parallel; an AIAS 6.0 Preview (provisional) follows them in December." Roadmap FAST TRACK (Nov 9): "a working six-part AIAS 6.0 Preview by ~Dec 18, 2026"; forecast "AIAS 6.0 Preview ~Dec 18–23, 2026". |
-| Status | r0 draft on branch `aias-6.0-preview` (from `4643d56`, the v1.14 anchor commit). Not locked. Open items for r1 are listed in §16. |
+| Status | r1 lock candidate on branch `aias-6.0-preview` (from `4643d56`, the v1.14 anchor commit). Not locked. What r1 adds, and what is pinned at the lock after the component locks of Nov 11: §16. |
 | Locks on | content lock → `prereg/LOCK_MANIFEST_aias_6_0_preview.sha256` → commit → tag `aias-6-0-preview-prereg-r1` → push → `anchor/git_anchor_aias_6_0_preview.json` (tag object, commit, tree, tagger date, SHA-256 of every locked file) → OSF deposit of `prereg/`, `scoping/` and `anchor/`, SHA-256 verified → before the first t4-based component score (§11.1). |
 | Consumes | t4 = v0.42 (Presence and Consistency on the newest models); v1.14 (Ranking, locked); v1.11 (Sentiment Paper A, locked) and a Sentiment score on the t4 answers that does not yet exist (§3.4); v1.12 (Coverage) and v1.13 (Grounding), both locking no earlier than Wed Nov 11 about 3 pm CT; AIAS 2.0 (legacy two-score profile); t5, the repeat of t4 (not yet pre-registered; §11.3). Each is used exactly as its own lock defines it. |
 | Feeds forward | The Preview paper and Third System™ report (due about Dec 11–23, 2026); the calibration pre-registrations of the validated releases AIAS 3.0–6.0 (2027), which may cite the Preview's structure results but are not bound by them. |
@@ -43,7 +43,7 @@ Not a validated component (each stays provisional until its Paper B and its rele
 
 ## 2. Units, panel, wave and conventions
 
-- **Units.** The 112 brand units of the five omnibus registries (v0.19 audiophile headphones 16; v0.20 skincare, v0.21 cosmetics, v0.22 automotive, v0.23 premium spirits 24 each), unchanged since t1 and identical in v0.42, v1.12, v1.13 and v1.14. Rare Beauty is two units (v0.20 and v0.21), as in every source. No brand is added, removed or renamed. Unit key: (substrate, brand) as the sources write it; the Preview joins on it and halts unless every input carries the same 112 keys (MQ_Join, §11.2).
+- **Units.** The 112 brand units of the five omnibus registries (v0.19 audiophile headphones 16; v0.20 skincare, v0.21 cosmetics, v0.22 automotive, v0.23 premium spirits 24 each), unchanged since t1 and identical in v0.42, v1.12, v1.13 and v1.14. Rare Beauty is two units (v0.20 and v0.21), as in every source. No brand is added, removed or renamed. Unit key: (substrate, brand) as the sources write it (v1.13's own keys mapped through its `coder_key`); the Preview joins on it and halts unless every unit table carries the same 112 keys (MQ_Join, §11.2; clarification C1).
 - **Panel.** N3 = Claude Fable 5.2 (`claude-fable-5-2`), GPT-6 Astra (`gpt-6-astra`), Gemini 4 Argon (`gemini-4-argon`), the newest generally available flagship of each provider, verified in v0.42 §4.3. The six-part profile exists on N3 only: the retiring six-model panel can never carry Coverage (no buying-situation questions were asked of it) or Grounding (it never searched).
 - **Wave.** t4 = v0.42 (category and brand questions, collected after its lock, within 72 hours and before Nov 17; v0.42 r2). Coverage comes from v1.12's own collection on the same three models in the same week (window from 2026-11-14 00:00 UTC; v1.12 §6.7). The Preview calls both "the t4 week" and treats them as one wave; the gap is a limitation (§13).
 - **Condition.** Search off (S0) for Presence, Consistency, Ranking, Sentiment and Coverage; search on (S1) for Grounding, which is defined on search-on answers (v1.13 §0). Search-on versions of the others are descriptive (§10, SH).
@@ -272,9 +272,9 @@ Checks (each halts unless stated):
 
 | Id | Check | Rule |
 |---|---|---|
-| MQ_Lock | The lock | tag `aias-6-0-preview-prereg-r1` and the anchor file exist; every file in the lock manifest is unchanged |
+| MQ_Lock | The lock | tag `aias-6-0-preview-prereg-r1` and the anchor file exist; every file in the lock manifest is unchanged (at the tag and on disk; `anchor/DEVIATIONS.md` may only grow after the lock, its locked text an unchanged prefix, §14; clarification C2) |
 | MQ_Blind | Blind to t4 | the tag's date precedes the first commit of every t4-based input score file (v0.42's brand table, v1.14's Stage 1 output, v1.12's and v1.13's unit tables, S_t4). If not: the Preview's own tests on that input are labelled exploratory, a DEVIATIONS entry records it and Pablo is told (no halt) |
-| MQ_Join | Units | every input carries the same 112 unit keys, 1:1 |
+| MQ_Join | Units | every unit table carries the same 112 unit keys, 1:1 (v1.13's units through the `coder_key` of its `brand_domains_v1_13.csv`); a score map that lists only units with data (v1.14's Stage 1 `units[]`, v1.11's Stage J scores) carries no other key and no duplicate, and a unit it omits is NOT RATED (clarification C1) |
 | MQ_Parity | Comparators | P_S0 and C\*_S0 recomputed with `score_v1_14.comparators` from v0.42's files equal the values in v1.14's Stage 1 units exactly; every carried pair's ρ_w (§6.2) equals the Paper A's value within 10⁻⁹ |
 | MQ_Panel | Panel | v0.42's drop rule keeps all three N3 models in S0 (else §4.3; no halt) |
 | MQ_Gate | Gate states | each component's gate state is read by §4.1 and written to the output before any structure statistic is computed |
@@ -350,17 +350,18 @@ Not applicable; no human subjects. The Preview analyses scores computed from res
 
 During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it.
 
-## 16. Files, and what r1 must add before the lock
+## 16. Files, what r1 adds, and what is pinned at the lock
 
-**In this draft (r0):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, sensitivities SA–SC, hashed reads from git references, MQ_Blind, lock-manifest text, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (30 synthetic-data tests, all passing at r0; outputs only to temporary directories); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
+**In r0 (2026-11-10):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, sensitivities SA–SC, hashed reads from git references, MQ_Blind, lock-manifest text, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (30 synthetic-data tests, all passing at r0; outputs only to temporary directories); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
 
-**r1, before the lock (after v1.12, v1.13 and v0.42 lock on Wed Nov 11):**
+**In r1 (2026-11-10, this version):** the scorer's single pinned-input block (`INPUTS`: each component's lock tag and commit, the git blob of the scorer that writes its output, the output paths and columns as that scorer writes them, the activation records of item 2 below), with `--pin-report`; hashed readers of v0.42, v1.14, v1.12, v1.13, v1.11, S_t4 and AIAS 2.0 wired to it (every input read from a git reference and logged with its git blob and SHA-256; a scorer blob, file hash or cross-record that does not match halts the run); MQ_Lock, MQ_Join, MQ_Parity (P and C\* recomputed with `score_v1_14.comparators`), MQ_Panel and MQ_Gate; the descriptives D1–D9; the sensitivities SD–SH; `--run`, `--lock-manifest`, `--verify-lock` and `--write-anchor`; 57 synthetic-data tests (scratch repositories and temporary directories only). Scorer notes N1–N12 (the scorer's header) record the choices where this text is silent; none changes a test, band, floor, seed or rule. Lock helpers, not locked: `LOCK_STEPS.md`, `lock/osf_verify_aias_6_0_preview.py`. Ex-ante clarifications C1 (MQ_Join) and C2 (MQ_Lock): `anchor/DEVIATIONS.md`.
 
-1. Pin the exact scored-output paths and column names of v1.12 (Cov\* unit table, verdict file), v1.13 (G\* unit table, `v1_13_verdicts.json`) and, if commissioned, the S_t4 study; record each lock tag, tag object and commit.
-2. Record whether v1.13's H6 (Coverage) and v1.12's H5 / v1.13's H4 (Ranking) are active at their locks, which decides which rows of §6.2 are carried.
-3. Wire the scorer's hashed readers to the pinned paths (v0.42, v1.12, v1.13, v1.14, S_t4, AIAS 2.0), add MQ_Lock, MQ_Join and the P and C\* recomputation with `score_v1_14.comparators` (MQ_Parity), the descriptives D1–D9 and the sensitivities SD–SH, with tests.
-4. Write `prereg/LOCK_MANIFEST_aias_6_0_preview.sha256` with `--lock-manifest` (this file, the precision record and script, the scorer and its tests, DEVIATIONS, README, and the two imported scorers) and an anchor writer (`--write-anchor`, after v1.14's).
-5. Apply Pablo's choices (§17).
+**At the lock (after v0.42, v1.12 and v1.13 lock on Wed Nov 11; `LOCK_STEPS.md`):**
+
+1. Pin what exists only at those locks, in the scorer's `INPUTS` block and nowhere else: the commits of tags `v0.42-prereg-r1`, `v1.12-prereg-r1` and `v1.13-prereg-r1`, and any scorer blob, output path or column that moved at a lock (`--pin-report`). The S_t4 study is not pre-registered at r1; if it locks later, its scored table is named at the data lock and logged (§3.4, §11.2 item 6).
+2. Record whether v1.12's H5 and v1.13's H4 and H6 (Ranking, Coverage) are active at their locks, from their anchor files, which decides which rows of §6.2 are carried.
+3. Write `prereg/LOCK_MANIFEST_aias_6_0_preview.sha256` with `--lock-manifest` (this file, the precision record and script, the scorer and its tests, DEVIATIONS, README, and the two imported scorers); commit, tag, push, `--write-anchor`, deposit.
+4. Apply Pablo's choices (§17) where he departs from a default.
 
 ## 17. Choices made in drafting (for the pre-registrant; each has a recommended default)
 
