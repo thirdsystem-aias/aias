@@ -1,0 +1,1877 @@
+{
+  "accessed": "2026-11-10",
+  "sources": {
+    "anthropic_pricing": "https://platform.claude.com/docs/about-claude/pricing",
+    "anthropic_batch": "https://platform.claude.com/docs/en/build-with-claude/batch-processing",
+    "anthropic_thinking_billing": "https://platform.claude.com/docs/en/build-with-claude/thinking-steering-and-cost",
+    "anthropic_fable_5_2": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+    "openai_pricing": "https://developers.openai.com/api/docs/pricing",
+    "openai_gpt_6_astra": "https://developers.openai.com/docs/models/gpt-6-astra",
+    "openai_reasoning_billing": "https://developers.openai.com/api/docs/guides/reasoning",
+    "openai_batch": "https://developers.openai.com/api/docs/guides/batch",
+    "openai_web_search": "https://developers.openai.com/api/docs/guides/tools-web-search",
+    "google_gemini_4_argon": "https://ai.google.dev/gemini-api/docs/latest-model",
+    "google_gemini_api_pricing": "https://ai.google.dev/gemini-api/docs/pricing",
+    "google_vertex_pricing": "https://cloud.google.com/vertex-ai/generative-ai/pricing",
+    "anthropic_model_deprecations": "https://platform.claude.com/docs/en/about-claude/model-deprecations",
+    "anthropic_sonnet_5_5": "https://platform.claude.com/docs/en/models/sonnet-5-5",
+    "anthropic_sonnet_5_5_migration": "https://platform.claude.com/docs/en/models/sonnet-5-5/migration-guide",
+    "openai_deprecations": "https://developers.openai.com/api/docs/deprecations",
+    "google_ai_studio_latest_model": "https://aistudio.google.com/docs/latest-model",
+    "google_deprecations": "https://ai.google.dev/gemini-api/docs/deprecations",
+    "google_changelog": "https://ai.google.dev/gemini-api/docs/changelog"
+  },
+  "basis_file": "osf/v39/data/v39_raw.json",
+  "basis": {
+    "claude-opus-5-5|S0|list": {
+      "n": 24,
+      "in_mean": 31.666666666666668,
+      "out_mean": 1836.2083333333333,
+      "think_mean": 0,
+      "srch_mean": 0,
+      "in_p90": 37.0,
+      "out_p90": 2255.5,
+      "think_p90": 0.0,
+      "srch_p90": 0.0
+    },
+    "claude-opus-5-5|S0|short": {
+      "n": 6,
+      "in_mean": 30.166666666666668,
+      "out_mean": 839.6666666666666,
+      "think_mean": 0,
+      "srch_mean": 0,
+      "in_p90": 33.5,
+      "out_p90": 1193.5,
+      "think_p90": 0.0,
+      "srch_p90": 0.0
+    },
+    "claude-opus-5-5|S1|list": {
+      "n": 24,
+      "in_mean": 15005.5,
+      "out_mean": 1727.0416666666667,
+      "think_mean": 0,
+      "srch_mean": 1,
+      "in_p90": 30286.5,
+      "out_p90": 2018.4,
+      "think_p90": 0.0,
+      "srch_p90": 2.0
+    },
+    "claude-opus-5-5|S1|short": {
+      "n": 6,
+      "in_mean": 14114.666666666666,
+      "out_mean": 1089.1666666666667,
+      "think_mean": 0,
+      "srch_mean": 1,
+      "in_p90": 14635.0,
+      "out_p90": 1461.0,
+      "think_p90": 0.0,
+      "srch_p90": 1.0
+    },
+    "gemini-4-argon|S0|list": {
+      "n": 24,
+      "in_mean": 47.541666666666664,
+      "out_mean": 1318.5,
+      "think_mean": 0,
+      "srch_mean": 0,
+      "in_p90": 51.7,
+      "out_p90": 1581.9,
+      "think_p90": 0.0,
+      "srch_p90": 0.0
+    },
+    "gemini-4-argon|S0|short": {
+      "n": 6,
+      "in_mean": 45.666666666666664,
+      "out_mean": 555.1666666666666,
+      "think_mean": 0,
+      "srch_mean": 0,
+      "in_p90": 50.5,
+      "out_p90": 1055.0,
+      "think_p90": 0.0,
+      "srch_p90": 0.0
+    },
+    "gemini-4-argon|S1|list": {
+      "n": 24,
+      "in_mean": 232.54166666666666,
+      "out_mean": 1312.3333333333333,
+      "think_mean": 0,
+      "srch_mean": 0.4166666666666667,
+      "in_p90": 236.7,
+      "out_p90": 1617.6,
+      "think_p90": 0.0,
+      "srch_p90": 1.7
+    },
+    "gemini-4-argon|S1|short": {
+      "n": 6,
+      "in_mean": 230.66666666666666,
+      "out_mean": 785,
+      "think_mean": 62.166666666666664,
+      "srch_mean": 2.8333333333333335,
+      "in_p90": 235.5,
+      "out_p90": 1333.5,
+      "think_p90": 96.5,
+      "srch_p90": 4.0
+    },
+    "gpt-6-astra|S0|list": {
+      "n": 24,
+      "in_mean": 21.666666666666668,
+      "out_mean": 680.125,
+      "think_mean": 173.5,
+      "srch_mean": 0,
+      "in_p90": 26.0,
+      "out_p90": 923.7,
+      "think_p90": 268.1,
+      "srch_p90": 0.0
+    },
+    "gpt-6-astra|S0|short": {
+      "n": 6,
+      "in_mean": 20,
+      "out_mean": 374.6666666666667,
+      "think_mean": 186.66666666666666,
+      "srch_mean": 0,
+      "in_p90": 24.0,
+      "out_p90": 511.0,
+      "think_p90": 287.0,
+      "srch_p90": 0.0
+    },
+    "gpt-6-astra|S1|list": {
+      "n": 24,
+      "in_mean": 19773.333333333332,
+      "out_mean": 820.5,
+      "think_mean": 216.83333333333334,
+      "srch_mean": 1.9166666666666667,
+      "in_p90": 31675.5,
+      "out_p90": 1170.3,
+      "think_p90": 352.3,
+      "srch_p90": 3.0
+    },
+    "gpt-6-astra|S1|short": {
+      "n": 6,
+      "in_mean": 16907.166666666668,
+      "out_mean": 471.3333333333333,
+      "think_mean": 119.5,
+      "srch_mean": 1.3333333333333333,
+      "in_p90": 21208.5,
+      "out_p90": 826.5,
+      "think_p90": 183.5,
+      "srch_p90": 2.0
+    }
+  },
+  "assumptions": {
+    "fable_multiplier_on_opus_5_5": {
+      "central": 2.0,
+      "high": 3.0
+    },
+    "gemini_output_multiplier_high": 1.5,
+    "resend_overhead": {
+      "central": 1.02,
+      "high": 1.1
+    },
+    "search_fee_usd": {
+      "anthropic": 0.01,
+      "openai": 0.01,
+      "google": 0.014
+    },
+    "gemini_free_grounding_allowance": "not assumed",
+    "batch_search_fee": "charged in full",
+    "judge_reserve_usd": 2.5,
+    "wave_dates": {
+      "t4": "2026-11-11",
+      "t5": "2026-12-03",
+      "t6": "2027-02-12"
+    },
+    "gemini_4_argon_price_on_t5": [
+      4.0,
+      20.0
+    ]
+  },
+  "designs": {
+    "t5 (adopted): t4's design repeated: N3, Fable via Batch API; B S0x3, A S0x1, B S1x3": {
+      "t4": {
+        "central": 63.96865961000001,
+        "high": 135.62118305999996,
+        "calls": 876,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 19.1977362,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 53.909658
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 23.677515000000003,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 40.12173000000001
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 1.21911165,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 2.359358100000001
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.019810184999999998,
+            "usd_central": 1.7829166499999998,
+            "usd_per_call_high": 0.05339114,
+            "usd_high": 4.805202599999999
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.005755859999999999,
+            "usd_central": 0.5065156799999999,
+            "usd_per_call_high": 0.017518600000000002,
+            "usd_high": 1.5416368000000003
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 0.32509644000000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 0.6291621600000002
+          }
+        ]
+      },
+      "t5": {
+        "central": 67.26680003000001,
+        "high": 142.60034272000001,
+        "calls": 876,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 19.1977362,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 53.909658
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 23.677515000000003,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 40.12173000000001
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 2.4382233,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 4.718716200000002
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.03367037,
+            "usd_central": 3.0303332999999997,
+            "usd_per_call_high": 0.08060228,
+            "usd_high": 7.2542051999999995
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.011511719999999998,
+            "usd_central": 1.0130313599999998,
+            "usd_per_call_high": 0.035037200000000004,
+            "usd_high": 3.0832736000000005
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 0.6501928800000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 1.2583243200000005
+          }
+        ]
+      }
+    },
+    "t5 blocks 1-3 only (B S0 x3: v1.14 Stage 2 and the primary tests)": {
+      "t4": {
+        "central": 11.114960400000001,
+        "high": 20.3697351,
+        "calls": 270,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 1.21911165,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 2.359358100000001
+          }
+        ]
+      },
+      "t5": {
+        "central": 12.334072050000001,
+        "high": 22.7290932,
+        "calls": 270,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 2.4382233,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 4.718716200000002
+          }
+        ]
+      }
+    },
+    "t5 blocks 1-4 (B S0 x3 + A S0 x1)": {
+      "t4": {
+        "central": 19.310491759999998,
+        "high": 36.78459246,
+        "calls": 606,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 1.21911165,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 2.359358100000001
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.005755859999999999,
+            "usd_central": 0.5065156799999999,
+            "usd_per_call_high": 0.017518600000000002,
+            "usd_high": 1.5416368000000003
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 0.32509644000000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 0.6291621600000002
+          }
+        ]
+      },
+      "t5": {
+        "central": 21.36121553,
+        "high": 41.31474952,
+        "calls": 606,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 2.4382233,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 4.718716200000002
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.011511719999999998,
+            "usd_central": 1.0130313599999998,
+            "usd_per_call_high": 0.035037200000000004,
+            "usd_high": 3.0832736000000005
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 0.6501928800000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 1.2583243200000005
+          }
+        ]
+      }
+    },
+    "t5 with B S1 x2 runs (blocks 1-6)": {
+      "t4": {
+        "central": 49.08260366000001,
+        "high": 102.67565286,
+        "calls": 786,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 12.798490800000001,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 35.939772
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 15.785010000000002,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 26.747820000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 1.21911165,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 2.359358100000001
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.019810184999999998,
+            "usd_central": 1.1886111,
+            "usd_per_call_high": 0.05339114,
+            "usd_high": 3.2034683999999998
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.005755859999999999,
+            "usd_central": 0.5065156799999999,
+            "usd_per_call_high": 0.017518600000000002,
+            "usd_high": 1.5416368000000003
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 0.32509644000000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 0.6291621600000002
+          }
+        ]
+      },
+      "t5": {
+        "central": 51.96493853,
+        "high": 108.83847832,
+        "calls": 786,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 12.798490800000001,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 35.939772
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 15.785010000000002,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 26.747820000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 2.4382233,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 4.718716200000002
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 2,
+            "calls": 60,
+            "usd_per_call_central": 0.03367037,
+            "usd_central": 2.0202222,
+            "usd_per_call_high": 0.08060228,
+            "usd_high": 4.8361368
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.011511719999999998,
+            "usd_central": 1.0130313599999998,
+            "usd_per_call_high": 0.035037200000000004,
+            "usd_high": 3.0832736000000005
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 0.6501928800000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 1.2583243200000005
+          }
+        ]
+      }
+    },
+    "t5 + Coverage re-ask (v1.12's 75 probes, N3, S0 x3; Fable via Batch API)": {
+      "t4": {
+        "central": 91.75606061000002,
+        "high": 186.54552080999997,
+        "calls": 1551,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 19.1977362,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 53.909658
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 16.8854625,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 33.530804999999994
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 23.677515000000003,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 40.12173000000001
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 1.21911165,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 2.359358100000001
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.019810184999999998,
+            "usd_central": 1.7829166499999998,
+            "usd_per_call_high": 0.05339114,
+            "usd_high": 4.805202599999999
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.005755859999999999,
+            "usd_central": 0.5065156799999999,
+            "usd_per_call_high": 0.017518600000000002,
+            "usd_high": 1.5416368000000003
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 0.32509644000000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 0.6291621600000002
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 3.0477791250000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 5.898395250000003
+          }
+        ]
+      },
+      "t5": {
+        "central": 98.101980155,
+        "high": 199.42307572,
+        "calls": 1551,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 6.7541850000000005,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 13.412322
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.21330818000000001,
+            "usd_central": 19.1977362,
+            "usd_per_call_high": 0.5989962,
+            "usd_high": 53.909658
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.03438147999999999,
+            "usd_central": 3.0255702399999995,
+            "usd_per_call_high": 0.07891840000000001,
+            "usd_high": 6.944819200000001
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 1.801116,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 3.5766191999999997
+          },
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 16.8854625,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 33.530804999999994
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 3.1416637499999998,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 4.5980550000000004
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.2630835,
+            "usd_central": 23.677515000000003,
+            "usd_per_call_high": 0.44579700000000005,
+            "usd_high": 40.12173000000001
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.019312000000000003,
+            "usd_central": 1.6994560000000003,
+            "usd_per_call_high": 0.028369000000000002,
+            "usd_high": 2.4964720000000002
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 0.837777,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 1.226148
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 2.4382233,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 4.718716200000002
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "B",
+            "condition": "S1",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.03367037,
+            "usd_central": 3.0303332999999997,
+            "usd_per_call_high": 0.08060228,
+            "usd_high": 7.2542051999999995
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_yn",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 88,
+            "usd_per_call_central": 0.011511719999999998,
+            "usd_central": 1.0130313599999998,
+            "usd_per_call_high": 0.035037200000000004,
+            "usd_high": 3.0832736000000005
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "A_open",
+            "condition": "S0",
+            "runs": 1,
+            "calls": 24,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 0.6501928800000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 1.2583243200000005
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 6.095558250000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 11.796790500000006
+          }
+        ]
+      }
+    }
+  },
+  "addons": {
+    "Coverage re-ask alone: 75 probes x N3 x S0 x 3 runs (675 calls), Fable via Batch API": {
+      "t4": {
+        "central": 27.787401,
+        "high": 50.92433774999999,
+        "calls": 675,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 16.8854625,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 33.530804999999994
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 3.0477791250000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 5.898395250000003
+          }
+        ]
+      },
+      "t5": {
+        "central": 30.835180124999997,
+        "high": 56.822733,
+        "calls": 675,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "batch",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.0750465,
+            "usd_central": 16.8854625,
+            "usd_per_call_high": 0.14902579999999999,
+            "usd_high": 33.530804999999994
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 6.095558250000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 11.796790500000006
+          }
+        ]
+      }
+    },
+    "Coverage re-ask alone, every model synchronous (as v1.12 collects)": {
+      "t4": {
+        "central": 44.6728635,
+        "high": 84.45514275,
+        "calls": 675,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.150093,
+            "usd_central": 33.770925,
+            "usd_per_call_high": 0.29805159999999997,
+            "usd_high": 67.06160999999999
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.013545685000000002,
+            "usd_central": 3.0477791250000004,
+            "usd_per_call_high": 0.02621509000000001,
+            "usd_high": 5.898395250000003
+          }
+        ]
+      },
+      "t5": {
+        "central": 47.720642625,
+        "high": 90.35353799999999,
+        "calls": 675,
+        "rows": [
+          {
+            "model": "claude-fable-5-2",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.150093,
+            "usd_central": 33.770925,
+            "usd_per_call_high": 0.29805159999999997,
+            "usd_high": 67.06160999999999
+          },
+          {
+            "model": "gpt-6-astra",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.034907375,
+            "usd_central": 7.854159374999999,
+            "usd_per_call_high": 0.0510895,
+            "usd_high": 11.4951375
+          },
+          {
+            "model": "gemini-4-argon",
+            "mode": "standard",
+            "phase": "CEP",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 225,
+            "usd_per_call_central": 0.027091370000000004,
+            "usd_central": 6.095558250000001,
+            "usd_per_call_high": 0.05243018000000002,
+            "usd_high": 11.796790500000006
+          }
+        ]
+      }
+    },
+    "Claude Opus 5.5 continuity arm: B S0 x3 (90 calls), Batch API (not adopted)": {
+      "t4": {
+        "central": 1.6914532499999997,
+        "high": 2.2402710000000003,
+        "calls": 90,
+        "rows": [
+          {
+            "model": "claude-opus-5-5",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.018793924999999996,
+            "usd_central": 1.6914532499999997,
+            "usd_per_call_high": 0.0248919,
+            "usd_high": 2.2402710000000003
+          }
+        ]
+      },
+      "t5": {
+        "central": 1.6914532499999997,
+        "high": 2.2402710000000003,
+        "calls": 90,
+        "rows": [
+          {
+            "model": "claude-opus-5-5",
+            "mode": "batch",
+            "phase": "B",
+            "condition": "S0",
+            "runs": 3,
+            "calls": 90,
+            "usd_per_call_central": 0.018793924999999996,
+            "usd_central": 1.6914532499999997,
+            "usd_per_call_high": 0.0248919,
+            "usd_high": 2.2402710000000003
+          }
+        ]
+      }
+    }
+  },
+  "blocks_t5": [
+    {
+      "block": "1 B-S0 run 1",
+      "calls": 90,
+      "central": 4.1113573500000005,
+      "high": 7.5763644,
+      "cumulative_central": 6.6113573500000005,
+      "cumulative_high": 10.0763644,
+      "per_model": {
+        "claude-fable-5-2": [
+          2.251395,
+          4.470774
+        ],
+        "gpt-6-astra": [
+          1.04722125,
+          1.532685
+        ],
+        "gemini-4-argon": [
+          0.8127411000000001,
+          1.5729054000000007
+        ]
+      }
+    },
+    {
+      "block": "2 B-S0 run 2",
+      "calls": 90,
+      "central": 4.1113573500000005,
+      "high": 7.5763644,
+      "cumulative_central": 10.722714700000001,
+      "cumulative_high": 17.6527288,
+      "per_model": {
+        "claude-fable-5-2": [
+          2.251395,
+          4.470774
+        ],
+        "gpt-6-astra": [
+          1.04722125,
+          1.532685
+        ],
+        "gemini-4-argon": [
+          0.8127411000000001,
+          1.5729054000000007
+        ]
+      }
+    },
+    {
+      "block": "3 B-S0 run 3",
+      "calls": 90,
+      "central": 4.1113573500000005,
+      "high": 7.5763644,
+      "cumulative_central": 14.834072050000001,
+      "cumulative_high": 25.229093199999998,
+      "per_model": {
+        "claude-fable-5-2": [
+          2.251395,
+          4.470774
+        ],
+        "gpt-6-astra": [
+          1.04722125,
+          1.532685
+        ],
+        "gemini-4-argon": [
+          0.8127411000000001,
+          1.5729054000000007
+        ]
+      }
+    },
+    {
+      "block": "4 A-S0 run 1",
+      "calls": 336,
+      "central": 9.02714348,
+      "high": 18.585656320000002,
+      "cumulative_central": 23.861215530000003,
+      "cumulative_high": 43.81474952,
+      "per_model": {
+        "claude-fable-5-2": [
+          1.801116,
+          3.5766191999999997
+        ],
+        "gpt-6-astra": [
+          0.837777,
+          1.226148
+        ],
+        "gemini-4-argon": [
+          0.6501928800000001,
+          1.2583243200000005
+        ]
+      }
+    },
+    {
+      "block": "5 B-S1 run 1",
+      "calls": 90,
+      "central": 15.301861500000001,
+      "high": 33.7618644,
+      "cumulative_central": 39.163077030000004,
+      "cumulative_high": 77.57661392,
+      "per_model": {
+        "claude-fable-5-2": [
+          6.399245400000001,
+          17.969886
+        ],
+        "gpt-6-astra": [
+          7.892505000000001,
+          13.373910000000002
+        ],
+        "gemini-4-argon": [
+          1.0101111,
+          2.4180684
+        ]
+      }
+    },
+    {
+      "block": "6 B-S1 run 2",
+      "calls": 90,
+      "central": 15.301861500000001,
+      "high": 33.7618644,
+      "cumulative_central": 54.464938530000005,
+      "cumulative_high": 111.33847832000001,
+      "per_model": {
+        "claude-fable-5-2": [
+          6.399245400000001,
+          17.969886
+        ],
+        "gpt-6-astra": [
+          7.892505000000001,
+          13.373910000000002
+        ],
+        "gemini-4-argon": [
+          1.0101111,
+          2.4180684
+        ]
+      }
+    },
+    {
+      "block": "7 B-S1 run 3",
+      "calls": 90,
+      "central": 15.301861500000001,
+      "high": 33.7618644,
+      "cumulative_central": 69.76680003000001,
+      "cumulative_high": 145.10034272000001,
+      "per_model": {
+        "claude-fable-5-2": [
+          6.399245400000001,
+          17.969886
+        ],
+        "gpt-6-astra": [
+          7.892505000000001,
+          13.373910000000002
+        ],
+        "gemini-4-argon": [
+          1.0101111,
+          2.4180684
+        ]
+      }
+    }
+  ],
+  "judge": {
+    "claude-sonnet-5-5": {
+      "calls": 288,
+      "usd_upper": 0.8928
+    },
+    "claude-sonnet-4-6": {
+      "calls": 288,
+      "usd_upper": 1.3392
+    }
+  }
+}

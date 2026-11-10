@@ -1,0 +1,23 @@
+sampling params in call_anthropic_current / anthropic_params: none (temperature/top_p/top_k not sent)
+block                   claude-fable-5-2       gpt-6-astra    gemini-4-argon  total
+1. Phase B S0 run 1                     30                30                30     90
+2. Phase B S0 run 2                     30                30                30     90
+3. Phase B S0 run 3                     30                30                30     90
+4. Phase A S0 run 1                    112               112               112    336
+5. Phase B S1 run 1                     30                30                30     90
+6. Phase B S1 run 2                     30                30                30     90
+7. Phase B S1 run 3                     30                30                30     90
+
+TOTAL calls: 876 (expected 876) -> OK
+by model: {'claude-fable-5-2': 292, 'gpt-6-astra': 292, 'gemini-4-argon': 292}  modes: {'claude-fable-5-2': 'batch', 'gpt-6-astra': 'standard', 'gemini-4-argon': 'standard'}
+by condition: {'S0': 606, 'S1': 270}  by phase: {'B': 540, 'A': 336}
+
+worst-case reservation per request (USD; input/output/searches at the practical bounds of budget_v0_45.WORST):
+  claude-fable-5-2  batch    S0 0.336  S1 1.028
+  gpt-6-astra       standard S0 0.839  S1 2.419
+  gemini-4-argon    standard S0 0.168  S1 0.604
+budget: pause at $80, hard stop at $100; judge reserve $2.50; projection pause after block B-S1 run 1
+cost estimate (cost_estimate_v0_45.py, t5 prices): central $67.27, high $142.60
+window: first call not before 2026-12-03T06:00:00+00:00; no new request after the earlier of 72 h from the first call and 2026-12-07T05:59:59+00:00
+availability record required before --collect: osf/v45/data/t5_availability_v0_45.json
+nothing sent.
