@@ -262,7 +262,7 @@ González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Con
 
 González Castro, P. U. (2026). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
 
-González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation* (AIAS™ Methodology v1.9). Working paper; OSF `ec6wh/methodology/v1_9`.
+González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation* (AIAS™ Methodology v1.9). SSRN 7685126.
 
 González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol* (AIAS 1.0). SSRN 6817841.
 
@@ -284,7 +284,7 @@ González Castro, P. U. (2026). *Does Cross-Platform Consistency Have Regime Str
 
 González Castro, P. U. (2026). *Identity Load Does Not Moderate Cross-Model Consistency: A Pre-Registered Component-Dissociation Null* (v0.37). Working paper; OSF `ec6wh/v37`.
 
-González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (v0.41). Working paper; OSF `ec6wh/v41`.
+González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (v0.41). SSRN 7685100.
 
 González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
 
