@@ -44,7 +44,7 @@ def pi_rho(kfn):
     raw, A, B = M.build(kfn)
     D = S.Data(list(T3), A, B)
     keys, x, y, g = S.pair_arrays({k: v["pi"] for k, v in T3.items()}, S.pi_hat(D, N3, "S0"))
-    return S.pooled_within_rho(x, y, g)
+    return S.rho_pw(x, y, g)
 
 
 class TestKernelAndHelpers(unittest.TestCase):
@@ -184,7 +184,7 @@ class TestPermutationFormula(unittest.TestCase):
         g = np.array(["a"] * 20 + ["b"] * 20)
         x = rng.normal(size=40)
         y = x + rng.normal(size=40)
-        obs = S.pooled_within_rho(x, y, g)
+        obs = S.rho_pw(x, y, g)
         p = S.perm_p_within(x, y, g, obs, 420041, 10_000)
         hits = round(p * 10_001) - 1
         self.assertAlmostEqual(p, (1 + hits) / 10_001, places=12)
@@ -196,7 +196,7 @@ class TestPermutationFormula(unittest.TestCase):
             yp = y.copy()
             for i in gi:
                 yp[i] = y[r.permutation(i)]
-            h += S.pooled_within_rho(x, yp, g) >= obs - 1e-12
+            h += S.rho_pw(x, yp, g) >= obs - 1e-12
         self.assertEqual(hits, h)
         self.assertLess(p, 0.05)
 
@@ -206,7 +206,7 @@ class TestPermutationFormula(unittest.TestCase):
         g = np.array(["a"] * 6 + ["b"] * 6)
         x = np.arange(12, dtype=float)
         y = x + np.where(g == "b", 100.0, 0.0)
-        self.assertEqual(S.perm_p_within(x, y, g, S.pooled_within_rho(x, y, g), 1, 200), 1 / 201)
+        self.assertEqual(S.perm_p_within(x, y, g, S.rho_pw(x, y, g), 1, 200), 1 / 201)
 
 
 class TestPhiRule(unittest.TestCase):
@@ -389,7 +389,7 @@ class TestPhiBranches(unittest.TestCase):
             D = S.Data(list(T3), A, B)
             y = {k: v[0] for k, v in S.phi_panel(D, N3, "S0").items()}
             keys, x, yy, g = S.pair_arrays({k: v["phi"] for k, v in T3.items()}, y)
-            rho = S.pooled_within_rho(x, yy, g)
+            rho = S.rho_pw(x, yy, g)
             if len(keys) >= 40 and 0.30 <= rho < 0.50:
                 break
         else:
@@ -538,6 +538,86 @@ class TestManipulationChecksAndDescriptives(unittest.TestCase):
         fp = d["3_floor_persistence"]
         self.assertGreater(fp["share_below_t3_still_below_t4"], 0.5)
         self.assertIn("4_answer_form", d)
+
+
+class TestCentredStatistic(unittest.TestCase):
+    """Clarification of 2026-11-10 (SCORER_NOTES N16): rho_pw on centred within-substrate ranks is the decision
+    statistic; v0.41's uncentred value is reported as `rho_uncentred_v041` and never gates."""
+
+    @staticmethod
+    def _null_means(g, n, seed):
+        rng = np.random.default_rng(seed)
+        c, u = [], []
+        for _ in range(n):
+            x, y = rng.random(len(g)), rng.random(len(g))
+            c.append(S.rho_pw(x, y, g))
+            u.append(S.rho_pw_uncentred(x, y, g))
+        return float(np.mean(c)), float(np.mean(u))
+
+    def test_null_mean_about_zero_on_unequal_groups(self):
+        g112 = np.array([k[0] for k in T3])                                  # 16/24/24/24/24
+        g83 = np.array([k[0] for k, v in T3.items() if v["phi"] is not None])
+        self.assertEqual(sorted(collections.Counter(g112).values()), [16, 24, 24, 24, 24])
+        self.assertEqual(len(g83), 83)
+        for g in (g112, g83):
+            c, u = self._null_means(g, 2000, 1)
+            self.assertLess(abs(c), 0.01)       # sd of rho under the null ~0.10-0.12 -> SE of the mean ~0.0025
+            self.assertGreater(u, 0.03)         # the uncentred statistic is biased upward (~+0.05)
+
+    def test_equal_groups_centred_equals_uncentred(self):
+        rng = np.random.default_rng(5)
+        g = np.repeat(["a", "b", "c", "d"], 10)
+        for _ in range(20):
+            x, y = rng.random(40), rng.random(40)
+            self.assertAlmostEqual(S.rho_pw(x, y, g), S.rho_pw_uncentred(x, y, g), places=12)
+
+    def test_permutation_draws_recompute_centred_statistic_on_unequal_groups(self):
+        rng = np.random.default_rng(9)
+        g = np.array(["a"] * 8 + ["b"] * 20)
+        x = rng.normal(size=28)
+        y = x + rng.normal(size=28)
+        obs = S.rho_pw(x, y, g)
+        p = S.perm_p_within(x, y, g, obs, 420041, 2000)
+        r = np.random.default_rng(420041)
+        gi = [np.where(g == k)[0] for k in ("a", "b")]
+        h = 0
+        for _ in range(2000):
+            yp = y.copy()
+            for i in gi:
+                yp[i] = y[r.permutation(i)]
+            h += S.rho_pw(x, yp, g) >= obs - 1e-12
+        self.assertEqual(p, (1 + h) / 2001)
+
+    def test_uncentred_reported_everywhere_and_never_gating(self):
+        out, *_ = run(copy_t3)
+        V = out["verdicts"]
+        raw, A, B = M.build(copy_t3)
+        D = S.Data(list(T3), A, B)
+        keys, x, y, g = S.pair_arrays({k: v["pi"] for k, v in T3.items()}, S.pi_hat(D, N3, "S0"))
+        gp = V["H_Gen_Presence"]
+        self.assertEqual(gp["rho"], S.rho_pw(x, y, g))
+        self.assertEqual(gp["rho_uncentred_v041"], S.rho_pw_uncentred(x, y, g))
+        self.assertNotEqual(gp["rho"], gp["rho_uncentred_v041"])            # unequal substrates: they differ
+        self.assertTrue(np.isfinite(V["H_Gen_Phi"]["rho_uncentred_v041"]))
+        self.assertTrue(np.isfinite(V["H_Search_Presence"]["rho_uncentred_v041"]))
+        self.assertIn("rho_pw_phi_pi_uncentred_v041", V["H_Gen_Phi"]["reported_alongside"]["mean_independence_S0"]["N3"])
+        for pr in gp["reported_alongside"]["per_provider_generation_pairs"].values():
+            self.assertIn("rho_uncentred_v041", pr)
+        for pm in V["H_Search_Presence"]["per_model"].values():
+            self.assertIn("rho_uncentred_v041", pm)
+        for rel in out["descriptives"]["1_run_reliability"].values():
+            self.assertIn("rel1_uncentred_v041", rel)
+        self.assertIn("CENTRED", out["rho_pw_statistic"])
+        # non-gating: forcing the uncentred value to 0.99 changes no decision statistic, p, interval or verdict
+        with mock.patch.object(S, "rho_pw_uncentred", lambda *a, **k: 0.99):
+            out2, *_ = run(copy_t3)
+        for h in ("H_Gen_Presence", "H_Gen_Phi", "H_Search_Presence"):
+            a, b = V[h], out2["verdicts"][h]
+            for f in ("rho", "p_perm", "ci95_rho", "verdict", "label"):
+                self.assertEqual(a.get(f), b.get(f), (h, f))
+            self.assertEqual(b["rho_uncentred_v041"], 0.99)
+        mi = lambda o: o["verdicts"]["H_Gen_Phi"]["reported_alongside"]["mean_independence_S0"]["N3"]
+        self.assertEqual(mi(out)["flag_ge_0_50"], mi(out2)["flag_ge_0_50"])
 
 
 class TestParityGates(unittest.TestCase):

@@ -7,13 +7,15 @@ listed below (SCORER_NOTES).
 r2 (2026-11-10, $100 rule): panel N3 only (Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon); Claude Opus 5.5, the C3
 panel and H_Version_Presence are removed; Phase A is collected in S0, run 1 only; expected calls 876 (S0: 30 x 3 +
 112 = 202 per model; S1: 30 x 3 = 90 per model). Notes N6, N8 and N12 are revised accordingly; N15 is new.
+Clarification (2026-11-10, before the lock; r2 numbering kept): rho_pw uses centred within-substrate ranks (N16).
 
 SCORER_NOTES (choices where the pre-registration is silent)
  N1  Helpers phi_m / phi_of / spearman / within_ranks / pooled_within_rho / _pearson / load_wave are IMPORTED
      from osf/v41/scripts/score_v41.py (not re-typed). Python: the system python3 (numpy+scipy); the v41 venv
-     has no numpy.
- N2  Permutation: y is shuffled within substrate and rho_pw (within-substrate ranks, both vectors) is recomputed
-     on every draw with score_v41.pooled_within_rho. A draw counts as a hit if rho_perm >= rho_obs - 1e-12
+     has no numpy. Since the Clarification of 2026-11-10 (N16) score_v41.pooled_within_rho is used only for the
+     uncentred comparability figure (`rho_pw_uncentred`); the decision statistic is `rho_pw` below.
+ N2  Permutation: y is shuffled within substrate and rho_pw (centred within-substrate ranks, both vectors; N16) is
+     recomputed on every draw with `rho_pw`. A draw counts as a hit if rho_perm >= rho_obs - 1e-12
      (float tolerance for exact ties); p = (1 + hits) / (draws + 1).
  N3  Bootstrap: brands resampled with replacement within substrate (v41 _decay scheme); several statistics of one
      test are taken on the SAME resamples; draws where a statistic is non-finite are dropped for that statistic
@@ -50,6 +52,17 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N15 (r2) Seed 420042 (H_Version_Presence) is retired with the hypothesis; the other seeds are unchanged. The
      manipulation checks count only calls of the design (Phase B: S0/S1, runs 1-3; Phase A: S0, run 1) and of the
      N3 models; any other raw line is reported as `outside_design` and not analysed.
+ N16 (Clarification, 2026-11-10, before the lock) rho_pw is computed on within-substrate ranks CENTRED on each
+     substrate's mean rank (`rho_pw`). v0.41's uncentred version (score_v41.pooled_within_rho) is not centred, so
+     with unequal substrate sizes (16/24/24/24/24) its null mean is +0.0464 (centred +0.0041); on the 83 phi-defined
+     t3 brands +0.0541 (centred -0.0004); it exceeds the centred value by +0.016 to +0.021 near rho 0.6 and +0.024
+     to +0.031 near rho 0.45 (simulation, seed 1, 4,000 null draws; TestCentredStatistic re-checks the null mean).
+     The centred value is the decision statistic of H_Gen_Presence, H_Gen_Phi, H_Search_Presence and the
+     mean-independence flag, and is the statistic of every permutation draw and every
+     bootstrap resample; it is also used for every reported-alongside rho_pw and for rel1. The uncentred value is
+     reported beside each as `rho_uncentred_v041` (rel1: `rel1_uncentred_v041`; mean independence:
+     `rho_pw_phi_pi_uncentred_v041`) for comparability with v0.41 and never gates a verdict. The two are identical
+     when all substrates have the same number of brands. Thresholds unchanged.
 
 Modes: --parity-p1 | --synthetic DIR | --run   (--run refuses unless tag v0.42-prereg-r1 is on origin)
 """
@@ -77,8 +90,10 @@ import numpy as np      # noqa: E402
 import score_v41 as sv  # noqa: E402
 import budget_v0_42 as BG  # noqa: E402
 
-phi_m, phi_of, spearman, within_ranks, pooled_within_rho, _pearson, load_wave = (
-    sv.phi_m, sv.phi_of, sv.spearman, sv.within_ranks, sv.pooled_within_rho, sv._pearson, sv.load_wave)
+phi_m, phi_of, spearman, within_ranks, _pearson, load_wave = (
+    sv.phi_m, sv.phi_of, sv.spearman, sv.within_ranks, sv._pearson, sv.load_wave)
+# Clarification of 2026-11-10 (N16): v0.41's uncentred statistic is kept ONLY as a reported comparability figure.
+rho_pw_uncentred = sv.pooled_within_rho
 
 PHASE_ID = "v0.42"
 OMNI = sv.OMNI
@@ -112,6 +127,30 @@ P3_PATH = ROOT / "osf/v42/prereg/probe_parity_v0_42.json"
 VERDICTS = ROOT / "osf/v42/v42_verdicts.json"
 BRAND_TABLE = ROOT / "osf/v42/v42_brand_table.csv"
 NAN = float("nan")
+RHO_PW_STATISTIC = ("rho_pw = Pearson r of within-substrate average ranks CENTRED on each substrate's mean rank, "
+                    "pooled over brands (decision statistic; Clarification of 2026-11-10). rho_uncentred_v041 = "
+                    "score_v41.pooled_within_rho (uncentred), reported for comparability with v0.41, never gating.")
+
+
+def centred_within_ranks(values, groups):
+    """Average ranks within each substrate, minus that substrate's mean rank."""
+    r = within_ranks(values, groups)
+    for gi in sv._group_index(groups):
+        r[gi] = r[gi] - r[gi].mean()
+    return r
+
+
+def rho_pw(x, y, groups):
+    """Decision statistic (N16): pooled within-substrate Spearman on CENTRED within-substrate ranks. Equals
+    score_v41.pooled_within_rho when all substrates have the same number of brands; NaN if n < 3 or constant."""
+    if len(x) < 3:
+        return NAN
+    return _pearson(centred_within_ranks(x, groups), centred_within_ranks(y, groups))
+
+
+def rho_unc(x, y, groups, n_min=3):
+    """v0.41's uncentred value (comparability figure only)."""
+    return rho_pw_uncentred(x, y, groups) if len(x) >= n_min else NAN
 
 
 class Cfg:
@@ -268,7 +307,7 @@ def perm_p_within(x, y, g, obs, seed, n_draws):
         yp = y.copy()
         for gi in gidx:
             yp[gi] = y[rng.permutation(gi)]
-        r = pooled_within_rho(x, yp, g)
+        r = rho_pw(x, yp, g)
         hits += bool(r >= obs - 1e-12)
     return (1 + hits) / (n_draws + 1)
 
@@ -311,14 +350,15 @@ def presence_test(xd, yd, seed, cfg, with_p=True):
     """rho_pw(x, y) with permutation p, bootstrap interval, level shift (mean(y - x)) and its interval."""
     keys, x, y, g = pair_arrays(xd, yd)
     n = len(keys)
-    rho = pooled_within_rho(x, y, g) if n >= 3 else NAN
-    out = {"n": n, "rho": rho, "per_substrate": per_substrate_rho(x, y, g) if n else {}}
+    rho = rho_pw(x, y, g) if n >= 3 else NAN
+    out = {"n": n, "rho": rho, "rho_uncentred_v041": rho_unc(x, y, g),
+           "per_substrate": per_substrate_rho(x, y, g) if n else {}}
     if n < 3:
         return out
     if with_p:
         out["p_perm"] = perm_p_within(x, y, g, rho, seed, cfg.n_perm)
         out["n_perm"] = cfg.n_perm
-    b = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": pooled_within_rho(x[i], y[i], g[i]),
+    b = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": rho_pw(x[i], y[i], g[i]),
                                                   "delta": float(np.mean(y[i] - x[i]))})
     out["ci95_rho"] = b["rho"]["ci95"]
     out["delta"] = float(np.mean(y - x))
@@ -364,15 +404,17 @@ def rel3_of(r):
     return 3 * r / (1 + 2 * r) if np.isfinite(r) else NAN
 
 
-def rel1_of(K, Nn, g):
-    """Mean pooled-within rho over the three run pairs of k/n (K, Nn: 3 x brands)."""
+def rel1_of(K, Nn, g, stat=None):
+    """Mean pooled-within rho over the three run pairs of k/n (K, Nn: 3 x brands). stat: rho_pw (default, centred)
+    or rho_pw_uncentred (v0.41 comparability figure)."""
+    stat = stat or rho_pw
     with np.errstate(invalid="ignore", divide="ignore"):
         rates = np.where(Nn > 0, K / np.where(Nn > 0, Nn, 1), np.nan)
     vals = []
     for a, b in itertools.combinations(range(K.shape[0]), 2):
         m = np.isfinite(rates[a]) & np.isfinite(rates[b])
         if m.sum() >= 3:
-            vals.append(pooled_within_rho(rates[a][m], rates[b][m], g[m]))
+            vals.append(stat(rates[a][m], rates[b][m], g[m]))
     vals = [v for v in vals if np.isfinite(v)]
     return float(np.mean(vals)) if vals else NAN
 
@@ -528,7 +570,8 @@ def h_gen_presence(D, t3, excl, cfg):
                 pairs[f"{prov}: legacy pair -> {m}"] = {"status": "NOT_COMPUTED", "reason": "model excluded"}
                 continue
             keys, a, b, g = pair_arrays(xl, pi_hat(D, [m], "S0"))
-            pairs[f"{prov}: legacy pair -> {m}"] = {"n": len(keys), "rho": pooled_within_rho(a, b, g) if len(keys) >= 3 else NAN}
+            pairs[f"{prov}: legacy pair -> {m}"] = {"n": len(keys), "rho": rho_pw(a, b, g) if len(keys) >= 3 else NAN,
+                                                    "rho_uncentred_v041": rho_unc(a, b, g)}
     out["reported_alongside"] = {"variants": alt, "per_provider_generation_pairs": pairs,
                                  "level_shift_delta": {"delta": out.get("delta"), "ci95": out.get("ci95_delta")},
                                  "per_substrate_rho": out.get("per_substrate")}
@@ -551,11 +594,11 @@ def h_gen_phi(D, t3, excl, cfg):
         y = {k: v[0] for k, v in ph.items()}
         keys, x, yy, g = pair_arrays(xphi, y)
         n = len(keys)
-        rho = pooled_within_rho(x, yy, g) if n >= 3 else NAN
-        t = {"n": n, "rho": rho}
+        rho = rho_pw(x, yy, g) if n >= 3 else NAN
+        t = {"n": n, "rho": rho, "rho_uncentred_v041": rho_unc(x, yy, g)}
         if n >= 3:
             t["p_perm"] = perm_p_within(x, yy, g, rho, seed, cfg.n_perm)
-            b = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": pooled_within_rho(x[i], yy[i], g[i])})
+            b = bootstrap(g, seed, cfg.n_boot, lambda i: {"rho": rho_pw(x[i], yy[i], g[i])})
             t["ci95_rho"] = b["rho"]["ci95"]
             t["per_substrate"] = per_substrate_rho(x, yy, g)
         return t, ph
@@ -575,9 +618,10 @@ def h_gen_phi(D, t3, excl, cfg):
         ph = phi_panel(D, ms, "S0")
         pi = pi_hat(D, ms, "S0")
         keys, a, b, g = pair_arrays({k: v[0] for k, v in ph.items()}, pi)
-        r = pooled_within_rho(a, b, g) if len(keys) >= 3 else NAN
+        r = rho_pw(a, b, g) if len(keys) >= 3 else NAN
         indep[pn] = {"n": len(keys), "rho_pw_phi_pi": r, "abs": abs(r) if np.isfinite(r) else None,
-                     "flag_ge_0_50": bool(np.isfinite(r) and abs(r) >= MEAN_INDEP_FLAG)}
+                     "flag_ge_0_50": bool(np.isfinite(r) and abs(r) >= MEAN_INDEP_FLAG),
+                     "rho_pw_phi_pi_uncentred_v041": rho_unc(a, b, g)}
     for pn in ("N3",):
         for cond in CONDS:
             ms = _models_ok(PANELS[pn], cond, excl)
@@ -605,7 +649,8 @@ def h_search(D, excl, cfg):
         per_model = {}
         for m in ms:
             keys, a, b, g = pair_arrays(pi_hat(D, [m], "S0"), pi_hat(D, [m], "S1"))
-            per_model[m] = {"n": len(keys), "rho": pooled_within_rho(a, b, g) if len(keys) >= 3 else NAN,
+            per_model[m] = {"n": len(keys), "rho": rho_pw(a, b, g) if len(keys) >= 3 else NAN,
+                            "rho_uncentred_v041": rho_unc(a, b, g),
                             "delta": float(np.mean(b - a)) if len(keys) else NAN}
         return {"models": ms, "reduced_panel": len(ms) < 3, **t, "label": label_search(t.get("ci95_rho")),
                 "per_model": per_model}
@@ -649,13 +694,14 @@ def descriptives(D, B, calls, raw_all, t3, excl, legacy_recog=None):
             K, Nn = model_arrays(D, m, c, D.brands)
             g = np.array([k[0] for k in D.brands])
             r1 = rel1_of(K, Nn, g)
+            r1_unc = rel1_of(K, Nn, g, stat=rho_pw_uncentred)
             codes = recognition_codes_by_run(D, m, c)
             ag = []
             for key, v in codes.items():
                 runs = list(v.values())
                 if len(runs) >= 2:
                     ag.append(np.mean([a == b for a, b in itertools.combinations(runs, 2)]))
-            rel[f"{m}|{c}"] = {"rel1": r1, "rel3": rel3_of(r1),
+            rel[f"{m}|{c}"] = {"rel1": r1, "rel3": rel3_of(r1), "rel1_uncentred_v041": r1_unc,
                                "recognition_pairwise_agreement": float(np.mean(ag)) if ag else None,
                                "recognition_brands_with_>=2_runs": len(ag),
                                "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"}
@@ -784,7 +830,7 @@ def score_t4(raw_all, A, B, t3, cfg, gates):
     desc = descriptives(D, [r for r in B if r["call_id"] not in served_excl], calls, raw_all, t3, excl)
     mcs["MC_Parity"] = {"passed": bool(gates.get("passed")), "detail": gates.get("detail")}
     out = {"phase": PHASE_ID, "prereg": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md (revision r2)",
-           "prereg_tag": C.PREREG_TAG, "seeds": SEEDS, "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
+           "prereg_tag": C.PREREG_TAG, "rho_pw_statistic": RHO_PW_STATISTIC, "seeds": SEEDS, "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
            "panels": {"L6": L6, **PANELS}, "models_excluded_condition": sorted(f"{m}|{c}" for m, c in excl),
            "manipulation_checks": mcs, "verdicts": hyps, "descriptives": desc}
     return out, brand_rows(D, t3, excl)
