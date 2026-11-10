@@ -31,6 +31,12 @@ def fake_match(text, substrate):
     return {b for b in UNITS[substrate] if re.search(r"(?<![a-z0-9])" + re.escape(_n(b)) + r"(?:'s|s')?(?![a-z0-9])", t)}
 
 
+def p2_reference_codes(text, substrate):
+    """Gate P2's reference side: the matchers on the English answer after the same step-1 normalisation
+    (typographic apostrophes etc.) that the pre-step applies, so both sides of the comparison are normalised."""
+    return fake_match(C.normalise(text), substrate)
+
+
 def code(text, substrate):
     return fake_match(C.prepare_text(text, substrate), substrate)
 
@@ -115,6 +121,17 @@ class PreStep(unittest.TestCase):
                        ("v22", "Mercedes-Benz, BMW and Rolls-Royce lead; Benz alone is a nickname."),
                        ("v19", "Sennheiser's HD 800 S and Audio-Technica's ATH-R70x.")):
             self.assertEqual(fake_match(C.prepare_text(t, sub), sub), fake_match(t, sub), t)
+
+    def test_english_curly_apostrophes_P2(self):
+        # Gate P2: pre-step + matchers vs matchers on the English answer; the typographic-apostrophe
+        # mapping is applied to both sides of the comparison.
+        for sub, t, want in (("v20", "Top picks: La Mer and Paula’s Choice.", "Paula's Choice"),
+                             ("v21", "Try L’Oréal Paris or e.l.f.", "L'Oréal Paris"),
+                             ("v21", "LʼOréal Paris leads.", "L'Oréal Paris")):
+            pre = fake_match(C.prepare_text(t, sub), sub)
+            raw = p2_reference_codes(t, sub)
+            self.assertIn(want, pre, t)
+            self.assertEqual(pre, raw, t)
 
     def test_alias_audit_collects_collision_prone(self):
         hits = []
