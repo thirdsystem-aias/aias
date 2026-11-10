@@ -17,7 +17,7 @@
 
 ## §1 Context
 
-v0.42 declares t₄ the baseline of a series: "t₅ (target 2026-12-03) and t₆ (target 2027-02-12) re-ask the same probes to the same three model IDs with the same design (§4.2), conditions, runs, call modes, call policy and budget guard, each under its own pre-registration and its own $100 budget" (v0.42 §6). This document is t₅'s pre-registration. Four studies wait for t₅, and each states what it needs:
+v0.42 declares t₄ the baseline of a series: "t₅ (target 2026-12-03) and t₆ (target 2027-02-12) re-ask the same probes to the same three model IDs with the same design (§4.2), conditions, runs, call modes, call policy and budget guard, each under its own pre-registration and its own $100 budget" (v0.42 §6). This document is t₅'s pre-registration. Five studies wait for t₅, and each states what it needs:
 
 | Consumer | What it needs from t₅ | Source |
 |---|---|---|
@@ -189,7 +189,7 @@ Exactly v0.42 §4.4: S0 without tools; S1 with the provider's own web search con
 
 **Cap.** At most $100 of paid model calls for this paper, including re-sends and the judge (programme rule, 2026-11-10).
 
-**Prices** (vendors' own pages, read again on 2026-11-10 for this draft; every value equals v0.42's of the same morning; machine copy in `osf/v45/scripts/budget_v0_45.py`):
+**Prices** (vendors' own pages, read again on 2026-11-10 for this draft; every value equals the one v0.42 r2 recorded the same day; machine copy in `osf/v45/scripts/budget_v0_45.py`):
 
 | Model / item | Standard, US$ per 1M tokens in / out | Batch | Search fee | Source |
 |---|---|---|---|---|
@@ -249,9 +249,9 @@ Exactly v0.42 §4.4: S0 without tools; S1 with the provider's own web search con
 
 - **Lock first.** The pre-registrant receives this text; at least 24 hours later it is locked and anchored (§9). Nothing is sent before.
 - **Window.** First call not before Thu 2026-12-03 06:00 UTC (00:00 US Central). No new request after the earlier of 72 hours from the first recorded call and 2026-12-07 05:59:59 UTC (Sun Dec 6, 23:59:59 US Central). A request already sent completes and is recorded. Enforced by `acquire_v0_45.py`.
-- **One paid collection at a time.** The script refuses to start while another `acquire_v*.py --collect` runs. The paid runs planned before t₅ (v1.12 Coverage, Nov 14–16 or Nov 22–29; v0.40, Nov 17–21; v0.44, planned Nov 24–28; v0.62, by default Nov 29 to Dec 2; v1.11's judge batches from Nov 22) are scheduled before Dec 3; none may run during t₅'s window.
+- **One paid collection at a time.** The script refuses to start while another `acquire_v*.py --collect` runs. The paid runs planned before t₅ (v1.12 Coverage, Nov 14–16 or Nov 22–29; v0.40, Nov 17–21; v0.44, costed in its draft for Nov 24–28; v0.62, by default Nov 29 to Dec 2; v1.11's judge batches from Nov 22) are scheduled before Dec 3; none may run during t₅'s window.
 - **If t₄ is held or delayed.** t₅ stays on Dec 3 if t₄'s last call is at least 14 days earlier. Otherwise t₅ moves to 21 days after t₄'s last call (window and hard end shifted by the same amount) through a logged clarification before the lock, and the Preview takes Ranking as "retest pending" under its own §4.4 and §11.4. If t₄ is not collected at all, t₅ has no baseline and is not locked.
-- **Order after the lock.** (1) After v0.42's coding: the J1 judge parity run (§5.1), record `osf/v45/data/judge_parity_J1_v0_45.json`. (2) Dec 2: the availability record. (3) From Dec 3: `acquire_v0_45.py --collect` under `caffeinate -w`. (4) After the last call: tag `v0.45-acquisition-locked`, pushed (v1.14 Stage 2 needs it). (5) Coding (§5.1). (6) Scoring once (§5.2). (7) v1.14 Stage 2 and the component scorers read t₅ on their own schedule; their outputs are read here when they exist (§2.6).
+- **Order after the lock.** (1) After v0.42's coding: the J1 judge parity run (§5.1; at most 216 small paid calls per candidate, run when no other paid collection is running), record `osf/v45/data/judge_parity_J1_v0_45.json`. (2) Dec 2: the availability record. (3) From Dec 3: `acquire_v0_45.py --collect` under `caffeinate -w`. (4) After the last call: tag `v0.45-acquisition-locked`, pushed (v1.14 Stage 2 needs it). (5) Coding (§5.1). (6) Scoring once (§5.2). (7) v1.14 Stage 2 and the component scorers read t₅ on their own schedule; their outputs are read here when they exist (§2.6).
 
 ---
 
