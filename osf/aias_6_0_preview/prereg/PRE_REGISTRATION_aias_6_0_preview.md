@@ -352,14 +352,14 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## 16. Files, and what r1 must add before the lock
 
-**In this draft (r0):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (26 synthetic-data tests, all passing at r0); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
+**In this draft (r0):** `prereg/PRE_REGISTRATION_aias_6_0_preview.md` (this file); `prereg/precision_aias_6_0_preview.json` and `scoping/precision_aias_6_0_preview.py` (synthetic precision note, §6.7); `scripts/score_aias_6_0_preview.py` (scorer skeleton: gate reading, inclusion, S-tests, I-tests, component status, H_Structure, wording class, composite check, carried-pair parity, sensitivities SA–SC, hashed reads from git references, MQ_Blind, lock-manifest text, synthetic dry run) and `scripts/tests/test_score_aias_6_0_preview.py` (29 synthetic-data tests, all passing at r0; outputs only to temporary directories); `anchor/DEVIATIONS.md` (Entry 0, draft); `README.md`; `PLAIN_SUMMARY_aias_6_0_preview_r0.md` (for Pablo; not deposited). The scorer imports `scripts/score_v1_10.py` unchanged (git blob `0f8b981b…`, byte-identical to tag `v1.10-prereg-r2`; a test asserts the blob); r1 adds `scripts/score_v1_14.py` (tag `v1.14-prereg-r1`) for the shared P and C\* function.
 
 **r1, before the lock (after v1.12, v1.13 and v0.42 lock on Wed Nov 11):**
 
 1. Pin the exact scored-output paths and column names of v1.12 (Cov\* unit table, verdict file), v1.13 (G\* unit table, `v1_13_verdicts.json`) and, if commissioned, the S_t4 study; record each lock tag, tag object and commit.
 2. Record whether v1.13's H6 (Coverage) and v1.12's H5 / v1.13's H4 (Ranking) are active at their locks, which decides which rows of §6.2 are carried.
-3. Finish the scorer's input readers (`git show` from the scored references, blob and SHA-256 logging), MQ_Blind and MQ_Parity, the descriptives D1–D9 and the sensitivities SA–SH, with tests.
-4. Write `prereg/LOCK_MANIFEST_aias_6_0_preview.sha256` (this file, the precision record and script, the scorer and its tests, DEVIATIONS, README, and the two imported scorers by blob) and an anchor writer (`--write-anchor`, after v1.14's).
+3. Wire the scorer's hashed readers to the pinned paths (v0.42, v1.12, v1.13, v1.14, S_t4, AIAS 2.0), add MQ_Lock, MQ_Join and the P and C\* recomputation with `score_v1_14.comparators` (MQ_Parity), the descriptives D1–D9 and the sensitivities SD–SH, with tests.
+4. Write `prereg/LOCK_MANIFEST_aias_6_0_preview.sha256` with `--lock-manifest` (this file, the precision record and script, the scorer and its tests, DEVIATIONS, README, and the two imported scorers) and an anchor writer (`--write-anchor`, after v1.14's).
 5. Apply Pablo's choices (§17).
 
 ## 17. Choices made in drafting (for the pre-registrant; each has a recommended default)

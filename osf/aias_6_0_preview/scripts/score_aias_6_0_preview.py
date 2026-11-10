@@ -5,12 +5,13 @@ score_aias_6_0_preview.py - AIAS 6.0 Preview (provisional six-part synthesis): t
 STATUS: r0 SKELETON (2026-11-10), written with the pre-registration draft r0
 (osf/aias_6_0_preview/prereg/PRE_REGISTRATION_aias_6_0_preview.md; sections cited inline).
 Implemented and tested on synthetic data: gate reading (section 4.1), inclusion (4.2),
-S-tests (6.2), complete-profile set with its nested fallback (6.1), I-tests (6.3), component
+S-tests (6.2), incremental and complete-profile sets (6.1), I-tests (6.3), component
 status (6.4), H_Structure (6.5), wording class (6.6), the descriptive composite check (7.2),
-carried-pair parity (11.2 MQ_Parity) and a synthetic dry run.
-NOT YET IMPLEMENTED (r1, before the lock; section 16): the readers of the locked inputs
-(git show from each scored reference, blob and SHA-256 logging), MQ_Lock, MQ_Blind, MQ_Join,
-the descriptives D1-D9, the sensitivities SA-SH, --lock-manifest and --write-anchor.
+carried-pair parity (11.2 MQ_Parity), sensitivities SA-SC (10), hashed reads from git refs,
+MQ_Blind (11.2), the lock-manifest text, and a synthetic dry run.
+NOT YET IMPLEMENTED (r1, before the lock; section 16): wiring the readers to the pinned input
+paths of v0.42, v1.12, v1.13, v1.14 and S_t4, MQ_Lock, MQ_Join, the P/C* recomputation with
+score_v1_14.comparators, descriptives D1-D9, sensitivities SD-SH and --write-anchor.
 `--run` therefore refuses. No network, no model call.
 
 Reused unchanged: scripts/score_v1_10.py (tag v1.10-prereg-r2): centred pooled within-category
@@ -197,8 +198,10 @@ def _centred_matrix(scores: dict, keys: list, cols: list[str]) -> tuple[np.ndarr
     groups = np.asarray([u[0] for u in keys])
     mask = R.keep_categories(groups)
     g = groups[mask]
-    mat = np.column_stack([R.within_ranks(np.array([scores[u][c] for u in keys], float)[mask], g)
-                           for c in cols])
+    # always centred: the no-intercept regression needs zero-mean ranks within category, so the
+    # uncentred sensitivity SB changes the S-tests only
+    mat = np.column_stack([R.within_ranks(np.array([scores[u][c] for u in keys], float)[mask], g,
+                                          centre=True) for c in cols])
     return mat, g
 
 
@@ -211,7 +214,7 @@ def _r2(y: np.ndarray, X: np.ndarray) -> float:
 
 def i_test(scores: dict, keys: list, target: str, preds: list[str], n_perm: int = N_PERM) -> dict:
     """Section 6.3: adjusted multiple correlation of target's centred within-category ranks on the
-    predecessors' ranks, on the complete-profile set; bands of section 2; one-sided permutation."""
+    predecessors' ranks, on U_<=X (keys); bands of section 2; one-sided permutation."""
     groups = [u[0] for u in keys]
     ok, n, c = floor_ok(groups)
     j = len(preds)
@@ -360,6 +363,116 @@ def structure(scores: dict, states: dict, carried: dict | None = None, panel_ok:
 
 
 # ===========================================================================
+# Sensitivities SA, SB, SC (section 10; reported, never change a verdict). In a sensitivity
+# every pair is computed by the Preview (a Paper A's carried verdict belongs to its own set).
+# ===========================================================================
+DENON = ("v0.19", "Denon")
+
+
+def _verdicts_only(res: dict) -> dict:
+    return {"H_Structure": res["H_Structure"]["verdict"], "H_PC_N3": res.get("H_PC_N3"),
+            "status": res.get("status"),
+            "S_tests": {k: (v["rho"], v["verdict"]) for k, v in res.get("S_tests", {}).items()}}
+
+
+def sensitivities(scores: dict, states: dict, n_perm: int = 0, coi_unit=DENON) -> dict:
+    out = {}
+    without = {u: s for u, s in scores.items() if u != coi_unit}
+    out["SA_without_coi_unit"] = _verdicts_only(structure(without, states, n_perm=n_perm, boot=False))
+    with R.uncentred():
+        out["SB_uncentred"] = _verdicts_only(structure(scores, states, n_perm=n_perm, boot=False))
+    loo = {}
+    for cat in sorted({u[0] for u in scores}):
+        sub = {u: s for u, s in scores.items() if u[0] != cat}
+        loo[cat] = _verdicts_only(structure(sub, states, n_perm=n_perm, boot=False))
+    out["SC_leave_one_category_out"] = loo
+    return out
+
+
+# ===========================================================================
+# Lock helpers (section 0, 11.2): manifest text, hashed reads from git, MQ_Blind
+# ===========================================================================
+import hashlib  # noqa: E402
+import subprocess  # noqa: E402
+
+PREVIEW = "osf/aias_6_0_preview"
+LOCK_FILES = [f"{PREVIEW}/prereg/PRE_REGISTRATION_aias_6_0_preview.md",
+              f"{PREVIEW}/prereg/precision_aias_6_0_preview.json",
+              f"{PREVIEW}/scoping/precision_aias_6_0_preview.py",
+              f"{PREVIEW}/scripts/score_aias_6_0_preview.py",
+              f"{PREVIEW}/scripts/tests/test_score_aias_6_0_preview.py",
+              f"{PREVIEW}/anchor/DEVIATIONS.md", f"{PREVIEW}/README.md",
+              "scripts/score_v1_10.py", "scripts/score_v1_14.py"]
+
+
+def sha256_bytes(b: bytes) -> str:
+    return hashlib.sha256(b).hexdigest()
+
+
+def git_blob_sha1(b: bytes) -> str:
+    return hashlib.sha1(b"blob %d\0" % len(b) + b).hexdigest()
+
+
+def lock_manifest_text(files=LOCK_FILES, root: Path = ROOT) -> str:
+    """'sha256  path' lines, sorted by path (the lock writes prereg/LOCK_MANIFEST_aias_6_0_preview.sha256)."""
+    return "".join(f"{sha256_bytes((root / f).read_bytes())}  {f}\n" for f in sorted(files))
+
+
+def _git(root: Path, *args) -> str:
+    return subprocess.run(["git", "-C", str(root), *args], check=True, capture_output=True,
+                          text=True).stdout.strip()
+
+
+def git_read(root: Path, ref: str, path: str, log: dict) -> bytes:
+    """Read one input from a git ref (never the working tree) and log blob and SHA-256."""
+    b = subprocess.run(["git", "-C", str(root), "show", f"{ref}:{path}"], check=True,
+                       capture_output=True).stdout
+    log[f"{ref}:{path}"] = {"git_blob": git_blob_sha1(b), "sha256": sha256_bytes(b)}
+    return b
+
+
+def read_score_csv(root: Path, ref: str, path: str, column: str, log: dict,
+                   key=("substrate", "brand"), rated_col: str | None = None) -> dict:
+    """{(substrate, brand): value or None}; blank, 'NA' or rated_col false -> None (NOT RATED)."""
+    import csv
+    import io
+    rows = csv.DictReader(io.StringIO(git_read(root, ref, path, log).decode("utf-8")))
+    out = {}
+    for r in rows:
+        v = (r.get(column) or "").strip()
+        rated = True if rated_col is None else str(r.get(rated_col)).strip().lower() in ("1", "true", "yes")
+        out[tuple(r[k] for k in key)] = float(v) if (v and v.upper() != "NA" and rated) else None
+    return out
+
+
+def tag_date(root: Path, tag: str) -> str:
+    return _git(root, "for-each-ref", "--format=%(taggerdate:iso-strict)", f"refs/tags/{tag}")
+
+
+def first_commit_date(root: Path, ref: str, path: str) -> str:
+    """Committer date (ISO, strict) of the earliest commit reachable from ref that adds path."""
+    lines = _git(root, "log", "--diff-filter=A", "--format=%cI", ref, "--", path).splitlines()
+    return lines[-1] if lines else ""
+
+
+def mq_blind(root: Path, tag: str, inputs: list[tuple[str, str]]) -> dict:
+    """MQ_Blind (section 11.2): every t4-based input file must first appear after the lock tag.
+    Returns {"ok": bool, "tag_date": .., "early": [(ref, path, date), ...]} (no halt: the
+    affected tests are labelled exploratory and a DEVIATIONS entry is written)."""
+    from datetime import datetime
+    td = tag_date(root, tag)
+    if not td:
+        raise Halt(f"MQ_Lock: tag {tag} not found")
+    t0 = datetime.fromisoformat(td)
+    early = []
+    for ref, path in inputs:
+        d = first_commit_date(root, ref, path)
+        if not d or datetime.fromisoformat(d) <= t0:
+            early.append((ref, path, d))
+    return {"ok": not early, "tag_date": td, "early": early}
+
+
+# ===========================================================================
 # Synthetic data (tests and --dry-run only; never program data)
 # ===========================================================================
 SIZES = {"v0.19": 16, "v0.20": 24, "v0.21": 24, "v0.22": 24, "v0.23": 24}   # 112 units
@@ -409,10 +522,16 @@ def main(argv=None) -> int:
     ap.add_argument("--run", action="store_true", help="score the locked inputs (r1; refuses in r0)")
     ap.add_argument("--out", default="/tmp/aias6_dry")
     ap.add_argument("--n-perm", type=int, default=500)
+    ap.add_argument("--lock-manifest", metavar="PATH", help="write the lock manifest text to PATH (the lock "
+                    "uses prereg/LOCK_MANIFEST_aias_6_0_preview.sha256)")
     a = ap.parse_args(argv)
+    if a.lock_manifest:
+        Path(a.lock_manifest).write_text(lock_manifest_text())
+        print(f"lock manifest ({len(LOCK_FILES)} files) written to {a.lock_manifest}")
+        return 0
     if a.run:
-        print("refused: r0 skeleton. The input readers, MQ_Lock, MQ_Blind and MQ_Join are written at r1, "
-              "and --run needs tag aias-6-0-preview-prereg-r1 and its anchor (pre-registration section 11).")
+        print("refused: r0 skeleton. The input paths are pinned and wired at r1 (after the v1.12, v1.13 and "
+              "v0.42 locks), and --run needs tag aias-6-0-preview-prereg-r1 and its anchor (section 11).")
         return 2
     if a.dry_run:
         res = dry_run(Path(a.out), a.n_perm)

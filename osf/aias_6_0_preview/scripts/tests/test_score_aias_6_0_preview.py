@@ -267,5 +267,61 @@ class TestCliAndLocks(unittest.TestCase):
         self.assertEqual(git_blob(Path(R.__file__)), V110_BLOB)
 
 
+class TestSensitivitiesAndLockHelpers(unittest.TestCase):
+    def test_sensitivities(self):
+        sc, _ = S.synthetic(seed=600999)
+        states = {"R": S.PASS, "S": S.PASS, "Cov": S.PASS, "G": S.PASS}
+        out = S.sensitivities(sc, states, coi_unit=("v0.19", "B00"))
+        self.assertEqual(set(out), {"SA_without_coi_unit", "SB_uncentred", "SC_leave_one_category_out"})
+        self.assertEqual(len(out["SC_leave_one_category_out"]), 5)
+        self.assertTrue(R.CENTRE_RANKS)                     # the uncentred context is restored
+        prim = S.structure(sc, states, n_perm=0, boot=False)
+        with R.uncentred():
+            unc = S.structure(sc, states, n_perm=0, boot=False)
+        self.assertEqual(prim["I_tests"]["G"]["R_adj"], unc["I_tests"]["G"]["R_adj"])   # I-tests stay centred
+
+    def test_lock_manifest_text(self):
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+            (root / "b.txt").write_text("b")
+            (root / "a.txt").write_text("a")
+            text = S.lock_manifest_text(["b.txt", "a.txt"], root)
+            lines = text.splitlines()
+            self.assertEqual([ln.split("  ")[1] for ln in lines], ["a.txt", "b.txt"])
+            self.assertEqual(lines[0].split("  ")[0], hashlib.sha256(b"a").hexdigest())
+
+    def test_git_reads_and_mq_blind(self):
+        import os
+        import subprocess
+        with tempfile.TemporaryDirectory() as d:
+            root = Path(d)
+
+            def git(*args, date="2026-11-10T10:00:00-06:00"):
+                env = dict(os.environ, GIT_AUTHOR_NAME="t", GIT_AUTHOR_EMAIL="t@example.org",
+                           GIT_COMMITTER_NAME="t", GIT_COMMITTER_EMAIL="t@example.org",
+                           GIT_AUTHOR_DATE=date, GIT_COMMITTER_DATE=date)
+                subprocess.run(["git", "-C", d, *args], check=True, capture_output=True, env=env)
+            git("init", "-q")
+            (root / "early.csv").write_text("substrate,brand,x\nv0.20,A,1.5\n")
+            git("add", "early.csv")
+            git("commit", "-q", "-m", "early")
+            git("tag", "-a", "lock", "-m", "lock", date="2026-11-11T15:00:00-06:00")
+            (root / "late.csv").write_text("substrate,brand,x,rated\nv0.20,A,2.5,1\nv0.20,B,NA,0\n"
+                                           "v0.21,C,7,0\n")
+            git("add", "late.csv")
+            git("commit", "-q", "-m", "late", date="2026-11-15T09:00:00-06:00")
+            res = S.mq_blind(root, "lock", [("HEAD", "early.csv"), ("HEAD", "late.csv")])
+            self.assertFalse(res["ok"])
+            self.assertEqual([e[1] for e in res["early"]], ["early.csv"])
+            self.assertTrue(S.mq_blind(root, "lock", [("HEAD", "late.csv")])["ok"])
+            log = {}
+            vals = S.read_score_csv(root, "HEAD", "late.csv", "x", log, rated_col="rated")
+            self.assertEqual(vals, {("v0.20", "A"): 2.5, ("v0.20", "B"): None, ("v0.21", "C"): None})
+            self.assertEqual(log["HEAD:late.csv"]["sha256"],
+                             hashlib.sha256((root / "late.csv").read_bytes()).hexdigest())
+            with self.assertRaises(S.Halt):
+                S.mq_blind(root, "no-such-tag", [])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)
