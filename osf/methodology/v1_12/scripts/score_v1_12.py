@@ -106,7 +106,7 @@ SCORER_NOTES (choices where the pre-registration is silent)
      registries is pre-registered.
  N29 S4: beta averaged over the panel models with n >= 1 and c_max > c_min; same rating rule; a rated unit with no
      such model is NOT RATED in S4.
- N30 H5/H6 are active only when their locked score is supplied (--h5 / --h6, as recorded at the lock); an active
+ N30 H5/H6 are active only when their locked score is supplied (--h5-stage1 (N32-N34) / --h6, as recorded at the lock); an active
      leg without a score is UNDETERMINED with that reason.
  N31 Section 5 choices: missing cells = 45 per (category, model) minus analysed CEP and C0 answers; words per answer
      over analysed CEP and C0 answers (whitespace split); registry brands per CEP answer; per-W coverage = number
@@ -114,6 +114,21 @@ SCORER_NOTES (choices where the pre-registration is silent)
      answered CEPs none of whose answered runs names one; run reliability per model on per-run shares of answered
      CEP answers naming the brand (centred rho_w, categories with >= 5 units); C0 agreement = mean Jaccard of
      each CEP answer with the same model-run's C0 answer; spend = usd_billed of every raw line.
+ --- clarification of 2026-11-10 (before the lock; section 12 (f)) ---
+ N32 H5's Ranking measure is v1.14's locked R* (modal position; tag v1.14-prereg-r1 -> 20fbc342), read from v1.14's
+     Stage 1 output (osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json; --h5-stage1), never recomputed here.
+     R*_S0 (v1.14's primary, pooled over N3 x 3 runs x 6 questions in S0) because H5 is defined on the t4 N3 S0 Phase B
+     answers and Cov* is an S0 measure. Rated set = v1.14's (rated_S0; units of a substrate in v1.14's
+     gate_excluded_substrates are NOT RATED). The file's SHA-256, its STAGE1_VERDICT and v1.14's H1/H2/H4_S1 and
+     component verdicts are written to H5_ranking_source. A dry-run Stage 1 file is refused in --run.
+ N33 v1.10's MNP is reported beside H5 as a non-gating comparability figure: computed from v1.14's hashed t4 rank table
+     (rank_table_t4_v1_14.csv beside the Stage 1 file; SHA-256 must equal the Stage 1 record, else halt), lead-item
+     rule, S0, floor 6 rankable mentions, rho_w(Cov*, MNP) centred, seed 112005, no bootstrap; its band reading is
+     printed, never enters the gate.
+ N34 Blindness guard: with H5 active (--run: tag v1.14-prereg-r1 exists; synthetic: a Stage 1 file is given) and no
+     Stage 1 file, the run refuses before reading any record (exit 3); --h5-unavailable REASON instead scores with H5
+     UNDETERMINED (N30), logged. v1.12 computes no rank statistic on a t4 answer. H5 enters the gate as section 3
+     states whatever v1.14's verdict; v1.14's Stage 1 verdict is printed beside it.
 
 Modes:  --calibrate-n1   run N1 exactly as section 2.4 states; writes prereg/calibration_N1_v1_12.json
         --code           code data/v112_raw.jsonl (or --raw) with v0.42's coder -> data/coded (or --coded)
@@ -1965,7 +1980,33 @@ def score_coverage(inp, cfg=None, gates=None, with_sensitivities=True):
         doc["verdict_changes_under_sensitivities"] = {
             k: v["verdict_changes"] for k, v in sens.items() if isinstance(v, dict) and v.get("verdict_changes")}
     doc["descriptives"] = descriptives(A, design, tabs["rasch"], units, panels, primary, raw_design)
+    src = inp.get("h5_source")
+    if src is not None or active.get("H5_Sep_Ranking"):
+        doc["H5_ranking_source"] = h5_source_record(src, prim["maps"]["cov"], cfg, inp.get("h5_unavailable"))
     return doc, unit_rows(units, tabs, prim, comp, panels, primary, A, design)
+
+
+def h5_source_record(src, cov, cfg, unavailable=None):
+    """N32-N34: where H5's R* came from, v1.14's own verdicts printed next to H5, and v1.10's MNP against Cov* as a
+    non-gating comparability figure (centred rho_w, same seed; its band reading never enters the gate)."""
+    if src is None:
+        return {"measure": f"R*_{H5_CONDITION} of {V114_PREREG_TAG} (modal position)", "status": "NOT_AVAILABLE",
+                "reason": unavailable or "v1.14 Stage 1 output not supplied"}
+    rec = {k: v for k, v in src.items() if k not in ("values", "MNP")}
+    rec["measure"] = f"R*_{src['condition']} of {V114_PREREG_TAG} (modal position, lead-item rule, floor 6)"
+    rec["reading"] = ("v1.14 Stage 1 verdict printed beside H5; H5 enters the gate as section 3 states whatever that "
+                      "verdict; if v1.14 is not SEPARABLE/PASS, a CONFIRMED H5 is reported as separability from v1.14's "
+                      "R* only, not from a validated Ranking component")
+    m = src.get("MNP") or {}
+    if m.get("status") == "COMPUTED":
+        t = run_leg("sep", cov, m["values"], SEEDS["H5_Sep_Ranking"], cfg.n_perm, 0)
+        rec["MNP_comparability_non_gating"] = {"rho_w": t.get("rho_w"), "n": t.get("n"), "p_perm": t.get("p_perm"),
+                                               "band_reading": t["verdict"], "rank_table_sha256": m["sha256"],
+                                               "rated_units": m["rated_units"], "gating": False}
+    else:
+        rec["MNP_comparability_non_gating"] = {"status": m.get("status", "NOT_COMPUTED"), "reason": m.get("reason"),
+                                               "gating": False}
+    return rec
 
 
 def _clean(o):
@@ -2013,6 +2054,89 @@ def read_extra(path):
     return {(r["substrate"], r["brand"]): _num(r.get("value")) for r in read_csv_rows(path)} if path else None
 
 
+# --------------------------------------------------------------------------- H5: v1.14's R* (clarification of 2026-11-10, N32-N34)
+V114_PREREG_TAG = "v1.14-prereg-r1"                    # pushed 2026-11-10 (tag object 8398ab2d, commit 20fbc342)
+V114_STAGE1_REL = "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"   # written once by score_v1_14.py --stage 1
+V114_RANK_TABLE = "rank_table_t4_v1_14.csv"            # beside the Stage 1 file; its SHA-256 is in the Stage 1 file
+V114_FLOOR = 6                                         # v1.14 section 3.1 rating floor (rankable mentions)
+H5_CONDITION = "S0"                                    # section 3, H5: the t4 N3 S0 Phase B answers -> R*_S0
+
+
+class BlindnessGuard(Refused):
+    """The Ranking leg refuses to run before v1.14's Stage 1 output exists (v1.14 section 9, item 2)."""
+
+
+def read_v114_stage1(path, condition=H5_CONDITION, allow_dry=False):
+    """v1.14's locked R* per unit, read from its Stage 1 output (N32). Refuses (BlindnessGuard) while the file does not
+    exist. condition "S0": R*_S0 where v1.14 rates it (rated_S0); "S1": R*_S1 where n_ranked_S1 >= 6 (v1.14's floor).
+    Units of a substrate that v1.14 removed from its gate legs (MQ2, gate_excluded_substrates) are NOT RATED here too."""
+    if not path or not Path(path).exists():
+        raise BlindnessGuard(f"v1.14 Stage 1 output {path or V114_STAGE1_REL} does not exist: the Ranking leg does not run "
+                             f"before it (blindness guard, v1.14 section 9 item 2)")
+    data = Path(path).read_bytes()
+    doc = json.loads(data.decode("utf-8"))
+    if doc.get("phase") != "v1.14" or str(doc.get("stage")) != "1" or doc.get("prereg_tag") != V114_PREREG_TAG:
+        raise Halt(f"{path} is not v1.14's Stage 1 output (phase/stage/prereg_tag = "
+                   f"{doc.get('phase')}/{doc.get('stage')}/{doc.get('prereg_tag')})")
+    if doc.get("dry_run") and not allow_dry:
+        raise Halt(f"{path} is a v1.14 dry run, not its Stage 1 on t4")
+    excl = set(doc.get("gate_excluded_substrates") or [])
+    vals, rated = {}, 0
+    for u in doc.get("units") or []:
+        k = (u["substrate"], u["brand"])
+        if condition == "S0":
+            v, ok = _num(u.get("R_star_S0")), bool(u.get("rated_S0"))
+        else:
+            v, ok = _num(u.get("R_star_S1")), int(u.get("n_ranked_S1") or 0) >= V114_FLOOR
+        vals[k] = v if (ok and v is not None and k[0] not in excl) else None
+        rated += vals[k] is not None
+    sv = lambda h: (doc.get(h) or {}).get("verdict")                                  # noqa: E731
+    return {"file": str(path), "sha256": hashlib.sha256(data).hexdigest(), "condition": condition,
+            "prereg_tag": doc.get("prereg_tag"), "created_utc": doc.get("created_utc"), "dry_run": bool(doc.get("dry_run")),
+            "stage1_verdict": doc.get("STAGE1_VERDICT"),
+            "v1_14_verdicts": {"H1_Sep_Presence": sv("H1_Sep_Presence"), "H2_Sep_Consistency": sv("H2_Sep_Consistency"),
+                               "H4_Sep_Presence_S1": sv("H4_Sep_Presence_S1"), "components": doc.get("component_legs")},
+            "gate_excluded_substrates": sorted(excl), "rated_units": rated,
+            "rank_table_t4_sha256": doc.get("rank_table_t4_sha256"), "values": vals}
+
+
+def mnp_from_rank_table(path, expected_sha256, condition=H5_CONDITION, excluded_subs=(), floor=V114_FLOOR):
+    """v1.10's MNP (mean normalised position, 100 (1 - mean (k_mid - 1) / (n - 1)), lead-item rule, rated at >= 6
+    rankable mentions) per unit from v1.14's hashed t4 rank table: the non-gating comparability figure (N33).
+    A missing table -> not computed (reason); a table whose SHA-256 differs from the Stage 1 record halts."""
+    if not path or not Path(path).exists():
+        return {"status": "NOT_COMPUTED", "reason": f"rank table {path} not found", "values": {}}
+    data = Path(path).read_bytes()
+    sha = hashlib.sha256(data).hexdigest()
+    if expected_sha256 and sha != expected_sha256:
+        raise Halt(f"v1.14 rank table {path}: SHA-256 {sha} differs from the Stage 1 record {expected_sha256}")
+    acc = collections.defaultdict(list)
+    for r in csv.DictReader(data.decode("utf-8").splitlines()):
+        if (r.get("rule") != "lead_item" or r.get("condition") != condition or r.get("status") != "ok"
+                or str(r.get("rankable")) != "1" or not r.get("brand") or r.get("k_mid") in ("", None)):
+            continue
+        n = float(r["n_named"])
+        acc[(r["category"], r["brand"])].append((float(r["k_mid"]) - 1.0) / (n - 1.0))
+    vals = {k: (100.0 * (1.0 - float(np.mean(q))) if len(q) >= floor and k[0] not in set(excluded_subs) else None)
+            for k, q in acc.items()}
+    return {"status": "COMPUTED", "file": str(path), "sha256": sha, "condition": condition, "floor": floor,
+            "rated_units": sum(v is not None for v in vals.values()), "values": vals}
+
+
+def load_ranking_source(stage1_path, condition=H5_CONDITION, allow_dry=False):
+    """R* (gating) and MNP (non-gating) for H5 from v1.14's Stage 1 output directory."""
+    src = read_v114_stage1(stage1_path, condition, allow_dry)
+    src["MNP"] = mnp_from_rank_table(Path(stage1_path).parent / V114_RANK_TABLE, src["rank_table_t4_sha256"], condition,
+                                     src["gate_excluded_substrates"])
+    return src
+
+
+def local_tag_exists(tag):
+    r = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "-q", "--verify", f"refs/tags/{tag}"], capture_output=True,
+                       text=True, timeout=60)
+    return r.returncode == 0
+
+
 def _ls_remote_tag(tag):
     r = subprocess.run(["git", "-C", str(ROOT), "ls-remote", "--tags", "origin", tag], capture_output=True, text=True,
                        timeout=60)
@@ -2025,13 +2149,34 @@ def tag_on_origin(tag=PREREG_TAG):
     return f"refs/tags/{tag}" in _ls_remote_tag(tag)
 
 
+def h5_inputs(stage1_path, real, unavailable=None):
+    """N32/N34: (active, R* map or None, source record or None) for H5. Real run: H5 is active when tag
+    v1.14-prereg-r1 exists (pushed before the v1.12 lock); synthetic run: active when a Stage 1 file is given. An active
+    H5 without v1.14's Stage 1 output refuses the whole run (blindness guard) unless --h5-unavailable REASON is given,
+    in which case H5 is UNDETERMINED with that reason (N30)."""
+    active = local_tag_exists(V114_PREREG_TAG) if real else bool(stage1_path)
+    if not active:
+        return False, None, None
+    if not stage1_path or not Path(stage1_path).exists():
+        if unavailable:
+            return True, None, None
+        raise BlindnessGuard(f"H5 is active ({V114_PREREG_TAG}) but v1.14's Stage 1 output ({stage1_path or 'not given'}) "
+                             f"does not exist: v1.12 is not scored before it (blindness guard); pass --h5-stage1 once it "
+                             f"exists, or --h5-unavailable REASON for an UNDETERMINED H5 (N30)")
+    src = load_ranking_source(stage1_path, H5_CONDITION, allow_dry=not real)
+    return True, src["values"], src
+
+
 def run_score(raw_path, coded_dir, t4_paths, verdicts_path, table_path, cfg, real, extra_paths=None,
-              h6_cross_panel=False):
+              h6_cross_panel=False, h5_stage1=None, h5_unavailable=None):
     if real and not tag_on_origin():
         raise Refused(f"tag {PREREG_TAG} is not on origin: the v1.12 record is not scored before the lock")
+    extra_paths = dict(extra_paths or {})
+    extra_paths.pop("H5_Sep_Ranking", None)          # H5 reads v1.14's Stage 1 output only (N32)
+    h5_active, h5_map, h5_src = h5_inputs(h5_stage1, real, h5_unavailable)
     mentions, registry = read_coded(coded_dir)
     t4, window, missing = load_t4(**t4_paths)
-    extra = {h: read_extra(p) for h, p in (extra_paths or {}).items() if p}
+    extra = {h: read_extra(p) for h, p in extra_paths.items() if p}
     gates = {"enforce": True, "require_p1": real}
     if P1_PATH.exists() and real:
         gates["P1"] = json.loads(P1_PATH.read_text(encoding="utf-8")).get("v1_12")
@@ -2042,6 +2187,11 @@ def run_score(raw_path, coded_dir, t4_paths, verdicts_path, table_path, cfg, rea
            "t4": t4, "t4_window": window, "t4_missing": missing,
            "profiles": read_csv_rows(PROFILES_PATH) if PROFILES_PATH.exists() else None,
            "active": {h: True for h in extra}, "extra": extra, "h6_cross_panel": h6_cross_panel, "brandfree": bf}
+    if h5_active:
+        inp["active"]["H5_Sep_Ranking"] = True
+        if h5_map is not None:
+            inp["extra"]["H5_Sep_Ranking"] = h5_map
+        inp["h5_source"], inp["h5_unavailable"] = h5_src, h5_unavailable
     doc, rows = score_coverage(inp, cfg, gates)
     doc["inputs"] = {"raw": str(raw_path), "raw_sha256": sha256_file(raw_path), "coded": str(coded_dir),
                      "t4": {k: str(v) for k, v in t4_paths.items()}, "t4_missing": missing,
@@ -2063,7 +2213,10 @@ def main():
     ap.add_argument("--coded", default=str(CODED_DIR))
     for k, v in T4_DEFAULTS.items():
         ap.add_argument(f"--t4-{k.replace('_', '-')}", default=str(v))
-    ap.add_argument("--h5", help="CSV substrate,brand,value: v1.10's locked R* (activates H5)")
+    ap.add_argument("--h5-stage1", help=f"v1.14's Stage 1 output ({V114_STAGE1_REL}, with {V114_RANK_TABLE} beside it): "
+                                        f"H5's R*_S0 (N32)")
+    ap.add_argument("--h5-unavailable", metavar="REASON", help="score with H5 UNDETERMINED (N30) when v1.14's Stage 1 "
+                                                                 "output cannot exist; logged")
     ap.add_argument("--h6", help="CSV substrate,brand,value: v1.11's locked S (activates H6)")
     ap.add_argument("--h6-cross-panel", action="store_true")
     ap.add_argument("--draws", type=int, default=None, help="permutation/bootstrap draws (tests only)")
@@ -2103,17 +2256,19 @@ def main():
             return 0 if r["passed"] else 2
         if a.synthetic or a.run:
             cfg = Cfg(a.draws, a.draws) if a.draws else Cfg()
-            ex = {"H5_Sep_Ranking": a.h5, "H6_Sep_Sentiment": a.h6}
+            ex = {"H6_Sep_Sentiment": a.h6}
+            h5kw = {"h5_stage1": a.h5_stage1, "h5_unavailable": a.h5_unavailable}
             if a.synthetic:
                 d = Path(a.synthetic).resolve()
                 t4p = {"raw": d / "t4/t4_raw.jsonl", "coded": d / "t4/coded", "brand_table": d / "t4/v42_brand_table.csv",
                        "verdicts": d / "t4/v42_verdicts.json"}
                 doc = run_score(d / "v112_raw.jsonl", d / "coded", t4p, d / "_score/v112_verdicts.json",
-                                d / "_score/v112_unit_table.csv", cfg, False, ex, a.h6_cross_panel)
+                                d / "_score/v112_unit_table.csv", cfg, False, ex, a.h6_cross_panel, **h5kw)
                 dest = d / "_score"
             else:
                 t4p = {"raw": a.t4_raw, "coded": a.t4_coded, "brand_table": a.t4_brand_table, "verdicts": a.t4_verdicts}
-                doc = run_score(a.raw, a.coded, t4p, VERDICTS_PATH, UNIT_TABLE_PATH, cfg, True, ex, a.h6_cross_panel)
+                doc = run_score(a.raw, a.coded, t4p, VERDICTS_PATH, UNIT_TABLE_PATH, cfg, True, ex, a.h6_cross_panel,
+                                **h5kw)
                 dest = VERDICTS_PATH.parent
             print(f"Paper A: {doc['paper_A_verdict']['label']} -> {dest}")
             for h, v in doc["verdicts"].items():
