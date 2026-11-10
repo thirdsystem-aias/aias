@@ -1,0 +1,59 @@
+{
+  "phase": "v1.11",
+  "kind": "parsing-only feasibility, development sample",
+  "sets": [
+    {
+      "set": "D2 v0.17 Phase B frames",
+      "answers_parsed": 18,
+      "registry_brands": 16,
+      "answers_with_>=1_brand": 18,
+      "windows": 111,
+      "windows_per_answer_mean": 6.17,
+      "windows_per_answer_median": 6.0,
+      "window_chars_median": 190,
+      "window_chars_p90": 554,
+      "window_tokens_mean_est": 68,
+      "windows_at_cap": 0,
+      "bare_windows": 10,
+      "answer_chars_median": 2001.0
+    },
+    {
+      "set": "D3 v0.18 Phase B frames",
+      "answers_parsed": 18,
+      "registry_brands": 24,
+      "answers_with_>=1_brand": 15,
+      "windows": 72,
+      "windows_per_answer_mean": 4.0,
+      "windows_per_answer_median": 4.0,
+      "window_chars_median": 158.5,
+      "window_chars_p90": 359,
+      "window_tokens_mean_est": 50,
+      "windows_at_cap": 0,
+      "bare_windows": 2,
+      "answer_chars_median": 1445.5
+    },
+    {
+      "set": "D4 v0.5 archive (early design)",
+      "answers_parsed": 67,
+      "registry_brands": 14,
+      "answers_with_>=1_brand": 67,
+      "windows": 374,
+      "windows_per_answer_mean": 5.58,
+      "windows_per_answer_median": 5,
+      "window_chars_median": 271.0,
+      "window_chars_p90": 671,
+      "window_tokens_mean_est": 84,
+      "windows_at_cap": 1,
+      "bare_windows": 7,
+      "answer_chars_median": 2131
+    },
+    {
+      "set": "D1 v0.17 Phase A recognition",
+      "answers_parsed": 24,
+      "answer_chars_median": 905.0,
+      "answer_chars_max": 2707,
+      "answer_tokens_mean_est": 296,
+      "over_recog_cap": 0
+    }
+  ]
+}
