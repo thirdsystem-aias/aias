@@ -2,7 +2,7 @@
 
 Prepared 2026-11-10 by the runner (lane 8). Everything below runs in the worktree `/Users/pablou/aias/_worktrees/v1.12` (branch `v1.12`). Never checkout, switch or commit in `/Users/pablou/aias` itself (branch `v0.40`, another job). No paid call, no data, no `--collect` at the lock. Each shell call is `zsh -ic '...'` (≤ 55 s).
 
-State prepared on 2026-11-10: §12 clarifications (i)–(y) logged; N1 re-run with the current scorer (PASS, statistics identical, record names scorer SHA-256 `7fd288bf…`); MC_BrandFree written to `anchor/mc_brandfree_v1_12.json` (0 hits); `anchor/DEVIATIONS.md` created; `prereg/LOCK_MANIFEST_v1_12.sha256` built (38 files, paths from the repository root); 118 tests pass. If any manifested file changes before the tag, redo steps 1–2 (and rebuild the manifest with the command in step 1b).
+State prepared on 2026-11-10: §12 clarifications (i)–(y) logged; N1 re-run with the current scorer (PASS, statistics identical, record names scorer SHA-256 `7fd288bf…`); evening update §12 (z) (v1.14 re-locked as r2: H5 names `v1.14-prereg-r2` → `a5feb4b1`; N1 re-run again, PASS, statistics identical, record names scorer SHA-256 `f7689898…`; manifest rebuilt); MC_BrandFree written to `anchor/mc_brandfree_v1_12.json` (0 hits); `anchor/DEVIATIONS.md` created; `prereg/LOCK_MANIFEST_v1_12.sha256` built (38 files, paths from the repository root); 118 tests pass. If any manifested file changes before the tag, redo steps 1–2 (and rebuild the manifest with the command in step 1b).
 
 ## 0. Preconditions (stop if any fails)
 
@@ -15,14 +15,14 @@ State prepared on 2026-11-10: §12 clarifications (i)–(y) logged; N1 re-run wi
    Expect `v1.12`, no tracked changes, HEAD = the lane-8 lock-prep commit (or a later commit made for the lock). `osf/methodology/v1_12/_osf_stage_draft/` is untracked (an earlier draft staging copy, with a stale $120 dry run): leave it, never upload it.
 4. **Remote tags (read-only):**
    ```
-   cd /Users/pablou/aias/_worktrees/v1.12 && git ls-remote --tags origin v1.12-prereg-r1 v1.14-prereg-r1 v0.42-prereg-r1 v1.11-prereg-r1
+   cd /Users/pablou/aias/_worktrees/v1.12 && git ls-remote --tags origin v1.12-prereg-r1 v1.14-prereg-r2 v0.42-prereg-r1 v1.11-prereg-r1
    ```
-   Expect: no `v1.12-prereg-r1`; `v1.14-prereg-r1` present with peeled commit `20fbc3423a4c328d14234f4c7c6d3aaecdce501a` (H5 active, gating only if v1.14's Stage 1 is SEPARABLE). `v0.42-prereg-r1` may or may not exist yet; either is fine (the coder is re-checked before coding).
+   Expect: no `v1.12-prereg-r1`; `v1.14-prereg-r2` present with peeled commit `a5feb4b1c4b9e9d19979129afcfd616a50b88c64` (H5 active, gating only if v1.14's Stage 1 is SEPARABLE; §12 (z): r2 superseded `v1.14-prereg-r1` → `20fbc342`). If `v1.14-prereg-r2` is absent or peels to another commit: stop and report (v1.14's `LOCK_STEPS_r2.md` must run first). `v0.42-prereg-r1` may or may not exist yet; either is fine (the coder is re-checked before coding).
 5. **H6 stays inactive:** list all remote tags and compare with the 2026-11-10 baseline below. If a new tag pre-registers a **Sentiment score on the t4 answers**, H6's activation must be recorded before the lock (§3): stop and report; do not lock.
    ```
    cd /Users/pablou/aias/_worktrees/v1.12 && git ls-remote --tags origin | grep -v "\^{}" | sed "s#.*refs/tags/##" | grep -E "^v(0\.4|1\.)"
    ```
-   Baseline (2026-11-10, ~2:50 pm CT): `v0.41-acquisition-locked v0.41-prereg-r1 v0.41-scoring-locked v1.10-prereg-r1 v1.10-prereg-r2 v1.11-prereg-r1 v1.14-prereg-r1` (plus older v1.3–v1.9 tags). A new `v0.42-prereg-r1` is expected and does not affect H6.
+   Baseline (2026-11-10, ~2:50 pm CT): `v0.41-acquisition-locked v0.41-prereg-r1 v0.41-scoring-locked v1.10-prereg-r1 v1.10-prereg-r2 v1.11-prereg-r1 v1.14-prereg-r1` (plus older v1.3–v1.9 tags); `v1.14-prereg-r2` (the v1.14 re-lock, §12 (z)) is expected new. A new `v0.42-prereg-r1` is expected and does not affect H6.
 
 ## 1. Verify the lock text (no writes)
 
@@ -30,7 +30,7 @@ a. Manifest:
    ```
    cd /Users/pablou/aias/_worktrees/v1.12 && shasum -a 256 -c osf/methodology/v1_12/prereg/LOCK_MANIFEST_v1_12.sha256 | grep -vc ": OK$"; wc -l < osf/methodology/v1_12/prereg/LOCK_MANIFEST_v1_12.sha256
    ```
-   Expect `0` failures and `38` lines. Spot values: prereg `64db8009…`, `score_v1_12.py` `7fd288bf…`, `code_t4_v0_42.py` `d0e4e685…`.
+   Expect `0` failures and `38` lines. Spot values (after §12 (z), 2026-11-10 evening): prereg `d5d14083…`, `score_v1_12.py` `f7689898…`, `calibration_N1_v1_12.json` `aa4f0b5f…`, `code_t4_v0_42.py` `d0e4e685…`.
 
 b. (Only if a manifested file changed) rebuild, then re-check with a.:
    ```
@@ -71,7 +71,7 @@ If step 0.4 showed `v0.42-prereg-r1` on origin, first fetch it so the anchor rec
 ```
 cd /Users/pablou/aias/_worktrees/v1.12 && PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_12/lock/write_anchor_v1_12.py
 ```
-Writes `osf/methodology/v1_12/anchor/osf_anchor_v1_12.json`: tag, tag object, commit, tree, remote ref, the 38 locked files plus the manifest (SHA-256 and git blob at the tag), H5 (v1.14-prereg-r1 → `20fbc342`, score-defining files and their blobs, gates only if Stage 1 is SEPARABLE), H6 INACTIVE, the coder pin (and its blob at `v0.42-prereg-r1` if that tag exists locally), MC_BrandFree hits. It refuses if the tag is not on origin, a file differs from the manifest, or v1.14's tag moved. Then commit and push the anchor (the tag does not move):
+Writes `osf/methodology/v1_12/anchor/osf_anchor_v1_12.json`: tag, tag object, commit, tree, remote ref, the 38 locked files plus the manifest (SHA-256 and git blob at the tag), H5 (v1.14-prereg-r2 → `a5feb4b1`, score-defining files and their blobs, gates only if Stage 1 is SEPARABLE), H6 INACTIVE, the coder pin (and its blob at `v0.42-prereg-r1` if that tag exists locally), MC_BrandFree hits. It refuses if the tag is not on origin, a file differs from the manifest, or v1.14's tag moved. Then commit and push the anchor (the tag does not move):
 ```
 cd /Users/pablou/aias/_worktrees/v1.12 && git add osf/methodology/v1_12/anchor/osf_anchor_v1_12.json && git commit -m "v1.12 anchor: osf_anchor_v1_12.json names v1.12-prereg-r1 (after the lock)" && git push origin v1.12
 ```

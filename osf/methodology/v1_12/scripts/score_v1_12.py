@@ -115,7 +115,8 @@ SCORER_NOTES (choices where the pre-registration is silent)
      CEP answers naming the brand (centred rho_w, categories with >= 5 units); C0 agreement = mean Jaccard of
      each CEP answer with the same model-run's C0 answer; spend = usd_billed of every raw line.
  --- clarification of 2026-11-10 (before the lock; section 12 (f)) ---
- N32 H5's Ranking measure is v1.14's locked R* (modal position; tag v1.14-prereg-r1 -> 20fbc342), read from v1.14's
+ N32 H5's Ranking measure is v1.14's locked R* (modal position; tag v1.14-prereg-r2 -> a5feb4b1 since section 12 (z),
+     which superseded v1.14-prereg-r1 -> 20fbc342 before any t4 answer existed), read from v1.14's
      Stage 1 output (osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json; --h5-stage1), never recomputed here.
      R*_S0 (v1.14's primary, pooled over N3 x 3 runs x 6 questions in S0) because H5 is defined on the t4 N3 S0 Phase B
      answers and Cov* is an S0 measure. Rated set = v1.14's (rated_S0; units of a substrate in v1.14's
@@ -125,7 +126,7 @@ SCORER_NOTES (choices where the pre-registration is silent)
      (rank_table_t4_v1_14.csv beside the Stage 1 file; SHA-256 must equal the Stage 1 record, else halt), lead-item
      rule, S0, floor 6 rankable mentions, rho_w(Cov*, MNP) centred, seed 112005, no bootstrap; its band reading is
      printed, never enters the gate.
- N34 Blindness guard: with H5 active (--run: tag v1.14-prereg-r1 exists; synthetic: a Stage 1 file is given) and no
+ N34 Blindness guard: with H5 active (--run: tag v1.14-prereg-r2 exists; synthetic: a Stage 1 file is given) and no
      Stage 1 file, the run refuses before reading any record (exit 3); --h5-unavailable REASON instead scores with H5
      UNDETERMINED (N30), logged. v1.12 computes no rank statistic on a t4 answer.
  N35 (refinement R1, decision-rule change) H5 gates only when v1.14's Stage 1 interim verdict (STAGE1_VERDICT) is
@@ -2073,7 +2074,7 @@ def read_extra(path):
 
 
 # --------------------------------------------------------------------------- H5: v1.14's R* (clarification of 2026-11-10, N32-N34)
-V114_PREREG_TAG = "v1.14-prereg-r1"                    # pushed 2026-11-10 (tag object 8398ab2d, commit 20fbc342)
+V114_PREREG_TAG = "v1.14-prereg-r2"                    # commit a5feb4b1 (r1 = 20fbc342, superseded before any t4 answer; section 12 (z))
 V114_STAGE1_REL = "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"   # written once by score_v1_14.py --stage 1
 V114_RANK_TABLE = "rank_table_t4_v1_14.csv"            # beside the Stage 1 file; its SHA-256 is in the Stage 1 file
 V114_FLOOR = 6                                         # v1.14 section 3.1 rating floor (rankable mentions)
@@ -2169,7 +2170,7 @@ def tag_on_origin(tag=PREREG_TAG):
 
 def h5_inputs(stage1_path, real, unavailable=None):
     """N32/N34: (active, R* map or None, source record or None) for H5. Real run: H5 is active when tag
-    v1.14-prereg-r1 exists (pushed before the v1.12 lock); synthetic run: active when a Stage 1 file is given. An active
+    v1.14-prereg-r2 exists (pushed before the v1.12 lock); synthetic run: active when a Stage 1 file is given. An active
     H5 without v1.14's Stage 1 output refuses the whole run (blindness guard) unless --h5-unavailable REASON is given,
     in which case H5 is UNDETERMINED with that reason (N30)."""
     active = local_tag_exists(V114_PREREG_TAG) if real else bool(stage1_path)
