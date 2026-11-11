@@ -1,0 +1,321 @@
+{
+  "phase": "v0.63",
+  "created_utc": "2026-11-11T01:27:13Z",
+  "passed": true,
+  "note": "Reproduces published per-brand values (t1-t3) and published t1 verdicts only. No hypothesis statistic and no alternative-panel verdict is computed before the lock.",
+  "reference_sha256": {
+    "osf/v41/v41_three_wave_table.csv": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219",
+    "osf/v23/v23_verdicts.json": "ff1e2c992b310c915fbcdac010904c28af267c48a6a90ac09be349905160e2ef",
+    "osf/v19/scoring_output_v0_19.txt": "8bcb30dc26336ee6a245e553f33655b5e6fc7e7974387f1f8b82b5539ca388ed",
+    "osf/v20/v20_verdicts.json": "338731ab1b5e05e19d3a686e0d53055a5fee97af788b445b3fdb6ed86b68da08",
+    "osf/v21/v21_verdicts.json": "5e8c56935d0fe7aa15812ee616ae1104f5ff1d0c923343c581ae67dcd079b37e",
+    "osf/v22/v22_verdicts.json": "c9e08c2b1113cbff53f9d1eceee1eab113abb2e0e9f946ddbb7558e09be203b5"
+  },
+  "checks": {
+    "P1_three_wave_table": {
+      "reference": "osf/v41/v41_three_wave_table.csv",
+      "rows": 336,
+      "values_checked": 672,
+      "mismatches": [],
+      "passed": true
+    },
+    "P2_t1_per_brand_v20_v22": {
+      "reference": [
+        "osf/v20/v20_verdicts.json",
+        "osf/v21/v21_verdicts.json",
+        "osf/v22/v22_verdicts.json"
+      ],
+      "keys": "phase_a.per_brand.<b>.cp, phase_b.per_brand.<b>.r_cat / r_cult",
+      "values_checked": 216,
+      "mismatches": [],
+      "passed": true
+    },
+    "P3_t1_v23_recall": {
+      "reference": "osf/v23/v23_verdicts.json",
+      "keys": "brand_details[].recall_total / recall_ea / recall_cc",
+      "values_checked": 72,
+      "mismatches": [],
+      "passed": true
+    },
+    "P4_t1_v19_case_lists": {
+      "reference": "osf/v19/scoring_output_v0_19.txt",
+      "published": {
+        "iwachu": {
+          "ZMF Headphones": [
+            6,
+            1
+          ],
+          "Spirit Torino": [
+            5,
+            0
+          ],
+          "Final Audio": [
+            6,
+            0
+          ]
+        },
+        "type1": {
+          "Audeze": [
+            13,
+            2
+          ],
+          "HiFiMan": [
+            12,
+            1
+          ],
+          "Dan Clark Audio": [
+            5,
+            0
+          ]
+        },
+        "cp_modal_share": {
+          "A": 0.5,
+          "B": 0.875
+        }
+      },
+      "reproduced": {
+        "iwachu": {
+          "Final Audio": [
+            6,
+            0
+          ],
+          "Spirit Torino": [
+            5,
+            0
+          ],
+          "ZMF Headphones": [
+            6,
+            1
+          ]
+        },
+        "type1": {
+          "Audeze": [
+            13,
+            2
+          ],
+          "Dan Clark Audio": [
+            5,
+            0
+          ],
+          "HiFiMan": [
+            12,
+            1
+          ]
+        },
+        "cp_modal_share": {
+          "A": 0.5,
+          "B": 0.875
+        }
+      },
+      "passed": true
+    },
+    "P5_t1_published_verdicts": {
+      "reference": [
+        "osf/v20/v20_verdicts.json",
+        "osf/v21/v21_verdicts.json",
+        "osf/v22/v22_verdicts.json"
+      ],
+      "detail": {
+        "v0.20": {
+          "reproduced": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "F2": "PARTIAL",
+            "C2_A": [
+              2,
+              0.75
+            ],
+            "C2_B": [
+              3,
+              0.625
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "IL_separation": 0.5862
+          },
+          "published": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "F2": "PARTIAL",
+            "C2_A": [
+              2,
+              0.75
+            ],
+            "C2_B": [
+              3,
+              0.625
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "IL_separation": 0.5862
+          }
+        },
+        "v0.21": {
+          "reproduced": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "F2": "EMERGED",
+            "C2_A": [
+              1,
+              1.0
+            ],
+            "C2_B": [
+              1,
+              1.0
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "IL_separation": -0.0726
+          },
+          "published": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "F2": "EMERGED",
+            "C2_A": [
+              1,
+              1.0
+            ],
+            "C2_B": [
+              1,
+              1.0
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "IL_separation": -0.0726
+          }
+        },
+        "v0.22": {
+          "reproduced": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "C2_A": [
+              1,
+              1.0
+            ],
+            "C2_B": [
+              2,
+              0.8
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "C2_D": [
+              1,
+              1.0
+            ],
+            "IL_separation": 0.3333
+          },
+          "published": {
+            "F1_v1_5": "FALSIFIED",
+            "F3": "GENERALIZED",
+            "C2_A": [
+              1,
+              1.0
+            ],
+            "C2_B": [
+              2,
+              0.8
+            ],
+            "C2_C": [
+              1,
+              1.0
+            ],
+            "C2_D": [
+              1,
+              1.0
+            ],
+            "IL_separation": 0.3333
+          }
+        }
+      },
+      "mismatches": [],
+      "passed": true
+    },
+    "P6_v1_6_increment1_table": {
+      "reference": "papers/v1_6/v1_6_ssrn_paper_draft.md (Increment 1 table; retrospective verdict table)",
+      "expected": {
+        "v0.20": {
+          "distinct": [
+            2,
+            3,
+            1
+          ],
+          "modal": [
+            0.75,
+            0.625,
+            1.0
+          ],
+          "class": "differential",
+          "F1": "FALSIFIED"
+        },
+        "v0.21": {
+          "distinct": [
+            1,
+            1,
+            1
+          ],
+          "modal": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "class": "uniform-saturation",
+          "F1": "REGIME-4-UNAVAILABLE-AT-RECOGNITION"
+        }
+      },
+      "reproduced": {
+        "v0.20": {
+          "distinct": [
+            2,
+            3,
+            1
+          ],
+          "modal": [
+            0.75,
+            0.625,
+            1.0
+          ],
+          "class": "differential",
+          "F1": "FALSIFIED"
+        },
+        "v0.21": {
+          "distinct": [
+            1,
+            1,
+            1
+          ],
+          "modal": [
+            1.0,
+            1.0,
+            1.0
+          ],
+          "class": "uniform-saturation",
+          "F1": "REGIME-4-UNAVAILABLE-AT-RECOGNITION"
+        }
+      },
+      "mismatches": [],
+      "passed": true
+    },
+    "P7_v22_own_prescreen": {
+      "reference": "osf/v22/v22_verdicts.json",
+      "published": "UNIFORM SATURATION",
+      "reproduced": "UNIFORM SATURATION",
+      "modal_cp_per_cell": {
+        "A": 6,
+        "B": 6,
+        "C": 6,
+        "D": 6
+      },
+      "passed": true
+    }
+  }
+}

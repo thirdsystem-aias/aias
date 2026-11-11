@@ -1,0 +1,711 @@
+{
+  "phase": "v0.63",
+  "created_utc": "2026-11-11T01:27:10Z",
+  "reads": "registries only (no answer file)",
+  "registry_sha256": {
+    "v0.19": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
+    "v0.20": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+    "v0.21": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+    "v0.22": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+    "v0.23": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d"
+  },
+  "rules": {
+    "structural": [
+      "R1_DROP_DEFUNCT",
+      "R2_DROP_COI_FLAGGED",
+      "R3_DROP_CROSS_CULTURAL",
+      "R4_DROP_BORDERLINE",
+      "R5_CASCADE_TOP5",
+      "R6_LEAVE_ONE_CELL_OUT"
+    ],
+    "data_dependent": [
+      "R7_RECOGNITION_ANCHORED",
+      "R8_RECALL_SOURCED_XWAVE"
+    ],
+    "random": [
+      "R9_RANDOM_75_STRATIFIED",
+      "R10_RANDOM_SIZE_MATCHED (H3 null)"
+    ],
+    "f4_descriptive_only": [
+      "R11_INDEPENDENT_ONLY"
+    ],
+    "disclosed_handling_H4": [
+      "R1_DROP_DEFUNCT",
+      "R2_DROP_COI_FLAGGED",
+      "R3_DROP_CROSS_CULTURAL"
+    ]
+  },
+  "structural_comparisons_upper_bound_H1": 150,
+  "substrates": {
+    "v0.19": {
+      "registry": "osf/v19/panel_registry_v0_19.csv",
+      "n_brands": 16,
+      "cells": {
+        "A": 8,
+        "B": 8
+      },
+      "flags": {
+        "Denon": [
+          "coi_flagged"
+        ],
+        "Final Audio": [
+          "borderline"
+        ],
+        "Focal": [
+          "borderline"
+        ],
+        "HiFiMan": [
+          "cross_cultural"
+        ],
+        "Stax": [
+          "cross_cultural"
+        ]
+      },
+      "families": [
+        "F1",
+        "F3"
+      ],
+      "variants": [
+        {
+          "rule": "R2_DROP_COI_FLAGGED",
+          "variant": "R2_DROP_COI_FLAGGED",
+          "n_kept": 15,
+          "dropped": [
+            "Denon"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R3_DROP_CROSS_CULTURAL",
+          "variant": "R3_DROP_CROSS_CULTURAL",
+          "n_kept": 14,
+          "dropped": [
+            "HiFiMan",
+            "Stax"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R4_DROP_BORDERLINE",
+          "variant": "R4_DROP_BORDERLINE",
+          "n_kept": 14,
+          "dropped": [
+            "Final Audio",
+            "Focal"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R5_CASCADE_TOP5",
+          "variant": "R5_CASCADE_TOP5",
+          "n_kept": 10,
+          "dropped": [
+            "Audio-Technica",
+            "Dan Clark Audio",
+            "Final Audio",
+            "Koss",
+            "Spirit Torino",
+            "Stax"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_A",
+          "n_kept": 8,
+          "dropped": [
+            "Audio-Technica",
+            "Beyerdynamic",
+            "Denon",
+            "Grado",
+            "Koss",
+            "Sennheiser",
+            "Sony",
+            "Stax"
+          ],
+          "cells_left": [
+            "B"
+          ],
+          "families_comparable_structurally": []
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_B",
+          "n_kept": 8,
+          "dropped": [
+            "Audeze",
+            "Dan Clark Audio",
+            "Final Audio",
+            "Focal",
+            "HiFiMan",
+            "Meze",
+            "Spirit Torino",
+            "ZMF Headphones"
+          ],
+          "cells_left": [
+            "A"
+          ],
+          "families_comparable_structurally": []
+        }
+      ]
+    },
+    "v0.20": {
+      "registry": "prereg/v0_20_registry.json",
+      "n_brands": 24,
+      "cells": {
+        "A": 8,
+        "B": 8,
+        "C": 8
+      },
+      "flags": {
+        "Drunk Elephant": [
+          "borderline"
+        ],
+        "Fenty Skin": [
+          "borderline"
+        ],
+        "Rare Beauty": [
+          "borderline"
+        ],
+        "The Ordinary": [
+          "borderline"
+        ]
+      },
+      "families": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "variants": [
+        {
+          "rule": "R4_DROP_BORDERLINE",
+          "variant": "R4_DROP_BORDERLINE",
+          "n_kept": 20,
+          "dropped": [
+            "Drunk Elephant",
+            "Fenty Skin",
+            "Rare Beauty",
+            "The Ordinary"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R5_CASCADE_TOP5",
+          "variant": "R5_CASCADE_TOP5",
+          "n_kept": 15,
+          "dropped": [
+            "Augustinus Bader",
+            "Bioderma",
+            "Cetaphil",
+            "Chanel Beauty",
+            "Clé de Peau Beauté",
+            "Eucerin",
+            "Glossier",
+            "La Prairie",
+            "Tower 28"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_A",
+          "n_kept": 16,
+          "dropped": [
+            "Chanel Beauty",
+            "Clé de Peau Beauté",
+            "Dior Beauty",
+            "Estée Lauder",
+            "La Mer",
+            "La Prairie",
+            "Lancôme",
+            "Sisley"
+          ],
+          "cells_left": [
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_B",
+          "n_kept": 16,
+          "dropped": [
+            "Augustinus Bader",
+            "Drunk Elephant",
+            "Fenty Skin",
+            "Glossier",
+            "Goop",
+            "Rare Beauty",
+            "Rhode",
+            "Tower 28"
+          ],
+          "cells_left": [
+            "A",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_C",
+          "n_kept": 16,
+          "dropped": [
+            "Bioderma",
+            "CeraVe",
+            "Cetaphil",
+            "Eucerin",
+            "La Roche-Posay",
+            "Paula's Choice",
+            "SkinCeuticals",
+            "The Ordinary"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        }
+      ]
+    },
+    "v0.21": {
+      "registry": "prereg/v0_21_registry.json",
+      "n_brands": 24,
+      "cells": {
+        "A": 8,
+        "B": 8,
+        "C": 8
+      },
+      "flags": {
+        "Charlotte Tilbury": [
+          "borderline"
+        ],
+        "Giorgio Armani Beauty": [
+          "borderline"
+        ],
+        "NYX Professional Makeup": [
+          "borderline"
+        ],
+        "Pat McGrath Labs": [
+          "borderline"
+        ],
+        "Tom Ford Beauty": [
+          "borderline"
+        ],
+        "e.l.f. Cosmetics": [
+          "borderline"
+        ]
+      },
+      "families": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "variants": [
+        {
+          "rule": "R4_DROP_BORDERLINE",
+          "variant": "R4_DROP_BORDERLINE",
+          "n_kept": 18,
+          "dropped": [
+            "Charlotte Tilbury",
+            "Giorgio Armani Beauty",
+            "NYX Professional Makeup",
+            "Pat McGrath Labs",
+            "Tom Ford Beauty",
+            "e.l.f. Cosmetics"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R5_CASCADE_TOP5",
+          "variant": "R5_CASCADE_TOP5",
+          "n_kept": 15,
+          "dropped": [
+            "Anastasia Beverly Hills",
+            "Chantecaille",
+            "Hourglass",
+            "Huda Beauty",
+            "Kylie Cosmetics",
+            "Laura Mercier",
+            "Milani Cosmetics",
+            "Wet n Wild",
+            "e.l.f. Cosmetics"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_A",
+          "n_kept": 16,
+          "dropped": [
+            "Bobbi Brown",
+            "Chantecaille",
+            "Giorgio Armani Beauty",
+            "Hourglass",
+            "Laura Mercier",
+            "MAC Cosmetics",
+            "NARS",
+            "Tom Ford Beauty"
+          ],
+          "cells_left": [
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_B",
+          "n_kept": 16,
+          "dropped": [
+            "Anastasia Beverly Hills",
+            "Charlotte Tilbury",
+            "Fenty Beauty",
+            "Haus Labs",
+            "Huda Beauty",
+            "Kylie Cosmetics",
+            "Pat McGrath Labs",
+            "Rare Beauty"
+          ],
+          "cells_left": [
+            "A",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_C",
+          "n_kept": 16,
+          "dropped": [
+            "CoverGirl",
+            "L'Oréal Paris",
+            "Maybelline",
+            "Milani Cosmetics",
+            "NYX Professional Makeup",
+            "Revlon",
+            "Wet n Wild",
+            "e.l.f. Cosmetics"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        }
+      ]
+    },
+    "v0.22": {
+      "registry": "prereg/v0_22_automotive_content.py",
+      "n_brands": 24,
+      "cells": {
+        "A": 7,
+        "B": 5,
+        "C": 7,
+        "D": 5
+      },
+      "flags": {
+        "Mercury": [
+          "defunct"
+        ],
+        "Oldsmobile": [
+          "defunct"
+        ],
+        "Plymouth": [
+          "defunct"
+        ],
+        "Pontiac": [
+          "defunct"
+        ],
+        "Saturn": [
+          "defunct"
+        ]
+      },
+      "families": [
+        "F1",
+        "F2",
+        "F3"
+      ],
+      "variants": [
+        {
+          "rule": "R1_DROP_DEFUNCT",
+          "variant": "R1_DROP_DEFUNCT",
+          "n_kept": 19,
+          "dropped": [
+            "Mercury",
+            "Oldsmobile",
+            "Plymouth",
+            "Pontiac",
+            "Saturn"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R5_CASCADE_TOP5",
+          "variant": "R5_CASCADE_TOP5",
+          "n_kept": 20,
+          "dropped": [
+            "BMW",
+            "Nissan",
+            "Porsche",
+            "Volkswagen"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_A",
+          "n_kept": 17,
+          "dropped": [
+            "BMW",
+            "Bentley",
+            "Cadillac",
+            "Jaguar",
+            "Mercedes-Benz",
+            "Porsche",
+            "Rolls-Royce"
+          ],
+          "cells_left": [
+            "B",
+            "C",
+            "D"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_B",
+          "n_kept": 19,
+          "dropped": [
+            "Fisker",
+            "Lucid",
+            "Polestar",
+            "Rivian",
+            "Tesla"
+          ],
+          "cells_left": [
+            "A",
+            "C",
+            "D"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_C",
+          "n_kept": 17,
+          "dropped": [
+            "Chevrolet",
+            "Ford",
+            "Honda",
+            "Hyundai",
+            "Nissan",
+            "Toyota",
+            "Volkswagen"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "D"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F2",
+            "F3"
+          ]
+        }
+      ]
+    },
+    "v0.23": {
+      "registry": "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json",
+      "n_brands": 24,
+      "cells": {
+        "-": 24
+      },
+      "flags": {
+        "S01": [
+          "conglomerate"
+        ],
+        "S02": [
+          "conglomerate"
+        ],
+        "S03": [
+          "conglomerate"
+        ],
+        "S04": [
+          "conglomerate"
+        ],
+        "S05": [
+          "conglomerate"
+        ],
+        "S06": [
+          "conglomerate"
+        ],
+        "S07": [
+          "conglomerate"
+        ],
+        "S08": [
+          "conglomerate"
+        ],
+        "S09": [
+          "conglomerate"
+        ],
+        "S12": [
+          "conglomerate"
+        ],
+        "S13": [
+          "conglomerate"
+        ],
+        "S16": [
+          "conglomerate"
+        ],
+        "S20": [
+          "conglomerate"
+        ],
+        "S22": [
+          "conglomerate"
+        ]
+      },
+      "families": [],
+      "variants": [
+        {
+          "rule": "R11_INDEPENDENT_ONLY",
+          "variant": "R11_INDEPENDENT_ONLY",
+          "n_kept": 10,
+          "dropped": [
+            "S01",
+            "S02",
+            "S03",
+            "S04",
+            "S05",
+            "S06",
+            "S07",
+            "S08",
+            "S09",
+            "S12",
+            "S13",
+            "S16",
+            "S20",
+            "S22"
+          ],
+          "cells_left": [
+            "-"
+          ],
+          "families_comparable_structurally": []
+        }
+      ]
+    }
+  }
+}
