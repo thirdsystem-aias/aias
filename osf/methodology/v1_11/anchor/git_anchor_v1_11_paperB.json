@@ -1,0 +1,99 @@
+{
+  "tag": "v1.11-paperB-prereg-r1",
+  "tag_object": "6834708758ab97415f08e5b4887b71e630d2ffeb",
+  "commit": "cbfeeb441475964dcb3e8c5dd7ad6fe6a9069c55",
+  "tree": "95a039635d08c0ca11f834443181bfe536aac37d",
+  "branch": "v1.11-paperB",
+  "tagger_date": "2026-11-11T00:50:07-06:00",
+  "remote_tag_ref": "6834708758ab97415f08e5b4887b71e630d2ffeb\trefs/tags/v1.11-paperB-prereg-r1",
+  "recorded_utc": "2026-11-11T06:53:32+00:00",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_11/paperB/ prereg, guide, statement, forms, packets, lock, anchor) deposited 2026-11-11 06:53 UTC",
+  "lock_manifest_sha256": "8f5060cfb5aba5db7294b67136437a0331836f99c20751da4e6e37ebbf4d4ae9",
+  "locked_files": {
+    "osf/methodology/v1_11/paperB/prereg/PRE_REGISTRATION_v1_11_paperB.md": {
+      "sha256": "3583d604f42510e3e3420285c302d940e291f9e72d90741bfc76c309d46fd2ec",
+      "git_blob": "2438fe430b94e9a6f5cc63da76f1ff74e2efb9a2"
+    },
+    "osf/methodology/v1_11/paperB/guide/STUDENT_GUIDE_v1_11_paperB.md": {
+      "sha256": "2f2c7f859cee8c3d71e8ea275c9fcfc2c948802382485ee3848e2a2b63d3b059",
+      "git_blob": "cb7e249b59327d67c38e8f7d541631cef5827eed"
+    },
+    "osf/methodology/v1_11/paperB/guide/source/Main.dc.html": {
+      "sha256": "fc577e17cc7664dad1e6d85fe6c6b00e5e9762f62c56ae98d3cdd62dee4c1744",
+      "git_blob": "7fd10a6248fa5e6ef6c0a7d4b3389df734997a47"
+    },
+    "osf/methodology/v1_11/paperB/guide/source/Rules.dc.html": {
+      "sha256": "806cd6313650b33b99a3fd8e557ddb67c0dd27068852b42ea233e5e4fafa9d23",
+      "git_blob": "93827d39b38e86fe85df430703b75d4ac21b3a22"
+    },
+    "osf/methodology/v1_11/paperB/guide/guide_vs_judge_v1_11_paperB.json": {
+      "sha256": "f19324776028a3d0ecaca2adf5b01aa5d6d75c9dda4adabbda1915524f3b3b9b",
+      "git_blob": "219ad01f94b98dade83bf123e9900f304baa8bf3"
+    },
+    "osf/methodology/v1_11/paperB/statement/statement_exercise_doc.md": {
+      "sha256": "4002f94cc02fd84d577d9f354119ac608f195350da240e7a3af2b5ca740152bf",
+      "git_blob": "58e28f6235f0a743266bf9bd904310a2d96dee61"
+    },
+    "osf/methodology/v1_11/paperB/statement/statement_source.json": {
+      "sha256": "14be9552ca176cd6a6698705b6eb489dbc666b95292230bb7007aee6a69eb2c2",
+      "git_blob": "0cff6a69b5fa6cab3c666947310a072a0eeed13c"
+    },
+    "osf/methodology/v1_11/paperB/forms/Code.gs": {
+      "sha256": "091c4e5503d4cc351617f14bd6084a798727a47f82d06a37613f3647ece9a2c5",
+      "git_blob": "cafb18cc6d7cad46da4bc892063b6501aed24d9c"
+    },
+    "osf/methodology/v1_11/paperB/forms/mock_test.js": {
+      "sha256": "289f704afdf8f480fd7773aa761027d5c0aa28d35c6c5d63ce264c916ac3b59b",
+      "git_blob": "e354ac45146f5516a5e2ad44fa2a524c84f7961d"
+    },
+    "osf/methodology/v1_11/paperB/forms/mock_driver.js": {
+      "sha256": "3557c73a6a192695303da21669cfbb69e08d4cf7849e4207f32b0eb1f3c1e443",
+      "git_blob": "50ef04ef9b4c1cdc3c91c85b5a3e770b3d6e717d"
+    },
+    "osf/methodology/v1_11/paperB/forms/mock_run.sh": {
+      "sha256": "bf720cc1b058413a7d722aea4bfb7990a7638f4bb264c27b3e2795dfe8325dd7",
+      "git_blob": "41f81c49d9eb99090c4724db5fbdeb6cafd6cfc5"
+    },
+    "osf/methodology/v1_11/paperB/packets/make_packets_v1_11_paperB.py": {
+      "sha256": "22a35c408bea18d35bf41f8e083cacbd4a28b8e0714c143d6e03700860fe75d9",
+      "git_blob": "09f89017e65bbcbacb2e4f26b5252280d6dac239"
+    },
+    "osf/methodology/v1_11/paperB/packets/coi_screen_v1_11_paperB.py": {
+      "sha256": "f56e0b09519150a0b7153df7b5755d76eea17d98db693e3f2b538a281df6027b",
+      "git_blob": "9af7bb9baae16b89712411c22e826567f1502625"
+    },
+    "osf/methodology/v1_11/paperB/packets/packet_design_N19_b.json": {
+      "sha256": "830254b6e21143b7b2e90c2e6c8b2efc0412c482160f4a2abde0485c3ef049b0",
+      "git_blob": "35caa9ffe8f27a437a9a146d10abc1c94d55b276"
+    },
+    "osf/methodology/v1_11/paperB/lock/paperB_lock_v1_11.py": {
+      "sha256": "d884c8e99454954f3dccf34882b923069524b6ec733b22047528fe54fb6e02a0",
+      "git_blob": "073ad14159c7990fcf2def3f11a5064d129d51f7"
+    },
+    "osf/methodology/v1_11/paperB/lock/test_paperB_lock_v1_11.py": {
+      "sha256": "39398e662dc000964e7658ddc7ff637e6be7bc2555d1d9ca4facf6b867522c58",
+      "git_blob": "481fb1796b82d7b79f53e8d450131544ed2a7e24"
+    },
+    "osf/methodology/v1_11/paperB/LOCK_STEPS.md": {
+      "sha256": "94c6d5a430781c83c37d48b48f72d73676e920e26dd44b942c146e906c7f5e68",
+      "git_blob": "f1820acc6a3be40481d44bfefa15f46ec6ea160b"
+    },
+    "osf/methodology/v1_11/paperB/human_sample_v1_11_paperB_r1.csv": {
+      "sha256": "94d120f4a752d72f4fe96f90523fb3be663b3feba92fc3ff0dcdd2a11da0295e",
+      "git_blob": "fceb497862e5dc916b52d9c446aa7fd2c97695c4"
+    },
+    "osf/methodology/v1_11/prereg/judge_prompt_v1_11.md": {
+      "sha256": "bcc079d38c677bd3eb616e6532e15b799c36d976431e3f4d09fc605979c1c284",
+      "git_blob": "cfb2075cfef55b6a37e013f96453acaa27b13733"
+    },
+    "osf/methodology/v1_11/anchor/DEVIATIONS.md": {
+      "sha256": "10645670a0f81a5149185789dde10a6714d0f3b972554992dfee8de5a893eaf0",
+      "git_blob": "202369aa80191052cf7b8dfbb49a3706e49964ac"
+    },
+    "osf/methodology/v1_11/paperB/prereg/LOCK_MANIFEST_v1_11_paperB.sha256": {
+      "sha256": "8f5060cfb5aba5db7294b67136437a0331836f99c20751da4e6e37ebbf4d4ae9",
+      "git_blob": "65f723e4eede3ca731a2b3a453edc279fda309f8"
+    }
+  }
+}
