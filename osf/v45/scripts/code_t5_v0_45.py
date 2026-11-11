@@ -27,7 +27,10 @@ No candidate passes: v0.23 recognition is not coded at t5 (section 5.4).
 
 NEVER calls a model API unless --judge / --parity is given (both refuse before the lock; tests use fakes only).
 Modes: --code RAW OUTDIR [--judge MODEL] | --parity MODEL --t4-raw FILE --t4-coded DIR (J1 record in
-osf/v45/data/judge_parity_J1_v0_45.json: every run, and the first passing candidate with its t4 codes)
+osf/v45/data/judge_parity_J1_v0_45.json: every run with its recorded usage and cost (r1), and the first passing
+candidate with its t4 codes). t4 inputs for J1 (pre-registration section 5.1, r1): the raw file at tag
+v0.42-acquisition-locked (SHA-256 f3109091...) and the coded tables at v0.42 commit c84f6fa (v23_phase_a.csv SHA-256
+52a1c9d7...: the 72 Sonnet 4.5 labels, coded on 2026-11-11 through the legacy organization's key).
 """
 import hashlib
 import json
@@ -153,7 +156,17 @@ def run_j1(model, inner, t3_recs, t4_recs):
     res["verdict"] = j1_verdict(res["t3"], res["t4"])
     res["judge"] = model
     res["requests"] = len(client.log)
+    res["usage"] = j1_usage(model, client.log)       # r1: J1's spend from recorded usage (MC_Budget; judge reserve)
     return res
+
+
+def j1_usage(model, log):
+    """Recorded tokens of every J1 request and their cost at the model's standard price (budget_v0_45)."""
+    import budget_v0_45 as BG
+    tin = sum(e.get("input_tokens") or 0 for e in log)
+    tout = sum(e.get("output_tokens") or 0 for e in log)
+    return {"requests": len(log), "input_tokens": tin, "output_tokens": tout,
+            "usd": BG.part_cost(model, {"mode": "standard", "input_tokens": tin, "output_tokens": tout})}
 
 
 def code_t5(calls, judge_model=None, inner=None, probes=None):
@@ -184,7 +197,7 @@ def parity_main(model, t4_raw, t4_coded, out=J1_PATH):
         hist.update({"judge": model, "verdict": res["verdict"], "t4_codes": res["t4_codes"]})
     Path(out).parent.mkdir(parents=True, exist_ok=True)
     Path(out).write_text(json.dumps(hist, indent=2), encoding="utf-8")
-    print(f"J1 {model}: {'PASS' if res['verdict']['pass'] else 'FAIL'} {res['verdict']} -> {out}")
+    print(f"J1 {model}: {'PASS' if res['verdict']['pass'] else 'FAIL'} {res['verdict']} usage {res['usage']} -> {out}")
     return 0 if res["verdict"]["pass"] else 2
 
 

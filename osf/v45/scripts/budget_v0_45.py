@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """
-budget_v0_45.py -- AIAS(TM) v0.45 (t5 repeat wave, pre-registration r0 draft): price table, cost of a call from its
+budget_v0_45.py -- AIAS(TM) v0.45 (t5 repeat wave, pre-registration r1): price table, cost of a call from its
 ACTUAL recorded usage, and the collection budget guard (pause at $80, hard stop at $100; Pablo's rule of 2026-11-10).
-Hand-edited copy of osf/v42/scripts/budget_v0_42.py (branch v0.42 @ 61515b4). Changed: this docstring; SOURCES (pages
+Hand-edited copy of osf/v42/scripts/budget_v0_42.py at tag v0.42-prereg-r1 (commit 58d1891, the code t4 ran; r0 copied
+it from v0.42 @ 61515b4, and r1 adds v0.42's clarification C28 to legacy_part, below). Changed: this docstring; SOURCES (pages
 read again for v0.45 on 2026-11-10, about 5:10-5:30 pm US Central: every price below was found unchanged, and Gemini 4
 Argon's December price was read on Google's Vertex AI pricing page, since the AI Studio model page now shows only the
 introductory price); PROVIDER and TOKEN_PRICES gain the two candidate successors of the v0.23 recognition judge
@@ -12,6 +13,11 @@ Model status read the same day: Anthropic model deprecations page (claude-fable-
 2027-11-09; claude-sonnet-4-5-20250929 retires 2026-11-30, recommended replacement claude-sonnet-5-5); OpenAI
 gpt-6-astra page and deprecations page (no GPT-6 model deprecated); Google Gemini API deprecations page (gemini-4-argon
 not listed) and changelog (gemini-4-argon GA 2026-10-13; newest entry 2026-10-30).
+Read again for r1 on 2026-11-11, 08:36-08:38 US Central (14:36-14:38 UTC): every price in TOKEN_PRICES, PRICE_CHANGES
+and SEARCH_FEE unchanged (Anthropic pricing page; OpenAI pricing and gpt-6-astra pages; Vertex AI pricing page: Gemini 4
+Argon Global $2.00 / $10.00 through 2026-11-30, $4.00 / $20.00 starting 2026-12-01; grounding $14 per 1,000 grounding
+queries beyond 5,000 per month); status unchanged (claude-fable-5-2 Active, not sooner than 2027-11-09; gpt-6-astra
+"Our most capable model", no deprecation; gemini-4-argon GA since 2026-10-13, no deprecation listed).
 
 Prices as v0.42 read them on 2026-11-10 (PRE_REGISTRATION_v0_42.md section 4.5, r2), confirmed again for v0.45:
   Anthropic  https://platform.claude.com/docs/about-claude/pricing  (model table, Batch API table, web search
@@ -35,11 +41,17 @@ Cost of one billed request ("usage part"):
   per-search fee is charged in full in every mode (the pages state the batch discount for tokens only).
 A raw record's cost = the sum over its `usage_parts`; a record without `usage_parts` (older format) is costed as one
 standard part from its token fields and its S1 search count.
+Clarification C28 (2026-11-11; conservative direction only): a part's input_tokens include Google's
+tool_use_prompt_token_count (also kept as tool_use_prompt_tokens); its n_searches is the larger of the searches in the
+record's `search` and the provider's billed tool calls (OpenAI: every web_search_call output item, open_page and
+find_in_page included; Anthropic: usage.server_tool_use.web_search_requests; Google: at least one query when web
+chunks were returned); a synchronous request reserves the worst case of two requests (it may re-send an empty answer).
 
-Guard: spent = JUDGE_RESERVE_USD (the v0.23 Phase A recognition judge, Claude Sonnet 4.5, run by the coder after
-collection) + the cost of every raw line already written. Before a request is sent, its WORST-CASE cost (WORST below)
-is reserved; the request is refused if spent + reservations + worst case > $100 (hard stop), and no new request is
-started once spent >= $80 unless the pause has been approved (state file; `acquire_v0_42.py --approve-past-80`).
+Guard: spent = JUDGE_RESERVE_USD (the successor v0.23 Phase A recognition judge: J1 parity and t5 coding, run by the
+coder; in v0.42 this was Claude Sonnet 4.5) + the cost of every raw line already written. Before a request is sent, its
+WORST-CASE cost (WORST below) is reserved; the request is refused if spent + reservations + worst case > $100 (hard
+stop), and no new request is started once spent >= $80 unless the pause has been approved (state file;
+`acquire_v0_45.py --approve-past-80`).
 """
 import json
 import threading
@@ -121,7 +133,9 @@ def part_cost(model, part, when_utc=None):
 def legacy_part(rec):
     s = rec.get("search") or {}
     n = (s.get("n_searches") or len(s.get("queries") or [])) if rec.get("condition") == "S1" else 0
-    return {"mode": "standard", "input_tokens": rec.get("input_tokens"), "output_tokens": rec.get("output_tokens"),
+    tin, tool = rec.get("input_tokens"), rec.get("tool_use_prompt_tokens")          # C28
+    tin = None if tin is None and tool is None else (tin or 0) + (tool or 0)
+    return {"mode": "standard", "input_tokens": tin, "output_tokens": rec.get("output_tokens"),
             "thinking_tokens": rec.get("thinking_tokens"), "n_searches": n}
 
 

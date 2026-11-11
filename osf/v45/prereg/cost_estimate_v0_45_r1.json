@@ -1,0 +1,597 @@
+{
+  "checks": {
+    "lines": 990,
+    "max_abs_recorded_minus_repriced_t4": 0.0,
+    "calls": 876,
+    "calls_answered": 876,
+    "error_lines_with_billed_parts": 0,
+    "recorded_calls_usd": 67.455136,
+    "served_differs_from_requested": 0
+  },
+  "p90_per_call": {
+    "claude-fable-5-2|B-S0": {
+      "n_calls": 90,
+      "mean_t5": 0.025743377777777778,
+      "p90_t5": 0.0701476
+    },
+    "claude-fable-5-2|A-yn": {
+      "n_calls": 88,
+      "mean_t5": 0.0018393181818181818,
+      "p90_t5": 0.0033284
+    },
+    "claude-fable-5-2|A-open": {
+      "n_calls": 24,
+      "mean_t5": 0.08209033333333333,
+      "p90_t5": 0.0935388
+    },
+    "claude-fable-5-2|B-S1": {
+      "n_calls": 90,
+      "mean_t5": 0.17476653333333333,
+      "p90_t5": 0.33819
+    },
+    "gpt-6-astra|B-S0": {
+      "n_calls": 90,
+      "mean_t5": 0.042134333333333336,
+      "p90_t5": 0.09042
+    },
+    "gpt-6-astra|A-yn": {
+      "n_calls": 88,
+      "mean_t5": 0.0006989772727272727,
+      "p90_t5": 0.001245
+    },
+    "gpt-6-astra|A-open": {
+      "n_calls": 24,
+      "mean_t5": 0.19150833333333334,
+      "p90_t5": 0.21642100000000003
+    },
+    "gpt-6-astra|B-S1": {
+      "n_calls": 90,
+      "mean_t5": 0.3931403333333333,
+      "p90_t5": 0.8265460000000001
+    },
+    "gemini-4-argon|B-S0": {
+      "n_calls": 90,
+      "mean_t5": 0.026133777777777777,
+      "p90_t5": 0.0363228
+    },
+    "gemini-4-argon|A-yn": {
+      "n_calls": 88,
+      "mean_t5": 0.0003040909090909091,
+      "p90_t5": 0.0003200000000000001
+    },
+    "gemini-4-argon|A-open": {
+      "n_calls": 24,
+      "mean_t5": 0.03815966666666667,
+      "p90_t5": 0.0423848
+    },
+    "gemini-4-argon|B-S1": {
+      "n_calls": 90,
+      "mean_t5": 0.03434377777777778,
+      "p90_t5": 0.0502688
+    }
+  },
+  "cells": {
+    "claude-fable-5-2|1 B-S0 run 1": {
+      "model": "claude-fable-5-2",
+      "block": "1 B-S0 run 1",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 0.773788,
+      "t5_central_usd": 0.773788,
+      "t5_high_usd": 2.3148708,
+      "input_tokens": 1282,
+      "output_tokens": 38433,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "claude-fable-5-2|2 B-S0 run 2": {
+      "model": "claude-fable-5-2",
+      "block": "2 B-S0 run 2",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 0.743048,
+      "t5_central_usd": 0.743048,
+      "t5_high_usd": 2.3148708,
+      "input_tokens": 1282,
+      "output_tokens": 36896,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "claude-fable-5-2|3 B-S0 run 3": {
+      "model": "claude-fable-5-2",
+      "block": "3 B-S0 run 3",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 0.800068,
+      "t5_central_usd": 0.800068,
+      "t5_high_usd": 2.3148708,
+      "input_tokens": 1282,
+      "output_tokens": 39747,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "claude-fable-5-2|4 A-S0 run 1": {
+      "model": "claude-fable-5-2",
+      "block": "4 A-S0 run 1",
+      "mode": "batch",
+      "calls": 112,
+      "t4_usd": 2.132028,
+      "t5_central_usd": 2.132028,
+      "t5_high_usd": 2.7916134400000003,
+      "input_tokens": 5627,
+      "output_tokens": 105476,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 112
+    },
+    "claude-fable-5-2|5 B-S1 run 1": {
+      "model": "claude-fable-5-2",
+      "block": "5 B-S1 run 1",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 5.0153,
+      "t5_central_usd": 5.0153,
+      "t5_high_usd": 11.16027,
+      "input_tokens": 590645,
+      "output_tokens": 108636,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 48,
+      "billed_parts": 30
+    },
+    "claude-fable-5-2|6 B-S1 run 2": {
+      "model": "claude-fable-5-2",
+      "block": "6 B-S1 run 2",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 5.303884,
+      "t5_central_usd": 5.303884,
+      "t5_high_usd": 11.16027,
+      "input_tokens": 694561,
+      "output_tokens": 100282,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 52,
+      "billed_parts": 30
+    },
+    "claude-fable-5-2|7 B-S1 run 3": {
+      "model": "claude-fable-5-2",
+      "block": "7 B-S1 run 3",
+      "mode": "batch",
+      "calls": 30,
+      "t4_usd": 5.409804,
+      "t5_central_usd": 5.409804,
+      "t5_high_usd": 11.16027,
+      "input_tokens": 704426,
+      "output_tokens": 103105,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 53,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|1 B-S0 run 1": {
+      "model": "gpt-6-astra",
+      "block": "1 B-S0 run 1",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 1.27713,
+      "t5_central_usd": 1.27713,
+      "t5_high_usd": 2.9838600000000004,
+      "input_tokens": 783,
+      "output_tokens": 25386,
+      "thinking_tokens": 6222,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|2 B-S0 run 2": {
+      "model": "gpt-6-astra",
+      "block": "2 B-S0 run 2",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 1.23583,
+      "t5_central_usd": 1.23583,
+      "t5_high_usd": 2.9838600000000004,
+      "input_tokens": 783,
+      "output_tokens": 24560,
+      "thinking_tokens": 5552,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|3 B-S0 run 3": {
+      "model": "gpt-6-astra",
+      "block": "3 B-S0 run 3",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 1.27913,
+      "t5_central_usd": 1.27913,
+      "t5_high_usd": 2.9838600000000004,
+      "input_tokens": 783,
+      "output_tokens": 25426,
+      "thinking_tokens": 6609,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|4 A-S0 run 1": {
+      "model": "gpt-6-astra",
+      "block": "4 A-S0 run 1",
+      "mode": "standard",
+      "calls": 112,
+      "t4_usd": 4.65771,
+      "t5_central_usd": 4.65771,
+      "t5_high_usd": 5.8340304000000005,
+      "input_tokens": 3356,
+      "output_tokens": 92483,
+      "thinking_tokens": 15319,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 112
+    },
+    "gpt-6-astra|5 B-S1 run 1": {
+      "model": "gpt-6-astra",
+      "block": "5 B-S1 run 1",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 11.354460000000001,
+      "t5_central_usd": 11.354460000000001,
+      "t5_high_usd": 27.276018000000004,
+      "input_tokens": 873981,
+      "output_tokens": 33293,
+      "thinking_tokens": 11606,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 95,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|6 B-S1 run 2": {
+      "model": "gpt-6-astra",
+      "block": "6 B-S1 run 2",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 11.71823,
+      "t5_central_usd": 11.71823,
+      "t5_high_usd": 27.276018000000004,
+      "input_tokens": 905218,
+      "output_tokens": 33521,
+      "thinking_tokens": 12411,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 99,
+      "billed_parts": 30
+    },
+    "gpt-6-astra|7 B-S1 run 3": {
+      "model": "gpt-6-astra",
+      "block": "7 B-S1 run 3",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 12.30994,
+      "t5_central_usd": 12.30994,
+      "t5_high_usd": 27.276018000000004,
+      "input_tokens": 961229,
+      "output_tokens": 33353,
+      "thinking_tokens": 12042,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 103,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|1 B-S0 run 1": {
+      "model": "gemini-4-argon",
+      "block": "1 B-S0 run 1",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.38408,
+      "t5_central_usd": 0.76816,
+      "t5_high_usd": 1.1986524000000003,
+      "input_tokens": 1540,
+      "output_tokens": 38100,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|2 B-S0 run 2": {
+      "model": "gemini-4-argon",
+      "block": "2 B-S0 run 2",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.39452,
+      "t5_central_usd": 0.78904,
+      "t5_high_usd": 1.1986524000000003,
+      "input_tokens": 1540,
+      "output_tokens": 39144,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|3 B-S0 run 3": {
+      "model": "gemini-4-argon",
+      "block": "3 B-S0 run 3",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.39742,
+      "t5_central_usd": 0.79484,
+      "t5_high_usd": 1.1986524000000003,
+      "input_tokens": 1540,
+      "output_tokens": 39434,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|4 A-S0 run 1": {
+      "model": "gemini-4-argon",
+      "block": "4 A-S0 run 1",
+      "mode": "standard",
+      "calls": 112,
+      "t4_usd": 0.471296,
+      "t5_central_usd": 0.942592,
+      "t5_high_usd": 1.14993472,
+      "input_tokens": 6193,
+      "output_tokens": 45891,
+      "thinking_tokens": 0,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 0,
+      "billed_parts": 112
+    },
+    "gemini-4-argon|5 B-S1 run 1": {
+      "model": "gemini-4-argon",
+      "block": "5 B-S1 run 1",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.62382,
+      "t5_central_usd": 1.06564,
+      "t5_high_usd": 1.6588704000000003,
+      "input_tokens": 7120,
+      "output_tokens": 42468,
+      "thinking_tokens": 290,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 13,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|6 B-S1 run 2": {
+      "model": "gemini-4-argon",
+      "block": "6 B-S1 run 2",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.60386,
+      "t5_central_usd": 1.02572,
+      "t5_high_usd": 1.6588704000000003,
+      "input_tokens": 7120,
+      "output_tokens": 40667,
+      "thinking_tokens": 95,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 13,
+      "billed_parts": 30
+    },
+    "gemini-4-argon|7 B-S1 run 3": {
+      "model": "gemini-4-argon",
+      "block": "7 B-S1 run 3",
+      "mode": "standard",
+      "calls": 30,
+      "t4_usd": 0.56979,
+      "t5_central_usd": 0.99958,
+      "t5_high_usd": 1.6588704000000003,
+      "input_tokens": 7120,
+      "output_tokens": 41464,
+      "thinking_tokens": 91,
+      "tool_use_prompt_tokens": 0,
+      "n_searches": 10,
+      "billed_parts": 30
+    }
+  },
+  "blocks": [
+    {
+      "block": "1 B-S0 run 1",
+      "calls": 90,
+      "t4_usd": 2.434998,
+      "central": 2.819078,
+      "high": 6.497383200000001,
+      "cumulative_central": 5.319078,
+      "cumulative_high": 8.997383200000002
+    },
+    {
+      "block": "2 B-S0 run 2",
+      "calls": 90,
+      "t4_usd": 2.373398,
+      "central": 2.767918,
+      "high": 6.497383200000001,
+      "cumulative_central": 8.086996,
+      "cumulative_high": 15.494766400000003
+    },
+    {
+      "block": "3 B-S0 run 3",
+      "calls": 90,
+      "t4_usd": 2.476618,
+      "central": 2.874038,
+      "high": 6.497383200000001,
+      "cumulative_central": 10.961034,
+      "cumulative_high": 21.992149600000005
+    },
+    {
+      "block": "4 A-S0 run 1",
+      "calls": 336,
+      "t4_usd": 7.2610339999999995,
+      "central": 7.73233,
+      "high": 9.775578560000001,
+      "cumulative_central": 18.693364,
+      "cumulative_high": 31.767728160000004
+    },
+    {
+      "block": "5 B-S1 run 1",
+      "calls": 90,
+      "t4_usd": 16.99358,
+      "central": 17.4354,
+      "high": 40.0951584,
+      "cumulative_central": 36.128764000000004,
+      "cumulative_high": 71.86288656
+    },
+    {
+      "block": "6 B-S1 run 2",
+      "calls": 90,
+      "t4_usd": 17.625974,
+      "central": 18.047834,
+      "high": 40.0951584,
+      "cumulative_central": 54.176598000000006,
+      "cumulative_high": 111.95804496000001
+    },
+    {
+      "block": "7 B-S1 run 3",
+      "calls": 90,
+      "t4_usd": 18.289534,
+      "central": 18.719324,
+      "high": 40.0951584,
+      "cumulative_central": 72.89592200000001,
+      "cumulative_high": 152.05320336
+    }
+  ],
+  "per_model": {
+    "claude-fable-5-2": {
+      "calls": 292,
+      "t4_usd": 20.17792,
+      "t5_central_usd": 20.17792,
+      "t5_high_usd": 43.21703584
+    },
+    "gpt-6-astra": {
+      "calls": 292,
+      "t4_usd": 43.83243,
+      "t5_central_usd": 43.83243,
+      "t5_high_usd": 96.61366440000002
+    },
+    "gemini-4-argon": {
+      "calls": 292,
+      "t4_usd": 3.444786,
+      "t5_central_usd": 6.385572,
+      "t5_high_usd": 9.722503120000002
+    }
+  },
+  "totals": {
+    "calls": 876,
+    "t4_usd": 67.455136,
+    "central": 70.395922,
+    "high": 149.55320336,
+    "judge_reserve": 2.5,
+    "central_with_reserve": 72.895922,
+    "high_with_reserve": 152.05320336
+  },
+  "guard": {
+    "central": {
+      "level": "central",
+      "pause_80_in_block": null,
+      "projection_after_block_5": {
+        "spend": 36.128764000000004,
+        "block_5_cost": 17.4354,
+        "projected": 70.999564,
+        "pauses": false
+      },
+      "blocks_before_any_pause": [
+        "1 B-S0 run 1",
+        "2 B-S0 run 2",
+        "3 B-S0 run 3",
+        "4 A-S0 run 1",
+        "5 B-S1 run 1",
+        "6 B-S1 run 2",
+        "7 B-S1 run 3"
+      ]
+    },
+    "high": {
+      "level": "high",
+      "pause_80_in_block": "6 B-S1 run 2",
+      "projection_after_block_5": {
+        "spend": 71.86288656,
+        "block_5_cost": 40.0951584,
+        "projected": 152.05320336,
+        "pauses": true
+      },
+      "blocks_before_any_pause": [
+        "1 B-S0 run 1",
+        "2 B-S0 run 2",
+        "3 B-S0 run 3",
+        "4 A-S0 run 1",
+        "5 B-S1 run 1"
+      ],
+      "pause_80_share_of_block_done": 0.20294503787270218
+    }
+  },
+  "meta": {
+    "t4_source": "v0.42-acquisition-locked:osf/v42/data/t4_raw.jsonl",
+    "t4_raw_sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+    "t5_price_date": "2026-12-03T12:00:00+00:00",
+    "fields_read": [
+      "call_id",
+      "substrate",
+      "phase",
+      "condition",
+      "run",
+      "model_requested",
+      "provider",
+      "mode",
+      "status",
+      "usage_parts",
+      "cost_usd",
+      "started_utc",
+      "finished_utc",
+      "served_model",
+      "attempts",
+      "empty_retry",
+      "batch_id"
+    ],
+    "fields_never_read": [
+      "text",
+      "prompt",
+      "system",
+      "search",
+      "error"
+    ],
+    "prices": {
+      "claude-fable-5-2": {
+        "t4": [
+          4.0,
+          20.0
+        ],
+        "t5": [
+          4.0,
+          20.0
+        ],
+        "mode": "batch"
+      },
+      "gpt-6-astra": {
+        "t4": [
+          10.0,
+          50.0
+        ],
+        "t5": [
+          10.0,
+          50.0
+        ],
+        "mode": "standard"
+      },
+      "gemini-4-argon": {
+        "t4": [
+          2.0,
+          10.0
+        ],
+        "t5": [
+          4.0,
+          20.0
+        ],
+        "mode": "standard"
+      }
+    },
+    "search_fee_usd": {
+      "anthropic": 0.01,
+      "openai": 0.01,
+      "google": 0.014
+    },
+    "resend_factor_high": 1.1,
+    "prices_read": "2026-11-10 (r0) and 2026-11-11 08:36-08:38 US Central (r1), unchanged",
+    "judge_reserve_usd": 2.5
+  }
+}

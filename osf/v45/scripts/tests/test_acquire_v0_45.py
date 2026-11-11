@@ -237,7 +237,7 @@ class TestSyncPath(Base):
             return {"call_id": s["call_id"], "cost_usd": per, "condition": "S1", "status": "ok"}
         st = AQ.run_sync([spec(model=GPT, i=i) for i in range(10)], L, self.write, sender=sender, sleep=lambda s: None)
         self.assertEqual(st, "stop")
-        self.assertEqual(len(self.written), 3)
+        self.assertEqual(len(self.written), 2)       # v0.42 C28: each sync call reserves 2 worst cases (was 3 written)
         self.assertLessEqual(L.spent(), L.cap)
 
 
@@ -438,6 +438,86 @@ class TestCollectionGuardsC26(Base):
         self.assertEqual(AQ.open_batches(journal), [])
 
 
+def _fake_vendor_modules(openai_response=None, gemini_response=None):
+    """sys.modules entries for local fake `openai` and `google.genai` SDKs (C28 tests; nothing leaves the machine).
+    Copied from v0.42's test_acquire_v0_42.py at tag v0.42-prereg-r1 (r1: t5 runs t4's C28 code)."""
+    import types as T
+
+    class _E(Exception):
+        status_code = 400
+    oa = T.ModuleType("openai")
+    for n in ("RateLimitError", "APIConnectionError", "APITimeoutError", "APIStatusError"):
+        setattr(oa, n, type(n, (_E,), {}))
+    oa.OpenAI = lambda *a, **k: NS(responses=NS(create=lambda **kw: openai_response))
+    g, ge, gerr, gty = T.ModuleType("google"), T.ModuleType("google.genai"), T.ModuleType("google.genai.errors"), \
+        T.ModuleType("google.genai.types")
+    gerr.ServerError, gerr.ClientError = type("ServerError", (Exception,), {}), type("ClientError", (Exception,), {})
+    gty.Tool = gty.GoogleSearch = gty.GenerateContentConfig = lambda **kw: NS(**kw)
+    ge.Client = lambda api_key=None, **k: NS(models=NS(generate_content=lambda **kw: gemini_response))
+    ge.errors, ge.types, g.genai = gerr, gty, ge
+    return {"openai": oa, "google": g, "google.genai": ge, "google.genai.errors": gerr, "google.genai.types": gty}
+
+
+class TestUsageC28(Base):
+    """v0.42 clarification C28 (2026-11-11), carried into t5 by r1: recorded usage and the guard count conservatively."""
+
+    def test_openai_open_page_and_find_in_page_are_billed_searches(self):
+        item = lambda a: NS(model_dump=lambda: {"type": "web_search_call", "action": a})   # noqa: E731
+        r = NS(output=[item({"type": "search", "query": "q", "sources": [{"type": "url", "url": "https://a.example/"}]}),
+                       item({"type": "open_page", "url": "https://a.example/p"}),
+                       item({"type": "find_in_page", "url": "https://a.example/p", "pattern": "x"}),
+                       NS(model_dump=lambda: {"type": "message", "content": [{"type": "output_text", "annotations": []}]})],
+               output_text="CeraVe.", model="gpt-6-astra", status="completed", incomplete_details=None,
+               usage=NS(input_tokens=1000, output_tokens=100, output_tokens_details=NS(reasoning_tokens=40)))
+        with mock.patch.dict(sys.modules, _fake_vendor_modules(openai_response=r)):
+            out = AQ.call_openai_current("gpt-6-astra", "p", True)
+        self.assertEqual(out["search"]["n_searches"], 1)            # the scientific search count is unchanged
+        self.assertEqual(out["billed_searches"], 3)
+        part = AQ._part(out, "standard", "S1")
+        self.assertEqual(part["n_searches"], 3)
+        self.assertAlmostEqual(BG.part_cost("gpt-6-astra", part), (1000 * 10 + 100 * 50) / 1e6 + 3 * 0.010, places=12)
+        self.assertEqual(AQ._part(out, "standard", "S0")["n_searches"], 0)
+
+    def test_gemini_tool_use_prompt_tokens_recorded_and_priced_as_input(self):
+        gm = NS(web_search_queries=[], grounding_chunks=[NS(web=NS(uri="https://vertexaisearch.cloud.google.com/x",
+                                                                       title="dior.com"))], grounding_supports=[])
+        r = NS(candidates=[NS(finish_reason="STOP", grounding_metadata=gm)], text="Dior.", model_version="gemini-4-argon",
+               usage_metadata=NS(prompt_token_count=200, candidates_token_count=300, thoughts_token_count=50,
+                                 tool_use_prompt_token_count=5000))
+        with mock.patch.dict(sys.modules, _fake_vendor_modules(gemini_response=r)), \
+                mock.patch.dict("os.environ", {"GOOGLE_API_KEY": "fake"}):
+            out = AQ.call_google_current("gemini-4-argon", "p", True)
+        self.assertEqual(out["tokens_tool_prompt"], 5000)
+        self.assertEqual(out["billed_searches"], 1)                 # chunks without a recorded query: one query
+        part = AQ._part(out, "standard", "S1")
+        self.assertEqual((part["input_tokens"], part["tool_use_prompt_tokens"], part["n_searches"]), (5200, 5000, 1))
+        rec = AQ._record(spec(AQ.PANEL[2]), out, "ok", None, 1, False, "2026-12-03T06:00:00+00:00",
+                         "2026-12-03T06:00:01+00:00", [part])
+        self.assertEqual((rec["input_tokens"], rec["tool_use_prompt_tokens"]), (200, 5000))   # t4's recorded field
+        self.assertAlmostEqual(rec["cost_usd"], (5200 * 4 + 350 * 20) / 1e6 + 0.014, places=12)   # t5 price
+        legacy = dict(rec, usage_parts=None)
+        self.assertEqual(BG.legacy_part(legacy)["input_tokens"], 5200)
+
+    def test_anthropic_billed_searches_from_usage_server_tool_use(self):
+        m = message(blocks_s1())
+        m.usage.server_tool_use = NS(web_search_requests=4)
+        client = FakeClient(lambda cid, p, n: ok(m))
+        ledger = BG.Ledger(self.raw, self.state)
+        out, parts, _note = AQ._batch_message_out(spec(), m, client, ledger)
+        self.assertEqual(out["search"]["n_searches"], 1)
+        self.assertEqual(parts[0]["n_searches"], 4)
+
+    def test_sync_reservation_covers_the_empty_resend(self):
+        seen = []
+
+        class L:
+            def reserve(self, amount):
+                seen.append(amount)
+                return "stop", None
+        self.assertEqual(AQ.run_sync([spec(GPT)], L(), lambda r: None), "stop")
+        self.assertAlmostEqual(seen[0], 2 * BG.worst_case("gpt-6-astra", "S1", "standard"), places=12)
+
+
 class TestCostEstimate(unittest.TestCase):
     def test_adopted_design_and_hand_check(self):
         basis = CE.load_basis()
@@ -463,16 +543,18 @@ class TestCostEstimate(unittest.TestCase):
         self.assertEqual(cov["calls"], 675)
 
 
+T4_LOCKED = "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f"     # tag v0.42-prereg-r1: the code t4 ran (r1; r0 used 61515b4)
+
+
 class TestV45Fork(unittest.TestCase):
-    """v0.45-specific: what must equal v0.42 (v1.14 section 6) and the new guards."""
+    """v0.45-specific: what must equal v0.42 as t4 ran it (v1.14 section 6) and the new guards."""
     import subprocess as _sp
 
     @classmethod
     def setUpClass(cls):
         root = HERE.parents[3]
-        src = cls._sp.run(["git", "show", "61515b4:osf/v42/scripts/acquire_v0_42.py"], cwd=root, capture_output=True,
-                          text=True, check=True).stdout
-        ns = {}
+        src = cls._sp.run(["git", "show", f"{T4_LOCKED}:osf/v42/scripts/acquire_v0_42.py"], cwd=root,
+                          capture_output=True, text=True, check=True).stdout
         cls.v42_src = src
         cls.root = root
 
@@ -488,7 +570,8 @@ class TestV45Fork(unittest.TestCase):
         import inspect
         for name in ("call_anthropic_current", "call_openai_current", "call_google_current", "_call_with_retry",
                      "send_call", "anthropic_params", "parse_anthropic_blocks", "_record", "_part", "build_specs",
-                     "_batch_message_out", "run_sync", "_finish_batch", "recover_batches", "run_collection"):
+                     "_batch_message_out", "_anthropic_billed_searches", "run_sync", "_finish_batch",
+                     "recover_batches", "run_collection"):
             mine = inspect.getsource(getattr(AQ, name)).rstrip("\n")
             theirs = self._fn(name).rstrip("\n")
             if name == "_part":
@@ -496,6 +579,28 @@ class TestV45Fork(unittest.TestCase):
             self.assertEqual(mine, theirs, name)
         self.assertEqual(AQ.S1_ANTHROPIC["type"], "web_search_20250305")
         self.assertEqual((AQ.CURRENT_MAX_TOKENS, AQ.MAX_ATTEMPTS, AQ.EMPTY_RESENDS), (16384, 3, 1))
+
+    def test_fork_source_is_t4_locked_code_and_regenerates_byte_for_byte(self):
+        import _fork_v0_45 as F
+        self.assertEqual(F.SRC_REF, T4_LOCKED)
+        tag = self._sp.run(["git", "rev-parse", "v0.42-prereg-r1^{commit}"], cwd=self.root, capture_output=True, text=True)
+        if tag.returncode == 0:                         # the tag is present in every clone that fetched tags
+            self.assertEqual(tag.stdout.strip(), T4_LOCKED)
+        regenerated = F.apply(F.replace_docstring(F.src("acquire_v0_42.py"), F.ACQ_DOC), F.ACQ_REPS, "acquire")
+        self.assertEqual(regenerated, (HERE.parent / "acquire_v0_45.py").read_text(encoding="utf-8"))
+
+    def test_budget_functions_identical_to_t4_locked_budget(self):
+        import ast
+        theirs = self._sp.run(["git", "show", f"{T4_LOCKED}:osf/v42/scripts/budget_v0_42.py"], cwd=self.root,
+                              capture_output=True, text=True, check=True).stdout
+        mine = (HERE.parent / "budget_v0_45.py").read_text(encoding="utf-8")
+
+        def defs(t):
+            return {n.name: ast.get_source_segment(t, n) for n in ast.parse(t).body
+                    if isinstance(n, (ast.FunctionDef, ast.ClassDef))}
+        self.assertEqual(defs(mine), defs(theirs))       # prices, part_cost, legacy_part (C28), record_cost, worst_case, Ledger
+        self.assertEqual(BG.legacy_part({"condition": "S0", "input_tokens": 10, "tool_use_prompt_tokens": 5,
+                                         "output_tokens": 1})["input_tokens"], 15)
 
     def test_batch_runner_differs_only_by_custom_id_prefix(self):
         import inspect
@@ -506,7 +611,7 @@ class TestV45Fork(unittest.TestCase):
     def test_probes_byte_identical_to_t4(self):
         import hashlib
         a = (self.root / "osf/v45/prereg/probes_v0_45.jsonl").read_bytes()
-        b = self._sp.run(["git", "show", "61515b4:osf/v42/prereg/probes_v0_42.jsonl"], cwd=self.root,
+        b = self._sp.run(["git", "show", f"{T4_LOCKED}:osf/v42/prereg/probes_v0_42.jsonl"], cwd=self.root,
                          capture_output=True, check=True).stdout
         self.assertEqual(hashlib.sha256(a).hexdigest(), hashlib.sha256(b).hexdigest())
         self.assertEqual(len(AQ.load_probes()), 142)

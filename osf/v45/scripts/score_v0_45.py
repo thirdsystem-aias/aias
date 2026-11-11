@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-score_v0_45.py -- AIAS(TM) v0.45: t4 -> t5 short-term stability (pre-registration r0 draft, section 2 and section 5).
+score_v0_45.py -- AIAS(TM) v0.45: t4 -> t5 short-term stability (pre-registration r1, section 2 and section 5;
+section 2 as fixed in r0, unchanged in r1).
 
 Reuses v0.42's scorer functions unchanged (osf/v42/scripts/score_v0_42.py: Data, pi_hat, phi_panel, rho_pw on CENTRED
 within-substrate ranks, perm_p_within, bootstrap, presence_test, rel1_of, manipulation_checks, served_ok), so t4 and
