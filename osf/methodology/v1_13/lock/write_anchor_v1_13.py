@@ -41,7 +41,7 @@ V112_FILES = ["osf/methodology/v1_12/prereg/PRE_REGISTRATION_v1_12.md", "osf/met
 V111_TAG = "v1.11-prereg-r1"
 V042_TAG = "v0.42-prereg-r1"
 V042_PINS = {"osf/v42/scripts/code_t4_v0_42.py": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
-             "osf/v42/scripts/score_v0_42.py": "3bbe58db0db26763e6d5f9f022c09fcaa13fef03"}
+             "osf/v42/scripts/score_v0_42.py": "934f09ae69300cb13bdde56c7964b7b2cc7700b9"}
 
 
 def git(*a, check=True):

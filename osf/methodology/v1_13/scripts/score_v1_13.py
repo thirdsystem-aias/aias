@@ -1461,8 +1461,9 @@ def _tag_exists(tag):
 
 V042_TAG = "v0.42-prereg-r1"
 V042_PINS = {"osf/v42/scripts/code_t4_v0_42.py": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
-             "osf/v42/scripts/score_v0_42.py": "3bbe58db0db26763e6d5f9f022c09fcaa13fef03"}   # git blobs at 17dd6f5 (section 0;
-#   scorer pin refreshed by section 12 (v): v0.42's C25 changed only its rho_pw; the coder blob is unchanged since 527899e)
+             "osf/v42/scripts/score_v0_42.py": "934f09ae69300cb13bdde56c7964b7b2cc7700b9"}   # git blobs at f1f3668 (section 0;
+#   scorer pin refreshed by section 12 (v) for v0.42 C25 (rho_pw) and (z) for v0.42 C27 (full-N3 brand-table columns);
+#   the coder blob is unchanged since 527899e)
 
 
 def v042_pins_ok():

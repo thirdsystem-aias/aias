@@ -4,7 +4,7 @@ Prepared 2026-11-10 by the runner (lane 10). Everything below runs in the worktr
 
 **Order on Wednesday:** v1.12 (its own `LOCK_STEPS.md`) → **v1.13 (this file)** → v0.42 (t4), whose collection starts right after its lock. Do not start v1.13 until v1.12's tag is on origin; do not let v0.42 tag before v1.13's step 4 is done.
 
-State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`; lock records); §12 (x) by lane 13 (H6's Cov\* reader, `--h6-cov`, N21; `write_anchor_v1_13.py` records v1.12's scorer SHA-256 at its tag); §12 (y) on Nov 10 evening (H4 names `v1.14-prereg-r2` → `a5feb4b1`, the v1.14 re-lock; manifest rebuilt); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` rebuilt (21 files, both parts, paths from the repository root); 90 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
+State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10–N12, N14; AUDIT_NOTES A1–A6; v0.42 scorer pin refreshed to blob `3bbe58db…` at `17dd6f5`, then (§12 (z), Nov 11) to `934f09ae…` at `f1f3668` (v0.42 C27); lock records); §12 (x) by lane 13 (H6's Cov\* reader, `--h6-cov`, N21; `write_anchor_v1_13.py` records v1.12's scorer SHA-256 at its tag); §12 (y) on Nov 10 evening (H4 names `v1.14-prereg-r2` → `a5feb4b1`, the v1.14 re-lock; manifest rebuilt); `anchor/DEVIATIONS.md` with Entry 0; `prereg/LOCK_MANIFEST_v1_13.sha256` rebuilt (21 files, both parts, paths from the repository root); 90 tests pass; dry run reproduced; `lock/` helpers (check_records, check_guards, write_anchor, osf_verify). If any manifested file changes before the tag, redo step 1 (rebuild with 1b).
 
 ## 0. Preconditions (stop if any fails)
 
@@ -29,7 +29,7 @@ State prepared on 2026-11-10: §12 (j)–(w) logged (SCORER_NOTES N1–N7, N10�
    ```
    cd /Users/pablou/aias/_worktrees/v1.13 && git fetch origin v0.42 && git log --oneline -1 origin/v0.42 && git rev-parse "origin/v0.42:osf/v42/scripts/code_t4_v0_42.py" "origin/v0.42:osf/v42/scripts/score_v0_42.py"
    ```
-   Expect `2d36735d…` (coder) and `3bbe58db…` (scorer; origin/v0.42 was `17dd6f5` on Nov 10). If the scorer blob differs, v0.42 changed again: stop and report. (A refresh needs the diff shown to touch none of `pi_N3_<c>`, `phi_N3_<c>`, `phi_partition_N3_<c>`, a §12 entry as (v), the pin in §0, `V042_PINS` and its test, `lock/write_anchor_v1_13.py`, and a rebuilt manifest, all before the tag.) If the coder blob differs: stop.
+   Expect `2d36735d…` (coder) and `934f09ae…` (scorer; v0.42 C27 at `f1f3668`, Nov 11; was `3bbe58db…` at `17dd6f5`). If the scorer blob differs, v0.42 changed again: stop and report. (A refresh needs the diff shown to touch none of `pi_N3_<c>`, `phi_N3_<c>`, `phi_partition_N3_<c>`, a §12 entry as (v), the pin in §0, `V042_PINS` and its test, `lock/write_anchor_v1_13.py`, and a rebuilt manifest, all before the tag.) If the coder blob differs: stop.
 
 ## 1. Verify the lock text (no writes)
 
