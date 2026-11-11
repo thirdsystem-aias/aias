@@ -18,9 +18,10 @@ Prepared 2026-11-10 (~3:15 pm CT) by the runner (lane 11). Everything below runs
    Expect `v0.42`, no tracked changes, HEAD = the lane-11 "v0.42 lock prep" commit (or a later lock commit), `osf/v42/data` empty and no `osf/v42/anchor`. `osf/v42/_osf_stage_draft*/` are untracked staging copies of the drafts: leave them, never upload them.
 5. **Remote tags (read-only):**
    ```
-   cd /Users/pablou/aias/_worktrees/v0.42 && git ls-remote --tags origin v0.42-prereg-r1 v0.42-acquisition-locked v1.14-prereg-r1
+   cd /Users/pablou/aias/_worktrees/v0.42 && git ls-remote --tags origin v0.42-prereg-r1 v0.42-acquisition-locked v1.14-prereg-r2
    ```
-   Expect no `v0.42-*` tag; `v1.14-prereg-r1` present (pushed Nov 10).
+   Expect no `v0.42-*` tag; `v1.14-prereg-r2` present with peeled commit `a5feb4b1c4b9e9d19979129afcfd616a50b88c64`. If it is absent: stop (v1.14's `osf/methodology/v1_14/LOCK_STEPS_r2.md` must be completed before any t4 answer exists).
+   Clarification (Nov 10, 2026, evening, ex ante; lock steps only): v1.14 re-locked as r2 before any t4 answer: crash fix only; no statistic changed (v1.14 DEVIATIONS Entry 1). `v1.14-prereg-r1` (→ `20fbc342`) stays on origin as the record of r1; v1.14's Stage 1 now requires `v1.14-prereg-r2`. Nothing in v0.42's pre-registration or scripts names a v1.14 tag.
 6. **No paid collection running:** `pgrep -fl "acquire_v[0-9][0-9_.]*\.py.*--collect" || echo none` → `none`.
 7. **Keys in the login shell (names only):** `zsh -ic 'for v in ANTHROPIC_API_KEY OPENAI_API_KEY GOOGLE_API_KEY OSF_TOKEN; do [[ -n ${(P)v} ]] && echo "$v set" || echo "$v MISSING"; done'` → four `set` (checked Nov 10: all set; `GEMINI_API_KEY` is not needed when `GOOGLE_API_KEY` is set).
 
@@ -154,7 +155,7 @@ No Ranking statistic (rank position, MNP, MODE) on any t4 answer before v1.14's 
    ```
    Writes `osf/v42/data/coded/{v19..v23}_phase_{a,b}.csv` (refuses unless `v0.42-prereg-r1` is on origin). Commit the coded tables and the log.
 2. **v0.42 scoring, once:** `cd /Users/pablou/aias/_worktrees/v0.42 && (PYTHONDONTWRITEBYTECODE=1 nohup python3 -u osf/v42/scripts/score_v0_42.py --run > osf/v42/data/score_v0_42.log 2>&1 &)`; read the log until `wrote …`. Writes `osf/v42/v42_verdicts.json` and `osf/v42/v42_brand_table.csv`. Commit them, tag `v0.42-scoring-locked` (as v0.41), push branch and tag. This tag is the `--v042-scored-ref` of step 3; the raw file in it must equal the acquisition-locked file (v1.14 halts otherwise).
-3. **v1.14 Stage 1, once** (in the v1.14 worktree; refuses without `v1.14-prereg-r1`, its anchor, `v0.42-acquisition-locked`, an unchanged lock manifest, and the coder blob `2d36735d…` at the acquisition tag; runs once):
+3. **v1.14 Stage 1, once** (in the v1.14 worktree; refuses without `v1.14-prereg-r2`, its r2 anchor `osf/methodology/v1_14/anchor/git_anchor_v1_14.json`, `v0.42-acquisition-locked`, an unchanged lock manifest, and the coder blob `2d36735d…` at the acquisition tag; runs once):
    ```
    cd /Users/pablou/aias/_worktrees/v1.14 && git fetch origin --tags && (PYTHONDONTWRITEBYTECODE=1 nohup python3 -u scripts/score_v1_14.py --stage 1 --v042-scored-ref v0.42-scoring-locked > /tmp/v114_stage1.log 2>&1 &); sleep 50; tail -5 /tmp/v114_stage1.log
    ```
