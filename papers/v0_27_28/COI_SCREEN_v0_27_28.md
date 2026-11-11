@@ -22,7 +22,7 @@
 | Dell Technologies | Competitor (PCs, monitors) | Disclosed in §COI |
 | Whirlpool | Direct competitor (home appliances) | Disclosed in §COI |
 | Seagate Technology | Competitor (data storage; Samsung sells SSDs) | Disclosed in §COI |
-| Corning | Samsung Display is a significant minority shareholder (about 9% of common shares after an April 2021 conversion, committed to remain a significant shareholder until at least 2028; Corning news release, April 5, 2021, corning.com). Not Samsung-controlled, so not a Samsung-group brand. | Disclosed in §COI; **open question for Pablo** (see below) |
+| Corning | Samsung Display is a significant minority shareholder: 68,000,000 shares, 7.93% of common stock as of December 31, 2025 (Corning proxy statement, DEF 14A, filed March 20, 2026, beneficial-ownership table: https://www.sec.gov/Archives/edgar/data/24741/000120677426000148/glw4500541-def14a.htm), down from about 9% after the April 2021 preferred-stock conversion (Corning news release, April 5, 2021). Not Samsung-controlled, so not a Samsung-group brand. | Disclosed in §COI; **open question for Pablo** (see below) |
 | Thermo Fisher Scientific | Competes with a Samsung affiliate (Samsung Biologics) in contract drug development and manufacturing; not a Samsung Electronics category | Covered by the general disclosure in §COI |
 | Lam Research, Flex, Jabil, CDW, HPE, NetApp | Supply-chain or channel relationships with Samsung companies are possible (semiconductor equipment, contract manufacturing, IT resale, servers and storage); not verified individually | Covered by the general disclosure in §COI |
 | Netflix, Instagram, Uber, Airbnb, 3M, QVC, VMware, Pitney Bowes, Parker-Hannifin, Motorola Solutions | No relationship identified | None |
