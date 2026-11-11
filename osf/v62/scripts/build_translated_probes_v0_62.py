@@ -1,11 +1,11 @@
-"""AIAS v0.62 (non-English wave, draft r0): build the French and Japanese probe files. No model is called.
+"""AIAS v0.62 (non-English wave, draft r2): build the Spanish, Korean and Chinese probe files. No model is called.
 
 Inputs  osf/v62/inputs/probes_v0_42.jsonl            (t4 English probes; byte copy of v0.42 commit 527899e)
-        osf/v62/translations/translations_v0_62_r0.json (hand-authored forward and back translations)
-        osf/v62/translations/brand_aliases_v0_62_r0.csv (coding aliases, one row per brand unit)
-Outputs osf/v62/translations/probes_fr_v0_62_r0.jsonl, probes_ja_v0_62_r0.jsonl (142 lines each, same order and IDs)
-        osf/v62/translations/translation_review_v0_62_r0.md (side-by-side table with back-translations)
-        osf/v62/translations/build_check_v0_62_r0.txt (checks and SHA-256)
+        osf/v62/translations/translations_v0_62_r2.json (hand-authored forward and back translations)
+        osf/v62/translations/brand_aliases_v0_62_r2.csv (coding aliases, one row per brand unit)
+Outputs osf/v62/translations/probes_{es,ko,zh}_v0_62_r2.jsonl (142 lines each, same order and IDs)
+        osf/v62/translations/translation_review_v0_62_r2.md (side-by-side table with back-translations)
+        osf/v62/translations/build_check_v0_62_r2.txt (checks and SHA-256)
 
 Phase B prompts come from the translation file by (substrate, probe_id). Phase A prompts are built from
 the language's template with the brand string cut out of the English prompt (never retyped), and for
@@ -24,10 +24,11 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 V62 = os.path.normpath(os.path.join(HERE, '..'))
 SRC = os.path.join(V62, 'inputs', 'probes_v0_42.jsonl')
 SRC_SHA = '7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa'
-TR = os.path.join(V62, 'translations', 'translations_v0_62_r0.json')
-AL = os.path.join(V62, 'translations', 'brand_aliases_v0_62_r0.csv')
+REV = 'r2'
+TR = os.path.join(V62, 'translations', 'translations_v0_62_%s.json' % REV)
+AL = os.path.join(V62, 'translations', 'brand_aliases_v0_62_%s.csv' % REV)
 OUT = os.path.join(V62, 'translations')
-LANGS = ('fr', 'ja')
+LANGS = ('es', 'ko', 'zh')
 RX_YN = {
     'v19': re.compile(r'^Is the brand (.+) commonly recognized as a brand of audiophile headphones\? Answer yes or no\.$'),
     'v20': re.compile(r'^Is the brand (.+) commonly recognized as a skincare brand\? Answer yes or no\.$'),
@@ -91,7 +92,7 @@ def main():
                     t = t.replace('{CATEGORY}', cats[c][lg])
                 q['prompt'] = t
                 q['brand_name'] = b
-                if lg == 'fr':
+                if lg == LANGS[0]:
                     brands.append((p['substrate'], b))
             out[lg].append(q)
     for lg in LANGS:
@@ -114,47 +115,60 @@ def main():
     checks.append('alias table rows %d; registry units %d; units without a row %d; rows without a unit %d'
                   % (len(aliases), len(brands), len(set(brands) - al), len(al - set(brands))))
     fail |= set(brands) != al
-    seen = {}
-    for a in aliases:
-        for x in filter(None, a['ja_aliases'].split('|')):
-            key = (a['substrate'], x.replace('・', ''))
-            if key in seen and seen[key] != a['brand']:
-                checks.append('FAIL alias %s shared by %s and %s' % (x, seen[key], a['brand']))
-                fail = True
-            seen[key] = a['brand']
-    checks.append('Japanese aliases %d over %d units; collision-prone units %d (%s)' % (
-        sum(len(list(filter(None, a['ja_aliases'].split('|')))) for a in aliases),
-        sum(1 for a in aliases if a['ja_aliases']),
-        sum(1 for a in aliases if a['ja_collision_prone'] == 'yes'),
-        ', '.join(a['brand'] for a in aliases if a['ja_collision_prone'] == 'yes')))
+    NAMES = {'es': 'ES', 'ko': 'KO', 'zh': 'ZH'}
+    for lg in ('ko', 'zh'):
+        seen = {}
+        for a in aliases:
+            for x in filter(None, a[lg + '_aliases'].split('|')):
+                key = (a['substrate'], x.replace(' ', '').replace('-', ''))
+                if key in seen and seen[key] != a['brand']:
+                    checks.append('FAIL %s alias %s shared by %s and %s' % (lg, x, seen[key], a['brand']))
+                    fail = True
+                seen[key] = a['brand']
+        checks.append('%s aliases %d over %d units; collision-prone units %d (%s)' % (
+            NAMES[lg], sum(len(list(filter(None, a[lg + '_aliases'].split('|')))) for a in aliases),
+            sum(1 for a in aliases if a[lg + '_aliases']),
+            sum(1 for a in aliases if a[lg + '_collision_prone'] == 'yes'),
+            ', '.join(a['brand'] for a in aliases if a[lg + '_collision_prone'] == 'yes')))
+    drift = {}
+    for r in list(tr['phase_b']) + list(tpl.values()):
+        for lg in LANGS:
+            k = (lg, r.get(lg + '_drift'))
+            drift[k] = drift.get(k, 0) + 1
     for lg in LANGS:
-        path = os.path.join(OUT, 'probes_%s_v0_62_r0.jsonl' % lg)
+        checks.append('%s back-translation codes (30 Phase B + 5 templates): %s; meaning change %d' % (
+            NAMES[lg], ', '.join('%s %d' % (k[1], v) for k, v in sorted(drift.items()) if k[0] == lg),
+            drift.get((lg, 'meaning change'), 0)))
+        fail |= drift.get((lg, 'meaning change'), 0) > 0
+        fail |= sum(v for k, v in drift.items() if k[0] == lg) != 35
+    zh_space = [q['probe_id'] for q in out.get('zh', []) if q['phase'] == 'B' and
+                re.search(r'[一-鿿][A-Za-z]|[A-Za-z][一-鿿]', q['prompt'])]
+    checks.append('ZH Phase B prompts with Han/Latin contact without a space: %d' % len(zh_space))
+    fail |= bool(zh_space)
+    for lg in LANGS:
+        path = os.path.join(OUT, 'probes_%s_v0_62_%s.jsonl' % (lg, REV))
         with open(path, 'w', encoding='utf-8') as f:
             for q in out[lg]:
                 f.write(json.dumps(q, ensure_ascii=False) + '\n')
         checks.append('wrote %s sha256 %s' % (os.path.relpath(path, V62), sha(path)))
-    md = ['# v0.62 translation review table (r0 draft)', '',
-          'Forward and back translations by Claude Opus 5.5 in two passes (not independent; see the pre-registration, section 3). '
-          'Phase B: all 30 items. Phase A: the five templates and the 15 v0.23 category labels (brand names are inserted unchanged).', '']
-    for r in tr['phase_b']:
-        md += ['## %s %s' % (r['substrate'], r['probe_id']), '',
-               '- **EN** ' + r['en'], '- **FR** ' + r['fr'], '- FR back: ' + r['fr_back'],
-               '- **JA** ' + r['ja'], '- JA back: ' + r['ja_back']]
+    md = ['# v0.62 translation review table (%s draft)' % REV, '',
+          'Forward and back translations by Claude Opus 5.5 in two passes (not independent; see the pre-registration, '
+          'section 3). Phase B: all 30 items. Phase A: the five templates and the 15 v0.23 category labels (brand names '
+          'are inserted unchanged). Codes: equivalent / minor drift / meaning change.', '']
+    for r in list(tr['phase_b']) + [dict(t, substrate='Phase A template', probe_id=k) for k, t in tpl.items()]:
+        md += ['## %s %s' % (r['substrate'], r['probe_id']), '', '- **EN** ' + r['en']]
+        for lg in LANGS:
+            md += ['- **%s** %s' % (NAMES[lg], r[lg]), '- %s back (%s): %s' % (NAMES[lg], r[lg + '_drift'], r[lg + '_back'])]
         if r.get('notes'):
             md.append('- Note: ' + r['notes'])
         md.append('')
-    for k, t in tpl.items():
-        md += ['## Phase A template %s' % k, '', '- **EN** ' + t['en'], '- **FR** ' + t['fr'], '- FR back: ' + t['fr_back'],
-               '- **JA** ' + t['ja'], '- JA back: ' + t['ja_back']]
-        if t.get('notes'):
-            md.append('- Note: ' + t['notes'])
-        md.append('')
-    md += ['## v0.23 category labels', '', '| English | FR | FR back | JA | JA back |', '|---|---|---|---|---|']
+    md += ['## v0.23 category labels', '', '| English | ES | ES back | KO | KO back | ZH | ZH back |',
+           '|---|---|---|---|---|---|---|']
     for k, c in cats.items():
-        md.append('| %s | %s | %s | %s | %s |' % (k, c['fr'], c['fr_back'], c['ja'], c['ja_back']))
-    open(os.path.join(OUT, 'translation_review_v0_62_r0.md'), 'w', encoding='utf-8').write('\n'.join(md) + '\n')
+        md.append('| %s | %s |' % (k, ' | '.join('%s | %s' % (c[lg], c[lg + '_back']) for lg in LANGS)))
+    open(os.path.join(OUT, 'translation_review_v0_62_%s.md' % REV), 'w', encoding='utf-8').write('\n'.join(md) + '\n')
     checks.append('RESULT ' + ('FAIL' if fail else 'PASS'))
-    open(os.path.join(OUT, 'build_check_v0_62_r0.txt'), 'w', encoding='utf-8').write('\n'.join(checks) + '\n')
+    open(os.path.join(OUT, 'build_check_v0_62_%s.txt' % REV), 'w', encoding='utf-8').write('\n'.join(checks) + '\n')
     print('\n'.join(checks))
     sys.exit(1 if fail else 0)
 

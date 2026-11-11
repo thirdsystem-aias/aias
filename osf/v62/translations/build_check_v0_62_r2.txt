@@ -1,0 +1,24 @@
+source inputs/probes_v0_42.jsonl sha256 7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa (OK)
+es: 142 probes (Phase B 30, Phase A 112)
+es: unfilled placeholders 0
+es: Phase A prompts carrying the registry brand string verbatim 112 of 112
+es: prompts containing no-break spaces 0
+ko: 142 probes (Phase B 30, Phase A 112)
+ko: unfilled placeholders 0
+ko: Phase A prompts carrying the registry brand string verbatim 112 of 112
+ko: prompts containing no-break spaces 0
+zh: 142 probes (Phase B 30, Phase A 112)
+zh: unfilled placeholders 0
+zh: Phase A prompts carrying the registry brand string verbatim 112 of 112
+zh: prompts containing no-break spaces 0
+alias table rows 112; registry units 112; units without a row 0; rows without a unit 0
+KO aliases 119 over 111 units; collision-prone units 6 (Koss, Rhode, NARS, Jaguar, Mercury, Saturn)
+ZH aliases 80 over 74 units; collision-prone units 7 (Grado, Koss, Nissan, Plymouth, Mercury, Saturn, Redbreast)
+ES back-translation codes (30 Phase B + 5 templates): equivalent 22, minor drift 13; meaning change 0
+KO back-translation codes (30 Phase B + 5 templates): equivalent 23, minor drift 12; meaning change 0
+ZH back-translation codes (30 Phase B + 5 templates): equivalent 19, minor drift 16; meaning change 0
+ZH Phase B prompts with Han/Latin contact without a space: 0
+wrote translations/probes_es_v0_62_r2.jsonl sha256 8484ae76127ae9f538e95b1ad7355c3f2b672045afb6514c68336a52292a3dcf
+wrote translations/probes_ko_v0_62_r2.jsonl sha256 ba24ca0112045b887c0e0e2c76bdb4394537cdd03b1f55ffb8986d2e6e797bb8
+wrote translations/probes_zh_v0_62_r2.jsonl sha256 e897dc87b702092a3f867d5c7f70ad327d83ddac4d6d19f120f12cce06ef8753
+RESULT PASS
