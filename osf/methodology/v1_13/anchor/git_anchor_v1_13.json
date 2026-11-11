@@ -1,0 +1,159 @@
+{
+  "tag": "v1.13-prereg-r1",
+  "tag_object": "94cbbf969631ae9735f6c79ce35531e56242763a",
+  "commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65",
+  "tree": "7957a7f8858d9f4f0ad87ea3634cb4054894ef73",
+  "branch": "v1.13",
+  "commit_date": "2026-11-10T20:48:25-06:00",
+  "tagger_date": "2026-11-10T20:48:25-06:00",
+  "remote_tag_ref": "94cbbf969631ae9735f6c79ce35531e56242763a\trefs/tags/v1.13-prereg-r1",
+  "recorded_utc": "2026-11-11T02:48:42Z",
+  "repository": "https://github.com/thirdsystem-aias/aias",
+  "phase": "v1.13",
+  "part": "I [RE-ANALYSIS: t4]",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_13/prereg, /registries, /anchor)",
+  "locked_files": {
+    "osf/methodology/v1_13/prereg/PRE_REGISTRATION_v1_13.md": {
+      "sha256": "751100c5f46cd2bc14359ff3b1a40a7620b0621bdc5c40b3e34f94cc9bbda1e9",
+      "git_blob": "e114d36f780546574b3b8650abdc552d088a50c9"
+    },
+    "osf/methodology/v1_13/prereg/source_classes_v1_13.md": {
+      "sha256": "dbc8b9efa1a4a4aa39e48a7249f02feccb514d22e48382b2102b551a006dd2c7",
+      "git_blob": "8787a7d2d7014e90c76b801fb453e94e277e4148"
+    },
+    "osf/methodology/v1_13/prereg/website_audit_protocol_v1_13.md": {
+      "sha256": "50c1c80d1eec9e5876878de61721db3b5e766f0e7440d26852902734f151878b",
+      "git_blob": "6a719d7901d214c62900d2f685b4fb5c6fc53012"
+    },
+    "osf/methodology/v1_13/prereg/dry_run_audit_v1_13.txt": {
+      "sha256": "dbbe8c409285858e091849eba0bf38d209e07698902d2ea128ad353af07533f1",
+      "git_blob": "da956c0c11e44fbde22fa7da1bf194b15a2191bd"
+    },
+    "osf/methodology/v1_13/registries/brand_domains_v1_13.csv": {
+      "sha256": "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a",
+      "git_blob": "1143a404b00861a215ae848a164d3066658ceccc"
+    },
+    "osf/methodology/v1_13/registries/wikidata_types_v1_13.csv": {
+      "sha256": "8352c083d4f591c0cbc31821ec8ae59972bed58c80cb282fac4c306c427e1a04",
+      "git_blob": "7c65b49c03f5f8424e0067c6b098970fec65320c"
+    },
+    "osf/methodology/v1_13/scripts/score_v1_13.py": {
+      "sha256": "fee2e5530030730ca964bb080840db4ca3b66b68b8c1d1ae3bb988dbd17a8641",
+      "git_blob": "7ac062d998fb7f3c3c38d8138af7bab041b2ab58"
+    },
+    "osf/methodology/v1_13/scripts/audit_v1_13.py": {
+      "sha256": "37ed8830a3c62fd5d4985542a8db8100ffa789374af949037ef630486885ab3a",
+      "git_blob": "0653410dac25b718049472874cc9193e009c4e76"
+    },
+    "osf/methodology/v1_13/scripts/tests/test_score_v1_13.py": {
+      "sha256": "f983fd9ccf2ed1a90231c97df1f17a8eddfcfe66624760e4d5576b8d9d57bee0",
+      "git_blob": "19e3653ac5c12d56e8d7411889531a36333fa4f0"
+    },
+    "osf/methodology/v1_13/scripts/tests/test_clarification_v1_13.py": {
+      "sha256": "cd49b42e702ed41f8f5ed6cdd56afd03c1e204bac73ee71773ff970b466129f4",
+      "git_blob": "cf11231f083e3971b0e3b70cf4941c869f752681"
+    },
+    "osf/methodology/v1_13/scripts/tests/test_audit_v1_13.py": {
+      "sha256": "e8c340264f7e5e98cf3ab889eafeeb362ecbca09466300a122978b3bedbd0a81",
+      "git_blob": "108b84603df82abf0a03d1bdda4ea5b963f9a28e"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_about.html": {
+      "sha256": "1c2821f6aaff8c4d62751edb3a5c2ca5d38c011572ae3c0f6c422092b87fe321",
+      "git_blob": "0fc8993f7ef2a6c873dba18770d52070b6aa41e5"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_home.html": {
+      "sha256": "7154050c8824214a5270042fb1630db538780a7409bc16209e8f1e2018587ce0",
+      "git_blob": "be704c92e209f6ebdb8ed2dde0cff197ffbb7e59"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_product.html": {
+      "sha256": "9ac9c467fdf309e0eef89762e5ea0585c1ab3cda42e266ed9ff402ac24b9f7cf",
+      "git_blob": "9799c88851034cbe43b9f7b0382eb9a88718b454"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx2_home.html": {
+      "sha256": "0cea2c70934744a17d8a4030dcb89863178ff8cdf9f048357f1c84cd16eae68b",
+      "git_blob": "ab8afb6b30d1e72f3bd8b12cb445ab2eb32de06f"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx2_product.html": {
+      "sha256": "c4c997261dfb2b79a532476e024a1adfd0a3b2f38b060da2fc573c1af825c9f4",
+      "git_blob": "666cd877690df9193220bcc4241d9501f641a178"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_about.html": {
+      "sha256": "cdd00299e0d7e91b04a4e41d60a35457a7016747ddb158703289b5cc11345f34",
+      "git_blob": "6c6dcd4368804787ce9c4d1967e9b1a0570648b3"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_home.html": {
+      "sha256": "25cb6ec670c31a46309370a45c06baaebf5849292fb4a873e7f04525a9cc12ca",
+      "git_blob": "d936cdafe6b079ece57562ab3802317bafffa344"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_product.html": {
+      "sha256": "75e0d080182f71edda09b9c09d0f8912b6b855d36bc467c8f3e24df4f34deea1",
+      "git_blob": "c36fbf497124556d5c6deeef063cb1c49c864aa6"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/manifest.json": {
+      "sha256": "9f9a06d6049d744dcdb3e408198fb30c6b7af77a17a0e982896f5c55887f8b28",
+      "git_blob": "bcaf91c7c977457ff1c2dc45c602f5f063e616ef"
+    },
+    "osf/methodology/v1_13/anchor/DEVIATIONS.md": {
+      "sha256": "acc19e21d7aa34be65a404d74c4f7753c8c9215074bf2b3f4eb6d4897601f759",
+      "git_blob": "8c6180c98bb0b037d5ae6ff4896f97c0e1a798e5"
+    },
+    "osf/methodology/v1_13/prereg/LOCK_MANIFEST_v1_13.sha256": {
+      "sha256": "12adb89fa79370fbd0b870827e6863269b00cc2773fe586aed57c295ac83be67",
+      "git_blob": "f7801b4a0d050b357ce26930dbc93266b9ec1148"
+    }
+  },
+  "brand_domains_sha256": "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a",
+  "source_classes_sha256": "dbc8b9efa1a4a4aa39e48a7249f02feccb514d22e48382b2102b551a006dd2c7",
+  "conditional_legs": {
+    "H4_Sep_Ranking": {
+      "pushed_before_lock": true,
+      "tag": "v1.14-prereg-r2",
+      "remote_tag_ref": "38bef0679795a611f481c55703931c6163706c4b\trefs/tags/v1.14-prereg-r2",
+      "commit": "a5feb4b1c4b9e9d19979129afcfd616a50b88c64",
+      "score_definition_files": {
+        "osf/methodology/v1_14/prereg/PRE_REGISTRATION_v1_14.md": "99560f049dd325bd92a8ab770b06e284b145cb8c",
+        "scripts/score_v1_14.py": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9"
+      },
+      "score": "v1.14's R*_S1, read from osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json (SHA-256 recorded at scoring); may downgrade only if v1.14's STAGE1_VERDICT is 'SEPARABLE (Stage 2 pending)' (section 3, section 12 (g), N17-N19)"
+    },
+    "H5_Sep_Sentiment": {
+      "pushed_before_lock": false,
+      "t4_answers": false,
+      "status": "INACTIVE: no locked Sentiment score on the t4 answers was pushed before this lock; v1.11-prereg-r1 defines its score on the archived waves only (section 12 (i), N20)",
+      "v1.11_remote_tag_ref": "5859bfd09b561f7446ce49cd0f5fa5223e0bfdd8\trefs/tags/v1.11-prereg-r1"
+    },
+    "H6_Sep_Coverage": {
+      "tag": "v1.12-prereg-r1",
+      "remote_tag_ref": "e0b5e31c04e8f254637ed593bf96ebecb83c4930\trefs/tags/v1.12-prereg-r1",
+      "commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
+      "pushed_before_lock": true,
+      "v1.12_tagger_date": "2026-11-10T20:45:38-06:00",
+      "v1.13_lock_commit_date": "2026-11-10T20:48:25-06:00",
+      "score_definition_files": {
+        "osf/methodology/v1_12/prereg/PRE_REGISTRATION_v1_12.md": "7c74a05ee1b2033ba74aea849dda69b36728d514",
+        "osf/methodology/v1_12/scripts/score_v1_12.py": "11cded95437fd2ed30c1cdf1120b23a5a3cebe2d"
+      },
+      "scorer_sha256_at_tag": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+      "score": "v1.12's locked Cov* on its own collection (112 units, N3, S0): score_v1_13.py --h6-cov reads column cov_star_N3 of osf/methodology/v1_12/v112_unit_table.csv, refusing it unless v112_verdicts.json beside it names this scorer SHA-256 and a passed P1 (section 12 (x), N21); PENDING at Stage C1 until it exists, computed at Stage C2, else UNDETERMINED and handed to Paper B (section 3, N10)",
+      "status": "ACTIVE (v1.12-prereg-r1 pushed before the v1.13 lock commit)"
+    }
+  },
+  "v0_42": {
+    "tag": "v0.42-prereg-r1",
+    "tag_on_origin": false,
+    "remote_tag_ref": "",
+    "pins": {
+      "osf/v42/scripts/code_t4_v0_42.py": {
+        "pinned": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "at_tag_locally": null
+      },
+      "osf/v42/scripts/score_v0_42.py": {
+        "pinned": "934f09ae69300cb13bdde56c7964b7b2cc7700b9",
+        "at_tag_locally": null
+      }
+    },
+    "note": "re-checked by MQ7 at Stage C1 if the tag does not exist at this lock (section 0); a difference is logged in DEVIATIONS.md before Stage C1"
+  },
+  "t4_raw_sha256": null,
+  "t4_raw_note": "recorded before the first read of osf/v42/data/t4_raw.jsonl (section 0), not at the lock"
+}
