@@ -17,10 +17,15 @@ Modes
   --build-units --raw-ref R --coded-ref C
                             U0 on t4 (after tag v0.42-acquisition-locked; before any judge call): units_v1_15.csv,
                             u0_v1_15.json. No model call, no valence, no P, C* or R.
+  --stage J                 after the lock and judge_v1_15.py --freeze: JUDGE_FAIL check, S_t4, H1_t4 (+SD), self-
+                            consistency, own checks -> outputs/stage_j_v1_15.json and outputs/s_t4_v1_15.csv
+                            (no CSV if a halt fired). Reads no P, C* or R.
+  --stage C --v114-ref REF  after Stage J and v1.14's Stage 1: P_S0, C*_S0 from stage1_v1_14.json at REF, MNP with
+                            v1.10's code on the t4 answers at --raw-ref -> H2/H3/H5_t4, SD, SU -> v1_15_verdicts.json
   --lock-manifest           prereg/LOCK_MANIFEST_v1_15.sha256 over LOCK_FILES (last step of the content lock)
-Stage J (stage_j, own_checks) and Stage C (single_wave, mnp_t4, verdicts_t4) are library functions here, tested on
-synthetic data; their command-line glue (reading the frozen outputs, v1.14's Stage 1 units, writing s_t4_v1_15.csv
-and v1_15_verdicts.json) is an r1 item, finished before the lock (PRE_REGISTRATION section 12).
+Stages J and C refuse unless tag v1.15-prereg-r1 exists and anchor/git_anchor_v1_15.json names its commit with a
+non-empty osf_deposit. The Preview reads the S_t4 table with
+  --s-t4 <ref>:osf/methodology/v1_15/outputs/s_t4_v1_15.csv:S_t4:rated --s-t4-lock-tag v1.15-prereg-r1
 No model call in this file (judge calls: judge_v1_15.py).
 """
 from __future__ import annotations
@@ -283,16 +288,26 @@ def run_build_units(raw_ref: str, coded_ref: str, out: Path = PREREG_DIR, log=pr
         coded[sub] = parse_csv(data)
     ctx = type("Ctx", (), {"path": staticmethod(lambda rel: ROOT / rel)})()
     res = build_units_t4(answers, coded, ctx, log)
-    return write_u0(res, drop, read, out, log)
+    refs = {"raw_ref": raw_ref, "raw_commit": rev_commit(raw_ref), "coded_ref": coded_ref,
+            "coded_commit": rev_commit(coded_ref)}
+    return write_u0(res, drop, read, out, log, refs=refs)
 
 
-def write_u0(res: dict, drop: dict, read: List[dict], out: Path, log=print) -> dict:
+def rev_commit(ref: str) -> str:
+    r = subprocess.run(["git", "-C", str(ROOT), "rev-parse", "-q", "--verify", f"{ref}^{{commit}}"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        raise Halt(f"cannot resolve {ref}")
+    return r.stdout.strip()
+
+
+def write_u0(res: dict, drop: dict, read: List[dict], out: Path, log=print, refs: Optional[dict] = None) -> dict:
     out.mkdir(parents=True, exist_ok=True)
     ub = S.units_csv_bytes(res["units"])
     (out / UNITS_NAME).write_bytes(ub)
     judged = [u for u in res["units"] if u["judged"]]
     doc = {"phase": PHASE_ID, "kind": "U0 on t4 (no model call, no valence, no P, C* or R)", "created_utc": _now(),
-           "inputs_read": read, "drop_rule_S0": drop, "scorer_sha256": V.sha256(Path(__file__)),
+           "refs": refs or {}, "inputs_read": read, "drop_rule_S0": drop, "scorer_sha256": V.sha256(Path(__file__)),
            "units_file": {"path": UNITS_NAME, "sha256": V.sha256_bytes(ub), "rows": len(res["units"])},
            "units": {"windows": len(res["units"]), "judged": len(judged), "capped_out": len(res["units"]) - len(judged),
                      "denon_judged": sum(1 for u in judged if (u["category"], u["brand"]) == DENON)},
@@ -422,6 +437,156 @@ def verdicts_t4(h1: str, h2: str, h3: str, h5: str) -> dict:
     return {"raw": raw, "after_noise_guard": guarded, "noise_guard_on": on, "gate_reading_t4": gate_reading(guarded)}
 
 
+# ----------------------------------------------------------------------------------------------- outputs (section 9)
+S_T4_COLS = ["substrate", "brand", "S_t4", "rated", "n_valid", "E", "NV", "n_refers_false", "n_judge_fail",
+             "n_unjudged", "own_checks"]
+V114_TAG = "v1.14-prereg-r2"
+V114_STAGE1 = "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"   # the Preview's INPUTS["v1.14"]["stage1"]
+
+
+def all_unit_keys(ctx) -> List[Tuple[str, str]]:
+    """The 112 omnibus units as (substrate, unit key): v1.10's registry loader (S-ids for v0.23), the keys of
+    v0.42's coded tables and of the Preview's MQ_Join."""
+    return [(sub, u) for sub in V.OMNI for u in sorted(V.load_registry(ctx, *V.OMNI_REG[sub])[1].values())]
+
+
+def fmt_num(x) -> str:
+    return "" if x is None or (isinstance(x, float) and not math.isfinite(x)) else repr(float(x))
+
+
+def s_t4_csv_bytes(sj: dict, keys: List[Tuple[str, str]]) -> bytes:
+    """One row per unit (112), NOT RATED rows included; the Preview reads it with
+    --s-t4 REF:osf/methodology/v1_15/outputs/s_t4_v1_15.csv:S_t4:rated --s-t4-lock-tag v1.15-prereg-r1."""
+    buf = io.StringIO()
+    w = csv.writer(buf, lineterminator="\n")
+    w.writerow(S_T4_COLS)
+    for sub, b in keys:
+        v = sj["S_t4"].get(f"{sub}|{b}") or {}
+        rated = bool(v.get("rated"))
+        w.writerow([sub, b, fmt_num(v.get("S")) if rated else "", "1" if rated else "0", v.get("n", 0),
+                    fmt_num(v.get("E")), fmt_num(v.get("NV")), v.get("n_refers_false", 0), v.get("n_judge_fail", 0),
+                    v.get("n_unjudged", 0), sj["own_checks"]])
+    return buf.getvalue().encode("utf-8")
+
+
+def ref_problems(root: Path = ROOT) -> List[str]:
+    """Stages J and C refuse unless tag v1.15-prereg-r1 exists and the anchor file names its commit with a non-empty
+    osf_deposit (as v1.11's anchor_problems)."""
+    r = subprocess.run(["git", "-C", str(root), "rev-parse", "-q", "--verify", f"refs/tags/{PREREG_TAG}^{{commit}}"],
+                       capture_output=True, text=True)
+    if r.returncode != 0:
+        return [f"tag {PREREG_TAG} does not exist"]
+    if not ANCHOR_FILE.exists():
+        return [f"anchor file missing: {ANCHOR_FILE}"]
+    a = json.loads(ANCHOR_FILE.read_text(encoding="utf-8"))
+    bad = [f"anchor field missing: {k}" for k in S.ANCHOR_FIELDS if k not in a]
+    if a.get("commit") != r.stdout.strip():
+        bad.append("anchor does not name the tag's commit")
+    if not str(a.get("osf_deposit") or "").strip():
+        bad.append("anchor has an empty osf_deposit")
+    return bad
+
+
+def run_stage_j(prereg: Path, data: Path, outdir: Path, ctx, dry: bool = False, log=print) -> dict:
+    """Stage J (section 8): frozen outputs -> JUDGE_FAIL check, S_t4, H1_t4 (+SD), self-consistency, own checks.
+    Writes stage_j_v1_15.json and, unless a halt fired (v1.11 section 4.2: halt before scoring), s_t4_v1_15.csv."""
+    u0 = json.loads((prereg / U0_NAME).read_text(encoding="utf-8"))
+    if V.sha256(prereg / UNITS_NAME) != u0["units_file"]["sha256"]:
+        raise Halt("the unit table differs from the U0 record")
+    frozen_p = outdir / "judge_outputs_frozen_v1_15.json"
+    if not frozen_p.exists():
+        raise Halt("judge outputs are not frozen (judge_v1_15.py --freeze)")
+    frozen = json.loads(frozen_p.read_text(encoding="utf-8"))
+    raw = data / frozen["raw_file"]
+    if V.sha256(raw) != frozen["raw_sha256"] or frozen["units_sha256"] != u0["units_file"]["sha256"]:
+        raise Halt("raw judge file or unit table differs from the frozen record")
+    units = S.read_units(prereg / UNITS_NAME)
+    recs = [json.loads(x) for x in raw.read_text(encoding="utf-8").splitlines() if x.strip()]
+    sj = stage_j(units, recs, frozen["roles"])
+    sj["own_checks"] = own_checks(sj)
+    halted = bool(sj["fail_check"].get("halt"))
+    doc = {"phase": PHASE_ID, "stage": "J", "prereg_tag": PREREG_TAG, "dry_run": dry, "created_utc": _now(),
+           "units_sha256": u0["units_file"]["sha256"], "frozen_sha256": V.sha256(frozen_p),
+           "halted": halted, **sj}
+    outdir.mkdir(parents=True, exist_ok=True)
+    if not halted:
+        cb = s_t4_csv_bytes(sj, all_unit_keys(ctx))
+        (outdir / SCORES_NAME).write_bytes(cb)
+        doc["s_t4_csv"] = {"path": SCORES_NAME, "sha256": V.sha256_bytes(cb)}
+    (outdir / STAGE_J_NAME).write_text(json.dumps(V._clean(doc), indent=2) + "\n", encoding="utf-8")
+    log(f"[v1.15] Stage J: H1_t4 {sj['H1_t4']['verdict']}; own checks {sj['own_checks']}; halted {halted}")
+    return doc
+
+
+def read_v114_stage1(data: bytes) -> Tuple[Dict[str, Optional[float]], Dict[str, Optional[float]]]:
+    """P_S0 and C*_S0 from v1.14's Stage 1 units[] (the checks of the Preview's read_v114)."""
+    s1 = json.loads(data.decode("utf-8"))
+    if s1.get("phase") != "v1.14" or str(s1.get("stage")) != "1" or s1.get("prereg_tag") != V114_TAG:
+        raise Halt("not v1.14's Stage 1 output")
+    if s1.get("dry_run"):
+        raise Halt("v1.14 Stage 1 file is a dry run")
+    P, C = {}, {}
+    for u in s1.get("units") or []:
+        k = f"{u['substrate']}|{u['brand']}"
+        P[k] = None if u.get("P_S0") is None else float(u["P_S0"])
+        C[k] = None if u.get("C_star_S0") is None else float(u["C_star_S0"])
+    return P, C
+
+
+def stage_c_core(sj: dict, P: dict, C: dict, R: Optional[Dict[str, dict]]) -> dict:
+    """H2_t4, H3_t4, H5_t4 (PENDING without R), sensitivities SD and SU, verdict rows (section 5)."""
+    Smap = {k: v for k, v in sj["S_t4"].items()}
+    RY = {k: v["R"] for k, v in R.items() if v["rated"]} if R is not None else None
+    no_denon = lambda k: k != f"{DENON[0]}|{DENON[1]}"  # noqa: E731
+    res = {"H2_t4": single_wave(Smap, P), "H3_t4": single_wave(Smap, C)}
+    res["H5_t4"] = single_wave(Smap, RY) if RY is not None else {"verdict": "PENDING"}
+    sens = {"SD_without_Denon": {"H2_t4": single_wave(Smap, P, no_denon), "H3_t4": single_wave(Smap, C, no_denon)}}
+    if RY is not None:
+        sens["SD_without_Denon"]["H5_t4"] = single_wave(Smap, RY, no_denon)
+    with V.uncentred():
+        sens["SU_uncentred"] = {"H2_t4": single_wave(Smap, P), "H3_t4": single_wave(Smap, C)}
+        if RY is not None:
+            sens["SU_uncentred"]["H5_t4"] = single_wave(Smap, RY)
+    v = verdicts_t4(sj["H1_t4"]["verdict"], res["H2_t4"]["verdict"], res["H3_t4"]["verdict"], res["H5_t4"]["verdict"])
+    changes = [f"{name} {h}: {blk[h]['verdict']} (primary {res[h]['verdict']})" for name, blk in sens.items()
+               for h in blk if blk[h]["verdict"] != res[h]["verdict"]]
+    return {**res, "sensitivities": sens, "sensitivity_verdict_changes": changes, "VERDICTS": v}
+
+
+def run_stage_c(outdir: Path, v114_ref: Optional[str], raw_ref: str, ctx, dry: bool = False,
+                stage1_bytes: Optional[bytes] = None, answers=None, log=print) -> dict:
+    """Stage C (after Stage J and v1.14's Stage 1): writes v1_15_verdicts.json with the SHA-256 of Stage J and of
+    the S_t4 table. H5_t4 is PENDING until v1.14's Stage 1 exists (no Ranking statistic before it)."""
+    sjp = outdir / STAGE_J_NAME
+    if not sjp.exists():
+        raise Halt("Stage C refuses before Stage J")
+    sj = json.loads(sjp.read_text(encoding="utf-8"))
+    if sj.get("halted"):
+        raise Halt("Stage J halted (JUDGE_FAIL > 2%): no Stage C")
+    read: List[dict] = []
+    if stage1_bytes is None:
+        if not v114_ref:
+            raise Halt("--v114-ref (the ref holding v1.14's Stage 1 output) is required")
+        stage1_bytes, blob = git_bytes(v114_ref, V114_STAGE1)
+        logged(read, v114_ref, V114_STAGE1, stage1_bytes, blob)
+    P, C = read_v114_stage1(stage1_bytes)
+    if answers is None:
+        raw, blob = git_bytes(raw_ref, V042_RAW_PATH)
+        logged(read, raw_ref, V042_RAW_PATH, raw, blob)
+        answers, _ = t4_answers(parse_jsonl(raw))
+    R = mnp_t4(answers, ctx)
+    core = stage_c_core(sj, P, C, R)
+    csv_p = outdir / SCORES_NAME
+    doc = {"phase": PHASE_ID, "stage": "C", "prereg_tag": PREREG_TAG, "dry_run": dry, "created_utc": _now(),
+           "stage_j_sha256": V.sha256(sjp), "s_t4_csv": {"path": SCORES_NAME, "sha256": V.sha256(csv_p)},
+           "own_checks": sj["own_checks"], "H1_t4": sj["H1_t4"], "H1_t4_SD": sj["H1_t4_SD"], **core,
+           "R_star": {"statistic": "MNP (v1.10 selection; lead-item extractor; floor 6)", "rated": sum(v["rated"] for v in R.values())},
+           "inputs_read": read}
+    (outdir / VERDICTS_NAME).write_text(json.dumps(V._clean(doc), indent=2) + "\n", encoding="utf-8")
+    log(f"[v1.15] Stage C: {core['VERDICTS']['after_noise_guard']}; gate reading {core['VERDICTS']['gate_reading_t4']}")
+    return doc
+
+
 # ----------------------------------------------------------------------------------------------- lock
 LOCK_FILES = [
     "osf/methodology/v1_15/prereg/PRE_REGISTRATION_v1_15.md",
@@ -431,6 +596,7 @@ LOCK_FILES = [
     "osf/methodology/v1_15/scripts/judge_v1_15.py",
     "osf/methodology/v1_15/scripts/coi_screen_v1_15.py",
     "osf/methodology/v1_15/scripts/tests/test_v1_15.py",
+    "osf/methodology/v1_15/lock/preview_reader_check_v1_15.py",
     "osf/methodology/v1_15/anchor/DEVIATIONS.md",
     "scripts/score_v1_11.py",
     "scripts/judge_v1_11.py",
@@ -457,7 +623,20 @@ def main(argv=None) -> int:
     ap.add_argument("--raw-ref", default=V042_RAW_TAG)
     ap.add_argument("--coded-ref")
     ap.add_argument("--lock-manifest", action="store_true")
+    ap.add_argument("--stage", choices=["J", "C"])
+    ap.add_argument("--v114-ref", help="--stage C: the git ref holding v1.14's Stage 1 output")
     a = ap.parse_args(argv)
+    if a.stage:
+        bad = ref_problems()
+        if bad:
+            print("REFUSED: " + "; ".join(bad))
+            return 3
+        ctx = type("Ctx", (), {"path": staticmethod(lambda rel: ROOT / rel)})()
+        if a.stage == "J":
+            run_stage_j(PREREG_DIR, DATA_DIR, OUTDIR, ctx)
+        else:
+            run_stage_c(OUTDIR, a.v114_ref, a.raw_ref, ctx)
+        return 0
     if a.cost:
         rep = cost_report()
         (PREREG_DIR / "cost_estimate_v1_15.json").write_text(json.dumps(rep, indent=2) + "\n", encoding="utf-8")

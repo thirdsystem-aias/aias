@@ -288,6 +288,135 @@ class TestEndToEnd(unittest.TestCase):
             self.assertIn("v0.19|Denon", sj["S_t4"])
 
 
+sys.path.insert(0, str(T.V115 / "lock"))
+import preview_reader_check_v1_15 as PRC  # noqa: E402
+import write_anchor_v1_15 as WA  # noqa: E402
+
+
+def synth_stage1(seed=5):
+    rng = random.Random(seed)
+    units = [{"substrate": s, "brand": b, "P_S0": rng.random() * 100,
+              "C_star_S0": (rng.random() * 100 if rng.random() < .8 else None)} for s, b in T.all_unit_keys(CTX)]
+    return json.dumps({"phase": "v1.14", "stage": 1, "prereg_tag": "v1.14-prereg-r2", "dry_run": False,
+                       "units": units}).encode()
+
+
+class TestStagesAndPreview(unittest.TestCase):
+    """Full fake-judge run -> freeze -> Stage J -> Stage C, then the Preview's own reader on the S_t4 table."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = tempfile.TemporaryDirectory()
+        d = Path(cls.tmp.name)
+        recs = synth_records()
+        ans, drop = T.t4_answers(recs)
+        res = T.build_units_t4(ans, synth_coded(recs), CTX, log=lambda *a: None)
+        T.write_u0(res, drop, [], d, log=lambda *a: None, refs={"coded_ref": "synthetic"})
+        cls.sim = JV.simulate(d, log=lambda *a: None)
+        cls.sj = T.run_stage_j(d, d, d, CTX, dry=True, log=lambda *a: None)
+        cls.sc = T.run_stage_c(d, None, "unused", CTX, dry=True, stage1_bytes=synth_stage1(), answers=ans,
+                               log=lambda *a: None)
+        cls.d = d
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.tmp.cleanup()
+
+    def test_files_written(self):
+        self.assertEqual(self.sim["rc"][-1], 0)
+        for n in (T.STAGE_J_NAME, T.SCORES_NAME, T.VERDICTS_NAME, JV.FROZEN_NAME):
+            self.assertTrue((self.d / n).exists(), n)
+
+    def test_s_t4_table_format(self):
+        import csv as _csv
+        rows = list(_csv.DictReader(io_text((self.d / T.SCORES_NAME).read_text(encoding="utf-8"))))
+        self.assertEqual(list(rows[0]), T.S_T4_COLS)
+        self.assertEqual(len(rows), 112)
+        self.assertEqual(len({(r["substrate"], r["brand"]) for r in rows}), 112)
+        for r in rows:
+            self.assertIn(r["rated"], ("0", "1"))
+            self.assertEqual(r["S_t4"] == "", r["rated"] == "0")
+            if r["rated"] == "1":
+                self.assertGreaterEqual(int(r["n_valid"]), 6)
+                self.assertTrue(0 <= float(r["S_t4"]) <= 100)
+        self.assertEqual({r["own_checks"] for r in rows}, {self.sj["own_checks"]})
+
+    def test_verdicts_record_hashes(self):
+        v = json.loads((self.d / T.VERDICTS_NAME).read_text())
+        self.assertEqual((v["phase"], v["stage"], v["prereg_tag"]), ("v1.15", "C", "v1.15-prereg-r1"))
+        self.assertEqual(v["stage_j_sha256"], V.sha256(self.d / T.STAGE_J_NAME))
+        self.assertEqual(v["s_t4_csv"]["sha256"], V.sha256(self.d / T.SCORES_NAME))
+        self.assertEqual(v["s_t4_csv"]["sha256"], self.sj["s_t4_csv"]["sha256"])
+        self.assertEqual(v["VERDICTS"]["raw"]["H4"], "NOT_TESTABLE_ONE_WAVE")
+        for h in ("H2_t4", "H3_t4", "H5_t4"):
+            self.assertIn(v[h]["verdict"], ("CONFIRMED", "MARGINAL", "FALSIFIED", "UNDETERMINED"))
+        self.assertIn("SD_without_Denon", v["sensitivities"])
+        self.assertIn("SU_uncentred", v["sensitivities"])
+
+    def test_stage_c_refuses_after_halt_and_before_j(self):
+        with tempfile.TemporaryDirectory() as e:
+            with self.assertRaises(S.Halt):
+                T.run_stage_c(Path(e), None, "x", CTX, stage1_bytes=synth_stage1(), answers={})
+            (Path(e) / T.STAGE_J_NAME).write_text(json.dumps({"halted": True}))
+            with self.assertRaises(S.Halt):
+                T.run_stage_c(Path(e), None, "x", CTX, stage1_bytes=synth_stage1(), answers={})
+
+    def test_v114_stage1_checks(self):
+        bad = json.loads(synth_stage1())
+        bad["dry_run"] = True
+        with self.assertRaises(S.Halt):
+            T.read_v114_stage1(json.dumps(bad).encode())
+
+    def test_preview_reader_accepts(self):
+        res = PRC.check(self.d / T.SCORES_NAME)
+        self.assertTrue(res.get("accepted"), res)
+        self.assertEqual(res["rows"], 112)
+        self.assertTrue(res["scratch"].startswith("/tmp/"))
+        self.assertFalse(Path(res["scratch"]).exists())
+
+    def test_preview_reader_rejects_a_missing_unit(self):
+        lines = (self.d / T.SCORES_NAME).read_text(encoding="utf-8").splitlines(keepends=True)
+        with tempfile.NamedTemporaryFile("w", suffix=".csv", delete=False) as f:
+            f.writelines(lines[:-1])
+        res = PRC.check(Path(f.name))
+        os_unlink(f.name)
+        self.assertFalse(res.get("accepted"))
+        self.assertIn("MQ_Join", res.get("error", ""))
+
+    def test_unit_keys_equal_preview_cells(self):
+        rows = list(__import__("csv").DictReader(io_text(git("show", "HEAD:osf/v41/v41_three_wave_table.csv"))))
+        self.assertEqual(sorted({(r["substrate"], r["brand"]) for r in rows if r["wave"] == "t3"}),
+                         sorted(T.all_unit_keys(CTX)))
+
+
+def os_unlink(p):
+    import os
+    os.unlink(p)
+
+
+def io_text(s):
+    import io
+    return io.StringIO(s)
+
+
+class TestLsRemote(unittest.TestCase):
+    OUT = ("aaa\trefs/tags/v1.15-prereg-r1\nbbb\trefs/tags/v1.15-prereg-r1^{}\n"
+           "ccc\trefs/tags/v1.15-prereg-r10\nddd\trefs/tags/v1.15-prereg-r10^{}\n")
+
+    def test_anchor_parser_keeps_peeled_line_and_ignores_longer_names(self):
+        self.assertEqual(WA.parse_ls_remote(self.OUT, "v1.15-prereg-r1"),
+                         {"refs/tags/v1.15-prereg-r1": "aaa", "refs/tags/v1.15-prereg-r1^{}": "bbb"})
+
+    def test_judge_parser_same(self):
+        self.assertEqual(JV.remote_tag("v1.15-prereg-r1", self.OUT),
+                         {"refs/tags/v1.15-prereg-r1": "aaa", "refs/tags/v1.15-prereg-r1^{}": "bbb"})
+
+    def test_no_tags_origin_tag_form_in_lock_code(self):
+        for p in (T.V115 / "lock/write_anchor_v1_15.py", T.V115 / "scripts/judge_v1_15.py"):
+            src = p.read_text(encoding="utf-8")
+            self.assertNotRegex(src, r'"ls-remote",\s*"--tags",\s*"origin"', str(p))
+
+
 class TestPrereg(unittest.TestCase):
     @classmethod
     def setUpClass(cls):

@@ -64,10 +64,27 @@ def blackouts(t4_done: datetime | None, t5_done: datetime | None) -> list:
             ("after window (b): S_t4 must exist before the Preview's data lock (Dec 11)", WINDOW_B_END, FAR_FUTURE)]
 
 
+def remote_tag(tag: str, ls_remote_out: str | None = None) -> dict:
+    """{ref: sha} for refs/tags/TAG and refs/tags/TAG^{} on origin. Uses the pattern `refs/tags/TAG*`, because
+    `git ls-remote --tags origin TAG` drops the peeled `^{}` line under git 2.54."""
+    if ls_remote_out is None:
+        r = subprocess.run(["git", "-C", str(T.ROOT), "ls-remote", "origin", f"refs/tags/{tag}*"],
+                           capture_output=True, text=True)
+        if r.returncode != 0:
+            sys.exit(f"REFUSED: git ls-remote failed: {r.stderr.strip()[:200]}")
+        ls_remote_out = r.stdout
+    out = {}
+    for line in ls_remote_out.splitlines():
+        if "\t" in line:
+            sha, ref = line.split("\t", 1)
+            if ref in (f"refs/tags/{tag}", f"refs/tags/{tag}^{{}}"):
+                out[ref] = sha
+    return out
+
+
 def tag_time(tag: str):
     """Commit time (UTC) of a tag that exists on origin, else None (read-only: git ls-remote, git log)."""
-    r = subprocess.run(["git", "-C", str(T.ROOT), "ls-remote", "--tags", "origin", tag], capture_output=True, text=True)
-    if r.returncode != 0 or f"refs/tags/{tag}" not in r.stdout:
+    if f"refs/tags/{tag}" not in remote_tag(tag):
         return None
     c = subprocess.run(["git", "-C", str(T.ROOT), "log", "-1", "--format=%cI", f"{tag}^{{commit}}"],
                        capture_output=True, text=True)
@@ -95,11 +112,9 @@ class Paths(J.Paths):
 def prereg_guard() -> str:
     """Refuse unless tag v1.15-prereg-r1 is on origin and anchor/git_anchor_v1_15.json anchors it with a non-empty
     osf_deposit (the check of score_v1_11.anchor_problems, applied to v1.15's anchor)."""
-    r = subprocess.run(["git", "-C", str(T.ROOT), "ls-remote", "--tags", "origin", T.PREREG_TAG],
-                       capture_output=True, text=True)
-    shas = dict(reversed(line.split("\t")) for line in r.stdout.splitlines() if "\t" in line)
+    shas = remote_tag(T.PREREG_TAG)
     ref = f"refs/tags/{T.PREREG_TAG}"
-    if r.returncode != 0 or ref not in shas:
+    if ref not in shas:
         sys.exit(f"REFUSED: tag {T.PREREG_TAG} not found on origin")
     if not T.ANCHOR_FILE.exists():
         sys.exit(f"REFUSED: anchor file missing: {T.ANCHOR_FILE}")
@@ -136,7 +151,7 @@ def freeze(P: Paths, log=print) -> int:
     doc = {"phase": T.PHASE_ID, "frozen_utc": J._now_dt().isoformat(), "raw_file": RAW_NAME,
            "raw_sha256": V.sha256(P.raw), "records": len(recs), "roles": roles,
            "batches_sha256": V.sha256(P.batches) if P.batches.exists() else None,
-           "plan_sha256": V.sha256(P.plan), "units_sha256": u0["units_file"]["sha256"],
+           "plan_sha256": V.sha256(P.plan), "units_sha256": u0["units_file"]["sha256"], "u0_refs": u0.get("refs", {}),
            "spend_usd": sum(float(r.get("usd") or 0) for r in recs),
            "outcomes": {f"{r} {p}": dict(Counter(v["status"] for k, v in oc.items() if k[0] == r and k[2] == p))
                         for r in ("J1", "J2") for p in ("main", "repeat")},
@@ -219,7 +234,9 @@ def main(argv=None) -> int:
     if not a.no_other_collection:
         sys.exit('REFUSED: give --no-other-collection "<who, when>"')
     J.require_keys(J.current_roles(P))
+    u0refs = json.loads(P.u0.read_text(encoding="utf-8")).get("refs", {})
     J.log_guard(P, {"event": "run started", "attestation": a.no_other_collection, "prereg_commit": commit,
+                    "u0_refs": u0refs,
                     "blackouts": [(n, x.isoformat(), y.isoformat()) for n, x, y in J.BLACKOUTS],
                     "environment": J.sdk_versions()})
     return J.run(P, J.DISPATCH, approval=a.approve_past_pause, bc=J.RealBatchClient())

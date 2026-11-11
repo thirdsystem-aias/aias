@@ -26,14 +26,22 @@ def git(*a):
     return r.stdout.strip()
 
 
+def parse_ls_remote(out: str, tag: str) -> dict:
+    """{ref: sha} for exactly refs/tags/TAG and refs/tags/TAG^{} (the pattern `refs/tags/TAG*` also matches longer
+    names, which are ignored). `git ls-remote --tags origin TAG` is not used: it loses the ^{} line under git 2.54."""
+    want = (f"refs/tags/{tag}", f"refs/tags/{tag}^{{}}")
+    return {ref: sha for sha, ref in (line.split("\t", 1) for line in out.splitlines() if "\t" in line) if ref in want}
+
+
 def build(osf_deposit: str) -> dict:
     if not osf_deposit.strip():
         sys.exit("REFUSED: --osf-deposit is empty")
-    remote = git("ls-remote", "--tags", "origin", T.PREREG_TAG)
-    refs = dict(reversed(line.split("\t")) for line in remote.splitlines() if "\t" in line)
+    refs = parse_ls_remote(git("ls-remote", "origin", f"refs/tags/{T.PREREG_TAG}*"), T.PREREG_TAG)
     ref = f"refs/tags/{T.PREREG_TAG}"
     if ref not in refs:
         sys.exit(f"REFUSED: {T.PREREG_TAG} is not on origin")
+    if ref + "^{}" not in refs:
+        sys.exit(f"REFUSED: origin lists no peeled line for {T.PREREG_TAG} (an annotated tag is required)")
     commit = git("rev-parse", f"{T.PREREG_TAG}^{{commit}}")
     if refs.get(ref + "^{}", refs[ref]) != commit:
         sys.exit("REFUSED: the local tag differs from origin's")
