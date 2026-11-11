@@ -979,5 +979,46 @@ class TestLockTooling(unittest.TestCase):
             "DEVIATIONS.md", "README.md", "score_v1_10.py", "score_v1_14.py"]))
 
 
+class TestClarificationC4(unittest.TestCase):
+    """C4 (2026-11-11, pre-lock dry run): v1.12's verdict file lists an active H5 that does not gate (v1.14's Stage 1
+    not SEPARABLE, v1.12 N35) under paper_A_verdict.inactive and records h5_reported_not_gating; read_v112 must still
+    report H5 as active, else check_activation halts against the pin h5_active_at_lock = True."""
+
+    @staticmethod
+    def _reader(pa):
+        files = {"osf/methodology/v1_12/v112_verdicts.json": json.dumps({
+                     "phase": "v1.12", "prereg_tag": "v1.12-prereg-r1", "parity_gates": {"P1": {"passed": True}},
+                     "primary_panel": "N3", "comparators": {"cross_panel": False}, "models_dropped_section_7_3": [],
+                     "paper_A_verdict": pa, "verdicts": {"H5_Sep_Ranking": "CONFIRMED"}, "legs": {}}).encode(),
+                 "osf/methodology/v1_12/v112_unit_table.csv": b"substrate,brand,cov_star_N3\nv0.19,Denon,50.0\n"}
+
+        class Rd(S.Reader):
+            def check_blob(self, *a):
+                return None
+
+            def commit(self, ref):
+                return "0" * 40
+
+            def read(self, ref, path):
+                b = files[path]
+                self.log[f"{ref}:{path}"] = {"sha256": S.sha256_bytes(b)}
+                return b
+        return Rd(Path("."))
+
+    def test_active_but_not_gating_h5_is_active(self):
+        pa = {"verdict": "FAIL", "label": "FAIL", "legs": {"H1_Sep_Presence": "CONFIRMED"},
+              "inactive": ["H5_Sep_Ranking", "H6_Sep_Sentiment"], "h5_reported_not_gating": "CONFIRMED"}
+        v = S.read_v112(self._reader(pa), S.INPUTS["v1.12"], "ref")
+        self.assertTrue(v["h5_active"])
+        self.assertNotIn(("R", "Cov"), v["carried"])                   # not gating: not carried (6.2)
+        I = copy.deepcopy(S.INPUTS)
+        I["v1.12"]["h5_active_at_lock"] = True
+        self.assertEqual(S.check_activation(v, None, I)["v1.12_H5"], {"pinned": True, "in_output": True})
+
+    def test_truly_inactive_h5_stays_inactive(self):
+        pa = {"verdict": "PASS", "label": "PASS", "legs": {}, "inactive": ["H5_Sep_Ranking", "H6_Sep_Sentiment"]}
+        self.assertFalse(S.read_v112(self._reader(pa), S.INPUTS["v1.12"], "ref")["h5_active"])
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)

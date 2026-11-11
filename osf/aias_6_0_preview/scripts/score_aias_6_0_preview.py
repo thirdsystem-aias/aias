@@ -1147,7 +1147,9 @@ def read_v112(rd: Reader, spec: dict, ref: str) -> dict:
                 carried[pair] = {"rho": rho, "verdict": verd[hyp], "source": f"v1.12 {hyp}"}
     return {"ref": ref, "keys": keys, "Cov": cov, "gate": pa.get("verdict"), "gate_label": pa.get("label"),
             "reduced_panel": bool(doc.get("models_dropped_section_7_3")), "carried": carried,
-            "h5_active": "H5_Sep_Ranking" not in (pa.get("inactive") or []),
+            # C4: v1.12 lists an ACTIVE H5 under "inactive" when it does not gate (v1.14 Stage 1 not SEPARABLE, its
+            # N35) and then records "h5_reported_not_gating"; H5 is inactive only without that key
+            "h5_active": ("H5_Sep_Ranking" not in (pa.get("inactive") or [])) or ("h5_reported_not_gating" in pa),
             "h5_stage1_sha256": (doc.get("H5_ranking_source") or {}).get("sha256"),
             "primary_panel": doc.get("primary_panel"), "verdicts": verd,
             "unit_table_sha256": rd.log[f"{ref}:{spec['unit_table']}"]["sha256"]}
