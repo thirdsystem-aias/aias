@@ -1,0 +1,104 @@
+{
+  "tag": "v1.14-prereg-r2",
+  "tag_object": "38bef0679795a611f481c55703931c6163706c4b",
+  "commit": "a5feb4b1c4b9e9d19979129afcfd616a50b88c64",
+  "tree": "5979752ed0c21f9d11022c90c2d752c664d59774",
+  "branch": "v1.14",
+  "tagger_date": "2026-11-10T18:05:46-06:00",
+  "remote_tag_ref": "38bef0679795a611f481c55703931c6163706c4b\trefs/tags/v1.14-prereg-r2",
+  "recorded_utc": "2026-11-11T00:07:11+00:00",
+  "repository": "https://github.com/thirdsystem-aias/aias",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_14/r2/prereg, methodology/v1_14/r2/calibration, methodology/v1_14/r2/anchor)",
+  "lock_manifest_sha256": "a5c30ae372fe989d155aa5cb8fc7f7ea60778de82b0dab83308cf0f295c960ae",
+  "locked_files": {
+    "osf/methodology/v1_14/prereg/PRE_REGISTRATION_v1_14.md": {
+      "sha256": "b1d8d9d2f06a231ccf86325cd4f68bce8fbba7183a75a373587c4a7069e65f4d",
+      "git_blob": "99560f049dd325bd92a8ab770b06e284b145cb8c"
+    },
+    "osf/methodology/v1_14/README.md": {
+      "sha256": "03155302d36b281317efca40235376a42186af0639140b47992f6795aee93f97",
+      "git_blob": "787f5c1aa42dfd444a7380e83871737176ddd631"
+    },
+    "osf/methodology/v1_14/anchor/DEVIATIONS.md": {
+      "sha256": "460ea58be82e9b3756e4afcda90197526909f10883232546de14575a0f13eed6",
+      "git_blob": "94eeae4990f356726ad29bef0a2887dc9043e4d5"
+    },
+    "osf/methodology/v1_14/calibration/calibration_v1_14.json": {
+      "sha256": "7a84cabc502eb1c7de728935f9c0b6cdddade7c81ede28f0a2615dd4d7501081",
+      "git_blob": "07c70dc86c3686f405a5403a7cef1b75e8fee181"
+    },
+    "scripts/score_v1_14.py": {
+      "sha256": "b087fc818105710079e8fea3c8c279373f787efe48c62cbccdcfb0392e1484ce",
+      "git_blob": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9"
+    },
+    "scripts/test_score_v1_14.py": {
+      "sha256": "d85dcc4af201adec1652ef9b59372503a2068955c8bbabaafab2eb1c88645945",
+      "git_blob": "5430a365f982001638906d33fb135a56924e8095"
+    },
+    "scripts/score_v1_10.py": {
+      "sha256": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+      "git_blob": "0f8b981b2895a325b50629c85f8e0e6ce8e876f5"
+    },
+    "osf/methodology/v1_10/registries/INPUTS_MANIFEST_v1_10.json": {
+      "sha256": "2b10fc421d962c58e7ac1e6ee2256ff397bffe466c2da88d5ad7f0594988513c",
+      "git_blob": "062df519204e340c6e5b4433773d50d0a5d2a2a9"
+    },
+    "osf/v19/panel_registry_v0_19.csv": {
+      "sha256": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
+      "git_blob": "66b41acc9edbeeb777987aae8e8916cdbe4a643b"
+    },
+    "prereg/v0_20_registry.json": {
+      "sha256": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
+      "git_blob": "7a33141421a9d453ee1e6d2be375c35cc9678453"
+    },
+    "prereg/v0_21_registry.json": {
+      "sha256": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
+      "git_blob": "63198885831ab64420ee4657597cc24db8264e0b"
+    },
+    "prereg/v0_22_automotive_content.py": {
+      "sha256": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
+      "git_blob": "9e5b15f9038b38e463b1cb573b92ea4dd32319fb"
+    },
+    "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json": {
+      "sha256": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d",
+      "git_blob": "5d6df9c6b7afe07d1b23b4c28bd35449a3e77080"
+    },
+    "osf/methodology/v1_10/outputs/v1_10_verdicts.json": {
+      "sha256": "d4250ba79a6acfb9e211dbc561311da9fc07581bebf871dea3dbe149d6bdcb28",
+      "git_blob": "43912b998ac00dd3f3197a3f8a6163003a15a3bc"
+    },
+    "osf/methodology/v1_10/anchor/coi_flags_v1_10.json": {
+      "sha256": "02ad158d0ad9d2c660aa0e2f253c75ee637441ad7ba158f4df30110b127e28a1",
+      "git_blob": "90b58120502a6d4f04b2583cbf5b58b6bb8bd3e9"
+    },
+    "osf/aias_2_0/aias_2_0_profiles.csv": {
+      "sha256": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e",
+      "git_blob": "d5652ad454c9c9d554c9f2ef658acefd8b6e83af"
+    }
+  },
+  "activation": {
+    "Coverage": {
+      "tags_on_origin": [],
+      "latest": null,
+      "commit": null,
+      "score_defined_on_N3_at_t4": true,
+      "active": false
+    },
+    "Grounding": {
+      "tags_on_origin": [],
+      "latest": null,
+      "commit": null,
+      "score_defined_on_N3_at_t4": true,
+      "active": false
+    },
+    "Sentiment": {
+      "tags_on_origin": [
+        "v1.11-prereg-r1"
+      ],
+      "latest": "v1.11-prereg-r1",
+      "commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
+      "score_defined_on_N3_at_t4": false,
+      "active": false
+    }
+  }
+}
