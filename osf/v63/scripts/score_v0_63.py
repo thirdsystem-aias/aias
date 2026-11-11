@@ -105,7 +105,8 @@ N_PERM_H2 = 1_000                                      # sec 6.2
 N_MC_H3 = 2_000                                        # sec 6.3
 SEEDS = {"R9": 630009, "H2": 630002, "H3": 630003, "POWER": 630090}
 
-DENON = ("v0.19", "Denon")                             # Declarations, COI
+DENON = ("v0.19", "Denon")                             # Declarations, COI (ownership)
+COI_FLAGGED = {DENON, ("v0.18", "Ellis Brooklyn")}     # DEVIATIONS Entry 0 item 5 (Korean distribution, 2022)
 
 # where the parity references live (sec 7)
 REF_THREE_WAVE = "osf/v41/v41_three_wave_table.csv"
@@ -359,7 +360,7 @@ def load_registry_meta(root: Path = ROOT) -> dict:
             fl.add("cross_cultural")
         if r["borderline_flag"].strip() == "True":
             fl.add("borderline")
-        if ("v0.19", r["brand"]) == DENON:
+        if ("v0.19", r["brand"]) in COI_FLAGGED:
             fl.add("coi_flagged")
         m[r["brand"]] = {"cell": _cell_letter(r["cell"]), "cascade": int(r["cascade_order"]), "flags": fl}
     meta["v0.19"] = m
@@ -398,7 +399,8 @@ def load_registry_meta(root: Path = ROOT) -> dict:
     if reg is None:
         raise Halt("v0.18 REGISTRY not found")
     meta["v0.18"] = {n: {"cell": _cell_letter(cid), "cascade": i,
-                         "flags": {"borderline"} if n in V18_BORDERLINE else set()}
+                         "flags": ({"borderline"} if n in V18_BORDERLINE else set())
+                         | ({"coi_flagged"} if ("v0.18", n) in COI_FLAGGED else set())}
                      for cid, names in reg.items() for i, n in enumerate(names, 1)}
     return meta
 
@@ -782,10 +784,14 @@ def score_core(archive: dict, meta: dict, n_draws: int = N_DRAWS_RANDOM, n_perm:
 def score_all(archive: dict, meta: dict, log=print, **kw) -> dict:
     """Primary scoring + sensitivity S1 (COI: v0.19 without Denon in every panel; H1, H2, H4 only)."""
     res = score_core(archive, meta, log=log, **kw)
-    a2, m2 = drop_brands(archive, meta, DENON[0], {DENON[1]})
+    a2, m2 = archive, meta
+    for sub in SUBSTRATES:                                 # S1: every COI-flagged brand removed
+        flagged = {b for b, v in meta[sub].items() if "coi_flagged" in v["flags"]}
+        if flagged:
+            a2, m2 = drop_brands(a2, m2, sub, flagged)
     kw2 = dict(kw, do_h3=False)
     s1 = score_core(a2, m2, log=log, **kw2)
-    res["sensitivity_S1_without_Denon"] = {k: s1[k] for k in ("H1_SubstrateVerdictStability",
+    res["sensitivity_S1_without_COI_flagged"] = {k: s1[k] for k in ("H1_SubstrateVerdictStability",
                                                                "H2_RegimeAssignmentStability",
                                                                "H4_DisclosedHandlingNeutral") if k in s1}
     v = {k: res[k]["verdict"] for k in ("H1_SubstrateVerdictStability", "H2_RegimeAssignmentStability",

@@ -35,6 +35,7 @@ def make_meta():
                   for i in range(1, 25)}
     m["v0.18"] = {f"f{c}{i}": {"cell": c, "cascade": i + 1, "flags": set()} for c in "ABC" for i in range(8)}
     m["v0.18"]["fA1"]["flags"] = {"borderline"}
+    m["v0.18"]["fB3"]["flags"] = {"coi_flagged"}
     return m
 
 
@@ -247,7 +248,7 @@ class TestScoring(unittest.TestCase):
         det = [c for c in r1["comparisons"] if c["rule"] in S.DETERMINISTIC_RULES]
         self.assertEqual(h1["n"] + h1["uncomparable"], len(det))
         self.assertNotIn("R11_INDEPENDENT_ONLY", {c["rule"] for c in r1["comparisons"]})
-        self.assertIn("sensitivity_S1_without_Denon", r1)
+        self.assertIn("sensitivity_S1_without_COI_flagged", r1)
         s2 = r1["sensitivity_S2_uncomparable_as_flip"]
         self.assertEqual(s2["H1_SubstrateVerdictStability"]["n"], len(det))
         self.assertLessEqual(s2["H1_SubstrateVerdictStability"]["A"], h1["A"])
@@ -302,6 +303,30 @@ class TestScoring(unittest.TestCase):
                 S.run_dry(f, log=lambda *a: None, **self.KW)
 
 
+class TestCOISensitivity(unittest.TestCase):
+    def test_s1_removes_every_flagged_brand(self):
+        meta = make_meta()
+        arch = make_archive(meta, seed=5)
+        seen = []
+        orig = S.score_core
+
+        def spy(a, m, **kw):
+            seen.append({s: set(ms) for s, ms in m.items()})
+            return orig(a, m, **kw)
+        S.score_core = spy
+        try:
+            S.score_all(arch, meta, log=lambda *x: None, n_draws=5, n_perm=10, n_mc=5)
+        finally:
+            S.score_core = orig
+        self.assertEqual(len(seen), 2)
+        self.assertIn("hA2", seen[0]["v0.19"])
+        self.assertNotIn("hA2", seen[1]["v0.19"])
+        self.assertNotIn("fB3", seen[1]["v0.18"])
+        r2 = [v for v in S.structural_variants("v0.18", meta["v0.18"]) if v[0] == "R2_DROP_COI_FLAGGED"]
+        self.assertEqual(len(r2), 1)
+        self.assertNotIn("fB3", r2[0][2])
+
+
 class TestSingleWave(unittest.TestCase):
     def test_single_wave_extra_wave_flagged(self):
         meta = make_meta()
@@ -345,6 +370,8 @@ class TestLockAndRegistries(unittest.TestCase):
                          ["Byredo", "Frederic Malle", "Le Labo"])
         self.assertEqual(dict(Counter(v["cell"] for v in meta["v0.18"].values())), {"A": 8, "B": 8, "C": 8})
         self.assertEqual(meta["v0.19"]["Denon"]["flags"], {"coi_flagged"})
+        self.assertEqual(sorted((s, b) for s, ms in meta.items() for b, v in ms.items() if "coi_flagged" in v["flags"]),
+                         [("v0.18", "Ellis Brooklyn"), ("v0.19", "Denon")])
         self.assertEqual(sorted(b for b, v in meta["v0.22"].items() if "defunct" in v["flags"]),
                          ["Mercury", "Oldsmobile", "Plymouth", "Pontiac", "Saturn"])
 

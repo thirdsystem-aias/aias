@@ -1,6 +1,6 @@
 {
   "phase": "v0.63",
-  "created_utc": "2026-11-11T01:52:01Z",
+  "created_utc": "2026-11-11T02:20:57Z",
   "reads": "registries only (no answer file)",
   "registry_sha256": {
     "v0.19": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
@@ -36,7 +36,7 @@
       "R3_DROP_CROSS_CULTURAL"
     ]
   },
-  "structural_comparisons_upper_bound_H1": 160,
+  "structural_comparisons_upper_bound_H1": 162,
   "substrates": {
     "v0.19": {
       "registry": "osf/v19/panel_registry_v0_19.csv",
@@ -720,6 +720,9 @@
         "Byredo": [
           "borderline"
         ],
+        "Ellis Brooklyn": [
+          "coi_flagged"
+        ],
         "Frederic Malle": [
           "borderline"
         ],
@@ -732,6 +735,23 @@
         "F3"
       ],
       "variants": [
+        {
+          "rule": "R2_DROP_COI_FLAGGED",
+          "variant": "R2_DROP_COI_FLAGGED",
+          "n_kept": 23,
+          "dropped": [
+            "Ellis Brooklyn"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
         {
           "rule": "R4_DROP_BORDERLINE",
           "variant": "R4_DROP_BORDERLINE",
