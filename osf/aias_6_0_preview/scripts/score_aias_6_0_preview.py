@@ -146,8 +146,8 @@ INPUTS = {
         "coded_dir": "osf/v42/data/coded",
         "cells": "osf/v41/v41_three_wave_table.csv", "cells_blob": "86168a6854ac6d901340ed218e2dc2713887dccf"},
     "v1.14": {   # Ranking: R*_S0 (R*_S1 for SH, MNP for SF), STAGE1_VERDICT, Stage 2 GATE; carried H1, H2
-        "lock_tag": "v1.14-prereg-r1", "lock_commit": "20fbc3423a4c328d14234f4c7c6d3aaecdce501a",
-        "scorer": "scripts/score_v1_14.py", "scorer_blob": "c479004c58de79ef017b25c4725e433f74dc42b2",
+        "lock_tag": "v1.14-prereg-r2", "lock_commit": "a5feb4b1c4b9e9d19979129afcfd616a50b88c64",   # C3: r1 20fbc342
+        "scorer": "scripts/score_v1_14.py", "scorer_blob": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9",   # r1 c479004c
         "stage1": "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
         "rank_table": "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv",
         "stage2": "osf/methodology/v1_14/outputs/stage2/stage2_v1_14.json"},

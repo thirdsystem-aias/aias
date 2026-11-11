@@ -450,7 +450,7 @@ class Synth:
             {"conditional_legs": {"H4_Sep_Ranking": {"pushed_before_lock": True},
                                   "H6_Sep_Coverage": {"pushed_before_lock": True}}}))
         self.lock_commit = commit(self.d, "component locks", self.LOCK_DATE)
-        for t in ("v0.42-prereg-r1", "v1.14-prereg-r1", "v1.12-prereg-r1", "v1.13-prereg-r1", "v1.11-prereg-r1",
+        for t in ("v0.42-prereg-r1", "v1.14-prereg-r2", "v1.12-prereg-r1", "v1.13-prereg-r1", "v1.11-prereg-r1",
                   "aias-2-0-data-locked"):
             git(self.d, "tag", "-a", t, "-m", t, date=self.LOCK_DATE)
         if preview_tag == "before":
@@ -523,7 +523,7 @@ class Synth:
         self.rt_text = csv_text(rank_rows, S.V14.RANK_COLS)
         sc = {u: {"P": self.P[u], "C": self.C[u], "R": self.R[u]} for u in U}
         h = {n: S.s_test(sc, a, "R", 0, False) for n, a in (("H1_Sep_Presence", "P"), ("H2_Sep_Consistency", "C"))}
-        s1 = {"phase": "v1.14", "stage": "1", "prereg_tag": "v1.14-prereg-r1", "dry_run": False,
+        s1 = {"phase": "v1.14", "stage": "1", "prereg_tag": "v1.14-prereg-r2", "dry_run": False,
               "inputs_read": {"v0.42-scoring-locked:osf/v42/v42_brand_table.csv": {"sha256": sha(self.bt_text)}},
               "rank_table_t4_sha256": sha(self.rt_text), "gate_excluded_substrates": [],
               "STAGE1_VERDICT": "SEPARABLE (Stage 2 pending)", "units": units_json,

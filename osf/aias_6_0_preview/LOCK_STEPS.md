@@ -11,7 +11,7 @@ Prepared 2026-11-10 (about 5:45 pm CT) by the runner (Preview r1 lane). Everythi
 1. **Pablo:** his 24 hours on r0 ended (about 5 pm CT Wed Nov 11) with no change requested, and the coordinator has decided whether the ex-ante clarifications C1–C2 (`anchor/DEVIATIONS.md`; §2, §11.2 rows MQ_Lock and MQ_Join) restart them. A change to a hypothesis, test, band, threshold or decision rule restarts the 24 hours: do not lock; report.
 2. **Component tags on origin** (v0.42, v1.12, v1.13 new; v1.14, v1.11, AIAS 2.0 already locked):
    ```
-   cd /Users/pablou/aias/_worktrees/aias-6.0-preview && git fetch -q origin --tags && git fetch -q origin && git ls-remote --tags origin v0.42-prereg-r1 v1.12-prereg-r1 v1.13-prereg-r1 v1.14-prereg-r1 v1.11-prereg-r1 aias-2-0-data-locked
+   cd /Users/pablou/aias/_worktrees/aias-6.0-preview && git fetch -q origin --tags && git fetch -q origin && git ls-remote --tags origin v0.42-prereg-r1 v1.12-prereg-r1 v1.13-prereg-r1 v1.14-prereg-r2 v1.11-prereg-r1 aias-2-0-data-locked
    ```
    Expect one line per tag, six in all.
 3. **No t4-based component score exists anywhere in the repository** (§11.1):
@@ -33,6 +33,8 @@ cd /Users/pablou/aias/_worktrees/aias-6.0-preview && PYTHONDONTWRITEBYTECODE=1 p
 Expect exit 1 with `"problems"` listing exactly six PENDING values: `v0.42.lock_commit`, `v1.12.lock_commit`, `v1.12.h5_active_at_lock`, `v1.13.lock_commit`, `v1.13.h4_active_at_lock`, `v1.13.h6_active_at_lock` (no "lock tag … not found", no blob line). For each of v0.42, v1.12, v1.13 the report shows `tag_commit` (40 hex), every `*_blob` with `at_tag` equal to `pinned`, every `output_names_in_tagged_scorer` true; for v1.12 `h5_active_at_lock` and for v1.13 `h4_active_at_lock`, `h6_active_at_lock` (true or false, read from their anchors on origin: `osf/methodology/v1_12/anchor/osf_anchor_v1_12.json`, `osf/methodology/v1_13/anchor/git_anchor_v1_13.json`). If a report shows `"activation": "anchor not found yet"`, wait for that component's anchor commit to be pushed, `git fetch -q origin`, and repeat.
 
 (At r1, on 2026-11-10, the report listed these six values plus "lock tag … not found" for v0.42, v1.12 and v1.13, as expected before their locks; v1.14 and v1.11 matched their pins.)
+
+(Since C3, Nov 10 evening: v1.14 is pinned to its re-lock `v1.14-prereg-r2` → `a5feb4b1c4b9e9d19979129afcfd616a50b88c64`, scorer blob `7aeb18316a23c699a0a6a4358e52ab09f9546ca9`; until that tag exists the report also lists "v1.14: lock tag v1.14-prereg-r2 not found". The same evening the v1.12 and v1.13 branches re-pointed to it, which moved their scorer blobs from the pins here: v1.12 `75aabfc9…` → `11cded95437fd2ed30c1cdf1120b23a5a3cebe2d` (branch `v1.12` @ `0201cc1`), v1.13 `40c43cb8…` → `830c4471d4189c3714063892d35f8e9ec9e3a521` (branch `v1.13` @ `4086851`); re-pin them in step 2 from what the report shows at their tags.)
 
 ## 2. Pin: edit the `INPUTS` block only (the one configuration block)
 
