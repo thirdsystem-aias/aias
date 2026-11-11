@@ -198,7 +198,7 @@ def chart_02(V, rows, out):
     ax.tick_params(labelsize=8.5)
     fig.subplots_adjust(top=0.80, bottom=0.17, left=0.30, right=0.86)
     _header(fig, 2, f"Panel {V['primary_panel']}, search off; Indigo: legs in the gate; gray: secondary or not gating.",
-            "Shaded: |ρ_w| ≤ 0.30 (separable). Dotted: |ρ_w| = 0.50. H4 and H8 have their own bars (§2.7).")
+            "Shaded: |ρ_w| at most 0.30 (separable). Dotted: |ρ_w| = 0.50. H4 and H8 have their own bars (§2.7).")
     _save(fig, 2, f"Paper A: {V['paper_A_verdict']['label']}", V["prereg_tag"], out)
 
 
@@ -219,8 +219,8 @@ def chart_05(V, rows, out):
     a2.legend(loc="upper right", fontsize=7, frameon=False)
     leg = V["legs"]["H3_Sep_NamingRate"]
     _box(a1, _leg_text(V, "H3_Sep_NamingRate")[0], fs=7)
-    _box(a2, f"ρ_w = {VV.r3(V['MC']['MC_Positive']['rho_w_raw_cov_pi_cov'])}\n(MC_Positive: |ρ_w| ≥ 0.50 expected)",
-         fs=7)
+    _box(a2, f"ρ_w = {VV.r3(V['MC']['MC_Positive']['rho_w_raw_cov_pi_cov'])}\n"
+             "(MC_Positive: |ρ_w| at least 0.50 expected)", fs=7)
     fig.subplots_adjust(top=0.80, bottom=0.17, left=0.09, right=0.98, wspace=0.28)
     _header(fig, 5, f"Panel {V['primary_panel']}; left: the component score; right: the raw share of situations covered.",
             "Raw coverage is expected to follow the naming rate (Double Jeopardy); Cov* adjusts for it.")

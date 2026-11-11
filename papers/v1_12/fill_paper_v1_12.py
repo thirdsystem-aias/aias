@@ -18,10 +18,13 @@ printed exactly as the scorer wrote them.
 
 Checks before filling (real mode): the verdicts are not synthetic (parity gate P1 passed, no synthetic_fixture key),
 P2 and P3 passed, prereg_tag == v1.12-prereg-r1, the tag exists in this repository, and the OSF anchor record
-(osf/methodology/v1_12/anchor/osf_anchor_v1_12.json) names the tag's commit. Synthetic mode (--synthetic) skips the
-tag and anchor checks, says so in the text, requires synthetic verdicts and refuses to write inside the repository.
+(osf/methodology/v1_12/anchor/osf_anchor_v1_12.json) names the tag's commit; the tag is dated 2026-11-11 02:45 UTC and
+anchor/DEVIATIONS.md records that lock time and the waiver of the 24-hour review (Method 2.9 states both); H6 is
+INACTIVE and H5 is not, as the anchor recorded them at the lock. Synthetic mode (--synthetic) skips the tag, anchor and
+lock-record checks, says so in the text, requires synthetic verdicts and refuses to write inside the repository.
 
-Usage (real run, after `score_v1_12.py --run`; see papers/v1_12/PIPELINE.md):
+Usage (real run, after `score_v1_12.py --run --h5-stage1 <v1.14 Stage 1 output>` (or `--h5-unavailable REASON`),
+never `--h6`; see papers/v1_12/PIPELINE.md):
   python3 papers/v1_12/fill_paper_v1_12.py
 Synthetic test:
   python3 papers/v1_12/fill_paper_v1_12.py --synthetic \
@@ -245,6 +248,13 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     val.word("DEV_SENTENCE", deviations[0], deviations[2])
     val.word("DEV_STATUS", deviations[1], deviations[2])
     val.word("PRIMARY", V["primary_panel"], ["verdicts", "primary_panel"])
+    # Method 2.2 is conditional on the drop rule (pre-registration 7.3; decided before data, Nov 10, 2026): C3 becomes
+    # the primary panel only when Claude Fable 5.2 leaves the panel. The scorer's select_panels() does the same.
+    fable_left = VV.FABLE in (V.get("models_dropped_section_7_3") or [])
+    if V["primary_panel"] not in ("N3", "C3") or (V["primary_panel"] == "C3") != fable_left:
+        raise FillError(f"primary panel {V['primary_panel']!r} does not follow the drop rule (C3 replaces N3 only when "
+                        f"Claude Fable 5.2 leaves; dropped: {V.get('models_dropped_section_7_3')})")
+    flags["PRIMARY_C3"] = V["primary_panel"] == "C3"
 
     # ---------------- calibration N1 (locked record)
     st = ["statistic_r1"]
@@ -537,6 +547,13 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
 
 
 # =========================================================================== checks and main
+# Method 2.9 states in words when the pre-registration was locked and why it was before the earliest time its text
+# states (decided before data, Nov 10, 2026): as anchor/DEVIATIONS.md records it in its entry made before the tag, and as
+# tag v1.12-prereg-r1 carries it (tagger date 2026-11-10T20:45:38-06:00). The real fill refuses if the records differ.
+LOCK_UTC = "2026-11-11T02:45"
+LOCK_RECORD_PHRASES = ("waived the 24-hour review on 2026-11-10 at 20:26 CT", "locked at 2026-11-11 02:45 UTC")
+
+
 def deviations_text(synthetic):
     if synthetic:
         t = "[Synthetic test run: the deviations record was not read.]"
@@ -544,10 +561,14 @@ def deviations_text(synthetic):
     if not DEVIATIONS.exists():
         raise FillError(f"{DEVIATIONS} not found (it is a locked file of v1.12-prereg-r1)")
     txt = DEVIATIONS.read_text(encoding="utf-8")
+    gone = [p for p in LOCK_RECORD_PHRASES if p not in txt]
+    if gone:
+        raise FillError(f"{DEVIATIONS} does not record {gone}; Method 2.9 states the lock time and the waiver from it")
     n = len(re.findall(r"(?m)^- \*\*\d{4}-\d{2}-\d{2}", txt))
     rel = "osf/methodology/v1_12/anchor/DEVIATIONS.md"
-    return (f"Deviations are recorded in `{rel}` ({n} dated entries), each before the step it concerns.",
-            f"deviations recorded in `{rel}` ({n} dated entries).", [rel])
+    ent = f"{n} dated entr{'y' if n == 1 else 'ies'}"
+    return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns.",
+            f"deviations recorded in `{rel}` ({ent}).", [rel])
 
 
 def verify_real(V):
@@ -569,6 +590,22 @@ def verify_real(V):
         raise FillError(f"tag {VV.EXPECTED_PREREG_TAG} not found in {ROOT}")
     if not ANCHOR.exists() or commit not in ANCHOR.read_text(encoding="utf-8"):
         raise FillError(f"anchor {ANCHOR} missing or does not name {commit}")
+    when = VV.git_tag_date_utc()
+    if when != LOCK_UTC:
+        raise FillError(f"tag {VV.EXPECTED_PREREG_TAG} is dated {when} UTC, not {LOCK_UTC} (Method 2.9 states it)")
+    # The conditional legs as the anchor recorded them at the lock: H5 ACTIVE (score with --h5-stage1, v1.14's Stage 1
+    # output, or --h5-unavailable REASON), H6 INACTIVE (no Sentiment score on the t4 answers was tagged before the lock,
+    # so --h6 is never passed). Decided before data, Nov 10, 2026.
+    cond = json.loads(ANCHOR.read_text(encoding="utf-8")).get("conditional_legs") or {}
+    legs = V.get("legs") or {}
+    if (str((cond.get("H6_Sep_Sentiment") or {}).get("status", "")).startswith("INACTIVE")
+            and (legs.get("H6_Sep_Sentiment") or {}).get("verdict") != "INACTIVE"):
+        raise FillError("H6 is active in the verdicts, but the anchor records it INACTIVE at the lock (no Sentiment score "
+                        "on the t4 answers was tagged before it): score without --h6")
+    if (str((cond.get("H5_Sep_Ranking") or {}).get("status", "")).startswith("ACTIVE")
+            and (legs.get("H5_Sep_Ranking") or {}).get("verdict") == "INACTIVE"):
+        raise FillError("H5 is INACTIVE in the verdicts, but the anchor records it ACTIVE at the lock: score with "
+                        "--h5-stage1 (v1.14's Stage 1 output) or --h5-unavailable REASON")
     return commit[:10]
 
 

@@ -77,6 +77,26 @@ class TestTemplate(unittest.TestCase):
         coi = decl.split("## Funding")[0]
         self.assertNotIn("Samsung", decl.replace(coi, ""))
 
+    def test_citations(self):
+        """SSRN declined these papers (v1.9 on Nov 11, 2026) or has not posted them yet (v0.37, v0.41): they are cited by
+        title with their thirdsystem.ai or OSF copy, never by SSRN number or an ssrn.com link. Romaniuk & Sharp are
+        cited as the locked cep_sets_v1_12.md cites them (2016, How Brands Grow: Part 2)."""
+        declined = ["6720959", "6722319", "6745040", "6748341", "6750498", "6842138", "6854758", "6865478", "6875319",
+                    "6880959", "6921758", "6927958", "7685126"]
+        not_yet_posted = ["7685100", "7685199"]
+        for i in declined + not_yet_posted:
+            self.assertNotIn(i, TPL)
+        self.assertNotIn("ssrn.com", TPL.lower())
+        refs = TPL.split("# References {-}")[1].split("\\clearpage")[0]
+        v19 = [ln for ln in refs.splitlines() if "Methodology v1.9" in ln]
+        self.assertEqual(len(v19), 1)
+        self.assertIn("*One Score or Two?", v19[0])
+        for u in ("<https://thirdsystem.ai/studies/v1-9/>", "<https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>",
+                  "<https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>"):
+            self.assertIn(u, v19[0])
+        self.assertIn("Romaniuk, J., & Sharp, B. (2016). *How Brands Grow: Part 2*. Oxford University Press.", refs)
+        self.assertEqual(re.findall(r"Romaniuk[^.;)]*?(\d{4})", TPL), ["2016"] * 3)
+
 
 class TestFixtures(unittest.TestCase):
     def test_fixtures_are_marked_synthetic(self):
@@ -124,6 +144,7 @@ class TestFill(unittest.TestCase):
         self.assertNotIn("Samsung", decl.replace(coi, ""), name)
         self.assertIn(f"**{V['paper_A_verdict']['verdict']}**", text, name)
         self.assertIn(V["paper_A_verdict"]["label"], text)
+        self.assertIn(f"so {V['primary_panel']} is the primary panel throughout", text, name)     # Method 2.2
         for h, v in V["verdicts"].items():
             self.assertIn(v, text, f"{name}: {h} word {v} missing")
         # every number in the paper is fixed pre-registration text or a recorded value
@@ -184,6 +205,30 @@ class TestFill(unittest.TestCase):
         text, val, _, _ = fill_doc(d, t)
         self.assertIn("GPT-6 Astra left the panel", text)
 
+    def test_primary_panel_follows_the_drop_rule(self):
+        """Method 2.2 names the primary panel conditionally on the drop rule (section 7.3): C3 when Claude Fable 5.2 left
+        the panel, otherwise N3; the gate-repetition sentences follow it; a record against the rule is refused."""
+        v, t = fx("pass")
+        text, _, _, flags = F.fill(v, t, None, "/tmp/figs", synthetic=True)
+        self.assertFalse(flags["PRIMARY_C3"])
+        self.assertIn("Claude Fable 5.2 did not leave the panel, so N3 is the primary panel throughout", text)
+        self.assertIn("The gate is repeated on C3 and A4 for the record.", text)
+        self.assertIn("Repeated on the continuity panel C3 the gate returns", text)
+        d = json.loads(v.read_text(encoding="utf-8"))
+        d["primary_panel"], d["models_dropped_section_7_3"] = "C3", [VV.FABLE]
+        text, val, _, flags = fill_doc(d, t)
+        self.assertTrue(flags["PRIMARY_C3"])
+        self.assertIn("Claude Fable 5.2 left the panel, so C3 is the primary panel throughout", text)
+        self.assertNotIn("so N3 is the primary panel", text)
+        self.assertIn("The gate is repeated on A4 for the record.", text)
+        self.assertIn("Repeated on all four models (A4) the gate returns", text)
+        self.assertNotIn("Repeated on the continuity panel C3", text)
+        self.check_render(text, val, d, "C3 primary")
+        for primary, dropped in (("C3", []), ("N3", [VV.FABLE]), ("A4", [])):
+            d["primary_panel"], d["models_dropped_section_7_3"] = primary, dropped
+            with self.assertRaises(F.FillError):
+                fill_doc(d, t)
+
     def test_unknown_verdict_refused(self):
         d = json.loads(fx("pass")[0].read_text(encoding="utf-8"))
         d["paper_A_verdict"]["verdict"] = "PARTIAL"
@@ -222,6 +267,58 @@ class TestRefusals(unittest.TestCase):
         self.assertNotIn("[Synthetic", text)
         self.assertIn(VV.git_tag_commit()[:10], text)
         self.assertIn("anchor/DEVIATIONS.md", text)
+
+    @staticmethod
+    def real_doc():
+        """The pass fixture relabelled as real, in memory only (as above, with MC_BrandFree recorded as passed)."""
+        d = json.loads(fx("pass")[0].read_text(encoding="utf-8"))
+        d.pop("synthetic_fixture")
+        d["parity_gates"]["P1"]["passed"] = True
+        d["MC"]["MC_BrandFree"] = {"passed": True, "hits": []}
+        return d
+
+    @staticmethod
+    def fill_real(d):
+        with tempfile.TemporaryDirectory() as tmp:
+            p = Path(tmp) / "v.json"
+            p.write_text(json.dumps(d), encoding="utf-8")
+            return F.fill(p, fx("pass")[1], None, "/tmp/figs", synthetic=False)
+
+    def test_real_mode_conditional_legs_follow_the_anchor(self):
+        """The anchor recorded H5 ACTIVE and H6 INACTIVE at the lock: the real fill refuses verdicts scored with --h6, or
+        with H5 left inactive (scoring passes --h5-stage1 with v1.14's Stage 1 output, or --h5-unavailable)."""
+        d = self.real_doc()
+        self.fill_real(d)                                    # H5 active (gating), H6 INACTIVE: accepted
+        d6 = copy.deepcopy(d)
+        d6["legs"]["H6_Sep_Sentiment"] = copy.deepcopy(d6["legs"]["H1_Sep_Presence"])
+        d6["verdicts"]["H6_Sep_Sentiment"] = d6["legs"]["H6_Sep_Sentiment"]["verdict"]
+        with self.assertRaisesRegex(F.FillError, "--h6"):
+            self.fill_real(d6)
+        d5 = copy.deepcopy(d)
+        d5["legs"]["H5_Sep_Ranking"] = {"verdict": "INACTIVE", "reason": "activation rule (section 3)"}
+        d5["verdicts"]["H5_Sep_Ranking"] = "INACTIVE"
+        d5.pop("H5_ranking_source", None)
+        with self.assertRaisesRegex(F.FillError, "--h5-stage1"):
+            self.fill_real(d5)
+
+    def test_real_mode_checks_the_lock_record(self):
+        """Method 2.9 states the lock time (2026-11-11 02:45 UTC) and the waiver of the 24-hour review as tag
+        v1.12-prereg-r1 and anchor/DEVIATIONS.md record them; the real fill refuses a record that says otherwise."""
+        self.assertEqual(VV.git_tag_date_utc(), F.LOCK_UTC)
+        text, *_ = self.fill_real(self.real_doc())
+        self.assertIn("It was locked on 11 November 2026 at 02:45 UTC, before the earliest lock time its text states", text)
+        self.assertRegex(text, r"\(\d+ dated entr(y|ies)\), each before the step it concerns")
+        self.assertNotIn("(1 dated entries)", text)
+        orig = F.DEVIATIONS
+        with tempfile.TemporaryDirectory() as tmp:
+            fake = Path(tmp) / "DEVIATIONS.md"
+            fake.write_text(orig.read_text(encoding="utf-8").replace("02:45 UTC", "03:45 UTC"), encoding="utf-8")
+            F.DEVIATIONS = fake
+            try:
+                with self.assertRaisesRegex(F.FillError, "does not record"):
+                    self.fill_real(self.real_doc())
+            finally:
+                F.DEVIATIONS = orig
 
     def test_wrong_prereg_tag_refused(self):
         d = json.loads(fx("pass")[0].read_text(encoding="utf-8"))

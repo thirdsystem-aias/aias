@@ -85,7 +85,7 @@ The cross-category baseline reports raw and rate-adjusted Coverage per category,
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models (LLMs) --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2016), within the Tri-System framework (González Castro, 2026, MSI Working Paper 26-132). The AIAS programme builds its components one at a time, each locked before it is used. Presence is whether and how often models name a brand (Methodology v1.6, SSRN 6816340; AIAS 1.0, SSRN 6817841). Consistency is whether the models of a panel agree about a brand, measured by the mean-independent dispersion statistic $\varphi$ (Methodology v1.8, SSRN 6963359) and scaled to $C^*$ (Methodology v1.9, SSRN 7685126). The first Consistency instrument failed its separability test because it moved with how often a brand is named (Methodology v1.7, SSRN 6878818); its replacement passed, and the AIAS 2.0 synthesis reported the two components side by side.
+AI Availability --- the discoverability and representation of a brand in the outputs of large language models (LLMs) --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2016), within the Tri-System framework (González Castro, 2026, MSI Working Paper 26-132). The AIAS programme builds its components one at a time, each locked before it is used. Presence is whether and how often models name a brand (Methodology v1.6, SSRN 6816340; AIAS 1.0, SSRN 6817841). Consistency is whether the models of a panel agree about a brand, measured by the mean-independent dispersion statistic $\varphi$ (Methodology v1.8, SSRN 6963359) and scaled to $C^*$ (Methodology v1.9, *One Score or Two?*). The first Consistency instrument failed its separability test because it moved with how often a brand is named (Methodology v1.7, SSRN 6878818); its replacement passed, and the AIAS 2.0 synthesis reported the two components side by side.
 
 A buyer meets a category in situations: a gift for a relative, a first purchase on a tight budget, a product for hot weather. Ehrenberg-Bass research calls these category entry points (CEPs) and treats the number of CEPs a brand is linked to as a core part of its Mental Availability (Romaniuk & Sharp, 2016). The analogue for AI answers is Coverage: in how many of a category's buying situations an AI answer names the brand. Presence asks whether the brand is named in general category questions; Consistency asks whether the models agree; Coverage asks whether a brand's naming spreads across situations or is tied to a few.
 
@@ -103,11 +103,11 @@ For each category the pre-registration fixed 14 CEPs, two for each of seven cue 
 
 ## 2.2 Panels, conditions and design
 
-The primary panel N3 comprises the newest generally available flagship model of each provider: Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, the panel of the programme's fourth omnibus wave ($t_4$, v0.42). Claude Opus 5.5 was collected for continuity: panel C3 replaces Claude Fable 5.2 with it, and A4 comprises all four models (descriptive). All calls were made without tools (S0), with provider-default decoding as in $t_4$: no temperature, top-p, top-k or reasoning-effort parameter was sent, and the output cap was 16,384 tokens. The design is 4 models × 75 probes × 3 runs = 900 independent calls. The collection script refused to start until the pre-registration tag was public and its OSF anchor named the tag's commit, until the $t_4$ collection was recorded complete, and while any other paid collection ran; it sent calls only inside the pre-registered windows, under a hard cap of US\$100 for all calls.
+Panel N3 comprises the newest generally available flagship model of each provider: Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, the panel of the programme's fourth omnibus wave ($t_4$, v0.42). Claude Opus 5.5 was collected for continuity: panel C3 replaces Claude Fable 5.2 with it, and A4 comprises all four models (descriptive). N3 is the primary panel unless Claude Fable 5.2 leaves the panel under the pre-registered drop rule (§2.7), in which case C3 becomes the primary panel{% if PRIMARY_C3 %}; Claude Fable 5.2 left the panel, so C3 is the primary panel throughout{% else %}; Claude Fable 5.2 did not leave the panel, so N3 is the primary panel throughout{% endif %}. All calls were made without tools (S0), with provider-default decoding as in $t_4$: no temperature, top-p, top-k or reasoning-effort parameter was sent, and the output cap was 16,384 tokens. The design is 4 models × 75 probes × 3 runs = 900 independent calls. The collection script refused to start until the pre-registration tag was public and its OSF anchor named the tag's commit, until the $t_4$ collection was recorded complete, and while any other paid collection ran; it sent calls only inside the pre-registered windows, under a hard cap of US\$100 for all calls.
 
 ## 2.3 Mentions and raw coverage
 
-A brand is mentioned in an answer when the certified detector of its category finds it in the visible answer text with URLs removed, exactly as in $t_4$; the coder is v0.42's, used unchanged. A call without a valid answer after retries is a missing cell: it enters no denominator and is never read as "not named". Model $m$ covers brand $b$ in CEP $j$ if it names $b$ in at least two of its three runs. Raw coverage $\text{Cov}_b$ is the share of the 14 CEPs in which at least $k = 2$ of the three N3 models cover $b$ (sensitivities $k = 1$ and $k = 3$). The naming rate $\pi_{\text{cov},b}$ is the share of the panel's answered CEP answers in $b$'s category that name $b$.
+A brand is mentioned in an answer when the certified detector of its category finds it in the visible answer text with URLs removed, exactly as in $t_4$; the coder is v0.42's, used unchanged. A call without a valid answer after retries is a missing cell: it enters no denominator and is never read as "not named". Model $m$ covers brand $b$ in CEP $j$ if it names $b$ in at least two of its three runs. Raw coverage $\text{Cov}_b$ is the share of the 14 CEPs in which at least $k = 2$ of the primary panel's models cover $b$ (sensitivities $k = 1$ and $k = 3$). The naming rate $\pi_{\text{cov},b}$ is the share of the panel's answered CEP answers in $b$'s category that name $b$.
 
 ## 2.4 Coverage breadth Cov*
 
@@ -131,7 +131,7 @@ Every correlation is the pooled within-category Spearman $\rho_w$: values are ra
 
 ## 2.7 Hypotheses and gate
 
-Every separability leg is CONFIRMED if $|\rho_w| \leq 0.30$, FALSIFIED if $|\rho_w| \geq 0.50$ and MARGINAL otherwise, on N3, search off, rated units.
+Every separability leg is CONFIRMED if $|\rho_w| \leq 0.30$, FALSIFIED if $|\rho_w| \geq 0.50$ and MARGINAL otherwise, on the primary panel, search off, rated units.
 
 Table: Pre-registered hypotheses (pre-registration §3).
 
@@ -148,7 +148,7 @@ Table: Pre-registered hypotheses (pre-registration §3).
 
 H4 computes Cov* separately on each CEP half, with its own leave-$b$-out fit and a floor of seven mentions per half. H5 and H6 are active only if a locked score on the $t_4$ answers was tagged before this study's lock; H5, if active, gates only when v1.14's Stage 1 interim verdict is SEPARABLE, and otherwise is reported without gating or downgrading.
 
-The Paper A verdict follows a fixed order. (1) INSTRUMENT FAIL if the instrument check `MC_Situation` fails: if situations do not change which brands are named, Coverage cannot differ from Presence. (2) Otherwise FAIL if any of H1–H4 or an active gating H5 or H6 is FALSIFIED. (3) Otherwise UNDETERMINED if any of them is UNDETERMINED. (4) Otherwise PASS if all are CONFIRMED, downgraded to MARGINAL if H7 is FALSIFIED. (5) Otherwise MARGINAL. Secondary tests never turn a FAIL into a PASS. A model with fewer than 90% of its calls answered leaves the panel; if GPT-6 Astra or Gemini 4 Argon leaves, the gate is computed on two models and capped at MARGINAL. The gate is repeated on C3 and A4 for the record.
+The Paper A verdict follows a fixed order. (1) INSTRUMENT FAIL if the instrument check `MC_Situation` fails: if situations do not change which brands are named, Coverage cannot differ from Presence. (2) Otherwise FAIL if any of H1–H4 or an active gating H5 or H6 is FALSIFIED. (3) Otherwise UNDETERMINED if any of them is UNDETERMINED. (4) Otherwise PASS if all are CONFIRMED, downgraded to MARGINAL if H7 is FALSIFIED. (5) Otherwise MARGINAL. Secondary tests never turn a FAIL into a PASS. A model with fewer than 90% of its calls answered leaves the panel (the drop rule): if Claude Fable 5.2 leaves, C3 replaces N3 as the primary panel; if GPT-6 Astra or Gemini 4 Argon leaves, the gate is computed on the two remaining models and capped at MARGINAL. {% if PRIMARY_C3 %}The gate is repeated on A4 for the record.{% else %}The gate is repeated on C3 and A4 for the record.{% endif %}
 
 ## 2.8 Checks and sensitivity analyses
 
@@ -158,7 +158,7 @@ Ten sensitivity analyses were pre-registered and never change a verdict: S1 raw 
 
 ## 2.9 Pre-registration
 
-The pre-registration (revision r1) was locked at git tag `{{PREREG_TAG}}` (commit `{{PREREG_COMMIT}}`) and deposited on OSF (`ec6wh`, `methodology/v1_12/prereg/` and `anchor/`) with the SHA-256 of every locked file before any v1.12 call; its anchor record names the tag's commit. The scorer (`score_v1_12.py`) was written and unit-tested on synthetic data before the lock and run once, after the parity gates. Choices the pre-registration leaves open are listed in the scorer's notes and in the pre-registration's change log. {{DEV_SENTENCE}}
+The pre-registration (revision r1) was locked at git tag `{{PREREG_TAG}}` (commit `{{PREREG_COMMIT}}`) and deposited on OSF (`ec6wh`, `methodology/v1_12/prereg/` and `anchor/`) with the SHA-256 of every locked file before any v1.12 call; its anchor record names the tag's commit. It was locked on 11 November 2026 at 02:45 UTC, before the earliest lock time its text states (11 November, about 3 pm CT), because the pre-registrant (the author) waived the programme's 24-hour review period on 10 November at 20:26 CT; `anchor/DEVIATIONS.md` records the waiver and the lock time in an entry made before the tag, and the locked text is unchanged by it. The scorer (`score_v1_12.py`) was written and unit-tested on synthetic data before the lock and run once, after the parity gates. Choices the pre-registration leaves open are listed in the scorer's notes and in the pre-registration's change log. {{DEV_SENTENCE}}
 
 # 3. Results
 
@@ -273,7 +273,7 @@ Every gate leg ({{GATE_LEG_LIST}}) was CONFIRMED, but on a two-model panel ({{DR
 {% case INSTRUMENT_FAIL %}
 `MC_Situation` failed, and the Paper A verdict is **INSTRUMENT FAIL** whatever the separability legs show; they are reported above for the record.
 {% endswitch %}
-The scorer's label is "{{GATE_LABEL}}". Repeated on the continuity panel C3 the gate returns {{GATE_C3}}, and on all four models (A4) {{GATE_A4}}; these repetitions are reported and change nothing.
+The scorer's label is "{{GATE_LABEL}}". {% if PRIMARY_C3 %}Repeated on all four models (A4) the gate returns {{GATE_A4}}; the repetition is reported and changes nothing.{% else %}Repeated on the continuity panel C3 the gate returns {{GATE_C3}}, and on all four models (A4) {{GATE_A4}}; these repetitions are reported and change nothing.{% endif %}
 
 ## 3.7 Sensitivity analyses
 
@@ -360,7 +360,7 @@ González Castro, P. U. (2026). *Consistency without Independence: A Pre-Registe
 
 González Castro, P. U. (2026). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
 
-González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation (AIAS™ Methodology v1.9)*. SSRN 7685126.
+González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation (AIAS™ Methodology v1.9)*. Third System, <https://thirdsystem.ai/studies/v1-9/> (PDF: <https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>); OSF, <https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>.
 
 González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol --- Synthesis under Locked v1.6 Methodology* (AIAS 1.0). SSRN 6817841.
 

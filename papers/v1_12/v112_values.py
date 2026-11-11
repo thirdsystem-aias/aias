@@ -5,7 +5,8 @@ v112_values.py -- the single place where the v1.12 Coverage Paper A (paper and c
 Every number printed by fill_paper_v1_12.py and scripts/build_charts_v112.py comes from one of these machine outputs,
 never from a hand-typed literal:
 
-  verdicts   osf/methodology/v1_12/v112_verdicts.json   (score_v1_12.py --run; synthetic: tests/fixtures/SYNTHETIC_*)
+  verdicts   osf/methodology/v1_12/v112_verdicts.json   (score_v1_12.py --run --h5-stage1 ... or --h5-unavailable REASON,
+             never --h6; see PIPELINE.md; synthetic: tests/fixtures/SYNTHETIC_*)
   table      osf/methodology/v1_12/v112_unit_table.csv  (same run; one row per brand unit)
   n1         osf/methodology/v1_12/prereg/calibration_N1_v1_12.json   (calibration N1, locked at v1.12-prereg-r1)
 
@@ -294,6 +295,17 @@ def git_tag_commit(tag=EXPECTED_PREREG_TAG, root=ROOT):
     r = subprocess.run(["git", "-C", str(root), "rev-parse", "-q", "--verify", f"refs/tags/{tag}^{{commit}}"],
                        capture_output=True, text=True)
     return r.stdout.strip() if r.returncode == 0 else None
+
+
+def git_tag_date_utc(tag=EXPECTED_PREREG_TAG, root=ROOT):
+    """The annotated tag's tagger date in UTC, to the minute ("YYYY-MM-DDTHH:MM"), or None."""
+    from datetime import datetime, timezone
+    r = subprocess.run(["git", "-C", str(root), "for-each-ref", "--format=%(taggerdate:iso-strict)", f"refs/tags/{tag}"],
+                       capture_output=True, text=True)
+    s = r.stdout.strip()
+    if r.returncode != 0 or not s:
+        return None
+    return datetime.fromisoformat(s).astimezone(timezone.utc).strftime("%Y-%m-%dT%H:%M")
 
 
 def fnum(s):
