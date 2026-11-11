@@ -4,7 +4,7 @@ Prepared 2026-11-10 (~3:15 pm CT) by the runner (lane 11). Everything below runs
 
 **Wednesday order:** v1.12 lock → v1.13 Part I lock → **v0.42 lock (steps 0–6, no earlier than 2026-11-11 21:00 UTC = 3 pm CST)** → v0.42 collection (step 7). One paid collection at a time on the Mac.
 
-**State prepared on 2026-11-10** (lane-11 commit "v0.42 lock prep"): clarification C26 logged (§9; collection guards; no hypothesis, threshold, panel, probe, design, budget rule or decision rule changed); `acquire_v0_42.py` regenerated with the guards; `prereg/LOCK_MANIFEST_v0_42.sha256` built (24 files, paths from the repository root; `shasum -a 256 -c` 0 failures); 80 tests pass (C27, Nov 11: 78 + 2); the dry run equals `prereg/dry_run_v0_42.txt` (876 calls); the rehearsal on local fakes passes 28 of 28 checks (step R). Lock helpers (not locked files): `lock/write_anchor_v0_42.py`, `lock/osf_verify_v0_42.py`, `lock/status_v0_42.py`, `lock/write_t4_complete_v0_42.py`, `lock/fake_collect_e2e_v0_42.py` with `lock/fakes/`. If any manifested file changes before the tag, rebuild the manifest (1b) and re-run 1a–1d.
+**State prepared on 2026-11-10** (lane-11 commit "v0.42 lock prep"): clarification C26 logged (§9; collection guards; no hypothesis, threshold, panel, probe, design, budget rule or decision rule changed); `acquire_v0_42.py` regenerated with the guards; `prereg/LOCK_MANIFEST_v0_42.sha256` built (24 files, paths from the repository root; `shasum -a 256 -c` 0 failures); 84 tests pass (C27, Nov 11: 78 + 2; C28: + 4); the dry run equals `prereg/dry_run_v0_42.txt` (876 calls); the rehearsal on local fakes passes 28 of 28 checks (step R). Lock helpers (not locked files): `lock/write_anchor_v0_42.py`, `lock/osf_verify_v0_42.py`, `lock/status_v0_42.py`, `lock/write_t4_complete_v0_42.py`, `lock/fake_collect_e2e_v0_42.py` with `lock/fakes/`. If any manifested file changes before the tag, rebuild the manifest (1b) and re-run 1a–1d.
 
 ## 0. Preconditions (stop if any fails)
 
@@ -38,11 +38,11 @@ b. (Only if a manifested file changed) rebuild, then redo a.:
    cd /Users/pablou/aias/_worktrees/v0.42 && M=osf/v42/prereg/LOCK_MANIFEST_v0_42.sha256 && shasum -a 256 $(sed "s/^[0-9a-f]*  //" $M) > /tmp/v42_m && mv /tmp/v42_m $M
    ```
 
-c. Tests (80; ~51 s, so in the background):
+c. Tests (84; ~51 s, so in the background):
    ```
    cd /Users/pablou/aias/_worktrees/v0.42 && (PYTHONDONTWRITEBYTECODE=1 nohup python3 osf/v42/scripts/tests/run_all_v0_42.py > /tmp/v42_tests.log 2>&1 &); sleep 54; tail -1 /tmp/v42_tests.log
    ```
-   Expect `RESULT OK 80` (if not yet there, `sleep 10; tail -1 /tmp/v42_tests.log`).
+   Expect `RESULT OK 84` (if not yet there, `sleep 10; tail -1 /tmp/v42_tests.log`).
 
 d. Dry run equals the record, and the generator reproduces the script:
    ```
