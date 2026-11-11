@@ -1,0 +1,2182 @@
+{
+  "phase": "v1.13",
+  "stage": "C1",
+  "primary_field": "sources",
+  "panel_models": [
+    "claude-fable-5-2",
+    "gpt-6-astra"
+  ],
+  "dropped_models": [
+    "gemini-4-argon"
+  ],
+  "gate": {
+    "verdict": "FAIL",
+    "legs": {
+      "H1_Sep_Presence": "CONFIRMED",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H3_Run_Reliability": "FALSIFIED"
+    },
+    "active": {
+      "H4_Sep_Ranking": true,
+      "H5_Sep_Sentiment": false,
+      "H6_Sep_Coverage": true
+    },
+    "notes": [
+      "H4_Sep_Ranking (UNDETERMINED) reported, not downgrading: v1.14's Stage 1 verdict is not SEPARABLE (N19)"
+    ],
+    "gating": {
+      "H4_Sep_Ranking": false,
+      "H5_Sep_Sentiment": false,
+      "H6_Sep_Coverage": true
+    }
+  },
+  "verdicts": {
+    "H1_Sep_Presence": "CONFIRMED",
+    "H2_Sep_Consistency": "CONFIRMED",
+    "H3_Run_Reliability": "FALSIFIED",
+    "H4_Sep_Ranking": "UNDETERMINED",
+    "H5_Sep_Sentiment": "INACTIVE",
+    "H6_Sep_Coverage": "UNDETERMINED"
+  },
+  "reasons": {
+    "H4_Sep_Ranking": "PENDING: v1.14's Stage 1 output does not exist yet; the leg does not run before it (blindness guard, N18) and is computed at Stage C2",
+    "H6_Sep_Coverage": "PENDING: v1.12's Cov* output does not exist yet (Coverage collects Nov 14-16 and scores after); computed at Stage C2 (N21)"
+  },
+  "legs": {
+    "H1_Sep_Presence": [
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113001,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.2619047619047619,
+        "p": 0.12988701129887012,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.056998675735095594,
+          "hi": 0.5026107088320771,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113001,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.2619047619047619,
+        "p": 0.12988701129887012,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.056998675735095594,
+          "hi": 0.5026107088320771,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      }
+    ],
+    "H2_Sep_Consistency": [
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113002,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.18571428571428572,
+        "p": 0.27817218278172184,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.144316585013862,
+          "hi": 0.48986531640363945,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113002,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": -0.12857142857142856,
+        "p": 0.4627537246275372,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.40049201938370704,
+          "hi": 0.2090737932452578,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      }
+    ]
+  },
+  "H3": {
+    "pairs": [
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "pair": [
+          1,
+          2
+        ],
+        "rho_w": 0.101,
+        "qualifies": true
+      },
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "pair": [
+          1,
+          3
+        ],
+        "rho_w": 0.111,
+        "qualifies": true
+      },
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "pair": [
+          2,
+          3
+        ],
+        "rho_w": 0.111,
+        "qualifies": true
+      }
+    ],
+    "n_qualifying_pairs": 3,
+    "rel1": 0.10766666666666667,
+    "rel3": 0.26577070762479427,
+    "p": 0.0612,
+    "seed": 113003
+  },
+  "MQ": {
+    "MQ1_parsed_s1_records": 630,
+    "MQ2": {
+      "claude-fable-5-2": {
+        "answers": 90,
+        "with_source": 90,
+        "share": 1.0,
+        "flag_search_rarely_used": false,
+        "dropped_from_g_star": false
+      },
+      "gpt-6-astra": {
+        "answers": 90,
+        "with_source": 19,
+        "share": 0.2111111111111111,
+        "flag_search_rarely_used": true,
+        "dropped_from_g_star": false
+      },
+      "gemini-4-argon": {
+        "answers": 90,
+        "with_source": 90,
+        "share": 1.0,
+        "flag_search_rarely_used": false,
+        "dropped_from_g_star": false
+      }
+    },
+    "MQ3": {
+      "pairs": 1226,
+      "other_or_unresolved": 0,
+      "share": 0.63,
+      "flag": true,
+      "low_coverage": true
+    },
+    "MQ4": {
+      "sources": 395,
+      "redirect_urls": 395,
+      "via_title_share": 1.0,
+      "unresolved_share": 0.274,
+      "drop_gemini": true
+    },
+    "MQ5": {
+      "failed": false,
+      "zero_share": 0.0,
+      "flat_substrates": [],
+      "n_rated": 40
+    },
+    "MQ6": {
+      "rho_g_pi_s1": 0.012168367923428524,
+      "rho_gstar_g": 0.534,
+      "n": 40,
+      "flag": true
+    },
+    "MQ8": {
+      "anthropic": {
+        "answers": 90,
+        "with_citations": 90,
+        "cited": 90,
+        "cited_in_sources": 90,
+        "share_with_citations": 1.0,
+        "share_cited_in_sources": 1.0
+      },
+      "openai": {
+        "answers": 90,
+        "with_citations": 90,
+        "cited": 90,
+        "cited_in_sources": 90,
+        "share_with_citations": 1.0,
+        "share_cited_in_sources": 1.0
+      },
+      "google": {
+        "answers": 90,
+        "with_citations": 90,
+        "cited": 90,
+        "cited_in_sources": 90,
+        "share_with_citations": 1.0,
+        "share_cited_in_sources": 1.0
+      }
+    }
+  },
+  "units": {
+    "v19|Denon": {
+      "m": 45,
+      "g": 45,
+      "o": 18,
+      "G": 0.4,
+      "G_star": 40.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B1": {
+      "m": 45,
+      "g": 45,
+      "o": 9,
+      "G": 0.2,
+      "G_star": 20.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B2": {
+      "m": 41,
+      "g": 41,
+      "o": 30,
+      "G": 0.7317073170731707,
+      "G_star": 73.17073170731707,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B3": {
+      "m": 51,
+      "g": 51,
+      "o": 10,
+      "G": 0.19607843137254902,
+      "G_star": 19.607843137254903,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B4": {
+      "m": 40,
+      "g": 40,
+      "o": 18,
+      "G": 0.45,
+      "G_star": 45.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B5": {
+      "m": 48,
+      "g": 48,
+      "o": 14,
+      "G": 0.2916666666666667,
+      "G_star": 29.166666666666668,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B6": {
+      "m": 43,
+      "g": 43,
+      "o": 7,
+      "G": 0.16279069767441862,
+      "G_star": 16.27906976744186,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|B7": {
+      "m": 48,
+      "g": 48,
+      "o": 26,
+      "G": 0.5416666666666666,
+      "G_star": 54.166666666666664,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B0": {
+      "m": 43,
+      "g": 43,
+      "o": 2,
+      "G": 0.046511627906976744,
+      "G_star": 4.651162790697675,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B1": {
+      "m": 47,
+      "g": 47,
+      "o": 17,
+      "G": 0.3617021276595745,
+      "G_star": 36.17021276595745,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B2": {
+      "m": 47,
+      "g": 47,
+      "o": 3,
+      "G": 0.06382978723404255,
+      "G_star": 6.382978723404255,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B3": {
+      "m": 49,
+      "g": 49,
+      "o": 5,
+      "G": 0.10204081632653061,
+      "G_star": 10.204081632653061,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B4": {
+      "m": 46,
+      "g": 46,
+      "o": 22,
+      "G": 0.4782608695652174,
+      "G_star": 47.82608695652174,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B5": {
+      "m": 42,
+      "g": 42,
+      "o": 33,
+      "G": 0.7857142857142857,
+      "G_star": 78.57142857142857,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B6": {
+      "m": 44,
+      "g": 44,
+      "o": 8,
+      "G": 0.18181818181818182,
+      "G_star": 18.181818181818183,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B7": {
+      "m": 45,
+      "g": 45,
+      "o": 8,
+      "G": 0.17777777777777778,
+      "G_star": 17.77777777777778,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B0": {
+      "m": 46,
+      "g": 46,
+      "o": 25,
+      "G": 0.5434782608695652,
+      "G_star": 54.347826086956516,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B1": {
+      "m": 41,
+      "g": 41,
+      "o": 37,
+      "G": 0.9024390243902439,
+      "G_star": 90.2439024390244,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B2": {
+      "m": 39,
+      "g": 39,
+      "o": 22,
+      "G": 0.5641025641025641,
+      "G_star": 56.41025641025641,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B3": {
+      "m": 48,
+      "g": 48,
+      "o": 22,
+      "G": 0.4583333333333333,
+      "G_star": 45.83333333333333,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B4": {
+      "m": 45,
+      "g": 45,
+      "o": 36,
+      "G": 0.8,
+      "G_star": 80.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B5": {
+      "m": 47,
+      "g": 47,
+      "o": 4,
+      "G": 0.0851063829787234,
+      "G_star": 8.51063829787234,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B6": {
+      "m": 46,
+      "g": 46,
+      "o": 38,
+      "G": 0.8260869565217391,
+      "G_star": 82.6086956521739,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B7": {
+      "m": 42,
+      "g": 42,
+      "o": 13,
+      "G": 0.30952380952380953,
+      "G_star": 30.952380952380953,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B0": {
+      "m": 46,
+      "g": 46,
+      "o": 11,
+      "G": 0.2391304347826087,
+      "G_star": 23.91304347826087,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B1": {
+      "m": 45,
+      "g": 45,
+      "o": 5,
+      "G": 0.1111111111111111,
+      "G_star": 11.11111111111111,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B2": {
+      "m": 41,
+      "g": 41,
+      "o": 8,
+      "G": 0.1951219512195122,
+      "G_star": 19.51219512195122,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B3": {
+      "m": 44,
+      "g": 44,
+      "o": 32,
+      "G": 0.7272727272727273,
+      "G_star": 72.72727272727273,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B4": {
+      "m": 50,
+      "g": 50,
+      "o": 8,
+      "G": 0.16,
+      "G_star": 16.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B5": {
+      "m": 47,
+      "g": 47,
+      "o": 24,
+      "G": 0.5106382978723404,
+      "G_star": 51.06382978723404,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B6": {
+      "m": 45,
+      "g": 45,
+      "o": 23,
+      "G": 0.5111111111111111,
+      "G_star": 51.11111111111111,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B7": {
+      "m": 45,
+      "g": 45,
+      "o": 15,
+      "G": 0.3333333333333333,
+      "G_star": 33.33333333333333,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B0": {
+      "m": 46,
+      "g": 46,
+      "o": 23,
+      "G": 0.5,
+      "G_star": 50.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B1": {
+      "m": 51,
+      "g": 51,
+      "o": 6,
+      "G": 0.11764705882352941,
+      "G_star": 11.76470588235294,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B2": {
+      "m": 46,
+      "g": 46,
+      "o": 7,
+      "G": 0.15217391304347827,
+      "G_star": 15.217391304347828,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B3": {
+      "m": 46,
+      "g": 46,
+      "o": 5,
+      "G": 0.10869565217391304,
+      "G_star": 10.869565217391305,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B4": {
+      "m": 45,
+      "g": 45,
+      "o": 35,
+      "G": 0.7777777777777778,
+      "G_star": 77.77777777777779,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B5": {
+      "m": 48,
+      "g": 48,
+      "o": 21,
+      "G": 0.4375,
+      "G_star": 43.75,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B6": {
+      "m": 46,
+      "g": 46,
+      "o": 14,
+      "G": 0.30434782608695654,
+      "G_star": 30.434782608695656,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|B7": {
+      "m": 42,
+      "g": 42,
+      "o": 22,
+      "G": 0.5238095238095238,
+      "G_star": 52.38095238095239,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    }
+  },
+  "descriptives": {
+    "v19|Denon": {
+      "mix": {
+        "brand_owned": 0.53058201058201,
+        "reference": 0.2347089947089947,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2347089947089947,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.622222222222222
+    },
+    "v19|B1": {
+      "mix": {
+        "brand_owned": 0.4858201058201054,
+        "reference": 0.25708994708994704,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.25708994708994704,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.333333333333333
+    },
+    "v19|B2": {
+      "mix": {
+        "brand_owned": 0.5145180023228798,
+        "reference": 0.24274099883855982,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24274099883855982,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.439024390243903
+    },
+    "v19|B3": {
+      "mix": {
+        "brand_owned": 0.49887955182072774,
+        "reference": 0.2505602240896358,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2505602240896358,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.431372549019608
+    },
+    "v19|B4": {
+      "mix": {
+        "brand_owned": 0.5310714285714279,
+        "reference": 0.2344642857142858,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2344642857142858,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.625
+    },
+    "v19|B5": {
+      "mix": {
+        "brand_owned": 0.5057539682539677,
+        "reference": 0.2471230158730158,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2471230158730158,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.5
+    },
+    "v19|B6": {
+      "mix": {
+        "brand_owned": 0.48704318936877045,
+        "reference": 0.2564784053156146,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2564784053156146,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.372093023255814
+    },
+    "v19|B7": {
+      "mix": {
+        "brand_owned": 0.5251984126984122,
+        "reference": 0.23740079365079367,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.23740079365079367,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.583333333333333
+    },
+    "v20|B0": {
+      "mix": {
+        "brand_owned": 0.43875968992248066,
+        "reference": 0.28062015503875976,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.28062015503875976,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.8372093023255816
+    },
+    "v20|B1": {
+      "mix": {
+        "brand_owned": 0.43617021276595713,
+        "reference": 0.28191489361702143,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.28191489361702143,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.851063829787234
+    },
+    "v20|B2": {
+      "mix": {
+        "brand_owned": 0.4539007092198578,
+        "reference": 0.27304964539007104,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.27304964539007104,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.9148936170212765
+    },
+    "v20|B3": {
+      "mix": {
+        "brand_owned": 0.4489795918367343,
+        "reference": 0.2755102040816328,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2755102040816328,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.8979591836734695
+    },
+    "v20|B4": {
+      "mix": {
+        "brand_owned": 0.44855072463768086,
+        "reference": 0.27572463768115957,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.27572463768115957,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.891304347826087
+    },
+    "v20|B5": {
+      "mix": {
+        "brand_owned": 0.4658730158730157,
+        "reference": 0.26706349206349217,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.26706349206349217,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.9761904761904763
+    },
+    "v20|B6": {
+      "mix": {
+        "brand_owned": 0.43939393939393895,
+        "reference": 0.28030303030303044,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.28030303030303044,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.840909090909091
+    },
+    "v20|B7": {
+      "mix": {
+        "brand_owned": 0.41925925925925894,
+        "reference": 0.2903703703703705,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2903703703703705,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 3.7111111111111112
+    },
+    "v21|B0": {
+      "mix": {
+        "brand_owned": 0.6293478260869565,
+        "reference": 0.18532608695652183,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18532608695652183,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.630434782608695
+    },
+    "v21|B1": {
+      "mix": {
+        "brand_owned": 0.6402439024390241,
+        "reference": 0.1798780487804879,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.1798780487804879,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.7560975609756095
+    },
+    "v21|B2": {
+      "mix": {
+        "brand_owned": 0.6436507936507935,
+        "reference": 0.17817460317460326,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.17817460317460326,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.794871794871795
+    },
+    "v21|B3": {
+      "mix": {
+        "brand_owned": 0.6360615079365081,
+        "reference": 0.18196924603174605,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18196924603174605,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.708333333333333
+    },
+    "v21|B4": {
+      "mix": {
+        "brand_owned": 0.6380952380952382,
+        "reference": 0.18095238095238106,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18095238095238106,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.733333333333333
+    },
+    "v21|B5": {
+      "mix": {
+        "brand_owned": 0.6304964539007094,
+        "reference": 0.18475177304964543,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18475177304964543,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.617021276595745
+    },
+    "v21|B6": {
+      "mix": {
+        "brand_owned": 0.6318322981366459,
+        "reference": 0.18408385093167706,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18408385093167706,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.673913043478261
+    },
+    "v21|B7": {
+      "mix": {
+        "brand_owned": 0.6392290249433105,
+        "reference": 0.18038548752834477,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.18038548752834477,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 5.761904761904762
+    },
+    "v22|B0": {
+      "mix": {
+        "brand_owned": 0.4926501035196683,
+        "reference": 0.2536749482401656,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2536749482401656,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.282608695652174
+    },
+    "v22|B1": {
+      "mix": {
+        "brand_owned": 0.4865608465608462,
+        "reference": 0.25671957671957674,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.25671957671957674,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.222222222222222
+    },
+    "v22|B2": {
+      "mix": {
+        "brand_owned": 0.5193960511033678,
+        "reference": 0.2403019744483159,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2403019744483159,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.414634146341464
+    },
+    "v22|B3": {
+      "mix": {
+        "brand_owned": 0.5222943722943719,
+        "reference": 0.23885281385281384,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.23885281385281384,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.4772727272727275
+    },
+    "v22|B4": {
+      "mix": {
+        "brand_owned": 0.5085714285714282,
+        "reference": 0.2457142857142857,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2457142857142857,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.4
+    },
+    "v22|B5": {
+      "mix": {
+        "brand_owned": 0.5147922998986825,
+        "reference": 0.24260385005065854,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24260385005065854,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.446808510638298
+    },
+    "v22|B6": {
+      "mix": {
+        "brand_owned": 0.5132275132275129,
+        "reference": 0.24338624338624343,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24338624338624343,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.466666666666667
+    },
+    "v22|B7": {
+      "mix": {
+        "brand_owned": 0.5206349206349203,
+        "reference": 0.2396825396825397,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2396825396825397,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.444444444444445
+    },
+    "v23|B0": {
+      "mix": {
+        "brand_owned": 0.522774327122153,
+        "reference": 0.2386128364389233,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2386128364389233,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.521739130434782
+    },
+    "v23|B1": {
+      "mix": {
+        "brand_owned": 0.5028944911297849,
+        "reference": 0.2485527544351073,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2485527544351073,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.431372549019608
+    },
+    "v23|B2": {
+      "mix": {
+        "brand_owned": 0.5082815734989645,
+        "reference": 0.24585921325051757,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24585921325051757,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.478260869565218
+    },
+    "v23|B3": {
+      "mix": {
+        "brand_owned": 0.5321946169772253,
+        "reference": 0.2339026915113871,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2339026915113871,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.608695652173913
+    },
+    "v23|B4": {
+      "mix": {
+        "brand_owned": 0.538095238095238,
+        "reference": 0.2309523809523809,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.2309523809523809,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.666666666666667
+    },
+    "v23|B5": {
+      "mix": {
+        "brand_owned": 0.52390873015873,
+        "reference": 0.23804563492063482,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.23804563492063482,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.583333333333333
+    },
+    "v23|B6": {
+      "mix": {
+        "brand_owned": 0.5075569358178051,
+        "reference": 0.24622153209109723,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24622153209109723,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.5
+    },
+    "v23|B7": {
+      "mix": {
+        "brand_owned": 0.5114512471655326,
+        "reference": 0.24427437641723357,
+        "forum_ugc": 0.0,
+        "news": 0.0,
+        "review_editorial": 0.24427437641723357,
+        "retailer": 0.0,
+        "other": 0.0,
+        "unresolved": 0.0
+      },
+      "d": 4.5
+    }
+  },
+  "baseline": {
+    "per_substrate_model": {
+      "v19|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.5,
+        "domains_per_answer": 4.5,
+        "mix": {
+          "brand_owned": 0.5370370370370371,
+          "reference": 0.2314814814814815,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.2314814814814815,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 1.0,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v19|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.5,
+        "domains_per_answer": 4.5,
+        "mix": {
+          "brand_owned": 0.5174603174603174,
+          "reference": 0.2412698412698413,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.2412698412698413,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v19|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.333333333333333,
+        "domains_per_answer": 4.333333333333333,
+        "mix": {
+          "brand_owned": 0.4534391534391536,
+          "reference": 0.27328042328042335,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.27328042328042335,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.7777777777777778,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v20|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.0,
+        "domains_per_answer": 4.0,
+        "mix": {
+          "brand_owned": 0.45370370370370366,
+          "reference": 0.27314814814814814,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.27314814814814814,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.8888888888888888,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v20|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 3.388888888888889,
+        "domains_per_answer": 3.388888888888889,
+        "mix": {
+          "brand_owned": 0.37592592592592583,
+          "reference": 0.31203703703703695,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.31203703703703695,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v20|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.055555555555555,
+        "domains_per_answer": 4.055555555555555,
+        "mix": {
+          "brand_owned": 0.4759259259259259,
+          "reference": 0.26203703703703707,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.26203703703703707,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v21|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.444444444444445,
+        "domains_per_answer": 5.444444444444445,
+        "mix": {
+          "brand_owned": 0.6190476190476188,
+          "reference": 0.1904761904761905,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.1904761904761905,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 1.0,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v21|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.555555555555555,
+        "domains_per_answer": 5.555555555555555,
+        "mix": {
+          "brand_owned": 0.6283068783068779,
+          "reference": 0.18584656084656082,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.18584656084656082,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 1.0,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v21|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.944444444444445,
+        "domains_per_answer": 5.944444444444445,
+        "mix": {
+          "brand_owned": 0.6488095238095235,
+          "reference": 0.1755952380952381,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.1755952380952381,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 1.0,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v22|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.277777777777778,
+        "domains_per_answer": 4.277777777777778,
+        "mix": {
+          "brand_owned": 0.49444444444444446,
+          "reference": 0.25277777777777777,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.25277777777777777,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v22|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.166666666666667,
+        "domains_per_answer": 4.166666666666667,
+        "mix": {
+          "brand_owned": 0.4767195767195768,
+          "reference": 0.2616402116402117,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.2616402116402117,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v22|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.555555555555555,
+        "domains_per_answer": 4.555555555555555,
+        "mix": {
+          "brand_owned": 0.5304232804232805,
+          "reference": 0.23478835978835985,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.23478835978835985,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 1.0,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v23|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.5,
+        "domains_per_answer": 4.5,
+        "mix": {
+          "brand_owned": 0.5185185185185185,
+          "reference": 0.24074074074074078,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.24074074074074078,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v23|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.333333333333333,
+        "domains_per_answer": 4.333333333333333,
+        "mix": {
+          "brand_owned": 0.48703703703703716,
+          "reference": 0.25648148148148153,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.25648148148148153,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.8888888888888888,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v23|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.555555555555555,
+        "domains_per_answer": 4.555555555555555,
+        "mix": {
+          "brand_owned": 0.5174603174603178,
+          "reference": 0.24126984126984125,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.24126984126984125,
+          "retailer": 0.0,
+          "other": 0.0,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.9444444444444444,
+        "share_reference": 1.0,
+        "grounded": 18
+      }
+    },
+    "top_domains": [
+      [
+        "rtings.com",
+        270
+      ],
+      [
+        "wikipedia.org",
+        270
+      ],
+      [
+        "v21-b6.test",
+        38
+      ],
+      [
+        "v21-b1.test",
+        37
+      ],
+      [
+        "v21-b4.test",
+        36
+      ],
+      [
+        "v23-b4.test",
+        35
+      ],
+      [
+        "v20-b5.test",
+        33
+      ],
+      [
+        "v22-b3.test",
+        32
+      ],
+      [
+        "v19-b2.test",
+        30
+      ],
+      [
+        "v19-b7.test",
+        26
+      ],
+      [
+        "v21-b0.test",
+        25
+      ],
+      [
+        "v22-b5.test",
+        24
+      ],
+      [
+        "v22-b6.test",
+        23
+      ],
+      [
+        "v23-b0.test",
+        23
+      ],
+      [
+        "v20-b4.test",
+        22
+      ],
+      [
+        "v21-b2.test",
+        22
+      ],
+      [
+        "v21-b3.test",
+        22
+      ],
+      [
+        "v23-b7.test",
+        22
+      ],
+      [
+        "v23-b5.test",
+        21
+      ],
+      [
+        "v19-b4.test",
+        18
+      ]
+    ],
+    "g_star_by_substrate": {
+      "v19": {
+        "n": 8,
+        "median": 34.583333333333336,
+        "q1": 19.901960784313726,
+        "q3": 47.291666666666664,
+        "share_zero": 0.0,
+        "units": 8,
+        "rated": 8,
+        "g_b": [
+          45,
+          45,
+          41,
+          51,
+          40,
+          48,
+          43,
+          48
+        ]
+      },
+      "v20": {
+        "n": 8,
+        "median": 17.97979797979798,
+        "q1": 9.24880590534086,
+        "q3": 39.08418131359852,
+        "share_zero": 0.0,
+        "units": 8,
+        "rated": 8,
+        "g_b": [
+          43,
+          47,
+          47,
+          49,
+          46,
+          42,
+          44,
+          45
+        ]
+      },
+      "v21": {
+        "n": 8,
+        "median": 55.37904124860646,
+        "q1": 42.113095238095234,
+        "q3": 80.65217391304347,
+        "share_zero": 0.0,
+        "units": 8,
+        "rated": 8,
+        "g_b": [
+          46,
+          41,
+          39,
+          48,
+          45,
+          47,
+          46,
+          42
+        ]
+      },
+      "v22": {
+        "n": 8,
+        "median": 28.6231884057971,
+        "q1": 18.634146341463413,
+        "q3": 51.075650118203306,
+        "share_zero": 0.0,
+        "units": 8,
+        "rated": 8,
+        "g_b": [
+          46,
+          45,
+          41,
+          44,
+          50,
+          47,
+          45,
+          45
+        ]
+      },
+      "v23": {
+        "n": 8,
+        "median": 37.09239130434783,
+        "q1": 14.354219948849106,
+        "q3": 50.595238095238095,
+        "share_zero": 0.0,
+        "units": 8,
+        "rated": 8,
+        "g_b": [
+          46,
+          51,
+          46,
+          46,
+          45,
+          48,
+          46,
+          42
+        ]
+      }
+    }
+  },
+  "H4_ranking_source": {
+    "measure": "R*_S1 of v1.14-prereg-r2",
+    "status": "PENDING",
+    "reason": "v1.14 Stage 1 output not supplied: computed at Stage C2 (N18)"
+  },
+  "H6_coverage_source": {
+    "measure": "cov_star_N3 of v1.12-prereg-r1 (N3, S0)",
+    "status": "PENDING",
+    "reason": "v1.12's Cov* output not supplied: computed at Stage C2 (N21)"
+  },
+  "sensitivities": {
+    "S1_denominator_m": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2619047619047619,
+          0.2619047619047619
+        ],
+        "H2_Sep_Consistency": [
+          0.18571428571428572,
+          -0.12857142857142856
+        ]
+      },
+      "rel3": 0.9239647397743554
+    },
+    "S2_citations": {
+      "verdicts": {
+        "H1_Sep_Presence": "UNDETERMINED",
+        "H2_Sep_Consistency": "UNDETERMINED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "UNDETERMINED",
+      "rho": {
+        "H1_Sep_Presence": [
+          null,
+          null
+        ],
+        "H2_Sep_Consistency": [
+          null,
+          null
+        ]
+      },
+      "rel3": null
+    },
+    "S4_floor_3": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2619047619047619,
+          0.2619047619047619
+        ],
+        "H2_Sep_Consistency": [
+          0.18571428571428572,
+          -0.12857142857142856
+        ]
+      },
+      "rel3": 0.9239647397743554
+    },
+    "S4_floor_10": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2619047619047619,
+          0.2619047619047619
+        ],
+        "H2_Sep_Consistency": [
+          0.18571428571428572,
+          -0.12857142857142856
+        ]
+      },
+      "rel3": 0.9239647397743554
+    },
+    "S8_leave_one_substrate_out": {
+      "v19": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.17857142857142858,
+            0.17857142857142858
+          ],
+          "H2_Sep_Consistency": [
+            0.18452380952380953,
+            -0.13690476190476192
+          ]
+        },
+        "rel3": 0.9246199651330149,
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "CONFIRMED"
+        }
+      },
+      "v20": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.2619047619047619,
+            0.2619047619047619
+          ],
+          "H2_Sep_Consistency": [
+            0.17261904761904762,
+            -0.06547619047619048
+          ]
+        },
+        "rel3": 0.9305002234693167,
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "CONFIRMED"
+        }
+      },
+      "v21": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.27380952380952384,
+            0.27380952380952384
+          ],
+          "H2_Sep_Consistency": [
+            0.20833333333333334,
+            -0.17261904761904762
+          ]
+        },
+        "rel3": 0.9283829099744044,
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "CONFIRMED"
+        }
+      },
+      "v22": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.4226190476190476,
+            0.4226190476190476
+          ],
+          "H2_Sep_Consistency": [
+            0.16071428571428573,
+            -0.06547619047619048
+          ]
+        },
+        "rel3": 0.9186747738041144,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "CONFIRMED"
+        }
+      },
+      "v23": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.17261904761904762,
+            0.17261904761904762
+          ],
+          "H2_Sep_Consistency": [
+            0.20238095238095238,
+            -0.20238095238095238
+          ]
+        },
+        "rel3": 0.9174085425598666,
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "CONFIRMED"
+        }
+      }
+    },
+    "S9_text_urls": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2619047619047619,
+          0.2619047619047619
+        ],
+        "H2_Sep_Consistency": [
+          0.18571428571428572,
+          -0.12857142857142856
+        ]
+      },
+      "rel3": 0.9239647397743554
+    },
+    "S10_uncentred": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2619047619047619,
+          0.2619047619047619
+        ],
+        "H2_Sep_Consistency": [
+          0.18571428571428572,
+          -0.12857142857142856
+        ]
+      },
+      "rel3": 0.9239647397743554
+    },
+    "S11_without_Denon": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "MARGINAL",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2602040816326531,
+          0.2602040816326531
+        ],
+        "H2_Sep_Consistency": [
+          0.18877551020408162,
+          -0.14795918367346939
+        ]
+      },
+      "rel3": 0.9245571654518302
+    },
+    "S5_gemini_kept": {
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "CONFIRMED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "PASS",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.25983331924563374,
+          0.25983331924563374
+        ],
+        "H2_Sep_Consistency": [
+          0.18355197781572294,
+          -0.13587613942202867
+        ]
+      },
+      "rel3": 0.8940834439329267
+    }
+  },
+  "verdict_changes": {
+    "S1_denominator_m": {
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S2_citations": {
+      "H1_Sep_Presence": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "H2_Sep_Consistency": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "H3_Run_Reliability": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S4_floor_3": {
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S4_floor_10": {
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S9_text_urls": {
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S10_uncentred": {
+      "H1_Sep_Presence": [
+        "MARGINAL",
+        "CONFIRMED"
+      ],
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S11_without_Denon": {
+      "H3_Run_Reliability": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S5_gemini_kept": {
+      "H3_Run_Reliability": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    }
+  },
+  "stage_C2": {
+    "H7_Struct_Gap": "CONFIRMED",
+    "leg": {
+      "n": 37,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 7,
+        "v20": 8,
+        "v21": 7,
+        "v22": 7,
+        "v23": 8
+      },
+      "dropped_substrates": {},
+      "seed": 113007,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.8750761711119517,
+      "p": 9.999000099990002e-05,
+      "ci90": {
+        "level": 90.0,
+        "lo": 0.6991354764495056,
+        "hi": 0.9398037614017987,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      }
+    },
+    "rho_sdri_p_s0": 0.2571743238982147,
+    "partial_rho_sdri_gstar_given_p_s0": 0.8550708500179798,
+    "ranking": {
+      "H4_Sep_Ranking": "CONFIRMED",
+      "leg": {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113004,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": -0.17163301821729937,
+        "p": 0.32196780321967805,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.393485753263701,
+          "hi": 0.09502386934673365,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "H4_ranking_source": {
+        "file": "/tmp/tmpp926c9ye/v114/stage1_v1_14.json",
+        "sha256": "6b9bccada2d5e45ea4ebf0a76612325b23711e03432329c01826f6a38c198f8a",
+        "condition": "S1",
+        "prereg_tag": "v1.14-prereg-r2",
+        "created_utc": "2026-11-14T00:00:00+00:00",
+        "dry_run": true,
+        "stage1_verdict": "SEPARABLE (Stage 2 pending)",
+        "v1_14_verdicts": {
+          "H1_Sep_Presence": "FALSIFIED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H4_Sep_Presence_S1": "MARGINAL",
+          "components": {
+            "Grounding": "INACTIVE"
+          }
+        },
+        "gate_excluded_substrates": [],
+        "rated_units": 40,
+        "rank_table_t4_sha256": "65b9fe3e8c819f9efd28196321031cfa99a51fcc2bf3e908f92919424517a87d",
+        "measure": "R*_S1 of v1.14-prereg-r2 (modal position, lead-item rule, floor 6)",
+        "units_matched": 40,
+        "h4_gates": true,
+        "reading": "H4 may downgrade the gate only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise (MARGINAL, FAIL, UNDETERMINED, or Stage 1 halted) it is computed where possible and reported, and neither gates nor downgrades (N19). v1.14's final PASS/FAIL comes at its Stage 2 (t5)",
+        "MNP_comparability_non_gating": {
+          "rho_w": 0.4474932496776786,
+          "n": 22,
+          "p": 0.06429357064293571,
+          "band_reading": "UNDETERMINED",
+          "rank_table_sha256": "65b9fe3e8c819f9efd28196321031cfa99a51fcc2bf3e908f92919424517a87d",
+          "gating": false
+        }
+      },
+      "h4_gates": true,
+      "gate_reissued": {
+        "before": "FAIL",
+        "after": "FAIL",
+        "rule": "downgrade only (section 3), and only if v1.14's Stage 1 is SEPARABLE (N19)"
+      }
+    },
+    "coverage": {
+      "H6_Sep_Coverage": "FALSIFIED",
+      "leg": {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 8,
+          "v20": 8,
+          "v21": 8,
+          "v22": 8,
+          "v23": 8
+        },
+        "dropped_substrates": {},
+        "seed": 113006,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 1.0,
+        "p": 9.999000099990002e-05,
+        "ci90": {
+          "level": 90.0,
+          "lo": 1.0,
+          "hi": 1.0,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "H6_coverage_source": {
+        "file": "/tmp/tmpp926c9ye/v112/v112_unit_table.csv",
+        "sha256": "5524905df897e6315d86f1fd303f2efff7dc88c794b7cd29ead51fd0ac76ca5b",
+        "verdicts_file": "/tmp/tmpp926c9ye/v112/v112_verdicts.json",
+        "verdicts_sha256": "e49d2fbef64de802b732b5b74a51757c74d55d2fa5523a319ca24823f83d70f6",
+        "prereg_tag": "v1.12-prereg-r1",
+        "v1_12_commit": "SYNTHETIC",
+        "scorer_sha256": "abababababababababababababababababababababababababababababababab",
+        "column": "cov_star_N3",
+        "panel": "N3",
+        "condition": "S0",
+        "v1_12_primary_panel": "N3",
+        "v1_12_models_dropped": [],
+        "v1_12_paper_A_verdict": "PASS",
+        "v1_12_raw_sha256": "cdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcdcd",
+        "units_in_table": 40,
+        "rated_units": 40,
+        "measure": "cov_star_N3 of v1.12-prereg-r1 (N3, S0; its own floor and rated set)",
+        "units_matched": 40,
+        "units_matched_rated": 40
+      },
+      "gate_reissued": {
+        "before": "FAIL",
+        "after": "FAIL",
+        "rule": "downgrade only (section 3)"
+      }
+    },
+    "appended_utc": "2026-11-11T17:31:01.255657+00:00"
+  },
+  "synthetic_fixture": {
+    "scenario": "dropped",
+    "part2": "collected",
+    "note": "SYNTHETIC: the locked scorer's functions on synthetic inputs; see make_scenarios_v1_13.py"
+  }
+}
