@@ -1,0 +1,240 @@
+{
+  "study": "AIAS v0.44 industry-breadth wave",
+  "tag": "v0.44-prereg-r1",
+  "tag_object": "56c879b9f18af28a37be1c8224c84d5b5b9ddd3b",
+  "commit": "01058b6bd807970d225361cd19d62b6b2aec593b",
+  "tree": "ff32fa9f1debb01efe708260fab66b010da198a3",
+  "branch": "v0.44",
+  "remote": "https://github.com/thirdsystem-aias/aias.git",
+  "pharmacies_dropped_before_lock": false,
+  "lock_manifest": "osf/v44/LOCK_MANIFEST_v0_44.sha256",
+  "lock_manifest_sha256": "8a022412d258fff805b11683a4ba5b484c18a0dd643e8416562009febb67f357",
+  "locked_files": [
+    {
+      "path": "osf/v44/DEVIATIONS.md",
+      "sha256": "a8f6af7103b04d4d3b146071c333f0d8f049f72f59b1bbbe4a2a61b6caf58eb5",
+      "git_blob_at_tag": "34bbd41cd99bc6a03aff9a91753a1c6175a7a29b"
+    },
+    {
+      "path": "osf/v44/prereg/PRE_REGISTRATION_v0_44.md",
+      "sha256": "caa072aedfe9b8523a1586a1a1b73825d1e43a6cc892e57aa682a96ac7b3737b",
+      "git_blob_at_tag": "ba2384a36b8cf751ac9983f97b89cabf8b045d58"
+    },
+    {
+      "path": "osf/v44/prereg/cost_estimate_v0_44.json",
+      "sha256": "cf103a0fbeb1a3594a13355dba8b7535048a15b70330840622a6d36f7ec607ee",
+      "git_blob_at_tag": "338e799bb53bbba8eba09e64c8108f6a07104175"
+    },
+    {
+      "path": "osf/v44/prereg/cost_estimate_v0_44.txt",
+      "sha256": "08b4a5d0f1b1347463f380f7961bd2ddd562fa9e150ab83c312da3d8308443a5",
+      "git_blob_at_tag": "07a05b0b114753ec91ac7ce54f4a132ab4612e8d"
+    },
+    {
+      "path": "osf/v44/prereg/dry_run_v0_44.txt",
+      "sha256": "f805a2dc12fece6462a59d4924e0b81fa738947e14c65450730015fde775df51",
+      "git_blob_at_tag": "a97c2ace53d10c2a93af89342e73c8ca9ee3083f"
+    },
+    {
+      "path": "osf/v44/prereg/parity_P1_v0_44.json",
+      "sha256": "44b05a385651749941c6a71a29f7c876fed2d54d080a8b1be1d6dbd037528952",
+      "git_blob_at_tag": "f49e2bb9528cf8ec9caf97a2de186b1c1c30d5c6"
+    },
+    {
+      "path": "osf/v44/prereg/probes_v0_44.jsonl",
+      "sha256": "107d9401c18d9ee00ee4d5d717642aaeac7eb812ce843ff559947fe8525c2bb6",
+      "git_blob_at_tag": "d816cb15b03aee2e2b34d944123f9fb721731487"
+    },
+    {
+      "path": "osf/v44/prereg/probes_v0_44.md",
+      "sha256": "37a9a89108a3804525a8cc41b5161d22025470d156920af4e1b5fcae45804024",
+      "git_blob_at_tag": "dac03bbad53d58f565699c9e87fc3d2c5b9a6f65"
+    },
+    {
+      "path": "osf/v44/prereg/rho_pw_check_v0_44.txt",
+      "sha256": "d39ce59234401daa120cf616e508a98b56559f691541f6f8b937d5a5936db792",
+      "git_blob_at_tag": "68d2c33d5c05e7672c7de8e0806b9d07915f56c3"
+    },
+    {
+      "path": "osf/v44/prereg/tests_v0_44.txt",
+      "sha256": "e4a4bdb59df8d1cc72025db247227a268cf83541bcc6c20f18354a4e5ca3d968",
+      "git_blob_at_tag": "b6094a7daf995f993941046504d87d2d57030dff"
+    },
+    {
+      "path": "osf/v44/registries/apr_clothing_department_stores.csv",
+      "sha256": "b19f81fe0890ecf67333bf8dc681c6b17b64c4277b1cdb281a0e0518143ea743",
+      "git_blob_at_tag": "48c6b5fa6b859e969b306263837fd00e9f263eec"
+    },
+    {
+      "path": "osf/v44/registries/cvf_convenience_fuel.csv",
+      "sha256": "88db9634db31705713266a094aaa4423da9686c284489c3d1d3c3e1b45a21279",
+      "git_blob_at_tag": "28aed0d1b85ce88de7b31ee72d2a0cffa436a1f2"
+    },
+    {
+      "path": "osf/v44/registries/excluded_v0_44.csv",
+      "sha256": "1dcdd528b9839b085a5353f365f11cb8efcca73108444649a3e5bcb79404fa7f",
+      "git_blob_at_tag": "efa2f72a4741c1d33e49febc8eafb8bf45b02716"
+    },
+    {
+      "path": "osf/v44/registries/fas_fashion_luxury.csv",
+      "sha256": "d2c15ba30f33785564367d49ee08164a71b572d3ec0e24c45c47eb02543b1b69",
+      "git_blob_at_tag": "06e4ea1f090149d7136ec0a64e5c48ca33905dd5"
+    },
+    {
+      "path": "osf/v44/registries/gro_grocery_chains.csv",
+      "sha256": "377544a5d6bcd813d7744edb12d1e15ee52f059df26bf55b4629f0921487b78a",
+      "git_blob_at_tag": "f873c705f10f8c027e87394fbddc0e0f13caccde"
+    },
+    {
+      "path": "osf/v44/registries/hot_hotel_chains.csv",
+      "sha256": "db58a711d8cb6b5949af7cc31bac7266cab369204db18516a4acf87218f95f16",
+      "git_blob_at_tag": "586986286e96ae6b869a5e475a16ed09f67b46dc"
+    },
+    {
+      "path": "osf/v44/registries/industries_v0_44.csv",
+      "sha256": "f2984bc3665d79f270b47cd18d3e0fe66d10e9c5ee92963a2056ba0b83865060",
+      "git_blob_at_tag": "c248921abf9278e8c89d401c4d60ad71dd5ff4fc"
+    },
+    {
+      "path": "osf/v44/registries/ins_car_insurance.csv",
+      "sha256": "8ec67b1ac67248ca9e393ec648b4f827fd0d66b79c25d89473a06e9f787682ef",
+      "git_blob_at_tag": "d6c02ffad89d3b33bf2a02526fc9b0042c5311a6"
+    },
+    {
+      "path": "osf/v44/registries/pha_pharmacies.csv",
+      "sha256": "1650ecdba3127318cb2716eddef60f014951407bbe9016c728c0b18633b5b2e3",
+      "git_blob_at_tag": "5786d3149ebfbd19ad1b5d5a898e640d65378ef0"
+    },
+    {
+      "path": "osf/v44/registries/qsr_fast_food_chains.csv",
+      "sha256": "63e79ab6fa41e4e80a7f5f1d945df42faafc963f09d1d7405ecd5a4a789021d2",
+      "git_blob_at_tag": "3cfc16cde55fea466b50150a319a748ac49475aa"
+    },
+    {
+      "path": "osf/v44/scripts/acquire_v0_44.py",
+      "sha256": "4443dfcd92f11dea3b7a4a08341338720f608626c2d5ff1d313974fa92b2d8a2",
+      "git_blob_at_tag": "6b9aadf091f4628d8cef3509269e9412c3e031c8"
+    },
+    {
+      "path": "osf/v44/scripts/budget_v0_44.py",
+      "sha256": "219e9e7a8c86c522a33cbef519b25f754b8955b68be32b983f1e57ac74869c17",
+      "git_blob_at_tag": "6be3236e19719938828006a7edea4420b12e4622"
+    },
+    {
+      "path": "osf/v44/scripts/build_probes_v0_44.py",
+      "sha256": "c60e6064f3dbc6195b961974ef4022e5c65261c1c49bc626b1eee9d1f345bc31",
+      "git_blob_at_tag": "78a7efb9a14c752e1981dec57feab59953842f7b"
+    },
+    {
+      "path": "osf/v44/scripts/code_v0_44.py",
+      "sha256": "ffe8ca7afa2cc675ce4a75253beb82bd723ff0e285319099bb7af18302e65126",
+      "git_blob_at_tag": "3bb0ad13e7b9a4c814dfa6e4fc066770c01a4931"
+    },
+    {
+      "path": "osf/v44/scripts/cost_estimate_v0_44.py",
+      "sha256": "efe02e8fbb607a7512d345d53e82028f9135497269500e018ea8bd9f9cfe15f4",
+      "git_blob_at_tag": "14c7b1201279768b51852f10e1283f96037c03bd"
+    },
+    {
+      "path": "osf/v44/scripts/lock_manifest_v0_44.py",
+      "sha256": "f454e891038a696825be631f5657b330377d8741e7c191cd2114f4ce434ef637",
+      "git_blob_at_tag": "0e753bdafb19da1f9d761879b609602bafcf5984"
+    },
+    {
+      "path": "osf/v44/scripts/make_registries_v0_44.py",
+      "sha256": "1ae4be732ff2363bb470bea71f727984cd850547c8eee53f77fd8f7d8460c4ce",
+      "git_blob_at_tag": "35a1cbb25edae6388aeecc32645be1c2bac078d3"
+    },
+    {
+      "path": "osf/v44/scripts/rho_pw_check_v0_44.py",
+      "sha256": "a7c3ef892eeeeea4a4077f354200d4419372e7762054bee0b55c36341db3c4cf",
+      "git_blob_at_tag": "ff4fa7d6d672a0287dfcc166f0163db5e8e95a83"
+    },
+    {
+      "path": "osf/v44/scripts/score_v0_44.py",
+      "sha256": "ba1435ace27b07aacd7b8572294abf5ba7e243b1df791b8f31871ecfe5667b9b",
+      "git_blob_at_tag": "530d6f7725dec4c5c8ab1e649c0e320bcebbd55e"
+    },
+    {
+      "path": "osf/v44/scripts/tests/run_all_v0_44.py",
+      "sha256": "ed7c35fcf291d9a12a20067e04cca9ef047acc81763a7d5ef4da051c5b8aa4e9",
+      "git_blob_at_tag": "2372ea091a96595df4bdd3ea9c46cd174f3759bd"
+    },
+    {
+      "path": "osf/v44/scripts/tests/synth_v0_44.py",
+      "sha256": "c25e6d2d908ecca7d71170a933d8c10eca40e741fb57eda946b9959473c325c7",
+      "git_blob_at_tag": "f03a55a30eff66a92e019a42723d7485d46e67a6"
+    },
+    {
+      "path": "osf/v44/scripts/tests/test_acquire_v0_44.py",
+      "sha256": "892422407ba2e9b7808e864eadfdfd6480da6e843b23d3b7c878ca9d17d3f0f1",
+      "git_blob_at_tag": "04f5a785c01a1264bc4ac1c0dab59be8dcfa481c"
+    },
+    {
+      "path": "osf/v44/scripts/tests/test_code_score_v0_44.py",
+      "sha256": "64f77d821b55f1604d75ba1c8442c12bae332ca1cb5a0f96c000416fa0785b44",
+      "git_blob_at_tag": "9aa6df059762b6186debfe7fbe23b347c80c8469"
+    },
+    {
+      "path": "osf/v42/scripts/score_v0_42.py",
+      "sha256": "4eec2436b03d97b0059301d6043f89ccaffa20baa25fc04a63b0adce0af30b65",
+      "git_blob_at_tag": "9e2c86c167d18981f0ac6c63ce8480f8c005205a"
+    },
+    {
+      "path": "osf/v42/scripts/code_t4_v0_42.py",
+      "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "git_blob_at_tag": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc"
+    },
+    {
+      "path": "osf/v42/scripts/budget_v0_42.py",
+      "sha256": "87dbd1cdf9f48d89ae7cb595dd699a1f07f8a9b957df4f93bab6949ea6349d78",
+      "git_blob_at_tag": "433f77be55276d9469100c972295938140eb2b26"
+    },
+    {
+      "path": "osf/v42/scripts/acquire_v0_42.py",
+      "sha256": "51350776368381e7da3e9a188c027fe66902c127b678b3b8a16f0fc30513e4a6",
+      "git_blob_at_tag": "07e06c10117dac58ec12f2fdca81f25b4fb6fbc9"
+    },
+    {
+      "path": "osf/v42/prereg/cost_estimate_v0_42_r2.json",
+      "sha256": "79831e64e7d5bf43c68d19797f86be8dd8d183925dc00577f8b3b7c23d2aa8d1",
+      "git_blob_at_tag": "7884636aa3fa5d8022580e921fb89b92d688e55f"
+    },
+    {
+      "path": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md",
+      "sha256": "78bb111d26ed109422cb1261c51acffefde32067c001ed29581cc1946fb975aa",
+      "git_blob_at_tag": "54a3d5af81eaac908528915e66223a1110012349"
+    },
+    {
+      "path": "osf/v42/prereg/feasibility_v0_42.json",
+      "sha256": "1685f271cd14710ce2e5f5996554156cb6370e1d32474106a1b6a004dfa075bc",
+      "git_blob_at_tag": "3ecb7f68497cee1446890f397de1cfe222d2e83b"
+    },
+    {
+      "path": "osf/v41/scripts/score_v41.py",
+      "sha256": "c4231b6805896a077b9b16d8f315bf19ae6297435293deb1de32375d7424dc31",
+      "git_blob_at_tag": "68ca1c2365ce9c643667a0a34aabe520c2ea835f"
+    },
+    {
+      "path": "osf/v41/v41_three_wave_table.csv",
+      "sha256": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219",
+      "git_blob_at_tag": "86168a6854ac6d901340ed218e2dc2713887dccf"
+    },
+    {
+      "path": "scripts/run_acquisition_v22.py",
+      "sha256": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe",
+      "git_blob_at_tag": "076b96681906646dcf3050f22247530a71503554"
+    }
+  ],
+  "osf": {
+    "project": "ec6wh",
+    "folders": [
+      "v44/prereg",
+      "v44/registries",
+      "v44/scripts",
+      "v44/anchor"
+    ],
+    "draft_not_a_lock": "v44/prereg/draft_r1"
+  },
+  "written_utc": "2026-11-11T03:00:12+00:00"
+}
