@@ -137,7 +137,7 @@ PENDING = "PENDING"
 NOT_LOCKED = "NOT_LOCKED"
 INPUTS = {
     "v0.42": {   # t4: P_S0 / C*_S0 (recomputed, MQ_Parity), drop rule (MQ_Panel), bridge labels (4.1)
-        "lock_tag": "v0.42-prereg-r1", "lock_commit": PENDING,
+        "lock_tag": "v0.42-prereg-r1", "lock_commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
         "scorer": "osf/v42/scripts/score_v0_42.py", "scorer_blob": "934f09ae69300cb13bdde56c7964b7b2cc7700b9",   # C5 (v0.42 C27)
         "coder": "osf/v42/scripts/code_t4_v0_42.py", "coder_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
         "raw_ref": "v0.42-acquisition-locked", "raw": "osf/v42/data/t4_raw.jsonl",
@@ -152,22 +152,22 @@ INPUTS = {
         "rank_table": "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv",
         "stage2": "osf/methodology/v1_14/outputs/stage2/stage2_v1_14.json"},
     "v1.12": {   # Coverage: cov_star_N3, GATE; carried H1, H2 (and H5 when it gated)
-        "lock_tag": "v1.12-prereg-r1", "lock_commit": PENDING,
+        "lock_tag": "v1.12-prereg-r1", "lock_commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
         "scorer": "osf/methodology/v1_12/scripts/score_v1_12.py",
-        "scorer_blob": "75aabfc94bb77423148a2a1d1a7f39594ce36a17",
+        "scorer_blob": "11cded95437fd2ed30c1cdf1120b23a5a3cebe2d",
         "unit_table": "osf/methodology/v1_12/v112_unit_table.csv", "column": "cov_star_N3",
         "verdicts": "osf/methodology/v1_12/v112_verdicts.json",
         "anchor": "osf/methodology/v1_12/anchor/osf_anchor_v1_12.json",
-        "h5_active_at_lock": PENDING},                       # section 16 item 2 (from v1.12's anchor)
+        "h5_active_at_lock": True},                       # section 16 item 2 (from v1.12's anchor)
     "v1.13": {   # Grounding: G* (units of v1_13_verdicts.json), GATE as last issued; carried H1, H2, H6
-        "lock_tag": "v1.13-prereg-r1", "lock_commit": PENDING,
+        "lock_tag": "v1.13-prereg-r1", "lock_commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65",
         "scorer": "osf/methodology/v1_13/scripts/score_v1_13.py",
-        "scorer_blob": "40c43cb8027ac2cbb47d9b4df65651dad8876a5e",
+        "scorer_blob": "7ac062d998fb7f3c3c38d8138af7bab041b2ab58",
         "verdicts": "osf/methodology/v1_13/v1_13_verdicts.json",
         "unit_map": "osf/methodology/v1_13/registries/brand_domains_v1_13.csv",
         "unit_map_blob": "1143a404b00861a215ae848a164d3066658ceccc",
         "anchor": "osf/methodology/v1_13/anchor/git_anchor_v1_13.json",
-        "h4_active_at_lock": PENDING, "h6_active_at_lock": PENDING},   # section 16 item 2
+        "h4_active_at_lock": True, "h6_active_at_lock": True},   # section 16 item 2
     "v1.11": {   # Sentiment instrument: H1-H5 (gate reading, 4.1); legacy-panel S at t3 (3.4, SG)
         "lock_tag": "v1.11-prereg-r1", "lock_commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
         "scorer": "scripts/score_v1_11.py", "scorer_blob": "5e46e8632044268b5d30a2184600718961caa838",

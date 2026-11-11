@@ -41,3 +41,9 @@
 **Type:** ex ante. No t4 answer or t4-based score exists and none was read. No hypothesis, test, band, floor, seed, unit set, gate rule or wording rule changes; the pre-registration text is unchanged.
 
 **C5 — v0.42 scorer pin follows v0.42's clarification C27.** v0.42's C27 (branch `v0.42` @ `f1f3668`, local until v0.42's lock) writes its brand table's `pi_N3_<c>`, `phi_N3_<c>` and `phi_partition_N3_<c>` on the full N3 panel also when its drop rule excludes a model (before, v1.14's Stage 1 halted at MQ8 in that case, leaving the Preview's Ranking input NOT RUN), and resolves Gemini redirect domains in its descriptive 5. `INPUTS["v0.42"]["scorer_blob"]` is re-pinned from `3bbe58db…` to `934f09ae…`. The Preview recomputes P and C\* with `score_v1_14.comparators` from v0.42's coded tables and reads no v0.42 statistic; MQ_Parity compares them with v1.14's Stage 1. Revert together with v0.42's C27 if C27 is not accepted.
+
+## Clarification C6 — ex ante (2026-11-11, r1, before the lock)
+
+**Type:** ex ante, citation only. No t4 answer or t4-based score exists and none was read. No hypothesis, test, band, floor, seed, unit set, gate rule or wording rule changes; the scorer is unchanged by this clarification.
+
+**C6 — v1.9 citation: SSRN 7685126 replaced by its Third System and OSF copy.** SSRN declined the v1.9 paper (abstract 7685126) on 2026-11-11. In the pre-registration's Lineage paragraph the citation "v1.9 (SSRN 7685126; C\*, no composite)" now reads "v1.9 (https://thirdsystem.ai/studies/v1-9/; OSF https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87; C\*, no composite)". Nothing else in the pre-registration changes; every other mention of v1.9 names the study, not the SSRN number. Effect on inference: none.

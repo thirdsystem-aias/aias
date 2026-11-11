@@ -354,7 +354,7 @@ class TestSensitivitiesAndLockHelpers(unittest.TestCase):
 # =====================================================================================================
 # r1: a synthetic repository holding every component's scored output at its own ref (no program data)
 # =====================================================================================================
-V114_BLOB = "c479004c58de79ef017b25c4725e433f74dc42b2"   # scripts/score_v1_14.py at tag v1.14-prereg-r1
+V114_BLOB = "7aeb18316a23c699a0a6a4358e52ab09f9546ca9"   # scripts/score_v1_14.py at tag v1.14-prereg-r2 (C3; r1 was c479004c)
 MODELS3 = ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"]
 SUBS = {"v0.19": 16, "v0.20": 24, "v0.21": 24, "v0.22": 24, "v0.23": 24}
 RAWSUB = {"v0.19": "v19", "v0.20": "v20", "v0.21": "v21", "v0.22": "v22", "v0.23": "v23"}
