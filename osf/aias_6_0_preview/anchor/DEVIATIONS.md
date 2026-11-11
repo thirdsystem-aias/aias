@@ -34,3 +34,10 @@
 **Type:** ex ante. Found by a pre-lock dry run of the whole t4 chain on a fake collection (no t4 answer or t4-based score exists; none was read). No hypothesis, test, band, floor, seed, unit set, gate rule or wording rule changes; the pre-registration text is unchanged.
 
 **C4 — v1.12's record of an active H5 that does not gate (§16 item 2).** When v1.14's Stage 1 interim verdict is not SEPARABLE, v1.12 keeps H5 active but out of its gate (v1.12 SCORER_NOTES N35): its `paper_A_verdict` then lists `H5_Sep_Ranking` under `inactive` and records `h5_reported_not_gating`. `read_v112` read "listed under `inactive`" as "not active", so `check_activation` halted the run against the pin `h5_active_at_lock = true` in exactly that case (reproduced on the fake chain: `HALT: activation recorded by the component differs from the pin … {'v1.12_H5': (True, False)}`). `read_v112` now reports H5 as active when `h5_reported_not_gating` is present. Which v1.12 legs are carried (§6.2: H5 only when it gated) is unchanged. Tests: 2 added (`TestClarificationC4`); 59 of 59 pass. Effect on inference: none (a halt is removed).
+
+
+## Clarification C5 — ex ante (2026-11-11, r1, before the lock)
+
+**Type:** ex ante. No t4 answer or t4-based score exists and none was read. No hypothesis, test, band, floor, seed, unit set, gate rule or wording rule changes; the pre-registration text is unchanged.
+
+**C5 — v0.42 scorer pin follows v0.42's clarification C27.** v0.42's C27 (branch `v0.42` @ `f1f3668`, local until v0.42's lock) writes its brand table's `pi_N3_<c>`, `phi_N3_<c>` and `phi_partition_N3_<c>` on the full N3 panel also when its drop rule excludes a model (before, v1.14's Stage 1 halted at MQ8 in that case, leaving the Preview's Ranking input NOT RUN), and resolves Gemini redirect domains in its descriptive 5. `INPUTS["v0.42"]["scorer_blob"]` is re-pinned from `3bbe58db…` to `934f09ae…`. The Preview recomputes P and C\* with `score_v1_14.comparators` from v0.42's coded tables and reads no v0.42 statistic; MQ_Parity compares them with v1.14's Stage 1. Revert together with v0.42's C27 if C27 is not accepted.

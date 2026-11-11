@@ -138,7 +138,7 @@ NOT_LOCKED = "NOT_LOCKED"
 INPUTS = {
     "v0.42": {   # t4: P_S0 / C*_S0 (recomputed, MQ_Parity), drop rule (MQ_Panel), bridge labels (4.1)
         "lock_tag": "v0.42-prereg-r1", "lock_commit": PENDING,
-        "scorer": "osf/v42/scripts/score_v0_42.py", "scorer_blob": "3bbe58db0db26763e6d5f9f022c09fcaa13fef03",
+        "scorer": "osf/v42/scripts/score_v0_42.py", "scorer_blob": "934f09ae69300cb13bdde56c7964b7b2cc7700b9",   # C5 (v0.42 C27)
         "coder": "osf/v42/scripts/code_t4_v0_42.py", "coder_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
         "raw_ref": "v0.42-acquisition-locked", "raw": "osf/v42/data/t4_raw.jsonl",
         "default_scored_ref": "v0.42-scoring-locked",       # named by v0.42 LOCK_STEPS.md step 11.2
