@@ -1,0 +1,9 @@
+{
+ "file": "statement_exercise_doc.md",
+ "source": "https://claude.ai/artifact/QHkHLwkqZHAaHs7pTrFTH2",
+ "source_title": "SVA class exercise — Sentiment labeling for AIAS",
+ "section": "How your labels will be used (statement for students)",
+ "doc_revision": 8,
+ "read": "2026-11-11, Claude Docs connector read (no web fetch)",
+ "note": "Seven paragraphs of the doc's blockquote, word for word, bold markers as **...**. As read, the text is identical to the r0 statement of 2026-11-10 (_runner_tmp/sva_labels/statement_verbatim.md) and still gives about 50 answers, about an hour, the January 22 due date and the February 1 withdrawal date; guide page 1 gives about 55 answers, about 45 minutes, December 4 and December 18. lock/paperB_lock_v1_11.py --check fails until the two agree. When Pablo revises the doc: replace this file with the doc's new text word for word, update doc_revision and read, run --sync, then --check."
+}

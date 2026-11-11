@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Student guide · rules</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#faf7f2}
+a{color:#37237b}a:hover{color:#534f9e}
+</style>
+</helmet>
+<div style="width: 816px; height: 1056px; box-sizing: border-box; padding: 32px 56px; background: #faf7f2; font-family: 'Inter', system-ui, sans-serif; color: #231f20; display: flex; flex-direction: column">
+<div style="display: flex; justify-content: space-between; align-items: baseline; padding-bottom: 10px; border-bottom: 1px solid #cfcbe3">
+<span style="font-size: 12px; font-weight: 700; letter-spacing: 0.14em; color: #37237b">LABELING AI ANSWERS ABOUT BRANDS</span>
+<span style="font-size: 12px; color: #6b6967">Third System™ research · page 2 of 2</span></div>
+<h2 style="margin: 18px 0 8px 0; font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: #37237b">Rules for hard cases</h2>
+<div style="display: flex; flex-direction: column; gap: 5px"><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Judge the target brand only.</strong> Ignore what the text says about other brands, unless it compares them with the target brand.</span></div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Being listed is not tone.</strong> Being named, included in a list of picks, or listed first is not an evaluation. Rate the words that describe the brand. Just named, with nothing said about it: tone 0, No judgment.</span></div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Facts are not praise.</strong> “Has a 10-year warranty” is 0; “stands out for its generous 10-year warranty” is +1.</span></div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Reported opinions count.</strong> Awards, ratings, complaints and recalls that the text reports are evaluations. “Some owners mention quality issues” is −1, from Quoted sources.</span></div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Go by the overall impression.</strong> One small caveat inside strong praise is still favorable. Use 0 for mixed texts only when neither side wins.</span></div><div style="display: flex; gap: 10px; align-items: flex-start; font-size: 12.5px; line-height: 1.45"><span style="flex-shrink: 0; width: 6px; height: 6px; background: #37237b; margin-top: 6px"></span><span><strong>Work alone.</strong> Don't look anything up, don't compare with classmates before April 21, and don't go back to change an answer after you have moved on.</span></div></div>
+<h2 style="margin: 18px 0 6px 0; font-size: 21px; font-weight: 700; letter-spacing: -0.01em; color: #37237b">The exact instructions the AI judge receives</h2>
+<p style="margin: 0 0 10px 0; font-size: 12.5px; line-height: 1.45">You and the AI judge follow the same rules and scale. Here they are word for word. The judge answers in a fixed format, so some lines name its answer fields: your tone answer is its “valence”, “Not about this brand” is “refers_to_brand” false, question 2 is “mixed”, and any answer to question 3 other than “No judgment” is “evaluative”. Question 3's split between the AI's own voice and quoted sources is ours; the judge does not record it.</p>
+<div style="background: #ffffff; border: 1px solid #e2dfea; border-radius: 10px; padding: 14px 18px; font-size: 11.5px; line-height: 1.4; display: flex; flex-direction: column; gap: 4px">
+<div style="font-weight: 700; color: #37237b">Rules:</div>
+<div>1. Rate only statements about the target brand: its products, quality, performance, value, reputation, people and conduct, and comparisons that involve it. Ignore statements about other brands unless they compare the target brand with them.</div>
+<div>2. Being named, listed or recommended by inclusion is not an evaluation in itself. List labels and phrases that only repeat the question (for example "Top picks:" or "Brands for beginners:") are not evaluations of the target brand. Rate the words that describe the target brand itself.</div>
+<div>3. Plain facts are neutral: history, founding date, ownership, location, product range, ingredients, price level or market position stated without judgement.</div>
+<div>4. Evaluations count: praise or criticism by the assistant, and judgements by others that the text reports (awards, ratings, critical acclaim, complaints, recalls, controversies, lawsuits).</div>
+<div>5. "evaluative" is true if the text contains at least one evaluation of the target brand under rule 4, and false if it contains only facts or description.</div>
+<div>6. If favourable and unfavourable evaluations are both present, set "mixed" to true and choose the valence that reflects their overall balance (0 if they are of similar weight).</div>
+<div>7. If the text does not refer to the target brand (the name is used as an ordinary word or for a different company, or the assistant says it does not know the brand and describes nothing), set "refers_to_brand" to false, "evaluative" to false, "mixed" to false and "valence" to 0.</div>
+<div style="font-weight: 700; color: #37237b; margin-top: 6px">Valence scale:</div>
+<div>2 = strongly favourable: emphatic praise or endorsement of the brand ("outstanding", "the best", "exceptional quality") with no substantive reservation.</div>
+<div>1 = favourable: a positive evaluation ("well regarded", "reliable", "good value", "award-winning"), possibly with minor reservations.</div>
+<div>0 = neutral: no evaluation of the brand (facts or description only), or favourable and unfavourable evaluations of similar weight.</div>
+<div>-1 = unfavourable: a negative evaluation ("overpriced", "inconsistent quality", "mixed reviews", "less refined than"), possibly with some positives.</div>
+<div>-2 = strongly unfavourable: emphatic criticism or warning ("avoid", "poor quality", a scandal or recall presented as defining) with no substantive positive.</div>
+</div>
+<div style="display: flex; justify-content: space-between; margin-top: auto; padding-top: 10px; border-top: 1px solid #ddd9e8; font-size: 12px; color: #6b6967">
+<span>All examples are invented, about a fictional brand (“Halvor”). None comes from the texts you will label.</span><span>Questions: pablou@pablou.com</span></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":816,"height":1056}}'>
+class Component extends DCLogic {
+renderVals() { return {}; }
+}
+</script>
+</body>
+</html>

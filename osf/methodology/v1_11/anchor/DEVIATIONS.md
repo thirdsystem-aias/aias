@@ -45,3 +45,16 @@
 **Exposure disclosed.** The screen matched strings in the 566 sample texts and in the candidate units' texts by code. Printed: unit_ids, matched terms, the word following each of the 6 non-Denon matches and the token containing one ("Denona"), the v0.19 sample's units per brand and per wave × model, and the v0.19 candidate pools' counts per brand and frame. No answer text was printed otherwise; no valence, judge output or score was computed or printed.
 
 **Lock record.** This entry is appended after the tag; `prereg/LOCK_MANIFEST_v1_11.sha256` and `anchor/git_anchor_v1_11.json` keep the tag-tree hash of this file (Entry 0 only) and are not regenerated.
+
+## Entry 2 — Paper B labelling design: recognition answers not labelled, December timeline, no third-label round (2026-11-11, after the lock; ex ante for Paper B)
+
+**Type:** post-lock deviation from PRE_REGISTRATION §9 (Paper B hand-off), recorded on branch `v1.11-paperB` with Paper B's pre-registration (`paperB/prereg/PRE_REGISTRATION_v1_11_paperB.md`). **No human label has been collected and no judge call has been made**; no valence, judge output, P, C\* or Ranking value exists. Paper A's confirmatory design and every locked file are unchanged.
+
+**What changed, and why.**
+1. **The 48 v0.23 recognition answers (block R) are not labelled.** Decided by the author (Pablo González Castro), 2026-11-10, 5:12 pm: drop the 48 long brand-description answers, so that each student labels about 55 answers in about 45 minutes; the students label the 518 mention windows of `paperB/human_sample_v1_11_paperB_r1.csv` (blocks F and E). (43 of the 48 recognition answers are over 250 words; median 715 words.) Effect on inference: Paper B's human check covers mention windows only; S_rec (block R) and the checks that use it stay "provisional" whatever Paper B finds. The sample file is not modified; the packet script drops the R units (`--variant b`).
+2. **Labels due 2026-12-04** (§9: "about Jan 22, 2027", a planning date). Timeline set by the author: invitations 2026-11-13, sign-up closes 2026-11-20, personal forms 2026-11-23, labels due 2026-12-04, withdrawal possible until 2026-12-18.
+3. **No third label on valence disagreement** (§9: "a third on valence disagreement"). The students consent to one packet (about 55 answers); a second round is not part of what they are told. Paper B's confirmatory statistics never used a third label (draft r0/r1 §7); disagreements are reported descriptively.
+
+**Not a deviation.** The students' guide (two pages, `paperB/guide/`) carries rules 1–7 and the valence scale of `prereg/judge_prompt_v1_11.md` word for word (line-by-line comparison, `paperB/guide/guide_vs_judge_v1_11_paperB.json`: 14 of 14 lines identical), as §9 requires.
+
+**Lock record.** Appended after the v1.11 tag; v1.11's `LOCK_MANIFEST_v1_11.sha256` and `git_anchor_v1_11.json` are not regenerated. Paper B's lock manifest pins this file as it stands at Paper B's lock.
