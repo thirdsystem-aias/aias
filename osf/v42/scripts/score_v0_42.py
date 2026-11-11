@@ -47,7 +47,9 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N12 Cost (descriptive 6): budget_v0_42.record_cost of every raw line (every attempt): the recorded usage of each
      billed request (`usage_parts`: batch or standard token prices; Google thinking tokens billed as output; search
      fees per recorded search), at the list prices of section 4.5 -- the same function as the collection guard.
- N13 Domains (descriptive 5): host of each citation URL, lower-case, leading "www." dropped.
+ N13 Domains (descriptive 5): host of each citation URL, lower-case, leading "www." dropped. (Clarification of
+     2026-11-11, C27) For Gemini's grounding redirects (host vertexaisearch.cloud.google.com) the domain is the chunk
+     title when it is a host name, else "unresolved-google-redirect" (_cited_domain).
  N14 NaN rho (degenerate data) -> verdict UNDETERMINED (the rules are silent).
  N15 (r2) Seed 420042 (H_Version_Presence) is retired with the hypothesis; the other seeds are unchanged. The
      manipulation checks count only calls of the design (Phase B: S0/S1, runs 1-3; Phase A: S0, run 1) and of the
@@ -63,6 +65,11 @@ SCORER_NOTES (choices where the pre-registration is silent)
      reported beside each as `rho_uncentred_v041` (rel1: `rel1_uncentred_v041`; mean independence:
      `rho_pw_phi_pi_uncentred_v041`) for comparability with v0.41 and never gates a verdict. The two are identical
      when all substrates have the same number of brands. Thresholds unchanged.
+ N17 (Clarification of 2026-11-11, C27, before the lock) The brand table's pi_N3_<c>, phi_N3_<c> and
+     phi_partition_N3_<c> are always computed on the full N3 panel (served-ID exclusions applied), also when the drop
+     rule (N6) excludes a model in <c>; before, they were silently computed on the retained models under the same
+     column name, which v1.14's MQ8 (and v1.12's P2) recompute on all of N3, so one dropped model made v1.14's Stage 1
+     halt. The drop rule still decides every hypothesis panel; no statistic, threshold or rule of this file changes.
 
 Modes: --parity-p1 | --synthetic DIR | --run   (--run refuses unless tag v0.42-prereg-r1 is on origin)
 """
@@ -685,6 +692,23 @@ def _domain(url):
     return h[4:] if h.startswith("www.") else h
 
 
+GOOGLE_REDIRECT_HOST = "vertexaisearch.cloud.google.com"
+_TITLE_DOMAIN = re.compile(r"^[a-z0-9-]+(\.[a-z0-9-]+)+$")
+
+
+def _cited_domain(c):
+    """N13 (clarification of 2026-11-11): domain of one citation. Gemini's grounding URIs are redirects through
+    vertexaisearch.cloud.google.com/grounding-api-redirect/... that carry the cited site only in the chunk title: for
+    that host the domain is the title when it is a host name (lower-case, leading "www." dropped), else
+    "unresolved-google-redirect". The redirect is never followed."""
+    d = _domain(c.get("url"))
+    if d != GOOGLE_REDIRECT_HOST:
+        return d
+    t = (c.get("title") or "").strip().lower().rstrip(".")
+    t = t[4:] if t.startswith("www.") else t
+    return t if _TITLE_DOMAIN.match(t) else "unresolved-google-redirect"
+
+
 def descriptives(D, B, calls, raw_all, t3, excl, legacy_recog=None):
     d = {"seed_reserved": SEEDS["descriptives"], "note": "descriptive only; no verdicts"}
     # 1. run-to-run reliability + recognition agreement across runs
@@ -773,7 +797,7 @@ def descriptives(D, B, calls, raw_all, t3, excl, legacy_recog=None):
             for c in ((r.get("search") or {}).get("citations") or []):
                 u = c.get("url") if isinstance(c, dict) else None
                 if u:
-                    dom[_domain(u)] += 1
+                    dom[_cited_domain(c)] += 1
         s[m] = {"s1_answered_calls": len(cs),
                 "searches_per_call": float(np.mean([_search_n(r) for r in cs])),
                 "sources_per_call": float(np.mean([len((r.get("search") or {}).get("sources") or []) for r in cs])),
@@ -837,13 +861,16 @@ def score_t4(raw_all, A, B, t3, cfg, gates):
 
 
 def brand_rows(D, t3, excl):
+    """Brand table. Columns pi_N3_<c> / phi_N3_<c> / phi_partition_N3_<c> are always on the FULL N3 panel (every
+    answered call of the three models; served-ID exclusions applied), whatever the drop rule decides (N17): they are
+    the shared comparator inputs that v1.12 (P2), v1.13 (N13) and v1.14 (MQ8) recompute on N3. `excl` (the drop
+    rule) acts on the hypotheses only."""
     pis = {f"pi_{m}_{c}": pi_hat(D, [m], c) for m in MODELS for c in CONDS}
     panels = {}
     for pn in ("N3",):
         for c in CONDS:
-            ms = _models_ok(PANELS[pn], c, excl)
-            if ms:
-                panels[f"{pn}_{c}"] = (pi_hat(D, ms, c), phi_panel(D, ms, c))
+            ms = list(PANELS[pn])                     # N17: not _models_ok(...): full panel
+            panels[f"{pn}_{c}"] = (pi_hat(D, ms, c), phi_panel(D, ms, c))
     rows = []
     for (s, b) in D.brands:
         r = {"substrate": s, "brand": b, "t3_k_per_model": json.dumps(t3[(s, b)]["k"]), "t3_pi_hat": t3[(s, b)]["pi"],
