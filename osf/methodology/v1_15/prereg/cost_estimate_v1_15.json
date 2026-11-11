@@ -1,0 +1,430 @@
+{
+  "inputs": {
+    "v1_11_F_windows": 2781,
+    "v1_11_F_answers": 540,
+    "windows_per_answer": 5.15,
+    "t4_S0_category_answers": 270,
+    "F_mean_request_tokens_o200k": 768.0,
+    "prices_batch": {
+      "claude-opus-5-5": [
+        2.0,
+        10.0
+      ],
+      "gpt-6.1-sol": [
+        1.0,
+        5.0
+      ]
+    },
+    "token_factor": {
+      "anthropic": 1.3,
+      "openai": 1.1,
+      "google": 1.1
+    },
+    "overhead": 1.15,
+    "selfcon_share": 0.05
+  },
+  "rows": [
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 0,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 4.375328
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 1.9634080000000003
+      },
+      "usd": 6.338736,
+      "usd_with_overhead": 7.289546399999999
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 176,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 6.944928
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 3.2482080000000004
+      },
+      "usd": 10.193136,
+      "usd_with_overhead": 11.7221064
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 270,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 8.317328
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 3.9344080000000003
+      },
+      "usd": 12.251736000000001,
+      "usd_with_overhead": 14.0894964
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 375,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 9.850328
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 4.700908
+      },
+      "usd": 14.551236,
+      "usd_with_overhead": 16.733921399999996
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 1050,
+      "reasoning": 0,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 5.4458
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 2.4163
+      },
+      "usd": 7.8621,
+      "usd_with_overhead": 9.041414999999999
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 1050,
+      "reasoning": 176,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 8.0154
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 3.7011
+      },
+      "usd": 11.7165,
+      "usd_with_overhead": 13.473975
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 1050,
+      "reasoning": 270,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 9.3878
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 4.3873
+      },
+      "usd": 13.7751,
+      "usd_with_overhead": 15.841365
+    },
+    {
+      "scenario": "archived density",
+      "windows": 1390,
+      "calls_per_judge": 1460,
+      "tokens_in_o200k": 1050,
+      "reasoning": 375,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 10.9208
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 5.1538
+      },
+      "usd": 16.0746,
+      "usd_with_overhead": 18.485789999999998
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 0,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 12.688451200000001
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 5.693883200000001
+      },
+      "usd": 18.3823344,
+      "usd_with_overhead": 21.13968456
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 176,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 20.1402912
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 9.4198032
+      },
+      "usd": 29.5600944,
+      "usd_with_overhead": 33.99410856
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 270,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 24.1202512
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 11.409783200000001
+      },
+      "usd": 35.5300344,
+      "usd_with_overhead": 40.859539559999995
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 768.0,
+      "reasoning": 375,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 28.5659512
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 13.6326332
+      },
+      "usd": 42.1985844,
+      "usd_with_overhead": 48.528372059999995
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 1050,
+      "reasoning": 0,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 15.79282
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 7.00727
+      },
+      "usd": 22.80009,
+      "usd_with_overhead": 26.2201035
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 1050,
+      "reasoning": 176,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 23.24466
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 10.73319
+      },
+      "usd": 33.977850000000004,
+      "usd_with_overhead": 39.0745275
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 1050,
+      "reasoning": 270,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 27.22462
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 12.72317
+      },
+      "usd": 39.94779,
+      "usd_with_overhead": 45.939958499999996
+    },
+    {
+      "scenario": "cap binds for all 112 units",
+      "windows": 4032,
+      "calls_per_judge": 4234,
+      "tokens_in_o200k": 1050,
+      "reasoning": 375,
+      "J1": {
+        "model": "claude-opus-5-5",
+        "batch_price": [
+          2.0,
+          10.0
+        ],
+        "usd": 31.67032
+      },
+      "J2": {
+        "model": "gpt-6.1-sol",
+        "batch_price": [
+          1.0,
+          5.0
+        ],
+        "usd": 14.94602
+      },
+      "usd": 46.61634,
+      "usd_with_overhead": 53.608791
+    }
+  ],
+  "hard_cap_usd": 100.0,
+  "pause_usd": 80.0
+}
