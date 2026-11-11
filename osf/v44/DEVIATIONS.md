@@ -36,3 +36,9 @@ Samsung Bioepis, a Samsung affiliate, developed the ustekinumab biosimilar Pyzch
 - **Independence rule.** No unit is focal; tiers come from public rankings by fixed rules; no lesson is addressed to a brand; no brand has been or will be contacted.
 
 **Samsung in the paper.** Samsung appears only in the Declarations §COI of the v0.44 paper (draft text in PRE_REGISTRATION_v0_44.md §8).
+
+---
+
+## Entry 1 — Lock time (ex ante; written 2026-11-11, before the lock)
+
+Lock time: the pre-registrant waived the 24-hour review on 2026-11-10 at 20:26 CT (control panel, 'LOCK NOW'); locked at 2026-11-11 03:02 UTC (tag `v0.44-prereg-r1`). The pharmacy industry stays in (the pre-registrant's decision; the §3.4 drop is not used; eight industries, 43-file manifest). No hypothesis, threshold, registry, probe, design or budget rule changes; the collection window (Nov 24–28) is unchanged.
