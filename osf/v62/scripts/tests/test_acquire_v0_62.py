@@ -27,14 +27,14 @@ def ct(y, mo, d, h=12):
 
 class Matrix(unittest.TestCase):
     def test_totals_by_option(self):
-        for opt, n in (("A", 1212), ("B", 1206), ("C", 1008)):
+        for opt, n in (("A", 1818), ("B", 1809), ("C", 1512)):
             probes = A.load_probes(option=opt)
             specs = A.build_specs(probes)
             self.assertEqual(len(specs), n, opt)
             self.assertEqual(A.expected_total(probes), n)
             self.assertEqual(len({s["call_id"] for s in specs}), n)
-        self.assertEqual(A.expected_total(A.load_probes(option="A"), drop_phase_a=True), 540)
-        self.assertEqual(A.expected_total(A.load_probes(option="A"), drop_run3=True), 1032)
+        self.assertEqual(A.expected_total(A.load_probes(option="A"), drop_phase_a=True), 810)
+        self.assertEqual(A.expected_total(A.load_probes(option="A"), drop_run3=True), 1548)
 
     def test_option_b_and_c_remove_the_right_probes(self):
         b = A.build_specs(A.load_probes(option="B"))
@@ -43,13 +43,13 @@ class Matrix(unittest.TestCase):
         c = A.build_specs(A.load_probes(option="C"))
         self.assertFalse([s for s in c if s["substrate"] == "v19"])
 
-    def test_order_category_questions_first_fr_before_ja(self):
+    def test_order_category_questions_first_es_ko_zh(self):
         specs = A.build_specs(A.load_probes(option="A"))
         kinds = [A.BLOCKS[s["block"]][0] for s in specs]
-        self.assertEqual(kinds[:540], ["B"] * 540)
-        self.assertEqual(set(kinds[540:]), {"A_yn", "A_open"})
+        self.assertEqual(kinds[:810], ["B"] * 810)
+        self.assertEqual(set(kinds[810:]), {"A_yn", "A_open"})
         fable_b1 = [s for s in specs if s["block"] == 0 and s["model"]["model_id"] == "claude-fable-5-2"]
-        self.assertEqual([s["language"] for s in fable_b1], ["fr"] * 30 + ["ja"] * 30)
+        self.assertEqual([s["language"] for s in fable_b1], ["es"] * 30 + ["ko"] * 30 + ["zh"] * 30)
         self.assertTrue(all(s["call_id"].startswith(s["language"] + "|") for s in specs))
 
     def test_prompts_are_the_probe_texts(self):
@@ -149,7 +149,8 @@ class Guards(unittest.TestCase):
         out = subprocess.run([sys.executable, str(Path(A.__file__))], capture_output=True, text=True, timeout=60)
         self.assertEqual(out.returncode, 0, out.stderr)
         self.assertIn("nothing sent", out.stdout)
-        self.assertIn("TOTAL calls: 1212 (expected 1212) -> OK", out.stdout)
+        self.assertIn("TOTAL calls: 1818 (expected 1818) -> OK", out.stdout)
+        self.assertIn("brand-question extras (params BRAND_EXTRAS): OFF -> calls sent: 810", out.stdout)
 
 
 def fake_rec(spec, usd_tokens=(1000, 1000), status="ok"):
@@ -161,11 +162,11 @@ def fake_rec(spec, usd_tokens=(1000, 1000), status="ok"):
 
 class Budget(unittest.TestCase):
     def test_judge_reserve_and_costs(self):
-        self.assertAlmostEqual(BG.JUDGE_RESERVE_USD, 1.3176, places=4)
+        self.assertAlmostEqual(BG.JUDGE_RESERVE_USD, 2.4624, places=4)
         spec = A.build_specs(A.load_probes())[0]               # Fable, batch
         r = fake_rec(spec, (1_000_000, 1_000_000))
         self.assertAlmostEqual(r["cost_usd"], 4.0 + 20.0)
-        self.assertEqual(r["language"], "fr")
+        self.assertEqual(r["language"], "es")
         gem = [s for s in A.build_specs(A.load_probes()) if s["model"]["model_id"] == "gemini-4-argon"][0]
         r = fake_rec(gem, (1_000_000, 0))
         self.assertAlmostEqual(r["cost_usd"], 2.0)             # November price
@@ -179,13 +180,13 @@ class Budget(unittest.TestCase):
             rec = fake_rec(gpt, (0, 1_580_000))                  # $79.00
             raw.write_text(json.dumps(rec) + "\n", encoding="utf-8")
             L = BG.Ledger(raw, st)
-            self.assertAlmostEqual(L.spent(), 79.0 + BG.JUDGE_RESERVE_USD, places=6)   # 80.32 >= 80
+            self.assertAlmostEqual(L.spent(), 79.0 + BG.JUDGE_RESERVE_USD, places=6)   # 81.46 >= 80
             self.assertAlmostEqual(L.calls_spent(), 79.0, places=6)
             self.assertEqual(L.reserve(0.5)[0], "pause")
             L2 = BG.Ledger(raw, st)
             L2.approve("past_80", "test")
             self.assertEqual(L2.reserve(0.5)[0], "ok")
-            self.assertEqual(L2.reserve(19.5)[0], "wait")      # passes $100 only with the in-flight reservation
+            self.assertEqual(L2.reserve(18.2)[0], "wait")      # passes $100 only with the in-flight reservation
             L3 = BG.Ledger(raw, st)
             self.assertEqual(L3.reserve(30.0)[0], "stop")
 
@@ -213,28 +214,28 @@ class Collection(unittest.TestCase):
         specs = A.build_specs(A.load_probes())
         with tempfile.TemporaryDirectory() as d:
             raw, state = Path(d) / "raw.jsonl", Path(d) / "state.json"
-            # block 1 costs 180 x $0.10 = $18 > $14.98: projection pause after block 1
-            st, sent, ledger = self._run(specs, raw, state, 5.3413, 0.10)
+            # block 1 costs 270 x $0.10 = $27 > $80 / 5.3597: projection pause after block 1
+            st, sent, ledger = self._run(specs, raw, state, 5.3597, 0.10)
             self.assertEqual(st, "pause")
-            self.assertEqual(len(sent), 180)
-            self.assertAlmostEqual(ledger.calls_spent(), 18.0, places=6)
+            self.assertEqual(len(sent), 270)
+            self.assertAlmostEqual(ledger.calls_spent(), 27.0, places=6)
             # approve the projection: resumes after block 1 (nothing re-sent)
             BG.Ledger(raw, state).approve("projection", "test")
-            st, sent2, _ = self._run(specs, raw, state, 5.3413, 0.01)
+            st, sent2, _ = self._run(specs, raw, state, 5.3597, 0.01)
             self.assertEqual(st, "done")
-            self.assertEqual(len(sent2), 1212 - 180)
+            self.assertEqual(len(sent2), 1818 - 270)
             self.assertFalse(set(sent) & set(sent2))
 
     def test_no_pause_at_expected_cost(self):
         specs = A.build_specs(A.load_probes())
         with tempfile.TemporaryDirectory() as d:
-            st, sent, _ = self._run(specs, Path(d) / "raw.jsonl", Path(d) / "s.json", 5.3413, 0.05)
+            st, sent, _ = self._run(specs, Path(d) / "raw.jsonl", Path(d) / "s.json", 5.3597, 0.04)
             self.assertEqual(st, "done")
-            self.assertEqual(len(sent), 1212)
+            self.assertEqual(len(sent), 1818)
 
     def test_drop_phase_a_fallback(self):
         specs = A.build_specs(A.load_probes(), drop_phase_a=True)
-        self.assertEqual(len(specs), 540)
+        self.assertEqual(len(specs), 810)
         self.assertEqual({s["phase"] for s in specs}, {"B"})
 
     def test_batch_runner_with_fake_client(self):
@@ -273,17 +274,112 @@ class CostEstimate(unittest.TestCase):
     def test_reconciliation_and_options(self):
         import cost_estimate_v0_62 as CE
         pc = CE.per_call()
-        for mo, tot in (("nov", (54.42, 130.06)), ("dec", (60.06, 145.92))):
+        for mo, tot in (("nov", (89.36, 232.37)), ("dec", (98.59, 260.68))):
             d = CE.design(pc, mo)
             ph = sum(r["usd_central"] for r in d["rows"]), sum(r["usd_high"] for r in d["rows"])
             self.assertAlmostEqual(ph[0] + CE.judge_reserve(), d["central"], places=9)
             self.assertAlmostEqual(ph[1] + CE.judge_reserve(), d["high"], places=9)
             self.assertEqual((round(d["central"], 2), round(d["high"], 2)), tot)
         self.assertAlmostEqual(CE.judge_reserve(), BG.JUDGE_RESERVE_USD, places=12)
-        self.assertEqual([CE.design(pc, "nov", option=o)["calls"] for o in "ABC"], [1212, 1206, 1008])
-        j = json.loads((Path(CE.PRE) / "cost_estimate_v0_62_r1.json").read_text(encoding="utf-8"))
-        self.assertAlmostEqual(j["projection"]["A"]["nov"], 5.3413, places=4)
-        self.assertAlmostEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), j["projection"]["C"]["dec"])
+        self.assertEqual([CE.design(pc, "nov", option=o)["calls"] for o in "ABC"], [1818, 1809, 1512])
+        b = CE.design(pc, "dec", a_runs=0)
+        self.assertEqual((b["calls"], round(b["central"], 2), round(b["high"], 2)), (810, 55.50, 142.06))
+        j = json.loads((Path(CE.PRE) / "cost_estimate_v0_62_r2.json").read_text(encoding="utf-8"))
+        self.assertAlmostEqual(j["projection"]["A"]["nov"], 5.3597, places=4)
+        self.assertEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), 3.0)   # extras off
+        with mock.patch.object(P, "BRAND_EXTRAS", True):
+            self.assertAlmostEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), j["projection"]["C"]["dec"])
+
+
+class ConservativeCounting(unittest.TestCase):
+    """r2: the guard counts conservatively (task of 2026-11-10 evening)."""
+
+    def _spec(self, model_id):
+        return [s for s in A.build_specs(A.load_probes()) if s["model"]["model_id"] == model_id][0]
+
+    def test_failed_attempts_costed_at_worst_case(self):
+        spec = self._spec("gpt-6-astra")
+        ok = {"text": "Sennheiser", "served_model": "gpt-6-astra", "finish_reason": "completed",
+              "tokens_in": 100, "tokens_out": 100, "tokens_thought": 0}
+        with mock.patch.object(A, "_invoke", return_value=(ok, 3, None)), mock.patch.object(A.time, "sleep"):
+            rec = A.send_call(spec)
+        wc = BG.worst_case("gpt-6-astra", "S0", "standard", rec["started_utc"])
+        self.assertAlmostEqual(rec["cost_usd"], 2 * wc + (100 * 10 + 100 * 50) / 1e6)
+        with mock.patch.object(A, "_invoke", return_value=(None, 3, "transient: ReadTimeout")), \
+                mock.patch.object(A.time, "sleep"):
+            rec = A.send_call(spec)
+        self.assertAlmostEqual(rec["cost_usd"], 3 * wc)                     # timeouts at worst case
+        with mock.patch.object(A, "_invoke", return_value=(None, 1, "BadRequestError: 400")), \
+                mock.patch.object(A.time, "sleep"):
+            rec = A.send_call(spec)
+        self.assertAlmostEqual(rec["cost_usd"], 0.0)                         # a 4xx is not billed
+
+    def test_empty_resend_chain_counts_both(self):
+        spec = self._spec("gemini-4-argon")
+        empty = {"text": "", "served_model": "gemini-4-argon", "finish_reason": "STOP", "tokens_in": 10,
+                 "tokens_out": 0, "tokens_thought": 0}
+        with mock.patch.object(A, "_invoke", side_effect=[(empty, 1, None), (None, 2, "transient: 503")]), \
+                mock.patch.object(A.time, "sleep"):
+            rec = A.send_call(spec)
+        wc = BG.worst_case("gemini-4-argon", "S0", "standard", rec["started_utc"])
+        self.assertAlmostEqual(rec["cost_usd"], 2 * wc + 10 * BG.prices("gemini-4-argon", "standard", rec["started_utc"])[0] / 1e6)
+
+    def test_batch_errored_or_expired_costed_at_worst_case(self):
+        specs = [s for s in A.build_specs(A.load_probes()) if s["model"]["mode"] == "batch"][:2]
+
+        class Batches:
+            def create(self, requests):
+                self.ids = [r["custom_id"] for r in requests]
+                return types.SimpleNamespace(id="b1")
+
+            def retrieve(self, bid):
+                return types.SimpleNamespace(id=bid, processing_status="ended", ended_at=None)
+
+            def results(self, bid):
+                return [types.SimpleNamespace(custom_id=c, result=types.SimpleNamespace(type="expired"))
+                        for c in self.ids]
+
+        client = types.SimpleNamespace(messages=types.SimpleNamespace(batches=Batches()))
+        with tempfile.TemporaryDirectory() as d, mock.patch.object(A, "MAX_ATTEMPTS", 1):
+            ledger = BG.Ledger(Path(d) / "raw.jsonl", Path(d) / "s.json")
+            recs = []
+            A.run_anthropic_batch(specs, ledger, recs.append, client=client, poll=0)
+            self.assertEqual(len(recs), 2)
+            self.assertAlmostEqual(recs[0]["cost_usd"], BG.worst_case("claude-fable-5-2", "S0", "batch"))
+
+    def test_openai_page_opens_are_billed_searches(self):
+        out = {"tokens_in": 0, "tokens_out": 0, "tokens_thought": 0,
+               "search": {"n_searches": 2, "sources": [{"url": "u1", "action": "open_page"},
+                                                       {"url": "u2", "action": "find_in_page"}, {"url": "u3"}]}}
+        part = A._part(out, "standard", "S1")
+        self.assertEqual(part["n_searches"], 4)
+        self.assertAlmostEqual(BG.part_cost("gpt-6-astra", part, "2026-11-29"), 4 * 0.010)
+        self.assertEqual(A._part(out, "standard", "S0")["n_searches"], 0)
+
+    def test_gemini_tool_tokens_worst_when_missing(self):
+        part = {"mode": "standard", "input_tokens": 0, "output_tokens": 0, "n_searches": 1, "tool_tokens": None}
+        pin = BG.prices("gemini-4-argon", "standard", "2026-12-01")[0]
+        self.assertAlmostEqual(BG.part_cost("gemini-4-argon", part, "2026-12-01"),
+                               BG.WORST["S1_input_tokens"] * pin / 1e6 + 0.014)
+        part["tool_tokens"] = 1000
+        self.assertAlmostEqual(BG.part_cost("gemini-4-argon", part, "2026-12-01"), 1000 * pin / 1e6 + 0.014)
+
+    def test_sync_call_reserves_two_worst_cases(self):
+        spec = self._spec("gpt-6-astra")
+        seen = []
+
+        class L:
+            def reserve(self, amount):
+                seen.append(amount)
+                return "stop", None
+        A.run_sync([spec], L(), lambda r: None)
+        self.assertAlmostEqual(seen[0], 2 * BG.worst_case("gpt-6-astra", "S0", "standard"))
+        self.assertAlmostEqual(BG.sync_reservation("gemini-4-argon", "S0", "2026-12-01"), 2 * 0.3357, places=4)
+
+    def test_extras_off_by_default(self):
+        self.assertFalse(P.BRAND_EXTRAS)
+        self.assertFalse(A.extras_on())
+        self.assertEqual(P.LANGS, ("es", "ko", "zh"))
 
 
 if __name__ == "__main__":

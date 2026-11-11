@@ -1,10 +1,11 @@
-"""AIAS v0.62 (non-English wave, r1 draft): calls, cost estimate and design trade-off. No model is called.
+"""AIAS v0.62 (non-English wave, r2 draft): calls, cost estimate and design trade-off. No model is called.
 
-r1 changes (from r0): (1) the by-phase lines now list the judge reserve as its own line and print the sum check, so
-that the phase lines add up to the adopted total (r0 printed the phase lines without the $1.32 reserve: $58.74 +
-$1.32 = $60.06 December); (2) designs and projection ratios for the three headphones options (params_v0_62);
-(3) the spend as the budget guard counts it (calls + judge reserve) at the end of blocks 1-3; (4) outputs
-cost_estimate_v0_62_r1.json/.txt (the r0 files are kept unchanged).
+r2 (2026-11-10/11): Spanish, Korean and Chinese replace French and Japanese (pre-registrant's decision, 2026-11-10
+20:44 CT). Changes from r1: LANGS = es, ko, zh; language factors for the three languages (below); judge reserve for
+216 open answers (24 x 3 models x 3 languages) at the highest factor (2.50); December prices are the headline for
+the whole run (the window 2026-11-29..12-02 straddles Gemini 4 Argon's price change on 2026-12-01, so the
+December price is used throughout, conservative); designs that add the brand-question extras (Phase A yes/no, open)
+one kind at a time on top of the category questions; outputs cost_estimate_v0_62_r2.json/.txt (r0 and r1 kept).
 
 Per-call basis: the t4 wave's measured-basis figures (v0.42 r2, design "r2 (adopted)"), read from
 osf/v62/inputs/cost_estimate_v0_42_r2.json (byte copy of v0.42 commit 527899e, SHA-256 checked below).
@@ -14,19 +15,20 @@ question (v0.23). Prices are the programme list of 2026-11-10 (CLAUDE.md, Collec
 5.2 via the Message Batches API 4/20 per 1M tokens in/out; GPT-6 Astra standard 10/50; Gemini 4 Argon
 standard 2/10 through 2026-11-30 (rows 't4') and 4/20 from 2026-12-01 (rows 't5' of the same file).
 
-LANGUAGE FACTOR (planning assumption, NOT measured): a French or Japanese prompt and answer are assumed to
-use more tokens than the English ones. No study-type French or Japanese answer from these models is on
-record and no tokenizer is installed on the collection machine, so the factors below are declared
-assumptions, replaced at the final pre-registration by t4's recorded usage and checked during collection
-by the projection pause (actual usage after block 1). Central: FR 1.25, JA 1.50; high: FR 1.50, JA 2.00.
-The script also reports the break-even factor (uniform over both languages) at which the design reaches
-the $80 pause and the $100 cap.
+LANGUAGE FACTOR (planning assumption, NOT measured), applied to the whole per-call cost (input and output):
+  central ES 1.25, KO 1.75, ZH 1.50; high ES 1.50, KO 2.50, ZH 2.25.
+Korean and Chinese are set conservatively: Hangul and Han text usually costs more tokens per unit of meaning than
+English in byte-pair tokenizers, by an amount that differs between vendors and is not published for these models;
+no Korean or Chinese answer from them is on record and no tokenizer is installed on the collection machine. The
+factors are replaced at the final pre-registration by t4's recorded English usage times these factors, and checked
+during collection by the projection pause (actual usage after block 1). The script also reports the break-even
+factor (uniform over the three languages) at which the design reaches the $80 pause and the $100 cap.
 
-Judge reserve (v0.23 open recognition answers, coding not acquisition): 24 answers x 3 models x 2 languages
-= 144 calls on Claude Sonnet 4.5 (3/15 standard), at v0.42 r2's per-answer bound (1,500 input and 10 output
-tokens) times the high JA factor (2.00) for input.
+Judge reserve (v0.23 open recognition answers, coding not acquisition): 24 answers x 3 models x 3 languages = 216
+calls on Claude Sonnet 4.5 (3/15 standard), at v0.42 r2's per-answer bound (1,500 input and 10 output tokens) with
+input times the highest high factor (2.50).
 
-Run: python3 osf/v62/scripts/cost_estimate_v0_62.py -> osf/v62/prereg/cost_estimate_v0_62_r1.json and .txt
+Run: python3 osf/v62/scripts/cost_estimate_v0_62.py -> osf/v62/prereg/cost_estimate_v0_62_r2.json and .txt
 """
 import hashlib
 import json
@@ -43,12 +45,13 @@ SRC_SHA = '79831e64e7d5bf43c68d19797f86be8dd8d183925dc00577f8b3b7c23d2aa8d1'
 PRE = os.path.join(V62, 'prereg')
 SRC_DESIGN = 'r2 (adopted): N3, Fable via Batch API; B S0x3, B S1x3, A S0x1'
 MODELS = ['claude-fable-5-2', 'gpt-6-astra', 'gemini-4-argon']
-LANGS = ['fr', 'ja']
+LANGS = ['es', 'ko', 'zh']
 CAP, PAUSE = 100.0, 80.0
 N_B, N_AYN, N_AOPEN = 30, 88, 24                      # per language, from the t4 probe file (142 = 30 + 112)
-FACTOR = {'central': {'fr': 1.25, 'ja': 1.50}, 'high': {'fr': 1.50, 'ja': 2.00}, 'english': {'fr': 1.0, 'ja': 1.0}}
+FACTOR = {'central': {'es': 1.25, 'ko': 1.75, 'zh': 1.50}, 'high': {'es': 1.50, 'ko': 2.50, 'zh': 2.25},
+          'english': {'es': 1.0, 'ko': 1.0, 'zh': 1.0}}
 GEM_ROWS = {'nov': 't4', 'dec': 't5'}
-JUDGE = {'calls': 144, 'in_tokens': 1500 * 2.00, 'out_tokens': 10, 'usd_in_per_m': 3.0, 'usd_out_per_m': 15.0}
+JUDGE = {'calls': 216, 'in_tokens': 1500 * 2.50, 'out_tokens': 10, 'usd_in_per_m': 3.0, 'usd_out_per_m': 15.0}
 
 
 def sha(path):
@@ -75,7 +78,8 @@ def n_probes(option='A'):
     return (N_B - (6 if option == 'C' else 0), N_AYN - {'A': 0, 'B': 1, 'C': 16}[option], N_AOPEN)
 
 
-def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planning', judge=True, option='A'):
+def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planning', judge=True, option='A',
+           a_kinds=('A_yn', 'A_open')):
     """factor='planning' -> central basis x central factor, high basis x high factor; 'english' -> factor 1."""
     rows, tc, th, calls = [], 0.0, 0.0, 0
     for lg in langs:
@@ -86,7 +90,7 @@ def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planni
             nb, nyn, nop = n_probes(option)
             for phase, cond, n in (('B', 'S0', nb * b_runs), ('A_yn', 'S0', nyn * a_runs),
                                    ('A_open', 'S0', nop * a_runs), ('B', 'S1', nb * s1_runs)):
-                if n == 0:
+                if n == 0 or (phase.startswith('A_') and phase not in a_kinds):
                     continue
                 c, h = pc[(wave, m, phase, cond)]
                 rows.append({'language': lg, 'model': m, 'phase': phase, 'condition': cond, 'calls': n,
@@ -94,7 +98,7 @@ def design(pc, month, langs=LANGS, b_runs=3, a_runs=1, s1_runs=0, factor='planni
                 tc += c * fc * n
                 th += h * fh * n
                 calls += n
-    jr = judge_reserve() * (len(langs) / 2.0) if (judge and a_runs) else 0.0
+    jr = judge_reserve() * (len(langs) / 3.0) if (judge and a_runs and 'A_open' in a_kinds) else 0.0
     return {'calls': calls, 'central': tc + jr, 'high': th + jr, 'judge_reserve': jr, 'month': month, 'rows': rows}
 
 
@@ -109,20 +113,21 @@ def main():
     assert s == SRC_SHA, 'per-call source changed: %s' % s
     pc = per_call()
     spec = [
-        ('adopted_nov', 'ADOPTED: FR+JA, Phase B S0 x3, Phase A S0 x1, November prices', dict(month='nov')),
-        ('adopted_dec', 'ADOPTED, December prices (Gemini 4 Argon 4/20)', dict(month='dec')),
-        ('english_equiv_nov', 'adopted at language factor 1.0 (English token counts), November', dict(month='nov', factor='english')),
-        ('fr_only_nov', 'French only, November', dict(month='nov', langs=['fr'])),
-        ('ja_only_nov', 'Japanese only, November', dict(month='nov', langs=['ja'])),
-        ('block1_nov', 'block 1 only: Phase B S0 run 1, FR+JA, November', dict(month='nov', b_runs=1, a_runs=0)),
-        ('block1_dec', 'block 1 only: Phase B S0 run 1, FR+JA, December', dict(month='dec', b_runs=1, a_runs=0)),
-        ('phase_b_only_nov', 'blocks 1-3 only: Phase B S0 x3, no Phase A, November (fallback F1)', dict(month='nov', a_runs=0)),
-        ('phase_b_only_dec', 'blocks 1-3 only: Phase B S0 x3, no Phase A, December', dict(month='dec', a_runs=0)),
-        ('no_run3_nov', 'Phase B S0 x2 + Phase A x1, November (fallback F2)', dict(month='nov', b_runs=2)),
-        ('b_x1_nov', 'Phase B S0 x1 + Phase A x1, November (not adopted: no phi, no run noise)', dict(month='nov', b_runs=1)),
-        ('a_x3_nov', 'Phase B S0 x3 + Phase A x3, November (not adopted)', dict(month='nov', a_runs=3)),
-        ('plus_s1_x1_nov', 'adopted + Phase B S1 x1, November (not adopted)', dict(month='nov', s1_runs=1)),
-        ('plus_s1_x3_nov', 'adopted + Phase B S1 x3 (the full t4 design), November (not adopted)', dict(month='nov', s1_runs=3)),
+        ('adopted_dec', 'FULL: ES+KO+ZH, Phase B S0 x3 + Phase A S0 x1, December prices (headline)', dict(month='dec')),
+        ('adopted_nov', 'FULL, November prices (reference only)', dict(month='nov')),
+        ('english_equiv_dec', 'FULL at language factor 1.0 (English token counts), December', dict(month='dec', factor='english')),
+        ('phase_b_only_dec', 'CATEGORY QUESTIONS ONLY: Phase B S0 x3, 3 languages, December (fallback F1)', dict(month='dec', a_runs=0)),
+        ('b_plus_ayn_dec', 'Phase B x3 + brand yes/no questions (v0.19-v0.22), December', dict(month='dec', a_kinds=('A_yn',))),
+        ('b_plus_aopen_dec', 'Phase B x3 + brand open questions (v0.23), December', dict(month='dec', a_kinds=('A_open',))),
+        ('es_only_dec', 'Spanish only (full), December', dict(month='dec', langs=['es'])),
+        ('ko_only_dec', 'Korean only (full), December', dict(month='dec', langs=['ko'])),
+        ('zh_only_dec', 'Chinese only (full), December', dict(month='dec', langs=['zh'])),
+        ('block1_nov', 'block 1 only: Phase B S0 run 1, ES+KO+ZH, November', dict(month='nov', b_runs=1, a_runs=0)),
+        ('block1_dec', 'block 1 only: Phase B S0 run 1, ES+KO+ZH, December', dict(month='dec', b_runs=1, a_runs=0)),
+        ('phase_b_only_nov', 'category questions only, November (reference)', dict(month='nov', a_runs=0)),
+        ('no_run3_dec', 'Phase B S0 x2 + Phase A x1, December (fallback F2)', dict(month='dec', b_runs=2)),
+        ('b_x1_dec', 'Phase B S0 x1 + Phase A x1, December (not adopted: no phi, no run noise)', dict(month='dec', b_runs=1)),
+        ('plus_s1_x1_dec', 'FULL + Phase B S1 x1, December (not adopted)', dict(month='dec', s1_runs=1)),
     ]
     for o in ('A', 'B', 'C'):
         for mo, mname in (('nov', 'November'), ('dec', 'December')):
@@ -138,16 +143,17 @@ def main():
     proj_opt = {o: {m: designs['option_%s_%s' % (o, m)]['central'] / designs['option_%s_block1_%s' % (o, m)]['central']
                     for m in ('nov', 'dec')} for o in ('A', 'B', 'C')}
     be = {m: {'pause_80': break_even(pc, m, PAUSE), 'cap_100': break_even(pc, m, CAP)} for m in ('nov', 'dec')}
-    out = {'accessed': '2026-11-10', 'per_call_source': 'osf/v62/inputs/cost_estimate_v0_42_r2.json [' + SRC_DESIGN + '] sha256 ' + s,
+    out = {'accessed': '2026-11-10', 'revision': 'r2', 'headline_month': 'dec', 'per_call_source': 'osf/v62/inputs/cost_estimate_v0_42_r2.json [' + SRC_DESIGN + '] sha256 ' + s,
            'language_factor_assumption': FACTOR, 'judge': dict(JUDGE, reserve_usd=judge_reserve()),
            'cap_usd': CAP, 'pause_usd': PAUSE, 'designs': designs,
            'projection_ratio_adopted_to_block1_central': proj, 'projection': proj_opt,
            'headphones_option_in_params': P.HEADPHONES_OPTION, 'break_even_uniform_factor_on_high_basis': be}
-    L = ['AIAS v0.62 cost estimate (r1 draft; no model called). Per language: 30 category questions x 3 runs + 112 brand '
+    L = ['AIAS v0.62 cost estimate (r2 draft; no model called; ES, KO, ZH). Per language: 30 category questions x 3 runs + 112 brand '
          'questions x 1 run, 3 models (N3), search off (S0).',
-         'Language factor (assumption, not measured): central FR %.2f JA %.2f; high FR %.2f JA %.2f.'
-         % (FACTOR['central']['fr'], FACTOR['central']['ja'], FACTOR['high']['fr'], FACTOR['high']['ja']),
-         'Judge reserve (144 v0.23 recognition codings, Claude Sonnet 4.5): $%.2f, included where Phase A is collected.' % judge_reserve(), '',
+         'Language factor (assumption, not measured): central ES %.2f KO %.2f ZH %.2f; high ES %.2f KO %.2f ZH %.2f.'
+         % tuple(FACTOR[k][lg] for k in ('central', 'high') for lg in LANGS),
+         'Headline: December prices for the whole run (window straddles 2026-12-01; conservative).',
+         'Judge reserve (216 v0.23 recognition codings, Claude Sonnet 4.5): $%.2f, included where Phase A is collected.' % judge_reserve(), '',
          '%-78s %6s %10s %10s' % ('design', 'calls', 'expected', 'high')]
     for k, d in designs.items():
         L.append('%-78s %6d %10.2f %10.2f' % (d['label'], d['calls'], d['central'], d['high']))
@@ -156,7 +162,7 @@ def main():
           % (PAUSE / proj['nov'], PAUSE / proj['dec']),
           'Break-even uniform language factor on the HIGH per-call basis: November %.2f ($80) / %.2f ($100); '
           'December %.2f ($80) / %.2f ($100)' % (be['nov']['pause_80'], be['nov']['cap_100'], be['dec']['pause_80'], be['dec']['cap_100'])]
-    for key in ('adopted_nov', 'adopted_dec'):
+    for key in ('adopted_dec', 'adopted_nov'):
         d = designs[key]
         L += ['', '%s, by language x model (US$ expected / high):' % d['label']]
         for lg in LANGS:
@@ -170,7 +176,7 @@ def main():
             c, h = sum(r['usd_central'] for r in rs), sum(r['usd_high'] for r in rs)
             sc, sh = sc + c, sh + h
             L.append('  phase %-7s calls %4d  %6.2f / %6.2f' % (ph, sum(r['calls'] for r in rs), c, h))
-        L.append('  judge reserve      (144)  %6.2f / %6.2f' % (d['judge_reserve'], d['judge_reserve']))
+        L.append('  judge reserve      (216)  %6.2f / %6.2f' % (d['judge_reserve'], d['judge_reserve']))
         L.append('  sum of the lines above    %6.2f / %6.2f  (= total %6.2f / %6.2f)' % (
             sc + d['judge_reserve'], sh + d['judge_reserve'], d['central'], d['high']))
         b = [r for r in d['rows'] if r['phase'] == 'B']
@@ -183,8 +189,8 @@ def main():
         L.append('  option %s: %4d calls; November %6.2f / %6.2f; December %6.2f / %6.2f; projection ratio Nov %.4f Dec %.4f'
                  % (o, n['calls'], n['central'], n['high'], d['central'], d['high'], proj_opt[o]['nov'], proj_opt[o]['dec']))
     os.makedirs(PRE, exist_ok=True)
-    json.dump(out, open(os.path.join(PRE, 'cost_estimate_v0_62_r1.json'), 'w', encoding='utf-8'), indent=1)
-    open(os.path.join(PRE, 'cost_estimate_v0_62_r1.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
+    json.dump(out, open(os.path.join(PRE, 'cost_estimate_v0_62_r2.json'), 'w', encoding='utf-8'), indent=1)
+    open(os.path.join(PRE, 'cost_estimate_v0_62_r2.txt'), 'w', encoding='utf-8').write('\n'.join(L) + '\n')
     print('\n'.join(L))
 
 

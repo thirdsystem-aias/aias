@@ -1,4 +1,4 @@
-"""AIAS v0.62 -- the pre-registrant's open choices, one parameter each (r1 draft).
+"""AIAS v0.62 -- the pre-registrant's open choices, one parameter each (r2 draft).
 
 Changing a choice is a one-line edit of this file, logged in the pre-registration's change log (and, after the
 lock, as a DEVIATIONS entry). acquire_v0_62.py, cost_estimate_v0_62.py, code_v0_62.py and score_v0_62.py read
@@ -16,6 +16,12 @@ from datetime import date
 
 HEADPHONES_OPTION = "A"                      # "A" | "B" | "C"
 WINDOW = ("2026-11-29", "2026-12-02")        # inclusive, US Central
+# r2 (pre-registrant's decision 2026-11-10 20:44 CT): category questions first in all three languages; the
+# brand-question extras (Phase A, blocks 4-5) only if they fit. At r2 the HIGH estimate of the category questions
+# alone ($142.06, December prices) is above the $100 cap, so the extras are OFF; the final pre-registration
+# re-evaluates this once t4's recorded English usage replaces the per-call basis (cost_estimate_v0_62_r2.txt).
+BRAND_EXTRAS = False                         # True: collect blocks 4-5 (Phase A) after blocks 1-3
+LANGS = ("es", "ko", "zh")                   # r2: Spanish, Korean, Chinese (Simplified, Mainland usage)
 
 BLACKOUT = ("2026-11-17", "2026-11-21")      # inclusive, US Central: never collect (v0.40's booking)
 DENON = ("v19", "Denon")                     # (substrate, brand_id) of the unit flagged in DEVIATIONS Entry 0

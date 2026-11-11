@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-score_v0_62.py -- AIAS(TM) v0.62 scorer (French and Japanese against English t4), pre-registration r1 DRAFT, sections
-2 and 7. Exactly the pre-registered tests: H_Lang_Presence (PRIMARY, FR and JA), H_Lang_Phi (FR, JA), H_Lang_Rank
-(FR, JA; conditional on v1.14 PASS), with the joint reading of section 2.6, the alongside figures of section 2.2
+score_v0_62.py -- AIAS(TM) v0.62 scorer (Spanish, Korean and Chinese against English t4), pre-registration r2 DRAFT,
+sections 2 and 7. Exactly the pre-registered tests: H_Lang_Presence (PRIMARY, ES, KO, ZH), H_Lang_Phi (ES, KO, ZH),
+H_Lang_Rank (ES, KO, ZH; conditional on v1.14 PASS), with the joint reading of section 2.6, the alongside figures of section 2.2
 (per-category rho_c, level shift Delta_L, uncentred value) and the sensitivities S-Denon and S-Headphones (7.5).
 THE PRE-REGISTRATION PROSE IS AUTHORITATIVE. The real scoring runs ONCE (--run refuses if the verdicts file exists
 or tag v0.62-prereg-r1 is not on origin).
@@ -50,8 +50,10 @@ PREREG_TAG = "v0.62-prereg-r1"
 VERDICTS = V62 / "v62_verdicts.json"
 F, MODELS, RUNS = 6, ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"], (1, 2, 3)
 SUBS = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
-SEEDS = {("H_Lang_Presence", "fr"): 620101, ("H_Lang_Presence", "ja"): 620102, ("H_Lang_Phi", "fr"): 620111,
-         ("H_Lang_Phi", "ja"): 620112, ("H_Lang_Rank", "fr"): 620121, ("H_Lang_Rank", "ja"): 620122,
+LANGS = ("es", "ko", "zh")
+SEEDS = {("H_Lang_Presence", "es"): 620101, ("H_Lang_Presence", "ko"): 620102, ("H_Lang_Presence", "zh"): 620103,
+         ("H_Lang_Phi", "es"): 620111, ("H_Lang_Phi", "ko"): 620112, ("H_Lang_Phi", "zh"): 620113,
+         ("H_Lang_Rank", "es"): 620121, ("H_Lang_Rank", "ko"): 620122, ("H_Lang_Rank", "zh"): 620123,
          "bootstrap": 620131, "descriptives": 620141}
 N_PERM = N_BOOT = 10_000
 NAN = float("nan")
@@ -242,12 +244,13 @@ def verdict_rank(n, rho, p, degenerate=False):
     return "FALSIFIED" if (rho < RANK[1] or p >= ALPHA) else "MARGINAL"
 
 
-def joint_reading(v_fr, v_ja):
-    """Section 2.6, on the two H_Lang_Presence verdicts."""
-    if v_fr == "CONFIRMED" and v_ja == "CONFIRMED":
+def joint_reading(*verdicts):
+    """Section 2.6, on the H_Lang_Presence verdicts in LANGS order (ES, KO, ZH)."""
+    named = list(zip([l.upper() for l in LANGS], verdicts))
+    if all(v == "CONFIRMED" for v in verdicts):
         return "Language-robust"
-    if "FALSIFIED" in (v_fr, v_ja):
-        return "Language-dependent (" + ", ".join(l for l, v in (("FR", v_fr), ("JA", v_ja)) if v == "FALSIFIED") + ")"
+    if "FALSIFIED" in verdicts:
+        return "Language-dependent (" + ", ".join(l for l, v in named if v == "FALSIFIED") + ")"
     return "Partly robust"
 
 
@@ -263,13 +266,13 @@ def unit_set(units, option=None, sensitivity=None):
 
 def score(units, en, lang_B, n_b_per_run=30, rank=None, rank_status="NOT RESOLVED", option=None,
           n_perm=N_PERM, n_boot=N_BOOT):
-    """units: [(substrate, brand)] (112); en: {unit: {'pi', 'phi'}}; lang_B: {'fr': coded B rows, 'ja': ...};
-    rank: {'en': {unit: R*}, 'fr': {...}, 'ja': {...}} or None. -> verdict dict."""
+    """units: [(substrate, brand)] (112); en: {unit: {'pi', 'phi'}}; lang_B: {'es': coded B rows, 'ko': ..., 'zh': ...};
+    rank: {'en': {unit: R*}, 'es': {...}, 'ko': {...}, 'zh': {...}} or None. -> verdict dict."""
     option = option or P.HEADPHONES_OPTION
     keys = unit_set(units, option)
     out = {"phase": "v0.62", "headphones_option": option, "n_units": len(keys), "tests": {}, "sensitivities": {}}
     pres = {}
-    for lg in ("fr", "ja"):
+    for lg in LANGS:
         V = unit_values(units, lang_B[lg])
         drop = dropped_models(lang_B[lg], n_b_per_run)
         und = f"models below 90% of Phase B calls in {lg}: {drop}" if drop else None
@@ -305,7 +308,7 @@ def score(units, en, lang_B, n_b_per_run=30, rank=None, rank_status="NOT RESOLVE
             s = rank_test(xpi, ypi, ks, SEEDS[("H_Lang_Presence", lg)], n_perm, n_boot)
             s["verdict"] = "UNDETERMINED" if und else verdict_presence(s["rho_c"], s["p_perm"])
             out["sensitivities"][f"{sens}_{lg}"] = s
-    out["joint_reading"] = joint_reading(pres["fr"], pres["ja"])
+    out["joint_reading"] = joint_reading(*(pres[lg] for lg in LANGS))
     return out
 
 
@@ -361,7 +364,7 @@ def main(argv=None):
     if not tag_on_origin():
         sys.exit(f"REFUSED: tag {PREREG_TAG} is not on origin")
     en = read_english(a.english)
-    lang_B = {lg: read_coded_b(Path(a.coded) / lg) for lg in ("fr", "ja")}
+    lang_B = {lg: read_coded_b(Path(a.coded) / lg) for lg in LANGS}
     v = score(sorted(en), en, lang_B, rank_status=a.rank_status)
     Path(a.out).write_text(json.dumps(_clean(v), indent=1, ensure_ascii=False), encoding="utf-8")
     print(json.dumps({k: t.get("verdict") for k, t in v["tests"].items()}, indent=1), v["joint_reading"])

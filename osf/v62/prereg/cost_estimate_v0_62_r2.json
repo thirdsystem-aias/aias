@@ -1,0 +1,4708 @@
+{
+ "accessed": "2026-11-10",
+ "revision": "r2",
+ "headline_month": "dec",
+ "per_call_source": "osf/v62/inputs/cost_estimate_v0_42_r2.json [r2 (adopted): N3, Fable via Batch API; B S0x3, B S1x3, A S0x1] sha256 79831e64e7d5bf43c68d19797f86be8dd8d183925dc00577f8b3b7c23d2aa8d1",
+ "language_factor_assumption": {
+  "central": {
+   "es": 1.25,
+   "ko": 1.75,
+   "zh": 1.5
+  },
+  "high": {
+   "es": 1.5,
+   "ko": 2.5,
+   "zh": 2.25
+  },
+  "english": {
+   "es": 1.0,
+   "ko": 1.0,
+   "zh": 1.0
+  }
+ },
+ "judge": {
+  "calls": 216,
+  "in_tokens": 3750.0,
+  "out_tokens": 10,
+  "usd_in_per_m": 3.0,
+  "usd_out_per_m": 15.0,
+  "reserve_usd": 2.4624
+ },
+ "cap_usd": 100.0,
+ "pause_usd": 80.0,
+ "designs": {
+  "adopted_dec": {
+   "calls": 1818,
+   "central": 98.58786988500002,
+   "high": 260.6795845,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "FULL: ES+KO+ZH, Phase B S0 x3 + Phase A S0 x1, December prices (headline)"
+  },
+  "adopted_nov": {
+   "calls": 1818,
+   "central": 89.35961292,
+   "high": 232.366102875,
+   "judge_reserve": 2.4624,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.5238895625000002,
+     "usd_high": 3.5390371500000013
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.6331445999999998,
+     "usd_high": 2.3124552000000005
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.40637055000000005,
+     "usd_high": 0.9437432400000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.1334453875,
+     "usd_high": 5.898395250000002
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.8864024399999998,
+     "usd_high": 3.854092
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.56891877,
+     "usd_high": 1.5729054000000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.8286674750000003,
+     "usd_high": 5.3085557250000015
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.7597735199999999,
+     "usd_high": 3.4686828000000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.48764466000000006,
+     "usd_high": 1.4156148600000005
+    }
+   ],
+   "label": "FULL, November prices (reference only)"
+  },
+  "english_equiv_dec": {
+   "calls": 1818,
+   "central": 66.54604658999999,
+   "high": 126.40664855999998,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 6.7541850000000005,
+     "usd_high": 13.412322
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.0255702399999995,
+     "usd_high": 6.944819200000001
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.801116,
+     "usd_high": 3.5766191999999997
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.1416637499999998,
+     "usd_high": 4.5980550000000004
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.6994560000000003,
+     "usd_high": 2.4964720000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.837777,
+     "usd_high": 1.226148
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.4382233,
+     "usd_high": 4.718716200000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.0130313599999998,
+     "usd_high": 3.0832736000000005
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.6501928800000001,
+     "usd_high": 1.2583243200000005
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 6.7541850000000005,
+     "usd_high": 13.412322
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.0255702399999995,
+     "usd_high": 6.944819200000001
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.801116,
+     "usd_high": 3.5766191999999997
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.1416637499999998,
+     "usd_high": 4.5980550000000004
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.6994560000000003,
+     "usd_high": 2.4964720000000002
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.837777,
+     "usd_high": 1.226148
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.4382233,
+     "usd_high": 4.718716200000002
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.0130313599999998,
+     "usd_high": 3.0832736000000005
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.6501928800000001,
+     "usd_high": 1.2583243200000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 6.7541850000000005,
+     "usd_high": 13.412322
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.0255702399999995,
+     "usd_high": 6.944819200000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.801116,
+     "usd_high": 3.5766191999999997
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.1416637499999998,
+     "usd_high": 4.5980550000000004
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.6994560000000003,
+     "usd_high": 2.4964720000000002
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.837777,
+     "usd_high": 1.226148
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.4382233,
+     "usd_high": 4.718716200000002
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.0130313599999998,
+     "usd_high": 3.0832736000000005
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.6501928800000001,
+     "usd_high": 1.2583243200000005
+    }
+   ],
+   "label": "FULL at language factor 1.0 (English token counts), December"
+  },
+  "phase_b_only_dec": {
+   "calls": 810,
+   "central": 55.50332422500001,
+   "high": 142.0568325,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    }
+   ],
+   "label": "CATEGORY QUESTIONS ONLY: Phase B S0 x3, 3 languages, December (fallback F1)"
+  },
+  "b_plus_ayn_dec": {
+   "calls": 1602,
+   "central": 81.32458342500001,
+   "high": 220.3353625,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    }
+   ],
+   "label": "Phase B x3 + brand yes/no questions (v0.19-v0.22), December"
+  },
+  "b_plus_aopen_dec": {
+   "calls": 1026,
+   "central": 72.766610685,
+   "high": 182.40105450000004,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "Phase B x3 + brand open questions (v0.23), December"
+  },
+  "es_only_dec": {
+   "calls": 606,
+   "central": 27.5223194125,
+   "high": 62.79292428000001,
+   "judge_reserve": 0.8208,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    }
+   ],
+   "label": "Spanish only (full), December"
+  },
+  "ko_only_dec": {
+   "calls": 606,
+   "central": 38.202927177499994,
+   "high": 104.10767380000001,
+   "judge_reserve": 0.8208,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    }
+   ],
+   "label": "Korean only (full), December"
+  },
+  "zh_only_dec": {
+   "calls": 606,
+   "central": 32.86262329499999,
+   "high": 93.77898642000001,
+   "judge_reserve": 0.8208,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "Chinese only (full), December"
+  },
+  "block1_nov": {
+   "calls": 270,
+   "central": 16.6724406,
+   "high": 42.436948125,
+   "judge_reserve": 0.0,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.5079631875,
+     "usd_high": 1.1796790500000005
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.7111484625000001,
+     "usd_high": 1.9661317500000006
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.609555825,
+     "usd_high": 1.7695185750000006
+    }
+   ],
+   "label": "block 1 only: Phase B S0 run 1, ES+KO+ZH, November"
+  },
+  "block1_dec": {
+   "calls": 270,
+   "central": 18.501108074999998,
+   "high": 47.35227749999999,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.015926375,
+     "usd_high": 2.359358100000001
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.4222969250000002,
+     "usd_high": 3.9322635000000012
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.21911165,
+     "usd_high": 3.5390371500000013
+    }
+   ],
+   "label": "block 1 only: Phase B S0 run 1, ES+KO+ZH, December"
+  },
+  "phase_b_only_nov": {
+   "calls": 810,
+   "central": 50.017321800000005,
+   "high": 127.310844375,
+   "judge_reserve": 0.0,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.5238895625000002,
+     "usd_high": 3.5390371500000013
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.1334453875,
+     "usd_high": 5.898395250000002
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.8286674750000003,
+     "usd_high": 5.3085557250000015
+    }
+   ],
+   "label": "category questions only, November (reference)"
+  },
+  "no_run3_dec": {
+   "calls": 1548,
+   "central": 80.08676181000003,
+   "high": 213.327307,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 5.6284875,
+     "usd_high": 13.412322
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 2.618053125,
+     "usd_high": 4.5980550000000004
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 2.03185275,
+     "usd_high": 4.718716200000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 7.8798825,
+     "usd_high": 22.353869999999997
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 3.6652743749999996,
+     "usd_high": 7.663425
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 2.8445938500000003,
+     "usd_high": 7.8645270000000025
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 6.754185,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 3.14166375,
+     "usd_high": 6.897082500000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 60,
+     "usd_central": 2.4382233,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "Phase B S0 x2 + Phase A x1, December (fallback F2)"
+  },
+  "b_x1_dec": {
+   "calls": 1278,
+   "central": 61.585653735,
+   "high": 165.97502950000003,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.015926375,
+     "usd_high": 2.359358100000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.4222969250000002,
+     "usd_high": 3.9322635000000012
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.21911165,
+     "usd_high": 3.5390371500000013
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "Phase B S0 x1 + Phase A x1, December (not adopted: no phi, no run noise)"
+  },
+  "plus_s1_x1_dec": {
+   "calls": 2088,
+   "central": 167.446246635,
+   "high": 471.6912369999999,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 7.999056750000001,
+     "usd_high": 26.954829
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 9.865631250000002,
+     "usd_high": 20.060865000000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 1.262638875,
+     "usd_high": 3.6271025999999997
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 11.19867945,
+     "usd_high": 44.924715
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 13.811883750000002,
+     "usd_high": 33.434775
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 1.7676944249999997,
+     "usd_high": 6.045171
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 9.5988681,
+     "usd_high": 40.4322435
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 11.838757500000002,
+     "usd_high": 30.091297500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S1",
+     "calls": 30,
+     "usd_central": 1.5151666499999998,
+     "usd_high": 5.4406539
+    }
+   ],
+   "label": "FULL + Phase B S1 x1, December (not adopted)"
+  },
+  "option_A_nov": {
+   "calls": 1818,
+   "central": 89.35961292,
+   "high": 232.366102875,
+   "judge_reserve": 2.4624,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.5238895625000002,
+     "usd_high": 3.5390371500000013
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.6331445999999998,
+     "usd_high": 2.3124552000000005
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.40637055000000005,
+     "usd_high": 0.9437432400000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.1334453875,
+     "usd_high": 5.898395250000002
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.8864024399999998,
+     "usd_high": 3.854092
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.56891877,
+     "usd_high": 1.5729054000000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.8286674750000003,
+     "usd_high": 5.3085557250000015
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 0.7597735199999999,
+     "usd_high": 3.4686828000000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.48764466000000006,
+     "usd_high": 1.4156148600000005
+    }
+   ],
+   "label": "headphones option A, November prices"
+  },
+  "option_A_block1_nov": {
+   "calls": 270,
+   "central": 16.6724406,
+   "high": 42.436948125,
+   "judge_reserve": 0.0,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.5079631875,
+     "usd_high": 1.1796790500000005
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.7111484625000001,
+     "usd_high": 1.9661317500000006
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.609555825,
+     "usd_high": 1.7695185750000006
+    }
+   ],
+   "label": "headphones option A, block 1 only, November"
+  },
+  "option_A_dec": {
+   "calls": 1818,
+   "central": 98.58786988500002,
+   "high": 260.6795845,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 3.781962799999999,
+     "usd_high": 10.417228800000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.12432,
+     "usd_high": 3.744708
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.2662891999999997,
+     "usd_high": 4.624910400000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 5.294747919999999,
+     "usd_high": 17.362048
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.9740480000000007,
+     "usd_high": 6.24118
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.7728048799999996,
+     "usd_high": 7.708184
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 4.538355359999999,
+     "usd_high": 15.625843200000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 2.5491840000000003,
+     "usd_high": 5.617062000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 88,
+     "usd_central": 1.5195470399999997,
+     "usd_high": 6.937365600000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "headphones option A, December prices"
+  },
+  "option_A_block1_dec": {
+   "calls": 270,
+   "central": 18.501108074999998,
+   "high": 47.35227749999999,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.015926375,
+     "usd_high": 2.359358100000001
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.4222969250000002,
+     "usd_high": 3.9322635000000012
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.21911165,
+     "usd_high": 3.5390371500000013
+    }
+   ],
+   "label": "headphones option A, block 1 only, December"
+  },
+  "option_B_nov": {
+   "calls": 1809,
+   "central": 89.09209089000002,
+   "high": 231.58606537499998,
+   "judge_reserve": 2.4624,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 3.738985949999999,
+     "usd_high": 10.298851200000003
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.10018,
+     "usd_high": 3.7021545000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.5238895625000002,
+     "usd_high": 3.5390371500000013
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 0.6259497749999998,
+     "usd_high": 2.2861773000000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.40637055000000005,
+     "usd_high": 0.9437432400000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 5.234580329999999,
+     "usd_high": 17.164752000000004
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.9402520000000005,
+     "usd_high": 6.1702575
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 2.1334453875,
+     "usd_high": 5.898395250000002
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 0.8763296849999997,
+     "usd_high": 3.8102955
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.56891877,
+     "usd_high": 1.5729054000000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 4.486783139999999,
+     "usd_high": 15.448276800000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.5202160000000005,
+     "usd_high": 5.55323175
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 1.8286674750000003,
+     "usd_high": 5.3085557250000015
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 0.7511397299999999,
+     "usd_high": 3.4292659500000005
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.48764466000000006,
+     "usd_high": 1.4156148600000005
+    }
+   ],
+   "label": "headphones option B, November prices"
+  },
+  "option_B_block1_nov": {
+   "calls": 270,
+   "central": 16.6724406,
+   "high": 42.436948125,
+   "judge_reserve": 0.0,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.5079631875,
+     "usd_high": 1.1796790500000005
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.7111484625000001,
+     "usd_high": 1.9661317500000006
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 0.609555825,
+     "usd_high": 1.7695185750000006
+    }
+   ],
+   "label": "headphones option B, block 1 only, November"
+  },
+  "option_B_dec": {
+   "calls": 1809,
+   "central": 98.29444648500001,
+   "high": 259.79005575,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 8.442731250000001,
+     "usd_high": 20.118482999999998
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 3.738985949999999,
+     "usd_high": 10.298851200000003
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.9270796874999996,
+     "usd_high": 6.8970825
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.10018,
+     "usd_high": 3.7021545000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.0477791250000004,
+     "usd_high": 7.078074300000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 1.2518995499999996,
+     "usd_high": 4.572354600000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 11.81982375,
+     "usd_high": 33.530804999999994
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 5.234580329999999,
+     "usd_high": 17.164752000000004
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 5.4979115625,
+     "usd_high": 11.4951375
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.9402520000000005,
+     "usd_high": 6.1702575
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.266890775,
+     "usd_high": 11.796790500000004
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 1.7526593699999995,
+     "usd_high": 7.620591
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 10.1312775,
+     "usd_high": 30.177724499999997
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 4.486783139999999,
+     "usd_high": 15.448276800000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 4.712495625,
+     "usd_high": 10.345623750000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 2.5202160000000005,
+     "usd_high": 5.55323175
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 90,
+     "usd_central": 3.6573349500000005,
+     "usd_high": 10.617111450000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 87,
+     "usd_central": 1.5022794599999998,
+     "usd_high": 6.858531900000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "headphones option B, December prices"
+  },
+  "option_B_block1_dec": {
+   "calls": 270,
+   "central": 18.501108074999998,
+   "high": 47.35227749999999,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 2.81424375,
+     "usd_high": 6.706161
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.3090265625,
+     "usd_high": 2.2990275000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.015926375,
+     "usd_high": 2.359358100000001
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.93994125,
+     "usd_high": 11.176934999999999
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.8326371874999998,
+     "usd_high": 3.8317125
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.4222969250000002,
+     "usd_high": 3.9322635000000012
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 3.3770925,
+     "usd_high": 10.059241499999999
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.570831875,
+     "usd_high": 3.4485412500000003
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 30,
+     "usd_central": 1.21911165,
+     "usd_high": 3.5390371500000013
+    }
+   ],
+   "label": "headphones option B, block 1 only, December"
+  },
+  "option_C_nov": {
+   "calls": 1512,
+   "central": 75.07579608,
+   "high": 194.42333399999998,
+   "judge_reserve": 2.4624,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 6.7541850000000005,
+     "usd_high": 16.094786399999997
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.0943331999999995,
+     "usd_high": 8.523187200000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.1416637499999998,
+     "usd_high": 5.517666
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.73808,
+     "usd_high": 3.0638520000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.21911165,
+     "usd_high": 2.831229720000001
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 0.5180273999999999,
+     "usd_high": 1.8920088000000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.40637055000000005,
+     "usd_high": 0.9437432400000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 9.455859,
+     "usd_high": 26.824644
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 4.332066479999999,
+     "usd_high": 14.205312000000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 4.39832925,
+     "usd_high": 9.19611
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.4333120000000004,
+     "usd_high": 5.10642
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.7067563100000003,
+     "usd_high": 4.718716200000001
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 0.7252383599999999,
+     "usd_high": 3.1533480000000003
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.56891877,
+     "usd_high": 1.5729054000000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 8.105022,
+     "usd_high": 24.1421796
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.7131998399999993,
+     "usd_high": 12.784780800000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.7699965,
+     "usd_high": 8.276499000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.0856960000000004,
+     "usd_high": 4.595778
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.4629339800000003,
+     "usd_high": 4.246844580000001
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 0.6216328799999999,
+     "usd_high": 2.8380132000000002
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.48764466000000006,
+     "usd_high": 1.4156148600000005
+    }
+   ],
+   "label": "headphones option C, November prices"
+  },
+  "option_C_block1_nov": {
+   "calls": 216,
+   "central": 13.337952479999998,
+   "high": 33.949558499999995,
+   "judge_reserve": 0.0,
+   "month": "nov",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.40637055000000005,
+     "usd_high": 0.9437432400000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.56891877,
+     "usd_high": 1.5729054000000005
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.48764466000000006,
+     "usd_high": 1.4156148600000005
+    }
+   ],
+   "label": "headphones option C, block 1 only, November"
+  },
+  "option_C_dec": {
+   "calls": 1512,
+   "central": 82.79243063999999,
+   "high": 218.035758,
+   "judge_reserve": 2.4624,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 6.7541850000000005,
+     "usd_high": 16.094786399999997
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.0943331999999995,
+     "usd_high": 8.523187200000002
+    },
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.1416637499999998,
+     "usd_high": 5.517666
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.73808,
+     "usd_high": 3.0638520000000002
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.4382233,
+     "usd_high": 5.662459440000002
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.0360547999999998,
+     "usd_high": 3.7840176000000003
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 9.455859,
+     "usd_high": 26.824644
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 4.332066479999999,
+     "usd_high": 14.205312000000003
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 4.39832925,
+     "usd_high": 9.19611
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.4333120000000004,
+     "usd_high": 5.10642
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.4135126200000006,
+     "usd_high": 9.437432400000002
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.4504767199999997,
+     "usd_high": 6.3066960000000005
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 8.105022,
+     "usd_high": 24.1421796
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.7131998399999993,
+     "usd_high": 12.784780800000004
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 3.7699965,
+     "usd_high": 8.276499000000001
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.0856960000000004,
+     "usd_high": 4.595778
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 2.9258679600000006,
+     "usd_high": 8.493689160000002
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_yn",
+     "condition": "S0",
+     "calls": 72,
+     "usd_central": 1.2432657599999999,
+     "usd_high": 5.6760264000000005
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "A_open",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "headphones option C, December prices"
+  },
+  "option_C_block1_dec": {
+   "calls": 216,
+   "central": 14.80088646,
+   "high": 37.881822,
+   "judge_reserve": 0.0,
+   "month": "dec",
+   "rows": [
+    {
+     "language": "es",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.251395,
+     "usd_high": 5.3649287999999995
+    },
+    {
+     "language": "es",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.0472212499999998,
+     "usd_high": 1.839222
+    },
+    {
+     "language": "es",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.8127411000000001,
+     "usd_high": 1.8874864800000006
+    },
+    {
+     "language": "ko",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 3.151953,
+     "usd_high": 8.941548
+    },
+    {
+     "language": "ko",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.46610975,
+     "usd_high": 3.0653699999999997
+    },
+    {
+     "language": "ko",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.13783754,
+     "usd_high": 3.145810800000001
+    },
+    {
+     "language": "zh",
+     "model": "claude-fable-5-2",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 2.7016739999999997,
+     "usd_high": 8.047393199999998
+    },
+    {
+     "language": "zh",
+     "model": "gpt-6-astra",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 1.2566655,
+     "usd_high": 2.758833
+    },
+    {
+     "language": "zh",
+     "model": "gemini-4-argon",
+     "phase": "B",
+     "condition": "S0",
+     "calls": 24,
+     "usd_central": 0.9752893200000001,
+     "usd_high": 2.831229720000001
+    }
+   ],
+   "label": "headphones option C, block 1 only, December"
+  }
+ },
+ "projection_ratio_adopted_to_block1_central": {
+  "nov": 5.359719975250654,
+  "dec": 5.3287548770237665
+ },
+ "projection": {
+  "A": {
+   "nov": 5.359719975250654,
+   "dec": 5.3287548770237665
+  },
+  "B": {
+   "nov": 5.343674212280595,
+   "dec": 5.312895102635631
+  },
+  "C": {
+   "nov": 5.628734709662124,
+   "dec": 5.593748108517008
+  }
+ },
+ "headphones_option_in_params": "A",
+ "break_even_uniform_factor_on_high_basis": {
+  "nov": {
+   "pause_80": 0.7026275116347087,
+   "cap_100": 0.8838628120914441
+  },
+  "dec": {
+   "pause_80": 0.6255844938417207,
+   "cap_100": 0.7869473665232894
+  }
+ }
+}

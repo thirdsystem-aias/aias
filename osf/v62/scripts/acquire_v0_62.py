@@ -1,24 +1,24 @@
 #!/usr/bin/env python3
 """
-AIAS v0.62 -- non-English wave acquisition (French and Japanese, full t4 panel, N3, search off),
-pre-registration r1 DRAFT (not locked).
+AIAS v0.62 -- non-English wave acquisition (Spanish, Korean and Chinese, full t4 panel, N3, search off),
+pre-registration r2 DRAFT (not locked).
 
 FORK of osf/v44/scripts/acquire_v0_44.py (worktree v0.44, commit 1882f09), itself a fork of v0.42 r2's
 acquire_v0_42.py. The S1 tool configurations, CURRENT_MAX_TOKENS, PAUSE, MAX_ATTEMPTS and the block from
 `class Transient` to the end of `_call_with_retry` (the current-arm call functions of v0.39) are copied BYTE FOR BYTE
 from v0.42's file (checked by tests/test_acquire_v0_62.py against the v0.44 copy, which v0.44's own test checks
 against v0.42). No language, locale or region parameter is sent; no system prompt. Changes from v0.44:
-  - design (pre-registration section 5.2): per language (FR, JA) Phase B 30 category questions x S0 x runs 1-3 +
+  - design (pre-registration section 5.2): per language (ES, KO, ZH) Phase B 30 category questions x S0 x runs 1-3 +
     Phase A 112 brand questions x S0 x run 1, three models: 2 x 3 x (90 + 112) = 1,212 calls under headphones
     option A (1,206 under B, 1,008 under C: params_v0_62.HEADPHONES_OPTION). Five blocks in this order:
     B run 1, B run 2, B run 3 (every confirmatory test), A yes/no (v0.19-v0.22), A open (v0.23); within a block one
-    worker per model, the three in parallel, French before Japanese, probes in file order;
-  - probes: osf/v62/translations/probes_{fr,ja}_v0_62_r0.jsonl (142 lines each); every raw line carries `language`;
+    worker per model, the three in parallel, ES, then KO, then ZH, probes in file order;
+  - probes: osf/v62/translations/probes_{es,ko,zh}_v0_62_r2.jsonl (142 lines each); every raw line carries `language`;
   - window: params_v0_62.WINDOW (one parameter); --collect also refuses at any time inside params_v0_62.BLACKOUT
     (2026-11-17 .. 2026-11-21 US Central), and refuses a declared window that overlaps it;
   - budget: budget_v0_62 (judge reserve $1.3176 counted in the spend from the start); pause at $80 and hard stop
     at $100 on actual usage, as v0.44; projection pause after block 1: projected total = call spend (without the
-    judge reserve, which the ratio's numerator already contains) x R, R read from prereg/cost_estimate_v0_62_r1.json
+    judge reserve, which the ratio's numerator already contains) x R, R read from prereg/cost_estimate_v0_62_r2.json
     for the headphones option and the month of block 1; the pre-registrant continues (--approve-projection), drops
     Phase A (fallback F1, --drop-phase-a) or drops Phase B run 3 (fallback F2, --drop-run-3);
   - Claude Fable 5.2 through the Message Batches API; GPT-6 Astra and Gemini 4 Argon synchronous (as t4).
@@ -58,15 +58,14 @@ import budget_v0_62 as BG  # noqa: E402
 import params_v0_62 as P  # noqa: E402
 
 V62 = ROOT / "osf" / "v62"
-PROBE_FILES = {"fr": V62 / "translations" / "probes_fr_v0_62_r0.jsonl",
-               "ja": V62 / "translations" / "probes_ja_v0_62_r0.jsonl"}
-COST_PATH = V62 / "prereg" / "cost_estimate_v0_62_r1.json"
+PROBE_FILES = {lg: V62 / "translations" / f"probes_{lg}_v0_62_r2.jsonl" for lg in ("es", "ko", "zh")}
+COST_PATH = V62 / "prereg" / "cost_estimate_v0_62_r2.json"
 RAW_PATH = V62 / "data" / "v62_raw.jsonl"
 STATE_PATH = V62 / "data" / "v62_budget_state.json"
 ANCHOR_PATH = V62 / "anchor" / "osf_anchor_v0_62.json"
 DEVIATIONS_PATH = V62 / "DEVIATIONS.md"
 PREREG_TAG = "v0.62-prereg-r1"
-LANGS = ["fr", "ja"]
+LANGS = ["es", "ko", "zh"]
 
 PANEL = [
     {"model_id": "claude-fable-5-2", "provider": "anthropic", "mode": "batch"},
@@ -336,7 +335,7 @@ def call_id(language, substrate, phase, probe_id, model, cond, run):
 
 
 def build_specs(probes, drop_run3=False, drop_phase_a=False):
-    """Matrix in collection order: block (BLOCKS order), then model (panel order), then language (FR before JA),
+    """Matrix in collection order: block (BLOCKS order), then model (panel order), then language (ES, KO, ZH),
     then probe (file order)."""
     specs = []
     keep = blocks_in_design(drop_run3, drop_phase_a)
@@ -366,10 +365,22 @@ def _invoke(model, cond, prompt, system):
 
 
 def _part(out, mode, cond):
-    """Usage of one billed request, for budget_v0_62.record_cost."""
+    """Usage of one billed request, for budget_v0_62.record_cost (r2: conservative counting).
+    Searches: every search action AND every OpenAI page open / find-in-page action is counted as a billed search;
+    Gemini tool-use tokens are not returned by the copied call function, so a Google part with searches carries
+    tool_tokens=None and budget_v0_62.part_cost charges WORST["S1_input_tokens"] for it (S0 sends no tool: 0)."""
     s = out.get("search") or {}
-    return {"mode": mode, "input_tokens": out.get("tokens_in"), "output_tokens": out.get("tokens_out"),
-            "thinking_tokens": out.get("tokens_thought"), "n_searches": (s.get("n_searches") or 0) if cond == "S1" else 0}
+    n = 0
+    if cond == "S1":
+        n = (s.get("n_searches") or 0) + sum(1 for x in (s.get("sources") or []) if x.get("action"))
+    return {"mode": mode, "condition": cond, "input_tokens": out.get("tokens_in"), "output_tokens": out.get("tokens_out"),
+            "thinking_tokens": out.get("tokens_thought"), "n_searches": n, "tool_tokens": None}
+
+
+def _worst_parts(n, mode, cond, why):
+    """n requests whose usage is unknown (a timed-out or transiently failed attempt that the vendor may have
+    billed): each is costed at its worst case by budget_v0_62.part_cost (r2: conservative counting)."""
+    return [{"mode": mode, "condition": cond, "worst_case": True, "why": why} for _ in range(max(0, n))]
 
 
 def _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, parts, extra=None):
@@ -402,17 +413,27 @@ def past_deadline(now=None):
     return (now or datetime.now(timezone.utc)) >= DEADLINE_UTC
 
 
+def _unknown_attempts(out, attempts, err):
+    """Attempts of one _call_with_retry chain that returned no usage. Every failed attempt before the last was a
+    Transient error (rate limit, 5xx, connection, timeout); a final non-transient error (4xx) is not billed."""
+    if out is not None:
+        return attempts - 1
+    return attempts if (err or "").startswith("transient") else attempts - 1
+
+
 def send_call(spec):
     """Synchronous call (GPT-6 Astra, Gemini 4 Argon) with the usage of every billed request in `usage_parts`."""
     model, cond = spec["model"], spec["condition"]
     ts_start = _now()
     out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
     parts = [_part(out, "standard", cond)] if out is not None else []
+    parts += _worst_parts(_unknown_attempts(out, attempts, err), "standard", cond, "failed attempt without usage")
     empty_retry = False
     if out is not None and not out["text"].strip():
         empty_retry = True
         out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
         attempts += a2
+        parts += _worst_parts(_unknown_attempts(out2, a2, err2), "standard", cond, "failed attempt without usage")
         if out2 is not None:
             out = out2
             parts.append(_part(out2, "standard", cond))
@@ -534,7 +555,7 @@ def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time
                 err = getattr(res, "error", None)
                 etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
                 rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
-                              ts_start, ts_end, [], extra)
+                              ts_start, ts_end, _worst_parts(1, "batch", s["condition"], f"batch {rtype}"), extra)
                 transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
                 if transient and att < MAX_ATTEMPTS:
                     retry.append((s, att + 1, ne))
@@ -553,7 +574,7 @@ def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
             ledger.halt("stop", f"deadline {DEADLINE_UTC.isoformat()} reached")
             return "stop"
         while True:
-            st, tok = ledger.reserve(BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
+            st, tok = ledger.reserve(BG.sync_reservation(s["model"]["model_id"], s["condition"]))
             if st != "wait":
                 break
             sleep(5)
@@ -581,7 +602,7 @@ def confirm_no_sampling_params():
 
 # ----------------------------------------------------------------- cost file
 def cost_estimate(path=None):
-    """The cost estimate (cost_estimate_v0_62.py output, r1)."""
+    """The cost estimate (cost_estimate_v0_62.py output, r2)."""
     return json.loads(Path(path or COST_PATH).read_text(encoding="utf-8"))
 
 
@@ -590,8 +611,15 @@ def projection_ratio(path=None, when_utc=None, option=None):
     the day block 1 started (December ratio from 2026-12-01, when Gemini 4 Argon's price doubles)."""
     ce = cost_estimate(path)
     option = option or P.HEADPHONES_OPTION
+    if not extras_on():
+        return 3.0                                   # r2: blocks 1-3 only; the three Phase B runs cost alike
     day = (when_utc.isoformat() if hasattr(when_utc, "isoformat") else (when_utc or ""))[:10]
     return float(ce["projection"][option]["dec" if day >= "2026-12-01" else "nov"])
+
+
+def extras_on():
+    """r2: the brand-question extras (Phase A, blocks 4-5) are collected only if params_v0_62.BRAND_EXTRAS."""
+    return bool(getattr(P, "BRAND_EXTRAS", True))
 
 
 # ----------------------------------------------------------------- guards
@@ -799,6 +827,14 @@ def dry_run(out=print):
         "  by model: " + json.dumps({m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"])
                                      for m in PANEL}) + "  modes: " + json.dumps({m["model_id"]: m["mode"] for m in PANEL}))
     out("by substrate (all models, both languages): " + json.dumps(dict(Counter(s["substrate"] for s in specs))))
+    out(f"brand-question extras (params BRAND_EXTRAS): {'ON' if extras_on() else 'OFF'} -> calls sent: "
+        f"{expected_total(probes, drop_phase_a=not extras_on())}; projection ratio used: "
+        f"{projection_ratio(when_utc='2026-12-01'):.4f} (Dec)")
+    out("conservative counting: sync call reservation = 2 worst cases "
+        + ", ".join(f"{m['model_id']} ${BG.sync_reservation(m['model_id'], 'S0', '2026-12-01'):.4f}"
+                    for m in PANEL if m["mode"] == "standard")
+        + " (Dec); failed attempts without usage and errored/expired batch requests costed at worst case; "
+          "OpenAI page opens counted as searches; Gemini tool tokens at WORST when not reported")
     out(f"fallback F1 (no Phase A): {expected_total(probes, drop_phase_a=True)} calls; "
         f"fallback F2 (no Phase B run 3): {expected_total(probes, drop_run3=True)} calls")
     out("worst-case reservation per request (USD; 2,000 input tokens, output at the cap):")
@@ -844,7 +880,9 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_
     DEADLINE_UTC = deadline(dates)
     print(f"window ok: {why}")
     require_keys()
-    ledger = BG.Ledger(RAW_PATH, STATE_PATH)
+    ledger = BG.Ledger(RAW_PATH, STATE_PATH, judge_reserve=BG.JUDGE_RESERVE_USD if extras_on() else 0.0)
+    if not extras_on() and not ledger.approved("drop_phase_a"):
+        ledger.approve("drop_phase_a", "r2 default: params_v0_62.BRAND_EXTRAS is False (category questions only)")
     for kind, note in (("past_80", approve_past_80), ("projection", approve_projection), ("drop_run3", drop_run3),
                        ("drop_phase_a", drop_phase_a)):
         if note:
@@ -861,7 +899,7 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="AIAS v0.62 acquisition (pre-registration r1 draft); default --dry-run")
+    ap = argparse.ArgumentParser(description="AIAS v0.62 acquisition (pre-registration r2 draft); default --dry-run")
     ap.add_argument("--dry-run", action="store_true", help="the default: print the matrix and guards, send nothing")
     ap.add_argument("--collect", action="store_true", help="guarded paid collection")
     ap.add_argument("--approve-past-80", metavar="NOTE", default=None)

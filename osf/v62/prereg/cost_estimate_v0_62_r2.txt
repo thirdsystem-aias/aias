@@ -1,0 +1,76 @@
+AIAS v0.62 cost estimate (r2 draft; no model called; ES, KO, ZH). Per language: 30 category questions x 3 runs + 112 brand questions x 1 run, 3 models (N3), search off (S0).
+Language factor (assumption, not measured): central ES 1.25 KO 1.75 ZH 1.50; high ES 1.50 KO 2.50 ZH 2.25.
+Headline: December prices for the whole run (window straddles 2026-12-01; conservative).
+Judge reserve (216 v0.23 recognition codings, Claude Sonnet 4.5): $2.46, included where Phase A is collected.
+
+design                                                                          calls   expected       high
+FULL: ES+KO+ZH, Phase B S0 x3 + Phase A S0 x1, December prices (headline)        1818      98.59     260.68
+FULL, November prices (reference only)                                           1818      89.36     232.37
+FULL at language factor 1.0 (English token counts), December                     1818      66.55     126.41
+CATEGORY QUESTIONS ONLY: Phase B S0 x3, 3 languages, December (fallback F1)       810      55.50     142.06
+Phase B x3 + brand yes/no questions (v0.19-v0.22), December                      1602      81.32     220.34
+Phase B x3 + brand open questions (v0.23), December                              1026      72.77     182.40
+Spanish only (full), December                                                     606      27.52      62.79
+Korean only (full), December                                                      606      38.20     104.11
+Chinese only (full), December                                                     606      32.86      93.78
+block 1 only: Phase B S0 run 1, ES+KO+ZH, November                                270      16.67      42.44
+block 1 only: Phase B S0 run 1, ES+KO+ZH, December                                270      18.50      47.35
+category questions only, November (reference)                                     810      50.02     127.31
+Phase B S0 x2 + Phase A x1, December (fallback F2)                               1548      80.09     213.33
+Phase B S0 x1 + Phase A x1, December (not adopted: no phi, no run noise)         1278      61.59     165.98
+FULL + Phase B S1 x1, December (not adopted)                                     2088     167.45     471.69
+headphones option A, November prices                                             1818      89.36     232.37
+headphones option A, block 1 only, November                                       270      16.67      42.44
+headphones option A, December prices                                             1818      98.59     260.68
+headphones option A, block 1 only, December                                       270      18.50      47.35
+headphones option B, November prices                                             1809      89.09     231.59
+headphones option B, block 1 only, November                                       270      16.67      42.44
+headphones option B, December prices                                             1809      98.29     259.79
+headphones option B, block 1 only, December                                       270      18.50      47.35
+headphones option C, November prices                                             1512      75.08     194.42
+headphones option C, block 1 only, November                                       216      13.34      33.95
+headphones option C, December prices                                             1512      82.79     218.04
+headphones option C, block 1 only, December                                       216      14.80      37.88
+
+Projection-pause ratio (adopted / block 1, central): November 5.3597, December 5.3288
+Block-1 spend above which the projection pause triggers ($80 / ratio): November $14.93, December $15.01
+Break-even uniform language factor on the HIGH per-call basis: November 0.70 ($80) / 0.88 ($100); December 0.63 ($80) / 0.79 ($100)
+
+FULL: ES+KO+ZH, Phase B S0 x3 + Phase A S0 x1, December prices (headline), by language x model (US$ expected / high):
+  es  claude-fable-5-2   calls  202   14.48 /  35.90
+  es  gpt-6-astra        calls  202    7.10 /  12.48
+  es  gemini-4-argon     calls  202    5.13 /  13.59
+  ko  claude-fable-5-2   calls  202   20.27 /  59.83
+  ko  gpt-6-astra        calls  202    9.94 /  20.80
+  ko  gemini-4-argon     calls  202    7.18 /  22.65
+  zh  claude-fable-5-2   calls  202   17.37 /  53.85
+  zh  gpt-6-astra        calls  202    8.52 /  18.72
+  zh  gemini-4-argon     calls  202    6.15 /  20.39
+  phase B       calls  810   55.50 / 142.06
+  phase A_yn    calls  792   25.82 /  78.28
+  phase A_open  calls  216   14.80 /  37.88
+  judge reserve      (216)    2.46 /   2.46
+  sum of the lines above     98.59 / 260.68  (= total  98.59 / 260.68)
+  spend as the guard counts it at the end of blocks 1-3 (Phase B + judge reserve):  57.97 / 144.52  (pause at $80)
+
+FULL, November prices (reference only), by language x model (US$ expected / high):
+  es  claude-fable-5-2   calls  202   14.48 /  35.90
+  es  gpt-6-astra        calls  202    7.10 /  12.48
+  es  gemini-4-argon     calls  202    2.56 /   6.80
+  ko  claude-fable-5-2   calls  202   20.27 /  59.83
+  ko  gpt-6-astra        calls  202    9.94 /  20.80
+  ko  gemini-4-argon     calls  202    3.59 /  11.33
+  zh  claude-fable-5-2   calls  202   17.37 /  53.85
+  zh  gpt-6-astra        calls  202    8.52 /  18.72
+  zh  gemini-4-argon     calls  202    3.08 /  10.19
+  phase B       calls  810   50.02 / 127.31
+  phase A_yn    calls  792   23.54 /  68.64
+  phase A_open  calls  216   13.34 /  33.95
+  judge reserve      (216)    2.46 /   2.46
+  sum of the lines above     89.36 / 232.37  (= total  89.36 / 232.37)
+  spend as the guard counts it at the end of blocks 1-3 (Phase B + judge reserve):  52.48 / 129.77  (pause at $80)
+
+Headphones options (params_v0_62.HEADPHONES_OPTION = A):
+  option A: 1818 calls; November  89.36 / 232.37; December  98.59 / 260.68; projection ratio Nov 5.3597 Dec 5.3288
+  option B: 1809 calls; November  89.09 / 231.59; December  98.29 / 259.79; projection ratio Nov 5.3437 Dec 5.3129
+  option C: 1512 calls; November  75.08 / 194.42; December  82.79 / 218.04; projection ratio Nov 5.6287 Dec 5.5937

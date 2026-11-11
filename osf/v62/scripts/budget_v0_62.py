@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-budget_v0_62.py -- AIAS(TM) v0.62 (non-English wave, pre-registration r1 DRAFT): price table, cost of a call
+budget_v0_62.py -- AIAS(TM) v0.62 (non-English wave, pre-registration r2 DRAFT): price table, cost of a call
 from its ACTUAL recorded usage, and the collection budget guard (pause at $80, hard stop at $100; programme rule of
 2026-11-10).
 
@@ -10,7 +10,12 @@ budget_v0_42.py. Changes, all listed here:
     4.5, on the 144 open French and Japanese answers; pre-registration section 6.2; = cost_estimate_v0_62.judge_reserve());
   - approval kinds: "past_80", "projection", "drop_run3" (fallback F2) and "drop_phase_a" (fallback F1);
   - Ledger.calls_spent(): the spend of the raw lines only (without the judge reserve), used by the projection pause;
-  - the docstring. Prices, PRICE_CHANGES, WORST, worst_case, record_cost and the Ledger arithmetic are unchanged.
+  - the docstring. Prices, PRICE_CHANGES, WORST, worst_case and the Ledger arithmetic are unchanged.
+  r2 (conservative counting, runner lane v0.62-r2): JUDGE_RESERVE_USD for 216 open answers (3 languages); part_cost
+  charges a part flagged worst_case (a timed-out / failed attempt without usage, or a batch request that errored or
+  expired) at worst_case(); OpenAI page opens arrive as searches (acquire_v0_62._part); a Google part with searches
+  and no tool-token count is charged WORST["S1_input_tokens"] extra input tokens; sync_reservation() reserves TWO
+  worst cases per synchronous call (the call may be re-sent: retry or empty re-send).
 
 Prices: the vendors' own pages, opened on 2026-11-10 (osf/v42/prereg/PRE_REGISTRATION_v0_42.md section 4.5, r2; re-read for v0.44 against
 the programme price list of 2026-11-10 in CLAUDE.md "Collection budget": unchanged):
@@ -36,7 +41,7 @@ Cost of one billed request ("usage part"):
 A raw record's cost = the sum over its `usage_parts`; a record without `usage_parts` (older format) is costed as one
 standard part from its token fields and its S1 search count.
 
-Guard: spent = JUDGE_RESERVE_USD ($1.3176 in v0.62) + the cost of every raw line already written. Before a request is sent, its WORST-CASE cost (WORST below)
+Guard: spent = JUDGE_RESERVE_USD ($2.4624 in v0.62 r2) + the cost of every raw line already written. Before a request is sent, its WORST-CASE cost (WORST below)
 is reserved; the request is refused if spent + reservations + worst case > $100 (hard stop), and no new request is
 started once spent >= $80 unless the pause has been approved (state file; `acquire_v0_62.py --collect --approve-past-80`).
 """
@@ -78,7 +83,7 @@ SEARCH_FEE = {"anthropic": 0.010, "openai": 0.010, "google": 0.014}  # USD per s
 
 BUDGET_CAP_USD = 100.0
 PAUSE_AT_USD = 80.0
-JUDGE_RESERVE_USD = 144 * (3000 * 3.0 + 10 * 15.0) / 1e6   # $1.3176, v0.23 judge on 144 FR/JA open answers
+JUDGE_RESERVE_USD = 216 * (3750 * 3.0 + 10 * 15.0) / 1e6   # $2.4624, v0.23 judge on 216 ES/KO/ZH open answers
 OUTPUT_CAP = 16384                # max output tokens per request (v0.62 section 5.4 = v0.42 r2 section 4.4)
 WORST = {"S0_input_tokens": 2_000, "S1_input_tokens": 150_000, "searches": {"S0": 0, "S1": 10}}
 
@@ -96,7 +101,14 @@ def prices(model, mode="standard", when_utc=None):
 
 
 def part_cost(model, part, when_utc=None):
+    if part.get("worst_case"):
+        return worst_case(model, part.get("condition") or "S0", part.get("mode", "standard"), when_utc)
     pin, pout = prices(model, part.get("mode", "standard"), when_utc)
+    tool = part.get("tool_tokens")
+    if PROVIDER[model] == "google" and (part.get("n_searches") or 0) > 0 and tool is None:
+        tool = WORST["S1_input_tokens"]
+    if tool:
+        part = dict(part, input_tokens=(part.get("input_tokens") or 0) + tool)
     out = (part.get("output_tokens") or 0)
     if PROVIDER[model] == "google":
         out += part.get("thinking_tokens") or 0
@@ -127,6 +139,11 @@ def worst_case(model, cond, mode="standard", when_utc=None):
     pin, pout = prices(model, mode, when_utc)
     tin = WORST["S1_input_tokens"] if cond == "S1" else WORST["S0_input_tokens"]
     return (tin * pin + OUTPUT_CAP * pout) / 1e6 + WORST["searches"][cond] * SEARCH_FEE[PROVIDER[model]]
+
+
+def sync_reservation(model, cond, when_utc=None):
+    """Reservation before a synchronous call that may be re-sent (retry or empty re-send): two worst cases."""
+    return 2 * worst_case(model, cond, "standard", when_utc)
 
 
 class Ledger:

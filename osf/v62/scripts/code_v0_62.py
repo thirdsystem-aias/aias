@@ -1,36 +1,38 @@
 #!/usr/bin/env python3
 """
-code_v0_62.py -- AIAS(TM) v0.62 coder (French and Japanese answers), pre-registration r1 DRAFT, sections 4.3-4.4, 7.1.
+code_v0_62.py -- AIAS(TM) v0.62 coder (Spanish, Korean and Chinese answers), pre-registration r2 DRAFT, sections 4.3-4.4, 7.1.
 
 The certified English matchers are NOT re-implemented. This module adds only the language pre-step of section 4.3
 and the answer-word mapping of section 4.4, then hands the prepared answers to v0.42's coder
 (osf/v42/scripts/code_t4_v0_42.py, run unchanged as a separate process on a prepared copy of the raw file, one
 language at a time), which applies each category's certified matcher exactly as for t4.
 
-Pre-step (prepare_text), in this order:
-  1. Unicode NFC; full-width ASCII (U+FF01-U+FF5E) and half-width katakana (U+FF61-U+FF9F) by NFKC, run by run
-     (ＢＭＷ -> BMW, ｿﾆｰ -> ソニー); ideographic space U+3000, no-break spaces U+00A0, U+202F -> ' '; typographic
-     apostrophes U+2018, U+2019, U+02BC, U+FF07 -> "'"; URLs and Markdown link targets removed (strip_urls, the
-     regular expressions of code_t4_v0_42.py, byte for byte).
-  2. Alias canonicalisation (ALIASES from the alias table, longest alias first): every occurrence of a Japanese alias
-     is replaced by ' <registry name> '. A multi-word alias matches with an optional separator (・ ･ space, half- or
-     full-width) at each joint written with ・ in the table, and only when NOT preceded or followed by a katakana
-     character (U+30A1-U+30FA, U+30FC), so that ソニー matches in ソニーの but コス not inside コスメ. Aliases written
-     in kanji match as written. French spelling variants (unaccented forms) match case-insensitively as whole words.
-  3. Script-boundary spacing: a space at every transition between a Latin letter or digit and a kana or CJK
-     character (Python's \\b treats kana as word characters).
-Answer words (Phase A, v0.19-v0.22 only): a leading oui / non (FR) or はい / いいえ (JA), after the pre-step and
-ignoring leading Markdown marks and punctuation, is replaced by Yes / No; the certified parser then reads the answer.
-v0.23 open answers are passed to the recognition judge as written (section 4.4).
+Pre-step (prepare_text), in this order (pre-registration r2, section 4.3):
+  1. Unicode NFC; full-width ASCII, half-width katakana and half-width Hangul (U+FF01-U+FFDC) by NFKC, run by run
+     (ＢＭＷ -> BMW); ideographic space U+3000, no-break spaces U+00A0, U+202F -> ' '; typographic apostrophes
+     U+2018, U+2019, U+02BC, U+FF07 -> "'" (applied to both sides of gate P2); URLs and Markdown link targets removed
+     (strip_urls, the regular expressions of code_t4_v0_42.py, byte for byte).
+  2. Alias canonicalisation (ALIASES from the r2 alias table, longest alias first): every occurrence of a Korean or
+     Chinese alias is replaced by ' <registry name> '. KO-1 / ZH-1: spaces, hyphens and middle dots at an alias's
+     joints are optional. KO-2: a Hangul alias matches only when not preceded by a Hangul syllable and when followed by
+     a non-Hangul character, the end, or a run of particles / copula forms (KO_PARTICLES) that ends before a
+     non-Hangul character (소니의 matches; 코스 does not match inside 코스메틱). ZH-2: Han aliases match as written.
+     Collision-prone aliases are counted, exported for audit (MC_Alias) and switched off in S-Alias.
+  3. Script-boundary spacing: a space at every transition between a Latin letter or digit and a kana, Han or Hangul
+     character (Python's \b treats these as word characters).
+Answer words (Phase A, v0.19-v0.22 only): a leading sí/no (ES), 예/네 / 아니요/아니오/아니 (KO) or 是/是的 / 否/不是/不 (ZH),
+after the pre-step's normalisation and ignoring leading Markdown marks and punctuation, is replaced by Yes / No;
+the certified parser then reads the answer. v0.23 open answers are passed to the recognition judge as written.
 
 MC_Alias: alias_hits() lists every match of a collision-prone alias with its context (exported for audit).
-MC_Language: in_language() implements section 2.8's rule (JA: >= 50% of letters kana/CJK; FR: French function
-words outnumber English ones among FR_WORDS + EN_WORDS).
+MC_Language: in_language() implements section 2.8's rule (KO: >= 50% of letters Hangul; ZH: >= 50% Han; ES:
+Spanish function words outnumber English ones). MC_Script: zh_traditional() flags ZH answers with
+Traditional-only characters (descriptive; no character conversion is applied).
 
 Modes:
-  --prepare RAW --out DIR    write DIR/v62_prepared_{fr,ja}.jsonl (prepared texts; the raw file is not changed)
+  --prepare RAW --out DIR    write DIR/v62_prepared_{es,ko,zh}.jsonl (prepared texts; the raw file is not changed)
                              and DIR/v62_alias_audit.csv. Coding then runs v0.42's coder on each prepared file:
-                             python3 <v42>/code_t4_v0_42.py --raw DIR/v62_prepared_fr.jsonl --out DIR/fr  (and ja)
+                             python3 <v42>/code_t4_v0_42.py --raw DIR/v62_prepared_es.jsonl --out DIR/es  (and ko, zh)
   The real raw file (osf/v62/data/v62_raw.jsonl) is refused unless tag v0.62-prereg-r1 is on origin.
 """
 import argparse
@@ -50,7 +52,7 @@ import params_v0_62 as P  # noqa: E402
 
 PREREG_TAG = "v0.62-prereg-r1"
 REAL_RAW = V62 / "data/v62_raw.jsonl"
-ALIAS_TABLE = V62 / "translations/brand_aliases_v0_62_r1.csv"
+ALIAS_TABLE = V62 / "translations/brand_aliases_v0_62_r2.csv"
 SUBS = ["v19", "v20", "v21", "v22", "v23"]
 
 # ---- copied byte for byte from osf/v42/scripts/code_t4_v0_42.py (URL removal; checked by the tests) ----
@@ -72,12 +74,19 @@ class Refused(RuntimeError):
     pass
 
 
-KATA = "ァ-ヺー"
-SEP_CLASS = "[・･·・ 　]?"
-WIDE_RE = re.compile("[！-ﾟ]+")
+LANGS = ("es", "ko", "zh")
+HANGUL = "가-힣"                                        # precomposed Hangul syllables U+AC00-U+D7A3
+HAN = "㐀-鿿"                                           # CJK ideographs (Ext. A + URO)
+SEP_CLASS = "[ ·・･\\-－]?"                               # optional joint separator inside a KO/ZH alias
+WIDE_RE = re.compile("[！-ￜ]+")                          # full-width ASCII, half-width katakana and Hangul (NFKC)
 APOS_RE = re.compile("[‘’ʼ＇]")
-SPACE_RE = re.compile("[  　]")
-LATIN_CJK = re.compile(r"(?<=[A-Za-z0-9])(?=[぀-ヿ㐀-鿿])|(?<=[぀-ヿ㐀-鿿])(?=[A-Za-z0-9])")
+SPACE_RE = re.compile("[  　]")
+LATIN_CJK = re.compile(r"(?<=[A-Za-z0-9])(?=[぀-ヿ㐀-鿿가-힣])|(?<=[぀-ヿ㐀-鿿가-힣])(?=[A-Za-z0-9])")
+# Korean particles and copula forms that may follow a brand name written in Hangul (section 4.3 rule KO-2).
+KO_PARTICLES = ["에서", "으로", "처럼", "보다", "부터", "까지", "이나", "이랑", "하고", "께서", "입니다", "이며", "이고",
+                "이다", "이에요", "예요", "이라는", "라는", "와", "과", "은", "는", "이", "가", "을", "를", "의", "에", "도",
+                "만", "로", "나", "랑", "도"]
+KO_TAIL = "(?:" + "|".join(sorted(set(KO_PARTICLES), key=len, reverse=True)) + ")"
 
 
 def normalise(text):
@@ -89,29 +98,33 @@ def normalise(text):
 
 
 def load_aliases(path=None):
-    """[(substrate, registry name, alias, kind, collision_prone)], kind 'ja' or 'fr'."""
+    """[(substrate, registry name, alias, kind, collision_prone)], kind 'ko', 'zh' or 'es'."""
     out = []
     with open(path or ALIAS_TABLE, encoding="utf-8") as f:
         table = list(csv.DictReader(f))
     for r in table:
-        for a in filter(None, r["ja_aliases"].split("|")):
-            out.append((r["substrate"], r["brand"], a, "ja", r["ja_collision_prone"] == "yes"))
-        for a in filter(None, r["fr_aliases"].split("|")):
-            out.append((r["substrate"], r["brand"], a, "fr", False))
+        for lg in ("ko", "zh"):
+            for a in filter(None, r[lg + "_aliases"].split("|")):
+                out.append((r["substrate"], r["brand"], a, lg, r[lg + "_collision_prone"] == "yes"))
+        for a in filter(None, r.get("es_aliases", "").split("|")):
+            out.append((r["substrate"], r["brand"], a, "es", False))
     return out
 
 
 def alias_regex(alias, kind):
-    if kind == "fr":
+    """KO-1/ZH-1: spaces, hyphens and middle dots at an alias's joints are optional (any of them, or none).
+    KO-2: a Hangul alias matches only when not preceded by a Hangul syllable and when followed by a non-Hangul
+    character, the end, or a run of particles / copula forms (KO_PARTICLES) that is itself followed by a non-Hangul
+    character or the end (소니의, 현대자동차에서는 match; 코스 does not match inside 코스메틱 or 디스코스).
+    ZH-2: Han aliases match as written (Chinese does not separate words; collision-prone ones are audited).
+    ES: whole word, case-insensitive (no ES alias in r2)."""
+    if kind == "es":
         return re.compile(r"(?<![^\W_])" + re.escape(alias) + r"(?![^\W_])", re.I)
-    parts = [re.escape(p) for p in re.split("[・･]", alias)]
+    parts = [re.escape(x) for x in re.split(r"[ ·・･\-－]+", alias) if x]
     body = SEP_CLASS.join(parts)
-    # spelling variants of two loan words used in registry names (r1): ビューティ(ー) and コスメティ(ッ)クス
-    body = body.replace("ビューティー", "ビューティ").replace("ビューティ", "ビューティー?")
-    body = body.replace("コスメティックス", "コスメティクス").replace("コスメティクス", "コスメティッ?クス")
-    if re.fullmatch(f"[{KATA}・･0-9]+", alias):
-        return re.compile(f"(?<![{KATA}])" + body + f"(?![{KATA}])")
-    return re.compile(body)                     # kanji (or mixed) aliases match as written
+    if kind == "ko":
+        return re.compile(f"(?<![{HANGUL}])" + body + f"(?=$|[^{HANGUL}]|{KO_TAIL}+(?:$|[^{HANGUL}]))")
+    return re.compile(body)
 
 
 class Aliaser:
@@ -121,11 +134,14 @@ class Aliaser:
         self.rows = sorted(rows, key=lambda r: -len(r[2]))
         self.res = [(r, alias_regex(r[2], r[3])) for r in self.rows]
 
-    def canonicalise(self, text, substrate=None, hits=None):
+    def canonicalise(self, text, substrate=None, hits=None, collision=True):
         """Replace aliases (of `substrate` only, if given) by ' <registry name> '. hits: list to collect
-        (alias, brand, context) of collision-prone matches."""
+        (alias, brand, context) of collision-prone matches. collision=False switches collision-prone aliases off
+        (sensitivity S-Alias)."""
         for (sub, brand, alias, kind, cp), rx in self.res:
             if substrate and sub != substrate:
+                continue
+            if cp and not collision:
                 continue
             if hits is not None and cp:
                 for m in rx.finditer(text):
@@ -134,12 +150,12 @@ class Aliaser:
         return text
 
 
-def prepare_text(text, substrate=None, aliaser=None, hits=None, strip=True):
+def prepare_text(text, substrate=None, aliaser=None, hits=None, strip=True, collision=True):
     """The full pre-step of section 4.3 for one answer."""
     t = normalise(text)
     if strip:
         t = strip_urls(t)
-    t = (aliaser or _default_aliaser()).canonicalise(t, substrate, hits)
+    t = (aliaser or _default_aliaser()).canonicalise(t, substrate, hits, collision)
     return LATIN_CJK.sub(" ", t)
 
 
@@ -152,12 +168,17 @@ def _default_aliaser():
     return _AL["a"]
 
 
-LEAD_RE = {"fr": re.compile(r"^([\s*_#>\-•\"'«»(\[]*)(oui|non)(?![^\W_])", re.I),
-           "ja": re.compile(r"^([\s*_#>\-•「『\"'(\[（]*)(いいえ|はい)")}
+_PFX = r"^([\s*_#>\-•\"'“”「『(\[（]*)"
+LEAD_RE = {"es": re.compile(_PFX + r"(sí|si(?=\s*[,.!;:]|\s*$)|no)(?![^\W_])", re.I),
+           "ko": re.compile(_PFX + f"(아니요|아니오|아니|예|네)(?![{HANGUL}])"),
+           "zh": re.compile(_PFX + r"(不是|是的|否|是|不)(?=$|[\s，,。．.！!：:；;”\"）)])")}
+YES = {"sí", "si", "예", "네", "是的", "是"}
 
 
 def map_answer_words(text, language):
-    """Section 4.4: a leading oui/non or はい/いいえ -> Yes/No (v0.19-v0.22 yes/no answers only)."""
+    """Section 4.4: a leading sí/no (ES), 예/네 / 아니요/아니오/아니 (KO), 是/是的 / 否/不是/不 (ZH) -> Yes/No
+    (v0.19-v0.22 yes/no answers only). ZH 是 and 不 count only when followed by punctuation, space or the end
+    (是一个… is left to the parser, which counts it as a non-answer)."""
     t = normalise(text)
     rx = LEAD_RE.get(language)
     if not rx:
@@ -166,30 +187,37 @@ def map_answer_words(text, language):
     if not m:
         return t
     word = m.group(2).lower()
-    yes = word in ("oui", "はい")
-    return t[:m.start(2)] + ("Yes" if yes else "No") + t[m.end(2):]
+    return t[:m.start(2)] + ("Yes" if word in YES else "No") + t[m.end(2):]
 
 
-FR_WORDS = ["le", "la", "les", "des", "du", "une", "est", "et", "pour", "avec", "dans", "qui", "que", "sont", "pas",
-            "plus", "sur", "aux", "cette", "leur"]
+ES_WORDS = ["el", "la", "los", "las", "del", "una", "es", "y", "para", "con", "en", "que", "son", "por", "su", "sus",
+            "más", "como", "pero", "muy"]
 EN_WORDS = ["the", "and", "is", "are", "for", "with", "of", "to", "in", "that", "this", "which", "their", "not",
             "more", "on", "from", "its", "by", "these"]
+# 24 frequent characters that exist only in Traditional script (their Simplified forms differ); MC_Script (2.8)
+ZH_TRAD = set("們這說為對會來個時與國學經進過還開關機車體點當類")
 
 
 def in_language(text, language):
-    """MC_Language rule of section 2.8 (fixed). JA: kana + CJK >= 50% of letters. FR: French function words
-    outnumber English ones (ties and no function word -> not French)."""
+    """MC_Language rule of section 2.8 (fixed). KO: Hangul >= 50% of letters. ZH: Han >= 50% of letters.
+    ES: Spanish function words outnumber English ones among ES_WORDS + EN_WORDS (ties, none -> not Spanish).
+    ('es' and 'en' share no word in the two lists.)"""
     t = normalise(text)
-    if language == "ja":
+    if language in ("ko", "zh"):
         letters = [c for c in t if c.isalpha()]
         if not letters:
             return False
-        cjk = sum(1 for c in letters if "぀" <= c <= "ヿ" or "㐀" <= c <= "鿿")
-        return cjk / len(letters) >= 0.5
-    words = re.findall(r"[a-zàâçéèêëîïôûùüÿœæ]+", t.lower())
-    fr = sum(w in FR_WORDS for w in words)
+        lo, hi = ("가", "힣") if language == "ko" else ("㐀", "鿿")
+        return sum(1 for c in letters if lo <= c <= hi) / len(letters) >= 0.5
+    words = re.findall(r"[a-záéíóúñü]+", t.lower())
+    es = sum(w in ES_WORDS for w in words)
     en = sum(w in EN_WORDS for w in words)
-    return fr > en
+    return es > en
+
+
+def zh_traditional(text):
+    """MC_Script (section 2.8): True if a ZH answer contains any of the ZH_TRAD characters."""
+    return any(c in ZH_TRAD for c in text or "")
 
 
 # --------------------------------------------------------------------------- raw handling
@@ -218,6 +246,7 @@ def prepare_record(rec, aliaser=None, hits=None):
         out["text"] = map_answer_words(text, lg)
     # v0.23 Phase A: unchanged (the judge reads the answer as written)
     out["in_language"] = in_language(text, lg) if text.strip() else None
+    out["zh_traditional"] = zh_traditional(text) if lg == "zh" else None
     return out
 
 
@@ -225,8 +254,8 @@ def prepare_raw(raw_path, out_dir, aliaser=None):
     guard_real_raw(raw_path)
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
-    hits, n = [], {"fr": 0, "ja": 0}
-    files = {lg: open(out_dir / f"v62_prepared_{lg}.jsonl", "w", encoding="utf-8") for lg in ("fr", "ja")}
+    hits, n = [], {lg: 0 for lg in LANGS}
+    files = {lg: open(out_dir / f"v62_prepared_{lg}.jsonl", "w", encoding="utf-8") for lg in LANGS}
     try:
         with open(raw_path, encoding="utf-8") as f:
             lines = f.readlines()
@@ -250,7 +279,7 @@ def prepare_raw(raw_path, out_dir, aliaser=None):
 
 
 def main(argv=None):
-    ap = argparse.ArgumentParser(description="AIAS v0.62 coder pre-step (r1 draft)")
+    ap = argparse.ArgumentParser(description="AIAS v0.62 coder pre-step (r2 draft)")
     ap.add_argument("--prepare", metavar="RAW", default=None)
     ap.add_argument("--out", default=str(V62 / "data/coded"))
     a = ap.parse_args(argv)

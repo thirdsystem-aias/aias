@@ -97,9 +97,12 @@ class Verdicts(unittest.TestCase):
         self.assertEqual(S.verdict_rank(30, 0.4, 0.01), "MARGINAL")
 
     def test_joint_reading(self):
-        self.assertEqual(S.joint_reading("CONFIRMED", "CONFIRMED"), "Language-robust")
-        self.assertEqual(S.joint_reading("CONFIRMED", "FALSIFIED"), "Language-dependent (JA)")
-        self.assertEqual(S.joint_reading("MARGINAL", "CONFIRMED"), "Partly robust")
+        self.assertEqual(S.joint_reading("CONFIRMED", "CONFIRMED", "CONFIRMED"), "Language-robust")
+        self.assertEqual(S.joint_reading("CONFIRMED", "FALSIFIED", "FALSIFIED"), "Language-dependent (KO, ZH)")
+        self.assertEqual(S.joint_reading("CONFIRMED", "MARGINAL", "FALSIFIED"), "Language-dependent (ZH)")
+        self.assertEqual(S.joint_reading("MARGINAL", "CONFIRMED", "CONFIRMED"), "Partly robust")
+        self.assertEqual(S.LANGS, ("es", "ko", "zh"))
+        self.assertEqual(len(set(v for k, v in S.SEEDS.items() if isinstance(k, tuple))), 9)
 
 
 class EndToEnd(unittest.TestCase):
@@ -109,16 +112,17 @@ class EndToEnd(unittest.TestCase):
         fr = synth_rows(U, pi, 7)                                      # same orderings as English
         rev = {u: 1.0 - pi[u] for u in U}
         ja = synth_rows(U, rev, 8)                                     # reversed orderings
-        v = S.score(U, en, {"fr": fr, "ja": ja}, n_perm=199, n_boot=199, option="A")
+        v = S.score(U, en, {"es": fr, "ko": ja, "zh": fr}, n_perm=199, n_boot=199, option="A")
         self.assertEqual(v["n_units"], 112)
-        self.assertEqual(v["tests"]["H_Lang_Presence_fr"]["verdict"], "CONFIRMED")
-        self.assertEqual(v["tests"]["H_Lang_Presence_ja"]["verdict"], "FALSIFIED")
-        self.assertEqual(v["joint_reading"], "Language-dependent (JA)")
-        self.assertEqual(v["tests"]["H_Lang_Rank_fr"]["verdict"], "NOT TESTED")
-        self.assertIn(v["tests"]["H_Lang_Phi_fr"]["verdict"], ("CONFIRMED", "MARGINAL", "FALSIFIED", "UNDETERMINED"))
-        self.assertEqual(v["sensitivities"]["S-Denon_fr"]["n"], 111)
-        self.assertEqual(v["sensitivities"]["S-Headphones_fr"]["n"], 96)
-        lo, hi = v["tests"]["H_Lang_Presence_fr"]["delta_L_ci95"]
+        self.assertEqual(v["tests"]["H_Lang_Presence_es"]["verdict"], "CONFIRMED")
+        self.assertEqual(v["tests"]["H_Lang_Presence_zh"]["verdict"], "CONFIRMED")
+        self.assertEqual(v["tests"]["H_Lang_Presence_ko"]["verdict"], "FALSIFIED")
+        self.assertEqual(v["joint_reading"], "Language-dependent (KO)")
+        self.assertEqual(v["tests"]["H_Lang_Rank_es"]["verdict"], "NOT TESTED")
+        self.assertIn(v["tests"]["H_Lang_Phi_es"]["verdict"], ("CONFIRMED", "MARGINAL", "FALSIFIED", "UNDETERMINED"))
+        self.assertEqual(v["sensitivities"]["S-Denon_es"]["n"], 111)
+        self.assertEqual(v["sensitivities"]["S-Headphones_zh"]["n"], 96)
+        lo, hi = v["tests"]["H_Lang_Presence_es"]["delta_L_ci95"]
         self.assertLess(lo, hi)
 
     def test_options_b_c_and_drop_rule(self):
@@ -126,24 +130,26 @@ class EndToEnd(unittest.TestCase):
         pi, en = english(U)
         fr = synth_rows(U, pi, 7)
         ja = synth_rows(U, pi, 9, drop_model="gemini-4-argon")
-        vb = S.score(U, en, {"fr": fr, "ja": ja}, n_perm=99, n_boot=99, option="B")
+        vb = S.score(U, en, {"es": fr, "ko": ja, "zh": fr}, n_perm=99, n_boot=99, option="B")
         self.assertEqual(vb["n_units"], 111)
-        self.assertEqual(vb["tests"]["H_Lang_Presence_fr"]["n"], 111)
-        self.assertIn("void", vb["sensitivities"]["S-Denon_fr"])
-        self.assertEqual(vb["tests"]["H_Lang_Presence_ja"]["verdict"], "UNDETERMINED")   # Gemini below 90% in JA
-        vc = S.score(U, en, {"fr": fr, "ja": ja}, n_perm=99, n_boot=99, option="C")
+        self.assertEqual(vb["tests"]["H_Lang_Presence_es"]["n"], 111)
+        self.assertIn("void", vb["sensitivities"]["S-Denon_es"])
+        self.assertEqual(vb["tests"]["H_Lang_Presence_ko"]["verdict"], "UNDETERMINED")   # Gemini below 90% in KO
+        self.assertNotEqual(vb["tests"]["H_Lang_Presence_zh"]["verdict"], "UNDETERMINED")
+        vc = S.score(U, en, {"es": fr, "ko": ja, "zh": fr}, n_perm=99, n_boot=99, option="C")
         self.assertEqual(vc["n_units"], 96)
-        self.assertIn("void", vc["sensitivities"]["S-Headphones_ja"])
+        self.assertIn("void", vc["sensitivities"]["S-Headphones_ko"])
 
     def test_rank_conditional(self):
         U = units()
         pi, en = english(U)
         rows = synth_rows(U, pi, 7)
         rk = {"en": {u: float(i % 5) for i, u in enumerate(U)}}
-        rk["fr"] = dict(rk["en"])
-        rk["ja"] = dict(rk["en"])
-        v = S.score(U, en, {"fr": rows, "ja": rows}, rank=rk, rank_status="PASS", n_perm=99, n_boot=99, option="A")
-        self.assertEqual(v["tests"]["H_Lang_Rank_fr"]["verdict"], "CONFIRMED")
+        for lg in ("es", "ko", "zh"):
+            rk[lg] = dict(rk["en"])
+        v = S.score(U, en, {"es": rows, "ko": rows, "zh": rows}, rank=rk, rank_status="PASS", n_perm=99, n_boot=99,
+                    option="A")
+        self.assertEqual(v["tests"]["H_Lang_Rank_zh"]["verdict"], "CONFIRMED")
 
     def test_run_once_guard(self):
         with tempfile.TemporaryDirectory() as d:
