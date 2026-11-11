@@ -1,0 +1,57 @@
+# v0.62 r2 fake-SDK dry run (no network, no paid call). Script: /tmp/aias_v062_dryrun/dry_v062.py; fakes: copy of /tmp/aias_prelock_dryrun_1110/fakesdk.py. 2026-11-11T03:44Z
+{
+ "result": "pause",
+ "specs": 810,
+ "raw_lines": 686,
+ "status": {
+  "ok": 590,
+  "error": 69,
+  "empty": 27
+ },
+ "unique_calls_ok": 590,
+ "calls_without_ok": 220,
+ "requests_served_by_fakes": 787,
+ "planned_attempts_unused": 202,
+ "independent_bill_usd (Dec prices, requests with usage)": 30.2316,
+ "ledger_calls_spent_usd": 81.599,
+ "ledger_minus_bill_usd (worst-case allowances)": 51.3674,
+ "worst_case_parts": 123,
+ "reserved_left": 0,
+ "served_mismatch_lines": 17,
+ "truncated_lines": 20,
+ "coded_ok_answers_with_Sennheiser": 285,
+ "Koss_false_matches": 0,
+ "zh_traditional_flagged": 6,
+ "off_language_flagged": {
+  "es": 6,
+  "ko": 5,
+  "zh": 4
+ },
+ "adversarial_cases": {
+  "fable expired -> resent": 12,
+  "fable errored transient -> resent": 12,
+  "fable errored fatal": 12,
+  "fable empty -> resent once": 12,
+  "fable truncated at cap": 12,
+  "gemini-4-argon 2 transient -> ok": 12,
+  "gemini-4-argon fatal 4xx": 12,
+  "gemini-4-argon transient x MAX": 12,
+  "gemini-4-argon empty -> resent once": 12,
+  "gemini-4-argon served-model mismatch": 12,
+  "gemini-4-argon refusal (empty) x2": 12,
+  "gemini-4-argon truncated at cap": 12,
+  "gemini-4-argon answer in English": 12,
+  "zh Traditional-script answer": 8,
+  "gpt-6-astra 2 transient -> ok": 12,
+  "gpt-6-astra fatal 4xx": 12,
+  "gpt-6-astra transient x MAX": 12,
+  "gpt-6-astra empty -> resent once": 12,
+  "gpt-6-astra served-model mismatch": 11,
+  "gpt-6-astra refusal (empty) x2": 11,
+  "gpt-6-astra truncated at cap": 11,
+  "gpt-6-astra answer in English": 11
+ }
+}
+  es|v20|B|q5|gpt-6-astra|S0|3 ok out=900 fr=completed $1.7240
+  es|v20|B|q3|gemini-4-argon|S0|3 ok out=900 fr=FinishReason.STOP $0.3478
+HALT (pause) in block 3: {'actual_calls_usd': 81.599, 'judge_reserve_usd': 0.0, 'spent_usd': 81.599, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'approved_drop_run3': False, 'approved_drop_phase_a': True, 'halted': 'pause', 'halt_reason': 'spend $81.25 >= $80'}

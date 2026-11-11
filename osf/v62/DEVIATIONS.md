@@ -35,3 +35,11 @@ Non-English wave (French and Japanese) of the t₄ omnibus panel. Entries are nu
 - **Independence rule.** No unit is focal; no lesson is addressed to a brand; no brand has been or will be contacted.
 
 **Samsung in the paper.** Samsung appears only in the Declarations §COI of the v0.62 paper (draft text in PRE_REGISTRATION_v0_62_DRAFT_r0.md §10).
+
+
+### Part E — r2 (2026-11-10/11): languages changed; option A decided
+
+- **Languages.** The pre-registrant decided (2026-11-10, 20:44 CT) that the wave runs in Spanish, Korean and Chinese (Simplified, Mainland usage), replacing French and Japanese. The registries do not change: they are t₄'s 112 units.
+- **Headphones option A** is the decision of record (default (3) of 2026-11-10): Denon kept and disclosed, every result also shown without Denon (S-Denon, 111 units) and without the headphones category (S-Headphones, 96 units). `params_v0_62.HEADPHONES_OPTION = "A"`.
+- **Korean.** South Korea is Samsung Electronics' home market. Answers in Korean (as in any language) may name Samsung-group brands that are not registry units; such names are never coded or scored (coding counts only the 112 registry units; the r2 alias table adds no alias for any non-registry brand). The pre-registration states this in its Declarations §COI, the only place Samsung is named in the paper.
+- **Part D update.** No Spanish, Korean or Chinese brand is added; no market is targeted.

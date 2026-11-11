@@ -1,0 +1,60 @@
+{
+ "gate": "P1 kernel parity (synthetic English-shaped tables; v0.42 real answers not read)",
+ "pinned": {
+  "commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+  "files": {
+   "v42": "osf/v42/scripts/score_v0_42.py",
+   "v41": "osf/v41/scripts/score_v41.py"
+  },
+  "functions": {
+   "v42": [
+    "pi_hat",
+    "phi_runs",
+    "phi_panel"
+   ],
+   "v41": [
+    "phi_m",
+    "phi_of"
+   ]
+  }
+ },
+ "scenarios": {
+  "complete": {
+   "seed": 620151,
+   "units": 112,
+   "mismatches": 0,
+   "first": [],
+   "partitions": {
+    "zero": 6,
+    "saturated": 7,
+    "defined": 97,
+    "undefined": 2
+   }
+  },
+  "missing": {
+   "seed": 620152,
+   "units": 112,
+   "mismatches": 0,
+   "first": [],
+   "partitions": {
+    "zero": 1,
+    "saturated": 2,
+    "defined": 82,
+    "undefined": 27
+   }
+  },
+  "complete_b": {
+   "seed": 620153,
+   "units": 112,
+   "mismatches": 0,
+   "first": [],
+   "partitions": {
+    "zero": 2,
+    "saturated": 9,
+    "defined": 95,
+    "undefined": 6
+   }
+  }
+ },
+ "result": "PASS"
+}

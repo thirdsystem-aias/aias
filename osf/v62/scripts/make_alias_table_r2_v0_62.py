@@ -174,7 +174,7 @@ def main():
         b = r['brand']
         ko, kocp, zh, zhcp, note = A[b]
         ck = CHECKS.get(b, {})
-        kst = ck.get('ko', ('UNCONFIRMED', '', ''))
+        kst = ck.get('ko', ('UNCONFIRMED', '', '')) if ko else ck.get('ko', ('NO ALIAS', '', ''))
         zst = ck.get('zh', ('UNCONFIRMED', '', '')) if zh else ck.get('zh', ('NO ALIAS', '', ''))
         rows.append({'substrate': r['substrate'], 'brand': b, 'ko_aliases': ko, 'ko_collision_prone': 'yes' if kocp else 'no',
                      'zh_aliases': zh, 'zh_collision_prone': 'yes' if zhcp else 'no', 'es_aliases': '',
