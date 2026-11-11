@@ -56,9 +56,20 @@ OUT_DIR = ROOT / V63 / "outputs"
 
 OMNI = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]   # sec 3
 WAVES = ["t1", "t2", "t3"]                             # sec 3
-EXPECTED_BRANDS = {"v0.19": 16, "v0.20": 24, "v0.21": 24, "v0.22": 24, "v0.23": 24}   # sec 3 (112 per wave)
-CELLED = ["v0.19", "v0.20", "v0.21", "v0.22"]          # sec 5.1: F1 and F3 defined
-IL_GRADIENT = ["v0.20", "v0.21", "v0.22"]              # sec 5.1: IL guard and F2 defined
+SINGLE_WAVE = ["v0.18"]                                # sec 3: single-wave (t1) stratum (r1 review item 1)
+SUBSTRATES = OMNI + SINGLE_WAVE
+WAVES_OF = {**{s: WAVES for s in OMNI}, "v0.18": ["t1"]}
+EXPECTED_BRANDS = {"v0.19": 16, "v0.20": 24, "v0.21": 24, "v0.22": 24, "v0.23": 24,   # sec 3 (112 per wave)
+                   "v0.18": 24}
+CELLED = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.18"]  # sec 5.1: F1 and F3 defined
+IL_GRADIENT = ["v0.20", "v0.21", "v0.22", "v0.18"]      # sec 5.1: IL guard defined (B vs C)
+TYPE2_DEFINED = ["v0.20", "v0.21", "v0.22"]             # sec 5.1: F2 needs the cultural channel
+PHASE_B_CELLS = {**{s: 36 for s in OMNI}, "v0.18": 18}  # sec 5.2: C = recall / Phase B cells
+
+
+def substrate_waves():
+    """[(wave, substrate)] in a fixed order: the five omnibus substrates at t1-t3, then v0.18 at t1."""
+    return [(w, s) for w in WAVES for s in OMNI] + [("t1", s) for s in SINGLE_WAVE]
 CAT_PREFIX = ("q1", "q2", "q3", "EA")                  # sec 5: category channel (R_cat)
 CULT_PREFIX = ("q4", "q5", "q6", "CC")                 # sec 5: cultural channel (R_cult)
 N_MODELS, N_FRAMES = 6, 6
@@ -83,11 +94,11 @@ REGIMES = ("Dominant", "Established", "Emerging", "Absent")
 
 # sec 6 - hypotheses
 H1_CONF, H1_FALS, H1_NULL_PI = 0.80, 0.60, 0.60
-H2_CONF, H2_FALS = 0.80, 0.60
+H2_CONF, H2_FALS = 0.90, 0.75                          # r1 review item 2: aligned with H4's F4 bars
 H4_F4_CONF, H4_F4_FALS = 0.90, 0.75
 N_MIN_COMPARISONS = 15
-ALPHA_PRIMARY = 0.025                                  # sec 6.5: Bonferroni over H1, H2
-ALPHA_SECONDARY = 0.05                                 # sec 6.5: H3 (the only secondary with a p-value)
+ALPHA_PRIMARY = 0.025                                  # sec 6.6: Bonferroni over H1, H2
+ALPHA_SECONDARY = 0.05                                 # sec 6.6: H3 (the only secondary with a p-value)
 N_DRAWS_RANDOM = 500                                   # sec 4 R9
 RANDOM_SHARE = 0.75                                    # sec 4 R9
 N_PERM_H2 = 1_000                                      # sec 6.2
@@ -104,7 +115,11 @@ REF_V23 = "osf/v23/v23_verdicts.json"
 REF_V19_OUTPUT = "osf/v19/scoring_output_v0_19.txt"
 REGISTRY_FILES = {"v0.19": "osf/v19/panel_registry_v0_19.csv", "v0.20": "prereg/v0_20_registry.json",
                   "v0.21": "prereg/v0_21_registry.json", "v0.22": "prereg/v0_22_automotive_content.py",
-                  "v0.23": "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json"}
+                  "v0.23": "osf/methodology/v1_10/registries/v0_23_registry_v1_10.json",
+                  "v0.18": "osf/v18/scripts/acquire_phase_a_v18.py"}
+V18_BORDERLINE = {"Le Labo", "Frederic Malle", "Byredo"}     # osf/v18/PRE_REGISTRATION_v0_18.md sec 1.5
+V18_FILES = {"a": "osf/v18/data/phase_a_results.json", "b": "osf/v18/data/phase_b_results.json",
+             "verdict": "osf/v18/data/verdicts/v0_18_verdict.json"}
 
 
 class Halt(RuntimeError):
@@ -145,7 +160,7 @@ def _write_json(path: Path, obj):
 #   unit = {"cell": str, "cp": int 0..6, "r_cat": int 0..18, "r_cult": int 0..18, "cascade": int|None}
 # ===========================================================================
 def spearman(x, y):
-    """Spearman rho with average ranks; None when undefined (n < 2 or a constant vector) - sec 6.4."""
+    """Spearman rho with average ranks; None when undefined (n < 2 or a constant vector) - sec 6.5."""
     n = len(x)
     if n < 2 or len(set(x)) < 2 or len(set(y)) < 2:
         return None
@@ -196,7 +211,7 @@ def top2_share(panel, brands) -> float:
 def f1_regime4(panel: dict, il_gradient: bool, prescreen: bool = True) -> dict:
     """F1 = H_Regime4 routing (sec 5.1): v1.6 Increment 1 pre-screen, then v1.5 C1 -> C2 -> IL guard -> C3.
     UNDEFINED (None) when the panel has fewer than 2 non-empty cells; INADEQUATE (C1 fails) is not a
-    verdict for comparison (sec 6.4)."""
+    verdict for comparison (sec 6.5)."""
     cells = cells_of(panel)
     if len(cells) < 2:
         return {"verdict": None, "why": "fewer than 2 cells"}
@@ -240,7 +255,7 @@ def is_type2(u):
 
 def f2_type2(panel: dict) -> dict:
     """F2 = H_Type2_emergence (sec 5.1): Type 2 count in Cell B. Cell B absent or n_B < 5 -> UNDETERMINED,
-    which is not a verdict for comparison (sec 6.4)."""
+    which is not a verdict for comparison (sec 6.5)."""
     bs = [b for b, u in panel.items() if u["cell"] == "B"]
     if len(bs) < CELL_B_N_MIN:
         return {"verdict": "UNDETERMINED", "n_B": len(bs)}
@@ -264,7 +279,7 @@ def composite(u):
     None (descoped) when R = 0 (v1.4 sec 7: C_P FAIL brands are descoped)."""
     if u["cp"] < RECOG_PASS:
         return None
-    return W_R * 1.0 + W_C * (u["r_cat"] + u["r_cult"]) / (N_MODELS * N_FRAMES)
+    return W_R * 1.0 + W_C * (u["r_cat"] + u["r_cult"]) / u.get("n_b", N_MODELS * N_FRAMES)
 
 
 def percentile(sorted_vals, q):
@@ -312,21 +327,21 @@ def substrate_verdicts(sub: str, panel: dict) -> dict:
     if sub in CELLED:
         out["F1"] = f1_regime4(panel, il_gradient=sub in IL_GRADIENT)["verdict"]
         out["F3"] = f3_dissociation(panel)["verdict"]
-    if sub in IL_GRADIENT:
+    if sub in TYPE2_DEFINED:
         out["F2"] = f2_type2(panel)["verdict"]
     return out
 
 
-UNCOMPARABLE = {None, "INADEQUATE", "UNDETERMINED"}    # sec 6.4
+UNCOMPARABLE = {None, "INADEQUATE", "UNDETERMINED"}    # sec 6.5
 
 
 # ===========================================================================
 # SEC 4 - PANEL-BUILD RULES
 # ===========================================================================
 def _cell_letter(label: str) -> str:
-    """'A_Heritage' / 'Cell_B_Disruptor' / 'C' -> 'A' / 'B' / 'C'."""
-    s = label[5:] if label.startswith("Cell_") else label
-    return s[:1]
+    """'A_Heritage' / 'Cell_B_Disruptor' / 'cell_c_mass_prestige' / 'C' -> 'A' / 'B' / 'C' / 'C'."""
+    s = label[5:] if label.lower().startswith("cell_") else label
+    return s[:1].upper()
 
 
 def load_registry_meta(root: Path = ROOT) -> dict:
@@ -374,6 +389,17 @@ def load_registry_meta(root: Path = ROOT) -> dict:
     meta["v0.23"] = {b["id"]: {"cell": "-", "cascade": None,
                                "flags": {"conglomerate"} if int(b["conglomerate"]) == 1 else set(),
                                "name": b["brand"]} for b in d["brands"]}
+    # v0.18: REGISTRY of the acquisition script (cascade order = list order, pre-registration sec 1.4);
+    # borderline = pre-registration sec 1.5 / sec 6 (Le Labo, Frederic Malle, Byredo)
+    reg = None
+    for node in ast.parse((root / REGISTRY_FILES["v0.18"]).read_text(encoding="utf-8")).body:
+        if isinstance(node, ast.Assign) and any(getattr(t, "id", None) == "REGISTRY" for t in node.targets):
+            reg = ast.literal_eval(node.value)
+    if reg is None:
+        raise Halt("v0.18 REGISTRY not found")
+    meta["v0.18"] = {n: {"cell": _cell_letter(cid), "cascade": i,
+                         "flags": {"borderline"} if n in V18_BORDERLINE else set()}
+                     for cid, names in reg.items() for i, n in enumerate(names, 1)}
     return meta
 
 
@@ -437,15 +463,15 @@ def build_rules_doc(root: Path = ROOT) -> dict:
     meta = load_registry_meta(root)
     subs = {}
     n_struct = 0
-    for sub in OMNI:
-        fams = [f for f, ok in (("F1", sub in CELLED), ("F2", sub in IL_GRADIENT), ("F3", sub in CELLED)) if ok]
+    for sub in SUBSTRATES:
+        fams = [f for f, ok in (("F1", sub in CELLED), ("F2", sub in TYPE2_DEFINED), ("F3", sub in CELLED)) if ok]
         vs = []
         for rule, vid, kept in structural_variants(sub, meta[sub]):
             dropped = sorted(set(meta[sub]) - set(kept))
             cells_left = sorted({meta[sub][b]["cell"] for b in kept})
             fam_here = [] if rule in F4_ONLY_RULES else [
                 f for f in fams if not ((f in ("F1", "F3") and len(cells_left) < 2) or (f == "F2" and "B" not in cells_left))]
-            n_struct += len(fam_here) * len(WAVES)
+            n_struct += len(fam_here) * len(WAVES_OF[sub])
             vs.append({"rule": rule, "variant": vid, "n_kept": len(kept), "dropped": dropped,
                        "cells_left": cells_left, "families_comparable_structurally": fam_here})
         subs[sub] = {"registry": REGISTRY_FILES[sub], "n_brands": len(meta[sub]),
@@ -565,17 +591,20 @@ def stratified_draw(rng, panel: dict, share: float = RANDOM_SHARE) -> list:
 def check_archive(archive: dict, meta: dict, expected=None) -> list:
     """MC4: every substrate-wave holds exactly the registry's brands (and the expected count)."""
     bad = []
-    for w in WAVES:
-        for s in OMNI:
-            got = set(archive.get(w, {}).get(s, {}))
-            if got != set(meta[s]):
-                bad.append(f"{w} {s}: brand set differs from the registry "
-                           f"(missing {sorted(set(meta[s]) - got)[:5]}, extra {sorted(got - set(meta[s]))[:5]})")
-            if expected and len(got) != expected[s]:
-                bad.append(f"{w} {s}: {len(got)} brands, expected {expected[s]}")
-            for b in got & set(meta[s]):
-                if archive[w][s][b]["cell"] != meta[s][b]["cell"]:
-                    bad.append(f"{w} {s} {b}: cell {archive[w][s][b]['cell']} != registry {meta[s][b]['cell']}")
+    for w, s in substrate_waves():
+        got = set(archive.get(w, {}).get(s, {}))
+        if got != set(meta[s]):
+            bad.append(f"{w} {s}: brand set differs from the registry "
+                       f"(missing {sorted(set(meta[s]) - got)[:5]}, extra {sorted(got - set(meta[s]))[:5]})")
+        if expected and len(got) != expected[s]:
+            bad.append(f"{w} {s}: {len(got)} brands, expected {expected[s]}")
+        for b in got & set(meta[s]):
+            if archive[w][s][b]["cell"] != meta[s][b]["cell"]:
+                bad.append(f"{w} {s} {b}: cell {archive[w][s][b]['cell']} != registry {meta[s][b]['cell']}")
+    for w in WAVES:                                   # a single-wave substrate has no other wave
+        for s in SINGLE_WAVE:
+            if w not in WAVES_OF[s] and archive.get(w, {}).get(s):
+                bad.append(f"{w} {s}: unexpected wave for a single-wave substrate")
     return bad
 
 
@@ -594,36 +623,36 @@ def score_core(archive: dict, meta: dict, n_draws: int = N_DRAWS_RANDOM, n_perm:
     if bad:
         raise Halt("MC4 failed: " + "; ".join(bad[:5]))
     canon, canon_reg = {}, {}
-    for w in WAVES:
-        for s in OMNI:
-            canon[w, s] = substrate_verdicts(s, archive[w][s])
-            canon_reg[w, s] = f4_regimes(archive[w][s])
+    for w, s in substrate_waves():
+        canon[w, s] = substrate_verdicts(s, archive[w][s])
+        canon_reg[w, s] = f4_regimes(archive[w][s])
 
     comparisons, f4_rows, groups, mc1_fail = [], [], [], []
-    for w in WAVES:
-        for s in OMNI:
-            panel = archive[w][s]
-            full_bl = brand_level(panel)
-            variants = list(structural_variants(s, meta[s]))
-            for v in data_variants(s, panel, archive[XWAVE_SOURCE[w]][s]):
-                if all(v[2] != o[2] for o in variants):             # sec 4: duplicates count once
-                    variants.append(v)
-            for rule, vid, kept in variants:
-                alt = subpanel(panel, kept)
-                if brand_level(alt) != {b: full_bl[b] for b in kept}:          # MC1
-                    mc1_fail.append(f"{w} {s} {vid}")
-                a, d = f4_agreement(canon_reg[w, s], f4_regimes(alt))
-                f4_rows.append({"wave": w, "substrate": s, "rule": rule, "variant": vid, "n_kept": len(kept),
-                                "f4_agree": a, "f4_defined": d})
-                if rule in F4_ONLY_RULES:
-                    continue
-                rows = compare(canon[w, s], substrate_verdicts(s, alt))
-                for r in rows:
-                    comparisons.append({"wave": w, "substrate": s, "rule": rule, "variant": vid,
-                                        "n_kept": len(kept), **r})
-                comp_fams = [r["family"] for r in rows if r["status"] != "uncomparable"]
-                if comp_fams:
-                    groups.append((w, s, len(kept), comp_fams))
+    for w, s in substrate_waves():
+        panel = archive[w][s]
+        full_bl = brand_level(panel)
+        variants = list(structural_variants(s, meta[s]))
+        src_w = XWAVE_SOURCE[w]
+        source = archive[src_w][s] if src_w in WAVES_OF[s] else None    # R8 needs another wave
+        for v in data_variants(s, panel, source):
+            if all(v[2] != o[2] for o in variants):             # sec 4: duplicates count once
+                variants.append(v)
+        for rule, vid, kept in variants:
+            alt = subpanel(panel, kept)
+            if brand_level(alt) != {b: full_bl[b] for b in kept}:          # MC1
+                mc1_fail.append(f"{w} {s} {vid}")
+            a, d = f4_agreement(canon_reg[w, s], f4_regimes(alt))
+            f4_rows.append({"wave": w, "substrate": s, "rule": rule, "variant": vid, "n_kept": len(kept),
+                            "f4_agree": a, "f4_defined": d})
+            if rule in F4_ONLY_RULES:
+                continue
+            rows = compare(canon[w, s], substrate_verdicts(s, alt))
+            for r in rows:
+                comparisons.append({"wave": w, "substrate": s, "rule": rule, "variant": vid,
+                                    "n_kept": len(kept), **r})
+            comp_fams = [r["family"] for r in rows if r["status"] != "uncomparable"]
+            if comp_fams:
+                groups.append((w, s, len(kept), comp_fams))
     if mc1_fail:
         raise Halt("MC1 (brand-level invariance) failed: " + "; ".join(mc1_fail[:5]))
 
@@ -646,7 +675,7 @@ def score_core(archive: dict, meta: dict, n_draws: int = N_DRAWS_RANDOM, n_perm:
         return t
 
     loso = {}
-    for s in OMNI:
+    for s in SUBSTRATES:
         rest = [c for c in defined if c["substrate"] != s]
         loso[s] = (sum(c["status"] == "match" for c in rest) / len(rest)) if rest else None
 
@@ -664,7 +693,16 @@ def score_core(archive: dict, meta: dict, n_draws: int = N_DRAWS_RANDOM, n_perm:
     h4_all = verdict_h4(sum(c["status"] == "flip" for c in dfd), len(dfd),
                         sum(r["f4_agree"] for r in fr), sum(r["f4_defined"] for r in fr))
 
+    # Sensitivity S2 (sec 6.8): every uncomparable outcome counted as a flip (H1, H4). Never replaces them.
+    s2_h1 = verdict_h1(matched, len(det))
+    s2_h4 = verdict_h4(sum(c["status"] != "match" for c in cs), len(cs),
+                       sum(r["f4_agree"] for r in fr), sum(r["f4_defined"] for r in fr))
+    s2 = {"H1_SubstrateVerdictStability": s2_h1, "H4_DisclosedHandlingNeutral": s2_h4,
+          "uncomparable_by_rule": {r: sum(c["status"] == "uncomparable" for c in comparisons if c["rule"] == r)
+                                   for r in DETERMINISTIC_RULES}}
+
     out = {"H1_SubstrateVerdictStability": h1, "H4_DisclosedHandlingNeutral": {**h4_all, "per_rule": h4},
+           "sensitivity_S2_uncomparable_as_flip": s2,
            "descriptives": {"H1_by_rule": table("rule"), "H1_by_family": table("family"),
                             "H1_by_substrate": table("substrate"), "H1_by_wave": table("wave"),
                             "H1_leave_one_substrate_out_A": loso,
@@ -679,34 +717,33 @@ def score_core(archive: dict, meta: dict, n_draws: int = N_DRAWS_RANDOM, n_perm:
         rngp = np.random.default_rng(SEEDS["H2"])
         code = {r: i for i, r in enumerate(REGIMES)}
         s_obs, s_null, per_sw = [], [], {}
-        for w in WAVES:
-            for s in OMNI:
-                panel = archive[w][s]
-                cr = canon_reg[w, s]
-                if all(v is None for v in cr.values()):
-                    per_sw[f"{w} {s}"] = None
-                    for _ in range(n_draws):                    # keep the stream aligned across substrates
-                        stratified_draw(rng, panel)
+        for w, s in substrate_waves():
+            panel = archive[w][s]
+            cr = canon_reg[w, s]
+            if all(v is None for v in cr.values()):
+                per_sw[f"{w} {s}"] = None
+                for _ in range(n_draws):                    # keep the stream aligned across substrates
+                    stratified_draw(rng, panel)
+                continue
+            agrees, null_acc, used = [], np.zeros(n_perm), 0
+            for _ in range(n_draws):
+                kept = stratified_draw(rng, panel)
+                ar = f4_regimes(subpanel(panel, kept))
+                pairs = [(code[cr[b]], code[ar[b]]) for b in kept if cr.get(b) is not None and ar[b] is not None]
+                if not pairs:
                     continue
-                agrees, null_acc, used = [], np.zeros(n_perm), 0
-                for _ in range(n_draws):
-                    kept = stratified_draw(rng, panel)
-                    ar = f4_regimes(subpanel(panel, kept))
-                    pairs = [(code[cr[b]], code[ar[b]]) for b in kept if cr.get(b) is not None and ar[b] is not None]
-                    if not pairs:
-                        continue
-                    c = np.array([p[0] for p in pairs])
-                    a = np.array([p[1] for p in pairs])
-                    agrees.append(float((c == a).mean()))
-                    idx = rngp.permuted(np.tile(np.arange(len(a)), (n_perm, 1)), axis=1)
-                    null_acc += (a[idx] == c).mean(axis=1)
-                    used += 1
-                if used == 0:
-                    per_sw[f"{w} {s}"] = None
-                    continue
-                per_sw[f"{w} {s}"] = float(np.mean(agrees))
-                s_obs.append(float(np.mean(agrees)))
-                s_null.append(null_acc / used)
+                c = np.array([p[0] for p in pairs])
+                a = np.array([p[1] for p in pairs])
+                agrees.append(float((c == a).mean()))
+                idx = rngp.permuted(np.tile(np.arange(len(a)), (n_perm, 1)), axis=1)
+                null_acc += (a[idx] == c).mean(axis=1)
+                used += 1
+            if used == 0:
+                per_sw[f"{w} {s}"] = None
+                continue
+            per_sw[f"{w} {s}"] = float(np.mean(agrees))
+            s_obs.append(float(np.mean(agrees)))
+            s_null.append(null_acc / used)
         S = float(np.mean(s_obs)) if s_obs else None
         p = None
         if s_obs:
@@ -832,10 +869,60 @@ def load_archive(meta: dict) -> dict:
                 panel[b] = {"cell": meta[s][b]["cell"], "cp": int(sum(int(v) for v in rg)), "r_cat": r_cat,
                             "r_cult": r_cult, "cascade": meta[s][b]["cascade"], "k": k}
             arch[w][s] = panel
+    arch["t1"]["v0.18"] = load_v18(meta)["panel"]
     bad = check_archive(arch, meta, EXPECTED_BRANDS)
     if bad:
         raise Halt("MC4 failed: " + "; ".join(bad[:5]))
     return arch
+
+
+def load_v18(meta: dict, root: Path = ROOT) -> dict:
+    """v0.18 (t1 only). Recognition: the per-model yes/no codes of osf/v18/data/phase_a_results.json.
+    Recall: RE-DETECTED from the raw answers in phase_b_results.json["_raw_query_records"] with v0.18's own
+    parser (osf/v18/scripts/protocol/parse.py, parse_brand_mentions) and its alias map (BRAND_ALIASES of
+    osf/v18/scripts/acquire_phase_b_v18.py, read with ast; the acquisition module is not imported).
+    Three category frames only: R_cult = 0 and C = recall / 18 (sec 5.2). Returns the panel and the
+    archived codes it was checked against (MC4 / P8)."""
+    import ast
+    import importlib.util
+    spec = importlib.util.spec_from_file_location("v18_parse", str(root / "osf/v18/scripts/protocol/parse.py"))
+    parse = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(parse)
+    aliases = None
+    for node in ast.parse((root / "osf/v18/scripts/acquire_phase_b_v18.py").read_text(encoding="utf-8")).body:
+        if isinstance(node, ast.Assign) and any(getattr(t, "id", None) == "BRAND_ALIASES" for t in node.targets):
+            aliases = ast.literal_eval(node.value)
+    if aliases is None:
+        raise Halt("v0.18 BRAND_ALIASES not found")
+    a = json.loads((root / V18_FILES["a"]).read_text(encoding="utf-8"))
+    b = json.loads((root / V18_FILES["b"]).read_text(encoding="utf-8"))
+    models = list(a["reference_panel"])
+    frames = list(b["frames"])
+    brands = list(meta["v0.18"])
+    hits = {br: {f: {} for f in frames} for br in brands}
+    for key, rec in b["_raw_query_records"].items():
+        f, m = key.split("__", 1)
+        found = {x["canonical"] for x in parse.parse_brand_mentions(rec["response"]["raw_response"], brands, aliases)}
+        for br in brands:
+            hits[br][f][m] = br in found
+    if len(b["_raw_query_records"]) != len(frames) * len(models):
+        raise Halt(f"v0.18: {len(b['_raw_query_records'])} raw answers, expected {len(frames) * len(models)}")
+    panel, coded = {}, {}
+    for cell in a["cells"].values():
+        for pb in cell["per_brand"]:
+            br = pb["brand"]
+            if br not in meta["v0.18"]:
+                raise Halt(f"v0.18: brand {br!r} is not in the registry")
+            cp = sum(1 for m in models if pb["per_model_responses"][m]["recognized"])
+            k = [sum(1 for f in frames if hits[br][f].get(m)) for m in models]
+            panel[br] = {"cell": meta["v0.18"][br]["cell"], "cp": cp, "r_cat": sum(k), "r_cult": 0,
+                         "cascade": meta["v0.18"][br]["cascade"], "k": k, "n_b": PHASE_B_CELLS["v0.18"]}
+            coded[br] = {"c_p_score": pb["c_p_score"]}
+    for cell in b["cells"].values():
+        for pb in cell["per_brand"]:
+            coded[pb["brand"]].update(mention_count=pb["mention_count"],
+                                      per_frame_per_model=pb["per_frame_per_model"])
+    return {"panel": panel, "coded": coded, "re_detected": hits}
 
 
 # ===========================================================================
@@ -865,6 +952,65 @@ def _parse_v19_output(text: str) -> dict:
         if m and cur:
             modal[cur] = float(m.group(1))
     return {"iwachu": iw, "type1": t1, "cp_modal_share": modal}
+
+
+V18_CELL = {"A": "cell_a_designer_niche", "B": "cell_b_indie_artisan", "C": "cell_c_mass_prestige"}
+
+
+def parity_v18(p: dict, ld: dict, root: Path = ROOT) -> dict:
+    """P8 (r1 review item 1): v0.18 per-brand values and the published t1 verdicts, under v0.18's own rules
+    (osf/v18/scripts/score_v18.py verdict_h_regime4 / verdict_h_dissociation)."""
+    mism = []
+    n = 0
+    for br, c in ld["coded"].items():                     # per-brand codes archived with the answers
+        for key, mine, ref in (("c_p_score", p[br]["cp"], c["c_p_score"]),
+                               ("mention_count", p[br]["r_cat"], c["mention_count"])):
+            n += 1
+            if mine != ref:
+                mism.append(f"{br} {key}: {mine} != {ref}")
+        for f, by_m in c["per_frame_per_model"].items():   # raw-text re-detection vs archived booleans
+            for m, v in by_m.items():
+                n += 1
+                if bool(ld["re_detected"][br][f].get(m)) != bool(v):
+                    mism.append(f"{br} {f} {m}: re-detected {ld['re_detected'][br][f].get(m)} != coded {v}")
+    v = json.loads((root / V18_FILES["verdict"]).read_text(encoding="utf-8"))["verdicts"]
+    r4 = v["H_Regime4_indie_fragrance"]
+    cs = cells_of(p)
+    got, exp = {}, {}
+    for c, name in V18_CELL.items():
+        d = r4["cell_diagnostics"][name]
+        rho = spearman([p[b]["cp"] for b in cs[c]], [p[b]["r_cat"] for b in cs[c]])
+        got[f"{c}_n"], exp[f"{c}_n"] = len(cs[c]), d["n_post_attrition"]
+        got[f"{c}_top2"], exp[f"{c}_top2"] = round(top2_share(p, cs[c]), 10), round(d["mention_concentration_top2"], 10)
+        got[f"{c}_rho"] = None if rho is None else round(rho, 10)
+        exp[f"{c}_rho"] = None if d["phase_d_rho"] is None else round(d["phase_d_rho"], 10)
+    sep = top2_share(p, cs["B"]) - top2_share(p, cs["C"])
+    got["IL_separation"], exp["IL_separation"] = round(sep, 10), round(r4["C2_il_gradient_check"]["separation"], 10)
+    c2_cells = [V18_CELL[c] for c in "ABC" if top2_share(p, cs[c]) >= 0.50]          # score_v18 C2 (top-2 >= 0.50)
+    got["C2_cells"], exp["C2_cells"] = c2_cells, r4["C2_within_cell_check"]["cells_meeting_threshold"]
+    c3 = [V18_CELL[c] for c in "ABC" if len(cs[c]) >= 5 and got[f"{c}_rho"] is not None and got[f"{c}_rho"] >= 0.50]
+    got["C3_cells"], exp["C3_cells"] = c3, r4["C3_check"]["cells_clearing"]
+    own = ("FALSIFIED" if (len(p) < 12 or not c2_cells or sep < 0.10) else
+           ("CONFIRMED" if len(c3) >= 2 else "PARTIAL"))
+    got["H_Regime4"], exp["H_Regime4"] = own, r4["verdict"]
+    dis = v["H_Recognition_Recall_dissociation_generalization"]
+    got["iwachu_cases"] = {V18_CELL[c]: sorted((b, p[b]["cp"], p[b]["r_cat"]) for b in cs[c] if is_iwachu(p[b]))
+                           for c in "ABC"}
+    exp["iwachu_cases"] = {cell: sorted((x["brand"], x["c_p_score"], x["mention_count"]) for x in xs)
+                           for cell, xs in dis["cases_per_cell"].items()}
+    k = sum(1 for xs in got["iwachu_cases"].values() if xs)
+    got["H_Dissociation"] = "DISSOCIATION_GENERALIZED" if k == 3 else ("DISSOCIATION_PARTIAL" if k else "n/a")
+    exp["H_Dissociation"] = dis["verdict"]
+    for key in exp:
+        if json.dumps(got[key], sort_keys=True) != json.dumps(exp[key], sort_keys=True):
+            mism.append(f"{key}: {got[key]} != {exp[key]}")
+    return {"reference": [V18_FILES["a"], V18_FILES["b"], V18_FILES["verdict"]],
+            "keys": "cells.*.per_brand[].c_p_score; cells.*.per_brand[].mention_count / per_frame_per_model; "
+                    "verdicts.H_Regime4_indie_fragrance (cell_diagnostics, C2_within_cell_check, "
+                    "C2_il_gradient_check, C3_check, verdict); "
+                    "verdicts.H_Recognition_Recall_dissociation_generalization (cases_per_cell, verdict)",
+            "per_brand_values_checked": n, "reproduced": got, "published": exp,
+            "mismatches": mism, "passed": not mism and n == 24 * 2 + 24 * 18}
 
 
 def run_parity(arch: dict, root: Path = ROOT) -> dict:
@@ -967,12 +1113,14 @@ def run_parity(arch: dict, root: Path = ROOT) -> dict:
     exp = d["hypotheses"]["H_SubstrateRecognition_PreScreen"]["verdict"]
     checks["P7_v22_own_prescreen"] = {"reference": REF_T1_VERDICTS["v0.22"], "published": exp, "reproduced": got,
                                       "modal_cp_per_cell": modal, "passed": got == exp}
+    checks["P8_v18"] = parity_v18(arch["t1"]["v0.18"], load_v18(load_registry_meta(root), root), root)
     passed = all(c["passed"] for c in checks.values())
     return {"phase": PHASE_ID, "created_utc": _now(), "passed": passed,
             "note": "Reproduces published per-brand values (t1-t3) and published t1 verdicts only. No hypothesis "
                     "statistic and no alternative-panel verdict is computed before the lock.",
             "reference_sha256": {rel: sha256_bytes((root / rel).read_bytes()) for rel in
-                                 [REF_THREE_WAVE, REF_V23, REF_V19_OUTPUT, *REF_T1_VERDICTS.values()]},
+                                 [REF_THREE_WAVE, REF_V23, REF_V19_OUTPUT, *REF_T1_VERDICTS.values(),
+                                  *V18_FILES.values()]},
             "checks": checks}
 
 
@@ -1048,7 +1196,9 @@ def power_check(reps: int = 1000, h2_draws: int = 200) -> dict:
     h2 = {}
     for sc in ("spread", "ties", "floor"):
         panels = [synthetic_panel(rng, sc) for _ in range(5)]
-        h2[sc] = _h2_S_synthetic(panels, rng, h2_draws)
+        S_ = _h2_S_synthetic(panels, rng, h2_draws)
+        h2[sc] = {"S": S_, "band_at_locked_bars": ("FALSIFIED" if S_ < H2_FALS else
+                                                   ("CONFIRMED-level" if S_ >= H2_CONF else "MARGINAL"))}
     return {"phase": PHASE_ID, "created_utc": _now(), "seed": SEEDS["POWER"], "reps": reps,
             "H1_operating_characteristics": h1,
             "H3_power_fixed_null_binomial_approximation": h3,
@@ -1076,6 +1226,10 @@ LOCKED_FILES = [
     *LOADER_CODE_FILES,
     *REF_FILES,
     *ARCHIVE_DATA_FILES,
+    *V18_FILES.values(),                                 # v0.18 answers (t1) and its published verdicts
+    "osf/v18/scripts/protocol/parse.py",                 # v0.18 mention parser (re-detection, P8)
+    "osf/v18/scripts/acquire_phase_b_v18.py",            # v0.18 BRAND_ALIASES (read with ast)
+    "osf/v18/PRE_REGISTRATION_v0_18.md",                 # v0.18 borderline list (sec 1.5)
 ]
 
 
@@ -1183,7 +1337,7 @@ def run_real(log=print) -> dict:
         raise Halt("refusing to score before the lock: " + "; ".join(why))
     meta = load_registry_meta()
     frozen = json.loads(RULES_FILE.read_text(encoding="utf-8"))
-    for s in OMNI:                                           # MC3: rule applications as frozen
+    for s in SUBSTRATES:                                     # MC3: rule applications as frozen
         now = [[v[0], v[1], v[2]] for v in structural_variants(s, meta[s])]
         was = [[v["rule"], v["variant"], sorted(set(meta[s]) - set(v["dropped"]))]
                for v in frozen["substrates"][s]["variants"]]

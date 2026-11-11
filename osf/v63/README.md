@@ -1,6 +1,6 @@
 # AIAS v0.63 — Panel-construction sensitivity of the Recognition × Recall verdicts
 
-OSF staging for roadmap study #54 (Phase P). Pre-registered re-analysis of the archived omnibus (v0.19–v0.23, waves t1–t3, legacy six-model panel). No collection, no model call.
+OSF staging for roadmap study #54 (Phase P). Pre-registered re-analysis of the archived omnibus (v0.19–v0.23, waves t1–t3) and v0.18 (t1), legacy six-model panel. No collection, no model call.
 
 - `prereg/PRE_REGISTRATION_v0_63.md` — the pre-registration (r1).
 - `prereg/parity_v0_63.json` — pre-lock parity against published values (passed).

@@ -1,6 +1,6 @@
 {
   "phase": "v0.63",
-  "created_utc": "2026-11-11T01:27:14Z",
+  "created_utc": "2026-11-11T01:52:04Z",
   "seed": 630090,
   "reps": 1000,
   "H1_operating_characteristics": [
@@ -808,9 +808,18 @@
     }
   ],
   "H2_S_on_synthetic_panels_75pct_subsets": {
-    "spread": 0.8872777778,
-    "ties": 0.8234444444,
-    "floor": 0.9054444444
+    "spread": {
+      "S": 0.8872777778,
+      "band_at_locked_bars": "MARGINAL"
+    },
+    "ties": {
+      "S": 0.8234444444,
+      "band_at_locked_bars": "MARGINAL"
+    },
+    "floor": {
+      "S": 0.9054444444,
+      "band_at_locked_bars": "CONFIRMED-level"
+    }
   },
   "note": "Synthetic only. H1: 5 equal clusters (substrates), beta-binomial between-cluster spread with intra-cluster correlation icc. H3: exact binomial power against a fixed random-subset flip rate (ignores Monte Carlo variance of the null). H2: S for three synthetic score shapes."
 }

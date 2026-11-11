@@ -1,13 +1,14 @@
 {
   "phase": "v0.63",
-  "created_utc": "2026-11-11T01:27:10Z",
+  "created_utc": "2026-11-11T01:52:01Z",
   "reads": "registries only (no answer file)",
   "registry_sha256": {
     "v0.19": "4aba558d5247f1dc250184ce009884e5f49d82697789dbf78beb77557b50dc44",
     "v0.20": "eb9559eaa6595eaf588dc5ec26c5c742d14c91d4ea93aaedd1e4577e3fa25782",
     "v0.21": "45efbae5db983c24e00ad30d4b66369e685857295e8fd292a0ee0ca73349b5d3",
     "v0.22": "431f919c809c6260815b9a7a10fe14cb915ae2ce67660aaa6ef48227783d66b9",
-    "v0.23": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d"
+    "v0.23": "776d01bc154ce8802432a60aa13394f929e2f4523a07d95bde1711bd94eea33d",
+    "v0.18": "73c4859677556c9fa114a1932f98ba7262219fa6612cc234097c5e718e8e21aa"
   },
   "rules": {
     "structural": [
@@ -35,7 +36,7 @@
       "R3_DROP_CROSS_CULTURAL"
     ]
   },
-  "structural_comparisons_upper_bound_H1": 150,
+  "structural_comparisons_upper_bound_H1": 160,
   "substrates": {
     "v0.19": {
       "registry": "osf/v19/panel_registry_v0_19.csv",
@@ -704,6 +705,145 @@
             "-"
           ],
           "families_comparable_structurally": []
+        }
+      ]
+    },
+    "v0.18": {
+      "registry": "osf/v18/scripts/acquire_phase_a_v18.py",
+      "n_brands": 24,
+      "cells": {
+        "A": 8,
+        "B": 8,
+        "C": 8
+      },
+      "flags": {
+        "Byredo": [
+          "borderline"
+        ],
+        "Frederic Malle": [
+          "borderline"
+        ],
+        "Le Labo": [
+          "borderline"
+        ]
+      },
+      "families": [
+        "F1",
+        "F3"
+      ],
+      "variants": [
+        {
+          "rule": "R4_DROP_BORDERLINE",
+          "variant": "R4_DROP_BORDERLINE",
+          "n_kept": 21,
+          "dropped": [
+            "Byredo",
+            "Frederic Malle",
+            "Le Labo"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R5_CASCADE_TOP5",
+          "variant": "R5_CASCADE_TOP5",
+          "n_kept": 15,
+          "dropped": [
+            "Calvin Klein",
+            "Comme des Garçons Parfums",
+            "Etat Libre d'Orange",
+            "Henry Rose",
+            "Marc Jacobs",
+            "Memo Paris",
+            "Phlur",
+            "Snif",
+            "Versace"
+          ],
+          "cells_left": [
+            "A",
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_A",
+          "n_kept": 16,
+          "dropped": [
+            "Byredo",
+            "Comme des Garçons Parfums",
+            "Diptyque",
+            "Etat Libre d'Orange",
+            "Frederic Malle",
+            "Le Labo",
+            "Maison Francis Kurkdjian",
+            "Memo Paris"
+          ],
+          "cells_left": [
+            "B",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_B",
+          "n_kept": 16,
+          "dropped": [
+            "Boy Smells",
+            "D.S. & Durga",
+            "Ellis Brooklyn",
+            "Henry Rose",
+            "Heretic Parfum",
+            "Phlur",
+            "Snif",
+            "Vyrao"
+          ],
+          "cells_left": [
+            "A",
+            "C"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
+        },
+        {
+          "rule": "R6_LEAVE_ONE_CELL_OUT",
+          "variant": "R6_LEAVE_OUT_C",
+          "n_kept": 16,
+          "dropped": [
+            "Calvin Klein",
+            "Chanel",
+            "Dior",
+            "Givenchy",
+            "Marc Jacobs",
+            "Tom Ford",
+            "Versace",
+            "YSL"
+          ],
+          "cells_left": [
+            "A",
+            "B"
+          ],
+          "families_comparable_structurally": [
+            "F1",
+            "F3"
+          ]
         }
       ]
     }

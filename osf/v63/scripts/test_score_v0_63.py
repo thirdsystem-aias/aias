@@ -7,6 +7,7 @@ import random
 import sys
 import tempfile
 import unittest
+from collections import Counter
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -32,22 +33,24 @@ def make_meta():
                   for c, n in sizes.items() for i in range(n)}
     m["v0.23"] = {f"S{i:02d}": {"cell": "-", "cascade": None, "flags": {"conglomerate"} if i % 2 else set()}
                   for i in range(1, 25)}
+    m["v0.18"] = {f"f{c}{i}": {"cell": c, "cascade": i + 1, "flags": set()} for c in "ABC" for i in range(8)}
+    m["v0.18"]["fA1"]["flags"] = {"borderline"}
     return m
 
 
 def make_archive(meta, seed=1):
     rng = random.Random(seed)
-    arch = {}
-    for w in S.WAVES:
-        arch[w] = {}
-        for s, ms in meta.items():
-            p = {}
-            for b, v in ms.items():
-                cp = rng.choice([3, 4, 5, 6, 6, 6])
-                rc = rng.randint(0, 18)
-                ru = rng.randint(0, 18)
-                p[b] = U(v["cell"], cp, rc, ru, v["cascade"])
-            arch[w][s] = p
+    arch = {w: {} for w in S.WAVES}
+    for w, s in S.substrate_waves():
+        p = {}
+        for b, v in meta[s].items():
+            cp = rng.choice([3, 4, 5, 6, 6, 6])
+            rc = rng.randint(0, 18)
+            ru = 0 if s == "v0.18" else rng.randint(0, 18)
+            p[b] = U(v["cell"], cp, rc, ru, v["cascade"])
+            if s == "v0.18":
+                p[b]["n_b"] = 18
+        arch[w][s] = p
     return arch
 
 
@@ -173,9 +176,11 @@ class TestVerdictRules(unittest.TestCase):
     def test_h2_h3_h4(self):
         self.assertEqual(S.verdict_h2(None, 0, None)["verdict"], "UNDETERMINED")
         self.assertEqual(S.verdict_h2(0.9, 9, 0.001)["verdict"], "UNDETERMINED")
-        self.assertEqual(S.verdict_h2(0.9, 15, 0.001)["verdict"], "CONFIRMED")
-        self.assertEqual(S.verdict_h2(0.9, 15, 0.2)["verdict"], "MARGINAL")
-        self.assertEqual(S.verdict_h2(0.5, 15, 0.001)["verdict"], "FALSIFIED")
+        self.assertEqual(S.verdict_h2(0.9, 15, 0.001)["verdict"], "CONFIRMED")     # bars 0.90 / 0.75
+        self.assertEqual(S.verdict_h2(0.89, 15, 0.001)["verdict"], "MARGINAL")
+        self.assertEqual(S.verdict_h2(0.95, 15, 0.2)["verdict"], "MARGINAL")
+        self.assertEqual(S.verdict_h2(0.75, 15, 0.001)["verdict"], "MARGINAL")
+        self.assertEqual(S.verdict_h2(0.7499, 15, 0.001)["verdict"], "FALSIFIED")
         self.assertEqual(S.verdict_h3(0.3, 0.1, 0.001, 50)["verdict"], "CONFIRMED")
         self.assertEqual(S.verdict_h3(0.3, 0.1, 0.2, 50)["verdict"], "MARGINAL")
         self.assertEqual(S.verdict_h3(0.1, 0.1, 0.5, 50)["verdict"], "FALSIFIED")
@@ -243,6 +248,14 @@ class TestScoring(unittest.TestCase):
         self.assertEqual(h1["n"] + h1["uncomparable"], len(det))
         self.assertNotIn("R11_INDEPENDENT_ONLY", {c["rule"] for c in r1["comparisons"]})
         self.assertIn("sensitivity_S1_without_Denon", r1)
+        s2 = r1["sensitivity_S2_uncomparable_as_flip"]
+        self.assertEqual(s2["H1_SubstrateVerdictStability"]["n"], len(det))
+        self.assertLessEqual(s2["H1_SubstrateVerdictStability"]["A"], h1["A"])
+        self.assertEqual(sum(s2["uncomparable_by_rule"].values()), h1["uncomparable"])
+        self.assertEqual({c["wave"] for c in r1["comparisons"] if c["substrate"] == "v0.18"}, {"t1"})
+        self.assertNotIn("R8_RECALL_SOURCED_XWAVE",
+                         {c["rule"] for c in r1["comparisons"] if c["substrate"] == "v0.18"})
+        self.assertFalse([c for c in r1["comparisons"] if c["substrate"] == "v0.18" and c["family"] == "F2"])
 
     def test_identical_panels_are_perfectly_stable(self):
         meta = make_meta()
@@ -289,6 +302,22 @@ class TestScoring(unittest.TestCase):
                 S.run_dry(f, log=lambda *a: None, **self.KW)
 
 
+class TestSingleWave(unittest.TestCase):
+    def test_single_wave_extra_wave_flagged(self):
+        meta = make_meta()
+        arch = make_archive(meta)
+        arch["t2"]["v0.18"] = dict(arch["t1"]["v0.18"])
+        self.assertTrue([b for b in S.check_archive(arch, meta) if "single-wave" in b])
+
+    def test_composite_uses_phase_b_cells(self):
+        self.assertAlmostEqual(S.composite({**U("A", 6, 9, 0), "n_b": 18}), 0.3 + 0.7 * 0.5)
+        self.assertAlmostEqual(S.composite(U("A", 6, 9, 9)), 0.3 + 0.7 * 0.5)
+
+    def test_cell_letter(self):
+        self.assertEqual([S._cell_letter(x) for x in ("A_Heritage", "Cell_B_Disruptor", "cell_c_mass_prestige", "C")],
+                         ["A", "B", "C", "C"])
+
+
 class TestLockAndRegistries(unittest.TestCase):
     def test_run_refuses_before_lock(self):
         if S.tag_exists():
@@ -312,6 +341,9 @@ class TestLockAndRegistries(unittest.TestCase):
     def test_real_registries_structure(self):
         meta = S.load_registry_meta()            # registries only; no answer file
         self.assertEqual({s: len(m) for s, m in meta.items()}, S.EXPECTED_BRANDS)
+        self.assertEqual(sorted(b for b, v in meta["v0.18"].items() if "borderline" in v["flags"]),
+                         ["Byredo", "Frederic Malle", "Le Labo"])
+        self.assertEqual(dict(Counter(v["cell"] for v in meta["v0.18"].values())), {"A": 8, "B": 8, "C": 8})
         self.assertEqual(meta["v0.19"]["Denon"]["flags"], {"coi_flagged"})
         self.assertEqual(sorted(b for b, v in meta["v0.22"].items() if "defunct" in v["flags"]),
                          ["Mercury", "Oldsmobile", "Plymouth", "Pontiac", "Saturn"])
