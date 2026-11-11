@@ -164,6 +164,10 @@ CHECKS = {
  'Denon': {'ko': ('PARTLY', 'secondary: ITWorld Korea, 2023-09-12, "데논(Denon)": https://www.itworld.co.kr/article/3549502/', D),
            'zh': ('UNCONFIRMED', 'brand zh-cn site writes Latin "Denon" only (company 上海电音马兰士电子有限公司); 天龙 not seen there: https://www.denon.com/zh-cn/', D)},
  'Sony': {'ko': ('PARTLY', 'secondary: ITWorld Korea, 2024-04-15, 소니 / 소니코리아: https://www.itworld.co.kr/article/3585417/', D)},
+ 'Porsche': {'ko': ('CONFIRMED', 'brand Korea site, "포르쉐코리아 ... 포르쉐 AG": https://www.porsche.com/korea/ko/porsche-korea-ltd', D),
+             'zh': ('CONFIRMED', 'Porsche Newsroom CHN, dated 2025-11-06, "保时捷中国研发中心": https://newsroom.porsche.com/zh/2025/company/cn-porsche-china-research-development-hub-opening-shanghai-41043.html', D)},
+ 'Toyota': {'ko': ('PARTLY', 'brand Korea document (한국토요타자동차) uses 토요타; 도요타 not seen: https://toyota.co.kr/download/TMKR_Parts_instruction.pdf', D)},
+ 'Mercedes-Benz': {'zh': ('CONFIRMED', 'Xinhua (news.cn), dated 2025-11-06, "梅赛德斯-奔驰": https://www.news.cn/auto/20251106/666e43f159944af89d7ea3752d16d036/c.html', D)},
 }
 
 
