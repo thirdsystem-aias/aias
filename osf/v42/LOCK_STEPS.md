@@ -9,6 +9,7 @@ Prepared 2026-11-10 (~3:15 pm CT) by the runner (lane 11). Everything below runs
 ## 0. Preconditions (stop if any fails)
 
 1. **Time:** now ≥ **2026-11-11 21:00 UTC**. `date -u`
+   Clarification (Nov 11, 2026, ex ante, before the tag; lock steps only): Lock time: the pre-registrant waived the 24-hour review on 2026-11-10 at 20:26 CT (control panel, 'LOCK NOW'); locked at 2026-11-11 02:53 UTC (tag `v0.42-prereg-r1` on the commit that adds this line). The locked files (manifest, 24 files) are unchanged by this line.
 2. **Pablo:** no "hold t4" in the panel and no requested change since the r2 + C25 text of Nov 10 (~3 pm CT). A change to a hypothesis, threshold, panel, probe or decision rule restarts the 24 hours: do not lock; report.
 3. **v1.12 and v1.13 locks are done** (or explicitly skipped for today); none of their collections is running.
 4. **Worktree clean, on v0.42, no t4 data:**
