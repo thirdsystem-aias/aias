@@ -35,13 +35,13 @@ cd /Users/pablou/aias/_worktrees/v1.13 && git merge --no-ff v1.13-paper
 
 `python3` is the system Python 3.14 (matplotlib, reportlab, pypdf); pandoc with xelatex, Carlito and `pdftoppm`.
 
-## 1. Tests (23)
+## 1. Tests (24)
 
 ```
 PYTHONDONTWRITEBYTECODE=1 python3 papers/v1_13/tests/test_fill_paper_v1_13.py
 ```
 
-Expect `Ran 23 tests … OK`. They check: every switch value matches exactly one case; the AI-use statement, the Denon/Harman correction and the Samsung rule (Samsung, Harman and Cheil only in the COI paragraph); citations only from `papers/references.bib` or records the locked pre-registration names (no declined or unposted SSRN number, no ssrn.com link); the thresholds in the text equal the scorer's constants; no shipping language; every fixture is SYNTHETIC_ and reproduced by the scorer's verdict functions; the twelve scenarios cover every gate case and every H1, H3, H4, H6, H7 and Part II state; every scenario fills, every number in each filled paper is pre-registration text or a recorded value, and every value re-resolves from its path; every gate-leg verdict renders; the wording of Part II held / locked-not-run, dependencies unavailable, the interim draft and the C1 and C2 downgrades; the Cheil switch (off by default; on, only in the COI paragraph); and the refusals (inconsistent word, wrong re-issue, SDRI table against Part II state, synthetic in real mode, real-looking file in synthetic mode, synthetic output in the repository, charts and build without a watermark, scenario output under `osf/`).
+Expect `Ran 24 tests … OK`. They check: every switch value matches exactly one case; the AI-use statement, the Denon/Harman correction and the Samsung rule (Samsung, Harman and Cheil only in the COI paragraph); citations in the canonical forms of CLAUDE.md (methodology chain v1.2–v1.6 and the foundational paper, v1.7, v1.8, AIAS 1.0, the v0.19–v0.23 registries by SSRN number; v1.9, declined, by its thirdsystem.ai page and OSF copy; no declined or unposted number, no ssrn.com link; every listed reference cited); the thresholds in the text equal the scorer's constants; no shipping language; every fixture is SYNTHETIC_ and reproduced by the scorer's verdict functions; the twelve scenarios cover every gate case and every H1, H3, H4, H6, H7 and Part II state; every scenario fills, every number in each filled paper is pre-registration text or a recorded value, and every value re-resolves from its path; every gate-leg verdict renders; the wording of Part II held / locked-not-run, dependencies unavailable, the interim draft and the C1 and C2 downgrades; the Cheil switch (off by default; on, only in the COI paragraph); and the refusals (inconsistent word, wrong re-issue, SDRI table against Part II state, synthetic in real mode, real-looking file in synthetic mode, synthetic output in the repository, charts and build without a watermark, scenario output under `osf/`).
 
 ## 2. Figures
 
@@ -122,7 +122,8 @@ The committed fixtures (`tests/fixtures/SYNTHETIC_*`) are these twelve verdict f
 - No analysis outside the pre-registration; the paper reads only the scorers' outputs (counts and medians over the SDRI table are named functions recorded in the provenance).
 - Samsung (and Harman, Cheil) appear only in the COI paragraph of the Declarations, which carries the pre-registration's §11 text: the two items of record quoted, the Denon/Harman correction of 10 November 2026 and its handling (S11).
 - The "Use of AI tools" statement is CLAUDE.md's, verbatim. ™ marks the first mention of AIAS and of Third System (title page).
-- Background cites only `papers/references.bib` entries (as the bib gives them) and records the locked pre-registration names.
+- Citations (Nov 11, 2026): canonical forms of CLAUDE.md ("Methodology citation chain (canonical)", "Phase SSRN ID registry"), `papers/references.bib` (Sharp 2010, Sharp & Romaniuk 2021, the Tri-System working paper's title) and the papers' own records (titles of v1.7, v1.8, v1.9, AIAS 1.0, AIAS 2.0 from their drafts; v1.9's thirdsystem.ai and OSF links). Papers SSRN declined or has not posted are never cited by number. Pre-registrations without a paper (v1.10, v1.11, v1.12, v1.14, v0.42) are cited by tag.
+- Deviations: the fill counts entries after the lock in `anchor/DEVIATIONS.md` and in `postlock/DEVIATIONS_continued_v1_13.md` (branch `v1.13`, commit `6322b89`; the locked file is not edited).
 - A failed or undetermined gate is reported with the redesign path the pre-registration gives (§3, §8); there is no shipping language.
 
 ## Open (for the coordinator)

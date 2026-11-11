@@ -103,29 +103,38 @@ class TestTemplate(unittest.TestCase):
             coi = decl.split("## Funding")[0]
             self.assertNotIn(word, decl.replace(coi, ""), word)
 
-    def test_citations_only_from_references_bib_or_the_prereg(self):
-        """Background cites only papers/references.bib entries (by their bib titles and numbers) or records the locked
-        pre-registration names; no SSRN number of a declined or unposted paper; no ssrn.com link."""
-        bib = (ROOT / "papers/references.bib").read_text(encoding="utf-8")
-        for num in re.findall(r"\b(6\d{6}|7\d{6})\b", TPL):
-            self.assertIn(num, bib, f"SSRN {num} is not in references.bib")
+    def test_citations_canonical(self):
+        """References in the canonical forms of CLAUDE.md ("Methodology citation chain (canonical)", "Phase SSRN ID
+        registry"), references.bib and the papers' own records: the full chain v1.2-v1.6 plus the foundational paper;
+        SSRN numbers only for posted papers; v1.9 (declined, 7685126) by its thirdsystem.ai page and OSF copy; no
+        declined or unposted number, no ssrn.com link."""
+        posted = {"6659000", "6761698", "6797679", "6799479", "6810758", "6816340", "6878818", "6963359", "6817841",
+                  "6809182", "6811441", "6815378", "6829118", "6834298"}
+        nums = set(re.findall(r"\b(6\d{6}|7\d{6})\b", TPL))
+        self.assertEqual(nums, posted)
         for num in DECLINED:
             self.assertNotIn(num, TPL)
         self.assertNotIn("ssrn.com", TPL.lower())
         refs = TPL.split("# References {-}")[1].split("\\clearpage")[0]
-        entries = [p.strip() for p in refs.strip().split("\n\n") if p.strip()]
-        allowed = ("González Castro, P. U. (2026a)", "González Castro, P. U. (2026b)", "González Castro, P. U. (2026c)",
-                   "Sharp, B. (2010)", "Sharp, B., & Romaniuk, J. (2021)", "Programme records cited by version")
-        for e in entries:
-            self.assertTrue(e.startswith(allowed), e[:60])
-        prereg = (VV.DESIGN / "prereg/PRE_REGISTRATION_v1_13.md").read_text(encoding="utf-8")
-        self.assertIn("HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership", prereg)
-        for t in ("AI Availability: A Theoretical Framework for Brand Surfacing in the Age of",
-                  "Tri-System Brand Growth: Mental, Physical, and", "How Brands Grow: What Marketers Don't Know",
-                  "How Brands Grow Part 2: Including Emerging Markets"):
+        for v, num in (("v1.2", "6761698"), ("v1.3", "6797679"), ("v1.4", "6799479"), ("v1.5", "6810758"),
+                       ("v1.6", "6816340")):
+            line = [l for l in refs.splitlines() if num in l]
+            self.assertEqual(len(line), 1, v)
+            self.assertIn(v, line[0])
+        v19 = [l for l in refs.splitlines() if "Methodology v1.9" in l]
+        self.assertEqual(len(v19), 1)
+        for u in ("<https://thirdsystem.ai/studies/v1-9/>", "<https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>",
+                  "<https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>"):
+            self.assertIn(u, v19[0])
+        cited = set(re.findall(r"González Castro, (?:2026[a-l], )*(2026[a-l])", TPL)) | \
+            set(re.findall(r"(2026[a-l])", TPL.split("# References {-}")[0]))
+        listed = set(re.findall(r"González Castro, P\. U\. \((2026[a-l])\)", refs))
+        self.assertEqual(cited, listed, "every listed reference is cited and every citation listed")
+        bib = (ROOT / "papers/references.bib").read_text(encoding="utf-8").replace("\n", " ")
+        for t in ("How Brands Grow: What Marketers Don't Know", "How Brands Grow Part 2: Including Emerging Markets",
+                  "Tri-System Brand Growth: Mental, Physical, and"):
             self.assertIn(t, refs)
-            self.assertIn(t.replace("AI Availability", "{AI} Availability").replace("and AI", "and {AI}")
-                          .replace("LLM", "{LLM}"), bib.replace("\n", " "))
+            self.assertIn(t, bib)
 
     def test_thresholds_in_the_text_are_the_scorers(self):
         self.assertEqual((S.SEP_CONFIRM, S.SEP_FALSIFY), (0.30, 0.50))
@@ -306,6 +315,22 @@ class TestFill(unittest.TestCase):
         self.assertEqual({k for k in VV.CHEIL_UNITS} <= set(S.load_brand_domains()), True)
         names = {k: S.load_brand_domains()[k]["brand"] for k in VV.CHEIL_UNITS}
         self.assertEqual(set(names.values()), {"Chevrolet", "BMW", "Bentley", "Jack Daniel's", "Eucerin"})
+
+
+class TestDeviations(unittest.TestCase):
+    def test_entries_after_the_lock_are_counted_from_the_continuation(self):
+        orig = VV.DEVIATIONS_CONT
+        try:
+            with tempfile.TemporaryDirectory() as d:
+                VV.DEVIATIONS_CONT = Path(d) / "absent.md"
+                self.assertIn("No deviation after the lock", F.deviations_text(False)[0])
+                VV.DEVIATIONS_CONT = Path(d) / "DEVIATIONS_continued_v1_13.md"
+                VV.DEVIATIONS_CONT.write_text("# log\n\n## Entry 1 (x)\n\n## Entry 2 (y)\n", encoding="utf-8")
+                sent = F.deviations_text(False)[0]
+                self.assertIn("(2 entries after the lock)", sent)
+                self.assertIn("postlock/DEVIATIONS_continued_v1_13.md", sent)
+        finally:
+            VV.DEVIATIONS_CONT = orig
 
 
 class TestRefusals(unittest.TestCase):

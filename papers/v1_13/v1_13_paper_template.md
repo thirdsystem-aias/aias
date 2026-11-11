@@ -87,7 +87,7 @@ The structured-data audit (Part II) and the conditional legs are reported at the
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models (LLMs) --- has been proposed as a third layer of brand availability (González Castro, 2026a) beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Sharp & Romaniuk, 2021), within the Tri-System framework (González Castro, 2026c). The AIAS programme builds the components of an AI availability score one at a time, each pre-registered and locked before it is used (González Castro, 2026b). Presence is whether and how often models name a brand (Methodology v1.6). Consistency is how evenly the models of a panel name it, measured by the dispersion statistic $\varphi$ (v1.8) and scaled to $C^*$ (v1.9). The AIAS 2.0 synthesis showed Consistency separable from Presence: within category, $|\rho(C^*, P)|$ was 0.073, 0.082 and 0.189 at the three waves $t_1$--$t_3$, as published under the uncentred pooled-rank convention that this study replaces (pre-registration §0).
+AI Availability --- the discoverability and representation of a brand in the outputs of large language models (LLMs) --- has been proposed as a third layer of brand availability (González Castro, 2026a) beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Sharp & Romaniuk, 2021), within the Tri-System framework (González Castro, 2026l). The AIAS programme builds the components of an AI availability score one at a time, each pre-registered and locked before it is used, on the Presence measurement protocol (González Castro, 2026b, 2026c, 2026d, 2026e). Presence is whether and how often models name a brand (Methodology v1.6: González Castro, 2026f), anchored across five categories in AIAS 1.0 (González Castro, 2026j). Consistency is how evenly the models of a panel name it: the first Consistency instrument failed its separability test because it moved with Presence (v1.7: González Castro, 2026g); its replacement measures the dispersion statistic $\varphi$ (v1.8: González Castro, 2026h), scaled to $C^*$ (v1.9: González Castro, 2026i). The AIAS 2.0 synthesis (González Castro, 2026k) showed Consistency separable from Presence: within category, $|\rho(C^*, P)|$ was 0.073, 0.082 and 0.189 at the three waves $t_1$--$t_3$, as published under the uncentred pooled-rank convention that this study replaces (pre-registration §0).
 
 When search is on, an AI answer about a category rests on what the model's search brings back. This study names that **retrieved grounding**: which sources the search record of an answer holds, and in particular whether they include the brand's own website. A second aspect, **structured grounding**, is whether the brand's own structured data (schema.org markup on its site, a Wikidata item) is in place for those systems to find. Whether a brand is named is Presence; how evenly models name it is Consistency; where it sits in a list is Ranking. Grounding must add information none of them carries, or it is not a component (§0).
 
@@ -362,17 +362,35 @@ Materials are deposited at OSF (osf.io/ec6wh), `methodology/v1_13/`: the locked 
 
 # References {-}
 
-González Castro, P. U. (2026a). *AI Availability: A Theoretical Framework for Brand Surfacing in the Age of LLM-Mediated Discovery*. SSRN Working Paper 6659000. Third System.
+González Castro, P. U. (2026a). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
 
-González Castro, P. U. (2026b). *The AIAS Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy, v1.2*. SSRN Working Paper 6761698. Third System.
+González Castro, P. U. (2026b). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
 
-González Castro, P. U. (2026c). *Tri-System Brand Growth: Mental, Physical, and AI Availability in Brand Architecture*. MSI Working Paper. Marketing Science Institute.
+González Castro, P. U. (2026c). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification (v1.3)*. SSRN 6797679.
+
+González Castro, P. U. (2026d). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+
+González Castro, P. U. (2026e). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
+
+González Castro, P. U. (2026f). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
+
+González Castro, P. U. (2026g). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component of AIAS™* (v1.7). SSRN 6878818.
+
+González Castro, P. U. (2026h). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
+
+González Castro, P. U. (2026i). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation (AIAS™ Methodology v1.9)*. Third System, <https://thirdsystem.ai/studies/v1-9/> (PDF: <https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>); OSF, <https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>.
+
+González Castro, P. U. (2026j). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol --- Synthesis under Locked v1.6 Methodology* (AIAS 1.0). SSRN 6817841.
+
+González Castro, P. U. (2026k). *Presence and Consistency: A Two-Component Measurement of AI Availability. The AIAS™ 2.0 Synthesis*. OSF `ec6wh/aias_2_0`.
+
+González Castro, P. U. (2026l). *Tri-System Brand Growth: Mental, Physical, and AI Availability in Brand Architecture*. MSI Working Paper, Report No. 26-132. Marketing Science Institute.
 
 Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
 
 Sharp, B., & Romaniuk, J. (2021). *How Brands Grow Part 2: Including Emerging Markets, Services, Durables, New and Luxury Brands* (revised ed.). Oxford University Press.
 
-Programme records cited by version, as the locked pre-registration names them (OSF `ec6wh`; github.com/thirdsystem-aias/aias): AIAS Methodology v1.6 (Presence), v1.8 (Consistency $\varphi$), v1.9 ($C^*$ scaling), v1.10 (Ranking, tag `v1.10-prereg-r2`), v1.11 (Sentiment, tag `v1.11-prereg-r1`), v1.12 (Coverage, tag `v1.12-prereg-r1`) and v1.14 (Ranking redesign, tag `v1.14-prereg-r2`); the AIAS 2.0 synthesis (tag `aias-2-0-paper-locked`); the $t_4$ wave, v0.42 (pre-registration r2); the omnibus registries v0.19--v0.23. HARMAN press release, Business Wire, September 23, 2025, <https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership>.
+Programme records cited by version, as the locked pre-registration names them (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the pre-registrations of Methodology v1.10 (Ranking, tag `v1.10-prereg-r2`), v1.11 (Sentiment, tag `v1.11-prereg-r1`), v1.12 (Coverage, tag `v1.12-prereg-r1`) and v1.14 (Ranking redesign, tag `v1.14-prereg-r2`); the $t_4$ wave, v0.42 (pre-registration r2, tag `v0.42-prereg-r1`); the omnibus registries of v0.19 (audiophile headphones, SSRN 6809182), v0.20 (skincare, SSRN 6811441), v0.21 (cosmetics, SSRN 6815378), v0.22 (automotive, SSRN 6829118) and v0.23 (premium spirits, SSRN 6834298). HARMAN press release, Business Wire, September 23, 2025, <https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership>.
 
 \clearpage
 

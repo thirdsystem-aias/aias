@@ -41,6 +41,7 @@ GIT_ANCHOR = DESIGN / "anchor" / "git_anchor_v1_13.json"
 AUDIT_ANCHOR = DESIGN / "anchor" / "audit_anchor_v1_13.json"
 AUDIT_RECEIPT = DESIGN / "anchor" / "audit_receipt_v1_13.json"
 DEVIATIONS = DESIGN / "anchor" / "DEVIATIONS.md"
+DEVIATIONS_CONT = DESIGN / "postlock" / "DEVIATIONS_continued_v1_13.md"   # entries after the lock (branch v1.13, 6322b89)
 
 SUBS = list(S.SUBSTRATES)
 CAT = {"v19": "audiophile headphones", "v20": "skincare", "v21": "cosmetics", "v22": "automotive",

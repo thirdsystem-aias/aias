@@ -659,6 +659,9 @@ def deviations_text(synthetic):
         raise FillError(f"{VV.DEVIATIONS} no longer records '{WAIVER_PHRASE}' (Method §2.9 states it)")
     n = len([m for m in re.findall(r"(?m)^## Entry (\d+)\b", txt) if int(m) >= 1])
     rel = "osf/methodology/v1_13/anchor/DEVIATIONS.md"
+    if VV.DEVIATIONS_CONT.exists():                    # continued after the lock (the locked file is not edited)
+        n += len(re.findall(r"(?m)^## Entry (\d+)\b", VV.DEVIATIONS_CONT.read_text(encoding="utf-8")))
+        rel += "` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md"
     if n:
         ent = f"{n} entr{'y' if n == 1 else 'ies'} after the lock"
         return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns.",
