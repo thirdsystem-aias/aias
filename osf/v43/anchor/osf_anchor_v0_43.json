@@ -1,0 +1,64 @@
+{
+  "phase": "v0.43",
+  "revision": "r1 + clarifications C1-C10",
+  "tag": "v0.43-prereg-r1",
+  "tag_object": "9955529f7c26407df2b24f8eb8523ba5b91d8380",
+  "commit": "8c96d9cf8ead60105589269db69df398a2b8c329",
+  "tree": "83347418ca254b664166c886b42b2179207039e5",
+  "branch": "v0.43",
+  "tagger_date": "2026-11-11T00:31:14-06:00",
+  "remote_tag_ref": "9955529f7c26407df2b24f8eb8523ba5b91d8380\trefs/tags/v0.43-prereg-r1",
+  "recorded_utc": "2026-11-11T06:33:00Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: v43/prereg, v43/registries, v43/anchor)",
+  "locked_files": {
+    "osf/v43/prereg/PRE_REGISTRATION_v0_43.md": {
+      "sha256": "436c86a1543548b104b4f076ae6e48f50505ff45e28e8e5802bb76ab19a734cb",
+      "git_blob": "862ee3bc77dca33dd033b896210d0e4b5e4057e9"
+    },
+    "osf/v43/prereg/parity_units_v0_43.json": {
+      "sha256": "195582d72565f480a2e173cc096e2de70b1c8b369afd1f2f57941a10132969f8",
+      "git_blob": "dcadd51a4c20ce8b1309e1746ce9fa27a8b2a643"
+    },
+    "osf/v43/registries/INPUTS_MANIFEST_v0_43.json": {
+      "sha256": "434c2610ca0579ef83805645e08b0c807c1720a3869c7f5084628c1fd22ad31d",
+      "git_blob": "9ba6aaa02714bef02b2e7938f534f9664559559f"
+    },
+    "osf/v43/registries/inputs/v1_9_unit_table.csv": {
+      "sha256": "3a02f957f9126aca4aaf9a949132f54fd44dc3262b32293451cee1cf99d29de7",
+      "git_blob": "db087b4cd0f15f6b892dbd92dff86da9d4b2b538"
+    },
+    "osf/v43/registries/inputs/v23_registry_names.csv": {
+      "sha256": "710c83a9ce84872bbde2e95825450c8b857359ae319f35ccc7e76c5dd07b497c",
+      "git_blob": "3995739a1934c55c5ead48eeb9fb22d22e809b38"
+    },
+    "osf/v43/registries/inputs/v41_three_wave_table.csv": {
+      "sha256": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219",
+      "git_blob": "86168a6854ac6d901340ed218e2dc2713887dccf"
+    },
+    "osf/v43/registries/units_v0_43.csv": {
+      "sha256": "89122a5acbd1c7d04194f7c9534e23226ddd2eced4ba042d49c46b7654b174b8",
+      "git_blob": "87f09522759d86ce6c88ec92679a8d06e883b991"
+    },
+    "osf/v43/scripts/acquire_trends_v0_43.py": {
+      "sha256": "3b8c3a392f289724195ab93bbec9b0f67f21af37e2d54528e09795fdbd5174b7",
+      "git_blob": "7fdac90201d292766ebc6b7a2dbddfd517379dac"
+    },
+    "osf/v43/scripts/build_units_v0_43.py": {
+      "sha256": "21fdbcb706f580f344323a13c6112bd52ab4a3fea360df220d4ab6b42871e168",
+      "git_blob": "cd36d05c500e911684024684da67700b344736b2"
+    },
+    "osf/v43/scripts/score_v0_43.py": {
+      "sha256": "47062e1e0d331396ac061d45edc9c762dcb4f0b49aae19b3a0d1a76762820e46",
+      "git_blob": "c4c6616d16446bf0ea24eac398d80995ecf6f5ee"
+    },
+    "osf/v43/scripts/tests/run_all_v0_43.py": {
+      "sha256": "ab4035a9b74395f3b6982bf78622c1fd420e7b65762f77843c35897620ed5860",
+      "git_blob": "b39da6ba50612741d7087398a598b71598bd8440"
+    },
+    "osf/v43/scripts/trends_common_v0_43.py": {
+      "sha256": "1ebb190203003c9e998dbc2241145d59c3db7cfa51cf31dc3e7220cc02cacc4c",
+      "git_blob": "3d80333fb63162dff48fce137a7a7f0399a9f605"
+    }
+  }
+}
