@@ -274,6 +274,32 @@ class TestHypotheses(unittest.TestCase):
         for h in ("H_Spread", "H_Tier", "H_Separation"):
             self.assertEqual(V(out)[h]["verdict"], "UNDETERMINED")
 
+    def test_unit_table_k_of_excluded_and_missing_model_runs_c11(self):
+        # C11 (N18): Gemini fails all 18 of its PHA Phase B calls -> 126/144 < 0.90 -> excluded from Phase B. The unit
+        # table keeps Gemini's own k elsewhere (not 0) and writes null for PHA, with n beside k.
+        out, rows, _ = run(tier_k, fail=lambda s: s["model"] == "gemini-4-argon" and s["phase"] == "B"
+                           and s["industry"] == "PHA")
+        self.assertEqual(out["manipulation_checks"]["MC_Complete"]["dropped_models"]["B"], ["gemini-4-argon"])
+        self.assertEqual(out["design"]["models_used"], ["claude-fable-5-2", "gpt-6-astra"])
+        by = {(r["industry"], r["unit_id"]): r for r in rows}
+        self.assertEqual(len(rows), 159)
+        ins_l = next(u for u in REG["INS"] if u["tier"] == "L")
+        self.assertEqual(json.loads(by[("INS", ins_l["unit_id"])]["k_gemini-4-argon"]), [6, 6, 6])
+        self.assertEqual(json.loads(by[("INS", ins_l["unit_id"])]["n_gemini-4-argon"]), [6, 6, 6])
+        pha = REG["PHA"][0]["unit_id"]
+        self.assertEqual(json.loads(by[("PHA", pha)]["k_gemini-4-argon"]), [None, None, None])
+        self.assertEqual(json.loads(by[("PHA", pha)]["n_gemini-4-argon"]), [0, 0, 0])
+        self.assertEqual(json.loads(by[("PHA", pha)]["k_gpt-6-astra"]), [5, 5, 5])
+
+    def test_budget_stop_excluding_every_model_scores_undetermined_c11(self):
+        # C11 (N20): a $100 stop in block 2 leaves every model below 90% of Phase B -> all UNDETERMINED, no crash
+        for gone in (("claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"), ("claude-fable-5-2", "gpt-6-astra")):
+            out, rows, _ = run(tier_k, drop=lambda s: s["phase"] == "B" and s["run"] >= 2 and s["model"] in gone)
+            self.assertEqual(out["manipulation_checks"]["MC_Complete"]["dropped_models"]["B"], list(gone))
+            self.assertEqual(len(rows), 159)
+            for h in ("H_Spread", "H_Tier", "H_Separation"):
+                self.assertEqual(V(out)[h]["verdict"], "UNDETERMINED")
+
     def test_boundary_90_percent_keeps_model(self):
         n = 0
 

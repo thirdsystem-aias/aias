@@ -2,7 +2,7 @@
 
 Prepared 2026-11-10 (lane 12). Template: `_worktrees/v1.12` commit 5fd87f6 (`osf/methodology/v1_12/LOCK_STEPS.md`). Everything runs in the worktree `/Users/pablou/aias/_worktrees/v0.44` (branch `v0.44`). Never checkout, switch or commit in `/Users/pablou/aias` itself (branch `v0.40`, another job). No paid call and no `--collect` at the lock. Each shell call is `zsh -ic '...'` (55 s or less). Set `export PYTHONDONTWRITEBYTECODE=1` in each call.
 
-State prepared on 2026-11-10: `LOCK_MANIFEST_v0_44.sha256` built for the **eight-industry** design (43 files, identical to the draft manifest; `shasum -a 256 -c` all OK); 62 tests pass; the dry run equals `prereg/dry_run_v0_44.txt`; no tag, no push, no OSF upload. If Pablo typed "drop pharmacies", the manifest must be rebuilt (step 1). If any manifested file changes otherwise, redo steps 2-3.
+State prepared on 2026-11-10: `LOCK_MANIFEST_v0_44.sha256` built for the **eight-industry** design (43 files, identical to the draft manifest; `shasum -a 256 -c` all OK); 62 tests pass; the dry run equals `prereg/dry_run_v0_44.txt`; no tag, no push, no OSF upload. Updated 2026-11-11 (clarification C11, pre-lock dry run on fake SDKs): the manifest was rebuilt (43 files; it now differs from the draft manifest in six files: the prereg, `tests_v0_44.txt`, `acquire_v0_44.py`, `score_v0_44.py` and the two test files); 68 tests pass; the dry run still equals `prereg/dry_run_v0_44.txt`; P1 PASS. If Pablo typed "drop pharmacies", the manifest must be rebuilt (step 1). If any manifested file changes otherwise, redo steps 2-3.
 
 ## 0. Preconditions (stop and report if any fails)
 
@@ -34,7 +34,7 @@ cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/build_probes_v
 cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/tests/run_all_v0_44.py 2>&1 | tail -4
 cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/score_v0_44.py --parity-p1 && python3 osf/v44/scripts/acquire_v0_44.py > osf/v44/prereg/dry_run_v0_44.txt 2>&1; tail -15 osf/v44/prereg/dry_run_v0_44.txt
 ```
-Expect 62 tests OK, 807 calls (42 Phase B + 143 Phase A questions), $24.06 central / $46.36 high at November prices, P1 PASS. Check `git diff --stat`: only the registry list, the probe file and its md view, the cost files, the dry run (and `tests_v0_44.txt` if you refresh it with the runner's output) change.
+Expect 68 tests OK, 807 calls (42 Phase B + 143 Phase A questions), $24.06 central / $46.36 high at November prices, P1 PASS. Check `git diff --stat`: only the registry list, the probe file and its md view, the cost files, the dry run (and `tests_v0_44.txt` if you refresh it with the runner's output) change.
 d. Prereg text: use the seven-industry COI sentence of §8, and log the change in prereg §9 and in `osf/v44/DEVIATIONS.md` (dated, "pre-lock option §3.4, not a deviation"). The probe SHA-256 quoted in the prereg (its section on the probe file; the P2 gate reads the manifest) must equal the new `shasum -a 256 osf/v44/prereg/probes_v0_44.jsonl`; update the quoted hash.
 e. Use `--pharmacies-dropped` in step 4. Continue with step 2.
 
@@ -45,7 +45,7 @@ cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/tests/run_all_
 cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/score_v0_44.py --parity-p1 | tail -3; python3 osf/v44/scripts/acquire_v0_44.py > /tmp/v044_dry.txt 2>&1; diff /tmp/v044_dry.txt osf/v44/prereg/dry_run_v0_44.txt && echo DRY_SAME
 cd /Users/pablou/aias/_worktrees/v0.44 && python3 osf/v44/scripts/lock_manifest_v0_44.py && shasum -a 256 -c osf/v44/LOCK_MANIFEST_v0_44.sha256 | grep -vc ": OK$"; wc -l < osf/v44/LOCK_MANIFEST_v0_44.sha256
 ```
-Expect `RESULT OK 62 failures 0 errors 0`, `DRY_SAME`, `0` failures, `43` lines (eight-industry run: identical to the draft manifest, `diff` against `LOCK_MANIFEST_v0_44_DRAFT.sha256` is empty). Spot value: prereg `7be7dbca3452a9816ba949f824746e22d369dada24eaae557cc3b77b5173600b` and probe file `107d9401c18d9ee00ee4d5d717642aaeac7eb812ce843ff559947fe8525c2bb6` (these change only in the pharmacies variant).
+Expect `RESULT OK 68 failures 0 errors 0`, `DRY_SAME`, `0` failures, `43` lines (eight-industry run: since C11 the `diff` against `LOCK_MANIFEST_v0_44_DRAFT.sha256` shows exactly the six files C11 changed). Spot value: prereg `caa072aedfe9b8523a1586a1a1b73825d1e43a6cc892e57aa682a96ac7b3737b` and probe file `107d9401c18d9ee00ee4d5d717642aaeac7eb812ce843ff559947fe8525c2bb6` (these change only in the pharmacies variant).
 
 ## 3. Commit (local), then tag (local)
 

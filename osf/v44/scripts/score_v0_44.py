@@ -52,6 +52,14 @@ SCORER_NOTES (choices where the pre-registration is silent)
  N17 (r1, C10) H_Tier (and each of its variants) and H_Separation also report `rho_uncentred_comparability`, r0's
      uncentred statistic (score_v41.pooled_within_rho), for comparability with v0.41/v0.42. Non-gating: no verdict,
      threshold or p-value uses it.
+ N18 (r1, C11, 2026-11-11) Unit table: k_<model> holds each N3 model's own per-run counts, also for a model the drop
+     rule excludes, null where the model has no answered Phase B call of the industry in that run, with n_<model>
+     (answered Phase B calls per run) beside it; before C11 a missing or excluded model-run was written as k = 0.
+     pi_hat, phi_b, c_phi and rated stay on the models used (design.models_used). No statistic changes.
+ N19 (r1, C11) Descriptive 9: usage parts marked `estimated` (worst cases counted by the acquisition guard for
+     timed-out or interrupted requests) are priced in the USD figures and excluded from the token sums.
+ N20 (r1, C11) If no unit has a Presence value (every model excluded from Phase B, e.g. after a $100 stop), H_Spread
+     skips its bootstrap (intervals null) instead of failing; the three verdicts are UNDETERMINED (N8).
 
 Modes: --parity-p1 | --synthetic DIR | --run   (--run refuses unless tag v0.44-prereg-r1 is on origin, and if the
 verdicts file already exists)
@@ -304,8 +312,11 @@ def h_spread(V, registry, cfg, undetermined=None):
                     "share_at_0": float(np.mean(v == 0)) if len(v) else None}
         per[ind]["spread"] = bool(np.isfinite(per[ind]["sd"]) and per[ind]["sd"] >= SPREAD_SD)
     inds = list(registry)
-    b = bootstrap(g, SEEDS["H_Spread"], cfg.n_boot,
-                  lambda i: {ind: float(np.std(y[i][g[i] == ind])) for ind in inds})
+    if len(keys):
+        b = bootstrap(g, SEEDS["H_Spread"], cfg.n_boot,
+                      lambda i: {ind: float(np.std(y[i][g[i] == ind])) for ind in inds})
+    else:   # N20 (C11): no unit has a Presence value (every model excluded from Phase B, e.g. after a budget stop)
+        b = {ind: {"ci95": None} for ind in inds}
     for ind in inds:
         per[ind]["sd_ci95"] = b[ind]["ci95"]
     n_spread = sum(per[i]["spread"] for i in inds)
@@ -521,8 +532,10 @@ def descriptives(D, V, registry, calls, raw_all, models, recog):
     for m in M_MODELS:
         for ph in ("B", "A"):
             rr = [r for r in raw_all if r.get("model_requested") == m and r.get("phase") == ph]
-            parts = [p for r in rr for p in (r.get("usage_parts") or [])]
+            allp = [p for r in rr for p in (r.get("usage_parts") or [])]
+            parts = [p for p in allp if not p.get("estimated")]       # N19: worst-case parts carry no real tokens
             cost[f"{m}|{ph}"] = {"raw_lines": len(rr), "billed_requests": len(parts),
+                                 "estimated_worst_case_parts": len(allp) - len(parts),
                                  "input_tokens": sum(p.get("input_tokens") or 0 for p in parts),
                                  "output_tokens": sum(p.get("output_tokens") or 0 for p in parts),
                                  "thinking_tokens": sum(p.get("thinking_tokens") or 0 for p in parts),
@@ -571,11 +584,16 @@ def score(raw_all, A, B, registry, cfg, gates, drop_run3=False, window=WINDOW_DA
            "design": {**dz, "runs_b": list(dz["runs_b"]), "drop_run3": drop_run3, "models_used": models},
            "seeds": SEEDS, "draws": {"permutation": cfg.n_perm, "bootstrap": cfg.n_boot},
            "manipulation_checks": mcs, "verdicts": hyps, "descriptives": desc}
-    return out, unit_rows(D, V, registry, recog)
+    D_full = Data(unit_keys(registry), [], [r for r in B if r["call_id"] not in excl_ids])
+    return out, unit_rows(D, V, registry, recog, D_full)
 
 
-def unit_rows(D, V, registry, recog):
+def unit_rows(D, V, registry, recog, D_full=None):
+    """N18: k_<model> and n_<model> are each model's own counts per run (every model of N3, also one excluded by the
+    drop rule; null where the model has no answered Phase B call of the industry in that run); pi_hat, phi_b, c_phi
+    and rated are on the models used (verdicts file: design.models_used)."""
     info = unit_info(registry)
+    D_full = D_full or D
     rows = []
     for k in unit_keys(registry):
         u = info[k]
@@ -584,7 +602,10 @@ def unit_rows(D, V, registry, recog):
                "phi_partition": V[k]["partition"], "phi_run_partitions": json.dumps(V[k]["run_partitions"]),
                "c_phi": V[k]["c_phi"], "rated": int(V[k]["rated"])}
         for m in M_MODELS:
-            row[f"k_{m}"] = json.dumps([D.kk(COND, m, r, k[0], k[1]) for r in (1, 2, 3)])
+            n = [D_full.n(COND, m, r, k[0]) for r in (1, 2, 3)]
+            row[f"k_{m}"] = json.dumps([D_full.kk(COND, m, r, k[0], k[1]) if n[i] else None
+                                        for i, r in enumerate((1, 2, 3))])
+            row[f"n_{m}"] = json.dumps(n)
             row[f"recognized_{m}"] = recog[k].get(m)
         rows.append(row)
     return rows

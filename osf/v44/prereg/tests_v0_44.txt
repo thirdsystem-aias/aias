@@ -2,6 +2,10 @@ test_batch_is_split_to_fit_under_the_cap (test_acquire_v0_44.TestBatchPath.test_
 test_deadline_stops_batches (test_acquire_v0_44.TestBatchPath.test_deadline_stops_batches) ... ok
 test_empty_resent_once_transient_retried_invalid_not (test_acquire_v0_44.TestBatchPath.test_empty_resent_once_transient_retried_invalid_not) ... ok
 test_happy_path_costs_at_batch_prices (test_acquire_v0_44.TestBatchPath.test_happy_path_costs_at_batch_prices) ... ok
+test_interrupted_sync_request_counted_at_worst_case (test_acquire_v0_44.TestC11.test_interrupted_sync_request_counted_at_worst_case) ... ok
+test_kill_while_polling_batch_is_recovered_not_resent (test_acquire_v0_44.TestC11.test_kill_while_polling_batch_is_recovered_not_resent) ... ok
+test_projection_reads_block1_spend_on_resume (test_acquire_v0_44.TestC11.test_projection_reads_block1_spend_on_resume) ... ok
+test_read_timeout_counted_at_worst_case_connect_timeout_not (test_acquire_v0_44.TestC11.test_read_timeout_counted_at_worst_case_connect_timeout_not) ... ok
 test_no_projection_pause_at_central_estimate (test_acquire_v0_44.TestCollectionFlow.test_no_projection_pause_at_central_estimate) ... ok
 test_projection_pause_then_drop_run3 (test_acquire_v0_44.TestCollectionFlow.test_projection_pause_then_drop_run3) ... ok
 test_projection_ratio_by_date (test_acquire_v0_44.TestCollectionFlow.test_projection_ratio_by_date) ... ok
@@ -43,6 +47,9 @@ test_p1_on_locked_t3 (test_code_score_v0_44.TestGatesAndCli.test_p1_on_locked_t3
 test_parity_gate_blocks_scoring (test_code_score_v0_44.TestGatesAndCli.test_parity_gate_blocks_scoring) ... ok
 test_real_run_refused_without_tag_or_when_already_scored (test_code_score_v0_44.TestGatesAndCli.test_real_run_refused_without_tag_or_when_already_scored) ... ok
 test_boundary_90_percent_keeps_model (test_code_score_v0_44.TestHypotheses.test_boundary_90_percent_keeps_model) ... ok
+test_budget_stop_excluding_every_model_scores_undetermined_c11 (test_code_score_v0_44.TestHypotheses.test_budget_stop_excluding_every_model_scores_undetermined_c11) ... /Users/pablou/aias/_worktrees/v0.44/osf/v41/scripts/score_v41.py:189: RuntimeWarning: invalid value encountered in scalar divide
+  phi = float(((k - F * pi) ** 2).sum() / (F * pi * (1.0 - pi)) / (m - 1))
+ok
 test_descriptives_present (test_code_score_v0_44.TestHypotheses.test_descriptives_present) ... ok
 test_dispersion_falling_with_presence_falsifies_separation (test_code_score_v0_44.TestHypotheses.test_dispersion_falling_with_presence_falsifies_separation) ... ok
 test_drop_rule_phase_b_makes_primaries_undetermined (test_code_score_v0_44.TestHypotheses.test_drop_rule_phase_b_makes_primaries_undetermined) ... ok
@@ -57,14 +64,13 @@ test_served_mismatch_excluded_dated_snapshot_accepted (test_code_score_v0_44.Tes
 test_spread_in_four_industries_is_marginal (test_code_score_v0_44.TestHypotheses.test_spread_in_four_industries_is_marginal) ... ok
 test_tier_pattern_confirms_spread_and_tier (test_code_score_v0_44.TestHypotheses.test_tier_pattern_confirms_spread_and_tier) ... ok
 test_uncentred_comparability_value_is_reported_and_non_gating (test_code_score_v0_44.TestHypotheses.test_uncentred_comparability_value_is_reported_and_non_gating) ... ok
+test_unit_table_k_of_excluded_and_missing_model_runs_c11 (test_code_score_v0_44.TestHypotheses.test_unit_table_k_of_excluded_and_missing_model_runs_c11) ... ok
 test_window_checks (test_code_score_v0_44.TestHypotheses.test_window_checks) ... ok
 test_phi_max_and_c_phi (test_code_score_v0_44.TestKernel.test_phi_max_and_c_phi) ... ok
 test_rho_pw_centred (test_code_score_v0_44.TestKernel.test_rho_pw_centred) ... ok
 test_verdict_rules (test_code_score_v0_44.TestKernel.test_verdict_rules) ... ok
 
-----------------------------------------------------------------------
-Ran 62 tests in 18.097s
 
 OK
-RESULT OK 62 failures 0 errors 0
+RESULT OK 68 failures 0 errors 0
 EXIT 0

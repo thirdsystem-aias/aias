@@ -318,7 +318,8 @@ class TestSyncPath(Base):
         def sender(s):
             return {"call_id": s["call_id"], "cost_usd": per, "condition": "S0", "status": "ok"}
         st = AQ.run_sync([spec(model=GPT, i=i) for i in range(10)], L, self.write, sender=sender, sleep=lambda s: None)
-        self.assertEqual((st, len(self.written)), ("stop", 3))
+        # C11 b: each call reserves two worst cases (empty answer re-sent once): 2 calls fit under 3.5 (was 3)
+        self.assertEqual((st, len(self.written)), ("stop", 2))
         AQ.DEADLINE_UTC = datetime(2000, 1, 1, tzinfo=timezone.utc)
         self.assertEqual(AQ.run_sync([spec(model=GPT)], self.ledger(), self.write, sender=sender), "stop")
 
@@ -413,6 +414,97 @@ class TestCollectionFlow(Base):
                                ce["designs"]["adopted"]["central"] / ce["designs"]["block1"]["central"])
         self.assertAlmostEqual(AQ.projection_ratio(when_utc="2026-12-02T10:00:00+00:00"),
                                ce["designs"]["adopted_december"]["central"] / ce["designs"]["block1_december"]["central"])
+
+
+class TestC11(Base):
+    """Pre-lock dry run on fake SDKs (2026-11-11): regressions for clarification C11."""
+
+    def test_projection_reads_block1_spend_on_resume(self):
+        specs = AQ.build_specs(AQ.load_probes())
+        left = next(s for s in specs if s["block"] == 1)          # one block-2 call still to send (re-run pass)
+        with open(self.raw, "w") as f:
+            for s in specs:
+                if s is not left:
+                    f.write(json.dumps({"call_id": s["call_id"], "status": "ok", "text": "x", "error": None,
+                                        "cost_usd": 0.03 if s["block"] == 0 else 0.05}) + "\n")
+        sent = []
+
+        def runner(sp, ledger, write):
+            for s in sp:
+                sent.append(s["call_id"])
+                write({"call_id": s["call_id"], "status": "ok", "text": "x", "error": None, "cost_usd": 0.01})
+            return "done"
+        with mock.patch.object(BG, "record_cost", side_effect=lambda r: r.get("cost_usd", 0.0)):
+            L = self.ledger()
+            self.assertGreater(L.spent() * AQ.projection_ratio(), 80)          # whole spend would project > $80
+            st = AQ.run_collection(specs, L, self.raw, {"batch": runner, "standard": runner}, AQ.projection_ratio(),
+                                   log=lambda *a: None)
+        self.assertEqual((st, sent), ("done", [left["call_id"]]))             # block 1: 144 x 0.03 = $4.32
+
+    def test_kill_while_polling_batch_is_recovered_not_resent(self):
+        client = FakeClient(lambda cid, p, n: ok(message()))
+        real_retrieve, calls = client.batches.retrieve, []
+
+        def retrieve(bid):
+            calls.append(bid)
+            if len(calls) == 1:
+                raise KeyboardInterrupt("killed while polling")
+            return real_retrieve(bid)
+        client.batches.retrieve = retrieve
+        J = AQ.Inflight(Path(self.tmp.name) / "inflight.json")
+        specs = [spec(i=i) for i in range(3)]
+        with self.assertRaises(KeyboardInterrupt):
+            AQ.run_anthropic_batch(specs, self.ledger(), self.write, client=client, poll=0, sleep=lambda s: None,
+                                   journal=J)
+        self.assertEqual((self.written, list(J.load()["batches"])), ([], ["batch_1"]))
+        L = self.ledger()
+        n = AQ.recover_inflight(J, specs, L, self.write, client=client, poll=0, sleep=lambda s: None,
+                                log=lambda *a: None)
+        self.assertEqual((n, len(client.batches.created), J.load()["batches"]), (3, 1, {}))
+        self.assertEqual(AQ.done_ids(self.raw), {s["call_id"] for s in specs})
+        self.assertAlmostEqual(L.actual, 3 * (1000 * 4 + 200 * 20) / 1e6, places=12)
+
+    def test_interrupted_sync_request_counted_at_worst_case(self):
+        J = AQ.Inflight(Path(self.tmp.name) / "inflight.json")
+        s = spec(model=GPT)
+        J.add_sync(s["call_id"], "2026-11-24T18:00:00+00:00")
+        L = self.ledger()
+        self.assertEqual(AQ.recover_inflight(J, [s], L, self.write, log=lambda *a: None), 1)
+        r = self.written[0]
+        self.assertEqual((r["status"], r["call_id"]), ("error", s["call_id"]))
+        self.assertAlmostEqual(r["cost_usd"], BG.worst_case("gpt-6-astra", "S0", "standard", "2026-11-24"), places=12)
+        self.assertEqual(J.load()["sync"], {})
+
+    def test_read_timeout_counted_at_worst_case_connect_timeout_not(self):
+        class ReadTimeout(Exception):
+            pass
+
+        class ConnectTimeout(Exception):
+            pass
+
+        class APITimeoutError(Exception):
+            pass
+
+        def boom(inner):
+            try:
+                raise inner("t")
+            except inner as e:
+                try:
+                    raise APITimeoutError("timed out") from e
+                except APITimeoutError as e2:
+                    raise AQ.Transient(str(e2)) from e2
+        out = {"text": "Fine.", "served_model": "gpt-6-astra", "finish_reason": "completed", "tokens_in": 10,
+               "tokens_out": 5, "tokens_thought": 2, "paused_continued": False, "search": None}
+        for inner, extra in ((ReadTimeout, AQ.SDK_ATTEMPTS), (ConnectTimeout, 0)):
+            seq = iter([lambda: boom(inner), lambda: out])
+            with mock.patch.dict(AQ.CURRENT_DISPATCH, {"openai": lambda *a: next(seq)()}), \
+                    mock.patch.object(AQ.time, "sleep"):
+                r = AQ.send_call(spec(model=GPT))
+            want = (10 * 10 + 5 * 50) / 1e6 + extra * BG.worst_case("gpt-6-astra", "S0", "standard",
+                                                                     r["started_utc"])
+            self.assertEqual((r["status"], r["attempts"]), ("ok", 2))
+            self.assertAlmostEqual(r["cost_usd"], want, places=12)
+            self.assertEqual(sum(1 for p in r["usage_parts"] if p.get("estimated")), extra)
 
 
 class TestCostEstimate(unittest.TestCase):

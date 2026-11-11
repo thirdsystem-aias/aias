@@ -19,7 +19,15 @@ resumable append-only raw file) with these v0.44 changes:
     the commit of tag v0.44-prereg-r1 on origin, the time is inside the collection window (2026-11-24 to 2026-11-28
     US Central, or a window declared in a DEVIATIONS entry before the first call) and no other paid collection is
     running on this machine; no request is sent more than 72 hours after the first recorded call;
-  - no feasibility mode (none is planned for v0.44; the N3 IDs were served correctly in v0.42's check).
+  - no feasibility mode (none is planned for v0.44; the N3 IDs were served correctly in v0.42's check);
+  - r1 clarification C11 (2026-11-11, pre-lock dry run on fake SDKs; the guard counts more, never less):
+    (a) the projection pause reads the spend of block 1's raw lines, not the whole spend, so a resume or the re-run
+        pass after block 1 is not paused by the spend of later blocks; (b) a synchronous call reserves the worst case
+        of two requests (an empty answer is re-sent once); (c) a request that timed out after it was sent (read
+        timeout) is counted at its worst case once per SDK attempt (SDK_ATTEMPTS), as a usage part marked
+        `estimated`; (d) requests in flight are journalled (data/v44_inflight.json): after a kill, the next --collect
+        first collects the results of a submitted Message Batch (no re-send, every billed result recorded) and counts
+        an interrupted synchronous request at its worst case.
 
 Temperature, top_p, top_k and reasoning effort are never sent (provider defaults); max output 16,384 tokens.
 
@@ -348,8 +356,47 @@ def build_specs(probes, drop_run3=False):
     return specs
 
 
-def _invoke(model, cond, prompt, system):
-    return _call_with_retry(CURRENT_DISPATCH[model["provider"]], model["model_id"], prompt, cond == "S1", system)
+SDK_ATTEMPTS = 3           # the vendors' Python SDKs retry a timed-out request twice by default (max_retries=2)
+
+
+def _exc_names(e):
+    """Class names along an exception's cause chain (Transient -> SDK error -> httpx error)."""
+    names, seen = [], set()
+    while e is not None and id(e) not in seen:
+        seen.add(id(e))
+        names.append(type(e).__name__)
+        e = e.__cause__ or e.__context__
+    return names
+
+
+def billed_failure(names):
+    """A failed attempt that may have been billed: a timeout after the request was sent (not a connect timeout)."""
+    return any("Timeout" in n for n in names) and not any(n.startswith("Connect") for n in names)
+
+
+def _invoke(model, cond, prompt, system, failures=None):
+    """_call_with_retry on the copied call function; the cause chain of every failed attempt goes to `failures`."""
+    fn = CURRENT_DISPATCH[model["provider"]]
+
+    def tracked(*a):
+        try:
+            return fn(*a)
+        except Exception as e:
+            if failures is not None:
+                failures.append(_exc_names(e))
+            raise
+    return _call_with_retry(tracked, model["model_id"], prompt, cond == "S1", system)
+
+
+def _failure_parts(failures, cond):
+    """Worst-case usage parts for failed attempts that may have been billed (C11 c): SDK_ATTEMPTS each."""
+    parts = []
+    for names in failures:
+        if billed_failure(names):
+            parts += [{"mode": "standard", "input_tokens": BG.WORST[f"{cond}_input_tokens"],
+                       "output_tokens": BG.OUTPUT_CAP, "thinking_tokens": 0, "n_searches": BG.WORST["searches"][cond],
+                       "estimated": "worst case: " + "/".join(names)} for _ in range(SDK_ATTEMPTS)]
+    return parts
 
 
 def _part(out, mode, cond):
@@ -393,18 +440,20 @@ def send_call(spec):
     """Synchronous call (GPT-6 Astra, Gemini 4 Argon) with the usage of every billed request in `usage_parts`."""
     model, cond = spec["model"], spec["condition"]
     ts_start = _now()
-    out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
+    fails = []
+    out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"], fails)
     parts = [_part(out, "standard", cond)] if out is not None else []
     empty_retry = False
     if out is not None and not out["text"].strip():
         empty_retry = True
-        out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
+        out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"], fails)
         attempts += a2
         if out2 is not None:
             out = out2
             parts.append(_part(out2, "standard", cond))
         if err2:
             err = err2
+    parts += _failure_parts(fails, cond)
     ts_end = _now()
     time.sleep(PAUSE[model["provider"]])
     status = "error" if out is None else ("empty" if not out["text"].strip() else "ok")
@@ -466,7 +515,121 @@ def _batch_message_out(spec, m):
 TRANSIENT_BATCH_ERRORS = ("api_error", "overloaded_error", "rate_limit_error", "timeout_error")
 
 
-def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep):
+class Inflight:
+    """Journal of requests sent whose results are not yet in the raw file (C11 d): one JSON file, rewritten
+    atomically. {"batches": {batch_id: {"created_utc", "requests": {custom_id: [call_id, attempt, empty_resends]}}},
+     "sync": {call_id: {"started_utc"}}}"""
+
+    def __init__(self, path):
+        self.path = Path(path)
+        self.lock = threading.Lock()
+
+    def load(self):
+        try:
+            d = json.loads(self.path.read_text(encoding="utf-8"))
+        except (OSError, json.JSONDecodeError):
+            d = {}
+        d.setdefault("batches", {})
+        d.setdefault("sync", {})
+        return d
+
+    def _update(self, fn):
+        with self.lock:
+            d = self.load()
+            fn(d)
+            self.path.parent.mkdir(parents=True, exist_ok=True)
+            tmp = self.path.with_name(self.path.name + ".tmp")
+            tmp.write_text(json.dumps(d, indent=1), encoding="utf-8")
+            os.replace(tmp, self.path)
+
+    def add_batch(self, bid, created_utc, ids):
+        reqs = {cid: [s["call_id"], att, ne] for cid, (s, att, ne) in ids.items()}
+        self._update(lambda d: d["batches"].__setitem__(bid, {"created_utc": created_utc, "requests": reqs}))
+
+    def done_batch(self, bid):
+        self._update(lambda d: d["batches"].pop(bid, None))
+
+    def add_sync(self, call_id, started_utc):
+        self._update(lambda d: d["sync"].__setitem__(call_id, {"started_utc": started_utc}))
+
+    def done_sync(self, call_id):
+        self._update(lambda d: d["sync"].pop(call_id, None))
+
+
+def _batch_results(client, b, ids, ts_start, write):
+    """Write one raw line per request of an ended batch. -> (re-send list, USD recorded)."""
+    ts_end = getattr(b, "ended_at", None)
+    ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
+    results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
+    retry, spent = [], 0.0
+    for cid, (s, att, ne) in ids.items():
+        res = results.get(cid)
+        rtype = getattr(res, "type", "missing")
+        extra = {"batch_id": b.id, "custom_id": cid}
+        if rtype == "succeeded":
+            out, parts = _batch_message_out(s, res.message)
+            empty = not out["text"].strip()
+            rec = _record(s, out, "empty" if empty else "ok", None, att, ne > 0, ts_start, ts_end, parts, extra)
+            if empty and ne < EMPTY_RESENDS:
+                retry.append((s, att + 1, ne + 1))
+        else:
+            err = getattr(res, "error", None)
+            etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
+            rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
+                          ts_start, ts_end, [], extra)
+            transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
+            if transient and att < MAX_ATTEMPTS:
+                retry.append((s, att + 1, ne))
+        write(rec)
+        spent += rec["cost_usd"]
+    return retry, spent
+
+
+def _wait_ended(client, bid, poll, sleep):
+    while True:
+        b = client.messages.batches.retrieve(bid)
+        if getattr(b, "processing_status", None) == "ended":
+            return b
+        sleep(poll)
+
+
+def recover_inflight(journal, specs, ledger, write, client=None, poll=None, sleep=time.sleep, log=print):
+    """C11 d: before anything is sent, record what a killed run left in flight. A submitted batch is waited for and
+    its results written (nothing is re-sent; requests that did not succeed are re-sent later by the normal flow);
+    an interrupted synchronous request is written as an error line carrying its worst case. -> lines written."""
+    d = journal.load()
+    if not d["batches"] and not d["sync"]:
+        return 0
+    by_id = {s["call_id"]: s for s in specs}
+    n = 0
+    for cid, ent in d["sync"].items():
+        s = by_id[cid]
+        part = {"mode": "standard", "input_tokens": BG.WORST[f"{s['condition']}_input_tokens"],
+                "output_tokens": BG.OUTPUT_CAP, "thinking_tokens": 0, "n_searches": BG.WORST["searches"][s["condition"]],
+                "estimated": "worst case: process ended during the request"}
+        rec = _record(s, None, "error", "process ended during the request; its worst case is counted", 1, False,
+                      ent["started_utc"], _now(), [part], {"recovered": True})
+        write(rec)
+        ledger.settle(None, rec["cost_usd"])
+        journal.done_sync(cid)
+        n += 1
+    if d["batches"]:
+        if client is None:
+            import anthropic
+            client = anthropic.Anthropic()
+        poll = BATCH_POLL_SECONDS if poll is None else poll
+        for bid, ent in d["batches"].items():
+            log(f"recovering batch {bid} ({len(ent['requests'])} requests) left in flight by an interrupted run")
+            ids = {cid: (by_id[c], att, ne) for cid, (c, att, ne) in ent["requests"].items()}
+            b = _wait_ended(client, bid, poll, sleep)
+            _retry, spent = _batch_results(client, b, ids, ent["created_utc"], write)
+            ledger.settle(None, spent)
+            journal.done_batch(bid)
+            n += len(ids)
+    return n
+
+
+def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep, journal=None):
     """Send `specs` (one model, one block) through the Message Batches API under the budget guard.
     Each attempt is one raw line. Transient errors and expired requests are re-sent up to MAX_ATTEMPTS attempts;
     an empty answer is re-sent once. Returns 'done' | 'pause' | 'stop'."""
@@ -498,57 +661,40 @@ def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time
                 write(_record(s, None, "error", f"batch create failed: {type(e).__name__}: {e}"[:500], att, ne > 0,
                               ts_start, _now(), [], {"batch_id": None, "custom_id": cid}))
             return "stop"
-        while True:
-            b = client.messages.batches.retrieve(b.id)
-            if getattr(b, "processing_status", None) == "ended":
-                break
-            sleep(poll)
-        ts_end = getattr(b, "ended_at", None)
-        ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
-        results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
-        retry, spent = [], 0.0
-        for cid, (s, att, ne) in ids.items():
-            res = results.get(cid)
-            rtype = getattr(res, "type", "missing")
-            extra = {"batch_id": b.id, "custom_id": cid}
-            if rtype == "succeeded":
-                out, parts = _batch_message_out(s, res.message)
-                empty = not out["text"].strip()
-                rec = _record(s, out, "empty" if empty else "ok", None, att, ne > 0, ts_start, ts_end, parts, extra)
-                if empty and ne < EMPTY_RESENDS:
-                    retry.append((s, att + 1, ne + 1))
-            else:
-                err = getattr(res, "error", None)
-                etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
-                rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
-                              ts_start, ts_end, [], extra)
-                transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
-                if transient and att < MAX_ATTEMPTS:
-                    retry.append((s, att + 1, ne))
-            write(rec)
-            spent += rec["cost_usd"]
+        if journal is not None:
+            journal.add_batch(b.id, ts_start, ids)
+        b = _wait_ended(client, b.id, poll, sleep)
+        retry, spent = _batch_results(client, b, ids, ts_start, write)
         ledger.settle(tok, spent)
+        if journal is not None:
+            journal.done_batch(b.id)
         pending = retry + pending
     return "done"
 
 
-def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
-    """Send `specs` (one model, one block) one at a time under the budget guard. Returns 'done' | 'pause' | 'stop'."""
+def run_sync(specs, ledger, write, sender=None, sleep=time.sleep, journal=None):
+    """Send `specs` (one model, one block) one at a time under the budget guard. Returns 'done' | 'pause' | 'stop'.
+    Each call reserves the worst case of 1 + EMPTY_RESENDS requests (C11 b: an empty answer is re-sent once)."""
     sender = sender or send_call
     for s in specs:
         if past_deadline():
             ledger.halt("stop", f"deadline {DEADLINE_UTC.isoformat()} reached")
             return "stop"
         while True:
-            st, tok = ledger.reserve(BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
+            st, tok = ledger.reserve((1 + EMPTY_RESENDS) *
+                                     BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
             if st != "wait":
                 break
             sleep(5)
         if st != "ok":
             return st
+        if journal is not None:
+            journal.add_sync(s["call_id"], _now())
         rec = sender(s)
         write(rec)
         ledger.settle(tok, rec["cost_usd"])
+        if journal is not None:
+            journal.done_sync(s["call_id"])
     return "done"
 
 
@@ -706,6 +852,11 @@ def prereg_guard():
     return commit
 
 
+def inflight_path():
+    """The in-flight journal (C11 d), next to the budget state file."""
+    return Path(STATE_PATH).with_name("v44_inflight.json")
+
+
 def done_ids(raw_path=None):
     done = set()
     raw_path = RAW_PATH if raw_path is None else raw_path
@@ -722,11 +873,26 @@ def done_ids(raw_path=None):
     return done
 
 
-def run_collection(specs, ledger, raw_path, runners, ratio, log=print):
+def block_spend(raw_path, call_ids):
+    """USD recorded on the raw lines of the given calls (every attempt): the projection's 'actual spend' of block 1."""
+    tot = 0.0
+    if Path(raw_path).exists():
+        for line in Path(raw_path).read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                try:
+                    r = json.loads(line)
+                except json.JSONDecodeError:
+                    continue
+                if r.get("call_id") in call_ids:
+                    tot += BG.record_cost(r)
+    return tot
+
+
+def run_collection(specs, ledger, raw_path, runners, ratio, log=print, recover=None):
     """Blocks in order; within a block one worker per model in parallel (runners[mode](specs, ledger, write)).
-    After the projection block, pause if spend x ratio > $80 (unless the projection was approved or run 3 dropped).
+    After the projection block, pause if block-1 spend x ratio > $80 (unless the projection was approved or run 3
+    dropped). recover(write): called first, for what an interrupted run left in flight (C11 d).
     Returns 'done' | 'pause' | 'stop'."""
-    done = done_ids(raw_path)
     raw_path.parent.mkdir(parents=True, exist_ok=True)
     lock = threading.Lock()
 
@@ -739,6 +905,9 @@ def run_collection(specs, ledger, raw_path, runners, ratio, log=print):
         log(f"  {rec['call_id']} {rec['status']} out={rec.get('output_tokens')} fr={rec.get('finish_reason')} "
             f"${rec['cost_usd']:.4f}")
 
+    if recover is not None:
+        recover(write)
+    done = done_ids(raw_path)
     for bi, block in enumerate(BLOCKS):
         todo = [s for s in specs if s["block"] == bi and s["call_id"] not in done]
         if todo:
@@ -752,9 +921,10 @@ def run_collection(specs, ledger, raw_path, runners, ratio, log=print):
                     log(f"HALT ({st}) in block {bi + 1}: {ledger.summary()}")
                     return st
         if block == PROJECTION_BLOCK and not (ledger.approved("projection") or ledger.approved("drop_run3")):
-            proj = ledger.spent() * ratio
+            b1 = block_spend(raw_path, {s["call_id"] for s in specs if s["block"] == bi})
+            proj = b1 * ratio
             if any(s["block"] > bi and s["call_id"] not in done for s in specs) and proj > ledger.pause_at:
-                ledger.halt("pause", f"projection: spend ${ledger.spent():.2f} x {ratio:.4f} = ${proj:.2f} "
+                ledger.halt("pause", f"projection: block-1 spend ${b1:.2f} x {ratio:.4f} = ${proj:.2f} "
                                      f"> ${ledger.pause_at:.0f}")
                 log(f"PAUSE (projection) after block {bi + 1}: {ledger.summary()}")
                 return "pause"
@@ -828,10 +998,15 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, windo
     if drop_run3:
         ledger.approve("drop_run3", drop_run3)
     record_window(dates, deviation_entry)
-    specs = build_specs(load_probes(), drop_run3=ledger.approved("drop_run3"))
+    probes = load_probes()
+    specs = build_specs(probes, drop_run3=ledger.approved("drop_run3"))
     print(f"{len(specs)} specs, {len(done_ids())} already done; budget {ledger.summary()}")
-    st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync},
-                        projection_ratio(when_utc=first_call_utc() or datetime.now(timezone.utc)))
+    journal = Inflight(inflight_path())
+    runners = {"batch": lambda sp, lg, w: run_anthropic_batch(sp, lg, w, journal=journal),
+               "standard": lambda sp, lg, w: run_sync(sp, lg, w, journal=journal)}
+    st = run_collection(specs, ledger, RAW_PATH, runners,
+                        projection_ratio(when_utc=first_call_utc() or datetime.now(timezone.utc)),
+                        recover=lambda w: recover_inflight(journal, build_specs(probes), ledger, w))
     print("result:", st, ledger.summary())
     return {"done": 0, "pause": 5, "stop": 6}[st]
 
