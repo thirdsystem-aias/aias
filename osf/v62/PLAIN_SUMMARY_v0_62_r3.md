@@ -1,0 +1,9 @@
+# v0.62 in plain words (draft r3, for Pablo's panel)
+
+- **What it measures:** the 30 category questions of the English November wave (t4), asked in Spanish, Korean and Chinese (Simplified) of the same three AI models, three times each; we test whether brands come out in the same order as in English (Presence first, then Consistency; Ranking only if its redesign passes).
+- **Languages and checks:** you check the Spanish; Korean and Chinese go to student volunteers if any accept Friday's invite; a language nobody checks is verified by back-translation only, and the paper says so.
+- **Window:** Nov 29 to Dec 2, after v0.40 (Nov 17–21) and v0.44 (Nov 24–28), before t5 (Dec 3–6).
+- **Cost (810 calls, now based on t4's real usage):** about $33 expected ($39 if it runs into December), $122 in the most cautious case. The guard pauses after the first of three runs if the total heads over $80; it also pauses at $80 and stops at $100. I fixed a bug that had switched off that first-run pause.
+- **Brand questions (your option):** they do not fit in the cautious case. The 88 yes/no questions cost about $1 and could run last without touching the main tests; covering them in the cautious case needs a $125 budget, and all 112 need $185. They feed a descriptive only, not a test. Default: off.
+- **Conflict of interest:** Samsung's agency Cheil, or its Iris unit, has worked for 5 panel brands: Chevrolet, BMW, Bentley, Jack Daniel's and Eucerin. I propose keeping them, with every result also shown without them and Denon. Also disclosed: Samsung chips for Tesla, Samsung SDI batteries for Hyundai, Shilla duty-free.
+- **To stop the clock, type "hold v0.62".** Otherwise it locks 24 hours after you receive it; your choices on budget, brand questions and conflict-of-interest handling can be typed in the panel item.

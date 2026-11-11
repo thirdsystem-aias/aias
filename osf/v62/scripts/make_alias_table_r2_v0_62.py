@@ -17,6 +17,11 @@ Rules (pre-registration r2, section 4.2):
     stripping), so no Spanish alias is needed (checked brands: Bacardi/Bacardi, Patron/Patron, Remy Martin,
     L'Oreal Paris/Paris, Fernet-Branca; see ES_NOTES).
 Run: python3 osf/v62/scripts/make_alias_table_r2_v0_62.py
+
+r3 change log (the table keeps its r2 file name; every change is listed here and in the pre-registration's change log):
+  - 2026-11-11, MAC Cosmetics, Korean: 맥 코스메틱스 added (the form on the brand's Korean site, re-opened by the r3 runner
+    about 14:53 UTC; source in CHECKS); the r2 transcription 맥 코스메틱 is kept (not seen on the site; native check);
+    status stays PARTLY (one of two forms seen). Korean aliases 119 -> 120 over the same 111 units.
 """
 import csv
 import os
@@ -70,7 +75,7 @@ A = {
  'Eucerin': ('유세린', 0, '优色林', 0, ''),
  'Bioderma': ('바이오더마', 0, '贝德玛', 0, ''),
  # v21 cosmetics
- 'MAC Cosmetics': ('맥 코스메틱', 0, '魅可', 0, 'parity: bare 맥 not an alias; ZH 魅可 is the brand Chinese name (parity to be checked against the v0.21 matcher)'),
+ 'MAC Cosmetics': ('맥 코스메틱스|맥 코스메틱', 0, '魅可', 0, 'parity: bare 맥 not an alias; KO 맥 코스메틱스 is the brand Korea site form (added r3, 2026-11-11), 맥 코스메틱 the r2 transcription (kept; under KO-2 it does not match inside 맥 코스메틱스); ZH 魅可 is the brand Chinese name (parity to be checked against the v0.21 matcher)'),
  'NARS': ('나스', 1, '娜斯', 0, 'KO 나스 also = NAS (storage)'),
  'Bobbi Brown': ('바비 브라운', 0, '芭比波朗', 0, ''),
  'Tom Ford Beauty': ('톰 포드 뷰티', 0, '汤姆福特美妆', 0, 'parity: bare 톰 포드 / 汤姆福特 not aliases'),
@@ -175,7 +180,7 @@ CHECKS = {
  'Polestar': {'ko': ('CONFIRMED', 'brand Korea site, footer "폴스타오토모티브코리아 유한회사": https://www.polestar.com/kr/', '2026-11-11')},
  'Rolls-Royce': {'ko': ('CONFIRMED', 'brand Korea site, title "롤스로이스 모터카": https://www.rolls-roycemotorcars.com/ko_KR/home.html', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, description "欢迎访问劳斯莱斯汽车官网": https://www.rolls-roycemotorcars.com.cn/', '2026-11-11')},
  'Estée Lauder': {'ko': ('CONFIRMED', 'brand Korea site, "에스티 로더 Estée Lauder 공식 온라인 몰": https://www.esteelauder.co.kr/', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, title "雅诗兰黛官网", footer 雅诗兰黛(上海)商贸有限公司: https://www.esteelauder.com.cn/', '2026-11-11')},
- 'MAC Cosmetics': {'ko': ('PARTLY', 'brand Korea site writes "맥 코스메틱스" and "맥 MAC Cosmetics"; the alias 맥 코스메틱 is a prefix of 맥 코스메틱스 and would fail KO-2 there; PROPOSED alias 맥 코스메틱스: https://www.maccosmetics.co.kr/', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, meta keywords "MAC官网，魅可官网" (keywords only; body text not seen): https://www.maccosmetics.com.cn/', '2026-11-11')},
+ 'MAC Cosmetics': {'ko': ('PARTLY', 'brand Korea site (operator 이엘씨에이한국(유)) writes "맥 코스메틱스" (meta description "맥 코스메틱스의 아이코닉 메이크업 컬렉션") and "맥 MAC Cosmetics" (title); r3 (2026-11-11, page re-opened about 14:53 UTC): 맥 코스메틱스 ADDED as an alias; the r2 transcription 맥 코스메틱 is not seen on the site and is kept for the native check (alone it would fail KO-2 on 맥 코스메틱스): https://www.maccosmetics.co.kr/', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, meta keywords "MAC官网，魅可官网" (keywords only; body text not seen): https://www.maccosmetics.com.cn/', '2026-11-11')},
  'Cetaphil': {'ko': ('CONFIRMED', 'brand Korea site, "세타필 공식 웹사이트": https://www.cetaphil.co.kr/', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, title "丝塔芙官网": https://www.cetaphil.com.cn/', '2026-11-11')},
  'Dior Beauty': {'ko': ('UNCONFIRMED', 'brand Korea site writes 크리스챤 디올 코스메틱 / 디올; 디올 뷰티 not seen: https://www.dior.com/ko_kr', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, link text "克丽丝汀·迪奥美妆" (contains 迪奥美妆): https://www.dior.cn/zh_cn', '2026-11-11')},
  'Chanel Beauty': {'ko': ('UNCONFIRMED', 'brand Korea site writes 샤넬 (title, 샤넬코리아) and Latin "CHANEL BEAUTY"; 샤넬 뷰티 not seen: https://www.chanel.com/kr/', '2026-11-11'), 'zh': ('CONFIRMED', 'brand China site, menu "香奈儿美妆手册": https://www.chanel.cn/cn/', '2026-11-11')},

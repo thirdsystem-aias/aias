@@ -22,6 +22,12 @@ against v0.42). No language, locale or region parameter is sent; no system promp
     for the headphones option and the month of block 1; the pre-registrant continues (--approve-projection), drops
     Phase A (fallback F1, --drop-phase-a) or drops Phase B run 3 (fallback F2, --drop-run-3);
   - Claude Fable 5.2 through the Message Batches API; GPT-6 Astra and Gemini 4 Argon synchronous (as t4).
+r3 (2026-11-11, runner lane v0.62-r3; the text above is r1/r2's and is kept):
+  - COST_PATH -> prereg/cost_estimate_v0_62_r3.json (re-based on t4's recorded usage; cost_estimate_r3_v0_62.py);
+  - collect() no longer records a 'drop_phase_a' approval when params_v0_62.BRAND_EXTRAS is False: blocks 4-5 are left
+    out by collection_specs() instead, so the projection pause after block 1 (ratio 3.0 for the core) stays on, as the
+    pre-registration's section 6.5 rule 5 states (r2 recorded the approval, which switched the projection pause off);
+  - the dry run prints the cost of the design that is collected (core only while BRAND_EXTRAS is False).
 
 Output (append-only, one JSON line per attempt, resumable: answered call_ids are skipped): osf/v62/data/v62_raw.jsonl
 Budget state (approvals, window): osf/v62/data/v62_budget_state.json
@@ -59,7 +65,7 @@ import params_v0_62 as P  # noqa: E402
 
 V62 = ROOT / "osf" / "v62"
 PROBE_FILES = {lg: V62 / "translations" / f"probes_{lg}_v0_62_r2.jsonl" for lg in ("es", "ko", "zh")}
-COST_PATH = V62 / "prereg" / "cost_estimate_v0_62_r2.json"
+COST_PATH = V62 / "prereg" / "cost_estimate_v0_62_r3.json"   # r3: re-based on t4's recorded usage (r2 file kept)
 RAW_PATH = V62 / "data" / "v62_raw.jsonl"
 STATE_PATH = V62 / "data" / "v62_budget_state.json"
 ANCHOR_PATH = V62 / "anchor" / "osf_anchor_v0_62.json"
@@ -842,10 +848,13 @@ def dry_run(out=print):
         out(f"  {m['model_id']:17s} {m['mode']:8s} S0 {BG.worst_case(m['model_id'], 'S0', m['mode'], '2026-11-29'):.4f}"
             f" (Nov)  {BG.worst_case(m['model_id'], 'S0', m['mode'], '2026-12-01'):.4f} (Dec)")
     out(f"budget: pause at ${BG.PAUSE_AT_USD:.0f}, hard stop at ${BG.BUDGET_CAP_USD:.0f}; judge reserve "
-        f"${BG.JUDGE_RESERVE_USD:.4f} (counted in the spend from the first call)")
+        f"${BG.JUDGE_RESERVE_USD:.4f} " + ("(counted in the spend from the first call)" if extras_on()
+                                           else "(not counted: block 5 is not collected while BRAND_EXTRAS is False)"))
     try:
         ce = cost_estimate()
-        for k in ("option_%s_nov" % P.HEADPHONES_OPTION, "option_%s_dec" % P.HEADPHONES_OPTION):
+        keys = (("option_%s_nov" % P.HEADPHONES_OPTION, "option_%s_dec" % P.HEADPHONES_OPTION) if extras_on()
+                else ("core_nov", "core_dec"))                    # r3: the design actually collected
+        for k in keys:
             d = ce["designs"][k]
             out(f"cost estimate [{k}]: {d['calls']} calls, central ${d['central']:.2f}, high ${d['high']:.2f}")
         out(f"projection pause after block 1: call spend x {projection_ratio(when_utc='2026-11-29'):.4f} (Nov) / "
@@ -860,6 +869,17 @@ def dry_run(out=print):
 
 
 # ----------------------------------------------------------------- collect
+def collection_specs(ledger, probes=None):
+    """The specs collect() sends (r3). With the brand-question extras off (params_v0_62.BRAND_EXTRAS False) blocks 4-5
+    are left out WITHOUT recording a 'drop_phase_a' approval. That approval is the pre-registrant's fallback F1, and
+    run_collection skips the projection pause once it is recorded; with the extras off the projection pause must stay on
+    (pre-registration section 6.5 rule 5: block-1 call spend x 3.0 > $80 -> pause before block 2). r2's collect()
+    recorded the approval automatically, which switched the projection pause off in the adopted design (r3 fix; the
+    r2 fake-SDK dry run shows it: approved_drop_phase_a True, first halt at the $80 pause inside block 3)."""
+    return build_specs(probes if probes is not None else load_probes(), drop_run3=ledger.approved("drop_run3"),
+                       drop_phase_a=ledger.approved("drop_phase_a") or not extras_on())
+
+
 def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_phase_a=None, window=None,
             deviation_entry=None):
     global DEADLINE_UTC
@@ -881,15 +901,12 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_
     print(f"window ok: {why}")
     require_keys()
     ledger = BG.Ledger(RAW_PATH, STATE_PATH, judge_reserve=BG.JUDGE_RESERVE_USD if extras_on() else 0.0)
-    if not extras_on() and not ledger.approved("drop_phase_a"):
-        ledger.approve("drop_phase_a", "r2 default: params_v0_62.BRAND_EXTRAS is False (category questions only)")
     for kind, note in (("past_80", approve_past_80), ("projection", approve_projection), ("drop_run3", drop_run3),
                        ("drop_phase_a", drop_phase_a)):
         if note:
             ledger.approve(kind, note)
     record_window(dates, deviation_entry)
-    specs = build_specs(load_probes(), drop_run3=ledger.approved("drop_run3"),
-                        drop_phase_a=ledger.approved("drop_phase_a"))
+    specs = collection_specs(ledger)
     print(f"{len(specs)} specs (headphones option {P.HEADPHONES_OPTION}), {len(done_ids())} already done; "
           f"budget {ledger.summary()}")
     st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync},

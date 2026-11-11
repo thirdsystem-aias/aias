@@ -22,7 +22,8 @@ SCORER_NOTES
  S1  kernels transcribed (above).
  S2  units: the 112 registry units minus those removed by params_v0_62.HEADPHONES_OPTION (B: Denon; C: v0.19).
      S-Denon and S-Headphones are computed under option A only (under B, S-Denon equals the primary test; under C
-     both are void and reported as such).
+     both are void and reported as such). r3: S-COI (the units in params_v0_62.COI_FLAGGED removed; DEVIATIONS
+     Entry 0, Part F) is computed under every option, beside S-Denon and S-Headphones, for H_Lang_Presence.
  S3  drop rule (7.4): a model with < 90% of its expected Phase B calls answered in language L -> every test in L is
      UNDETERMINED (reported on the remaining models as descriptives, not here).
  S4  English comparator: a CSV with columns substrate, brand, pi, phi (v0.42's v42_brand_table.csv columns pi_N3_S0,
@@ -255,12 +256,16 @@ def joint_reading(*verdicts):
 
 
 def unit_set(units, option=None, sensitivity=None):
-    """Units of the primary test under the headphones option; sensitivity 'S-Denon' / 'S-Headphones' (option A)."""
+    """Units of the primary test under the headphones option; sensitivity 'S-Denon' / 'S-Headphones' (option A);
+    r3: 'S-COI' removes every unit in params_v0_62.COI_FLAGGED (any option)."""
     keep = [u for u in units if not P.excluded_unit(u[0], u[1], option)]
     if sensitivity == "S-Denon":
         keep = [u for u in keep if u != ("v0.19", P.DENON[1])]
     elif sensitivity == "S-Headphones":
         keep = [u for u in keep if u[0] != "v0.19"]
+    elif sensitivity == "S-COI":
+        flagged = set(P.COI_FLAGGED)
+        keep = [u for u in keep if u not in flagged]
     return keep
 
 
@@ -300,8 +305,8 @@ def score(units, en, lang_B, n_b_per_run=30, rank=None, rank_status="NOT RESOLVE
             deg = bool(vals) and collections.Counter(vals).most_common(1)[0][1] > 0.8 * len(vals)
             tr["verdict"] = "UNDETERMINED" if und else verdict_rank(tr["n"], tr["rho_c"], tr["p_perm"], deg)
             out["tests"][f"H_Lang_Rank_{lg}"] = tr
-        for sens in ("S-Denon", "S-Headphones"):
-            if option == "C" or (option == "B" and sens == "S-Denon"):
+        for sens in ("S-Denon", "S-Headphones", "S-COI"):
+            if sens != "S-COI" and (option == "C" or (option == "B" and sens == "S-Denon")):
                 out["sensitivities"][f"{sens}_{lg}"] = {"void": f"headphones option {option}"}
                 continue
             ks = unit_set(units, option, sens)

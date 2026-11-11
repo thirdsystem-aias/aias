@@ -164,5 +164,33 @@ class EndToEnd(unittest.TestCase):
                 self.assertIn("not on origin", str(e.exception))
 
 
+class SensitivityCOI(unittest.TestCase):
+    """r3: S-COI removes every unit flagged in DEVIATIONS Entry 0 (params_v0_62.COI_FLAGGED); primary tests keep them."""
+
+    def test_flagged_units_are_registry_units(self):
+        import csv
+        table = HERE.parents[1] / "translations" / "brand_aliases_v0_62_r2.csv"
+        reg = {("v0." + r["substrate"][1:], r["brand"]) for r in csv.DictReader(open(table, encoding="utf-8"))}
+        self.assertEqual(len(reg), 112)
+        self.assertTrue(set(S.P.COI_FLAGGED) <= reg, set(S.P.COI_FLAGGED) - reg)
+        self.assertIn(("v0.19", "Denon"), S.P.COI_FLAGGED)
+        self.assertEqual(len(S.P.COI_FLAGGED), 6)
+
+    def test_s_coi_in_every_option(self):
+        U = units()
+        flagged = (("v0.19", "Denon"), ("v0.20", "v0.20-b3"), ("v0.22", "v0.22-b5"), ("v0.23", "v0.23-b0"))
+        pi, en = english(U)
+        rows = synth_rows(U, pi, 7)
+        with mock.patch.object(S.P, "COI_FLAGGED", flagged):
+            self.assertEqual(len(S.unit_set(U, "A", "S-COI")), 108)
+            v = S.score(U, en, {"es": rows, "ko": rows, "zh": rows}, n_perm=99, n_boot=99, option="A")
+            self.assertEqual(v["n_units"], 112)                                  # primary test keeps every unit
+            self.assertEqual(v["tests"]["H_Lang_Presence_ko"]["n"], 112)
+            self.assertEqual(v["sensitivities"]["S-COI_ko"]["n"], 108)
+            vc = S.score(U, en, {"es": rows, "ko": rows, "zh": rows}, n_perm=99, n_boot=99, option="C")
+            self.assertEqual(vc["sensitivities"]["S-COI_es"]["n"], 93)          # 96 units minus 3 flagged outside v0.19
+            self.assertIn("void", vc["sensitivities"]["S-Denon_es"])
+
+
 if __name__ == "__main__":
     unittest.main()

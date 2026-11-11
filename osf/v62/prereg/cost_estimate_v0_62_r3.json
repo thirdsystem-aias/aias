@@ -1,0 +1,607 @@
+{
+ "revision": "r3",
+ "script": "osf/v62/scripts/cost_estimate_r3_v0_62.py",
+ "no_model_called": true,
+ "source": {
+  "repo_tag": "v0.42-acquisition-locked",
+  "commit": "a790bb1ac552adfc6615b0bcb49430aa95e7bc16",
+  "t4_raw": {
+   "path": "osf/v42/data/t4_raw.jsonl",
+   "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf"
+  },
+  "t4_batches": {
+   "path": "osf/v42/data/t4_batches.jsonl",
+   "sha256": "d73b8e81fc6402e81860222737b6a211a8cd394c4c3687bb577955bb6e39298c"
+  },
+  "fields_read": [
+   "call_id",
+   "model_requested",
+   "substrate",
+   "phase",
+   "condition",
+   "status",
+   "error",
+   "mode",
+   "attempts",
+   "empty_retry",
+   "started_utc",
+   "usage_parts",
+   "cost_usd",
+   "batch_id"
+  ],
+  "answer_text_read": false
+ },
+ "prices_read": {
+  "read_utc": "2026-11-11T14:35Z (about; 08:35 US Central)",
+  "anthropic": [
+   "https://platform.claude.com/docs/about-claude/pricing",
+   "Claude Fable 5.2 $8 / $40 base, Batch $4 / $20; Claude Sonnet 5.5 $2 / $10; Claude Sonnet 4.6 $3 / $15; '50 percent discount on both input and output tokens' (Batch API); no dated change shown"
+  ],
+  "openai": [
+   "https://developers.openai.com/api/docs/pricing",
+   "gpt-6-astra Standard $10.00 input / $50.00 output (Batch tab $5 / $25, not used); no dated change for gpt-6-astra; reasoning tokens 'billed as output tokens' (https://developers.openai.com/api/docs/guides/reasoning)"
+  ],
+  "google": [
+   "https://ai.google.dev/gemini-api/docs/latest-model",
+   "gemini-4-argon input $2.00 ($4.00 starting December 1, 2026); output including thinking tokens $10.00 ($20.00 starting December 1, 2026); page 'Last updated 2026-10-27 UTC'; https://ai.google.dev/gemini-api/docs/pricing does not list the model"
+  ]
+ },
+ "price_days_utc": {
+  "nov": "2026-11-30T12:00:00+00:00",
+  "dec": "2026-12-01T12:00:00+00:00"
+ },
+ "language_factor_assumption": {
+  "central": {
+   "es": 1.25,
+   "ko": 1.75,
+   "zh": 1.5
+  },
+  "high": {
+   "es": 1.5,
+   "ko": 2.5,
+   "zh": 2.25
+  }
+ },
+ "resend_overhead": {
+  "central": 1.02,
+  "high": 1.1
+ },
+ "judge_reserve_usd": 2.4624,
+ "pause_usd": 80.0,
+ "cap_usd": 100.0,
+ "reconciliation": {
+  "raw_lines": 990,
+  "recorded_cost_usd_sum": 67.4551,
+  "recorded_plus_t4_judge_reserve": 67.9551,
+  "matches_recorded_spend": true,
+  "s0_recorded_usd": 14.546,
+  "s0_recomputed_usd_budget_v0_62_at_t4_dates": 14.546,
+  "s0_max_line_difference_usd": 0.0,
+  "s0_answered_lines": 606,
+  "s0_lines_not_answered": {
+   "gemini-4-argon error: ClientError: 402 RESOURCE_EXHAUSTED.": 6
+  },
+  "s0_answered_with_resend_or_retry": 0,
+  "status_by_model_condition": {
+   "claude-fable-5-2 S0 ok": 202,
+   "claude-fable-5-2 S1 error": 30,
+   "claude-fable-5-2 S1 ok": 90,
+   "gemini-4-argon S0 error": 6,
+   "gemini-4-argon S0 ok": 202,
+   "gemini-4-argon S1 error": 78,
+   "gemini-4-argon S1 ok": 90,
+   "gpt-6-astra S0 ok": 202,
+   "gpt-6-astra S1 ok": 90
+  },
+  "batches_created": 7,
+  "requests_in_created_batches": 292,
+  "fable_answered_lines": 292,
+  "fable_answered_in_a_recorded_batch": 292,
+  "first_and_last_answered_start_utc": [
+   "2026-11-11T02:57:06.408927+00:00",
+   "2026-11-11T09:48:42.378146+00:00"
+  ]
+ },
+ "basis_t4_s0": {
+  "claude-fable-5-2|A_open": {
+   "n": 24,
+   "modes": [
+    "batch"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 1.970168,
+   "in_mean": 80.5,
+   "out_mean": 4088.4166666666665,
+   "think_mean": 0,
+   "in_p90": 83.7,
+   "out_p90": 4660.4,
+   "think_p90": 0.0,
+   "in_max": 86,
+   "out_max": 5164,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.08373214,
+    "central_dec": 0.08373214,
+    "high_nov": 0.10289708000000002,
+    "high_dec": 0.10289708000000002
+   }
+  },
+  "claude-fable-5-2|A_yn": {
+   "n": 88,
+   "modes": [
+    "batch"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 0.16186,
+   "in_mean": 41.98863636363637,
+   "out_mean": 83.56818181818181,
+   "think_mean": 0,
+   "in_p90": 47.0,
+   "out_p90": 157.0,
+   "think_p90": 0.0,
+   "in_max": 49,
+   "out_max": 382,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.0018761045454545454,
+    "central_dec": 0.0018761045454545454,
+    "high_nov": 0.0036608,
+    "high_dec": 0.0036608
+   }
+  },
+  "claude-fable-5-2|B": {
+   "n": 90,
+   "modes": [
+    "batch"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 2.316904,
+   "in_mean": 42.733333333333334,
+   "out_mean": 1278.6222222222223,
+   "think_mean": 0,
+   "in_p90": 91.2,
+   "out_p90": 3489.2,
+   "think_p90": 0.0,
+   "in_max": 114,
+   "out_max": 5080,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.026258245333333336,
+    "central_dec": 0.026258245333333336,
+    "high_nov": 0.07716368,
+    "high_dec": 0.07716368
+   }
+  },
+  "gemini-4-argon|A_open": {
+   "n": 24,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 0.457916,
+   "in_mean": 78.66666666666667,
+   "out_mean": 1892.25,
+   "think_mean": 0,
+   "in_p90": 81.0,
+   "out_p90": 2103.7,
+   "think_p90": 0.0,
+   "in_max": 82,
+   "out_max": 2215,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.01946143,
+    "central_dec": 0.03892286,
+    "high_nov": 0.0233189,
+    "high_dec": 0.0466378
+   }
+  },
+  "gemini-4-argon|A_yn": {
+   "n": 88,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 0.01338,
+   "in_mean": 48.92045454545455,
+   "out_mean": 5.420454545454546,
+   "think_mean": 0,
+   "in_p90": 51.0,
+   "out_p90": 6.0,
+   "think_p90": 0.0,
+   "in_max": 53,
+   "out_max": 6,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.00015508636363636367,
+    "central_dec": 0.00031017272727272734,
+    "high_nov": 0.00017820000000000002,
+    "high_dec": 0.00035640000000000004
+   }
+  },
+  "gemini-4-argon|B": {
+   "n": 90,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 1.17602,
+   "in_mean": 51.333333333333336,
+   "out_mean": 1296.4222222222222,
+   "think_mean": 0,
+   "in_p90": 77.3,
+   "out_p90": 1798.5,
+   "think_p90": 0.0,
+   "in_max": 90,
+   "out_max": 2320,
+   "think_max": 0,
+   "per_call_usd": {
+    "central_nov": 0.013328226666666667,
+    "central_dec": 0.026656453333333333,
+    "high_nov": 0.01995356,
+    "high_dec": 0.03990712
+   }
+  },
+  "gpt-6-astra|A_open": {
+   "n": 24,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 4.5962,
+   "in_mean": 51.875,
+   "out_mean": 3819.7916666666665,
+   "think_mean": 627.9583333333334,
+   "in_p90": 53.7,
+   "out_p90": 4317.8,
+   "think_p90": 1001.9,
+   "in_max": 55,
+   "out_max": 4767,
+   "think_max": 1034,
+   "per_call_usd": {
+    "central_nov": 0.19533849999999997,
+    "central_dec": 0.19533849999999997,
+    "high_nov": 0.23806970000000002,
+    "high_dec": 0.23806970000000002
+   }
+  },
+  "gpt-6-astra|A_yn": {
+   "n": 88,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 0.06151,
+   "in_mean": 23.988636363636363,
+   "out_mean": 9.181818181818182,
+   "think_mean": 2.8181818181818183,
+   "in_p90": 26.0,
+   "out_p90": 20.0,
+   "think_p90": 12.0,
+   "in_max": 28,
+   "out_max": 51,
+   "think_max": 43,
+   "per_call_usd": {
+    "central_nov": 0.0007129568181818182,
+    "central_dec": 0.0007129568181818182,
+    "high_nov": 0.001386,
+    "high_dec": 0.001386
+   }
+  },
+  "gpt-6-astra|B": {
+   "n": 90,
+   "modes": [
+    "standard"
+   ],
+   "resent_or_retried": 0,
+   "recorded_usd": 3.79209,
+   "in_mean": 26.1,
+   "out_mean": 837.4666666666667,
+   "think_mean": 204.25555555555556,
+   "in_p90": 52.0,
+   "out_p90": 1798.1,
+   "think_p90": 321.3,
+   "in_max": 63,
+   "out_max": 3290,
+   "think_max": 2070,
+   "per_call_usd": {
+    "central_nov": 0.042977020000000005,
+    "central_dec": 0.042977020000000005,
+    "high_nov": 0.09946750000000001,
+    "high_dec": 0.09946750000000001
+   }
+  }
+ },
+ "blocks": {
+  "1": {
+   "kind": "B",
+   "label": "category questions, run 1",
+   "calls": 270,
+   "central_nov": 11.14607142,
+   "central_dec": 12.94538202,
+   "high_nov": 36.85963875,
+   "high_dec": 40.60093125
+  },
+  "2": {
+   "kind": "B",
+   "label": "category questions, run 2",
+   "calls": 270,
+   "central_nov": 11.14607142,
+   "central_dec": 12.94538202,
+   "high_nov": 36.85963875,
+   "high_dec": 40.60093125
+  },
+  "3": {
+   "kind": "B",
+   "label": "category questions, run 3",
+   "calls": 270,
+   "central_nov": 11.14607142,
+   "central_dec": 12.94538202,
+   "high_nov": 36.85963875,
+   "high_dec": 40.60093125
+  },
+  "4": {
+   "kind": "A_yn",
+   "label": "brand questions yes/no (v0.19-v0.22), run 1",
+   "calls": 792,
+   "central_nov": 1.0866825,
+   "central_dec": 1.1480967,
+   "high_nov": 2.8737500000000002,
+   "high_dec": 2.97176
+  },
+  "5": {
+   "kind": "A_open",
+   "label": "brand questions open (v0.23), run 1",
+   "calls": 216,
+   "central_nov": 32.24146355999999,
+   "central_dec": 34.343298,
+   "high_nov": 54.642852000000005,
+   "high_dec": 58.140687
+  }
+ },
+ "reference_high_factor_on_mean_tokens_dec": {
+  "1": 19.389869583333336,
+  "2": 19.389869583333336,
+  "3": 19.389869583333336,
+  "4": 1.7196437500000001,
+  "5": 51.440125
+ },
+ "designs": {
+  "option_A_nov": {
+   "calls": 1818,
+   "central": 69.22876032,
+   "high": 170.55791825,
+   "label": "full design (blocks 1-5), option A"
+  },
+  "option_A_dec": {
+   "calls": 1818,
+   "central": 76.78994076000001,
+   "high": 185.37764075000004,
+   "label": "full design (blocks 1-5), option A"
+  },
+  "option_B_nov": {
+   "calls": 1809,
+   "central": 69.21641165522726,
+   "high": 170.52526200000005,
+   "label": "full design (blocks 1-5), option B"
+  },
+  "option_B_dec": {
+   "calls": 1809,
+   "central": 76.7768942065909,
+   "high": 185.34387075000004,
+   "label": "full design (blocks 1-5), option B"
+  },
+  "option_C_nov": {
+   "calls": 1512,
+   "central": 62.34353883163636,
+   "high": 147.91963500000003,
+   "label": "full design (blocks 1-5), option C"
+  },
+  "option_C_dec": {
+   "calls": 1512,
+   "central": 68.81396669345456,
+   "high": 160.47676200000004,
+   "label": "full design (blocks 1-5), option C"
+  },
+  "core_nov": {
+   "calls": 810,
+   "central": 33.438214259999995,
+   "high": 110.57891625000002
+  },
+  "core_dec": {
+   "calls": 810,
+   "central": 38.836146060000004,
+   "high": 121.80279375
+  },
+  "core_plus_yn_nov": {
+   "calls": 1602,
+   "central": 34.52489676,
+   "high": 113.45266625000001
+  },
+  "core_plus_yn_dec": {
+   "calls": 1602,
+   "central": 39.98424276000001,
+   "high": 124.77455374999998
+  },
+  "core_plus_open_nov": {
+   "calls": 1026,
+   "central": 68.14207782,
+   "high": 167.68416825000003
+  },
+  "core_plus_open_dec": {
+   "calls": 1026,
+   "central": 75.64184406,
+   "high": 182.40588075000002
+  },
+  "full_nov": {
+   "calls": 1818,
+   "central": 69.22876032,
+   "high": 170.55791825
+  },
+  "full_dec": {
+   "calls": 1818,
+   "central": 76.78994076000001,
+   "high": 185.37764075000004
+  },
+  "block1_nov": {
+   "calls": 270,
+   "central": 11.14607142,
+   "high": 36.85963875
+  },
+  "block1_dec": {
+   "calls": 270,
+   "central": 12.94538202,
+   "high": 40.60093125
+  }
+ },
+ "projection": {
+  "A": {
+   "nov": 6.211045821559971,
+   "dec": 5.931840454098859
+  },
+  "B": {
+   "nov": 6.209937927638657,
+   "dec": 5.930832638849456
+  },
+  "C": {
+   "nov": 6.99164939852372,
+   "dec": 6.644644262635532
+  }
+ },
+ "projection_by_design": {
+  "core": {
+   "nov": 2.9999999999999996,
+   "dec": 3.0000000000000004
+  },
+  "core_plus_yn": {
+   "nov": 3.0974946650754545,
+   "dec": 3.0886877419473797
+  },
+  "core_plus_open": {
+   "nov": 6.113551156484514,
+   "dec": 5.843152712151479
+  },
+  "full": {
+   "nov": 6.211045821559971,
+   "dec": 5.931840454098859
+  },
+  "block1": {
+   "nov": 1.0,
+   "dec": 1.0
+  }
+ },
+ "guard_core": {
+  "conservative_high_dec": {
+   "block1_usd": 40.60093125,
+   "projection_after_block1_usd": 121.80279375,
+   "projection_pause": true,
+   "runs_at_80": 1.9703981543526787,
+   "runs_at_100": 2.4629976929408484
+  },
+  "central_nov": {
+   "block1_usd": 11.14607142,
+   "projection_after_block1_usd": 33.43821426,
+   "projection_pause": false,
+   "runs_at_80": 7.177416776322792,
+   "runs_at_100": 8.971770970403488
+  },
+  "central_dec": {
+   "block1_usd": 12.94538202,
+   "projection_after_block1_usd": 38.836146060000004,
+   "projection_pause": false,
+   "runs_at_80": 6.179809902589495,
+   "runs_at_100": 7.724762378236869
+  }
+ },
+ "brand_question_option": {
+  "core_high_dec": 121.80279375,
+  "room_under_80": -41.802793750000006,
+  "room_under_100": -21.802793750000006,
+  "any_fits": false,
+  "subsets": [
+   {
+    "key": "yes_no_88",
+    "label": "the 88 yes/no brand questions (block 4; v0.19-v0.22), 3 languages",
+    "calls": 792,
+    "high_dec": 2.97176,
+    "central_nov": 1.0866825,
+    "central_dec": 1.1480967,
+    "fits_under_80_conservative_high": false,
+    "smallest_budget_conservative_high": 124.77455375000001,
+    "fits_under_80_central_nov": true,
+    "fits_under_80_central_dec": true
+   },
+   {
+    "key": "open_24",
+    "label": "the 24 open brand questions (block 5; v0.23) + judge reserve",
+    "calls": 216,
+    "high_dec": 60.603087,
+    "central_nov": 34.703863559999995,
+    "central_dec": 36.805698,
+    "fits_under_80_conservative_high": false,
+    "smallest_budget_conservative_high": 182.40588075,
+    "fits_under_80_central_nov": true,
+    "fits_under_80_central_dec": true
+   },
+   {
+    "key": "all_112",
+    "label": "all 112 brand questions (blocks 4-5) + judge reserve",
+    "calls": 1008,
+    "high_dec": 63.574847000000005,
+    "central_nov": 35.79054606,
+    "central_dec": 37.9537947,
+    "fits_under_80_conservative_high": false,
+    "smallest_budget_conservative_high": 185.37764075,
+    "fits_under_80_central_nov": true,
+    "fits_under_80_central_dec": true
+   }
+  ],
+  "per_language_high_dec": {
+   "A_yn_es": {
+    "calls": 264,
+    "high_dec": 0.7132224
+   },
+   "A_yn_ko": {
+    "calls": 264,
+    "high_dec": 1.188704
+   },
+   "A_yn_zh": {
+    "calls": 264,
+    "high_dec": 1.0698336
+   },
+   "A_open_es": {
+    "calls": 72,
+    "high_dec": 13.953764880000001
+   },
+   "A_open_ko": {
+    "calls": 72,
+    "high_dec": 23.2562748
+   },
+   "A_open_zh": {
+    "calls": 72,
+    "high_dec": 20.93064732
+   }
+  }
+ },
+ "r2_for_comparison": {
+  "phase_b_only_dec": {
+   "calls": 810,
+   "central": 55.50332422500001,
+   "high": 142.0568325
+  },
+  "phase_b_only_nov": {
+   "calls": 810,
+   "central": 50.017321800000005,
+   "high": 127.310844375
+  },
+  "adopted_dec": {
+   "calls": 1818,
+   "central": 98.58786988500002,
+   "high": 260.6795845
+  },
+  "b_plus_ayn_dec": {
+   "calls": 1602,
+   "central": 81.32458342500001,
+   "high": 220.3353625
+  }
+ }
+}

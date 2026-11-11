@@ -26,6 +26,13 @@ LANGS = ("es", "ko", "zh")                   # r2: Spanish, Korean, Chinese (Sim
 BLACKOUT = ("2026-11-17", "2026-11-21")      # inclusive, US Central: never collect (v0.40's booking)
 DENON = ("v19", "Denon")                     # (substrate, brand_id) of the unit flagged in DEVIATIONS Entry 0
 HEADPHONES = "v19"
+# r3 (DEVIATIONS Entry 0, Part F; pre-registration section 7.5): the registry units with a Samsung-group tie found by the
+# conflict-of-interest screen. Each stays in every primary test (as Denon); sensitivity S-COI removes the whole set.
+# Denon: owned by Harman International (Samsung) since 2025-09-23. The other five: advertising, PR or search work for
+# the brand by Cheil Worldwide (a Samsung affiliate) or its Iris agency (sources and dates in Entry 0, Part F).
+# The pre-registrant may change this set before the lock (section 9); a change is a one-line edit here.
+COI_FLAGGED = (("v0.19", "Denon"), ("v0.20", "Eucerin"), ("v0.22", "BMW"), ("v0.22", "Bentley"),
+               ("v0.22", "Chevrolet"), ("v0.23", "Jack Daniel's"))
 
 
 def validate(option=None, window=None):

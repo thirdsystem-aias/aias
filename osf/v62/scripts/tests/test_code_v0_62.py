@@ -120,6 +120,18 @@ class PreStep(unittest.TestCase):
                         bad.append((a, tmpl, sorted(got)))
         self.assertEqual(bad, [])
 
+    def test_mac_korean_alias_r3(self):
+        # r3: the brand Korea site's form 맥 코스메틱스 (and the kept r2 transcription 맥 코스메틱) reach MAC Cosmetics
+        for t in ("맥 코스메틱스의 립스틱", "추천: 맥 코스메틱스", "**맥 코스메틱스**와 나스", "맥 코스메틱은 인기입니다.",
+                  "맥코스메틱스에서는"):
+            self.assertIn("MAC Cosmetics", code(t, "v21"), t)
+        for t in ("빅맥 코스메틱스", "맥 코스메틱스킨", "맥 립스틱", "맥 코스메틱스타일"):
+            self.assertNotIn("MAC Cosmetics", code(t, "v21"), t)
+        row = [r for r in ROWS if r["brand"] == "MAC Cosmetics"][0]
+        self.assertEqual(row["ko_aliases"], "맥 코스메틱스|맥 코스메틱")
+        self.assertEqual(row["ko_check_status"], "PARTLY")
+        self.assertIn("https://www.maccosmetics.co.kr/", row["ko_check_source"])
+
     def test_alias_separator_variants(self):
         self.assertEqual(code("오디오테크니카와 오디오 테크니카", "v19"), {"Audio-Technica"})
         self.assertEqual(code("梅赛德斯·奔驰和梅赛德斯奔驰", "v22"), {"Mercedes-Benz"})
