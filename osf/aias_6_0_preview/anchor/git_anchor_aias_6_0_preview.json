@@ -1,0 +1,154 @@
+{
+  "phase": "AIAS 6.0 Preview",
+  "tag": "aias-6-0-preview-prereg-r1",
+  "tag_object": "cf324ab3a62eb5bb247482e6076830a64bf3afb6",
+  "commit": "598990b8a5d761c9ee13c2dd7f00ca8cfb91c673",
+  "tree": "b81f5a00b0648784b54932691e1863cc02a431d4",
+  "branch": "aias-6.0-preview",
+  "tagger_date": "2026-11-11T17:02:13-06:00",
+  "remote_tag_ref": "cf324ab3a62eb5bb247482e6076830a64bf3afb6\trefs/tags/aias-6-0-preview-prereg-r1",
+  "recorded_utc": "2026-11-11T23:02:32+00:00",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: aias_6_0_preview/prereg, aias_6_0_preview/scoping, aias_6_0_preview/anchor)",
+  "lock_manifest": "osf/aias_6_0_preview/prereg/LOCK_MANIFEST_aias_6_0_preview.sha256",
+  "lock_manifest_sha256": "62b427f0ead07518c7f37f2156e7251b2c011f6f997d3f0a012ffeeb6b041090",
+  "lock_manifest_git_blob": "4ea743bd1c68f4e24a66c04dcbdc921a315d68f4",
+  "locked_files": {
+    "osf/aias_6_0_preview/README.md": {
+      "sha256": "895d401a4651a225eb7093850df0b213f4c990c56210f9a9257b988049764526",
+      "git_blob": "5843bf8b02d84d99c88ac8e452406ce2bedb12ab"
+    },
+    "osf/aias_6_0_preview/anchor/DEVIATIONS.md": {
+      "sha256": "04f65f1ae255cb3343b63db24efec6b3f9846ac3930f62a40b2cc6c21a572e26",
+      "git_blob": "55b55c372780db9bd1d99b9ded3dfc98449aa99b"
+    },
+    "osf/aias_6_0_preview/prereg/PRE_REGISTRATION_aias_6_0_preview.md": {
+      "sha256": "a8372853854996f03f1b99529369699801001ba2987b30a0eaddd0cfb3683304",
+      "git_blob": "d1510c404e4608a1a5917564d7876ea7203a2844"
+    },
+    "osf/aias_6_0_preview/prereg/precision_aias_6_0_preview.json": {
+      "sha256": "0b70a95b4b2c5ed116e25c25f20d07cc29b3eec6b8711da0cfb9ffceec1998d9",
+      "git_blob": "333787d48881506b9ac901a10fef9e7bffb3da96"
+    },
+    "osf/aias_6_0_preview/scoping/precision_aias_6_0_preview.py": {
+      "sha256": "520546b3c211d423ac178a360ce3d0be6cc59783ebfee81655855a45253d357c",
+      "git_blob": "ffe491c930a77d852f729cd703d79b6a695a83f9"
+    },
+    "osf/aias_6_0_preview/scripts/score_aias_6_0_preview.py": {
+      "sha256": "c534e699e5e313033ebd312d6efe8113f9d4b01cf5ed4c2218b46b3cc0ce8691",
+      "git_blob": "2fdc2205e0865d2eb6c6710dbea446ba9bfd7cc1"
+    },
+    "osf/aias_6_0_preview/scripts/tests/test_score_aias_6_0_preview.py": {
+      "sha256": "c8af2d01e050afb11c351bea3e0fa27623255e441551e9e1ee9883fc385b7bf9",
+      "git_blob": "f2c8e1f16fe2bc080b9e3f9cc63982f7c844f89e"
+    },
+    "scripts/score_v1_10.py": {
+      "sha256": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+      "git_blob": "0f8b981b2895a325b50629c85f8e0e6ce8e876f5"
+    },
+    "scripts/score_v1_14.py": {
+      "sha256": "b087fc818105710079e8fea3c8c279373f787efe48c62cbccdcfb0392e1484ce",
+      "git_blob": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9"
+    }
+  },
+  "pinned_inputs": {
+    "v0.42": {
+      "lock_tag": "v0.42-prereg-r1",
+      "lock_commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+      "scorer": "osf/v42/scripts/score_v0_42.py",
+      "scorer_blob": "934f09ae69300cb13bdde56c7964b7b2cc7700b9",
+      "coder": "osf/v42/scripts/code_t4_v0_42.py",
+      "coder_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+      "raw_ref": "v0.42-acquisition-locked",
+      "raw": "osf/v42/data/t4_raw.jsonl",
+      "default_scored_ref": "v0.42-scoring-locked",
+      "brand_table": "osf/v42/v42_brand_table.csv",
+      "verdicts": "osf/v42/v42_verdicts.json",
+      "coded_dir": "osf/v42/data/coded",
+      "cells": "osf/v41/v41_three_wave_table.csv",
+      "cells_blob": "86168a6854ac6d901340ed218e2dc2713887dccf"
+    },
+    "v1.14": {
+      "lock_tag": "v1.14-prereg-r2",
+      "lock_commit": "a5feb4b1c4b9e9d19979129afcfd616a50b88c64",
+      "scorer": "scripts/score_v1_14.py",
+      "scorer_blob": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9",
+      "stage1": "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
+      "rank_table": "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv",
+      "stage2": "osf/methodology/v1_14/outputs/stage2/stage2_v1_14.json"
+    },
+    "v1.12": {
+      "lock_tag": "v1.12-prereg-r1",
+      "lock_commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
+      "scorer": "osf/methodology/v1_12/scripts/score_v1_12.py",
+      "scorer_blob": "11cded95437fd2ed30c1cdf1120b23a5a3cebe2d",
+      "unit_table": "osf/methodology/v1_12/v112_unit_table.csv",
+      "column": "cov_star_N3",
+      "verdicts": "osf/methodology/v1_12/v112_verdicts.json",
+      "anchor": "osf/methodology/v1_12/anchor/osf_anchor_v1_12.json",
+      "h5_active_at_lock": true
+    },
+    "v1.13": {
+      "lock_tag": "v1.13-prereg-r1",
+      "lock_commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65",
+      "scorer": "osf/methodology/v1_13/scripts/score_v1_13.py",
+      "scorer_blob": "7ac062d998fb7f3c3c38d8138af7bab041b2ab58",
+      "verdicts": "osf/methodology/v1_13/v1_13_verdicts.json",
+      "unit_map": "osf/methodology/v1_13/registries/brand_domains_v1_13.csv",
+      "unit_map_blob": "1143a404b00861a215ae848a164d3066658ceccc",
+      "anchor": "osf/methodology/v1_13/anchor/git_anchor_v1_13.json",
+      "h4_active_at_lock": true,
+      "h6_active_at_lock": true
+    },
+    "v1.11": {
+      "lock_tag": "v1.11-prereg-r1",
+      "lock_commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
+      "scorer": "scripts/score_v1_11.py",
+      "scorer_blob": "5e46e8632044268b5d30a2184600718961caa838",
+      "stage_j": "osf/methodology/v1_11/outputs/stage_j_v1_11.json",
+      "verdicts": "osf/methodology/v1_11/outputs/v1_11_verdicts.json"
+    },
+    "sentiment_paper_b": null,
+    "S_t4": null,
+    "aias_2_0": {
+      "ref": "aias-2-0-data-locked",
+      "commit": "94f66182beac37d620006b1be127d72f2c5e0e1e",
+      "path": "osf/aias_2_0/aias_2_0_profiles.csv",
+      "sha256": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e"
+    }
+  },
+  "component_lock_tags": {
+    "v0.42": {
+      "tag": "v0.42-prereg-r1",
+      "tag_object": "bccedc15a86f01eac8b9c09b25a61d2b8d88464f",
+      "commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+      "tagger_date": "2026-11-10T20:52:28-06:00"
+    },
+    "v1.14": {
+      "tag": "v1.14-prereg-r2",
+      "tag_object": "38bef0679795a611f481c55703931c6163706c4b",
+      "commit": "a5feb4b1c4b9e9d19979129afcfd616a50b88c64",
+      "tagger_date": "2026-11-10T18:05:46-06:00"
+    },
+    "v1.12": {
+      "tag": "v1.12-prereg-r1",
+      "tag_object": "e0b5e31c04e8f254637ed593bf96ebecb83c4930",
+      "commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
+      "tagger_date": "2026-11-10T20:45:38-06:00"
+    },
+    "v1.13": {
+      "tag": "v1.13-prereg-r1",
+      "tag_object": "94cbbf969631ae9735f6c79ce35531e56242763a",
+      "commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65",
+      "tagger_date": "2026-11-10T20:48:25-06:00"
+    },
+    "v1.11": {
+      "tag": "v1.11-prereg-r1",
+      "tag_object": "5859bfd09b561f7446ce49cd0f5fa5223e0bfdd8",
+      "commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
+      "tagger_date": "2026-11-10T11:27:57-06:00"
+    }
+  },
+  "t4_based_score_files_in_repository": [],
+  "late_reason": null
+}
