@@ -21,7 +21,7 @@ def tearDownModule():
 class Guide(unittest.TestCase):
     def test_saved_pages_have_recorded_hashes(self):
         self.assertEqual(L.sha256(L.P["page1"]), "fc577e17cc7664dad1e6d85fe6c6b00e5e9762f62c56ae98d3cdd62dee4c1744")
-        self.assertEqual(L.sha256(L.P["page2"]), "5179a1d13619c9898ba5be3f33fc6efc3de31d96790800d9fc6ea093b08e2ffb")
+        self.assertEqual(L.sha256(L.P["page2"]), "806cd6313650b33b99a3fd8e557ddb67c0dd27068852b42ea233e5e4fafa9d23")
 
     def test_guide_markdown_is_generated_from_pages(self):
         self.assertEqual(L.read(L.P["guide_md"]), L.guide_markdown() + "\n")

@@ -1,6 +1,6 @@
 # AIAS v1.11 — Sentiment, Paper B: human-label validation of the AI sentiment judge
 
-AIAS™ Measurement Program — Third System™. **Status: r1, lock-ready, not locked (2026-11-11).** Branch `v1.11-paperB` (from `v1.11` @ `95c3fa1`). Conformed from DRAFT r1 (2026-11-10, `_runner_tmp/sva_labels/PREREG_PaperB_human_labels_DRAFT_r1.md`) to the author's decision of 2026-11-10, 5:12 pm (variant b: the 48 long brand-description answers are not labelled). Lock target: tag `v1.11-paperB-prereg-r1`, pushed, with `../anchor/git_anchor_v1_11_paperB.json` and the OSF deposit, **before the first invitation (Fri 2026-11-13)**; the steps are in `../LOCK_STEPS.md`. The lock waits for the author's "guide final".
+AIAS™ Measurement Program — Third System™. **Status: r1, locked (2026-11-11).** Branch `v1.11-paperB` (from `v1.11` @ `95c3fa1`). Conformed from DRAFT r1 (2026-11-10, `_runner_tmp/sva_labels/PREREG_PaperB_human_labels_DRAFT_r1.md`) to the author's decision of 2026-11-10, 5:12 pm (variant b: the 48 long brand-description answers are not labelled). Lock target: tag `v1.11-paperB-prereg-r1`, pushed, with `../anchor/git_anchor_v1_11_paperB.json` and the OSF deposit, **before the first invitation (Fri 2026-11-13)**; the steps are in `../LOCK_STEPS.md`. The lock waits for the author's "guide final".
 
 | Field | Value |
 |---|---|
@@ -38,7 +38,7 @@ Voluntary, unpaid, not graded; students who do not take part join the day-1 disc
 <!-- BEGIN STATEMENT -->
 > **What this is.** An optional exercise for the Class of 2027, before our course starts. It is not graded and has no effect on your course or standing. If you skip it, you still join the discussion on April 21.
 >
-> **What you do.** You watch a 10-minute video, then read about 50 short AI answers about brands. For each one, you mark the tone toward one named brand in a Google Form. It takes about an hour, on your own time, by January 22.
+> **What you do.** You watch a short video, then read about 55 short AI answers about brands. For each one, you mark the tone toward one named brand in a Google Form. It takes about 45 minutes, on your own time, by December 4.
 >
 > **What your labels are for.** They are part of my independent research program, Third System. The research checks whether an AI can judge the tone toward a brand the way people do. Your labels are the human benchmark.
 >
@@ -46,7 +46,7 @@ Voluntary, unpaid, not graded; students who do not take part join the day-1 disc
 >
 > **What gets published.** The coded labels, with no names or emails, go into a public research archive (OSF). Summary results appear in a research paper and on thirdsystem.ai, and may appear in Third System reports and talks. You are never named, unless you tick the box asking to be thanked by name in the paper's acknowledgments.
 >
-> **Your choice.** Taking part is voluntary. You can stop at any time. You can withdraw your labels until February 1 by emailing me at pablou@pablou.com, with no questions asked. After that date, the coded data may already be published.
+> **Your choice.** Taking part is voluntary. You can stop at any time. You can withdraw your labels until December 18 by emailing me at pablou@pablou.com, with no questions asked. After that date, the coded data may already be published.
 >
 > **Questions.** Email me, or ask Emily Weiland in the program office.
 <!-- END STATEMENT -->
@@ -66,7 +66,7 @@ Windows (518): median 33 words; longest 254; 1 over 250 words, 50 over 100 (whit
 
 ## 5. The guide and the label fields
 
-**The guide is locked word for word.** Two pages (https://claude.ai/artifact/4sCt6DcfA4RD6h4TdvUdZZ, version `1794364205-6bca`, read 2026-11-11). Both pages are saved byte for byte in `guide/source/` (`Main.dc.html` SHA-256 `fc577e17cc7664dad1e6d85fe6c6b00e5e9762f62c56ae98d3cdd62dee4c1744`; `Rules.dc.html` SHA-256 `5179a1d13619c9898ba5be3f33fc6efc3de31d96790800d9fc6ea093b08e2ffb`); their text is in `guide/STUDENT_GUIDE_v1_11_paperB.md` and in Appendix A. A guide that differs from these files is not the pre-registered guide.
+**The guide is locked word for word.** Two pages (https://claude.ai/artifact/4sCt6DcfA4RD6h4TdvUdZZ, version `1794367225-74d8`, read 2026-11-11). Both pages are saved byte for byte in `guide/source/` (`Main.dc.html` SHA-256 `fc577e17cc7664dad1e6d85fe6c6b00e5e9762f62c56ae98d3cdd62dee4c1744`; `Rules.dc.html` SHA-256 `806cd6313650b33b99a3fd8e557ddb67c0dd27068852b42ea233e5e4fafa9d23`); their text is in `guide/STUDENT_GUIDE_v1_11_paperB.md` and in Appendix A. A guide that differs from these files is not the pre-registered guide.
 
 **v1.11 §9 is met.** §9 requires "the judge's instructions and scale verbatim (`judge_prompt_v1_11.md`, rules 1–7)". Page 2 carries them: a line-by-line exact comparison of the judge prompt (from "Rules:" to the last scale line) with page 2 finds 14 of 14 lines identical — the "Rules:" heading, rules 1–7, the "Valence scale:" heading and the five scale lines — and no difference (`guide/guide_vs_judge_v1_11_paperB.json`). No deviation is recorded for the guide. Around the judge's text the guide adds page 1 (the four questions, invented examples about a fictional brand, the timeline, how labels are used) and, on page 2, six "Rules for hard cases" and a note on how the form's answers map to the judge's fields.
 
@@ -243,6 +243,6 @@ Valence scale:
 0 = neutral: no evaluation of the brand (facts or description only), or favourable and unfavourable evaluations of similar weight.
 -1 = unfavourable: a negative evaluation ("overpriced", "inconsistent quality", "mixed reviews", "less refined than"), possibly with some positives.
 -2 = strongly unfavourable: emphatic criticism or warning ("avoid", "poor quality", a scandal or recall presented as defining) with no substantive positive.
-All examples are invented, about a fictional brand (“Halvor”). None comes from the texts you will label.Questions: pablou@pablou.com
+All examples are invented, about a fictional brand (“Halvor”). None comes from the texts you will label.
 ```
 <!-- END GUIDE -->

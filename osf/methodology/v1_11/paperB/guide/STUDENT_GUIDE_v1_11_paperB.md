@@ -1,11 +1,11 @@
 # Student guide, Sentiment Paper B (two pages), as read for the pre-registration
 
-Source: https://claude.ai/artifact/4sCt6DcfA4RD6h4TdvUdZZ (Design canvas "Student guide — Labeling AI answers about brands"), version `1794364205-6bca`, read 2026-11-11 with the Artifact tool's read action (no web fetch). The two artboards are saved byte for byte in `guide/source/`; this file is generated from them by `lock/paperB_lock_v1_11.py --guide-md` (text only: one line per block element, HTML entities decoded, spaces collapsed; layout, colours and bold dropped). The words are the guide's, unchanged.
+Source: https://claude.ai/artifact/4sCt6DcfA4RD6h4TdvUdZZ (Design canvas "Student guide — Labeling AI answers about brands"), version `1794367225-74d8`, read 2026-11-11 with the Artifact tool's read action (no web fetch). The two artboards are saved byte for byte in `guide/source/`; this file is generated from them by `lock/paperB_lock_v1_11.py --guide-md` (text only: one line per block element, HTML entities decoded, spaces collapsed; layout, colours and bold dropped). The words are the guide's, unchanged.
 
 | Page | File | SHA-256 |
 |---|---|---|
 | 1 | `guide/source/Main.dc.html` | `fc577e17cc7664dad1e6d85fe6c6b00e5e9762f62c56ae98d3cdd62dee4c1744` |
-| 2 | `guide/source/Rules.dc.html` | `5179a1d13619c9898ba5be3f33fc6efc3de31d96790800d9fc6ea093b08e2ffb` |
+| 2 | `guide/source/Rules.dc.html` | `806cd6313650b33b99a3fd8e557ddb67c0dd27068852b42ea233e5e4fafa9d23` |
 
 ## Page 1
 
@@ -89,6 +89,6 @@ Valence scale:
 0 = neutral: no evaluation of the brand (facts or description only), or favourable and unfavourable evaluations of similar weight.
 -1 = unfavourable: a negative evaluation ("overpriced", "inconsistent quality", "mixed reviews", "less refined than"), possibly with some positives.
 -2 = strongly unfavourable: emphatic criticism or warning ("avoid", "poor quality", a scandal or recall presented as defining) with no substantive positive.
-All examples are invented, about a fictional brand (“Halvor”). None comes from the texts you will label.Questions: pablou@pablou.com
+All examples are invented, about a fictional brand (“Halvor”). None comes from the texts you will label.
 ```
 
