@@ -1,0 +1,1017 @@
+REFUSED: another paid collection is running: 34364 zsh -ic cd /Users/pablou/aias/_worktrees/v0.42 && mkdir -p osf/v42/data && (nohup python3 -u osf/v42/scripts/acquire_v0_
+prereg guard passed: v0.42-prereg-r1 -> bccedc15a86f01eac8b9c09b25a61d2b8d88464f; no other paid collection running
+collection window: no new request after 2026-11-14T02:57:06.403025+00:00
+876 specs, 0 already done; budget {'actual_calls_usd': 0.0, 'judge_reserve_usd': 0.5, 'spent_usd': 0.5, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+block 1 ('B', 'S0', 1): 90 calls to send; {'actual_calls_usd': 0.0, 'judge_reserve_usd': 0.5, 'spent_usd': 0.5, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S0|1 ok out=1104 fr=completed $0.0554
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S0|1 ok out=1389 fr=FinishReason.STOP $0.0140
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S0|1 ok out=678 fr=completed $0.0341
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S0|1 ok out=1214 fr=FinishReason.STOP $0.0122
+  v19|B|phase_b__q3_reference|gemini-4-argon|S0|1 ok out=1101 fr=FinishReason.STOP $0.0111
+  v19|B|phase_b__q3_reference|gpt-6-astra|S0|1 ok out=1016 fr=completed $0.0510
+  v19|B|phase_b__q4_famous|gpt-6-astra|S0|1 ok out=244 fr=completed $0.0123
+  v19|B|phase_b__q4_famous|gemini-4-argon|S0|1 ok out=1104 fr=FinishReason.STOP $0.0111
+  v19|B|phase_b__q5_popular|gpt-6-astra|S0|1 ok out=333 fr=completed $0.0168
+  v19|B|phase_b__q5_popular|gemini-4-argon|S0|1 ok out=916 fr=FinishReason.STOP $0.0092
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S0|1 ok out=440 fr=completed $0.0221
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S0|1 ok out=1117 fr=FinishReason.STOP $0.0112
+  v20|B|q1|gpt-6-astra|S0|1 ok out=655 fr=completed $0.0329
+  v20|B|q2|gpt-6-astra|S0|1 ok out=276 fr=completed $0.0140
+  v20|B|q3|gpt-6-astra|S0|1 ok out=632 fr=completed $0.0318
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S0|1 ok out=1284 fr=end_turn $0.0258
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S0|1 ok out=806 fr=end_turn $0.0162
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S0|1 ok out=1220 fr=end_turn $0.0245
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S0|1 ok out=545 fr=end_turn $0.0110
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S0|1 ok out=413 fr=end_turn $0.0084
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S0|1 ok out=1029 fr=end_turn $0.0207
+  v20|B|q1|claude-fable-5-2|S0|1 ok out=842 fr=end_turn $0.0169
+  v20|B|q2|claude-fable-5-2|S0|1 ok out=411 fr=end_turn $0.0083
+  v20|B|q3|claude-fable-5-2|S0|1 ok out=682 fr=end_turn $0.0138
+  v20|B|q4|claude-fable-5-2|S0|1 ok out=506 fr=end_turn $0.0102
+  v20|B|q5|claude-fable-5-2|S0|1 ok out=1565 fr=end_turn $0.0314
+  v20|B|q6|claude-fable-5-2|S0|1 ok out=744 fr=end_turn $0.0150
+  v21|B|q1|claude-fable-5-2|S0|1 ok out=658 fr=end_turn $0.0133
+  v21|B|q2|claude-fable-5-2|S0|1 ok out=573 fr=end_turn $0.0116
+  v21|B|q3|claude-fable-5-2|S0|1 ok out=1111 fr=end_turn $0.0224
+  v21|B|q4|claude-fable-5-2|S0|1 ok out=538 fr=end_turn $0.0109
+  v21|B|q5|claude-fable-5-2|S0|1 ok out=511 fr=end_turn $0.0103
+  v21|B|q6|claude-fable-5-2|S0|1 ok out=684 fr=end_turn $0.0138
+  v22|B|q1|claude-fable-5-2|S0|1 ok out=569 fr=end_turn $0.0115
+  v22|B|q2|claude-fable-5-2|S0|1 ok out=710 fr=end_turn $0.0143
+  v22|B|q3|claude-fable-5-2|S0|1 ok out=869 fr=end_turn $0.0175
+  v22|B|q4|claude-fable-5-2|S0|1 ok out=585 fr=end_turn $0.0118
+  v22|B|q5|claude-fable-5-2|S0|1 ok out=476 fr=end_turn $0.0097
+  v22|B|q6|claude-fable-5-2|S0|1 ok out=643 fr=end_turn $0.0130
+  v23|B|EA-1|claude-fable-5-2|S0|1 ok out=2661 fr=end_turn $0.0537
+  v23|B|EA-2|claude-fable-5-2|S0|1 ok out=5080 fr=end_turn $0.1019
+  v23|B|EA-3|claude-fable-5-2|S0|1 ok out=2481 fr=end_turn $0.0500
+  v23|B|CC-1|claude-fable-5-2|S0|1 ok out=3145 fr=end_turn $0.0633
+  v23|B|CC-2|claude-fable-5-2|S0|1 ok out=3536 fr=end_turn $0.0711
+  v23|B|CC-3|claude-fable-5-2|S0|1 ok out=3556 fr=end_turn $0.0715
+  v20|B|q1|gemini-4-argon|S0|1 ok out=1348 fr=FinishReason.STOP $0.0136
+  v20|B|q4|gpt-6-astra|S0|1 ok out=439 fr=completed $0.0221
+  v20|B|q2|gemini-4-argon|S0|1 ok out=1104 fr=FinishReason.STOP $0.0111
+  v20|B|q5|gpt-6-astra|S0|1 ok out=431 fr=completed $0.0217
+  v20|B|q6|gpt-6-astra|S0|1 ok out=544 fr=completed $0.0274
+  v20|B|q3|gemini-4-argon|S0|1 ok out=1272 fr=FinishReason.STOP $0.0128
+  v21|B|q1|gpt-6-astra|S0|1 ok out=621 fr=completed $0.0312
+  v20|B|q4|gemini-4-argon|S0|1 ok out=988 fr=FinishReason.STOP $0.0100
+  v21|B|q2|gpt-6-astra|S0|1 ok out=357 fr=completed $0.0180
+  v20|B|q5|gemini-4-argon|S0|1 ok out=1118 fr=FinishReason.STOP $0.0113
+  v21|B|q3|gpt-6-astra|S0|1 ok out=770 fr=completed $0.0387
+  v20|B|q6|gemini-4-argon|S0|1 ok out=1232 fr=FinishReason.STOP $0.0124
+  v21|B|q4|gpt-6-astra|S0|1 ok out=439 fr=completed $0.0221
+  v21|B|q1|gemini-4-argon|S0|1 ok out=1530 fr=FinishReason.STOP $0.0154
+  v21|B|q5|gpt-6-astra|S0|1 ok out=427 fr=completed $0.0215
+  v21|B|q2|gemini-4-argon|S0|1 ok out=1009 fr=FinishReason.STOP $0.0102
+  v21|B|q6|gpt-6-astra|S0|1 ok out=526 fr=completed $0.0265
+  v22|B|q1|gpt-6-astra|S0|1 ok out=659 fr=completed $0.0331
+  v21|B|q3|gemini-4-argon|S0|1 ok out=1340 fr=FinishReason.STOP $0.0135
+  v22|B|q2|gpt-6-astra|S0|1 ok out=360 fr=completed $0.0182
+  v21|B|q4|gemini-4-argon|S0|1 ok out=778 fr=FinishReason.STOP $0.0079
+  v22|B|q3|gpt-6-astra|S0|1 ok out=794 fr=completed $0.0399
+  v21|B|q5|gemini-4-argon|S0|1 ok out=1205 fr=FinishReason.STOP $0.0121
+  v22|B|q4|gpt-6-astra|S0|1 ok out=466 fr=completed $0.0235
+  v22|B|q5|gpt-6-astra|S0|1 ok out=166 fr=completed $0.0085
+  v21|B|q6|gemini-4-argon|S0|1 ok out=1107 fr=FinishReason.STOP $0.0112
+  v22|B|q1|gemini-4-argon|S0|1 ok out=1121 fr=FinishReason.STOP $0.0113
+  v22|B|q6|gpt-6-astra|S0|1 ok out=725 fr=completed $0.0365
+  v22|B|q2|gemini-4-argon|S0|1 ok out=849 fr=FinishReason.STOP $0.0086
+  v22|B|q3|gemini-4-argon|S0|1 ok out=1254 fr=FinishReason.STOP $0.0126
+  v23|B|EA-1|gpt-6-astra|S0|1 ok out=2036 fr=completed $0.1024
+  v22|B|q4|gemini-4-argon|S0|1 ok out=1297 fr=FinishReason.STOP $0.0131
+  v22|B|q5|gemini-4-argon|S0|1 ok out=984 fr=FinishReason.STOP $0.0099
+  v22|B|q6|gemini-4-argon|S0|1 ok out=1488 fr=FinishReason.STOP $0.0150
+  v23|B|EA-1|gemini-4-argon|S0|1 ok out=1833 fr=FinishReason.STOP $0.0185
+  v23|B|EA-2|gpt-6-astra|S0|1 ok out=3290 fr=completed $0.1650
+  v23|B|EA-2|gemini-4-argon|S0|1 ok out=2320 fr=FinishReason.STOP $0.0233
+  v23|B|EA-3|gemini-4-argon|S0|1 ok out=1454 fr=FinishReason.STOP $0.0147
+  v23|B|EA-3|gpt-6-astra|S0|1 ok out=1944 fr=completed $0.0978
+  v23|B|CC-1|gemini-4-argon|S0|1 ok out=1505 fr=FinishReason.STOP $0.0152
+  v23|B|CC-1|gpt-6-astra|S0|1 ok out=1628 fr=completed $0.0819
+  v23|B|CC-2|gemini-4-argon|S0|1 ok out=1456 fr=FinishReason.STOP $0.0147
+  v23|B|CC-3|gemini-4-argon|S0|1 ok out=1667 fr=FinishReason.STOP $0.0168
+  v23|B|CC-2|gpt-6-astra|S0|1 ok out=1593 fr=completed $0.0802
+  v23|B|CC-3|gpt-6-astra|S0|1 ok out=1793 fr=completed $0.0902
+block 2 ('B', 'S0', 2): 90 calls to send; {'actual_calls_usd': 2.435, 'judge_reserve_usd': 0.5, 'spent_usd': 2.935, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S0|2 ok out=1410 fr=FinishReason.STOP $0.0142
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S0|2 ok out=1268 fr=completed $0.0636
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S0|2 ok out=1203 fr=FinishReason.STOP $0.0121
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S0|2 ok out=657 fr=completed $0.0330
+  v19|B|phase_b__q3_reference|gemini-4-argon|S0|2 ok out=1247 fr=FinishReason.STOP $0.0126
+  v19|B|phase_b__q3_reference|gpt-6-astra|S0|2 ok out=1003 fr=completed $0.0504
+  v19|B|phase_b__q4_famous|gpt-6-astra|S0|2 ok out=295 fr=completed $0.0149
+  v19|B|phase_b__q5_popular|gpt-6-astra|S0|2 ok out=307 fr=completed $0.0155
+  v19|B|phase_b__q4_famous|gemini-4-argon|S0|2 ok out=1162 fr=FinishReason.STOP $0.0117
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S0|2 ok out=1157 fr=end_turn $0.0233
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S0|2 ok out=751 fr=end_turn $0.0151
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S0|2 ok out=764 fr=end_turn $0.0154
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S0|2 ok out=589 fr=end_turn $0.0119
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S0|2 ok out=483 fr=end_turn $0.0098
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S0|2 ok out=653 fr=end_turn $0.0132
+  v20|B|q1|claude-fable-5-2|S0|2 ok out=865 fr=end_turn $0.0174
+  v20|B|q2|claude-fable-5-2|S0|2 ok out=447 fr=end_turn $0.0091
+  v20|B|q3|claude-fable-5-2|S0|2 ok out=717 fr=end_turn $0.0145
+  v20|B|q4|claude-fable-5-2|S0|2 ok out=391 fr=end_turn $0.0079
+  v20|B|q5|claude-fable-5-2|S0|2 ok out=1450 fr=end_turn $0.0291
+  v20|B|q6|claude-fable-5-2|S0|2 ok out=638 fr=end_turn $0.0129
+  v21|B|q1|claude-fable-5-2|S0|2 ok out=646 fr=end_turn $0.0130
+  v21|B|q2|claude-fable-5-2|S0|2 ok out=533 fr=end_turn $0.0108
+  v21|B|q3|claude-fable-5-2|S0|2 ok out=686 fr=end_turn $0.0139
+  v21|B|q4|claude-fable-5-2|S0|2 ok out=496 fr=end_turn $0.0100
+  v21|B|q5|claude-fable-5-2|S0|2 ok out=697 fr=end_turn $0.0141
+  v21|B|q6|claude-fable-5-2|S0|2 ok out=724 fr=end_turn $0.0146
+  v22|B|q1|claude-fable-5-2|S0|2 ok out=605 fr=end_turn $0.0122
+  v22|B|q2|claude-fable-5-2|S0|2 ok out=755 fr=end_turn $0.0152
+  v22|B|q3|claude-fable-5-2|S0|2 ok out=809 fr=end_turn $0.0163
+  v22|B|q4|claude-fable-5-2|S0|2 ok out=617 fr=end_turn $0.0125
+  v22|B|q5|claude-fable-5-2|S0|2 ok out=567 fr=end_turn $0.0115
+  v22|B|q6|claude-fable-5-2|S0|2 ok out=721 fr=end_turn $0.0146
+  v23|B|EA-1|claude-fable-5-2|S0|2 ok out=3389 fr=end_turn $0.0682
+  v23|B|EA-2|claude-fable-5-2|S0|2 ok out=4520 fr=end_turn $0.0907
+  v23|B|EA-3|claude-fable-5-2|S0|2 ok out=2256 fr=end_turn $0.0455
+  v23|B|CC-1|claude-fable-5-2|S0|2 ok out=2523 fr=end_turn $0.0508
+  v23|B|CC-2|claude-fable-5-2|S0|2 ok out=3963 fr=end_turn $0.0796
+  v23|B|CC-3|claude-fable-5-2|S0|2 ok out=3484 fr=end_turn $0.0700
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S0|2 ok out=494 fr=completed $0.0249
+  v19|B|phase_b__q5_popular|gemini-4-argon|S0|2 ok out=933 fr=FinishReason.STOP $0.0094
+  v20|B|q1|gpt-6-astra|S0|2 ok out=783 fr=completed $0.0393
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S0|2 ok out=1227 fr=FinishReason.STOP $0.0123
+  v20|B|q2|gpt-6-astra|S0|2 ok out=271 fr=completed $0.0137
+  v20|B|q1|gemini-4-argon|S0|2 ok out=1341 fr=FinishReason.STOP $0.0135
+  v20|B|q3|gpt-6-astra|S0|2 ok out=733 fr=completed $0.0368
+  v20|B|q4|gpt-6-astra|S0|2 ok out=334 fr=completed $0.0169
+  v20|B|q2|gemini-4-argon|S0|2 ok out=993 fr=FinishReason.STOP $0.0100
+  v20|B|q5|gpt-6-astra|S0|2 ok out=557 fr=completed $0.0280
+  v20|B|q6|gpt-6-astra|S0|2 ok out=441 fr=completed $0.0223
+  v20|B|q3|gemini-4-argon|S0|2 ok out=1106 fr=FinishReason.STOP $0.0111
+  v21|B|q1|gpt-6-astra|S0|2 ok out=600 fr=completed $0.0302
+  v20|B|q4|gemini-4-argon|S0|2 ok out=943 fr=FinishReason.STOP $0.0095
+  v21|B|q2|gpt-6-astra|S0|2 ok out=360 fr=completed $0.0182
+  v20|B|q5|gemini-4-argon|S0|2 ok out=1130 fr=FinishReason.STOP $0.0114
+  v21|B|q3|gpt-6-astra|S0|2 ok out=752 fr=completed $0.0378
+  v21|B|q4|gpt-6-astra|S0|2 ok out=473 fr=completed $0.0238
+  v21|B|q5|gpt-6-astra|S0|2 ok out=442 fr=completed $0.0223
+  v20|B|q6|gemini-4-argon|S0|2 ok out=1357 fr=FinishReason.STOP $0.0137
+  v21|B|q6|gpt-6-astra|S0|2 ok out=393 fr=completed $0.0199
+  v22|B|q1|gpt-6-astra|S0|2 ok out=584 fr=completed $0.0294
+  v21|B|q1|gemini-4-argon|S0|2 ok out=1223 fr=FinishReason.STOP $0.0123
+  v22|B|q2|gpt-6-astra|S0|2 ok out=332 fr=completed $0.0168
+  v21|B|q2|gemini-4-argon|S0|2 ok out=1146 fr=FinishReason.STOP $0.0115
+  v22|B|q3|gpt-6-astra|S0|2 ok out=728 fr=completed $0.0366
+  v22|B|q4|gpt-6-astra|S0|2 ok out=491 fr=completed $0.0248
+  v21|B|q3|gemini-4-argon|S0|2 ok out=1479 fr=FinishReason.STOP $0.0149
+  v22|B|q5|gpt-6-astra|S0|2 ok out=171 fr=completed $0.0088
+  v21|B|q4|gemini-4-argon|S0|2 ok out=949 fr=FinishReason.STOP $0.0096
+  v22|B|q6|gpt-6-astra|S0|2 ok out=582 fr=completed $0.0293
+  v21|B|q5|gemini-4-argon|S0|2 ok out=1039 fr=FinishReason.STOP $0.0105
+  v23|B|EA-1|gpt-6-astra|S0|2 ok out=2101 fr=completed $0.1057
+  v21|B|q6|gemini-4-argon|S0|2 ok out=1259 fr=FinishReason.STOP $0.0127
+  v22|B|q1|gemini-4-argon|S0|2 ok out=1374 fr=FinishReason.STOP $0.0138
+  v22|B|q2|gemini-4-argon|S0|2 ok out=904 fr=FinishReason.STOP $0.0091
+  v22|B|q3|gemini-4-argon|S0|2 ok out=1344 fr=FinishReason.STOP $0.0135
+  v23|B|EA-2|gpt-6-astra|S0|2 ok out=2706 fr=completed $0.1358
+  v22|B|q4|gemini-4-argon|S0|2 ok out=1326 fr=FinishReason.STOP $0.0134
+  v22|B|q5|gemini-4-argon|S0|2 ok out=1074 fr=FinishReason.STOP $0.0108
+  v22|B|q6|gemini-4-argon|S0|2 ok out=1317 fr=FinishReason.STOP $0.0133
+  v23|B|EA-3|gpt-6-astra|S0|2 ok out=1844 fr=completed $0.0928
+  v23|B|EA-1|gemini-4-argon|S0|2 ok out=1798 fr=FinishReason.STOP $0.0182
+  v23|B|EA-2|gemini-4-argon|S0|2 ok out=1803 fr=FinishReason.STOP $0.0182
+  v23|B|CC-1|gpt-6-astra|S0|2 ok out=1721 fr=completed $0.0866
+  v23|B|EA-3|gemini-4-argon|S0|2 ok out=1940 fr=FinishReason.STOP $0.0196
+  v23|B|CC-2|gpt-6-astra|S0|2 ok out=1606 fr=completed $0.0808
+  v23|B|CC-1|gemini-4-argon|S0|2 ok out=1843 fr=FinishReason.STOP $0.0186
+  v23|B|CC-3|gpt-6-astra|S0|2 ok out=1531 fr=completed $0.0771
+  v23|B|CC-2|gemini-4-argon|S0|2 ok out=1458 fr=FinishReason.STOP $0.0147
+  v23|B|CC-3|gemini-4-argon|S0|2 ok out=1816 fr=FinishReason.STOP $0.0183
+block 3 ('B', 'S0', 3): 90 calls to send; {'actual_calls_usd': 4.8084, 'judge_reserve_usd': 0.5, 'spent_usd': 5.3084, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S0|3 ok out=1681 fr=FinishReason.STOP $0.0169
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S0|3 ok out=1109 fr=completed $0.0556
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S0|3 ok out=1430 fr=FinishReason.STOP $0.0144
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S0|3 ok out=744 fr=completed $0.0374
+  v19|B|phase_b__q3_reference|gemini-4-argon|S0|3 ok out=1208 fr=FinishReason.STOP $0.0122
+  v19|B|phase_b__q3_reference|gpt-6-astra|S0|3 ok out=961 fr=completed $0.0483
+  v19|B|phase_b__q4_famous|gemini-4-argon|S0|3 ok out=1211 fr=FinishReason.STOP $0.0122
+  v19|B|phase_b__q4_famous|gpt-6-astra|S0|3 ok out=326 fr=completed $0.0164
+  v19|B|phase_b__q5_popular|gpt-6-astra|S0|3 ok out=328 fr=completed $0.0166
+  v19|B|phase_b__q5_popular|gemini-4-argon|S0|3 ok out=1096 fr=FinishReason.STOP $0.0110
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S0|3 ok out=473 fr=completed $0.0238
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S0|3 ok out=997 fr=FinishReason.STOP $0.0100
+  v20|B|q1|gpt-6-astra|S0|3 ok out=693 fr=completed $0.0348
+  v20|B|q1|gemini-4-argon|S0|3 ok out=1455 fr=FinishReason.STOP $0.0146
+  v20|B|q2|gpt-6-astra|S0|3 ok out=298 fr=completed $0.0151
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S0|3 ok out=1066 fr=end_turn $0.0214
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S0|3 ok out=760 fr=end_turn $0.0153
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S0|3 ok out=1141 fr=end_turn $0.0230
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S0|3 ok out=538 fr=end_turn $0.0108
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S0|3 ok out=407 fr=end_turn $0.0082
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S0|3 ok out=655 fr=end_turn $0.0132
+  v20|B|q1|claude-fable-5-2|S0|3 ok out=749 fr=end_turn $0.0151
+  v20|B|q2|claude-fable-5-2|S0|3 ok out=432 fr=end_turn $0.0088
+  v20|B|q3|claude-fable-5-2|S0|3 ok out=812 fr=end_turn $0.0164
+  v20|B|q4|claude-fable-5-2|S0|3 ok out=435 fr=end_turn $0.0088
+  v20|B|q5|claude-fable-5-2|S0|3 ok out=1338 fr=end_turn $0.0269
+  v20|B|q6|claude-fable-5-2|S0|3 ok out=745 fr=end_turn $0.0150
+  v21|B|q1|claude-fable-5-2|S0|3 ok out=648 fr=end_turn $0.0131
+  v21|B|q2|claude-fable-5-2|S0|3 ok out=478 fr=end_turn $0.0097
+  v21|B|q3|claude-fable-5-2|S0|3 ok out=1039 fr=end_turn $0.0209
+  v21|B|q4|claude-fable-5-2|S0|3 ok out=457 fr=end_turn $0.0092
+  v21|B|q5|claude-fable-5-2|S0|3 ok out=597 fr=end_turn $0.0121
+  v21|B|q6|claude-fable-5-2|S0|3 ok out=770 fr=end_turn $0.0155
+  v22|B|q1|claude-fable-5-2|S0|3 ok out=944 fr=end_turn $0.0190
+  v22|B|q2|claude-fable-5-2|S0|3 ok out=684 fr=end_turn $0.0138
+  v22|B|q3|claude-fable-5-2|S0|3 ok out=877 fr=end_turn $0.0177
+  v22|B|q4|claude-fable-5-2|S0|3 ok out=623 fr=end_turn $0.0126
+  v22|B|q5|claude-fable-5-2|S0|3 ok out=517 fr=end_turn $0.0105
+  v22|B|q6|claude-fable-5-2|S0|3 ok out=732 fr=end_turn $0.0148
+  v23|B|EA-1|claude-fable-5-2|S0|3 ok out=2981 fr=end_turn $0.0601
+  v23|B|EA-2|claude-fable-5-2|S0|3 ok out=4640 fr=end_turn $0.0931
+  v23|B|EA-3|claude-fable-5-2|S0|3 ok out=2565 fr=end_turn $0.0517
+  v23|B|CC-1|claude-fable-5-2|S0|3 ok out=3555 fr=end_turn $0.0715
+  v23|B|CC-2|claude-fable-5-2|S0|3 ok out=4264 fr=end_turn $0.0856
+  v23|B|CC-3|claude-fable-5-2|S0|3 ok out=4298 fr=end_turn $0.0863
+  v20|B|q3|gpt-6-astra|S0|3 ok out=701 fr=completed $0.0352
+  v20|B|q2|gemini-4-argon|S0|3 ok out=974 fr=FinishReason.STOP $0.0098
+  v20|B|q4|gpt-6-astra|S0|3 ok out=346 fr=completed $0.0175
+  v20|B|q3|gemini-4-argon|S0|3 ok out=1351 fr=FinishReason.STOP $0.0136
+  v20|B|q5|gpt-6-astra|S0|3 ok out=530 fr=completed $0.0267
+  v20|B|q4|gemini-4-argon|S0|3 ok out=985 fr=FinishReason.STOP $0.0099
+  v20|B|q6|gpt-6-astra|S0|3 ok out=443 fr=completed $0.0224
+  v20|B|q5|gemini-4-argon|S0|3 ok out=1073 fr=FinishReason.STOP $0.0108
+  v21|B|q1|gpt-6-astra|S0|3 ok out=602 fr=completed $0.0303
+  v21|B|q2|gpt-6-astra|S0|3 ok out=385 fr=completed $0.0194
+  v20|B|q6|gemini-4-argon|S0|3 ok out=1086 fr=FinishReason.STOP $0.0110
+  v21|B|q3|gpt-6-astra|S0|3 ok out=741 fr=completed $0.0373
+  v21|B|q1|gemini-4-argon|S0|3 ok out=1274 fr=FinishReason.STOP $0.0128
+  v21|B|q4|gpt-6-astra|S0|3 ok out=444 fr=completed $0.0224
+  v21|B|q5|gpt-6-astra|S0|3 ok out=350 fr=completed $0.0177
+  v21|B|q6|gpt-6-astra|S0|3 ok out=442 fr=completed $0.0223
+  v21|B|q2|gemini-4-argon|S0|3 ok out=1172 fr=FinishReason.STOP $0.0118
+  v22|B|q1|gpt-6-astra|S0|3 ok out=676 fr=completed $0.0340
+  v21|B|q3|gemini-4-argon|S0|3 ok out=1204 fr=FinishReason.STOP $0.0121
+  v22|B|q2|gpt-6-astra|S0|3 ok out=300 fr=completed $0.0152
+  v21|B|q4|gemini-4-argon|S0|3 ok out=1084 fr=FinishReason.STOP $0.0109
+  v22|B|q3|gpt-6-astra|S0|3 ok out=725 fr=completed $0.0365
+  v21|B|q5|gemini-4-argon|S0|3 ok out=1293 fr=FinishReason.STOP $0.0130
+  v22|B|q4|gpt-6-astra|S0|3 ok out=481 fr=completed $0.0243
+  v22|B|q5|gpt-6-astra|S0|3 ok out=214 fr=completed $0.0109
+  v21|B|q6|gemini-4-argon|S0|3 ok out=1301 fr=FinishReason.STOP $0.0131
+  v22|B|q6|gpt-6-astra|S0|3 ok out=540 fr=completed $0.0272
+  v22|B|q1|gemini-4-argon|S0|3 ok out=1255 fr=FinishReason.STOP $0.0126
+  v22|B|q2|gemini-4-argon|S0|3 ok out=873 fr=FinishReason.STOP $0.0088
+  v22|B|q3|gemini-4-argon|S0|3 ok out=1350 fr=FinishReason.STOP $0.0136
+  v23|B|EA-1|gpt-6-astra|S0|3 ok out=2614 fr=completed $0.1313
+  v22|B|q4|gemini-4-argon|S0|3 ok out=1277 fr=FinishReason.STOP $0.0129
+  v22|B|q5|gemini-4-argon|S0|3 ok out=1071 fr=FinishReason.STOP $0.0108
+  v22|B|q6|gemini-4-argon|S0|3 ok out=1286 fr=FinishReason.STOP $0.0130
+  v23|B|EA-1|gemini-4-argon|S0|3 ok out=1855 fr=FinishReason.STOP $0.0187
+  v23|B|EA-2|gpt-6-astra|S0|3 ok out=3286 fr=completed $0.1648
+  v23|B|EA-2|gemini-4-argon|S0|3 ok out=1864 fr=FinishReason.STOP $0.0188
+  v23|B|EA-3|gemini-4-argon|S0|3 ok out=1630 fr=FinishReason.STOP $0.0165
+  v23|B|EA-3|gpt-6-astra|S0|3 ok out=1610 fr=completed $0.0811
+  v23|B|CC-1|gemini-4-argon|S0|3 ok out=1595 fr=FinishReason.STOP $0.0161
+  v23|B|CC-2|gemini-4-argon|S0|3 ok out=1594 fr=FinishReason.STOP $0.0161
+  v23|B|CC-1|gpt-6-astra|S0|3 ok out=1656 fr=completed $0.0833
+  v23|B|CC-3|gemini-4-argon|S0|3 ok out=1909 fr=FinishReason.STOP $0.0192
+  v23|B|CC-2|gpt-6-astra|S0|3 ok out=1506 fr=completed $0.0758
+  v23|B|CC-3|gpt-6-astra|S0|3 ok out=1902 fr=completed $0.0956
+block 4 ('A', 'S0', 1): 336 calls to send; {'actual_calls_usd': 7.285, 'judge_reserve_usd': 0.5, 'spent_usd': 7.785, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|A|phase_a__sennheiser|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__beyerdynamic|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__sennheiser|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__denon|gpt-6-astra|S0|1 ok out=26 fr=completed $0.0016
+  v19|A|phase_a__grado|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__beyerdynamic|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__sony|gpt-6-astra|S0|1 ok out=28 fr=completed $0.0016
+  v19|A|phase_a__audio_technica|gpt-6-astra|S0|1 ok out=16 fr=completed $0.0011
+  v19|A|phase_a__denon|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__stax|gpt-6-astra|S0|1 ok out=16 fr=completed $0.0011
+  v19|A|phase_a__grado|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__koss|gpt-6-astra|S0|1 ok out=23 fr=completed $0.0014
+  v19|A|phase_a__sony|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v19|A|phase_a__audeze|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__hifiman|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__audio_technica|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__focal|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__meze|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__stax|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__zmf_headphones|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__koss|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v19|A|phase_a__spirit_torino|gpt-6-astra|S0|1 ok out=21 fr=completed $0.0013
+  v19|A|phase_a__audeze|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v19|A|phase_a__final_audio|gpt-6-astra|S0|1 ok out=16 fr=completed $0.0011
+  v19|A|phase_a__dan_clark_audio|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__hifiman|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_A.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_A.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_A.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v19|A|phase_a__focal|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_A.4|gpt-6-astra|S0|1 ok out=20 fr=completed $0.0012
+  v19|A|phase_a__meze|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_A.5|gpt-6-astra|S0|1 ok out=22 fr=completed $0.0013
+  v19|A|phase_a__zmf_headphones|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_A.6|gpt-6-astra|S0|1 ok out=23 fr=completed $0.0014
+  v20|A|v20_A_A.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v19|A|phase_a__spirit_torino|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_A.8|gpt-6-astra|S0|1 ok out=20 fr=completed $0.0013
+  v20|A|v20_A_B.1|gpt-6-astra|S0|1 ok out=15 fr=completed $0.0010
+  v20|A|v20_A_B.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v19|A|phase_a__final_audio|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_B.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v19|A|phase_a__dan_clark_audio|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_B.4|gpt-6-astra|S0|1 ok out=51 fr=completed $0.0028
+  v20|A|v20_A_A.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_B.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.6|gpt-6-astra|S0|1 ok out=20 fr=completed $0.0012
+  v20|A|v20_A_A.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_B.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_A.3|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_B.8|gpt-6-astra|S0|1 ok out=43 fr=completed $0.0024
+  v20|A|v20_A_C.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_A.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_C.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_C.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_A.5|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v20|A|v20_A_C.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_A.6|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_C.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_A.7|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v20|A|v20_A_C.8|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_A.8|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_A.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.1|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_A.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.2|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_A.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.3|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_A.8|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_B.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.4|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_B.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_B.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_B.6|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_B.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_B.7|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_B.8|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_B.8|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_C.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v21|A|v21_A_C.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_C.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_C.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v20|A|v20_A_C.2|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v19|A|phase_a__sennheiser|claude-fable-5-2|S0|1 ok out=26 fr=end_turn $0.0007
+  v19|A|phase_a__beyerdynamic|claude-fable-5-2|S0|1 ok out=83 fr=end_turn $0.0019
+  v19|A|phase_a__denon|claude-fable-5-2|S0|1 ok out=239 fr=end_turn $0.0050
+  v19|A|phase_a__grado|claude-fable-5-2|S0|1 ok out=87 fr=end_turn $0.0019
+  v19|A|phase_a__sony|claude-fable-5-2|S0|1 ok out=359 fr=end_turn $0.0074
+  v19|A|phase_a__audio_technica|claude-fable-5-2|S0|1 ok out=80 fr=end_turn $0.0018
+  v19|A|phase_a__stax|claude-fable-5-2|S0|1 ok out=100 fr=end_turn $0.0022
+  v19|A|phase_a__koss|claude-fable-5-2|S0|1 ok out=302 fr=end_turn $0.0062
+  v19|A|phase_a__audeze|claude-fable-5-2|S0|1 ok out=88 fr=end_turn $0.0019
+  v19|A|phase_a__hifiman|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0008
+  v19|A|phase_a__focal|claude-fable-5-2|S0|1 ok out=115 fr=end_turn $0.0025
+  v19|A|phase_a__meze|claude-fable-5-2|S0|1 ok out=121 fr=end_turn $0.0026
+  v19|A|phase_a__zmf_headphones|claude-fable-5-2|S0|1 ok out=154 fr=end_turn $0.0033
+  v19|A|phase_a__spirit_torino|claude-fable-5-2|S0|1 ok out=183 fr=end_turn $0.0038
+  v19|A|phase_a__final_audio|claude-fable-5-2|S0|1 ok out=164 fr=end_turn $0.0035
+  v19|A|phase_a__dan_clark_audio|claude-fable-5-2|S0|1 ok out=139 fr=end_turn $0.0030
+  v20|A|v20_A_A.1|claude-fable-5-2|S0|1 ok out=123 fr=end_turn $0.0026
+  v20|A|v20_A_A.2|claude-fable-5-2|S0|1 ok out=79 fr=end_turn $0.0017
+  v20|A|v20_A_A.3|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0007
+  v20|A|v20_A_A.4|claude-fable-5-2|S0|1 ok out=136 fr=end_turn $0.0029
+  v20|A|v20_A_A.5|claude-fable-5-2|S0|1 ok out=196 fr=end_turn $0.0041
+  v20|A|v20_A_A.6|claude-fable-5-2|S0|1 ok out=197 fr=end_turn $0.0041
+  v20|A|v20_A_A.7|claude-fable-5-2|S0|1 ok out=54 fr=end_turn $0.0012
+  v20|A|v20_A_A.8|claude-fable-5-2|S0|1 ok out=94 fr=end_turn $0.0021
+  v20|A|v20_A_B.1|claude-fable-5-2|S0|1 ok out=118 fr=end_turn $0.0025
+  v20|A|v20_A_B.2|claude-fable-5-2|S0|1 ok out=102 fr=end_turn $0.0022
+  v20|A|v20_A_B.3|claude-fable-5-2|S0|1 ok out=48 fr=end_turn $0.0011
+  v20|A|v20_A_B.4|claude-fable-5-2|S0|1 ok out=331 fr=end_turn $0.0068
+  v20|A|v20_A_B.5|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v20|A|v20_A_B.6|claude-fable-5-2|S0|1 ok out=94 fr=end_turn $0.0020
+  v20|A|v20_A_B.7|claude-fable-5-2|S0|1 ok out=94 fr=end_turn $0.0021
+  v20|A|v20_A_B.8|claude-fable-5-2|S0|1 ok out=382 fr=end_turn $0.0078
+  v20|A|v20_A_C.1|claude-fable-5-2|S0|1 ok out=47 fr=end_turn $0.0011
+  v20|A|v20_A_C.2|claude-fable-5-2|S0|1 ok out=38 fr=end_turn $0.0009
+  v20|A|v20_A_C.3|claude-fable-5-2|S0|1 ok out=52 fr=end_turn $0.0012
+  v20|A|v20_A_C.4|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0007
+  v20|A|v20_A_C.5|claude-fable-5-2|S0|1 ok out=51 fr=end_turn $0.0012
+  v20|A|v20_A_C.6|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0007
+  v20|A|v20_A_C.7|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0007
+  v20|A|v20_A_C.8|claude-fable-5-2|S0|1 ok out=54 fr=end_turn $0.0012
+  v21|A|v21_A_A.1|claude-fable-5-2|S0|1 ok out=60 fr=end_turn $0.0014
+  v21|A|v21_A_A.2|claude-fable-5-2|S0|1 ok out=46 fr=end_turn $0.0011
+  v21|A|v21_A_A.3|claude-fable-5-2|S0|1 ok out=45 fr=end_turn $0.0011
+  v21|A|v21_A_A.4|claude-fable-5-2|S0|1 ok out=40 fr=end_turn $0.0010
+  v21|A|v21_A_A.5|claude-fable-5-2|S0|1 ok out=61 fr=end_turn $0.0014
+  v21|A|v21_A_A.6|claude-fable-5-2|S0|1 ok out=129 fr=end_turn $0.0027
+  v21|A|v21_A_A.7|claude-fable-5-2|S0|1 ok out=119 fr=end_turn $0.0026
+  v21|A|v21_A_A.8|claude-fable-5-2|S0|1 ok out=54 fr=end_turn $0.0013
+  v21|A|v21_A_B.1|claude-fable-5-2|S0|1 ok out=87 fr=end_turn $0.0019
+  v21|A|v21_A_B.2|claude-fable-5-2|S0|1 ok out=62 fr=end_turn $0.0014
+  v21|A|v21_A_B.3|claude-fable-5-2|S0|1 ok out=64 fr=end_turn $0.0015
+  v21|A|v21_A_B.4|claude-fable-5-2|S0|1 ok out=96 fr=end_turn $0.0021
+  v21|A|v21_A_B.5|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v21|A|v21_A_B.6|claude-fable-5-2|S0|1 ok out=58 fr=end_turn $0.0013
+  v21|A|v21_A_B.7|claude-fable-5-2|S0|1 ok out=61 fr=end_turn $0.0014
+  v21|A|v21_A_B.8|claude-fable-5-2|S0|1 ok out=63 fr=end_turn $0.0015
+  v21|A|v21_A_C.1|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v21|A|v21_A_C.2|claude-fable-5-2|S0|1 ok out=22 fr=end_turn $0.0006
+  v21|A|v21_A_C.3|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0008
+  v21|A|v21_A_C.4|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v21|A|v21_A_C.5|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0008
+  v21|A|v21_A_C.6|claude-fable-5-2|S0|1 ok out=61 fr=end_turn $0.0014
+  v21|A|v21_A_C.7|claude-fable-5-2|S0|1 ok out=112 fr=end_turn $0.0024
+  v21|A|v21_A_C.8|claude-fable-5-2|S0|1 ok out=58 fr=end_turn $0.0013
+  v22|A|v22_A_A.1|claude-fable-5-2|S0|1 ok out=52 fr=end_turn $0.0012
+  v22|A|v22_A_A.2|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v22|A|v22_A_A.3|claude-fable-5-2|S0|1 ok out=53 fr=end_turn $0.0012
+  v22|A|v22_A_A.4|claude-fable-5-2|S0|1 ok out=71 fr=end_turn $0.0016
+  v22|A|v22_A_A.5|claude-fable-5-2|S0|1 ok out=29 fr=end_turn $0.0007
+  v22|A|v22_A_A.6|claude-fable-5-2|S0|1 ok out=24 fr=end_turn $0.0006
+  v22|A|v22_A_A.7|claude-fable-5-2|S0|1 ok out=51 fr=end_turn $0.0012
+  v22|A|v22_A_B.1|claude-fable-5-2|S0|1 ok out=51 fr=end_turn $0.0012
+  v22|A|v22_A_B.2|claude-fable-5-2|S0|1 ok out=80 fr=end_turn $0.0017
+  v22|A|v22_A_B.3|claude-fable-5-2|S0|1 ok out=108 fr=end_turn $0.0023
+  v22|A|v22_A_B.4|claude-fable-5-2|S0|1 ok out=51 fr=end_turn $0.0012
+  v22|A|v22_A_B.5|claude-fable-5-2|S0|1 ok out=92 fr=end_turn $0.0020
+  v22|A|v22_A_C.1|claude-fable-5-2|S0|1 ok out=24 fr=end_turn $0.0006
+  v22|A|v22_A_C.2|claude-fable-5-2|S0|1 ok out=21 fr=end_turn $0.0006
+  v22|A|v22_A_C.3|claude-fable-5-2|S0|1 ok out=50 fr=end_turn $0.0011
+  v22|A|v22_A_C.4|claude-fable-5-2|S0|1 ok out=54 fr=end_turn $0.0012
+  v22|A|v22_A_C.5|claude-fable-5-2|S0|1 ok out=52 fr=end_turn $0.0012
+  v22|A|v22_A_C.6|claude-fable-5-2|S0|1 ok out=6 fr=end_turn $0.0003
+  v22|A|v22_A_C.7|claude-fable-5-2|S0|1 ok out=22 fr=end_turn $0.0006
+  v22|A|v22_A_D.1|claude-fable-5-2|S0|1 ok out=52 fr=end_turn $0.0012
+  v22|A|v22_A_D.2|claude-fable-5-2|S0|1 ok out=46 fr=end_turn $0.0011
+  v22|A|v22_A_D.3|claude-fable-5-2|S0|1 ok out=109 fr=end_turn $0.0023
+  v22|A|v22_A_D.4|claude-fable-5-2|S0|1 ok out=110 fr=end_turn $0.0023
+  v22|A|v22_A_D.5|claude-fable-5-2|S0|1 ok out=85 fr=end_turn $0.0018
+  v23|A|S01|claude-fable-5-2|S0|1 ok out=4679 fr=end_turn $0.0939
+  v23|A|S02|claude-fable-5-2|S0|1 ok out=4449 fr=end_turn $0.0893
+  v23|A|S03|claude-fable-5-2|S0|1 ok out=4374 fr=end_turn $0.0878
+  v23|A|S04|claude-fable-5-2|S0|1 ok out=4373 fr=end_turn $0.0878
+  v23|A|S05|claude-fable-5-2|S0|1 ok out=3859 fr=end_turn $0.0775
+  v23|A|S06|claude-fable-5-2|S0|1 ok out=4133 fr=end_turn $0.0830
+  v23|A|S07|claude-fable-5-2|S0|1 ok out=4271 fr=end_turn $0.0857
+  v23|A|S08|claude-fable-5-2|S0|1 ok out=4889 fr=end_turn $0.0981
+  v23|A|S09|claude-fable-5-2|S0|1 ok out=4260 fr=end_turn $0.0855
+  v23|A|S10|claude-fable-5-2|S0|1 ok out=3590 fr=end_turn $0.0721
+  v23|A|S11|claude-fable-5-2|S0|1 ok out=4319 fr=end_turn $0.0867
+  v23|A|S12|claude-fable-5-2|S0|1 ok out=4617 fr=end_turn $0.0927
+  v23|A|S13|claude-fable-5-2|S0|1 ok out=3912 fr=end_turn $0.0786
+  v23|A|S14|claude-fable-5-2|S0|1 ok out=4027 fr=end_turn $0.0809
+  v23|A|S15|claude-fable-5-2|S0|1 ok out=3150 fr=end_turn $0.0633
+  v23|A|S16|claude-fable-5-2|S0|1 ok out=3102 fr=end_turn $0.0624
+  v23|A|S17|claude-fable-5-2|S0|1 ok out=3712 fr=end_turn $0.0746
+  v23|A|S18|claude-fable-5-2|S0|1 ok out=5164 fr=end_turn $0.1036
+  v23|A|S19|claude-fable-5-2|S0|1 ok out=4369 fr=end_turn $0.0877
+  v23|A|S20|claude-fable-5-2|S0|1 ok out=4061 fr=end_turn $0.0815
+  v23|A|S21|claude-fable-5-2|S0|1 ok out=3933 fr=end_turn $0.0790
+  v23|A|S22|claude-fable-5-2|S0|1 ok out=4077 fr=end_turn $0.0819
+  v23|A|S23|claude-fable-5-2|S0|1 ok out=3901 fr=end_turn $0.0784
+  v23|A|S24|claude-fable-5-2|S0|1 ok out=2901 fr=end_turn $0.0583
+  v21|A|v21_A_C.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_C.8|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_A.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.3|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_A.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_A.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0006
+  v22|A|v22_A_A.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_A.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.6|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_B.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.7|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_B.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v20|A|v20_A_C.8|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_C.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_C.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.1|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_C.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_C.4|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_C.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.6|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_C.7|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.3|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_D.1|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_D.2|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v22|A|v22_A_D.3|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_D.4|gpt-6-astra|S0|1 ok out=16 fr=completed $0.0010
+  v21|A|v21_A_A.5|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_D.5|gpt-6-astra|S0|1 ok out=6 fr=completed $0.0005
+  v21|A|v21_A_A.6|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_A.7|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_A.8|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_B.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_B.2|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.3|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_B.4|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.5|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_B.6|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_B.7|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v23|A|S01|gpt-6-astra|S0|1 ok out=3283 fr=completed $0.1647
+  v21|A|v21_A_B.8|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_C.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.3|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_C.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_C.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v21|A|v21_A_C.6|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.7|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v21|A|v21_A_C.8|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_A.1|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_A.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.3|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_A.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.6|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_A.7|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v23|A|S02|gpt-6-astra|S0|1 ok out=3129 fr=completed $0.1570
+  v22|A|v22_A_B.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_B.2|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.3|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.4|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_B.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.3|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_C.4|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.6|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_C.7|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_D.1|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_D.2|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_D.3|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v22|A|v22_A_D.4|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  v22|A|v22_A_D.5|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+  v23|A|S03|gpt-6-astra|S0|1 ok out=3601 fr=completed $0.1806
+  v23|A|S01|gemini-4-argon|S0|1 ok out=2051 fr=FinishReason.STOP $0.0207
+  v23|A|S02|gemini-4-argon|S0|1 ok out=2201 fr=FinishReason.STOP $0.0222
+  v23|A|S03|gemini-4-argon|S0|1 ok out=2215 fr=FinishReason.STOP $0.0223
+  v23|A|S04|gemini-4-argon|S0|1 ok out=2096 fr=FinishReason.STOP $0.0211
+  v23|A|S04|gpt-6-astra|S0|1 ok out=3991 fr=completed $0.2001
+  v23|A|S05|gemini-4-argon|S0|1 ok out=1803 fr=FinishReason.STOP $0.0182
+  v23|A|S06|gemini-4-argon|S0|1 ok out=1759 fr=FinishReason.STOP $0.0177
+  v23|A|S07|gemini-4-argon|S0|1 ok out=1674 fr=FinishReason.STOP $0.0169
+  v23|A|S08|gemini-4-argon|S0|1 ok out=1932 fr=FinishReason.STOP $0.0195
+  v23|A|S05|gpt-6-astra|S0|1 ok out=3735 fr=completed $0.1873
+  v23|A|S09|gemini-4-argon|S0|1 ok out=1819 fr=FinishReason.STOP $0.0184
+  v23|A|S10|gemini-4-argon|S0|1 ok out=1662 fr=FinishReason.STOP $0.0168
+  v23|A|S11|gemini-4-argon|S0|1 ok out=1813 fr=FinishReason.STOP $0.0183
+  v23|A|S12|gemini-4-argon|S0|1 ok out=1791 fr=FinishReason.STOP $0.0181
+  v23|A|S06|gpt-6-astra|S0|1 ok out=3511 fr=completed $0.1761
+  v23|A|S13|gemini-4-argon|S0|1 ok out=1809 fr=FinishReason.STOP $0.0182
+  v23|A|S14|gemini-4-argon|S0|1 ok out=2048 fr=FinishReason.STOP $0.0206
+  v23|A|S15|gemini-4-argon|S0|1 ok out=1892 fr=FinishReason.STOP $0.0191
+  v23|A|S07|gpt-6-astra|S0|1 ok out=3394 fr=completed $0.1702
+  v23|A|S16|gemini-4-argon|S0|1 ok out=1746 fr=FinishReason.STOP $0.0176
+  v23|A|S17|gemini-4-argon|S0|1 ok out=1834 fr=FinishReason.STOP $0.0185
+  v23|A|S18|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S19|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S20|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S21|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S22|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S23|gemini-4-argon|S0|1 ok out=2092 fr=FinishReason.STOP $0.0211
+  v23|A|S24|gemini-4-argon|S0|1 error out=None fr=None $0.0000
+  v23|A|S08|gpt-6-astra|S0|1 ok out=3438 fr=completed $0.1724
+  v23|A|S09|gpt-6-astra|S0|1 ok out=3571 fr=completed $0.1791
+  v23|A|S10|gpt-6-astra|S0|1 ok out=3781 fr=completed $0.1896
+  v23|A|S11|gpt-6-astra|S0|1 ok out=3892 fr=completed $0.1951
+  v23|A|S12|gpt-6-astra|S0|1 ok out=4301 fr=completed $0.2156
+  v23|A|S13|gpt-6-astra|S0|1 ok out=3427 fr=completed $0.1719
+  v23|A|S14|gpt-6-astra|S0|1 ok out=4325 fr=completed $0.2168
+  v23|A|S15|gpt-6-astra|S0|1 ok out=3082 fr=completed $0.1546
+  v23|A|S16|gpt-6-astra|S0|1 ok out=3748 fr=completed $0.1879
+  v23|A|S17|gpt-6-astra|S0|1 ok out=3892 fr=completed $0.1951
+  v23|A|S18|gpt-6-astra|S0|1 ok out=4767 fr=completed $0.2389
+  v23|A|S19|gpt-6-astra|S0|1 ok out=4185 fr=completed $0.2098
+  v23|A|S20|gpt-6-astra|S0|1 ok out=4082 fr=completed $0.2046
+  v23|A|S21|gpt-6-astra|S0|1 ok out=3635 fr=completed $0.1823
+  v23|A|S22|gpt-6-astra|S0|1 ok out=4690 fr=completed $0.2350
+  v23|A|S23|gpt-6-astra|S0|1 ok out=3942 fr=completed $0.1976
+  v23|A|S24|gpt-6-astra|S0|1 ok out=4273 fr=completed $0.2142
+block 5 ('B', 'S1', 1): 90 calls to send; {'actual_calls_usd': 14.4333, 'judge_reserve_usd': 0.5, 'spent_usd': 14.9333, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S1|1 ok out=1696 fr=FinishReason.STOP $0.0174 searches=0
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S1|1 ok out=1431 fr=completed $0.4010 searches=2
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S1|1 ok out=1416 fr=FinishReason.STOP $0.0146 searches=0
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S1|1 ok out=664 fr=completed $0.2275 searches=2
+  v19|B|phase_b__q3_reference|gemini-4-argon|S1|1 ok out=1345 fr=FinishReason.STOP $0.0139 searches=0
+  v19|B|phase_b__q4_famous|gemini-4-argon|S1|1 ok out=1219 fr=FinishReason.STOP $0.0126 searches=0
+  v19|B|phase_b__q3_reference|gpt-6-astra|S1|1 ok out=991 fr=completed $0.3706 searches=2
+  v19|B|phase_b__q5_popular|gemini-4-argon|S1|1 ok out=846 fr=FinishReason.STOP $0.0089 searches=0
+  v19|B|phase_b__q4_famous|gpt-6-astra|S1|1 ok out=361 fr=completed $0.1129 searches=1
+  v19|B|phase_b__q5_popular|gpt-6-astra|S1|1 ok out=430 fr=completed $0.1186 searches=1
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S1|1 ok out=1053 fr=FinishReason.STOP $0.0110 searches=0
+  v20|B|q1|gemini-4-argon|S1|1 ok out=1268 fr=FinishReason.STOP $0.0131 searches=0
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S1|1 ok out=768 fr=completed $0.2739 searches=2
+  v20|B|q2|gemini-4-argon|S1|1 ok out=1121 fr=FinishReason.STOP $0.0122 searches=0
+  v20|B|q1|gpt-6-astra|S1|1 ok out=899 fr=completed $0.2393 searches=2
+  v20|B|q3|gemini-4-argon|S1|1 ok out=1275 fr=FinishReason.STOP $0.0132 searches=0
+  v20|B|q2|gpt-6-astra|S1|1 ok out=422 fr=completed $0.2464 searches=1
+  v20|B|q4|gemini-4-argon|S1|1 ok out=1196 fr=FinishReason.STOP $0.0404 searches=2
+  v20|B|q5|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v20|B|q6|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v21|B|q1|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v21|B|q2|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v21|B|q3|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v21|B|q4|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v21|B|q5|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v20|B|q3|gpt-6-astra|S1|1 ok out=1000 fr=completed $0.2835 searches=2
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S1|1 ok out=3143 fr=end_turn $0.1722 searches=2
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S1|1 ok out=2286 fr=end_turn $0.1108 searches=1
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S1|1 ok out=3111 fr=end_turn $0.1753 searches=2
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S1|1 ok out=678 fr=end_turn $0.0249 searches=0
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S1|1 ok out=3407 fr=end_turn $0.1329 searches=1
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S1|1 ok out=2989 fr=end_turn $0.1273 searches=1
+  v20|B|q1|claude-fable-5-2|S1|1 ok out=3822 fr=end_turn $0.1877 searches=2
+  v20|B|q2|claude-fable-5-2|S1|1 ok out=3239 fr=end_turn $0.1311 searches=1
+  v20|B|q3|claude-fable-5-2|S1|1 ok out=3748 fr=end_turn $0.1407 searches=1
+  v20|B|q4|claude-fable-5-2|S1|1 ok out=2039 fr=end_turn $0.1067 searches=1
+  v20|B|q5|claude-fable-5-2|S1|1 ok out=5719 fr=end_turn $0.1838 searches=1
+  v20|B|q6|claude-fable-5-2|S1|1 ok out=2228 fr=end_turn $0.1105 searches=1
+  v21|B|q1|claude-fable-5-2|S1|1 ok out=3313 fr=end_turn $0.1353 searches=1
+  v21|B|q2|claude-fable-5-2|S1|1 ok out=3447 fr=end_turn $0.1361 searches=1
+  v21|B|q3|claude-fable-5-2|S1|1 ok out=3857 fr=end_turn $0.1899 searches=2
+  v21|B|q4|claude-fable-5-2|S1|1 ok out=2759 fr=end_turn $0.1225 searches=1
+  v21|B|q5|claude-fable-5-2|S1|1 ok out=2589 fr=end_turn $0.1225 searches=1
+  v21|B|q6|claude-fable-5-2|S1|1 ok out=3514 fr=end_turn $0.1384 searches=1
+  v22|B|q1|claude-fable-5-2|S1|1 ok out=4150 fr=end_turn $0.2016 searches=2
+  v22|B|q2|claude-fable-5-2|S1|1 ok out=2121 fr=end_turn $0.1545 searches=2
+  v22|B|q3|claude-fable-5-2|S1|1 ok out=5644 fr=end_turn $0.2250 searches=2
+  v22|B|q4|claude-fable-5-2|S1|1 ok out=621 fr=end_turn $0.0238 searches=0
+  v22|B|q5|claude-fable-5-2|S1|1 ok out=653 fr=end_turn $0.0245 searches=0
+  v22|B|q6|claude-fable-5-2|S1|1 ok out=718 fr=end_turn $0.0258 searches=0
+  v23|B|EA-1|claude-fable-5-2|S1|1 ok out=5792 fr=end_turn $0.3110 searches=4
+  v23|B|EA-2|claude-fable-5-2|S1|1 ok out=8454 fr=end_turn $0.5239 searches=5
+  v23|B|EA-3|claude-fable-5-2|S1|1 ok out=6973 fr=end_turn $0.3190 searches=4
+  v23|B|CC-1|claude-fable-5-2|S1|1 ok out=7634 fr=end_turn $0.3454 searches=4
+  v23|B|CC-2|claude-fable-5-2|S1|1 ok out=3144 fr=end_turn $0.0745 searches=0
+  v23|B|CC-3|claude-fable-5-2|S1|1 ok out=6844 fr=end_turn $0.3374 searches=4
+  v20|B|q4|gpt-6-astra|S1|1 ok out=432 fr=completed $0.2205 searches=1
+  v21|B|q6|gemini-4-argon|S1|1 ok out=1307 fr=FinishReason.STOP $0.0140 searches=0
+  v22|B|q1|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v22|B|q2|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v22|B|q3|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v20|B|q5|gpt-6-astra|S1|1 ok out=504 fr=completed $0.2611 searches=2
+  v22|B|q4|gemini-4-argon|S1|1 ok out=1105 fr=FinishReason.STOP $0.0115 searches=0
+  v22|B|q5|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v22|B|q6|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-1|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-2|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-3|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-1|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-2|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-3|gemini-4-argon|S1|1 error out=None fr=None $0.0000 searches=None
+  v20|B|q6|gpt-6-astra|S1|1 ok out=508 fr=completed $0.2581 searches=1
+  v21|B|q1|gpt-6-astra|S1|1 ok out=828 fr=completed $0.2747 searches=1
+  v21|B|q2|gpt-6-astra|S1|1 ok out=494 fr=completed $0.2575 searches=1
+  v21|B|q3|gpt-6-astra|S1|1 ok out=1068 fr=completed $0.2884 searches=2
+  v21|B|q4|gpt-6-astra|S1|1 ok out=535 fr=completed $0.2570 searches=1
+  v21|B|q5|gpt-6-astra|S1|1 ok out=519 fr=completed $0.2583 searches=1
+  v21|B|q6|gpt-6-astra|S1|1 ok out=553 fr=completed $0.2599 searches=1
+  v22|B|q1|gpt-6-astra|S1|1 ok out=937 fr=completed $0.2542 searches=2
+  v22|B|q2|gpt-6-astra|S1|1 ok out=567 fr=completed $0.2102 searches=1
+  v22|B|q3|gpt-6-astra|S1|1 ok out=984 fr=completed $0.3280 searches=1
+  v22|B|q4|gpt-6-astra|S1|1 ok out=602 fr=completed $0.1824 searches=2
+  v22|B|q5|gpt-6-astra|S1|1 ok out=229 fr=completed $0.1092 searches=1
+  v22|B|q6|gpt-6-astra|S1|1 ok out=631 fr=completed $0.0761 searches=0
+  v23|B|EA-1|gpt-6-astra|S1|1 ok out=4248 fr=completed $1.5345 searches=12
+  v23|B|EA-2|gpt-6-astra|S1|1 ok out=3618 fr=completed $1.2626 searches=11
+  v23|B|EA-3|gpt-6-astra|S1|1 ok out=2915 fr=completed $0.8354 searches=6
+  v23|B|CC-1|gpt-6-astra|S1|1 ok out=1932 fr=completed $0.5166 searches=4
+  v23|B|CC-2|gpt-6-astra|S1|1 ok out=1836 fr=completed $0.6096 searches=5
+  v23|B|CC-3|gpt-6-astra|S1|1 ok out=2387 fr=completed $0.8264 searches=6
+block 6 ('B', 'S1', 2): 90 calls to send; {'actual_calls_usd': 30.986, 'judge_reserve_usd': 0.5, 'spent_usd': 31.486, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q3_reference|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q4_famous|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q5_popular|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q1|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q2|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q3|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q4|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q5|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v20|B|q6|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q1|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q2|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q3|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q4|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q5|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v21|B|q6|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q1|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q2|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q3|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q4|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q5|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v22|B|q6|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-1|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-2|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-3|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-1|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-2|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-3|gemini-4-argon|S1|2 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S1|2 ok out=1257 fr=completed $0.3892 searches=1
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S1|2 ok out=623 fr=completed $0.2247 searches=2
+  v19|B|phase_b__q3_reference|gpt-6-astra|S1|2 ok out=1157 fr=completed $0.4360 searches=2
+  v19|B|phase_b__q4_famous|gpt-6-astra|S1|2 ok out=359 fr=completed $0.1128 searches=1
+  v19|B|phase_b__q5_popular|gpt-6-astra|S1|2 ok out=486 fr=completed $0.1641 searches=1
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S1|2 ok out=747 fr=completed $0.2730 searches=2
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S1|2 ok out=4066 fr=end_turn $0.1916 searches=2
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S1|2 ok out=2967 fr=end_turn $0.1693 searches=2
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S1|2 ok out=3298 fr=end_turn $0.1776 searches=2
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S1|2 ok out=669 fr=end_turn $0.0247 searches=0
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S1|2 ok out=2208 fr=end_turn $0.1113 searches=1
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S1|2 ok out=3601 fr=end_turn $0.1875 searches=2
+  v20|B|q1|claude-fable-5-2|S1|2 ok out=2218 fr=end_turn $0.1129 searches=1
+  v20|B|q2|claude-fable-5-2|S1|2 ok out=2602 fr=end_turn $0.1184 searches=1
+  v20|B|q3|claude-fable-5-2|S1|2 ok out=3825 fr=end_turn $0.1855 searches=2
+  v20|B|q4|claude-fable-5-2|S1|2 ok out=2242 fr=end_turn $0.1109 searches=1
+  v20|B|q5|claude-fable-5-2|S1|2 ok out=2906 fr=end_turn $0.1278 searches=1
+  v20|B|q6|claude-fable-5-2|S1|2 ok out=3280 fr=end_turn $0.1315 searches=1
+  v21|B|q1|claude-fable-5-2|S1|2 ok out=3900 fr=end_turn $0.1470 searches=1
+  v21|B|q2|claude-fable-5-2|S1|2 ok out=2238 fr=end_turn $0.1121 searches=1
+  v21|B|q3|claude-fable-5-2|S1|2 ok out=3013 fr=end_turn $0.1759 searches=2
+  v21|B|q4|claude-fable-5-2|S1|2 ok out=1937 fr=end_turn $0.1102 searches=1
+  v21|B|q5|claude-fable-5-2|S1|2 ok out=5261 fr=end_turn $0.2169 searches=2
+  v21|B|q6|claude-fable-5-2|S1|2 ok out=3769 fr=end_turn $0.1445 searches=1
+  v22|B|q1|claude-fable-5-2|S1|2 ok out=3218 fr=end_turn $0.1786 searches=2
+  v22|B|q2|claude-fable-5-2|S1|2 ok out=2599 fr=end_turn $0.1629 searches=2
+  v22|B|q3|claude-fable-5-2|S1|2 ok out=2889 fr=end_turn $0.1697 searches=2
+  v22|B|q4|claude-fable-5-2|S1|2 ok out=598 fr=end_turn $0.0234 searches=0
+  v22|B|q5|claude-fable-5-2|S1|2 ok out=349 fr=end_turn $0.0184 searches=0
+  v22|B|q6|claude-fable-5-2|S1|2 ok out=729 fr=end_turn $0.0260 searches=0
+  v23|B|EA-1|claude-fable-5-2|S1|2 ok out=5060 fr=end_turn $0.4680 searches=5
+  v23|B|EA-2|claude-fable-5-2|S1|2 ok out=9395 fr=end_turn $0.5407 searches=5
+  v23|B|EA-3|claude-fable-5-2|S1|2 ok out=7875 fr=end_turn $0.5236 searches=5
+  v23|B|CC-1|claude-fable-5-2|S1|2 ok out=4649 fr=end_turn $0.2508 searches=3
+  v23|B|CC-2|claude-fable-5-2|S1|2 ok out=1859 fr=end_turn $0.0488 searches=0
+  v23|B|CC-3|claude-fable-5-2|S1|2 ok out=7062 fr=end_turn $0.3372 searches=4
+  v20|B|q1|gpt-6-astra|S1|2 ok out=1095 fr=completed $0.3786 searches=2
+  v20|B|q2|gpt-6-astra|S1|2 ok out=352 fr=completed $0.2074 searches=1
+  v20|B|q3|gpt-6-astra|S1|2 ok out=1111 fr=completed $0.3419 searches=3
+  v20|B|q4|gpt-6-astra|S1|2 ok out=420 fr=completed $0.2331 searches=1
+  v20|B|q5|gpt-6-astra|S1|2 ok out=581 fr=completed $0.2617 searches=2
+  v20|B|q6|gpt-6-astra|S1|2 ok out=514 fr=completed $0.2579 searches=1
+  v21|B|q1|gpt-6-astra|S1|2 ok out=863 fr=completed $0.3701 searches=1
+  v21|B|q2|gpt-6-astra|S1|2 ok out=424 fr=completed $0.2391 searches=1
+  v21|B|q3|gpt-6-astra|S1|2 ok out=1070 fr=completed $0.3432 searches=2
+  v21|B|q4|gpt-6-astra|S1|2 ok out=556 fr=completed $0.2593 searches=1
+  v21|B|q5|gpt-6-astra|S1|2 ok out=518 fr=completed $0.2570 searches=1
+  v21|B|q6|gpt-6-astra|S1|2 ok out=493 fr=completed $0.2575 searches=1
+  v22|B|q1|gpt-6-astra|S1|2 ok out=768 fr=completed $0.3205 searches=1
+  v22|B|q2|gpt-6-astra|S1|2 ok out=541 fr=completed $0.2099 searches=1
+  v22|B|q3|gpt-6-astra|S1|2 ok out=1009 fr=completed $0.3308 searches=1
+  v22|B|q4|gpt-6-astra|S1|2 ok out=647 fr=completed $0.1849 searches=2
+  v22|B|q5|gpt-6-astra|S1|2 ok out=177 fr=completed $0.1048 searches=1
+  v22|B|q6|gpt-6-astra|S1|2 ok out=696 fr=completed $0.0794 searches=0
+  v23|B|EA-1|gpt-6-astra|S1|2 ok out=3673 fr=completed $1.3154 searches=9
+  v23|B|EA-2|gpt-6-astra|S1|2 ok out=4503 fr=completed $1.3050 searches=11
+  v23|B|EA-3|gpt-6-astra|S1|2 ok out=2421 fr=completed $0.8282 searches=6
+  v23|B|CC-1|gpt-6-astra|S1|2 ok out=1957 fr=completed $0.5230 searches=4
+  v23|B|CC-2|gpt-6-astra|S1|2 ok out=2033 fr=completed $0.7166 searches=5
+  v23|B|CC-3|gpt-6-astra|S1|2 ok out=2470 fr=completed $0.7931 searches=6
+block 7 ('B', 'S1', 3): 90 calls to send; {'actual_calls_usd': 48.0082, 'judge_reserve_usd': 0.5, 'spent_usd': 48.5082, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q1|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q2|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q3|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q4|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q5|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q6|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q1|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q2|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q3|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q4|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q5|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q6|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q1|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q2|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q3|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q4|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q5|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q6|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-1|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-2|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-3|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-1|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-2|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-3|claude-fable-5-2|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q3_reference|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q4_famous|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q5_popular|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q1|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q2|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q3|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q4|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q5|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v20|B|q6|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q1|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q2|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q3|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q4|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q5|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v21|B|q6|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q1|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q2|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q3|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q4|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q5|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v22|B|q6|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-1|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-2|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|EA-3|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-1|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-2|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v23|B|CC-3|gemini-4-argon|S1|3 error out=None fr=None $0.0000 searches=None
+  v19|B|phase_b__q1_audiophile|gpt-6-astra|S1|3 ok out=1601 fr=completed $0.5048 searches=2
+  v19|B|phase_b__q2_enthusiast|gpt-6-astra|S1|3 ok out=630 fr=completed $0.2246 searches=2
+  v19|B|phase_b__q3_reference|gpt-6-astra|S1|3 ok out=1036 fr=completed $0.4718 searches=2
+  v19|B|phase_b__q4_famous|gpt-6-astra|S1|3 ok out=382 fr=completed $0.1148 searches=1
+  v19|B|phase_b__q5_popular|gpt-6-astra|S1|3 ok out=480 fr=completed $0.2538 searches=1
+  v19|B|phase_b__q6_iconic|gpt-6-astra|S1|3 ok out=776 fr=completed $0.2749 searches=2
+  v20|B|q1|gpt-6-astra|S1|3 ok out=897 fr=completed $0.2884 searches=2
+  v20|B|q2|gpt-6-astra|S1|3 ok out=395 fr=completed $0.1579 searches=1
+  v20|B|q3|gpt-6-astra|S1|3 ok out=974 fr=completed $0.3361 searches=3
+  v20|B|q4|gpt-6-astra|S1|3 ok out=408 fr=completed $0.2532 searches=1
+  v20|B|q5|gpt-6-astra|S1|3 ok out=581 fr=completed $0.2605 searches=1
+  v20|B|q6|gpt-6-astra|S1|3 ok out=541 fr=completed $0.2597 searches=1
+  v21|B|q1|gpt-6-astra|S1|3 ok out=910 fr=completed $0.3723 searches=1
+  v21|B|q2|gpt-6-astra|S1|3 ok out=559 fr=completed $0.3542 searches=2
+  v21|B|q3|gpt-6-astra|S1|3 ok out=1026 fr=completed $0.2881 searches=2
+  v21|B|q4|gpt-6-astra|S1|3 ok out=495 fr=completed $0.2534 searches=1
+  v21|B|q5|gpt-6-astra|S1|3 ok out=469 fr=completed $0.1634 searches=1
+  v21|B|q6|gpt-6-astra|S1|3 ok out=541 fr=completed $0.2210 searches=2
+  v22|B|q1|gpt-6-astra|S1|3 ok out=898 fr=completed $0.3327 searches=3
+  v22|B|q2|gpt-6-astra|S1|3 ok out=576 fr=completed $0.2103 searches=1
+  v22|B|q3|gpt-6-astra|S1|3 ok out=897 fr=completed $0.2592 searches=1
+  v22|B|q4|gpt-6-astra|S1|3 ok out=606 fr=completed $0.0749 searches=0
+  v22|B|q5|gpt-6-astra|S1|3 ok out=336 fr=completed $0.1143 searches=1
+  v22|B|q6|gpt-6-astra|S1|3 ok out=586 fr=completed $0.0739 searches=0
+  v23|B|EA-1|gpt-6-astra|S1|3 ok out=3911 fr=completed $1.6564 searches=15
+  v23|B|EA-2|gpt-6-astra|S1|3 ok out=3642 fr=completed $1.4470 searches=12
+  v23|B|EA-3|gpt-6-astra|S1|3 ok out=2631 fr=completed $0.9285 searches=6
+  v23|B|CC-1|gpt-6-astra|S1|3 ok out=1983 fr=completed $0.6190 searches=5
+  v23|B|CC-2|gpt-6-astra|S1|3 ok out=2144 fr=completed $0.8137 searches=6
+  v23|B|CC-3|gpt-6-astra|S1|3 ok out=2442 fr=completed $0.7271 searches=5
+HALT (stop) in block 7: {'actual_calls_usd': 60.3181, 'judge_reserve_usd': 0.5, 'spent_usd': 60.8181, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+result: stop {'actual_calls_usd': 60.3181, 'judge_reserve_usd': 0.5, 'spent_usd': 60.8181, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+=== note 2026-11-11T09:04:15Z (runner, before the re-run pass): Anthropic calls now use a new API key in organization c1080353-9fa2-4ead-b596-e062dde7c70a (Pablo’s Individual Org; Start tier: Fable 5.2 4.0K requests/min, Message Batches 1.0K requests/min, batch queue 200K requests, web search 30 uses/s; balance $200.00), set by Pablo on 2026-11-11 ~07:14Z after the previous organization ab5584bb-e380-4e71-bffb-6ed0c5841175 refused block 7 batch create at 05:20:48Z (credit balance too low). Pre-flight outside the study record: claude-haiku-4-5 accepted a request declaring web_search_20250305 in the new organization (tool_choice none, max_tokens 1, no search run, about $0.002). Google AI Studio prepay refilled by Pablo (balance $19.73 on 2026-11-11 ~07:03Z, auto-reload on). ===
+=== re-run pass 2026-11-11T09:04:15Z ===
+REFUSED: another paid collection is running: 23998 zsh -ic cd /Users/pablou/aias/_worktrees/v0.42 && echo "running before launch: $(pgrep -fl "acquire_v[0-9][0-9_.]*\.py.*
+=== note 2026-11-11T09:05:20Z (runner): the 09:04:15Z launch above was refused by the other-collection guard of the acquisition script, which matched the launcher shell (its command line contained the launch command); no request was sent. Relaunched from a script file. ===
+=== re-run pass 2026-11-11T09:05:20Z ===
+prereg guard passed: v0.42-prereg-r1 -> bccedc15a86f01eac8b9c09b25a61d2b8d88464f; no other paid collection running
+collection window: no new request after 2026-11-14T02:57:06.408927+00:00
+876 specs, 762 already done; budget {'actual_calls_usd': 60.3181, 'judge_reserve_usd': 0.5, 'spent_usd': 60.8181, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+block 4 ('A', 'S0', 1): 6 calls to send; {'actual_calls_usd': 60.3181, 'judge_reserve_usd': 0.5, 'spent_usd': 60.8181, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v23|A|S18|gemini-4-argon|S0|1 ok out=1967 fr=FinishReason.STOP $0.0198
+  v23|A|S19|gemini-4-argon|S0|1 ok out=1895 fr=FinishReason.STOP $0.0191
+  v23|A|S20|gemini-4-argon|S0|1 ok out=1953 fr=FinishReason.STOP $0.0197
+  v23|A|S21|gemini-4-argon|S0|1 ok out=1603 fr=FinishReason.STOP $0.0162
+  v23|A|S22|gemini-4-argon|S0|1 ok out=2107 fr=FinishReason.STOP $0.0212
+  v23|A|S24|gemini-4-argon|S0|1 ok out=1652 fr=FinishReason.STOP $0.0167
+block 5 ('B', 'S1', 1): 18 calls to send; {'actual_calls_usd': 60.4308, 'judge_reserve_usd': 0.5, 'spent_usd': 60.9308, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v20|B|q5|gemini-4-argon|S1|1 ok out=1261 fr=FinishReason.STOP $0.0131 searches=0
+  v20|B|q6|gemini-4-argon|S1|1 ok out=1296 fr=FinishReason.STOP $0.0134 searches=0
+  v21|B|q1|gemini-4-argon|S1|1 ok out=950 fr=FinishReason.STOP $0.0100 searches=0
+  v21|B|q2|gemini-4-argon|S1|1 ok out=1191 fr=FinishReason.STOP $0.0124 searches=0
+  v21|B|q3|gemini-4-argon|S1|1 ok out=1166 fr=FinishReason.STOP $0.0121 searches=0
+  v21|B|q4|gemini-4-argon|S1|1 ok out=903 fr=FinishReason.STOP $0.0375 searches=2
+  v21|B|q5|gemini-4-argon|S1|1 ok out=1163 fr=FinishReason.STOP $0.0121 searches=0
+  v22|B|q1|gemini-4-argon|S1|1 ok out=1222 fr=FinishReason.STOP $0.0127 searches=0
+  v22|B|q2|gemini-4-argon|S1|1 ok out=954 fr=FinishReason.STOP $0.0240 searches=1
+  v22|B|q3|gemini-4-argon|S1|1 ok out=1433 fr=FinishReason.STOP $0.0288 searches=1
+  v22|B|q5|gemini-4-argon|S1|1 ok out=1052 fr=FinishReason.STOP $0.0110 searches=0
+  v22|B|q6|gemini-4-argon|S1|1 ok out=1207 fr=FinishReason.STOP $0.0125 searches=0
+  v23|B|EA-1|gemini-4-argon|S1|1 ok out=2456 fr=FinishReason.STOP $0.0251 searches=0
+  v23|B|EA-2|gemini-4-argon|S1|1 ok out=3356 fr=FinishReason.STOP $0.1340 searches=7
+  v23|B|EA-3|gemini-4-argon|S1|1 ok out=2043 fr=FinishReason.STOP $0.0210 searches=0
+  v23|B|CC-1|gemini-4-argon|S1|1 ok out=2381 fr=FinishReason.STOP $0.0243 searches=0
+  v23|B|CC-2|gemini-4-argon|S1|1 ok out=1784 fr=FinishReason.STOP $0.0184 searches=0
+  v23|B|CC-3|gemini-4-argon|S1|1 ok out=1803 fr=FinishReason.STOP $0.0186 searches=0
+block 6 ('B', 'S1', 2): 30 calls to send; {'actual_calls_usd': 60.8717, 'judge_reserve_usd': 0.5, 'spent_usd': 61.3717, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S1|2 ok out=1764 fr=FinishReason.STOP $0.0321 searches=1
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S1|2 ok out=1206 fr=FinishReason.STOP $0.0125 searches=0
+  v19|B|phase_b__q3_reference|gemini-4-argon|S1|2 ok out=1305 fr=FinishReason.STOP $0.0135 searches=0
+  v19|B|phase_b__q4_famous|gemini-4-argon|S1|2 ok out=1126 fr=FinishReason.STOP $0.0117 searches=0
+  v19|B|phase_b__q5_popular|gemini-4-argon|S1|2 ok out=882 fr=FinishReason.STOP $0.0093 searches=0
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S1|2 ok out=1098 fr=FinishReason.STOP $0.0114 searches=0
+  v20|B|q1|gemini-4-argon|S1|2 ok out=1299 fr=FinishReason.STOP $0.0134 searches=0
+  v20|B|q2|gemini-4-argon|S1|2 ok out=1051 fr=FinishReason.STOP $0.0110 searches=0
+  v20|B|q3|gemini-4-argon|S1|2 ok out=1402 fr=FinishReason.STOP $0.0145 searches=0
+  v20|B|q4|gemini-4-argon|S1|2 ok out=1250 fr=FinishReason.STOP $0.0410 searches=2
+  v20|B|q5|gemini-4-argon|S1|2 ok out=1055 fr=FinishReason.STOP $0.0112 searches=0
+  v20|B|q6|gemini-4-argon|S1|2 ok out=1205 fr=FinishReason.STOP $0.0125 searches=0
+  v21|B|q1|gemini-4-argon|S1|2 ok out=1252 fr=FinishReason.STOP $0.0130 searches=0
+  v21|B|q2|gemini-4-argon|S1|2 ok out=983 fr=FinishReason.STOP $0.0103 searches=0
+  v21|B|q3|gemini-4-argon|S1|2 ok out=1538 fr=FinishReason.STOP $0.0158 searches=0
+  v21|B|q4|gemini-4-argon|S1|2 ok out=877 fr=FinishReason.STOP $0.0378 searches=2
+  v21|B|q5|gemini-4-argon|S1|2 ok out=1179 fr=FinishReason.STOP $0.0122 searches=0
+  v21|B|q6|gemini-4-argon|S1|2 ok out=1289 fr=FinishReason.STOP $0.0134 searches=0
+  v22|B|q1|gemini-4-argon|S1|2 ok out=1030 fr=FinishReason.STOP $0.0108 searches=0
+  v22|B|q2|gemini-4-argon|S1|2 ok out=1102 fr=FinishReason.STOP $0.0395 searches=2
+  v22|B|q3|gemini-4-argon|S1|2 ok out=1673 fr=FinishReason.STOP $0.0452 searches=2
+  v22|B|q4|gemini-4-argon|S1|2 ok out=1200 fr=FinishReason.STOP $0.0125 searches=0
+  v22|B|q5|gemini-4-argon|S1|2 ok out=984 fr=FinishReason.STOP $0.0104 searches=0
+  v22|B|q6|gemini-4-argon|S1|2 ok out=1250 fr=FinishReason.STOP $0.0130 searches=0
+  v23|B|EA-1|gemini-4-argon|S1|2 ok out=1762 fr=FinishReason.STOP $0.0182 searches=0
+  v23|B|EA-2|gemini-4-argon|S1|2 ok out=2236 fr=FinishReason.STOP $0.0789 searches=4
+  v23|B|EA-3|gemini-4-argon|S1|2 ok out=1971 fr=FinishReason.STOP $0.0202 searches=0
+  v23|B|CC-1|gemini-4-argon|S1|2 ok out=2025 fr=FinishReason.STOP $0.0208 searches=0
+  v23|B|CC-2|gemini-4-argon|S1|2 ok out=1803 fr=FinishReason.STOP $0.0186 searches=0
+  v23|B|CC-3|gemini-4-argon|S1|2 ok out=1870 fr=FinishReason.STOP $0.0192 searches=0
+block 7 ('B', 'S1', 3): 60 calls to send; {'actual_calls_usd': 61.4755, 'judge_reserve_usd': 0.5, 'spent_usd': 61.9755, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+ANTHROPIC_API_KEY is set and takes precedence over the SDK's profile / federation auto-discovery; unset ANTHROPIC_API_KEY to use the auto-discovered credential.
+  v19|B|phase_b__q1_audiophile|gemini-4-argon|S1|3 ok out=1563 fr=FinishReason.STOP $0.0301 searches=1
+  v19|B|phase_b__q2_enthusiast|gemini-4-argon|S1|3 ok out=1590 fr=FinishReason.STOP $0.0164 searches=0
+  v19|B|phase_b__q3_reference|gemini-4-argon|S1|3 ok out=1269 fr=FinishReason.STOP $0.0132 searches=0
+  v19|B|phase_b__q4_famous|gemini-4-argon|S1|3 ok out=1078 fr=FinishReason.STOP $0.0112 searches=0
+  v19|B|phase_b__q5_popular|gemini-4-argon|S1|3 ok out=986 fr=FinishReason.STOP $0.0103 searches=0
+  v19|B|phase_b__q6_iconic|gemini-4-argon|S1|3 ok out=1197 fr=FinishReason.STOP $0.0133 searches=0
+  v19|B|phase_b__q1_audiophile|claude-fable-5-2|S1|3 ok out=4043 fr=end_turn $0.1901 searches=2
+  v19|B|phase_b__q2_enthusiast|claude-fable-5-2|S1|3 ok out=2375 fr=end_turn $0.1560 searches=2
+  v19|B|phase_b__q3_reference|claude-fable-5-2|S1|3 ok out=3665 fr=end_turn $0.1864 searches=2
+  v19|B|phase_b__q4_famous|claude-fable-5-2|S1|3 ok out=590 fr=end_turn $0.0231 searches=0
+  v19|B|phase_b__q5_popular|claude-fable-5-2|S1|3 ok out=2565 fr=end_turn $0.1194 searches=1
+  v19|B|phase_b__q6_iconic|claude-fable-5-2|S1|3 ok out=2315 fr=end_turn $0.1196 searches=1
+  v20|B|q1|claude-fable-5-2|S1|3 ok out=2471 fr=end_turn $0.1168 searches=1
+  v20|B|q2|claude-fable-5-2|S1|3 ok out=1788 fr=end_turn $0.1024 searches=1
+  v20|B|q3|claude-fable-5-2|S1|3 ok out=3668 fr=end_turn $0.1832 searches=2
+  v20|B|q4|claude-fable-5-2|S1|3 ok out=3054 fr=end_turn $0.1267 searches=1
+  v20|B|q5|claude-fable-5-2|S1|3 ok out=2476 fr=end_turn $0.1195 searches=1
+  v20|B|q6|claude-fable-5-2|S1|3 ok out=3767 fr=end_turn $0.1413 searches=1
+  v21|B|q1|claude-fable-5-2|S1|3 ok out=3416 fr=end_turn $0.1370 searches=1
+  v21|B|q2|claude-fable-5-2|S1|3 ok out=3155 fr=end_turn $0.1317 searches=1
+  v21|B|q3|claude-fable-5-2|S1|3 ok out=3844 fr=end_turn $0.1923 searches=2
+  v21|B|q4|claude-fable-5-2|S1|3 ok out=2285 fr=end_turn $0.1589 searches=2
+  v21|B|q5|claude-fable-5-2|S1|3 ok out=3613 fr=end_turn $0.1881 searches=2
+  v21|B|q6|claude-fable-5-2|S1|3 ok out=2738 fr=end_turn $0.1238 searches=1
+  v22|B|q1|claude-fable-5-2|S1|3 ok out=4575 fr=end_turn $0.1606 searches=1
+  v22|B|q2|claude-fable-5-2|S1|3 ok out=3036 fr=end_turn $0.1743 searches=2
+  v22|B|q3|claude-fable-5-2|S1|3 ok out=4903 fr=end_turn $0.2101 searches=2
+  v22|B|q4|claude-fable-5-2|S1|3 ok out=573 fr=end_turn $0.0229 searches=0
+  v22|B|q5|claude-fable-5-2|S1|3 ok out=504 fr=end_turn $0.0215 searches=0
+  v22|B|q6|claude-fable-5-2|S1|3 ok out=656 fr=end_turn $0.0245 searches=0
+  v23|B|EA-1|claude-fable-5-2|S1|3 ok out=6425 fr=end_turn $0.3604 searches=5
+  v23|B|EA-2|claude-fable-5-2|S1|3 ok out=5617 fr=end_turn $0.4762 searches=5
+  v23|B|EA-3|claude-fable-5-2|S1|3 ok out=10031 fr=end_turn $0.5390 searches=5
+  v23|B|CC-1|claude-fable-5-2|S1|3 ok out=6639 fr=end_turn $0.3364 searches=4
+  v23|B|CC-2|claude-fable-5-2|S1|3 ok out=1629 fr=end_turn $0.0442 searches=0
+  v23|B|CC-3|claude-fable-5-2|S1|3 ok out=6689 fr=end_turn $0.5230 searches=5
+  v20|B|q1|gemini-4-argon|S1|3 ok out=1299 fr=FinishReason.STOP $0.0134 searches=0
+  v20|B|q2|gemini-4-argon|S1|3 ok out=1296 fr=FinishReason.STOP $0.0134 searches=0
+  v20|B|q3|gemini-4-argon|S1|3 ok out=1429 fr=FinishReason.STOP $0.0147 searches=0
+  v20|B|q4|gemini-4-argon|S1|3 ok out=1088 fr=FinishReason.STOP $0.0393 searches=2
+  v20|B|q5|gemini-4-argon|S1|3 ok out=1066 fr=FinishReason.STOP $0.0111 searches=0
+  v20|B|q6|gemini-4-argon|S1|3 ok out=1147 fr=FinishReason.STOP $0.0119 searches=0
+  v21|B|q1|gemini-4-argon|S1|3 ok out=1132 fr=FinishReason.STOP $0.0118 searches=0
+  v21|B|q2|gemini-4-argon|S1|3 ok out=1066 fr=FinishReason.STOP $0.0111 searches=0
+  v21|B|q3|gemini-4-argon|S1|3 ok out=1437 fr=FinishReason.STOP $0.0148 searches=0
+  v21|B|q4|gemini-4-argon|S1|3 ok out=994 fr=FinishReason.STOP $0.0384 searches=2
+  v21|B|q5|gemini-4-argon|S1|3 ok out=1262 fr=FinishReason.STOP $0.0131 searches=0
+  v21|B|q6|gemini-4-argon|S1|3 ok out=1141 fr=FinishReason.STOP $0.0119 searches=0
+  v22|B|q1|gemini-4-argon|S1|3 ok out=1164 fr=FinishReason.STOP $0.0121 searches=0
+  v22|B|q2|gemini-4-argon|S1|3 ok out=1174 fr=FinishReason.STOP $0.0402 searches=2
+  v22|B|q3|gemini-4-argon|S1|3 ok out=1409 fr=FinishReason.STOP $0.0146 searches=0
+  v22|B|q4|gemini-4-argon|S1|3 ok out=1047 fr=FinishReason.STOP $0.0109 searches=0
+  v22|B|q5|gemini-4-argon|S1|3 ok out=978 fr=FinishReason.STOP $0.0102 searches=0
+  v22|B|q6|gemini-4-argon|S1|3 ok out=1375 fr=FinishReason.STOP $0.0142 searches=0
+  v23|B|EA-1|gemini-4-argon|S1|3 ok out=2221 fr=FinishReason.STOP $0.0228 searches=0
+  v23|B|EA-2|gemini-4-argon|S1|3 ok out=2064 fr=FinishReason.STOP $0.0632 searches=3
+  v23|B|EA-3|gemini-4-argon|S1|3 ok out=2077 fr=FinishReason.STOP $0.0213 searches=0
+  v23|B|CC-1|gemini-4-argon|S1|3 ok out=2030 fr=FinishReason.STOP $0.0208 searches=0
+  v23|B|CC-2|gemini-4-argon|S1|3 ok out=1846 fr=FinishReason.STOP $0.0190 searches=0
+  v23|B|CC-3|gemini-4-argon|S1|3 ok out=2039 fr=FinishReason.STOP $0.0209 searches=0
+result: done {'actual_calls_usd': 67.4551, 'judge_reserve_usd': 0.5, 'spent_usd': 67.9551, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
