@@ -1,0 +1,1485 @@
+{
+ "phase": "AIAS 6.0 Preview",
+ "title": "AIAS™ 6.0 Preview (provisional)",
+ "prereg_tag": "aias-6-0-preview-prereg-r1",
+ "created_utc": "2026-11-12T02:08:01+00:00",
+ "validation_status_line": "Presence is the published AIAS component and Consistency its second (AIAS 2.0). Ranking, Sentiment, Coverage and Grounding are provisional: the profile shows each with the state of its first test; none has completed its validation.",
+ "refs": {
+  "v0.42": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba"
+  },
+  "v1.11": {
+   "ref": "v111-scored",
+   "commit": "213b4f61cd438f018b2277ceba4e23eba16f49d1"
+  }
+ },
+ "MQ_Lock": {
+  "ok": null,
+  "why": [
+   "not checked: synthetic test run"
+  ]
+ },
+ "pins": "all pinned values match",
+ "MQ_Join": {
+  "expected_units": 112,
+  "tables": {
+   "v0.42 brand table": {
+    "rows": 112,
+    "unique": 112,
+    "duplicates": [],
+    "missing": [],
+    "extra": [],
+    "one_to_one": true
+   },
+   "AIAS 2.0 profiles (t3)": {
+    "rows": 112,
+    "unique": 112,
+    "duplicates": [],
+    "missing": [],
+    "extra": [],
+    "one_to_one": true
+   },
+   "v1.11 Stage J scores (F, t3)": {
+    "rows": 102,
+    "duplicates": [],
+    "extra": [],
+    "units_not_listed": 10,
+    "ok": true
+   }
+  }
+ },
+ "MQ_Parity_comparators": {
+  "status": "not applicable: no v1.14 Stage 1 output"
+ },
+ "cross_records": {},
+ "activation": {},
+ "MQ_Blind": {
+  "ok": true,
+  "tag_date": "2026-11-11T18:00:00-06:00",
+  "early": [],
+  "late_inputs": [],
+  "rule": "no halt: the Preview's own tests on a late input are exploratory; a DEVIATIONS entry records it and Pablo is told"
+ },
+ "MQ_Panel": {
+  "ok": true,
+  "dropped_S0": []
+ },
+ "gate_states": {
+  "R": "NOT_RUN",
+  "S": "NOT_RUN",
+  "Cov": "NOT_RUN",
+  "G": "NOT_RUN"
+ },
+ "labels": {
+  "P": {
+   "label": "published AIAS component",
+   "bridge": "continues the published series"
+  },
+  "C": {
+   "label": "AIAS 2.0 component",
+   "bridge": "partly continues the published series"
+  },
+  "R": {
+   "state": "NOT_RUN",
+   "label": "pending",
+   "shown_in_profile": false,
+   "band": null
+  },
+  "S": {
+   "state": "NOT_RUN",
+   "label": "pending",
+   "shown_in_profile": false,
+   "band": null,
+   "note": "legacy panel; not on the Preview panel (section 3.4) unless S_t4 is locked and scored"
+  },
+  "Cov": {
+   "state": "NOT_RUN",
+   "label": "pending",
+   "shown_in_profile": false,
+   "band": null
+  },
+  "G": {
+   "state": "NOT_RUN",
+   "label": "pending",
+   "shown_in_profile": false,
+   "band": null
+  }
+ },
+ "K": [
+  "P",
+  "C"
+ ],
+ "structure": {
+  "phase": "AIAS 6.0 Preview",
+  "prereg_tag": "aias-6-0-preview-prereg-r1",
+  "K": [
+   "P",
+   "C"
+  ],
+  "gate_states": {
+   "P": "PASS",
+   "C": "PASS",
+   "R": "NOT_RUN",
+   "S": "NOT_RUN",
+   "Cov": "NOT_RUN",
+   "G": "NOT_RUN"
+  },
+  "labels": {
+   "R": "pending",
+   "S": "pending",
+   "Cov": "pending",
+   "G": "pending"
+  },
+  "S_tests": {
+   "PxC": {
+    "pair": [
+     "P",
+     "C"
+    ],
+    "rho": 0.09363772487490023,
+    "n": 61,
+    "categories": 5,
+    "p_perm": 0.4925373134328358,
+    "perm_seed": 600001,
+    "ci90": [
+     -0.15831055277962983,
+     0.3216904012054876
+    ],
+    "verdict": "CONFIRMED",
+    "source": "Preview"
+   }
+  },
+  "H_PC_N3": "CONFIRMED",
+  "U_K": {
+   "n": 61,
+   "units": [
+    [
+     "v0.19",
+     "B01"
+    ],
+    [
+     "v0.19",
+     "B04"
+    ],
+    [
+     "v0.19",
+     "B05"
+    ],
+    [
+     "v0.19",
+     "B08"
+    ],
+    [
+     "v0.19",
+     "B09"
+    ],
+    [
+     "v0.19",
+     "B10"
+    ],
+    [
+     "v0.19",
+     "B11"
+    ],
+    [
+     "v0.19",
+     "B13"
+    ],
+    [
+     "v0.19",
+     "Denon"
+    ],
+    [
+     "v0.20",
+     "B01"
+    ],
+    [
+     "v0.20",
+     "B03"
+    ],
+    [
+     "v0.20",
+     "B04"
+    ],
+    [
+     "v0.20",
+     "B06"
+    ],
+    [
+     "v0.20",
+     "B07"
+    ],
+    [
+     "v0.20",
+     "B10"
+    ],
+    [
+     "v0.20",
+     "B11"
+    ],
+    [
+     "v0.20",
+     "B12"
+    ],
+    [
+     "v0.20",
+     "B13"
+    ],
+    [
+     "v0.20",
+     "B14"
+    ],
+    [
+     "v0.20",
+     "B15"
+    ],
+    [
+     "v0.20",
+     "B16"
+    ],
+    [
+     "v0.20",
+     "B19"
+    ],
+    [
+     "v0.20",
+     "B20"
+    ],
+    [
+     "v0.20",
+     "B21"
+    ],
+    [
+     "v0.20",
+     "B23"
+    ],
+    [
+     "v0.21",
+     "B01"
+    ],
+    [
+     "v0.21",
+     "B02"
+    ],
+    [
+     "v0.21",
+     "B07"
+    ],
+    [
+     "v0.21",
+     "B10"
+    ],
+    [
+     "v0.21",
+     "B11"
+    ],
+    [
+     "v0.21",
+     "B12"
+    ],
+    [
+     "v0.21",
+     "B13"
+    ],
+    [
+     "v0.21",
+     "B14"
+    ],
+    [
+     "v0.21",
+     "B15"
+    ],
+    [
+     "v0.21",
+     "B17"
+    ],
+    [
+     "v0.21",
+     "B22"
+    ],
+    [
+     "v0.22",
+     "B06"
+    ],
+    [
+     "v0.22",
+     "B07"
+    ],
+    [
+     "v0.22",
+     "B08"
+    ],
+    [
+     "v0.22",
+     "B09"
+    ],
+    [
+     "v0.22",
+     "B14"
+    ],
+    [
+     "v0.22",
+     "B15"
+    ],
+    [
+     "v0.22",
+     "B16"
+    ],
+    [
+     "v0.22",
+     "B21"
+    ],
+    [
+     "v0.22",
+     "B22"
+    ],
+    [
+     "v0.22",
+     "B23"
+    ],
+    [
+     "v0.22",
+     "Plymouth"
+    ],
+    [
+     "v0.22",
+     "Pontiac"
+    ],
+    [
+     "v0.23",
+     "B01"
+    ],
+    [
+     "v0.23",
+     "B03"
+    ],
+    [
+     "v0.23",
+     "B05"
+    ],
+    [
+     "v0.23",
+     "B06"
+    ],
+    [
+     "v0.23",
+     "B07"
+    ],
+    [
+     "v0.23",
+     "B09"
+    ],
+    [
+     "v0.23",
+     "B11"
+    ],
+    [
+     "v0.23",
+     "B13"
+    ],
+    [
+     "v0.23",
+     "B14"
+    ],
+    [
+     "v0.23",
+     "B15"
+    ],
+    [
+     "v0.23",
+     "B17"
+    ],
+    [
+     "v0.23",
+     "B20"
+    ],
+    [
+     "v0.23",
+     "B23"
+    ]
+   ]
+  },
+  "I_tests": {
+   "C": {
+    "target": "C",
+    "predecessors": [
+     "P"
+    ],
+    "n": 61,
+    "categories": 5,
+    "R2": 0.008768023519747481,
+    "R2_adj": -0.009254376052620694,
+    "R_adj": 0.0,
+    "p_perm": 0.5223880597014925,
+    "perm_seed": 600021,
+    "verdict": "CONFIRMED"
+   }
+  },
+  "status": {
+   "P": "DISTINCT",
+   "C": "DISTINCT"
+  },
+  "H_Structure": {
+   "verdict": "UNDETERMINED",
+   "k": 2,
+   "d": 2,
+   "u": 0,
+   "by_status": {
+    "DISTINCT": [
+     "P",
+     "C"
+    ],
+    "PARTLY DISTINCT": [],
+    "NOT DISTINCT": [],
+    "UNDETERMINED": []
+   }
+  },
+  "wording_class": "U",
+  "descriptive_marginal_pairs": {},
+  "composite_check": {
+   "rho_A_P": 0.6319838056680162,
+   "K2_passes": true,
+   "K3_dA": -0.6276289682539655,
+   "K3_dP_plus_5": 4.3723710317460345,
+   "K3_passes": true,
+   "n_low": 8,
+   "n_never": 7,
+   "adopted": false,
+   "floor_set": {
+    "n": 61,
+    "rho_A_P": 0.8131736526946107,
+    "K2_passes": true
+   },
+   "variance_shares_U_K": {
+    "P": 0.6762233236700985,
+    "C": 0.3237766763299014
+   },
+   "K1_passes": true,
+   "H_Structure": "UNDETERMINED",
+   "H_PC_N3": "CONFIRMED"
+  }
+ },
+ "printed_beside": {
+  "R*xG*": null
+ },
+ "descriptives": {
+  "D1_distributions": {
+   "P": {
+    "all": {
+     "n_rated": 112,
+     "median": 43.06975555555555,
+     "q25": 31.64153888888889,
+     "q75": 53.086638888888885,
+     "iqr": 21.445099999999996,
+     "min": 11.55591111111111,
+     "max": 73.2092,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 16,
+      "median": 37.75264444444444,
+      "q25": 30.201888888888888,
+      "q75": 49.12138333333333,
+      "iqr": 18.91949444444444,
+      "min": 11.55591111111111,
+      "max": 63.814933333333336,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 24,
+      "median": 45.51334444444444,
+      "q25": 32.59568888888889,
+      "q75": 56.28002222222222,
+      "iqr": 23.684333333333335,
+      "min": 16.029911111111108,
+      "max": 73.2092,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 24,
+      "median": 44.44058888888888,
+      "q25": 35.162505555555555,
+      "q75": 54.538399999999996,
+      "iqr": 19.37589444444444,
+      "min": 23.199822222222224,
+      "max": 71.89653333333332,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 24,
+      "median": 45.3666,
+      "q25": 35.65537777777778,
+      "q75": 53.52763888888889,
+      "iqr": 17.872261111111108,
+      "min": 22.601311111111112,
+      "max": 67.22046666666665,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 24,
+      "median": 38.617599999999996,
+      "q25": 26.897794444444443,
+      "q75": 47.529016666666664,
+      "iqr": 20.63122222222222,
+      "min": 18.777044444444442,
+      "max": 68.85506666666667,
+      "units": 24
+     }
+    }
+   },
+   "C": {
+    "all": {
+     "n_rated": 61,
+     "median": 86.32657777777779,
+     "q25": 78.88702222222223,
+     "q75": 93.88082222222222,
+     "iqr": 14.993799999999993,
+     "min": 67.88406666666667,
+     "max": 100.0,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 9,
+      "median": 85.49785555555556,
+      "q25": 83.73105555555556,
+      "q75": 92.8712888888889,
+      "iqr": 9.140233333333342,
+      "min": 74.7718111111111,
+      "max": 100.0,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 16,
+      "median": 85.53384444444444,
+      "q25": 78.30180833333334,
+      "q75": 96.16934722222223,
+      "iqr": 17.867538888888888,
+      "min": 69.13013333333333,
+      "max": 100.0,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 11,
+      "median": 90.19763333333333,
+      "q25": 80.90396666666666,
+      "q75": 96.19890555555554,
+      "iqr": 15.294938888888879,
+      "min": 71.29184444444444,
+      "max": 97.71302222222222,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 12,
+      "median": 84.12083333333334,
+      "q25": 78.86498333333333,
+      "q75": 90.75336666666666,
+      "iqr": 11.888383333333337,
+      "min": 76.99688888888889,
+      "max": 93.88082222222222,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 13,
+      "median": 91.27444444444444,
+      "q25": 72.95143333333334,
+      "q75": 95.14351111111111,
+      "iqr": 22.19207777777777,
+      "min": 67.88406666666667,
+      "max": 100.0,
+      "units": 24
+     }
+    }
+   },
+   "R": {
+    "all": {
+     "n_rated": 0,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 0,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 0,
+      "units": 24
+     }
+    }
+   },
+   "S": {
+    "all": {
+     "n_rated": 0,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 0,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 0,
+      "units": 24
+     }
+    }
+   },
+   "Cov": {
+    "all": {
+     "n_rated": 0,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 0,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 0,
+      "units": 24
+     }
+    }
+   },
+   "G": {
+    "all": {
+     "n_rated": 0,
+     "units": 112
+    },
+    "by_category": {
+     "v0.19": {
+      "n_rated": 0,
+      "units": 16
+     },
+     "v0.20": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.21": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.22": {
+      "n_rated": 0,
+      "units": 24
+     },
+     "v0.23": {
+      "n_rated": 0,
+      "units": 24
+     }
+    }
+   }
+  },
+  "D2_rho_matrix": {
+   "pairwise_complete": {
+    "PxC": {
+     "rho": 0.09363772487490023,
+     "n": 61,
+     "categories": 5,
+     "ci90": [
+      -0.15831055277962983,
+      0.3216904012054876
+     ],
+     "below_n_floor": false
+    }
+   },
+   "on_U_K": {
+    "PxC": {
+     "rho": 0.09363772487490023,
+     "n": 61,
+     "categories": 5,
+     "ci90": [
+      -0.15831055277962983,
+      0.3216904012054876
+     ],
+     "below_n_floor": false
+    }
+   }
+  },
+  "D3_dimensions": {
+   "members": [
+    "P",
+    "C"
+   ],
+   "n_U_K": 61,
+   "categories": 5,
+   "eigenvalues": [
+    1.0936377248749,
+    0.9063622751250997
+   ],
+   "participation_ratio": 1.982616373010805,
+   "parallel_analysis": {
+    "draws": 100,
+    "seed": 600040,
+    "null_mean": [
+     1.1146341839526182,
+     0.8853658160473814
+    ],
+    "null_p95": [
+     1.2570235499450786,
+     0.9882352602080252
+    ],
+    "n_above_null_p95": 0
+   }
+  },
+  "D4_profile_table": {
+   "file": "profile_aias_6_0_preview.csv",
+   "rows": 112
+  },
+  "D5_bridge": {
+   "label": "legacy six-model panel t3 (AIAS 2.0) against N3 t4; printed beside, never pooled",
+   "rho_P": {
+    "rho": -0.057692307692307696,
+    "n": 112,
+    "categories": 5,
+    "below_n_floor": false,
+    "ci90": [
+     -0.230581808029022,
+     0.11469453189469374
+    ]
+   },
+   "rho_C_star": {
+    "rho": 0.04433551330755755,
+    "n": 17,
+    "categories": 2,
+    "below_n_floor": true,
+    "ci90": [
+     -0.47095855826820293,
+     0.5295787309079681
+    ]
+   },
+   "P_level_shift": {
+    "mean_t4_minus_t3": -3.9138715049603183,
+    "n": 112,
+    "ci90": [
+     -7.43957203219246,
+     -0.25542840873016137
+    ],
+    "bootstrap_draws": 200,
+    "seed": 600030
+   },
+   "C_star_level": "not compared: phi_max = 9 on N3 against 7.2 on the legacy panel (section 3.2)"
+  },
+  "D6_retest": {
+   "R": {
+    "status": "v1.14 Stage 2 output not available"
+   },
+   "P": {
+    "status": "t5 values not supplied (t5 is not yet pre-registered; section 11.3)"
+   },
+   "C": {
+    "status": "t5 values not supplied (t5 is not yet pre-registered; section 11.3)"
+   },
+   "G": {
+    "status": "t5 values not supplied (t5 is not yet pre-registered; section 11.3)"
+   },
+   "Cov": {
+    "status": "none unless Coverage is re-asked under its Paper B (section 10, D6)"
+   },
+   "S": {
+    "status": "none: no judge call on t5 answers (section 11.3)"
+   }
+  },
+  "D7_search_on_profile": {
+   "parts": {
+    "P": "P_S1",
+    "C": "C*_S1",
+    "R": "R*_S1",
+    "G": "G* (S1)"
+   },
+   "matrix": {
+    "PxC": {
+     "rho": 0.1122715404699739,
+     "n": 51,
+     "categories": 5,
+     "ci90": [
+      -0.16370759883648692,
+      0.38114672320259396
+     ],
+     "below_n_floor": false
+    },
+    "PxR": {
+     "rho": null,
+     "n": 0,
+     "categories": 0,
+     "ci90": [
+      null,
+      null
+     ],
+     "below_n_floor": true
+    },
+    "PxG": {
+     "rho": null,
+     "n": 0,
+     "categories": 0,
+     "ci90": [
+      null,
+      null
+     ],
+     "below_n_floor": true
+    },
+    "CxR": {
+     "rho": null,
+     "n": 0,
+     "categories": 0,
+     "ci90": [
+      null,
+      null
+     ],
+     "below_n_floor": true
+    },
+    "CxG": {
+     "rho": null,
+     "n": 0,
+     "categories": 0,
+     "ci90": [
+      null,
+      null
+     ],
+     "below_n_floor": true
+    },
+    "RxG": {
+     "rho": null,
+     "n": 0,
+     "categories": 0,
+     "ci90": [
+      null,
+      null
+     ],
+     "below_n_floor": true
+    }
+   }
+  },
+  "D8_composite_check": {
+   "rho_A_P": 0.6319838056680162,
+   "K2_passes": true,
+   "K3_dA": -0.6276289682539655,
+   "K3_dP_plus_5": 4.3723710317460345,
+   "K3_passes": true,
+   "n_low": 8,
+   "n_never": 7,
+   "adopted": false,
+   "floor_set": {
+    "n": 61,
+    "rho_A_P": 0.8131736526946107,
+    "K2_passes": true
+   },
+   "variance_shares_U_K": {
+    "P": 0.6762233236700985,
+    "C": 0.3237766763299014
+   },
+   "K1_passes": true,
+   "H_Structure": "UNDETERMINED",
+   "H_PC_N3": "CONFIRMED"
+  },
+  "D9_coverage": {
+   "rated_parts_per_unit": {
+    "K": {
+     "v0.19": {
+      "2": 9,
+      "1": 7
+     },
+     "v0.20": {
+      "2": 16,
+      "1": 8
+     },
+     "v0.21": {
+      "2": 11,
+      "1": 13
+     },
+     "v0.22": {
+      "1": 12,
+      "2": 12
+     },
+     "v0.23": {
+      "1": 11,
+      "2": 13
+     }
+    },
+    "K_and_MARGINAL": {
+     "v0.19": {
+      "2": 9,
+      "1": 7
+     },
+     "v0.20": {
+      "2": 16,
+      "1": 8
+     },
+     "v0.21": {
+      "2": 11,
+      "1": 13
+     },
+     "v0.22": {
+      "1": 12,
+      "2": 12
+     },
+     "v0.23": {
+      "1": 11,
+      "2": 13
+     }
+    },
+    "by_registry_cell": {
+     "v0.20|A": {
+      "1": 4,
+      "2": 4
+     },
+     "v0.20|B": {
+      "2": 5,
+      "1": 3
+     },
+     "v0.20|C": {
+      "2": 7,
+      "1": 1
+     },
+     "v0.21|A": {
+      "2": 4,
+      "1": 4
+     },
+     "v0.21|B": {
+      "1": 6,
+      "2": 2
+     },
+     "v0.21|C": {
+      "2": 5,
+      "1": 3
+     },
+     "v0.22|A": {
+      "1": 4,
+      "2": 3
+     },
+     "v0.22|B": {
+      "2": 4,
+      "1": 2
+     },
+     "v0.22|C": {
+      "2": 3,
+      "1": 3
+     },
+     "v0.22|D": {
+      "1": 3,
+      "2": 2
+     }
+    }
+   },
+   "U_K": {
+    "v0.19": [
+     "B01",
+     "B04",
+     "B05",
+     "B08",
+     "B09",
+     "B10",
+     "B11",
+     "B13",
+     "Denon"
+    ],
+    "v0.20": [
+     "B01",
+     "B03",
+     "B04",
+     "B06",
+     "B07",
+     "B10",
+     "B11",
+     "B12",
+     "B13",
+     "B14",
+     "B15",
+     "B16",
+     "B19",
+     "B20",
+     "B21",
+     "B23"
+    ],
+    "v0.21": [
+     "B01",
+     "B02",
+     "B07",
+     "B10",
+     "B11",
+     "B12",
+     "B13",
+     "B14",
+     "B15",
+     "B17",
+     "B22"
+    ],
+    "v0.22": [
+     "B06",
+     "B07",
+     "B08",
+     "B09",
+     "B14",
+     "B15",
+     "B16",
+     "B21",
+     "B22",
+     "B23",
+     "Plymouth",
+     "Pontiac"
+    ],
+    "v0.23": [
+     "B01",
+     "B03",
+     "B05",
+     "B06",
+     "B07",
+     "B09",
+     "B11",
+     "B13",
+     "B14",
+     "B15",
+     "B17",
+     "B20",
+     "B23"
+    ]
+   },
+   "six_part_set": "k < 6",
+   "rated_share_by_presence_tercile": {
+    "P": {
+     "low": 1.0,
+     "middle": 1.0,
+     "high": 1.0
+    },
+    "C": {
+     "low": 0.5945945945945946,
+     "middle": 0.47368421052631576,
+     "high": 0.5675675675675675
+    },
+    "R": {
+     "low": 0.0,
+     "middle": 0.0,
+     "high": 0.0
+    },
+    "S": {
+     "low": 0.0,
+     "middle": 0.0,
+     "high": 0.0
+    },
+    "Cov": {
+     "low": 0.0,
+     "middle": 0.0,
+     "high": 0.0
+    },
+    "G": {
+     "low": 0.0,
+     "middle": 0.0,
+     "high": 0.0
+    }
+   },
+   "U_K_against_all": {
+    "P": {
+     "U_K": {
+      "n_rated": 61,
+      "median": 38.584844444444435,
+      "q25": 31.01075555555555,
+      "q75": 52.436955555555556,
+      "iqr": 21.426200000000005,
+      "min": 11.55591111111111,
+      "max": 73.2092
+     },
+     "all": {
+      "n_rated": 112,
+      "median": 43.06975555555555,
+      "q25": 31.64153888888889,
+      "q75": 53.086638888888885,
+      "iqr": 21.445099999999996,
+      "min": 11.55591111111111,
+      "max": 73.2092
+     }
+    },
+    "mentions_N3_S0": {
+     "U_K": {
+      "n_rated": 61,
+      "median": 10.0,
+      "q25": 8.0,
+      "q75": 12.0,
+      "iqr": 4.0,
+      "min": 6.0,
+      "max": 16.0
+     },
+     "all": {
+      "n_rated": 112,
+      "median": 8.0,
+      "q25": 4.0,
+      "q75": 11.0,
+      "iqr": 7.0,
+      "min": 0.0,
+      "max": 18.0
+     }
+    }
+   },
+   "reported_apart": {
+    "v0.19|Denon": {
+     "flags": [
+      "COI-flagged unit (Declarations; sensitivity SA)"
+     ],
+     "in_U_K": true,
+     "scores": {
+      "P": 48.71779999999999,
+      "C": 83.73105555555556,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.20|Rare Beauty": {
+     "flags": [
+      "Rare Beauty (two units, v0.20 and v0.21)"
+     ],
+     "in_U_K": false,
+     "scores": {
+      "P": 58.467022222222226,
+      "C": null,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.21|Rare Beauty": {
+     "flags": [
+      "Rare Beauty (two units, v0.20 and v0.21)"
+     ],
+     "in_U_K": false,
+     "scores": {
+      "P": 40.48973333333333,
+      "C": null,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.22|Mercury": {
+     "flags": [
+      "v0.22 Defunct cell (G* not rated by rule)"
+     ],
+     "in_U_K": false,
+     "scores": {
+      "P": 56.79968888888888,
+      "C": null,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.22|Oldsmobile": {
+     "flags": [
+      "v0.22 Defunct cell (G* not rated by rule)"
+     ],
+     "in_U_K": false,
+     "scores": {
+      "P": 49.490355555555546,
+      "C": null,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.22|Plymouth": {
+     "flags": [
+      "v0.22 Defunct cell (G* not rated by rule)"
+     ],
+     "in_U_K": true,
+     "scores": {
+      "P": 56.803666666666665,
+      "C": 86.23851111111111,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.22|Pontiac": {
+     "flags": [
+      "v0.22 Defunct cell (G* not rated by rule)"
+     ],
+     "in_U_K": true,
+     "scores": {
+      "P": 22.601311111111112,
+      "C": 79.42213333333333,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    },
+    "v0.22|Saturn": {
+     "flags": [
+      "v0.22 Defunct cell (G* not rated by rule)"
+     ],
+     "in_U_K": false,
+     "scores": {
+      "P": 29.080488888888883,
+      "C": null,
+      "R": null,
+      "S": null,
+      "Cov": null,
+      "G": null
+     }
+    }
+   },
+   "parts_by_panel": {
+    "legacy six-model panel, t1-t3": [
+     "P",
+     "C*",
+     "v1.10's Ranking statistic (MNP; Paper A MARGINAL)",
+     "v1.11's Sentiment S"
+    ],
+    "N3, t4 week": [
+     "P",
+     "C*",
+     "R*",
+     "S (only if S_t4 is locked and scored)",
+     "Cov*",
+     "G*"
+    ]
+   }
+  }
+ },
+ "sensitivities": {
+  "SA_without_coi_unit": {
+   "H_Structure": "UNDETERMINED",
+   "H_PC_N3": "CONFIRMED",
+   "status": {
+    "P": "DISTINCT",
+    "C": "DISTINCT"
+   },
+   "S_tests": {
+    "PxC": [
+     0.10797578524128962,
+     "CONFIRMED"
+    ]
+   }
+  },
+  "SB_uncentred": {
+   "H_Structure": "UNDETERMINED",
+   "H_PC_N3": "CONFIRMED",
+   "status": {
+    "P": "DISTINCT",
+    "C": "DISTINCT"
+   },
+   "S_tests": {
+    "PxC": [
+     0.1766781705695333,
+     "CONFIRMED"
+    ]
+   }
+  },
+  "SC_leave_one_category_out": {
+   "v0.19": {
+    "H_Structure": "UNDETERMINED",
+    "H_PC_N3": "CONFIRMED",
+    "status": {
+     "P": "DISTINCT",
+     "C": "DISTINCT"
+    },
+    "S_tests": {
+     "PxC": [
+      0.11772355056824886,
+      "CONFIRMED"
+     ]
+    }
+   },
+   "v0.20": {
+    "H_Structure": "UNDETERMINED",
+    "H_PC_N3": "CONFIRMED",
+    "status": {
+     "P": "DISTINCT",
+     "C": "DISTINCT"
+    },
+    "S_tests": {
+     "PxC": [
+      0.14372499083155368,
+      "CONFIRMED"
+     ]
+    }
+   },
+   "v0.21": {
+    "H_Structure": "UNDETERMINED",
+    "H_PC_N3": "CONFIRMED",
+    "status": {
+     "P": "DISTINCT",
+     "C": "DISTINCT"
+    },
+    "S_tests": {
+     "PxC": [
+      0.08160473822915638,
+      "CONFIRMED"
+     ]
+    }
+   },
+   "v0.22": {
+    "H_Structure": "UNDETERMINED",
+    "H_PC_N3": "CONFIRMED",
+    "status": {
+     "P": "DISTINCT",
+     "C": "DISTINCT"
+    },
+    "S_tests": {
+     "PxC": [
+      0.044927724964584456,
+      "CONFIRMED"
+     ]
+    }
+   },
+   "v0.23": {
+    "H_Structure": "UNDETERMINED",
+    "H_PC_N3": "CONFIRMED",
+    "status": {
+     "P": "DISTINCT",
+     "C": "DISTINCT"
+    },
+    "S_tests": {
+     "PxC": [
+      0.09202464811516974,
+      "CONFIRMED"
+     ]
+    }
+   }
+  },
+  "SD_S_tests_on_U_K": {
+   "n_U_K": 61,
+   "S_tests": {
+    "PxC": [
+     0.09363772487490023,
+     61,
+     "CONFIRMED"
+    ]
+   }
+  },
+  "SE_without_Sentiment": {
+   "status": "not applicable: Sentiment is not in K"
+  },
+  "SF_Ranking_by_MNP": {
+   "status": "not applicable: v1.14's rank table not read"
+  },
+  "SG_Sentiment_legacy_panel": {
+   "H_Structure": "CONFIRMED",
+   "H_PC_N3": "CONFIRMED",
+   "status": {
+    "P": "DISTINCT",
+    "C": "DISTINCT",
+    "S": "DISTINCT"
+   },
+   "S_tests": {
+    "PxC": [
+     0.09363772487490023,
+     "CONFIRMED"
+    ],
+    "PxS": [
+     0.1251833088921477,
+     "CONFIRMED"
+    ],
+    "CxS": [
+     0.020408222088119283,
+     "CONFIRMED"
+    ]
+   },
+   "state_of_Sentiment": "PASS_AI_JUDGED",
+   "label": "cross-panel (legacy six-model panel, t3); descriptive"
+  },
+  "SH_search_on_variants": {
+   "H_Structure": "UNDETERMINED",
+   "H_PC_N3": "CONFIRMED",
+   "status": {
+    "P": "DISTINCT",
+    "C": "DISTINCT"
+   },
+   "S_tests": {
+    "PxC": [
+     0.1122715404699739,
+     "CONFIRMED"
+    ]
+   }
+  },
+  "verdict_changes": [
+   {
+    "sensitivity": "SG_Sentiment_legacy_panel",
+    "test": "H_Structure",
+    "primary": "UNDETERMINED",
+    "under_sensitivity": "CONFIRMED"
+   },
+   {
+    "sensitivity": "SG_Sentiment_legacy_panel",
+    "test": "status S",
+    "primary": null,
+    "under_sensitivity": "DISTINCT"
+   }
+  ]
+ },
+ "seeds": {
+  "S_tests": {
+   "P|C": 600001,
+   "P|R": 600002,
+   "C|R": 600003,
+   "P|S": 600004,
+   "C|S": 600005,
+   "R|S": 600006,
+   "P|Cov": 600007,
+   "C|Cov": 600008,
+   "R|Cov": 600009,
+   "S|Cov": 600010,
+   "P|G": 600011,
+   "C|G": 600012,
+   "R|G": 600013,
+   "S|G": 600014,
+   "Cov|G": 600015
+  },
+  "I_tests": {
+   "C": 600021,
+   "R": 600022,
+   "S": 600023,
+   "Cov": 600024,
+   "G": 600025
+  },
+  "bootstrap": 600030,
+  "parallel_analysis": 600040
+ },
+ "draws": {
+  "permutation": 200,
+  "bootstrap": 200,
+  "parallel_analysis": 100
+ },
+ "synthetic_fixture": "SYNTHETIC TEST DATA - NOT RESULTS (papers/aias_6_0_preview/tests/make_scenarios_aias6.py, scenario not_run)"
+}

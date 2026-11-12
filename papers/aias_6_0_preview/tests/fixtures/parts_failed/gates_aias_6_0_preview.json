@@ -1,0 +1,70 @@
+{
+ "phase": "AIAS 6.0 Preview",
+ "title": "AIAS™ 6.0 Preview (provisional)",
+ "created_utc": "2026-11-12T02:07:53+00:00",
+ "gate_states": {
+  "R": "FAIL",
+  "S": "FAIL",
+  "Cov": "MARGINAL",
+  "G": "UNDETERMINED"
+ },
+ "K": [
+  "P",
+  "C"
+ ],
+ "labels": {
+  "P": {
+   "label": "published AIAS component",
+   "bridge": "new series on the newest models; not comparable with published values"
+  },
+  "C": {
+   "label": "AIAS 2.0 component",
+   "bridge": "bridge not determined (section 4.3)"
+  },
+  "R": {
+   "state": "FAIL",
+   "label": null,
+   "shown_in_profile": false,
+   "band": null
+  },
+  "S": {
+   "state": "FAIL",
+   "label": null,
+   "shown_in_profile": false,
+   "band": null
+  },
+  "Cov": {
+   "state": "MARGINAL",
+   "label": "under review",
+   "shown_in_profile": false,
+   "band": "under review (below the profile)"
+  },
+  "G": {
+   "state": "UNDETERMINED",
+   "label": "not determined",
+   "shown_in_profile": false,
+   "band": null
+  }
+ },
+ "MQ_Panel": {
+  "ok": true,
+  "dropped_S0": []
+ },
+ "H_Gen_Presence": "FALSIFIED",
+ "H_Gen_Phi": "UNDETERMINED",
+ "v1.14": {
+  "STAGE1_VERDICT": "FAIL",
+  "GATE": null
+ },
+ "v1.12_GATE": "MARGINAL",
+ "v1.13_GATE": "UNDETERMINED",
+ "v1.11_H1_H5": {
+  "H1_Judge_Agreement": "CONFIRMED",
+  "H2_Sep_Presence": "FALSIFIED",
+  "H3_Sep_Consistency": "CONFIRMED",
+  "H4_Stability_Short": "CONFIRMED",
+  "H5_Sep_Ranking": "PENDING"
+ },
+ "S_t4": true,
+ "synthetic_fixture": "SYNTHETIC TEST DATA - NOT RESULTS (papers/aias_6_0_preview/tests/make_scenarios_aias6.py, scenario parts_failed)"
+}

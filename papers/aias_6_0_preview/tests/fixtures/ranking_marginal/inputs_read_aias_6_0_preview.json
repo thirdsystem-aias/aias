@@ -1,0 +1,191 @@
+{
+ "phase": "AIAS 6.0 Preview",
+ "created_utc": "2026-11-12T02:07:00+00:00",
+ "inputs_read": {
+  "v0.42-acquisition-locked:osf/v42/data/t4_raw.jsonl": {
+   "ref": "v0.42-acquisition-locked",
+   "commit": "b1c7e621110ad9f659f410ac839b54ca241f9b71",
+   "path": "osf/v42/data/t4_raw.jsonl",
+   "git_blob": "6863e99499f0145fcfde4df2774602a000e31546",
+   "sha256": "35d40daa0b6a046b065294904f17a6524c8c2985906893137d545520efe4096d",
+   "bytes": 98184
+  },
+  "v0.42-scoring-locked:osf/v42/v42_brand_table.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/v42_brand_table.csv",
+   "git_blob": "dd3ddf1639ecea604ffc482a635708fabbb6e197",
+   "sha256": "60ae370ff551cc598eb21974a85044d0afaec6f1093010fd813fa374c650ab3f",
+   "bytes": 6581
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_a.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v19_phase_a.csv",
+   "git_blob": "3e66d1be7bfdb25b510f1b148598f715efc8b9e6",
+   "sha256": "827fa198bca930ba310ffa3e9ca6fc90e53f834935163e6c93f1272f0e427310",
+   "bytes": 2867
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_b.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v19_phase_b.csv",
+   "git_blob": "902f72f2bd6bcff865831fe6f57bd537b8b8db40",
+   "sha256": "5454592051c69386b6c4badedd00bae546a3096c6a9623a252eb8c66738ecfcf",
+   "bytes": 35454
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_a.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v20_phase_a.csv",
+   "git_blob": "5e1d23909fb80b929c09a7233ddfb242318c97a8",
+   "sha256": "69c1a830d4e48d4647cf56d9c40e67f6cb5e8e3d83ff721c943ce5480b52c296",
+   "bytes": 4303
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_b.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v20_phase_b.csv",
+   "git_blob": "2a9e824268b82c037c96e28e55042723426a6f62",
+   "sha256": "5f338d695b9333f3f17e9c7aed787fb74da1443df27fd7765240ae17f08e3ad3",
+   "bytes": 53334
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_a.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v21_phase_a.csv",
+   "git_blob": "b57a349fa03c409604591e61e781c4c015ad45e7",
+   "sha256": "345703a0928c7df0e6db35775b4ba3d1278155453ea4179ba8db4d2feab20de7",
+   "bytes": 4303
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_b.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v21_phase_b.csv",
+   "git_blob": "ad8d3e5113ba8577ebe5f030b1b6232565e62a2c",
+   "sha256": "d823861279b60b1bf8209d293869d8b787d97743fe8e7da732c67c647694b544",
+   "bytes": 53334
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_a.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v22_phase_a.csv",
+   "git_blob": "66acd2cf41ba1061d5be6000971b32b9e8f0e4ca",
+   "sha256": "895f58547f9b1f41202e10af1abd299e52bc8fcd38fe02ab691dc5a07a8716fa",
+   "bytes": 4393
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_b.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v22_phase_b.csv",
+   "git_blob": "463d4d31dd415458bb69bf2d0362d1f75993ae32",
+   "sha256": "15cb8106eedd4267f4e242cf3aed7608d79461384d52e4157cf85f325731b297",
+   "bytes": 53874
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_a.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v23_phase_a.csv",
+   "git_blob": "be1c233ce2cbf3e660373db13d8d10bea9759794",
+   "sha256": "17493c88b024a8d3bae06d448b391c685c1216f6d2cd740b74a5a1721c835ad6",
+   "bytes": 4255
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_b.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/data/coded/v23_phase_b.csv",
+   "git_blob": "027c0853e2f0f9ac45e343ac031780fe1016586a",
+   "sha256": "44ed5426667b05d21ae60936023b6799a506d6416bb704f1da8b7059c1517928",
+   "bytes": 53046
+  },
+  "v0.42-scoring-locked:osf/v42/v42_verdicts.json": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v42/v42_verdicts.json",
+   "git_blob": "e0f80b7e9c324c2f3bf49f31d716dda63ece4f96",
+   "sha256": "08135167b51afaaae17541b970cd23b4393d33e4025c5391d64a4f5d735661e3",
+   "bytes": 147
+  },
+  "v0.42-scoring-locked:osf/v41/v41_three_wave_table.csv": {
+   "ref": "v0.42-scoring-locked",
+   "commit": "021e5fe3ec04df490bbdb30497fd8e192ca1b7ba",
+   "path": "osf/v41/v41_three_wave_table.csv",
+   "git_blob": "0a49e9e7f6b0fc9df2149f1f70ccf6cb7eca77ac",
+   "sha256": "3c4e22d64c2e5771d01d2b36740d2b4b57f47cfa7d2be9c7befa3e51cdedc8dd",
+   "bytes": 1707
+  },
+  "scenario-overlay:osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
+   "git_blob": "26fe2760e029ad29b770ac920b56909c5cb32d34",
+   "sha256": "a95852ba098840551921c9eb632126eb1ed565fde76dd9750ae4fe91b4e6979a",
+   "bytes": 25269
+  },
+  "scenario-overlay:osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv",
+   "git_blob": "0ada705cb5b0677e9a1371edb915913bc77c5894",
+   "sha256": "33d65730252c30d944a37aeb951ca9eda02cc1b5d42b81e944f2a04455f67b08",
+   "bytes": 30441
+  },
+  "scenario-overlay:osf/methodology/v1_12/v112_verdicts.json": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_12/v112_verdicts.json",
+   "git_blob": "4c33b607b1219771ea2c7d30ee00cedba3a1f0fc",
+   "sha256": "a76a0ef677157d5df45b57ae457a261a78eda5fa1e0cb24f1caceddd62d1466a",
+   "bytes": 834
+  },
+  "scenario-overlay:osf/methodology/v1_12/v112_unit_table.csv": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_12/v112_unit_table.csv",
+   "git_blob": "de91cf9e0474a2ed7a540f5349d2ddd4e3122f21",
+   "sha256": "b3236dd1ebe9b265461572d8f4342586dae98790437d5da9875ae0d7343d78c3",
+   "bytes": 4876
+  },
+  "scenario-overlay:osf/methodology/v1_13/v1_13_verdicts.json": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_13/v1_13_verdicts.json",
+   "git_blob": "0cc6018724b0fb7f4d7bc99f59897a6830653b8e",
+   "sha256": "84313f8ccdd7644a5922ff8c7333773b1aedf340c4718d8d79205d95f38f7b1f",
+   "bytes": 7193
+  },
+  "scenario-overlay:osf/methodology/v1_13/registries/brand_domains_v1_13.csv": {
+   "ref": "scenario-overlay",
+   "commit": "3118a63c400777df465e33906f42cbeada513cd9",
+   "path": "osf/methodology/v1_13/registries/brand_domains_v1_13.csv",
+   "git_blob": "c155147f17113985e4505b5bdf7514085933a837",
+   "sha256": "e6e564fc51cdb3c5afb7dee7976f8b8e6a26c3680aa6590b908f872cae6e5860",
+   "bytes": 3128
+  },
+  "v111-scored:osf/methodology/v1_11/outputs/v1_11_verdicts.json": {
+   "ref": "v111-scored",
+   "commit": "7fd5330ae1807a1ba8d59c3753fbac5a1ec12434",
+   "path": "osf/methodology/v1_11/outputs/v1_11_verdicts.json",
+   "git_blob": "68d32eb9b576c7c2e8dff6e1aad81a9d65762d40",
+   "sha256": "e0ffc6b7cc0ee9371c2ff6b97038a84a19e22509934a9c67f997c3cc6d60527c",
+   "bytes": 306
+  },
+  "v111-scored:osf/methodology/v1_11/outputs/stage_j_v1_11.json": {
+   "ref": "v111-scored",
+   "commit": "7fd5330ae1807a1ba8d59c3753fbac5a1ec12434",
+   "path": "osf/methodology/v1_11/outputs/stage_j_v1_11.json",
+   "git_blob": "206e5d7ba0c3be9d8dbdd914a548f3e8ec087cbd",
+   "sha256": "376530298e1fbcd8ea9401d5b2bed944ef62f0fb01b45393757dd702f3823c14",
+   "bytes": 6155
+  },
+  "aias-2-0-data-locked:osf/aias_2_0/aias_2_0_profiles.csv": {
+   "ref": "aias-2-0-data-locked",
+   "commit": "b1595ab2a1587a31a4ad4853fa95a7b9a20b502e",
+   "path": "osf/aias_2_0/aias_2_0_profiles.csv",
+   "git_blob": "16786fb621cf4004c011501d962a16901ca25c6e",
+   "sha256": "96ac67425b29236ec81554bd16f4298ca034ec72c0be7fdc5945fb6ae70b798c",
+   "bytes": 10329
+  }
+ },
+ "synthetic_fixture": "SYNTHETIC TEST DATA - NOT RESULTS (papers/aias_6_0_preview/tests/make_scenarios_aias6.py, scenario ranking_marginal)"
+}

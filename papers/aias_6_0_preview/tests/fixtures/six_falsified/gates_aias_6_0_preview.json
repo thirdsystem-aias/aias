@@ -1,0 +1,74 @@
+{
+ "phase": "AIAS 6.0 Preview",
+ "title": "AIAS™ 6.0 Preview (provisional)",
+ "created_utc": "2026-11-12T02:07:18+00:00",
+ "gate_states": {
+  "R": "PASS",
+  "S": "PASS_AI_JUDGED",
+  "Cov": "PASS",
+  "G": "PASS"
+ },
+ "K": [
+  "P",
+  "C",
+  "R",
+  "S",
+  "Cov",
+  "G"
+ ],
+ "labels": {
+  "P": {
+   "label": "published AIAS component",
+   "bridge": "continues the published series"
+  },
+  "C": {
+   "label": "AIAS 2.0 component",
+   "bridge": "partly continues the published series"
+  },
+  "R": {
+   "state": "PASS",
+   "label": "provisional",
+   "shown_in_profile": true,
+   "band": null
+  },
+  "S": {
+   "state": "PASS_AI_JUDGED",
+   "label": "provisional; AI-judged, human-label check pending",
+   "shown_in_profile": true,
+   "band": null
+  },
+  "Cov": {
+   "state": "PASS",
+   "label": "provisional",
+   "shown_in_profile": true,
+   "band": null
+  },
+  "G": {
+   "state": "PASS",
+   "label": "provisional",
+   "shown_in_profile": true,
+   "band": null
+  }
+ },
+ "MQ_Panel": {
+  "ok": true,
+  "dropped_S0": []
+ },
+ "H_Gen_Presence": "CONFIRMED",
+ "H_Gen_Phi": "MARGINAL",
+ "v1.14": {
+  "STAGE1_VERDICT": "SEPARABLE (Stage 2 pending)",
+  "GATE": "PASS"
+ },
+ "v1.12_GATE": "PASS",
+ "v1.13_GATE": "PASS",
+ "v1.11_H1_H5": {
+  "H1_Judge_Agreement": "CONFIRMED",
+  "H2_Sep_Presence": "CONFIRMED",
+  "H3_Sep_Consistency": "CONFIRMED",
+  "H4_Stability_Short": "CONFIRMED",
+  "H5_Sep_Ranking": "PENDING"
+ },
+ "S_t4": true,
+ "synthetic_fixture": "SYNTHETIC TEST DATA - NOT RESULTS (papers/aias_6_0_preview/tests/make_scenarios_aias6.py, scenario six_falsified)"
+}
