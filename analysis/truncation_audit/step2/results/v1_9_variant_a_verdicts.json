@@ -1,0 +1,100 @@
+{
+  "SENSITIVITY_ONLY": "not a replacement of osf/methodology/v1_9/v1_9_verdicts.json",
+  "keep_by_substrate": {
+    "v0.19": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.20": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.21": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.22": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.23": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash-lite"
+    ]
+  },
+  "parity_gates_all_passed": true,
+  "verdicts": {
+    "H_Presence_Score_Reliability": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.9565126599001678,
+      "p_perm": 9.999000099990002e-05,
+      "n": 112
+    },
+    "H_Dissociation_t3": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.24166782795510322,
+      "n": 54
+    },
+    "H_Consistency_Reliability": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.642873355370954,
+      "n": 52,
+      "frame_structure_null": {
+        "p_frame": 0.016798320167983202,
+        "null_mean": 0.4544087439803841,
+        "null_p95": 0.6018940505755016,
+        "draws": 10000,
+        "seed": 190020
+      }
+    },
+    "H_NoComposite_t3": {
+      "tier": "SECONDARY (descriptive)",
+      "verdict": "DESCRIPTIVE",
+      "rho_A_P": 0.976691856251457,
+      "n": 112,
+      "k2_line": 0.95
+    }
+  },
+  "constraints_t3": {
+    "K1": {
+      "rho": 0.24166782795510322,
+      "n": 54,
+      "pass": true
+    },
+    "K2": {
+      "rho": 0.976691856251457,
+      "n": 112,
+      "pass": false
+    },
+    "K3": {
+      "dA": 6.1653895274584904,
+      "dP": 6.1653895274584904,
+      "pass": true,
+      "n_low": 16,
+      "n_zero": 29
+    },
+    "share_C_not_rated": 0.5178571428571429
+  },
+  "mode": "a"
+}

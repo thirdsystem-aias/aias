@@ -1,0 +1,204 @@
+{
+  "SENSITIVITY_ONLY": "not a replacement of osf/aias_2_0/aias_2_0_synthesis_data.json",
+  "mode": "baseline",
+  "keep_by_substrate": {
+    "v0.19": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.20": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.21": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.22": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v0.23": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ]
+  },
+  "v41_file": "/Users/pablou/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json",
+  "v19_file": "/Users/pablou/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json",
+  "summaries": {
+    "t1": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 48.726851851851855,
+          "mean_C_rated": 59.21938635914272
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 10,
+          "share_rated": 0.4166666666666667,
+          "mean_P": 45.833333333333336,
+          "mean_C_rated": 88.72561615590908
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 50.7716049382716,
+          "mean_C_rated": 83.23343780791843
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 49.84567901234568,
+          "mean_C_rated": 94.58201787414414
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 41.82098765432099,
+          "mean_C_rated": 77.77107637644036
+        }
+      },
+      "n_units": 112,
+      "n_rated": 55,
+      "share_not_rated": 0.5089285714285714,
+      "rho_Cstar_P": 0.07293925573105668,
+      "rho_Cstar_P_n": 55,
+      "rho_A_P_descriptive": 0.971220479242514,
+      "rho_A_P_n": 112
+    },
+    "t2": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 47.22222222222222,
+          "mean_C_rated": 63.92420893062382
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 45.29320987654321,
+          "mean_C_rated": 90.7543766761707
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 51.388888888888886,
+          "mean_C_rated": 79.89436226691694
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 50.077160493827165,
+          "mean_C_rated": 94.11410782454006
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 41.28086419753087,
+          "mean_C_rated": 78.97168989186869
+        }
+      },
+      "n_units": 112,
+      "n_rated": 54,
+      "share_not_rated": 0.5178571428571429,
+      "rho_Cstar_P": 0.08153268408519941,
+      "rho_Cstar_P_n": 54,
+      "rho_A_P_descriptive": 0.9749692326190192,
+      "rho_A_P_n": 112
+    },
+    "t3": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 46.99074074074074,
+          "mean_C_rated": 64.78204665704665
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 46.45061728395061,
+          "mean_C_rated": 88.50210097817583
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 13,
+          "share_rated": 0.5416666666666666,
+          "mean_P": 49.922839506172835,
+          "mean_C_rated": 77.4021070335173
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 49.151234567901234,
+          "mean_C_rated": 93.08817051059349
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 10,
+          "share_rated": 0.4166666666666667,
+          "mean_P": 41.2037037037037,
+          "mean_C_rated": 74.50871659204992
+        }
+      },
+      "n_units": 112,
+      "n_rated": 54,
+      "share_not_rated": 0.5178571428571429,
+      "rho_Cstar_P": 0.18949782059932604,
+      "rho_Cstar_P_n": 54,
+      "rho_A_P_descriptive": 0.969272869350446,
+      "rho_A_P_n": 112
+    }
+  },
+  "descriptive_retest_t2_t3": {
+    "C_star": [
+      0.6473238536507431,
+      52
+    ],
+    "P": [
+      0.9542888066830918,
+      112
+    ]
+  },
+  "rho_Cstar_P_t3_matches_v19": true,
+  "class": {
+    "class": "A",
+    "flags": [],
+    "why": "H_Dissociation_t3 CONFIRMED, H_Consistency_Reliability CONFIRMED"
+  }
+}

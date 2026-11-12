@@ -1,0 +1,68 @@
+{
+  "phase": "v1.9",
+  "stage": "2 (confirmation, t2 -> t3)",
+  "prereg_tag": "v1.9-prereg-r1",
+  "locked_outcome": "no single composite; C* = C_phi+FLOOR",
+  "panel_used": [
+    "claude-opus-4-5",
+    "claude-sonnet-4-5",
+    "gpt-4o",
+    "gpt-4o-mini",
+    "gemini-2.5-flash-lite"
+  ],
+  "verdicts": {
+    "H_Presence_Score_Reliability": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.9542888066830918,
+      "p_perm": 9.999000099990002e-05,
+      "n": 112
+    },
+    "H_Dissociation_t3": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.18949782059932604,
+      "n": 54
+    },
+    "H_Consistency_Reliability": {
+      "tier": "PRIMARY",
+      "verdict": "CONFIRMED",
+      "rho": 0.6473238536507431,
+      "n": 52,
+      "frame_structure_null": {
+        "p_frame": 0.008099190080991902,
+        "null_mean": 0.43783685713432124,
+        "null_p95": 0.5849157274563637,
+        "draws": 10000,
+        "seed": 190020
+      }
+    },
+    "H_NoComposite_t3": {
+      "tier": "SECONDARY (descriptive)",
+      "verdict": "DESCRIPTIVE",
+      "rho_A_P": 0.969272869350446,
+      "n": 112,
+      "k2_line": 0.95
+    }
+  },
+  "constraints_t3": {
+    "K1": {
+      "rho": 0.18949782059932604,
+      "n": 54,
+      "pass": true
+    },
+    "K2": {
+      "rho": 0.969272869350446,
+      "n": 112,
+      "pass": false
+    },
+    "K3": {
+      "dA": 6.27075351213281,
+      "dP": 6.27075351213281,
+      "pass": true,
+      "n_low": 15,
+      "n_zero": 29
+    },
+    "share_C_not_rated": 0.5178571428571429
+  }
+}

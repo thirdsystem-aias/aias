@@ -1,0 +1,82 @@
+== v0.41 stock --synthetic on byte copy of osf/v41/data vs published (whole file; table)
+IDENTICAL (0 differing leaves)
+IDENTICAL (byte-equal)
+== v0.41 per-substrate wrapper, mode baseline, vs published (verdicts; table)
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (byte-equal)
+== v0.41 wrapper mode b vs stock --synthetic on the Flash-free copy (verdicts; table)
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (byte-equal)
+== v1.9 Stage 2 stock --stage2-synthetic on byte copy vs published (whole file)
+IDENTICAL (0 differing leaves)
+== v1.9 wrapper mode baseline vs published (verdicts; constraints_t3)
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (0 differing leaves) key=constraints_t3
+== v1.9 wrapper mode b vs stock on the Flash-free copy (verdicts; constraints_t3)
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (0 differing leaves) key=constraints_t3
+== AIAS 2.0 builder (test flags, published v0.41 + v1.9 files) vs published: profiles; synthesis json
+IDENTICAL (byte-equal)
+DIFFERENT (26 differing leaves)
+   /built_at_utc | published: 2026-11-10T02:58:55+00:00 | reproduced: 2026-11-12T22:08:43+00:00
+   /inputs_sha256//Users/pablou/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json | published: <absent> | reproduced: 3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d
+   /inputs_sha256//Users/pablou/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json | published: <absent> | reproduced: 0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2
+   /inputs_sha256//sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json | published: 3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d | reproduced: <absent>
+   /inputs_sha256//sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json | published: 0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2 | reproduced: <absent>
+   /stage2/origin/skipped | published: <absent> | reproduced: test mode (--skip-origin)
+   /stage2/origin/v0.41-prereg-r1 | published: {'anchored': True, 'how': 'origin 4e79167c3f02'} | reproduced: <absent>
+   /stage2/origin/v1.9-prereg-r1 | published: {'anchored': True, 'how': 'origin 58c01297b8fb'} | reproduced: <absent>
+   /summaries/t1/per_substrate/v0.20/mean_C_rated | published: 88.72561615590907 | reproduced: 88.72561615590908
+   /summaries/t1/per_substrate/v0.21/mean_C_rated | published: 83.23343780791842 | reproduced: 83.23343780791843
+   /summaries/t1/per_substrate/v0.22/mean_C_rated | published: 94.58201787414416 | reproduced: 94.58201787414414
+   /summaries/t1/per_substrate/v0.22/mean_P | published: 49.84567901234567 | reproduced: 49.84567901234568
+   /summaries/t1/per_substrate/v0.23/mean_P | published: 41.820987654320994 | reproduced: 41.82098765432099
+   /summaries/t2/per_substrate/v0.19/mean_C_rated | published: 63.924208930623834 | reproduced: 63.92420893062382
+   /summaries/t2/per_substrate/v0.19/mean_P | published: 47.22222222222223 | reproduced: 47.22222222222222
+   /summaries/t2/per_substrate/v0.20/mean_C_rated | published: 90.75437667617068 | reproduced: 90.7543766761707
+   /summaries/t2/per_substrate/v0.20/mean_P | published: 45.293209876543216 | reproduced: 45.29320987654321
+   /summaries/t2/per_substrate/v0.21/mean_C_rated | published: 79.89436226691693 | reproduced: 79.89436226691694
+   /summaries/t2/per_substrate/v0.22/mean_C_rated | published: 94.11410782454007 | reproduced: 94.11410782454006
+   /summaries/t2/per_substrate/v0.22/mean_P | published: 50.07716049382716 | reproduced: 50.077160493827165
+   /summaries/t3/per_substrate/v0.19/mean_C_rated | published: 64.78204665704666 | reproduced: 64.78204665704665
+   /summaries/t3/per_substrate/v0.19/mean_P | published: 46.99074074074075 | reproduced: 46.99074074074074
+   /summaries/t3/per_substrate/v0.20/mean_P | published: 46.45061728395063 | reproduced: 46.45061728395061
+   /summaries/t3/per_substrate/v0.21/mean_P | published: 49.92283950617283 | reproduced: 49.922839506172835
+   /summaries/t3/per_substrate/v0.23/mean_C_rated | published: 74.50871659204994 | reproduced: 74.50871659204992
+   /summaries/t3/per_substrate/v0.23/mean_P | published: 41.20370370370371 | reproduced: 41.2037037037037
+DIFFERENT (3 differing leaves) key=stage2
+IDENTICAL (0 differing leaves) key=parity_builder_vs_stage1
+IDENTICAL (0 differing leaves) key=parity_gates_v0_41
+IDENTICAL (0 differing leaves) key=lineage
+IDENTICAL (0 differing leaves) key=spec
+IDENTICAL (0 differing leaves) key=status
+== AIAS 2.0 builder baseline under PYTHONHASHSEED 0/1/2 (summaries identical to each other?)
+IDENTICAL (0 differing leaves) key=summaries
+IDENTICAL (0 differing leaves) key=summaries
+== v0.34 stock score_v34.py under HOME=scratch mirror vs published (whole file)
+IDENTICAL (0 differing leaves)
+== v0.34 wrapper mode baseline vs published (each published key)
+IDENTICAL (0 differing leaves) key=phase
+IDENTICAL (0 differing leaves) key=title
+IDENTICAL (0 differing leaves) key=lock
+IDENTICAL (0 differing leaves) key=seed
+IDENTICAL (0 differing leaves) key=mc_draws
+IDENTICAL (0 differing leaves) key=panel
+IDENTICAL (0 differing leaves) key=n_brand_units
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (0 differing leaves) key=per_substrate
+IDENTICAL (0 differing leaves) key=delta_t
+== v1.8 kernel mode baseline vs frozen v1.8 record (exact; then hash seeds 1/2/3)
+IDENTICAL (0 differing leaves) key=verdicts
+IDENTICAL (0 differing leaves) key=two_wave_reproducibility
+PYTHONHASHSEED=1:
+IDENTICAL (0 differing leaves) key=verdicts
+PYTHONHASHSEED=2:
+DIFFERENT (2 differing leaves) key=verdicts
+   /H_MeanIndependent/stat/pooled/abs_rho | published: 0.09068336683203117 | reproduced: 0.09068336683203118
+   /H_MeanIndependent/stat/pooled/rho | published: 0.09068336683203117 | reproduced: 0.09068336683203118
+PYTHONHASHSEED=3:
+DIFFERENT (2 differing leaves) key=verdicts
+   /H_MeanIndependent/stat/pooled/abs_rho | published: 0.09068336683203117 | reproduced: 0.09068336683203115
+   /H_MeanIndependent/stat/pooled/rho | published: 0.09068336683203117 | reproduced: 0.09068336683203115
+instrument table vs frozen: {'rows': 112, 'problems': [], 'max_abs_diff': 0.0}
