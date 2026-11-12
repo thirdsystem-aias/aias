@@ -1,0 +1,26 @@
+v0.65 dry run (synthetic v0.62-shaped data only; no archive answer read); n_perm = 2000, n_boot = 2000 (the real run uses 10,000 each)
+
+[A portable] seed 650151; joint reading: IL-portable
+  es: H1 n=71 rho_c=0.722 p=0.0005 -> CONFIRMED | H2 n=71 rho_partial=0.093 -> FALSIFIED | H3 delta=+0.0167 CI=[-0.0245, +0.0590] -> FALSIFIED | S-COI H1 n=67 CONFIRMED
+  ko: H1 n=71 rho_c=0.789 p=0.0005 -> CONFIRMED | H2 n=71 rho_partial=-0.009 -> FALSIFIED | H3 delta=-0.0245 CI=[-0.0616, +0.0115] -> FALSIFIED | S-COI H1 n=67 CONFIRMED
+  zh: H1 n=71 rho_c=0.661 p=0.0005 -> CONFIRMED | H2 n=71 rho_partial=0.033 -> FALSIFIED | H3 delta=+0.0031 CI=[-0.0417, +0.0449] -> FALSIFIED | S-COI H1 n=67 CONFIRMED
+
+[B language-bound in KO] seed 650152; joint reading: IL-language-bound (KO)
+  es: H1 n=72 rho_c=0.766 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=0.002 -> FALSIFIED | H3 delta=-0.0350 CI=[-0.0725, +0.0036] -> FALSIFIED | S-COI H1 n=68 CONFIRMED
+  ko: H1 n=72 rho_c=-0.101 p=0.7971 -> FALSIFIED | H2 n=72 rho_partial=-0.015 -> FALSIFIED | H3 delta=+0.0581 CI=[-0.0293, +0.1559] -> MARGINAL | S-COI H1 n=68 FALSIFIED
+  zh: H1 n=72 rho_c=0.740 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=-0.013 -> FALSIFIED | H3 delta=-0.0273 CI=[-0.0653, +0.0123] -> FALSIFIED | S-COI H1 n=68 CONFIRMED
+
+[C cultural shift in ZH] seed 650153; joint reading: IL-portable
+  es: H1 n=72 rho_c=0.790 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=-0.046 -> FALSIFIED | H3 delta=-0.0098 CI=[-0.0453, +0.0257] -> FALSIFIED | S-COI H1 n=68 CONFIRMED
+  ko: H1 n=72 rho_c=0.817 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=0.041 -> FALSIFIED | H3 delta=-0.0170 CI=[-0.0499, +0.0165] -> FALSIFIED | S-COI H1 n=68 CONFIRMED
+  zh: H1 n=72 rho_c=0.818 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=0.239 -> FALSIFIED | H3 delta=+0.1939 CI=[+0.1584, +0.2315] -> CONFIRMED | S-COI H1 n=68 CONFIRMED
+
+[D moderation in ES] seed 650154; joint reading: IL-portable
+  es: H1 n=72 rho_c=0.771 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=-0.822 -> CONFIRMED | H3 delta=-0.0298 CI=[-0.0802, +0.0185] -> MARGINAL | S-COI H1 n=68 CONFIRMED
+  ko: H1 n=71 rho_c=0.850 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=-0.024 -> FALSIFIED | H3 delta=+0.0292 CI=[-0.0089, +0.0699] -> FALSIFIED | S-COI H1 n=67 CONFIRMED
+  zh: H1 n=72 rho_c=0.810 p=0.0005 -> CONFIRMED | H2 n=72 rho_partial=0.155 -> FALSIFIED | H3 delta=+0.0005 CI=[-0.0365, +0.0370] -> FALSIFIED | S-COI H1 n=68 CONFIRMED
+
+[E drop rule in ES] seed 650155; joint reading: Partly portable
+  es: H1 n=71 rho_c=0.676 p=0.0005 -> UNDETERMINED | H2 n=71 rho_partial=-0.065 -> UNDETERMINED | H3 delta=+0.0179 CI=[-0.0280, +0.0601] -> UNDETERMINED | S-COI H1 n=67 UNDETERMINED
+  ko: H1 n=71 rho_c=0.751 p=0.0005 -> CONFIRMED | H2 n=71 rho_partial=0.022 -> FALSIFIED | H3 delta=-0.0177 CI=[-0.0652, +0.0256] -> FALSIFIED | S-COI H1 n=67 CONFIRMED
+  zh: H1 n=71 rho_c=0.776 p=0.0005 -> CONFIRMED | H2 n=71 rho_partial=0.109 -> FALSIFIED | H3 delta=-0.0125 CI=[-0.0490, +0.0261] -> FALSIFIED | S-COI H1 n=67 CONFIRMED

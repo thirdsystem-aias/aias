@@ -1,0 +1,57 @@
+{
+  "n_worlds": 500,
+  "seed": 650161,
+  "H1_by_r": {
+    "0.3": {
+      "FALSIFIED": 0.686,
+      "MARGINAL": 0.306,
+      "CONFIRMED": 0.008,
+      "mean_rho_c": 0.23587448272502226
+    },
+    "0.5": {
+      "MARGINAL": 0.656,
+      "FALSIFIED": 0.198,
+      "CONFIRMED": 0.146,
+      "mean_rho_c": 0.38532988373785787
+    },
+    "0.7": {
+      "CONFIRMED": 0.7,
+      "MARGINAL": 0.278,
+      "FALSIFIED": 0.022,
+      "mean_rho_c": 0.5439296865816786
+    },
+    "0.8": {
+      "CONFIRMED": 0.946,
+      "MARGINAL": 0.054,
+      "mean_rho_c": 0.6357342858089803
+    },
+    "0.9": {
+      "CONFIRMED": 1.0,
+      "mean_rho_c": 0.7318799199162647
+    },
+    "0.95": {
+      "CONFIRMED": 1.0,
+      "mean_rho_c": 0.7707991702477407
+    }
+  },
+  "H3_by_shift_at_r_0.9": {
+    "0.0": {
+      "FALSIFIED": 0.756,
+      "MARGINAL": 0.242,
+      "CONFIRMED": 0.002
+    },
+    "0.25": {
+      "FALSIFIED": 0.3,
+      "MARGINAL": 0.604,
+      "CONFIRMED": 0.096
+    },
+    "0.5": {
+      "CONFIRMED": 0.704,
+      "MARGINAL": 0.286,
+      "FALSIFIED": 0.01
+    },
+    "1.0": {
+      "CONFIRMED": 1.0
+    }
+  }
+}
