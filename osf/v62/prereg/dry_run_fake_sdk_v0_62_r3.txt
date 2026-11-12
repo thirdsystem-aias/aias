@@ -12,6 +12,7 @@
    {
     "stage": "1: --collect",
     "approvals": [],
+    "batches_recovered_first": 0,
     "result": "pause",
     "specs": 1602,
     "raw_lines_written": 280,
@@ -27,26 +28,28 @@
     "approvals": [
      "projection"
     ],
+    "batches_recovered_first": 0,
     "result": "pause",
     "specs": 1602,
-    "raw_lines_written": 420,
+    "raw_lines_written": 419,
     "lines_by_block_kind": {
-     "B": 420
+     "B": 419
     },
-    "spend_usd_after": 81.6776,
-    "halt": "HALT (pause) in block 3: {'actual_calls_usd': 81.6776, 'judge_reserve_usd': 0.0, 'spent_usd': 81.6776, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_u",
-    "halt_reason": "spend $80.10 >= $80"
+    "spend_usd_after": 80.8578,
+    "halt": "HALT (pause) in block 3: {'actual_calls_usd': 80.8578, 'judge_reserve_usd': 0.0, 'spent_usd': 80.8578, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_u",
+    "halt_reason": "spend $80.06 >= $80"
    },
    {
     "stage": "3: --approve-past-80",
     "approvals": [
      "past_80"
     ],
+    "batches_recovered_first": 0,
     "result": "stop",
     "specs": 1602,
-    "raw_lines_written": 62,
+    "raw_lines_written": 63,
     "lines_by_block_kind": {
-     "B": 62
+     "B": 63
     },
     "spend_usd_after": 98.9324,
     "halt": "HALT (stop) in block 3: {'actual_calls_usd': 98.9324, 'judge_reserve_usd': 0.0, 'spent_usd': 98.9324, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_us",
@@ -55,6 +58,7 @@
    {
     "stage": "4: --collect again (re-run pass)",
     "approvals": [],
+    "batches_recovered_first": 0,
     "result": "stop",
     "specs": 1602,
     "raw_lines_written": 0,
@@ -137,6 +141,7 @@
    {
     "stage": "1: --collect",
     "approvals": [],
+    "batches_recovered_first": 0,
     "result": "done",
     "specs": 1602,
     "raw_lines_written": 1626,
@@ -225,8 +230,7 @@
     "yes": 11
    },
    "zh | plain no": {
-    "ambiguous": 10,
-    "no": 1
+    "no": 11
    },
    "zh | plain yes": {
     "yes": 184
@@ -255,6 +259,54 @@
    "yes/no zh: plain no": 11,
    "yes/no zh: plain yes": 184,
    "yes/no zh: preamble": 35
+  }
+ },
+ "scenario_3_stop_mid_batch": {
+  "stopped_mid_batch": true,
+  "raw_lines_before_resume": 450,
+  "open_batches_after_the_stop": [
+   [
+    "msgbatch_fake_018",
+    90
+   ]
+  ],
+  "raw_lines_of_the_open_batch_after_resume": 90,
+  "resume": {
+   "stage": "2: --collect (resume)",
+   "approvals": [],
+   "batches_recovered_first": 1,
+   "result": "done",
+   "specs": 1602,
+   "raw_lines_written": 1176,
+   "lines_by_block_kind": {
+    "B": 360,
+    "A_yn": 816
+   },
+   "spend_usd_after": 36.009,
+   "halt": null,
+   "halt_reason": null
+  },
+  "open_batches_after_resume": 0,
+  "batch_requests_sent_twice (same call, attempt and re-send count)": 0,
+  "calls_with_two_answered_lines": 0,
+  "summary": {
+   "specs": 1602,
+   "raw_lines": 1626,
+   "status": {
+    "ok": 1602,
+    "empty": 12,
+    "error": 12
+   },
+   "unique_calls_ok": 1602,
+   "unique_calls_ok_by_block_kind": {
+    "A_yn": 792,
+    "B": 810
+   },
+   "requests_served_by_fakes": 1669,
+   "independent_bill_usd (Nov prices, requests with usage)": 22.4139,
+   "ledger_spend_from_raw_usd": 36.009,
+   "worst_case_allowances_usd": 13.595,
+   "worst_case_parts": 33
   }
  }
 }

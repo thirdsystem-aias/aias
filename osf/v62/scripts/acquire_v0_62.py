@@ -35,7 +35,14 @@ r3 update (2026-11-12, runner lane v0.62 pre-lock; pre-registrant's decision of 
     counted. Like r3's core, no approval is recorded for leaving blocks out (collection_specs);
   - projection_ratio(): with block 4 only, the central ratio of the design "core + block 4" for the headphones option and
     the month of block 1 (cost_estimate_v0_62_r3.json "projection_core_plus_yn"; option A: Nov 3.0975, Dec 3.0887);
-  - the dry run prints which brand blocks are collected and the cost of that design (design_key()).
+  - the dry run prints which brand blocks are collected and the cost of that design (design_key());
+  - pre-lock correction (coordinator, 2026-11-12): record of Message Batches in flight, ported from v0.42's
+    acquire_v0_42.py (C26 (ii); v0.44 C11 (d) does the same for its requests): every created batch is journaled in
+    osf/v62/data/v62_batches.jsonl before it is polled and marked recorded once its lines are written; at the start of
+    every --collect, recover_batches() fetches and records any batch left in flight by a stopped run (no line written
+    twice, nothing re-sent, its spend counted) before any new request. _journal, open_batches,
+    written_batch_requests, recover_batches and _finish_batch are v0.42's, with v0.62's batch-line writing unchanged
+    (errored/expired requests costed at worst case); make_writer is run_collection's writer.
 
 Output (append-only, one JSON line per attempt, resumable: answered call_ids are skipped): osf/v62/data/v62_raw.jsonl
 Budget state (approvals, window): osf/v62/data/v62_budget_state.json
@@ -62,6 +69,7 @@ import threading
 import time
 from collections import Counter
 from concurrent.futures import ThreadPoolExecutor
+from functools import partial
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
@@ -308,6 +316,7 @@ def _call_with_retry(fn, *args):
 
 CURRENT_DISPATCH = {"anthropic": call_anthropic_current, "openai": call_openai_current, "google": call_google_current}
 BATCH_POLL_SECONDS = 60
+BATCH_LOG = V62 / "data" / "v62_batches.jsonl"   # r3 update: journal of batches created / recorded (v0.42 C26)
 EMPTY_RESENDS = 1          # an empty answer is re-sent once
 DEADLINE_UTC = None        # set by collect(): no request is sent at or after this time (window end / 72 h)
 
@@ -517,10 +526,12 @@ def _batch_message_out(spec, m):
 TRANSIENT_BATCH_ERRORS = ("api_error", "overloaded_error", "rate_limit_error", "timeout_error")
 
 
-def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep):
+def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time.sleep, journal=None):
     """Send `specs` (one model, one block) through the Message Batches API under the budget guard.
     Each attempt is one raw line. Transient errors and expired requests are re-sent up to MAX_ATTEMPTS attempts;
-    an empty answer is re-sent once. Returns 'done' | 'pause' | 'stop'."""
+    an empty answer is re-sent once. With `journal` (r3 update, ported from v0.42 C26 (ii)), every created batch is
+    journaled before it is polled and marked recorded once its lines are written (recover_batches).
+    Returns 'done' | 'pause' | 'stop'."""
     if client is None:
         import anthropic
         client = anthropic.Anthropic()
@@ -549,38 +560,130 @@ def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time
                 write(_record(s, None, "error", f"batch create failed: {type(e).__name__}: {e}"[:500], att, ne > 0,
                               ts_start, _now(), [], {"batch_id": None, "custom_id": cid}))
             return "stop"
-        while True:
-            b = client.messages.batches.retrieve(b.id)
-            if getattr(b, "processing_status", None) == "ended":
-                break
-            sleep(poll)
-        ts_end = getattr(b, "ended_at", None)
-        ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
-        results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
-        retry, spent = [], 0.0
-        for cid, (s, att, ne) in ids.items():
-            res = results.get(cid)
-            rtype = getattr(res, "type", "missing")
-            extra = {"batch_id": b.id, "custom_id": cid}
-            if rtype == "succeeded":
-                out, parts = _batch_message_out(s, res.message)
-                empty = not out["text"].strip()
-                rec = _record(s, out, "empty" if empty else "ok", None, att, ne > 0, ts_start, ts_end, parts, extra)
-                if empty and ne < EMPTY_RESENDS:
-                    retry.append((s, att + 1, ne + 1))
-            else:
-                err = getattr(res, "error", None)
-                etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
-                rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
-                              ts_start, ts_end, _worst_parts(1, "batch", s["condition"], f"batch {rtype}"), extra)
-                transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
-                if transient and att < MAX_ATTEMPTS:
-                    retry.append((s, att + 1, ne))
-            write(rec)
-            spent += rec["cost_usd"]
+        _journal(journal, {"event": "created", "batch_id": b.id, "utc": ts_start,
+                           "requests": [{"custom_id": cid, "call_id": s["call_id"], "attempt": att, "empty_resends": ne}
+                                        for cid, (s, att, ne) in ids.items()]})
+        retry, spent = _finish_batch(b.id, ids, client, write, ts_start, poll, sleep)
         ledger.settle(tok, spent)
+        _journal(journal, {"event": "recorded", "batch_id": b.id, "utc": _now()})
         pending = retry + pending
     return "done"
+
+
+def _finish_batch(batch_id, ids, client, write, ts_start, poll, sleep):
+    """Poll one batch until it ends, then write one raw line per request in `ids` (r3 update: the loop body of r3's
+    run_anthropic_batch, unchanged, moved here so that recover_batches writes exactly the same lines).
+    -> (retry list, USD written)."""
+    while True:
+        b = client.messages.batches.retrieve(batch_id)
+        if getattr(b, "processing_status", None) == "ended":
+            break
+        sleep(poll)
+    ts_end = getattr(b, "ended_at", None)
+    ts_end = ts_end.isoformat() if hasattr(ts_end, "isoformat") else (ts_end or _now())
+    results = {r.custom_id: r.result for r in client.messages.batches.results(b.id)}
+    retry, spent = [], 0.0
+    for cid, (s, att, ne) in ids.items():
+        res = results.get(cid)
+        rtype = getattr(res, "type", "missing")
+        extra = {"batch_id": b.id, "custom_id": cid}
+        if rtype == "succeeded":
+            out, parts = _batch_message_out(s, res.message)
+            empty = not out["text"].strip()
+            rec = _record(s, out, "empty" if empty else "ok", None, att, ne > 0, ts_start, ts_end, parts, extra)
+            if empty and ne < EMPTY_RESENDS:
+                retry.append((s, att + 1, ne + 1))
+        else:
+            err = getattr(res, "error", None)
+            etype = getattr(getattr(err, "error", err), "type", None) if err is not None else None
+            rec = _record(s, None, "error", f"batch result {rtype}" + (f": {etype}" if etype else ""), att, ne > 0,
+                          ts_start, ts_end, _worst_parts(1, "batch", s["condition"], f"batch {rtype}"), extra)
+            transient = rtype == "expired" or (rtype == "errored" and etype in TRANSIENT_BATCH_ERRORS)
+            if transient and att < MAX_ATTEMPTS:
+                retry.append((s, att + 1, ne))
+        write(rec)
+        spent += rec["cost_usd"]
+    return retry, spent
+
+
+# ---- r3 update: record of Message Batches in flight, ported from osf/v42/scripts/acquire_v0_42.py (C26 (ii)) ----
+def _journal(path, event):
+    if path is None:
+        return
+    Path(path).parent.mkdir(parents=True, exist_ok=True)
+    with open(path, "a", encoding="utf-8") as f:
+        f.write(json.dumps(event, ensure_ascii=False) + "\n")
+        f.flush()
+        os.fsync(f.fileno())
+
+
+def open_batches(path):
+    """Batches the journal records as created but not as recorded (a run stopped while they were in flight)."""
+    created, recorded = {}, set()
+    if path is not None and Path(path).exists():
+        for line in Path(path).read_text(encoding="utf-8").splitlines():
+            try:
+                ev = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if ev.get("event") == "created":
+                created[ev["batch_id"]] = ev
+            elif ev.get("event") == "recorded":
+                recorded.add(ev["batch_id"])
+    return [ev for bid, ev in created.items() if bid not in recorded]
+
+
+def written_batch_requests(raw_path):
+    """(batch_id, custom_id) of every raw line already written (so a recovered batch never writes a line twice)."""
+    out = set()
+    if raw_path is not None and Path(raw_path).exists():
+        for line in Path(raw_path).read_text(encoding="utf-8").splitlines():
+            try:
+                r = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            if r.get("batch_id"):
+                out.add((r["batch_id"], r.get("custom_id")))
+    return out
+
+
+def recover_batches(specs, ledger, write, journal, raw_path, client=None, poll=None, sleep=time.sleep, log=print):
+    """Before any new request: every batch the journal shows as created but not recorded (the run that created it
+    stopped while it was in flight) is polled until it ends and its results are written and costed exactly as
+    run_anthropic_batch writes them; lines already written for it are not written again. Re-sends of its failed or
+    empty requests are left to the collection pass (the call is not done). Returns the number of batches recovered."""
+    todo = open_batches(journal)
+    if not todo:
+        return 0
+    if client is None:
+        import anthropic
+        client = anthropic.Anthropic()
+    poll = BATCH_POLL_SECONDS if poll is None else poll
+    by_id = {s["call_id"]: s for s in specs}
+    seen = written_batch_requests(raw_path)
+    for ev in todo:
+        ids = {r["custom_id"]: (by_id[r["call_id"]], r["attempt"], r["empty_resends"]) for r in ev["requests"]
+               if (ev["batch_id"], r["custom_id"]) not in seen}
+        log(f"recovering batch {ev['batch_id']} (created {ev['utc']}): {len(ids)} of {len(ev['requests'])} results to record")
+        _, spent = _finish_batch(ev["batch_id"], ids, client, write, ev["utc"], poll, sleep)
+        ledger.settle(None, spent)
+        _journal(journal, {"event": "recorded", "batch_id": ev["batch_id"], "utc": _now(), "recovered": True})
+    return len(todo)
+
+
+def make_writer(raw_path, log=print):
+    """Append-only raw writer (one JSON line per attempt, flushed and fsynced), as run_collection writes."""
+    lock = threading.Lock()
+
+    def write(rec):
+        with lock:
+            with open(raw_path, "a", encoding="utf-8") as f:
+                f.write(json.dumps(rec, ensure_ascii=False) + "\n")
+                f.flush()
+                os.fsync(f.fileno())
+        log(f"  {rec['call_id']} {rec['status']} out={rec.get('output_tokens')} fr={rec.get('finish_reason')} "
+            f"${rec['cost_usd']:.4f}")
+    return write
 
 
 def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
@@ -940,9 +1043,14 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_
             ledger.approve(kind, note)
     record_window(dates, deviation_entry)
     specs = collection_specs(ledger)
+    RAW_PATH.parent.mkdir(parents=True, exist_ok=True)
+    n = recover_batches(build_specs(load_probes()), ledger, make_writer(RAW_PATH), BATCH_LOG, RAW_PATH)
+    if n:                                          # r3 update (v0.42 C26 (ii)): before any new request
+        print(f"recovered {n} batch(es) left in flight by an earlier run; budget {ledger.summary()}")
     print(f"{len(specs)} specs (headphones option {P.HEADPHONES_OPTION}), {len(done_ids())} already done; "
           f"budget {ledger.summary()}")
-    st = run_collection(specs, ledger, RAW_PATH, {"batch": run_anthropic_batch, "standard": run_sync},
+    st = run_collection(specs, ledger, RAW_PATH, {"batch": partial(run_anthropic_batch, journal=BATCH_LOG),
+                                                  "standard": run_sync},
                         projection_ratio(when_utc=first_call_utc() or datetime.now(timezone.utc)))
     print("result:", st, ledger.summary())
     return {"done": 0, "pause": 5, "stop": 6}[st]

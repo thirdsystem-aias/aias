@@ -45,7 +45,8 @@ PARSE = {"v20": R20.parse_yes_no, "v21": R21.parse_yes_no, "v22": R22.parse_yes_
 NOSLEEP = (lambda *_: None)
 A.time.sleep = NOSLEEP
 A.PAUSE = collections.defaultdict(float)
-RUNNERS = {"batch": lambda s, l, w: A.run_anthropic_batch(s, l, w, poll=0, sleep=NOSLEEP),
+JOURNAL = {"path": None}       # pre-lock correction: the batch journal, as --collect uses it (set per scenario)
+RUNNERS = {"batch": lambda s, l, w: A.run_anthropic_batch(s, l, w, poll=0, sleep=NOSLEEP, journal=JOURNAL["path"]),
            "standard": lambda s, l, w: A.run_sync(s, l, w, sleep=NOSLEEP)}
 TEXT = {"es": "Las mejores: Sennheiser, Audio-Technica y Sony; también Hennessy.",
         "ko": "추천: 젠하이저의 HD 800 S, 오디오 테크니카, 소니. 코스메틱은 아님.",
@@ -145,10 +146,14 @@ def stage(raw, state, approvals, label):
         ledger.approve(k, note)
     specs = A.collection_specs(ledger)
     n0, logs = len(lines(raw)), []
+    JOURNAL["path"] = raw.parent / "batches.jsonl"
+    recovered = A.recover_batches(A.build_specs(A.load_probes()), ledger, A.make_writer(raw, log=logs.append),
+                                  JOURNAL["path"], raw, poll=0, sleep=NOSLEEP, log=logs.append)
     st = A.run_collection(specs, ledger, raw, RUNNERS, RATIO, log=logs.append)
     new = lines(raw)[n0:]
     halt = [x for x in logs if x.startswith(("HALT", "PAUSE"))]
-    return {"stage": label, "approvals": [k for k, _ in approvals], "result": st, "specs": len(specs),
+    return {"stage": label, "approvals": [k for k, _ in approvals], "batches_recovered_first": recovered,
+            "result": st, "specs": len(specs),
             "raw_lines_written": len(new), "lines_by_block_kind": dict(collections.Counter(A.kind_of(r) for r in new)),
             "spend_usd_after": round(ledger.spent(), 4), "halt": halt[-1][:160] if halt else None,
             "halt_reason": ledger.halt_reason}
@@ -221,6 +226,42 @@ def main():
             "fable_block4_batches": len({r["batch_id"] for r in fable_b4}),
             "fable_block4_requests_per_batch": sorted(collections.Counter(r["batch_id"] for r in fable_b4).values(), reverse=True),
             "yes_no_coding": yes_no_coding(raw, case_of), "adversarial_cases": dict(sorted(cases.items()))}
+    with tempfile.TemporaryDirectory() as d:     # scenario 3 (pre-lock correction): the process stops mid-batch
+        raw, state = Path(d) / "raw.jsonl", Path(d) / "state.json"
+        journal = raw.parent / "batches.jsonl"
+        specs = A.collection_specs(BG.Ledger(raw, state, judge_reserve=0.0))
+        plan(specs, adversarial_b=False)
+        import anthropic
+        bat = anthropic.Anthropic().messages.batches
+        real, hit = bat.retrieve, {"n": 0}
+
+        def stopped(bid):
+            hit["n"] += 1
+            if hit["n"] == 2:                    # Claude Fable 5.2's block-2 batch is in flight when the run stops
+                raise KeyboardInterrupt("dry run: process stopped while a batch was in flight")
+            return real(bid)
+        bat.retrieve = stopped
+        try:
+            stage(raw, state, [], "1: --collect (stopped mid-batch)")
+            stopped_mid_batch = False
+        except KeyboardInterrupt:
+            stopped_mid_batch = True
+        bat.retrieve = real
+        open_ev = A.open_batches(journal)
+        lines_before = len(lines(raw))
+        resume = stage(raw, state, [], "2: --collect (resume)")
+        recs = lines(raw)
+        created = [json.loads(x) for x in journal.read_text(encoding="utf-8").splitlines() if '"created"' in x]
+        sent = collections.Counter((q["call_id"], q["attempt"], q["empty_resends"]) for e in created for q in e["requests"])
+        out["scenario_3_stop_mid_batch"] = {
+            "stopped_mid_batch": stopped_mid_batch, "raw_lines_before_resume": lines_before,
+            "open_batches_after_the_stop": [(e["batch_id"], len(e["requests"])) for e in open_ev],
+            "raw_lines_of_the_open_batch_after_resume": sum(1 for r in recs if open_ev and r.get("batch_id") == open_ev[0]["batch_id"]),
+            "resume": resume, "open_batches_after_resume": len(A.open_batches(journal)),
+            "batch_requests_sent_twice (same call, attempt and re-send count)": sum(1 for v in sent.values() if v > 1),
+            "calls_with_two_answered_lines": sum(1 for v in collections.Counter(r["call_id"] for r in recs
+                                                                              if r["status"] == "ok").values() if v > 1),
+            "summary": summary(raw, specs)}
     return out
 
 

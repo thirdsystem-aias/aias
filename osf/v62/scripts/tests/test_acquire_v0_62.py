@@ -580,6 +580,104 @@ class R3UpdateYesNoBlockLast(unittest.TestCase):
         self.assertIn("not counted: block 5 is not collected", text)
 
 
+def _fable_msg():
+    return types.SimpleNamespace(content=[types.SimpleNamespace(type="text", text="Sí.", citations=None)],
+                                 usage=types.SimpleNamespace(input_tokens=100, output_tokens=1000),
+                                 model="claude-fable-5-2", stop_reason="end_turn")
+
+
+class FakeBatchClient:
+    """Local fake of the Message Batches API (no network): every request succeeds with 100 / 1,000 tokens."""
+
+    def __init__(self):
+        self.n_created, self.store = 0, {}
+        self.batches = types.SimpleNamespace(create=self._create, retrieve=self._retrieve, results=self._results)
+        self.messages = types.SimpleNamespace(batches=self.batches)
+
+    def _create(self, requests):
+        self.n_created += 1
+        bid = f"batch_{self.n_created}"
+        self.store[bid] = [r["custom_id"] for r in requests]
+        return types.SimpleNamespace(id=bid, processing_status="in_progress")
+
+    def _retrieve(self, bid):
+        return types.SimpleNamespace(id=bid, processing_status="ended", ended_at=None)
+
+    def _results(self, bid):
+        return [types.SimpleNamespace(custom_id=c, result=types.SimpleNamespace(type="succeeded", message=_fable_msg()))
+                for c in self.store[bid]]
+
+
+class PreLockBatchJournal(unittest.TestCase):
+    """Pre-lock correction (coordinator, 2026-11-12): record of Message Batches in flight, ported from v0.42's
+    acquire_v0_42.py (C26 (ii)) and its tests (test_interrupted_batch_is_recovered_once_and_costed,
+    test_journal_marks_normal_batches_recorded): a stop mid-batch can neither re-send nor leave spend unrecorded."""
+
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.addCleanup(self.tmp.cleanup)
+        self.raw, self.journal = Path(self.tmp.name) / "raw.jsonl", Path(self.tmp.name) / "batches.jsonl"
+        self.write = A.make_writer(self.raw, log=lambda *a: None)
+
+    def ledger(self):
+        return BG.Ledger(self.raw, Path(self.tmp.name) / "s.json", judge_reserve=0.0)
+
+    def written(self):
+        return [json.loads(x) for x in self.raw.read_text(encoding="utf-8").splitlines()] if self.raw.exists() else []
+
+    def specs(self, n):
+        return [s for s in A.build_specs(A.load_probes()) if s["model"]["mode"] == "batch"][:n]
+
+    def test_journal_marks_normal_batches_recorded(self):
+        st = A.run_anthropic_batch(self.specs(2), self.ledger(), self.write, client=FakeBatchClient(), poll=0,
+                                   sleep=lambda s: None, journal=self.journal)
+        self.assertEqual(st, "done")
+        self.assertEqual([json.loads(x)["event"] for x in self.journal.read_text().splitlines()], ["created", "recorded"])
+        self.assertEqual(A.open_batches(self.journal), [])
+        self.assertEqual(len(self.written()), 2)
+
+    def test_interrupted_batch_is_recovered_once_and_costed(self):
+        client = FakeBatchClient()
+        real_retrieve = client.batches.retrieve
+
+        def killed(bid):
+            raise KeyboardInterrupt("run stopped while the batch was in flight")
+        client.batches.retrieve = killed
+        specs = self.specs(3)
+        with self.assertRaises(KeyboardInterrupt):
+            A.run_anthropic_batch(specs, self.ledger(), self.write, client=client, poll=0, sleep=lambda s: None,
+                                  journal=self.journal)
+        self.assertEqual(self.written(), [])                            # billed, nothing recorded yet
+        self.assertEqual([e["batch_id"] for e in A.open_batches(self.journal)], ["batch_1"])
+        # a line of the batch already written before the stop is not written again
+        client.batches.retrieve = real_retrieve
+        first = A.open_batches(self.journal)[0]["requests"][0]
+        self.write(A._record(specs[0], {"text": "x", "served_model": "claude-fable-5-2", "finish_reason": "end_turn",
+                                        "tokens_in": 1000, "tokens_out": 200, "tokens_thought": None,
+                                        "paused_continued": False, "search": None}, "ok", None, 1, False, "t0", "t1", [],
+                             {"batch_id": "batch_1", "custom_id": first["custom_id"]}))
+        L = self.ledger()
+        n = A.recover_batches(specs, L, self.write, self.journal, self.raw, client=client, poll=0, sleep=lambda s: None,
+                              log=lambda *a: None)
+        self.assertEqual(n, 1)
+        self.assertEqual(client.n_created, 1)                           # nothing re-sent
+        recs = [r for r in self.written() if r.get("batch_id") == "batch_1"]
+        self.assertEqual(len(recs), 3)
+        self.assertEqual(len({r["custom_id"] for r in recs}), 3)
+        self.assertAlmostEqual(L.calls_spent(), 2 * (100 * 4 + 1000 * 20) / 1e6, places=12)   # the two recovered lines
+        self.assertEqual(A.open_batches(self.journal), [])
+        self.assertEqual(A.recover_batches(specs, L, self.write, self.journal, self.raw, client=client, poll=0,
+                                           sleep=lambda s: None, log=lambda *a: None), 0)
+        self.assertTrue({s["call_id"] for s in specs} <= A.done_ids(self.raw))   # a resumed run sends none of them
+
+    def test_collect_recovers_before_any_new_request(self):
+        src = A.inspect.getsource(A.collect)
+        self.assertIn("recover_batches(", src)
+        self.assertLess(src.index("recover_batches("), src.index("run_collection("))
+        self.assertIn("partial(run_anthropic_batch, journal=BATCH_LOG)", src)
+        self.assertEqual(A.BATCH_LOG.name, "v62_batches.jsonl")
+
+
 def collections_count(specs):
     out = {}
     for s in specs:

@@ -188,14 +188,103 @@ class AnswerWords(unittest.TestCase):
         self.assertEqual(C.map_answer_words("네이버에서는", "ko"), "네이버에서는")
 
     def test_zh(self):
-        self.assertEqual(C.map_answer_words("是的，索尼被广泛认可。", "zh"), "Yes,索尼被广泛认可。")
-        self.assertEqual(C.map_answer_words("不是。", "zh"), "No。")
-        self.assertEqual(C.map_answer_words("“否”", "zh"), "“No”")
+        # pre-lock correction (2026-11-12): in ZH the mapped word is set off by spaces where it touches a character
+        self.assertEqual(C.map_answer_words("是的，索尼被广泛认可。", "zh"), "Yes ,索尼被广泛认可。")
+        self.assertEqual(C.map_answer_words("不是。", "zh"), "No 。")
+        self.assertEqual(C.map_answer_words("“否”", "zh"), "“ No ”")
         self.assertEqual(C.map_answer_words("是一个知名品牌。", "zh"), "是一个知名品牌。")
         self.assertEqual(C.map_answer_words("不太常见。", "zh"), "不太常见。")
 
     def test_english_answer_untouched(self):
         self.assertEqual(C.map_answer_words("Yes, it is.", "ko"), "Yes, it is.")
+
+
+def _certified_parsers():
+    """The certified recognition parsers of this tree (the same git blobs as at tag v0.42-prereg-r1): v0.20-v0.22
+    parse_yes_no and v0.19 parse_phase_a_response."""
+    root = HERE.parents[3]
+    for p in (root / "scripts", root / "osf" / "v19"):
+        if str(p) not in sys.path:
+            sys.path.insert(0, str(p))
+    import acquire_v0_19
+    import run_acquisition_v20
+    import run_acquisition_v21
+    import run_acquisition_v22
+    v19 = {1: "yes", 0: "no", None: "ambiguous"}
+    return {"v20": run_acquisition_v20.parse_yes_no, "v21": run_acquisition_v21.parse_yes_no,
+            "v22": run_acquisition_v22.parse_yes_no, "v19": lambda t: v19[acquire_v0_19.parse_phase_a_response(t)]}
+
+
+def _r3_map(text, language):
+    """map_answer_words as it was before the pre-lock correction (r3, commit 0074bc1), for the unchanged-behaviour checks."""
+    t = C.normalise(text)
+    m = C.LEAD_RE[language].match(t)
+    if not m:
+        return t
+    return t[:m.start(2)] + ("Yes" if m.group(2).lower() in C.YES else "No") + t[m.end(2):]
+
+
+class ZhAnswerWordsCertifiedParsers(unittest.TestCase):
+    """Pre-lock correction (coordinator, 2026-11-12): r3's mapping turned 否 / 不是 / 不 into "No" but kept the
+    ideographic full stop or unspaced text after it, and v0.20-v0.22's certified parse_yes_no then read "ambiguous"
+    (a non-answer) while the same forms of 是 were read as Yes. Section 4.4's rule: they are read as No."""
+    NO = ["否。", "不是。", "不。", "否", "不是", "否，", "不是，这不是。", "否！", "“否”。", "“不是”", "（否）"]
+    YES = ["是。", "是的。", "是", "是的", "是，", "是的，这是一个知名品牌。", "是！", "“是”。", "“是的”", "（是）"]
+    # not mapped in either direction (section 4.4's lookahead does not list '*'): unchanged by the correction, symmetric
+    NEITHER = ["是一个知名品牌。", "不太常见。", "这是一个德国音频品牌。是。", "否认", "不知道。", "**否**", "**是**"]
+
+    def setUp(self):
+        self.parse = _certified_parsers()
+
+    def test_parsers_are_the_v042_locked_blobs(self):
+        import subprocess
+        root = HERE.parents[3]
+        for f in ("scripts/run_acquisition_v20.py", "scripts/run_acquisition_v21.py", "scripts/run_acquisition_v22.py",
+                  "osf/v19/acquire_v0_19.py"):
+            a = subprocess.run(["git", "-C", str(root), "rev-parse", f"v0.42-prereg-r1:{f}"], capture_output=True, text=True)
+            if a.returncode != 0:
+                self.skipTest("tag v0.42-prereg-r1 not available")
+            b = subprocess.run(["git", "-C", str(root), "hash-object", f], capture_output=True, text=True, check=True)
+            self.assertEqual(a.stdout.strip(), b.stdout.strip(), f)
+
+    def test_zh_no_forms_are_read_as_no(self):
+        for t in self.NO:
+            m = C.map_answer_words(t, "zh")
+            for sub, f in self.parse.items():
+                self.assertEqual(f(m), "no", (t, m, sub))
+
+    def test_zh_yes_forms_are_read_as_yes(self):
+        for t in self.YES:
+            m = C.map_answer_words(t, "zh")
+            for sub, f in self.parse.items():
+                self.assertEqual(f(m), "yes", (t, m, sub))
+
+    def test_r3_lost_the_no_forms(self):
+        """The defect the correction removes: under r3's mapping v0.20-v0.22 read these as non-answers."""
+        for t in ("否。", "不是。", "不。", "不是，这不是。"):
+            self.assertEqual(self.parse["v20"](_r3_map(t, "zh")), "ambiguous", t)
+            self.assertEqual(self.parse["v20"](C.map_answer_words(t, "zh")), "no", t)
+
+    def test_zh_non_answer_words_untouched(self):
+        for t in self.NEITHER:
+            self.assertEqual(C.map_answer_words(t, "zh"), _r3_map(t, "zh"), t)
+
+    def test_v019_reading_unchanged_in_zh(self):
+        for t in self.NO + self.YES + self.NEITHER:
+            self.assertEqual(self.parse["v19"](C.map_answer_words(t, "zh")), self.parse["v19"](_r3_map(t, "zh")), t)
+
+    def test_es_and_ko_unchanged(self):
+        samples = {"es": ["Sí.", "Sí, Sennheiser es reconocida.", "No.", "No, no es una marca de auriculares.", "**No.**",
+                          "Si, es reconocida.", "Si bien es conocida, no.", "Sin duda, sí.", "Es una marca alemana. Sí.",
+                          "Denon no es tan conocida como Sony, pero sí, la reconozco.", "¿Sí?", "NO"],
+                   "ko": ["예.", "예, 널리 알려진 브랜드입니다.", "네, 소니는 널리 인식됩니다.", "아니요.", "아니요. 그렇지 않습니다.",
+                          "아니오, 아닙니다.", "아니,", "**예**", "네이버에서는", "젠하이저는 독일의 오디오 브랜드입니다. 예."]}
+        for lg, ts in samples.items():
+            for t in ts:
+                new, old = C.map_answer_words(t, lg), _r3_map(t, lg)
+                self.assertEqual(new, old, (lg, t))                    # byte-identical mapping
+                for sub, f in self.parse.items():
+                    self.assertEqual(f(new), f(old), (lg, t, sub))     # so every certified reading is unchanged
 
 
 class Language(unittest.TestCase):

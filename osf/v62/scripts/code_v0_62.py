@@ -187,7 +187,12 @@ def map_answer_words(text, language):
     if not m:
         return t
     word = m.group(2).lower()
-    return t[:m.start(2)] + ("Yes" if word in YES else "No") + t[m.end(2):]
+    # pre-lock correction (coordinator, 2026-11-12): Chinese is written without spaces, and the certified English parser
+    # parse_yes_no (v0.20-v0.22) needs a word boundary, so in ZH the mapped word is set off by a space wherever it touches
+    # a non-space character ("否。" -> "No 。", "不是，这不是。" -> "No ,这不是。", "“否”。" -> "“ No ”。"); ES and KO unchanged.
+    pre, nxt = t[:m.start(2)], t[m.end(2):m.end(2) + 1]
+    sp = (" " if pre and not pre[-1].isspace() else "", " " if nxt and not nxt.isspace() else "") if language == "zh" else ("", "")
+    return pre + sp[0] + ("Yes" if word in YES else "No") + sp[1] + t[m.end(2):]
 
 
 ES_WORDS = ["el", "la", "los", "las", "del", "una", "es", "y", "para", "con", "en", "que", "son", "por", "su", "sus",
