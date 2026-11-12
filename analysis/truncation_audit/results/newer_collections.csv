@@ -1,0 +1,28 @@
+collection,arm,condition,phase,model,cap,cap_source,calls,errors,answers,hit_cap,share_hit_cap,max_thinking_tokens,max_thinking_share_of_cap,answers_thinking_ge_half_cap,answers_at_cap_and_thinking_ge_half_cap,cut_before_first_brand,cut_before_first_brand_others_named,zero_brand_answers,zero_brand_answers_not_cut,brands_named_total,finish_reasons,max_output_plus_thinking_tokens
+v0.38,L,S0,all,claude-opus-4-5,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,0,0.0,,,,,0,0,1,1,94,"{""end_turn"": 22}",
+v0.38,L,S0,all,claude-sonnet-4-5,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,0,0.0,,,,,0,0,0,0,75,"{""end_turn"": 22}",
+v0.38,L,S0,all,gemini-2.5-flash,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,19,0.8636,1829,0.8931,19,19,5,5,5,0,31,"{""FinishReason.MAX_TOKENS"": 19, ""FinishReason.STOP"": 3}",
+v0.38,L,S0,all,gemini-2.5-flash-lite,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,1,0.0455,,,,,0,0,1,1,115,"{""FinishReason.STOP"": 21, ""FinishReason.MAX_TOKENS"": 1}",
+v0.38,L,S0,all,gpt-4o,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,0,0.0,,,,,0,0,0,0,92,"{""stop"": 22}",
+v0.38,L,S0,all,gpt-4o-mini,2048,osf/v38/scripts/acquire_v0_38.py: max_tokens=2048 / max_output_tokens=2048,22,0,22,0,0.0,,,,,0,0,1,1,89,"{""stop"": 22}",
+v0.39,C,S0,all,claude-opus-5-5,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,3,3,178,"{""end_turn"": 30}",
+v0.39,C,S0,all,gemini-4-argon,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,0,0,157,"{""FinishReason.STOP"": 30}",
+v0.39,C,S0,all,gpt-6-astra,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,375,0.0229,0,0,0,0,9,9,55,"{""completed"": 30}",
+v0.39,C,S1,all,claude-opus-5-5,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,3,3,137,"{""end_turn"": 30}",
+v0.39,C,S1,all,gemini-4-argon,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,115,0.007,0,0,0,0,0,0,170,"{""FinishReason.STOP"": 30}",
+v0.39,C,S1,all,gpt-6-astra,16384,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,497,0.0303,0,0,0,0,6,6,53,"{""completed"": 30}",
+v0.39,L,S0,all,claude-opus-4-5,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,4,4,96,"{""end_turn"": 30}",
+v0.39,L,S0,all,claude-sonnet-4-5,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,5,5,99,"{""end_turn"": 30}",
+v0.39,L,S0,all,gemini-2.5-flash,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,26,0.8667,1936,0.9453,26,26,15,12,15,0,43,"{""FinishReason.MAX_TOKENS"": 26, ""FinishReason.STOP"": 4}",
+v0.39,L,S0,all,gemini-2.5-flash-lite,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,1,0.0333,,,,,0,0,6,6,101,"{""FinishReason.STOP"": 29, ""FinishReason.MAX_TOKENS"": 1}",
+v0.39,L,S0,all,gpt-4o,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,8,8,83,"{""stop"": 30}",
+v0.39,L,S0,all,gpt-4o-mini,2048,"osf/v39/scripts/acquire_v0_39.py: LEGACY_MAX_TOKENS = 2048 (arm L), CURRENT_MAX_TOKENS = 16384 (arm C)",30,0,30,0,0.0,,,,,0,0,10,10,65,"{""stop"": 30}",
+v0.42 (t4),C,S0,A,claude-fable-5-2,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,112,0,112,0,0.0,,,,,0,,,,,"{""end_turn"": 112}",5164
+v0.42 (t4),C,S0,A,gemini-4-argon,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,118,6,112,0,0.0,,,,,0,,,,,"{""FinishReason.STOP"": 112}",2215
+v0.42 (t4),C,S0,A,gpt-6-astra,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,112,0,112,0,0.0,1034,0.0631,0,0,0,,,,,"{""completed"": 112}",5801
+v0.42 (t4),C,S0,B,claude-fable-5-2,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,90,0,90,0,0.0,,,,,0,,,,,"{""end_turn"": 90}",5080
+v0.42 (t4),C,S0,B,gemini-4-argon,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,90,0,90,0,0.0,,,,,0,,,,,"{""FinishReason.STOP"": 90}",2320
+v0.42 (t4),C,S0,B,gpt-6-astra,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,90,0,90,0,0.0,2070,0.1263,0,0,0,,,,,"{""completed"": 90}",5357
+v0.42 (t4),C,S1,B,claude-fable-5-2,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,120,30,90,0,0.0,,,,,0,,,,,"{""end_turn"": 90}",10031
+v0.42 (t4),C,S1,B,gemini-4-argon,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,168,78,90,0,0.0,193,0.0118,0,0,0,,,,,"{""FinishReason.STOP"": 90}",3549
+v0.42 (t4),C,S1,B,gpt-6-astra,16384,git v0.42-acquisition-locked:osf/v42/scripts/acquire_v0_42.py CURRENT_MAX_TOKENS = 16384,90,0,90,0,0.0,2757,0.1683,0,0,0,,,,,"{""completed"": 90}",7260

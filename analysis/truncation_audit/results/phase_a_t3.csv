@@ -1,0 +1,31 @@
+substrate,model,t3_answers,t3_truncated,t3_finish_reasons,recognized_brands_t1,recognized_brands_t2,recognized_brands_t3,brands
+v0.19,claude-opus-4-5,16,0,{'end_turn': 16},16,14,16,16
+v0.19,claude-sonnet-4-5,16,0,{'end_turn': 16},13,13,13,16
+v0.19,gpt-4o,16,0,{'stop': 16},15,15,14,16
+v0.19,gpt-4o-mini,16,0,{'stop': 16},16,15,16,16
+v0.19,gemini-2.5-flash,16,0,{'STOP': 16},12,12,12,16
+v0.19,gemini-2.5-flash-lite,16,0,{'STOP': 16},13,14,12,16
+v0.20,claude-opus-4-5,24,0,{'end_turn': 24},20,20,20,24
+v0.20,claude-sonnet-4-5,24,0,{'end_turn': 24},19,19,19,24
+v0.20,gpt-4o,24,0,{'stop': 24},21,21,22,24
+v0.20,gpt-4o-mini,24,0,{'stop': 24},22,22,22,24
+v0.20,gemini-2.5-flash,24,0,{'STOP': 24},19,20,22,24
+v0.20,gemini-2.5-flash-lite,24,0,{'STOP': 24},23,22,22,24
+v0.21,claude-opus-4-5,24,0,{'end_turn': 24},24,24,24,24
+v0.21,claude-sonnet-4-5,24,0,{'end_turn': 24},24,24,24,24
+v0.21,gpt-4o,24,0,{'stop': 24},24,24,24,24
+v0.21,gpt-4o-mini,24,0,{'stop': 24},24,24,24,24
+v0.21,gemini-2.5-flash,24,0,{'STOP': 24},24,24,24,24
+v0.21,gemini-2.5-flash-lite,24,0,{'STOP': 24},24,24,24,24
+v0.22,claude-opus-4-5,24,0,{'end_turn': 24},24,24,24,24
+v0.22,claude-sonnet-4-5,24,0,{'end_turn': 24},23,23,23,24
+v0.22,gpt-4o,24,0,{'stop': 24},24,24,24,24
+v0.22,gpt-4o-mini,24,0,{'stop': 24},24,24,24,24
+v0.22,gemini-2.5-flash,24,0,{'STOP': 24},24,24,22,24
+v0.22,gemini-2.5-flash-lite,24,0,{'STOP': 24},24,24,24,24
+v0.23,claude-opus-4-5,24,9,"{'max_tokens': 9, 'end_turn': 15}",24,24,24,24
+v0.23,claude-sonnet-4-5,24,0,{'end_turn': 24},24,24,24,24
+v0.23,gpt-4o,24,0,{'stop': 24},24,24,24,24
+v0.23,gpt-4o-mini,24,0,{'stop': 24},24,24,24,24
+v0.23,gemini-2.5-flash,24,24,{'MAX_TOKENS': 24},24,24,24,24
+v0.23,gemini-2.5-flash-lite,24,2,"{'STOP': 22, 'MAX_TOKENS': 2}",24,24,24,24

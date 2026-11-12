@@ -1,0 +1,10 @@
+study,branch,folder,files_in_folder,answer_files_found,cap_in_code,status
+v0.40,v0.40-public,osf/v40,42,[],LEGACY_MAX_TOKENS = 2048; CURRENT_MAX_TOKENS = 16384; thinking_budget=0,"legacy arm (2,048; Gemini 2.5 Flash with thinking budget 0, plus an M5X pass at the v0.39 setting) and current arm (16,384); collection window Nov 17-21; registries and FDIC status checks only"
+v0.43,v0.43,osf/v43,73,[],,Google Trends pulls; no model answers
+v0.44,v0.44,osf/v44,40,[],CURRENT_MAX_TOKENS = 16384,industry-breadth wave on the current models; dry run only (collection window from 2026-11-24)
+v0.45,v0.45,osf/v45,29,[],CURRENT_MAX_TOKENS = 16384,"t5 wave; locked, dry run only"
+v1.11,v1.11,osf/methodology/v1_11,23,[],,"Sentiment judge on archived answers; the dry-run judge file in the worktree is simulated (""synthetic quote"")"
+v1.12,v1.12,osf/methodology/v1_12,25,[],CURRENT_MAX_TOKENS = 16384,Coverage collection; dry run says raw record absent (window from 2026-11-14)
+v1.13,v1.13,osf/methodology/v1_13,40,[],,website structured-data audit; no model answers
+v1.14,v1.14,osf/methodology/v1_14,12,[],,re-analysis of t4 (v0.42); no new collection
+v1.16,v1.16,osf/methodology/v1_16,14,[],,re-analysis of t1-t4; no new collection

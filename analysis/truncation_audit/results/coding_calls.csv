@@ -1,0 +1,5 @@
+collection,model,cap,cap_source,calls,hit_cap,effect,answers
+v0.41 t3 v0.23 coding (A_judge),claude-sonnet-4-5,10,scripts/score_v0_23.py judge_recognition max_tokens=10 / judge_elaboration_batch max_tokens=200,144,0,B_code feeds the elaboration flags only; brand_mentions (k) are regex-coded,
+v0.41 t3 v0.23 coding (B_code),claude-sonnet-4-5,200,scripts/score_v0_23.py judge_recognition max_tokens=10 / judge_elaboration_batch max_tokens=200,29,1,B_code feeds the elaboration flags only; brand_mentions (k) are regex-coded,
+v1.15 Stage J judge on t4 (untracked file in the v1.15 worktree),claude-opus-5-5,4096,request.max_tokens in judge_raw_v1_15.jsonl (sha256 926ed9b0505608a2...),1729,0,"judge outputs, not answers",1729
+v1.15 Stage J judge on t4 (untracked file in the v1.15 worktree),gpt-6.1-sol,4096,request.max_tokens in judge_raw_v1_15.jsonl (sha256 926ed9b0505608a2...),1624,0,"judge outputs, not answers",1624
