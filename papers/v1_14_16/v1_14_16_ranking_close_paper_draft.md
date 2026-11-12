@@ -54,7 +54,7 @@ The AIAS™ program measures AI brand availability with two validated components
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2022). The Tri-System framework describes the AI Availability Score (AIAS) as a score built from several dimensions (González Castro, 2026, MSI Working Paper, Report No. 26-132). The program has validated two of them. Presence, how often a fixed panel of models recognizes and names a brand, was anchored across five product categories under the v1.6 protocol (SSRN 6816340; AIAS 1.0, SSRN 6817841). Consistency, whether the panel's models agree about a brand, reached a usable instrument only after its first version was falsified for moving with recall (v1.7, SSRN 6878818) and was replaced by the dispersion statistic $\varphi$ (v1.8, SSRN 6963359), scaled to $C^*$ in the v1.9 calibration (*One Score or Two?*). The AIAS 2.0 synthesis reports the two side by side.
+AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2022). The Tri-System framework describes the AI Availability Score (AIAS) as a score built from several dimensions (González Castro, 2026, MSI Working Paper, Report No. 26-132). The program has validated two of them. Presence, how often a fixed panel of models recognizes and names a brand, was anchored across five product categories under the v1.6 protocol (SSRN 6816340; AIAS 1.0, SSRN 6817841), the last of the Presence protocol versions v1.2 to v1.6 (SSRN 6761698; SSRN 6797679; SSRN 6799479; SSRN 6810758; SSRN 6816340). Consistency, whether the panel's models agree about a brand, reached a usable instrument only after its first version was falsified for moving with recall (v1.7, SSRN 6878818) and was replaced by the dispersion statistic $\varphi$ (v1.8, SSRN 6963359), scaled to $C^*$ in the v1.9 calibration (*One Score or Two?*). The AIAS 2.0 synthesis reports the two side by side.
 
 ## 1.1 Why a ranking component
 
@@ -319,6 +319,14 @@ Fishkin, R. (2026, January 27). *NEW Research: AIs are highly inconsistent when 
 González Castro, P. U. (2026). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
 
 González Castro, P. U. (2026). *Tri-System Brand Growth: The AI Mediation Layer*. MSI Working Paper, Report No. 26-132. Marketing Science Institute.
+
+González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
+
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification* (v1.3). SSRN 6797679.
+
+González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+
+González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
 
 González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
 
