@@ -486,6 +486,16 @@ class Scorer:
                        "successor_near": m["successor_near"]}
 
 
+def switch_controls(subjects, probes_path=V40 / "prereg" / "probes_v0_40.json"):
+    """Discover switch (b): a replacement control named in the final probe set but not in the registry's
+    exits_and_controls.csv is added as a control, matched by its probe name (pre-registration section 3.2)."""
+    known = {s["id"] for s in subjects} | {"AA", "DL", "JPMC", "BAC"}
+    spec = json.loads(Path(probes_path).read_text(encoding="utf-8"))
+    return [{"id": s["subject_id"], "category": s["category"], "role": "control", "brand": s["registry_brand"],
+             "aliases": [s["name_in_probe"]], "successor": ""}
+            for s in spec.get("subjects", []) if s["subject_id"] not in known and s["role"] == "control"]
+
+
 def load_raw(path):
     return [json.loads(l) for l in Path(path).read_text(encoding="utf-8").splitlines() if l.strip()]
 
@@ -497,6 +507,7 @@ def main():
     ap.add_argument("--perms", type=int, default=PERMS)
     a = ap.parse_args()
     units, subjects, gaps = load_registry()
+    subjects = subjects + switch_controls(subjects)
     sc = Scorer(load_raw(a.raw), units, subjects, gaps, a.perms)
     res = sc.run(expected={"L": 1786, "C": 1035})
     out = Path(a.out_dir)

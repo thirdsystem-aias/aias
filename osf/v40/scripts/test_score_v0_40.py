@@ -41,6 +41,14 @@ check("Fable 5.2 uses the Opus 5.5 cutoff rows", S.GAP_MODEL["C1"] == "Claude Op
 check("exact binomial sf", abs(S.binom_sf(3, 3, 0.5) - 0.125) < 1e-12 and S.binom_sf(0, 5, 0.3) == 1.0)
 check("Fisher exact one-sided", abs(S.fisher_greater(3, 0, 0, 3) - 0.05) < 1e-12)
 check("Spearman", abs(S.spearman([1, 2, 3, 4], [10, 20, 30, 40]) - 1) < 1e-12)
+check("Discover switch (a)/draft: no extra control", S.switch_controls(subjects) == [])
+import tempfile  # noqa: E402
+with tempfile.NamedTemporaryFile("w", suffix=".json", delete=False) as f:
+    json.dump({"subjects": [{"subject_id": "MERRILL", "category": "bank", "role": "control", "registry_brand": "Merrill",
+                             "name_in_probe": "Merrill"}]}, f)
+xc = S.switch_controls(subjects, f.name)
+check("Discover switch (b): replacement control is added and matched",
+      len(xc) == 1 and S.code_answer("Yes, Merrill is open.", S.build_matchers(units, subjects + xc), {})[0]["entity"] == "MERRILL")
 
 # ---- synthetic worlds
 SLOTS = S.TESTED_SLOTS

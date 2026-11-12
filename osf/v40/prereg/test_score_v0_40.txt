@@ -8,6 +8,8 @@ PASS Fable 5.2 uses the Opus 5.5 cutoff rows
 PASS exact binomial sf
 PASS Fisher exact one-sided
 PASS Spearman
+PASS Discover switch (a)/draft: no extra control
+PASS Discover switch (b): replacement control is added and matched
   world A H_Reinforce  CONFIRMED     world B FALSIFIED
   world A H_Amplify    CONFIRMED     world B FALSIFIED
   world A H_Afterlife  CONFIRMED     world B FALSIFIED

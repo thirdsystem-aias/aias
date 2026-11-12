@@ -1,0 +1,320 @@
+# AIAS™ Presence Measurement Protocol — Pre-Registration v0.40 (revision r1, DRAFT for the pre-registrant's review — not locked)
+
+**Substrate:** US airlines (share: revenue passenger miles, BTS T-100) and US retail banks (share: deposits, FDIC Summary of Deposits), with every brand retired by merger, failure or rename from 2008-01-01 to 2026-11-12.
+**Working title:** Leaders, challengers and ghosts. Two US categories reshaped by mergers and failures.
+**Design:** Category registry built mechanically from official data (no focal brand), two-arm panel: the legacy fixed panel (v0.17–v0.39) and the current assistants without and with each provider's own web search.
+**Programme position:** First public flagship study under the independence rule (no focal brand, no lessons addressed to a brand, no brand contacted). Tests the MSI framework's proposition P1 (does AI's share of recommendations track, amplify or flatten real market share; MSI Working Paper *Tri-System Brand Growth: The AI Mediation Layer*, Report No. 26-132) and, for the first time with dated exits, whether brands that no longer exist keep a place in AI answers and how that place decays with the time between the exit and each model's training cutoff.
+**Protocol version:** Presence definitions per Methodology v1.2 (SSRN 6761698); legacy-arm panel and decoding per v0.17–v0.39 (temperature 0.0; max output 2,048 tokens), except Gemini 2.5 Flash (§4.4).
+**Lock target:** git tag `v0.40-prereg-r1` on branch `v0.40` (pushed from the runner branch `v0.40-runner`). **External anchor (pre-declared):** this pre-registration, the probe set, the frozen registry, the scripts and the lock manifest deposited at OSF `ec6wh` → `v40/prereg/` and `v40/registries/` before any study probe is sent. `acquire_v0_40.py --collect` refuses to run unless the tag is on `origin` and `osf/v40/anchor/osf_anchor_v0_40.json` names its commit.
+**Pre-registrant:** Pablo Ulpiano González Castro
+**Status:** DRAFT r1, written 2026-11-12 by the runner. Locks 24 hours after the pre-registrant receives it unless he objects. Open items are marked **PENDING PABLO** (§9).
+**Technical check (declared non-acquisition step):** on 2026-11-09 (00:22 UTC) `feasibility_v0_40.py` sent each legacy model, Gemini 2.5 Flash in both settings and the then current arm (Claude Opus 5.5, GPT-6 Astra, Gemini 4 Argon) one neutral, non-category prompt ("Reply with the single word: ready"), and each current model two neutral search prompts (today's date; the current BBC headline); 16 of 16 calls returned ok (`prereg/feasibility_v0_40.json`, `.csv`). No study probe was sent and no brand was named. Because the current arm now uses Claude Fable 5.2 through the Message Batches API (§4.3), the same check is repeated for Fable 5.2 before the lock with `acquire_v0_40.py --feasibility` (neutral prompts only; output `prereg/feasibility_check_v0_40.json`). **PENDING (runner, before the lock).**
+**Acquisition window:** 2026-11-17 00:00 CT to 2026-11-21 23:59 CT. The legacy arm must be complete before 2026-11-24, the earliest possible retirement of Claude Opus 4.5 (Claude Sonnet 4.5 retires 2026-11-30; registry `model_cutoffs.csv`).
+
+---
+
+## §1 Context and questions
+
+The MSI framework paper (Report No. 26-132) proposes that the AI layer reweights brands relative to their market position (P1). Two earlier phases bracket the question this study asks about brands that have left the market: Mint was named in 44.8% of answers 25 months after it closed (v0.10), while five car brands closed in 2001–2010 were named in 0 of 18 answers (v0.22). Neither phase had dated exits matched to each model's training cutoff.
+
+- **RQ1.** Does AI's share of recommendations track real market share, amplify the category leader (Double Jeopardy) or flatten it?
+- **RQ2.** Do brands that disappeared through a merger, failure or rename still appear in AI answers; does that presence decay with the time between the exit and each model's training cutoff; do answers say the brand is gone; and does web search change that?
+
+US airlines and US retail banks were chosen because both have official share data (BTS, FDIC), many dated exits since 2008, and no product category in which the pre-registrant's employer competes (Declarations). The study is independent: there is no focal brand, no finding is addressed to a brand, and no brand was contacted.
+
+---
+
+## §2 Pre-registered hypotheses
+
+Verdict words: CONFIRMED, PARTIAL, UNDETERMINED, FALSIFIED. Every test is one-sided as stated, at α = 0.05, without multiplicity correction (six tests, each reported in full, including failures). Permutation tests use 10,000 permutations with seed 4040; p = (hits + 1)/(permutations + 1). All thresholds below are fixed in `score_v0_40.py` (`T`) and tested on synthetic data (§5.8).
+
+### §2.1 Definitions (used by every test)
+
+- **Answer:** the text of one completed call (status ok, non-empty). **Recommendation answers** are the answers to the 16 recommendation probes of the brand's category (6 generic, 6 by need, 4 by Census region).
+- **Mention:** a whole-word, case-sensitive match of a registry alias (§5.2) in an answer; the longest alias wins and overlapping shorter matches are dropped. A mention through a bare collision alias (D11) is **ambiguous** and is excluded from every primary test (reported with it as a sensitivity).
+- **Current unit:** one of the 10 airline share units (11 brands; Hawaiian inside Alaska, R8) or 25 bank holders of the frozen registry. A retained brand's mentions count toward its share unit (D2, D12: Discover toward Capital One).
+- **AI share** of a current unit, per model: the number of the model's recommendation answers that name the unit, divided by the sum of that count over all current units of the category; the study's AI share is the mean over the nine tested models (six legacy, three current, search off).
+- **Market share:** airlines, allocated brand share of RPM (registry `airlines_current.csv`, `brand_share_pct`; D1); banks, share of deposits (`banks_current.csv`, `share_pct`).
+- **Ghost:** one of the 24 registry exits (7 airlines, 17 banks). **Gap:** months from the ghost's brand-retirement date to the model's primary cutoff (registry `exit_cutoff_gaps.csv`, `gap_brand_m`; R11). A **pre-cutoff exit** has gap > 0 for that model. Claude Fable 5.2 has the same training-data cutoff month as Claude Opus 5.5 (Jun 2026; §4.3), so the frozen Opus 5.5 rows are used for it unchanged.
+- **Gone-flag:** a mention is gone-flagged when the locked lexicon (§5.3) occurs within 150 characters before or after it. An answer to a status (S) probe is flagged when any mention of its subject is gone-flagged, or, if the subject is not matched, when the lexicon occurs in its first 300 characters.
+- **Tested models:** M1–M6 (legacy, search off) and C1–C3 (current, search off) for H_Reinforce to H_Flag; C1–C3 with search off and on for H_Search. The extra Gemini 2.5 Flash pass at the v0.39 setting (M5X) is reported, never tested.
+
+### §2.2 `H_Reinforce` (RQ1): AI share tracks market share
+
+**Claim.** Within each category, current units with a larger market share receive a larger AI share.
+**Test.** Spearman ρ between market share and AI share across the category's current units; one-sided permutation test (ρ > 0).
+**Rule (per category).** Passes when at least 5 units have AI share > 0, ρ ≥ 0.50 and p < 0.05.
+**Verdict.** CONFIRMED: both categories pass. PARTIAL: one passes. FALSIFIED: both evaluable and p ≥ 0.05 in both. UNDETERMINED: otherwise (including fewer than 5 units with AI share > 0 in a category).
+
+### §2.3 `H_Amplify` (RQ1): AI amplifies the category leader
+
+**Claim.** The leader's AI share exceeds its market share (Double Jeopardy amplification) rather than flattening it. Leaders: American Airlines (allocated share, D1; Delta in the operating-share sensitivity) and the JPMorgan Chase holder.
+**Test.** Pooled over the nine tested models: k = recommendation answers naming the leader, n = the sum over current units of recommendation answers naming each unit, p₀ = the leader's market share divided by the category's total over current units. Ratio = (k/n)/p₀. Exact binomial test, one-sided both ways (amplified: X ≥ k; flattened: X ≤ k). The log-log slope of AI share on market share (units with AI share > 0) is reported, with and without the three brokerage and wealth holders (D4), and carries no verdict.
+**Rule (per category).** Amplified: ratio ≥ 1.25 and p(X ≥ k) < 0.05. Flattened: ratio < 1 and p(X ≤ k) < 0.05.
+**Verdict.** CONFIRMED: amplified in both. PARTIAL: amplified in one. FALSIFIED: flattened in both. UNDETERMINED: otherwise.
+
+### §2.4 `H_Afterlife` (RQ2): ghosts keep a place in recommendations
+
+**Claim.** Brands that exited before a model's cutoff are still recommended as if current.
+**Unit.** Ghost × tested model pairs with a pre-cutoff exit (197 of the 216 pairs: 24 ghosts × 9 models, less the 19 post-cutoff pairs of the registry, Spirit and SVB and First Republic; with Fable 5.2 on the Opus 5.5 rows). A pair is an **afterlife pair** when at least one of the model's search-off recommendation answers (any run) names the ghost without a gone-flag.
+**Test.** Per category, the afterlife rate k/n; exact binomial test against 0.05, one-sided (greater).
+**Rule (per category).** Passes when the rate ≥ 0.20 and p < 0.05. Low when the rate < 0.05.
+**Verdict.** CONFIRMED: both pass. PARTIAL: one passes. FALSIFIED: both low. UNDETERMINED: otherwise.
+
+### §2.5 `H_Decay` (RQ2): presence decays with the exit-to-cutoff gap
+
+**Claim.** The longer before a model's cutoff a brand was retired, the less often the model names it.
+**Unit.** The same pre-cutoff ghost × model pairs; ghost Presence = share of the model's search-off recommendation answers in the ghost's category that name it (any run; ambiguous mentions excluded).
+**Test.** Spearman ρ between gap (months) and ghost Presence over all pairs; one-sided permutation test (ρ < 0), gaps permuted within model.
+**Floor.** Evaluable only when at least 10 pairs have Presence > 0; otherwise UNDETERMINED.
+**Verdict.** CONFIRMED: ρ ≤ −0.30 and p < 0.05. PARTIAL: ρ < 0 and p < 0.05 with ρ > −0.30. FALSIFIED: ρ ≥ 0. UNDETERMINED: otherwise.
+
+### §2.6 `H_Flag` (RQ2): answers say the brand is gone
+
+**Claim.** Asked whether one can still book with or open an account at a ghost, models say it is gone, and they do not say so about living brands.
+**Unit.** Search-off answers of the nine tested models to the status (S) probes, all runs. Ghost answers: pre-cutoff exits only. Control answers: the living-brand controls (Hawaiian, Sun Country, and the bank control set by the Discover switch, §3.2) and the four incumbents (American, Delta, Chase, Bank of America).
+**Test.** Ghost flag rate; one-sided Fisher exact test that the ghost flag rate exceeds the control flag rate.
+**Verdict.** CONFIRMED: ghost flag rate ≥ 0.80 and Fisher p < 0.05. PARTIAL: one of the two. FALSIFIED: ghost flag rate < 0.50 and Fisher p ≥ 0.05. UNDETERMINED: otherwise.
+
+### §2.7 `H_Search` (RQ2): web search corrects the status of ghosts
+
+**Claim.** With its own web search on, a current model flags ghosts it did not flag without search, including exits after its cutoff.
+**Unit.** Current models C1–C3; ghost S probes. Search-off flag per (ghost, model) = flagged in a majority of its three runs; search-on flag = its single run (§4.2).
+**Test.** Exact McNemar test (binomial on the discordant pairs, one-sided toward search-on flagging); the search-on flag rate on post-cutoff cells (ghost × current model with gap < 0: SVB for all three, Spirit for GPT-6 Astra and Gemini 4 Argon) is reported with it.
+**Rule.** McNemar part: at least 10 discordant pairs and p < 0.05. Post-cutoff part: search-on flag rate ≥ 0.80.
+**Verdict.** CONFIRMED: both parts. PARTIAL: one part. FALSIFIED: no more search-only flags than search-off-only flags, and post-cutoff search-on flag rate < 0.50. UNDETERMINED: otherwise (including a search-on block cut short by the budget guard, §6.5).
+
+### §2.8 Manipulation checks (computed before any verdict is read)
+
+- **MC1 Completeness.** At least 95% of each arm's planned calls end ok (legacy 1,786; current 1,035). Below that, every verdict that uses the arm is reported as computed and marked "incomplete arm".
+- **MC2 Search used.** In S1, each current model searched (at least one recorded search) in at least 80% of its answers. Not searching is part of the condition and is kept (§7); below 80%, H_Search is reported with that caveat.
+- **MC3 Recognition of incumbents.** The recognition (K) answers for American, Delta, Chase and Bank of America name the brand in at least 95% of answers. A failure means the coder or the probe is broken; scoring stops and the cause is logged before any verdict.
+- **MC4 Output caps.** Truncated answers (finish reason at the token cap) are at most 5% in the legacy arm (2,048) and 2% in the current arm (16,384).
+
+### §2.9 Pre-registered descriptives (no verdicts)
+
+1. AI share against market share per unit and model, both arms, search off and on; the log-log slope with and without the brokerage and wealth holders (D4).
+2. Ghost Presence and the afterlife rate per ghost, model and arm; post-cutoff exits (Spirit, SVB, First Republic) shown apart.
+3. **Old versus new name:** of the ghost mentions, the share with the successor's name within 150 characters (registry `successor` column), per arm and condition.
+4. Recognition (K) answers per ghost and model: flagged as gone, described as current, or not recognised.
+5. The extra Gemini 2.5 Flash pass at the v0.39 setting against the thinking-off runs: completion, truncation and ghost mentions.
+6. Run-to-run standard error of per-model Presence at search off, from v0.40's own three runs, beside v1.17's estimate (§2.10).
+7. Search traces (queries, sources, citations) per S1 answer, and which sources were cited when a ghost was flagged.
+8. Mentions of the near-floor holders coded "other" (D16; USAA expected often).
+9. First-mention share per current unit (the unit named first in each recommendation answer), per model and condition.
+
+### §2.10 Runs per cell and expected precision
+
+Three runs per cell with search off in both arms; one run with search on (§6.4). Method v1.17 (locked 2026-11-12; OSF `methodology/v1_17`, tag `v1.17-prereg-r1`; results in `osf/methodology/v1_17/outputs/`) estimated, from v0.42's t4 answers on the three current models, that at 3 runs per cell a brand's per-model Presence has a standard error of about 0.040 (95% interval 0.037–0.043, n = 672 units), 0.050 for brands named in some answers but not all (n = 433), and that one question's reading is noisier (0.176 per run); one run's standard error is 0.069 (n = 672). These figures assume independent runs with the same variance as t4's three runs, which were collected on one day. They apply to the current arm with search off; for the search-on run the one-run figure (0.069) applies. Airlines (18 brands) lie between t4's category sizes; banks (42 brands) are outside t4's range. v1.17 has no legacy-arm run-to-run estimate, so v0.40 reports its own (§2.9 item 6).
+
+---
+
+## §3 Brand registry
+
+### §3.1 Construction and freeze
+
+The registry was built mechanically by `osf/v40/scripts/build_registry_v0_40.py` from BTS T-100, the BTS On-Time marketing-carrier file and the FDIC Summary of Deposits and BankFind, under rules R1–R12, and frozen on 2026-11-12 (`registries/out/v0_40_registry_draft.md`, r3; decisions D1–D19 adopted by the pre-registrant on 2026-11-08 and D4 on 2026-11-09). Current units: airlines, 11 brands in 10 share units; banks, 25 holders. Ghosts: 7 airlines, 17 banks. Living-brand controls: Hawaiian and Sun Country (airlines), Discover (banks; see §3.2). Incumbent controls: American and Delta; Chase and Bank of America. The freeze re-check found no brand status change between 2026-11-08 and 2026-11-12. Every share, floor, window and gap is in `registries/out/` with sources; this pre-registration adds none.
+
+### §3.2 The bank living-brand control: Discover switch — **PENDING PABLO (a/b)**
+
+The freeze check found, dated before 2026-11-08, that Discover's deposit accounts are moving to Capital One: Capital One says "Your Discover checking account is becoming a Capital One checking account" (https://www.capitalone.com/updates/discover/checking/), and secondary reports place a migration date of 2026-08-23 for some savings accounts (registry draft r3, §5 item 5). The registry row's source still says the Discover brand is not going away. Because SVB moved to the ghosts (D6), Discover is the only bank living-brand control. One switch decides its role in both the probe build and the scorer: `DISCOVER_OPTION` in `build_probes_v0_40.py` (default unset; `--final` refuses to freeze the probe set until it is set; the draft build stays byte-identical).
+
+**Version (a), keep Discover:** "The bank living-brand control is Discover, whose deposit accounts were being moved to Capital One during the study (§8, limitation 7). Discover is kept as a control in H_Flag, which is also reported without it (sensitivity S-Discover); the status answers about Discover are shown in full in the descriptives, because an answer that says its deposits now sit with Capital One may be correct."
+
+**Version (b), replace Discover:** "The bank living-brand control is [REPLACEMENT], chosen from the frozen registry's own material because Discover's deposit accounts were being moved to Capital One during the study. Discover's mentions still count toward the Capital One holder's share (D12); it is no longer a control."
+
+Candidates for (b), all from the frozen registry's own material; the runner does not pick:
+- **Merrill** (`bank_scan_class.csv`, CERT 27374, class "brand persists", D10): Merrill Lynch Bank USA merged into Bank of America on 2009-07-01 and the Merrill brand continues. Fits R10 (a living brand after a legal change); but it is a brokerage and wealth brand rather than a deposit-account brand, and its change predates every model cutoff by years.
+- **Webster Bank** (registry draft r3, §5 item 5, D16): Santander completed its acquisition of Webster on 2026-08-20 and merged Webster Bank into Santander Bank, N.A.; both brands continue "for now" (SHUSA 8-K, Exhibit 99.1). Closest to Discover's role (recent legal change, retail deposit brand in use); but below the 0.5% floor (0.371% at SOD 2026), its change postdates every cutoff, and it may be retired as Discover is.
+- **Fifth Third Bank** (`bank_scan_class.csv`, CERT 993, class "not an exit"): a charter consolidation in 2009 that kept the stem. A living retail brand with an internal legal change only; weakest fit, and the scan row itself says "verify FDIC record".
+
+Either version keeps 94 probes and the call count unchanged.
+
+---
+
+## §4 Probes and acquisition
+
+### §4.1 Probe set (94 probes; verbatim in `prereg/probes_v0_40.md`)
+
+Built by `osf/v40/scripts/build_probes_v0_40.py` from the frozen registry, unchanged since the draft (step 1, Pablo, 2026-11-09: no feedback, draft kept): per category 6 generic, 6 need-based and 4 Census-region recommendation probes (32), and one recognition (K) and one status (S) probe for each of the 24 ghosts, 3 living-brand controls and 4 incumbents (62). One user turn, no system prompt; recommendation probes name no brand; collision names carry the FDIC disambiguator (D11). `prereg/probes_v0_40.json` sha256 `93aee03f655cb8c4c6b04211e941b854bd921c3dbd31a9f5ffbaa91249be38ca`; `probes_v0_40.md` sha256 `45f1f3871f6fb60cd39840253cc6834fb918aadb160fd489c260ba50876bc92f`. The final build (`--final`, after the Discover switch, §3.2) rewrites the file's status and call-count fields (and, under (b), the two Discover probes); the lock manifest then carries its new checksum and `acquire_v0_40.py` the same value.
+
+### §4.2 Design (registered: D7 of §6.3)
+
+| Arm | Models | Condition | Runs | Probes | Calls |
+|---|---|---|---|---|---|
+| Legacy | M1–M6 | search off | 3 | 94 | 1,692 |
+| Legacy, extra pass | M5X (Gemini 2.5 Flash, v0.39 setting) | search off | 1 | 94 | 94 |
+| Current | C1–C3 | search off (S0) | 3 | 94 | 846 |
+| Current | C1–C3 | search on (S1) | 1 | 63 (32 recommendation + 31 status) | 189 |
+| **Total** | | | | | **2,821** |
+
+The probe set as frozen counted 37 calls per probe (3,478 calls: search on with 3 runs on all 94 probes). At the recorded costs that design is estimated at $191.14 central, above the $100 cap, so search on is reduced to one run on the probes that carry its hypothesis (§6.4).
+
+### §4.3 Panel
+
+**Legacy arm** (fixed since v0.17): Claude Opus 4.5 (M1), Claude Sonnet 4.5 (M2), GPT-4o (M3), GPT-4o mini (M4), Gemini 2.5 Flash (M5), Gemini 2.5 Flash-Lite (M6); lifecycle and cutoffs in `registries/out/model_cutoffs.csv` (vendor pages, 2026-11-08). Gemini runs on the Developer API with the v0.39 project (D18). Each call logs the snapshot it returns.
+
+**Current arm: each provider's newest generally available flagship, checked on the vendors' pages on 2026-11-12.** Restricted and pre-release models are excluded.
+- **C1 Claude Fable 5.2** (`claude-fable-5-2`). Anthropic, *Models overview* (https://platform.claude.com/docs/en/about-claude/models/overview.md, opened 2026-11-12): the latest-models table lists Claude Fable 5.2 "For demanding reasoning and long-horizon agentic work", $8 / $40 per MTok, reliable-knowledge and training-data cutoff Jun 2026, retirement "Not sooner than November 9, 2027", and says "Batch API requests are 50% off". Claude Mythos 5.2 is marked "limited availability" and is excluded. The same page says to "start with Claude Opus 5.5 for most workloads" and to use Fable 5.2 for demanding reasoning; v0.42 (t4) used Fable 5.2 as Anthropic's flagship under the one-flagship-per-provider rule, and v0.40 follows it (alternative: Opus 5.5, §6.3 D5/D6; **PENDING PABLO**). Sent through the Message Batches API (same request parameters as a synchronous call).
+- **C2 GPT-6 Astra** (`gpt-6-astra`). OpenAI, model page (https://developers.openai.com/docs/models/gpt-6-astra, opened 2026-11-12): "Our most capable model for the most demanding work"; knowledge cutoff April 30, 2026; $10.00 / $50.00 per 1M tokens; the page gives no preview or restricted status for the API model (its Google Cloud listing is "Private preview"). OpenAI's pricing page (https://developers.openai.com/api/docs/pricing) also lists `gpt-6.1-sol` and `gpt-6.1-terra` without ranking them; OpenAI's GPT-6.1 Terra announcement page (https://openai.com/index/introducing-gpt-6-1-terra/) could not be fetched (client error), so whether Terra is positioned above Astra was not verified from the vendor. Synchronous.
+- **C3 Gemini 4 Argon** (`gemini-4-argon`). Google, *Latest model* (https://ai.google.dev/gemini-api/docs/latest-model, opened 2026-11-12): "our latest, most capable model", available through the Gemini API and Google AI Studio; $2 / $10 per 1M tokens through November 30, 2026, then $4 / $20; Gemini 4 Carbon is not listed there. **Gemini 4 Carbon is excluded:** its Google Cloud page (https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-carbon, opened 2026-11-12) gives "Launch stage: GA" and "Release date: November 10, 2026", but also "Gemini 4 Carbon is available to verified enterprise customers in select regions", i.e. restricted access. Synchronous.
+
+### §4.4 Decoding and call policy
+
+- **Legacy arm:** temperature 0.0, max output 2,048 tokens, single user turn, no system prompt; call functions copied verbatim from `acquire_v0_39.py` (checked by test). **Gemini 2.5 Flash (M5):** thinking budget 0 for its three runs (under the v0.39 setting, answers ending at the 2,048-token cap were expected; v0.39 pre-registration §6.6); plus one pass per probe at the v0.39 setting (M5X: provider-default thinking), reported, never tested.
+- **Current arm:** provider defaults for temperature, top_p, top_k and reasoning effort (none is sent; checked at dry run); **max output 16,384 tokens**; no system prompt. S1 tools as v0.39 (Anthropic `web_search_20250305`, max 5 uses, US location; OpenAI `web_search`, medium context, US location; Google Search grounding). An Anthropic `pause_turn` is continued once with identical tools.
+- Transient errors are retried up to 3 attempts; an empty answer is re-sent once; every attempt is one raw line with its usage and cost.
+
+### §4.5 Order and windows
+
+Blocks in order, models in parallel within a block: legacy runs 1, 2, 3; the M5X pass; current S0 runs 1, 2, 3; current S1. **All search-on calls are sent in the last block, inside one window:** no new S1 request later than 24 hours after the first S1 request. No request after 2026-11-21 23:59:59 CT. One paid collection at a time on the machine (guard copied from v0.42).
+
+### §4.6 Acquisition artefact
+
+`osf/v40/data/v40_raw.jsonl` (append-only, one line per attempt: prompt, answer, served snapshot, finish reason, tokens, searches, sources, citations, cost), `v40_budget_state.json`, `v40_batches.jsonl` (Message Batches journal).
+
+---
+
+## §5 Coding and analysis plan
+
+### §5.1 Coder
+
+Coding is automated and rule-based (`score_v0_40.py`); no LLM is used as coder or judge. If a later revision adds an LLM coder or judge, its reply rule is fixed before the lock and tested on recorded replies: exactly one complete JSON object with the required keys counts, and any text around it is ignored (programme rule of 2026-11-12, after v1.15, where Claude Opus 5.5 put a sentence before its JSON object on 4.2% of first tries).
+
+### §5.2 Aliases and collisions
+
+Aliases are those of the frozen registry: `registries/out/exits_and_controls.csv` (ghosts and controls; old and new names) and the `aliases` columns of `airlines_current.csv` and `banks_current.csv` (current units; D12: Marcus counts for Goldman Sachs, Discover for Capital One, "TD" alone does not count). Matching is whole-word and case-sensitive; the longest alias wins. These bare aliases are coded **ambiguous** (D11) and are excluded from the primary tests: American, United, Delta, Frontier, Spirit, Continental, Northwest, Breeze, Southwest, Alaska, Commerce Bank, Union Bank, Signature Bank, Discover, Sovereign, Compass Bank, ATA, Harris Bank, National City. Every Presence result is also reported with ambiguous mentions included (sensitivity S-Ambig). Brands below the floor (D16) are not registry units and are counted as "other" in the descriptives only.
+
+### §5.3 Gone-flag (±150 characters)
+
+A mention is gone-flagged when the locked, case-insensitive lexicon in `score_v0_40.py` (`GONE`; for example "no longer", "defunct", "ceased operations", "merged into/with", "acquired by", "now part of", "rebranded", "formerly", "failed", "shut down", "bankrupt") occurs within 150 characters before or after the mention. The lexicon is not changed after the lock; a change found necessary is a DEVIATIONS entry, with verdicts reported both ways.
+
+### §5.4 Old versus new name
+
+For each ghost mention the coder records whether the successor's name (registry `successor` column, e.g. "Truist" for SunTrust and BB&T) occurs within the same ±150-character window (descriptive 3).
+
+### §5.5 Declared audit sample
+
+Drawn after collection with seed 4040, before any verdict is read: 100 recommendation answers that contain at least one ghost or control mention (all of them if fewer), stratified by arm and condition, and 100 status (S) answers, stratified by arm, condition and role (ghost, control, incumbent). The analyst is the pre-registrant (**PENDING PABLO**: or a delegate he names); he codes each sampled mention for subject, ambiguity, gone-flag and successor name, blind to the coder's codes. Agreement is reported per field (percent agreement and Cohen's κ). Threshold: κ ≥ 0.80 on the gone-flag. Below it the coder is not changed: H_Flag, H_Afterlife and H_Search are reported as computed and marked "coder reliability below threshold", with the analyst-coded rates of the sample beside them.
+
+### §5.6 Sensitivities (reported beside each verdict; no verdict changes)
+
+S-Ambig (ambiguous mentions included); S-Legal (legal-date gaps, `gap_legal_m`, for H_Afterlife and H_Decay; North Fork drops out, SVB changes sign, D3, D6); S-Operating (airline operating share, Delta as leader, D1); S-SunCountry (Sun Country inside Allegiant, D2); S-D4 (banks without Morgan Stanley, Charles Schwab and UBS, D4); S-Discover (H_Flag without the bank living-brand control, §3.2); S-Arm (each verdict's statistic per arm).
+
+### §5.7 Missing data
+
+A call that fails after its attempts is missing; denominators shrink. A test whose evaluable units fall below its floor is UNDETERMINED.
+
+### §5.8 Scoring artefact and tests
+
+`python3 osf/v40/scripts/score_v0_40.py` writes `osf/v40/data/v40_mentions.csv` and `osf/v40/v40_verdicts.json` and is run once. `test_score_v0_40.py` checks the coder and the exact tests and scores two synthetic worlds built from the frozen registry and probe set: one where every effect is present by construction (all six CONFIRMED) and one where none is (H_Reinforce, H_Amplify, H_Afterlife, H_Flag and H_Search FALSIFIED; H_Decay UNDETERMINED at its floor). Record: `prereg/test_score_v0_40.txt`. Implemented in `score_v0_40.py` at r1: S-D4 and S-Discover; the other sensitivities of §5.6 are added before the lock (**PENDING, runner**).
+
+---
+
+## §6 Budget
+
+### §6.1 Cap and prices
+
+At most $100 of paid model calls for this paper, hard cap (programme rule of 2026-11-10), with a pause at $80. Prices from the vendors' pages opened 2026-11-12 (US$ per 1M tokens, input / output): Claude Fable 5.2 $8 / $40 (Batch API 50% off), Claude Opus 5.5 $4 / $20, Claude Opus 4.5 $5 / $25, Claude Sonnet 4.5 $3 / $15 (Anthropic models overview); GPT-6 Astra $10 / $50 (model page), GPT-4o $2.50 / $10.00, GPT-4o mini $0.15 / $0.60 (model pages), web search $10.00 per 1,000 calls (OpenAI pricing page); Gemini 4 Argon $2 / $10 through 2026-11-30, Gemini 2.5 Flash $0.30 / $2.50, Gemini 2.5 Flash-Lite $0.10 / $0.40, output including thinking, grounding $14 per 1,000 for Gemini 3 and newer (Google pricing page, https://aistudio.google.com/docs/pricing; the free allowances are not assumed). Anthropic web search: $10 per 1,000 searches (Anthropic pricing page as quoted in v0.42's budget module, opened 2026-11-10; not re-opened for this draft).
+
+### §6.2 Basis (recorded usage, not guesses)
+
+Current arm: the recorded cost of every t4 call of v0.42 (collected 2026-11-11, the same three models and settings; `cost_usd` per raw line, failed attempts included), per model, phase and condition. Recommendation probes use t4's category questions; K and S probes use t4's brand questions with search off and t4's category questions with search on (t4 asked no brand question with search on; conservative). Claude Opus 5.5 (alternative only): v0.39's recorded tokens. Legacy arm: v0.39's recorded tokens per model at today's prices; the "high" case puts every legacy answer at the 2,048-token cap. Central = mean cost per completed call; high = 90th percentile for every call. Script: `scripts/cost_estimate_v0_40.py`; output `prereg/cost_estimate_v0_40.txt`.
+
+### §6.3 Designs (US$, central / high)
+
+| Design | Calls | Central | High |
+|---|---|---|---|
+| D1 frozen probe set: S0 ×3 and S1 ×3 on all 94 probes, Fable 5.2 (Batch API) | 3,478 | 191.14 | 420.75 |
+| D2 = D1 with S1 ×1 run | 2,914 | 80.62 | 194.75 |
+| D3 = D1 with S1 ×3 on the 32 recommendation probes only | 2,920 | 81.80 | 197.16 |
+| D4 = D1 with S1 ×1 on the 32 recommendation probes only | 2,728 | 44.17 | 120.22 |
+| D5 = D1 with Claude Opus 5.5 (synchronous) instead of Fable 5.2 | 3,478 | 173.68 | 359.14 |
+| D6 = D5 with S1 ×1 run | 2,914 | 76.97 | 169.46 |
+| **D7 (registered) = D1 with S1 ×1 on the 32 recommendation + 31 status probes** | **2,821** | **62.40** | **157.49** |
+
+D7 by cell (central): legacy arm $5.53 (of which Claude Opus 4.5 $2.03); Fable 5.2 S0 $6.01, S1 $11.01; GPT-6 Astra S0 $11.78, S1 $24.77; Gemini 4 Argon S0 $2.04, S1 $1.26. GPT-6 Astra with search on costs $0.39 per call at t4 (central), the largest single cost. The pre-registrant's estimate of about $51 on 2026-11-10 predates t4's recorded usage and the choice of Fable 5.2.
+
+### §6.4 Design trade-off
+
+Search on with three runs on all probes (D1) cannot be afforded. D7 keeps every confirmatory search-off test at three runs (v1.17: about 0.040 per model-brand Presence) and gives the search-on condition one run on the 63 probes that carry H_Search and the search-on descriptives (recommendations and status); the 31 recognition probes are asked without search only. The cost is precision at S1 (one run: about 0.069, §2.10) and no search-on recognition answers. The high case ($157.49) sums each call's 90th percentile and is not a forecast; the guard (§6.5) bounds actual spend. Order protects the tests: the legacy arm and every search-off run come first (central about $25.4), so a budget stop can only shorten the search-on block. Cheaper alternatives if the pre-registrant prefers them: D4 ($44.17; H_Search would lose its status probes and become UNDETERMINED by construction) or D6 with Opus 5.5 ($76.97).
+
+### §6.5 Guard (from actual usage)
+
+`budget_v0_40.py` (fork of v0.42's guard): spend is computed from the recorded usage of every billed request; each request's worst case is reserved before it is sent; no new request once spend reaches $80 until the pre-registrant approves (`--approve-past-80`); no request that could take spend past $100. If the guard stops collection inside the search-on block, H_Search is UNDETERMINED unless its parts can be evaluated on the complete cells, and the shortfall is a DEVIATIONS entry.
+
+---
+
+## §7 Contingencies
+
+- **§7.1 Model unavailable.** Logged; analyses run on the remaining models and denominators shrink. If Claude Opus 4.5 or Claude Sonnet 4.5 is retired before the legacy arm is complete, the arm is reported without it; it is not replaced.
+- **§7.2 Search behaviour in S1.** An S1 answer in which the model chose not to search is kept as recorded; not searching is part of the condition. Tool errors are retried as transient errors; a persistent failure is a missing cell.
+- **§7.3 Manipulation check fails.** As §2.8.
+- **§7.4 Budget.** As §6.5. A pause at $80 waits for the pre-registrant; nothing is sent past $100.
+- **§7.5 Changes.** Any change to probes, registry, coding or thresholds before acquisition is a new revision (`v0.40-prereg-r2`); after acquisition, a DEVIATIONS entry. Tags are additive-only.
+- **§7.6 Known truncation.** Answers of the M5X pass that end at the 2,048-token cap are expected and are not a deviation.
+
+---
+
+## §8 Limitations
+
+1. **One market, one language, two categories.** US airlines and US retail banks, asked in English; the findings describe these models' answers to these questions in November 2026.
+2. **One collection window.** Answers drift between model versions and days; v1.17's precision figures rest on runs collected on one day (§2.10).
+3. **Search on is thin.** One run on 63 probes (§6.4); each provider decides whether and what to search, and the search trace is recorded but not controlled.
+4. **Rule-based coding.** The gone-flag lexicon can miss paraphrases ("now flies as part of Alaska") and can flag living brands whose answers mention a merger they survived (Hawaiian, Sun Country, Discover). The declared audit (§5.5) measures this; the coder is not tuned after the lock.
+5. **Cutoffs are vendor-published and month-level** (R11). Claude Fable 5.2 is assigned Claude Opus 5.5's gap rows because Anthropic gives both a Jun 2026 training-data cutoff; any difference within that month is not resolved.
+6. **Pairs are not independent.** Ghost × model pairs share ghosts, and answers share probes and runs; the exact tests treat them as independent units, and per-ghost and per-model results are reported beside each test.
+7. **The bank living-brand control.** **PENDING PABLO (a/b).** (a) "Discover's deposit accounts were being moved to Capital One during the study (Capital One: 'Your Discover checking account is becoming a Capital One checking account'), so the only bank living-brand control was itself changing status; H_Flag is reported with and without it." (b) "The bank living-brand control was replaced before the lock because Discover's deposit accounts were being moved to Capital One; the replacement, [REPLACEMENT], is [reason from §3.2], and it has the weakness stated there."
+8. **Share measures.** AI share counts answers that name a unit, not rank or prominence. Brokerage-sweep holders enter by the deposit rule (D4); near-floor brands such as USAA are not units (D16) and will be named often.
+9. **Legacy decoding.** The legacy panel runs at temperature 0; three runs per cell may be near-identical, so its run-to-run variation is measured, not assumed.
+10. **No buyer persona.** Every question is asked without a persona or any description of the asker (no system prompt; §4.4), so the scores describe answers to persona-free questions. Outside audits find that a stated buyer persona changes which brands are recommended: category leaders stayed about 80% the same across personas, while mid-market brands swapped up to 75% of the recommended set (Jack, Lehman, Maloney and Xu, arXiv 2605.30207, May 2026; 2,000 runs on one day; authors at Unusual); and U.S.-developed Gemini and GPT models favoured American entities, a pattern that persisted across personas (Rienecker et al., "Auditing Preferences for Brands and Cultures in LLMs" (ChoiceEval), arXiv 2603.18300, March 2026). Whether the results hold for questions asked with a persona is not tested here; no test is added.
+
+---
+
+## §9 Decisions for the pre-registrant (before the lock)
+
+1. **Discover switch (§3.2, §8 item 7): PENDING PABLO (a/b).** (a) keep Discover with the limitation; (b) replace it, choosing one of Merrill, Webster Bank or Fifth Third Bank (reasons in §3.2). The final probe build refuses until this is set.
+2. **Search-on design (§6.3–6.4).** Default D7 (search on, one run, recommendation and status probes; $62.40 central). Alternatives: D4 ($44.17) or D6 with Opus 5.5 ($76.97).
+3. **Anthropic's current model (§4.3).** Default Claude Fable 5.2 through the Message Batches API, as v0.42. Alternative: Claude Opus 5.5, the model Anthropic recommends "for most workloads" and the current arm of v0.38–v0.39.
+4. **OpenAI's current model (§4.3).** Default GPT-6 Astra ("Our most capable model" on its own page). OpenAI's GPT-6.1 Terra page could not be read; if Terra is OpenAI's flagship, it would replace Astra and the cost basis would need a new estimate.
+5. **Audit analyst (§5.5).** Default the pre-registrant; or a delegate he names.
+
+Before the lock, by the runner: the Fable 5.2 technical check (header); the remaining sensitivities and descriptives in `score_v0_40.py` (§5.6, §2.9 items 3–8 beyond those implemented); the conflict-of-interest screen of the v0.40 registry (Declarations); the final probe build after item 1, with its checksum in the manifest and in `acquire_v0_40.py`; the anchor file; and the personal-details check of the three older commits before the first push.
+
+---
+
+## §10 Declarations
+
+## Conflict of interest {-}
+
+The author is Director, Corporate Brand Creative and Governance at Samsung Electronics America. Samsung does not compete in US airlines or US retail banking; banking has an adjacency through Samsung Wallet, which is disclosed here. The programme's record from the v0.62 pre-registration reads: "Cheil Worldwide, a marketing company of the Samsung group in which Samsung Electronics holds 28.43%, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024)." None of those five brands is in the v0.40 registry. Whether Cheil Worldwide or Iris has worked for any v0.40 registry brand has not yet been screened; the screen is recorded as DEVIATIONS Entry 0 before the lock (**PENDING, runner**). No brand was contacted. Acquisition, coding and scoring are fully automated against the frozen registry, and this pre-registration is locked and deposited before the first call. Samsung Electronics had no role in the design, conduct, analysis or reporting of this work.
+
+## Funding {-}
+
+Self-funded.
+
+## Ethics {-}
+
+Not applicable; no human subjects. Public model APIs, including the providers' own web search tools, and public official data (BTS, FDIC, SEC filings).
+
+## Use of AI tools {-}
+
+During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it.
+
+---
+
+## §11 Deliverables, lock and sources
+
+**Deliverables.** Raw answers with search traces (JSONL); coded mention table (CSV); verdicts (JSON); figures; the Third System report (managerial register) and the SSRN-format paper (academic register); data on OSF (`ec6wh` → `v40`). Every test is reported, including failures.
+
+**Lock.** `prereg/LOCK_MANIFEST_v0_40.sha256` lists the SHA-256 of this file, the probe set, the cost estimate, the dry-run and test records, the technical check, every script under `osf/v40/scripts/` and the frozen registry inputs and outputs. It is refreshed at the lock (step 4), committed, tagged `v0.40-prereg-r1`, pushed, and deposited with `osf/v40/prereg` and `osf/v40/registries`. No study probe before tag and deposit.
+
+### Sources cited in this pre-registration
+- Anthropic, Models overview (opened 2026-11-12): https://platform.claude.com/docs/en/about-claude/models/overview.md
+- OpenAI, GPT-6 Astra model page (opened 2026-11-12): https://developers.openai.com/docs/models/gpt-6-astra ; pricing: https://developers.openai.com/api/docs/pricing ; GPT-4o: https://developers.openai.com/api/docs/models/gpt-4o.md ; GPT-4o mini: https://developers.openai.com/api/docs/models/gpt-4o-mini.md ; GPT-6.1 Terra announcement (not fetched, client error): https://openai.com/index/introducing-gpt-6-1-terra/
+- Google, Gemini API latest model (opened 2026-11-12): https://ai.google.dev/gemini-api/docs/latest-model ; pricing: https://aistudio.google.com/docs/pricing ; Gemini 4 Carbon (Google Cloud): https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-carbon
+- Capital One, Discover checking update: https://www.capitalone.com/updates/discover/checking/ (as cited in registry draft r3, §5 item 5)
+- Registry sources: `osf/v40/registries/out/v0_40_registry_draft.md` (r3, frozen 2026-11-12) and its CSV source columns
+- Method v1.17 results note: `osf/methodology/v1_17/outputs/RESULTS_NOTE_v1_17.md` (tag `v1.17-prereg-r1`)
+- Jack, Lehman, Maloney and Xu, arXiv 2605.30207 (May 2026); Rienecker et al., "Auditing Preferences for Brands and Cultures in LLMs" (ChoiceEval), arXiv 2603.18300 (March 2026)
+- MSI Working Paper *Tri-System Brand Growth: The AI Mediation Layer*, Report No. 26-132
