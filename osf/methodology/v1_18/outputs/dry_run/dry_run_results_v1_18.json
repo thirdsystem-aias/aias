@@ -1,0 +1,2579 @@
+{
+ "primary": {
+  "brands": {
+   "v19:B1": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 20.0,
+    "Y_own_plus_listings": 70.0,
+    "M_not_owned": 90.0
+   },
+   "v19:B2": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 30.0,
+    "Y_own_plus_listings": 60.0,
+    "M_not_owned": 90.0
+   },
+   "v19:B3": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 40.0,
+    "Y_own_plus_listings": 50.0,
+    "M_not_owned": 90.0
+   },
+   "v19:B4": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 50.0,
+    "Y_own_plus_listings": 40.0,
+    "M_not_owned": 90.0
+   },
+   "v19:B5": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 60.0,
+    "Y_own_plus_listings": 30.0,
+    "M_not_owned": 90.0
+   },
+   "v19:B6": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v19",
+    "K_own_domain": 10.0,
+    "P_any_company": 70.0,
+    "Y_own_plus_listings": 20.0,
+    "M_not_owned": 90.0
+   },
+   "v19:THIN": {
+    "g": 3,
+    "rated": false,
+    "substrate": "v19",
+    "K_own_domain": null,
+    "P_any_company": null,
+    "Y_own_plus_listings": null,
+    "M_not_owned": null
+   },
+   "v20:B1": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 20.0,
+    "Y_own_plus_listings": 70.0,
+    "M_not_owned": 90.0
+   },
+   "v20:B2": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 30.0,
+    "Y_own_plus_listings": 60.0,
+    "M_not_owned": 90.0
+   },
+   "v20:B3": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 40.0,
+    "Y_own_plus_listings": 50.0,
+    "M_not_owned": 90.0
+   },
+   "v20:B4": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 50.0,
+    "Y_own_plus_listings": 40.0,
+    "M_not_owned": 90.0
+   },
+   "v20:B5": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 60.0,
+    "Y_own_plus_listings": 30.0,
+    "M_not_owned": 90.0
+   },
+   "v20:B6": {
+    "g": 9,
+    "rated": true,
+    "substrate": "v20",
+    "K_own_domain": 10.0,
+    "P_any_company": 70.0,
+    "Y_own_plus_listings": 20.0,
+    "M_not_owned": 90.0
+   },
+   "v20:THIN": {
+    "g": 3,
+    "rated": false,
+    "substrate": "v20",
+    "K_own_domain": null,
+    "P_any_company": null,
+    "Y_own_plus_listings": null,
+    "M_not_owned": null
+   }
+  },
+  "program": {
+   "pair_weighted": {
+    "K_own_domain": 9.473684210526315,
+    "P_any_company": 43.68421052631579,
+    "Y_own_plus_listings": 45.78947368421053,
+    "M_not_owned": 90.52631578947368
+   },
+   "brand_weighted": {
+    "K_own_domain": 10.0,
+    "P_any_company": 45.0,
+    "Y_own_plus_listings": 45.0,
+    "M_not_owned": 90.0
+   },
+   "n_pairs": 114,
+   "n_rated": 12,
+   "mix_pair_weighted": {
+    "focal": 9.473684210526315,
+    "company": 34.21052631578947,
+    "listing": 36.31578947368421,
+    "review_social": 10.0,
+    "editorial_other": 10.0,
+    "UNRESOLVED": 0.0
+   }
+  },
+  "agreement": {
+   "K_own_domain~P_any_company": {
+    "rho_w": null,
+    "n_rho": 12,
+    "identity": false,
+    "n": 12,
+    "share_changed": 0.6666666666666666,
+    "share_changed_secondary": {
+     "10.0": 0.8333333333333334,
+     "50.0": 0.16666666666666666
+    }
+   },
+   "K_own_domain~Y_own_plus_listings": {
+    "rho_w": null,
+    "n_rho": 12,
+    "identity": false,
+    "n": 12,
+    "share_changed": 0.6666666666666666,
+    "share_changed_secondary": {
+     "10.0": 0.8333333333333334,
+     "50.0": 0.16666666666666666
+    }
+   },
+   "K_own_domain~M_not_owned": {
+    "rho_w": null,
+    "n_rho": 12,
+    "identity": true,
+    "n": 12,
+    "share_changed": 1.0,
+    "share_changed_secondary": {
+     "10.0": 1.0,
+     "50.0": 1.0
+    }
+   },
+   "P_any_company~Y_own_plus_listings": {
+    "rho_w": -1.0,
+    "n_rho": 12,
+    "identity": false,
+    "n": 12,
+    "share_changed": 0.6666666666666666,
+    "share_changed_secondary": {
+     "10.0": 0.6666666666666666,
+     "50.0": 0.0
+    }
+   },
+   "P_any_company~M_not_owned": {
+    "rho_w": null,
+    "n_rho": 12,
+    "identity": false,
+    "n": 12,
+    "share_changed": 0.8333333333333334,
+    "share_changed_secondary": {
+     "10.0": 1.0,
+     "50.0": 0.3333333333333333
+    }
+   },
+   "Y_own_plus_listings~M_not_owned": {
+    "rho_w": null,
+    "n_rho": 12,
+    "identity": false,
+    "n": 12,
+    "share_changed": 0.8333333333333334,
+    "share_changed_secondary": {
+     "10.0": 1.0,
+     "50.0": 0.3333333333333333
+    }
+   }
+  }
+ },
+ "primary_ci": {
+  "brand": {
+   "v19:B5|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1658
+   ],
+   "v19:B5|P_any_company": [
+    59.99999999999999,
+    60.0,
+    1658
+   ],
+   "v19:B5|Y_own_plus_listings": [
+    29.999999999999996,
+    30.0,
+    1658
+   ],
+   "v19:B5|M_not_owned": [
+    90.0,
+    90.0,
+    1658
+   ],
+   "v19:THIN|K_own_domain": [
+    0.0,
+    0.0,
+    539
+   ],
+   "v19:THIN|P_any_company": [
+    20.0,
+    20.000000000000004,
+    539
+   ],
+   "v19:THIN|Y_own_plus_listings": [
+    59.99999999999999,
+    60.0,
+    539
+   ],
+   "v19:THIN|M_not_owned": [
+    100.0,
+    100.0,
+    539
+   ],
+   "v19:B1|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1676
+   ],
+   "v19:B1|P_any_company": [
+    20.0,
+    20.000000000000004,
+    1676
+   ],
+   "v19:B1|Y_own_plus_listings": [
+    69.99999999999999,
+    70.0,
+    1676
+   ],
+   "v19:B1|M_not_owned": [
+    90.0,
+    90.0,
+    1676
+   ],
+   "v19:B3|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1647
+   ],
+   "v19:B3|P_any_company": [
+    40.0,
+    40.00000000000001,
+    1647
+   ],
+   "v19:B3|Y_own_plus_listings": [
+    50.0,
+    50.0,
+    1647
+   ],
+   "v19:B3|M_not_owned": [
+    90.0,
+    90.0,
+    1647
+   ],
+   "v19:B2|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1607
+   ],
+   "v19:B2|P_any_company": [
+    29.999999999999996,
+    30.0,
+    1607
+   ],
+   "v19:B2|Y_own_plus_listings": [
+    59.99999999999999,
+    60.0,
+    1607
+   ],
+   "v19:B2|M_not_owned": [
+    90.0,
+    90.0,
+    1607
+   ],
+   "v19:B6|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1656
+   ],
+   "v19:B6|P_any_company": [
+    69.99999999999999,
+    70.0,
+    1656
+   ],
+   "v19:B6|Y_own_plus_listings": [
+    20.0,
+    20.000000000000004,
+    1656
+   ],
+   "v19:B6|M_not_owned": [
+    90.0,
+    90.0,
+    1656
+   ],
+   "v20:B2|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1686
+   ],
+   "v20:B2|P_any_company": [
+    29.999999999999996,
+    30.0,
+    1686
+   ],
+   "v20:B2|Y_own_plus_listings": [
+    59.99999999999999,
+    60.0,
+    1686
+   ],
+   "v20:B2|M_not_owned": [
+    90.0,
+    90.0,
+    1686
+   ],
+   "v20:B1|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1671
+   ],
+   "v20:B1|P_any_company": [
+    20.0,
+    20.000000000000004,
+    1671
+   ],
+   "v20:B1|Y_own_plus_listings": [
+    69.99999999999999,
+    70.0,
+    1671
+   ],
+   "v20:B1|M_not_owned": [
+    90.0,
+    90.0,
+    1671
+   ],
+   "v20:B4|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1622
+   ],
+   "v20:B4|P_any_company": [
+    50.0,
+    50.0,
+    1622
+   ],
+   "v20:B4|Y_own_plus_listings": [
+    40.0,
+    40.00000000000001,
+    1622
+   ],
+   "v20:B4|M_not_owned": [
+    90.0,
+    90.0,
+    1622
+   ],
+   "v20:B5|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1642
+   ],
+   "v20:B5|P_any_company": [
+    59.99999999999999,
+    60.0,
+    1642
+   ],
+   "v20:B5|Y_own_plus_listings": [
+    29.999999999999996,
+    30.0,
+    1642
+   ],
+   "v20:B5|M_not_owned": [
+    90.0,
+    90.0,
+    1642
+   ],
+   "v20:B3|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1647
+   ],
+   "v20:B3|P_any_company": [
+    40.0,
+    40.00000000000001,
+    1647
+   ],
+   "v20:B3|Y_own_plus_listings": [
+    50.0,
+    50.0,
+    1647
+   ],
+   "v20:B3|M_not_owned": [
+    90.0,
+    90.0,
+    1647
+   ],
+   "v20:THIN|K_own_domain": [
+    0.0,
+    0.0,
+    528
+   ],
+   "v20:THIN|P_any_company": [
+    20.0,
+    20.000000000000004,
+    528
+   ],
+   "v20:THIN|Y_own_plus_listings": [
+    59.99999999999999,
+    60.0,
+    528
+   ],
+   "v20:THIN|M_not_owned": [
+    100.0,
+    100.0,
+    528
+   ],
+   "v19:B4|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1657
+   ],
+   "v19:B4|P_any_company": [
+    50.0,
+    50.0,
+    1657
+   ],
+   "v19:B4|Y_own_plus_listings": [
+    40.0,
+    40.00000000000001,
+    1657
+   ],
+   "v19:B4|M_not_owned": [
+    90.0,
+    90.0,
+    1657
+   ],
+   "v20:B6|K_own_domain": [
+    10.0,
+    10.000000000000002,
+    1661
+   ],
+   "v20:B6|P_any_company": [
+    69.99999999999999,
+    70.0,
+    1661
+   ],
+   "v20:B6|Y_own_plus_listings": [
+    20.0,
+    20.000000000000004,
+    1661
+   ],
+   "v20:B6|M_not_owned": [
+    90.0,
+    90.0,
+    1661
+   ]
+  },
+  "program_pair_weighted": {
+   "K_own_domain": [
+    8.78048780487805,
+    10.0,
+    2000
+   ],
+   "P_any_company": [
+    38.648648648648646,
+    48.650426742532,
+    2000
+   ],
+   "Y_own_plus_listings": [
+    41.08108108108108,
+    50.51282051282051,
+    2000
+   ],
+   "M_not_owned": [
+    90.0,
+    91.21951219512195,
+    2000
+   ]
+  },
+  "rho_w": {
+   "K_own_domain~P_any_company": [
+    -0.5773502691896257,
+    0.7071067811865475,
+    1908
+   ],
+   "K_own_domain~Y_own_plus_listings": [
+    -0.6633535516207036,
+    0.5773502691896257,
+    1908
+   ],
+   "K_own_domain~M_not_owned": [
+    -0.8215838362577491,
+    -0.4743416490252569,
+    985
+   ],
+   "P_any_company~Y_own_plus_listings": [
+    -1.0,
+    -0.9358192003574065,
+    1920
+   ],
+   "P_any_company~M_not_owned": [
+    -0.5764750357998786,
+    0.0,
+    985
+   ],
+   "Y_own_plus_listings~M_not_owned": [
+    -0.15811388300841897,
+    0.40824829046386296,
+    985
+   ]
+  },
+  "share_changed": {
+   "K_own_domain~P_any_company": [
+    0.5,
+    0.7777777777777778,
+    2000
+   ],
+   "K_own_domain~Y_own_plus_listings": [
+    0.6,
+    0.8,
+    2000
+   ],
+   "K_own_domain~M_not_owned": [
+    1.0,
+    1.0,
+    2000
+   ],
+   "P_any_company~Y_own_plus_listings": [
+    0.5555555555555556,
+    0.8,
+    2000
+   ],
+   "P_any_company~M_not_owned": [
+    0.7777777777777778,
+    0.9166666666666666,
+    2000
+   ],
+   "Y_own_plus_listings~M_not_owned": [
+    0.7777777777777778,
+    0.9090909090909091,
+    2000
+   ]
+  },
+  "seed": 118001,
+  "n_boot": 2000,
+  "level": 90.0
+ },
+ "sensitivities": {
+  "S1_unresolved_out": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 18.181818181818183,
+     "Y_own_plus_listings": 63.63636363636364,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 27.272727272727266,
+     "Y_own_plus_listings": 54.54545454545453,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 36.36363636363637,
+     "Y_own_plus_listings": 45.45454545454545,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 45.45454545454545,
+     "Y_own_plus_listings": 36.36363636363637,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 54.54545454545453,
+     "Y_own_plus_listings": 27.272727272727266,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 63.63636363636364,
+     "Y_own_plus_listings": 18.181818181818183,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 18.181818181818183,
+     "Y_own_plus_listings": 63.63636363636364,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 27.272727272727266,
+     "Y_own_plus_listings": 54.54545454545453,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 36.36363636363637,
+     "Y_own_plus_listings": 45.45454545454545,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 45.45454545454545,
+     "Y_own_plus_listings": 36.36363636363637,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 54.54545454545453,
+     "Y_own_plus_listings": 27.272727272727266,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 63.63636363636364,
+     "Y_own_plus_listings": 18.181818181818183,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 8.61244019138756,
+     "P_any_company": 39.71291866028708,
+     "Y_own_plus_listings": 41.6267942583732,
+     "M_not_owned": 91.38755980861244
+    },
+    "brand_weighted": {
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 40.90909090909091,
+     "Y_own_plus_listings": 40.90909090909091,
+     "M_not_owned": 90.90909090909092
+    },
+    "n_pairs": 114,
+    "n_rated": 12,
+    "mix_pair_weighted": {
+     "focal": 8.61244019138756,
+     "company": 31.10047846889952,
+     "listing": 33.014354066985646,
+     "review_social": 9.09090909090909,
+     "editorial_other": 9.09090909090909,
+     "UNRESOLVED": 9.09090909090909
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": true,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.6666666666666666,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.5
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.5
+     }
+    }
+   }
+  },
+  "S1_unresolved_in": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 27.272727272727266,
+     "Y_own_plus_listings": 72.72727272727273,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 36.36363636363637,
+     "Y_own_plus_listings": 63.63636363636364,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 45.45454545454545,
+     "Y_own_plus_listings": 54.54545454545453,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 54.54545454545453,
+     "Y_own_plus_listings": 45.45454545454545,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 63.63636363636364,
+     "Y_own_plus_listings": 36.36363636363637,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 72.72727272727273,
+     "Y_own_plus_listings": 27.272727272727266,
+     "M_not_owned": 90.9090909090909
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 27.272727272727266,
+     "Y_own_plus_listings": 72.72727272727273,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 36.36363636363637,
+     "Y_own_plus_listings": 63.63636363636364,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 45.45454545454545,
+     "Y_own_plus_listings": 54.54545454545453,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 54.54545454545453,
+     "Y_own_plus_listings": 45.45454545454545,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 63.63636363636364,
+     "Y_own_plus_listings": 36.36363636363637,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 72.72727272727273,
+     "Y_own_plus_listings": 27.272727272727266,
+     "M_not_owned": 90.9090909090909
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 8.61244019138756,
+     "P_any_company": 48.80382775119617,
+     "Y_own_plus_listings": 50.717703349282296,
+     "M_not_owned": 91.38755980861244
+    },
+    "brand_weighted": {
+     "K_own_domain": 9.090909090909092,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.90909090909092
+    },
+    "n_pairs": 114,
+    "n_rated": 12,
+    "mix_pair_weighted": {
+     "focal": 8.61244019138756,
+     "company": 31.10047846889952,
+     "listing": 33.014354066985646,
+     "review_social": 9.09090909090909,
+     "editorial_other": 9.09090909090909,
+     "UNRESOLVED": 9.09090909090909
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": true,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.6666666666666666,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    }
+   }
+  },
+  "S2_retailer_as_company": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.473684210526315,
+     "P_any_company": 43.68421052631579,
+     "Y_own_plus_listings": 45.78947368421053,
+     "M_not_owned": 90.52631578947368
+    },
+    "brand_weighted": {
+     "K_own_domain": 10.0,
+     "P_any_company": 45.0,
+     "Y_own_plus_listings": 45.0,
+     "M_not_owned": 90.0
+    },
+    "n_pairs": 114,
+    "n_rated": 12,
+    "mix_pair_weighted": {
+     "focal": 9.473684210526315,
+     "company": 34.21052631578947,
+     "listing": 36.31578947368421,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": true,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.6666666666666666,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    }
+   }
+  },
+  "S3_alias_focal": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.473684210526315,
+     "P_any_company": 43.68421052631579,
+     "Y_own_plus_listings": 45.78947368421053,
+     "M_not_owned": 90.52631578947368
+    },
+    "brand_weighted": {
+     "K_own_domain": 10.0,
+     "P_any_company": 45.0,
+     "Y_own_plus_listings": 45.0,
+     "M_not_owned": 90.0
+    },
+    "n_pairs": 114,
+    "n_rated": 12,
+    "mix_pair_weighted": {
+     "focal": 9.473684210526315,
+     "company": 34.21052631578947,
+     "listing": 36.31578947368421,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.8333333333333334,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": true,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.6666666666666666,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    }
+   }
+  },
+  "S4_floor_3": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 0.0,
+     "P_any_company": 20.000000000000004,
+     "Y_own_plus_listings": 59.99999999999999,
+     "M_not_owned": 100.0
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 0.0,
+     "P_any_company": 20.000000000000004,
+     "Y_own_plus_listings": 59.99999999999999,
+     "M_not_owned": 100.0
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.473684210526315,
+     "P_any_company": 43.68421052631579,
+     "Y_own_plus_listings": 45.78947368421053,
+     "M_not_owned": 90.52631578947368
+    },
+    "brand_weighted": {
+     "K_own_domain": 8.571428571428571,
+     "P_any_company": 41.42857142857143,
+     "Y_own_plus_listings": 47.142857142857146,
+     "M_not_owned": 91.42857142857143
+    },
+    "n_pairs": 114,
+    "n_rated": 14,
+    "mix_pair_weighted": {
+     "focal": 9.473684210526315,
+     "company": 34.21052631578947,
+     "listing": 36.31578947368421,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": 0.40824829046386296,
+     "n_rho": 14,
+     "identity": false,
+     "n": 14,
+     "share_changed": 0.5714285714285714,
+     "share_changed_secondary": {
+      "10.0": 0.8571428571428571,
+      "50.0": 0.14285714285714285
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": -0.20412414523193148,
+     "n_rho": 14,
+     "identity": false,
+     "n": 14,
+     "share_changed": 0.7142857142857143,
+     "share_changed_secondary": {
+      "10.0": 0.8571428571428571,
+      "50.0": 0.2857142857142857
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": -1.0,
+     "n_rho": 14,
+     "identity": true,
+     "n": 14,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -0.9642857142857143,
+     "n_rho": 14,
+     "identity": false,
+     "n": 14,
+     "share_changed": 0.7142857142857143,
+     "share_changed_secondary": {
+      "10.0": 0.7142857142857143,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": -0.40824829046386296,
+     "n_rho": 14,
+     "identity": false,
+     "n": 14,
+     "share_changed": 0.8571428571428571,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.42857142857142855
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": 0.20412414523193148,
+     "n_rho": 14,
+     "identity": false,
+     "n": 14,
+     "share_changed": 0.8571428571428571,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.2857142857142857
+     }
+    }
+   }
+  },
+  "S4_floor_10": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:B6": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.473684210526315,
+     "P_any_company": 43.68421052631579,
+     "Y_own_plus_listings": 45.78947368421053,
+     "M_not_owned": 90.52631578947368
+    },
+    "brand_weighted": {
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "n_pairs": 114,
+    "n_rated": 0,
+    "mix_pair_weighted": {
+     "focal": 9.473684210526315,
+     "company": 34.21052631578947,
+     "listing": 36.31578947368421,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": false,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": false,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": true,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": false,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": false,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 0,
+     "identity": false,
+     "n": 0,
+     "share_changed": null,
+     "share_changed_secondary": {
+      "10.0": null,
+      "50.0": null
+     }
+    }
+   }
+  },
+  "S6_without_denon": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.428571428571429,
+     "P_any_company": 41.42857142857143,
+     "Y_own_plus_listings": 48.0,
+     "M_not_owned": 90.57142857142857
+    },
+    "brand_weighted": {
+     "K_own_domain": 10.0,
+     "P_any_company": 42.72727272727273,
+     "Y_own_plus_listings": 47.27272727272727,
+     "M_not_owned": 90.0
+    },
+    "n_pairs": 105,
+    "n_rated": 11,
+    "mix_pair_weighted": {
+     "focal": 9.428571428571429,
+     "company": 32.0,
+     "listing": 38.57142857142857,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.6363636363636364,
+     "share_changed_secondary": {
+      "10.0": 0.8181818181818182,
+      "50.0": 0.09090909090909091
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.7272727272727273,
+     "share_changed_secondary": {
+      "10.0": 0.9090909090909091,
+      "50.0": 0.18181818181818182
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": true,
+     "n": 11,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.6363636363636364,
+     "share_changed_secondary": {
+      "10.0": 0.6363636363636364,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.9090909090909091,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.36363636363636365
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.8181818181818182,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.2727272727272727
+     }
+    }
+   }
+  },
+  "S6_COI_without_denon_and_agency_five": {
+   "brands": {
+    "v19:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 20.0,
+     "Y_own_plus_listings": 70.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 30.0,
+     "Y_own_plus_listings": 60.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 40.0,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 60.0,
+     "Y_own_plus_listings": 30.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 9,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.0,
+     "P_any_company": 70.0,
+     "Y_own_plus_listings": 20.0,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.428571428571429,
+     "P_any_company": 41.42857142857143,
+     "Y_own_plus_listings": 48.0,
+     "M_not_owned": 90.57142857142857
+    },
+    "brand_weighted": {
+     "K_own_domain": 10.0,
+     "P_any_company": 42.72727272727273,
+     "Y_own_plus_listings": 47.27272727272727,
+     "M_not_owned": 90.0
+    },
+    "n_pairs": 105,
+    "n_rated": 11,
+    "mix_pair_weighted": {
+     "focal": 9.428571428571429,
+     "company": 32.0,
+     "listing": 38.57142857142857,
+     "review_social": 10.0,
+     "editorial_other": 10.0,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.6363636363636364,
+     "share_changed_secondary": {
+      "10.0": 0.8181818181818182,
+      "50.0": 0.09090909090909091
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.7272727272727273,
+     "share_changed_secondary": {
+      "10.0": 0.9090909090909091,
+      "50.0": 0.18181818181818182
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": true,
+     "n": 11,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.6363636363636364,
+     "share_changed_secondary": {
+      "10.0": 0.6363636363636364,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.9090909090909091,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.36363636363636365
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 11,
+     "identity": false,
+     "n": 11,
+     "share_changed": 0.8181818181818182,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.2727272727272727
+     }
+    }
+   }
+  },
+  "S7_without_gemini": {
+   "brands": {
+    "v19:B1": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 20.000000000000004,
+     "Y_own_plus_listings": 69.99999999999999,
+     "M_not_owned": 90.0
+    },
+    "v19:B2": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 29.999999999999996,
+     "Y_own_plus_listings": 59.99999999999999,
+     "M_not_owned": 90.0
+    },
+    "v19:B3": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 40.00000000000001,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v19:B4": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.00000000000001,
+     "M_not_owned": 90.0
+    },
+    "v19:B5": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 59.99999999999999,
+     "Y_own_plus_listings": 29.999999999999996,
+     "M_not_owned": 90.0
+    },
+    "v19:B6": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v19",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 69.99999999999999,
+     "Y_own_plus_listings": 20.000000000000004,
+     "M_not_owned": 90.0
+    },
+    "v19:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v19",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    },
+    "v20:B1": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 20.000000000000004,
+     "Y_own_plus_listings": 69.99999999999999,
+     "M_not_owned": 90.0
+    },
+    "v20:B2": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 29.999999999999996,
+     "Y_own_plus_listings": 59.99999999999999,
+     "M_not_owned": 90.0
+    },
+    "v20:B3": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 40.00000000000001,
+     "Y_own_plus_listings": 50.0,
+     "M_not_owned": 90.0
+    },
+    "v20:B4": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 50.0,
+     "Y_own_plus_listings": 40.00000000000001,
+     "M_not_owned": 90.0
+    },
+    "v20:B5": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 59.99999999999999,
+     "Y_own_plus_listings": 29.999999999999996,
+     "M_not_owned": 90.0
+    },
+    "v20:B6": {
+     "g": 6,
+     "rated": true,
+     "substrate": "v20",
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 69.99999999999999,
+     "Y_own_plus_listings": 20.000000000000004,
+     "M_not_owned": 90.0
+    },
+    "v20:THIN": {
+     "g": 3,
+     "rated": false,
+     "substrate": "v20",
+     "K_own_domain": null,
+     "P_any_company": null,
+     "Y_own_plus_listings": null,
+     "M_not_owned": null
+    }
+   },
+   "program": {
+    "pair_weighted": {
+     "K_own_domain": 9.23076923076923,
+     "P_any_company": 43.07692307692308,
+     "Y_own_plus_listings": 46.15384615384615,
+     "M_not_owned": 90.76923076923077
+    },
+    "brand_weighted": {
+     "K_own_domain": 10.000000000000002,
+     "P_any_company": 45.0,
+     "Y_own_plus_listings": 45.0,
+     "M_not_owned": 90.0
+    },
+    "n_pairs": 78,
+    "n_rated": 12,
+    "mix_pair_weighted": {
+     "focal": 9.23076923076923,
+     "company": 33.84615384615385,
+     "listing": 36.92307692307692,
+     "review_social": 10.000000000000002,
+     "editorial_other": 10.000000000000002,
+     "UNRESOLVED": 0.0
+    }
+   },
+   "agreement": {
+    "K_own_domain~P_any_company": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~Y_own_plus_listings": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.16666666666666666
+     }
+    },
+    "K_own_domain~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": true,
+     "n": 12,
+     "share_changed": 1.0,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 1.0
+     }
+    },
+    "P_any_company~Y_own_plus_listings": {
+     "rho_w": -1.0,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.6666666666666666,
+     "share_changed_secondary": {
+      "10.0": 0.6666666666666666,
+      "50.0": 0.0
+     }
+    },
+    "P_any_company~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    },
+    "Y_own_plus_listings~M_not_owned": {
+     "rho_w": null,
+     "n_rho": 12,
+     "identity": false,
+     "n": 12,
+     "share_changed": 0.8333333333333334,
+     "share_changed_secondary": {
+      "10.0": 1.0,
+      "50.0": 0.3333333333333333
+     }
+    }
+   }
+  }
+ }
+}

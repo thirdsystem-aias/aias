@@ -1,0 +1,38 @@
+{
+ "t4_sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+ "records_in_file": 990,
+ "records_after_dedupe": 876,
+ "answered_s1_category_n3": 270,
+ "loader_check_vs_v1_13_MQ1_270": true,
+ "mq8_reproduced": {
+  "google": {
+   "answers": 90,
+   "with_citations": 16,
+   "cited": 122
+  },
+  "openai": {
+   "answers": 90,
+   "with_citations": 86,
+   "cited": 516
+  },
+  "anthropic": {
+   "answers": 90,
+   "with_citations": 75,
+   "cited": 557
+  }
+ },
+ "distinct_domains": {
+  "citations": 339,
+  "sources": 1344
+ },
+ "distinct_domains_union": 1345,
+ "distinct_in_any_D_b": {
+  "citations": 21,
+  "sources": 32
+ },
+ "to_classify": 1312,
+ "url_unresolved_entries": {
+  "citations": 0,
+  "sources": 0
+ }
+}

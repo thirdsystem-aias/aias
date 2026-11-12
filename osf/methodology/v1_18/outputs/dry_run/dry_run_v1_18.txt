@@ -1,0 +1,74 @@
+v1.18 synthetic dry run (2026-11-12T10:32:32.052944+00:00), bootstrap draws 2000
+PASS  v19:B1 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B1 P_any_company  got=20.0 expected=20.0
+PASS  v19:B1 Y_own_plus_listings  got=70.0 expected=70.0
+PASS  v19:B1 M_not_owned  got=90.0 expected=90.0
+PASS  v19:B2 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B2 P_any_company  got=30.0 expected=30.0
+PASS  v19:B2 Y_own_plus_listings  got=60.0 expected=60.0
+PASS  v19:B2 M_not_owned  got=90.0 expected=90.0
+PASS  v19:B3 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B3 P_any_company  got=40.0 expected=40.0
+PASS  v19:B3 Y_own_plus_listings  got=50.0 expected=50.0
+PASS  v19:B3 M_not_owned  got=90.0 expected=90.0
+PASS  v19:B4 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B4 P_any_company  got=50.0 expected=50.0
+PASS  v19:B4 Y_own_plus_listings  got=40.0 expected=40.0
+PASS  v19:B4 M_not_owned  got=90.0 expected=90.0
+PASS  v19:B5 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B5 P_any_company  got=60.0 expected=60.0
+PASS  v19:B5 Y_own_plus_listings  got=30.0 expected=30.0
+PASS  v19:B5 M_not_owned  got=90.0 expected=90.0
+PASS  v19:B6 K_own_domain  got=10.0 expected=10.0
+PASS  v19:B6 P_any_company  got=70.0 expected=70.0
+PASS  v19:B6 Y_own_plus_listings  got=20.0 expected=20.0
+PASS  v19:B6 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B1 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B1 P_any_company  got=20.0 expected=20.0
+PASS  v20:B1 Y_own_plus_listings  got=70.0 expected=70.0
+PASS  v20:B1 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B2 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B2 P_any_company  got=30.0 expected=30.0
+PASS  v20:B2 Y_own_plus_listings  got=60.0 expected=60.0
+PASS  v20:B2 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B3 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B3 P_any_company  got=40.0 expected=40.0
+PASS  v20:B3 Y_own_plus_listings  got=50.0 expected=50.0
+PASS  v20:B3 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B4 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B4 P_any_company  got=50.0 expected=50.0
+PASS  v20:B4 Y_own_plus_listings  got=40.0 expected=40.0
+PASS  v20:B4 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B5 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B5 P_any_company  got=60.0 expected=60.0
+PASS  v20:B5 Y_own_plus_listings  got=30.0 expected=30.0
+PASS  v20:B5 M_not_owned  got=90.0 expected=90.0
+PASS  v20:B6 K_own_domain  got=10.0 expected=10.0
+PASS  v20:B6 P_any_company  got=70.0 expected=70.0
+PASS  v20:B6 Y_own_plus_listings  got=20.0 expected=20.0
+PASS  v20:B6 M_not_owned  got=90.0 expected=90.0
+PASS  v19:NONE absent  got=None expected=None
+PASS  v19:THIN not rated (g=3)  got=None expected=None
+PASS  v20:NONE absent  got=None expected=None
+PASS  v20:THIN not rated (g=3)  got=None expected=None
+PASS  rho_w(P,Y) = -1  got=-1.0 expected=-1
+PASS  rho_w(K,P) undefined (K constant)  got=None expected=None
+PASS  share_changed>25 K_own_domain~P_any_company  got=0.6666666666666666 expected=0.6666666666666666
+PASS  share_changed>25 K_own_domain~Y_own_plus_listings  got=0.6666666666666666 expected=0.6666666666666666
+PASS  share_changed>25 K_own_domain~M_not_owned  got=1.0 expected=1.0
+PASS  share_changed>25 P_any_company~Y_own_plus_listings  got=0.6666666666666666 expected=0.6666666666666666
+PASS  share_changed>25 P_any_company~M_not_owned  got=0.8333333333333334 expected=0.8333333333333334
+PASS  share_changed>25 Y_own_plus_listings~M_not_owned  got=0.8333333333333334 expected=0.8333333333333334
+PASS  program pair-weighted K_own_domain  got=9.473684210526315 expected=9.473684210526315
+PASS  program pair-weighted P_any_company  got=43.68421052631579 expected=43.68421052631579
+PASS  program pair-weighted Y_own_plus_listings  got=45.78947368421053 expected=45.78947368421053
+PASS  program pair-weighted M_not_owned  got=90.52631578947368 expected=90.52631578947368
+PASS  program brand-weighted K_own_domain  got=10.0 expected=10
+PASS  program brand-weighted P_any_company  got=45.0 expected=45
+PASS  program brand-weighted Y_own_plus_listings  got=45.0 expected=45
+PASS  program brand-weighted M_not_owned  got=90.0 expected=90
+PASS  bootstrap CI degenerate v19:B1 P  got=[20.0, 20.000000000000004] expected=20
+PASS  bootstrap CI degenerate v19:B6 P  got=[69.99999999999999, 70.0] expected=70
+PASS  S1 unresolved counted out: K = 100/11  got=9.090909090909092 expected=9.090909090909092
+PASS  S6 without B6  got=None expected=None
+72/72 checks pass
