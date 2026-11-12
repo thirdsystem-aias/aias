@@ -87,7 +87,7 @@ def write_world(d, world, verdict="PASS", tamper=False):
     return {"a_raw": d / "v112_raw.jsonl", "a_coded": d / "coded", "a_verdicts": d / "v112_verdicts.json",
             "a_unit_table": d / "v112_unit_table.csv", "a_probes": A.PROBES_PATH, "roster": d / "roster.csv",
             "t4_raw": d / "t4/t4_raw.jsonl", "t4_coded": d / "t4/coded", "t4_probes": d / "t4/probes_v0_42.jsonl",
-            "decision": d / "no_decision.json", "out": d / "outputs"}
+            "decision": d / "no_decision.json", "out": d / "outputs", "only_sens": ("S-F-noD", "S-IL-t1", "S-Floor6")}
 
 
 class RealPathOnSyntheticFiles(unittest.TestCase):
@@ -120,6 +120,24 @@ class RealPathOnSyntheticFiles(unittest.TestCase):
         for k in ("H32_SetSampling", "H32_CueType", "H34_Floor_Signature", "H34_Defunct_Occupancy", "H35_IL_Coverage",
                   "H36_Profile_Replication", "H36_Typology_cell"):
             self.assertIn(k, doc["verdict_summary"])
+        self.assertEqual(set(doc["sensitivities"]), {"S-F-noD", "S-IL-t1", "S-Floor6"})
+        for v in doc["sensitivities"].values():
+            self.assertIn("verdict_changes", v)
+        self.assertEqual(doc["sensitivities"]["S-IL-t1"]["studies"], ["35"])
+
+    def test_sensitivity_options(self):
+        w = self.world
+        base = B.score_b(w, 20, 5, ("34", "35", "36"))
+        coi = B.score_b(w, 20, 5, ("34", "35", "36"), {"exclude": [("v0.20", "v0.20-b00"), ("v0.21", "v0.21-b01")]})
+        n0 = base["H34_Floor"]["n_flagged_rated"] + base["H34_Floor"]["n_unflagged_rated"]
+        n1 = coi["H34_Floor"]["n_flagged_rated"] + coi["H34_Floor"]["n_unflagged_rated"]
+        excluded_rated = sum(1 for k in (("v0.20", "v0.20-b00"), ("v0.21", "v0.21-b01"))
+                             if B._f(B.cov_map_for(w["ans"], w["brands"], w["design"]["ceps"], w["panel"], 14)[1].get(k)))
+        self.assertEqual(n0 - n1, excluded_rated)
+        f6 = B.score_b(w, 20, 5, ("34",), {"floor": 6})
+        self.assertGreaterEqual(f6["rated_units"], base["rated_units"])
+        eq = B.score_b(w, 20, 5, ("36",), {"null": "equal"})
+        self.assertIn("H36_Profile_Replication", eq["verdict_summary"])
 
     def test_b_p1_mismatch_refuses(self):
         paths = write_world(self.tmp / "c", self.world, tamper=True)

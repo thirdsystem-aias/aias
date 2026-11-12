@@ -65,7 +65,7 @@ class PaperAOutputsToPaperB(unittest.TestCase):
         cls.paths = {"a_raw": d / "A/v112_raw.jsonl", "a_coded": d / "A/coded", "a_verdicts": d / "A/v112_verdicts.json",
                      "a_unit_table": d / "A/v112_unit_table.csv", "a_probes": A.PROBES_PATH, "roster": d / "roster.csv",
                      "t4_raw": d / "t4/t4_raw.jsonl", "t4_coded": d / "t4/coded", "t4_probes": d / "t4/probes.jsonl",
-                     "decision": d / "none.json"}
+                     "decision": d / "none.json", "only_sens": ("S-F-noD", "S-IL-t1")}
 
     @classmethod
     def tearDownClass(cls):

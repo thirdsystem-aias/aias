@@ -110,7 +110,7 @@ class CoderInTheLoop(unittest.TestCase):
         cls.paths = {"a_raw": d / "v112_raw.jsonl", "a_coded": d / "coded", "a_verdicts": d / "_score/v112_verdicts.json",
                      "a_unit_table": d / "_score/v112_unit_table.csv", "a_probes": A.PROBES_PATH,
                      "roster": d / "roster.csv", "t4_raw": d / "t4/t4_raw.jsonl", "t4_coded": d / "t4/coded",
-                     "t4_probes": d / "t4/probes.jsonl", "decision": d / "none.json"}
+                     "t4_probes": d / "t4/probes.jsonl", "decision": d / "none.json", "only_sens": ("S-F-noD",)}
 
     @classmethod
     def tearDownClass(cls):

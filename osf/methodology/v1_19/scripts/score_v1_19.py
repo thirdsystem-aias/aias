@@ -39,6 +39,12 @@ SCORER_NOTES (choices where the draft is silent; each to be settled or confirmed
  B10 Random streams: H36's full-profile gap references, silhouette null and ARI null share one generator (seed
      119362) in that order; the residual arm uses 119363. H32_SetSampling permutes each split independently from one
      generator (119321), splits in code order.
+ B11 Sensitivities (section 8): each variant re-runs the studies it touches with the same seeds. Exclusions (S-COI,
+     S-LOCO) drop units from every map after Cov* and the profiles are computed (the other brands' delta fits are not
+     refitted), as Paper A's S10 does. S-Floor6 changes the full Cov* floor only (halves stay at 7). S-Equal uses delta
+     = 0 for Cov* and the profiles. S-Mid uses Paper A's beta_mid. S-C3 runs only if the answers hold every C3 model.
+     S-IL-t1: v0.37's IL-Direct (R_cult_total - R_cat_total, v1_7_cpc.csv), eligible iff 0 < mean_r / 6 < 1.
+     H34_Defunct_Occupancy is one category's test and is not re-run by S-LOCO.
 """
 import argparse
 import collections
@@ -131,9 +137,13 @@ def not_run_record(dec, a_sha):
 
 
 # =========================================================================== shared helpers
-def cov_map_for(ans, brands, ceps_by_sub, panel, floor):
-    tab = A.coverage_table(ans, brands, ceps_by_sub, panel)
-    return tab, A.cov_star_map(tab, panel, floor)
+def cov_map_for(ans, brands, ceps_by_sub, panel, floor, null="rasch", key="beta"):
+    tab = A.coverage_table(ans, brands, ceps_by_sub, panel, null)
+    return tab, A.cov_star_map(tab, panel, floor, key=key)
+
+
+def drop_keys(d, exclude):
+    return {k: v for k, v in d.items() if k not in exclude} if exclude else d
 
 
 def rho_pair(xd, yd, centred=True):
@@ -171,13 +181,15 @@ def split_codes():
     return [c for c in range(128) if not (c & 1)]
 
 
-def h32_set_sampling(ans, brands, design, panel, n_perm=N_PERM, seed=SEEDS["H32_SetSampling"]):
+def h32_set_sampling(ans, brands, design, panel, n_perm=N_PERM, seed=SEEDS["H32_SetSampling"], opts=None):
+    o = opts or {}
     rng = np.random.default_rng(seed)
     per, obs_r, prepared = {}, [], []
     for code in split_codes():
         p1, p2 = split_parts(design, code)
-        _t1, c1 = cov_map_for(ans, brands, p1, panel, A.FLOOR_HALF)
-        _t2, c2 = cov_map_for(ans, brands, p2, panel, A.FLOOR_HALF)
+        _t1, c1 = cov_map_for(ans, brands, p1, panel, A.FLOOR_HALF, o.get("null", "rasch"), o.get("key", "beta"))
+        _t2, c2 = cov_map_for(ans, brands, p2, panel, A.FLOOR_HALF, o.get("null", "rasch"), o.get("key", "beta"))
+        c1, c2 = drop_keys(c1, o.get("exclude")), drop_keys(c2, o.get("exclude"))
         r, keys, x, y, g, info = rho_pair(c1, c2)
         ok = (not A.below_n_floor(info)) and _f(r)
         per[code] = {"r": r, "rel": A.spearman_brown_half(r), "n": info["n"], "n_categories": info["n_categories"],
@@ -210,10 +222,16 @@ def h32_set_sampling(ans, brands, design, panel, n_perm=N_PERM, seed=SEEDS["H32_
     return out
 
 
-def h32_cue_type(ans, brands, design, panel, full_cov):
+def h32_cue_type(ans, brands, design, panel, full_cov, opts=None):
     """Leave-one-W-out against removing two CEPs of different W (84 reference pairs)."""
+    o = opts or {}
+
     def drop(excl):
         return {s: [p for p in design["ceps"][s] if p not in excl] for s in design["ceps"]}
+
+    def cov_map_for(a, b, c, p, floor):          # opts applied; floor of the full score (Paper A's S6 rule)
+        t, m = globals()["cov_map_for"](a, b, c, p, o.get("floor", floor), o.get("null", "rasch"), o.get("key", "beta"))
+        return t, drop_keys(m, o.get("exclude"))
     per_w, ref = {}, []
     undetermined = []
     for w in W:
@@ -410,8 +428,9 @@ def inclusion_probs(slot_cep, delta, n):
     return out
 
 
-def excess_profiles(ans, brands, ceps_by_sub, design, panel):
-    """B6: {unit: (excess share per W (len 7, NaN where the W has no CEP in the set), total n)}."""
+def excess_profiles(ans, brands, ceps_by_sub, design, panel, null="rasch"):
+    """B6: {unit: (excess share per W (len 7, NaN where the W has no CEP in the set), total n)}. null="equal": delta 0
+    (sensitivity S-Equal)."""
     prof = {}
     for sub in sorted(ceps_by_sub):
         ceps = list(ceps_by_sub[sub])
@@ -427,7 +446,10 @@ def excess_profiles(ans, brands, ceps_by_sub, design, panel):
                 for b in ans[k]:
                     if b in bidx:
                         Y[i, bidx[b]] = 1
-            deltas, _status = A.rasch_deltas(slot, Y, len(ceps))
+            if null == "equal":
+                deltas = np.zeros((len(bl), len(ceps)))
+            else:
+                deltas, _status = A.rasch_deltas(slot, Y, len(ceps))
             wslot = np.array([W.index(design["w"][ceps[j]]) for j in slot], int) if len(slot) else np.zeros(0, int)
             for b in bl:
                 y = Y[:, bidx[b]]
@@ -747,24 +769,31 @@ def dj_quadrants(cov, P, keys):
 
 
 # =========================================================================== orchestration
-def score_b(inp, n_perm=N_PERM, gap_b=GAP_B, studies=("32", "34", "35", "36")):
+def score_b(inp, n_perm=N_PERM, gap_b=GAP_B, studies=("32", "34", "35", "36"), opts=None):
     """inp: ans (Paper A answer index), design, brands, panel, P ({unit: P comparator}), flags ({unit: bool}),
     defunct (names), il ({unit: {'il', 'pi_hat'}} or None), texts ({answer key: text} or None),
-    a_doc (Paper A verdict document), pablo_decision (or None)."""
+    a_doc (Paper A verdict document), pablo_decision (or None). opts (sensitivities only): exclude (units),
+    floor (full Cov* floor), null ("rasch" / "equal"), key ("beta" / "beta_mid")."""
     dec = paper_b_decision(inp["a_doc"], inp.get("pablo_decision"))
     if not dec["run"]:
         return not_run_record(dec, inp.get("a_sha256"))
+    o = opts or {}
+    ex = set(o.get("exclude") or ())
     ans, design, brands, panel = inp["ans"], inp["design"], inp["brands"], inp["panel"]
-    _tab, cov = cov_map_for(ans, brands, design["ceps"], panel, A.FLOOR_FULL)
+    _tab, cov = cov_map_for(ans, brands, design["ceps"], panel, o.get("floor", A.FLOOR_FULL), o.get("null", "rasch"),
+                            o.get("key", "beta"))
+    cov = drop_keys(cov, ex)
+    inp = dict(inp, P=drop_keys(inp["P"], ex), flags=drop_keys(inp["flags"], ex),
+               il=None if inp.get("il") is None else drop_keys(inp["il"], ex))
     doc = {"phase": PHASE_ID, "prereg_tag": PREREG_TAG, "status": dec["status"], "paper_A": dec,
            "panel": panel, "draws": {"permutation": n_perm, "gap_reference": gap_b}, "seeds": SEEDS,
            "rated_units": int(sum(1 for v in cov.values() if _f(v)))}
     if dec["a_verdict"] == "MARGINAL":
         doc["label"] = "every verdict below is conditional on a MARGINAL Paper A gate (legs: %s)" % dec.get("marginal_legs")
     if "32" in studies:
-        doc["H32_SetSampling"] = h32_set_sampling(ans, brands, design, panel, n_perm)
-        doc["H32_CueType"] = h32_cue_type(ans, brands, design, panel, cov)
-    prof = excess_profiles(ans, brands, design["ceps"], design, panel)
+        doc["H32_SetSampling"] = h32_set_sampling(ans, brands, design, panel, n_perm, opts=o)
+        doc["H32_CueType"] = h32_cue_type(ans, brands, design, panel, cov, opts=o)
+    prof = drop_keys(excess_profiles(ans, brands, design["ceps"], design, panel, o.get("null", "rasch")), ex)
     if "34" in studies:
         doc["H34_Floor"] = h34_floor(cov, inp["flags"], inp["P"], n_perm)
         doc["H34_Defunct_Occupancy"] = h34_defunct(ans, design, panel, inp["defunct"], texts=inp.get("texts"),
@@ -775,14 +804,61 @@ def score_b(inp, n_perm=N_PERM, gap_b=GAP_B, studies=("32", "34", "35", "36")):
         doc["H35"] = h35(cov, inp["il"] or {}, inp["P"], se, n_perm) if inp.get("il") is not None else \
             {"primary": {"verdict": "UNDETERMINED", "reason": "identity-load input not supplied"}}
     if "36" in studies:
-        pa = excess_profiles(ans, brands, design["half"]["A"], design, panel)
-        pb = excess_profiles(ans, brands, design["half"]["B"], design, panel)
+        pa = drop_keys(excess_profiles(ans, brands, design["half"]["A"], design, panel, o.get("null", "rasch")), ex)
+        pb = drop_keys(excess_profiles(ans, brands, design["half"]["B"], design, panel, o.get("null", "rasch")), ex)
         rated = [k for k, v in cov.items() if _f(v)]
         rep = h36_replication(pa, pb, rated, n_perm)
         doc["H36_Profile_Replication"] = rep
         doc["H36_Structure"] = h36_structure(prof, cov, inp["P"], rep["verdict"], n_perm, gap_b)
     doc["verdict_summary"] = summary(doc)
     return doc
+
+
+COI_UNITS = (("v0.19", "Denon"), ("v0.22", "Chevrolet"), ("v0.22", "BMW"), ("v0.22", "Bentley"), ("v0.23", "S03"),
+             ("v0.20", "Eucerin"))                          # section 14; S03 = Jack Daniel's
+
+
+def load_il_t1(path=ROOT / "osf/methodology/v1_7/data/v1_7_cpc.csv"):
+    """S-IL-t1 (B11): v0.37's IL-Direct = R_cult_total - R_cat_total on the trio, read as score_v0_37.load_il_direct
+    reads it; eligibility 0 < mean_r / 6 < 1 (six Phase B frames per model). Ranks equal v0.37's count form."""
+    out = {}
+    for r in A.read_csv_rows(path):
+        if r["substrate"] in TRIO:
+            out[(r["substrate"], r["brand"])] = {"il": float(r["R_cult_total"]) - float(r["R_cat_total"]),
+                                                 "pi_hat": float(r["mean_r"]) / 6.0}
+    return out
+
+
+def sensitivities(inp, base, n_perm=N_PERM, gap_b=GAP_B, only=None):
+    """Section 8: each variant re-scores the studies it touches; verdicts are reported with their changes against
+    the primary summary `base`; no variant changes a verdict."""
+    cats = A.CATS
+    defunct_units = {k for k in inp["flags"] if k[0] == "v0.22" and k[1] in set(inp["defunct"])}
+    variants = {
+        "S-COI": ({"exclude": COI_UNITS}, ("32", "34", "35", "36"), None),
+        "S-Floor6": ({"floor": 6}, ("34", "35", "36"), None),
+        "S-Equal": ({"null": "equal"}, ("32", "36"), None),
+        "S-Mid": ({"key": "beta_mid"}, ("32", "34"), None),
+        "S-F-noD": ({}, ("34",), {"flags": {k: v for k, v in inp["flags"].items() if k not in defunct_units}}),
+    }
+    for c in cats:                                   # H34_Defunct_Occupancy is one category's test: unchanged by LOCO
+        variants[f"S-LOCO-{c}"] = ({"exclude": tuple((c, b) for b in inp["brands"].get(c, ()))},
+                                   ("32", "34", "35", "36"), None)
+    c3 = list(A.PANELS["C3"])
+    if all(any(k[1] == m for k in inp["ans"]) for m in c3):
+        variants["S-C3"] = ({}, ("32", "34", "35", "36"), {"panel": c3})
+    if inp.get("il_t1") is not None:
+        variants["S-IL-t1"] = ({}, ("35",), {"il": inp["il_t1"]})
+    out = {}
+    for name, (opts, studies, repl) in variants.items():
+        if only and name not in only:
+            continue
+        doc = score_b(dict(inp, **(repl or {})), n_perm, gap_b, studies, opts)
+        s = doc.get("verdict_summary") or {}
+        out[name] = {"opts": {k: (list(v) if isinstance(v, tuple) else v) for k, v in opts.items()},
+                     "studies": list(studies), "verdicts": s,
+                     "verdict_changes": {h: [base.get(h), v] for h, v in s.items() if v != base.get(h)}}
+    return out
 
 
 def summary(doc):
@@ -866,7 +942,8 @@ def parity_b_p1(cov, unit_rows):
 REAL_PATHS = {"a_raw": A.RAW_PATH, "a_coded": A.CODED_DIR, "a_verdicts": A_VERDICTS, "a_unit_table": A_UNIT_TABLE,
               "a_probes": A.PROBES_PATH, "roster": ROSTER, "t4_raw": A.T4_DEFAULTS["raw"],
               "t4_coded": A.T4_DEFAULTS["coded"], "t4_probes": ROOT / "osf/v42/prereg/probes_v0_42.jsonl",
-              "decision": DESIGN_DIR / "anchor/pablo_decision_paper_B.json", "out": OUT_DIR}
+              "decision": DESIGN_DIR / "anchor/pablo_decision_paper_B.json", "out": OUT_DIR,
+              "il_t1": ROOT / "osf/methodology/v1_7/data/v1_7_cpc.csv", "only_sens": None}
 
 
 def read_roster(path):
@@ -879,7 +956,7 @@ def read_roster(path):
 def load_real(paths):
     """B1: Paper A's analysis set through Paper A's own functions; Paper A's verdict document, panel and P; the frozen
     roster; t4 identity load (N3, S0, trio; v0.42's exclusions). Returns (inp, unit_rows, record of inputs)."""
-    p = {k: Path(v) for k, v in paths.items()}
+    p = {k: Path(v) for k, v in paths.items() if isinstance(v, (str, Path))}
     a_doc = json.loads(p["a_verdicts"].read_text(encoding="utf-8"))
     decision = json.loads(p["decision"].read_text(encoding="utf-8")) if p["decision"].exists() else None
     rec = {"paper_A_verdicts_sha256": sha256(p["a_verdicts"])}
@@ -933,6 +1010,12 @@ def run_real(paths=None, n_perm=N_PERM, gap_b=GAP_B, guards=True):
     if not p1["passed"]:
         raise Refused(f"B-P1 failed: Cov* does not reproduce Paper A's unit table: {json.dumps(clean(p1))[:1500]}")
     doc = score_b(inp, n_perm, gap_b)
+    if Path(paths.get("il_t1", "")).is_file():
+        inp["il_t1"] = load_il_t1(paths["il_t1"])
+        rec["il_t1_sha256"] = sha256(paths["il_t1"])
+    doc["sensitivities"] = sensitivities(inp, doc["verdict_summary"], n_perm, gap_b, only=paths.get("only_sens"))
+    doc["verdict_changes_under_sensitivities"] = {k: v["verdict_changes"] for k, v in doc["sensitivities"].items()
+                                                  if v["verdict_changes"]}
     doc["inputs"] = rec
     doc["parity"] = {"B-P0": p0, "B-P1": p1}
     doc["scorer_sha256"] = sha256(__file__)
