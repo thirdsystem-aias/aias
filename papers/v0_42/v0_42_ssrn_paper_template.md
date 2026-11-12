@@ -110,7 +110,7 @@ This study answers both with one pre-registered collection on the newest general
 
 ## 2.1 Design
 
-The study is a prospective re-acquisition. It re-asks, verbatim, the questions of the five-substrate omnibus --- v0.19 audiophile headphones (16 brands), v0.20 skincare, v0.21 cosmetics, v0.22 automotive and v0.23 premium spirits (24 brands each), 112 brand units --- to the three models of panel N3 (§2.2). Phase B (recall) asks six category questions per substrate (30 in all); Phase A (recognition) asks one question per brand (112). Phase B was collected without tools (S0) and with the provider's own web search (S1), in three independent runs each; Phase A once, in S0. The design therefore has 3 models × (30 × 2 conditions × 3 runs + 112) = 876 calls: 202 per model in S0 and 90 per model in S1. Each call is independent, with no conversation state carried between calls. Calls were sent in seven blocks in a fixed order --- Phase B S0 runs 1 to 3, Phase A S0, then Phase B S1 runs 1 to 3 --- with the three models in parallel within a block, so that the answers of the primary test and the recognition answers were complete before the costlier search-on answers began.
+The study is a prospective re-acquisition. It re-asks, verbatim, the questions of the five-substrate omnibus --- v0.19 audiophile headphones (16 brands), v0.20 skincare, v0.21 cosmetics, v0.22 automotive and v0.23 premium spirits (24 brands each), 112 brand units --- to the three models of panel N3 (§2.2). Phase B (recall) asks six category questions per substrate (30 in all); Phase A (recognition) asks one question per brand (112). Phase B was collected without tools (S0) and with the provider's own web search (S1), in three independent runs each; Phase A once, in S0. The design therefore has 3 models × (30 × 2 conditions × 3 runs + 112) = 876 calls: 202 per model in S0 and 90 per model in S1. Each call is independent, with no conversation state carried between calls. Calls were sent in seven blocks in a fixed order --- Phase B S0 runs 1 to 3, Phase A S0, then Phase B S1 runs 1 to 3 --- with the three models in parallel within a block, so that the answers of the primary test and the recognition answers would be complete before the costlier search-on answers began.
 
 The comparison wave, $t_3$, is the v0.41 collection of 9 November 2026 on the six legacy models (panel L6), with one run and no tools. $t_4$ was collected after the lock. The collection script enforced the window: no new request after the earlier of 72 hours from the first recorded call and 16 November 2026, 23:59:59 UTC, and no other paid collection running on the collection machine. The brand registries and their probe artefacts are unchanged from $t_1$--$t_3$: no brand was added, removed or renamed, and each registry carries its source-phase conflict-of-interest handling forward unchanged.
 
@@ -184,7 +184,7 @@ A model × condition with fewer than 90% of its calls answered after the re-run 
 
 ## 2.10 Pre-registration
 
-The pre-registration (revision r2, with clarifications C1--C28) was locked at git tag `{{PREREG_TAG}}` (commit `{{PREREG_COMMIT}}`) and deposited on OSF (`ec6wh`, `v42/prereg/`) with an anchor record naming the tag's commit before any study probe was sent; the collection script refused to run until the tag was on the remote repository and the anchor existed. The lock procedure provided a 24-hour review period after the last change to a decision rule (C25); the pre-registrant waived it on 10 November 2026, and the tag was set on 11 November 2026 at 02:53 UTC, before the first call (§3.1). Revision r2 replaced the first draft under the programme's collection budget rule (at most US\$100 of paid model calls per paper): one flagship per provider, Phase A in S0 with one run, and the removal of `H_Version_Presence` (clarifications C10--C24). Clarification C25, made before the lock, changed the decision statistic to the centred $\rho_{\text{pw}}$ of §2.7: v0.41's uncentred version is inflated by between-substrate differences in mean rank when substrates differ in size (16 against 24 brands), with a mean of +0.0464 under independence on the 112 brands; thresholds, rules and seeds were unchanged. Clarification C26 made the collection script enforce the one-collection rule and the window and record every billed batch request. Clarifications C27 and C28, made before the lock after a dry run of the whole chain on simulated provider responses, made the brand table's columns for panel N3 always use all three models (the component papers recompute them on all three) and made the budget guard and descriptive 6 count billed usage they had missed (OpenAI page-open and find-in-page actions, Gemini search-result tokens), in the conservative direction; neither changed a hypothesis, threshold or decision rule. The scorer (`score_v0_42.py`) and the coder were written and tested on synthetic data before the lock, and the scorer was run once, after the parity gates. {{DEV_SENTENCE}}
+The pre-registration (revision r2, with clarifications C1--C28) was locked at git tag `{{PREREG_TAG}}` (commit `{{PREREG_COMMIT}}`) and deposited on OSF (`ec6wh`, `v42/prereg/`) with an anchor record naming the tag's commit before any study probe was sent; the collection script refused to run until the tag was on the remote repository and the anchor existed. The lock procedure provided a 24-hour review period after the last change to a decision rule (C25); the pre-registrant waived it on 10 November 2026 (20:26 US Central time), and the tag was set on 11 November 2026 at 02:52 UTC. OSF's file records date the deposit of the locked files to 02:53--02:55 UTC and that of the anchor record to 02:55 UTC, before the first call ({{WIN_FIRST}} UTC; §3.1). Revision r2 replaced the first draft under the programme's collection budget rule (at most US\$100 of paid model calls per paper): one flagship per provider, Phase A in S0 with one run, and the removal of `H_Version_Presence` (clarifications C10--C24). Clarification C25, made before the lock, changed the decision statistic to the centred $\rho_{\text{pw}}$ of §2.7: v0.41's uncentred version is inflated by between-substrate differences in mean rank when substrates differ in size (16 against 24 brands), with a mean of +0.0464 under independence on the 112 brands; thresholds, rules and seeds were unchanged. Clarification C26 made the collection script enforce the one-collection rule and the window and record every billed batch request. Clarifications C27 and C28, made before the lock after a dry run of the whole chain on simulated provider responses, made the brand table's columns for panel N3 always use all three models (the component papers recompute them on all three), made descriptive 5 name the source of a Gemini grounding redirect by its host name instead of counting the redirect address as one domain, and made the budget guard and descriptive 6 count billed usage they had missed (OpenAI page-open and find-in-page actions, Gemini search-result tokens), in the conservative direction; neither changed a hypothesis, threshold or decision rule. The scorer (`score_v0_42.py`) and the coder were written and tested on synthetic data before the lock, and the scorer was run once, after the parity gates. {{DEV_SENTENCE}}
 
 # 3. Results
 
@@ -198,9 +198,9 @@ All three parity gates passed before any $t_4$ statistic was computed (P1, P2 an
 {% endswitch %}
 {{MC_ANSWERED}} of the {{MC_EXPECTED}} design calls were answered ({{MC_SHARE}}), and `MC_Complete` {% if MC_COMPLETE_PASS %}passed{% else %}failed its 98% threshold{% endif %}. Table 2 gives the counts per model and condition. {% if ANY_EXCLUDED %}{{EXCLUDED_SENTENCE}}{% else %}No model × condition fell below the 90% floor, so no model was dropped.{% endif %} {% if MC_SERVED_PASS %}`MC_Served` passed: every answered call was served by the requested model or a dated snapshot of it.{% else %}`MC_Served` failed: {{MC_SERVED_N}} answered calls were served by another model and were excluded from the analysis.{% endif %} {{MC_NOID_SENTENCE}} {% if MC_OUTSIDE_ANY %}{{MC_OUTSIDE}} raw lines fell outside the design and were not analysed.{% endif %}
 
-{% if MCS_ANY_FLAG %}`MC_Search` flagged {{MCS_FLAGGED}}: search was used in fewer than 25% of its S1 calls, and its S1 results are marked "search rarely used" throughout.{% else %}Every model used web search in at least 25% of its answered S1 calls (`MC_Search`; Table 2).{% endif %} {% if MCT_ANY_FLAG %}`MC_Truncation` flagged {{MCT_FLAGGED}}, which ended more than 5% of calls at the output cap.{% else %}No model × condition ended more than 5% of its calls at the output cap (`MC_Truncation`).{% endif %} The first call started at {{WIN_FIRST}} and the last ended at {{WIN_LAST}} (UTC), a span of {{WIN_SPAN}} hours, and `MC_Window` {% if WIN_PASS %}passed{% else %}failed{% endif %}. Recorded spend on all billed requests, at the list prices of the pre-registration, was {{COST_TOTAL}}, or {{BUDGET_SPEND}} with the {{BUDGET_RESERVE}} reserve for the recognition judge, and `MC_Budget` {% if BUDGET_PASS %}passed{% else %}failed{% endif %}. {{BUDGET_APPROVALS}}
+{% if MCS_ANY_FLAG %}`MC_Search` flagged {{MCS_FLAGGED}}: search was used in fewer than 25% of its S1 calls, and its S1 results are marked "search rarely used" throughout (by $^{\dagger}$ in the tables, and in the captions of the tables and figures whose search-on values include it).{% else %}Every model used web search in at least 25% of its answered S1 calls (`MC_Search`; Table 2).{% endif %} {% if MCT_ANY_FLAG %}`MC_Truncation` flagged {{MCT_FLAGGED}}, which ended more than 5% of calls at the output cap.{% else %}No model × condition ended more than 5% of its calls at the output cap (`MC_Truncation`).{% endif %} The first call started at {{WIN_FIRST}} and the last ended at {{WIN_LAST}} (UTC), a span of {{WIN_SPAN}} hours, and `MC_Window` {% if WIN_PASS %}passed{% else %}failed{% endif %}. Recorded spend on all billed requests, at the list prices of the pre-registration, was {{COST_TOTAL}}, or {{BUDGET_SPEND}} with the {{BUDGET_RESERVE}} reserve for the recognition judge, and `MC_Budget` {% if BUDGET_PASS %}passed{% else %}failed{% endif %}. {{BUDGET_APPROVALS}}
 
-Table: Calls answered, output-cap endings and search use, by model and condition. Answered: status ok, non-empty text and an accepted served ID; expected: 202 (S0) and 90 (S1) per model.
+Table: Calls answered, output-cap endings and search use, by model and condition. Answered: status ok, non-empty text and an accepted served ID; expected: 202 (S0) and 90 (S1) per model.{{FLAG_ROW_NOTE}}
 
 {{TABLE_MC}}
 
@@ -227,7 +227,7 @@ The statistic was undefined on the data, and the verdict is **UNDETERMINED**.
 
 {% if GEN_S1_PRESENT %}With search on in place of search off, the same comparison gives $\rho_{\text{pw}} = {{GEN_S1_RHO}}$ (95% interval {{GEN_S1_CI_LO}} to {{GEN_S1_CI_HI}}; $p_{\text{perm}} = {{GEN_S1_P}}$){% if GEN_S1_REDUCED %} on a reduced panel ({{GEN_S1_MODELS}}){% endif %}, which would read {{GEN_S1_VERDICT}} under the primary rule; this variant is reported alongside and decides nothing.{% else %}The search-on variant was not computed: no model was retained in S1.{% endif %} Per provider, the legacy pair pooled against its new model gives {{PAIRS_SENTENCE}}. Table 3 gives the per-substrate correlations and Figure 1 the per-brand values.
 
-Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside).
+Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside).{{FLAG_POOLED_NOTE}}
 
 {{TABLE_GEN_SUB}}
 
@@ -289,21 +289,21 @@ No label applies.
 {% endswitch %}
 {% if MCS_ANY_FLAG %}The search-on answers of {{MCS_FLAGGED}} are flagged "search rarely used" (§3.1).{% endif %} Table 5 gives the result per model. {{S_PER_SUB_SENTENCE}} Figure 3 shows the per-brand values.
 
-Table: Recall Presence with search off against search on, per model (newest models, three runs each).
+Table: Recall Presence with search off against search on, per model (newest models, three runs each).{{FLAG_ROW_NOTE}}
 
 {{TABLE_SEARCH_MODEL}}
 
-![Left: per-brand recall Presence on the newest models with search off and on (mean of three runs each). Right: $\rho_S$ with its 95% interval and the correlation per model and per substrate, against the pre-declared zones. {{FIG3_CAPTION}}]({{FIG_DIR}}/chart_03_search_s0_s1.pdf){#fig:search width=100%}
+![Left: per-brand recall Presence on the newest models with search off and on (mean of three runs each). Right: $\rho_S$ with its 95% interval and the correlation per model and per substrate, against the pre-declared zones. {{FIG3_CAPTION}}{{FLAG_POOLED_NOTE}}]({{FIG_DIR}}/chart_03_search_s0_s1.pdf){#fig:search width=100%}
 
 ## 3.5 Pre-registered descriptives
 
 **Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: {{REL_SENTENCE}} Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
 
-Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean.
+Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean.{{FLAG_ROW_NOTE}}
 
 {{TABLE_REL}}
 
-![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. {{FIG4_CAPTION}}]({{FIG_DIR}}/chart_04_run_reliability.pdf){#fig:rel width=100%}
+![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. {{FIG4_CAPTION}}{{FLAG_POOLED_NOTE}}]({{FIG_DIR}}/chart_04_run_reliability.pdf){#fig:rel width=100%}
 
 **Recognition.** Table 7 gives the share of brands coded as recognized by each model with search off at $t_4$, beside each legacy model at $t_3$. {{RECOG_NOTE}}
 
@@ -317,15 +317,15 @@ Table: Share of the 112 brands coded as recognized (descriptive 2): newest model
 
 **Answer form, search records and cost.** Tables 8 to 10 report the remaining descriptives: words per answer, registry brands named per Phase B answer, finish reasons and non-answers (descriptive 4); searches, sources and citations per S1 call (descriptive 5, with the 20 most-cited domains per model in Appendix Table 11); and tokens, searches and spend per model and condition from the recorded usage (descriptive 6).
 
-Table: Answer form per model and condition (descriptive 4). Words: mean words per Phase A and Phase B answer; brands per B: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy.
+Table: Answer form per model and condition (descriptive 4). Words: mean words per Phase A and Phase B answer; brands per B: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy.{{FLAG_ROW_NOTE}}
 
 {{TABLE_FORM}}
 
-Table: Search records per model, answered S1 calls (descriptive 5).
+Table: Search records per model, answered S1 calls (descriptive 5).{{FLAG_ROW_NOTE}}
 
 {{TABLE_SEARCHDESC}}
 
-Table: Recorded usage and spend per model and condition (descriptive 6), all billed requests at the list prices of the pre-registration; the v0.23 recognition judge is not in the raw file and is covered by its reserve.
+Table: Recorded usage and spend per model and condition (descriptive 6), all billed requests at the list prices of the pre-registration; the v0.23 recognition judge is not in the raw file and is covered by its reserve.{{FLAG_ROW_NOTE}}
 
 {{TABLE_COST}}
 
@@ -394,7 +394,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-Materials are deposited at OSF, `ec6wh/v42`: the locked pre-registration and its anchor record, the probe file, the parity, feasibility and cost-estimate records, the scripts and the lock manifest (`v42/prereg/`, `v42/anchor/`). At publication the deposit adds the $t_4$ raw answers with their search records and usage, the coded tables, the verdicts (`v42_verdicts.json`), the brand table (`v42_brand_table.csv`) and the figure sources.
+Materials are deposited at OSF, `ec6wh/v42`: the locked pre-registration and its anchor record, the probe file, the parity, feasibility and cost-estimate records, the scripts and the lock manifest (`v42/prereg/`, `v42/anchor/`), and the deviations record (`v42/DEVIATIONS.md`). At publication the deposit adds the $t_4$ raw answers with their search records and usage, the coded tables, the verdicts (`v42_verdicts.json`), the brand table (`v42_brand_table.csv`) and the figure sources.
 
 # References {-}
 
@@ -410,7 +410,7 @@ González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Mult
 
 González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Consistency --- A Pre-Registered Negative Result* (v1.7). SSRN 6878818.
+González Castro, P. U. (2026). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component of AIAS™* (v1.7). SSRN 6878818.
 
 González Castro, P. U. (2026). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
 
@@ -420,15 +420,15 @@ González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Reca
 
 González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (AIAS v0.41). SSRN 7685100 (submitted November 2026); OSF `ec6wh/v41`.
 
-González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
+González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate* (v0.19). SSRN 6809182.
 
-González Castro, P. U. (2026). *AI Presence in Skincare: AIAS v0.20*. SSRN 6811441.
+González Castro, P. U. (2026). *Type 2 Emergence and First Prospective v1.5 C2 Calibration on a Skincare IL-Gradient Substrate* (v0.20). SSRN 6811441.
 
-González Castro, P. U. (2026). *AI Presence in Cosmetics: AIAS v0.21*. SSRN 6815378.
+González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate* (v0.21). SSRN 6815378.
 
-González Castro, P. U. (2026). *AIAS™ v0.22 --- Automotive Substrate: Phantom Brand Persistence on a Heritage-Saturated Category*. SSRN 6829118.
+González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate: Cell D\_Defunct as Pure-Phantom Upper-Bound Test* (v0.22). SSRN 6829118.
 
-González Castro, P. U. (2026). *AIAS™ v0.23 --- Premium Spirits Substrate*. SSRN 6834298.
+González Castro, P. U. (2026). *AIAS Presence Index v0.23: Premium Spirits --- Recognition Ceiling, Recall-Driven Regime Classification, and the Conglomerate Ownership Hypothesis Across 24 Brands and Six Large Language Models*. SSRN 6834298.
 
 Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxford University Press.
 
@@ -438,6 +438,6 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 
 # Appendix {-}
 
-Table: The 20 most-cited domains per model in the answered search-on calls (descriptive 5), with citation counts.
+Table: The 20 most-cited domains per model in the answered search-on calls (descriptive 5), with citation counts.{{FLAG_ROW_NOTE}}
 
 {{TABLE_DOMAINS}}

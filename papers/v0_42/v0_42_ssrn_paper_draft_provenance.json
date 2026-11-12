@@ -302,6 +302,24 @@
    ],
    "formatted": "Gemini 4 Argon"
   },
+  "FLAG_ROW_NOTE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Search"
+   ],
+   "formatted": " $^{\\dagger}$ Search rarely used (`MC_Search`, §3.1)."
+  },
+  "FLAG_POOLED_NOTE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Search"
+   ],
+   "formatted": " Search-on values include the answers of Gemini 4 Argon, marked \"search rarely used\" (§3.1)."
+  },
   "MCT_FLAGGED": {
    "kind": "text",
    "basis": [
@@ -407,7 +425,7 @@
   },
   "TABLE_MC": {
    "kind": "table",
-   "formatted": "| Model | Cond. | Answered / expected | Share | Drop rule | At output cap | With search |\n|:--------------------|:-----|-------------------:|------:|:---------|-------------:|-----------:|\n| Claude Fable 5.2 | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Claude Fable 5.2 | S1 | 90 / 90 | 100.0% | retained | 0.0% | 83.3% |\n| GPT-6 Astra | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| GPT-6 Astra | S1 | 90 / 90 | 100.0% | retained | 0.0% | 95.6% |\n| Gemini 4 Argon | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Gemini 4 Argon | S1 | 90 / 90 | 100.0% | retained | 0.0% | 17.8% |",
+   "formatted": "| Model | Cond. | Answered / expected | Share | Drop rule | At output cap | With search |\n|:--------------------|:-----|-------------------:|------:|:---------|-------------:|-----------:|\n| Claude Fable 5.2 | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Claude Fable 5.2 | S1 | 90 / 90 | 100.0% | retained | 0.0% | 83.3% |\n| GPT-6 Astra | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| GPT-6 Astra | S1 | 90 / 90 | 100.0% | retained | 0.0% | 95.6% |\n| Gemini 4 Argon | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | 90 / 90 | 100.0% | retained | 0.0% | 17.8% |",
    "cells": [
     {
      "formatted": "202",
@@ -1892,7 +1910,7 @@
   },
   "TABLE_SEARCH_MODEL": {
    "kind": "table",
-   "formatted": "| Model | Brands | $\\rho_{\\text{pw}}$ | Uncentred (v0.41) | $\\Delta$ (on minus off) |\n|:--------------------|------:|-----:|-----------------:|----------------:|\n| Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |\n| GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |\n| Gemini 4 Argon | 112 | 0.909 | 0.913 | -0.012 |",
+   "formatted": "| Model | Brands | $\\rho_{\\text{pw}}$ | Uncentred (v0.41) | $\\Delta$ (on minus off) |\n|:--------------------|------:|-----:|-----------------:|----------------:|\n| Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |\n| GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |\n| Gemini 4 Argon$^{\\dagger}$ | 112 | 0.909 | 0.913 | -0.012 |",
    "cells": [
     {
      "formatted": "112",
@@ -2101,8 +2119,8 @@
     ]
    ],
    "raw": 0.8449021908360117,
-   "fmt": "r2",
-   "formatted": "0.84"
+   "fmt": "r3",
+   "formatted": "0.845"
   },
   "REL1_MAX": {
    "kind": "derived",
@@ -2165,8 +2183,8 @@
     ]
    ],
    "raw": 0.9148666810295984,
-   "fmt": "r2",
-   "formatted": "0.91"
+   "fmt": "r3",
+   "formatted": "0.915"
   },
   "REL3_MIN": {
    "kind": "derived",
@@ -2229,8 +2247,8 @@
     ]
    ],
    "raw": 0.9423386287044498,
-   "fmt": "r2",
-   "formatted": "0.94"
+   "fmt": "r3",
+   "formatted": "0.942"
   },
   "REL3_MAX": {
    "kind": "derived",
@@ -2293,8 +2311,8 @@
     ]
    ],
    "raw": 0.969914720548635,
-   "fmt": "r2",
-   "formatted": "0.97"
+   "fmt": "r3",
+   "formatted": "0.970"
   },
   "REL_SENTENCE": {
    "kind": "text",
@@ -2302,7 +2320,7 @@
     "descriptives",
     "1_run_reliability"
    ],
-   "formatted": "rel1 ranged from 0.84 to 0.91 and rel3 from 0.94 to 0.97."
+   "formatted": "rel1 ranged from 0.845 to 0.915 and rel3 from 0.942 to 0.970."
   },
   "FIG4_CAPTION": {
    "kind": "text",
@@ -2314,7 +2332,7 @@
   },
   "TABLE_REL": {
    "kind": "table",
-   "formatted": "| Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |\n|:--------------------|:-----|-----:|-----:|-----------------------:|\n| Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |\n| Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |\n| GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |\n| GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |\n| Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |\n| Gemini 4 Argon | S1 | 0.915 | 0.970 | 0.919 |",
+   "formatted": "| Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |\n|:--------------------|:-----|-----:|-----:|-----------------------:|\n| Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |\n| Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |\n| GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |\n| GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |\n| Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | 0.915 | 0.970 | 0.919 |",
    "cells": [
     {
      "formatted": "0.912",
@@ -2944,7 +2962,7 @@
   },
   "TABLE_FORM": {
    "kind": "table",
-   "formatted": "| Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |\n|:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|\n| Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\\_turn 202 | 0 / 0 / 0 |\n| Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\\_turn 90 | 0 / 0 / 0 |\n| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |\n| GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |\n| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |\n| Gemini 4 Argon | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |",
+   "formatted": "| Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |\n|:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|\n| Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\\_turn 202 | 0 / 0 / 0 |\n| Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\\_turn 90 | 0 / 0 / 0 |\n| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |\n| GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |\n| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |",
    "cells": [
     {
      "formatted": "202",
@@ -3403,7 +3421,7 @@
   },
   "TABLE_SEARCHDESC": {
    "kind": "table",
-   "formatted": "| Model | S1 calls | Searches per call | Sources per call | Citations per call | With a citation |\n|:--------------------|--------:|-----------------:|----------------:|------------------:|---------------:|\n| Claude Fable 5.2 | 90 | 1.7 | 15.6 | 11.1 | 83% |\n| GPT-6 Astra | 90 | 2.6 | 92.5 | 8.2 | 96% |\n| Gemini 4 Argon | 90 | 0.4 | 1.7 | 3.9 | 18% |",
+   "formatted": "| Model | S1 calls | Searches per call | Sources per call | Citations per call | With a citation |\n|:--------------------|--------:|-----------------:|----------------:|------------------:|---------------:|\n| Claude Fable 5.2 | 90 | 1.7 | 15.6 | 11.1 | 83% |\n| GPT-6 Astra | 90 | 2.6 | 92.5 | 8.2 | 96% |\n| Gemini 4 Argon$^{\\dagger}$ | 90 | 0.4 | 1.7 | 3.9 | 18% |",
    "cells": [
     {
      "formatted": "90",
@@ -4354,7 +4372,7 @@
   },
   "TABLE_DOMAINS": {
    "kind": "table",
-   "formatted": "| Model | Domain (citations) |\n|:--------------------|:------------------------------------------------------------|\n| Claude Fable 5.2 | drinksint.com (69), ringly.io (42), thewhiskeywash.com (29), americansalon.com (28), crutchfield.com (27), globalbrandsmagazine.com (24), consumerreports.org (24), carcody.com (23), ecoustics.com (22), marieclaire.com (22), thedermdigest.com (20), rd.com (17), en.wikipedia.org (17), autoblog.com (17), wineenthusiast.com (15), vinepair.com (14), whowhatwear.com (13), cosmetify.com (13), roadethos.com (13), gobrandwave.com (12) |\n| GPT-6 Astra | consumerreports.org (42), vogue.com (39), allure.com (36), vinepair.com (35), rtings.com (23), wineenthusiast.com (17), statista.com (16), stereophile.com (15), cosmetify.com (15), cosmeticsbusiness.com (14), whowhatwear.com (13), caranddriver.com (13), beautymatter.com (12), thespiritsbusiness.com (12), iwsc.net (12), aad.org (11), diarydirectory.com (10), glamour.com (10), bustle.com (10), subaru.com (10) |\n| Gemini 4 Argon | youtube.com (65), forbes.com (21), thewhiskeywash.com (16), beautypackaging.com (16), prnewswire.com (13), hernogin.com (12), suntoryglobalspirits.com (10), newsnationnow.com (10), qz.com (8), dermstore.com (7), iwsc.net (7), ecoustics.com (7), carpro.com (7), jdpower.com (6), gravelai.com (5), artofskincare.com (5), cluboenologique.com (5), wine-searcher.com (5), suntory.com (5), theautochannel.com (5) |",
+   "formatted": "| Model | Domain (citations) |\n|:--------------------|:------------------------------------------------------------|\n| Claude Fable 5.2 | drinksint.com (69), ringly.io (42), thewhiskeywash.com (29), americansalon.com (28), crutchfield.com (27), globalbrandsmagazine.com (24), consumerreports.org (24), carcody.com (23), ecoustics.com (22), marieclaire.com (22), thedermdigest.com (20), rd.com (17), en.wikipedia.org (17), autoblog.com (17), wineenthusiast.com (15), vinepair.com (14), whowhatwear.com (13), cosmetify.com (13), roadethos.com (13), gobrandwave.com (12) |\n| GPT-6 Astra | consumerreports.org (42), vogue.com (39), allure.com (36), vinepair.com (35), rtings.com (23), wineenthusiast.com (17), statista.com (16), stereophile.com (15), cosmetify.com (15), cosmeticsbusiness.com (14), whowhatwear.com (13), caranddriver.com (13), beautymatter.com (12), thespiritsbusiness.com (12), iwsc.net (12), aad.org (11), diarydirectory.com (10), glamour.com (10), bustle.com (10), subaru.com (10) |\n| Gemini 4 Argon$^{\\dagger}$ | youtube.com (65), forbes.com (21), thewhiskeywash.com (16), beautypackaging.com (16), prnewswire.com (13), hernogin.com (12), suntoryglobalspirits.com (10), newsnationnow.com (10), qz.com (8), dermstore.com (7), iwsc.net (7), ecoustics.com (7), carpro.com (7), jdpower.com (6), gravelai.com (5), artofskincare.com (5), cluboenologique.com (5), wine-searcher.com (5), suntory.com (5), theautochannel.com (5) |",
    "cells": [
     {
      "formatted": "69",
@@ -5140,7 +5158,7 @@
   },
   "TABLE_COST": {
    "kind": "table",
-   "formatted": "| Model | Cond. | Billed requests | Input tokens | Output tokens | Searches | US\\$ |\n|:--------------------|:-----|---------------:|------------:|-------------:|--------:|-------:|\n| Claude Fable 5.2 | S0 | 202 | 9,473 | 220,552 | 0 | \\$4.45 |\n| Claude Fable 5.2 | S1 | 90 | 1,989,632 | 312,023 | 153 | \\$15.73 |\n| GPT-6 Astra | S0 | 202 | 5,705 | 167,855 | 0 | \\$8.45 |\n| GPT-6 Astra | S1 | 90 | 2,740,428 | 100,167 | 297 | \\$35.38 |\n| Gemini 4 Argon | S0 | 202 | 10,813 | 162,569 | 0 | \\$1.65 |\n| Gemini 4 Argon | S1 | 90 | 21,360 | 125,075 | 36 | \\$1.80 |\n| All |  |  |  |  |  | \\$67.46 |",
+   "formatted": "| Model | Cond. | Billed requests | Input tokens | Output tokens | Searches | US\\$ |\n|:--------------------|:-----|---------------:|------------:|-------------:|--------:|-------:|\n| Claude Fable 5.2 | S0 | 202 | 9,473 | 220,552 | 0 | \\$4.45 |\n| Claude Fable 5.2 | S1 | 90 | 1,989,632 | 312,023 | 153 | \\$15.73 |\n| GPT-6 Astra | S0 | 202 | 5,705 | 167,855 | 0 | \\$8.45 |\n| GPT-6 Astra | S1 | 90 | 2,740,428 | 100,167 | 297 | \\$35.38 |\n| Gemini 4 Argon | S0 | 202 | 10,813 | 162,569 | 0 | \\$1.65 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | 90 | 21,360 | 125,075 | 36 | \\$1.80 |\n| All |  |  |  |  |  | \\$67.46 |",
    "cells": [
     {
      "formatted": "202",

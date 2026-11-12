@@ -46,7 +46,9 @@ Writes `reports/figs/v42/chart_01_presence_t3_t4.pdf`, `chart_02_phi_t3_t4.pdf`,
 PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/fill_paper_v0_42.py            # add --no-deviations only if osf/v42/DEVIATIONS.md does not exist
 ```
 
-Writes `papers/v0_42/v0_42_ssrn_paper_draft.md` and `papers/v0_42/v0_42_ssrn_paper_draft_provenance.json`, which records the JSON path, raw value and format of every number. The script prints the cases it selected (`CASE_GEN`, `CASE_PHI`, `CASE_SEARCH`, `GEN_DELTA_DIR`, `CASE_PARITY`).
+Then, on the real data, always run `PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/post_fill_real_v0_42.py`: the Discussion and the sentences written for the observed results live only in that script, so a fill without it loses them (it refuses unless `v42_verdicts.json` has the SHA-256 it was written for).
+
+The fill writes `papers/v0_42/v0_42_ssrn_paper_draft.md` and `papers/v0_42/v0_42_ssrn_paper_draft_provenance.json`, which records the JSON path, raw value and format of every number. The script prints the cases it selected (`CASE_GEN`, `CASE_PHI`, `CASE_SEARCH`, `GEN_DELTA_DIR`, `CASE_PARITY`).
 
 It refuses in five cases:
 - the verdicts come from the synthetic mode;
@@ -121,7 +123,7 @@ The pre-registration's verdict words are CONFIRMED, MARGINAL, FALSIFIED and UNDE
 ## Files
 
 `papers/v0_42/`:
-- `v0_42_ssrn_paper_template.md`: the paper. Introduction and Method are fixed text from the pre-registration (r2 with C1–C26); Results and Discussion are variants.
+- `v0_42_ssrn_paper_template.md`: the paper. Introduction and Method are fixed text from the pre-registration (r2 with C1–C28); Results and Discussion are variants.
 - `fill_paper_v0_42.py`, with `v42_values.py` (reading, formats, provenance, cases).
 - `tables_as_tabular.lua`.
 - `ssrn_packet_hook_v0_42.py`.

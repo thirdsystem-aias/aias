@@ -66,8 +66,12 @@ _SRC = {
     "dates (pre-registration header, §1, §4.3, §6, C26; v0.41 t3 date; references)":
         "2010 2022 2024 2025 2026 2027 13 23 59",
     "ORCID (CLAUDE.md standard author block)": "0009 0003 8968 9990",
-    "LOCK_STEPS clarification of 2026-11-11 (tag set at 02:53 UTC); C27-C28 numbering; Harman a Samsung "
-    "subsidiary since March 2017 (coordinator's COI wording, Nov 11, 2026)": "02 53 27 2017",
+    "lock times: tag v0.42-prereg-r1 tagger date 2026-11-11 02:52:28 UTC (git; anchor tagger_date); waiver at "
+    "20:26 US Central (LOCK_STEPS step 0.1); OSF file records (date_created, read 2026-11-12): v42/prereg from 02:53, "
+    "v42/prereg/scripts to 02:55, v42/anchor 02:55 UTC; C27-C28 numbering; Harman a Samsung subsidiary since March "
+    "2017 (coordinator's COI wording, Nov 11, 2026)": "02 52 53 55 20 26 27 2017",
+    "reference titles as published (thirdsystem.ai PDFs: v0.20 'v1.5 C2', 'Type 2'; v0.23 'Across 24 Brands')":
+        "1.5 2 24",
     "SSRN IDs (CLAUDE.md methodology chain and phase registry)":
         "6659000 6761698 6797679 6799479 6809182 6810758 6811441 6815378 6816340 6817841 6829118 6834298 "
         "6878818 6915458 6963359 7685100",

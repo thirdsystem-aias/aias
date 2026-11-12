@@ -7,7 +7,12 @@ fill_paper_v0_42.py picks pre-written sentences by verdict case; this step repla
 with one written for the observed results and adds the sentences the template could not anticipate. Every
 number below is a leaf of v42_verdicts.json, formatted as the fill formats it (paths in the comments), or a
 sum or difference of such leaves; the dates and the 72 judge calls come from osf/v42/data/code_v0_42.log and
-the pre-registration. Run after the fill and before scripts/build_paper_v0_42.py:
+the pre-registration. Revised on 2026-11-12 after an outside number check: the sentences on the 114 unanswered
+attempts and on the two Anthropic organizations rest on osf/v42/data/t4_raw.jsonl (status, error, started_utc),
+osf/v42/data/t4_batches.jsonl (batch creation times) and the notes in osf/v42/data/collect_v0_42.log and
+code_v0_42.log; the per-provider sentence compares verdicts.H_Gen_Presence.rho with the three
+per_provider_generation_pairs; the spirits sentence describes the Phase B prompts of osf/v42/prereg/probes_v0_42.jsonl.
+Run after the fill and before scripts/build_paper_v0_42.py:
 
     PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/fill_paper_v0_42.py
     PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/post_fill_real_v0_42.py
@@ -43,10 +48,11 @@ EDITS.append((
 EDITS.append((
     "(Claude Sonnet 4.5; 72 judge calls, which are coding, not acquisition).",
     "(Claude Sonnet 4.5; 72 judge calls, which are coding, not acquisition). Claude Sonnet 4.5 is not served to "
-    "the study's current Anthropic organization: a first coding attempt on 11 November 2026 returned a not-found "
-    "error for every judge call, none of them billed, and its tables were set aside. With the pre-registrant's "
-    "decision, the judge was called through the Anthropic organization that coded $t_1$--$t_3$, with the same "
-    "model, code and prompts, and coded 72 of 72 answers."))
+    "the Anthropic organization the study used from its re-run pass on (§3.1): a first coding attempt on 11 "
+    "November 2026 returned a not-found error for every judge call, none of them billed, and its tables were set "
+    "aside. With the pre-registrant's decision, the judge was called through the Anthropic organization that coded "
+    "$t_1$--$t_3$ and had served the first six Claude Fable 5.2 batches, with the same model, code and prompts, and "
+    "coded 72 of 72 answers."))
 
 # §3.1: raw records per attempt. descriptives.6_cost.per_model_condition.*.records (sum 990) and
 # .billed_requests; 990 - 876 = 114; 120 - 90 = 30; 208 - 202 = 6; 168 - 90 = 78.
@@ -54,9 +60,14 @@ EDITS.append((
     "No pause approval was recorded by the budget guard.",
     "No pause approval was recorded by the budget guard. The raw file holds one record per attempt: 990 records "
     "for the 876 calls. The 114 additional records (30 for Claude Fable 5.2 with search on, 6 for Gemini 4 Argon "
-    "with search off and 78 for Gemini 4 Argon with search on) are attempts that ended without an answer and "
-    "without billed usage and were re-sent under the call policy; each call is analysed once, from its answered "
-    "attempt."))
+    "with search off and 78 for Gemini 4 Argon with search on) are attempts that the providers refused, without an "
+    "answer and without billed usage, when an account balance ran out: Anthropic declined to create the seventh "
+    "Claude Fable 5.2 batch (the 30 calls of the third search-on run) for insufficient credit, and Google refused "
+    "84 Gemini 4 Argon calls because the prepaid credits were depleted. The main pass ended in block 7 with these "
+    "calls unanswered. After the balances were restored, and with the study's Anthropic requests moved to a new "
+    "organization, the one logged re-run pass (§2.4) answered all 114 between 09:05 and 09:50 UTC, so six Gemini 4 "
+    "Argon recognition answers were completed after the search-on blocks had begun (§2.1). Each call is analysed "
+    "once, from its answered attempt."))
 
 # §3.5: descriptive 4 and DEVIATIONS Entry 1. descriptives.4_answer_form.*.non_answers (all 0).
 EDITS.append((
@@ -77,7 +88,7 @@ DISCUSSION = r"""# 4. Discussion
 
 The primary result is that the ordering of brands by recall Presence carried over from the retiring model generation to the newest flagship models ($\rho_{\text{pw}} = 0.828$, 95% interval 0.722 to 0.890). Under the pre-registered rationale, the programme's record on the legacy panel can therefore be bridged to the new panel for Presence: the brand standings measured since May 2026 remain interpretable on current models. The bridge is an ordering, not a level. The newest models named the average brand in a larger share of category answers ($\Delta = +0.046$), so comparisons of absolute Presence across the change of panel would need to account for the shift. The study does not explain it: answer length is a descriptive of the $t_4$ answers only (Table 8), not of the legacy answers.
 
-The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.855 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the one whose category questions use expert-acclaim and cultural-community frames rather than requests for the best brands (§2.3), which may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.715 for Google and 0.566 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, a user of one provider's newest model meets a brand order that departs further from that provider's legacy models than the three-model panel departs from the six-model panel, most of all for OpenAI.
+The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.855 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the only one whose category questions include no direct request for the best (the other four each open with "What are the best ...?"): its six questions ask which brands critics, competitions, bartenders and enthusiast communities favour, which have become cultural phenomena and which are hidden gems not yet mainstream (§2.3). Such frames may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.715 for Google and 0.566 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, for OpenAI and Google a user of the provider's newest model meets a brand order that departs further from that provider's legacy models (0.566 and 0.715) than the three-model panel departs from the six-model panel (0.828), most of all for OpenAI; for Anthropic the pair agrees slightly more closely than the panels (0.848).
 
 For Consistency the result is intermediate and close to the falsification bar: $\rho_{\text{pw}} = 0.310$ against a bar of 0.30, with a 95% interval (0.051 to 0.520) that reaches below the falsification bar and above the confirmation bar. The permutation $p$-value (0.0056) indicates more agreement between the two generations' $\varphi$ orderings than chance would give, but the pre-registered effect-size rule decides, and the data neither support nor rule out a quantitative bridge for $\varphi$. The per-substrate correlations range widely, from 0.058 (cosmetics) and 0.075 (skincare) to 0.809 (automotive), each on 10 to 17 brands. With three models $\varphi$ carries less information per brand than with six (§2.8), so part of the shortfall may reflect the smaller panel rather than the change of generation; the design cannot separate the two. On the new panel $\varphi$ did not track Presence ($|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.101$), so the weak carry-over is not a by-product of the Presence result.
 
@@ -95,9 +106,11 @@ LIMITS_NEW = ("The search-on results of Gemini 4 Argon rest on calls that rarely
               "pairs and the per-model search correlations are single-model figures reported alongside, without "
               "verdicts, and the pooled results can hide differences between models. Refusal counts are lower "
               "bounds: the raw record cannot distinguish a GPT-6 Astra refusal from a blank answer, nor record why "
-              "a Gemini 4 Argon prompt was blocked (`osf/v42/DEVIATIONS.md`, Entry 1). The v0.23 recognition "
-              "judge was called through a different Anthropic organization from the study's own, with the same "
-              "model, code and prompts (§2.6).")
+              "a Gemini 4 Argon prompt was blocked (`osf/v42/DEVIATIONS.md`, Entry 1). The study's Anthropic "
+              "requests went through two organizations: the first six Claude Fable 5.2 batches and the v0.23 "
+              "recognition judge through the organization that had coded $t_1$--$t_3$, and the seventh batch, the "
+              "30 calls of the third search-on run, through a new one, with the same model, parameters, code and "
+              "prompts (§2.6, §3.1).")
 EDITS.append((LIMITS_OLD, LIMITS_NEW))
 
 

@@ -55,7 +55,7 @@ Brand measures read from the answers of large language models (LLMs) can serve a
 Recall Presence ordered brands on the newest models as it had on the retiring panel (`H_Gen_Presence` CONFIRMED: pooled within-category ρ = 0.828, 95% interval 0.722 to 0.890, p = 0.0001, n = 112).
 The brand order of the Consistency instrument φ fell between the pre-registered bars (`H_Gen_Phi` MARGINAL: ρ = 0.310, just above the falsification bar of 0.30, 95% interval 0.051 to 0.520, p = 0.0056, n = 73).
 Turning on each provider's web search left the Presence ordering of the three-model panel intact (search-robust: ρ = 0.909, 95% interval 0.827 to 0.945), although per model the correlation ranged from 0.710 to 0.909 and Gemini 4 Argon searched in only 17.8% of its search-on calls.
-Run-to-run reliability of recall, the noise floor for the planned t₅ and t₆ waves, ranged from 0.84 to 0.91 (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
+Run-to-run reliability of recall, the noise floor for the planned t₅ and t₆ waves, ranged from 0.845 to 0.915 (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; model generations; cross-generation stability; web search; test--retest reliability; brand recall; consistency
 
@@ -77,7 +77,7 @@ This study answers both with one pre-registered collection on the newest general
 
 ## 2.1 Design
 
-The study is a prospective re-acquisition. It re-asks, verbatim, the questions of the five-substrate omnibus --- v0.19 audiophile headphones (16 brands), v0.20 skincare, v0.21 cosmetics, v0.22 automotive and v0.23 premium spirits (24 brands each), 112 brand units --- to the three models of panel N3 (§2.2). Phase B (recall) asks six category questions per substrate (30 in all); Phase A (recognition) asks one question per brand (112). Phase B was collected without tools (S0) and with the provider's own web search (S1), in three independent runs each; Phase A once, in S0. The design therefore has 3 models × (30 × 2 conditions × 3 runs + 112) = 876 calls: 202 per model in S0 and 90 per model in S1. Each call is independent, with no conversation state carried between calls. Calls were sent in seven blocks in a fixed order --- Phase B S0 runs 1 to 3, Phase A S0, then Phase B S1 runs 1 to 3 --- with the three models in parallel within a block, so that the answers of the primary test and the recognition answers were complete before the costlier search-on answers began.
+The study is a prospective re-acquisition. It re-asks, verbatim, the questions of the five-substrate omnibus --- v0.19 audiophile headphones (16 brands), v0.20 skincare, v0.21 cosmetics, v0.22 automotive and v0.23 premium spirits (24 brands each), 112 brand units --- to the three models of panel N3 (§2.2). Phase B (recall) asks six category questions per substrate (30 in all); Phase A (recognition) asks one question per brand (112). Phase B was collected without tools (S0) and with the provider's own web search (S1), in three independent runs each; Phase A once, in S0. The design therefore has 3 models × (30 × 2 conditions × 3 runs + 112) = 876 calls: 202 per model in S0 and 90 per model in S1. Each call is independent, with no conversation state carried between calls. Calls were sent in seven blocks in a fixed order --- Phase B S0 runs 1 to 3, Phase A S0, then Phase B S1 runs 1 to 3 --- with the three models in parallel within a block, so that the answers of the primary test and the recognition answers would be complete before the costlier search-on answers began.
 
 The comparison wave, $t_3$, is the v0.41 collection of 9 November 2026 on the six legacy models (panel L6), with one run and no tools. $t_4$ was collected after the lock. The collection script enforced the window: no new request after the earlier of 72 hours from the first recorded call and 16 November 2026, 23:59:59 UTC, and no other paid collection running on the collection machine. The brand registries and their probe artefacts are unchanged from $t_1$--$t_3$: no brand was added, removed or renamed, and each registry carries its source-phase conflict-of-interest handling forward unchanged.
 
@@ -111,7 +111,7 @@ The programme caps paid model calls at US\$100 per paper, including re-sends and
 
 ## 2.6 Coding
 
-Mentions in Phase B answers were coded by each substrate's certified function, unchanged: for v0.20--v0.22 the content module's `detect_mention`, for v0.19 the parser of `acquire_v0_19`, and for v0.23 the deterministic brand matching of `score_v0_23.score_phase_b` (its optional language-model elaboration step enters no statistic and was not run). Coding applies to the visible answer text. In both conditions URLs are removed before matching (`https?://` addresses and the targets of Markdown links; link text is kept), so a brand counts only when the answer names it, not when a cited address contains it. Recognition (Phase A, S0, run 1) was coded by the same yes/no parsers as at $t_1$--$t_3$ for v0.19--v0.22 and, for v0.23, by the $t_1$--$t_3$ recognition judge (Claude Sonnet 4.5; 72 judge calls, which are coding, not acquisition). Claude Sonnet 4.5 is not served to the study's current Anthropic organization: a first coding attempt on 11 November 2026 returned a not-found error for every judge call, none of them billed, and its tables were set aside. With the pre-registrant's decision, the judge was called through the Anthropic organization that coded $t_1$--$t_3$, with the same model, code and prompts, and coded 72 of 72 answers. The coder (`code_t4_v0_42.py`, git blob `2d36735d`) was fixed before the lock.
+Mentions in Phase B answers were coded by each substrate's certified function, unchanged: for v0.20--v0.22 the content module's `detect_mention`, for v0.19 the parser of `acquire_v0_19`, and for v0.23 the deterministic brand matching of `score_v0_23.score_phase_b` (its optional language-model elaboration step enters no statistic and was not run). Coding applies to the visible answer text. In both conditions URLs are removed before matching (`https?://` addresses and the targets of Markdown links; link text is kept), so a brand counts only when the answer names it, not when a cited address contains it. Recognition (Phase A, S0, run 1) was coded by the same yes/no parsers as at $t_1$--$t_3$ for v0.19--v0.22 and, for v0.23, by the $t_1$--$t_3$ recognition judge (Claude Sonnet 4.5; 72 judge calls, which are coding, not acquisition). Claude Sonnet 4.5 is not served to the Anthropic organization the study used from its re-run pass on (§3.1): a first coding attempt on 11 November 2026 returned a not-found error for every judge call, none of them billed, and its tables were set aside. With the pre-registrant's decision, the judge was called through the Anthropic organization that coded $t_1$--$t_3$ and had served the first six Claude Fable 5.2 batches, with the same model, code and prompts, and coded 72 of 72 answers. The coder (`code_t4_v0_42.py`, git blob `2d36735d`) was fixed before the lock.
 
 ## 2.7 Measures and statistics
 
@@ -151,7 +151,7 @@ A model × condition with fewer than 90% of its calls answered after the re-run 
 
 ## 2.10 Pre-registration
 
-The pre-registration (revision r2, with clarifications C1--C28) was locked at git tag `v0.42-prereg-r1` (commit `58d1891bf2`) and deposited on OSF (`ec6wh`, `v42/prereg/`) with an anchor record naming the tag's commit before any study probe was sent; the collection script refused to run until the tag was on the remote repository and the anchor existed. The lock procedure provided a 24-hour review period after the last change to a decision rule (C25); the pre-registrant waived it on 10 November 2026, and the tag was set on 11 November 2026 at 02:53 UTC, before the first call (§3.1). Revision r2 replaced the first draft under the programme's collection budget rule (at most US\$100 of paid model calls per paper): one flagship per provider, Phase A in S0 with one run, and the removal of `H_Version_Presence` (clarifications C10--C24). Clarification C25, made before the lock, changed the decision statistic to the centred $\rho_{\text{pw}}$ of §2.7: v0.41's uncentred version is inflated by between-substrate differences in mean rank when substrates differ in size (16 against 24 brands), with a mean of +0.0464 under independence on the 112 brands; thresholds, rules and seeds were unchanged. Clarification C26 made the collection script enforce the one-collection rule and the window and record every billed batch request. Clarifications C27 and C28, made before the lock after a dry run of the whole chain on simulated provider responses, made the brand table's columns for panel N3 always use all three models (the component papers recompute them on all three) and made the budget guard and descriptive 6 count billed usage they had missed (OpenAI page-open and find-in-page actions, Gemini search-result tokens), in the conservative direction; neither changed a hypothesis, threshold or decision rule. The scorer (`score_v0_42.py`) and the coder were written and tested on synthetic data before the lock, and the scorer was run once, after the parity gates. Deviations are recorded in `osf/v42/DEVIATIONS.md` (1 entry), each before the step it concerns.
+The pre-registration (revision r2, with clarifications C1--C28) was locked at git tag `v0.42-prereg-r1` (commit `58d1891bf2`) and deposited on OSF (`ec6wh`, `v42/prereg/`) with an anchor record naming the tag's commit before any study probe was sent; the collection script refused to run until the tag was on the remote repository and the anchor existed. The lock procedure provided a 24-hour review period after the last change to a decision rule (C25); the pre-registrant waived it on 10 November 2026 (20:26 US Central time), and the tag was set on 11 November 2026 at 02:52 UTC. OSF's file records date the deposit of the locked files to 02:53--02:55 UTC and that of the anchor record to 02:55 UTC, before the first call (2026-11-11 02:57 UTC; §3.1). Revision r2 replaced the first draft under the programme's collection budget rule (at most US\$100 of paid model calls per paper): one flagship per provider, Phase A in S0 with one run, and the removal of `H_Version_Presence` (clarifications C10--C24). Clarification C25, made before the lock, changed the decision statistic to the centred $\rho_{\text{pw}}$ of §2.7: v0.41's uncentred version is inflated by between-substrate differences in mean rank when substrates differ in size (16 against 24 brands), with a mean of +0.0464 under independence on the 112 brands; thresholds, rules and seeds were unchanged. Clarification C26 made the collection script enforce the one-collection rule and the window and record every billed batch request. Clarifications C27 and C28, made before the lock after a dry run of the whole chain on simulated provider responses, made the brand table's columns for panel N3 always use all three models (the component papers recompute them on all three), made descriptive 5 name the source of a Gemini grounding redirect by its host name instead of counting the redirect address as one domain, and made the budget guard and descriptive 6 count billed usage they had missed (OpenAI page-open and find-in-page actions, Gemini search-result tokens), in the conservative direction; neither changed a hypothesis, threshold or decision rule. The scorer (`score_v0_42.py`) and the coder were written and tested on synthetic data before the lock, and the scorer was run once, after the parity gates. Deviations are recorded in `osf/v42/DEVIATIONS.md` (1 entry), each before the step it concerns.
 
 # 3. Results
 
@@ -160,9 +160,9 @@ The pre-registration (revision r2, with clarifications C1--C28) was locked at gi
 All three parity gates passed before any $t_4$ statistic was computed (P1, P2 and P3).
 876 of the 876 design calls were answered (100.0%), and `MC_Complete` passed. Table 2 gives the counts per model and condition. No model × condition fell below the 90% floor, so no model was dropped. `MC_Served` passed: every answered call was served by the requested model or a dated snapshot of it.  
 
-`MC_Search` flagged Gemini 4 Argon: search was used in fewer than 25% of its S1 calls, and its S1 results are marked "search rarely used" throughout. No model × condition ended more than 5% of its calls at the output cap (`MC_Truncation`). The first call started at 2026-11-11 02:57 and the last ended at 2026-11-11 09:50 (UTC), a span of 6.9 hours, and `MC_Window` passed. Recorded spend on all billed requests, at the list prices of the pre-registration, was \$67.46, or \$67.96 with the \$0.50 reserve for the recognition judge, and `MC_Budget` passed. No pause approval was recorded by the budget guard. The raw file holds one record per attempt: 990 records for the 876 calls. The 114 additional records (30 for Claude Fable 5.2 with search on, 6 for Gemini 4 Argon with search off and 78 for Gemini 4 Argon with search on) are attempts that ended without an answer and without billed usage and were re-sent under the call policy; each call is analysed once, from its answered attempt.
+`MC_Search` flagged Gemini 4 Argon: search was used in fewer than 25% of its S1 calls, and its S1 results are marked "search rarely used" throughout (by $^{\dagger}$ in the tables, and in the captions of the tables and figures whose search-on values include it). No model × condition ended more than 5% of its calls at the output cap (`MC_Truncation`). The first call started at 2026-11-11 02:57 and the last ended at 2026-11-11 09:50 (UTC), a span of 6.9 hours, and `MC_Window` passed. Recorded spend on all billed requests, at the list prices of the pre-registration, was \$67.46, or \$67.96 with the \$0.50 reserve for the recognition judge, and `MC_Budget` passed. No pause approval was recorded by the budget guard. The raw file holds one record per attempt: 990 records for the 876 calls. The 114 additional records (30 for Claude Fable 5.2 with search on, 6 for Gemini 4 Argon with search off and 78 for Gemini 4 Argon with search on) are attempts that the providers refused, without an answer and without billed usage, when an account balance ran out: Anthropic declined to create the seventh Claude Fable 5.2 batch (the 30 calls of the third search-on run) for insufficient credit, and Google refused 84 Gemini 4 Argon calls because the prepaid credits were depleted. The main pass ended in block 7 with these calls unanswered. After the balances were restored, and with the study's Anthropic requests moved to a new organization, the one logged re-run pass (§2.4) answered all 114 between 09:05 and 09:50 UTC, so six Gemini 4 Argon recognition answers were completed after the search-on blocks had begun (§2.1). Each call is analysed once, from its answered attempt.
 
-Table: Calls answered, output-cap endings and search use, by model and condition. Answered: status ok, non-empty text and an accepted served ID; expected: 202 (S0) and 90 (S1) per model.
+Table: Calls answered, output-cap endings and search use, by model and condition. Answered: status ok, non-empty text and an accepted served ID; expected: 202 (S0) and 90 (S1) per model. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Cond. | Answered / expected | Share | Drop rule | At output cap | With search |
 |:--------------------|:-----|-------------------:|------:|:---------|-------------:|-----------:|
@@ -171,7 +171,7 @@ Table: Calls answered, output-cap endings and search use, by model and condition
 | GPT-6 Astra | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |
 | GPT-6 Astra | S1 | 90 / 90 | 100.0% | retained | 0.0% | 95.6% |
 | Gemini 4 Argon | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |
-| Gemini 4 Argon | S1 | 90 / 90 | 100.0% | retained | 0.0% | 17.8% |
+| Gemini 4 Argon$^{\dagger}$ | S1 | 90 / 90 | 100.0% | retained | 0.0% | 17.8% |
 
 ## 3.2 Cross-generation stability of Presence (`H_Gen_Presence`)
 
@@ -180,7 +180,7 @@ The correlation meets both conditions of the confirmation rule ($\rho_{\text{gen
 
 With search on in place of search off, the same comparison gives $\rho_{\text{pw}} = 0.796$ (95% interval 0.669 to 0.861; $p_{\text{perm}} = 0.0001$), which would read CONFIRMED under the primary rule; this variant is reported alongside and decides nothing. Per provider, the legacy pair pooled against its new model gives $\rho_{\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\rho_{\text{pw}} = 0.566$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\rho_{\text{pw}} = 0.715$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon). Table 3 gives the per-substrate correlations and Figure 1 the per-brand values.
 
-Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside).
+Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside). Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).
 
 | Substrate | Brands | $\rho$, search off | $\rho$, search on |
 |:----------------------|------:|-------------:|------------:|
@@ -218,21 +218,21 @@ On Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, recall Presence with search
 The interval's lower bound is at least 0.80, and the pre-declared label is **search-robust**.
 The search-on answers of Gemini 4 Argon are flagged "search rarely used" (§3.1). Table 5 gives the result per model. Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.932, automotive 0.976 and spirits 0.785. Figure 3 shows the per-brand values.
 
-Table: Recall Presence with search off against search on, per model (newest models, three runs each).
+Table: Recall Presence with search off against search on, per model (newest models, three runs each). $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Brands | $\rho_{\text{pw}}$ | Uncentred (v0.41) | $\Delta$ (on minus off) |
 |:--------------------|------:|-----:|-----------------:|----------------:|
 | Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |
 | GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |
-| Gemini 4 Argon | 112 | 0.909 | 0.913 | -0.012 |
+| Gemini 4 Argon$^{\dagger}$ | 112 | 0.909 | 0.913 | -0.012 |
 
-![Left: per-brand recall Presence on the newest models with search off and on (mean of three runs each). Right: $\rho_S$ with its 95% interval and the correlation per model and per substrate, against the pre-declared zones. Statistics in §3.4.](../../reports/figs/v42/chart_03_search_s0_s1.pdf){#fig:search width=100%}
+![Left: per-brand recall Presence on the newest models with search off and on (mean of three runs each). Right: $\rho_S$ with its 95% interval and the correlation per model and per substrate, against the pre-declared zones. Statistics in §3.4. Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).](../../reports/figs/v42/chart_03_search_s0_s1.pdf){#fig:search width=100%}
 
 ## 3.5 Pre-registered descriptives
 
-**Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: rel1 ranged from 0.84 to 0.91 and rel3 from 0.94 to 0.97. Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
+**Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: rel1 ranged from 0.845 to 0.915 and rel3 from 0.942 to 0.970. Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
 
-Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean.
+Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |
 |:--------------------|:-----|-----:|-----:|-----------------------:|
@@ -241,9 +241,9 @@ Table: Run-to-run reliability of recall per model and condition (descriptive 1).
 | GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |
 | GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |
 | Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |
-| Gemini 4 Argon | S1 | 0.915 | 0.970 | 0.919 |
+| Gemini 4 Argon$^{\dagger}$ | S1 | 0.915 | 0.970 | 0.919 |
 
-![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. Descriptive; no verdict.](../../reports/figs/v42/chart_04_run_reliability.pdf){#fig:rel width=100%}
+![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. Descriptive; no verdict. Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).](../../reports/figs/v42/chart_04_run_reliability.pdf){#fig:rel width=100%}
 
 **Recognition.** Table 7 gives the share of brands coded as recognized by each model with search off at $t_4$, beside each legacy model at $t_3$. Shares use the answers that could be coded as the denominator; recognition is not computed for search on, which r2 does not collect.
 
@@ -267,7 +267,7 @@ Table: Share of the 112 brands coded as recognized (descriptive 2): newest model
 
 **Answer form, search records and cost.** Tables 8 to 10 report the remaining descriptives: words per answer, registry brands named per Phase B answer, finish reasons and non-answers (descriptive 4); searches, sources and citations per S1 call (descriptive 5, with the 20 most-cited domains per model in Appendix Table 11); and tokens, searches and spend per model and condition from the recorded usage (descriptive 6). Every v0.19--v0.22 Phase A answer contained a yes or a no, no answered call ended with a refusal finish reason, and no call ended unanswered, so the two categories into which `osf/v42/DEVIATIONS.md` (Entry 1) splits unanswered calls (a GPT-6 Astra answer that is empty, refusal or blank; a Gemini 4 Argon call with no candidate) are both empty. Refusal counts are lower bounds (Entry 1).
 
-Table: Answer form per model and condition (descriptive 4). Words: mean words per Phase A and Phase B answer; brands per B: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy.
+Table: Answer form per model and condition (descriptive 4). Words: mean words per Phase A and Phase B answer; brands per B: registry brands named per Phase B answer; non-answers: Phase A answers (v0.19--v0.22) with no yes or no; refusals: by finish reason; unanswered: error or empty after the retry policy. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |
 |:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|
@@ -276,17 +276,17 @@ Table: Answer form per model and condition (descriptive 4). Words: mean words pe
 | GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |
 | GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |
 | Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |
-| Gemini 4 Argon | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |
+| Gemini 4 Argon$^{\dagger}$ | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |
 
-Table: Search records per model, answered S1 calls (descriptive 5).
+Table: Search records per model, answered S1 calls (descriptive 5). $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | S1 calls | Searches per call | Sources per call | Citations per call | With a citation |
 |:--------------------|--------:|-----------------:|----------------:|------------------:|---------------:|
 | Claude Fable 5.2 | 90 | 1.7 | 15.6 | 11.1 | 83% |
 | GPT-6 Astra | 90 | 2.6 | 92.5 | 8.2 | 96% |
-| Gemini 4 Argon | 90 | 0.4 | 1.7 | 3.9 | 18% |
+| Gemini 4 Argon$^{\dagger}$ | 90 | 0.4 | 1.7 | 3.9 | 18% |
 
-Table: Recorded usage and spend per model and condition (descriptive 6), all billed requests at the list prices of the pre-registration; the v0.23 recognition judge is not in the raw file and is covered by its reserve.
+Table: Recorded usage and spend per model and condition (descriptive 6), all billed requests at the list prices of the pre-registration; the v0.23 recognition judge is not in the raw file and is covered by its reserve. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Cond. | Billed requests | Input tokens | Output tokens | Searches | US\$ |
 |:--------------------|:-----|---------------:|------------:|-------------:|--------:|-------:|
@@ -295,14 +295,14 @@ Table: Recorded usage and spend per model and condition (descriptive 6), all bil
 | GPT-6 Astra | S0 | 202 | 5,705 | 167,855 | 0 | \$8.45 |
 | GPT-6 Astra | S1 | 90 | 2,740,428 | 100,167 | 297 | \$35.38 |
 | Gemini 4 Argon | S0 | 202 | 10,813 | 162,569 | 0 | \$1.65 |
-| Gemini 4 Argon | S1 | 90 | 21,360 | 125,075 | 36 | \$1.80 |
+| Gemini 4 Argon$^{\dagger}$ | S1 | 90 | 21,360 | 125,075 | 36 | \$1.80 |
 | All |  |  |  |  |  | \$67.46 |
 
 # 4. Discussion
 
 The primary result is that the ordering of brands by recall Presence carried over from the retiring model generation to the newest flagship models ($\rho_{\text{pw}} = 0.828$, 95% interval 0.722 to 0.890). Under the pre-registered rationale, the programme's record on the legacy panel can therefore be bridged to the new panel for Presence: the brand standings measured since May 2026 remain interpretable on current models. The bridge is an ordering, not a level. The newest models named the average brand in a larger share of category answers ($\Delta = +0.046$), so comparisons of absolute Presence across the change of panel would need to account for the shift. The study does not explain it: answer length is a descriptive of the $t_4$ answers only (Table 8), not of the legacy answers.
 
-The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.855 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the one whose category questions use expert-acclaim and cultural-community frames rather than requests for the best brands (§2.3), which may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.715 for Google and 0.566 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, a user of one provider's newest model meets a brand order that departs further from that provider's legacy models than the three-model panel departs from the six-model panel, most of all for OpenAI.
+The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.855 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the only one whose category questions include no direct request for the best (the other four each open with "What are the best ...?"): its six questions ask which brands critics, competitions, bartenders and enthusiast communities favour, which have become cultural phenomena and which are hidden gems not yet mainstream (§2.3). Such frames may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.715 for Google and 0.566 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, for OpenAI and Google a user of the provider's newest model meets a brand order that departs further from that provider's legacy models (0.566 and 0.715) than the three-model panel departs from the six-model panel (0.828), most of all for OpenAI; for Anthropic the pair agrees slightly more closely than the panels (0.848).
 
 For Consistency the result is intermediate and close to the falsification bar: $\rho_{\text{pw}} = 0.310$ against a bar of 0.30, with a 95% interval (0.051 to 0.520) that reaches below the falsification bar and above the confirmation bar. The permutation $p$-value (0.0056) indicates more agreement between the two generations' $\varphi$ orderings than chance would give, but the pre-registered effect-size rule decides, and the data neither support nor rule out a quantitative bridge for $\varphi$. The per-substrate correlations range widely, from 0.058 (cosmetics) and 0.075 (skincare) to 0.809 (automotive), each on 10 to 17 brands. With three models $\varphi$ carries less information per brand than with six (§2.8), so part of the shortfall may reflect the smaller panel rather than the change of generation; the design cannot separate the two. On the new panel $\varphi$ did not track Presence ($|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.101$), so the weak carry-over is not a by-product of the Presence result.
 
@@ -314,7 +314,7 @@ Brands with little Presence mostly stayed so: of the 58 brands below the recall 
 
 # 5. Limitations
 
-Model generation is confounded with serving settings (temperature, output cap, thinking) and with knowledge cut-off, so `H_Gen_Presence` tests the bundle as a user meets it. There is one model per provider and therefore no within-provider replication at $t_4$. Three runs estimate run-to-run noise only coarsely, and $\varphi$ on three models is noisier than on six. Search-on answers depend on the web on the day and are reproducible only as recorded. The study covers one market and language (US English) and five categories chosen in May 2026. $t_3$ and $t_4$ are a few days apart, not simultaneous. Claude Fable 5.2 was sent through Anthropic's Message Batches API and the other two models synchronously; the batch requests carried the same parameters as the synchronous calls, but the serving path differs. Recognition rests on one Phase A run per model, in S0 only. Claude Fable 5.2's cost per call was estimated from another model's before collection, which is why the budget guard could have ended the collection before the second and third search-on runs; in the event, every search-on call was answered. The search-on results of Gemini 4 Argon rest on calls that rarely searched, so the search-on condition tests search mainly through Claude Fable 5.2 and GPT-6 Astra. The per-provider generation pairs and the per-model search correlations are single-model figures reported alongside, without verdicts, and the pooled results can hide differences between models. Refusal counts are lower bounds: the raw record cannot distinguish a GPT-6 Astra refusal from a blank answer, nor record why a Gemini 4 Argon prompt was blocked (`osf/v42/DEVIATIONS.md`, Entry 1). The v0.23 recognition judge was called through a different Anthropic organization from the study's own, with the same model, code and prompts (§2.6).
+Model generation is confounded with serving settings (temperature, output cap, thinking) and with knowledge cut-off, so `H_Gen_Presence` tests the bundle as a user meets it. There is one model per provider and therefore no within-provider replication at $t_4$. Three runs estimate run-to-run noise only coarsely, and $\varphi$ on three models is noisier than on six. Search-on answers depend on the web on the day and are reproducible only as recorded. The study covers one market and language (US English) and five categories chosen in May 2026. $t_3$ and $t_4$ are a few days apart, not simultaneous. Claude Fable 5.2 was sent through Anthropic's Message Batches API and the other two models synchronously; the batch requests carried the same parameters as the synchronous calls, but the serving path differs. Recognition rests on one Phase A run per model, in S0 only. Claude Fable 5.2's cost per call was estimated from another model's before collection, which is why the budget guard could have ended the collection before the second and third search-on runs; in the event, every search-on call was answered. The search-on results of Gemini 4 Argon rest on calls that rarely searched, so the search-on condition tests search mainly through Claude Fable 5.2 and GPT-6 Astra. The per-provider generation pairs and the per-model search correlations are single-model figures reported alongside, without verdicts, and the pooled results can hide differences between models. Refusal counts are lower bounds: the raw record cannot distinguish a GPT-6 Astra refusal from a blank answer, nor record why a Gemini 4 Argon prompt was blocked (`osf/v42/DEVIATIONS.md`, Entry 1). The study's Anthropic requests went through two organizations: the first six Claude Fable 5.2 batches and the v0.23 recognition judge through the organization that had coded $t_1$--$t_3$, and the seventh batch, the 30 calls of the third search-on run, through a new one, with the same model, parameters, code and prompts (§2.6, §3.1).
 
 # 6. Future Research
 
@@ -340,7 +340,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-Materials are deposited at OSF, `ec6wh/v42`: the locked pre-registration and its anchor record, the probe file, the parity, feasibility and cost-estimate records, the scripts and the lock manifest (`v42/prereg/`, `v42/anchor/`). At publication the deposit adds the $t_4$ raw answers with their search records and usage, the coded tables, the verdicts (`v42_verdicts.json`), the brand table (`v42_brand_table.csv`) and the figure sources.
+Materials are deposited at OSF, `ec6wh/v42`: the locked pre-registration and its anchor record, the probe file, the parity, feasibility and cost-estimate records, the scripts and the lock manifest (`v42/prereg/`, `v42/anchor/`), and the deviations record (`v42/DEVIATIONS.md`). At publication the deposit adds the $t_4$ raw answers with their search records and usage, the coded tables, the verdicts (`v42_verdicts.json`), the brand table (`v42_brand_table.csv`) and the figure sources.
 
 # References {-}
 
@@ -356,7 +356,7 @@ González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Mult
 
 González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: CPC Consistency --- A Pre-Registered Negative Result* (v1.7). SSRN 6878818.
+González Castro, P. U. (2026). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component of AIAS™* (v1.7). SSRN 6878818.
 
 González Castro, P. U. (2026). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
 
@@ -366,15 +366,15 @@ González Castro, P. U. (2026). *Two-Wave Temporal Stability of an AI Brand-Reca
 
 González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (AIAS v0.41). SSRN 7685100 (submitted November 2026); OSF `ec6wh/v41`.
 
-González Castro, P. U. (2026). *AI Presence in Audiophile headphones: AIAS v0.19*. SSRN 6809182.
+González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate* (v0.19). SSRN 6809182.
 
-González Castro, P. U. (2026). *AI Presence in Skincare: AIAS v0.20*. SSRN 6811441.
+González Castro, P. U. (2026). *Type 2 Emergence and First Prospective v1.5 C2 Calibration on a Skincare IL-Gradient Substrate* (v0.20). SSRN 6811441.
 
-González Castro, P. U. (2026). *AI Presence in Cosmetics: AIAS v0.21*. SSRN 6815378.
+González Castro, P. U. (2026). *Type 2 Confirmation, Recognition Ceiling, and Phantom Brand Persistence on a Cosmetics IL-Gradient Substrate* (v0.21). SSRN 6815378.
 
-González Castro, P. U. (2026). *AIAS™ v0.22 --- Automotive Substrate: Phantom Brand Persistence on a Heritage-Saturated Category*. SSRN 6829118.
+González Castro, P. U. (2026). *Phantom Brand Persistence on a Heritage-Saturated Automotive Substrate: Cell D\_Defunct as Pure-Phantom Upper-Bound Test* (v0.22). SSRN 6829118.
 
-González Castro, P. U. (2026). *AIAS™ v0.23 --- Premium Spirits Substrate*. SSRN 6834298.
+González Castro, P. U. (2026). *AIAS Presence Index v0.23: Premium Spirits --- Recognition Ceiling, Recall-Driven Regime Classification, and the Conglomerate Ownership Hypothesis Across 24 Brands and Six Large Language Models*. SSRN 6834298.
 
 Romaniuk, J., & Sharp, B. (2022). *How Brands Grow, Part 2* (Revised ed.). Oxford University Press.
 
@@ -384,10 +384,10 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 
 # Appendix {-}
 
-Table: The 20 most-cited domains per model in the answered search-on calls (descriptive 5), with citation counts.
+Table: The 20 most-cited domains per model in the answered search-on calls (descriptive 5), with citation counts. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Domain (citations) |
 |:--------------------|:------------------------------------------------------------|
 | Claude Fable 5.2 | drinksint.com (69), ringly.io (42), thewhiskeywash.com (29), americansalon.com (28), crutchfield.com (27), globalbrandsmagazine.com (24), consumerreports.org (24), carcody.com (23), ecoustics.com (22), marieclaire.com (22), thedermdigest.com (20), rd.com (17), en.wikipedia.org (17), autoblog.com (17), wineenthusiast.com (15), vinepair.com (14), whowhatwear.com (13), cosmetify.com (13), roadethos.com (13), gobrandwave.com (12) |
 | GPT-6 Astra | consumerreports.org (42), vogue.com (39), allure.com (36), vinepair.com (35), rtings.com (23), wineenthusiast.com (17), statista.com (16), stereophile.com (15), cosmetify.com (15), cosmeticsbusiness.com (14), whowhatwear.com (13), caranddriver.com (13), beautymatter.com (12), thespiritsbusiness.com (12), iwsc.net (12), aad.org (11), diarydirectory.com (10), glamour.com (10), bustle.com (10), subaru.com (10) |
-| Gemini 4 Argon | youtube.com (65), forbes.com (21), thewhiskeywash.com (16), beautypackaging.com (16), prnewswire.com (13), hernogin.com (12), suntoryglobalspirits.com (10), newsnationnow.com (10), qz.com (8), dermstore.com (7), iwsc.net (7), ecoustics.com (7), carpro.com (7), jdpower.com (6), gravelai.com (5), artofskincare.com (5), cluboenologique.com (5), wine-searcher.com (5), suntory.com (5), theautochannel.com (5) |
+| Gemini 4 Argon$^{\dagger}$ | youtube.com (65), forbes.com (21), thewhiskeywash.com (16), beautypackaging.com (16), prnewswire.com (13), hernogin.com (12), suntoryglobalspirits.com (10), newsnationnow.com (10), qz.com (8), dermstore.com (7), iwsc.net (7), ecoustics.com (7), carpro.com (7), jdpower.com (6), gravelai.com (5), artofskincare.com (5), cluboenologique.com (5), wine-searcher.com (5), suntory.com (5), theautochannel.com (5) |

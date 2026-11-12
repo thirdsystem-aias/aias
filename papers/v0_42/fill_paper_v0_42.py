@@ -245,6 +245,17 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     flagged = [m for m in VV.N3 if (mcs.get(m) or {}).get("flag_search_rarely_used")]
     flags["MCS_ANY_FLAG"] = bool(flagged)
     val.word("MCS_FLAGGED", VV.names(flagged), ["verdicts", "manipulation_checks", "MC_Search"])
+    # MC_Search (pre-registration section 2.6): a flagged model's S1 is marked "search rarely used" in every S1 result:
+    # a dagger on its S1 rows in the tables, a note in the captions of tables and figures with pooled S1 values.
+    dag = "$^{\\dagger}$"
+    val.word("FLAG_ROW_NOTE", f" {dag} Search rarely used (`MC_Search`, §3.1)." if flagged else "",
+             ["verdicts", "manipulation_checks", "MC_Search"])
+    val.word("FLAG_POOLED_NOTE", (f" Search-on values include the answers of {VV.names(flagged)}, marked "
+                                  f"\"search rarely used\" (§3.1)." if flagged else ""),
+             ["verdicts", "manipulation_checks", "MC_Search"])
+
+    def mname(m, c):
+        return VV.MODEL_NAME[m] + (dag if c == "S1" and m in flagged else "")
     mct = V["manipulation_checks"]["MC_Truncation"]
     tparts = []
     for k in sorted(mct):
@@ -298,7 +309,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
         for c in ("S0", "S1"):
             k = f"{m}|{c}"
             pm = MC + ["MC_Complete", "per_model_condition", k]
-            rows.append([VV.MODEL_NAME[m], c, f"{cl.f('verdicts', pm + ['answered'], VV.i0)} / "
+            rows.append([mname(m, c), c, f"{cl.f('verdicts', pm + ['answered'], VV.i0)} / "
                          f"{cl.f('verdicts', pm + ['expected'], VV.i0)}",
                          cl.f("verdicts", pm + ["share_of_expected"], VV.pct1),
                          "excluded" if (val.raw("verdicts", pm).get("excluded_below_90pct")) else "retained",
@@ -441,10 +452,10 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     for m in VV.N3:
         pm = S + ["per_model", m]
         if VV.has(hs, ["per_model", m, "n"]):
-            rows.append([VV.MODEL_NAME[m], cl.f("verdicts", pm + ["n"], VV.i0), cl.f("verdicts", pm + ["rho"], VV.r3),
+            rows.append([mname(m, "S1"), cl.f("verdicts", pm + ["n"], VV.i0), cl.f("verdicts", pm + ["rho"], VV.r3),
                          cl.f("verdicts", pm + ["rho_uncentred_v041"], VV.r3), cl.f("verdicts", pm + ["delta"], VV.sr3)])
         else:
-            rows.append([VV.MODEL_NAME[m], "--", "not computed", "--", "--"])
+            rows.append([mname(m, "S1"), "--", "not computed", "--", "--"])
     val.table("TABLE_SEARCH_MODEL", md_table(["Model", "Brands", "$\\rho_{\\text{pw}}$", "Uncentred (v0.41)",
                                               "$\\Delta$ (on minus off)"], rows), cl.cells)
 
@@ -454,8 +465,8 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     r1 = [("verdicts", D + ["1_run_reliability", k, "rel1"]) for k in sorted(rel) if VV.has(rel, [k, "rel1"])]
     r3 = [("verdicts", D + ["1_run_reliability", k, "rel3"]) for k in sorted(rel) if VV.has(rel, [k, "rel3"])]
     if r1:
-        a, b = val.derive("REL1_MIN", VV.d_min, r1, VV.r2), val.derive("REL1_MAX", VV.d_max, r1, VV.r2)
-        c, d = val.derive("REL3_MIN", VV.d_min, r3, VV.r2), val.derive("REL3_MAX", VV.d_max, r3, VV.r2)
+        a, b = val.derive("REL1_MIN", VV.d_min, r1, VV.r3), val.derive("REL1_MAX", VV.d_max, r1, VV.r3)
+        c, d = val.derive("REL3_MIN", VV.d_min, r3, VV.r3), val.derive("REL3_MAX", VV.d_max, r3, VV.r3)
         val.word("REL_SENTENCE", f"rel1 ranged from {a} to {b} and rel3 from {c} to {d}.", D + ["1_run_reliability"])
     else:
         val.word("REL1_MIN", "--", D); val.word("REL1_MAX", "--", D)
@@ -466,7 +477,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     for m in VV.N3:
         for c in ("S0", "S1"):
             pk = D + ["1_run_reliability", f"{m}|{c}"]
-            rows.append([VV.MODEL_NAME[m], c, cl.f("verdicts", pk + ["rel1"], VV.r3), cl.f("verdicts", pk + ["rel3"], VV.r3),
+            rows.append([mname(m, c), c, cl.f("verdicts", pk + ["rel1"], VV.r3), cl.f("verdicts", pk + ["rel3"], VV.r3),
                          cl.f("verdicts", pk + ["rel1_uncentred_v041"], VV.r3)])
     val.table("TABLE_REL", md_table(["Model", "Cond.", "rel1", "rel3", "rel1, uncentred (v0.41)"], rows,
                                     ["l", "l", "r", "r", "r"]), cl.cells)
@@ -516,12 +527,12 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
             k = f"{m}|{c}"
             pk = D + ["4_answer_form", k]
             if k not in form:
-                rows.append([VV.MODEL_NAME[m], c] + ["--"] * 5)
+                rows.append([mname(m, c), c] + ["--"] * 5)
                 continue
             fr = ", ".join(f"{name} {cl.f('verdicts', pk + ['finish_reasons', name], VV.i0)}"
                            for name in sorted(form[k].get("finish_reasons") or {}))
             na = pk + ["non_answers"]
-            rows.append([VV.MODEL_NAME[m], c, cl.f("verdicts", pk + ["words_per_answer_A_mean"], VV.f1),
+            rows.append([mname(m, c), c, cl.f("verdicts", pk + ["words_per_answer_A_mean"], VV.f1),
                          cl.f("verdicts", pk + ["words_per_answer_B_mean"], VV.f1),
                          cl.f("verdicts", pk + ["registry_brands_named_per_phase_B_answer"], VV.f1),
                          fr.replace("_", "\\_") or "--",
@@ -537,15 +548,15 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     for m in VV.N3:
         pk = D + ["5_search", m]
         if m not in sd:
-            rows.append([VV.MODEL_NAME[m], "0", "--", "--", "--", "--"])
-            drows.append([VV.MODEL_NAME[m], "--"])
+            rows.append([mname(m, "S1"), "0", "--", "--", "--", "--"])
+            drows.append([mname(m, "S1"), "--"])
             continue
-        rows.append([VV.MODEL_NAME[m], cl.f("verdicts", pk + ["s1_answered_calls"], VV.i0),
+        rows.append([mname(m, "S1"), cl.f("verdicts", pk + ["s1_answered_calls"], VV.i0),
                      cl.f("verdicts", pk + ["searches_per_call"], VV.f1), cl.f("verdicts", pk + ["sources_per_call"], VV.f1),
                      cl.f("verdicts", pk + ["citations_per_call"], VV.f1),
                      cl.f("verdicts", pk + ["share_with_citation"], VV.pct0)])
         doms = sd[m].get("top20_cited_domains") or []
-        drows.append([VV.MODEL_NAME[m], ", ".join(
+        drows.append([mname(m, "S1"), ", ".join(
             f"{dname} ({cl.f('verdicts', pk + ['top20_cited_domains', i, 1], VV.i0)})"
             for i, (dname, _n) in enumerate(doms)) or "--"])
     val.table("TABLE_SEARCHDESC", md_table(["Model", "S1 calls", "Searches per call", "Sources per call",
@@ -559,7 +570,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     for m in VV.N3:
         for c in ("S0", "S1"):
             pk = D + ["6_cost", "per_model_condition", f"{m}|{c}"]
-            rows.append([VV.MODEL_NAME[m], c, cl.f("verdicts", pk + ["billed_requests"], VV.i0),
+            rows.append([mname(m, c), c, cl.f("verdicts", pk + ["billed_requests"], VV.i0),
                          cl.f("verdicts", pk + ["input_tokens"], VV.i0),
                          cl.f("verdicts", pk + ["output_tokens_billed"], VV.i0),
                          cl.f("verdicts", pk + ["searches_billed"], VV.i0), cl.f("verdicts", pk + ["usd"], VV.usd2)])
