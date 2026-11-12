@@ -145,6 +145,23 @@ class RealPathOnSyntheticFiles(unittest.TestCase):
             B.run_real(paths, n_perm=10, gap_b=5, guards=False)
         self.assertFalse((paths["out"] / "v119_verdicts.json").exists())
 
+    def test_s_c3_on_the_real_path(self):
+        """r1: a four-model synthetic record (A4) laid out as Paper A writes it, its verdict document carrying Paper A's
+        panels as select_panels records them; the real path runs S-C3 on the recorded C3 panel."""
+        w4 = B.synthetic_world_a4(119390)
+        paths = write_world(self.tmp / "e", w4)
+        doc_a = json.loads(paths["a_verdicts"].read_text(encoding="utf-8"))
+        primary, panels = A.select_panels([])
+        doc_a.update(primary_panel=primary, panels=panels)
+        paths["a_verdicts"].write_text(json.dumps(doc_a), encoding="utf-8")
+        paths["only_sens"] = ("S-C3",)
+        doc = B.run_real(paths, n_perm=10, gap_b=5, guards=False)
+        self.assertTrue(doc["parity"]["B-P1"]["passed"])
+        self.assertEqual(doc["panel"], list(A.PANELS["N3"]))
+        self.assertEqual(set(doc["sensitivities"]), {"S-C3"})
+        self.assertEqual(doc["sensitivities"]["S-C3"]["panel"], list(A.PANELS["C3"]))
+        self.assertEqual(set(doc["sensitivities"]["S-C3"]["verdicts"]), set(doc["verdict_summary"]))
+
     def test_not_run_record_on_fail(self):
         paths = write_world(self.tmp / "d", self.world, verdict="FAIL")
         doc = B.run_real(paths, n_perm=10, gap_b=5, guards=False)

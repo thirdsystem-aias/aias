@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
 score_v1_19.py -- AIAS(TM) v1.19 Coverage Paper B, re-analysis studies #32, #34, #35, #36: scorer SKELETON
-(pre-registration DRAFT r0, 2026-11-12). Not locked.
+(pre-registration DRAFT r1, 2026-11-12; r0 the same day). Not locked.
 
-Transcribes PRE_REGISTRATION_v1_19_DRAFT_r0.md. THE PRE-REGISTRATION PROSE IS AUTHORITATIVE; where it is silent the
-choice is listed in SCORER_NOTES. Paper A's definitions and code are IMPORTED, not forked: score_v1_12.py (tag
-v1.12-prereg-r1) supplies the answer index, the probe design, beta / Cov* (coverage_table, cov_star_map), the
-leave-b-out Rasch deltas (rasch_deltas), rho_w, paired, perm_p, below_n_floor, the floors and the n floor.
+Transcribes PRE_REGISTRATION_v1_19_DRAFT_r1.md (r0: PRE_REGISTRATION_v1_19_DRAFT_r0.md). THE PRE-REGISTRATION
+PROSE IS AUTHORITATIVE; where it is silent the choice is listed in SCORER_NOTES. Paper A's definitions and code are
+IMPORTED, not forked: score_v1_12.py (tag v1.12-prereg-r1) supplies the answer index, the probe design, beta / Cov*
+(coverage_table, cov_star_map), the leave-b-out Rasch deltas (rasch_deltas), rho_w, paired, perm_p, below_n_floor,
+the floors and the n floor.
 
 r0 status: the real-data path (load_real, run_real) is written and tested on synthetic files laid out as Paper A's
 scorer writes them (tests/test_loader_v1_19.py); its test on Paper A's own --synthetic pipeline output is an r1 step.
@@ -45,6 +46,20 @@ SCORER_NOTES (choices where the draft is silent; each to be settled or confirmed
      = 0 for Cov* and the profiles. S-Mid uses Paper A's beta_mid. S-C3 runs only if the answers hold every C3 model.
      S-IL-t1: v0.37's IL-Direct (R_cult_total - R_cat_total, v1_7_cpc.csv), eligible iff 0 < mean_r / 6 < 1.
      H34_Defunct_Occupancy is one category's test and is not re-run by S-LOCO.
+
+r1 additions (draft r1, 2026-11-12; descriptive outputs and test tooling only: no hypothesis, verdict band, seed,
+estimand, exclusion or decision rule changed):
+ B12 D34 (descriptive): for set D and, beside it, Fisker (decision D4; unit key "Fisker" in the v0.22 registry):
+     answers of the primary panel to automotive CEPs naming the brand(s), by W; per brand, answers naming it in total
+     and by W; naive and caveated mentions by W and per brand, by the draft's keyword-window rule (is_caveated, the
+     rule caveat_counts already applied to D at r0). Fisker stays outside D and inside H34_Defunct_Occupancy's
+     reference mentions, as at r0. If Fisker is not in the input's registry, the record says so and counts nothing.
+ B13 D36 (descriptive): per category, the per-W mean of the 14-CEP excess profiles over the units entering
+     H36_Structure; if the full-profile clustering chose k >= 2, each type's size, its units per category and its
+     per-W mean profile (Ward labels 1..k). Computed only when H36_Structure is computed (as the DJ map at r0).
+ B14 Test tooling: synthetic_world_a4 builds a world holding Paper A's four models (A4: the N3 models and Claude
+     Opus 5.5) with N3 as the primary panel, so that S-C3 runs; time_sensitivities times the primary scoring and every
+     section 8 variant on such a world. dry_run takes the output file name (r0's record is kept unchanged).
 """
 import argparse
 import collections
@@ -95,6 +110,7 @@ ALPHA = 0.05
 CAVEAT_WINDOW = 150                                                       # v0.38 D7
 CAVEAT_TERMS = ("discontinued", "defunct", "no longer", "ceased", "phased out", "out of production", "shut down",
                 "was retired", "folded", "used market", "used car", "pre-owned", "bankrupt")
+FISKER = "Fisker"                                                         # v0.22 Cell_B_Disruptor; beside D (D4)
 NAN = float("nan")
 GATE_RUN, GATE_DECISION = ("PASS",), ("MARGINAL",)
 GATE_NOT_RUN = ("FAIL", "UNDETERMINED", "INSTRUMENT FAIL")
@@ -356,9 +372,11 @@ def h34_floor(cov, flags, P, n_perm=N_PERM):
     return out
 
 
-def h34_defunct(ans, design, panel, defunct, sub="v0.22", texts=None, n_draws=N_PERM):
+def h34_defunct(ans, design, panel, defunct, sub="v0.22", texts=None, n_draws=N_PERM, fisker=None):
     """Answers (panel, automotive CEPs) naming >= 1 defunct brand, by W; null W shares = W shares of all other
-    registry-brand mentions in the same answers; Monte Carlo multinomial (seed)."""
+    registry-brand mentions in the same answers; Monte Carlo multinomial (seed). Descriptive D34 (B12): set D's and,
+    beside it (decision D4), Fisker's counts; `fisker` = Fisker's unit key if it is in the input's registry, else None.
+    Fisker stays outside D and inside the null's 'other registry-brand mentions', as in r0."""
     keys = [k for k in ans if k[0] == sub and k[1] in panel]
     cnt = collections.Counter(design["w"][k[2]] for k in keys if ans[k] & set(defunct))
     ref = collections.Counter()
@@ -369,6 +387,9 @@ def h34_defunct(ans, design, panel, defunct, sub="v0.22", texts=None, n_draws=N_
            "answers": len(keys), "per_brand": {b: sum(1 for k in keys if b in ans[k]) for b in defunct}}
     if texts is not None:
         out["caveat"] = caveat_counts(ans, keys, defunct, texts, design)
+    out["D34"] = {"D": d34_counts(ans, keys, defunct, texts, design),
+                  "Fisker_beside_D": (d34_counts(ans, keys, [fisker], texts, design) if fisker is not None else
+                                      {"note": f"{FISKER} is not in this input's {sub} registry: no count"})}
     tot = sum(ref.values())
     if n < DEF_MIN or tot == 0:
         out.update(verdict="UNDETERMINED", reason=f"fewer than {DEF_MIN} answers name a defunct brand")
@@ -384,17 +405,49 @@ def h34_defunct(ans, design, panel, defunct, sub="v0.22", texts=None, n_draws=N_
     return out
 
 
+def is_caveated(text, brand):
+    """D34's rule: True iff a CAVEAT_TERMS term occurs within CAVEAT_WINDOW characters of an occurrence of the brand
+    name in the answer text (case-insensitive). A brand whose name does not occur in the text counts as naive."""
+    t = (text or "").lower()
+    b = brand.lower()
+    pos = [i for i in range(len(t)) if t.startswith(b, i)]
+    return any(term in t[max(0, i - CAVEAT_WINDOW): i + len(b) + CAVEAT_WINDOW] for i in pos for term in CAVEAT_TERMS)
+
+
 def caveat_counts(ans, keys, defunct, texts, design):
     """D34 (descriptive): an answer's defunct mention is caveated if a CAVEAT_TERMS term occurs within
     CAVEAT_WINDOW characters of the brand name (case-insensitive), else naive (v0.10 / v0.38 D7)."""
     res = {"naive": collections.Counter(), "caveated": collections.Counter()}
     for k in keys:
-        t = (texts.get(k) or "").lower()
         for b in sorted(ans[k] & set(defunct)):
-            pos = [i for i in range(len(t)) if t.startswith(b.lower(), i)]
-            cav = any(term in t[max(0, i - CAVEAT_WINDOW): i + len(b) + CAVEAT_WINDOW] for i in pos for term in CAVEAT_TERMS)
+            cav = is_caveated(texts.get(k), b)
             res["caveated" if cav else "naive"][design["w"][k[2]]] += 1
     return {k: dict(v) for k, v in res.items()}
+
+
+def d34_counts(ans, keys, names, texts, design):
+    """D34 (descriptive, B12): for the brands `names` in the answers `keys`: answers naming >= 1 of them by W; per brand,
+    the answers naming it in total and by W; and, if texts are given, naive / caveated mentions by W and per brand
+    (the rule of is_caveated). No statistic, no verdict."""
+    names = list(names)
+    nset = set(names)
+    by_w = collections.Counter(design["w"][k[2]] for k in keys if ans[k] & nset)
+    out = {"brands": names, "answers_naming_any": int(sum(by_w.values())), "answers_naming_any_by_W": {w: by_w.get(w, 0) for w in W},
+           "per_brand": {}}
+    split = {"naive": collections.Counter(), "caveated": collections.Counter()} if texts is not None else None
+    for b in names:
+        kb = [k for k in keys if b in ans[k]]
+        cw = collections.Counter(design["w"][k[2]] for k in kb)
+        row = {"answers": len(kb), "by_W": {w: cw.get(w, 0) for w in W}}
+        if texts is not None:
+            cav = {k for k in kb if is_caveated(texts.get(k), b)}
+            row.update(naive=len(kb) - len(cav), caveated=len(cav))
+            for k in kb:
+                split["caveated" if k in cav else "naive"][design["w"][k[2]]] += 1
+        out["per_brand"][b] = row
+    if split is not None:
+        out["mentions_by_W"] = {lab: {w: c.get(w, 0) for w in W} for lab, c in split.items()}
+    return out
 
 
 # =========================================================================== expected W occupancy (B6)
@@ -739,8 +792,33 @@ def h36_structure(prof, cov, P, rep_verdict, n_perm=N_PERM, B=GAP_B):
     cell = typology_cell(rep_verdict, inherit, auto, resid)
     res.update(full=st, ari_vs_presence_tiers=a_obs, p_ari=p_ari, inheritance=inherit, autonomy=auto,
                residual=st_r, residual_structure=resid, cell=cell,
-               dj_quadrants=dj_quadrants(cov, P, keys))
+               dj_quadrants=dj_quadrants(cov, P, keys),
+               D36_profiles=d36_profiles(X, keys, lab, st["k"]))
     return res
+
+
+def d36_profiles(X, keys, lab, k):
+    """D36 (descriptive, B13; no verdict): the per-W mean of the 14-CEP excess profiles per category, and, if the
+    full-profile clustering chose k >= 2, the per-W mean profile of each type (Ward label 1..k), over the units that
+    enter H36_Structure (`keys`, rows of X)."""
+    X = np.asarray(X, float)
+    lab = np.asarray(lab)
+    out = {"units": len(keys), "category_mean_profiles": {}, "k": int(k)}
+    for s in dict.fromkeys(kk[0] for kk in keys):
+        rows = [i for i, kk in enumerate(keys) if kk[0] == s]
+        out["category_mean_profiles"][s] = {"n": len(rows), "mean_excess": dict(zip(W, X[rows].mean(axis=0).tolist()))}
+    if k >= 2:
+        types = {}
+        for t in sorted(set(lab.tolist())):
+            rows = [i for i in range(len(keys)) if lab[i] == t]
+            types[f"type {int(t)}"] = {"n": len(rows),
+                                       "n_by_category": dict(collections.Counter(keys[i][0] for i in rows)),
+                                       "mean_excess": dict(zip(W, X[rows].mean(axis=0).tolist()))}
+        out["type_mean_profiles"] = types
+    else:
+        out["type_mean_profiles"] = None
+        out["note"] = "k = 1: no types, so no per-type profiles"
+    return out
 
 
 def typology_cell(rep, inherit, auto, resid):
@@ -796,8 +874,10 @@ def score_b(inp, n_perm=N_PERM, gap_b=GAP_B, studies=("32", "34", "35", "36"), o
     prof = drop_keys(excess_profiles(ans, brands, design["ceps"], design, panel, o.get("null", "rasch")), ex)
     if "34" in studies:
         doc["H34_Floor"] = h34_floor(cov, inp["flags"], inp["P"], n_perm)
+        fk = inp.get("fisker", FISKER)
         doc["H34_Defunct_Occupancy"] = h34_defunct(ans, design, panel, inp["defunct"], texts=inp.get("texts"),
-                                                   n_draws=n_perm)
+                                                   n_draws=n_perm,
+                                                   fisker=fk if fk in set(brands.get("v0.22", ())) else None)
     if "35" in studies:
         se_idx = [W.index(w) for w in SE_CUES]
         se = {k: float(v[0][se_idx].sum()) for k, v in prof.items() if v[1] > 0 and _f(cov.get(k))}
@@ -856,7 +936,7 @@ def sensitivities(inp, base, n_perm=N_PERM, gap_b=GAP_B, only=None):
         doc = score_b(dict(inp, **(repl or {})), n_perm, gap_b, studies, opts)
         s = doc.get("verdict_summary") or {}
         out[name] = {"opts": {k: (list(v) if isinstance(v, tuple) else v) for k, v in opts.items()},
-                     "studies": list(studies), "verdicts": s,
+                     "studies": list(studies), "panel": doc.get("panel"), "verdicts": s,
                      "verdict_changes": {h: [base.get(h), v] for h, v in s.items() if v != base.get(h)}}
     return out
 
@@ -1112,28 +1192,82 @@ def clean(o):
     return A._clean(o)
 
 
-def dry_run(out_dir, n_perm, gap_b, seed=SEEDS["dry_run"]):
+FISKER_STAND_IN = "v0.22-b00"    # synthetic worlds hold no "Fisker" unit; this synthetic brand stands in for D34's count
+
+
+def synthetic_world_a4(seed, effects=True, strength="strong"):
+    """B14: a synthetic world whose answers hold Paper A's four models (panel A4: Claude Fable 5.2, Claude Opus 5.5,
+    GPT-6 Astra, Gemini 4 Argon), so that S-C3 (Opus 5.5 in place of Fable 5.2) runs; the primary panel stays N3, as
+    Paper A records it when Fable is not dropped. A different world from synthetic_world(effects, seed): the fourth
+    model's draws shift the random stream."""
+    w = synthetic_world(effects, seed, panel=list(A.PANELS["A4"]), strength=strength)
+    w["panel"] = list(A.PANELS["N3"])
+    w["a_doc"] = dict(w["a_doc"], panels={k: list(v) for k, v in A.PANELS.items()})
+    return w
+
+
+def time_sensitivities(out_path, n_perm, gap_b, seed=SEEDS["dry_run"], log=print):
+    """B14: time the primary scoring and every section 8 variant (S-IL-t1 on a copy of the world's synthetic identity
+    load) on synthetic_world_a4(seed); write the record after every step, so a stopped run keeps what it measured."""
+    import time
+    out_path = Path(out_path)
+    rec = {"phase": PHASE_ID, "kind": "timing of the full sensitivity run on a synthetic world (no real answer read; "
+           "no model call)", "world": f"synthetic_world_a4(seed={seed}): effects, strong; answers of A4, primary N3",
+           "draws": {"permutation": n_perm, "gap_reference": gap_b}, "scorer_sha256": sha256(__file__),
+           "steps": {}, "complete": False}
+
+    def save():
+        out_path.write_text(json.dumps(clean(rec), indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
+    t_all = time.time()
+    t0 = time.time()
+    world = synthetic_world_a4(seed)
+    world["il_t1"] = {k: dict(v) for k, v in world["il"].items()}
+    rec["steps"]["build_world"] = {"seconds": round(time.time() - t0, 1)}
+    save()
+    t0 = time.time()
+    doc = score_b(world, n_perm, gap_b)
+    rec["steps"]["primary"] = {"seconds": round(time.time() - t0, 1), "verdicts": doc["verdict_summary"]}
+    log(f"primary {rec['steps']['primary']['seconds']} s")
+    save()
+    names = ["S-COI", "S-Floor6", "S-Equal", "S-Mid", "S-F-noD"] + [f"S-LOCO-{c}" for c in A.CATS] + ["S-C3", "S-IL-t1"]
+    for name in names:
+        t0 = time.time()
+        s = sensitivities(world, doc["verdict_summary"], n_perm, gap_b, only=(name,))
+        rec["steps"][name] = {"seconds": round(time.time() - t0, 1), "ran": name in s,
+                              **({"verdicts": s[name]["verdicts"], "verdict_changes": s[name]["verdict_changes"]}
+                                 if name in s else {})}
+        log(f"{name} {rec['steps'][name]['seconds']} s")
+        save()
+    rec["total_seconds"] = round(time.time() - t_all, 1)
+    rec["complete"] = True
+    save()
+    return rec
+
+
+def dry_run(out_dir, n_perm, gap_b, seed=SEEDS["dry_run"], name="dry_run_v1_19.json"):
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     rec = {"phase": PHASE_ID, "kind": "dry run on synthetic worlds (no real answer read; no model call)",
            "draws": {"permutation": n_perm, "gap_reference": gap_b}, "worlds": {},
-           "scorer_sha256": sha256(__file__), "paper_A_scorer": parity_b_p0()}
+           "scorer_sha256": sha256(__file__), "paper_A_scorer": parity_b_p0(),
+           "fisker_stand_in": FISKER_STAND_IN}
     import time
-    for i, (name, eff, strength) in enumerate((("effects", True, "strong"), ("null", False, "strong"),
-                                               ("effects_weak", True, "weak"))):
+    for i, (name_w, eff, strength) in enumerate((("effects", True, "strong"), ("null", False, "strong"),
+                                                 ("effects_weak", True, "weak"))):
         t0 = time.time()
         world = synthetic_world(eff, seed + i, strength=strength)
+        world["fisker"] = FISKER_STAND_IN
         doc = score_b(world, n_perm, gap_b)
-        exp = EXPECTED[name]
+        exp = EXPECTED[name_w]
         got = doc["verdict_summary"]
         checks = {h: {"expected": v, "got": got.get(h), "as_built": got.get(h) == v} for h, v in exp.items()}
-        rec["worlds"][name] = {"seed": seed + i, "runtime_s": round(time.time() - t0, 1), "verdicts": got,
+        rec["worlds"][name_w] = {"seed": seed + i, "runtime_s": round(time.time() - t0, 1), "verdicts": got,
                                "built_in_checks": checks, "all_as_built": all(c["as_built"] for c in checks.values()),
                                "detail": doc}
-    for name, how in (("not_run_FAIL", "FAIL"), ("not_run_MARGINAL_no_decision", "MARGINAL")):
+    for name_w, how in (("not_run_FAIL", "FAIL"), ("not_run_MARGINAL_no_decision", "MARGINAL")):
         doc = score_b({"a_doc": {"paper_A_verdict": {"verdict": how, "legs": {"H1_Sep_Presence": "MARGINAL"}}}}, n_perm)
-        rec["worlds"][name] = {"verdicts": {"status": doc["status"]}, "statistics": doc.get("statistics")}
-    (out_dir / "dry_run_v1_19.json").write_text(json.dumps(clean(rec), indent=2, ensure_ascii=False) + "\n",
+        rec["worlds"][name_w] = {"verdicts": {"status": doc["status"]}, "statistics": doc.get("statistics")}
+    (out_dir / name).write_text(json.dumps(clean(rec), indent=2, ensure_ascii=False) + "\n",
                                                 encoding="utf-8")
     return rec
 
@@ -1143,11 +1277,19 @@ def main():
     ap.add_argument("--dry-run", metavar="DIR", help="score two synthetic worlds and the not-run paths; no real data")
     ap.add_argument("--draws", type=int, default=N_PERM)
     ap.add_argument("--gap-b", type=int, default=GAP_B)
+    ap.add_argument("--out-name", default="dry_run_v1_19.json", help="dry-run record file name (r1: a new file)")
+    ap.add_argument("--time-sensitivities", metavar="FILE",
+                    help="time the primary scoring and every section 8 variant on a synthetic four-model world")
     ap.add_argument("--run", action="store_true", help="score the real record (refuses before the lock)")
     a = ap.parse_args()
     try:
+        if a.time_sensitivities:
+            rec = time_sensitivities(a.time_sensitivities, a.draws, a.gap_b,
+                                     log=lambda m: print(m, flush=True))
+            print("total_seconds", rec["total_seconds"])
+            return 0
         if a.dry_run:
-            rec = dry_run(a.dry_run, a.draws, a.gap_b)
+            rec = dry_run(a.dry_run, a.draws, a.gap_b, name=a.out_name)
             for name, w in rec["worlds"].items():
                 print(name, json.dumps(clean(w["verdicts"])), "as built:" if "all_as_built" in w else "",
                       w.get("all_as_built", ""))

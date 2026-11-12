@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
 """
-Unit tests for score_v1_19.py (v1.19 Coverage Paper B re-analysis, scorer skeleton r0). Synthetic data only: no v1.12
-answer exists or is read, no t4 value is computed, no API is called. Run from the repository root:
+Unit tests for score_v1_19.py (v1.19 Coverage Paper B re-analysis, scorer skeleton r0; r1 adds the classes
+R1Descriptives and SC3). Synthetic data only: no v1.12 answer exists or is read, no t4 value is computed, no API is
+called. Run from the repository root:
 
     python3 -m unittest discover -s osf/methodology/v1_19/scripts/tests -p "test_*.py" -v
 """
@@ -172,6 +173,93 @@ class Statistics(unittest.TestCase):
         empty = {k: frozenset(v - set(B.DEFUNCT)) for k, v in w["ans"].items()}
         r = B.h34_defunct(empty, w["design"], w["panel"], B.DEFUNCT, n_draws=100)
         self.assertEqual(r["verdict"], "UNDETERMINED")
+
+
+class R1Descriptives(unittest.TestCase):
+    """r1: D34 (Fisker beside D; naive / caveated by W and per brand) and D36 (category and type mean profiles)."""
+    DESIGN = {"w": {"c1": "when", "c2": "why", "c3": "with whom"}}
+
+    def test_caveat_window_rule(self):
+        self.assertTrue(B.is_caveated("Pontiac" + " " * 140 + "defunct", "Pontiac"))
+        self.assertFalse(B.is_caveated("Pontiac" + " " * 150 + "defunct", "Pontiac"))
+        self.assertTrue(B.is_caveated("The DISCONTINUED " + "x" * 100 + " pontiac", "Pontiac"))   # case-insensitive
+        self.assertFalse(B.is_caveated("A defunct brand.", "Pontiac"))                           # name absent: naive
+        self.assertFalse(B.is_caveated(None, "Pontiac"))
+
+    def test_d34_fisker_beside_d(self):
+        ans = {("v0.22", "m", "c1", 1): frozenset({"Pontiac", "Fisker", "Ford"}),
+               ("v0.22", "m", "c1", 2): frozenset({"Saturn"}),
+               ("v0.22", "m", "c2", 1): frozenset({"Fisker"}),
+               ("v0.22", "m", "c3", 1): frozenset({"Ford"})}
+        texts = {("v0.22", "m", "c1", 1): "Pontiac (no longer made). Ford. " + "y" * 200 + " Fisker.",
+                 ("v0.22", "m", "c1", 2): "Saturn is great.",
+                 ("v0.22", "m", "c2", 1): "Fisker went bankrupt."}
+        keys = sorted(ans)
+        d = B.d34_counts(ans, keys, B.DEFUNCT, texts, self.DESIGN)
+        self.assertEqual(d["answers_naming_any"], 2)
+        self.assertEqual(d["answers_naming_any_by_W"]["when"], 2)
+        self.assertEqual(d["per_brand"]["Pontiac"], {"answers": 1, "by_W": {x: int(x == "when") for x in B.W},
+                                                     "naive": 0, "caveated": 1})
+        self.assertEqual(d["per_brand"]["Saturn"]["naive"], 1)
+        self.assertEqual(d["mentions_by_W"]["caveated"]["when"], 1)
+        self.assertEqual(d["mentions_by_W"]["naive"]["when"], 1)
+        f = B.d34_counts(ans, keys, ["Fisker"], texts, self.DESIGN)
+        self.assertEqual(f["per_brand"]["Fisker"]["answers"], 2)
+        self.assertEqual(f["per_brand"]["Fisker"]["by_W"]["when"], 1)
+        self.assertEqual(f["per_brand"]["Fisker"]["by_W"]["why"], 1)
+        self.assertEqual((f["per_brand"]["Fisker"]["naive"], f["per_brand"]["Fisker"]["caveated"]), (1, 1))
+        self.assertNotIn("mentions_by_W", B.d34_counts(ans, keys, ["Fisker"], None, self.DESIGN))
+
+    def test_fisker_does_not_enter_the_defunct_test(self):
+        w = B.synthetic_world(True, 119390)
+        base = B.h34_defunct(w["ans"], w["design"], w["panel"], B.DEFUNCT, texts=w["texts"], n_draws=200)
+        withf = B.h34_defunct(w["ans"], w["design"], w["panel"], B.DEFUNCT, texts=w["texts"], n_draws=200,
+                              fisker="v0.22-b00")
+        for k in ("verdict", "p_mc", "max_W_share", "null_W_shares", "answers_naming_defunct", "by_W", "caveat"):
+            self.assertEqual(base.get(k), withf.get(k))
+        self.assertIn("note", base["D34"]["Fisker_beside_D"])
+        self.assertEqual(withf["D34"]["Fisker_beside_D"]["brands"], ["v0.22-b00"])
+        self.assertEqual(withf["D34"]["D"]["mentions_by_W"], {lab: {x: base["caveat"][lab].get(x, 0) for x in B.W}
+                                                             for lab in ("naive", "caveated")})
+        doc = B.score_b(dict(w, fisker="v0.22-b00"), 20, 5, ("34",))
+        self.assertEqual(doc["H34_Defunct_Occupancy"]["D34"]["Fisker_beside_D"]["per_brand"]["v0.22-b00"]["answers"],
+                         sum(1 for k in w["ans"] if k[0] == "v0.22" and k[1] in w["panel"] and "v0.22-b00" in w["ans"][k]))
+
+    def test_d36_profiles(self):
+        keys = [("v0.20", "a"), ("v0.20", "b"), ("v0.21", "c"), ("v0.21", "d")]
+        X = np.arange(28, dtype=float).reshape(4, 7)
+        d = B.d36_profiles(X, keys, np.array([1, 2, 1, 2]), 2)
+        np.testing.assert_allclose(list(d["category_mean_profiles"]["v0.20"]["mean_excess"].values()), X[:2].mean(0))
+        np.testing.assert_allclose(list(d["category_mean_profiles"]["v0.21"]["mean_excess"].values()), X[2:].mean(0))
+        self.assertEqual(d["type_mean_profiles"]["type 1"]["n"], 2)
+        self.assertEqual(d["type_mean_profiles"]["type 1"]["n_by_category"], {"v0.20": 1, "v0.21": 1})
+        np.testing.assert_allclose(list(d["type_mean_profiles"]["type 2"]["mean_excess"].values()), X[[1, 3]].mean(0))
+        self.assertEqual(list(d["type_mean_profiles"]["type 2"]["mean_excess"]), B.W)
+        d1 = B.d36_profiles(X, keys, np.ones(4, int), 1)
+        self.assertIsNone(d1["type_mean_profiles"])
+        w = B.synthetic_world(True, 119390)
+        st = B.score_b(w, 20, 5, ("36",))["H36_Structure"]
+        self.assertEqual(st["D36_profiles"]["units"], st["n"])
+        self.assertEqual(sum(v["n"] for v in st["D36_profiles"]["category_mean_profiles"].values()), st["n"])
+
+
+class SC3(unittest.TestCase):
+    """r1: S-C3 (Claude Opus 5.5 in place of Claude Fable 5.2) exercised on a world holding Paper A's four models."""
+
+    def test_s_c3_runs_end_to_end(self):
+        w = B.synthetic_world_a4(119390)
+        self.assertEqual(w["panel"], list(A.PANELS["N3"]))
+        self.assertEqual({k[1] for k in w["ans"]}, set(A.PANELS["A4"]))
+        base = B.score_b(w, 10, 5)
+        s = B.sensitivities(w, base["verdict_summary"], 10, 5, only=("S-C3",))
+        self.assertEqual(list(s), ["S-C3"])
+        self.assertEqual(s["S-C3"]["panel"], list(A.PANELS["C3"]))
+        self.assertEqual(set(s["S-C3"]["verdicts"]), set(base["verdict_summary"]))
+        direct = B.score_b(dict(w, panel=list(A.PANELS["C3"])), 10, 5)
+        self.assertEqual(s["S-C3"]["verdicts"], direct["verdict_summary"])
+        self.assertEqual(direct["panel"], list(A.PANELS["C3"]))
+        self.assertGreater(direct["rated_units"], 0)
+        self.assertTrue(all(v for v in direct["verdict_summary"].values()))
 
 
 class Guards(unittest.TestCase):
