@@ -1,0 +1,5 @@
+[v1.14] Stage 1: 540 Phase B answers in the analysis set; rankable rows S0 1641, S1 1375; units rated (S0) 71
+  run reliability and MQ7 (2,000 within-answer shuffles) ...
+  H1 rho=0.3688 n=71 -> MARGINAL;  H2 rho=0.1321 n=70 -> CONFIRMED;  H4(S1) rho=0.4959 -> MARGINAL;  components {'Coverage': 'INACTIVE', 'Grounding': 'INACTIVE', 'Sentiment': 'INACTIVE'}
+  STAGE 1: MARGINAL
+[v1.14] Stage 1 written: /Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json
