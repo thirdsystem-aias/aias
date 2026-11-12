@@ -1,0 +1,14 @@
+[v1.16] parity t1: {"answers_with_text": 180, "rankable_answers": 161, "rankable_rows": 934, "pairs": 2606, "units_at_floor": 55, "units_at_floor_with_P": 55, "units_at_floor_with_C": 55, "v1_10_published_n_H1": 55, "v1_10_published_n_H2": 55, "n_H1_equals_v1_10": true, "n_H2_equals_v1_10": true}
+[v1.16] parity t2: {"answers_with_text": 180, "rankable_answers": 161, "rankable_rows": 923, "pairs": 2547, "units_at_floor": 54, "units_at_floor_with_P": 54, "units_at_floor_with_C": 54, "v1_10_published_n_H1": 54, "v1_10_published_n_H2": 54, "n_H1_equals_v1_10": true, "n_H2_equals_v1_10": true}
+[v1.16] parity t3: {"answers_with_text": 180, "rankable_answers": 161, "rankable_rows": 903, "pairs": 2374, "units_at_floor": 54, "units_at_floor_with_P": 54, "units_at_floor_with_C": 54, "v1_10_published_n_H1": 54, "v1_10_published_n_H2": 54, "n_H1_equals_v1_10": true, "n_H2_equals_v1_10": true}
+[v1.16] parity t4: {"answers": 540, "rankable_rows_S0": 1641, "rankable_rows_S1": 1375, "pairs_S0": 4925, "pairs_S1": 3806, "units_at_floor_S0": 71, "units_at_floor_S1": 65, "units_at_floor_S0_with_P": 71, "units_at_floor_S0_with_C": 70, "v1_14_unit_table_rated_S0": 71, "v1_14_unit_table_H1_n": 71, "v1_14_unit_table_H2_n": 70}
+[v1.16] parity checks: {'v1_10_rank_table_rows_equal_recorded': True, 't4_equals_v1_14_published': True, 'archived_n_equal_v1_10': True, 't4_rank_table_sha256_equals_v1_14_record': True, 'all_pass': True}
+[v1.16] PREC fitted: rated units t1 55, t2 54, t3 54, t4 71, t4 S1 65
+  H1 t1 0.2545 (n 55)  t2 0.4108 (n 54)  t3 0.4338 (n 54)  t4 0.2576 (n 71) -> MARGINAL
+  H2 t1 0.2038 (n 55)  t2 0.0706 (n 54)  t3 0.1820 (n 54)  t4 0.1387 (n 70) -> CONFIRMED
+  H3 t1 -> t2 (permutation and within-answer shuffle nulls) ...
+  H3 rho 0.8933 (n 53; p_perm 0.0001; p_shuffle 0.0001) -> CONFIRMED
+  H4_S1 rho 0.3882 (n 65) -> MARGINAL
+  GATE: MARGINAL  ->  NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.
+  H5 t2 -> t3 (secondary) ...
+[v1.16] results written: /Users/pablou/aias/_worktrees/v1.16/osf/methodology/v1_16/outputs/results_v1_16.json (sha256 a114cb12776866ef...)
