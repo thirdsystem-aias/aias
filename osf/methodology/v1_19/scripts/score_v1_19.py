@@ -47,8 +47,8 @@ SCORER_NOTES (choices where the draft is silent; each to be settled or confirmed
      S-IL-t1: v0.37's IL-Direct (R_cult_total - R_cat_total, v1_7_cpc.csv), eligible iff 0 < mean_r / 6 < 1.
      H34_Defunct_Occupancy is one category's test and is not re-run by S-LOCO.
 
-r1 additions (draft r1, 2026-11-12; descriptive outputs and test tooling only: no hypothesis, verdict band, seed,
-estimand, exclusion or decision rule changed):
+r1 additions (draft r1, 2026-11-12; descriptive outputs, test tooling and one fix to S-C3's panel: no hypothesis,
+verdict band, seed, estimand, exclusion or decision rule changed):
  B12 D34 (descriptive): for set D and, beside it, Fisker (decision D4; unit key "Fisker" in the v0.22 registry):
      answers of the primary panel to automotive CEPs naming the brand(s), by W; per brand, answers naming it in total
      and by W; naive and caveated mentions by W and per brand, by the draft's keyword-window rule (is_caveated, the
@@ -60,6 +60,11 @@ estimand, exclusion or decision rule changed):
  B14 Test tooling: synthetic_world_a4 builds a world holding Paper A's four models (A4: the N3 models and Claude
      Opus 5.5) with N3 as the primary panel, so that S-C3 runs; time_sensitivities times the primary scoring and every
      section 8 variant on such a world. dry_run takes the output file name (r0's record is kept unchanged).
+ B15 Fix (found while exercising S-C3): r0 took S-C3's panel from v1.12's fixed C3 list and ran it whenever the
+     answers held any answer of each C3 model, so a model that Paper A drops under v1.12 section 7.3 (below 90%
+     answered, but with some answers) would have stayed in S-C3's panel. r1 takes Paper A's C3 panel as recorded in
+     its verdict document (c3_panel), as section 1 and section 10 take Paper A's panels, and does not run S-C3 if
+     Claude Opus 5.5 is not in it. Sensitivities never change a verdict; no primary or secondary path is touched.
 """
 import argparse
 import collections
@@ -909,6 +914,17 @@ def load_il_t1(path=ROOT / "osf/methodology/v1_7/data/v1_7_cpc.csv"):
     return out
 
 
+def c3_panel(inp):
+    """S-C3's panel (B11, r1 fix B15): Paper A's C3 panel AS RECORDED in its verdict document ("panels", from which
+    v1.12 section 7.3 removes a model answering below 90%), or v1.12's C3 list when the document records no panels
+    (synthetic worlds). None (S-C3 not run) if Claude Opus 5.5 is not in it or the answers lack any of its models."""
+    rec = (inp.get("a_doc") or {}).get("panels")
+    c3 = list(rec["C3"]) if isinstance(rec, dict) and "C3" in rec else list(A.PANELS["C3"])
+    if A.OPUS55 not in c3 or not all(any(k[1] == m for k in inp["ans"]) for m in c3):
+        return None
+    return c3
+
+
 def sensitivities(inp, base, n_perm=N_PERM, gap_b=GAP_B, only=None):
     """Section 8: each variant re-scores the studies it touches; verdicts are reported with their changes against
     the primary summary `base`; no variant changes a verdict."""
@@ -924,8 +940,8 @@ def sensitivities(inp, base, n_perm=N_PERM, gap_b=GAP_B, only=None):
     for c in cats:                                   # H34_Defunct_Occupancy is one category's test: unchanged by LOCO
         variants[f"S-LOCO-{c}"] = ({"exclude": tuple((c, b) for b in inp["brands"].get(c, ()))},
                                    ("32", "34", "35", "36"), None)
-    c3 = list(A.PANELS["C3"])
-    if all(any(k[1] == m for k in inp["ans"]) for m in c3):
+    c3 = c3_panel(inp)
+    if c3 is not None:
         variants["S-C3"] = ({}, ("32", "34", "35", "36"), {"panel": c3})
     if inp.get("il_t1") is not None:
         variants["S-IL-t1"] = ({}, ("35",), {"il": inp["il_t1"]})

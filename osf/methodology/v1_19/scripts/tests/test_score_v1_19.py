@@ -246,6 +246,15 @@ class R1Descriptives(unittest.TestCase):
 class SC3(unittest.TestCase):
     """r1: S-C3 (Claude Opus 5.5 in place of Claude Fable 5.2) exercised on a world holding Paper A's four models."""
 
+    def test_c3_panel_as_recorded(self):
+        w = B.synthetic_world_a4(5)
+        self.assertEqual(B.c3_panel(w), list(A.PANELS["C3"]))
+        w["a_doc"]["panels"] = A.select_panels([A.GEM4])[1]
+        self.assertEqual(B.c3_panel(w), [A.OPUS55, A.GPT6])        # a model dropped under v1.12 7.3 stays out
+        w["a_doc"]["panels"] = A.select_panels([A.OPUS55])[1]
+        self.assertIsNone(B.c3_panel(w))                             # Opus 5.5 dropped: no S-C3
+        self.assertIsNone(B.c3_panel(B.synthetic_world(True, 5)))   # N3-only answers: no S-C3
+
     def test_s_c3_runs_end_to_end(self):
         w = B.synthetic_world_a4(119390)
         self.assertEqual(w["panel"], list(A.PANELS["N3"]))
