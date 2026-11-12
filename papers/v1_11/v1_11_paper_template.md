@@ -55,7 +55,7 @@ Data and code: OSF \texttt{ec6wh}, \texttt{methodology/v1\_11}\\
 
 # Abstract {-}
 
-Presence records whether AI answers name a brand, and Consistency how evenly the models of a panel do so; neither records how the answers describe the brand. This pre-registered study specifies an AI-judged valence instrument for the AIAS measurement programme and tests whether the resulting Sentiment score is a separate component. Archived answers of two answering panels were re-analysed without new collection: open recognition answers about 24 premium-spirits brands, mention windows from five omnibus categories at three waves, and mention windows from eight early category studies. A primary judge (Claude Opus 5.5) rated the valence of every judged unit on a five-point anchored scale, and a second judge from another provider (GPT-6.1 Sol) rated the recognition and omnibus units and a seeded 10% sample of the early windows; {{J1_VALID}} units received a valid primary judgement. The Sentiment score S of a brand is the mean of its unit scores on a 0--100 scale, rated with at least six valid units. Agreement between the two judges was ordinal Krippendorff's $\alpha$ = {{H1_ALPHA}} on units and a within-category rank correlation of {{H1_BRHO}} on brand scores (instrument gate H1: {{V_H1}}).
+Presence records whether AI answers name a brand, and Consistency how evenly the models of a panel do so; neither records how the answers describe the brand. This pre-registered study specifies an AI-judged valence instrument for the AIAS measurement programme and tests whether the resulting Sentiment score is a separate component. Archived answers of two answering panels were re-analysed without new collection: open recognition answers about 24 premium-spirits brands, mention windows from five omnibus categories at three waves, and mention windows from eight early category studies. A primary judge (Claude Opus 5.5) rated the valence of every judged unit on a five-point anchored scale, and a second judge from another provider (GPT-6.1 Sol) rated the recognition and omnibus units and a seeded sample of the early windows; {{J1_VALID}} units received a valid primary judgement. The Sentiment score S of a brand is the mean of its unit scores on a 0--100 scale, rated with at least six valid units. Agreement between the two judges was ordinal Krippendorff's $\alpha$ = {{H1_ALPHA}} on units and a within-category rank correlation of {{H1_BRHO}} on brand scores (instrument gate H1: {{V_H1}}).
 {% switch CASE_OVERALL %}
 {% case SEPARABLE %}
 Within category, S was separable from Presence{% if H5_ACTIVE %}, Consistency and Ranking{% else %} and Consistency{% endif %} at every determined wave, and it kept its brand order over three weeks (H4: {{V_H4}}).
@@ -185,7 +185,7 @@ Table: Self-consistency: each judge's second judgement of the fixed repeat sampl
 Table 3 gives the per-wave statistics; Figure 2 places them against the bands.
 {% switch CASE_H2 %}
 {% case CONFIRMED %}
-Against Presence, $\lvert\rho_w\rvert$ stayed at or below 0.30 at every determined wave: H2 is CONFIRMED. Sentiment did not move with how often or how widely a brand is named.
+Against Presence, $\lvert\rho_w\rvert$ stayed at or below 0.30 at every determined wave: H2 is CONFIRMED: within category, Sentiment stayed in the separable band against how often and how widely a brand is named.
 {% case MARGINAL %}
 Against Presence, $\lvert\rho_w\rvert$ exceeded 0.30 at a determined wave without reaching 0.50 at any: H2 is MARGINAL.
 {% case FALSIFIED %}
@@ -345,11 +345,11 @@ The instrument gate could not be determined on the units available, so the paper
 {% endswitch %}
 {% switch CASE_H2 %}
 {% case CONFIRMED %}
-The Presence result matters most for the programme: brands named more often were not, within category, described more warmly, contrary to the risk the pre-registration predicted (H2 was expected to be marginal).
+The Presence result matters most for the programme: within category, Sentiment stayed in the separable band against Presence at every determined wave, although the pre-registration predicted a marginal result here because brands named often may be named in recommendation frames.
 {% case MARGINAL %}
-The Presence result was the one the pre-registration predicted: brands named more often were described somewhat more warmly within category, without crossing the falsifying band.
+The Presence result was the one the pre-registration predicted: within category, Sentiment moved partly with Presence at one or more waves, without crossing the falsifying band; the direction is in Table 3.
 {% case FALSIFIED %}
-The Presence result is the decisive one: within category, brands named more often were described more warmly, so Sentiment as measured here partly re-measures Presence.
+The Presence result is the decisive one: within category, Sentiment moved with Presence at a determined wave (the direction is in Table 3), so Sentiment as measured here partly re-measures how often and how widely a brand is named.
 {% case UNDETERMINED_GUARD|UNDETERMINED_WAVES %}
 The Presence test did not return a determined verdict, so the question the v1.7 lesson raises remains open for Sentiment.
 {% endswitch %}
@@ -358,7 +358,7 @@ The study has two features that bound its reading. The answers were archived and
 
 # 5. Limitations
 
-The instrument is AI-judged and provisional until Paper B. The judges reason at their lowest available effort and no sampling parameter can be fixed, so a judge's output varies from call to call; the self-consistency check measures this variation, it does not remove it. The rating floor of six units restricts the range of Presence among rated omnibus brands, which can understate $\lvert\rho(S, P)\rvert$; H8 (floor-free) and H7 (early panel) are the checks. There is one judge pair, and self-preference is tested (H9), not removed: every judge provider also supplied answering models. The two answering panels are not the newest models, and the early categories have one wave each. S measures how answers describe brands, not consumer sentiment, and no behavioural validity is claimed. The window rule can miss evaluations far from the brand name and can carry a neighbouring sentence; Paper B's labels test the unit as well as the judge. Five of the eight early sets carry archived per-brand labels from a 2026 extraction model; they were never analysed before and enter only an exploratory descriptive. For budget reasons neither judge is its provider's flagship and J2 judged only a 10% sample of the early windows; H1 and Paper B are the checks on that choice.
+The instrument is AI-judged and provisional until Paper B. The judges reason at their lowest available effort and no sampling parameter can be fixed, so a judge's output varies from call to call; the self-consistency check measures this variation, it does not remove it. The rating floor of six units restricts the range of Presence among rated omnibus brands, which can understate $\lvert\rho(S, P)\rvert$; H8 (floor-free) and H7 (early panel) are the checks. There is one judge pair, and self-preference is tested (H9), not removed: every judge provider also supplied answering models. The two answering panels are not the newest models, and the early categories have one wave each. S measures how answers describe brands, not consumer sentiment, and no behavioural validity is claimed. The window rule can miss evaluations far from the brand name and can carry a neighbouring sentence; Paper B's labels test the unit as well as the judge. Five of the eight early sets carry archived per-brand labels from a 2026 extraction model; they were never analysed before and enter only an exploratory descriptive. For budget reasons neither judge is its provider's flagship and J2 judged only a sample of the early windows (10% as planned; §3.1 reports any reduction); H1 and Paper B are the checks on that choice.
 
 # 6. Future Research
 
@@ -428,6 +428,10 @@ Table: Cross-category baseline (pre-registration §6.1): brands, brands rated, m
 
 {{TABLE_BASE}}
 
+Table: Cross-category baseline, continued (pre-registration §6.1): judged units, J1's JUDGE_FAIL and UNJUDGED units, the share of bare windows (the brand's segments carry fewer than four other words) and the extraction misses of the unit build, per block, category and wave (recognition answers are whole answers, so no window is extracted).
+
+{{TABLE_BASE2}}
+
 Table: Ordinal $\alpha$ between J1 and J2 per block, and the variants of S for H2 and H3 (pre-registration §5.1): verdict and $\rho_w$ per wave.
 
 {{TABLE_SENS_S}}
@@ -436,8 +440,8 @@ Table: Mean unit score by answering model and block (J1, valid units referring t
 
 {{TABLE_MODEL}}
 
-Table: J1 × J2 valence counts (rows J1, columns J2).
+Table: Mean unit score by frame or prompt type and block (J1, valid units referring to the brand; frame identifiers as in the source studies).
 
-{{TABLE_CONF}}
+{{TABLE_FRAME}}
 
-{{LEGACY_SENTENCE}}
+The J1 × J2 confusion matrix of pre-registration §6.5 is Figure 1, which prints every count. {{LEGACY_SENTENCE}}

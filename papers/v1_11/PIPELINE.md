@@ -104,7 +104,7 @@ cd /Users/pablou/aias/_worktrees/v1.11-paper && zsh papers/v1_11/tests/run_synth
 | undetermined | UNDETERMINED | UNDET. (waves) | UNDET. (waves) | UNDETERMINED | PENDING | UNDETERMINED | UNDET. (floor) | UNDET. (waves) | UNDETERMINED | INSTRUMENT_UNDETERMINED |
 | inactive | MARGINAL | CONFIRMED | CONFIRMED | CONFIRMED | INACTIVE | CONFIRMED | CONFIRMED | CONFIRMED | CONFIRMED | SEPARABLE_FLAGGED |
 
-In `marginal`, sensitivity SD changes H2 (MARGINAL → CONFIRMED); in `h1_falsified`, H9 FALSIFIED adds the "S without J1-provider answers" sensitivity. Outputs go only under the given `/tmp` directory; the script refuses a path in the repository and `make_scenarios_v1_11.py` refuses any path under `osf/`. The synthetic build has 19 pages in every scenario.
+In `marginal`, sensitivity SD changes H2 (MARGINAL → CONFIRMED); in `h1_falsified`, H9 FALSIFIED adds the "S without J1-provider answers" sensitivity. Outputs go only under the given `/tmp` directory; the script refuses a path in the repository and `make_scenarios_v1_11.py` refuses any path under `osf/`. The synthetic build has 20 pages in every scenario (appendix: baseline in two tables, the H2/H3 variants, mean unit score by model and by frame).
 
 ## What selects the wording
 
@@ -132,6 +132,6 @@ In `marginal`, sensitivity SD changes H2 (MARGINAL → CONFIRMED); in `h1_falsif
 ## Open (for the coordinator)
 
 - Pre-registered descriptives not in the scorer's outputs: §6.5 lists served-model **and finish-reason counts and reasoning tokens per judge**. Stage J/C do not write the last two; they are in `data/judge_raw_v1_11.jsonl`. The paper reports the served-model count (from the frozen file) only. Adding the others needs a small reader of the raw file (descriptive; no verdict depends on it).
-- §6.1 asks for the baseline "per panel" as well as per category; the scorer writes per category (block × wave) and the mean unit score per panel, which is what the paper prints. The per-category shares of JUDGE_FAIL, UNJUDGED and bare windows are in `descriptives.baseline` but not printed (table width); add a column if wanted.
+- §6.1 asks for the baseline "per panel" as well as per category; the scorer writes the S distribution per category (block × wave) and only the mean unit score per panel, which is what the paper prints (a per-panel S distribution would be a new computation, so it is not added).
 - §7: "the vendors' invoices are reconciled with the recorded spend after the run and any difference is reported". The invoices are not a machine output; add the sentence by hand at step 5.
 - If Stage C runs before v1.10's Stage C verdicts exist, H5 is PENDING and the paper is provisional on H5 until Stage C is re-run.

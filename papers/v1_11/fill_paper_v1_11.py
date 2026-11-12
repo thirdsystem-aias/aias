@@ -493,6 +493,23 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations):
     val.table("TABLE_BASE", md_table(["Block", "Category", "Wave", "Brands", "Rated", "S median", "S IQR", "E",
                                       "Non-eval.", "Mixed", "Not brand"], rows,
                                      ["l", "l", "l", "r", "r", "r", "r", "r", "r", "r", "r"]), cl.cells)
+    cl = Cells(val)
+    rows = []
+    miss = V["descriptives"].get("extraction_misses_by_set") or {}
+    for i in order:
+        b = base[i]
+        pk = D + ["baseline", i]
+        lab = (VV.CAT_SHORT.get(b["category"], b["category"]) if b["block"] != "E"
+               else VV.EARLY_SHORT.get(b["category"], b["category"]))
+        set_key = (f"OMNI {b['wave']} {b['category']}" if b["block"] == "F"
+                   else f"EARLY-6 {b['wave']} {b['category']}" if b["block"] == "E" else None)
+        rows.append([{"R": "Recognition", "F": "Omnibus", "E": "Early"}[b["block"]], lab, b["wave"],
+                     cl.f("verdicts", pk + ["units"], VV.i0), cl.f("verdicts", pk + ["judge_fail"], VV.i0),
+                     cl.f("verdicts", pk + ["unjudged"], VV.i0), cl.f("verdicts", pk + ["bare_share"], VV.pct1),
+                     cl.f("verdicts", D + ["extraction_misses_by_set", set_key], VV.i0) if set_key in miss else "--"])
+    val.table("TABLE_BASE2", md_table(["Block", "Category", "Wave", "Judged units", "JUDGE_FAIL", "UNJUDGED",
+                                       "Bare windows", "Extraction misses"], rows,
+                                      ["l", "l", "l", "r", "r", "r", "r", "r"]), cl.cells)
     for blk, nm in (("F", "BASE_F"), ("E", "BASE_E")):
         refs = [("verdicts", D + ["baseline", i, "S", "median"]) for i, b in enumerate(base)
                 if b["block"] == blk and VV.has(V, D + ["baseline", i, "S", "median"])]
@@ -516,6 +533,15 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations):
                            cl.f("verdicts", D + ["mean_u", g, m, "n"], VV.i0) + ")" if VV.has(V, D + ["mean_u", g, m])
                            else "--" for g in ("R by model", "F by model", "E by model")])
     val.table("TABLE_MODEL", md_table(["Answering model", "Recognition", "Omnibus", "Early"], rows), cl.cells)
+    cl = Cells(val)
+    rows = []
+    for g, lab in (("R by frame", "Recognition"), ("F by frame", "Omnibus"), ("E by frame", "Early")):
+        for k, fr in enumerate(sorted(mu.get(g) or {})):
+            pk = D + ["mean_u", g, fr]
+            rows.append([lab if k == 0 else "", f"`{fr}`", cl.f("verdicts", pk + ["mean_u"], VV.f1),
+                         cl.f("verdicts", pk + ["n"], VV.i0)])
+    val.table("TABLE_FRAME", md_table(["Block", "Frame / prompt", "Mean u", "Units"], rows,
+                                      ["l", "l", "r", "r"]), cl.cells)
     cl = Cells(val)
     conf = H1 + ["confusion_J1_rows_J2_cols"]
     rows = []
