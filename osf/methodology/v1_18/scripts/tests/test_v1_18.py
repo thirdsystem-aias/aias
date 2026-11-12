@@ -80,6 +80,23 @@ class TestV118(unittest.TestCase):
             with self.assertRaises(A.Refused):
                 A.main(["--run", "--t4", "x", "--coded", "y"])
 
+    def test_real_loader_path_on_fake_records(self):
+        s = C.load_v113()
+        classes = s.load_classes(C.V113_CLASSES)
+        recs = [{"call_id": "c1", "substrate": "v19", "model_requested": "gpt-6-astra", "probe_id": "p1",
+                 "frame_id": "f1", "run": "2", "search": {"citations": [
+                     {"url": "https://www.own.test/a?utm_source=openai", "title": None},
+                     {"url": "https://shop.own.test/b", "title": None},
+                     {"url": "https://vertexaisearch.cloud.google.com/grounding-api-redirect/x", "title": "rival.test"},
+                     {"url": "not a url", "title": None}]}}]
+        ans = C.answers_from_records(recs, {"c1": {("v19", "B")}}, classes, s, "citations")
+        self.assertEqual(ans[0]["domains"], {"own.test", "rival.test"})
+        self.assertEqual((ans[0]["cell"], ans[0]["run"]), (("v19", "gpt-6-astra", "p1", "f1"), 2))
+        units = {("v19", "B"): {"status": "RESOLVED", "domains": {"own.test"}},
+                 ("v19", "R"): {"status": "RESOLVED", "domains": {"rival.test"}}}
+        st, pairs = C.brand_shares(ans, units, {"own.test", "rival.test"}, {}, floor=1)
+        self.assertEqual((st[("v19", "B")]["K_own_domain"], st[("v19", "B")]["P_any_company"]), (50.0, 100.0))
+
     def test_domain_table_is_valid_and_complete(self):
         table = C.load_domain_table()
         blind = (C.PHASE / "outputs" / "prelock" / "domains_to_classify_v1_18.txt").read_text().split()
