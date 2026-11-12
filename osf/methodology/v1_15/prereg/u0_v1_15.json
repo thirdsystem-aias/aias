@@ -1,0 +1,170 @@
+{
+  "phase": "v1.15",
+  "kind": "U0 on t4 (no model call, no valence, no P, C* or R)",
+  "created_utc": "2026-11-12T03:35:03+00:00",
+  "refs": {
+    "raw_ref": "v0.42-acquisition-locked",
+    "raw_commit": "a790bb1ac552adfc6615b0bcb49430aa95e7bc16",
+    "coded_ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+    "coded_commit": "31c64c64656b7b0393eca49e5d10384744475dd9"
+  },
+  "inputs_read": [
+    {
+      "ref": "v0.42-acquisition-locked",
+      "path": "osf/v42/data/t4_raw.jsonl",
+      "git_blob": "26de00942a0bc4f27c3506f1d5f7be895cd6a4aa",
+      "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+      "bytes": 5356607
+    },
+    {
+      "ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+      "path": "osf/v42/data/coded/v19_phase_b.csv",
+      "git_blob": "7fb571b51eac6e408eb4e48440b07bd9aa4b3ad7",
+      "sha256": "347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0",
+      "bytes": 203365
+    },
+    {
+      "ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+      "path": "osf/v42/data/coded/v20_phase_b.csv",
+      "git_blob": "5f765d9853c94bc0456531615a1bf384a3a65cdf",
+      "sha256": "4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1",
+      "bytes": 193285
+    },
+    {
+      "ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+      "path": "osf/v42/data/coded/v21_phase_b.csv",
+      "git_blob": "feb9d5f6297f98d6cff35b2f2237660b53dfc733",
+      "sha256": "2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26",
+      "bytes": 200953
+    },
+    {
+      "ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+      "path": "osf/v42/data/coded/v22_phase_b.csv",
+      "git_blob": "8dc39b9d39645658bf4786ff96258dd040a84126",
+      "sha256": "eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68",
+      "bytes": 185185
+    },
+    {
+      "ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+      "path": "osf/v42/data/coded/v23_phase_b.csv",
+      "git_blob": "7f379235ecdc851f62acf14f15d0b63b68389bbb",
+      "sha256": "1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2",
+      "bytes": 190153
+    }
+  ],
+  "drop_rule_S0": {
+    "served_mismatch": [],
+    "answered_S0": {
+      "gpt-6-astra": 202,
+      "gemini-4-argon": 202,
+      "claude-fable-5-2": 202
+    },
+    "share_S0": {
+      "claude-fable-5-2": 1.0,
+      "gpt-6-astra": 1.0,
+      "gemini-4-argon": 1.0
+    },
+    "dropped_S0": [],
+    "excluded_calls": 0
+  },
+  "scorer_sha256": "8a38b062a10dcd37713277bd87a0d3764ee240157969c0b44592af8f0715ab91",
+  "units_file": {
+    "path": "units_v1_15.csv",
+    "sha256": "2fb080fb982256265657244938a0c9c3e2eda09115f20ea3394b1b03bfa6e1ce",
+    "rows": 1644
+  },
+  "units": {
+    "windows": 1644,
+    "judged": 1547,
+    "capped_out": 97,
+    "denon_judged": 0
+  },
+  "samples": {
+    "J2_total": 1547,
+    "selfcon": 77
+  },
+  "calls_planned": {
+    "J1": 1624,
+    "J2": 1624
+  },
+  "tokens": {
+    "units": 1547,
+    "request_chars_total": 5561785,
+    "est_tokens_in_total": 1391045,
+    "est_tokens_in_mean": 899.1887524240466,
+    "window_chars_median": 290.0
+  },
+  "per_set": {
+    "F t4 v0.19": {
+      "answers_with_text": 54,
+      "expected_answers": 54,
+      "mentions": 295,
+      "windows": 295,
+      "misses": 0,
+      "miss_share": 0.0,
+      "coded_rows_not_judged": 0,
+      "units_judged": 277,
+      "capped_out": 18,
+      "bare": 4,
+      "at_window_cap": 1
+    },
+    "F t4 v0.20": {
+      "answers_with_text": 54,
+      "expected_answers": 54,
+      "mentions": 337,
+      "windows": 337,
+      "misses": 0,
+      "miss_share": 0.0,
+      "coded_rows_not_judged": 0,
+      "units_judged": 299,
+      "capped_out": 38,
+      "bare": 3,
+      "at_window_cap": 0
+    },
+    "F t4 v0.21": {
+      "answers_with_text": 54,
+      "expected_answers": 54,
+      "mentions": 396,
+      "windows": 396,
+      "misses": 0,
+      "miss_share": 0.0,
+      "coded_rows_not_judged": 0,
+      "units_judged": 374,
+      "capped_out": 22,
+      "bare": 4,
+      "at_window_cap": 0
+    },
+    "F t4 v0.22": {
+      "answers_with_text": 54,
+      "expected_answers": 54,
+      "mentions": 358,
+      "windows": 358,
+      "misses": 0,
+      "miss_share": 0.0,
+      "coded_rows_not_judged": 0,
+      "units_judged": 339,
+      "capped_out": 19,
+      "bare": 0,
+      "at_window_cap": 1
+    },
+    "F t4 v0.23": {
+      "answers_with_text": 54,
+      "expected_answers": 54,
+      "mentions": 258,
+      "windows": 258,
+      "misses": 0,
+      "miss_share": 0.0,
+      "coded_rows_not_judged": 0,
+      "units_judged": 258,
+      "capped_out": 0,
+      "bare": 0,
+      "at_window_cap": 0
+    }
+  },
+  "extraction_misses": [],
+  "seeds": {
+    "window_cap": 111001,
+    "selfcon": 111003,
+    "unit_order": 111000
+  }
+}
