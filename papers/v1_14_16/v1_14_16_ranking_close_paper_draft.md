@@ -86,11 +86,11 @@ The pre-registration was locked at tag `v1.14-prereg-r2` on 10 November 2026 (r1
 
 **Diagnosis.** MNP and MODE both summarise a brand's own positions over the answers that name it. In that frame, naming frequency can enter the score through two channels that belong to the statistic rather than to a ranking. *List length*: a rarely named brand tends to appear when a model goes further down its list, in longer answers, where absolute positions are larger. *Rival mix*: a brand's position depends on which rivals share the answer, and a frequently named brand meets a different mix of rivals from a rarely named one. A third channel is substantive: models may list brands in the order in which they associate them with the category, so that being named often and being named early are one fact. v1.10 and v1.14 cannot separate the three.
 
-**Statistic.** For every pair of registry brands named in the same rankable answer, the brand with the smaller min-rank wins (ties give half a win to each); all such comparisons in a category, wave and condition are pooled over models, runs and questions into a win matrix, and PREC$_b$ is the brand's Bradley--Terry log-strength, fitted by maximum likelihood with one virtual comparison per brand against a reference of strength zero (which keeps every estimate finite and the maximum unique). PREC never uses an answer that names only one of the two brands, never uses an absolute position, and adjusts each head-to-head for the strength of the rival. By construction, appending brands after a pair leaves that pair's outcome unchanged, and naming frequency changes only the number of comparisons, not their expected outcome; both properties are unit-tested. The substantive channel is not removed, and should not be. The Bradley--Terry model is a standard paired-comparison model; no source for it is cited because the program's literature check has not verified one. A unit is rated with at least six rankable mentions and membership of its category's main comparison component.
+**Statistic.** For every pair of registry brands named in the same rankable answer, the brand with the smaller min-rank wins (ties give half a win to each); all such comparisons in a category, wave and condition are pooled over models, runs and questions into a win matrix, and PREC$_b$ is the brand's Bradley--Terry log-strength, fitted by maximum likelihood with one virtual comparison per brand against a reference of strength zero (which keeps every estimate finite and the maximum unique). PREC never uses an answer that names only one of the two brands, never uses an absolute position, and adjusts each head-to-head for the strength of the rival. By construction, appending brands after a pair leaves that pair's outcome unchanged, and naming frequency changes only the number of comparisons, not their expected outcome; both properties are unit-tested. The substantive channel is not removed, and should not be. The Bradley--Terry model is the standard model for paired comparisons (Bradley & Terry, 1952). A unit is rated with at least six rankable mentions and membership of its category's main comparison component.
 
 **Why this measure, from outside evidence.** A practitioner study by SparkToro with Gumshoe (Fishkin, 2026; not peer-reviewed) found that the same brand list recurred in fewer than 1 in 100 answers and the same order in about 1 in 1,000, while how often a brand appeared was steadier than its position; Schulte, Bleeker and Kaufmann (2026) found same-day brand overlap of 0.327--0.477 and recommend at least seven runs per prompt per day. Both imply that a statistic built on a brand's full positions inherits that noise and falls back onto its steadiest part, which is Presence. But the top of an order can be concentrated: the abstract of Boffa, Farronato, Fedele, Levi and Mantovani (2026) reports that in 20 of 100 product and service categories a single product is listed first in more than three quarters of responses (the full text was not read). Head-to-head precedence uses the part of the order that can be stable and pools it over every answer of a category and wave.
 
-**Data.** No answer was re-extracted. $t_1$--$t_3$ use v1.10's fifteen hashed omnibus rank tables (36 answers per category and wave, 161 rankable answers of 180 at each wave) and the locked AIAS 2.0 profiles table for $P$ and $C^*$; $t_4$ uses v1.14 Stage 1's hashed rank table and unit table. Every input was pinned by SHA-256, and a parity run before the lock reproduced every count v1.10 and v1.14 had published for these inputs, without computing any precedence value.
+**Data.** No answer was re-extracted. $t_1$--$t_3$ use v1.10's fifteen hashed omnibus rank tables ($t_3$ is the v0.41 wave; González Castro, 2026, v0.41) (36 answers per category and wave, 161 rankable answers of 180 at each wave) and the locked AIAS 2.0 profiles table for $P$ and $C^*$; $t_4$ uses v1.14 Stage 1's hashed rank table and unit table. Every input was pinned by SHA-256, and a parity run before the lock reproduced every count v1.10 and v1.14 had published for these inputs, without computing any precedence value.
 
 **Hypotheses and gate.** Table 1 lists the confirmatory tests. H1 and H2 keep v1.10's every-wave rule, now over four waves, the legacy panel ($t_1$--$t_3$) and the newest panel ($t_4$) together. H3 is v1.10's three-week retest, unchanged in rule and data. The gate FAILS if any of H1--H3 is FALSIFIED; is UNDETERMINED if any is UNDETERMINED; PASSES if all three are CONFIRMED and H4_S1 is not FALSIFIED; and is MARGINAL otherwise.
 
@@ -188,24 +188,26 @@ Removing the list-length and rival-mix channels did not remove the coupling. On 
 
 ## 3.4 Precedence is a stable property of the order
 
-**H3 is CONFIRMED.** The brand order by precedence holds from $t_1$ to $t_2$ at $\rho_w$ = 0.893 ($n$ = 53), and both nulls return the smallest attainable $p$. The decisive null shuffles the order of the named brands within every answer, keeping which brands appear and how many, and refits PREC: the mean shuffled retest is 0.0001 (MQ7; flag threshold 0.20). The reliability is therefore a property of precedence, not of list composition. Over five months (H5, secondary), 0.874 ($n$ = 52), CONFIRMED. Contrary to P2, the three-week retest is higher than MODE's archived 0.858, not lower.
-
-![Retest of precedence over three weeks and five months, against the mean of the within-answer shuffle null.](figures/fig_4.pdf){width=100%}
+**H3 is CONFIRMED** (Figure 4). The brand order by precedence holds from $t_1$ to $t_2$ at $\rho_w$ = 0.893 ($n$ = 53), and both nulls return the smallest attainable $p$. The decisive null shuffles the order of the named brands within every answer, keeping which brands appear and how many, and refits PREC: the mean shuffled retest is 0.0001 (MQ7; flag threshold 0.20). The reliability is therefore a property of precedence, not of list composition. Over five months (H5, secondary), 0.874 ($n$ = 52), CONFIRMED. Contrary to P2, the three-week retest is higher than MODE's archived 0.858, not lower.
 
 ## 3.5 The gate and its consequence
 
 H1 MARGINAL, H2 CONFIRMED, H3 CONFIRMED, H4_S1 MARGINAL: **the v1.16 gate is MARGINAL.** The scorer printed the pre-registered consequence with it: Ranking is reported as part of Presence and not as a separate AIAS component, and there is no further Ranking redesign. The positive control from the published record (penalised MNP against Presence: 0.909, 0.901 and 0.918 at $t_1$--$t_3$, 0.930 at $t_4$; $n$ = 112) passes, and neither the negative control (MQ7) nor the identification check (MQ9) is flagged.
 
-\needspace{26\baselineskip}
+![Retest of precedence over three weeks and five months, against the mean of the within-answer shuffle null.](figures/fig_4.pdf){width=100%}
+
+\needspace{10\baselineskip}
 
 ## 3.6 Sensitivities and the three statistics compared
+
+The scorer lists four verdict changes (Table 4). Two point toward a stronger coupling: among brands named often enough to reach a floor of ten (31 to 58 units), the correlation with Presence reaches 0.659 and 0.731 on the legacy panel, and without spirits it reaches 0.514 at $t_2$ and 0.618 at $t_3$. One points the other way: without automotive, H1 would be CONFIRMED (every wave between 0.234 and 0.296). Uncentred ranks move H2 to MARGINAL at $t_1$ (0.300, compared unrounded). Without the brands of record in the Declarations (S7, S-COI) every verdict is unchanged. Without skincare, the $t_3$ value (0.4995) lies just below the falsification line.
 
 \begingroup\footnotesize\setlength{\tabcolsep}{4pt}
 
 Table: v1.16 sensitivities of H1 and H2 ($\rho_w$ at $t_1$ / $t_2$ / $t_3$ / $t_4$). Bold: a verdict that differs from the primary one. None changes the gate (pre-registration §8).
 
 | Analysis | H1 $\rho_w$(PREC, $P$) | H1 | H2 $\rho_w$(PREC, $C^*$) | H2 |
-|:--------------------|:------------------------------:|:----------:|:------------------------------:|:----------:|
+|:----------------------------|:----------------------------:|:----------:|:----------------------------:|:----------:|
 | Primary | 0.255 / 0.411 / 0.434 / 0.258 | MARGINAL | 0.204 / 0.071 / 0.182 / 0.139 | CONFIRMED |
 | S1 first-mention rule | 0.247 / 0.411 / 0.441 / 0.223 | MARGINAL | 0.187 / 0.071 / 0.170 / 0.118 | CONFIRMED |
 | S2 floor 3 | 0.330 / 0.288 / 0.412 / 0.403 | MARGINAL | 0.204 / 0.071 / 0.182 / 0.139 | CONFIRMED |
@@ -224,19 +226,15 @@ Table: v1.16 sensitivities of H1 and H2 ($\rho_w$ at $t_1$ / $t_2$ / $t_3$ / $t_
 
 \endgroup
 
-The scorer lists four verdict changes. Two point toward a stronger coupling: among brands named often enough to reach a floor of ten (31 to 58 units), the correlation with Presence reaches 0.659 and 0.731 on the legacy panel, and without spirits it reaches 0.514 at $t_2$ and 0.618 at $t_3$. One points the other way: without automotive, H1 would be CONFIRMED (every wave between 0.234 and 0.296). Uncentred ranks move H2 to MARGINAL at $t_1$ (0.300, compared unrounded). Without the brands of record in the Declarations (S7, S-COI) every verdict is unchanged. Without skincare, the $t_3$ value (0.4995) lies just below the falsification line.
-
-\needspace{8\baselineskip}
-
 Across the three statistics the coupling is a matter of degree, not of kind (Figure 5). On the legacy panel PREC shares most of its information with MNP ($\rho_w$(PREC, MNP) = 0.923, 0.951, 0.939 at $t_1$--$t_3$; 0.952 at $t_4$) and less with MODE (0.717, 0.713, 0.781; 0.816). On the early panel, where v1.10's H4 had falsified MNP at 0.663, PREC's correlation with recall share is 0.687 ($n$ = 154; exploratory E3). With search on and off at $t_4$, PREC correlates at 0.786 ($n$ = 60).
 
-![Correlation with Presence of the three Ranking statistics by wave: MNP from v1.10 ($t_4$ value from v1.14's sensitivity check), MODE from v1.14 (calibration at $t_1$--$t_3$, confirmatory at $t_4$) and PREC from v1.16.](figures/fig_5.pdf){width=100%}
+![Correlation with Presence of the three Ranking statistics by wave: MNP from v1.10 ($t_4$ value from v1.14's sensitivity check), MODE from v1.14 (calibration at $t_1$--$t_3$, confirmatory at $t_4$) and PREC from v1.16.](figures/fig_5.pdf){width=88%}
 
 # 4. Exploratory moderators (v1.16 E1)
 
 The literature check suggested that position may be informative where the top of the order is concentrated and in smaller categories. v1.16 declared two moderators before any precedence value existed and reports them as exploratory: *category size* (registry brand count: 16 for headphones, 24 for the other four, so a contrast of one category against four, not a gradient) and *first-position concentration* (FPC: the share of a category's rankable answers, in one wave, in which the modal first brand is first). With five categories these are descriptions, not tests, and they change no verdict.
 
-\needspace{16\baselineskip}
+![Within-category correlation of precedence with Presence against first-position concentration, one point per category and wave.](figures/fig_6.pdf){width=100%}
 
 \begingroup\footnotesize\setlength{\tabcolsep}{4pt}
 
@@ -253,8 +251,6 @@ Table: Exploratory moderators by category, values at $t_1$ / $t_2$ / $t_3$ / $t_
 \endgroup
 
 Across the 20 category-wave cells, the absolute within-category correlation with Presence is unrelated to FPC (Spearman 0.055) and correlated with category size at −0.520: the smaller headphones category carries the strongest coupling at three of the four waves. The retest expectations of P2 are not borne out: the smallest and most concentrated category has the second-lowest retest (0.833), and cosmetics, the least concentrated category apart from spirits, has the highest (0.989).
-
-![Within-category correlation of precedence with Presence against first-position concentration, one point per category and wave.](figures/fig_6.pdf){width=100%}
 
 Two descriptive patterns stand out. First, the categories differ more than the pooled values show. The coupling is strong in headphones and, at two or three waves, in automotive and cosmetics; it is near zero in skincare; and in spirits on the legacy panel it is negative (precedence goes with *lower* Presence), which is why leaving spirits out moves H1 into the falsification band (§3.6). Second, concentration at the top does not by itself make precedence separable: skincare at $t_4$ has the highest FPC of any cell (0.685) and a low coupling, headphones has high FPC and the highest coupling. Category size cannot be separated from category identity with one small category. These patterns are leads; they are not confirmed by any test here, and the consequence clause leaves no Ranking Paper B to test them.
 
@@ -304,15 +300,17 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-*v1.16.* OSF `ec6wh`, `methodology/v1_16`: the locked pre-registration, lock manifest, input-parity record, precision note, dry run with its synthetic worlds, deviations record and README (13 files SHA-256 verified at the deposit), with the scorer and its tests staged in `methodology/v1_16/code/` (pre-registration §12). Repository github.com/thirdsystem-aias/aias, tag `v1.16-prereg-r1` (commit `5afa7d6`); the scorer `scripts/score_v1_16.py` imports `scripts/score_v1_10.py` and `scripts/score_v1_14.py` unchanged. The results file `osf/methodology/v1_16/outputs/results_v1_16.json` (with the per-unit PREC table) and the run log `outputs/run_v1_16.log` are on branch `v1.16` (commit `b6f5749`) and join the OSF deposit with this paper.
+*v1.16.* OSF `ec6wh`, `methodology/v1_16`: the locked pre-registration, lock manifest, input-parity record, precision note, dry run with its synthetic worlds, deviations record and README (13 files SHA-256 verified at the deposit), with the scorer and its tests staged in `methodology/v1_16/code/` (pre-registration §12). Repository github.com/thirdsystem-aias/aias, tag `v1.16-prereg-r1` (commit `5afa7d6`); the scorer `scripts/score_v1_16.py` imports `scripts/score_v1_10.py` and `scripts/score_v1_14.py` unchanged. The results file `osf/methodology/v1_16/outputs/results_v1_16.json` (with the per-unit PREC table) and the run log `outputs/run_v1_16.log` are on branch `v1.16` (commit `b6f5749`) and on OSF in `methodology/v1_16/outputs/`, with the run's git anchor record in `methodology/v1_16/anchor/`.
 
-*v1.14.* OSF `ec6wh`, `methodology/v1_14/r2/` (pre-registration, calibration, anchor; r1 kept under `methodology/v1_14/`). Repository tag `v1.14-prereg-r2`; scorer `scripts/score_v1_14.py`. The Stage 1 outputs (`osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json`, the hashed $t_4$ rank table and the log) are on branch `v1.14` (commit `3129674`) and join the OSF deposit with this paper. Stage 2 will write `outputs/stage2/`.
+*v1.14.* OSF `ec6wh`, `methodology/v1_14/r2/` (pre-registration, calibration, anchor; r1 kept under `methodology/v1_14/`). Repository tag `v1.14-prereg-r2`; scorer `scripts/score_v1_14.py`. The Stage 1 outputs (`osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json`, the hashed $t_4$ rank table and the log) are on branch `v1.14` (commit `3129674`) and on OSF in `methodology/v1_14/outputs/stage1/`. Stage 2 will write `outputs/stage2/`.
 
 *Inputs.* v1.10's rank tables and verdicts (OSF `ec6wh/methodology/v1_10`; tag `v1.10-prereg-r2`); the AIAS 2.0 profiles table (`osf/aias_2_0/aias_2_0_profiles.csv`); the $t_4$ answers of v0.42 (tags `v0.42-acquisition-locked` and `v0.42-scoring-locked`). The underlying answers are deposited with their source studies.
 
 # References {-}
 
 Boffa, F., Farronato, C., Fedele, A., Levi, E., & Mantovani, A. (2026). *An Empirical Audit of LLM Product Recommendations*. NET Institute Working Paper No. 26-09. <https://econpapers.repec.org/RePEc:net:wpaper:2609> (checked against the EconPapers record and abstract only; full text not read).
+
+Bradley, R. A., & Terry, M. E. (1952). Rank analysis of incomplete block designs: I. The method of paired comparisons. *Biometrika, 39*(3/4), 324--345. <https://doi.org/10.1093/biomet/39.3-4.324>
 
 Ehrenberg, A. S. C., Goodhardt, G. J., & Barwise, T. P. (1990). Double jeopardy revisited. *Journal of Marketing, 54*(3), 82--91.
 
@@ -334,7 +332,9 @@ González Castro, P. U. (2026). *AI Availability as a Third Measurable Layer of 
 
 González Castro, P. U. (2026). *Presence and Consistency: A Two-Component Measurement of AI Availability* (AIAS 2.0). Working paper; OSF `ec6wh/aias_2_0`.
 
-González Castro, P. U. (2026). *Where a Brand Sits in an AI Answer: A Reliable Ranking Instrument That Does Not Pass Its Separability Gate* (AIAS™ Methodology v1.10). Working paper; OSF `ec6wh/methodology/v1_10`.
+González Castro, P. U. (2026). *Where a Brand Sits in an AI Answer: A Reliable Ranking Instrument That Does Not Pass Its Separability Gate* (AIAS™ Methodology v1.10). Programme record, deposited on OSF on 10 November 2026; not submitted to SSRN. Third System, <https://thirdsystem.ai/studies/v1-10/>; OSF, <https://osf.io/ec6wh/files/osfstorage/6af35edf148a95dc97f8da31>.
+
+González Castro, P. U. (2026). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (AIAS™ v0.41). Third System, <https://thirdsystem.ai/studies/v0-41/>; OSF, <https://osf.io/ec6wh/files/osfstorage/6af1fcdd1b86858e837c91d0>.
 
 González Castro, P. U. (2026). *Recognition Ceiling, Dissociation Replication, and Cultural-Channel Asymmetry on an Audiophile Headphones Substrate* (v0.19). SSRN 6809182.
 
@@ -352,4 +352,4 @@ Schulte, J., Bleeker, M., & Kaufmann, P. (2026). *Don't Measure Once: Measuring 
 
 Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
 
-Programme records cited by version (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the pre-registrations of Methodology v1.14 (tag `v1.14-prereg-r2`) and v1.16 (tag `v1.16-prereg-r1`) with their deviations records; the $t_2$ wave (v0.34) and $t_3$ wave (v0.41) of the omnibus categories; the $t_4$ wave, v0.42 (tags `v0.42-acquisition-locked`, `v0.42-scoring-locked`); the conflict-of-interest screen of v0.62 (DEVIATIONS Entry 0, Part F). HARMAN press release, Business Wire, September 23, 2025.
+Programme records cited by version (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the pre-registrations of Methodology v1.14 (tag `v1.14-prereg-r2`) and v1.16 (tag `v1.16-prereg-r1`) with their deviations records; the $t_2$ wave (v0.34) of the omnibus categories; the $t_4$ wave, v0.42 (tags `v0.42-acquisition-locked`, `v0.42-scoring-locked`); the conflict-of-interest screen of v0.62 (DEVIATIONS Entry 0, Part F). HARMAN press release, Business Wire, September 23, 2025.
