@@ -1,0 +1,2902 @@
+{
+  "phase": "v1.13",
+  "stage": "C1",
+  "primary_field": "sources",
+  "panel_models": [
+    "claude-fable-5-2",
+    "gpt-6-astra",
+    "gemini-4-argon"
+  ],
+  "dropped_models": [],
+  "gate": {
+    "verdict": "MARGINAL",
+    "legs": {
+      "H1_Sep_Presence": "MARGINAL",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H3_Run_Reliability": "UNDETERMINED"
+    },
+    "active": {
+      "H4_Sep_Ranking": true,
+      "H5_Sep_Sentiment": false,
+      "H6_Sep_Coverage": true
+    },
+    "notes": [
+      "H4_Sep_Ranking (CONFIRMED) reported, not downgrading: v1.14's Stage 1 verdict is not SEPARABLE (N19)",
+      "Paper B only on Pablo's recorded decision"
+    ],
+    "gating": {
+      "H4_Sep_Ranking": false,
+      "H5_Sep_Sentiment": false,
+      "H6_Sep_Coverage": true
+    }
+  },
+  "verdicts": {
+    "H1_Sep_Presence": "MARGINAL",
+    "H2_Sep_Consistency": "CONFIRMED",
+    "H3_Run_Reliability": "UNDETERMINED",
+    "H4_Sep_Ranking": "CONFIRMED",
+    "H5_Sep_Sentiment": "INACTIVE",
+    "H6_Sep_Coverage": "UNDETERMINED"
+  },
+  "reasons": {
+    "H6_Sep_Coverage": "PENDING: v1.12's Cov* output does not exist yet (Coverage collects Nov 14-16 and scores after); computed at Stage C2 (N21)"
+  },
+  "legs": {
+    "H1_Sep_Presence": [
+      {
+        "n": 42,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 10,
+          "v20": 8,
+          "v21": 11,
+          "v22": 6,
+          "v23": 7
+        },
+        "dropped_substrates": {},
+        "seed": 113001,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.30716191850680374,
+        "p": 0.08189181081891811,
+        "ci90": {
+          "level": 90.0,
+          "lo": 0.008104014803251987,
+          "hi": 0.5428071632704836,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      {
+        "n": 42,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 10,
+          "v20": 8,
+          "v21": 11,
+          "v22": 6,
+          "v23": 7
+        },
+        "dropped_substrates": {},
+        "seed": 113001,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.3945349347419029,
+        "p": 0.024997500249975,
+        "ci90": {
+          "level": 90.0,
+          "lo": 0.09495360636576655,
+          "hi": 0.6289834667463038,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      }
+    ],
+    "H2_Sep_Consistency": [
+      {
+        "n": 42,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 10,
+          "v20": 8,
+          "v21": 11,
+          "v22": 6,
+          "v23": 7
+        },
+        "dropped_substrates": {},
+        "seed": 113002,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": -0.08701889123636815,
+        "p": 0.6285371462853715,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.370334389233507,
+          "hi": 0.21414936015440805,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      {
+        "n": 40,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 9,
+          "v20": 8,
+          "v21": 10,
+          "v22": 6,
+          "v23": 7
+        },
+        "dropped_substrates": {},
+        "seed": 113002,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.049074480929963776,
+        "p": 0.7944205579442056,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.2556518195402536,
+          "hi": 0.35297256584307557,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      }
+    ],
+    "H4_Sep_Ranking": [
+      {
+        "n": 42,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 10,
+          "v20": 8,
+          "v21": 11,
+          "v22": 6,
+          "v23": 7
+        },
+        "dropped_substrates": {},
+        "seed": 113004,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": 0.29155171377880806,
+        "p": 0.0927907209279072,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.04847036051046177,
+          "hi": 0.5742635927234039,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      }
+    ]
+  },
+  "H3": {
+    "pairs": [
+      {
+        "n": 23,
+        "n_substrates": 3,
+        "per_substrate": {
+          "v19": 6,
+          "v20": 8,
+          "v21": 9
+        },
+        "dropped_substrates": {
+          "v22": 4,
+          "v23": 3
+        },
+        "pair": [
+          1,
+          2
+        ],
+        "rho_w": 0.30003280771858526,
+        "qualifies": false
+      },
+      {
+        "n": 27,
+        "n_substrates": 4,
+        "per_substrate": {
+          "v19": 5,
+          "v20": 7,
+          "v21": 10,
+          "v22": 5
+        },
+        "dropped_substrates": {
+          "v23": 3
+        },
+        "pair": [
+          1,
+          3
+        ],
+        "rho_w": 0.6035874759133595,
+        "qualifies": false
+      },
+      {
+        "n": 24,
+        "n_substrates": 3,
+        "per_substrate": {
+          "v19": 7,
+          "v20": 7,
+          "v21": 10
+        },
+        "dropped_substrates": {
+          "v22": 4,
+          "v23": 2
+        },
+        "pair": [
+          2,
+          3
+        ],
+        "rho_w": 0.4148823175812196,
+        "qualifies": false
+      }
+    ],
+    "n_qualifying_pairs": 0,
+    "rel1": null,
+    "rel3": null,
+    "p": null,
+    "seed": 113003
+  },
+  "MQ": {
+    "MQ1_parsed_s1_records": 270,
+    "MQ2": {
+      "claude-fable-5-2": {
+        "answers": 90,
+        "with_source": 75,
+        "share": 0.8333333333333334,
+        "flag_search_rarely_used": false,
+        "dropped_from_g_star": false
+      },
+      "gpt-6-astra": {
+        "answers": 90,
+        "with_source": 86,
+        "share": 0.9555555555555556,
+        "flag_search_rarely_used": false,
+        "dropped_from_g_star": false
+      },
+      "gemini-4-argon": {
+        "answers": 90,
+        "with_source": 16,
+        "share": 0.17777777777777778,
+        "flag_search_rarely_used": true,
+        "dropped_from_g_star": false
+      }
+    },
+    "MQ3": {
+      "pairs": 4078,
+      "other_or_unresolved": 2929,
+      "share": 0.7182442373712604,
+      "flag": true,
+      "low_coverage": true
+    },
+    "MQ4": {
+      "sources": 122,
+      "redirect_urls": 122,
+      "via_title_share": 1.0,
+      "unresolved_share": 0.0,
+      "drop_gemini": false
+    },
+    "MQ5": {
+      "failed": false,
+      "zero_share": 0.40476190476190477,
+      "flat_substrates": [],
+      "n_rated": 42
+    },
+    "MQ6": {
+      "rho_g_pi_s1": 0.8630644640291608,
+      "rho_gstar_g": 0.20978508563345613,
+      "n": 42,
+      "flag": false
+    },
+    "MQ8": {
+      "google": {
+        "answers": 90,
+        "with_citations": 16,
+        "cited": 122,
+        "cited_in_sources": 122,
+        "share_with_citations": 0.17777777777777778,
+        "share_cited_in_sources": 1.0
+      },
+      "openai": {
+        "answers": 90,
+        "with_citations": 86,
+        "cited": 516,
+        "cited_in_sources": 509,
+        "share_with_citations": 0.9555555555555556,
+        "share_cited_in_sources": 0.9864341085271318
+      },
+      "anthropic": {
+        "answers": 90,
+        "with_citations": 75,
+        "cited": 557,
+        "cited_in_sources": 557,
+        "share_with_citations": 0.8333333333333334,
+        "share_cited_in_sources": 1.0
+      }
+    }
+  },
+  "units": {
+    "v19|Sennheiser": {
+      "m": 48,
+      "g": 29,
+      "o": 6,
+      "G": 0.20689655172413793,
+      "G_star": 20.689655172413794,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Beyerdynamic": {
+      "m": 25,
+      "g": 10,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Denon": {
+      "m": 3,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Grado": {
+      "m": 13,
+      "g": 6,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Sony": {
+      "m": 39,
+      "g": 23,
+      "o": 1,
+      "G": 0.043478260869565216,
+      "G_star": 4.3478260869565215,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Audio-Technica": {
+      "m": 18,
+      "g": 4,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Stax": {
+      "m": 10,
+      "g": 6,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Koss": {
+      "m": 2,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Audeze": {
+      "m": 32,
+      "g": 19,
+      "o": 5,
+      "G": 0.2631578947368421,
+      "G_star": 26.31578947368421,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|HiFiMan": {
+      "m": 28,
+      "g": 16,
+      "o": 4,
+      "G": 0.25,
+      "G_star": 25.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Focal": {
+      "m": 34,
+      "g": 20,
+      "o": 4,
+      "G": 0.2,
+      "G_star": 20.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|Meze": {
+      "m": 11,
+      "g": 8,
+      "o": 3,
+      "G": 0.375,
+      "G_star": 37.5,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v19|ZMF Headphones": {
+      "m": 5,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Spirit Torino": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Final Audio": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v19|Dan Clark Audio": {
+      "m": 13,
+      "g": 9,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|A.1": {
+      "m": 2,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|A.2": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|A.3": {
+      "m": 7,
+      "g": 4,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|A.4": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|A.5": {
+      "m": 1,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": true
+    },
+    "v20|A.6": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": true
+    },
+    "v20|A.7": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|A.8": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|B.1": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|B.2": {
+      "m": 26,
+      "g": 20,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B.3": {
+      "m": 4,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|B.4": {
+      "m": 1,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|B.5": {
+      "m": 15,
+      "g": 9,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B.6": {
+      "m": 3,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|B.7": {
+      "m": 18,
+      "g": 12,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|B.8": {
+      "m": 5,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|C.1": {
+      "m": 28,
+      "g": 13,
+      "o": 2,
+      "G": 0.15384615384615385,
+      "G_star": 15.384615384615385,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|C.2": {
+      "m": 42,
+      "g": 29,
+      "o": 1,
+      "G": 0.034482758620689655,
+      "G_star": 3.4482758620689653,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|C.3": {
+      "m": 10,
+      "g": 4,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|C.4": {
+      "m": 48,
+      "g": 33,
+      "o": 6,
+      "G": 0.18181818181818182,
+      "G_star": 18.181818181818183,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|C.5": {
+      "m": 34,
+      "g": 22,
+      "o": 4,
+      "G": 0.18181818181818182,
+      "G_star": 18.181818181818183,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|C.6": {
+      "m": 14,
+      "g": 8,
+      "o": 1,
+      "G": 0.125,
+      "G_star": 12.5,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v20|C.7": {
+      "m": 2,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v20|C.8": {
+      "m": 5,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.1": {
+      "m": 28,
+      "g": 16,
+      "o": 1,
+      "G": 0.0625,
+      "G_star": 6.25,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|A.2": {
+      "m": 27,
+      "g": 15,
+      "o": 1,
+      "G": 0.06666666666666667,
+      "G_star": 6.666666666666667,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|A.3": {
+      "m": 1,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.4": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.5": {
+      "m": 7,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.6": {
+      "m": 11,
+      "g": 5,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.7": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|A.8": {
+      "m": 4,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|B.1": {
+      "m": 35,
+      "g": 26,
+      "o": 1,
+      "G": 0.038461538461538464,
+      "G_star": 3.8461538461538463,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.2": {
+      "m": 38,
+      "g": 26,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.3": {
+      "m": 18,
+      "g": 9,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.4": {
+      "m": 16,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|B.5": {
+      "m": 38,
+      "g": 23,
+      "o": 2,
+      "G": 0.08695652173913043,
+      "G_star": 8.695652173913043,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.6": {
+      "m": 23,
+      "g": 22,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.7": {
+      "m": 7,
+      "g": 7,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|B.8": {
+      "m": 1,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|C.1": {
+      "m": 28,
+      "g": 17,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|C.2": {
+      "m": 6,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|C.3": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|C.4": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|C.5": {
+      "m": 22,
+      "g": 12,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|C.6": {
+      "m": 28,
+      "g": 20,
+      "o": 3,
+      "G": 0.15,
+      "G_star": 15.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v21|C.7": {
+      "m": 3,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v21|C.8": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|A.1": {
+      "m": 28,
+      "g": 6,
+      "o": 2,
+      "G": 0.3333333333333333,
+      "G_star": 33.33333333333333,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|A.2": {
+      "m": 6,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|A.3": {
+      "m": 20,
+      "g": 3,
+      "o": 2,
+      "G": 0.6666666666666666,
+      "G_star": 66.66666666666666,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|A.4": {
+      "m": 26,
+      "g": 5,
+      "o": 2,
+      "G": 0.4,
+      "G_star": 40.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|A.5": {
+      "m": 18,
+      "g": 5,
+      "o": 2,
+      "G": 0.4,
+      "G_star": 40.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|A.6": {
+      "m": 48,
+      "g": 22,
+      "o": 2,
+      "G": 0.09090909090909091,
+      "G_star": 9.090909090909092,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|A.7": {
+      "m": 40,
+      "g": 26,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|B.1": {
+      "m": 12,
+      "g": 5,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|B.2": {
+      "m": 6,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|B.3": {
+      "m": 6,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|B.4": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|B.5": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|C.1": {
+      "m": 35,
+      "g": 24,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|C.2": {
+      "m": 31,
+      "g": 23,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|C.3": {
+      "m": 19,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|C.4": {
+      "m": 10,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|C.5": {
+      "m": 12,
+      "g": 9,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v22|C.6": {
+      "m": 9,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|C.7": {
+      "m": 1,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v22|D.1": {
+      "m": 0,
+      "g": 0,
+      "o": null,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "no D_b (NONE)",
+      "house_portal_domain": false
+    },
+    "v22|D.2": {
+      "m": 0,
+      "g": 0,
+      "o": null,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "no D_b (NONE)",
+      "house_portal_domain": false
+    },
+    "v22|D.3": {
+      "m": 0,
+      "g": 0,
+      "o": null,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "no D_b (NONE)",
+      "house_portal_domain": false
+    },
+    "v22|D.4": {
+      "m": 0,
+      "g": 0,
+      "o": null,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "no D_b (NONE)",
+      "house_portal_domain": false
+    },
+    "v22|D.5": {
+      "m": 0,
+      "g": 0,
+      "o": null,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "no D_b (NONE)",
+      "house_portal_domain": false
+    },
+    "v23|S01": {
+      "m": 10,
+      "g": 6,
+      "o": 2,
+      "G": 0.3333333333333333,
+      "G_star": 33.33333333333333,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S02": {
+      "m": 22,
+      "g": 7,
+      "o": 2,
+      "G": 0.2857142857142857,
+      "G_star": 28.57142857142857,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S03": {
+      "m": 9,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S04": {
+      "m": 14,
+      "g": 7,
+      "o": 2,
+      "G": 0.2857142857142857,
+      "G_star": 28.57142857142857,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S05": {
+      "m": 8,
+      "g": 4,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S06": {
+      "m": 7,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S07": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S08": {
+      "m": 0,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S09": {
+      "m": 3,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": true
+    },
+    "v23|S10": {
+      "m": 2,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S11": {
+      "m": 2,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S12": {
+      "m": 1,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S13": {
+      "m": 7,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S14": {
+      "m": 3,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S15": {
+      "m": 17,
+      "g": 8,
+      "o": 1,
+      "G": 0.125,
+      "G_star": 12.5,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S16": {
+      "m": 7,
+      "g": 0,
+      "o": 0,
+      "G": null,
+      "G_star": null,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S17": {
+      "m": 23,
+      "g": 14,
+      "o": 1,
+      "G": 0.07142857142857142,
+      "G_star": 7.142857142857142,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S18": {
+      "m": 3,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S19": {
+      "m": 1,
+      "g": 1,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S20": {
+      "m": 16,
+      "g": 10,
+      "o": 6,
+      "G": 0.6,
+      "G_star": 60.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S21": {
+      "m": 6,
+      "g": 3,
+      "o": 2,
+      "G": 0.6666666666666666,
+      "G_star": 66.66666666666666,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S22": {
+      "m": 13,
+      "g": 10,
+      "o": 2,
+      "G": 0.2,
+      "G_star": 20.0,
+      "rated": true,
+      "reason": "rated",
+      "house_portal_domain": false
+    },
+    "v23|S23": {
+      "m": 3,
+      "g": 2,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    },
+    "v23|S24": {
+      "m": 6,
+      "g": 3,
+      "o": 0,
+      "G": 0.0,
+      "G_star": 0.0,
+      "rated": false,
+      "reason": "g_b below floor",
+      "house_portal_domain": false
+    }
+  },
+  "descriptives": {
+    "v19|Sennheiser": {
+      "mix": {
+        "brand_owned": 0.028690467656684347,
+        "reference": 0.03660576624135413,
+        "forum_ugc": 0.030649600853140058,
+        "news": 0.03200145958766648,
+        "review_editorial": 0.1790741128416864,
+        "retailer": 0.07951269601003809,
+        "other": 0.6134658968094315,
+        "unresolved": 0.0
+      },
+      "d": 17.24137931034483
+    },
+    "v19|Beyerdynamic": {
+      "mix": {
+        "brand_owned": 0.02051948051948052,
+        "reference": 0.054823232323232315,
+        "forum_ugc": 0.014805194805194804,
+        "news": 0.04527777777777778,
+        "review_editorial": 0.17570346320346314,
+        "retailer": 0.02654761904761905,
+        "other": 0.662323232323232,
+        "unresolved": 0.0
+      },
+      "d": 14.7
+    },
+    "v19|Grado": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.0,
+        "forum_ugc": 0.0,
+        "news": 0.013888888888888888,
+        "review_editorial": 0.26805555555555555,
+        "retailer": 0.04513888888888889,
+        "other": 0.6729166666666672,
+        "unresolved": 0.0
+      },
+      "d": 13.666666666666666
+    },
+    "v19|Sony": {
+      "mix": {
+        "brand_owned": 0.0011441647597254005,
+        "reference": 0.058944661937629525,
+        "forum_ugc": 0.02266649055112362,
+        "news": 0.063740718888065,
+        "review_editorial": 0.16697327812075882,
+        "retailer": 0.07381713554987213,
+        "other": 0.6127135501928238,
+        "unresolved": 0.0
+      },
+      "d": 15.956521739130435
+    },
+    "v19|Stax": {
+      "mix": {
+        "brand_owned": 0.018092805449127287,
+        "reference": 0.018092805449127287,
+        "forum_ugc": 0.050046327598727874,
+        "news": 0.012345679012345678,
+        "review_editorial": 0.20090526632108785,
+        "retailer": 0.09083339593819646,
+        "other": 0.6096837202313864,
+        "unresolved": 0.0
+      },
+      "d": 22.5
+    },
+    "v19|Audeze": {
+      "mix": {
+        "brand_owned": 0.039006024796566056,
+        "reference": 0.015927400634350563,
+        "forum_ugc": 0.04199628072799846,
+        "news": 0.008284600389863547,
+        "review_editorial": 0.20522157255102688,
+        "retailer": 0.12136148338374234,
+        "other": 0.5682026375164518,
+        "unresolved": 0.0
+      },
+      "d": 19.94736842105263
+    },
+    "v19|HiFiMan": {
+      "mix": {
+        "brand_owned": 0.04485861548488323,
+        "reference": 0.018183268772771818,
+        "forum_ugc": 0.05198097297488778,
+        "news": 0.009837962962962962,
+        "review_editorial": 0.20656587714460412,
+        "retailer": 0.13663908294676547,
+        "other": 0.5319342197131243,
+        "unresolved": 0.0
+      },
+      "d": 20.0
+    },
+    "v19|Focal": {
+      "mix": {
+        "brand_owned": 0.041601178102192306,
+        "reference": 0.01740375787536031,
+        "forum_ugc": 0.04444192123705308,
+        "news": 0.00787037037037037,
+        "review_editorial": 0.206324130287112,
+        "retailer": 0.11529340921455522,
+        "other": 0.5670652329133568,
+        "unresolved": 0.0
+      },
+      "d": 20.05
+    },
+    "v19|Meze": {
+      "mix": {
+        "brand_owned": 0.053754578754578744,
+        "reference": 0.01343864468864469,
+        "forum_ugc": 0.04771062271062271,
+        "news": 0.010416666666666666,
+        "review_editorial": 0.21198489010989013,
+        "retailer": 0.20147664835164836,
+        "other": 0.46121794871794863,
+        "unresolved": 0.0
+      },
+      "d": 16.125
+    },
+    "v19|Dan Clark Audio": {
+      "mix": {
+        "brand_owned": 0.021865791868045645,
+        "reference": 0.015329844155627345,
+        "forum_ugc": 0.049050492908955835,
+        "news": 0.017489711934156375,
+        "review_editorial": 0.2050697418175443,
+        "retailer": 0.1631427432616299,
+        "other": 0.5280516740540401,
+        "unresolved": 0.0
+      },
+      "d": 18.77777777777778
+    },
+    "v20|B.2": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.05658178486514319,
+        "forum_ugc": 0.061028425181348725,
+        "news": 0.07890244271803493,
+        "review_editorial": 0.031033195523450397,
+        "retailer": 0.02954545454545455,
+        "other": 0.742908697166569,
+        "unresolved": 0.0
+      },
+      "d": 14.3
+    },
+    "v20|B.5": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.06501610305958132,
+        "forum_ugc": 0.018921095008051527,
+        "news": 0.10708534621578099,
+        "review_editorial": 0.014090177133655393,
+        "retailer": 0.037037037037037035,
+        "other": 0.7578502415458944,
+        "unresolved": 0.0
+      },
+      "d": 11.777777777777779
+    },
+    "v20|B.7": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.08929089748055265,
+        "forum_ugc": 0.030578776268431446,
+        "news": 0.06947709857192615,
+        "review_editorial": 0.05828398931847209,
+        "retailer": 0.016835016835016835,
+        "other": 0.7355342215256004,
+        "unresolved": 0.0
+      },
+      "d": 12.833333333333334
+    },
+    "v20|C.1": {
+      "mix": {
+        "brand_owned": 0.02799634442636471,
+        "reference": 0.04923099213160065,
+        "forum_ugc": 0.09890751574321552,
+        "news": 0.0161019536019536,
+        "review_editorial": 0.02103217945002935,
+        "retailer": 0.06354551747553776,
+        "other": 0.7231854971712975,
+        "unresolved": 0.0
+      },
+      "d": 14.76923076923077
+    },
+    "v20|C.2": {
+      "mix": {
+        "brand_owned": 0.0256101621744538,
+        "reference": 0.07886417555836427,
+        "forum_ugc": 0.06090345661971631,
+        "news": 0.04034362843123786,
+        "review_editorial": 0.04786773463806161,
+        "retailer": 0.038001534578763284,
+        "other": 0.7084093079994058,
+        "unresolved": 0.0
+      },
+      "d": 16.03448275862069
+    },
+    "v20|C.4": {
+      "mix": {
+        "brand_owned": 0.022505900092701824,
+        "reference": 0.06479215857393554,
+        "forum_ugc": 0.060082677016919495,
+        "news": 0.06340783403972851,
+        "review_editorial": 0.04605876745708805,
+        "retailer": 0.04349629806416571,
+        "other": 0.6996563647554638,
+        "unresolved": 0.0
+      },
+      "d": 17.060606060606062
+    },
+    "v20|C.5": {
+      "mix": {
+        "brand_owned": 0.02714046852067112,
+        "reference": 0.05966134053095295,
+        "forum_ugc": 0.06364478265218425,
+        "news": 0.0614002783062773,
+        "review_editorial": 0.052060803939871315,
+        "retailer": 0.04288576712887296,
+        "other": 0.6932065589211706,
+        "unresolved": 0.0
+      },
+      "d": 16.863636363636363
+    },
+    "v20|C.6": {
+      "mix": {
+        "brand_owned": 0.004807692307692308,
+        "reference": 0.10760587540478843,
+        "forum_ugc": 0.052157157456070496,
+        "news": 0.04131828316610925,
+        "review_editorial": 0.049379379678292715,
+        "retailer": 0.024780020703933748,
+        "other": 0.7199515912831128,
+        "unresolved": 0.0
+      },
+      "d": 14.75
+    },
+    "v21|A.1": {
+      "mix": {
+        "brand_owned": 0.008907004830917874,
+        "reference": 0.06089836462941439,
+        "forum_ugc": 0.05806294689125066,
+        "news": 0.012857465589158953,
+        "review_editorial": 0.06041686969890628,
+        "retailer": 0.032858979253072504,
+        "other": 0.7659983691072777,
+        "unresolved": 0.0
+      },
+      "d": 18.125
+    },
+    "v21|A.2": {
+      "mix": {
+        "brand_owned": 0.023676243749470294,
+        "reference": 0.09071897928648497,
+        "forum_ugc": 0.056864802027273405,
+        "news": 0.02858007640616336,
+        "review_editorial": 0.11407226148187243,
+        "retailer": 0.0486704569908231,
+        "other": 0.6374171800579131,
+        "unresolved": 0.0
+      },
+      "d": 20.266666666666666
+    },
+    "v21|B.1": {
+      "mix": {
+        "brand_owned": 0.00990937139392517,
+        "reference": 0.08252565353537894,
+        "forum_ugc": 0.04153249020239866,
+        "news": 0.021380237484356475,
+        "review_editorial": 0.0691278671112767,
+        "retailer": 0.047601165678968875,
+        "other": 0.7279232145936956,
+        "unresolved": 0.0
+      },
+      "d": 13.615384615384615
+    },
+    "v21|B.2": {
+      "mix": {
+        "brand_owned": 0.005748327759197324,
+        "reference": 0.07868172699408395,
+        "forum_ugc": 0.03744575091829096,
+        "news": 0.021088862192981186,
+        "review_editorial": 0.06100842807078503,
+        "retailer": 0.0478682596960629,
+        "other": 0.7481586443685977,
+        "unresolved": 0.0
+      },
+      "d": 13.653846153846153
+    },
+    "v21|B.3": {
+      "mix": {
+        "brand_owned": 0.005847953216374269,
+        "reference": 0.11192438166122375,
+        "forum_ugc": 0.021796916533758637,
+        "news": 0.055735930735930736,
+        "review_editorial": 0.09462418672944989,
+        "retailer": 0.06565656565656566,
+        "other": 0.6444140654666962,
+        "unresolved": 0.0
+      },
+      "d": 10.555555555555555
+    },
+    "v21|B.5": {
+      "mix": {
+        "brand_owned": 0.0084845067931328,
+        "reference": 0.07607098943781859,
+        "forum_ugc": 0.04290120269624796,
+        "news": 0.01713178859731441,
+        "review_editorial": 0.07390648727331642,
+        "retailer": 0.05275861873215369,
+        "other": 0.7287464064700143,
+        "unresolved": 0.0
+      },
+      "d": 14.347826086956522
+    },
+    "v21|B.6": {
+      "mix": {
+        "brand_owned": 0.005233253588516746,
+        "reference": 0.07014264310915029,
+        "forum_ugc": 0.040211668979611565,
+        "news": 0.01473164660963704,
+        "review_editorial": 0.05540517098531453,
+        "retailer": 0.049810606060606055,
+        "other": 0.7644650106671634,
+        "unresolved": 0.0
+      },
+      "d": 12.818181818181818
+    },
+    "v21|B.7": {
+      "mix": {
+        "brand_owned": 0.007518796992481203,
+        "reference": 0.07315162907268169,
+        "forum_ugc": 0.03148496240601504,
+        "news": 0.017857142857142856,
+        "review_editorial": 0.03446115288220551,
+        "retailer": 0.008928571428571428,
+        "other": 0.8265977443609017,
+        "unresolved": 0.0
+      },
+      "d": 12.857142857142858
+    },
+    "v21|C.1": {
+      "mix": {
+        "brand_owned": 0.008383063370275647,
+        "reference": 0.10059748977335463,
+        "forum_ugc": 0.028694011489475212,
+        "news": 0.035937563431169564,
+        "review_editorial": 0.0888125126246004,
+        "retailer": 0.026682950654884966,
+        "other": 0.7108924086562395,
+        "unresolved": 0.0
+      },
+      "d": 14.058823529411764
+    },
+    "v21|C.5": {
+      "mix": {
+        "brand_owned": 0.005208333333333333,
+        "reference": 0.04922752266144714,
+        "forum_ugc": 0.0634772466937799,
+        "news": 0.012922012922012921,
+        "review_editorial": 0.036063298970907674,
+        "retailer": 0.10769000225521963,
+        "other": 0.7254115831633002,
+        "unresolved": 0.0
+      },
+      "d": 18.833333333333332
+    },
+    "v21|C.6": {
+      "mix": {
+        "brand_owned": 0.0182506038647343,
+        "reference": 0.06826952712936693,
+        "forum_ugc": 0.05195751826358234,
+        "news": 0.01209454796411318,
+        "review_editorial": 0.04696703795187775,
+        "retailer": 0.07912357223884683,
+        "other": 0.7233371925874781,
+        "unresolved": 0.0
+      },
+      "d": 16.15
+    },
+    "v22|A.1": {
+      "mix": {
+        "brand_owned": 0.06419753086419754,
+        "reference": 0.03367283950617284,
+        "forum_ugc": 0.057006172839506174,
+        "news": 0.052821869488536156,
+        "review_editorial": 0.06398809523809523,
+        "retailer": 0.010416666666666666,
+        "other": 0.7178968253968264,
+        "unresolved": 0.0
+      },
+      "d": 18.0
+    },
+    "v22|A.6": {
+      "mix": {
+        "brand_owned": 0.017508417508417508,
+        "reference": 0.026865125615125617,
+        "forum_ugc": 0.07717301217301219,
+        "news": 0.12211769711769711,
+        "review_editorial": 0.15492701742701745,
+        "retailer": 0.002840909090909091,
+        "other": 0.5985678210678195,
+        "unresolved": 0.0
+      },
+      "d": 14.909090909090908
+    },
+    "v22|A.7": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.029384451019066407,
+        "forum_ugc": 0.08002958579881657,
+        "news": 0.1285878651263267,
+        "review_editorial": 0.18015520803982346,
+        "retailer": 0.002403846153846154,
+        "other": 0.5794390438621199,
+        "unresolved": 0.0
+      },
+      "d": 13.5
+    },
+    "v22|C.1": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.029228988603988607,
+        "forum_ugc": 0.08409455128205127,
+        "news": 0.13335113960113962,
+        "review_editorial": 0.1843794515669516,
+        "retailer": 0.0026041666666666665,
+        "other": 0.5663417022792013,
+        "unresolved": 0.0
+      },
+      "d": 13.375
+    },
+    "v22|C.2": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.027782422891118545,
+        "forum_ugc": 0.0850334448160535,
+        "news": 0.13914901523597178,
+        "review_editorial": 0.18696116685247124,
+        "retailer": 0.0,
+        "other": 0.561073950204384,
+        "unresolved": 0.0
+      },
+      "d": 13.26086956521739
+    },
+    "v22|C.5": {
+      "mix": {
+        "brand_owned": 0.0,
+        "reference": 0.019290123456790122,
+        "forum_ugc": 0.05709876543209877,
+        "news": 0.18767636684303352,
+        "review_editorial": 0.1419973544973545,
+        "retailer": 0.0,
+        "other": 0.5939373897707227,
+        "unresolved": 0.0
+      },
+      "d": 12.777777777777779
+    },
+    "v23|S01": {
+      "mix": {
+        "brand_owned": 0.015021929824561402,
+        "reference": 0.07138311250153355,
+        "forum_ugc": 0.006469298245614034,
+        "news": 0.04628189792663478,
+        "review_editorial": 0.07302938289780396,
+        "retailer": 0.010855263157894736,
+        "other": 0.7769591154459589,
+        "unresolved": 0.0
+      },
+      "d": 37.666666666666664
+    },
+    "v23|S02": {
+      "mix": {
+        "brand_owned": 0.022081020483276127,
+        "reference": 0.07317353698932647,
+        "forum_ugc": 0.011063404014531833,
+        "news": 0.057200287181490186,
+        "review_editorial": 0.058814681559042466,
+        "retailer": 0.011136013109697319,
+        "other": 0.7665310566626354,
+        "unresolved": 0.0
+      },
+      "d": 51.285714285714285
+    },
+    "v23|S04": {
+      "mix": {
+        "brand_owned": 0.022081020483276127,
+        "reference": 0.07317353698932647,
+        "forum_ugc": 0.011063404014531833,
+        "news": 0.057200287181490186,
+        "review_editorial": 0.058814681559042466,
+        "retailer": 0.011136013109697319,
+        "other": 0.7665310566626354,
+        "unresolved": 0.0
+      },
+      "d": 51.285714285714285
+    },
+    "v23|S15": {
+      "mix": {
+        "brand_owned": 0.012775735294117649,
+        "reference": 0.03082461349924585,
+        "forum_ugc": 0.014934483408748117,
+        "news": 0.038606662300547746,
+        "review_editorial": 0.06855240831150275,
+        "retailer": 0.019800101214574893,
+        "other": 0.8145059959712639,
+        "unresolved": 0.0
+      },
+      "d": 54.125
+    },
+    "v23|S17": {
+      "mix": {
+        "brand_owned": 0.004896574014221074,
+        "reference": 0.034733479138340476,
+        "forum_ugc": 0.018112613982545968,
+        "news": 0.03417374872332574,
+        "review_editorial": 0.08450305544272885,
+        "retailer": 0.012144470486099717,
+        "other": 0.8114360582127395,
+        "unresolved": 0.0
+      },
+      "d": 42.785714285714285
+    },
+    "v23|S20": {
+      "mix": {
+        "brand_owned": 0.011553921568627452,
+        "reference": 0.03167418355301987,
+        "forum_ugc": 0.01461425339366516,
+        "news": 0.033551996507104866,
+        "review_editorial": 0.07756656433036153,
+        "retailer": 0.019840080971659915,
+        "other": 0.8111989996755641,
+        "unresolved": 0.0
+      },
+      "d": 53.1
+    },
+    "v23|S22": {
+      "mix": {
+        "brand_owned": 0.015278617924902751,
+        "reference": 0.01925520683632939,
+        "forum_ugc": 0.016084321527019295,
+        "news": 0.06405310103938266,
+        "review_editorial": 0.06928907128955168,
+        "retailer": 0.017281453164820302,
+        "other": 0.7987582282179974,
+        "unresolved": 0.0
+      },
+      "d": 65.7
+    }
+  },
+  "baseline": {
+    "per_substrate_model": {
+      "v19|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 12.166666666666666,
+        "domains_per_answer": 10.444444444444445,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.04756613756613756,
+          "forum_ugc": 0.00784313725490196,
+          "news": 0.043597883597883594,
+          "review_editorial": 0.1463071895424836,
+          "retailer": 0.04485294117647059,
+          "other": 0.7098327108621214,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.3333333333333333,
+        "grounded": 15
+      },
+      "v19|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.1111111111111111,
+        "sources_per_answer": 0.5,
+        "domains_per_answer": 0.5,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.1,
+          "news": 0.0,
+          "review_editorial": 0.1,
+          "retailer": 0.575,
+          "other": 0.225,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 2
+      },
+      "v19|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 60.388888888888886,
+        "domains_per_answer": 25.944444444444443,
+        "mix": {
+          "brand_owned": 0.04768551952875168,
+          "reference": 0.055017239921145634,
+          "forum_ugc": 0.043048532764991446,
+          "news": 0.04923013080729527,
+          "review_editorial": 0.22607327682843614,
+          "retailer": 0.026837448146891464,
+          "other": 0.5521078520024867,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.5555555555555556,
+        "share_reference": 0.8333333333333334,
+        "grounded": 18
+      },
+      "v20|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 10.38888888888889,
+        "domains_per_answer": 9.277777777777779,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.08822751322751324,
+          "forum_ugc": 0.022486772486772486,
+          "news": 0.06751543209876544,
+          "review_editorial": 0.028042328042328042,
+          "retailer": 0.03583553791887125,
+          "other": 0.7578924162257485,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.7222222222222222,
+        "grounded": 18
+      },
+      "v20|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 1.1111111111111112,
+        "domains_per_answer": 1.1111111111111112,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.2272727272727273,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.08585858585858586,
+          "other": 0.6868686868686867,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v20|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 55.22222222222222,
+        "domains_per_answer": 25.22222222222222,
+        "mix": {
+          "brand_owned": 0.04126081683662001,
+          "reference": 0.06528033304692413,
+          "forum_ugc": 0.05904527342471796,
+          "news": 0.05567670808518126,
+          "review_editorial": 0.07491726414751856,
+          "retailer": 0.029597910889001582,
+          "other": 0.6742216935700363,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.3888888888888889,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v21|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 11.722222222222221,
+        "domains_per_answer": 9.38888888888889,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.11136664261664257,
+          "forum_ugc": 0.003472222222222222,
+          "news": 0.04043410293410293,
+          "review_editorial": 0.08375420875420875,
+          "retailer": 0.003472222222222222,
+          "other": 0.7575006012506014,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.8333333333333334,
+        "grounded": 18
+      },
+      "v21|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 0.5555555555555556,
+        "domains_per_answer": 0.5555555555555556,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.06666666666666667,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.3444444444444444,
+          "other": 0.5888888888888889,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v21|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 51.55555555555556,
+        "domains_per_answer": 23.0,
+        "mix": {
+          "brand_owned": 0.0232024253467808,
+          "reference": 0.07453773112907361,
+          "forum_ugc": 0.07345814124704284,
+          "news": 0.01395411082672715,
+          "review_editorial": 0.08017214544769843,
+          "retailer": 0.04055871415901925,
+          "other": 0.6941167318436573,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.2777777777777778,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v22|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.5,
+        "sources_per_answer": 8.666666666666666,
+        "domains_per_answer": 6.611111111111111,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.10295584045584044,
+          "review_editorial": 0.16118233618233613,
+          "retailer": 0.0,
+          "other": 0.735861823361823,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 9
+      },
+      "v22|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.2777777777777778,
+        "sources_per_answer": 2.1666666666666665,
+        "domains_per_answer": 2.1666666666666665,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.15555555555555553,
+          "news": 0.1622222222222222,
+          "review_editorial": 0.22444444444444445,
+          "retailer": 0.0,
+          "other": 0.457777777777778,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 5
+      },
+      "v22|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 0.7777777777777778,
+        "sources_per_answer": 35.22222222222222,
+        "domains_per_answer": 13.61111111111111,
+        "mix": {
+          "brand_owned": 0.027513227513227514,
+          "reference": 0.06007376882376882,
+          "forum_ugc": 0.10143060643060643,
+          "news": 0.11997463515320658,
+          "review_editorial": 0.15079801151229724,
+          "retailer": 0.004464285714285714,
+          "other": 0.5357454648526075,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.1111111111111111,
+        "share_reference": 0.7222222222222222,
+        "grounded": 14
+      },
+      "v23|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 32.111111111111114,
+        "domains_per_answer": 17.72222222222222,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.04389785577880298,
+          "forum_ugc": 0.008076463560334528,
+          "news": 0.06402853465975755,
+          "review_editorial": 0.09952990034889225,
+          "retailer": 0.005659309564233163,
+          "other": 0.7788079360879795,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.7222222222222222,
+        "grounded": 15
+      },
+      "v23|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 2.4444444444444446,
+        "domains_per_answer": 2.4444444444444446,
+        "mix": {
+          "brand_owned": 0.017543859649122806,
+          "reference": 0.017543859649122806,
+          "forum_ugc": 0.0,
+          "news": 0.11414754835807467,
+          "review_editorial": 0.14192532613585243,
+          "retailer": 0.0,
+          "other": 0.7088394062078271,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.05555555555555555,
+        "share_reference": 0.05555555555555555,
+        "grounded": 3
+      },
+      "v23|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 207.55555555555554,
+        "domains_per_answer": 78.55555555555556,
+        "mix": {
+          "brand_owned": 0.01286915670042605,
+          "reference": 0.04265922655794377,
+          "forum_ugc": 0.025854422412928384,
+          "news": 0.05299962348879798,
+          "review_editorial": 0.04558750575581436,
+          "retailer": 0.023986816369260592,
+          "other": 0.7960432487148268,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.5,
+        "share_reference": 1.0,
+        "grounded": 18
+      }
+    },
+    "top_domains": [
+      [
+        "wikipedia.org",
+        119
+      ],
+      [
+        "reddit.com",
+        82
+      ],
+      [
+        "whowhatwear.com",
+        51
+      ],
+      [
+        "yahoo.com",
+        49
+      ],
+      [
+        "youtube.com",
+        46
+      ],
+      [
+        "marieclaire.com",
+        45
+      ],
+      [
+        "amazonaws.com",
+        35
+      ],
+      [
+        "apnews.com",
+        35
+      ],
+      [
+        "womanandhome.com",
+        35
+      ],
+      [
+        "tomsguide.com",
+        29
+      ],
+      [
+        "globalbrandsmagazine.com",
+        28
+      ],
+      [
+        "gobrandwave.com",
+        27
+      ],
+      [
+        "time.com",
+        27
+      ],
+      [
+        "whathifi.com",
+        27
+      ],
+      [
+        "forbes.com",
+        25
+      ],
+      [
+        "marieclaire.co.uk",
+        23
+      ],
+      [
+        "yougov.com",
+        23
+      ],
+      [
+        "axios.com",
+        22
+      ],
+      [
+        "creativebloq.com",
+        22
+      ],
+      [
+        "statista.com",
+        20
+      ]
+    ],
+    "g_star_by_substrate": {
+      "v19": {
+        "n": 10,
+        "median": 12.173913043478262,
+        "q1": 0.0,
+        "q3": 23.92241379310345,
+        "share_zero": 0.4,
+        "units": 16,
+        "rated": 10,
+        "g_b": [
+          29,
+          10,
+          3,
+          6,
+          23,
+          4,
+          6,
+          0,
+          19,
+          16,
+          20,
+          8,
+          1,
+          0,
+          0,
+          9
+        ]
+      },
+      "v20": {
+        "n": 8,
+        "median": 7.974137931034483,
+        "q1": 0.0,
+        "q3": 16.083916083916083,
+        "share_zero": 0.375,
+        "units": 24,
+        "rated": 8,
+        "g_b": [
+          2,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          20,
+          3,
+          1,
+          9,
+          1,
+          12,
+          3,
+          13,
+          29,
+          4,
+          33,
+          22,
+          8,
+          2,
+          1
+        ]
+      },
+      "v21": {
+        "n": 11,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 6.458333333333334,
+        "share_zero": 0.5454545454545454,
+        "units": 24,
+        "rated": 11,
+        "g_b": [
+          16,
+          15,
+          0,
+          0,
+          0,
+          5,
+          0,
+          2,
+          26,
+          26,
+          9,
+          2,
+          23,
+          22,
+          7,
+          1,
+          17,
+          2,
+          0,
+          0,
+          12,
+          20,
+          3,
+          0
+        ]
+      },
+      "v22": {
+        "n": 6,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 6.818181818181818,
+        "share_zero": 0.6666666666666666,
+        "units": 24,
+        "rated": 6,
+        "g_b": [
+          6,
+          0,
+          3,
+          5,
+          5,
+          22,
+          26,
+          5,
+          1,
+          0,
+          0,
+          0,
+          24,
+          23,
+          0,
+          1,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "v23": {
+        "n": 7,
+        "median": 28.57142857142857,
+        "q1": 16.25,
+        "q3": 30.95238095238095,
+        "share_zero": 0.0,
+        "units": 24,
+        "rated": 7,
+        "g_b": [
+          6,
+          7,
+          3,
+          7,
+          4,
+          3,
+          0,
+          0,
+          3,
+          0,
+          2,
+          1,
+          1,
+          3,
+          8,
+          0,
+          14,
+          3,
+          1,
+          10,
+          3,
+          10,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "H4_ranking_source": {
+    "file": "/Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
+    "sha256": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f",
+    "condition": "S1",
+    "prereg_tag": "v1.14-prereg-r2",
+    "created_utc": "2026-11-12T01:43:29+00:00",
+    "dry_run": false,
+    "stage1_verdict": "MARGINAL",
+    "v1_14_verdicts": {
+      "H1_Sep_Presence": "MARGINAL",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H4_Sep_Presence_S1": "MARGINAL",
+      "components": {
+        "Coverage": "INACTIVE",
+        "Grounding": "INACTIVE",
+        "Sentiment": "INACTIVE"
+      }
+    },
+    "gate_excluded_substrates": [],
+    "rated_units": 65,
+    "rank_table_t4_sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+    "measure": "R*_S1 of v1.14-prereg-r2 (modal position, lead-item rule, floor 6)",
+    "units_matched": 65,
+    "h4_gates": false,
+    "reading": "H4 may downgrade the gate only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise (MARGINAL, FAIL, UNDETERMINED, or Stage 1 halted) it is computed where possible and reported, and neither gates nor downgrades (N19). v1.14's final PASS/FAIL comes at its Stage 2 (t5)",
+    "MNP_comparability_non_gating": {
+      "rho_w": 0.192954932741512,
+      "n": 42,
+      "p": 0.26887311268873115,
+      "band_reading": "CONFIRMED",
+      "rank_table_sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+      "gating": false
+    }
+  },
+  "H6_coverage_source": {
+    "measure": "cov_star_N3 of v1.12-prereg-r1 (N3, S0)",
+    "status": "PENDING",
+    "reason": "v1.12's Cov* output not supplied: computed at Stage C2 (N21)"
+  },
+  "sensitivities": {
+    "S1_denominator_m": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "MARGINAL",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.27835417534394546,
+          0.40361472643694307
+        ],
+        "H2_Sep_Consistency": [
+          -0.0944911182523068,
+          0.06383500303833757
+        ],
+        "H4_Sep_Ranking": [
+          0.3280303836297328
+        ]
+      },
+      "rel3": null
+    },
+    "S2_citations": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "CONFIRMED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.19615339478231963,
+          0.31517271024981486
+        ],
+        "H2_Sep_Consistency": [
+          -0.0390199486285854,
+          -0.07513306359768175
+        ],
+        "H4_Sep_Ranking": [
+          -0.04883826803037331
+        ]
+      },
+      "rel3": null
+    },
+    "S4_floor_3": {
+      "verdicts": {
+        "H1_Sep_Presence": "FALSIFIED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "CONFIRMED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "FAIL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.4887731330700967,
+          0.5155496256333667
+        ],
+        "H2_Sep_Consistency": [
+          0.11378830035742017,
+          0.10755413271142097
+        ],
+        "H4_Sep_Ranking": [
+          0.2858149862238024
+        ]
+      },
+      "rel3": null
+    },
+    "S4_floor_10": {
+      "verdicts": {
+        "H1_Sep_Presence": "UNDETERMINED",
+        "H2_Sep_Consistency": "UNDETERMINED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "UNDETERMINED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "UNDETERMINED",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.32788466119609333,
+          0.34165760450869964
+        ],
+        "H2_Sep_Consistency": [
+          -0.28819674270781076,
+          0.04099891254104395
+        ],
+        "H4_Sep_Ranking": [
+          0.33239568496863464
+        ]
+      },
+      "rel3": null
+    },
+    "S5_gemini_dropped": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "CONFIRMED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.3184823853537751,
+          0.3948009243375993
+        ],
+        "H2_Sep_Consistency": [
+          -0.11304625433645948,
+          0.03313036483838696
+        ],
+        "H4_Sep_Ranking": [
+          0.28234571602984826
+        ]
+      },
+      "rel3": null
+    },
+    "S8_leave_one_substrate_out": {
+      "v19": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.30987342810097973,
+            0.4093181508319768
+          ],
+          "H2_Sep_Consistency": [
+            -0.25771864315286663,
+            0.035875891211610944
+          ]
+        },
+        "rel3": null,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "UNDETERMINED"
+        }
+      },
+      "v20": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.2554596350241,
+            0.3455138853378259
+          ],
+          "H2_Sep_Consistency": [
+            0.011182576626520528,
+            0.036402428851082115
+          ]
+        },
+        "rel3": null,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "UNDETERMINED"
+        }
+      },
+      "v21": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.21148736080957514,
+            0.33304779601821927
+          ],
+          "H2_Sep_Consistency": [
+            0.058149946352269534,
+            0.0686964752295691
+          ]
+        },
+        "rel3": null,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "UNDETERMINED"
+        }
+      },
+      "v22": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.3215791164473933,
+            0.4000632457234159
+          ],
+          "H2_Sep_Consistency": [
+            -0.11225849214052921,
+            0.07960284463634207
+          ]
+        },
+        "rel3": null,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "UNDETERMINED"
+        }
+      },
+      "v23": {
+        "rho": {
+          "H1_Sep_Presence": [
+            0.40512479434188775,
+            0.46599294022192156
+          ],
+          "H2_Sep_Consistency": [
+            -0.12049474374006224,
+            0.02483161617830061
+          ]
+        },
+        "rel3": null,
+        "verdicts": {
+          "H1_Sep_Presence": "MARGINAL",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Run_Reliability": "UNDETERMINED"
+        }
+      }
+    },
+    "S9_text_urls": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "CONFIRMED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.2864257516204431,
+          0.37992840450337856
+        ],
+        "H2_Sep_Consistency": [
+          -0.08273951558890616,
+          0.07278161607073941
+        ],
+        "H4_Sep_Ranking": [
+          0.24359827463510275
+        ]
+      },
+      "rel3": null
+    },
+    "S10_uncentred": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "MARGINAL",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.3897773928069005,
+          0.4665352028022791
+        ],
+        "H2_Sep_Consistency": [
+          0.042066062315889184,
+          0.12633906287627344
+        ],
+        "H4_Sep_Ranking": [
+          0.37744099721786845
+        ]
+      },
+      "rel3": null
+    },
+    "S11_without_Denon": {
+      "verdicts": {
+        "H1_Sep_Presence": "MARGINAL",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Run_Reliability": "UNDETERMINED",
+        "H4_Sep_Ranking": "CONFIRMED",
+        "H5_Sep_Sentiment": "INACTIVE",
+        "H6_Sep_Coverage": "UNDETERMINED"
+      },
+      "gate": "MARGINAL",
+      "rho": {
+        "H1_Sep_Presence": [
+          0.30716191850680374,
+          0.3945349347419029
+        ],
+        "H2_Sep_Consistency": [
+          -0.08701889123636815,
+          0.049074480929963776
+        ],
+        "H4_Sep_Ranking": [
+          0.29155171377880806
+        ]
+      },
+      "rel3": null
+    }
+  },
+  "verdict_changes": {
+    "S1_denominator_m": {
+      "H4_Sep_Ranking": [
+        "MARGINAL",
+        "CONFIRMED"
+      ]
+    },
+    "S2_citations": {},
+    "S4_floor_3": {
+      "H1_Sep_Presence": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S4_floor_10": {
+      "H1_Sep_Presence": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "H2_Sep_Consistency": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "H4_Sep_Ranking": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ]
+    },
+    "S5_gemini_dropped": {},
+    "S9_text_urls": {},
+    "S10_uncentred": {
+      "H4_Sep_Ranking": [
+        "MARGINAL",
+        "CONFIRMED"
+      ]
+    },
+    "S11_without_Denon": {}
+  }
+}
