@@ -144,6 +144,8 @@ The 15 OMNI rank tables and every other locked file are listed with their SHA-25
 
 H1 and H2 use v1.10's multi-wave rule (every wave inside the band; one wave at 0.50 or above falsifies), applied to the four waves the archive holds, with “at least 3 of 4 determined” in place of v1.10's “at least 2 of 3”. H3 is v1.10's H3, unchanged in rule and data. H4_S1 is v1.14's search-on replication leg. The t1–t3 waves are the legacy panel; t4 is the newest panel; every separability verdict needs both.
 
+**Power of H1.** H1 keeps v1.10's rule that every wave must lie within the band, because the new measure must clear the same bar as its predecessors. Its power is limited and stated here before any data: if the true |ρ| between PREC and Presence is 0.20, H1 is CONFIRMED with probability 0.38 if the four waves were independent and 0.77 if they were fully dependent; at 0.10, 0.77 and 0.93; at 0.00, 0.91 and 0.97. Method, in one sentence: Fisher z with the Bonett–Wright variance (1 + ρ²/2)/(n − 3) at the n per wave of §4.1 (t1 55, t2 54, t3 54, t4 71), the independent figure being the product of the four single-wave probabilities of |ρ̂| ≤ 0.30 and the fully dependent figure the smallest of them (§7; `prereg/precision_note_v1_16.json`). A rule on a pooled estimate (the mean of the four wave values, or one ρ over all waves) was considered and not used: it would be looser than the bar v1.10 and v1.14 faced, and it was considered after seeing that v1.14's measure (MODE: 0.093 / 0.247 / 0.206 at t1–t3, 0.369 at t4) would pass it, which is the kind of choice after seeing data that the program avoids; pooling would also let a pass on one panel hide a failure on the other.
+
 ## 7. Precision and power (analytic, before any data)
 
 Fisher z with the Bonett–Wright variance (1 + ρ²/2)/(n − 3), at the n's of §4.1 (t1 55, t2 54, t3 54, t4 71; the rated n's can be a little smaller); `scripts/precision_note_v1_16.py` → `prereg/precision_note_v1_16.json`.
@@ -216,7 +218,7 @@ Two earlier versions of world A are declared (both run with 100 shuffle and 200 
 ## 12. Order of operations (enforced by `scripts/score_v1_16.py`)
 
 1. Before the lock (done): `--parity` (§4.3) and `--dry-run` (§11); unit tests.
-2. Lock (§0): `--lock-manifest`, commit, tag `v1.16-prereg-r1`, push, OSF deposit with SHA-256 verified, then `--write-anchor --osf-note "<OSF location>"` (refuses without the tag or with a changed locked file).
+2. Lock (§0): `--lock-manifest`, commit, tag `v1.16-prereg-r1`, push, OSF deposit with SHA-256 verified, then `--write-anchor --osf-note "<OSF location>"` (refuses without the tag or with a changed locked file). At the deposit, `scripts/score_v1_16.py` and `scripts/test_score_v1_16.py` are staged from their committed paths into the OSF folder `methodology/v1_16/code/`; their SHA-256 are in the lock manifest.
 3. `--run`: refuses unless the tag exists, the anchor file exists, every file of the lock manifest is unchanged and no results file exists; **runs once**; writes `outputs/results_v1_16.json` with the gate, the consequence, every test, check, descriptive, exploratory analysis and sensitivity, and the per-unit PREC table.
 
 ## 13. Deviations policy

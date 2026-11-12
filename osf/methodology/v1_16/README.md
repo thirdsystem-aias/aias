@@ -8,5 +8,5 @@ Status: pre-registration **r1** (2026-11-12), to be locked at tag `v1.16-prereg-
 - `prereg/precision_note_v1_16.json` (from `scripts/precision_note_v1_16.py`): analytic power of the verdict rules.
 - `dryrun/dryrun_v1_16.json` and `dryrun_run_v1_16.log`: the full pipeline on synthetic data with known answers (`--dry-run`).
 - `anchor/DEVIATIONS.md`: Entry 0 (ex ante). `anchor/git_anchor_v1_16.json` is written after the tag is pushed and the OSF deposit is verified (`--write-anchor --osf-note "<OSF location>"`).
-- Scorer `scripts/score_v1_16.py` (imports `scripts/score_v1_10.py` and `scripts/score_v1_14.py` unchanged); tests `scripts/test_score_v1_16.py` (`python3 -m unittest scripts/test_score_v1_16.py`).
+- Scorer `scripts/score_v1_16.py` (imports `scripts/score_v1_10.py` and `scripts/score_v1_14.py` unchanged); tests `scripts/test_score_v1_16.py` (`python3 -m unittest scripts/test_score_v1_16.py`). At the OSF deposit both are staged from their committed paths into `methodology/v1_16/code/`.
 - `outputs/results_v1_16.json`: written once by `--run`, after the lock (the scorer refuses earlier).
