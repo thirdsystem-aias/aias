@@ -66,6 +66,8 @@ _SRC = {
     "dates (pre-registration header, §1, §4.3, §6, C26; v0.41 t3 date; references)":
         "2010 2022 2024 2025 2026 2027 13 23 59",
     "ORCID (CLAUDE.md standard author block)": "0009 0003 8968 9990",
+    "LOCK_STEPS clarification of 2026-11-11 (tag set at 02:53 UTC); C27-C28 numbering; Harman a Samsung "
+    "subsidiary since March 2017 (coordinator's COI wording, Nov 11, 2026)": "02 53 27 2017",
     "SSRN IDs (CLAUDE.md methodology chain and phase registry)":
         "6659000 6761698 6797679 6799479 6809182 6810758 6811441 6815378 6816340 6817841 6829118 6834298 "
         "6878818 6915458 6963359 7685100",

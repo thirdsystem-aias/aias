@@ -1,0 +1,5518 @@
+{
+ "verdicts": "/Users/pablou/aias/_worktrees/t4-paper/osf/v42/v42_verdicts.json",
+ "table": "/Users/pablou/aias/_worktrees/t4-paper/osf/v42/v42_brand_table.csv",
+ "synthetic": false,
+ "cases": {
+  "CASE_GEN": "CONFIRMED",
+  "CASE_PHI": "MARGINAL",
+  "CASE_SEARCH": "ROBUST",
+  "CASE_PARITY": "PASSED",
+  "GEN_DELTA_DIR": "ABOVE"
+ },
+ "flags": {
+  "MC_COMPLETE_PASS": true,
+  "ANY_EXCLUDED": false,
+  "MC_SERVED_PASS": true,
+  "MC_OUTSIDE_ANY": false,
+  "MCS_ANY_FLAG": true,
+  "MCT_ANY_FLAG": false,
+  "WIN_PASS": true,
+  "BUDGET_PASS": true,
+  "GEN_S1_PRESENT": true,
+  "GEN_S1_REDUCED": false,
+  "MI_PRESENT": true,
+  "MI_FLAG": false,
+  "S_REDUCED": false
+ },
+ "values": {
+  "PREREG_TAG": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "prereg_tag"
+   ],
+   "formatted": "v0.42-prereg-r1"
+  },
+  "PREREG_COMMIT": {
+   "kind": "text",
+   "basis": [
+    "git",
+    "refs/tags/v0.42-prereg-r1"
+   ],
+   "formatted": "58d1891bf2"
+  },
+  "FIG_DIR": {
+   "kind": "text",
+   "basis": [
+    "argument --fig-dir"
+   ],
+   "formatted": "../../reports/figs/v42"
+  },
+  "DEV_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "osf/v42/DEVIATIONS.md"
+   ],
+   "formatted": "Deviations are recorded in `osf/v42/DEVIATIONS.md` (1 entry), each before the step it concerns."
+  },
+  "DEV_STATUS": {
+   "kind": "text",
+   "basis": [
+    "osf/v42/DEVIATIONS.md"
+   ],
+   "formatted": "deviations recorded in `osf/v42/DEVIATIONS.md` (1 entry)."
+  },
+  "V41_PI_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.19",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.20",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.21",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.22",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.23",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.9268276971279107,
+   "fmt": "r2",
+   "formatted": "0.93"
+  },
+  "V41_PI_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.19",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.20",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.21",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.22",
+      "rho"
+     ]
+    ],
+    [
+     "v41",
+     [
+      "verdicts",
+      "H_Presence_LongHorizon",
+      "per_substrate",
+      "v0.23",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.9764816297124751,
+   "fmt": "r2",
+   "formatted": "0.98"
+  },
+  "V41_PHI_RHO": {
+   "kind": "json",
+   "source": "v41",
+   "path": [
+    "verdicts",
+    "H_Phi_LongHorizon",
+    "rho"
+   ],
+   "raw": 0.6806643811207408,
+   "fmt": "r3",
+   "formatted": "0.681"
+  },
+  "V41_PHI_N": {
+   "kind": "json",
+   "source": "v41",
+   "path": [
+    "verdicts",
+    "H_Phi_LongHorizon",
+    "n"
+   ],
+   "raw": 80,
+   "fmt": "i0",
+   "formatted": "80"
+  },
+  "MC_ANSWERED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Complete",
+    "answered"
+   ],
+   "raw": 876,
+   "fmt": "i0",
+   "formatted": "876"
+  },
+  "MC_EXPECTED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Complete",
+    "expected"
+   ],
+   "raw": 876,
+   "fmt": "i0",
+   "formatted": "876"
+  },
+  "MC_SHARE": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Complete",
+    "share"
+   ],
+   "raw": 1.0,
+   "fmt": "pct1",
+   "formatted": "100.0%"
+  },
+  "EXCLUDED_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "models_excluded_condition"
+   ],
+   "formatted": ""
+  },
+  "EXCL_S0_NAMES": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "models_excluded_condition"
+   ],
+   "formatted": "no model"
+  },
+  "MC_SERVED_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Served",
+    "n_mismatched"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "MC_NOID_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Served",
+    "ok_calls_without_served_id"
+   ],
+   "formatted": ""
+  },
+  "MC_OUTSIDE": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Complete",
+    "outside_design",
+    "n"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "MCS_FLAGGED": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Search"
+   ],
+   "formatted": "Gemini 4 Argon"
+  },
+  "MCT_FLAGGED": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Truncation"
+   ],
+   "formatted": ""
+  },
+  "WIN_FIRST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Window",
+    "first_call_utc"
+   ],
+   "formatted": "2026-11-11 02:57"
+  },
+  "WIN_LAST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Window",
+    "last_call_utc"
+   ],
+   "formatted": "2026-11-11 09:50"
+  },
+  "WIN_SPAN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Window",
+    "span_hours"
+   ],
+   "raw": 6.8850011275,
+   "fmt": "f1",
+   "formatted": "6.9"
+  },
+  "COST_TOTAL": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "6_cost",
+    "total_usd"
+   ],
+   "raw": 67.45513600000001,
+   "fmt": "usd2",
+   "formatted": "\\$67.46"
+  },
+  "BUDGET_RESERVE": {
+   "kind": "json",
+   "source": "budget_const",
+   "path": [
+    "judge_reserve_usd"
+   ],
+   "raw": 0.5,
+   "fmt": "usd2",
+   "formatted": "\\$0.50"
+  },
+  "BUDGET_SPEND": {
+   "kind": "derived",
+   "fn": "d_add",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "6_cost",
+      "total_usd"
+     ]
+    ],
+    [
+     "budget_const",
+     [
+      "judge_reserve_usd"
+     ]
+    ]
+   ],
+   "raw": 67.95513600000001,
+   "fmt": "usd2",
+   "formatted": "\\$67.96"
+  },
+  "BUDGET_APPROVALS": {
+   "kind": "text",
+   "basis": [
+    "budget_state",
+    "approvals"
+   ],
+   "formatted": "No pause approval was recorded by the budget guard."
+  },
+  "BUDGET_LIMIT_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "MC_Complete S1"
+   ],
+   "formatted": "in the event, every search-on call was answered."
+  },
+  "TABLE_MC": {
+   "kind": "table",
+   "formatted": "| Model | Cond. | Answered / expected | Share | Drop rule | At output cap | With search |\n|:--------------------|:-----|-------------------:|------:|:---------|-------------:|-----------:|\n| Claude Fable 5.2 | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Claude Fable 5.2 | S1 | 90 / 90 | 100.0% | retained | 0.0% | 83.3% |\n| GPT-6 Astra | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| GPT-6 Astra | S1 | 90 / 90 | 100.0% | retained | 0.0% | 95.6% |\n| Gemini 4 Argon | S0 | 202 / 202 | 100.0% | retained | 0.0% | n/a |\n| Gemini 4 Argon | S1 | 90 / 90 | 100.0% | retained | 0.0% | 17.8% |",
+   "cells": [
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "claude-fable-5-2|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "claude-fable-5-2|S1",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "83.3%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Search",
+      "claude-fable-5-2",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "gpt-6-astra|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "gpt-6-astra|S1",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "95.6%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Search",
+      "gpt-6-astra",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "gemini-4-argon|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "answered"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "expected"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Complete",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "share_of_expected"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "0.0%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Truncation",
+      "gemini-4-argon|S1",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "17.8%",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Search",
+      "gemini-4-argon",
+      "share"
+     ],
+     "fmt": "pct1"
+    }
+   ]
+  },
+  "GEN_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "rho"
+   ],
+   "raw": 0.8284919892883065,
+   "fmt": "r3",
+   "formatted": "0.828"
+  },
+  "GEN_CI_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "ci95_rho",
+    0
+   ],
+   "raw": 0.7222986264997935,
+   "fmt": "r3",
+   "formatted": "0.722"
+  },
+  "GEN_CI_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "ci95_rho",
+    1
+   ],
+   "raw": 0.8895823409442499,
+   "fmt": "r3",
+   "formatted": "0.890"
+  },
+  "GEN_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "p_perm"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "p4",
+   "formatted": "0.0001"
+  },
+  "GEN_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "GEN_NPERM": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "n_perm"
+   ],
+   "raw": 10000,
+   "fmt": "i0",
+   "formatted": "10,000"
+  },
+  "GEN_RHO_UNC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "rho_uncentred_v041"
+   ],
+   "raw": 0.8359290730581618,
+   "fmt": "r3",
+   "formatted": "0.836"
+  },
+  "GEN_DELTA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "delta"
+   ],
+   "raw": 0.046378968253968256,
+   "fmt": "sr3",
+   "formatted": "+0.046"
+  },
+  "GEN_D_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "ci95_delta",
+    0
+   ],
+   "raw": 0.022730654761904754,
+   "fmt": "sr3",
+   "formatted": "+0.023"
+  },
+  "GEN_D_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "ci95_delta",
+    1
+   ],
+   "raw": 0.07060185185185185,
+   "fmt": "sr3",
+   "formatted": "+0.071"
+  },
+  "FIG1_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Presence"
+   ],
+   "formatted": "Test statistics in §3.2."
+  },
+  "GEN_S1_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "rho"
+   ],
+   "raw": 0.7961176482932437,
+   "fmt": "r3",
+   "formatted": "0.796"
+  },
+  "GEN_S1_CI_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "ci95_rho",
+    0
+   ],
+   "raw": 0.6691553979002491,
+   "fmt": "r3",
+   "formatted": "0.669"
+  },
+  "GEN_S1_CI_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "ci95_rho",
+    1
+   ],
+   "raw": 0.861481910568164,
+   "fmt": "r3",
+   "formatted": "0.861"
+  },
+  "GEN_S1_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "p_perm"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "p4",
+   "formatted": "0.0001"
+  },
+  "GEN_S1_VERDICT": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "verdict_if_primary"
+   ],
+   "formatted": "CONFIRMED"
+  },
+  "GEN_S1_MODELS": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "variants",
+    "N3_S1",
+    "models"
+   ],
+   "formatted": "Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon"
+  },
+  "PAIR_ANTHROPIC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "per_provider_generation_pairs",
+    "Anthropic: legacy pair -> claude-fable-5-2",
+    "rho"
+   ],
+   "raw": 0.8475497991786256,
+   "fmt": "r3",
+   "formatted": "0.848"
+  },
+  "PAIR_OPENAI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "per_provider_generation_pairs",
+    "OpenAI: legacy pair -> gpt-6-astra",
+    "rho"
+   ],
+   "raw": 0.5655977971700592,
+   "fmt": "r3",
+   "formatted": "0.566"
+  },
+  "PAIR_GOOGLE": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "per_provider_generation_pairs",
+    "Google: legacy pair -> gemini-4-argon",
+    "rho"
+   ],
+   "raw": 0.7148209681951023,
+   "fmt": "r3",
+   "formatted": "0.715"
+  },
+  "PAIRS_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Presence",
+    "reported_alongside",
+    "per_provider_generation_pairs"
+   ],
+   "formatted": "$\\rho_{\\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\\rho_{\\text{pw}} = 0.566$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\\rho_{\\text{pw}} = 0.715$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon)"
+  },
+  "TABLE_GEN_SUB": {
+   "kind": "table",
+   "formatted": "| Substrate | Brands | $\\rho$, search off | $\\rho$, search on |\n|:----------------------|------:|-------------:|------------:|\n| Headphones (v0.19) | 16 | 0.911 | 0.949 |\n| Skincare (v0.20) | 24 | 0.888 | 0.878 |\n| Cosmetics (v0.21) | 24 | 0.855 | 0.801 |\n| Automotive (v0.22) | 24 | 0.943 | 0.923 |\n| Spirits (v0.23) | 24 | 0.607 | 0.540 |",
+   "cells": [
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.911",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.949",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "reported_alongside",
+      "variants",
+      "N3_S1",
+      "per_substrate",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.888",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.878",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "reported_alongside",
+      "variants",
+      "N3_S1",
+      "per_substrate",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.855",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.801",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "reported_alongside",
+      "variants",
+      "N3_S1",
+      "per_substrate",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.943",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.923",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "reported_alongside",
+      "variants",
+      "N3_S1",
+      "per_substrate",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.607",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "per_substrate",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.540",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Presence",
+      "reported_alongside",
+      "variants",
+      "N3_S1",
+      "per_substrate",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    }
+   ]
+  },
+  "PHI_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "n"
+   ],
+   "raw": 73,
+   "fmt": "i0",
+   "formatted": "73"
+  },
+  "PHI_N_v019": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate",
+    "v0.19",
+    "n"
+   ],
+   "raw": 10,
+   "fmt": "i0",
+   "formatted": "10"
+  },
+  "PHI_N_v020": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate",
+    "v0.20",
+    "n"
+   ],
+   "raw": 14,
+   "fmt": "i0",
+   "formatted": "14"
+  },
+  "PHI_N_v021": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate",
+    "v0.21",
+    "n"
+   ],
+   "raw": 17,
+   "fmt": "i0",
+   "formatted": "17"
+  },
+  "PHI_N_v022": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate",
+    "v0.22",
+    "n"
+   ],
+   "raw": 15,
+   "fmt": "i0",
+   "formatted": "15"
+  },
+  "PHI_N_v023": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate",
+    "v0.23",
+    "n"
+   ],
+   "raw": 17,
+   "fmt": "i0",
+   "formatted": "17"
+  },
+  "PHI_N_BY_SUB": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Phi",
+    "per_substrate"
+   ],
+   "formatted": " (10 headphones, 14 skincare, 17 cosmetics, 15 automotive and 17 spirits)"
+  },
+  "PHI_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "rho"
+   ],
+   "raw": 0.3095026294006812,
+   "fmt": "r3",
+   "formatted": "0.310"
+  },
+  "PHI_CI_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "ci95_rho",
+    0
+   ],
+   "raw": 0.050937288710226306,
+   "fmt": "r3",
+   "formatted": "0.051"
+  },
+  "PHI_CI_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "ci95_rho",
+    1
+   ],
+   "raw": 0.5195119799948973,
+   "fmt": "r3",
+   "formatted": "0.520"
+  },
+  "PHI_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "p_perm"
+   ],
+   "raw": 0.005599440055994401,
+   "fmt": "p4",
+   "formatted": "0.0056"
+  },
+  "PHI_RHO_UNC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "rho_uncentred_v041"
+   ],
+   "raw": 0.35544333391562905,
+   "fmt": "r3",
+   "formatted": "0.355"
+  },
+  "FIG2_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Phi"
+   ],
+   "formatted": "Test statistics in §3.3."
+  },
+  "PART_S0_DEFINED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S0",
+    "brand_level",
+    "defined"
+   ],
+   "raw": 79,
+   "fmt": "i0",
+   "formatted": "79"
+  },
+  "PART_S0_ZERO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S0",
+    "brand_level",
+    "zero"
+   ],
+   "raw": 25,
+   "fmt": "i0",
+   "formatted": "25"
+  },
+  "PART_S0_SATURATED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S0",
+    "brand_level",
+    "saturated"
+   ],
+   "raw": 2,
+   "fmt": "i0",
+   "formatted": "2"
+  },
+  "PART_S0_UNDEFINED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S0",
+    "brand_level",
+    "undefined"
+   ],
+   "raw": 6,
+   "fmt": "i0",
+   "formatted": "6"
+  },
+  "PART_S1_DEFINED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S1",
+    "brand_level",
+    "defined"
+   ],
+   "raw": 83,
+   "fmt": "i0",
+   "formatted": "83"
+  },
+  "PART_S1_ZERO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S1",
+    "brand_level",
+    "zero"
+   ],
+   "raw": 22,
+   "fmt": "i0",
+   "formatted": "22"
+  },
+  "PART_S1_SATURATED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S1",
+    "brand_level",
+    "saturated"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "PART_S1_UNDEFINED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "N3_S1",
+    "brand_level",
+    "undefined"
+   ],
+   "raw": 7,
+   "fmt": "i0",
+   "formatted": "7"
+  },
+  "PART_T3_DEFINED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts",
+    "L6_t3",
+    "defined"
+   ],
+   "raw": 83,
+   "fmt": "i0",
+   "formatted": "83"
+  },
+  "PARTITION_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "partition_counts"
+   ],
+   "formatted": "On the newest models with search off, 79 brands had $\\varphi$ defined, 25 were in the zero partition in every run, 2 in the saturated partition in every run and 6 were undefined (fewer than two defined runs); with search on, 83 brands had $\\varphi$ defined, 22 were in the zero partition in every run, 0 in the saturated partition in every run and 7 were undefined (fewer than two defined runs); at $t_3$, 83 of the 112 brands had $\\varphi$ defined on the retiring panel."
+  },
+  "MI_ABS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "mean_independence_S0",
+    "N3",
+    "abs"
+   ],
+   "raw": 0.10094553012299576,
+   "fmt": "r3",
+   "formatted": "0.101"
+  },
+  "MI_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "mean_independence_S0",
+    "N3",
+    "n"
+   ],
+   "raw": 79,
+   "fmt": "i0",
+   "formatted": "79"
+  },
+  "MI_UNC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Gen_Phi",
+    "reported_alongside",
+    "mean_independence_S0",
+    "N3",
+    "rho_pw_phi_pi_uncentred_v041"
+   ],
+   "raw": -0.013858007370286592,
+   "fmt": "r3",
+   "formatted": "-0.014"
+  },
+  "TABLE_PHI_SUB": {
+   "kind": "table",
+   "formatted": "| Substrate | Brands ($\\varphi$ defined on both) | $\\rho$ |\n|:----------------------|--------------------------:|-----:|\n| Headphones (v0.19) | 10 | 0.492 |\n| Skincare (v0.20) | 14 | 0.075 |\n| Cosmetics (v0.21) | 17 | 0.058 |\n| Automotive (v0.22) | 15 | 0.809 |\n| Spirits (v0.23) | 17 | 0.312 |",
+   "cells": [
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.492",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.075",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.058",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.809",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.312",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Gen_Phi",
+      "per_substrate",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    }
+   ]
+  },
+  "S_MODELS": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Search_Presence",
+    "models"
+   ],
+   "formatted": "Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon"
+  },
+  "S_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "rho"
+   ],
+   "raw": 0.9087314554322161,
+   "fmt": "r3",
+   "formatted": "0.909"
+  },
+  "S_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "S_CI_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "ci95_rho",
+    0
+   ],
+   "raw": 0.8265811324455337,
+   "fmt": "r3",
+   "formatted": "0.827"
+  },
+  "S_CI_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "ci95_rho",
+    1
+   ],
+   "raw": 0.9451205033003187,
+   "fmt": "r3",
+   "formatted": "0.945"
+  },
+  "S_RHO_UNC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "rho_uncentred_v041"
+   ],
+   "raw": 0.9126726374987766,
+   "fmt": "r3",
+   "formatted": "0.913"
+  },
+  "S_DELTA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "delta"
+   ],
+   "raw": -0.04083994708994709,
+   "fmt": "sr3",
+   "formatted": "-0.041"
+  },
+  "S_D_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "ci95_delta",
+    0
+   ],
+   "raw": -0.05671296296296297,
+   "fmt": "sr3",
+   "formatted": "-0.057"
+  },
+  "S_D_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "ci95_delta",
+    1
+   ],
+   "raw": -0.02496693121693122,
+   "fmt": "sr3",
+   "formatted": "-0.025"
+  },
+  "S_WHY": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Search_Presence"
+   ],
+   "formatted": ""
+  },
+  "FIG3_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Search_Presence",
+    "label"
+   ],
+   "formatted": "Statistics in §3.4."
+  },
+  "S_SUB_v019": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate",
+    "v0.19",
+    "rho"
+   ],
+   "raw": 0.956395551308483,
+   "fmt": "r3",
+   "formatted": "0.956"
+  },
+  "S_SUB_v020": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate",
+    "v0.20",
+    "rho"
+   ],
+   "raw": 0.9300713365889235,
+   "fmt": "r3",
+   "formatted": "0.930"
+  },
+  "S_SUB_v021": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate",
+    "v0.21",
+    "rho"
+   ],
+   "raw": 0.9316601123532909,
+   "fmt": "r3",
+   "formatted": "0.932"
+  },
+  "S_SUB_v022": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate",
+    "v0.22",
+    "rho"
+   ],
+   "raw": 0.9761326615575894,
+   "fmt": "r3",
+   "formatted": "0.976"
+  },
+  "S_SUB_v023": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate",
+    "v0.23",
+    "rho"
+   ],
+   "raw": 0.7847781042791643,
+   "fmt": "r3",
+   "formatted": "0.785"
+  },
+  "S_PER_SUB_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "H_Search_Presence",
+    "per_substrate"
+   ],
+   "formatted": "Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.932, automotive 0.976 and spirits 0.785."
+  },
+  "TABLE_SEARCH_MODEL": {
+   "kind": "table",
+   "formatted": "| Model | Brands | $\\rho_{\\text{pw}}$ | Uncentred (v0.41) | $\\Delta$ (on minus off) |\n|:--------------------|------:|-----:|-----------------:|----------------:|\n| Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |\n| GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |\n| Gemini 4 Argon | 112 | 0.909 | 0.913 | -0.012 |",
+   "cells": [
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "claude-fable-5-2",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.710",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "claude-fable-5-2",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.723",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "claude-fable-5-2",
+      "rho_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.052",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "claude-fable-5-2",
+      "delta"
+     ],
+     "fmt": "sr3"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gpt-6-astra",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.858",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gpt-6-astra",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.865",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gpt-6-astra",
+      "rho_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.058",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gpt-6-astra",
+      "delta"
+     ],
+     "fmt": "sr3"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gemini-4-argon",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.909",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gemini-4-argon",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.913",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gemini-4-argon",
+      "rho_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.012",
+     "source": "verdicts",
+     "path": [
+      "verdicts",
+      "H_Search_Presence",
+      "per_model",
+      "gemini-4-argon",
+      "delta"
+     ],
+     "fmt": "sr3"
+    }
+   ]
+  },
+  "REL1_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel1"
+     ]
+    ]
+   ],
+   "raw": 0.8449021908360117,
+   "fmt": "r2",
+   "formatted": "0.84"
+  },
+  "REL1_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel1"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel1"
+     ]
+    ]
+   ],
+   "raw": 0.9148666810295984,
+   "fmt": "r2",
+   "formatted": "0.91"
+  },
+  "REL3_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel3"
+     ]
+    ]
+   ],
+   "raw": 0.9423386287044498,
+   "fmt": "r2",
+   "formatted": "0.94"
+  },
+  "REL3_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel3"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel3"
+     ]
+    ]
+   ],
+   "raw": 0.969914720548635,
+   "fmt": "r2",
+   "formatted": "0.97"
+  },
+  "REL_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "descriptives",
+    "1_run_reliability"
+   ],
+   "formatted": "rel1 ranged from 0.84 to 0.91 and rel3 from 0.94 to 0.97."
+  },
+  "FIG4_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "descriptives",
+    "1_run_reliability"
+   ],
+   "formatted": "Descriptive; no verdict."
+  },
+  "TABLE_REL": {
+   "kind": "table",
+   "formatted": "| Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |\n|:--------------------|:-----|-----:|-----:|-----------------------:|\n| Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |\n| Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |\n| GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |\n| GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |\n| Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |\n| Gemini 4 Argon | S1 | 0.915 | 0.970 | 0.919 |",
+   "cells": [
+    {
+     "formatted": "0.912",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.969",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.916",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S0",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.897",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.963",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.902",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "claude-fable-5-2|S1",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.904",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.966",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.909",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S0",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.845",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.942",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.853",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gpt-6-astra|S1",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.880",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.956",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.885",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S0",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.915",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel1"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.970",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel3"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.919",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "1_run_reliability",
+      "gemini-4-argon|S1",
+      "rel1_uncentred_v041"
+     ],
+     "fmt": "r3"
+    }
+   ]
+  },
+  "TABLE_RECOG": {
+   "kind": "table",
+   "formatted": "| Model | Wave | Recognized | Coded | Share |\n|:-------------------------|:-------------|----------:|-----:|-----:|\n| Claude Fable 5.2 | $t_4$, search off | 109 | 112 | 97.3% |\n| GPT-6 Astra | $t_4$, search off | 111 | 112 | 99.1% |\n| Gemini 4 Argon | $t_4$, search off | 111 | 112 | 99.1% |\n| Claude Opus 4.5 | $t_3$ | 108 | 112 | 96.4% |\n| Claude Sonnet 4.5 | $t_3$ | 103 | 112 | 92.0% |\n| GPT-4o | $t_3$ | 108 | 112 | 96.4% |\n| GPT-4o mini | $t_3$ | 110 | 112 | 98.2% |\n| Gemini 2.5 Flash | $t_3$ | 104 | 112 | 92.9% |\n| Gemini 2.5 Flash-Lite | $t_3$ | 106 | 112 | 94.6% |",
+   "cells": [
+    {
+     "formatted": "109",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "claude-fable-5-2|S0",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "claude-fable-5-2|S0",
+      "coded_answers"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "97.3%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "claude-fable-5-2|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "111",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gpt-6-astra|S0",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gpt-6-astra|S0",
+      "coded_answers"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "99.1%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gpt-6-astra|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "111",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gemini-4-argon|S0",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gemini-4-argon|S0",
+      "coded_answers"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "99.1%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t4",
+      "gemini-4-argon|S0",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "108",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-opus-4-5",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-opus-4-5",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "96.4%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-opus-4-5",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "103",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-sonnet-4-5",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-sonnet-4-5",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "92.0%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "claude-sonnet-4-5",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "108",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "96.4%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "110",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o-mini",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o-mini",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "98.2%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gpt-4o-mini",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "104",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "92.9%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash",
+      "share"
+     ],
+     "fmt": "pct1"
+    },
+    {
+     "formatted": "106",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash-lite",
+      "recognized"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "112",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash-lite",
+      "brands"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "94.6%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "2_recognition",
+      "t3_legacy",
+      "gemini-2.5-flash-lite",
+      "share"
+     ],
+     "fmt": "pct1"
+    }
+   ]
+  },
+  "RECOG_NOTE": {
+   "kind": "text",
+   "basis": [
+    "descriptives",
+    "2_recognition"
+   ],
+   "formatted": "Shares use the answers that could be coded as the denominator; recognition is not computed for search on, which r2 does not collect."
+  },
+  "FL_B3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "below_floor_t3"
+   ],
+   "raw": 58,
+   "fmt": "i0",
+   "formatted": "58"
+  },
+  "FL_B4": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "below_floor_t4"
+   ],
+   "raw": 49,
+   "fmt": "i0",
+   "formatted": "49"
+  },
+  "FL_BOTH": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "below_both"
+   ],
+   "raw": 43,
+   "fmt": "i0",
+   "formatted": "43"
+  },
+  "FL_SHARE": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "share_below_t3_still_below_t4"
+   ],
+   "raw": 0.7413793103448276,
+   "fmt": "pct0",
+   "formatted": "74%"
+  },
+  "FL_REV": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "reverse_share_below_t4_that_were_below_t3"
+   ],
+   "raw": 0.8775510204081632,
+   "fmt": "pct0",
+   "formatted": "88%"
+  },
+  "FL_UP": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "3_floor_persistence",
+    "share_above_t3_now_below_t4"
+   ],
+   "raw": 0.1111111111111111,
+   "fmt": "pct0",
+   "formatted": "11%"
+  },
+  "FLOOR_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "descriptives",
+    "3_floor_persistence"
+   ],
+   "formatted": "Of the 58 brands below the recall floor at $t_3$, 43 were still below it on the newest models with search off at $t_4$ (74%). Of the 49 brands below the floor at $t_4$, 43 had been below it at $t_3$ (88%), and 11% of the brands above the floor at $t_3$ fell below it at $t_4$ (Figure 5; clarification C2)."
+  },
+  "FIG5_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "descriptives",
+    "3_floor_persistence"
+   ],
+   "formatted": "Counts in §3.5."
+  },
+  "TABLE_FORM": {
+   "kind": "table",
+   "formatted": "| Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |\n|:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|\n| Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\\_turn 202 | 0 / 0 / 0 |\n| Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\\_turn 90 | 0 / 0 / 0 |\n| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |\n| GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |\n| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |\n| Gemini 4 Argon | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |",
+   "cells": [
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "finish_reasons",
+      "end_turn"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "160.8",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "words_per_answer_A_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "290.8",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "6.2",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S0",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "finish_reasons",
+      "end_turn"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "282.3",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "5.0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "claude-fable-5-2|S1",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "finish_reasons",
+      "completed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "490.5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "words_per_answer_A_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "431.1",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "5.5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S0",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "finish_reasons",
+      "completed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "380.7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "4.2",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gpt-6-astra|S1",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "finish_reasons",
+      "FinishReason.STOP"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "258.3",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "words_per_answer_A_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "820.7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "6.6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S0",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "finish_reasons",
+      "FinishReason.STOP"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "858.1",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "words_per_answer_B_mean"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "6.3",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "registry_brands_named_per_phase_B_answer"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "non_answers",
+      "phase_A_no_yes_or_no_v0_19_to_v0_22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "non_answers",
+      "refusals_by_finish_reason"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "4_answer_form",
+      "gemini-4-argon|S1",
+      "non_answers",
+      "unanswered_calls_error_or_empty"
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "TABLE_SEARCHDESC": {
+   "kind": "table",
+   "formatted": "| Model | S1 calls | Searches per call | Sources per call | Citations per call | With a citation |\n|:--------------------|--------:|-----------------:|----------------:|------------------:|---------------:|\n| Claude Fable 5.2 | 90 | 1.7 | 15.6 | 11.1 | 83% |\n| GPT-6 Astra | 90 | 2.6 | 92.5 | 8.2 | 96% |\n| Gemini 4 Argon | 90 | 0.4 | 1.7 | 3.9 | 18% |",
+   "cells": [
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "s1_answered_calls"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "1.7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "searches_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "15.6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "sources_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "11.1",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "citations_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "83%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "share_with_citation"
+     ],
+     "fmt": "pct0"
+    },
+    {
+     "formatted": "69",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "42",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "29",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "28",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "27",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "20",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "s1_answered_calls"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "2.6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "searches_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "92.5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "sources_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "8.2",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "citations_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "96%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "share_with_citation"
+     ],
+     "fmt": "pct0"
+    },
+    {
+     "formatted": "42",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "39",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "36",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "35",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "s1_answered_calls"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.4",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "searches_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "1.7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "sources_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "3.9",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "citations_per_call"
+     ],
+     "fmt": "f1"
+    },
+    {
+     "formatted": "18%",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "share_with_citation"
+     ],
+     "fmt": "pct0"
+    },
+    {
+     "formatted": "65",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "21",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "8",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "TABLE_DOMAINS": {
+   "kind": "table",
+   "formatted": "| Model | Domain (citations) |\n|:--------------------|:------------------------------------------------------------|\n| Claude Fable 5.2 | drinksint.com (69), ringly.io (42), thewhiskeywash.com (29), americansalon.com (28), crutchfield.com (27), globalbrandsmagazine.com (24), consumerreports.org (24), carcody.com (23), ecoustics.com (22), marieclaire.com (22), thedermdigest.com (20), rd.com (17), en.wikipedia.org (17), autoblog.com (17), wineenthusiast.com (15), vinepair.com (14), whowhatwear.com (13), cosmetify.com (13), roadethos.com (13), gobrandwave.com (12) |\n| GPT-6 Astra | consumerreports.org (42), vogue.com (39), allure.com (36), vinepair.com (35), rtings.com (23), wineenthusiast.com (17), statista.com (16), stereophile.com (15), cosmetify.com (15), cosmeticsbusiness.com (14), whowhatwear.com (13), caranddriver.com (13), beautymatter.com (12), thespiritsbusiness.com (12), iwsc.net (12), aad.org (11), diarydirectory.com (10), glamour.com (10), bustle.com (10), subaru.com (10) |\n| Gemini 4 Argon | youtube.com (65), forbes.com (21), thewhiskeywash.com (16), beautypackaging.com (16), prnewswire.com (13), hernogin.com (12), suntoryglobalspirits.com (10), newsnationnow.com (10), qz.com (8), dermstore.com (7), iwsc.net (7), ecoustics.com (7), carpro.com (7), jdpower.com (6), gravelai.com (5), artofskincare.com (5), cluboenologique.com (5), wine-searcher.com (5), suntory.com (5), theautochannel.com (5) |",
+   "cells": [
+    {
+     "formatted": "69",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "42",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "29",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "28",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "27",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "20",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "claude-fable-5-2",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "42",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "39",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "36",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "35",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "17",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "15",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gpt-6-astra",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "65",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      0,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "21",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      1,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      2,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      3,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "13",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      4,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      5,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      6,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      7,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "8",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      8,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      9,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      10,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      11,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "7",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      12,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      13,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      14,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      15,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      16,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      17,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      18,
+      1
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "5_search",
+      "gemini-4-argon",
+      "top20_cited_domains",
+      19,
+      1
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "TABLE_COST": {
+   "kind": "table",
+   "formatted": "| Model | Cond. | Billed requests | Input tokens | Output tokens | Searches | US\\$ |\n|:--------------------|:-----|---------------:|------------:|-------------:|--------:|-------:|\n| Claude Fable 5.2 | S0 | 202 | 9,473 | 220,552 | 0 | \\$4.45 |\n| Claude Fable 5.2 | S1 | 90 | 1,989,632 | 312,023 | 153 | \\$15.73 |\n| GPT-6 Astra | S0 | 202 | 5,705 | 167,855 | 0 | \\$8.45 |\n| GPT-6 Astra | S1 | 90 | 2,740,428 | 100,167 | 297 | \\$35.38 |\n| Gemini 4 Argon | S0 | 202 | 10,813 | 162,569 | 0 | \\$1.65 |\n| Gemini 4 Argon | S1 | 90 | 21,360 | 125,075 | 36 | \\$1.80 |\n| All |  |  |  |  |  | \\$67.46 |",
+   "cells": [
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "9,473",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "220,552",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$4.45",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S0",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "1,989,632",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "312,023",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "153",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$15.73",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "claude-fable-5-2|S1",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5,705",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "167,855",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$8.45",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S0",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "2,740,428",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "100,167",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "297",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$35.38",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gpt-6-astra|S1",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "202",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "10,813",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "162,569",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$1.65",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S0",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "90",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "billed_requests"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "21,360",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "input_tokens"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "125,075",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "output_tokens_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "36",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "searches_billed"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "\\$1.80",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "per_model_condition",
+      "gemini-4-argon|S1",
+      "usd"
+     ],
+     "fmt": "usd2"
+    },
+    {
+     "formatted": "\\$67.46",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "6_cost",
+      "total_usd"
+     ],
+     "fmt": "usd2"
+    }
+   ]
+  }
+ }
+}

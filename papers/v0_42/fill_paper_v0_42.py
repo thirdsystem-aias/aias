@@ -255,9 +255,9 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     flags["MCT_ANY_FLAG"] = bool(tparts)
     val.word("MCT_FLAGGED", "; ".join(tparts), ["verdicts", "manipulation_checks", "MC_Truncation"])
     win = V["manipulation_checks"]["MC_Window"]
-    val.word("WIN_FIRST", str(win.get("first_call_utc")).replace("T", " ").replace("+00:00", ""),
+    val.word("WIN_FIRST", str(win.get("first_call_utc")).replace("T", " ").replace("+00:00", "")[:16],
              ["verdicts", "manipulation_checks", "MC_Window", "first_call_utc"])
-    val.word("WIN_LAST", str(win.get("last_call_utc")).replace("T", " ").replace("+00:00", ""),
+    val.word("WIN_LAST", str(win.get("last_call_utc")).replace("T", " ").replace("+00:00", "")[:16],
              ["verdicts", "manipulation_checks", "MC_Window", "last_call_utc"])
     if VV.has(win, ["span_hours"]):
         val.put("WIN_SPAN", "verdicts", MC + ["MC_Window", "span_hours"], VV.f1)
@@ -323,8 +323,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
         val.put("GEN_D_HI", "verdicts", H + ["ci95_delta", 1], VV.sr3)
         lo, hi = h["ci95_delta"]
         cases["GEN_DELTA_DIR"] = "ABOVE" if lo > 0 else ("BELOW" if hi < 0 else "SPANS")
-        val.word("FIG1_CAPTION", f"$\\rho_{{\\text{{pw}}}} = {val.vals['GEN_RHO']}$ ($n = {val.vals['GEN_N']}$); "
-                                 f"verdict {h['verdict']}.", ["verdicts", "H_Gen_Presence"])
+        val.word("FIG1_CAPTION", "Test statistics in §3.2.", ["verdicts", "H_Gen_Presence"])
     else:
         cases["GEN_DELTA_DIR"] = "SPANS"
         val.word("FIG1_CAPTION", "Verdict UNDETERMINED (§3.2).", ["verdicts", "H_Gen_Presence", "verdict"])
@@ -381,8 +380,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
         val.put("PHI_CI_HI", "verdicts", P + ["ci95_rho", 1], VV.r3)
         val.put("PHI_P", "verdicts", P + ["p_perm"], VV.p4)
         val.put("PHI_RHO_UNC", "verdicts", P + ["rho_uncentred_v041"], VV.r3)
-        val.word("FIG2_CAPTION", f"$\\rho_{{\\text{{pw}}}} = {val.vals['PHI_RHO']}$ ($n = {val.vals['PHI_N']}$); "
-                                 f"verdict {hp['verdict']}.", P)
+        val.word("FIG2_CAPTION", "Test statistics in §3.3.", P)
     else:
         val.word("FIG2_CAPTION", "Verdict UNDETERMINED (§3.3).", P + ["verdict"])
     rap = hp.get("reported_alongside") or {}
@@ -426,7 +424,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
                            ("S_D_HI", ["ci95_delta", 1], VV.sr3)):
             val.put(nm, "verdicts", S + p_, fm)
         val.word("S_WHY", "", S)
-        val.word("FIG3_CAPTION", f"$\\rho_S = {val.vals['S_RHO']}$; label {hs['label']}.", S + ["label"])
+        val.word("FIG3_CAPTION", "Statistics in §3.4.", S + ["label"])
     else:
         why = (hs.get("reason") or "no model was retained in both conditions") if cs_ == "NOT_COMPUTED" else \
             "the bootstrap interval was not defined on the data"
@@ -509,7 +507,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
                  f"with search off at $t_4$ ({s1}). Of the {b4} brands below the floor at $t_4$, {bb} had been below "
                  f"it at $t_3$ ({s2}), and {s3} of the brands above the floor at $t_3$ fell below it at $t_4$ "
                  f"(Figure 5; clarification C2).", F)
-        val.word("FIG5_CAPTION", f"{bb} of {b3} brands below at $t_3$ were still below at $t_4$.", F)
+        val.word("FIG5_CAPTION", "Counts in §3.5.", F)
     form = V["descriptives"]["4_answer_form"]
     cl = Cells(val)
     rows = []
@@ -579,8 +577,9 @@ def deviations_text(synthetic, no_deviations):
     if DEVIATIONS.exists():
         txt = DEVIATIONS.read_text(encoding="utf-8")
         n = len(re.findall(r"(?mi)^#+\s*Entry\b", txt))
-        return (f"Deviations are recorded in `osf/v42/DEVIATIONS.md` ({n} entries), each before the step it concerns.",
-                f"deviations recorded in `osf/v42/DEVIATIONS.md` ({n} entries).", ["osf/v42/DEVIATIONS.md"])
+        ent = "entry" if n == 1 else "entries"
+        return (f"Deviations are recorded in `osf/v42/DEVIATIONS.md` ({n} {ent}), each before the step it concerns.",
+                f"deviations recorded in `osf/v42/DEVIATIONS.md` ({n} {ent}).", ["osf/v42/DEVIATIONS.md"])
     if no_deviations:
         return ("No deviation from the pre-registration was recorded.", "no deviation recorded.",
                 ["--no-deviations (operator: osf/v42/DEVIATIONS.md absent)"])

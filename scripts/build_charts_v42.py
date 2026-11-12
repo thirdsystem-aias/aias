@@ -100,6 +100,8 @@ def _footer(fig, verdict, tag):
 
 
 def _save(fig, key, verdict, tag, out_dirs):
+    if MODE == "paper" and key in (1, 2, 3):
+        verdict = None   # a paper chart never repeats a finding's headline; the verdict is in the text (Nov 11)
     _footer(fig, verdict, tag)
     name = META[key][0 if MODE == "paper" else 1]
     d = out_dirs[MODE]
@@ -193,7 +195,7 @@ def chart_02(V, rows, out_dirs):
     ax.set_xlabel("φ at t₃, six retiring models   (lower = models agree more)", fontsize=9)
     ax.set_ylabel("φ at t₄, newest models, search off (mean of runs)", fontsize=9)
     ax.tick_params(labelsize=8.5)
-    ax.legend(loc="lower right", fontsize=7.4, frameon=False)
+    ax.legend(loc="upper right", fontsize=7.4, frameon=False)
     pc = (h.get("reported_alongside") or {}).get("partition_counts", {}).get("N3_S0", {}).get("brand_level")
     pc_txt = (f"\nt₄ brands: {pc['defined']} defined, {pc['zero']} zero, {pc['saturated']} saturated, "
               f"{pc['undefined']} undefined" if pc else "")
@@ -264,11 +266,11 @@ def chart_03(V, rows, out_dirs):
         if c:
             bx.plot(c, [y, y], color=col, lw=2.2, zorder=2, solid_capstyle="butt")
         bx.plot([v], [y], "o", color=col, ms=5.5, zorder=3)
-        bx.text(1.045, y, VV.r2(v), va="center", ha="right", fontsize=7, color=col)
+        bx.text(1.06, y, VV.r2(v), va="center", ha="left", fontsize=7, color=col, clip_on=False)
     bx.set_yticks(ys); bx.set_yticklabels(labels, fontsize=7.4)
     bx.set_xlim(lo_x, 1.05); bx.set_ylim(-0.6, max(len(labels), 1) + 0.9)
     bx.set_xlabel("rank correlation, search off vs on", fontsize=8.5); bx.tick_params(axis="x", labelsize=7.5)
-    bx.text(0.81, len(labels) - 0.35, "robust zone:\nlower bound at least 0.80", fontsize=6.4, color=cs.INDIGO, va="bottom")
+    bx.text(0.81, len(labels) - 0.35, "robust zone:\nlower bound\nat least 0.80", fontsize=6.4, color=cs.INDIGO, va="bottom")
     bx.text(lo_x + 0.01, len(labels) - 0.35, "dominated zone:\nupper bound < 0.50", fontsize=6.4, color=cs.PALETTE["warm_sec"], va="bottom")
     if case in ("ROBUST", "SENSITIVE", "DOMINATED"):
         lab = h["label"]
@@ -282,7 +284,7 @@ def chart_03(V, rows, out_dirs):
         bx.text(0.5, 0.5, f"not computed: {why}", transform=bx.transAxes, ha="center", fontsize=8, color=cs.GRAY)
         verdict = (f"H_Search_Presence: {case.replace('_', ' ')} — {why}" if MODE == "paper"
                    else f"P3 {_status(case, 'report')} — {why}")
-    fig.subplots_adjust(top=0.78, bottom=0.19, left=0.08, right=0.97, wspace=0.42)
+    fig.subplots_adjust(top=0.78, bottom=0.19, left=0.08, right=0.93, wspace=0.42)
     if MODE == "paper":
         _header(fig, 3, "Left: per-brand π̂ (mean of three runs). Right: ρ_S with its 95% bootstrap "
                         "interval; per model and per category (points).",
@@ -305,7 +307,8 @@ def chart_04(V, rows, out_dirs):
             off = 0.14 if c == "S0" else -0.14
             if VV.has(d, ["rel1"]):
                 ax.plot([d["rel1"]], [y + off], "o", color=MODECOL[c], ms=6.5, zorder=3)
-                ax.text(d["rel1"], y + off + 0.13, VV.r2(d["rel1"]), fontsize=6.6, color=MODECOL[c], ha="center")
+                ax.text(d["rel1"], y + off + (0.09 if c == "S0" else -0.09), VV.r2(d["rel1"]), fontsize=6.6,
+                        color=MODECOL[c], ha="center", va="bottom" if c == "S0" else "top")
             if VV.has(d, ["rel3"]):
                 ax.plot([d["rel3"]], [y + off], "o", mfc="white", mec=MODECOL[c], ms=6.5, zorder=3)
             if VV.has(d, ["rel1"]) and VV.has(d, ["rel3"]):
