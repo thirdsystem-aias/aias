@@ -1,0 +1,1163 @@
+{
+  "phase": "v1.15",
+  "stage": "J",
+  "prereg_tag": "v1.15-prereg-r1",
+  "dry_run": false,
+  "created_utc": "2026-11-12T05:10:46+00:00",
+  "units_sha256": "2fb080fb982256265657244938a0c9c3e2eda09115f20ea3394b1b03bfa6e1ce",
+  "frozen_sha256": "637b8c1d62d7df6c051c5db232360cbf9b00eba53b6c2cc21fa5d4434558e197",
+  "halted": true,
+  "fail_check": {
+    "per_judge_set": {
+      "J1 F t4 v0.19": {
+        "valid": 276,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.0036101083032490976
+      },
+      "J1 F t4 v0.20": {
+        "valid": 294,
+        "judge_fail": 5,
+        "unjudged": 0,
+        "fail_share": 0.016722408026755852
+      },
+      "J1 F t4 v0.21": {
+        "valid": 366,
+        "judge_fail": 8,
+        "unjudged": 0,
+        "fail_share": 0.0213903743315508
+      },
+      "J1 F t4 v0.22": {
+        "valid": 333,
+        "judge_fail": 6,
+        "unjudged": 0,
+        "fail_share": 0.017699115044247787
+      },
+      "J1 F t4 v0.23": {
+        "valid": 253,
+        "judge_fail": 5,
+        "unjudged": 0,
+        "fail_share": 0.01937984496124031
+      },
+      "J2 F t4 v0.19": {
+        "valid": 277,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "J2 F t4 v0.20": {
+        "valid": 299,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "J2 F t4 v0.21": {
+        "valid": 374,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "J2 F t4 v0.22": {
+        "valid": 339,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "J2 F t4 v0.23": {
+        "valid": 258,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "halt": [
+      "J1 F t4 v0.21"
+    ]
+  },
+  "H1_t4": {
+    "verdict": "CONFIRMED",
+    "alpha_ordinal": 0.8407919841510881,
+    "units_judged_by_both": 1522,
+    "brand_rho": {
+      "rho": 0.8914763997308289,
+      "n": 70,
+      "groups": {
+        "v0.19|t4": 11,
+        "v0.20|t4": 13,
+        "v0.21|t4": 15,
+        "v0.22|t4": 14,
+        "v0.23|t4": 17
+      },
+      "determinable": true,
+      "ci95": [
+        0.7495198319856362,
+        0.9529151825472877
+      ],
+      "boot_seed": 111020
+    },
+    "alpha_by_block": {
+      "F": 0.8407919841510881
+    },
+    "alpha_refers_true_both": 0.8407919841510881,
+    "kappa_evaluative": 0.7343389123325392,
+    "confusion_J1_rows_J2_cols": {
+      "-2|-2": 5,
+      "-1|-2": 1,
+      "-1|-1": 26,
+      "-1|0": 1,
+      "0|-1": 3,
+      "0|0": 248,
+      "0|1": 31,
+      "1|0": 99,
+      "1|1": 695,
+      "1|2": 66,
+      "2|0": 1,
+      "2|1": 35,
+      "2|2": 311
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "H1_t4_SD": {
+    "verdict": "CONFIRMED",
+    "alpha_ordinal": 0.8407919841510881,
+    "units_judged_by_both": 1522,
+    "brand_rho": {
+      "rho": 0.8914763997308289,
+      "n": 70,
+      "groups": {
+        "v0.19|t4": 11,
+        "v0.20|t4": 13,
+        "v0.21|t4": 15,
+        "v0.22|t4": 14,
+        "v0.23|t4": 17
+      },
+      "determinable": true,
+      "ci95": [
+        0.7495198319856362,
+        0.9529151825472877
+      ],
+      "boot_seed": 111020
+    },
+    "alpha_by_block": {
+      "F": 0.8407919841510881
+    },
+    "alpha_refers_true_both": 0.8407919841510881,
+    "kappa_evaluative": 0.7343389123325392,
+    "confusion_J1_rows_J2_cols": {
+      "-2|-2": 5,
+      "-1|-2": 1,
+      "-1|-1": 26,
+      "-1|0": 1,
+      "0|-1": 3,
+      "0|0": 248,
+      "0|1": 31,
+      "1|0": 99,
+      "1|1": 695,
+      "1|2": 66,
+      "2|0": 1,
+      "2|1": 35,
+      "2|2": 311
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "selfcon": {
+    "J1": {
+      "F": {
+        "n": 75,
+        "exact_valence_agreement": 0.9733333333333334,
+        "alpha_ordinal": 0.9766089352379675,
+        "kappa_evaluative": 0.9122807017543861,
+        "flag_below_0.90": false
+      },
+      "all": {
+        "n": 75,
+        "exact_valence_agreement": 0.9733333333333334,
+        "alpha_ordinal": 0.9766089352379675,
+        "kappa_evaluative": 0.9122807017543861,
+        "flag_below_0.90": false
+      }
+    },
+    "J2": {
+      "F": {
+        "n": 77,
+        "exact_valence_agreement": 0.987012987012987,
+        "alpha_ordinal": 0.9896557498178769,
+        "kappa_evaluative": 0.9656709763709318,
+        "flag_below_0.90": false
+      },
+      "all": {
+        "n": 77,
+        "exact_valence_agreement": 0.987012987012987,
+        "alpha_ordinal": 0.9896557498178769,
+        "kappa_evaluative": 0.9656709763709318,
+        "flag_below_0.90": false
+      }
+    }
+  },
+  "S_t4": {
+    "v0.19|Audeze": {
+      "n": 31,
+      "S": 78.2258064516129,
+      "E": 0.8709677419354839,
+      "NV": 82.4074074074074,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Audio-Technica": {
+      "n": 27,
+      "S": 75.0,
+      "E": 0.8148148148148148,
+      "NV": 80.68181818181819,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Beyerdynamic": {
+      "n": 29,
+      "S": 75.0,
+      "E": 0.9655172413793104,
+      "NV": 75.89285714285714,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.19|Dan Clark Audio": {
+      "n": 20,
+      "S": 86.25,
+      "E": 0.95,
+      "NV": 88.15789473684211,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Focal": {
+      "n": 33,
+      "S": 79.54545454545455,
+      "E": 0.8181818181818182,
+      "NV": 86.11111111111111,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Grado": {
+      "n": 5,
+      "S": null,
+      "E": 0.2,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|HiFiMan": {
+      "n": 30,
+      "S": 85.0,
+      "E": 0.9,
+      "NV": 88.88888888888889,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Koss": {
+      "n": 6,
+      "S": 75.0,
+      "E": 1.0,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Meze": {
+      "n": 14,
+      "S": 82.14285714285714,
+      "E": 0.9285714285714286,
+      "NV": 84.61538461538461,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Sennheiser": {
+      "n": 36,
+      "S": 84.72222222222223,
+      "E": 0.9722222222222222,
+      "NV": 85.71428571428571,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Sony": {
+      "n": 35,
+      "S": 70.71428571428571,
+      "E": 0.7142857142857143,
+      "NV": 79.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|Stax": {
+      "n": 9,
+      "S": 88.88888888888889,
+      "E": 1.0,
+      "NV": 88.88888888888889,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.19|ZMF Headphones": {
+      "n": 1,
+      "S": null,
+      "E": 1.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Augustinus Bader": {
+      "n": 12,
+      "S": 72.91666666666667,
+      "E": 0.9166666666666666,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Bioderma": {
+      "n": 5,
+      "S": null,
+      "E": 0.6,
+      "NV": 83.33333333333333,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|CeraVe": {
+      "n": 36,
+      "S": 68.75,
+      "E": 0.75,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Cetaphil": {
+      "n": 24,
+      "S": 70.83333333333333,
+      "E": 0.7916666666666666,
+      "NV": 76.3157894736842,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Drunk Elephant": {
+      "n": 28,
+      "S": 61.607142857142854,
+      "E": 0.5357142857142857,
+      "NV": 71.66666666666667,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Eucerin": {
+      "n": 12,
+      "S": 66.66666666666667,
+      "E": 0.6666666666666666,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Fenty Skin": {
+      "n": 9,
+      "S": 58.333333333333336,
+      "E": 0.3333333333333333,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Glossier": {
+      "n": 6,
+      "S": 75.0,
+      "E": 0.8333333333333334,
+      "NV": 80.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Goop": {
+      "n": 1,
+      "S": null,
+      "E": 0.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 2,
+      "n_refers_false": 0,
+      "n_judge_fail": 2,
+      "n_unjudged": 0
+    },
+    "v0.20|La Mer": {
+      "n": 8,
+      "S": 71.875,
+      "E": 0.875,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.20|La Prairie": {
+      "n": 1,
+      "S": null,
+      "E": 0.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|La Roche-Posay": {
+      "n": 35,
+      "S": 68.57142857142857,
+      "E": 0.6285714285714286,
+      "NV": 79.54545454545455,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.20|Paula's Choice": {
+      "n": 17,
+      "S": 72.05882352941177,
+      "E": 0.8235294117647058,
+      "NV": 76.78571428571429,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|Rhode": {
+      "n": 27,
+      "S": 61.111111111111114,
+      "E": 0.4074074074074074,
+      "NV": 77.27272727272727,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|SkinCeuticals": {
+      "n": 36,
+      "S": 77.77777777777777,
+      "E": 0.8333333333333334,
+      "NV": 83.33333333333333,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.20|The Ordinary": {
+      "n": 35,
+      "S": 66.42857142857143,
+      "E": 0.6,
+      "NV": 77.38095238095238,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.20|Tower 28": {
+      "n": 2,
+      "S": null,
+      "E": 1.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Anastasia Beverly Hills": {
+      "n": 2,
+      "S": null,
+      "E": 0.5,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Bobbi Brown": {
+      "n": 10,
+      "S": 75.0,
+      "E": 0.9,
+      "NV": 77.77777777777777,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Charlotte Tilbury": {
+      "n": 33,
+      "S": 70.45454545454545,
+      "E": 0.7575757575757576,
+      "NV": 77.0,
+      "rated": true,
+      "n_excluded": 3,
+      "n_refers_false": 0,
+      "n_judge_fail": 3,
+      "n_unjudged": 0
+    },
+    "v0.21|Fenty Beauty": {
+      "n": 35,
+      "S": 75.71428571428571,
+      "E": 0.7428571428571429,
+      "NV": 84.61538461538461,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.21|Giorgio Armani Beauty": {
+      "n": 13,
+      "S": 96.15384615384616,
+      "E": 1.0,
+      "NV": 96.15384615384616,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Haus Labs": {
+      "n": 15,
+      "S": 80.0,
+      "E": 0.8666666666666667,
+      "NV": 84.61538461538461,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Hourglass": {
+      "n": 7,
+      "S": 67.85714285714286,
+      "E": 0.5714285714285714,
+      "NV": 81.25,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Huda Beauty": {
+      "n": 16,
+      "S": 65.625,
+      "E": 0.5625,
+      "NV": 77.77777777777777,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Kylie Cosmetics": {
+      "n": 1,
+      "S": null,
+      "E": 0.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|L'Or\u00e9al Paris": {
+      "n": 5,
+      "S": null,
+      "E": 1.0,
+      "NV": 80.0,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Laura Mercier": {
+      "n": 10,
+      "S": 87.5,
+      "E": 0.9,
+      "NV": 91.66666666666667,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|MAC Cosmetics": {
+      "n": 24,
+      "S": 85.41666666666667,
+      "E": 1.0,
+      "NV": 85.41666666666667,
+      "rated": true,
+      "n_excluded": 2,
+      "n_refers_false": 0,
+      "n_judge_fail": 2,
+      "n_unjudged": 0
+    },
+    "v0.21|Maybelline": {
+      "n": 36,
+      "S": 75.0,
+      "E": 0.8333333333333334,
+      "NV": 80.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|NARS": {
+      "n": 36,
+      "S": 75.0,
+      "E": 0.9166666666666666,
+      "NV": 77.27272727272727,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|NYX Professional Makeup": {
+      "n": 25,
+      "S": 73.0,
+      "E": 0.88,
+      "NV": 76.13636363636364,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|Pat McGrath Labs": {
+      "n": 27,
+      "S": 80.55555555555556,
+      "E": 0.8518518518518519,
+      "NV": 85.8695652173913,
+      "rated": true,
+      "n_excluded": 2,
+      "n_refers_false": 0,
+      "n_judge_fail": 2,
+      "n_unjudged": 0
+    },
+    "v0.21|Rare Beauty": {
+      "n": 36,
+      "S": 75.69444444444444,
+      "E": 0.8333333333333334,
+      "NV": 80.83333333333333,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.21|e.l.f. Cosmetics": {
+      "n": 35,
+      "S": 73.57142857142857,
+      "E": 0.8571428571428571,
+      "NV": 77.5,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|BMW": {
+      "n": 36,
+      "S": 77.77777777777777,
+      "E": 0.9722222222222222,
+      "NV": 78.57142857142857,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Bentley": {
+      "n": 16,
+      "S": 76.5625,
+      "E": 0.875,
+      "NV": 80.35714285714286,
+      "rated": true,
+      "n_excluded": 2,
+      "n_refers_false": 0,
+      "n_judge_fail": 2,
+      "n_unjudged": 0
+    },
+    "v0.22|Cadillac": {
+      "n": 19,
+      "S": 77.63157894736842,
+      "E": 0.8947368421052632,
+      "NV": 80.88235294117646,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.22|Chevrolet": {
+      "n": 13,
+      "S": 67.3076923076923,
+      "E": 0.8461538461538461,
+      "NV": 70.45454545454545,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Ford": {
+      "n": 21,
+      "S": 76.19047619047619,
+      "E": 0.8571428571428571,
+      "NV": 80.55555555555556,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.22|Honda": {
+      "n": 29,
+      "S": 81.03448275862068,
+      "E": 0.9310344827586207,
+      "NV": 83.33333333333333,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Hyundai": {
+      "n": 24,
+      "S": 82.29166666666667,
+      "E": 1.0,
+      "NV": 82.29166666666667,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Jaguar": {
+      "n": 8,
+      "S": 78.125,
+      "E": 1.0,
+      "NV": 78.125,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Lucid": {
+      "n": 5,
+      "S": null,
+      "E": 0.6,
+      "NV": 75.0,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Mercedes-Benz": {
+      "n": 35,
+      "S": 72.14285714285714,
+      "E": 0.8571428571428571,
+      "NV": 75.83333333333333,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Mercury": {
+      "n": 0,
+      "S": null,
+      "E": null,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.22|Porsche": {
+      "n": 36,
+      "S": 77.08333333333333,
+      "E": 0.8611111111111112,
+      "NV": 81.45161290322581,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Rivian": {
+      "n": 4,
+      "S": null,
+      "E": 0.5,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Rolls-Royce": {
+      "n": 25,
+      "S": 87.0,
+      "E": 0.88,
+      "NV": 92.04545454545455,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.22|Tesla": {
+      "n": 15,
+      "S": 63.333333333333336,
+      "E": 0.8666666666666667,
+      "NV": 65.38461538461539,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Toyota": {
+      "n": 36,
+      "S": 81.94444444444444,
+      "E": 0.8333333333333334,
+      "NV": 88.33333333333333,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.22|Volkswagen": {
+      "n": 11,
+      "S": 70.45454545454545,
+      "E": 0.8181818181818182,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S01": {
+      "n": 9,
+      "S": 69.44444444444444,
+      "E": 0.8888888888888888,
+      "NV": 71.875,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S02": {
+      "n": 22,
+      "S": 55.68181818181818,
+      "E": 0.9545454545454546,
+      "NV": 55.95238095238095,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.23|S03": {
+      "n": 10,
+      "S": 82.5,
+      "E": 1.0,
+      "NV": 82.5,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S04": {
+      "n": 10,
+      "S": 77.5,
+      "E": 0.9,
+      "NV": 80.55555555555556,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.23|S05": {
+      "n": 9,
+      "S": 58.333333333333336,
+      "E": 0.7777777777777778,
+      "NV": 60.714285714285715,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S06": {
+      "n": 4,
+      "S": null,
+      "E": 0.75,
+      "NV": 83.33333333333333,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S08": {
+      "n": 1,
+      "S": null,
+      "E": 1.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S09": {
+      "n": 10,
+      "S": 87.5,
+      "E": 0.9,
+      "NV": 91.66666666666667,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S10": {
+      "n": 4,
+      "S": null,
+      "E": 1.0,
+      "NV": 12.5,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S11": {
+      "n": 6,
+      "S": 66.66666666666667,
+      "E": 0.6666666666666666,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S13": {
+      "n": 16,
+      "S": 75.0,
+      "E": 0.8125,
+      "NV": 80.76923076923077,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S14": {
+      "n": 6,
+      "S": 75.0,
+      "E": 1.0,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.23|S15": {
+      "n": 20,
+      "S": 58.75,
+      "E": 0.95,
+      "NV": 59.21052631578947,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.23|S16": {
+      "n": 12,
+      "S": 45.833333333333336,
+      "E": 0.6666666666666666,
+      "NV": 43.75,
+      "rated": true,
+      "n_excluded": 1,
+      "n_refers_false": 0,
+      "n_judge_fail": 1,
+      "n_unjudged": 0
+    },
+    "v0.23|S17": {
+      "n": 28,
+      "S": 84.82142857142857,
+      "E": 1.0,
+      "NV": 84.82142857142857,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S18": {
+      "n": 1,
+      "S": null,
+      "E": 1.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S19": {
+      "n": 13,
+      "S": 84.61538461538461,
+      "E": 1.0,
+      "NV": 84.61538461538461,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S20": {
+      "n": 28,
+      "S": 81.25,
+      "E": 0.9285714285714286,
+      "NV": 83.65384615384616,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S21": {
+      "n": 10,
+      "S": 75.0,
+      "E": 1.0,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S22": {
+      "n": 24,
+      "S": 88.54166666666667,
+      "E": 0.9166666666666666,
+      "NV": 92.04545454545455,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S23": {
+      "n": 2,
+      "S": null,
+      "E": 1.0,
+      "NV": null,
+      "rated": false,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    },
+    "v0.23|S24": {
+      "n": 8,
+      "S": 68.75,
+      "E": 0.75,
+      "NV": 75.0,
+      "rated": true,
+      "n_excluded": 0,
+      "n_refers_false": 0,
+      "n_judge_fail": 0,
+      "n_unjudged": 0
+    }
+  },
+  "own_checks": "FAILED"
+}

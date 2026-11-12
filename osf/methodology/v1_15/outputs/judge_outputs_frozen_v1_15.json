@@ -1,0 +1,42 @@
+{
+  "phase": "v1.15",
+  "frozen_utc": "2026-11-12T05:10:34.073660+00:00",
+  "raw_file": "judge_raw_v1_15.jsonl",
+  "raw_sha256": "926ed9b0505608a273a089d6395fc63b4d235f142247b00718191c4f9a9db01a",
+  "records": 3353,
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "batches_sha256": "a528fd20d3636329905fb4674ee002ad832b6f4c362b554bc0ba95caa30c8d8a",
+  "plan_sha256": "7455c07970b26374c7f0e317468cf5e522fa71e6a0492c1f5dc7421a2598fd49",
+  "units_sha256": "2fb080fb982256265657244938a0c9c3e2eda09115f20ea3394b1b03bfa6e1ce",
+  "u0_refs": {
+    "raw_ref": "v0.42-acquisition-locked",
+    "raw_commit": "a790bb1ac552adfc6615b0bcb49430aa95e7bc16",
+    "coded_ref": "31c64c64656b7b0393eca49e5d10384744475dd9",
+    "coded_commit": "31c64c64656b7b0393eca49e5d10384744475dd9"
+  },
+  "spend_usd": 7.514511,
+  "outcomes": {
+    "J1 main": {
+      "VALID": 1522,
+      "JUDGE_FAIL": 25
+    },
+    "J1 repeat": {
+      "VALID": 75,
+      "JUDGE_FAIL": 2
+    },
+    "J2 main": {
+      "VALID": 1547
+    },
+    "J2 repeat": {
+      "VALID": 77
+    }
+  },
+  "sampling_parameters_sent": [],
+  "served_models": {
+    "claude-opus-5-5": 1729,
+    "gpt-6.1-sol": 1624
+  }
+}
