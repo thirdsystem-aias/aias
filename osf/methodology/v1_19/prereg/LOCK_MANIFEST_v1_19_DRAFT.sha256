@@ -1,13 +1,16 @@
-# v1.19 DRAFT lock manifest (r0, 2026-11-12; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_19.sha256 at r1)
+# v1.19 DRAFT lock manifest (draft r1, 2026-11-12; r0's draft manifest listed 16 files; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_19.sha256 at the lock, tag v1.19-prereg-r1)
 # check: shasum -a 256 -c <(grep -v '^#' osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19_DRAFT.sha256)
+9ae2d0b3d28b692a519dabff570b397712987dd543f6b5276189e0b479227b0a  osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r1.md
 a092000c0d091c596ec935865731b766896cb88dcb8897eb116096ffb13b28d1  osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r0.md
 bc30c34caf2e559d042f4f5e2bff9110153486695b3f4f50f5de7e24e3ca6ef0  osf/methodology/v1_19/prereg/build_roster_v1_19.py
 9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb  osf/methodology/v1_19/prereg/phantom_roster_v1_19.csv
-d7302cc33d084378012f489d9e88d06b4cc9b0780419f6669abc292e460935db  osf/methodology/v1_19/scripts/score_v1_19.py
-9c3a5aec5243e0562765ebac0ad600ee3e06d0666ff0b4e57f9215aede25de4d  osf/methodology/v1_19/scripts/tests/test_score_v1_19.py
-875bab4514536bb578f22277bd341c4638e72e69e39edb9e7eb7f8b904a58929  osf/methodology/v1_19/scripts/tests/test_loader_v1_19.py
+7bbf6b1cc22aa26ed2892c07cab930c4497515c06b54261c5b3365c19b2c4242  osf/methodology/v1_19/scripts/score_v1_19.py
+7c9b39314353bf19cbcda167668ce5f127d48493e10a0adce13616b35d5e562a  osf/methodology/v1_19/scripts/tests/test_score_v1_19.py
+9d8d875080106ded3c93696fbe0e6e967fee5b209f359c35f5129915cc21c117  osf/methodology/v1_19/scripts/tests/test_loader_v1_19.py
 4a38684556f560cad3ae19d38b1c03b58d25b0d7e6f2fcf77933f7c2bcdf0a72  osf/methodology/v1_19/scripts/tests/test_e2e_paperA_v1_19.py
 01239c6255b203cdbf57abcae1c0313518e60535e2b70d16b8d02cb5a0d3b78b  osf/methodology/v1_19/scripts/tests/test_e2e_coder_v1_19.py
+a105c155d4b6456b862a876778f8b9eb9112a9a8ddf25deba74f4bc75fa6a820  osf/methodology/v1_19/dryrun/dry_run_v1_19_r1.json
+241449780999646d9feda73e31dc53c1a4ee0d77da90546fb1f853c7bb85542c  osf/methodology/v1_19/dryrun/sensitivity_timing_v1_19_r1.json
 cd82a49962e3a9e9a6cdd4d0b47b4004c6fa6adeebe609e68f129aae97e01176  osf/methodology/v1_19/dryrun/dry_run_v1_19.json
 21d5bfe6b0943358a2dc01314a2546218ae7dd0879a4e20d894e804c486d0cca  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt1_weak_world.json
 86d274e30a4db1291e9d4eb2f3e9560f471c752280aa7891c2b79b6fdebaf745  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt2.json

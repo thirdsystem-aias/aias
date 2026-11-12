@@ -1,0 +1,279 @@
+{
+  "phase": "v1.19",
+  "kind": "timing of the full sensitivity run on a synthetic world (no real answer read; no model call)",
+  "world": "synthetic_world_a4(seed=119390): effects, strong; answers of A4, primary N3",
+  "draws": {
+    "permutation": 10000,
+    "gap_reference": 500
+  },
+  "scorer_sha256": "7bbf6b1cc22aa26ed2892c07cab930c4497515c06b54261c5b3365c19b2c4242",
+  "steps": {
+    "build_world": {
+      "seconds": 0.0
+    },
+    "primary": {
+      "seconds": 40.4,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      }
+    },
+    "S-COI": {
+      "seconds": 40.3,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {}
+    },
+    "S-Floor6": {
+      "seconds": 10.8,
+      "ran": true,
+      "verdicts": {
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {}
+    },
+    "S-Equal": {
+      "seconds": 17.7,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {}
+    },
+    "S-Mid": {
+      "seconds": 33.8,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL"
+      },
+      "verdict_changes": {}
+    },
+    "S-F-noD": {
+      "seconds": 4.3,
+      "ran": true,
+      "verdicts": {
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL"
+      },
+      "verdict_changes": {}
+    },
+    "S-LOCO-v0.19": {
+      "seconds": 38.7,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "MARGINAL",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {
+        "H32_CueType": [
+          "CONFIRMED",
+          "MARGINAL"
+        ]
+      }
+    },
+    "S-LOCO-v0.20": {
+      "seconds": 34.6,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "MARGINAL",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "CONFIRMED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "UNSTRUCTURED [provisional: replication MARGINAL]"
+      },
+      "verdict_changes": {
+        "H36_Profile_Replication": [
+          "CONFIRMED",
+          "MARGINAL"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "MARGINAL",
+          "CONFIRMED"
+        ],
+        "H35_IL_Coverage": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H35_IL_Robust_cell": [
+          "moderation beyond Presence",
+          "UNDETERMINED"
+        ],
+        "H35_IL_CueType": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H36_Typology_cell": [
+          "UNSTRUCTURED",
+          "UNSTRUCTURED [provisional: replication MARGINAL]"
+        ]
+      }
+    },
+    "S-LOCO-v0.21": {
+      "seconds": 34.7,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {
+        "H35_IL_Coverage": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H35_IL_Robust_cell": [
+          "moderation beyond Presence",
+          "UNDETERMINED"
+        ],
+        "H35_IL_CueType": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-LOCO-v0.22": {
+      "seconds": 34.5,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {
+        "H35_IL_Coverage": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H35_IL_Robust_cell": [
+          "moderation beyond Presence",
+          "UNDETERMINED"
+        ],
+        "H35_IL_CueType": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-LOCO-v0.23": {
+      "seconds": 38.5,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "MARGINAL",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "CONFIRMED",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED"
+      },
+      "verdict_changes": {
+        "H32_CueType": [
+          "CONFIRMED",
+          "MARGINAL"
+        ]
+      }
+    },
+    "S-C3": {
+      "seconds": 40.5,
+      "ran": true,
+      "verdicts": {
+        "H32_SetSampling": "CONFIRMED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "CONFIRMED",
+        "H36_Profile_Replication": "MARGINAL",
+        "H34_Floor_Signature": "CONFIRMED",
+        "H34_Floor_BeyondPresence": "MARGINAL",
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED",
+        "H36_Typology_cell": "UNSTRUCTURED [provisional: replication MARGINAL]"
+      },
+      "verdict_changes": {
+        "H36_Profile_Replication": [
+          "CONFIRMED",
+          "MARGINAL"
+        ],
+        "H36_Typology_cell": [
+          "UNSTRUCTURED",
+          "UNSTRUCTURED [provisional: replication MARGINAL]"
+        ]
+      }
+    },
+    "S-IL-t1": {
+      "seconds": 4.5,
+      "ran": true,
+      "verdicts": {
+        "H35_IL_Coverage": "CONFIRMED",
+        "H35_IL_Robust_cell": "moderation beyond Presence",
+        "H35_IL_CueType": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    }
+  },
+  "complete": true,
+  "total_seconds": 373.3
+}
