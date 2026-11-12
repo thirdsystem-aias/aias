@@ -85,6 +85,26 @@ class Committed(unittest.TestCase):
         self.assertFalse(g["central_nov"]["projection_pause"])
         self.assertFalse(g["central_dec"]["projection_pause"])
 
+    def test_r3_update_core_plus_block_4(self):
+        """r3 update (section 9 item 7 (b), 2026-11-12): the adopted design is core + block 4 (block 4 last)."""
+        d, g = J["designs"], J["guard_core_plus_yn"]
+        self.assertEqual((d["core_plus_yn_nov"]["calls"], d["core_plus_yn_dec"]["calls"]), (1602, 1602))
+        self.assertEqual((round(d["core_plus_yn_nov"]["central"], 2), round(d["core_plus_yn_dec"]["central"], 2),
+                          round(d["core_plus_yn_dec"]["high"], 2)), (34.52, 39.98, 124.77))
+        self.assertEqual(J["projection_core_plus_yn"]["A"], J["projection_by_design"]["core_plus_yn"])
+        self.assertEqual(sorted(J["projection_core_plus_yn"]), ["A", "B", "C"])
+        hi = g["conservative_high_dec"]
+        self.assertTrue(hi["projection_pause"])
+        self.assertEqual((hi["pause_80_falls_in_block"], hi["stop_100_falls_in_block"]), ("2", "3"))
+        self.assertAlmostEqual(hi["block_end_spend_usd"]["4"], d["core_plus_yn_dec"]["high"])
+        for k, mo in (("central_nov", "nov"), ("central_dec", "dec")):
+            self.assertFalse(g[k]["projection_pause"])
+            self.assertIsNone(g[k]["pause_80_falls_in_block"])
+            self.assertIsNone(g[k]["stop_100_falls_in_block"])
+            self.assertAlmostEqual(g[k]["block_end_spend_usd"]["4"], d[f"core_plus_yn_{mo}"]["central"])
+            self.assertLess(g[k]["fable_block4_first_batch_max_with_sync_reserved"], g[k]["fable_block4_requests"])
+            self.assertEqual(g[k]["fable_block4_requests"], 264)
+
 
 class Reproduce(unittest.TestCase):
     def test_rerun_from_the_pinned_tag_reproduces_the_committed_json(self):

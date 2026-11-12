@@ -140,3 +140,9 @@ Source keys (all read 2026-11-11): [H] Harman release of record (above); [SIE] B
 3. **Retail** (Hotel Shilla's duty-free business; DFASS): disclosed generally in the Declarations; no per-brand flag.
 4. **Declarations.** The pre-registration's §COI keeps the v0.19 and v0.22 wording of record and adds the agency ties, the supply relationships and the retail channel (r3 draft §10). Samsung, Cheil and Iris are named only there and in this log.
 5. **Independence rule** unchanged: no unit is focal; no lesson is addressed to a brand; no brand, agency or Samsung company has been or will be contacted.
+
+
+### Part G — r3 update (2026-11-12): the pre-registrant's decisions (ex ante, before any study call)
+
+- **Handling of Part F decided** (pre-registrant, 2026-11-12, 00:48 CT, "as you suggest"; pre-registration §9 item 8): the default as proposed, the programme's Cheil/Iris option (b). Chevrolet, BMW, Bentley, Jack Daniel's and Eucerin stay in every analysis, as Denon does, and every Presence result is also reported without them and Denon (S-COI, 106 units; `params_v0_62.COI_FLAGGED` unchanged). Tesla and Hyundai (supply) and Hotel Shilla (retail) stay disclosed, not flagged.
+- **Brand questions** (§9 item 7 (b), same decision): the 88 yes/no brand questions of v0.19–v0.22 (block 4) are collected last; the v0.23 open brand questions (block 5) are not. No registry unit is added or removed; the COI handling above applies unchanged to block 4's descriptive.

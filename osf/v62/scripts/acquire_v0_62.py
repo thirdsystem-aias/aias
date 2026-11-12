@@ -28,6 +28,14 @@ r3 (2026-11-11, runner lane v0.62-r3; the text above is r1/r2's and is kept):
     out by collection_specs() instead, so the projection pause after block 1 (ratio 3.0 for the core) stays on, as the
     pre-registration's section 6.5 rule 5 states (r2 recorded the approval, which switched the projection pause off);
   - the dry run prints the cost of the design that is collected (core only while BRAND_EXTRAS is False).
+r3 update (2026-11-12, runner lane v0.62 pre-lock; pre-registrant's decision of 2026-11-12 00:48 CT, section 9 item 7 (b)):
+  - params_v0_62.BRAND_YES_NO (True): block 4 (the 88 yes/no brand questions of v0.19-v0.22 per language, 792 calls) is
+    collected LAST, after blocks 1-3, under the same $80 pause and $100 stop; block 5 (v0.23 open brand questions, the
+    only block that needs the recognition judge) is left out (build_specs(drop_open=True)), and no judge reserve is
+    counted. Like r3's core, no approval is recorded for leaving blocks out (collection_specs);
+  - projection_ratio(): with block 4 only, the central ratio of the design "core + block 4" for the headphones option and
+    the month of block 1 (cost_estimate_v0_62_r3.json "projection_core_plus_yn"; option A: Nov 3.0975, Dec 3.0887);
+  - the dry run prints which brand blocks are collected and the cost of that design (design_key()).
 
 Output (append-only, one JSON line per attempt, resumable: answered call_ids are skipped): osf/v62/data/v62_raw.jsonl
 Budget state (approvals, window): osf/v62/data/v62_budget_state.json
@@ -86,6 +94,7 @@ BLOCKS = [("B", "S0", 1), ("B", "S0", 2), ("B", "S0", 3), ("A_yn", "S0", 1), ("A
 PROJECTION_BLOCK = ("B", "S0", 1)
 DROPPABLE_BLOCK = ("B", "S0", 3)                  # fallback F2
 PHASE_A_BLOCKS = (("A_yn", "S0", 1), ("A_open", "S0", 1))   # fallback F1
+OPEN_BLOCK = ("A_open", "S0", 1)                  # block 5: left out unless params_v0_62.BRAND_EXTRAS (r3 update)
 WINDOW_DATES = tuple(P.WINDOW)                    # inclusive, US Central (params_v0_62.WINDOW; section 5.5)
 BLACKOUT_DATES = tuple(P.BLACKOUT)
 CENTRAL = ZoneInfo("America/Chicago")
@@ -326,25 +335,27 @@ def load_probes(paths=None, option=None):
     return out
 
 
-def blocks_in_design(drop_run3=False, drop_phase_a=False):
-    return [b for b in BLOCKS if not ((drop_run3 and b == DROPPABLE_BLOCK) or (drop_phase_a and b in PHASE_A_BLOCKS))]
+def blocks_in_design(drop_run3=False, drop_phase_a=False, drop_open=False):
+    """drop_open (r3 update): leave out block 5 only (v0.23 open brand questions); block 4 stays, last."""
+    return [b for b in BLOCKS if not ((drop_run3 and b == DROPPABLE_BLOCK) or (drop_phase_a and b in PHASE_A_BLOCKS)
+                                      or (drop_open and b == OPEN_BLOCK))]
 
 
-def expected_total(probes=None, drop_run3=False, drop_phase_a=False):
+def expected_total(probes=None, drop_run3=False, drop_phase_a=False, drop_open=False):
     probes = probes if probes is not None else load_probes()
     n = Counter(kind_of(p) for p in probes)
-    return len(PANEL) * sum(n[k] for k, _c, _r in blocks_in_design(drop_run3, drop_phase_a))
+    return len(PANEL) * sum(n[k] for k, _c, _r in blocks_in_design(drop_run3, drop_phase_a, drop_open))
 
 
 def call_id(language, substrate, phase, probe_id, model, cond, run):
     return f"{language}|{substrate}|{phase}|{probe_id}|{model}|{cond}|{run}"
 
 
-def build_specs(probes, drop_run3=False, drop_phase_a=False):
+def build_specs(probes, drop_run3=False, drop_phase_a=False, drop_open=False):
     """Matrix in collection order: block (BLOCKS order), then model (panel order), then language (ES, KO, ZH),
     then probe (file order)."""
     specs = []
-    keep = blocks_in_design(drop_run3, drop_phase_a)
+    keep = blocks_in_design(drop_run3, drop_phase_a, drop_open)
     for bi, (kind, cond, run) in enumerate(BLOCKS):
         if (kind, cond, run) not in keep:
             continue
@@ -617,15 +628,34 @@ def projection_ratio(path=None, when_utc=None, option=None):
     the day block 1 started (December ratio from 2026-12-01, when Gemini 4 Argon's price doubles)."""
     ce = cost_estimate(path)
     option = option or P.HEADPHONES_OPTION
-    if not extras_on():
+    if not yes_no_on():
         return 3.0                                   # r2: blocks 1-3 only; the three Phase B runs cost alike
     day = (when_utc.isoformat() if hasattr(when_utc, "isoformat") else (when_utc or ""))[:10]
-    return float(ce["projection"][option]["dec" if day >= "2026-12-01" else "nov"])
+    month = "dec" if day >= "2026-12-01" else "nov"
+    if not extras_on():                              # r3 update: core + block 4 (section 9 item 7 (b))
+        return float(ce["projection_core_plus_yn"][option][month])
+    return float(ce["projection"][option][month])
 
 
 def extras_on():
     """r2: the brand-question extras (Phase A, blocks 4-5) are collected only if params_v0_62.BRAND_EXTRAS."""
     return bool(getattr(P, "BRAND_EXTRAS", True))
+
+
+def yes_no_on():
+    """r3 update: block 4 (the yes/no brand questions, v0.19-v0.22) is collected if params_v0_62.BRAND_YES_NO
+    (section 9 item 7 (b), decided 2026-11-12) or with all the extras (BRAND_EXTRAS)."""
+    return extras_on() or bool(getattr(P, "BRAND_YES_NO", False))
+
+
+def open_on():
+    """Block 5 (v0.23 open brand questions; recognition judge and its reserve) only with BRAND_EXTRAS."""
+    return extras_on()
+
+
+def design_key():
+    """The collected design as the cost file names it: 'full' (blocks 1-5), 'core_plus_yn' (blocks 1-4), 'core'."""
+    return "full" if extras_on() else ("core_plus_yn" if yes_no_on() else "core")
 
 
 # ----------------------------------------------------------------- guards
@@ -833,9 +863,10 @@ def dry_run(out=print):
         "  by model: " + json.dumps({m["model_id"]: sum(1 for s in specs if s["model"]["model_id"] == m["model_id"])
                                      for m in PANEL}) + "  modes: " + json.dumps({m["model_id"]: m["mode"] for m in PANEL}))
     out("by substrate (all models, both languages): " + json.dumps(dict(Counter(s["substrate"] for s in specs))))
-    out(f"brand-question extras (params BRAND_EXTRAS): {'ON' if extras_on() else 'OFF'} -> calls sent: "
-        f"{expected_total(probes, drop_phase_a=not extras_on())}; projection ratio used: "
-        f"{projection_ratio(when_utc='2026-12-01'):.4f} (Dec)")
+    out(f"brand-question extras (params BRAND_EXTRAS): {'ON' if extras_on() else 'OFF'}; yes/no brand questions "
+        f"(params BRAND_YES_NO; block 4, last): {'ON' if yes_no_on() else 'OFF'} -> calls sent: "
+        f"{expected_total(probes, drop_phase_a=not yes_no_on(), drop_open=not open_on())} (design {design_key()}); "
+        f"projection ratio used: {projection_ratio(when_utc='2026-12-01'):.4f} (Dec)")
     out("conservative counting: sync call reservation = 2 worst cases "
         + ", ".join(f"{m['model_id']} ${BG.sync_reservation(m['model_id'], 'S0', '2026-12-01'):.4f}"
                     for m in PANEL if m["mode"] == "standard")
@@ -853,7 +884,7 @@ def dry_run(out=print):
     try:
         ce = cost_estimate()
         keys = (("option_%s_nov" % P.HEADPHONES_OPTION, "option_%s_dec" % P.HEADPHONES_OPTION) if extras_on()
-                else ("core_nov", "core_dec"))                    # r3: the design actually collected
+                else (f"{design_key()}_nov", f"{design_key()}_dec"))   # r3 (update): the design actually collected
         for k in keys:
             d = ce["designs"][k]
             out(f"cost estimate [{k}]: {d['calls']} calls, central ${d['central']:.2f}, high ${d['high']:.2f}")
@@ -875,9 +906,11 @@ def collection_specs(ledger, probes=None):
     run_collection skips the projection pause once it is recorded; with the extras off the projection pause must stay on
     (pre-registration section 6.5 rule 5: block-1 call spend x 3.0 > $80 -> pause before block 2). r2's collect()
     recorded the approval automatically, which switched the projection pause off in the adopted design (r3 fix; the
-    r2 fake-SDK dry run shows it: approved_drop_phase_a True, first halt at the $80 pause inside block 3)."""
+    r2 fake-SDK dry run shows it: approved_drop_phase_a True, first halt at the $80 pause inside block 3).
+    r3 update (section 9 item 7 (b)): with params_v0_62.BRAND_YES_NO, block 4 stays in, last; block 5 is left out
+    (drop_open), again without recording any approval."""
     return build_specs(probes if probes is not None else load_probes(), drop_run3=ledger.approved("drop_run3"),
-                       drop_phase_a=ledger.approved("drop_phase_a") or not extras_on())
+                       drop_phase_a=ledger.approved("drop_phase_a") or not yes_no_on(), drop_open=not open_on())
 
 
 def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_phase_a=None, window=None,
@@ -900,7 +933,7 @@ def collect(approve_past_80=None, approve_projection=None, drop_run3=None, drop_
     DEADLINE_UTC = deadline(dates)
     print(f"window ok: {why}")
     require_keys()
-    ledger = BG.Ledger(RAW_PATH, STATE_PATH, judge_reserve=BG.JUDGE_RESERVE_USD if extras_on() else 0.0)
+    ledger = BG.Ledger(RAW_PATH, STATE_PATH, judge_reserve=BG.JUDGE_RESERVE_USD if open_on() else 0.0)
     for kind, note in (("past_80", approve_past_80), ("projection", approve_projection), ("drop_run3", drop_run3),
                        ("drop_phase_a", drop_phase_a)):
         if note:

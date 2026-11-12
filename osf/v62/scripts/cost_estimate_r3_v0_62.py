@@ -31,6 +31,13 @@ factors at DEC prices for every block (any slip inside the window).
 Judge reserve (block 5 only): budget_v0_62.JUDGE_RESERVE_USD = 216 x (3,750 x $3 + 10 x $15) / 1e6 = $2.4624; $3 / $15
 is the higher of t5's two successor-judge candidates (Claude Sonnet 5.5 $2 / $10, Claude Sonnet 4.6 $3 / $15).
 
+r3 update (2026-11-12; pre-registrant's decision of 2026-11-12 00:48 CT, section 9 item 7 (b): the 88 yes/no brand
+questions, block 4, collected last): same pinned source, same rules, every r3 number unchanged; ADDED: the projection
+ratio of "core + block 4" for each headphones option (projection_core_plus_yn; acquire_v0_62.projection_ratio reads it)
+and the guard on core + block 4 in each scenario (guard_core_plus_yn: spend at the end of each block, where the $80
+pause and the $100 stop fall, and how many of Claude Fable 5.2's 264 block-4 requests the worst-case reservations of
+the $100 rule allow in its first batch).
+
 Run: python3 osf/v62/scripts/cost_estimate_r3_v0_62.py [--repo ~/aias/_worktrees/v0.42]
      -> osf/v62/prereg/cost_estimate_v0_62_r3.json and .txt
 """
@@ -202,6 +209,10 @@ def projections(b):
     for k, (kr, j) in DESIGNS.items():
         out["by_design_option_A"][k] = {m: design(b, "central", m, kr, "A", j)[1] / design(b, "central", m, [("B", 1)])[1]
                                         for m in ("nov", "dec")}
+    # r3 update: core + block 4 (the adopted design, section 9 item 7 (b)) for every headphones option
+    kr = DESIGNS["core_plus_yn"][0]
+    out["by_option_core_plus_yn"] = {o: {m: design(b, "central", m, kr, o)[1] / design(b, "central", m, [("B", 1)], o)[1]
+                                         for m in ("nov", "dec")} for o in "ABC"}
     return out
 
 
@@ -269,6 +280,31 @@ def guard_path(t, level="high", month="dec"):
             "runs_at_80": pause_at, "runs_at_100": stop_at}
 
 
+def guard_path_yn(t, ratio, level, month):
+    """r3 update (section 9 item 7 (b)): the guard on core + block 4, block 4 last (no judge reserve: block 5 is not
+    collected). Spend at the end of each block; projection after block 1 (block-1 spend x the central ratio of core +
+    block 4); the block in which the $80 pause and the $100 stop fall (before in-flight reservations); and, at the end of
+    block 3, how many of Claude Fable 5.2's block-4 requests one batch may carry under the $100 rule's worst-case
+    reservations (without and with the two synchronous workers each holding its reservation of two worst cases)."""
+    ends, cum = {}, 0.0
+    for k in ("1", "2", "3", "4"):
+        cum += t[k][f"{level}_{month}"]
+        ends[k] = cum
+    blk1, day = t["1"][f"{level}_{month}"], DAY[month]
+    per = BG.worst_case("claude-fable-5-2", "S0", "batch", day)
+    sync = BG.sync_reservation("gpt-6-astra", "S0", day) + BG.sync_reservation("gemini-4-argon", "S0", day)
+    n4 = t["4"]["calls"] // len(MODELS)
+    room = CAP - ends["3"]
+    return {"block_end_spend_usd": ends, "block1_usd": blk1, "projection_ratio": ratio,
+            "projection_after_block1_usd": ratio * blk1, "projection_pause": ratio * blk1 > PAUSE,
+            "pause_80_falls_in_block": next((k for k in ends if ends[k] >= PAUSE), None),
+            "stop_100_falls_in_block": next((k for k in ends if ends[k] > CAP), None),
+            "runs_at_80": PAUSE / blk1, "runs_at_100": CAP / blk1,
+            "fable_block4_requests": n4, "fable_worst_case_per_request_usd": per,
+            "fable_block4_first_batch_max": max(0, min(n4, int(room // per))) if room > 0 else 0,
+            "fable_block4_first_batch_max_with_sync_reserved": max(0, min(n4, int((room - sync) // per))) if room > sync else 0}
+
+
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     ap.add_argument("--repo", default=str(Path.home() / "aias" / "_worktrees" / "v0.42"), help="v0.42 repository (read only)")
@@ -320,6 +356,10 @@ def main(argv=None):
            "reference_high_factor_on_mean_tokens_dec": ref, "designs": designs,
            "projection": proj["by_option_full_design"], "projection_by_design": proj["by_design_option_A"],
            "guard_core": gp, "brand_question_option": opt,
+           "projection_core_plus_yn": proj["by_option_core_plus_yn"],
+           "guard_core_plus_yn": {key: guard_path_yn(t, proj["by_option_core_plus_yn"]["A"][mo], lv, mo)
+                                  for key, lv, mo in (("conservative_high_dec", "high", "dec"),
+                                                      ("central_nov", "central", "nov"), ("central_dec", "central", "dec"))},
            "r2_for_comparison": {k: {"calls": r2[k]["calls"], "central": r2[k]["central"], "high": r2[k]["high"]}
                                  for k in ("phase_b_only_dec", "phase_b_only_nov", "adopted_dec", "b_plus_ayn_dec")}}
     Path(a.out + ".json").write_text(json.dumps(out, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -361,7 +401,7 @@ def render(o):
                  f"{v['high_nov']:9.2f} {v['high_dec']:9.2f}")
     j = BG.JUDGE_RESERVE_USD
     L.append(f"  {'judge reserve (only with block 5)':54s} {'(216)':>5s} {j:11.2f} {j:11.2f} {j:9.2f} {j:9.2f}")
-    for lab, blks, judge in (("CORE: blocks 1-3 (adopted)", CORE, False), ("core + block 4", CORE + ("4",), False),
+    for lab, blks, judge in (("CORE: blocks 1-3", CORE, False), ("ADOPTED (r3 update): core + block 4", CORE + ("4",), False),
                              ("core + block 5 + judge reserve", CORE + ("5",), True),
                              ("full: blocks 1-5 + judge reserve", CORE + ("4", "5"), True)):
         L.append(f"  {lab:54s} {sum(t[k]['calls'] for k in blks):5d} " + " ".join(
@@ -396,6 +436,31 @@ def render(o):
     L += ["", "Projection-pause ratio (central design / central block 1): full design, option A: "
           f"Nov {o['projection']['A']['nov']:.4f}, Dec {o['projection']['A']['dec']:.4f}; core 3.0000; core + block 4: "
           f"Nov {o['projection_by_design']['core_plus_yn']['nov']:.4f}, Dec {o['projection_by_design']['core_plus_yn']['dec']:.4f}."]
+    y4 = CORE + ("4",)
+    L += ["", "r3 update (2026-11-12): ADOPTED DESIGN = core + block 4 (the 88 yes/no brand questions per language, 792 calls, "
+          "collected last; pre-registrant's decision of 2026-11-12 00:48 CT, section 9 item 7 (b)); block 5 and the judge "
+          "reserve are not collected.",
+          f"Headline (core + block 4, {sum(t[k]['calls'] for k in y4)} calls): central ${total(t, y4, 'central', 'nov'):.2f} "
+          f"if collected 2026-11-29/30 as planned (${total(t, y4, 'central', 'dec'):.2f} at December prices); conservative "
+          f"high ${total(t, y4, 'high', 'dec'):.2f} (December prices). Block 4 alone: central ${t['4']['central_nov']:.2f} "
+          f"(Nov) / ${t['4']['central_dec']:.2f} (Dec), conservative high ${t['4']['high_dec']:.2f}.",
+          "Projection-pause ratio of core + block 4 by headphones option (Nov / Dec): " + "; ".join(
+              f"{k} {v['nov']:.4f} / {v['dec']:.4f}" for k, v in o["projection_core_plus_yn"].items()) + "."]
+    for key, g in o["guard_core_plus_yn"].items():
+        e = g["block_end_spend_usd"]
+        reached = g["stop_100_falls_in_block"] is None and g["pause_80_falls_in_block"] in (None, "4")
+        L.append(f"Guard on core + block 4, {key.replace('_', ' ')}: spend at the end of blocks 1-4 "
+                 + " / ".join(f"${e[k]:.2f}" for k in ("1", "2", "3", "4"))
+                 + f"; projection after block 1 ${g['block1_usd']:.2f} x {g['projection_ratio']:.4f} = "
+                 f"${g['projection_after_block1_usd']:.2f} -> {'PAUSE for the pre-registrant' if g['projection_pause'] else 'no pause'}; "
+                 f"$80 pause falls in block {g['pause_80_falls_in_block'] or '- (never)'}; $100 stop falls in block "
+                 f"{g['stop_100_falls_in_block'] or '- (never)'}; block 4 "
+                 + (f"reached; Claude Fable 5.2's block-4 batch: at most {g['fable_block4_first_batch_max']} of "
+                    f"{g['fable_block4_requests']} requests in its first batch under the $100 rule's worst-case reservations "
+                    f"(${g['fable_worst_case_per_request_usd']:.4f} each; {g['fable_block4_first_batch_max_with_sync_reserved']} "
+                    "while both synchronous workers hold their reservations); the rest go in later batches." if reached
+                    else "not reached (the $100 stop falls inside the category-question runs) unless the pre-registrant "
+                         "approves past the pauses and raises the cap."))
     return "\n".join(L) + "\n"
 
 

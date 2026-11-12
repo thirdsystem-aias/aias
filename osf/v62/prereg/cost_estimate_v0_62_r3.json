@@ -582,6 +582,82 @@
    }
   }
  },
+ "projection_core_plus_yn": {
+  "A": {
+   "nov": 3.0974946650754545,
+   "dec": 3.0886877419473797
+  },
+  "B": {
+   "nov": 3.0963867711541417,
+   "dec": 3.0876799266979766
+  },
+  "C": {
+   "nov": 3.0997104529180786,
+   "dec": 3.090703372446183
+  }
+ },
+ "guard_core_plus_yn": {
+  "conservative_high_dec": {
+   "block_end_spend_usd": {
+    "1": 40.60093125,
+    "2": 81.2018625,
+    "3": 121.80279375,
+    "4": 124.77455375000001
+   },
+   "block1_usd": 40.60093125,
+   "projection_ratio": 3.0886877419473797,
+   "projection_after_block1_usd": 125.40359866352331,
+   "projection_pause": true,
+   "pause_80_falls_in_block": "2",
+   "stop_100_falls_in_block": "3",
+   "runs_at_80": 1.9703981543526787,
+   "runs_at_100": 2.4629976929408484,
+   "fable_block4_requests": 264,
+   "fable_worst_case_per_request_usd": 0.33568,
+   "fable_block4_first_batch_max": 0,
+   "fable_block4_first_batch_max_with_sync_reserved": 0
+  },
+  "central_nov": {
+   "block_end_spend_usd": {
+    "1": 11.14607142,
+    "2": 22.29214284,
+    "3": 33.43821426,
+    "4": 34.524896760000004
+   },
+   "block1_usd": 11.14607142,
+   "projection_ratio": 3.0974946650754545,
+   "projection_after_block1_usd": 34.52489676,
+   "projection_pause": false,
+   "pause_80_falls_in_block": null,
+   "stop_100_falls_in_block": null,
+   "runs_at_80": 7.177416776322792,
+   "runs_at_100": 8.971770970403488,
+   "fable_block4_requests": 264,
+   "fable_worst_case_per_request_usd": 0.33568,
+   "fable_block4_first_batch_max": 198,
+   "fable_block4_first_batch_max_with_sync_reserved": 192
+  },
+  "central_dec": {
+   "block_end_spend_usd": {
+    "1": 12.94538202,
+    "2": 25.89076404,
+    "3": 38.836146060000004,
+    "4": 39.98424276
+   },
+   "block1_usd": 12.94538202,
+   "projection_ratio": 3.0886877419473797,
+   "projection_after_block1_usd": 39.98424276000001,
+   "projection_pause": false,
+   "pause_80_falls_in_block": null,
+   "stop_100_falls_in_block": null,
+   "runs_at_80": 6.179809902589495,
+   "runs_at_100": 7.724762378236869,
+   "fable_block4_requests": 264,
+   "fable_worst_case_per_request_usd": 0.33568,
+   "fable_block4_first_batch_max": 182,
+   "fable_block4_first_batch_max_with_sync_reserved": 175
+  }
+ },
  "r2_for_comparison": {
   "phase_b_only_dec": {
    "calls": 810,

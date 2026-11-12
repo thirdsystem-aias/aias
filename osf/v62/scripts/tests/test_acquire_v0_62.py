@@ -150,7 +150,9 @@ class Guards(unittest.TestCase):
         self.assertEqual(out.returncode, 0, out.stderr)
         self.assertIn("nothing sent", out.stdout)
         self.assertIn("TOTAL calls: 1818 (expected 1818) -> OK", out.stdout)
-        self.assertIn("brand-question extras (params BRAND_EXTRAS): OFF -> calls sent: 810", out.stdout)
+        # r3 update (section 9 item 7 (b)): the 88 yes/no brand questions (block 4) are collected, last
+        self.assertIn("brand-question extras (params BRAND_EXTRAS): OFF; yes/no brand questions (params BRAND_YES_NO; "
+                      "block 4, last): ON -> calls sent: 1602 (design core_plus_yn)", out.stdout)
 
 
 def fake_rec(spec, usd_tokens=(1000, 1000), status="ok"):
@@ -286,9 +288,13 @@ class CostEstimate(unittest.TestCase):
         self.assertEqual((b["calls"], round(b["central"], 2), round(b["high"], 2)), (810, 55.50, 142.06))
         j = json.loads((Path(CE.PRE) / "cost_estimate_v0_62_r2.json").read_text(encoding="utf-8"))
         self.assertAlmostEqual(j["projection"]["A"]["nov"], 5.3597, places=4)                  # r2 record (kept)
-        self.assertEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), 3.0)   # extras off
+        with mock.patch.object(P, "BRAND_YES_NO", False):                                       # core only
+            self.assertEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), 3.0)   # extras off
         self.assertEqual(Path(A.COST_PATH).name, "cost_estimate_v0_62_r3.json")                # r3: t4-based
         j3 = json.loads(Path(A.COST_PATH).read_text(encoding="utf-8"))
+        # r3 update: core + block 4 (section 9 item 7 (b)) uses that design's central ratio
+        self.assertAlmostEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"),
+                               j3["projection_core_plus_yn"]["C"]["dec"])
         with mock.patch.object(P, "BRAND_EXTRAS", True):
             self.assertAlmostEqual(A.projection_ratio(when_utc="2026-12-01T00:00:00", option="C"), j3["projection"]["C"]["dec"])
             self.assertAlmostEqual(A.projection_ratio(when_utc="2026-11-29T06:00:00", option="A"), j3["projection"]["A"]["nov"])
@@ -387,7 +393,14 @@ class ConservativeCounting(unittest.TestCase):
 
 class R3ProjectionPauseCoreOnly(unittest.TestCase):
     """r3: with the extras off, the projection pause after block 1 (ratio 3.0) must stay on (section 6.5 rule 5).
-    r2's collect() recorded a 'drop_phase_a' approval, and run_collection skips the projection pause once it exists."""
+    r2's collect() recorded a 'drop_phase_a' approval, and run_collection skips the projection pause once it exists.
+    r3 update: these tests keep testing the core-only configuration (option (a) of section 9 item 7), so they switch
+    params_v0_62.BRAND_YES_NO off; the adopted configuration (b) is tested in R3UpdateYesNoBlockLast below."""
+
+    def setUp(self):
+        patcher = mock.patch.object(P, "BRAND_YES_NO", False)
+        patcher.start()
+        self.addCleanup(patcher.stop)
 
     def _runner(self, usd_per_call, sent):
         def runner(group, ledger, write):
@@ -455,6 +468,124 @@ class R3ProjectionPauseCoreOnly(unittest.TestCase):
         self.assertIn("cost estimate [core_nov]: 810 calls", text)
         self.assertIn("not counted: block 5 is not collected", text)
         self.assertIn("x 3.0000 (Nov) / x 3.0000 (Dec)", text)
+
+
+class R3UpdateYesNoBlockLast(unittest.TestCase):
+    """r3 update (pre-registrant's decision 2026-11-12 00:48 CT, section 9 item 7 (b)): the 88 yes/no brand questions
+    (block 4) are collected LAST, after the three category-question runs, under the same $80 pause and $100 stop;
+    block 5 (v0.23 open questions, recognition judge) is not collected. Local fakes only."""
+
+    def _runner(self, usd, sent):
+        """usd: {block kind: US$ per call}; every call reserves $0.01 like the r3 tests' runner."""
+        def runner(group, ledger, write):
+            for s in group:
+                st, tok = ledger.reserve(0.01)
+                if st != "ok":
+                    return st
+                m = s["model"]
+                price = 50.0 if m["model_id"] == "gpt-6-astra" else (20.0 if m["mode"] == "batch" else 10.0)
+                rec = fake_rec(s, (0, int(round(usd[A.BLOCKS[s["block"]][0]] / price * 1e6))))
+                sent.append(s)
+                write(rec)
+                ledger.settle(tok, rec["cost_usd"])
+            return "done"
+        return runner
+
+    def _ledger(self, d):
+        return BG.Ledger(Path(d) / "raw.jsonl", Path(d) / "s.json", judge_reserve=0.0)
+
+    def test_parameters_as_decided(self):
+        self.assertTrue(P.BRAND_YES_NO)
+        self.assertFalse(P.BRAND_EXTRAS)
+        self.assertEqual((A.yes_no_on(), A.open_on(), A.design_key()), (True, False, "core_plus_yn"))
+        src = A.inspect.getsource(A.collect)
+        self.assertIn("JUDGE_RESERVE_USD if open_on() else 0.0", src)        # no judge reserve without block 5
+        with mock.patch.object(P, "BRAND_YES_NO", False):
+            self.assertEqual((A.yes_no_on(), A.design_key()), (False, "core"))
+        with mock.patch.object(P, "BRAND_EXTRAS", True):
+            self.assertEqual((A.yes_no_on(), A.open_on(), A.design_key()), (True, True, "full"))
+
+    def test_collection_specs_block_4_last_no_block_5_no_approval(self):
+        with tempfile.TemporaryDirectory() as d:
+            ledger = self._ledger(d)
+            specs = A.collection_specs(ledger)
+            self.assertEqual(len(specs), 1602)
+            kinds = [A.BLOCKS[s["block"]][0] for s in specs]
+            self.assertEqual(kinds, ["B"] * 810 + ["A_yn"] * 792)                 # block 4 strictly after blocks 1-3
+            yn = specs[810:]
+            self.assertEqual({s["substrate"] for s in yn}, {"v19", "v20", "v21", "v22"})
+            self.assertFalse([s for s in specs if s["substrate"] == "v23" and s["phase"] == "A"])
+            self.assertEqual(collections_count(yn), {(m["model_id"], lg): 88 for m in A.PANEL for lg in A.LANGS})
+            self.assertEqual({s["run"] for s in yn}, {1})
+            self.assertFalse((Path(d) / "s.json").exists())                      # no approval recorded
+            self.assertEqual(A.expected_total(A.load_probes(), drop_open=True), 1602)
+            ledger.approve("drop_run3", "fallback F2")
+            self.assertEqual(len(A.collection_specs(ledger)), 1332)               # run 3 dropped, block 4 kept
+            ledger.approve("drop_phase_a", "fallback F1")
+            self.assertEqual(len(A.collection_specs(ledger)), 540)
+
+    def test_projection_ratio_is_core_plus_block_4(self):
+        j3 = json.loads(Path(A.COST_PATH).read_text(encoding="utf-8"))
+        nov = A.projection_ratio(when_utc="2026-11-29T06:00:00")
+        dec = A.projection_ratio(when_utc="2026-12-01T00:00:00")
+        self.assertAlmostEqual(nov, j3["projection_core_plus_yn"]["A"]["nov"])
+        self.assertAlmostEqual(dec, j3["projection_core_plus_yn"]["A"]["dec"])
+        self.assertEqual((round(nov, 4), round(dec, 4)), (3.0975, 3.0887))       # pre-registration section 6.5
+        self.assertAlmostEqual(j3["projection_core_plus_yn"]["A"]["nov"], j3["projection_by_design"]["core_plus_yn"]["nov"])
+
+    def test_projection_pause_after_block_1(self):
+        with tempfile.TemporaryDirectory() as d:
+            raw, ledger = Path(d) / "raw.jsonl", self._ledger(d)
+            specs, sent = A.collection_specs(ledger), []
+            run = self._runner({"B": 0.11, "A_yn": 0.004}, sent)                    # block 1 $29.70 x 3.0887 > $80
+            st = A.run_collection(specs, ledger, raw, {"batch": run, "standard": run},
+                                  A.projection_ratio(when_utc="2026-12-01T00:00:00"), log=lambda *a: None)
+            self.assertEqual((st, len(sent)), ("pause", 270))
+            self.assertIn("projection", ledger.halt_reason)
+
+    def test_central_completes_with_block_4_last(self):
+        with tempfile.TemporaryDirectory() as d:
+            raw, ledger = Path(d) / "raw.jsonl", self._ledger(d)
+            specs, sent = A.collection_specs(ledger), []
+            run = self._runner({"B": 0.0413, "A_yn": 0.00138}, sent)               # about r3's central per call
+            st = A.run_collection(specs, ledger, raw, {"batch": run, "standard": run},
+                                  A.projection_ratio(when_utc="2026-11-29T06:00:00"), log=lambda *a: None)
+            self.assertEqual((st, len(sent)), ("done", 1602))
+            kinds = [A.BLOCKS[s["block"]][0] for s in sent]
+            self.assertLess(max(i for i, k in enumerate(kinds) if k == "B"), min(i for i, k in enumerate(kinds) if k == "A_yn"))
+            self.assertLess(ledger.spent(), BG.PAUSE_AT_USD)
+
+    def test_block_4_never_takes_budget_from_the_category_runs(self):
+        """Conservative-high shape: the $100 stop falls inside block 3, so no yes/no question is sent."""
+        with tempfile.TemporaryDirectory() as d:
+            raw, ledger = Path(d) / "raw.jsonl", self._ledger(d)
+            ledger.approve("projection", "test: continue after block 1")
+            ledger.approve("past_80", "test: continue past $80")
+            specs, sent = A.collection_specs(ledger), []
+            self.assertEqual(len(specs), 1602)                                    # approvals drop nothing
+            run = self._runner({"B": 0.15, "A_yn": 0.004}, sent)                    # $40.50 per category run
+            st = A.run_collection(specs, ledger, raw, {"batch": run, "standard": run}, 3.0887, log=lambda *a: None)
+            self.assertEqual(st, "stop")
+            self.assertFalse([s for s in sent if A.BLOCKS[s["block"]][0] == "A_yn"])
+            self.assertTrue([s for s in sent if s["block"] == 2])                 # the stop falls inside block 3
+
+    def test_dry_run_prints_the_adopted_design(self):
+        lines = []
+        A.dry_run(out=lines.append)
+        text = "\n".join(lines)
+        self.assertIn("yes/no brand questions (params BRAND_YES_NO; block 4, last): ON -> calls sent: 1602", text)
+        self.assertIn("cost estimate [core_plus_yn_nov]: 1602 calls, central $34.52", text)
+        self.assertIn("cost estimate [core_plus_yn_dec]: 1602 calls, central $39.98, high $124.77", text)
+        self.assertIn("x 3.0975 (Nov) / x 3.0887 (Dec)", text)
+        self.assertIn("not counted: block 5 is not collected", text)
+
+
+def collections_count(specs):
+    out = {}
+    for s in specs:
+        k = (s["model"]["model_id"], s["language"])
+        out[k] = out.get(k, 0) + 1
+    return out
 
 
 if __name__ == "__main__":

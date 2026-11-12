@@ -21,6 +21,12 @@ WINDOW = ("2026-11-29", "2026-12-02")        # inclusive, US Central
 # alone ($142.06, December prices) is above the $100 cap, so the extras are OFF; the final pre-registration
 # re-evaluates this once t4's recorded English usage replaces the per-call basis (cost_estimate_v0_62_r2.txt).
 BRAND_EXTRAS = False                         # True: collect blocks 4-5 (Phase A) after blocks 1-3
+# r3 update (pre-registrant's decision, 2026-11-12 00:48 CT, pre-registration section 9 item 7 (b)): the 88 yes/no brand
+# questions (block 4: v0.19-v0.22, 792 calls) are collected, LAST, after the three category-question runs, under the
+# same $80 pause and $100 stop; the 24 open brand questions (block 5: v0.23, which need the recognition judge) are not.
+# The projection pause after block 1 then uses the central ratio of "core + block 4" (cost_estimate_v0_62_r3.json).
+# BRAND_EXTRAS True (blocks 4-5) overrides this; both False = the three category-question runs only.
+BRAND_YES_NO = True                          # True: collect block 4 (yes/no brand questions) after blocks 1-3
 LANGS = ("es", "ko", "zh")                   # r2: Spanish, Korean, Chinese (Simplified, Mainland usage)
 
 BLACKOUT = ("2026-11-17", "2026-11-21")      # inclusive, US Central: never collect (v0.40's booking)

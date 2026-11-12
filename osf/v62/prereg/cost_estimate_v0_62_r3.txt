@@ -25,8 +25,8 @@ Per block, all three languages and models (US$):
   4. brand questions yes/no (v0.19-v0.22), run 1           792        1.09        1.15      2.87      2.97
   5. brand questions open (v0.23), run 1                   216       32.24       34.34     54.64     58.14
   judge reserve (only with block 5)                      (216)        2.46        2.46      2.46      2.46
-  CORE: blocks 1-3 (adopted)                               810       33.44       38.84    110.58    121.80
-  core + block 4                                          1602       34.52       39.98    113.45    124.77
+  CORE: blocks 1-3                                         810       33.44       38.84    110.58    121.80
+  ADOPTED (r3 update): core + block 4                     1602       34.52       39.98    113.45    124.77
   core + block 5 + judge reserve                          1026       68.14       75.64    167.68    182.41
   full: blocks 1-5 + judge reserve                        1818       69.23       76.79    170.56    185.38
 
@@ -44,3 +44,10 @@ Brand questions (112) in the conservative-high case: core $121.80; room under th
   per language, high Dec: A_yn_es 264 calls $0.71; A_yn_ko 264 calls $1.19; A_yn_zh 264 calls $1.07; A_open_es 72 calls $13.95; A_open_ko 72 calls $23.26; A_open_zh 72 calls $20.93
 
 Projection-pause ratio (central design / central block 1): full design, option A: Nov 6.2110, Dec 5.9318; core 3.0000; core + block 4: Nov 3.0975, Dec 3.0887.
+
+r3 update (2026-11-12): ADOPTED DESIGN = core + block 4 (the 88 yes/no brand questions per language, 792 calls, collected last; pre-registrant's decision of 2026-11-12 00:48 CT, section 9 item 7 (b)); block 5 and the judge reserve are not collected.
+Headline (core + block 4, 1602 calls): central $34.52 if collected 2026-11-29/30 as planned ($39.98 at December prices); conservative high $124.77 (December prices). Block 4 alone: central $1.09 (Nov) / $1.15 (Dec), conservative high $2.97.
+Projection-pause ratio of core + block 4 by headphones option (Nov / Dec): A 3.0975 / 3.0887; B 3.0964 / 3.0877; C 3.0997 / 3.0907.
+Guard on core + block 4, conservative high dec: spend at the end of blocks 1-4 $40.60 / $81.20 / $121.80 / $124.77; projection after block 1 $40.60 x 3.0887 = $125.40 -> PAUSE for the pre-registrant; $80 pause falls in block 2; $100 stop falls in block 3; block 4 not reached (the $100 stop falls inside the category-question runs) unless the pre-registrant approves past the pauses and raises the cap.
+Guard on core + block 4, central nov: spend at the end of blocks 1-4 $11.15 / $22.29 / $33.44 / $34.52; projection after block 1 $11.15 x 3.0975 = $34.52 -> no pause; $80 pause falls in block - (never); $100 stop falls in block - (never); block 4 reached; Claude Fable 5.2's block-4 batch: at most 198 of 264 requests in its first batch under the $100 rule's worst-case reservations ($0.3357 each; 192 while both synchronous workers hold their reservations); the rest go in later batches.
+Guard on core + block 4, central dec: spend at the end of blocks 1-4 $12.95 / $25.89 / $38.84 / $39.98; projection after block 1 $12.95 x 3.0887 = $39.98 -> no pause; $80 pause falls in block - (never); $100 stop falls in block - (never); block 4 reached; Claude Fable 5.2's block-4 batch: at most 182 of 264 requests in its first batch under the $100 rule's worst-case reservations ($0.3357 each; 175 while both synchronous workers hold their reservations); the rest go in later batches.
