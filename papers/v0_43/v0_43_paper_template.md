@@ -77,7 +77,7 @@ The three secondary tests returned {{SA_WORD}} (seasonally adjusted change), {{M
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026a), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010), within the Tri-System framework (González Castro, 2026b). The AIAS programme now reports two scores side by side, Presence and Consistency, separable from each other and stable over five months on the legacy six-model panel (Methodology v1.9; v0.41). Presence has convergent evidence (same-week search interest, $\rho = 0.74$, $n = 24$, the v0.25 leg of the v0.29 baseline), discriminant evidence (Amazon sales rank, v0.26) and a baseline that binds them (v0.29), which left predictive validity open for want of a longitudinal criterion. Presence has no predictive evidence: no study has yet asked whether a brand's AI availability says anything about where its demand goes next.
+AI Availability --- the discoverability and representation of a brand in the outputs of large language models --- has been proposed as a third measurable layer of brand availability (González Castro, 2026a), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010), within the Tri-System framework (González Castro, 2026l). The AIAS programme now reports two scores side by side, Presence and Consistency, separable from each other and stable over five months on the legacy six-model panel (Methodology v1.9: González Castro, 2026i; v0.41: González Castro, 2026p). The AIAS programme builds its components one at a time, each pre-registered and locked before it is used, on the Presence measurement protocol (González Castro, 2026b, 2026c, 2026d, 2026e, 2026f), anchored across five categories in AIAS 1.0 (González Castro, 2026j); the first Consistency instrument failed its separability test (v1.7: González Castro, 2026g) and was replaced by the dispersion statistic of v1.8 (González Castro, 2026h); the AIAS 2.0 synthesis (González Castro, 2026k) reports the two scores together. Presence has convergent evidence (same-week search interest, $\rho = 0.74$, $n = 24$, the v0.25 leg of the v0.29 baseline: González Castro, 2026m, 2026o), discriminant evidence (Amazon sales rank, v0.26: González Castro, 2026n) and a baseline that binds them (v0.29: González Castro, 2026o), which left predictive validity open for want of a longitudinal criterion. Presence has no predictive evidence: no study has yet asked whether a brand's AI availability says anything about where its demand goes next.
 
 Two accounts predict opposite answers (pre-registration §1).
 
@@ -96,7 +96,7 @@ Section signs (§) refer to the pre-registration; sections of this paper are nam
 
 The study uses the 112 brand units of the programme's five omnibus registries, unchanged: v0.19 audiophile headphones (16 units), v0.20 skincare, v0.21 cosmetics, v0.22 automotive and v0.23 premium spirits (24 each). Rare Beauty is a unit in both skincare and cosmetics and is requested within each category's bundles. Spirits brands keep their codes (S01--S24) in every output. Each registry is an analysis stratum.
 
-The predictors were locked and published before this study. The Presence score is $P = 100\,(C_P/6 + 2\hat\pi)/3$, the AIAS 2.0 Presence score as locked by Methodology v1.9, with $C_P$ the number of the six legacy models that recognise the brand and $\hat\pi$ its recall rate. The Consistency score is $C^* = 100\,(1 - \varphi/7.2)$ for brands with at least six mentions in the wave, not rated otherwise (v1.9's locked rule; $\varphi$ from Methodology v1.8). Stage 1 uses the scores of the second wave ($t_2$), collected by 10 June 2026; recall $\hat\pi$ is as locked by v0.41. A parity check before the lock confirmed that the study's units file reproduces the frozen sources exactly (pre-registration §3.1).
+The predictors were locked and published before this study. The Presence score is $P = 100\,(C_P/6 + 2\hat\pi)/3$, the AIAS 2.0 Presence score as locked by Methodology v1.9 (González Castro, 2026i), with $C_P$ the number of the six legacy models that recognise the brand and $\hat\pi$ its recall rate. The Consistency score is $C^* = 100\,(1 - \varphi/7.2)$ for brands with at least six mentions in the wave, not rated otherwise (v1.9's locked rule; $\varphi$ from Methodology v1.8: González Castro, 2026h). Stage 1 uses the scores of the second wave ($t_2$), collected by 10 June 2026; recall $\hat\pi$ is as locked by v0.41 (González Castro, 2026p). A parity check before the lock confirmed that the study's units file reproduces the frozen sources exactly (pre-registration §3.1).
 
 ## 2.2 Outcome, level and windows
 
@@ -148,7 +148,7 @@ The verdict rule applies to every test (§2.1). CONFIRMED if $\rho_{\text{pw}\mi
 
 ## 2.7 Checks and descriptives
 
-Five checks were pre-registered (§2.7). `MC_Concurrent` asks for the same-time link of v0.25 in these five categories: $\rho_{\text{pw}}(P, L) \geq 0.30$ with one-sided $p < 0.05$; if it fails, every verdict carries the flag "criterion doubtful". `MC_PullReliability` asks that the mean, over the three pairs of pulls, of the pooled within-category Spearman correlation of per-pull changes be at least 0.70; below it, verdicts carry the flag "outcome unreliable". `MC_Weekly` requires weekly points starting on Sundays that cover each request's range, with no partial point inside a window. `MC_Terms` reports the share of brands searched by topic; below 50% verdicts carry the flag "mostly plain search terms". `MC_Chain` reports the chain links that held in each pull.
+Five checks were pre-registered (§2.7). `MC_Concurrent` asks for the same-time link of v0.25 (González Castro, 2026m) in these five categories: $\rho_{\text{pw}}(P, L) \geq 0.30$ with one-sided $p < 0.05$; if it fails, every verdict carries the flag "criterion doubtful". `MC_PullReliability` asks that the mean, over the three pairs of pulls, of the pooled within-category Spearman correlation of per-pull changes be at least 0.70; below it, verdicts carry the flag "outcome unreliable". `MC_Weekly` requires weekly points starting on Sundays that cover each request's range, with no partial point inside a window. `MC_Terms` reports the share of brands searched by topic; below 50% verdicts carry the flag "mostly plain search terms". `MC_Chain` reports the chain links that held in each pull.
 
 The pre-registered descriptives carry no verdicts (§2.8): every test per category (single-stratum $\rho$ with a permutation $p$); the Presence tests without the five defunct automotive brands (Mercury, Oldsmobile, Plymouth, Pontiac, Saturn); recall $\hat\pi$ in place of $P$; brands searched by topic only; a longer lead, with $P$ at $t_1$ (May 2026); and an exploratory cross-lagged comparison of AI $\rightarrow$ search, $\rho_{\text{pw}}(P_{t_2}, L_{\text{end}} \mid L_{\text{base}})$, against search $\rightarrow$ AI, $\rho_{\text{pw}}(L_{\text{base}}, P_{t_3} \mid P_{t_2})$, with a bootstrap interval for their difference.
 
@@ -162,7 +162,7 @@ The pre-registration (revision r1 with clarifications C1--C10, all logged before
 
 {{PULLS_SENTENCE}} Of the {{MCW_REQ}} main requests, {{MCW_OK}} returned a valid weekly series; {{MCW_MISSING_SENTENCE}} (`MC_Weekly`). {{CHAIN_HELD}} of the {{CHAIN_TOTAL}} chain links held across the three pulls (`MC_Chain`; Appendix). {{TERMS_RESULT}}
 
-{% if CONC_PASS %}Within category, June Presence and June search level correlated at $\rho_{\text{pw}} = {{CONC_RHO}}$ (one-sided $p = {{CONC_P}}$, $n = {{CONC_N}}$), so `MC_Concurrent` passed: in these five categories, as in v0.25, brands that AI answers name more are also searched more at the same time.{% else %}Within category, June Presence and June search level correlated at $\rho_{\text{pw}} = {{CONC_RHO}}$ (one-sided $p = {{CONC_P}}$, $n = {{CONC_N}}$), short of the pre-registered 0.30 with $p < 0.05$, so `MC_Concurrent` failed and every verdict carries the flag "criterion doubtful".{% endif %} {% if REL_PASS %}The three pulls agreed on the change: the pooled within-category Spearman correlation of per-pull changes was {{REL_PAIRS}} for the three pairs of pulls, a mean of {{REL_MEAN}}, and `MC_PullReliability` passed.{% else %}The three pulls agreed less than required on the change: the pooled within-category Spearman correlation of per-pull changes was {{REL_PAIRS}} for the pairs of pulls (mean {{REL_MEAN}}, against a minimum of 0.70), so `MC_PullReliability` failed and every verdict carries the flag "outcome unreliable".{% endif %} Figure 1 shows both checks.
+{% if CONC_PASS %}Within category, June Presence and June search level correlated at $\rho_{\text{pw}} = {{CONC_RHO}}$ (one-sided $p = {{CONC_P}}$, $n = {{CONC_N}}$), so `MC_Concurrent` passed: in these five categories, as in v0.25 (González Castro, 2026m), brands that AI answers name more are also searched more at the same time.{% else %}Within category, June Presence and June search level correlated at $\rho_{\text{pw}} = {{CONC_RHO}}$ (one-sided $p = {{CONC_P}}$, $n = {{CONC_N}}$), short of the pre-registered 0.30 with $p < 0.05$, so `MC_Concurrent` failed and every verdict carries the flag "criterion doubtful".{% endif %} {% if REL_PASS %}The three pulls agreed on the change: the pooled within-category Spearman correlation of per-pull changes was {{REL_PAIRS}} for the three pairs of pulls, a mean of {{REL_MEAN}}, and `MC_PullReliability` passed.{% else %}The three pulls agreed less than required on the change: the pooled within-category Spearman correlation of per-pull changes was {{REL_PAIRS}} for the pairs of pulls (mean {{REL_MEAN}}, against a minimum of 0.70), so `MC_PullReliability` failed and every verdict carries the flag "outcome unreliable".{% endif %} Figure 1 shows both checks.
 
 ![Left: June Presence and June search level per brand, as ranks centred within category. Right: agreement of the per-pull change between pairs of pulls, against the pre-registered 0.70. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_01_checks.pdf){#fig:checks width=100%}
 
@@ -288,29 +288,41 @@ The locked pre-registration, the frozen inputs, the units file, the acquisition 
 
 # References {-}
 
-González Castro, P. U. (2026a). *AI Availability: A Theoretical Framework for Brand Surfacing in the Age of LLM-Mediated Discovery*. SSRN 6659000.
+González Castro, P. U. (2026a). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
 
-González Castro, P. U. (2026b). *Tri-System Brand Growth: Mental, Physical, and AI Availability in Brand Architecture*. MSI Working Paper, Report No. 26-132. Marketing Science Institute.
+González Castro, P. U. (2026b). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy, v1.2*. SSRN 6761698.
+González Castro, P. U. (2026c). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification (v1.3)*. SSRN 6797679.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol: Phase A Pivot-Validation Specification (v1.3)*. SSRN 6797679.
+González Castro, P. U. (2026d). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
 
-González Castro, P. U. (2026). *The AIAS Presence Measurement Protocol v1.4: Recognition × Recall Decomposition and Multi-Component AI Availability*. SSRN 6799479.
+González Castro, P. U. (2026e). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
 
-González Castro, P. U. (2026). *The AIAS™ Presence Measurement Protocol: Multi-Statistic C2 Specification and Two-Channel Recall Decomposition* (v1.5). SSRN 6810758.
+González Castro, P. U. (2026f). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
 
-González Castro, P. U. (2026). *Substrate Pre-Screening, Independent Moderator Pathway, and Phantom Brand Persistence Phase B Extension* (AIAS Methodology v1.6). SSRN 6816340.
+González Castro, P. U. (2026g). *Consistency without Independence: A Pre-Registered Test of Coefficient-of-Variation as the Consistency Component of AIAS™* (v1.7). SSRN 6878818.
 
-González Castro, P. U. (2026). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
+González Castro, P. U. (2026h). *A Mean-Independent Consistency Instrument for Cross-Model AI Presence: Redesigning CPC on a Quasi-Binomial Dispersion Basis* (AIAS Methodology v1.8). SSRN 6963359.
 
-González Castro, P. U. (2026). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation (AIAS™ Methodology v1.9)*. Third System, <https://thirdsystem.ai/studies/v1-9/> (PDF: <https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>); OSF, <https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>.
+González Castro, P. U. (2026i). *One Score or Two? Calibrating a Presence and Consistency Composite for AI Brand Availability: A Pre-Registered Calibration with Blind Five-Month Confirmation (AIAS™ Methodology v1.9)*. Third System, <https://thirdsystem.ai/studies/v1-9/> (PDF: <https://thirdsystem.ai/files/papers/v1_9_ssrn_paper.pdf>); OSF, <https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>.
 
-González Castro, P. U. (2026). *Presence and Consistency: A Two-Component Measurement of AI Availability. The AIAS™ 2.0 Synthesis*. OSF `ec6wh/aias_2_0`.
+González Castro, P. U. (2026j). *AI Availability as a Third Measurable Layer of Brand Availability: Five-Substrate Empirical Anchoring of the AIAS™ Presence Measurement Protocol --- Synthesis under Locked v1.6 Methodology* (AIAS 1.0). SSRN 6817841.
+
+González Castro, P. U. (2026k). *Presence and Consistency: A Two-Component Measurement of AI Availability. The AIAS™ 2.0 Synthesis*. OSF `ec6wh/aias_2_0`.
+
+González Castro, P. U. (2026l). *Tri-System Brand Growth: Mental, Physical, and AI Availability in Brand Architecture*. MSI Working Paper, Report No. 26-132. Marketing Science Institute.
+
+González Castro, P. U. (2026m). *Predictive Validity of AI Presence Index Against Google Trends Search Interest on the B2B SaaS Substrate: Construct Validity Pilot Under Protocol v1.6* (v0.25). Third System, <https://thirdsystem.ai/studies/v0-25/> (PDF: <https://thirdsystem.ai/files/papers/v0_25_b2b_saas_construct_validity.pdf>).
+
+González Castro, P. U. (2026n). *What AI Presence Does Not Predict: Amazon Best Sellers Rank as Discriminant Validity Evidence for the AIAS Construct* (v0.26). SSRN 6847678.
+
+González Castro, P. U. (2026o). *The Presence Component Is Construct-Valid: A Convergent--Discriminant (Campbell--Fiske) Baseline for AI Availability* (v0.29). SSRN 6870778.
+
+González Castro, P. U. (2026p). *Five-Month Stability of AI Brand Consistency and Presence: A Pre-Registered Third Wave on a Retiring Six-Model Panel* (AIAS™ v0.41). Third System, <https://thirdsystem.ai/studies/v0-41/> (PDF: <https://thirdsystem.ai/files/papers/v0_41_ssrn_paper.pdf>); OSF `ec6wh/v41`.
 
 Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
 
-Earlier programme studies (v0.19--v0.23, v0.25, v0.26, v0.29, v0.41{% if COI_CHEIL %}, v0.62{% endif %}) are cited by version number, as the pre-registration cites them.
+Programme records cited by version, as the locked pre-registration names them (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the omnibus registries of v0.19 (audiophile headphones, SSRN 6809182), v0.20 (skincare, SSRN 6811441), v0.21 (cosmetics, SSRN 6815378), v0.22 (automotive, SSRN 6829118) and v0.23 (premium spirits, SSRN 6834298){% if COI_CHEIL %}; v0.62{% endif %}.
 
 \clearpage
 

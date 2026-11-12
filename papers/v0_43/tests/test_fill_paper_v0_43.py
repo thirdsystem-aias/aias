@@ -161,10 +161,21 @@ class TestTemplate(unittest.TestCase):
         self.assertEqual(len(v19), 1)
         for u in ("<https://thirdsystem.ai/studies/v1-9/>", "<https://osf.io/ec6wh/files/osfstorage/6af1fd459966c813ee53ba87>"):
             self.assertIn(u, v19[0])
-        bib = (ROOT / "papers/references.bib").read_text(encoding="utf-8")
-        t = re.search(r"gonzalezcastro2026foundational,.*?title\s*=\s*\{(.*?)\},\n", bib, re.S).group(1)
-        t = t.replace("{AI}", "AI").replace("{LLM}", "LLM")
-        self.assertIn(f"*{t}*. SSRN 6659000.", refs)
+        # canonical forms of CLAUDE.md ("Methodology citation chain (canonical)", "Phase SSRN ID registry")
+        for t, i in (("AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval", "6659000"),
+                     ("Consistency without Independence", "6878818"), ("A Mean-Independent Consistency Instrument", "6963359"),
+                     ("What AI Presence Does Not Predict", "6847678"), ("The Presence Component Is Construct-Valid", "6870778")):
+            self.assertRegex(refs, rf"\*{re.escape(t)}[^\n]*SSRN {i}\.")
+        for i in ("6761698", "6797679", "6799479", "6810758", "6816340", "6817841", "6809182", "6811441", "6815378", "6829118", "6834298"):
+            self.assertIn(f"SSRN {i}", refs)
+        for u in ("<https://thirdsystem.ai/studies/v0-25/>", "<https://thirdsystem.ai/studies/v0-41/>"):
+            self.assertIn(u, refs)
+        # every lettered reference is cited in the text and every in-text letter has a reference
+        body = TPL.split("# References {-}")[0]
+        have = set(re.findall(r"(?m)^González Castro, P\. U\. \(2026([a-z])\)", refs))
+        cited = set(re.findall(r"2026([a-z])(?![a-z])", body))
+        self.assertEqual(have - cited, set())
+        self.assertEqual(cited - have, set())
         self.assertNotIn("SSRN packet", TPL)
         self.assertNotIn("ssrn_submission", TPL)
 
