@@ -26,14 +26,12 @@ PAPER_DIR = ROOT / "papers" / "v1_12"
 sys.path.insert(0, str(ROOT / "scripts"))
 
 # Unicode -> LaTeX substitutions (Carlito glyph gaps): the v0.41/v0.42 list, plus ₄ ₅ ₆ for t4-t6.
+# Curly quotes ‘ ’ “ ” are deliberately NOT substituted: Carlito has the glyphs, and the old ` / `` / '' forms
+# were read by pandoc as code-span openers (quoted words garbled, text swallowed).
 UNICODE_SUBS = [
     (" ", r"\,"),
     ("–", "--"),
     ("—", "---"),
-    ("‘", "`"),
-    ("’", "'"),
-    ("“", "``"),
-    ("”", "''"),
     ("…", r"\ldots{}"),
     ("™", r"\textsuperscript{TM}"),
     ("×", r"$\times$"),

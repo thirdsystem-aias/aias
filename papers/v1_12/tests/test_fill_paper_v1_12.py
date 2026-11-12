@@ -348,5 +348,33 @@ class TestRefusals(unittest.TestCase):
         self.assertFalse((ROOT / "osf/methodology/v1_12/_x").exists())
 
 
+class TestBuilderQuotes(unittest.TestCase):
+    def test_curly_quotes_are_not_rewritten_as_markdown_or_latex_quote_forms(self):
+        sys.path.insert(0, str(ROOT / "scripts"))
+        import build_paper_v1_12 as B
+        src = "---\ntitle: T\n---\n\nHe said “the brand’s ‘own’ site”, then ‘second’.\n"
+        out = B.apply_subs(src)
+        for ch in "‘’“”":
+            self.assertIn(ch, out)
+        self.assertNotIn("`", out)
+        self.assertNotIn("''", out)
+
+    def test_curly_quotes_print_in_the_pdf(self):
+        import shutil
+        if not (shutil.which("pandoc") and shutil.which("xelatex") and shutil.which("pdftotext")):
+            self.skipTest("pandoc/xelatex/pdftotext not installed")
+        src_txt = ('---\ntitle: T\nmainfont: "Carlito"\n---\n\nHe said “the brand’s ‘own’ site”, '
+                   'then ‘second’.\n')
+        with tempfile.TemporaryDirectory() as d:
+            src, pdf = Path(d) / "q.md", Path(d) / "q.pdf"
+            src.write_text(src_txt, encoding="utf-8")
+            r = subprocess.run([sys.executable, str(ROOT / "scripts/build_paper_v1_12.py"), "--source", str(src),
+                                "--output", str(pdf)], capture_output=True, text=True)
+            self.assertEqual(r.returncode, 0, r.stdout + r.stderr)
+            self.assertNotIn("glyph gaps", r.stdout)
+            txt = subprocess.run(["pdftotext", str(pdf), "-"], capture_output=True, text=True).stdout
+            self.assertIn("He said “the brand’s ‘own’ site”, then ‘second’.", " ".join(txt.split()))
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)
