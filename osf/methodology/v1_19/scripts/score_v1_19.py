@@ -33,6 +33,12 @@ SCORER_NOTES (choices where the draft is silent; each to be settled or confirmed
      ARI by its definition (Hubert and Arabie). scipy only (no scikit-learn on the machine).
  B8  Presence tiers (#36 inheritance): v0.23's regime rule (score_v0_23.py lines 332-356, numpy percentile, linear)
      applied within category to Paper A's P comparator: >= q75 Dominant, >= q50 Established, >= q25 Emerging, else Absent.
+ B9  Floors the draft does not state: H32_CueType is UNDETERMINED if fewer than half of its 84 reference values are
+     finite; H34_Floor_BeyondPresence needs >= 20 units with P; H35_IL_Robust needs >= 45 units with P; units without P
+     leave only the arms that need P.
+ B10 Random streams: H36's full-profile gap references, silhouette null and ARI null share one generator (seed
+     119362) in that order; the residual arm uses 119363. H32_SetSampling permutes each split independently from one
+     generator (119321), splits in code order.
 """
 import argparse
 import collections
