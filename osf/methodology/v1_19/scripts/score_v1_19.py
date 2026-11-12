@@ -8,6 +8,9 @@ choice is listed in SCORER_NOTES. Paper A's definitions and code are IMPORTED, n
 v1.12-prereg-r1) supplies the answer index, the probe design, beta / Cov* (coverage_table, cov_star_map), the
 leave-b-out Rasch deltas (rasch_deltas), rho_w, paired, perm_p, below_n_floor, the floors and the n floor.
 
+r0 status: the real-data path (load_real, run_real) is written and tested on synthetic files laid out as Paper A's
+scorer writes them (tests/test_loader_v1_19.py); its test on Paper A's own --synthetic pipeline output is an r1 step.
+
 Nothing here calls a model API. --run refuses unless (1) tag v1.19-prereg-r1 is on origin and anchor/osf_anchor_v1_19.json
 names its commit, (2) Paper A's verdict file exists and its gate allows Paper B (section 1 of the pre-registration),
 (3) Paper A's unit table reproduces under the imported code (parity gate B-P1), and (4) no v1.19 output exists yet
@@ -439,16 +442,35 @@ def excess_profiles(ans, brands, ceps_by_sub, design, panel):
 
 
 # =========================================================================== #35 identity load
-def il_from_t4(coded_b_rows, channel_of_probe, units, models):
+def load_channels(probes_v042_path):
+    """{(substrate 'v0.NN', Phase B probe_id): channel} from v0.42's probe file (trio probe IDs q1-q6 repeat across
+    categories, so the key carries the category)."""
+    inv = {v: k for k, v in A.RAW_SUB.items()}
+    out = {}
+    for line in Path(probes_v042_path).read_text(encoding="utf-8").splitlines():
+        if not line.strip():
+            continue
+        d = json.loads(line)
+        if d.get("phase") == "B" and d.get("channel"):
+            out[(inv.get(d["substrate"], d["substrate"]), d["probe_id"])] = d["channel"]
+    return out
+
+
+def il_from_t4(coded_b_rows, channel_of_probe, units, models, excluded=()):
     """IL_b = k_cult/n_cult - k_cat/n_cat on the t4 N3 S0 Phase B answers of the trio (v0.37 IL-Direct normalised by
     answered calls, as the v0.65 draft's EN definition); also pi_hat over the six questions. Rows: v0.42 coded
-    Phase B rows (call_id, substrate, brand, model, condition, run, probe_id, mentioned), answered calls only."""
+    Phase B rows (call_id, substrate, brand, model, condition, run, probe_id, mentioned), answered calls only;
+    calls v0.42 excludes (excluded) are dropped, as Paper A's comparators drop them. channel_of_probe is keyed by
+    (substrate, probe_id) (load_channels) or by probe_id alone (tests)."""
     calls = collections.defaultdict(set)
     named = collections.defaultdict(set)
+    excluded = set(excluded)
     for r in coded_b_rows:
         if r["model"] not in models or (r.get("condition") or "S0") != "S0" or r["substrate"] not in TRIO:
             continue
-        ch = channel_of_probe.get(r["probe_id"])
+        if r["call_id"] in excluded:
+            continue
+        ch = channel_of_probe.get((r["substrate"], r["probe_id"]), channel_of_probe.get(r["probe_id"]))
         if ch not in ("R_cat", "R_cult"):
             continue
         calls[(r["substrate"], ch)].add(r["call_id"])
@@ -810,6 +832,13 @@ def real_run_guards():
         raise Refused(f"tag {PREREG_TAG} is not on origin: no Paper B statistic before the lock")
     if not ANCHOR.exists():
         raise Refused(f"{ANCHOR} missing: the lock is not anchored (OSF deposit and commit record)")
+    try:
+        tag_commit = subprocess.run(["git", "-C", str(ROOT), "rev-parse", f"{PREREG_TAG}^{{commit}}"],
+                                    capture_output=True, text=True, timeout=30).stdout.strip()
+    except Exception:  # noqa: BLE001
+        tag_commit = ""
+    if not tag_commit or json.loads(ANCHOR.read_text(encoding="utf-8")).get("commit") != tag_commit:
+        raise Refused(f"{ANCHOR} does not name the commit of {PREREG_TAG}")
     if not A_VERDICTS.exists() or not A_UNIT_TABLE.exists():
         raise Refused("Paper A's verdict file or unit table is missing: Paper B waits for Paper A's scored output")
     if OUT_DIR.exists() and any(OUT_DIR.iterdir()):
@@ -826,6 +855,84 @@ def parity_b_p1(cov, unit_rows):
         if (a is None) != (not _f(b)) or (a is not None and abs(a - b) > 1e-9):
             mism.append({"unit": list(k), "paper_A": a, "recomputed": b})
     return {"gate": "B-P1", "units": len(unit_rows), "mismatches": mism[:20], "passed": not mism}
+
+
+REAL_PATHS = {"a_raw": A.RAW_PATH, "a_coded": A.CODED_DIR, "a_verdicts": A_VERDICTS, "a_unit_table": A_UNIT_TABLE,
+              "a_probes": A.PROBES_PATH, "roster": ROSTER, "t4_raw": A.T4_DEFAULTS["raw"],
+              "t4_coded": A.T4_DEFAULTS["coded"], "t4_probes": ROOT / "osf/v42/prereg/probes_v0_42.jsonl",
+              "decision": DESIGN_DIR / "anchor/pablo_decision_paper_B.json", "out": OUT_DIR}
+
+
+def read_roster(path):
+    rows = A.read_csv_rows(path)
+    flags = {(r["substrate"], r["brand"]): r["recall_floor_flag_F"] == "1" for r in rows}
+    defunct = tuple(r["brand"] for r in rows if r["defunct_D"] == "1")
+    return flags, defunct
+
+
+def load_real(paths):
+    """B1: Paper A's analysis set through Paper A's own functions; Paper A's verdict document, panel and P; the frozen
+    roster; t4 identity load (N3, S0, trio; v0.42's exclusions). Returns (inp, unit_rows, record of inputs)."""
+    p = {k: Path(v) for k, v in paths.items()}
+    a_doc = json.loads(p["a_verdicts"].read_text(encoding="utf-8"))
+    decision = json.loads(p["decision"].read_text(encoding="utf-8")) if p["decision"].exists() else None
+    rec = {"paper_A_verdicts_sha256": sha256(p["a_verdicts"])}
+    if not paper_b_decision(a_doc, decision)["run"]:
+        return {"a_doc": a_doc, "pablo_decision": decision, "a_sha256": rec["paper_A_verdicts_sha256"]}, [], rec
+    raw = A.read_jsonl(p["a_raw"])
+    mentions, registry = A.read_coded(p["a_coded"])
+    design = A.probe_design(A.load_probes(p["a_probes"]))
+    An = A.build_analysis(A.dedupe_calls(raw), mentions, design)
+    texts = {(r["substrate"], r["model_requested"], r["probe_id"], int(r["run"])): r.get("text") or ""
+             for r in An["calls"].values() if design["role"][r["probe_id"]] == "CEP"}
+    brands = {s: list(registry[s]) for s in A.CATS if s in registry}
+    panel = list(a_doc["panels"][a_doc["primary_panel"]])
+    unit_rows = A.read_csv_rows(p["a_unit_table"])
+    P = {(r["substrate"], r["brand"]): float(r["P_comparator"]) for r in unit_rows if r.get("P_comparator") not in (None, "")}
+    flags, defunct = read_roster(p["roster"])
+    units = sorted((s, b) for s in brands for b in brands[s])
+    il = None
+    if p["t4_raw"].exists() and p["t4_coded"].exists() and p["t4_probes"].exists():
+        excl, _w = A.t4_excluded(A.read_jsonl(p["t4_raw"]))
+        _ca, cb = A.read_t4_coded(p["t4_coded"])
+        il = il_from_t4(cb, load_channels(p["t4_probes"]), units, list(A.T4_N3), excl)
+        rec.update(t4_raw_sha256=sha256(p["t4_raw"]), t4_probes_sha256=sha256(p["t4_probes"]))
+    rec.update(paper_A_raw_sha256=sha256(p["a_raw"]), paper_A_unit_table_sha256=sha256(p["a_unit_table"]),
+               roster_sha256=sha256(p["roster"]), panel=panel, primary_panel=a_doc["primary_panel"],
+               identity_load="t4 N3 S0 (v0.42)" if il is not None else "NOT AVAILABLE (t4 files missing)")
+    inp = {"ans": An["cep"], "design": design, "brands": brands, "panel": panel, "P": P, "flags": flags,
+           "defunct": defunct, "il": il, "texts": texts, "a_doc": a_doc, "pablo_decision": decision,
+           "a_sha256": rec["paper_A_verdicts_sha256"]}
+    return inp, unit_rows, rec
+
+
+def run_real(paths=None, n_perm=N_PERM, gap_b=GAP_B, guards=True):
+    """--run: guards (section 9), load, B-P0 and B-P1, score once, write outputs/."""
+    paths = dict(REAL_PATHS, **(paths or {}))
+    if guards:
+        real_run_guards()
+    p0 = parity_b_p0()
+    if not p0["passed"]:
+        raise Refused(f"B-P0 failed: the imported Paper A scorer is not the locked file: {p0}")
+    inp, unit_rows, rec = load_real(paths)
+    out = Path(paths["out"])
+    out.mkdir(parents=True, exist_ok=True)
+    if "ans" not in inp:
+        doc = score_b(inp)
+        doc["inputs"] = rec
+        (out / "v119_not_run.json").write_text(json.dumps(clean(doc), indent=2) + "\n", encoding="utf-8")
+        return doc
+    _t, cov = cov_map_for(inp["ans"], inp["brands"], inp["design"]["ceps"], inp["panel"], A.FLOOR_FULL)
+    p1 = parity_b_p1(cov, unit_rows)
+    if not p1["passed"]:
+        raise Refused(f"B-P1 failed: Cov* does not reproduce Paper A's unit table: {json.dumps(clean(p1))[:1500]}")
+    doc = score_b(inp, n_perm, gap_b)
+    doc["inputs"] = rec
+    doc["parity"] = {"B-P0": p0, "B-P1": p1}
+    doc["scorer_sha256"] = sha256(__file__)
+    (out / "v119_verdicts.json").write_text(json.dumps(clean(doc), indent=2, ensure_ascii=False, allow_nan=False) + "\n",
+                                            encoding="utf-8")
+    return doc
 
 
 # =========================================================================== synthetic worlds (dry run, tests)
@@ -957,9 +1064,9 @@ def main():
                       w.get("all_as_built", ""))
             return 0
         if a.run:
-            real_run_guards()
-            raise Refused("r0 skeleton: the real-data loader (Paper A raw + coded via A.build_analysis, A's verdicts, "
-                          "t4 coded Phase B for IL) is completed at r1, before the lock")
+            doc = run_real(n_perm=N_PERM, gap_b=GAP_B)
+            print(json.dumps(clean(doc.get("verdict_summary") or {"status": doc.get("status")}), indent=1))
+            return 0
     except Refused as e:
         print(f"[v1.19] REFUSED: {e}", file=sys.stderr)
         return 3
