@@ -1,0 +1,186 @@
+{
+  "phase": "v0.45",
+  "revision": "r1",
+  "tag": "v0.45-prereg-r1",
+  "tag_object": "c21c212d26101e65dbb13241ea9e60efb2ace00d",
+  "commit": "f827d9d7eff6f756c3a10bfae886d9d624d2f958",
+  "tree": "165e3570c236dbb33455d4a2db2b38990fcdc618",
+  "branch": "v0.45",
+  "tagger_date": "2026-11-12T10:25:38-06:00",
+  "remote_tag_refs": "c21c212d26101e65dbb13241ea9e60efb2ace00d\trefs/tags/v0.45-prereg-r1\nf827d9d7eff6f756c3a10bfae886d9d624d2f958\trefs/tags/v0.45-prereg-r1^{}",
+  "recorded_utc": "2026-11-12T16:25:44Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: v45/prereg, v45/prereg/scripts, v45/anchor)",
+  "locked_files": {
+    "osf/v45/anchor/DEVIATIONS.md": {
+      "sha256": "250202a71b1b7d68ce09cfa5fb61a2feeebdf66c54cd5f6cdf23002a068dde2f",
+      "git_blob": "bc1e131a22d1e802efe847f56b5a3dec157e6ec8"
+    },
+    "osf/v45/prereg/PLAIN_SUMMARY_v0_45.md": {
+      "sha256": "36237a8935b55718c816b42b9df82407e967ea09e7da0b4ae5d6bda0c771c0c6",
+      "git_blob": "24aa859f3da960e8d5b6a0adf240a4c2d2381ef3"
+    },
+    "osf/v45/prereg/PRE_REGISTRATION_v0_45.md": {
+      "sha256": "9d885f80b48d7b5de5aa7ba1d3cc6b24d3481a84e1457233fd5555825af108d1",
+      "git_blob": "8e6ea0cc87fa3c66b722fe3bfa287d781f9d4240"
+    },
+    "osf/v45/prereg/cost_estimate_v0_45_r0.json": {
+      "sha256": "8f5c7f65a9d952cf63ba7fa706c936f69601e0aa898b11a8ae4e6ef39c883184",
+      "git_blob": "41cc1cefa8128681eaf27c3f90f5ab6ab8a2edad"
+    },
+    "osf/v45/prereg/cost_estimate_v0_45_r0.txt": {
+      "sha256": "9a6826c43166be136f0704ecf1ac724471c4390a820b7a28cb39a2b101bccf49",
+      "git_blob": "31e6a4fc389224dbd120aa256b6439d4066d9f8e"
+    },
+    "osf/v45/prereg/cost_estimate_v0_45_r1.json": {
+      "sha256": "d08d634cfb09cae84a4e6e9b352ff845786a9deba108e7af229d45caf6fb8718",
+      "git_blob": "4baf8a719443d2fd8238f1ef16e4f3550430e84a"
+    },
+    "osf/v45/prereg/cost_estimate_v0_45_r1.txt": {
+      "sha256": "9b5f41392d611e810b838bff26fe89a8437cc137aebe53375e3dd65a6ffe6a56",
+      "git_blob": "765c55ca5a63a54b24fecdd4303b032a110447e9"
+    },
+    "osf/v45/prereg/dry_run_v0_45.txt": {
+      "sha256": "d82828ef388ed85892b8de757104ed6f4880bf76bb2fd499c565a4a36ea13802",
+      "git_blob": "26f5236148eab277434008eb8db99f03d43b09af"
+    },
+    "osf/v45/prereg/probe_parity_v0_45.json": {
+      "sha256": "820cedadaff3b2dea209ad3b1753f36d6e1fb0f780dd4a0fa4aceb8ddc0835e5",
+      "git_blob": "b8c944fec91cae37ff930aecde6565fb63cd64dd"
+    },
+    "osf/v45/prereg/probes_v0_45.jsonl": {
+      "sha256": "7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa",
+      "git_blob": "e9da93caaa5e2c4947dc268c6a0340e0279f014c"
+    },
+    "osf/v45/scripts/_fork_v0_45.py": {
+      "sha256": "75f112c3a7ba301e7c61cc144f48d50a01bf802c32ae2b5351dd5d3560308771",
+      "git_blob": "d53d87c1a721f0376388cf1606e30f47744adcb7"
+    },
+    "osf/v45/scripts/acquire_v0_45.py": {
+      "sha256": "5e0768b4b875f732916f5543b8a3c89432dc78bc1efcb03049d2ac8c3afd534d",
+      "git_blob": "edb397e61f15604917e5f8972bcbe9871aea5841"
+    },
+    "osf/v45/scripts/budget_v0_45.py": {
+      "sha256": "b4524b3cf0dfbab20de7bec1ae2b4f6c940832494242c5d4f1434910d2554eb0",
+      "git_blob": "144f7235f99aedcb9d1c102093c30db873809e30"
+    },
+    "osf/v45/scripts/code_t5_v0_45.py": {
+      "sha256": "4c54fc890b138faa179c70bf9ff6f32b29b4542f34963a4a37da068236b80301",
+      "git_blob": "8d43489f34b1406bd3728693caf7a8b0642a7d76"
+    },
+    "osf/v45/scripts/cost_estimate_v0_45.py": {
+      "sha256": "092f50a3beef90c9b12d669fb87fced3e2988ab79ac69581707d5d641b46c98b",
+      "git_blob": "eeb4a332f1573cdd27fa71d35ed3ffa9dc19687b"
+    },
+    "osf/v45/scripts/lock_manifest_v0_45.py": {
+      "sha256": "b8537caf105e2ac372bc55b1efd677dc0bc4e7bf673d6bb7b962e3af3f39a396",
+      "git_blob": "9073d17ea5f8df2274b06613b32a1d5601eeb493"
+    },
+    "osf/v45/scripts/reestimate_t4_v0_45.py": {
+      "sha256": "4423ab583db56efce594857bae2938fbaac378ad4acb58210924826dd86d3242",
+      "git_blob": "b7a1e4ca27c423df691694a736d3fd62dced099c"
+    },
+    "osf/v45/scripts/score_v0_45.py": {
+      "sha256": "6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a",
+      "git_blob": "d69748ab9c3e33601a2f7c4ad5e955831b03f41a"
+    },
+    "osf/v45/scripts/tests/make_synthetic_t5.py": {
+      "sha256": "318b174c314d0e15aaae626026b0c2eb20b32e48d176352633868f20d802c915",
+      "git_blob": "b483818c1c61fb080fe72abee10a9c9ff246f987"
+    },
+    "osf/v45/scripts/tests/run_all_v0_45.py": {
+      "sha256": "50880ab04b909afb2d90ccba47160b96e9df5cbfea3decd91b51eb66b20e2b14",
+      "git_blob": "2c544285f91b3a5777277a4dceb5c94e94251b30"
+    },
+    "osf/v45/scripts/tests/test_acquire_v0_45.py": {
+      "sha256": "f967e890093910080475799ee028f8fe3bfc5f9af354b1fd3fab5f3f10f39151",
+      "git_blob": "27d94aa03232bdcd07e4d2d0b41fc459ab6dc4bb"
+    },
+    "osf/v45/scripts/tests/test_reestimate_lock_v0_45.py": {
+      "sha256": "4cf48fdced816678c3309f9dd0795feb71eba2757676d0d8c0b1b9beccc01004",
+      "git_blob": "8eb28808708eab0c768d635ad0f7bd47bc37ab53"
+    },
+    "osf/v45/scripts/tests/test_score_v0_45.py": {
+      "sha256": "338049e3c6adec8b08db23f7167ee355b72ca929dfbaff82bb91a9c0d7d7af5c",
+      "git_blob": "35afecbba0a338f35d7d51eda6bbfce85402db98"
+    },
+    "osf/v42/scripts/acquire_v0_42.py": {
+      "sha256": "50e52359a0f2d57e62ad76d90565cf1fac9e2835eb2af18b0f0efc474c6cfd7d",
+      "git_blob": "7fa2e81d0b5b8e02b4588f12d03d25e73c6bd900"
+    },
+    "osf/v42/scripts/budget_v0_42.py": {
+      "sha256": "88fc38f26ae665f4e9082286d1a2823c3f3e49d4d007217660400c079e0dab98",
+      "git_blob": "ae60b49eaef1b7723bf79bee3c9b698822d9eca6"
+    },
+    "osf/v42/scripts/code_t4_v0_42.py": {
+      "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc"
+    },
+    "osf/v42/scripts/score_v0_42.py": {
+      "sha256": "21ce0c355a428762bd44c90ad39431099a8579557491f8099c5d58fcd2efd545",
+      "git_blob": "934f09ae69300cb13bdde56c7964b7b2cc7700b9"
+    },
+    "osf/v42/prereg/probes_v0_42.jsonl": {
+      "sha256": "7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa",
+      "git_blob": "e9da93caaa5e2c4947dc268c6a0340e0279f014c"
+    },
+    "osf/v41/scripts/score_v41.py": {
+      "sha256": "c4231b6805896a077b9b16d8f315bf19ae6297435293deb1de32375d7424dc31",
+      "git_blob": "68ca1c2365ce9c643667a0a34aabe520c2ea835f"
+    },
+    "osf/v41/v41_three_wave_table.csv": {
+      "sha256": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219",
+      "git_blob": "86168a6854ac6d901340ed218e2dc2713887dccf"
+    },
+    "osf/v41/data/v23/v23_phase_a_scored.json": {
+      "sha256": "13f85accaec51338a67bea95a6169de21a3e84fa2c12b692c88da7f5fa09e99c",
+      "git_blob": "88d48d8bb3c4d561c9f45382ef5d72d323f34050"
+    },
+    "scripts/score_v0_23.py": {
+      "sha256": "ee348a97e670ef0b602f216c6de72b3a648799ed1723b95c59a7e1b680f79d6e",
+      "git_blob": "526e84de694dc5ce13f6ab4a304cd22c9b4a6847"
+    },
+    "scripts/score_v0_31.py": {
+      "sha256": "193ac0e0c98593d00fe252e4f78674cb212de9124d4e7486a26295880337460b",
+      "git_blob": "4faf16c89b278ae0d219f604c25375267f08d6ad"
+    },
+    "osf/v39/data/v39_raw.json": {
+      "sha256": "fbc3db92166dae7a7d9062ec0fcaebf0fe244251e83ecdab27bfabe8216f6e43",
+      "git_blob": "447ee7ba63a4597c05c8b317f5f04ede94a46e00"
+    },
+    "osf/v45/prereg/LOCK_MANIFEST_v0_45.sha256": {
+      "sha256": "76d7d27770d9c100879732046ffa3987b054d57ea355d4f0eb65bb3b88bc9f36",
+      "git_blob": "89597ae28a238ee8286faca402c4514bce492962"
+    }
+  },
+  "coder_pin": {
+    "path": "osf/v42/scripts/code_t4_v0_42.py",
+    "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc"
+  },
+  "fork_source": {
+    "tag": "v0.42-prereg-r1",
+    "commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+    "path": "osf/v42/scripts/acquire_v0_42.py"
+  },
+  "t4_inputs": [
+    {
+      "revision": "v0.42-acquisition-locked",
+      "commit": "a790bb1ac552adfc6615b0bcb49430aa95e7bc16",
+      "path": "osf/v42/data/t4_raw.jsonl",
+      "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+      "git_blob": "26de00942a0bc4f27c3506f1d5f7be895cd6a4aa"
+    },
+    {
+      "revision": "c84f6faf3003687c598a1970498492b8f68eb91c",
+      "commit": "c84f6faf3003687c598a1970498492b8f68eb91c",
+      "path": "osf/v42/data/coded/v23_phase_a.csv",
+      "sha256": "52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e",
+      "git_blob": "696e53af0627a5e5e523c96267238908fb39f3a8"
+    }
+  ],
+  "collection": {
+    "raw_file": "osf/v45/data/t5_raw.jsonl",
+    "exists_at_anchor": false,
+    "command": "acquire_v0_45.py --collect (refuses unless this file names the tag's commit)"
+  }
+}
