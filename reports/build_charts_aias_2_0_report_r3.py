@@ -117,9 +117,13 @@ def chart_p2_roles():
         ax.plot([mk, mk], [y - 0.14, y + 0.14], color=r2c.LIMIT, lw=1.4, zorder=2)
         ax.text(mk, y + 0.18, f"pass mark {mk:.2f}", ha="center", va="bottom", fontsize=7.4, color=r2c.LIMIT)
         ax.scatter([v], [y], s=78, color=col, zorder=3, edgecolor="white", lw=0.7)
+        # The Consistency label sits on its row's guide line; a white box (the chart panel's colour)
+        # breaks the line behind it so the number does not read as struck through (coordinator,
+        # Nov 12, 2026; r2 had the same overlap). Text, size, colour and position unchanged.
         ax.text(v + 0.025 if null else v, y if null else y - 0.2, f"{v:.3f}  (n = {n})",
                 ha="left" if null else "center", va="center" if null else "top", fontsize=9,
-                color=INK, fontweight="bold")
+                color=INK, fontweight="bold",
+                bbox=dict(boxstyle="square,pad=0.2", facecolor="white", edgecolor="none") if null else None)
     ax.set_yticks(ys)
     ax.set_yticklabels([r[0] for r in rows], fontsize=9, fontweight="bold")
     ax.set_xlim(0, 1)
