@@ -1,0 +1,130 @@
+{
+  "phase": "v0.42",
+  "revision": "r2 + clarifications C25, C26",
+  "tag": "v0.42-prereg-r1",
+  "tag_object": "bccedc15a86f01eac8b9c09b25a61d2b8d88464f",
+  "commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+  "tree": "39b99d6c9bf8b2e468fa0dc71bb72c66be3f116a",
+  "branch": "v0.42",
+  "tagger_date": "2026-11-10T20:52:28-06:00",
+  "remote_tag_ref": "bccedc15a86f01eac8b9c09b25a61d2b8d88464f\trefs/tags/v0.42-prereg-r1",
+  "recorded_utc": "2026-11-11T02:52:40Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: v42/prereg, v42/anchor)",
+  "locked_files": {
+    "osf/v42/prereg/PRE_REGISTRATION_v0_42.md": {
+      "sha256": "079025d9f923dfbcd55bf598ddc3c6a96ca8500b7ecd6a8b83abd11226c5fd31",
+      "git_blob": "598c75f39529946680e72a049207b338001f0e37"
+    },
+    "osf/v42/prereg/cost_estimate_v0_42_r2.json": {
+      "sha256": "79831e64e7d5bf43c68d19797f86be8dd8d183925dc00577f8b3b7c23d2aa8d1",
+      "git_blob": "7884636aa3fa5d8022580e921fb89b92d688e55f"
+    },
+    "osf/v42/prereg/cost_estimate_v0_42_r2.txt": {
+      "sha256": "43889f121cd759c7ffb51536db6e3512e4295b642740d11503366823694d91db",
+      "git_blob": "ace703b2ce31895f5a8e3aad41eb398174824c81"
+    },
+    "osf/v42/prereg/cost_inputs_v0_42.txt": {
+      "sha256": "128739b6f16258c54b77784274a1d64794767dafeaa686d26fec7c76e35a95f3",
+      "git_blob": "b840d66727ee87da5c7324469e262668b9e73c06"
+    },
+    "osf/v42/prereg/dry_run_v0_42.txt": {
+      "sha256": "05f3cf3971514e7262840f411e9a3244d9f9e75cb3a1096204d8210bf547432f",
+      "git_blob": "4cf203ee96cf71e089a7334b61bba69af2ed6ac8"
+    },
+    "osf/v42/prereg/feasibility_v0_42.json": {
+      "sha256": "1685f271cd14710ce2e5f5996554156cb6370e1d32474106a1b6a004dfa075bc",
+      "git_blob": "3ecb7f68497cee1446890f397de1cfe222d2e83b"
+    },
+    "osf/v42/prereg/parity_P1_v0_42.json": {
+      "sha256": "44b05a385651749941c6a71a29f7c876fed2d54d080a8b1be1d6dbd037528952",
+      "git_blob": "f49e2bb9528cf8ec9caf97a2de186b1c1c30d5c6"
+    },
+    "osf/v42/prereg/parity_P2_v0_42.json": {
+      "sha256": "d28f0155e1df81c81bad1c949b7a3e69af1b93b63129a186309dae0e85d49228",
+      "git_blob": "834f396afc7fff47750c4668224b2496d12334dc"
+    },
+    "osf/v42/prereg/probe_parity_v0_42.json": {
+      "sha256": "3cfb1cd505edbb500b954f8dc17f2675c7256545f80a03c1aaa47d2c9f95b918",
+      "git_blob": "1f73bc4c6e1e86891c5ce8abdbe845cf6b418a30"
+    },
+    "osf/v42/prereg/probes_v0_42.jsonl": {
+      "sha256": "7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa",
+      "git_blob": "e9da93caaa5e2c4947dc268c6a0340e0279f014c"
+    },
+    "osf/v42/scripts/_acquire_head.py.txt": {
+      "sha256": "b5a090a2c35f1d651eca053cafde42233469ad0d33987e2d42927d70ea302b09",
+      "git_blob": "329c83b4b978bec850fc8e5a8043a944f68361e9"
+    },
+    "osf/v42/scripts/_acquire_tail.py.txt": {
+      "sha256": "c6809b211e8fc4ad7474af4a1ec10819f49930135f4b4140abc4aad6f6ef6962",
+      "git_blob": "80f8c66c971765cd640c0bf92903e927eab832a2"
+    },
+    "osf/v42/scripts/_assemble_acquire_v0_42.py": {
+      "sha256": "948cb0675340e0066471f6d15611e7b8a129b24cfb9ebaff4bfe15ec52dba1dc",
+      "git_blob": "00e0009d92a05c9bd8106ea6a7dc786f47115191"
+    },
+    "osf/v42/scripts/acquire_v0_42.py": {
+      "sha256": "50e52359a0f2d57e62ad76d90565cf1fac9e2835eb2af18b0f0efc474c6cfd7d",
+      "git_blob": "7fa2e81d0b5b8e02b4588f12d03d25e73c6bd900"
+    },
+    "osf/v42/scripts/budget_v0_42.py": {
+      "sha256": "88fc38f26ae665f4e9082286d1a2823c3f3e49d4d007217660400c079e0dab98",
+      "git_blob": "ae60b49eaef1b7723bf79bee3c9b698822d9eca6"
+    },
+    "osf/v42/scripts/code_t4_v0_42.py": {
+      "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc"
+    },
+    "osf/v42/scripts/cost_estimate_v0_42.py": {
+      "sha256": "69fdba80afab76b50e275f4f623f7fba69e34a4bb4f90ec5cfe649dd5d1e3c08",
+      "git_blob": "1a850e50146eea9e7b2ec75da72a9150656f60a5"
+    },
+    "osf/v42/scripts/export_probes_v0_42.py": {
+      "sha256": "70102372de0512495ae4fb9aa0d10c097d231440afd21c33d3da767dd7d5a327",
+      "git_blob": "b720ccd07a435cb796dd2fc024132b02e2eaf417"
+    },
+    "osf/v42/scripts/score_v0_42.py": {
+      "sha256": "21ce0c355a428762bd44c90ad39431099a8579557491f8099c5d58fcd2efd545",
+      "git_blob": "934f09ae69300cb13bdde56c7964b7b2cc7700b9"
+    },
+    "osf/v42/scripts/tests/make_synthetic_t4.py": {
+      "sha256": "ea5f54553657814590842238c0e64459af4dc62c961254881f090b4d66617476",
+      "git_blob": "d456721d751701d09751603d40fcb8afab77e2e2"
+    },
+    "osf/v42/scripts/tests/run_all_v0_42.py": {
+      "sha256": "aa513499b66de7eb0d789e92905bc0c50ab95714297af8ac88c5602c265ef119",
+      "git_blob": "0d897c33ac79bea9660a607a533d1ac354345edb"
+    },
+    "osf/v42/scripts/tests/run_tests_v0_42.sh": {
+      "sha256": "7f69834dabefcc80b1853829de74f76b57d772ef847737b9dbb8dcb7ff12aa9b",
+      "git_blob": "62a733f8aefbbcaa46db3bbbb45df29f60eaec14"
+    },
+    "osf/v42/scripts/tests/test_acquire_v0_42.py": {
+      "sha256": "440b04f3e9b544d948d89ad6ff8aed425172eb91c498c2cf762221a55d06b4c1",
+      "git_blob": "0de5f020cad855f232ed84a0b81efad437aa8736"
+    },
+    "osf/v42/scripts/tests/test_score_v0_42.py": {
+      "sha256": "9817ffe39f3690145aabfe3d6009ff8ab526306e9b7a8236afe7f1cbb9fe8914",
+      "git_blob": "1900585704d27e745ed37beaf4230ffc990468f4"
+    },
+    "osf/v42/prereg/LOCK_MANIFEST_v0_42.sha256": {
+      "sha256": "48ea58dfbb2a5079b62300c646a3ab4c723d183cb9aa32e82b32b857e61dd470",
+      "git_blob": "87fb95efb1755f4692667ec26d1d2839bfb7ffd5"
+    }
+  },
+  "coder_pin": {
+    "path": "osf/v42/scripts/code_t4_v0_42.py",
+    "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+    "pinned_by": [
+      "v1.12 section 2.3",
+      "v1.13",
+      "v1.14 section 5"
+    ]
+  },
+  "collection": {
+    "raw_file": "osf/v42/data/t4_raw.jsonl",
+    "exists_at_anchor": false,
+    "command": "acquire_v0_42.py --collect (refuses unless this file names the tag's commit)"
+  }
+}

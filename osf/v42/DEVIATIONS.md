@@ -1,0 +1,13 @@
+# AIAS v0.42 — DEVIATIONS log
+
+Longitudinal t₄ wave on the newest models (N3). The pre-registration names this file (§5.3). Entries are numbered from 1: the pre-registration's own clarifications are C1–C28 in its §9, and the registries carry their source-phase conflict-of-interest screens forward unchanged (§8), so there is no Entry 0.
+
+---
+
+## Entry 1 — Refusal recording (descriptive 4) (ex ante; written 2026-11-11, before any t₄ answer was scored or coded for analysis)
+
+A known limit of the raw record, found in the pre-lock dry runs on local fake SDKs (2026-11-10; §9 C27–C28) and left unfixed because it touches descriptive 4 only. This entry is written after the collection was complete (876/876) and after the pre-registered coding step (§5.1; `code_t4_v0_42.py --judge`, commit `c84f6fa`), which is coding, not scoring; no t₄ answer text was read and no t₄ statistic was computed to write it. C6 counts "OpenAI refusal content" and a Google "blocked prompt" as refusals, but `t4_raw.jsonl`, as written by `acquire_v0_42.py`, cannot identify either:
+
+- **GPT-6 Astra.** `text` is the response's `output_text`, which joins `output_text` content parts only; a refusal delivered as a `refusal` content part is not stored, and `finish_reason` is the response status, `completed`. The call is recorded with empty `text`, `status` `empty`, `finish_reason` `completed` and `empty_retry` true (it is re-sent once, §4.4): the same record as a blank answer. Reported as "empty: refusal or blank, not distinguishable in the record". A call whose re-send was answered keeps `empty_retry` true and two usage parts; whether its first answer was a refusal is not recorded.
+- **Gemini 4 Argon.** A blocked prompt returns no candidate: `finish_reason` stays null (the scorer's tally prints it as `None`), `text` is empty, `status` `empty`; the block reason (`prompt_feedback`) is not recorded. Reported as "no candidate: blocked prompt or other, reason not recorded", identified by provider Google, `status` `empty` and a null `finish_reason`. A candidate stopped for safety keeps its finish reason (e.g. `SAFETY`) and is a refusal as specified.
+- **Reporting.** Descriptive 4 reports the scorer's output per model × condition unchanged (`finish_reasons`; `refusals_by_finish_reason`, which counts answered calls only; `unanswered_calls_error_or_empty`) and splits the unanswered calls into the two categories above, finish-reason refusals (e.g. Anthropic `refusal`) and errors; refusal counts are lower bounds. No hypothesis, test, threshold, exclusion rule (the drop rule of §5.4 counts these calls as unanswered, as before), verdict rule or confirmatory analysis changes; `acquire_v0_42.py`, `code_t4_v0_42.py` and `score_v0_42.py` are unchanged.

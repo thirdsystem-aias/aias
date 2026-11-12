@@ -1,5 +1,5 @@
 #!/bin/zsh
-# Runs the v0.42 unit tests with the system Python (numpy, scipy); writes the log beside this script's caller.
+# Runs every v0.42 unit test with the system Python (numpy, scipy) through run_all_v0_42.py (a script entry point:
+# the coder's HOME shim re-executes sys.argv[0], which `python3 -c` cannot provide; clarification C28, F4).
 cd "$(dirname "$0")/../../../.." || exit 1
-PY=/Library/Frameworks/Python.framework/Versions/3.14/bin/python3
-"$PY" -c 'import sys, unittest; r = unittest.TextTestRunner(verbosity=1).run(unittest.defaultTestLoader.discover("osf/v42/scripts/tests", pattern="test_*.py")); sys.exit(0 if r.wasSuccessful() else 1)'
+PYTHONDONTWRITEBYTECODE=1 python3 osf/v42/scripts/tests/run_all_v0_42.py

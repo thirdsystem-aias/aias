@@ -540,6 +540,59 @@ class TestManipulationChecksAndDescriptives(unittest.TestCase):
         self.assertIn("4_answer_form", d)
 
 
+class TestClarificationC27(unittest.TestCase):
+    """Clarification of 2026-11-11 (C27; SCORER_NOTES N13, N17): regression tests from the pre-lock dry run."""
+
+    @staticmethod
+    def _recompute_full_n3(B, excluded, cond, s, b):
+        """v1.14 MQ8 / v1.12 P2: pi_hat recomputed from the coded Phase B rows on ALL N3 models."""
+        k = sum(int(r["mentioned"]) for r in B if r["condition"] == cond and r["call_id"] not in excluded
+                and (r["substrate"], r["brand"]) == (s, b))
+        den = len({r["call_id"] for r in B if r["condition"] == cond and r["call_id"] not in excluded
+                   and r["substrate"] == s})
+        return k / den if den else None
+
+    def test_brand_table_n3_columns_use_full_panel_when_a_model_is_dropped(self):
+        n = collections.Counter()
+
+        def f(s):                                     # 10 of Fable's 90 S1 calls fail: 80/90 < 90% -> dropped in S1
+            if s["model"] == M.MODELS[0] and s["condition"] == "S1" and s["phase"] == "B":
+                n["n"] += 1
+                return n["n"] % 9 == 1 and n["n"] <= 90
+            return False
+        raw, A, B = M.build(copy_t3, fail=f)
+        out, rows = S.score_t4(raw, A, B, T3, CFG, GATES)
+        self.assertIn("claude-fable-5-2|S1", out["models_excluded_condition"])
+        D = S.Data(list(T3), A, B)
+        full, kept = S.pi_hat(D, N3, "S1"), S.pi_hat(D, N3[1:], "S1")
+        differs = 0
+        for r in rows:
+            u = (r["substrate"], r["brand"])
+            self.assertEqual(r["pi_N3_S1"], full[u])
+            self.assertEqual(r["pi_N3_S1"], self._recompute_full_n3(B, set(), "S1", *u))
+            self.assertEqual(r["phi_partition_N3_S1"], S.phi_panel(D, N3, "S1")[u][1])
+            differs += full[u] != kept[u]
+        self.assertGreater(differs, 0)                # the retained-panel value would have differed
+        al = out["verdicts"]["H_Gen_Presence"]["reported_alongside"]["variants"]["N3_S1"]
+        self.assertEqual(al["models"], N3[1:])        # the drop rule still decides the hypothesis panel
+
+    def test_gemini_redirect_citation_domain_from_title(self):
+        red = "https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQabc"
+        self.assertEqual(S._cited_domain({"url": red, "title": "www.Dior.com"}), "dior.com")
+        self.assertEqual(S._cited_domain({"url": red, "title": "malts.com"}), "malts.com")
+        self.assertEqual(S._cited_domain({"url": red, "title": "Dior | Official Site"}), "unresolved-google-redirect")
+        self.assertEqual(S._cited_domain({"url": red, "title": None}), "unresolved-google-redirect")
+        self.assertEqual(S._cited_domain({"url": "https://www.fiskerinc.com/?utm_source=openai", "title": "x"}),
+                         "fiskerinc.com")
+        raw, A, B = M.build(copy_t3)
+        for r in raw:
+            if r["model_requested"] == "gemini-4-argon" and r["condition"] == "S1":
+                r["search"]["citations"] = [{"url": red, "title": "chanel.com"}, {"url": red + "2", "title": "chanel.com"}]
+        out, _rows = S.score_t4(raw, A, B, T3, CFG, GATES)
+        top = out["descriptives"]["5_search"]["gemini-4-argon"]["top20_cited_domains"]
+        self.assertEqual(top[0], ["chanel.com", 180] if isinstance(top[0], list) else ("chanel.com", 180))
+
+
 class TestCentredStatistic(unittest.TestCase):
     """Clarification of 2026-11-10 (SCORER_NOTES N16): rho_pw on centred within-substrate ranks is the decision
     statistic; v0.41's uncentred value is reported as `rho_uncentred_v041` and never gates."""

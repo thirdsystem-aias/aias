@@ -4,11 +4,12 @@ Prepared 2026-11-10 (~3:15 pm CT) by the runner (lane 11). Everything below runs
 
 **Wednesday order:** v1.12 lock → v1.13 Part I lock → **v0.42 lock (steps 0–6, no earlier than 2026-11-11 21:00 UTC = 3 pm CST)** → v0.42 collection (step 7). One paid collection at a time on the Mac.
 
-**State prepared on 2026-11-10** (lane-11 commit "v0.42 lock prep"): clarification C26 logged (§9; collection guards; no hypothesis, threshold, panel, probe, design, budget rule or decision rule changed); `acquire_v0_42.py` regenerated with the guards; `prereg/LOCK_MANIFEST_v0_42.sha256` built (24 files, paths from the repository root; `shasum -a 256 -c` 0 failures); 78 tests pass; the dry run equals `prereg/dry_run_v0_42.txt` (876 calls); the rehearsal on local fakes passes 28 of 28 checks (step R). Lock helpers (not locked files): `lock/write_anchor_v0_42.py`, `lock/osf_verify_v0_42.py`, `lock/status_v0_42.py`, `lock/write_t4_complete_v0_42.py`, `lock/fake_collect_e2e_v0_42.py` with `lock/fakes/`. If any manifested file changes before the tag, rebuild the manifest (1b) and re-run 1a–1d.
+**State prepared on 2026-11-10** (lane-11 commit "v0.42 lock prep"): clarification C26 logged (§9; collection guards; no hypothesis, threshold, panel, probe, design, budget rule or decision rule changed); `acquire_v0_42.py` regenerated with the guards; `prereg/LOCK_MANIFEST_v0_42.sha256` built (24 files, paths from the repository root; `shasum -a 256 -c` 0 failures); 84 tests pass (C27, Nov 11: 78 + 2; C28: + 4); the dry run equals `prereg/dry_run_v0_42.txt` (876 calls); the rehearsal on local fakes passes 28 of 28 checks (step R). Lock helpers (not locked files): `lock/write_anchor_v0_42.py`, `lock/osf_verify_v0_42.py`, `lock/status_v0_42.py`, `lock/write_t4_complete_v0_42.py`, `lock/fake_collect_e2e_v0_42.py` with `lock/fakes/`. If any manifested file changes before the tag, rebuild the manifest (1b) and re-run 1a–1d.
 
 ## 0. Preconditions (stop if any fails)
 
 1. **Time:** now ≥ **2026-11-11 21:00 UTC**. `date -u`
+   Clarification (Nov 11, 2026, ex ante, before the tag; lock steps only): Lock time: the pre-registrant waived the 24-hour review on 2026-11-10 at 20:26 CT (control panel, 'LOCK NOW'); locked at 2026-11-11 02:53 UTC (tag `v0.42-prereg-r1` on the commit that adds this line). The locked files (manifest, 24 files) are unchanged by this line.
 2. **Pablo:** no "hold t4" in the panel and no requested change since the r2 + C25 text of Nov 10 (~3 pm CT). A change to a hypothesis, threshold, panel, probe or decision rule restarts the 24 hours: do not lock; report.
 3. **v1.12 and v1.13 locks are done** (or explicitly skipped for today); none of their collections is running.
 4. **Worktree clean, on v0.42, no t4 data:**
@@ -18,9 +19,10 @@ Prepared 2026-11-10 (~3:15 pm CT) by the runner (lane 11). Everything below runs
    Expect `v0.42`, no tracked changes, HEAD = the lane-11 "v0.42 lock prep" commit (or a later lock commit), `osf/v42/data` empty and no `osf/v42/anchor`. `osf/v42/_osf_stage_draft*/` are untracked staging copies of the drafts: leave them, never upload them.
 5. **Remote tags (read-only):**
    ```
-   cd /Users/pablou/aias/_worktrees/v0.42 && git ls-remote --tags origin v0.42-prereg-r1 v0.42-acquisition-locked v1.14-prereg-r1
+   cd /Users/pablou/aias/_worktrees/v0.42 && git ls-remote --tags origin v0.42-prereg-r1 v0.42-acquisition-locked v1.14-prereg-r2
    ```
-   Expect no `v0.42-*` tag; `v1.14-prereg-r1` present (pushed Nov 10).
+   Expect no `v0.42-*` tag; `v1.14-prereg-r2` present with peeled commit `a5feb4b1c4b9e9d19979129afcfd616a50b88c64`. If it is absent: stop (v1.14's `osf/methodology/v1_14/LOCK_STEPS_r2.md` must be completed before any t4 answer exists).
+   Clarification (Nov 10, 2026, evening, ex ante; lock steps only): v1.14 re-locked as r2 before any t4 answer: crash fix only; no statistic changed (v1.14 DEVIATIONS Entry 1). `v1.14-prereg-r1` (→ `20fbc342`) stays on origin as the record of r1; v1.14's Stage 1 now requires `v1.14-prereg-r2`. Nothing in v0.42's pre-registration or scripts names a v1.14 tag.
 6. **No paid collection running:** `pgrep -fl "acquire_v[0-9][0-9_.]*\.py.*--collect" || echo none` → `none`.
 7. **Keys in the login shell (names only):** `zsh -ic 'for v in ANTHROPIC_API_KEY OPENAI_API_KEY GOOGLE_API_KEY OSF_TOKEN; do [[ -n ${(P)v} ]] && echo "$v set" || echo "$v MISSING"; done'` → four `set` (checked Nov 10: all set; `GEMINI_API_KEY` is not needed when `GOOGLE_API_KEY` is set).
 
@@ -37,11 +39,11 @@ b. (Only if a manifested file changed) rebuild, then redo a.:
    cd /Users/pablou/aias/_worktrees/v0.42 && M=osf/v42/prereg/LOCK_MANIFEST_v0_42.sha256 && shasum -a 256 $(sed "s/^[0-9a-f]*  //" $M) > /tmp/v42_m && mv /tmp/v42_m $M
    ```
 
-c. Tests (78; ~51 s, so in the background):
+c. Tests (84; ~51 s, so in the background):
    ```
    cd /Users/pablou/aias/_worktrees/v0.42 && (PYTHONDONTWRITEBYTECODE=1 nohup python3 osf/v42/scripts/tests/run_all_v0_42.py > /tmp/v42_tests.log 2>&1 &); sleep 54; tail -1 /tmp/v42_tests.log
    ```
-   Expect `RESULT OK 78` (if not yet there, `sleep 10; tail -1 /tmp/v42_tests.log`).
+   Expect `RESULT OK 84` (if not yet there, `sleep 10; tail -1 /tmp/v42_tests.log`).
 
 d. Dry run equals the record, and the generator reproduces the script:
    ```
@@ -154,7 +156,7 @@ No Ranking statistic (rank position, MNP, MODE) on any t4 answer before v1.14's 
    ```
    Writes `osf/v42/data/coded/{v19..v23}_phase_{a,b}.csv` (refuses unless `v0.42-prereg-r1` is on origin). Commit the coded tables and the log.
 2. **v0.42 scoring, once:** `cd /Users/pablou/aias/_worktrees/v0.42 && (PYTHONDONTWRITEBYTECODE=1 nohup python3 -u osf/v42/scripts/score_v0_42.py --run > osf/v42/data/score_v0_42.log 2>&1 &)`; read the log until `wrote …`. Writes `osf/v42/v42_verdicts.json` and `osf/v42/v42_brand_table.csv`. Commit them, tag `v0.42-scoring-locked` (as v0.41), push branch and tag. This tag is the `--v042-scored-ref` of step 3; the raw file in it must equal the acquisition-locked file (v1.14 halts otherwise).
-3. **v1.14 Stage 1, once** (in the v1.14 worktree; refuses without `v1.14-prereg-r1`, its anchor, `v0.42-acquisition-locked`, an unchanged lock manifest, and the coder blob `2d36735d…` at the acquisition tag; runs once):
+3. **v1.14 Stage 1, once** (in the v1.14 worktree; refuses without `v1.14-prereg-r2`, its r2 anchor `osf/methodology/v1_14/anchor/git_anchor_v1_14.json`, `v0.42-acquisition-locked`, an unchanged lock manifest, and the coder blob `2d36735d…` at the acquisition tag; runs once):
    ```
    cd /Users/pablou/aias/_worktrees/v1.14 && git fetch origin --tags && (PYTHONDONTWRITEBYTECODE=1 nohup python3 -u scripts/score_v1_14.py --stage 1 --v042-scored-ref v0.42-scoring-locked > /tmp/v114_stage1.log 2>&1 &); sleep 50; tail -5 /tmp/v114_stage1.log
    ```

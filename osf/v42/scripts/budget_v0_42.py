@@ -25,6 +25,11 @@ Cost of one billed request ("usage part"):
   per-search fee is charged in full in every mode (the pages state the batch discount for tokens only).
 A raw record's cost = the sum over its `usage_parts`; a record without `usage_parts` (older format) is costed as one
 standard part from its token fields and its S1 search count.
+Clarification C28 (2026-11-11; conservative direction only): a part's input_tokens include Google's
+tool_use_prompt_token_count (also kept as tool_use_prompt_tokens); its n_searches is the larger of the searches in the
+record's `search` and the provider's billed tool calls (OpenAI: every web_search_call output item, open_page and
+find_in_page included; Anthropic: usage.server_tool_use.web_search_requests; Google: at least one query when web
+chunks were returned); a synchronous request reserves the worst case of two requests (it may re-send an empty answer).
 
 Guard: spent = JUDGE_RESERVE_USD (the v0.23 Phase A recognition judge, Claude Sonnet 4.5, run by the coder after
 collection) + the cost of every raw line already written. Before a request is sent, its WORST-CASE cost (WORST below)
@@ -98,7 +103,9 @@ def part_cost(model, part, when_utc=None):
 def legacy_part(rec):
     s = rec.get("search") or {}
     n = (s.get("n_searches") or len(s.get("queries") or [])) if rec.get("condition") == "S1" else 0
-    return {"mode": "standard", "input_tokens": rec.get("input_tokens"), "output_tokens": rec.get("output_tokens"),
+    tin, tool = rec.get("input_tokens"), rec.get("tool_use_prompt_tokens")          # C28
+    tin = None if tin is None and tool is None else (tin or 0) + (tool or 0)
+    return {"mode": "standard", "input_tokens": tin, "output_tokens": rec.get("output_tokens"),
             "thinking_tokens": rec.get("thinking_tokens"), "n_searches": n}
 
 

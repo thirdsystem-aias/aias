@@ -1,0 +1,1073 @@
+{
+  "phase": "v0.42",
+  "prereg": "osf/v42/prereg/PRE_REGISTRATION_v0_42.md (revision r2)",
+  "prereg_tag": "v0.42-prereg-r1",
+  "rho_pw_statistic": "rho_pw = Pearson r of within-substrate average ranks CENTRED on each substrate's mean rank, pooled over brands (decision statistic; Clarification of 2026-11-10). rho_uncentred_v041 = score_v41.pooled_within_rho (uncentred), reported for comparability with v0.41, never gating.",
+  "seeds": {
+    "H_Gen_Presence": 420041,
+    "H_Gen_Phi": 420043,
+    "H_Search_Presence": 420044,
+    "descriptives": 420045
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 10000
+  },
+  "panels": {
+    "L6": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "N3": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ]
+  },
+  "models_excluded_condition": [],
+  "manipulation_checks": {
+    "MC_Complete": {
+      "answered": 876,
+      "expected": 876,
+      "share": 1.0,
+      "pass": true,
+      "per_model_condition": {
+        "claude-fable-5-2|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "claude-fable-5-2|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gemini-4-argon|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gemini-4-argon|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gpt-6-astra|S0": {
+          "calls": 202,
+          "answered": 202,
+          "expected": 202,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        },
+        "gpt-6-astra|S1": {
+          "calls": 90,
+          "answered": 90,
+          "expected": 90,
+          "share_of_expected": 1.0,
+          "excluded_below_90pct": false
+        }
+      },
+      "below_90pct": [],
+      "outside_design": {
+        "n": 0,
+        "call_ids": []
+      }
+    },
+    "MC_Served": {
+      "n_mismatched": 0,
+      "mismatched": [],
+      "ok_calls_without_served_id": 0,
+      "excluded_from_analysis": 0,
+      "pass": true
+    },
+    "MC_Search": {
+      "gemini-4-argon": {
+        "s1_answered_calls": 90,
+        "with_search": 16,
+        "share": 0.17777777777777778,
+        "flag_search_rarely_used": true
+      },
+      "gpt-6-astra": {
+        "s1_answered_calls": 90,
+        "with_search": 86,
+        "share": 0.9555555555555556,
+        "flag_search_rarely_used": false
+      },
+      "claude-fable-5-2": {
+        "s1_answered_calls": 90,
+        "with_search": 75,
+        "share": 0.8333333333333334,
+        "flag_search_rarely_used": false
+      }
+    },
+    "MC_Truncation": {
+      "claude-fable-5-2|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "claude-fable-5-2|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gemini-4-argon|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gemini-4-argon|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gpt-6-astra|S0": {
+        "calls": 202,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gpt-6-astra|S1": {
+        "calls": 90,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      }
+    },
+    "MC_Window": {
+      "first_call_utc": "2026-11-11T02:57:06.408927+00:00",
+      "last_call_utc": "2026-11-11T09:50:12.412986+00:00",
+      "span_hours": 6.8850011275,
+      "pass": true
+    },
+    "MC_Parity": {
+      "passed": true,
+      "detail": {
+        "P1": true,
+        "P2": true,
+        "P3": true
+      }
+    }
+  },
+  "verdicts": {
+    "H_Gen_Presence": {
+      "tier": "PRIMARY",
+      "seed": 420041,
+      "panel_used": "N3",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "substituted": false,
+      "substitution_note": null,
+      "n": 112,
+      "rho": 0.8284919892883065,
+      "rho_uncentred_v041": 0.8359290730581618,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.9105974019334879,
+          "n": 16
+        },
+        "v0.20": {
+          "rho": 0.8876738651499109,
+          "n": 24
+        },
+        "v0.21": {
+          "rho": 0.8553167262123487,
+          "n": 24
+        },
+        "v0.22": {
+          "rho": 0.9428094331556052,
+          "n": 24
+        },
+        "v0.23": {
+          "rho": 0.6074367993229256,
+          "n": 24
+        }
+      },
+      "p_perm": 9.999000099990002e-05,
+      "n_perm": 10000,
+      "ci95_rho": [
+        0.7222986264997935,
+        0.8895823409442499
+      ],
+      "delta": 0.046378968253968256,
+      "ci95_delta": [
+        0.022730654761904754,
+        0.07060185185185185
+      ],
+      "bootstrap": {
+        "rho": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        },
+        "delta": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "verdict": "CONFIRMED",
+      "rule": "CONFIRMED if rho>=0.70 and p<0.05; FALSIFIED if rho<0.50; MARGINAL otherwise",
+      "reported_alongside": {
+        "variants": {
+          "N3_S1": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "reduced_panel": false,
+            "n": 112,
+            "rho": 0.7961176482932437,
+            "rho_uncentred_v041": 0.8049497949327132,
+            "per_substrate": {
+              "v0.19": {
+                "rho": 0.9487306140943221,
+                "n": 16
+              },
+              "v0.20": {
+                "rho": 0.8779604211773182,
+                "n": 24
+              },
+              "v0.21": {
+                "rho": 0.8010564156200846,
+                "n": 24
+              },
+              "v0.22": {
+                "rho": 0.9231963365961724,
+                "n": 24
+              },
+              "v0.23": {
+                "rho": 0.5404981931444466,
+                "n": 24
+              }
+            },
+            "p_perm": 9.999000099990002e-05,
+            "n_perm": 10000,
+            "ci95_rho": [
+              0.6691553979002491,
+              0.861481910568164
+            ],
+            "delta": 0.0055390211640211585,
+            "ci95_delta": [
+              -0.02000661375661376,
+              0.030340608465608456
+            ],
+            "bootstrap": {
+              "rho": {
+                "n_draws": 10000,
+                "dropped_nonfinite": 0
+              },
+              "delta": {
+                "n_draws": 10000,
+                "dropped_nonfinite": 0
+              }
+            },
+            "verdict_if_primary": "CONFIRMED"
+          }
+        },
+        "per_provider_generation_pairs": {
+          "Anthropic: legacy pair -> claude-fable-5-2": {
+            "n": 112,
+            "rho": 0.8475497991786256,
+            "rho_uncentred_v041": 0.8544030903767983
+          },
+          "OpenAI: legacy pair -> gpt-6-astra": {
+            "n": 112,
+            "rho": 0.5655977971700592,
+            "rho_uncentred_v041": 0.5856370214345397
+          },
+          "Google: legacy pair -> gemini-4-argon": {
+            "n": 112,
+            "rho": 0.7148209681951023,
+            "rho_uncentred_v041": 0.7276172073546284
+          }
+        },
+        "level_shift_delta": {
+          "delta": 0.046378968253968256,
+          "ci95": [
+            0.022730654761904754,
+            0.07060185185185185
+          ]
+        },
+        "per_substrate_rho": {
+          "v0.19": {
+            "rho": 0.9105974019334879,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.8876738651499109,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.8553167262123487,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.9428094331556052,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.6074367993229256,
+            "n": 24
+          }
+        }
+      }
+    },
+    "H_Gen_Phi": {
+      "tier": "SECONDARY",
+      "seed": 420043,
+      "panel_used": "N3",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "substituted": false,
+      "substitution_note": null,
+      "n": 73,
+      "rho": 0.3095026294006812,
+      "rho_uncentred_v041": 0.35544333391562905,
+      "p_perm": 0.005599440055994401,
+      "ci95_rho": [
+        0.050937288710226306,
+        0.5195119799948973
+      ],
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.4924034903808523,
+          "n": 10
+        },
+        "v0.20": {
+          "rho": 0.07513853438458365,
+          "n": 14
+        },
+        "v0.21": {
+          "rho": 0.05770412382536471,
+          "n": 17
+        },
+        "v0.22": {
+          "rho": 0.8085867620751341,
+          "n": 15
+        },
+        "v0.23": {
+          "rho": 0.3120402539125647,
+          "n": 17
+        }
+      },
+      "verdict": "MARGINAL",
+      "rule": "UNDETERMINED if n<40; CONFIRMED if rho>=0.50 and p<0.05; FALSIFIED if rho<0.30; else MARGINAL",
+      "reported_alongside": {
+        "variants": {},
+        "mean_independence_S0": {
+          "N3": {
+            "n": 79,
+            "rho_pw_phi_pi": -0.10094553012299576,
+            "abs": 0.10094553012299576,
+            "flag_ge_0_50": false,
+            "rho_pw_phi_pi_uncentred_v041": -0.013858007370286592
+          }
+        },
+        "partition_counts": {
+          "N3_S0": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "brand_level": {
+              "defined": 79,
+              "zero": 25,
+              "saturated": 2,
+              "undefined": 6
+            },
+            "per_run_partitions": {
+              "defined": 238,
+              "zero": 92,
+              "saturated": 6
+            }
+          },
+          "N3_S1": {
+            "models": [
+              "claude-fable-5-2",
+              "gpt-6-astra",
+              "gemini-4-argon"
+            ],
+            "brand_level": {
+              "defined": 83,
+              "zero": 22,
+              "saturated": 0,
+              "undefined": 7
+            },
+            "per_run_partitions": {
+              "defined": 246,
+              "zero": 90
+            }
+          },
+          "L6_t3": {
+            "defined": 83,
+            "zero": 29
+          }
+        }
+      }
+    },
+    "H_Search_Presence": {
+      "tier": "SECONDARY",
+      "seed": 420044,
+      "question": "two-sided; labels, no confirm/falsify",
+      "models": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "n": 112,
+      "rho": 0.9087314554322161,
+      "rho_uncentred_v041": 0.9126726374987766,
+      "per_substrate": {
+        "v0.19": {
+          "rho": 0.956395551308483,
+          "n": 16
+        },
+        "v0.20": {
+          "rho": 0.9300713365889235,
+          "n": 24
+        },
+        "v0.21": {
+          "rho": 0.9316601123532909,
+          "n": 24
+        },
+        "v0.22": {
+          "rho": 0.9761326615575894,
+          "n": 24
+        },
+        "v0.23": {
+          "rho": 0.7847781042791643,
+          "n": 24
+        }
+      },
+      "ci95_rho": [
+        0.8265811324455337,
+        0.9451205033003187
+      ],
+      "delta": -0.04083994708994709,
+      "ci95_delta": [
+        -0.05671296296296297,
+        -0.02496693121693122
+      ],
+      "bootstrap": {
+        "rho": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        },
+        "delta": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "label": "search-robust",
+      "per_model": {
+        "claude-fable-5-2": {
+          "n": 112,
+          "rho": 0.7096257101190863,
+          "rho_uncentred_v041": 0.7226192073600737,
+          "delta": -0.05208333333333333
+        },
+        "gpt-6-astra": {
+          "n": 112,
+          "rho": 0.8582905685872155,
+          "rho_uncentred_v041": 0.8647889120708606,
+          "delta": -0.05803571428571427
+        },
+        "gemini-4-argon": {
+          "n": 112,
+          "rho": 0.9085756365033784,
+          "rho_uncentred_v041": 0.9126084033043301,
+          "delta": -0.01240079365079365
+        }
+      },
+      "reported_alongside": {
+        "per_substrate_rho": {
+          "v0.19": {
+            "rho": 0.956395551308483,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.9300713365889235,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.9316601123532909,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.9761326615575894,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.7847781042791643,
+            "n": 24
+          }
+        }
+      },
+      "rule": "search-robust if CI lower >= 0.80; search-dominated if CI upper < 0.50; else search-sensitive"
+    }
+  },
+  "descriptives": {
+    "seed_reserved": 420045,
+    "note": "descriptive only; no verdicts",
+    "1_run_reliability": {
+      "claude-fable-5-2|S0": {
+        "rel1": 0.9119767862628557,
+        "rel3": 0.9688297943020296,
+        "rel1_uncentred_v041": 0.9160427193301629,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "claude-fable-5-2|S1": {
+        "rel1": 0.8973420381698057,
+        "rel3": 0.9632667024157335,
+        "rel1_uncentred_v041": 0.9022480348462844,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gpt-6-astra|S0": {
+        "rel1": 0.9039834862313767,
+        "rel3": 0.9658056826486064,
+        "rel1_uncentred_v041": 0.9086004968906284,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gpt-6-astra|S1": {
+        "rel1": 0.8449021908360117,
+        "rel3": 0.9423386287044498,
+        "rel1_uncentred_v041": 0.8526230677881615,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gemini-4-argon|S0": {
+        "rel1": 0.8798498845356457,
+        "rel3": 0.9564626135020521,
+        "rel1_uncentred_v041": 0.8853531029503676,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      },
+      "gemini-4-argon|S1": {
+        "rel1": 0.9148666810295984,
+        "rel3": 0.969914720548635,
+        "rel1_uncentred_v041": 0.9188374895169957,
+        "recognition_pairwise_agreement": null,
+        "recognition_brands_with_>=2_runs": 0,
+        "note": "Phase A has one run in r2 (S0): recognition agreement across runs not computable"
+      }
+    },
+    "2_recognition": {
+      "t4": {
+        "claude-fable-5-2|S0": {
+          "recognized": 109,
+          "coded_answers": 112,
+          "share": 0.9732142857142857
+        },
+        "claude-fable-5-2|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        },
+        "gpt-6-astra|S0": {
+          "recognized": 111,
+          "coded_answers": 112,
+          "share": 0.9910714285714286
+        },
+        "gpt-6-astra|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        },
+        "gemini-4-argon|S0": {
+          "recognized": 111,
+          "coded_answers": 112,
+          "share": 0.9910714285714286
+        },
+        "gemini-4-argon|S1": {
+          "recognized": 0,
+          "coded_answers": 0,
+          "share": null
+        }
+      },
+      "t3_legacy": {
+        "claude-opus-4-5": {
+          "recognized": 108,
+          "brands": 112,
+          "share": 0.9642857142857143
+        },
+        "claude-sonnet-4-5": {
+          "recognized": 103,
+          "brands": 112,
+          "share": 0.9196428571428571
+        },
+        "gpt-4o": {
+          "recognized": 108,
+          "brands": 112,
+          "share": 0.9642857142857143
+        },
+        "gpt-4o-mini": {
+          "recognized": 110,
+          "brands": 112,
+          "share": 0.9821428571428571
+        },
+        "gemini-2.5-flash": {
+          "recognized": 104,
+          "brands": 112,
+          "share": 0.9285714285714286
+        },
+        "gemini-2.5-flash-lite": {
+          "recognized": 106,
+          "brands": 112,
+          "share": 0.9464285714285714
+        }
+      },
+      "note": "v0.23 t4 recognition is blank until the judge has been run (coder --judge)"
+    },
+    "3_floor_persistence": {
+      "panel_t4": "N3",
+      "below_floor_t3": 58,
+      "below_floor_t4": 49,
+      "below_both": 43,
+      "share_below_t3_still_below_t4": 0.7413793103448276,
+      "reverse_share_below_t4_that_were_below_t3": 0.8775510204081632,
+      "share_above_t3_now_below_t4": 0.1111111111111111,
+      "floor": "t3: mean k per model < 1; t4: mean k per model-run (6 * pi_hat) < 1"
+    },
+    "4_answer_form": {
+      "claude-fable-5-2|S0": {
+        "words_per_answer_A_mean": 160.77678571428572,
+        "words_per_answer_B_mean": 290.84444444444443,
+        "registry_brands_named_per_phase_B_answer": 6.177777777777778,
+        "finish_reasons": {
+          "end_turn": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "claude-fable-5-2|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 282.26666666666665,
+        "registry_brands_named_per_phase_B_answer": 5.011111111111111,
+        "finish_reasons": {
+          "end_turn": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gemini-4-argon|S0": {
+        "words_per_answer_A_mean": 258.25892857142856,
+        "words_per_answer_B_mean": 820.6888888888889,
+        "registry_brands_named_per_phase_B_answer": 6.622222222222222,
+        "finish_reasons": {
+          "FinishReason.STOP": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gemini-4-argon|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 858.1111111111111,
+        "registry_brands_named_per_phase_B_answer": 6.344444444444444,
+        "finish_reasons": {
+          "FinishReason.STOP": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gpt-6-astra|S0": {
+        "words_per_answer_A_mean": 490.51785714285717,
+        "words_per_answer_B_mean": 431.1333333333333,
+        "registry_brands_named_per_phase_B_answer": 5.466666666666667,
+        "finish_reasons": {
+          "completed": 202
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      },
+      "gpt-6-astra|S1": {
+        "words_per_answer_A_mean": null,
+        "words_per_answer_B_mean": 380.72222222222223,
+        "registry_brands_named_per_phase_B_answer": 4.166666666666667,
+        "finish_reasons": {
+          "completed": 90
+        },
+        "non_answers": {
+          "phase_A_no_yes_or_no_v0_19_to_v0_22": 0,
+          "refusals_by_finish_reason": 0,
+          "unanswered_calls_error_or_empty": 0
+        }
+      }
+    },
+    "5_search": {
+      "claude-fable-5-2": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 1.7,
+        "sources_per_call": 15.6,
+        "citations_per_call": 11.133333333333333,
+        "share_with_citation": 0.8333333333333334,
+        "top20_cited_domains": [
+          [
+            "drinksint.com",
+            69
+          ],
+          [
+            "ringly.io",
+            42
+          ],
+          [
+            "thewhiskeywash.com",
+            29
+          ],
+          [
+            "americansalon.com",
+            28
+          ],
+          [
+            "crutchfield.com",
+            27
+          ],
+          [
+            "globalbrandsmagazine.com",
+            24
+          ],
+          [
+            "consumerreports.org",
+            24
+          ],
+          [
+            "carcody.com",
+            23
+          ],
+          [
+            "ecoustics.com",
+            22
+          ],
+          [
+            "marieclaire.com",
+            22
+          ],
+          [
+            "thedermdigest.com",
+            20
+          ],
+          [
+            "rd.com",
+            17
+          ],
+          [
+            "en.wikipedia.org",
+            17
+          ],
+          [
+            "autoblog.com",
+            17
+          ],
+          [
+            "wineenthusiast.com",
+            15
+          ],
+          [
+            "vinepair.com",
+            14
+          ],
+          [
+            "whowhatwear.com",
+            13
+          ],
+          [
+            "cosmetify.com",
+            13
+          ],
+          [
+            "roadethos.com",
+            13
+          ],
+          [
+            "gobrandwave.com",
+            12
+          ]
+        ]
+      },
+      "gpt-6-astra": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 2.588888888888889,
+        "sources_per_call": 92.45555555555555,
+        "citations_per_call": 8.177777777777777,
+        "share_with_citation": 0.9555555555555556,
+        "top20_cited_domains": [
+          [
+            "consumerreports.org",
+            42
+          ],
+          [
+            "vogue.com",
+            39
+          ],
+          [
+            "allure.com",
+            36
+          ],
+          [
+            "vinepair.com",
+            35
+          ],
+          [
+            "rtings.com",
+            23
+          ],
+          [
+            "wineenthusiast.com",
+            17
+          ],
+          [
+            "statista.com",
+            16
+          ],
+          [
+            "stereophile.com",
+            15
+          ],
+          [
+            "cosmetify.com",
+            15
+          ],
+          [
+            "cosmeticsbusiness.com",
+            14
+          ],
+          [
+            "whowhatwear.com",
+            13
+          ],
+          [
+            "caranddriver.com",
+            13
+          ],
+          [
+            "beautymatter.com",
+            12
+          ],
+          [
+            "thespiritsbusiness.com",
+            12
+          ],
+          [
+            "iwsc.net",
+            12
+          ],
+          [
+            "aad.org",
+            11
+          ],
+          [
+            "diarydirectory.com",
+            10
+          ],
+          [
+            "glamour.com",
+            10
+          ],
+          [
+            "bustle.com",
+            10
+          ],
+          [
+            "subaru.com",
+            10
+          ]
+        ]
+      },
+      "gemini-4-argon": {
+        "s1_answered_calls": 90,
+        "searches_per_call": 0.4,
+        "sources_per_call": 1.6555555555555554,
+        "citations_per_call": 3.8666666666666667,
+        "share_with_citation": 0.17777777777777778,
+        "top20_cited_domains": [
+          [
+            "youtube.com",
+            65
+          ],
+          [
+            "forbes.com",
+            21
+          ],
+          [
+            "thewhiskeywash.com",
+            16
+          ],
+          [
+            "beautypackaging.com",
+            16
+          ],
+          [
+            "prnewswire.com",
+            13
+          ],
+          [
+            "hernogin.com",
+            12
+          ],
+          [
+            "suntoryglobalspirits.com",
+            10
+          ],
+          [
+            "newsnationnow.com",
+            10
+          ],
+          [
+            "qz.com",
+            8
+          ],
+          [
+            "dermstore.com",
+            7
+          ],
+          [
+            "iwsc.net",
+            7
+          ],
+          [
+            "ecoustics.com",
+            7
+          ],
+          [
+            "carpro.com",
+            7
+          ],
+          [
+            "jdpower.com",
+            6
+          ],
+          [
+            "gravelai.com",
+            5
+          ],
+          [
+            "artofskincare.com",
+            5
+          ],
+          [
+            "cluboenologique.com",
+            5
+          ],
+          [
+            "wine-searcher.com",
+            5
+          ],
+          [
+            "suntory.com",
+            5
+          ],
+          [
+            "theautochannel.com",
+            5
+          ]
+        ]
+      }
+    },
+    "6_cost": {
+      "BASIS": "recorded usage of every billed request (usage_parts) x list prices of section 4.5 (budget_v0_42.record_cost: batch/standard token prices, Google thinking billed as output, search fees); all raw attempts; the v0.23 judge's spend is not in the raw file",
+      "per_model_condition": {
+        "claude-fable-5-2|S0": {
+          "records": 202,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 9473,
+          "output_tokens_billed": 220552,
+          "searches_billed": 0,
+          "usd": 4.448932
+        },
+        "claude-fable-5-2|S1": {
+          "records": 120,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 1989632,
+          "output_tokens_billed": 312023,
+          "searches_billed": 153,
+          "usd": 15.728988
+        },
+        "gpt-6-astra|S0": {
+          "records": 202,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 5705,
+          "output_tokens_billed": 167855,
+          "searches_billed": 0,
+          "usd": 8.4498
+        },
+        "gpt-6-astra|S1": {
+          "records": 90,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 2740428,
+          "output_tokens_billed": 100167,
+          "searches_billed": 297,
+          "usd": 35.38263
+        },
+        "gemini-4-argon|S0": {
+          "records": 208,
+          "records_with_tokens": 202,
+          "billed_requests": 202,
+          "input_tokens": 10813,
+          "output_tokens_billed": 162569,
+          "searches_billed": 0,
+          "usd": 1.647316
+        },
+        "gemini-4-argon|S1": {
+          "records": 168,
+          "records_with_tokens": 90,
+          "billed_requests": 90,
+          "input_tokens": 21360,
+          "output_tokens_billed": 125075,
+          "searches_billed": 36,
+          "usd": 1.7974700000000001
+        }
+      },
+      "total_usd": 67.45513600000001
+    }
+  }
+}
