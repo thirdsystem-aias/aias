@@ -16,7 +16,9 @@ Usage:
     add_footer(fig, verdict="H_Something CONFIRMED — details.", phase="v0.24")
     fig.savefig(out, **SAVEFIG_PARAMS)
 
-Source: third_system_brand.json schema v1.2
+Source: third_system_brand.json schema v1.2; chart slots of report design system v2
+(brand v1.6, report_specs v1.2) in REPORT_V2_CHART_SLOTS; measure colour roles
+(COLOR_PRESENCE, COLOR_CONSISTENCY, ...). Existing sizes and colours unchanged.
 """
 
 from pathlib import Path
@@ -88,6 +90,14 @@ TEAL   = PALETTE["teal"]
 BLACK  = PALETTE["black"]
 GRAY   = PALETTE["gray"]
 
+# Measure colour roles (brand palette.measure_color_semantics, approved Nov 12, 2026).
+# Copper Plate (WARM) keeps its challenger meaning, so Consistency is Rust.
+COLOR_PRESENCE    = PALETTE["indigo"]      # #37237B
+COLOR_CONSISTENCY = PALETTE["warm_t1"]     # #BD4718 Rust
+COLOR_REFERENCE   = PALETTE["gray_light"]  # #CCCCCC Black 20
+COLOR_FAILED_OLD  = "#6E6E6E"
+WAVE_COLORS       = (PALETTE["indigo_t3"], PALETTE["indigo_t2"], PALETTE["indigo"])  # light to dark
+
 # ============================================================
 # 2. FIGSIZE — from brand chart_sizing_specifications
 # ============================================================
@@ -101,6 +111,18 @@ FIGSIZE = {
     "hero_tall":    (7.5, 6.5),     # 6-column hero tall (15+ brands)
     "hero_short":   (7.5, 3.5),     # 6-column hero short (few categories)
     "spread":       (7.5, 4.5),     # two-panel spread
+}
+
+# Report design system v2 (approved Nov 11, 2026; laid out by reports/ts_layout.py):
+# which FIGSIZE keys fit which page slot. A finding page carries one chart at full content
+# width under the headline block; the Tier 1 evidence page carries up to two 3-column charts
+# side by side. Word-budget deductions per chart are in report_specs.json word_budget
+# (6-column hero -350, short hero -270, 4-column -180, 3-column -110). The v2 spec gives the
+# short hero as 7.5 x 3.75 in; that height is within the brand table's +/-15% allowance on
+# hero_short (7.5 x 3.5), so no size here changes.
+REPORT_V2_CHART_SLOTS = {
+    "finding_page":          ("hero", "hero_short"),
+    "finding_evidence_page": ("3col",),
 }
 
 # ============================================================

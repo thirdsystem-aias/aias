@@ -1,11 +1,12 @@
 {
   "_meta": {
-    "schema_version": "1.1",
+    "schema_version": "1.2",
     "purpose": "Defines the eight document types Third System produces. Each maps to an InDesign template family from design_tokens_template.json. The receiving chat should use these specs as production briefs.",
     "naming_convention": "Third System / [Document Type] / [Subject] / v[Version]",
     "version_history": [
       "1.0 \u2014 initial spec, 8 document types",
-      "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence."
+      "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence.",
+      "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3."
     ]
   },
   "product_structure_summary": {
@@ -277,7 +278,8 @@
           "position": "Pattern 6 section \u2014 inline",
           "purpose": "Mint phantom-brand persistence comparison"
         }
-      }
+      },
+      "tier": 1
     },
     "category_snapshot": {
       "priority": 2,
@@ -303,7 +305,8 @@
       "disclaimer_type": "diagnostic_pilot",
       "byline_type": "report_cover_short",
       "chart_size_default": "3-col span (front), 6-col span if it's the hero",
-      "cta": "Curiosity-driven, not commercial. Sample: 'Want to know how your brand performs in AI mediation?' \u2192 hello@thirdsystem.ai"
+      "cta": "Curiosity-driven, not commercial. Sample: 'Want to know how your brand performs in AI mediation?' \u2192 hello@thirdsystem.ai",
+      "tier": 3
     },
     "about_third_system_one_pager": {
       "priority": 3,
@@ -325,7 +328,8 @@
       "logo_use": "Product lockup at top",
       "footer_type": "public_report",
       "disclaimer_type": "none_on_page (kept short and uncluttered)",
-      "byline_type": "report_masthead_long"
+      "byline_type": "report_masthead_long",
+      "tier": 3
     },
     "methodology_brief": {
       "priority": 4,
@@ -350,7 +354,8 @@
       "footer_type": "public_report",
       "disclaimer_type": "methodology_standard",
       "byline_type": "report_masthead_long",
-      "fold_orientation": "standard tri-fold (left flap \u2192 right flap \u2192 spread)"
+      "fold_orientation": "standard tri-fold (left flap \u2192 right flap \u2192 spread)",
+      "tier": null
     },
     "brand_diagnostic_report": {
       "priority": 5,
@@ -376,7 +381,8 @@
       "disclaimer_type": "diagnostic_pilot + methodology_standard",
       "byline_type": "report_masthead_long",
       "chart_size_default": "Same as cross-category report",
-      "delivery_mode": "PDF only, watermarked with client name"
+      "delivery_mode": "PDF only, watermarked with client name",
+      "tier": 2
     },
     "sample_diagnostic": {
       "priority": 6,
@@ -389,7 +395,8 @@
       "logo_use": "Wordmark",
       "footer_type": "public_report",
       "byline_type": "report_cover_short",
-      "watermark": "SAMPLE \u2014 anonymized for illustrative purposes"
+      "watermark": "SAMPLE \u2014 anonymized for illustrative purposes",
+      "tier": 2
     },
     "capabilities_deck": {
       "priority": 7,
@@ -398,7 +405,8 @@
       "purpose": "16:9 slide deck for warm intro meetings, partner conversations, conference pitches.",
       "format": "Google Slides or Keynote, NOT InDesign",
       "page_count_target": "10\u201314 slides",
-      "_note": "Don't build this until first 5 outreach conversations have happened \u2014 shape will become clear from what prospects actually ask about."
+      "_note": "Don't build this until first 5 outreach conversations have happened \u2014 shape will become clear from what prospects actually ask about.",
+      "tier": null
     },
     "quarterly_tracker": {
       "priority": 8,
@@ -407,7 +415,246 @@
       "purpose": "Longitudinal report once Phase 2 produces time-series data across categories.",
       "page_count_target": "16\u201324 pages",
       "template_family": "C-Brochure (long-form)",
-      "_note": "Not needed yet. Specifying it here for system completeness."
+      "_note": "Not needed yet. Specifying it here for system completeness.",
+      "tier": null
+    }
+  },
+  "running_header": {
+    "label": "AIAS\u2122 Category Study \u00b7 v0.NN \u00b7 Month YYYY",
+    "retired": [
+      "Focal-Brand Study"
+    ],
+    "style": "third_system_brand.json typography.number_scale.running_header"
+  },
+  "word_budget": {
+    "_note": "Check every page against its budget before the build. Budget = full text page minus the deduction for each element on the page.",
+    "full_text_page_words": 600,
+    "deductions_words": {
+      "hero_6col": 350,
+      "hero_6col_short": 270,
+      "chart_4col": 180,
+      "chart_3col": 110,
+      "number_row": 80,
+      "section_opener": 120
+    },
+    "element_notes": {
+      "hero_6col": "6-column hero chart",
+      "hero_6col_short": "6-column short hero chart, 7.5 x 3.75 in",
+      "chart_4col": "4-column chart",
+      "chart_3col": "3-column chart",
+      "number_row": "row of three big numbers",
+      "section_opener": "section opener"
+    },
+    "at_a_glance": {
+      "words_excluding_summary": 270,
+      "_note": "about 270 words plus the summary; if the summary overflows the page, cut copy, never spill onto another page"
+    }
+  },
+  "section_template": {
+    "_note": "Inside-page templates of report design system v2 (approved Nov 11, 2026), built by reports/ts_layout.py. Distances in points from the top edge of the page unless named otherwise.",
+    "tier_1": {
+      "pages": [
+        16,
+        24
+      ],
+      "cover": "C2",
+      "sequence": [
+        "cover_c2",
+        "at_a_glance",
+        "contents",
+        "intro",
+        "section_opener",
+        "finding_page",
+        "finding_evidence_page"
+      ],
+      "findings": "2-page spread: finding_page + finding_evidence_page",
+      "section_openers": true,
+      "infographics_max": 1
+    },
+    "tier_2": {
+      "pages": [
+        10,
+        14
+      ],
+      "cover": "C3",
+      "sequence": [
+        "cover_c3",
+        "at_a_glance",
+        "finding_page"
+      ],
+      "findings": "one finding_page per finding",
+      "section_openers": false,
+      "infographics_max": 0
+    },
+    "tier_3": {
+      "pages": [
+        1,
+        4
+      ],
+      "cover": null,
+      "sequence": [
+        "title_block",
+        "standfirst",
+        "number_row",
+        "one chart"
+      ],
+      "big_number_front_allowed": true
+    },
+    "page_templates": {
+      "inside_page": {
+        "ground": "paper",
+        "_note": "ground of inside pages (covers: cover_system C2/C3 ground; openers: indigo)"
+      },
+      "running_header": {
+        "baseline_from_top_pt": 40,
+        "x_pt": 36,
+        "label_align": "right"
+      },
+      "footer": {
+        "rule_from_bottom_pt": 50,
+        "rule_stroke_pt": 0.5,
+        "rule_color": "grid",
+        "baseline_from_bottom_pt": 38,
+        "size_pt": 6.5,
+        "color": "warm_gray",
+        "text": "third_system_brand.json footers.public_report"
+      },
+      "at_a_glance": {
+        "kicker_baseline_from_top_pt": 92,
+        "standfirst_top_from_top_pt": 100,
+        "standfirst_width_pt": 520,
+        "number_row_gap_below_standfirst_pt": 40,
+        "number_row": {
+          "columns": 3,
+          "column_gap_pt": 18,
+          "rule_stroke_pt": 1,
+          "rule_color": "indigo",
+          "icon_size_pt": 26,
+          "icon_gap_above_rule_pt": 8,
+          "number_baseline_below_rule_pt": 58,
+          "label_top_below_rule_pt": 70,
+          "label_height_pt": 26,
+          "source_baseline_below_rule_pt": 108
+        },
+        "box": {
+          "x_pt": 36,
+          "width_pt": 170,
+          "fill": "#EFEDF6",
+          "fill_note": "Lavender Grey at a 25% tint (decision 6)",
+          "padding_pt": 12,
+          "bottom_from_bottom_pt": 66,
+          "gap_below_number_row_pt": 24,
+          "heading": "WHAT WE MEASURED",
+          "heading_size_pt": 7.5,
+          "icon_size_pt": 24,
+          "icon_pitch_pt": 38,
+          "method_icons": [
+            "question",
+            "ai_model",
+            "answer",
+            "score"
+          ],
+          "text_size_pt": 8.5,
+          "text_leading_pt": 12,
+          "words_target": 60
+        },
+        "summary": {
+          "x_pt": 226,
+          "width_pt": 350,
+          "space_after_pt": 7
+        }
+      },
+      "finding_page": {
+        "number_x_pt": 32,
+        "number_baseline_from_top_pt": 170,
+        "text_x_pt": 166,
+        "kicker_baseline_from_top_pt": 100,
+        "headline_top_from_top_pt": 108,
+        "headline_width_pt": 410,
+        "headline_max_height_pt": 72,
+        "rule_from_top_pt": 196,
+        "rule_stroke_pt": 0.75,
+        "chart_top_from_top_pt": 206,
+        "chart_width": "content width (540 pt)",
+        "caption": {
+          "gap_below_chart_pt": 8,
+          "size_pt": 8.5,
+          "leading_pt": 12,
+          "weight": "Regular",
+          "color": "soft_black"
+        },
+        "body": {
+          "gap_below_caption_pt": 14,
+          "columns": 2,
+          "column_width_pt": 252,
+          "gutter_pt": 36,
+          "bottom_from_bottom_pt": 70
+        }
+      },
+      "finding_evidence_page": {
+        "kicker_baseline_from_top_pt": 92,
+        "charts_top_from_top_pt": 108,
+        "charts_max": 2,
+        "chart_columns": 3,
+        "chart_gap_pt": 10,
+        "caption_gap_below_chart_pt": 8,
+        "body_gap_below_charts_pt": 18
+      },
+      "section_opener": {
+        "ground": "indigo",
+        "wordmark_baseline_from_top_pt": 40,
+        "wordmark_size_pt": 10,
+        "part_baseline_from_bottom_ratio": 0.62,
+        "title_top_from_bottom_ratio": 0.59,
+        "title_width_pt": 440,
+        "numeral_right_x_pt": 582,
+        "numeral_baseline_from_bottom_pt": 56
+      },
+      "contents": {
+        "kicker_baseline_from_top_pt": 92,
+        "first_row_top_from_top_pt": 120,
+        "row_pitch_pt": 30,
+        "part_gap_pt": 18,
+        "entry_size_pt": 14,
+        "rule_stroke_pt": 0.5
+      },
+      "text_page": {
+        "kicker_baseline_from_top_pt": 92,
+        "heading_top_from_top_pt": 100,
+        "body_columns": 2,
+        "column_width_pt": 252,
+        "gutter_pt": 36,
+        "subheading_size_pt": 9.4,
+        "subheading_leading_pt": 13.2,
+        "small_size_pt": 7.5,
+        "small_leading_pt": 10.5,
+        "small_space_after_pt": 2.5
+      },
+      "table": {
+        "header_size_pt": 8.5,
+        "header_leading_pt": 11,
+        "cell_size_pt": 8.5,
+        "cell_leading_pt": 11.5,
+        "outer_rule_pt": 1.2,
+        "header_rule_pt": 0.5,
+        "row_rule_pt": 0.3,
+        "rule_color": "indigo",
+        "row_rule_color": "lavender_grey",
+        "padding_pt": 5
+      },
+      "closing_page": {
+        "_note": "Tier 1 closing page, approved by Pablo on Nov 12, 2026 (AIAS 2.0 report r3): the large closing statement, then the admin blocks as a quiet two-column colophon under a footer-style rule, low on the page, then a full-width Indigo band (the C2 cover block's fill) with one line: the wordmark in white at the cover lockup's size, THIRDSYSTEM.AI in Lavender Grey caps, and the page number. The band replaces the footer line on this page only (no copyright footer line).",
+        "band_fill": "#37237B",
+        "band_height_pt": 96,
+        "band_baseline_from_bottom_pt": 42,
+        "colophon_gap_above_band_pt": 34,
+        "colophon_rule_gap_pt": 14,
+        "colophon_size_pt": 7.2,
+        "colophon_leading_pt": 9.9,
+        "colophon_space_after_pt": 2.2,
+        "colophon_block_gap_pt": 8,
+        "min_gap_below_statement_pt": 30
+      }
     }
   }
 }

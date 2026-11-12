@@ -1,6 +1,6 @@
 {
   "_meta": {
-    "schema_version": "1.5",
+    "schema_version": "1.6",
     "purpose": "Third System brand boilerplate. Overrides the design_tokens_template.json defaults for any Third System-published deliverable. Locked content; edit only with intent.",
     "owner": "Pablo Ulpiano Gonzalez Castro",
     "version_history": [
@@ -9,7 +9,8 @@
       "1.2 \u2014 comprehensive data viz system fully adopted under the Third System brand: 35 named colors \u00d7 CMYK Coated/Uncoated/RGB/Hex/Pantone, 5 neutral tones, 5 grayscale tones, four chart schemes (Qualitative-Recommended, Qualitative-Standard, Sequential, Diverging), color-blindness-tested pairings, chart construction rules.",
       "1.3 \u2014 added Black 10 grayscale tone; locked tier_color_semantics (Incumbent=Indigo, Mid-tier=Petro, Challenger=Copper Plate); added semantic_ui_colors (text/muted/grid) and python_constant_mapping for stable cross-chat constant naming.",
       "1.4 \u2014 added chart_sizing_specifications: locked figsize-by-column-span table, DPI targets (300 print/144 screen), font-size scaling per column span, title/subtitle/source positioning formulas, output filename convention. Default output is print-first (300 DPI vector PDF) which renders correctly for both print and screen.",
-      "1.5 \u2014 citation byline corrected to surname-first Spanish convention (Gonzalez Castro, P. U.) in citation.format and citation.example; cleaned corrupted byline injection from disclaimers.diagnostic_pilot."
+      "1.5 \u2014 citation byline corrected to surname-first Spanish convention (Gonzalez Castro, P. U.) in citation.format and citation.example; cleaned corrupted byline injection from disclaimers.diagnostic_pilot.",
+      "1.6 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: publication_tiers, typography.number_scale, cover_system (C2 for Tier 1, C3 for Tier 2, product lockup on every cover), photography (rules, licensed pool, usage record) and pictograms (draft set, none approved). Palette colours, logos, footers, disclaimers, the 6-column Letter grid and body text 9.4/13.2 are unchanged. Nov 12, 2026 (Pablo, AIAS 2.0 report r3): palette.measure_color_semantics adds roles over existing colours (Presence Indigo #37237B, Consistency Rust #BD4718, challengers keep Copper Plate #F36C35, waves light to dark Lavender Grey/Iris/Indigo, reference and failed greys, label ink), with python_constant_mapping.measure_semantics."
     ]
   },
   "company": {
@@ -1656,6 +1657,63 @@
         "use": "Emerging or DTC brands; high Discovery presence, lower Comparison presence. Visually contrasts with Incumbent."
       }
     },
+    "measure_color_semantics": {
+      "_note": "Colour roles for charts that show the two AIAS scores, approved by Pablo on Nov 12, 2026 (AIAS 2.0 report r3). Roles sit on existing palette colours; no colour is new. One meaning per colour across documents: Copper Plate stays the challenger colour (tier_color_semantics.challenger), so Consistency takes Rust. Colour is never the only cue: row labels, value labels, legends or marker shape carry the same information.",
+      "presence": {
+        "hex": "#37237B",
+        "name": "Indigo",
+        "source": "palette.data_viz.families.indigo.accent",
+        "use": "Presence marks (dots, bars, lines) and their value labels where coloured.",
+        "contrast": "12.43:1 on white; 11.64:1 on Paper #FAF7F2"
+      },
+      "consistency": {
+        "hex": "#BD4718",
+        "name": "Rust",
+        "source": "palette.data_viz.families.warm.tertiary_1",
+        "use": "Consistency marks; also the current Consistency measure where a chart sets it against a retired one (the retired one is reference grey). Passes as text.",
+        "contrast": "5.15:1 on white; 4.82:1 on Paper #FAF7F2 (passes 4.5:1 for text and 3:1 for marks)"
+      },
+      "challenger": {
+        "hex": "#F36C35",
+        "name": "Copper Plate",
+        "source": "palette.tier_color_semantics.challenger",
+        "use": "Challenger brands only (keeps its meaning everywhere). Marks only, never text: 2.997:1 on white, 2.80:1 on Paper."
+      },
+      "waves_light_to_dark": {
+        "hex": [
+          "#BBB9DD",
+          "#908EC5",
+          "#37237B"
+        ],
+        "name": [
+          "Lavender Grey",
+          "Iris",
+          "Indigo"
+        ],
+        "use": "Time and waves, earliest lightest. Two waves: Lavender Grey (edged in Iris #908EC5, 3.06:1 on white) then Indigo. Three waves: Lavender Grey, Iris, Indigo."
+      },
+      "reference": {
+        "hex": "#CCCCCC",
+        "name": "Black 20",
+        "source": "palette.data_viz.complimentary_grays.black_20",
+        "use": "Reference ranges and null bands (e.g. shuffled-answer band)."
+      },
+      "failed_or_old": {
+        "hex": "#6E6E6E",
+        "name": "chart grey",
+        "use": "A failed or retired measure shown for comparison (value label in the same grey)."
+      },
+      "fail_zone": {
+        "hex": "#E4E4E4",
+        "name": "light grey zone",
+        "use": "Area beyond a limit (e.g. 'fails the 0.95 limit')."
+      },
+      "label_ink": {
+        "hex": "#1A1A1A",
+        "name": "chart ink",
+        "use": "Value labels next to marks whose colour fails 4.5:1 as text."
+      }
+    },
     "semantic_ui_colors": {
       "_note": "Semantic color aliases for chart and document UI. These point at existing palette entries; keep them in sync if the underlying color ever changes.",
       "color_text": {
@@ -1828,6 +1886,30 @@
           "midtier": "#6A6AB1",
           "challenger": "#F36C35"
         }
+      },
+      "measure_semantics": {
+        "_note": "Measure colour roles (palette.measure_color_semantics). Use in any chart showing Presence and Consistency.",
+        "COLOR_PRESENCE": {
+          "hex": "#37237B",
+          "source": "palette.measure_color_semantics.presence"
+        },
+        "COLOR_CONSISTENCY": {
+          "hex": "#BD4718",
+          "source": "palette.measure_color_semantics.consistency"
+        },
+        "COLOR_REFERENCE": {
+          "hex": "#CCCCCC",
+          "source": "palette.measure_color_semantics.reference"
+        },
+        "COLOR_FAILED_OLD": {
+          "hex": "#6E6E6E",
+          "source": "palette.measure_color_semantics.failed_or_old"
+        },
+        "WAVE_COLORS": [
+          "#BBB9DD",
+          "#908EC5",
+          "#37237B"
+        ]
       },
       "additional_recommended_constants": {
         "_note": "Constants the parallel chat or any chart_style.py should also expose for completeness.",
@@ -2231,7 +2313,146 @@
     ],
     "rendering_fallback": "Inter (free, near-equivalent metrics). Where Akkurat Pro is licensed, register via pdfmetrics.registerFont(); where not, fall back to Inter, document the substitution in the rendering log.",
     "system_is_monofont": true,
-    "_rationale": "Reports use Akkurat Pro only \u2014 no serif companion. Visually disciplined; signals the data is the star; avoids the agency-report feel of dual-typeface design systems. The book/paper may use a serif companion (Tiempos / Lyon / GT Sectra) for longform academic prose, but reports stay sans-only."
+    "_rationale": "Reports use Akkurat Pro only \u2014 no serif companion. Visually disciplined; signals the data is the star; avoids the agency-report feel of dual-typeface design systems. The book/paper may use a serif companion (Tiempos / Lyon / GT Sectra) for longform academic prose, but reports stay sans-only.",
+    "number_scale": {
+      "_note": "Report design system v2 type scale (approved Nov 11, 2026). Light for large type; body size and leading unchanged. Colour names refer to the palette: indigo = palette.primary_brand.indigo, soft_black = palette.anchor_black, warm_gray = palette.semantic_ui_colors.color_muted (#6B6967), lavender_grey = palette.brand_supporting.lavender_grey, white = single-colour reproduction on dark grounds (logos.do_not).",
+      "colour_refs": {
+        "indigo": "palette.primary_brand.indigo.hex",
+        "soft_black": "palette.anchor_black.hex",
+        "warm_gray": "palette.semantic_ui_colors.color_muted.hex",
+        "lavender_grey": "palette.brand_supporting.lavender_grey.hex",
+        "grid": "palette.semantic_ui_colors.color_grid.hex",
+        "paper": "palette.paper_off_white.hex",
+        "white": "#FFFFFF"
+      },
+      "cover_title": {
+        "weight": "Light",
+        "size_pt_range": [
+          30,
+          46
+        ],
+        "C2": {
+          "size_pt": 30,
+          "leading_pt": 33,
+          "color": "white"
+        },
+        "C3": {
+          "size_pt": 36,
+          "leading_pt": 39,
+          "color": "soft_black"
+        }
+      },
+      "cover_kicker": {
+        "size_pt": 7.5,
+        "case": "upper",
+        "tracking_em": 0.06,
+        "C2": {
+          "weight": "Regular",
+          "color": "lavender_grey"
+        },
+        "C3": {
+          "weight": "Bold",
+          "color": "indigo"
+        }
+      },
+      "cover_deck": {
+        "weight": "Regular",
+        "size_pt": 11,
+        "leading_pt": 15.5,
+        "color": "soft_black"
+      },
+      "cover_byline": {
+        "weight": "Regular",
+        "size_pt": 7,
+        "case": "upper",
+        "tracking_em": 0.06,
+        "color": "warm_gray"
+      },
+      "standfirst": {
+        "weight": "Light",
+        "size_pt": 20,
+        "leading_pt": 26,
+        "color": "soft_black",
+        "_note": "no longer Bold Indigo"
+      },
+      "finding_number": {
+        "weight": "Light",
+        "size_pt": 96,
+        "color": "indigo"
+      },
+      "finding_headline": {
+        "weight": "Light",
+        "size_pt": 28,
+        "leading_pt": 31,
+        "color": "soft_black"
+      },
+      "kicker": {
+        "weight": "Bold",
+        "size_pt": 8,
+        "case": "upper",
+        "tracking_em": 0.06,
+        "color": "indigo",
+        "example": "FINDING 01 \u00b7 CONFIRMED"
+      },
+      "big_number": {
+        "weight": "Light",
+        "size_pt": 56,
+        "color": "indigo",
+        "unit_size_ratio": 0.43
+      },
+      "number_label": {
+        "weight": "Regular",
+        "size_pt": 8,
+        "leading_pt": 10,
+        "case": "upper",
+        "color": "warm_gray"
+      },
+      "number_source": {
+        "weight": "Regular",
+        "size_pt": 7,
+        "color": "warm_gray"
+      },
+      "section_opener_part": {
+        "weight": "Bold",
+        "size_pt": 8.5,
+        "case": "upper",
+        "tracking_em": 0.06,
+        "color": "lavender_grey"
+      },
+      "section_opener_title": {
+        "weight": "Light",
+        "size_pt": 44,
+        "leading_pt": 47,
+        "color": "white"
+      },
+      "section_opener_numeral": {
+        "weight": "Light",
+        "size_pt": 200,
+        "color": "lavender_grey"
+      },
+      "running_header": {
+        "wordmark": {
+          "weight": "Bold",
+          "size_pt": 10,
+          "color": "indigo"
+        },
+        "label": {
+          "weight": "Regular",
+          "size_pt": 7,
+          "case": "upper",
+          "tracking_em": 0.06,
+          "color": "warm_gray"
+        },
+        "label_text": "report_specs.json running_header"
+      },
+      "body": {
+        "weight": "Regular",
+        "size_pt": 9.4,
+        "leading_pt": 13.2,
+        "color": "soft_black",
+        "_note": "size and leading unchanged; Regular as in the approved mock-ups"
+      }
+    }
   },
   "logos": {
     "primary_wordmark": {
@@ -2276,5 +2497,474 @@
     "directional_indicator": "Share of Model (SOM)",
     "commercial_pilot_offering": "AI Brand Visibility Diagnostic (Pilot)",
     "future_full_series_name": "AI Availability Report (planned for when AIAS components beyond Presence ship)"
+  },
+  "publication_tiers": {
+    "_note": "Report design system v2 (approved Nov 11, 2026). Applies to Third System brand-format reports (managerial register) from v0.40 on, and to the AIAS 2.0 report as a restyled Tier 1 revision (Pablo, Nov 11, 2026). Not to SSRN papers. Other published reports stay as they are.",
+    "tier_1": {
+      "name": "Flagship",
+      "examples": [
+        "v0.40",
+        "AIAS 2.0",
+        "t4 wave",
+        "AIAS 6.0",
+        "final confirmation",
+        "Cross-Category Findings"
+      ],
+      "pages": [
+        16,
+        24
+      ],
+      "cover": "C2",
+      "inside": [
+        "At a glance",
+        "contents",
+        "intro",
+        "findings as 2-page spreads",
+        "full-Indigo section openers",
+        "one infographic allowed"
+      ]
+    },
+    "tier_2": {
+      "name": "Study",
+      "examples": [
+        "Category studies",
+        "Brand Diagnostic",
+        "Sample Diagnostic"
+      ],
+      "pages": [
+        10,
+        14
+      ],
+      "cover": "C3",
+      "inside": [
+        "At a glance",
+        "one page per finding",
+        "no openers"
+      ]
+    },
+    "tier_3": {
+      "name": "Brief",
+      "examples": [
+        "Website study summary",
+        "Category Snapshot",
+        "one-pagers"
+      ],
+      "pages": [
+        1,
+        4
+      ],
+      "cover": null,
+      "inside": [
+        "title block",
+        "standfirst",
+        "three numbers",
+        "one chart"
+      ],
+      "big_number_front_allowed": true
+    }
+  },
+  "cover_system": {
+    "_note": "Report covers, design system v2 (approved Nov 11, 2026; mock-ups 4_cover_C_options.png, C2 and C3). Letter portrait 612 x 792 pt, 36 pt margins, 6 columns of 81.67 pt with 10 pt gutters. Distances from the top edge unless named otherwise.",
+    "lockup": {
+      "_note": "Every cover keeps the product lockup top left: 'Third System' alone does not say what it is (Pablo).",
+      "x_pt": 36,
+      "line1": {
+        "text": "Third System",
+        "weight": "Bold",
+        "size_pt": 16,
+        "baseline_from_top_pt": 50
+      },
+      "line2": {
+        "text": "AI Presence Index",
+        "weight": "Regular",
+        "size_pt": 11.5,
+        "baseline_gap_pt": 15
+      },
+      "on_light": {
+        "line1": "indigo",
+        "line2": "soft_black"
+      },
+      "on_dark": {
+        "line1": "white",
+        "line2": "lavender_grey"
+      }
+    },
+    "C2": {
+      "tier": 1,
+      "ground": "paper",
+      "photo": {
+        "x_pt": 0,
+        "width": "page",
+        "top_from_top_pt": 86,
+        "bottom_from_top_ratio": 0.62,
+        "_note": "Full width; the photo zone runs from 86 pt below the top edge (the paper band that carries the lockup) to 62% of the page height, as in the approved mock-up."
+      },
+      "title_block": {
+        "fill": "indigo",
+        "x_pt": 0,
+        "columns": [
+          1,
+          5
+        ],
+        "height_pt": 206,
+        "hang_below_photo_pt": 120,
+        "_note": "Starts at the left page edge and ends at the right edge of column 5. It crosses the photo's bottom edge: 120 pt of it hang below the photo and the remaining 86 pt sit over the photo, as in the approved mock-up.",
+        "text_x_pt": 36,
+        "text_right_padding_pt": 24,
+        "kicker_baseline_below_block_top_pt": 30,
+        "title_bottom_padding_pt": 24
+      },
+      "kicker_style": "typography.number_scale.cover_kicker.C2",
+      "title_style": "typography.number_scale.cover_title.C2",
+      "deck": {
+        "style": "typography.number_scale.cover_deck",
+        "columns": [
+          1,
+          4
+        ],
+        "top_gap_below_block_pt": 18
+      },
+      "byline": {
+        "style": "typography.number_scale.cover_byline",
+        "baseline_from_bottom_pt": 42
+      }
+    },
+    "C3": {
+      "tier": 2,
+      "ground": "paper",
+      "photo": {
+        "x_pt": 36,
+        "top_from_top_pt": 96,
+        "width_pt": 540,
+        "height_pt": 330,
+        "_note": "framed inside the margins"
+      },
+      "kicker": {
+        "style": "typography.number_scale.cover_kicker.C3",
+        "baseline_below_photo_pt": 28
+      },
+      "title": {
+        "style": "typography.number_scale.cover_title.C3",
+        "top_below_photo_pt": 40,
+        "width_pt": 520
+      },
+      "rule": {
+        "width_pt": 60,
+        "stroke_pt": 1.5,
+        "color": "indigo",
+        "gap_below_title_pt": 18
+      },
+      "deck": {
+        "style": "typography.number_scale.cover_deck",
+        "columns": [
+          1,
+          4
+        ],
+        "top_gap_below_rule_pt": 24
+      },
+      "byline": {
+        "style": "typography.number_scale.cover_byline",
+        "baseline_from_bottom_pt": 42
+      }
+    }
+  },
+  "photography": {
+    "_note": "Cover photography, design system v2 (approved Nov 11, 2026). Pool, licences and assignments as recorded in the project docs claude/report-design-system-v2-prompt.md and claude/website-design-v2-prompt.md (Nov 11) and in the website's content/design-v2.json (commit 384fe34).",
+    "rules": [
+      "Black and white, abstract architecture or pattern.",
+      "Never literal for the category: a literal photo would show real brands, which breaks the independence rule.",
+      "Same treatment every time: greyscale, contrast 1.08, no colour tint, cropped to the cover frame.",
+      "Tier 1 gets a photo of its own that is never reused.",
+      "Tier 2 draws from the pool, with no photo repeated in the same calendar year.",
+      "A05 and A06 are roads: C3 covers only, and never for automotive or travel studies.",
+      "A15 and A16 are too small to print: website only."
+    ],
+    "treatment": {
+      "greyscale": true,
+      "contrast": 1.08,
+      "tint": null,
+      "crop": "centred, to the cover frame's aspect ratio"
+    },
+    "originals_dir": "Try system book/photo_review/shortlist/originals/",
+    "licence": "All pool photos are licensed for covers, the website and print, and the two web-only photos for the website (Pablo, Nov 11, 2026: the starting eight, then A05, A06, A07, A14, A17, A18, A15 and A16 at 7:33 pm).",
+    "pool": [
+      {
+        "id": "A01",
+        "source": "Getty",
+        "source_id": "100627201",
+        "file": "A01_Getty_100627201.jpg",
+        "subject": "Steps"
+      },
+      {
+        "id": "A02",
+        "source": "Getty",
+        "source_id": "106750946",
+        "file": "A02_Getty_106750946.jpg",
+        "subject": "Balconies"
+      },
+      {
+        "id": "A03",
+        "source": "Getty",
+        "source_id": "142742024",
+        "file": "A03_Getty_142742024.jpg",
+        "subject": "Zigzag tower"
+      },
+      {
+        "id": "A04",
+        "source": "Getty",
+        "source_id": "157568896",
+        "file": "A04_Getty_157568896.jpg",
+        "subject": "Wave facade"
+      },
+      {
+        "id": "A05",
+        "source": "iStock",
+        "source_id": "157601958",
+        "file": "A05_iStock_157601958.jpg",
+        "subject": "Interchange",
+        "added": "2026-11-11 19:30",
+        "covers": [
+          "C3"
+        ],
+        "never_for": [
+          "automotive",
+          "travel"
+        ],
+        "_note": "a road: C3 covers only"
+      },
+      {
+        "id": "A06",
+        "source": "iStock",
+        "source_id": "171147560",
+        "file": "A06_iStock_171147560.jpg",
+        "added": "2026-11-11 19:30",
+        "covers": [
+          "C3"
+        ],
+        "never_for": [
+          "automotive",
+          "travel"
+        ],
+        "_note": "a road: C3 covers only"
+      },
+      {
+        "id": "A07",
+        "source": "Getty",
+        "source_id": "504318253",
+        "file": "A07_Getty_504318253.jpg",
+        "subject": "Window grid",
+        "added": "2026-11-11 19:30"
+      },
+      {
+        "id": "A08",
+        "source": "iStock",
+        "source_id": "623456500",
+        "file": "A08_iStock_623456500.jpg",
+        "subject": "Curves"
+      },
+      {
+        "id": "A09",
+        "source": "iStock",
+        "source_id": "623456840",
+        "file": "A09_iStock_623456840.jpg",
+        "subject": "Arches"
+      },
+      {
+        "id": "A10",
+        "source": "Getty",
+        "source_id": "535344205",
+        "file": "A10_Getty_535344205.jpg",
+        "subject": "Chevron facade"
+      },
+      {
+        "id": "A11",
+        "source": "Getty",
+        "source_id": "541221844",
+        "file": "A11_Getty_541221844.jpg",
+        "subject": "Striped balconies"
+      },
+      {
+        "id": "A14",
+        "source": "Getty",
+        "source_id": "608953931",
+        "file": "A14_Getty_608953931.jpg",
+        "subject": "Radial grid",
+        "added": "2026-11-11 19:30"
+      },
+      {
+        "id": "A17",
+        "source": "Getty",
+        "source_id": "112257192",
+        "file": "A17_Getty_112257192.jpg",
+        "added": "2026-11-11 19:30"
+      },
+      {
+        "id": "A18",
+        "source": "Getty",
+        "source_id": "643826919",
+        "file": "A18_Getty_643826919.jpg",
+        "added": "2026-11-11 19:30"
+      }
+    ],
+    "web_only": [
+      {
+        "id": "A15",
+        "source": "Getty",
+        "source_id": "730227053",
+        "file": "A15_Getty_730227053.jpg"
+      },
+      {
+        "id": "A16",
+        "source": "Getty",
+        "source_id": "722301675",
+        "file": "A16_Getty_722301675.jpg"
+      }
+    ],
+    "not_in_pool": {
+      "ids": [
+        "A12"
+      ],
+      "_note": "Other images in the originals folder (A12, A13 and the B to G groups) are not licensed for use; they join the pool only if Pablo adds them."
+    },
+    "usage_record": [
+      {
+        "report": "v0.16 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A01",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.17 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A02",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.18 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A09",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.19 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A11",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.20 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A10",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.21 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A03",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.22 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A14",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.23 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A08",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.24 category study",
+        "tier": 2,
+        "used_on": "website study page",
+        "photo": "A07",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "v0.40 flagship",
+        "tier": 1,
+        "cover": "C2",
+        "photo": "A04",
+        "status": "reserved; used only for v0.40",
+        "recorded": "2026-11-11",
+        "source": "website study page, content/design-v2.json @384fe34"
+      },
+      {
+        "report": "AIAS 2.0 synthesis report, revision r3 (Tier 1 restyle)",
+        "tier": 1,
+        "cover": "C2",
+        "photo": "A18",
+        "recorded": "2026-11-11",
+        "status": "draft, proposed: needs Pablo's choice (A17 or A18, the only free print photos allowed on a C2 cover) and his confirmation of the licence; published only after 'go design v2'"
+      }
+    ]
+  },
+  "pictograms": {
+    "_note": "Report pictograms, design system v2. Status: draft, waiting for Pablo's markup. No icon is approved, so layouts carry none (ts_layout.icon() draws nothing for an icon not listed in 'approved').",
+    "status": "draft",
+    "approved": [],
+    "grid": {
+      "units": 64,
+      "live_area": [
+        4,
+        60
+      ],
+      "stroke_units": 3.5,
+      "join": "miter",
+      "cap": "butt",
+      "view": "straight-on"
+    },
+    "colour": {
+      "stroke": "soft_black",
+      "accent": "indigo",
+      "max_accent_elements": 1
+    },
+    "size_pt": [
+      26,
+      28
+    ],
+    "set": [
+      "question",
+      "ai_model",
+      "web_search",
+      "answer",
+      "coding",
+      "score",
+      "presence",
+      "consistency",
+      "category",
+      "brand",
+      "pre_registered",
+      "waves"
+    ],
+    "known_weak": {
+      "category": "reads as a server rack",
+      "consistency_and_waves": "too alike"
+    },
+    "rules": [
+      "Pablo marks up the icons he wants changed; redraw them on the grid in his S&P line style.",
+      "Until then, use only the icons he has approved.",
+      "Never reuse S&P icon files, only the style."
+    ],
+    "draft_preview": "Try system book/before_after/v2/8_icons_rev2.png"
   }
 }
