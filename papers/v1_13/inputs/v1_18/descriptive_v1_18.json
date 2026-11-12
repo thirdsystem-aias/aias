@@ -1,0 +1,806 @@
+{
+ "citations_field": {
+  "pooled": {
+   "pair_weighted_all_pairs": 13.534374051964445,
+   "n_pairs_all": 754,
+   "pair_weighted_rated_brands": 13.661517592663952,
+   "n_pairs_rated": 657,
+   "brand_weighted_rated_brands": 13.211306663842338,
+   "domain_weighted_answers": 12.226640159045726,
+   "n_domain_mentions": 1006,
+   "n_unresolved_mentions": 123
+  },
+  "brands": {
+   "v19:Audeze": {
+    "n_pairs": 19,
+    "unresolved_share": 9.586466165413533
+   },
+   "v19:Beyerdynamic": {
+    "n_pairs": 10,
+    "unresolved_share": 23.285714285714285
+   },
+   "v19:Dan Clark Audio": {
+    "n_pairs": 9,
+    "unresolved_share": 1.3888888888888888
+   },
+   "v19:Focal": {
+    "n_pairs": 20,
+    "unresolved_share": 9.107142857142858
+   },
+   "v19:Grado": {
+    "n_pairs": 6,
+    "unresolved_share": 8.63095238095238
+   },
+   "v19:HiFiMan": {
+    "n_pairs": 16,
+    "unresolved_share": 9.040178571428571
+   },
+   "v19:Meze": {
+    "n_pairs": 8,
+    "unresolved_share": 1.7857142857142856
+   },
+   "v19:Sennheiser": {
+    "n_pairs": 29,
+    "unresolved_share": 18.99014778325123
+   },
+   "v19:Sony": {
+    "n_pairs": 23,
+    "unresolved_share": 22.236024844720497
+   },
+   "v19:Stax": {
+    "n_pairs": 6,
+    "unresolved_share": 21.726190476190478
+   },
+   "v20:B.2": {
+    "n_pairs": 20,
+    "unresolved_share": 22.234848484848488
+   },
+   "v20:B.5": {
+    "n_pairs": 9,
+    "unresolved_share": 9.62962962962963
+   },
+   "v20:B.7": {
+    "n_pairs": 12,
+    "unresolved_share": 11.64141414141414
+   },
+   "v20:C.1": {
+    "n_pairs": 13,
+    "unresolved_share": 23.54811854811855
+   },
+   "v20:C.2": {
+    "n_pairs": 29,
+    "unresolved_share": 19.923869234214063
+   },
+   "v20:C.4": {
+    "n_pairs": 33,
+    "unresolved_share": 19.125016397743668
+   },
+   "v20:C.5": {
+    "n_pairs": 22,
+    "unresolved_share": 20.494883903974813
+   },
+   "v20:C.6": {
+    "n_pairs": 8,
+    "unresolved_share": 15.029761904761903
+   },
+   "v21:A.1": {
+    "n_pairs": 16,
+    "unresolved_share": 13.541666666666666
+   },
+   "v21:A.2": {
+    "n_pairs": 15,
+    "unresolved_share": 9.777777777777779
+   },
+   "v21:B.1": {
+    "n_pairs": 26,
+    "unresolved_share": 16.90018315018315
+   },
+   "v21:B.2": {
+    "n_pairs": 26,
+    "unresolved_share": 17.09249084249084
+   },
+   "v21:B.3": {
+    "n_pairs": 9,
+    "unresolved_share": 21.75925925925926
+   },
+   "v21:B.5": {
+    "n_pairs": 23,
+    "unresolved_share": 17.69151138716356
+   },
+   "v21:B.6": {
+    "n_pairs": 22,
+    "unresolved_share": 16.85606060606061
+   },
+   "v21:B.7": {
+    "n_pairs": 7,
+    "unresolved_share": 8.214285714285714
+   },
+   "v21:C.1": {
+    "n_pairs": 17,
+    "unresolved_share": 19.915966386554622
+   },
+   "v21:C.5": {
+    "n_pairs": 12,
+    "unresolved_share": 16.944444444444443
+   },
+   "v21:C.6": {
+    "n_pairs": 20,
+    "unresolved_share": 17.511904761904763
+   },
+   "v22:A.1": {
+    "n_pairs": 6,
+    "unresolved_share": 0.0
+   },
+   "v22:A.6": {
+    "n_pairs": 22,
+    "unresolved_share": 1.1363636363636365
+   },
+   "v22:A.7": {
+    "n_pairs": 26,
+    "unresolved_share": 0.9615384615384616
+   },
+   "v22:C.1": {
+    "n_pairs": 24,
+    "unresolved_share": 1.0416666666666667
+   },
+   "v22:C.2": {
+    "n_pairs": 23,
+    "unresolved_share": 1.0869565217391304
+   },
+   "v22:C.5": {
+    "n_pairs": 9,
+    "unresolved_share": 2.7777777777777777
+   },
+   "v23:S01": {
+    "n_pairs": 6,
+    "unresolved_share": 19.603174603174605
+   },
+   "v23:S02": {
+    "n_pairs": 7,
+    "unresolved_share": 16.349206349206348
+   },
+   "v23:S04": {
+    "n_pairs": 7,
+    "unresolved_share": 16.349206349206348
+   },
+   "v23:S15": {
+    "n_pairs": 8,
+    "unresolved_share": 14.305555555555555
+   },
+   "v23:S17": {
+    "n_pairs": 14,
+    "unresolved_share": 18.17293817293817
+   },
+   "v23:S20": {
+    "n_pairs": 10,
+    "unresolved_share": 14.777777777777777
+   },
+   "v23:S22": {
+    "n_pairs": 10,
+    "unresolved_share": 4.702204228520019
+   }
+  }
+ },
+ "sources_field_S5": {
+  "pooled": {
+   "pair_weighted_all_pairs": 37.24178444082916,
+   "n_pairs_all": 754,
+   "pair_weighted_rated_brands": 36.398757735287056,
+   "n_pairs_rated": 657,
+   "brand_weighted_rated_brands": 38.2465973595943,
+   "domain_weighted_answers": 47.94016674840608,
+   "n_domain_mentions": 4078,
+   "n_unresolved_mentions": 1955
+  },
+  "brands": {
+   "v19:Audeze": {
+    "n_pairs": 19,
+    "unresolved_share": 36.09352128088116
+   },
+   "v19:Beyerdynamic": {
+    "n_pairs": 10,
+    "unresolved_share": 40.307178932178935
+   },
+   "v19:Dan Clark Audio": {
+    "n_pairs": 9,
+    "unresolved_share": 31.958394894782096
+   },
+   "v19:Focal": {
+    "n_pairs": 20,
+    "unresolved_share": 36.33429976229165
+   },
+   "v19:Grado": {
+    "n_pairs": 6,
+    "unresolved_share": 34.166666666666664
+   },
+   "v19:HiFiMan": {
+    "n_pairs": 16,
+    "unresolved_share": 35.964749702864566
+   },
+   "v19:Meze": {
+    "n_pairs": 8,
+    "unresolved_share": 26.308951465201464
+   },
+   "v19:Sennheiser": {
+    "n_pairs": 29,
+    "unresolved_share": 38.00422424766693
+   },
+   "v19:Sony": {
+    "n_pairs": 23,
+    "unresolved_share": 34.90714438926209
+   },
+   "v19:Stax": {
+    "n_pairs": 6,
+    "unresolved_share": 46.16607818095309
+   },
+   "v20:B.2": {
+    "n_pairs": 20,
+    "unresolved_share": 40.029975542531766
+   },
+   "v20:B.5": {
+    "n_pairs": 9,
+    "unresolved_share": 32.628824476650564
+   },
+   "v20:B.7": {
+    "n_pairs": 12,
+    "unresolved_share": 29.39778532450946
+   },
+   "v20:C.1": {
+    "n_pairs": 13,
+    "unresolved_share": 33.977382207605324
+   },
+   "v20:C.2": {
+    "n_pairs": 29,
+    "unresolved_share": 34.525114975419086
+   },
+   "v20:C.4": {
+    "n_pairs": 33,
+    "unresolved_share": 37.67399959248274
+   },
+   "v20:C.5": {
+    "n_pairs": 22,
+    "unresolved_share": 37.38239570325112
+   },
+   "v20:C.6": {
+    "n_pairs": 8,
+    "unresolved_share": 31.132793836598182
+   },
+   "v21:A.1": {
+    "n_pairs": 16,
+    "unresolved_share": 41.675580283989895
+   },
+   "v21:A.2": {
+    "n_pairs": 15,
+    "unresolved_share": 43.44398293505845
+   },
+   "v21:B.1": {
+    "n_pairs": 26,
+    "unresolved_share": 35.16988525712782
+   },
+   "v21:B.2": {
+    "n_pairs": 26,
+    "unresolved_share": 35.0017785100737
+   },
+   "v21:B.3": {
+    "n_pairs": 9,
+    "unresolved_share": 30.532138426875267
+   },
+   "v21:B.5": {
+    "n_pairs": 23,
+    "unresolved_share": 38.7340577543045
+   },
+   "v21:B.6": {
+    "n_pairs": 22,
+    "unresolved_share": 33.362534262653874
+   },
+   "v21:B.7": {
+    "n_pairs": 7,
+    "unresolved_share": 28.728070175438596
+   },
+   "v21:C.1": {
+    "n_pairs": 17,
+    "unresolved_share": 32.73243317159053
+   },
+   "v21:C.5": {
+    "n_pairs": 12,
+    "unresolved_share": 49.28975842948955
+   },
+   "v21:C.6": {
+    "n_pairs": 20,
+    "unresolved_share": 38.51133296845539
+   },
+   "v22:A.1": {
+    "n_pairs": 6,
+    "unresolved_share": 47.96340388007055
+   },
+   "v22:A.6": {
+    "n_pairs": 22,
+    "unresolved_share": 28.000592000591997
+   },
+   "v22:A.7": {
+    "n_pairs": 26,
+    "unresolved_share": 24.999295576218653
+   },
+   "v22:C.1": {
+    "n_pairs": 24,
+    "unresolved_share": 21.762629731379732
+   },
+   "v22:C.2": {
+    "n_pairs": 23,
+    "unresolved_share": 20.263178850135372
+   },
+   "v22:C.5": {
+    "n_pairs": 9,
+    "unresolved_share": 17.12962962962963
+   },
+   "v23:S01": {
+    "n_pairs": 6,
+    "unresolved_share": 53.48078456631089
+   },
+   "v23:S02": {
+    "n_pairs": 7,
+    "unresolved_share": 56.10897561085532
+   },
+   "v23:S04": {
+    "n_pairs": 7,
+    "unresolved_share": 56.10897561085532
+   },
+   "v23:S15": {
+    "n_pairs": 8,
+    "unresolved_share": 63.90386227871716
+   },
+   "v23:S17": {
+    "n_pairs": 14,
+    "unresolved_share": 58.132546926365656
+   },
+   "v23:S20": {
+    "n_pairs": 10,
+    "unresolved_share": 63.70859706935054
+   },
+   "v23:S22": {
+    "n_pairs": 10,
+    "unresolved_share": 50.65358401562496
+   }
+  }
+ },
+ "bootstrap_draws": {
+  "n_boot": 2000,
+  "flag_below": 1000,
+  "brands": {
+   "v19:Audeze": {
+    "draws_with_value": {
+     "K_own_domain": 1990,
+     "P_any_company": 1990,
+     "Y_own_plus_listings": 1990,
+     "M_not_owned": 1990
+    },
+    "min_draws": 1990,
+    "below_flag": false
+   },
+   "v19:Beyerdynamic": {
+    "draws_with_value": {
+     "K_own_domain": 1694,
+     "P_any_company": 1694,
+     "Y_own_plus_listings": 1694,
+     "M_not_owned": 1694
+    },
+    "min_draws": 1694,
+    "below_flag": false
+   },
+   "v19:Dan Clark Audio": {
+    "draws_with_value": {
+     "K_own_domain": 1635,
+     "P_any_company": 1635,
+     "Y_own_plus_listings": 1635,
+     "M_not_owned": 1635
+    },
+    "min_draws": 1635,
+    "below_flag": false
+   },
+   "v19:Focal": {
+    "draws_with_value": {
+     "K_own_domain": 1995,
+     "P_any_company": 1995,
+     "Y_own_plus_listings": 1995,
+     "M_not_owned": 1995
+    },
+    "min_draws": 1995,
+    "below_flag": false
+   },
+   "v19:Grado": {
+    "draws_with_value": {
+     "K_own_domain": 1191,
+     "P_any_company": 1191,
+     "Y_own_plus_listings": 1191,
+     "M_not_owned": 1191
+    },
+    "min_draws": 1191,
+    "below_flag": false
+   },
+   "v19:HiFiMan": {
+    "draws_with_value": {
+     "K_own_domain": 1965,
+     "P_any_company": 1965,
+     "Y_own_plus_listings": 1965,
+     "M_not_owned": 1965
+    },
+    "min_draws": 1965,
+    "below_flag": false
+   },
+   "v19:Meze": {
+    "draws_with_value": {
+     "K_own_domain": 1409,
+     "P_any_company": 1409,
+     "Y_own_plus_listings": 1409,
+     "M_not_owned": 1409
+    },
+    "min_draws": 1409,
+    "below_flag": false
+   },
+   "v19:Sennheiser": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v19:Sony": {
+    "draws_with_value": {
+     "K_own_domain": 1999,
+     "P_any_company": 1999,
+     "Y_own_plus_listings": 1999,
+     "M_not_owned": 1999
+    },
+    "min_draws": 1999,
+    "below_flag": false
+   },
+   "v19:Stax": {
+    "draws_with_value": {
+     "K_own_domain": 1204,
+     "P_any_company": 1204,
+     "Y_own_plus_listings": 1204,
+     "M_not_owned": 1204
+    },
+    "min_draws": 1204,
+    "below_flag": false
+   },
+   "v20:B.2": {
+    "draws_with_value": {
+     "K_own_domain": 1990,
+     "P_any_company": 1990,
+     "Y_own_plus_listings": 1990,
+     "M_not_owned": 1990
+    },
+    "min_draws": 1990,
+    "below_flag": false
+   },
+   "v20:B.5": {
+    "draws_with_value": {
+     "K_own_domain": 1571,
+     "P_any_company": 1571,
+     "Y_own_plus_listings": 1571,
+     "M_not_owned": 1571
+    },
+    "min_draws": 1571,
+    "below_flag": false
+   },
+   "v20:B.7": {
+    "draws_with_value": {
+     "K_own_domain": 1855,
+     "P_any_company": 1855,
+     "Y_own_plus_listings": 1855,
+     "M_not_owned": 1855
+    },
+    "min_draws": 1855,
+    "below_flag": false
+   },
+   "v20:C.1": {
+    "draws_with_value": {
+     "K_own_domain": 1873,
+     "P_any_company": 1873,
+     "Y_own_plus_listings": 1873,
+     "M_not_owned": 1873
+    },
+    "min_draws": 1873,
+    "below_flag": false
+   },
+   "v20:C.2": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v20:C.4": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v20:C.5": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v20:C.6": {
+    "draws_with_value": {
+     "K_own_domain": 1466,
+     "P_any_company": 1466,
+     "Y_own_plus_listings": 1466,
+     "M_not_owned": 1466
+    },
+    "min_draws": 1466,
+    "below_flag": false
+   },
+   "v21:A.1": {
+    "draws_with_value": {
+     "K_own_domain": 1981,
+     "P_any_company": 1981,
+     "Y_own_plus_listings": 1981,
+     "M_not_owned": 1981
+    },
+    "min_draws": 1981,
+    "below_flag": false
+   },
+   "v21:A.2": {
+    "draws_with_value": {
+     "K_own_domain": 1959,
+     "P_any_company": 1959,
+     "Y_own_plus_listings": 1959,
+     "M_not_owned": 1959
+    },
+    "min_draws": 1959,
+    "below_flag": false
+   },
+   "v21:B.1": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v21:B.2": {
+    "draws_with_value": {
+     "K_own_domain": 1999,
+     "P_any_company": 1999,
+     "Y_own_plus_listings": 1999,
+     "M_not_owned": 1999
+    },
+    "min_draws": 1999,
+    "below_flag": false
+   },
+   "v21:B.3": {
+    "draws_with_value": {
+     "K_own_domain": 1600,
+     "P_any_company": 1600,
+     "Y_own_plus_listings": 1600,
+     "M_not_owned": 1600
+    },
+    "min_draws": 1600,
+    "below_flag": false
+   },
+   "v21:B.5": {
+    "draws_with_value": {
+     "K_own_domain": 2000,
+     "P_any_company": 2000,
+     "Y_own_plus_listings": 2000,
+     "M_not_owned": 2000
+    },
+    "min_draws": 2000,
+    "below_flag": false
+   },
+   "v21:B.6": {
+    "draws_with_value": {
+     "K_own_domain": 1994,
+     "P_any_company": 1994,
+     "Y_own_plus_listings": 1994,
+     "M_not_owned": 1994
+    },
+    "min_draws": 1994,
+    "below_flag": false
+   },
+   "v21:B.7": {
+    "draws_with_value": {
+     "K_own_domain": 1327,
+     "P_any_company": 1327,
+     "Y_own_plus_listings": 1327,
+     "M_not_owned": 1327
+    },
+    "min_draws": 1327,
+    "below_flag": false
+   },
+   "v21:C.1": {
+    "draws_with_value": {
+     "K_own_domain": 1986,
+     "P_any_company": 1986,
+     "Y_own_plus_listings": 1986,
+     "M_not_owned": 1986
+    },
+    "min_draws": 1986,
+    "below_flag": false
+   },
+   "v21:C.5": {
+    "draws_with_value": {
+     "K_own_domain": 1866,
+     "P_any_company": 1866,
+     "Y_own_plus_listings": 1866,
+     "M_not_owned": 1866
+    },
+    "min_draws": 1866,
+    "below_flag": false
+   },
+   "v21:C.6": {
+    "draws_with_value": {
+     "K_own_domain": 1996,
+     "P_any_company": 1996,
+     "Y_own_plus_listings": 1996,
+     "M_not_owned": 1996
+    },
+    "min_draws": 1996,
+    "below_flag": false
+   },
+   "v22:A.1": {
+    "draws_with_value": {
+     "K_own_domain": 1062,
+     "P_any_company": 1062,
+     "Y_own_plus_listings": 1062,
+     "M_not_owned": 1062
+    },
+    "min_draws": 1062,
+    "below_flag": false
+   },
+   "v22:A.6": {
+    "draws_with_value": {
+     "K_own_domain": 1997,
+     "P_any_company": 1997,
+     "Y_own_plus_listings": 1997,
+     "M_not_owned": 1997
+    },
+    "min_draws": 1997,
+    "below_flag": false
+   },
+   "v22:A.7": {
+    "draws_with_value": {
+     "K_own_domain": 1999,
+     "P_any_company": 1999,
+     "Y_own_plus_listings": 1999,
+     "M_not_owned": 1999
+    },
+    "min_draws": 1999,
+    "below_flag": false
+   },
+   "v22:C.1": {
+    "draws_with_value": {
+     "K_own_domain": 1999,
+     "P_any_company": 1999,
+     "Y_own_plus_listings": 1999,
+     "M_not_owned": 1999
+    },
+    "min_draws": 1999,
+    "below_flag": false
+   },
+   "v22:C.2": {
+    "draws_with_value": {
+     "K_own_domain": 1997,
+     "P_any_company": 1997,
+     "Y_own_plus_listings": 1997,
+     "M_not_owned": 1997
+    },
+    "min_draws": 1997,
+    "below_flag": false
+   },
+   "v22:C.5": {
+    "draws_with_value": {
+     "K_own_domain": 1548,
+     "P_any_company": 1548,
+     "Y_own_plus_listings": 1548,
+     "M_not_owned": 1548
+    },
+    "min_draws": 1548,
+    "below_flag": false
+   },
+   "v23:S01": {
+    "draws_with_value": {
+     "K_own_domain": 994,
+     "P_any_company": 994,
+     "Y_own_plus_listings": 994,
+     "M_not_owned": 994
+    },
+    "min_draws": 994,
+    "below_flag": true
+   },
+   "v23:S02": {
+    "draws_with_value": {
+     "K_own_domain": 1224,
+     "P_any_company": 1224,
+     "Y_own_plus_listings": 1224,
+     "M_not_owned": 1224
+    },
+    "min_draws": 1224,
+    "below_flag": false
+   },
+   "v23:S04": {
+    "draws_with_value": {
+     "K_own_domain": 1224,
+     "P_any_company": 1224,
+     "Y_own_plus_listings": 1224,
+     "M_not_owned": 1224
+    },
+    "min_draws": 1224,
+    "below_flag": false
+   },
+   "v23:S15": {
+    "draws_with_value": {
+     "K_own_domain": 1386,
+     "P_any_company": 1386,
+     "Y_own_plus_listings": 1386,
+     "M_not_owned": 1386
+    },
+    "min_draws": 1386,
+    "below_flag": false
+   },
+   "v23:S17": {
+    "draws_with_value": {
+     "K_own_domain": 1919,
+     "P_any_company": 1919,
+     "Y_own_plus_listings": 1919,
+     "M_not_owned": 1919
+    },
+    "min_draws": 1919,
+    "below_flag": false
+   },
+   "v23:S20": {
+    "draws_with_value": {
+     "K_own_domain": 1664,
+     "P_any_company": 1664,
+     "Y_own_plus_listings": 1664,
+     "M_not_owned": 1664
+    },
+    "min_draws": 1664,
+    "below_flag": false
+   },
+   "v23:S22": {
+    "draws_with_value": {
+     "K_own_domain": 1679,
+     "P_any_company": 1679,
+     "Y_own_plus_listings": 1679,
+     "M_not_owned": 1679
+    },
+    "min_draws": 1679,
+    "below_flag": false
+   }
+  },
+  "flagged": [
+   "v23:S01"
+  ]
+ },
+ "inputs": {
+  "t4": [
+   "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl",
+   "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf"
+  ],
+  "n_answers": 270,
+  "domain_table": "32a579c12778cd492eb5778c7958d2f541da4e13d3d76d1be85f15c119b70be4",
+  "v1_18_results": "6fa5502d5d5fb324e1c76d995ab44c6f1013869a750235eb11e702076fd61746",
+  "script": "d768b675b198974c194a6076fb83159f998f7432da92c4c43d8795f0c9f2c7b1"
+ },
+ "note": "Ex-post descriptive (DEVIATIONS Entry 1). No estimand, interval or verdict of v1_18_results.json changes. Shares in percent."
+}

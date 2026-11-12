@@ -12,6 +12,11 @@ Built on branch `v1.13-paper` (from `origin/v1.13` at `232cf64`, the anchor comm
 | tag `v1.13-prereg-r1` and `anchor/git_anchor_v1_13.json` naming its commit | Part I lock | yes |
 | tag `v1.13-audit-r1`, `anchor/audit_anchor_v1_13.json` (and `anchor/audit_receipt_v1_13.json`) | Part II lock | only if Part II locked; required if H7 was computed |
 | `anchor/DEVIATIONS.md` | locked; dated entries added after the lock | yes (must still state the waiver of the 24-hour review; entries after the lock are counted) |
+| `papers/v1_13/inputs/v1_18/v1_18_results.json`, `descriptive_v1_18.json` | v1.18 (`analyse_v1_18.py --run`, once; `descriptive_v1_18.py`, DEVIATIONS Entry 1), copied from branch `v1.18` by `papers/v1_13/inputs/make_inputs_v1_18.py [COMMIT]` (git show) | yes, for the exploratory §3.8; `INPUTS_v1_18.json` records branch, commit, source path and SHA-256 of each copy, and the fill and the charts refuse a copy whose SHA-256 differs or a descriptive file computed from another results file |
+
+### Exploratory §3.8 (v1.18)
+
+`papers/v1_13/v118_section.py` fills §3.8 from v1.18's real outputs in every mode (synthetic runs of v1.13 included; the watermark then covers the whole paper): the four definitions (K own domain, P any company, Y own plus listings, M not owned), the pair-weighted program values with their 90% intervals, $\rho_w$ and the share of rated brands moving more than 25 points for each pair of definitions, S1–S7 in one table, the UNRESOLVED shares (citations and S5 sources) and the brands with a bootstrap value in fewer than half of the draws, and the audit by two AI coders as a limitation (also one sentence in §5). Chart 9 (`chart_09_v118_definitions`): program value per definition as a point, 90% interval as a whisker. The section gates nothing; no v1.13 switch, value or rule reads it (`tests/test_v118_section.py` checks that changing v1.18's values changes nothing outside §3.8).
 
 ### What the fill reads from the verdict file (for checking)
 
@@ -35,13 +40,14 @@ cd /Users/pablou/aias/_worktrees/v1.13 && git merge --no-ff v1.13-paper
 
 `python3` is the system Python 3.14 (matplotlib, reportlab, pypdf); pandoc with xelatex, Carlito and `pdftoppm`.
 
-## 1. Tests (24)
+## 1. Tests (24 + 8)
 
 ```
 PYTHONDONTWRITEBYTECODE=1 python3 papers/v1_13/tests/test_fill_paper_v1_13.py
+PYTHONDONTWRITEBYTECODE=1 python3 papers/v1_13/tests/test_v118_section.py
 ```
 
-Expect `Ran 24 tests … OK`. They check: every switch value matches exactly one case; the AI-use statement, the Denon/Harman correction and the Samsung rule (Samsung, Harman and Cheil only in the COI paragraph); citations in the canonical forms of CLAUDE.md (methodology chain v1.2–v1.6 and the foundational paper, v1.7, v1.8, AIAS 1.0, the v0.19–v0.23 registries by SSRN number; v1.9, declined, by its thirdsystem.ai page and OSF copy; no declined or unposted number, no ssrn.com link; every listed reference cited); the thresholds in the text equal the scorer's constants; no shipping language; every fixture is SYNTHETIC_ and reproduced by the scorer's verdict functions; the twelve scenarios cover every gate case and every H1, H3, H4, H6, H7 and Part II state; every scenario fills, every number in each filled paper is pre-registration text or a recorded value, and every value re-resolves from its path; every gate-leg verdict renders; the wording of Part II held / locked-not-run, dependencies unavailable, the interim draft and the C1 and C2 downgrades; the Cheil switch (off by default; on, only in the COI paragraph); and the refusals (inconsistent word, wrong re-issue, SDRI table against Part II state, synthetic in real mode, real-looking file in synthetic mode, synthetic output in the repository, charts and build without a watermark, scenario output under `osf/`).
+Expect `Ran 24 tests … OK` and `Ran 8 tests … OK`. The second file checks §3.8: the recorded copies match their SHA-256; a changed copy, or a descriptive file from another results file, is refused; every number of the section is a leaf of the two v1.18 files (and re-resolves) or template text; the headline values, S1's UNRESOLVED share and the flagged brand by name; changing v1.18's values changes nothing outside §3.8; the interval-overlap sentence; chart 9 is point-and-whisker with a descriptive title. The first file checks: every switch value matches exactly one case; the AI-use statement, the Denon/Harman correction and the Samsung rule (Samsung, Harman and Cheil only in the COI paragraph); citations in the canonical forms of CLAUDE.md (methodology chain v1.2–v1.6 and the foundational paper, v1.7, v1.8, AIAS 1.0, the v0.19–v0.23 registries by SSRN number; v1.9, declined, by its thirdsystem.ai page and OSF copy; no declined or unposted number, no ssrn.com link; every listed reference cited); the thresholds in the text equal the scorer's constants; no shipping language; every fixture is SYNTHETIC_ and reproduced by the scorer's verdict functions; the twelve scenarios cover every gate case and every H1, H3, H4, H6, H7 and Part II state; every scenario fills, every number in each filled paper is pre-registration text or a recorded value, and every value re-resolves from its path; every gate-leg verdict renders; the wording of Part II held / locked-not-run, dependencies unavailable, the interim draft and the C1 and C2 downgrades; the Cheil switch (off by default; on, only in the COI paragraph); and the refusals (inconsistent word, wrong re-issue, SDRI table against Part II state, synthetic in real mode, real-looking file in synthetic mode, synthetic output in the repository, charts and build without a watermark, scenario output under `osf/`).
 
 ## 2. Figures
 
@@ -49,7 +55,7 @@ Expect `Ran 24 tests … OK`. They check: every switch value matches exactly one
 PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_charts_v113.py
 ```
 
-Writes `reports/figs/v113/chart_01_search_use.pdf` … `chart_08_sdri_gstar.pdf` (+ `_preview.png`): search use per category and model (RQ1/MQ2), source-type mix (RQ2), G\* by category (RQ2), H1 and H2 under every analysis, H3's run pairs, every leg against its bands (the gate), and SDRI against G\* (H7; only if Part II was collected). Titles describe the plot, never a finding or a section.
+Writes `reports/figs/v113/chart_01_search_use.pdf` … `chart_08_sdri_gstar.pdf` (+ `_preview.png`): search use per category and model (RQ1/MQ2), source-type mix (RQ2), G\* by category (RQ2), H1 and H2 under every analysis, H3's run pairs, every leg against its bands (the gate), and SDRI against G\* (H7; only if Part II was collected); and `chart_09_v118_definitions.pdf` (exploratory §3.8: v1.18's program share per definition with its 90% interval). Titles describe the plot, never a finding or a section.
 
 ## 3. Fill the paper
 

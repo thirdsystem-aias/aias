@@ -309,6 +309,33 @@ Table: Pre-registered sensitivity analyses (§7): $\rho_w$ of G\* with P and $C^
 
 {{TABLE_SENS}}
 
+## 3.8 Exploratory: four definitions of a brand's own share of cited sources (v1.18)
+
+This section is exploratory. It reports Methodology v1.18 (pre-registration tag `v1.18-prereg-r1`), which reads the cited set of the same $t_4$ answers under four competing definitions of how much of what an answer cites "belongs" to the brand. It gates nothing, and none of v1.13's rules, hypotheses or verdicts changes because of it. For each answer and each brand it names, every distinct cited domain is labelled relative to that brand through v1.13's frozen $D_b$ and v1.18's domain table, and the share is computed under each definition:
+
+- **K, own domain:** only the brand's own domains ($D_b$) count.
+- **P, any company:** the brand's own domains and any other company's site count.
+- **Y, own plus listings:** the brand's own domains and listing sites (directories, marketplaces and retailers) count.
+- **M, not owned:** every cited domain the brand does not own counts; with a common denominator M = 100 minus K for every answer and brand.
+
+Over {{V118_N_ANSWERS}} category answers and {{V118_N_PAIRS}} answer--brand pairs ({{V118_N_RATED}} rated brands), the pair-weighted program share was {{V118_K}} (90% interval {{V118_K_LO}} to {{V118_K_HI}}) under K, {{V118_P}} ({{V118_P_LO}} to {{V118_P_HI}}) under P, {{V118_Y}} ({{V118_Y_LO}} to {{V118_Y_HI}}) under Y and {{V118_M}} ({{V118_M_LO}} to {{V118_M_HI}}) under M, in per cent of cited domains (intervals from a cluster bootstrap over cells, {{V118_N_BOOT}} draws). {{V118_DISTINCT_SENTENCE}}
+
+Brand-level readings move between definitions as well as the level. Among K, P and Y, the within-category rank correlation of brands' shares, $\rho_w$, ranged from {{V118_RHO_LO}} to {{V118_RHO_HI}}, and between {{V118_MOVE_LO}} and {{V118_MOVE_HI}} of rated brands moved by more than 25 percentage points. Pairs with M mirror the pairs with K, because M sits at 100 minus K. {{V118_FLAG_SENTENCE}}
+
+Table: v1.18: agreement between definitions over rated brands: $\rho_w$ and the share of brands whose share differs by more than 25 points, each with its 90% interval.
+
+{{TABLE_V118_PAIRS}}
+
+Domains the table left UNRESOLVED leave the primary denominator. Their pair-weighted share of the cited domains was {{V118_UNRES_CIT}}% (per rated brand {{V118_UNRES_CIT_LO}}% to {{V118_UNRES_CIT_HI}}%); in the retrieved set (S5) it was {{V118_UNRES_SRC}}% (per brand {{V118_UNRES_SRC_LO}}% to {{V118_UNRES_SRC_HI}}%), because v1.18 did not classify domains that were retrieved but never cited. These shares were added after v1.18's run by a descriptive that changes no locked result (v1.18 DEVIATIONS Entry 1). The domain table's classes were checked by a second coder that was itself an AI model (an independent Claude session), not a person, so the audit shows agreement between two AI coders only; this is a limitation of every number in this section.
+
+Table: v1.18 sensitivities S1--S7: pair-weighted program share under each definition (per cent of cited domains), with the number of answer--brand pairs and of rated brands.
+
+{{TABLE_V118_SENS}}
+
+![Program share under each definition, with its 90% interval. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_09_v118_definitions.pdf){#fig:v118 width=88%}
+
+Inputs: v1.18's `v1_18_results.json` (SHA-256 `{{V118_SHA_RESULTS}}`…) and `descriptive_v1_18.json` (`{{V118_SHA_DESC}}`…), copied into `papers/v1_13/inputs/v1_18/` with their full SHA-256 recorded.
+
 # 4. Discussion
 
 {% switch CASE_GATE %}
@@ -332,7 +359,7 @@ The baseline of §3.2 describes, on the newest models, what category answers ret
 
 # 5. Limitations
 
-Recognition (the $C_P$ part of P) rests on one search-off brand answer per model. Search-on answers depend on the web on the day and on each provider's search back-end; they are reproducible only as recorded. The retrieved set includes results an answer did not use, and what it holds differs by provider, so model differences mix model and tool; the cited set (S2) is what the answer attributes. Own-domain retrieval needs the brand's site to be indexed and open to crawlers, so a low G\* can reflect robots policies as much as model behaviour. $D_b$ is a declared list and can miss regional or campaign domains. The study covers five categories, one market and one language (US English). The audit reads static HTML only, so structured data injected by JavaScript is missed (§9). The verdict file does not record the hashes of its inputs ($t_4$ raw file, coder tables, brand table); they are recorded in the deposit beside it.{% if MQ6_FLAG %} MQ6 was flagged (§3.1).{% endif %}{% if MQ3_LOW %} The source mix is labelled low coverage (MQ3).{% endif %}
+Recognition (the $C_P$ part of P) rests on one search-off brand answer per model. Search-on answers depend on the web on the day and on each provider's search back-end; they are reproducible only as recorded. The retrieved set includes results an answer did not use, and what it holds differs by provider, so model differences mix model and tool; the cited set (S2) is what the answer attributes. Own-domain retrieval needs the brand's site to be indexed and open to crawlers, so a low G\* can reflect robots policies as much as model behaviour. $D_b$ is a declared list and can miss regional or campaign domains. The study covers five categories, one market and one language (US English). The audit reads static HTML only, so structured data injected by JavaScript is missed (§9). The verdict file does not record the hashes of its inputs ($t_4$ raw file, coder tables, brand table); they are recorded in the deposit beside it. The exploratory v1.18 section (§3.8) rests on a domain table audited by two AI coders, not by a person.{% if MQ6_FLAG %} MQ6 was flagged (§3.1).{% endif %}{% if MQ3_LOW %} The source mix is labelled low coverage (MQ3).{% endif %}
 
 # 6. What a second paper inherits
 

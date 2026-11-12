@@ -43,6 +43,7 @@ from pathlib import Path
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import v113_values as VV  # noqa: E402
+import v118_section as V118  # noqa: E402  exploratory §3.8 (v1.18 outputs, SHA-256 recorded)
 
 ROOT = VV.ROOT
 S = VV.S
@@ -641,6 +642,9 @@ def compute(src, synthetic, fig_dir, ctx):
              "v0.62 DEVIATIONS Entry 0, Part F. This study performs no brand selection, so they stay in the registry; "
              "no sensitivity analysis without them was pre-registered." if ctx["coi_cheil"] else "",
              ["CLAUDE.md COI notes, Nov 11, 2026", f"units present: {len(present)}"])
+
+    # ---------------- §3.8 exploratory: v1.18 (real outputs of v1.18 in every mode; gates nothing)
+    V118.compute(val, Cells, md_table, DASH)
     return val, cases, flags
 
 
@@ -723,6 +727,10 @@ def synthetic_context(V):
 def fill(verdicts, sdri=None, out=None, fig_dir=None, synthetic=False, interim=False, coi_cheil=False,
          template=TEMPLATE):
     src = VV.load_sources(verdicts, sdri)
+    try:
+        src.update(V118.load())
+    except V118.InputError as e:
+        raise FillError(f"v1.18 inputs: {e}")
     V = src["verdicts"]
     ctx = synthetic_context(V) if synthetic else real_context(V, interim)
     try:

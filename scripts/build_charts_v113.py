@@ -39,6 +39,7 @@ sys.path.insert(0, str(ROOT / "scripts"))
 sys.path.insert(0, str(ROOT / "papers/v1_13"))
 import chart_style as cs  # noqa: E402
 import v113_values as VV  # noqa: E402
+import v118_section as V118  # noqa: E402
 cs.setup()
 
 SUBCOL = {"v19": cs.PALETTE["indigo"], "v20": cs.PALETTE["warm"], "v21": cs.PALETTE["teal_t2"],
@@ -60,10 +61,13 @@ TITLES = {
     6: "Per-run G* compared between pairs of runs",
     7: "Every computed leg against its pre-registered bands",
     8: "Structured-data richness and G* per brand",
+    9: "Program share of cited domains under four definitions, with 90% intervals",
 }
 NAMES = {1: "chart_01_search_use", 2: "chart_02_source_mix", 3: "chart_03_gstar_by_category",
          4: "chart_04_presence_legs", 5: "chart_05_consistency_legs", 6: "chart_06_run_pairs",
-         7: "chart_07_legs_bands", 8: "chart_08_sdri_gstar"}
+         7: "chart_07_legs_bands", 8: "chart_08_sdri_gstar", 9: "chart_09_v118_definitions"}
+SOURCE_V118 = ("Source: AIAS™ Methodology v1.18 (exploratory) | pre-registration v1.18-prereg-r1 | answers: v0.42 (t₄, "
+               "search on) | Third System™")
 SENS_LABEL = dict(VV.SENS)
 
 
@@ -73,12 +77,12 @@ def _header(fig, key, subtitle, desc=""):
     fig.add_artist(Line2D([cs.LEFT_X, 0.985], [y, y], transform=fig.transFigure, color=cs.INDIGO, lw=0.6))
 
 
-def _save(fig, key, verdict, out):
+def _save(fig, key, verdict, out, source=None):
     _, _, _, vy, sy = cs._compute_positions(fig)
     if verdict:
         fig.text(cs.LEFT_X, vy, verdict, fontsize=cs.FONT_SIZES["verdict"], color=cs.INDIGO, fontstyle="italic",
                  ha="left", va="bottom")
-    fig.text(cs.LEFT_X, sy, SOURCE.format(tag=TAG), fontsize=cs.FONT_SIZES["source"], color=cs.GRAY,
+    fig.text(cs.LEFT_X, sy, source or SOURCE.format(tag=TAG), fontsize=cs.FONT_SIZES["source"], color=cs.GRAY,
              fontstyle="italic", ha="left", va="bottom")
     if WATERMARK:
         fig.text(0.5, 0.5, WATERMARK, rotation=28, fontsize=30, color=cs.WARM, alpha=0.22, ha="center",
@@ -346,6 +350,33 @@ def chart_08(V, rows_s, out):
     _save(fig, 8, f"H7_Struct_Gap: {s7['word']}", out)
 
 
+def chart_09(R, out):
+    """v1.18 (exploratory, §3.8): program value per definition as a point, its 90% interval as a whisker."""
+    prog, ci = R["primary"]["program"]["pair_weighted"], R["primary_ci"]["program_pair_weighted"]
+    fig, ax = plt.subplots(figsize=cs.FIGSIZE["hero"])
+    n = len(V118.DEFS)
+    for i, (d, s, label) in enumerate(V118.DEFS):
+        y = n - i
+        lo, hi = ci[d][0], ci[d][1]
+        ax.errorbar([prog[d]], [y], xerr=[[prog[d] - lo], [hi - prog[d]]], fmt="o", color=cs.INDIGO, ms=5.5,
+                    elinewidth=1.4, capsize=4, capthick=1.2, zorder=3)
+        ax.annotate(f"{VV.r2(prog[d])}  ({VV.r2(lo)}–{VV.r2(hi)})", (hi, y), xytext=(8, 0),
+                    textcoords="offset points", ha="left", va="center", fontsize=7.6, color=cs.INDIGO)
+    ax.set_yticks([n - i for i in range(n)])
+    ax.set_yticklabels([f"{s}: {label}" for _, s, label in V118.DEFS], fontsize=8.5)
+    ax.set_ylim(0.4, n + 0.6)
+    ax.set_xlim(0, 115)
+    ax.set_xticks(range(0, 101, 20))
+    ax.set_xlabel("pair-weighted share of cited domains (%)", fontsize=9)
+    ax.tick_params(axis="x", labelsize=8.5)
+    ax.grid(axis="x", color=cs.PALETTE["gray_light"], lw=0.5, zorder=0)
+    fig.subplots_adjust(top=0.80, bottom=0.17, left=0.22, right=0.97)
+    _header(fig, 9, f"All answer–brand pairs (n = {R['primary']['program']['n_pairs']}); point = program value, "
+                    f"whisker = 90% cluster-bootstrap interval ({R['primary_ci']['n_boot']:,} draws).",
+            "Exploratory; gates nothing. M = 100 − K by construction.")
+    _save(fig, 9, "", out, SOURCE_V118)
+
+
 def main(argv=None):
     global WATERMARK
     ap = argparse.ArgumentParser(description="v1.13 Grounding Paper A figures")
@@ -376,6 +407,10 @@ def main(argv=None):
     chart_07(V, a.out)
     if "leg" in (V.get("stage_C2") or {}):
         chart_08(V, src["sdri"]["rows"], a.out)
+    try:
+        chart_09(V118.load()["v118"], a.out)
+    except V118.InputError as e:
+        sys.exit(f"[v1.13 charts] REFUSED: v1.18 inputs: {e}")
     print("done")
     return 0
 
