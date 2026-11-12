@@ -1,10 +1,10 @@
-# AIAS™ v0.40 brand registry, draft r2
+# AIAS™ v0.40 brand registry, draft r3 (frozen 2026-11-12)
 
 **Study.** Leaders, challengers and ghosts. Two US categories reshaped by mergers and failures.
 
-**Status.** Decisions adopted, not frozen. Pablo adopted every recommendation in section 6 on 2026-11-08. The freeze date goes in at lock: tag `v0.40-prereg-r1`, OSF deposit ec6wh → `v40/prereg/`, before any study probe.
+**Status.** Decisions adopted; frozen on 2026-11-12. The ghost window closes at the freeze date, and every brand's status was re-checked up to it (section 5, r3). Pablo adopted every recommendation in section 6 on 2026-11-08. The registry locks with tag `v0.40-prereg-r1` and the OSF deposit (ec6wh → `v40/prereg/`), before any study probe.
 
-**Built.** 2026-11-08 (r1) and 2026-11-09 (r2, sources only) with `osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-08 --status-check`, which also assembles this draft. The builder computes every share, floor test, window test and gap below. Only dates and their sources are entered by hand (`registries/exit_events.csv`, `registries/model_cutoffs.csv`), each with a URL and a source type.
+**Built.** 2026-11-08 (r1) and 2026-11-09 (r2, sources only) with `--freeze 2026-11-08`; frozen 2026-11-12 (r3) with `osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-12 --status-check`, which also assembles this draft. The builder computes every share, floor test, window test and gap below. Only dates and their sources are entered by hand (`registries/exit_events.csv`, `registries/model_cutoffs.csv`), each with a URL and a source type.
 
 ## 1. What the registry holds
 
@@ -17,7 +17,7 @@
 | Incumbent controls | American, Delta | Chase, Bank of America |
 
 - Exit-to-cutoff gaps run from −36.2 months (SVB, GPT-4o) to 219.7 months (North Fork, Claude Opus 5.5); the smallest positive gap is 0.9 months (BMO Harris, GPT-4o). 19 of the 216 ghost × model pairs are exits after the model's cutoff: Spirit (eight models, all but Opus 5.5), SVB (all nine) and First Republic (GPT-4o and GPT-4o mini).
-- An FDIC check of the 36 charters held by the 25 bank holders found no merger, failure or legal name change between the SOD date (2026-06-30) and 2026-11-08. The only events are three branch sales (Capital One, Regions, BMO).
+- An FDIC check of the 36 charters held by the 25 bank holders, re-run at the freeze, found no merger, failure or legal name change between the SOD date (2026-06-30) and 2026-11-12. The only events are three branch sales (Capital One, Regions, BMO). A re-check of every airline and bank brand found no status change between 2026-11-08 and the freeze (section 5, r3).
 
 ## 2. Rules
 
@@ -47,6 +47,23 @@
 {{TABLES}}
 
 ## 5. Changes
+
+**r3, 2026-11-12 (freeze)**
+
+1. **Frozen 2026-11-12; nothing moved.** Rebuilt with `build --freeze 2026-11-12 --status-check` from the same inputs and the same raw-data snapshot (all 54 files match `registries/RAW_DATA_SHA256.txt`, checked 2026-11-11). Against the 2026-11-08 outputs, `airlines_current.csv`, `banks_current.csv`, `exits_and_controls.csv`, `exit_cutoff_gaps.csv`, both exit scans, the regional allocation and the model table are byte-identical, so every share, floor test, window test and gap is unchanged. No brand date falls between 2026-11-09 and the freeze. The manifest differs only in `freeze` and `run_utc`, and the tables only in their timestamp.
+2. **FDIC check to the freeze.** The builder re-queried BankFind on 2026-11-12 at 00:01 CT for the 36 charters of the 25 holders. It found the same three branch sales as on 2026-11-08 (Capital One 2026-09-21, Regions 2026-07-08, BMO 2026-09-08), no merger, failure or legal name change, and no query errors; `data/raw/fdic/status_check_2026-11-12.csv` is byte-identical to the 2026-11-08 file. No bank has failed since 2026-07-17 (FDIC failures: https://api.fdic.gov/banks/failures?sort_by=FAILDATE&sort_order=DESC&limit=5&fields=NAME,CERT,FAILDATE,CITYST,ACQUIRER_NAME). The two ghost successors outside the 25 holders have no event after 2026-11-08: Santander Bank, N.A., Sovereign's successor (last event 2026-09-11: https://api.fdic.gov/banks/history?filters=CERT:29950&sort_by=EFFDATE&sort_order=DESC&limit=8&fields=INSTNAME,CERT,EFFDATE,PROCDATE,CHANGECODE,CHANGECODE_DESC,FRM_INSTNAME,OUT_INSTNAME,SUR_INSTNAME), and Flagstar Bank, N.A., Signature's (last event 2026-06-29: https://api.fdic.gov/banks/history?filters=CERT:32541&sort_by=EFFDATE&sort_order=DESC&limit=6&fields=INSTNAME,CERT,EFFDATE,PROCDATE,CHANGECODE,CHANGECODE_DESC). BankFind posts events days to weeks after they happen, so the filings and news below cover the last days.
+3. **Every airline and bank brand re-checked for status changes since 2026-11-08: none found.** Checked from 2026-11-11, 11 pm CT, to the freeze build:
+   - *SEC filings* from 2026-11-08 to the latest listed (2026-11-10), from `https://data.sec.gov/submissions/CIK<CIK, 10 digits>.json`, for the parent of every current unit (airlines: CIK 6201, 27904, 100517, 92380, 766421, 1158463, 1670076, 1362468; banks: 19617, 70858, 72971, 831001, 36104, 927628, 895421, 886982, 713676, 92230, 947263, 316709, 35527, 49196, 927971, 759944, 798941, 36270, 4962, 91576, 40729, 1089113, 1281761, 1610520, 2082866), for Sun Country (1743907) and Spirit (1498710), and for Flagstar (910073) and Santander Holdings USA (811830). None reports a merger, acquisition, rename, charter change, failure, bankruptcy or cessation. The only 8-K is Capital One's of 2026-11-10, a conference notice under Item 7.01 (https://www.sec.gov/Archives/edgar/data/927628/000092762826000157/cof-20261110.htm). Breeze files no periodic reports.
+   - *Regulators.* Federal Reserve press releases: one since 2026-11-08, the approval of applications by Mutual Federal Bancorp, MHC and MFB Bancorp (https://www.federalreserve.gov/feeds/press_all.xml). OCC news releases: the latest is NR 2026-98 of 2026-11-05 (https://occ.gov/news-events/newsroom/news-issuances-by-year/news-releases/2026-news-releases.html).
+   - *Issuers.* The Hawaiian brand is in use on 2026-11-10 (Alaska Air Group newsroom: https://news.alaskaair.com/). Allegiant: "in the near-term Sun Country will continue to operate as it does today" and "Booking systems remain separate for now" (https://www.allegiantair.com/together-we-fly). Discover: "© 2026 Discover, a division of Capital One, N.A., Member FDIC" (https://www.discover.com/online-banking/).
+   - *News.* AirlineGeeks headlines of 2026-11-09 to 2026-11-11 (https://airlinegeeks.com/), Aviation Week's routes log for the week of 2026-11-09 (https://aviationweek.com/air-transport/airports-networks/routes-networks-latest-rolling-daily-updates-wc-nov-9-2026) and American Banker's M&A items of 2026-11-09 and 2026-11-10 (https://www.americanbanker.com/tag/mergers-and-acquisitions). None reports a merger, rename, closure or cessation for a registry brand.
+   - *Not verified on the issuer's own site:* suncountry.com (bot check), spirit.com and Discover's application pages (robots exclusion). Spirit's last own SEC filing is the 8-K of 2026-05-04, and no report of resumed flying was found.
+4. **SEC rechecks: both confirmed.** Truist's FY2021 10-K (accession 0000092230-22-000008, accepted 2022-02-22 17:33:55: https://www.sec.gov/Archives/edgar/data/92230/000009223022000008/tfc-20211231.htm) says: "We recently completed the core bank conversion in February 2022 for heritage SunTrust clients." UBS's first-quarter 2026 report (6-K of 2026-04-29, accession 0001610520-26-000044: https://www.sec.gov/Archives/edgar/data/1114446/000161052026000044/edgar1q26ubsgroup.htm, table "Customer deposits, by currency") gives sweep deposits of USD 41.5bn at 31.12.25, all in USD (39.9bn at 31.3.26). The same Truist paragraph puts the migration of heritage BB&T clients "to the Truist ecosystem" in October 2021. BB&T keeps the February 2022 final conversion it shares with SunTrust; moving it would lengthen BB&T's gaps by four to five months and change no window, floor or sign.
+5. **Found in the check, dated before 2026-11-08; nothing changed; for Pablo (section 7, item 7).**
+   - *Discover (control).* Capital One says "Your Discover checking account is becoming a Capital One checking account" (https://www.capitalone.com/updates/discover/checking/) and that Discover savings accounts move to Capital One at different times (https://www.capitalone.com/updates/discover/savings/); neither page gives a date. Secondary reports say Discover stopped taking new deposit applications in late January 2026 (Doctor of Credit, 2026-02-04: https://www.doctorofcredit.com/discover-savings-accounts-to-become-capital-one-savings-accounts/) and that a customer email set 2026-08-23 for some Discover savings accounts to become Capital One 360 Performance Savings (Frequent Miler, 2026-06-30: https://frequentmiler.com/some-discover-savings-accounts-will-become-capital-one-360-performance-savings-on-8-23-26/). The row's source still says "The Discover brand and Discover accounts are not going away" (https://www.capitalonediscover.com/integration-faqs). The deposit brand is being retired, which bears on Discover's role as a control and on the correct answer to S_DISCOVER.
+   - *Sun Country (control).* Allegiant's page says "The combined company will operate under the Allegiant brand". An Allegiant executive put the change after the single operating certificate, 18 to 24 months out (AirlineGeeks, 2026-07-11, citing USA Today: https://airlinegeeks.com/2026/07/11/allegiant-executive-says-sun-country-brand-will-be-phased-out-completely/). The brand is live at the freeze, so the control stands.
+   - *Santander (D16) and Sovereign's successor.* Santander completed its acquisition of Webster on 2026-08-20 and merged Webster Bank into Santander Bank, N.A. (SHUSA 8-K: https://www.sec.gov/Archives/edgar/data/811830/000095010326012673/dp251673_8k.htm). That is after the SOD date, so R3 keeps the two apart (Santander 0.415% and Webster Bank 0.371% at SOD 2026), both below the floor. Both brands continue "for now" (the 8-K's Exhibit 99.1).
+6. **Probe set rebuilt** from the frozen outputs: byte-identical to the draft (94 probes; `prereg/probes_v0_40.json` sha256 93aee03f655cb8c4c6b04211e941b854bd921c3dbd31a9f5ffbaa91249be38ca, `prereg/probes_v0_40.md` sha256 45f1f3871f6fb60cd39840253cc6834fb918aadb160fd489c260ba50876bc92f).
 
 **r2, 2026-11-09**
 
@@ -106,9 +123,10 @@ Each item gives the issue, what the data shows and the decision. Pablo adopted e
 1. Pablo's calls on D1 to D19: done on 2026-11-08, every recommendation adopted.
 2. Done on 2026-11-08: v0.40 scaffolded, cloned v0.39 content removed, registry placed in `osf/v40/`.
 3. D17 done in r2. D4 decided 2026-11-09: the sensitivity excludes Morgan Stanley, Schwab and UBS. D15 and D18 closed in r1.
-4. Set the freeze date, re-run `build --freeze <date> --status-check`, and commit inputs, outputs and the manifest.
+4. Set the freeze date, re-run `build --freeze <date> --status-check`, and commit inputs, outputs and the manifest. *Done 2026-11-12 (r3):* frozen 2026-11-12; inputs unchanged; outputs, manifest and the FDIC check committed.
 5. Tag `v0.40-prereg-r1` and deposit to OSF (ec6wh → `v40/prereg/`).
 6. Finish the legacy arm before 2026-11-24 (Opus 4.5's earliest retirement; Sonnet 4.5 retires 2026-11-30).
+7. *Open for Pablo (r3):* Discover's deposit accounts are moving to Capital One (section 5, r3, item 5). Decide whether Discover stays the bank living-brand control and how S_DISCOVER is coded.
 
 ## 8. Reproduce
 
@@ -116,7 +134,7 @@ Each item gives the issue, what the data shows and the decision. Pablo adopted e
 python3 osf/v40/scripts/build_registry_v0_40.py fetch t100 2007 2026
 python3 osf/v40/scripts/build_registry_v0_40.py fetch ontime 2025-08 2026-07
 python3 osf/v40/scripts/build_registry_v0_40.py fetch sod 2005 2026
-python3 osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-08 --status-check
+python3 osf/v40/scripts/build_registry_v0_40.py build --freeze 2026-11-12 --status-check
 ```
 
 Run from `~/aias`. Paths resolve from the folder above `scripts/`, which is `osf/v40/`: inputs in `registries/`, data in `data/raw/`, outputs and this draft in `registries/out/`. Use `--registry-dir`, `--data-dir` and `--out` for another layout. The 54 data files total about 502 MB; the snapshot used for this draft ships with SHA-256 checksums. `--status-check` queries FDIC; the result is cached in `data/raw/fdic/status_check_<freeze>.csv`, and the run used for this draft ships with the registry. Two lines differ between runs on the same inputs: the timestamp at the top of the tables and `run_utc` in the manifest.
