@@ -147,3 +147,20 @@ Source keys (all read 2026-11-11): [H] Harman release of record (above); [SIE] B
 - **Handling of Part F decided** (pre-registrant, 2026-11-12, 00:48 CT, "as you suggest"; pre-registration §9 item 8): the default as proposed, the programme's Cheil/Iris option (b). Chevrolet, BMW, Bentley, Jack Daniel's and Eucerin stay in every analysis, as Denon does, and every Presence result is also reported without them and Denon (S-COI, 106 units; `params_v0_62.COI_FLAGGED` unchanged). Tesla and Hyundai (supply) and Hotel Shilla (retail) stay disclosed, not flagged.
 - **Brand questions** (§9 item 7 (b), same decision): the 88 yes/no brand questions of v0.19–v0.22 (block 4) are collected last; the v0.23 open brand questions (block 5) are not. No registry unit is added or removed; the COI handling above applies unchanged to block 4's descriptive.
 - **Pre-lock corrections (coordinator, 2026-11-12; pre-registration §11, r3 update, item 5).** (a) Chinese yes/no answers: the mapped word is set off by a space so that v0.20–v0.22's certified parser reads 否 / 不是 / 不 as No, as §4.4 states (r3's mapping left them as non-answers while 是 was read as Yes); Spanish, Korean and v0.19 unchanged. (b) The acquisition records Claude Fable 5.2 batches in flight and recovers them before any new request (ported from v0.42 C26 (ii)). Neither changes a hypothesis, test, threshold, unit set, model, prompt or analysis.
+
+
+---
+
+## Entry 1 — Fake-SDK dry run re-run on the lock day: figures near the pause and the stop vary between runs (written 2026-11-12, after the lock; a record, no change to the design)
+
+The pre-registration's r3 update of the fake-SDK dry run (§7.6) records the adversarial scenario of `prereg/dry_run_fake_sdk_v0_62_r3.txt` and states that exact figures vary slightly between runs near the pause and the stop (three parallel workers). Two re-runs of `osf/v62/scripts/_dry_run_fake_sdk_v0_62.py` on 2026-11-12 (05:43 and 05:44 CT, before the lock; same code and fakes; outputs kept in the runner's lock-preparation folder, not in the repository) show the size of that variation:
+
+| Stage of the adversarial scenario | Recorded (r3 file) | Re-run 1 | Re-run 2 |
+|---|---|---|---|
+| Projection pause after block 1 | $35.80 × 3.0975 = $110.90 > $80 | same | same |
+| $80 pause inside block 3 (spend after the stage) | $80.86 | $81.51 | $81.68 |
+| $100 stop inside block 3 (spend after the stage) | $98.93 | $98.86 | $98.92 |
+| Further `--collect` (re-run pass) | sends nothing | sends nothing | sends nothing |
+| Yes/no lines written | 0 | 0 | 0 |
+
+The pause and the stop fire in every run. The spend at which the pause fires moves by under $1 because the three workers finish their requests in a different order; the $100 rule holds (the stop comes before $100 and the re-run pass sends nothing). No locked file, threshold or rule changes.
