@@ -1,12 +1,13 @@
 # v1.19 DRAFT lock manifest (r0, 2026-11-12; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_19.sha256 at r1)
 # check: shasum -a 256 -c <(grep -v '^#' osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19_DRAFT.sha256)
-36c5276f46bb671dcde69d513704dd4da757b6192c703a59beab42a7716bac4a  osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r0.md
+605bfa6d9d2da276cdc85a06954f12be7aacd03b7a04d21a6c47cf5f1ae6e2dc  osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r0.md
 bc30c34caf2e559d042f4f5e2bff9110153486695b3f4f50f5de7e24e3ca6ef0  osf/methodology/v1_19/prereg/build_roster_v1_19.py
 9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb  osf/methodology/v1_19/prereg/phantom_roster_v1_19.csv
 8b4c83a913fa35352ffee96300577e936e384583fd1f9ac525bbc17c5b5364d5  osf/methodology/v1_19/scripts/score_v1_19.py
 9c3a5aec5243e0562765ebac0ad600ee3e06d0666ff0b4e57f9215aede25de4d  osf/methodology/v1_19/scripts/tests/test_score_v1_19.py
 7e252f1d662cd8757ced093aa91a879a106053f8b42add92839a953ae99158f9  osf/methodology/v1_19/scripts/tests/test_loader_v1_19.py
 d0e82050aea8f346c91b95656b9a9873d35800f48d33fc1a6feaacc6da6b6750  osf/methodology/v1_19/scripts/tests/test_e2e_paperA_v1_19.py
+773e4fc735f71b3ff580dd195dfd5307ee02dc40e848a4a1e45abe91379b60f8  osf/methodology/v1_19/scripts/tests/test_e2e_coder_v1_19.py
 4e791910210964de2821661efc6526e4df9b6b234ea9451d6a9a8eb074b4afc5  osf/methodology/v1_19/dryrun/dry_run_v1_19.json
 21d5bfe6b0943358a2dc01314a2546218ae7dd0879a4e20d894e804c486d0cca  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt1_weak_world.json
 86d274e30a4db1291e9d4eb2f3e9560f471c752280aa7891c2b79b6fdebaf745  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt2.json
