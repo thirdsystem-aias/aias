@@ -55,11 +55,12 @@ def chart_se_runs(t4, out, tag):
     for tau in (0.10, 0.05):
         ax.axhline(tau, color=GREY, linewidth=0.7, linestyle=":")
         ax.text(30.3, tau, f"{tau:.2f}", fontsize=8, color=GREY, va="bottom")
+    ax.set_ylim(0, max(0.115, ax.get_ylim()[1]))
     ax.axvline(3, color=GREY, linewidth=0.5)
-    ax.text(3.2, ax.get_ylim()[1] * 0.97, "observed | projected", fontsize=7.5, color=GREY, va="top")
+    ax.text(3.2, ax.get_ylim()[1] * 0.70, "observed | projected", fontsize=7.5, color=GREY, va="top")
     ax.set_xlabel("Runs per cell", fontsize=9)
     ax.set_ylabel("Standard error of Presence (0–1 scale)", fontsize=9)
-    ax.legend(frameon=False, fontsize=8.5)
+    ax.legend(frameon=False, fontsize=8.5, loc="center right")
     _style(ax)
     frame(fig, "Standard error of a brand's Presence, by number of runs",
           "Per model and search condition. Solid: runs 1–3 observed. Dashed: projection that assumes independent "
