@@ -1,0 +1,36 @@
+source git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl; answered t4 calls 876; prices on 2026-12-01
+  per call claude-fable-5-2|A-yn|floor|list_prompt          $0.0042 (n 88)
+  per call claude-fable-5-2|B-S0|central|list_prompt        $0.0285 (n 90)
+  per call claude-fable-5-2|B-S0|high|list_prompt           $0.0804 (n 90)
+  per call claude-fable-5-2|B-S1|central|list_prompt        $0.1807 (n 90)
+  per call claude-fable-5-2|B-S1|high|list_prompt           $0.3826 (n 90)
+  per call gpt-6-astra|A-yn|floor|list_prompt               $0.0066 (n 88)
+  per call gpt-6-astra|B-S0|central|list_prompt             $0.0488 (n 90)
+  per call gpt-6-astra|B-S0|high|list_prompt                $0.1080 (n 90)
+  per call gpt-6-astra|B-S1|central|list_prompt             $0.4071 (n 90)
+  per call gpt-6-astra|B-S1|high|list_prompt                $0.9176 (n 90)
+  per call gemini-4-carbon|A-yn|floor|list_prompt           $0.0027 (n 88)
+  per call gemini-4-carbon|B-S0|central|list_prompt         $0.0553 (n 90)
+  per call gemini-4-carbon|B-S0|high|list_prompt            $0.1216 (n 90)
+  per call gemini-4-carbon|B-S1|central|list_prompt         $0.0658 (n 90)
+  per call gemini-4-carbon|B-S1|high|list_prompt            $0.1386 (n 90)
+  per call gemini-4-argon|A-yn|floor|list_prompt            $0.0026 (n 88)
+  per call gemini-4-argon|B-S0|central|list_prompt          $0.0289 (n 90)
+  per call gemini-4-argon|B-S0|high|list_prompt             $0.0423 (n 90)
+  per call gemini-4-argon|B-S1|central|list_prompt          $0.0375 (n 90)
+  per call gemini-4-argon|B-S1|high|list_prompt             $0.0584 (n 90)
+  per call claude-opus-5-5|A-yn|floor|list_prompt           $0.0021 (n 88)
+  per call claude-opus-5-5|B-S0|central|list_prompt         $0.0143 (n 90)
+  per call claude-opus-5-5|B-S0|high|list_prompt            $0.0402 (n 90)
+  per call claude-opus-5-5|B-S1|central|list_prompt         $0.0990 (n 90)
+  per call claude-opus-5-5|B-S1|high|list_prompt            $0.2133 (n 90)
+A adopted: Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Carbon; LIST 2 squares + OPEN 6 runs; S0: 762 calls; floor $2.94; central $33.24; high $78.26; central by model {'claude-fable-5-2': 7.14, 'gpt-6-astra': 12.15, 'gemini-4-carbon': 13.95}
+B adopted + Gemini 4 Argon arm (matched to t4 Presence): 1016 calls; floor $3.49; central $40.48; high $88.90; central by model {'claude-fable-5-2': 7.14, 'gpt-6-astra': 12.15, 'gemini-4-carbon': 13.95, 'gemini-4-argon': 7.24}
+C adopted + OPEN with web search (S1), 6 runs: 978 calls; floor $49.54; central $79.85; high $181.37; central by model {'claude-fable-5-2': 20.05, 'gpt-6-astra': 41.2, 'gemini-4-carbon': 18.59}
+D Claude Opus 5.5 (batch) in place of Fable 5.2: 762 calls; floor $2.47; central $29.67; high $68.10; central by model {'claude-opus-5-5': 3.57, 'gpt-6-astra': 12.15, 'gemini-4-carbon': 13.95}
+E LIST 1 square + OPEN 6 runs: 489 calls; floor $1.72; central $21.17; high $50.05; central by model {'claude-fable-5-2': 4.55, 'gpt-6-astra': 7.7, 'gemini-4-carbon': 8.92}
+F LIST 4 squares + OPEN 12 runs: 1524 calls; floor $5.89; central $66.49; high $156.53; central by model {'claude-fable-5-2': 14.29, 'gpt-6-astra': 24.29, 'gemini-4-carbon': 27.91}
+G adopted + v0.44's 8 industries (156 live units), after v0.44 is scored: 2130 calls; floor $8.13; central $92.83; high $218.67; central by model {'claude-fable-5-2': 19.95, 'gpt-6-astra': 33.9, 'gemini-4-carbon': 38.98}
+  block 1 LIST square 1     273 calls  cumulative central $12.08  high $28.22
+  block 2 OPEN              216 calls  cumulative central $21.17  high $50.05
+  block 3 LIST square 2     273 calls  cumulative central $33.25  high $78.27
