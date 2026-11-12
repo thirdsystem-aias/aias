@@ -12,7 +12,10 @@ Battery (approved design, 2026-11-08):
   per ghost and per control (living brands and the top two incumbents): one recognition probe (K)
   and one status probe (S)
 Calls per probe: legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting = 19;
-current 3 models x 2 conditions (S0, S1) x 3 runs = 18; total 37.
+current 3 models x 2 conditions (S0, S1) x 3 runs = 18; total 37 (draft build, D1).
+With --final (registered design D7): 28 calls on every probe (19 legacy + current 3 models x 3 runs
+search off = 9) plus current 3 models x 1 run search on for the recommendation and status probes
+only: 28 x 94 + 3 x 63 = 2,632 + 189 = 2,821 calls.
 
 Writes prereg/probes_v0_40.json (v0.39 schema plus subject fields) and prereg/probes_v0_40.md (review table).
 
@@ -221,10 +224,18 @@ def main():
     OUT_JSON.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
 
     by = pd.DataFrame(probes)
+    if a.final:  # D7: 28 calls on every probe (19 legacy + 9 current S0) and 3 more (current S1, 1 run) on the n_s1 probes
+        calls_txt = (f"{28 * n + 3 * n_s1:,} calls (registered design D7: on every probe, legacy 6 models x 3 runs "
+                     f"+ 1 Gemini 2.5 Flash pass at the v0.39 setting = 19, plus current 3 models x 3 runs search off = 9, "
+                     f"so 28 x {n} = {28 * n:,}; search on, current 3 models x 1 run on the {n_s1} recommendation and "
+                     f"status probes, 3 x {n_s1} = {3 * n_s1:,}; i.e. 31 calls per recommendation or status probe "
+                     f"and 28 per recognition probe)")
+    else:
+        calls_txt = (f"{37 * n:,} calls (37 per probe: legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting; "
+                     f"current 3 models x 2 conditions x 3 runs)")
     lines = ["# AIAS v0.40 probe set (DRAFT for review)", "",
              f"Built by `osf/v40/scripts/build_probes_v0_40.py` from the registry outputs. {n} probes; "
-             f"{37 * n:,} calls (37 per probe: legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting; "
-             f"current 3 models x 2 conditions x 3 runs). Locks at tag `v0.40-prereg-r1`.", "",
+             f"{calls_txt}. Locks at tag `v0.40-prereg-r1`.", "",
              "Wording rules: one user turn, no system prompt; recommendation probes name no brand and say \"US\"; "
              "the generic probes feed RQ1; every ghost and every control gets one recognition (K) and one status (S) probe; "
              "a disambiguator from the FDIC institution record is added where another US bank uses the same name (D11).", ""]

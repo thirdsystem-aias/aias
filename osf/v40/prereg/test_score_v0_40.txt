@@ -28,5 +28,22 @@ PASS B: H_Flag FALSIFIED
 PASS B: H_Search not CONFIRMED
 PASS B: H_Reinforce not CONFIRMED
 PASS manipulation checks pass in A
+PASS sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm
+PASS S-Ambig runs all six tests
+PASS S-Arm: legacy five tests, current six
+PASS S-Operating: Delta leads the airlines
+PASS S-SunCountry: Sun Country inside Allegiant (10 airline units)
+PASS S-SunCountry: Allegiant at the registry's alternative share 2.6673
+PASS S-Legal reads gap_legal_m (differs from gap_brand_m somewhere)
+PASS S-Ambig: bare 'Delta' (ambiguous) counted for DL only in the sensitivity
+PASS first-mention share (DL 2/3, AA 1/3)
+PASS descriptive 4: flagged / current / not recognised
+PASS descriptive 8: USAA and Synchrony counted as other
+PASS descriptive 8: near-floor names are not registry units
+PASS descriptives 3-9 reported
+PASS descriptive 3: per arm and condition
+PASS descriptive 6: run-to-run SE per arm
+PASS descriptive 7: one trace per S1 answer
 
 ALL PASS
+EXIT 0

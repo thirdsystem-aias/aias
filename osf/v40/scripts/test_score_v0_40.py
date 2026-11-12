@@ -125,5 +125,72 @@ check("B: H_Search not CONFIRMED", B["H_Search"]["verdict"] != "CONFIRMED", B["H
 check("B: H_Reinforce not CONFIRMED", B["H_Reinforce"]["verdict"] != "CONFIRMED", B["H_Reinforce"])
 check("manipulation checks pass in A", all(v["pass"] for k, v in A["manipulation_checks"].items() if not k.startswith("MC1")),
       {k: v["pass"] for k, v in A["manipulation_checks"].items()})
+
+# ---- declared sensitivities (section 5.6) and descriptives 3-9 (section 2.9), on synthetic data
+sA = A["sensitivity"]
+check("sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm",
+      set(sA) == {"S-D4", "S-Discover", "S-Ambig", "S-Legal", "S-Operating", "S-SunCountry", "S-Arm"}, sorted(sA))
+check("S-Ambig runs all six tests", set(sA["S-Ambig"]) == {"H_Reinforce", "H_Amplify", "H_Afterlife", "H_Decay", "H_Flag", "H_Search"})
+check("S-Arm: legacy five tests, current six", len(sA["S-Arm"]["legacy"]) == 5 and len(sA["S-Arm"]["current"]) == 6)
+check("S-Operating: Delta leads the airlines", sA["S-Operating"]["H_Amplify_airline"]["leader"] == "DL")
+check("S-SunCountry: Sun Country inside Allegiant (10 airline units)",
+      sA["S-SunCountry"]["H_Reinforce_airline"]["n_units"] == sum(u["category"] == "airline" for u in units) - 1)
+su = S.sun_country_inside_allegiant(units)
+check("S-SunCountry: Allegiant at the registry's alternative share 2.6673", abs([u for u in su if u["id"] == "G4"][0]["share"] - 2.6673) < 1e-9)
+lg = S.load_gaps(column="gap_legal_m")
+check("S-Legal reads gap_legal_m (differs from gap_brand_m somewhere)", any(lg.get(k) != v for k, v in gaps.items()))
+
+# S-Ambig counts an ambiguous mention; the primary does not (one-record world)
+rec = [{"call_id": "x1", "arm": "C", "slot": "C1", "condition": "S0", "run": 1, "probe_id": "R", "tier": "R",
+        "kind": "recommendation", "category": "airline", "brand_id": None, "status": "ok", "finish_reason": "stop",
+        "text": "Fly Delta this year."}]
+sc = S.Scorer(rec, units, subjects, gaps, perms=10)
+pri = sc.unit_counts(sc.recs("recommendation"), "airline")
+amb = sc.variant(amb=True).unit_counts(sc.recs("recommendation"), "airline")
+check("S-Ambig: bare 'Delta' (ambiguous) counted for DL only in the sensitivity",
+      pri["DL"] == 0 and amb["DL"] == 1 and sc.amb is False, (pri["DL"], amb["DL"]))
+
+# first-mention share: the first current unit named wins
+rec = [{"call_id": f"f{i}", "arm": "C", "slot": "C2", "condition": "S0", "run": 1, "probe_id": "R", "tier": "R",
+        "kind": "recommendation", "category": "airline", "brand_id": None, "status": "ok", "finish_reason": "stop",
+        "text": t} for i, t in enumerate(["Delta Air Lines, then American Airlines.", "American Airlines first; Delta Air Lines.",
+                                          "Delta Air Lines only."])]
+fm = S.Scorer(rec, units, subjects, gaps, perms=10).d9_first_mention()["C2|S0|airline"]
+check("first-mention share (DL 2/3, AA 1/3)", fm["answers"] == 3 and abs(fm["share"]["DL"] - 2 / 3) < 1e-12
+      and abs(fm["share"]["AA"] - 1 / 3) < 1e-12, fm)
+
+# descriptive 4: recognition coding
+def krec(i, sid, text):
+    return {"call_id": f"k{i}", "arm": "L", "slot": "M1", "condition": "S0", "run": 1, "probe_id": "K", "tier": "K",
+            "kind": "recognition", "category": "bank", "brand_id": sid, "status": "ok", "finish_reason": "stop", "text": text}
+wid = [s for s in subjects if s["id"] == "WACHOVIA"]
+if wid:
+    nm = wid[0]["aliases"][0]
+    d4 = S.Scorer([krec(1, "WACHOVIA", f"{nm} was acquired by Wells Fargo in 2008."),
+                   krec(2, "WACHOVIA", f"{nm} is a large bank with many branches."),
+                   krec(3, "WACHOVIA", "I'm not familiar with that bank.")], units, subjects, gaps, perms=10).d4_recognition()
+    c = d4.get("WACHOVIA|M1|S0", {})
+    check("descriptive 4: flagged / current / not recognised", c.get("flagged") == 1 and c.get("current") == 1
+          and c.get("not_recognised") == 1, c)
+else:
+    check("descriptive 4: Wachovia ghost present in registry", False)
+
+# descriptive 8: near-floor holders coded "other", not as registry units
+rec = [{"call_id": "o1", "arm": "L", "slot": "M3", "condition": "S0", "run": 1, "probe_id": "R", "tier": "R",
+        "kind": "recommendation", "category": "bank", "brand_id": None, "status": "ok", "finish_reason": "stop",
+        "text": "Consider USAA or Synchrony Bank."}]
+sc = S.Scorer(rec, units, subjects, gaps, perms=10)
+d8 = sc.d8_other()["L_S0"]
+check("descriptive 8: USAA and Synchrony counted as other", d8["USAA"] == 1 and d8["Synchrony"] == 1 and d8["Zions"] == 0, d8)
+check("descriptive 8: near-floor names are not registry units", sum(sc.unit_counts(sc.recs("recommendation"), "bank").values()) == 0)
+
+dA = A["descriptives"]
+check("descriptives 3-9 reported", all(k in dA for k in ("3_old_vs_new_name", "4_recognition", "5_M5X_vs_M5", "6_run_to_run_se",
+                                                       "7_search_traces", "8_near_floor_other", "9_first_mention_share")))
+check("descriptive 3: per arm and condition", set(dA["3_old_vs_new_name"]) == {"L_S0", "C_S0", "C_S1"})
+check("descriptive 6: run-to-run SE per arm", set(dA["6_run_to_run_se"]) == {"L", "C"} and dA["6_run_to_run_se"]["C"]["units"] > 0)
+check("descriptive 7: one trace per S1 answer", len(dA["7_search_traces"]["answers"]) == sum(
+    1 for p in probes if p["kind"] == "recommendation" or p["tier"] == "S") * 3)
+
 print(f"\n{'ALL PASS' if not FAILS else 'FAILED: ' + ', '.join(FAILS)}")
 sys.exit(1 if FAILS else 0)

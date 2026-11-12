@@ -10,6 +10,7 @@ Outputs: osf/v40/data/v40_mentions.csv (one row per coded mention), osf/v40/v40_
 Usage:   python3 score_v0_40.py [--raw PATH] [--out-dir DIR] [--perms 10000]
 """
 import argparse
+import copy
 import csv
 import json
 import math
@@ -50,7 +51,17 @@ GAP_MODEL = {"M1": "Claude Opus 4.5", "M2": "Claude Sonnet 4.5", "M3": "GPT-4o",
              # overview, opened 2026-11-12), so the frozen Opus 5.5 gap rows apply unchanged (section 4.3).
              "C1": "Claude Opus 5.5", "C2": "GPT-6 Astra", "C3": "Gemini 4 Argon"}
 TESTED_SLOTS = ["M1", "M2", "M3", "M4", "M5", "M6", "C1", "C2", "C3"]      # M5X is reported, never tested
+LEGACY_SLOTS, CURRENT_SLOTS = TESTED_SLOTS[:6], TESTED_SLOTS[6:]
 LEADER = {"airline": "AA", "bank": "1039502"}
+# D16 near-floor bank holders: not registry units; their mentions are counted as "other" (descriptive 8 only)
+NEAR_FLOOR = {"USAA": ["USAA"], "RBC": ["RBC", "RBC Bank"], "Synchrony": ["Synchrony", "Synchrony Bank"],
+              "Western Alliance": ["Western Alliance", "Western Alliance Bank"],
+              "Santander": ["Santander", "Santander Bank"], "Zions": ["Zions", "Zions Bank", "Zions Bancorporation"]}
+# Descriptive 4: an answer to a recognition (K) probe that does not name its subject and contains one of these is
+# "not recognised" (definition added 2026-11-12; PRE_REGISTRATION section 2.9 item 4)
+NOT_RECOGNISED = re.compile(r"not familiar|not aware of|(?:don't|do not|can't|cannot|couldn't|could not) (?:find|identify|"
+                            r"recognize|recognise|verify|confirm)|no (?:information|record) (?:about|on|of)|"
+                            r"not sure (?:which|what)|unable to (?:find|identify|verify)", re.I)
 
 
 # ----------------------------------------------------------------------------- registry
@@ -76,10 +87,31 @@ def load_registry(reg=REG):
             continue
         subjects.append({"id": r["id"], "category": r["category"], "role": r["role"], "brand": r["brand"],
                          "aliases": r["aliases"].split("|"), "successor": r["successor"]})
+    return units, subjects, load_gaps(reg)
+
+
+def load_gaps(reg=REG, column="gap_brand_m"):
+    """Gap in months per (ghost, model); column gap_legal_m for S-Legal. A blank cell is no gap (pair drops out)."""
     gaps = {}
     for r in read_csv(reg / "out" / "exit_cutoff_gaps.csv"):
-        gaps[(r["ghost"], r["model"])] = float(r["gap_brand_m"])
-    return units, subjects, gaps
+        if (r.get(column) or "").strip():
+            gaps[(r["ghost"], r["model"])] = float(r[column])
+    return gaps
+
+
+def sun_country_inside_allegiant(units, reg=REG):
+    """S-SunCountry (D2): Sun Country (SY) inside Allegiant (G4), at the registry's holder_share_alt_pct."""
+    alt = {r["code"]: float(r["holder_share_alt_pct"]) for r in read_csv(reg / "out" / "airlines_current.csv")
+           if r["in_registry"] == "True"}
+    out = []
+    sy = next((u for u in units if u["id"] == "SY"), None)
+    for u in units:
+        if u["id"] == "SY":
+            continue
+        if u["id"] == "G4":
+            u = dict(u, share=alt.get("G4", u["share"]), aliases=u["aliases"] + (sy["aliases"] if sy else []))
+        out.append(u)
+    return out
 
 
 # ----------------------------------------------------------------------------- coding
@@ -210,33 +242,67 @@ class Scorer:
         self.all = records
         self.ok = [r for r in records if r.get("status") == "ok" and (r.get("text") or "").strip()]
         self.matchers = build_matchers(units, subjects)
-        succ = {s["id"]: successor_names(s["successor"]) for s in subjects}
-        self.unit_of = {u["id"]: u for u in units}
+        self.succ = {s["id"]: successor_names(s["successor"]) for s in subjects}
         self.subj = {s["id"]: s for s in subjects}
+        self.slots = list(TESTED_SLOTS)      # S-Arm restricts this to one arm
+        self.amb = False                     # S-Ambig: True counts ambiguous mentions
+        self.leader = dict(LEADER)           # S-Operating: Delta leads the airlines
+        self._set_units(units)
+        self.inc = {"AA": "AA", "DL": "DL", "JPMC": "1039502", "BAC": "1073757"}
+        near = [(k, "other", a, _pattern(a)) for k, al in NEAR_FLOOR.items() for a in al]
+        near.sort(key=lambda t: -len(t[2]))
+        for r in self.ok:
+            r["_m"] = code_answer(r["text"], self.matchers, self.succ)
+            r["_other"] = code_answer(r["text"], near, {})
+
+    def _set_units(self, units):
+        self.units = units
+        self.unit_of = {u["id"]: u for u in units}
         # a retained brand's mentions count toward its share unit (D2, D12)
         self.to_unit = {u["id"]: u["id"] for u in units}
-        for s in subjects:
+        for s in self.subjects:
             if s["role"] == "control":
                 for u in units:
                     if u["category"] == s["category"] and set(u["aliases"]) & set(s["aliases"]):
                         self.to_unit[s["id"]] = u["id"]
-        self.inc = {"AA": "AA", "DL": "DL", "JPMC": "1039502", "BAC": "1073757"}
-        for r in self.ok:
-            r["_m"] = code_answer(r["text"], self.matchers, succ)
+
+    def variant(self, slots=None, amb=None, leader=None, units=None, gaps=None):
+        """A copy of the scorer for a declared sensitivity (section 5.6); the coded mentions are shared."""
+        v = copy.copy(self)
+        if slots is not None:
+            v.slots = list(slots)
+        if amb is not None:
+            v.amb = amb
+        if leader is not None:
+            v.leader = dict(self.leader, **leader)
+        if gaps is not None:
+            v.gaps = gaps
+        if units is not None:
+            v._set_units(units)
+            # current-unit mentions of a unit that no longer exists go to the unit that took over its aliases
+            for old in self.unit_of:
+                if old not in v.unit_of:
+                    al = set(self.unit_of[old]["aliases"])
+                    for u in units:
+                        if al & set(u["aliases"]):
+                            v.to_unit[old] = u["id"]
+        return v
 
     # helpers
-    def recs(self, kind=None, tier=None, cond=None, slots=TESTED_SLOTS, category=None):
+    def recs(self, kind=None, tier=None, cond=None, slots=None, category=None):
+        slots = self.slots if slots is None else slots
         return [r for r in self.ok if (kind is None or r["kind"] == kind) and (tier is None or r["tier"] == tier)
                 and (cond is None or r["condition"] == cond) and r["slot"] in slots
                 and (category is None or r["category"] == category)]
 
-    def names(self, r, ent, ambiguous_ok=False):
-        return [m for m in r["_m"] if m["entity"] == ent and (ambiguous_ok or not m["ambiguous"])]
+    def names(self, r, ent, ambiguous_ok=None):
+        ok = self.amb if ambiguous_ok is None else ambiguous_ok
+        return [m for m in r["_m"] if m["entity"] == ent and (ok or not m["ambiguous"])]
 
     def unit_counts(self, rs, category):
         c = {u["id"]: 0 for u in self.units if u["category"] == category}
         for r in rs:
-            seen = {self.to_unit.get(m["entity"]) for m in r["_m"] if not m["ambiguous"]}
+            seen = {self.to_unit.get(m["entity"]) for m in r["_m"] if self.amb or not m["ambiguous"]}
             for u in seen:
                 if u in c:
                     c[u] += 1
@@ -244,7 +310,7 @@ class Scorer:
 
     def ai_share(self, category, cond="S0", exclude=()):
         per_slot = []
-        for sl in TESTED_SLOTS:
+        for sl in self.slots:
             c = self.unit_counts(self.recs("recommendation", cond=cond, slots=[sl], category=category), category)
             c = {k: v for k, v in c.items() if k not in exclude}
             tot = sum(c.values())
@@ -277,8 +343,8 @@ class Scorer:
             rs = self.recs("recommendation", cond="S0", category=cat)
             c = self.unit_counts(rs, cat)
             ms = {u["id"]: u["share"] for u in self.units if u["category"] == cat}
-            n, k = sum(c.values()), c[LEADER[cat]]
-            p0 = ms[LEADER[cat]] / sum(ms.values())
+            n, k = sum(c.values()), c[self.leader[cat]]
+            p0 = ms[self.leader[cat]] / sum(ms.values())
             ratio = (k / n) / p0 if n else float("nan")
             pg, pl = binom_sf(k, n, p0), binom_cdf(k, n, p0)
             xs = [(math.log(ms[u]), math.log(v)) for u, v in self.ai_share(cat).items() if v > 0 and ms[u] > 0]
@@ -287,7 +353,7 @@ class Scorer:
                 mx, my = sum(a for a, _ in xs) / len(xs), sum(b for _, b in xs) / len(xs)
                 sxx = sum((a - mx) ** 2 for a, _ in xs)
                 slope = sum((a - mx) * (b - my) for a, b in xs) / sxx if sxx else None
-            out[cat] = {"leader": LEADER[cat], "k": k, "n": n, "p0": p0, "ratio": ratio, "p_greater": pg, "p_less": pl,
+            out[cat] = {"leader": self.leader[cat], "k": k, "n": n, "p0": p0, "ratio": ratio, "p_greater": pg, "p_less": pl,
                         "loglog_slope": slope, "amplified": n > 0 and ratio >= T["amplify_ratio"] and pg < ALPHA,
                         "flattened": n > 0 and ratio < 1 and pl < ALPHA}
         na = sum(out[c]["amplified"] for c in ("airline", "bank"))
@@ -307,7 +373,7 @@ class Scorer:
         for cat in ("airline", "bank"):
             k = n = 0
             for g in self.ghosts(cat):
-                for sl in TESTED_SLOTS:
+                for sl in self.slots:
                     gp = self.gap(g["id"], sl)
                     if gp is None or gp <= 0:
                         continue
@@ -325,7 +391,7 @@ class Scorer:
     def h_decay(self):
         xs, ys, st = [], [], []
         for g in self.ghosts():
-            for sl in TESTED_SLOTS:
+            for sl in self.slots:
                 gp = self.gap(g["id"], sl)
                 if gp is None or gp <= 0:
                     continue
@@ -441,7 +507,7 @@ class Scorer:
         d["M5X_v039_setting_answers"] = len(x)
         # run-to-run standard error of per-model Presence at S0 (check on v1.17's 0.040)
         ses = []
-        for sl in TESTED_SLOTS:
+        for sl in self.slots:
             for cat in ("airline", "bank"):
                 runs = defaultdict(list)
                 for r in self.recs("recommendation", cond="S0", slots=[sl], category=cat):
@@ -458,14 +524,158 @@ class Scorer:
         d["presence_se_units"] = len(ses)
         return d
 
+    # ------------------------------------------------------------------ declared sensitivities (section 5.6)
+    def tests(self, which=("H_Reinforce", "H_Amplify", "H_Afterlife", "H_Decay", "H_Flag", "H_Search")):
+        f = {"H_Reinforce": self.h_reinforce, "H_Amplify": self.h_amplify, "H_Afterlife": self.h_afterlife,
+             "H_Decay": self.h_decay, "H_Flag": self.h_flag, "H_Search": self.h_search}
+        return {h: f[h]() for h in which}
+
+    def sensitivities(self, reg=REG):
+        out = {"S-D4": self.d4(), "S-Discover": self.h_flag(drop_controls=("DISCOVER",))}
+        # S-Ambig: every test with ambiguous mentions included (Presence and unit counts)
+        out["S-Ambig"] = self.variant(amb=True).tests()
+        # S-Legal: legal-date gaps for H_Afterlife and H_Decay (pairs with no legal gap drop out)
+        out["S-Legal"] = self.variant(gaps=load_gaps(reg, "gap_legal_m")).tests(("H_Afterlife", "H_Decay"))
+        # S-Operating: airline operating share, Delta as leader (D1); airline part of H_Reinforce and H_Amplify
+        op_units = [dict(u, share=u["share_alt"]) if u["category"] == "airline" and u.get("share_alt") is not None else u
+                    for u in self.units]
+        v = self.variant(units=op_units, leader={"airline": "DL"})
+        out["S-Operating"] = {"H_Reinforce_airline": v.h_reinforce()["airline"], "H_Amplify_airline": v.h_amplify()["airline"]}
+        # S-SunCountry: Sun Country inside Allegiant (D2); airline part of H_Reinforce and H_Amplify
+        v = self.variant(units=sun_country_inside_allegiant(self.units, reg))
+        out["S-SunCountry"] = {"H_Reinforce_airline": v.h_reinforce()["airline"], "H_Amplify_airline": v.h_amplify()["airline"]}
+        # S-Arm: each test's statistic per arm (H_Search has the current arm only)
+        out["S-Arm"] = {"legacy": self.variant(slots=LEGACY_SLOTS).tests(("H_Reinforce", "H_Amplify", "H_Afterlife",
+                                                                           "H_Decay", "H_Flag")),
+                        "current": self.variant(slots=CURRENT_SLOTS).tests()}
+        return out
+
+    # ------------------------------------------------------------------ descriptives 3-9 (section 2.9)
+    def arm_conds(self):
+        return [("L", "S0", LEGACY_SLOTS), ("C", "S0", CURRENT_SLOTS), ("C", "S1", CURRENT_SLOTS)]
+
+    def d3_old_new(self):
+        """Of the ghost mentions (all answers), the share with the successor's name within 150 characters."""
+        out = {}
+        for arm, cond, sl in self.arm_conds():
+            gm = [m for r in self.recs(cond=cond, slots=sl) for m in r["_m"] if m["kind"] == "ghost"
+                  and (self.amb or not m["ambiguous"])]
+            k = sum(m["successor_near"] for m in gm)
+            out[f"{arm}_{cond}"] = {"ghost_mentions": len(gm), "with_successor": k, "share": k / len(gm) if gm else None}
+        return out
+
+    def d4_recognition(self):
+        """K answers per ghost and model: flagged as gone, described as current, or not recognised."""
+        out = defaultdict(lambda: {"flagged": 0, "current": 0, "not_recognised": 0, "n": 0})
+        for r in self.recs(tier="K", slots=self.slots + ["M5X"]):
+            sid = r["brand_id"]
+            if sid not in self.subj or self.subj[sid]["role"] != "ghost":
+                continue
+            c = out[f"{sid}|{r['slot']}|{r['condition']}"]
+            c["n"] += 1
+            ms = [m for m in r["_m"] if m["entity"] == sid]
+            if ms:
+                c["flagged" if any(m["gone_flag"] for m in ms) else "current"] += 1
+            elif GONE_RE.search(r["text"][:2 * WINDOW]) and not NOT_RECOGNISED.search(r["text"]):
+                c["flagged"] += 1
+            else:
+                c["not_recognised"] += 1
+        return dict(out)
+
+    def d5_m5x(self):
+        trunc = re.compile(r"max_tokens|length|MAX_TOKENS|max_output_tokens", re.I)
+        out = {}
+        for sl in ("M5", "M5X"):
+            allr = [r for r in self.all if r.get("slot") == sl]
+            ok = [r for r in self.ok if r["slot"] == sl]
+            out[sl] = {"calls": len({r["call_id"] for r in allr}), "ok": len({r["call_id"] for r in ok}),
+                       "truncated": sum(bool(trunc.search(str(r.get("finish_reason") or ""))) for r in ok),
+                       "ghost_mentions": sum(1 for r in ok for m in r["_m"] if m["kind"] == "ghost" and not m["ambiguous"])}
+        return out
+
+    def d6_run_se(self):
+        """Run-to-run SE of per-model Presence at S0 (sd of the per-run Presence over runs / sqrt(runs)), per arm;
+        all units, and units named in some but not all of the model's answers (v1.17: 0.040 and 0.050)."""
+        out = {}
+        for arm, sl_list in (("L", LEGACY_SLOTS), ("C", CURRENT_SLOTS)):
+            ses, ses_some = [], []
+            for sl in sl_list:
+                for cat in ("airline", "bank"):
+                    runs = defaultdict(list)
+                    for r in self.recs("recommendation", cond="S0", slots=[sl], category=cat):
+                        runs[r["run"]].append(r)
+                    if len(runs) < 2:
+                        continue
+                    for u in [u["id"] for u in self.units if u["category"] == cat]:
+                        hit = [[any(self.to_unit.get(m["entity"]) == u and not m["ambiguous"] for m in r["_m"]) for r in rs]
+                               for rs in runs.values() if rs]
+                        pr = [sum(h) / len(h) for h in hit]
+                        mu = sum(pr) / len(pr)
+                        se = math.sqrt(sum((p - mu) ** 2 for p in pr) / (len(pr) - 1)) / math.sqrt(len(pr))
+                        ses.append(se)
+                        flat = [x for h in hit for x in h]
+                        if any(flat) and not all(flat):
+                            ses_some.append(se)
+            out[arm] = {"units": len(ses), "se_mean": sum(ses) / len(ses) if ses else None,
+                        "units_some_not_all": len(ses_some),
+                        "se_mean_some_not_all": sum(ses_some) / len(ses_some) if ses_some else None}
+        return out
+
+    def d7_search(self):
+        """Search traces per S1 answer and the sources cited when a ghost was flagged."""
+        per, cited = [], defaultdict(int)
+        for r in self.recs(cond="S1", slots=CURRENT_SLOTS):
+            s = r.get("search") or {}
+            per.append({"call_id": r["call_id"], "n_searches": s.get("n_searches") or 0,
+                        "queries": s.get("queries") or [], "n_sources": len(s.get("sources") or []),
+                        "n_citations": len(s.get("citations") or [])})
+            sid = r.get("brand_id")
+            if r["tier"] == "S" and sid in self.subj and self.subj[sid]["role"] == "ghost" and self.flagged(r, sid):
+                for c in (s.get("citations") or []) + (s.get("sources") or []):
+                    u = (c or {}).get("url") if isinstance(c, dict) else c
+                    if u:
+                        cited[re.sub(r"^https?://(www\.)?([^/]+).*$", r"\2", u)] += 1
+        return {"answers": per, "domains_cited_when_ghost_flagged": dict(sorted(cited.items(), key=lambda t: -t[1]))}
+
+    def d8_other(self):
+        """Mentions of the D16 near-floor holders, coded "other": answers naming each, per arm and condition."""
+        out = {}
+        for arm, cond, sl in self.arm_conds():
+            rs = self.recs("recommendation", cond=cond, slots=sl, category="bank")
+            out[f"{arm}_{cond}"] = {"answers": len(rs), **{k: sum(any(m["entity"] == k for m in r["_other"]) for r in rs)
+                                                          for k in NEAR_FLOOR}}
+        return out
+
+    def d9_first_mention(self):
+        """First-mention share: per model, condition and category, the share of recommendation answers naming at least
+        one current unit in which the unit is the first current unit named (ambiguous mentions excluded)."""
+        out = {}
+        for sl in self.slots:
+            for cond in ("S0", "S1"):
+                for cat in ("airline", "bank"):
+                    cnt = defaultdict(int)
+                    n = 0
+                    for r in self.recs("recommendation", cond=cond, slots=[sl], category=cat):
+                        first = next((self.to_unit.get(m["entity"]) for m in r["_m"]
+                                      if not m["ambiguous"] and self.to_unit.get(m["entity"]) in self.unit_of
+                                      and self.unit_of[self.to_unit.get(m["entity"])]["category"] == cat), None)
+                        if first:
+                            n += 1
+                            cnt[first] += 1
+                    if n:
+                        out[f"{sl}|{cond}|{cat}"] = {"answers": n, "share": {u: k / n for u, k in cnt.items()}}
+        return out
+
     def run(self, expected=None):
         res = {"phase": "v0.40", "seed": SEED, "permutations": self.perms, "thresholds": T, "window_chars": WINDOW,
                "H_Reinforce": self.h_reinforce(), "H_Amplify": self.h_amplify(), "H_Afterlife": self.h_afterlife(),
                "H_Decay": self.h_decay(), "H_Flag": self.h_flag(), "H_Search": self.h_search(),
-               "sensitivity": {
-                   "H_Flag_without_DISCOVER": self.h_flag(drop_controls=("DISCOVER",)),
-                   "H_Reinforce_banks_without_brokerage_D4": self.d4()},
+               "sensitivity": self.sensitivities(),
                "manipulation_checks": self.manipulation(expected), "descriptives": self.descriptives()}
+        res["descriptives"].update({"3_old_vs_new_name": self.d3_old_new(), "4_recognition": self.d4_recognition(),
+                                    "5_M5X_vs_M5": self.d5_m5x(), "6_run_to_run_se": self.d6_run_se(),
+                                    "7_search_traces": self.d7_search(), "8_near_floor_other": self.d8_other(),
+                                    "9_first_mention_share": self.d9_first_mention()})
         return res
 
     def d4(self):
