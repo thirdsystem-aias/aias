@@ -1,0 +1,106 @@
+{
+  "phase": "v1.16",
+  "kind": "input parity before the lock (counts and n's only)",
+  "created_utc": "2026-11-12T08:36:58+00:00",
+  "pinned_inputs_sha256": {
+    "osf/methodology/v1_10/outputs/v1_10_verdicts.json": "d4250ba79a6acfb9e211dbc561311da9fc07581bebf871dea3dbe149d6bdcb28",
+    "osf/aias_2_0/aias_2_0_profiles.csv": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e",
+    "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+    "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f"
+  },
+  "v1_10_rank_tables_verified": 31,
+  "checks": {
+    "v1_10_rank_table_rows_equal_recorded": true,
+    "t4_equals_v1_14_published": true,
+    "archived_n_equal_v1_10": true,
+    "t4_rank_table_sha256_equals_v1_14_record": true,
+    "all_pass": true
+  },
+  "waves": {
+    "t1": {
+      "answers_with_text": 180,
+      "rankable_answers": 161,
+      "rankable_rows": 934,
+      "pairs": 2606,
+      "units_at_floor": 55,
+      "units_at_floor_with_P": 55,
+      "units_at_floor_with_C": 55,
+      "v1_10_published_n_H1": 55,
+      "v1_10_published_n_H2": 55,
+      "n_H1_equals_v1_10": true,
+      "n_H2_equals_v1_10": true
+    },
+    "t2": {
+      "answers_with_text": 180,
+      "rankable_answers": 161,
+      "rankable_rows": 923,
+      "pairs": 2547,
+      "units_at_floor": 54,
+      "units_at_floor_with_P": 54,
+      "units_at_floor_with_C": 54,
+      "v1_10_published_n_H1": 54,
+      "v1_10_published_n_H2": 54,
+      "n_H1_equals_v1_10": true,
+      "n_H2_equals_v1_10": true
+    },
+    "t3": {
+      "answers_with_text": 180,
+      "rankable_answers": 161,
+      "rankable_rows": 903,
+      "pairs": 2374,
+      "units_at_floor": 54,
+      "units_at_floor_with_P": 54,
+      "units_at_floor_with_C": 54,
+      "v1_10_published_n_H1": 54,
+      "v1_10_published_n_H2": 54,
+      "n_H1_equals_v1_10": true,
+      "n_H2_equals_v1_10": true
+    },
+    "t4": {
+      "answers": 540,
+      "answers_with_text": {
+        "S0": 270,
+        "S1": 270
+      },
+      "rankable_answers": {
+        "S0": 262,
+        "S1": 241
+      },
+      "rankable_rows_S0": 1641,
+      "rankable_rows_S1": 1375,
+      "pairs_S0": 4925,
+      "pairs_S1": 3806,
+      "units_at_floor_S0": 71,
+      "units_at_floor_S1": 65,
+      "units_at_floor_S0_with_P": 71,
+      "units_at_floor_S0_with_C": 70,
+      "v1_14_published": {
+        "answers": 540,
+        "rankable_rows_S0": 1641,
+        "rankable_rows_S1": 1375,
+        "units_rated_S0": 71,
+        "H1_n": 71,
+        "H2_n": 70
+      },
+      "v1_14_unit_table_rated_S0": 71,
+      "v1_14_unit_table_H1_n": 71,
+      "v1_14_unit_table_H2_n": 70,
+      "equal_v1_14": {
+        "answers": true,
+        "rankable_rows_S0": true,
+        "rankable_rows_S1": true,
+        "units_at_floor_S0": true,
+        "H1_n": true,
+        "H2_n": true
+      }
+    }
+  },
+  "category_size_registry_brands": {
+    "v0.19": 16,
+    "v0.20": 24,
+    "v0.21": 24,
+    "v0.22": 24,
+    "v0.23": 24
+  },
+  "note": "No PREC value, correlation, verdict statistic or first-position concentration was computed on real data; the units at the rating floor are counts of rankable mentions only. The n's of the rated sets in the confirmatory run can be smaller (PREC also requires the main comparison component, section 3.3)."
+}

@@ -1,0 +1,28 @@
+[v1.16] dry run, world A_independent_precedence
+    [v1.16] PREC fitted: rated units t1 53, t2 60, t3 57, t4 69, t4 S1 72
+      H1 t1 0.0707 (n 53)  t2 0.0341 (n 60)  t3 -0.0704 (n 57)  t4 0.1022 (n 69) -> CONFIRMED
+      H2 t1 0.1550 (n 53)  t2 0.0372 (n 60)  t3 -0.0638 (n 57)  t4 0.2164 (n 69) -> CONFIRMED
+      H3 t1 -> t2 (permutation and within-answer shuffle nulls) ...
+      H3 rho 0.9478 (n 47; p_perm 0.0001; p_shuffle 0.0001) -> CONFIRMED
+      H4_S1 rho 0.0292 (n 72) -> CONFIRMED
+      GATE: PASS  ->  PASS: Ranking (co-mention precedence) may be reported as a separate AIAS component; Ranking Paper B and the AIAS 3.0 calibration may each be pre-registered.
+      H5 t2 -> t3 (secondary) ...
+[v1.16] dry run, world B_popularity_order
+    [v1.16] PREC fitted: rated units t1 55, t2 58, t3 52, t4 66, t4 S1 67
+      H1 t1 0.8395 (n 55)  t2 0.8425 (n 58)  t3 0.8292 (n 52)  t4 0.8111 (n 66) -> FALSIFIED
+      H2 t1 -0.0985 (n 55)  t2 0.1178 (n 58)  t3 0.2529 (n 52)  t4 -0.1056 (n 66) -> CONFIRMED
+      H3 t1 -> t2 (permutation and within-answer shuffle nulls) ...
+      H3 rho 0.8628 (n 50; p_perm 0.0001; p_shuffle 0.0001) -> CONFIRMED
+      H4_S1 rho 0.8689 (n 67) -> FALSIFIED
+      GATE: FAIL  ->  NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.
+      H5 t2 -> t3 (secondary) ...
+[v1.16] dry run, world C_noise_order
+    [v1.16] PREC fitted: rated units t1 56, t2 59, t3 51, t4 63, t4 S1 65
+      H1 t1 0.1704 (n 56)  t2 0.0651 (n 59)  t3 0.0136 (n 51)  t4 -0.1195 (n 63) -> CONFIRMED
+      H2 t1 -0.0339 (n 56)  t2 0.1557 (n 59)  t3 0.3758 (n 51)  t4 -0.0924 (n 63) -> MARGINAL
+      H3 t1 -> t2 (permutation and within-answer shuffle nulls) ...
+      H3 rho -0.1004 (n 52; p_perm 0.7455; p_shuffle 0.7515) -> FALSIFIED
+      H4_S1 rho 0.0456 (n 65) -> CONFIRMED
+      GATE: FAIL  ->  NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.
+      H5 t2 -> t3 (secondary) ...
+[v1.16] dry run written: /Users/pablou/aias/_worktrees/v1.16/osf/methodology/v1_16/dryrun/dryrun_v1_16.json; all worlds match expected = True

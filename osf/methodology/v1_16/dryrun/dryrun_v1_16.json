@@ -1,0 +1,238 @@
+{
+  "phase": "v1.16",
+  "kind": "dry run on synthetic data with known answers (no real answer read)",
+  "created_utc": "2026-11-12T08:42:38+00:00",
+  "seed": 116100,
+  "worlds": {
+    "A_independent_precedence": {
+      "description": "inclusion by popularity; order by a precedence strength independent of popularity",
+      "expected": {
+        "GATE": "PASS"
+      },
+      "got": {
+        "GATE": "PASS",
+        "H1": "CONFIRMED",
+        "H2": "CONFIRMED",
+        "H3": "CONFIRMED",
+        "H4_S1": "CONFIRMED"
+      },
+      "matches_expected": true,
+      "H1_rho_per_wave": {
+        "t1": 0.0706632580463647,
+        "t2": 0.03414917065600571,
+        "t3": -0.07043514546410728,
+        "t4": 0.1022090934520423
+      },
+      "H1_n_per_wave": {
+        "t1": 53,
+        "t2": 60,
+        "t3": 57,
+        "t4": 69
+      },
+      "H2_rho_per_wave": {
+        "t1": 0.15503875968992248,
+        "t2": 0.03718459495351926,
+        "t3": -0.06379707916986933,
+        "t4": 0.216414686825054
+      },
+      "H3": {
+        "rho": 0.9478260869565217,
+        "n": 47,
+        "p_perm": 9.999000099990002e-05,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.0006597101449275363
+      },
+      "H4_S1": {
+        "rho": 0.029231030841017698,
+        "n": 72
+      },
+      "MODE_vs_P_rho_per_wave": {
+        "t1": 0.10526395068687286,
+        "t2": 0.08444296390402456,
+        "t3": 0.0653282975702278,
+        "t4": 0.1268289718985022
+      },
+      "CONSEQUENCE": "PASS: Ranking (co-mention precedence) may be reported as a separate AIAS component; Ranking Paper B and the AIAS 3.0 calibration may each be pre-registered.",
+      "truth": {
+        "t1": {
+          "rho_true_v_P": 0.06281178493010195,
+          "rho_PREC_v": 0.936046511627907
+        },
+        "t2": {
+          "rho_true_v_P": 0.03950590330792818,
+          "rho_PREC_v": 0.9389110225763613
+        },
+        "t3": {
+          "rho_true_v_P": -0.012384201400282598,
+          "rho_PREC_v": 0.9692544196771714
+        },
+        "t4": {
+          "rho_true_v_P": 0.10134291469397413,
+          "rho_PREC_v": 0.9300215982721383
+        }
+      },
+      "MQ7_flag": false,
+      "sensitivity_verdict_changes": [
+        {
+          "sensitivity": "S2_floor_10",
+          "hypothesis": "H2",
+          "primary": "CONFIRMED",
+          "under_sensitivity": "MARGINAL"
+        },
+        {
+          "sensitivity": "S4_leave_out_v0.21",
+          "hypothesis": "H2",
+          "primary": "CONFIRMED",
+          "under_sensitivity": "MARGINAL"
+        }
+      ]
+    },
+    "B_popularity_order": {
+      "description": "inclusion by popularity; order by the same popularity (position = Presence)",
+      "expected": {
+        "GATE": "FAIL",
+        "H1": "FALSIFIED"
+      },
+      "got": {
+        "GATE": "FAIL",
+        "H1": "FALSIFIED",
+        "H2": "CONFIRMED",
+        "H3": "CONFIRMED",
+        "H4_S1": "FALSIFIED"
+      },
+      "matches_expected": true,
+      "H1_rho_per_wave": {
+        "t1": 0.8395372492446479,
+        "t2": 0.8425104960316048,
+        "t3": 0.8292128506721715,
+        "t4": 0.811139279786206
+      },
+      "H1_n_per_wave": {
+        "t1": 55,
+        "t2": 58,
+        "t3": 52,
+        "t4": 66
+      },
+      "H2_rho_per_wave": {
+        "t1": -0.09847198641765705,
+        "t2": 0.1177794448612153,
+        "t3": 0.25285171102661597,
+        "t4": -0.1055527763881941
+      },
+      "H3": {
+        "rho": 0.8627671541057368,
+        "n": 50,
+        "p_perm": 9.999000099990002e-05,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.0014600674915635548
+      },
+      "H4_S1": {
+        "rho": 0.8689282494698289,
+        "n": 67
+      },
+      "MODE_vs_P_rho_per_wave": {
+        "t1": 0.7653072015956836,
+        "t2": 0.6559830798867097,
+        "t3": 0.7071323867135257,
+        "t4": 0.6750479688545471
+      },
+      "CONSEQUENCE": "NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.",
+      "truth": {
+        "t1": {
+          "rho_true_v_P": 0.8910426019590434,
+          "rho_PREC_v": 0.9032258064516129
+        },
+        "t2": {
+          "rho_true_v_P": 0.8997831236688159,
+          "rho_PREC_v": 0.905476369092273
+        },
+        "t3": {
+          "rho_true_v_P": 0.870481545786643,
+          "rho_PREC_v": 0.8269961977186312
+        },
+        "t4": {
+          "rho_true_v_P": 0.9209967332637441,
+          "rho_PREC_v": 0.9239619809904952
+        }
+      },
+      "MQ7_flag": false,
+      "sensitivity_verdict_changes": null
+    },
+    "C_noise_order": {
+      "description": "inclusion by popularity; order uniformly random (no precedence signal)",
+      "expected": {
+        "GATE": "FAIL",
+        "H3": "FALSIFIED"
+      },
+      "got": {
+        "GATE": "FAIL",
+        "H1": "CONFIRMED",
+        "H2": "MARGINAL",
+        "H3": "FALSIFIED",
+        "H4_S1": "CONFIRMED"
+      },
+      "matches_expected": true,
+      "H1_rho_per_wave": {
+        "t1": 0.17038855027411945,
+        "t2": 0.0651306658519743,
+        "t3": 0.013557445794736608,
+        "t4": -0.11947236486452856
+      },
+      "H1_n_per_wave": {
+        "t1": 56,
+        "t2": 59,
+        "t3": 51,
+        "t4": 63
+      },
+      "H2_rho_per_wave": {
+        "t1": -0.03387096774193549,
+        "t2": 0.15570934256055363,
+        "t3": 0.3757700205338809,
+        "t4": -0.09243697478991597
+      },
+      "H3": {
+        "rho": -0.10040160642570281,
+        "n": 52,
+        "p_perm": 0.7455254474552545,
+        "p_shuffle": 0.7515248475152485,
+        "shuffled_mean_rho": 0.0034506024096385545
+      },
+      "H4_S1": {
+        "rho": 0.04563176291746543,
+        "n": 65
+      },
+      "MODE_vs_P_rho_per_wave": {
+        "t1": 0.38215305741403766,
+        "t2": 0.05493464820716669,
+        "t3": -0.007091406092818421,
+        "t4": 0.20344066459845705
+      },
+      "CONSEQUENCE": "NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.",
+      "truth": {
+        "t1": {
+          "rho_true_v_P": null,
+          "rho_PREC_v": null
+        },
+        "t2": {
+          "rho_true_v_P": null,
+          "rho_PREC_v": null
+        },
+        "t3": {
+          "rho_true_v_P": null,
+          "rho_PREC_v": null
+        },
+        "t4": {
+          "rho_true_v_P": null,
+          "rho_PREC_v": null
+        }
+      },
+      "MQ7_flag": false,
+      "sensitivity_verdict_changes": null
+    }
+  },
+  "draws": {
+    "perm": 10000,
+    "shuffle": 10000
+  },
+  "all_match_expected": true
+}
