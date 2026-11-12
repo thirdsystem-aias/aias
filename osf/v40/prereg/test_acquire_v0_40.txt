@@ -1,0 +1,20 @@
+PASS matrix has 2,821 calls
+PASS legacy arm 1,786 calls (6 x 94 x 3 + 94)
+PASS S1 = 63 probes x 3 current models
+PASS S1 probes are the recommendation and status probes only
+PASS S1 is the last block
+PASS no sampling parameter in the current-arm functions
+PASS M5 uses thinking budget 0
+PASS legacy call functions verbatim from v0.39
+PASS M5X (extra pass) uses the verbatim v0.39 call_google
+PASS current arm = Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Argon
+PASS fake run completes
+PASS every call_id written once
+PASS all S1 lines after all S0 lines
+PASS Fable lines carry a batch id
+PASS costs recorded on every line
+PASS resume sends nothing new
+PASS budget guard halts under a small cap and never exceeds it
+PASS no S1 request after the S1 window
+
+ALL PASS

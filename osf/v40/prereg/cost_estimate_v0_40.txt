@@ -1,0 +1,51 @@
+== basis: t4 cost per completed record (central) / 90th pct (high), USD
+  claude-fable-5-2   A S0  n=112 ok=112  0.0190 / 0.0830
+  claude-fable-5-2   B S0  n= 90 ok= 90  0.0257 / 0.0700
+  claude-fable-5-2   B S1  n=120 ok= 90  0.1748 / 0.3374
+  gemini-4-argon     A S0  n=118 ok=112  0.0042 / 0.0191
+  gemini-4-argon     B S0  n= 90 ok= 90  0.0131 / 0.0182
+  gemini-4-argon     B S1  n=168 ok= 90  0.0200 / 0.0384
+  gpt-6-astra        A S0  n=112 ok=112  0.0416 / 0.1896
+  gpt-6-astra        B S0  n= 90 ok= 90  0.0421 / 0.0902
+  gpt-6-astra        B S1  n= 90 ok= 90  0.3931 / 0.8264
+  v0.39 claude-opus-4-5        std     0.0072 / 0.0513
+  v0.39 claude-opus-5-5        S0      0.0329 / 0.0448
+  v0.39 claude-opus-5-5        S1      0.1013 / 0.1442
+  v0.39 claude-sonnet-4-5      std     0.0049 / 0.0308
+  v0.39 gemini-2.5-flash       budget0 0.0013 / 0.0051
+  v0.39 gemini-2.5-flash       v039    0.0047 / 0.0051
+  v0.39 gemini-2.5-flash-lite  std     0.0005 / 0.0008
+  v0.39 gpt-4o                 std     0.0038 / 0.0205
+  v0.39 gpt-4o-mini            std     0.0002 / 0.0012
+
+== designs (US$, central / high)
+  D1 frozen probe set: Fable 5.2 (Batch API), S0 x3, S1 x3 on all 94 probes
+     calls  3478  central $ 191.14  high $ 420.75  [ABOVE CAP]
+  D2 = D1 with S1 x1 run
+     calls  2914  central $  80.62  high $ 194.75  [central fits, high above cap]
+  D3 = D1 with S1 x3 on the 32 recommendation probes only
+     calls  2920  central $  81.80  high $ 197.16  [central fits, high above cap]
+  D4 = D1 with S1 x1 run on the 32 recommendation probes only
+     calls  2728  central $  44.17  high $ 120.22  [central fits, high above cap]
+  D5 = D1 with Claude Opus 5.5 (synchronous) in place of Fable 5.2
+     calls  3478  central $ 173.68  high $ 359.14  [ABOVE CAP]
+  D6 = D5 with S1 x1 run
+     calls  2914  central $  76.97  high $ 169.46  [central fits, high above cap]
+  D7 (registered) = D1 with S1 x1 run on the 32 recommendation + 31 status (S) probes
+     calls  2821  central $  62.40  high $ 157.49  [central fits, high above cap]
+
+== per cell, D7 (registered)
+  L claude-opus-4-5 std x3                                         282 calls  $  2.03 / $ 14.47
+  L claude-sonnet-4-5 std x3                                       282 calls  $  1.39 / $  8.68
+  L gpt-4o std x3                                                  282 calls  $  1.08 / $  5.79
+  L gpt-4o-mini std x3                                             282 calls  $  0.07 / $  0.35
+  L gemini-2.5-flash budget0 x3                                    282 calls  $  0.36 / $  1.45
+  L gemini-2.5-flash v039 x1                                        94 calls  $  0.45 / $  0.48
+  L gemini-2.5-flash-lite std x3                                   282 calls  $  0.15 / $  0.23
+  C claude-fable-5-2 S0 x3                                         282 calls  $  6.01 / $ 19.75
+  C claude-fable-5-2 S1 x1 (recommendation + S probes)              63 calls  $ 11.01 / $ 21.26
+  C gpt-6-astra S0 x3                                              282 calls  $ 11.78 / $ 25.43
+  C gpt-6-astra S1 x1 (recommendation + S probes)                   63 calls  $ 24.77 / $ 52.06
+  C gemini-4-argon S0 x3                                           282 calls  $  2.04 / $  5.12
+  C gemini-4-argon S1 x1 (recommendation + S probes)                63 calls  $  1.26 / $  2.42
+wrote osf/v40/prereg/cost_estimate_v0_40.json

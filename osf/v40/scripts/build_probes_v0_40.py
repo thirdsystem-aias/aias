@@ -78,6 +78,32 @@ PROBE_NAME = {
     "DISCOVER":    ("Discover Bank", "registry alias"),
     "JPMC":        ("Chase Bank", "consumer name of the JPMorgan Chase holder"),
 }
+# ---------------------------------------------------------------------------------------------------------------
+# DISCOVER SWITCH -- PENDING PABLO (a/b). Discover's deposit accounts are moving to Capital One (registry draft r3,
+# section 5, item 5). (a) keep Discover as the bank living-brand control and add a limitation; (b) replace it with
+# another bank control from the frozen registry's own material (DISCOVER_CANDIDATES; the runner does not pick).
+# Default None: the draft build (no --final) is unchanged and byte-identical to the frozen draft; a --final build is
+# REFUSED until the option is set (here or with --discover), and (b) also needs --replacement.
+DISCOVER_OPTION = None            # "a" | "b" | None (unset)
+DISCOVER_REPLACEMENT = None       # one key of DISCOVER_CANDIDATES when DISCOVER_OPTION == "b"
+DISCOVER_CANDIDATES = {
+    "MERRILL": {"name_in_probe": "Merrill", "registry_brand": "Merrill",
+                "source": "registries/bank_scan_class.csv, CERT 27374, class 'brand persists' (D10): Merrill Lynch Bank "
+                          "USA merged into Bank of America 2009-07-01 (FDIC); the Merrill brand continues",
+                "fit": "living brand after a legal change (R10), like Discover; but a brokerage and wealth brand, not a "
+                       "deposit-account brand, and its legal change (2009) predates every model cutoff by years"},
+    "WEBSTER": {"name_in_probe": "Webster Bank", "registry_brand": "Webster Bank",
+                "source": "registry draft r3, section 5, item 5 (D16): Santander completed its acquisition of Webster "
+                          "on 2026-08-20 and merged Webster Bank into Santander Bank, N.A.; both brands continue "
+                          "'for now' (SHUSA 8-K, Exhibit 99.1); Webster Bank 0.371% at SOD 2026",
+                "fit": "closest to Discover's role (recent legal change, retail deposit brand still in use); but below "
+                       "the 0.5% floor, its change postdates every cutoff, and it may be retired like Discover"},
+    "FIFTHTHIRD": {"name_in_probe": "Fifth Third Bank", "registry_brand": "Fifth Third",
+                   "source": "registries/bank_scan_class.csv, CERT 993, class 'not an exit': Fifth Third charter "
+                             "consolidation, 2009, stem kept (the row says 'verify FDIC record')",
+                   "fit": "a living retail brand with an internal legal change only (no ownership change); weakest fit; "
+                          "the FDIC record is flagged as unverified in the scan"},
+}
 TIER_LABELS = {
     "AG": "Airline recommendation, generic (RQ1)", "AN": "Airline recommendation, by need",
     "AR": "Airline recommendation, by Census region", "BG": "Bank recommendation, generic (RQ1)",
@@ -134,14 +160,42 @@ def battery(subs):
     return probes
 
 
+def apply_discover_switch(subs, option, replacement):
+    """Final build only. Refuses while the Discover switch is unset (PENDING PABLO (a/b))."""
+    if option not in ("a", "b"):
+        raise SystemExit("REFUSED: the final probe set needs the Discover switch: set DISCOVER_OPTION or pass "
+                         "--discover a|b (PENDING PABLO (a/b)); the draft build without --final is unchanged")
+    if option == "a":
+        return subs, "FINAL (Discover switch: a, Discover kept as the bank living-brand control); locks at tag v0.40-prereg-r1"
+    if replacement not in DISCOVER_CANDIDATES:
+        raise SystemExit("REFUSED: option (b) needs --replacement " + "|".join(sorted(DISCOVER_CANDIDATES)))
+    c = DISCOVER_CANDIDATES[replacement]
+    out = []
+    for s in subs:
+        if s["subject_id"] == "DISCOVER":
+            s = {"subject_id": replacement, "category": "bank", "role": "control", "registry_brand": c["registry_brand"],
+                 "name_in_probe": c["name_in_probe"], "name_source": c["source"]}
+        out.append(s)
+    return out, f"FINAL (Discover switch: b, Discover replaced by {replacement}); locks at tag v0.40-prereg-r1"
+
+
 def main():
+    import argparse
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--final", action="store_true", help="freeze the final probe set (needs the Discover switch)")
+    ap.add_argument("--discover", choices=["a", "b"], default=DISCOVER_OPTION)
+    ap.add_argument("--replacement", choices=sorted(DISCOVER_CANDIDATES), default=DISCOVER_REPLACEMENT)
+    a = ap.parse_args()
     v39 = json.loads(V39.read_text(encoding="utf-8"))
     subs = subjects()
+    status = "DRAFT for Pablo's review (2026-11-08); locks at tag v0.40-prereg-r1"
+    if a.final:
+        subs, status = apply_discover_switch(subs, a.discover, a.replacement)
     probes = battery(subs)
     n = len(probes)
     spec = {
         "phase": "v0.40",
-        "status": "DRAFT for Pablo's review (2026-11-08); locks at tag v0.40-prereg-r1",
+        "status": status,
         "tier_labels": TIER_LABELS,
         "arms": {
             "L": {"label": "legacy fixed panel (v0.17-v0.39)", "models": ["M1", "M2", "M3", "M4", "M5", "M6"],
@@ -158,6 +212,11 @@ def main():
         "subjects": subs,
         "probes": probes,
     }
+    if a.final:  # registered design D7 (PRE_REGISTRATION_v0_40.md section 6): S1 one run, recommendation + S probes
+        n_s1 = sum(p["kind"] == "recommendation" or p["tier"] == "S" for p in probes)
+        spec["arms"]["C"]["decoding"]["runs_per_cell"] = {"S0": 3, "S1": 1}
+        spec["arms"]["C"]["S1_probes"] = "recommendation and status (S) probes only"
+        spec["calls"] = {"L": 19 * n, "C": 9 * n + 3 * n_s1, "total": 28 * n + 3 * n_s1}
     OUT_JSON.parent.mkdir(parents=True, exist_ok=True)
     OUT_JSON.write_text(json.dumps(spec, ensure_ascii=False, indent=2), encoding="utf-8")
 

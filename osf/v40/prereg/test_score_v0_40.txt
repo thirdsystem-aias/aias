@@ -1,0 +1,30 @@
+PASS ghost mention found and gone-flagged
+PASS successor name near the ghost is coded
+PASS current unit found
+PASS bare collision alias coded ambiguous
+PASS longest alias wins, no overlapping shorter match
+PASS gone-flag needs the +-150 character window
+PASS Fable 5.2 uses the Opus 5.5 cutoff rows
+PASS exact binomial sf
+PASS Fisher exact one-sided
+PASS Spearman
+  world A H_Reinforce  CONFIRMED     world B FALSIFIED
+  world A H_Amplify    CONFIRMED     world B FALSIFIED
+  world A H_Afterlife  CONFIRMED     world B FALSIFIED
+  world A H_Decay      CONFIRMED     world B UNDETERMINED
+  world A H_Flag       CONFIRMED     world B FALSIFIED
+  world A H_Search     CONFIRMED     world B FALSIFIED
+PASS A: H_Reinforce CONFIRMED
+PASS A: H_Amplify CONFIRMED
+PASS A: H_Afterlife CONFIRMED
+PASS A: H_Decay CONFIRMED
+PASS A: H_Flag CONFIRMED
+PASS A: H_Search CONFIRMED
+PASS B: H_Afterlife FALSIFIED
+PASS B: H_Decay UNDETERMINED (floor)
+PASS B: H_Flag FALSIFIED
+PASS B: H_Search not CONFIRMED
+PASS B: H_Reinforce not CONFIRMED
+PASS manipulation checks pass in A
+
+ALL PASS
