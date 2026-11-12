@@ -1,0 +1,15 @@
+# v1.19 DRAFT lock manifest (r0, 2026-11-12; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_19.sha256 at r1)
+# check: shasum -a 256 -c <(grep -v '^#' osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19_DRAFT.sha256)
+91ca6342374672f62084aef6eda9405e52545c21e83dab3f68772877c75ba0cf  osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r0.md
+bc30c34caf2e559d042f4f5e2bff9110153486695b3f4f50f5de7e24e3ca6ef0  osf/methodology/v1_19/prereg/build_roster_v1_19.py
+9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb  osf/methodology/v1_19/prereg/phantom_roster_v1_19.csv
+af5a61cd9c966fb8c3baa6c3fe1126a7dcb93899471b40965b2ae0e6a11890b9  osf/methodology/v1_19/scripts/score_v1_19.py
+9c3a5aec5243e0562765ebac0ad600ee3e06d0666ff0b4e57f9215aede25de4d  osf/methodology/v1_19/scripts/tests/test_score_v1_19.py
+4a07baf0e9c970a217e454656ca3de1e6eed07a692b70f507b25d4779fd1ca7c  osf/methodology/v1_19/dryrun/dry_run_v1_19.json
+21d5bfe6b0943358a2dc01314a2546218ae7dd0879a4e20d894e804c486d0cca  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt1_weak_world.json
+86d274e30a4db1291e9d4eb2f3e9560f471c752280aa7891c2b79b6fdebaf745  osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt2.json
+5e684e94dd6c5ef23690b97ed9e60a9873b021f3bebf5f0c20810465d242ec00  osf/methodology/v1_19/anchor/DEVIATIONS.md
+f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20  osf/methodology/v1_12/scripts/score_v1_12.py
+79fc981b8ce38bb35c05f4cf475adc734c5727f537039f7b3746b3cd23c9349e  osf/methodology/v1_12/prereg/probes_v1_12.jsonl
+d38a3676788a77c9244cfeab1424b215c772db34a0f4ac753bc6b192a299a638  osf/v31/data/v31_cpc.csv
+ef2d24bd61d6e8fe50257ee514333dd40d5569361943618767b8302881d3f067  prereg/v0_22_registry.json
