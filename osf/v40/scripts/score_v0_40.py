@@ -72,11 +72,24 @@ def read_csv(p):
 
 def load_registry(reg=REG):
     units = []   # current share units
-    for r in read_csv(reg / "out" / "airlines_current.csv"):
-        if r["in_registry"] == "True":
-            units.append({"id": r["code"], "category": "airline", "role": "current", "brand": r["name"],
-                          "aliases": r["aliases"].split("|"), "share": float(r["brand_share_pct"]),
-                          "share_alt": float(r["operating_share_pct"])})
+    # Airlines: 11 brands in 10 share units (R8, D2): a brand whose holder is another registry brand (Hawaiian inside
+    # Alaska) is one unit with its holder; the unit's share is the sum of its brands' brand_share_pct (= the holder's
+    # holder_share_pct) and its alternative share the sum of operating_share_pct (S-Operating). Fixed 2026-11-12:
+    # the first r1 scorer kept Hawaiian as an eleventh unit on its partial-window brand share.
+    air = [r for r in read_csv(reg / "out" / "airlines_current.csv") if r["in_registry"] == "True"]
+    codes = {r["code"] for r in air}
+    by_holder = {}
+    for r in air:
+        h = r["holder"] if r["holder"] in codes else r["code"]
+        u = by_holder.setdefault(h, {"id": h, "category": "airline", "role": "current", "brand": None, "aliases": [],
+                                     "share": 0.0, "share_alt": 0.0, "brands": []})
+        if r["code"] == h:
+            u["brand"] = r["name"]
+        u["brands"].append(r["code"])
+        u["aliases"] += [a for a in r["aliases"].split("|") if a not in u["aliases"]]
+        u["share"] += float(r["brand_share_pct"])
+        u["share_alt"] += float(r["operating_share_pct"])
+    units += list(by_holder.values())
     for r in read_csv(reg / "out" / "banks_current.csv"):
         if r["in_registry"] == "True":
             units.append({"id": r["HOLDER"], "category": "bank", "role": "current", "brand": r["brand"],

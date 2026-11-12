@@ -32,7 +32,8 @@ PASS sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-
 PASS S-Ambig runs all six tests
 PASS S-Arm: legacy five tests, current six
 PASS S-Operating: Delta leads the airlines
-PASS S-SunCountry: Sun Country inside Allegiant (10 airline units)
+PASS airlines: 10 share units, Hawaiian inside Alaska at the holder share 8.5110 (R8)
+PASS S-SunCountry: Sun Country inside Allegiant (9 airline units)
 PASS S-SunCountry: Allegiant at the registry's alternative share 2.6673
 PASS S-Legal reads gap_legal_m (differs from gap_brand_m somewhere)
 PASS S-Ambig: bare 'Delta' (ambiguous) counted for DL only in the sensitivity

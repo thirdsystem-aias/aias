@@ -133,8 +133,12 @@ check("sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, 
 check("S-Ambig runs all six tests", set(sA["S-Ambig"]) == {"H_Reinforce", "H_Amplify", "H_Afterlife", "H_Decay", "H_Flag", "H_Search"})
 check("S-Arm: legacy five tests, current six", len(sA["S-Arm"]["legacy"]) == 5 and len(sA["S-Arm"]["current"]) == 6)
 check("S-Operating: Delta leads the airlines", sA["S-Operating"]["H_Amplify_airline"]["leader"] == "DL")
-check("S-SunCountry: Sun Country inside Allegiant (10 airline units)",
-      sA["S-SunCountry"]["H_Reinforce_airline"]["n_units"] == sum(u["category"] == "airline" for u in units) - 1)
+air = {u["id"]: u for u in units if u["category"] == "airline"}
+check("airlines: 10 share units, Hawaiian inside Alaska at the holder share 8.5110 (R8)",
+      len(air) == 10 and "HA" not in air and "Hawaiian Airlines" in air["AS"]["aliases"] and abs(air["AS"]["share"] - 8.5110) < 1e-3,
+      (len(air), air.get("AS", {}).get("share")))
+check("S-SunCountry: Sun Country inside Allegiant (9 airline units)",
+      sA["S-SunCountry"]["H_Reinforce_airline"]["n_units"] == 9, sA["S-SunCountry"]["H_Reinforce_airline"]["n_units"])
 su = S.sun_country_inside_allegiant(units)
 check("S-SunCountry: Allegiant at the registry's alternative share 2.6673", abs([u for u in su if u["id"] == "G4"][0]["share"] - 2.6673) < 1e-9)
 lg = S.load_gaps(column="gap_legal_m")
