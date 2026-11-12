@@ -1,6 +1,8 @@
 # AIAS v1.18 — Grounding under four competing definitions (exploratory re-analysis beside v1.13)
 
-AIAS™ Measurement Program — Third System™. Pre-registration **r1, draft for the coordinator's check** (2026-11-12). Not locked: the lock is tag `v1.18-prereg-r1` pushed to origin and the OSF deposit of `prereg/` and `registries/`, both the coordinator's and Pablo's gates. Nothing that this study estimates has been computed on real data (§9). No model call, no web fetch, no spend.
+AIAS™ Measurement Program — Third System™. Pre-registration **r1, final** (2026-11-12). Locked at git tag `v1.18-prereg-r1` pushed to origin, with the OSF deposit of `prereg/` and `registries/` (`methodology/v1_18`), before any estimand is computed on real data (§9, §12). No model call, no web fetch, no spend.
+
+**Change log.** 2026-11-12, r1 draft → r1 final (ex ante, before the lock; coordinator's decisions, DEVIATIONS Entry 0): the declared audit (§4.4) done by an independent Claude Sonnet 5.5 session instead of "Pablo or a person he names" (§4.4, `domain_rules_v1_18.md` §5), with its result (raw agreement on the 50 hand rows 0.90, so no re-coding and no change to the domain table); `audit_sheet_v1_18.csv` filled with the second coder's classes; §10 limitation on two AI coders added; sources-only domains not classified before the lock (S5 reported with its UNRESOLVED share); `alias_of` candidates not hand-pruned (S3 as declared); status set from draft to final.
 
 ## 0. Status, scope and lineage
 
@@ -51,7 +53,11 @@ Choices argued. (i) *Focal through D_b only.* v1.13's frozen D_b is the program'
 
 **4.3 Unresolved domains** are listed in the table and reported with every result (their share of each brand's cited domains, and S1); they are never guessed.
 
-**4.4 Audit.** 60 rows, seed 118003: 50 hand-classified rows drawn proportional to class and 10 T1 rows (`draw_audit_sample_v1_18.py`; `audit_sheet_v1_18.csv` holds the domains only). The second coder (Pablo or a person he names) classifies them blind to the key and may also resolve any of the 59 cited UNRESOLVED domains with a stated reason. Reported: raw agreement and Cohen's κ. If raw agreement on the 50 hand rows is below 0.85, every hand row is re-coded before the lock and disagreements go to Pablo. The audit is completed **before** the lock; any change is logged in DEVIATIONS and re-pinned in the manifest.
+**4.4 Audit.** 60 rows, seed 118003: 50 hand-classified rows drawn proportional to class and 10 T1 rows (`draw_audit_sample_v1_18.py`; `audit_sheet_v1_18.csv` holds the domains only). The second coder classifies them blind to the key and may also resolve any of the 59 cited UNRESOLVED domains with a stated reason. Reported: raw agreement and Cohen's κ. If raw agreement on the 50 hand rows is below 0.85, every hand row is re-coded before the lock and disagreements go to Pablo. The audit is completed **before** the lock; any change is logged in DEVIATIONS and re-pinned in the manifest.
+
+*Second coder (amended ex ante, 2026-11-12; DEVIATIONS Entry 0).* The draft named "Pablo or a person he names". The audit was instead done by an independent Claude Sonnet 5.5 session given only §3's class definitions and the 60 domains, with no tools, no files and no access to the key (the coordinator's choice, Thu Nov 12, 2026, about 05:05 CT, for speed; a human audit can still be run later as a labelled post-lock sensitivity if Pablo asks). It was not asked to resolve the 59 cited UNRESOLVED domains and resolved none.
+
+*Result (before the lock; `outputs/prelock/audit_result_v1_18.json`).* T2 hand rows: 45 of 50 agree, raw 0.90, κ 0.8195. T1 rows: 9 of 10, raw 0.90, κ 0.80. All 60: 54 of 60, raw 0.90, κ 0.8245. Raw agreement on the hand rows is at least 0.85, so no row is re-coded and the domain table stays exactly as the first coder built it. The six disagreements (first coder vs second coder) are reported with no table change: amraandelma.com (T2, company vs UNRESOLVED), cluboenologique.com (T2, editorial_other vs listing), hombo.co.jp (T2, company vs UNRESOLVED), midwestwhiskeybuyer.com (T2, company vs UNRESOLVED), thebourbonconcierge.com (T2, editorial_other vs listing), wine-searcher.com (T1, editorial_other vs listing).
 
 ## 5. Estimands and reporting rule
 
@@ -83,7 +89,7 @@ v1.13's pre-registration, frozen lists, D_b, scorer, Stage C1 verdicts (gate MAR
 
 ## 10. Limitations
 
-One wave, three models, five categories, US English. Citations depend on each provider's search tool (Gemini cites in only 16 of 90 answers). Domain classes are a judgement; the audit measures it but does not remove it; "company" vs "editorial" is hardest for agencies, small blogs and research firms. D_b is v1.13's list and can miss regional or campaign domains (S3 shows how much that matters). The outside figures are pooled over millions of citations, other prompts and other models; this study compares definitions, not levels with theirs.
+One wave, three models, five categories, US English. Citations depend on each provider's search tool (Gemini cites in only 16 of 90 answers). Domain classes are a judgement; the audit measures it but does not remove it; "company" vs "editorial" is hardest for agencies, small blogs and research firms. Both coders are AI models (the first an Opus 5.5 lane, the second a Sonnet 5.5 session), so the audit measures whether the rules give the same classes across two models, not agreement with a human coder. D_b is v1.13's list and can miss regional or campaign domains (S3 shows how much that matters). The outside figures are pooled over millions of citations, other prompts and other models; this study compares definitions, not levels with theirs.
 
 ## 11. Deviations policy
 
@@ -107,4 +113,4 @@ Samsung Electronics had no role in the design, conduct, analysis or reporting of
 
 ## 14. Files
 
-`prereg/`: this file; `LOCK_MANIFEST_v1_18.sha256` (draft); `write_manifest_v1_18.py`. `registries/`: `domain_rules_v1_18.md`, `domain_table_v1_18.csv`, `build_domain_table_v1_18.py`, `draw_audit_sample_v1_18.py`, `audit_sheet_v1_18.csv`, `audit_key_v1_18.csv`. `scripts/`: `common_v1_18.py`, `extract_domains_v1_18.py`, `analyse_v1_18.py`, `tests/test_v1_18.py`. `outputs/prelock/`: the blind domain lists and `prelock_counts_v1_18.json`. `outputs/dry_run/`: `dry_run_v1_18.txt`, `dry_run_results_v1_18.json`. `DEVIATIONS.md`, `README.md`.
+`prereg/`: this file; `LOCK_MANIFEST_v1_18.sha256`; `write_manifest_v1_18.py`. `registries/`: `domain_rules_v1_18.md`, `domain_table_v1_18.csv`, `build_domain_table_v1_18.py`, `draw_audit_sample_v1_18.py`, `audit_sheet_v1_18.csv`, `audit_key_v1_18.csv`. `scripts/`: `common_v1_18.py`, `extract_domains_v1_18.py`, `analyse_v1_18.py`, `tests/test_v1_18.py`. `outputs/prelock/`: the blind domain lists, `prelock_counts_v1_18.json` and `audit_result_v1_18.json`. `outputs/dry_run/`: `dry_run_v1_18.txt`, `dry_run_results_v1_18.json`. `DEVIATIONS.md`, `README.md`.

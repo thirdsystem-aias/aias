@@ -2,7 +2,7 @@
 
 Exploratory re-analysis beside v1.13 (Grounding Paper A) on t4's search-on category answers (v0.42; three runs per cell on N3). It asks how much Grounding's headline share depends on what counts as the brand's: its own domain only (K, as Kumar), any company's site (P, as Profound), its own site plus listings (Y, as Yext), or everything it does not own (M, as Muck Rack). v1.13's locked tests and verdicts are unchanged.
 
-Status: pre-registration r1 draft, not locked (tag `v1.18-prereg-r1` not created). Nothing estimated on real data.
+Status: pre-registration r1 final (2026-11-12), locked at tag `v1.18-prereg-r1` with the OSF deposit of `prereg/` and `registries/` (`methodology/v1_18`); audit done before the lock (pre-registration §4.4). The real run follows the lock, once.
 
 ## Run
 

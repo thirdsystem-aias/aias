@@ -1,0 +1,94 @@
+{
+ "study": "v1.18",
+ "written": "2026-11-12, before the lock (ex ante)",
+ "key": "registries/audit_key_v1_18.csv",
+ "sheet": "registries/audit_sheet_v1_18.csv",
+ "second_coder": {
+  "identity": "independent Claude Sonnet 5.5 session",
+  "given": "only pre-registration section 3 class definitions and the 60 domains",
+  "access": "no tools, no files, no access to the key",
+  "chosen_by": "coordinator, Thu Nov 12, 2026, about 05:05 CT, for speed (instead of 'Pablo or a person he names'); a human audit can be run later as a labelled post-lock sensitivity if Pablo asks",
+  "file_sha256": "892168e897686097f4beb6365f4089af576ac683a87247f9216386e8c0810128",
+  "unresolved_domains_resolved": 0,
+  "unresolved_note": "not asked to resolve the 59 cited UNRESOLVED domains"
+ },
+ "first_coder": "Opus 5.5 lane (rule T1 mechanical, T2 hand)",
+ "first_coder_classes": {
+  "editorial_other": 38,
+  "company": 13,
+  "listing": 8,
+  "review_social": 1
+ },
+ "second_coder_classes": {
+  "editorial_other": 35,
+  "company": 10,
+  "UNRESOLVED": 3,
+  "listing": 11,
+  "review_social": 1
+ },
+ "results": {
+  "T2_hand_rows": {
+   "n": 50,
+   "agree": 45,
+   "raw_agreement": 0.9,
+   "cohen_kappa": 0.8195
+  },
+  "T1_rows": {
+   "n": 10,
+   "agree": 9,
+   "raw_agreement": 0.9,
+   "cohen_kappa": 0.8
+  },
+  "all_60": {
+   "n": 60,
+   "agree": 54,
+   "raw_agreement": 0.9,
+   "cohen_kappa": 0.8245
+  }
+ },
+ "disagreements": [
+  {
+   "domain": "amraandelma.com",
+   "rule": "T2",
+   "first_coder_class": "company",
+   "second_coder_class": "UNRESOLVED",
+   "second_coder_note": "cannot place owner from domain"
+  },
+  {
+   "domain": "cluboenologique.com",
+   "rule": "T2",
+   "first_coder_class": "editorial_other",
+   "second_coder_class": "listing",
+   "second_coder_note": "wine subscription club"
+  },
+  {
+   "domain": "hombo.co.jp",
+   "rule": "T2",
+   "first_coder_class": "company",
+   "second_coder_class": "UNRESOLVED",
+   "second_coder_note": "cannot place owner from domain"
+  },
+  {
+   "domain": "midwestwhiskeybuyer.com",
+   "rule": "T2",
+   "first_coder_class": "company",
+   "second_coder_class": "UNRESOLVED",
+   "second_coder_note": "unclear whether buyer business or listing"
+  },
+  {
+   "domain": "thebourbonconcierge.com",
+   "rule": "T2",
+   "first_coder_class": "editorial_other",
+   "second_coder_class": "listing",
+   "second_coder_note": "bourbon subscription box"
+  },
+  {
+   "domain": "wine-searcher.com",
+   "rule": "T1",
+   "first_coder_class": "editorial_other",
+   "second_coder_class": "listing",
+   "second_coder_note": "price aggregator"
+  }
+ ],
+ "decision": "raw agreement on the 50 hand rows >= 0.85: no re-coding; domain table unchanged; disagreements reported"
+}
