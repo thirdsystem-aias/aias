@@ -1,0 +1,204 @@
+{
+ "t4_rows": 12096,
+ "t4_units": 672,
+ "t4_cells": {
+  "v0.19|claude-fable-5-2|S0": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.19|claude-fable-5-2|S1": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.19|gpt-6-astra|S0": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.19|gpt-6-astra|S1": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.19|gemini-4-argon|S0": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.19|gemini-4-argon|S1": {
+   "units": 16,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|claude-fable-5-2|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|claude-fable-5-2|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|gpt-6-astra|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|gpt-6-astra|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|gemini-4-argon|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.20|gemini-4-argon|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|claude-fable-5-2|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|claude-fable-5-2|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|gpt-6-astra|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|gpt-6-astra|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|gemini-4-argon|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.21|gemini-4-argon|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|claude-fable-5-2|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|claude-fable-5-2|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|gpt-6-astra|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|gpt-6-astra|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|gemini-4-argon|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.22|gemini-4-argon|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|claude-fable-5-2|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|claude-fable-5-2|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|gpt-6-astra|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|gpt-6-astra|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|gemini-4-argon|S0": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  },
+  "v0.23|gemini-4-argon|S1": {
+   "units": 24,
+   "runs": 3,
+   "frames": 6
+  }
+ },
+ "category_sizes": {
+  "v0.19": 16,
+  "v0.20": 24,
+  "v0.21": 24,
+  "v0.22": 24,
+  "v0.23": 24
+ },
+ "omnibus_units": 672,
+ "omnibus_waves": [
+  "t1",
+  "t2",
+  "t3"
+ ],
+ "omnibus_units_per_size": {
+  "16": 96,
+  "24": 576
+ },
+ "omnibus_table_pi_hat_max_abs_diff": 0.0,
+ "coi_keys": [
+  [
+   "v0.19",
+   "Denon"
+  ],
+  [
+   "v0.20",
+   "Eucerin"
+  ],
+  [
+   "v0.22",
+   "BMW"
+  ],
+  [
+   "v0.22",
+   "Bentley"
+  ],
+  [
+   "v0.22",
+   "Chevrolet"
+  ],
+  [
+   "v0.23",
+   "S03"
+  ]
+ ],
+ "coi_present_t4": 6,
+ "published_below_floor_t4_S0": 49,
+ "reproduced_below_floor_t4_S0": 49,
+ "loader_check_passed": true
+}

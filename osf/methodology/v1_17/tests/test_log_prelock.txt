@@ -1,0 +1,26 @@
+test_bands (test_v1_17.TestEstimators.test_bands) ... ok
+test_chi2_interval_brackets (test_v1_17.TestEstimators.test_chi2_interval_brackets) ... ok
+test_cluster_bootstrap_deterministic_and_brackets (test_v1_17.TestEstimators.test_cluster_bootstrap_deterministic_and_brackets) ... ok
+test_discordance (test_v1_17.TestEstimators.test_discordance) ... ok
+test_floor_integer_rule (test_v1_17.TestEstimators.test_floor_integer_rule) ... ok
+test_runs_needed (test_v1_17.TestEstimators.test_runs_needed) ... ok
+test_se_projection_under_independence (test_v1_17.TestEstimators.test_se_projection_under_independence) ... ok
+test_unit_var_and_pooled (test_v1_17.TestEstimators.test_unit_var_and_pooled) ... ok
+test_manifest_detects_change (test_v1_17.TestGates.test_manifest_detects_change) ... ok
+test_run_refuses_before_anchor (test_v1_17.TestGates.test_run_refuses_before_anchor) ... ok
+test_coi_mapping (test_v1_17.TestRealDataLoaders.test_coi_mapping) ... ok
+test_omni_counts (test_v1_17.TestRealDataLoaders.test_omni_counts) ... ok
+test_published_floor_reproduced (test_v1_17.TestRealDataLoaders.test_published_floor_reproduced) ... ok
+test_t4_counts (test_v1_17.TestRealDataLoaders.test_t4_counts) ... ok
+test_analysis_runs_end_to_end (test_v1_17.TestSynthetic.test_analysis_runs_end_to_end) ... ok
+test_charts_and_note_on_synthetic (test_v1_17.TestSynthetic.test_charts_and_note_on_synthetic) ... ok
+test_recovers_known_variance (test_v1_17.TestSynthetic.test_recovers_known_variance) ... ok
+test_separate_waves_never_pooled (test_v1_17.TestSynthetic.test_separate_waves_never_pooled) ... ok
+
+----------------------------------------------------------------------
+Ran 18 tests in 1.552s
+
+OK
+REFUSED: tag v1.17-prereg-r1 is not on origin (the lock is not anchored)
+wrote 4 charts to /tmp/tmptihnvquu
+wrote /tmp/tmptihnvquu/n.md
