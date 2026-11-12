@@ -355,6 +355,8 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
   - (v) **Facts** added to the header (t₄'s lock, collection and coding), §1 (the new Anthropic organization does not serve Claude Sonnet 4.5), §4.6 (t₄'s last call 21.8 days before the window; J1's timing) and §7 item 7.
   - (vi) **Lock files.** `lock_manifest_v0_45.py` → `prereg/LOCK_MANIFEST_v0_45.sha256`; `osf/v45/LOCK_STEPS.md`; helpers `osf/v45/lock/write_anchor_v0_45.py` (queries `refs/tags/<tag>*`: git 2.54 omits the peeled line for a bare tag name), `osf_verify_v0_45.py`, `status_v0_45.py` (not locked, not deposited).
   - Tests: 68 of 68 pass: `test_acquire_v0_45.py` 40 (r0's 34, one expectation changed by C28 as in v0.42, plus v0.42's four C28 tests, the fork's byte-for-byte regeneration and the budget-function parity), `test_score_v0_45.py` 20, `test_reestimate_lock_v0_45.py` 8 (the field allowlist, the SHA-256 refusal, the method on synthetic usage, the guard path, t₄'s locked file with the published figures, J1's cost, the manifest).
+- **2026-11-12, clarification (logged; no design change).** Gemini 4 Carbon became generally available on Google Cloud on 2026-11-10 for verified enterprise customers in select regions (https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-carbon); t5 stays on Gemini 4 Argon, as an exact repeat of t4; no design change.
+- **2026-11-12, noted, no change.** v1.15 (Nov 12) found Claude Opus 5.5 putting a sentence before a required JSON reply on 4.2% of first tries; t5's successor recognition judge (Claude Sonnet 5.5, at most 10 output tokens including any thinking, read by the R[0-3] pattern) is checked for this by J1 (one R_ERR fails it; pre-registered fallback Claude Sonnet 4.6).
 
 ---
 
