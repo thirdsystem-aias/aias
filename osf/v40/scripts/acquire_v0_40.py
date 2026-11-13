@@ -33,7 +33,13 @@ Modes:
   --fake-run DIR  run the whole collection loop against FAKE providers into DIR (zero cost; nothing is sent)
   --feasibility   the declared technical check: neutral, non-category prompts only (never a study probe)
   --collect       refused unless tag v0.40-prereg-r1 is on origin AND osf/v40/anchor/osf_anchor_v0_40.json names its
-                  commit, inside the collection window, and while no other paid collection runs
+                  commit, the pre-lock check passed (prereg/prelock_check_v0_40.json, section 4.8), inside the
+                  collection window, and while no other paid collection runs
+  --resume-model SLOT NOTE  journal the pre-registrant's decision to resume a slot paused by the stop rule
+Stop rule (added 2026-11-13, section 4.7; stoprule_v0_40.py): every written line is assessed; an answer that stops at
+  the length limit before naming a registry brand pauses its model slot (M5X exempt, pending the pre-registrant) and is
+  reported; exit code 7 when the run ends with a paused slot. The pre-lock check's spend (prereg/
+  prelock_check_v0_40.jsonl) is carried into the budget ledger, so it counts toward the $100 cap.
 """
 import argparse
 import hashlib
@@ -54,6 +60,7 @@ from pathlib import Path
 ROOT = Path(os.environ.get("AIAS_ROOT", str(Path(__file__).resolve().parents[3])))
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import budget_v0_40 as BG  # noqa: E402
+import stoprule_v0_40 as SR  # noqa: E402  (length-limit stop rule, pre-registration section 4.7; added 2026-11-13)
 
 V40 = ROOT / "osf" / "v40"
 PROBES_PATH = V40 / "prereg" / "probes_v0_40.json"
@@ -62,6 +69,9 @@ STATE_PATH = V40 / "data" / "v40_budget_state.json"
 BATCH_LOG = V40 / "data" / "v40_batches.jsonl"
 FEASIBILITY_PATH = V40 / "prereg" / "feasibility_check_v0_40.json"
 ANCHOR_PATH = V40 / "anchor" / "osf_anchor_v0_40.json"
+STOP_JOURNAL = V40 / "data" / "v40_stoprule.jsonl"                 # stop-rule events (section 4.7)
+PRELOCK_RAW = V40 / "prereg" / "prelock_check_v0_40.jsonl"          # pre-lock check answers (section 4.8)
+PRELOCK_RESULT = V40 / "prereg" / "prelock_check_v0_40.json"        # its verdict (must be PASS before --collect)
 PREREG_TAG = "v0.40-prereg-r1"
 N_PROBES = 94
 PROBES_SHA256 = "93aee03f655cb8c4c6b04211e941b854bd921c3dbd31a9f5ffbaa91249be38ca"  # registry draft r3, item 6
@@ -109,6 +119,7 @@ BATCH_POLL_SECONDS = 60
 EMPTY_RESENDS = 1
 PAID_COLLECTION = re.compile(r"acquire_v[0-9][0-9_.]*\.py\b.*--collect")
 DEADLINE = None
+STOP = None          # stoprule_v0_40.StopRule while a collection (or a fake run) is active
 
 FEASIBILITY_PROMPT = "Reply with the single word: ready"
 FEASIBILITY_SEARCH_PROMPTS = [
@@ -638,6 +649,8 @@ def run_anthropic_batch(specs, ledger, write, client=None, poll=None, sleep=time
     while pending:
         if past_deadline(ledger):
             return "stop"
+        if STOP is not None and STOP.is_paused(pending[0][0]["model"]["slot"]):   # stop rule (section 4.7)
+            return "model_paused"
         model_id, cond = pending[0][0]["model"]["model_id"], pending[0][0]["condition"]
         st, k, tok = ledger.fit(BG.worst_case(model_id, cond, "batch"), len(pending))
         if st == "wait":
@@ -731,6 +744,8 @@ def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
     for s in specs:
         if past_deadline(ledger):
             return "stop"
+        if STOP is not None and STOP.is_paused(s["model"]["slot"]):   # stop rule (section 4.7): before the next request
+            return "model_paused"
         while True:
             # C28: a synchronous call may bill 1 + EMPTY_RESENDS requests (an empty answer is re-sent)
             st, tok = ledger.reserve((1 + EMPTY_RESENDS) * BG.worst_case(s["model"]["model_id"], s["condition"], "standard"))
@@ -905,12 +920,17 @@ def past_deadline(ledger=None, now=None):
 def run_collection(specs, ledger, raw_path, runners, log=print, write=None, now=None):
     """Blocks in order; within a block one worker per model slot in parallel (runners[mode](specs, ledger, write)).
     Before the S1 block, the deadline is tightened to S1_WINDOW_HOURS after the first S1 request (all search-on calls
-    in one window). Returns 'done' | 'pause' | 'stop'."""
+    in one window). With the stop rule active (STOP; section 4.7) every written line is assessed, a paused slot sends
+    nothing more and the other slots go on. Returns 'done' | 'pause' | 'stop' | 'model_paused' (the run went as far as
+    it could, but at least one slot is paused by the stop rule)."""
     global DEADLINE
     done = done_ids(raw_path)
     write = write or make_writer(raw_path, log)
+    if STOP is not None:
+        write = STOP.wrap(write)
     for bi, block in enumerate(BLOCKS):
-        todo = [s for s in specs if s["block"] == bi and s["call_id"] not in done]
+        todo = [s for s in specs if s["block"] == bi and s["call_id"] not in done
+                and not (STOP is not None and STOP.is_paused(s["model"]["slot"]))]
         if not todo:
             continue
         if block[1] == "S1":
@@ -928,6 +948,9 @@ def run_collection(specs, ledger, raw_path, runners, log=print, write=None, now=
             if st in res:
                 log(f"HALT ({st}) in block {bi + 1}: {ledger.summary()}")
                 return st
+    if STOP is not None and STOP.paused_slots():
+        log(f"STOP RULE: paused slots {STOP.paused_slots()}; report to the pre-registrant (section 4.7)")
+        return "model_paused"
     return "done"
 
 
@@ -955,10 +978,12 @@ def fake_current(model_id, prompt, search, system=None):
 
 
 class FakeBatches:
-    """Stands in for anthropic.Anthropic().messages.batches (create / retrieve / results); nothing is sent."""
-    def __init__(self):
+    """Stands in for anthropic.Anthropic().messages.batches (create / retrieve / results); nothing is sent.
+    `stop_reason` and `text` (a function of model, prompt, search) let a test fake an answer cut at the limit."""
+    def __init__(self, stop_reason="end_turn", text=None):
         from types import SimpleNamespace as NS
         self.NS, self.store, self.n = NS, {}, 0
+        self.stop_reason, self.text = stop_reason, text or _fake_text
 
     def create(self, requests):
         self.n += 1
@@ -977,35 +1002,41 @@ class FakeBatches:
             content = []
             if search:
                 content.append(NS(type="server_tool_use", name="web_search", input={"query": "fake"}))
-            content.append(NS(type="text", text=_fake_text(p["model"], p["messages"][0]["content"], search), citations=None))
+            text = self.text(p["model"], p["messages"][0]["content"], search)
+            content.append(NS(type="text", text=text, citations=None))
             usage = NS(input_tokens=20, output_tokens=600, server_tool_use=NS(web_search_requests=1 if search else 0))
-            msg = NS(content=content, usage=usage, stop_reason="end_turn", model=p["model"])
+            msg = NS(content=content, usage=usage, stop_reason=self.stop_reason, model=p["model"])
             yield NS(custom_id=r["custom_id"], result=NS(type="succeeded", message=msg))
 
 
-def fake_client():
+def fake_client(**batch_kw):
     from types import SimpleNamespace as NS
-    return NS(messages=NS(batches=FakeBatches(), create=None))
+    return NS(messages=NS(batches=FakeBatches(**batch_kw), create=None))
 
 
-def fake_run(out_dir, cap=None, log=print):
-    """Whole collection loop against fakes: real specs, budget ledger, writer, batch runner and block order."""
-    global DEADLINE
+def fake_run(out_dir, cap=None, log=print, legacy=None, current=None, batch_kw=None, stop_rule=True, prior_usd=0.0):
+    """Whole collection loop against fakes: real specs, budget ledger, writer, batch runner, block order and the
+    stop rule (section 4.7; journal in out_dir). Tests may replace the fake providers (`legacy`, `current`, `batch_kw`)
+    to fake answers cut at the length limit."""
+    global DEADLINE, STOP
     out_dir = Path(out_dir)
     out_dir.mkdir(parents=True, exist_ok=True)
     raw, state, journal = out_dir / "fake_raw.jsonl", out_dir / "fake_budget_state.json", out_dir / "fake_batches.jsonl"
     saved = (dict(LEGACY_DISPATCH), dict(CURRENT_DISPATCH), dict(PAUSE))
     try:
         for k in LEGACY_DISPATCH:
-            LEGACY_DISPATCH[k] = fake_legacy
+            LEGACY_DISPATCH[k] = legacy or fake_legacy
         for k in CURRENT_DISPATCH:
-            CURRENT_DISPATCH[k] = fake_current
+            CURRENT_DISPATCH[k] = current or fake_current
         for k in PAUSE:
             PAUSE[k] = 0.0
         DEADLINE = None
-        ledger = BG.Ledger(raw, state) if cap is None else BG.Ledger(raw, state, cap=cap, pause_at=cap * 0.8)
+        STOP = SR.StopRule(SR.v40_named_fn(), journal=out_dir / "fake_stoprule.jsonl", log=lambda *a: None) \
+            if stop_rule else None
+        ledger = BG.Ledger(raw, state, prior_usd=prior_usd) if cap is None else \
+            BG.Ledger(raw, state, cap=cap, pause_at=cap * 0.8, prior_usd=prior_usd)
         specs = build_specs(load_probes())
-        client = fake_client()
+        client = fake_client(**(batch_kw or {}))
         runners = {"batch": partial(run_anthropic_batch, client=client, poll=0, sleep=lambda s: None, journal=journal),
                    "standard": partial(run_sync, sleep=lambda s: None)}
         st = run_collection(specs, ledger, raw, runners, log=lambda *a: None)
@@ -1013,6 +1044,7 @@ def fake_run(out_dir, cap=None, log=print):
     finally:
         LEGACY_DISPATCH.update(saved[0]); CURRENT_DISPATCH.update(saved[1]); PAUSE.update(saved[2])
         DEADLINE = None
+        STOP = None
 
 
 def confirm_no_sampling_params():
@@ -1079,28 +1111,56 @@ def prereg_guard():
     return commit
 
 
+def prelock_guard(path=None):
+    """Refuse unless the pre-lock check (section 4.8) recorded the verdict PASS."""
+    path = PRELOCK_RESULT if path is None else Path(path)
+    try:
+        verdict = json.loads(Path(path).read_text(encoding="utf-8")).get("verdict")
+    except (OSError, json.JSONDecodeError):
+        verdict = None
+    if verdict != "PASS":
+        sys.exit(f"REFUSED: the pre-lock check (section 4.8) has not passed ({path.name}: {verdict})")
+    return verdict
+
+
 def collect(approve_past_80=None):
-    global DEADLINE
+    global DEADLINE, STOP
     now = datetime.now(timezone.utc)
     if now < WINDOW_START:
         sys.exit(f"REFUSED: the collection window opens {WINDOW_START.isoformat()}")
     other_collection_guard()
     commit = prereg_guard()
+    prelock_guard()
     require_keys()
     DEADLINE = collection_deadline(RAW_PATH)
     print(f"prereg guard passed: {PREREG_TAG} -> {commit}; window ends {DEADLINE.isoformat()}")
-    ledger = BG.Ledger(RAW_PATH, STATE_PATH)
+    prior = BG.spend_of(PRELOCK_RAW)        # the pre-lock check's spend counts toward the $100 cap (section 4.8)
+    ledger = BG.Ledger(RAW_PATH, STATE_PATH, prior_usd=prior)
     if approve_past_80:
         ledger.approve("past_80", approve_past_80)
+    STOP = SR.StopRule(SR.v40_named_fn(), journal=STOP_JOURNAL)
+    if STOP.paused_slots():
+        print(f"STOP RULE: slots paused by an earlier trigger and not resumed: {STOP.paused_slots()}")
     specs = build_specs(load_probes())
-    write = make_writer(RAW_PATH)
+    write = STOP.wrap(make_writer(RAW_PATH))
     n = recover_batches(specs, ledger, write, BATCH_LOG, RAW_PATH)
     if n:
         print(f"recovered {n} batch(es); budget {ledger.summary()}")
     st = run_collection(specs, ledger, RAW_PATH, {"batch": partial(run_anthropic_batch, journal=BATCH_LOG),
                                                   "standard": run_sync}, write=write)
-    print("result:", st, ledger.summary())
-    return {"done": 0, "pause": 5, "stop": 6}[st]
+    print("result:", st, ledger.summary(), "stop rule:", STOP.summary())
+    return {"done": 0, "pause": 5, "stop": 6, "model_paused": 7}[st]
+
+
+def resume_model(slot, note):
+    """The pre-registrant's decision to resume a slot paused by the stop rule, unchanged (section 4.7)."""
+    if slot not in {m["slot"] for m in PANEL}:
+        sys.exit(f"unknown slot {slot}")
+    stop = SR.StopRule(lambda text: 0, journal=STOP_JOURNAL)
+    if not stop.is_paused(slot):
+        sys.exit(f"slot {slot} is not paused")
+    print(json.dumps(stop.resume(slot, note)))
+    return 0
 
 
 def main():
@@ -1110,9 +1170,13 @@ def main():
     ap.add_argument("--feasibility", action="store_true", help="declared technical check; never a study probe")
     ap.add_argument("--collect", action="store_true")
     ap.add_argument("--approve-past-80", metavar="NOTE", default=None)
+    ap.add_argument("--resume-model", nargs=2, metavar=("SLOT", "NOTE"), default=None,
+                    help="journal the pre-registrant's decision to resume a slot paused by the stop rule (section 4.7)")
     a = ap.parse_args()
+    if a.resume_model:
+        return resume_model(*a.resume_model)
     if sum([a.dry_run, bool(a.fake_run), a.feasibility, a.collect]) != 1:
-        ap.error("choose exactly one of --dry-run / --fake-run / --feasibility / --collect")
+        ap.error("choose exactly one of --dry-run / --fake-run / --feasibility / --collect / --resume-model")
     if a.dry_run:
         return dry_run()
     if a.fake_run:

@@ -82,12 +82,13 @@ PROBE_NAME = {
     "JPMC":        ("Chase Bank", "consumer name of the JPMorgan Chase holder"),
 }
 # ---------------------------------------------------------------------------------------------------------------
-# DISCOVER SWITCH -- PENDING PABLO (a/b). Discover's deposit accounts are moving to Capital One (registry draft r3,
-# section 5, item 5). (a) keep Discover as the bank living-brand control and add a limitation; (b) replace it with
-# another bank control from the frozen registry's own material (DISCOVER_CANDIDATES; the runner does not pick).
-# Default None: the draft build (no --final) is unchanged and byte-identical to the frozen draft; a --final build is
-# REFUSED until the option is set (here or with --discover), and (b) also needs --replacement.
-DISCOVER_OPTION = None            # "a" | "b" | None (unset)
+# DISCOVER SWITCH -- DECIDED (a) by the pre-registrant on 2026-11-12, 6:57 am CT. Discover's deposit accounts are
+# moving to Capital One (registry draft r3, section 5, item 5). (a) keep Discover as the bank living-brand control and
+# add a limitation; (b) replace it with another bank control from the frozen registry's own material
+# (DISCOVER_CANDIDATES; not chosen). The switch is read only by the --final build: the draft build (no --final) is
+# unchanged and byte-identical to the frozen draft; a --final build refuses an unset switch, and (b) also needs
+# --replacement.
+DISCOVER_OPTION = "a"             # "a" | "b" | None (unset); "a" decided 2026-11-12 (pre-registration section 3.2)
 DISCOVER_REPLACEMENT = None       # one key of DISCOVER_CANDIDATES when DISCOVER_OPTION == "b"
 DISCOVER_CANDIDATES = {
     "MERRILL": {"name_in_probe": "Merrill", "registry_brand": "Merrill",

@@ -4,7 +4,8 @@ budget_v0_40.py -- AIAS(TM) v0.40: price table, cost of a call from its ACTUAL r
 budget guard (pause at $80, hard stop at $100; Pablo's rule of 2026-11-10). Forked from v0.42's budget_v0_42.py
 (git: branch v0.42, osf/v42/scripts/budget_v0_42.py); the cost rule and the Ledger are unchanged. Changes:
 the legacy panel's prices are added, Claude Fable 5.2 / GPT-6 Astra / Gemini 4 Argon are kept, and there is no LLM
-judge in v0.40 (JUDGE_RESERVE_USD = 0).
+judge in v0.40 (JUDGE_RESERVE_USD = 0). Added 2026-11-13: Ledger(prior_usd=...) and spend_of(), so the pre-lock
+check's recorded spend (section 4.8) counts toward the $100 cap and the $80 pause of the collection.
 
 Prices: the vendors' own pages, opened on 2026-11-12 (PRE_REGISTRATION_v0_40.md section 6):
   https://platform.claude.com/docs/en/about-claude/models/overview.md  (Fable 5.2 $8/$40, Opus 5.5 $4/$20,
@@ -157,9 +158,13 @@ class Ledger:
     """Thread-safe spend ledger for one collection. Actual spend is read from the raw file at start and grows by
     the cost of every record written; requests reserve their worst case before they are sent."""
 
-    def __init__(self, raw_path, state_path, cap=BUDGET_CAP_USD, pause_at=PAUSE_AT_USD, judge_reserve=JUDGE_RESERVE_USD):
+    def __init__(self, raw_path, state_path, cap=BUDGET_CAP_USD, pause_at=PAUSE_AT_USD, judge_reserve=JUDGE_RESERVE_USD,
+                 prior_usd=0.0):
         self.raw_path, self.state_path = Path(raw_path), Path(state_path)
         self.cap, self.pause_at, self.judge_reserve = cap, pause_at, judge_reserve
+        # v0.40, 2026-11-13: spend already made for this paper outside the raw file (the pre-lock check, section 4.8),
+        # counted toward the cap and the pause like recorded spend
+        self.prior = float(prior_usd or 0.0)
         self.lock = threading.Lock()
         self.actual = 0.0
         self.reserved = {}
@@ -205,7 +210,7 @@ class Ledger:
 
     # ---- accounting
     def spent(self):
-        return self.judge_reserve + self.actual
+        return self.judge_reserve + self.prior + self.actual
 
     def committed(self):
         with self.lock:
@@ -257,7 +262,23 @@ class Ledger:
     def summary(self):
         with self.lock:
             return {"actual_calls_usd": round(self.actual, 4), "judge_reserve_usd": self.judge_reserve,
-                    "spent_usd": round(self.spent(), 4), "reserved_in_flight_usd": round(sum(self.reserved.values()), 4),
+                    "prior_usd": round(self.prior, 4), "spent_usd": round(self.spent(), 4),
+                    "reserved_in_flight_usd": round(sum(self.reserved.values()), 4),
                     "pause_at_usd": self.pause_at, "cap_usd": self.cap, "approved_past_80": self.approved("past_80"),
                     "approved_projection": self.approved("projection"), "halted": self.halted,
                     "halt_reason": self.halt_reason}
+
+
+def spend_of(path):
+    """USD of every raw line of a JSONL file, from its recorded usage (0.0 when the file does not exist). v0.40: the
+    pre-lock check's spend (prereg/prelock_check_v0_40.jsonl), carried into the collection's Ledger as prior_usd."""
+    path = Path(path)
+    tot = 0.0
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if line.strip():
+                try:
+                    tot += record_cost(json.loads(line))
+                except (json.JSONDecodeError, KeyError):
+                    continue
+    return tot

@@ -128,8 +128,9 @@ check("manipulation checks pass in A", all(v["pass"] for k, v in A["manipulation
 
 # ---- declared sensitivities (section 5.6) and descriptives 3-9 (section 2.9), on synthetic data
 sA = A["sensitivity"]
-check("sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm",
-      set(sA) == {"S-D4", "S-Discover", "S-Ambig", "S-Legal", "S-Operating", "S-SunCountry", "S-Arm"}, sorted(sA))
+check("sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm, S-Length",
+      set(sA) == {"S-D4", "S-Discover", "S-Ambig", "S-Legal", "S-Operating", "S-SunCountry", "S-Arm", "S-Length"},
+      sorted(sA))
 check("S-Ambig runs all six tests", set(sA["S-Ambig"]) == {"H_Reinforce", "H_Amplify", "H_Afterlife", "H_Decay", "H_Flag", "H_Search"})
 check("S-Arm: legacy five tests, current six", len(sA["S-Arm"]["legacy"]) == 5 and len(sA["S-Arm"]["current"]) == 6)
 check("S-Operating: Delta leads the airlines", sA["S-Operating"]["H_Amplify_airline"]["leader"] == "DL")
@@ -195,6 +196,30 @@ check("descriptive 3: per arm and condition", set(dA["3_old_vs_new_name"]) == {"
 check("descriptive 6: run-to-run SE per arm", set(dA["6_run_to_run_se"]) == {"L", "C"} and dA["6_run_to_run_se"]["C"]["units"] > 0)
 check("descriptive 7: one trace per S1 answer", len(dA["7_search_traces"]["answers"]) == sum(
     1 for p in probes if p["kind"] == "recommendation" or p["tier"] == "S") * 3)
+
+# section 5.9 (added 2026-11-13): answers at the length limit and with heavy thinking
+def lrec(i, slot, fr, text, thought=None):
+    arm = "C" if slot.startswith("C") else "L"
+    return {"call_id": f"len{i}", "arm": arm, "slot": slot, "condition": "S0", "run": 1, "probe_id": "R", "tier": "R",
+            "kind": "recommendation", "category": "airline", "brand_id": None, "status": "ok", "finish_reason": fr,
+            "text": text, "output_tokens": 2048, "thinking_tokens": thought,
+            "provider": "google" if slot in ("M5", "M6", "M5X", "C3") else "openai"}
+recs = [lrec(1, "M6", "FinishReason.MAX_TOKENS", "When you choose an airline, consider"),          # cut before a brand
+        lrec(2, "M3", "length", "Delta Air Lines and American Airlines lead, and"),                 # cut after a brand
+        lrec(3, "C2", "completed", "Delta Air Lines.", thought=9000),                               # thinking >= half
+        lrec(4, "M4", "stop", "American Airlines.")]                                                # normal
+sc = S.Scorer(recs, units, subjects, gaps, perms=10)
+check("5.9 item 1: an answer cut before the first brand is missing (not an answer naming no brand)",
+      [r["call_id"] for r in sc.cut_before] == ["len1"] and "len1" not in {r["call_id"] for r in sc.ok}, len(sc.ok))
+check("5.9 items 2-3: cut-after-brand and thinking-heavy answers are kept as recorded",
+      {r["call_id"] for r in sc.ok} == {"len2", "len3", "len4"})
+res = sc.run()
+check("5.9 item 4: S-Length drops the two flagged answers; item 5: counts per slot and condition",
+      res["sensitivity"]["S-Length"]["excluded_answers"] == 2
+      and res["descriptives"]["10_length_flags"]["M6|S0"]["cut_before_first_brand"] == 1
+      and res["descriptives"]["10_length_flags"]["M3|S0"]["cut_after_brand"] == 1
+      and res["descriptives"]["10_length_flags"]["C2|S0"]["thinking_ge_half"] == 1,
+      res["descriptives"]["10_length_flags"])
 
 print(f"\n{'ALL PASS' if not FAILS else 'FAILED: ' + ', '.join(FAILS)}")
 sys.exit(1 if FAILS else 0)

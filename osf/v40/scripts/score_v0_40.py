@@ -16,10 +16,13 @@ import json
 import math
 import random
 import re
+import sys
 from collections import defaultdict
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
+sys.path.insert(0, str(HERE))
+import stoprule_v0_40 as SR  # noqa: E402  (length flags, section 5.9; added 2026-11-13)
 V40 = HERE.parent
 REG = V40 / "registries"
 SEED = 4040
@@ -267,6 +270,15 @@ class Scorer:
         for r in self.ok:
             r["_m"] = code_answer(r["text"], self.matchers, self.succ)
             r["_other"] = code_answer(r["text"], near, {})
+            # section 5.9 (added 2026-11-13): length flags from the stop rule's own definitions (stoprule_v0_40)
+            lim = SR.at_limit(r)
+            named = len({m["entity"] for m in r["_m"]})
+            r["_cut_before"] = bool(lim) and named == 0
+            r["_cut_after"] = bool(lim) and named > 0
+            r["_think_half"] = 2 * SR.thinking_count(r)[0] >= SR.limit_of(r)
+        # an answer cut at the length limit before its first registry brand is missing (section 5.9 item 1)
+        self.cut_before = [r for r in self.ok if r["_cut_before"]]
+        self.ok = [r for r in self.ok if not r["_cut_before"]]
 
     def _set_units(self, units):
         self.units = units
@@ -561,7 +573,24 @@ class Scorer:
         out["S-Arm"] = {"legacy": self.variant(slots=LEGACY_SLOTS).tests(("H_Reinforce", "H_Amplify", "H_Afterlife",
                                                                            "H_Decay", "H_Flag")),
                         "current": self.variant(slots=CURRENT_SLOTS).tests()}
+        # S-Length (section 5.9 item 4, added 2026-11-13): every test without the answers cut at the length limit after
+        # a brand and without the answers whose thinking reached half the limit
+        v = copy.copy(self)
+        v.ok = [r for r in self.ok if not (r["_cut_after"] or r["_think_half"])]
+        out["S-Length"] = dict(v.tests(), excluded_answers=len(self.ok) - len(v.ok))
         return out
+
+    def d10_length(self):
+        """Section 5.9 item 5: answers cut before / after the first brand and with thinking at half the limit or more,
+        per model slot and condition (answers cut before the first brand are missing in every test)."""
+        out = defaultdict(lambda: {"answers": 0, "cut_before_first_brand": 0, "cut_after_brand": 0, "thinking_ge_half": 0})
+        for r in self.ok + self.cut_before:
+            c = out[f"{r['slot']}|{r['condition']}"]
+            c["answers"] += 1
+            c["cut_before_first_brand"] += int(r["_cut_before"])
+            c["cut_after_brand"] += int(r["_cut_after"])
+            c["thinking_ge_half"] += int(r["_think_half"])
+        return dict(sorted(out.items()))
 
     # ------------------------------------------------------------------ descriptives 3-9 (section 2.9)
     def arm_conds(self):
@@ -688,7 +717,8 @@ class Scorer:
         res["descriptives"].update({"3_old_vs_new_name": self.d3_old_new(), "4_recognition": self.d4_recognition(),
                                     "5_M5X_vs_M5": self.d5_m5x(), "6_run_to_run_se": self.d6_run_se(),
                                     "7_search_traces": self.d7_search(), "8_near_floor_other": self.d8_other(),
-                                    "9_first_mention_share": self.d9_first_mention()})
+                                    "9_first_mention_share": self.d9_first_mention(),
+                                    "10_length_flags": self.d10_length()})
         return res
 
     def d4(self):

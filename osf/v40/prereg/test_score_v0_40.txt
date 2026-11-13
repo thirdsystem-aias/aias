@@ -28,7 +28,7 @@ PASS B: H_Flag FALSIFIED
 PASS B: H_Search not CONFIRMED
 PASS B: H_Reinforce not CONFIRMED
 PASS manipulation checks pass in A
-PASS sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm
+PASS sensitivities reported: S-D4, S-Discover, S-Ambig, S-Legal, S-Operating, S-SunCountry, S-Arm, S-Length
 PASS S-Ambig runs all six tests
 PASS S-Arm: legacy five tests, current six
 PASS S-Operating: Delta leads the airlines
@@ -45,6 +45,8 @@ PASS descriptives 3-9 reported
 PASS descriptive 3: per arm and condition
 PASS descriptive 6: run-to-run SE per arm
 PASS descriptive 7: one trace per S1 answer
+PASS 5.9 item 1: an answer cut before the first brand is missing (not an answer naming no brand)
+PASS 5.9 items 2-3: cut-after-brand and thinking-heavy answers are kept as recorded
+PASS 5.9 item 4: S-Length drops the two flagged answers; item 5: counts per slot and condition
 
 ALL PASS
-EXIT 0

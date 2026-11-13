@@ -1,0 +1,17 @@
+pre-lock check (section 4.8): questions from v0.39 (probes_v0_39.json, sha256 948cbd4419caf57334796baff93b090696755ebdb787cf6e402a6d75547453cf), tiers G/C/R/K: 24 probes; search on: tiers G
+slot model                  cond calls  central $   high $
+M1   claude-opus-4-5        S0      24     0.1728   1.2312
+M2   claude-sonnet-4-5      S0      24     0.1176   0.7392
+M3   gpt-4o                 S0      24     0.0912   0.4920
+M4   gpt-4o-mini            S0      24     0.0048   0.0288
+M5   gemini-2.5-flash       S0      24     0.0312   0.1224
+M6   gemini-2.5-flash-lite  S0      24     0.0120   0.0192
+M5X  gemini-2.5-flash       S0      24     0.1128   0.1224  (exempt from the block; reported)
+C1   claude-fable-5-2       S0      24     0.5766   1.7580
+C2   gpt-6-astra            S0      24     1.0074   2.7612
+C3   gemini-4-argon         S0      24     0.2610   0.4422
+C1   claude-fable-5-2       S1       6     1.0488   2.0244
+C2   gpt-6-astra            S1       6     2.3586   4.9584
+C3   gemini-4-argon         S1       6     0.1200   0.2304
+TOTAL 258 calls: central $5.91, high $14.93 (basis: cost_estimate_v0_40.txt); own ceiling $20.00; counts toward the study's $100 cap
+nothing sent.

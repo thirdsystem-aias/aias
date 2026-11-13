@@ -1,0 +1,53 @@
+PASS limits are acquire's own (2,048 legacy, 16,384 current)
+PASS length stops recognised for all three providers
+PASS normal finishes are not length stops
+PASS no finish reason -> None
+PASS cut at the limit with no registry brand = cut_before_brand
+PASS cut at the limit after a registry brand = cut_after_brand
+PASS normal finish is not at the limit
+PASS no finish reason: Google visible + thinking >= 2,048 is at the limit; empty answer = cut before a brand
+PASS no finish reason: 2,047 output tokens is below the limit
+PASS neither finish reason nor tokens = unassessable
+PASS error line carries no answer
+PASS Fable 5.2 (no separate thinking count): total output is the upper bound, 9,000 >= 8,192 flags
+PASS Fable 5.2 with 8,191 output tokens is not flagged
+PASS GPT-6 Astra reasoning 8,192 of 16,384 flags, 8,191 does not
+PASS Gemini 2.5 Flash thoughts 1,024 of 2,048 flags (legacy limit)
+PASS legacy Claude without a thinking parameter counts 0 thinking tokens
+PASS trigger pauses its slot
+PASS M5X (exempt) is journaled but not paused
+PASS cut after a brand does not pause, is journaled as a flag
+PASS a pause survives a restart (journal)
+PASS a journaled resume lifts the pause after a restart
+PASS wrapping the writer is idempotent
+PASS legacy: a cut-before-brand answer pauses its slot before its next request
+PASS legacy: the other slot completes all its calls
+PASS legacy: the trigger is journaled
+PASS Fable 5.2 (batch): the pause takes effect from its next batch (94 lines of block 5, nothing after)
+PASS current: the other slot completes (S0 x3 + S1)
+PASS no cut answer: the run ends 'done' with nothing paused
+PASS full fake run with the stop rule active still completes 2,821 calls
+PASS spend_of sums the recorded cost of every line
+PASS prior spend counts as spent and in the summary
+PASS prior spend blocks a request that could pass $100
+PASS prior spend reaches the $80 pause
+PASS --collect refuses without a passed pre-lock check, accepts PASS
+PASS plan: 258 calls = 10 settings x 24 search off + 3 x 6 search on
+PASS plan: every question is a published v0.39 probe, none is a v0.40 probe
+PASS plan: the study's own settings (acquire's PANEL entries; S1 on C1-C3 only, G1-G6)
+PASS dry run sends nothing and imports no provider SDK
+PASS dry run cost from the study's basis: $5.91 central, $14.93 high, 258 calls
+PASS the check's own ceiling covers its high estimate
+PASS mocked check, no answer at the limit: PASS, 258 answers
+PASS the check's spend is recorded and carried into the collection ledger
+PASS resume: a second --run sends nothing new
+PASS M6 cut before a v0.39 brand: BLOCKED, 24 blockers, all M6
+PASS M5X cut before a brand is reported, never a blocker (exempt)
+PASS cut after naming a v0.39 brand: not a blocker (PASS), flagged for section 5.9
+PASS missing answers: INCOMPLETE
+PASS config: DISCOVER_OPTION is 'a'
+PASS final build under (a) keeps Discover as the bank living-brand control
+PASS scorer under (a): Discover is a control, no replacement control is added
+PASS pre-registration text: Discover switch decided (a), no 'PENDING PABLO (a/b)' left
+
+ALL PASS

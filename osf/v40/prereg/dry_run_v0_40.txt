@@ -17,4 +17,4 @@ worst-case reservation per request (USD):
   gemini-4-argon    standard S0 0.168  S1 0.604
 budget: pause at $80, hard stop at $100
 nothing sent.
-fake run: done; 2821 lines for 2821 specs; ok 2821; fake spend {'actual_calls_usd': 23.4719, 'judge_reserve_usd': 0.0, 'spent_usd': 23.4719, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
+fake run: done; 2821 lines for 2821 specs; ok 2821; fake spend {'actual_calls_usd': 23.4719, 'judge_reserve_usd': 0.0, 'prior_usd': 0.0, 'spent_usd': 23.4719, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'halted': None, 'halt_reason': None}
