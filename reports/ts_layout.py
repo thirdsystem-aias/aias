@@ -19,7 +19,13 @@ Pages are drawn on a ReportLab canvas, one function per page type:
   finding_page(), finding_evidence_page()     findings (Tier 1 adds the evidence page)
   section_opener()                            full-Indigo opener (Tier 1 only)
   text_page()                                 intro, limitations, closing
+  closing_page()                              Tier 1 closing page: statement, colophon, Indigo band
 Shared pieces: lockup(), wordmark(), number_row(), icon(), running_chrome().
+
+Report code (decision 14, Pablo, Nov 13, 2026; reports/report_code.py): the Tier 1 closing band
+carries the code after the website; on Tiers 2 and 3 the last page passes code= to its page
+function and the footer line reads "thirdsystem.ai · TS-CS-v0.22-r1". The website is always
+printed in lower case, caps lines included (report_code.upper_keep_website()).
 
 Charts keep the program's two-pass pattern. A page reserves each chart's exact footprint
 from the chart PDF's mediabox before any text is placed (the ChartReservation pre-compute)
@@ -52,13 +58,18 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.pdfgen.canvas import Canvas
 from reportlab.platypus import Frame, Paragraph, Table, TableStyle
 
+if __package__:
+    from . import report_code as RC
+else:
+    import report_code as RC
+
 __all__ = [
     "Tokens", "LayoutOverflow", "ChartSlot",
     "register_fonts", "font_name",
-    "lockup", "wordmark", "icon", "number_row", "running_chrome",
+    "lockup", "wordmark", "icon", "number_row", "running_chrome", "last_page_footer",
     "cover_c2", "cover_c3", "at_a_glance", "contents_page", "finding_page",
-    "finding_evidence_page", "section_opener", "text_page", "table_flowable",
-    "reserve_chart", "overlay_charts", "treated_photo",
+    "finding_evidence_page", "section_opener", "text_page", "closing_page", "colophon_paragraphs",
+    "table_flowable", "reserve_chart", "overlay_charts", "treated_photo",
     "count_words", "word_budget", "check_page_budget",
 ]
 
@@ -106,7 +117,10 @@ class Tokens:
         self.tiers = self.brand["publication_tiers"]
         self.pages = self.specs["section_template"]["page_templates"]
         self.budget = self.specs["word_budget"]
-        self.footer_text = self.brand["footers"]["public_report"]
+        # the website, always printed in lower case (decision 14, Nov 13, 2026)
+        self.website = self.brand["company"]["contact"]["web"].lower()
+        self.footer_text = RC.website_lower(self.brand["footers"]["public_report"], self.website)
+        self.catalogue = RC.catalogue(self.specs)
 
     # -- colours -------------------------------------------------------------
     def colour(self, name: str) -> Color:
@@ -207,16 +221,18 @@ def _pstyle(t: Tokens, spec: dict, name: str = "ts", **kw) -> ParagraphStyle:
 
 def _para(t: Tokens, text: str, spec: dict, **kw) -> Paragraph:
     if spec.get("case") == "upper":
-        text = text.upper()
+        text = RC.upper_keep_website(text, t.website)
     return Paragraph(text, _pstyle(t, spec, **kw))
 
 
 def _caps(c: Canvas, t: Tokens, x: float, y: float, text: str, spec: dict,
-          align: str = "left", colour: str | None = None) -> float:
-    """Draw one line of tracked caps; returns its width."""
+          align: str = "left", colour: str | None = None, case: str | None = None) -> float:
+    """Draw one line of tracked caps; returns its width. The website stays lower case.
+    case='as_is' keeps the text as given (a report code prints exactly as registered)."""
     size = float(spec["size_pt"])
     fnt = font_name(spec.get("weight", "Regular"))
-    text = text.upper() if spec.get("case", "upper") == "upper" else text
+    if (case or spec.get("case", "upper")) == "upper":
+        text = RC.upper_keep_website(text, t.website)
     cs = size * float(spec.get("tracking_em", 0))
     w = pdfmetrics.stringWidth(text, fnt, size) + cs * max(len(text) - 1, 0)
     if align == "right":
@@ -542,8 +558,16 @@ def _paper(c: Canvas, t: Tokens, ground: str | None = None) -> None:
     c.rect(0, 0, t.page_w, t.page_h, stroke=0, fill=1)
 
 
-def running_chrome(c: Canvas, t: Tokens, label: str, page_no: int | None) -> dict:
-    """Page ground, running header (wordmark left, label right in caps) and the locked footer."""
+def last_page_footer(t: Tokens, code: str) -> str:
+    """Tier 2/3 last-page footer line (decision 14): 'thirdsystem.ai · TS-CS-v0.22-r1'."""
+    RC.parse_code(code)
+    return t.pages["footer"]["last_page_text"].format(website=t.website, code=code)
+
+
+def running_chrome(c: Canvas, t: Tokens, label: str, page_no: int | None, code: str | None = None) -> dict:
+    """Page ground, running header (wordmark left, label right in caps) and the locked footer.
+    code= marks a Tier 2/3 report's last page: the footer line then reads
+    'thirdsystem.ai · CODE' (decision 14) in place of the standard footer text."""
     _paper(c, t)
     rh = t.pages["running_header"]
     st = t.scale["running_header"]
@@ -554,13 +578,14 @@ def running_chrome(c: Canvas, t: Tokens, label: str, page_no: int | None) -> dic
     c.setStrokeColor(t.colour(ft["rule_color"]))
     c.setLineWidth(ft["rule_stroke_pt"])
     c.line(t.margin, ft["rule_from_bottom_pt"], t.page_w - t.margin, ft["rule_from_bottom_pt"])
+    text = t.footer_text if code is None else last_page_footer(t, code)
     fnt = font_name("Regular")
     c.setFont(fnt, ft["size_pt"])
     c.setFillColor(t.colour(ft["color"]))
-    c.drawString(t.margin, ft["baseline_from_bottom_pt"], t.footer_text)
+    c.drawString(t.margin, ft["baseline_from_bottom_pt"], text)
     if page_no is not None:
         c.drawRightString(t.page_w - t.margin, ft["baseline_from_bottom_pt"], str(page_no))
-    fw = pdfmetrics.stringWidth(t.footer_text, fnt, ft["size_pt"])
+    fw = pdfmetrics.stringWidth(text, fnt, ft["size_pt"])
     if fw > t.content_w - 24:
         raise LayoutOverflow("footer text is wider than the content width")
     return {"header_baseline": base, "footer_rule": ft["rule_from_bottom_pt"],
@@ -802,14 +827,15 @@ def paragraph(t: Tokens, text: str, kind: str = "body", space_after: float = 0, 
 def at_a_glance(c: Canvas, t: Tokens, *, label: str, page_no: int, standfirst: str,
                 numbers: Sequence[dict], measured: str, summary: Sequence[str],
                 kicker: str = "AT A GLANCE", measured_heading: str | None = None,
-                icons: bool = True) -> dict:
+                icons: bool = True, code: str | None = None) -> dict:
     """Page 2 of Tiers 1-2: kicker, standfirst, a row of three big numbers, a 'What we
     measured' box (left) and the summary in body type (right). Nothing spills to another page.
-    icons=False keeps a page free of icons even once some are approved."""
+    icons=False keeps a page free of icons even once some are approved. code= on a Tier 2/3
+    report's last page (see running_chrome)."""
     pt = t.pages["at_a_glance"]
     if not icons:
         numbers = [dict(n, icon=None) for n in numbers]
-    running_chrome(c, t, label, page_no)
+    running_chrome(c, t, label, page_no, code)
     _caps(c, t, t.margin, t.y(pt["kicker_baseline_from_top_pt"]), kicker, t.style("kicker"))
     sf = t.style("standfirst")
     stop = t.y(pt["standfirst_top_from_top_pt"])
@@ -859,10 +885,10 @@ def at_a_glance(c: Canvas, t: Tokens, *, label: str, page_no: int, standfirst: s
 
 
 def contents_page(c: Canvas, t: Tokens, *, label: str, page_no: int, rows: Sequence[dict],
-                  kicker: str = "CONTENTS") -> dict:
+                  kicker: str = "CONTENTS", code: str | None = None) -> dict:
     """Contents. rows: [{"kind": "part"|"entry", "label": str, "title": str, "page": int}]."""
     pt = t.pages["contents"]
-    running_chrome(c, t, label, page_no)
+    running_chrome(c, t, label, page_no, code)
     _caps(c, t, t.margin, t.y(pt["kicker_baseline_from_top_pt"]), kicker, t.style("kicker"))
     y = t.y(pt["first_row_top_from_top_pt"])
     size = float(pt["entry_size_pt"])
@@ -900,11 +926,12 @@ def contents_page(c: Canvas, t: Tokens, *, label: str, page_no: int, rows: Seque
 
 def finding_page(c: Canvas, t: Tokens, *, label: str, page_no: int, page_index: int, number: int,
                  kicker: str, headline: str, chart_path: Path | str, caption: str,
-                 body: Sequence[str], slots: list) -> dict:
+                 body: Sequence[str], slots: list, code: str | None = None) -> dict:
     """Finding page: number left, kicker and headline right, an Indigo rule, the chart at
-    full content width (reserved from its mediabox), its caption, two columns of body."""
+    full content width (reserved from its mediabox), its caption, two columns of body.
+    code= on a Tier 2/3 report's last page (see running_chrome)."""
     fp = t.pages["finding_page"]
-    running_chrome(c, t, label, page_no)
+    running_chrome(c, t, label, page_no, code)
     nspec = t.style("finding_number")
     c.setFillColor(t.colour(nspec["color"]))
     c.setFont(font_name(nspec["weight"]), nspec["size_pt"])
@@ -947,13 +974,13 @@ def finding_page(c: Canvas, t: Tokens, *, label: str, page_no: int, page_index: 
 
 def finding_evidence_page(c: Canvas, t: Tokens, *, label: str, page_no: int, page_index: int,
                           kicker: str, charts: Sequence[tuple[Path | str, str]], body: Sequence[str],
-                          slots: list) -> dict:
+                          slots: list, code: str | None = None) -> dict:
     """Tier 1 evidence page: up to two 3-column charts side by side with their captions,
     then two columns of body."""
     ep = t.pages["finding_evidence_page"]
     if not 1 <= len(charts) <= ep["charts_max"]:
         raise ValueError(f"an evidence page carries 1 to {ep['charts_max']} charts")
-    running_chrome(c, t, label, page_no)
+    running_chrome(c, t, label, page_no, code)
     _caps(c, t, t.margin, t.y(ep["kicker_baseline_from_top_pt"]), kicker, t.style("kicker"))
     span = int(ep["chart_columns"])
     top = t.y(ep["charts_top_from_top_pt"])
@@ -1001,12 +1028,14 @@ def section_opener(c: Canvas, t: Tokens, *, part: int, title: str, part_label: s
 
 
 def text_page(c: Canvas, t: Tokens, *, label: str, page_no: int, sections: Sequence[dict],
-              kicker: str | None = None, lead: str | None = None, bottom_note: Sequence[dict] | None = None) -> dict:
+              kicker: str | None = None, lead: str | None = None, bottom_note: Sequence[dict] | None = None,
+              code: str | None = None) -> dict:
     """Running text page. Optional kicker and lead (standfirst style), then sections stacked
     down the page: {"heading": str|None, "heading_style": "finding_headline"|"subheading",
-    "paras": [...], "columns": 1|2, "size": "body"|"small", "flowables": [...]}."""
+    "paras": [...], "columns": 1|2, "size": "body"|"small", "flowables": [...]}.
+    code= on a Tier 2/3 report's last page (see running_chrome)."""
     tp = t.pages["text_page"]
-    running_chrome(c, t, label, page_no)
+    running_chrome(c, t, label, page_no, code)
     y = t.y(tp["heading_top_from_top_pt"])
     bottom = t.pages["finding_page"]["body"]["bottom_from_bottom_pt"]
     if kicker:
@@ -1055,6 +1084,80 @@ def text_page(c: Canvas, t: Tokens, *, label: str, page_no: int, sections: Seque
             y = _block(c, make, t.margin, y, sec.get("width", t.content_w), bottom, sec.get("heading") or "text") - sec.get("gap_after", 12)
         words += sum(count_words(p) for p in sec.get("paras", []))
     return {"bottom": y, "words": words}
+
+
+def colophon_paragraphs(t: Tokens) -> Callable[..., Paragraph]:
+    """Paragraph maker for the closing page's colophon (report_specs closing_page: 7.2/9.9 pt,
+    headings Bold Indigo): p(text, kind='body'|'head', before=0, after=None). The website
+    in colophon text is always lower case."""
+    cp = t.pages["closing_page"]
+    body = {"weight": "Regular", "size_pt": cp["colophon_size_pt"], "leading_pt": cp["colophon_leading_pt"],
+            "color": "soft_black"}
+    head = dict(body, weight="Bold", color="indigo")
+
+    def p(text: str, kind: str = "body", before: float = 0.0, after: float | None = None) -> Paragraph:
+        return _para(t, RC.website_lower(text, t.website), head if kind == "head" else body, spaceBefore=before,
+                     spaceAfter=cp["colophon_space_after_pt"] if after is None else after)
+    return p
+
+
+def closing_page(c: Canvas, t: Tokens, *, label: str, page_no: int, statement: str,
+                 left: Callable[[], list], right: Callable[[], list], code: str) -> dict:
+    """Tier 1 closing page (decision 13, Pablo, Nov 12, 2026; updated Nov 13 with decision 14):
+    the running header; the closing statement large (standfirst style); the admin blocks as a
+    quiet two-column colophon low on the page under a thin footer-style rule (left/right return
+    each column's flowables, made with colophon_paragraphs()); then a full-width Indigo band
+    (the C2 title block's fill), in place of the footer line, with one line: the wordmark in
+    white at the cover lockup's size, the website in lower case (Lavender Grey, Regular), the
+    report code (Lavender Grey caps style, printed exactly as registered) and the page number.
+    Geometry: report_specs.json section_template.page_templates.closing_page."""
+    RC.parse_code(code)
+    cp = t.pages["closing_page"]
+    tp = t.pages["text_page"]
+    _paper(c, t)
+    rh = t.pages["running_header"]
+    st = t.scale["running_header"]
+    hb = t.y(rh["baseline_from_top_pt"])
+    wordmark(c, t, rh["x_pt"], hb, st["wordmark"]["size_pt"])
+    _caps(c, t, t.page_w - t.margin, hb, label, st["label"], align="right")
+    band_top = float(cp["band_height_pt"])
+    stop = t.y(tp["heading_top_from_top_pt"])
+    sbot = _block(c, lambda: [_para(t, statement, t.style("standfirst"))], t.margin, stop, t.content_w,
+                  band_top, "closing statement", runt=True)
+    # colophon: two columns, top-aligned, its lowest line colophon_gap_above_band_pt above the band
+    gw = tp["gutter_pt"]
+    colw = (t.content_w - gw) / 2
+    hl, hr = _height(left, colw), _height(right, colw)
+    ctop = band_top + cp["colophon_gap_above_band_pt"] + max(hl, hr)
+    rule_y = ctop + cp["colophon_rule_gap_pt"]
+    if rule_y > sbot - cp["min_gap_below_statement_pt"]:
+        raise LayoutOverflow(f"closing colophon reaches the statement ({sbot - rule_y:.0f} pt apart)")
+    ft = t.pages["footer"]
+    c.setStrokeColor(t.colour(ft["rule_color"]))
+    c.setLineWidth(ft["rule_stroke_pt"])
+    c.line(t.margin, rule_y, t.page_w - t.margin, rule_y)
+    bl = _block(c, left, t.margin, ctop, colw, band_top, "colophon left")
+    br = _block(c, right, t.margin + colw + gw, ctop, colw, band_top, "colophon right")
+    # the Indigo band and its one line
+    c.setFillColor(t.colour(t.covers["C2"]["title_block"]["fill"]))
+    c.rect(0, 0, t.page_w, band_top, stroke=0, fill=1)
+    base = float(cp["band_baseline_from_bottom_pt"])
+    wm = t.covers["lockup"]["line1"]["size_pt"]
+    ww = wordmark(c, t, t.margin, base, wm, dark=True)
+    kspec = t.style(cp["band_text_style"], "C2")
+    web = dict(kspec, tracking_em=cp["band_website_tracking_em"])
+    x_web = t.margin + ww + float(cp["band_gap_after_wordmark_em"]) * wm
+    w_web = _caps(c, t, x_web, base, t.website, web, case="as_is")
+    w_sep = _caps(c, t, x_web + w_web, base, cp["band_separator"], web, case="as_is")
+    x_code = x_web + w_web + w_sep
+    w_code = _caps(c, t, x_code, base, code, kspec, case=cp["band_code_case"])
+    w_page = _caps(c, t, t.page_w - t.margin, base, str(page_no), kspec, align="right")
+    if x_code + w_code > t.page_w - t.margin - w_page - 12:
+        raise LayoutOverflow("closing band: the report code runs into the page number")
+    return {"statement_bottom": sbot, "colophon": {"rule_y": rule_y, "top": ctop, "bottom": min(bl, br)},
+            "band": {"top": band_top, "baseline": base, "wordmark_size": wm, "wordmark_right": t.margin + ww,
+                     "website": {"x": x_web, "w": w_web, "text": t.website},
+                     "code": {"x": x_code, "w": w_code, "text": code}, "page_number_w": w_page}}
 
 
 def table_flowable(t: Tokens, header: Sequence[str], rows: Sequence[Sequence[str]], col_widths: Sequence[float],

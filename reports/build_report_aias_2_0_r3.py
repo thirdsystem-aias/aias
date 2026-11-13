@@ -28,8 +28,18 @@ the current measure on p.8, chart 3, whose first measure stays grey); cover A18;
   (c) chart 2's source line cites v0.41 by its thirdsystem.ai/OSF copy (7685100 is not posted).
 Every other word, number and figure is r3's, which is r2's.
 
+Report code (Pablo, Nov 13, 2026, decisions 13 and 14; reports/report_code.py): r3 is registered as
+TS-SY-AIAS2.0-r3 (brand/report_specs.json report_catalogue). Any new render is a new revision and
+takes the next code, TS-SY-AIAS2.0-r4: the code is printed in the closing band after
+"thirdsystem.ai" (lower case), in the Citation block and in the PDF metadata (Subject, Keywords),
+and names the file, TS-SY-AIAS2.0-r4_how-often-and-how-evenly.pdf. The website prints in lower case
+everywhere, the cover byline included. A code already registered is refused, and so is an output
+path that holds a registered (published) PDF. --test marks a check render with a code that is not
+registered (it must be written outside osf/ and reports/output/). The pre-flight addition runs on
+the written PDF.
+
 Run:
-    AIAS_ROOT=<worktree> python3 reports/build_report_aias_2_0_r3.py --output <pdf>
+    AIAS_ROOT=<worktree> python3 reports/build_report_aias_2_0_r3.py --code TS-SY-AIAS2.0-r4 --out-dir <dir> [--test]
 """
 
 from __future__ import annotations
@@ -45,6 +55,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 sys.path.insert(0, str(SCRIPT_DIR))
 
 import build_report_aias_2_0 as r2  # noqa: E402  (content adapter + r2 wording)
+import report_code as RC  # noqa: E402
 import ts_layout as L  # noqa: E402
 from reportlab.pdfgen.canvas import Canvas  # noqa: E402
 
@@ -82,24 +93,26 @@ PRESENTATIONAL = {
                      "The five propositions, scored; Part 2 Limitations and what’s next; "
                      "Limitations and what’s next; About Third System",
     "about_heading": "About Third System",  # r3: "About the Third System" (Pablo, Nov 11, 11:32 pm)
-    "closing_band": "thirdsystem.ai",        # with the wordmark, on the closing page's Indigo band
+    # the closing page's Indigo band: wordmark, the website in lower case, the report code, the page
+    # number (decision 13 as updated Nov 13, 2026; drawn by ts_layout.closing_page())
+    "closing_band": "thirdsystem.ai",
 }
 
-# Closing page geometry (approved Nov 12, 2026): report_specs.json
-# section_template.page_templates.closing_page. Colours are tokens.
-_CLOSING_SPEC = L.Tokens(AIAS_ROOT).specs["section_template"]["page_templates"]["closing_page"]
-CLOSING_PAGE = {k: v for k, v in _CLOSING_SPEC.items() if k not in ("_note", "band_fill")}
-assert CLOSING_PAGE == {
-    "band_height_pt": 96, "band_baseline_from_bottom_pt": 42, "colophon_gap_above_band_pt": 34,
-    "colophon_rule_gap_pt": 14, "colophon_size_pt": 7.2, "colophon_leading_pt": 9.9,
-    "colophon_space_after_pt": 2.2, "colophon_block_gap_pt": 8, "min_gap_below_statement_pt": 30,
-}, CLOSING_PAGE
+# Closing page geometry (approved Nov 12, 2026; band line Nov 13): report_specs.json
+# section_template.page_templates.closing_page, drawn by ts_layout.closing_page().
+CLOSING_PAGE = L.Tokens(AIAS_ROOT).pages["closing_page"]
 # Pablo, Nov 11, 11:32 pm: SSRN is paused, so the citation points to OSF and thirdsystem.ai:
 # the OSF project (the report and data sit in its folder aias_2_0) and the live study page
 # (slug "aias-2-0" in the website's src/generated/studies.json, site commit e6d9b6f).
-CITATION_TEXT = ("González Castro, P. U. (2026). <i>Presence and Consistency: A Two-Component "
-                 "Measurement of AI Availability (The AIAS™ 2.0 Synthesis)</i>. Third System. "
-                 "osf.io/ec6wh (folder aias_2_0); thirdsystem.ai/studies/aias-2-0")
+# Nov 13 (decision 14): the citation carries the report code after the title.
+CITATION_TITLE = ("Presence and Consistency: A Two-Component Measurement of AI Availability "
+                  "(The AIAS™ 2.0 Synthesis)")
+CITATION_WHERE = "osf.io/ec6wh (folder aias_2_0); thirdsystem.ai/studies/aias-2-0"
+PDF_SUBJECT = "Independent measurement for the AI mediation layer."
+
+
+def citation_text(code: str) -> str:
+    return RC.cite("González Castro, P. U. (2026).", CITATION_TITLE, code, CITATION_WHERE)
 
 
 def _system_overview() -> str:
@@ -110,61 +123,9 @@ def _system_overview() -> str:
     return text.replace("The Third System describes", "Third System describes", 1)
 
 
-def closing_page(c, t, *, label: str, page_no: int, statement: str, left, right) -> dict:
-    """r3b closing page: running header, r2's closing statement large, a quiet two-column colophon
-    set low on the page, and a full-bleed Indigo band with one line (wordmark, thirdsystem.ai, page
-    number) in place of the footer, echoing the C2 cover's title block."""
-    cp = CLOSING_PAGE
-    tp = t.pages["text_page"]
-    L._paper(c, t)
-    rh = t.pages["running_header"]
-    st = t.scale["running_header"]
-    hb = t.y(rh["baseline_from_top_pt"])
-    L.wordmark(c, t, rh["x_pt"], hb, st["wordmark"]["size_pt"])
-    L._caps(c, t, t.page_w - t.margin, hb, label, st["label"], align="right")
-    band_top = float(cp["band_height_pt"])
-    # closing statement: r2's paragraph in the standfirst style, as in r3
-    stop = t.y(tp["heading_top_from_top_pt"])
-    sbot = L._block(c, lambda: [L._para(t, statement, t.style("standfirst"))], t.margin, stop, t.content_w,
-                    band_top, "closing statement", runt=True)
-    # colophon: two columns, top-aligned, its lowest line cp["colophon_gap_above_band_pt"] above the band
-    gw = tp["gutter_pt"]
-    colw = (t.content_w - gw) / 2
-    hl, hr = L._height(left, colw), L._height(right, colw)
-    ctop = band_top + cp["colophon_gap_above_band_pt"] + max(hl, hr)
-    rule_y = ctop + cp["colophon_rule_gap_pt"]
-    if rule_y > sbot - cp["min_gap_below_statement_pt"]:
-        raise L.LayoutOverflow(f"closing colophon reaches the statement ({sbot - rule_y:.0f} pt apart)")
-    ft = t.pages["footer"]
-    c.setStrokeColor(t.colour(ft["rule_color"]))
-    c.setLineWidth(ft["rule_stroke_pt"])
-    c.line(t.margin, rule_y, t.page_w - t.margin, rule_y)
-    bl = L._block(c, left, t.margin, ctop, colw, band_top, "colophon left")
-    br = L._block(c, right, t.margin + colw + gw, ctop, colw, band_top, "colophon right")
-    # Indigo band: the C2 title block's fill, white wordmark, Lavender Grey caps (the C2 kicker style)
-    c.setFillColor(t.colour(t.covers["C2"]["title_block"]["fill"]))
-    c.rect(0, 0, t.page_w, band_top, stroke=0, fill=1)
-    base = float(cp["band_baseline_from_bottom_pt"])
-    wm = t.covers["lockup"]["line1"]["size_pt"]
-    ww = L.wordmark(c, t, t.margin, base, wm, dark=True)
-    kspec = t.style("cover_kicker", "C2")
-    L._caps(c, t, t.margin + ww + 1.5 * wm, base, PRESENTATIONAL["closing_band"], kspec)
-    L._caps(c, t, t.page_w - t.margin, base, str(page_no), kspec, align="right")
-    return {"statement_bottom": sbot, "colophon": {"rule_y": rule_y, "top": ctop, "bottom": min(bl, br)},
-            "band": {"top": band_top, "baseline": base}}
-
-
-def _colophon_styles(t):
-    cp = CLOSING_PAGE
-    body = {"weight": "Regular", "size_pt": cp["colophon_size_pt"], "leading_pt": cp["colophon_leading_pt"],
-            "color": "soft_black"}
-    head = dict(body, weight="Bold", color="indigo")
-
-    def p(text, kind="body", before=0.0, after=None):
-        spec = head if kind == "head" else body
-        return L._para(t, text, spec, spaceBefore=before,
-                       spaceAfter=cp["colophon_space_after_pt"] if after is None else after)
-    return p
+# The closing page (statement, colophon, Indigo band with the report code) is ts_layout.closing_page();
+# its colophon paragraphs come from ts_layout.colophon_paragraphs() (Nov 13, 2026: moved there from
+# this builder unchanged, so v0.40 builds the same page).
 
 # At a glance: three numbers r2 states, labels and sources quoted from r2.
 GLANCE_NUMBERS = [
@@ -190,9 +151,24 @@ def _sentences(text: str, n: int) -> str:
     return " ".join(parts[:n])
 
 
-def build(output: Path, chart_dir: Path = CHART_DIR, photo_id: str = COVER_PHOTO) -> dict:
+def build(output: Path, code: str, chart_dir: Path = CHART_DIR, photo_id: str = COVER_PHOTO,
+          test: bool = False) -> dict:
     t = L.Tokens(AIAS_ROOT)
     L.register_fonts()
+    # Report code (decision 14): a code already in the catalogue is refused (a published PDF is never
+    # re-rendered); a new code must be the next revision; the file is named after the code.
+    RC.check_code(code, t.catalogue)
+    want = RC.file_name(code, content.COVER["title"])
+    if output.name != want:
+        raise SystemExit(f"the PDF must be named {want} (decision 14), not {output.name}")
+    if output.exists():
+        registered = set().union(*(RC.registered_hashes(e) for e in t.catalogue)) if t.catalogue else set()
+        if RC.sha256_file(output) in registered:
+            raise SystemExit(f"{output} is a registered (published) PDF; it is never overwritten")
+    if test:
+        published_dirs = [AIAS_ROOT / "osf", AIAS_ROOT / "reports" / "output"]
+        if any(output.resolve().is_relative_to(d.resolve()) for d in published_dirs):
+            raise SystemExit("--test renders go to a scratch folder, not osf/ or reports/output/")
     used = L.photo_in_use(t, photo_id, exclude_report=REPORT_ID)
     if used:
         raise SystemExit(f"cover photo {photo_id} already used by {used}")
@@ -216,7 +192,8 @@ def build(output: Path, chart_dir: Path = CHART_DIR, photo_id: str = COVER_PHOTO
     c = Canvas(base_pdf, pagesize=(t.page_w, t.page_h))
     c.setTitle(f"{content.COVER['title']} — AIAS™ 2.0 synthesis")
     c.setAuthor("Pablo Ulpiano González Castro")
-    c.setSubject("Independent measurement for the AI mediation layer.")
+    c.setSubject(RC.pdf_subject(code, PDF_SUBJECT))
+    c.setKeywords(RC.pdf_keywords(code, "Third System", "AIAS 2.0", t.website))
     slots: list = []
     pages: list[dict] = []
 
@@ -318,36 +295,39 @@ def build(output: Path, chart_dir: Path = CHART_DIR, photo_id: str = COVER_PHOTO
     methodology_text = brand["disclaimers"]["methodology_standard"].replace(
         "(current: v0.3)", "(current: Presence v1.6; Consistency v1.8, v1.9)").replace(
         "Gonzalez Castro", "González Castro")
-    citation_text = CITATION_TEXT
+    cite = citation_text(code)
     overview = _system_overview()
     about = PRESENTATIONAL["about_heading"]
-    cpara = _colophon_styles(t)
+    cpara = L.colophon_paragraphs(t)
     gap = CLOSING_PAGE["colophon_block_gap_pt"]
     left = lambda: ([cpara(about, "head"), cpara(overview, after=gap), cpara("Authored by", "head")] +
                     [cpara(ln) for ln in clo["byline_long"]] +
                     [cpara("Citation", "head", before=gap - CLOSING_PAGE["colophon_space_after_pt"]),
-                     cpara(citation_text),
+                     cpara(cite),
                      cpara("Declarations, including conflicts of interest, are in the paper.", after=0)])
     right = lambda: ([cpara("Methodology", "head"), cpara(methodology_text, after=gap), cpara("Underlying datasets", "head")] +
                      [cpara(ds) for ds in clo["datasets"]] +
                      [cpara(f"<b>Methodology log:</b> {clo['methodology_log']}.", before=gap - CLOSING_PAGE["colophon_space_after_pt"]),
                       cpara("<b>Inquiries:</b> hello@thirdsystem.ai", after=0)])
     cw = (L.count_words(clo["closing_text"]) + L.count_words(about) + L.count_words(overview) +
-          2 + sum(L.count_words(x) for x in clo["byline_long"]) + 1 + L.count_words(citation_text) +
+          2 + sum(L.count_words(x) for x in clo["byline_long"]) + 1 + L.count_words(cite) +
           L.count_words("Declarations, including conflicts of interest, are in the paper.") + 1 +
           L.count_words(methodology_text) + 2 + sum(L.count_words(x) for x in clo["datasets"]) +
           L.count_words(f"Methodology log: {clo['methodology_log']}.") + 2 +
-          L.count_words(f"Third System {PRESENTATIONAL['closing_band']}"))
-    g = closing_page(c, t, label=RUNNING_LABEL, page_no=pno["closing"], statement=clo["closing_text"],
-                     left=left, right=right)
+          L.count_words(f"Third System {t.website} {code}"))
+    g = L.closing_page(c, t, label=RUNNING_LABEL, page_no=pno["closing"], statement=clo["closing_text"],
+                       left=left, right=right, code=code)
     done("closing", g, ("section_opener",), cw,
          note=f"statement ends {t.page_h - g['statement_bottom']:.0f} pt from the top; colophon rule at "
-              f"{t.page_h - g['colophon']['rule_y']:.0f} pt; band top {t.page_h - g['band']['top']:.0f} pt")
+              f"{t.page_h - g['colophon']['rule_y']:.0f} pt; band top {t.page_h - g['band']['top']:.0f} pt; "
+              f"band: {g['band']['website']['text']} · {g['band']['code']['text']} at x={g['band']['website']['x']:.1f}")
 
     c.save()
     output.parent.mkdir(parents=True, exist_ok=True)
     L.overlay_charts(base_pdf, slots, output)
     os.unlink(base_pdf)
+    # Pre-flight addition (decision 14): last page, file name, metadata, register.
+    pf = RC.preflight(output, code, content.COVER["title"], t.catalogue, t.website)
 
     budget = []
     for p in pages:
@@ -359,22 +339,34 @@ def build(output: Path, chart_dir: Path = CHART_DIR, photo_id: str = COVER_PHOTO
     return {"output": str(output), "pages": len(pages), "budget": budget,
             "slots": [(s.page_index + 1, f"{s.chart_path.parent.name}/{s.chart_path.name}", round(s.scale, 4))
                       for s in slots],
-            "presentational": PRESENTATIONAL, "glance_numbers": GLANCE_NUMBERS, "photo": photo_id}
+            "presentational": PRESENTATIONAL, "glance_numbers": GLANCE_NUMBERS, "photo": photo_id,
+            "code": code, "test": test, "preflight": pf,
+            # the register entry to add at publication (git tag, OSF path and date are filled in then)
+            "catalogue_entry": {"code": code, "title": content.COVER["title"], "date": None, "tier": 1,
+                                "git_tag": None, "osf_path": None, "sha256": pf["sha256"],
+                                "file": output.name, "test": test}}
 
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[1])
-    ap.add_argument("--output", type=Path, default=AIAS_ROOT / "reports" / "output" / "aias_2_0_report_r3.pdf")
+    ap.add_argument("--code", required=True, help="the report code of this render, e.g. TS-SY-AIAS2.0-r4")
+    ap.add_argument("--test", action="store_true", help="a check render with a code that is not registered")
+    ap.add_argument("--out-dir", type=Path, default=AIAS_ROOT / "reports" / "output")
+    ap.add_argument("--output", type=Path, default=None, help="full path; its name must be CODE_<title-slug>.pdf")
     ap.add_argument("--chart-dir", type=Path, default=CHART_DIR)
     ap.add_argument("--report-json", type=Path, default=None, help="write the page/word-budget record here")
     a = ap.parse_args()
-    res = build(a.output, a.chart_dir)
+    output = a.output or a.out_dir / RC.file_name(a.code, content.COVER["title"])
+    res = build(output, a.code, a.chart_dir, test=a.test)
     for b in res["budget"]:
         flag = "" if b["ok"] else f"  OVER BUDGET by {b.get('over_by')}"
         print(f"p{b['page']:>2} {b['kind']:<28} words={b['words']!s:>4} budget={b['budget']!s:>4} "
               f"{','.join(b['elements'])}{flag}  {b['note']}")
     print("charts:", res["slots"])
-    print("wrote", res["output"], res["pages"], "pages")
+    print("wrote", res["output"], res["pages"], "pages", "(test render, code not registered)" if a.test else "")
+    pf = res["preflight"]
+    print("pre-flight:", "PASS" if pf["ok"] else "FAIL", pf["checks"], pf["problems"] or "")
+    print("sha256:", pf["sha256"])
     if a.report_json:
         slim = {k: v for k, v in res.items()}
         slim["budget"] = [{k: v for k, v in b.items() if k != "info"} for b in res["budget"]]
