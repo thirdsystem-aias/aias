@@ -38,11 +38,21 @@ Scenario H (both rules halt: J1 replies with no JSON in OMNI t2 v0.21):
      scoring)" (rc 2); stage_j_v1_20.json written with halted = true and the per-set table under all three rules.
   --stage C -> HALT "v1.20's Stage J halted on JUDGE_FAIL above 2%: no Stage C (section 5)" (rc 2).
 
+Scenario B with every switch at an alternative (config_v1_20.json edited for the run, then restored byte for byte;
+git diff clean): Q1 v1.11-successor, Q2 v1_11_first, Q3 false, Q4 false, Q5 drop_r6, Q6 false.
+  --stage J -> rc 0: phase "v1.11-successor"; v1.11 rule halts ['J1 OMNI t2 v0.21'], primary (S-ATT) none;
+     H1 MARGINAL (alpha 0.534, brand rho 0.855, n 153; R floor 6 and cut answers dropped from the primary);
+     S_FIRST_first_counting H1 MARGINAL. Transitions: no VALID -> UNJUDGED (Q3 false).
+  --stage C --draws 300 -> rc 0: prereg_tag v1.11-successor-prereg-r1; sensitivities S_FIRST_first_counting,
+     S_ALL_with_cut_answers, S_CUT_M_without_cut_cells (R floor 6); role "pre-registered re-scoring only (case B;
+     switch Q6 = false)"; 2 sensitivity verdict changes.
+  The default-switch scenario B was then rebuilt and re-run: the same results as above.
+
 Real data: --stage J without the tags and anchors -> "refusing --stage J on real data before the lock: git tag
 v1.20-prereg-r1 does not exist; anchor file .../git_anchor_v1_20.json does not exist; v1.11: anchor file
 .../git_anchor_v1_11.json does not exist" (rc 3).
 
-Tests: python3 -m unittest scripts/test_score_v1_20.py -> Ran 46 tests, OK.
+Tests: python3 -m unittest scripts/test_score_v1_20.py -> Ran 47 tests, OK.
        python3 -m unittest scripts/test_score_v1_11.py scripts/test_judge_v1_11.py -> Ran 64 tests, OK.
 Commands (repository root):
   python3 osf/methodology/v1_20/dryrun/build_dryrun_v1_20.py --scenario A|B|H

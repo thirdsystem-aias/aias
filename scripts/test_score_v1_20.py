@@ -364,6 +364,21 @@ class TestStageLogic(unittest.TestCase):
                              ({"R t3 v0.23::gemini-2.5-flash|S01"}, {("R", "v0.23", "gemini-2.5-flash")}, 1))
 
 
+class TestCutList(unittest.TestCase):
+    def test_list_and_summary_agree(self):
+        import csv
+        with open(R.CUT_CSV, encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+        js = json.loads(R.CUT_JSON.read_text(encoding="utf-8"))
+        self.assertEqual(len(rows), js["rows"])
+        self.assertEqual(len({r["answer_id"] for r in rows}), len(rows))
+        cells = sorted(k.split("|") for k, (cut, n) in js["t3_answers_and_cut_by_cell"].items() if cut and 2 * cut >= n)
+        self.assertEqual(cells, sorted(js["s_cut_m_cells"]))
+        for r in rows:
+            self.assertEqual(r["unit_status"], "kept" if int(r["v1_11_units"]) else "none")
+            self.assertIn(r["evidence_class"], ("finish_reason", "tokens_at_cap", "identical_to_t3 (inferred)"))
+
+
 class TestLock(unittest.TestCase):
     def test_imported_scorers_equal_v111_lock_manifest(self):
         self.assertEqual(R.v111_integrity(), [])
