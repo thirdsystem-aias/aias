@@ -1,6 +1,6 @@
 # DEVIATIONS — v1.20 (proposed id; Sentiment Paper A, successor re-scoring of v1.11's judge replies)
 
-## Entry 0 — ex ante (2026-11-13, draft r0, before the lock)
+## Entry 0 — ex ante (2026-11-13, drafts r0 and r1, before the lock)
 
 **Type:** ex ante (COI carry-forward, pre-lock record). No v1.11 judge reply exists; v1.20 makes no model call; no valence, S, P, C\* or Ranking value has been computed by or for v1.20.
 
@@ -13,3 +13,11 @@
 4. v1.11's E answer files (eight CSVs at tag `v1.11-prereg-r1`): column names, `call_status` values, and per answering model the number of answers and the median, 90th percentile and maximum character length and the counts at ≥ 3,000 and ≥ 4,000 characters, computed by code. No answer text was printed. `run_aias_v2.py` read for its output-token settings.
 5. Header row of v1.11's unit table (column names only).
 6. Repository refs, tags, recent commit subjects and the master documents searched for study ids (§0 of the pre-registration); the claude.ai project documents searched for "v1.20" and the release plan.
+
+**Pre-lock record, draft r1 (lane C, 2026-11-13, about 2:05–3:00 am CT).** Still no v1.11 judge reply exists, and nothing was computed on real judge data.
+7. Read: `score_v1_11.py` (Stage J, Stage C, lock and anchor code, loaders' signatures), `judge_v1_11.py` (the fake judge, the batch fake and the freeze record), `build_dryrun_v1_11.py` (header), v1.11's DEVIATIONS on branch v1.11 (Entries 0–1, read with `git show`, read-only), the truncation audit's script (`analysis/truncation_audit/truncation_audit.py`, its matching rules), and the master document's AI-use section (`Try system book/CLAUDE.md`; the statement in §14 already carried its current wording).
+8. Synthetic only: v1.11's dry-run folder in the v1.11 worktree (replica, dry-run manifest, dry-run U0, and the header of its synthetic judge records) was copied into `dryrun/work/` (not committed); synthetic judge records were generated there and Stages J and C run on them (`dryrun/dry_run_v1_20.txt`). Their verdicts are synthetic and mean nothing.
+9. Real data, metadata only, by code (`scoping/cut_units_v1_20.py`): v1.11's unit table (answer ids and the judged, J2 and Paper B flags, counted per answer), the R and F answer files loaded with v1.11's loaders (model, question, raw row; texts held in memory only to test byte equality for rule (c)), the raw files' time stamps and token counts, the v0.41 call sidecar (finish reasons, tokens), the runner files (cap code strings) and the header rows of the eight E files. Printed: the keys of the first loaded answer per set with the text length only, the sidecar's finish-reason counts and thinking models, the list's group counts, and two rows of the list (metadata). No answer text, valence or score was printed or computed.
+10. Exposure, while finding the unit-table columns: for one unit per block (E, F, R) the key columns were printed (unit id, set, wave, category, brand, display name, model, frame, answer id, character counts, flags); text and question columns were excluded.
+11. **Difference from r0's counts (§8 item 5).** The list flags 4 R answers that r0 did not count: gemini-2.5-flash-lite at t1 (2) and t2 (2), byte-identical to its t3 answers that ended at the cap (rule (c)). r0 applied rule (c) to F only. Every count r0 gave is reproduced: R t3 35 of 144; F 16 cut after naming a brand (t1 4, t2 5, t3 7); F 11 cut before any brand.
+12. Rule (d) of r0 (E estimate) was not built: it needs a token count of answer texts, which is not stored metadata (§8, §16).
