@@ -151,7 +151,6 @@ These don't disrupt the spine. The spine just picks up at the next untaken v0.NN
 - **PA.03** — Paper-templating automation (pandoc + xelatex + Carlito with Unicode-substitution rules)
 - **PA.04** — OSF deposit automation (extend osf_upload.py to full per-phase packaging)
 - **PB.01** — Push-button category measurement pipeline (post-AIAS 4.0)
-- **PB.02** — Internal Samsung dashboard pilot (post-AIAS 4.0)
 - **PC.01** — External pilot client adoption: 1–2 agency or brand-side partners (post-AIAS 5.0)
 - **PD.01** — API / SaaS productization scoping: foundation entity vs. commercial entity decision
 - **PD.02** — API / SaaS productization build
