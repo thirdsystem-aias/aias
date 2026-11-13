@@ -120,7 +120,6 @@
 ## PHASE I — Productization Phase B (post-AIAS 4.0)
 
 - **PB.01** — Push-button category measurement pipeline: new substrate → registry → run → scored output → draft report, minimum intervention.
-- **PB.02** — Internal Samsung dashboard pilot: AIAS reading as continuous dashboard for one brand team.
 
 ## PHASE J — AIAS 6.0: Grounding (SDC)
 
