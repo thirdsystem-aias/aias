@@ -1,0 +1,67 @@
+block,wave,set,category,model,provider,question_id,answer_id,cap_tokens,evidence_class,finish_reason,output_tokens,thinking_tokens,named_registry_brand,v1_11_units,v1_11_units_judged,j2_sample_units,paper_b_units,unit_status
+F,t1,OMNI t1 v0.19,v0.19,gemini-2.5-flash-lite,google,q2_enthusiast,OMNI t1 v0.19::gemini-2.5-flash-lite|q2_enthusiast|,1024,tokens_at_cap,,1024,,yes,6,6,6,1,kept
+F,t1,OMNI t1 v0.19,v0.19,gemini-2.5-flash-lite,google,q4_famous,OMNI t1 v0.19::gemini-2.5-flash-lite|q4_famous|,1024,tokens_at_cap,,1024,,yes,8,8,8,0,kept
+F,t1,OMNI t1 v0.23,v0.23,gemini-2.5-flash-lite,google,CC-1,OMNI t1 v0.23::gemini-2.5-flash-lite|CC-1|,2048,identical_to_t3 (inferred),,,,yes,5,5,5,0,kept
+F,t1,OMNI t1 v0.23,v0.23,gemini-2.5-flash-lite,google,EA-1,OMNI t1 v0.23::gemini-2.5-flash-lite|EA-1|,2048,identical_to_t3 (inferred),,,,yes,3,3,3,1,kept
+F,t2,OMNI t2 v0.19,v0.19,gemini-2.5-flash-lite,google,q1_audiophile,OMNI t2 v0.19::gemini-2.5-flash-lite|q1_audiophile|,1024,tokens_at_cap,,1024,,yes,4,4,4,0,kept
+F,t2,OMNI t2 v0.19,v0.19,gemini-2.5-flash-lite,google,q2_enthusiast,OMNI t2 v0.19::gemini-2.5-flash-lite|q2_enthusiast|,1024,tokens_at_cap,,1024,,yes,5,5,5,1,kept
+F,t2,OMNI t2 v0.19,v0.19,gemini-2.5-flash-lite,google,q3_reference,OMNI t2 v0.19::gemini-2.5-flash-lite|q3_reference|,1024,tokens_at_cap,,1024,,yes,6,6,6,2,kept
+F,t2,OMNI t2 v0.23,v0.23,gemini-2.5-flash-lite,google,CC-1,OMNI t2 v0.23::gemini-2.5-flash-lite|CC-1|,2048,identical_to_t3 (inferred),,,,yes,5,5,5,1,kept
+F,t2,OMNI t2 v0.23,v0.23,gemini-2.5-flash-lite,google,EA-1,OMNI t2 v0.23::gemini-2.5-flash-lite|EA-1|,2048,identical_to_t3 (inferred),,,,yes,3,3,3,0,kept
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q1_audiophile,OMNI t3 v0.19::gemini-2.5-flash|q1_audiophile|,1024,finish_reason,MAX_TOKENS,39,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q2_enthusiast,OMNI t3 v0.19::gemini-2.5-flash|q2_enthusiast|,1024,finish_reason,MAX_TOKENS,41,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q3_reference,OMNI t3 v0.19::gemini-2.5-flash|q3_reference|,1024,finish_reason,MAX_TOKENS,38,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q4_famous,OMNI t3 v0.19::gemini-2.5-flash|q4_famous|,1024,finish_reason,MAX_TOKENS,41,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q5_popular,OMNI t3 v0.19::gemini-2.5-flash|q5_popular|,1024,finish_reason,MAX_TOKENS,40,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash,google,q6_iconic,OMNI t3 v0.19::gemini-2.5-flash|q6_iconic|,1024,finish_reason,MAX_TOKENS,41,,no,0,0,0,0,none
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash-lite,google,q1_audiophile,OMNI t3 v0.19::gemini-2.5-flash-lite|q1_audiophile|,1024,finish_reason,MAX_TOKENS,1024,,yes,5,5,5,1,kept
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash-lite,google,q2_enthusiast,OMNI t3 v0.19::gemini-2.5-flash-lite|q2_enthusiast|,1024,finish_reason,MAX_TOKENS,1024,,yes,5,5,5,0,kept
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash-lite,google,q3_reference,OMNI t3 v0.19::gemini-2.5-flash-lite|q3_reference|,1024,finish_reason,MAX_TOKENS,1024,,yes,5,5,5,0,kept
+F,t3,OMNI t3 v0.19,v0.19,gemini-2.5-flash-lite,google,q4_famous,OMNI t3 v0.19::gemini-2.5-flash-lite|q4_famous|,1024,finish_reason,MAX_TOKENS,1024,,yes,7,7,7,0,kept
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,CC-1,OMNI t3 v0.23::gemini-2.5-flash|CC-1|,2048,finish_reason,MAX_TOKENS,305,1739,no,0,0,0,0,none
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,CC-2,OMNI t3 v0.23::gemini-2.5-flash|CC-2|,2048,finish_reason,MAX_TOKENS,459,1585,yes,2,2,2,2,kept
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,CC-3,OMNI t3 v0.23::gemini-2.5-flash|CC-3|,2048,finish_reason,MAX_TOKENS,244,1800,no,0,0,0,0,none
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,EA-1,OMNI t3 v0.23::gemini-2.5-flash|EA-1|,2048,finish_reason,MAX_TOKENS,242,1802,no,0,0,0,0,none
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,EA-2,OMNI t3 v0.23::gemini-2.5-flash|EA-2|,2048,finish_reason,MAX_TOKENS,275,1769,no,0,0,0,0,none
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash,google,EA-3,OMNI t3 v0.23::gemini-2.5-flash|EA-3|,2048,finish_reason,MAX_TOKENS,79,1965,no,0,0,0,0,none
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash-lite,google,CC-1,OMNI t3 v0.23::gemini-2.5-flash-lite|CC-1|,2048,finish_reason,MAX_TOKENS,2048,,yes,5,5,5,1,kept
+F,t3,OMNI t3 v0.23,v0.23,gemini-2.5-flash-lite,google,EA-1,OMNI t3 v0.23::gemini-2.5-flash-lite|EA-1|,2048,finish_reason,MAX_TOKENS,2048,,yes,3,3,3,0,kept
+R,t1,R t1 v0.23,v0.23,gemini-2.5-flash-lite,google,S06,R t1 v0.23::gemini-2.5-flash-lite|S06,2048,identical_to_t3 (inferred),,,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t1,R t1 v0.23,v0.23,gemini-2.5-flash-lite,google,S19,R t1 v0.23::gemini-2.5-flash-lite|S19,2048,identical_to_t3 (inferred),,,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t2,R t2 v0.23,v0.23,gemini-2.5-flash-lite,google,S06,R t2 v0.23::gemini-2.5-flash-lite|S06,2048,identical_to_t3 (inferred),,,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t2,R t2 v0.23,v0.23,gemini-2.5-flash-lite,google,S19,R t2 v0.23::gemini-2.5-flash-lite|S19,2048,identical_to_t3 (inferred),,,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S01,R t3 v0.23::claude-opus-4-5|S01,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S03,R t3 v0.23::claude-opus-4-5|S03,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S05,R t3 v0.23::claude-opus-4-5|S05,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,1,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S06,R t3 v0.23::claude-opus-4-5|S06,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S07,R t3 v0.23::claude-opus-4-5|S07,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S09,R t3 v0.23::claude-opus-4-5|S09,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S12,R t3 v0.23::claude-opus-4-5|S12,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S14,R t3 v0.23::claude-opus-4-5|S14,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,claude-opus-4-5,anthropic,S19,R t3 v0.23::claude-opus-4-5|S19,2048,finish_reason,max_tokens,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S01,R t3 v0.23::gemini-2.5-flash|S01,2048,finish_reason,MAX_TOKENS,579,1465,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S02,R t3 v0.23::gemini-2.5-flash|S02,2048,finish_reason,MAX_TOKENS,80,1964,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S03,R t3 v0.23::gemini-2.5-flash|S03,2048,finish_reason,MAX_TOKENS,347,1697,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S04,R t3 v0.23::gemini-2.5-flash|S04,2048,finish_reason,MAX_TOKENS,324,1720,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S05,R t3 v0.23::gemini-2.5-flash|S05,2048,finish_reason,MAX_TOKENS,475,1569,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S06,R t3 v0.23::gemini-2.5-flash|S06,2048,finish_reason,MAX_TOKENS,340,1704,n/a (recognition: whole answer),1,1,1,1,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S07,R t3 v0.23::gemini-2.5-flash|S07,2048,finish_reason,MAX_TOKENS,611,1433,n/a (recognition: whole answer),1,1,1,1,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S08,R t3 v0.23::gemini-2.5-flash|S08,2048,finish_reason,MAX_TOKENS,562,1482,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S09,R t3 v0.23::gemini-2.5-flash|S09,2048,finish_reason,MAX_TOKENS,575,1469,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S10,R t3 v0.23::gemini-2.5-flash|S10,2048,finish_reason,MAX_TOKENS,380,1664,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S11,R t3 v0.23::gemini-2.5-flash|S11,2048,finish_reason,MAX_TOKENS,498,1546,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S12,R t3 v0.23::gemini-2.5-flash|S12,2048,finish_reason,MAX_TOKENS,214,1830,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S13,R t3 v0.23::gemini-2.5-flash|S13,2048,finish_reason,MAX_TOKENS,453,1591,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S14,R t3 v0.23::gemini-2.5-flash|S14,2048,finish_reason,MAX_TOKENS,176,1868,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S15,R t3 v0.23::gemini-2.5-flash|S15,2048,finish_reason,MAX_TOKENS,372,1672,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S16,R t3 v0.23::gemini-2.5-flash|S16,2048,finish_reason,MAX_TOKENS,445,1599,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S17,R t3 v0.23::gemini-2.5-flash|S17,2048,finish_reason,MAX_TOKENS,166,1878,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S18,R t3 v0.23::gemini-2.5-flash|S18,2048,finish_reason,MAX_TOKENS,212,1832,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S19,R t3 v0.23::gemini-2.5-flash|S19,2048,finish_reason,MAX_TOKENS,628,1416,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S20,R t3 v0.23::gemini-2.5-flash|S20,2048,finish_reason,MAX_TOKENS,320,1724,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S21,R t3 v0.23::gemini-2.5-flash|S21,2048,finish_reason,MAX_TOKENS,276,1768,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S22,R t3 v0.23::gemini-2.5-flash|S22,2048,finish_reason,MAX_TOKENS,559,1485,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S23,R t3 v0.23::gemini-2.5-flash|S23,2048,finish_reason,MAX_TOKENS,394,1650,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash,google,S24,R t3 v0.23::gemini-2.5-flash|S24,2048,finish_reason,MAX_TOKENS,243,1801,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash-lite,google,S06,R t3 v0.23::gemini-2.5-flash-lite|S06,2048,finish_reason,MAX_TOKENS,2048,,n/a (recognition: whole answer),1,1,1,0,kept
+R,t3,R t3 v0.23,v0.23,gemini-2.5-flash-lite,google,S19,R t3 v0.23::gemini-2.5-flash-lite|S19,2048,finish_reason,MAX_TOKENS,2048,,n/a (recognition: whole answer),1,1,1,0,kept

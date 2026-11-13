@@ -1,0 +1,355 @@
+{
+  "phase": "v1.20",
+  "status": "r1 draft (2026-11-13), not locked",
+  "created_utc": "2026-11-13T08:26:12+00:00",
+  "what": "AIAS v1.20 (proposed id), section 8: the answers that v1.11 judges and that stopped at the answering",
+  "rows_csv": "cut_units_v1_20.csv",
+  "rows": 66,
+  "groups": {
+    "R t3 at the cap (of 144)": 35,
+    "R t3 at the cap by model": {
+      "claude-opus-4-5": 9,
+      "gemini-2.5-flash": 24,
+      "gemini-2.5-flash-lite": 2
+    },
+    "R t1/t2 flagged": {
+      "t1 gemini-2.5-flash-lite identical_to_t3 (inferred)": 2,
+      "t2 gemini-2.5-flash-lite identical_to_t3 (inferred)": 2
+    },
+    "F cut after naming a brand (unit kept), all evidence": {
+      "t1": 4,
+      "t2": 5,
+      "t3": 7
+    },
+    "F cut after naming a brand, recorded evidence only": {
+      "t1": 2,
+      "t2": 3,
+      "t3": 7
+    },
+    "F cut before any brand (no unit)": {
+      "t3 v0.19 gemini-2.5-flash": 6,
+      "t3 v0.23 gemini-2.5-flash": 5
+    },
+    "F rows by wave x category x model x evidence": {
+      "t1|v0.19|gemini-2.5-flash-lite|tokens_at_cap": 2,
+      "t1|v0.23|gemini-2.5-flash-lite|identical_to_t3 (inferred)": 2,
+      "t2|v0.19|gemini-2.5-flash-lite|tokens_at_cap": 3,
+      "t2|v0.23|gemini-2.5-flash-lite|identical_to_t3 (inferred)": 2,
+      "t3|v0.19|gemini-2.5-flash|finish_reason": 6,
+      "t3|v0.19|gemini-2.5-flash-lite|finish_reason": 4,
+      "t3|v0.23|gemini-2.5-flash|finish_reason": 5,
+      "t3|v0.23|gemini-2.5-flash-lite|finish_reason": 2
+    },
+    "v1.11 units from cut answers (judged / J2 sample / Paper B)": {
+      "R": [
+        39,
+        39,
+        3
+      ],
+      "F": [
+        77,
+        77,
+        10
+      ]
+    },
+    "t1/t2 answers whose cut status is not recorded (no finish reason, no token count)": {
+      "R": 288,
+      "F (v0.20-v0.23)": 288
+    },
+    "answers read": {
+      "R t1": 144,
+      "R t2": 144,
+      "R t3": 144,
+      "F t1": 180,
+      "F t2": 180,
+      "F t3": 180
+    }
+  },
+  "s_cut_m_cells": [
+    [
+      "F",
+      "v0.19",
+      "gemini-2.5-flash"
+    ],
+    [
+      "F",
+      "v0.19",
+      "gemini-2.5-flash-lite"
+    ],
+    [
+      "F",
+      "v0.23",
+      "gemini-2.5-flash"
+    ],
+    [
+      "R",
+      "v0.23",
+      "gemini-2.5-flash"
+    ]
+  ],
+  "s_cut_m_rule": "model x block x substrate cells with at least half of their t3 answers ended at the cap",
+  "t3_answers_and_cut_by_cell": {
+    "F|v0.19|claude-opus-4-5": [
+      0,
+      6
+    ],
+    "F|v0.19|claude-sonnet-4-5": [
+      0,
+      6
+    ],
+    "F|v0.19|gemini-2.5-flash": [
+      6,
+      6
+    ],
+    "F|v0.19|gemini-2.5-flash-lite": [
+      4,
+      6
+    ],
+    "F|v0.19|gpt-4o": [
+      0,
+      6
+    ],
+    "F|v0.19|gpt-4o-mini": [
+      0,
+      6
+    ],
+    "F|v0.20|claude-opus-4-5": [
+      0,
+      6
+    ],
+    "F|v0.20|claude-sonnet-4-5": [
+      0,
+      6
+    ],
+    "F|v0.20|gemini-2.5-flash": [
+      0,
+      6
+    ],
+    "F|v0.20|gemini-2.5-flash-lite": [
+      0,
+      6
+    ],
+    "F|v0.20|gpt-4o": [
+      0,
+      6
+    ],
+    "F|v0.20|gpt-4o-mini": [
+      0,
+      6
+    ],
+    "F|v0.21|claude-opus-4-5": [
+      0,
+      6
+    ],
+    "F|v0.21|claude-sonnet-4-5": [
+      0,
+      6
+    ],
+    "F|v0.21|gemini-2.5-flash": [
+      0,
+      6
+    ],
+    "F|v0.21|gemini-2.5-flash-lite": [
+      0,
+      6
+    ],
+    "F|v0.21|gpt-4o": [
+      0,
+      6
+    ],
+    "F|v0.21|gpt-4o-mini": [
+      0,
+      6
+    ],
+    "F|v0.22|claude-opus-4-5": [
+      0,
+      6
+    ],
+    "F|v0.22|claude-sonnet-4-5": [
+      0,
+      6
+    ],
+    "F|v0.22|gemini-2.5-flash": [
+      0,
+      6
+    ],
+    "F|v0.22|gemini-2.5-flash-lite": [
+      0,
+      6
+    ],
+    "F|v0.22|gpt-4o": [
+      0,
+      6
+    ],
+    "F|v0.22|gpt-4o-mini": [
+      0,
+      6
+    ],
+    "F|v0.23|claude-opus-4-5": [
+      0,
+      6
+    ],
+    "F|v0.23|claude-sonnet-4-5": [
+      0,
+      6
+    ],
+    "F|v0.23|gemini-2.5-flash": [
+      6,
+      6
+    ],
+    "F|v0.23|gemini-2.5-flash-lite": [
+      2,
+      6
+    ],
+    "F|v0.23|gpt-4o": [
+      0,
+      6
+    ],
+    "F|v0.23|gpt-4o-mini": [
+      0,
+      6
+    ],
+    "R|v0.23|claude-opus-4-5": [
+      9,
+      24
+    ],
+    "R|v0.23|claude-sonnet-4-5": [
+      0,
+      24
+    ],
+    "R|v0.23|gemini-2.5-flash": [
+      24,
+      24
+    ],
+    "R|v0.23|gemini-2.5-flash-lite": [
+      2,
+      24
+    ],
+    "R|v0.23|gpt-4o": [
+      0,
+      24
+    ],
+    "R|v0.23|gpt-4o-mini": [
+      0,
+      24
+    ]
+  },
+  "thinking_models": [
+    "gemini-2.5-flash"
+  ],
+  "runner_caps": {
+    "v0.19": {
+      "runner": "protocol/providers.py",
+      "cap_by_provider": {
+        "anthropic": 1024,
+        "openai": 1024,
+        "google": 1024
+      },
+      "code_strings_found": [
+        "max_tokens=1024",
+        "generation_config={\"max_output_tokens\": 1024}"
+      ]
+    },
+    "v0.20": {
+      "runner": "scripts/run_acquisition_v20.py",
+      "cap_by_provider": {
+        "anthropic": 2048,
+        "openai": 2048,
+        "google": null
+      },
+      "code_strings_found": [
+        "pool.submit(call_llm, t[\"model\"], t[\"frame_text\"], 2048)",
+        "resp = model.generate_content(prompt)"
+      ]
+    },
+    "v0.21": {
+      "runner": "scripts/run_acquisition_v21.py",
+      "cap_by_provider": {
+        "anthropic": 2048,
+        "openai": 2048,
+        "google": null
+      },
+      "code_strings_found": [
+        "pool.submit(call_llm, t[\"model\"], t[\"frame_text\"], 2048)",
+        "resp = model.generate_content(prompt)"
+      ]
+    },
+    "v0.22": {
+      "runner": "scripts/run_acquisition_v22.py",
+      "cap_by_provider": {
+        "anthropic": 2048,
+        "openai": 2048,
+        "google": null
+      },
+      "code_strings_found": [
+        "pool.submit(call_llm, t[\"model\"], t[\"frame_text\"], 2048)",
+        "resp = model.generate_content(prompt)"
+      ]
+    },
+    "v0.23": {
+      "runner": "scripts/acquire_v0_23.py",
+      "cap_by_provider": {
+        "anthropic": 2048,
+        "openai": 2048,
+        "google": 2048
+      },
+      "code_strings_found": [
+        "max_tokens=2048",
+        "max_output_tokens=2048"
+      ]
+    }
+  },
+  "e_block": {
+    "finish_or_token_columns": {
+      "EARLY-6 v0.9 pm": [],
+      "EARLY-6 v0.9 finance": [],
+      "EARLY-6 v0.9 oliveoil": [],
+      "EARLY-6 v0.9 running": [],
+      "EARLY-6 v0.9 skincare": [],
+      "EARLY-6 v1.0 household": [],
+      "EARLY-6 v1.0 knives": [],
+      "EARLY-6 v0.14 premium_tea": []
+    },
+    "evidence": "none of the eight E answer files has a finish-reason or token column: no stored cut evidence"
+  },
+  "previous_lane_counts": {
+    "R t3 at the cap": "35 of 144",
+    "F cut after naming a brand": "16 (t1 4, t2 5, t3 7)",
+    "F cut before any brand": "11 (t3: v0.19 gemini-2.5-flash 6, v0.23 gemini-2.5-flash 5)"
+  },
+  "inputs_sha256": {
+    "data/finance/results_enriched_v09_20260507_190816.csv": "88469b4add49ac59212ae8d7d5273525892f6abdeebd301e03ca1f14ad2b265a",
+    "data/household/results_v2_household_v1.0_final.csv": "9c8ded86ba1e60bf28ebfd91b666a688f24de8d57b3523bd05ff309b5e2b9f4a",
+    "data/knives/results_v2_knives_v1.0_final.csv": "72b406431403a012b0a95cf54939893da26b24f20d6eed2592510e531819c9f2",
+    "data/oliveoil/results_enriched_v09_20260507_184159.csv": "7d348fcfae80ebaeaf19e5488b2a89708041a5fd015f45cb821d9837d6742af9",
+    "data/pm/results_enriched_v09_20260507_181205.csv": "239cacd1f452a81da8feee824c28606172d195b25a9eec41a6c4f8e088a2008f",
+    "data/premium_tea/results_v2_premium_tea_20260512_161817_filled.csv": "4384ed866c383738ccc13e227cef257666207d60f8d367e16bff9f2d30602ef9",
+    "data/running/results_enriched_v09_20260507_183238.csv": "e787ada126073fb1d297bc2bf866603ad2560221f4eb1864d08e960901968504",
+    "data/skincare/results_enriched_v09_20260507_185427.csv": "97dd36fd5a23f8dcf8d287f2d13baf475d8f5150dadc2f42d15b659d442783eb",
+    "osf/methodology/v1_11/prereg/units_v1_11.csv": "1243e8e15e2dc6afc894197de9819d149d934e3883bc9f504e8fdfbbbb9c08b8",
+    "osf/v19/phase_b_responses.jsonl": "8b7459c779bd1a3dd19b428fa015835c37aac12e5628ace38d64a79d44519c5e",
+    "osf/v20/phase_b_results.csv": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828",
+    "osf/v21/phase_b_results.csv": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1",
+    "osf/v22/phase_b_results.csv": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35",
+    "osf/v23/data/v23_phase_a_raw.json": "5a399a6b084953f8d9bc82e8d0faa082827c1945619b8000d013881cce401e69",
+    "osf/v23/data/v23_phase_b_raw.json": "e8c045ed30689a5245be4256253ab1ef6ba197954bdf7bf5b5813e46625afc12",
+    "osf/v34/data/v19/phase_b_responses.jsonl": "e5a7ef944db42164f7944a65ccfcd0be05d5486893dd55715bdcf079ddfb8acf",
+    "osf/v34/data/v20/phase_b_results.csv": "504dfc5ace742cb27d0d3a764b617b12cb816f607850d165801b64b68fcc8a78",
+    "osf/v34/data/v21/phase_b_results.csv": "f27f4a5f0e2da0b110be2f2e3b85437e391f7354f87ec3e2d9ea5872e6f87ed1",
+    "osf/v34/data/v22/phase_b_results.csv": "7976de5d76ab5a21729a04bdc3d3f4e12afc7b6e0350dcabcedd99dc329c189a",
+    "osf/v34/data/v23/v23_phase_a_raw.json": "fc7b61ad6e3784526517a10717d2f9ae9c61b800a45808087c35772bfa7dfb5e",
+    "osf/v34/data/v23/v23_phase_b_raw.json": "8185abf8cac579ea7a424cd6b349878ba6246ed8ab35d1ef190508073e51399d",
+    "osf/v41/data/v19/phase_b_responses.jsonl": "7cd150dc643f9c56e298fbc885cfd27e8ec0c47f48953bb9d9d4225d80cd71dd",
+    "osf/v41/data/v20/phase_b_results.csv": "c313569ec31f9789363d863062e56a1a8cd77a4293c75189dc3acd2a1dfcc9c8",
+    "osf/v41/data/v21/phase_b_results.csv": "aeb8a2a2a7846f12467cafaff582a9deb73ddbedacf598f6da23e0e6dff23c69",
+    "osf/v41/data/v22/phase_b_results.csv": "a5bffb31acfd0d97226e2658001f1adecbf64448b512fd32e037a85d84bde94b",
+    "osf/v41/data/v23/v23_phase_a_raw.json": "f79ec0ee718556ed08e2aa0cece125559dc0c354a5b1b3ffadfbc4b529c0419a",
+    "osf/v41/data/v23/v23_phase_b_raw.json": "1fa10275de9998140ebeb8e787bdcc42409a3079efc654b16275f5a7f26b945a",
+    "osf/v41/data/v41_provenance.csv": "9b6a82d1d23b1f203ea3888a7c534b7514d69921780fd907170e97422f58f8ac",
+    "protocol/providers.py": "8783ff4df4ef2325c24408a5a032961bcb23e198b73c9fef7666def7aed5a85d",
+    "scripts/acquire_v0_23.py": "7056f4fa88a9c2e353421f9a967470375db77f5f4a17603115810681b87152da",
+    "scripts/run_acquisition_v20.py": "1eca4ff7423ffe53b5a2098391a116684c1d718dbe56d02816c7caf378c8c4f0",
+    "scripts/run_acquisition_v21.py": "f29bb0ade9d74e56a21c9343e191510dd30c91a52063760f7b819c0fa6f9a436",
+    "scripts/run_acquisition_v22.py": "59f711b82efb0846f8305e7d84423667571e819aa80ad071edb01c9b1c883cfe"
+  }
+}
