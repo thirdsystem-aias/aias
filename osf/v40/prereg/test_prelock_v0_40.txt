@@ -5,6 +5,8 @@ PASS no finish reason -> None
 PASS cut at the limit with no registry brand = cut_before_brand
 PASS cut at the limit after a registry brand = cut_after_brand
 PASS normal finish is not at the limit
+PASS bare ambiguous aliases ('United', 'American') do not count as naming a brand
+PASS an empty first answer cut at the limit (then re-sent) counts as cut before the first brand
 PASS no finish reason: Google visible + thinking >= 2,048 is at the limit; empty answer = cut before a brand
 PASS no finish reason: 2,047 output tokens is below the limit
 PASS neither finish reason nor tokens = unassessable
@@ -23,6 +25,7 @@ PASS wrapping the writer is idempotent
 PASS legacy: a cut-before-brand answer pauses its slot before its next request
 PASS legacy: the other slot completes all its calls
 PASS legacy: the trigger is journaled
+PASS sync: an empty first answer cut at the limit is kept on the re-sent line and pauses the slot
 PASS Fable 5.2 (batch): the pause takes effect from its next batch (94 lines of block 5, nothing after)
 PASS current: the other slot completes (S0 x3 + S1)
 PASS no cut answer: the run ends 'done' with nothing paused

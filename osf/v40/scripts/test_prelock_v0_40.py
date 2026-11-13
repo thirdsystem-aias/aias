@@ -54,6 +54,12 @@ a = SR.assess(rec("M3", "length", "Delta Air Lines and Chase are often recommend
 check("cut at the limit after a registry brand = cut_after_brand", a["cut_after_brand"] and a["named"] >= 2)
 a = SR.assess(rec("C2", "completed", "Delta Air Lines.", provider="openai"), NAMED)
 check("normal finish is not at the limit", a["at_limit"] is False and not a["cut_before_brand"])
+a = SR.assess(rec("M3", "length", "In the United States, travelers who fly American", provider="openai"), NAMED)
+check("bare ambiguous aliases ('United', 'American') do not count as naming a brand",
+      a["named"] == 0 and a["cut_before_brand"])
+r1 = dict(rec("C3", "FinishReason.STOP", "Chase.", provider="google"), first_attempt_finish_reason="FinishReason.MAX_TOKENS")
+check("an empty first answer cut at the limit (then re-sent) counts as cut before the first brand",
+      SR.assess(r1, NAMED)["cut_before_brand"] and SR.assess(r1, NAMED)["empty_first_cut"])
 a = SR.assess(rec("M5X", None, "", out=1000, thought=1048, provider="google", status="empty"), NAMED)
 check("no finish reason: Google visible + thinking >= 2,048 is at the limit; empty answer = cut before a brand",
       a["at_limit"] is True and a["cut_before_brand"])
@@ -136,6 +142,24 @@ with tempfile.TemporaryDirectory() as d:
           and len(m6) == 1, f"{st} {len(m6)}")
     check("legacy: the other slot completes all its calls", sum(x["slot"] == "M4" for x in r) == 282)
     check("legacy: the trigger is journaled", [e["slot"] for e in ev if e["event"] == "trigger"] == ["M6"])
+
+calls = {"n": 0}
+
+
+def lite_empty_first(model_id, prompt):
+    if model_id == "gemini-2.5-flash-lite":
+        calls["n"] += 1
+        if calls["n"] == 1:
+            return {"text": "", "served_model": model_id, "finish_reason": "FinishReason.MAX_TOKENS", "tokens_in": 20,
+                    "tokens_out": 0, "tokens_thought": 2048}
+    return A.fake_legacy(model_id, prompt)
+
+
+with tempfile.TemporaryDirectory() as d:
+    st, sp, r, ev = mini_run(d, {"M6"}, legacy=lite_empty_first)
+    check("sync: an empty first answer cut at the limit is kept on the re-sent line and pauses the slot",
+          st == "model_paused" and len(r) == 1 and r[0]["first_attempt_finish_reason"] == "FinishReason.MAX_TOKENS"
+          and r[0]["status"] == "ok" and r[0]["empty_retry"], (st, len(r)))
 
 with tempfile.TemporaryDirectory() as d:
     st, sp, r, ev = mini_run(d, {"C1", "C3"}, batch_kw={"stop_reason": "max_tokens",

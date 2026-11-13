@@ -272,10 +272,11 @@ class Scorer:
             r["_other"] = code_answer(r["text"], near, {})
             # section 5.9 (added 2026-11-13): length flags from the stop rule's own definitions (stoprule_v0_40)
             lim = SR.at_limit(r)
-            named = len({m["entity"] for m in r["_m"]})
+            named = len({m["entity"] for m in r["_m"] if not m["ambiguous"]})     # as the primary coding counts
             r["_cut_before"] = bool(lim) and named == 0
             r["_cut_after"] = bool(lim) and named > 0
             r["_think_half"] = 2 * SR.thinking_count(r)[0] >= SR.limit_of(r)
+            r["_empty_first_cut"] = bool(SR.is_length_stop(r.get("first_attempt_finish_reason")))
         # an answer cut at the length limit before its first registry brand is missing (section 5.9 item 1)
         self.cut_before = [r for r in self.ok if r["_cut_before"]]
         self.ok = [r for r in self.ok if not r["_cut_before"]]
@@ -583,13 +584,15 @@ class Scorer:
     def d10_length(self):
         """Section 5.9 item 5: answers cut before / after the first brand and with thinking at half the limit or more,
         per model slot and condition (answers cut before the first brand are missing in every test)."""
-        out = defaultdict(lambda: {"answers": 0, "cut_before_first_brand": 0, "cut_after_brand": 0, "thinking_ge_half": 0})
+        out = defaultdict(lambda: {"answers": 0, "cut_before_first_brand": 0, "cut_after_brand": 0, "thinking_ge_half": 0,
+                                   "empty_first_answer_cut_then_resent": 0})
         for r in self.ok + self.cut_before:
             c = out[f"{r['slot']}|{r['condition']}"]
             c["answers"] += 1
             c["cut_before_first_brand"] += int(r["_cut_before"])
             c["cut_after_brand"] += int(r["_cut_after"])
             c["thinking_ge_half"] += int(r["_think_half"])
+            c["empty_first_answer_cut_then_resent"] += int(r["_empty_first_cut"])
         return dict(sorted(out.items()))
 
     # ------------------------------------------------------------------ descriptives 3-9 (section 2.9)

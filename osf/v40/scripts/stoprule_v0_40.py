@@ -15,8 +15,10 @@ Per answer (one raw line with status "ok" or "empty"; an "error" line carries no
                     prefix ("FinishReason.MAX_TOKENS"). With no finish reason recorded: billed output tokens (Google:
                     candidates + thoughts) >= the limit. With neither, the answer is "unassessable".
   named             distinct registry brands the study's own matcher finds in the answer text (v0.40:
-                    score_v0_40.code_answer over the frozen registry, ambiguous aliases included)
-  cut_before_brand  at_limit and named == 0  -> the stop rule's trigger
+                    score_v0_40.code_answer over the frozen registry, as the primary coding counts them: bare
+                    ambiguous aliases, D11, do not count)
+  cut_before_brand  at_limit and named == 0, or an empty first answer that stopped at the limit and was re-sent
+                    (its finish reason is kept as first_attempt_finish_reason)  -> the stop rule's trigger
   cut_after_brand   at_limit and named >= 1
   thinking          the provider's own count (Google thoughts_token_count, OpenAI reasoning_tokens); for a model that
                     may think under the study's settings but reports no separate count (Claude Fable 5.2, provider
@@ -97,23 +99,27 @@ def assess(rec, named_fn, limit=None):
     named = named_fn(text) if text.strip() else 0
     lim = at_limit(rec, limit)
     th, bound = thinking_count(rec)
+    # a synchronous call re-sends an empty answer once and records the second; an empty first answer that stopped at
+    # the limit is itself an answer cut before any brand (acquire_v0_40.send_call keeps its finish reason)
+    first_cut = bool(is_length_stop(rec.get("first_attempt_finish_reason")))
     return {"call_id": rec.get("call_id"), "slot": rec.get("slot"), "condition": rec.get("condition"),
             "model": rec.get("model_requested"), "finish_reason": rec.get("finish_reason"), "limit": limit,
             "output_tokens": rec.get("output_tokens"), "thinking": th, "thinking_upper_bound": bound,
-            "named": named, "at_limit": lim, "unassessable": lim is None,
-            "cut_before_brand": bool(lim) and named == 0, "cut_after_brand": bool(lim) and named > 0,
+            "named": named, "at_limit": lim, "unassessable": lim is None, "empty_first_cut": first_cut,
+            "cut_before_brand": (bool(lim) and named == 0) or first_cut, "cut_after_brand": bool(lim) and named > 0,
             "think_half": 2 * th >= limit}
 
 
 def v40_named_fn():
-    """Number of distinct registry entities (units, ghosts, controls; ambiguous aliases included) in a text, by
-    score_v0_40's own matcher over the frozen registry."""
+    """Number of distinct registry entities (units, ghosts, controls) in a text that the primary coding counts, by
+    score_v0_40's own matcher over the frozen registry. Bare ambiguous aliases (D11; e.g. "United" in "United States")
+    do not count, so the rule errs toward triggering."""
     sys.path.insert(0, str(HERE))
     import score_v0_40 as S
     units, subjects, _ = S.load_registry()
     subjects = subjects + S.switch_controls(subjects)
     matchers = S.build_matchers(units, subjects)
-    return lambda text: len({m["entity"] for m in S.code_answer(text, matchers, {})})
+    return lambda text: len({m["entity"] for m in S.code_answer(text, matchers, {}) if not m["ambiguous"]})
 
 
 class StopRule:

@@ -541,8 +541,11 @@ def send_call(spec):
     out, attempts, err = _invoke(model, cond, spec["prompt"], spec["system"])
     parts = [_part(out, "standard", cond)] if out is not None else []
     empty_retry = False
+    extra = None
     if out is not None and not out["text"].strip():
         empty_retry = True
+        # the stop rule (section 4.7) also reads the empty first answer's finish reason (added 2026-11-13)
+        extra = {"first_attempt_finish_reason": out.get("finish_reason")}
         out2, a2, err2 = _invoke(model, cond, spec["prompt"], spec["system"])
         attempts += a2
         if out2 is not None:
@@ -553,7 +556,7 @@ def send_call(spec):
     ts_end = _now()
     time.sleep(PAUSE[model["provider"]])
     status = "error" if out is None else ("empty" if not out["text"].strip() else "ok")
-    return _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, parts)
+    return _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, parts, extra)
 
 
 # ----------------------------------------------------------------- Anthropic Message Batches (Claude Fable 5.2)
