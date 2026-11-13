@@ -1,0 +1,239 @@
+{
+  "what": "v1.20 r0 parser demonstration on v1.15's stored judge replies: format counts only (no valence, evidence, reply text or score read out or computed)",
+  "created_utc": "2026-11-13T07:30:38+00:00",
+  "inputs": {
+    "where": "branch v1.15 worktree (paths relative to its root)",
+    "raw": "osf/methodology/v1_15/data/judge_raw_v1_15.jsonl",
+    "raw_sha256": "926ed9b0505608a273a089d6395fc63b4d235f142247b00718191c4f9a9db01a",
+    "raw_sha256_frozen_record": "926ed9b0505608a273a089d6395fc63b4d235f142247b00718191c4f9a9db01a",
+    "frozen_record": "osf/methodology/v1_15/outputs/judge_outputs_frozen_v1_15.json",
+    "units": "osf/methodology/v1_15/prereg/units_v1_15.csv",
+    "units_sha256": "2fb080fb982256265657244938a0c9c3e2eda09115f20ea3394b1b03bfa6e1ce",
+    "records": 3353,
+    "roles": {
+      "J1": "claude-opus-5-5",
+      "J2": "gpt-6.1-sol"
+    }
+  },
+  "rules": {
+    "v1.15_rule": "score_v1_11.outcomes + parse_judge_output (v1.11-prereg-r1), as v1.15 imported them",
+    "v1.20_rule": "score_v1_20.outcomes + record_judgement (exactly one complete top-level JSON object passing v1.11's checks; surrounding text ignored; cap-cut and served-model rules kept)"
+  },
+  "records_by_judge_pass": {
+    "J1 main": {
+      "attempt=1": 1547,
+      "attempt=1 shape=bare fenced=False": 1459,
+      "attempt=1 shape=bare fenced=True": 23,
+      "attempt=1 shape=text_after fenced=False": 1,
+      "attempt=1 shape=text_before fenced=False": 39,
+      "attempt=1 shape=text_before fenced=True": 25,
+      "attempt=1 valid_v1.15=False valid_v1.20=True": 65,
+      "attempt=1 valid_v1.15=True valid_v1.20=True": 1482,
+      "attempt=2": 65,
+      "attempt=2 shape=bare fenced=False": 29,
+      "attempt=2 shape=bare fenced=True": 1,
+      "attempt=2 shape=text_before fenced=False": 21,
+      "attempt=2 shape=text_before fenced=True": 14,
+      "attempt=2 valid_v1.15=False valid_v1.20=True": 35,
+      "attempt=2 valid_v1.15=True valid_v1.20=True": 30,
+      "attempt=3": 35,
+      "attempt=3 shape=bare fenced=False": 10,
+      "attempt=3 shape=text_before fenced=False": 17,
+      "attempt=3 shape=text_before fenced=True": 8,
+      "attempt=3 valid_v1.15=False valid_v1.20=True": 25,
+      "attempt=3 valid_v1.15=True valid_v1.20=True": 10,
+      "cut_by_cap=False": 1647,
+      "records": 1647,
+      "reply_valid_v1.15_rule": 1522,
+      "reply_valid_v1.20_rule": 1647,
+      "served_ok=True": 1647,
+      "shape=bare": 1522,
+      "shape=bare fenced=False": 1498,
+      "shape=bare fenced=True": 24,
+      "shape=text_after": 1,
+      "shape=text_after fenced=False": 1,
+      "shape=text_before": 124,
+      "shape=text_before fenced=False": 77,
+      "shape=text_before fenced=True": 47,
+      "status=ok": 1647
+    },
+    "J1 repeat": {
+      "attempt=1": 77,
+      "attempt=1 shape=bare fenced=False": 72,
+      "attempt=1 shape=bare fenced=True": 2,
+      "attempt=1 shape=text_before fenced=False": 2,
+      "attempt=1 shape=text_before fenced=True": 1,
+      "attempt=1 valid_v1.15=False valid_v1.20=True": 3,
+      "attempt=1 valid_v1.15=True valid_v1.20=True": 74,
+      "attempt=2": 3,
+      "attempt=2 shape=bare fenced=False": 1,
+      "attempt=2 shape=text_before fenced=False": 1,
+      "attempt=2 shape=text_before fenced=True": 1,
+      "attempt=2 valid_v1.15=False valid_v1.20=True": 2,
+      "attempt=2 valid_v1.15=True valid_v1.20=True": 1,
+      "attempt=3": 2,
+      "attempt=3 shape=text_before fenced=False": 2,
+      "attempt=3 valid_v1.15=False valid_v1.20=True": 2,
+      "cut_by_cap=False": 82,
+      "records": 82,
+      "reply_valid_v1.15_rule": 75,
+      "reply_valid_v1.20_rule": 82,
+      "served_ok=True": 82,
+      "shape=bare": 75,
+      "shape=bare fenced=False": 73,
+      "shape=bare fenced=True": 2,
+      "shape=text_before": 7,
+      "shape=text_before fenced=False": 5,
+      "shape=text_before fenced=True": 2,
+      "status=ok": 82
+    },
+    "J2 main": {
+      "attempt=1": 1547,
+      "attempt=1 shape=bare fenced=False": 1547,
+      "attempt=1 valid_v1.15=True valid_v1.20=True": 1547,
+      "cut_by_cap=False": 1547,
+      "records": 1547,
+      "reply_valid_v1.15_rule": 1547,
+      "reply_valid_v1.20_rule": 1547,
+      "served_ok=True": 1547,
+      "shape=bare": 1547,
+      "shape=bare fenced=False": 1547,
+      "status=ok": 1547
+    },
+    "J2 repeat": {
+      "attempt=1": 77,
+      "attempt=1 shape=bare fenced=False": 77,
+      "attempt=1 valid_v1.15=True valid_v1.20=True": 77,
+      "cut_by_cap=False": 77,
+      "records": 77,
+      "reply_valid_v1.15_rule": 77,
+      "reply_valid_v1.20_rule": 77,
+      "served_ok=True": 77,
+      "shape=bare": 77,
+      "shape=bare fenced=False": 77,
+      "status=ok": 77
+    }
+  },
+  "units_by_judge_pass": {
+    "J1 main": {
+      "JUDGE_FAIL -> VALID": 25,
+      "VALID -> VALID": 1522,
+      "v1.15_rule=JUDGE_FAIL": 25,
+      "v1.15_rule=VALID": 1522,
+      "v1.20_attempt_used=1": 1547,
+      "v1.20_rule=VALID": 1547
+    },
+    "J1 repeat": {
+      "JUDGE_FAIL -> VALID": 2,
+      "VALID -> VALID": 75,
+      "v1.15_rule=JUDGE_FAIL": 2,
+      "v1.15_rule=VALID": 75,
+      "v1.20_attempt_used=1": 77,
+      "v1.20_rule=VALID": 77
+    },
+    "J2 main": {
+      "VALID -> VALID": 1547,
+      "v1.15_rule=VALID": 1547,
+      "v1.20_attempt_used=1": 1547,
+      "v1.20_rule=VALID": 1547
+    },
+    "J2 repeat": {
+      "VALID -> VALID": 77,
+      "v1.15_rule=VALID": 77,
+      "v1.20_attempt_used=1": 77,
+      "v1.20_rule=VALID": 77
+    }
+  },
+  "judge_fail_main_pass_by_set": {
+    "J1 F t4 v0.19": {
+      "units": 277,
+      "judge_fail_v1.15_rule": 1,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.00361,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J1 F t4 v0.20": {
+      "units": 299,
+      "judge_fail_v1.15_rule": 5,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.016722,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J1 F t4 v0.21": {
+      "units": 374,
+      "judge_fail_v1.15_rule": 8,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.02139,
+      "over_2pct_v1.15_rule": true,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J1 F t4 v0.22": {
+      "units": 339,
+      "judge_fail_v1.15_rule": 6,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.017699,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J1 F t4 v0.23": {
+      "units": 258,
+      "judge_fail_v1.15_rule": 5,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.01938,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J2 F t4 v0.19": {
+      "units": 277,
+      "judge_fail_v1.15_rule": 0,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.0,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J2 F t4 v0.20": {
+      "units": 299,
+      "judge_fail_v1.15_rule": 0,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.0,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J2 F t4 v0.21": {
+      "units": 374,
+      "judge_fail_v1.15_rule": 0,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.0,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J2 F t4 v0.22": {
+      "units": 339,
+      "judge_fail_v1.15_rule": 0,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.0,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    },
+    "J2 F t4 v0.23": {
+      "units": 258,
+      "judge_fail_v1.15_rule": 0,
+      "judge_fail_v1.20_rule": 0,
+      "share_v1.15_rule": 0.0,
+      "over_2pct_v1.15_rule": false,
+      "share_v1.20_rule": 0.0,
+      "over_2pct_v1.20_rule": false
+    }
+  }
+}
