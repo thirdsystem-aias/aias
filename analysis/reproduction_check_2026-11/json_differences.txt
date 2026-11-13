@@ -1,0 +1,32 @@
+Differences between the published aias_2_0/aias_2_0_synthesis_data.json (SHA-256 675b69630549f07c6ccd9cf86b18a27e98422b0a9a6cb5211fb16a0705ee7867)
+and the file the builder wrote in this check (reproducer/builder/aias_2_0_synthesis_data.json, SHA-256 896931d9e0f4f6bee500892f77748d0af4972c0aac9fed0f5dbee8ead01f6e39).
+26 differences; 18 are floating-point values, largest absolute difference 1.42e-14.
+Every other key and value of the two files is equal.
+
+path	published	reproduced
+/built_at_utc	"2026-11-10T02:58:55+00:00"	"2026-11-13T19:01:27+00:00"
+/inputs_sha256//home/claude/reproduction/files/osf/methodology/v1_9/v1_9_verdicts.json	"<absent>"	"3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d"
+/inputs_sha256//home/claude/reproduction/files/osf/v41/v41_verdicts.json	"<absent>"	"0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2"
+/inputs_sha256//sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json	"3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d"	"<absent>"
+/inputs_sha256//sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json	"0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2"	"<absent>"
+/stage2/origin/skipped	"<absent>"	"test mode (--skip-origin)"
+/stage2/origin/v0.41-prereg-r1	{"anchored": true, "how": "origin 4e79167c3f02"}	"<absent>"
+/stage2/origin/v1.9-prereg-r1	{"anchored": true, "how": "origin 58c01297b8fb"}	"<absent>"
+/summaries/t1/per_substrate/v0.20/mean_C_rated	88.72561615590907	88.72561615590908
+/summaries/t1/per_substrate/v0.21/mean_C_rated	83.23343780791842	83.23343780791843
+/summaries/t1/per_substrate/v0.22/mean_C_rated	94.58201787414416	94.58201787414414
+/summaries/t1/per_substrate/v0.22/mean_P	49.84567901234567	49.84567901234568
+/summaries/t1/per_substrate/v0.23/mean_P	41.820987654320994	41.82098765432099
+/summaries/t2/per_substrate/v0.19/mean_C_rated	63.924208930623834	63.92420893062382
+/summaries/t2/per_substrate/v0.19/mean_P	47.22222222222223	47.22222222222222
+/summaries/t2/per_substrate/v0.20/mean_C_rated	90.75437667617068	90.7543766761707
+/summaries/t2/per_substrate/v0.20/mean_P	45.293209876543216	45.29320987654321
+/summaries/t2/per_substrate/v0.21/mean_C_rated	79.89436226691693	79.89436226691694
+/summaries/t2/per_substrate/v0.22/mean_C_rated	94.11410782454007	94.11410782454006
+/summaries/t2/per_substrate/v0.22/mean_P	50.07716049382716	50.077160493827165
+/summaries/t3/per_substrate/v0.19/mean_C_rated	64.78204665704666	64.78204665704665
+/summaries/t3/per_substrate/v0.19/mean_P	46.99074074074075	46.99074074074074
+/summaries/t3/per_substrate/v0.20/mean_P	46.45061728395063	46.45061728395061
+/summaries/t3/per_substrate/v0.21/mean_P	49.92283950617283	49.922839506172835
+/summaries/t3/per_substrate/v0.23/mean_C_rated	74.50871659204994	74.50871659204992
+/summaries/t3/per_substrate/v0.23/mean_P	41.20370370370371	41.2037037037037
