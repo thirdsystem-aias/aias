@@ -40,6 +40,9 @@ Stop rule (added 2026-11-13, section 4.7; stoprule_v0_40.py): every written line
   the length limit before naming a registry brand pauses its model slot (M5X exempt, pending the pre-registrant) and is
   reported; exit code 7 when the run ends with a paused slot. The pre-lock check's spend (prereg/
   prelock_check_v0_40.jsonl) is carried into the budget ledger, so it counts toward the $100 cap.
+  Added 2026-11-13 (section 6.5): the Fable 5.2 technical check's spend (prereg/feasibility_check_v0_40.json, search
+  fees at the guard's worst case) is carried in as well (prior_spend); --collect refuses if either record is missing
+  or unreadable.
 """
 import argparse
 import hashlib
@@ -1170,6 +1173,37 @@ def prelock_guard(path=None):
     return verdict
 
 
+def prior_spend(prelock_raw=None, feasibility=None):
+    """Spend recorded before the lock, counted toward the $100 cap and the $80 pause (section 6.5; added 2026-11-13).
+    Pre-lock check (section 4.8): the cost of every line of its raw record, as budget_v0_40.spend_of computes it.
+    Fable 5.2 technical check (header): the cost of each record from its recorded usage at the run's date, plus search
+    fees at the guard's worst case (WORST["searches"]["S1"] per search-on record), because the record keeps no search
+    count. Refuses (exits) if a record file is missing, unreadable or empty. -> (total USD, {file name: USD})"""
+    prelock_raw = PRELOCK_RAW if prelock_raw is None else Path(prelock_raw)
+    feasibility = FEASIBILITY_PATH if feasibility is None else Path(feasibility)
+    parts = {}
+    try:
+        recs = [json.loads(l) for l in prelock_raw.read_text(encoding="utf-8").splitlines() if l.strip()]
+        if not recs:
+            raise ValueError("no records")
+        parts[prelock_raw.name] = sum(BG.record_cost(r) for r in recs)
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
+        sys.exit(f"REFUSED: the pre-lock check's spend record cannot be read ({prelock_raw}: {e!r})")
+    try:
+        feas = json.loads(feasibility.read_text(encoding="utf-8"))
+        recs = feas["records"]
+        if not recs:
+            raise ValueError("no records")
+        when = feas.get("run_utc")
+        tokens = sum(BG.record_cost(dict(r, started_utc=r.get("started_utc") or when)) for r in recs)
+        fees = sum(BG.WORST["searches"]["S1"] * BG.SEARCH_FEE[BG.PROVIDER[r["model_requested"]]]
+                   for r in recs if r["condition"] == "S1")
+        parts[feasibility.name] = tokens + fees
+    except (OSError, ValueError, KeyError, TypeError, AttributeError) as e:
+        sys.exit(f"REFUSED: the technical check's spend record cannot be read ({feasibility}: {e!r})")
+    return sum(parts.values()), parts
+
+
 def collect(approve_past_80=None):
     global DEADLINE, STOP
     now = datetime.now(timezone.utc)
@@ -1181,7 +1215,8 @@ def collect(approve_past_80=None):
     require_keys()
     DEADLINE = collection_deadline(RAW_PATH)
     print(f"prereg guard passed: {PREREG_TAG} -> {commit}; window ends {DEADLINE.isoformat()}")
-    prior = BG.spend_of(PRELOCK_RAW)        # the pre-lock check's spend counts toward the $100 cap (section 4.8)
+    prior, prior_parts = prior_spend()      # pre-lock spend (pre-lock check, technical check) counts toward the cap (6.5)
+    print(f"pre-lock spend carried into the guard: ${prior:.4f} {({k: round(v, 4) for k, v in prior_parts.items()})}")
     ledger = BG.Ledger(RAW_PATH, STATE_PATH, prior_usd=prior)
     if approve_past_80:
         ledger.approve("past_80", approve_past_80)

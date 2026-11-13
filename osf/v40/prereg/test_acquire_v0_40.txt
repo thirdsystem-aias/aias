@@ -19,5 +19,13 @@ PASS costs recorded on every line
 PASS resume sends nothing new
 PASS budget guard halts under a small cap and never exceeds it
 PASS no S1 request after the S1 window
+PASS both records present: the guard starts at their sum
+PASS the summed pre-lock spend is the Ledger's starting spend
+PASS pre-lock check record missing: refused
+PASS technical check record missing: refused
+PASS unreadable record: refused
+PASS empty pre-lock record: refused
+PASS --collect starts the guard from prior_spend()
+PASS deposited records: pre-lock check $4.73 + technical check $1.67 = $6.40
 
 ALL PASS

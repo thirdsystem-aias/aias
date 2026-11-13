@@ -96,5 +96,55 @@ with tempfile.TemporaryDirectory() as d:
     check("no S1 request after the S1 window", st == "stop" and not sent, f"{st} {len(sent)}")
     A.DEADLINE = None
 
+# Pre-lock spend carried into the guard (section 6.5, 2026-11-13): the pre-lock check and the technical check, read
+# from their record files; a missing or unreadable record refuses. Fake records, costs worked out by hand:
+#   pre-lock line, Fable 5.2 batch ($4/$20): 1,000 in + 2,000 out = 0.004 + 0.040 = 0.044
+#   technical check: GPT-6 Astra S0 ($10/$50) 100 in + 10 out = 0.0015; Gemini 4 Argon S1 ($2/$10) 1,000 in +
+#   (100 out + 50 thinking) = 0.0035, + 10 x $0.014 = 0.14; Fable 5.2 S1 standard ($8/$40) 10,000 in + 200 out =
+#   0.088, + 10 x $0.010 = 0.10. Total 0.044 + 0.0015 + 0.0035 + 0.14 + 0.088 + 0.10 = 0.377
+_PL = {"call_id": "PRELOCK|x", "model_requested": "claude-fable-5-2", "condition": "S0",
+       "started_utc": "2026-11-13T08:40:00+00:00", "input_tokens": 1000, "output_tokens": 2000,
+       "usage_parts": [{"mode": "batch", "input_tokens": 1000, "output_tokens": 2000, "n_searches": 0}]}
+_FE = {"phase": "v0.40", "run_utc": "2026-11-13T18:15:32+00:00", "records": [
+    {"model_requested": "gpt-6-astra", "condition": "S0", "input_tokens": 100, "output_tokens": 10, "thinking_tokens": 0},
+    {"model_requested": "gemini-4-argon", "condition": "S1", "input_tokens": 1000, "output_tokens": 100,
+     "thinking_tokens": 50},
+    {"model_requested": "claude-fable-5-2", "condition": "S1", "input_tokens": 10000, "output_tokens": 200,
+     "thinking_tokens": None}]}
+
+
+def _exits(fn):
+    try:
+        fn()
+    except SystemExit as e:
+        return "REFUSED" in str(e)
+    return False
+
+
+with tempfile.TemporaryDirectory() as d:
+    pl, fe = Path(d) / "prelock.jsonl", Path(d) / "feas.json"
+    pl.write_text(json.dumps(_PL) + "\n", encoding="utf-8")
+    fe.write_text(json.dumps(_FE), encoding="utf-8")
+    tot, parts = A.prior_spend(pl, fe)
+    check("both records present: the guard starts at their sum", abs(tot - 0.377) < 1e-9
+          and abs(parts["prelock.jsonl"] - 0.044) < 1e-9 and abs(parts["feas.json"] - 0.333) < 1e-9, (tot, parts))
+    check("the summed pre-lock spend is the Ledger's starting spend",
+          abs(A.BG.Ledger(Path(d) / "raw.jsonl", Path(d) / "s.json", prior_usd=tot).spent() - 0.377) < 1e-9)
+    check("pre-lock check record missing: refused", _exits(lambda: A.prior_spend(Path(d) / "none.jsonl", fe)))
+    check("technical check record missing: refused", _exits(lambda: A.prior_spend(pl, Path(d) / "none.json")))
+    bad = Path(d) / "bad.json"
+    bad.write_text("{not json", encoding="utf-8")
+    check("unreadable record: refused", _exits(lambda: A.prior_spend(pl, bad)) and _exits(lambda: A.prior_spend(bad, fe)))
+    empty = Path(d) / "empty.jsonl"
+    empty.write_text("\n", encoding="utf-8")
+    check("empty pre-lock record: refused", _exits(lambda: A.prior_spend(empty, fe)))
+src_c = inspect.getsource(A.collect)
+check("--collect starts the guard from prior_spend()",
+      "prior_spend()" in src_c and "BG.Ledger(RAW_PATH, STATE_PATH, prior_usd=prior)" in src_c)
+_tot, _parts = A.prior_spend()
+check("deposited records: pre-lock check $4.73 + technical check $1.67 = $6.40",
+      round(_parts[A.PRELOCK_RAW.name], 2) == 4.73 and round(_parts[A.FEASIBILITY_PATH.name], 2) == 1.67
+      and round(_tot, 2) == 6.40, _parts)
+
 print(f"\n{'ALL PASS' if not FAILS else 'FAILED: ' + ', '.join(FAILS)}")
 sys.exit(1 if FAILS else 0)
