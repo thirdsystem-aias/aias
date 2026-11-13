@@ -1,6 +1,6 @@
 {
   "phase": "v0.40",
-  "status": "DRAFT for Pablo's review (2026-11-08); locks at tag v0.40-prereg-r1",
+  "status": "FINAL (Discover switch: a, Discover kept as the bank living-brand control); locks at tag v0.40-prereg-r1",
   "tier_labels": {
     "AG": "Airline recommendation, generic (RQ1)",
     "AN": "Airline recommendation, by need",
@@ -45,12 +45,16 @@
         "reasoning_effort": "provider default",
         "max_output_tokens": 16384,
         "system_prompt": null,
-        "runs_per_cell": 3
+        "runs_per_cell": {
+          "S0": 3,
+          "S1": 1
+        }
       },
       "conditions": [
         "S0",
         "S1"
-      ]
+      ],
+      "S1_probes": "recommendation and status (S) probes only"
     }
   },
   "conditions": {
@@ -83,14 +87,9 @@
     }
   },
   "calls": {
-    "per_probe": {
-      "L": 19,
-      "C": 18,
-      "total": 37
-    },
     "L": 1786,
-    "C": 1692,
-    "total": 3478
+    "C": 1035,
+    "total": 2821
   },
   "subjects": [
     {

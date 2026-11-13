@@ -74,7 +74,7 @@ PRELOCK_RAW = V40 / "prereg" / "prelock_check_v0_40.jsonl"          # pre-lock c
 PRELOCK_RESULT = V40 / "prereg" / "prelock_check_v0_40.json"        # its verdict (must be PASS before --collect)
 PREREG_TAG = "v0.40-prereg-r1"
 N_PROBES = 94
-PROBES_SHA256 = "93aee03f655cb8c4c6b04211e941b854bd921c3dbd31a9f5ffbaa91249be38ca"  # registry draft r3, item 6
+PROBES_SHA256 = "be66270135ee9101fe9fecef6552b1160a17dc1e0cfae42082e673744be9b306"  # final build, Discover (a), 2026-11-13
 
 LEGACY = [
     {"slot": "M1", "name": "Claude Opus 4.5", "provider": "anthropic", "model_id": "claude-opus-4-5", "arm": "L", "dispatch": "anthropic", "mode": "standard"},

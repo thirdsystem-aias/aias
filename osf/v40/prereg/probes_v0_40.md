@@ -1,6 +1,6 @@
 # AIAS v0.40 probe set (DRAFT for review)
 
-Built by `osf/v40/scripts/build_probes_v0_40.py` from the registry outputs. 94 probes; 3,478 calls (37 per probe: legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting; current 3 models x 2 conditions x 3 runs). Locks at tag `v0.40-prereg-r1`.
+Built by `osf/v40/scripts/build_probes_v0_40.py` from the registry outputs. 94 probes; 2,821 calls (registered design D7: on every probe, legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting = 19, plus current 3 models x 3 runs search off = 9, so 28 x 94 = 2,632; search on, current 3 models x 1 run on the 63 recommendation and status probes, 3 x 63 = 189; i.e. 31 calls per recommendation or status probe and 28 per recognition probe). Locks at tag `v0.40-prereg-r1`.
 
 Wording rules: one user turn, no system prompt; recommendation probes name no brand and say "US"; the generic probes feed RQ1; every ghost and every control gets one recognition (K) and one status (S) probe; a disambiguator from the FDIC institution record is added where another US bank uses the same name (D11).
 
