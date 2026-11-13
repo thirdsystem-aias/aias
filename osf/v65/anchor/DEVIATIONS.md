@@ -12,3 +12,5 @@ After the lock, every change is an entry here (id, date, ex ante or ex post, wha
    (b) The first dry run showed the sensitivities of a language not inheriting the drop rule (world E: ES primary UNDETERMINED, S-COI CONFIRMED). Fixed so that the drop rule applies to every sensitivity in that language (pre-registration §5.3); a test checks it.
 5. **Not done at r0.** A simulation of H2 over many synthetic worlds (H1 and H3: 500 worlds per condition, `prereg/power_v0_65_r0.json`); wiring of v0.62's S-Language, S-Script and S-Alias outputs into `--run` (their file names are not fixed by v0.62's text; the sensitivities report NOT AVAILABLE until then); the OSF folder check for `v65`.
 6. **Anchor sequence (planned).** Pre-registrant's answers → final text → `--lock-manifest` → `--verify-lock` → commit → tag `v0.65-prereg-r1` → push (gate) → OSF deposit (gate) → anchor note here → after v0.62's own scoring run, `--run` once.
+
+**Entry 1 (ex post, 2026-11-13; a record, no change).** The lock ran at 10:00 CST on Fri 11/13 (tag `v0.65-prereg-r1`) instead of ~6:45 am because of an Anthropic service outage; nothing in the pre-registration changed.
