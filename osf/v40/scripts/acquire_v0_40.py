@@ -78,7 +78,7 @@ PROBES_SHA256 = "93aee03f655cb8c4c6b04211e941b854bd921c3dbd31a9f5ffbaa91249be38c
 
 LEGACY = [
     {"slot": "M1", "name": "Claude Opus 4.5", "provider": "anthropic", "model_id": "claude-opus-4-5", "arm": "L", "dispatch": "anthropic", "mode": "standard"},
-    {"slot": "M2", "name": "Claude Sonnet 4.5", "provider": "anthropic", "model_id": "claude-sonnet-4-5", "arm": "L", "dispatch": "anthropic", "mode": "standard"},
+    {"slot": "M2", "name": "Claude Sonnet 4.5", "provider": "anthropic", "model_id": "claude-sonnet-4-5", "arm": "L", "dispatch": "anthropic_legacy_org", "mode": "standard"},
     {"slot": "M3", "name": "GPT-4o", "provider": "openai", "model_id": "gpt-4o", "arm": "L", "dispatch": "openai", "mode": "standard"},
     {"slot": "M4", "name": "GPT-4o-mini", "provider": "openai", "model_id": "gpt-4o-mini", "arm": "L", "dispatch": "openai", "mode": "standard"},
     {"slot": "M5", "name": "Gemini 2.5 Flash (thinking budget 0)", "provider": "google", "model_id": "gemini-2.5-flash", "arm": "L", "dispatch": "google_budget0", "mode": "standard"},
@@ -345,6 +345,32 @@ def call_anthropic(model_id, prompt):
             "tokens_in": m.usage.input_tokens, "tokens_out": m.usage.output_tokens, "tokens_thought": None}
 
 
+# Key routing (new, 2026-11-13, before the lock). The pre-lock check's first run sent Claude Sonnet 4.5's 24 calls with
+# ANTHROPIC_API_KEY and all returned 404 "model: claude-sonnet-4-5": the new Anthropic organization does not serve that
+# model. The old organization does (it served v0.42's Sonnet 4.5 coding judge under the pre-registrant's option (a),
+# 2026-11-11). M2 is therefore sent by this copy of call_anthropic with the old organization's key; the request is
+# unchanged (same model, max_tokens, temperature and message) and each record names the key's environment variable.
+LEGACY_ORG_KEY_ENV = "ANTHROPIC_API_KEY_LEGACY"
+
+
+def call_anthropic_legacy_org(model_id, prompt):
+    import anthropic
+    client = anthropic.Anthropic(api_key=os.environ[LEGACY_ORG_KEY_ENV])  # the old organization's key
+    try:
+        m = client.messages.create(model=model_id, max_tokens=2048, temperature=0.0,
+                                   messages=[{"role": "user", "content": prompt}])
+    except (anthropic.RateLimitError, anthropic.APIConnectionError, anthropic.APITimeoutError) as e:
+        raise Transient(str(e)) from e
+    except anthropic.APIStatusError as e:
+        if e.status_code >= 500:
+            raise Transient(str(e)) from e
+        raise
+    text = "".join(b.text for b in m.content if hasattr(b, "text"))
+    return {"text": text, "served_model": m.model, "finish_reason": m.stop_reason,
+            "tokens_in": m.usage.input_tokens, "tokens_out": m.usage.output_tokens, "tokens_thought": None,
+            "api_key_env": LEGACY_ORG_KEY_ENV}
+
+
 def call_openai(model_id, prompt):
     import openai
     client = openai.OpenAI()  # reads OPENAI_API_KEY
@@ -528,6 +554,8 @@ def _record(spec, out, status, err, attempts, empty_retry, ts_start, ts_end, par
         "started_utc": ts_start, "finished_utc": ts_end,
         "mode": model.get("mode", "standard"), "usage_parts": parts,
     }
+    if out.get("api_key_env"):
+        rec["api_key_env"] = out["api_key_env"]                          # key routing, 2026-11-13 (legacy arm)
     rec.update(extra or {})
     rec["cost_usd"] = BG.record_cost(rec)
     return rec
@@ -763,12 +791,27 @@ def run_sync(specs, ledger, write, sender=None, sleep=time.sleep):
     return "done"
 
 
+def warm_imports():
+    """Import the SDK modules once in the main thread before any worker thread starts (2026-11-13): the pre-lock
+    check's first run lost one GPT-6 Astra call to "_DeadlockError: deadlock detected by
+    _ModuleLock('openai.resources.chat')" when two threads imported that module lazily at the same time."""
+    import anthropic  # noqa: F401
+    import anthropic.resources.messages  # noqa: F401
+    import openai  # noqa: F401
+    import openai.resources.chat  # noqa: F401
+    import openai.resources.responses  # noqa: F401
+    from google import genai  # noqa: F401
+    from google.genai import types  # noqa: F401
+
+
 def require_keys():
     if not os.environ.get("GOOGLE_API_KEY") and os.environ.get("GEMINI_API_KEY"):
         os.environ["GOOGLE_API_KEY"] = os.environ["GEMINI_API_KEY"]  # call_google_current reads GOOGLE_API_KEY
-    missing = [v for v in ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GOOGLE_API_KEY") if not os.environ.get(v)]
+    needed = ("ANTHROPIC_API_KEY", "OPENAI_API_KEY", "GOOGLE_API_KEY", LEGACY_ORG_KEY_ENV)
+    missing = [v for v in needed if not os.environ.get(v)]
     if missing:
         sys.exit(f"ERROR: missing environment variables: {', '.join(missing)}")
+    warm_imports()
 
 
 def done_ids(raw_path=None):
@@ -835,7 +878,8 @@ def make_writer(raw_path, log=print):
 # ======================= v0.40 wrapper (new) =======================
 
 LEGACY_DISPATCH = {"anthropic": call_anthropic, "openai": call_openai, "google": call_google,
-                   "google_budget0": call_google_budget0}
+                   "google_budget0": call_google_budget0,
+                   "anthropic_legacy_org": call_anthropic_legacy_org}       # M2, key routing of 2026-11-13
 CURRENT_DISPATCH = {"anthropic": call_anthropic_current, "openai": call_openai_current, "google": call_google_current}
 
 

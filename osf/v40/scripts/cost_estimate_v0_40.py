@@ -34,7 +34,7 @@ from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 V40 = HERE.parent
-DEF_T4 = Path.home() / "aias/osf/v42/data/t4_raw.jsonl"
+DEF_T4 = V40.parent / "v42" / "data" / "t4_raw.jsonl"  # OSF layout (ec6wh -> v42/data); pass --t4 for another copy
 DEF_V39 = V40.parent / "v39/data/v39_raw.json"
 PROBES = V40 / "prereg/probes_v0_40.json"
 

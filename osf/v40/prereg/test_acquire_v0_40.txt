@@ -7,6 +7,9 @@ PASS no sampling parameter in the current-arm functions
 PASS M5 uses thinking budget 0
 PASS legacy call functions verbatim from v0.39
 PASS M5X (extra pass) uses the verbatim v0.39 call_google
+PASS M2 is sent with the old organization's key, M1 with the default key
+PASS the old-organization copy sends the same request as the verbatim call_anthropic
+PASS require_keys asks for the old organization's key
 PASS current arm = Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Argon
 PASS fake run completes
 PASS every call_id written once

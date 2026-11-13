@@ -38,6 +38,28 @@ v39 = (Path(__file__).resolve().parents[2] / "v39/scripts/acquire_v0_39.py").rea
 check("legacy call functions verbatim from v0.39",
       all(inspect.getsource(f) in v39 for f in (A.call_anthropic, A.call_openai, A.call_google)))
 check("M5X (extra pass) uses the verbatim v0.39 call_google", A.LEGACY_X["dispatch"] == "google")
+# Key routing of 2026-11-13: M2 (Claude Sonnet 4.5) goes through the old organization's key; the request is unchanged.
+check("M2 is sent with the old organization's key, M1 with the default key",
+      A.LEGACY[1]["model_id"] == "claude-sonnet-4-5" and A.LEGACY[1]["dispatch"] == "anthropic_legacy_org"
+      and A.LEGACY_DISPATCH["anthropic_legacy_org"] is A.call_anthropic_legacy_org
+      and A.LEGACY[0]["dispatch"] == "anthropic" and A.LEGACY_ORG_KEY_ENV == "ANTHROPIC_API_KEY_LEGACY")
+_req_old = inspect.getsource(A.call_anthropic).split("try:", 1)[1].split("text = ", 1)[0]
+_req_new = inspect.getsource(A.call_anthropic_legacy_org).split("try:", 1)[1].split("text = ", 1)[0]
+check("the old-organization copy sends the same request as the verbatim call_anthropic", _req_old == _req_new)
+import os  # noqa: E402
+_env = dict(os.environ)
+try:
+    os.environ.update({"ANTHROPIC_API_KEY": "x", "OPENAI_API_KEY": "x", "GOOGLE_API_KEY": "x"})
+    os.environ.pop("ANTHROPIC_API_KEY_LEGACY", None)
+    try:
+        A.require_keys()
+        _rk = "no exit"
+    except SystemExit as e:
+        _rk = str(e)
+finally:
+    os.environ.clear()
+    os.environ.update(_env)
+check("require_keys asks for the old organization's key", "ANTHROPIC_API_KEY_LEGACY" in _rk, _rk)
 check("current arm = Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Argon",
       [(m["model_id"], m["mode"]) for m in A.CURRENT] == [("claude-fable-5-2", "batch"), ("gpt-6-astra", "standard"),
                                                            ("gemini-4-argon", "standard")])
