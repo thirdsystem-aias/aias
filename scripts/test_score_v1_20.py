@@ -247,5 +247,143 @@ class TestClassify(unittest.TestCase):
         self.assertNotIn("valence", c)
 
 
+def sw(**kw):
+    d = dict(R.DRAFT_DEFAULTS)
+    d.update(kw)
+    return d
+
+
+class TestSwitches(unittest.TestCase):
+    def test_config_holds_the_draft_defaults(self):
+        self.assertEqual(R.load_switches(), R.DRAFT_DEFAULTS)
+        self.assertEqual((R.PHASE_ID, R.PREREG_TAG), ("v1.20", "v1.20-prereg-r1"))
+
+    def test_config_refuses_values_outside_options(self):
+        import tempfile
+        doc = json.loads(R.CONFIG_FILE.read_text(encoding="utf-8"))
+        for key, bad in (("Q3_cap_cut_reply_invalid", 1), ("Q5_cut_answers", "keep_r5"), ("Q1_study_id", "v1.21")):
+            d = json.loads(json.dumps(doc))
+            d["switches"][key]["value"] = bad
+            with tempfile.TemporaryDirectory() as t:
+                p = Path(t) / "c.json"
+                p.write_text(json.dumps(d), encoding="utf-8")
+                with self.assertRaises(ValueError):
+                    R.load_switches(p)
+
+    def test_q4_identical_copies(self):
+        raw = js() + "\n" + js()
+        self.assertFalse(rule(raw))                                              # draft: invalid
+        self.assertEqual(R.parse_reply(raw, sw(Q4_reject_identical_objects=False))["valence"], 1)
+        other = js() + "\n" + js(valence=2, evidence="best in class")
+        with self.assertRaises(S.JudgeOutputError):
+            R.parse_reply(other, sw(Q4_reject_identical_objects=False))           # different objects stay invalid
+        typed = json.dumps(NEUTRAL) + json.dumps({**NEUTRAL, "valence": False})  # 0 and false differ as JSON
+        with self.assertRaises(S.JudgeOutputError):
+            R.parse_reply(typed, sw(Q4_reject_identical_objects=False))
+
+    def test_q3_cap_cut_reply(self):
+        rec_ = {"status": "ok", "served_ok": True, "finish_reason": "max_tokens", "text": js()}
+        self.assertIsNone(R.record_judgement(rec_))
+        self.assertEqual(R.record_judgement(rec_, sw(Q3_cap_cut_reply_invalid=False))["valence"], 1)
+        rec_["text"] = PROSE + js()[:20]                                          # cut object: never counts
+        self.assertIsNone(R.record_judgement(rec_, sw(Q3_cap_cut_reply_invalid=False)))
+
+    def test_q2_pick_and_q5_floors(self):
+        a, b = {"a": 1}, {"b": 2}
+        self.assertEqual(R.pick(a, b)[2], "S_ATT_v1_11_first")
+        self.assertIs(R.pick(a, b, sw(Q2_scored_attempt="v1_11_first"))[0], b)
+        self.assertEqual([(R.r_floor(sw(Q5_cut_answers=v)), R.primary_drops_cut(sw(Q5_cut_answers=v)))
+                          for v in ("keep_r4", "keep_r6", "drop_r4", "drop_r6")],
+                         [(4, False), (6, False), (4, True), (6, True)])
+
+
+class TestStageLogic(unittest.TestCase):
+    def test_s_att_takes_v111_judgement_where_valid(self):
+        recs = [rec("J1", "u1", 1, PROSE + js(valence=2, evidence="outstanding")), rec("J1", "u1", 2, js()),
+                rec("J1", "u2", 1, PROSE + js()), rec("J1", "u2", 2, PROSE + js()), rec("J1", "u2", 3, PROSE + js())]
+        o111, o120 = S.outcomes(recs, ROLES), R.outcomes(recs, ROLES)
+        att = R.outcomes_v111_first(o111, o120)
+        self.assertEqual(att[("J1", "u1", "main")]["out"]["valence"], 1)        # v1.11's retry
+        self.assertEqual(o120[("J1", "u1", "main")]["out"]["valence"], 2)       # v1.20: first counting
+        self.assertEqual(att[("J1", "u2", "main")]["status"], S.VALID)          # v1.11 JUDGE_FAIL -> v1.20's
+        self.assertEqual(R.v111_attempts_used(recs, ROLES), {("J1", "u1", "main"): 2})
+
+    def test_comparison_counts(self):
+        recs = [rec("J1", "u1", 1, PROSE + js()), rec("J1", "u1", 2, js()),
+                rec("J1", "u2", 1, PROSE + js()), rec("J1", "u2", 2, PROSE + js()), rec("J1", "u2", 3, PROSE + js()),
+                rec("J1", "u3", 1, js(), fr="max_tokens")]
+        o111, o120 = S.outcomes(recs, ROLES), R.outcomes(recs, ROLES)
+        units = [{"unit_id": u, "set": "F t1 v0.20", "judged": True, "j2": False} for u in ("u1", "u2", "u3")]
+        fcs = {"v1.11": S.fail_check(units, o111, ("J1",)), "v1.20": S.fail_check(units, o120, ("J1",))}
+        c = R.comparison(recs, ROLES, o111, o120, fcs)
+        self.assertEqual(c["status_transitions_v1_11_to_v1_20"],
+                         {"J1 main: JUDGE_FAIL -> VALID": 1, "J1 main: VALID -> UNJUDGED": 1, "J1 main: VALID -> VALID": 1})
+        self.assertEqual(c["valid_under_both_from_a_different_attempt"]["J1 main"], {"n": 1, "unit_ids": ["u1"]})
+        self.assertEqual(c["judge_fail_by_judge_set"]["J1 F t1 v0.20"]["v1.11"]["judge_fail"], 1)
+
+    def test_v111_stage_j_state(self):
+        import tempfile
+        from types import SimpleNamespace
+        units = [{"unit_id": f"u{i}", "set": "F t1 v0.20", "judged": True, "j2": False} for i in range(10)]
+        fail = [rec("J1", "u0", a, PROSE + js()) for a in (1, 2, 3)] + [rec("J1", f"u{i}", 1, js()) for i in range(1, 10)]
+        ok = [rec("J1", f"u{i}", 1, js()) for i in range(10)]
+        with tempfile.TemporaryDirectory() as t:
+            run = SimpleNamespace(ctx=SimpleNamespace(dry=True, outdir=t))
+            st = R.v111_stage_j_state(run, units, fail, ROLES)
+            self.assertEqual((st["state"], st["case"], st["halt"]), ("halted", "B", ["J1 F t1 v0.20"]))
+            with self.assertRaises(S.Halt):                                      # v1.11 Stage J not run yet
+                R.v111_stage_j_state(run, units, ok, ROLES)
+            (Path(t) / S.STAGE_J_NAME).write_text("{}", encoding="utf-8")
+            self.assertEqual(R.v111_stage_j_state(run, units, ok, ROLES)["case"], "A")
+
+    def test_scores_r_floor(self):
+        units, recs = [], []
+        for blk, n in (("R", 4), ("F", 4)):
+            for i in range(n):
+                uid = f"{blk}{i}"
+                units.append({"unit_id": uid, "block": blk, "wave": "t3", "category": "v0.23", "brand": "B1",
+                              "judged": True, "j2": False, "answer_id": uid})
+                recs.append(rec("J1", uid, 1, js()))
+        oc = R.outcomes(recs, ROLES)
+        s6, s4 = R.scores(units, oc, "J1"), R.scores(units, oc, "J1", rfloor=4)
+        self.assertFalse(s6[("R", "t3", "v0.23", "B1")]["rated"])
+        self.assertTrue(s4[("R", "t3", "v0.23", "B1")]["rated"])
+        self.assertFalse(s4[("F", "t3", "v0.23", "B1")]["rated"])               # F keeps the floor of 6
+        keep = R.both(lambda u: u["unit_id"] != "R0", None)
+        self.assertEqual(R.scores(units, oc, "J1", keep, rfloor=4)[("R", "t3", "v0.23", "B1")]["n"], 3)
+        self.assertIsNone(R.both(None, None))
+
+    def test_load_cut(self):
+        import tempfile
+        with tempfile.TemporaryDirectory() as t:
+            c, j = Path(t) / "c.csv", Path(t) / "c.json"
+            c.write_text("block,answer_id\nR,R t3 v0.23::gemini-2.5-flash|S01\n", encoding="utf-8")
+            j.write_text(json.dumps({"s_cut_m_cells": [["R", "v0.23", "gemini-2.5-flash"]]}), encoding="utf-8")
+            ids, cells, meta = R.load_cut(c, j)
+            self.assertEqual((ids, cells, meta["answers_flagged"]),
+                             ({"R t3 v0.23::gemini-2.5-flash|S01"}, {("R", "v0.23", "gemini-2.5-flash")}, 1))
+
+
+class TestLock(unittest.TestCase):
+    def test_imported_scorers_equal_v111_lock_manifest(self):
+        self.assertEqual(R.v111_integrity(), [])
+
+    def test_lock_files(self):
+        self.assertEqual(len(R.LOCK_FILES), len(set(R.LOCK_FILES)))
+        for p in (R.V111_LOCK_MANIFEST, "scripts/score_v1_11.py", "scripts/score_v1_10.py", "scripts/score_v1_20.py",
+                  "osf/methodology/v1_20/prereg/config_v1_20.json", "osf/methodology/v1_20/scoping/cut_units_v1_20.csv"):
+            self.assertIn(p, R.LOCK_FILES)
+        self.assertNotIn("osf/methodology/v1_20/prereg/LOCK_MANIFEST_v1_20.sha256", R.LOCK_FILES)
+
+    def test_anchor_problems(self):
+        why = R.anchor_problems(R.anchor_template())
+        self.assertTrue(any("osf_deposit" in w for w in why) and any("tag" in w for w in why))
+        a = {k: "x" for k in R.ANCHOR_FIELDS} | {"tag": "v1.11-prereg-r1", "locked_files": {p: {} for p in R.LOCK_FILES}}
+        self.assertEqual(R.anchor_problems(a), ["anchor tag v1.11-prereg-r1 is not v1.20-prereg-r1"])
+        a["tag"] = R.PREREG_TAG
+        self.assertEqual(R.anchor_problems(a), [])
+        self.assertEqual(len(R.anchor_problems(a, commit="abc")), 1)
+
+
 if __name__ == "__main__":
     unittest.main()

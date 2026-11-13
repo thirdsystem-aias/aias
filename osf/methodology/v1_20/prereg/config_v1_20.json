@@ -1,0 +1,47 @@
+{
+  "_doc": "AIAS v1.20 (proposed id), DRAFT r1, not locked. The six questions open with Pablo (PRE_REGISTRATION_v1_20.md section 15), one switch each. 'value' is what scripts/score_v1_20.py applies; every value below is the draft's default and stays so until Pablo answers. His answer applies by editing that one 'value' (and the matching 'Setting' cell in section 15). The scripts refuse a value outside 'options'.",
+  "switches": {
+    "Q1_study_id": {
+      "value": "v1.20",
+      "options": ["v1.20", "v1.11-successor"],
+      "draft_default": "v1.20",
+      "section": "0",
+      "effect": "PHASE_ID of every output and the tag <id>-prereg-r1. Folder and file names keep v1_20 either way."
+    },
+    "Q2_scored_attempt": {
+      "value": "first_counting",
+      "options": ["first_counting", "v1_11_first"],
+      "draft_default": "first_counting",
+      "section": "4",
+      "effect": "first_counting: the first stored reply that counts under section 3 is the judgement (primary), v1.11-first is sensitivity S-ATT. v1_11_first: the reverse (S-ATT primary, first-counting reported as sensitivity S-FIRST)."
+    },
+    "Q3_cap_cut_reply_invalid": {
+      "value": true,
+      "options": [true, false],
+      "draft_default": true,
+      "section": "3 item 5",
+      "effect": "true: a judge reply whose recorded finish reason shows the output cap is invalid even when it holds one complete object (v1.11 section 4.2 as written). false: such a reply counts if its one object passes (v1.11's code)."
+    },
+    "Q4_reject_identical_objects": {
+      "value": true,
+      "options": [true, false],
+      "draft_default": true,
+      "section": "3 item 2",
+      "effect": "true: two or more complete top-level objects make the reply invalid, even identical copies. false: copies identical as JSON (same keys, same values, same JSON types) count as one object; different objects stay invalid."
+    },
+    "Q5_cut_answers": {
+      "value": "keep_r4",
+      "options": ["keep_r4", "keep_r6", "drop_r4", "drop_r6"],
+      "draft_default": "keep_r4",
+      "section": "8",
+      "effect": "keep_*: the primary analysis keeps answers cut at the answering model's output limit; S-CUT and S-CUT-M drop them. drop_*: the primary analysis drops the S-CUT answers; the full set is sensitivity S-ALL; S-CUT-M stays a sensitivity. _r4 / _r6: recognition-score floor (n >= 4 or n >= 6 answers) wherever cut answers are dropped; F and E floors stay 6."
+    },
+    "Q6_case_b_result": {
+      "value": true,
+      "options": [true, false],
+      "draft_default": true,
+      "section": "7",
+      "effect": "true: if v1.11's Stage J halts on JUDGE_FAIL (case B), v1.20's verdicts are Sentiment Paper A's result for the release decision (AIAS 4.0). false: v1.20 is reported as a pre-registered re-scoring only, in both cases."
+    }
+  }
+}

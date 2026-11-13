@@ -1,0 +1,50 @@
+AIAS v1.20 (proposed id) - dry run of Stage J and Stage C on SYNTHETIC judge replies (draft r1, not locked)
+Run 2026-11-13, about 2:20 am CT, on the Mac (venv Python 3.14, PYTHONDONTWRITEBYTECODE=1). No model call, no
+network, no real judge reply (none exists before 2026-11-22 06:00 UTC), no real answer text, no P, C* or R* value
+of real data. Inputs: v1.11's synthetic replica, dry-run manifest and dry-run U0 (unit table 12,979 rows, SHA-256
+f29a967d643f4dd4beeb10a29aefc0edcdd3ed1df75f9bf9739a8bea46ba2eff), made by v1.11's own locked builder on
+2026-11-10 and copied from the v1.11 worktree; synthetic judge records from build_dryrun_v1_20.py. The work folder
+(dryrun/work/) is not committed; the builder rebuilds it. Stage C ran with --draws 500 (bootstrap and permutation
+draws lowered for the dry run only, to stay within the Mac-light limit; real runs use v1.11's 10,000).
+
+Scenario B (v1.11's rule halts, v1.20's does not): 13,337 synthetic records (raw SHA-256 daa5092a8fc6dd71...).
+  J1 reply formats: bare 8,698; fenced 187; prose before 514; prose before a fenced object 138; text after 47;
+  two objects 36; object cut at the cap 23; complete object with a cap finish reason 14; wrong keys 16; no JSON 67;
+  API errors 9. J2: bare 3,533; text after 15; no JSON 15; wrong keys 6; two objects 5; cut at the cap 5;
+  complete object with a cap finish reason 3; API errors 6.
+  --stage C before Stage J -> HALT "ORDER: v1.20's Stage J (H1) must be written before P, C* or R* are opened" (rc 2)
+  --stage J -> rc 0: v1.11 Stage J halted (case B; recomputed with v1.11's outcomes and fail_check);
+     JUDGE_FAIL halts: v1.11 rule ['J1 OMNI t2 v0.21'] (10 of 154 units), v1.20 rule none (0 of 154), S-ATT none.
+     Transitions v1.11 -> v1.20, J1 main: JUDGE_FAIL -> VALID 16; VALID -> UNJUDGED 13 (complete object with a cap
+     finish reason: valid under v1.11's code, invalid under switch Q3 = true, one reply stored); VALID -> VALID
+     8,448, of which 577 take their judgement from an earlier attempt than v1.11 (prose-first replies). J2 main:
+     VALID -> UNJUDGED 3 (same cap case); VALID -> VALID 3,364. H1 MARGINAL (alpha 0.537, brand rho 0.870, n 157);
+     S-ATT H1 MARGINAL.
+  --stage C --draws 500 -> rc 0: R* (MNP) computed with v1.10's locked code, 23 rank tables match; verdicts H1
+     MARGINAL, H2-H4 CONFIRMED, H5 MARGINAL, H6-H9 CONFIRMED (synthetic values; meaningless as results); role
+     "Sentiment Paper A's result (case B; switch Q6 = true)"; sensitivities written: SU, SD, NV, model-balanced,
+     J2-scored, S_ATT_v1_11_first, S_CUT_without_cut_answers (R floor 4), S_CUT_M_without_cut_cells (R floor 4);
+     verdict changes 1 (SU, H7). Synthetic cut list: 34 answers; S-CUT-M cells R v0.23 gemini-2.5-flash,
+     F v0.19 gemini-2.5-flash-lite, F v0.23 gemini-2.5-flash. H8 rated brands t1/t2/t3: primary 24/21/22,
+     S-CUT 24/24/24.
+
+Scenario A (neither rule halts; v1.11's own Stage J run first by the builder):
+  --stage J -> rc 0: v1.11 Stage J passed (case A); halts none / none; H1 MARGINAL.
+  --stage C --draws 500 -> HALT "ORDER: v1.11's Stage J passed, so v1.11's Stage C must be written first
+     (section 7)" (rc 2).
+
+Scenario H (both rules halt: J1 replies with no JSON in OMNI t2 v0.21):
+  --stage J -> HALT "JUDGE_FAIL above 2% of a set's units under the v1.20 rule: ['J1 OMNI t2 v0.21'] (halt before
+     scoring)" (rc 2); stage_j_v1_20.json written with halted = true and the per-set table under all three rules.
+  --stage C -> HALT "v1.20's Stage J halted on JUDGE_FAIL above 2%: no Stage C (section 5)" (rc 2).
+
+Real data: --stage J without the tags and anchors -> "refusing --stage J on real data before the lock: git tag
+v1.20-prereg-r1 does not exist; anchor file .../git_anchor_v1_20.json does not exist; v1.11: anchor file
+.../git_anchor_v1_11.json does not exist" (rc 3).
+
+Tests: python3 -m unittest scripts/test_score_v1_20.py -> Ran 46 tests, OK.
+       python3 -m unittest scripts/test_score_v1_11.py scripts/test_judge_v1_11.py -> Ran 64 tests, OK.
+Commands (repository root):
+  python3 osf/methodology/v1_20/dryrun/build_dryrun_v1_20.py --scenario A|B|H
+  python3 scripts/score_v1_20.py --stage J --dry-run
+  python3 scripts/score_v1_20.py --stage C --dry-run --draws 500
