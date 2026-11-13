@@ -86,6 +86,19 @@ PYTHONDONTWRITEBYTECODE=1 python3 reports/build_report_v42.py
 
 Writes `osf/v42/reports/v42_t4_generation_report.pdf`. It is in the managerial register, with P1 to P5, one chart per finding and no hypothesis labels. Its content module is `reports/v42_t4_generation_content.py`, and its wording follows the same verdict cases as the paper.
 
+**Tier 1 flagship in report design system v2 (Nov 13, 2026; replaces the build above for publication).**
+
+```
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_charts_v42_report_v2.py          # reports/figs/v42/report_v2/
+AIAS_ROOT=$PWD PYTHONDONTWRITEBYTECODE=1 python3 reports/build_report_v42_tier1.py --code TS-FL-v0.42-r1 \
+    --photo "<Try system book>/photo_library_ai/selected/print/<t4 image>.png" --out-dir <dir>
+```
+
+Code TS-FL-v0.42-r1 (report_catalogue: type FL, next revision r1). The cover takes the photo library's print file
+(photo library v2); the t4 wave has no library image yet, so until Pablo generates one only `--test` renders (any
+stand-in image, scratch folder, never published) are possible. Add the catalogue entry and the photo's usage record
+when the PDF is published.
+
 ## 7. Pre-flight (CLAUDE.md: required before commit, tag or deposit)
 
 ```

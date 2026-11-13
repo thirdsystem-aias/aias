@@ -70,6 +70,8 @@ _SRC = {
     "20:26 US Central (LOCK_STEPS step 0.1); OSF file records (date_created, read 2026-11-12): v42/prereg from 02:53, "
     "v42/prereg/scripts to 02:55, v42/anchor 02:55 UTC; C27-C28 numbering; Harman a Samsung subsidiary since March "
     "2017 (coordinator's COI wording, Nov 11, 2026)": "02 52 53 55 20 26 27 2017",
+    "COI sentence on Cheil Worldwide / Iris (v0.62 DEVIATIONS Entry 0, Part F, as worded in the v0.62, v0.65 and "
+    "v1.19 pre-registrations; one sentence in each new paper's COI section, Pablo, Nov 11, 2026): Samsung Electronics' 28.43%, work in 2017, 2018, 2021, 2022, 2024; v0.62": "28.43 2018 2021 0.62",
     "reference titles as published (thirdsystem.ai PDFs: v0.20 'v1.5 C2', 'Type 2'; v0.23 'Across 24 Brands')":
         "1.5 2 24",
     "SSRN IDs (CLAUDE.md methodology chain and phase registry)":
