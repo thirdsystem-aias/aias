@@ -1,0 +1,130 @@
+{
+  "phase": "v0.65",
+  "study": "#55 cross-cultural identity load",
+  "revision": "r0",
+  "tag": "v0.65-prereg-r1",
+  "tag_object": "7e53085febe7148088dad7fca53656dd23543b39",
+  "commit": "0eca5993506077ffe34dfbc81fd9976f50bc21de",
+  "tree": "5e73e78acb8d3a5d7f5ea00ebcb329e9031b26b8",
+  "branch": "v0.65",
+  "tagger_date": "2026-11-13T10:00:38-06:00",
+  "remote_tag_refs": "7e53085febe7148088dad7fca53656dd23543b39\trefs/tags/v0.65-prereg-r1\n0eca5993506077ffe34dfbc81fd9976f50bc21de\trefs/tags/v0.65-prereg-r1^{}",
+  "recorded_utc": "2026-11-13T16:00:45Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: v65/prereg, v65/prereg/scripts, v65/prereg/summaries, v65/anchor)",
+  "lock_manifest": {
+    "path": "osf/v65/prereg/LOCK_MANIFEST_v0_65.sha256",
+    "sha256": "bd9f4a69ca9f921eebaeba00bec320923a48a3eb1b17121145949bbdc6caf739",
+    "files_listed": 16
+  },
+  "final_text": {
+    "path": "osf/v65/prereg/PRE_REGISTRATION_v0_65.md",
+    "byte_copy_of": "osf/v65/prereg/PRE_REGISTRATION_v0_65_DRAFT_r0.md",
+    "sha256": "e1d7e7080eea8a64e01b4484d499404d1d4f7b579bdf793c6b51eee81148e154"
+  },
+  "locked_files": {
+    "osf/v65/prereg/PRE_REGISTRATION_v0_65.md": {
+      "sha256": "e1d7e7080eea8a64e01b4484d499404d1d4f7b579bdf793c6b51eee81148e154",
+      "git_blob": "2a213f3d58c86686b5cbcb1fa3cf5aa87ec7566e"
+    },
+    "osf/v65/prereg/PRE_REGISTRATION_v0_65_DRAFT_r0.md": {
+      "sha256": "e1d7e7080eea8a64e01b4484d499404d1d4f7b579bdf793c6b51eee81148e154",
+      "git_blob": "2a213f3d58c86686b5cbcb1fa3cf5aa87ec7566e"
+    },
+    "osf/v65/anchor/DEVIATIONS.md": {
+      "sha256": "9e0180fddb12ea79688c22cd0968be2c989983228af8fb61fa2bba72a57350f0",
+      "git_blob": "c259985c34b18336109a4dedb125625992dfc0c6"
+    },
+    "osf/v65/README.md": {
+      "sha256": "b89621cb7f8f2828e5bf2edbd230bc1623524eec950043768a5d42dcc1e20228",
+      "git_blob": "a77bc481d293304367c67007bf9e776278ef9eca"
+    },
+    "osf/v65/scripts/score_v0_65.py": {
+      "sha256": "3f66f6754cf6c598a8dd67c41cb1d3bfad4d6e4ef4bd9464531386607b75c0f3",
+      "git_blob": "ac63b31fc5af74f20ab681d7233f599052f4e4cb"
+    },
+    "osf/v65/scripts/test_score_v0_65.py": {
+      "sha256": "fdb06fa0d9e10d2585c219a9041cf4282245d6f4eddce727c72b31d0619a2b4a",
+      "git_blob": "a032d3ea946ac57160d700080aba19ee51779f03"
+    },
+    "osf/v65/prereg/dry_run_v0_65_r0.txt": {
+      "sha256": "5daff417fd1a1f99c5a60f854756f64daf993bcc31554b11e760d42b05e2684e",
+      "git_blob": "46a27b5216baae768ac2055d91f387c6989d1f5b"
+    },
+    "osf/v65/prereg/power_v0_65_r0.json": {
+      "sha256": "2a43f48aac150c28ec9d14fb910c0d6ffa252c9201bf64e2956cdb5e0d250a4a",
+      "git_blob": "aafd6f270911c518bcf49b51362fa470fb9e8df4"
+    },
+    "osf/v62/scripts/score_v0_62.py": {
+      "sha256": "fe8ce8ea621a5c5c9984f4dd26516e9f0c4fc14eddaf58aefb46378687eda315",
+      "git_blob": "2773a538e3c5b730a84b6888ecbcb726bf7bdd17"
+    },
+    "osf/v62/scripts/params_v0_62.py": {
+      "sha256": "dc7a07dcef797fe04ba83a319e97de026391c14e9400e7b01cfa71d6b6e4016e",
+      "git_blob": "863cf7d681dd8354fe1ba31d5a2474562e7e4f94"
+    },
+    "osf/v62/inputs/probes_v0_42.jsonl": {
+      "sha256": "7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa",
+      "git_blob": "e9da93caaa5e2c4947dc268c6a0340e0279f014c"
+    },
+    "osf/v62/translations/translations_v0_62_r2.json": {
+      "sha256": "4f89fdf25958b685717ac9ee0d7fbb530f664b1f2c0985df8a9f0fd69896c57d",
+      "git_blob": "35a125711be5d363694e603e47e37f5b80c8b66d"
+    },
+    "osf/v62/prereg/PRE_REGISTRATION_v0_62.md": {
+      "sha256": "b830e524cec2368629c3ebb00b38ea97d01993361bfd2787cbe8bddc564b96a9",
+      "git_blob": "9f5549d644b8f023eef358cae8891d846b4a94fe"
+    },
+    "osf/methodology/v1_7/data/v1_7_cpc.csv": {
+      "sha256": "45009bceb164c545f8ba9cc010d8de0548120d087fa7637e6599d9b1d0ffbb8e",
+      "git_blob": "b26d87595e53660e5053e10f94e577af11c15c38"
+    },
+    "osf/v37/.v37_il_direct_baseline.sha256": {
+      "sha256": "3859cebdd57c7eebba06d530d21d481aaa8013056d196744e10ff264123bc6ef",
+      "git_blob": "13a8392b96be5f6d883c345f0a4d60c4ffb5937e"
+    },
+    "osf/v65/prereg/LOCK_MANIFEST_v0_65_DRAFT_r0.sha256": {
+      "sha256": "cf4b26864742abf53b4b5e3a91a3c80831b12b064a80c1bd8f462c3d233cc5f8",
+      "git_blob": "668fe46141e1487923bb762fd8b26c7a2c92a810"
+    },
+    "osf/v65/prereg/LOCK_MANIFEST_v0_65.sha256": {
+      "sha256": "bd9f4a69ca9f921eebaeba00bec320923a48a3eb1b17121145949bbdc6caf739",
+      "git_blob": "2858b4b46fa397acb260bb17e4fab74c568fa4ff"
+    }
+  },
+  "base_pins": {
+    "tag": "v0.62-prereg-r1",
+    "commit": "e449b6cff382f3f26d35e25fa93ec5c9ce34217a",
+    "blobs": {
+      "osf/v62/scripts/score_v0_62.py": "2773a538e3c5b730a84b6888ecbcb726bf7bdd17",
+      "osf/v62/scripts/params_v0_62.py": "863cf7d681dd8354fe1ba31d5a2474562e7e4f94",
+      "osf/v62/inputs/probes_v0_42.jsonl": "e9da93caaa5e2c4947dc268c6a0340e0279f014c",
+      "osf/v62/translations/translations_v0_62_r2.json": "35a125711be5d363694e603e47e37f5b80c8b66d",
+      "osf/v62/prereg/PRE_REGISTRATION_v0_62.md": "9f5549d644b8f023eef358cae8891d846b4a94fe",
+      "osf/methodology/v1_7/data/v1_7_cpc.csv": "b26d87595e53660e5053e10f94e577af11c15c38",
+      "osf/v37/.v37_il_direct_baseline.sha256": "13a8392b96be5f6d883c345f0a4d60c4ffb5937e"
+    },
+    "note": "files read from v0.62's lock and t1, the same blobs as at the base tag"
+  },
+  "t4_english_pins": {
+    "tag": "v0.42-scoring-locked",
+    "commit": "31c64c64656b7b0393eca49e5d10384744475dd9",
+    "coded_phase_b_blobs": {
+      "v19": "7fb571b51eac6e408eb4e48440b07bd9aa4b3ad7",
+      "v20": "5f765d9853c94bc0456531615a1bf384a3a65cdf",
+      "v21": "feb9d5f6297f98d6cff35b2f2237660b53dfc733",
+      "v22": "8dc39b9d39645658bf4786ff96258dd040a84126",
+      "v23": "7f379235ecdc851f62acf14f15d0b63b68389bbb"
+    },
+    "content_read_at_anchor": false
+  },
+  "v0_62_answers": {
+    "osf/v62/data_in_this_tree": false,
+    "osf/v62/data_files_on_origin_v0.62": 0
+  },
+  "scoring": {
+    "verdicts_file": "osf/v65/outputs/v65_verdicts.json",
+    "exists_at_anchor": false,
+    "command": "score_v0_65.py --run (once, after v0.62's own scoring run; section 5.2)"
+  }
+}
