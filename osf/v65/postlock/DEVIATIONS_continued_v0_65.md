@@ -1,0 +1,7 @@
+# AIAS v0.65 — cross-cultural identity load (study #55): deviations log, continued after the lock
+
+This file continues `osf/v65/anchor/DEVIATIONS.md` (Entry 0, written with draft r0 before the lock) under the rule stated there: after the lock, every change is an entry (id, date, ex ante or ex post, what, why, effect), and hypotheses, estimands, thresholds, decision rules, seeds, exclusions and sensitivities do not change. It is a separate file because `anchor/DEVIATIONS.md` is pinned by `prereg/LOCK_MANIFEST_v0_65.sha256` and verified by the scorer's guard (`score_v0_65.py --run` refuses unless the lock manifest verifies; pre-registration §5.2), and no locked file is edited after the lock (tag `v0.65-prereg-r1`, commit `0eca599`). Entries made after the lock go here (as v1.13 keeps `postlock/DEVIATIONS_continued_v1_13.md`).
+
+**Entry 1 (ex post, 2026-11-13; a record, no change).** The lock ran at 10:00 CST on Fri 11/13 (tag `v0.65-prereg-r1`) instead of ~6:45 am because of an Anthropic service outage; nothing in the pre-registration changed.
+
+**Entry 2 (ex post, 2026-11-13; a record, no change).** Entry 1 was first appended to `anchor/DEVIATIONS.md` (commit `2d3fcf4`; OSF `v65/anchor`), which made the lock manifest fail to verify; on 2026-11-13 at 11:18 CST it was moved here and `anchor/DEVIATIONS.md` restored to its locked content; nothing in the pre-registration, scripts or data changed.
