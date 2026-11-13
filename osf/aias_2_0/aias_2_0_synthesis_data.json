@@ -1,0 +1,4297 @@
+{
+  "phase": "AIAS 2.0 synthesis",
+  "outline_tag": "aias-2-0-outline-locked",
+  "built_at_utc": "2026-11-10T02:58:55+00:00",
+  "status": "complete",
+  "spec": {
+    "consistency_score": "C_phi rated at >= 6 total mentions (v1.9 SELECTED_CONSISTENCY)",
+    "presence_score": "P = 100*(C_P/6 + 2*pi_hat)/3 (v0.25 presence_composite)",
+    "composite": "none (v1.9 Stage 1); A = (P + C*)/2 kept only for the descriptive K2 check"
+  },
+  "parity_gates_v0_41": {
+    "P1": true,
+    "P2": true,
+    "P3": true,
+    "P4": true
+  },
+  "parity_builder_vs_stage1": {
+    "A1_K1_t1": {
+      "builder": [
+        0.07293925573105668,
+        55
+      ],
+      "locked": [
+        0.07293925573105668,
+        55
+      ],
+      "passed": true
+    },
+    "A2_K1_t2": {
+      "builder": [
+        0.08153268408519941,
+        54
+      ],
+      "locked": [
+        0.08153268408519941,
+        54
+      ],
+      "passed": true
+    },
+    "A3_not_rated": {
+      "builder": [
+        0.5089285714285714,
+        0.5178571428571429
+      ],
+      "locked": [
+        0.5089285714285714,
+        0.5178571428571429
+      ],
+      "passed": true
+    },
+    "A4_retest_C": {
+      "builder": [
+        0.7357486264955685,
+        53
+      ],
+      "locked": [
+        0.7357486264955685,
+        53
+      ],
+      "passed": true
+    },
+    "A5_retest_P": {
+      "builder": [
+        0.9695933242098346,
+        112
+      ],
+      "locked": [
+        0.9695933242098346,
+        112
+      ],
+      "passed": true
+    }
+  },
+  "summaries": {
+    "t1": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 48.726851851851855,
+          "mean_C_rated": 59.21938635914272
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 10,
+          "share_rated": 0.4166666666666667,
+          "mean_P": 45.833333333333336,
+          "mean_C_rated": 88.72561615590907
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 50.7716049382716,
+          "mean_C_rated": 83.23343780791842
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 49.84567901234567,
+          "mean_C_rated": 94.58201787414416
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 41.820987654320994,
+          "mean_C_rated": 77.77107637644036
+        }
+      },
+      "n_units": 112,
+      "n_rated": 55,
+      "share_not_rated": 0.5089285714285714,
+      "rho_Cstar_P": 0.07293925573105668,
+      "rho_Cstar_P_n": 55,
+      "rho_A_P_descriptive": 0.971220479242514,
+      "rho_A_P_n": 112
+    },
+    "t2": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 47.22222222222223,
+          "mean_C_rated": 63.924208930623834
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 45.293209876543216,
+          "mean_C_rated": 90.75437667617068
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 51.388888888888886,
+          "mean_C_rated": 79.89436226691693
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 50.07716049382716,
+          "mean_C_rated": 94.11410782454007
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 41.28086419753087,
+          "mean_C_rated": 78.97168989186869
+        }
+      },
+      "n_units": 112,
+      "n_rated": 54,
+      "share_not_rated": 0.5178571428571429,
+      "rho_Cstar_P": 0.08153268408519941,
+      "rho_Cstar_P_n": 54,
+      "rho_A_P_descriptive": 0.9749692326190192,
+      "rho_A_P_n": 112
+    },
+    "t3": {
+      "per_substrate": {
+        "v0.19": {
+          "n_units": 16,
+          "n_rated": 8,
+          "share_rated": 0.5,
+          "mean_P": 46.99074074074075,
+          "mean_C_rated": 64.78204665704666
+        },
+        "v0.20": {
+          "n_units": 24,
+          "n_rated": 9,
+          "share_rated": 0.375,
+          "mean_P": 46.45061728395063,
+          "mean_C_rated": 88.50210097817583
+        },
+        "v0.21": {
+          "n_units": 24,
+          "n_rated": 13,
+          "share_rated": 0.5416666666666666,
+          "mean_P": 49.92283950617283,
+          "mean_C_rated": 77.4021070335173
+        },
+        "v0.22": {
+          "n_units": 24,
+          "n_rated": 14,
+          "share_rated": 0.5833333333333334,
+          "mean_P": 49.151234567901234,
+          "mean_C_rated": 93.08817051059349
+        },
+        "v0.23": {
+          "n_units": 24,
+          "n_rated": 10,
+          "share_rated": 0.4166666666666667,
+          "mean_P": 41.20370370370371,
+          "mean_C_rated": 74.50871659204994
+        }
+      },
+      "n_units": 112,
+      "n_rated": 54,
+      "share_not_rated": 0.5178571428571429,
+      "rho_Cstar_P": 0.18949782059932604,
+      "rho_Cstar_P_n": 54,
+      "rho_A_P_descriptive": 0.969272869350446,
+      "rho_A_P_n": 112
+    }
+  },
+  "lineage": {
+    "v0.29": {
+      "source": "osf/v29/data/v29_verdicts.json",
+      "era": "Presence (carried by citation)",
+      "ssrn": "6870778",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "result": "CONFIRMED"
+      },
+      "record": {
+        "phase": "v0.29",
+        "project_id": "CV.05",
+        "protocol": "v1.6",
+        "design_class": "synthesis",
+        "hypothesis": "H_CV_Baseline",
+        "scored_at": "2026-06-02T12:49:47.179489+00:00",
+        "result": {
+          "verdict": "CONFIRMED",
+          "reason": "C1 significant AND C2 (|rho| < 0.20, n.s.) AND C3 > 0",
+          "C1_convergent": {
+            "rho": 0.7411,
+            "p": 3.4e-05,
+            "significant": true,
+            "pass": true
+          },
+          "C2_discriminant": {
+            "rho": -0.0002,
+            "p": 0.998173,
+            "below_ceiling": true,
+            "nonsignificant": true,
+            "pass": true
+          },
+          "C3_campbell_fiske_gap": {
+            "value": 0.7409,
+            "pass": true
+          },
+          "significance_asymmetry": true,
+          "MTMM_2x2": {
+            "monotrait_heteromethod_convergent": 0.7411,
+            "heterotrait_discriminant": -0.0002
+          }
+        },
+        "provenance": {
+          "lock_tag": "v0.29-prereg-r1",
+          "convergent": {
+            "source": "v0.25",
+            "ssrn": "6842138",
+            "prereg_tag": "v0.25-prereg-r1",
+            "file": "osf/v25/v25_verdicts.json",
+            "inherited_rho": 0.7411,
+            "inherited_p": 3.4e-05,
+            "n": 24
+          },
+          "discriminant": {
+            "source": "v0.26",
+            "ssrn": "6847678",
+            "prereg_tag": "v0.26-prereg-r2",
+            "file": "osf/v26/v26_verdicts.json",
+            "inherited_rho": -0.0002,
+            "inherited_p": 0.998173,
+            "n": 88
+          },
+          "note": "Synthesis of inherited locked verdicts; no acquisition. C3 = |rho_conv| - |rho_disc| with pooled discriminant as C2 referent."
+        },
+        "warnings": []
+      }
+    },
+    "v0.30": {
+      "source": "osf/v30/v30_cpc_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6875319",
+      "ssrn_status": "declined",
+      "verdicts": {
+        "F1_H_CPC_Computable": "CONFIRM",
+        "F2_H_CPC_LevelConfound": "UNDETERMINED",
+        "F3_H_CPC_LevelCorrected": "UNDETERMINED",
+        "F4_H_CPC_SubstrateVariation": "CONFIRM"
+      },
+      "record": {
+        "phase": "v0.30",
+        "cpc_index": "CPC.01",
+        "lock": "v0.30-prereg-r2",
+        "scope": "CPC_model (confirmatory)",
+        "no_new_llm_calls": true,
+        "thresholds_source": "prereg/v0_30_cpc_instrument_pilot_content.py :: SCORING",
+        "trio": [
+          {
+            "key": "v0.20",
+            "name": "skincare"
+          },
+          {
+            "key": "v0.21",
+            "name": "cosmetics"
+          },
+          {
+            "key": "v0.22",
+            "name": "automotive"
+          }
+        ],
+        "coverage": {
+          "v0.20": {
+            "recall": 0.7916666666666666,
+            "recognition": 0.16666666666666666,
+            "n_brands": 24,
+            "frames_per_model": {
+              "claude-opus-4-5": 6,
+              "claude-sonnet-4-5": 6,
+              "gpt-4o": 6,
+              "gpt-4o-mini": 6,
+              "gemini-2.5-flash": 6,
+              "gemini-2.5-flash-lite": 6
+            }
+          },
+          "v0.21": {
+            "recall": 0.7916666666666666,
+            "recognition": 0.0,
+            "n_brands": 24,
+            "frames_per_model": {
+              "claude-opus-4-5": 6,
+              "claude-sonnet-4-5": 6,
+              "gpt-4o": 6,
+              "gpt-4o-mini": 6,
+              "gemini-2.5-flash": 6,
+              "gemini-2.5-flash-lite": 6
+            }
+          },
+          "v0.22": {
+            "recall": 0.625,
+            "recognition": 0.041666666666666664,
+            "n_brands": 24,
+            "frames_per_model": {
+              "claude-opus-4-5": 6,
+              "claude-sonnet-4-5": 6,
+              "gpt-4o": 6,
+              "gpt-4o-mini": 6,
+              "gemini-2.5-flash": 6,
+              "gemini-2.5-flash-lite": 6
+            }
+          }
+        },
+        "F1_H_CPC_Computable": {
+          "verdict": "CONFIRM",
+          "all_ge_floor": true,
+          "automotive_recall_gt_recognition": true,
+          "coverage_floor": 0.5
+        },
+        "F2_H_CPC_LevelConfound": {
+          "verdict": "UNDETERMINED",
+          "confirm_count": 1,
+          "n_testable": 1,
+          "confound_rho_min": 0.3,
+          "per_substrate": {
+            "v0.20": {
+              "rho": -0.4719589716785615,
+              "p": 0.04133249002668168,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 19,
+              "defined_n": 19,
+              "testable": true,
+              "undetermined": false,
+              "undetermined_reason": null,
+              "meets_F2": true
+            },
+            "v0.21": {
+              "rho": null,
+              "p": null,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 19,
+              "defined_n": 19,
+              "testable": false,
+              "undetermined": true,
+              "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+              "meets_F2": false
+            },
+            "v0.22": {
+              "rho": null,
+              "p": null,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 15,
+              "defined_n": 15,
+              "testable": false,
+              "undetermined": true,
+              "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+              "meets_F2": false
+            }
+          }
+        },
+        "F3_H_CPC_LevelCorrected": {
+          "verdict": "UNDETERMINED",
+          "confirm_count": 1,
+          "n_testable": 1,
+          "corrected_ceiling": 0.2,
+          "attenuation_confirm": 0.5,
+          "attenuation_floor": 0.3,
+          "per_substrate": {
+            "v0.20": {
+              "rho": -0.13133210823449323,
+              "p": 0.5920068416195889,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 19,
+              "defined_n": 19,
+              "testable": true,
+              "undetermined": false,
+              "undetermined_reason": null,
+              "attenuation": 0.7217298195065567,
+              "meets_F3": true,
+              "f3_falsify_flag": false,
+              "resid_rho": -0.26820575923583456,
+              "resid_p": 0.2669083829044204
+            },
+            "v0.21": {
+              "rho": null,
+              "p": null,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 19,
+              "defined_n": 19,
+              "testable": false,
+              "undetermined": true,
+              "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+              "attenuation": null,
+              "meets_F3": false,
+              "f3_falsify_flag": false,
+              "resid_rho": null,
+              "resid_p": null
+            },
+            "v0.22": {
+              "rho": null,
+              "p": null,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 15,
+              "defined_n": 15,
+              "testable": false,
+              "undetermined": true,
+              "undetermined_reason": "L (recognition C_P) constant at 6 \u2014 rho undefined (recognition saturated)",
+              "attenuation": null,
+              "meets_F3": false,
+              "f3_falsify_flag": false,
+              "resid_rho": null,
+              "resid_p": null
+            }
+          }
+        },
+        "level_variable_note": "L = Phase A recognition C_P is SATURATED (C_P=6 for ~all brands) in cosmetics and automotive, so rho(CPC, L) is undefined there; only skincare is testable for F2/F3. See v1_7 forward note.",
+        "F4_H_CPC_SubstrateVariation": {
+          "verdict": "CONFIRM",
+          "kruskal_H": 14.244727345913672,
+          "kruskal_p": 0.0008068573485167226,
+          "kw_alpha": 0.05
+        },
+        "exploratory_recognition_vs_recall_concordance": {
+          "pooled": null,
+          "per_substrate": {}
+        },
+        "certified_inputs_sha256": {
+          "v0.20": {
+            "phase_a": "c8ad6335c982ec95883fffa6c3cb185170b3cdd80b8694377c9fb8afb47d390e",
+            "phase_b": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828"
+          },
+          "v0.21": {
+            "phase_a": "d470940aa497f55588588536173a128a3394af2a6f0bb6e94825738622167d0d",
+            "phase_b": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1"
+          },
+          "v0.22": {
+            "phase_a": "93c1b147c44b9031bfad3eb5806d50fd26404cf9c9b7cea95f2fd8a7a00c246a",
+            "phase_b": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35"
+          }
+        },
+        "bootstrap": {
+          "resamples": 10000,
+          "seed": 280400,
+          "method": "BCa",
+          "ci": "95%"
+        }
+      }
+    },
+    "v0.31": {
+      "source": "osf/v31/v31_cpc_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6880959",
+      "ssrn_status": "withdrawn",
+      "verdicts": {
+        "H_CPC_Computable": "CONFIRM",
+        "H_CPC_CrossCategory": "CONFIRM"
+      },
+      "record": {
+        "phase": "v0.31",
+        "lock": "v0.31-prereg-r1",
+        "no_new_llm_calls": true,
+        "instrument": "v1.7 CPC, channel-agnostic generalization (total per-model mentions across frames)",
+        "reconciliation_gate": {
+          "pass": true,
+          "checked": 72,
+          "max_abs_diff": 1.1102230246251565e-16,
+          "tolerance": 0.0,
+          "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+        },
+        "omnibus": {
+          "v0.19": {
+            "category": "audiophile headphones",
+            "n_brands": 16,
+            "n_defined": 8,
+            "n_undefined": 8,
+            "undefined_brands": [
+              "Dan Clark Audio",
+              "Denon",
+              "Final Audio",
+              "Koss",
+              "Meze",
+              "Spirit Torino",
+              "Stax",
+              "ZMF Headphones"
+            ],
+            "cpc_median": 0.6674406099710622
+          },
+          "v0.20": {
+            "category": "skincare",
+            "n_brands": 24,
+            "n_defined": 10,
+            "n_undefined": 14,
+            "undefined_brands": [
+              "Est\u00e9e Lauder",
+              "Lanc\u00f4me",
+              "Sisley",
+              "Dior Beauty",
+              "Chanel Beauty",
+              "La Prairie",
+              "Cl\u00e9 de Peau Beaut\u00e9",
+              "Rare Beauty",
+              "Fenty Skin",
+              "Goop",
+              "Glossier",
+              "Tower 28",
+              "Eucerin",
+              "Bioderma"
+            ],
+            "cpc_median": 0.7968489496905815
+          },
+          "v0.21": {
+            "category": "cosmetics",
+            "n_brands": 24,
+            "n_defined": 14,
+            "n_undefined": 10,
+            "undefined_brands": [
+              "Giorgio Armani Beauty",
+              "Hourglass",
+              "Chantecaille",
+              "Laura Mercier",
+              "Haus Labs",
+              "Kylie Cosmetics",
+              "CoverGirl",
+              "Revlon",
+              "Wet n Wild",
+              "Milani Cosmetics"
+            ],
+            "cpc_median": 0.7387961250362586
+          },
+          "v0.22": {
+            "category": "automotive",
+            "n_brands": 24,
+            "n_defined": 14,
+            "n_undefined": 10,
+            "undefined_brands": [
+              "Rivian",
+              "Lucid",
+              "Polestar",
+              "Fisker",
+              "Nissan",
+              "Pontiac",
+              "Oldsmobile",
+              "Plymouth",
+              "Mercury",
+              "Saturn"
+            ],
+            "cpc_median": 0.7592080714932264
+          },
+          "v0.23": {
+            "category": "premium spirits",
+            "n_brands": 24,
+            "n_defined": 9,
+            "n_undefined": 15,
+            "undefined_brands": [
+              "S01",
+              "S03",
+              "S06",
+              "S07",
+              "S08",
+              "S09",
+              "S10",
+              "S12",
+              "S14",
+              "S16",
+              "S18",
+              "S21",
+              "S22",
+              "S23",
+              "S24"
+            ],
+            "cpc_median": 0.6012054320159286
+          }
+        },
+        "supplementary": {
+          "v0.18": {
+            "category": "indie fragrance",
+            "n_brands": 24,
+            "n_defined": 6,
+            "n_undefined": 18,
+            "note": "3-frame (0..3); descriptive only, excluded from omnibus KW"
+          },
+          "v0.17": {
+            "deferred": true,
+            "reason": "raw-text Phase B (slot JSON), canonical-6 panel confirmed; brand-scoring needs a kitchenware matcher/registry not present. Descriptive-only; out of omnibus regardless."
+          }
+        },
+        "excluded": {
+          "v0.16": "14-model legacy panel; Trends-validation Phase B (no per-model LLM recall)",
+          "v0.24": "off the locked six (opus-4-7 / sonnet-4-6)"
+        },
+        "H_CPC_Computable": {
+          "verdict": "CONFIRM",
+          "per_substrate": {
+            "v0.19": {
+              "n_defined": 8,
+              "cpc_variance": 0.0015334491007207365,
+              "distinct_cpc": 8,
+              "non_degenerate": true,
+              "cpc_min": 0.5651923175029236,
+              "cpc_max": 0.6909830056250527
+            },
+            "v0.20": {
+              "n_defined": 10,
+              "cpc_variance": 0.021846520610370432,
+              "distinct_cpc": 10,
+              "non_degenerate": true,
+              "cpc_min": 0.5222662922462574,
+              "cpc_max": 0.9399488694979569
+            },
+            "v0.21": {
+              "n_defined": 14,
+              "cpc_variance": 0.01521843882252791,
+              "distinct_cpc": 13,
+              "non_degenerate": true,
+              "cpc_min": 0.5,
+              "cpc_max": 0.8433869711737677
+            },
+            "v0.22": {
+              "n_defined": 14,
+              "cpc_variance": 0.010929042717670123,
+              "distinct_cpc": 10,
+              "non_degenerate": true,
+              "cpc_min": 0.6414298263637128,
+              "cpc_max": 1.0
+            },
+            "v0.23": {
+              "n_defined": 9,
+              "cpc_variance": 0.0050689584835400675,
+              "distinct_cpc": 8,
+              "non_degenerate": true,
+              "cpc_min": 0.44209062967510265,
+              "cpc_max": 0.6386979044864147
+            }
+          }
+        },
+        "H_CPC_CrossCategory": {
+          "verdict": "CONFIRM",
+          "kruskal_H": 21.5118895864716,
+          "kruskal_p": 0.00025061673431409515,
+          "alpha": 0.05,
+          "n_groups": 5,
+          "medians": {
+            "v0.19": 0.6674406099710622,
+            "v0.20": 0.7968489496905815,
+            "v0.21": 0.7387961250362586,
+            "v0.22": 0.7592080714932264,
+            "v0.23": 0.6012054320159286
+          }
+        }
+      }
+    },
+    "v0.32": {
+      "source": "osf/v32/v32_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6898581",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "PRIMARY_H_ScoreRankStable": "CONFIRMED",
+        "SECONDARY_H_ScoreMagnitudeStable": "FALSIFIED",
+        "TERTIARY_H_EmergingInstability": "FALSIFIED"
+      },
+      "record": {
+        "phase": "v0.32",
+        "prereg_tag": "v0.32-prereg-r2",
+        "coder": "v1.4 canonical detect_mention, verbatim from score_v22.py (symmetric across arms)",
+        "per_brand_cpc": {
+          "Mercedes-Benz": {
+            "cell": "A",
+            "cpc_A": 0.8304791528014628,
+            "cpc_B": 0.7759907622602041,
+            "counts_A": [
+              3,
+              3,
+              5,
+              5,
+              4,
+              4
+            ],
+            "counts_B": [
+              5,
+              4,
+              5,
+              5,
+              2,
+              3
+            ]
+          },
+          "Jaguar": {
+            "cell": "A",
+            "cpc_A": 0.662613645756624,
+            "cpc_B": 0.6339745962155614,
+            "counts_A": [
+              1,
+              1,
+              2,
+              3,
+              1,
+              1
+            ],
+            "counts_B": [
+              1,
+              1,
+              1,
+              2,
+              0,
+              1
+            ]
+          },
+          "Cadillac": {
+            "cell": "A",
+            "cpc_A": 0.5651923175029236,
+            "cpc_B": 0.5770565137270707,
+            "counts_A": [
+              1,
+              1,
+              1,
+              1,
+              0,
+              3
+            ],
+            "counts_B": [
+              3,
+              3,
+              3,
+              2,
+              0,
+              0
+            ]
+          },
+          "Rolls-Royce": {
+            "cell": "A",
+            "cpc_A": 0.8333333333333334,
+            "cpc_B": 0.8837564943045901,
+            "counts_A": [
+              3,
+              2,
+              3,
+              2,
+              3,
+              2
+            ],
+            "counts_B": [
+              3,
+              3,
+              3,
+              3,
+              2,
+              3
+            ]
+          },
+          "Bentley": {
+            "cell": "A",
+            "cpc_A": 1.0,
+            "cpc_B": 0.8319256396465603,
+            "counts_A": [
+              2,
+              2,
+              2,
+              2,
+              2,
+              2
+            ],
+            "counts_B": [
+              3,
+              2,
+              2,
+              2,
+              3,
+              2
+            ]
+          },
+          "Porsche": {
+            "cell": "A",
+            "cpc_A": 0.9187896968583876,
+            "cpc_B": 0.9166666666666667,
+            "counts_A": [
+              6,
+              6,
+              5,
+              5,
+              5,
+              5
+            ],
+            "counts_B": [
+              5,
+              5,
+              6,
+              6,
+              6,
+              5
+            ]
+          },
+          "BMW": {
+            "cell": "A",
+            "cpc_A": 0.8549017743449044,
+            "cpc_B": 0.82276993258664,
+            "counts_A": [
+              5,
+              4,
+              6,
+              4,
+              4,
+              4
+            ],
+            "counts_B": [
+              4,
+              5,
+              5,
+              5,
+              3,
+              3
+            ]
+          },
+          "Tesla": {
+            "cell": "B",
+            "cpc_A": 0.6293206443961367,
+            "cpc_B": 0.6172177814626812,
+            "counts_A": [
+              2,
+              1,
+              5,
+              3,
+              1,
+              2
+            ],
+            "counts_B": [
+              4,
+              0,
+              3,
+              2,
+              1,
+              3
+            ]
+          },
+          "Rivian": {
+            "cell": "B",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              2,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          "Lucid": {
+            "cell": "B",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              1,
+              1
+            ]
+          },
+          "Polestar": {
+            "cell": "B",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Fisker": {
+            "cell": "B",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Toyota": {
+            "cell": "C",
+            "cpc_A": 0.8310625193750198,
+            "cpc_B": 0.8102824188718128,
+            "counts_A": [
+              4,
+              3,
+              5,
+              4,
+              3,
+              3
+            ],
+            "counts_B": [
+              5,
+              3,
+              5,
+              4,
+              3,
+              3
+            ]
+          },
+          "Honda": {
+            "cell": "C",
+            "cpc_A": 1.0,
+            "cpc_B": 0.8837564943045901,
+            "counts_A": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              3
+            ],
+            "counts_B": [
+              3,
+              3,
+              3,
+              3,
+              3,
+              2
+            ]
+          },
+          "Ford": {
+            "cell": "C",
+            "cpc_A": 0.75,
+            "cpc_B": 0.6666666666666666,
+            "counts_A": [
+              2,
+              1,
+              2,
+              2,
+              1,
+              1
+            ],
+            "counts_B": [
+              2,
+              2,
+              4,
+              1,
+              1,
+              2
+            ]
+          },
+          "Chevrolet": {
+            "cell": "C",
+            "cpc_A": 0.6103945037741196,
+            "cpc_B": 0.5227744249483388,
+            "counts_A": [
+              1,
+              2,
+              3,
+              2,
+              0,
+              1
+            ],
+            "counts_B": [
+              3,
+              3,
+              5,
+              1,
+              0,
+              0
+            ]
+          },
+          "Hyundai": {
+            "cell": "C",
+            "cpc_A": 0.7230810432392165,
+            "cpc_B": 0.765987081253247,
+            "counts_A": [
+              3,
+              2,
+              3,
+              2,
+              1,
+              4
+            ],
+            "counts_B": [
+              3,
+              1,
+              3,
+              3,
+              2,
+              3
+            ]
+          },
+          "Volkswagen": {
+            "cell": "C",
+            "cpc_A": 0.6339745962155614,
+            "cpc_B": 1.0,
+            "counts_A": [
+              1,
+              1,
+              2,
+              1,
+              0,
+              1
+            ],
+            "counts_B": [
+              1,
+              1,
+              1,
+              1,
+              1,
+              1
+            ]
+          },
+          "Nissan": {
+            "cell": "C",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              1,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              1,
+              0,
+              0,
+              0
+            ]
+          },
+          "Pontiac": {
+            "cell": "D",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Oldsmobile": {
+            "cell": "D",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Plymouth": {
+            "cell": "D",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Mercury": {
+            "cell": "D",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          },
+          "Saturn": {
+            "cell": "D",
+            "cpc_A": null,
+            "cpc_B": null,
+            "counts_A": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ],
+            "counts_B": [
+              0,
+              0,
+              0,
+              0,
+              0,
+              0
+            ]
+          }
+        },
+        "PRIMARY_H_ScoreRankStable": {
+          "rho": 0.7081497797356829,
+          "n_pairwise_complete": 14,
+          "threshold": 0.7,
+          "verdict": "CONFIRMED",
+          "interpretive_band": "rank-stable"
+        },
+        "SECONDARY_H_ScoreMagnitudeStable": {
+          "mean_abs_dCPC": 0.07691109661934326,
+          "mean_signed_dCPC": -0.009594125334504275,
+          "sd_cpc_A": 0.13786802057349262,
+          "threshold_0.5xSD": 0.06893401028674631,
+          "n_pairwise_complete": 14,
+          "verdict": "FALSIFIED"
+        },
+        "TERTIARY_H_EmergingInstability": {
+          "cell_flip_rate": {
+            "A": {
+              "na_in_A": 0,
+              "flipped_to_defined_in_B": 0,
+              "flip_rate": null,
+              "flipped_brands": []
+            },
+            "B": {
+              "na_in_A": 4,
+              "flipped_to_defined_in_B": 0,
+              "flip_rate": 0.0,
+              "flipped_brands": []
+            },
+            "C": {
+              "na_in_A": 1,
+              "flipped_to_defined_in_B": 0,
+              "flip_rate": 0.0,
+              "flipped_brands": []
+            },
+            "D": {
+              "na_in_A": 5,
+              "flipped_to_defined_in_B": 0,
+              "flip_rate": 0.0,
+              "flipped_brands": []
+            }
+          },
+          "cellB_highest_flip_rate": false,
+          "total_NA_to_defined_flips": 0,
+          "note": "no N/A->defined flips in any cell; the emerging-instability prediction (Cell-B brands e.g. Rivian/Fisker flipping N/A->defined under Arm B) was not observed.",
+          "primary_read": "Cell-B N/A->defined flip rate vs other cells",
+          "verdict": "FALSIFIED"
+        },
+        "DENOMINATORS": {
+          "n_pairwise_complete": 14,
+          "na_count_A": 10,
+          "na_brands_A": [
+            "Rivian",
+            "Lucid",
+            "Polestar",
+            "Fisker",
+            "Nissan",
+            "Pontiac",
+            "Oldsmobile",
+            "Plymouth",
+            "Mercury",
+            "Saturn"
+          ],
+          "na_count_B": 10,
+          "na_brands_B": [
+            "Rivian",
+            "Lucid",
+            "Polestar",
+            "Fisker",
+            "Nissan",
+            "Pontiac",
+            "Oldsmobile",
+            "Plymouth",
+            "Mercury",
+            "Saturn"
+          ],
+          "flips": {
+            "A_def_to_B_NA": {
+              "n": 0,
+              "brands": [],
+              "by_cell": {}
+            },
+            "B_def_to_A_NA": {
+              "n": 0,
+              "brands": [],
+              "by_cell": {}
+            }
+          },
+          "flip_guardrail": "High flip count materially qualifies any stability narrative regardless of rho (pre-reg NA_AND_FLIP_RULE)."
+        },
+        "SENSITIVITY_leave_one_provider_out": {
+          "drop_anthropic": {
+            "rho": 0.5121951219512195,
+            "n_pairwise": 14,
+            "band": "partially version-sensitive"
+          },
+          "drop_openai": {
+            "rho": 0.8221881954891387,
+            "n_pairwise": 12,
+            "band": "rank-stable"
+          },
+          "drop_google": {
+            "rho": 0.4816465716119631,
+            "n_pairwise": 14,
+            "band": "version-dominated"
+          }
+        }
+      }
+    },
+    "v0.33": {
+      "source": "osf/v33/v33_provider_asymmetry_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6909019",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "H_Provider_Asymmetry": "CONFIRMED",
+        "H_Provider_Beyond_Presence": "CONFIRMED",
+        "H_Provider_Ordinal": "UNINFORMATIVE (n.s.; N=5 underpowered)"
+      },
+      "record": {
+        "phase": "v0.33",
+        "title": "Provider-Asymmetric CPC",
+        "lock": "v0.33-prereg-r1",
+        "lock_commit": "c8f2736",
+        "no_new_llm_calls": true,
+        "seed": 280400,
+        "mc_draws": 10000,
+        "panel": [
+          "claude-opus-4-5",
+          "claude-sonnet-4-5",
+          "gpt-4o",
+          "gpt-4o-mini",
+          "gemini-2.5-flash",
+          "gemini-2.5-flash-lite"
+        ],
+        "provider_groups": {
+          "Anthropic": [
+            "claude-opus-4-5",
+            "claude-sonnet-4-5"
+          ],
+          "OpenAI": [
+            "gpt-4o",
+            "gpt-4o-mini"
+          ],
+          "Google": [
+            "gemini-2.5-flash",
+            "gemini-2.5-flash-lite"
+          ]
+        },
+        "n_brand_units": 112,
+        "reconciliation_gate": {
+          "checked": 72,
+          "mismatches": [],
+          "passed": true,
+          "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+          "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+          "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+        },
+        "computation_notes": [
+          "Zero-variance convention applied: SS_total==0 -> eta^2:=0 (not excluded).",
+          "v0.23 Phase A recognition is fully saturated (r_level set = ['R3']); binarized all-recognized, so eta^2_CP==0 for all v0.23 brands (zero-variance).",
+          "Ordinal within-pair consistency normalized by n_frames (=6 omnibus, =3 v0.18); SECONDARY/underpowered, reported descriptively.",
+          "v0.19 & v0.23 recall recompute has no external anchor (v0.31 provenance only)."
+        ],
+        "H_Provider_Asymmetry": {
+          "tier": "PRIMARY",
+          "verdict": "CONFIRMED",
+          "verdict_pre_loso": "CONFIRMED",
+          "mean_eta2_observed": 0.36025440115255475,
+          "mc_p_onesided": 0.0006999300069993001,
+          "null_mean": 0.2928849535804215,
+          "null_q95": 0.3254996315432617,
+          "per_substrate_mean_eta2": {
+            "v0.19": 0.33781203791755593,
+            "v0.20": 0.3943602432607831,
+            "v0.21": 0.3757190475406469,
+            "v0.22": 0.2826899509803922,
+            "v0.23": 0.4032099383183963
+          },
+          "n_brands": 112
+        },
+        "H_Provider_Beyond_Presence": {
+          "tier": "PRIMARY (gate)",
+          "verdict": "CONFIRMED",
+          "delta_eta2_observed": 0.5052916542325524,
+          "mc_p_onesided": 9.999000099990002e-05,
+          "mean_eta2_cvcpc_abovefloor": 0.509837108778007,
+          "mean_eta2_cp_abovefloor": 0.004545454545454545,
+          "null_mean": 0.3780425525201858,
+          "null_q95": 0.43271476906618217,
+          "n_abovefloor": 55
+        },
+        "H_Provider_Ordinal": {
+          "tier": "SECONDARY (underpowered N=5)",
+          "verdict": "UNINFORMATIVE (n.s.; N=5 underpowered)",
+          "kendalls_w": 0.31,
+          "exact_p": 0.18209876543209877,
+          "exact_null_size": 7776,
+          "within_pair_consistency": {
+            "v0.19": {
+              "Anthropic": 0.90625,
+              "OpenAI": 0.8541666666666667,
+              "Google": 0.65625
+            },
+            "v0.20": {
+              "Anthropic": 0.9375,
+              "OpenAI": 0.9375,
+              "Google": 0.9027777777777778
+            },
+            "v0.21": {
+              "Anthropic": 0.8541666666666666,
+              "OpenAI": 0.9027777777777778,
+              "Google": 0.8125
+            },
+            "v0.22": {
+              "Anthropic": 0.9375,
+              "OpenAI": 0.9305555555555557,
+              "Google": 0.9722222222222223
+            },
+            "v0.23": {
+              "Anthropic": 0.9097222222222223,
+              "OpenAI": 0.8958333333333334,
+              "Google": 0.888888888888889
+            }
+          },
+          "provider_rank_table": {
+            "v0.19": {
+              "Anthropic": 1,
+              "OpenAI": 2,
+              "Google": 3
+            },
+            "v0.20": {
+              "Anthropic": 1.5,
+              "OpenAI": 1.5,
+              "Google": 3
+            },
+            "v0.21": {
+              "Anthropic": 2,
+              "OpenAI": 1,
+              "Google": 3
+            },
+            "v0.22": {
+              "Anthropic": 2,
+              "OpenAI": 3,
+              "Google": 1
+            },
+            "v0.23": {
+              "Anthropic": 1,
+              "OpenAI": 2,
+              "Google": 3
+            }
+          }
+        },
+        "H_Provider_Phantom": {
+          "tier": "TERTIARY (exploratory, walled)",
+          "n_below_floor": 57,
+          "n_above_floor": 55,
+          "mean_eta2_below": 0.2159202095841361,
+          "mean_eta2_above": 0.509837108778007,
+          "note": "descriptive only; no confirmatory threshold (exploratory)",
+          "descriptive_mwu_p": 1.0790580672696049e-07
+        },
+        "v0_18_concordance_aside": {
+          "n_brands": 24,
+          "mean_eta2_cvcpc_3frame": 0.21802591463414633,
+          "provider_consistency_rank": [
+            "OpenAI",
+            "Anthropic",
+            "Google"
+          ],
+          "omnibus_provider_rank": [
+            "Anthropic",
+            "OpenAI",
+            "Google"
+          ],
+          "rank_order_agrees": false,
+          "note": "WALLED \u2014 3-frame geometry non-comparable; directional concordance only, not pooled into PRIMARY/delta/Kendall"
+        },
+        "loso": {
+          "survives_all": true,
+          "per_leftout": {
+            "v0.19": {
+              "left_out": "v0.19",
+              "n_brands": 96,
+              "mean_eta2": 0.3639947950250546,
+              "p": 0.00039996000399960006,
+              "significant": true
+            },
+            "v0.20": {
+              "left_out": "v0.20",
+              "n_brands": 88,
+              "mean_eta2": 0.35095280785031074,
+              "p": 0.0028997100289971,
+              "significant": true
+            },
+            "v0.21": {
+              "left_out": "v0.21",
+              "n_brands": 88,
+              "mean_eta2": 0.35603677031943876,
+              "p": 0.0006999300069993001,
+              "significant": true
+            },
+            "v0.22": {
+              "left_out": "v0.22",
+              "n_brands": 88,
+              "mean_eta2": 0.38140834210859914,
+              "p": 0.0025997400259974,
+              "significant": true
+            },
+            "v0.23": {
+              "left_out": "v0.23",
+              "n_brands": 88,
+              "mean_eta2": 0.34853925465277985,
+              "p": 0.0029997000299970002,
+              "significant": true
+            }
+          }
+        },
+        "deviations": []
+      }
+    },
+    "v0.34": {
+      "source": "osf/v34/v34_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6915458",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "verdicts.H_CPC_Temporal_Stability": "CONFIRMED",
+        "verdicts.H_CPC_Drift_Beyond_Presence": "MARGINAL",
+        "verdicts.H_Presence_Temporal_Stability": "MARGINAL",
+        "verdicts.H_Phantom_Temporal_Persistence": "DESCRIPTIVE"
+      },
+      "record": {
+        "phase": "v0.34",
+        "title": "CPC Longitudinal t1->t2 Stability",
+        "lock": "v0.34-prereg-r1",
+        "seed": 280400,
+        "mc_draws": 10000,
+        "panel": [
+          "claude-opus-4-5",
+          "claude-sonnet-4-5",
+          "gpt-4o",
+          "gpt-4o-mini",
+          "gemini-2.5-flash",
+          "gemini-2.5-flash-lite"
+        ],
+        "n_brand_units": 112,
+        "verdicts": {
+          "H_CPC_Temporal_Stability": {
+            "tier": "PRIMARY",
+            "verdict": "CONFIRMED",
+            "n_conf_ge070": 4,
+            "n_fals_lt050": 1,
+            "per_substrate_rho": {
+              "v0.19": 0.4191691916696407,
+              "v0.20": 0.7833333333333333,
+              "v0.21": 0.8901098901098902,
+              "v0.22": 0.9601793410322754,
+              "v0.23": 0.7615129419677079
+            }
+          },
+          "H_CPC_Drift_Beyond_Presence": {
+            "tier": "PRIMARY_gate",
+            "verdict": "MARGINAL",
+            "directional_lean": "FALSIFIED-or-marginal",
+            "nonflagged_substrates": [
+              "v0.19"
+            ],
+            "n_resid_ge050": 1,
+            "n_resid_lt050": 0,
+            "per_substrate_residual_rho": {
+              "v0.19": 0.6107893935757621,
+              "v0.20": 0.7833333333333333,
+              "v0.21": 0.8901098901098902,
+              "v0.22": 0.9601793410322754,
+              "v0.23": 0.7615129419677079
+            },
+            "per_substrate_delta_coupling_rho": {
+              "v0.19": 0.19011727515734336,
+              "v0.20": null,
+              "v0.21": null,
+              "v0.22": null,
+              "v0.23": null
+            },
+            "saturation_flagged": {
+              "v0.19": false,
+              "v0.20": true,
+              "v0.21": true,
+              "v0.22": true,
+              "v0.23": true
+            }
+          },
+          "H_Presence_Temporal_Stability": {
+            "tier": "SECONDARY",
+            "verdict": "MARGINAL",
+            "n_conf_ge080": 3,
+            "n_fals_lt060": 0,
+            "per_substrate_rho": {
+              "v0.19": 0.8146133524243953,
+              "v0.20": 0.9861830742659757,
+              "v0.21": null,
+              "v0.22": 1.0,
+              "v0.23": null
+            }
+          },
+          "H_Phantom_Temporal_Persistence": {
+            "tier": "TERTIARY",
+            "verdict": "DESCRIPTIVE",
+            "per_substrate": {
+              "v0.19": {
+                "t1_phantom": 8,
+                "retained_t2": 8,
+                "proportion": 1.0
+              },
+              "v0.20": {
+                "t1_phantom": 14,
+                "retained_t2": 14,
+                "proportion": 1.0
+              },
+              "v0.21": {
+                "t1_phantom": 10,
+                "retained_t2": 9,
+                "proportion": 0.9
+              },
+              "v0.22": {
+                "t1_phantom": 10,
+                "retained_t2": 10,
+                "proportion": 1.0
+              },
+              "v0.23": {
+                "t1_phantom": 15,
+                "retained_t2": 15,
+                "proportion": 1.0
+              }
+            }
+          }
+        },
+        "per_substrate": {
+          "v0.19": {
+            "n_brands_both_waves": 16,
+            "cpc": {
+              "rho": 0.4191691916696407,
+              "mc_p": 0.1523847615238476,
+              "n_defined_both": 8
+            },
+            "presence": {
+              "rho": 0.8146133524243953,
+              "mc_p": 0.0005999400059994001,
+              "n": 16
+            },
+            "gate": {
+              "rho_delta_cpc_cp": 0.19011727515734336,
+              "residual_rho": 0.6107893935757621,
+              "saturation_flagged": false,
+              "per_model_recog_rate_t1": [
+                1.0,
+                0.875,
+                1.0,
+                1.0,
+                0.875,
+                1.0
+              ],
+              "per_model_recog_rate_t2": [
+                0.875,
+                0.875,
+                1.0,
+                1.0,
+                0.75,
+                1.0
+              ]
+            },
+            "phantom": {
+              "t1_phantom": 8,
+              "retained_t2": 8,
+              "proportion": 1.0
+            },
+            "descriptive": {
+              "note": "descriptive only; non-verdict-bearing; complements rank stats where C_P/recall is rank-degenerate",
+              "cp_exact_match_proportion": 0.75,
+              "cp_constant_both_waves": false,
+              "recall_vector_exact_match_proportion": 0.25,
+              "defined_brand_counts": {
+                "note": "CV-CPC defined (mean per-model recall >= 1.0 floor) per wave; n_both is the Spearman n",
+                "n_defined_t1": 8,
+                "n_defined_t2": 8,
+                "n_defined_both": 8,
+                "n_brands_total": 16
+              }
+            }
+          },
+          "v0.20": {
+            "n_brands_both_waves": 24,
+            "cpc": {
+              "rho": 0.7833333333333333,
+              "mc_p": 0.0086991300869913,
+              "n_defined_both": 9
+            },
+            "presence": {
+              "rho": 0.9861830742659757,
+              "mc_p": 9.999000099990002e-05,
+              "n": 24
+            },
+            "gate": {
+              "rho_delta_cpc_cp": null,
+              "residual_rho": 0.7833333333333333,
+              "saturation_flagged": true,
+              "per_model_recog_rate_t1": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "per_model_recog_rate_t2": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "phantom": {
+              "t1_phantom": 14,
+              "retained_t2": 14,
+              "proportion": 1.0
+            },
+            "descriptive": {
+              "note": "descriptive only; non-verdict-bearing; complements rank stats where C_P/recall is rank-degenerate",
+              "cp_exact_match_proportion": 0.8333333333333334,
+              "cp_constant_both_waves": false,
+              "recall_vector_exact_match_proportion": 0.2916666666666667,
+              "defined_brand_counts": {
+                "note": "CV-CPC defined (mean per-model recall >= 1.0 floor) per wave; n_both is the Spearman n",
+                "n_defined_t1": 10,
+                "n_defined_t2": 9,
+                "n_defined_both": 9,
+                "n_brands_total": 24
+              }
+            }
+          },
+          "v0.21": {
+            "n_brands_both_waves": 24,
+            "cpc": {
+              "rho": 0.8901098901098902,
+              "mc_p": 0.00019998000199980003,
+              "n_defined_both": 13
+            },
+            "presence": {
+              "rho": null,
+              "mc_p": null,
+              "n": 24
+            },
+            "gate": {
+              "rho_delta_cpc_cp": null,
+              "residual_rho": 0.8901098901098902,
+              "saturation_flagged": true,
+              "per_model_recog_rate_t1": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "per_model_recog_rate_t2": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "phantom": {
+              "t1_phantom": 10,
+              "retained_t2": 9,
+              "proportion": 0.9
+            },
+            "descriptive": {
+              "note": "descriptive only; non-verdict-bearing; complements rank stats where C_P/recall is rank-degenerate",
+              "cp_exact_match_proportion": 1.0,
+              "cp_constant_both_waves": true,
+              "recall_vector_exact_match_proportion": 0.16666666666666666,
+              "defined_brand_counts": {
+                "note": "CV-CPC defined (mean per-model recall >= 1.0 floor) per wave; n_both is the Spearman n",
+                "n_defined_t1": 14,
+                "n_defined_t2": 14,
+                "n_defined_both": 13,
+                "n_brands_total": 24
+              }
+            }
+          },
+          "v0.22": {
+            "n_brands_both_waves": 24,
+            "cpc": {
+              "rho": 0.9601793410322754,
+              "mc_p": 9.999000099990002e-05,
+              "n_defined_both": 14
+            },
+            "presence": {
+              "rho": 1.0,
+              "mc_p": 0.041995800419958006,
+              "n": 24
+            },
+            "gate": {
+              "rho_delta_cpc_cp": null,
+              "residual_rho": 0.9601793410322754,
+              "saturation_flagged": true,
+              "per_model_recog_rate_t1": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "per_model_recog_rate_t2": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "phantom": {
+              "t1_phantom": 10,
+              "retained_t2": 10,
+              "proportion": 1.0
+            },
+            "descriptive": {
+              "note": "descriptive only; non-verdict-bearing; complements rank stats where C_P/recall is rank-degenerate",
+              "cp_exact_match_proportion": 1.0,
+              "cp_constant_both_waves": false,
+              "recall_vector_exact_match_proportion": 0.4583333333333333,
+              "defined_brand_counts": {
+                "note": "CV-CPC defined (mean per-model recall >= 1.0 floor) per wave; n_both is the Spearman n",
+                "n_defined_t1": 14,
+                "n_defined_t2": 14,
+                "n_defined_both": 14,
+                "n_brands_total": 24
+              }
+            }
+          },
+          "v0.23": {
+            "n_brands_both_waves": 24,
+            "cpc": {
+              "rho": 0.7615129419677079,
+              "mc_p": 0.010198980101989802,
+              "n_defined_both": 9
+            },
+            "presence": {
+              "rho": null,
+              "mc_p": null,
+              "n": 24
+            },
+            "gate": {
+              "rho_delta_cpc_cp": null,
+              "residual_rho": 0.7615129419677079,
+              "saturation_flagged": true,
+              "per_model_recog_rate_t1": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ],
+              "per_model_recog_rate_t2": [
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0,
+                1.0
+              ]
+            },
+            "phantom": {
+              "t1_phantom": 15,
+              "retained_t2": 15,
+              "proportion": 1.0
+            },
+            "descriptive": {
+              "note": "descriptive only; non-verdict-bearing; complements rank stats where C_P/recall is rank-degenerate",
+              "cp_exact_match_proportion": 1.0,
+              "cp_constant_both_waves": true,
+              "recall_vector_exact_match_proportion": 0.4166666666666667,
+              "defined_brand_counts": {
+                "note": "CV-CPC defined (mean per-model recall >= 1.0 floor) per wave; n_both is the Spearman n",
+                "n_defined_t1": 9,
+                "n_defined_t2": 9,
+                "n_defined_both": 9,
+                "n_brands_total": 24
+              }
+            }
+          }
+        },
+        "delta_t": [
+          {
+            "substrate": "v0.19",
+            "t1": "2026-05-20",
+            "t2": "2026-06-10",
+            "delta_days": 21
+          },
+          {
+            "substrate": "v0.20",
+            "t1": "2026-05-21",
+            "t2": "2026-06-10",
+            "delta_days": 20
+          },
+          {
+            "substrate": "v0.21",
+            "t1": "2026-05-22",
+            "t2": "2026-06-10",
+            "delta_days": 19
+          },
+          {
+            "substrate": "v0.22",
+            "t1": "2026-05-25",
+            "t2": "2026-06-10",
+            "delta_days": 16
+          },
+          {
+            "substrate": "v0.23",
+            "t1": "2026-05-26",
+            "t2": "2026-06-10",
+            "delta_days": 15
+          }
+        ]
+      }
+    },
+    "v0.35": {
+      "source": "osf/v35/v35_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6921758",
+      "ssrn_status": "declined",
+      "verdicts": {
+        "verdicts.H_Phantom_CPC_Signature": "CONFIRMED",
+        "verdicts.H_Phantom_Beyond_Presence": "UNDETERMINED (control flip)",
+        "verdicts.H_Phantom_Beyond_Presence.control_C_P": "CONFIRMED",
+        "verdicts.H_Phantom_Beyond_Presence.control_recall_mean": "FALSIFIED",
+        "verdicts.H_Phantom_Cross_Substrate": "UNINFORMATIVE (n.s.; underpowered N=4; 4/4 concordant, p=0.125)",
+        "verdicts.H_Phantom_t2_Stability": "DESCRIPTIVE",
+        "sensitivity.loso_raw.per_leftout.v0.19": "CONFIRMED",
+        "sensitivity.loso_raw.per_leftout.v0.20": "CONFIRMED",
+        "sensitivity.loso_raw.per_leftout.v0.21": "CONFIRMED",
+        "sensitivity.loso_raw.per_leftout.v0.22": "CONFIRMED",
+        "sensitivity.loso_raw.per_leftout.v0.23": "CONFIRMED",
+        "sensitivity.loso_gate.per_leftout.v0.19": "UNDETERMINED (control flip)",
+        "sensitivity.loso_gate.per_leftout.v0.20": "UNDETERMINED (control flip)",
+        "sensitivity.loso_gate.per_leftout.v0.21": "UNDETERMINED (control flip)",
+        "sensitivity.loso_gate.per_leftout.v0.22": "UNDETERMINED (control flip)",
+        "sensitivity.loso_gate.per_leftout.v0.23": "UNDETERMINED (control flip)"
+      },
+      "record": {
+        "phase": "v0.35",
+        "title": "Naive-Phantom x CPC: Do Phantom-Flagged Brands Carry a Distinct Consistency Signature?",
+        "lock": "v0.35-prereg-r1",
+        "lock_commit": "8b254f2",
+        "no_new_llm_calls": true,
+        "seed": 280400,
+        "rng_seeds": {
+          "raw": 280400,
+          "gate_cp": 280410,
+          "gate_rm": 280420,
+          "t2": 280430
+        },
+        "loso_seed_base": {
+          "raw": 280401,
+          "gate": 280440
+        },
+        "mc_draws": 10000,
+        "panel": [
+          "claude-opus-4-5",
+          "claude-sonnet-4-5",
+          "gpt-4o",
+          "gpt-4o-mini",
+          "gemini-2.5-flash",
+          "gemini-2.5-flash-lite"
+        ],
+        "n_brand_units": 112,
+        "metric": "CV-CPC = 1/(1+CV), CV=sd_pop/mean of 6-model recall (ddof=0); characterization quantity computed below floor; all-zero recall excluded (CV undefined)",
+        "phantom_flag": "status=='undefined' in v31_cpc.csv == mean_r<1.0 (frozen v0.31 archive)",
+        "reconciliation_gate": {
+          "v33_deposit": {
+            "v0.19": {
+              "n": 16,
+              "recall_sha256_consumed": "50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f",
+              "recall_sha256_deposit": "50ff02f8c7b8697eaab6f848cdad0d8bb3436fb5a7d3edb44e6c31aa4f69191f",
+              "recall_match": true,
+              "recog_sha256_consumed": "ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d",
+              "recog_sha256_deposit": "ff9ac09dfec0aa8062e2aebfc9255044165f81bbc330362ab45f6239e73c722d",
+              "recog_match": true,
+              "mismatches": []
+            },
+            "v0.20": {
+              "n": 24,
+              "recall_sha256_consumed": "90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd",
+              "recall_sha256_deposit": "90e93158336ba0ee3ea62ec5d348c16fd529967d70f3badf07bb722a7f082bcd",
+              "recall_match": true,
+              "recog_sha256_consumed": "7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882",
+              "recog_sha256_deposit": "7ceaaaa03b97ee2ed111b2f9552480b82b6054601303fae388ae6876a9901882",
+              "recog_match": true,
+              "mismatches": []
+            },
+            "v0.21": {
+              "n": 24,
+              "recall_sha256_consumed": "fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba",
+              "recall_sha256_deposit": "fe242df1141370e57c559eb43e981d5e8006efd593209286b2924729d062a0ba",
+              "recall_match": true,
+              "recog_sha256_consumed": "09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79",
+              "recog_sha256_deposit": "09026ff6984f100b4fc4c8ad7418330a76fa6ceb460f0783cf9166050c1dfc79",
+              "recog_match": true,
+              "mismatches": []
+            },
+            "v0.22": {
+              "n": 24,
+              "recall_sha256_consumed": "2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4",
+              "recall_sha256_deposit": "2faef8fdf15890e117a178ba1530a857c34a68612a761ba0d67d4ec1b42d53b4",
+              "recall_match": true,
+              "recog_sha256_consumed": "202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56",
+              "recog_sha256_deposit": "202f389521a3a7fd9dd2942ecade657970e9817e6509babf47707663cd497b56",
+              "recog_match": true,
+              "mismatches": []
+            },
+            "v0.23": {
+              "n": 24,
+              "recall_sha256_consumed": "7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde",
+              "recall_sha256_deposit": "7f0d2bd943e9a2f7018111478393feaa032cc1f2571e5a264abee31203888dde",
+              "recall_match": true,
+              "recog_sha256_consumed": "59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd",
+              "recog_sha256_deposit": "59cf039fc17560f2ec75610701d89d3a2946fc97efede2c72b76893b051006cd",
+              "recog_match": true,
+              "mismatches": []
+            }
+          },
+          "v17_anchor": {
+            "checked": 72,
+            "mismatches": [],
+            "passed": true,
+            "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+            "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+            "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+          },
+          "passed": true
+        },
+        "phantom_flag_consistency": {
+          "checked": 112,
+          "disagreements": []
+        },
+        "cpc_score_cross_check": {
+          "checked": 55,
+          "max_abs_err": 0.0
+        },
+        "enumeration": {
+          "v0.19": {
+            "flagged": 8,
+            "analyzable": 4,
+            "excluded_allzero": 4,
+            "non_phantom": 8,
+            "eligible_ge4": true,
+            "brands": 16
+          },
+          "v0.20": {
+            "flagged": 14,
+            "analyzable": 9,
+            "excluded_allzero": 5,
+            "non_phantom": 10,
+            "eligible_ge4": true,
+            "brands": 24
+          },
+          "v0.21": {
+            "flagged": 10,
+            "analyzable": 5,
+            "excluded_allzero": 5,
+            "non_phantom": 14,
+            "eligible_ge4": true,
+            "brands": 24
+          },
+          "v0.22": {
+            "flagged": 10,
+            "analyzable": 1,
+            "excluded_allzero": 9,
+            "non_phantom": 14,
+            "eligible_ge4": false,
+            "brands": 24
+          },
+          "v0.23": {
+            "flagged": 15,
+            "analyzable": 10,
+            "excluded_allzero": 5,
+            "non_phantom": 9,
+            "eligible_ge4": true,
+            "brands": 24
+          }
+        },
+        "eligible_substrates": [
+          "v0.19",
+          "v0.20",
+          "v0.21",
+          "v0.23"
+        ],
+        "attrition": {
+          "flagged": 57,
+          "analyzable_phantom": 29,
+          "excluded_all_zero": 28,
+          "non_phantom": 55,
+          "analysis_set_n": 84
+        },
+        "verdicts": {
+          "H_Phantom_CPC_Signature": {
+            "tier": "PRIMARY (raw arm; manipulation check)",
+            "verdict": "CONFIRMED",
+            "cliffs_delta": -0.8378378378378378,
+            "mc_p_twosided": 9.999000099990002e-05,
+            "n_phantom_analyzable": 29,
+            "n_nonphantom": 55,
+            "n_within_substrate_pairs": 296,
+            "per_substrate_delta": {
+              "v0.19": -0.9375,
+              "v0.20": -0.9555555555555556,
+              "v0.21": -0.8857142857142857,
+              "v0.22": -1.0,
+              "v0.23": -0.6222222222222222
+            },
+            "mechanistic_annotation": "mechanism predicts phantoms LOWER CV-CPC (delta<0); descriptive only",
+            "inferential_weight": "manipulation check only -- both arms recall-coupled by construction; the phase's inferential claim rests on the gate",
+            "verdict_pre_loso": "CONFIRMED"
+          },
+          "H_Phantom_Beyond_Presence": {
+            "tier": "PRIMARY (gating)",
+            "verdict": "UNDETERMINED (control flip)",
+            "control_flip": true,
+            "directional_lean": "FALSIFIED-or-marginal (rho=0.77 Presence-coupling, v1.7)",
+            "control_C_P": {
+              "verdict": "CONFIRMED",
+              "delta_resid": -0.7972972972972973,
+              "mc_p_twosided": 9.999000099990002e-05,
+              "per_substrate_delta": {
+                "v0.19": -0.9375,
+                "v0.20": -0.8222222222222222,
+                "v0.21": -0.8857142857142857,
+                "v0.22": -1.0,
+                "v0.23": -0.6222222222222222
+              },
+              "per_substrate_covariate_constant": {
+                "v0.19": false,
+                "v0.20": false,
+                "v0.21": true,
+                "v0.22": true,
+                "v0.23": true
+              }
+            },
+            "control_recall_mean": {
+              "verdict": "FALSIFIED",
+              "delta_resid": 0.06756756756756757,
+              "mc_p_twosided": 0.6546345365463454,
+              "per_substrate_delta": {
+                "v0.19": -0.125,
+                "v0.20": 0.3111111111111111,
+                "v0.21": -0.05714285714285714,
+                "v0.22": -0.5714285714285714,
+                "v0.23": 0.08888888888888889
+              },
+              "per_substrate_covariate_constant": {
+                "v0.19": false,
+                "v0.20": false,
+                "v0.21": false,
+                "v0.22": false,
+                "v0.23": false
+              }
+            },
+            "n": 84,
+            "finding_note": "control flip IS the finding; gate UNDETERMINED, routed to v1.8",
+            "verdict_pre_loso": "UNDETERMINED (control flip)"
+          },
+          "H_Phantom_Cross_Substrate": {
+            "tier": "SECONDARY (underpowered; per spec)",
+            "verdict": "UNINFORMATIVE (n.s.; underpowered N=4; 4/4 concordant, p=0.125)",
+            "eligible_substrates": [
+              "v0.19",
+              "v0.20",
+              "v0.21",
+              "v0.23"
+            ],
+            "per_substrate_delta_all": {
+              "v0.19": -0.9375,
+              "v0.20": -0.9555555555555556,
+              "v0.21": -0.8857142857142857,
+              "v0.22": -1.0,
+              "v0.23": -0.6222222222222222
+            },
+            "signs_eligible": {
+              "v0.19": -1,
+              "v0.20": -1,
+              "v0.21": -1,
+              "v0.23": -1
+            },
+            "n_negative": 4,
+            "n_positive": 0,
+            "binomial_p_twosided": 0.125,
+            "note": "raw-arm (CV-CPC) per-substrate delta (D3). Exact binomial sign test on eligible (>=4 analyzable) substrates only; full 5-substrate table reported regardless. 4 substrates cannot reach p<0.05 even at 4/4 (structural underpower)."
+          },
+          "H_Phantom_t2_Stability": {
+            "tier": "TERTIARY (exploratory; WALLED; descriptive only)",
+            "verdict": "DESCRIPTIVE",
+            "wall_note": "test-retest stability check on the v0.34 t2 near-replica panel (0.98 phantom persistence); NO independence claimed; quarantined from all PRIMARY/SECONDARY verdict logic; no confirmatory thresholds applied.",
+            "membership": "phantom flag frozen at t1; CV-CPC recomputed from t2 recall",
+            "raw_arm": {
+              "cliffs_delta": -0.8147058823529412,
+              "mc_p_twosided": 9.999000099990002e-05,
+              "n_phantom_analyzable": 33,
+              "n_nonphantom": 55,
+              "per_substrate_delta": {
+                "v0.19": -1.0,
+                "v0.20": -0.925,
+                "v0.21": -0.5476190476190477,
+                "v0.22": -1.0,
+                "v0.23": -0.8240740740740741
+              }
+            },
+            "gate_control_C_P": {
+              "delta_resid": -0.7911764705882353,
+              "mc_p_twosided": 9.999000099990002e-05
+            },
+            "gate_control_recall_mean": {
+              "delta_resid": 0.061764705882352944,
+              "mc_p_twosided": 0.6658334166583342
+            },
+            "t1_units_absent_from_t2": 0
+          }
+        },
+        "sensitivity": {
+          "loso_raw": {
+            "survives_all": true,
+            "per_leftout": {
+              "v0.19": {
+                "left_out": "v0.19",
+                "delta": -0.8257575757575758,
+                "p": 9.999000099990002e-05,
+                "verdict": "CONFIRMED",
+                "n": 72
+              },
+              "v0.20": {
+                "left_out": "v0.20",
+                "delta": -0.7864077669902912,
+                "p": 9.999000099990002e-05,
+                "verdict": "CONFIRMED",
+                "n": 65
+              },
+              "v0.21": {
+                "left_out": "v0.21",
+                "delta": -0.8230088495575221,
+                "p": 9.999000099990002e-05,
+                "verdict": "CONFIRMED",
+                "n": 65
+              },
+              "v0.22": {
+                "left_out": "v0.22",
+                "delta": -0.8297872340425532,
+                "p": 9.999000099990002e-05,
+                "verdict": "CONFIRMED",
+                "n": 69
+              },
+              "v0.23": {
+                "left_out": "v0.23",
+                "delta": -0.9320388349514563,
+                "p": 9.999000099990002e-05,
+                "verdict": "CONFIRMED",
+                "n": 65
+              }
+            },
+            "full_verdict": "CONFIRMED",
+            "fragile": false
+          },
+          "loso_gate": {
+            "survives_all": true,
+            "per_leftout": {
+              "v0.19": {
+                "left_out": "v0.19",
+                "verdict": "UNDETERMINED (control flip)",
+                "control_flip": true,
+                "delta_resid_C_P": -0.7803030303030303,
+                "p_C_P": 9.999000099990002e-05,
+                "delta_resid_recall_mean": 0.09090909090909091,
+                "p_recall_mean": 0.5718428157184282,
+                "n": 72
+              },
+              "v0.20": {
+                "left_out": "v0.20",
+                "verdict": "UNDETERMINED (control flip)",
+                "control_flip": true,
+                "delta_resid_C_P": -0.7864077669902912,
+                "p_C_P": 9.999000099990002e-05,
+                "delta_resid_recall_mean": -0.038834951456310676,
+                "p_recall_mean": 0.8396160383961604,
+                "n": 65
+              },
+              "v0.21": {
+                "left_out": "v0.21",
+                "verdict": "UNDETERMINED (control flip)",
+                "control_flip": true,
+                "delta_resid_C_P": -0.7699115044247787,
+                "p_C_P": 9.999000099990002e-05,
+                "delta_resid_recall_mean": 0.10619469026548672,
+                "p_recall_mean": 0.5335466453354665,
+                "n": 65
+              },
+              "v0.22": {
+                "left_out": "v0.22",
+                "verdict": "UNDETERMINED (control flip)",
+                "control_flip": true,
+                "delta_resid_C_P": -0.7872340425531915,
+                "p_C_P": 9.999000099990002e-05,
+                "delta_resid_recall_mean": 0.09929078014184398,
+                "p_recall_mean": 0.5173482651734826,
+                "n": 69
+              },
+              "v0.23": {
+                "left_out": "v0.23",
+                "verdict": "UNDETERMINED (control flip)",
+                "control_flip": true,
+                "delta_resid_C_P": -0.8737864077669902,
+                "p_C_P": 9.999000099990002e-05,
+                "delta_resid_recall_mean": 0.05825242718446602,
+                "p_recall_mean": 0.7525247475252475,
+                "n": 65
+              }
+            },
+            "full_verdict": "UNDETERMINED (control flip)",
+            "fragile": false
+          },
+          "threshold_reruns": {
+            "hi_0.2": {
+              "confirmed_threshold": 0.2,
+              "falsified_threshold": 0.15,
+              "H_Phantom_CPC_Signature": "CONFIRMED",
+              "H_Phantom_Beyond_Presence": "UNDETERMINED (control flip)",
+              "gate_control_C_P": "CONFIRMED",
+              "gate_control_recall_mean": "FALSIFIED"
+            },
+            "hi_0.4": {
+              "confirmed_threshold": 0.4,
+              "falsified_threshold": 0.15,
+              "H_Phantom_CPC_Signature": "CONFIRMED",
+              "H_Phantom_Beyond_Presence": "UNDETERMINED (control flip)",
+              "gate_control_C_P": "CONFIRMED",
+              "gate_control_recall_mean": "FALSIFIED"
+            }
+          }
+        },
+        "deviations": [
+          {
+            "id": "D1",
+            "title": "Pooled Cliff's delta = within-substrate cross-pair pooling",
+            "resolution": "Observed pooled delta = sum_s[#ph>non - #ph<non] / sum_s(n_ph,s*n_non,s); observed statistic respects strata; null permutes labels within substrate. Not strata-ignoring all-pairs (would break exchangeability)."
+          },
+          {
+            "id": "D2",
+            "title": "Rank-residualization fit population",
+            "resolution": "Fit over ALL analyzable units (phantom + non-phantom) within substrate so the residual carries the phantom contrast; not non-phantom-only."
+          },
+          {
+            "id": "D3",
+            "title": "Cross-substrate per-substrate delta arm",
+            "resolution": "Raw arm (CV-CPC), not residualized; binomial sign test on eligible (>=4) substrates."
+          }
+        ],
+        "computation_notes": [
+          "Phantom CV-CPC recomputed as 1/(1+sd_pop/mean) from re-extracted recall (cpc_score blank for undefined rows in v31_cpc.csv); defined-unit CV-CPC reproduces frozen cpc_score (max|err|=0.00e+00).",
+          "Population SD (ddof=0), CV=sd_pop/mean, per score_v0_31 convention.",
+          "Cliff's delta ties contribute 0; two-sided permutation p=(1+#{|d_perm|>=|d_obs|})/(N+1).",
+          "Opposite-direction significance falsifies the mechanism-signature claim (checked before the magnitude-CONFIRMED branch).",
+          "Rank residualization: OLS of avg-tie ranks; zero rank-variance covariate or n<3 -> centered ranks (no-op), mirroring score_v34.residualize. Recognition saturation -> C_P control near no-op; recall-mean control attenuates strongly (phantom flag IS low recall-mean) -> flip plausible.",
+          "v0.22 enters pooled analysis only (1 analyzable phantom < 4-floor); stratum min-cell=1, coarsely quantized null (15 within-stratum states) but valid.",
+          "Cross-substrate exact binomial on 4 eligible substrates cannot reach p<0.05 even at 4/4 (structural underpower; pre-acknowledged in the lock).",
+          "v0.23 Phase A recognition r_levels=['R3'] (binarized all-recognized; C_P saturated).",
+          "H_Phantom_t2_Stability is WALLED: descriptive only, no thresholds, quarantined from verdicts."
+        ]
+      }
+    },
+    "v0.36": {
+      "source": "osf/aias_2_0/inputs/v36_verdicts.json",
+      "era": "CV-CPC era (lineage; instrument not adopted per v1.7)",
+      "ssrn": "6927958",
+      "ssrn_status": "declined",
+      "verdicts": {
+        "hypotheses.H_RegimeInheritance": "NOT SUPPORTED",
+        "hypotheses.H_RegimeAutonomy": "NOT SUPPORTED",
+        "hypotheses.H_ResidualStructure": "NOT SUPPORTED",
+        "hypotheses.H_SaturationDegeneracy": "NOT SUPPORTED"
+      },
+      "record": {
+        "phase": "v0.36",
+        "title": "CPC Regime Emergence: Does Cross-Model CPC Cluster Structure Recover the Per-Brand Presence-Regime Classification, Cluster Autonomously, or Collapse Under Saturation?",
+        "lock_tag": "v0.36-prereg-r2",
+        "metadata": {
+          "seed": 36,
+          "feature_note": "6-dim per-model feature = recall_per_model (per-model components of CV-CPC), z-scored within substrate per model; scalar CV-CPC = sensitivity arm.",
+          "clustering": "Ward/Euclidean; gap (Tibshirani 1-SE, uniform bbox ref, B=500, k in {1..8}); within-substrate permutation null n=10000; k-means 50 restarts (sensitivity).",
+          "n_defined_per_substrate": {
+            "v0.19": 8,
+            "v0.20": 10,
+            "v0.21": 14,
+            "v0.22": 14,
+            "v0.23": 9
+          },
+          "gate": {
+            "v23_labels_ok": true,
+            "determinism_ok": true,
+            "passed": true
+          },
+          "no_sklearn": "ARI/silhouette/k-means implemented in-script (deterministic).",
+          "sensitivity": {
+            "scalar_cvcpc_arm": {
+              "feature": "scalar CV-CPC, z-scored within substrate",
+              "selected_k": 1,
+              "ari_vs_6dim_primary": 0.0,
+              "n": 55
+            },
+            "kmeans_arm": {
+              "k": 3,
+              "restarts": 50,
+              "ari_vs_ward_primary": 0.4287
+            },
+            "v35_84unit_concordance": {
+              "set": "v0.35 frozen 84-unit analysis set (mean recall > 0; v0.35 floor)",
+              "n_units": 84,
+              "n_v23_defined": 19,
+              "verdict_cell": "unmapped",
+              "concordant_with_primary": false,
+              "inheritance": "NOT SUPPORTED",
+              "autonomy": "SUPPORTED",
+              "residual": "NOT SUPPORTED",
+              "saturation": "NOT SUPPORTED",
+              "omnibus_k": 3,
+              "omnibus_silhouette": 0.3498,
+              "inheritance_ari": 0.0,
+              "inheritance_k": 1,
+              "inheritance_n": 19
+            }
+          },
+          "deviations": [
+            {
+              "entry": "DEV-S1 (post-primary sensitivity execution)",
+              "text": "The locked sensitivity/robustness arms \u2014 scalar CV-CPC feature, k-means concordance at the gap-selected k, and the v0.35 84-unit verdict-concordance check \u2014 were executed in a second deterministic pass AFTER the primary scoring run (same thresholds, same seed=36, frozen inputs; pre-publication). They are robustness checks and do NOT alter any locked primary verdict (Cell D stands). The r2 scorer omitted them at the primary run; logged here for transparency. A canonical prereg DEVIATIONS amendment (v0.36-prereg-r3) is recommended to mirror this in the deposited pre-registration."
+            }
+          ]
+        },
+        "selected_k": {
+          "omnibus_raw": 3,
+          "omnibus_mean_recall_residual": 2,
+          "v23_raw": 1,
+          "v23_residual": 1
+        },
+        "hypotheses": {
+          "H_RegimeInheritance": {
+            "scope": "v0.23 (n=24); ARI against frozen brand_details[].regime; within-substrate permutation null.",
+            "verdict": "NOT SUPPORTED",
+            "ari": 0.0,
+            "ari_null_pct": 0.0,
+            "ari_p": 1.0,
+            "n": 9,
+            "selected_k": 1,
+            "prediction": "SUPPORTED"
+          },
+          "H_RegimeAutonomy": {
+            "scope": "internal-structure criteria (gap k, silhouette, silhouette null) OMNIBUS (112); ARI<0.30 leg on v0.23 (n=24). Composed across scopes; each component reported with its scope.",
+            "verdict": "NOT SUPPORTED",
+            "omnibus_internal": {
+              "k": 3,
+              "silhouette": 0.2422,
+              "null_pct": 100.0
+            },
+            "v23_ari_below_0.30": true,
+            "mutually_exclusive_note": "moot if inheritance SUPPORTED"
+          },
+          "H_ResidualStructure": {
+            "scope": "v0.23 (n=24), residualized on composite_presence (PRIMARY). SECONDARY sensitivity (omnibus, 112): residualize 6-dim CPC on per-brand mean recall; sensitivity-only, never verdict-determining.",
+            "verdict": "NOT SUPPORTED",
+            "v23_residual": {
+              "k": 1,
+              "silhouette": 0.0,
+              "null_pct": 0.0
+            },
+            "omnibus_mean_recall_sensitivity": {
+              "verdict_sensitivity_only": "SUPPORTED",
+              "k": 2,
+              "silhouette": 0.2895,
+              "null_pct": 100.0
+            },
+            "prediction": "NOT SUPPORTED"
+          },
+          "H_SaturationDegeneracy": {
+            "scope": "OMNIBUS (112); saturated list = ANALYSIS_SET_SPEC['saturated_substrate_list']['operative'].",
+            "verdict": "NOT SUPPORTED",
+            "prediction": "SUPPORTED",
+            "per_substrate_cvcpc_variance": {
+              "v0.19": 0.00153,
+              "v0.20": 0.02185,
+              "v0.21": 0.01522,
+              "v0.22": 0.01093,
+              "v0.23": 0.00507
+            },
+            "per_substrate_gap_k": {
+              "v0.19": 2,
+              "v0.20": 3,
+              "v0.21": 2,
+              "v0.22": 4,
+              "v0.23": 1
+            },
+            "bf_levene_W": 9.5642,
+            "bf_levene_p_two_sided": 0.00316,
+            "bf_directional_p": 0.99967,
+            "dev_mean_saturated": 0.0952,
+            "dev_mean_unsaturated": 0.0243,
+            "criterion_a_variance": false,
+            "criterion_b_gap_majority": false,
+            "sat_substrates_k1": 1,
+            "uns_substrates_k2plus": 1
+          }
+        },
+        "verdict_matrix_cell": "Cell D",
+        "verdict_matrix_cell_verdict": "unstructured",
+        "omnibus_internal_structure_descriptor": {
+          "k": 3,
+          "silhouette": 0.2422,
+          "null_pct": 100.0,
+          "p": 0.0001
+        },
+        "predicted_net": "Cell A (borrowed structure) -- v0.23 inheritance SUPPORTED and v0.23 residual NOT SUPPORTED. Fifth empirical pillar for the v1.8 mean-independent instrument requirement. No re-tuning from r1."
+      }
+    },
+    "v1.7": {
+      "source": "osf/methodology/v1_7/v1_7_cpc_verdicts.json",
+      "era": "CV-CPC falsified (turning point)",
+      "ssrn": "6878818",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "H_CPC_Defined": "FALSIFIED",
+        "H_CPC_Dissociates": "FALSIFIED",
+        "H_CPC_PhantomNull": "CONFIRM"
+      },
+      "record": {
+        "phase": "v1.7",
+        "component": "CPC",
+        "lock": "v1.7-prereg-r2",
+        "no_new_llm_calls": true,
+        "constants_source": "prereg/v1_7_cpc_consistency_content.py",
+        "anchored_set": [
+          {
+            "key": "v0.20",
+            "name": "skincare"
+          },
+          {
+            "key": "v0.21",
+            "name": "cosmetics"
+          },
+          {
+            "key": "v0.22",
+            "name": "automotive"
+          }
+        ],
+        "thresholds": {
+          "mu_floor": 1.0,
+          "dissociation_ceiling": 0.5,
+          "dispersion_ddof": 0,
+          "panel_n": 6
+        },
+        "r_range_note": "r=R_cat+R_cult is 0..6 (3+3 frames/channel), not the spec's annotated 0..12; CV is scale-invariant so CPC is unaffected.",
+        "presence_note": "Primary Presence = canonical presence_composite (mean of C_P/6, R_cat/18, R_cult/18); recognition-only and recall-level variants reported for robustness.",
+        "H_CPC_Defined": {
+          "verdict": "FALSIFIED",
+          "pooled_defined_rate": 0.5671641791044776,
+          "per_substrate": {
+            "v0.20": {
+              "in_market_n": 24,
+              "defined_n": 10,
+              "defined_rate": 0.4166666666666667,
+              "na_brands": [
+                "Est\u00e9e Lauder",
+                "Lanc\u00f4me",
+                "Sisley",
+                "Dior Beauty",
+                "Chanel Beauty",
+                "La Prairie",
+                "Cl\u00e9 de Peau Beaut\u00e9",
+                "Rare Beauty",
+                "Fenty Skin",
+                "Goop",
+                "Glossier",
+                "Tower 28",
+                "Eucerin",
+                "Bioderma"
+              ]
+            },
+            "v0.21": {
+              "in_market_n": 24,
+              "defined_n": 14,
+              "defined_rate": 0.5833333333333334,
+              "na_brands": [
+                "Giorgio Armani Beauty",
+                "Hourglass",
+                "Chantecaille",
+                "Laura Mercier",
+                "Haus Labs",
+                "Kylie Cosmetics",
+                "CoverGirl",
+                "Revlon",
+                "Wet n Wild",
+                "Milani Cosmetics"
+              ]
+            },
+            "v0.22": {
+              "in_market_n": 19,
+              "defined_n": 14,
+              "defined_rate": 0.7368421052631579,
+              "na_brands": [
+                "Rivian",
+                "Lucid",
+                "Polestar",
+                "Fisker",
+                "Nissan"
+              ]
+            }
+          }
+        },
+        "H_CPC_Dissociates": {
+          "verdict": "FALSIFIED",
+          "ceiling": 0.5,
+          "pooled": {
+            "composite": {
+              "rho": 0.7663522893480327,
+              "abs_rho": 0.7663522893480327,
+              "p": 2.0423789461484196e-08,
+              "ci_low": 0.6013848691344972,
+              "ci_high": 0.8848460459101015,
+              "n": 38
+            },
+            "recognition": {
+              "rho": null,
+              "abs_rho": null,
+              "p": null,
+              "ci_low": null,
+              "ci_high": null,
+              "n": 38
+            },
+            "recall_level": {
+              "rho": 0.7663176854351751,
+              "abs_rho": 0.7663176854351751,
+              "p": 2.0471932775548284e-08,
+              "ci_low": 0.60121088505312,
+              "ci_high": 0.8850843153710707,
+              "n": 38
+            },
+            "quadrants": {
+              "cpc_median": 0.7578982763068516,
+              "presence_median": 57.40740740740741,
+              "high_presence_low_cpc": [
+                "v0.20:Paula's Choice",
+                "v0.21:MAC Cosmetics",
+                "v0.22:Hyundai"
+              ],
+              "low_presence_high_cpc": [
+                "v0.22:Bentley",
+                "v0.22:Chevrolet",
+                "v0.22:Volkswagen"
+              ],
+              "off_diagonal_n": 6
+            }
+          },
+          "per_substrate": {
+            "v0.20": {
+              "composite": {
+                "rho": 0.9390418473114204,
+                "abs_rho": 0.9390418473114204,
+                "p": 5.6101819249314306e-05,
+                "ci_low": 0.6740938478604224,
+                "ci_high": 1.0,
+                "n": 10
+              },
+              "recognition": {
+                "rho": null,
+                "abs_rho": null,
+                "p": null,
+                "ci_low": null,
+                "ci_high": null,
+                "n": 10
+              },
+              "recall_level": {
+                "rho": 0.9390418473114204,
+                "abs_rho": 0.9390418473114204,
+                "p": 5.6101819249314306e-05,
+                "ci_low": 0.6740938478604224,
+                "ci_high": 1.0,
+                "n": 10
+              },
+              "quadrants": {
+                "cpc_median": 0.7968489496905815,
+                "presence_median": 77.77777777777777,
+                "high_presence_low_cpc": [],
+                "low_presence_high_cpc": [],
+                "off_diagonal_n": 0
+              },
+              "n_defined_in_market": 10
+            },
+            "v0.21": {
+              "composite": {
+                "rho": 0.8458149779735683,
+                "abs_rho": 0.8458149779735683,
+                "p": 0.00013796022531881787,
+                "ci_low": 0.5180180180180181,
+                "ci_high": 0.9640192779817951,
+                "n": 14
+              },
+              "recognition": {
+                "rho": null,
+                "abs_rho": null,
+                "p": null,
+                "ci_low": null,
+                "ci_high": null,
+                "n": 14
+              },
+              "recall_level": {
+                "rho": 0.8445429609366921,
+                "abs_rho": 0.8445429609366921,
+                "p": 0.00014451183362436789,
+                "ci_low": 0.5118936011938399,
+                "ci_high": 0.9632849504771233,
+                "n": 14
+              },
+              "quadrants": {
+                "cpc_median": 0.7387961250362586,
+                "presence_median": 56.48148148148148,
+                "high_presence_low_cpc": [],
+                "low_presence_high_cpc": [
+                  "Bobbi Brown"
+                ],
+                "off_diagonal_n": 1
+              },
+              "n_defined_in_market": 14
+            },
+            "v0.22": {
+              "composite": {
+                "rho": 0.6367667248993574,
+                "abs_rho": 0.6367667248993574,
+                "p": 0.014333009934380393,
+                "ci_low": 0.16790951106858434,
+                "ci_high": 0.8782965597239877,
+                "n": 14
+              },
+              "recognition": {
+                "rho": null,
+                "abs_rho": null,
+                "p": null,
+                "ci_low": null,
+                "ci_high": null,
+                "n": 14
+              },
+              "recall_level": {
+                "rho": 0.6367667248993574,
+                "abs_rho": 0.6367667248993574,
+                "p": 0.014333009934380393,
+                "ci_low": 0.16790951106858434,
+                "ci_high": 0.8782965597239877,
+                "n": 14
+              },
+              "quadrants": {
+                "cpc_median": 0.7592080714932264,
+                "presence_median": 57.40740740740741,
+                "high_presence_low_cpc": [
+                  "Hyundai"
+                ],
+                "low_presence_high_cpc": [
+                  "Bentley"
+                ],
+                "off_diagonal_n": 2
+              },
+              "n_defined_in_market": 14
+            }
+          },
+          "any_off_diagonal": true
+        },
+        "H_CPC_PhantomNull": {
+          "verdict": "CONFIRM",
+          "n_phantoms": 5,
+          "phantom_cell_substrates": [
+            "v0.22"
+          ],
+          "offenders": [],
+          "phantoms": [
+            {
+              "brand": "Pontiac",
+              "substrate": "v0.22",
+              "mean_r": 0.0,
+              "cpc_status": "N/A"
+            },
+            {
+              "brand": "Oldsmobile",
+              "substrate": "v0.22",
+              "mean_r": 0.0,
+              "cpc_status": "N/A"
+            },
+            {
+              "brand": "Plymouth",
+              "substrate": "v0.22",
+              "mean_r": 0.0,
+              "cpc_status": "N/A"
+            },
+            {
+              "brand": "Mercury",
+              "substrate": "v0.22",
+              "mean_r": 0.0,
+              "cpc_status": "N/A"
+            },
+            {
+              "brand": "Saturn",
+              "substrate": "v0.22",
+              "mean_r": 0.0,
+              "cpc_status": "N/A"
+            }
+          ]
+        },
+        "reconciliation_vs_v0_30": {
+          "checked": 38,
+          "max_abs_diff": 2.220446049250313e-16,
+          "mismatches": []
+        },
+        "certified_inputs_sha256": {
+          "v0.20": {
+            "phase_a": "c8ad6335c982ec95883fffa6c3cb185170b3cdd80b8694377c9fb8afb47d390e",
+            "phase_b": "4791113a93b8a25866099fa16ea3a8d14c6f82d6e6c24894609506ad25225828"
+          },
+          "v0.21": {
+            "phase_a": "d470940aa497f55588588536173a128a3394af2a6f0bb6e94825738622167d0d",
+            "phase_b": "45e4c3acca67f8c6d6ddfe94bd08215bf6287e4b5af194b81eef47f427440ee1"
+          },
+          "v0.22": {
+            "phase_a": "93c1b147c44b9031bfad3eb5806d50fd26404cf9c9b7cea95f2fd8a7a00c246a",
+            "phase_b": "e61dff692ed5eee34a3719067fb07328e4bb3035247c78b703e01d07097fce35"
+          }
+        },
+        "bootstrap": {
+          "resamples": 10000,
+          "seed": 280400,
+          "method": "BCa",
+          "ci": "95%"
+        }
+      }
+    },
+    "v1.8": {
+      "source": "osf/v41/registries/v1_8_verdicts.json",
+      "era": "phi instrument (AIAS 2.0 evidence)",
+      "ssrn": "6963359",
+      "ssrn_status": "posted",
+      "verdicts": {
+        "verdicts.H_CV_Reproduces": "CONFIRMED (|rho| >= 0.50)",
+        "verdicts.H_MeanIndependent": "CONFIRMED (|rho| <= 0.50)",
+        "verdicts.H_LowRecallDefined": "CONFIRMED (full recovery; 100% phi-defined among >=1-surfacing AND phi-defined strictly contains CV-CPC_raw-defined AND non-empty low-recall gain)",
+        "verdicts.H_GradedRecognition": "FORWARD-SPEC (frozen data not re-scorable)",
+        "verdicts.H_PositionalDissociation": "CONFIRMED (non-redundant + discordants exist)",
+        "verdicts.H_PhantomSignature": "NULL"
+      },
+      "record": {
+        "prereg_tag": "v1.8-prereg-r4",
+        "revision": "r4",
+        "instrument": "phi (channel-agnostic primary), J, CV-CPC baseline; per-channel secondary",
+        "constants": {
+          "M": 6,
+          "F_primary": 6,
+          "MF_primary": 36,
+          "F_per_channel": 3
+        },
+        "reconciliation_gate": {
+          "checked": 72,
+          "mismatches": [],
+          "passed": true,
+          "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+          "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+          "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+        },
+        "frame_resolved_substrates": {
+          "v0.19": true,
+          "v0.20": true,
+          "v0.21": true,
+          "v0.22": true,
+          "v0.23": true
+        },
+        "two_wave_reproducibility": {
+          "phi_t1_t2_rank_agreement": {
+            "rho": 0.6453869683902722,
+            "abs_rho": 0.6453869683902722,
+            "p": 4.502021032477755e-11,
+            "n": 83
+          },
+          "n_pairs": 83
+        },
+        "secondary_per_channel": {
+          "scope": "v0.20, v0.21, v0.22 (canonical R_cat/R_cult)",
+          "excludes": "v0.23 (non-canonical channels) and v0.19 (single-channel; no R_cat/R_cult split)",
+          "status": "diagnostic only; not gating; reported alongside the channel-agnostic primary",
+          "per_substrate": {
+            "v0.20": {
+              "R_cat": 9,
+              "R_cult": 15
+            },
+            "v0.21": {
+              "R_cat": 14,
+              "R_cult": 17
+            },
+            "v0.22": {
+              "R_cat": 8,
+              "R_cult": 12
+            }
+          }
+        },
+        "verdicts": {
+          "H_CV_Reproduces": {
+            "verdict": "CONFIRMED (|rho| >= 0.50)",
+            "stat": {
+              "rho": -0.6822887846481871,
+              "abs_rho": 0.6822887846481871,
+              "p": 9.66855204286549e-09,
+              "n": 55
+            },
+            "threshold": "|rho(CV-CPC_raw, mu)| >= 0.5"
+          },
+          "H_MeanIndependent": {
+            "verdict": "CONFIRMED (|rho| <= 0.50)",
+            "stat": {
+              "per_framing": {
+                "v0.34": {
+                  "rho": -0.08232812314127262,
+                  "abs_rho": 0.08232812314127262,
+                  "p": 0.45656870398871746,
+                  "n": 84
+                },
+                "v0.35": {
+                  "rho": -0.08232812314127262,
+                  "abs_rho": 0.08232812314127262,
+                  "p": 0.45656870398871746,
+                  "n": 84
+                },
+                "v0.36": {
+                  "rho": 0.10723587176680571,
+                  "abs_rho": 0.10723587176680571,
+                  "p": 0.5797967125832154,
+                  "n": 29
+                }
+              },
+              "pooled": {
+                "rho": 0.09068336683203117,
+                "abs_rho": 0.09068336683203117,
+                "p": 0.2050427918905931,
+                "n": 197
+              }
+            },
+            "threshold": "|rho(phi, mu)| <= 0.5 (pooled, make-or-break)",
+            "make_or_break": true,
+            "escalation_triggered": false,
+            "escalation_status": "N/A (pass) \u2014 H_MeanIndependent CONFIRMED; beta-binomial ICC NOT entered",
+            "escalation_path_if_falsified": "beta-binomial ICC / overdispersion rho, re-entered before any instrument lock"
+          },
+          "H_LowRecallDefined": {
+            "verdict": "CONFIRMED (full recovery; 100% phi-defined among >=1-surfacing AND phi-defined strictly contains CV-CPC_raw-defined AND non-empty low-recall gain)",
+            "stat": {
+              "n_nonzero_surfacing": 84,
+              "phi_defined": 84,
+              "cv_raw_defined": 55,
+              "gain_set_size": 29,
+              "gain_nonempty": true,
+              "gain_brands": [
+                {
+                  "substrate": "v0.19",
+                  "brand": "Dan Clark Audio",
+                  "pi_hat": 0.1388888888888889,
+                  "mu_count": 0.8333333333333334,
+                  "cpc_corr": 2.5952810774495587
+                },
+                {
+                  "substrate": "v0.19",
+                  "brand": "Meze",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 2.371708245126285
+                },
+                {
+                  "substrate": "v0.19",
+                  "brand": "Stax",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 1.5
+                },
+                {
+                  "substrate": "v0.19",
+                  "brand": "ZMF Headphones",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Est\u00e9e Lauder",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Sisley",
+                  "pi_hat": 0.05555555555555555,
+                  "mu_count": 0.3333333333333333,
+                  "cpc_corr": 2.057983021710106
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Rare Beauty",
+                  "pi_hat": 0.08333333333333333,
+                  "mu_count": 0.5,
+                  "cpc_corr": 1.8090680674665818
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Fenty Skin",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 1.5
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Goop",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Glossier",
+                  "pi_hat": 0.08333333333333333,
+                  "mu_count": 0.5,
+                  "cpc_corr": 2.7633971188310302
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Tower 28",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Eucerin",
+                  "pi_hat": 0.08333333333333333,
+                  "mu_count": 0.5,
+                  "cpc_corr": 1.8090680674665818
+                },
+                {
+                  "substrate": "v0.20",
+                  "brand": "Bioderma",
+                  "pi_hat": 0.05555555555555555,
+                  "mu_count": 0.3333333333333333,
+                  "cpc_corr": 2.057983021710106
+                },
+                {
+                  "substrate": "v0.21",
+                  "brand": "Giorgio Armani Beauty",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.21",
+                  "brand": "Hourglass",
+                  "pi_hat": 0.05555555555555555,
+                  "mu_count": 0.3333333333333333,
+                  "cpc_corr": 3.253956867279843
+                },
+                {
+                  "substrate": "v0.21",
+                  "brand": "Laura Mercier",
+                  "pi_hat": 0.1388888888888889,
+                  "mu_count": 0.8333333333333334,
+                  "cpc_corr": 2.5952810774495587
+                },
+                {
+                  "substrate": "v0.21",
+                  "brand": "Haus Labs",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 2.371708245126285
+                },
+                {
+                  "substrate": "v0.21",
+                  "brand": "Kylie Cosmetics",
+                  "pi_hat": 0.1388888888888889,
+                  "mu_count": 0.8333333333333334,
+                  "cpc_corr": 1.987054880161641
+                },
+                {
+                  "substrate": "v0.22",
+                  "brand": "Rivian",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S01",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S03",
+                  "pi_hat": 0.1388888888888889,
+                  "mu_count": 0.8333333333333334,
+                  "cpc_corr": 1.0776318121606496
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S06",
+                  "pi_hat": 0.05555555555555555,
+                  "mu_count": 0.3333333333333333,
+                  "cpc_corr": 2.057983021710106
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S08",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S09",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 2.3717082451262845
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S10",
+                  "pi_hat": 0.1388888888888889,
+                  "mu_count": 0.8333333333333334,
+                  "cpc_corr": 2.5952810774495587
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S12",
+                  "pi_hat": 0.027777777777777776,
+                  "mu_count": 0.16666666666666666,
+                  "cpc_corr": 2.267786838055364
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S22",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 2.371708245126285
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S23",
+                  "pi_hat": 0.05555555555555555,
+                  "mu_count": 0.3333333333333333,
+                  "cpc_corr": 2.057983021710106
+                },
+                {
+                  "substrate": "v0.23",
+                  "brand": "S24",
+                  "pi_hat": 0.1111111111111111,
+                  "mu_count": 0.6666666666666666,
+                  "cpc_corr": 2.371708245126285
+                }
+              ],
+              "coverage_full": true,
+              "phi_contains_cv_raw": true,
+              "n_saturated_ceiling": 0,
+              "saturation_breaks_containment": false,
+              "mu_floor": 1.0,
+              "target": 1.0,
+              "note": "CONFIRMED needs non-empty gain AND no ceiling break; gain_brands list confirms they are genuinely low-recall (pi_hat) and gives the CPC_corr same-domain contrast"
+            },
+            "threshold": "phi-defined strictly-contains CV-CPC_raw-defined with a NON-EMPTY low-recall gain set"
+          },
+          "H_GradedRecognition": {
+            "verdict": "FORWARD-SPEC (frozen data not re-scorable)",
+            "stat": {
+              "status": "FORWARD-SPEC",
+              "reason": "frozen recognition binary by probe design (DEVIATIONS Entry 0)"
+            },
+            "threshold": "n/a (forward-spec)"
+          },
+          "H_PositionalDissociation": {
+            "verdict": "CONFIRMED (non-redundant + discordants exist)",
+            "stat": {
+              "rho": -0.4025454211840846,
+              "abs_rho": 0.4025454211840846,
+              "p": 0.0003771818623575618,
+              "n": 74,
+              "n_discordant_union": 9,
+              "discordant_per_framing": {
+                "v0.34": 9,
+                "v0.35": 9,
+                "v0.36": 1
+              },
+              "rule": "|cons_pct(phi) - cons_pct(J)| >= 0.50 within framing",
+              "j_substrates": [
+                "v0.19",
+                "v0.20",
+                "v0.21",
+                "v0.22",
+                "v0.23"
+              ]
+            },
+            "threshold": "|rho(phi, J)| <= 0.7 AND >=1 discordant brand (percentile rule)"
+          },
+          "H_PhantomSignature": {
+            "verdict": "NULL",
+            "stat": {
+              "n_phantom_defined": 29,
+              "n_84_baseline": 84,
+              "disjoint_contrast": {
+                "phantom_analyzable": 29,
+                "non_phantom": 55
+              },
+              "note": "exploratory; no directional commitment; disjoint 29-vs-55 contrast reported descriptively"
+            },
+            "threshold": "exploratory"
+          }
+        }
+      }
+    },
+    "v0.37": {
+      "source": "osf/v37/v37_verdicts.json",
+      "era": "phi (AIAS 2.0 evidence)",
+      "ssrn": null,
+      "ssrn_status": "not yet submitted",
+      "verdicts": {
+        "verdicts.H_IL_Consistency": "FALSIFIED",
+        "verdicts.H_IL_Presence_Robustness": "partial_NULL",
+        "verdicts.H_IL_Cross_Substrate": "DESCRIPTIVE (N=3 substrates; no inferential claim)",
+        "verdicts.H_IL_t2_Stability": "DESCRIPTIVE (walled; no confirmatory threshold)"
+      },
+      "record": {
+        "prereg_tag": "v0.37-prereg-r2",
+        "design": "Identity-Load (IL-Direct) x phi moderation, trio n<=72",
+        "constants": {
+          "M": 6,
+          "F": 6,
+          "MF": 36,
+          "rho_confirm": 0.3,
+          "rho_falsify": 0.15,
+          "alpha": 0.05,
+          "mc_draws": 10000,
+          "perm_seed": 370037,
+          "n_floor": 45
+        },
+        "reconciliation_gate": {
+          "checked": 72,
+          "mismatches": [],
+          "passed": true,
+          "alignment": "by model name (v1.7 sorted-order vs PANEL order)",
+          "scope": "v0.20/0.21/0.22 only; v0.19 & v0.23 have no external anchor (v0.31 provenance)",
+          "reference": "osf/methodology/v1_7/data/v1_7_cpc.csv"
+        },
+        "descriptive_J": {
+          "frame_resolved": {
+            "v0.20": true,
+            "v0.21": true,
+            "v0.22": true,
+            "v0.23": true
+          },
+          "v23_walled": {
+            "frame_resolved": true,
+            "n_brands": 24,
+            "j_defined": 16,
+            "note": "v0.23 walled descriptive J (non-verdict)"
+          },
+          "note": "J is descriptive, non-verdict (METRIC_DEFINITION 'reported where frame-resolved')"
+        },
+        "verdicts": {
+          "H_IL_Consistency": {
+            "verdict": "FALSIFIED",
+            "primary_band_raw": "FALSIFIED",
+            "headline_cell": "CLEAN-NULL",
+            "stat": {
+              "rho": -0.008056996072772264,
+              "p_perm": 0.9552,
+              "mc_se": 0.0020686459339384292,
+              "seed_sensitive_at_alpha": false,
+              "n": 53,
+              "predicted_sign": "rho>0 (IL up -> consistency down)"
+            },
+            "loso": {
+              "per_drop": [
+                {
+                  "dropped": "v0.20",
+                  "rho": -0.11211511004604754,
+                  "n": 34
+                },
+                {
+                  "dropped": "v0.21",
+                  "rho": 0.08685096545947467,
+                  "n": 34
+                },
+                {
+                  "dropped": "v0.22",
+                  "rho": -0.017632817989431573,
+                  "n": 38
+                }
+              ],
+              "nonsurvival": true,
+              "downgrade": null
+            },
+            "realized_n": {
+              "pooled_analyzable_n": 53,
+              "n_floor": 45,
+              "per_substrate": {
+                "v0.20": {
+                  "trio_brands": 24,
+                  "analyzable": 19,
+                  "fragile": false
+                },
+                "v0.21": {
+                  "trio_brands": 24,
+                  "analyzable": 19,
+                  "fragile": false
+                },
+                "v0.22": {
+                  "trio_brands": 24,
+                  "analyzable": 15,
+                  "fragile": false
+                }
+              },
+              "fork_a_saturation_diagnostic": {
+                "v0.20": {
+                  "n_zero_floor": 5,
+                  "n_saturation_ceiling": 0,
+                  "n_analyzable": 19,
+                  "excluded_il_mean": 0.0,
+                  "included_il_mean": 0.8421052631578947,
+                  "n_excluded": 5
+                },
+                "v0.21": {
+                  "n_zero_floor": 5,
+                  "n_saturation_ceiling": 0,
+                  "n_analyzable": 19,
+                  "excluded_il_mean": 0.0,
+                  "included_il_mean": 2.1052631578947367,
+                  "n_excluded": 5
+                },
+                "v0.22": {
+                  "n_zero_floor": 9,
+                  "n_saturation_ceiling": 0,
+                  "n_analyzable": 15,
+                  "excluded_il_mean": 0.0,
+                  "included_il_mean": 1.4,
+                  "n_excluded": 9
+                }
+              },
+              "il_direct_source_sha256": "a09d00b8144a6e028b0bfe4d3fb7a7f42fa4597843377c457bd171ea697b0a99",
+              "il_direct_reconciliation": "first-run-baseline-to-be-recorded",
+              "il_direct_reconciliation_note": "DV-side bit-for-bit = Stage-0 r_per_model gate (DECISION-2); IL axis = SHA256 baseline with halt-on-mismatch on reuse (clause 3, same footing as DV-side inputs)."
+            }
+          },
+          "H_IL_Presence_Robustness": {
+            "verdict": "partial_NULL",
+            "role": "SECONDARY (robustness; not a gate). Feeds the verdict-matrix cell.",
+            "stat": {
+              "rho_partial": 0.003572689778499136,
+              "p_perm": 0.9804,
+              "mc_se": 0.0013862121049824933,
+              "seed_sensitive_at_alpha": false,
+              "n": 53,
+              "method": "4-var Spearman rank-correlation-matrix inversion (r2 single locked computation)"
+            }
+          },
+          "H_IL_Cross_Substrate": {
+            "verdict": "DESCRIPTIVE (N=3 substrates; no inferential claim)",
+            "per_substrate": {
+              "v0.20": {
+                "rho": 0.13692584848023573,
+                "n": 19
+              },
+              "v0.21": {
+                "rho": -0.171579825594788,
+                "n": 19
+              },
+              "v0.22": {
+                "rho": -0.12466372726728965,
+                "n": 15
+              }
+            }
+          },
+          "H_IL_t2_Stability": {
+            "verdict": "DESCRIPTIVE (walled; no confirmatory threshold)",
+            "phi_t1_t2_rank_agreement": 0.6374441524362076,
+            "n_pairs": 52
+          },
+          "SUPPLEMENTARY_IL_CVCPC": {
+            "role": "SUPPLEMENTARY-ILLUSTRATIVE \u2014 non-gating (touches no verdict)",
+            "rho_il_cvcpc": 0.12883449883449885,
+            "n": 38,
+            "note": "retired v1.7 instrument; shown for the 'only the instrument that worked' objection"
+          }
+        }
+      }
+    },
+    "v1.9-stage1": {
+      "source": "osf/methodology/v1_9/v1_9_calibration.json",
+      "era": "scoring rule (AIAS 2.0 evidence; calibration, not a test)",
+      "ssrn": null,
+      "ssrn_status": "no paper yet",
+      "verdicts": {},
+      "record": {
+        "phase": "v1.9",
+        "stage": "1 (calibration on frozen t1/t2; declared, not a test)",
+        "parity_gates_v0_41": {
+          "P1": true,
+          "P2": true,
+          "P3": true,
+          "P4": true
+        },
+        "presence_retest_t1_t2": 0.9695933242098346,
+        "presence_retest_n": 112,
+        "constants": {
+          "kappa": 6,
+          "C0": 50.0,
+          "floor_n": 6,
+          "K1": 0.5,
+          "K2": 0.95,
+          "K3_slack": 5.0,
+          "tie": 0.01
+        },
+        "candidates": [
+          {
+            "spec": "C_phi+FLOOR+ADD",
+            "consistency": "C_phi",
+            "low_count": "FLOOR",
+            "form": "ADD",
+            "t1": {
+              "K1": {
+                "rho": 0.07293925573105668,
+                "n": 55,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.971220479242514,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 2.314814814814806,
+                "dP": 2.314814814814806,
+                "pass": true,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.5089285714285714
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.08153268408519941,
+                "n": 54,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.9749692326190192,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 2.6681286549707615,
+                "dP": 2.6681286549707615,
+                "pass": true,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.5178571428571429
+            },
+            "retest_A": 0.9617399528524805,
+            "retest_A_n": 112,
+            "retest_C": 0.7357486264955685,
+            "retest_C_n": 53,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phi+FLOOR+MOD",
+            "consistency": "C_phi",
+            "low_count": "FLOOR",
+            "form": "MOD",
+            "t1": {
+              "K1": {
+                "rho": 0.07293925573105668,
+                "n": 55,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.9886359906148291,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 1.157407407407403,
+                "dP": 2.314814814814806,
+                "pass": true,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.5089285714285714
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.08153268408519941,
+                "n": 54,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.9915740229973076,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 1.3340643274853807,
+                "dP": 2.6681286549707615,
+                "pass": true,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.5178571428571429
+            },
+            "retest_A": 0.9709590762302865,
+            "retest_A_n": 112,
+            "retest_C": 0.7357486264955685,
+            "retest_C_n": 53,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phi+SHRINK+ADD",
+            "consistency": "C_phi",
+            "low_count": "SHRINK",
+            "form": "ADD",
+            "t1": {
+              "K1": {
+                "rho": 0.714575294890955,
+                "n": 84,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9503711636287958,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 14.16814741769723,
+                "dP": 2.314814814814806,
+                "pass": false,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.25
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.7731622914053013,
+                "n": 88,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9718455882441072,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 15.006996950827126,
+                "dP": 2.6681286549707615,
+                "pass": false,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.21428571428571427
+            },
+            "retest_A": 0.9607823624580109,
+            "retest_A_n": 112,
+            "retest_C": 0.882194739657584,
+            "retest_C_n": 83,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phi+SHRINK+MOD",
+            "consistency": "C_phi",
+            "low_count": "SHRINK",
+            "form": "MOD",
+            "t1": {
+              "K1": {
+                "rho": 0.714575294890955,
+                "n": 84,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9884416613999253,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 10.395269218798619,
+                "dP": 2.314814814814806,
+                "pass": false,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.25
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.7731622914053013,
+                "n": 88,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9931943778515543,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 10.446656732868584,
+                "dP": 2.6681286549707615,
+                "pass": false,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.21428571428571427
+            },
+            "retest_A": 0.9733328201901428,
+            "retest_A_n": 112,
+            "retest_C": 0.882194739657584,
+            "retest_C_n": 83,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phiJ+FLOOR+ADD",
+            "consistency": "C_phiJ",
+            "low_count": "FLOOR",
+            "form": "ADD",
+            "t1": {
+              "K1": {
+                "rho": 0.4555709849318898,
+                "n": 55,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.9774215272566347,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 2.314814814814806,
+                "dP": 2.314814814814806,
+                "pass": true,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.5089285714285714
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.5296591081244733,
+                "n": 54,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.977566530318183,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 2.6681286549707615,
+                "dP": 2.6681286549707615,
+                "pass": true,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.5178571428571429
+            },
+            "retest_A": 0.9675820601877408,
+            "retest_A_n": 112,
+            "retest_C": 0.8675010241154734,
+            "retest_C_n": 53,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phiJ+FLOOR+MOD",
+            "consistency": "C_phiJ",
+            "low_count": "FLOOR",
+            "form": "MOD",
+            "t1": {
+              "K1": {
+                "rho": 0.4555709849318898,
+                "n": 55,
+                "pass": true
+              },
+              "K2": {
+                "rho": 0.9921789844581111,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 1.157407407407403,
+                "dP": 2.314814814814806,
+                "pass": true,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.5089285714285714
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.5296591081244733,
+                "n": 54,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9971592856071578,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 1.3340643274853807,
+                "dP": 2.6681286549707615,
+                "pass": true,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.5178571428571429
+            },
+            "retest_A": 0.9703286832676257,
+            "retest_A_n": 112,
+            "retest_C": 0.8675010241154734,
+            "retest_C_n": 53,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phiJ+SHRINK+ADD",
+            "consistency": "C_phiJ",
+            "low_count": "SHRINK",
+            "form": "ADD",
+            "t1": {
+              "K1": {
+                "rho": 0.5243859743628217,
+                "n": 84,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9438954067854827,
+                "n": 112,
+                "pass": true
+              },
+              "K3": {
+                "dA": 13.93180287988211,
+                "dP": 2.314814814814806,
+                "pass": false,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.25
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.5006570178389583,
+                "n": 88,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9463072848074385,
+                "n": 112,
+                "pass": true
+              },
+              "K3": {
+                "dA": 14.291052678381302,
+                "dP": 2.6681286549707615,
+                "pass": false,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.21428571428571427
+            },
+            "retest_A": 0.9378814023232213,
+            "retest_A_n": 112,
+            "retest_C": 0.8076086228410586,
+            "retest_C_n": 83,
+            "passes_all": false
+          },
+          {
+            "spec": "C_phiJ+SHRINK+MOD",
+            "consistency": "C_phiJ",
+            "low_count": "SHRINK",
+            "form": "MOD",
+            "t1": {
+              "K1": {
+                "rho": 0.5243859743628217,
+                "n": 84,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9912974028038533,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 10.30773420479302,
+                "dP": 2.314814814814806,
+                "pass": false,
+                "n_low": 14,
+                "n_zero": 28
+              },
+              "share_C_not_rated": 0.25
+            },
+            "t2": {
+              "K1": {
+                "rho": 0.5006570178389583,
+                "n": 88,
+                "pass": false
+              },
+              "K2": {
+                "rho": 0.9950574650231788,
+                "n": 112,
+                "pass": false
+              },
+              "K3": {
+                "dA": 10.245991671522406,
+                "dP": 2.6681286549707615,
+                "pass": false,
+                "n_low": 19,
+                "n_zero": 24
+              },
+              "share_C_not_rated": 0.21428571428571427
+            },
+            "retest_A": 0.974331160866117,
+            "retest_A_n": 112,
+            "retest_C": 0.8076086228410586,
+            "retest_C_n": 83,
+            "passes_all": false
+          }
+        ],
+        "selected": null,
+        "selection_note": "no candidate passes K1-K3 at both waves: v1.9 locks 'no composite'"
+      }
+    }
+  },
+  "stage2": {
+    "status": "complete",
+    "reasons": [],
+    "origin": {
+      "v0.41-prereg-r1": {
+        "anchored": true,
+        "how": "origin 4e79167c3f02"
+      },
+      "v1.9-prereg-r1": {
+        "anchored": true,
+        "how": "origin 58c01297b8fb"
+      }
+    },
+    "panel_used": [
+      "claude-opus-4-5",
+      "claude-sonnet-4-5",
+      "gpt-4o",
+      "gpt-4o-mini",
+      "gemini-2.5-flash",
+      "gemini-2.5-flash-lite"
+    ],
+    "v19_verdicts": {
+      "H_Presence_Score_Reliability": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.9542888066830918,
+        "p_perm": 9.999000099990002e-05,
+        "n": 112
+      },
+      "H_Dissociation_t3": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.18949782059932604,
+        "n": 54
+      },
+      "H_Consistency_Reliability": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.6473238536507431,
+        "n": 52,
+        "frame_structure_null": {
+          "p_frame": 0.008099190080991902,
+          "null_mean": 0.43783685713432124,
+          "null_p95": 0.5849157274563637,
+          "draws": 10000,
+          "seed": 190020
+        }
+      },
+      "H_NoComposite_t3": {
+        "tier": "SECONDARY (descriptive)",
+        "verdict": "DESCRIPTIVE",
+        "rho_A_P": 0.969272869350446,
+        "n": 112,
+        "k2_line": 0.95
+      }
+    },
+    "v41_verdicts": {
+      "H_Phi_LongHorizon": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.6806643811207408,
+        "p_perm": 9.999000099990002e-05,
+        "p_mc_se": 9.999000099990002e-05,
+        "n": 80,
+        "frame_structure_null": {
+          "p_frame": 9.999000099990002e-05,
+          "null_mean": 0.35709488073921136,
+          "null_p95": 0.5094847360022983,
+          "null_max": 0.6607237276546056,
+          "draws": 10000,
+          "seed": 410045
+        },
+        "rule": "CONFIRMED iff rho >= 0.50 AND p_perm < .05 AND p_frame < .05 (SCORER_NOTES S2); FALSIFIED iff rho < 0.30 OR p_perm >= .05; else MARGINAL",
+        "n_per_substrate": {
+          "v0.19": 12,
+          "v0.20": 16,
+          "v0.21": 19,
+          "v0.22": 15,
+          "v0.23": 18
+        },
+        "sensitivity": {
+          "pooled_within_substrate_rank_rho": 0.6286151995058789,
+          "leave_one_substrate_out": {
+            "v0.19": 0.6541579058741032,
+            "v0.20": 0.7296036617198862,
+            "v0.21": 0.6787881885053477,
+            "v0.22": 0.6371540981959121,
+            "v0.23": 0.6847405507724452
+          },
+          "loso_range": [
+            0.6371540981959121,
+            0.7296036617198862
+          ]
+        }
+      },
+      "H_Presence_LongHorizon": {
+        "tier": "PRIMARY",
+        "verdict": "CONFIRMED",
+        "n_ge_070": 5,
+        "n_lt_050": 0,
+        "n_undefined": 0,
+        "per_substrate": {
+          "v0.19": {
+            "rho": 0.9439504065480042,
+            "p_perm": 9.999000099990002e-05,
+            "n": 16
+          },
+          "v0.20": {
+            "rho": 0.9411548284163881,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.21": {
+            "rho": 0.9413869294719631,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.22": {
+            "rho": 0.9764816297124751,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          },
+          "v0.23": {
+            "rho": 0.9268276971279107,
+            "p_perm": 9.999000099990002e-05,
+            "n": 24
+          }
+        }
+      },
+      "H_Horizon_Decay": {
+        "tier": "SECONDARY",
+        "phi": {
+          "n": 80,
+          "rho_t1_t2": 0.6563074188904829,
+          "rho_t1_t3": 0.6378001341617113,
+          "D": 0.01850728472877161,
+          "ci95": [
+            -0.13234909098437841,
+            0.16814289938386334
+          ],
+          "boot_dropped_degenerate": 0,
+          "verdict": "MARGINAL"
+        },
+        "pi_hat": {
+          "n": 112,
+          "rho_t1_t2": 0.9653753616072284,
+          "rho_t1_t3": 0.9630744176166537,
+          "D": 0.0023009439905746776,
+          "ci95": [
+            -0.025439812488873264,
+            0.032393237759366915
+          ],
+          "boot_dropped_degenerate": 0,
+          "verdict": "MARGINAL"
+        },
+        "reported_alongside": {
+          "phi": {
+            "t1_t2": {
+              "rho": 0.6453869683902721,
+              "n": 83,
+              "statistic": "pooled Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.6806643811207408,
+              "n": 80,
+              "statistic": "pooled Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.6351356004674689,
+              "n": 81,
+              "statistic": "pooled Spearman"
+            }
+          },
+          "pi_hat": {
+            "t1_t2": {
+              "rho": 0.9653753616072284,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.9484577961604258,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.9630744176166537,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            }
+          },
+          "J": {
+            "t1_t2": {
+              "rho": 0.7186990539951229,
+              "n": 71,
+              "statistic": "pooled Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.8007361066949132,
+              "n": 69,
+              "statistic": "pooled Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.799588068550369,
+              "n": 69,
+              "statistic": "pooled Spearman"
+            }
+          },
+          "C_P": {
+            "t1_t2": {
+              "rho": 0.9566776162908305,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t2_t3": {
+              "rho": 0.865220775006494,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            },
+            "t1_t3": {
+              "rho": 0.8955126958549771,
+              "n": 112,
+              "statistic": "pooled within-substrate-rank Spearman"
+            }
+          }
+        }
+      },
+      "H_Drift_Dissociation": {
+        "tier": "SECONDARY",
+        "verdict": "CONFIRMED",
+        "rho": 0.03239999371046976,
+        "p_perm_two_sided": 0.7773222677732227,
+        "p_mc_se": 0.004160436993839914,
+        "n": 80,
+        "baseline_coupling_t2_rho": 0.15148228106230816,
+        "baseline_note": "rho(phi_t2, pi_hat_t2) on within-substrate percentile ranks; descriptive, not verdict-bearing"
+      },
+      "H_Phantom_LongPersistence": {
+        "tier": "TERTIARY (descriptive)",
+        "verdict": "DESCRIPTIVE",
+        "per_substrate": {
+          "v0.19": {
+            "t2_phantom": 8,
+            "retained_t3": 8,
+            "proportion": 1.0
+          },
+          "v0.20": {
+            "t2_phantom": 15,
+            "retained_t3": 15,
+            "proportion": 1.0
+          },
+          "v0.21": {
+            "t2_phantom": 10,
+            "retained_t3": 9,
+            "proportion": 0.9
+          },
+          "v0.22": {
+            "t2_phantom": 10,
+            "retained_t3": 10,
+            "proportion": 1.0
+          },
+          "v0.23": {
+            "t2_phantom": 15,
+            "retained_t3": 14,
+            "proportion": 0.9333333333333333
+          }
+        },
+        "pooled": {
+          "t2_phantom": 58,
+          "retained_t3": 56,
+          "proportion": 0.9655172413793104
+        },
+        "v0_34_reference_t1_t2": "56/57"
+      }
+    },
+    "v41_manipulation_checks": {
+      "MC_ProbeParity": {
+        "status": "PASS",
+        "source": "PARITY P4 recomputed at scoring"
+      },
+      "MC_Snapshot": {
+        "status": "PASS",
+        "per_model": {
+          "claude-opus-4-5": {
+            "t2": "claude-opus-4-5-20251101",
+            "t3": [
+              "claude-opus-4-5-20251101"
+            ],
+            "match": true
+          },
+          "claude-sonnet-4-5": {
+            "t2": "claude-sonnet-4-5-20250929",
+            "t3": [
+              "claude-sonnet-4-5-20250929"
+            ],
+            "match": true
+          },
+          "gpt-4o": {
+            "t2": "gpt-4o-2024-08-06",
+            "t3": [
+              "gpt-4o-2024-08-06"
+            ],
+            "match": true
+          },
+          "gpt-4o-mini": {
+            "t2": "gpt-4o-mini-2024-07-18",
+            "t3": [
+              "gpt-4o-mini-2024-07-18"
+            ],
+            "match": true
+          }
+        },
+        "n_match": 4,
+        "mismatched": []
+      },
+      "MC_Completeness": {
+        "expected_total": 852,
+        "ok_total": 852,
+        "status": "PASS",
+        "per_model": {
+          "claude-opus-4-5": {
+            "expected": 142,
+            "ok": 142
+          },
+          "claude-sonnet-4-5": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gpt-4o": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gpt-4o-mini": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gemini-2.5-flash": {
+            "expected": 142,
+            "ok": 142
+          },
+          "gemini-2.5-flash-lite": {
+            "expected": 142,
+            "ok": 142
+          }
+        },
+        "unavailable_models": [],
+        "partially_failed_models": [],
+        "short_cells": []
+      },
+      "MC_Truncation": {
+        "status": "DESCRIPTIVE",
+        "per_model": {
+          "gemini-2.5-flash-lite": {
+            "calls": 164,
+            "truncated": 10,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.06097560975609756
+          },
+          "claude-opus-4-5": {
+            "calls": 164,
+            "truncated": 18,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.10975609756097561
+          },
+          "claude-sonnet-4-5": {
+            "calls": 193,
+            "truncated": 1,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0051813471502590676
+          },
+          "gpt-4o": {
+            "calls": 164,
+            "truncated": 0,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0
+          },
+          "gpt-4o-mini": {
+            "calls": 164,
+            "truncated": 0,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.0
+          },
+          "gemini-2.5-flash": {
+            "calls": 164,
+            "truncated": 58,
+            "finish_reason_missing": 0,
+            "share_truncated": 0.35365853658536583
+          }
+        },
+        "note": "t1/t2 recorded no finish reasons; no wave contrast"
+      }
+    },
+    "descriptive_retest_t2_t3": {
+      "C_star": [
+        0.6473238536507431,
+        52
+      ],
+      "P": [
+        0.9542888066830918,
+        112
+      ]
+    },
+    "consistency_check": {
+      "rho_Cstar_P_t3_matches_v19": true
+    },
+    "class": {
+      "class": "A",
+      "flags": [],
+      "why": "H_Dissociation_t3 CONFIRMED, H_Consistency_Reliability CONFIRMED"
+    }
+  },
+  "inputs_sha256": {
+    "osf/v29/data/v29_verdicts.json": "73fdc5e076b0625619f90e6c1038826d60a9e0dd01dda1cfc31d29a78ed23f27",
+    "osf/v30/v30_cpc_verdicts.json": "61ac89ab2bfff72a757a540f28154cb35a60e5b88e8ad295ed2e70a435956c15",
+    "osf/v31/v31_cpc_verdicts.json": "1124b70dcdbd59737ca843f72b228115b60c7cb25a73d380d174f6bc3953fd5e",
+    "osf/v32/v32_verdicts.json": "d8591fb8f16a391e3f2584b78b5a042293699898f0644c9e6545d17a7e33620b",
+    "osf/v33/v33_provider_asymmetry_verdicts.json": "9c513273f8c0851b71147b57543664455a801a1279c862b3c642cea2008d096d",
+    "osf/v34/v34_verdicts.json": "b838b5352f35d3ae9e95c33dc6f8cb791f6f57eb83f9dfdc29b918649a115ee5",
+    "osf/v35/v35_verdicts.json": "68a219607ca615047c55930afc7e12f137698c97d8b50aeb05364ba505797303",
+    "osf/aias_2_0/inputs/v36_verdicts.json": "3c41f78a70f02df010c88d3611fb15deae10276bb217eb7a125ec90b90d2fb8b",
+    "osf/methodology/v1_7/v1_7_cpc_verdicts.json": "2ad30dd2ec04dfa1583c44b183ee1caa04a57b35cf3dc7024c1369ad49777742",
+    "osf/v41/registries/v1_8_verdicts.json": "a280385f1868cfdff06d6c3dfae6eb4288fb1a6ad01129d6d23320a3b88b7e78",
+    "osf/v37/v37_verdicts.json": "7f46c853a2395b7f6bf1b4ab83d0786f8afa3c36eb6d41d6e45085a4d3103461",
+    "osf/methodology/v1_9/v1_9_calibration.json": "4d2ddb982a3372fa4f8c68e5bcf1a9511684186568fb6d37fbc2562b612388bf",
+    "/sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/v41/v41_verdicts.json": "0d3f5dfcf0a920e642aa613f5bf45dce66dd155eb6fd4ee054ed4d4bb700d4e2",
+    "/sessions/rcw-01ad7phwbxe8rwwgnq9ekn9r/mnt/aias/_worktrees/aias-2.0/osf/methodology/v1_9/v1_9_verdicts.json": "3d838f92821a5ae41c33bdb9a209432e0fdbc505ce7c53f8a17e8c438745967d"
+  }
+}
