@@ -234,7 +234,8 @@ def main():
     else:
         calls_txt = (f"{37 * n:,} calls (37 per probe: legacy 6 models x 3 runs + 1 Gemini 2.5 Flash pass at the v0.39 setting; "
                      f"current 3 models x 2 conditions x 3 runs)")
-    lines = ["# AIAS v0.40 probe set (DRAFT for review)", "",
+    title = "# AIAS v0.40 probe set (FINAL)" if a.final else "# AIAS v0.40 probe set (DRAFT for review)"
+    lines = [title, "",
              f"Built by `osf/v40/scripts/build_probes_v0_40.py` from the registry outputs. {n} probes; "
              f"{calls_txt}. Locks at tag `v0.40-prereg-r1`.", "",
              "Wording rules: one user turn, no system prompt; recommendation probes name no brand and say \"US\"; "

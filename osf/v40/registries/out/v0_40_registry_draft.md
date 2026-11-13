@@ -341,7 +341,7 @@ Ghost x model pairs with the exit after the cutoff (brand date): 19 of 216.
 2. **GPT-4o and GPT-4o mini lifecycle confirmed (D18).** OpenAI's deprecations page (notice of 2026-10-14) sets the shutdown of `gpt-4o-2024-08-06`, `gpt-4o-2024-11-20` and `gpt-4o-mini-2024-07-18` for 2027-01-14. The page lists dated snapshots, not the `gpt-4o` and `gpt-4o-mini` aliases, so every call logs the snapshot it returns.
 3. **Sun Country moved to primary sources (D15).** Allegiant's release of 2026-05-13 (IR site, and Exhibit 99.1 of an SEC filing) confirms the close and says both airlines keep their brands for now.
 4. **The builder now assembles this draft** from `registries/draft_template.md` and the generated tables, into `registries/out/v0_40_registry_draft.md`.
-5. **Moved into the pipeline** under `osf/v40/` (scripts, registries, data), following the v0.39 layout. The Samsung disclosure moved from the front matter to section 9, per the program's conflict-of-interest rule.
+5. **Moved into the pipeline** under `osf/v40/` (scripts, registries, data), following the v0.39 layout. The conflict-of-interest disclosure moved from the front matter to section 9, per the program's conflict-of-interest rule.
 6. **Commerce Bank's label** now carries its FDIC main-office city, Philadelphia, instead of "NJ", which had no source. The probes use the same name (D11).
 
 **r0, 2026-11-08, against the earlier draft**
