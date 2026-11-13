@@ -1,0 +1,154 @@
+{
+  "phase": "v1.19",
+  "study": "Coverage Paper B (re-analysis: #32, #34, #35, #36)",
+  "revision": "r1",
+  "tag": "v1.19-prereg-r1",
+  "tag_object": "de58c07708d3b521b63d23f29feb2bb071596a20",
+  "commit": "4bc4ce4f859cff9528f60dd0621af097c0c2cae6",
+  "tree": "519fba001a63b6999626d56c697154c30da3a3fb",
+  "branch": "v1.19",
+  "tagger_date": "2026-11-13T10:17:02-06:00",
+  "remote_tag_refs": "de58c07708d3b521b63d23f29feb2bb071596a20\trefs/tags/v1.19-prereg-r1\n4bc4ce4f859cff9528f60dd0621af097c0c2cae6\trefs/tags/v1.19-prereg-r1^{}",
+  "recorded_utc": "2026-11-13T17:01:13Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_19/prereg, methodology/v1_19/scripts, methodology/v1_19/dryrun, methodology/v1_19/anchor; methodology/v1_19/draft_r0 and draft_r1 hold the drafts the pre-registrant received)",
+  "osf_verified": {
+    "methodology/v1_19/prereg": {
+      "files_at_tag": 7,
+      "match": 7
+    },
+    "methodology/v1_19/scripts": {
+      "files_at_tag": 5,
+      "match": 5
+    },
+    "methodology/v1_19/dryrun": {
+      "files_at_tag": 5,
+      "match": 5
+    },
+    "methodology/v1_19/anchor": {
+      "files_at_tag": 1,
+      "match": 1
+    }
+  },
+  "lock_manifest": {
+    "path": "osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19.sha256",
+    "sha256": "ee05e17d31172b9094fcf344415d917c1f47825e63a6e7b21bc6d20313231d5b",
+    "files_listed": 21
+  },
+  "final_text": {
+    "path": "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19.md",
+    "byte_copy_of": "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r1.md",
+    "sha256": "9ae2d0b3d28b692a519dabff570b397712987dd543f6b5276189e0b479227b0a"
+  },
+  "locked_files": {
+    "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19.md": {
+      "sha256": "9ae2d0b3d28b692a519dabff570b397712987dd543f6b5276189e0b479227b0a",
+      "git_blob": "4d4cdee4e71b36cc037073d3a1d1bb48ffad4609"
+    },
+    "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r1.md": {
+      "sha256": "9ae2d0b3d28b692a519dabff570b397712987dd543f6b5276189e0b479227b0a",
+      "git_blob": "4d4cdee4e71b36cc037073d3a1d1bb48ffad4609"
+    },
+    "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19_DRAFT_r0.md": {
+      "sha256": "a092000c0d091c596ec935865731b766896cb88dcb8897eb116096ffb13b28d1",
+      "git_blob": "1d18c02da58d4bcb5fdccda2d8f0aa0bbc01e197"
+    },
+    "osf/methodology/v1_19/prereg/build_roster_v1_19.py": {
+      "sha256": "bc30c34caf2e559d042f4f5e2bff9110153486695b3f4f50f5de7e24e3ca6ef0",
+      "git_blob": "5019a050ed8e09cb73e1ddbd7500437025446633"
+    },
+    "osf/methodology/v1_19/prereg/phantom_roster_v1_19.csv": {
+      "sha256": "9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb",
+      "git_blob": "59383faf9a26fdffa10083441cd3d660208f3508"
+    },
+    "osf/methodology/v1_19/scripts/score_v1_19.py": {
+      "sha256": "7bbf6b1cc22aa26ed2892c07cab930c4497515c06b54261c5b3365c19b2c4242",
+      "git_blob": "4e35c74ad2268c63996a740f664e1b7c30b1f409"
+    },
+    "osf/methodology/v1_19/scripts/tests/test_score_v1_19.py": {
+      "sha256": "7c9b39314353bf19cbcda167668ce5f127d48493e10a0adce13616b35d5e562a",
+      "git_blob": "71f12e962702462e88a333bd7db21408ee7a4bb3"
+    },
+    "osf/methodology/v1_19/scripts/tests/test_loader_v1_19.py": {
+      "sha256": "9d8d875080106ded3c93696fbe0e6e967fee5b209f359c35f5129915cc21c117",
+      "git_blob": "728d1cdc8ee2d9e9f9499d66db12dfcb4a30e3ff"
+    },
+    "osf/methodology/v1_19/scripts/tests/test_e2e_paperA_v1_19.py": {
+      "sha256": "4a38684556f560cad3ae19d38b1c03b58d25b0d7e6f2fcf77933f7c2bcdf0a72",
+      "git_blob": "f2d3ee2ceb2cffdf26a3cb1461c67010e3de97d0"
+    },
+    "osf/methodology/v1_19/scripts/tests/test_e2e_coder_v1_19.py": {
+      "sha256": "01239c6255b203cdbf57abcae1c0313518e60535e2b70d16b8d02cb5a0d3b78b",
+      "git_blob": "bb8ff54a354e5b0aadb0bcc8f5e0b013bd6b7af2"
+    },
+    "osf/methodology/v1_19/dryrun/dry_run_v1_19_r1.json": {
+      "sha256": "a105c155d4b6456b862a876778f8b9eb9112a9a8ddf25deba74f4bc75fa6a820",
+      "git_blob": "cdf39479942d29a54bfb59772f9e029a61279e6e"
+    },
+    "osf/methodology/v1_19/dryrun/sensitivity_timing_v1_19_r1.json": {
+      "sha256": "241449780999646d9feda73e31dc53c1a4ee0d77da90546fb1f853c7bb85542c",
+      "git_blob": "a0c8eba66284f52c7f798eadf00f1717fc0fd8a0"
+    },
+    "osf/methodology/v1_19/dryrun/dry_run_v1_19.json": {
+      "sha256": "cd82a49962e3a9e9a6cdd4d0b47b4004c6fa6adeebe609e68f129aae97e01176",
+      "git_blob": "a2be528b62056ee40ca5a27a02f4edeba4e7da73"
+    },
+    "osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt1_weak_world.json": {
+      "sha256": "21d5bfe6b0943358a2dc01314a2546218ae7dd0879a4e20d894e804c486d0cca",
+      "git_blob": "dc365bcb36d5e474edaa9d592cfac6a79507a90e"
+    },
+    "osf/methodology/v1_19/dryrun/dry_run_v1_19_attempt2.json": {
+      "sha256": "86d274e30a4db1291e9d4eb2f3e9560f471c752280aa7891c2b79b6fdebaf745",
+      "git_blob": "b54b2ecf2ba322fc003c480de535061058f1efd9"
+    },
+    "osf/methodology/v1_19/anchor/DEVIATIONS.md": {
+      "sha256": "c3ebdfb0fcd889b3590d3e5f278ee936787fddfc2ff3554b5448c564138756ac",
+      "git_blob": "166cc9c965eb4cec6cb7c639a7263a69def9555b"
+    },
+    "osf/methodology/v1_12/scripts/score_v1_12.py": {
+      "sha256": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+      "git_blob": "11cded95437fd2ed30c1cdf1120b23a5a3cebe2d"
+    },
+    "osf/methodology/v1_12/prereg/probes_v1_12.jsonl": {
+      "sha256": "79fc981b8ce38bb35c05f4cf475adc734c5727f537039f7b3746b3cd23c9349e",
+      "git_blob": "4f94cf05f732560589a838270f4adb823ce9199a"
+    },
+    "osf/v31/data/v31_cpc.csv": {
+      "sha256": "d38a3676788a77c9244cfeab1424b215c772db34a0f4ac753bc6b192a299a638",
+      "git_blob": "1031ab8dae88dfc412e5c08617371dcc71525a72"
+    },
+    "prereg/v0_22_registry.json": {
+      "sha256": "ef2d24bd61d6e8fe50257ee514333dd40d5569361943618767b8302881d3f067",
+      "git_blob": "f1d080180a6b70a13d4bec780c6b8bce27cfa7c7"
+    },
+    "osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19_DRAFT.sha256": {
+      "sha256": "d1225011db74f9ee12f9d094ef229290026fe8ba738988c31673b26b29e1ded1",
+      "git_blob": "8fee142f07869131b7b2d6ea5dc98f6b63bdc32e"
+    },
+    "osf/methodology/v1_19/prereg/LOCK_MANIFEST_v1_19.sha256": {
+      "sha256": "ee05e17d31172b9094fcf344415d917c1f47825e63a6e7b21bc6d20313231d5b",
+      "git_blob": "1071e5f578e76c9d46d1b7113ff4b9bbd885e8dc"
+    }
+  },
+  "paper_A_pins": {
+    "tag": "v1.12-prereg-r1",
+    "commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
+    "blobs": {
+      "osf/methodology/v1_12/scripts/score_v1_12.py": "11cded95437fd2ed30c1cdf1120b23a5a3cebe2d",
+      "osf/methodology/v1_12/prereg/probes_v1_12.jsonl": "4f94cf05f732560589a838270f4adb823ce9199a",
+      "osf/v31/data/v31_cpc.csv": "1031ab8dae88dfc412e5c08617371dcc71525a72",
+      "prereg/v0_22_registry.json": "f1d080180a6b70a13d4bec780c6b8bce27cfa7c7"
+    },
+    "scorer_sha256": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20"
+  },
+  "paper_A_answers": {
+    "osf/methodology/v1_12/data_in_this_tree": false,
+    "osf/methodology/v1_12/data_files_on_origin_v1.12": 0,
+    "collection_window_opens_utc": "2026-11-14T00:00:00+00:00",
+    "tag_before_window_opens": true
+  },
+  "scoring": {
+    "output_dir": "osf/methodology/v1_19/outputs",
+    "command": "score_v1_19.py --run (once; refuses unless the tag is on origin, this file names its commit, Paper A's v112_verdicts.json and v112_unit_table.csv exist and outputs/ is empty; section 9.2)"
+  }
+}
