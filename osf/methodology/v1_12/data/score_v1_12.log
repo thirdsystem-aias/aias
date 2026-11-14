@@ -1,0 +1,14 @@
+START_UTC 2026-11-14T12:21:56Z
+CMD python3 -u osf/methodology/v1_12/scripts/score_v1_12.py --run --raw osf/methodology/v1_12/data/v112_raw.jsonl --coded osf/methodology/v1_12/data/coded --t4-raw /Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl --t4-coded /Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded --t4-brand-table /Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_brand_table.csv --t4-verdicts /Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_verdicts.json --h5-stage1 /Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json
+Paper A: PASS -> /Users/pablou/aias/_worktrees/v1.12/osf/methodology/v1_12
+  H1_Sep_Presence: CONFIRMED
+  H2_Sep_Consistency: CONFIRMED
+  H3_Sep_NamingRate: CONFIRMED
+  H4_Reliability: CONFIRMED
+  H5_Sep_Ranking: CONFIRMED
+  H6_Sep_Sentiment: INACTIVE
+  H7_Sep_Presence_Legacy: CONFIRMED
+  H8_Panel_Replication: CONFIRMED
+END_UTC 2026-11-14T12:23:21Z
+EXIT 0
+RELEASED (was: laneA since 06:21:56)
