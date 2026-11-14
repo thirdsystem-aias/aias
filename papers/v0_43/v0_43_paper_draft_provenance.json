@@ -2,7 +2,7 @@
  "verdicts": "/Users/pablou/aias/_worktrees/v0.43-paper/osf/v43/v43_stage1_verdicts.json",
  "pulls": "/Users/pablou/aias/_worktrees/v0.43-paper/osf/v43/data/trends_raw",
  "synthetic": false,
- "coi_cheil": false,
+ "coi_cheil": true,
  "cases": {
   "CASE_PRES": "FALSIFIED",
   "CASE_SA": "FALSIFIED",
@@ -10,7 +10,12 @@
   "CASE_CONS": "UNDETERMINED"
  },
  "flags": {
-  "COI_CHEIL": false,
+  "COI_CHEIL": true,
+  "V043_REAL": true,
+  "PRES_NEG": true,
+  "ANY_NOY": true,
+  "ANY_NOSA": true,
+  "ANY_NOM": true,
   "ANY_FLAG": false,
   "CONC_PASS": true,
   "REL_PASS": true,
@@ -75,6 +80,33 @@
     "osf/v43/anchor/DEVIATIONS.md"
    ],
    "formatted": "1 entry in the post-lock deviations record."
+  },
+  "NOY_LIST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "unit_table",
+    "Y"
+   ],
+   "formatted": "Audeze, Beyerdynamic, Spirit Torino and ZMF Headphones (headphones); Bioderma and Dior Beauty (skincare); Chantecaille (cosmetics)"
+  },
+  "NOSA_LIST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "unit_table",
+    "Y_SA"
+   ],
+   "formatted": "Dan Clark Audio (headphones); S21, S23 and S24 (spirits)"
+  },
+  "NOM_LIST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "unit_table",
+    "M"
+   ],
+   "formatted": "Dan Clark Audio (headphones); S21 (spirits)"
   },
   "FLAG_LIST": {
    "kind": "text",

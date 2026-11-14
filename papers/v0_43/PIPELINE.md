@@ -69,7 +69,7 @@ PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_43/fill_paper_v0_43.py
 
 Writes `papers/v0_43/v0_43_paper_draft.md` and `…_draft_provenance.json` (path, raw value and format of every number). Prints the selected cases (`CASE_PRES`, `CASE_SA`, `CASE_MOM`, `CASE_CONS`) and flags. It refuses when the verdicts are synthetic; the tag, its commit or date, the anchor, the deviations record or a locked file's SHA-256 disagree; any verdict, label, reason or flag differs from the locked scorer's rule on the recorded statistics; a test's rho differs from the one recomputed from the unit table; the draws are not 10,000, the pulls not `main1`–`main3`, the units not 112; the stored records are not 28 per pull, disagree with `MC_Weekly`, or a pull started less than 24 hours after the previous one was stored; or a value a selected sentence needs is missing.
 
-**Pending decision (do not switch on without Pablo):** `--coi-cheil` adds one COI sentence: Samsung's agency Cheil Worldwide, or its Iris unit, has worked for Chevrolet, BMW, Bentley (v0.22), Jack Daniel's (v0.23, S03) and Eucerin (v0.20), all five in this study's units (source: v0.62 DEVIATIONS Entry 0, Part F). Off by default.
+**Pending decision (do not switch on without Pablo):** `--coi-cheil` adds one COI sentence: Samsung's agency Cheil Worldwide, or its Iris unit, has worked for Chevrolet, BMW, Bentley (v0.22), Jack Daniel's (v0.23, S03) and Eucerin (v0.20), all five in this study's units (source: v0.62 DEVIATIONS Entry 0, Part F). Off by default. The release paper (14 November 2026) was filled with `--coi-cheil`: all five brands are units of this study, and CLAUDE.md's COI rule asks for disclosed relationships rather than a clean claim; the analysis keeps them as locked.
 
 ## 4. Build the PDF
 

@@ -235,6 +235,27 @@ def compute(src, synthetic, fig_dir, commit, deviations, coi_cheil=False):
     val.word("DEV_SENTENCE", deviations[0], deviations[2])
     val.word("DEV_STATUS", deviations[1], deviations[2])
 
+    # ---------------- review additions (14 Nov 2026): who left which test (names from unit_table), sign of the
+    # primary rho, and a real-data-only sentence on one sampling swing (verified in data/trends_raw, see template)
+    flags["V043_REAL"] = not synthetic
+    _r = V["tests"]["H_Pred_Presence"].get("rho")
+    flags["PRES_NEG"] = _r is not None and _r < 0
+    _ut = V["unit_table"]
+
+    def _left(pred):
+        parts = []
+        for sub, cat in VV.CAT_SHORT.items():
+            ns = [u["unit"] for u in _ut if u["sub"] == sub and pred(u)]
+            if ns:
+                parts.append(f"{VV.joinand(ns)} ({cat.lower()})")
+        return "; ".join(parts)
+    for key, pred, col in (("NOY", lambda u: u["Y"] is None, "Y"),
+                           ("NOSA", lambda u: u["Y"] is not None and u["Y_SA"] is None, "Y_SA"),
+                           ("NOM", lambda u: u["Y"] is not None and u["M"] is None, "M")):
+        txt = _left(pred)
+        flags[f"ANY_{key}"] = bool(txt)
+        val.word(f"{key}_LIST", txt, ["verdicts", "unit_table", col])
+
     # ---------------- flags (the scorer's words)
     fl = list(V["flags"])
     flags["ANY_FLAG"] = bool(fl)
