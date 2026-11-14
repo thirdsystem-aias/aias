@@ -164,7 +164,7 @@ def chart_01(V, rows, out):
     ax.legend(loc="center left", bbox_to_anchor=(1.01, 0.5), fontsize=7.2, frameon=False)
     _box(ax, f"pooled J_within − J_between = {VV.r3(ms['pooled_mean_J_within_minus_J_between'])} (minimum 0.10)\n"
              f"pooled J_between = {VV.r3(ms['pooled_mean_J_between'])} (maximum 0.60)\n"
-             f"cells: {ms['cells_used']}")
+             f"cells: {ms['cells_used']}", x=0.97, y=0.03, ha="right", va="bottom")   # lower right: no cell there
     fig.subplots_adjust(top=0.80, bottom=0.17, left=0.10, right=0.74)
     _header(fig, 1, f"One point per model × run × category of panel {V['primary_panel']}; registry brands only.",
             "Dashed: equal overlap. Dotted: the pre-registered limits (difference 0.10; J_between 0.60).")
