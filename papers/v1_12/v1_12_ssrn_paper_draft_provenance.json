@@ -65,14 +65,21 @@
    "basis": [
     "osf/methodology/v1_12/anchor/DEVIATIONS.md"
    ],
-   "formatted": "Deviations are recorded in `osf/methodology/v1_12/anchor/DEVIATIONS.md` (1 dated entry), each before the step it concerns."
+   "formatted": "Deviations are recorded in `osf/methodology/v1_12/anchor/DEVIATIONS.md` (2 dated entries), each before the step it concerns. The entry of 11 November, made before the tag, records the lock time and the waiver (above). Entry 1, of 13 November, made before the first v1.12 call and approved by the pre-registrant, is a clarification that changes no hypothesis, design, scoring rule or budget: it declares a read-only check for answers that stop at the 16,384-token output limit, run on the first answers, about hourly during the collection and once after it; an answer stopping at the cap, or one that cannot be checked, would pause the collection and be reported, and no record is edited (§3.1 reports the checks)."
   },
   "DEV_STATUS": {
    "kind": "text",
    "basis": [
     "osf/methodology/v1_12/anchor/DEVIATIONS.md"
    ],
-   "formatted": "deviations recorded in `osf/methodology/v1_12/anchor/DEVIATIONS.md` (1 dated entry)."
+   "formatted": "deviations recorded in `osf/methodology/v1_12/anchor/DEVIATIONS.md` (2 dated entries)."
+  },
+  "FA_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "runner records of the DEVIATIONS Entry 1 checks (status entries Nov 13; commit b89ff1f message)"
+   ],
+   "formatted": "The first-answers check declared in DEVIATIONS Entry 1 (§2.9) ran on 14 November at 00:05:15 UTC on the first 30 records, at 01:00:53 UTC on 832 records and at 01:59:59 UTC, after the collection had ended, on all 900; each time it was clear: no record stopped at the 16,384-token output cap, by finish reason or by recorded tokens, and every answer carried a finish reason and an output-token count, so no check triggered a pause."
   },
   "PRIMARY": {
    "kind": "text",
@@ -2865,6 +2872,15 @@
     "per_category_panel"
    ],
    "formatted": "Median Cov* ranged from 15.2 to 26.6 across categories."
+  },
+  "BASE_BELOW50": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "descriptives",
+    "per_category_panel"
+   ],
+   "formatted": " Descriptively, median Cov* was below 50, the value of situation-blind naming, in every category (15.2 to 26.6 on panel N3; §3.8); no test of this was pre-registered, and none is made."
   },
   "REL1_MIN": {
    "kind": "derived",

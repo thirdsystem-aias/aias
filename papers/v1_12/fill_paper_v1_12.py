@@ -247,6 +247,7 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
              ["synthetic flag"])
     val.word("DEV_SENTENCE", deviations[0], deviations[2])
     val.word("DEV_STATUS", deviations[1], deviations[2])
+    val.word("FA_SENTENCE", *first_answers_text(synthetic))
     val.word("PRIMARY", V["primary_panel"], ["verdicts", "primary_panel"])
     # Method 2.2 is conditional on the drop rule (pre-registration 7.3; decided before data, Nov 10, 2026): C3 becomes
     # the primary panel only when Claude Fable 5.2 leaves the panel. The scorer's select_panels() does the same.
@@ -493,6 +494,12 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
     hi = val.derive("BASE_MED_MAX", VV.d_max, refs, VV.f1)
     val.word("BASE_SENTENCE", f"Median Cov* ranged from {lo} to {hi} across categories.",
              ["verdicts"] + D + ["per_category_panel"])
+    # Discussion, descriptive only (Nov 14, 2026): stated only when every category's median Cov* is below 50.
+    meds = [VV.jget(V, D + ["per_category_panel", f"{s}|{pr}", "cov_star", "median"]) for s in VV.SUBS]
+    below = all(isinstance(m, (int, float)) and m < 50 for m in meds)
+    val.word("BASE_BELOW50", (f" Descriptively, median Cov* was below 50, the value of situation-blind naming, in every "
+                              f"category ({lo} to {hi} on panel {pr}; §3.8); no test of this was pre-registered, and "
+                              "none is made.") if below else "", ["verdicts"] + D + ["per_category_panel"])
     rr = [("verdicts", D + ["run_to_run_reliability", m, "rel1"]) for m in VV.MODELS4
           if VV.has(V, D + ["run_to_run_reliability", m, "rel1"])]
     val.derive("REL1_MIN", VV.d_min, rr, VV.r3)
@@ -552,6 +559,23 @@ def compute(src, synthetic, fig_dir, prereg_commit, deviations):
 # tag v1.12-prereg-r1 carries it (tagger date 2026-11-10T20:45:38-06:00). The real fill refuses if the records differ.
 LOCK_UTC = "2026-11-11T02:45"
 LOCK_RECORD_PHRASES = ("waived the 24-hour review on 2026-11-10 at 20:26 CT", "locked at 2026-11-11 02:45 UTC")
+# Dated entries of anchor/DEVIATIONS.md: "- **2026-11-11 (...)" and numbered ones, "- **Entry 1 — 2026-11-13, ..." or a
+# heading "## Entry 1 — 2026-11-13". The paper describes each; the fill refuses if the record holds a dated entry the
+# paper does not describe. (Nov 14, 2026: the earlier pattern counted only the first form and printed "1 dated entry".)
+DEV_ENTRY = re.compile(r"(?m)^(?:#{1,6}[ \t]+|- \*\*)(?:Entry[ \t]+\d+[ \t]*[—–-]+[ \t]*)?(\d{4}-\d{2}-\d{2})")
+DEV_DESCRIBED = {
+    "2026-11-11": "The entry of 11 November, made before the tag, records the lock time and the waiver (above).",
+    "2026-11-13": ("Entry 1, of 13 November, made before the first v1.12 call and approved by the pre-registrant, is a "
+                   "clarification that changes no hypothesis, design, scoring rule or budget: it declares a read-only "
+                   "check for answers that stop at the 16,384-token output limit, run on the first answers, about "
+                   "hourly during the collection and once after it; an answer stopping at the cap, or one that cannot "
+                   "be checked, would pause the collection and be reported, and no record is edited (§3.1 reports the "
+                   "checks)."),
+}
+# The Entry 1 checks as the runner recorded them (status entries of Nov 13, 5:58 and 6:58 pm CT; the after-end check in
+# the message of data commit b89ff1f): each RESULT CLEAR (exit 0). UTC time on 2026-11-14, records read.
+FIRST_ANSWERS_CHECKS = (("00:05:15", 30), ("01:00:53", 832), ("01:59:59", 900))
+FIRST_ANSWERS_RECORD = "runner records of the DEVIATIONS Entry 1 checks (status entries Nov 13; commit b89ff1f message)"
 
 
 def deviations_text(synthetic):
@@ -564,11 +588,28 @@ def deviations_text(synthetic):
     gone = [p for p in LOCK_RECORD_PHRASES if p not in txt]
     if gone:
         raise FillError(f"{DEVIATIONS} does not record {gone}; Method 2.9 states the lock time and the waiver from it")
-    n = len(re.findall(r"(?m)^- \*\*\d{4}-\d{2}-\d{2}", txt))
+    dates = DEV_ENTRY.findall(txt)
+    if sorted(dates) != sorted(DEV_DESCRIBED):
+        raise FillError(f"{DEVIATIONS} has dated entries {dates}, the paper describes {sorted(DEV_DESCRIBED)}: "
+                        "describe every dated entry in DEV_DESCRIBED")
+    n = len(dates)
     rel = "osf/methodology/v1_12/anchor/DEVIATIONS.md"
     ent = f"{n} dated entr{'y' if n == 1 else 'ies'}"
-    return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns.",
+    desc = " ".join(DEV_DESCRIBED[d] for d in dates)
+    return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns. {desc}",
             f"deviations recorded in `{rel}` ({ent}).", [rel])
+
+
+def first_answers_text(synthetic):
+    if synthetic:
+        t = "[Synthetic test run: the first-answers check record was not read.]"
+        return t, ["synthetic"]
+    (t1, n1), (t2, n2), (t3, n3) = FIRST_ANSWERS_CHECKS
+    return (f"The first-answers check declared in DEVIATIONS Entry 1 (§2.9) ran on 14 November at {t1} UTC on the "
+            f"first {n1} records, at {t2} UTC on {n2} records and at {t3} UTC, after the collection had ended, on all "
+            f"{n3}; each time it was clear: no record stopped at the 16,384-token output cap, by finish reason or by "
+            "recorded tokens, and every answer carried a finish reason and an output-token count, so no check "
+            "triggered a pause.", [FIRST_ANSWERS_RECORD])
 
 
 def verify_real(V):

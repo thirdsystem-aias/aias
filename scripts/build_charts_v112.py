@@ -216,7 +216,7 @@ def chart_05(V, rows, out):
         ax.set_xlabel("naming rate π_cov in the situation answers", fontsize=9)
         ax.tick_params(labelsize=8)
     a1.axhline(50, color=cs.PALETTE["gray_light"], lw=0.8, ls=":", zorder=1)
-    a2.legend(loc="upper right", fontsize=7, frameon=False)
+    a2.legend(loc="lower right", fontsize=7, frameon=False)   # lower right: no brand there (upper right hid points)
     leg = V["legs"]["H3_Sep_NamingRate"]
     _box(a1, _leg_text(V, "H3_Sep_NamingRate")[0], fs=7)
     _box(a2, f"ρ_w = {VV.r3(V['MC']['MC_Positive']['rho_w_raw_cov_pi_cov'])}\n"
