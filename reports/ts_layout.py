@@ -614,12 +614,27 @@ def running_chrome(c: Canvas, t: Tokens, label: str, page_no: int | None, code: 
 # Covers
 # ---------------------------------------------------------------------------
 
-def cover_c2(c: Canvas, t: Tokens, *, photo_path: Path | str, kicker: str, title: str,
-             deck: str, byline: str) -> dict:
-    """Tier 1 cover: lockup on paper, full-width photo, Indigo title block on columns 1-5
-    crossing the photo's bottom edge, deck on paper, byline in caps at the foot."""
+def c2_ground(t: Tokens, code: str | None) -> str:
+    """'paper' or 'night': the C2 ground for the report code's document type (decision 14),
+    read from brand cover_system.C2.ground_by_type. No code, or a type not listed: C2.ground."""
     cv = t.covers["C2"]
-    _paper(c, t, cv["ground"])
+    if code is None:
+        return "paper" if cv["ground"] == "paper" else "night"
+    kind = RC.parse_code(code)["type"]
+    return cv["ground_by_type"].get(kind, "paper")
+
+
+def cover_c2(c: Canvas, t: Tokens, *, photo_path: Path | str, kicker: str, title: str,
+             deck: str, byline: str, code: str | None = None) -> dict:
+    """Tier 1 cover: lockup, full-width photo, Indigo title block on columns 1-5 crossing the
+    photo's bottom edge, deck and byline in caps at the foot. The ground comes from the report
+    code's document type (FL paper, SY night; decision 14); on night the lockup is white over
+    Lavender Grey, the deck white and the byline Lavender Grey. The photo is unchanged."""
+    cv = t.covers["C2"]
+    ground = c2_ground(t, code)
+    night = ground == "night"
+    nt = cv["night"]
+    _paper(c, t, nt["ground"] if night else cv["ground"])
     ph = cv["photo"]
     photo_top = t.y(ph["top_from_top_pt"])
     photo_bottom = t.y(t.page_h * float(ph["bottom_from_top_ratio"]))
@@ -627,7 +642,7 @@ def cover_c2(c: Canvas, t: Tokens, *, photo_path: Path | str, kicker: str, title
     img = treated_photo(t, photo_path, photo_w, photo_top - photo_bottom)
     c.drawImage(img, ph["x_pt"], photo_bottom, photo_w, photo_top - photo_bottom)
     os.unlink(img)
-    lk = lockup(c, t)
+    lk = lockup(c, t, dark=night)
     tb = cv["title_block"]
     bx0 = float(tb["x_pt"])
     bx1 = t.col_right(tb["columns"][1])
@@ -645,9 +660,12 @@ def cover_c2(c: Canvas, t: Tokens, *, photo_path: Path | str, kicker: str, title
     tbottom_limit = bbot + tb["title_bottom_padding_pt"]
     tbot = _block(c, lambda: [_para(t, title, tspec)], tb["text_x_pt"], ttop, tw, tbottom_limit, "C2 title", runt=True)
     dk = cv["deck"]
-    dspec = t.style("cover_deck")
+    dspec = dict(t.style("cover_deck"))
     by = cv["byline"]
-    bspec = t.style("cover_byline")
+    bspec = dict(t.style("cover_byline"))
+    if night:
+        dspec["color"] = nt["deck_color"]
+        bspec["color"] = nt["byline_color"]
     dtop = bbot - dk["top_gap_below_block_pt"]
     dx = t.col_left(dk["columns"][0])
     dw = t.span(*dk["columns"])
@@ -666,6 +684,9 @@ def cover_c2(c: Canvas, t: Tokens, *, photo_path: Path | str, kicker: str, title
         "title": {"top": ttop, "bottom": tbot, "x": tb["text_x_pt"], "w": tw},
         "deck": {"top": dtop, "bottom": dbot, "x": dx, "w": dw},
         "byline_baseline": by["baseline_from_bottom_pt"],
+        "ground": ground,
+        "deck_colour": dspec["color"],
+        "byline_colour": bspec["color"],
     }
 
 

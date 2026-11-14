@@ -2323,6 +2323,7 @@
         "lavender_grey": "palette.brand_supporting.lavender_grey.hex",
         "grid": "palette.semantic_ui_colors.color_grid.hex",
         "paper": "palette.paper_off_white.hex",
+        "night_indigo": "#17103A",
         "white": "#FFFFFF"
       },
       "cover_title": {
@@ -2592,6 +2593,18 @@
     "C2": {
       "tier": 1,
       "ground": "paper",
+      "ground_by_type": {
+        "_note": "C2 ground per document type (decision 14, Pablo, Nov 13, 2026; first use AIAS 2.0 r4). cover_c2() reads it from the report code's TYPE; no toggle. Types not listed, and a cover built without a code, keep the paper ground.",
+        "FL": "paper",
+        "SY": "night"
+      },
+      "night": {
+        "_note": "Night ground for C2: Night Indigo #17103A. The photo, the Indigo title block, its position and size, and all type sizes are unchanged. The photo stays plain greyscale (no night-matched tint unless Pablo approves one).",
+        "ground": "night_indigo",
+        "lockup": "on_dark",
+        "deck_color": "white",
+        "byline_color": "lavender_grey"
+      },
       "photo": {
         "x_pt": 0,
         "width": "page",

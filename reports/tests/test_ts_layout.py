@@ -55,6 +55,54 @@ class TestTokens(unittest.TestCase):
         self.assertEqual((body["size_pt"], body["leading_pt"]), (9.4, 13.2))
 
 
+class TestCoverC2Ground(unittest.TestCase):
+    """Decision 14: the C2 ground comes from the report code's document type; no toggle."""
+
+    @staticmethod
+    def _cover(code):
+        p = _photo()
+        try:
+            return L.cover_c2(_canvas(), T, photo_path=p, kicker="Kicker", title="Sample title",
+                              deck="Sample deck text for the cover.", byline="Sample byline", code=code)
+        finally:
+            os.unlink(p)
+
+    def test_brand_file_records_ground_per_type(self):
+        g = T.covers["C2"]["ground_by_type"]
+        self.assertEqual((g["FL"], g["SY"]), ("paper", "night"))
+        self.assertEqual(str(T.colour("night_indigo")), str(T.colour("#17103A")))
+
+    def test_sy_cover_is_night(self):
+        g = self._cover("TS-SY-AIAS2.0-r4")
+        self.assertEqual(g["ground"], "night")
+        lk = g["lockup"]
+        self.assertEqual((lk["line1"]["colour"], lk["line2"]["colour"]), ("white", "lavender_grey"))
+        self.assertEqual(g["deck_colour"], "white")
+        self.assertEqual(g["byline_colour"], "lavender_grey")
+
+    def test_fl_cover_stays_paper(self):
+        g = self._cover("TS-FL-v0.42-r1")
+        self.assertEqual(g["ground"], "paper")
+        lk = g["lockup"]
+        self.assertEqual((lk["line1"]["colour"], lk["line2"]["colour"]), ("indigo", "soft_black"))
+        self.assertEqual((g["deck_colour"], g["byline_colour"]), ("soft_black", "warm_gray"))
+
+    def test_other_types_and_no_code_keep_paper(self):
+        self.assertEqual(self._cover(None)["ground"], "paper")
+        self.assertEqual(self._cover("TS-CS-v0.22-r1")["ground"], "paper")
+
+    def test_bad_code_raises(self):
+        with self.assertRaises(Exception):
+            self._cover("not a code")
+
+    def test_geometry_and_photo_treatment_unchanged_on_night(self):
+        a, b = self._cover("TS-SY-AIAS2.0-r4"), self._cover("TS-FL-v0.42-r1")
+        for k in ("photo", "block", "title", "deck", "byline_baseline"):
+            self.assertEqual(a[k], b[k], k)
+        self.assertFalse(T.photography["treatment"].get("tint"))
+        self.assertTrue(T.photography["treatment"].get("greyscale", True))
+
+
 class TestCoverC2(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
