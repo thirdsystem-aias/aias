@@ -363,9 +363,27 @@ def _block(c: Canvas, make: Callable[[], list], x: float, top: float, w: float,
 # Photographs: greyscale, contrast 1.08, no tint, cropped to the frame
 # ---------------------------------------------------------------------------
 
-def pool_photo(t: Tokens, photo_id: str, cover: str | None = None) -> Path:
-    """Path of a pool photo's original, by pool id (A01, A02 ...), for a print cover. Refuses ids
-    not in the print pool (web-only photos included) and photos restricted to other covers."""
+def _library_photo(t: Tokens, entry: dict, screen: bool) -> Path:
+    """File of a photo library v2 image (AI-generated, one per study category): print/ (3072x2048) for
+    covers, web/ (1536x1024) for screen."""
+    rel = t.photography["library_v2_dir"]
+    name = entry["file_web" if screen else "file_print"]
+    bases = [Path(os.environ["TS_LIBRARY_DIR"])] if os.environ.get("TS_LIBRARY_DIR") else []
+    bases += [t.root / rel, Path.home() / "aias" / rel]
+    for base in bases:
+        if (base / name).is_file():
+            return base / name
+    raise FileNotFoundError(f"{name} not found in {[str(b) for b in bases]}")
+
+
+def pool_photo(t: Tokens, photo_id: str, cover: str | None = None, screen: bool = False) -> Path:
+    """Path of a photo's file, by id: a library v2 id (v0.16_kitchen-knives, v0.40_airlines ...), which
+    resolves to its print/ file (covers) or, with screen=True, its web/ file; or a licensed pool id
+    (A01, A02 ...), which resolves to its original and is for synthesis, methodology and general pages only.
+    Refuses ids not in the print pool (web-only photos included) and photos restricted to other covers."""
+    lib = next((p for p in t.photography.get("library_v2", []) if p["id"] == photo_id), None)
+    if lib is not None:
+        return _library_photo(t, lib, screen)
     entry = next((p for p in t.photography["pool"] if p["id"] == photo_id), None)
     if entry is None:
         if any(p["id"] == photo_id for p in t.photography.get("web_only", [])):

@@ -236,9 +236,47 @@ class TestPhotography(unittest.TestCase):
                 L.pool_photo(T, road, cover="C2")
             self.assertTrue(L.pool_photo(T, road, cover="C3").name.startswith(road))
 
+    def test_library_v2_ids_resolve(self):
+        lib = {p["id"]: p for p in T.photography["library_v2"]}
+        self.assertEqual(len(lib), 23)
+        self.assertTrue(all(p["generated"] == "AI" for p in lib.values()))
+        self.assertTrue(all(p["credit"] == "Cover image generated with AI" for p in lib.values()))
+        for sid in ("v0.16_kitchen-knives", "v0.24_b2b-saas", "v0.40_airlines", "v0.40_retail-banks"):
+            cover = L.pool_photo(T, sid, cover="C2")
+            self.assertEqual((cover.parent.name, cover.name), ("print", sid + ".png"))
+            screen = L.pool_photo(T, sid, screen=True)
+            self.assertEqual((screen.parent.name, screen.name), ("web", sid + ".png"))
+        from PIL import Image
+        with Image.open(L.pool_photo(T, "v0.40_airlines", cover="C2")) as im:
+            self.assertEqual(im.size, (3072, 2048))
+        with Image.open(L.pool_photo(T, "v0.40_airlines", screen=True)) as im:
+            self.assertEqual(im.size, (1536, 1024))
+        with self.assertRaises(ValueError):
+            L.pool_photo(T, "v0.99_nothing")
+        self.assertTrue(L.pool_photo(T, "A01").name.startswith("A01"))  # the A-pool still resolves
+
+    def test_library_v2_rules_and_usage_moved(self):
+        ph = T.photography
+        self.assertFalse(any("Never literal" in r for r in ph["rules"]))
+        self.assertTrue(any(r.startswith("Photos are evocative, not literal") for r in ph["rules"]))
+        self.assertIn("A01-A18", ph["pool_rules"][0])
+        self.assertIn("Cover image generated with AI", ph["credit_rule"])
+        used = {u["report"]: u["photo"] for u in ph["usage_record"]}
+        self.assertEqual(used["v0.16 category study"], "v0.16_kitchen-knives")
+        self.assertEqual(used["v0.24 category study"], "v0.24_b2b-saas")
+        self.assertEqual(used["v0.40 flagship"], "v0.40_airlines")
+        self.assertEqual(used["v0.40 flagship, banks section opener"], "v0.40_retail-banks")
+        self.assertNotIn("A04", used.values())
+        self.assertEqual(used["AIAS 2.0 synthesis report, revision r3 (Tier 1 restyle)"], "A18")
+        # No category study uses an A-pool photo any more
+        for r, p in used.items():
+            if "category study" in r:
+                self.assertFalse(re.match(r"A\d\d$", p), r)
+
     def test_usage_record_rules(self):
         rec = T.photography["usage_record"]
-        pool = [p["id"] for p in T.photography["pool"]] + [p["id"] for p in T.photography["web_only"]]
+        pool = ([p["id"] for p in T.photography["pool"]] + [p["id"] for p in T.photography["web_only"]]
+                + [p["id"] for p in T.photography["library_v2"]])
         for u in rec:
             self.assertIn(u["photo"], pool)
             if u["tier"] == 1:
