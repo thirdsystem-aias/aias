@@ -246,7 +246,7 @@ On past data the association between June AI availability and the later change i
 {% if PRES_REVERSED %}
 On past data, AI availability did not lead demand: brands that the six models named more than their June search level would suggest lost search interest relative to comparable brands. Under the pre-registration this is support for the account in which model answers echo a market that has already moved, so AI presence beyond search marks brands past their peak. It is a correlation on past data, and Stage 2 tests it forward.
 {% else %}
-On past data, June AI availability carried no useful information about the next five months of search interest beyond June search level: the data exclude even a small positive partial association, and the negative direction that would support the lag account was not significant. For the programme, Presence is a measure of current availability, with convergent and discriminant evidence, and not, on this evidence, a leading indicator of search demand. Stage 2 repeats the test forward.
+On past data, June AI availability carried no useful information about the next five months of search interest beyond June search level: the data exclude even a small positive partial association, and in this primary test the negative direction that would support the lag account was not significant (two-sided $p = {{PRES_P2}}$). For the programme, Presence is a measure of current availability, with convergent and discriminant evidence, and not, on this evidence, a leading indicator of search demand. Stage 2 repeats the test forward.
 {% endif %}
 {% case UNDETERMINED %}
 On past data the test could not tell a small association between June AI availability and the later change in search interest from none. The pre-registration anticipated this outcome: partial correlations of 0.1 to 0.3 are what a useful leading indicator would show, and with about 105 brands such effects may come out UNDETERMINED. The question stays open for Stage 2, which repeats the test forward.
@@ -254,7 +254,7 @@ On past data the test could not tell a small association between June AI availab
 The primary test could not be decided on these data, for the cause given in Section 3.2, and the question stays open. Stage 2 repeats the test forward on the same bundles.
 {% endswitch %}
 
-{% if ANY_FLAG %}The verdicts carry the flag{{FLAG_PLURAL}} {{FLAG_LIST}}: {{FLAG_MEANING}} {% endif %}The secondary tests returned {{SA_WORD}} for the seasonally adjusted change, {{MOM_WORD}} with the momentum control and {{CONS_WORD}} for Consistency at equal Presence; under the pre-registration none of them changes the primary verdict.
+{% if ANY_FLAG %}The verdicts carry the flag{{FLAG_PLURAL}} {{FLAG_LIST}}: {{FLAG_MEANING}} {% endif %}The secondary tests returned {{SA_WORD}} for the seasonally adjusted change, {{MOM_WORD}} with the momentum control and {{CONS_WORD}} for Consistency at equal Presence; under the pre-registration none of them changes the primary verdict.{% if MOM_REVERSED %}{% if PRES_REVERSED %}{% else %} With the February-to-June change controlled as well, the negative association was significant (two-sided $p = {{MOM_P2}}$), so the momentum test carries the label REVERSED, which the pre-registration counts as support for the account in which AI availability lags demand; it is a secondary test on past data.{% endif %}{% endif %}
 
 # 5. Limitations
 

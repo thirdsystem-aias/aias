@@ -1,0 +1,3784 @@
+{
+ "verdicts": "/Users/pablou/aias/_worktrees/v0.43-paper/osf/v43/v43_stage1_verdicts.json",
+ "pulls": "/Users/pablou/aias/_worktrees/v0.43-paper/osf/v43/data/trends_raw",
+ "synthetic": false,
+ "coi_cheil": false,
+ "cases": {
+  "CASE_PRES": "FALSIFIED",
+  "CASE_SA": "FALSIFIED",
+  "CASE_MOM": "FALSIFIED",
+  "CASE_CONS": "UNDETERMINED"
+ },
+ "flags": {
+  "COI_CHEIL": false,
+  "ANY_FLAG": false,
+  "CONC_PASS": true,
+  "REL_PASS": true,
+  "PRES_REVERSED": false,
+  "PRES_HAS_CI": true,
+  "SA_REVERSED": false,
+  "SA_HAS_CI": true,
+  "MOM_REVERSED": true,
+  "MOM_HAS_CI": true,
+  "CONS_REVERSED": false,
+  "CONS_HAS_CI": true,
+  "XL_HAS": true
+ },
+ "values": {
+  "PREREG_TAG": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "prereg"
+   ],
+   "formatted": "v0.43-prereg-r1"
+  },
+  "PREREG_COMMIT": {
+   "kind": "text",
+   "basis": [
+    "git",
+    "refs/tags/v0.43-prereg-r1^{commit}"
+   ],
+   "formatted": "8c96d9cf8e"
+  },
+  "FIG_DIR": {
+   "kind": "text",
+   "basis": [
+    "argument --fig-dir"
+   ],
+   "formatted": "../../reports/figs/v043"
+  },
+  "FIG_CAPTION": {
+   "kind": "text",
+   "basis": [
+    "synthetic flag"
+   ],
+   "formatted": ""
+  },
+  "SYN_NOTE": {
+   "kind": "text",
+   "basis": [
+    "synthetic flag"
+   ],
+   "formatted": ""
+  },
+  "DEV_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "osf/v43/anchor/DEVIATIONS.md"
+   ],
+   "formatted": "After the lock, `osf/v43/anchor/DEVIATIONS.md` recorded 1 entry, each before the data it could affect: Entry 1, clarification C11: the topic ID arrives in `q`, not in a field named `mid` (recorded 2026-11-11, before any search-interest request). The record states for each whether it changes code, data, rules or inference."
+  },
+  "DEV_STATUS": {
+   "kind": "text",
+   "basis": [
+    "osf/v43/anchor/DEVIATIONS.md"
+   ],
+   "formatted": "1 entry in the post-lock deviations record."
+  },
+  "FLAG_LIST": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "flags"
+   ],
+   "formatted": ""
+  },
+  "FLAG_PLURAL": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "flags"
+   ],
+   "formatted": ""
+  },
+  "FLAG_MEANING": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "flags"
+   ],
+   "formatted": ""
+  },
+  "PULL1_FIRST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main1",
+    "first_utc"
+   ],
+   "raw": "2026-11-12T06:50:07.268344+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-12 06:50"
+  },
+  "PULL1_LAST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main1",
+    "last_utc"
+   ],
+   "raw": "2026-11-12T06:51:39.656771+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-12 06:51"
+  },
+  "PULL2_FIRST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main2",
+    "first_utc"
+   ],
+   "raw": "2026-11-13T06:55:04.416548+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-13 06:55"
+  },
+  "PULL2_LAST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main2",
+    "last_utc"
+   ],
+   "raw": "2026-11-13T06:56:40.339160+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-13 06:56"
+  },
+  "PULL3_FIRST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main3",
+    "first_utc"
+   ],
+   "raw": "2026-11-14T07:00:07.598422+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-14 07:00"
+  },
+  "PULL3_LAST": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main3",
+    "last_utc"
+   ],
+   "raw": "2026-11-14T07:01:49.837234+00:00",
+   "fmt": "utc_min",
+   "formatted": "2026-11-14 07:01"
+  },
+  "GAP12": {
+   "kind": "derived",
+   "fn": "d_hours",
+   "consts": [],
+   "refs": [
+    [
+     "pulls",
+     [
+      "steps",
+      "main1",
+      "last_utc"
+     ]
+    ],
+    [
+     "pulls",
+     [
+      "steps",
+      "main2",
+      "first_utc"
+     ]
+    ]
+   ],
+   "raw": 24.056877715833334,
+   "fmt": "f1",
+   "formatted": "24.1"
+  },
+  "GAP23": {
+   "kind": "derived",
+   "fn": "d_hours",
+   "consts": [],
+   "refs": [
+    [
+     "pulls",
+     [
+      "steps",
+      "main2",
+      "last_utc"
+     ]
+    ],
+    [
+     "pulls",
+     [
+      "steps",
+      "main3",
+      "first_utc"
+     ]
+    ]
+   ],
+   "raw": 24.057572017222224,
+   "fmt": "f1",
+   "formatted": "24.1"
+  },
+  "PULLS_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "pulls",
+    "steps"
+   ],
+   "formatted": "The three main pulls ran from 2026-11-12 06:50 to 2026-11-12 06:51, from 2026-11-13 06:55 to 2026-11-13 06:56 and from 2026-11-14 07:00 to 2026-11-14 07:01 (UTC); the second and third started 24.1 and 24.1 hours after the last request of the pull before."
+  },
+  "MCW_REQ_PER_PULL": {
+   "kind": "json",
+   "source": "pulls",
+   "path": [
+    "steps",
+    "main1",
+    "records"
+   ],
+   "raw": 28,
+   "fmt": "i0",
+   "formatted": "28"
+  },
+  "MCW_REQ": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Weekly",
+    "requests"
+   ],
+   "raw": 84,
+   "fmt": "i0",
+   "formatted": "84"
+  },
+  "MCW_OK": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Weekly",
+    "ok"
+   ],
+   "raw": 84,
+   "fmt": "i0",
+   "formatted": "84"
+  },
+  "MCW_MISSING": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Weekly",
+    "missing"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "MCW_RESENT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Weekly",
+    "resent"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "MCW_MISSING_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_Weekly"
+   ],
+   "formatted": "none was missing, and no re-send was needed"
+  },
+  "CHAIN_HELD": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.19",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.20",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.21",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.22",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.23",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.19",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.20",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.21",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.22",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.23",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.19",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.20",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.21",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.22",
+      "links_held"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.23",
+      "links_held"
+     ]
+    ]
+   ],
+   "raw": 67.0,
+   "fmt": "i0",
+   "formatted": "67"
+  },
+  "CHAIN_TOTAL": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.19",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.20",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.21",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.22",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.23",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.19",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.20",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.21",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.22",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.23",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.19",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.20",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.21",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.22",
+      "links"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.23",
+      "links"
+     ]
+    ]
+   ],
+   "raw": 69.0,
+   "fmt": "i0",
+   "formatted": "69"
+  },
+  "TABLE_CHAIN": {
+   "kind": "table",
+   "formatted": "| Pull | Headphones | Skincare | Cosmetics | Automotive | Spirits |\n|:----------|----------:|--------:|---------:|----------:|-------:|\n| Pull 1 | 3 of 3 | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 |\n| Pull 2 | 3 of 3 | 4 of 5 | 5 of 5 | 5 of 5 | 5 of 5 |\n| Pull 3 | 3 of 3 | 5 of 5 | 5 of 5 | 5 of 5 | 5 of 5 |",
+   "cells": [
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.19",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.19",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "4",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.20",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.20",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.21",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.21",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.22",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.22",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.23",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main1",
+      "v0.23",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.19",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.19",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "4",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.20",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.20",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.21",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.21",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.22",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.22",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.23",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main2",
+      "v0.23",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.19",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "3",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.19",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.20",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.20",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.21",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.21",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.22",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.22",
+      "links"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.23",
+      "links_held"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "5",
+     "source": "verdicts",
+     "path": [
+      "manipulation_checks",
+      "MC_Chain",
+      "main3",
+      "v0.23",
+      "links"
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "TABLE_PULLS": {
+   "kind": "table",
+   "formatted": "| Pull | First request | Last request | Requests | Valid | Missing | Re-sends |\n|:----------|----------------:|----------------:|--------:|-----:|-------:|--------:|\n| Pull 1 | 2026-11-12 06:50 | 2026-11-12 06:51 | 28 | 28 | 0 | 0 |\n| Pull 2 | 2026-11-13 06:55 | 2026-11-13 06:56 | 28 | 28 | 0 | 0 |\n| Pull 3 | 2026-11-14 07:00 | 2026-11-14 07:01 | 28 | 28 | 0 | 0 |",
+   "cells": [
+    {
+     "formatted": "2026-11-12 06:50",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "first_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "2026-11-12 06:51",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "last_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "records"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "ok"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "missing"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main1",
+      "resent"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "2026-11-13 06:55",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "first_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "2026-11-13 06:56",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "last_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "records"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "ok"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "missing"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main2",
+      "resent"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "2026-11-14 07:00",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "first_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "2026-11-14 07:01",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "last_utc"
+     ],
+     "fmt": "utc_min"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "records"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "28",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "ok"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "missing"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0",
+     "source": "pulls",
+     "path": [
+      "steps",
+      "main3",
+      "resent"
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "TERMS_SHARE": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Terms",
+    "share_topic"
+   ],
+   "raw": 0.5535714285714286,
+   "fmt": "pct1",
+   "formatted": "55.4%"
+  },
+  "TERMS_RESULT": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "unit_table",
+    "kind == topic (count)",
+    "MC_Terms"
+   ],
+   "formatted": "62 of 112 brands (55.4%) were searched by topic and the rest by plain search term, so `MC_Terms` raised no flag."
+  },
+  "CONC_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Concurrent",
+    "rho"
+   ],
+   "raw": 0.41641828161447103,
+   "fmt": "r3",
+   "formatted": "0.416"
+  },
+  "CONC_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Concurrent",
+    "p_one"
+   ],
+   "raw": 0.00019998000199980003,
+   "fmt": "p4",
+   "formatted": "0.0002"
+  },
+  "CONC_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Concurrent",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "REL_PAIR1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_PullReliability",
+    "pairs",
+    0
+   ],
+   "raw": 0.9334178090081788,
+   "fmt": "r3",
+   "formatted": "0.933"
+  },
+  "REL_PAIR2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_PullReliability",
+    "pairs",
+    1
+   ],
+   "raw": 0.9781131206082249,
+   "fmt": "r3",
+   "formatted": "0.978"
+  },
+  "REL_PAIR3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_PullReliability",
+    "pairs",
+    2
+   ],
+   "raw": 0.9352609146411703,
+   "fmt": "r3",
+   "formatted": "0.935"
+  },
+  "REL_PAIRS": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "manipulation_checks",
+    "MC_PullReliability",
+    "pairs"
+   ],
+   "formatted": "0.933, 0.978 and 0.935"
+  },
+  "REL_MEAN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_PullReliability",
+    "mean_pairwise_pooled_spearman"
+   ],
+   "raw": 0.9489306147525247,
+   "fmt": "r3",
+   "formatted": "0.949"
+  },
+  "UNITS_TOTAL": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.19",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.20",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.21",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.22",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.23",
+      "units"
+     ]
+    ]
+   ],
+   "raw": 112.0,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "Y_DEF_TOTAL": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.19",
+      "Y_defined"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.20",
+      "Y_defined"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.21",
+      "Y_defined"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.22",
+      "Y_defined"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.23",
+      "Y_defined"
+     ]
+    ]
+   ],
+   "raw": 105.0,
+   "fmt": "i0",
+   "formatted": "105"
+  },
+  "TABLE_DEFINED": {
+   "kind": "table",
+   "formatted": "| Category | Units | $Y$ defined | Primary | SA | Momentum | Consistency |\n|:--------------|-----:|---------:|-------:|----:|--------:|-----------:|\n| Headphones | 16 | 12 | 12 | 11 | 11 | 6 |\n| Skincare | 24 | 22 | 22 | 22 | 22 | 9 |\n| Cosmetics | 24 | 23 | 23 | 23 | 23 | 14 |\n| Automotive | 24 | 24 | 24 | 24 | 24 | 14 |\n| Spirits | 24 | 24 | 24 | 21 | 23 | 9 |\n| All | 112 | 105 | 105 | 101 | 103 | 52 |",
+   "cells": [
+    {
+     "formatted": "16",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.19",
+      "units"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.19",
+      "Y_defined"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n_per_substrate",
+      "v0.19"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n_per_substrate",
+      "v0.19"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n_per_substrate",
+      "v0.19"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "6",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n_per_substrate",
+      "v0.19"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.20",
+      "units"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.20",
+      "Y_defined"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n_per_substrate",
+      "v0.20"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n_per_substrate",
+      "v0.20"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n_per_substrate",
+      "v0.20"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "9",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n_per_substrate",
+      "v0.20"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.21",
+      "units"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.21",
+      "Y_defined"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n_per_substrate",
+      "v0.21"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n_per_substrate",
+      "v0.21"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n_per_substrate",
+      "v0.21"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n_per_substrate",
+      "v0.21"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.22",
+      "units"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.22",
+      "Y_defined"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n_per_substrate",
+      "v0.22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n_per_substrate",
+      "v0.22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n_per_substrate",
+      "v0.22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n_per_substrate",
+      "v0.22"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.23",
+      "units"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "outcome_defined_per_substrate",
+      "v0.23",
+      "Y_defined"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n_per_substrate",
+      "v0.23"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "21",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n_per_substrate",
+      "v0.23"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n_per_substrate",
+      "v0.23"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "9",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n_per_substrate",
+      "v0.23"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "105",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "101",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "103",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "52",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n"
+     ],
+     "fmt": "i0"
+    }
+   ]
+  },
+  "PRES_WORD": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "tests",
+    "H_Pred_Presence",
+    "verdict",
+    "labels"
+   ],
+   "formatted": "FALSIFIED"
+  },
+  "PRES_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "n"
+   ],
+   "raw": 105,
+   "fmt": "i0",
+   "formatted": "105"
+  },
+  "PRES_MINN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "min_n"
+   ],
+   "raw": 60,
+   "fmt": "i0",
+   "formatted": "60"
+  },
+  "PRES_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "rho"
+   ],
+   "raw": -0.1859935412130373,
+   "fmt": "r3",
+   "formatted": "-0.186"
+  },
+  "PRES_P1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "p_one"
+   ],
+   "raw": 0.9664033596640336,
+   "fmt": "p4",
+   "formatted": "0.9664"
+  },
+  "PRES_P2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "p_two"
+   ],
+   "raw": 0.0704929507049295,
+   "fmt": "p4",
+   "formatted": "0.0705"
+  },
+  "PRES_CI90_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci90",
+    0
+   ],
+   "raw": -0.3255343568916475,
+   "fmt": "r3",
+   "formatted": "-0.326"
+  },
+  "PRES_CI90_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci90",
+    1
+   ],
+   "raw": -0.022995355634486545,
+   "fmt": "r3",
+   "formatted": "-0.023"
+  },
+  "PRES_CI95_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci95",
+    0
+   ],
+   "raw": -0.3551191341773051,
+   "fmt": "r3",
+   "formatted": "-0.355"
+  },
+  "PRES_CI95_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci95",
+    1
+   ],
+   "raw": 0.0078093229977788305,
+   "fmt": "r3",
+   "formatted": "0.008"
+  },
+  "SA_WORD": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "tests",
+    "H_Pred_Presence_SA",
+    "verdict",
+    "labels"
+   ],
+   "formatted": "FALSIFIED"
+  },
+  "SA_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "n"
+   ],
+   "raw": 101,
+   "fmt": "i0",
+   "formatted": "101"
+  },
+  "SA_MINN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "min_n"
+   ],
+   "raw": 60,
+   "fmt": "i0",
+   "formatted": "60"
+  },
+  "SA_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "rho"
+   ],
+   "raw": -0.14691153767974902,
+   "fmt": "r3",
+   "formatted": "-0.147"
+  },
+  "SA_P1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "p_one"
+   ],
+   "raw": 0.9192080791920808,
+   "fmt": "p4",
+   "formatted": "0.9192"
+  },
+  "SA_P2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "p_two"
+   ],
+   "raw": 0.15998400159984003,
+   "fmt": "p4",
+   "formatted": "0.1600"
+  },
+  "SA_CI90_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "ci90",
+    0
+   ],
+   "raw": -0.2982929748613914,
+   "fmt": "r3",
+   "formatted": "-0.298"
+  },
+  "SA_CI90_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "ci90",
+    1
+   ],
+   "raw": 0.01549257342438718,
+   "fmt": "r3",
+   "formatted": "0.015"
+  },
+  "SA_CI95_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "ci95",
+    0
+   ],
+   "raw": -0.32717869903631586,
+   "fmt": "r3",
+   "formatted": "-0.327"
+  },
+  "SA_CI95_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "ci95",
+    1
+   ],
+   "raw": 0.04773532676103454,
+   "fmt": "r3",
+   "formatted": "0.048"
+  },
+  "MOM_WORD": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "verdict",
+    "labels"
+   ],
+   "formatted": "FALSIFIED (REVERSED)"
+  },
+  "MOM_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "n"
+   ],
+   "raw": 103,
+   "fmt": "i0",
+   "formatted": "103"
+  },
+  "MOM_MINN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "min_n"
+   ],
+   "raw": 60,
+   "fmt": "i0",
+   "formatted": "60"
+  },
+  "MOM_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "rho"
+   ],
+   "raw": -0.21859000139715726,
+   "fmt": "r3",
+   "formatted": "-0.219"
+  },
+  "MOM_P1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "p_one"
+   ],
+   "raw": 0.9851014898510149,
+   "fmt": "p4",
+   "formatted": "0.9851"
+  },
+  "MOM_P2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "p_two"
+   ],
+   "raw": 0.030996900309969003,
+   "fmt": "p4",
+   "formatted": "0.0310"
+  },
+  "MOM_CI90_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "ci90",
+    0
+   ],
+   "raw": -0.38025240832637053,
+   "fmt": "r3",
+   "formatted": "-0.380"
+  },
+  "MOM_CI90_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "ci90",
+    1
+   ],
+   "raw": -0.03838957261350345,
+   "fmt": "r3",
+   "formatted": "-0.038"
+  },
+  "MOM_CI95_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "ci95",
+    0
+   ],
+   "raw": -0.41077399365575984,
+   "fmt": "r3",
+   "formatted": "-0.411"
+  },
+  "MOM_CI95_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "ci95",
+    1
+   ],
+   "raw": -0.001264215794574063,
+   "fmt": "r3",
+   "formatted": "-0.001"
+  },
+  "CONS_WORD": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "tests",
+    "H_Pred_Consistency",
+    "verdict",
+    "labels"
+   ],
+   "formatted": "UNDETERMINED"
+  },
+  "CONS_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "n"
+   ],
+   "raw": 52,
+   "fmt": "i0",
+   "formatted": "52"
+  },
+  "CONS_MINN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "min_n"
+   ],
+   "raw": 30,
+   "fmt": "i0",
+   "formatted": "30"
+  },
+  "CONS_RHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "rho"
+   ],
+   "raw": 0.063783011053971,
+   "fmt": "r3",
+   "formatted": "0.064"
+  },
+  "CONS_P1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "p_one"
+   ],
+   "raw": 0.34206579342065796,
+   "fmt": "p4",
+   "formatted": "0.3421"
+  },
+  "CONS_P2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "p_two"
+   ],
+   "raw": 0.6931306869313069,
+   "fmt": "p4",
+   "formatted": "0.6931"
+  },
+  "CONS_CI90_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci90",
+    0
+   ],
+   "raw": -0.265604640195918,
+   "fmt": "r3",
+   "formatted": "-0.266"
+  },
+  "CONS_CI90_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci90",
+    1
+   ],
+   "raw": 0.3803807008389252,
+   "fmt": "r3",
+   "formatted": "0.380"
+  },
+  "CONS_CI95_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci95",
+    0
+   ],
+   "raw": -0.32660922014829286,
+   "fmt": "r3",
+   "formatted": "-0.327"
+  },
+  "CONS_CI95_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci95",
+    1
+   ],
+   "raw": 0.43339929040705955,
+   "fmt": "r3",
+   "formatted": "0.433"
+  },
+  "TABLE_TESTS": {
+   "kind": "table",
+   "formatted": "| Test | $X$ | Outcome | $Z$ | $n$ | $\\rho_{\\text{pw}\\mid Z}$ | 90% interval | 95% interval | $p$ (one-sided) | $p$ (two-sided) | Verdict |\n|:----------------------------|:----|:-------|:----|----:|------:|----------------:|----------------:|-------------:|-------------:|:----------------------|\n| H_Pred_Presence | $P$ | $Y$ | $L$ | 105 | -0.186 | [-0.326, -0.023] | [-0.355, 0.008] | 0.9664 | 0.0705 | **FALSIFIED** |\n| H_Pred_Presence_SA | $P$ | $Y^{SA}$ | $L$ | 101 | -0.147 | [-0.298, 0.015] | [-0.327, 0.048] | 0.9192 | 0.1600 | **FALSIFIED** |\n| H_Pred_Presence_Momentum | $P$ | $Y$ | $L$, $M$ | 103 | -0.219 | [-0.380, -0.038] | [-0.411, -0.001] | 0.9851 | 0.0310 | **FALSIFIED** REVERSED |\n| H_Pred_Consistency | $C^*$ | $Y$ | $L$, $P$ | 52 | 0.064 | [-0.266, 0.380] | [-0.327, 0.433] | 0.3421 | 0.6931 | **UNDETERMINED** |",
+   "cells": [
+    {
+     "formatted": "105",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.186",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.326",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.023",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.355",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "ci95",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.008",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "ci95",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9664",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.0705",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence",
+      "p_two"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "101",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.147",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.298",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.015",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.327",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "ci95",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.048",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "ci95",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9192",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.1600",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_SA",
+      "p_two"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "103",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.219",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.380",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.038",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.411",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "ci95",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.001",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "ci95",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9851",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.0310",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Presence_Momentum",
+      "p_two"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "52",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.064",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.266",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.380",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.327",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "ci95",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.433",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "ci95",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.3421",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.6931",
+     "source": "verdicts",
+     "path": [
+      "tests",
+      "H_Pred_Consistency",
+      "p_two"
+     ],
+     "fmt": "p4"
+    }
+   ]
+  },
+  "B_BOOT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "B_boot"
+   ],
+   "raw": 10000,
+   "fmt": "i0",
+   "formatted": "10,000"
+  },
+  "B_PERM": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "B_perm"
+   ],
+   "raw": 10000,
+   "fmt": "i0",
+   "formatted": "10,000"
+  },
+  "BOOT_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "B_perm",
+    "B_boot"
+   ],
+   "formatted": "Every test used 10,000 permutations and 10,000 bootstrap resamples, none of them dropped."
+  },
+  "TABLE_PERSUB": {
+   "kind": "table",
+   "formatted": "| Test | Headphones | Skincare | Cosmetics | Automotive | Spirits |\n|:----------------------------|-------------------:|--------------------:|-------------------:|--------------------:|--------------------:|\n| H_Pred_Presence | 0.496 (12) [0.0510] | -0.279 (22) [0.8976] | 0.180 (23) [0.2049] | -0.178 (24) [0.7995] | -0.513 (24) [0.9934] |\n| H_Pred_Presence_SA | 0.207 (11) [0.2645] | -0.222 (22) [0.8340] | 0.159 (23) [0.2321] | -0.190 (24) [0.8163] | -0.457 (21) [0.9792] |\n| H_Pred_Presence_Momentum | 0.556 (11) [0.0405] | -0.431 (22) [0.9774] | 0.026 (23) [0.4519] | -0.137 (24) [0.7454] | -0.426 (23) [0.9795] |\n| H_Pred_Consistency | -0.264 (6) [0.7173] | -0.005 (9) [0.5082] | 0.014 (14) [0.4774] | 0.090 (14) [0.3869] | 0.237 (9) [0.2709] |",
+   "cells": [
+    {
+     "formatted": "0.496",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "12",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.0510",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.19",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.279",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.8976",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.20",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.180",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.2049",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.21",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.178",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.7995",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.22",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.513",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.9934",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence",
+      "v0.23",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.207",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.2645",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.19",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.222",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.8340",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.20",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.159",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.2321",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.21",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.190",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.8163",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.22",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.457",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "21",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.9792",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_SA",
+      "v0.23",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.556",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "11",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.0405",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.19",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.431",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "22",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.9774",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.20",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.026",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.4519",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.21",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.137",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "24",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.7454",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.22",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.426",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "23",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.9795",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Presence_Momentum",
+      "v0.23",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.264",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.19",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "6",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.19",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.7173",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.19",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.005",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.20",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "9",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.20",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.5082",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.20",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.014",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.21",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.21",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.4774",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.21",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.090",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.22",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "14",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.22",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.3869",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.22",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "0.237",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.23",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "9",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.23",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "0.2709",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "per_substrate",
+      "H_Pred_Consistency",
+      "v0.23",
+      "p_one"
+     ],
+     "fmt": "p4"
+    }
+   ]
+  },
+  "TABLE_DESC": {
+   "kind": "table",
+   "formatted": "| Descriptive (§2.8) | $n$ | $\\rho_{\\text{pw}\\mid Z}$ | 90% interval | $p$ (one-sided) |\n|:-------------------------------------------------------------|----:|------:|----------------:|-------------:|\n| 2. No defunct automotive brands: H_Pred_Presence | 100 | -0.188 | [-0.332, -0.019] | 0.9628 |\n| 2. No defunct automotive brands: H_Pred_Presence_SA | 96 | -0.136 | [-0.294, 0.032] | 0.8898 |\n| 2. No defunct automotive brands: H_Pred_Presence_Momentum | 98 | -0.224 | [-0.398, -0.024] | 0.9826 |\n| 3. Recall alone ($\\hat\\pi$ in place of $P$) | 105 | -0.175 | [-0.313, -0.005] | 0.9564 |\n| 4. Units searched by topic only | 56 | -0.165 | [-0.425, 0.099] | 0.8132 |\n| 5. Longer lead ($P$ at $t_1$, May 2026) | 105 | -0.172 | [-0.321, -0.011] | 0.9522 |",
+   "cells": [
+    {
+     "formatted": "-0.332",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.019",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "100",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.188",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9628",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.294",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_SA",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.032",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_SA",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "96",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_SA",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.136",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_SA",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.8898",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_SA",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.398",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_Momentum",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.024",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_Momentum",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "98",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_Momentum",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.224",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_Momentum",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9826",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "presence_without_defunct_automotive",
+      "H_Pred_Presence_Momentum",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.313",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "recall_alone",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.005",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "recall_alone",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "105",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "recall_alone",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.175",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "recall_alone",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9564",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "recall_alone",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.425",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "topic_only_primary",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.099",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "topic_only_primary",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "56",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "topic_only_primary",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.165",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "topic_only_primary",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.8132",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "topic_only_primary",
+      "p_one"
+     ],
+     "fmt": "p4"
+    },
+    {
+     "formatted": "-0.321",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "longer_lead_P_t1",
+      "ci90",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.011",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "longer_lead_P_t1",
+      "ci90",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "105",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "longer_lead_P_t1",
+      "n"
+     ],
+     "fmt": "i0"
+    },
+    {
+     "formatted": "-0.172",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "longer_lead_P_t1",
+      "rho"
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.9522",
+     "source": "verdicts",
+     "path": [
+      "descriptives",
+      "longer_lead_P_t1",
+      "p_one"
+     ],
+     "fmt": "p4"
+    }
+   ]
+  },
+  "XL_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "XL_A": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "rho_AI_to_search"
+   ],
+   "raw": 0.12406499783461472,
+   "fmt": "r3",
+   "formatted": "0.124"
+  },
+  "XL_B": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "rho_search_to_AI"
+   ],
+   "raw": 0.08153287902444761,
+   "fmt": "r3",
+   "formatted": "0.082"
+  },
+  "XL_DIFF": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "difference"
+   ],
+   "raw": 0.04253211881016711,
+   "fmt": "r3",
+   "formatted": "0.043"
+  },
+  "XL_CI90_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "difference_ci90",
+    0
+   ],
+   "raw": -0.21403902913746906,
+   "fmt": "r3",
+   "formatted": "-0.214"
+  },
+  "XL_CI90_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "difference_ci90",
+    1
+   ],
+   "raw": 0.2884042635609712,
+   "fmt": "r3",
+   "formatted": "0.288"
+  },
+  "XL_CI95_LO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "difference_ci95",
+    0
+   ],
+   "raw": -0.26031925917690674,
+   "fmt": "r3",
+   "formatted": "-0.260"
+  },
+  "XL_CI95_HI": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "cross_lagged",
+    "difference_ci95",
+    1
+   ],
+   "raw": 0.3367317519540766,
+   "fmt": "r3",
+   "formatted": "0.337"
+  }
+ }
+}
