@@ -2916,6 +2916,31 @@
         "recorded": "2026-11-11",
         "status": "chosen by Pablo, Nov 12, 2026, 6:57 am (GO r3b: cover A18); licensed for covers and print per photography.licence (Nov 11, 7:33 pm). Used from the AIAS 2.0 report r3 PDF on.",
         "chosen": "2026-11-12"
+      },
+      {
+        "report": "Literature 2.0",
+        "tier": null,
+        "used_on": "brochure (01) and capabilities deck (11)",
+        "photo": "A17",
+        "status": "licensed image A17 is in use on these two Literature 2.0 pieces, so it was not used for the t4 report cover (a new AI image was chosen instead)",
+        "recorded": "2026-11-14",
+        "source": "runner task from the control chat, Pablo's Nov 13, 6:54 pm answers (panel revs 893 to 896); the pieces themselves were not opened for this note"
+      }
+    ],
+    "library_usage_record": [
+      {
+        "report": "v0.42 (t4 wave) Tier 1 report, TS-FL-v0.42-r1",
+        "tier": 1,
+        "cover": "C2",
+        "photo": "G-v042-t4-wave",
+        "photo_source": "AI-generated library image (photo_library_ai/selected/print/v0.42_t4-wave.png; from raw_t4 image 03, strong diagonal); not an A-pool photo",
+        "credit": "Cover image generated with AI",
+        "generated": "AI",
+        "status": "chosen by Pablo, Nov 13, 2026, 7:13 pm (image 03 of the t4 wave's four); used from the TS-FL-v0.42-r1 PDF on; AI credit in the colophon",
+        "chosen": "2026-11-13",
+        "recorded": "2026-11-14",
+        "source": "panel item on the t4 cover image (Pablo's 7:13 pm answer); photo library manifest entry G-v042-t4-wave",
+        "recorded_in": "kept apart from usage_record because that list is for the licensed A-pool (reports/tests/test_ts_layout.py::test_usage_record_rules requires every photo to be a pool id); library v2 images are listed in photo_library_ai/selected/library_manifest.json"
       }
     ]
   },
