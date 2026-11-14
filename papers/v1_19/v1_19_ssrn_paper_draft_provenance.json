@@ -1,0 +1,1234 @@
+{
+ "phase": "v1.19",
+ "synthetic": false,
+ "prereg_tag": "v1.19-prereg-r1",
+ "verdicts": "osf/methodology/v1_19/outputs/v119_verdicts.json",
+ "verdicts_sha256": "bf363060e4e90aed81c918544f561b43f387b5e41ef20d08d4844dc2d2176776",
+ "tag_commit": "4bc4ce4f859cff9528f60dd0621af097c0c2cae6",
+ "tag_object": "de58c07708d3b521b63d23f29feb2bb071596a20",
+ "paper_A_unit_table": {
+  "ref": "949be61e01dfad9773e43b0855dc33e9de3cc852",
+  "path": "osf/methodology/v1_12/v112_unit_table.csv",
+  "blob": "4855abd30f4a0eb1b980f558a16bd15d440ca1fc",
+  "sha256": "06b7875042ee5f5c17676cab604a9d58ffd1a15102f1edc5d5f075bfd16e97b0",
+  "read": "in memory by git cat-file; never in the tree"
+ },
+ "coi_cheil": true,
+ "flags": {
+  "COI_CHEIL": true,
+  "NO_CHEIL": false,
+  "NO_BROAD": true
+ },
+ "asserts": [
+  {
+   "sentence": "lock before Paper A's window, data and scoring (confirmatory)",
+   "holds": true
+  },
+  {
+   "sentence": "both dated entries ex ante",
+   "holds": true
+  },
+  {
+   "sentence": "H32_SetSampling: 0.30 <= rel < 0.50, p < .05, P10 < 0.30, MARGINAL",
+   "holds": true
+  },
+  {
+   "sentence": "H32_CueType: exactly one W below p5, CONFIRMED",
+   "holds": true
+  },
+  {
+   "sentence": "H34 floor: |delta| < 0.15 both arms, both FALSIFIED (same band)",
+   "holds": true
+  },
+  {
+   "sentence": "unit table x roster reproduces the flagged and other rated counts; automotive holds none",
+   "holds": true
+  },
+  {
+   "sentence": "S-COI removes exactly one rated flagged brand, named (not a v0.23 code)",
+   "holds": true
+  },
+  {
+   "sentence": "no broad unit (unit table and D36 quadrants agree)",
+   "holds": true
+  },
+  {
+   "sentence": "defunct: no answer names a defunct brand ('None of'), UNDETERMINED, D34 counts all zero",
+   "holds": true
+  },
+  {
+   "sentence": "identity load: n < 45, all three UNDETERMINED, also under S-IL-t1",
+   "holds": true
+  },
+  {
+   "sentence": "H36 replication: R < 0.10, FALSIFIED",
+   "holds": true
+  },
+  {
+   "sentence": "structure: k = 1 on both arms, no silhouette, NO TYPOLOGY",
+   "holds": true
+  },
+  {
+   "sentence": "sensitivity prose: the floor tests turn UNDETERMINED exactly under S-COI and S-LOCO of the four categories holding flagged brands; S-Floor6 MARGINAL; S-Mid FALSIFIED; S-LOCO-v0.23 UNDETERMINED for set sampling; nothing else changes",
+   "holds": true
+  },
+  {
+   "sentence": "the locked pre-registration (SHA-256 as the anchor records) holds exactly one agency-work paragraph",
+   "holds": true
+  }
+ ],
+ "values": {
+  "TAG": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "prereg_tag",
+   "raw": "v1.19-prereg-r1",
+   "format": "str",
+   "text": "v1.19-prereg-r1"
+  },
+  "LOCK_COMMIT10": {
+   "source": "anchor/osf_anchor_v1_19.json",
+   "path": "commit",
+   "raw": "4bc4ce4f85",
+   "format": "str",
+   "text": "4bc4ce4f85"
+  },
+  "LOCK_FILES": {
+   "source": "anchor/osf_anchor_v1_19.json",
+   "path": "lock_manifest|files_listed",
+   "raw": 21,
+   "format": "i0",
+   "text": "21"
+  },
+  "T_LOCK": {
+   "source": "git",
+   "path": "git log -1 --format=%cI 4bc4ce4f859cff9528f60dd0621af097c0c2cae6",
+   "raw": "2026-11-13T10:17:02-06:00",
+   "format": "custom",
+   "text": "on 13 November 2026 at 10:17 CT (16:17 UTC)"
+  },
+  "ANCHOR_COMMIT7": {
+   "source": "git",
+   "path": "git rev-parse 5974fcc",
+   "raw": "5974fcc",
+   "format": "str",
+   "text": "5974fcc"
+  },
+  "T_ANCHOR": {
+   "source": "git",
+   "path": "git log -1 --format=%cI 5974fcc2730e42544bb41633738c18595b9f8d4f",
+   "raw": "2026-11-13T11:01:47-06:00",
+   "format": "custom",
+   "text": "on 13 November 2026 at 11:01 CT (17:01 UTC)"
+  },
+  "RUN_COMMIT7": {
+   "source": "git",
+   "path": "git rev-parse 6e8f157",
+   "raw": "6e8f157",
+   "format": "str",
+   "text": "6e8f157"
+  },
+  "T_RUN": {
+   "source": "git",
+   "path": "git log -1 --format=%cI 6e8f1570de0967749a7ab2e8e0a4e968c9a18c06",
+   "raw": "2026-11-14T13:45:54-06:00",
+   "format": "custom",
+   "text": "on 14 November 2026 at 13:45 CT (19:45 UTC)"
+  },
+  "A_DATA_COMMIT7": {
+   "source": "git",
+   "path": "git rev-parse b89ff1f",
+   "raw": "b89ff1f",
+   "format": "str",
+   "text": "b89ff1f"
+  },
+  "T_ADATA": {
+   "source": "git",
+   "path": "git log -1 --format=%cI b89ff1fb4b8256b29852ac471cc96902791ccbfe",
+   "raw": "2026-11-13T20:00:59-06:00",
+   "format": "custom",
+   "text": "on 13 November 2026 at 20:00 CT (02:00 UTC, 14 November)"
+  },
+  "A_SCORE_COMMIT7": {
+   "source": "git",
+   "path": "git rev-parse 949be61",
+   "raw": "949be61",
+   "format": "str",
+   "text": "949be61"
+  },
+  "T_ASCORE": {
+   "source": "git",
+   "path": "git log -1 --format=%cI 949be61e01dfad9773e43b0855dc33e9de3cc852",
+   "raw": "2026-11-14T06:25:05-06:00",
+   "format": "custom",
+   "text": "on 14 November 2026 at 06:25 CT (12:25 UTC)"
+  },
+  "T_WINDOW": {
+   "source": "anchor/osf_anchor_v1_19.json",
+   "path": "paper_A_answers|collection_window_opens_utc",
+   "raw": "2026-11-14T00:00:00+00:00",
+   "format": "custom",
+   "text": "on 14 November 2026 at 00:00 UTC"
+  },
+  "DEV_N": {
+   "source": "anchor/DEVIATIONS.md",
+   "path": "count of 'Entry N — ex ante'",
+   "raw": 2,
+   "format": "i0",
+   "text": "2"
+  },
+  "A_VERDICT": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "paper_A|a_verdict",
+   "raw": "PASS",
+   "format": "str",
+   "text": "PASS"
+  },
+  "RATED": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "rated_units",
+   "raw": 51,
+   "format": "i0",
+   "text": "51"
+  },
+  "NPERM": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "draws|permutation",
+   "raw": 10000,
+   "format": "thou",
+   "text": "10,000"
+  },
+  "NGAP": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "draws|gap_reference",
+   "raw": 500,
+   "format": "i0",
+   "text": "500"
+  },
+  "PANEL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "panel",
+   "raw": [
+    "claude-fable-5-2",
+    "gpt-6-astra",
+    "gemini-4-argon"
+   ],
+   "format": "custom",
+   "text": "Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon"
+  },
+  "PRIMARY_PANEL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "inputs|primary_panel",
+   "raw": "N3",
+   "format": "str",
+   "text": "N3"
+  },
+  "BP0": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "parity|B-P0|passed",
+   "raw": true,
+   "format": "custom",
+   "text": "passed"
+  },
+  "BP1": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "parity|B-P1|passed",
+   "raw": true,
+   "format": "custom",
+   "text": "passed"
+  },
+  "BP1_UNITS": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "parity|B-P1|units",
+   "raw": 112,
+   "format": "i0",
+   "text": "112"
+  },
+  "A_VERDICTS_SHA8": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "inputs|paper_A_verdicts_sha256",
+   "raw": "0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992",
+   "format": "custom",
+   "text": "0c70bde1"
+  },
+  "A_TABLE_SHA8": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "inputs|paper_A_unit_table_sha256",
+   "raw": "06b7875042ee5f5c17676cab604a9d58ffd1a15102f1edc5d5f075bfd16e97b0",
+   "format": "custom",
+   "text": "06b78750"
+  },
+  "IL_T1_SHA8": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "inputs|il_t1_sha256",
+   "raw": "45009bceb164c545f8ba9cc010d8de0548120d087fa7637e6599d9b1d0ffbb8e",
+   "format": "custom",
+   "text": "45009bce"
+  },
+  "S_SPLITS": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|splits",
+   "raw": 64,
+   "format": "i0",
+   "text": "64"
+  },
+  "S_SPLITS_FLOOR": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|splits_meeting_n_floor",
+   "raw": 64,
+   "format": "i0",
+   "text": "64"
+  },
+  "S_MEDR": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|median_r",
+   "raw": 0.29801192259322673,
+   "format": "r3",
+   "text": "0.298"
+  },
+  "S_REL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|rel_median",
+   "raw": 0.4591821036556353,
+   "format": "r3",
+   "text": "0.459"
+  },
+  "S_P10": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|rel_p10",
+   "raw": 0.1721282102099729,
+   "format": "r3",
+   "text": "0.172"
+  },
+  "S_P": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|p_perm_one_sided",
+   "raw": 9.999000099990002e-05,
+   "format": "p4",
+   "text": "0.0001"
+  },
+  "S_PCTL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|paper_A_split_percentile",
+   "raw": 93.75,
+   "format": "gnum",
+   "text": "93.75"
+  },
+  "S_SPLIT0_REL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|per_split|0|rel",
+   "raw": 0.6456509048453006,
+   "format": "r3",
+   "text": "0.646"
+  },
+  "S_SPLIT0_N": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_SetSampling|per_split|0|n",
+   "raw": 42,
+   "format": "i0",
+   "text": "42"
+  },
+  "S_R_MIN": {
+   "source": "derived",
+   "op": "min",
+   "path": "H32_SetSampling|per_split|*|r",
+   "raw": -0.07378941457243186,
+   "format": "r3",
+   "text": "-0.074"
+  },
+  "S_R_MAX": {
+   "source": "derived",
+   "op": "max",
+   "path": "H32_SetSampling|per_split|*|r",
+   "raw": 0.544196932471685,
+   "format": "r3",
+   "text": "0.544"
+  },
+  "S_N_MIN": {
+   "source": "derived",
+   "op": "min",
+   "path": "H32_SetSampling|per_split|*|n",
+   "raw": 33,
+   "format": "i0",
+   "text": "33"
+  },
+  "S_N_MAX": {
+   "source": "derived",
+   "op": "max",
+   "path": "H32_SetSampling|per_split|*|n",
+   "raw": 47,
+   "format": "i0",
+   "text": "47"
+  },
+  "V_H32S": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H32_SetSampling",
+   "raw": "MARGINAL",
+   "format": "str",
+   "text": "MARGINAL"
+  },
+  "C_REF_N": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|reference_pairs",
+   "raw": 84,
+   "format": "i0",
+   "text": "84"
+  },
+  "C_P5": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|reference_p5",
+   "raw": 0.8091145374449339,
+   "format": "r3",
+   "text": "0.809"
+  },
+  "C_MED": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|reference_median",
+   "raw": 0.9081069948253224,
+   "format": "r3",
+   "text": "0.908"
+  },
+  "C_COUNT": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|count",
+   "raw": 1,
+   "format": "i0",
+   "text": "1"
+  },
+  "C_COUNT_WORD": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|count",
+   "raw": 1,
+   "format": "word",
+   "text": "one"
+  },
+  "C_BELOW": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|W_below_p5",
+   "raw": [
+    "with what"
+   ],
+   "format": "custom",
+   "text": "with what"
+  },
+  "C_RHO_BELOW": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|with what|rho_w_full_vs_minus_W",
+   "raw": 0.7803203661327232,
+   "format": "r3",
+   "text": "0.780"
+  },
+  "C_RHO_MIN": {
+   "source": "derived",
+   "op": "min",
+   "path": "H32_CueType|per_W|*|rho_w_full_vs_minus_W",
+   "raw": 0.7803203661327232,
+   "format": "r3",
+   "text": "0.780"
+  },
+  "C_RHO_MAX": {
+   "source": "derived",
+   "op": "max",
+   "path": "H32_CueType|per_W|*|rho_w_full_vs_minus_W",
+   "raw": 0.9407069555302167,
+   "format": "r3",
+   "text": "0.941"
+  },
+  "V_H32C": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H32_CueType",
+   "raw": "CONFIRMED",
+   "format": "str",
+   "text": "CONFIRMED"
+  },
+  "F_NF": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|n_flagged_rated",
+   "raw": 10,
+   "format": "i0",
+   "text": "10"
+  },
+  "F_NF_WORD": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|n_flagged_rated",
+   "raw": 10,
+   "format": "word",
+   "text": "ten"
+  },
+  "F_NU": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|n_unflagged_rated",
+   "raw": 41,
+   "format": "i0",
+   "text": "41"
+  },
+  "F_CATS": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|categories_with_pairs",
+   "raw": [
+    "v0.19",
+    "v0.20",
+    "v0.21",
+    "v0.23"
+   ],
+   "format": "custom",
+   "text": "v0.19, v0.20, v0.21 and v0.23"
+  },
+  "F_NCATS": {
+   "source": "derived",
+   "op": "len",
+   "path": "H34_Floor|categories_with_pairs",
+   "raw": 4,
+   "format": "word",
+   "text": "four"
+  },
+  "F_D": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|primary|cliffs_delta",
+   "raw": -0.06172839506172839,
+   "format": "r3",
+   "text": "-0.062"
+  },
+  "F_P": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|primary|p_perm_two_sided",
+   "raw": 0.8309169083091691,
+   "format": "p4",
+   "text": "0.8309"
+  },
+  "F_DR": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|beyond_presence|cliffs_delta_resid",
+   "raw": 0.06172839506172839,
+   "format": "r3",
+   "text": "0.062"
+  },
+  "F_PR": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|beyond_presence|p_perm_two_sided",
+   "raw": 0.8345165483451655,
+   "format": "p4",
+   "text": "0.8345"
+  },
+  "F_NR": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Floor|beyond_presence|n",
+   "raw": 51,
+   "format": "i0",
+   "text": "51"
+  },
+  "V_F1": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H34_Floor_Signature",
+   "raw": "FALSIFIED",
+   "format": "str",
+   "text": "FALSIFIED"
+  },
+  "V_F2": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H34_Floor_BeyondPresence",
+   "raw": "FALSIFIED",
+   "format": "str",
+   "text": "FALSIFIED"
+  },
+  "F_BYCAT": {
+   "source": "git cat-file blob 949be61:osf/methodology/v1_12/v112_unit_table.csv x prereg/phantom_roster_v1_19.csv",
+   "op": "rated and flagged, per category",
+   "raw": {
+    "v0.19": 3,
+    "v0.20": 1,
+    "v0.21": 1,
+    "v0.22": 0,
+    "v0.23": 5
+   },
+   "format": "custom",
+   "text": "3 headphone brands, 1 skincare brand, 1 cosmetics brand and 5 spirits brands"
+  },
+  "COI_FLAGGED": {
+   "source": "git cat-file blob 949be61:osf/methodology/v1_12/v112_unit_table.csv x prereg/phantom_roster_v1_19.csv",
+   "op": "rated, flagged and in S-COI's exclude",
+   "raw": [
+    [
+     "v0.20",
+     "Eucerin"
+    ]
+   ],
+   "format": "custom",
+   "text": "Eucerin"
+  },
+  "N_BROAD": {
+   "source": "git cat-file blob 949be61:osf/methodology/v1_12/v112_unit_table.csv x prereg/phantom_roster_v1_19.csv",
+   "op": "rated units with cov_star > 50",
+   "raw": 0,
+   "format": "i0",
+   "text": "0"
+  },
+  "DJ_HIGH": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|dj_quadrants|high P | situation-bound",
+   "raw": 23,
+   "format": "i0",
+   "text": "23"
+  },
+  "DJ_LOW": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|dj_quadrants|low P | situation-bound",
+   "raw": 28,
+   "format": "i0",
+   "text": "28"
+  },
+  "D_ANS": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Defunct_Occupancy|answers",
+   "raw": 126,
+   "format": "i0",
+   "text": "126"
+  },
+  "D_NAMING": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Defunct_Occupancy|answers_naming_defunct",
+   "raw": 0,
+   "format": "i0",
+   "text": "0"
+  },
+  "D_FISKER": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Defunct_Occupancy|D34|Fisker_beside_D|answers_naming_any",
+   "raw": 0,
+   "format": "i0",
+   "text": "0"
+  },
+  "D_REASON": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H34_Defunct_Occupancy|reason",
+   "raw": "fewer than 10 answers name a defunct brand",
+   "format": "str",
+   "text": "fewer than 10 answers name a defunct brand"
+  },
+  "V_D": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H34_Defunct_Occupancy",
+   "raw": "UNDETERMINED",
+   "format": "str",
+   "text": "UNDETERMINED"
+  },
+  "D34_SUM": {
+   "source": "derived",
+   "op": "sum",
+   "path": "H34_Defunct_Occupancy|D34|*|mentions_by_W|*|*",
+   "raw": 0,
+   "format": "i0",
+   "text": "0"
+  },
+  "IL_N": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H35|n",
+   "raw": 26,
+   "format": "i0",
+   "text": "26"
+  },
+  "IL_BYCAT": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H35|per_category",
+   "raw": {
+    "v0.20": 6,
+    "v0.21": 12,
+    "v0.22": 8
+   },
+   "format": "custom",
+   "text": "6 skincare, 12 cosmetics and 8 automotive"
+  },
+  "IL_REASON": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H35|primary|reason",
+   "raw": "n < 45 or fewer than 3 trio categories",
+   "format": "str",
+   "text": "n < 45 or fewer than 3 trio categories"
+  },
+  "V_IL1": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H35_IL_Coverage",
+   "raw": "UNDETERMINED",
+   "format": "str",
+   "text": "UNDETERMINED"
+  },
+  "V_IL2": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H35_IL_Robust_cell",
+   "raw": "UNDETERMINED",
+   "format": "str",
+   "text": "UNDETERMINED"
+  },
+  "V_IL3": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H35_IL_CueType",
+   "raw": "UNDETERMINED",
+   "format": "str",
+   "text": "UNDETERMINED"
+  },
+  "V_IL_T1": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-IL-t1|verdicts|*",
+   "raw": [
+    "UNDETERMINED"
+   ],
+   "format": "custom",
+   "text": "UNDETERMINED"
+  },
+  "R_MEAN": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|mean_rho_w_over_W",
+   "raw": -0.021993692583918846,
+   "format": "r3",
+   "text": "-0.022"
+  },
+  "R_P": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|p_perm_one_sided",
+   "raw": 0.6144385561443856,
+   "format": "p4",
+   "text": "0.6144"
+  },
+  "R_N": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|n",
+   "raw": 44,
+   "format": "i0",
+   "text": "44"
+  },
+  "R_NCAT": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|n_categories",
+   "raw": 5,
+   "format": "i0",
+   "text": "5"
+  },
+  "R_W_MIN": {
+   "source": "derived",
+   "op": "min",
+   "path": "H36_Profile_Replication|per_W|*",
+   "raw": -0.2052744641165759,
+   "format": "r3",
+   "text": "-0.205"
+  },
+  "R_W_MAX": {
+   "source": "derived",
+   "op": "max",
+   "path": "H36_Profile_Replication|per_W|*",
+   "raw": 0.0712758555960333,
+   "format": "r3",
+   "text": "0.071"
+  },
+  "V_R": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "verdict_summary|H36_Profile_Replication",
+   "raw": "FALSIFIED",
+   "format": "str",
+   "text": "FALSIFIED"
+  },
+  "ST_N": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|n",
+   "raw": 51,
+   "format": "i0",
+   "text": "51"
+  },
+  "ST_K": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|full|k",
+   "raw": 1,
+   "format": "i0",
+   "text": "1"
+  },
+  "ST_RK": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|residual|k",
+   "raw": 1,
+   "format": "i0",
+   "text": "1"
+  },
+  "ST_ARI": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|ari_vs_presence_tiers",
+   "raw": 0.0,
+   "format": "r3",
+   "text": "0.000"
+  },
+  "ST_PARI": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|p_ari",
+   "raw": 1.0,
+   "format": "r3",
+   "text": "1.000"
+  },
+  "ST_CELL": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|cell",
+   "raw": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively",
+   "format": "str",
+   "text": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+  },
+  "V_ST_SHORT": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Structure|cell",
+   "op": "before ' ('",
+   "raw": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively",
+   "format": "custom",
+   "text": "NO TYPOLOGY"
+  },
+  "D36_MIN": {
+   "source": "derived",
+   "op": "min",
+   "path": "H36_Structure|D36_profiles|category_mean_profiles|*|mean_excess|*",
+   "raw": -0.039733847135251806,
+   "format": "r3",
+   "text": "-0.040"
+  },
+  "D36_MAX": {
+   "source": "derived",
+   "op": "max",
+   "path": "H36_Structure|D36_profiles|category_mean_profiles|*|mean_excess|*",
+   "raw": 0.0707138319302351,
+   "format": "r3",
+   "text": "0.071"
+  },
+  "CUE|why|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|why|rho_w_full_vs_minus_W",
+   "raw": 0.9100112485939258,
+   "format": "r3",
+   "text": "0.910"
+  },
+  "CUE|why|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|why|n",
+   "raw": 49,
+   "format": "i0",
+   "text": "49"
+  },
+  "CUE|why|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|why",
+   "raw": -0.11689240317749462,
+   "format": "r3",
+   "text": "-0.117"
+  },
+  "CUE|when|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|when|rho_w_full_vs_minus_W",
+   "raw": 0.9301848049281314,
+   "format": "r3",
+   "text": "0.930"
+  },
+  "CUE|when|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|when|n",
+   "raw": 49,
+   "format": "i0",
+   "text": "49"
+  },
+  "CUE|when|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|when",
+   "raw": 0.05559516736490598,
+   "format": "r3",
+   "text": "0.056"
+  },
+  "CUE|where|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|where|rho_w_full_vs_minus_W",
+   "raw": 0.8447694038245219,
+   "format": "r3",
+   "text": "0.845"
+  },
+  "CUE|where|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|where|n",
+   "raw": 49,
+   "format": "i0",
+   "text": "49"
+  },
+  "CUE|where|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|where",
+   "raw": 0.06272275292450931,
+   "format": "r3",
+   "text": "0.063"
+  },
+  "CUE|while|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|while|rho_w_full_vs_minus_W",
+   "raw": 0.8329764453961456,
+   "format": "r3",
+   "text": "0.833"
+  },
+  "CUE|while|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|while|n",
+   "raw": 49,
+   "format": "i0",
+   "text": "49"
+  },
+  "CUE|while|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|while",
+   "raw": 0.0712758555960333,
+   "format": "r3",
+   "text": "0.071"
+  },
+  "CUE|with whom|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|with whom|rho_w_full_vs_minus_W",
+   "raw": 0.9407069555302167,
+   "format": "r3",
+   "text": "0.941"
+  },
+  "CUE|with whom|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|with whom|n",
+   "raw": 49,
+   "format": "i0",
+   "text": "49"
+  },
+  "CUE|with whom|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|with whom",
+   "raw": -0.2052744641165759,
+   "format": "r3",
+   "text": "-0.205"
+  },
+  "CUE|with what|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|with what|rho_w_full_vs_minus_W",
+   "raw": 0.7803203661327232,
+   "format": "r3",
+   "text": "0.780"
+  },
+  "CUE|with what|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|with what|n",
+   "raw": 47,
+   "format": "i0",
+   "text": "47"
+  },
+  "CUE|with what|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|with what",
+   "raw": -0.03706344490993732,
+   "format": "r3",
+   "text": "-0.037"
+  },
+  "CUE|how feeling|rho": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|how feeling|rho_w_full_vs_minus_W",
+   "raw": 0.9368363677095761,
+   "format": "r3",
+   "text": "0.937"
+  },
+  "CUE|how feeling|n": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H32_CueType|per_W|how feeling|n",
+   "raw": 48,
+   "format": "i0",
+   "text": "48"
+  },
+  "CUE|how feeling|rep": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "H36_Profile_Replication|per_W|how feeling",
+   "raw": 0.015680688231127327,
+   "format": "r3",
+   "text": "0.016"
+  },
+  "SENS|S-COI|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-COI|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-COI|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-COI|verdict_changes",
+   "raw": {
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_BeyondPresence": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ]
+   },
+   "format": "custom",
+   "text": "H34_Floor_Signature: FALSIFIED → UNDETERMINED; H34_Floor_BeyondPresence: FALSIFIED → UNDETERMINED"
+  },
+  "SENS|S-Floor6|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Floor6|studies",
+   "raw": [
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#34, #35, #36"
+  },
+  "SENS|S-Floor6|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Floor6|verdict_changes",
+   "raw": {
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "MARGINAL"
+    ]
+   },
+   "format": "custom",
+   "text": "H34_Floor_Signature: FALSIFIED → MARGINAL"
+  },
+  "SENS|S-C3|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-C3|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-C3|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-C3|verdict_changes",
+   "raw": {},
+   "format": "custom",
+   "text": "none"
+  },
+  "SENS|S-Equal|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Equal|studies",
+   "raw": [
+    "32",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #36"
+  },
+  "SENS|S-Equal|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Equal|verdict_changes",
+   "raw": {},
+   "format": "custom",
+   "text": "none"
+  },
+  "SENS|S-LOCO-v0.19|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.19|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-LOCO-v0.19|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.19|verdict_changes",
+   "raw": {
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_BeyondPresence": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ]
+   },
+   "format": "custom",
+   "text": "H34_Floor_Signature: FALSIFIED → UNDETERMINED; H34_Floor_BeyondPresence: FALSIFIED → UNDETERMINED"
+  },
+  "SENS|S-LOCO-v0.20|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.20|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-LOCO-v0.20|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.20|verdict_changes",
+   "raw": {
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_BeyondPresence": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ]
+   },
+   "format": "custom",
+   "text": "H34_Floor_Signature: FALSIFIED → UNDETERMINED; H34_Floor_BeyondPresence: FALSIFIED → UNDETERMINED"
+  },
+  "SENS|S-LOCO-v0.21|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.21|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-LOCO-v0.21|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.21|verdict_changes",
+   "raw": {
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_BeyondPresence": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ]
+   },
+   "format": "custom",
+   "text": "H34_Floor_Signature: FALSIFIED → UNDETERMINED; H34_Floor_BeyondPresence: FALSIFIED → UNDETERMINED"
+  },
+  "SENS|S-LOCO-v0.22|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.22|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-LOCO-v0.22|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.22|verdict_changes",
+   "raw": {},
+   "format": "custom",
+   "text": "none"
+  },
+  "SENS|S-LOCO-v0.23|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.23|studies",
+   "raw": [
+    "32",
+    "34",
+    "35",
+    "36"
+   ],
+   "format": "custom",
+   "text": "#32, #34, #35, #36"
+  },
+  "SENS|S-LOCO-v0.23|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-LOCO-v0.23|verdict_changes",
+   "raw": {
+    "H32_SetSampling": [
+     "MARGINAL",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_Signature": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ],
+    "H34_Floor_BeyondPresence": [
+     "FALSIFIED",
+     "UNDETERMINED"
+    ]
+   },
+   "format": "custom",
+   "text": "H32_SetSampling: MARGINAL → UNDETERMINED; H34_Floor_Signature: FALSIFIED → UNDETERMINED; H34_Floor_BeyondPresence: FALSIFIED → UNDETERMINED"
+  },
+  "SENS|S-IL-t1|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-IL-t1|studies",
+   "raw": [
+    "35"
+   ],
+   "format": "custom",
+   "text": "#35"
+  },
+  "SENS|S-IL-t1|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-IL-t1|verdict_changes",
+   "raw": {},
+   "format": "custom",
+   "text": "none"
+  },
+  "SENS|S-F-noD|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-F-noD|studies",
+   "raw": [
+    "34"
+   ],
+   "format": "custom",
+   "text": "#34"
+  },
+  "SENS|S-F-noD|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-F-noD|verdict_changes",
+   "raw": {},
+   "format": "custom",
+   "text": "none"
+  },
+  "SENS|S-Mid|studies": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Mid|studies",
+   "raw": [
+    "32",
+    "34"
+   ],
+   "format": "custom",
+   "text": "#32, #34"
+  },
+  "SENS|S-Mid|changes": {
+   "source": "outputs/v119_verdicts.json",
+   "path": "sensitivities|S-Mid|verdict_changes",
+   "raw": {
+    "H32_SetSampling": [
+     "MARGINAL",
+     "FALSIFIED"
+    ]
+   },
+   "format": "custom",
+   "text": "H32_SetSampling: MARGINAL → FALSIFIED"
+  },
+  "N_LOCO_FLOOR_WORD": {
+   "source": "derived",
+   "op": "count of S-LOCO variants turning H34_Floor_Signature UNDETERMINED",
+   "path": "verdict_changes_under_sensitivities",
+   "raw": 4,
+   "format": "word",
+   "text": "four"
+  },
+  "COI_CHEIL_TEXT": {
+   "source": "osf/methodology/v1_19/prereg/PRE_REGISTRATION_v1_19.md",
+   "sha256": "9ae2d0b3d28b692a519dabff570b397712987dd543f6b5276189e0b479227b0a",
+   "path": "section 14 Declarations: from 'Cheil Worldwide, a marketing company' through '(sensitivity S-COI).'",
+   "raw": "Cheil Worldwide, a marketing company of the Samsung group in which Samsung Electronics holds 28.43%, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024). (Conflict-of-interest screen of v0.62, DEVIATIONS Entry 0, Part F.) As Denon, these five brands stay in every analysis, and every test is also reported without them and Denon (sensitivity S-COI).",
+   "format": "str",
+   "text": "Cheil Worldwide, a marketing company of the Samsung group in which Samsung Electronics holds 28.43%, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024). (Conflict-of-interest screen of v0.62, DEVIATIONS Entry 0, Part F.) As Denon, these five brands stay in every analysis, and every test is also reported without them and Denon (sensitivity S-COI)."
+  }
+ }
+}
