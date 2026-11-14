@@ -1,0 +1,1858 @@
+{
+  "phase": "v1.19",
+  "prereg_tag": "v1.19-prereg-r1",
+  "status": "RUN",
+  "paper_A": {
+    "run": true,
+    "status": "RUN",
+    "a_verdict": "PASS",
+    "reason": "Paper A PASS"
+  },
+  "panel": [
+    "claude-fable-5-2",
+    "gpt-6-astra",
+    "gemini-4-argon"
+  ],
+  "draws": {
+    "permutation": 10000,
+    "gap_reference": 500
+  },
+  "seeds": {
+    "H32_SetSampling": 119321,
+    "H32_CueType": 119322,
+    "H34_Floor_Signature": 119341,
+    "H34_Floor_BeyondPresence": 119342,
+    "H34_Defunct_Occupancy": 119343,
+    "H35_IL_Coverage": 119351,
+    "H35_IL_Robust": 119352,
+    "H35_IL_CueType": 119353,
+    "H36_Profile_Replication": 119361,
+    "H36_Structure": 119362,
+    "H36_Gap": 119363,
+    "dry_run": 119390
+  },
+  "rated_units": 51,
+  "H32_SetSampling": {
+    "splits": 64,
+    "splits_meeting_n_floor": 64,
+    "paper_A_H4_split_code": 0,
+    "per_split": {
+      "0": {
+        "r": 0.47672413793103446,
+        "rel": 0.6456509048453006,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "2": {
+        "r": 0.34910836762688613,
+        "rel": 0.5175394001016778,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "4": {
+        "r": 0.4150598627817326,
+        "rel": 0.5866322318913146,
+        "n": 41,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "6": {
+        "r": 0.15418832998452886,
+        "rel": 0.2671805388754809,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "8": {
+        "r": 0.36062874205411566,
+        "rel": 0.5300913186791589,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "10": {
+        "r": 0.20936658979605324,
+        "rel": 0.3462417294517135,
+        "n": 40,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "12": {
+        "r": 0.2487853458571233,
+        "rel": 0.39844373043369696,
+        "n": 40,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "14": {
+        "r": 0.09368348704377337,
+        "rel": 0.17131736586240295,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "16": {
+        "r": 0.3167029027465898,
+        "rel": 0.48105446123944917,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "18": {
+        "r": 0.4656892296573421,
+        "rel": 0.6354542562425922,
+        "n": 47,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "20": {
+        "r": 0.1652893028491049,
+        "rel": 0.28368801197260873,
+        "n": 43,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "22": {
+        "r": 0.15601175703885767,
+        "rel": 0.2699137895249167,
+        "n": 47,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "24": {
+        "r": 0.38213412575459044,
+        "rel": 0.5529624348808555,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "26": {
+        "r": 0.4327788438761013,
+        "rel": 0.6041111588517085,
+        "n": 41,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "28": {
+        "r": 0.3908074661917797,
+        "rel": 0.561986436932013,
+        "n": 40,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "30": {
+        "r": 0.3014938805727432,
+        "rel": 0.4633043383040203,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "32": {
+        "r": 0.12083659705624986,
+        "rel": 0.21561857878947469,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "34": {
+        "r": 0.3679696619549353,
+        "rel": 0.5379792727699502,
+        "n": 35,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "36": {
+        "r": 0.04248624446397332,
+        "rel": 0.08150945816233564,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "38": {
+        "r": 0.2707341554279835,
+        "rel": 0.42610667899581284,
+        "n": 35,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "40": {
+        "r": 0.09289235234733345,
+        "rel": 0.16999359936560562,
+        "n": 43,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "42": {
+        "r": 0.2566296918431518,
+        "rel": 0.408441235328034,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "44": {
+        "r": 0.20197153249736208,
+        "rel": 0.33606708151851394,
+        "n": 41,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "46": {
+        "r": 0.4239740910676033,
+        "rel": 0.5954800634746592,
+        "n": 36,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "48": {
+        "r": 0.29549784000626267,
+        "rel": 0.456191945491525,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "50": {
+        "r": 0.544196932471685,
+        "rel": 0.7048284076055352,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "52": {
+        "r": 0.1395054180287077,
+        "rel": 0.24485257519888884,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "54": {
+        "r": 0.3300530847278465,
+        "rel": 0.4963006191521769,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "56": {
+        "r": 0.36391215917364844,
+        "rel": 0.5336299067736611,
+        "n": 43,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "58": {
+        "r": 0.27782299987364256,
+        "rel": 0.43483800166551245,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "60": {
+        "r": 0.36859163683731644,
+        "rel": 0.5386437077594544,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "62": {
+        "r": 0.25047984294724646,
+        "rel": 0.40061396328771265,
+        "n": 36,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "64": {
+        "r": 0.16698306605454202,
+        "rel": 0.28617907305046986,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "66": {
+        "r": 0.2601324999406994,
+        "rel": 0.41286531369191887,
+        "n": 43,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "68": {
+        "r": 0.20886180531128937,
+        "rel": 0.3455511695276139,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "70": {
+        "r": 0.09530235683988486,
+        "rel": 0.1740201803543028,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "72": {
+        "r": 0.16225254513502635,
+        "rel": 0.2792035961791358,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "74": {
+        "r": 0.06393882803923508,
+        "rel": 0.12019267716184374,
+        "n": 40,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "76": {
+        "r": 0.3235308111224515,
+        "rel": 0.48889048657367273,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "78": {
+        "r": 0.2442291537185453,
+        "rel": 0.39257905666112036,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "80": {
+        "r": 0.28024633742249644,
+        "rel": 0.43780064700159627,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "82": {
+        "r": 0.3830346846614729,
+        "rel": 0.5539046690723143,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "84": {
+        "r": 0.3260438091670531,
+        "rel": 0.4917542043680377,
+        "n": 41,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "86": {
+        "r": 0.4036923841311095,
+        "rel": 0.5751863993776621,
+        "n": 46,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "88": {
+        "r": 0.4105360458109383,
+        "rel": 0.5820993331296471,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "90": {
+        "r": 0.5113715893959512,
+        "rel": 0.6766986927421743,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "92": {
+        "r": 0.3931764091779035,
+        "rel": 0.5644316205582495,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "94": {
+        "r": 0.38178173332703236,
+        "rel": 0.5525934004175671,
+        "n": 44,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "96": {
+        "r": -0.00848901328566305,
+        "rel": -0.017123387233042957,
+        "n": 36,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "98": {
+        "r": 0.12217319643150017,
+        "rel": 0.2177439219186659,
+        "n": 33,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "100": {
+        "r": 0.11640221823495733,
+        "rel": 0.2085309690964075,
+        "n": 39,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "102": {
+        "r": 0.29143323992525855,
+        "rel": 0.4513330320383037,
+        "n": 37,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "104": {
+        "r": -0.07378941457243186,
+        "rel": -0.15933615040335203,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "106": {
+        "r": 0.01740644697529023,
+        "rel": 0.03421729246367353,
+        "n": 40,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "108": {
+        "r": 0.22801702191508513,
+        "rel": 0.37135808029679257,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "110": {
+        "r": 0.30052600518019074,
+        "rel": 0.462160701105784,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "112": {
+        "r": 0.2940746946321014,
+        "rel": 0.4544941584159565,
+        "n": 38,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "114": {
+        "r": 0.3519011101421865,
+        "rel": 0.5206018509818003,
+        "n": 40,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "116": {
+        "r": 0.516774662791066,
+        "rel": 0.6814125729660229,
+        "n": 41,
+        "n_categories": 4,
+        "meets_n_floor": true
+      },
+      "118": {
+        "r": 0.44996134564697443,
+        "rel": 0.6206528842963067,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "120": {
+        "r": 0.32730416964504233,
+        "rel": 0.49318638053035346,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "122": {
+        "r": 0.41833829969394304,
+        "rel": 0.5898991796022351,
+        "n": 40,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "124": {
+        "r": 0.4217731421121252,
+        "rel": 0.5933058230169648,
+        "n": 45,
+        "n_categories": 5,
+        "meets_n_floor": true
+      },
+      "126": {
+        "r": 0.48452768729641693,
+        "rel": 0.652770159078442,
+        "n": 42,
+        "n_categories": 5,
+        "meets_n_floor": true
+      }
+    },
+    "median_r": 0.29801192259322673,
+    "rel_median": 0.4591821036556353,
+    "rel_p10": 0.1721282102099729,
+    "p_perm_one_sided": 9.999000099990002e-05,
+    "n_perm": 10000,
+    "paper_A_split_percentile": 93.75,
+    "verdict": "MARGINAL"
+  },
+  "H32_CueType": {
+    "per_W": {
+      "why": {
+        "rho_w_full_vs_minus_W": 0.9100112485939258,
+        "n": 49
+      },
+      "when": {
+        "rho_w_full_vs_minus_W": 0.9301848049281314,
+        "n": 49
+      },
+      "where": {
+        "rho_w_full_vs_minus_W": 0.8447694038245219,
+        "n": 49
+      },
+      "while": {
+        "rho_w_full_vs_minus_W": 0.8329764453961456,
+        "n": 49
+      },
+      "with whom": {
+        "rho_w_full_vs_minus_W": 0.9407069555302167,
+        "n": 49
+      },
+      "with what": {
+        "rho_w_full_vs_minus_W": 0.7803203661327232,
+        "n": 47
+      },
+      "how feeling": {
+        "rho_w_full_vs_minus_W": 0.9368363677095761,
+        "n": 48
+      }
+    },
+    "reference_pairs": 84,
+    "reference_finite": 84,
+    "reference_p5": 0.8091145374449339,
+    "reference_median": 0.9081069948253224,
+    "W_below_p5": [
+      "with what"
+    ],
+    "count": 1,
+    "verdict": "CONFIRMED"
+  },
+  "H34_Floor": {
+    "n_flagged_rated": 10,
+    "n_unflagged_rated": 41,
+    "categories_with_pairs": [
+      "v0.19",
+      "v0.20",
+      "v0.21",
+      "v0.23"
+    ],
+    "primary": {
+      "cliffs_delta": -0.06172839506172839,
+      "p_perm_two_sided": 0.8309169083091691,
+      "n_perm": 10000,
+      "verdict": "FALSIFIED"
+    },
+    "beyond_presence": {
+      "cliffs_delta_resid": 0.06172839506172839,
+      "p_perm_two_sided": 0.8345165483451655,
+      "n": 51,
+      "verdict": "FALSIFIED"
+    }
+  },
+  "H34_Defunct_Occupancy": {
+    "answers_naming_defunct": 0,
+    "by_W": {
+      "why": 0,
+      "when": 0,
+      "where": 0,
+      "while": 0,
+      "with whom": 0,
+      "with what": 0,
+      "how feeling": 0
+    },
+    "answers": 126,
+    "per_brand": {
+      "Pontiac": 0,
+      "Oldsmobile": 0,
+      "Plymouth": 0,
+      "Mercury": 0,
+      "Saturn": 0
+    },
+    "caveat": {
+      "naive": {},
+      "caveated": {}
+    },
+    "D34": {
+      "D": {
+        "brands": [
+          "Pontiac",
+          "Oldsmobile",
+          "Plymouth",
+          "Mercury",
+          "Saturn"
+        ],
+        "answers_naming_any": 0,
+        "answers_naming_any_by_W": {
+          "why": 0,
+          "when": 0,
+          "where": 0,
+          "while": 0,
+          "with whom": 0,
+          "with what": 0,
+          "how feeling": 0
+        },
+        "per_brand": {
+          "Pontiac": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          },
+          "Oldsmobile": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          },
+          "Plymouth": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          },
+          "Mercury": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          },
+          "Saturn": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          }
+        },
+        "mentions_by_W": {
+          "naive": {
+            "why": 0,
+            "when": 0,
+            "where": 0,
+            "while": 0,
+            "with whom": 0,
+            "with what": 0,
+            "how feeling": 0
+          },
+          "caveated": {
+            "why": 0,
+            "when": 0,
+            "where": 0,
+            "while": 0,
+            "with whom": 0,
+            "with what": 0,
+            "how feeling": 0
+          }
+        }
+      },
+      "Fisker_beside_D": {
+        "brands": [
+          "Fisker"
+        ],
+        "answers_naming_any": 0,
+        "answers_naming_any_by_W": {
+          "why": 0,
+          "when": 0,
+          "where": 0,
+          "while": 0,
+          "with whom": 0,
+          "with what": 0,
+          "how feeling": 0
+        },
+        "per_brand": {
+          "Fisker": {
+            "answers": 0,
+            "by_W": {
+              "why": 0,
+              "when": 0,
+              "where": 0,
+              "while": 0,
+              "with whom": 0,
+              "with what": 0,
+              "how feeling": 0
+            },
+            "naive": 0,
+            "caveated": 0
+          }
+        },
+        "mentions_by_W": {
+          "naive": {
+            "why": 0,
+            "when": 0,
+            "where": 0,
+            "while": 0,
+            "with whom": 0,
+            "with what": 0,
+            "how feeling": 0
+          },
+          "caveated": {
+            "why": 0,
+            "when": 0,
+            "where": 0,
+            "while": 0,
+            "with whom": 0,
+            "with what": 0,
+            "how feeling": 0
+          }
+        }
+      }
+    },
+    "verdict": "UNDETERMINED",
+    "reason": "fewer than 10 answers name a defunct brand"
+  },
+  "H35": {
+    "n": 26,
+    "per_category": {
+      "v0.20": 6,
+      "v0.21": 12,
+      "v0.22": 8
+    },
+    "eligible_il_units": 51,
+    "primary": {
+      "verdict": "UNDETERMINED",
+      "reason": "n < 45 or fewer than 3 trio categories"
+    },
+    "robust": {
+      "verdict": "UNDETERMINED"
+    },
+    "cue_type": {
+      "verdict": "UNDETERMINED"
+    }
+  },
+  "H36_Profile_Replication": {
+    "mean_rho_w_over_W": -0.021993692583918846,
+    "per_W": {
+      "why": -0.11689240317749462,
+      "when": 0.05559516736490598,
+      "where": 0.06272275292450931,
+      "while": 0.0712758555960333,
+      "with whom": -0.2052744641165759,
+      "with what": -0.03706344490993732,
+      "how feeling": 0.015680688231127327
+    },
+    "p_perm_one_sided": 0.6144385561443856,
+    "n_perm": 10000,
+    "verdict": "FALSIFIED",
+    "n": 44,
+    "n_categories": 5
+  },
+  "H36_Structure": {
+    "n": 51,
+    "full": {
+      "k": 1,
+      "gap": [
+        0.8760253393720521,
+        0.851789610640683,
+        0.8549964554356957,
+        0.9028354674021302,
+        0.9703944294295703,
+        1.0545451206178003,
+        1.089924509209446,
+        1.104657974462251
+      ],
+      "silhouette": null,
+      "silhouette_null_p95": null,
+      "n_null": 0,
+      "internal_structure": false
+    },
+    "ari_vs_presence_tiers": 0.0,
+    "p_ari": 1.0,
+    "inheritance": false,
+    "autonomy": false,
+    "residual": {
+      "k": 1,
+      "gap": [
+        0.8646373631884425,
+        0.8469940741643298,
+        0.865515673940495,
+        0.8914238221025886,
+        0.9533144333247323,
+        0.9850502464077484,
+        1.01673589449251,
+        1.0267304100827084
+      ],
+      "silhouette": null,
+      "silhouette_null_p95": null,
+      "n_null": 0,
+      "internal_structure": false
+    },
+    "residual_structure": false,
+    "cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively",
+    "dj_quadrants": {
+      "high P | situation-bound": 23,
+      "low P | situation-bound": 28
+    },
+    "D36_profiles": {
+      "units": 51,
+      "category_mean_profiles": {
+        "v0.19": {
+          "n": 11,
+          "mean_excess": {
+            "why": 0.02181266159385213,
+            "when": -0.023209777203675522,
+            "where": 0.007030139054191359,
+            "while": 0.0016975201864537896,
+            "with whom": 0.01207709425767845,
+            "with what": -0.022964125262460798,
+            "how feeling": 0.003556487373960572
+          }
+        },
+        "v0.20": {
+          "n": 7,
+          "mean_excess": {
+            "why": -0.03910669394739606,
+            "when": 0.0707138319302351,
+            "where": -0.027004311061830592,
+            "while": 0.020589659223012206,
+            "with whom": -0.039733847135251806,
+            "with what": 0.0162842570470808,
+            "how feeling": -0.0017428960558497294
+          }
+        },
+        "v0.21": {
+          "n": 12,
+          "mean_excess": {
+            "why": -0.024000170105968766,
+            "when": -0.021151470283493415,
+            "where": 0.021290990625380934,
+            "while": -0.011363909471826127,
+            "with whom": -0.004256998195045801,
+            "with what": 0.010618345706034411,
+            "how feeling": 0.028863211724918788
+          }
+        },
+        "v0.22": {
+          "n": 8,
+          "mean_excess": {
+            "why": -0.025752365410702215,
+            "when": -0.0022264563543984203,
+            "where": -0.022563000004263145,
+            "while": -0.019093444775707714,
+            "with whom": 0.002788885050563932,
+            "with what": 0.02095299825456691,
+            "how feeling": 0.04589338323994066
+          }
+        },
+        "v0.23": {
+          "n": 13,
+          "mean_excess": {
+            "why": -0.017739578612223438,
+            "when": 0.0073075426207657316,
+            "where": -0.013050743031425912,
+            "while": 0.01037864923021297,
+            "with whom": 0.028904019280478286,
+            "with what": -0.007251150464933794,
+            "how feeling": -0.008548739022873795
+          }
+        }
+      },
+      "k": 1,
+      "type_mean_profiles": null,
+      "note": "k = 1: no types, so no per-type profiles"
+    }
+  },
+  "verdict_summary": {
+    "H32_SetSampling": "MARGINAL",
+    "H32_CueType": "CONFIRMED",
+    "H34_Defunct_Occupancy": "UNDETERMINED",
+    "H36_Profile_Replication": "FALSIFIED",
+    "H34_Floor_Signature": "FALSIFIED",
+    "H34_Floor_BeyondPresence": "FALSIFIED",
+    "H35_IL_Coverage": "UNDETERMINED",
+    "H35_IL_Robust_cell": "UNDETERMINED",
+    "H35_IL_CueType": "UNDETERMINED",
+    "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+  },
+  "sensitivities": {
+    "S-COI": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.19",
+            "Denon"
+          ],
+          [
+            "v0.22",
+            "Chevrolet"
+          ],
+          [
+            "v0.22",
+            "BMW"
+          ],
+          [
+            "v0.22",
+            "Bentley"
+          ],
+          [
+            "v0.23",
+            "S03"
+          ],
+          [
+            "v0.20",
+            "Eucerin"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "UNDETERMINED",
+        "H34_Floor_BeyondPresence": "UNDETERMINED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-Floor6": {
+      "opts": {
+        "floor": 6
+      },
+      "studies": [
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "MARGINAL",
+        "H34_Floor_BeyondPresence": "FALSIFIED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "MARGINAL"
+        ]
+      }
+    },
+    "S-Equal": {
+      "opts": {
+        "null": "equal"
+      },
+      "studies": [
+        "32",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {}
+    },
+    "S-Mid": {
+      "opts": {
+        "key": "beta_mid"
+      },
+      "studies": [
+        "32",
+        "34"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "FALSIFIED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H34_Floor_Signature": "FALSIFIED",
+        "H34_Floor_BeyondPresence": "FALSIFIED"
+      },
+      "verdict_changes": {
+        "H32_SetSampling": [
+          "MARGINAL",
+          "FALSIFIED"
+        ]
+      }
+    },
+    "S-F-noD": {
+      "opts": {},
+      "studies": [
+        "34"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H34_Floor_Signature": "FALSIFIED",
+        "H34_Floor_BeyondPresence": "FALSIFIED"
+      },
+      "verdict_changes": {}
+    },
+    "S-LOCO-v0.19": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.19",
+            "Sennheiser"
+          ],
+          [
+            "v0.19",
+            "Beyerdynamic"
+          ],
+          [
+            "v0.19",
+            "Denon"
+          ],
+          [
+            "v0.19",
+            "Grado"
+          ],
+          [
+            "v0.19",
+            "Sony"
+          ],
+          [
+            "v0.19",
+            "Audio-Technica"
+          ],
+          [
+            "v0.19",
+            "Stax"
+          ],
+          [
+            "v0.19",
+            "Koss"
+          ],
+          [
+            "v0.19",
+            "Audeze"
+          ],
+          [
+            "v0.19",
+            "HiFiMan"
+          ],
+          [
+            "v0.19",
+            "Focal"
+          ],
+          [
+            "v0.19",
+            "Meze"
+          ],
+          [
+            "v0.19",
+            "ZMF Headphones"
+          ],
+          [
+            "v0.19",
+            "Spirit Torino"
+          ],
+          [
+            "v0.19",
+            "Final Audio"
+          ],
+          [
+            "v0.19",
+            "Dan Clark Audio"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "UNDETERMINED",
+        "H34_Floor_BeyondPresence": "UNDETERMINED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-LOCO-v0.20": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.20",
+            "Estée Lauder"
+          ],
+          [
+            "v0.20",
+            "Lancôme"
+          ],
+          [
+            "v0.20",
+            "La Mer"
+          ],
+          [
+            "v0.20",
+            "Sisley"
+          ],
+          [
+            "v0.20",
+            "Dior Beauty"
+          ],
+          [
+            "v0.20",
+            "Chanel Beauty"
+          ],
+          [
+            "v0.20",
+            "La Prairie"
+          ],
+          [
+            "v0.20",
+            "Clé de Peau Beauté"
+          ],
+          [
+            "v0.20",
+            "Rare Beauty"
+          ],
+          [
+            "v0.20",
+            "Rhode"
+          ],
+          [
+            "v0.20",
+            "Fenty Skin"
+          ],
+          [
+            "v0.20",
+            "Goop"
+          ],
+          [
+            "v0.20",
+            "Drunk Elephant"
+          ],
+          [
+            "v0.20",
+            "Glossier"
+          ],
+          [
+            "v0.20",
+            "Augustinus Bader"
+          ],
+          [
+            "v0.20",
+            "Tower 28"
+          ],
+          [
+            "v0.20",
+            "SkinCeuticals"
+          ],
+          [
+            "v0.20",
+            "La Roche-Posay"
+          ],
+          [
+            "v0.20",
+            "Paula's Choice"
+          ],
+          [
+            "v0.20",
+            "CeraVe"
+          ],
+          [
+            "v0.20",
+            "The Ordinary"
+          ],
+          [
+            "v0.20",
+            "Cetaphil"
+          ],
+          [
+            "v0.20",
+            "Eucerin"
+          ],
+          [
+            "v0.20",
+            "Bioderma"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "UNDETERMINED",
+        "H34_Floor_BeyondPresence": "UNDETERMINED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-LOCO-v0.21": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.21",
+            "MAC Cosmetics"
+          ],
+          [
+            "v0.21",
+            "NARS"
+          ],
+          [
+            "v0.21",
+            "Bobbi Brown"
+          ],
+          [
+            "v0.21",
+            "Tom Ford Beauty"
+          ],
+          [
+            "v0.21",
+            "Giorgio Armani Beauty"
+          ],
+          [
+            "v0.21",
+            "Hourglass"
+          ],
+          [
+            "v0.21",
+            "Chantecaille"
+          ],
+          [
+            "v0.21",
+            "Laura Mercier"
+          ],
+          [
+            "v0.21",
+            "Rare Beauty"
+          ],
+          [
+            "v0.21",
+            "Fenty Beauty"
+          ],
+          [
+            "v0.21",
+            "Haus Labs"
+          ],
+          [
+            "v0.21",
+            "Pat McGrath Labs"
+          ],
+          [
+            "v0.21",
+            "Charlotte Tilbury"
+          ],
+          [
+            "v0.21",
+            "Huda Beauty"
+          ],
+          [
+            "v0.21",
+            "Kylie Cosmetics"
+          ],
+          [
+            "v0.21",
+            "Anastasia Beverly Hills"
+          ],
+          [
+            "v0.21",
+            "Maybelline"
+          ],
+          [
+            "v0.21",
+            "L'Oréal Paris"
+          ],
+          [
+            "v0.21",
+            "CoverGirl"
+          ],
+          [
+            "v0.21",
+            "Revlon"
+          ],
+          [
+            "v0.21",
+            "NYX Professional Makeup"
+          ],
+          [
+            "v0.21",
+            "e.l.f. Cosmetics"
+          ],
+          [
+            "v0.21",
+            "Wet n Wild"
+          ],
+          [
+            "v0.21",
+            "Milani Cosmetics"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "UNDETERMINED",
+        "H34_Floor_BeyondPresence": "UNDETERMINED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-LOCO-v0.22": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.22",
+            "Mercedes-Benz"
+          ],
+          [
+            "v0.22",
+            "Jaguar"
+          ],
+          [
+            "v0.22",
+            "Cadillac"
+          ],
+          [
+            "v0.22",
+            "Rolls-Royce"
+          ],
+          [
+            "v0.22",
+            "Bentley"
+          ],
+          [
+            "v0.22",
+            "Porsche"
+          ],
+          [
+            "v0.22",
+            "BMW"
+          ],
+          [
+            "v0.22",
+            "Tesla"
+          ],
+          [
+            "v0.22",
+            "Rivian"
+          ],
+          [
+            "v0.22",
+            "Lucid"
+          ],
+          [
+            "v0.22",
+            "Polestar"
+          ],
+          [
+            "v0.22",
+            "Fisker"
+          ],
+          [
+            "v0.22",
+            "Toyota"
+          ],
+          [
+            "v0.22",
+            "Honda"
+          ],
+          [
+            "v0.22",
+            "Ford"
+          ],
+          [
+            "v0.22",
+            "Chevrolet"
+          ],
+          [
+            "v0.22",
+            "Hyundai"
+          ],
+          [
+            "v0.22",
+            "Volkswagen"
+          ],
+          [
+            "v0.22",
+            "Nissan"
+          ],
+          [
+            "v0.22",
+            "Pontiac"
+          ],
+          [
+            "v0.22",
+            "Oldsmobile"
+          ],
+          [
+            "v0.22",
+            "Plymouth"
+          ],
+          [
+            "v0.22",
+            "Mercury"
+          ],
+          [
+            "v0.22",
+            "Saturn"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "FALSIFIED",
+        "H34_Floor_BeyondPresence": "FALSIFIED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {}
+    },
+    "S-LOCO-v0.23": {
+      "opts": {
+        "exclude": [
+          [
+            "v0.23",
+            "S01"
+          ],
+          [
+            "v0.23",
+            "S02"
+          ],
+          [
+            "v0.23",
+            "S03"
+          ],
+          [
+            "v0.23",
+            "S04"
+          ],
+          [
+            "v0.23",
+            "S05"
+          ],
+          [
+            "v0.23",
+            "S06"
+          ],
+          [
+            "v0.23",
+            "S07"
+          ],
+          [
+            "v0.23",
+            "S08"
+          ],
+          [
+            "v0.23",
+            "S09"
+          ],
+          [
+            "v0.23",
+            "S10"
+          ],
+          [
+            "v0.23",
+            "S11"
+          ],
+          [
+            "v0.23",
+            "S12"
+          ],
+          [
+            "v0.23",
+            "S13"
+          ],
+          [
+            "v0.23",
+            "S14"
+          ],
+          [
+            "v0.23",
+            "S15"
+          ],
+          [
+            "v0.23",
+            "S16"
+          ],
+          [
+            "v0.23",
+            "S17"
+          ],
+          [
+            "v0.23",
+            "S18"
+          ],
+          [
+            "v0.23",
+            "S19"
+          ],
+          [
+            "v0.23",
+            "S20"
+          ],
+          [
+            "v0.23",
+            "S21"
+          ],
+          [
+            "v0.23",
+            "S22"
+          ],
+          [
+            "v0.23",
+            "S23"
+          ],
+          [
+            "v0.23",
+            "S24"
+          ]
+        ]
+      },
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "UNDETERMINED",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "UNDETERMINED",
+        "H34_Floor_BeyondPresence": "UNDETERMINED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {
+        "H32_SetSampling": [
+          "MARGINAL",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_Signature": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ],
+        "H34_Floor_BeyondPresence": [
+          "FALSIFIED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S-C3": {
+      "opts": {},
+      "studies": [
+        "32",
+        "34",
+        "35",
+        "36"
+      ],
+      "panel": [
+        "claude-opus-5-5",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H32_SetSampling": "MARGINAL",
+        "H32_CueType": "CONFIRMED",
+        "H34_Defunct_Occupancy": "UNDETERMINED",
+        "H36_Profile_Replication": "FALSIFIED",
+        "H34_Floor_Signature": "FALSIFIED",
+        "H34_Floor_BeyondPresence": "FALSIFIED",
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED",
+        "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+      },
+      "verdict_changes": {}
+    },
+    "S-IL-t1": {
+      "opts": {},
+      "studies": [
+        "35"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "verdicts": {
+        "H35_IL_Coverage": "UNDETERMINED",
+        "H35_IL_Robust_cell": "UNDETERMINED",
+        "H35_IL_CueType": "UNDETERMINED"
+      },
+      "verdict_changes": {}
+    }
+  },
+  "verdict_changes_under_sensitivities": {
+    "S-COI": {
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_BeyondPresence": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-Floor6": {
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-Mid": {
+      "H32_SetSampling": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO-v0.19": {
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_BeyondPresence": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-LOCO-v0.20": {
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_BeyondPresence": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-LOCO-v0.21": {
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_BeyondPresence": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-LOCO-v0.23": {
+      "H32_SetSampling": [
+        "MARGINAL",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_Signature": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "H34_Floor_BeyondPresence": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    }
+  },
+  "inputs": {
+    "paper_A_verdicts_sha256": "0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992",
+    "t4_raw_sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+    "t4_probes_sha256": "7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa",
+    "paper_A_raw_sha256": "e23b66526b8e745a1d59098c2389daefbd07cc40e6bd271424a0eb7117106c11",
+    "paper_A_unit_table_sha256": "06b7875042ee5f5c17676cab604a9d58ffd1a15102f1edc5d5f075bfd16e97b0",
+    "roster_sha256": "9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb",
+    "panel": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "primary_panel": "N3",
+    "identity_load": "t4 N3 S0 (v0.42)",
+    "il_t1_sha256": "45009bceb164c545f8ba9cc010d8de0548120d087fa7637e6599d9b1d0ffbb8e"
+  },
+  "parity": {
+    "B-P0": {
+      "gate": "B-P0",
+      "imported": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+      "manifest": [
+        "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20"
+      ],
+      "expected": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+      "passed": true
+    },
+    "B-P1": {
+      "gate": "B-P1",
+      "units": 112,
+      "mismatches": [],
+      "passed": true
+    }
+  },
+  "scorer_sha256": "7bbf6b1cc22aa26ed2892c07cab930c4497515c06b54261c5b3365c19b2c4242"
+}

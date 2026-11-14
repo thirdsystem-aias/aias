@@ -1,0 +1,85 @@
+# v1.19 Coverage Paper B: confirmatory run log (AIAS runner, lane V, Sat 2026-11-14)
+
+Worktree /Users/pablou/aias/_worktrees/v1.19, branch v1.19 at 5974fcc (anchor commit; = origin/v1.19).
+PYTHONDONTWRITEBYTECODE=1 for every python call. No model call, no spend. No locked file changed.
+
+## 1. Checks before the run
+- Tag v1.19-prereg-r1 on origin: tag object de58c07708d3b521b63d23f29feb2bb071596a20 -> commit
+  4bc4ce4f859cff9528f60dd0621af097c0c2cae6; anchor/osf_anchor_v1_19.json names both. git diff v1.19-prereg-r1 HEAD
+  = anchor/osf_anchor_v1_19.json only.
+- shasum -a 256 -c prereg/LOCK_MANIFEST_v1_19.sha256: 21/21 OK (before the tests; again after the inputs were placed,
+  immediately before the run). Manifest SHA-256 ee05e17d31172b9094fcf344415d917c1f47825e63a6e7b21bc6d20313231d5b
+  (= anchor).
+- #55 (v0.65-prereg-r1) on origin, tagged 2026-11-13 10:00:38 -0600, before this run (pre-registration section 17
+  item 1).
+- Unit tests, before any input was placed (python 3.14.4, numpy 2.4.4, scipy 1.17.1):
+  python3 -m unittest discover -s osf/methodology/v1_19/scripts/tests -p "test_*.py" -v
+    -> Ran 36 tests in 193.860s, OK (19:33:49Z-19:37:05Z)
+  python3 -m unittest discover -s osf/methodology/v1_12/scripts/tests -p "test_*.py" -v
+    -> Ran 118 tests in 30.128s, OK (19:37:05Z-19:37:36Z)
+  git status after the tests: no new file.
+
+## 2. Inputs placed before the run (not committed)
+score_v1_19.py --run takes no path argument: run_real() reads REAL_PATHS, i.e. Paper A's scorer constants under this
+worktree's root (osf/methodology/v1_12/data/v112_raw.jsonl, osf/methodology/v1_12/data/coded,
+osf/methodology/v1_12/v112_verdicts.json, osf/methodology/v1_12/v112_unit_table.csv, osf/v42/data/t4_raw.jsonl,
+osf/v42/data/coded, osf/v42/prereg/probes_v0_42.jsonl; the roster and v1_7_cpc.csv are in the tree). None of these
+was in the v1.19 tree, so each was written at that path from its pinned commit (git cat-file blob) and checked by
+git blob id: Paper A from origin/v1.12 @ 949be61 (Paper A's scoring commit), t4 from v0.42-scoring-locked @ 31c64c6
+(the t4 that Paper A's scoring read, data/RUN_NOTE_scoring_v1_12.md on v1.12). Record of that step, verbatim:
+
+OK 949be61 blob 2868620df0937043b5b6d7e7a885817caea2141b sha256 0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992 osf/methodology/v1_12/v112_verdicts.json
+OK 949be61 blob 4855abd30f4a0eb1b980f558a16bd15d440ca1fc sha256 06b7875042ee5f5c17676cab604a9d58ffd1a15102f1edc5d5f075bfd16e97b0 osf/methodology/v1_12/v112_unit_table.csv
+OK 949be61 blob 47990d4d66cf267a91d4c81f5d72b77b01d916ad sha256 e23b66526b8e745a1d59098c2389daefbd07cc40e6bd271424a0eb7117106c11 osf/methodology/v1_12/data/v112_raw.jsonl
+OK 949be61 blob fc715a854c837934facb8094fc55cc8cbf49578f sha256 aefeef0aeeb4a564807502cd778a47bed5b66e592e80917f372d9af48f57041f osf/methodology/v1_12/data/coded/coding_record_v1_12.json
+OK 949be61 blob 459c45374a175c98adb434b976d9fb3351119451 sha256 5cb33c898a57a8655ff8f858a0baa6ff981eba835fb7aed7bb6eeb2bce032843 osf/methodology/v1_12/data/coded/registry_v1_12.json
+OK 949be61 blob 548c6485c5a24bb842fb25809be6dbf00155ed74 sha256 f40dfd27ff9a192d382b893e2bd67a7c8bef262bbfe90ea655c70a7bc211f006 osf/methodology/v1_12/data/coded/v112_mentions.csv
+OK 31c64c6 blob 26de00942a0bc4f27c3506f1d5f7be895cd6a4aa sha256 f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf osf/v42/data/t4_raw.jsonl
+OK 31c64c6 blob e9da93caaa5e2c4947dc268c6a0340e0279f014c sha256 7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa osf/v42/prereg/probes_v0_42.jsonl
+OK 31c64c6 blob e1d8005826d9236352523b140a5f7a8a84409cff sha256 f88da1797d6df48b423469d7da3eaac4531c31a5d89cd208ed279b47b17703b5 osf/v42/data/coded/v19_phase_a.csv
+OK 31c64c6 blob 7fb571b51eac6e408eb4e48440b07bd9aa4b3ad7 sha256 347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0 osf/v42/data/coded/v19_phase_b.csv
+OK 31c64c6 blob 5b44cef6f63cc590ad3074a4799cfdbba4846150 sha256 9193c5fe190ba236e33b64bd9bbb4a1a2cbbf00a905cb4486173a654eb274f5d osf/v42/data/coded/v20_phase_a.csv
+OK 31c64c6 blob 5f765d9853c94bc0456531615a1bf384a3a65cdf sha256 4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1 osf/v42/data/coded/v20_phase_b.csv
+OK 31c64c6 blob 99cf93cc7478b780170a8f27198e04753b8768b2 sha256 d0ec707ccbe8776281e7032ffb27a784b58bed8d2c1e146ec07c1b9d5f3b723d osf/v42/data/coded/v21_phase_a.csv
+OK 31c64c6 blob feb9d5f6297f98d6cff35b2f2237660b53dfc733 sha256 2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26 osf/v42/data/coded/v21_phase_b.csv
+OK 31c64c6 blob f627bddc9342fadb188e0c9339b34dc62bd08928 sha256 70895b1e3a149446c59eafbac96f50e4e72ff301726317b15c4729cc14efd19a osf/v42/data/coded/v22_phase_a.csv
+OK 31c64c6 blob 8dc39b9d39645658bf4786ff96258dd040a84126 sha256 eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68 osf/v42/data/coded/v22_phase_b.csv
+OK 31c64c6 blob 696e53af0627a5e5e523c96267238908fb39f3a8 sha256 52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e osf/v42/data/coded/v23_phase_a.csv
+OK 31c64c6 blob 7f379235ecdc851f62acf14f15d0b63b68389bbb sha256 1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2 osf/v42/data/coded/v23_phase_b.csv
+STAGED 18 files; bad=0
+?? _scratch/
+?? osf/methodology/v1_12/data/
+?? osf/methodology/v1_12/v112_unit_table.csv
+?? osf/methodology/v1_12/v112_verdicts.json
+?? osf/v42/
+
+## 3. The run (console output, verbatim)
+
+v1.19 confirmatory run (lane V, AIAS runner, 2026-11-14)
+worktree /Users/pablou/aias/_worktrees/v1.19, branch v1.19, HEAD 5974fcc2730e42544bb41633738c18595b9f8d4f
+tag v1.19-prereg-r1 -> 4bc4ce4f859cff9528f60dd0621af097c0c2cae6
+python Python 3.14.4; numpy 2.4.4; scipy 1.17.1
+command: python3 osf/methodology/v1_19/scripts/score_v1_19.py --run   (PYTHONDONTWRITEBYTECODE=1)
+START_UTC 2026-11-14T19:38:20Z
+{
+ "H32_SetSampling": "MARGINAL",
+ "H32_CueType": "CONFIRMED",
+ "H34_Defunct_Occupancy": "UNDETERMINED",
+ "H36_Profile_Replication": "FALSIFIED",
+ "H34_Floor_Signature": "FALSIFIED",
+ "H34_Floor_BeyondPresence": "FALSIFIED",
+ "H35_IL_Coverage": "UNDETERMINED",
+ "H35_IL_Robust_cell": "UNDETERMINED",
+ "H35_IL_CueType": "UNDETERMINED",
+ "H36_Typology_cell": "NO TYPOLOGY (profiles do not replicate); structure reported descriptively"
+}
+END_UTC 2026-11-14T19:42:53Z
+EXIT 0; wall-clock 273 s
+total 88
+drwxr-xr-x@ 3 pablou  staff     96 Nov 14 13:42 .
+drwxr-xr-x@ 8 pablou  staff    256 Nov 14 13:38 ..
+-rw-r--r--@ 1 pablou  staff  42657 Nov 14 13:42 v119_verdicts.json
+RUN_DONE
+
+## 4. Output
+- outputs/v119_verdicts.json SHA-256 bf363060e4e90aed81c918544f561b43f387b5e41ef20d08d4844dc2d2176776
