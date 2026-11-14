@@ -1,4 +1,4 @@
-# DEVIATIONS — v1.20 (proposed id; Sentiment Paper A, successor re-scoring of v1.11's judge replies)
+# DEVIATIONS — v1.20 (Sentiment Paper A, successor re-scoring of v1.11's judge replies)
 
 ## Entry 0 — ex ante (2026-11-13, drafts r0 and r1, before the lock)
 
@@ -21,3 +21,15 @@
 10. Exposure, while finding the unit-table columns: for one unit per block (E, F, R) the key columns were printed (unit id, set, wave, category, brand, display name, model, frame, answer id, character counts, flags); text and question columns were excluded.
 11. **Difference from r0's counts (§8 item 5).** The list flags 4 R answers that r0 did not count: gemini-2.5-flash-lite at t1 (2) and t2 (2), byte-identical to its t3 answers that ended at the cap (rule (c)). r0 applied rule (c) to F only. Every count r0 gave is reproduced: R t3 35 of 144; F 16 cut after naming a brand (t1 4, t2 5, t3 7); F 11 cut before any brand.
 12. Rule (d) of r0 (E estimate) was not built: it needs a token count of answer texts, which is not stored metadata (§8, §16).
+
+## Entry 1 — ex ante (2026-11-14, final text with Pablo's answers, written at the lock, before the tag)
+
+**Type:** ex ante (pre-lock record). No v1.11 judge reply exists (no batch before 2026-11-22 06:00 UTC); v1.20 makes no model call; no valence, S, P, C\* or Ranking value has been computed by or for v1.20.
+
+**What changed and why.** Pablo answered the nine pre-lock questions on Sat 2026-11-14 at 9:04 am CT (control panel: "Ok" to the recommendations) and approved the lock ("lock as planned"). Questions 1–6, one switch each: Q1 `v1.20`; Q2 `first_counting`; Q3 `true` (a reply cut at the cap is invalid, v1.11's written rule); Q4 `true` (identical copies are invalid); Q5 `keep_r4`; Q6 `true` (if v1.11 halts, v1.20's verdicts are Sentiment Paper A's result). All six equal r1's settings, so no switch value changed. Question 7: rule (d), the E token-estimate rows, is dropped; it had never been built, so the cut list keeps its 66 rows and S-CUT removes no E unit; §8, §13 and §15 no longer carry it. Question 8: S-CUT also includes the 8 answers flagged by identical text (rule (c): R 4, F 4; 20 units), as the list and the scorer already did: S-CUT drops 66 answers and 116 units (96 units on recorded evidence alone). Question 9: does not apply (renaming files mattered only for the other id). The pre-registration records the nine decisions (§15) and the changes (§17, with a table), and no longer calls the id proposed or the text a draft; `config_v1_20.json` documents the decisions (switch values unchanged); `score_v1_20.py` changes only its docstring, its status string and the name of its settings constant (`DECIDED`, formerly `DRAFT_DEFAULTS`); the tests pin the answers (48 tests). No hypothesis, threshold, estimand, seed or exclusion changed.
+
+**Pre-lock record (lane B of the runner, 2026-11-14, from about 10:00 am CT).**
+1. Read: the r1 text, the config, this file, the scorer's switch, cut-list and lock code, the tests, the dry-run builder's header and the r1 dry-run record; read-only on branch v1.11: v1.11's lock manifest, DEVIATIONS file list and history, and the anchor's OSF field; the v1.19 lock record (tag, lock commit message, anchor file); the master document's pre-registration section.
+2. By code, metadata only: the committed cut list (rows by block, evidence class and unit count; no answer text) and the SHA-256 of its 33 input files against `cut_units_v1_20.json` (33 of 33 equal; hashes only, nothing printed from the files). The list was not rebuilt.
+3. Synthetic only: the dry run of §10 re-run with the final settings (scenarios B, A and H in `dryrun/work/`, not committed); every value checked equals r1's (scenario B: raw SHA-256 `daa5092a…`, halts, status transitions, judgements from a different attempt J1 577 / 26 and J2 12 / 3, verdicts, sensitivities, one verdict change), and the real-data refusal is unchanged. Tests: v1.20 48 OK; v1.11 64 OK.
+4. The lock: tag `v1.20-prereg-r1` on the commit that adds this entry, on 2026-11-14, before v1.11's first possible judge batch (2026-11-22 06:00 UTC); the anchor record follows the push.

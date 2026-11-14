@@ -1,47 +1,53 @@
 {
-  "_doc": "AIAS v1.20 (proposed id), DRAFT r1, not locked. The six questions open with Pablo (PRE_REGISTRATION_v1_20.md section 15), one switch each. 'value' is what scripts/score_v1_20.py applies; every value below is the draft's default and stays so until Pablo answers. His answer applies by editing that one 'value' (and the matching 'Setting' cell in section 15). The scripts refuse a value outside 'options'.",
+  "_doc": "AIAS v1.20, final text (r1), locked by tag v1.20-prereg-r1. Pablo answered the nine pre-lock questions on Sat 2026-11-14 at 9:04 am CT (control panel: \"Ok\" to the recommendations); PRE_REGISTRATION_v1_20.md section 15 records them. Questions 1-6 are the six switches below: 'value' is what scripts/score_v1_20.py applies, records in every output and checks (it refuses a value outside 'options'). Questions 7-9 have no switch and are recorded under 'decisions': 7 and 8 fix the content of the cut list (scoping/cut_units_v1_20.csv), 9 does not apply.",
   "switches": {
     "Q1_study_id": {
       "value": "v1.20",
       "options": ["v1.20", "v1.11-successor"],
-      "draft_default": "v1.20",
+      "decided": "question 1, Pablo, 2026-11-14: v1.20",
       "section": "0",
-      "effect": "PHASE_ID of every output and the tag <id>-prereg-r1. Folder and file names keep v1_20 either way."
+      "effect": "PHASE_ID of every output and the tag <id>-prereg-r1. Folder and file names keep v1_20."
     },
     "Q2_scored_attempt": {
       "value": "first_counting",
       "options": ["first_counting", "v1_11_first"],
-      "draft_default": "first_counting",
+      "decided": "question 2, Pablo, 2026-11-14: first_counting",
       "section": "4",
-      "effect": "first_counting: the first stored reply that counts under section 3 is the judgement (primary), v1.11-first is sensitivity S-ATT. v1_11_first: the reverse (S-ATT primary, first-counting reported as sensitivity S-FIRST)."
+      "effect": "first_counting: the first stored reply that counts under section 3 is the judgement (primary), v1.11-first is sensitivity S-ATT. v1_11_first (not chosen): the reverse (S-ATT primary, first-counting reported as sensitivity S-FIRST)."
     },
     "Q3_cap_cut_reply_invalid": {
       "value": true,
       "options": [true, false],
-      "draft_default": true,
+      "decided": "question 3, Pablo, 2026-11-14: true, a reply cut at the cap is invalid (v1.11's written rule)",
       "section": "3 item 5",
-      "effect": "true: a judge reply whose recorded finish reason shows the output cap is invalid even when it holds one complete object (v1.11 section 4.2 as written). false: such a reply counts if its one object passes (v1.11's code)."
+      "effect": "true: a judge reply whose recorded finish reason shows the output cap is invalid even when it holds one complete object (v1.11 section 4.2 as written). false (not chosen): such a reply counts if its one object passes (v1.11's code)."
     },
     "Q4_reject_identical_objects": {
       "value": true,
       "options": [true, false],
-      "draft_default": true,
+      "decided": "question 4, Pablo, 2026-11-14: true, identical copies are invalid",
       "section": "3 item 2",
-      "effect": "true: two or more complete top-level objects make the reply invalid, even identical copies. false: copies identical as JSON (same keys, same values, same JSON types) count as one object; different objects stay invalid."
+      "effect": "true: two or more complete top-level objects make the reply invalid, even identical copies. false (not chosen): copies identical as JSON (same keys, same values, same JSON types) count as one object; different objects stay invalid."
     },
     "Q5_cut_answers": {
       "value": "keep_r4",
       "options": ["keep_r4", "keep_r6", "drop_r4", "drop_r6"],
-      "draft_default": "keep_r4",
+      "decided": "question 5, Pablo, 2026-11-14: keep_r4",
       "section": "8",
-      "effect": "keep_*: the primary analysis keeps answers cut at the answering model's output limit; S-CUT and S-CUT-M drop them. drop_*: the primary analysis drops the S-CUT answers; the full set is sensitivity S-ALL; S-CUT-M stays a sensitivity. _r4 / _r6: recognition-score floor (n >= 4 or n >= 6 answers) wherever cut answers are dropped; F and E floors stay 6."
+      "effect": "keep_r4: the primary analysis keeps answers cut at the answering model's output limit; S-CUT and S-CUT-M drop them, with the recognition-score floor n >= 4 there; F and E floors stay 6. Not chosen: keep_r6 (floor 6), drop_r4 / drop_r6 (the primary drops the S-CUT answers; the full set is sensitivity S-ALL)."
     },
     "Q6_case_b_result": {
       "value": true,
       "options": [true, false],
-      "draft_default": true,
+      "decided": "question 6, Pablo, 2026-11-14: true",
       "section": "7",
-      "effect": "true: if v1.11's Stage J halts on JUDGE_FAIL (case B), v1.20's verdicts are Sentiment Paper A's result for the release decision (AIAS 4.0). false: v1.20 is reported as a pre-registered re-scoring only, in both cases."
+      "effect": "true: if v1.11's Stage J halts on JUDGE_FAIL (case B), v1.20's verdicts are Sentiment Paper A's result for the release decision (AIAS 4.0 in the current plan). false (not chosen): v1.20 is reported as a pre-registered re-scoring only, in both cases."
     }
+  },
+  "decisions": {
+    "answered": "Pablo, Sat 2026-11-14, 9:04 am CT, control panel: \"Ok\" to the recommendations (the nine answers below); lock approved (\"lock as planned\")",
+    "Q7_rule_d_E_estimate": "drop rule (d), the E token-estimate rows: no E answer is in the cut list and S-CUT removes no E unit (section 8)",
+    "Q8_s_cut_identical_text": "S-CUT also includes the 8 cut-offs found by identical text (rule (c): R 4, F 4), with every other row of the cut list (66 answers; section 8)",
+    "Q9_file_renames": "does not apply: renaming folders and files mattered only for the other id; the id is v1.20 and the names keep v1_20"
   }
 }

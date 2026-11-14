@@ -1,7 +1,9 @@
-AIAS v1.20 (proposed id) - dry run of Stage J and Stage C on SYNTHETIC judge replies (draft r1, not locked)
-Run 2026-11-13, about 2:20 am CT, on the Mac (venv Python 3.14, PYTHONDONTWRITEBYTECODE=1). No model call, no
-network, no real judge reply (none exists before 2026-11-22 06:00 UTC), no real answer text, no P, C* or R* value
-of real data. Inputs: v1.11's synthetic replica, dry-run manifest and dry-run U0 (unit table 12,979 rows, SHA-256
+AIAS v1.20 - dry run of Stage J and Stage C on SYNTHETIC judge replies (final settings: Pablo's answers of 2026-11-14)
+Run 2026-11-14, about 10:28-10:31 am CT, on the Mac (venv Python 3.14.4, PYTHONDONTWRITEBYTECODE=1), lane B of the
+runner, with the final config (switches Q1 v1.20, Q2 first_counting, Q3 true, Q4 true, Q5 keep_r4, Q6 true: r1's values).
+It repeats r1's run of 2026-11-13 (about 2:20 am CT); every value below equals r1's. No model call, no network, no
+real judge reply (none exists before 2026-11-22 06:00 UTC), no real answer text, no P, C* or R* value of real data.
+Inputs: v1.11's synthetic replica, dry-run manifest and dry-run U0 (unit table 12,979 rows, SHA-256
 f29a967d643f4dd4beeb10a29aefc0edcdd3ed1df75f9bf9739a8bea46ba2eff), made by v1.11's own locked builder on
 2026-11-10 and copied from the v1.11 worktree; synthetic judge records from build_dryrun_v1_20.py. The work folder
 (dryrun/work/) is not committed; the builder rebuilds it. Stage C ran with --draws 500 (bootstrap and permutation
@@ -17,19 +19,19 @@ Scenario B (v1.11's rule halts, v1.20's does not): 13,337 synthetic records (raw
      JUDGE_FAIL halts: v1.11 rule ['J1 OMNI t2 v0.21'] (10 of 154 units), v1.20 rule none (0 of 154), S-ATT none.
      Transitions v1.11 -> v1.20, J1 main: JUDGE_FAIL -> VALID 16; VALID -> UNJUDGED 13 (complete object with a cap
      finish reason: valid under v1.11's code, invalid under switch Q3 = true, one reply stored); VALID -> VALID
-     8,448, of which 577 take their judgement from an earlier attempt than v1.11 (prose-first replies). J2 main:
-     VALID -> UNJUDGED 3 (same cap case); VALID -> VALID 3,364. H1 MARGINAL (alpha 0.537, brand rho 0.870, n 157);
-     S-ATT H1 MARGINAL.
+     8,448, of which 577 take their judgement from an earlier attempt than v1.11 (prose-first replies). J1 repeat:
+     JUDGE_FAIL -> VALID 2; VALID -> VALID 422 (26 from an earlier attempt). J2 main: VALID -> UNJUDGED 3 (same
+     cap case); VALID -> VALID 3,364 (12 from an earlier attempt); J2 repeat: VALID -> VALID 164 (3).
+     H1 MARGINAL (alpha 0.537, brand rho 0.870, n 157); S-ATT H1 MARGINAL.
   --stage C --draws 500 -> rc 0: R* (MNP) computed with v1.10's locked code, 23 rank tables match; verdicts H1
      MARGINAL, H2-H4 CONFIRMED, H5 MARGINAL, H6-H9 CONFIRMED (synthetic values; meaningless as results); role
      "Sentiment Paper A's result (case B; switch Q6 = true)"; sensitivities written: SU, SD, NV, model-balanced,
      J2-scored, S_ATT_v1_11_first, S_CUT_without_cut_answers (R floor 4), S_CUT_M_without_cut_cells (R floor 4);
-     verdict changes 1 (SU, H7). Synthetic cut list: 34 answers; S-CUT-M cells R v0.23 gemini-2.5-flash,
-     F v0.19 gemini-2.5-flash-lite, F v0.23 gemini-2.5-flash. H8 rated brands t1/t2/t3: primary 24/21/22,
-     S-CUT 24/24/24.
+     verdict changes 1 (SU, H7: CONFIRMED -> MARGINAL). Synthetic cut list: 34 answers; S-CUT-M cells R v0.23
+     gemini-2.5-flash, F v0.19 gemini-2.5-flash-lite, F v0.23 gemini-2.5-flash.
 
-Scenario A (neither rule halts; v1.11's own Stage J run first by the builder):
-  --stage J -> rc 0: v1.11 Stage J passed (case A); halts none / none; H1 MARGINAL.
+Scenario A (neither rule halts; v1.11's own Stage J run first by the builder: H1 MARGINAL, alpha 0.535):
+  --stage J -> rc 0: v1.11 Stage J passed (case A); halts none / none; H1 MARGINAL (alpha 0.537, brand rho 0.870).
   --stage C --draws 500 -> HALT "ORDER: v1.11's Stage J passed, so v1.11's Stage C must be written first
      (section 7)" (rc 2).
 
@@ -38,21 +40,18 @@ Scenario H (both rules halt: J1 replies with no JSON in OMNI t2 v0.21):
      scoring)" (rc 2); stage_j_v1_20.json written with halted = true and the per-set table under all three rules.
   --stage C -> HALT "v1.20's Stage J halted on JUDGE_FAIL above 2%: no Stage C (section 5)" (rc 2).
 
-Scenario B with every switch at an alternative (config_v1_20.json edited for the run, then restored byte for byte;
-git diff clean): Q1 v1.11-successor, Q2 v1_11_first, Q3 false, Q4 false, Q5 drop_r6, Q6 false.
-  --stage J -> rc 0: phase "v1.11-successor"; v1.11 rule halts ['J1 OMNI t2 v0.21'], primary (S-ATT) none;
-     H1 MARGINAL (alpha 0.534, brand rho 0.855, n 153; R floor 6 and cut answers dropped from the primary);
-     S_FIRST_first_counting H1 MARGINAL. Transitions: no VALID -> UNJUDGED (Q3 false).
-  --stage C --draws 300 -> rc 0: prereg_tag v1.11-successor-prereg-r1; sensitivities S_FIRST_first_counting,
-     S_ALL_with_cut_answers, S_CUT_M_without_cut_cells (R floor 6); role "pre-registered re-scoring only (case B;
-     switch Q6 = false)"; 2 sensitivity verdict changes.
-  The default-switch scenario B was then rebuilt and re-run: the same results as above.
+Scenario B with every switch at an alternative: run in r1 only (2026-11-13; config_v1_20.json edited for the run,
+then restored byte for byte), not repeated, because the switch code did not change: Q1 v1.11-successor, Q2
+v1_11_first, Q3 false, Q4 false, Q5 drop_r6, Q6 false. Stage J rc 0 (phase "v1.11-successor"; primary S-ATT; H1
+MARGINAL, alpha 0.534, brand rho 0.855, n 153; no VALID -> UNJUDGED under Q3 false); Stage C --draws 300 rc 0
+(prereg_tag v1.11-successor-prereg-r1; S_FIRST_first_counting, S_ALL_with_cut_answers, S_CUT_M_without_cut_cells
+with R floor 6; role "pre-registered re-scoring only (case B; switch Q6 = false)"; 2 sensitivity verdict changes).
 
 Real data: --stage J without the tags and anchors -> "refusing --stage J on real data before the lock: git tag
 v1.20-prereg-r1 does not exist; anchor file .../git_anchor_v1_20.json does not exist; v1.11: anchor file
 .../git_anchor_v1_11.json does not exist" (rc 3).
 
-Tests: python3 -m unittest scripts/test_score_v1_20.py -> Ran 47 tests, OK.
+Tests: python3 -m unittest scripts/test_score_v1_20.py -> Ran 48 tests, OK.
        python3 -m unittest scripts/test_score_v1_11.py scripts/test_judge_v1_11.py -> Ran 64 tests, OK.
 Commands (repository root):
   python3 osf/methodology/v1_20/dryrun/build_dryrun_v1_20.py --scenario A|B|H

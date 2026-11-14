@@ -248,15 +248,22 @@ class TestClassify(unittest.TestCase):
 
 
 def sw(**kw):
-    d = dict(R.DRAFT_DEFAULTS)
+    d = dict(R.DECIDED)
     d.update(kw)
     return d
 
 
 class TestSwitches(unittest.TestCase):
-    def test_config_holds_the_draft_defaults(self):
-        self.assertEqual(R.load_switches(), R.DRAFT_DEFAULTS)
+    def test_config_holds_pablos_answers(self):
+        # Pablo, 2026-11-14, 9:04 am CT (section 15): questions 1-6 are the switches; 7-9 are recorded decisions
+        answers = {"Q1_study_id": "v1.20", "Q2_scored_attempt": "first_counting", "Q3_cap_cut_reply_invalid": True,
+                   "Q4_reject_identical_objects": True, "Q5_cut_answers": "keep_r4", "Q6_case_b_result": True}
+        self.assertEqual(R.load_switches(), answers)
+        self.assertEqual(R.DECIDED, answers)
         self.assertEqual((R.PHASE_ID, R.PREREG_TAG), ("v1.20", "v1.20-prereg-r1"))
+        doc = json.loads(R.CONFIG_FILE.read_text(encoding="utf-8"))
+        self.assertEqual(sorted(k for k in doc["decisions"] if k.startswith("Q")),
+                         ["Q7_rule_d_E_estimate", "Q8_s_cut_identical_text", "Q9_file_renames"])
 
     def test_config_refuses_values_outside_options(self):
         import tempfile
@@ -272,7 +279,7 @@ class TestSwitches(unittest.TestCase):
 
     def test_q4_identical_copies(self):
         raw = js() + "\n" + js()
-        self.assertFalse(rule(raw))                                              # draft: invalid
+        self.assertFalse(rule(raw))                                              # decided (Q4 true): invalid
         self.assertEqual(R.parse_reply(raw, sw(Q4_reject_identical_objects=False))["valence"], 1)
         other = js() + "\n" + js(valence=2, evidence="best in class")
         with self.assertRaises(S.JudgeOutputError):
@@ -377,6 +384,21 @@ class TestCutList(unittest.TestCase):
         for r in rows:
             self.assertEqual(r["unit_status"], "kept" if int(r["v1_11_units"]) else "none")
             self.assertIn(r["evidence_class"], ("finish_reason", "tokens_at_cap", "identical_to_t3 (inferred)"))
+
+    def test_answers_7_and_8(self):
+        # question 7: rule (d) dropped, no E row and no estimate row; question 8: S-CUT takes the 8 rows
+        # flagged by identical text (rule (c): R 4, F 4) with every other row of the list
+        import csv
+        from collections import Counter
+        with open(R.CUT_CSV, encoding="utf-8", newline="") as f:
+            rows = list(csv.DictReader(f))
+        self.assertEqual([r for r in rows if r["block"] not in ("R", "F")], [])
+        self.assertEqual([r for r in rows if "estimate" in r["evidence_class"]], [])
+        ident = [r for r in rows if r["evidence_class"] == "identical_to_t3 (inferred)"]
+        self.assertEqual(sorted(Counter(r["block"] for r in ident).items()), [("F", 4), ("R", 4)])
+        ids, _, meta = R.load_cut(R.CUT_CSV, R.CUT_JSON)
+        self.assertTrue({r["answer_id"] for r in ident} <= ids)
+        self.assertEqual((len(ids), meta["answers_flagged"]), (66, 66))
 
 
 class TestLock(unittest.TestCase):

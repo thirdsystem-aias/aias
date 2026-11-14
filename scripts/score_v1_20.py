@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""AIAS v1.20 (proposed id) — successor re-scoring of v1.11's judge replies. DRAFT r1, NOT LOCKED.
+"""AIAS v1.20 — successor re-scoring of v1.11's judge replies. Final text (r1), locked by tag v1.20-prereg-r1.
 
 PRE_REGISTRATION_v1_20.md (osf/methodology/v1_20/prereg/) defines the study. This module holds the
 one rule it changes and the stages that apply it; everything else is v1.11's locked code, imported:
@@ -14,8 +14,8 @@ Per unit, the stored attempts are read in v1.11's order and the first reply that
 judgement (outcomes; switch Q2 can make v1.11's own judgement primary instead). The JUDGE_FAIL 2% rule,
 S, H1-H9, the sensitivities and the descriptives are v1.11's functions on these outcomes.
 
-The six questions open with Pablo are switches in osf/methodology/v1_20/prereg/config_v1_20.json
-(one 'value' each; the draft defaults until he answers).
+The six switches of section 15 are in osf/methodology/v1_20/prereg/config_v1_20.json (one 'value'
+each, set to Pablo's answers of 2026-11-14 to questions 1-6; DECIDED below).
 
 Modes (repository root; system Python or the venv, PYTHONDONTWRITEBYTECODE=1):
   --stage J        after v1.11's --freeze and v1.11's own Stage J: outcomes under the rule, JUDGE_FAIL
@@ -56,7 +56,7 @@ V = S.V                  # v1.10's locked module, as v1.11 imports it
 Halt = S.Halt
 
 # ======================================================================================
-# 0. SWITCHES (the six open questions; PRE_REGISTRATION_v1_20.md section 15)
+# 0. SWITCHES (Pablo's answers to questions 1-6, 2026-11-14; PRE_REGISTRATION_v1_20.md section 15)
 # ======================================================================================
 ROOT = S.ROOT
 V120 = "osf/methodology/v1_20"
@@ -69,8 +69,8 @@ SWITCH_OPTIONS = {
     "Q5_cut_answers": ("keep_r4", "keep_r6", "drop_r4", "drop_r6"),
     "Q6_case_b_result": (True, False),
 }
-DRAFT_DEFAULTS = {"Q1_study_id": "v1.20", "Q2_scored_attempt": "first_counting", "Q3_cap_cut_reply_invalid": True,
-                  "Q4_reject_identical_objects": True, "Q5_cut_answers": "keep_r4", "Q6_case_b_result": True}
+DECIDED = {"Q1_study_id": "v1.20", "Q2_scored_attempt": "first_counting", "Q3_cap_cut_reply_invalid": True,
+           "Q4_reject_identical_objects": True, "Q5_cut_answers": "keep_r4", "Q6_case_b_result": True}
 
 
 def _same_option(v, o) -> bool:
@@ -98,7 +98,7 @@ SW = load_switches()
 PHASE_ID = SW["Q1_study_id"]
 PREREG_TAG = f"{PHASE_ID}-prereg-r1"
 BRANCH = "sentiment-successor"
-STATUS = "r1 draft (2026-11-13), not locked"
+STATUS = "r1, final (Pablo's answers of 2026-11-14); locked by tag v1.20-prereg-r1"
 SUCCESSOR_OF = "v1.11"
 SUCCESSOR_OF_TAG = S.PREREG_TAG  # v1.11-prereg-r1
 
@@ -262,7 +262,7 @@ def classify(raw: str) -> dict:
     shape: empty | no_object | several_objects | bare | text_before | text_after | text_before_and_after,
     read after a code fence around the single object is set aside (fenced = True; '```json' or '```'
     directly before it and '```' directly after it). v111_valid: v1.11's parser on the whole reply.
-    v120_valid: the v1.20 rule on the reply text with the draft defaults (finish reason and served model
+    v120_valid: the v1.20 rule on the reply text with the decided settings (finish reason and served model
     are checked by record_judgement)."""
     text = raw or ""
     res = {"shape": None, "fenced": False, "n_objects": 0, "v111_valid": False, "v120_valid": False,
