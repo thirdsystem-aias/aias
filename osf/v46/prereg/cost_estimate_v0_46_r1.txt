@@ -1,0 +1,34 @@
+source git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl; answered t4 calls 876; prices on 2026-12-01 (r1, 2026-11-14)
+prices (in/out per 1M, as used) {'claude-fable-5-2': (4.0, 20.0), 'gpt-6-astra': (10.0, 50.0), 'gemini-4-argon': (4.0, 20.0)}
+output-token basis, t4 B-S0 {'claude-fable-5-2': {'n': 90, 'mean_out': 1279, 'p90_out': 3536}, 'gpt-6-astra': {'n': 90, 'mean_out': 837, 'p90_out': 1844}, 'gemini-4-argon': {'n': 90, 'mean_out': 1296, 'p90_out': 1803}}
+  per call claude-fable-5-2|A-yn|floor|list_prompt          $0.0042 (n 88)
+  per call claude-fable-5-2|A-yn|floor|open_prompt          $0.0027 (n 88)
+  per call claude-fable-5-2|B-S0|central|list_prompt        $0.0285 (n 90)
+  per call claude-fable-5-2|B-S0|central|open_prompt        $0.0271 (n 90)
+  per call claude-fable-5-2|B-S0|high|list_prompt           $0.0804 (n 90)
+  per call claude-fable-5-2|B-S0|high|open_prompt           $0.0789 (n 90)
+  per call gpt-6-astra|A-yn|floor|list_prompt               $0.0066 (n 88)
+  per call gpt-6-astra|A-yn|floor|open_prompt               $0.0030 (n 88)
+  per call gpt-6-astra|B-S0|central|list_prompt             $0.0488 (n 90)
+  per call gpt-6-astra|B-S0|central|open_prompt             $0.0453 (n 90)
+  per call gpt-6-astra|B-S0|high|list_prompt                $0.1080 (n 90)
+  per call gpt-6-astra|B-S0|high|open_prompt                $0.1042 (n 90)
+  per call gemini-4-argon|A-yn|floor|list_prompt            $0.0026 (n 88)
+  per call gemini-4-argon|A-yn|floor|open_prompt            $0.0011 (n 88)
+  per call gemini-4-argon|B-S0|central|list_prompt          $0.0289 (n 90)
+  per call gemini-4-argon|B-S0|central|open_prompt          $0.0275 (n 90)
+  per call gemini-4-argon|B-S0|high|list_prompt             $0.0423 (n 90)
+  per call gemini-4-argon|B-S0|high|open_prompt             $0.0408 (n 90)
+A adopted r1: Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Argon; LIST 2 squares + OPEN 6 runs; S0: 762 calls; floor $2.92; central $26.53; high $58.11; central by model {'claude-fable-5-2': 7.14, 'gpt-6-astra': 12.15, 'gemini-4-argon': 7.24}; high by model {'claude-fable-5-2': 20.32, 'gpt-6-astra': 27.16, 'gemini-4-argon': 10.63}
+B r0's design with Gemini 4 Carbon (not GA on 2026-11-14; not used): 762 calls; floor $2.94; central $33.24; high $78.26; central by model {'claude-fable-5-2': 7.14, 'gpt-6-astra': 12.15, 'gemini-4-carbon': 13.95}; high by model {'claude-fable-5-2': 20.32, 'gpt-6-astra': 27.16, 'gemini-4-carbon': 30.79}
+C A + OPEN with web search (S1), 6 runs (not adopted): 978 calls; floor $47.48; central $71.09; high $155.44; central by model {'claude-fable-5-2': 20.05, 'gpt-6-astra': 41.2, 'gemini-4-argon': 9.83}; high by model {'claude-fable-5-2': 47.76, 'gpt-6-astra': 92.95, 'gemini-4-argon': 14.73}
+D Claude Opus 5.5 (batch) in place of Fable 5.2: 762 calls; floor $2.44; central $22.95; high $47.95; central by model {'claude-opus-5-5': 3.57, 'gpt-6-astra': 12.15, 'gemini-4-argon': 7.24}; high by model {'claude-opus-5-5': 10.16, 'gpt-6-astra': 27.16, 'gemini-4-argon': 10.63}
+E LIST 1 square + OPEN 6 runs: 489 calls; floor $1.71; central $16.86; high $37.11; central by model {'claude-fable-5-2': 4.55, 'gpt-6-astra': 7.7, 'gemini-4-argon': 4.61}; high by model {'claude-fable-5-2': 13.0, 'gpt-6-astra': 17.33, 'gemini-4-argon': 6.78}
+F LIST 4 squares + OPEN 12 runs: 1524 calls; floor $5.83; central $53.05; high $116.23; central by model {'claude-fable-5-2': 14.29, 'gpt-6-astra': 24.29, 'gemini-4-argon': 14.47}; high by model {'claude-fable-5-2': 40.64, 'gpt-6-astra': 54.32, 'gemini-4-argon': 21.27}
+G A + v0.44's 8 industries (156 live units), after v0.44 is scored: 2130 calls; floor $8.05; central $74.05; high $162.34; central by model {'claude-fable-5-2': 19.95, 'gpt-6-astra': 33.9, 'gemini-4-argon': 20.21}; high by model {'claude-fable-5-2': 56.77, 'gpt-6-astra': 75.86, 'gemini-4-argon': 29.7}
+  block 1 LIST square 1     273 calls  cumulative central $9.67  high $21.00
+  block 2 OPEN              216 calls  cumulative central $16.86  high $37.12
+  block 3 LIST square 2     273 calls  cumulative central $26.53  high $58.12
+projection after block 1 (x 762/273): {'central': 26.99, 'high': 58.62}
+adopted if every call is before 2026-12-01: {'floor': 2.64, 'central': 22.91, 'high': 52.8}
+checks {'high_below_pause_80': True, 'high_below_cap_100': True, 'calls_762': True}

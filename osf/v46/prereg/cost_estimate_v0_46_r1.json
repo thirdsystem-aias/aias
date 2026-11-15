@@ -1,0 +1,341 @@
+{
+ "source": "git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl",
+ "answered_calls": 876,
+ "when": "2026-12-01T12:00:00+00:00",
+ "list_in_tokens": 600,
+ "open_in_tokens": 250,
+ "calls_per_model": {
+  "LIST": 182,
+  "OPEN": 72
+ },
+ "prices_usd_per_1M_in_out": {
+  "claude-fable-5-2": [
+   4.0,
+   20.0
+  ],
+  "gpt-6-astra": [
+   10.0,
+   50.0
+  ],
+  "gemini-4-argon": [
+   4.0,
+   20.0
+  ]
+ },
+ "output_token_basis_B_S0": {
+  "claude-fable-5-2": {
+   "n": 90,
+   "mean_out": 1279,
+   "p90_out": 3536
+  },
+  "gpt-6-astra": {
+   "n": 90,
+   "mean_out": 837,
+   "p90_out": 1844
+  },
+  "gemini-4-argon": {
+   "n": 90,
+   "mean_out": 1296,
+   "p90_out": 1803
+  }
+ },
+ "per_call": {
+  "claude-fable-5-2|A-yn|floor|list_prompt": {
+   "usd": 0.00415,
+   "n_t4_records": 88
+  },
+  "claude-fable-5-2|A-yn|floor|open_prompt": {
+   "usd": 0.00272,
+   "n_t4_records": 88
+  },
+  "claude-fable-5-2|B-S0|central|list_prompt": {
+   "usd": 0.02853,
+   "n_t4_records": 90
+  },
+  "claude-fable-5-2|B-S0|central|open_prompt": {
+   "usd": 0.0271,
+   "n_t4_records": 90
+  },
+  "claude-fable-5-2|B-S0|high|list_prompt": {
+   "usd": 0.08043,
+   "n_t4_records": 90
+  },
+  "claude-fable-5-2|B-S0|high|open_prompt": {
+   "usd": 0.07889,
+   "n_t4_records": 90
+  },
+  "gpt-6-astra|A-yn|floor|list_prompt": {
+   "usd": 0.00659,
+   "n_t4_records": 88
+  },
+  "gpt-6-astra|A-yn|floor|open_prompt": {
+   "usd": 0.00302,
+   "n_t4_records": 88
+  },
+  "gpt-6-astra|B-S0|central|list_prompt": {
+   "usd": 0.04883,
+   "n_t4_records": 90
+  },
+  "gpt-6-astra|B-S0|central|open_prompt": {
+   "usd": 0.04526,
+   "n_t4_records": 90
+  },
+  "gpt-6-astra|B-S0|high|list_prompt": {
+   "usd": 0.10802,
+   "n_t4_records": 90
+  },
+  "gpt-6-astra|B-S0|high|open_prompt": {
+   "usd": 0.10417,
+   "n_t4_records": 90
+  },
+  "gemini-4-argon|A-yn|floor|list_prompt": {
+   "usd": 0.00256,
+   "n_t4_records": 88
+  },
+  "gemini-4-argon|A-yn|floor|open_prompt": {
+   "usd": 0.00113,
+   "n_t4_records": 88
+  },
+  "gemini-4-argon|B-S0|central|list_prompt": {
+   "usd": 0.0289,
+   "n_t4_records": 90
+  },
+  "gemini-4-argon|B-S0|central|open_prompt": {
+   "usd": 0.02747,
+   "n_t4_records": 90
+  },
+  "gemini-4-argon|B-S0|high|list_prompt": {
+   "usd": 0.04231,
+   "n_t4_records": 90
+  },
+  "gemini-4-argon|B-S0|high|open_prompt": {
+   "usd": 0.04077,
+   "n_t4_records": 90
+  }
+ },
+ "designs": {
+  "A adopted r1: Fable 5.2 (batch), GPT-6 Astra, Gemini 4 Argon; LIST 2 squares + OPEN 6 runs; S0": {
+   "calls": 762,
+   "floor": {
+    "total": 2.92,
+    "by_model": {
+     "claude-fable-5-2": 0.95,
+     "gpt-6-astra": 1.42,
+     "gemini-4-argon": 0.55
+    }
+   },
+   "central": {
+    "total": 26.53,
+    "by_model": {
+     "claude-fable-5-2": 7.14,
+     "gpt-6-astra": 12.15,
+     "gemini-4-argon": 7.24
+    }
+   },
+   "high": {
+    "total": 58.11,
+    "by_model": {
+     "claude-fable-5-2": 20.32,
+     "gpt-6-astra": 27.16,
+     "gemini-4-argon": 10.63
+    }
+   }
+  },
+  "B r0's design with Gemini 4 Carbon (not GA on 2026-11-14; not used)": {
+   "calls": 762,
+   "floor": {
+    "total": 2.94,
+    "by_model": {
+     "claude-fable-5-2": 0.95,
+     "gpt-6-astra": 1.42,
+     "gemini-4-carbon": 0.58
+    }
+   },
+   "central": {
+    "total": 33.24,
+    "by_model": {
+     "claude-fable-5-2": 7.14,
+     "gpt-6-astra": 12.15,
+     "gemini-4-carbon": 13.95
+    }
+   },
+   "high": {
+    "total": 78.26,
+    "by_model": {
+     "claude-fable-5-2": 20.32,
+     "gpt-6-astra": 27.16,
+     "gemini-4-carbon": 30.79
+    }
+   }
+  },
+  "C A + OPEN with web search (S1), 6 runs (not adopted)": {
+   "calls": 978,
+   "floor": {
+    "total": 47.48,
+    "by_model": {
+     "claude-fable-5-2": 13.86,
+     "gpt-6-astra": 30.47,
+     "gemini-4-argon": 3.14
+    }
+   },
+   "central": {
+    "total": 71.09,
+    "by_model": {
+     "claude-fable-5-2": 20.05,
+     "gpt-6-astra": 41.2,
+     "gemini-4-argon": 9.83
+    }
+   },
+   "high": {
+    "total": 155.44,
+    "by_model": {
+     "claude-fable-5-2": 47.76,
+     "gpt-6-astra": 92.95,
+     "gemini-4-argon": 14.73
+    }
+   }
+  },
+  "D Claude Opus 5.5 (batch) in place of Fable 5.2": {
+   "calls": 762,
+   "floor": {
+    "total": 2.44,
+    "by_model": {
+     "claude-opus-5-5": 0.48,
+     "gpt-6-astra": 1.42,
+     "gemini-4-argon": 0.55
+    }
+   },
+   "central": {
+    "total": 22.95,
+    "by_model": {
+     "claude-opus-5-5": 3.57,
+     "gpt-6-astra": 12.15,
+     "gemini-4-argon": 7.24
+    }
+   },
+   "high": {
+    "total": 47.95,
+    "by_model": {
+     "claude-opus-5-5": 10.16,
+     "gpt-6-astra": 27.16,
+     "gemini-4-argon": 10.63
+    }
+   }
+  },
+  "E LIST 1 square + OPEN 6 runs": {
+   "calls": 489,
+   "floor": {
+    "total": 1.71,
+    "by_model": {
+     "claude-fable-5-2": 0.57,
+     "gpt-6-astra": 0.82,
+     "gemini-4-argon": 0.31
+    }
+   },
+   "central": {
+    "total": 16.86,
+    "by_model": {
+     "claude-fable-5-2": 4.55,
+     "gpt-6-astra": 7.7,
+     "gemini-4-argon": 4.61
+    }
+   },
+   "high": {
+    "total": 37.11,
+    "by_model": {
+     "claude-fable-5-2": 13.0,
+     "gpt-6-astra": 17.33,
+     "gemini-4-argon": 6.78
+    }
+   }
+  },
+  "F LIST 4 squares + OPEN 12 runs": {
+   "calls": 1524,
+   "floor": {
+    "total": 5.83,
+    "by_model": {
+     "claude-fable-5-2": 1.9,
+     "gpt-6-astra": 2.83,
+     "gemini-4-argon": 1.09
+    }
+   },
+   "central": {
+    "total": 53.05,
+    "by_model": {
+     "claude-fable-5-2": 14.29,
+     "gpt-6-astra": 24.29,
+     "gemini-4-argon": 14.47
+    }
+   },
+   "high": {
+    "total": 116.23,
+    "by_model": {
+     "claude-fable-5-2": 40.64,
+     "gpt-6-astra": 54.32,
+     "gemini-4-argon": 21.27
+    }
+   }
+  },
+  "G A + v0.44's 8 industries (156 live units), after v0.44 is scored": {
+   "calls": 2130,
+   "floor": {
+    "total": 8.05,
+    "by_model": {
+     "claude-fable-5-2": 2.64,
+     "gpt-6-astra": 3.91,
+     "gemini-4-argon": 1.51
+    }
+   },
+   "central": {
+    "total": 74.05,
+    "by_model": {
+     "claude-fable-5-2": 19.95,
+     "gpt-6-astra": 33.9,
+     "gemini-4-argon": 20.21
+    }
+   },
+   "high": {
+    "total": 162.34,
+    "by_model": {
+     "claude-fable-5-2": 56.77,
+     "gpt-6-astra": 75.86,
+     "gemini-4-argon": 29.7
+    }
+   }
+  }
+ },
+ "blocks": [
+  {
+   "block": "1 LIST square 1",
+   "calls": 273,
+   "central_cumulative": 9.67,
+   "high_cumulative": 21.0
+  },
+  {
+   "block": "2 OPEN",
+   "calls": 216,
+   "central_cumulative": 16.86,
+   "high_cumulative": 37.12
+  },
+  {
+   "block": "3 LIST square 2",
+   "calls": 273,
+   "central_cumulative": 26.53,
+   "high_cumulative": 58.12
+  }
+ ],
+ "projection_after_block1": {
+  "central": 26.99,
+  "high": 58.62
+ },
+ "adopted_if_all_calls_before_2026_12_01": {
+  "floor": 2.64,
+  "central": 22.91,
+  "high": 52.8
+ },
+ "checks": {
+  "high_below_pause_80": true,
+  "high_below_cap_100": true,
+  "calls_762": true
+ }
+}
