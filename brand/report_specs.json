@@ -7,7 +7,8 @@
       "1.0 \u2014 initial spec, 8 document types",
       "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence.",
       "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
-      "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere."
+      "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
+      "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only."
     ]
   },
   "product_structure_summary": {
@@ -632,6 +633,35 @@
         "small_size_pt": 7.5,
         "small_leading_pt": 10.5,
         "small_space_after_pt": 2.5
+      },
+      "small_print": {
+        "_note": "Small-print notes and disclosure callouts (Pablo, Nov 15, 2026, 8:33 am; CLAUDE.md). New reports and briefs only: published locked reports are unchanged and papers are untouched. Main text stays light; source and method notes, definitions, caveats, sample sizes and model lists move to numbered notes at the foot of the same page or to a margin callout beside the text; a short Disclosures block (conflicts of interest, held-out brands, AI use, independence) closes the report in small print, with a one-line pointer in the main text. Material disclosures stay legible: colour is the body text colour (soft_black) or a token with contrast of at least min_contrast on the page ground. Code: reports/small_print.py; tests: reports/tests/test_small_print.py.",
+        "floor_pt": 6.5,
+        "min_contrast": 4.5,
+        "styles": {
+          "note": {"weight": "Regular", "size_pt": 7.0, "leading_pt": 8.8, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 1.6},
+          "source_line": {"weight": "Regular", "size_pt": 6.5, "leading_pt": 8.2, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 0},
+          "margin_callout": {"weight": "Regular", "size_pt": 7.5, "leading_pt": 9.9, "color": "soft_black", "band_pt": [7.5, 7.5], "space_after_pt": 0},
+          "margin_callout_label": {"weight": "Bold", "size_pt": 7.5, "leading_pt": 9.9, "color": "indigo", "band_pt": [7.5, 7.5], "space_after_pt": 1.5},
+          "disclosures": {"weight": "Regular", "size_pt": 7.5, "leading_pt": 9.9, "color": "soft_black", "band_pt": [7.5, 7.5], "space_after_pt": 2.4},
+          "disclosures_head": {"weight": "Bold", "size_pt": 7.5, "leading_pt": 9.9, "color": "indigo", "band_pt": [7.5, 7.5], "space_after_pt": 0},
+          "note_marker": {"weight": "Regular", "size_pt": 6.5, "leading_pt": 8.2, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 0}
+        },
+        "layout": {
+          "notes_rule_color": "lavender_grey",
+          "notes_rule_pt": 0.5,
+          "notes_rule_gap_pt": 4,
+          "notes_number_width_pt": 12,
+          "foot_gap_above_footer_pt": 12,
+          "block_gap_pt": 8,
+          "callout_rule_color": "indigo",
+          "callout_rule_pt": 1.2,
+          "callout_pad_left_pt": 6,
+          "disclosures_columns": 2,
+          "disclosures_gutter_pt": 36,
+          "disclosures_head_gap_pt": 3
+        },
+        "disclosure_items": ["conflicts_of_interest", "held_out_brands", "ai_use", "independence"]
       },
       "table": {
         "header_size_pt": 8.5,
