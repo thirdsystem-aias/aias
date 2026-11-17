@@ -26,7 +26,7 @@
 ### Title (paste verbatim — SSRN has one Title field; subtitle folded in)
 
 ```
-Presence and Consistency: A Two-Component Measurement of AI Availability: The AIAS™ 2.0 Synthesis: Five Product Categories, Three Waves, Two Scores Reported Side by Side
+Presence and Consistency: A Two-Component Measurement of AI Availability (The AIAS™ 2.0 Synthesis)
 ```
 
 ### Subtitle (titlepage only — SSRN has no separate subtitle field; folded into Title above)
