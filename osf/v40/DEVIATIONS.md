@@ -15,3 +15,9 @@ Entries are added in order and never edited after the lock (tag `v0.40-prereg-r1
 **Scope.** The screen compares the registry with the programme's record of ties; it is not a new search of agency work for each airline and bank brand. A tie found later is a DEVIATIONS entry, with every result reported with and without the brand concerned.
 
 **Script.** Screen run by the runner with a one-off script (pattern match over the CSVs above); no data, probe, threshold or script of the study was changed.
+
+## Lock record (2026-11-16, 7:00 pm CT / 2026-11-17 01:00 UTC): pre-registration locked as tag v0.40-prereg-r1
+
+**What.** The pre-registration, probe set, frozen registries and scripts were locked at the time set when the pre-registration reached Pablo (Mon 11/16, 7 pm CT); no hold was typed. No study probe has been sent; collection starts only after this tag is pushed and the OSF deposit is made.
+
+**Changes at the lock (not deviations; no hypothesis, threshold, probe, registry row, model, setting or decision rule changed).** (1) §9's test count corrected to what the deposited test record shows: `test_acquire_v0_40.py` 29 of 29 (the text still said 21 of 21 after the guard carry-over tests were added in commit 36770bd). (2) `LOCK_MANIFEST_v0_40.sha256` refreshed: four files had changed since the manifest was written (the pre-registration text above, `acquire_v0_40.py`, its test file and its test record, from the technical-check carry-over), and the Fable 5.2 technical-check record `prereg/feasibility_check_v0_40.json` was added (46 files; every checksum verified). Test suites re-run at the lock: acquire 29/29, pre-lock 54/54, score 44/44, all mock (no model call).
