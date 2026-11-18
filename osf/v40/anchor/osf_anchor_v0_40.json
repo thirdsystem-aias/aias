@@ -1,0 +1,28 @@
+{
+  "study": "v0.40",
+  "prereg_tag": "v0.40-prereg-r1",
+  "tag_object": "164a2a9f6acc4c7c52f5013d1b934d27b52e17d1",
+  "commit": "a53d2b7c1fda8f62381d1cf9787f1e549941ee87",
+  "remote": "origin",
+  "osf_url": "https://osf.io/ec6wh/",
+  "deposits": [
+    {
+      "osf_project": "ec6wh",
+      "remote_path": "v40/prereg",
+      "time_utc": "2026-11-17T01:07:54+00:00",
+      "files": 17,
+      "all_verified_sha256": true,
+      "receipt_sha256": "5ec386c497cedbda535a9205fb503acf9c6458c51284d409014208e06cdc2dc1"
+    },
+    {
+      "osf_project": "ec6wh",
+      "remote_path": "v40/registries",
+      "time_utc": "2026-11-17T01:08:15+00:00",
+      "files": 18,
+      "all_verified_sha256": true,
+      "receipt_sha256": "b29b7a7a65782aa1b964159ee700d448ac2dec66e08c1fede335989b5b331aa2"
+    }
+  ],
+  "note": "Anchor record written at collection start (2026-11-17, ~7:10 pm CT) from the lock-time OSF receipts (2026-11-17 01:07-01:08 UTC) and the tag on origin; the anchor itself happened at the lock. See DEVIATIONS.",
+  "written_utc": "2026-11-18T01:08:06+00:00"
+}
