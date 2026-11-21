@@ -179,8 +179,9 @@ def build(output: Path, code: str) -> dict:
              "not accept compensation contingent on improving a brand's AI Availability Score or securing favorable "
              "AI recommendations.")
     meth = f("Pre-registered study, locked at git tag v0.40-prereg-r1 and deposited on OSF before the first question. "
-             "Every number in this report is read from the study's values file ({{v:coding.answers}} coded answers; "
-             "values file osf/v40/v40_values.json). The academic paper gives every test in full.")
+             "Every result number in this report is read from the study's values file ({{v:coding.answers}} coded "
+             "answers; values file osf/v40/v40_values.json); dates come from the plan and the DEVIATIONS log. The "
+             "academic paper gives every test in full.")
     left = lambda: [cp("About Third System", "head"), cp(about, after=gap), cp("Authored by", "head"),
                     cp("Pablo Ulpiano González Castro"),
                     cp("School of Visual Arts, MPS Branding Program, New York (primary academic affiliation)"),

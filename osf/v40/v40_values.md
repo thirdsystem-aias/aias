@@ -1,4 +1,4 @@
-# v0.40 values file (6,613 values)
+# v0.40 values file (6,735 values)
 
 Machine-written by `osf/v40/scripts/values_v0_40.py`; do not edit by hand. Every figure in the v0.40 paper, report and site is read from `v40_values.json` (placeholder `{{v:<key>}}`), never typed.
 
@@ -16,7 +16,7 @@ Verdicts commit: `139f907b25d511b0a7cf649e23e6e700f40cf6c3`
 | `osf/v40/data/v40_coded_answers.csv` | `cd5bd02643ee788064a8dca80b94df849643bcf5d3a6a75739aa6c21ca9a9468` |
 | `osf/v40/prereg/prelock_check_v0_40.jsonl` | `a43dfac2315ce0814231fbf04a41511de76018d4cd76d1b52a453ecc8353715e` |
 | `osf/v40/prereg/feasibility_check_v0_40.json` | `723ceb6a9eeed2d3d68319ce8192284b19ca71ea49b4c0b69e5077650d4e17af` |
-| `osf/v40/v40_postscore.json` | `5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89` |
+| `osf/v40/v40_postscore.json` | `aab2442f12e73f89cf0ba4b498f2aa8be3b3777dba91c8b961f6a918bb0cc00c` |
 | `osf/v40/prereg/PRE_REGISTRATION_v0_40.md` | `82811d0723c33111f7fcf90b850b324c38ce7132be8a884f6ed2f36ac3ef0f64` |
 
 ## Rounding rules
@@ -6701,6 +6701,133 @@ Source paths are JSON Pointers into the named file.
 | `prereg_post.discover_status.M5X_S0.naming_capital_one` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/discover_status/M5X_S0/naming_capital_one` |
 | `prereg_post.discover_status.M5X_S0.flagged_and_naming_capital_one` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/discover_status/M5X_S0/flagged_and_naming_capital_one` |
 | `prereg_post.discover_status.file` | osf/v40/v40_discover_status_answers.md | "osf/v40/v40_discover_status_answers.md" | TEXT | `osf/v40/v40_postscore.json` `/prereg/discover_status/file` |
+
+## Sensitivity, not pre-registered as run; computed after scoring; no verdict changes (DEVIATIONS Entry 4: Discover counted toward Capital One)
+
+| Key | Display | Value | Rule | Source |
+|---|---|---|---|---|
+| `post_sensitivity.label` | sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes | "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/label` |
+| `post_sensitivity.discover_to_capital_one.label` | sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes | "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/label` |
+| `post_sensitivity.discover_to_capital_one.rule` | non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its successor column (section 2.1, D12); every other rule, input and setting as locked | "non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its successor column (section 2.1, D12); every other rule, input and setting as locked" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/rule` |
+| `post_sensitivity.discover_to_capital_one.target_unit` | 2277860 | "2277860" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/target_unit` |
+| `post_sensitivity.discover_to_capital_one.target_brand` | Capital One | "Capital One" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/target_brand` |
+| `post_sensitivity.discover_to_capital_one.permutations` | 10,000 | 10000 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/permutations` |
+| `post_sensitivity.discover_to_capital_one.search_off_recommendation_answers_naming_discover` | 160 | 160 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/search_off_recommendation_answers_naming_discover` |
+| `post_sensitivity.discover_to_capital_one.of_which_already_naming_target` | 129 | 129 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/of_which_already_naming_target` |
+| `post_sensitivity.discover_to_capital_one.target_unit_namings.registered` | 283 | 283 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/target_unit_namings/registered` |
+| `post_sensitivity.discover_to_capital_one.target_unit_namings.with_discover` | 314 | 314 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/target_unit_namings/with_discover` |
+| `post_sensitivity.discover_to_capital_one.bank_unit_namings.registered` | 2,458 | 2458 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/bank_unit_namings/registered` |
+| `post_sensitivity.discover_to_capital_one.bank_unit_namings.with_discover` | 2,489 | 2489 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/bank_unit_namings/with_discover` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.registered_rho` | 0.679 | 0.6789993336079904 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/registered_rho` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.rho` | 0.679 | 0.6789993336079904 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/rho` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.registered_p_perm` | 0.000 | 0.00029997000299970003 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/registered_p_perm` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.p_perm` | < 0.001 | 0.00029997000299970003 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/p_perm` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.units_present` | 21 | 21 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/units_present` |
+| `post_sensitivity.discover_to_capital_one.H_Reinforce_bank.pass` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Reinforce_bank/pass` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.registered_ratio` | 0.887 | 0.8867501368987996 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/registered_ratio` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.ratio` | 0.876 | 0.8757058402962031 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/ratio` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.k` | 395 | 395 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/k` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.n` | 2,489 | 2489 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/n` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/p0` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.p_greater` | 0.999 | 0.9985984451876126 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/p_greater` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.p_less` | 0.002 | 0.0016695015667514458 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/p_less` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.loglog_slope` | 0.986 | 0.9858418276265534 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/loglog_slope` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.amplified` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/amplified` |
+| `post_sensitivity.discover_to_capital_one.H_Amplify_bank.flattened` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/H_Amplify_bank/flattened` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/leader` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.answers` | 432 | 432 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/answers` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.k` | 395 | 395 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/k` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.n` | 2,489 | 2489 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/n` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/p0` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.ratio` | 0.876 | 0.8757058402962031 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/ratio` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.units_per_answer` | 5.762 | 5.761574074074074 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/units_per_answer` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.leader_answer_share` | 91.4% | 0.9143518518518519 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/leader_answer_share` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_ratio` | 0.958 | 0.9577339822986323 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/ceiling_ratio` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/ceiling_reaches_threshold` |
+| `post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/ceiling_bank/ceiling_reaches_parity` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.n_units` | 10 | 10 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/n_units` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.units_present` | 10 | 10 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/units_present` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.rho` | 0.612 | 0.6121212121212121 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/rho` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.p_perm` | 0.033 | 0.0334966503349665 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/p_perm` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.pass` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/pass` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.evaluable` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/airline/evaluable` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.n_units` | 25 | 25 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/n_units` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.units_present` | 21 | 21 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/units_present` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.rho` | 0.679 | 0.6789993336079904 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/rho` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.p_perm` | < 0.001 | 0.00029997000299970003 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/p_perm` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.pass` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/pass` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.evaluable` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/bank/evaluable` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Reinforce.verdict` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Reinforce/verdict` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/leader` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.k` | 216 | 216 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/k` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.n` | 1,668 | 1668 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/n` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/p0` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.ratio` | 0.599 | 0.59917365778173 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/ratio` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p_greater` | > 0.999 | 0.9999999999997781 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/p_greater` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p_less` | < 0.001 | 5.561008758094328e-20 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/p_less` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.loglog_slope` | 0.629 | 0.6287261212876691 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/loglog_slope` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.amplified` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/amplified` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.flattened` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/airline/flattened` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/leader` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.k` | 395 | 395 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/k` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.n` | 2,489 | 2489 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/n` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/p0` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.ratio` | 0.876 | 0.8757058402962031 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/ratio` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p_greater` | 0.999 | 0.9985984451876126 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/p_greater` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p_less` | 0.002 | 0.0016695015667514458 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/p_less` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.loglog_slope` | 0.986 | 0.9858418276265534 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/loglog_slope` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.amplified` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/amplified` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.flattened` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/bank/flattened` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Amplify.verdict` | FALSIFIED | "FALSIFIED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Amplify/verdict` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.pairs` | 55 | 55 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/pairs` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.afterlife_pairs` | 3 | 3 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/afterlife_pairs` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.rate` | 5.5% | 0.05454545454545454 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/rate` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.p_exact` | 0.523 | 0.5231967789194288 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/p_exact` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.pass` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/pass` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.low` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/airline/low` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.pairs` | 142 | 142 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/pairs` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.afterlife_pairs` | 9 | 9 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/afterlife_pairs` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.rate` | 6.3% | 0.06338028169014084 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/rate` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.p_exact` | 0.281 | 0.2809170561123695 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/p_exact` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.pass` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/pass` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.low` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/bank/low` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Afterlife.verdict` | UNDETERMINED | "UNDETERMINED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Afterlife/verdict` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.pairs` | 197 | 197 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/pairs` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.pairs_present` | 16 | 16 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/pairs_present` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.rho` | -0.286 | -0.28640307031384576 | DEC3 | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/rho` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.p_perm` | < 0.001 | 9.999000099990002e-05 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/p_perm` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.evaluable` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/evaluable` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Decay.verdict` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Decay/verdict` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_answers` | 591 | 591 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/ghost_answers` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_flagged` | 579 | 579 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/ghost_flagged` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_rate` | 98.0% | 0.9796954314720813 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/ghost_rate` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.control_answers` | 189 | 189 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/control_answers` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.control_flagged` | 32 | 32 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/control_flagged` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.control_rate` | 16.9% | 0.1693121693121693 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/control_rate` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.p_fisher` | < 0.001 | 1.4450285705846424e-115 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/p_fisher` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Flag.verdict` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Flag/verdict` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.paired_cells` | 72 | 72 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/paired_cells` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.s1_only_flagged` | 1 | 1 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/s1_only_flagged` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.s0_only_flagged` | 4 | 4 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/s0_only_flagged` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.p_mcnemar_exact` | 0.969 | 0.9687500000000013 | P | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/p_mcnemar_exact` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.discordant_evaluable` | no | false | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/discordant_evaluable` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_cells` | 5 | 5 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/post_cutoff_cells` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_s1_flagged` | 5 | 5 | INT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/post_cutoff_s1_flagged` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_s1_rate` | 100.0% | 1.0 | PCT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/post_cutoff_s1_rate` |
+| `post_sensitivity.discover_to_capital_one.tests.H_Search.verdict` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/tests/H_Search/verdict` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Reinforce` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Reinforce` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Amplify` | FALSIFIED | "FALSIFIED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Amplify` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Afterlife` | UNDETERMINED | "UNDETERMINED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Afterlife` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Decay` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Decay` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Flag` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Flag` |
+| `post_sensitivity.discover_to_capital_one.verdicts.H_Search` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts/H_Search` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Reinforce` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Reinforce` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Amplify` | FALSIFIED | "FALSIFIED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Amplify` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Afterlife` | UNDETERMINED | "UNDETERMINED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Afterlife` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Decay` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Decay` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Flag` | CONFIRMED | "CONFIRMED" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Flag` |
+| `post_sensitivity.discover_to_capital_one.registered_verdicts.H_Search` | PARTIAL | "PARTIAL" | TEXT | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/registered_verdicts/H_Search` |
+| `post_sensitivity.discover_to_capital_one.verdicts_unchanged` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/post_sensitivity/discover_to_capital_one/verdicts_unchanged` |
 
 ## Other
 

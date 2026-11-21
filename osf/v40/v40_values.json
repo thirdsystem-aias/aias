@@ -38,7 +38,7 @@
    },
    "postscore": {
     "file": "osf/v40/v40_postscore.json",
-    "sha256": "5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89"
+    "sha256": "aab2442f12e73f89cf0ba4b498f2aa8be3b3777dba91c8b961f6a918bb0cc00c"
    },
    "prereg": {
     "file": "osf/v40/prereg/PRE_REGISTRATION_v0_40.md",
@@ -86,7 +86,7 @@
     "items": 0
    }
   ],
-  "n_values": 6613
+  "n_values": 6735
  },
  "values": {
   "phase": {
@@ -112494,6 +112494,2062 @@
      "file"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "post_sensitivity.label": {
+   "value": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+   "display": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "label"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.label": {
+   "value": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+   "display": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "label"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.rule": {
+   "value": "non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its successor column (section 2.1, D12); every other rule, input and setting as locked",
+   "display": "non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its successor column (section 2.1, D12); every other rule, input and setting as locked",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "rule"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.target_unit": {
+   "value": "2277860",
+   "display": "2277860",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "target_unit"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.target_brand": {
+   "value": "Capital One",
+   "display": "Capital One",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "target_brand"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.permutations": {
+   "value": 10000,
+   "display": "10,000",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "permutations"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.search_off_recommendation_answers_naming_discover": {
+   "value": 160,
+   "display": "160",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "search_off_recommendation_answers_naming_discover"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.of_which_already_naming_target": {
+   "value": 129,
+   "display": "129",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "of_which_already_naming_target"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.target_unit_namings.registered": {
+   "value": 283,
+   "display": "283",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "target_unit_namings",
+     "registered"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.target_unit_namings.with_discover": {
+   "value": 314,
+   "display": "314",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "target_unit_namings",
+     "with_discover"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.bank_unit_namings.registered": {
+   "value": 2458,
+   "display": "2,458",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "bank_unit_namings",
+     "registered"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.bank_unit_namings.with_discover": {
+   "value": 2489,
+   "display": "2,489",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "bank_unit_namings",
+     "with_discover"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.registered_rho": {
+   "value": 0.6789993336079904,
+   "display": "0.679",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "registered_rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.rho": {
+   "value": 0.6789993336079904,
+   "display": "0.679",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.registered_p_perm": {
+   "value": 0.00029997000299970003,
+   "display": "0.000",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "registered_p_perm"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.p_perm": {
+   "value": 0.00029997000299970003,
+   "display": "< 0.001",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "p_perm"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.units_present": {
+   "value": 21,
+   "display": "21",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "units_present"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.pass": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "pass"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.registered_ratio": {
+   "value": 0.8867501368987996,
+   "display": "0.887",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "registered_ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.ratio": {
+   "value": 0.8757058402962031,
+   "display": "0.876",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.k": {
+   "value": 395,
+   "display": "395",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "k"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.n": {
+   "value": 2489,
+   "display": "2,489",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "n"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "p0"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.p_greater": {
+   "value": 0.9985984451876126,
+   "display": "0.999",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "p_greater"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.p_less": {
+   "value": 0.0016695015667514458,
+   "display": "0.002",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "p_less"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.loglog_slope": {
+   "value": 0.9858418276265534,
+   "display": "0.986",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "loglog_slope"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.amplified": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "amplified"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.flattened": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "flattened"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "leader"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.answers": {
+   "value": 432,
+   "display": "432",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "answers"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.k": {
+   "value": 395,
+   "display": "395",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "k"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.n": {
+   "value": 2489,
+   "display": "2,489",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "n"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "p0"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.ratio": {
+   "value": 0.8757058402962031,
+   "display": "0.876",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.units_per_answer": {
+   "value": 5.761574074074074,
+   "display": "5.762",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "units_per_answer"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.leader_answer_share": {
+   "value": 0.9143518518518519,
+   "display": "91.4%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "leader_answer_share"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_ratio": {
+   "value": 0.9577339822986323,
+   "display": "0.958",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "ceiling_ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.n_units": {
+   "value": 10,
+   "display": "10",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "n_units"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.units_present": {
+   "value": 10,
+   "display": "10",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "units_present"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.rho": {
+   "value": 0.6121212121212121,
+   "display": "0.612",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.p_perm": {
+   "value": 0.0334966503349665,
+   "display": "0.033",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "p_perm"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.pass": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "pass"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.airline.evaluable": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "airline",
+     "evaluable"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.n_units": {
+   "value": 25,
+   "display": "25",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "n_units"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.units_present": {
+   "value": 21,
+   "display": "21",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "units_present"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.rho": {
+   "value": 0.6789993336079904,
+   "display": "0.679",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.p_perm": {
+   "value": 0.00029997000299970003,
+   "display": "< 0.001",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "p_perm"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.pass": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "pass"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.bank.evaluable": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "bank",
+     "evaluable"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Reinforce.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Reinforce",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "leader"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.k": {
+   "value": 216,
+   "display": "216",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "k"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.n": {
+   "value": 1668,
+   "display": "1,668",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "n"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "p0"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.ratio": {
+   "value": 0.59917365778173,
+   "display": "0.599",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p_greater": {
+   "value": 0.9999999999997781,
+   "display": "> 0.999",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "p_greater"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.p_less": {
+   "value": 5.561008758094328e-20,
+   "display": "< 0.001",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "p_less"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.loglog_slope": {
+   "value": 0.6287261212876691,
+   "display": "0.629",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "loglog_slope"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.amplified": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "amplified"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.airline.flattened": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "airline",
+     "flattened"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "leader"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.k": {
+   "value": 395,
+   "display": "395",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "k"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.n": {
+   "value": 2489,
+   "display": "2,489",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "n"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "p0"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.ratio": {
+   "value": 0.8757058402962031,
+   "display": "0.876",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p_greater": {
+   "value": 0.9985984451876126,
+   "display": "0.999",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "p_greater"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.p_less": {
+   "value": 0.0016695015667514458,
+   "display": "0.002",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "p_less"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.loglog_slope": {
+   "value": 0.9858418276265534,
+   "display": "0.986",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "loglog_slope"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.amplified": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "amplified"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.bank.flattened": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "bank",
+     "flattened"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Amplify.verdict": {
+   "value": "FALSIFIED",
+   "display": "FALSIFIED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Amplify",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.pairs": {
+   "value": 55,
+   "display": "55",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "pairs"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.afterlife_pairs": {
+   "value": 3,
+   "display": "3",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "afterlife_pairs"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.rate": {
+   "value": 0.05454545454545454,
+   "display": "5.5%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "rate"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.p_exact": {
+   "value": 0.5231967789194288,
+   "display": "0.523",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "p_exact"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.pass": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "pass"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.airline.low": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "airline",
+     "low"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.pairs": {
+   "value": 142,
+   "display": "142",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "pairs"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.afterlife_pairs": {
+   "value": 9,
+   "display": "9",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "afterlife_pairs"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.rate": {
+   "value": 0.06338028169014084,
+   "display": "6.3%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "rate"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.p_exact": {
+   "value": 0.2809170561123695,
+   "display": "0.281",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "p_exact"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.pass": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "pass"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.bank.low": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "bank",
+     "low"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Afterlife.verdict": {
+   "value": "UNDETERMINED",
+   "display": "UNDETERMINED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Afterlife",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.pairs": {
+   "value": 197,
+   "display": "197",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "pairs"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.pairs_present": {
+   "value": 16,
+   "display": "16",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "pairs_present"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.rho": {
+   "value": -0.28640307031384576,
+   "display": "-0.286",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.p_perm": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "p_perm"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.evaluable": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "evaluable"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Decay.verdict": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Decay",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_answers": {
+   "value": 591,
+   "display": "591",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "ghost_answers"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_flagged": {
+   "value": 579,
+   "display": "579",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "ghost_flagged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.ghost_rate": {
+   "value": 0.9796954314720813,
+   "display": "98.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "ghost_rate"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.control_answers": {
+   "value": 189,
+   "display": "189",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "control_answers"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.control_flagged": {
+   "value": 32,
+   "display": "32",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "control_flagged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.control_rate": {
+   "value": 0.1693121693121693,
+   "display": "16.9%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "control_rate"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.p_fisher": {
+   "value": 1.4450285705846424e-115,
+   "display": "< 0.001",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "p_fisher"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Flag.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Flag",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.paired_cells": {
+   "value": 72,
+   "display": "72",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "paired_cells"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.s1_only_flagged": {
+   "value": 1,
+   "display": "1",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "s1_only_flagged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.s0_only_flagged": {
+   "value": 4,
+   "display": "4",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "s0_only_flagged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.p_mcnemar_exact": {
+   "value": 0.9687500000000013,
+   "display": "0.969",
+   "rule": "P",
+   "rule_text": "p-value: 3 decimals, half up; below 0.001 shown as < 0.001, above 0.999 as > 0.999",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "p_mcnemar_exact"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.discordant_evaluable": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "discordant_evaluable"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_cells": {
+   "value": 5,
+   "display": "5",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "post_cutoff_cells"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_s1_flagged": {
+   "value": 5,
+   "display": "5",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "post_cutoff_s1_flagged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.post_cutoff_s1_rate": {
+   "value": 1.0,
+   "display": "100.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "post_cutoff_s1_rate"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.tests.H_Search.verdict": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "tests",
+     "H_Search",
+     "verdict"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Reinforce": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Reinforce"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Amplify": {
+   "value": "FALSIFIED",
+   "display": "FALSIFIED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Amplify"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Afterlife": {
+   "value": "UNDETERMINED",
+   "display": "UNDETERMINED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Afterlife"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Decay": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Decay"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Flag": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Flag"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts.H_Search": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts",
+     "H_Search"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Reinforce": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Reinforce"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Amplify": {
+   "value": "FALSIFIED",
+   "display": "FALSIFIED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Amplify"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Afterlife": {
+   "value": "UNDETERMINED",
+   "display": "UNDETERMINED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Afterlife"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Decay": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Decay"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Flag": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Flag"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.registered_verdicts.H_Search": {
+   "value": "PARTIAL",
+   "display": "PARTIAL",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "registered_verdicts",
+     "H_Search"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.verdicts_unchanged": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "verdicts_unchanged"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
    }
   },
   "reference.v1_17.se_all_units": {

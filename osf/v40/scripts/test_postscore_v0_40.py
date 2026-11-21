@@ -279,6 +279,121 @@ class Descriptives(unittest.TestCase):
         self.assertEqual(s["tested_S0"]["answers"] + s["current_S1"]["answers"] + s["M5X_S0"]["answers"], n)
 
 
+DCO = DOC["post_sensitivity"]["discover_to_capital_one"]
+
+
+def bank_shares_by_hand(discover_to=None):
+    """Bank AI shares from the frozen mentions file and frame alone (search off, tested models, ambiguous excluded),
+    with the control DISCOVER counted toward `discover_to` when given. Returns (shares, unit namings, units)."""
+    fr = {r["call_id"]: r for r in frame() if r["kind"] == "recommendation" and r["condition"] == "S0"
+          and r["category"] == "bank" and r["slot"] in S.TESTED_SLOTS}
+    units = {u["id"]: u for u in S.load_registry()[0] if u["category"] == "bank"}
+    seen = defaultdict(set)
+    for m in mentions():
+        if m["call_id"] in fr and m["ambiguous"] == "False":
+            eid = discover_to if (m["entity"] == "DISCOVER" and discover_to) else m["entity"]
+            if eid in units:
+                seen[m["call_id"]].add(eid)
+    per_slot = defaultdict(lambda: defaultdict(int))
+    for cid, us in seen.items():
+        for u in us:
+            per_slot[fr[cid]["slot"]][u] += 1
+    shares = {u: sum(per_slot[sl][u] / sum(per_slot[sl].values()) for sl in S.TESTED_SLOTS) / 9 for u in units}
+    return shares, sum(len(us) for us in seen.values()), units
+
+
+class DiscoverToCapitalOne(unittest.TestCase):
+    """DEVIATIONS Entry 4: sensitivity, not pre-registered as run; computed after scoring; no verdict changes."""
+
+    def test_target_is_the_capital_one_holder_of_the_frozen_registry(self):
+        units = {u["id"]: u for u in S.load_registry()[0] if u["category"] == "bank"}
+        self.assertEqual(DCO["target_unit"], "2277860")
+        self.assertEqual(units["2277860"]["brand"], "Capital One")
+        self.assertEqual(DCO["target_brand"], "Capital One")
+        self.assertEqual(DCO["label"], P.LABEL_SENS)
+        self.assertIn("not pre-registered as run", P.LABEL_SENS)
+        self.assertIn("computed after scoring", P.LABEL_SENS)
+        self.assertIn("no verdict changes", P.LABEL_SENS)
+
+    def test_every_verdict_unchanged(self):
+        self.assertTrue(DCO["verdicts_unchanged"])
+        self.assertEqual(DCO["permutations"], S.PERMS)
+        for h, v in DCO["verdicts"].items():
+            self.assertEqual(v, VER[h]["verdict"], h)
+        self.assertEqual(set(DCO["verdicts"]), {"H_Reinforce", "H_Amplify", "H_Afterlife", "H_Decay", "H_Flag",
+                                                "H_Search"})
+
+    def test_tests_not_using_units_are_identical_to_the_verdict_file(self):
+        for h in ("H_Afterlife", "H_Decay", "H_Flag", "H_Search"):
+            self.assertTrue(P._same(DCO["tests"][h], VER[h]), h)
+        self.assertTrue(P._same(DCO["tests"]["H_Reinforce"]["airline"], VER["H_Reinforce"]["airline"]))
+        self.assertTrue(P._same(DCO["tests"]["H_Amplify"]["airline"], VER["H_Amplify"]["airline"]))
+
+    def test_registered_figures_quoted_from_the_verdict_file(self):
+        self.assertEqual(DCO["H_Reinforce_bank"]["registered_rho"], VER["H_Reinforce"]["bank"]["rho"])
+        self.assertEqual(DCO["H_Amplify_bank"]["registered_ratio"], VER["H_Amplify"]["bank"]["ratio"])
+        self.assertEqual(DCO["bank_unit_namings"]["registered"], VER["H_Amplify"]["bank"]["n"])
+
+    def test_leader_ratio_by_hand(self):
+        _, n_reg, _ = bank_shares_by_hand()
+        _, n_new, _ = bank_shares_by_hand("2277860")
+        self.assertEqual(n_reg, VER["H_Amplify"]["bank"]["n"])
+        a = DCO["H_Amplify_bank"]
+        self.assertEqual(a["n"], n_new)
+        self.assertEqual(a["k"], VER["H_Amplify"]["bank"]["k"])          # the leader's count does not move
+        self.assertEqual(a["p0"], VER["H_Amplify"]["bank"]["p0"])
+        self.assertEqual(n_new - n_reg, DCO["search_off_recommendation_answers_naming_discover"]
+                         - DCO["of_which_already_naming_target"])
+        self.assertTrue(math.isclose(a["ratio"], (a["k"] / a["n"]) / a["p0"], rel_tol=1e-12))
+        self.assertEqual(DCO["ceiling_bank"]["n"], n_new)
+
+    def test_bank_rho_by_hand(self):
+        sh, _, units = bank_shares_by_hand("2277860")
+        ks = list(units)
+        rho = S.spearman([units[k]["share"] for k in ks], [sh[k] for k in ks])
+        self.assertTrue(math.isclose(rho, DCO["H_Reinforce_bank"]["rho"], rel_tol=1e-12))
+        sh0, _, _ = bank_shares_by_hand()
+        self.assertTrue(math.isclose(S.spearman([units[k]["share"] for k in ks], [sh0[k] for k in ks]),
+                                     VER["H_Reinforce"]["bank"]["rho"], rel_tol=1e-12))
+
+    def test_refuses_when_the_scorer_already_maps_discover(self):
+        sc = P.frozen_scorer(ROOT, perms=0)
+        sc.to_unit["DISCOVER"] = "2277860"
+        with self.assertRaises(P.Refused):
+            P.discover_to_capital_one(sc, VER)
+
+    def test_locked_scorer_map_is_not_touched(self):
+        sc = P.frozen_scorer(ROOT, perms=0)
+        P.discover_to_capital_one(sc, VER)
+        self.assertIsNone(sc.to_unit.get("DISCOVER"))
+
+    def test_reduced_permutations_claim_nothing(self):
+        sc = P.frozen_scorer(ROOT, perms=0)
+        self.assertIsNone(P.discover_to_capital_one(sc, VER)["verdicts_unchanged"])
+
+    def test_values_refuses_a_changed_verdict(self):
+        ps = json.loads((ROOT / P.OUT_JSON).read_text(encoding="utf-8"))
+        VV.check_postscore(ROOT, ps)                                       # as committed: accepted
+        ps["post_sensitivity"]["discover_to_capital_one"]["verdicts_unchanged"] = False
+        with self.assertRaises(VV.Refused):
+            VV.check_postscore(ROOT, ps)
+        del ps["post_sensitivity"]
+        with self.assertRaises(VV.Refused):
+            VV.check_postscore(ROOT, ps)
+
+    def test_values_file_carries_the_sensitivity_with_its_label(self):
+        vals = json.loads((ROOT / VV.OUT_JSON).read_text(encoding="utf-8"))["values"]
+        keys = [k for k in vals if k.startswith("post_sensitivity.")]
+        self.assertGreater(len(keys), 50)
+        for k in keys:
+            self.assertEqual(vals[k]["source"]["label"], P.LABEL_SENS, k)
+        e = vals["post_sensitivity.discover_to_capital_one.H_Amplify_bank.ratio"]
+        self.assertEqual(e["value"], DCO["H_Amplify_bank"]["ratio"])
+        self.assertEqual(vals["post_sensitivity.discover_to_capital_one.H_Reinforce_bank.rho"]["value"],
+                         DCO["H_Reinforce_bank"]["rho"])
+        self.assertIs(vals["post_sensitivity.discover_to_capital_one.verdicts_unchanged"]["value"], True)
+
+
 class Output(unittest.TestCase):
     def test_deterministic_and_committed(self):
         self.assertEqual(P.to_json(DOC), P.to_json(P.build(ROOT)[0]))

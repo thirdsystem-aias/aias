@@ -13,6 +13,11 @@ What it computes (no test, no verdict, no scored number is changed or re-compute
   ceiling -- a post-scoring check of the locked H_Amplify measure, not a pre-registered test: the largest ratio
              (k/n)/p0 the measure could reach at the observed breadth of answers (a leader named in every answer,
              k = answers, n as observed), for the registered rule and for each specification of Figure 2.
+  post_sensitivity -- "sensitivity, not pre-registered as run; computed after scoring" (DEVIATIONS Entry 4, Pablo's
+             decision of Sat 21 November 2026, ~3 pm CT): the six tests recomputed by the locked methods, locked
+             permutation count and seed, with non-ambiguous Discover mentions counted toward the Capital One holder as
+             section 2.1 / D12 say (the locked scorer links a control to a unit only through shared aliases, so it
+             never does). Only the scorer's control-to-unit map changes, on a copy; nothing is re-scored for the record.
 
 How. It reads only frozen, checksummed files: the coded mentions osf/v40/data/v40_mentions.csv (SHA-256 must be
 0a83b397..., as in the coding manifest, the DEVIATIONS record and step 9), the coded-answer frame
@@ -61,6 +66,8 @@ OUT_DISCOVER = "osf/v40/v40_discover_status_answers.md"
 LABEL_PREREG = "pre-registered, computed after scoring because the locked scorer did not output them"
 LABEL_CEILING = ("post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; "
                  "no verdict changes")
+LABEL_SENS = ("sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); "
+              "no verdict changes")
 SLOT_NAME = {"M1": "Claude Opus 4.5", "M2": "Claude Sonnet 4.5", "M3": "GPT-4o", "M4": "GPT-4o mini",
              "M5": "Gemini 2.5 Flash", "M6": "Gemini 2.5 Flash-Lite", "C1": "Claude Fable 5.2", "C2": "GPT-6 Astra",
              "C3": "Gemini 4 Argon"}
@@ -253,6 +260,65 @@ def ceiling(sc):
     out["specs"] = {name: {cat: ceiling_of(v, cat) for cat in cats} for name, (v, cats) in spec_variants(sc).items()}
     out["by_model"] = {sl: {cat: ceiling_of(sc.variant(slots=[sl]), cat) for cat in CATS} for sl in S.TESTED_SLOTS}
     return out
+
+
+# ----------------------------------------------------------------------------- Discover toward Capital One (Entry 4)
+def discover_target(sc):
+    """The current unit Discover's mentions count toward under section 2.1 / D12, read from the frozen registry: the
+    unit whose aliases include a name in Discover's successor column (successor_names, as the locked coder parses it)."""
+    s = sc.subj.get("DISCOVER")
+    if s is None or s["role"] != "control":
+        raise Refused("DISCOVER is not a control of the frozen registry")
+    names = set(S.successor_names(s["successor"]))
+    hits = [u["id"] for u in sc.units if u["category"] == s["category"] and names & set(u["aliases"])]
+    if len(hits) != 1:
+        raise Refused(f"Discover's successor {s['successor']!r} matches {len(hits)} bank units, not exactly one")
+    return hits[0]
+
+
+def _cleaned(obj):
+    return json.loads(json.dumps(obj, default=str), parse_constant=lambda c: None) if obj is not None else None
+
+
+def discover_to_capital_one(sc, ver):
+    """Sensitivity, not pre-registered as run (DEVIATIONS Entry 4): the six tests recomputed by the locked methods
+    with non-ambiguous Discover mentions counted toward the Capital One holder (section 2.1, D12), which the locked
+    scorer does not do (it links a control to a unit only through shared aliases). Only Scorer.to_unit changes."""
+    uid = discover_target(sc)
+    if sc.to_unit.get("DISCOVER") is not None:
+        raise Refused("the locked scorer already maps DISCOVER to a unit; nothing to check")
+    v = sc.variant()
+    v.to_unit = dict(sc.to_unit)
+    v.to_unit["DISCOVER"] = uid
+    got = v.tests()
+    rs = sc.recs("recommendation", cond="S0", category="bank")
+    disc = [r for r in rs if sc.names(r, "DISCOVER")]
+    base_c, new_c = sc.unit_counts(rs, "bank"), v.unit_counts(rs, "bank")
+    locked = sc.perms == S.PERMS
+    verdicts = {h: got[h]["verdict"] for h in got}
+    reg = {h: ver[h]["verdict"] for h in got}
+    rb, ab = got["H_Reinforce"]["bank"], got["H_Amplify"]["bank"]
+    return {"label": LABEL_SENS,
+            "rule": "non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its "
+                    "successor column (section 2.1, D12); every other rule, input and setting as locked",
+            "target_unit": uid, "target_brand": sc.unit_of[uid]["brand"],
+            "permutations": sc.perms,
+            "search_off_recommendation_answers_naming_discover": len(disc),
+            "of_which_already_naming_target": sum(1 for r in disc if any(
+                sc.to_unit.get(m["entity"]) == uid for m in r["_m"] if not m["ambiguous"])),
+            "target_unit_namings": {"registered": base_c[uid], "with_discover": new_c[uid]},
+            "bank_unit_namings": {"registered": sum(base_c.values()), "with_discover": sum(new_c.values())},
+            "H_Reinforce_bank": {"registered_rho": ver["H_Reinforce"]["bank"]["rho"], "rho": rb["rho"],
+                                 "registered_p_perm": ver["H_Reinforce"]["bank"]["p_perm"], "p_perm": rb["p_perm"],
+                                 "units_present": rb["units_present"], "pass": rb["pass"]},
+            "H_Amplify_bank": {"registered_ratio": ver["H_Amplify"]["bank"]["ratio"], "ratio": ab["ratio"],
+                               "k": ab["k"], "n": ab["n"], "p0": ab["p0"], "p_greater": ab["p_greater"],
+                               "p_less": ab["p_less"], "loglog_slope": ab["loglog_slope"],
+                               "amplified": ab["amplified"], "flattened": ab["flattened"]},
+            "ceiling_bank": ceiling_of(v, "bank"),
+            "tests": _cleaned(got),
+            "verdicts": verdicts, "registered_verdicts": reg,
+            "verdicts_unchanged": (verdicts == reg) if locked else None}
 
 
 # ----------------------------------------------------------------------------- descriptive 1
@@ -462,14 +528,15 @@ def build(root=ROOT, perms=S.PERMS):
     ghosts = d2_ghosts(sc)
     disc_summary, disc_rows = discover_answers(sc)
     doc = {"_meta": {"phase": "v0.40", "script": "osf/v40/scripts/postscore_v0_40.py",
-                     "deviation": "osf/v40/DEVIATIONS.md, Entry 2 (Sat 21 November 2026)",
+                     "deviation": "osf/v40/DEVIATIONS.md, Entries 2 and 4 (Sat 21 November 2026)",
                      "inputs": {n: {"file": REL[n], "sha256": sha256(root / REL[n])} for n in REL},
                      "locked_scorer_sha256": {"score_v0_40.py": sha256(HERE / "score_v0_40.py"),
                                               "stoprule_v0_40.py": sha256(HERE / "stoprule_v0_40.py")},
                      "coding_manifest_mentions_sha256": man["outputs"]["v40_mentions.csv"]["sha256"],
                      "permutations": perms, "closure_checks": closure,
-                     "labels": {"prereg": LABEL_PREREG, "ceiling": LABEL_CEILING}},
+                     "labels": {"prereg": LABEL_PREREG, "ceiling": LABEL_CEILING, "post_sensitivity": LABEL_SENS}},
            "ceiling": ceiling(sc),
+           "post_sensitivity": {"label": LABEL_SENS, "discover_to_capital_one": discover_to_capital_one(sc, ver)},
            "prereg": {"label": LABEL_PREREG,
                       "d1_ai_share": d1_ai_share(sc, d4_ex),
                       "d2_ghosts": ghosts,
@@ -508,6 +575,9 @@ def main(argv=None, root=ROOT):
     c = doc["ceiling"]
     print(f"wrote {OUT_JSON} and {OUT_DISCOVER}; closure checks passed")
     print(f"ceiling: airline {c['airline']['ceiling_ratio']:.6f}, bank {c['bank']['ceiling_ratio']:.6f}")
+    d = doc["post_sensitivity"]["discover_to_capital_one"]
+    print(f"Discover toward Capital One: bank rho {d['H_Reinforce_bank']['rho']:.6f}, bank ratio "
+          f"{d['H_Amplify_bank']['ratio']:.6f}, verdicts unchanged: {d['verdicts_unchanged']}")
     return 0
 
 

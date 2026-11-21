@@ -2,7 +2,7 @@
  "_meta": {
   "phase": "v0.40",
   "script": "osf/v40/scripts/postscore_v0_40.py",
-  "deviation": "osf/v40/DEVIATIONS.md, Entry 2 (Sat 21 November 2026)",
+  "deviation": "osf/v40/DEVIATIONS.md, Entries 2 and 4 (Sat 21 November 2026)",
   "inputs": {
    "mentions": {
     "file": "osf/v40/data/v40_mentions.csv",
@@ -37,7 +37,8 @@
   },
   "labels": {
    "prereg": "pre-registered, computed after scoring because the locked scorer did not output them",
-   "ceiling": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   "ceiling": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes",
+   "post_sensitivity": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
   }
  },
  "ceiling": {
@@ -466,6 +467,172 @@
      "ceiling_reaches_parity": false
     }
    }
+  }
+ },
+ "post_sensitivity": {
+  "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+  "discover_to_capital_one": {
+   "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes",
+   "rule": "non-ambiguous mentions of the control DISCOVER count toward the bank unit named in its successor column (section 2.1, D12); every other rule, input and setting as locked",
+   "target_unit": "2277860",
+   "target_brand": "Capital One",
+   "permutations": 10000,
+   "search_off_recommendation_answers_naming_discover": 160,
+   "of_which_already_naming_target": 129,
+   "target_unit_namings": {
+    "registered": 283,
+    "with_discover": 314
+   },
+   "bank_unit_namings": {
+    "registered": 2458,
+    "with_discover": 2489
+   },
+   "H_Reinforce_bank": {
+    "registered_rho": 0.6789993336079904,
+    "rho": 0.6789993336079904,
+    "registered_p_perm": 0.00029997000299970003,
+    "p_perm": 0.00029997000299970003,
+    "units_present": 21,
+    "pass": true
+   },
+   "H_Amplify_bank": {
+    "registered_ratio": 0.8867501368987996,
+    "ratio": 0.8757058402962031,
+    "k": 395,
+    "n": 2489,
+    "p0": 0.18122326595980534,
+    "p_greater": 0.9985984451876126,
+    "p_less": 0.0016695015667514458,
+    "loglog_slope": 0.9858418276265534,
+    "amplified": false,
+    "flattened": true
+   },
+   "ceiling_bank": {
+    "leader": "1039502",
+    "answers": 432,
+    "k": 395,
+    "n": 2489,
+    "p0": 0.18122326595980534,
+    "ratio": 0.8757058402962031,
+    "units_per_answer": 5.761574074074074,
+    "leader_answer_share": 0.9143518518518519,
+    "ceiling_ratio": 0.9577339822986323,
+    "ceiling_reaches_threshold": false,
+    "ceiling_reaches_parity": false
+   },
+   "tests": {
+    "H_Reinforce": {
+     "airline": {
+      "n_units": 10,
+      "units_present": 10,
+      "rho": 0.6121212121212121,
+      "p_perm": 0.0334966503349665,
+      "pass": true,
+      "evaluable": true
+     },
+     "bank": {
+      "n_units": 25,
+      "units_present": 21,
+      "rho": 0.6789993336079904,
+      "p_perm": 0.00029997000299970003,
+      "pass": true,
+      "evaluable": true
+     },
+     "verdict": "CONFIRMED"
+    },
+    "H_Amplify": {
+     "airline": {
+      "leader": "AA",
+      "k": 216,
+      "n": 1668,
+      "p0": 0.21612499347371417,
+      "ratio": 0.59917365778173,
+      "p_greater": 0.9999999999997781,
+      "p_less": 5.561008758094328e-20,
+      "loglog_slope": 0.6287261212876691,
+      "amplified": false,
+      "flattened": true
+     },
+     "bank": {
+      "leader": "1039502",
+      "k": 395,
+      "n": 2489,
+      "p0": 0.18122326595980534,
+      "ratio": 0.8757058402962031,
+      "p_greater": 0.9985984451876126,
+      "p_less": 0.0016695015667514458,
+      "loglog_slope": 0.9858418276265534,
+      "amplified": false,
+      "flattened": true
+     },
+     "verdict": "FALSIFIED"
+    },
+    "H_Afterlife": {
+     "airline": {
+      "pairs": 55,
+      "afterlife_pairs": 3,
+      "rate": 0.05454545454545454,
+      "p_exact": 0.5231967789194288,
+      "pass": false,
+      "low": false
+     },
+     "bank": {
+      "pairs": 142,
+      "afterlife_pairs": 9,
+      "rate": 0.06338028169014084,
+      "p_exact": 0.2809170561123695,
+      "pass": false,
+      "low": false
+     },
+     "verdict": "UNDETERMINED"
+    },
+    "H_Decay": {
+     "pairs": 197,
+     "pairs_present": 16,
+     "rho": -0.28640307031384576,
+     "p_perm": 9.999000099990002e-05,
+     "evaluable": true,
+     "verdict": "PARTIAL"
+    },
+    "H_Flag": {
+     "ghost_answers": 591,
+     "ghost_flagged": 579,
+     "ghost_rate": 0.9796954314720813,
+     "control_answers": 189,
+     "control_flagged": 32,
+     "control_rate": 0.1693121693121693,
+     "p_fisher": 1.4450285705846424e-115,
+     "verdict": "CONFIRMED"
+    },
+    "H_Search": {
+     "paired_cells": 72,
+     "s1_only_flagged": 1,
+     "s0_only_flagged": 4,
+     "p_mcnemar_exact": 0.9687500000000013,
+     "discordant_evaluable": false,
+     "post_cutoff_cells": 5,
+     "post_cutoff_s1_flagged": 5,
+     "post_cutoff_s1_rate": 1.0,
+     "verdict": "PARTIAL"
+    }
+   },
+   "verdicts": {
+    "H_Reinforce": "CONFIRMED",
+    "H_Amplify": "FALSIFIED",
+    "H_Afterlife": "UNDETERMINED",
+    "H_Decay": "PARTIAL",
+    "H_Flag": "CONFIRMED",
+    "H_Search": "PARTIAL"
+   },
+   "registered_verdicts": {
+    "H_Reinforce": "CONFIRMED",
+    "H_Amplify": "FALSIFIED",
+    "H_Afterlife": "UNDETERMINED",
+    "H_Decay": "PARTIAL",
+    "H_Flag": "CONFIRMED",
+    "H_Search": "PARTIAL"
+   },
+   "verdicts_unchanged": true
   }
  },
  "prereg": {

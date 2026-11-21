@@ -36,7 +36,7 @@
   },
   "postscore": {
    "file": "osf/v40/v40_postscore.json",
-   "sha256": "5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89"
+   "sha256": "aab2442f12e73f89cf0ba4b498f2aa8be3b3777dba91c8b961f6a918bb0cc00c"
   },
   "prereg": {
    "file": "osf/v40/prereg/PRE_REGISTRATION_v0_40.md",
@@ -44,7 +44,7 @@
   }
  },
  "synthetic": false,
- "n_keys": 1190,
+ "n_keys": 1194,
  "keys": {
   "H_Afterlife.airline.afterlife_pairs": {
    "display": "3",
@@ -2658,6 +2658,62 @@
     "path": [
      "permutations"
     ]
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.ratio": {
+   "display": "0.876",
+   "value": 0.8757058402962031,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Amplify_bank.registered_ratio": {
+   "display": "0.887",
+   "value": 0.8867501368987996,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Amplify_bank",
+     "registered_ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.H_Reinforce_bank.rho": {
+   "display": "0.679",
+   "value": 0.6789993336079904,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "H_Reinforce_bank",
+     "rho"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
+   }
+  },
+  "post_sensitivity.discover_to_capital_one.ceiling_bank.ceiling_ratio": {
+   "display": "0.958",
+   "value": 0.9577339822986323,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "post_sensitivity",
+     "discover_to_capital_one",
+     "ceiling_bank",
+     "ceiling_ratio"
+    ],
+    "label": "sensitivity, not pre-registered as run; computed after scoring (DEVIATIONS Entry 4); no verdict changes"
    }
   },
   "prereg_post.d1_ai_share.airline.loglog_slope.all_nine_S0": {

@@ -9,8 +9,9 @@ reads ONLY files already in the repo, written by the locked pipeline:
   osf/v40/data/v40_raw.jsonl                (acquisition record)
   osf/v40/prereg/prelock_check_v0_40.jsonl and prereg/feasibility_check_v0_40.json (pre-lock spend, section 6.5)
   osf/v40/v40_postscore.json                (postscore_v0_40.py, DEVIATIONS Entry 2: the H_Amplify ceiling check and
-                                             the pre-registered reporting the locked scorer did not output; each such
-                                             value carries its label in its source record)
+                                             the pre-registered reporting the locked scorer did not output; DEVIATIONS
+                                             Entry 4: the Discover-to-Capital-One sensitivity, keys post_sensitivity.*;
+                                             each such value carries its label in its source record)
 and writes osf/v40/v40_values.json (flat keys -> value, display string, rounding rule, source file + JSON path) and
 osf/v40/v40_values.md (the same as a human table). Costs are computed with the locked guard's own functions
 (budget_v0_40.Ledger / spend_of, acquire_v0_40.prior_spend), so they equal what the guard recorded.
@@ -283,8 +284,13 @@ def check_postscore(root, ps):
     cc = meta.get("closure_checks") or {}
     if not (cc.get("mentions_file_byte_identical") and cc.get("primary_tests_and_S_D4_equal_verdict_file")):
         raise Refused(f"{REL['postscore']}: closure checks not passed")
-    if "ceiling" not in ps or "prereg" not in ps:
-        raise Refused(f"{REL['postscore']} lacks its ceiling or prereg block")
+    if "ceiling" not in ps or "prereg" not in ps or "post_sensitivity" not in ps:
+        raise Refused(f"{REL['postscore']} lacks its ceiling, prereg or post_sensitivity block")
+    # DEVIATIONS Entry 4: the label says "no verdict changes"; refuse to carry it unless the build showed exactly that
+    d = ps["post_sensitivity"].get("discover_to_capital_one") or {}
+    if d.get("verdicts_unchanged") is not True or d.get("permutations") != meta.get("permutations"):
+        raise Refused(f"{REL['postscore']}: the Discover-to-Capital-One sensitivity does not show every verdict "
+                      "unchanged at the locked permutation count")
 
 
 def raw_counts(root):
@@ -325,6 +331,10 @@ def build(root=ROOT):
     labels = post["_meta"]["labels"]
     V.add_tree("ceiling", post["ceiling"], REL["postscore"], keep_path_prefix=("ceiling",), label=labels["ceiling"])
     V.add_tree("prereg_post", post["prereg"], REL["postscore"], keep_path_prefix=("prereg",), label=labels["prereg"])
+    # 3b'. DEVIATIONS Entry 4: Discover counted toward Capital One (section 2.1, D12), a sensitivity not pre-registered
+    #      as run, computed after scoring; no verdict changes (checked in check_postscore)
+    V.add_tree("post_sensitivity", post["post_sensitivity"], REL["postscore"], keep_path_prefix=("post_sensitivity",),
+               label=labels["post_sensitivity"])
 
     # 3c. reference figures the locked pre-registration says to report beside descriptive 6 (section 2.9 item 6)
     pr = (root / REL["prereg"]).read_text(encoding="utf-8")
@@ -415,6 +425,8 @@ SECTIONS = [
      lambda k: k.startswith("ceiling.")),
     ("Pre-registered, computed after scoring because the locked scorer did not output them (DEVIATIONS Entry 2)",
      lambda k: k.startswith("prereg_post.")),
+    ("Sensitivity, not pre-registered as run; computed after scoring; no verdict changes (DEVIATIONS Entry 4: Discover "
+     "counted toward Capital One)", lambda k: k.startswith("post_sensitivity.")),
 ]
 
 

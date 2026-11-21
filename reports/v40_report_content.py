@@ -21,14 +21,15 @@ GLANCE_NUMBERS = [
      "source": "{{v:H_Flag.ghost_flagged}} of {{v:H_Flag.ghost_answers}} answers"},
     {"value": "{{v:H_Afterlife.bank.rate}}", "unit": "",
      "label": "Bank departed-brand pairs named without gone wording",
-     "source": "undecided: floor {{v:thresholds.afterlife_null}}, bar {{v:thresholds.afterlife_rate}}"},
+     "source": "{{v:H_Afterlife.bank.afterlife_pairs}} of {{v:H_Afterlife.bank.pairs}}; pre-set floor "
+               "{{v:thresholds.afterlife_null}}, bar {{v:thresholds.afterlife_rate}}: undecided"},
 ]
 
 MEASURED = ("Six older models and the newest generally available model of three providers as checked on 12 "
             "November 2026 (the newest also with their own web search) "
             "gave {{v:acquisition.records_total}} answers in November 2026: which airline or bank to use, whether a "
             "brand is known, and whether one can still book with it or open an account. All numbers: the study's "
-            "values file, osf.io/ec6wh (v40).")
+            "values file; changes to the plan: the DEVIATIONS log; both at osf.io/ec6wh (v40).")
 
 SUMMARY = [
     "The models named brands roughly in the order of their market share: firmly for banks, less firmly for airlines. "
@@ -48,10 +49,12 @@ INTRO = [
     "2008, such as Continental, US Airways, Washington Mutual, Wachovia, SunTrust and Silicon Valley Bank. We call "
     "them ghosts. Banks are counted by holding company (JPMorgan Chase, Bank of America and so on).",
     "Every test and threshold was fixed and published before the first question, and every result is reported "
-    "here, including the ones that failed. One step changed after collection: the plan named a human to check the "
-    "coding; this was changed to three AI coders, with no human check (a declared deviation, DEVIATIONS Entry 1). "
-    "After scoring, a dated entry (DEVIATIONS Entry 2) recorded the cap of the leader test, the timing of Google's "
-    "newest model and the detail tables computed afterwards. All pre-set quality "
+    "here, including the ones that failed. Two things depart from the plan. After collection, the plan named a human "
+    "to check the coding; this was changed to three AI coders, with no human check (a declared deviation, DEVIATIONS "
+    "Entry 1). And the scoring script does not count Discover toward Capital One as the plan says; results stay as "
+    "scored, and counting it changes no outcome (DEVIATIONS Entry 4; see Limitations). After scoring, a dated entry "
+    "(DEVIATIONS Entry 2) also recorded the cap of the leader test, the timing of Google's newest model and the "
+    "detail tables computed afterwards. All pre-set quality "
     "checks passed except one: Gemini 4 Argon used web search in only "
     "{{v:manipulation_checks.MC2_search_used_C3.searched}} of {{v:manipulation_checks.MC2_search_used_C3.n}} "
     "search-on answers, below the pre-set bar. The study is independent: no brand is its focus, no finding is "
@@ -63,12 +66,15 @@ MEASURED_PARAS = [
     "Each model answered brand-free recommendation questions for each category (in general, by need and by US "
     "region), three times with search off; the newest models answered once more with search on. For each ghost "
     "and each control brand (living brands, including the four biggest incumbents) it also answered whether it knew "
-    "the brand and whether one could still use it.",
+    "the brand and whether one could still use it. The older models are Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, "
+    "GPT-4o mini, Gemini 2.5 Flash and Gemini 2.5 Flash-Lite; the newest are Claude Fable 5.2, GPT-6 Astra and "
+    "Gemini 4 Argon.",
     "An answer names a brand when it contains one of the brand's registered names. A brand's share of AI naming "
     "is how often it is named, out of all namings of the category's current brands; a rank correlation compares that "
     "order with the market's (1 = same order). A mention counts as saying the brand is gone when words such as "
     "\"merged into\", \"acquired by\" or \"no longer\" appear within {{v:window_chars}} characters of it. Coding was "
-    "automatic; three AI coders, one of them also a model in the study, checked a sample of "
+    "automatic; three AI coders (Claude Fable 5.2, also a model in the study; GPT-6.2 Astra; Gemini 4 Carbon to "
+    "break ties) checked a sample of "
     "{{v:audit.answers.total}} answers.",
 ]
 
@@ -98,10 +104,12 @@ FINDINGS = [
      "body": [
          "The pre-set test asked whether the largest airline (American) and the largest bank (JPMorgan Chase) get "
          "more than their market share of AI naming, by at least {{v:thresholds.amplify_ratio}} times. As scored, "
-         "the multiples were {{v:H_Amplify.airline.ratio}} and {{v:H_Amplify.bank.ratio}}, so the test failed.",
+         "the multiples were {{v:H_Amplify.airline.ratio}} and {{v:H_Amplify.bank.ratio}}, both below 1 by the pre-set "
+         "test, which the plan scores as falsified. With the bank cap at {{v:ceiling.bank.ceiling_ratio}}, a multiple "
+         "below 1 is no evidence that AI understates the leader.",
          "An added check, made after scoring (DEVIATIONS Entry 2), shows it could not have passed. The measure divides answers naming the "
-         "leader by all brand namings, and each answer named {{v:ceiling.airline.units_per_answer}} airlines or "
-         "{{v:ceiling.bank.units_per_answer}} banks on average. Even a leader named in every answer would have "
+         "leader by all brand namings, and each answer named {{v:ceiling.airline.units_per_answer}} airline or "
+         "{{v:ceiling.bank.units_per_answer}} bank market-share units on average. Even a leader named in every answer would have "
          "reached only {{v:ceiling.airline.ceiling_ratio}} for airlines and {{v:ceiling.bank.ceiling_ratio}} for "
          "banks. The result does not show whether AI favours the leaders or not. (American was named in "
          "{{v:ceiling.airline.leader_answer_share}} of airline answers and JPMorgan Chase in "
@@ -166,10 +174,11 @@ FINDINGS = [
                 "compared with search off and on.",
      "body": [
          "Some brands left after a model stopped learning, such as Silicon Valley Bank for all three newest models. "
-         "With search on, all {{v:H_Search.post_cutoff_cells}} such cells were flagged as gone. Most were already "
-         "flagged without search: only {{v:H_Search.s1_only_flagged}} of all cells changed toward gone with search.",
+         "With search on, all {{v:H_Search.post_cutoff_cells}} such cells were flagged as gone, but most were already "
+         "flagged with search off: Silicon Valley Bank in all {{v:prereg_post.per_test.H_Search.by_ghost.SVB.s0_flagged}} "
+         "of its cells. Across all cells, only {{v:H_Search.s1_only_flagged}} changed toward gone with search.",
          "The paired half of the test (the same cells with search off and on) failed its pre-set floor: {{v:H_Search.s1_only_flagged}} cell changed toward "
-         "gone and {{v:H_Search.s0_only_flagged}} the other way, against at least "
+         "gone and {{v:H_Search.s0_only_flagged}} were flagged only with search off, against at least "
          "{{v:thresholds.search_min_discordant}} changed cells needed. Gemini 4 Argon searched in only "
          "{{v:manipulation_checks.MC2_search_used_C3.searched}} of {{v:manipulation_checks.MC2_search_used_C3.n}} "
          "search-on answers.",
@@ -177,17 +186,18 @@ FINDINGS = [
 ]
 
 SCORED_HEAD = "The six pre-set tests, scored"
-SCORED_INTRO = ("Each test, its bar and its outcome were published before the first question. Outcomes use the "
-                "pre-set words; none was changed after the data came in. After collection, who checked the coding "
-                "changed (DEVIATIONS Entry 1); after scoring, a dated entry recorded the leader test's cap and the "
-                "tables computed afterwards (DEVIATIONS Entry 2).")
+SCORED_INTRO = ("Each test, its bar and the rule for its outcome were published before the first question. Outcomes "
+                "use the pre-set words; none was changed after the data came in. After collection, who checked the "
+                "coding changed (DEVIATIONS Entry 1); after scoring, a dated entry recorded the leader test's cap and "
+                "the tables computed afterwards (DEVIATIONS Entry 2), and another that the scoring does not count "
+                "Discover toward Capital One as the plan says, which changes no outcome (DEVIATIONS Entry 4).")
 SCORED_ROWS = [
     ["01", "Naming follows market share in both categories", "{{v:H_Reinforce.verdict}}"],
     ["02", "The leader gets more than its market share", "{{v:H_Amplify.verdict}} (as scored; the measure could not reach its bar)"],
     ["03", "Departed brands are still named as current", "{{v:H_Afterlife.verdict}}"],
     ["04", "Naming fades with time since exit", "{{v:H_Decay.verdict}} (fade found, below the strong bar)"],
     ["05", "Status answers say a departed brand is gone", "{{v:H_Flag.verdict}}"],
-    ["06", "Web search corrects departed-brand status", "{{v:H_Search.verdict}} (late exits flagged; paired half failed; Gemini 4 Argon searched in "
+    ["06", "Web search corrects departed-brand status", "{{v:H_Search.verdict}} (late exits flagged with search on, most already without; paired half failed; Gemini 4 Argon searched in "
            "{{v:manipulation_checks.MC2_search_used_C3.searched}} of {{v:manipulation_checks.MC2_search_used_C3.n}}, "
            "below the pre-set bar)"],
 ]
@@ -198,7 +208,8 @@ LIMITS = [
     "buyer persona. Answers change between model versions.",
     "Search on was run once per question, and one model often chose not to search.",
     "Coding is automatic and reads words near a brand's name; it misses paraphrases and also fires on living "
-    "brands that went through a merger. Its check used AI coders only, one of which is also a model in the study, "
+    "brands that went through a merger. Its check used AI coders only, one of which (Claude Fable 5.2) is also a "
+    "model in the study, "
     "in place of the human the plan named.",
     "The leader test divides answers by all brand namings, which caps how high the leader's multiple can go: "
     "at {{v:ceiling.airline.ceiling_ratio}} and {{v:ceiling.bank.ceiling_ratio}}, below the bar (finding 02).",
@@ -207,16 +218,22 @@ LIMITS = [
     "the same coded data and are labelled where they appear.",
     "Google's changelog dates Gemini 4 Carbon's general availability to 10 November, before the plan was locked; "
     "the check on 12 November did not find it, and had it been visible the plan's rule would have used Carbon in "
-    "place of Gemini 4 Argon. The study ran with Argon as locked (DEVIATIONS Entry 2).",
+    "place of Gemini 4 Argon. The study ran with Argon as locked (DEVIATIONS Entry 2). OpenAI dates GPT-6.2 Astra "
+    "to 17 November, after the lock, so GPT-6 Astra stayed (DEVIATIONS Entry 4).",
     "The plan counts Discover's mentions toward Capital One's share; the scoring script did not. Results are "
-    "reported as scored, and nothing was re-scored (DEVIATIONS Entry 2).",
+    "reported as scored, and nothing was re-scored (DEVIATIONS Entries 2 and 4). Counting them, a sensitivity "
+    "computed after scoring and not pre-registered as run, changes no verdict: the banks' rank correlation stays at "
+    "{{v:post_sensitivity.discover_to_capital_one.H_Reinforce_bank.rho}} and the bank leader's multiple moves from "
+    "{{v:post_sensitivity.discover_to_capital_one.H_Amplify_bank.registered_ratio}} to "
+    "{{v:post_sensitivity.discover_to_capital_one.H_Amplify_bank.ratio}} (DEVIATIONS Entry 4).",
     "The published plan's first line still reads \"draft\"; the lock rests on the dated git tag and the "
     "OSF deposit made before the first question.",
 ]
 NEXT_HEAD = "What's next"
 NEXT = [
     "A second wave on the same brands and questions, with more search-on runs and a persona arm, and a "
-    "per-answer measure of whether AI favours the leader. Data, plan and paper are on OSF (osf.io/ec6wh, v40).",
+    "per-answer measure of whether AI favours the leader. Data, plan, paper and the DEVIATIONS log (DEVIATIONS.md) "
+    "are on OSF (osf.io/ec6wh, v40).",
 ]
 
 DISCLOSURES = {
