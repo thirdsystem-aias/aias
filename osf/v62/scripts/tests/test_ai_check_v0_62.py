@@ -308,6 +308,7 @@ class Guards(unittest.TestCase):
 
     def test_run_refused_without_addendum_sends_nothing(self):
         with mock.patch.object(A, "run_checks", side_effect=AssertionError("must not run")), \
+                mock.patch.object(A, "addendum_names_script", return_value=False), \
                 mock.patch.object(A, "_ps", return_value=""):
             self.assertEqual(A.main(["--run"]), 3)
 

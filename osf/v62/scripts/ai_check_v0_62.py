@@ -625,7 +625,8 @@ def check_models(out_dir=None):
     except Exception as e:                                       # noqa: BLE001
         rec["models"]["gpt-6-astra"] = {"found": False, "error": f"{type(e).__name__}: {e}"[:300]}
     try:
-        g = genai.Client(api_key=os.environ["GOOGLE_API_KEY"]).models.get(model="gemini-4-argon")
+        gc = genai.Client(api_key=os.environ["GOOGLE_API_KEY"])   # held: an inline client is closed before the call
+        g = gc.models.get(model="gemini-4-argon")
         name = getattr(g, "name", "") or ""
         rec["models"]["gemini-4-argon"] = {"found": name.endswith("gemini-4-argon"), "name": name,
                                            "display_name": getattr(g, "display_name", None),

@@ -1,0 +1,16 @@
+{
+ "utc": "2026-11-21T16:27:29.370020+00:00",
+ "central_date": "2026-11-21",
+ "models": {
+  "gpt-6-astra": {
+   "found": true,
+   "id": "gpt-6-astra",
+   "created": 1787853604,
+   "owned_by": "system"
+  },
+  "gemini-4-argon": {
+   "found": false,
+   "error": "RuntimeError: Cannot send a request, as the client has been closed."
+  }
+ }
+}
