@@ -117,24 +117,42 @@ def ratio_row(label, base):
 
 
 def fig2_amplify():
-    rows = [("Airlines: American (Delta in S-Operating)", None, None, None),
-            ratio_row("All nine models", "H_Amplify.airline"),
-            ratio_row("Legacy six", "sensitivity.S-Arm.legacy.H_Amplify.airline"),
-            ratio_row("Current three", "sensitivity.S-Arm.current.H_Amplify.airline"),
-            ratio_row("Ambiguous names in (S-Ambig)", "sensitivity.S-Ambig.H_Amplify.airline"),
-            ratio_row("Operating share, Delta (S-Operating)", "sensitivity.S-Operating.H_Amplify_airline"),
-            ratio_row("Sun Country in Allegiant (S-SunCountry)", "sensitivity.S-SunCountry.H_Amplify_airline"),
-            ("Banks: JPMorgan Chase holder", None, None, None),
-            ratio_row("All nine models", "H_Amplify.bank"),
-            ratio_row("Legacy six", "sensitivity.S-Arm.legacy.H_Amplify.bank"),
-            ratio_row("Current three", "sensitivity.S-Arm.current.H_Amplify.bank")]
-    fig, ax = plt.subplots(figsize=(7.5, 5.2))
-    fig.subplots_adjust(left=0.36, right=0.97, top=0.82, bottom=0.13)
-    header(fig, "Leader's share of AI naming divided by its market share, by panel and specification",
-           "Labels: ratio (k answers naming the leader of n current-unit namings). "
-           "No specification is filled: none reached the registered threshold.")
-    dotplot(ax, rows, (0.0, 1.5), [(1.0, "parity 1.0"), (v("thresholds.amplify_ratio"), "registered " + d("thresholds.amplify_ratio"))],
+    # each row: (label, verdict-file key base, ceiling key base); the ceiling is the post-scoring check of
+    # DEVIATIONS Entry 2 (osf/v40/v40_postscore.json via the values file), not a pre-registered statistic
+    spec = [("Airlines: American (Delta in S-Operating)", None, None),
+            ("All nine models", "H_Amplify.airline", "ceiling.specs.all_nine.airline"),
+            ("Legacy six", "sensitivity.S-Arm.legacy.H_Amplify.airline", "ceiling.specs.legacy.airline"),
+            ("Current three", "sensitivity.S-Arm.current.H_Amplify.airline", "ceiling.specs.current.airline"),
+            ("Ambiguous names in (S-Ambig)", "sensitivity.S-Ambig.H_Amplify.airline", "ceiling.specs.S-Ambig.airline"),
+            ("Operating share, Delta (S-Operating)", "sensitivity.S-Operating.H_Amplify_airline",
+             "ceiling.specs.S-Operating.airline"),
+            ("Sun Country in Allegiant (S-SunCountry)", "sensitivity.S-SunCountry.H_Amplify_airline",
+             "ceiling.specs.S-SunCountry.airline"),
+            ("Banks: JPMorgan Chase holder", None, None),
+            ("All nine models", "H_Amplify.bank", "ceiling.specs.all_nine.bank"),
+            ("Legacy six", "sensitivity.S-Arm.legacy.H_Amplify.bank", "ceiling.specs.legacy.bank"),
+            ("Current three", "sensitivity.S-Arm.current.H_Amplify.bank", "ceiling.specs.current.bank")]
+    for _, base, cb in spec:            # the ceiling rows must describe the same ratio as the verdict-file rows
+        if base:
+            assert v(f"{base}.k") == v(f"{cb}.k") and v(f"{base}.n") == v(f"{cb}.n"), (base, cb)
+    rows = [(lab, None, None, None) if base is None else ratio_row(lab, base) for lab, base, _ in spec]
+    fig, ax = plt.subplots(figsize=(7.5, 5.4))
+    fig.subplots_adjust(left=0.36, right=0.97, top=0.80, bottom=0.13)
+    header(fig, "Leader's share of AI naming divided by its market share, with the most the ratio could reach",
+           "Dots: ratio (k of n); none reached the registered threshold. Grey ticks: largest ratio at the observed "
+           "breadth (DEVIATIONS Entry 2).")
+    dotplot(ax, rows, (0.0, 1.6), [(1.0, "parity 1.0"), (v("thresholds.amplify_ratio"), "registered " + d("thresholds.amplify_ratio"))],
             "Ratio (k/n) / p₀")
+    n = len(rows)
+    for i, (_, base, cb) in enumerate(spec):
+        if base is None:
+            continue
+        y = n - 1 - i
+        c = v(f"{cb}.ceiling_ratio")
+        ax.plot([v(f"{base}.ratio"), c], [y, y], color=LIGHT, linewidth=1.6, zorder=1, solid_capstyle="butt")
+        ax.plot([c, c], [y - 0.26, y + 0.26], color=GREY, linewidth=1.8, zorder=2)
+        ax.text(c + 0.015, y - 0.05, d(f"{cb}.ceiling_ratio"), fontsize=6.5, color=GREY, ha="left", va="center",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     save(fig, "fig_02_amplify")
 
 

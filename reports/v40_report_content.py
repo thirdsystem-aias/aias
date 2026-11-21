@@ -2,7 +2,9 @@
 osf/v40/v40_values.json by build_report_v40_r1.py through values_v0_40.fill(); none is typed here. Design counts
 (nine models, six older, three newest, three runs) follow the locked pre-registration (§2.1, §4.2).
 No hypothesis labels; plain words; "named", not "recommended", for what the measure counts.
-Revised after the row 32 review gate of 2026-11-21 (reviews/v0.40-report/2026-11-21.md)."""
+Revised after the row 32 review gate of 2026-11-21 (reviews/v0.40-report/2026-11-21.md) and for DEVIATIONS Entry 2
+(Pablo, 2026-11-21, 1:56 pm: the leader test stays as scored, could not have passed, and no claim that AI flattens or
+exaggerates the leader; the pre-registered tables computed after scoring, values prereg_post.* and ceiling.*)."""
 
 TITLE = "Leaders, challengers and ghosts"
 DECK = ("How nine AI models name US airlines and retail banks against market share, "
@@ -17,8 +19,9 @@ GLANCE_NUMBERS = [
      "source": "1 = the market's exact order; pre-set bar {{v:thresholds.reinforce_rho}}"},
     {"value": "{{v:H_Flag.ghost_rate}}", "unit": "", "label": "Status answers with gone wording for departed brands",
      "source": "{{v:H_Flag.ghost_flagged}} of {{v:H_Flag.ghost_answers}} answers"},
-    {"value": "{{v:H_Amplify.bank.ratio}}", "unit": "x", "label": "Bank leader's share of naming, as a multiple of its market share",
-     "source": "below 1: less than its market share"},
+    {"value": "{{v:ceiling.bank.ceiling_ratio}}", "unit": "x",
+     "label": "Highest multiple the bank leader could reach on the leader test",
+     "source": "pre-set bar {{v:thresholds.amplify_ratio}}x; an added check"},
 ]
 
 MEASURED = ("Six older models and the newest model of three providers (the newest also with their own web search) "
@@ -28,8 +31,8 @@ MEASURED = ("Six older models and the newest model of three providers (the newes
 
 SUMMARY = [
     "The models named brands roughly in the order of their market share: firmly for banks, less firmly for airlines. "
-    "The largest airline and bank got less than their market share of naming, so the pre-set prediction that AI "
-    "favours leaders failed on this measure (finding 02). Departed brands were sometimes named without a word that "
+    "The pre-set test of whether AI favours the largest airline and bank failed as scored, but it could not have "
+    "passed: its measure could not reach the bar (finding 02). Departed brands were sometimes named without a word that "
     "they had gone, at rates the test could not settle; asked directly, the models said they were gone in nearly "
     "every answer.",
 ]
@@ -83,20 +86,21 @@ FINDINGS = [
          "alone reach only {{v:sensitivity.S-Arm.current.H_Reinforce.airline.rho}}.",
      ]},
     {"verdict": "{{v:H_Amplify.verdict}}",
-     "title": "On this measure, the leaders get less than their share",
+     "title": "The leader test failed as scored, but could not have passed",
      "chart": "report_fig_02_leader_multiple.pdf",
-     "caption": "The leader's share of all brand namings divided by its share of the market; 1 means the same as "
-                "the market. Filled: all nine models; open: model groups. The amplified line was set in advance.",
+     "caption": "Dot: the leader's share of all brand namings divided by its share of the market (1 = the same as "
+                "the market). Tick: the highest value possible if the leader were named in every answer. The "
+                "amplified line was set in advance; the tick is an added check, not in the plan.",
      "body": [
-         "American received {{v:H_Amplify.airline.ratio}} times and the JPMorgan Chase holding company "
-         "{{v:H_Amplify.bank.ratio}} times their market share of all brand namings: less than their share in both "
-         "categories, so the pre-set prediction that AI amplifies the leader failed. For the newest models alone the "
-         "bank figure was {{v:sensitivity.S-Arm.current.H_Amplify.bank.ratio}}, undecided.",
-         "An added check, not in the plan: each answer names several brands, so even a leader named in every answer "
-         "would not have reached the amplified line at this breadth of answers, and in banks not its market share. "
-         "JPMorgan Chase was in fact named in {{v:H_Amplify.bank.k}} of the bank recommendation answers "
-         "({{v:descriptives.8_near_floor_other.L_S0.answers}} from older models, "
-         "{{v:descriptives.8_near_floor_other.C_S0.answers}} from the newest).",
+         "The pre-set test asked whether the largest airline (American) and the largest bank (JPMorgan Chase) get "
+         "more than their market share of AI naming, by at least {{v:thresholds.amplify_ratio}} times. As scored, "
+         "the multiples were {{v:H_Amplify.airline.ratio}} and {{v:H_Amplify.bank.ratio}}, so the test failed.",
+         "An added check, not in the plan, shows it could not have passed. The measure divides answers naming the "
+         "leader by all brand namings, and each answer named {{v:ceiling.airline.units_per_answer}} airlines or "
+         "{{v:ceiling.bank.units_per_answer}} banks on average. Even a leader named in every answer would have "
+         "reached only {{v:ceiling.airline.ceiling_ratio}} for airlines and {{v:ceiling.bank.ceiling_ratio}} for "
+         "banks. The result does not show whether AI favours the leaders or not: JPMorgan Chase was named in "
+         "{{v:ceiling.bank.leader_answer_share}} of bank answers.",
      ]},
     {"verdict": "{{v:H_Afterlife.verdict}}",
      "title": "Departed brands named as current: undecided",
@@ -107,7 +111,11 @@ FINDINGS = [
      "body": [
          "Ghosts were named without any sign that they had gone in {{v:H_Afterlife.airline.rate}} of airline "
          "and {{v:H_Afterlife.bank.rate}} of bank pairs: above the floor of {{v:thresholds.afterlife_null}} but far "
-         "below the bar of {{v:thresholds.afterlife_rate}}, so the test is undecided.",
+         "below the bar of {{v:thresholds.afterlife_rate}}, so the test is undecided. They came from BB&T "
+         "({{v:prereg_post.per_test.H_Afterlife.by_ghost.BBT.afterlife_pairs}} pairs), SunTrust "
+         "({{v:prereg_post.per_test.H_Afterlife.by_ghost.SUNTRUST.afterlife_pairs}}), Virgin America "
+         "({{v:prereg_post.per_test.H_Afterlife.by_ghost.VX.afterlife_pairs}}) and Northwest "
+         "({{v:prereg_post.per_test.H_Afterlife.by_ghost.NW.afterlife_pairs}}) only.",
          "These rates are more likely too high than too low. The coding check met its pre-set bar overall (kappa "
          "{{v:audit.threshold.kappa}} against {{v:audit.threshold.kappa_min}}), but on recommendation answers kappa "
          "was {{v:audit.agreement.consensus_vs_rule.gone_flag.recommendation.kappa}}, and in the "
@@ -137,7 +145,11 @@ FINDINGS = [
          "{{v:H_Flag.ghost_answers}} cases, against {{v:H_Flag.control_rate}} for living brands. The newest models "
          "did so for every departed brand.",
          "The living-brand rate is not all error. The three control brands, Hawaiian, Sun Country and Discover, have "
-         "been through mergers or account moves, and an answer that says so carries the same words. Without Discover "
+         "been through mergers or account moves, and an answer that says so carries the same words. Of the "
+         "{{v:prereg_post.discover_status.tested_S0.answers}} answers about Discover, "
+         "{{v:prereg_post.discover_status.tested_S0.flagged}} carried gone wording and "
+         "{{v:prereg_post.discover_status.tested_S0.naming_capital_one}} named Capital One, to which its deposit "
+         "accounts were moving. Without Discover "
          "the living-brand rate was {{v:sensitivity.S-Discover.control_rate}}; for the newest models it was "
          "{{v:sensitivity.S-Arm.current.H_Flag.control_rate}}.",
      ]},
@@ -164,7 +176,7 @@ SCORED_INTRO = ("Each test, its bar and its outcome were published before the fi
                 "checked the coding (a declared deviation).")
 SCORED_ROWS = [
     ["01", "Naming follows market share in both categories", "{{v:H_Reinforce.verdict}}"],
-    ["02", "The leader gets more than its market share", "{{v:H_Amplify.verdict}} (less than its share in both)"],
+    ["02", "The leader gets more than its market share", "{{v:H_Amplify.verdict}} (as scored; the measure could not reach its bar)"],
     ["03", "Departed brands are still named as current", "{{v:H_Afterlife.verdict}}"],
     ["04", "Naming fades with time since exit", "{{v:H_Decay.verdict}} (fade found, below the strong bar)"],
     ["05", "Status answers say a departed brand is gone", "{{v:H_Flag.verdict}}"],
@@ -179,10 +191,11 @@ LIMITS = [
     "Coding is automatic and reads words near a brand's name; it misses paraphrases and also fires on living "
     "brands that went through a merger. Its check used AI coders only, one of which is also a model in the study, "
     "in place of the human the plan named.",
-    "The leader test divides answers by all brand namings, which caps how high the leader's multiple can go "
-    "(finding 02).",
+    "The leader test divides answers by all brand namings, which caps how high the leader's multiple can go: "
+    "at {{v:ceiling.airline.ceiling_ratio}} and {{v:ceiling.bank.ceiling_ratio}}, below the bar (finding 02).",
     "Pairs of brands and models share questions and runs, and the tests treat them as independent. Some "
-    "pre-registered detail tables are not in the scored record; the paper lists them.",
+    "pre-registered detail tables were not produced by the scoring script; they were computed afterwards from "
+    "the same coded data and are labelled so in the paper.",
     "The published plan's first line still reads \"draft\"; the lock rests on the dated git tag and the "
     "OSF deposit made before the first question.",
 ]

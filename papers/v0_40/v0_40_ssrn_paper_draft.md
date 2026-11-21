@@ -54,7 +54,7 @@ November 2026
 # Abstract {-}
 
 Do AI assistants name brands in proportion to their market share, and do brands that have left the market keep a place in their answers? This pre-registered study asked nine large language models (a legacy panel of six and the newest generally available flagship of three providers, as checked on 12 November 2026, with and without web search) about US airlines and US retail banks, including the brands retired by merger, failure or rename since 2008 ("ghosts"). All 2,821 planned calls were answered, for $49.26 of a $100.00 cap. A rule-based coder met the registered agreement threshold with an AI-only audit (κ 0.883), but not on recommendation answers alone (κ 0.487).
-The models' naming followed market share in both categories (Spearman ρ 0.612 for airlines and 0.679 for banks; CONFIRMED), though the airline result failed a pre-registered sensitivity (ρ 0.483). The leaders' share of all brand namings was below their market share (0.599 and 0.887; FALSIFIED), but an added check shows that, because answers name many brands, the registered ratio could not have reached the amplification threshold, and the bank leader was named in most bank answers. Ghosts were named without a gone-flag in 5.5% and 6.3% of ghost-model pairs, between the registered null and pass lines (UNDETERMINED). Ghost Presence was lower at longer gaps between exit and training cutoff (ρ -0.286, 16 of 197 pairs named; PARTIAL). Status answers about ghosts carried a gone-flag in 98.0% of cases against 16.9% for living brands (CONFIRMED). With web search on, all 5 post-cutoff cells were flagged, most of them already without search, but the paired test had too few discordant cells (PARTIAL), and one model searched in 41 of 63 search-on answers. Every test is reported, including failures.
+The models' naming followed market share in both categories (Spearman ρ 0.612 for airlines and 0.679 for banks; CONFIRMED), though the airline result failed a pre-registered sensitivity (ρ 0.483). H_Amplify is FALSIFIED as registered (leader ratios 0.599 and 0.887 against a threshold of 1.25), but the test could not have confirmed: because answers name many brands, the largest ratio the registered measure could reach was 1.198 for airlines and 0.970 for banks, so the result does not show whether AI answers amplify the leader or understate it. Ghosts were named without a gone-flag in 5.5% and 6.3% of ghost-model pairs, between the registered null and pass lines (UNDETERMINED). Ghost Presence was lower at longer gaps between exit and training cutoff (ρ -0.286, 16 of 197 pairs named; PARTIAL). Status answers about ghosts carried a gone-flag in 98.0% of cases against 16.9% for living brands (CONFIRMED). With web search on, all 5 post-cutoff cells were flagged, most of them already without search, but the paired test had too few discordant cells (PARTIAL), and one model searched in 41 of 63 search-on answers. Every test is reported, including failures; pre-registered tables the scorer did not output were computed after scoring from the frozen coded data and are labelled as such.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; Double Jeopardy; market share; brand exits; mergers; web search; airlines; retail banking
 
@@ -64,7 +64,7 @@ The models' naming followed market share in both categories (Spearman ρ 0.612 f
 
 # 1. Introduction
 
-AI Availability, the discoverability and representation of a brand in the answers of large language models (LLMs), has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2016), and measured under a versioned protocol (Methodology v1.2--v1.8; AIAS 1.0) in a series of category phases (González Castro, 2026, phase papers v0.16--v0.37). The Tri-System framework (González Castro, 2026, MSI Working Paper, Report No. 26-132) treats AI as a mediation layer between brand and buyer and takes the name "System 3", for artificial cognition beside human fast and slow thinking, from Shaw and Nave (2026, SSRN 6097646). The framework's first proposition, P1, asks whether AI answers track, amplify or flatten the market position of brands. That had not been measured against an official share base.
+AI Availability, the discoverability and representation of a brand in the answers of large language models (LLMs), has been proposed as a third measurable layer of brand availability (González Castro, 2026, SSRN 6659000), beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Romaniuk & Sharp, 2016), and measured under a versioned protocol (Methodology v1.2--v1.8; AIAS 1.0) in a series of category phases (González Castro, 2026, phase papers v0.16--v0.37). The Tri-System framework (González Castro, 2026, MSI Working Paper, Report No. 26-132) treats AI as a mediation layer between brand and buyer and takes the name "System 3", for artificial cognition beside human fast and slow thinking, from Shaw and Nave (2026, SSRN 6097646). The framework's first proposition, P1, asks whether AI answers track or amplify the market position of brands. That had not been measured against an official share base.
 
 Outside this programme, work on LLMs in marketing has asked whether model outputs reproduce consumer perceptions of brands (Li, Castelo, Katona & Sarvary, 2024), how content can be shaped to appear in generative answers (Aggarwal et al., 2024), and how buyer personas change which brands are recommended (Jack, Lehman, Maloney & Xu, 2026; Rienecker et al., 2026). Work on language models as knowledge bases has shown that facts change after training and that models answer from the time of their data (Dhingra et al., 2022). Brand management has studied what happens to brands deleted or absorbed after a merger (Varadarajan, DeFanti & Busch, 2006). This study joins the three: it measures AI naming against official market shares, and it uses dated brand exits against each model's published training cutoff as a natural test of what models say about brands that no longer exist. Its contribution is a pre-registered, two-arm measurement in two categories with official share data (airlines: revenue passenger miles, Bureau of Transportation Statistics T-100; retail banks: deposits, FDIC Summary of Deposits) and many dated exits, which we call ghosts.
 
@@ -80,7 +80,7 @@ The brand registry was built mechanically from official data under rules fixed i
 
 The probe set (pre-registration §4.1) has, per category, brand-free recommendation questions (generic, by need and by US Census region), and, for each ghost and control, one recognition question and one status question (whether one can still book with, or open an account at, the brand). Questions were asked in one user turn with no system prompt and no buyer persona.
 
-The legacy arm is the programme's six-model panel fixed since v0.17 (Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, GPT-4o mini, Gemini 2.5 Flash with thinking budget 0, Gemini 2.5 Flash-Lite; temperature 0), plus one extra Gemini 2.5 Flash pass at the provider's default thinking that is reported and never tested. The current arm is each provider's newest generally available flagship as checked on the vendors' pages on 12 November 2026 (pre-registration §4.3): Claude Fable 5.2 (C1), GPT-6 Astra (C2) and Gemini 4 Argon (C3), at provider defaults, with search off (three runs) and with each provider's own web search on (one run on the recommendation and status probes; pre-registration §4.2--§4.4, §6.3--§6.4). The record is not consistent on one point: the pre-registration's check found no Gemini API statement that Gemini 4 Carbon was generally available, while DEVIATIONS Entry 1, written on 21 November for the audit, quotes a Gemini API changelog entry dated 10 November that declares it generally available, and notes that GPT-6.2 Astra is newer than GPT-6 Astra. Under the pre-registration's own rule, a generally available Carbon before the lock would have replaced Argon; the study ran with Argon as locked.
+The legacy arm is the programme's six-model panel fixed since v0.17 (Claude Opus 4.5, Claude Sonnet 4.5, GPT-4o, GPT-4o mini, Gemini 2.5 Flash with thinking budget 0, Gemini 2.5 Flash-Lite; temperature 0), plus one extra Gemini 2.5 Flash pass at the provider's default thinking that is reported and never tested. The current arm is each provider's newest generally available flagship as checked on the vendors' pages on 12 November 2026 (pre-registration §4.3): Claude Fable 5.2 (C1), GPT-6 Astra (C2) and Gemini 4 Argon (C3), at provider defaults, with search off (three runs) and with each provider's own web search on (one run on the recommendation and status probes; pre-registration §4.2--§4.4, §6.3--§6.4). The record is not consistent on one point: the pre-registration's check found no Gemini API statement that Gemini 4 Carbon was generally available, while DEVIATIONS Entry 1, written on 21 November for the audit, quotes a Gemini API changelog entry dated 10 November that declares it generally available, and notes that GPT-6.2 Astra is newer than GPT-6 Astra. Under the pre-registration's own rule, a generally available Carbon before the lock would have replaced Argon; the study ran with Argon as locked. DEVIATIONS Entry 2 records the pre-registrant's ruling of 21 November: the point is accepted as disclosed; had the 10 November entry been visible at the pre-lock check, Carbon would have been used in place of Argon; data and verdicts are unchanged.
 
 Collection ran from 17 to 19 November 2026 under a cost guard. All 2,821 planned calls returned an answer (2,821 with status ok; legacy search off 1,786, current search off 846, current search on 189); none failed and none was re-run. The collection's recorded spend was $36.74; with the two declared pre-lock checks ($6.40) the guard's spend was $43.14, and with the audit (§2.6, $6.12) the paper's total is $49.26 against a cap of $100.00 and a pause at $80.00. A length-limit stop rule checked every answer as it arrived; no answer stopped at its token limit before naming a brand (0 treated as missing).
 
@@ -93,7 +93,7 @@ Table: Pre-registered tests (pre-registration §2.2--§2.7). One-sided, α = 0.0
 | Test | Statistic | Rule |
 |:----------------|:----------------------------------------|:------------------------------------------|
 | H_Reinforce | Spearman ρ, market share against AI share, per category; permutation test (ρ > 0) | A category passes with ρ ≥ 0.5, p < 0.05 and at least 5 units named; CONFIRMED if both pass, PARTIAL if one |
-| H_Amplify | Leader's ratio (k/n)/p₀ over the nine models; exact binomial test both ways | Amplified: ratio ≥ 1.25 and p(X ≥ k) < 0.05; flattened: ratio < 1 and p(X ≤ k) < 0.05; CONFIRMED if amplified in both, FALSIFIED if flattened in both |
+| H_Amplify | Leader's ratio (k/n)/p₀ over the nine models; exact binomial test both ways | Amplified: ratio ≥ 1.25 and p(X ≥ k) < 0.05; below parity: ratio < 1 and p(X ≤ k) < 0.05; CONFIRMED if amplified in both, FALSIFIED if below parity in both |
 | H_Afterlife | Share of pre-cutoff ghost × model pairs named in a recommendation answer without a gone-flag; exact binomial test against 0.05 | A category passes with rate ≥ 0.2 and p < 0.05; low below 0.05; CONFIRMED if both pass, FALSIFIED if both low |
 | H_Decay | Spearman ρ, gap in months against ghost Presence, over pre-cutoff pairs; permutation within model (ρ < 0) | CONFIRMED: ρ ≤ -0.3 and p < 0.05; PARTIAL: ρ < 0, p < 0.05, ρ > -0.3; evaluable with at least 10 pairs named |
 | H_Flag | Flag rate of ghost status answers against control status answers; one-sided Fisher exact test | CONFIRMED: ghost rate ≥ 0.8 and p < 0.05; FALSIFIED: rate < 0.5 and p ≥ 0.05 |
@@ -113,7 +113,7 @@ The declared audit sample (pre-registration §5.5) was drawn by script with seed
 
 ## 2.7 Pre-registration, lock and deviations
 
-The pre-registration was locked at tag `v0.40-prereg-r1` (commit a53d2b7) on 16 November 2026 and deposited on OSF (`ec6wh`, folders v40/prereg and v40/registries), every file verified by SHA-256, before the first study call. One discrepancy in the locked file is reported here rather than corrected: its first line still reads "revision r1, DRAFT for the pre-registrant's review --- not locked", and its status line describes the draft. The file was edited only at the lock, to correct §9's test count (DEVIATIONS lock record), and not after; what makes it locked is the tag, the lock manifest (`prereg/LOCK_MANIFEST_v0_40.sha256`) and the OSF deposit, all recorded in the lock entry of `DEVIATIONS.md`. Besides that lock record and the collection records, the study has two dated entries: Entry 0 (ex ante, the conflict-of-interest screen of the registry; Declarations) and Entry 1 (the coding-only step, the scripted audit draw and the AI-only analyst, §2.6). The scorer ran once, unchanged, after the audit; the mentions file it rewrote matched the coding step's SHA-256.
+The pre-registration was locked at tag `v0.40-prereg-r1` (commit a53d2b7) on 16 November 2026 and deposited on OSF (`ec6wh`, folders v40/prereg and v40/registries), every file verified by SHA-256, before the first study call. One discrepancy in the locked file is reported here rather than corrected: its first line still reads "revision r1, DRAFT for the pre-registrant's review --- not locked", and its status line describes the draft. The file was edited only at the lock, to correct §9's test count (DEVIATIONS lock record), and not after; what makes it locked is the tag, the lock manifest (`prereg/LOCK_MANIFEST_v0_40.sha256`) and the OSF deposit, all recorded in the lock entry of `DEVIATIONS.md`. Besides that lock record and the collection records, the study has three dated entries: Entry 0 (ex ante, the conflict-of-interest screen of the registry; Declarations), Entry 1 (the coding-only step, the scripted audit draw and the AI-only analyst, §2.6) and Entry 2 (after scoring: the ceiling of the H_Amplify ratio, §3.4; the Gemini 4 Carbon timing, §2.2; and the pre-registered reporting the scorer did not output, computed afterwards, §3.10 and Appendix A). The scorer ran once, unchanged, after the audit; the mentions file it rewrote matched the coding step's SHA-256.
 
 # 3. Results
 
@@ -144,11 +144,13 @@ Across the nine models, AI share rose with market share in airlines (ρ = 0.612,
 
 ![Spearman correlation of market share with AI share for each category, panel and pre-registered specification. Filled markers meet the registered rule.](../../reports/figs/v40/paper/fig_01_reinforce.pdf){#fig:reinforce width=100%}
 
-## 3.4 H_Amplify: the leaders' share of namings is below their market share, on a ratio with a ceiling (FALSIFIED)
+## 3.4 H_Amplify: falsified as registered, on a ratio that could not reach its threshold (FALSIFIED)
 
-By the registered rule the leaders were not amplified but flattened (Figure 2). American Airlines accounted for 216 of the 1,668 airline unit-namings against a market share of 0.216 of the current units, a ratio of 0.599 (p(X ≤ k) < 0.001). The JPMorgan Chase holder accounted for 395 of 2,458, ratio 0.887 (p(X ≤ k) = 0.004). Both categories meet the registered "flattened" rule, so H_Amplify is FALSIFIED. The verdict stands as registered, but an added check, not in the pre-registration, shows that the ratio has a ceiling the pre-registration did not anticipate. k counts answers that name the leader and cannot exceed the number of answers, while n counts every current unit named in every answer. Answers named several units each, so at the observed breadth of answers even a leader named in every answer would have had a ratio below the amplification threshold in airlines and below parity in banks. The "flattening" therefore describes the leader's share of the namings inside answers that list many brands; it does not mean the leader was left out. The JPMorgan Chase holder was named in 395 of the 288 legacy and 144 current bank recommendation answers. American's count is also lowered by the ambiguity rule, which excludes the bare name "American": with it included (S-Ambig), American was named in 349 answers instead of 216 (ratio 0.672). The binomial test also treats each naming as an independent draw. The airline result holds with Delta as leader on operating share (ratio 0.755); on the current arm alone the bank ratio was 0.945 and not significant either way (current-arm verdict UNDETERMINED). The descriptive log-log slopes of AI share on market share, which carry no verdict, were 0.629 for airlines and 0.985 for banks (the slope without the brokerage holders is not in the scored record; §3.10).
+American Airlines accounted for 216 of the 1,668 airline unit-namings against a market share of 0.216 of the current units, a ratio of 0.599 (p(X ≤ k) < 0.001), and the JPMorgan Chase holder for 395 of 2,458, a ratio of 0.887 (p(X ≤ k) = 0.004; Figure 2). Neither reached the amplification threshold and both met the registered rule for a ratio below parity, so H_Amplify is FALSIFIED, and the verdict stands as registered.
 
-![The leader's share of AI naming divided by its market share, per category, panel and specification; dashed lines at parity and at the registered amplification threshold.](../../reports/figs/v40/paper/fig_02_amplify.pdf){#fig:amplify width=100%}
+A post-scoring check (DEVIATIONS Entry 2), not in the pre-registration, shows that the test could not have confirmed. k counts the answers that name the leader and cannot exceed the number of answers (432 search-off recommendation answers per category), while n counts every current unit named in every answer; the answers named on average 3.861 airline and 5.690 bank units. At that breadth, a leader named in every answer would have had a ratio of 1.198 in airlines and 0.970 in banks: below the registered 1.25 in both categories, and below parity in banks. The locked measure therefore cannot show whether AI answers amplify the leader, and a ratio below parity on it is no evidence that they understate the leader. For scale, the JPMorgan Chase holder was named in 395 of the 432 bank answers (91.4%) and American in 216 of 432 (50.0%); counting the bare name "American", which the ambiguity rule excludes, American was named in 349 (80.8%; S-Ambig ratio 0.672). The ceiling depends on the specification (Figure 2): on the current arm alone in airlines it was 1.497, and with Delta as leader on operating share 1.299, above the threshold, against observed ratios of 0.457 and 0.755; these sensitivities carry no verdict. On the current arm alone the bank ratio was 0.945 and not significant either way (current-arm verdict UNDETERMINED). The binomial test also treats each naming as an independent draw. The descriptive log-log slopes of AI share on market share, which carry no verdict, were 0.629 for airlines and 0.985 for banks, and 1.001 for banks without the brokerage and wealth holders (computed after scoring; §3.10).
+
+![The leader's share of AI naming divided by its market share, per category, panel and specification, with the largest value the measure could reach at the observed breadth of answers (grey tick; post-scoring check, DEVIATIONS Entry 2); dashed lines at parity and at the registered amplification threshold.](../../reports/figs/v40/paper/fig_02_amplify.pdf){#fig:amplify width=100%}
 
 ## 3.5 H_Afterlife: ghosts named without a gone-flag fall between the null and the pass line (UNDETERMINED)
 
@@ -187,7 +189,7 @@ Table: Verdicts and sensitivity verdicts. "--" marks a sensitivity that does not
 | H_Flag | CONFIRMED | CONFIRMED | CONFIRMED | CONFIRMED | CONFIRMED |
 | H_Search | PARTIAL | PARTIAL | PARTIAL | -- | PARTIAL |
 
-The single-category sensitivities carry no verdict of their own: S-Operating passed the airline rule (ρ = 0.636) and flattened Delta (ratio 0.755); S-SunCountry failed the airline rule (ρ = 0.483) and flattened American (ratio 0.604); S-D4 passed the bank rule (ρ = 0.733); S-Discover kept H_Flag CONFIRMED; S-Legal left H_Afterlife UNDETERMINED and H_Decay PARTIAL.
+The single-category sensitivities carry no verdict of their own: S-Operating passed the airline rule (ρ = 0.636) and gave Delta a leader ratio of 0.755; S-SunCountry failed the airline rule (ρ = 0.483) and gave American a ratio of 0.604; S-D4 passed the bank rule (ρ = 0.733); S-Discover kept H_Flag CONFIRMED; S-Legal left H_Afterlife UNDETERMINED and H_Decay PARTIAL.
 
 ## 3.10 Descriptives
 
@@ -201,11 +203,11 @@ The single-category sensitivities carry no verdict of their own: S-Operating pas
 
 *First mention.* Among bank recommendation answers naming a current unit, the JPMorgan Chase holder was named first in 64.6% (Claude Opus 4.5), 60.4% (Claude Sonnet 4.5), 68.8% (GPT-4o), 56.3% (GPT-4o mini), 75.0% (Gemini 2.5 Flash), 75.0% (Gemini 2.5 Flash-Lite), 54.2% (Claude Fable 5.2), 40.4% (GPT-6 Astra) and 27.1% (Gemini 4 Argon) of answers, search off; with search on the current models' shares were 25.0%, 6.3% and 31.3%.
 
-*Not in the scored record.* Several pre-registered reporting items are not in the scorer's verdict file and are not reported here: descriptives 1 and 2 (the AI share of each current unit and the ghost Presence of each ghost, per model and arm); the per-ghost and per-model results promised beside each test (pre-registration §8, item 6); the H_Amplify log-log slope without the brokerage holders (§2.3); and the Discover status answers in full (§3.2). The coded mentions from which they follow are in the study data (`v40_mentions.csv`). Whether they are computed after scoring and labelled as such, or recorded as a deviation, is open. The recognition codes (descriptive 4) and the search traces (descriptive 7) are in the verdict file in full.
+*Computed after scoring.* The locked scorer did not output four pre-registered reporting items: descriptives 1 and 2 (the AI share of each current unit and the ghost Presence of each ghost, per model and arm), the per-ghost and per-model results beside each test (pre-registration §8, item 6), the H_Amplify log-log slope without the brokerage holders (§2.3) and the Discover status answers in full (§3.2). They were computed afterwards by a separate script that checks the SHA-256 of the frozen coded mentions, imports the locked scorer unchanged and, before writing anything, reproduces the coded mentions byte for byte and the scored tests exactly (DEVIATIONS Entry 2). They are pre-registered, computed after scoring because the locked scorer did not output them, and they change no verdict. Appendix A gives the per-model results (Tables 4 and 5), the per-ghost results (Table 6), the AI and market shares of each current unit (Tables 7 and 8) and ghost Presence by model (Table 9). The afterlife pairs came from BB&T (5 pairs), SunTrust (4), Virgin America (2) and Northwest (1); no other ghost was named without a gone-flag in a pre-cutoff pair (Table 6). Of the 27 search-off status answers about Discover, 10 carried a gone-flag and 14 named Capital One (9 did both); with search on, 2 of 3 were flagged and 3 named Capital One. These answers, which may be correct when they say Discover's deposits now sit with Capital One, are given in full in `osf/v40/v40_discover_status_answers.md`. The recognition codes (descriptive 4) and the search traces (descriptive 7) are in the verdict file in full.
 
 # 4. Discussion
 
-The models' naming of current brands followed market share in both categories, which is in line with the Tri-System framework's P1 (MSI Working Paper 26-132) in its ordinal form; in airlines this rests on the legacy models and on how one small unit is placed (below). Whether AI amplifies the leader could not be decided by this measure: the registered ratio divides answers by unit-namings, and at the breadth the models' answers showed it could not reach the amplification threshold (§3.4). The bank leader was named in most bank answers and first in a majority of them for every legacy model (§3.10). A test of leader amplification needs a measure built per answer, such as the share of answers naming the leader against its market share, or rank within the answer.
+The models' naming of current brands followed market share in both categories, which is in line with the Tri-System framework's P1 (MSI Working Paper 26-132) in its ordinal form; in airlines this rests on the legacy models and on how one small unit is placed (below). Whether AI amplifies the leader could not be decided by this measure: the registered ratio divides answers by unit-namings, and at the breadth the models' answers showed it could not reach the amplification threshold (§3.4). The falsified verdict is therefore no evidence that AI answers understate the leader either. A test of leader amplification needs a measure built per answer, such as the share of answers naming the leader against its market share, or rank within the answer.
 
 Second, status answers about ghosts carried a gone-flag in nearly every case, and with web search on the current models flagged the few exits that came after their cutoff, a small count from two brands, most of them already flagged without search. Whether ghosts still surface in recommendations without such a flag was not settled: the rates sat between the registered null and pass lines, and the audit suggests the rule-based coder overstates them. Ghost Presence was lower at longer exit-to-cutoff gaps, as expected if a brand's footprint in training text fades after it leaves the market, but the association was weaker than the registered band and rested on few named pairs; the design shows an association, not its cause.
 
@@ -218,11 +220,12 @@ The airline reinforcement result should be read with its sensitivity. With ten u
 3. *Rule-based coding.* The gone-flag lexicon misses paraphrases and fires on living brands whose answers mention a merger they survived. The audit met its registered threshold overall but not on the recommendation answers alone (κ 0.487).
 4. *The audit has no human check.* The analyst named in the pre-registration was replaced by two blind AI coders and an AI tie-breaker (DEVIATIONS Entry 1); one of them, Claude Fable 5.2, is also a model of the study's current arm.
 5. *Cutoffs are vendor-published months.* Claude Fable 5.2 takes Claude Opus 5.5's cutoff rows; differences within a month are not resolved.
-6. *Pairs are not independent.* Ghost × model pairs share ghosts, and answers share probes and runs; the exact tests treat them as independent, as does the binomial test of H_Amplify, which treats each naming as a draw. The pre-registration promised per-ghost and per-model results beside each test; they are not in the scored record and are not reported here (§3.10).
+6. *Pairs are not independent.* Ghost × model pairs share ghosts, and answers share probes and runs; the exact tests treat them as independent, as does the binomial test of H_Amplify, which treats each naming as a draw. The per-ghost and per-model results promised beside each test were computed after scoring (Appendix A; DEVIATIONS Entry 2).
 7. *The bank living-brand control was itself changing.* Discover's deposits were moving to Capital One; H_Flag is also reported without it.
 8. *Share measures.* AI share counts answers that name a unit, not rank or prominence; the leader ratio has a ceiling set by the breadth of answers (§3.4); the ambiguity rule removes the bare names of the largest airlines; brokerage-sweep holders enter by the deposit rule; near-floor brands such as USAA are not units.
-9. *Pre-registered reporting not in the scored record* (§3.10): descriptives 1 and 2, the per-ghost and per-model results, the log-log slope without the brokerage holders, and the Discover status answers in full.
+9. *Pre-registered reporting computed after scoring.* The locked scorer did not output descriptives 1 and 2, the per-ghost and per-model results, the log-log slope without the brokerage holders or the Discover status answers in full; they were computed afterwards from the frozen coded data with the locked scorer's own code and are labelled as such (§3.10, Appendix A; DEVIATIONS Entry 2).
 10. *The locked file's first line still reads DRAFT* (§2.7); the lock rests on the tag, the manifest and the OSF deposit.
+11. *The current arm's Google model.* The pre-lock check of 12 November found no Gemini API statement that Gemini 4 Carbon was generally available; a changelog entry dated 10 November, quoted in DEVIATIONS Entry 1, says it was, so under the pre-registration's rule Carbon would have replaced Gemini 4 Argon (§2.2; DEVIATIONS Entry 2).
 
 # 6. Future Research
 
@@ -248,7 +251,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-Materials are deposited at OSF (osf.io/ec6wh), `v40/`: the locked pre-registration, probe set, cost estimate, pre-lock and technical checks and lock manifest (`prereg/`) and the frozen registry with its sources (`registries/`). The answers, coded mentions, verdict file, audit records and values file are in the repository at `osf/v40/` and are planned for OSF with the study's data deposit. The pre-registered code is in the programme's GitHub repository (github.com/thirdsystem-aias/aias) at tag `v0.40-prereg-r1`; the scripts that fill this paper and draw its figures are on the branch `v0.40-paper`. Every number in this paper is read from `osf/v40/v40_values.json`, which names the source file and path of each value.
+Materials are deposited at OSF (osf.io/ec6wh), `v40/`: the locked pre-registration, probe set, cost estimate, pre-lock and technical checks and lock manifest (`prereg/`) and the frozen registry with its sources (`registries/`). The answers, coded mentions, verdict file, audit records, post-scoring file and values file are in the repository at `osf/v40/` and are planned for OSF with the study's data deposit. The pre-registered code is in the programme's GitHub repository (github.com/thirdsystem-aias/aias) at tag `v0.40-prereg-r1`; the scripts that fill this paper and draw its figures are on the branch `v0.40-paper-r2`. The post-scoring computations of DEVIATIONS Entry 2 are in `osf/v40/v40_postscore.json`, written by `osf/v40/scripts/postscore_v0_40.py`. Every number in this paper is read from `osf/v40/v40_values.json`, which names the source file and path of each value.
 
 # References {-}
 
@@ -295,3 +298,142 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 Shaw, S., & Nave, G. (2026). *Thinking---Fast, Slow, and Artificial: How AI is Reshaping Human Reasoning and the Rise of Cognitive Surrender*. SSRN 6097646.
 
 Varadarajan, R., DeFanti, M. P., & Busch, P. S. (2006). Brand portfolio, corporate image, and reputation: Managing brand deletions. *Journal of the Academy of Marketing Science*, 34(2), 195--205.
+
+<!-- APPENDIX A START (appendix_tables_v0_40.py) -->
+
+# Appendix A. Pre-registered tables computed after scoring {-}
+
+These tables are pre-registered, computed after scoring because the locked scorer did not output them (§3.10; DEVIATIONS Entry 2). They were computed from the frozen coded mentions by `osf/v40/scripts/postscore_v0_40.py`, which imports the locked scorer unchanged and first reproduces the scored tests exactly; they carry no verdict and change none. Every value is read from `osf/v40/v40_values.json` (keys `prereg_post.*`).
+
+Table: Per-model results beside H_Reinforce and H_Amplify (search off; computed after scoring, DEVIATIONS Entry 2). ρ: Spearman correlation of market share with the model's AI share; ratio: the leader's (k/n)/p₀ for the model; ceiling: the largest ratio the measure could reach at the model's breadth of answers. Per-model statistics carry no test.
+
+| Model | ρ airlines | ρ banks | Ratio airlines | Ceiling airlines | Ratio banks | Ceiling banks |
+|:---|---:|---:|---:|---:|---:|---:|
+| Claude Opus 4.5 (M1) | 0.284 | 0.577 | 0.167 | 2.676 | 1.018 | 1.086 |
+| Claude Sonnet 4.5 (M2) | 0.596 | 0.615 | 0.430 | 1.722 | 0.913 | 0.974 |
+| GPT-4o (M3) | 0.888 | 0.681 | 0.734 | 0.978 | 0.758 | 0.910 |
+| GPT-4o mini (M4) | 0.863 | 0.625 | 0.727 | 0.851 | 0.805 | 0.920 |
+| Gemini 2.5 Flash (M5) | 0.912 | 0.639 | 0.649 | 0.820 | 0.850 | 0.907 |
+| Gemini 2.5 Flash-Lite (M6) | 0.979 | 0.604 | 0.771 | 0.881 | 0.849 | 0.849 |
+| Claude Fable 5.2 (C1) | -0.231 | 0.626 | 0.000 | 2.388 | 0.868 | 0.926 |
+| GPT-6 Astra (C2) | 0.265 | 0.487 | 0.220 | 3.525 | 1.254 | 1.505 |
+| Gemini 4 Argon (C3) | 0.879 | 0.652 | 0.656 | 0.768 | 0.836 | 0.892 |
+
+Table: Per-model results beside H_Afterlife, H_Decay, H_Flag and H_Search (computed after scoring, DEVIATIONS Entry 2). Afterlife: pre-cutoff ghost pairs named without a gone-flag; Decay: pairs with ghost Presence above zero, and the within-model Spearman ρ of gap against ghost Presence (n/a: no pair named); Flag: flagged status answers about pre-cutoff ghosts and about living brands; Search: paired ghost status cells flagged with search on only / with search off only (current models).
+
+| Model | Afterlife airlines | Afterlife banks | Decay pairs named | Decay ρ | Flag ghosts | Flag living brands | Search on / off only |
+|:---|---:|---:|---:|---:|---:|---:|---:|
+| Claude Opus 4.5 (M1) | 0 of 6 | 0 of 16 | 0 of 22 | n/a | 66 of 66 | 4 of 21 | -- |
+| Claude Sonnet 4.5 (M2) | 0 of 6 | 2 of 16 | 3 of 22 | -0.460 | 66 of 66 | 6 of 21 | -- |
+| GPT-4o (M3) | 0 of 6 | 1 of 15 | 2 of 21 | -0.348 | 60 of 63 | 0 of 21 | -- |
+| GPT-4o mini (M4) | 0 of 6 | 0 of 15 | 1 of 21 | -0.240 | 57 of 63 | 0 of 21 | -- |
+| Gemini 2.5 Flash (M5) | 1 of 6 | 2 of 16 | 3 of 22 | -0.328 | 66 of 66 | 0 of 21 | -- |
+| Gemini 2.5 Flash-Lite (M6) | 0 of 6 | 2 of 16 | 2 of 22 | -0.299 | 63 of 66 | 0 of 21 | -- |
+| Claude Fable 5.2 (C1) | 0 of 7 | 0 of 16 | 0 of 23 | n/a | 69 of 69 | 11 of 21 | 0 / 2 |
+| GPT-6 Astra (C2) | 0 of 6 | 0 of 16 | 0 of 22 | n/a | 66 of 66 | 5 of 21 | 1 / 2 |
+| Gemini 4 Argon (C3) | 2 of 6 | 2 of 16 | 5 of 22 | -0.383 | 66 of 66 | 6 of 21 | 0 / 0 |
+
+Table: Per-ghost results (descriptive 2 and the per-ghost results beside each test; computed after scoring, DEVIATIONS Entry 2). Pairs: ghost × tested model, search off; pre- and post-cutoff exits shown apart. Afterlife: pre-cutoff pairs named without a gone-flag; named: pre-cutoff pairs with ghost Presence above zero; Presence: mean over pre-cutoff pairs; Flag: flagged search-off status answers (pre-cutoff pairs; -- where there are none); Search: cells flagged with search on only / off only; post-cutoff: of the post-cutoff current-model cells, those flagged with search on.
+
+| Ghost | Pre-cutoff pairs | Post-cutoff pairs | Afterlife | Named | Presence | Flag | Search on / off only | Post-cutoff flagged |
+|:---|---:|---:|---:|---:|---:|---:|---:|---:|
+| ATA Airlines | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Northwest Airlines | 9 | 0 | 1 | 1 | 0.002 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Continental Airlines | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| AirTran Airways | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| US Airways | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Virgin America | 9 | 0 | 2 | 2 | 0.009 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Spirit Airlines | 1 | 8 | 0 | 0 | 0.000 | 3 of 3 | 1 / 0 | 2 of 2 |
+| Commerce Bank (Philadelphia) | 9 | 0 | 0 | 0 | 0.000 | 21 of 27 | 0 / 0 | 0 of 0 |
+| North Fork Bank | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| LaSalle Bank | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Washington Mutual | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Countrywide | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| National City | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Wachovia | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| ING Direct | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Sovereign Bank | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 1 | 0 of 0 |
+| BBVA Compass | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| SunTrust | 9 | 0 | 4 | 6 | 0.046 | 27 of 27 | 0 / 0 | 0 of 0 |
+| BB&T | 9 | 0 | 5 | 5 | 0.039 | 27 of 27 | 0 / 1 | 0 of 0 |
+| Union Bank (MUFG Union Bank) | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| Signature Bank | 9 | 0 | 0 | 0 | 0.000 | 27 of 27 | 0 / 0 | 0 of 0 |
+| First Republic Bank | 7 | 2 | 0 | 1 | 0.003 | 21 of 21 | 0 / 0 | 0 of 0 |
+| BMO Harris | 9 | 0 | 0 | 1 | 0.007 | 21 of 27 | 0 / 2 | 0 of 0 |
+| Silicon Valley Bank | 0 | 9 | 0 | 0 | n/a | -- | 0 / 0 | 3 of 3 |
+
+Table: AI share and market share of each current airline unit (descriptive 1; computed after scoring, DEVIATIONS Entry 2). Market share: share of the category's current units; AI share: mean over the models of each model's share of unit-namings (search off unless stated). Log-log slope of AI share on market share: all nine 0.629, legacy 1.209, current 0.210, current with search 0.448. Each model's own shares are in the values file.
+
+| Unit | Market share | AI share, nine | Legacy | Current | Current, search on |
+|:---|---:|---:|---:|---:|---:|
+| American Airlines | 21.6% | 10.5% | 12.5% | 6.3% | 5.8% |
+| Delta Air Lines | 20.3% | 13.1% | 15.0% | 9.4% | 11.0% |
+| United Airlines | 19.7% | 10.2% | 12.4% | 5.7% | 6.5% |
+| Southwest Airlines | 17.5% | 12.1% | 14.9% | 6.6% | 7.9% |
+| Alaska Airlines | 8.7% | 18.4% | 16.0% | 23.2% | 19.5% |
+| JetBlue | 4.7% | 21.4% | 17.5% | 29.1% | 34.8% |
+| Frontier Airlines | 4.0% | 4.2% | 5.7% | 1.2% | 0.9% |
+| Allegiant Air | 2.2% | 7.7% | 5.8% | 11.6% | 10.1% |
+| Breeze Airways | 0.8% | 0.8% | 0.1% | 2.2% | 2.5% |
+| Sun Country Airlines | 0.6% | 1.6% | 0.0% | 4.7% | 0.9% |
+
+Table: AI share and market share of each current bank unit (descriptive 1; computed after scoring, DEVIATIONS Entry 2). Market share: share of the category's current units; AI share: mean over the models of each model's share of unit-namings (search off unless stated). Log-log slope of AI share on market share: all nine 0.985, legacy 1.079, current 0.904, current with search 0.787; without the brokerage and wealth holders (D4): 1.001, 1.075, 0.943 and 0.830. Each model's own shares are in the values file.
+
+| Unit | Market share | AI share, nine | Legacy | Current | Current, search on |
+|:---|---:|---:|---:|---:|---:|
+| Chase (JPMorgan Chase) | 18.1% | 16.4% | 15.7% | 17.9% | 19.5% |
+| Bank of America | 16.2% | 14.2% | 15.2% | 12.1% | 9.0% |
+| Wells Fargo | 12.7% | 10.7% | 13.2% | 5.7% | 5.6% |
+| Citi | 7.3% | 2.7% | 3.2% | 1.9% | 1.5% |
+| U.S. Bank | 4.3% | 5.1% | 5.4% | 4.4% | 6.0% |
+| Capital One | 4.2% | 11.7% | 9.7% | 15.7% | 17.1% |
+| Morgan Stanley | 3.9% | 0.0% | 0.0% | 0.0% | 0.0% |
+| Goldman Sachs / Marcus | 3.9% | 4.5% | 5.0% | 3.3% | 3.5% |
+| PNC | 3.7% | 4.9% | 5.9% | 2.8% | 1.9% |
+| Truist | 3.4% | 1.6% | 1.8% | 1.3% | 1.6% |
+| TD Bank | 2.5% | 2.4% | 2.9% | 1.3% | 1.0% |
+| Charles Schwab | 2.1% | 4.2% | 1.5% | 9.7% | 9.9% |
+| Fifth Third | 2.0% | 0.9% | 0.9% | 1.1% | 1.5% |
+| Huntington | 1.8% | 1.0% | 0.9% | 1.3% | 1.9% |
+| BMO | 1.6% | 0.5% | 0.2% | 1.0% | 2.1% |
+| Citizens | 1.5% | 1.1% | 1.1% | 1.2% | 0.3% |
+| First Citizens | 1.4% | 0.7% | 0.7% | 0.6% | 2.1% |
+| M&T Bank | 1.4% | 0.7% | 0.7% | 0.7% | 0.9% |
+| American Express | 1.4% | 1.0% | 0.7% | 1.6% | 0.3% |
+| KeyBank | 1.3% | 0.6% | 0.9% | 0.1% | 0.6% |
+| Ally | 1.3% | 13.7% | 13.0% | 15.2% | 12.1% |
+| HSBC | 1.1% | 0.0% | 0.0% | 0.0% | 0.0% |
+| Regions | 1.1% | 1.4% | 1.4% | 1.3% | 1.6% |
+| UBS | 0.9% | 0.0% | 0.0% | 0.0% | 0.0% |
+| Pinnacle | 0.8% | 0.0% | 0.0% | 0.0% | 0.0% |
+
+Table: Ghost Presence by model: search-off recommendation answers naming the ghost, of the 48 answers per model and category (descriptive 2; computed after scoring, DEVIATIONS Entry 2). †: post-cutoff exit for that model (not a tested pair). Models: M1 Claude Opus 4.5, M2 Claude Sonnet 4.5, M3 GPT-4o, M4 GPT-4o mini, M5 Gemini 2.5 Flash, M6 Gemini 2.5 Flash-Lite, C1 Claude Fable 5.2, C2 GPT-6 Astra, C3 Gemini 4 Argon. The search-on answers and the gaps are in the values file.
+
+| Ghost | M1 | M2 | M3 | M4 | M5 | M6 | C1 | C2 | C3 |
+|:---|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| ATA Airlines | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Northwest Airlines | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 1 |
+| Continental Airlines | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| AirTran Airways | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| US Airways | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Virgin America | 0 | 0 | 0 | 0 | 3 | 0 | 0 | 0 | 1 |
+| Spirit Airlines | 3† | 6† | 11† | 16† | 22† | 21† | 0 | 0† | 10† |
+| Commerce Bank (Philadelphia) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| North Fork Bank | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| LaSalle Bank | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Washington Mutual | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Countrywide | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| National City | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Wachovia | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| ING Direct | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Sovereign Bank | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| BBVA Compass | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| SunTrust | 0 | 4 | 3 | 3 | 4 | 3 | 0 | 0 | 3 |
+| BB&T | 0 | 4 | 3 | 0 | 4 | 3 | 0 | 0 | 3 |
+| Union Bank (MUFG Union Bank) | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| Signature Bank | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 |
+| First Republic Bank | 0 | 1 | 0† | 0† | 0 | 0 | 0 | 0 | 0 |
+| BMO Harris | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 0 | 3 |
+| Silicon Valley Bank | 0† | 0† | 0† | 0† | 0† | 3† | 0† | 0† | 0† |
+
+<!-- APPENDIX A END -->

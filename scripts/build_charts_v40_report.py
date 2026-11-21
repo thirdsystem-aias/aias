@@ -100,17 +100,41 @@ def r1():
 
 
 def r2():
-    fig = frame("Leader's share of AI naming as a multiple of its market share",
-                "Every model group stays below the same-as-market line, in both categories.")
+    # dot: the scored multiple (verdict file); tick: the most it could reach at the observed breadth of answers
+    # (post-scoring check, DEVIATIONS Entry 2; values ceiling.specs.*)
+    fig = frame("Leader's share of AI naming as a multiple of its market share, and the most it could reach",
+                "Answers name several brands, so the multiple has a cap; for all nine models it sits below the "
+                "amplified line.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
-    rows = [("American, all nine models", ("H_Amplify.airline.ratio",), True),
-            ("American, older models", ("sensitivity.S-Arm.legacy.H_Amplify.airline.ratio",), False),
-            ("American, newest models", ("sensitivity.S-Arm.current.H_Amplify.airline.ratio",), False),
-            ("JPMorgan Chase, all nine models", ("H_Amplify.bank.ratio",), True),
-            ("JPMorgan Chase, older models", ("sensitivity.S-Arm.legacy.H_Amplify.bank.ratio",), False),
-            ("JPMorgan Chase, newest models", ("sensitivity.S-Arm.current.H_Amplify.bank.ratio",), False)]
-    hdots(ax, rows, (0, 1.5), [(1.0, "same as market"), (v("thresholds.amplify_ratio"), "amplified " + d("thresholds.amplify_ratio"))],
-          "Share of AI naming divided by market share", lambda b: d(b[0]))
+    rows = [("American, all nine models", "H_Amplify.airline", "ceiling.specs.all_nine.airline"),
+            ("American, older models", "sensitivity.S-Arm.legacy.H_Amplify.airline", "ceiling.specs.legacy.airline"),
+            ("American, newest models", "sensitivity.S-Arm.current.H_Amplify.airline", "ceiling.specs.current.airline"),
+            ("JPMorgan Chase, all nine models", "H_Amplify.bank", "ceiling.specs.all_nine.bank"),
+            ("JPMorgan Chase, older models", "sensitivity.S-Arm.legacy.H_Amplify.bank", "ceiling.specs.legacy.bank"),
+            ("JPMorgan Chase, newest models", "sensitivity.S-Arm.current.H_Amplify.bank", "ceiling.specs.current.bank")]
+    xlim = (0, 1.6)
+    n = len(rows)
+    for i, (lab, base, cb) in enumerate(rows):
+        assert v(base + ".k") == v(cb + ".k") and v(base + ".n") == v(cb + ".n"), (base, cb)
+        y = n - 1 - i
+        hi = "all nine" in lab
+        x, c = v(base + ".ratio"), v(cb + ".ceiling_ratio")
+        ax.plot(xlim, [y, y], color="#EFEFEF", linewidth=0.6, zorder=0)
+        ax.plot([x, c], [y, y], color=LIGHT, linewidth=1.6, zorder=1, solid_capstyle="butt")
+        ax.plot([c, c], [y - 0.28, y + 0.28], color=INDIGO if hi else GREY, linewidth=1.8, zorder=2)
+        ax.scatter([x], [y], s=52, zorder=3, color="white", edgecolor=INDIGO if hi else GREY, linewidth=1.3)
+        ax.text(x, y + 0.3, d(base + ".ratio"), fontsize=7, color=INK if hi else GREY, ha="center", va="bottom")
+        ax.text(c + 0.02, y, "most " + d(cb + ".ceiling_ratio"), fontsize=7, color=INDIGO if hi else GREY,
+                ha="left", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=0.3), zorder=4)
+    for xr, lab in ((1.0, "same as market"), (v("thresholds.amplify_ratio"), "amplified " + d("thresholds.amplify_ratio"))):
+        ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
+        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom")
+    ax.set_yticks(range(n)[::-1])
+    ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
+    ax.set_xlim(*xlim)
+    ax.set_ylim(-0.6, n + 0.7)
+    ax.set_xlabel("Share of AI naming divided by market share (dot: scored; tick: highest possible)", fontsize=7.8)
+    clean(ax)
     save(fig, "report_fig_02_leader_multiple")
 
 
