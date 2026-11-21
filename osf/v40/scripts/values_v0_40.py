@@ -8,6 +8,9 @@ reads ONLY files already in the repo, written by the locked pipeline:
   osf/v40/data/v40_coding_manifest.json     (code_only_v0_40.py, step 8)
   osf/v40/data/v40_raw.jsonl                (acquisition record)
   osf/v40/prereg/prelock_check_v0_40.jsonl and prereg/feasibility_check_v0_40.json (pre-lock spend, section 6.5)
+  osf/v40/v40_postscore.json                (postscore_v0_40.py, DEVIATIONS Entry 2: the H_Amplify ceiling check and
+                                             the pre-registered reporting the locked scorer did not output; each such
+                                             value carries its label in its source record)
 and writes osf/v40/v40_values.json (flat keys -> value, display string, rounding rule, source file + JSON path) and
 osf/v40/v40_values.md (the same as a human table). Costs are computed with the locked guard's own functions
 (budget_v0_40.Ledger / spend_of, acquire_v0_40.prior_spend), so they equal what the guard recorded.
@@ -43,6 +46,7 @@ REL = {
     "coded": "osf/v40/data/v40_coded_answers.csv",
     "prelock_raw": "osf/v40/prereg/prelock_check_v0_40.jsonl",
     "feasibility": "osf/v40/prereg/feasibility_check_v0_40.json",
+    "postscore": "osf/v40/v40_postscore.json",
 }
 OUT_JSON = "osf/v40/v40_values.json"
 OUT_MD = "osf/v40/v40_values.md"
@@ -227,7 +231,7 @@ class Values:
         self.v[key] = {"value": value, "display": display(rule, value), "rule": rule, "rule_text": RULES[rule],
                        "source": source}
 
-    def add_tree(self, prefix, tree, file, keep_path_prefix=()):
+    def add_tree(self, prefix, tree, file, keep_path_prefix=(), label=None):
         for path, val in walk(tree):
             if path and str(path[-1]) in SKIP_LEAVES:
                 continue
@@ -236,7 +240,10 @@ class Values:
                 self.skipped_lists.append({"file": file, "path": full, "items": len(val)})
                 continue
             key = ".".join([prefix] + [str(p) for p in path] if prefix else [str(p) for p in path])
-            self.add(key, val, {"file": file, "path": full})
+            src = {"file": file, "path": full}
+            if label:
+                src["label"] = label
+            self.add(key, val, src)
 
 
 def git_last_commit(root, rel):
@@ -265,6 +272,20 @@ def costs(root):
             "judge_reserve": BG.JUDGE_RESERVE_USD, "cap": BG.BUDGET_CAP_USD, "pause": BG.PAUSE_AT_USD}
 
 
+def check_postscore(root, ps):
+    """The post-scoring file must have been built from the files now in the repo, with both closure checks passed."""
+    meta = ps.get("_meta") or {}
+    for rec in (meta.get("inputs") or {}).values():
+        p = Path(root) / rec["file"]
+        if not p.exists() or sha256(p) != rec["sha256"]:
+            raise Refused(f"{REL['postscore']} was built from a different {rec['file']}")
+    cc = meta.get("closure_checks") or {}
+    if not (cc.get("mentions_file_byte_identical") and cc.get("primary_tests_and_S_D4_equal_verdict_file")):
+        raise Refused(f"{REL['postscore']}: closure checks not passed")
+    if "ceiling" not in ps or "prereg" not in ps:
+        raise Refused(f"{REL['postscore']} lacks its ceiling or prereg block")
+
+
 def raw_counts(root):
     recs = [json.loads(l) for l in (Path(root) / REL["raw"]).read_text(encoding="utf-8").splitlines() if l.strip()]
     by = {}
@@ -282,6 +303,8 @@ def build(root=ROOT):
     audit = load_json(root, "audit")
     man = load_json(root, "manifest")
     check_manifest(root, man)
+    post = load_json(root, "postscore")
+    check_postscore(root, post)
     V = Values()
 
     # 1. verdicts: every scalar (hypotheses, sensitivities, manipulation checks incl. failures, descriptives, thresholds)
@@ -295,6 +318,12 @@ def build(root=ROOT):
     V.add("coding.answers", man["answers_coded"], {"file": REL["manifest"], "path": ["answers_coded"]})
     V.add("coding.mentions", man["outputs"]["v40_mentions.csv"]["rows"],
           {"file": REL["manifest"], "path": ["outputs", "v40_mentions.csv", "rows"]})
+
+    # 3b. DEVIATIONS Entry 2 (postscore_v0_40.py): the H_Amplify ceiling check, and the pre-registered reporting the
+    #     locked scorer did not output; each value's source record carries its label
+    labels = post["_meta"]["labels"]
+    V.add_tree("ceiling", post["ceiling"], REL["postscore"], keep_path_prefix=("ceiling",), label=labels["ceiling"])
+    V.add_tree("prereg_post", post["prereg"], REL["postscore"], keep_path_prefix=("prereg",), label=labels["prereg"])
 
     # 4. acquisition record counts (computed from the raw file)
     rc = raw_counts(root)
@@ -370,6 +399,10 @@ SECTIONS = [
     ("Registered thresholds and run settings", lambda k: k.split(".")[0] in ("thresholds", "phase", "seed",
                                                                             "permutations", "window_chars")),
     ("Descriptives (pre-registered, no verdicts)", lambda k: k.startswith("descriptives.")),
+    ("H_Amplify ceiling: post-scoring check, not a pre-registered test (DEVIATIONS Entry 2)",
+     lambda k: k.startswith("ceiling.")),
+    ("Pre-registered, computed after scoring because the locked scorer did not output them (DEVIATIONS Entry 2)",
+     lambda k: k.startswith("prereg_post.")),
 ]
 
 

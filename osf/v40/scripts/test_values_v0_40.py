@@ -185,6 +185,23 @@ class Refusal(unittest.TestCase):
         self.assertEqual(VV.main([], root=self.tmp, out_root=self.tmp), 2)
         self.assertTrue(self._outputs_absent())
 
+    def test_refuses_without_or_with_a_stale_postscore_file(self):
+        # DEVIATIONS Entry 2: the ceiling check and the post-scoring pre-registered reporting come from
+        # v40_postscore.json, which must have been built from the files now present, with its closure checks passed
+        self._copy_inputs(skip=("postscore",))
+        self.assertEqual(VV.main([], root=self.tmp, out_root=self.tmp), 2)
+        self._copy_inputs()
+        p = self.tmp / VV.REL["postscore"]
+        ps = json.loads(p.read_text(encoding="utf-8"))
+        ps["_meta"]["closure_checks"]["primary_tests_and_S_D4_equal_verdict_file"] = None
+        p.write_text(json.dumps(ps), encoding="utf-8")
+        self.assertEqual(VV.main([], root=self.tmp, out_root=self.tmp), 2)
+        ps["_meta"]["closure_checks"]["primary_tests_and_S_D4_equal_verdict_file"] = True
+        ps["_meta"]["inputs"]["mentions"]["sha256"] = "0" * 64
+        p.write_text(json.dumps(ps), encoding="utf-8")
+        self.assertEqual(VV.main([], root=self.tmp, out_root=self.tmp), 2)
+        self.assertTrue(self._outputs_absent())
+
     def test_builds_in_a_copy_identically(self):
         self._copy_inputs()
         doc = VV.build(self.tmp)
