@@ -1,4 +1,4 @@
-# v0.40 values file (6,431 values)
+# v0.40 values file (6,613 values)
 
 Machine-written by `osf/v40/scripts/values_v0_40.py`; do not edit by hand. Every figure in the v0.40 paper, report and site is read from `v40_values.json` (placeholder `{{v:<key>}}`), never typed.
 
@@ -16,7 +16,8 @@ Verdicts commit: `139f907b25d511b0a7cf649e23e6e700f40cf6c3`
 | `osf/v40/data/v40_coded_answers.csv` | `cd5bd02643ee788064a8dca80b94df849643bcf5d3a6a75739aa6c21ca9a9468` |
 | `osf/v40/prereg/prelock_check_v0_40.jsonl` | `a43dfac2315ce0814231fbf04a41511de76018d4cd76d1b52a453ecc8353715e` |
 | `osf/v40/prereg/feasibility_check_v0_40.json` | `723ceb6a9eeed2d3d68319ce8192284b19ca71ea49b4c0b69e5077650d4e17af` |
-| `osf/v40/v40_postscore.json` | `86b37a2c70e95a967ab8719b427d6d3761222476b05188a0fe1051df41ca86bd` |
+| `osf/v40/v40_postscore.json` | `5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89` |
+| `osf/v40/prereg/PRE_REGISTRATION_v0_40.md` | `82811d0723c33111f7fcf90b850b324c38ce7132be8a884f6ed2f36ac3ef0f64` |
 
 ## Rounding rules
 
@@ -2754,6 +2755,204 @@ Source paths are JSON Pointers into the named file.
 | `ceiling.specs.S-SunCountry.airline.ceiling_ratio` | 1.208 | 1.2077603156252879 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/specs/S-SunCountry/airline/ceiling_ratio` |
 | `ceiling.specs.S-SunCountry.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/specs/S-SunCountry/airline/ceiling_reaches_threshold` |
 | `ceiling.specs.S-SunCountry.airline.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/specs/S-SunCountry/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M1.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/leader` |
+| `ceiling.by_model.M1.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/answers` |
+| `ceiling.by_model.M1.airline.k` | 3 | 3 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/k` |
+| `ceiling.by_model.M1.airline.n` | 83 | 83 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/n` |
+| `ceiling.by_model.M1.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/p0` |
+| `ceiling.by_model.M1.airline.ratio` | 0.167 | 0.167239233798515 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/ratio` |
+| `ceiling.by_model.M1.airline.units_per_answer` | 1.729 | 1.7291666666666667 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/units_per_answer` |
+| `ceiling.by_model.M1.airline.leader_answer_share` | 6.3% | 0.0625 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/leader_answer_share` |
+| `ceiling.by_model.M1.airline.ceiling_ratio` | 2.676 | 2.67582774077624 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/ceiling_ratio` |
+| `ceiling.by_model.M1.airline.ceiling_reaches_threshold` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M1.airline.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M1.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/leader` |
+| `ceiling.by_model.M1.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/answers` |
+| `ceiling.by_model.M1.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/k` |
+| `ceiling.by_model.M1.bank.n` | 244 | 244 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/n` |
+| `ceiling.by_model.M1.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/p0` |
+| `ceiling.by_model.M1.bank.ratio` | 1.018 | 1.0176741299271241 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/ratio` |
+| `ceiling.by_model.M1.bank.units_per_answer` | 5.083 | 5.083333333333333 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/units_per_answer` |
+| `ceiling.by_model.M1.bank.leader_answer_share` | 93.8% | 0.9375 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/leader_answer_share` |
+| `ceiling.by_model.M1.bank.ceiling_ratio` | 1.086 | 1.0855190719222658 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/ceiling_ratio` |
+| `ceiling.by_model.M1.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M1.bank.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M1/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.M2.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/leader` |
+| `ceiling.by_model.M2.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/answers` |
+| `ceiling.by_model.M2.airline.k` | 12 | 12 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/k` |
+| `ceiling.by_model.M2.airline.n` | 129 | 129 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/n` |
+| `ceiling.by_model.M2.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/p0` |
+| `ceiling.by_model.M2.airline.ratio` | 0.430 | 0.4304141521016045 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/ratio` |
+| `ceiling.by_model.M2.airline.units_per_answer` | 2.688 | 2.6875 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/units_per_answer` |
+| `ceiling.by_model.M2.airline.leader_answer_share` | 25.0% | 0.25 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/leader_answer_share` |
+| `ceiling.by_model.M2.airline.ceiling_ratio` | 1.722 | 1.721656608406418 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/ceiling_ratio` |
+| `ceiling.by_model.M2.airline.ceiling_reaches_threshold` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M2.airline.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M2.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/leader` |
+| `ceiling.by_model.M2.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/answers` |
+| `ceiling.by_model.M2.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/k` |
+| `ceiling.by_model.M2.bank.n` | 272 | 272 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/n` |
+| `ceiling.by_model.M2.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/p0` |
+| `ceiling.by_model.M2.bank.ratio` | 0.913 | 0.9129135577287437 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/ratio` |
+| `ceiling.by_model.M2.bank.units_per_answer` | 5.667 | 5.666666666666667 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/units_per_answer` |
+| `ceiling.by_model.M2.bank.leader_answer_share` | 93.8% | 0.9375 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/leader_answer_share` |
+| `ceiling.by_model.M2.bank.ceiling_ratio` | 0.974 | 0.9737744615773267 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/ceiling_ratio` |
+| `ceiling.by_model.M2.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M2.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M2/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.M3.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/leader` |
+| `ceiling.by_model.M3.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/answers` |
+| `ceiling.by_model.M3.airline.k` | 36 | 36 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/k` |
+| `ceiling.by_model.M3.airline.n` | 227 | 227 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/n` |
+| `ceiling.by_model.M3.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/p0` |
+| `ceiling.by_model.M3.airline.ratio` | 0.734 | 0.7337897659177135 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/ratio` |
+| `ceiling.by_model.M3.airline.units_per_answer` | 4.729 | 4.729166666666667 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/units_per_answer` |
+| `ceiling.by_model.M3.airline.leader_answer_share` | 75.0% | 0.75 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/leader_answer_share` |
+| `ceiling.by_model.M3.airline.ceiling_ratio` | 0.978 | 0.9783863545569512 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/ceiling_ratio` |
+| `ceiling.by_model.M3.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M3.airline.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M3.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/leader` |
+| `ceiling.by_model.M3.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/answers` |
+| `ceiling.by_model.M3.bank.k` | 40 | 40 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/k` |
+| `ceiling.by_model.M3.bank.n` | 291 | 291 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/n` |
+| `ceiling.by_model.M3.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/p0` |
+| `ceiling.by_model.M3.bank.ratio` | 0.758 | 0.7584955714462568 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/ratio` |
+| `ceiling.by_model.M3.bank.units_per_answer` | 6.063 | 6.0625 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/units_per_answer` |
+| `ceiling.by_model.M3.bank.leader_answer_share` | 83.3% | 0.8333333333333334 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/leader_answer_share` |
+| `ceiling.by_model.M3.bank.ceiling_ratio` | 0.910 | 0.9101946857355081 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/ceiling_ratio` |
+| `ceiling.by_model.M3.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M3.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M3/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.M4.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/leader` |
+| `ceiling.by_model.M4.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/answers` |
+| `ceiling.by_model.M4.airline.k` | 41 | 41 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/k` |
+| `ceiling.by_model.M4.airline.n` | 261 | 261 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/n` |
+| `ceiling.by_model.M4.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/p0` |
+| `ceiling.by_model.M4.airline.ratio` | 0.727 | 0.7268392242865217 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/ratio` |
+| `ceiling.by_model.M4.airline.units_per_answer` | 5.438 | 5.4375 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/units_per_answer` |
+| `ceiling.by_model.M4.airline.leader_answer_share` | 85.4% | 0.8541666666666666 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/leader_answer_share` |
+| `ceiling.by_model.M4.airline.ceiling_ratio` | 0.851 | 0.8509337259939767 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/ceiling_ratio` |
+| `ceiling.by_model.M4.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M4.airline.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M4.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/leader` |
+| `ceiling.by_model.M4.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/answers` |
+| `ceiling.by_model.M4.bank.k` | 42 | 42 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/k` |
+| `ceiling.by_model.M4.bank.n` | 288 | 288 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/n` |
+| `ceiling.by_model.M4.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/p0` |
+| `ceiling.by_model.M4.bank.ratio` | 0.805 | 0.804716395331263 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/ratio` |
+| `ceiling.by_model.M4.bank.units_per_answer` | 6.000 | 6.0 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/units_per_answer` |
+| `ceiling.by_model.M4.bank.leader_answer_share` | 87.5% | 0.875 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/leader_answer_share` |
+| `ceiling.by_model.M4.bank.ceiling_ratio` | 0.920 | 0.9196758803785863 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/ceiling_ratio` |
+| `ceiling.by_model.M4.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M4.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M4/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.M5.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/leader` |
+| `ceiling.by_model.M5.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/answers` |
+| `ceiling.by_model.M5.airline.k` | 38 | 38 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/k` |
+| `ceiling.by_model.M5.airline.n` | 271 | 271 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/n` |
+| `ceiling.by_model.M5.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/p0` |
+| `ceiling.by_model.M5.airline.ratio` | 0.649 | 0.6487977163597987 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/ratio` |
+| `ceiling.by_model.M5.airline.units_per_answer` | 5.646 | 5.645833333333333 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/units_per_answer` |
+| `ceiling.by_model.M5.airline.leader_answer_share` | 79.2% | 0.7916666666666666 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/leader_answer_share` |
+| `ceiling.by_model.M5.airline.ceiling_ratio` | 0.820 | 0.819533957507114 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/ceiling_ratio` |
+| `ceiling.by_model.M5.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M5.airline.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M5.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/leader` |
+| `ceiling.by_model.M5.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/answers` |
+| `ceiling.by_model.M5.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/k` |
+| `ceiling.by_model.M5.bank.n` | 292 | 292 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/n` |
+| `ceiling.by_model.M5.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/p0` |
+| `ceiling.by_model.M5.bank.ratio` | 0.850 | 0.8503852318569121 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/ratio` |
+| `ceiling.by_model.M5.bank.units_per_answer` | 6.083 | 6.083333333333333 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/units_per_answer` |
+| `ceiling.by_model.M5.bank.leader_answer_share` | 93.8% | 0.9375 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/leader_answer_share` |
+| `ceiling.by_model.M5.bank.ceiling_ratio` | 0.907 | 0.9070775806473728 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/ceiling_ratio` |
+| `ceiling.by_model.M5.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M5.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M5/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.M6.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/leader` |
+| `ceiling.by_model.M6.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/answers` |
+| `ceiling.by_model.M6.airline.k` | 42 | 42 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/k` |
+| `ceiling.by_model.M6.airline.n` | 252 | 252 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/n` |
+| `ceiling.by_model.M6.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/p0` |
+| `ceiling.by_model.M6.airline.ratio` | 0.771 | 0.7711586891820413 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/ratio` |
+| `ceiling.by_model.M6.airline.units_per_answer` | 5.250 | 5.25 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/units_per_answer` |
+| `ceiling.by_model.M6.airline.leader_answer_share` | 87.5% | 0.875 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/leader_answer_share` |
+| `ceiling.by_model.M6.airline.ceiling_ratio` | 0.881 | 0.8813242162080472 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/ceiling_ratio` |
+| `ceiling.by_model.M6.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.M6.airline.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.M6.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/leader` |
+| `ceiling.by_model.M6.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/answers` |
+| `ceiling.by_model.M6.bank.k` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/k` |
+| `ceiling.by_model.M6.bank.n` | 312 | 312 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/n` |
+| `ceiling.by_model.M6.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/p0` |
+| `ceiling.by_model.M6.bank.ratio` | 0.849 | 0.8489315818879258 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/ratio` |
+| `ceiling.by_model.M6.bank.units_per_answer` | 6.500 | 6.5 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/units_per_answer` |
+| `ceiling.by_model.M6.bank.leader_answer_share` | 100.0% | 1.0 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/leader_answer_share` |
+| `ceiling.by_model.M6.bank.ceiling_ratio` | 0.849 | 0.8489315818879258 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/ceiling_ratio` |
+| `ceiling.by_model.M6.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.M6.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/M6/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.C1.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/leader` |
+| `ceiling.by_model.C1.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/answers` |
+| `ceiling.by_model.C1.airline.k` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/k` |
+| `ceiling.by_model.C1.airline.n` | 93 | 93 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/n` |
+| `ceiling.by_model.C1.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/p0` |
+| `ceiling.by_model.C1.airline.ratio` | 0.000 | 0.0 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/ratio` |
+| `ceiling.by_model.C1.airline.units_per_answer` | 1.938 | 1.9375 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/units_per_answer` |
+| `ceiling.by_model.C1.airline.leader_answer_share` | 0.0% | 0.0 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/leader_answer_share` |
+| `ceiling.by_model.C1.airline.ceiling_ratio` | 2.388 | 2.3881043277895473 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/ceiling_ratio` |
+| `ceiling.by_model.C1.airline.ceiling_reaches_threshold` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.C1.airline.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.C1.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/leader` |
+| `ceiling.by_model.C1.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/answers` |
+| `ceiling.by_model.C1.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/k` |
+| `ceiling.by_model.C1.bank.n` | 286 | 286 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/n` |
+| `ceiling.by_model.C1.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/p0` |
+| `ceiling.by_model.C1.bank.ratio` | 0.868 | 0.8682254814762878 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/ratio` |
+| `ceiling.by_model.C1.bank.units_per_answer` | 5.958 | 5.958333333333333 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/units_per_answer` |
+| `ceiling.by_model.C1.bank.leader_answer_share` | 93.8% | 0.9375 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/leader_answer_share` |
+| `ceiling.by_model.C1.bank.ceiling_ratio` | 0.926 | 0.9261071802413736 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/ceiling_ratio` |
+| `ceiling.by_model.C1.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.C1.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C1/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.C2.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/leader` |
+| `ceiling.by_model.C2.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/answers` |
+| `ceiling.by_model.C2.airline.k` | 3 | 3 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/k` |
+| `ceiling.by_model.C2.airline.n` | 63 | 63 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/n` |
+| `ceiling.by_model.C2.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/p0` |
+| `ceiling.by_model.C2.airline.ratio` | 0.220 | 0.2203310540520118 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/ratio` |
+| `ceiling.by_model.C2.airline.units_per_answer` | 1.313 | 1.3125 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/units_per_answer` |
+| `ceiling.by_model.C2.airline.leader_answer_share` | 6.3% | 0.0625 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/leader_answer_share` |
+| `ceiling.by_model.C2.airline.ceiling_ratio` | 3.525 | 3.525296864832189 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/ceiling_ratio` |
+| `ceiling.by_model.C2.airline.ceiling_reaches_threshold` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.C2.airline.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.C2.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/leader` |
+| `ceiling.by_model.C2.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/answers` |
+| `ceiling.by_model.C2.bank.k` | 40 | 40 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/k` |
+| `ceiling.by_model.C2.bank.n` | 176 | 176 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/n` |
+| `ceiling.by_model.C2.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/p0` |
+| `ceiling.by_model.C2.bank.ratio` | 1.254 | 1.2541034732435268 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/ratio` |
+| `ceiling.by_model.C2.bank.units_per_answer` | 3.667 | 3.6666666666666665 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/units_per_answer` |
+| `ceiling.by_model.C2.bank.leader_answer_share` | 83.3% | 0.8333333333333334 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/leader_answer_share` |
+| `ceiling.by_model.C2.bank.ceiling_ratio` | 1.505 | 1.504924167892232 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/ceiling_ratio` |
+| `ceiling.by_model.C2.bank.ceiling_reaches_threshold` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.C2.bank.ceiling_reaches_parity` | yes | true | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C2/bank/ceiling_reaches_parity` |
+| `ceiling.by_model.C3.airline.leader` | AA | "AA" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/leader` |
+| `ceiling.by_model.C3.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/answers` |
+| `ceiling.by_model.C3.airline.k` | 41 | 41 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/k` |
+| `ceiling.by_model.C3.airline.n` | 289 | 289 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/n` |
+| `ceiling.by_model.C3.airline.p0` | 0.216 | 0.21612499347371417 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/p0` |
+| `ceiling.by_model.C3.airline.ratio` | 0.656 | 0.6564188150130872 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/ratio` |
+| `ceiling.by_model.C3.airline.units_per_answer` | 6.021 | 6.020833333333333 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/units_per_answer` |
+| `ceiling.by_model.C3.airline.leader_answer_share` | 85.4% | 0.8541666666666666 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/leader_answer_share` |
+| `ceiling.by_model.C3.airline.ceiling_ratio` | 0.768 | 0.7684903200153215 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/ceiling_ratio` |
+| `ceiling.by_model.C3.airline.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/ceiling_reaches_threshold` |
+| `ceiling.by_model.C3.airline.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/airline/ceiling_reaches_parity` |
+| `ceiling.by_model.C3.bank.leader` | 1039502 | "1039502" | TEXT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/leader` |
+| `ceiling.by_model.C3.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/answers` |
+| `ceiling.by_model.C3.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/k` |
+| `ceiling.by_model.C3.bank.n` | 297 | 297 | INT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/n` |
+| `ceiling.by_model.C3.bank.p0` | 0.181 | 0.18122326595980534 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/p0` |
+| `ceiling.by_model.C3.bank.ratio` | 0.836 | 0.8360689821623511 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/ratio` |
+| `ceiling.by_model.C3.bank.units_per_answer` | 6.188 | 6.1875 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/units_per_answer` |
+| `ceiling.by_model.C3.bank.leader_answer_share` | 93.8% | 0.9375 | PCT | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/leader_answer_share` |
+| `ceiling.by_model.C3.bank.ceiling_ratio` | 0.892 | 0.891806914306508 | DEC3 | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/ceiling_ratio` |
+| `ceiling.by_model.C3.bank.ceiling_reaches_threshold` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/ceiling_reaches_threshold` |
+| `ceiling.by_model.C3.bank.ceiling_reaches_parity` | no | false | BOOL | `osf/v40/v40_postscore.json` `/ceiling/by_model/C3/bank/ceiling_reaches_parity` |
 
 ## Pre-registered, computed after scoring because the locked scorer did not output them (DEVIATIONS Entry 2)
 
@@ -5803,92 +6002,74 @@ Source paths are JSON Pointers into the named file.
 | `prereg_post.per_test.H_Amplify.by_model.M1.airline.n` | 83 | 83 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.airline.ratio` | 0.167 | 0.167239233798515 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M1.airline.ceiling_ratio` | 2.676 | 2.67582774077624 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.bank.n` | 244 | 244 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.bank.ratio` | 1.018 | 1.0176741299271241 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M1.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M1.bank.ceiling_ratio` | 1.086 | 1.0855190719222658 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M1/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.airline.k` | 12 | 12 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.airline.n` | 129 | 129 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.airline.ratio` | 0.430 | 0.4304141521016045 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M2.airline.ceiling_ratio` | 1.722 | 1.721656608406418 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.bank.n` | 272 | 272 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.bank.ratio` | 0.913 | 0.9129135577287437 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M2.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M2.bank.ceiling_ratio` | 0.974 | 0.9737744615773267 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M2/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.airline.k` | 36 | 36 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.airline.n` | 227 | 227 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.airline.ratio` | 0.734 | 0.7337897659177135 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M3.airline.ceiling_ratio` | 0.978 | 0.9783863545569512 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.bank.k` | 40 | 40 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.bank.n` | 291 | 291 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.bank.ratio` | 0.758 | 0.7584955714462568 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M3.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M3.bank.ceiling_ratio` | 0.910 | 0.9101946857355081 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M3/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.airline.k` | 41 | 41 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.airline.n` | 261 | 261 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.airline.ratio` | 0.727 | 0.7268392242865217 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M4.airline.ceiling_ratio` | 0.851 | 0.8509337259939767 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.bank.k` | 42 | 42 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.bank.n` | 288 | 288 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.bank.ratio` | 0.805 | 0.804716395331263 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M4.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M4.bank.ceiling_ratio` | 0.920 | 0.9196758803785863 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M4/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.airline.k` | 38 | 38 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.airline.n` | 271 | 271 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.airline.ratio` | 0.649 | 0.6487977163597987 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M5.airline.ceiling_ratio` | 0.820 | 0.819533957507114 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.bank.n` | 292 | 292 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.bank.ratio` | 0.850 | 0.8503852318569121 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M5.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M5.bank.ceiling_ratio` | 0.907 | 0.9070775806473728 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M5/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.airline.k` | 42 | 42 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.airline.n` | 252 | 252 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.airline.ratio` | 0.771 | 0.7711586891820413 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M6.airline.ceiling_ratio` | 0.881 | 0.8813242162080472 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.bank.k` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.bank.n` | 312 | 312 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.bank.ratio` | 0.849 | 0.8489315818879258 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.M6.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.M6.bank.ceiling_ratio` | 0.849 | 0.8489315818879258 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/M6/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.airline.k` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.airline.n` | 93 | 93 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.airline.ratio` | 0.000 | 0.0 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C1.airline.ceiling_ratio` | 2.388 | 2.3881043277895473 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.bank.n` | 286 | 286 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.bank.ratio` | 0.868 | 0.8682254814762878 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C1.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C1.bank.ceiling_ratio` | 0.926 | 0.9261071802413736 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C1/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.airline.k` | 3 | 3 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.airline.n` | 63 | 63 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.airline.ratio` | 0.220 | 0.2203310540520118 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C2.airline.ceiling_ratio` | 3.525 | 3.525296864832189 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.bank.k` | 40 | 40 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.bank.n` | 176 | 176 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.bank.ratio` | 1.254 | 1.2541034732435268 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C2.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C2.bank.ceiling_ratio` | 1.505 | 1.504924167892232 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C2/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.airline.k` | 41 | 41 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/airline/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.airline.n` | 289 | 289 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/airline/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.airline.ratio` | 0.656 | 0.6564188150130872 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/airline/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.airline.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/airline/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C3.airline.ceiling_ratio` | 0.768 | 0.7684903200153215 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/airline/ceiling_ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.bank.k` | 45 | 45 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/bank/k` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.bank.n` | 297 | 297 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/bank/n` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.bank.ratio` | 0.836 | 0.8360689821623511 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/bank/ratio` |
 | `prereg_post.per_test.H_Amplify.by_model.C3.bank.answers` | 48 | 48 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/bank/answers` |
-| `prereg_post.per_test.H_Amplify.by_model.C3.bank.ceiling_ratio` | 0.892 | 0.891806914306508 | DEC3 | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Amplify/by_model/C3/bank/ceiling_ratio` |
 | `prereg_post.per_test.H_Afterlife.by_model.M1.airline.pairs` | 6 | 6 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Afterlife/by_model/M1/airline/pairs` |
 | `prereg_post.per_test.H_Afterlife.by_model.M1.airline.afterlife_pairs` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Afterlife/by_model/M1/airline/afterlife_pairs` |
 | `prereg_post.per_test.H_Afterlife.by_model.M1.airline.rate` | 0.0% | 0.0 | PCT | `osf/v40/v40_postscore.json` `/prereg/per_test/H_Afterlife/by_model/M1/airline/rate` |
@@ -6520,6 +6701,13 @@ Source paths are JSON Pointers into the named file.
 | `prereg_post.discover_status.M5X_S0.naming_capital_one` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/discover_status/M5X_S0/naming_capital_one` |
 | `prereg_post.discover_status.M5X_S0.flagged_and_naming_capital_one` | 0 | 0 | INT | `osf/v40/v40_postscore.json` `/prereg/discover_status/M5X_S0/flagged_and_naming_capital_one` |
 | `prereg_post.discover_status.file` | osf/v40/v40_discover_status_answers.md | "osf/v40/v40_discover_status_answers.md" | TEXT | `osf/v40/v40_postscore.json` `/prereg/discover_status/file` |
+
+## Other
+
+| Key | Display | Value | Rule | Source |
+|---|---|---|---|---|
+| `reference.v1_17.se_all_units` | 0.040 | 0.04 | DEC3 | computed: v1.17 run-to-run SE at 3 runs (all units), as quoted in pre-registration section 2.9 item 6 (regex on the locked text) |
+| `reference.v1_17.se_some_not_all` | 0.050 | 0.05 | DEC3 | computed: v1.17 run-to-run SE at 3 runs (units named in some answers but not all), as quoted in pre-registration section 2.9 item 6 (regex on the locked text) |
 
 ## Lists not flattened (per-item records, not figures)
 

@@ -73,7 +73,8 @@ def hdots(ax, rows, xlim, refs, xlabel, fmt):
         ax.text(x + (xlim[1] - xlim[0]) * 0.015, y + 0.12, fmt(base), fontsize=7, color=INK if hi else GREY, ha="left", va="bottom")
     for xr, lab in refs:
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
-        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom")
+        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     ax.set_yticks(range(n)[::-1])
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(*xlim)
@@ -103,7 +104,7 @@ def r2():
     # dot: the scored multiple (verdict file); tick: the most it could reach at the observed breadth of answers
     # (post-scoring check, DEVIATIONS Entry 2; values ceiling.specs.*)
     fig = frame("Leader's share of AI naming as a multiple of its market share, and the most it could reach",
-                "Answers name several brands, so the multiple has a cap; for all nine models it sits below the "
+                "Each tick marks a leader named in every answer; only the newest models' airline tick passes the "
                 "amplified line.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     rows = [("American, all nine models", "H_Amplify.airline", "ceiling.specs.all_nine.airline"),
@@ -128,7 +129,8 @@ def r2():
                 ha="left", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=0.3), zorder=4)
     for xr, lab in ((1.0, "same as market"), (v("thresholds.amplify_ratio"), "amplified " + d("thresholds.amplify_ratio"))):
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
-        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom")
+        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     ax.set_yticks(range(n)[::-1])
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(*xlim)
@@ -140,7 +142,7 @@ def r2():
 
 def r3():
     fig = frame("Departed-brand and model pairs named in a recommendation without gone wording",
-                "Both categories sit between the floor and the bar, for older and newest models alike.")
+                "All nine models together sit between floor and bar in both categories; two model groups fall below the floor.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     rows = [("Airlines, all nine models", "H_Afterlife.airline"), ("Airlines, older models",
             "sensitivity.S-Arm.legacy.H_Afterlife.airline"), ("Airlines, newest models",
@@ -153,10 +155,11 @@ def r3():
         r = v(b + ".rate")
         ax.barh(y, r, height=0.55, color=INDIGO if "all nine" in lab else LIGHT)
         ax.text(r + 0.004, y, f"{d(b + '.rate')}  ({d(b + '.afterlife_pairs')} of {d(b + '.pairs')} pairs)",
-                fontsize=7, va="center", color=INK)
+                fontsize=7, va="center", color=INK, bbox=dict(facecolor="white", edgecolor="none", pad=0.3), zorder=4)
     for xr, lab in ((v("thresholds.afterlife_null"), "floor"), (v("thresholds.afterlife_rate"), "bar")):
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
-        ax.text(xr, n - 0.35, lab, fontsize=6.8, color=GREY, ha="center", va="bottom")
+        ax.text(xr, n - 0.35, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     ax.set_yticks(range(n)[::-1])
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(0, 0.3)
@@ -210,8 +213,8 @@ def r5():
 
 def r6():
     fig = frame("Departed-brand status cells of the newest models, search off against search on",
-                f"Search changed few cells: {d('H_Search.s1_only_flagged')} toward gone, "
-                f"{d('H_Search.s0_only_flagged')} away from it.")
+                f"The paired comparison needed at least {d('thresholds.search_min_discordant')} changed cells; it "
+                f"found {d('H_Search.s1_only_flagged')} toward gone and {d('H_Search.s0_only_flagged')} away.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     labs = ["Late exits flagged, search on", "Flagged only with search on", "Flagged only with search off"]
     rows = [(v("H_Search.post_cutoff_s1_flagged"), v("H_Search.post_cutoff_cells"),

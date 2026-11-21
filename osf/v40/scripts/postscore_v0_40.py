@@ -251,6 +251,7 @@ def ceiling(sc):
     for cat in CATS:
         out[cat] = ceiling_of(sc, cat)
     out["specs"] = {name: {cat: ceiling_of(v, cat) for cat in cats} for name, (v, cats) in spec_variants(sc).items()}
+    out["by_model"] = {sl: {cat: ceiling_of(sc.variant(slots=[sl]), cat) for cat in CATS} for sl in S.TESTED_SLOTS}
     return out
 
 
@@ -350,10 +351,9 @@ def per_test(sc, ghosts):
             out["H_Reinforce"]["by_model"].setdefault(sl, {})[cat] = {
                 "rho": clean(S.spearman([ms[k] for k in ks], [sh[k] for k in ks])),
                 "units_present": sum(sh[k] > 0 for k in ks), "n_units": len(ks)}
-            c = ceiling_of(v, cat)
+            a = v.h_amplify()[cat]
             out["H_Amplify"]["by_model"].setdefault(sl, {})[cat] = {
-                "k": c["k"], "n": c["n"], "ratio": clean(c["ratio"]), "answers": c["answers"],
-                "ceiling_ratio": c["ceiling_ratio"]}
+                "k": a["k"], "n": a["n"], "ratio": clean(a["ratio"]), "answers": answers(v, cat)}
         aft = v.h_afterlife()
         out["H_Afterlife"]["by_model"][sl] = {cat: {"pairs": aft[cat]["pairs"], "afterlife_pairs": aft[cat]["afterlife_pairs"],
                                                     "rate": clean(aft[cat]["rate"])} for cat in CATS}

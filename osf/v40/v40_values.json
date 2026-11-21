@@ -38,7 +38,11 @@
    },
    "postscore": {
     "file": "osf/v40/v40_postscore.json",
-    "sha256": "86b37a2c70e95a967ab8719b427d6d3761222476b05188a0fe1051df41ca86bd"
+    "sha256": "5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89"
+   },
+   "prereg": {
+    "file": "osf/v40/prereg/PRE_REGISTRATION_v0_40.md",
+    "sha256": "82811d0723c33111f7fcf90b850b324c38ce7132be8a884f6ed2f36ac3ef0f64"
    }
   },
   "verdicts_commit": "139f907b25d511b0a7cf649e23e6e700f40cf6c3",
@@ -82,7 +86,7 @@
     "items": 0
    }
   ],
-  "n_values": 6431
+  "n_values": 6613
  },
  "values": {
   "phase": {
@@ -40975,6 +40979,3372 @@
      "specs",
      "S-SunCountry",
      "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.k": {
+   "value": 3,
+   "display": "3",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.n": {
+   "value": 83,
+   "display": "83",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.ratio": {
+   "value": 0.167239233798515,
+   "display": "0.167",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.units_per_answer": {
+   "value": 1.7291666666666667,
+   "display": "1.729",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.leader_answer_share": {
+   "value": 0.0625,
+   "display": "6.3%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.ceiling_ratio": {
+   "value": 2.67582774077624,
+   "display": "2.676",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.ceiling_reaches_threshold": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.k": {
+   "value": 45,
+   "display": "45",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.n": {
+   "value": 244,
+   "display": "244",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.ratio": {
+   "value": 1.0176741299271241,
+   "display": "1.018",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.units_per_answer": {
+   "value": 5.083333333333333,
+   "display": "5.083",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.leader_answer_share": {
+   "value": 0.9375,
+   "display": "93.8%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.ceiling_ratio": {
+   "value": 1.0855190719222658,
+   "display": "1.086",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.k": {
+   "value": 12,
+   "display": "12",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.n": {
+   "value": 129,
+   "display": "129",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.ratio": {
+   "value": 0.4304141521016045,
+   "display": "0.430",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.units_per_answer": {
+   "value": 2.6875,
+   "display": "2.688",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.leader_answer_share": {
+   "value": 0.25,
+   "display": "25.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.ceiling_ratio": {
+   "value": 1.721656608406418,
+   "display": "1.722",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.ceiling_reaches_threshold": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.k": {
+   "value": 45,
+   "display": "45",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.n": {
+   "value": 272,
+   "display": "272",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.ratio": {
+   "value": 0.9129135577287437,
+   "display": "0.913",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.units_per_answer": {
+   "value": 5.666666666666667,
+   "display": "5.667",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.leader_answer_share": {
+   "value": 0.9375,
+   "display": "93.8%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.ceiling_ratio": {
+   "value": 0.9737744615773267,
+   "display": "0.974",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.k": {
+   "value": 36,
+   "display": "36",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.n": {
+   "value": 227,
+   "display": "227",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.ratio": {
+   "value": 0.7337897659177135,
+   "display": "0.734",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.units_per_answer": {
+   "value": 4.729166666666667,
+   "display": "4.729",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.leader_answer_share": {
+   "value": 0.75,
+   "display": "75.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.ceiling_ratio": {
+   "value": 0.9783863545569512,
+   "display": "0.978",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.k": {
+   "value": 40,
+   "display": "40",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.n": {
+   "value": 291,
+   "display": "291",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.ratio": {
+   "value": 0.7584955714462568,
+   "display": "0.758",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.units_per_answer": {
+   "value": 6.0625,
+   "display": "6.063",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.leader_answer_share": {
+   "value": 0.8333333333333334,
+   "display": "83.3%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.ceiling_ratio": {
+   "value": 0.9101946857355081,
+   "display": "0.910",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.k": {
+   "value": 41,
+   "display": "41",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.n": {
+   "value": 261,
+   "display": "261",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.ratio": {
+   "value": 0.7268392242865217,
+   "display": "0.727",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.units_per_answer": {
+   "value": 5.4375,
+   "display": "5.438",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.leader_answer_share": {
+   "value": 0.8541666666666666,
+   "display": "85.4%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.ceiling_ratio": {
+   "value": 0.8509337259939767,
+   "display": "0.851",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.k": {
+   "value": 42,
+   "display": "42",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.n": {
+   "value": 288,
+   "display": "288",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.ratio": {
+   "value": 0.804716395331263,
+   "display": "0.805",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.units_per_answer": {
+   "value": 6.0,
+   "display": "6.000",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.leader_answer_share": {
+   "value": 0.875,
+   "display": "87.5%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.ceiling_ratio": {
+   "value": 0.9196758803785863,
+   "display": "0.920",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.k": {
+   "value": 38,
+   "display": "38",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.n": {
+   "value": 271,
+   "display": "271",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.ratio": {
+   "value": 0.6487977163597987,
+   "display": "0.649",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.units_per_answer": {
+   "value": 5.645833333333333,
+   "display": "5.646",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.leader_answer_share": {
+   "value": 0.7916666666666666,
+   "display": "79.2%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.ceiling_ratio": {
+   "value": 0.819533957507114,
+   "display": "0.820",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.k": {
+   "value": 45,
+   "display": "45",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.n": {
+   "value": 292,
+   "display": "292",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.ratio": {
+   "value": 0.8503852318569121,
+   "display": "0.850",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.units_per_answer": {
+   "value": 6.083333333333333,
+   "display": "6.083",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.leader_answer_share": {
+   "value": 0.9375,
+   "display": "93.8%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.ceiling_ratio": {
+   "value": 0.9070775806473728,
+   "display": "0.907",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.k": {
+   "value": 42,
+   "display": "42",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.n": {
+   "value": 252,
+   "display": "252",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.ratio": {
+   "value": 0.7711586891820413,
+   "display": "0.771",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.units_per_answer": {
+   "value": 5.25,
+   "display": "5.250",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.leader_answer_share": {
+   "value": 0.875,
+   "display": "87.5%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.ceiling_ratio": {
+   "value": 0.8813242162080472,
+   "display": "0.881",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.k": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.n": {
+   "value": 312,
+   "display": "312",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.ratio": {
+   "value": 0.8489315818879258,
+   "display": "0.849",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.units_per_answer": {
+   "value": 6.5,
+   "display": "6.500",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.leader_answer_share": {
+   "value": 1.0,
+   "display": "100.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.ceiling_ratio": {
+   "value": 0.8489315818879258,
+   "display": "0.849",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.k": {
+   "value": 0,
+   "display": "0",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.n": {
+   "value": 93,
+   "display": "93",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.ratio": {
+   "value": 0.0,
+   "display": "0.000",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.units_per_answer": {
+   "value": 1.9375,
+   "display": "1.938",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.leader_answer_share": {
+   "value": 0.0,
+   "display": "0.0%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.ceiling_ratio": {
+   "value": 2.3881043277895473,
+   "display": "2.388",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.ceiling_reaches_threshold": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.k": {
+   "value": 45,
+   "display": "45",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.n": {
+   "value": 286,
+   "display": "286",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.ratio": {
+   "value": 0.8682254814762878,
+   "display": "0.868",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.units_per_answer": {
+   "value": 5.958333333333333,
+   "display": "5.958",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.leader_answer_share": {
+   "value": 0.9375,
+   "display": "93.8%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.ceiling_ratio": {
+   "value": 0.9261071802413736,
+   "display": "0.926",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.k": {
+   "value": 3,
+   "display": "3",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.n": {
+   "value": 63,
+   "display": "63",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.ratio": {
+   "value": 0.2203310540520118,
+   "display": "0.220",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.units_per_answer": {
+   "value": 1.3125,
+   "display": "1.313",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.leader_answer_share": {
+   "value": 0.0625,
+   "display": "6.3%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.ceiling_ratio": {
+   "value": 3.525296864832189,
+   "display": "3.525",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.ceiling_reaches_threshold": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.k": {
+   "value": 40,
+   "display": "40",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.n": {
+   "value": 176,
+   "display": "176",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.ratio": {
+   "value": 1.2541034732435268,
+   "display": "1.254",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.units_per_answer": {
+   "value": 3.6666666666666665,
+   "display": "3.667",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.leader_answer_share": {
+   "value": 0.8333333333333334,
+   "display": "83.3%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.ceiling_ratio": {
+   "value": 1.504924167892232,
+   "display": "1.505",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.ceiling_reaches_threshold": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.ceiling_reaches_parity": {
+   "value": true,
+   "display": "yes",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.leader": {
+   "value": "AA",
+   "display": "AA",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.k": {
+   "value": 41,
+   "display": "41",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.n": {
+   "value": 289,
+   "display": "289",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.p0": {
+   "value": 0.21612499347371417,
+   "display": "0.216",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.ratio": {
+   "value": 0.6564188150130872,
+   "display": "0.656",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.units_per_answer": {
+   "value": 6.020833333333333,
+   "display": "6.021",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.leader_answer_share": {
+   "value": 0.8541666666666666,
+   "display": "85.4%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.ceiling_ratio": {
+   "value": 0.7684903200153215,
+   "display": "0.768",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "ceiling_reaches_parity"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.leader": {
+   "value": "1039502",
+   "display": "1039502",
+   "rule": "TEXT",
+   "rule_text": "text, verbatim",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "leader"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.answers": {
+   "value": 48,
+   "display": "48",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "answers"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.k": {
+   "value": 45,
+   "display": "45",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "k"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.n": {
+   "value": 297,
+   "display": "297",
+   "rule": "INT",
+   "rule_text": "integer, exact, thousands separator",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "n"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.p0": {
+   "value": 0.18122326595980534,
+   "display": "0.181",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "p0"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.ratio": {
+   "value": 0.8360689821623511,
+   "display": "0.836",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.units_per_answer": {
+   "value": 6.1875,
+   "display": "6.188",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.leader_answer_share": {
+   "value": 0.9375,
+   "display": "93.8%",
+   "rule": "PCT",
+   "rule_text": "proportion shown as a percent, 1 decimal, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "leader_answer_share"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.ceiling_ratio": {
+   "value": 0.891806914306508,
+   "display": "0.892",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.ceiling_reaches_threshold": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "ceiling_reaches_threshold"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.ceiling_reaches_parity": {
+   "value": false,
+   "display": "no",
+   "rule": "BOOL",
+   "rule_text": "boolean shown as yes / no",
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
      "ceiling_reaches_parity"
     ],
     "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
@@ -96455,25 +99825,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M1.airline.ceiling_ratio": {
-   "value": 2.67582774077624,
-   "display": "2.676",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M1",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M1.bank.k": {
    "value": 45,
    "display": "45",
@@ -96546,25 +99897,6 @@
      "M1",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M1.bank.ceiling_ratio": {
-   "value": 1.0855190719222658,
-   "display": "1.086",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M1",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -96645,25 +99977,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M2.airline.ceiling_ratio": {
-   "value": 1.721656608406418,
-   "display": "1.722",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M2",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M2.bank.k": {
    "value": 45,
    "display": "45",
@@ -96736,25 +100049,6 @@
      "M2",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M2.bank.ceiling_ratio": {
-   "value": 0.9737744615773267,
-   "display": "0.974",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M2",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -96835,25 +100129,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M3.airline.ceiling_ratio": {
-   "value": 0.9783863545569512,
-   "display": "0.978",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M3",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M3.bank.k": {
    "value": 40,
    "display": "40",
@@ -96926,25 +100201,6 @@
      "M3",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M3.bank.ceiling_ratio": {
-   "value": 0.9101946857355081,
-   "display": "0.910",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M3",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97025,25 +100281,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M4.airline.ceiling_ratio": {
-   "value": 0.8509337259939767,
-   "display": "0.851",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M4",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M4.bank.k": {
    "value": 42,
    "display": "42",
@@ -97116,25 +100353,6 @@
      "M4",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M4.bank.ceiling_ratio": {
-   "value": 0.9196758803785863,
-   "display": "0.920",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M4",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97215,25 +100433,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M5.airline.ceiling_ratio": {
-   "value": 0.819533957507114,
-   "display": "0.820",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M5",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M5.bank.k": {
    "value": 45,
    "display": "45",
@@ -97306,25 +100505,6 @@
      "M5",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M5.bank.ceiling_ratio": {
-   "value": 0.9070775806473728,
-   "display": "0.907",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M5",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97405,25 +100585,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M6.airline.ceiling_ratio": {
-   "value": 0.8813242162080472,
-   "display": "0.881",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M6",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.M6.bank.k": {
    "value": 48,
    "display": "48",
@@ -97496,25 +100657,6 @@
      "M6",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.M6.bank.ceiling_ratio": {
-   "value": 0.8489315818879258,
-   "display": "0.849",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "M6",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97595,25 +100737,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C1.airline.ceiling_ratio": {
-   "value": 2.3881043277895473,
-   "display": "2.388",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C1",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.C1.bank.k": {
    "value": 45,
    "display": "45",
@@ -97686,25 +100809,6 @@
      "C1",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.C1.bank.ceiling_ratio": {
-   "value": 0.9261071802413736,
-   "display": "0.926",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C1",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97785,25 +100889,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C2.airline.ceiling_ratio": {
-   "value": 3.525296864832189,
-   "display": "3.525",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C2",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.C2.bank.k": {
    "value": 40,
    "display": "40",
@@ -97876,25 +100961,6 @@
      "C2",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.C2.bank.ceiling_ratio": {
-   "value": 1.504924167892232,
-   "display": "1.505",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C2",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -97975,25 +101041,6 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C3.airline.ceiling_ratio": {
-   "value": 0.7684903200153215,
-   "display": "0.768",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C3",
-     "airline",
-     "ceiling_ratio"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
   "prereg_post.per_test.H_Amplify.by_model.C3.bank.k": {
    "value": 45,
    "display": "45",
@@ -98066,25 +101113,6 @@
      "C3",
      "bank",
      "answers"
-    ],
-    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
-   }
-  },
-  "prereg_post.per_test.H_Amplify.by_model.C3.bank.ceiling_ratio": {
-   "value": 0.891806914306508,
-   "display": "0.892",
-   "rule": "DEC3",
-   "rule_text": "3 decimals, half up",
-   "source": {
-    "file": "osf/v40/v40_postscore.json",
-    "path": [
-     "prereg",
-     "per_test",
-     "H_Amplify",
-     "by_model",
-     "C3",
-     "bank",
-     "ceiling_ratio"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -109466,6 +112494,30 @@
      "file"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "reference.v1_17.se_all_units": {
+   "value": 0.04,
+   "display": "0.040",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "computed": "v1.17 run-to-run SE at 3 runs (all units), as quoted in pre-registration section 2.9 item 6 (regex on the locked text)",
+    "inputs": [
+     "osf/v40/prereg/PRE_REGISTRATION_v0_40.md"
+    ]
+   }
+  },
+  "reference.v1_17.se_some_not_all": {
+   "value": 0.05,
+   "display": "0.050",
+   "rule": "DEC3",
+   "rule_text": "3 decimals, half up",
+   "source": {
+    "computed": "v1.17 run-to-run SE at 3 runs (units named in some answers but not all), as quoted in pre-registration section 2.9 item 6 (regex on the locked text)",
+    "inputs": [
+     "osf/v40/prereg/PRE_REGISTRATION_v0_40.md"
+    ]
    }
   },
   "acquisition.records_total": {

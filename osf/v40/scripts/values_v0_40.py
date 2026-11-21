@@ -47,6 +47,7 @@ REL = {
     "prelock_raw": "osf/v40/prereg/prelock_check_v0_40.jsonl",
     "feasibility": "osf/v40/prereg/feasibility_check_v0_40.json",
     "postscore": "osf/v40/v40_postscore.json",
+    "prereg": "osf/v40/prereg/PRE_REGISTRATION_v0_40.md",
 }
 OUT_JSON = "osf/v40/v40_values.json"
 OUT_MD = "osf/v40/v40_values.md"
@@ -324,6 +325,17 @@ def build(root=ROOT):
     labels = post["_meta"]["labels"]
     V.add_tree("ceiling", post["ceiling"], REL["postscore"], keep_path_prefix=("ceiling",), label=labels["ceiling"])
     V.add_tree("prereg_post", post["prereg"], REL["postscore"], keep_path_prefix=("prereg",), label=labels["prereg"])
+
+    # 3c. reference figures the locked pre-registration says to report beside descriptive 6 (section 2.9 item 6)
+    pr = (root / REL["prereg"]).read_text(encoding="utf-8")
+    m = re.search(r"beside v1\.17's (0\.\d+) and (0\.\d+) \(§2\.10\)", pr)
+    if not m:
+        raise Refused("the v1.17 reference figures of pre-registration section 2.9 item 6 were not found")
+    for key, grp, what in (("reference.v1_17.se_all_units", 1, "all units"),
+                           ("reference.v1_17.se_some_not_all", 2, "units named in some answers but not all")):
+        V.add(key, float(m.group(grp)),
+              {"computed": f"v1.17 run-to-run SE at 3 runs ({what}), as quoted in pre-registration section 2.9 "
+                           f"item 6 (regex on the locked text)", "inputs": [REL["prereg"]]}, "DEC3")
 
     # 4. acquisition record counts (computed from the raw file)
     rc = raw_counts(root)

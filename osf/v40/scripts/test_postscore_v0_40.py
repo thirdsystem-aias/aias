@@ -139,6 +139,15 @@ class Ceiling(unittest.TestCase):
             for k in ("k", "n", "p0", "ratio", "leader"):
                 self.assertEqual(sp[name][cat][k], want[k], (name, cat, k))
 
+    def test_per_model_ceilings_sit_in_the_ceiling_block_only(self):
+        # the ceiling is the post-scoring check of DEVIATIONS Entry 2, never part of the pre-registered tables
+        self.assertNotIn("ceiling_ratio", json.dumps(PRE))
+        for sl in S.TESTED_SLOTS:
+            for cat in P.CATS:
+                c, a = DOC["ceiling"]["by_model"][sl][cat], PT["H_Amplify"]["by_model"][sl][cat]
+                self.assertEqual((c["k"], c["n"], c["answers"]), (a["k"], a["n"], a["answers"]))
+                self.assertTrue(math.isclose(c["ceiling_ratio"], (c["answers"] / c["n"]) / c["p0"], rel_tol=1e-12))
+
     def test_a_leader_in_every_answer_reaches_exactly_the_ceiling(self):
         # synthetic: 10 answers, each naming the leader and two others (n = 30), p0 = 0.25 -> (10/30)/0.25
         k, n, a, p0 = 10, 30, 10, 0.25

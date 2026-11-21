@@ -36,11 +36,15 @@
   },
   "postscore": {
    "file": "osf/v40/v40_postscore.json",
-   "sha256": "86b37a2c70e95a967ab8719b427d6d3761222476b05188a0fe1051df41ca86bd"
+   "sha256": "5e1cd5344782996cdefa409eacbc3c962bf847adca92e0aac2a2a3bb71ce2b89"
+  },
+  "prereg": {
+   "file": "osf/v40/prereg/PRE_REGISTRATION_v0_40.md",
+   "sha256": "82811d0723c33111f7fcf90b850b324c38ce7132be8a884f6ed2f36ac3ef0f64"
   }
  },
  "synthetic": false,
- "n_keys": 1151,
+ "n_keys": 1190,
  "keys": {
   "H_Afterlife.airline.afterlife_pairs": {
    "display": "3",
@@ -1155,6 +1159,276 @@
      "ceiling",
      "bank",
      "units_per_answer"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.airline.ceiling_ratio": {
+   "display": "2.388",
+   "value": 2.3881043277895473,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C1.bank.ceiling_ratio": {
+   "display": "0.926",
+   "value": 0.9261071802413736,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C1",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.airline.ceiling_ratio": {
+   "display": "3.525",
+   "value": 3.525296864832189,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C2.bank.ceiling_ratio": {
+   "display": "1.505",
+   "value": 1.504924167892232,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C2",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.airline.ceiling_ratio": {
+   "display": "0.768",
+   "value": 0.7684903200153215,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.C3.bank.ceiling_ratio": {
+   "display": "0.892",
+   "value": 0.891806914306508,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "C3",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.airline.ceiling_ratio": {
+   "display": "2.676",
+   "value": 2.67582774077624,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M1.bank.ceiling_ratio": {
+   "display": "1.086",
+   "value": 1.0855190719222658,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M1",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.airline.ceiling_ratio": {
+   "display": "1.722",
+   "value": 1.721656608406418,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M2.bank.ceiling_ratio": {
+   "display": "0.974",
+   "value": 0.9737744615773267,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M2",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.airline.ceiling_ratio": {
+   "display": "0.978",
+   "value": 0.9783863545569512,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M3.bank.ceiling_ratio": {
+   "display": "0.910",
+   "value": 0.9101946857355081,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M3",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.airline.ceiling_ratio": {
+   "display": "0.851",
+   "value": 0.8509337259939767,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M4.bank.ceiling_ratio": {
+   "display": "0.920",
+   "value": 0.9196758803785863,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M4",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.airline.ceiling_ratio": {
+   "display": "0.820",
+   "value": 0.819533957507114,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M5.bank.ceiling_ratio": {
+   "display": "0.907",
+   "value": 0.9070775806473728,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M5",
+     "bank",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.airline.ceiling_ratio": {
+   "display": "0.881",
+   "value": 0.8813242162080472,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "airline",
+     "ceiling_ratio"
+    ],
+    "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
+   }
+  },
+  "ceiling.by_model.M6.bank.ceiling_ratio": {
+   "display": "0.849",
+   "value": 0.8489315818879258,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "ceiling",
+     "by_model",
+     "M6",
+     "bank",
+     "ceiling_ratio"
     ],
     "label": "post-scoring check of the locked H_Amplify measure (DEVIATIONS Entry 2); not a pre-registered test; no verdict changes"
    }
@@ -12328,9 +12602,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C1.airline.ceiling_ratio": {
-   "display": "2.388",
-   "value": 2.3881043277895473,
+  "prereg_post.per_test.H_Amplify.by_model.C1.airline.k": {
+   "display": "0",
+   "value": 0,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12340,7 +12614,24 @@
      "by_model",
      "C1",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C1.airline.n": {
+   "display": "93",
+   "value": 93,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C1",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12362,9 +12653,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C1.bank.ceiling_ratio": {
-   "display": "0.926",
-   "value": 0.9261071802413736,
+  "prereg_post.per_test.H_Amplify.by_model.C1.bank.k": {
+   "display": "45",
+   "value": 45,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12374,7 +12665,24 @@
      "by_model",
      "C1",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C1.bank.n": {
+   "display": "286",
+   "value": 286,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C1",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12396,9 +12704,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C2.airline.ceiling_ratio": {
-   "display": "3.525",
-   "value": 3.525296864832189,
+  "prereg_post.per_test.H_Amplify.by_model.C2.airline.k": {
+   "display": "3",
+   "value": 3,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12408,7 +12716,24 @@
      "by_model",
      "C2",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C2.airline.n": {
+   "display": "63",
+   "value": 63,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C2",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12430,9 +12755,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C2.bank.ceiling_ratio": {
-   "display": "1.505",
-   "value": 1.504924167892232,
+  "prereg_post.per_test.H_Amplify.by_model.C2.bank.k": {
+   "display": "40",
+   "value": 40,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12442,7 +12767,24 @@
      "by_model",
      "C2",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C2.bank.n": {
+   "display": "176",
+   "value": 176,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C2",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12464,9 +12806,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C3.airline.ceiling_ratio": {
-   "display": "0.768",
-   "value": 0.7684903200153215,
+  "prereg_post.per_test.H_Amplify.by_model.C3.airline.k": {
+   "display": "41",
+   "value": 41,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12476,7 +12818,24 @@
      "by_model",
      "C3",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C3.airline.n": {
+   "display": "289",
+   "value": 289,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C3",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12498,9 +12857,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.C3.bank.ceiling_ratio": {
-   "display": "0.892",
-   "value": 0.891806914306508,
+  "prereg_post.per_test.H_Amplify.by_model.C3.bank.k": {
+   "display": "45",
+   "value": 45,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12510,7 +12869,24 @@
      "by_model",
      "C3",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.C3.bank.n": {
+   "display": "297",
+   "value": 297,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "C3",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12532,9 +12908,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M1.airline.ceiling_ratio": {
-   "display": "2.676",
-   "value": 2.67582774077624,
+  "prereg_post.per_test.H_Amplify.by_model.M1.airline.answers": {
+   "display": "48",
+   "value": 48,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12544,7 +12920,41 @@
      "by_model",
      "M1",
      "airline",
-     "ceiling_ratio"
+     "answers"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M1.airline.k": {
+   "display": "3",
+   "value": 3,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M1",
+     "airline",
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M1.airline.n": {
+   "display": "83",
+   "value": 83,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M1",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12566,9 +12976,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M1.bank.ceiling_ratio": {
-   "display": "1.086",
-   "value": 1.0855190719222658,
+  "prereg_post.per_test.H_Amplify.by_model.M1.bank.k": {
+   "display": "45",
+   "value": 45,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12578,7 +12988,24 @@
      "by_model",
      "M1",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M1.bank.n": {
+   "display": "244",
+   "value": 244,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M1",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12600,9 +13027,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M2.airline.ceiling_ratio": {
-   "display": "1.722",
-   "value": 1.721656608406418,
+  "prereg_post.per_test.H_Amplify.by_model.M2.airline.k": {
+   "display": "12",
+   "value": 12,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12612,7 +13039,24 @@
      "by_model",
      "M2",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M2.airline.n": {
+   "display": "129",
+   "value": 129,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M2",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12634,9 +13078,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M2.bank.ceiling_ratio": {
-   "display": "0.974",
-   "value": 0.9737744615773267,
+  "prereg_post.per_test.H_Amplify.by_model.M2.bank.k": {
+   "display": "45",
+   "value": 45,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12646,7 +13090,24 @@
      "by_model",
      "M2",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M2.bank.n": {
+   "display": "272",
+   "value": 272,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M2",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12668,9 +13129,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M3.airline.ceiling_ratio": {
-   "display": "0.978",
-   "value": 0.9783863545569512,
+  "prereg_post.per_test.H_Amplify.by_model.M3.airline.k": {
+   "display": "36",
+   "value": 36,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12680,7 +13141,24 @@
      "by_model",
      "M3",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M3.airline.n": {
+   "display": "227",
+   "value": 227,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M3",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12702,9 +13180,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M3.bank.ceiling_ratio": {
-   "display": "0.910",
-   "value": 0.9101946857355081,
+  "prereg_post.per_test.H_Amplify.by_model.M3.bank.k": {
+   "display": "40",
+   "value": 40,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12714,7 +13192,24 @@
      "by_model",
      "M3",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M3.bank.n": {
+   "display": "291",
+   "value": 291,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M3",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12736,9 +13231,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M4.airline.ceiling_ratio": {
-   "display": "0.851",
-   "value": 0.8509337259939767,
+  "prereg_post.per_test.H_Amplify.by_model.M4.airline.k": {
+   "display": "41",
+   "value": 41,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12748,7 +13243,24 @@
      "by_model",
      "M4",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M4.airline.n": {
+   "display": "261",
+   "value": 261,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M4",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12770,9 +13282,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M4.bank.ceiling_ratio": {
-   "display": "0.920",
-   "value": 0.9196758803785863,
+  "prereg_post.per_test.H_Amplify.by_model.M4.bank.k": {
+   "display": "42",
+   "value": 42,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12782,7 +13294,24 @@
      "by_model",
      "M4",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M4.bank.n": {
+   "display": "288",
+   "value": 288,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M4",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12804,9 +13333,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M5.airline.ceiling_ratio": {
-   "display": "0.820",
-   "value": 0.819533957507114,
+  "prereg_post.per_test.H_Amplify.by_model.M5.airline.k": {
+   "display": "38",
+   "value": 38,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12816,7 +13345,24 @@
      "by_model",
      "M5",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M5.airline.n": {
+   "display": "271",
+   "value": 271,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M5",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12838,9 +13384,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M5.bank.ceiling_ratio": {
-   "display": "0.907",
-   "value": 0.9070775806473728,
+  "prereg_post.per_test.H_Amplify.by_model.M5.bank.k": {
+   "display": "45",
+   "value": 45,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12850,7 +13396,24 @@
      "by_model",
      "M5",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M5.bank.n": {
+   "display": "292",
+   "value": 292,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M5",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12872,9 +13435,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M6.airline.ceiling_ratio": {
-   "display": "0.881",
-   "value": 0.8813242162080472,
+  "prereg_post.per_test.H_Amplify.by_model.M6.airline.k": {
+   "display": "42",
+   "value": 42,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12884,7 +13447,24 @@
      "by_model",
      "M6",
      "airline",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M6.airline.n": {
+   "display": "252",
+   "value": 252,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M6",
+     "airline",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -12906,9 +13486,9 @@
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
   },
-  "prereg_post.per_test.H_Amplify.by_model.M6.bank.ceiling_ratio": {
-   "display": "0.849",
-   "value": 0.8489315818879258,
+  "prereg_post.per_test.H_Amplify.by_model.M6.bank.k": {
+   "display": "48",
+   "value": 48,
    "source": {
     "file": "osf/v40/v40_postscore.json",
     "path": [
@@ -12918,7 +13498,24 @@
      "by_model",
      "M6",
      "bank",
-     "ceiling_ratio"
+     "k"
+    ],
+    "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "prereg_post.per_test.H_Amplify.by_model.M6.bank.n": {
+   "display": "312",
+   "value": 312,
+   "source": {
+    "file": "osf/v40/v40_postscore.json",
+    "path": [
+     "prereg",
+     "per_test",
+     "H_Amplify",
+     "by_model",
+     "M6",
+     "bank",
+     "n"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
    }
@@ -16620,6 +17217,26 @@
      "s1_only_flagged"
     ],
     "label": "pre-registered, computed after scoring because the locked scorer did not output them"
+   }
+  },
+  "reference.v1_17.se_all_units": {
+   "display": "0.040",
+   "value": 0.04,
+   "source": {
+    "computed": "v1.17 run-to-run SE at 3 runs (all units), as quoted in pre-registration section 2.9 item 6 (regex on the locked text)",
+    "inputs": [
+     "osf/v40/prereg/PRE_REGISTRATION_v0_40.md"
+    ]
+   }
+  },
+  "reference.v1_17.se_some_not_all": {
+   "display": "0.050",
+   "value": 0.05,
+   "source": {
+    "computed": "v1.17 run-to-run SE at 3 runs (units named in some answers but not all), as quoted in pre-registration section 2.9 item 6 (regex on the locked text)",
+    "inputs": [
+     "osf/v40/prereg/PRE_REGISTRATION_v0_40.md"
+    ]
    }
   },
   "seed": {

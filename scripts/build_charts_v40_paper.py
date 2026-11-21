@@ -150,7 +150,7 @@ def fig2_amplify():
         y = n - 1 - i
         c = v(f"{cb}.ceiling_ratio")
         ax.plot([v(f"{base}.ratio"), c], [y, y], color=LIGHT, linewidth=1.6, zorder=1, solid_capstyle="butt")
-        ax.plot([c, c], [y - 0.26, y + 0.26], color=GREY, linewidth=1.8, zorder=2)
+        ax.plot([c, c], [y - 0.24, y + 0.16], color=GREY, linewidth=1.8, zorder=2)
         ax.text(c + 0.015, y - 0.05, d(f"{cb}.ceiling_ratio"), fontsize=6.5, color=GREY, ha="left", va="center",
                 bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     save(fig, "fig_02_amplify")

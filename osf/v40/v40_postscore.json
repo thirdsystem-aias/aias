@@ -212,6 +212,260 @@
      "ceiling_reaches_parity": true
     }
    }
+  },
+  "by_model": {
+   "M1": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 3,
+     "n": 83,
+     "p0": 0.21612499347371417,
+     "ratio": 0.167239233798515,
+     "units_per_answer": 1.7291666666666667,
+     "leader_answer_share": 0.0625,
+     "ceiling_ratio": 2.67582774077624,
+     "ceiling_reaches_threshold": true,
+     "ceiling_reaches_parity": true
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 45,
+     "n": 244,
+     "p0": 0.18122326595980534,
+     "ratio": 1.0176741299271241,
+     "units_per_answer": 5.083333333333333,
+     "leader_answer_share": 0.9375,
+     "ceiling_ratio": 1.0855190719222658,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": true
+    }
+   },
+   "M2": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 12,
+     "n": 129,
+     "p0": 0.21612499347371417,
+     "ratio": 0.4304141521016045,
+     "units_per_answer": 2.6875,
+     "leader_answer_share": 0.25,
+     "ceiling_ratio": 1.721656608406418,
+     "ceiling_reaches_threshold": true,
+     "ceiling_reaches_parity": true
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 45,
+     "n": 272,
+     "p0": 0.18122326595980534,
+     "ratio": 0.9129135577287437,
+     "units_per_answer": 5.666666666666667,
+     "leader_answer_share": 0.9375,
+     "ceiling_ratio": 0.9737744615773267,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "M3": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 36,
+     "n": 227,
+     "p0": 0.21612499347371417,
+     "ratio": 0.7337897659177135,
+     "units_per_answer": 4.729166666666667,
+     "leader_answer_share": 0.75,
+     "ceiling_ratio": 0.9783863545569512,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 40,
+     "n": 291,
+     "p0": 0.18122326595980534,
+     "ratio": 0.7584955714462568,
+     "units_per_answer": 6.0625,
+     "leader_answer_share": 0.8333333333333334,
+     "ceiling_ratio": 0.9101946857355081,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "M4": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 41,
+     "n": 261,
+     "p0": 0.21612499347371417,
+     "ratio": 0.7268392242865217,
+     "units_per_answer": 5.4375,
+     "leader_answer_share": 0.8541666666666666,
+     "ceiling_ratio": 0.8509337259939767,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 42,
+     "n": 288,
+     "p0": 0.18122326595980534,
+     "ratio": 0.804716395331263,
+     "units_per_answer": 6.0,
+     "leader_answer_share": 0.875,
+     "ceiling_ratio": 0.9196758803785863,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "M5": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 38,
+     "n": 271,
+     "p0": 0.21612499347371417,
+     "ratio": 0.6487977163597987,
+     "units_per_answer": 5.645833333333333,
+     "leader_answer_share": 0.7916666666666666,
+     "ceiling_ratio": 0.819533957507114,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 45,
+     "n": 292,
+     "p0": 0.18122326595980534,
+     "ratio": 0.8503852318569121,
+     "units_per_answer": 6.083333333333333,
+     "leader_answer_share": 0.9375,
+     "ceiling_ratio": 0.9070775806473728,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "M6": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 42,
+     "n": 252,
+     "p0": 0.21612499347371417,
+     "ratio": 0.7711586891820413,
+     "units_per_answer": 5.25,
+     "leader_answer_share": 0.875,
+     "ceiling_ratio": 0.8813242162080472,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 48,
+     "n": 312,
+     "p0": 0.18122326595980534,
+     "ratio": 0.8489315818879258,
+     "units_per_answer": 6.5,
+     "leader_answer_share": 1.0,
+     "ceiling_ratio": 0.8489315818879258,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "C1": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 0,
+     "n": 93,
+     "p0": 0.21612499347371417,
+     "ratio": 0.0,
+     "units_per_answer": 1.9375,
+     "leader_answer_share": 0.0,
+     "ceiling_ratio": 2.3881043277895473,
+     "ceiling_reaches_threshold": true,
+     "ceiling_reaches_parity": true
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 45,
+     "n": 286,
+     "p0": 0.18122326595980534,
+     "ratio": 0.8682254814762878,
+     "units_per_answer": 5.958333333333333,
+     "leader_answer_share": 0.9375,
+     "ceiling_ratio": 0.9261071802413736,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   },
+   "C2": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 3,
+     "n": 63,
+     "p0": 0.21612499347371417,
+     "ratio": 0.2203310540520118,
+     "units_per_answer": 1.3125,
+     "leader_answer_share": 0.0625,
+     "ceiling_ratio": 3.525296864832189,
+     "ceiling_reaches_threshold": true,
+     "ceiling_reaches_parity": true
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 40,
+     "n": 176,
+     "p0": 0.18122326595980534,
+     "ratio": 1.2541034732435268,
+     "units_per_answer": 3.6666666666666665,
+     "leader_answer_share": 0.8333333333333334,
+     "ceiling_ratio": 1.504924167892232,
+     "ceiling_reaches_threshold": true,
+     "ceiling_reaches_parity": true
+    }
+   },
+   "C3": {
+    "airline": {
+     "leader": "AA",
+     "answers": 48,
+     "k": 41,
+     "n": 289,
+     "p0": 0.21612499347371417,
+     "ratio": 0.6564188150130872,
+     "units_per_answer": 6.020833333333333,
+     "leader_answer_share": 0.8541666666666666,
+     "ceiling_ratio": 0.7684903200153215,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    },
+    "bank": {
+     "leader": "1039502",
+     "answers": 48,
+     "k": 45,
+     "n": 297,
+     "p0": 0.18122326595980534,
+     "ratio": 0.8360689821623511,
+     "units_per_answer": 6.1875,
+     "leader_answer_share": 0.9375,
+     "ceiling_ratio": 0.891806914306508,
+     "ceiling_reaches_threshold": false,
+     "ceiling_reaches_parity": false
+    }
+   }
   }
  },
  "prereg": {
@@ -5273,15 +5527,13 @@
        "k": 3,
        "n": 83,
        "ratio": 0.167239233798515,
-       "answers": 48,
-       "ceiling_ratio": 2.67582774077624
+       "answers": 48
       },
       "bank": {
        "k": 45,
        "n": 244,
        "ratio": 1.0176741299271241,
-       "answers": 48,
-       "ceiling_ratio": 1.0855190719222658
+       "answers": 48
       }
      },
      "M2": {
@@ -5289,15 +5541,13 @@
        "k": 12,
        "n": 129,
        "ratio": 0.4304141521016045,
-       "answers": 48,
-       "ceiling_ratio": 1.721656608406418
+       "answers": 48
       },
       "bank": {
        "k": 45,
        "n": 272,
        "ratio": 0.9129135577287437,
-       "answers": 48,
-       "ceiling_ratio": 0.9737744615773267
+       "answers": 48
       }
      },
      "M3": {
@@ -5305,15 +5555,13 @@
        "k": 36,
        "n": 227,
        "ratio": 0.7337897659177135,
-       "answers": 48,
-       "ceiling_ratio": 0.9783863545569512
+       "answers": 48
       },
       "bank": {
        "k": 40,
        "n": 291,
        "ratio": 0.7584955714462568,
-       "answers": 48,
-       "ceiling_ratio": 0.9101946857355081
+       "answers": 48
       }
      },
      "M4": {
@@ -5321,15 +5569,13 @@
        "k": 41,
        "n": 261,
        "ratio": 0.7268392242865217,
-       "answers": 48,
-       "ceiling_ratio": 0.8509337259939767
+       "answers": 48
       },
       "bank": {
        "k": 42,
        "n": 288,
        "ratio": 0.804716395331263,
-       "answers": 48,
-       "ceiling_ratio": 0.9196758803785863
+       "answers": 48
       }
      },
      "M5": {
@@ -5337,15 +5583,13 @@
        "k": 38,
        "n": 271,
        "ratio": 0.6487977163597987,
-       "answers": 48,
-       "ceiling_ratio": 0.819533957507114
+       "answers": 48
       },
       "bank": {
        "k": 45,
        "n": 292,
        "ratio": 0.8503852318569121,
-       "answers": 48,
-       "ceiling_ratio": 0.9070775806473728
+       "answers": 48
       }
      },
      "M6": {
@@ -5353,15 +5597,13 @@
        "k": 42,
        "n": 252,
        "ratio": 0.7711586891820413,
-       "answers": 48,
-       "ceiling_ratio": 0.8813242162080472
+       "answers": 48
       },
       "bank": {
        "k": 48,
        "n": 312,
        "ratio": 0.8489315818879258,
-       "answers": 48,
-       "ceiling_ratio": 0.8489315818879258
+       "answers": 48
       }
      },
      "C1": {
@@ -5369,15 +5611,13 @@
        "k": 0,
        "n": 93,
        "ratio": 0.0,
-       "answers": 48,
-       "ceiling_ratio": 2.3881043277895473
+       "answers": 48
       },
       "bank": {
        "k": 45,
        "n": 286,
        "ratio": 0.8682254814762878,
-       "answers": 48,
-       "ceiling_ratio": 0.9261071802413736
+       "answers": 48
       }
      },
      "C2": {
@@ -5385,15 +5625,13 @@
        "k": 3,
        "n": 63,
        "ratio": 0.2203310540520118,
-       "answers": 48,
-       "ceiling_ratio": 3.525296864832189
+       "answers": 48
       },
       "bank": {
        "k": 40,
        "n": 176,
        "ratio": 1.2541034732435268,
-       "answers": 48,
-       "ceiling_ratio": 1.504924167892232
+       "answers": 48
       }
      },
      "C3": {
@@ -5401,15 +5639,13 @@
        "k": 41,
        "n": 289,
        "ratio": 0.6564188150130872,
-       "answers": 48,
-       "ceiling_ratio": 0.7684903200153215
+       "answers": 48
       },
       "bank": {
        "k": 45,
        "n": 297,
        "ratio": 0.8360689821623511,
-       "answers": 48,
-       "ceiling_ratio": 0.891806914306508
+       "answers": 48
       }
      }
     }

@@ -48,14 +48,19 @@ def table(caption, head, align, rows):
 def a1():
     rows = []
     for sl in SLOTS:
-        rows.append([f"{NAMES[sl]} ({sl})",
-                     k(f"{PT}.H_Reinforce.by_model.{sl}.airline.rho"), k(f"{PT}.H_Reinforce.by_model.{sl}.bank.rho"),
-                     k(f"{PT}.H_Amplify.by_model.{sl}.airline.ratio"), k(f"{PT}.H_Amplify.by_model.{sl}.airline.ceiling_ratio"),
-                     k(f"{PT}.H_Amplify.by_model.{sl}.bank.ratio"), k(f"{PT}.H_Amplify.by_model.{sl}.bank.ceiling_ratio")])
+        cells = [f"{NAMES[sl]} ({sl})",
+                 k(f"{PT}.H_Reinforce.by_model.{sl}.airline.rho"), k(f"{PT}.H_Reinforce.by_model.{sl}.bank.rho")]
+        for cat in ("airline", "bank"):
+            b = f"{PT}.H_Amplify.by_model.{sl}.{cat}"
+            cells += [f"{k(b + '.ratio')} ({k(b + '.k')} of {k(b + '.n')})",
+                      k(f"ceiling.by_model.{sl}.{cat}.ceiling_ratio")]
+        rows.append(cells)
+    ans = k(f"{PT}.H_Amplify.by_model.M1.airline.answers")
     return table("Per-model results beside H_Reinforce and H_Amplify (search off; computed after scoring, DEVIATIONS "
                  "Entry 2). ρ: Spearman correlation of market share with the model's AI share; ratio: the leader's "
-                 "(k/n)/p₀ for the model; ceiling: the largest ratio the measure could reach at the model's breadth "
-                 "of answers. Per-model statistics carry no test.",
+                 "(k/n)/p₀ for the model, with k of n. The ceiling columns are not pre-registered: they belong to the "
+                 "post-scoring check of DEVIATIONS Entry 2 (the largest ratio at the model's observed breadth of "
+                 f"answers). Per-model statistics carry no test and rest on {ans} answers per model and category.",
                  ["Model", "ρ airlines", "ρ banks", "Ratio airlines", "Ceiling airlines", "Ratio banks", "Ceiling banks"],
                  [":---", "---:", "---:", "---:", "---:", "---:", "---:"], rows)
 
@@ -129,7 +134,8 @@ def a45(cat, label):
     if cat == "bank":
         slopes += (f"; without the brokerage and wealth holders (D4): {k(s + '.all_nine_S0_without_D4')}, "
                    f"{k(s + '.legacy_S0_without_D4')}, {k(s + '.current_S0_without_D4')} and "
-                   f"{k(s + '.current_S1_without_D4')}")
+                   f"{k(s + '.current_S1_without_D4')}. Capital One's share does not include Discover's mentions: the "
+                   f"locked scorer does not apply pre-registration §2.1 (D12) to Discover (§2.3)")
     return table(f"AI share and market share of each current {label} unit (descriptive 1; computed after scoring, "
                  f"DEVIATIONS Entry 2). Market share: share of the category's current units; AI share: mean over the "
                  f"models of each model's share of unit-namings (search off unless stated). {slopes}. Each model's "
@@ -161,8 +167,10 @@ def block():
     intro = ("These tables are pre-registered, computed after scoring because the locked scorer did not output them "
              "(§3.10; DEVIATIONS Entry 2). They were computed from the frozen coded mentions by "
              "`osf/v40/scripts/postscore_v0_40.py`, which imports the locked scorer unchanged and first reproduces "
-             "the scored tests exactly; they carry no verdict and change none. Every value is read from "
-             "`osf/v40/v40_values.json` (keys `prereg_post.*`).")
+             "the six primary tests and S-D4 exactly; they carry no verdict and change none. The one exception to "
+             "the label is the ceiling columns of Table 4, which belong to the post-scoring check of DEVIATIONS Entry 2 "
+             "and are not pre-registered. Every value is read from `osf/v40/v40_values.json` (keys `prereg_post.*`; "
+             "the ceilings `ceiling.*`).")
     parts = [START, "", "# Appendix A. Pre-registered tables computed after scoring {-}", "", intro, "",
              a1(), a2(), a3(), a45("airline", "airline"), a45("bank", "bank"), a6(), END]
     return "\n".join(parts)
