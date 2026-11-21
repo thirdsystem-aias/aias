@@ -1,0 +1,12 @@
+Below are brand names from a US brand list. Each has its product category and a proposed $LANGUAGE name (alias) that would be used to recognise the brand when it is mentioned in $LANGUAGE text.
+
+For every alias, judge:
+- usage: "standard" (the usual $LANGUAGE name of this brand), "acceptable variant" (used for this brand, but not the usual form), "not used for this brand" (not a name that $LANGUAGE speakers use for this brand, or it refers to something else) or "unknown" (you cannot tell);
+- common_word: true if the alias is also a common word, or the usual name of something else, in $LANGUAGE; otherwise false;
+- reason: one sentence explaining your judgement.
+
+Reply with exactly one JSON object and nothing else, in this form, with one entry for every alias id:
+{"aliases": [{"id": "<alias id>", "usage": "standard", "common_word": false, "reason": "<one sentence>"}]}
+
+Aliases (JSON):
+$ITEMS

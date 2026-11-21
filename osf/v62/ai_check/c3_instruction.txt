@@ -1,0 +1,13 @@
+Each item below gives an English source text and an English back-translation: a translation of the source into another language was translated back into English by someone who did not see the source. Some items are question templates with the placeholders {BRAND} and {CATEGORY}; some are short category names only.
+
+Compare each back-translation with its source and code the item:
+- "equivalent": same meaning and same answer format;
+- "minor drift": the wording differs, but the meaning and the answer format are the same;
+- "meaning change": the meaning or the answer format differs.
+Give one sentence of reason for each code.
+
+Reply with exactly one JSON object and nothing else, in this form, with one entry for every item id:
+{"items": [{"id": "<item id>", "code": "equivalent", "reason": "<one sentence>"}]}
+
+Items (JSON):
+$ITEMS

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIAS v0.62 AI check C4 reply (alias check; DEVIATIONS Entry 2)",
+  "type": "object",
+  "required": ["aliases"],
+  "properties": {
+    "aliases": {
+      "type": "array",
+      "description": "exactly one entry per alias id sent, no other ids",
+      "items": {
+        "type": "object",
+        "required": ["id", "usage", "common_word", "reason"],
+        "properties": {
+          "id": {"type": "string"},
+          "usage": {"enum": ["standard", "acceptable variant", "not used for this brand", "unknown"]},
+          "common_word": {"type": "boolean"},
+          "reason": {"type": "string"}
+        }
+      }
+    }
+  }
+}

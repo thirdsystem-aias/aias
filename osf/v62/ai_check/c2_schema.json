@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIAS v0.62 AI check C2 reply (bilingual review; DEVIATIONS Entry 2)",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "description": "exactly one entry per item id sent, no other ids",
+      "items": {
+        "type": "object",
+        "required": ["id", "equivalence", "naturalness", "category_scope", "speech_act_format", "added_or_removed", "reason"],
+        "properties": {
+          "id": {"type": "string"},
+          "equivalence": {"enum": ["equivalent", "minor drift", "meaning change"]},
+          "naturalness": {"enum": ["natural", "acceptable", "unnatural"]},
+          "category_scope": {"type": "boolean"},
+          "speech_act_format": {"type": "boolean"},
+          "added_or_removed": {"type": "boolean"},
+          "reason": {"type": "string"}
+        }
+      }
+    }
+  }
+}

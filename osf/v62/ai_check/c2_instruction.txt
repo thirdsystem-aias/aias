@@ -1,0 +1,18 @@
+You are reviewing translations of survey questions from US English into $VARIETY.
+
+Each item below gives the English source and its translation. Some items are question templates: {BRAND} is later replaced by a brand name, kept in Latin script exactly as in English, and {CATEGORY} by a category name. Some items are short category names only.
+
+For every item, judge:
+- equivalence: "equivalent" (same meaning and same answer format), "minor drift" (the wording differs, but the meaning and the answer format are the same) or "meaning change" (the meaning or the answer format differs);
+- naturalness for a native reader of $VARIETY: "natural", "acceptable" or "unnatural";
+- three checklist flags, each true if the translation has the problem, otherwise false:
+  1. category_scope: the category word of the translation covers a different set of brands or products than the US English one (for example wider or narrower). In US English, "cosmetics" in these items means colour cosmetics (makeup), not skincare;
+  2. speech_act_format: the kind of request or the answer format changed (for example "List several" and "Name several" are not kept distinct, "with descriptions" is dropped, or a yes/no question cannot be answered with the language's own words for yes and no);
+  3. added_or_removed: something is added or removed (for example a country, market, currency, example, brand, qualifier or part of the request);
+- reason: one sentence explaining your judgement.
+
+Reply with exactly one JSON object and nothing else, in this form, with one entry for every item id:
+{"items": [{"id": "<item id>", "equivalence": "equivalent", "naturalness": "natural", "category_scope": false, "speech_act_format": false, "added_or_removed": false, "reason": "<one sentence>"}]}
+
+Items (JSON):
+$ITEMS

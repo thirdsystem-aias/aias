@@ -1,0 +1,21 @@
+{
+  "spec": "osf/v62/DEVIATIONS.md, Entry 2 (Sat 2026-11-21)",
+  "seed": 20261121,
+  "cap_usd": 8.0,
+  "models": {"C1": "gpt-6-astra", "C2": "gpt-6-astra", "C3": "gemini-4-argon", "C4": "gpt-6-astra"},
+  "languages": {"C1": ["es", "ko", "zh"], "C2": ["es", "ko", "zh"], "C3": ["es", "ko", "zh"], "C4": ["ko", "zh"]},
+  "variety": {
+    "es": "neutral Latin American Spanish, formal \"usted\" address, no voseo, vocabulary common to Mexico and Argentina",
+    "ko": "standard South Korean, formal polite style (-습니다 / -십시오)",
+    "zh": "Simplified Chinese, Mainland usage, polite 您 where a pronoun is needed"
+  },
+  "alias_language": {"ko": "Korean (South Korea)", "zh": "Chinese (Simplified, Mainland)"},
+  "category": {
+    "v19": "audiophile headphones",
+    "v20": "skincare",
+    "v21": "cosmetics (colour cosmetics, makeup)",
+    "v22": "cars",
+    "v23": "premium spirits"
+  },
+  "alias_statuses_checked": ["UNCONFIRMED", "PARTLY"]
+}

@@ -1,0 +1,9 @@
+Translate literally into English.
+
+Each item below has an id and a text. Translate every text literally into English. Keep the placeholders {BRAND} and {CATEGORY} exactly as written wherever they occur. Do not explain, comment or add anything.
+
+Reply with exactly one JSON object and nothing else, in this form, with one entry for every item id:
+{"items": [{"id": "<item id>", "english": "<literal English translation>"}]}
+
+Items (JSON):
+$ITEMS

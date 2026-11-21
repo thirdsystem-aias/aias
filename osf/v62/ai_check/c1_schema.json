@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AIAS v0.62 AI check C1 reply (independent back-translation; DEVIATIONS Entry 2)",
+  "type": "object",
+  "required": ["items"],
+  "properties": {
+    "items": {
+      "type": "array",
+      "description": "exactly one entry per item id sent, no other ids",
+      "items": {
+        "type": "object",
+        "required": ["id", "english"],
+        "properties": {
+          "id": {"type": "string"},
+          "english": {"type": "string", "minLength": 1}
+        }
+      }
+    }
+  }
+}
