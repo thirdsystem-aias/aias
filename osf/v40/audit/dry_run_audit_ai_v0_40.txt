@@ -5,7 +5,8 @@ coder B: GPT-6.2 Astra (gpt-6.2-astra, openai, batch), reasoning {"reasoning": {
 coder T: Gemini 4 Carbon (gemini-4-carbon, google, sync), reasoning {"thinking_config": {"thinking_level": "low"}}, prices (2.0, 10.0)
 system prompt airline: 4434 chars, sha256 1fb80c37361948e2c7d1eb6316adefa1ba8db63c7c29770c73fbf99c190910a0 -> prompt_system_airline_v0_40.txt
 system prompt bank: 5946 chars, sha256 d5d0b3072a0076ff5c08449c93b1c26b5c4d4486c7de70e980d47bd337f722d0 -> prompt_system_bank_v0_40.txt
-cost projection on a length proxy (sample not drawn yet): population mean (central) and p90 (high) answer lengths (input chars / 4.547 x vendor factor {'anthropic': 1.3, 'openai': 1.1, 'google': 1.1}; output {'recommendation': 450, 'status': 120} visible + {'central': 1000, 'high': 2500} reasoning tokens; T share {'central': 0.5, 'high': 1.0}):
-  central: A $6.74, B $6.49, T $1.62; total $14.86 (cap $25.00)
-  high: A $13.13, B $12.83, T $6.41; total $32.37 (cap $25.00)
+requests built from the drawn sample: 200 answers x 3 coders = 600; sampling parameters sent: 0
+cost projection on the drawn sample (input chars / 4.547 x vendor factor {'anthropic': 1.3, 'openai': 1.1, 'google': 1.1}; output {'recommendation': 450, 'status': 120} visible + {'central': 1000, 'high': 2500} reasoning tokens; T share {'central': 0.5, 'high': 1.0}):
+  central: A $6.78, B $6.53, T $1.63; total $14.95 (cap $25.00)
+  high: A $12.78, B $12.53, T $6.27; total $31.58 (cap $25.00)
   bound if every reply of all three coders on all 200 answers ran to the output cap (output only): $49.15; the guard stops before $25.00 in any case

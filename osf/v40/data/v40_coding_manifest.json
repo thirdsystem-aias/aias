@@ -1,0 +1,28 @@
+{
+  "step": "v0.40 step 8, coding only (DEVIATIONS 2026-11-21)",
+  "written_utc": "2026-11-21T17:46:11.140876+00:00",
+  "inputs": {
+    "raw": {
+      "path": "/Users/pablou/aias/_worktrees/v0.40-dev1/osf/v40/data/v40_raw.jsonl",
+      "sha256": "c43535e3d9f67e2686ea5d3b41f25e7bdc7bc4f980a350d51d06137c4f2d947f"
+    }
+  },
+  "locked_scorer_sha256": {
+    "score_v0_40.py": "9fd69115ea5260ee960894c578ce7c2fac293e0e8100955a3ca279b8583365e3",
+    "stoprule_v0_40.py": "61c00dc2dde3acf357ad93e903eb3f507c1dce07420fe41254378c6cafbedcfc"
+  },
+  "outputs": {
+    "v40_mentions.csv": {
+      "sha256": "0a83b397fa00401cef70570a35e3c443e318e52213752a261f79ac5de14dfffe",
+      "rows": 27647
+    },
+    "v40_coded_answers.csv": {
+      "sha256": "cd5bd02643ee788064a8dca80b94df849643bcf5d3a6a75739aa6c21ca9a9468",
+      "rows": 2821
+    }
+  },
+  "records_read": 2821,
+  "answers_coded": 2821,
+  "cut_before_first_brand_missing": 0,
+  "verdicts_computed": false
+}

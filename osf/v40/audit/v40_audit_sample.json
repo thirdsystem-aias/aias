@@ -1,0 +1,1047 @@
+{
+  "allocation": {
+    "recommendation": {
+      "C|S0": 28,
+      "C|S1": 6,
+      "L|S0": 66
+    },
+    "status": {
+      "C|S0|control": 3,
+      "C|S0|ghost": 22,
+      "C|S0|incumbent": 4,
+      "C|S1|control": 1,
+      "C|S1|ghost": 8,
+      "C|S1|incumbent": 1,
+      "L|S0|control": 6,
+      "L|S0|ghost": 47,
+      "L|S0|incumbent": 8
+    }
+  },
+  "frames": {
+    "recommendation": {
+      "C|S0": 147,
+      "C|S1": 34,
+      "L|S0": 344
+    },
+    "status": {
+      "C|S0|control": 27,
+      "C|S0|ghost": 216,
+      "C|S0|incumbent": 36,
+      "C|S1|control": 9,
+      "C|S1|ghost": 72,
+      "C|S1|incumbent": 12,
+      "L|S0|control": 57,
+      "L|S0|ghost": 456,
+      "L|S0|incumbent": 76
+    }
+  },
+  "inputs_sha256": {
+    "probes_v0_40.json": "be66270135ee9101fe9fecef6552b1160a17dc1e0cfae42082e673744be9b306",
+    "v40_coded_answers.csv": "cd5bd02643ee788064a8dca80b94df849643bcf5d3a6a75739aa6c21ca9a9468",
+    "v40_mentions.csv": "0a83b397fa00401cef70570a35e3c443e318e52213752a261f79ac5de14dfffe"
+  },
+  "items": [
+    {
+      "call_id": "v40|C|AG1|C1|claude-fable-5-2|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG1|C2|gpt-6-astra|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG1|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG2|C2|gpt-6-astra|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG2|C3|gemini-4-argon|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG2|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG3|C3|gemini-4-argon|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG4|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG5|C1|claude-fable-5-2|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG5|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG6|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AN4|C1|claude-fable-5-2|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AN4|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AN5|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AN6|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AR2|C2|gpt-6-astra|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AR2|C3|gemini-4-argon|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AR3|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AR4|C1|claude-fable-5-2|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AR4|C3|gemini-4-argon|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BG1|C1|claude-fable-5-2|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BG1|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BG3|C3|gemini-4-argon|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BN1|C1|claude-fable-5-2|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BN1|C3|gemini-4-argon|S0|2",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BN6|C3|gemini-4-argon|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BR3|C1|claude-fable-5-2|S0|1",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|BR3|C1|claude-fable-5-2|S0|3",
+      "set": "recommendation",
+      "stratum": "C|S0"
+    },
+    {
+      "call_id": "v40|C|AG2|C1|claude-fable-5-2|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|C|AN2|C3|gemini-4-argon|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|C|AR3|C1|claude-fable-5-2|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|C|BN4|C1|claude-fable-5-2|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|C|BN4|C3|gemini-4-argon|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|C|BR4|C3|gemini-4-argon|S1|1",
+      "set": "recommendation",
+      "stratum": "C|S1"
+    },
+    {
+      "call_id": "v40|L|AG1|M1|claude-opus-4-5|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG1|M2|claude-sonnet-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG2|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG2|M2|claude-sonnet-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG2|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG3|M5|gemini-2.5-flash|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG3|M5|gemini-2.5-flash|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG4|M3|gpt-4o|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG4|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG4|M5|gemini-2.5-flash|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG5|M3|gpt-4o|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG5|M5|gemini-2.5-flash|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AG6|M5|gemini-2.5-flash|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M2|claude-sonnet-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M2|claude-sonnet-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M3|gpt-4o|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M3|gpt-4o|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M4|gpt-4o-mini|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN1|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN3|M5X|gemini-2.5-flash|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AN5|M5|gemini-2.5-flash|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AR1|M6|gemini-2.5-flash-lite|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AR2|M5|gemini-2.5-flash|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|AR3|M5|gemini-2.5-flash|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG1|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG1|M2|claude-sonnet-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG1|M3|gpt-4o|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG1|M6|gemini-2.5-flash-lite|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M1|claude-opus-4-5|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M3|gpt-4o|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M4|gpt-4o-mini|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M4|gpt-4o-mini|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG2|M6|gemini-2.5-flash-lite|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG3|M5|gemini-2.5-flash|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG3|M5|gemini-2.5-flash|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG4|M1|claude-opus-4-5|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG4|M6|gemini-2.5-flash-lite|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG5|M1|claude-opus-4-5|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG5|M1|claude-opus-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG5|M5|gemini-2.5-flash|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG6|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG6|M4|gpt-4o-mini|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG6|M6|gemini-2.5-flash-lite|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BG6|M6|gemini-2.5-flash-lite|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN1|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN1|M6|gemini-2.5-flash-lite|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN2|M1|claude-opus-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN2|M3|gpt-4o|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN4|M1|claude-opus-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN4|M5|gemini-2.5-flash|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BN4|M6|gemini-2.5-flash-lite|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR1|M1|claude-opus-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR1|M4|gpt-4o-mini|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR1|M4|gpt-4o-mini|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR2|M2|claude-sonnet-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR2|M2|claude-sonnet-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR2|M3|gpt-4o|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR2|M6|gemini-2.5-flash-lite|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR3|M1|claude-opus-4-5|S0|2",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR3|M2|claude-sonnet-4-5|S0|1",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR3|M2|claude-sonnet-4-5|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR3|M3|gpt-4o|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|L|BR3|M4|gpt-4o-mini|S0|3",
+      "set": "recommendation",
+      "stratum": "L|S0"
+    },
+    {
+      "call_id": "v40|C|S_DISCOVER|C2|gpt-6-astra|S0|1",
+      "set": "status",
+      "stratum": "C|S0|control"
+    },
+    {
+      "call_id": "v40|C|S_HA|C2|gpt-6-astra|S0|1",
+      "set": "status",
+      "stratum": "C|S0|control"
+    },
+    {
+      "call_id": "v40|C|S_SY|C3|gemini-4-argon|S0|2",
+      "set": "status",
+      "stratum": "C|S0|control"
+    },
+    {
+      "call_id": "v40|C|S_BBT|C3|gemini-4-argon|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BMOHARRIS|C2|gpt-6-astra|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BMOHARRIS|C3|gemini-4-argon|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_COUNTRYWIDE|C3|gemini-4-argon|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_FL|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_FL|C2|gpt-6-astra|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_INGDIRECT|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_INGDIRECT|C2|gpt-6-astra|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_LASALLE|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_LASALLE|C2|gpt-6-astra|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_LASALLE|C3|gemini-4-argon|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NATCITY|C3|gemini-4-argon|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NK|C1|claude-fable-5-2|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NORTHFORK|C1|claude-fable-5-2|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NORTHFORK|C2|gpt-6-astra|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NW|C3|gemini-4-argon|S0|3",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_TZ|C1|claude-fable-5-2|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_TZ|C3|gemini-4-argon|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_UNIONBANK|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_WACHOVIA|C1|claude-fable-5-2|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_WACHOVIA|C3|gemini-4-argon|S0|2",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_WAMU|C2|gpt-6-astra|S0|1",
+      "set": "status",
+      "stratum": "C|S0|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BAC|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|incumbent"
+    },
+    {
+      "call_id": "v40|C|S_DL|C3|gemini-4-argon|S0|2",
+      "set": "status",
+      "stratum": "C|S0|incumbent"
+    },
+    {
+      "call_id": "v40|C|S_JPMC|C1|claude-fable-5-2|S0|2",
+      "set": "status",
+      "stratum": "C|S0|incumbent"
+    },
+    {
+      "call_id": "v40|C|S_JPMC|C3|gemini-4-argon|S0|2",
+      "set": "status",
+      "stratum": "C|S0|incumbent"
+    },
+    {
+      "call_id": "v40|C|S_SY|C3|gemini-4-argon|S1|1",
+      "set": "status",
+      "stratum": "C|S1|control"
+    },
+    {
+      "call_id": "v40|C|S_BBT|C3|gemini-4-argon|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BBVACOMPASS|C1|claude-fable-5-2|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BBVACOMPASS|C2|gpt-6-astra|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_BMOHARRIS|C3|gemini-4-argon|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_CO|C2|gpt-6-astra|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_CO|C3|gemini-4-argon|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_NATCITY|C1|claude-fable-5-2|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_SOVEREIGN|C2|gpt-6-astra|S1|1",
+      "set": "status",
+      "stratum": "C|S1|ghost"
+    },
+    {
+      "call_id": "v40|C|S_JPMC|C3|gemini-4-argon|S1|1",
+      "set": "status",
+      "stratum": "C|S1|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_DISCOVER|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_HA|M2|claude-sonnet-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_HA|M3|gpt-4o|S0|1",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_HA|M4|gpt-4o-mini|S0|2",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_SY|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_SY|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|control"
+    },
+    {
+      "call_id": "v40|L|S_BBT|M4|gpt-4o-mini|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_BBT|M4|gpt-4o-mini|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_BBVACOMPASS|M3|gpt-4o|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_BMOHARRIS|M2|claude-sonnet-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_BMOHARRIS|M3|gpt-4o|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_BMOHARRIS|M6|gemini-2.5-flash-lite|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_COMMERCE|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_COUNTRYWIDE|M1|claude-opus-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_CO|M1|claude-opus-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_CO|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_CO|M6|gemini-2.5-flash-lite|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_CO|M6|gemini-2.5-flash-lite|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_FIRSTREPUBLIC|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_FIRSTREPUBLIC|M4|gpt-4o-mini|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_FL|M1|claude-opus-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_INGDIRECT|M2|claude-sonnet-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_INGDIRECT|M3|gpt-4o|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_INGDIRECT|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_INGDIRECT|M4|gpt-4o-mini|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_LASALLE|M1|claude-opus-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_LASALLE|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_LASALLE|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NATCITY|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NATCITY|M5|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NATCITY|M5|gemini-2.5-flash|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NK|M1|claude-opus-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NK|M2|claude-sonnet-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NORTHFORK|M1|claude-opus-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NORTHFORK|M4|gpt-4o-mini|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NORTHFORK|M6|gemini-2.5-flash-lite|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NW|M1|claude-opus-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_NW|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SIGNATURE|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SIGNATURE|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SOVEREIGN|M1|claude-opus-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SOVEREIGN|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SOVEREIGN|M5|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SUNTRUST|M1|claude-opus-4-5|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SUNTRUST|M1|claude-opus-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SUNTRUST|M5|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_SVB|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_UNIONBANK|M3|gpt-4o|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_US|M2|claude-sonnet-4-5|S0|2",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_VX|M6|gemini-2.5-flash-lite|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_WAMU|M5X|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_WAMU|M5|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_WAMU|M5|gemini-2.5-flash|S0|3",
+      "set": "status",
+      "stratum": "L|S0|ghost"
+    },
+    {
+      "call_id": "v40|L|S_AA|M4|gpt-4o-mini|S0|3",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_BAC|M3|gpt-4o|S0|3",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_BAC|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_DL|M2|claude-sonnet-4-5|S0|3",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_DL|M4|gpt-4o-mini|S0|2",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_DL|M6|gemini-2.5-flash-lite|S0|1",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_JPMC|M5|gemini-2.5-flash|S0|1",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    },
+    {
+      "call_id": "v40|L|S_JPMC|M5|gemini-2.5-flash|S0|2",
+      "set": "status",
+      "stratum": "L|S0|incumbent"
+    }
+  ],
+  "n": 200,
+  "seed": 4040
+}
