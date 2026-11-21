@@ -1,0 +1,4816 @@
+{
+  "phase": "v0.40",
+  "seed": 4040,
+  "permutations": 10000,
+  "thresholds": {
+    "reinforce_rho": 0.5,
+    "amplify_ratio": 1.25,
+    "afterlife_rate": 0.2,
+    "afterlife_null": 0.05,
+    "decay_rho": -0.3,
+    "decay_min_present": 10,
+    "flag_rate": 0.8,
+    "flag_floor": 0.5,
+    "search_post_rate": 0.8,
+    "search_min_discordant": 10,
+    "min_units_present": 5
+  },
+  "window_chars": 150,
+  "H_Reinforce": {
+    "airline": {
+      "n_units": 10,
+      "units_present": 10,
+      "rho": 0.6121212121212121,
+      "p_perm": 0.0334966503349665,
+      "pass": true,
+      "evaluable": true
+    },
+    "bank": {
+      "n_units": 25,
+      "units_present": 21,
+      "rho": 0.6789993336079904,
+      "p_perm": 0.00029997000299970003,
+      "pass": true,
+      "evaluable": true
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H_Amplify": {
+    "airline": {
+      "leader": "AA",
+      "k": 216,
+      "n": 1668,
+      "p0": 0.21612499347371417,
+      "ratio": 0.59917365778173,
+      "p_greater": 0.9999999999997781,
+      "p_less": 5.561008758094328e-20,
+      "loglog_slope": 0.6287261212876691,
+      "amplified": false,
+      "flattened": true
+    },
+    "bank": {
+      "leader": "1039502",
+      "k": 395,
+      "n": 2458,
+      "p0": 0.18122326595980534,
+      "ratio": 0.8867501368987996,
+      "p_greater": 0.9965724159588133,
+      "p_less": 0.004027347782513915,
+      "loglog_slope": 0.9853140534091601,
+      "amplified": false,
+      "flattened": true
+    },
+    "verdict": "FALSIFIED"
+  },
+  "H_Afterlife": {
+    "airline": {
+      "pairs": 55,
+      "afterlife_pairs": 3,
+      "rate": 0.05454545454545454,
+      "p_exact": 0.5231967789194288,
+      "pass": false,
+      "low": false
+    },
+    "bank": {
+      "pairs": 142,
+      "afterlife_pairs": 9,
+      "rate": 0.06338028169014084,
+      "p_exact": 0.2809170561123695,
+      "pass": false,
+      "low": false
+    },
+    "verdict": "UNDETERMINED"
+  },
+  "H_Decay": {
+    "pairs": 197,
+    "pairs_present": 16,
+    "rho": -0.28640307031384576,
+    "p_perm": 9.999000099990002e-05,
+    "evaluable": true,
+    "verdict": "PARTIAL"
+  },
+  "H_Flag": {
+    "ghost_answers": 591,
+    "ghost_flagged": 579,
+    "ghost_rate": 0.9796954314720813,
+    "control_answers": 189,
+    "control_flagged": 32,
+    "control_rate": 0.1693121693121693,
+    "p_fisher": 1.4450285705846424e-115,
+    "verdict": "CONFIRMED"
+  },
+  "H_Search": {
+    "paired_cells": 72,
+    "s1_only_flagged": 1,
+    "s0_only_flagged": 4,
+    "p_mcnemar_exact": 0.9687500000000013,
+    "discordant_evaluable": false,
+    "post_cutoff_cells": 5,
+    "post_cutoff_s1_flagged": 5,
+    "post_cutoff_s1_rate": 1.0,
+    "verdict": "PARTIAL"
+  },
+  "sensitivity": {
+    "S-D4": {
+      "excluded": [
+        "2162966",
+        "1026632",
+        "4795461"
+      ],
+      "rho": 0.7325614525388064,
+      "p_perm": 0.00019998000199980003
+    },
+    "S-Discover": {
+      "ghost_answers": 591,
+      "ghost_flagged": 579,
+      "ghost_rate": 0.9796954314720813,
+      "control_answers": 162,
+      "control_flagged": 22,
+      "control_rate": 0.13580246913580246,
+      "p_fisher": 2.510077499602326e-112,
+      "verdict": "CONFIRMED"
+    },
+    "S-Ambig": {
+      "H_Reinforce": {
+        "airline": {
+          "n_units": 10,
+          "units_present": 10,
+          "rho": 0.9151515151515152,
+          "p_perm": 0.0005999400059994001,
+          "pass": true,
+          "evaluable": true
+        },
+        "bank": {
+          "n_units": 25,
+          "units_present": 21,
+          "rho": 0.6789993336079904,
+          "p_perm": 0.00029997000299970003,
+          "pass": true,
+          "evaluable": true
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H_Amplify": {
+        "airline": {
+          "leader": "AA",
+          "k": 349,
+          "n": 2403,
+          "p0": 0.21612499347371417,
+          "ratio": 0.6719959613596316,
+          "p_greater": 1.0,
+          "p_less": 6.228920179194654e-19,
+          "loglog_slope": 0.8338850992731409,
+          "amplified": false,
+          "flattened": true
+        },
+        "bank": {
+          "leader": "1039502",
+          "k": 395,
+          "n": 2458,
+          "p0": 0.18122326595980534,
+          "ratio": 0.8867501368987996,
+          "p_greater": 0.9965724159588133,
+          "p_less": 0.004027347782513915,
+          "loglog_slope": 0.9853140534091601,
+          "amplified": false,
+          "flattened": true
+        },
+        "verdict": "FALSIFIED"
+      },
+      "H_Afterlife": {
+        "airline": {
+          "pairs": 55,
+          "afterlife_pairs": 7,
+          "rate": 0.12727272727272726,
+          "p_exact": 0.019317477811159077,
+          "pass": false,
+          "low": false
+        },
+        "bank": {
+          "pairs": 142,
+          "afterlife_pairs": 12,
+          "rate": 0.08450704225352113,
+          "p_exact": 0.05326334226779832,
+          "pass": false,
+          "low": false
+        },
+        "verdict": "UNDETERMINED"
+      },
+      "H_Decay": {
+        "pairs": 197,
+        "pairs_present": 24,
+        "rho": -0.2312634340684799,
+        "p_perm": 9.999000099990002e-05,
+        "evaluable": true,
+        "verdict": "PARTIAL"
+      },
+      "H_Flag": {
+        "ghost_answers": 591,
+        "ghost_flagged": 579,
+        "ghost_rate": 0.9796954314720813,
+        "control_answers": 189,
+        "control_flagged": 32,
+        "control_rate": 0.1693121693121693,
+        "p_fisher": 1.4450285705846424e-115,
+        "verdict": "CONFIRMED"
+      },
+      "H_Search": {
+        "paired_cells": 72,
+        "s1_only_flagged": 1,
+        "s0_only_flagged": 4,
+        "p_mcnemar_exact": 0.9687500000000013,
+        "discordant_evaluable": false,
+        "post_cutoff_cells": 5,
+        "post_cutoff_s1_flagged": 5,
+        "post_cutoff_s1_rate": 1.0,
+        "verdict": "PARTIAL"
+      }
+    },
+    "S-Legal": {
+      "H_Afterlife": {
+        "airline": {
+          "pairs": 55,
+          "afterlife_pairs": 3,
+          "rate": 0.05454545454545454,
+          "p_exact": 0.5231967789194288,
+          "pass": false,
+          "low": false
+        },
+        "bank": {
+          "pairs": 153,
+          "afterlife_pairs": 9,
+          "rate": 0.058823529411764705,
+          "p_exact": 0.3574335756460946,
+          "pass": false,
+          "low": false
+        },
+        "verdict": "UNDETERMINED"
+      },
+      "H_Decay": {
+        "pairs": 208,
+        "pairs_present": 17,
+        "rho": -0.2247615875339688,
+        "p_perm": 0.0005999400059994001,
+        "evaluable": true,
+        "verdict": "PARTIAL"
+      }
+    },
+    "S-Operating": {
+      "H_Reinforce_airline": {
+        "n_units": 10,
+        "units_present": 10,
+        "rho": 0.6363636363636364,
+        "p_perm": 0.027897210278972105,
+        "pass": true,
+        "evaluable": true
+      },
+      "H_Amplify_airline": {
+        "leader": "DL",
+        "k": 251,
+        "n": 1668,
+        "p0": 0.1994342937416935,
+        "ratio": 0.7545322997551015,
+        "p_greater": 0.9999999028253997,
+        "p_less": 1.3823689476244764e-07,
+        "loglog_slope": 0.6555602012417344,
+        "amplified": false,
+        "flattened": true
+      }
+    },
+    "S-SunCountry": {
+      "H_Reinforce_airline": {
+        "n_units": 9,
+        "units_present": 9,
+        "rho": 0.48333333333333334,
+        "p_perm": 0.09909009099090091,
+        "pass": false,
+        "evaluable": true
+      },
+      "H_Amplify_airline": {
+        "leader": "AA",
+        "k": 216,
+        "n": 1655,
+        "p0": 0.21612499347371417,
+        "ratio": 0.6038801578126439,
+        "p_greater": 1.0,
+        "p_less": 2.179784382082042e-19,
+        "loglog_slope": 0.6398874421302474,
+        "amplified": false,
+        "flattened": true
+      }
+    },
+    "S-Arm": {
+      "legacy": {
+        "H_Reinforce": {
+          "airline": {
+            "n_units": 10,
+            "units_present": 9,
+            "rho": 0.6242424242424243,
+            "p_perm": 0.030496950304969503,
+            "pass": true,
+            "evaluable": true
+          },
+          "bank": {
+            "n_units": 25,
+            "units_present": 21,
+            "rho": 0.7018709160374248,
+            "p_perm": 9.999000099990002e-05,
+            "pass": true,
+            "evaluable": true
+          },
+          "verdict": "CONFIRMED"
+        },
+        "H_Amplify": {
+          "airline": {
+            "leader": "AA",
+            "k": 172,
+            "n": 1223,
+            "p0": 0.21612499347371417,
+            "ratio": 0.6507242577562279,
+            "p_greater": 0.9999999999934942,
+            "p_less": 1.0720621208361329e-11,
+            "loglog_slope": 1.2093053397601516,
+            "amplified": false,
+            "flattened": true
+          },
+          "bank": {
+            "leader": "1039502",
+            "k": 265,
+            "n": 1699,
+            "p0": 0.18122326595980534,
+            "ratio": 0.8606737197186298,
+            "p_greater": 0.9972811484523525,
+            "p_less": 0.003319879923143552,
+            "loglog_slope": 1.0785249107127344,
+            "amplified": false,
+            "flattened": true
+          },
+          "verdict": "FALSIFIED"
+        },
+        "H_Afterlife": {
+          "airline": {
+            "pairs": 36,
+            "afterlife_pairs": 1,
+            "rate": 0.027777777777777776,
+            "p_exact": 0.8422207852117719,
+            "pass": false,
+            "low": true
+          },
+          "bank": {
+            "pairs": 94,
+            "afterlife_pairs": 7,
+            "rate": 0.07446808510638298,
+            "p_exact": 0.19077429894170472,
+            "pass": false,
+            "low": false
+          },
+          "verdict": "UNDETERMINED"
+        },
+        "H_Decay": {
+          "pairs": 130,
+          "pairs_present": 11,
+          "rho": -0.3274941524231554,
+          "p_perm": 9.999000099990002e-05,
+          "evaluable": true,
+          "verdict": "CONFIRMED"
+        },
+        "H_Flag": {
+          "ghost_answers": 390,
+          "ghost_flagged": 378,
+          "ghost_rate": 0.9692307692307692,
+          "control_answers": 126,
+          "control_flagged": 10,
+          "control_rate": 0.07936507936507936,
+          "p_fisher": 3.0033255650695177e-88,
+          "verdict": "CONFIRMED"
+        }
+      },
+      "current": {
+        "H_Reinforce": {
+          "airline": {
+            "n_units": 10,
+            "units_present": 10,
+            "rho": 0.28484848484848485,
+            "p_perm": 0.2161783821617838,
+            "pass": false,
+            "evaluable": true
+          },
+          "bank": {
+            "n_units": 25,
+            "units_present": 21,
+            "rho": 0.6468791398453003,
+            "p_perm": 0.0004999500049995,
+            "pass": true,
+            "evaluable": true
+          },
+          "verdict": "PARTIAL"
+        },
+        "H_Amplify": {
+          "airline": {
+            "leader": "AA",
+            "k": 44,
+            "n": 445,
+            "p0": 0.21612499347371417,
+            "ratio": 0.4574963908855257,
+            "p_greater": 0.9999999999814947,
+            "p_less": 4.8256172291574914e-11,
+            "loglog_slope": 0.20952179950552838,
+            "amplified": false,
+            "flattened": true
+          },
+          "bank": {
+            "leader": "1039502",
+            "k": 130,
+            "n": 759,
+            "p0": 0.18122326595980534,
+            "ratio": 0.9451214580965709,
+            "p_greater": 0.7746178196444411,
+            "p_less": 0.25509686265984416,
+            "loglog_slope": 0.9037065796425904,
+            "amplified": false,
+            "flattened": false
+          },
+          "verdict": "UNDETERMINED"
+        },
+        "H_Afterlife": {
+          "airline": {
+            "pairs": 19,
+            "afterlife_pairs": 2,
+            "rate": 0.10526315789473684,
+            "p_exact": 0.24529279492938444,
+            "pass": false,
+            "low": false
+          },
+          "bank": {
+            "pairs": 48,
+            "afterlife_pairs": 2,
+            "rate": 0.041666666666666664,
+            "p_exact": 0.6993548130316469,
+            "pass": false,
+            "low": true
+          },
+          "verdict": "UNDETERMINED"
+        },
+        "H_Decay": {
+          "pairs": 67,
+          "pairs_present": 5,
+          "rho": -0.19991885918914823,
+          "p_perm": 0.0433956604339566,
+          "evaluable": false,
+          "verdict": "UNDETERMINED"
+        },
+        "H_Flag": {
+          "ghost_answers": 201,
+          "ghost_flagged": 201,
+          "ghost_rate": 1.0,
+          "control_answers": 63,
+          "control_flagged": 22,
+          "control_rate": 0.3492063492063492,
+          "p_fisher": 2.4236367413650758e-32,
+          "verdict": "CONFIRMED"
+        },
+        "H_Search": {
+          "paired_cells": 72,
+          "s1_only_flagged": 1,
+          "s0_only_flagged": 4,
+          "p_mcnemar_exact": 0.9687500000000013,
+          "discordant_evaluable": false,
+          "post_cutoff_cells": 5,
+          "post_cutoff_s1_flagged": 5,
+          "post_cutoff_s1_rate": 1.0,
+          "verdict": "PARTIAL"
+        }
+      }
+    },
+    "S-Length": {
+      "H_Reinforce": {
+        "airline": {
+          "n_units": 10,
+          "units_present": 10,
+          "rho": 0.6121212121212121,
+          "p_perm": 0.0334966503349665,
+          "pass": true,
+          "evaluable": true
+        },
+        "bank": {
+          "n_units": 25,
+          "units_present": 21,
+          "rho": 0.6789993336079904,
+          "p_perm": 0.00029997000299970003,
+          "pass": true,
+          "evaluable": true
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H_Amplify": {
+        "airline": {
+          "leader": "AA",
+          "k": 215,
+          "n": 1660,
+          "p0": 0.21612499347371417,
+          "ratio": 0.5992739211113455,
+          "p_greater": 0.9999999999988077,
+          "p_less": 6.957656144250519e-20,
+          "loglog_slope": 0.6290107722782247,
+          "amplified": false,
+          "flattened": true
+        },
+        "bank": {
+          "leader": "1039502",
+          "k": 394,
+          "n": 2451,
+          "p0": 0.18122326595980534,
+          "ratio": 0.8870313264850992,
+          "p_greater": 0.9964620114646052,
+          "p_less": 0.004155785459443435,
+          "loglog_slope": 0.9875872523705641,
+          "amplified": false,
+          "flattened": true
+        },
+        "verdict": "FALSIFIED"
+      },
+      "H_Afterlife": {
+        "airline": {
+          "pairs": 55,
+          "afterlife_pairs": 3,
+          "rate": 0.05454545454545454,
+          "p_exact": 0.5231967789194288,
+          "pass": false,
+          "low": false
+        },
+        "bank": {
+          "pairs": 142,
+          "afterlife_pairs": 9,
+          "rate": 0.06338028169014084,
+          "p_exact": 0.2809170561123695,
+          "pass": false,
+          "low": false
+        },
+        "verdict": "UNDETERMINED"
+      },
+      "H_Decay": {
+        "pairs": 197,
+        "pairs_present": 16,
+        "rho": -0.2860123376144533,
+        "p_perm": 9.999000099990002e-05,
+        "evaluable": true,
+        "verdict": "PARTIAL"
+      },
+      "H_Flag": {
+        "ghost_answers": 591,
+        "ghost_flagged": 579,
+        "ghost_rate": 0.9796954314720813,
+        "control_answers": 189,
+        "control_flagged": 32,
+        "control_rate": 0.1693121693121693,
+        "p_fisher": 1.4450285705846424e-115,
+        "verdict": "CONFIRMED"
+      },
+      "H_Search": {
+        "paired_cells": 72,
+        "s1_only_flagged": 1,
+        "s0_only_flagged": 4,
+        "p_mcnemar_exact": 0.9687500000000013,
+        "discordant_evaluable": false,
+        "post_cutoff_cells": 5,
+        "post_cutoff_s1_flagged": 5,
+        "post_cutoff_s1_rate": 1.0,
+        "verdict": "PARTIAL"
+      },
+      "excluded_answers": 43
+    }
+  },
+  "manipulation_checks": {
+    "MC1_complete_L": {
+      "ok_calls": 1786,
+      "expected": 1786,
+      "pass": true
+    },
+    "MC1_complete_C": {
+      "ok_calls": 1035,
+      "expected": 1035,
+      "pass": true
+    },
+    "MC2_search_used_C1": {
+      "n": 63,
+      "searched": 63,
+      "pass": true
+    },
+    "MC2_search_used_C2": {
+      "n": 63,
+      "searched": 63,
+      "pass": true
+    },
+    "MC2_search_used_C3": {
+      "n": 63,
+      "searched": 41,
+      "pass": false
+    },
+    "MC3_incumbents_recognised": {
+      "n": 108,
+      "named": 108,
+      "pass": true
+    },
+    "MC4_truncation_L": {
+      "n": 1786,
+      "truncated": 29,
+      "limit": 0.05,
+      "pass": true
+    },
+    "MC4_truncation_C": {
+      "n": 1035,
+      "truncated": 0,
+      "limit": 0.02,
+      "pass": true
+    }
+  },
+  "descriptives": {
+    "ghost_mentions": 7572,
+    "ghost_mentions_with_successor_near": 3889,
+    "ghost_mentions_gone_flagged": 5438,
+    "ambiguous_mentions": 8085,
+    "M5X_v039_setting_answers": 94,
+    "presence_se_mean_S0": 0.010831300104457629,
+    "presence_se_units": 315,
+    "3_old_vs_new_name": {
+      "L_S0": {
+        "ghost_mentions": 3468,
+        "with_successor": 1942,
+        "share": 0.5599769319492502
+      },
+      "C_S0": {
+        "ghost_mentions": 2108,
+        "with_successor": 1115,
+        "share": 0.5289373814041746
+      },
+      "C_S1": {
+        "ghost_mentions": 246,
+        "with_successor": 165,
+        "share": 0.6707317073170732
+      }
+    },
+    "4_recognition": {
+      "TZ|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M3|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M4|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M6|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M3|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M3|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M3|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M6|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M6|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M4|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M4|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M4|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M4|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M5|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M1|S0": {
+        "flagged": 2,
+        "current": 1,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M5|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|M2|S0": {
+        "flagged": 1,
+        "current": 2,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|M2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "NW|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "CO|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "FL|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "US|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "VX|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "NK|M5X|S0": {
+        "flagged": 0,
+        "current": 1,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "COMMERCE|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "NORTHFORK|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "LASALLE|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "WAMU|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "COUNTRYWIDE|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "NATCITY|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "WACHOVIA|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "INGDIRECT|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "SOVEREIGN|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "BBVACOMPASS|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "SUNTRUST|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "BBT|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "UNIONBANK|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "SIGNATURE|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "FIRSTREPUBLIC|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "BMOHARRIS|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "SVB|M5X|S0": {
+        "flagged": 1,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 1
+      },
+      "TZ|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|C1|S0": {
+        "flagged": 2,
+        "current": 1,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|C1|S0": {
+        "flagged": 2,
+        "current": 1,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|C1|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|C2|S0": {
+        "flagged": 0,
+        "current": 3,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|C2|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "TZ|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NW|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "CO|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FL|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "US|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "VX|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NK|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COMMERCE|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NORTHFORK|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "LASALLE|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WAMU|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "COUNTRYWIDE|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "NATCITY|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "WACHOVIA|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "INGDIRECT|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SOVEREIGN|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBVACOMPASS|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SUNTRUST|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BBT|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "UNIONBANK|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SIGNATURE|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "FIRSTREPUBLIC|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "BMOHARRIS|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      },
+      "SVB|C3|S0": {
+        "flagged": 3,
+        "current": 0,
+        "not_recognised": 0,
+        "n": 3
+      }
+    },
+    "5_M5X_vs_M5": {
+      "M5": {
+        "calls": 282,
+        "ok": 282,
+        "truncated": 2,
+        "ghost_mentions": 663
+      },
+      "M5X": {
+        "calls": 94,
+        "ok": 94,
+        "truncated": 27,
+        "ghost_mentions": 237
+      }
+    },
+    "6_run_to_run_se": {
+      "L": {
+        "units": 210,
+        "se_mean": 0.007735603228211221,
+        "units_some_not_all": 158,
+        "se_mean_some_not_all": 0.01028149796154656
+      },
+      "C": {
+        "units": 105,
+        "se_mean": 0.017022693856950443,
+        "units_some_not_all": 82,
+        "se_mean_some_not_all": 0.02179735188999752
+      }
+    },
+    "7_search_traces": {
+      "answers": [
+        {
+          "call_id": "v40|C|AG1|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best US airlines 2026 ranking Delta Southwest Alaska J.D. Power airline satisfaction 2026",
+            "best US airlines 2026 ranking Delta Southwest Alaska J.D. Power airline satisfaction 2026",
+            "2026 best airlines United States The Points Guy rankings"
+          ],
+          "n_sources": 45,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AG1|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "top US airlines rankings 2026",
+            "best airlines in the US 2025 2026 WSJ TPG JD Power"
+          ],
+          "n_sources": 12,
+          "n_citations": 34
+        },
+        {
+          "call_id": "v40|C|AG2|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.delta.com domestic travel basic economy carry on wifi",
+            "site.delta.com domestic travel basic economy carry on wifi",
+            "site.southwest.com baggage fees assigned seating 2026",
+            "site.transportation.gov air travel consumer report 2026 airline on time"
+          ],
+          "n_sources": 23,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|AG3|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.jdpower.com 2026 North America airline satisfaction study Delta JetBlue Southwest",
+            "site.jdpower.com 2026 North America airline satisfaction study Delta JetBlue Southwest",
+            "site.delta.com onboard experience free wifi seatback entertainment",
+            "site.southwest.com checked baggage fees assigned seating 2026",
+            "site.southwest.com assigned seating January 27 2026 checked bags fees",
+            "site.southwest.com assigned seating January 27 2026 checked bags fees",
+            "site.jetblue.com flying with us free wifi legroom snacks"
+          ],
+          "n_sources": 65,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AG2|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best US airlines 2025 2026 WSJ TPG"
+          ],
+          "n_sources": 6,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|AG4|C2|gpt-6-astra|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "site.transportation.gov airline customer service dashboard airlines",
+            "site.transportation.gov airline customer service dashboard airlines",
+            "site.southwest.com checked baggage fees basic fare 2026",
+            "site.breezeairways.com where we fly nonstop routes",
+            "site.delta.com us destinations domestic flights",
+            "site.delta.com us destinations domestic flights",
+            "site.alaskaair.com route map west coast Hawaii",
+            "site.jetblue.com flying with us free wifi snacks",
+            "site.flyfrontier.com travel bags seats fees",
+            "site.united.com domestic destinations United flights",
+            "site.united.com domestic destinations United flights",
+            "site.aa.com domestic flights American Airlines destinations",
+            "site.alaskaair.com \"West Coast\" \"Hawaii\" flights"
+          ],
+          "n_sources": 86,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AG3|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best US airlines 2025 2026 rankings"
+          ],
+          "n_sources": 6,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|AG5|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "2026 best US airlines domestic Delta Southwest Alaska ranking",
+            "2026 best US airlines domestic Delta Southwest Alaska ranking",
+            "site.southwest.com checked bag fees basic fare 2026",
+            "site.delta.com free wifi domestic flights SkyMiles",
+            "site.jdpower.com 2026 North America airline satisfaction Southwest Delta JetBlue",
+            "site.jdpower.com 2026 North America airline satisfaction Southwest Delta JetBlue",
+            "site.alaskaair.com route map West Coast Alaska Hawaii",
+            "site.jetblue.com most legroom coach free wifi"
+          ],
+          "n_sources": 89,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|AG6|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "2026 best US airlines Delta Southwest Alaska customer satisfaction J D Power",
+            "2026 best US airlines Delta Southwest Alaska customer satisfaction J D Power",
+            "site.delta.com Delta Main Basic carry on seat selection",
+            "site.southwest.com assigned seating checked bag fees 2026"
+          ],
+          "n_sources": 45,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AG4|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Southwest Airlines bags fly free changes 2025 2026"
+          ],
+          "n_sources": 4,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AN1|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "US cheapest airline average fares Frontier Spirit Allegiant 2026 fees comparison",
+            "US cheapest airline average fares Frontier Spirit Allegiant 2026 fees comparison",
+            "site.southwest.com checked baggage fees basic fare 2026",
+            "site.flyfrontier.com baggage personal item carry on fees",
+            "site.flyfrontier.com travel bags personal item free carry on",
+            "site.flyfrontier.com travel bags personal item free carry on",
+            "site.allegiantair.com baggage one personal item free carry on"
+          ],
+          "n_sources": 68,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AN2|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best airline rewards program 2026 Alaska Atmos United Delta American",
+            "best airline rewards program 2026 Alaska Atmos United Delta American",
+            "site.atmosrewards.com points earned distance spend 2026 Alaska Hawaiian",
+            "site.aa.com AAdvantage miles expire 24 months",
+            "site.southwest.com Rapid Rewards points don't expire fare based redemption",
+            "site.aa.com AAdvantage Loyalty Points earn credit card shopping status",
+            "site.aa.com AAdvantage Loyalty Points earn credit card shopping status",
+            "site.southwest.com companion pass 135000 100 qualifying flights 2026"
+          ],
+          "n_sources": 89,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN3|C2|gpt-6-astra|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "site.jetblue.com economy core seat pitch legroom most legroom coach",
+            "site.jetblue.com economy core seat pitch legroom most legroom coach",
+            "site.delta.com main cabin seat pitch width economy",
+            "site.southwest.com seat pitch 31 32 737 economy",
+            "site.jetblue.com \"32\" \"pitch\"",
+            "site.jetblue.com \"32\" \"pitch\"",
+            "site.jetblue.com \"Core\" \"free\" \"Wi-Fi\"",
+            "JetBlue BlueFirst 30 inches pitch 2026 site.thepointsguy.com",
+            "JetBlue BlueFirst 30 inches pitch 2026 site.thepointsguy.com",
+            "JetBlue BlueFirst 30 inches site.cntraveler.com",
+            "site.ir.jetblue.com BlueFirst 2026"
+          ],
+          "n_sources": 106,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN4|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.transportation.gov air travel consumer report 2026 on time arrival August September Delta Hawaiian",
+            "site.transportation.gov air travel consumer report 2026 on time arrival August September Delta Hawaiian",
+            "US most on time airline 2025 full year Delta Cirium 2026"
+          ],
+          "n_sources": 43,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AN5|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "2026 J.D. Power North America airline satisfaction study best airline customer satisfaction",
+            "2026 J.D. Power North America airline satisfaction study best airline customer satisfaction",
+            "2026 ACSI airline customer satisfaction Alaska Southwest Delta"
+          ],
+          "n_sources": 45,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN6|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.transportation.gov airline family seating dashboard Alaska American Frontier Hawaiian JetBlue",
+            "site.transportation.gov airline family seating dashboard Alaska American Frontier Hawaiian JetBlue",
+            "site.southwest.com family boarding assigned seating children 2026",
+            "site.jetblue.com flying with kids family seating entertainment"
+          ],
+          "n_sources": 44,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AR1|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.delta.com northeast hubs Boston New York",
+            "site.delta.com northeast hubs Boston New York",
+            "site.united.com Newark hub airline",
+            "site.aa.com Philadelphia hub American Airlines",
+            "site.jetblue.com focus cities Boston New York",
+            "site.news.jetblue.com 2026 Boston New York focus cities JetBlue",
+            "site.news.jetblue.com 2026 Boston New York focus cities JetBlue"
+          ],
+          "n_sources": 60,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AR2|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.united.com hubs Chicago Denver United",
+            "site.united.com hubs Chicago Denver United",
+            "site.delta.com hubs Detroit Minneapolis",
+            "site.southwest.com Chicago Midway St Louis Kansas City flights",
+            "site.southwest.com \"Chicago (Midway)\" \"St. Louis\" \"Kansas City\" \"nonstop\"",
+            "site.southwest.com \"Chicago (Midway)\" \"St. Louis\" \"Kansas City\" \"nonstop\"",
+            "site.aa.com Chicago O Hare hub American Airlines"
+          ],
+          "n_sources": 66,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AG1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 4,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "J.D. Power 2026 North America airline satisfaction study",
+            "The Points Guy best airlines report 2026",
+            "Wall Street Journal best worst airlines 2025 ranking"
+          ],
+          "n_sources": 37,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|AG2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "J.D. Power 2026 North America airline satisfaction study"
+          ],
+          "n_sources": 19,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|AG3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best US airlines 2026 rankings"
+          ],
+          "n_sources": 9,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|AG4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US domestic airlines 2026 rankings",
+            "Spirit Airlines status November 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|AG5|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "largest US airlines domestic market share 2026"
+          ],
+          "n_sources": 19,
+          "n_citations": 13
+        },
+        {
+          "call_id": "v40|C|AG6|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "J.D. Power 2026 North America airline satisfaction study"
+          ],
+          "n_sources": 19,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|AN1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "cheapest US airlines 2026 average fares",
+            "best budget airline US 2026 ranking"
+          ],
+          "n_sources": 20,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|AN2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airline frequent flyer program 2026",
+            "best airline loyalty programs ranking 2026 WalletHub U.S. News"
+          ],
+          "n_sources": 19,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|AN3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "most comfortable US airline economy 2026",
+            "US airlines economy seat pitch width comparison"
+          ],
+          "n_sources": 19,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|AN4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "most on-time US airline 2026",
+            "DOT Air Travel Consumer Report on-time arrival rate by airline"
+          ],
+          "n_sources": 18,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|AN5|C1|claude-fable-5-2|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "J.D. Power 2026 North America airline satisfaction study",
+            "ACSI airline customer satisfaction 2026 rankings",
+            "best US airlines 2026 ranking WSJ"
+          ],
+          "n_sources": 28,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AN6|C1|claude-fable-5-2|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "best US airline for families young children 2026",
+            "airline family seating guarantee DOT dashboard",
+            "Southwest assigned seating families children 2026"
+          ],
+          "n_sources": 28,
+          "n_citations": 16
+        },
+        {
+          "call_id": "v40|C|AR1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "best airline loyalty program Northeast hubs Boston New York Philadelphia",
+            "JetBlue United Blue Sky partnership 2026 update"
+          ],
+          "n_sources": 28,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|AR2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "Midwest airline hubs market share Chicago Minneapolis Detroit 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AR3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines 2026 rankings",
+            "airline hubs southern United States Atlanta Charlotte Dallas Houston Miami"
+          ],
+          "n_sources": 18,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|AR4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "best airline West Coast travelers 2026",
+            "best US airlines 2026 rankings",
+            "Alaska Airlines Atmos Rewards vs Southwest vs Delta western hubs"
+          ],
+          "n_sources": 27,
+          "n_citations": 12
+        },
+        {
+          "call_id": "v40|C|BG1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks in the United States 2026",
+            "best banks November 2026 rankings"
+          ],
+          "n_sources": 18,
+          "n_citations": 20
+        },
+        {
+          "call_id": "v40|C|BG2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best checking accounts November 2026",
+            "best banks for checking accounts no fees 2026"
+          ],
+          "n_sources": 20,
+          "n_citations": 18
+        },
+        {
+          "call_id": "v40|C|BG3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US banks 2026",
+            "best online banks high-yield savings November 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 14
+        },
+        {
+          "call_id": "v40|C|BG4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "best banks 2026",
+            "best high-yield savings accounts November 2026",
+            "best checking accounts November 2026"
+          ],
+          "n_sources": 30,
+          "n_citations": 17
+        },
+        {
+          "call_id": "v40|C|BG5|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks for checking accounts November 2026",
+            "best national banks 2026 rankings"
+          ],
+          "n_sources": 18,
+          "n_citations": 12
+        },
+        {
+          "call_id": "v40|C|BG6|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US banks November 2026",
+            "best high-yield savings account rates today"
+          ],
+          "n_sources": 18,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|BN1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best high-yield savings accounts November 2026",
+            "highest savings account APY today"
+          ],
+          "n_sources": 19,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|BN2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best no-fee checking accounts November 2026",
+            "checking accounts no monthly fee no overdraft fee banks"
+          ],
+          "n_sources": 19,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|BN3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best small business bank accounts 2026",
+            "best banks for small business November 2026"
+          ],
+          "n_sources": 20,
+          "n_citations": 14
+        },
+        {
+          "call_id": "v40|C|BN4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best student checking accounts November 2026",
+            "best bank accounts for college students 2026"
+          ],
+          "n_sources": 19,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|BN5|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best mortgage lenders November 2026",
+            "best banks for mortgages 2026"
+          ],
+          "n_sources": 19,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|BN6|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "US bank most branches 2026",
+            "largest ATM network US banks Chase Bank of America Wells Fargo number of ATMs"
+          ],
+          "n_sources": 18,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|BR1|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks Northeast US 2026",
+            "best high-yield savings accounts November 2026"
+          ],
+          "n_sources": 19,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|BR2|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks in the Midwest 2026",
+            "best high-yield savings accounts November 2026"
+          ],
+          "n_sources": 20,
+          "n_citations": 11
+        },
+        {
+          "call_id": "v40|C|BR3|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks in the South 2026",
+            "best regional banks Southeast customer satisfaction 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|BR4|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best banks western United States 2026",
+            "best regional banks West customer satisfaction 2026"
+          ],
+          "n_sources": 19,
+          "n_citations": 15
+        },
+        {
+          "call_id": "v40|C|S_TZ|C1|claude-fable-5-2|S1|1",
+          "n_searches": 4,
+          "queries": [
+            "ATA Airlines status booking",
+            "ATA Airlines Iran Tabriz flights 2026",
+            "ATA Airlines Iran flights suspended Turkey Iraq November 2026",
+            "Iranian airlines flights resume airspace latest"
+          ],
+          "n_sources": 37,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|S_NW|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Northwest Airlines still operating"
+          ],
+          "n_sources": 10,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_CO|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Continental Airlines United merger status"
+          ],
+          "n_sources": 9,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_FL|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "AirTran Airways final flight Southwest merger"
+          ],
+          "n_sources": 9,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_US|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "US Airways still operating book flights"
+          ],
+          "n_sources": 9,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_VX|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Virgin America airline still operating"
+          ],
+          "n_sources": 9,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_NK|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Spirit Airlines booking flights status"
+          ],
+          "n_sources": 9,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_HA|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Hawaiian Airlines booking Alaska Airlines merger 2026"
+          ],
+          "n_sources": 9,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|S_SY|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Sun Country Airlines booking flights Allegiant merger status"
+          ],
+          "n_sources": 9,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|S_COMMERCE|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Commerce Bank Philadelphia TD Bank acquisition"
+          ],
+          "n_sources": 9,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_NORTHFORK|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "North Fork Bank open account"
+          ],
+          "n_sources": 9,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|S_LASALLE|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "LaSalle Bank Bank of America acquisition status"
+          ],
+          "n_sources": 9,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_WAMU|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Washington Mutual bank status open account"
+          ],
+          "n_sources": 9,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|S_COUNTRYWIDE|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Countrywide Bank still open accounts"
+          ],
+          "n_sources": 9,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_NATCITY|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "National City Bank PNC acquisition status"
+          ],
+          "n_sources": 9,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_WACHOVIA|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Wachovia bank still exists Wells Fargo"
+          ],
+          "n_sources": 9,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_INGDIRECT|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "ING Direct open account still available",
+            "ING Direct what happened Capital One 360 Tangerine rebrand"
+          ],
+          "n_sources": 18,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_SOVEREIGN|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Sovereign Bank open account",
+            "Sovereign Bank rebranded Santander Bank status"
+          ],
+          "n_sources": 18,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_BBVACOMPASS|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "BBVA Compass open account PNC"
+          ],
+          "n_sources": 9,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_SUNTRUST|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "SunTrust open new account Truist"
+          ],
+          "n_sources": 9,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|S_BBT|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "BB&T open account Truist"
+          ],
+          "n_sources": 9,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|S_UNIONBANK|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "MUFG Union Bank open new account U.S. Bank acquisition"
+          ],
+          "n_sources": 9,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_SIGNATURE|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Signature Bank New York status Flagstar"
+          ],
+          "n_sources": 10,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|S_FIRSTREPUBLIC|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "First Republic Bank open new account status"
+          ],
+          "n_sources": 10,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_BMOHARRIS|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "BMO Harris Bank open account 2026"
+          ],
+          "n_sources": 10,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_SVB|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Silicon Valley Bank open account 2026",
+            "First Citizens Innovation Banking rebrand SVB open account"
+          ],
+          "n_sources": 18,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|S_DISCOVER|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Discover Bank open new account Capital One",
+            "Discover Bank new accounts 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|S_AA|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "American Airlines flights booking news today",
+            "American Airlines operating status November 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|S_DL|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Delta Air Lines flights booking status today",
+            "Delta Air Lines news November 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 7
+        },
+        {
+          "call_id": "v40|C|S_JPMC|C1|claude-fable-5-2|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "open Chase bank account requirements",
+            "Chase new account openings news 2026"
+          ],
+          "n_sources": 18,
+          "n_citations": 12
+        },
+        {
+          "call_id": "v40|C|S_BAC|C1|claude-fable-5-2|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Bank of America open new account 2026"
+          ],
+          "n_sources": 10,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|AR3|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.delta.com us hubs Atlanta airline",
+            "site.delta.com us hubs Atlanta airline",
+            "site.aa.com hubs Charlotte Dallas Fort Worth Miami",
+            "site.southwest.com route map flights cities",
+            "site.united.com Houston IAH hub United",
+            "site.united.com Houston IAH hub United",
+            "site.southwest.com Dallas Love Field Houston Hobby Nashville airports"
+          ],
+          "n_sources": 53,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AG5|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "top US airlines domestic travel 2025 2026",
+            "best US airlines rankings WSJ TPG 2025 2026"
+          ],
+          "n_sources": 10,
+          "n_citations": 35
+        },
+        {
+          "call_id": "v40|C|AR4|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.alaskaair.com route map hubs Seattle Portland San Francisco Los Angeles San Diego",
+            "site.alaskaair.com route map hubs Seattle Portland San Francisco Los Angeles San Diego",
+            "site.united.com hubs Denver San Francisco Los Angeles",
+            "site.southwest.com checked baggage fees assigned seating 2026",
+            "site.delta.com Salt Lake City hub",
+            "site.delta.com Salt Lake City hub",
+            "site.aa.com Phoenix hub American Airlines",
+            "site.southwest.com destinations Oakland Sacramento Las Vegas"
+          ],
+          "n_sources": 61,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AG6|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "WSJ best US airlines ranking",
+            "TPG best US airlines ranking"
+          ],
+          "n_sources": 10,
+          "n_citations": 20
+        },
+        {
+          "call_id": "v40|C|BG1|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com bank checking 360 no fees savings FDIC",
+            "site.capitalone.com bank checking 360 no fees savings FDIC",
+            "site.chase.com personal checking total checking monthly service fee",
+            "site.ally.com bank savings spending account no monthly maintenance fees",
+            "site.schwab.com checking account ATM fees no foreign transaction fees",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category"
+          ],
+          "n_sources": 75,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN1|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "cheapest US airlines 2025 2026",
+            "Spirit Frontier Southwest changes 2025 2026"
+          ],
+          "n_sources": 11,
+          "n_citations": 31
+        },
+        {
+          "call_id": "v40|C|BG2|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.capitalone.com checking 360 no fees overdraft",
+            "site.capitalone.com checking 360 no fees overdraft",
+            "site.schwab.com checking account ATM fees no foreign transaction fees",
+            "site.chase.com personal checking total checking monthly service fee 2026",
+            "site.discover.com online banking checking cashback debit cash deposit"
+          ],
+          "n_sources": 37,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|BG3|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com bank checking savings no fees 360",
+            "site.capitalone.com bank checking savings no fees 360",
+            "site.ally.com bank savings spending account no monthly maintenance fees",
+            "site.chase.com personal checking total checking monthly service fee",
+            "site.schwab.com checking account no foreign transaction fees ATM fee rebates",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category"
+          ],
+          "n_sources": 70,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AN2|C3|gemini-4-argon|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "US News best airline rewards program 2026",
+            "best airline frequent flyer program US 2026",
+            "Nerdwallet best airline rewards program 2026"
+          ],
+          "n_sources": 13,
+          "n_citations": 32
+        },
+        {
+          "call_id": "v40|C|BG4|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com bank 360 checking savings no fees overdraft",
+            "site.capitalone.com bank 360 checking savings no fees overdraft",
+            "site.ally.com bank spending account savings ATM reimbursement no overdraft fees",
+            "site.schwab.com checking account unlimited ATM fee rebates",
+            "site.chase.com personal checking total checking monthly service fee waive 2026",
+            "site.alliantcreditunion.org checking no monthly fee 20 ATM rebates membership",
+            "site.alliantcreditunion.org checking no monthly fee 20 ATM rebates membership",
+            "site.chase.com branches 5000 branches",
+            "site.consumerfinance.gov switching checking accounts direct deposit automatic payments",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category"
+          ],
+          "n_sources": 67,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AN3|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "most comfortable economy airline US",
+            "US airlines most legroom economy seat pitch 2025 2026"
+          ],
+          "n_sources": 7,
+          "n_citations": 23
+        },
+        {
+          "call_id": "v40|C|BG5|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.capitalone.com bank 360 checking no fees overdraft branches",
+            "site.capitalone.com bank 360 checking no fees overdraft branches",
+            "site.ally.com spending account no monthly maintenance fees ATM reimbursement",
+            "site.chase.com personal checking total checking monthly service fee 2026",
+            "site.schwab.com checking account ATM fee rebates no foreign transaction fees"
+          ],
+          "n_sources": 40,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|AN4|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "most reliable US airline on time arrivals Cirium DOT 2025 2026",
+            "which US airline has the best on time performance 2025 2026"
+          ],
+          "n_sources": 8,
+          "n_citations": 32
+        },
+        {
+          "call_id": "v40|C|BG6|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com bank checking 360 no fees overdraft savings FDIC",
+            "site.capitalone.com bank checking 360 no fees overdraft savings FDIC",
+            "site.schwab.com investor checking unlimited ATM fee rebates no foreign transaction fees",
+            "site.chase.com personal checking total checking monthly service fee 15 2026",
+            "site.capitalone.com bank 360 performance savings no monthly fees no minimum",
+            "site.capitalone.com bank 360 performance savings no monthly fees no minimum",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category"
+          ],
+          "n_sources": 86,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN5|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airline customer service ranking 2025 2026",
+            "JD Power North America Airline Satisfaction Study 2025 2026"
+          ],
+          "n_sources": 7,
+          "n_citations": 21
+        },
+        {
+          "call_id": "v40|C|BN1|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best high yield savings accounts November 2026 rates",
+            "best high yield savings accounts November 2026 rates",
+            "site.marcus.com savings high yield APY",
+            "site.ally.com savings account APY",
+            "site.nerdwallet.com best high yield online savings accounts rates",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category",
+            "site.fdic.gov deposit insurance 250000 per depositor per insured bank ownership category",
+            "site.everbank.com performance savings APY",
+            "site.peak.bank \"4.27\" savings"
+          ],
+          "n_sources": 88,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AN6|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best US airlines for families flying with children 2025 2026",
+            "southwest assigned seating family policy 2026"
+          ],
+          "n_sources": 8,
+          "n_citations": 13
+        },
+        {
+          "call_id": "v40|C|BN2|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com 360 checking no fees overdraft",
+            "site.capitalone.com 360 checking no fees overdraft",
+            "site.discover.com checking account no fees cash debit",
+            "site.ally.com spending account fees out of network ATM reimbursement",
+            "site.schwab.com checking account no monthly fees overdraft foreign transaction fees linked brokerage",
+            "site.schwab.com checking account no monthly fees overdraft foreign transaction fees linked brokerage",
+            "site.ally.com spending account no monthly maintenance overdraft fees",
+            "site.capitalone.com 360 checking disclosures fees cashier check outgoing wire ATM"
+          ],
+          "n_sources": 78,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AR1|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BN3|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.chase.com business complete banking monthly service fee 2026",
+            "site.chase.com business complete banking monthly service fee 2026",
+            "site.usbank.com business essentials checking monthly maintenance fee",
+            "site.bankofamerica.com business advantage fundamentals banking monthly fee",
+            "site.bluevine.com business checking standard FDIC cash deposit fees",
+            "site.chase.com \"Business Complete\" \"$15\" \"$2,000\" \"$5,000\"",
+            "site.chase.com \"Business Complete\" \"$15\" \"$2,000\" \"$5,000\"",
+            "site.axosbank.com basic business checking no monthly maintenance fee cash deposits"
+          ],
+          "n_sources": 74,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|AR2|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|AR3|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BN4|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com 360 checking no monthly fees overdraft 18",
+            "site.capitalone.com 360 checking no monthly fees overdraft 18",
+            "site.chase.com college checking 2026 monthly service fee 17 24",
+            "site.discover.com cashback debit account students no fees 2026",
+            "site.bankofamerica.com advantage safebalance banking under 25 monthly fee",
+            "site.chase.com \"Secure Banking\" \"$4.95\" \"17\u201324\"",
+            "site.chase.com \"Secure Banking\" \"$4.95\" \"17\u201324\"",
+            "site.chase.com \"Secure Banking\" \"no overdraft fees\" \"checks\""
+          ],
+          "n_sources": 62,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|AR4|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BN5|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.bankofamerica.com mortgage affordable loan solution down payment grant",
+            "site.bankofamerica.com mortgage affordable loan solution down payment grant",
+            "site.chase.com mortgage homebuyer grant 2026",
+            "site.usbank.com mortgage loans options",
+            "site.consumerfinance.gov mortgage compare loan estimates multiple lenders",
+            "site.bankofamerica.com \"Down Payment Grant\" \"$10,000\"",
+            "site.bankofamerica.com \"Down Payment Grant\" \"$10,000\"",
+            "site.chase.com \"Homebuyer Grant\"",
+            "site.usbank.com \"mortgage\" \"FHA\" \"VA\" \"jumbo\""
+          ],
+          "n_sources": 65,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|BG1|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best banks in the US 2026"
+          ],
+          "n_sources": 4,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|BN6|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Chase bank largest branch network 2026 5000 branches 15000 ATMs Bank of America 2026 15000",
+            "Chase bank largest branch network 2026 5000 branches 15000 ATMs Bank of America 2026 15000",
+            "site.chase.com \"branches\" \"ATMs\" \"5,000\"",
+            "site.chase.com \"branches\" \"ATMs\" \"5,000\"",
+            "site.jpmorganchase.com 2026 \"branches\" \"48\"",
+            "site.bankofamerica.com \"15,000\" \"ATMs\""
+          ],
+          "n_sources": 64,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|BG2|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BR1|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.capitalone.com bank checking 360 no fees branches",
+            "site.capitalone.com bank checking 360 no fees branches",
+            "site.td.com us checking accounts monthly fee convenience complete checking",
+            "site.citizensbank.com checking one deposit monthly fee",
+            "site.schwab.com investor checking ATM fee rebates no monthly fees"
+          ],
+          "n_sources": 40,
+          "n_citations": 4
+        },
+        {
+          "call_id": "v40|C|BR2|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "FDIC BankFind choosing bank insured deposits fees",
+            "FDIC BankFind choosing bank insured deposits fees",
+            "Ally bank spending account no monthly maintenance fees ATM reimbursement",
+            "Capital One 360 checking no monthly fees ATM branches",
+            "Huntington Asterisk Free Checking no monthly maintenance fee locations states"
+          ],
+          "n_sources": 43,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|BG3|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BR3|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "FDIC choosing bank fees ATM branch online bank insured",
+            "FDIC choosing bank fees ATM branch online bank insured",
+            "Regions Bank locations states checking monthly fees",
+            "Truist checking monthly fee states branches",
+            "Capital One 360 checking no monthly fees overdraft"
+          ],
+          "n_sources": 47,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|BG4|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BR4|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.usbank.com bank smartly checking monthly maintenance fee branch states",
+            "site.usbank.com bank smartly checking monthly maintenance fee branch states",
+            "site.chase.com personal checking total checking monthly service fee",
+            "site.ally.com bank spending account no monthly maintenance fees ATM reimbursement",
+            "site.becu.org membership eligibility Washington Oregon Idaho"
+          ],
+          "n_sources": 43,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_TZ|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "ATA Airlines ceased operations April 3 2008",
+            "ATA Airlines ceased operations April 3 2008",
+            "ATA Airlines Iran official booking airline"
+          ],
+          "n_sources": 28,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_NW|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.delta.com Northwest Airlines merged 2010 booking Northwest",
+            "site.delta.com Northwest Airlines merged 2010 booking Northwest"
+          ],
+          "n_sources": 27,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_CO|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.united.com Continental Airlines merged United March 2012 reservations",
+            "site.united.com Continental Airlines merged United March 2012 reservations"
+          ],
+          "n_sources": 22,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BG5|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best checking accounts everyday banking 2026",
+            "best banks for everyday banking US 2026"
+          ],
+          "n_sources": 10,
+          "n_citations": 25
+        },
+        {
+          "call_id": "v40|C|S_FL|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.southwest.com AirTran final flight December 28 2014",
+            "site.southwest.com AirTran final flight December 28 2014"
+          ],
+          "n_sources": 26,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|S_US|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.aa.com US Airways last flight October 17 2015 American Airlines merger",
+            "site.aa.com US Airways last flight October 17 2015 American Airlines merger"
+          ],
+          "n_sources": 24,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|BG6|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_VX|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.alaskaair.com Virgin America April 25 2018 merged flights book",
+            "site.alaskaair.com Virgin America April 25 2018 merged flights book"
+          ],
+          "n_sources": 25,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|S_NK|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Spirit Airlines November 18 2026 still operating book flights",
+            "Spirit Airlines November 18 2026 still operating book flights",
+            "site.spirit.com book flights Spirit Airlines"
+          ],
+          "n_sources": 49,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_HA|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.hawaiianairlines.com book flights Hawaiian Airlines Alaska 2026 website",
+            "site.hawaiianairlines.com book flights Hawaiian Airlines Alaska 2026 website",
+            "site.alaskaair.com Hawaiian Airlines April 2026 booking website"
+          ],
+          "n_sources": 44,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|BN1|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "current high yield savings rates US banks 2026",
+            "best high yield savings accounts US 2026"
+          ],
+          "n_sources": 11,
+          "n_citations": 28
+        },
+        {
+          "call_id": "v40|C|S_SY|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Sun Country Airlines book flights November 2026 Allegiant merger booking",
+            "Sun Country Airlines book flights November 2026 Allegiant merger booking"
+          ],
+          "n_sources": 43,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_COMMERCE|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Commerce Bank Philadelphia acquired TD Bank 2008 renamed",
+            "Commerce Bank Philadelphia acquired TD Bank 2008 renamed",
+            "TD Bank open checking account Philadelphia online"
+          ],
+          "n_sources": 44,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_NORTHFORK|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "North Fork Bank acquired Capital One 2008 branches renamed open account",
+            "North Fork Bank acquired Capital One 2008 branches renamed open account",
+            "site.capitalone.com bank open checking savings account online",
+            "site.capitalone.com bank open checking savings account online"
+          ],
+          "n_sources": 47,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BN2|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best free checking accounts no fees 2026",
+            "US banks with zero fees checking accounts"
+          ],
+          "n_sources": 9,
+          "n_citations": 31
+        },
+        {
+          "call_id": "v40|C|S_LASALLE|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "LaSalle Bank acquired Bank of America 2007 renamed 2008 accounts",
+            "LaSalle Bank acquired Bank of America 2007 renamed 2008 accounts",
+            "site.bankofamerica.com deposits opening account online financial center checking",
+            "site.bankofamerica.com deposits opening account online financial center checking"
+          ],
+          "n_sources": 52,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_WAMU|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.fdic.gov Washington Mutual Bank September 25 2008 JPMorgan Chase deposits",
+            "site.fdic.gov Washington Mutual Bank September 25 2008 JPMorgan Chase deposits",
+            "site.chase.com open checking account online"
+          ],
+          "n_sources": 30,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_COUNTRYWIDE|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.bankofamerica.com Countrywide Bank merged April 2009",
+            "site.bankofamerica.com Countrywide Bank merged April 2009",
+            "Countrywide Bank open account no longer bank Bank of America"
+          ],
+          "n_sources": 36,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BN3|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best small business banks US 2026"
+          ],
+          "n_sources": 6,
+          "n_citations": 22
+        },
+        {
+          "call_id": "v40|C|S_NATCITY|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "National City Bank acquired PNC 2008 conversion 2010 open account",
+            "National City Bank acquired PNC 2008 conversion 2010 open account",
+            "site.pnc.com checking open account online branch",
+            "site.pnc.com checking open account online branch"
+          ],
+          "n_sources": 51,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_WACHOVIA|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.wellsfargo.com Wachovia merger 2008 2011 accounts open checking",
+            "site.wellsfargo.com Wachovia merger 2008 2011 accounts open checking"
+          ],
+          "n_sources": 28,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_INGDIRECT|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.capitalone.com ING Direct became Capital One 360 open account",
+            "site.capitalone.com ING Direct became Capital One 360 open account",
+            "site.ing.com ING Direct United States Capital One 2012",
+            "site.capitalone.com \"ING DIRECT\" \"2013\"",
+            "site.capitalone.com \"ING DIRECT\" \"2013\"",
+            "site.capitalone.com bank 360 performance savings open account"
+          ],
+          "n_sources": 52,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BN4|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "best college student bank accounts 2026",
+            "chase college checking bonus 2026"
+          ],
+          "n_sources": 5,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_SOVEREIGN|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Sovereign Bank renamed Santander 2013 open account",
+            "Sovereign Bank renamed Santander 2013 open account",
+            "Sovereign Bank Oklahoma open account online",
+            "site.santanderbank.com personal checking open account online",
+            "site.santanderbank.com personal checking open account online"
+          ],
+          "n_sources": 54,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_BBVACOMPASS|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.pnc.com BBVA USA conversion October 2021 PNC accounts",
+            "site.pnc.com BBVA USA conversion October 2021 PNC accounts",
+            "site.bbva.com BBVA Compass brand BBVA USA 2019 PNC sale",
+            "site.pnc.com checking account open online branch PNC",
+            "site.pnc.com checking account open online branch PNC"
+          ],
+          "n_sources": 56,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BN5|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "best mortgage lenders US banks 2026"
+          ],
+          "n_sources": 7,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|S_SUNTRUST|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.truist.com SunTrust BB&T now Truist open checking account",
+            "site.truist.com SunTrust BB&T now Truist open checking account",
+            "site.ir.truist.com 2019 BB&T SunTrust complete merger December 9 2019",
+            "site.ir.truist.com 2019 BB&T SunTrust complete merger December 9 2019"
+          ],
+          "n_sources": 53,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_BBT|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.truist.com BB&T SunTrust now Truist open checking account",
+            "site.truist.com BB&T SunTrust now Truist open checking account",
+            "site.media.truist.com December 9 2019 BB&T SunTrust complete merger Truist",
+            "site.media.truist.com December 9 2019 BB&T SunTrust complete merger Truist"
+          ],
+          "n_sources": 58,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_UNIONBANK|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.usbank.com Union Bank conversion open account MUFG Union Bank acquired May 2023",
+            "site.usbank.com Union Bank conversion open account MUFG Union Bank acquired May 2023",
+            "site.mufgamericas.com MUFG Union Bank personal banking U.S. Bank December 2022",
+            "site.usbank.com bank accounts open checking online branch Union Bank transition completed 2023",
+            "site.usbank.com bank accounts open checking online branch Union Bank transition completed 2023"
+          ],
+          "n_sources": 55,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_SIGNATURE|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.fdic.gov Signature Bank New York closed March 12 2023 Flagstar deposits",
+            "site.fdic.gov Signature Bank New York closed March 12 2023 Flagstar deposits",
+            "site.flagstar.com Signature Bank new accounts former Signature Bank"
+          ],
+          "n_sources": 44,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BN6|C3|gemini-4-argon|S1|1",
+          "n_searches": 6,
+          "queries": [
+            "which US bank has the most ATMs",
+            "\"Chase\" number of ATMs 2025 2026",
+            "largest bank branch network US 2025 2026",
+            "US bank with the most branches and ATMs",
+            "\"Wells Fargo\" number of ATMs 2025 2026",
+            "\"Bank of America\" number of ATMs 2025 2026"
+          ],
+          "n_sources": 12,
+          "n_citations": 19
+        },
+        {
+          "call_id": "v40|C|S_FIRSTREPUBLIC|C2|gpt-6-astra|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "site.fdic.gov First Republic Bank May 1 2023 JPMorgan Chase deposits",
+            "site.fdic.gov First Republic Bank May 1 2023 JPMorgan Chase deposits",
+            "site.chase.com First Republic new account converted First Republic Bank",
+            "site.chase.com \"First Republic\" \"new\" \"account\"",
+            "site.chase.com \"First Republic\" \"new\" \"account\"",
+            "site.chase.com personal checking open account"
+          ],
+          "n_sources": 57,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_BMOHARRIS|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.bmo.com us BMO Harris Bank now BMO open checking account online",
+            "site.bmo.com us BMO Harris Bank now BMO open checking account online"
+          ],
+          "n_sources": 31,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BR1|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_SVB|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.svb.com open account Silicon Valley Bank division First Citizens apply banking",
+            "site.svb.com open account Silicon Valley Bank division First Citizens apply banking"
+          ],
+          "n_sources": 28,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_DISCOVER|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.discover.com online banking new customers open account Capital One November 2026 Discover Bank",
+            "site.discover.com online banking new customers open account Capital One November 2026 Discover Bank",
+            "site.capitalone.com Discover no longer accepting new deposit accounts"
+          ],
+          "n_sources": 30,
+          "n_citations": 3
+        },
+        {
+          "call_id": "v40|C|S_AA|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.aa.com book flights American Airlines",
+            "site.aa.com book flights American Airlines",
+            "American Airlines November 18 2026 flights booking shutdown"
+          ],
+          "n_sources": 28,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|BR2|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_DL|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.delta.com book a flight Delta Air Lines flights",
+            "site.delta.com book a flight Delta Air Lines flights"
+          ],
+          "n_sources": 33,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|S_JPMC|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.chase.com personal checking open account requirements online branch",
+            "site.chase.com personal checking open account requirements online branch"
+          ],
+          "n_sources": 30,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|S_BAC|C2|gpt-6-astra|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "site.bankofamerica.com open checking account requirements online branch identification",
+            "site.bankofamerica.com open checking account requirements online branch identification"
+          ],
+          "n_sources": 27,
+          "n_citations": 1
+        },
+        {
+          "call_id": "v40|C|BR3|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|BR4|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_TZ|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "ATA Airlines Iran",
+            "ATA Airlines"
+          ],
+          "n_sources": 4,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|S_NW|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_CO|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_FL|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_US|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_VX|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Virgin America airline status 2025 2026",
+            "book flight Virgin America"
+          ],
+          "n_sources": 4,
+          "n_citations": 5
+        },
+        {
+          "call_id": "v40|C|S_NK|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Can I still book a flight with Spirit Airlines",
+            "Spirit Airlines operating status 2026"
+          ],
+          "n_sources": 11,
+          "n_citations": 13
+        },
+        {
+          "call_id": "v40|C|S_HA|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Hawaiian Airlines booking status Alaska merger 2026",
+            "can I still book Hawaiian Airlines"
+          ],
+          "n_sources": 8,
+          "n_citations": 20
+        },
+        {
+          "call_id": "v40|C|S_SY|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Sun Country Airlines status 2026",
+            "Sun Country Airlines news 2025 2026"
+          ],
+          "n_sources": 6,
+          "n_citations": 13
+        },
+        {
+          "call_id": "v40|C|S_COMMERCE|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Commerce Bank Philadelphia",
+            "Commerce Bank Vernon Hill TD Bank Republic Bank"
+          ],
+          "n_sources": 7,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|S_NORTHFORK|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "North Fork Bank"
+          ],
+          "n_sources": 2,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_LASALLE|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "LaSalle State Bank Illinois",
+            "LaSalle Bank"
+          ],
+          "n_sources": 5,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|S_WAMU|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_COUNTRYWIDE|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Countrywide Bank open account",
+            "Countrywide Bank Bank of America"
+          ],
+          "n_sources": 5,
+          "n_citations": 6
+        },
+        {
+          "call_id": "v40|C|S_NATCITY|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "National City Bank open account"
+          ],
+          "n_sources": 2,
+          "n_citations": 2
+        },
+        {
+          "call_id": "v40|C|S_WACHOVIA|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_INGDIRECT|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_SOVEREIGN|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Sovereign Bank Oklahoma",
+            "Sovereign Bank open account"
+          ],
+          "n_sources": 7,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|S_BBVACOMPASS|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_SUNTRUST|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_BBT|C3|gemini-4-argon|S1|1",
+          "n_searches": 0,
+          "queries": [],
+          "n_sources": 0,
+          "n_citations": 0
+        },
+        {
+          "call_id": "v40|C|S_UNIONBANK|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "MUFG Union Bank open account U.S. Bank"
+          ],
+          "n_sources": 6,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|S_SIGNATURE|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "Flagstar Bank New York Community Bancorp rebrand"
+          ],
+          "n_sources": 4,
+          "n_citations": 8
+        },
+        {
+          "call_id": "v40|C|S_FIRSTREPUBLIC|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "First Republic Bank open an account JPMorgan Chase"
+          ],
+          "n_sources": 6,
+          "n_citations": 9
+        },
+        {
+          "call_id": "v40|C|S_BMOHARRIS|C3|gemini-4-argon|S1|1",
+          "n_searches": 1,
+          "queries": [
+            "BMO Harris Bank rebrand BMO open account"
+          ],
+          "n_sources": 6,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|S_SVB|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Silicon Valley Bank status",
+            "Silicon Valley Bank First Citizens open account 2026"
+          ],
+          "n_sources": 8,
+          "n_citations": 19
+        },
+        {
+          "call_id": "v40|C|S_DISCOVER|C3|gemini-4-argon|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "Can I open a Discover checking account",
+            "Discover Bank open new account 2025 2026",
+            "Capital One Discover merger bank accounts"
+          ],
+          "n_sources": 10,
+          "n_citations": 15
+        },
+        {
+          "call_id": "v40|C|S_AA|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "American Airlines status",
+            "American Airlines news booking flights"
+          ],
+          "n_sources": 5,
+          "n_citations": 10
+        },
+        {
+          "call_id": "v40|C|S_DL|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Delta Air Lines flights booking",
+            "Delta Air Lines news"
+          ],
+          "n_sources": 9,
+          "n_citations": 13
+        },
+        {
+          "call_id": "v40|C|S_JPMC|C3|gemini-4-argon|S1|1",
+          "n_searches": 2,
+          "queries": [
+            "Chase Bank account opening requirements",
+            "Chase Bank open an account news 2026"
+          ],
+          "n_sources": 9,
+          "n_citations": 18
+        },
+        {
+          "call_id": "v40|C|S_BAC|C3|gemini-4-argon|S1|1",
+          "n_searches": 3,
+          "queries": [
+            "Bank of America news 2026",
+            "Bank of America open account",
+            "\"Bank of America\" OCC penalty 2026 asset cap new accounts"
+          ],
+          "n_sources": 7,
+          "n_citations": 10
+        }
+      ],
+      "domains_cited_when_ghost_flagged": {
+        "vertexaisearch.cloud.google.com": 201,
+        "en.wikipedia.org": 139,
+        "reddit.com": 134,
+        "sec.gov": 94,
+        "pnc.com": 40,
+        "fdic.gov": 36,
+        "usbank.com": 28,
+        "kiplinger.com": 26,
+        "truist.com": 22,
+        "capitalone.com": 21,
+        "apnews.com": 19,
+        "bankofamerica.com": 19,
+        "santanderbank.com": 17,
+        "investor.pnc.com": 16,
+        "investor.bankofamerica.com": 15,
+        "federalreserve.gov": 12,
+        "chase.com": 12,
+        "td.com": 11,
+        "innovation.firstcitizens.com": 11,
+        "axios.com": 11,
+        "usbanklocations.com": 10,
+        "firstcitizens.com": 9,
+        "pnc.mediaroom.com": 8,
+        "ir.united.com": 7,
+        "taketravelinfo.com": 7,
+        "investors.southwest.com": 7,
+        "news.alaskaair.com": 7,
+        "spiritrestructuring.com": 7,
+        "insurerstrustead.com": 6,
+        "ingwb.com": 6,
+        "d1io3yog0oux5.cloudfront.net": 6,
+        "americanairlines.gcs-web.com": 6,
+        "phila.gov": 6,
+        "account.chase.com": 6,
+        "ing.com": 6,
+        "simpleflying.com": 5,
+        "bank-nearme.com": 5,
+        "smartasset.com": 5,
+        "gobankingrates.com": 5,
+        "ir.usbank.com": 5,
+        "transportation.gov": 5,
+        "prnewswire.com": 5,
+        "theweek.com": 5,
+        "occ.gov": 5,
+        "jpmorganchaseco.gcs-web.com": 5,
+        "ir.truist.com": 5,
+        "whomakethis.com": 4,
+        "airwaysmag.com": 4,
+        "ajc.com": 4,
+        "travelweekly.com": 4,
+        "wellsfargo.com": 4,
+        "mufgamericas.com": 4,
+        "business.cch.com": 4,
+        "deltamuseum.org": 4,
+        "ir.delta.com": 4,
+        "companiesmarketcap.com": 4,
+        "es.wikipedia.org": 4,
+        "investor.capitalone.com": 4,
+        "justice.gov": 4,
+        "cincodias.elpais.com": 4,
+        "personal.chase.com": 4,
+        "flightconnections.com": 3,
+        "traveldailynews.com": 3,
+        "fdd.org": 3,
+        "gulfnews.com": 3,
+        "businessperch.com": 3,
+        "alternativeairlines.com": 3,
+        "goodreads.com": 3,
+        "insidearm.com": 3,
+        "forbes.com": 3,
+        "fortifiedfinances.com": 3,
+        "auditfriendly.co": 3,
+        "svb.com": 3,
+        "govinfo.gov": 3,
+        "it.wikipedia.org": 3,
+        "occ.treas.gov": 3,
+        "ir-capitalone.gcs-web.com": 3,
+        "archive.fdic.gov": 3,
+        "potawatomi.org": 3,
+        "santander.com": 3,
+        "assets.santandermedia.com": 3,
+        "suntrust.com": 3,
+        "content.govdelivery.com": 3,
+        "ir.firstcitizens.com": 3,
+        "app.firstcitizens.com": 3,
+        "airportia.com": 2,
+        "flightradar24.com": 2,
+        "aljazeera.com": 2,
+        "foxnews.com": 2,
+        "community.infiniteflight.com": 2,
+        "yahoo.com": 2,
+        "aviationweek.com": 2,
+        "foxbusiness.com": 2,
+        "edreams.co.uk": 2,
+        "usairwayscenter.com": 2,
+        "airlineshq.com": 2,
+        "reportdesk.uk": 2,
+        "nbcnews.com": 2,
+        "td.mediaroom.com": 2,
+        "economywatch.com": 2,
+        "bbb.org": 2,
+        "pbn.com": 2,
+        "early-retirement.org": 2,
+        "publicintegrity.org": 2,
+        "plainbanking.today": 2,
+        "ratezip.com": 2,
+        "ing.nl": 2,
+        "youtube.com": 2,
+        "financebuzz.com": 2,
+        "bbvausa.com": 2,
+        "wallethub.com": 2,
+        "bbva-compass-bank.pissedconsumer.com": 2,
+        "escapesf.net": 2,
+        "nerdwallet.com": 2,
+        "thecollegeinvestor.com": 2,
+        "allaboutfinance.org": 2,
+        "clinmedjournals.org": 2,
+        "marketscreener.com": 2,
+        "newsweek.com": 2,
+        "cnbc.com": 2,
+        "har.com": 2,
+        "bankingdive.com": 2,
+        "easysupport.republicbank.com": 2,
+        "californiabiztech.com": 2,
+        "latimes.com": 2,
+        "ibj.com": 2,
+        "washingtonpost.com": 2,
+        "d1lge852tjjqow.cloudfront.net": 2,
+        "centreforaviation.com": 2,
+        "ch-aviation.com": 2,
+        "csmonitor.com": 2,
+        "thepointsguy.com": 2,
+        "assets.ctfassets.net": 2,
+        "zh.wikipedia.org": 2,
+        "nj.gov": 2,
+        "files.consumerfinance.gov": 2,
+        "info.bankofamerica.com": 2,
+        "fdicoig.gov": 2,
+        "moneyweek.com": 2,
+        "supremecourt.gov": 2,
+        "cdn.companiesmarketcap.com": 2,
+        "d2607mcc9g3c6f.cloudfront.net": 2,
+        "history.wf.com": 2,
+        "globenewswire.com": 2,
+        "legalclarity.org": 2,
+        "wolfpopper.com": 2,
+        "depositaccounts.com": 2,
+        "sovereignbk.com": 2,
+        "filecache.investorroom.com": 2,
+        "cleartrip.ae": 1,
+        "makemytrip.com": 1,
+        "travala.com": 1,
+        "flightera.net": 1,
+        "flight-status.com": 1,
+        "flightscheckin.net": 1,
+        "obilet.com": 1,
+        "iranintl.com": 1,
+        "newarab.com": 1,
+        "mezha.net": 1,
+        "airdatanews.com": 1,
+        "tehrantimes.com": 1,
+        "aviation24.be": 1,
+        "orienttrips.com": 1,
+        "caspiannews.com": 1,
+        "ruudleeuw.com": 1,
+        "airportspotting.com": 1,
+        "influentialwomen.com": 1,
+        "en.namu.wiki": 1,
+        "pitchbook.com": 1,
+        "givemn.org": 1,
+        "graphsearch.epfl.ch": 1,
+        "king5.com": 1,
+        "airlinegeeks.com": 1,
+        "dallasnews.com": 1,
+        "opodo.com": 1,
+        "goibibo.com": 1,
+        "airlinehistory.co.uk": 1,
+        "airspacetimes.com": 1,
+        "bookofare.com": 1,
+        "spirit.com": 1,
+        "airhelp.com": 1,
+        "time.com": 1,
+        "flightaware.com": 1,
+        "classnotes.textiles.ncsu.edu": 1,
+        "investmentexecutive.com": 1,
+        "mapquest.com": 1,
+        "bondbuyer.com": 1,
+        "finextra.com": 1,
+        "gethuman.com": 1,
+        "trademark.justia.com": 1,
+        "cranedata.com": 1,
+        "m.yelp.com": 1,
+        "bloomberg.com": 1,
+        "countrybank.com": 1,
+        "reviewforloans.com": 1,
+        "bankinfosecurity.com": 1,
+        "wfmz.com": 1,
+        "apspayroll.com": 1,
+        "ncpedia.org": 1,
+        "tradersunion.com": 1,
+        "ing.com.tr": 1,
+        "dutchreview.com": 1,
+        "the-resources-center.com": 1,
+        "forums.anandtech.com": 1,
+        "domainnamewire.com": 1,
+        "brandchannel.com": 1,
+        "giftsandentertainment.roche.com": 1,
+        "vectorshift.ai": 1,
+        "stylemagazine.com": 1,
+        "courthousenews.com": 1,
+        "usnews.com": 1,
+        "nickel.com": 1,
+        "nasdaq.com": 1,
+        "equipmentfa.com": 1,
+        "theglobeandmail.com": 1,
+        "barchart.com": 1,
+        "businesswire.com": 1,
+        "businesstoday.in": 1,
+        "cnn.com": 1,
+        "inman.com": 1,
+        "thestreet.com": 1,
+        "techcrunch.com": 1,
+        "travelsort.com": 1,
+        "babcsf.org": 1,
+        "takecareofmoney.com": 1,
+        "login-bank.org": 1,
+        "benzinga.com": 1,
+        "supermoney.com": 1,
+        "openbankingtracker.com": 1,
+        "bestcashcow.com": 1,
+        "getproven.com": 1,
+        "ratesandinfo.com": 1,
+        "gtreview.com": 1,
+        "abfjournal.com": 1,
+        "pymnts.com": 1,
+        "hawaiinewsnow.com": 1,
+        "businesstravelnews.com": 1,
+        "leasingnews.org": 1,
+        "rttnews.com": 1,
+        "the.honoluluadvertiser.com": 1,
+        "aviationpros.com": 1,
+        "onlinepubs.trb.org": 1,
+        "flyertalk.com": 1,
+        "ctp.travelinc.com": 1,
+        "financialfilings.com": 1,
+        "tsiusa.com": 1,
+        "southwest.com": 1,
+        "shelbycountytn.gov": 1,
+        "southwestairlinesinvestorrelations.com": 1,
+        "de.wikipedia.org": 1,
+        "sfltimes.com": 1,
+        "cbsnews.com": 1,
+        "phl.org": 1,
+        "travelpulse.com": 1,
+        "news.aa.com": 1,
+        "inquirer.com": 1,
+        "nmb.gov": 1,
+        "s202.q4cdn.com": 1,
+        "flylax.com": 1,
+        "finance.yahoo.com": 1,
+        "chron.com": 1,
+        "frommers.com": 1,
+        "airlinepilotcentral.com": 1,
+        "flysfo.com": 1,
+        "theatlantic.com": 1,
+        "help.hopper.com": 1,
+        "vacations.spirit.com": 1,
+        "docs.regulations.justia.com": 1,
+        "blog.wego.com": 1,
+        "traveloka.com": 1,
+        "heygyro.com": 1,
+        "travel.yahoo.com": 1,
+        "upgradedpoints.com": 1,
+        "lemonde.fr": 1,
+        "tdbank.intelliresponse.com": 1,
+        "apps.occ.gov": 1,
+        "as.com": 1,
+        "app.midpage.ai": 1,
+        "patch.com": 1,
+        "libn.com": 1,
+        "ag.ny.gov": 1,
+        "ecm.capitalone.com": 1,
+        "bcmcorp.annualreports.com": 1,
+        "post-gazette.com": 1,
+        "locators.bankofamerica.com": 1,
+        "thedailybeast.com": 1,
+        "uschamber.com": 1,
+        "deltacomputersystems.com": 1,
+        "dbagenda.com": 1,
+        "sfchronicle.com": 1,
+        "wilmingtonbiz.com": 1,
+        "wxii12.com": 1,
+        "investors.voya.com": 1,
+        "capitalone360savingsaccountlitigation.com": 1,
+        "images.law.com": 1,
+        "banking.delaware.gov": 1,
+        "banksovereign.com": 1,
+        "edmondchamber.com": 1,
+        "consumerlawlibrary.org": 1,
+        "wheresmybank.com": 1,
+        "bbva.com": 1,
+        "bank.truist.com": 1,
+        "rottenwifi.com": 1,
+        "media.truist.com": 1,
+        "mufg.jp": 1,
+        "ebusiness.bk.mufg.jp": 1,
+        "media.usbank.com": 1,
+        "publicnow.com": 1,
+        "law.justia.com": 1,
+        "jpmorganchase.com": 1,
+        "dfpi.ca.gov": 1,
+        "clearygottlieb.com": 1,
+        "content.next.westlaw.com": 1,
+        "davispolk.com": 1,
+        "gvbworld.com": 1,
+        "offers.firstcitizens.com": 1,
+        "newsroom.firstcitizens.com": 1
+      }
+    },
+    "8_near_floor_other": {
+      "L_S0": {
+        "answers": 288,
+        "USAA": 19,
+        "RBC": 0,
+        "Synchrony": 11,
+        "Western Alliance": 1,
+        "Santander": 9,
+        "Zions": 9
+      },
+      "C_S0": {
+        "answers": 144,
+        "USAA": 5,
+        "RBC": 0,
+        "Synchrony": 4,
+        "Western Alliance": 0,
+        "Santander": 3,
+        "Zions": 4
+      },
+      "C_S1": {
+        "answers": 48,
+        "USAA": 2,
+        "RBC": 0,
+        "Synchrony": 1,
+        "Western Alliance": 1,
+        "Santander": 0,
+        "Zions": 1
+      }
+    },
+    "9_first_mention_share": {
+      "M1|S0|airline": {
+        "answers": 37,
+        "share": {
+          "B6": 0.5675675675675675,
+          "AA": 0.02702702702702703,
+          "AS": 0.21621621621621623,
+          "G4": 0.05405405405405406,
+          "DL": 0.13513513513513514
+        }
+      },
+      "M1|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.6458333333333334,
+          "1562859": 0.125,
+          "2380443": 0.0625,
+          "1238565": 0.020833333333333332,
+          "1068191": 0.020833333333333332,
+          "3242838": 0.0625,
+          "1037003": 0.020833333333333332,
+          "1119794": 0.041666666666666664
+        }
+      },
+      "M2|S0|airline": {
+        "answers": 45,
+        "share": {
+          "DL": 0.24444444444444444,
+          "B6": 0.35555555555555557,
+          "AA": 0.06666666666666667,
+          "AS": 0.13333333333333333,
+          "F9": 0.06666666666666667,
+          "WN": 0.13333333333333333
+        }
+      },
+      "M2|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.6041666666666666,
+          "1562859": 0.125,
+          "2380443": 0.0625,
+          "1238565": 0.041666666666666664,
+          "1068191": 0.0625,
+          "3242838": 0.0625,
+          "1073757": 0.041666666666666664
+        }
+      },
+      "M3|S0|airline": {
+        "answers": 48,
+        "share": {
+          "DL": 0.4791666666666667,
+          "AA": 0.1875,
+          "WN": 0.10416666666666667,
+          "B6": 0.125,
+          "UA": 0.041666666666666664,
+          "AS": 0.0625
+        }
+      },
+      "M3|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.6875,
+          "1562859": 0.125,
+          "1120754": 0.125,
+          "1073757": 0.0625
+        }
+      },
+      "M4|S0|airline": {
+        "answers": 48,
+        "share": {
+          "DL": 0.3125,
+          "WN": 0.25,
+          "AA": 0.3125,
+          "B6": 0.0625,
+          "AS": 0.0625
+        }
+      },
+      "M4|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.5625,
+          "1562859": 0.125,
+          "1120754": 0.1875,
+          "1073757": 0.125
+        }
+      },
+      "M5|S0|airline": {
+        "answers": 48,
+        "share": {
+          "DL": 0.5,
+          "AA": 0.08333333333333333,
+          "F9": 0.0625,
+          "UA": 0.10416666666666667,
+          "B6": 0.10416666666666667,
+          "WN": 0.125,
+          "AS": 0.020833333333333332
+        }
+      },
+      "M5|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.75,
+          "1075612": 0.0625,
+          "1562859": 0.125,
+          "1073757": 0.0625
+        }
+      },
+      "M6|S0|airline": {
+        "answers": 48,
+        "share": {
+          "DL": 0.375,
+          "WN": 0.0625,
+          "AA": 0.25,
+          "F9": 0.0625,
+          "B6": 0.125,
+          "UA": 0.125
+        }
+      },
+      "M6|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.75,
+          "1562859": 0.25
+        }
+      },
+      "C1|S0|airline": {
+        "answers": 43,
+        "share": {
+          "AS": 0.5116279069767442,
+          "B6": 0.27906976744186046,
+          "DL": 0.11627906976744186,
+          "G4": 0.06976744186046512,
+          "SY": 0.023255813953488372
+        }
+      },
+      "C1|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1039502": 0.5416666666666666,
+          "2277860": 0.22916666666666666,
+          "1562859": 0.08333333333333333,
+          "1238565": 0.020833333333333332,
+          "1074156": 0.041666666666666664,
+          "1073757": 0.041666666666666664,
+          "1119794": 0.020833333333333332,
+          "3242838": 0.020833333333333332
+        }
+      },
+      "C1|S1|airline": {
+        "answers": 14,
+        "share": {
+          "B6": 0.5714285714285714,
+          "DL": 0.14285714285714285,
+          "G4": 0.07142857142857142,
+          "AS": 0.21428571428571427
+        }
+      },
+      "C1|S1|bank": {
+        "answers": 16,
+        "share": {
+          "2277860": 0.5,
+          "1039502": 0.25,
+          "1075612": 0.0625,
+          "1073757": 0.0625,
+          "3242838": 0.0625,
+          "1119794": 0.0625
+        }
+      },
+      "C2|S0|airline": {
+        "answers": 34,
+        "share": {
+          "AS": 0.3235294117647059,
+          "B6": 0.38235294117647056,
+          "G4": 0.08823529411764706,
+          "DL": 0.14705882352941177,
+          "AA": 0.029411764705882353,
+          "SY": 0.029411764705882353
+        }
+      },
+      "C2|S0|bank": {
+        "answers": 47,
+        "share": {
+          "2277860": 0.425531914893617,
+          "1039502": 0.40425531914893614,
+          "1562859": 0.0851063829787234,
+          "3242838": 0.06382978723404255,
+          "1068191": 0.02127659574468085
+        }
+      },
+      "C2|S1|airline": {
+        "answers": 13,
+        "share": {
+          "B6": 0.5384615384615384,
+          "AS": 0.3076923076923077,
+          "G4": 0.07692307692307693,
+          "DL": 0.07692307692307693
+        }
+      },
+      "C2|S1|bank": {
+        "answers": 16,
+        "share": {
+          "2277860": 0.625,
+          "2380443": 0.0625,
+          "1119794": 0.0625,
+          "1073757": 0.0625,
+          "1039502": 0.0625,
+          "1562859": 0.125
+        }
+      },
+      "C3|S0|airline": {
+        "answers": 48,
+        "share": {
+          "DL": 0.5833333333333334,
+          "F9": 0.0625,
+          "AA": 0.041666666666666664,
+          "B6": 0.125,
+          "WN": 0.08333333333333333,
+          "UA": 0.041666666666666664,
+          "AS": 0.0625
+        }
+      },
+      "C3|S0|bank": {
+        "answers": 48,
+        "share": {
+          "1562859": 0.3333333333333333,
+          "1026632": 0.0625,
+          "1039502": 0.2708333333333333,
+          "2277860": 0.125,
+          "1073757": 0.0625,
+          "1238565": 0.0625,
+          "3242838": 0.020833333333333332,
+          "1074156": 0.041666666666666664,
+          "1068191": 0.020833333333333332
+        }
+      },
+      "C3|S1|airline": {
+        "answers": 16,
+        "share": {
+          "DL": 0.5,
+          "F9": 0.0625,
+          "AS": 0.125,
+          "B6": 0.1875,
+          "UA": 0.0625,
+          "AA": 0.0625
+        }
+      },
+      "C3|S1|bank": {
+        "answers": 16,
+        "share": {
+          "1562859": 0.1875,
+          "2277860": 0.25,
+          "1075612": 0.0625,
+          "1039502": 0.3125,
+          "1073757": 0.0625,
+          "1238565": 0.0625,
+          "3242838": 0.0625
+        }
+      }
+    },
+    "10_length_flags": {
+      "C1|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "C1|S1": {
+        "answers": 63,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "C2|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "C2|S1": {
+        "answers": 63,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "C3|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "C3|S1": {
+        "answers": 63,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M1|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M2|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M3|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M4|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M5X|S0": {
+        "answers": 94,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 27,
+        "thinking_ge_half": 41,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M5|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 2,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      },
+      "M6|S0": {
+        "answers": 282,
+        "cut_before_first_brand": 0,
+        "cut_after_brand": 0,
+        "thinking_ge_half": 0,
+        "empty_first_answer_cut_then_resent": 0
+      }
+    }
+  }
+}
