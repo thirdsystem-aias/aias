@@ -70,7 +70,7 @@ def hdots(ax, rows, xlim, refs, xlabel, fmt):
         ax.plot(xlim, [y, y], color="#EFEFEF", linewidth=0.6, zorder=0)
         ax.scatter([x], [y], s=52, zorder=3, color=INDIGO if hi else "white", edgecolor=INDIGO if hi else GREY,
                    linewidth=1.3)
-        ax.text(x, y + 0.28, fmt(base), fontsize=7, color=INK if hi else GREY, ha="center", va="bottom")
+        ax.text(x + (xlim[1] - xlim[0]) * 0.015, y + 0.12, fmt(base), fontsize=7, color=INK if hi else GREY, ha="left", va="bottom")
     for xr, lab in refs:
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
         ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom")
@@ -84,13 +84,13 @@ def hdots(ax, rows, xlim, refs, xlabel, fmt):
 
 def r1():
     fig = frame("Rank correlation of market share with share of AI naming, by category and model group",
-                "Banks track market share in every version; airlines drop below the bar when Sun Country "
-                "counts inside Allegiant.")
+                "Banks stay above the bar in every version; airlines fall below it for the newest models and "
+                "with Sun Country grouped with Allegiant.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     rows = [("Airlines, all nine models", ("H_Reinforce.airline.rho",), False),
             ("Airlines, older models", ("sensitivity.S-Arm.legacy.H_Reinforce.airline.rho",), False),
-            ("Airlines, newest models", ("sensitivity.S-Arm.current.H_Reinforce.airline.rho",), False),
-            ("Airlines, Sun Country in Allegiant", ("sensitivity.S-SunCountry.H_Reinforce_airline.rho",), True),
+            ("Airlines, newest models", ("sensitivity.S-Arm.current.H_Reinforce.airline.rho",), True),
+            ("Airlines, Sun Country with Allegiant", ("sensitivity.S-SunCountry.H_Reinforce_airline.rho",), True),
             ("Banks, all nine models", ("H_Reinforce.bank.rho",), False),
             ("Banks, older models", ("sensitivity.S-Arm.legacy.H_Reinforce.bank.rho",), False),
             ("Banks, newest models", ("sensitivity.S-Arm.current.H_Reinforce.bank.rho",), False)]
@@ -101,8 +101,7 @@ def r1():
 
 def r2():
     fig = frame("Leader's share of AI naming as a multiple of its market share",
-                "Every version stays below the same-as-market line; the amplified line was out of reach at this "
-                "answer breadth.")
+                "Every model group stays below the same-as-market line, in both categories.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     rows = [("American, all nine models", ("H_Amplify.airline.ratio",), True),
             ("American, older models", ("sensitivity.S-Arm.legacy.H_Amplify.airline.ratio",), False),
@@ -117,8 +116,7 @@ def r2():
 
 def r3():
     fig = frame("Departed-brand and model pairs named in a recommendation without gone wording",
-                f"{d('H_Afterlife.airline.rate')} of airline and {d('H_Afterlife.bank.rate')} of bank pairs: above the "
-                f"floor, far below the bar.")
+                "Both categories sit between the floor and the bar, for older and newest models alike.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     rows = [("Airlines, all nine models", "H_Afterlife.airline"), ("Airlines, older models",
             "sensitivity.S-Arm.legacy.H_Afterlife.airline"), ("Airlines, newest models",
@@ -139,8 +137,8 @@ def r3():
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(0, 0.3)
     ax.set_ylim(-0.6, n + 0.2)
-    ax.set_xticks([0, 0.05, 0.1, 0.2, 0.3])
-    ax.set_xticklabels(["0%", "5%", "10%", "20%", "30%"])
+    ax.set_xticks([0, 0.1, 0.2, 0.3])
+    ax.set_xticklabels(["0%", "10%", "20%", "30%"])
     ax.set_xlabel("Share of departed-brand and model pairs named without saying the brand is gone", fontsize=7.8)
     clean(ax, left=True)
     save(fig, "report_fig_03_departed_named")
@@ -187,24 +185,28 @@ def r5():
 
 
 def r6():
-    fig = frame("Departed-brand status answers of the newest models, with web search on",
-                f"Search changed few other cells: {d('H_Search.s1_only_flagged')} toward gone, "
+    fig = frame("Departed-brand status cells of the newest models, search off against search on",
+                f"Search changed few cells: {d('H_Search.s1_only_flagged')} toward gone, "
                 f"{d('H_Search.s0_only_flagged')} away from it.")
     ax = fig.add_axes([0.30, 0.17, 0.66, 0.60])
     labs = ["Late exits flagged, search on", "Flagged only with search on", "Flagged only with search off"]
-    vals = [v("H_Search.post_cutoff_s1_flagged"), v("H_Search.s1_only_flagged"), v("H_Search.s0_only_flagged")]
-    disp = [f"{d('H_Search.post_cutoff_s1_flagged')} of {d('H_Search.post_cutoff_cells')}",
-            f"{d('H_Search.s1_only_flagged')} of {d('H_Search.paired_cells')}",
-            f"{d('H_Search.s0_only_flagged')} of {d('H_Search.paired_cells')}"]
-    for i, (x, t) in enumerate(zip(vals, disp)):
+    rows = [(v("H_Search.post_cutoff_s1_flagged"), v("H_Search.post_cutoff_cells"),
+             f"{d('H_Search.post_cutoff_s1_flagged')} of {d('H_Search.post_cutoff_cells')} late-exit cells"),
+            (v("H_Search.s1_only_flagged"), v("H_Search.paired_cells"),
+             f"{d('H_Search.s1_only_flagged')} of {d('H_Search.paired_cells')} cells"),
+            (v("H_Search.s0_only_flagged"), v("H_Search.paired_cells"),
+             f"{d('H_Search.s0_only_flagged')} of {d('H_Search.paired_cells')} cells")]
+    for i, (k, n, txt) in enumerate(rows):
         y = 2 - i
-        ax.barh(y, x, height=0.5, color=INDIGO if i == 0 else LIGHT)
-        ax.text(x + 0.1, y, t, fontsize=7.5, va="center", color=INK)
+        ax.barh(y, k / n, height=0.5, color=LIGHT)
+        ax.text(k / n + 0.01, y, txt, fontsize=7.5, va="center", color=INK)
     ax.set_yticks([2, 1, 0])
     ax.set_yticklabels(labs, fontsize=7.6)
-    ax.set_xlim(0, 8)
+    ax.set_xlim(0, 1.25)
+    ax.set_xticks([0, 0.25, 0.5, 0.75, 1.0])
+    ax.set_xticklabels(["0%", "25%", "50%", "75%", "100%"])
     ax.set_ylim(-0.6, 2.6)
-    ax.set_xlabel("Cells (one departed brand asked of one model)", fontsize=7.8)
+    ax.set_xlabel("Share of the cells in each group (one departed brand asked of one model)", fontsize=7.8)
     clean(ax, left=True)
     save(fig, "report_fig_06_search_status")
 
