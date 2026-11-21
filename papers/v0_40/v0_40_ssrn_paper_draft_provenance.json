@@ -36,7 +36,7 @@
   }
  },
  "synthetic": false,
- "n_keys": 217,
+ "n_keys": 242,
  "keys": {
   "H_Afterlife.airline.afterlife_pairs": {
    "display": "3",
@@ -568,17 +568,6 @@
     "path": [
      "H_Search",
      "post_cutoff_cells"
-    ]
-   }
-  },
-  "H_Search.post_cutoff_s1_flagged": {
-   "display": "5",
-   "value": 5,
-   "source": {
-    "file": "osf/v40/v40_verdicts.json",
-    "path": [
-     "H_Search",
-     "post_cutoff_s1_flagged"
     ]
    }
   },
@@ -1271,6 +1260,19 @@
     ]
    }
   },
+  "descriptives.5_M5X_vs_M5.M5.ghost_mentions": {
+   "display": "663",
+   "value": 663,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "5_M5X_vs_M5",
+     "M5",
+     "ghost_mentions"
+    ]
+   }
+  },
   "descriptives.5_M5X_vs_M5.M5.truncated": {
    "display": "2",
    "value": 2,
@@ -1294,6 +1296,19 @@
      "5_M5X_vs_M5",
      "M5X",
      "calls"
+    ]
+   }
+  },
+  "descriptives.5_M5X_vs_M5.M5X.ghost_mentions": {
+   "display": "237",
+   "value": 237,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "5_M5X_vs_M5",
+     "M5X",
+     "ghost_mentions"
     ]
    }
   },
@@ -1414,6 +1429,45 @@
     ]
    }
   },
+  "descriptives.8_near_floor_other.C_S0.RBC": {
+   "display": "0",
+   "value": 0,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S0",
+     "RBC"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S0.Santander": {
+   "display": "3",
+   "value": 3,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S0",
+     "Santander"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S0.Synchrony": {
+   "display": "4",
+   "value": 4,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S0",
+     "Synchrony"
+    ]
+   }
+  },
   "descriptives.8_near_floor_other.C_S0.USAA": {
    "display": "5",
    "value": 5,
@@ -1424,6 +1478,32 @@
      "8_near_floor_other",
      "C_S0",
      "USAA"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S0.Western Alliance": {
+   "display": "0",
+   "value": 0,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S0",
+     "Western Alliance"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S0.Zions": {
+   "display": "4",
+   "value": 4,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S0",
+     "Zions"
     ]
    }
   },
@@ -1440,6 +1520,45 @@
     ]
    }
   },
+  "descriptives.8_near_floor_other.C_S1.RBC": {
+   "display": "0",
+   "value": 0,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S1",
+     "RBC"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S1.Santander": {
+   "display": "0",
+   "value": 0,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S1",
+     "Santander"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S1.Synchrony": {
+   "display": "1",
+   "value": 1,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S1",
+     "Synchrony"
+    ]
+   }
+  },
   "descriptives.8_near_floor_other.C_S1.USAA": {
    "display": "2",
    "value": 2,
@@ -1450,6 +1569,32 @@
      "8_near_floor_other",
      "C_S1",
      "USAA"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S1.Western Alliance": {
+   "display": "1",
+   "value": 1,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S1",
+     "Western Alliance"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.C_S1.Zions": {
+   "display": "1",
+   "value": 1,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "C_S1",
+     "Zions"
     ]
    }
   },
@@ -1466,6 +1611,45 @@
     ]
    }
   },
+  "descriptives.8_near_floor_other.L_S0.RBC": {
+   "display": "0",
+   "value": 0,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "L_S0",
+     "RBC"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.L_S0.Santander": {
+   "display": "9",
+   "value": 9,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "L_S0",
+     "Santander"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.L_S0.Synchrony": {
+   "display": "11",
+   "value": 11,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "L_S0",
+     "Synchrony"
+    ]
+   }
+  },
   "descriptives.8_near_floor_other.L_S0.USAA": {
    "display": "19",
    "value": 19,
@@ -1479,6 +1663,32 @@
     ]
    }
   },
+  "descriptives.8_near_floor_other.L_S0.Western Alliance": {
+   "display": "1",
+   "value": 1,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "L_S0",
+     "Western Alliance"
+    ]
+   }
+  },
+  "descriptives.8_near_floor_other.L_S0.Zions": {
+   "display": "9",
+   "value": 9,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "8_near_floor_other",
+     "L_S0",
+     "Zions"
+    ]
+   }
+  },
   "descriptives.8_near_floor_other.L_S0.answers": {
    "display": "288",
    "value": 288,
@@ -1489,6 +1699,90 @@
      "8_near_floor_other",
      "L_S0",
      "answers"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C1|S0|bank.share.1039502": {
+   "display": "54.2%",
+   "value": 0.5416666666666666,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C1|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C1|S1|bank.share.1039502": {
+   "display": "25.0%",
+   "value": 0.25,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C1|S1|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C2|S0|bank.share.1039502": {
+   "display": "40.4%",
+   "value": 0.40425531914893614,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C2|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C2|S1|bank.share.1039502": {
+   "display": "6.3%",
+   "value": 0.0625,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C2|S1|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C3|S0|bank.share.1039502": {
+   "display": "27.1%",
+   "value": 0.2708333333333333,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C3|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.C3|S1|bank.share.1039502": {
+   "display": "31.3%",
+   "value": 0.3125,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "C3|S1|bank",
+     "share",
+     "1039502"
     ]
    }
   },
@@ -1529,6 +1823,48 @@
      "descriptives",
      "9_first_mention_share",
      "M3|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.M4|S0|bank.share.1039502": {
+   "display": "56.3%",
+   "value": 0.5625,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "M4|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.M5|S0|bank.share.1039502": {
+   "display": "75.0%",
+   "value": 0.75,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "M5|S0|bank",
+     "share",
+     "1039502"
+    ]
+   }
+  },
+  "descriptives.9_first_mention_share.M6|S0|bank.share.1039502": {
+   "display": "75.0%",
+   "value": 0.75,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "descriptives",
+     "9_first_mention_share",
+     "M6|S0|bank",
      "share",
      "1039502"
     ]
@@ -1907,6 +2243,20 @@
     ]
    }
   },
+  "sensitivity.S-Ambig.H_Amplify.airline.k": {
+   "display": "349",
+   "value": 349,
+   "source": {
+    "file": "osf/v40/v40_verdicts.json",
+    "path": [
+     "sensitivity",
+     "S-Ambig",
+     "H_Amplify",
+     "airline",
+     "k"
+    ]
+   }
+  },
   "sensitivity.S-Ambig.H_Amplify.airline.ratio": {
    "display": "0.672",
    "value": 0.6719959613596316,
@@ -2024,21 +2374,6 @@
      "current",
      "H_Afterlife",
      "verdict"
-    ]
-   }
-  },
-  "sensitivity.S-Arm.current.H_Amplify.bank.p_less": {
-   "display": "0.255",
-   "value": 0.25509686265984416,
-   "source": {
-    "file": "osf/v40/v40_verdicts.json",
-    "path": [
-     "sensitivity",
-     "S-Arm",
-     "current",
-     "H_Amplify",
-     "bank",
-     "p_less"
     ]
    }
   },

@@ -87,14 +87,14 @@ def rho_row(label, base):
 
 
 def fig1_reinforce():
-    rows = [("Airlines (10 share units)", None, None, None),
+    rows = [("Airlines", None, None, None),
             rho_row("All nine models", "H_Reinforce.airline"),
             rho_row("Legacy six", "sensitivity.S-Arm.legacy.H_Reinforce.airline"),
             rho_row("Current three", "sensitivity.S-Arm.current.H_Reinforce.airline"),
             rho_row("Ambiguous names in (S-Ambig)", "sensitivity.S-Ambig.H_Reinforce.airline"),
             rho_row("Operating share (S-Operating)", "sensitivity.S-Operating.H_Reinforce_airline"),
             rho_row("Sun Country in Allegiant (S-SunCountry)", "sensitivity.S-SunCountry.H_Reinforce_airline"),
-            ("Banks (25 holders)", None, None, None),
+            ("Banks", None, None, None),
             rho_row("All nine models", "H_Reinforce.bank"),
             rho_row("Legacy six", "sensitivity.S-Arm.legacy.H_Reinforce.bank"),
             rho_row("Current three", "sensitivity.S-Arm.current.H_Reinforce.bank"),
@@ -106,8 +106,8 @@ def fig1_reinforce():
     fig, ax = plt.subplots(figsize=(7.5, 5.6))
     fig.subplots_adjust(left=0.36, right=0.97, top=0.83, bottom=0.12)
     header(fig, "Spearman rank correlation of market share with AI share, by panel and specification",
-           "Filled: rule met (ρ ≥ 0.50 and one-sided permutation p < 0.05). Open: rule not met.")
-    dotplot(ax, rows, (0.0, 1.0), [(v("thresholds.reinforce_rho"), "registered 0.50")], "Spearman ρ")
+           "Filled: rule met ($\\rho \\geq$ " + d("thresholds.reinforce_rho") + " and one-sided permutation p < 0.05). Open: rule not met.")
+    dotplot(ax, rows, (0.0, 1.0), [(v("thresholds.reinforce_rho"), "registered " + d("thresholds.reinforce_rho"))], "Spearman ρ")
     save(fig, "fig_01_reinforce")
 
 
@@ -131,9 +131,9 @@ def fig2_amplify():
     fig, ax = plt.subplots(figsize=(7.5, 5.2))
     fig.subplots_adjust(left=0.36, right=0.97, top=0.82, bottom=0.13)
     header(fig, "Leader's share of AI naming divided by its market share, by panel and specification",
-           "Labels: ratio (answers naming the leader of answers naming any current unit). "
-           "No specification is filled: none reached 1.25.")
-    dotplot(ax, rows, (0.0, 1.5), [(1.0, "parity 1.0"), (v("thresholds.amplify_ratio"), "registered 1.25")],
+           "Labels: ratio (k answers naming the leader of n current-unit namings). "
+           "No specification is filled: none reached the registered threshold.")
+    dotplot(ax, rows, (0.0, 1.5), [(1.0, "parity 1.0"), (v("thresholds.amplify_ratio"), "registered " + d("thresholds.amplify_ratio"))],
             "Ratio (k/n) / p₀")
     save(fig, "fig_02_amplify")
 
@@ -182,9 +182,9 @@ def fig4_decay():
     fig, ax = plt.subplots(figsize=(7.5, 3.9))
     fig.subplots_adjust(left=0.36, right=0.97, top=0.78, bottom=0.16)
     header(fig, "Spearman correlation of exit-to-cutoff gap with ghost Presence, by panel and specification",
-           "Filled: ρ ≤ −0.30 and p < 0.05 (registered CONFIRMED band). Evaluable only with 10 or more "
+           "Filled: $\\rho \\leq$ " + d("thresholds.decay_rho") + " and p < 0.05 (registered CONFIRMED band). Evaluable only with " + d("thresholds.decay_min_present") + " or more "
            "pairs named.")
-    dotplot(ax, rows, (-0.6, 0.1), [(v("thresholds.decay_rho"), "registered −0.30"), (0.0, "0")],
+    dotplot(ax, rows, (-0.6, 0.1), [(v("thresholds.decay_rho"), "registered " + d("thresholds.decay_rho")), (0.0, "0")],
             "Spearman ρ (gap in months, ghost Presence)")
     save(fig, "fig_04_decay")
 
