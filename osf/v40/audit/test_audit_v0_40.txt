@@ -1,0 +1,71 @@
+v0.40 test record, 2026-11-21T15:12:42Z, branch v0.40-dev1, Python 3.14.4
+
+== test_audit_v0_40.py
+PASS locked scorer matches the lock manifest (score_v0_40.py)
+PASS locked stop-rule module matches the lock manifest
+PASS coding-only writes no verdict file
+PASS coding-only v40_mentions.csv is byte-identical to the full run's (synthetic fixture)
+PASS full run did write verdicts (control)
+PASS manifest records the mentions file's SHA-256
+PASS coded-answers frame has one row per kept answer
+PASS coding-only refuses when a verdict file exists
+PASS coding-only stops if the scorer differs from the lock manifest
+PASS allocation: proportional, largest remainder, sums to 100
+PASS allocation: all units when the frame is not larger than the sample
+PASS draw is deterministic (seed 4040) and re-running writes the same sample
+PASS draw: 100 recommendation + 100 status answers
+PASS draw: every recommendation answer has a ghost or control mention
+PASS draw: every status answer is an S answer
+PASS draw: strata are arm|condition and arm|condition|role
+PASS a different seed gives a different sample (the seed is used)
+PASS sample manifest lists the sample files and the inputs by SHA-256
+PASS draw refuses to overwrite a different existing sample
+PASS draw refuses when a verdict file exists
+PASS reply rule: one complete JSON object counts, surrounding text ignored
+PASS reply rule: two objects with the required keys is invalid
+PASS reply rule: a missing required key is invalid
+PASS reply rule: a truncated object is invalid
+PASS reply rule: an ID outside the list is dropped and counted
+PASS Cohen's kappa and percent agreement (0.80 agreement, 0.50 chance -> 0.60)
+PASS kappa undefined when there is no variation
+PASS consensus: A and B agree -> their code
+PASS consensus: A and B disagree -> the tie-breaker decides
+PASS consensus: one coder missing and the others split -> unresolved
+PASS disagree(): any code difference sends the answer to the tie-breaker
+PASS items: 200 sampled answers with the locked coder's codes
+PASS blind: the request does not depend on the rule-based codes
+PASS blind: the user message is the answer text only
+PASS same system prompt and user message for A, B and T
+PASS no sampling parameter is sent to any coder
+PASS the system prompt carries no rule-based code or probe role
+PASS dry run builds every request without importing a provider SDK
+PASS dry run works before the sample exists (length proxy)
+PASS fake run completes under the cap
+PASS tie-breaker called exactly for the answers where A and B disagree
+PASS spend recomputed from recorded usage (batch at 50%, Google thinking billed as output)
+PASS consensus of a rule-faithful A and tie-breaker agrees fully with the rule (gone-flag kappa 1 or n/a)
+PASS threshold met -> no test marked
+PASS B's flips show up in B vs rule
+PASS per-field output: n, percent agreement and kappa for every field
+PASS the report says there is no human check
+PASS agreement files written
+PASS resume: a second run re-reads the records, recomputes spend and sends nothing new
+PASS guard: stops before the cap, never past it
+PASS guard: the summary records the stop and the run is incomplete
+PASS threshold miss (kappa < 0.80) marks H_Flag, H_Afterlife and H_Search and keeps the coder
+PASS on a miss the analyst-coded rates of the sample are given beside the rule-coded ones
+PASS undefined kappa is read as not met
+
+54 of 54 checks pass
+
+== test_score_v0_40.py (locked suite, re-run)
+PASS 44, FAIL 0
+ALL PASS
+
+== test_prelock_v0_40.py (locked suite, re-run)
+PASS 54, FAIL 0
+ALL PASS
+
+== test_acquire_v0_40.py (locked suite, re-run)
+PASS 29, FAIL 0
+ALL PASS
