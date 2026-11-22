@@ -828,5 +828,61 @@ class TestV42CoderOnV46Raw(unittest.TestCase):
         self.assertEqual(CP.dry_run(log=lambda *_a: None), [])
 
 
+# =========================================================================== r3 task 4: spirits judge
+import os  # noqa: E402
+import judge_spirits_v0_46 as JS  # noqa: E402  (pure helpers only; the judge part runs in its own process)
+
+
+class TestSpiritsJudge(unittest.TestCase):
+    SCRIPT = str(Path(JS.__file__))
+
+    def _j1(self, obj):
+        p = Path(tempfile.mkdtemp()) / "j1.json"
+        p.write_text(json.dumps(obj), encoding="utf-8")
+        return p
+
+    def test_select_judge_follows_j1(self):
+        self.assertIsNone(JS.select_judge(Path(tempfile.mkdtemp()) / "missing.json")[0])
+        self.assertIsNone(JS.select_judge(self._j1({"runs": [{"judge": "claude-sonnet-5-5"}]}))[0])  # no winner
+        self.assertIsNone(JS.select_judge(self._j1({"judge": "claude-opus-9", "verdict": {"pass": True}}))[0])
+        self.assertIsNone(JS.select_judge(self._j1({"judge": "claude-sonnet-4-6", "verdict": {"pass": False}}))[0])
+        self.assertEqual(JS.select_judge(self._j1({"judge": "claude-sonnet-4-6", "verdict": {"pass": True}}))[0],
+                         "claude-sonnet-4-6")
+
+    def test_copies_match_v45_and_v42(self):
+        v45 = (JS.V45_SCRIPTS / "code_t5_v0_45.py").read_text(encoding="utf-8")
+        self.assertIn('CANDIDATES = ["claude-sonnet-5-5", "claude-sonnet-4-6"]', v45)
+        v42 = CP.V42_CODER.read_text(encoding="utf-8")
+        self.assertIn('A_FIELDS = ["call_id", "substrate", "brand", "brand_id", "model", "condition", "run", '
+                      '"probe_id", "label", "recognized"]', v42)
+
+    def test_selects_the_72_open_spirits_answers(self):
+        raw, _panel = CP.fixture_raw()
+        sel = JS.v23_phase_a_lines(raw)
+        self.assertEqual(len(sel), JS.EXPECTED_ANSWERS)
+        self.assertEqual({(r["substrate"], r["phase"], r["block"]) for r in sel}, {("v23", "A", "P2")})
+
+    def test_fake_judge_is_local(self):
+        f = JS.FakeJudge()
+        r = f.messages.create(model="m", max_tokens=10, system="s",
+                              messages=[{"role": "user", "content": "Response: I'm not familiar with it"}])
+        self.assertEqual(r.content[0].text, "R0")
+        self.assertEqual(len(f.requests), 1)
+
+    def test_dry_run_subprocess_pass_and_keyless(self):
+        env = dict(os.environ, ANTHROPIC_API_KEY="sk-test-not-a-key")
+        r = subprocess.run([sys.executable, self.SCRIPT, "--dry-run"], capture_output=True, text=True, timeout=120,
+                           env=env)
+        self.assertEqual(r.returncode, 0, r.stderr[-800:])
+        self.assertIn("spirits judge dry run PASS", r.stdout)
+        self.assertIn("72 coded", r.stdout)
+
+    def test_run_refused_before_lock(self):
+        r = subprocess.run([sys.executable, self.SCRIPT, "--run", "--raw", "x", "--coded-dir", "y"],
+                           capture_output=True, text=True, timeout=60)
+        self.assertEqual(r.returncode, 3)
+        self.assertIn("REFUSED", r.stderr)
+
+
 if __name__ == "__main__":
     unittest.main()
