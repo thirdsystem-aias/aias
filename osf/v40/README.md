@@ -20,7 +20,7 @@ OSF deposit for AIAS™ Presence Measurement Protocol, v0.40.
 
 ## Files for the OSF results deposit (SHA-256)
 
-Deposit target: OSF project `ec6wh`, path `v40/`. Deposit status at the time of this commit: not yet uploaded (OSF authentication was unavailable); the hashes below are of the local files to be deposited and must be re-verified after upload.
+Deposit target: OSF project `ec6wh`, path `v40/`. Deposit status: all nine files deposited and verified by SHA-256 on 2026-11-22 (01:27 UTC; Sat 2026-11-21, 7:27 pm CT): a re-listing of OSF `v40/` matched every hash below, 0 mismatches, 0 missing.
 
 | File | SHA-256 |
 |---|---|
