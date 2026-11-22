@@ -1,0 +1,457 @@
+{
+ "_note": "Every number printed in TS-BR-v0.43-r1 and its chart: name -> source file, JSON path (or the locked scorer's source line), raw value, format. Source: osf/v43/v43_stage1_verdicts.json; decision lines: osf/v43/scripts/score_v0_43.py; disclosure wording: papers/v0_43/v0_43_paper_draft.md. Files checked out unchanged from 05a5561 (branch v0.43-paper; verdict file as written by the single Stage 1 run at 3ed9e1d).",
+ "sources_sha256": {
+  "osf/v43/v43_stage1_verdicts.json": "437d0ea327f3c0b0177dc9e9b3ce9fbb9d9b670171c7c74493c84bfc614e43dc",
+  "osf/v43/scripts/score_v0_43.py": "47062e1e0d331396ac061d45edc9c762dcb4f0b49aae19b3a0d1a76762820e46",
+  "papers/v0_43/v0_43_paper_draft.md": "1b7dad97422cbd9712002bdff486ead370d233d527ace27235161165b62392d7"
+ },
+ "values": {
+  "RHO_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "rho"
+   ],
+   "raw": -0.1859935412130373,
+   "fmt": "m3",
+   "formatted": "−0.186"
+  },
+  "N_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "n"
+   ],
+   "raw": 105,
+   "fmt": "i0",
+   "formatted": "105"
+  },
+  "LO_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci90",
+    0
+   ],
+   "raw": -0.3255343568916475,
+   "fmt": "m3",
+   "formatted": "−0.326"
+  },
+  "HI_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "ci90",
+    1
+   ],
+   "raw": -0.022995355634486545,
+   "fmt": "m3",
+   "formatted": "−0.023"
+  },
+  "P2_P": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence",
+    "p_two"
+   ],
+   "raw": 0.0704929507049295,
+   "fmt": "f4",
+   "formatted": "0.0705"
+  },
+  "RHO_SA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "rho"
+   ],
+   "raw": -0.14691153767974902,
+   "fmt": "m3",
+   "formatted": "−0.147"
+  },
+  "N_SA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "n"
+   ],
+   "raw": 101,
+   "fmt": "i0",
+   "formatted": "101"
+  },
+  "HI_SA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_SA",
+    "ci90",
+    1
+   ],
+   "raw": 0.01549257342438718,
+   "fmt": "m3",
+   "formatted": "0.015"
+  },
+  "RHO_M": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "rho"
+   ],
+   "raw": -0.21859000139715726,
+   "fmt": "m3",
+   "formatted": "−0.219"
+  },
+  "P2_M": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Presence_Momentum",
+    "p_two"
+   ],
+   "raw": 0.030996900309969003,
+   "fmt": "f4",
+   "formatted": "0.0310"
+  },
+  "RHO_C": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "rho"
+   ],
+   "raw": 0.063783011053971,
+   "fmt": "m3",
+   "formatted": "0.064"
+  },
+  "N_C": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "n"
+   ],
+   "raw": 52,
+   "fmt": "i0",
+   "formatted": "52"
+  },
+  "LO_C": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci90",
+    0
+   ],
+   "raw": -0.265604640195918,
+   "fmt": "m3",
+   "formatted": "−0.266"
+  },
+  "HI_C": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Pred_Consistency",
+    "ci90",
+    1
+   ],
+   "raw": 0.3803807008389252,
+   "fmt": "m3",
+   "formatted": "0.380"
+  },
+  "RHO_P_ABS": {
+   "kind": "derived",
+   "fn": "d_abs",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Pred_Presence",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.1859935412130373,
+   "fmt": "r3",
+   "formatted": "0.186"
+  },
+  "CONC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Concurrent",
+    "rho"
+   ],
+   "raw": 0.41641828161447103,
+   "fmt": "r3",
+   "formatted": "0.416"
+  },
+  "REL": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_PullReliability",
+    "mean_pairwise_pooled_spearman"
+   ],
+   "raw": 0.9489306147525247,
+   "fmt": "r3",
+   "formatted": "0.949"
+  },
+  "TOPIC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "manipulation_checks",
+    "MC_Terms",
+    "share_topic"
+   ],
+   "raw": 0.5535714285714286,
+   "fmt": "pct0",
+   "formatted": "55%"
+  },
+  "UNITS": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.19",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.20",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.21",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.22",
+      "units"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "outcome_defined_per_substrate",
+      "v0.23",
+      "units"
+     ]
+    ]
+   ],
+   "raw": 112.0,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "D_DEFUNCT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "presence_without_defunct_automotive",
+    "H_Pred_Presence",
+    "rho"
+   ],
+   "raw": -0.18767905874549254,
+   "fmt": "m3",
+   "formatted": "−0.188"
+  },
+  "D_RECALL": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "recall_alone",
+    "rho"
+   ],
+   "raw": -0.17492252230918184,
+   "fmt": "m3",
+   "formatted": "−0.175"
+  },
+  "D_LEAD": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "longer_lead_P_t1",
+    "rho"
+   ],
+   "raw": -0.17173532567690963,
+   "fmt": "m3",
+   "formatted": "−0.172"
+  },
+  "D_TOPIC": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "topic_only_primary",
+    "rho"
+   ],
+   "raw": -0.16478815344463435,
+   "fmt": "m3",
+   "formatted": "−0.165"
+  },
+  "CONF": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "if rho >= (0\\.15) and p_one < 0\\.05:",
+   "raw": 0.15,
+   "fmt": "r2",
+   "formatted": "0.15"
+  },
+  "ALPHA": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "if rho >= 0\\.15 and p_one < (0\\.05):",
+   "raw": 0.05,
+   "fmt": "r2",
+   "formatted": "0.05"
+  },
+  "FALS": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "elif ci90_hi is not None and ci90_hi < (0\\.10):",
+   "raw": 0.1,
+   "fmt": "r2",
+   "formatted": "0.10"
+  },
+  "CONC_LINE": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "conc\\[\"rho\"\\] >= (0\\.30) and conc\\.get\\(\"p_one\", 1\\) < 0\\.05\\)",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "REL_LINE": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "rel_ok = bool\\(rel is not None and rel >= (0\\.70)\\)",
+   "raw": 0.7,
+   "fmt": "r2",
+   "formatted": "0.70"
+  },
+  "MIN_N": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "MIN_N, MIN_N_CONS = 60, 30",
+   "raw": 60,
+   "fmt": "i0",
+   "formatted": "60"
+  },
+  "MIN_N_C": {
+   "kind": "rule",
+   "source": "osf/v43/scripts/score_v0_43.py",
+   "source_line": "MIN_N, MIN_N_CONS = 60, 30",
+   "raw": 30,
+   "fmt": "i0",
+   "formatted": "30"
+  },
+  "CHEIL": {
+   "kind": "text",
+   "basis": "papers/v0_43/v0_43_paper_draft.md Declarations, Cheil sentence, employer's name replaced by 'a marketing company of the employer's group'",
+   "formatted": "Cheil Worldwide, a marketing company of the employer's group, or its Iris unit has worked for five brands of these registries: Chevrolet (GM Korea advertising, 2017), BMW (BMW Group UK consumer PR, 2018), Bentley (Americas experiential, 2021), Jack Daniel's (UK digital, 2022) and Eucerin (Beiersdorf search marketing, 2024)."
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v0_43/v0_43_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v0.43-r1",
+ "pdf": "reports/briefs/v0_43/TS-BR-v0.43-r1_brands-ai-answers-named-more-in-june-did-not-gain-more.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "ALPHA",
+  "CHEIL",
+  "CONC",
+  "CONC_LINE",
+  "CONF",
+  "D_DEFUNCT",
+  "D_LEAD",
+  "D_RECALL",
+  "D_TOPIC",
+  "FALS",
+  "HI_C",
+  "HI_P",
+  "HI_SA",
+  "LO_C",
+  "LO_P",
+  "MIN_N",
+  "MIN_N_C",
+  "N_C",
+  "N_P",
+  "N_SA",
+  "P2_M",
+  "P2_P",
+  "REL",
+  "REL_LINE",
+  "RHO_C",
+  "RHO_M",
+  "RHO_P",
+  "RHO_P_ABS",
+  "RHO_SA",
+  "TOPIC",
+  "UNITS"
+ ],
+ "digit_audit": {
+  "checked": 74,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 18,
+   "provenance value": 51,
+   "chart axis tick": 5
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 5,
+   "osf": 1,
+   "files": 4,
+   "pct": 8,
+   "models": 0,
+   "years": 17,
+   "dates": 2
+  }
+ }
+}
