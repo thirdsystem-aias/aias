@@ -248,9 +248,7 @@ AI appears in three roles, kept apart. (1) **The object measured:** the three ch
 
 ### 3.12 Scope: search and tools are not part of this protocol
 
-The models answer with search and every tool off. On 2026-11-14 the author decided that #76 has no search-on arm (decision D4).
-
-> **[DRAFT NOTE — NOT INCLUDED; PENDING PABLO'S DECISION.]** A draft "tools arm" (provider web search on, the plain OPEN prompt byte for byte; project doc claude/named-to-chosen-tools-arm-v1.md, v1 of 2026-11-21, not approved) was written after upgrade 7 of claude/runner-process-upgrades-nov19.md. It is **not** in this manuscript. D4 stands unless Pablo changes it. The draft's own recommendation is a separate pre-registration with its own US$100 cap, drafted after this Stage 1 goes in (its option B); inside #76 it would raise the high estimate to about US$155 (cost r1, option C) before the re-measure, which does not fit. If Pablo chooses to include it, Sections 2, 3, 4 and 6 change and the cost must be recomputed. Appendix B, item 1.
+The models answer with search and every tool off. On 2026-11-14 the author decided that #76 has no search-on arm (decision D4), and on 2026-11-21 kept that decision when a draft tools arm (provider web search on) was proposed. A tools arm is not part of this study; it is left to a separate future study.
 
 ---
 
@@ -564,11 +562,11 @@ This protocol was first drafted as a direct pre-registration (v0.46 r0, 2026-11-
 
 ## Appendix B. [DRAFT NOTE — FOR PABLO; REMOVED BEFORE SUBMISSION] Decisions on r1's open questions
 
-r1 (2026-11-21) listed fourteen open questions, each with one recommended answer. Item 1 was settled before r2; r2 keeps r1's text on it unchanged. Pablo answered items 2–14 on Sunday 2026-11-22 at 8:17 am with "ok to all", which takes every recommended answer. r2 applies them as follows.
+r1 (2026-11-21) listed fourteen open questions, each with one recommended answer. Item 1 was settled before r2, on 2026-11-21. Pablo answered items 2–14 on Sunday 2026-11-22 at 8:17 am with "ok to all", which takes every recommended answer. r2 applies them as follows.
 
 | # | Question | Decision (who, when) | Where in r2 |
 |---|---|---|---|
-| 1 | Tools arm (search on) | Settled before r2 (not part of the 2026-11-22 answers); r1's text kept | Section 3.12 |
+| 1 | Tools arm (search on) | Kept out of #76; D4 (no search-on arm) stands; the tools arm is a separate future study (Pablo, 2026-11-21, about 11:35 am, "Ok to all" on the recommended answers of the tools-arm draft, project doc claude/named-to-chosen-tools-arm-v1.md) | Section 3.12 |
 | 2 | Design A (two Latin squares) or E (one) | A, two Latin squares (Pablo, 2026-11-22, 8:17 am) | Sections 3.6, 4.4 |
 | 3 | Fisker (D7) | A dated, sourced AI check before the 2027-01-08 revision, logged as a record with method `ai_check_dated_source`; a missing record counts as pending and blocks acquisition; if Fisker moves to Cell D, the expected call count (1,266) is redone for the 756-choice design (1,260 calls) before the lock (Pablo, 2026-11-22, 8:17 am). Check not yet made | Sections 3.1, 3.2 |
 | 4 | Search-on Presence sensitivity (S-Search) | Dropped (Pablo, 2026-11-22, 8:17 am) | Section 5.8; Appendix A, item 5 |
@@ -587,4 +585,4 @@ r1 (2026-11-21) listed fourteen open questions, each with one recommended answer
 
 **Numbers.** No number of r1 changed: the design is r1's design A, Fisker is still live, and the cost (central US$44.14, high US$86.38) and power figures are those the unchanged scripts give (acquisition dry run and `power_analysis_v0_46_stage1_r1.txt`). The Fisker-in-Cell-D counts (756 choice calls, 1,260 in all) are from the probe builder's check mode.
 
-**Still open before the lock (each needs a model call, so none was made in r2).** The D7 check (item 3) and the P1 quotation check (item 14). The tools arm's draft note in Section 3.12 still reads as r1 wrote it.
+**Still open before the lock (each needs a model call, so none was made in r2).** The D7 check (item 3) and the P1 quotation check (item 14).
