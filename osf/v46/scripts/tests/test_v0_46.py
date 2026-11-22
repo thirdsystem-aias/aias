@@ -152,6 +152,21 @@ class TestCoder(unittest.TestCase):
         self.assertEqual(fails, [])
         self.assertEqual(len(coded), 762)
 
+    def test_google_enum_finish_reasons(self):
+        # r3 task 1: str(google FinishReason) is "FinishReason.MAX_TOKENS"; it must count as a length stop
+        base = {"condition": "OPEN", "category": "cars"}
+        for fr in ("MAX_TOKENS", "FinishReason.MAX_TOKENS"):
+            with self.subTest(fr=fr):
+                cut = C.code_answer(dict(base, text="Let me think about Toyota", finish_reason=fr))
+                self.assertEqual((cut["code"], cut["reason"], cut["at_limit"]), ("MISSING", "cut_at_limit", True))
+                kept = C.code_answer(dict(base, text="x\nCHOICE: Ford", finish_reason=fr))
+                self.assertEqual((kept["code"], kept["unit"], kept["at_limit"]), ("VALID", "Ford", True))
+        self.assertFalse(C.at_length_limit({"finish_reason": "FinishReason.STOP", "output_tokens": 99999}))
+        self.assertTrue(C.is_refusal({"finish_reason": "FinishReason.SAFETY"}))
+        self.assertEqual(C.norm_finish_reason("FinishReason.MAX_TOKENS"), "MAX_TOKENS")
+        import acquire_v0_46 as A
+        self.assertLessEqual(set(A.LENGTH_STOPS), C.LENGTH_STOPS)    # coder and acquisition agree
+
 
 class TestScorerParts(unittest.TestCase):
     def test_percentiles_and_ties(self):

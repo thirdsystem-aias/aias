@@ -39,8 +39,18 @@ CODES = ("VALID", "OTHER", "OFF_LIST", "DEFUNCT", "AMBIGUOUS", "NONE", "MISSING"
 # section 3.10 provider length stops; section 5.3 refusals. DECISION NEEDED (raw schema): the acquisition fork
 # is not written yet; these field names (finish_reason, refusal, prompt_blocked, output_tokens, thinking_tokens,
 # served_model, model) follow t4's raw schema where it has them and are assumptions otherwise.
-LENGTH_STOPS = {"max_tokens", "length", "incomplete:max_output_tokens", "MAX_TOKENS"}
+LENGTH_STOPS = {"max_tokens", "length", "incomplete:max_output_tokens", "MAX_TOKENS", "FinishReason.MAX_TOKENS"}
 REFUSAL_STOPS = {"refusal", "SAFETY", "PROHIBITED_CONTENT", "BLOCKLIST", "content_filter"}
+# r3: acquire_v0_46 writes Google's finish reason as str(cand.finish_reason), which the google-genai enum renders
+# "FinishReason.MAX_TOKENS" (or "FinishReason.SAFETY"). The enum prefix is removed before the set lookups, so both
+# spellings match; "FinishReason.MAX_TOKENS" is also listed literally (same set as acquire_v0_46.LENGTH_STOPS).
+FR_ENUM_PREFIX = "FinishReason."
+
+
+def norm_finish_reason(fr):
+    fr = "" if fr is None else str(fr).strip()
+    return fr[len(FR_ENUM_PREFIX):] if fr.startswith(FR_ENUM_PREFIX) else fr
+
 
 # URL removal: the same regular expressions as v0.42's coder (code_t4_v0_42.strip_urls), copied because that
 # module re-executes the interpreter on import when the worktree is not ~/aias.
@@ -107,13 +117,15 @@ def choice_line(text):
 def at_length_limit(rec):
     fr = rec.get("finish_reason")
     if fr:
-        return fr in LENGTH_STOPS
+        return fr in LENGTH_STOPS or norm_finish_reason(fr) in LENGTH_STOPS
     toks = (rec.get("output_tokens") or 0) + (rec.get("thinking_tokens") or 0)
     return toks >= OUTPUT_CAP
 
 
 def is_refusal(rec):
-    return bool(rec.get("refusal")) or rec.get("finish_reason") in REFUSAL_STOPS or bool(rec.get("prompt_blocked"))
+    fr = rec.get("finish_reason")
+    return (bool(rec.get("refusal")) or fr in REFUSAL_STOPS or (bool(fr) and norm_finish_reason(fr) in REFUSAL_STOPS)
+            or bool(rec.get("prompt_blocked")))
 
 
 def served_ok(requested, served):
