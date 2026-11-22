@@ -7,13 +7,16 @@ From the worktree root, system Python 3.14 (numpy, matplotlib, pypdf, PIL), pand
 ```
 export PYTHONDONTWRITEBYTECODE=1
 python3 papers/v1_20/make_run_values_v1_20.py   # call-record metadata -> papers/v1_20/run_values_v1_20.json (raw SHA-256 checked against the frozen record; reply text never read out)
+python3 papers/v1_20/v1_9_cross_check_v1_20.py  # P/C* vs v1.9 unit table -> papers/v1_20/v1_9_cross_check_v1_20.json (post-hoc completion, 2026-11-22; inputs checked against v1.11's input manifest)
 python3 scripts/build_charts_v120.py            # reports/figs/v120/chart_01..06 (+ _preview.png)
 python3 papers/v1_20/fill_paper_v1_20.py        # papers/v1_20/v1_20_paper_draft.md + _provenance.json
 python3 scripts/build_paper_v1_20.py            # papers/v1_20/v1_20_paper.pdf
 pdftoppm -r 80 -png papers/v1_20/v1_20_paper.pdf /tmp/v120_pf/p   # look at every page
 ```
 
-Inputs: `osf/methodology/v1_20/outputs/` (`v1_20_verdicts.json`, `stage_j_v1_20.json`, `comparison_v1_11_v1_20.json`), `osf/methodology/v1_20/scoping/cut_units_v1_20.json`, `osf/methodology/v1_11/outputs/judge_outputs_frozen_v1_11.json` and `stage_j_run_v1_11.log`, `osf/methodology/v1_11/data/plan_v1_11.json` and `judge_raw_v1_11.jsonl` (metadata only), both tags and anchor records, the three DEVIATIONS files.
+Inputs: `osf/methodology/v1_20/outputs/` (`v1_20_verdicts.json`, `stage_j_v1_20.json`, `comparison_v1_11_v1_20.json`), `osf/methodology/v1_20/scoping/cut_units_v1_20.json`, `osf/methodology/v1_11/outputs/judge_outputs_frozen_v1_11.json` and `stage_j_run_v1_11.log`, `osf/methodology/v1_11/data/plan_v1_11.json` and `judge_raw_v1_11.jsonl` (metadata only), both tags and anchor records, the three DEVIATIONS files. For the P/C\* cross-check: `osf/aias_2_0/aias_2_0_profiles.csv` and `osf/methodology/v1_9/v1_9_unit_table.csv` (SHA-256 pinned in `osf/methodology/v1_11/registries/INPUTS_MANIFEST_v1_11.json`).
+
+**P/C\* cross-check (added Sun 2026-11-22).** v1.20 §5 item 3 lists a P/C\* cross-check against the v1.9 unit table among Stage C's steps; `score_v1_20.run_stage_c` does not write it. `v1_9_cross_check_v1_20.py` completes it post hoc with v1.11's own comparison (`score_v1_11.run_stage_c`'s `_differs`, copied verbatim, tolerance 1e-9) and, beside it, the same comparison at the v1.9 table's 4 printed decimals. Result: 335 of 336 rows flagged under the 1e-9 tolerance; 0 of 336 differ at 4 decimals (max |dP| 4.8e-05, max |dC\*| 4.7e-05; 163 rows rated in both). Never a verdict input; no verdict changed. The paper (§3.3) reports it, labelled as a dated post-hoc completion.
 
 The fill refuses: synthetic files; wrong prereg tag; any SHA-256 link broken (Stage J ↔ verdicts, frozen ↔ Stage J, plan ↔ frozen, raw ↔ run values, cut list ↔ verdicts); case not B; v1.11's console halt list not equal to the recomputed one; verdict words not reproduced by `score_v1_11`'s own verdict functions; and any template sentence whose premise (sign, band, count, "no API error", "under the US$80 pause", ...) the data do not meet (`need(...)`).
 
