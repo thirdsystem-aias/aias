@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""score_v0_46.py -- AIAS(TM) v0.46 (#76) scorer (Stage 1 code r1; stage1_manuscript_r1.md sections 2, 5.1-5.8).
+"""score_v0_46.py -- AIAS(TM) v0.46 (#76) scorer (Stage 1 code r1; stage1_manuscript_r2.md sections 2, 5.1-5.8).
 
 Computes, from CODED choice records (code_v0_46.py) and a PREDICTOR table (P, R* per unit), every
 pre-registered statistic: H1 (U_P, LIST), H2 (U_P, OPEN), H3 (U_R, LIST, rated units), H4 (conditional logit,

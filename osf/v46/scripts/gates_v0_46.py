@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""gates_v0_46.py -- AIAS(TM) v0.46 (#76): code-parity gates G1 and G2 (stage1_manuscript_r1.md sections 3.4, 5.6).
+"""gates_v0_46.py -- AIAS(TM) v0.46 (#76): code-parity gates G1 and G2 (stage1_manuscript_r2.md sections 3.4, 5.6).
 
 G1: the v0.46 P function (predictors_v0_46.compute), run on t4's files at tag v0.42-scoring-locked, reproduces
     v1.14 Stage 1's stored P_S0 for every unit (stage1_v1_14.json at commit 3129674).

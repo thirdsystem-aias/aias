@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """predictors_v0_46.py -- AIAS(TM) v0.46 (#76): Presence P and Ranking R* per unit from the raw predictor answers.
 
-Implements stage1_manuscript_r1.md section 3.4 ("Presence P", "Ranking R*") and section 5.1 ("Predictors").
+Implements stage1_manuscript_r2.md section 3.4 ("Presence P", "Ranking R*") and section 5.1 ("Predictors").
 
 REFERENCE IMPLEMENTATION (imported, not re-written): v1.14 Stage 1 as run on t4 at commit
 3129674a6c2cca64e56cd0f6696e9ab21b385a9a (main repo; "v1.14 Stage 1 (once, on t4 at v0.42-scoring-locked)").

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""code_v0_46.py -- AIAS(TM) v0.46 (#76) choice coder (Stage 1 code r1; stage1_manuscript_r1.md section 5.3).
+"""code_v0_46.py -- AIAS(TM) v0.46 (#76) choice coder (Stage 1 code r1; stage1_manuscript_r2.md section 5.3).
 
 Codes each CHOICE answer (blocks C1-C3) to the category's registry, deterministically:
   VALID      exactly one registry unit on the choice line, a live unit (LIST: on the list)
@@ -65,8 +65,8 @@ NAMES_SOMETHING_RE = re.compile(r"\w", re.U)
 # registry unit, is OFF_LIST (reason "refusal_text"): the model was shown the list and did not pick from it.
 # Provider refusals (refusal flag, refusal/SAFETY stop, blocked prompt) stay NONE (section 5.3 / descriptive 6).
 # DECISION: "explicit refusal" = this fixed pattern (first person + can't / won't / unable / decline + choose, pick,
-# select, recommend or decide), set before data. Stage 1 manuscript r1 (sections 5.1, 5.3) still says a refusal is
-# NONE; manuscript r2 carries the text fix.
+# select, recommend or decide), set before data. Stage 1 manuscript r2 (sections 5.1, 5.3) states this rule; r1 said a
+# refusal is NONE.
 REFUSAL_TEXT_RE = re.compile(
     r"\bi(?:['’]m|\s+am|['’]d|\s+would)?\s+"
     r"(?:can(?:no|['’])t|can\s+not|won['’]t|will\s+not|not\s+able\s+to|"

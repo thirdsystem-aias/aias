@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """build_probes_v0_46.py -- AIAS(TM) v0.46 (#76) "From named to chosen": the probe file (Stage 1 code r1).
 
-Implements stage1_manuscript_r1.md sections 3.1-3.6 and check MC_Design / MC_Probes (section 5.6).
+Implements stage1_manuscript_r2.md sections 3.1-3.6 and check MC_Design / MC_Probes (section 5.6).
 Deterministic: fixed seed (460010), fixed iteration order, sorted choice rows, SHA-256 written beside the file.
 NEVER calls a model API; reads only files in this repository.
 

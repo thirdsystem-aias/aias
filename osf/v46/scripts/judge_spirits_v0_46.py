@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """judge_spirits_v0_46.py -- AIAS(TM) v0.46 (#76): the v0.23 recognition judge on the open spirits answers.
 
-Stage 1 code r3, task 4. stage1_manuscript_r1.md section 3.4 ("Coding", "Judge model") and section 5.4 (MC_Judge):
+Stage 1 code r3, task 4. stage1_manuscript_r2.md section 3.4 ("Coding", "Judge model") and section 5.6 (MC_Judge):
 the 72 open v0.23 Phase A answers (24 per model, block P2) are coded by the v0.23 recognition judge -- v0.23's
 system prompt, user template, 3,000-character truncation, R0-R3 rubric and label parser, unchanged; recognised =
 R1-R3 -- with the successor judge that passed v0.45's J1. Nothing is re-written here:
