@@ -5,13 +5,14 @@ Computes, from CODED choice records (code_v0_46.py) and a PREDICTOR table (P, R*
 pre-registered statistic: H1 (U_P, LIST), H2 (U_P, OPEN), H3 (U_R, LIST, rated units), H4 (conditional logit,
 OR_R, Freedman-Lane p), H5 (d-bar, randomisation p, labels), the outcome-neutral checks (MC_*), the
 sensitivities (S-COI, S-Recall, S-LOCO, S-Model, S-Pos-a, S-Pos-b, S-Panel) and descriptives 1-4 and 7 (5 when
-per-model recall is supplied). Verdict rules exactly as section 2; seeds as section 5.1.
+per-model recall is supplied; 6, refusals and cannot-buy hedges, and 8, answer form and cost, when the raw answer
+lines are supplied, r2). Verdict rules exactly as section 2; seeds as section 5.1.
 
 The scorer joins predictors to choices only here, after coding (blinding, section 5.3). NO MODEL IS CALLED.
 
-NOT IN r1 (open items, listed in the Stage 1 code report): computing P and R* from the raw predictor answers
-(v1.14's comparators / extract_wave / unit_scores at 3129674) and the code-parity gates G1, G2. This script
-takes the predictor table as input; `presence_P` and `modal_position` below are the formulas, for tests.
+The predictor table is computed from the raw predictor answers by predictors_v0_46.py (v1.14's code at 3129674,
+r2), certified by the code-parity gates G1, G2 (gates_v0_46.py). This script takes the table as input;
+`presence_P` and `modal_position` below are the formulas, for tests.
 
 Usage:
   python3 osf/v46/scripts/score_v0_46.py --synthetic [--squares 2] [--draws-scale 0.1]   # synthetic world
@@ -21,6 +22,7 @@ import argparse
 import csv
 import json
 import math
+import re
 import sys
 from collections import Counter, defaultdict
 from pathlib import Path
@@ -584,7 +586,105 @@ def descriptives(coded, cfg):
     return d
 
 
-def score(coded, pred, models=None, draws=1.0, with_sens=True, **cfg_kw):
+# =========================================================================== descriptives 6 and 8 (need raw answers)
+# Section 5.7, 6: "share of answers that decline to choose, or choose while saying the model cannot buy".
+# DECISION (operationalisation, deterministic, no model): DECLINE = an answered choice call coded NONE (a refusal or
+# no codable choice); HEDGE = an answered call with a choice (VALID, OTHER, OFF_LIST, DEFUNCT, AMBIGUOUS) whose text
+# matches CANNOT_BUY_RE (the model says it cannot itself buy / purchase / order). Patterns fixed here, before data.
+CANNOT_BUY_RE = re.compile(
+    r"\bi(?:['’]m|\s+am)?\s+"
+    r"(?:can(?:no|['’])t|can\s+not|could(?:n['’]t|\s+not)|(?:am\s+)?not\s+able\s+to|(?:am\s+)?unable\s+to|"
+    r"(?:don['’]t|do\s+not)\s+have\s+(?:the\s+)?(?:ability|means|way)\s+to|have\s+no\s+way\s+to)\s+"
+    r"(?:actually\s+|personally\s+|directly\s+|physically\s+)?"
+    r"(?:buy|purchase|order|make\s+(?:a\s+|the\s+|any\s+)?purchases?|complete\s+(?:a\s+|the\s+)?purchase|check\s*out)\b"
+    r"|\bas\s+an\s+ai\b[^.\n]{0,80}\b(?:buy|purchase|order|shop)",
+    re.I)
+CHOSEN_CODES = {"VALID", "OTHER", "OFF_LIST", "DEFUNCT", "AMBIGUOUS"}
+WORD_RE = re.compile(r"\S+")
+
+
+def _answered(r):
+    return r.get("status", "ok") == "ok" and bool((r.get("text") or "").strip()) and not r.get("error")
+
+
+def final_answers(raw):
+    """One raw line per call_id: the last answered attempt, else the last attempt (= v0.42 dedupe_calls)."""
+    best = {}
+    for r in raw:
+        cid = r.get("call_id")
+        if cid is None:
+            continue
+        if cid not in best or _answered(r) or not _answered(best[cid]):
+            best[cid] = r
+    return best
+
+
+def _summ(v):
+    v = [x for x in v if x is not None]
+    if not v:
+        return {"n": 0, "mean": None, "median": None, "sum": 0}
+    a = np.asarray(v, float)
+    return {"n": int(a.size), "mean": float(a.mean()), "median": float(np.median(a)), "sum": float(a.sum())}
+
+
+def descriptive_6(coded, raw):
+    """Per model x condition: answered calls, declines (NONE; refusals among them) and cannot-buy hedges."""
+    fin = final_answers(raw)
+    acc = defaultdict(lambda: {"answered": 0, "decline": 0, "refusal": 0, "hedge": 0})
+    for c in coded:
+        if c.get("condition") not in ("OPEN", "LIST") or c.get("code") == "MISSING":
+            continue
+        r = fin.get(c.get("call_id"), {})
+        a = acc[f"{mkey(c)}/{c['condition']}"]
+        a["answered"] += 1
+        if c["code"] == "NONE":
+            a["decline"] += 1
+            a["refusal"] += int(c.get("reason") == "refusal")
+        elif c["code"] in CHOSEN_CODES and CANNOT_BUY_RE.search(r.get("text") or ""):
+            a["hedge"] += 1
+    out = {}
+    for k, a in sorted(acc.items()):
+        n = a["answered"]
+        out[k] = dict(a, decline_share=a["decline"] / n if n else None, hedge_share=a["hedge"] / n if n else None)
+    tot = {f: sum(a[f] for a in acc.values()) for f in ("answered", "decline", "refusal", "hedge")}
+    out["all"] = dict(tot, decline_share=tot["decline"] / tot["answered"] if tot["answered"] else None,
+                      hedge_share=tot["hedge"] / tot["answered"] if tot["answered"] else None)
+    return out
+
+
+def descriptive_8(raw):
+    """Answer form and cost. Per model x block (and x condition for choice blocks), over each call's final answered
+    line: words per answer (whitespace tokens of the visible text), output and thinking tokens. Spend per model x
+    block: the recorded cost_usd of EVERY raw line (every billed attempt, re-sends included), as the guard counts it.
+    DECISION: lines without cost_usd are counted in `lines_without_cost`, never imputed."""
+    fin = final_answers(raw)
+    form = defaultdict(lambda: {"words": [], "output_tokens": [], "thinking_tokens": []})
+    for r in fin.values():
+        if not _answered(r):
+            continue
+        m = r.get("model") or r.get("model_requested")
+        for k in (f"{m}/{r.get('block')}", f"{m}/{r.get('part')}/{r.get('condition')}"):
+            form[k]["words"].append(len(WORD_RE.findall(r.get("text") or "")))
+            form[k]["output_tokens"].append(r.get("output_tokens"))
+            form[k]["thinking_tokens"].append(r.get("thinking_tokens"))
+    spend = defaultdict(lambda: {"usd": 0.0, "lines": 0, "lines_without_cost": 0})
+    for r in raw:
+        m = r.get("model") or r.get("model_requested")
+        for k in (f"{m}/{r.get('block')}", f"{m}/ALL"):
+            s = spend[k]
+            s["lines"] += 1
+            if isinstance(r.get("cost_usd"), (int, float)):
+                s["usd"] += float(r["cost_usd"])
+            else:
+                s["lines_without_cost"] += 1
+    total = sum(float(r["cost_usd"]) for r in raw if isinstance(r.get("cost_usd"), (int, float)))
+    return {"form": {k: {f: _summ(v[f]) for f in v} for k, v in sorted(form.items())},
+            "spend": {k: dict(v, usd=round(v["usd"], 6)) for k, v in sorted(spend.items())},
+            "spend_total_usd": round(total, 6), "raw_lines": len(raw), "calls": len(fin)}
+
+
+def score(coded, pred, models=None, draws=1.0, with_sens=True, raw=None, **cfg_kw):
+    """raw: the raw answer lines (acquire_v0_46.py output), needed for descriptives 6 (hedges) and 8."""
     models = models or sorted({mkey(r) for r in coded})
     cfg = make_cfg(pred, models, **cfg_kw)
     drops, shares = drop_rules(coded, cfg)
@@ -596,6 +696,9 @@ def score(coded, pred, models=None, draws=1.0, with_sens=True, **cfg_kw):
     if with_sens:
         out["sensitivities"] = sensitivities(coded, cfg, drops, draws)
     out["descriptives"] = descriptives(coded, cfg)
+    if raw is not None:
+        out["descriptives"]["6_refusals_hedges"] = descriptive_6(coded, raw)
+        out["descriptives"]["8_answer_form_and_cost"] = descriptive_8(raw)
     return out
 
 
@@ -704,6 +807,7 @@ def main(argv=None):
     ap.add_argument("--end-to-end", action="store_true", help="synthetic: pass raw answers through the coder")
     ap.add_argument("--coded")
     ap.add_argument("--predictors")
+    ap.add_argument("--raw", help="raw answer lines (descriptives 6 hedges and 8 answer form / cost)")
     ap.add_argument("--out")
     a = ap.parse_args(argv)
     if a.synthetic:
@@ -726,7 +830,8 @@ def main(argv=None):
         return 0
     if not (a.coded and a.predictors and a.out):
         ap.error("--coded, --predictors and --out are required unless --synthetic")
-    res = score(read_jsonl(a.coded), read_predictors(a.predictors), draws=a.draws_scale, with_sens=not a.no_sens)
+    res = score(read_jsonl(a.coded), read_predictors(a.predictors), draws=a.draws_scale, with_sens=not a.no_sens,
+                raw=read_jsonl(a.raw) if a.raw else None)
     Path(a.out).write_text(json.dumps(res, indent=1, default=str, ensure_ascii=False), encoding="utf-8")
     print(f"[v46] wrote {a.out}")
     return 0

@@ -690,5 +690,72 @@ class TestAcquire(unittest.TestCase):
             self.assertFalse(any(c.startswith("OPEN") for c in sent))    # paused before C2
 
 
+# =========================================================================== descriptives 6 and 8 (task 4)
+class TestDescriptives68(unittest.TestCase):
+    def test_cannot_buy_patterns(self):
+        yes = ["I can't actually buy it for you, but pick CeraVe.", "I'm not able to purchase anything; still: X",
+               "I am unable to make purchases, but here is my pick", "As an AI, I can't shop for you.",
+               "I don’t have the ability to buy products.", "I cannot complete the purchase myself."]
+        no = ["I'll buy whatever you pick", "You can buy it at any pharmacy.", "I recommend CeraVe.",
+              "If I could buy one, it would be this."]
+        for t in yes:
+            self.assertTrue(S.CANNOT_BUY_RE.search(t), t)
+        for t in no:
+            self.assertFalse(S.CANNOT_BUY_RE.search(t), t)
+
+    def _raw_and_coded(self):
+        panel = A.make_panel(A.ORIENTATION_PANEL)
+        specs = A.build_specs(A.load_probes(), panel)
+        c1 = [s for s in specs if s["block"] == "C1" and s["model"]["slot"] == "M2_openai"][:4]
+        p1 = [s for s in specs if s["block"] == "P1" and s["model"]["slot"] == "M2_openai"][0]
+        parts = [{"mode": "standard", "input_tokens": 1000, "output_tokens": 100, "n_searches": 0}]
+        t0 = "2026-12-02T00:00:00+00:00"
+        b0 = c1[0]["v46"]["order"][0]
+        raw = [
+            A._record(c1[0], _fake_out(f"Solid pick.\nCHOICE: {b0}", tout=100), "ok", None, 1, False, t0, t0, parts),
+            A._record(c1[1], _fake_out("I can't actually buy it for you, but go with it.\nCHOICE: "
+                                       + c1[1]["v46"]["order"][0], tout=100), "ok", None, 1, False, t0, t0, parts),
+            A._record(c1[2], dict(_fake_out("", fr="refusal", tout=0)), "empty", None, 1, False, t0, t0, parts),
+            A._record(c1[3], _fake_out("I would rather not choose for you.", tout=100), "ok", None, 1, False, t0, t0,
+                      parts),
+            A._record(p1, _fake_out("1. CeraVe 2. La Mer three four", tout=250), "ok", None, 1, False, t0, t0, parts),
+        ]
+        raw.insert(0, A._record(c1[0], None, "error", "transient: 500", 3, False, t0, t0, []))   # failed attempt
+        coded = [C.code_answer(r) for r in raw if r["part"] == "choice"]
+        return raw, coded
+
+    def test_descriptive_6(self):
+        raw, coded = self._raw_and_coded()
+        fin = S.final_answers(raw)
+        coded = [C.code_answer(fin[cid]) for cid in dict.fromkeys(r["call_id"] for r in raw if r["part"] == "choice")]
+        d6 = S.descriptive_6(coded, raw)
+        k = "gpt-6-astra/LIST"
+        self.assertEqual(d6[k]["answered"], 4)
+        self.assertEqual(d6[k]["refusal"], 1)
+        self.assertEqual(d6[k]["decline"], 1 + int(coded[3]["code"] == "NONE"))
+        self.assertEqual(d6[k]["hedge"], 1)
+        self.assertAlmostEqual(d6[k]["hedge_share"], 0.25)
+
+    def test_descriptive_8(self):
+        raw, _coded = self._raw_and_coded()
+        d8 = S.descriptive_8(raw)
+        f = d8["form"]["gpt-6-astra/C1"]
+        self.assertEqual(f["words"]["n"], 3)                 # answered final lines only (refusal not answered)
+        self.assertEqual(f["output_tokens"]["sum"], 300)
+        self.assertEqual(d8["form"]["gpt-6-astra/P1"]["words"]["mean"], 7.0)
+        one = (1000 * 10.0 + 100 * 50.0) / 1e6               # gpt-6-astra $10 / $50 per M (budget_v0_45)
+        self.assertAlmostEqual(d8["spend"]["gpt-6-astra/C1"]["usd"], 4 * one, places=6)
+        self.assertEqual(d8["spend"]["gpt-6-astra/C1"]["lines"], 5)          # the failed attempt is a line too
+        self.assertAlmostEqual(d8["spend_total_usd"], 5 * one, places=6)
+        self.assertEqual(d8["calls"], 5)
+
+    def test_score_attaches_6_and_8(self):
+        recs, pred, _t = S.synth_world(squares=1)
+        res = S.score(recs, pred, draws=FAST, with_sens=False, raw=[])
+        self.assertIn("6_refusals_hedges", res["descriptives"])
+        self.assertIn("8_answer_form_and_cost", res["descriptives"])
+        self.assertNotIn("8_answer_form_and_cost", S.score(recs, pred, draws=FAST, with_sens=False)["descriptives"])
+
+
 if __name__ == "__main__":
     unittest.main()
