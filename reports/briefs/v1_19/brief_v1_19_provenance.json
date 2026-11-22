@@ -1,0 +1,1835 @@
+{
+ "_note": "Every number printed in TS-BR-v1.19-r1 and its chart: name -> source file, JSON path (or locked scorer constant), raw value, format. Source: osf/methodology/v1_19/outputs/v119_verdicts.json; decision lines: osf/methodology/v1_19/scripts/score_v1_19.py; disclosure wording: papers/v1_19/v1_19_ssrn_paper_draft.md. Files checked out unchanged from b9e0d20 (branch v1.19-paper; verdict file as written by the single run at 6e8f157).",
+ "sources_sha256": {
+  "osf/methodology/v1_19/outputs/v119_verdicts.json": "bf363060e4e90aed81c918544f561b43f387b5e41ef20d08d4844dc2d2176776",
+  "osf/methodology/v1_19/scripts/score_v1_19.py": "7bbf6b1cc22aa26ed2892c07cab930c4497515c06b54261c5b3365c19b2c4242",
+  "papers/v1_19/v1_19_ssrn_paper_draft.md": "85caac426861ebbccf61893c46a958e0f61f06f6e07c350a3b9ecefa262c66b3",
+  "osf/methodology/v1_12/v112_verdicts.json": "0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992"
+ },
+ "values": {
+  "SPLITS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "splits"
+   ],
+   "raw": 64,
+   "fmt": "i0",
+   "formatted": "64"
+  },
+  "REL_MED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "rel_median"
+   ],
+   "raw": 0.4591821036556353,
+   "fmt": "r3",
+   "formatted": "0.459"
+  },
+  "MED_R": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "median_r"
+   ],
+   "raw": 0.29801192259322673,
+   "fmt": "r3",
+   "formatted": "0.298"
+  },
+  "P10": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "rel_p10"
+   ],
+   "raw": 0.1721282102099729,
+   "fmt": "r3",
+   "formatted": "0.172"
+  },
+  "PCTL_A": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "paper_A_split_percentile"
+   ],
+   "raw": 93.75,
+   "fmt": "pct2",
+   "formatted": "93.75"
+  },
+  "REL_A": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_SetSampling",
+    "per_split",
+    "0",
+    "rel"
+   ],
+   "raw": 0.6456509048453006,
+   "fmt": "r3",
+   "formatted": "0.646"
+  },
+  "SPLIT_NMIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "0",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "2",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "4",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "6",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "8",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "10",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "12",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "14",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "16",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "18",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "20",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "22",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "24",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "26",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "28",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "30",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "32",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "34",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "36",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "38",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "40",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "42",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "44",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "46",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "48",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "50",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "52",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "54",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "56",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "58",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "60",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "62",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "64",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "66",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "68",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "70",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "72",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "74",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "76",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "78",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "80",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "82",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "84",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "86",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "88",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "90",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "92",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "94",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "96",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "98",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "100",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "102",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "104",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "106",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "108",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "110",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "112",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "114",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "116",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "118",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "120",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "122",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "124",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "126",
+      "n"
+     ]
+    ]
+   ],
+   "raw": 33.0,
+   "fmt": "i0",
+   "formatted": "33"
+  },
+  "SPLIT_NMAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "0",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "2",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "4",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "6",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "8",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "10",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "12",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "14",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "16",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "18",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "20",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "22",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "24",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "26",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "28",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "30",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "32",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "34",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "36",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "38",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "40",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "42",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "44",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "46",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "48",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "50",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "52",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "54",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "56",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "58",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "60",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "62",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "64",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "66",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "68",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "70",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "72",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "74",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "76",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "78",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "80",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "82",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "84",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "86",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "88",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "90",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "92",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "94",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "96",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "98",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "100",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "102",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "104",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "106",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "108",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "110",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "112",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "114",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "116",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "118",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "120",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "122",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "124",
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_SetSampling",
+      "per_split",
+      "126",
+      "n"
+     ]
+    ]
+   ],
+   "raw": 47.0,
+   "fmt": "i0",
+   "formatted": "47"
+  },
+  "CUE_P5": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H32_CueType",
+    "reference_p5"
+   ],
+   "raw": 0.8091145374449339,
+   "fmt": "r3",
+   "formatted": "0.809"
+  },
+  "CUE_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "why",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "when",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "where",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "while",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "with whom",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "with what",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "how feeling",
+      "rho_w_full_vs_minus_W"
+     ]
+    ]
+   ],
+   "raw": 0.7803203661327232,
+   "fmt": "r3",
+   "formatted": "0.780"
+  },
+  "CUE_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "why",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "when",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "where",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "while",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "with whom",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "with what",
+      "rho_w_full_vs_minus_W"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H32_CueType",
+      "per_W",
+      "how feeling",
+      "rho_w_full_vs_minus_W"
+     ]
+    ]
+   ],
+   "raw": 0.9407069555302167,
+   "fmt": "r3",
+   "formatted": "0.941"
+  },
+  "N_FLAG": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Floor",
+    "n_flagged_rated"
+   ],
+   "raw": 10,
+   "fmt": "i0",
+   "formatted": "10"
+  },
+  "N_OTHER": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Floor",
+    "n_unflagged_rated"
+   ],
+   "raw": 41,
+   "fmt": "i0",
+   "formatted": "41"
+  },
+  "DELTA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Floor",
+    "primary",
+    "cliffs_delta"
+   ],
+   "raw": -0.06172839506172839,
+   "fmt": "m3",
+   "formatted": "−0.062"
+  },
+  "DELTA_RES": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Floor",
+    "beyond_presence",
+    "cliffs_delta_resid"
+   ],
+   "raw": 0.06172839506172839,
+   "fmt": "m3",
+   "formatted": "0.062"
+  },
+  "DELTA_ABS": {
+   "kind": "derived",
+   "fn": "d_abs",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H34_Floor",
+      "primary",
+      "cliffs_delta"
+     ]
+    ]
+   ],
+   "raw": 0.06172839506172839,
+   "fmt": "r3",
+   "formatted": "0.062"
+  },
+  "DEF_ANS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Defunct_Occupancy",
+    "answers"
+   ],
+   "raw": 126,
+   "fmt": "i0",
+   "formatted": "126"
+  },
+  "DEF_NAMED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H34_Defunct_Occupancy",
+    "answers_naming_defunct"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "IL_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H35",
+    "n"
+   ],
+   "raw": 26,
+   "fmt": "i0",
+   "formatted": "26"
+  },
+  "REP_R": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H36_Profile_Replication",
+    "mean_rho_w_over_W"
+   ],
+   "raw": -0.021993692583918846,
+   "fmt": "m3",
+   "formatted": "−0.022"
+  },
+  "REP_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H36_Profile_Replication",
+    "n"
+   ],
+   "raw": 44,
+   "fmt": "i0",
+   "formatted": "44"
+  },
+  "REP_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "why"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "when"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "where"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "while"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "with whom"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "with what"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "how feeling"
+     ]
+    ]
+   ],
+   "raw": -0.2052744641165759,
+   "fmt": "m3",
+   "formatted": "−0.205"
+  },
+  "REP_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "why"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "when"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "where"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "while"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "with whom"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "with what"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H36_Profile_Replication",
+      "per_W",
+      "how feeling"
+     ]
+    ]
+   ],
+   "raw": 0.0712758555960333,
+   "fmt": "m3",
+   "formatted": "0.071"
+  },
+  "RATED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "rated_units"
+   ],
+   "raw": 51,
+   "fmt": "i0",
+   "formatted": "51"
+  },
+  "BRANDS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "parity",
+    "B-P1",
+    "units"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "CEP_PER_CAT": {
+   "kind": "json",
+   "source": "paperA",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "cells",
+    0,
+    "n_ceps"
+   ],
+   "raw": 14,
+   "fmt": "i0",
+   "formatted": "14"
+  },
+  "REL_LINE": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "REL_CONF",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "REL_LOW": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "REL_FALS",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "P10_LINE": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "P10_MIN",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "D_FALS": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "DELTA_FALS",
+   "raw": 0.15,
+   "fmt": "r2",
+   "formatted": "0.15"
+  },
+  "D_CONF": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "DELTA_CONF",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "IL_FLOOR": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "IL_NFLOOR",
+   "raw": 45,
+   "fmt": "i0",
+   "formatted": "45"
+  },
+  "REPL_LINE": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "REP_CONF",
+   "raw": 0.2,
+   "fmt": "r2",
+   "formatted": "0.20"
+  },
+  "REPL_LOW": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "REP_FALS",
+   "raw": 0.1,
+   "fmt": "r2",
+   "formatted": "0.10"
+  },
+  "PH_MIN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_19/scripts/score_v1_19.py",
+   "constant": "PH_MIN",
+   "raw": 10,
+   "fmt": "i0",
+   "formatted": "10"
+  },
+  "CHEIL": {
+   "kind": "text",
+   "basis": "papers/v1_19/v1_19_ssrn_paper_draft.md Declarations, Cheil sentence, employer's name replaced by 'the employer's group'",
+   "formatted": "Cheil Worldwide, a marketing company of the employer's group, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024)."
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v1_19/v1_19_ssrn_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v1.19-r1",
+ "pdf": "reports/briefs/v1_19/TS-BR-v1.19-r1_coverage-works-as-one-breadth-score-with-moderate.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "BRANDS",
+  "CEP_PER_CAT",
+  "CHEIL",
+  "CUE_MAX",
+  "CUE_MIN",
+  "CUE_P5",
+  "DEF_ANS",
+  "DELTA",
+  "DELTA_ABS",
+  "DELTA_RES",
+  "D_CONF",
+  "D_FALS",
+  "IL_FLOOR",
+  "IL_N",
+  "MED_R",
+  "N_FLAG",
+  "N_OTHER",
+  "P10",
+  "P10_LINE",
+  "PCTL_A",
+  "RATED",
+  "REL_A",
+  "REL_LINE",
+  "REL_MED",
+  "REPL_LINE",
+  "REPL_LOW",
+  "REP_MAX",
+  "REP_MIN",
+  "REP_N",
+  "REP_R",
+  "SPLITS",
+  "SPLIT_NMAX",
+  "SPLIT_NMIN"
+ ],
+ "digit_audit": {
+  "checked": 80,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 13,
+   "provenance value": 64,
+   "chart axis tick": 3
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 5,
+   "osf": 1,
+   "files": 4,
+   "models": 3,
+   "years": 10,
+   "dates": 2,
+   "tier": 1,
+   "formula": 1
+  }
+ }
+}
