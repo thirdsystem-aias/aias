@@ -1,0 +1,90 @@
+{
+  "AQ1": {
+    "units": 112,
+    "unresolved": 0,
+    "none": 5,
+    "passed": true
+  },
+  "AQ2": {
+    "units_with_domain": 107,
+    "p1_status_200": 77,
+    "share_status_200": 0.719626168224299,
+    "p1_outcome_ok": 77,
+    "share_outcome_ok": 0.719626168224299,
+    "flag_below_0_80": true,
+    "outcomes": {
+      "blocked": 23,
+      "ok": 77,
+      "robots_unavailable": 7
+    }
+  },
+  "AQ3": {
+    "pages_parsed": 195,
+    "ld_blocks": 233,
+    "ld_parse_errors": 0
+  },
+  "AQ4": {
+    "basis": "indicators (1)-(5) from P1 alone in both passes",
+    "units_ok_in_both": 77,
+    "changed": 0,
+    "share_changed": 0.0,
+    "units_changed": []
+  },
+  "S_KG": {
+    "statistic": "rho_w(SDRI_kg, G*), one-sided; units with SDRI_kg and a rated G* (P1 failures included)",
+    "seed": 113009,
+    "leg": {
+      "n": 42,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 10,
+        "v20": 8,
+        "v21": 11,
+        "v22": 6,
+        "v23": 7
+      },
+      "dropped_substrates": {},
+      "seed": 113009,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": -0.0352028861354703,
+      "p": 0.5844415558444156,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.3039944383120549,
+        "hi": 0.2611448679408312,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      }
+    },
+    "band_reading_H7": "FALSIFIED",
+    "gating": false,
+    "note": "sensitivity named in protocol section 5; reported beside H7, never a verdict"
+  },
+  "inputs": {
+    "records": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/audit/v1_13_audit_records.jsonl",
+      "1bd0fe854c11f0f59f27ec8f0f9356b59845d53037d7714797adb421c52c7234"
+    ],
+    "sdri": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/audit/v1_13_sdri.csv",
+      "28d4681452d4626105a2416ee370a5d8ea18f97a141fca9689296d0b0f2b0cd7"
+    ],
+    "pass2": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/audit/v1_13_audit_records_pass2.jsonl",
+      "4d69206ea8a7c866469bd1e91720d13f67627624b150201c5a7fb3b4621812c1"
+    ],
+    "verdicts": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/v1_13_verdicts.json",
+      "896f08d3c00abd0828e01bb775c6f041d10565a413ae5bcc53ef504f29f1cd57"
+    ],
+    "domains": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/registries/brand_domains_v1_13.csv",
+      "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a"
+    ],
+    "script_sha256": "dafbeff9f2bd12c24f3236d0fac08f805d5ebe950aaf672845e46439b0512e3f",
+    "test_only": false
+  },
+  "written_utc": "2026-11-22T18:55:08.746135+00:00"
+}
