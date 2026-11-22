@@ -1,0 +1,127 @@
+{
+  "stage": "C1",
+  "started_utc": "2026-11-12T03:59:11.934142+00:00",
+  "scorer": {
+    "path": "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/scripts/score_v1_13.py",
+    "exists": true,
+    "sha256": "fee2e5530030730ca964bb080840db4ca3b66b68b8c1d1ae3bb988dbd17a8641",
+    "bytes": 82456
+  },
+  "wrapper_sha256": "4fe39f6c954d911b1ab628ea5d0c3b7d28a92064ce083bcd2b65cbde1f3a5270",
+  "argv": [
+    "--stage",
+    "C1",
+    "--t4",
+    "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl",
+    "--coded",
+    "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded",
+    "--brand-table",
+    "/Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_brand_table.csv",
+    "--h4-stage1",
+    "/Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json"
+  ],
+  "inputs": {
+    "t4_raw": {
+      "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl",
+      "exists": true,
+      "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+      "bytes": 5356607
+    },
+    "brand_table": {
+      "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_brand_table.csv",
+      "exists": true,
+      "sha256": "792e14addb7ad1ef03a147ee16cee56e82cfecd58030d2e8e3cf3e3ea255af7f",
+      "bytes": 25258
+    },
+    "coded": {
+      "v19_phase_a.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v19_phase_a.csv",
+        "exists": true,
+        "sha256": "f88da1797d6df48b423469d7da3eaac4531c31a5d89cd208ed279b47b17703b5",
+        "bytes": 5531
+      },
+      "v19_phase_b.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v19_phase_b.csv",
+        "exists": true,
+        "sha256": "347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0",
+        "bytes": 203365
+      },
+      "v20_phase_a.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v20_phase_a.csv",
+        "exists": true,
+        "sha256": "9193c5fe190ba236e33b64bd9bbb4a1a2cbbf00a905cb4486173a654eb274f5d",
+        "bytes": 6811
+      },
+      "v20_phase_b.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v20_phase_b.csv",
+        "exists": true,
+        "sha256": "4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1",
+        "bytes": 193285
+      },
+      "v21_phase_a.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v21_phase_a.csv",
+        "exists": true,
+        "sha256": "d0ec707ccbe8776281e7032ffb27a784b58bed8d2c1e146ec07c1b9d5f3b723d",
+        "bytes": 7028
+      },
+      "v21_phase_b.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v21_phase_b.csv",
+        "exists": true,
+        "sha256": "2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26",
+        "bytes": 200953
+      },
+      "v22_phase_a.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v22_phase_a.csv",
+        "exists": true,
+        "sha256": "70895b1e3a149446c59eafbac96f50e4e72ff301726317b15c4729cc14efd19a",
+        "bytes": 6590
+      },
+      "v22_phase_b.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v22_phase_b.csv",
+        "exists": true,
+        "sha256": "eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68",
+        "bytes": 185185
+      },
+      "v23_phase_a.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v23_phase_a.csv",
+        "exists": true,
+        "sha256": "52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e",
+        "bytes": 5360
+      },
+      "v23_phase_b.csv": {
+        "path": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded/v23_phase_b.csv",
+        "exists": true,
+        "sha256": "1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2",
+        "bytes": 190153
+      }
+    },
+    "h4_stage1": {
+      "path": "/Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
+      "exists": true,
+      "sha256": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f",
+      "bytes": 61333
+    },
+    "h4_rank_table": {
+      "path": "/Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv",
+      "exists": true,
+      "sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+      "bytes": 654879
+    }
+  },
+  "verdict_file_before": {
+    "path": "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/v1_13_verdicts.json",
+    "exists": false,
+    "sha256": null,
+    "bytes": null
+  },
+  "finished_utc": "2026-11-12T03:59:18.324302+00:00",
+  "scorer_exit": 0,
+  "scorer_stdout": "Stage C1 gate: MARGINAL -> /Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/v1_13_verdicts.json\n",
+  "scorer_stderr": "",
+  "verdict_file_after": {
+    "path": "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/v1_13_verdicts.json",
+    "exists": true,
+    "sha256": "22d88a88cc0b9a04c94b9370c9e495759684b66c4c9ea3af958b967a3b04a56f",
+    "bytes": 69382
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "ref": "v1.13-audit-r1",
+  "tag_object": "ab2ef8e425cebb7723497aaa3af7d0f87a02a00a",
+  "commit": "5e12e0da93499e1ead36cf060ae1a08f8932e4b7",
+  "frozen_text_unchanged": {
+    "files": 22,
+    "differ_from_lock_commit": [],
+    "lock_commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65"
+  },
+  "postlock_files": {
+    "osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md": {
+      "sha256": "f22229e738b0ef67050f8ef0c69e90803973f376b5bce50dd5cb6badb13bd275",
+      "git_blob": "9094959addb35300ccd3bd9f0b14858e6dd84c35"
+    },
+    "osf/methodology/v1_13/postlock/PART2_LOCK_STEPS.md": {
+      "sha256": "67abe2bdb8468af34b1075b540eced2fa0592acdf38722aa8f44dc359ae40e2a",
+      "git_blob": "34670a341ffccc1c27098f7af0d855729ca14952"
+    },
+    "osf/methodology/v1_13/postlock/audit_checks_v1_13.py": {
+      "sha256": "dafbeff9f2bd12c24f3236d0fac08f805d5ebe950aaf672845e46439b0512e3f",
+      "git_blob": "10b690e84a058725aa2e04e5b271ab78c8c934d5"
+    },
+    "osf/methodology/v1_13/postlock/c2_extras_v1_13.py": {
+      "sha256": "ae1922bf5798d0e54ceb2d61db90c7cc43051bdc7464f40e23e8224a4bc1e6d8",
+      "git_blob": "3660f13e1c190eeb7b6ec93ba677085812bc0aa1"
+    },
+    "osf/methodology/v1_13/postlock/run_stage_v1_13.py": {
+      "sha256": "4fe39f6c954d911b1ab628ea5d0c3b7d28a92064ce083bcd2b65cbde1f3a5270",
+      "git_blob": "ae1c59dcc248240cf658723d7d814ce4c366a8fa"
+    },
+    "osf/methodology/v1_13/postlock/tests/test_postlock_v1_13.py": {
+      "sha256": "214b186d55771e0117979561be5f531063250a01ebde3cf35f6cdcce4b3ca00a",
+      "git_blob": "f58d4f4214df978de4af9ff1d945166debe4c9dd"
+    },
+    "osf/methodology/v1_13/postlock/write_part2_addendum_v1_13.py": {
+      "sha256": "a0edb30a37d01f90d120b515383d1afbdfa19a67b1185d310077e089429f7265",
+      "git_blob": "c4b45d4e6d4a603fc1d01228516a81c2dcd7fe45"
+    }
+  },
+  "recorded_utc": "2026-11-12T03:30:49Z",
+  "note": "Part II clarifications 1-4 and the Part I ex-ante entries 5-12 (postlock/DEVIATIONS_continued_v1_13.md) and the modules that compute what the frozen text specifies and no locked script computes"
+}

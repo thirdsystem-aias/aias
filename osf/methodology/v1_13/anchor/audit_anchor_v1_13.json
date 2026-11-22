@@ -1,0 +1,84 @@
+{
+  "tag": "v1.13-audit-r1",
+  "tag_object": "ab2ef8e425cebb7723497aaa3af7d0f87a02a00a",
+  "commit": "5e12e0da93499e1ead36cf060ae1a08f8932e4b7",
+  "tree": "b005395ec1c065fd2610ccca1eb20980b0f6d8fd",
+  "branch": "v1.13",
+  "commit_date": "2026-11-11T11:59:29-06:00",
+  "tagger_date": "2026-11-11T21:30:39-06:00",
+  "remote_tag_ref": "ab2ef8e425cebb7723497aaa3af7d0f87a02a00a\trefs/tags/v1.13-audit-r1",
+  "recorded_utc": "2026-11-12T03:30:48Z",
+  "repository": "https://github.com/thirdsystem-aias/aias",
+  "phase": "v1.13",
+  "part": "II [NEW WEB DATA: audit]",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_13/anchor)",
+  "brand_domains_sha256": "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a",
+  "locked_files": {
+    "osf/methodology/v1_13/prereg/website_audit_protocol_v1_13.md": {
+      "sha256": "50c1c80d1eec9e5876878de61721db3b5e766f0e7440d26852902734f151878b",
+      "git_blob": "6a719d7901d214c62900d2f685b4fb5c6fc53012"
+    },
+    "osf/methodology/v1_13/registries/wikidata_types_v1_13.csv": {
+      "sha256": "8352c083d4f591c0cbc31821ec8ae59972bed58c80cb282fac4c306c427e1a04",
+      "git_blob": "7c65b49c03f5f8424e0067c6b098970fec65320c"
+    },
+    "osf/methodology/v1_13/prereg/dry_run_audit_v1_13.txt": {
+      "sha256": "dbbe8c409285858e091849eba0bf38d209e07698902d2ea128ad353af07533f1",
+      "git_blob": "da956c0c11e44fbde22fa7da1bf194b15a2191bd"
+    },
+    "osf/methodology/v1_13/scripts/audit_v1_13.py": {
+      "sha256": "37ed8830a3c62fd5d4985542a8db8100ffa789374af949037ef630486885ab3a",
+      "git_blob": "0653410dac25b718049472874cc9193e009c4e76"
+    },
+    "osf/methodology/v1_13/scripts/tests/test_audit_v1_13.py": {
+      "sha256": "e8c340264f7e5e98cf3ab889eafeeb362ecbca09466300a122978b3bedbd0a81",
+      "git_blob": "108b84603df82abf0a03d1bdda4ea5b963f9a28e"
+    },
+    "osf/methodology/v1_13/registries/brand_domains_v1_13.csv": {
+      "sha256": "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a",
+      "git_blob": "1143a404b00861a215ae848a164d3066658ceccc"
+    },
+    "osf/methodology/v1_13/prereg/source_classes_v1_13.md": {
+      "sha256": "dbc8b9efa1a4a4aa39e48a7249f02feccb514d22e48382b2102b551a006dd2c7",
+      "git_blob": "8787a7d2d7014e90c76b801fb453e94e277e4148"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_about.html": {
+      "sha256": "1c2821f6aaff8c4d62751edb3a5c2ca5d38c011572ae3c0f6c422092b87fe321",
+      "git_blob": "0fc8993f7ef2a6c873dba18770d52070b6aa41e5"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_home.html": {
+      "sha256": "7154050c8824214a5270042fb1630db538780a7409bc16209e8f1e2018587ce0",
+      "git_blob": "be704c92e209f6ebdb8ed2dde0cff197ffbb7e59"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx1_product.html": {
+      "sha256": "9ac9c467fdf309e0eef89762e5ea0585c1ab3cda42e266ed9ff402ac24b9f7cf",
+      "git_blob": "9799c88851034cbe43b9f7b0382eb9a88718b454"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx2_home.html": {
+      "sha256": "0cea2c70934744a17d8a4030dcb89863178ff8cdf9f048357f1c84cd16eae68b",
+      "git_blob": "ab8afb6b30d1e72f3bd8b12cb445ab2eb32de06f"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx2_product.html": {
+      "sha256": "c4c997261dfb2b79a532476e024a1adfd0a3b2f38b060da2fc573c1af825c9f4",
+      "git_blob": "666cd877690df9193220bcc4241d9501f641a178"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_about.html": {
+      "sha256": "cdd00299e0d7e91b04a4e41d60a35457a7016747ddb158703289b5cc11345f34",
+      "git_blob": "6c6dcd4368804787ce9c4d1967e9b1a0570648b3"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_home.html": {
+      "sha256": "25cb6ec670c31a46309370a45c06baaebf5849292fb4a873e7f04525a9cc12ca",
+      "git_blob": "d936cdafe6b079ece57562ab3802317bafffa344"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/fx6_product.html": {
+      "sha256": "75e0d080182f71edda09b9c09d0f8912b6b855d36bc467c8f3e24df4f34deea1",
+      "git_blob": "c36fbf497124556d5c6deeef063cb1c49c864aa6"
+    },
+    "osf/methodology/v1_13/scripts/fixtures/audit/manifest.json": {
+      "sha256": "9f9a06d6049d744dcdb3e408198fb30c6b7af77a17a0e982896f5c55887f8b28",
+      "git_blob": "bcaf91c7c977457ff1c2dc45c602f5f063e616ef"
+    }
+  },
+  "prereg_tag_commit": "b83efb25a3c2442e3c13a4f63d2968b312ec8f65",
+  "run_window": "pass 1 >= 24 h after the receipt and only if its 72 h end before 2026-11-17T00:00Z, else from 2026-11-22T12:00Z; no request 2026-11-17T00:00Z to 2026-11-22T12:00Z (protocol section 4)"
+}
