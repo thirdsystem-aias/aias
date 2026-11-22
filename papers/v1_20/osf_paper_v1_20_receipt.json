@@ -1,0 +1,213 @@
+{
+  "tool": "osf_deposit.py",
+  "version": "1.0",
+  "project": "ec6wh",
+  "local_dir": "/Users/pablou/aias/_worktrees/_runner_tmp/v120_paper_osf_1122/paper",
+  "remote_path": "methodology/v1_20/paper",
+  "time_utc": "2026-11-22T13:19:02+00:00",
+  "dry_run": false,
+  "allow_new_versions": false,
+  "status": "ok",
+  "files": [
+    {
+      "rel": "figures/chart_01_judge_fail_by_set.pdf",
+      "sha256": "b81243fa189c8b1e672d9f48478c2fa8f2c1cbe0731022bb2ab0c62037d43ad1",
+      "size": 45542,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "figures/chart_02_judge_confusion.pdf",
+      "sha256": "a0c94ac8216a513514525325e66049789aa4b1cbde8d86bdb18ca6e95e8eec21",
+      "size": 48603,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "figures/chart_03_separability.pdf",
+      "sha256": "1b3b87834f56c7385f5b351b02f3fb881bc55a949ad472d999c14595a99ce93e",
+      "size": 48111,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "figures/chart_04_stability.pdf",
+      "sha256": "c7cef3ac5475b414b6d8656f083edd51348dec58ebfd003cba16a4cc58d7254f",
+      "size": 42751,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "figures/chart_05_self_preference.pdf",
+      "sha256": "ebf847326f6820ee8a92bd12a2d7ef18f97968e256d8227ba9c4ba8eff865ba2",
+      "size": 43150,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "figures/chart_06_baseline.pdf",
+      "sha256": "870ef6ef045894f589f271986699a4e5ce1637b4f314501dae6934018d86abb3",
+      "size": 45984,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_11/fill_paper_v1_11.py",
+      "sha256": "cc07bf1842cd6fe45d3689c4f0f41f8eac4f478b769a673344b34dc493f950f1",
+      "size": 35747,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/PIPELINE.md",
+      "sha256": "2f2ef326bbef4082a34117328b45e8d27bda9cd68ec5c0203b40856fe1a1e2bb",
+      "size": 3523,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/fill_paper_v1_20.py",
+      "sha256": "792584b27f6a384f7a1a33fbee8c27057e9d0da3030ac233ecdcc9aed4c3970e",
+      "size": 52138,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/make_run_values_v1_20.py",
+      "sha256": "a9fd15a472ac2f843cafe11c3f02e9eedfccf824096bc032f77b781dff938859",
+      "size": 4453,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/run_values_v1_20.json",
+      "sha256": "05bb5b4cc4efeccee69c49964883b4a02b3122939438c73fbd5d148ad2b7980b",
+      "size": 1413,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/tables_as_tabular.lua",
+      "sha256": "01bd46901eec024dbc672badda7ff7e6b97ec0b27d4109f8a1745f750b58fa55",
+      "size": 2778,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v120_values.py",
+      "sha256": "39ce64c5d09b81217c440e0b2bd393b4e4051510a386b25be6538980da62922e",
+      "size": 13596,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v1_20_paper_draft.md",
+      "sha256": "bdf16ad2d00853879ac4420311048457ca7e725bb04fe95d6ceb7b95bb4a8fc7",
+      "size": 64370,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v1_20_paper_draft_provenance.json",
+      "sha256": "293544b363a9b7de455b6e7ac60f65ff8c51146eef19c2337ff144a1cae841d4",
+      "size": 281452,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v1_20_paper_template.md",
+      "sha256": "e95778da992f0453ae43c94ab14b2b5cfdd6ca21e963d554f9c13164428e5e96",
+      "size": 54985,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v1_9_cross_check_v1_20.json",
+      "sha256": "629322a7b79e606eed72e5bdc5dcb71ac6bfb9eb16a339d4a8554a76d8f365dd",
+      "size": 9421,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/papers/v1_20/v1_9_cross_check_v1_20.py",
+      "sha256": "c09fb2c0eacbf95612d1131554e3dbf057a8132f3c41c3a849428fa1a66bdac4",
+      "size": 5910,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/scripts/build_charts_v120.py",
+      "sha256": "e216ecf09de77e597acdb622a37d0944ae62105b4ce73128e85feea74d8d0fad",
+      "size": 17411,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "sources/scripts/build_paper_v1_20.py",
+      "sha256": "b795ada475bbf25292ddc6d30950b21db8287132993fb2d301f73c938d29805e",
+      "size": 4917,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    },
+    {
+      "rel": "v1_20_paper.pdf",
+      "sha256": "92d1d247b393f986f8394c6b12e8570f8ec1e13d398809446f3d020f0f7e8d5a",
+      "size": 336485,
+      "planned": "upload",
+      "action_taken": "uploaded-new",
+      "attempts": 1,
+      "verified": "match"
+    }
+  ],
+  "other_remote": [],
+  "verification": {
+    "match": 21,
+    "mismatch": 0,
+    "missing": 0,
+    "other": 0,
+    "local_files": 21,
+    "failed_uploads": []
+  },
+  "exit_code": 0,
+  "finished_utc": "2026-11-22T13:24:06+00:00"
+}

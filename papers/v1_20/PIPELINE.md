@@ -23,3 +23,5 @@ The fill refuses: synthetic files; wrong prereg tag; any SHA-256 link broken (St
 Drafts for the coordinator (not committed to OSF or to v1.11/v1.20 records): `drafts/DRAFT_v1_11_DEVIATIONS_continued_Entry_3.md`, `drafts/DRAFT_v1_20_note_merge_5da5ef8.md`.
 
 Not covered: synthetic scenarios and tests of this fork (the v1.11 pipeline's tests cover the engine and case A); the vendors' invoices (not a machine output).
+
+**OSF deposit (Sun 2026-11-22, 13:19-13:24 UTC).** `osf.io/ec6wh` `methodology/v1_20/paper/`: the PDF (26 pages, SHA-256 92d1d247b393...), `figures/` (the six chart PDFs), `sources/` (this folder's tracked builders, template, filled draft and provenance, run values, the P/C\* cross-check script and output, `papers/v1_11/fill_paper_v1_11.py`, `scripts/build_charts_v120.py`, `scripts/build_paper_v1_20.py`); 21 files, staged from commit 973a343 + records commit 31bb5ff (clean tree), by `osf_deposit.py` (dry run first: 21 upload, 0 differ; verify 21 match, 0 mismatch, 0 missing; re-listed by a second dry run: 21 match). Receipt `osf_paper_v1_20_receipt.json`, sums `osf_paper_v1_20.SHA256SUMS`. Drafts and the records folders are not in this deposit.
