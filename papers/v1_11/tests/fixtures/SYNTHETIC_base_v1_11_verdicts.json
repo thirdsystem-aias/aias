@@ -1,0 +1,2786 @@
+{
+  "phase": "v1.11",
+  "stage": "C",
+  "created_utc": "2026-11-10T16:36:59+00:00",
+  "dry_run": true,
+  "prereg_tag": "v1.11-prereg-r1",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "stage_j_sha256": "da4cbfca5148ea26753d2e030e01d056c5e4deddab76179688d53f34140d24fe",
+  "units_sha256": "f29a967d643f4dd4beeb10a29aefc0edcdd3ed1df75f9bf9739a8bea46ba2eff",
+  "manifest_sha256": "fb24d2889648115c3a7494f091a8b9fb36b5f15bd15ac701ed0b6296b8fdfed7",
+  "rank_convention": "within-category average ranks centred on the category mean rank",
+  "join": {
+    "per_wave": {
+      "t1": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      },
+      "t2": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      },
+      "t3": {
+        "profile_units": 112,
+        "registry_units": 112,
+        "matched": 112,
+        "duplicates": [],
+        "only_in_profiles": [],
+        "only_in_registries": [],
+        "one_to_one": true
+      }
+    },
+    "other_waves_in_table": [],
+    "passes": true
+  },
+  "P_Cstar_v1_9_cross_check": {
+    "differences": [],
+    "rows_compared": 336
+  },
+  "F_window_count_vs_n_mentions": {
+    "mismatches": []
+  },
+  "ranking": {
+    "statistic": "MNP",
+    "rank_tables": {
+      "OMNI t1 v0.19": {
+        "sha256": "275c9b85fe1083ba36ddbdaebb2e1c5747f8f459f6df10291c95b3b7a73804c4",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t1 v0.20": {
+        "sha256": "8080b958cbb4106847aef6d57e6555e7d3e36561298317ddb33cf2d42fa13d29",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t1 v0.21": {
+        "sha256": "7adc9c812bc1875594980439503e0b916688b0fc0e09f0326c6c70c556a69ad4",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t1 v0.22": {
+        "sha256": "1058bdd6d79329ce648a79157339f2c6644840f46a569e79b30f9f5da8e14972",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t1 v0.23": {
+        "sha256": "519cde935b4584ba8a4d392d87fe4b58a8268db8ddc7693672c8e95a5cb911d6",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t2 v0.19": {
+        "sha256": "e52cf9247de67c3aef12b1e6575fff0da59d503c00b914abcd7109153e04583f",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t2 v0.20": {
+        "sha256": "93cb5e02b9c5db497d8c152f959abc18c62eec122dc2f3f53bbb7ae7e799f944",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t2 v0.21": {
+        "sha256": "12ff57daddbbbc2a96ffbaa87af5e64ef6aa9a5c44717736edf4439c0a074ead",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t2 v0.22": {
+        "sha256": "e3332461263207e553a0788149df5e06bacf164c1013528674ea51c6e0172230",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t2 v0.23": {
+        "sha256": "2fdd304bb938fb2d7f1ca68528c24c15539974d8860d3a7cc2f030bae21715b9",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t3 v0.19": {
+        "sha256": "8e2510a4ac1b510579b09a12244750abcf22cadf8bd8b50240f4795fd2f6d4e3",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t3 v0.20": {
+        "sha256": "dd04546ca792526f02374fc19544d8e352acaa963e9b4b2fd7b54aa58eb2388a",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t3 v0.21": {
+        "sha256": "c689faa61711fe8be54ce8db117b3730e0870d9b77a11c4c600eea7cf5692c1b",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t3 v0.22": {
+        "sha256": "5efb19f0283922c50f76b1df419698348e88378704c11160c3736f31e269c3fb",
+        "matches_v1_10_stage_s": true
+      },
+      "OMNI t3 v0.23": {
+        "sha256": "da1983bc1f70add0472593a3925d6d7b3777b6ee610493c5db25e395fede38dc",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.9 pm": {
+        "sha256": "9aa9e7bb99cb5f969cb977dd1de7fa83c515bfe124a08192a25519503cb0d656",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.9 finance": {
+        "sha256": "3e9d2eed7ea52a478ab8f6ec67275c03211f3ca74c8190d20f9621d3af4a7fde",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.9 oliveoil": {
+        "sha256": "f27d07580a5e78a7ed07613b46614074314a6b3a426dde597b6b3de72ee045ca",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.9 running": {
+        "sha256": "032b1f1a91401ef4c8da10686984b2b27b02fcb14c2504fbbf873c2b2fdae5c3",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.9 skincare": {
+        "sha256": "40b5b25a7f479217d36be0d12841f1a39b9b9b1d36ef0f1815e9aff1f6eb775d",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v1.0 household": {
+        "sha256": "d5a3804da4f26df4756ef7a1a2a63dbc30337e49be8256f7e52a1264746cc1d2",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v1.0 knives": {
+        "sha256": "1532216e62c75e71a1729c3537b0a6145f2f609cb06d246459c830c6e48a57e2",
+        "matches_v1_10_stage_s": true
+      },
+      "EARLY-6 v0.14 premium_tea": {
+        "sha256": "e0f57d436c1bfd7121045e001fa876bbe7df00580d0d5fcdb92fd6eb07e88063",
+        "matches_v1_10_stage_s": true
+      }
+    },
+    "status": "ACTIVE"
+  },
+  "verdicts_before_noise_guard": {
+    "H1": "MARGINAL",
+    "H2": "CONFIRMED",
+    "H3": "CONFIRMED",
+    "H4": "CONFIRMED",
+    "H5": "CONFIRMED",
+    "H6": "CONFIRMED",
+    "H7": "CONFIRMED",
+    "H8": "CONFIRMED",
+    "H9": "CONFIRMED"
+  },
+  "VERDICTS": {
+    "H1": "MARGINAL",
+    "H2": "CONFIRMED",
+    "H3": "CONFIRMED",
+    "H4": "CONFIRMED",
+    "H5": "CONFIRMED",
+    "H6": "CONFIRMED",
+    "H7": "CONFIRMED",
+    "H8": "CONFIRMED",
+    "H9": "CONFIRMED"
+  },
+  "noise_guard_applied": false,
+  "H1_marginal_flag_on_all_verdicts": true,
+  "H1_Judge_Agreement": {
+    "verdict": "MARGINAL",
+    "alpha_ordinal": 0.6095571499465369,
+    "units_judged_by_both": 3357,
+    "brand_rho": {
+      "rho": 0.9206951165895332,
+      "n": 154,
+      "groups": {
+        "v0.19|t1": 12,
+        "v0.20|t1": 9,
+        "v0.21|t1": 11,
+        "v0.22|t1": 12,
+        "v0.23|t1": 12,
+        "v0.19|t2": 7,
+        "v0.20|t2": 10,
+        "v0.21|t2": 11,
+        "v0.22|t2": 9,
+        "v0.23|t2": 12,
+        "v0.19|t3": 10,
+        "v0.20|t3": 7,
+        "v0.21|t3": 9,
+        "v0.22|t3": 10,
+        "v0.23|t3": 13
+      },
+      "determinable": true,
+      "ci95": [
+        0.8383199872584981,
+        0.9409267699240433
+      ],
+      "boot_seed": 111020
+    },
+    "alpha_by_block": {
+      "E": 0.5639560764937177,
+      "F": 0.6255284451324514,
+      "R": 0.5325566541197126
+    },
+    "alpha_refers_true_both": 0.6068465900101865,
+    "kappa_evaluative": 0.1874160952434546,
+    "confusion_J1_rows_J2_cols": {
+      "-1|-1": 78,
+      "-1|0": 263,
+      "-1|1": 24,
+      "0|-1": 116,
+      "0|0": 745,
+      "0|1": 454,
+      "0|2": 37,
+      "1|-1": 2,
+      "1|0": 236,
+      "1|1": 763,
+      "1|2": 325,
+      "2|0": 2,
+      "2|1": 158,
+      "2|2": 154
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "H2_Sep_Presence": {
+    "per_wave": {
+      "t1": {
+        "rho": -0.050960752954776894,
+        "n": 56,
+        "groups": {
+          "v0.19": 12,
+          "v0.20": 9,
+          "v0.21": 11,
+          "v0.22": 12,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3088125187946875,
+          0.21989571492789767
+        ],
+        "boot_seed": 111020
+      },
+      "t2": {
+        "rho": 0.043859675488905646,
+        "n": 50,
+        "groups": {
+          "v0.19": 7,
+          "v0.20": 10,
+          "v0.21": 12,
+          "v0.22": 9,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2505030094328173,
+          0.3242945608512554
+        ],
+        "boot_seed": 111020
+      },
+      "t3": {
+        "rho": -0.14302277085921883,
+        "n": 49,
+        "groups": {
+          "v0.19": 10,
+          "v0.20": 7,
+          "v0.21": 9,
+          "v0.22": 10,
+          "v0.23": 13
+        },
+        "determinable": true,
+        "ci95": [
+          -0.47632884375251944,
+          0.24719435622835012
+        ],
+        "boot_seed": 111020
+      }
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H3_Sep_Consistency": {
+    "per_wave": {
+      "t1": {
+        "rho": -0.1278195934767355,
+        "n": 56,
+        "groups": {
+          "v0.19": 12,
+          "v0.20": 9,
+          "v0.21": 11,
+          "v0.22": 12,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.39222671694400624,
+          0.16610104507489223
+        ],
+        "boot_seed": 111020
+      },
+      "t2": {
+        "rho": -0.23574575575286785,
+        "n": 50,
+        "groups": {
+          "v0.19": 7,
+          "v0.20": 10,
+          "v0.21": 12,
+          "v0.22": 9,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.5219411599428726,
+          0.09681322623937492
+        ],
+        "boot_seed": 111020
+      },
+      "t3": {
+        "rho": 0.019607960521021935,
+        "n": 49,
+        "groups": {
+          "v0.19": 10,
+          "v0.20": 7,
+          "v0.21": 9,
+          "v0.22": 10,
+          "v0.23": 13
+        },
+        "determinable": true,
+        "ci95": [
+          -0.31435479482613937,
+          0.34873222575528856
+        ],
+        "boot_seed": 111020
+      }
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H4_Stability_Short": {
+    "rho": 0.8956043956043956,
+    "n": 38,
+    "groups": {
+      "v0.19": 7,
+      "v0.20": 7,
+      "v0.21": 8,
+      "v0.22": 8,
+      "v0.23": 8
+    },
+    "determinable": true,
+    "ci95": [
+      0.6742857142857143,
+      0.9941864678126053
+    ],
+    "boot_seed": 111020,
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 111011,
+    "perm_sided": "one",
+    "perm_draws": 10000,
+    "verdict": "CONFIRMED",
+    "waves": "t1->t2"
+  },
+  "H6_Stability_Long": {
+    "rho": 0.9529207105265541,
+    "n": 33,
+    "groups": {
+      "v0.19": 6,
+      "v0.20": 6,
+      "v0.21": 7,
+      "v0.22": 5,
+      "v0.23": 9
+    },
+    "determinable": true,
+    "ci95": [
+      0.7935777257818275,
+      1.0
+    ],
+    "boot_seed": 111020,
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 111012,
+    "perm_sided": "one",
+    "perm_draws": 10000,
+    "verdict": "CONFIRMED",
+    "waves": "t2->t3"
+  },
+  "H7_Naming_Frequency": {
+    "rho": 0.017616622294365822,
+    "n": 170,
+    "groups": {
+      "premium_tea": 25,
+      "finance": 16,
+      "oliveoil": 20,
+      "pm": 19,
+      "running": 17,
+      "skincare": 31,
+      "household": 21,
+      "knives": 21
+    },
+    "determinable": true,
+    "ci95": [
+      -0.14835117379408772,
+      0.18656825544602332
+    ],
+    "boot_seed": 111020,
+    "verdict": "CONFIRMED"
+  },
+  "H8_Recognition_Sep": {
+    "per_wave": {
+      "t1": {
+        "rho": -0.29501270266915053,
+        "n": 23,
+        "groups": {
+          "v0.23": 23
+        },
+        "determinable": true,
+        "ci95": [
+          -0.6252404302682586,
+          0.11886068671362868
+        ],
+        "boot_seed": 111020
+      },
+      "t2": {
+        "rho": -0.24956808393770413,
+        "n": 23,
+        "groups": {
+          "v0.23": 23
+        },
+        "determinable": true,
+        "ci95": [
+          -0.6614987950278607,
+          0.2023293413855472
+        ],
+        "boot_seed": 111020
+      },
+      "t3": {
+        "rho": -0.2386191843221404,
+        "n": 22,
+        "groups": {
+          "v0.23": 22
+        },
+        "determinable": true,
+        "ci95": [
+          -0.6333181871711624,
+          0.2735879125741384
+        ],
+        "boot_seed": 111020
+      }
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H5_Sep_Ranking": {
+    "per_wave": {
+      "t1": {
+        "rho": -0.07852968488113161,
+        "n": 56,
+        "groups": {
+          "v0.19": 12,
+          "v0.20": 9,
+          "v0.21": 11,
+          "v0.22": 12,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.38103479072064594,
+          0.2338778489685054
+        ],
+        "boot_seed": 111020
+      },
+      "t2": {
+        "rho": -0.040570199827237724,
+        "n": 50,
+        "groups": {
+          "v0.19": 7,
+          "v0.20": 10,
+          "v0.21": 12,
+          "v0.22": 9,
+          "v0.23": 12
+        },
+        "determinable": true,
+        "ci95": [
+          -0.367562665251034,
+          0.30699321709064775
+        ],
+        "boot_seed": 111020
+      },
+      "t3": {
+        "rho": 0.01845455107860888,
+        "n": 49,
+        "groups": {
+          "v0.19": 10,
+          "v0.20": 7,
+          "v0.21": 9,
+          "v0.22": 10,
+          "v0.23": 13
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2923386726518544,
+          0.31246557461007946
+        ],
+        "boot_seed": 111020
+      }
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H5_secondary_early": {
+    "rho": -0.17797103694894967,
+    "n": 170,
+    "groups": {
+      "premium_tea": 25,
+      "finance": 16,
+      "oliveoil": 20,
+      "pm": 19,
+      "running": 17,
+      "skincare": 31,
+      "household": 21,
+      "knives": 21
+    },
+    "determinable": true,
+    "ci95": [
+      -0.3130693278458933,
+      -0.02283368997950795
+    ],
+    "boot_seed": 111020,
+    "verdict": "CONFIRMED"
+  },
+  "H9_Self_Preference": {
+    "delta_points": -0.20944211747128882,
+    "n_own_provider": 953,
+    "n_other": 1805,
+    "mean_diff_own": -5.167890870933893,
+    "mean_diff_other": -4.958448753462604,
+    "j1_provider": "anthropic",
+    "verdict": "CONFIRMED"
+  },
+  "sensitivities": {
+    "SU_uncentred_ranks": {
+      "H1_Judge_Agreement": {
+        "verdict": "MARGINAL",
+        "alpha_ordinal": 0.6095571499465369,
+        "units_judged_by_both": 3357,
+        "brand_rho": {
+          "rho": 0.9262013097287768,
+          "n": 154,
+          "groups": {
+            "v0.19|t1": 12,
+            "v0.20|t1": 9,
+            "v0.21|t1": 11,
+            "v0.22|t1": 12,
+            "v0.23|t1": 12,
+            "v0.19|t2": 7,
+            "v0.20|t2": 10,
+            "v0.21|t2": 11,
+            "v0.22|t2": 9,
+            "v0.23|t2": 12,
+            "v0.19|t3": 10,
+            "v0.20|t3": 7,
+            "v0.21|t3": 9,
+            "v0.22|t3": 10,
+            "v0.23|t3": 13
+          },
+          "determinable": true,
+          "ci95": [
+            0.8498649791394961,
+            0.9451589770877934
+          ],
+          "boot_seed": 111020
+        },
+        "alpha_by_block": {
+          "E": 0.5639560764937177,
+          "F": 0.6255284451324514,
+          "R": 0.5325566541197126
+        },
+        "alpha_refers_true_both": 0.6068465900101865,
+        "kappa_evaluative": 0.1874160952434546,
+        "confusion_J1_rows_J2_cols": {
+          "-1|-1": 78,
+          "-1|0": 263,
+          "-1|1": 24,
+          "0|-1": 116,
+          "0|0": 745,
+          "0|1": 454,
+          "0|2": 37,
+          "1|-1": 2,
+          "1|0": 236,
+          "1|1": 763,
+          "1|2": 325,
+          "2|0": 2,
+          "2|1": 158,
+          "2|2": 154
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_Sep_Presence": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.022675151934173087,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.27276885459120986,
+              0.24195523913440647
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": 0.12164074022315206,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.14525795032361544,
+              0.3809584947715324
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.0315681440686308,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.32793109343549826,
+              0.3224298400320586
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H3_Sep_Consistency": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.0974654097861959,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.3535161128116782,
+              0.1889754145348902
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.13521905405395773,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.3945601565260674,
+              0.17358967353084703
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.11520460651694805,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.18203761506887245,
+              0.4144667821480662
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H4_Stability_Short": {
+        "rho": 0.8968571428571429,
+        "n": 38,
+        "groups": {
+          "v0.19": 7,
+          "v0.20": 7,
+          "v0.21": 8,
+          "v0.22": 8,
+          "v0.23": 8
+        },
+        "determinable": true,
+        "ci95": [
+          0.6783486783486783,
+          0.9942602294234064
+        ],
+        "boot_seed": 111020,
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 111011,
+        "perm_sided": "one",
+        "perm_draws": 10000,
+        "verdict": "CONFIRMED",
+        "waves": "t1->t2"
+      },
+      "H6_Stability_Long": {
+        "rho": 0.9582313005292871,
+        "n": 33,
+        "groups": {
+          "v0.19": 6,
+          "v0.20": 6,
+          "v0.21": 7,
+          "v0.22": 5,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          0.8183904449791467,
+          1.0
+        ],
+        "boot_seed": 111020,
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 111012,
+        "perm_sided": "one",
+        "perm_draws": 10000,
+        "verdict": "CONFIRMED",
+        "waves": "t2->t3"
+      },
+      "H7_Naming_Frequency": {
+        "rho": 0.13666186608342204,
+        "n": 170,
+        "groups": {
+          "premium_tea": 25,
+          "finance": 16,
+          "oliveoil": 20,
+          "pm": 19,
+          "running": 17,
+          "skincare": 31,
+          "household": 21,
+          "knives": 21
+        },
+        "determinable": true,
+        "ci95": [
+          -0.00827480245005669,
+          0.28583383458116407
+        ],
+        "boot_seed": 111020,
+        "verdict": "CONFIRMED"
+      },
+      "H8_Recognition_Sep": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.29501270266915053,
+            "n": 23,
+            "groups": {
+              "v0.23": 23
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6252404302682586,
+              0.11886068671362868
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.24956808393770413,
+            "n": 23,
+            "groups": {
+              "v0.23": 23
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6614987950278607,
+              0.2023293413855472
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.2386191843221404,
+            "n": 22,
+            "groups": {
+              "v0.23": 22
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6333181871711624,
+              0.2735879125741384
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H5_Sep_Ranking": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.04950209225065949,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.34293017224343963,
+              0.2553723399452275
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": 0.04407915528457377,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.252783197323773,
+              0.3648824661897738
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.11416366502343336,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.16225150772012947,
+              0.38150026038165263
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H5_secondary_early": {
+        "rho": -0.03535338376833921,
+        "n": 170,
+        "groups": {
+          "premium_tea": 25,
+          "finance": 16,
+          "oliveoil": 20,
+          "pm": 19,
+          "running": 17,
+          "skincare": 31,
+          "household": 21,
+          "knives": 21
+        },
+        "determinable": true,
+        "ci95": [
+          -0.1530235014305702,
+          0.10166062584176903
+        ],
+        "boot_seed": 111020,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "SD_without_Denon_v0_19": {
+      "H1_Judge_Agreement": {
+        "verdict": "MARGINAL",
+        "alpha_ordinal": 0.6109742809993182,
+        "units_judged_by_both": 3341,
+        "brand_rho": {
+          "rho": 0.9209647473172293,
+          "n": 153,
+          "groups": {
+            "v0.19|t1": 11,
+            "v0.20|t1": 9,
+            "v0.21|t1": 11,
+            "v0.22|t1": 12,
+            "v0.23|t1": 12,
+            "v0.19|t2": 7,
+            "v0.20|t2": 10,
+            "v0.21|t2": 11,
+            "v0.22|t2": 9,
+            "v0.23|t2": 12,
+            "v0.19|t3": 10,
+            "v0.20|t3": 7,
+            "v0.21|t3": 9,
+            "v0.22|t3": 10,
+            "v0.23|t3": 13
+          },
+          "determinable": true,
+          "ci95": [
+            0.837532584211291,
+            0.9401343725628617
+          ],
+          "boot_seed": 111020
+        },
+        "alpha_by_block": {
+          "E": 0.5639560764937177,
+          "F": 0.6278338671015979,
+          "R": 0.5325566541197126
+        },
+        "alpha_refers_true_both": 0.6083165431401809,
+        "kappa_evaluative": 0.18794718832603136,
+        "confusion_J1_rows_J2_cols": {
+          "-1|-1": 78,
+          "-1|0": 263,
+          "-1|1": 23,
+          "0|-1": 116,
+          "0|0": 736,
+          "0|1": 452,
+          "0|2": 37,
+          "1|-1": 2,
+          "1|0": 232,
+          "1|1": 763,
+          "1|2": 325,
+          "2|0": 2,
+          "2|1": 158,
+          "2|2": 154
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_Sep_Presence": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.030946077525066652,
+            "n": 55,
+            "groups": {
+              "v0.19": 11,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.28753265528270966,
+              0.23594145592487284
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": 0.043859675488905646,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.2505030094328173,
+              0.3242945608512554
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.14302277085921883,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.47632884375251944,
+              0.24719435622835012
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H3_Sep_Consistency": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.13351022017957329,
+            "n": 55,
+            "groups": {
+              "v0.19": 11,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.39870852715397953,
+              0.15321849501359927
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.23574575575286785,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.5219411599428726,
+              0.09681322623937492
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.019607960521021935,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.31435479482613937,
+              0.34873222575528856
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H4_Stability_Short": {
+        "rho": 0.8956043956043956,
+        "n": 38,
+        "groups": {
+          "v0.19": 7,
+          "v0.20": 7,
+          "v0.21": 8,
+          "v0.22": 8,
+          "v0.23": 8
+        },
+        "determinable": true,
+        "ci95": [
+          0.6742857142857143,
+          0.9941864678126053
+        ],
+        "boot_seed": 111020,
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 111011,
+        "perm_sided": "one",
+        "perm_draws": 10000,
+        "verdict": "CONFIRMED",
+        "waves": "t1->t2"
+      },
+      "H6_Stability_Long": {
+        "rho": 0.9529207105265541,
+        "n": 33,
+        "groups": {
+          "v0.19": 6,
+          "v0.20": 6,
+          "v0.21": 7,
+          "v0.22": 5,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          0.7935777257818275,
+          1.0
+        ],
+        "boot_seed": 111020,
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 111012,
+        "perm_sided": "one",
+        "perm_draws": 10000,
+        "verdict": "CONFIRMED",
+        "waves": "t2->t3"
+      },
+      "H7_Naming_Frequency": {
+        "rho": 0.017616622294365822,
+        "n": 170,
+        "groups": {
+          "premium_tea": 25,
+          "finance": 16,
+          "oliveoil": 20,
+          "pm": 19,
+          "running": 17,
+          "skincare": 31,
+          "household": 21,
+          "knives": 21
+        },
+        "determinable": true,
+        "ci95": [
+          -0.14835117379408772,
+          0.18656825544602332
+        ],
+        "boot_seed": 111020,
+        "verdict": "CONFIRMED"
+      },
+      "H8_Recognition_Sep": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.29501270266915053,
+            "n": 23,
+            "groups": {
+              "v0.23": 23
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6252404302682586,
+              0.11886068671362868
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.24956808393770413,
+            "n": 23,
+            "groups": {
+              "v0.23": 23
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6614987950278607,
+              0.2023293413855472
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.2386191843221404,
+            "n": 22,
+            "groups": {
+              "v0.23": 22
+            },
+            "determinable": true,
+            "ci95": [
+              -0.6333181871711624,
+              0.2735879125741384
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H5_Sep_Ranking": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.07603893334730663,
+            "n": 55,
+            "groups": {
+              "v0.19": 11,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.37991958518864216,
+              0.2419324351766984
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.040570199827237724,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.367562665251034,
+              0.30699321709064775
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.01845455107860888,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.2923386726518544,
+              0.31246557461007946
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H5_secondary_early": {
+        "rho": -0.17797103694894967,
+        "n": 170,
+        "groups": {
+          "premium_tea": 25,
+          "finance": 16,
+          "oliveoil": 20,
+          "pm": 19,
+          "running": 17,
+          "skincare": 31,
+          "household": 21,
+          "knives": 21
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3130693278458933,
+          -0.02283368997950795
+        ],
+        "boot_seed": 111020,
+        "verdict": "CONFIRMED"
+      },
+      "H9_Self_Preference": {
+        "delta_points": -0.19352778807728743,
+        "n_own_provider": 945,
+        "n_other": 1798,
+        "mean_diff_own": -5.185185185185185,
+        "mean_diff_other": -4.991657397107898,
+        "j1_provider": "anthropic",
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_NV_in_place_of_S": {
+      "H2": {
+        "per_wave": {
+          "t1": {
+            "rho": 0.020561187662230557,
+            "n": 54,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 10
+            },
+            "determinable": true,
+            "ci95": [
+              -0.2516902429174422,
+              0.2924615452411768
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": 0.007504727121632984,
+            "n": 48,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.29816387154726226,
+              0.31797745885423473
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.14899382548207352,
+            "n": 47,
+            "groups": {
+              "v0.19": 9,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.4740370093727835,
+              0.2258342342688816
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H3": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.17383549568976744,
+            "n": 54,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 10
+            },
+            "determinable": true,
+            "ci95": [
+              -0.43040687822601637,
+              0.12906682517621854
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.2751733277932094,
+            "n": 48,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.5633125243526024,
+              0.07682603938591447
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.022818874172930177,
+            "n": 47,
+            "groups": {
+              "v0.19": 9,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.33942387190702844,
+              0.3579782027078272
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_model_balanced": {
+      "H2": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.05177453478450121,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.301725355571247,
+              0.21089553324830215
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": 0.06356165337761803,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.2318268042829197,
+              0.3468949692447118
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.1334868547812314,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.47038238226088136,
+              0.2565961789401806
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H3": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.09770355757720389,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.36642800567978845,
+              0.19208600986520818
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.2564383946614245,
+            "n": 50,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 12,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.540206951813039,
+              0.0746286792906794
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": 0.01495973372548283,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.31182800706423375,
+              0.34434251713425656
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_J2_scored": {
+      "H2": {
+        "per_wave": {
+          "t1": {
+            "rho": 0.03590814509247665,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.24062025270495965,
+              0.31340861710531487
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.043761156981061027,
+            "n": 49,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 11,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.34966585297739805,
+              0.2539902084621724
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.22913102683024703,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.5450292559903323,
+              0.17109475565276588
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H3": {
+        "per_wave": {
+          "t1": {
+            "rho": -0.030897706242363623,
+            "n": 56,
+            "groups": {
+              "v0.19": 12,
+              "v0.20": 9,
+              "v0.21": 11,
+              "v0.22": 12,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.31028928462317945,
+              0.24186287598804604
+            ],
+            "boot_seed": 111020
+          },
+          "t2": {
+            "rho": -0.14311081066779416,
+            "n": 49,
+            "groups": {
+              "v0.19": 7,
+              "v0.20": 10,
+              "v0.21": 11,
+              "v0.22": 9,
+              "v0.23": 12
+            },
+            "determinable": true,
+            "ci95": [
+              -0.443109467917947,
+              0.19222192597090684
+            ],
+            "boot_seed": 111020
+          },
+          "t3": {
+            "rho": -0.08981015121989583,
+            "n": 49,
+            "groups": {
+              "v0.19": 10,
+              "v0.20": 7,
+              "v0.21": 9,
+              "v0.22": 10,
+              "v0.23": 13
+            },
+            "determinable": true,
+            "ci95": [
+              -0.39449445173868275,
+              0.246257769182112
+            ],
+            "boot_seed": 111020
+          }
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "verdict_changes": []
+  },
+  "descriptives": {
+    "baseline": [
+      {
+        "block": "E",
+        "wave": "v0.14",
+        "category": "premium_tea",
+        "label": "premium tea",
+        "units": 820,
+        "brands": 25,
+        "brands_rated": 25,
+        "S": {
+          "n": 25,
+          "median": 62.142857142857146,
+          "q25": 54.861111111111114,
+          "q75": 67.14285714285714,
+          "min": 43.75,
+          "max": 85.41666666666667
+        },
+        "E_mean": 0.6362044861868195,
+        "NV": {
+          "n": 25,
+          "median": 71.0,
+          "q25": 60.714285714285715,
+          "q75": 73.07692307692308,
+          "min": 35.9375,
+          "max": 85.41666666666667
+        },
+        "share_non_evaluative": 0.35714285714285715,
+        "share_mixed": 0.07758620689655173,
+        "share_refers_false": 0.00975609756097561,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.27682926829268295
+      },
+      {
+        "block": "E",
+        "wave": "v0.9",
+        "category": "finance",
+        "label": "personal finance apps",
+        "units": 576,
+        "brands": 16,
+        "brands_rated": 16,
+        "S": {
+          "n": 16,
+          "median": 66.66666666666667,
+          "q25": 54.58537581699346,
+          "q75": 73.21924603174604,
+          "min": 37.5,
+          "max": 86.80555555555556
+        },
+        "E_mean": 0.7413778011204482,
+        "NV": {
+          "n": 16,
+          "median": 72.7764423076923,
+          "q25": 57.8125,
+          "q75": 77.29166666666667,
+          "min": 30.434782608695652,
+          "max": 86.80555555555556
+        },
+        "share_non_evaluative": 0.2574430823117338,
+        "share_mixed": 0.07355516637478109,
+        "share_refers_false": 0.006956521739130435,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.2760416666666667
+      },
+      {
+        "block": "E",
+        "wave": "v0.9",
+        "category": "oliveoil",
+        "label": "premium olive oil",
+        "units": 698,
+        "brands": 20,
+        "brands_rated": 20,
+        "S": {
+          "n": 20,
+          "median": 66.66666666666666,
+          "q25": 47.4609375,
+          "q75": 79.8443100358423,
+          "min": 38.19444444444444,
+          "max": 86.42857142857143
+        },
+        "E_mean": 0.7679603603227891,
+        "NV": {
+          "n": 20,
+          "median": 71.80706521739131,
+          "q25": 44.296875,
+          "q75": 80.5952380952381,
+          "min": 31.52173913043478,
+          "max": 86.42857142857143
+        },
+        "share_non_evaluative": 0.22687861271676302,
+        "share_mixed": 0.07369942196531792,
+        "share_refers_false": 0.008595988538681949,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.23209169054441262
+      },
+      {
+        "block": "E",
+        "wave": "v0.9",
+        "category": "pm",
+        "label": "project management software",
+        "units": 656,
+        "brands": 19,
+        "brands_rated": 19,
+        "S": {
+          "n": 19,
+          "median": 69.44444444444444,
+          "q25": 57.49007936507937,
+          "q75": 82.98611111111111,
+          "min": 36.42857142857143,
+          "max": 88.57142857142857
+        },
+        "E_mean": 0.7720649663374122,
+        "NV": {
+          "n": 19,
+          "median": 73.38709677419355,
+          "q25": 63.28431372549019,
+          "q75": 82.98611111111111,
+          "min": 28.40909090909091,
+          "max": 88.57142857142857
+        },
+        "share_non_evaluative": 0.22945736434108527,
+        "share_mixed": 0.07441860465116279,
+        "share_refers_false": 0.01676829268292683,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.27439024390243905
+      },
+      {
+        "block": "E",
+        "wave": "v0.9",
+        "category": "running",
+        "label": "running shoes",
+        "units": 609,
+        "brands": 17,
+        "brands_rated": 17,
+        "S": {
+          "n": 17,
+          "median": 67.36111111111111,
+          "q25": 60.416666666666664,
+          "q75": 73.52941176470588,
+          "min": 39.583333333333336,
+          "max": 82.63888888888889
+        },
+        "E_mean": 0.7507599474727502,
+        "NV": {
+          "n": 17,
+          "median": 73.14814814814815,
+          "q25": 67.85714285714286,
+          "q75": 76.61290322580645,
+          "min": 29.166666666666668,
+          "max": 82.63888888888889
+        },
+        "share_non_evaluative": 0.25,
+        "share_mixed": 0.08609271523178808,
+        "share_refers_false": 0.008210180623973728,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.27586206896551724
+      },
+      {
+        "block": "E",
+        "wave": "v0.9",
+        "category": "skincare",
+        "label": "premium facial skincare",
+        "units": 912,
+        "brands": 31,
+        "brands_rated": 31,
+        "S": {
+          "n": 31,
+          "median": 68.57142857142857,
+          "q25": 58.04597701149426,
+          "q75": 79.86111111111111,
+          "min": 36.206896551724135,
+          "max": 87.96296296296296
+        },
+        "E_mean": 0.7785111997243834,
+        "NV": {
+          "n": 31,
+          "median": 74.07407407407408,
+          "q25": 64.43014705882354,
+          "q75": 81.625,
+          "min": 28.846153846153847,
+          "max": 87.96296296296296
+        },
+        "share_non_evaluative": 0.21309655937846836,
+        "share_mixed": 0.08657047724750278,
+        "share_refers_false": 0.00989010989010989,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "bare_share": 0.25877192982456143
+      },
+      {
+        "block": "E",
+        "wave": "v1.0",
+        "category": "household",
+        "label": "household goods retail",
+        "units": 689,
+        "brands": 21,
+        "brands_rated": 21,
+        "S": {
+          "n": 21,
+          "median": 73.52941176470588,
+          "q25": 56.81818181818182,
+          "q75": 81.45161290322581,
+          "min": 36.206896551724135,
+          "max": 85.71428571428571
+        },
+        "E_mean": 0.8151305384571105,
+        "NV": {
+          "n": 21,
+          "median": 75.80645161290323,
+          "q25": 65.0,
+          "q75": 81.45161290322581,
+          "min": 27.77777777777778,
+          "max": 85.71428571428571
+        },
+        "share_non_evaluative": 0.17820324005891017,
+        "share_mixed": 0.07952871870397643,
+        "share_refers_false": 0.01451378809869376,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.274310595065312
+      },
+      {
+        "block": "E",
+        "wave": "v1.0",
+        "category": "knives",
+        "label": "premium kitchen knives",
+        "units": 721,
+        "brands": 21,
+        "brands_rated": 21,
+        "S": {
+          "n": 21,
+          "median": 63.19444444444444,
+          "q25": 54.861111111111114,
+          "q75": 73.61111111111111,
+          "min": 38.19444444444444,
+          "max": 85.41666666666667
+        },
+        "E_mean": 0.6913232833048502,
+        "NV": {
+          "n": 21,
+          "median": 67.85714285714286,
+          "q25": 59.72222222222222,
+          "q75": 77.41935483870968,
+          "min": 29.761904761904763,
+          "max": 85.41666666666667
+        },
+        "share_non_evaluative": 0.2991573033707865,
+        "share_mixed": 0.07443820224719101,
+        "share_refers_false": 0.011111111111111112,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.27045769764216365
+      },
+      {
+        "block": "F",
+        "wave": "t1",
+        "category": "v0.19",
+        "label": "audiophile headphones",
+        "units": 187,
+        "brands": 16,
+        "brands_rated": 12,
+        "S": {
+          "n": 12,
+          "median": 55.04807692307692,
+          "q25": 45.5078125,
+          "q75": 64.62053571428572,
+          "min": 34.375,
+          "max": 82.14285714285714
+        },
+        "E_mean": 0.6556490384615384,
+        "NV": {
+          "n": 12,
+          "median": 60.41666666666667,
+          "q25": 41.268382352941174,
+          "q75": 69.64285714285714,
+          "min": 31.25,
+          "max": 82.14285714285714
+        },
+        "share_non_evaluative": 0.36065573770491804,
+        "share_mixed": 0.07650273224043716,
+        "share_refers_false": 0.0213903743315508,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.26737967914438504
+      },
+      {
+        "block": "F",
+        "wave": "t1",
+        "category": "v0.20",
+        "label": "skincare",
+        "units": 153,
+        "brands": 22,
+        "brands_rated": 9,
+        "S": {
+          "n": 9,
+          "median": 62.5,
+          "q25": 55.0,
+          "q75": 78.57142857142857,
+          "min": 37.0,
+          "max": 90.0
+        },
+        "E_mean": 0.6898148148148149,
+        "NV": {
+          "n": 9,
+          "median": 70.0,
+          "q25": 62.5,
+          "q75": 78.57142857142857,
+          "min": 28.333333333333332,
+          "max": 90.0
+        },
+        "share_non_evaluative": 0.31125827814569534,
+        "share_mixed": 0.07947019867549669,
+        "share_refers_false": 0.013071895424836602,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.3790849673202614
+      },
+      {
+        "block": "F",
+        "wave": "t1",
+        "category": "v0.21",
+        "label": "cosmetics",
+        "units": 128,
+        "brands": 22,
+        "brands_rated": 11,
+        "S": {
+          "n": 11,
+          "median": 71.42857142857143,
+          "q25": 59.642857142857146,
+          "q75": 82.41758241758242,
+          "min": 40.90909090909091,
+          "max": 87.5
+        },
+        "E_mean": 0.8150990423717697,
+        "NV": {
+          "n": 11,
+          "median": 75.0,
+          "q25": 65.0,
+          "q75": 82.41758241758242,
+          "min": 33.333333333333336,
+          "max": 87.5
+        },
+        "share_non_evaluative": 0.1968503937007874,
+        "share_mixed": 0.10236220472440945,
+        "share_refers_false": 0.0078125,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.2734375
+      },
+      {
+        "block": "F",
+        "wave": "t1",
+        "category": "v0.22",
+        "label": "automotive",
+        "units": 169,
+        "brands": 22,
+        "brands_rated": 12,
+        "S": {
+          "n": 12,
+          "median": 57.73809523809524,
+          "q25": 48.026315789473685,
+          "q75": 67.85714285714286,
+          "min": 36.904761904761905,
+          "max": 84.82142857142857
+        },
+        "E_mean": 0.6913357110725532,
+        "NV": {
+          "n": 12,
+          "median": 63.75,
+          "q25": 46.875,
+          "q75": 75.56818181818181,
+          "min": 28.846153846153847,
+          "max": 84.82142857142857
+        },
+        "share_non_evaluative": 0.30357142857142855,
+        "share_mixed": 0.08333333333333333,
+        "share_refers_false": 0.005917159763313609,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.26627218934911245
+      },
+      {
+        "block": "F",
+        "wave": "t1",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 157,
+        "brands": 24,
+        "brands_rated": 12,
+        "S": {
+          "n": 12,
+          "median": 62.85714285714286,
+          "q25": 52.232142857142854,
+          "q75": 72.91666666666667,
+          "min": 37.5,
+          "max": 83.82352941176471
+        },
+        "E_mean": 0.6563161375661376,
+        "NV": {
+          "n": 10,
+          "median": 75.0,
+          "q25": 65.625,
+          "q75": 79.32692307692308,
+          "min": 30.555555555555557,
+          "max": 85.0
+        },
+        "share_non_evaluative": 0.3076923076923077,
+        "share_mixed": 0.07051282051282051,
+        "share_refers_false": 0.0,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.2484076433121019
+      },
+      {
+        "block": "F",
+        "wave": "t2",
+        "category": "v0.19",
+        "label": "audiophile headphones",
+        "units": 152,
+        "brands": 16,
+        "brands_rated": 7,
+        "S": {
+          "n": 7,
+          "median": 55.0,
+          "q25": 41.708924949290065,
+          "q75": 65.625,
+          "min": 38.888888888888886,
+          "max": 81.25
+        },
+        "E_mean": 0.6392461884935462,
+        "NV": {
+          "n": 7,
+          "median": 61.111111111111114,
+          "q25": 34.16666666666667,
+          "q75": 71.47058823529412,
+          "min": 33.333333333333336,
+          "max": 81.25
+        },
+        "share_non_evaluative": 0.3618421052631579,
+        "share_mixed": 0.046052631578947366,
+        "share_refers_false": 0.0,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.2894736842105263
+      },
+      {
+        "block": "F",
+        "wave": "t2",
+        "category": "v0.20",
+        "label": "skincare",
+        "units": 163,
+        "brands": 22,
+        "brands_rated": 10,
+        "S": {
+          "n": 10,
+          "median": 64.95535714285714,
+          "q25": 59.375,
+          "q75": 73.54166666666667,
+          "min": 33.92857142857143,
+          "max": 83.33333333333333
+        },
+        "E_mean": 0.7496825396825397,
+        "NV": {
+          "n": 9,
+          "median": 70.83333333333333,
+          "q25": 68.75,
+          "q75": 75.0,
+          "min": 27.5,
+          "max": 83.33333333333333
+        },
+        "share_non_evaluative": 0.22641509433962265,
+        "share_mixed": 0.06289308176100629,
+        "share_refers_false": 0.018518518518518517,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.27607361963190186
+      },
+      {
+        "block": "F",
+        "wave": "t2",
+        "category": "v0.21",
+        "label": "cosmetics",
+        "units": 154,
+        "brands": 24,
+        "brands_rated": 12,
+        "S": {
+          "n": 12,
+          "median": 66.66666666666667,
+          "q25": 55.35714285714286,
+          "q75": 78.78151260504201,
+          "min": 25.0,
+          "max": 88.88888888888889
+        },
+        "E_mean": 0.7927170868347339,
+        "NV": {
+          "n": 11,
+          "median": 75.0,
+          "q25": 55.208333333333336,
+          "q75": 81.00961538461539,
+          "min": 25.0,
+          "max": 88.88888888888889
+        },
+        "share_non_evaluative": 0.18421052631578946,
+        "share_mixed": 0.05921052631578947,
+        "share_refers_false": 0.012987012987012988,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.18831168831168832
+      },
+      {
+        "block": "F",
+        "wave": "t2",
+        "category": "v0.22",
+        "label": "automotive",
+        "units": 147,
+        "brands": 23,
+        "brands_rated": 9,
+        "S": {
+          "n": 9,
+          "median": 56.25,
+          "q25": 44.23076923076923,
+          "q75": 75.0,
+          "min": 37.5,
+          "max": 83.33333333333333
+        },
+        "E_mean": 0.6993284493284493,
+        "NV": {
+          "n": 9,
+          "median": 62.5,
+          "q25": 40.625,
+          "q75": 77.5,
+          "min": 25.0,
+          "max": 85.71428571428571
+        },
+        "share_non_evaluative": 0.2671232876712329,
+        "share_mixed": 0.0410958904109589,
+        "share_refers_false": 0.006802721088435374,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.23809523809523808
+      },
+      {
+        "block": "F",
+        "wave": "t2",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 157,
+        "brands": 24,
+        "brands_rated": 12,
+        "S": {
+          "n": 12,
+          "median": 62.5,
+          "q25": 55.625,
+          "q75": 70.83333333333333,
+          "min": 37.5,
+          "max": 85.9375
+        },
+        "E_mean": 0.7504629629629629,
+        "NV": {
+          "n": 12,
+          "median": 68.92857142857143,
+          "q25": 61.25,
+          "q75": 75.0,
+          "min": 30.0,
+          "max": 85.9375
+        },
+        "share_non_evaluative": 0.25,
+        "share_mixed": 0.08974358974358974,
+        "share_refers_false": 0.006369426751592357,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.2484076433121019
+      },
+      {
+        "block": "F",
+        "wave": "t3",
+        "category": "v0.19",
+        "label": "audiophile headphones",
+        "units": 156,
+        "brands": 15,
+        "brands_rated": 10,
+        "S": {
+          "n": 10,
+          "median": 54.248366013071895,
+          "q25": 42.63392857142857,
+          "q75": 61.458333333333336,
+          "min": 34.78260869565217,
+          "max": 79.41176470588235
+        },
+        "E_mean": 0.6280364208113569,
+        "NV": {
+          "n": 9,
+          "median": 55.0,
+          "q25": 37.5,
+          "q75": 68.75,
+          "min": 30.555555555555557,
+          "max": 83.33333333333333
+        },
+        "share_non_evaluative": 0.33774834437086093,
+        "share_mixed": 0.052980132450331126,
+        "share_refers_false": 0.03205128205128205,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.22435897435897437
+      },
+      {
+        "block": "F",
+        "wave": "t3",
+        "category": "v0.20",
+        "label": "skincare",
+        "units": 151,
+        "brands": 24,
+        "brands_rated": 7,
+        "S": {
+          "n": 7,
+          "median": 62.5,
+          "q25": 52.08333333333333,
+          "q75": 64.64285714285714,
+          "min": 42.0,
+          "max": 91.66666666666667
+        },
+        "E_mean": 0.7470748299319727,
+        "NV": {
+          "n": 7,
+          "median": 65.0,
+          "q25": 53.125,
+          "q75": 69.44444444444446,
+          "min": 34.61538461538461,
+          "max": 91.66666666666667
+        },
+        "share_non_evaluative": 0.30666666666666664,
+        "share_mixed": 0.07333333333333333,
+        "share_refers_false": 0.006622516556291391,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.24503311258278146
+      },
+      {
+        "block": "F",
+        "wave": "t3",
+        "category": "v0.21",
+        "label": "cosmetics",
+        "units": 153,
+        "brands": 24,
+        "brands_rated": 9,
+        "S": {
+          "n": 9,
+          "median": 65.0,
+          "q25": 46.42857142857143,
+          "q75": 80.55555555555556,
+          "min": 37.5,
+          "max": 84.72222222222223
+        },
+        "E_mean": 0.7617724867724868,
+        "NV": {
+          "n": 9,
+          "median": 75.0,
+          "q25": 44.44444444444444,
+          "q75": 80.55555555555556,
+          "min": 31.25,
+          "max": 84.72222222222223
+        },
+        "share_non_evaluative": 0.23178807947019867,
+        "share_mixed": 0.11920529801324503,
+        "share_refers_false": 0.013071895424836602,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.24183006535947713
+      },
+      {
+        "block": "F",
+        "wave": "t3",
+        "category": "v0.22",
+        "label": "automotive",
+        "units": 156,
+        "brands": 24,
+        "brands_rated": 10,
+        "S": {
+          "n": 10,
+          "median": 51.339285714285715,
+          "q25": 46.42857142857143,
+          "q75": 62.79761904761905,
+          "min": 40.476190476190474,
+          "max": 83.92857142857143
+        },
+        "E_mean": 0.6208333333333333,
+        "NV": {
+          "n": 10,
+          "median": 51.875,
+          "q25": 41.666666666666664,
+          "q75": 69.16666666666667,
+          "min": 34.61538461538461,
+          "max": 83.92857142857143
+        },
+        "share_non_evaluative": 0.3137254901960784,
+        "share_mixed": 0.09803921568627451,
+        "share_refers_false": 0.019230769230769232,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.30128205128205127
+      },
+      {
+        "block": "F",
+        "wave": "t3",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 181,
+        "brands": 24,
+        "brands_rated": 13,
+        "S": {
+          "n": 13,
+          "median": 65.625,
+          "q25": 55.0,
+          "q75": 71.875,
+          "min": 33.92857142857143,
+          "max": 87.5
+        },
+        "E_mean": 0.7571990874622454,
+        "NV": {
+          "n": 12,
+          "median": 71.60714285714286,
+          "q25": 60.0,
+          "q75": 76.3586956521739,
+          "min": 27.5,
+          "max": 87.5
+        },
+        "share_non_evaluative": 0.2346368715083799,
+        "share_mixed": 0.07262569832402235,
+        "share_refers_false": 0.011049723756906077,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.292817679558011
+      },
+      {
+        "block": "R",
+        "wave": "t1",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 144,
+        "brands": 24,
+        "brands_rated": 23,
+        "S": {
+          "n": 23,
+          "median": 62.5,
+          "q25": 52.08333333333333,
+          "q75": 79.16666666666667,
+          "min": 33.333333333333336,
+          "max": 91.66666666666667
+        },
+        "E_mean": 0.7681159420289854,
+        "NV": {
+          "n": 22,
+          "median": 75.0,
+          "q25": 55.3125,
+          "q75": 79.16666666666667,
+          "min": 30.0,
+          "max": 91.66666666666667
+        },
+        "share_non_evaluative": 0.23076923076923078,
+        "share_mixed": 0.08391608391608392,
+        "share_refers_false": 0.006944444444444444,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "bare_share": 0.0
+      },
+      {
+        "block": "R",
+        "wave": "t2",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 144,
+        "brands": 24,
+        "brands_rated": 23,
+        "S": {
+          "n": 23,
+          "median": 66.66666666666667,
+          "q25": 54.16666666666667,
+          "q75": 79.16666666666667,
+          "min": 33.333333333333336,
+          "max": 87.5
+        },
+        "E_mean": 0.746376811594203,
+        "NV": {
+          "n": 21,
+          "median": 70.83333333333333,
+          "q25": 66.66666666666667,
+          "q75": 79.16666666666667,
+          "min": 25.0,
+          "max": 87.5
+        },
+        "share_non_evaluative": 0.25874125874125875,
+        "share_mixed": 0.06993006993006994,
+        "share_refers_false": 0.0,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.0
+      },
+      {
+        "block": "R",
+        "wave": "t3",
+        "category": "v0.23",
+        "label": "premium spirits",
+        "units": 144,
+        "brands": 24,
+        "brands_rated": 22,
+        "S": {
+          "n": 22,
+          "median": 62.5,
+          "q25": 54.166666666666664,
+          "q75": 75.0,
+          "min": 37.5,
+          "max": 91.66666666666667
+        },
+        "E_mean": 0.7196969696969696,
+        "NV": {
+          "n": 18,
+          "median": 72.5,
+          "q25": 65.41666666666667,
+          "q75": 75.0,
+          "min": 25.0,
+          "max": 91.66666666666667
+        },
+        "share_non_evaluative": 0.2746478873239437,
+        "share_mixed": 0.04225352112676056,
+        "share_refers_false": 0.006993006993006993,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "bare_share": 0.0
+      }
+    ],
+    "convergence_rec_vs_frames": {
+      "t1": {
+        "n": 12,
+        "spearman": 0.8877247628654674
+      },
+      "t2": {
+        "n": 12,
+        "spearman": 0.8690605794343782
+      },
+      "t3": {
+        "n": 12,
+        "spearman": 0.9119944456891782
+      }
+    },
+    "mean_u": {
+      "E by model": {
+        "claude-opus-4-7": {
+          "n": 908,
+          "mean_u": 64.59251101321586
+        },
+        "claude-sonnet-4-6": {
+          "n": 933,
+          "mean_u": 66.47909967845659
+        },
+        "gemini-2.5-flash": {
+          "n": 967,
+          "mean_u": 66.67528438469493
+        },
+        "gpt-5.4-mini": {
+          "n": 931,
+          "mean_u": 65.0375939849624
+        },
+        "gpt-5.5": {
+          "n": 929,
+          "mean_u": 65.23143164693218
+        },
+        "grok-4-1-fast": {
+          "n": 948,
+          "mean_u": 66.58755274261604
+        }
+      },
+      "E by frame": {
+        "p1_functional": {
+          "n": 904,
+          "mean_u": 65.40376106194691
+        },
+        "p2_contextual": {
+          "n": 933,
+          "mean_u": 66.37191854233654
+        },
+        "p3_constraint": {
+          "n": 916,
+          "mean_u": 64.71069868995633
+        },
+        "p4_identity": {
+          "n": 951,
+          "mean_u": 65.95688748685595
+        },
+        "p5_discovery": {
+          "n": 953,
+          "mean_u": 66.21196222455404
+        },
+        "p6_comparison": {
+          "n": 959,
+          "mean_u": 65.98018769551616
+        }
+      },
+      "by panel": {
+        "EARLY-6": {
+          "n": 5616,
+          "mean_u": 65.78080484330485
+        },
+        "LEGACY-6": {
+          "n": 2762,
+          "mean_u": 61.142288196958724
+        }
+      },
+      "F by model": {
+        "claude-opus-4-5": {
+          "n": 394,
+          "mean_u": 59.96192893401015
+        },
+        "claude-sonnet-4-5": {
+          "n": 418,
+          "mean_u": 60.70574162679426
+        },
+        "gemini-2.5-flash": {
+          "n": 391,
+          "mean_u": 59.910485933503836
+        },
+        "gemini-2.5-flash-lite": {
+          "n": 351,
+          "mean_u": 62.32193732193732
+        },
+        "gpt-4o": {
+          "n": 397,
+          "mean_u": 61.272040302267
+        },
+        "gpt-4o-mini": {
+          "n": 383,
+          "mean_u": 60.50913838120105
+        }
+      },
+      "F by frame": {
+        "CC-1": {
+          "n": 83,
+          "mean_u": 62.65060240963855
+        },
+        "CC-2": {
+          "n": 69,
+          "mean_u": 60.507246376811594
+        },
+        "CC-3": {
+          "n": 82,
+          "mean_u": 64.02439024390245
+        },
+        "EA-1": {
+          "n": 83,
+          "mean_u": 65.66265060240964
+        },
+        "EA-2": {
+          "n": 87,
+          "mean_u": 63.2183908045977
+        },
+        "EA-3": {
+          "n": 87,
+          "mean_u": 63.2183908045977
+        },
+        "q1": {
+          "n": 241,
+          "mean_u": 61.51452282157676
+        },
+        "q1_audiophile": {
+          "n": 73,
+          "mean_u": 54.10958904109589
+        },
+        "q2": {
+          "n": 251,
+          "mean_u": 62.84860557768924
+        },
+        "q2_enthusiast": {
+          "n": 75,
+          "mean_u": 54.333333333333336
+        },
+        "q3": {
+          "n": 227,
+          "mean_u": 63.76651982378855
+        },
+        "q3_reference": {
+          "n": 80,
+          "mean_u": 55.625
+        },
+        "q4": {
+          "n": 193,
+          "mean_u": 62.56476683937824
+        },
+        "q4_famous": {
+          "n": 84,
+          "mean_u": 53.273809523809526
+        },
+        "q5": {
+          "n": 216,
+          "mean_u": 62.15277777777778
+        },
+        "q5_popular": {
+          "n": 81,
+          "mean_u": 54.32098765432099
+        },
+        "q6": {
+          "n": 229,
+          "mean_u": 62.11790393013101
+        },
+        "q6_iconic": {
+          "n": 93,
+          "mean_u": 49.193548387096776
+        }
+      },
+      "R by model": {
+        "claude-opus-4-5": {
+          "n": 71,
+          "mean_u": 64.43661971830986
+        },
+        "claude-sonnet-4-5": {
+          "n": 70,
+          "mean_u": 62.142857142857146
+        },
+        "gemini-2.5-flash": {
+          "n": 72,
+          "mean_u": 63.19444444444444
+        },
+        "gemini-2.5-flash-lite": {
+          "n": 72,
+          "mean_u": 65.625
+        },
+        "gpt-4o": {
+          "n": 72,
+          "mean_u": 61.80555555555556
+        },
+        "gpt-4o-mini": {
+          "n": 71,
+          "mean_u": 62.32394366197183
+        }
+      },
+      "R by frame": {
+        "A": {
+          "n": 428,
+          "mean_u": 63.25934579439252
+        }
+      }
+    },
+    "legacy_label_agreement": {
+      "exploratory": true,
+      "n": 3388,
+      "agreement": 0.3367768595041322,
+      "table_J1_sign_vs_legacy": {
+        "positive|neutral": 658,
+        "neutral|negative": 367,
+        "neutral|neutral": 384,
+        "positive|positive": 683,
+        "neutral|positive": 360,
+        "positive|negative": 708,
+        "negative|neutral": 77,
+        "negative|positive": 77,
+        "negative|negative": 74
+      }
+    },
+    "extraction_misses_by_set": {
+      "OMNI t1 v0.19": 0,
+      "OMNI t1 v0.20": 0,
+      "OMNI t1 v0.21": 0,
+      "OMNI t1 v0.22": 0,
+      "OMNI t1 v0.23": 0,
+      "OMNI t2 v0.19": 0,
+      "OMNI t2 v0.20": 0,
+      "OMNI t2 v0.21": 0,
+      "OMNI t2 v0.22": 0,
+      "OMNI t2 v0.23": 0,
+      "OMNI t3 v0.19": 0,
+      "OMNI t3 v0.20": 0,
+      "OMNI t3 v0.21": 0,
+      "OMNI t3 v0.22": 0,
+      "OMNI t3 v0.23": 0,
+      "EARLY-6 v0.9 pm": 0,
+      "EARLY-6 v0.9 finance": 0,
+      "EARLY-6 v0.9 oliveoil": 0,
+      "EARLY-6 v0.9 running": 0,
+      "EARLY-6 v0.9 skincare": 0,
+      "EARLY-6 v1.0 household": 0,
+      "EARLY-6 v1.0 knives": 0,
+      "EARLY-6 v0.14 premium_tea": 0
+    }
+  },
+  "self_consistency": {
+    "J1": {
+      "E": {
+        "n": 283,
+        "exact_valence_agreement": 0.5441696113074205,
+        "alpha_ordinal": 0.5797780565058601,
+        "kappa_evaluative": 0.29716388164954755,
+        "flag_below_0.90": true
+      },
+      "all": {
+        "n": 423,
+        "exact_valence_agreement": 0.5366430260047281,
+        "alpha_ordinal": 0.6124673021442419,
+        "kappa_evaluative": 0.21037162564706804,
+        "flag_below_0.90": true
+      },
+      "F": {
+        "n": 118,
+        "exact_valence_agreement": 0.559322033898305,
+        "alpha_ordinal": 0.6412590912321433,
+        "kappa_evaluative": 0.06291997556505798,
+        "flag_below_0.90": true
+      },
+      "R": {
+        "n": 22,
+        "exact_valence_agreement": 0.3181818181818182,
+        "alpha_ordinal": 0.5767654302834246,
+        "kappa_evaluative": -0.22222222222222268,
+        "flag_below_0.90": true
+      }
+    },
+    "J2": {
+      "E": {
+        "n": 24,
+        "exact_valence_agreement": 0.4166666666666667,
+        "alpha_ordinal": 0.6280796214716919,
+        "kappa_evaluative": 0.024390243902439195,
+        "flag_below_0.90": true
+      },
+      "all": {
+        "n": 164,
+        "exact_valence_agreement": 0.5060975609756098,
+        "alpha_ordinal": 0.6393069232825703,
+        "kappa_evaluative": 0.26483772637618785,
+        "flag_below_0.90": true
+      },
+      "F": {
+        "n": 118,
+        "exact_valence_agreement": 0.5254237288135594,
+        "alpha_ordinal": 0.6479032058126724,
+        "kappa_evaluative": 0.30588235294117655,
+        "flag_below_0.90": true
+      },
+      "R": {
+        "n": 22,
+        "exact_valence_agreement": 0.5,
+        "alpha_ordinal": 0.5687238590232501,
+        "kappa_evaluative": 0.3037974683544304,
+        "flag_below_0.90": true
+      }
+    }
+  },
+  "seeds": {
+    "unit_order": 111000,
+    "window_cap": 111001,
+    "j2_sample": 111002,
+    "selfcon": 111003,
+    "e_half": 111004,
+    "H4": 111011,
+    "H6": 111012,
+    "boot": 111020,
+    "human_sample": 111022
+  },
+  "draws": {
+    "perm": 10000,
+    "boot": 10000,
+    "ci": 0.95
+  }
+}
