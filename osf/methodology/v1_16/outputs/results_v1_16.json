@@ -1,0 +1,7202 @@
+{
+  "phase": "v1.16",
+  "statistic": "PREC",
+  "rating_floor": 6,
+  "prior": 1.0,
+  "seeds": {
+    "H1": 116001,
+    "H2": 116002,
+    "H3": 116003,
+    "H4_S1": 116004,
+    "H5": 116005,
+    "SHUFFLE": 116010,
+    "BOOT": 110020,
+    "E3": 116020
+  },
+  "draws": {
+    "perm": 10000,
+    "shuffle": 10000
+  },
+  "H1_Sep_Presence": {
+    "verdict": "MARGINAL",
+    "per_wave": {
+      "t1": {
+        "rho": 0.25453903016099705,
+        "n": 55,
+        "p_perm": 0.09509049095090491,
+        "sided": "two",
+        "perm_seed": 116001,
+        "ci90": [
+          -0.010499981090967132,
+          0.498863328759351
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        },
+        "single_wave_reading": "CONFIRMED"
+      },
+      "t2": {
+        "rho": 0.4107646307811678,
+        "n": 54,
+        "p_perm": 0.007099290070992901,
+        "sided": "two",
+        "perm_seed": 116001,
+        "ci90": [
+          0.1502761181711091,
+          0.6156190403234959
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        },
+        "single_wave_reading": "MARGINAL"
+      },
+      "t3": {
+        "rho": 0.4338017088012939,
+        "n": 54,
+        "p_perm": 0.0038996100389961006,
+        "sided": "two",
+        "perm_seed": 116001,
+        "ci90": [
+          0.2776949434667043,
+          0.5600845559563814
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 13,
+          "v0.22": 14,
+          "v0.23": 10
+        },
+        "single_wave_reading": "MARGINAL"
+      },
+      "t4": {
+        "rho": 0.2576119476668574,
+        "n": 71,
+        "p_perm": 0.0400959904009599,
+        "sided": "two",
+        "perm_seed": 116001,
+        "ci90": [
+          0.016757840188486868,
+          0.453375128211427
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "single_wave_reading": "CONFIRMED"
+      }
+    }
+  },
+  "H2_Sep_Consistency": {
+    "verdict": "CONFIRMED",
+    "per_wave": {
+      "t1": {
+        "rho": 0.203842398166107,
+        "n": 55,
+        "p_perm": 0.1857814218578142,
+        "sided": "two",
+        "perm_seed": 116002,
+        "ci90": [
+          -0.06727378624661051,
+          0.4144525790852156
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        },
+        "single_wave_reading": "CONFIRMED"
+      },
+      "t2": {
+        "rho": 0.07058828757121596,
+        "n": 54,
+        "p_perm": 0.6519348065193481,
+        "sided": "two",
+        "perm_seed": 116002,
+        "ci90": [
+          -0.195410417256239,
+          0.31928891538359494
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        },
+        "single_wave_reading": "CONFIRMED"
+      },
+      "t3": {
+        "rho": 0.18197142093667543,
+        "n": 54,
+        "p_perm": 0.23687631236876314,
+        "sided": "two",
+        "perm_seed": 116002,
+        "ci90": [
+          -0.061095103816709136,
+          0.38284913933667414
+        ],
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 13,
+          "v0.22": 14,
+          "v0.23": 10
+        },
+        "single_wave_reading": "CONFIRMED"
+      },
+      "t4": {
+        "rho": 0.13867602920172067,
+        "n": 70,
+        "p_perm": 0.2812718728127187,
+        "sided": "two",
+        "perm_seed": 116002,
+        "ci90": [
+          -0.08407774956204143,
+          0.36114781928796535
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "single_wave_reading": "CONFIRMED"
+      }
+    }
+  },
+  "H3_Retest_t1_t2": {
+    "rho": 0.8932633420822397,
+    "n": 53,
+    "units_per_category": {
+      "v0.19": 8,
+      "v0.20": 9,
+      "v0.21": 13,
+      "v0.22": 14,
+      "v0.23": 9
+    },
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 116003,
+    "ci90": [
+      0.7560318937626662,
+      0.9459508069220299
+    ],
+    "p_shuffle": 9.999000099990002e-05,
+    "shuffle_draws": 10000,
+    "shuffle_seed": 116010,
+    "shuffled_mean_rho": 0.00010691163604549487,
+    "verdict": "CONFIRMED"
+  },
+  "H4_Sep_Presence_t4_S1": {
+    "rho": 0.38819094934462595,
+    "n": 65,
+    "p_perm": 0.004299570042995701,
+    "sided": "two",
+    "perm_seed": 116004,
+    "ci90": [
+      0.15992303870911903,
+      0.5596623354400474
+    ],
+    "units_per_category": {
+      "v0.19": 11,
+      "v0.20": 10,
+      "v0.21": 15,
+      "v0.22": 16,
+      "v0.23": 13
+    },
+    "single_wave_reading": "MARGINAL",
+    "verdict": "MARGINAL"
+  },
+  "GATE": "MARGINAL",
+  "CONSEQUENCE": "NOT PASS: Ranking is reported as part of Presence and not as a separate AIAS component. There is no further Ranking redesign.",
+  "MQ7_negative_control": {
+    "shuffled_mean_rho_H3": 0.00010691163604549487,
+    "threshold": 0.2,
+    "flag": false
+  },
+  "MQ9_identification": {
+    "t1": {
+      "units_at_floor": 55,
+      "at_floor_outside_main_component": 0
+    },
+    "t2": {
+      "units_at_floor": 54,
+      "at_floor_outside_main_component": 0
+    },
+    "t3": {
+      "units_at_floor": 54,
+      "at_floor_outside_main_component": 0
+    },
+    "t4": {
+      "units_at_floor": 71,
+      "at_floor_outside_main_component": 0
+    },
+    "flag": false
+  },
+  "H5_Retest_t2_t3": {
+    "rho": 0.8741784037558685,
+    "n": 52,
+    "units_per_category": {
+      "v0.19": 8,
+      "v0.20": 9,
+      "v0.21": 12,
+      "v0.22": 14,
+      "v0.23": 9
+    },
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 116005,
+    "ci90": [
+      0.7078870496592016,
+      0.9332057287228365
+    ],
+    "p_shuffle": 9.999000099990002e-05,
+    "shuffle_draws": 10000,
+    "shuffle_seed": 116010,
+    "shuffled_mean_rho": 0.0034390610328638503,
+    "verdict": "CONFIRMED"
+  },
+  "D1_descriptives": {
+    "t1": {
+      "rankable_answers": 161,
+      "rankable_rows": 934,
+      "units_with_rows": 84,
+      "units_rated": 55,
+      "comparisons": 2606.0,
+      "PREC_rated_distribution": {
+        "median": 0.3595243683478912,
+        "q25": -0.2633688946369764,
+        "q75": 0.7959458604959109,
+        "min": -2.5106954931806236,
+        "max": 2.8200502524669386,
+        "n": 55
+      }
+    },
+    "t2": {
+      "rankable_answers": 161,
+      "rankable_rows": 923,
+      "units_with_rows": 88,
+      "units_rated": 54,
+      "comparisons": 2547.0,
+      "PREC_rated_distribution": {
+        "median": 0.3468844163243402,
+        "q25": -0.645140768988556,
+        "q75": 1.001149645884083,
+        "min": -2.397389646235814,
+        "max": 3.3028049256814644,
+        "n": 54
+      }
+    },
+    "t3": {
+      "rankable_answers": 161,
+      "rankable_rows": 903,
+      "units_with_rows": 83,
+      "units_rated": 54,
+      "comparisons": 2374.0,
+      "PREC_rated_distribution": {
+        "median": 0.31972689691725237,
+        "q25": -0.41048971411917257,
+        "q75": 0.9503881145348314,
+        "min": -2.9248132794296167,
+        "max": 2.80967638675839,
+        "n": 54
+      }
+    },
+    "t4": {
+      "rankable_answers": 262,
+      "rankable_rows": 1641,
+      "units_with_rows": 87,
+      "units_rated": 71,
+      "comparisons": 4925.0,
+      "PREC_rated_distribution": {
+        "median": 0.2604233276205618,
+        "q25": -0.5900074697306894,
+        "q75": 0.9731287190614407,
+        "min": -3.2702446842061157,
+        "max": 3.3542438529792107,
+        "n": 71
+      }
+    },
+    "t4_S1": {
+      "rankable_answers": 241,
+      "rankable_rows": 1375,
+      "units_with_rows": 90,
+      "units_rated": 65,
+      "comparisons": 3806.0,
+      "PREC_rated_distribution": {
+        "median": 0.24869307984787045,
+        "q25": -0.6138610027231696,
+        "q75": 0.7209393107160195,
+        "min": -2.8450220801539468,
+        "max": 3.1392114877430353,
+        "n": 65
+      }
+    }
+  },
+  "D2_PREC_vs_v1_10_and_v1_14_statistics": {
+    "t1": {
+      "MNP": {
+        "rho": 0.9233776387802971,
+        "n": 55,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        }
+      },
+      "MODE": {
+        "rho": 0.7171567783464303,
+        "n": 55,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        }
+      }
+    },
+    "t2": {
+      "MNP": {
+        "rho": 0.9513776337115073,
+        "n": 54,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        }
+      },
+      "MODE": {
+        "rho": 0.7132152534353688,
+        "n": 54,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 14,
+          "v0.22": 14,
+          "v0.23": 9
+        }
+      }
+    },
+    "t3": {
+      "MNP": {
+        "rho": 0.9393939393939394,
+        "n": 54,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 13,
+          "v0.22": 14,
+          "v0.23": 10
+        }
+      },
+      "MODE": {
+        "rho": 0.7807515241067599,
+        "n": 54,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 13,
+          "v0.22": 14,
+          "v0.23": 10
+        }
+      }
+    },
+    "t4": {
+      "MNP": {
+        "rho": 0.9517133956386293,
+        "n": 71,
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        }
+      },
+      "MODE": {
+        "rho": 0.8160878918416145,
+        "n": 71,
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        }
+      }
+    }
+  },
+  "D3_PREC_S0_vs_S1_t4": {
+    "rho": 0.7858559153998678,
+    "n": 60,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10,
+      "v0.21": 13,
+      "v0.22": 14,
+      "v0.23": 13
+    }
+  },
+  "E1_moderators": {
+    "cells": [
+      {
+        "wave": "t1",
+        "category": "v0.19",
+        "category_size": 16,
+        "first_position_concentration": 0.5666666666666667,
+        "modal_first_brand": "Sennheiser",
+        "rankable_answers": 30,
+        "rho_PREC_P": 0.6467181814331598,
+        "n": 8
+      },
+      {
+        "wave": "t1",
+        "category": "v0.20",
+        "category_size": 24,
+        "first_position_concentration": 0.4166666666666667,
+        "modal_first_brand": "CeraVe",
+        "rankable_answers": 36,
+        "rho_PREC_P": 0.018293022999573125,
+        "n": 10
+      },
+      {
+        "wave": "t1",
+        "category": "v0.21",
+        "category_size": 24,
+        "first_position_concentration": 0.2571428571428571,
+        "modal_first_brand": "Fenty Beauty",
+        "rankable_answers": 35,
+        "rho_PREC_P": 0.4030846782519726,
+        "n": 14
+      },
+      {
+        "wave": "t1",
+        "category": "v0.22",
+        "category_size": 24,
+        "first_position_concentration": 0.4444444444444444,
+        "modal_first_brand": "Toyota",
+        "rankable_answers": 36,
+        "rho_PREC_P": 0.2756354658706069,
+        "n": 14
+      },
+      {
+        "wave": "t1",
+        "category": "v0.23",
+        "category_size": 24,
+        "first_position_concentration": 0.20833333333333334,
+        "modal_first_brand": "S11",
+        "rankable_answers": 24,
+        "rho_PREC_P": -0.3689323936863109,
+        "n": 9
+      },
+      {
+        "wave": "t2",
+        "category": "v0.19",
+        "category_size": 16,
+        "first_position_concentration": 0.6666666666666666,
+        "modal_first_brand": "Sennheiser",
+        "rankable_answers": 30,
+        "rho_PREC_P": 0.7711403083390078,
+        "n": 8
+      },
+      {
+        "wave": "t2",
+        "category": "v0.20",
+        "category_size": 24,
+        "first_position_concentration": 0.4722222222222222,
+        "modal_first_brand": "CeraVe",
+        "rankable_answers": 36,
+        "rho_PREC_P": -0.01673654817511446,
+        "n": 9
+      },
+      {
+        "wave": "t2",
+        "category": "v0.21",
+        "category_size": 24,
+        "first_position_concentration": 0.2571428571428571,
+        "modal_first_brand": "Fenty Beauty",
+        "rankable_answers": 35,
+        "rho_PREC_P": 0.4933932673685348,
+        "n": 14
+      },
+      {
+        "wave": "t2",
+        "category": "v0.22",
+        "category_size": 24,
+        "first_position_concentration": 0.4444444444444444,
+        "modal_first_brand": "Toyota",
+        "rankable_answers": 36,
+        "rho_PREC_P": 0.6283324238734794,
+        "n": 14
+      },
+      {
+        "wave": "t2",
+        "category": "v0.23",
+        "category_size": 24,
+        "first_position_concentration": 0.20833333333333334,
+        "modal_first_brand": "S11",
+        "rankable_answers": 24,
+        "rho_PREC_P": -0.5570066518960166,
+        "n": 9
+      },
+      {
+        "wave": "t3",
+        "category": "v0.19",
+        "category_size": 16,
+        "first_position_concentration": 0.6,
+        "modal_first_brand": "Sennheiser",
+        "rankable_answers": 30,
+        "rho_PREC_P": 0.6386005678432408,
+        "n": 8
+      },
+      {
+        "wave": "t3",
+        "category": "v0.20",
+        "category_size": 24,
+        "first_position_concentration": 0.3888888888888889,
+        "modal_first_brand": "CeraVe",
+        "rankable_answers": 36,
+        "rho_PREC_P": -0.15126584522688322,
+        "n": 9
+      },
+      {
+        "wave": "t3",
+        "category": "v0.21",
+        "category_size": 24,
+        "first_position_concentration": 0.25,
+        "modal_first_brand": "Charlotte Tilbury",
+        "rankable_answers": 36,
+        "rho_PREC_P": 0.8215964105261561,
+        "n": 13
+      },
+      {
+        "wave": "t3",
+        "category": "v0.22",
+        "category_size": 24,
+        "first_position_concentration": 0.4722222222222222,
+        "modal_first_brand": "Toyota",
+        "rankable_answers": 36,
+        "rho_PREC_P": 0.6541866089663162,
+        "n": 14
+      },
+      {
+        "wave": "t3",
+        "category": "v0.23",
+        "category_size": 24,
+        "first_position_concentration": 0.21739130434782608,
+        "modal_first_brand": "S11",
+        "rankable_answers": 23,
+        "rho_PREC_P": -0.7354916321399864,
+        "n": 10
+      },
+      {
+        "wave": "t4",
+        "category": "v0.19",
+        "category_size": 16,
+        "first_position_concentration": 0.5185185185185185,
+        "modal_first_brand": "Sennheiser",
+        "rankable_answers": 54,
+        "rho_PREC_P": 0.8063802242134233,
+        "n": 11
+      },
+      {
+        "wave": "t4",
+        "category": "v0.20",
+        "category_size": 24,
+        "first_position_concentration": 0.6851851851851852,
+        "modal_first_brand": "CeraVe",
+        "rankable_answers": 54,
+        "rho_PREC_P": 0.13223190671613808,
+        "n": 13
+      },
+      {
+        "wave": "t4",
+        "category": "v0.21",
+        "category_size": 24,
+        "first_position_concentration": 0.25925925925925924,
+        "modal_first_brand": "Rare Beauty",
+        "rankable_answers": 54,
+        "rho_PREC_P": 0.18783572094922768,
+        "n": 15
+      },
+      {
+        "wave": "t4",
+        "category": "v0.22",
+        "category_size": 24,
+        "first_position_concentration": 0.5,
+        "modal_first_brand": "Toyota",
+        "rankable_answers": 54,
+        "rho_PREC_P": 0.367032967032967,
+        "n": 14
+      },
+      {
+        "wave": "t4",
+        "category": "v0.23",
+        "category_size": 24,
+        "first_position_concentration": 0.21739130434782608,
+        "modal_first_brand": "S17",
+        "rankable_answers": 46,
+        "rho_PREC_P": 0.16882555257352957,
+        "n": 18
+      }
+    ],
+    "spearman_across_cells": {
+      "abs_rho_PREC_P_vs_category_size": -0.520265981714472,
+      "abs_rho_PREC_P_vs_fpc": 0.05499068131892368,
+      "cells": 20
+    },
+    "retest_by_category": [
+      {
+        "category": "v0.19",
+        "category_size": 16,
+        "n": 8,
+        "retest_rho_t1_t2": 0.8333333333333334
+      },
+      {
+        "category": "v0.20",
+        "category_size": 24,
+        "n": 9,
+        "retest_rho_t1_t2": 0.9333333333333333
+      },
+      {
+        "category": "v0.21",
+        "category_size": 24,
+        "n": 13,
+        "retest_rho_t1_t2": 0.989010989010989
+      },
+      {
+        "category": "v0.22",
+        "category_size": 24,
+        "n": 14,
+        "retest_rho_t1_t2": 0.810989010989011
+      },
+      {
+        "category": "v0.23",
+        "category_size": 24,
+        "n": 9,
+        "retest_rho_t1_t2": 0.9166666666666666
+      }
+    ]
+  },
+  "E3_early_panel_pi_hat": {
+    "rho": 0.6867386569356377,
+    "n": 154,
+    "p_perm": 9.999000099990002e-05,
+    "sided": "two",
+    "perm_seed": 116020,
+    "ci90": [
+      null,
+      null
+    ],
+    "units_per_category": {
+      "pm": 17,
+      "finance": 14,
+      "oliveoil": 16,
+      "running": 15,
+      "skincare": 22,
+      "household": 20,
+      "knives": 16,
+      "premium_tea": 17,
+      "kitchen_knives": 17
+    }
+  },
+  "sensitivities": {
+    "S1_first_mention": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2474466113639414,
+            "n": 55,
+            "p_perm": 0.10368963103689631,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.4107646307811678,
+            "n": 54,
+            "p_perm": 0.007099290070992901,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.44144205200914444,
+            "n": 54,
+            "p_perm": 0.0031996800319968005,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.22287336684511452,
+            "n": 71,
+            "p_perm": 0.0775922407759224,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.1873782044680753,
+            "n": 55,
+            "p_perm": 0.2253774622537746,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.07058828757121596,
+            "n": 54,
+            "p_perm": 0.6519348065193481,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.1701769769870761,
+            "n": 54,
+            "p_perm": 0.26787321267873215,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.11750094689846392,
+            "n": 70,
+            "p_perm": 0.3638636136386361,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S2_floor_3": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.33047648736131174,
+            "n": 70,
+            "p_perm": 0.0086991300869913,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 14,
+              "v0.21": 17,
+              "v0.22": 14,
+              "v0.23": 14
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t2": {
+            "rho": 0.2883026282032527,
+            "n": 68,
+            "p_perm": 0.0344965503449655,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 9,
+              "v0.20": 13,
+              "v0.21": 19,
+              "v0.22": 14,
+              "v0.23": 13
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.4120783346211022,
+            "n": 67,
+            "p_perm": 0.0013998600139986002,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 12,
+              "v0.21": 18,
+              "v0.22": 14,
+              "v0.23": 12
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.40305511293527474,
+            "n": 78,
+            "p_perm": 0.0006999300069993001,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 12,
+              "v0.20": 15,
+              "v0.21": 16,
+              "v0.22": 16,
+              "v0.23": 19
+            },
+            "single_wave_reading": "MARGINAL"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.203842398166107,
+            "n": 55,
+            "p_perm": 0.1857814218578142,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.07058828757121596,
+            "n": 54,
+            "p_perm": 0.6519348065193481,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.18197142093667543,
+            "n": 54,
+            "p_perm": 0.23687631236876314,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.13867602920172067,
+            "n": 70,
+            "p_perm": 0.2812718728127187,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S2_floor_10": {
+      "H1": {
+        "verdict": "FALSIFIED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.6589320989292479,
+            "n": 34,
+            "p_perm": 0.00019998000199980003,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 11,
+              "v0.22": 10
+            },
+            "single_wave_reading": "FALSIFIED"
+          },
+          "t2": {
+            "rho": 0.730564594136819,
+            "n": 33,
+            "p_perm": 9.999000099990002e-05,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 10,
+              "v0.22": 10
+            },
+            "single_wave_reading": "FALSIFIED"
+          },
+          "t3": {
+            "rho": 0.4681609922473082,
+            "n": 31,
+            "p_perm": 0.0170982901709829,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 8,
+              "v0.22": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.17545240686688562,
+            "n": 58,
+            "p_perm": 0.2186781321867813,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 9,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 13,
+              "v0.23": 12
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2929414005087666,
+            "n": 34,
+            "p_perm": 0.13388661133886612,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 11,
+              "v0.22": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.09047644692906791,
+            "n": 33,
+            "p_perm": 0.6573342665733427,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 10,
+              "v0.22": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.2823529411764706,
+            "n": 31,
+            "p_perm": 0.17798220177982202,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 7,
+              "v0.20": 6,
+              "v0.21": 8,
+              "v0.22": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.2794384057677847,
+            "n": 58,
+            "p_perm": 0.0481951804819518,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 9,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 13,
+              "v0.23": 12
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S7_without_Denon": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.25453903016099705,
+            "n": 55,
+            "p_perm": 0.09509049095090491,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.4107646307811678,
+            "n": 54,
+            "p_perm": 0.007099290070992901,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.4338017088012939,
+            "n": 54,
+            "p_perm": 0.0038996100389961006,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.2576119476668574,
+            "n": 71,
+            "p_perm": 0.0400959904009599,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.203842398166107,
+            "n": 55,
+            "p_perm": 0.1857814218578142,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.07058828757121596,
+            "n": 54,
+            "p_perm": 0.6519348065193481,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.18197142093667543,
+            "n": 54,
+            "p_perm": 0.23687631236876314,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.13867602920172067,
+            "n": 70,
+            "p_perm": 0.2812718728127187,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S_COI_without_Denon_and_Cheil_Iris": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2455395946728306,
+            "n": 52,
+            "p_perm": 0.11788821117888211,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 11,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.3732441586961375,
+            "n": 51,
+            "p_perm": 0.0163983601639836,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 11,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.40891688980176544,
+            "n": 51,
+            "p_perm": 0.0059994000599940004,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 11,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.30600627590588153,
+            "n": 66,
+            "p_perm": 0.0207979202079792,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 12,
+              "v0.21": 15,
+              "v0.22": 11,
+              "v0.23": 17
+            },
+            "single_wave_reading": "MARGINAL"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.14882424056150934,
+            "n": 52,
+            "p_perm": 0.34526547345265474,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 11,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.06009014273665713,
+            "n": 51,
+            "p_perm": 0.7124287571242875,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 11,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.10918636674952284,
+            "n": 51,
+            "p_perm": 0.49235076492350766,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 11,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.03418383363974569,
+            "n": 65,
+            "p_perm": 0.8061193880611939,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 12,
+              "v0.21": 15,
+              "v0.22": 11,
+              "v0.23": 16
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S9_uncentred": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.3451969228722852,
+            "n": 55,
+            "p_perm": 0.046995300469953004,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t2": {
+            "rho": 0.4907314878273466,
+            "n": 54,
+            "p_perm": 0.0032996700329967,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.4960967594046097,
+            "n": 54,
+            "p_perm": 0.0018998100189981002,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.3102860342906703,
+            "n": 71,
+            "p_perm": 0.019198080191980802,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "MARGINAL"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.30023077841712487,
+            "n": 55,
+            "p_perm": 0.0938906109389061,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t2": {
+            "rho": 0.196234467246315,
+            "n": 54,
+            "p_perm": 0.3307669233076692,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.2713655192748158,
+            "n": 54,
+            "p_perm": 0.11858814118588142,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.1850787480647987,
+            "n": 70,
+            "p_perm": 0.16718328167183283,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S_w_pair_weight_1_over_n_minus_1": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.29945768254234945,
+            "n": 55,
+            "p_perm": 0.048095190480951906,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.3724591989424478,
+            "n": 54,
+            "p_perm": 0.0156984301569843,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.36418969290754416,
+            "n": 54,
+            "p_perm": 0.015398460153984602,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.31420851192700033,
+            "n": 71,
+            "p_perm": 0.0124987501249875,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "MARGINAL"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.23363474866730727,
+            "n": 55,
+            "p_perm": 0.1254874512548745,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.10466539191594092,
+            "n": 54,
+            "p_perm": 0.5086491350864913,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.0817186473650811,
+            "n": 54,
+            "p_perm": 0.5989401059894011,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.15403834381388734,
+            "n": 70,
+            "p_perm": 0.23347665233476653,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S_prior_0.1": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2474466113639414,
+            "n": 55,
+            "p_perm": 0.10318968103189681,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.4254347961662095,
+            "n": 54,
+            "p_perm": 0.0052994700529947,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.4338017088012939,
+            "n": 54,
+            "p_perm": 0.0038996100389961006,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.2501958461431146,
+            "n": 71,
+            "p_perm": 0.04659534046595341,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.20070636127124383,
+            "n": 55,
+            "p_perm": 0.19358064193580643,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.062474691298662406,
+            "n": 54,
+            "p_perm": 0.6963303669633036,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.18197142093667543,
+            "n": 54,
+            "p_perm": 0.23687631236876314,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.11874653997512609,
+            "n": 70,
+            "p_perm": 0.3594640535946405,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S_prior_10.0": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2836967518822258,
+            "n": 55,
+            "p_perm": 0.0603939606039396,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.4017995297125312,
+            "n": 54,
+            "p_perm": 0.0084991500849915,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.4516291762862786,
+            "n": 54,
+            "p_perm": 0.001999800019998,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.277128004308286,
+            "n": 71,
+            "p_perm": 0.027197280271972803,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.1889462229155069,
+            "n": 55,
+            "p_perm": 0.2216778322167783,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.05760653353513027,
+            "n": 54,
+            "p_perm": 0.7192280771922808,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.1701769769870761,
+            "n": 54,
+            "p_perm": 0.2702729727027297,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.1415824130472657,
+            "n": 70,
+            "p_perm": 0.27187281271872815,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S4_leave_out_v0.19": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.22691576337814115,
+            "n": 47,
+            "p_perm": 0.15878412158784122,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.38462067462020877,
+            "n": 46,
+            "p_perm": 0.0182981701829817,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.4182789688157851,
+            "n": 46,
+            "p_perm": 0.006799320067993201,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.20619053631937526,
+            "n": 60,
+            "p_perm": 0.1362863713628637,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.24171317041406035,
+            "n": 47,
+            "p_perm": 0.1337866213378662,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.12358577352456061,
+            "n": 46,
+            "p_perm": 0.46115388461153883,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.2574797069065574,
+            "n": 46,
+            "p_perm": 0.11538846115388461,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.17085491317090737,
+            "n": 59,
+            "p_perm": 0.22307769223077692,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S4_leave_out_v0.20": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.28960236611891754,
+            "n": 45,
+            "p_perm": 0.08689131086891311,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.4568927449860994,
+            "n": 45,
+            "p_perm": 0.0051994800519948,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.49954589687578144,
+            "n": 45,
+            "p_perm": 0.0016998300169983002,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t4": {
+            "rho": 0.278309041392686,
+            "n": 58,
+            "p_perm": 0.0456954304569543,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.1916334132083517,
+            "n": 45,
+            "p_perm": 0.25277472252774724,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.060224773844030896,
+            "n": 45,
+            "p_perm": 0.7222277772222778,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 14,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.20993448770015952,
+            "n": 45,
+            "p_perm": 0.20787921207879212,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.21": 13,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.10929497926010863,
+            "n": 57,
+            "p_perm": 0.4527547245275472,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.21": 15,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S4_leave_out_v0.21": {
+      "H1": {
+        "verdict": "MARGINAL",
+        "per_wave": {
+          "t1": {
+            "rho": 0.17178961600597908,
+            "n": 41,
+            "p_perm": 0.3471652834716528,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.36223600920855203,
+            "n": 40,
+            "p_perm": 0.0461953804619538,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t3": {
+            "rho": 0.2621053626708288,
+            "n": 41,
+            "p_perm": 0.15278472152784722,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.2770852367407089,
+            "n": 56,
+            "p_perm": 0.055594440555944404,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.22": 14,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.23751681103852362,
+            "n": 41,
+            "p_perm": 0.19008099190080993,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.11832819448821691,
+            "n": 40,
+            "p_perm": 0.5422457754224578,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.22": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.13236189446431584,
+            "n": 41,
+            "p_perm": 0.46935306469353066,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.22": 14,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.143321468489457,
+            "n": 55,
+            "p_perm": 0.32656734326567344,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.22": 14,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S4_leave_out_v0.22": {
+      "H1": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.24280902052787465,
+            "n": 41,
+            "p_perm": 0.18638136186381363,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.2838747488251655,
+            "n": 40,
+            "p_perm": 0.1255874412558744,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.29560295088299815,
+            "n": 40,
+            "p_perm": 0.0928907109289071,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.23398291357800996,
+            "n": 57,
+            "p_perm": 0.10598940105989402,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.23": 18
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.03284681255397839,
+            "n": 41,
+            "p_perm": 0.8612138786121388,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": -0.04624278410402332,
+            "n": 40,
+            "p_perm": 0.8083191680831917,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.23": 9
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": -0.016382256376255587,
+            "n": 40,
+            "p_perm": 0.9344065593440656,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.23": 10
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.016888513600414806,
+            "n": 56,
+            "p_perm": 0.9085091490850915,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.23": 17
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    },
+    "S4_leave_out_v0.23": {
+      "H1": {
+        "verdict": "FALSIFIED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.3160192111551656,
+            "n": 46,
+            "p_perm": 0.050094990500949906,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14
+            },
+            "single_wave_reading": "MARGINAL"
+          },
+          "t2": {
+            "rho": 0.5142147192414996,
+            "n": 45,
+            "p_perm": 0.0011998800119988001,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14
+            },
+            "single_wave_reading": "FALSIFIED"
+          },
+          "t3": {
+            "rho": 0.618190849523896,
+            "n": 44,
+            "p_perm": 0.00019998000199980003,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14
+            },
+            "single_wave_reading": "FALSIFIED"
+          },
+          "t4": {
+            "rho": 0.31130636351617597,
+            "n": 53,
+            "p_perm": 0.0314968503149685,
+            "sided": "two",
+            "perm_seed": 116001,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14
+            },
+            "single_wave_reading": "MARGINAL"
+          }
+        }
+      },
+      "H2": {
+        "verdict": "CONFIRMED",
+        "per_wave": {
+          "t1": {
+            "rho": 0.2742223767097294,
+            "n": 46,
+            "p_perm": 0.0923907609239076,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 10,
+              "v0.21": 14,
+              "v0.22": 14
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t2": {
+            "rho": 0.0746068093888741,
+            "n": 45,
+            "p_perm": 0.669033096690331,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 14,
+              "v0.22": 14
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t3": {
+            "rho": 0.25342477885005393,
+            "n": 44,
+            "p_perm": 0.1376862313768623,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 8,
+              "v0.20": 9,
+              "v0.21": 13,
+              "v0.22": 14
+            },
+            "single_wave_reading": "CONFIRMED"
+          },
+          "t4": {
+            "rho": 0.2762974349672345,
+            "n": 53,
+            "p_perm": 0.059494050594940506,
+            "sided": "two",
+            "perm_seed": 116002,
+            "ci90": [
+              null,
+              null
+            ],
+            "units_per_category": {
+              "v0.19": 11,
+              "v0.20": 13,
+              "v0.21": 15,
+              "v0.22": 14
+            },
+            "single_wave_reading": "CONFIRMED"
+          }
+        }
+      }
+    }
+  },
+  "verdict_changes_under_sensitivities": [
+    {
+      "sensitivity": "S2_floor_10",
+      "hypothesis": "H1",
+      "primary": "MARGINAL",
+      "under_sensitivity": "FALSIFIED"
+    },
+    {
+      "sensitivity": "S9_uncentred",
+      "hypothesis": "H2",
+      "primary": "CONFIRMED",
+      "under_sensitivity": "MARGINAL"
+    },
+    {
+      "sensitivity": "S4_leave_out_v0.22",
+      "hypothesis": "H1",
+      "primary": "MARGINAL",
+      "under_sensitivity": "CONFIRMED"
+    },
+    {
+      "sensitivity": "S4_leave_out_v0.23",
+      "hypothesis": "H1",
+      "primary": "MARGINAL",
+      "under_sensitivity": "FALSIFIED"
+    }
+  ],
+  "units": [
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Audeze",
+      "n_ranked": 15,
+      "n_comparisons": 92.0,
+      "PREC": 0.8069076249294007,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 81.904762
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Audio-Technica",
+      "n_ranked": 22,
+      "n_comparisons": 101.0,
+      "PREC": 0.3506101571160134,
+      "main_component": true,
+      "rated": true,
+      "P": 74.074074,
+      "C_star": 35.064935
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Beyerdynamic",
+      "n_ranked": 22,
+      "n_comparisons": 118.0,
+      "PREC": 0.8323136448569042,
+      "main_component": true,
+      "rated": true,
+      "P": 74.074074,
+      "C_star": 62.337662
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Dan Clark Audio",
+      "n_ranked": 5,
+      "n_comparisons": 29.0,
+      "PREC": -0.906738397019912,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Focal",
+      "n_ranked": 19,
+      "n_comparisons": 109.0,
+      "PREC": 0.5471606057172248,
+      "main_component": true,
+      "rated": true,
+      "P": 68.518519,
+      "C_star": 72.44582
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Grado",
+      "n_ranked": 7,
+      "n_comparisons": 40.0,
+      "PREC": -0.3088326454611193,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "HiFiMan",
+      "n_ranked": 13,
+      "n_comparisons": 81.0,
+      "PREC": 0.3595243683478912,
+      "main_component": true,
+      "rated": true,
+      "P": 57.407407,
+      "C_star": 86.287625
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Meze",
+      "n_ranked": 4,
+      "n_comparisons": 27.0,
+      "PREC": -1.0053626211899072,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Sennheiser",
+      "n_ranked": 30,
+      "n_comparisons": 136.0,
+      "PREC": 2.5432941539793057,
+      "main_component": true,
+      "rated": true,
+      "P": 88.888889,
+      "C_star": -0.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Sony",
+      "n_ranked": 24,
+      "n_comparisons": 106.0,
+      "PREC": 0.27764208419724457,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 50.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "Stax",
+      "n_ranked": 4,
+      "n_comparisons": 23.0,
+      "PREC": -1.0541512036040477,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.19",
+      "brand": "ZMF Headphones",
+      "n_ranked": 1,
+      "n_comparisons": 8.0,
+      "PREC": -2.60115367970888,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Augustinus Bader",
+      "n_ranked": 7,
+      "n_comparisons": 56.0,
+      "PREC": 1.7825298227148059,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Bioderma",
+      "n_ranked": 2,
+      "n_comparisons": 9.0,
+      "PREC": -2.5367779688144565,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "CeraVe",
+      "n_ranked": 35,
+      "n_comparisons": 182.0,
+      "PREC": 1.2848029278184045,
+      "main_component": true,
+      "rated": true,
+      "P": 98.148148,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Cetaphil",
+      "n_ranked": 8,
+      "n_comparisons": 40.0,
+      "PREC": 0.7813268114813121,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 96.428571
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Drunk Elephant",
+      "n_ranked": 30,
+      "n_comparisons": 157.0,
+      "PREC": 0.11819285681689062,
+      "main_component": true,
+      "rated": true,
+      "P": 88.888889,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Estée Lauder",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -0.9351682507449206,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Eucerin",
+      "n_ranked": 3,
+      "n_comparisons": 14.0,
+      "PREC": -0.6320270350589419,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Fenty Skin",
+      "n_ranked": 4,
+      "n_comparisons": 30.0,
+      "PREC": -0.5996461612154403,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Glossier",
+      "n_ranked": 3,
+      "n_comparisons": 19.0,
+      "PREC": -1.0800070224770877,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Goop",
+      "n_ranked": 1,
+      "n_comparisons": 8.0,
+      "PREC": -2.7056917642476637,
+      "main_component": true,
+      "rated": false,
+      "P": 12.962963,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "La Mer",
+      "n_ranked": 9,
+      "n_comparisons": 62.0,
+      "PREC": 2.8200502524669386,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 91.358025
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "La Roche-Posay",
+      "n_ranked": 27,
+      "n_comparisons": 136.0,
+      "PREC": 0.6094655946739476,
+      "main_component": true,
+      "rated": true,
+      "P": 83.333333,
+      "C_star": 96.296296
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Paula's Choice",
+      "n_ranked": 21,
+      "n_comparisons": 114.0,
+      "PREC": 0.06922659248952759,
+      "main_component": true,
+      "rated": true,
+      "P": 72.222222,
+      "C_star": 70.47619
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Rare Beauty",
+      "n_ranked": 3,
+      "n_comparisons": 27.0,
+      "PREC": -0.8290502625758601,
+      "main_component": true,
+      "rated": false,
+      "P": 5.555556,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Rhode",
+      "n_ranked": 7,
+      "n_comparisons": 53.0,
+      "PREC": -0.2179051438128334,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 79.802956
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Sisley",
+      "n_ranked": 2,
+      "n_comparisons": 19.0,
+      "PREC": 2.052255414121201,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "SkinCeuticals",
+      "n_ranked": 27,
+      "n_comparisons": 146.0,
+      "PREC": 0.09233683683466425,
+      "main_component": true,
+      "rated": true,
+      "P": 83.333333,
+      "C_star": 91.358025
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "The Ordinary",
+      "n_ranked": 31,
+      "n_comparisons": 168.0,
+      "PREC": 0.7679217532012204,
+      "main_component": true,
+      "rated": true,
+      "P": 90.740741,
+      "C_star": 96.774194
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.20",
+      "brand": "Tower 28",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -0.7461433775298283,
+      "main_component": true,
+      "rated": false,
+      "P": 12.962963,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Anastasia Beverly Hills",
+      "n_ranked": 13,
+      "n_comparisons": 89.0,
+      "PREC": -0.30963798195818637,
+      "main_component": true,
+      "rated": true,
+      "P": 57.407407,
+      "C_star": 94.314381
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Bobbi Brown",
+      "n_ranked": 8,
+      "n_comparisons": 43.0,
+      "PREC": 0.3072397071109579,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 96.428571
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Charlotte Tilbury",
+      "n_ranked": 29,
+      "n_comparisons": 171.0,
+      "PREC": 0.7917413816758685,
+      "main_component": true,
+      "rated": true,
+      "P": 87.037037,
+      "C_star": 73.891626
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Fenty Beauty",
+      "n_ranked": 25,
+      "n_comparisons": 152.0,
+      "PREC": 0.4867364771751476,
+      "main_component": true,
+      "rated": true,
+      "P": 79.62963,
+      "C_star": 85.090909
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Giorgio Armani Beauty",
+      "n_ranked": 1,
+      "n_comparisons": 13.0,
+      "PREC": 3.620792251808935,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Haus Labs",
+      "n_ranked": 4,
+      "n_comparisons": 34.0,
+      "PREC": -1.1159087545685515,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Hourglass",
+      "n_ranked": 2,
+      "n_comparisons": 22.0,
+      "PREC": 0.5819028436279104,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Huda Beauty",
+      "n_ranked": 11,
+      "n_comparisons": 68.0,
+      "PREC": 0.05493981384846771,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 85.090909
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Kylie Cosmetics",
+      "n_ranked": 5,
+      "n_comparisons": 44.0,
+      "PREC": 0.25715606108244243,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "L'Oréal Paris",
+      "n_ranked": 7,
+      "n_comparisons": 54.0,
+      "PREC": -1.287854686704395,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 79.802956
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Laura Mercier",
+      "n_ranked": 5,
+      "n_comparisons": 21.0,
+      "PREC": -0.9185763118297,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "MAC Cosmetics",
+      "n_ranked": 16,
+      "n_comparisons": 96.0,
+      "PREC": 0.6565327977432033,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 90.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Maybelline",
+      "n_ranked": 12,
+      "n_comparisons": 91.0,
+      "PREC": -1.597811432128713,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 54.166667
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "NARS",
+      "n_ranked": 28,
+      "n_comparisons": 162.0,
+      "PREC": 0.7603432731876328,
+      "main_component": true,
+      "rated": true,
+      "P": 87.037037,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "NYX Professional Makeup",
+      "n_ranked": 11,
+      "n_comparisons": 90.0,
+      "PREC": -2.2662499080221328,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 63.272727
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Pat McGrath Labs",
+      "n_ranked": 14,
+      "n_comparisons": 105.0,
+      "PREC": 0.4102019411066569,
+      "main_component": true,
+      "rated": true,
+      "P": 59.259259,
+      "C_star": 93.506494
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Rare Beauty",
+      "n_ranked": 18,
+      "n_comparisons": 117.0,
+      "PREC": 0.2389996280064549,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 96.296296
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "Tom Ford Beauty",
+      "n_ranked": 6,
+      "n_comparisons": 59.0,
+      "PREC": 1.7417457602182933,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 80.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.21",
+      "brand": "e.l.f. Cosmetics",
+      "n_ranked": 10,
+      "n_comparisons": 69.0,
+      "PREC": -1.8317322002166305,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 87.692308
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "BMW",
+      "n_ranked": 22,
+      "n_comparisons": 129.0,
+      "PREC": 0.49848696608719123,
+      "main_component": true,
+      "rated": true,
+      "P": 74.074074,
+      "C_star": 93.506494
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Bentley",
+      "n_ranked": 12,
+      "n_comparisons": 70.0,
+      "PREC": 0.43293900488004805,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Cadillac",
+      "n_ranked": 8,
+      "n_comparisons": 46.0,
+      "PREC": -2.161244569263739,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 91.071429
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Chevrolet",
+      "n_ranked": 7,
+      "n_comparisons": 38.0,
+      "PREC": 0.4231247086827028,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Ford",
+      "n_ranked": 8,
+      "n_comparisons": 43.0,
+      "PREC": 1.4531229915124857,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 96.428571
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Honda",
+      "n_ranked": 18,
+      "n_comparisons": 80.0,
+      "PREC": 1.2401370434496732,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Hyundai",
+      "n_ranked": 16,
+      "n_comparisons": 75.0,
+      "PREC": -1.093560419874709,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 90.0
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Jaguar",
+      "n_ranked": 10,
+      "n_comparisons": 60.0,
+      "PREC": -1.0379932891598298,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 92.307692
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Mercedes-Benz",
+      "n_ranked": 26,
+      "n_comparisons": 150.0,
+      "PREC": 0.8001503393159534,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 96.923077
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Porsche",
+      "n_ranked": 32,
+      "n_comparisons": 167.0,
+      "PREC": 0.3450036500206988,
+      "main_component": true,
+      "rated": true,
+      "P": 92.592593,
+      "C_star": 84.375
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Rivian",
+      "n_ranked": 1,
+      "n_comparisons": 7.0,
+      "PREC": -3.0336555129624845,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Rolls-Royce",
+      "n_ranked": 13,
+      "n_comparisons": 73.0,
+      "PREC": 1.050153043628951,
+      "main_component": true,
+      "rated": true,
+      "P": 57.407407,
+      "C_star": 94.314381
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Tesla",
+      "n_ranked": 13,
+      "n_comparisons": 81.0,
+      "PREC": -1.7477138142896067,
+      "main_component": true,
+      "rated": true,
+      "P": 57.407407,
+      "C_star": 94.314381
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Toyota",
+      "n_ranked": 24,
+      "n_comparisons": 120.0,
+      "PREC": 1.1106913026932397,
+      "main_component": true,
+      "rated": true,
+      "P": 77.777778,
+      "C_star": 95.833333
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.22",
+      "brand": "Volkswagen",
+      "n_ranked": 7,
+      "n_comparisons": 37.0,
+      "PREC": 0.010057755332974936,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S01",
+      "n_ranked": 1,
+      "n_comparisons": 4.0,
+      "PREC": 0.11814029560770965,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S02",
+      "n_ranked": 10,
+      "n_comparisons": 43.0,
+      "PREC": -0.4731187549085504,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 87.692308
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S03",
+      "n_ranked": 4,
+      "n_comparisons": 13.0,
+      "PREC": 0.8076993022800598,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S04",
+      "n_ranked": 11,
+      "n_comparisons": 33.0,
+      "PREC": 0.6228642027829441,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 85.090909
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S05",
+      "n_ranked": 9,
+      "n_comparisons": 39.0,
+      "PREC": -0.35566022620376464,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 86.419753
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S06",
+      "n_ranked": 2,
+      "n_comparisons": 5.0,
+      "PREC": 0.026941519658895467,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S08",
+      "n_ranked": 1,
+      "n_comparisons": 4.0,
+      "PREC": -1.8619340573310361,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S09",
+      "n_ranked": 4,
+      "n_comparisons": 17.0,
+      "PREC": 4.060607175287989,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S10",
+      "n_ranked": 5,
+      "n_comparisons": 22.0,
+      "PREC": 0.12391611768549447,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S11",
+      "n_ranked": 9,
+      "n_comparisons": 35.0,
+      "PREC": 1.2575518754747934,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 46.91358
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S12",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": -1.5626714815566671,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S13",
+      "n_ranked": 7,
+      "n_comparisons": 31.0,
+      "PREC": 0.034241282223086006,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 62.068966
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S15",
+      "n_ranked": 10,
+      "n_comparisons": 46.0,
+      "PREC": -0.5657949678665355,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 83.076923
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S17",
+      "n_ranked": 7,
+      "n_comparisons": 26.0,
+      "PREC": 0.010886043282043135,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 76.54321
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S19",
+      "n_ranked": 6,
+      "n_comparisons": 23.0,
+      "PREC": 2.1595531580418608,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S20",
+      "n_ranked": 9,
+      "n_comparisons": 42.0,
+      "PREC": -2.5106954931806236,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 86.419753
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S22",
+      "n_ranked": 3,
+      "n_comparisons": 8.0,
+      "PREC": 2.689935000896997,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S23",
+      "n_ranked": 1,
+      "n_comparisons": 2.0,
+      "PREC": -0.2701163503040178,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t1",
+      "substrate": "v0.23",
+      "brand": "S24",
+      "n_ranked": 4,
+      "n_comparisons": 18.0,
+      "PREC": -4.538089424866392,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Audeze",
+      "n_ranked": 16,
+      "n_comparisons": 92.0,
+      "PREC": 1.1333597729334712,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 82.5
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Audio-Technica",
+      "n_ranked": 19,
+      "n_comparisons": 77.0,
+      "PREC": 0.7572154967361197,
+      "main_component": true,
+      "rated": true,
+      "P": 68.518519,
+      "C_star": 72.44582
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Beyerdynamic",
+      "n_ranked": 20,
+      "n_comparisons": 108.0,
+      "PREC": 1.4273020370151988,
+      "main_component": true,
+      "rated": true,
+      "P": 70.37037,
+      "C_star": 63.75
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Dan Clark Audio",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -0.839619621166587,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Denon",
+      "n_ranked": 2,
+      "n_comparisons": 14.0,
+      "PREC": -2.087680946488219,
+      "main_component": true,
+      "rated": false,
+      "P": 14.814815,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Focal",
+      "n_ranked": 19,
+      "n_comparisons": 101.0,
+      "PREC": 0.7616377212407728,
+      "main_component": true,
+      "rated": true,
+      "P": 68.518519,
+      "C_star": 72.44582
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Grado",
+      "n_ranked": 8,
+      "n_comparisons": 48.0,
+      "PREC": -0.8702616183882703,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 80.357143
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "HiFiMan",
+      "n_ranked": 14,
+      "n_comparisons": 82.0,
+      "PREC": 0.6021102197001933,
+      "main_component": true,
+      "rated": true,
+      "P": 59.259259,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Meze",
+      "n_ranked": 3,
+      "n_comparisons": 22.0,
+      "PREC": -1.3339759520487593,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Sennheiser",
+      "n_ranked": 30,
+      "n_comparisons": 129.0,
+      "PREC": 3.3028049256814644,
+      "main_component": true,
+      "rated": true,
+      "P": 83.333333,
+      "C_star": -0.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Sony",
+      "n_ranked": 23,
+      "n_comparisons": 94.0,
+      "PREC": 1.1125091146685007,
+      "main_component": true,
+      "rated": true,
+      "P": 59.259259,
+      "C_star": 54.180602
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "Stax",
+      "n_ranked": 2,
+      "n_comparisons": 12.0,
+      "PREC": -1.277259715389964,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.19",
+      "brand": "ZMF Headphones",
+      "n_ranked": 2,
+      "n_comparisons": 17.0,
+      "PREC": -2.473899928077755,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Augustinus Bader",
+      "n_ranked": 7,
+      "n_comparisons": 46.0,
+      "PREC": 1.1559398367435176,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 91.625616
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Bioderma",
+      "n_ranked": 3,
+      "n_comparisons": 16.0,
+      "PREC": -1.0951159671178214,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "CeraVe",
+      "n_ranked": 34,
+      "n_comparisons": 172.0,
+      "PREC": 1.2553402009773749,
+      "main_component": true,
+      "rated": true,
+      "P": 96.296296,
+      "C_star": 88.235294
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Cetaphil",
+      "n_ranked": 6,
+      "n_comparisons": 29.0,
+      "PREC": 0.36328852687245555,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 80.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Drunk Elephant",
+      "n_ranked": 30,
+      "n_comparisons": 154.0,
+      "PREC": 0.04532182090060885,
+      "main_component": true,
+      "rated": true,
+      "P": 88.888889,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Estée Lauder",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": -0.6503490549913304,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Eucerin",
+      "n_ranked": 3,
+      "n_comparisons": 14.0,
+      "PREC": -0.33144078103326935,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Fenty Skin",
+      "n_ranked": 5,
+      "n_comparisons": 32.0,
+      "PREC": -1.7298729854967272,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Glossier",
+      "n_ranked": 2,
+      "n_comparisons": 9.0,
+      "PREC": -0.4336917852602976,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Goop",
+      "n_ranked": 1,
+      "n_comparisons": 9.0,
+      "PREC": -3.0947005404233456,
+      "main_component": true,
+      "rated": false,
+      "P": 18.518519,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "La Mer",
+      "n_ranked": 9,
+      "n_comparisons": 56.0,
+      "PREC": 1.8207048336331852,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 96.296296
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "La Roche-Posay",
+      "n_ranked": 28,
+      "n_comparisons": 146.0,
+      "PREC": 0.5522016047507566,
+      "main_component": true,
+      "rated": true,
+      "P": 85.185185,
+      "C_star": 91.071429
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Paula's Choice",
+      "n_ranked": 28,
+      "n_comparisons": 138.0,
+      "PREC": -0.23671697952642465,
+      "main_component": true,
+      "rated": true,
+      "P": 85.185185,
+      "C_star": 80.357143
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Rare Beauty",
+      "n_ranked": 1,
+      "n_comparisons": 10.0,
+      "PREC": 0.008715393851165848,
+      "main_component": true,
+      "rated": false,
+      "P": 1.851852,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Rhode",
+      "n_ranked": 3,
+      "n_comparisons": 25.0,
+      "PREC": -0.7179896833184375,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "Sisley",
+      "n_ranked": 1,
+      "n_comparisons": 10.0,
+      "PREC": 1.710788160995472,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "SkinCeuticals",
+      "n_ranked": 24,
+      "n_comparisons": 130.0,
+      "PREC": 0.0034075923231524793,
+      "main_component": true,
+      "rated": true,
+      "P": 77.777778,
+      "C_star": 91.666667
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.20",
+      "brand": "The Ordinary",
+      "n_ranked": 29,
+      "n_comparisons": 151.0,
+      "PREC": 0.606702339521472,
+      "main_component": true,
+      "rated": true,
+      "P": 87.037037,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Anastasia Beverly Hills",
+      "n_ranked": 12,
+      "n_comparisons": 88.0,
+      "PREC": -0.7595144806684481,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 79.166667
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Bobbi Brown",
+      "n_ranked": 5,
+      "n_comparisons": 25.0,
+      "PREC": 0.997053803602895,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Chantecaille",
+      "n_ranked": 1,
+      "n_comparisons": 11.0,
+      "PREC": 1.3328206320464406,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Charlotte Tilbury",
+      "n_ranked": 31,
+      "n_comparisons": 182.0,
+      "PREC": 1.0015188355733624,
+      "main_component": true,
+      "rated": true,
+      "P": 90.740741,
+      "C_star": 73.548387
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Fenty Beauty",
+      "n_ranked": 26,
+      "n_comparisons": 157.0,
+      "PREC": 0.5923692199474825,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 69.230769
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Giorgio Armani Beauty",
+      "n_ranked": 3,
+      "n_comparisons": 24.0,
+      "PREC": 2.2034989307259853,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Haus Labs",
+      "n_ranked": 3,
+      "n_comparisons": 27.0,
+      "PREC": -1.0743464770481348,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Hourglass",
+      "n_ranked": 3,
+      "n_comparisons": 16.0,
+      "PREC": -3.2740874627439207,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Huda Beauty",
+      "n_ranked": 11,
+      "n_comparisons": 73.0,
+      "PREC": -0.17857336617307407,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 72.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Kylie Cosmetics",
+      "n_ranked": 8,
+      "n_comparisons": 69.0,
+      "PREC": -0.9673334846640959,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 91.071429
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "L'Oréal Paris",
+      "n_ranked": 9,
+      "n_comparisons": 66.0,
+      "PREC": -1.5365586631732193,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 76.54321
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Laura Mercier",
+      "n_ranked": 4,
+      "n_comparisons": 23.0,
+      "PREC": 0.7085508884806919,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "MAC Cosmetics",
+      "n_ranked": 19,
+      "n_comparisons": 131.0,
+      "PREC": 1.0000420768162444,
+      "main_component": true,
+      "rated": true,
+      "P": 68.518519,
+      "C_star": 87.306502
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Maybelline",
+      "n_ranked": 15,
+      "n_comparisons": 100.0,
+      "PREC": -1.1506590793038776,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 66.666667
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "NARS",
+      "n_ranked": 26,
+      "n_comparisons": 158.0,
+      "PREC": 0.9947422792601277,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 87.692308
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "NYX Professional Makeup",
+      "n_ranked": 7,
+      "n_comparisons": 56.0,
+      "PREC": -2.3858433736882323,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 73.891626
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Pat McGrath Labs",
+      "n_ranked": 16,
+      "n_comparisons": 113.0,
+      "PREC": 0.33048030577622484,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 90.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Rare Beauty",
+      "n_ranked": 17,
+      "n_comparisons": 120.0,
+      "PREC": 0.2301126258096741,
+      "main_component": true,
+      "rated": true,
+      "P": 64.814815,
+      "C_star": 94.736842
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "Tom Ford Beauty",
+      "n_ranked": 6,
+      "n_comparisons": 54.0,
+      "PREC": 2.350948161004753,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 73.333333
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.21",
+      "brand": "e.l.f. Cosmetics",
+      "n_ranked": 12,
+      "n_comparisons": 77.0,
+      "PREC": -1.5388541665342517,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 83.333333
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "BMW",
+      "n_ranked": 22,
+      "n_comparisons": 131.0,
+      "PREC": 0.816633030219453,
+      "main_component": true,
+      "rated": true,
+      "P": 74.074074,
+      "C_star": 93.506494
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Bentley",
+      "n_ranked": 12,
+      "n_comparisons": 73.0,
+      "PREC": -0.06992290520831992,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Cadillac",
+      "n_ranked": 7,
+      "n_comparisons": 42.0,
+      "PREC": -0.8719699384800779,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 79.802956
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Chevrolet",
+      "n_ranked": 7,
+      "n_comparisons": 41.0,
+      "PREC": 0.2581894157884632,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Ford",
+      "n_ranked": 11,
+      "n_comparisons": 65.0,
+      "PREC": 0.3644861585621924,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 93.818182
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Honda",
+      "n_ranked": 18,
+      "n_comparisons": 80.0,
+      "PREC": 1.761267015503279,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Hyundai",
+      "n_ranked": 15,
+      "n_comparisons": 72.0,
+      "PREC": -1.142747597548581,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 89.52381
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Jaguar",
+      "n_ranked": 9,
+      "n_comparisons": 53.0,
+      "PREC": -0.5596214349329116,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 96.296296
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Lucid",
+      "n_ranked": 1,
+      "n_comparisons": 8.0,
+      "PREC": -1.853580372792591,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Mercedes-Benz",
+      "n_ranked": 26,
+      "n_comparisons": 153.0,
+      "PREC": 0.8526262963733454,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 92.307692
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Porsche",
+      "n_ranked": 31,
+      "n_comparisons": 171.0,
+      "PREC": 0.5203663553265154,
+      "main_component": true,
+      "rated": true,
+      "P": 90.740741,
+      "C_star": 89.032258
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Rivian",
+      "n_ranked": 1,
+      "n_comparisons": 8.0,
+      "PREC": -1.2348206189982824,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Rolls-Royce",
+      "n_ranked": 16,
+      "n_comparisons": 94.0,
+      "PREC": 0.09267536001970911,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 97.5
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Tesla",
+      "n_ranked": 15,
+      "n_comparisons": 92.0,
+      "PREC": -0.8104864333788675,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Toyota",
+      "n_ranked": 22,
+      "n_comparisons": 109.0,
+      "PREC": 2.1586902278164946,
+      "main_component": true,
+      "rated": true,
+      "P": 74.074074,
+      "C_star": 97.402597
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.22",
+      "brand": "Volkswagen",
+      "n_ranked": 7,
+      "n_comparisons": 36.0,
+      "PREC": -0.002356414424167759,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S01",
+      "n_ranked": 1,
+      "n_comparisons": 5.0,
+      "PREC": 0.3319947512373804,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S02",
+      "n_ranked": 9,
+      "n_comparisons": 35.0,
+      "PREC": -0.6625779282308596,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 83.076923
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S03",
+      "n_ranked": 2,
+      "n_comparisons": 7.0,
+      "PREC": 1.5443460147386157,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S04",
+      "n_ranked": 8,
+      "n_comparisons": 21.0,
+      "PREC": 1.071934677426295,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 91.071429
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S05",
+      "n_ranked": 10,
+      "n_comparisons": 34.0,
+      "PREC": -0.7005941586068066,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 73.846154
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S06",
+      "n_ranked": 2,
+      "n_comparisons": 8.0,
+      "PREC": -1.8436951377949495,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S08",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": 2.9238379909091416,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S09",
+      "n_ranked": 3,
+      "n_comparisons": 13.0,
+      "PREC": 4.022757468614331,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S10",
+      "n_ranked": 5,
+      "n_comparisons": 20.0,
+      "PREC": 0.3267881828525492,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S11",
+      "n_ranked": 7,
+      "n_comparisons": 27.0,
+      "PREC": 2.0157489244677795,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 62.068966
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S12",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": -2.370505782745689,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S13",
+      "n_ranked": 6,
+      "n_comparisons": 24.0,
+      "PREC": -0.5929526577879636,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 60.0
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S14",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": 0.7881063491334853,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S15",
+      "n_ranked": 6,
+      "n_comparisons": 28.0,
+      "PREC": -0.6625368060554202,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S17",
+      "n_ranked": 7,
+      "n_comparisons": 23.0,
+      "PREC": -0.11025392279272118,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 76.54321
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S18",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": -1.6699079594868012,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S19",
+      "n_ranked": 6,
+      "n_comparisons": 20.0,
+      "PREC": 2.5845379082731763,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S20",
+      "n_ranked": 11,
+      "n_comparisons": 42.0,
+      "PREC": -2.397389646235814,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 85.090909
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S22",
+      "n_ranked": 4,
+      "n_comparisons": 9.0,
+      "PREC": 3.0743481135279276,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S23",
+      "n_ranked": 1,
+      "n_comparisons": 2.0,
+      "PREC": -2.677174263175664,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t2",
+      "substrate": "v0.23",
+      "brand": "S24",
+      "n_ranked": 3,
+      "n_comparisons": 14.0,
+      "PREC": -4.401836172927218,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Audeze",
+      "n_ranked": 16,
+      "n_comparisons": 92.0,
+      "PREC": 0.4460693609841988,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 82.5
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Audio-Technica",
+      "n_ranked": 20,
+      "n_comparisons": 83.0,
+      "PREC": 0.5934706476392858,
+      "main_component": true,
+      "rated": true,
+      "P": 70.37037,
+      "C_star": 63.75
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Beyerdynamic",
+      "n_ranked": 18,
+      "n_comparisons": 100.0,
+      "PREC": 1.02378697100353,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 77.777778
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Dan Clark Audio",
+      "n_ranked": 4,
+      "n_comparisons": 24.0,
+      "PREC": -0.800854107279386,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Focal",
+      "n_ranked": 18,
+      "n_comparisons": 97.0,
+      "PREC": 0.8158504996042172,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 70.37037
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Grado",
+      "n_ranked": 6,
+      "n_comparisons": 38.0,
+      "PREC": -0.7935150970279833,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 86.666667
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "HiFiMan",
+      "n_ranked": 16,
+      "n_comparisons": 90.0,
+      "PREC": 0.27477062313647105,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 78.75
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Meze",
+      "n_ranked": 3,
+      "n_comparisons": 23.0,
+      "PREC": -1.5822186984010465,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Sennheiser",
+      "n_ranked": 30,
+      "n_comparisons": 127.0,
+      "PREC": 2.80967638675839,
+      "main_component": true,
+      "rated": true,
+      "P": 88.888889,
+      "C_star": -0.0
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Sony",
+      "n_ranked": 22,
+      "n_comparisons": 92.0,
+      "PREC": 0.8921764924711245,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 58.441558
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "Stax",
+      "n_ranked": 3,
+      "n_comparisons": 17.0,
+      "PREC": -1.0618837492544664,
+      "main_component": true,
+      "rated": false,
+      "P": 33.333333,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.19",
+      "brand": "ZMF Headphones",
+      "n_ranked": 1,
+      "n_comparisons": 9.0,
+      "PREC": -2.9965374789531514,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Augustinus Bader",
+      "n_ranked": 9,
+      "n_comparisons": 63.0,
+      "PREC": 0.971315602573883,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 81.481481
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Bioderma",
+      "n_ranked": 1,
+      "n_comparisons": 5.0,
+      "PREC": -2.2385970687595194,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "CeraVe",
+      "n_ranked": 34,
+      "n_comparisons": 178.0,
+      "PREC": 0.969791988556067,
+      "main_component": true,
+      "rated": true,
+      "P": 96.296296,
+      "C_star": 70.588235
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Cetaphil",
+      "n_ranked": 7,
+      "n_comparisons": 38.0,
+      "PREC": 0.2550445147042605,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 91.625616
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Drunk Elephant",
+      "n_ranked": 31,
+      "n_comparisons": 163.0,
+      "PREC": 0.006016732773293093,
+      "main_component": true,
+      "rated": true,
+      "P": 90.740741,
+      "C_star": 96.774194
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Estée Lauder",
+      "n_ranked": 2,
+      "n_comparisons": 11.0,
+      "PREC": 0.32979257474992724,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Eucerin",
+      "n_ranked": 5,
+      "n_comparisons": 26.0,
+      "PREC": -0.8054415634343208,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Fenty Skin",
+      "n_ranked": 2,
+      "n_comparisons": 14.0,
+      "PREC": -0.5485607513884132,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Glossier",
+      "n_ranked": 5,
+      "n_comparisons": 29.0,
+      "PREC": -0.23888537632950377,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "La Mer",
+      "n_ranked": 9,
+      "n_comparisons": 60.0,
+      "PREC": 2.6792074325641404,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 96.296296
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "La Roche-Posay",
+      "n_ranked": 27,
+      "n_comparisons": 142.0,
+      "PREC": -0.021124476579303723,
+      "main_component": true,
+      "rated": true,
+      "P": 83.333333,
+      "C_star": 86.419753
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Paula's Choice",
+      "n_ranked": 26,
+      "n_comparisons": 137.0,
+      "PREC": -0.13188375167480396,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 87.692308
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Rhode",
+      "n_ranked": 4,
+      "n_comparisons": 29.0,
+      "PREC": -0.6406913217545138,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Sisley",
+      "n_ranked": 2,
+      "n_comparisons": 15.0,
+      "PREC": 1.6256687445424667,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "SkinCeuticals",
+      "n_ranked": 26,
+      "n_comparisons": 137.0,
+      "PREC": -0.403248081884758,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 92.307692
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "The Ordinary",
+      "n_ranked": 30,
+      "n_comparisons": 158.0,
+      "PREC": 0.47188510263178024,
+      "main_component": true,
+      "rated": true,
+      "P": 88.888889,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.20",
+      "brand": "Tower 28",
+      "n_ranked": 1,
+      "n_comparisons": 5.0,
+      "PREC": -2.2385970687595194,
+      "main_component": true,
+      "rated": false,
+      "P": 18.518519,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Anastasia Beverly Hills",
+      "n_ranked": 15,
+      "n_comparisons": 99.0,
+      "PREC": -0.42752166179226003,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 74.285714
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Bobbi Brown",
+      "n_ranked": 8,
+      "n_comparisons": 39.0,
+      "PREC": -0.36590103458023376,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Charlotte Tilbury",
+      "n_ranked": 32,
+      "n_comparisons": 164.0,
+      "PREC": 1.0693634732228439,
+      "main_component": true,
+      "rated": true,
+      "P": 92.592593,
+      "C_star": 84.375
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Fenty Beauty",
+      "n_ranked": 25,
+      "n_comparisons": 140.0,
+      "PREC": 1.0794887770035917,
+      "main_component": true,
+      "rated": true,
+      "P": 79.62963,
+      "C_star": 85.090909
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Giorgio Armani Beauty",
+      "n_ranked": 3,
+      "n_comparisons": 20.0,
+      "PREC": 1.1372113322837425,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Haus Labs",
+      "n_ranked": 3,
+      "n_comparisons": 27.0,
+      "PREC": -0.7245220083147024,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Hourglass",
+      "n_ranked": 4,
+      "n_comparisons": 20.0,
+      "PREC": -0.17859350296080603,
+      "main_component": true,
+      "rated": false,
+      "P": 40.740741,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Huda Beauty",
+      "n_ranked": 11,
+      "n_comparisons": 71.0,
+      "PREC": 0.0940752502031155,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 67.636364
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Kylie Cosmetics",
+      "n_ranked": 6,
+      "n_comparisons": 40.0,
+      "PREC": -1.041704782363417,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "L'Oréal Paris",
+      "n_ranked": 3,
+      "n_comparisons": 19.0,
+      "PREC": -2.2037046179389495,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Laura Mercier",
+      "n_ranked": 5,
+      "n_comparisons": 27.0,
+      "PREC": -0.91052557545336,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "MAC Cosmetics",
+      "n_ranked": 16,
+      "n_comparisons": 89.0,
+      "PREC": 1.4257897611087824,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 78.75
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Maybelline",
+      "n_ranked": 9,
+      "n_comparisons": 53.0,
+      "PREC": -1.1423961998361654,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 46.91358
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "NARS",
+      "n_ranked": 26,
+      "n_comparisons": 140.0,
+      "PREC": 1.0142989728287253,
+      "main_component": true,
+      "rated": true,
+      "P": 81.481481,
+      "C_star": 78.461538
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "NYX Professional Makeup",
+      "n_ranked": 6,
+      "n_comparisons": 34.0,
+      "PREC": -1.5024320517023408,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 73.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Pat McGrath Labs",
+      "n_ranked": 16,
+      "n_comparisons": 97.0,
+      "PREC": 1.0258014606394148,
+      "main_component": true,
+      "rated": true,
+      "P": 62.962963,
+      "C_star": 71.25
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Rare Beauty",
+      "n_ranked": 20,
+      "n_comparisons": 112.0,
+      "PREC": 0.3993359810170854,
+      "main_component": true,
+      "rated": true,
+      "P": 70.37037,
+      "C_star": 93.75
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "Tom Ford Beauty",
+      "n_ranked": 1,
+      "n_comparisons": 10.0,
+      "PREC": 1.9039723625359475,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.21",
+      "brand": "e.l.f. Cosmetics",
+      "n_ranked": 6,
+      "n_comparisons": 33.0,
+      "PREC": -0.7254690058917963,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 73.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "BMW",
+      "n_ranked": 23,
+      "n_comparisons": 129.0,
+      "PREC": 0.39372973129681577,
+      "main_component": true,
+      "rated": true,
+      "P": 75.925926,
+      "C_star": 78.26087
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Bentley",
+      "n_ranked": 11,
+      "n_comparisons": 64.0,
+      "PREC": 0.6562112977004472,
+      "main_component": true,
+      "rated": true,
+      "P": 53.703704,
+      "C_star": 98.181818
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Cadillac",
+      "n_ranked": 6,
+      "n_comparisons": 37.0,
+      "PREC": -1.6288037597455363,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Chevrolet",
+      "n_ranked": 6,
+      "n_comparisons": 34.0,
+      "PREC": 0.3646831706980337,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 93.333333
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Ford",
+      "n_ranked": 10,
+      "n_comparisons": 55.0,
+      "PREC": 0.518510864543232,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 83.076923
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Honda",
+      "n_ranked": 18,
+      "n_comparisons": 80.0,
+      "PREC": 1.7739203245792292,
+      "main_component": true,
+      "rated": true,
+      "P": 66.666667,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Hyundai",
+      "n_ranked": 15,
+      "n_comparisons": 66.0,
+      "PREC": -0.4129035915306441,
+      "main_component": true,
+      "rated": true,
+      "P": 61.111111,
+      "C_star": 97.142857
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Jaguar",
+      "n_ranked": 8,
+      "n_comparisons": 47.0,
+      "PREC": -0.9508259105981394,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 91.071429
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Mercedes-Benz",
+      "n_ranked": 25,
+      "n_comparisons": 139.0,
+      "PREC": 0.6875267398493011,
+      "main_component": true,
+      "rated": true,
+      "P": 79.62963,
+      "C_star": 93.818182
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Polestar",
+      "n_ranked": 1,
+      "n_comparisons": 7.0,
+      "PREC": -2.7201467258369716,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Porsche",
+      "n_ranked": 31,
+      "n_comparisons": 157.0,
+      "PREC": 0.536304235269987,
+      "main_component": true,
+      "rated": true,
+      "P": 90.740741,
+      "C_star": 89.032258
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Rivian",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -2.206275962998473,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Rolls-Royce",
+      "n_ranked": 17,
+      "n_comparisons": 92.0,
+      "PREC": 0.6220875006807162,
+      "main_component": true,
+      "rated": true,
+      "P": 64.814815,
+      "C_star": 98.452012
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Tesla",
+      "n_ranked": 12,
+      "n_comparisons": 70.0,
+      "PREC": -0.7375539280317426,
+      "main_component": true,
+      "rated": true,
+      "P": 55.555556,
+      "C_star": 91.666667
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Toyota",
+      "n_ranked": 23,
+      "n_comparisons": 112.0,
+      "PREC": 2.1057122183111168,
+      "main_component": true,
+      "rated": true,
+      "P": 75.925926,
+      "C_star": 98.327759
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.22",
+      "brand": "Volkswagen",
+      "n_ranked": 7,
+      "n_comparisons": 35.0,
+      "PREC": 0.03409348836349522,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 97.536946
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S01",
+      "n_ranked": 2,
+      "n_comparisons": 6.0,
+      "PREC": 0.015747716885614344,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S02",
+      "n_ranked": 8,
+      "n_comparisons": 37.0,
+      "PREC": -0.9986404946297315,
+      "main_component": true,
+      "rated": true,
+      "P": 50.0,
+      "C_star": 76.54321
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S03",
+      "n_ranked": 2,
+      "n_comparisons": 6.0,
+      "PREC": 2.2208596758040664,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S04",
+      "n_ranked": 8,
+      "n_comparisons": 28.0,
+      "PREC": -0.08945854543788301,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 80.357143
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S05",
+      "n_ranked": 10,
+      "n_comparisons": 37.0,
+      "PREC": -0.41882695778140977,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 73.846154
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S06",
+      "n_ranked": 1,
+      "n_comparisons": 5.0,
+      "PREC": -2.576446147012636,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S07",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": 0.7688285060436378,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S08",
+      "n_ranked": 1,
+      "n_comparisons": 3.0,
+      "PREC": 2.6330293049877844,
+      "main_component": true,
+      "rated": false,
+      "P": 35.185185,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S09",
+      "n_ranked": 3,
+      "n_comparisons": 15.0,
+      "PREC": 3.8946188819477845,
+      "main_component": true,
+      "rated": false,
+      "P": 38.888889,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S10",
+      "n_ranked": 6,
+      "n_comparisons": 25.0,
+      "PREC": -0.1575386984107863,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 80.0
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S11",
+      "n_ranked": 7,
+      "n_comparisons": 25.0,
+      "PREC": 1.9074269704804891,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 48.214286
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S13",
+      "n_ranked": 6,
+      "n_comparisons": 27.0,
+      "PREC": -0.24659516499012268,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444,
+      "C_star": 60.0
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S15",
+      "n_ranked": 10,
+      "n_comparisons": 46.0,
+      "PREC": -1.6818772091519105,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 83.076923
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S17",
+      "n_ranked": 7,
+      "n_comparisons": 25.0,
+      "PREC": -0.25754543589482204,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148,
+      "C_star": 69.642857
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S19",
+      "n_ranked": 6,
+      "n_comparisons": 23.0,
+      "PREC": 2.3915320542329055,
+      "main_component": true,
+      "rated": true,
+      "P": 46.296296,
+      "C_star": 85.714286
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S20",
+      "n_ranked": 10,
+      "n_comparisons": 44.0,
+      "PREC": -2.9248132794296167,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851852,
+      "C_star": 87.692308
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S22",
+      "n_ranked": 5,
+      "n_comparisons": 14.0,
+      "PREC": 2.194225564158415,
+      "main_component": true,
+      "rated": false,
+      "P": 42.592593,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S23",
+      "n_ranked": 1,
+      "n_comparisons": 2.0,
+      "PREC": -3.112035200087399,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t3",
+      "substrate": "v0.23",
+      "brand": "S24",
+      "n_ranked": 2,
+      "n_comparisons": 11.0,
+      "PREC": -4.500200400147939,
+      "main_component": true,
+      "rated": false,
+      "P": 37.037037,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Audeze",
+      "n_ranked": 31,
+      "n_comparisons": 179.0,
+      "PREC": 0.003112505486171622,
+      "main_component": true,
+      "rated": true,
+      "P": 71.60493827160492,
+      "C_star": 97.46753246753246
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Audio-Technica",
+      "n_ranked": 27,
+      "n_comparisons": 104.0,
+      "PREC": 0.8273235378141613,
+      "main_component": true,
+      "rated": true,
+      "P": 66.66666666666667,
+      "C_star": 90.8641975308642
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Beyerdynamic",
+      "n_ranked": 30,
+      "n_comparisons": 164.0,
+      "PREC": 0.9330362171721546,
+      "main_component": true,
+      "rated": true,
+      "P": 70.37037037037037,
+      "C_star": 88.13692480359148
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Dan Clark Audio",
+      "n_ranked": 20,
+      "n_comparisons": 113.0,
+      "PREC": -0.9653223024327068,
+      "main_component": true,
+      "rated": true,
+      "P": 58.02469135802469,
+      "C_star": 98.26839826839827
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Focal",
+      "n_ranked": 33,
+      "n_comparisons": 189.0,
+      "PREC": 0.6328970432482409,
+      "main_component": true,
+      "rated": true,
+      "P": 74.07407407407408,
+      "C_star": 95.52308802308802
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Grado",
+      "n_ranked": 5,
+      "n_comparisons": 32.0,
+      "PREC": -1.3336981654936684,
+      "main_component": true,
+      "rated": false,
+      "P": 39.50617283950617,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "HiFiMan",
+      "n_ranked": 30,
+      "n_comparisons": 174.0,
+      "PREC": 1.1287978581854563,
+      "main_component": true,
+      "rated": true,
+      "P": 70.37037037037037,
+      "C_star": 98.3008658008658
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Koss",
+      "n_ranked": 6,
+      "n_comparisons": 25.0,
+      "PREC": -0.6092278888301664,
+      "main_component": true,
+      "rated": true,
+      "P": 29.62962962962963,
+      "C_star": 93.75
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Meze",
+      "n_ranked": 14,
+      "n_comparisons": 79.0,
+      "PREC": -1.100797423960752,
+      "main_component": true,
+      "rated": true,
+      "P": 50.617283950617285,
+      "C_star": 96.75824175824175
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Sennheiser",
+      "n_ranked": 54,
+      "n_comparisons": 241.0,
+      "PREC": 2.796378382121815,
+      "main_component": true,
+      "rated": true,
+      "P": 100.0,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Sony",
+      "n_ranked": 35,
+      "n_comparisons": 141.0,
+      "PREC": 1.7322202522525012,
+      "main_component": true,
+      "rated": true,
+      "P": 76.5432098765432,
+      "C_star": 93.57864357864358
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "Stax",
+      "n_ranked": 9,
+      "n_comparisons": 55.0,
+      "PREC": -1.1740183968543019,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444444444436,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.19",
+      "brand": "ZMF Headphones",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -2.7082918951121395,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Augustinus Bader",
+      "n_ranked": 12,
+      "n_comparisons": 90.0,
+      "PREC": 2.0178840701385865,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148148148145,
+      "C_star": 96.42857142857143
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Bioderma",
+      "n_ranked": 5,
+      "n_comparisons": 32.0,
+      "PREC": -2.24038459051249,
+      "main_component": true,
+      "rated": false,
+      "P": 39.50617283950617,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "CeraVe",
+      "n_ranked": 54,
+      "n_comparisons": 283.0,
+      "PREC": 1.976592585494267,
+      "main_component": true,
+      "rated": true,
+      "P": 100.0,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Cetaphil",
+      "n_ranked": 24,
+      "n_comparisons": 119.0,
+      "PREC": 0.46548258838372386,
+      "main_component": true,
+      "rated": true,
+      "P": 62.96296296296296,
+      "C_star": 95.55555555555556
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Drunk Elephant",
+      "n_ranked": 28,
+      "n_comparisons": 161.0,
+      "PREC": -0.4190918502480668,
+      "main_component": true,
+      "rated": true,
+      "P": 67.90123456790124,
+      "C_star": 91.72839506172839
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Eucerin",
+      "n_ranked": 12,
+      "n_comparisons": 53.0,
+      "PREC": -0.31888741064406245,
+      "main_component": true,
+      "rated": true,
+      "P": 48.148148148148145,
+      "C_star": 94.70695970695971
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Fenty Skin",
+      "n_ranked": 9,
+      "n_comparisons": 71.0,
+      "PREC": -3.172568359958758,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444444444436,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Glossier",
+      "n_ranked": 6,
+      "n_comparisons": 33.0,
+      "PREC": 0.04218999671100856,
+      "main_component": true,
+      "rated": true,
+      "P": 40.74074074074074,
+      "C_star": 93.75
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Goop",
+      "n_ranked": 3,
+      "n_comparisons": 27.0,
+      "PREC": -3.9203804885941587,
+      "main_component": true,
+      "rated": false,
+      "P": 37.03703703703704,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "La Mer",
+      "n_ranked": 9,
+      "n_comparisons": 71.0,
+      "PREC": 2.7069527484308455,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444444444436,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "La Prairie",
+      "n_ranked": 1,
+      "n_comparisons": 8.0,
+      "PREC": 1.672380588067561,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "La Roche-Posay",
+      "n_ranked": 49,
+      "n_comparisons": 252.0,
+      "PREC": 0.6085725593806983,
+      "main_component": true,
+      "rated": true,
+      "P": 93.82716049382715,
+      "C_star": 87.7124183006536
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Paula's Choice",
+      "n_ranked": 17,
+      "n_comparisons": 92.0,
+      "PREC": -1.2849978176687966,
+      "main_component": true,
+      "rated": true,
+      "P": 54.320987654320994,
+      "C_star": 53.39105339105339
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Rhode",
+      "n_ranked": 27,
+      "n_comparisons": 162.0,
+      "PREC": -1.2802345032653246,
+      "main_component": true,
+      "rated": true,
+      "P": 66.66666666666667,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "SkinCeuticals",
+      "n_ranked": 37,
+      "n_comparisons": 206.0,
+      "PREC": -0.42350509530294644,
+      "main_component": true,
+      "rated": true,
+      "P": 79.01234567901234,
+      "C_star": 85.73426573426573
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "The Ordinary",
+      "n_ranked": 42,
+      "n_comparisons": 218.0,
+      "PREC": 0.6643652298041373,
+      "main_component": true,
+      "rated": true,
+      "P": 85.18518518518518,
+      "C_star": 97.78388278388277
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.20",
+      "brand": "Tower 28",
+      "n_ranked": 2,
+      "n_comparisons": 12.0,
+      "PREC": 0.9622152992664417,
+      "main_component": true,
+      "rated": false,
+      "P": 24.691358024691358,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Anastasia Beverly Hills",
+      "n_ranked": 2,
+      "n_comparisons": 18.0,
+      "PREC": -2.554258378437145,
+      "main_component": true,
+      "rated": false,
+      "P": 35.80246913580246,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Bobbi Brown",
+      "n_ranked": 10,
+      "n_comparisons": 65.0,
+      "PREC": 0.34439810634434537,
+      "main_component": true,
+      "rated": true,
+      "P": 45.679012345679006,
+      "C_star": 95.53571428571428
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Charlotte Tilbury",
+      "n_ranked": 49,
+      "n_comparisons": 328.0,
+      "PREC": 0.9042409425414258,
+      "main_component": true,
+      "rated": true,
+      "P": 93.82716049382715,
+      "C_star": 91.91176470588236
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Fenty Beauty",
+      "n_ranked": 36,
+      "n_comparisons": 241.0,
+      "PREC": 0.7394328907694977,
+      "main_component": true,
+      "rated": true,
+      "P": 77.77777777777777,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Giorgio Armani Beauty",
+      "n_ranked": 13,
+      "n_comparisons": 110.0,
+      "PREC": 0.949168370025636,
+      "main_component": true,
+      "rated": true,
+      "P": 49.382716049382715,
+      "C_star": 59.28571428571428
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Haus Labs",
+      "n_ranked": 15,
+      "n_comparisons": 119.0,
+      "PREC": -0.5122655805735549,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851851851851855,
+      "C_star": 70.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Hourglass",
+      "n_ranked": 7,
+      "n_comparisons": 57.0,
+      "PREC": 0.26180284118468944,
+      "main_component": true,
+      "rated": true,
+      "P": 41.97530864197531,
+      "C_star": 91.63398692810458
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Huda Beauty",
+      "n_ranked": 16,
+      "n_comparisons": 110.0,
+      "PREC": -0.9293965038723676,
+      "main_component": true,
+      "rated": true,
+      "P": 53.086419753086425,
+      "C_star": 92.0940170940171
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Kylie Cosmetics",
+      "n_ranked": 1,
+      "n_comparisons": 9.0,
+      "PREC": -0.7837304361067051,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "L'Oréal Paris",
+      "n_ranked": 5,
+      "n_comparisons": 17.0,
+      "PREC": -2.5549503944177503,
+      "main_component": true,
+      "rated": false,
+      "P": 39.50617283950617,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Laura Mercier",
+      "n_ranked": 10,
+      "n_comparisons": 75.0,
+      "PREC": 0.23917699032867717,
+      "main_component": true,
+      "rated": true,
+      "P": 45.679012345679006,
+      "C_star": 89.92063492063492
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "MAC Cosmetics",
+      "n_ranked": 26,
+      "n_comparisons": 191.0,
+      "PREC": 1.7816097456991142,
+      "main_component": true,
+      "rated": true,
+      "P": 65.43209876543209,
+      "C_star": 79.35185185185185
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Maybelline",
+      "n_ranked": 42,
+      "n_comparisons": 285.0,
+      "PREC": -1.2891154662827125,
+      "main_component": true,
+      "rated": true,
+      "P": 85.18518518518518,
+      "C_star": 96.42857142857143
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "NARS",
+      "n_ranked": 39,
+      "n_comparisons": 267.0,
+      "PREC": 1.2292735140114355,
+      "main_component": true,
+      "rated": true,
+      "P": 81.48148148148148,
+      "C_star": 96.92307692307692
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "NYX Professional Makeup",
+      "n_ranked": 25,
+      "n_comparisons": 185.0,
+      "PREC": -1.0903275984391976,
+      "main_component": true,
+      "rated": true,
+      "P": 64.19753086419753,
+      "C_star": 63.456790123456784
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Pat McGrath Labs",
+      "n_ranked": 29,
+      "n_comparisons": 217.0,
+      "PREC": 1.0594454723361035,
+      "main_component": true,
+      "rated": true,
+      "P": 69.13580246913581,
+      "C_star": 86.66025332691999
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "Rare Beauty",
+      "n_ranked": 36,
+      "n_comparisons": 241.0,
+      "PREC": 0.9526204722265651,
+      "main_component": true,
+      "rated": true,
+      "P": 77.77777777777777,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.21",
+      "brand": "e.l.f. Cosmetics",
+      "n_ranked": 35,
+      "n_comparisons": 231.0,
+      "PREC": 0.014708562190422386,
+      "main_component": true,
+      "rated": true,
+      "P": 76.5432098765432,
+      "C_star": 83.77622377622377
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "BMW",
+      "n_ranked": 40,
+      "n_comparisons": 234.0,
+      "PREC": -0.12144259281475317,
+      "main_component": true,
+      "rated": true,
+      "P": 82.71604938271605,
+      "C_star": 80.87912087912088
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Bentley",
+      "n_ranked": 18,
+      "n_comparisons": 125.0,
+      "PREC": 1.222804235511104,
+      "main_component": true,
+      "rated": true,
+      "P": 55.55555555555555,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Cadillac",
+      "n_ranked": 20,
+      "n_comparisons": 132.0,
+      "PREC": 0.09066868915578631,
+      "main_component": true,
+      "rated": true,
+      "P": 58.02469135802469,
+      "C_star": 95.49062049062049
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Chevrolet",
+      "n_ranked": 13,
+      "n_comparisons": 83.0,
+      "PREC": -0.5707870506312124,
+      "main_component": true,
+      "rated": true,
+      "P": 49.382716049382715,
+      "C_star": 96.5934065934066
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Ford",
+      "n_ranked": 22,
+      "n_comparisons": 149.0,
+      "PREC": -0.41909502161557705,
+      "main_component": true,
+      "rated": true,
+      "P": 60.49382716049383,
+      "C_star": 94.83766233766234
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Honda",
+      "n_ranked": 29,
+      "n_comparisons": 142.0,
+      "PREC": 0.9936369658963163,
+      "main_component": true,
+      "rated": true,
+      "P": 69.13580246913581,
+      "C_star": 98.33333333333333
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Hyundai",
+      "n_ranked": 24,
+      "n_comparisons": 112.0,
+      "PREC": -0.061156028876372295,
+      "main_component": true,
+      "rated": true,
+      "P": 62.96296296296296,
+      "C_star": 97.5
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Jaguar",
+      "n_ranked": 8,
+      "n_comparisons": 53.0,
+      "PREC": -0.5229218488730458,
+      "main_component": true,
+      "rated": true,
+      "P": 43.20987654320987,
+      "C_star": 97.91666666666666
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Lucid",
+      "n_ranked": 5,
+      "n_comparisons": 43.0,
+      "PREC": -0.629516758275712,
+      "main_component": true,
+      "rated": false,
+      "P": 39.50617283950617,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Mercedes-Benz",
+      "n_ranked": 35,
+      "n_comparisons": 225.0,
+      "PREC": 0.39061272067227293,
+      "main_component": true,
+      "rated": true,
+      "P": 76.5432098765432,
+      "C_star": 93.57864357864358
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Mercury",
+      "n_ranked": 1,
+      "n_comparisons": 6.0,
+      "PREC": -2.4991658476262253,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Porsche",
+      "n_ranked": 51,
+      "n_comparisons": 296.0,
+      "PREC": 0.5504908005901032,
+      "main_component": true,
+      "rated": true,
+      "P": 96.29629629629629,
+      "C_star": 88.23529411764707
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Rivian",
+      "n_ranked": 4,
+      "n_comparisons": 36.0,
+      "PREC": -0.7480344268394297,
+      "main_component": true,
+      "rated": false,
+      "P": 38.2716049382716,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Rolls-Royce",
+      "n_ranked": 26,
+      "n_comparisons": 177.0,
+      "PREC": 1.1170426384242855,
+      "main_component": true,
+      "rated": true,
+      "P": 65.43209876543209,
+      "C_star": 99.16666666666667
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Tesla",
+      "n_ranked": 15,
+      "n_comparisons": 103.0,
+      "PREC": -0.9666462501585307,
+      "main_component": true,
+      "rated": true,
+      "P": 51.851851851851855,
+      "C_star": 88.05860805860806
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Toyota",
+      "n_ranked": 36,
+      "n_comparisons": 198.0,
+      "PREC": 1.0992472061584388,
+      "main_component": true,
+      "rated": true,
+      "P": 77.77777777777777,
+      "C_star": 100.0
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.22",
+      "brand": "Volkswagen",
+      "n_ranked": 11,
+      "n_comparisons": 68.0,
+      "PREC": 0.5583097616839184,
+      "main_component": true,
+      "rated": true,
+      "P": 46.913580246913575,
+      "C_star": 97.61904761904762
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S01",
+      "n_ranked": 9,
+      "n_comparisons": 53.0,
+      "PREC": 0.525671825515297,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444444444436,
+      "C_star": 95.55555555555556
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S02",
+      "n_ranked": 23,
+      "n_comparisons": 143.0,
+      "PREC": 0.2604233276205618,
+      "main_component": true,
+      "rated": true,
+      "P": 61.7283950617284,
+      "C_star": 77.27272727272727
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S03",
+      "n_ranked": 10,
+      "n_comparisons": 64.0,
+      "PREC": 2.1789462284746746,
+      "main_component": true,
+      "rated": true,
+      "P": 45.679012345679006,
+      "C_star": 98.80952380952381
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S04",
+      "n_ranked": 11,
+      "n_comparisons": 57.0,
+      "PREC": -0.3667165150115445,
+      "main_component": true,
+      "rated": true,
+      "P": 46.913580246913575,
+      "C_star": 97.61904761904762
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S05",
+      "n_ranked": 9,
+      "n_comparisons": 69.0,
+      "PREC": -0.8395417931182085,
+      "main_component": true,
+      "rated": true,
+      "P": 44.444444444444436,
+      "C_star": 92.28174603174604
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S06",
+      "n_ranked": 6,
+      "n_comparisons": 41.0,
+      "PREC": -0.8674729281971776,
+      "main_component": true,
+      "rated": true,
+      "P": 38.2716049382716,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S08",
+      "n_ranked": 1,
+      "n_comparisons": 4.0,
+      "PREC": -1.1240810681798779,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S09",
+      "n_ranked": 10,
+      "n_comparisons": 73.0,
+      "PREC": 2.658982794051065,
+      "main_component": true,
+      "rated": true,
+      "P": 45.679012345679006,
+      "C_star": 81.03174603174604
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S10",
+      "n_ranked": 4,
+      "n_comparisons": 29.0,
+      "PREC": -1.2331921166899025,
+      "main_component": true,
+      "rated": false,
+      "P": 38.2716049382716,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S11",
+      "n_ranked": 6,
+      "n_comparisons": 40.0,
+      "PREC": -0.9541320536183722,
+      "main_component": true,
+      "rated": true,
+      "P": 40.74074074074074,
+      "C_star": 89.55065359477125
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S13",
+      "n_ranked": 16,
+      "n_comparisons": 110.0,
+      "PREC": 0.08060314249757457,
+      "main_component": true,
+      "rated": true,
+      "P": 53.086419753086425,
+      "C_star": 95.17094017094017
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S14",
+      "n_ranked": 7,
+      "n_comparisons": 21.0,
+      "PREC": 3.3542438529792107,
+      "main_component": true,
+      "rated": true,
+      "P": 41.97530864197531,
+      "C_star": 87.18954248366013
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S15",
+      "n_ranked": 21,
+      "n_comparisons": 128.0,
+      "PREC": -2.0049628727889175,
+      "main_component": true,
+      "rated": true,
+      "P": 59.25925925925926,
+      "C_star": 81.81818181818183
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S16",
+      "n_ranked": 13,
+      "n_comparisons": 85.0,
+      "PREC": -1.9702942825848948,
+      "main_component": true,
+      "rated": true,
+      "P": 49.382716049382715,
+      "C_star": 96.5934065934066
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S17",
+      "n_ranked": 24,
+      "n_comparisons": 123.0,
+      "PREC": 0.7714571654951976,
+      "main_component": true,
+      "rated": true,
+      "P": 67.90123456790124,
+      "C_star": 91.72839506172839
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S18",
+      "n_ranked": 1,
+      "n_comparisons": 10.0,
+      "PREC": 2.917999285590679,
+      "main_component": true,
+      "rated": false,
+      "P": 34.5679012345679,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S19",
+      "n_ranked": 13,
+      "n_comparisons": 89.0,
+      "PREC": 1.3149518530476425,
+      "main_component": true,
+      "rated": true,
+      "P": 49.382716049382715,
+      "C_star": 93.02197802197803
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S20",
+      "n_ranked": 28,
+      "n_comparisons": 136.0,
+      "PREC": -0.5671278605327257,
+      "main_component": true,
+      "rated": true,
+      "P": 67.90123456790124,
+      "C_star": 91.69753086419753
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S21",
+      "n_ranked": 10,
+      "n_comparisons": 55.0,
+      "PREC": -0.8235502513820064,
+      "main_component": true,
+      "rated": true,
+      "P": 45.679012345679006,
+      "C_star": 94.36507936507937
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S22",
+      "n_ranked": 24,
+      "n_comparisons": 110.0,
+      "PREC": 1.8607148587381979,
+      "main_component": true,
+      "rated": true,
+      "P": 62.96296296296296,
+      "C_star": 88.2960557960558
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S23",
+      "n_ranked": 2,
+      "n_comparisons": 10.0,
+      "PREC": 0.0039036545775275,
+      "main_component": true,
+      "rated": false,
+      "P": 35.80246913580246,
+      "C_star": null
+    },
+    {
+      "wave": "t4",
+      "substrate": "v0.23",
+      "brand": "S24",
+      "n_ranked": 7,
+      "n_comparisons": 60.0,
+      "PREC": -3.2702446842061157,
+      "main_component": true,
+      "rated": true,
+      "P": 43.20987654320987,
+      "C_star": 92.96945701357467
+    }
+  ],
+  "created_utc": "2026-11-12T09:13:48+00:00",
+  "prereg_tag": "v1.16-prereg-r1",
+  "anchor_sha256": "90a1e214083cd725d056e1db049658595255b586f1d2816ea1ae2201f0c1d878",
+  "inputs_sha256": {
+    "osf/methodology/v1_10/outputs/v1_10_verdicts.json": "d4250ba79a6acfb9e211dbc561311da9fc07581bebf871dea3dbe149d6bdcb28",
+    "osf/aias_2_0/aias_2_0_profiles.csv": "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e",
+    "osf/methodology/v1_14/outputs/stage1/rank_table_t4_v1_14.csv": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+    "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f"
+  },
+  "rank_tables_sha256": {
+    "OMNI t1 v0.19": "65efbce172f72523c4277de9850549b83b0fcc845386d33a1f053a0815757a0d",
+    "OMNI t1 v0.20": "66fbbe7a869c44c51dd10c54cb19f7e52c277bac643b324c7ef17aacf1a8e561",
+    "OMNI t1 v0.21": "cd51e2ec40e5e91188478d8b60ad366fff4f13e946f2ab3b97fcfcb4a6478479",
+    "OMNI t1 v0.22": "43e22dafad683d6da2e29c411fcc5b6fee20ad71888eab15185ab859ef314bd8",
+    "OMNI t1 v0.23": "423f3029e5bc9fc3342cceaf1a794670b195d27ab3306f28b5c9a57edad26493",
+    "OMNI t2 v0.19": "9f68a0749306d2c1a41061a6e791c168c701f89dd30c8b816245fa9989c0e885",
+    "OMNI t2 v0.20": "11e9d015d2996a8c662f55141e15e06773b5bc31f25ebb40a835283f017d96bd",
+    "OMNI t2 v0.21": "81ba328bd2bd6d916e2ddab288202542a24ad8921e17d4e31a02abf2b1763725",
+    "OMNI t2 v0.22": "dbf1f7e412a77f7e90bcfaa33c4302c78b0ded41a532a077cf45309a78e8a05c",
+    "OMNI t2 v0.23": "0fa55fa2ba0e8bfbf8350920f4de1d26e1fdfad9f7fafc8a5d290499284be279",
+    "OMNI t3 v0.19": "e8a9546efa0ef04cdb2e334b08194658a27c539f028c54de694d4f38821313ad",
+    "OMNI t3 v0.20": "2806064abeaa15a047ade1abeb71e67406bebad953c14b4ec6b807feeedfa178",
+    "OMNI t3 v0.21": "8600a16a54b0118adbd070965e1dda06034bc49f4f13c646b98c79302a3cb9e9",
+    "OMNI t3 v0.22": "7fc7e15b9b5b9ff5b0fc2338fa764b08d53b9a9c0b4bb631f7b0e9319b9fedef",
+    "OMNI t3 v0.23": "149758c75c1d76783b31d0f41b8f8e762e76928f62a57aebf3ae3a741f8e14bf",
+    "EARLY-6 v0.9 pm": "361ec541fef59232f4b082468955dff1f64b4c66313c2c3fae0d2406910cf78e",
+    "EARLY-6 v0.9 finance": "058930e6586f3a88365ffad5bc76459893f3b0428e367f657d28e77fbf690740",
+    "EARLY-6 v0.9 oliveoil": "0ba0814251c447d6576c5e038eb724141082a67a0b6980f6a6581355f1baeb89",
+    "EARLY-6 v0.9 running": "89b489e1bd5e53d278b2956c392b44a1ba7e9dba88cddfcc11980e5793715873",
+    "EARLY-6 v0.9 skincare": "521ab4f7313bb9cd4e972950354c8e76cc0e7310a0c945859497472fa7acc812",
+    "EARLY-6 v1.0 household": "de13e03dbf136f947ce2c0e6fa525d0298c2d179a5d920a5d1f224e2b684e249",
+    "EARLY-6 v1.0 knives": "75172f08e2e14088ab6102b1bfdbaf233568d7ebfe6d439e04acb8001730125a",
+    "EARLY-6 v0.14 premium_tea": "f5bcab0ca8dfa4f208cfd27c5229608cf59a7d2f050ae6191f826b1c7ac3b8ec",
+    "EARLY-6 v0.16 kitchen_knives": "6121717a9eac7f8795203d1c664b5c22c20f0138edd90cedd8b33b7b34f53353",
+    "EARLY-2 v0.6 pm": "86c4df1fc900de7742014b1ea56c5fb4744fc8d02aa6189a1c277653fdb38f54",
+    "EARLY-2 v0.6 finance": "dc7d61e8e42b4ff761f98aa657a57cf8e0a8f816fa7fb53e8f6b39f1a20b9031",
+    "EARLY-2 v0.6 oliveoil": "4f036e0bd0160132ffbf6043d118bc40b2c85791c06ac1e82dda85531f47ab92",
+    "EARLY-2 v0.6 running": "102cb3169c141c3e40dcbb012d46d875294513c476ca36c2b50c09ab416b2797",
+    "EARLY-2 v0.6 skincare": "9c873fb1d9b7d602826445803b1a607b2561936d1c0ccd02060df5f326b83d08",
+    "PAPER-B v0.32 arm A": "c057e40fc7e090c52ffc3136c086d642175ee9e59ef0a935453fc31b0595773c",
+    "PAPER-B v0.32 arm B": "0ed936bfe9c0646efef7b7abad704c4a43dafeb8d9463b2e8617b614ca039305"
+  },
+  "published_controls": {
+    "MQ6_v1_10": {
+      "per_wave": {
+        "t1": {
+          "rho": 0.9086077409762977,
+          "n": 112,
+          "units_per_category": {
+            "v0.19": 16,
+            "v0.20": 24,
+            "v0.21": 24,
+            "v0.22": 24,
+            "v0.23": 24
+          }
+        },
+        "t2": {
+          "rho": 0.9009906710375803,
+          "n": 112,
+          "units_per_category": {
+            "v0.19": 16,
+            "v0.20": 24,
+            "v0.21": 24,
+            "v0.22": 24,
+            "v0.23": 24
+          }
+        },
+        "t3": {
+          "rho": 0.9177246678064647,
+          "n": 112,
+          "units_per_category": {
+            "v0.19": 16,
+            "v0.20": 24,
+            "v0.21": 24,
+            "v0.22": 24,
+            "v0.23": 24
+          }
+        }
+      },
+      "threshold_abs_rho": 0.5,
+      "passes": true,
+      "flag_gate_sensitivity": false
+    },
+    "MQ6_v1_14_t4": {
+      "rho": 0.92984920610383,
+      "n": 112,
+      "units_per_category": {
+        "v0.19": 16,
+        "v0.20": 24,
+        "v0.21": 24,
+        "v0.22": 24,
+        "v0.23": 24
+      },
+      "passes": true,
+      "flag_gate_sensitivity": false
+    }
+  }
+}

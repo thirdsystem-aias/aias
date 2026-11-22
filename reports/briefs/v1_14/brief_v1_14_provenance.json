@@ -1,0 +1,703 @@
+{
+ "_note": "Every number printed in TS-BR-v1.14-r1 and its chart: name -> source file, JSON path (or locked scorer constant), raw value, format. Sources: v116 = osf/methodology/v1_16/outputs/results_v1_16.json, v114 = osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json; decision lines: scripts/score_v1_10.py (taken over by score_v1_14.py and score_v1_16.py); disclosure wording: papers/v1_14_16/v1_14_16_ranking_close_paper_draft.md. Files checked out unchanged from 8018665 (branch ranking-close); results_v1_16.json as written by the single run (branch v1.16, b6f5749), stage1_v1_14.json as written by Stage 1 (branch v1.14).",
+ "sources_sha256": {
+  "osf/methodology/v1_16/outputs/results_v1_16.json": "a114cb12776866ef94693f131e7b359ca82a90699dbff4102271a2903251d7cb",
+  "osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f",
+  "scripts/score_v1_10.py": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+  "scripts/score_v1_14.py": "b087fc818105710079e8fea3c8c279373f787efe48c62cbccdcfb0392e1484ce",
+  "scripts/score_v1_16.py": "f0334fcd9a8e0bc1a397ce79999b374cd6fa9aff0e5602d2ee7ac2b4691e86ec",
+  "papers/v1_14_16/v1_14_16_ranking_close_paper_draft.md": "24c9998159c927edb767c39ede95017410cfbc0270a680fe06acab7288f2381a"
+ },
+ "values": {
+  "P1": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H1_Sep_Presence",
+    "per_wave",
+    "t1",
+    "rho"
+   ],
+   "raw": 0.25453903016099705,
+   "fmt": "r3",
+   "formatted": "0.255"
+  },
+  "P2": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H1_Sep_Presence",
+    "per_wave",
+    "t2",
+    "rho"
+   ],
+   "raw": 0.4107646307811678,
+   "fmt": "r3",
+   "formatted": "0.411"
+  },
+  "P3": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H1_Sep_Presence",
+    "per_wave",
+    "t3",
+    "rho"
+   ],
+   "raw": 0.4338017088012939,
+   "fmt": "r3",
+   "formatted": "0.434"
+  },
+  "P4": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H1_Sep_Presence",
+    "per_wave",
+    "t4",
+    "rho"
+   ],
+   "raw": 0.2576119476668574,
+   "fmt": "r3",
+   "formatted": "0.258"
+  },
+  "P_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "v116",
+     [
+      "H1_Sep_Presence",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H1_Sep_Presence",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H1_Sep_Presence",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H1_Sep_Presence",
+      "per_wave",
+      "t4",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.4338017088012939,
+   "fmt": "r3",
+   "formatted": "0.434"
+  },
+  "C_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "v116",
+     [
+      "H2_Sep_Consistency",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H2_Sep_Consistency",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H2_Sep_Consistency",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "H2_Sep_Consistency",
+      "per_wave",
+      "t4",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.203842398166107,
+   "fmt": "r3",
+   "formatted": "0.204"
+  },
+  "H3": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H3_Retest_t1_t2",
+    "rho"
+   ],
+   "raw": 0.8932633420822397,
+   "fmt": "r3",
+   "formatted": "0.893"
+  },
+  "H3_N": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H3_Retest_t1_t2",
+    "n"
+   ],
+   "raw": 53,
+   "fmt": "i0",
+   "formatted": "53"
+  },
+  "H3_P": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H3_Retest_t1_t2",
+    "p_shuffle"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "f4",
+   "formatted": "0.0001"
+  },
+  "SHUF": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "MQ7_negative_control",
+    "shuffled_mean_rho_H3"
+   ],
+   "raw": 0.00010691163604549487,
+   "fmt": "f4",
+   "formatted": "0.0001"
+  },
+  "H5": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H5_Retest_t2_t3",
+    "rho"
+   ],
+   "raw": 0.8741784037558685,
+   "fmt": "r3",
+   "formatted": "0.874"
+  },
+  "H4": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "H4_Sep_Presence_t4_S1",
+    "rho"
+   ],
+   "raw": 0.38819094934462595,
+   "fmt": "r3",
+   "formatted": "0.388"
+  },
+  "U_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t1",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t2",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t3",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t4",
+      "units_rated"
+     ]
+    ]
+   ],
+   "raw": 54.0,
+   "fmt": "i0",
+   "formatted": "54"
+  },
+  "U_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t1",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t2",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t3",
+      "units_rated"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "D1_descriptives",
+      "t4",
+      "units_rated"
+     ]
+    ]
+   ],
+   "raw": 71.0,
+   "fmt": "i0",
+   "formatted": "71"
+  },
+  "F10_1": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "sensitivities",
+    "S2_floor_10",
+    "H1",
+    "per_wave",
+    "t1",
+    "rho"
+   ],
+   "raw": 0.6589320989292479,
+   "fmt": "r3",
+   "formatted": "0.659"
+  },
+  "F10_2": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "sensitivities",
+    "S2_floor_10",
+    "H1",
+    "per_wave",
+    "t2",
+    "rho"
+   ],
+   "raw": 0.730564594136819,
+   "fmt": "r3",
+   "formatted": "0.731"
+  },
+  "NOSP_2": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "sensitivities",
+    "S4_leave_out_v0.23",
+    "H1",
+    "per_wave",
+    "t2",
+    "rho"
+   ],
+   "raw": 0.5142147192414996,
+   "fmt": "r3",
+   "formatted": "0.514"
+  },
+  "NOSP_3": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "sensitivities",
+    "S4_leave_out_v0.23",
+    "H1",
+    "per_wave",
+    "t3",
+    "rho"
+   ],
+   "raw": 0.618190849523896,
+   "fmt": "r3",
+   "formatted": "0.618"
+  },
+  "NOCAR_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "v116",
+     [
+      "sensitivities",
+      "S4_leave_out_v0.22",
+      "H1",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "sensitivities",
+      "S4_leave_out_v0.22",
+      "H1",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "sensitivities",
+      "S4_leave_out_v0.22",
+      "H1",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ],
+    [
+     "v116",
+     [
+      "sensitivities",
+      "S4_leave_out_v0.22",
+      "H1",
+      "per_wave",
+      "t4",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.29560295088299815,
+   "fmt": "r3",
+   "formatted": "0.296"
+  },
+  "UNC_1": {
+   "kind": "json",
+   "source": "v116",
+   "path": [
+    "sensitivities",
+    "S9_uncentred",
+    "H2",
+    "per_wave",
+    "t1",
+    "rho"
+   ],
+   "raw": 0.30023077841712487,
+   "fmt": "r3",
+   "formatted": "0.300"
+  },
+  "M_H1": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "H1_Sep_Presence",
+    "rho"
+   ],
+   "raw": 0.3688362908042192,
+   "fmt": "r3",
+   "formatted": "0.369"
+  },
+  "M_H2": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "H2_Sep_Consistency",
+    "rho"
+   ],
+   "raw": 0.1321388498231243,
+   "fmt": "r3",
+   "formatted": "0.132"
+  },
+  "M_S1": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "H4_Sep_Presence_S1",
+    "rho"
+   ],
+   "raw": 0.49594372649873625,
+   "fmt": "r3",
+   "formatted": "0.496"
+  },
+  "M_F10": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "sensitivities",
+    "S2_floor_10",
+    "H1",
+    "rho"
+   ],
+   "raw": 0.29216144702619773,
+   "fmt": "r3",
+   "formatted": "0.292"
+  },
+  "M_TOP1": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "sensitivities",
+    "S3_candidate_TOP1",
+    "H1",
+    "rho"
+   ],
+   "raw": 0.28358546299960385,
+   "fmt": "r3",
+   "formatted": "0.284"
+  },
+  "ANSWERS": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.19|S0|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.19|S1|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.20|S0|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.20|S1|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.21|S0|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.21|S1|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.22|S0|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.22|S1|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.23|S0|answered"
+     ]
+    ],
+    [
+     "v114",
+     [
+      "analysis_set",
+      "counts",
+      "v0.23|S1|answered"
+     ]
+    ]
+   ],
+   "raw": 540.0,
+   "fmt": "i0",
+   "formatted": "540"
+  },
+  "BRANDS": {
+   "kind": "json",
+   "source": "v114",
+   "path": [
+    "unit_join",
+    "matched"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "SEP_CONF": {
+   "kind": "rule",
+   "source": "scripts/score_v1_10.py",
+   "constant": "SEP_CONF",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "SEP_FALS": {
+   "kind": "rule",
+   "source": "scripts/score_v1_10.py",
+   "constant": "SEP_FALS",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "STAB_CONF": {
+   "kind": "rule",
+   "source": "scripts/score_v1_10.py",
+   "constant": "STAB_CONF",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "FLOOR": {
+   "kind": "rule",
+   "source": "scripts/score_v1_10.py",
+   "constant": "RATING_FLOOR",
+   "raw": 6,
+   "fmt": "i0",
+   "formatted": "6"
+  },
+  "ALPHA": {
+   "kind": "rule",
+   "source": "scripts/score_v1_10.py",
+   "constant": "P_ALPHA",
+   "raw": 0.05,
+   "fmt": "r2",
+   "formatted": "0.05"
+  },
+  "CHEIL": {
+   "kind": "text",
+   "basis": "papers/v1_14_16/v1_14_16_ranking_close_paper_draft.md Declarations, Cheil sentence, employer's name replaced by 'the employer's group'",
+   "formatted": "Cheil Worldwide, a marketing company of the employer's group, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024)."
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v1_14_16/v1_14_16_ranking_close_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v1.14-r1",
+ "pdf": "reports/briefs/v1_14/TS-BR-v1.14-r1_where-ai-answers-place-a-brand-is-stable-but-it-tracks.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "ALPHA",
+  "ANSWERS",
+  "BRANDS",
+  "CHEIL",
+  "C_MAX",
+  "F10_1",
+  "F10_2",
+  "FLOOR",
+  "H3",
+  "H3_N",
+  "H3_P",
+  "H4",
+  "H5",
+  "M_F10",
+  "M_H1",
+  "M_H2",
+  "M_S1",
+  "M_TOP1",
+  "NOCAR_MAX",
+  "NOSP_2",
+  "NOSP_3",
+  "P1",
+  "P2",
+  "P3",
+  "P4",
+  "P_MAX",
+  "SEP_CONF",
+  "SEP_FALS",
+  "SHUF",
+  "STAB_CONF",
+  "UNC_1",
+  "U_MAX",
+  "U_MIN"
+ ],
+ "digit_audit": {
+  "checked": 73,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 13,
+   "provenance value": 57,
+   "chart axis tick": 3
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 12,
+   "osf": 1,
+   "files": 8,
+   "waves": 4,
+   "models": 3,
+   "years": 10,
+   "dates": 2
+  }
+ }
+}

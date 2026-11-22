@@ -1,0 +1,2564 @@
+{
+  "phase": "v1.14",
+  "stage": "1",
+  "created_utc": "2026-11-12T01:43:29+00:00",
+  "prereg_tag": "v1.14-prereg-r2",
+  "dry_run": false,
+  "raw_ref": "v0.42-acquisition-locked",
+  "scored_ref": "v0.42-scoring-locked",
+  "anchor_sha256": "5cfb999e9f4a75cf66d5bc48175c142faadc7639ec204944a34971cb7b289b4f",
+  "inputs_read": {
+    "osf/v42/scripts/code_t4_v0_42.py": {
+      "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+      "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "bytes": 27577,
+      "source": "git:v0.42-acquisition-locked"
+    },
+    "osf/v42/data/t4_raw.jsonl": {
+      "git_blob": "26de00942a0bc4f27c3506f1d5f7be895cd6a4aa",
+      "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+      "bytes": 5356607,
+      "source": "git:v0.42-acquisition-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl": {
+      "git_blob": "26de00942a0bc4f27c3506f1d5f7be895cd6a4aa",
+      "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+      "bytes": 5356607,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/v42_brand_table.csv": {
+      "git_blob": "2cb9a8993c4225ddbd03a917656fec9d17dd2a9d",
+      "sha256": "792e14addb7ad1ef03a147ee16cee56e82cfecd58030d2e8e3cf3e3ea255af7f",
+      "bytes": 25258,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_a.csv": {
+      "git_blob": "e1d8005826d9236352523b140a5f7a8a84409cff",
+      "sha256": "f88da1797d6df48b423469d7da3eaac4531c31a5d89cd208ed279b47b17703b5",
+      "bytes": 5531,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_b.csv": {
+      "git_blob": "7fb571b51eac6e408eb4e48440b07bd9aa4b3ad7",
+      "sha256": "347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0",
+      "bytes": 203365,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_a.csv": {
+      "git_blob": "5b44cef6f63cc590ad3074a4799cfdbba4846150",
+      "sha256": "9193c5fe190ba236e33b64bd9bbb4a1a2cbbf00a905cb4486173a654eb274f5d",
+      "bytes": 6811,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_b.csv": {
+      "git_blob": "5f765d9853c94bc0456531615a1bf384a3a65cdf",
+      "sha256": "4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1",
+      "bytes": 193285,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_a.csv": {
+      "git_blob": "99cf93cc7478b780170a8f27198e04753b8768b2",
+      "sha256": "d0ec707ccbe8776281e7032ffb27a784b58bed8d2c1e146ec07c1b9d5f3b723d",
+      "bytes": 7028,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_b.csv": {
+      "git_blob": "feb9d5f6297f98d6cff35b2f2237660b53dfc733",
+      "sha256": "2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26",
+      "bytes": 200953,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_a.csv": {
+      "git_blob": "f627bddc9342fadb188e0c9339b34dc62bd08928",
+      "sha256": "70895b1e3a149446c59eafbac96f50e4e72ff301726317b15c4729cc14efd19a",
+      "bytes": 6590,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_b.csv": {
+      "git_blob": "8dc39b9d39645658bf4786ff96258dd040a84126",
+      "sha256": "eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68",
+      "bytes": 185185,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_a.csv": {
+      "git_blob": "696e53af0627a5e5e523c96267238908fb39f3a8",
+      "sha256": "52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e",
+      "bytes": 5360,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_b.csv": {
+      "git_blob": "7f379235ecdc851f62acf14f15d0b63b68389bbb",
+      "sha256": "1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2",
+      "bytes": 190153,
+      "source": "git:v0.42-scoring-locked"
+    },
+    "v0.42-scoring-locked:osf/v42/v42_verdicts.json": {
+      "git_blob": "e7a996dfb8065a6a9665a99291c671e2e404339d",
+      "sha256": "b5094ced5013315ca34d7d4a74a85d969f859f9707bc6bd3594334ee1fdb9f6e",
+      "bytes": 27884,
+      "source": "git:v0.42-scoring-locked"
+    }
+  },
+  "rank_table_t4_sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+  "seeds": {
+    "H1": 110001,
+    "H2": 110002,
+    "H3": 110003,
+    "H4": 110004,
+    "H5": 110005,
+    "H6": 110006,
+    "SHUFFLE": 110010,
+    "BOOT": 110020,
+    "MQ7": 110030,
+    "H4_S1": 114001,
+    "COMP_Coverage": 114002,
+    "COMP_Grounding": 114003,
+    "COMP_Sentiment": 114004
+  },
+  "statistic": "MODE",
+  "rating_floor": 6,
+  "analysis_set": {
+    "excluded_call_ids": [],
+    "counts": {
+      "v0.19|S0|answered": 54,
+      "v0.19|S1|answered": 54,
+      "v0.20|S0|answered": 54,
+      "v0.20|S1|answered": 54,
+      "v0.21|S0|answered": 54,
+      "v0.21|S1|answered": 54,
+      "v0.22|S0|answered": 54,
+      "v0.22|S1|answered": 54,
+      "v0.23|S0|answered": 54,
+      "v0.23|S1|answered": 54
+    },
+    "calls_after_dedupe": 876,
+    "attempt_lines": 990
+  },
+  "unit_join": {
+    "registry_units": 112,
+    "table_units": 112,
+    "matched": 112,
+    "only_in_registries": [],
+    "only_in_table": [],
+    "duplicates": [],
+    "one_to_one": true
+  },
+  "MQ2_mention_parity": {
+    "per_substrate": {
+      "v0.19": {
+        "cells": 1728,
+        "agree": 1728,
+        "agreement": 1.0,
+        "required": 0.98,
+        "passes": true,
+        "disagreements": []
+      },
+      "v0.20": {
+        "cells": 2592,
+        "agree": 2592,
+        "agreement": 1.0,
+        "required": 1.0,
+        "passes": true,
+        "disagreements": []
+      },
+      "v0.21": {
+        "cells": 2592,
+        "agree": 2592,
+        "agreement": 1.0,
+        "required": 1.0,
+        "passes": true,
+        "disagreements": []
+      },
+      "v0.22": {
+        "cells": 2592,
+        "agree": 2592,
+        "agreement": 1.0,
+        "required": 1.0,
+        "passes": true,
+        "disagreements": []
+      },
+      "v0.23": {
+        "cells": 2592,
+        "agree": 2589,
+        "agreement": 0.9988425925925926,
+        "required": 0.98,
+        "passes": true,
+        "disagreements": [
+          {
+            "answer_id": "v23|B|CC-2|gpt-6-astra|S0|1",
+            "brand": "S06",
+            "coded": 0,
+            "extractor": true
+          },
+          {
+            "answer_id": "v23|B|CC-2|gpt-6-astra|S0|2",
+            "brand": "S06",
+            "coded": 0,
+            "extractor": true
+          },
+          {
+            "answer_id": "v23|B|CC-2|gemini-4-argon|S1|1",
+            "brand": "S06",
+            "coded": 0,
+            "extractor": true
+          }
+        ]
+      }
+    },
+    "halt": [],
+    "excluded_from_gate": [],
+    "answers_without_coded_rows": []
+  },
+  "MQ8_comparator_parity": {
+    "S0": {
+      "condition": "S0",
+      "units": 112,
+      "mismatches": 0,
+      "examples": [],
+      "passes": true
+    },
+    "S1": {
+      "condition": "S1",
+      "units": 112,
+      "mismatches": 0,
+      "examples": [],
+      "passes": true
+    }
+  },
+  "models_dropped_by_v0_42": {
+    "S0": [],
+    "S1": []
+  },
+  "gate_excluded_substrates": [],
+  "MQ9_degeneracy": {
+    "rated_units": 71,
+    "value_counts": {
+      "-9.0": 1,
+      "-8.0": 2,
+      "-7.0": 2,
+      "-6.0": 6,
+      "-5.0": 11,
+      "-4.0": 12,
+      "-3.0": 11,
+      "-2.0": 11,
+      "-1.0": 15
+    },
+    "share_most_common_value": 0.2112676056338028,
+    "substrates_without_spread": [],
+    "flag_degenerate": false
+  },
+  "H1_Sep_Presence": {
+    "rho": 0.3688362908042192,
+    "n": 71,
+    "p_perm": 0.0026997300269973002,
+    "sided": "two",
+    "perm_seed": 110001,
+    "ci90": [
+      0.12451268179903807,
+      0.5606906922710874
+    ],
+    "units_per_category": {
+      "v0.19": 11,
+      "v0.20": 13,
+      "v0.21": 15,
+      "v0.22": 14,
+      "v0.23": 18
+    },
+    "verdict": "MARGINAL"
+  },
+  "H2_Sep_Consistency": {
+    "rho": 0.1321388498231243,
+    "n": 70,
+    "p_perm": 0.30526947305269475,
+    "sided": "two",
+    "perm_seed": 110002,
+    "ci90": [
+      -0.08284113254026565,
+      0.34293360121415145
+    ],
+    "units_per_category": {
+      "v0.19": 11,
+      "v0.20": 13,
+      "v0.21": 15,
+      "v0.22": 14,
+      "v0.23": 17
+    },
+    "verdict": "CONFIRMED"
+  },
+  "H4_Sep_Presence_S1": {
+    "rho": 0.49594372649873625,
+    "n": 65,
+    "p_perm": 0.00019998000199980003,
+    "sided": "two",
+    "perm_seed": 114001,
+    "ci90": [
+      0.2669339461872454,
+      0.652475262515652
+    ],
+    "units_per_category": {
+      "v0.19": 11,
+      "v0.20": 10,
+      "v0.21": 15,
+      "v0.22": 16,
+      "v0.23": 13
+    },
+    "verdict": "MARGINAL"
+  },
+  "H_Sep_Components": {
+    "Coverage": {
+      "verdict": "INACTIVE",
+      "activation": {
+        "tags_on_origin": [],
+        "latest": null,
+        "commit": null,
+        "score_defined_on_N3_at_t4": true,
+        "active": false
+      }
+    },
+    "Grounding": {
+      "verdict": "INACTIVE",
+      "activation": {
+        "tags_on_origin": [],
+        "latest": null,
+        "commit": null,
+        "score_defined_on_N3_at_t4": true,
+        "active": false
+      }
+    },
+    "Sentiment": {
+      "verdict": "INACTIVE",
+      "activation": {
+        "tags_on_origin": [
+          "v1.11-prereg-r1"
+        ],
+        "latest": "v1.11-prereg-r1",
+        "commit": "62e2d3828cec232f9d0fa0e3af5f3ca5955d617f",
+        "score_defined_on_N3_at_t4": false,
+        "active": false
+      }
+    }
+  },
+  "MQ6_positive_control": {
+    "rho": 0.92984920610383,
+    "n": 112,
+    "units_per_category": {
+      "v0.19": 16,
+      "v0.20": 24,
+      "v0.21": 24,
+      "v0.22": 24,
+      "v0.23": 24
+    },
+    "passes": true,
+    "flag_gate_sensitivity": false
+  },
+  "D2_run_reliability_and_MQ7": {
+    "statistic": "MODE",
+    "floor_per_run": 3,
+    "pairs": {
+      "1-2": {
+        "rho": 0.6678417443874844,
+        "n": 65
+      },
+      "1-3": {
+        "rho": 0.684514706711367,
+        "n": 61
+      },
+      "2-3": {
+        "rho": 0.7099965079887279,
+        "n": 62
+      }
+    },
+    "rel1": 0.6874509863625264,
+    "rel3": 0.8683949833605793,
+    "pairs_used": 3,
+    "shuffle_draws": 2000,
+    "shuffle_seed": 110030,
+    "shuffled_mean_rel3": 0.04531730305616096,
+    "threshold": 0.2,
+    "flag_list_composition_driven": false
+  },
+  "sensitivities": {
+    "S1_first_mention": {
+      "H1": {
+        "rho": 0.3666025114939773,
+        "n": 71,
+        "p_perm": 0.0033996600339966003,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1710936269194091,
+        "n": 70,
+        "p_perm": 0.18468153184681532,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S2_floor_3": {
+      "H1": {
+        "rho": 0.4311628560474961,
+        "n": 78,
+        "p_perm": 0.0005999400059994001,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 12,
+          "v0.20": 15,
+          "v0.21": 16,
+          "v0.22": 16,
+          "v0.23": 19
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1321388498231243,
+        "n": 70,
+        "p_perm": 0.30526947305269475,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S2_floor_10": {
+      "H1": {
+        "rho": 0.29216144702619773,
+        "n": 58,
+        "p_perm": 0.04079592040795921,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 13,
+          "v0.23": 12
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H2": {
+        "rho": 0.2950935831647566,
+        "n": 58,
+        "p_perm": 0.0387961203879612,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 14,
+          "v0.22": 13,
+          "v0.23": 12
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_MNP": {
+      "H1": {
+        "rho": 0.3118665851300289,
+        "n": 71,
+        "p_perm": 0.0156984301569843,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.197634101497063,
+        "n": 70,
+        "p_perm": 0.131986801319868,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_IRW": {
+      "H1": {
+        "rho": 0.3243568613805432,
+        "n": 71,
+        "p_perm": 0.012598740125987402,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.12622009843509904,
+        "n": 70,
+        "p_perm": 0.32966703329667035,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_TOP3": {
+      "H1": {
+        "rho": 0.3259593795043289,
+        "n": 71,
+        "p_perm": 0.012998700129987,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.19850035118836407,
+        "n": 70,
+        "p_perm": 0.12298770122987701,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_MR": {
+      "H1": {
+        "rho": 0.3130375485285146,
+        "n": 71,
+        "p_perm": 0.015798420157984203,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.17272223996381977,
+        "n": 70,
+        "p_perm": 0.1822817718228177,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_TOP1": {
+      "H1": {
+        "rho": 0.28358546299960385,
+        "n": 71,
+        "p_perm": 0.0321967803219678,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "CONFIRMED"
+      },
+      "H2": {
+        "rho": 0.08372103125323357,
+        "n": 70,
+        "p_perm": 0.5202479752024798,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S3_candidate_MODE": {
+      "H1": {
+        "rho": 0.3688362908042192,
+        "n": 71,
+        "p_perm": 0.0026997300269973002,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1321388498231243,
+        "n": 70,
+        "p_perm": 0.30526947305269475,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S4_leave_out_v0.19": {
+      "H1": {
+        "rho": 0.33323386651018866,
+        "n": 60,
+        "p_perm": 0.014698530146985302,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1570969414447404,
+        "n": 59,
+        "p_perm": 0.25507449255074494,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S4_leave_out_v0.20": {
+      "H1": {
+        "rho": 0.4072425235398581,
+        "n": 58,
+        "p_perm": 0.0021997800219978004,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1160588860498108,
+        "n": 57,
+        "p_perm": 0.42245775422457754,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S4_leave_out_v0.21": {
+      "H1": {
+        "rho": 0.3597360065520192,
+        "n": 56,
+        "p_perm": 0.014898510148985102,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.10541452438540783,
+        "n": 55,
+        "p_perm": 0.47805219478052197,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S4_leave_out_v0.22": {
+      "H1": {
+        "rho": 0.37253812980909423,
+        "n": 57,
+        "p_perm": 0.008799120087991202,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.01592502794374081,
+        "n": 56,
+        "p_perm": 0.916008399160084,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S4_leave_out_v0.23": {
+      "H1": {
+        "rho": 0.374674315911171,
+        "n": 53,
+        "p_perm": 0.009599040095990401,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.29119162546528166,
+        "n": 53,
+        "p_perm": 0.0451954804519548,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S5_recall_arm": {
+      "rho_R_pi_hat": {
+        "rho": 0.3688362908042192,
+        "n": 71,
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        }
+      },
+      "rho_R_mentions": {
+        "rho": 0.3688362908042192,
+        "n": 71,
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        }
+      }
+    },
+    "S7_without_Denon": {
+      "H1": {
+        "rho": 0.3688362908042192,
+        "n": 71,
+        "p_perm": 0.0026997300269973002,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.1321388498231243,
+        "n": 70,
+        "p_perm": 0.30526947305269475,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S9_uncentred": {
+      "H1": {
+        "rho": 0.41439710437344623,
+        "n": 71,
+        "p_perm": 0.0014998500149985001,
+        "sided": "two",
+        "perm_seed": 110001,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 18
+        },
+        "verdict": "MARGINAL"
+      },
+      "H2": {
+        "rho": 0.17977834169179358,
+        "n": 70,
+        "p_perm": 0.17848215178482152,
+        "sided": "two",
+        "perm_seed": 110002,
+        "ci90": [
+          null,
+          null
+        ],
+        "units_per_category": {
+          "v0.19": 11,
+          "v0.20": 13,
+          "v0.21": 15,
+          "v0.22": 14,
+          "v0.23": 17
+        },
+        "verdict": "CONFIRMED"
+      }
+    }
+  },
+  "verdict_changes_under_sensitivities": [
+    {
+      "sensitivity": "S2_floor_10",
+      "hypothesis": "H1",
+      "primary": "MARGINAL",
+      "under_sensitivity": "CONFIRMED"
+    },
+    {
+      "sensitivity": "S3_candidate_TOP1",
+      "hypothesis": "H1",
+      "primary": "MARGINAL",
+      "under_sensitivity": "CONFIRMED"
+    }
+  ],
+  "D1_descriptives": {
+    "per_substrate_condition": {
+      "v0.19|S0": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.9444444444444444,
+        "brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 4.0,
+          "q75": 7.0,
+          "min": 2.0,
+          "max": 8.0,
+          "n": 54
+        },
+        "units_rated": 11,
+        "R_star_distribution": {
+          "median": -4.0,
+          "q25": -5.0,
+          "q75": -2.5,
+          "min": -6.0,
+          "max": -1.0,
+          "n": 11
+        },
+        "R_star_value_counts": {
+          "-1": 2,
+          "-2": 1,
+          "-5": 3,
+          "-4": 2,
+          "-6": 2,
+          "-3": 1
+        }
+      },
+      "v0.20|S0": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.8518518518518519,
+        "brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 5.0,
+          "q75": 7.0,
+          "min": 4.0,
+          "max": 11.0,
+          "n": 54
+        },
+        "units_rated": 13,
+        "R_star_distribution": {
+          "median": -3.0,
+          "q25": -4.0,
+          "q75": -2.0,
+          "min": -9.0,
+          "max": -1.0,
+          "n": 13
+        },
+        "R_star_value_counts": {
+          "-1": 2,
+          "-2": 3,
+          "-3": 3,
+          "-5": 2,
+          "-4": 2,
+          "-9": 1
+        }
+      },
+      "v0.21|S0": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.9444444444444444,
+        "brands_named_per_rankable_answer": {
+          "median": 7.0,
+          "q25": 5.25,
+          "q75": 9.0,
+          "min": 3.0,
+          "max": 13.0,
+          "n": 54
+        },
+        "units_rated": 15,
+        "R_star_distribution": {
+          "median": -4.0,
+          "q25": -5.5,
+          "q75": -2.0,
+          "min": -8.0,
+          "max": -1.0,
+          "n": 15
+        },
+        "R_star_value_counts": {
+          "-2": 2,
+          "-3": 1,
+          "-4": 2,
+          "-1": 3,
+          "-8": 1,
+          "-5": 3,
+          "-7": 1,
+          "-6": 2
+        }
+      },
+      "v0.22|S0": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.9074074074074074,
+        "brands_named_per_rankable_answer": {
+          "median": 7.0,
+          "q25": 5.0,
+          "q75": 7.0,
+          "min": 3.0,
+          "max": 12.0,
+          "n": 54
+        },
+        "units_rated": 14,
+        "R_star_distribution": {
+          "median": -3.0,
+          "q25": -4.0,
+          "q75": -2.0,
+          "min": -6.0,
+          "max": -1.0,
+          "n": 14
+        },
+        "R_star_value_counts": {
+          "-1": 2,
+          "-2": 3,
+          "-3": 4,
+          "-4": 2,
+          "-6": 2,
+          "-5": 1
+        }
+      },
+      "v0.23|S0": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 0.8518518518518519,
+        "list_structured_share": 0.8333333333333334,
+        "brands_named_per_rankable_answer": {
+          "median": 5.5,
+          "q25": 3.0,
+          "q75": 8.0,
+          "min": 2.0,
+          "max": 13.0,
+          "n": 46
+        },
+        "units_rated": 18,
+        "R_star_distribution": {
+          "median": -3.0,
+          "q25": -4.0,
+          "q75": -1.0,
+          "min": -8.0,
+          "max": -1.0,
+          "n": 18
+        },
+        "R_star_value_counts": {
+          "-1": 6,
+          "-2": 2,
+          "-4": 4,
+          "-3": 2,
+          "-5": 2,
+          "-7": 1,
+          "-8": 1
+        }
+      },
+      "v0.19|S1": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 0.8888888888888888,
+        "list_structured_share": 0.7592592592592593,
+        "brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 4.0,
+          "q75": 7.0,
+          "min": 2.0,
+          "max": 10.0,
+          "n": 48
+        },
+        "units_rated": 11,
+        "R_star_distribution": {
+          "median": -4.0,
+          "q25": -5.0,
+          "q75": -2.5,
+          "min": -6.0,
+          "max": -1.0,
+          "n": 11
+        },
+        "R_star_value_counts": {
+          "-1": 2,
+          "-4": 2,
+          "-5": 2,
+          "-3": 2,
+          "-6": 2,
+          "-2": 1
+        }
+      },
+      "v0.20|S1": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.8333333333333334,
+        "brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 4.0,
+          "q75": 6.0,
+          "min": 2.0,
+          "max": 10.0,
+          "n": 54
+        },
+        "units_rated": 10,
+        "R_star_distribution": {
+          "median": -3.0,
+          "q25": -4.0,
+          "q75": -2.0,
+          "min": -6.0,
+          "max": -1.0,
+          "n": 10
+        },
+        "R_star_value_counts": {
+          "-2": 3,
+          "-1": 1,
+          "-4": 2,
+          "-3": 2,
+          "-6": 1,
+          "-5": 1
+        }
+      },
+      "v0.21|S1": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.8333333333333334,
+        "brands_named_per_rankable_answer": {
+          "median": 6.0,
+          "q25": 5.0,
+          "q75": 8.0,
+          "min": 2.0,
+          "max": 11.0,
+          "n": 54
+        },
+        "units_rated": 15,
+        "R_star_distribution": {
+          "median": -3.0,
+          "q25": -6.0,
+          "q75": -2.0,
+          "min": -8.0,
+          "max": -1.0,
+          "n": 15
+        },
+        "R_star_value_counts": {
+          "-2": 3,
+          "-1": 3,
+          "-6": 3,
+          "-3": 3,
+          "-5": 1,
+          "-8": 1,
+          "-7": 1
+        }
+      },
+      "v0.22|S1": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 1.0,
+        "list_structured_share": 0.7777777777777778,
+        "brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 5.0,
+          "q75": 7.0,
+          "min": 3.0,
+          "max": 12.0,
+          "n": 54
+        },
+        "units_rated": 16,
+        "R_star_distribution": {
+          "median": -3.5,
+          "q25": -5.0,
+          "q75": -2.0,
+          "min": -8.0,
+          "max": -1.0,
+          "n": 16
+        },
+        "R_star_value_counts": {
+          "-1": 3,
+          "-2": 3,
+          "-3": 2,
+          "-4": 1,
+          "-5": 5,
+          "-6": 1,
+          "-8": 1
+        }
+      },
+      "v0.23|S1": {
+        "answers": 54,
+        "expected": 54,
+        "missing": 0,
+        "rankable_share": 0.5740740740740741,
+        "list_structured_share": 0.5740740740740741,
+        "brands_named_per_rankable_answer": {
+          "median": 5.0,
+          "q25": 3.0,
+          "q75": 7.5,
+          "min": 2.0,
+          "max": 10.0,
+          "n": 31
+        },
+        "units_rated": 13,
+        "R_star_distribution": {
+          "median": -2.0,
+          "q25": -5.0,
+          "q75": -1.0,
+          "min": -7.0,
+          "max": -1.0,
+          "n": 13
+        },
+        "R_star_value_counts": {
+          "-1": 5,
+          "-2": 2,
+          "-5": 1,
+          "-3": 1,
+          "-7": 2,
+          "-4": 1,
+          "-6": 1
+        }
+      }
+    },
+    "per_model_condition": {
+      "claude-fable-5-2|S0": {
+        "answers_with_text": 90,
+        "rankable": 89,
+        "mean_list_length": 6.235955056179775,
+        "list_structured_share": 0.9888888888888889
+      },
+      "gpt-6-astra|S0": {
+        "answers_with_text": 90,
+        "rankable": 84,
+        "mean_list_length": 5.845238095238095,
+        "list_structured_share": 0.7111111111111111
+      },
+      "gemini-4-argon|S0": {
+        "answers_with_text": 90,
+        "rankable": 89,
+        "mean_list_length": 6.685393258426966,
+        "list_structured_share": 0.9888888888888889
+      },
+      "claude-fable-5-2|S1": {
+        "answers_with_text": 90,
+        "rankable": 81,
+        "mean_list_length": 5.481481481481482,
+        "list_structured_share": 0.8777777777777778
+      },
+      "gpt-6-astra|S1": {
+        "answers_with_text": 90,
+        "rankable": 76,
+        "mean_list_length": 4.802631578947368,
+        "list_structured_share": 0.45555555555555555
+      },
+      "gemini-4-argon|S1": {
+        "answers_with_text": 90,
+        "rankable": 84,
+        "mean_list_length": 6.738095238095238,
+        "list_structured_share": 0.9333333333333333
+      }
+    }
+  },
+  "D3_R_S0_vs_R_S1": {
+    "rho": 0.7924876835553188,
+    "n": 60,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10,
+      "v0.21": 13,
+      "v0.22": 14,
+      "v0.23": 13
+    }
+  },
+  "D4_MODE_vs_MNP_S0": {
+    "rho": 0.8335443173355528,
+    "n": 71,
+    "units_per_category": {
+      "v0.19": 11,
+      "v0.20": 13,
+      "v0.21": 15,
+      "v0.22": 14,
+      "v0.23": 18
+    }
+  },
+  "STAGE1_VERDICT": "MARGINAL",
+  "component_legs": {
+    "Coverage": "INACTIVE",
+    "Grounding": "INACTIVE",
+    "Sentiment": "INACTIVE"
+  },
+  "units": [
+    {
+      "substrate": "v0.19",
+      "brand": "Audeze",
+      "n_ranked_S0": 31,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 32,
+      "R_star_S1": -4.0,
+      "P_S0": 71.60493827160492,
+      "C_star_S0": 97.46753246753246,
+      "P_S1": 72.8395061728395
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Audio-Technica",
+      "n_ranked_S0": 27,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 18,
+      "R_star_S1": -3.0,
+      "P_S0": 66.66666666666667,
+      "C_star_S0": 90.8641975308642,
+      "P_S1": 55.55555555555555
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Beyerdynamic",
+      "n_ranked_S0": 30,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 25,
+      "R_star_S1": -4.0,
+      "P_S0": 70.37037037037037,
+      "C_star_S0": 88.13692480359148,
+      "P_S1": 64.19753086419753
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Dan Clark Audio",
+      "n_ranked_S0": 20,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 13,
+      "R_star_S1": -6.0,
+      "P_S0": 58.02469135802469,
+      "C_star_S0": 98.26839826839827,
+      "P_S1": 49.382716049382715
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Denon",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 3,
+      "R_star_S1": -5.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Focal",
+      "n_ranked_S0": 33,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 34,
+      "R_star_S1": -3.0,
+      "P_S0": 74.07407407407408,
+      "C_star_S0": 95.52308802308802,
+      "P_S1": 75.30864197530865
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Grado",
+      "n_ranked_S0": 5,
+      "rated_S0": false,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 13,
+      "R_star_S1": -5.0,
+      "P_S0": 39.50617283950617,
+      "C_star_S0": null,
+      "P_S1": 49.382716049382715
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "HiFiMan",
+      "n_ranked_S0": 30,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -2.0,
+      "P_S0": 70.37037037037037,
+      "C_star_S0": 98.3008658008658,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Koss",
+      "n_ranked_S0": 6,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 2,
+      "R_star_S1": -4.0,
+      "P_S0": 29.62962962962963,
+      "C_star_S0": 93.75,
+      "P_S1": 24.691358024691358
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Meze",
+      "n_ranked_S0": 14,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 11,
+      "R_star_S1": -6.0,
+      "P_S0": 50.617283950617285,
+      "C_star_S0": 96.75824175824175,
+      "P_S1": 46.913580246913575
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Sennheiser",
+      "n_ranked_S0": 54,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 48,
+      "R_star_S1": -1.0,
+      "P_S0": 100.0,
+      "C_star_S0": 100.0,
+      "P_S1": 92.5925925925926
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Sony",
+      "n_ranked_S0": 35,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 33,
+      "R_star_S1": -1.0,
+      "P_S0": 76.5432098765432,
+      "C_star_S0": 93.57864357864358,
+      "P_S1": 81.48148148148148
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "Stax",
+      "n_ranked_S0": 9,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 10,
+      "R_star_S1": -5.0,
+      "P_S0": 44.444444444444436,
+      "C_star_S0": 100.0,
+      "P_S1": 45.679012345679006
+    },
+    {
+      "substrate": "v0.19",
+      "brand": "ZMF Headphones",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 5,
+      "R_star_S1": -7.0,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 39.50617283950617
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Augustinus Bader",
+      "n_ranked_S0": 12,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 18,
+      "R_star_S1": -3.0,
+      "P_S0": 48.148148148148145,
+      "C_star_S0": 96.42857142857143,
+      "P_S1": 55.55555555555555
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Bioderma",
+      "n_ranked_S0": 5,
+      "rated_S0": false,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 5,
+      "R_star_S1": -4.0,
+      "P_S0": 39.50617283950617,
+      "C_star_S0": null,
+      "P_S1": 39.50617283950617
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "CeraVe",
+      "n_ranked_S0": 54,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 48,
+      "R_star_S1": -1.0,
+      "P_S0": 100.0,
+      "C_star_S0": 100.0,
+      "P_S1": 92.5925925925926
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Cetaphil",
+      "n_ranked_S0": 24,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 14,
+      "R_star_S1": -2.0,
+      "P_S0": 62.96296296296296,
+      "C_star_S0": 95.55555555555556,
+      "P_S1": 50.617283950617285
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Dior Beauty",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 1,
+      "R_star_S1": -4.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Drunk Elephant",
+      "n_ranked_S0": 28,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 15,
+      "R_star_S1": -5.0,
+      "P_S0": 67.90123456790124,
+      "C_star_S0": 91.72839506172839,
+      "P_S1": 51.851851851851855
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Estée Lauder",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 2,
+      "R_star_S1": -2.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 35.80246913580246
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Eucerin",
+      "n_ranked_S0": 12,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 2,
+      "R_star_S1": -4.0,
+      "P_S0": 48.148148148148145,
+      "C_star_S0": 94.70695970695971,
+      "P_S1": 35.80246913580246
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Fenty Skin",
+      "n_ranked_S0": 9,
+      "rated_S0": true,
+      "R_star_S0": -9.0,
+      "n_ranked_S1": 4,
+      "R_star_S1": -2.0,
+      "P_S0": 44.444444444444436,
+      "C_star_S0": 100.0,
+      "P_S1": 38.2716049382716
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Glossier",
+      "n_ranked_S0": 6,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 3,
+      "R_star_S1": -4.0,
+      "P_S0": 40.74074074074074,
+      "C_star_S0": 93.75,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Goop",
+      "n_ranked_S0": 3,
+      "rated_S0": false,
+      "R_star_S0": -8.0,
+      "n_ranked_S1": 1,
+      "R_star_S1": -5.0,
+      "P_S0": 37.03703703703704,
+      "C_star_S0": null,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "La Mer",
+      "n_ranked_S0": 9,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 7,
+      "R_star_S1": -2.0,
+      "P_S0": 44.444444444444436,
+      "C_star_S0": 100.0,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "La Prairie",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 0,
+      "R_star_S1": null,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 33.333333333333336
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "La Roche-Posay",
+      "n_ranked_S0": 49,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 42,
+      "R_star_S1": -2.0,
+      "P_S0": 93.82716049382715,
+      "C_star_S0": 87.7124183006536,
+      "P_S1": 85.18518518518518
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Paula's Choice",
+      "n_ranked_S0": 17,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 10,
+      "R_star_S1": -6.0,
+      "P_S0": 54.320987654320994,
+      "C_star_S0": 53.39105339105339,
+      "P_S1": 45.679012345679006
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Rhode",
+      "n_ranked_S0": 27,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 26,
+      "R_star_S1": -4.0,
+      "P_S0": 66.66666666666667,
+      "C_star_S0": 100.0,
+      "P_S1": 65.43209876543209
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "SkinCeuticals",
+      "n_ranked_S0": 37,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -4.0,
+      "P_S0": 79.01234567901234,
+      "C_star_S0": 85.73426573426573,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "The Ordinary",
+      "n_ranked_S0": 42,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 34,
+      "R_star_S1": -3.0,
+      "P_S0": 85.18518518518518,
+      "C_star_S0": 97.78388278388277,
+      "P_S1": 75.30864197530865
+    },
+    {
+      "substrate": "v0.20",
+      "brand": "Tower 28",
+      "n_ranked_S0": 2,
+      "rated_S0": false,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 5,
+      "R_star_S1": -5.0,
+      "P_S0": 24.691358024691358,
+      "C_star_S0": null,
+      "P_S1": 28.395061728395063
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Anastasia Beverly Hills",
+      "n_ranked_S0": 2,
+      "rated_S0": false,
+      "R_star_S0": -9.0,
+      "n_ranked_S1": 1,
+      "R_star_S1": -3.0,
+      "P_S0": 35.80246913580246,
+      "C_star_S0": null,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Bobbi Brown",
+      "n_ranked_S0": 10,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 1,
+      "R_star_S1": -5.0,
+      "P_S0": 45.679012345679006,
+      "C_star_S0": 95.53571428571428,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Charlotte Tilbury",
+      "n_ranked_S0": 49,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 38,
+      "R_star_S1": -6.0,
+      "P_S0": 93.82716049382715,
+      "C_star_S0": 91.91176470588236,
+      "P_S1": 80.24691358024691
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Fenty Beauty",
+      "n_ranked_S0": 36,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 38,
+      "R_star_S1": -2.0,
+      "P_S0": 77.77777777777777,
+      "C_star_S0": 100.0,
+      "P_S1": 80.24691358024691
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Giorgio Armani Beauty",
+      "n_ranked_S0": 13,
+      "rated_S0": true,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 7,
+      "R_star_S1": -3.0,
+      "P_S0": 49.382716049382715,
+      "C_star_S0": 59.28571428571428,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Haus Labs",
+      "n_ranked_S0": 15,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 18,
+      "R_star_S1": -3.0,
+      "P_S0": 51.851851851851855,
+      "C_star_S0": 70.0,
+      "P_S1": 55.55555555555555
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Hourglass",
+      "n_ranked_S0": 7,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 11,
+      "R_star_S1": -8.0,
+      "P_S0": 41.97530864197531,
+      "C_star_S0": 91.63398692810458,
+      "P_S1": 46.913580246913575
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Huda Beauty",
+      "n_ranked_S0": 16,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 23,
+      "R_star_S1": -3.0,
+      "P_S0": 53.086419753086425,
+      "C_star_S0": 92.0940170940171,
+      "P_S1": 61.7283950617284
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Kylie Cosmetics",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 7,
+      "R_star_S1": -2.0,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "L'Oréal Paris",
+      "n_ranked_S0": 5,
+      "rated_S0": false,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 6,
+      "R_star_S1": -7.0,
+      "P_S0": 39.50617283950617,
+      "C_star_S0": null,
+      "P_S1": 40.74074074074074
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Laura Mercier",
+      "n_ranked_S0": 10,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 4,
+      "R_star_S1": -3.0,
+      "P_S0": 45.679012345679006,
+      "C_star_S0": 89.92063492063492,
+      "P_S1": 38.2716049382716
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "MAC Cosmetics",
+      "n_ranked_S0": 26,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -1.0,
+      "P_S0": 65.43209876543209,
+      "C_star_S0": 79.35185185185185,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Maybelline",
+      "n_ranked_S0": 42,
+      "rated_S0": true,
+      "R_star_S0": -8.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -6.0,
+      "P_S0": 85.18518518518518,
+      "C_star_S0": 96.42857142857143,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "NARS",
+      "n_ranked_S0": 39,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 27,
+      "R_star_S1": -2.0,
+      "P_S0": 81.48148148148148,
+      "C_star_S0": 96.92307692307692,
+      "P_S1": 66.66666666666667
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "NYX Professional Makeup",
+      "n_ranked_S0": 25,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 22,
+      "R_star_S1": -6.0,
+      "P_S0": 64.19753086419753,
+      "C_star_S0": 63.456790123456784,
+      "P_S1": 60.49382716049383
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Pat McGrath Labs",
+      "n_ranked_S0": 29,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 16,
+      "R_star_S1": -5.0,
+      "P_S0": 69.13580246913581,
+      "C_star_S0": 86.66025332691999,
+      "P_S1": 53.086419753086425
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Rare Beauty",
+      "n_ranked_S0": 36,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 35,
+      "R_star_S1": -1.0,
+      "P_S0": 77.77777777777777,
+      "C_star_S0": 100.0,
+      "P_S1": 76.5432098765432
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "Wet n Wild",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 3,
+      "R_star_S1": -4.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.21",
+      "brand": "e.l.f. Cosmetics",
+      "n_ranked_S0": 35,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -1.0,
+      "P_S0": 76.5432098765432,
+      "C_star_S0": 83.77622377622377,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "BMW",
+      "n_ranked_S0": 40,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 40,
+      "R_star_S1": -3.0,
+      "P_S0": 82.71604938271605,
+      "C_star_S0": 80.87912087912088,
+      "P_S1": 82.71604938271605
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Bentley",
+      "n_ranked_S0": 18,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 18,
+      "R_star_S1": -2.0,
+      "P_S0": 55.55555555555555,
+      "C_star_S0": 100.0,
+      "P_S1": 55.55555555555555
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Cadillac",
+      "n_ranked_S0": 20,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 20,
+      "R_star_S1": -5.0,
+      "P_S0": 58.02469135802469,
+      "C_star_S0": 95.49062049062049,
+      "P_S1": 58.02469135802469
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Chevrolet",
+      "n_ranked_S0": 13,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 10,
+      "R_star_S1": -5.0,
+      "P_S0": 49.382716049382715,
+      "C_star_S0": 96.5934065934066,
+      "P_S1": 45.679012345679006
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Ford",
+      "n_ranked_S0": 22,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 19,
+      "R_star_S1": -1.0,
+      "P_S0": 60.49382716049383,
+      "C_star_S0": 94.83766233766234,
+      "P_S1": 56.79012345679013
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Honda",
+      "n_ranked_S0": 29,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 31,
+      "R_star_S1": -2.0,
+      "P_S0": 69.13580246913581,
+      "C_star_S0": 98.33333333333333,
+      "P_S1": 71.60493827160492
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Hyundai",
+      "n_ranked_S0": 24,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 12,
+      "R_star_S1": -5.0,
+      "P_S0": 62.96296296296296,
+      "C_star_S0": 97.5,
+      "P_S1": 48.148148148148145
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Jaguar",
+      "n_ranked_S0": 8,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 6,
+      "R_star_S1": -5.0,
+      "P_S0": 43.20987654320987,
+      "C_star_S0": 97.91666666666666,
+      "P_S1": 40.74074074074074
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Lucid",
+      "n_ranked_S0": 5,
+      "rated_S0": false,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 6,
+      "R_star_S1": -6.0,
+      "P_S0": 39.50617283950617,
+      "C_star_S0": null,
+      "P_S1": 40.74074074074074
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Mercedes-Benz",
+      "n_ranked_S0": 35,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 28,
+      "R_star_S1": -3.0,
+      "P_S0": 76.5432098765432,
+      "C_star_S0": 93.57864357864358,
+      "P_S1": 67.90123456790124
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Mercury",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 0,
+      "R_star_S1": null,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 33.333333333333336
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Nissan",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 1,
+      "R_star_S1": -9.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Porsche",
+      "n_ranked_S0": 51,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 48,
+      "R_star_S1": -4.0,
+      "P_S0": 96.29629629629629,
+      "C_star_S0": 88.23529411764707,
+      "P_S1": 92.5925925925926
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Rivian",
+      "n_ranked_S0": 4,
+      "rated_S0": false,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 6,
+      "R_star_S1": -8.0,
+      "P_S0": 38.2716049382716,
+      "C_star_S0": null,
+      "P_S1": 40.74074074074074
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Rolls-Royce",
+      "n_ranked_S0": 26,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 26,
+      "R_star_S1": -1.0,
+      "P_S0": 65.43209876543209,
+      "C_star_S0": 99.16666666666667,
+      "P_S1": 65.43209876543209
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Tesla",
+      "n_ranked_S0": 15,
+      "rated_S0": true,
+      "R_star_S0": -6.0,
+      "n_ranked_S1": 12,
+      "R_star_S1": -5.0,
+      "P_S0": 51.851851851851855,
+      "C_star_S0": 88.05860805860806,
+      "P_S1": 48.148148148148145
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Toyota",
+      "n_ranked_S0": 36,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 35,
+      "R_star_S1": -1.0,
+      "P_S0": 77.77777777777777,
+      "C_star_S0": 100.0,
+      "P_S1": 76.5432098765432
+    },
+    {
+      "substrate": "v0.22",
+      "brand": "Volkswagen",
+      "n_ranked_S0": 11,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 9,
+      "R_star_S1": -2.0,
+      "P_S0": 46.913580246913575,
+      "C_star_S0": 97.61904761904762,
+      "P_S1": 44.444444444444436
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S01",
+      "n_ranked_S0": 9,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 10,
+      "R_star_S1": -1.0,
+      "P_S0": 44.444444444444436,
+      "C_star_S0": 95.55555555555556,
+      "P_S1": 45.679012345679006
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S02",
+      "n_ranked_S0": 23,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 21,
+      "R_star_S1": -2.0,
+      "P_S0": 61.7283950617284,
+      "C_star_S0": 77.27272727272727,
+      "P_S1": 60.49382716049383
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S03",
+      "n_ranked_S0": 10,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 9,
+      "R_star_S1": -1.0,
+      "P_S0": 45.679012345679006,
+      "C_star_S0": 98.80952380952381,
+      "P_S1": 44.444444444444436
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S04",
+      "n_ranked_S0": 11,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 14,
+      "R_star_S1": -3.0,
+      "P_S0": 46.913580246913575,
+      "C_star_S0": 97.61904761904762,
+      "P_S1": 50.617283950617285
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S05",
+      "n_ranked_S0": 9,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 8,
+      "R_star_S1": -7.0,
+      "P_S0": 44.444444444444436,
+      "C_star_S0": 92.28174603174604,
+      "P_S1": 43.20987654320987
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S06",
+      "n_ranked_S0": 6,
+      "rated_S0": true,
+      "R_star_S0": -7.0,
+      "n_ranked_S1": 8,
+      "R_star_S1": -5.0,
+      "P_S0": 38.2716049382716,
+      "C_star_S0": null,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S08",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 0,
+      "R_star_S1": null,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 33.333333333333336
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S09",
+      "n_ranked_S0": 10,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 3,
+      "R_star_S1": -2.0,
+      "P_S0": 45.679012345679006,
+      "C_star_S0": 81.03174603174604,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S10",
+      "n_ranked_S0": 4,
+      "rated_S0": false,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 2,
+      "R_star_S1": -3.0,
+      "P_S0": 38.2716049382716,
+      "C_star_S0": null,
+      "P_S1": 35.80246913580246
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S11",
+      "n_ranked_S0": 6,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 2,
+      "R_star_S1": -2.0,
+      "P_S0": 40.74074074074074,
+      "C_star_S0": 89.55065359477125,
+      "P_S1": 35.80246913580246
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S12",
+      "n_ranked_S0": 0,
+      "rated_S0": false,
+      "R_star_S0": null,
+      "n_ranked_S1": 1,
+      "R_star_S1": -1.0,
+      "P_S0": 33.333333333333336,
+      "C_star_S0": null,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S13",
+      "n_ranked_S0": 16,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 7,
+      "R_star_S1": -1.0,
+      "P_S0": 53.086419753086425,
+      "C_star_S0": 95.17094017094017,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S14",
+      "n_ranked_S0": 7,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 3,
+      "R_star_S1": -1.0,
+      "P_S0": 41.97530864197531,
+      "C_star_S0": 87.18954248366013,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S15",
+      "n_ranked_S0": 21,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 17,
+      "R_star_S1": -6.0,
+      "P_S0": 59.25925925925926,
+      "C_star_S0": 81.81818181818183,
+      "P_S1": 54.320987654320994
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S16",
+      "n_ranked_S0": 13,
+      "rated_S0": true,
+      "R_star_S0": -5.0,
+      "n_ranked_S1": 7,
+      "R_star_S1": -7.0,
+      "P_S0": 49.382716049382715,
+      "C_star_S0": 96.5934065934066,
+      "P_S1": 41.97530864197531
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S17",
+      "n_ranked_S0": 24,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 15,
+      "R_star_S1": -1.0,
+      "P_S0": 67.90123456790124,
+      "C_star_S0": 91.72839506172839,
+      "P_S1": 61.7283950617284
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S18",
+      "n_ranked_S0": 1,
+      "rated_S0": false,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 1,
+      "R_star_S1": -1.0,
+      "P_S0": 34.5679012345679,
+      "C_star_S0": null,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S19",
+      "n_ranked_S0": 13,
+      "rated_S0": true,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 1,
+      "R_star_S1": -3.0,
+      "P_S0": 49.382716049382715,
+      "C_star_S0": 93.02197802197803,
+      "P_S1": 34.5679012345679
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S20",
+      "n_ranked_S0": 28,
+      "rated_S0": true,
+      "R_star_S0": -2.0,
+      "n_ranked_S1": 16,
+      "R_star_S1": -2.0,
+      "P_S0": 67.90123456790124,
+      "C_star_S0": 91.69753086419753,
+      "P_S1": 53.086419753086425
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S21",
+      "n_ranked_S0": 10,
+      "rated_S0": true,
+      "R_star_S0": -4.0,
+      "n_ranked_S1": 6,
+      "R_star_S1": -4.0,
+      "P_S0": 45.679012345679006,
+      "C_star_S0": 94.36507936507937,
+      "P_S1": 40.74074074074074
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S22",
+      "n_ranked_S0": 24,
+      "rated_S0": true,
+      "R_star_S0": -1.0,
+      "n_ranked_S1": 9,
+      "R_star_S1": -1.0,
+      "P_S0": 62.96296296296296,
+      "C_star_S0": 88.2960557960558,
+      "P_S1": 49.382716049382715
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S23",
+      "n_ranked_S0": 2,
+      "rated_S0": false,
+      "R_star_S0": -3.0,
+      "n_ranked_S1": 2,
+      "R_star_S1": -2.0,
+      "P_S0": 35.80246913580246,
+      "C_star_S0": null,
+      "P_S1": 37.03703703703704
+    },
+    {
+      "substrate": "v0.23",
+      "brand": "S24",
+      "n_ranked_S0": 7,
+      "rated_S0": true,
+      "R_star_S0": -8.0,
+      "n_ranked_S1": 5,
+      "R_star_S1": -1.0,
+      "P_S0": 43.20987654320987,
+      "C_star_S0": 92.96945701357467,
+      "P_S1": 40.74074074074074
+    }
+  ]
+}
