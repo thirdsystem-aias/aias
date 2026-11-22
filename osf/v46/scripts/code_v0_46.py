@@ -60,6 +60,21 @@ URL_RE = re.compile(r"https?://[^\s<>\"'\])]+", re.I)
 EMPH_RE = re.compile(r"[*_`]")          # DECISION NEEDED: "Markdown emphasis" = the characters * _ `
 CHOICE_RE = re.compile(r"^\s*choice\s*:\s*(.*)$", re.I)
 NAMES_SOMETHING_RE = re.compile(r"\w", re.U)
+# r3 task 2 (runner handoff 2026-11-21, "LIST explicit refusal with no CHOICE line codes OFF_LIST (r2 text fix)"):
+# an answered LIST call with no CHOICE line whose text explicitly declines to choose, and whose last line names no
+# registry unit, is OFF_LIST (reason "refusal_text"): the model was shown the list and did not pick from it.
+# Provider refusals (refusal flag, refusal/SAFETY stop, blocked prompt) stay NONE (section 5.3 / descriptive 6).
+# DECISION: "explicit refusal" = this fixed pattern (first person + can't / won't / unable / decline + choose, pick,
+# select, recommend or decide), set before data. Stage 1 manuscript r1 (sections 5.1, 5.3) still says a refusal is
+# NONE; manuscript r2 carries the text fix.
+REFUSAL_TEXT_RE = re.compile(
+    r"\bi(?:['’]m|\s+am|['’]d|\s+would)?\s+"
+    r"(?:can(?:no|['’])t|can\s+not|won['’]t|will\s+not|not\s+able\s+to|"
+    r"unable\s+to|(?:must|have\s+to|need\s+to)\s+decline\s+to|decline\s+to|rather\s+not|prefer\s+not\s+to)\s+"
+    r"(?:\w+\s+){0,2}?(?:choose|pick|select|recommend|decide|make\s+(?:a|the|that|this|your)\s+"
+    r"(?:choice|decision|selection|pick))\b"
+    r"|\bi\s+(?:must|have\s+to)\s+(?:respectfully\s+)?decline\b",
+    re.I)
 
 
 def strip_urls(text):
@@ -183,6 +198,9 @@ def code_answer(rec, live=None):
             if cond == "LIST" and rec.get("order"):
                 out["position"] = rec["order"].index(u) + 1
         return out
+    if cond == "LIST" and not had_prefix and REFUSAL_TEXT_RE.search(strip_urls(EMPH_RE.sub("", text))):
+        out.update(code="OFF_LIST", reason="refusal_text", other_text=line)   # r3 task 2 (see REFUSAL_TEXT_RE)
+        return out
     if NAMES_SOMETHING_RE.search(line):
         # DECISION NEEDED: section 5.3 says "none -> OTHER if the line names something"; section 5.1 says
         # OTHER is OPEN only and OFF_LIST is "LIST: a brand not on the list". Here: LIST -> OFF_LIST, OPEN -> OTHER.
@@ -268,6 +286,15 @@ ADVERSARIAL = [
     ("dated snapshot accepted",
      {"condition": "OPEN", "category": "cars", "text": "x\nCHOICE: Ford", "model": "gpt-6-astra",
       "served_model": "gpt-6-astra-2026-10-01"}, "VALID", "Ford"),
+    ("LIST explicit refusal, no CHOICE line",
+     {"condition": "LIST", "category": "cars", "order": ["Tesla", "Toyota"],
+      "text": "I'm sorry, but I can't choose a car for you.\nPlease weigh these options yourself."}, "OFF_LIST", None),
+    ("LIST explicit refusal, punctuation-only last line",
+     {"condition": "LIST", "category": "cars", "order": ["Tesla", "Toyota"],
+      "text": "I won't pick a brand on your behalf.\n--"}, "OFF_LIST", None),
+    ("LIST provider refusal stays NONE",
+     {"condition": "LIST", "category": "cars", "order": ["Tesla", "Toyota"], "text": "I can't choose.",
+      "finish_reason": "refusal"}, "NONE", None),
     ("Rare Beauty in cosmetics",
      {"condition": "OPEN", "category": "cosmetics", "text": "x\nCHOICE: Rare Beauty"}, "VALID", "Rare Beauty"),
 ]

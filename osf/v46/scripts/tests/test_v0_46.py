@@ -167,6 +167,29 @@ class TestCoder(unittest.TestCase):
         import acquire_v0_46 as A
         self.assertLessEqual(set(A.LENGTH_STOPS), C.LENGTH_STOPS)    # coder and acquisition agree
 
+    def test_list_refusal_without_choice_line_is_off_list(self):
+        # r3 task 2: LIST + explicit refusal in the text + no CHOICE line -> OFF_LIST (reason refusal_text)
+        lst = {"condition": "LIST", "category": "cars", "order": ["Tesla", "Toyota", "Honda"]}
+        for t in ("I'm sorry, but I can't choose a car for you.\nPlease weigh these yourself.",
+                  "As an assistant I would rather not pick one brand.\nEach has strengths.",
+                  "I am unable to make that decision for you.",
+                  "I must respectfully decline.\n...",
+                  "**I cannot select** a brand for you.\nGood luck."):
+            with self.subTest(t=t):
+                got = C.code_answer(dict(lst, text=t))
+                self.assertEqual((got["code"], got["reason"], got["unit"]), ("OFF_LIST", "refusal_text", None))
+        # not a refusal_text case: a CHOICE line is present, a registry unit is on the last line, OPEN, provider stop
+        self.assertEqual(C.code_answer(dict(lst, text="I can't choose for you.\nCHOICE:"))["code"], "NONE")
+        self.assertEqual(C.code_answer(dict(lst, text="I can't choose for you, but most pick:\nHonda"))["code"],
+                         "VALID")
+        self.assertEqual(C.code_answer({"condition": "OPEN", "category": "cars",
+                                        "text": "I can't choose a car for you."})["code"], "OTHER")
+        prov = C.code_answer(dict(lst, text="I can't choose.", finish_reason="refusal"))
+        self.assertEqual((prov["code"], prov["reason"]), ("NONE", "refusal"))
+        # a non-refusal sentence on a LIST answer without CHOICE line keeps the old path (OFF_LIST, no reason)
+        plain = C.code_answer(dict(lst, text="Hard to say.\nIt depends on your needs."))
+        self.assertEqual((plain["code"], plain["reason"]), ("OFF_LIST", None))
+
 
 class TestScorerParts(unittest.TestCase):
     def test_percentiles_and_ties(self):
