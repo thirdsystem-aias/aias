@@ -496,5 +496,199 @@ class TestGates(unittest.TestCase):
         self.assertTrue(res["both_pass"])
 
 
+# =========================================================================== acquisition (task 3; nothing is sent)
+import contextlib  # noqa: E402
+import io  # noqa: E402
+import time  # noqa: E402
+from collections import Counter  # noqa: E402
+import acquire_v0_46 as A  # noqa: E402
+
+QUIET = (lambda *_a, **_k: None)
+
+
+def _fake_out(text="CHOICE: CeraVe", fr="end_turn", tout=40):
+    return {"text": text, "served_model": None, "finish_reason": fr, "tokens_in": 300, "tokens_out": tout,
+            "tokens_thought": None, "paused_continued": False, "search": None}
+
+
+class TestAcquire(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.panel = A.make_panel(A.ORIENTATION_PANEL)
+        cls.specs = A.build_specs(A.load_probes(), cls.panel)
+
+    def test_refuses_run_before_lock(self):
+        tmp = Path(tempfile.mkdtemp())
+        raw = tmp / "raw.jsonl"
+        old = A.RAW_PATH
+        A.RAW_PATH = raw
+        try:
+            err = io.StringIO()
+            with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
+                code = A.main(["--run"])
+        finally:
+            A.RAW_PATH = old
+        self.assertEqual(code, 2)
+        self.assertIn("not locked", err.getvalue())
+        self.assertFalse(raw.exists())
+        self.assertFalse(A.RAW_PATH.exists())
+        with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
+            A.main([])                                            # neither --run nor --dry-run
+
+    def test_refuses_tampered_probe_file(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "probes.jsonl"
+            p.write_bytes(A.PROBES_PATH.read_bytes() + b"\n")
+            with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(A.Refused):
+                A.verify_probes(p)
+        self.assertEqual(A.verify_probes(), A.PROBES_SHA256)
+        self.assertEqual(A.probes_sha_expected(), A.PROBES_SHA256)
+
+    def test_lock_guard_with_tag_and_anchor(self):
+        sha = "a" * 40
+        with tempfile.TemporaryDirectory() as d:
+            anc = Path(d) / "anchor.json"
+            ls = f"{sha}\trefs/tags/{A.PREREG_TAG}\n"
+            with contextlib.redirect_stderr(io.StringIO()):
+                with self.assertRaises(A.Refused):
+                    A.lock_guard(anchor=anc, ls_remote=ls)                # no anchor
+                anc.write_text(json.dumps({"commit": "b" * 40}))
+                with self.assertRaises(A.Refused):
+                    A.lock_guard(anchor=anc, ls_remote=ls)                # anchor names another commit
+                with self.assertRaises(A.Refused):
+                    A.lock_guard(anchor=anc, ls_remote="")                # tag not on origin
+            anc.write_text(json.dumps({"commit": sha}))
+            self.assertEqual(A.lock_guard(anchor=anc, ls_remote=ls), sha)
+
+    def test_dry_run_count_1266(self):
+        out = A.dry_run(log=QUIET, cost=False)
+        self.assertTrue(out["ok"])
+        self.assertEqual(out["total_calls"], 1266)
+        self.assertEqual({b: sum(v.values()) for b, v in out["by_block"].items()}, A.EXPECTED)
+        self.assertEqual(len({s["call_id"] for s in self.specs}), 1266)
+        self.assertEqual(Counter(s["condition"] for s in self.specs), {"S0": 504, "LIST": 546, "OPEN": 216})
+        self.assertEqual([s["block"] for s in self.specs], sorted((s["block"] for s in self.specs),
+                                                                  key=A.BLOCK_IDS.index))
+
+    def test_dry_run_projected_cost(self):
+        r = subprocess.run(["git", "-C", str(A.ROOT), "rev-parse", "-q", "--verify", "refs/tags/v0.42-scoring-locked"],
+                           capture_output=True)
+        if r.returncode != 0:
+            self.skipTest("t4 tag not available")
+        pc = A.projected_cost()
+        self.assertEqual(pc["total"], {"central": 44.14, "high": 86.38})      # = manuscript section 3.9
+        self.assertEqual(pc["predictor_calls"], 504)
+
+    def test_fork_chunks_verbatim(self):
+        src = (A.ROOT / "osf/v45/scripts/acquire_v0_45.py").read_bytes()
+        self.assertEqual(hashlib.sha256(src).hexdigest(), A.FORK_SOURCE_SHA256)
+        lines = src.decode().split("\n")
+        mine = Path(A.__file__).read_text()
+        for a, b in A.FORK_MAP["ranges"]:
+            ch = "\n".join(lines[a - 1:b])
+            for old, new in A.FORK_MAP["substitutions"]:
+                ch = ch.replace(old, new)
+            self.assertIn(ch, mine, f"lines {a}-{b}")
+        self.assertEqual(A.confirm_no_sampling_params(), [])
+
+    def test_raw_fields_feed_coder_and_predictors(self):
+        cho = [s for s in self.specs if s["condition"] == "LIST"][0]
+        rec = A._record(cho, _fake_out(f"Good.\nCHOICE: {cho['v46']['order'][3]}"), "ok", None, 1, False,
+                        "2026-12-02T00:00:00+00:00", "2026-12-02T00:00:01+00:00", [])
+        for k in ("call_id", "condition", "category", "brief", "model", "model_slot", "square", "row", "order",
+                  "block", "part", "text", "status", "finish_reason", "output_tokens", "model_requested"):
+            self.assertIn(k, rec)
+        coded = C.code_answer(rec)
+        self.assertEqual((coded["code"], coded["position"]), ("VALID", 4))
+        pre = [s for s in self.specs if s["block"] == "P3"][0]
+        prec = A._record(pre, _fake_out("1. CeraVe\n2. La Mer"), "ok", None, 1, False, "t", "t", [])
+        self.assertTrue(PR.V114.in_design(prec, [m["model_id"] for m in self.panel]))
+        self.assertEqual((prec["condition"], prec["run"], prec["phase"]), ("S0", 2, "B"))
+
+    def test_stop_rule_detection(self):
+        base = {"part": "choice", "provider": "openai", "text": "long deliberation", "finish_reason": "length"}
+        self.assertTrue(A.cut_before_outcome(base))
+        self.assertFalse(A.cut_before_outcome(dict(base, text="x\n**CHOICE:** CeraVe")))
+        self.assertFalse(A.cut_before_outcome(dict(base, finish_reason="stop")))
+        self.assertTrue(A.cut_before_outcome({"part": "choice", "provider": "google", "text": "x",
+                                              "finish_reason": None, "output_tokens": 16000, "thinking_tokens": 384}))
+        self.assertTrue(A.cut_before_outcome({"part": "predictor", "text": "", "finish_reason": "max_tokens"}))
+        self.assertFalse(A.cut_before_outcome({"part": "predictor", "text": "1. A", "finish_reason": "max_tokens"}))
+
+    def _world(self, d, runner_texts=None, blocks=("P1", "C1", "C2")):
+        """A miniature collection: 2 calls per model in each of `blocks`; fake runners write records."""
+        specs = []
+        for b in blocks:
+            for m in self.panel:
+                specs += [s for s in self.specs if s["block"] == b and s["model"]["slot"] == m["slot"]][:2]
+        sent = []
+
+        def runner(group, ledger, write):
+            for s in group:
+                while True:                                  # reserve >= the call's cost (<= $0.26 here)
+                    st, tok = ledger.reserve(0.30)
+                    if st != "wait":
+                        break
+                    time.sleep(0.001)
+                if st != "ok":
+                    return st
+                sent.append(s["call_id"])
+                txt = (runner_texts or {}).get(s["call_id"], "ok\nCHOICE: CeraVe")
+                fr = "length" if txt == "CUT" else "end_turn"
+                out = _fake_out("x" if txt == "CUT" else txt, fr, tout=5_000)
+                rec = A._record(s, out, "ok", None, 1, False, "2026-12-02T00:00:00+00:00", "t", [
+                    {"mode": "standard", "input_tokens": 1000, "output_tokens": 5_000, "n_searches": 0}])
+                write(rec)
+                ledger.settle(tok, rec["cost_usd"])
+            return "done"
+        raw, state = Path(d) / "raw.jsonl", Path(d) / "state.json"
+        sr = A.StopRule(Path(d) / "stop.jsonl")
+        return specs, sent, runner, raw, state, sr
+
+    def test_collection_resumable_and_stop_rule(self):
+        with tempfile.TemporaryDirectory() as d:
+            specs, sent, runner, raw, state, sr = self._world(d)
+            cut = [s for s in specs if s["block"] == "C1" and s["model"]["slot"] == "M2_openai"][0]["call_id"]
+            specs, sent, runner, raw, state, sr = self._world(d, {cut: "CUT"})
+            led = A.BG.Ledger(raw, state)
+            st = A.run_collection(specs, led, raw, {"batch": runner, "standard": runner}, sr, self.panel, log=QUIET)
+            self.assertEqual(st, "stop_rule")
+            self.assertIn("M2_openai", sr.paused)
+            m2_after = [c for c in sent if "gpt-6-astra" in c and c.startswith("OPEN")]
+            self.assertEqual(m2_after, [])                               # paused model: no further request
+            self.assertEqual(len([c for c in sent if c.startswith("OPEN")]), 4)   # the others go on
+            n1 = len(sent)
+            sr2 = A.StopRule(Path(d) / "stop.jsonl")                     # resume: still paused, nothing re-sent
+            self.assertIn("M2_openai", sr2.paused)
+            A.run_collection(specs, A.BG.Ledger(raw, state), raw, {"batch": runner, "standard": runner}, sr2,
+                             self.panel, log=QUIET)
+            self.assertEqual(len(sent), n1)                              # resume: nothing sent twice
+            sr2.release("M2_openai", "author decision (test)")
+            st = A.run_collection(specs, A.BG.Ledger(raw, state), raw, {"batch": runner, "standard": runner},
+                                  A.StopRule(Path(d) / "stop.jsonl"), self.panel, log=QUIET)
+            self.assertEqual(st, "done")
+            self.assertEqual(len(sent), n1 + 3)        # M2's other C1 call and its 2 OPEN calls; the cut one is kept
+            self.assertEqual(len(set(sent)), len(sent))
+            ev = [json.loads(x) for x in (Path(d) / "stop.jsonl").read_text().splitlines()]
+            self.assertEqual(ev[0]["event"], "trigger")
+            self.assertEqual(ev[0]["call_id"], cut)
+
+    def test_budget_cap_and_projection(self):
+        with tempfile.TemporaryDirectory() as d:
+            specs, sent, runner, raw, state, sr = self._world(d)
+            led = A.BG.Ledger(raw, state, cap=2.5 + 0.30)           # judge reserve 2.50 + room for few calls
+            st = A.run_collection(specs, led, raw, {"batch": runner, "standard": runner}, sr, self.panel, log=QUIET)
+            self.assertEqual(st, "stop")
+            self.assertLessEqual(led.spent(), led.cap + 1e-9)
+            self.assertEqual(len(sent), 1)
+        with tempfile.TemporaryDirectory() as d:
+            specs, sent, runner, raw, state, sr = self._world(d)
+            led = A.BG.Ledger(raw, state, cap=5.5, pause_at=99)      # P1 + C1 fit; C1 x 489/273 does not
+            st = A.run_collection(specs, led, raw, {"batch": runner, "standard": runner}, sr, self.panel, log=QUIET)
+            self.assertEqual(st, "pause")
+            self.assertIn("projection", led.halt_reason)
+            self.assertFalse(any(c.startswith("OPEN") for c in sent))    # paused before C2
+
+
 if __name__ == "__main__":
     unittest.main()
