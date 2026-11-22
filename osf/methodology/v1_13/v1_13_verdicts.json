@@ -2898,5 +2898,95 @@
       ]
     },
     "S11_without_Denon": {}
+  },
+  "stage_C2": {
+    "H7_Struct_Gap": "UNDETERMINED",
+    "leg": {
+      "n": 26,
+      "n_substrates": 3,
+      "per_substrate": {
+        "v19": 9,
+        "v20": 7,
+        "v21": 10
+      },
+      "dropped_substrates": {
+        "v22": 3,
+        "v23": 4
+      },
+      "seed": 113007,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": true,
+      "rho_w": 0.08136299954342914,
+      "p": 0.35066493350664935,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.3089573053176032,
+        "hi": 0.43947074798399505,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      }
+    },
+    "rho_sdri_p_s0": 0.04986194579466212,
+    "partial_rho_sdri_gstar_given_p_s0": 0.010172725516430184,
+    "ranking": {
+      "H4_Sep_Ranking": "CONFIRMED",
+      "note": "computed at Stage C1"
+    },
+    "coverage": {
+      "H6_Sep_Coverage": "MARGINAL",
+      "leg": {
+        "n": 33,
+        "n_substrates": 5,
+        "per_substrate": {
+          "v19": 10,
+          "v20": 5,
+          "v21": 8,
+          "v22": 5,
+          "v23": 5
+        },
+        "dropped_substrates": {},
+        "seed": 113006,
+        "centred": true,
+        "sided": "two",
+        "below_n_floor": false,
+        "rho_w": -0.3038114235873083,
+        "p": 0.16368363163683633,
+        "ci90": {
+          "level": 90.0,
+          "lo": -0.6446783024966081,
+          "hi": 0.07146508198924942,
+          "draws": 2000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "H6_coverage_source": {
+        "file": "/Users/pablou/aias/_worktrees/v1.12/osf/methodology/v1_12/v112_unit_table.csv",
+        "sha256": "06b7875042ee5f5c17676cab604a9d58ffd1a15102f1edc5d5f075bfd16e97b0",
+        "verdicts_file": "/Users/pablou/aias/_worktrees/v1.12/osf/methodology/v1_12/v112_verdicts.json",
+        "verdicts_sha256": "0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992",
+        "prereg_tag": "v1.12-prereg-r1",
+        "v1_12_commit": "49efc473a63f415b9ae3eaa86811ca62fd81b91a",
+        "scorer_sha256": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+        "column": "cov_star_N3",
+        "panel": "N3",
+        "condition": "S0",
+        "v1_12_primary_panel": "N3",
+        "v1_12_models_dropped": [],
+        "v1_12_paper_A_verdict": "PASS",
+        "v1_12_raw_sha256": "e23b66526b8e745a1d59098c2389daefbd07cc40e6bd271424a0eb7117106c11",
+        "units_in_table": 112,
+        "rated_units": 51,
+        "measure": "cov_star_N3 of v1.12-prereg-r1 (N3, S0; its own floor and rated set)",
+        "units_matched": 112,
+        "units_matched_rated": 51
+      },
+      "gate_reissued": {
+        "before": "MARGINAL",
+        "after": "MARGINAL",
+        "rule": "downgrade only (section 3)"
+      }
+    },
+    "appended_utc": "2026-11-22T18:09:55.691701+00:00"
   }
 }
