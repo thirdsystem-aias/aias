@@ -1,0 +1,436 @@
+{
+ "_note": "Every number printed in TS-BR-v0.27-r2 (brief of the combined v0.27 + v0.28 paper) and its chart: name -> source file, JSON path (or the locked scorer's source line), raw value, format. Sources: v27 = osf/v27/v0.27_verdicts.json, v28 = osf/v28/v28_verdicts.json; decision lines: scripts/score_v27.py, scripts/score_v28.py; disclosure wording: papers/v0_27_28/v0_27_28_combined_validity_paper.md. Files identical to c22617f (branch v0.27-28-combined); v0.27_verdicts.json as written by the v0.27 scoring run (85cab7b), v28_verdicts.json as written by the single v0.28 scoring run (65bb5ab).",
+ "sources_sha256": {
+  "osf/v27/v0.27_verdicts.json": "d92fb0c53ac2826d9a0e120ef58029c23952e117b900f1bfaf08820c6c3d90bd",
+  "osf/v28/v28_verdicts.json": "f4c6f6fa2cf23cbf6b68fa5e8ad82608b8d799c4609c4b701827d2c3245df71a",
+  "scripts/score_v27.py": "fd096a12518b0dfef0e6f93002ea1eaac7a3cb8304df352c765083e6acd6543e",
+  "scripts/score_v28.py": "242b43b9e7a5f860f2170bbf73cbb8c82e0acf7f94741869ee52cea14ff3be59",
+  "papers/v0_27_28/v0_27_28_combined_validity_paper.md": "8e0df5f6141d0f66bb4842544a258ff3637c9bae6d0e5b4acf51f48d9f35a4bd"
+ },
+ "values": {
+  "P_RHO": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Primary",
+    "block",
+    "rho"
+   ],
+   "raw": 0.29367447206343134,
+   "fmt": "r3",
+   "formatted": "0.294"
+  },
+  "P_N": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Primary",
+    "block",
+    "n"
+   ],
+   "raw": 24,
+   "fmt": "i0",
+   "formatted": "24"
+  },
+  "P_PADJ": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Primary",
+    "p_adj"
+   ],
+   "raw": 0.1636685113005409,
+   "fmt": "r3",
+   "formatted": "0.164"
+  },
+  "P_LO": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Primary",
+    "block",
+    "ci",
+    0
+   ],
+   "raw": -0.1714102621188536,
+   "fmt": "m3",
+   "formatted": "−0.171"
+  },
+  "P_HI": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Primary",
+    "block",
+    "ci",
+    1
+   ],
+   "raw": 0.6381766259297619,
+   "fmt": "r3",
+   "formatted": "0.638"
+  },
+  "T2_RHO": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "_sensitivity_type2_construct_gap",
+    "H_CV3_Primary",
+    "rho"
+   ],
+   "raw": 0.359004253025603,
+   "fmt": "r3",
+   "formatted": "0.359"
+  },
+  "T2_NEX": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "_sensitivity_type2_construct_gap",
+    "n_excluded"
+   ],
+   "raw": 4,
+   "fmt": "i0",
+   "formatted": "4"
+  },
+  "ST_RHO": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "_sensitivity_stride_confound",
+    "H_CV3_Primary",
+    "rho"
+   ],
+   "raw": 0.22265316789419212,
+   "fmt": "r3",
+   "formatted": "0.223"
+  },
+  "PQ": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Component",
+    "matrix",
+    "recall_channel_som",
+    "I1_presence_quality"
+   ],
+   "raw": 0.798,
+   "fmt": "r3",
+   "formatted": "0.798"
+  },
+  "BRR": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Component",
+    "matrix",
+    "recall_channel_som",
+    "I1_brand_recognition"
+   ],
+   "raw": 0.748,
+   "fmt": "r3",
+   "formatted": "0.748"
+  },
+  "SENT": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Component",
+    "matrix",
+    "recall_channel_som",
+    "I1_sentiment"
+   ],
+   "raw": 0.133,
+   "fmt": "r3",
+   "formatted": "0.133"
+  },
+  "MKT": {
+   "kind": "json",
+   "source": "v27",
+   "path": [
+    "verdicts",
+    "H_CV3_Component",
+    "matrix",
+    "recall_channel_som",
+    "I1_market_competition"
+   ],
+   "raw": 0.297,
+   "fmt": "r3",
+   "formatted": "0.297"
+  },
+  "F_RHO": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Familiarity",
+    "spearman_rho"
+   ],
+   "raw": 0.593,
+   "fmt": "r3",
+   "formatted": "0.593"
+  },
+  "F_N": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Familiarity",
+    "n"
+   ],
+   "raw": 24,
+   "fmt": "i0",
+   "formatted": "24"
+  },
+  "F_LO": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Familiarity",
+    "bca_ci_95",
+    0
+   ],
+   "raw": 0.1789,
+   "fmt": "r3",
+   "formatted": "0.179"
+  },
+  "F_HI": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Familiarity",
+    "bca_ci_95",
+    1
+   ],
+   "raw": 0.8318,
+   "fmt": "r3",
+   "formatted": "0.832"
+  },
+  "R_RHO": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Recognition",
+    "spearman_rho"
+   ],
+   "raw": 0.3794,
+   "fmt": "r3",
+   "formatted": "0.379"
+  },
+  "R_LO": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Recognition",
+    "bca_ci_95",
+    0
+   ],
+   "raw": -0.0755,
+   "fmt": "m3",
+   "formatted": "−0.076"
+  },
+  "R_HI": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Disc_Recognition",
+    "bca_ci_95",
+    1
+   ],
+   "raw": 0.7135,
+   "fmt": "m3",
+   "formatted": "0.714"
+  },
+  "DISS": {
+   "kind": "json",
+   "source": "v28",
+   "path": [
+    "verdicts",
+    "H_Dissociation",
+    "n_cases"
+   ],
+   "raw": 11,
+   "fmt": "i0",
+   "formatted": "11"
+  },
+  "AMP": {
+   "kind": "derived",
+   "fn": "d_len",
+   "consts": [],
+   "refs": [
+    [
+     "v28",
+     [
+      "verdicts",
+      "H_Dissociation",
+      "amplified"
+     ]
+    ]
+   ],
+   "raw": 4,
+   "fmt": "i0",
+   "formatted": "4"
+  },
+  "SUP": {
+   "kind": "derived",
+   "fn": "d_len",
+   "consts": [],
+   "refs": [
+    [
+     "v28",
+     [
+      "verdicts",
+      "H_Dissociation",
+      "suppressed"
+     ]
+    ]
+   ],
+   "raw": 7,
+   "fmt": "i0",
+   "formatted": "7"
+  },
+  "CONF": {
+   "kind": "rule",
+   "source": "scripts/score_v27.py",
+   "source_line": "\"status\": v_convergent\\(bx1, (0\\.60), 0\\.74, 0\\.30, padj\\[0\\]\\),",
+   "raw": 0.6,
+   "fmt": "r2",
+   "formatted": "0.60"
+  },
+  "STRONG": {
+   "kind": "rule",
+   "source": "scripts/score_v27.py",
+   "source_line": "\"status\": v_convergent\\(bx1, 0\\.60, (0\\.74), 0\\.30, padj\\[0\\]\\),",
+   "raw": 0.74,
+   "fmt": "r2",
+   "formatted": "0.74"
+  },
+  "FALS": {
+   "kind": "rule",
+   "source": "scripts/score_v27.py",
+   "source_line": "\"status\": v_convergent\\(bx1, 0\\.60, 0\\.74, (0\\.30), padj\\[0\\]\\),",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "CEIL": {
+   "kind": "rule",
+   "source": "scripts/score_v28.py",
+   "source_line": "CONFIRMED_CEIL = 0.50",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "BENCH": {
+   "kind": "rule",
+   "source": "scripts/score_v28.py",
+   "source_line": "CONVERGENT_BENCHMARK = 0.74",
+   "raw": 0.74,
+   "fmt": "r2",
+   "formatted": "0.74"
+  },
+  "ALPHA": {
+   "kind": "rule",
+   "source": "scripts/score_v27.py",
+   "source_line": "sig = \\(p is not None and p < (0\\.05)\\)",
+   "raw": 0.05,
+   "fmt": "r2",
+   "formatted": "0.05"
+  },
+  "Z": {
+   "kind": "rule",
+   "source": "scripts/score_v28.py",
+   "source_line": "if d > (1\\.0):",
+   "raw": 1.0,
+   "fmt": "i0",
+   "formatted": "1"
+  },
+  "CASES": {
+   "kind": "rule",
+   "source": "scripts/score_v28.py",
+   "source_line": "if cases >= (\\d+) and amplified and suppressed:",
+   "raw": 4.0,
+   "fmt": "i0",
+   "formatted": "4"
+  },
+  "COI": {
+   "kind": "text",
+   "basis": "papers/v0_27_28/v0_27_28_combined_validity_paper.md Declarations, Conflict of interest, with the employer and its companies named as the employer's group (COI_REPLACE)",
+   "formatted": "The author is employed by a consumer-electronics company; it and its affiliates are named in the paper's Declarations. The employer had no role in the design, conduct, analysis or reporting of either study. Neither panel contains a brand of the employer's group: in Study 2, Harman International, a company of the employer's group, was removed from the eligible sampling frame by a pre-registered screen before the seeded draw. The Study 2 Technology panel includes brands that compete with the employer in some product categories (Apple, Dell Technologies, Google, Microsoft, Seagate Technology, Whirlpool) and one brand in which a company of the employer's group holds a significant minority equity stake (Corning); other panel brands may have supplier, customer or channel relationships with companies of the employer's group. The panel was drawn by a fixed random seed within familiarity tertiles, and no brand was selected or excluded by the author after the screen. Study 1 evaluates commercial AI-visibility instruments; Cheil Worldwide, a marketing company of the employer's group, sells AI-visibility services. The author develops the AIAS measurement program through Third System. The author declares no other competing interests."
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v0_27_28/v0_27_28_combined_validity_paper.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v0.27-r2",
+ "pdf": "reports/briefs/v0_27/TS-BR-v0.27-r2_ai-presence-did-not-match-a-commercial-visibility-score-and.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "ALPHA",
+  "AMP",
+  "BENCH",
+  "BRR",
+  "CASES",
+  "CEIL",
+  "COI",
+  "CONF",
+  "DISS",
+  "FALS",
+  "F_HI",
+  "F_LO",
+  "F_N",
+  "F_RHO",
+  "MKT",
+  "PQ",
+  "P_HI",
+  "P_LO",
+  "P_N",
+  "P_PADJ",
+  "P_RHO",
+  "R_HI",
+  "R_LO",
+  "R_RHO",
+  "SENT",
+  "STRONG",
+  "ST_RHO",
+  "SUP",
+  "T2_NEX",
+  "T2_RHO",
+  "Z"
+ ],
+ "digit_audit": {
+  "checked": 107,
+  "unknown": [],
+  "by_kind": {
+   "provenance value": 80,
+   "page number or note marker": 22,
+   "chart axis tick": 5
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 18,
+   "osf": 1,
+   "files": 6,
+   "pct": 3,
+   "revs": 2,
+   "years": 4
+  }
+ }
+}
