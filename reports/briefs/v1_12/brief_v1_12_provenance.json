@@ -1,0 +1,534 @@
+{
+ "_note": "Every number printed in TS-BR-v1.12-r1 and its chart: name -> source file, JSON path (or locked scorer constant), raw value, format. Source: osf/methodology/v1_12/v112_verdicts.json; decision lines: osf/methodology/v1_12/scripts/score_v1_12.py; disclosure wording: papers/v1_12/v1_12_ssrn_paper_draft.md. Files checked out unchanged from 86b929a (branch v1.12-paper-cheil-r; verdicts and scorer as scored at 949be61).",
+ "sources_sha256": {
+  "osf/methodology/v1_12/v112_verdicts.json": "0c70bde10c7cbd79209f791e1447e8508d7bae66d911dae3bb12808ffa87c992",
+  "osf/methodology/v1_12/scripts/score_v1_12.py": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+  "papers/v1_12/v1_12_ssrn_paper_draft.md": "8dac2078b6bb415179c7812c960d6954b9747edf719790ead748b5cb37ba3df8",
+  "osf/methodology/v1_12/prereg/calibration_N1_v1_12.json": "aa4f0b5f6b26ab62e8c40be492ce2927a05523b0b37918ab112dd6deb0726005"
+ },
+ "values": {
+  "MSIT_DIFF": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "pooled_mean_J_within_minus_J_between"
+   ],
+   "raw": 0.40640489987559586,
+   "fmt": "r3",
+   "formatted": "0.406"
+  },
+  "MSIT_WITHIN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "pooled_mean_J_within"
+   ],
+   "raw": 0.7898380675761628,
+   "fmt": "r3",
+   "formatted": "0.790"
+  },
+  "MSIT_BETWEEN": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "pooled_mean_J_between"
+   ],
+   "raw": 0.38343316770056685,
+   "fmt": "r3",
+   "formatted": "0.383"
+  },
+  "MSIT_CELLS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "cells_used"
+   ],
+   "raw": 45,
+   "fmt": "i0",
+   "formatted": "45"
+  },
+  "H1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    "rho_w"
+   ],
+   "raw": 0.05456359946549266,
+   "fmt": "m3",
+   "formatted": "0.055"
+  },
+  "H1_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    "n"
+   ],
+   "raw": 51,
+   "fmt": "i0",
+   "formatted": "51"
+  },
+  "H2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    "rho_w"
+   ],
+   "raw": -0.06048392560190567,
+   "fmt": "m3",
+   "formatted": "−0.060"
+  },
+  "H2_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    "n"
+   ],
+   "raw": 47,
+   "fmt": "i0",
+   "formatted": "47"
+  },
+  "H3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H3_Sep_NamingRate",
+    "rho_w"
+   ],
+   "raw": 0.045567118021088024,
+   "fmt": "m3",
+   "formatted": "0.046"
+  },
+  "H3_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H3_Sep_NamingRate",
+    "n"
+   ],
+   "raw": 51,
+   "fmt": "i0",
+   "formatted": "51"
+  },
+  "H5": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H5_Sep_Ranking",
+    "rho_w"
+   ],
+   "raw": -0.06315964764321841,
+   "fmt": "m3",
+   "formatted": "−0.063"
+  },
+  "H5_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H5_Sep_Ranking",
+    "n"
+   ],
+   "raw": 47,
+   "fmt": "i0",
+   "formatted": "47"
+  },
+  "H8": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H8_Panel_Replication",
+    "rho_w"
+   ],
+   "raw": 0.8534653465346534,
+   "fmt": "m3",
+   "formatted": "0.853"
+  },
+  "H8_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H8_Panel_Replication",
+    "n"
+   ],
+   "raw": 51,
+   "fmt": "i0",
+   "formatted": "51"
+  },
+  "H4_R": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H4_Reliability",
+    "rho_w"
+   ],
+   "raw": 0.47672413793103446,
+   "fmt": "r3",
+   "formatted": "0.477"
+  },
+  "H4_REL": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H4_Reliability",
+    "transformed"
+   ],
+   "raw": 0.6456509048453006,
+   "fmt": "r3",
+   "formatted": "0.646"
+  },
+  "H4_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H4_Reliability",
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "RAW_H1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S1_raw_Cov_k2",
+    "rho_w",
+    "H1_Sep_Presence"
+   ],
+   "raw": 0.6839676342163433,
+   "fmt": "m3",
+   "formatted": "0.684"
+  },
+  "RAW_H3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S1_raw_Cov_k2",
+    "rho_w",
+    "H3_Sep_NamingRate"
+   ],
+   "raw": 0.9158233012579968,
+   "fmt": "m3",
+   "formatted": "0.916"
+  },
+  "CALLS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Complete",
+    "answered"
+   ],
+   "raw": 900,
+   "fmt": "i0",
+   "formatted": "900"
+  },
+  "CALLS_EXP": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Complete",
+    "expected"
+   ],
+   "raw": 900,
+   "fmt": "i0",
+   "formatted": "900"
+  },
+  "BRANDS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "parity_gates",
+    "P2",
+    "units"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "CEP_PER_CAT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MC",
+    "MC_Situation",
+    "cells",
+    0,
+    "n_ceps"
+   ],
+   "raw": 14,
+   "fmt": "i0",
+   "formatted": "14"
+  },
+  "CEPS": {
+   "kind": "derived",
+   "fn": "d_mul",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "MC",
+      "MC_Situation",
+      "cells",
+      0,
+      "n_ceps"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "legs",
+      "H1_Sep_Presence",
+      "n_categories"
+     ]
+    ]
+   ],
+   "raw": 70.0,
+   "fmt": "i0",
+   "formatted": "70"
+  },
+  "SPEND": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "descriptives",
+    "tokens_and_spend",
+    "total_usd"
+   ],
+   "raw": 17.075472,
+   "fmt": "usd",
+   "formatted": "US$17.08"
+  },
+  "S2HI_NMAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S2_floor_28",
+      "n",
+      "H1_Sep_Presence"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S2_floor_28",
+      "n",
+      "H2_Sep_Consistency"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S2_floor_28",
+      "n",
+      "H3_Sep_NamingRate"
+     ]
+    ]
+   ],
+   "raw": 28.0,
+   "fmt": "i0",
+   "formatted": "28"
+  },
+  "BAND_LO": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "SEP_CONF",
+   "index": null,
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "BAND_HI": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "SEP_FALS",
+   "index": null,
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "REL_MIN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "REL_CONF",
+   "index": null,
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "REP_MIN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "REP_CONF",
+   "index": null,
+   "raw": 0.7,
+   "fmt": "r2",
+   "formatted": "0.70"
+  },
+  "MSIT_DIFF_MIN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "MCS_DIFF_MIN",
+   "index": null,
+   "raw": 0.1,
+   "fmt": "r2",
+   "formatted": "0.10"
+  },
+  "MSIT_JB_MAX": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "MCS_JB_MAX",
+   "index": null,
+   "raw": 0.6,
+   "fmt": "r2",
+   "formatted": "0.60"
+  },
+  "FLOOR": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "FLOOR_FULL",
+   "index": null,
+   "raw": 14,
+   "fmt": "i0",
+   "formatted": "14"
+  },
+  "MINMOD": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "MIN_MODELS_NAMED",
+   "index": null,
+   "raw": 2,
+   "fmt": "i0",
+   "formatted": "2"
+  },
+  "FLOOR_HI": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "FLOOR_SENS",
+   "index": 1,
+   "raw": 28,
+   "fmt": "i0",
+   "formatted": "28"
+  },
+  "NUNITS_MIN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_12/scripts/score_v1_12.py",
+   "constant": "N_FLOOR_UNITS",
+   "index": null,
+   "raw": 30,
+   "fmt": "i0",
+   "formatted": "30"
+  },
+  "SD_SAME": {
+   "kind": "text",
+   "basis": "sensitivities.S10_without_Denon.verdicts == verdicts (no verdict_changes)",
+   "formatted": "the same verdicts"
+  },
+  "CHEIL": {
+   "kind": "text",
+   "basis": "papers/v1_12/v1_12_ssrn_paper_draft.md Declarations, Cheil sentence, employer's name replaced by 'the employer's group'",
+   "formatted": "Cheil Worldwide, a marketing company of the employer's group, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024)."
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v1_12/v1_12_ssrn_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v1.12-r1",
+ "pdf": "reports/briefs/v1_12/TS-BR-v1.12-r1_how-widely-ai-answers-name-a-brand-across-buying-situations.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "BAND_HI",
+  "BAND_LO",
+  "BRANDS",
+  "CALLS",
+  "CALLS_EXP",
+  "CEPS",
+  "CEP_PER_CAT",
+  "CHEIL",
+  "FLOOR",
+  "FLOOR_HI",
+  "H1",
+  "H1_N",
+  "H2",
+  "H2_N",
+  "H3",
+  "H3_N",
+  "H4_N",
+  "H4_R",
+  "H4_REL",
+  "H5",
+  "H8",
+  "MINMOD",
+  "MSIT_BETWEEN",
+  "MSIT_CELLS",
+  "MSIT_DIFF",
+  "MSIT_DIFF_MIN",
+  "MSIT_JB_MAX",
+  "MSIT_WITHIN",
+  "NUNITS_MIN",
+  "RAW_H1",
+  "RAW_H3",
+  "REL_MIN",
+  "REP_MIN",
+  "SD_SAME",
+  "SPEND"
+ ],
+ "digit_audit": {
+  "checked": 84,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 7,
+   "provenance value": 71,
+   "chart axis tick": 5,
+   "chart value (verdict file)": 1
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 5,
+   "osf": 1,
+   "files": 4,
+   "models": 6,
+   "years": 10,
+   "dates": 2,
+   "tier": 1,
+   "intervals": 1
+  }
+ }
+}

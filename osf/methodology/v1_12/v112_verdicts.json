@@ -1,0 +1,3717 @@
+{
+  "phase": "v1.12",
+  "prereg": "osf/methodology/v1_12/prereg/PRE_REGISTRATION_v1_12.md",
+  "prereg_tag": "v1.12-prereg-r1",
+  "seeds": {
+    "H1_Sep_Presence": 112001,
+    "H2_Sep_Consistency": 112002,
+    "H3_Sep_NamingRate": 112003,
+    "H4_Reliability": 112004,
+    "H5_Sep_Ranking": 112005,
+    "H6_Sep_Sentiment": 112006,
+    "H7_Sep_Presence_Legacy": 112007,
+    "H8_Panel_Replication": 112008,
+    "bootstrap": 112020
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 10000
+  },
+  "panels": {
+    "N3": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "C3": [
+      "claude-opus-5-5",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "A4": [
+      "claude-fable-5-2",
+      "claude-opus-5-5",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ]
+  },
+  "primary_panel": "N3",
+  "models_dropped_section_7_3": [],
+  "parity_gates": {
+    "P1": {
+      "gate": "P1",
+      "criterion": "url_removal_off total_mention_mismatches == 0 (mention codes; v1.12 codes no recognition) and coder blob pinned",
+      "mention_cells": 4032,
+      "mention_mismatches": 0,
+      "coder": {
+        "file": "code_t4_v0_42.py",
+        "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+        "pinned_git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "pinned_sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+        "match": true
+      },
+      "coder_at_v042_tag": {
+        "tag": "v0.42-prereg-r1",
+        "blob_at_tag": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "pinned": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "match": true
+      },
+      "passed": true
+    },
+    "P2": {
+      "gate": "P2",
+      "units": 112,
+      "mismatches": 0,
+      "examples": [],
+      "passed": true
+    },
+    "P3": {
+      "gate": "P3",
+      "records": 900,
+      "probes_sha256": "79fc981b8ce38bb35c05f4cf475adc734c5727f537039f7b3746b3cd23c9349e",
+      "unknown_probe": [],
+      "prompt_mismatch": [],
+      "probes_sha256_mismatch": [],
+      "passed": true
+    }
+  },
+  "comparators": {
+    "source": "t4 (v0.42, N3, S0)",
+    "cross_panel": false,
+    "reason": null
+  },
+  "paper_A_verdict": {
+    "verdict": "PASS",
+    "label": "PASS",
+    "legs": {
+      "H1_Sep_Presence": "CONFIRMED",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H3_Sep_NamingRate": "CONFIRMED",
+      "H4_Reliability": "CONFIRMED"
+    },
+    "inactive": [
+      "H5_Sep_Ranking",
+      "H6_Sep_Sentiment"
+    ],
+    "notes": [
+      "H5_Sep_Ranking (CONFIRMED) reported, not gating: v1.14's Stage 1 verdict is not SEPARABLE (N35)"
+    ],
+    "h5_reported_not_gating": "CONFIRMED"
+  },
+  "verdicts": {
+    "H1_Sep_Presence": "CONFIRMED",
+    "H2_Sep_Consistency": "CONFIRMED",
+    "H3_Sep_NamingRate": "CONFIRMED",
+    "H4_Reliability": "CONFIRMED",
+    "H5_Sep_Ranking": "CONFIRMED",
+    "H6_Sep_Sentiment": "INACTIVE",
+    "H7_Sep_Presence_Legacy": "CONFIRMED",
+    "H8_Panel_Replication": "CONFIRMED"
+  },
+  "legs": {
+    "H1_Sep_Presence": {
+      "n": 51,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 11,
+        "v0.20": 7,
+        "v0.21": 12,
+        "v0.22": 8,
+        "v0.23": 13
+      },
+      "dropped_categories": {},
+      "sided": "two",
+      "seed": 112001,
+      "below_n_floor": false,
+      "rho_w": 0.05456359946549266,
+      "centred": true,
+      "p_perm": 0.7341265873412659,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        -0.27157639845676024,
+        0.3675381141054141
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H2_Sep_Consistency": {
+      "n": 47,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 10,
+        "v0.20": 7,
+        "v0.21": 11,
+        "v0.22": 8,
+        "v0.23": 11
+      },
+      "dropped_categories": {},
+      "sided": "two",
+      "seed": 112002,
+      "below_n_floor": false,
+      "rho_w": -0.06048392560190567,
+      "centred": true,
+      "p_perm": 0.7184281571842815,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        -0.40436592649824077,
+        0.28390807452723665
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H3_Sep_NamingRate": {
+      "n": 51,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 11,
+        "v0.20": 7,
+        "v0.21": 12,
+        "v0.22": 8,
+        "v0.23": 13
+      },
+      "dropped_categories": {},
+      "sided": "two",
+      "seed": 112003,
+      "below_n_floor": false,
+      "rho_w": 0.045567118021088024,
+      "centred": true,
+      "p_perm": 0.7681231876812319,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        -0.30559697069928515,
+        0.39057459802687144
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H4_Reliability": {
+      "n": 42,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 9,
+        "v0.20": 5,
+        "v0.21": 10,
+        "v0.22": 7,
+        "v0.23": 11
+      },
+      "dropped_categories": {},
+      "sided": "one",
+      "seed": 112004,
+      "below_n_floor": false,
+      "rho_w": 0.47672413793103446,
+      "centred": true,
+      "transformed": 0.6456509048453006,
+      "p_perm": 0.0021997800219978004,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        0.10629810517038778,
+        0.7475464040963024
+      ],
+      "ci95_transformed": [
+        0.19216900495402126,
+        0.8555382590521711
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        },
+        "transformed": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H5_Sep_Ranking": {
+      "n": 47,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 10,
+        "v0.20": 7,
+        "v0.21": 11,
+        "v0.22": 8,
+        "v0.23": 11
+      },
+      "dropped_categories": {},
+      "sided": "two",
+      "seed": 112005,
+      "below_n_floor": false,
+      "rho_w": -0.06315964764321841,
+      "centred": true,
+      "p_perm": 0.7067293270672933,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        -0.33049767737551206,
+        0.21494892984236788
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H6_Sep_Sentiment": {
+      "verdict": "INACTIVE",
+      "reason": "activation rule (section 3): tag not pushed before the lock"
+    },
+    "H7_Sep_Presence_Legacy": {
+      "n": 51,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 11,
+        "v0.20": 7,
+        "v0.21": 12,
+        "v0.22": 8,
+        "v0.23": 13
+      },
+      "dropped_categories": {},
+      "sided": "two",
+      "seed": 112007,
+      "below_n_floor": false,
+      "rho_w": -0.019930662253270913,
+      "centred": true,
+      "p_perm": 0.9006099390060994,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        -0.3316155895796307,
+        0.3129747457035199
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    },
+    "H8_Panel_Replication": {
+      "n": 51,
+      "n_categories": 5,
+      "per_category": {
+        "v0.19": 11,
+        "v0.20": 7,
+        "v0.21": 12,
+        "v0.22": 8,
+        "v0.23": 13
+      },
+      "dropped_categories": {},
+      "sided": "one",
+      "seed": 112008,
+      "below_n_floor": false,
+      "rho_w": 0.8534653465346534,
+      "centred": true,
+      "p_perm": 9.999000099990002e-05,
+      "n_perm": 10000,
+      "ci95_rho_w": [
+        0.6741332857837843,
+        0.9355541219611572
+      ],
+      "bootstrap": {
+        "rho_w": {
+          "n_draws": 10000,
+          "dropped_nonfinite": 0
+        }
+      },
+      "n_boot": 10000,
+      "verdict": "CONFIRMED"
+    }
+  },
+  "MC": {
+    "MC_BrandFree": {
+      "check": "MC_BrandFree (section 4)",
+      "rule": "0 alias matches in all 75 probes; a hit blocks the lock",
+      "probes": 75,
+      "probes_sha256": "79fc981b8ce38bb35c05f4cf475adc734c5727f537039f7b3746b3cd23c9349e",
+      "detector_runs": 375,
+      "registry_sizes": {
+        "v0.19": 16,
+        "v0.20": 24,
+        "v0.21": 24,
+        "v0.22": 24,
+        "v0.23": 24
+      },
+      "hits": [],
+      "passed": true,
+      "coder": {
+        "file": "code_t4_v0_42.py",
+        "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+        "pinned_git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+        "pinned_sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+        "match": true
+      }
+    },
+    "MC_Complete": {
+      "answered": 900,
+      "expected": 900,
+      "share": 1.0,
+      "pass": true,
+      "per_model": {
+        "claude-fable-5-2": {
+          "answered": 225,
+          "expected": 225,
+          "share": 1.0,
+          "below_90pct": false
+        },
+        "claude-opus-5-5": {
+          "answered": 225,
+          "expected": 225,
+          "share": 1.0,
+          "below_90pct": false
+        },
+        "gpt-6-astra": {
+          "answered": 225,
+          "expected": 225,
+          "share": 1.0,
+          "below_90pct": false
+        },
+        "gemini-4-argon": {
+          "answered": 225,
+          "expected": 225,
+          "share": 1.0,
+          "below_90pct": false
+        }
+      },
+      "dropped_models": [],
+      "rule": "pass iff >= 98% of the 900 calls answered (non-empty text, accepted served ID); a model below 90% leaves the panel statistics (section 7.3)"
+    },
+    "MC_Served": {
+      "n_mismatched": 0,
+      "mismatched": [],
+      "of_which_without_served_id": 0,
+      "excluded": 0,
+      "pass": true
+    },
+    "MC_Settings": {
+      "records": 900,
+      "records_without_recorded_settings": 0,
+      "examples": [],
+      "share_with_settings": 1.0,
+      "pass": true,
+      "settings": {
+        "temperature": "provider default (not sent)",
+        "top_p": "provider default (not sent)",
+        "top_k": "provider default (not sent)",
+        "reasoning_effort": "provider default (not sent)",
+        "max_output_tokens": 16384,
+        "system_prompt": null,
+        "tools": null,
+        "condition": "S0"
+      },
+      "reasoning_tokens_per_model": {
+        "claude-fable-5-2": {
+          "answered_calls": 225,
+          "reasoning_tokens_recorded": 0,
+          "reasoning_tokens_total": null,
+          "reasoning_tokens_mean": null,
+          "output_tokens_mean": 638.0533333333333
+        },
+        "claude-opus-5-5": {
+          "answered_calls": 225,
+          "reasoning_tokens_recorded": 0,
+          "reasoning_tokens_total": null,
+          "reasoning_tokens_mean": null,
+          "output_tokens_mean": 953.3022222222222
+        },
+        "gpt-6-astra": {
+          "answered_calls": 225,
+          "reasoning_tokens_recorded": 225,
+          "reasoning_tokens_total": 19467,
+          "reasoning_tokens_mean": 86.52,
+          "output_tokens_mean": 393.12444444444446
+        },
+        "gemini-4-argon": {
+          "answered_calls": 225,
+          "reasoning_tokens_recorded": 0,
+          "reasoning_tokens_total": null,
+          "reasoning_tokens_mean": null,
+          "output_tokens_mean": 1068.7333333333333
+        }
+      }
+    },
+    "MC_Truncation": {
+      "claude-fable-5-2": {
+        "calls": 225,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "claude-opus-5-5": {
+        "calls": 225,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gpt-6-astra": {
+        "calls": 225,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      },
+      "gemini-4-argon": {
+        "calls": 225,
+        "at_cap": 0,
+        "share": 0.0,
+        "flag_above_5pct": false
+      }
+    },
+    "MC_RegistryShare": {
+      "v0.19": {
+        "cep_answers": 126,
+        "share_naming_registry_brand": 1.0,
+        "per_model": {
+          "claude-fable-5-2": 1.0,
+          "gpt-6-astra": 1.0,
+          "gemini-4-argon": 1.0
+        },
+        "flag_below_0_50": false
+      },
+      "v0.20": {
+        "cep_answers": 126,
+        "share_naming_registry_brand": 0.9920634920634921,
+        "per_model": {
+          "claude-fable-5-2": 1.0,
+          "gpt-6-astra": 0.9761904761904762,
+          "gemini-4-argon": 1.0
+        },
+        "flag_below_0_50": false
+      },
+      "v0.21": {
+        "cep_answers": 126,
+        "share_naming_registry_brand": 0.9841269841269841,
+        "per_model": {
+          "claude-fable-5-2": 0.9761904761904762,
+          "gpt-6-astra": 1.0,
+          "gemini-4-argon": 0.9761904761904762
+        },
+        "flag_below_0_50": false
+      },
+      "v0.22": {
+        "cep_answers": 126,
+        "share_naming_registry_brand": 1.0,
+        "per_model": {
+          "claude-fable-5-2": 1.0,
+          "gpt-6-astra": 1.0,
+          "gemini-4-argon": 1.0
+        },
+        "flag_below_0_50": false
+      },
+      "v0.23": {
+        "cep_answers": 126,
+        "share_naming_registry_brand": 0.9682539682539683,
+        "per_model": {
+          "claude-fable-5-2": 0.9761904761904762,
+          "gpt-6-astra": 0.9285714285714286,
+          "gemini-4-argon": 1.0
+        },
+        "flag_below_0_50": false
+      }
+    },
+    "MC_Situation": {
+      "passed": true,
+      "pooled_mean_J_within_minus_J_between": 0.40640489987559586,
+      "pooled_mean_J_between": 0.38343316770056685,
+      "pooled_mean_J_within": 0.7898380675761628,
+      "mean_J_with_C0": 0.48557665879094447,
+      "cells_used": 45,
+      "cells": [
+        {
+          "substrate": "v0.19",
+          "model": "claude-fable-5-2",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.6278867957439386,
+          "J_within": 0.9099348072562358,
+          "J_with_C0": 0.6491341991341991
+        },
+        {
+          "substrate": "v0.19",
+          "model": "claude-fable-5-2",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.6029125636268493,
+          "J_within": 0.8857001133786849,
+          "J_with_C0": 0.6430014430014429
+        },
+        {
+          "substrate": "v0.19",
+          "model": "claude-fable-5-2",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.6296180010465725,
+          "J_within": 0.9005102040816327,
+          "J_with_C0": 0.6409090909090909
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gemini-4-argon",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.533534322820037,
+          "J_within": 0.8350056689342402,
+          "J_with_C0": 0.5773809523809523
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gemini-4-argon",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.5231126016840303,
+          "J_within": 0.8541950113378685,
+          "J_with_C0": 0.5865384615384616
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gemini-4-argon",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.5104066568352282,
+          "J_within": 0.843452380952381,
+          "J_with_C0": 0.5686813186813188
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gpt-6-astra",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.569440083725798,
+          "J_within": 0.8681689342403629,
+          "J_with_C0": 0.6024891774891774
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gpt-6-astra",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.5425316746745318,
+          "J_within": 0.8664824263038549,
+          "J_with_C0": 0.5882034632034632
+        },
+        {
+          "substrate": "v0.19",
+          "model": "gpt-6-astra",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.5527516134658992,
+          "J_within": 0.8664257369614512,
+          "J_with_C0": 0.596103896103896
+        },
+        {
+          "substrate": "v0.20",
+          "model": "claude-fable-5-2",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.35426478283621143,
+          "J_within": 0.8714285714285716,
+          "J_with_C0": 0.4387755102040816
+        },
+        {
+          "substrate": "v0.20",
+          "model": "claude-fable-5-2",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.34411302982731556,
+          "J_within": 0.8803571428571428,
+          "J_with_C0": 0.4413265306122449
+        },
+        {
+          "substrate": "v0.20",
+          "model": "claude-fable-5-2",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.3378859236002093,
+          "J_within": 0.9172619047619047,
+          "J_with_C0": 0.44897959183673475
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gemini-4-argon",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.28320251177394035,
+          "J_within": 0.7095238095238096,
+          "J_with_C0": 0.3248299319727891
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gemini-4-argon",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.2836473050758765,
+          "J_within": 0.7095238095238096,
+          "J_with_C0": 0.34268707482993194
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gemini-4-argon",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.23226059654631084,
+          "J_within": 0.6904761904761905,
+          "J_with_C0": 0.3853741496598639
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gpt-6-astra",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.39725274725274723,
+          "J_within": 0.8279761904761905,
+          "J_with_C0": 0.5380952380952381
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gpt-6-astra",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.4217948717948717,
+          "J_within": 0.8041666666666666,
+          "J_with_C0": 0.5380952380952381
+        },
+        {
+          "substrate": "v0.20",
+          "model": "gpt-6-astra",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.42069597069597076,
+          "J_within": 0.8226190476190476,
+          "J_with_C0": 0.5499999999999999
+        },
+        {
+          "substrate": "v0.21",
+          "model": "claude-fable-5-2",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.27494767137624276,
+          "J_within": 0.6938917233560092,
+          "J_with_C0": 0.41981292517006796
+        },
+        {
+          "substrate": "v0.21",
+          "model": "claude-fable-5-2",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.27503052503052505,
+          "J_within": 0.6747165532879819,
+          "J_with_C0": 0.44430272108843544
+        },
+        {
+          "substrate": "v0.21",
+          "model": "claude-fable-5-2",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.27879382522239665,
+          "J_within": 0.7076105442176871,
+          "J_with_C0": 0.4255952380952381
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gemini-4-argon",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.17125097125097125,
+          "J_within": 0.6610969387755102,
+          "J_with_C0": 0.2765175300889587
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gemini-4-argon",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.19152752009894872,
+          "J_within": 0.6182397959183673,
+          "J_with_C0": 0.3131618381618381
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gemini-4-argon",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.1831830867545153,
+          "J_within": 0.6773809523809524,
+          "J_with_C0": 0.31664169164169165
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gpt-6-astra",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.3301020408163265,
+          "J_within": 0.7644557823129252,
+          "J_with_C0": 0.4646825396825397
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gpt-6-astra",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.325776207919065,
+          "J_within": 0.781547619047619,
+          "J_with_C0": 0.4488095238095237
+        },
+        {
+          "substrate": "v0.21",
+          "model": "gpt-6-astra",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.3085644514215942,
+          "J_within": 0.7487244897959184,
+          "J_with_C0": 0.4195294784580499
+        },
+        {
+          "substrate": "v0.22",
+          "model": "claude-fable-5-2",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.5060526774812489,
+          "J_within": 0.9494047619047619,
+          "J_with_C0": 0.6958333333333332
+        },
+        {
+          "substrate": "v0.22",
+          "model": "claude-fable-5-2",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.5653933368219083,
+          "J_within": 0.925595238095238,
+          "J_with_C0": 0.731547619047619
+        },
+        {
+          "substrate": "v0.22",
+          "model": "claude-fable-5-2",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.5235435199720914,
+          "J_within": 0.9583333333333333,
+          "J_with_C0": 0.7136904761904761
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gemini-4-argon",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.34935461364032794,
+          "J_within": 0.7754676870748299,
+          "J_with_C0": 0.4578231292517007
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gemini-4-argon",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.3567067852782138,
+          "J_within": 0.8161564625850343,
+          "J_with_C0": 0.4403061224489795
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gemini-4-argon",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.3863339041910471,
+          "J_within": 0.8031887755102042,
+          "J_with_C0": 0.4579365079365079
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gpt-6-astra",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.5019099947671376,
+          "J_within": 0.8880952380952382,
+          "J_with_C0": 0.6886904761904763
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gpt-6-astra",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.40740013954299664,
+          "J_within": 0.8541666666666667,
+          "J_with_C0": 0.5922619047619048
+        },
+        {
+          "substrate": "v0.22",
+          "model": "gpt-6-astra",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.4371358799930228,
+          "J_within": 0.881547619047619,
+          "J_with_C0": 0.6363095238095238
+        },
+        {
+          "substrate": "v0.23",
+          "model": "claude-fable-5-2",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.3319692212549355,
+          "J_within": 0.7660714285714286,
+          "J_with_C0": 0.4510642135642135
+        },
+        {
+          "substrate": "v0.23",
+          "model": "claude-fable-5-2",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.3157415844229031,
+          "J_within": 0.7440051020408163,
+          "J_with_C0": 0.44787157287157287
+        },
+        {
+          "substrate": "v0.23",
+          "model": "claude-fable-5-2",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.3664592733274052,
+          "J_within": 0.7521967120181406,
+          "J_with_C0": 0.5051948051948052
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gemini-4-argon",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.3654864976293548,
+          "J_within": 0.7314123376623377,
+          "J_with_C0": 0.47573260073260076
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gemini-4-argon",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.3120564112322354,
+          "J_within": 0.7210832817975675,
+          "J_with_C0": 0.41771323914181063
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gemini-4-argon",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.29598207043261987,
+          "J_within": 0.673027468563183,
+          "J_with_C0": 0.35805583305583305
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gpt-6-astra",
+          "run": 1,
+          "n_ceps": 14,
+          "J_between": 0.26077533577533574,
+          "J_within": 0.6264652014652015,
+          "J_with_C0": 0.29263038548752834
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gpt-6-astra",
+          "run": 2,
+          "n_ceps": 14,
+          "J_between": 0.24024507238792953,
+          "J_within": 0.6387362637362638,
+          "J_with_C0": 0.293001443001443
+        },
+        {
+          "substrate": "v0.23",
+          "model": "gpt-6-astra",
+          "run": 3,
+          "n_ceps": 14,
+          "J_between": 0.22545787545787543,
+          "J_within": 0.6468864468864468,
+          "J_with_C0": 0.2056277056277056
+        }
+      ],
+      "pairs_skipped_empty_union": 6,
+      "rule": "pass iff pooled mean (J_within - J_between) >= 0.1 and pooled mean J_between <= 0.6"
+    },
+    "MC_Defunct": {
+      "automotive_cep_answers": 126,
+      "share_naming_each": {
+        "Pontiac": 0.0,
+        "Oldsmobile": 0.0,
+        "Plymouth": 0.0,
+        "Mercury": 0.0,
+        "Saturn": 0.0
+      },
+      "share_naming_any": 0.0,
+      "flagged": false,
+      "rule": "flagged if the share of automotive CEP answers naming any cell D brand exceeds 5% (N22)"
+    },
+    "MC_Positive": {
+      "rho_w_raw_cov_pi_cov": 0.9158233012579968,
+      "n": 112,
+      "n_categories": 5,
+      "flagged": false,
+      "rule": "raw Cov (k = 2) must give |rho_w(Cov, pi_cov)| >= 0.50; otherwise the gate's sensitivity is flagged"
+    },
+    "MC_Window": {
+      "first_call_utc": "2026-11-14T00:03:13.059796+00:00",
+      "last_call_utc": "2026-11-14T01:24:38.988525+00:00",
+      "span_hours": 1.3572024247222223,
+      "within_72h": true,
+      "calls_outside_section_6_7_windows": 0,
+      "examples_outside": [],
+      "t4_first_call_utc": "2026-11-11T02:57:06.408927+00:00",
+      "t4_last_call_utc": "2026-11-11T09:50:12.412986+00:00",
+      "calls_overlapping_t4": 0,
+      "no_t4_overlap": true,
+      "pass": true,
+      "rule": "all calls within 72 hours; every call inside the section 6.7 windows (so none during 2026-11-17 to 2026-11-21); none overlapping t4 (N23)"
+    }
+  },
+  "delta_fits": {
+    "status_counts": {
+      "ok": 418,
+      "not_converged": 30
+    },
+    "set_to_zero": 30
+  },
+  "gate_repeated_on": {
+    "C3": {
+      "models": [
+        "claude-opus-5-5",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "gate": {
+        "verdict": "PASS",
+        "label": "PASS",
+        "legs": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Sep_NamingRate": "CONFIRMED",
+          "H4_Reliability": "CONFIRMED"
+        },
+        "inactive": [
+          "H5_Sep_Ranking",
+          "H6_Sep_Sentiment"
+        ],
+        "notes": [
+          "H5_Sep_Ranking (CONFIRMED) reported, not gating: v1.14's Stage 1 verdict is not SEPARABLE (N35)"
+        ],
+        "h5_reported_not_gating": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED",
+        "H5_Sep_Ranking": "CONFIRMED",
+        "H6_Sep_Sentiment": "INACTIVE",
+        "H7_Sep_Presence_Legacy": "CONFIRMED"
+      },
+      "MC_Situation_passed": true,
+      "rho_w": {
+        "H1_Sep_Presence": -0.08564642017365225,
+        "H2_Sep_Consistency": -0.04350321239701459,
+        "H3_Sep_NamingRate": -0.0784780578568388,
+        "H4_Reliability": 0.4543596730245232,
+        "H5_Sep_Ranking": -0.20824411548438795,
+        "H6_Sep_Sentiment": null,
+        "H7_Sep_Presence_Legacy": -0.09868814899559802
+      }
+    },
+    "A4": {
+      "models": [
+        "claude-fable-5-2",
+        "claude-opus-5-5",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "gate": {
+        "verdict": "PASS",
+        "label": "PASS",
+        "legs": {
+          "H1_Sep_Presence": "CONFIRMED",
+          "H2_Sep_Consistency": "CONFIRMED",
+          "H3_Sep_NamingRate": "CONFIRMED",
+          "H4_Reliability": "CONFIRMED"
+        },
+        "inactive": [
+          "H5_Sep_Ranking",
+          "H6_Sep_Sentiment"
+        ],
+        "notes": [
+          "H5_Sep_Ranking (CONFIRMED) reported, not gating: v1.14's Stage 1 verdict is not SEPARABLE (N35)"
+        ],
+        "h5_reported_not_gating": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED",
+        "H5_Sep_Ranking": "CONFIRMED",
+        "H6_Sep_Sentiment": "INACTIVE",
+        "H7_Sep_Presence_Legacy": "CONFIRMED"
+      },
+      "MC_Situation_passed": true,
+      "rho_w": {
+        "H1_Sep_Presence": -0.0581614532092133,
+        "H2_Sep_Consistency": -0.02351790879585997,
+        "H3_Sep_NamingRate": -0.0049968779266390765,
+        "H4_Reliability": 0.4408224674022066,
+        "H5_Sep_Ranking": -0.2258239259798436,
+        "H6_Sep_Sentiment": null,
+        "H7_Sep_Presence_Legacy": -0.10605736075374893
+      }
+    }
+  },
+  "analysis_set": {
+    "answered_calls_analysed": 900,
+    "outside_design": 0,
+    "served_mismatch_excluded": 0,
+    "answered_not_coded": [],
+    "raw_lines": 900
+  },
+  "sensitivities": {
+    "S1_raw_Cov_k2": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.6839676342163433,
+        "H2_Sep_Consistency": -0.19685291329812823,
+        "H3_Sep_NamingRate": 0.9158233012579968
+      },
+      "n": {
+        "H1_Sep_Presence": 112,
+        "H2_Sep_Consistency": 70,
+        "H3_Sep_NamingRate": 112
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "FALSIFIED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "FALSIFIED"
+      },
+      "verdict_changes": {
+        "H1_Sep_Presence": [
+          "CONFIRMED",
+          "FALSIFIED"
+        ],
+        "H3_Sep_NamingRate": [
+          "CONFIRMED",
+          "FALSIFIED"
+        ]
+      }
+    },
+    "S2_floor_6": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.2347203608101201,
+        "H2_Sep_Consistency": 0.020859423930073284,
+        "H3_Sep_NamingRate": 0.2620091571836334
+      },
+      "n": {
+        "H1_Sep_Presence": 65,
+        "H2_Sep_Consistency": 56,
+        "H3_Sep_NamingRate": 65
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    },
+    "S2_floor_28": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.20331026080329312,
+        "H2_Sep_Consistency": 0.2222222222222222,
+        "H3_Sep_NamingRate": -0.05660377358490566
+      },
+      "n": {
+        "H1_Sep_Presence": 28,
+        "H2_Sep_Consistency": 25,
+        "H3_Sep_NamingRate": 28
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "UNDETERMINED",
+        "H2_Sep_Consistency": "UNDETERMINED",
+        "H3_Sep_NamingRate": "UNDETERMINED"
+      },
+      "verdict_changes": {
+        "H1_Sep_Presence": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H2_Sep_Consistency": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ],
+        "H3_Sep_NamingRate": [
+          "CONFIRMED",
+          "UNDETERMINED"
+        ]
+      }
+    },
+    "S3_equal_weight_null": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.09920654448271393,
+        "H2_Sep_Consistency": -0.02822583194755598,
+        "H3_Sep_NamingRate": 0.0019811790443951317,
+        "H4_Reliability": 0.38189655172413794
+      },
+      "n": {
+        "H1_Sep_Presence": 51,
+        "H2_Sep_Consistency": 47,
+        "H3_Sep_NamingRate": 51,
+        "H4_Reliability": 42
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    },
+    "S4_room_to_vary": {
+      "rho_w": {
+        "H1_Sep_Presence": -0.020986405081711783,
+        "H2_Sep_Consistency": -0.01286633638199092,
+        "H3_Sep_NamingRate": -0.10371923895539972,
+        "H4_Reliability": 0.29980657640232106
+      },
+      "n": {
+        "H1_Sep_Presence": 50,
+        "H2_Sep_Consistency": 46,
+        "H3_Sep_NamingRate": 50,
+        "H4_Reliability": 40
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "MARGINAL"
+      },
+      "verdict_changes": {
+        "H4_Reliability": [
+          "CONFIRMED",
+          "MARGINAL"
+        ]
+      }
+    },
+    "S5_leave_one_category_out": {
+      "per_category_left_out": {
+        "v0.19": {
+          "rho_w": {
+            "H1_Sep_Presence": -0.044388158949007384,
+            "H2_Sep_Consistency": -0.06384816871830265,
+            "H3_Sep_NamingRate": -0.11399622298771647,
+            "H4_Reliability": 0.3969631236442516
+          },
+          "n": {
+            "H1_Sep_Presence": 40,
+            "H2_Sep_Consistency": 37,
+            "H3_Sep_NamingRate": 40,
+            "H4_Reliability": 33
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED",
+            "H4_Reliability": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "v0.20": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.09348760126338274,
+            "H2_Sep_Consistency": -0.03052328805615385,
+            "H3_Sep_NamingRate": 0.07970635600333734,
+            "H4_Reliability": 0.47232142857142856
+          },
+          "n": {
+            "H1_Sep_Presence": 44,
+            "H2_Sep_Consistency": 40,
+            "H3_Sep_NamingRate": 44,
+            "H4_Reliability": 37
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED",
+            "H4_Reliability": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "v0.21": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.0871370128087924,
+            "H2_Sep_Consistency": -0.2211631128848316,
+            "H3_Sep_NamingRate": 0.016586044043665402,
+            "H4_Reliability": 0.43734939759036146
+          },
+          "n": {
+            "H1_Sep_Presence": 39,
+            "H2_Sep_Consistency": 36,
+            "H3_Sep_NamingRate": 39,
+            "H4_Reliability": 32
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED",
+            "H4_Reliability": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "v0.22": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.11147212259949486,
+            "H2_Sep_Consistency": -0.0075757662715457055,
+            "H3_Sep_NamingRate": 0.12311015118790497,
+            "H4_Reliability": 0.45133587786259544
+          },
+          "n": {
+            "H1_Sep_Presence": 43,
+            "H2_Sep_Consistency": 39,
+            "H3_Sep_NamingRate": 43,
+            "H4_Reliability": 35
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED",
+            "H4_Reliability": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "v0.23": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.0,
+            "H2_Sep_Consistency": -0.0019084004217450896,
+            "H3_Sep_NamingRate": 0.1115414742057691,
+            "H4_Reliability": 0.6680555555555555
+          },
+          "n": {
+            "H1_Sep_Presence": 38,
+            "H2_Sep_Consistency": 36,
+            "H3_Sep_NamingRate": 38,
+            "H4_Reliability": 31
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED",
+            "H4_Reliability": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        }
+      },
+      "rho_w_range": {
+        "H1_Sep_Presence": [
+          -0.044388158949007384,
+          0.11147212259949486
+        ],
+        "H2_Sep_Consistency": [
+          -0.2211631128848316,
+          -0.0019084004217450896
+        ],
+        "H3_Sep_NamingRate": [
+          -0.11399622298771647,
+          0.12311015118790497
+        ],
+        "H4_Reliability": [
+          0.3969631236442516,
+          0.6680555555555555
+        ]
+      },
+      "verdict_changes": {}
+    },
+    "S6_leave_one_W_out": {
+      "per_W_left_out": {
+        "why": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.019165775890509794,
+            "H2_Sep_Consistency": 0.04717656673396671,
+            "H3_Sep_NamingRate": -0.056338108636118205
+          },
+          "n": {
+            "H1_Sep_Presence": 49,
+            "H2_Sep_Consistency": 46,
+            "H3_Sep_NamingRate": 49
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "when": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.12139943394376373,
+            "H2_Sep_Consistency": 0.021186461811014135,
+            "H3_Sep_NamingRate": 0.08221998175824521
+          },
+          "n": {
+            "H1_Sep_Presence": 49,
+            "H2_Sep_Consistency": 45,
+            "H3_Sep_NamingRate": 49
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "where": {
+          "rho_w": {
+            "H1_Sep_Presence": -0.05521134646339584,
+            "H2_Sep_Consistency": -0.1397517212778798,
+            "H3_Sep_NamingRate": -0.06752955486831837
+          },
+          "n": {
+            "H1_Sep_Presence": 49,
+            "H2_Sep_Consistency": 45,
+            "H3_Sep_NamingRate": 49
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "while": {
+          "rho_w": {
+            "H1_Sep_Presence": -0.11266120360785176,
+            "H2_Sep_Consistency": 0.011799422863781729,
+            "H3_Sep_NamingRate": -0.054809630074915544
+          },
+          "n": {
+            "H1_Sep_Presence": 49,
+            "H2_Sep_Consistency": 45,
+            "H3_Sep_NamingRate": 49
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "with whom": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.030857223463872697,
+            "H2_Sep_Consistency": 0.12412726776468261,
+            "H3_Sep_NamingRate": -0.1998860729295223
+          },
+          "n": {
+            "H1_Sep_Presence": 49,
+            "H2_Sep_Consistency": 45,
+            "H3_Sep_NamingRate": 49
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "with what": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.07798185648819292,
+            "H2_Sep_Consistency": -0.15670456636331542,
+            "H3_Sep_NamingRate": -0.035489416231967066
+          },
+          "n": {
+            "H1_Sep_Presence": 47,
+            "H2_Sep_Consistency": 43,
+            "H3_Sep_NamingRate": 47
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        },
+        "how feeling": {
+          "rho_w": {
+            "H1_Sep_Presence": 0.06326991648991744,
+            "H2_Sep_Consistency": -0.0336200259132859,
+            "H3_Sep_NamingRate": 0.13534675615212527
+          },
+          "n": {
+            "H1_Sep_Presence": 48,
+            "H2_Sep_Consistency": 44,
+            "H3_Sep_NamingRate": 48
+          },
+          "verdicts": {
+            "H1_Sep_Presence": "CONFIRMED",
+            "H2_Sep_Consistency": "CONFIRMED",
+            "H3_Sep_NamingRate": "CONFIRMED"
+          },
+          "verdict_changes": {}
+        }
+      },
+      "verdict_changes": {}
+    },
+    "S7_presence_alternatives": {
+      "pi_hat_N3": {
+        "rho_w": {
+          "H1_Sep_Presence": 0.05456359946549266
+        },
+        "n": {
+          "H1_Sep_Presence": 51
+        },
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED"
+        },
+        "verdict_changes": {}
+      },
+      "t4_mentions_N3_S0": {
+        "rho_w": {
+          "H1_Sep_Presence": 0.05456359946549266
+        },
+        "n": {
+          "H1_Sep_Presence": 51
+        },
+        "verdicts": {
+          "H1_Sep_Presence": "CONFIRMED"
+        },
+        "verdict_changes": {}
+      }
+    },
+    "S8_mid_p": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.1240081806033924,
+        "H2_Sep_Consistency": 0.1061828916122344,
+        "H3_Sep_NamingRate": -0.014858842832963487,
+        "H4_Reliability": 0.35258620689655173
+      },
+      "n": {
+        "H1_Sep_Presence": 51,
+        "H2_Sep_Consistency": 47,
+        "H3_Sep_NamingRate": 51,
+        "H4_Reliability": 42
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    },
+    "S9_uncentred_rho_w": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.15669594585253907,
+        "H2_Sep_Consistency": 0.013881143669845454,
+        "H3_Sep_NamingRate": 0.1485345099557689,
+        "H4_Reliability": 0.5408141210374641
+      },
+      "n": {
+        "H1_Sep_Presence": 51,
+        "H2_Sep_Consistency": 47,
+        "H3_Sep_NamingRate": 51,
+        "H4_Reliability": 42
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    },
+    "S10_without_Denon": {
+      "rho_w": {
+        "H1_Sep_Presence": 0.05456359946549266,
+        "H2_Sep_Consistency": -0.06048392560190567,
+        "H3_Sep_NamingRate": 0.045567118021088024,
+        "H4_Reliability": 0.47672413793103446
+      },
+      "n": {
+        "H1_Sep_Presence": 51,
+        "H2_Sep_Consistency": 47,
+        "H3_Sep_NamingRate": 51,
+        "H4_Reliability": 42
+      },
+      "verdicts": {
+        "H1_Sep_Presence": "CONFIRMED",
+        "H2_Sep_Consistency": "CONFIRMED",
+        "H3_Sep_NamingRate": "CONFIRMED",
+        "H4_Reliability": "CONFIRMED"
+      },
+      "verdict_changes": {}
+    }
+  },
+  "verdict_changes_under_sensitivities": {
+    "S1_raw_Cov_k2": {
+      "H1_Sep_Presence": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ],
+      "H3_Sep_NamingRate": [
+        "CONFIRMED",
+        "FALSIFIED"
+      ]
+    },
+    "S2_floor_28": {
+      "H1_Sep_Presence": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ],
+      "H2_Sep_Consistency": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ],
+      "H3_Sep_NamingRate": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ]
+    },
+    "S4_room_to_vary": {
+      "H4_Reliability": [
+        "CONFIRMED",
+        "MARGINAL"
+      ]
+    }
+  },
+  "descriptives": {
+    "note": "descriptive only; no verdicts (section 5)",
+    "non_registry_brand_mentions": "NOT COMPUTED: the pre-registration asks for a count but names no detector for brands outside the registries (N28; clarification to settle at the lock)",
+    "per_category_model": {
+      "v0.19|claude-fable-5-2": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 237.51111111111112,
+        "registry_brands_named_per_cep_answer_mean": 6.880952380952381,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.6443482443482443,
+        "beta_distribution": {
+          "n": 12,
+          "median": -0.47910794266139733,
+          "q1": -0.6933374071672269,
+          "q3": -0.2825598759679675,
+          "min": -0.9006150928874948,
+          "max": 0.10440402011733241
+        }
+      },
+      "v0.19|claude-opus-5-5": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 325.75555555555553,
+        "registry_brands_named_per_cep_answer_mean": 8.142857142857142,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.7243145743145744,
+        "beta_distribution": {
+          "n": 14,
+          "median": -0.3250796698597025,
+          "q1": -0.5132144280956911,
+          "q3": 0.0,
+          "min": -0.966739345411229,
+          "max": 0.07265172288271637
+        }
+      },
+      "v0.19|gpt-6-astra": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 211.6,
+        "registry_brands_named_per_cep_answer_mean": 6.357142857142857,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.5955988455988456,
+        "beta_distribution": {
+          "n": 13,
+          "median": -0.7482861749017088,
+          "q1": -0.7717051320229539,
+          "q3": -0.46666831487974747,
+          "min": -0.996616290075071,
+          "max": 0.0
+        }
+      },
+      "v0.19|gemini-4-argon": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 677.2666666666667,
+        "registry_brands_named_per_cep_answer_mean": 7.0,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.5775335775335776,
+        "beta_distribution": {
+          "n": 13,
+          "median": -0.605655737844384,
+          "q1": -0.7173526972149322,
+          "q3": -0.37820003270273717,
+          "min": -0.9137314078113099,
+          "max": 0.0
+        }
+      },
+      "v0.20|claude-fable-5-2": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 215.15555555555557,
+        "registry_brands_named_per_cep_answer_mean": 3.738095238095238,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.44302721088435376,
+        "beta_distribution": {
+          "n": 13,
+          "median": -0.7784705400589278,
+          "q1": -0.8966234906017843,
+          "q3": -0.7515905784583727,
+          "min": -0.9658536585365853,
+          "max": -0.4839996923563406
+        }
+      },
+      "v0.20|claude-opus-5-5": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 294.6666666666667,
+        "registry_brands_named_per_cep_answer_mean": 4.666666666666667,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.5033541194255479,
+        "beta_distribution": {
+          "n": 16,
+          "median": -0.720965807304557,
+          "q1": -0.8110627003995696,
+          "q3": -0.6181561430133948,
+          "min": -0.9251945713313114,
+          "max": 0.0
+        }
+      },
+      "v0.20|gpt-6-astra": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 195.82222222222222,
+        "registry_brands_named_per_cep_answer_mean": 3.0714285714285716,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.542063492063492,
+        "beta_distribution": {
+          "n": 8,
+          "median": -0.5700140706163787,
+          "q1": -0.7692961006624507,
+          "q3": -0.28727404978532156,
+          "min": -0.927439024390244,
+          "max": 0.0
+        }
+      },
+      "v0.20|gemini-4-argon": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 638.8,
+        "registry_brands_named_per_cep_answer_mean": 2.9285714285714284,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.35096371882086175,
+        "beta_distribution": {
+          "n": 15,
+          "median": -0.5934373089744974,
+          "q1": -0.8032964180563351,
+          "q3": -0.16621114225543238,
+          "min": -0.9333661179315045,
+          "max": 0.09654116900268739
+        }
+      },
+      "v0.21|claude-fable-5-2": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 215.53333333333333,
+        "registry_brands_named_per_cep_answer_mean": 4.142857142857143,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.4299036281179138,
+        "beta_distribution": {
+          "n": 15,
+          "median": -0.3972052451373358,
+          "q1": -0.6924430565904445,
+          "q3": -0.2626786868106836,
+          "min": -0.9209452638676758,
+          "max": 0.0
+        }
+      },
+      "v0.21|claude-opus-5-5": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 295.6222222222222,
+        "registry_brands_named_per_cep_answer_mean": 6.833333333333333,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.4990603312031884,
+        "beta_distribution": {
+          "n": 20,
+          "median": -0.46867711056923556,
+          "q1": -0.7405553655579813,
+          "q3": -0.3102706261983805,
+          "min": -0.9250804405385302,
+          "max": 0.07573894156916072
+        }
+      },
+      "v0.21|gpt-6-astra": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 183.77777777777777,
+        "registry_brands_named_per_cep_answer_mean": 4.261904761904762,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.44434051398337104,
+        "beta_distribution": {
+          "n": 14,
+          "median": -0.5043383640472952,
+          "q1": -0.7513272235485802,
+          "q3": -0.4160925708497822,
+          "min": -0.9300749897188141,
+          "max": 0.0
+        }
+      },
+      "v0.21|gemini-4-argon": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 640.7555555555556,
+        "registry_brands_named_per_cep_answer_mean": 4.5,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.30210701996416284,
+        "beta_distribution": {
+          "n": 19,
+          "median": -0.4782106567064677,
+          "q1": -0.6635656954694624,
+          "q3": -0.27759423162809066,
+          "min": -0.892250405644192,
+          "max": 0.07310021436084368
+        }
+      },
+      "v0.22|claude-fable-5-2": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 245.6888888888889,
+        "registry_brands_named_per_cep_answer_mean": 3.5238095238095237,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.7136904761904762,
+        "beta_distribution": {
+          "n": 10,
+          "median": -0.7310082582187295,
+          "q1": -0.8888473149141276,
+          "q3": -0.6381242815639122,
+          "min": -0.9229981359817518,
+          "max": -0.5996202039978867
+        }
+      },
+      "v0.22|claude-opus-5-5": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 315.5111111111111,
+        "registry_brands_named_per_cep_answer_mean": 4.738095238095238,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.5223356009070295,
+        "beta_distribution": {
+          "n": 17,
+          "median": -0.5070101107777465,
+          "q1": -0.8651732951831361,
+          "q3": -0.3860650324171773,
+          "min": -0.9942187726365184,
+          "max": 0.006125049425271811
+        }
+      },
+      "v0.22|gpt-6-astra": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 245.8,
+        "registry_brands_named_per_cep_answer_mean": 3.3333333333333335,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.6390873015873016,
+        "beta_distribution": {
+          "n": 10,
+          "median": -0.6408046373900758,
+          "q1": -0.8176362840291698,
+          "q3": -0.5287193453239245,
+          "min": -0.9495448062497713,
+          "max": -0.41966139622296056
+        }
+      },
+      "v0.22|gemini-4-argon": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 732.5777777777778,
+        "registry_brands_named_per_cep_answer_mean": 3.857142857142857,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.4520219198790627,
+        "beta_distribution": {
+          "n": 14,
+          "median": -0.6897826970469949,
+          "q1": -0.8730866687209903,
+          "q3": -0.42650423365261464,
+          "min": -0.9312762104547252,
+          "max": -0.17336915426917043
+        }
+      },
+      "v0.23|claude-fable-5-2": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 208.44444444444446,
+        "registry_brands_named_per_cep_answer_mean": 6.023809523809524,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.46804353054353054,
+        "beta_distribution": {
+          "n": 16,
+          "median": -0.49400237166251026,
+          "q1": -0.7391877615461051,
+          "q3": -0.4008545288084943,
+          "min": -0.8890243902439026,
+          "max": 0.023198064748302105
+        }
+      },
+      "v0.23|claude-opus-5-5": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 269.31111111111113,
+        "registry_brands_named_per_cep_answer_mean": 7.428571428571429,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.4822345313416742,
+        "beta_distribution": {
+          "n": 16,
+          "median": -0.3572192186272768,
+          "q1": -0.5286858210816671,
+          "q3": -0.15623320856103395,
+          "min": -0.7679923476456096,
+          "max": -0.03930945549776177
+        }
+      },
+      "v0.23|gpt-6-astra": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 182.11111111111111,
+        "registry_brands_named_per_cep_answer_mean": 3.3095238095238093,
+        "share_of_ceps_with_no_registry_brand": 0.07142857142857142,
+        "mean_jaccard_cep_answer_vs_C0": 0.2637531780388923,
+        "beta_distribution": {
+          "n": 13,
+          "median": -0.6674796747967479,
+          "q1": -0.8560975609756096,
+          "q3": -0.5045731707317074,
+          "min": -0.9512195121951219,
+          "max": -0.32317073170731714
+        }
+      },
+      "v0.23|gemini-4-argon": {
+        "cep_answers": 42,
+        "control_answers": 3,
+        "missing_cells": 0,
+        "words_per_answer_mean": 727.0444444444445,
+        "registry_brands_named_per_cep_answer_mean": 6.285714285714286,
+        "share_of_ceps_with_no_registry_brand": 0.0,
+        "mean_jaccard_cep_answer_vs_C0": 0.4171672243100816,
+        "beta_distribution": {
+          "n": 19,
+          "median": -0.4519485020083007,
+          "q1": -0.6720396721045137,
+          "q3": -0.29224233891984747,
+          "min": -0.8560434842376616,
+          "max": 0.0
+        }
+      }
+    },
+    "per_category_panel": {
+      "v0.19|N3": {
+        "models": [
+          "claude-fable-5-2",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 16,
+        "rated": 11,
+        "cov_star": {
+          "n": 11,
+          "median": 22.656506323429497,
+          "q1": 17.31454541269217,
+          "q3": 32.341233355163844,
+          "min": 11.849509066872072,
+          "max": 50.0
+        },
+        "raw_cov_k1": {
+          "n": 16,
+          "median": 53.57142857142857,
+          "q1": 19.642857142857142,
+          "q3": 87.5,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k2": {
+          "n": 16,
+          "median": 28.571428571428573,
+          "q1": 5.357142857142858,
+          "q3": 78.57142857142857,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k3": {
+          "n": 16,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 64.28571428571429,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.20|N3": {
+        "models": [
+          "claude-fable-5-2",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 7,
+        "cov_star": {
+          "n": 7,
+          "median": 15.204447303265024,
+          "q1": 13.42785147045917,
+          "q3": 27.540813533168546,
+          "min": 11.086345040063012,
+          "max": 38.897118091512475
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 25.0,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 8.928571428571429,
+          "min": 0.0,
+          "max": 78.57142857142857
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 7.142857142857143,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.21|N3": {
+        "models": [
+          "claude-fable-5-2",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 12,
+        "cov_star": {
+          "n": 12,
+          "median": 26.558268949880286,
+          "q1": 21.66994465196015,
+          "q3": 30.47267010410437,
+          "min": 14.536655149253718,
+          "max": 45.44453090002229
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 17.857142857142858,
+          "q1": 5.357142857142858,
+          "q3": 51.785714285714285,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 7.142857142857143,
+          "q1": 0.0,
+          "q3": 28.571428571428573,
+          "min": 0.0,
+          "max": 64.28571428571429
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 7.142857142857143,
+          "min": 0.0,
+          "max": 57.142857142857146
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.22|N3": {
+        "models": [
+          "claude-fable-5-2",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 8,
+        "cov_star": {
+          "n": 8,
+          "median": 18.952069040047398,
+          "q1": 14.608200565164426,
+          "q3": 23.615822878104186,
+          "min": 3.519035986882929,
+          "max": 27.005114269786468
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 7.142857142857143,
+          "q1": 0.0,
+          "q3": 21.428571428571427,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 7.142857142857143,
+          "min": 0.0,
+          "max": 78.57142857142857
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.23|N3": {
+        "models": [
+          "claude-fable-5-2",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 13,
+        "cov_star": {
+          "n": 13,
+          "median": 21.70606833888995,
+          "q1": 18.67440255354303,
+          "q3": 24.672508500533084,
+          "min": 13.858863638624214,
+          "max": 30.021219422837696
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 32.142857142857146,
+          "q1": 0.0,
+          "q3": 64.28571428571429,
+          "min": 0.0,
+          "max": 78.57142857142857
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 35.714285714285715,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 3.5714285714285716,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 57.142857142857146
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.19|C3": {
+        "models": [
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 16,
+        "rated": 12,
+        "cov_star": {
+          "n": 12,
+          "median": 28.02653279437866,
+          "q1": 19.224903486882184,
+          "q3": 31.48281241032298,
+          "min": 8.011810538837105,
+          "max": 50.0
+        },
+        "raw_cov_k1": {
+          "n": 16,
+          "median": 75.0,
+          "q1": 30.357142857142858,
+          "q3": 92.85714285714286,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k2": {
+          "n": 16,
+          "median": 46.42857142857143,
+          "q1": 5.357142857142858,
+          "q3": 78.57142857142857,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k3": {
+          "n": 16,
+          "median": 17.857142857142858,
+          "q1": 0.0,
+          "q3": 58.92857142857143,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.20|C3": {
+        "models": [
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 10,
+        "cov_star": {
+          "n": 10,
+          "median": 16.507898585613482,
+          "q1": 11.421178768441075,
+          "q3": 23.071875880288,
+          "min": 8.753540551944743,
+          "max": 39.26576723504189
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 37.5,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 7.142857142857143,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.21|C3": {
+        "models": [
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 13,
+        "cov_star": {
+          "n": 13,
+          "median": 26.818447948874848,
+          "q1": 20.91227805259466,
+          "q3": 31.305146454519605,
+          "min": 17.199835474652264,
+          "max": 39.4641318479526
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 28.57142857142857,
+          "q1": 7.142857142857143,
+          "q3": 64.28571428571429,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 10.714285714285715,
+          "q1": 0.0,
+          "q3": 32.142857142857146,
+          "min": 0.0,
+          "max": 64.28571428571429
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 3.5714285714285716,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 57.142857142857146
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.22|C3": {
+        "models": [
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 8,
+        "cov_star": {
+          "n": 8,
+          "median": 22.296148141266407,
+          "q1": 17.03321425179769,
+          "q3": 29.59787638468329,
+          "min": 2.082670177649754,
+          "max": 32.901173334238344
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 10.714285714285715,
+          "q1": 0.0,
+          "q3": 23.214285714285715,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 16.071428571428573,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 8.928571428571429,
+          "min": 0.0,
+          "max": 78.57142857142857
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.23|C3": {
+        "models": [
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 13,
+        "cov_star": {
+          "n": 13,
+          "median": 22.796051740427743,
+          "q1": 18.49524236322052,
+          "q3": 28.909172730355436,
+          "min": 12.95492523733322,
+          "max": 32.87756822519524
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 39.285714285714285,
+          "q1": 5.357142857142858,
+          "q3": 71.42857142857143,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 39.285714285714285,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 3.5714285714285716,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 57.142857142857146
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.19|A4": {
+        "models": [
+          "claude-fable-5-2",
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 16,
+        "rated": 12,
+        "cov_star": {
+          "n": 12,
+          "median": 27.328074704105532,
+          "q1": 18.41829913030747,
+          "q3": 35.667380577726924,
+          "min": 12.775831549069029,
+          "max": 50.0
+        },
+        "raw_cov_k1": {
+          "n": 16,
+          "median": 75.0,
+          "q1": 30.357142857142858,
+          "q3": 92.85714285714286,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k2": {
+          "n": 16,
+          "median": 50.0,
+          "q1": 5.357142857142858,
+          "q3": 85.71428571428571,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k3": {
+          "n": 16,
+          "median": 28.571428571428573,
+          "q1": 0.0,
+          "q3": 73.21428571428572,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.20|A4": {
+        "models": [
+          "claude-fable-5-2",
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 12,
+        "cov_star": {
+          "n": 12,
+          "median": 13.982987993087132,
+          "q1": 10.28016177638469,
+          "q3": 23.948453916011818,
+          "min": 7.857361781436256,
+          "max": 33.83290406765812
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 0.0,
+          "q3": 37.5,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 3.5714285714285716,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 8.928571428571429,
+          "min": 0.0,
+          "max": 78.57142857142857
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.21|A4": {
+        "models": [
+          "claude-fable-5-2",
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 14,
+        "cov_star": {
+          "n": 14,
+          "median": 26.40383723016629,
+          "q1": 20.458606380733492,
+          "q3": 30.853876013667403,
+          "min": 8.608838424820298,
+          "max": 38.72077159263586
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 28.57142857142857,
+          "q1": 7.142857142857143,
+          "q3": 66.07142857142858,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 14.285714285714286,
+          "q1": 5.357142857142858,
+          "q3": 37.5,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 7.142857142857143,
+          "q1": 0.0,
+          "q3": 21.428571428571427,
+          "min": 0.0,
+          "max": 57.142857142857146
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.22|A4": {
+        "models": [
+          "claude-fable-5-2",
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 9,
+        "cov_star": {
+          "n": 9,
+          "median": 20.234430686203996,
+          "q1": 14.362738779892437,
+          "q3": 24.163507205567004,
+          "min": 2.7115423322057186,
+          "max": 27.92802279712513
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 10.714285714285715,
+          "q1": 0.0,
+          "q3": 23.214285714285715,
+          "min": 0.0,
+          "max": 100.0
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 21.428571428571427,
+          "min": 0.0,
+          "max": 92.85714285714286
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 0.0,
+          "q1": 0.0,
+          "q3": 14.285714285714286,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      },
+      "v0.23|A4": {
+        "models": [
+          "claude-fable-5-2",
+          "claude-opus-5-5",
+          "gpt-6-astra",
+          "gemini-4-argon"
+        ],
+        "units": 24,
+        "rated": 14,
+        "cov_star": {
+          "n": 14,
+          "median": 23.426283774974443,
+          "q1": 18.652819766486367,
+          "q3": 28.26030092061086,
+          "min": 16.113431820975027,
+          "max": 33.06157709961111
+        },
+        "raw_cov_k1": {
+          "n": 24,
+          "median": 42.857142857142854,
+          "q1": 5.357142857142858,
+          "q3": 71.42857142857143,
+          "min": 0.0,
+          "max": 85.71428571428571
+        },
+        "raw_cov_k2": {
+          "n": 24,
+          "median": 28.571428571428573,
+          "q1": 0.0,
+          "q3": 51.785714285714285,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "raw_cov_k3": {
+          "n": 24,
+          "median": 10.714285714285715,
+          "q1": 0.0,
+          "q3": 30.357142857142858,
+          "min": 0.0,
+          "max": 71.42857142857143
+        },
+        "share_of_ceps_no_registry_brand_in_any_panel_answer": 0.0
+      }
+    },
+    "per_W_coverage_primary_panel": {
+      "v0.19|Audeze": {
+        "why": 1,
+        "when": 2,
+        "where": 1,
+        "while": 1,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 2
+      },
+      "v0.19|Audio-Technica": {
+        "why": 2,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 2,
+        "with what": 2,
+        "how feeling": 0
+      },
+      "v0.19|Beyerdynamic": {
+        "why": 2,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 2,
+        "with what": 2,
+        "how feeling": 2
+      },
+      "v0.19|Dan Clark Audio": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.19|Denon": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|Final Audio": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|Focal": {
+        "why": 1,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.19|Grado": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 2
+      },
+      "v0.19|HiFiMan": {
+        "why": 2,
+        "when": 2,
+        "where": 1,
+        "while": 1,
+        "with whom": 2,
+        "with what": 1,
+        "how feeling": 2
+      },
+      "v0.19|Koss": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|Meze": {
+        "why": 0,
+        "when": 2,
+        "where": 1,
+        "while": 2,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 2
+      },
+      "v0.19|Sennheiser": {
+        "why": 2,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 2,
+        "with what": 2,
+        "how feeling": 2
+      },
+      "v0.19|Sony": {
+        "why": 0,
+        "when": 0,
+        "where": 1,
+        "while": 1,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|Spirit Torino": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|Stax": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.19|ZMF Headphones": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Augustinus Bader": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.20|Bioderma": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|CeraVe": {
+        "why": 2,
+        "when": 2,
+        "where": 1,
+        "while": 2,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.20|Cetaphil": {
+        "why": 2,
+        "when": 1,
+        "where": 0,
+        "while": 1,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.20|Chanel Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Clé de Peau Beauté": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Dior Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Drunk Elephant": {
+        "why": 0,
+        "when": 0,
+        "where": 1,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Estée Lauder": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Eucerin": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Fenty Skin": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Glossier": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Goop": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|La Mer": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.20|La Prairie": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|La Roche-Posay": {
+        "why": 1,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.20|Lancôme": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Paula's Choice": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Rare Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Rhode": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|Sisley": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.20|SkinCeuticals": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.20|The Ordinary": {
+        "why": 1,
+        "when": 1,
+        "where": 1,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.20|Tower 28": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Anastasia Beverly Hills": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Bobbi Brown": {
+        "why": 0,
+        "when": 0,
+        "where": 1,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.21|Chantecaille": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Charlotte Tilbury": {
+        "why": 0,
+        "when": 2,
+        "where": 0,
+        "while": 2,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.21|CoverGirl": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Fenty Beauty": {
+        "why": 1,
+        "when": 1,
+        "where": 1,
+        "while": 1,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Giorgio Armani Beauty": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Haus Labs": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Hourglass": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Huda Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Kylie Cosmetics": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|L'Oréal Paris": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Laura Mercier": {
+        "why": 0,
+        "when": 1,
+        "where": 1,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.21|MAC Cosmetics": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 1,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.21|Maybelline": {
+        "why": 2,
+        "when": 2,
+        "where": 1,
+        "while": 1,
+        "with whom": 2,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.21|Milani Cosmetics": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|NARS": {
+        "why": 1,
+        "when": 2,
+        "where": 1,
+        "while": 1,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.21|NYX Professional Makeup": {
+        "why": 1,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 2,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Pat McGrath Labs": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.21|Rare Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Revlon": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Tom Ford Beauty": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|Wet n Wild": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.21|e.l.f. Cosmetics": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 2,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|BMW": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.22|Bentley": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Cadillac": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Chevrolet": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.22|Fisker": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Ford": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 2,
+        "how feeling": 0
+      },
+      "v0.22|Honda": {
+        "why": 2,
+        "when": 2,
+        "where": 1,
+        "while": 2,
+        "with whom": 2,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.22|Hyundai": {
+        "why": 2,
+        "when": 1,
+        "where": 1,
+        "while": 2,
+        "with whom": 2,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.22|Jaguar": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Lucid": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Mercedes-Benz": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 2
+      },
+      "v0.22|Mercury": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Nissan": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Oldsmobile": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Plymouth": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Polestar": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Pontiac": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Porsche": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Rivian": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Rolls-Royce": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Saturn": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.22|Tesla": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.22|Toyota": {
+        "why": 2,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 2,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.22|Volkswagen": {
+        "why": 1,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.23|S01": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S02": {
+        "why": 0,
+        "when": 2,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 1
+      },
+      "v0.23|S03": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S04": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S05": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S06": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S07": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S08": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S09": {
+        "why": 1,
+        "when": 0,
+        "where": 1,
+        "while": 2,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 2
+      },
+      "v0.23|S10": {
+        "why": 0,
+        "when": 1,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.23|S11": {
+        "why": 0,
+        "when": 1,
+        "where": 2,
+        "while": 1,
+        "with whom": 0,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.23|S12": {
+        "why": 1,
+        "when": 1,
+        "where": 2,
+        "while": 2,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.23|S13": {
+        "why": 0,
+        "when": 2,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 1
+      },
+      "v0.23|S14": {
+        "why": 1,
+        "when": 0,
+        "where": 1,
+        "while": 1,
+        "with whom": 1,
+        "with what": 1,
+        "how feeling": 0
+      },
+      "v0.23|S15": {
+        "why": 1,
+        "when": 2,
+        "where": 1,
+        "while": 1,
+        "with whom": 1,
+        "with what": 2,
+        "how feeling": 2
+      },
+      "v0.23|S16": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S17": {
+        "why": 1,
+        "when": 2,
+        "where": 2,
+        "while": 2,
+        "with whom": 2,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.23|S18": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S19": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 1,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S20": {
+        "why": 0,
+        "when": 0,
+        "where": 1,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S21": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S22": {
+        "why": 1,
+        "when": 2,
+        "where": 0,
+        "while": 0,
+        "with whom": 1,
+        "with what": 0,
+        "how feeling": 1
+      },
+      "v0.23|S23": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      },
+      "v0.23|S24": {
+        "why": 0,
+        "when": 0,
+        "where": 0,
+        "while": 0,
+        "with whom": 0,
+        "with what": 0,
+        "how feeling": 0
+      }
+    },
+    "run_to_run_reliability": {
+      "claude-fable-5-2": {
+        "rel1": 0.9670390945923919,
+        "rel3": 0.988766180284798,
+        "run_pairs": {
+          "1-2": 0.9579121671400983,
+          "1-3": 0.9661071550246251,
+          "2-3": 0.9770979616124523
+        }
+      },
+      "claude-opus-5-5": {
+        "rel1": 0.9530302669761636,
+        "rel3": 0.9838373177450794,
+        "run_pairs": {
+          "1-2": 0.9474399673207626,
+          "1-3": 0.9576988837557756,
+          "2-3": 0.9539519498519525
+        }
+      },
+      "gpt-6-astra": {
+        "rel1": 0.9647190992347675,
+        "rel3": 0.9879564276919496,
+        "run_pairs": {
+          "1-2": 0.9624858951180199,
+          "1-3": 0.9478681110371566,
+          "2-3": 0.9838032915491258
+        }
+      },
+      "gemini-4-argon": {
+        "rel1": 0.9304018360499536,
+        "rel3": 0.9756718139630466,
+        "run_pairs": {
+          "1-2": 0.9452162713690843,
+          "1-3": 0.925801927579264,
+          "2-3": 0.9201873092015127
+        }
+      }
+    },
+    "tokens_and_spend": {
+      "per_model": {
+        "claude-fable-5-2": {
+          "records": 225,
+          "input_tokens": 10362,
+          "output_tokens": 143562,
+          "thinking_tokens": 0,
+          "usd_billed": 5.825376
+        },
+        "claude-opus-5-5": {
+          "records": 225,
+          "input_tokens": 10362,
+          "output_tokens": 214493,
+          "thinking_tokens": 0,
+          "usd_billed": 4.331308
+        },
+        "gpt-6-astra": {
+          "records": 225,
+          "input_tokens": 6663,
+          "output_tokens": 88453,
+          "thinking_tokens": 19467,
+          "usd_billed": 4.48928
+        },
+        "gemini-4-argon": {
+          "records": 225,
+          "input_tokens": 12429,
+          "output_tokens": 240465,
+          "thinking_tokens": 0,
+          "usd_billed": 2.4295080000000002
+        }
+      },
+      "total_usd": 17.075472,
+      "basis": "usd_billed of every raw line (every attempt), list prices (section 6.6)"
+    }
+  },
+  "H5_ranking_source": {
+    "file": "/Users/pablou/aias/_worktrees/v1.14/osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json",
+    "sha256": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f",
+    "condition": "S0",
+    "prereg_tag": "v1.14-prereg-r2",
+    "created_utc": "2026-11-12T01:43:29+00:00",
+    "dry_run": false,
+    "stage1_verdict": "MARGINAL",
+    "v1_14_verdicts": {
+      "H1_Sep_Presence": "MARGINAL",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H4_Sep_Presence_S1": "MARGINAL",
+      "components": {
+        "Coverage": "INACTIVE",
+        "Grounding": "INACTIVE",
+        "Sentiment": "INACTIVE"
+      }
+    },
+    "gate_excluded_substrates": [],
+    "rated_units": 71,
+    "rank_table_t4_sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+    "measure": "R*_S0 of v1.14-prereg-r2 (modal position, lead-item rule, floor 6)",
+    "h5_gates": false,
+    "reading": "H5 gates only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise (MARGINAL, FAIL, UNDETERMINED, or Stage 1 halted) H5 is computed where possible and reported, and neither gates nor downgrades (N35). v1.14's final PASS/FAIL comes at its Stage 2 (t5)",
+    "MNP_comparability_non_gating": {
+      "rho_w": -0.020134228187919462,
+      "n": 47,
+      "p_perm": 0.9089091090890911,
+      "band_reading": "CONFIRMED",
+      "rank_table_sha256": "5e6286589f26c802da17b87db47b002707225dbea3950a093d1b63a6f1a0a23d",
+      "rated_units": 71,
+      "gating": false
+    }
+  },
+  "inputs": {
+    "raw": "osf/methodology/v1_12/data/v112_raw.jsonl",
+    "raw_sha256": "e23b66526b8e745a1d59098c2389daefbd07cc40e6bd271424a0eb7117106c11",
+    "coded": "osf/methodology/v1_12/data/coded",
+    "t4": {
+      "raw": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl",
+      "coded": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/coded",
+      "brand_table": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_brand_table.csv",
+      "verdicts": "/Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_verdicts.json"
+    },
+    "t4_missing": [],
+    "scorer_sha256": "f7689898fdc68715f207ffc0c1e335a0264aefcce0b2836d1fd5e79624709d20",
+    "coder": {
+      "file": "code_t4_v0_42.py",
+      "git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+      "sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "pinned_git_blob": "2d36735d512cf9e13b74010ba5a7f655fc7de0bc",
+      "pinned_sha256": "d0e4e685b5e3e1d983190726b5e88ef2b841b4589d5802ba67b86e31e4148220",
+      "match": true
+    }
+  }
+}
