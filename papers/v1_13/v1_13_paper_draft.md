@@ -181,13 +181,13 @@ The 20 most-retrieved domains across all category answers (number of answers who
 Neither leg reaches 0.50, but not both are at most 0.30, and H1 is **MARGINAL**.
 Figure 4 shows both legs under every pre-registered analysis.
 
-![$\rho_w$ of G\* with Presence in each condition, for the primary analysis (with its 90% interval) and each sensitivity analysis and left-out category; shaded: $|\rho_w| \leq 0.30$. ](../../reports/figs/v113/chart_04_presence_legs.pdf){#fig:h1 width=100%}
+![$\rho_w$ of G\* with Presence in each condition, for the primary analysis (with its 90% interval), the sensitivity analyses plotted (S1, S2, S4, S5, S9, S10 and S11) and each left-out category (S8); S6 and S7, computed after Stage C2, are not plotted and are given in the table of §3.7; shaded: $|\rho_w| \leq 0.30$. ](../../reports/figs/v113/chart_04_presence_legs.pdf){#fig:h1 width=100%}
 
 **Consistency (H2).** Across 42 brands rated on both scores, $\rho_w(G^*, C^*_{S1}) = -0.087$ (90% interval -0.370 to 0.214; $p = 0.6285$), and across 40, $\rho_w(G^*, C^*_{S0}) = 0.049$ (90% interval -0.256 to 0.353; $p = 0.7944$).
 Both $|\rho_w|$ are at most 0.30, and H2 is **CONFIRMED**.
 Figure 5 shows both legs under every pre-registered analysis.
 
-![$\rho_w$ of G\* with Consistency $C^*$ in each condition, for the primary analysis (with its 90% interval) and each sensitivity analysis and left-out category; shaded: $|\rho_w| \leq 0.30$. ](../../reports/figs/v113/chart_05_consistency_legs.pdf){#fig:h2 width=100%}
+![$\rho_w$ of G\* with Consistency $C^*$ in each condition, for the primary analysis (with its 90% interval), the sensitivity analyses plotted (S1, S2, S4, S5, S9, S10 and S11) and each left-out category (S8); S6 and S7, computed after Stage C2, are not plotted and are given in the table of §3.7; shaded: $|\rho_w| \leq 0.30$. ](../../reports/figs/v113/chart_05_consistency_legs.pdf){#fig:h2 width=100%}
 
 **Run reliability (H3).** With G\* computed per run (floor three grounded answers), only 0 of the three run pairs had at least 30 units rated in both runs.
 Two qualifying pairs are needed, and H3 is **UNDETERMINED**.
@@ -358,6 +358,8 @@ Materials are deposited at OSF (osf.io/ec6wh), `methodology/v1_13/`: the locked 
 
 # References {-}
 
+\begingroup\small\setstretch{1.15}\setlength{\parskip}{5pt}
+
 González Castro, P. U. (2026a). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
 
 González Castro, P. U. (2026b). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
@@ -387,6 +389,8 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 Sharp, B., & Romaniuk, J. (2021). *How Brands Grow Part 2: Including Emerging Markets, Services, Durables, New and Luxury Brands* (revised ed.). Oxford University Press.
 
 Programme records cited by version, as the locked pre-registration names them (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the pre-registrations of Methodology v1.10 (Ranking, tag `v1.10-prereg-r2`), v1.11 (Sentiment, tag `v1.11-prereg-r1`), v1.12 (Coverage, tag `v1.12-prereg-r1`) and v1.14 (Ranking redesign, tag `v1.14-prereg-r2`); the $t_4$ wave, v0.42 (pre-registration r2, tag `v0.42-prereg-r1`); the omnibus registries of v0.19 (audiophile headphones, SSRN 6809182), v0.20 (skincare, SSRN 6811441), v0.21 (cosmetics, SSRN 6815378), v0.22 (automotive, SSRN 6829118) and v0.23 (premium spirits, SSRN 6834298). HARMAN press release, Business Wire, September 23, 2025, <https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership>.
+
+\endgroup
 
 \clearpage
 

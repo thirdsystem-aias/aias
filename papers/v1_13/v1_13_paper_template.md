@@ -202,7 +202,7 @@ H1 is **UNDETERMINED**.
 {% endswitch %}
 Figure 4 shows both legs under every pre-registered analysis.
 
-![$\rho_w$ of G\* with Presence in each condition, for the primary analysis (with its 90% interval) and each sensitivity analysis and left-out category; shaded: $|\rho_w| \leq 0.30$. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_04_presence_legs.pdf){#fig:h1 width=100%}
+![$\rho_w$ of G\* with Presence in each condition, for the primary analysis (with its 90% interval), the sensitivity analyses plotted (S1, S2, S4, S5, S9, S10 and S11) and each left-out category (S8); S6 and S7, computed after Stage C2, are not plotted and are given in the table of §3.7; shaded: $|\rho_w| \leq 0.30$. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_04_presence_legs.pdf){#fig:h1 width=100%}
 
 **Consistency (H2).** {% switch CASE_H2 %}{% case CONFIRMED|MARGINAL|FALSIFIED %}Across {{H2_S1_N}} brands rated on both scores, $\rho_w(G^*, C^*_{S1}) = {{H2_S1_RHO}}$ (90% interval {{H2_S1_LO}} to {{H2_S1_HI}}; $p = {{H2_S1_P}}$), and across {{H2_S0_N}}, $\rho_w(G^*, C^*_{S0}) = {{H2_S0_RHO}}$ (90% interval {{H2_S0_LO}} to {{H2_S0_HI}}; $p = {{H2_S0_P}}$).{% case UNDETERMINED_FLOOR %}The legs had {{H2_S1_N}} and {{H2_S0_N}} units in categories with at least five entered, and at least one is below the floor of 30.{% case UNDETERMINED_MQ5 %}MQ5 failed, so H2 is not decided; the statistics are reported for the record: $\rho_w(G^*, C^*_{S1}) = {{H2_S1_RHO}}$ and $\rho_w(G^*, C^*_{S0}) = {{H2_S0_RHO}}$.{% endswitch %}
 {% switch CASE_H2 %}
@@ -217,7 +217,7 @@ H2 is **UNDETERMINED**.
 {% endswitch %}
 Figure 5 shows both legs under every pre-registered analysis.
 
-![$\rho_w$ of G\* with Consistency $C^*$ in each condition, for the primary analysis (with its 90% interval) and each sensitivity analysis and left-out category; shaded: $|\rho_w| \leq 0.30$. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_05_consistency_legs.pdf){#fig:h2 width=100%}
+![$\rho_w$ of G\* with Consistency $C^*$ in each condition, for the primary analysis (with its 90% interval), the sensitivity analyses plotted (S1, S2, S4, S5, S9, S10 and S11) and each left-out category (S8); S6 and S7, computed after Stage C2, are not plotted and are given in the table of §3.7; shaded: $|\rho_w| \leq 0.30$. {{FIG_CAPTION}}]({{FIG_DIR}}/chart_05_consistency_legs.pdf){#fig:h2 width=100%}
 
 **Run reliability (H3).** {% switch CASE_H3 %}{% case CONFIRMED|MARGINAL|FALSIFIED %}With G\* computed per run (floor three grounded answers), {{H3_NQ}} of the three run pairs had at least 30 units rated in both runs; their mean $\rho_w$ was rel1 = {{H3_REL1}}, so rel3 = {{H3_REL3}} (one-sided $p = {{H3_P}}$).{% case UNDETERMINED_PAIRS %}With G\* computed per run (floor three grounded answers), only {{H3_NQ}} of the three run pairs had at least 30 units rated in both runs.{% endswitch %}
 {% switch CASE_H3 %}
@@ -398,6 +398,8 @@ Materials are deposited at OSF (osf.io/ec6wh), `methodology/v1_13/`: the locked 
 
 # References {-}
 
+\begingroup\small\setstretch{1.15}\setlength{\parskip}{5pt}
+
 González Castro, P. U. (2026a). *AI Availability: Extending Mental and Physical Availability into Algorithmic Retrieval*. SSRN 6659000.
 
 González Castro, P. U. (2026b). *The AIAS™ Presence Measurement Protocol: Methodological Notes on Construct Validity and the Four-Regime Taxonomy* (v1.2). SSRN 6761698.
@@ -427,6 +429,8 @@ Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford Universit
 Sharp, B., & Romaniuk, J. (2021). *How Brands Grow Part 2: Including Emerging Markets, Services, Durables, New and Luxury Brands* (revised ed.). Oxford University Press.
 
 Programme records cited by version, as the locked pre-registration names them (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the pre-registrations of Methodology v1.10 (Ranking, tag `v1.10-prereg-r2`), v1.11 (Sentiment, tag `v1.11-prereg-r1`), v1.12 (Coverage, tag `v1.12-prereg-r1`) and v1.14 (Ranking redesign, tag `v1.14-prereg-r2`); the $t_4$ wave, v0.42 (pre-registration r2, tag `v0.42-prereg-r1`); the omnibus registries of v0.19 (audiophile headphones, SSRN 6809182), v0.20 (skincare, SSRN 6811441), v0.21 (cosmetics, SSRN 6815378), v0.22 (automotive, SSRN 6829118) and v0.23 (premium spirits, SSRN 6834298). HARMAN press release, Business Wire, September 23, 2025, <https://www.businesswire.com/news/home/20250923135384/en/HARMAN-Completes-Sound-United-Acquisition-to-Expand-Premium-Audio-Leadership>.
+
+\endgroup
 
 \clearpage
 
