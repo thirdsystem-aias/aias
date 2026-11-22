@@ -67,6 +67,78 @@ N_SQUARES = 2
 CELL_D = ("Pontiac", "Oldsmobile", "Plymouth", "Mercury", "Saturn")   # v0.22 Cell D "Defunct"
 # D7 (section 3.2): Fisker stays live unless a dated check moves it to Cell D. Pending; flag kept here.
 FISKER_DEFUNCT_DEFAULT = False
+# r3 task 5 -- D7's check (pre-registration D7: "its US market status is checked before the lock; if it sells no new
+# cars in the US, it is treated like Cell D by a logged clarification before any call"; manuscript section 3.2 note:
+# "an AI check with a dated source, logged, not a manual one"). The check itself needs a model with a source and is
+# NOT run by Stage 1 code; this is its logged record and the rule applied to it. Record (JSON), at D7_PATH:
+#   unit "Fisker"; question (text); checked_utc (ISO 8601, with zone); method "ai_check_dated_source";
+#   checker (the model ID that did the check); sources [{url (http/https), title, source_date (YYYY-MM-DD)}] (>= 1);
+#   sells_new_cars_us (true/false); decision "live" if it sells new cars in the US, else "cell_d".
+# DECISION: no record, or an invalid one, means D7 is PENDING: the probe file keeps Fisker live (the default) and
+# acquire_v0_46.d7_guard refuses --run, so no call is made before D7 is settled.
+D7_PATH = ROOT / "osf/v46/prereg/d7_fisker_v0_46.json"
+D7_METHOD = "ai_check_dated_source"
+
+
+def validate_d7(rec):
+    """Problems with a D7 record (empty list = valid)."""
+    import datetime as _dt
+    import re as _re
+    p = []
+    if not isinstance(rec, dict):
+        return ["record is not an object"]
+    if rec.get("unit") != "Fisker":
+        p.append("unit must be 'Fisker'")
+    if not str(rec.get("question") or "").strip():
+        p.append("question missing")
+    try:
+        t = _dt.datetime.fromisoformat(str(rec.get("checked_utc")).replace("Z", "+00:00"))
+        if t.tzinfo is None:
+            p.append("checked_utc has no time zone")
+    except ValueError:
+        p.append("checked_utc is not ISO 8601")
+    if rec.get("method") != D7_METHOD:
+        p.append(f"method must be {D7_METHOD!r} (an AI check with a dated source, not a manual one)")
+    if not str(rec.get("checker") or "").strip():
+        p.append("checker (model ID) missing")
+    src = rec.get("sources")
+    if not isinstance(src, list) or not src:
+        p.append("at least one source is required")
+    else:
+        for i, s in enumerate(src):
+            if not _re.match(r"https?://\S+$", str((s or {}).get("url") or "")):
+                p.append(f"source {i}: url missing or not http(s)")
+            try:
+                _dt.date.fromisoformat(str((s or {}).get("source_date")))
+            except ValueError:
+                p.append(f"source {i}: source_date is not YYYY-MM-DD")
+    sells = rec.get("sells_new_cars_us")
+    if not isinstance(sells, bool):
+        p.append("sells_new_cars_us must be true or false")
+    elif rec.get("decision") != ("live" if sells else "cell_d"):
+        p.append(f"decision must be {'live' if sells else 'cell_d'!r} when sells_new_cars_us is {sells}")
+    return p
+
+
+def d7_outcome(path=D7_PATH):
+    """(fisker_defunct, record, problems). fisker_defunct is None while D7 is pending (no record / invalid)."""
+    path = Path(path)
+    if not path.exists():
+        return None, None, [f"D7 pending: no record at {path.name}"]
+    try:
+        rec = json.loads(path.read_text(encoding="utf-8"))
+    except ValueError as e:
+        return None, None, [f"D7 record unreadable: {e}"]
+    probs = validate_d7(rec)
+    if probs:
+        return None, rec, probs
+    return (not rec["sells_new_cars_us"]), rec, []
+
+
+def fisker_in_probes(choice_rows):
+    """True if Fisker is on any LIST shown to a model (i.e. the probe file was built with Fisker live)."""
+    return any("Fisker" in (d.get("order") or []) for d in choice_rows if d.get("condition") == "LIST")
+
 
 # section 3.5 prompts. DECISION NEEDED (whitespace): the manuscript gives the prompts as Markdown block quotes;
 # here the CHOICE line and the option bullets are on their own lines ("\n"), and one blank line separates the

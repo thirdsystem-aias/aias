@@ -1037,6 +1037,30 @@ def gates_guard(path=None):
     return why
 
 
+def d7_guard(d7_path=None, probes=None, raw_path=None):
+    """r3 task 5, D7 (Fisker): a valid logged D7 record must exist; the probe file must match its outcome (Fisker on
+    the LIST options iff it is live); and the check must be dated before the first request in the raw file.
+    -> fisker_defunct. The check itself is not made here (an AI check with a dated source, outside Stage 1 code)."""
+    import datetime as _dt
+    import build_probes_v0_46 as BP
+    defunct, rec, probs = BP.d7_outcome(BP.D7_PATH if d7_path is None else d7_path)
+    if defunct is None:
+        raise Refused("D7 (Fisker) not settled: " + "; ".join(probs))
+    cho = [p for p in (load_probes() if probes is None else probes) if p.get("part") == "choice"]
+    if BP.fisker_in_probes(cho) == defunct:
+        raise Refused(f"probe file does not match D7: Fisker {'is' if defunct else 'is not'} Cell D but "
+                      f"{'appears' if defunct else 'does not appear'} on the LIST options (rebuild with "
+                      f"build_probes_v0_46.py{' --fisker-defunct' if defunct else ''})")
+    rp = Path(RAW_PATH if raw_path is None else raw_path)
+    if rp.exists():
+        starts = [json.loads(ln).get("started_utc") for ln in open(rp, encoding="utf-8") if ln.strip()]
+        starts = sorted(s for s in starts if s)
+        checked = _dt.datetime.fromisoformat(rec["checked_utc"].replace("Z", "+00:00"))
+        if starts and _dt.datetime.fromisoformat(starts[0].replace("Z", "+00:00")) <= checked:
+            raise Refused(f"D7 check ({rec['checked_utc']}) is not before the first request ({starts[0]})")
+    return defunct
+
+
 def window_guard(state_path=None, now=None):
     """Section 3.8: the window's dates are recorded in the budget state file before the first call
     ({"window": {"start_utc": ISO}}); no request before the start, none after start + 72 h. -> hard end."""
@@ -1124,6 +1148,7 @@ def run(approve_past_80=None, approve_projection=None, log=print):
     verify_probes()
     commit = lock_guard()
     gates_guard()
+    d7_guard()
     panel = panel_guard()
     WINDOW_HARD_END = window_guard()
     other_collection_guard()

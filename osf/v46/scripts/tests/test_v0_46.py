@@ -884,5 +884,67 @@ class TestSpiritsJudge(unittest.TestCase):
         self.assertIn("REFUSED", r.stderr)
 
 
+# =========================================================================== r3 task 5: D7 (Fisker)
+class TestD7Fisker(unittest.TestCase):
+    GOOD = {"unit": "Fisker", "question": "Does Fisker sell new cars in the US as of the check date?",
+            "checked_utc": "2026-12-01T15:00:00+00:00", "method": "ai_check_dated_source",
+            "checker": "claude-fable-5-2", "sells_new_cars_us": False, "decision": "cell_d",
+            "sources": [{"url": "https://example.org/fisker-status", "title": "t", "source_date": "2026-11-30"}]}
+
+    def _write(self, rec):
+        p = Path(tempfile.mkdtemp()) / "d7.json"
+        p.write_text(json.dumps(rec), encoding="utf-8")
+        return p
+
+    def test_validate(self):
+        self.assertEqual(B.validate_d7(self.GOOD), [])
+        self.assertEqual(B.validate_d7(dict(self.GOOD, sells_new_cars_us=True, decision="live")), [])
+        for bad in (dict(self.GOOD, method="manual"), dict(self.GOOD, sources=[]),
+                    dict(self.GOOD, sources=[{"url": "ftp://x", "source_date": "2026-11-30"}]),
+                    dict(self.GOOD, sources=[{"url": "https://x.org", "source_date": "Nov 30"}]),
+                    dict(self.GOOD, checked_utc="2026-12-01T15:00:00"), dict(self.GOOD, decision="live"),
+                    dict(self.GOOD, sells_new_cars_us="no"), dict(self.GOOD, checker=""), dict(self.GOOD, unit="X")):
+            with self.subTest(bad=bad):
+                self.assertNotEqual(B.validate_d7(bad), [])
+
+    def test_outcome_and_pending(self):
+        self.assertIsNone(B.d7_outcome(Path(tempfile.mkdtemp()) / "none.json")[0])
+        self.assertIsNone(B.d7_outcome(self._write(dict(self.GOOD, method="manual")))[0])
+        self.assertTrue(B.d7_outcome(self._write(self.GOOD))[0])
+        self.assertFalse(B.d7_outcome(self._write(dict(self.GOOD, sells_new_cars_us=True, decision="live")))[0])
+        if not B.D7_PATH.exists():                                           # Stage 1 code: D7 still pending
+            self.assertIsNone(B.d7_outcome()[0])
+
+    def test_guard(self):
+        import acquire_v0_46 as A
+        nores = Path(tempfile.mkdtemp()) / "raw.jsonl"
+        with self.assertRaises(A.Refused):                                   # pending
+            A.d7_guard(Path(tempfile.mkdtemp()) / "none.json", raw_path=nores)
+        live = self._write(dict(self.GOOD, sells_new_cars_us=True, decision="live"))
+        self.assertFalse(A.d7_guard(live, raw_path=nores))                   # committed probes have Fisker live
+        with self.assertRaises(A.Refused):                                   # Cell D, but the probes show Fisker
+            A.d7_guard(self._write(self.GOOD), raw_path=nores)
+        _body, cho, _pred = B.build(fisker_defunct=True)
+        self.assertFalse(B.fisker_in_probes(cho))
+        self.assertTrue(A.d7_guard(self._write(self.GOOD), probes=cho, raw_path=nores))
+        nores.write_text(json.dumps({"started_utc": "2026-12-01T14:00:00+00:00"}) + "\n", encoding="utf-8")
+        with self.assertRaises(A.Refused):                                   # check dated after the first request
+            A.d7_guard(self._write(self.GOOD), probes=cho, raw_path=nores)
+
+    def test_coder_after_d7(self):
+        rec = {"condition": "OPEN", "category": "cars", "text": "x\nCHOICE: Fisker"}
+        self.assertEqual(C.code_answer(rec)["code"], "VALID")
+        got = C.code_answer(rec, live=B.live_units(fisker_defunct=True))
+        self.assertEqual((got["code"], got["unit"]), ("DEFUNCT", "Fisker"))
+        self.assertEqual(len(B.live_units(True)["cars"]) + 1, len(B.live_units()["cars"]))
+
+    def test_run_calls_d7_guard_before_panel(self):
+        import acquire_v0_46 as A
+        import inspect
+        src = inspect.getsource(A.run)
+        self.assertLess(src.index("d7_guard()"), src.index("panel_guard()"))
+        self.assertLess(src.index("d7_guard()"), src.index("require_keys_v46()"))
+
+
 if __name__ == "__main__":
     unittest.main()
