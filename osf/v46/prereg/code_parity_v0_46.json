@@ -1,0 +1,141 @@
+{
+ "G1": {
+  "examples": [],
+  "max_abs_diff": 0.0,
+  "mismatches": 0,
+  "passes": true,
+  "tolerance": 1e-09,
+  "units_compared": 93,
+  "with_P": 93
+ },
+ "G1_v46_subset": {
+  "examples": [],
+  "max_abs_diff": 0.0,
+  "mismatches": 0,
+  "passes": true,
+  "tolerance": 1e-09,
+  "units_compared": 79,
+  "with_P": 79
+ },
+ "G2": {
+  "examples": [],
+  "mismatches": 0,
+  "orientation": {
+   "examples": [],
+   "mismatches": 0,
+   "passes": true
+  },
+  "passes": true,
+  "rated_but_not_stored": [],
+  "rated_units_compared": 71
+ },
+ "G2_v46_subset": {
+  "examples": [],
+  "mismatches": 0,
+  "orientation": {
+   "examples": [],
+   "mismatches": 0,
+   "passes": true
+  },
+  "passes": true,
+  "rated_but_not_stored": [],
+  "rated_units_compared": 60
+ },
+ "answers_in_analysis_set": 540,
+ "both_pass": true,
+ "code_sha256": {
+  "osf/v46/scripts/predictors_v0_46.py": "e47363194b3e54c82900de9e06edb34a23b673209b7c489622114ef4c1858949",
+  "osf/v46/scripts/ref_v1_14/score_v1_10.py": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+  "osf/v46/scripts/ref_v1_14/score_v1_14.py": "b087fc818105710079e8fea3c8c279373f787efe48c62cbccdcfb0392e1484ce"
+ },
+ "created_utc": "2026-11-22T05:14:44+00:00",
+ "gates": "G1/G2 code parity (stage1_manuscript_r1.md 3.4)",
+ "inputs_read": {
+  "3129674:osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json": {
+   "bytes": 61333,
+   "git_blob": "7264c410d5921c5989fb2b4a9cdbe592243373c3",
+   "sha256": "4de97fea86fd7c74f990ba4bdecd43c19aa52afc60278676624374a164f68e2f",
+   "source": "git:3129674a6c2cca64e56cd0f6696e9ab21b385a9a"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_a.csv": {
+   "bytes": 5531,
+   "git_blob": "e1d8005826d9236352523b140a5f7a8a84409cff",
+   "sha256": "f88da1797d6df48b423469d7da3eaac4531c31a5d89cd208ed279b47b17703b5",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v19_phase_b.csv": {
+   "bytes": 203365,
+   "git_blob": "7fb571b51eac6e408eb4e48440b07bd9aa4b3ad7",
+   "sha256": "347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_a.csv": {
+   "bytes": 6811,
+   "git_blob": "5b44cef6f63cc590ad3074a4799cfdbba4846150",
+   "sha256": "9193c5fe190ba236e33b64bd9bbb4a1a2cbbf00a905cb4486173a654eb274f5d",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v20_phase_b.csv": {
+   "bytes": 193285,
+   "git_blob": "5f765d9853c94bc0456531615a1bf384a3a65cdf",
+   "sha256": "4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_a.csv": {
+   "bytes": 7028,
+   "git_blob": "99cf93cc7478b780170a8f27198e04753b8768b2",
+   "sha256": "d0ec707ccbe8776281e7032ffb27a784b58bed8d2c1e146ec07c1b9d5f3b723d",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v21_phase_b.csv": {
+   "bytes": 200953,
+   "git_blob": "feb9d5f6297f98d6cff35b2f2237660b53dfc733",
+   "sha256": "2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_a.csv": {
+   "bytes": 6590,
+   "git_blob": "f627bddc9342fadb188e0c9339b34dc62bd08928",
+   "sha256": "70895b1e3a149446c59eafbac96f50e4e72ff301726317b15c4729cc14efd19a",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v22_phase_b.csv": {
+   "bytes": 185185,
+   "git_blob": "8dc39b9d39645658bf4786ff96258dd040a84126",
+   "sha256": "eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_a.csv": {
+   "bytes": 5360,
+   "git_blob": "696e53af0627a5e5e523c96267238908fb39f3a8",
+   "sha256": "52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/coded/v23_phase_b.csv": {
+   "bytes": 190153,
+   "git_blob": "7f379235ecdc851f62acf14f15d0b63b68389bbb",
+   "sha256": "1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2",
+   "source": "git:v0.42-scoring-locked"
+  },
+  "v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl": {
+   "bytes": 5356607,
+   "git_blob": "26de00942a0bc4f27c3506f1d5f7be895cd6a4aa",
+   "sha256": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+   "source": "git:v0.42-scoring-locked"
+  }
+ },
+ "panel": [
+  "claude-fable-5-2",
+  "gpt-6-astra",
+  "gemini-4-argon"
+ ],
+ "phase": "v0.46",
+ "pi_hat_vs_v042_brand_table": {
+  "agrees": true,
+  "examples": [],
+  "mismatches": 0,
+  "units": 112
+ },
+ "stage1_commit": "3129674a6c2cca64e56cd0f6696e9ab21b385a9a",
+ "t4_tag": "v0.42-scoring-locked"
+}

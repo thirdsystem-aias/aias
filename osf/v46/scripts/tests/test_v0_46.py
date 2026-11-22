@@ -428,5 +428,73 @@ class TestPredictors(unittest.TestCase):
             PR.compute([], [], [], ["a", "a"], subs=("v0.20",), registries=self.regs)
 
 
+# =========================================================================== gates G1/G2 (task 2)
+import gates_v0_46 as G  # noqa: E402
+import subprocess  # noqa: E402
+import tempfile  # noqa: E402
+
+
+class TestGates(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.regs = PR.load_registries(("v0.20",))
+        raw, ca, cb = synthetic_predictor_world()
+        cls.pred, meta = PR.compute(raw, ca, cb, SYN_MODELS, subs=("v0.20",), registries=cls.regs)
+        cls.rows = PR.V114.wave_rows(meta["_infos"], PR.RULE, PR.COND)
+        cls.stored = [{"substrate": s, "brand": b, "P_S0": v["P"], "rated_S0": v["rated"],
+                       "n_ranked_S0": v["n_ranked"], "R_star_S0": v["R_star"]}
+                      for (s, b), v in cls.pred.items() if v["n_ranked"] > 0]
+
+    def test_pass_on_identical(self):
+        self.assertTrue(G.g1(self.pred, self.stored)["passes"])
+        r = G.g2(self.pred, self.stored, self.rows)
+        self.assertTrue(r["passes"])
+        self.assertEqual(r["rated_units_compared"], 3)
+
+    def test_g1_fails_on_drift(self):
+        st = [dict(u) for u in self.stored]
+        st[0]["P_S0"] = (st[0]["P_S0"] or 0.0) + 1e-6
+        self.assertFalse(G.g1(self.pred, st)["passes"])
+        st[0]["P_S0"] = self.stored[0]["P_S0"] + 1e-12 if self.stored[0]["P_S0"] is not None else None
+        self.assertTrue(G.g1(self.pred, st)["passes"])
+
+    def test_g2_fails_on_value_rated_set_or_orientation(self):
+        st = [dict(u) for u in self.stored]
+        k = [i for i, u in enumerate(st) if u["rated_S0"]][0]
+        st[k]["R_star_S0"] = st[k]["R_star_S0"] - 1
+        self.assertFalse(G.g2(self.pred, st, self.rows)["passes"])
+        st = [dict(u) for u in self.stored]
+        st[k]["rated_S0"] = False
+        self.assertFalse(G.g2(self.pred, st, self.rows)["passes"])
+        flipped = {u: dict(v, R_star=(-v["R_star"] if v["R_star"] is not None else None))
+                   for u, v in self.pred.items()}
+        st = [dict(u, R_star_S0=flipped[(u["substrate"], u["brand"])]["R_star"]) for u in self.stored]
+        r = G.g2(flipped, st, self.rows)
+        self.assertFalse(r["orientation"]["passes"])
+        self.assertFalse(r["passes"])
+
+    def test_green_refuses(self):
+        with tempfile.TemporaryDirectory() as d:
+            p = Path(d) / "gates.json"
+            self.assertFalse(G.green(p)[0])                                   # no file
+            p.write_text(json.dumps({"both_pass": False, "code_sha256": G.code_fingerprint()}))
+            self.assertFalse(G.green(p)[0])                                   # a gate failed
+            p.write_text(json.dumps({"both_pass": True, "code_sha256": {"x": "y"}}))
+            self.assertFalse(G.green(p)[0])                                   # code changed since
+            p.write_text(json.dumps({"both_pass": True, "code_sha256": G.code_fingerprint()}))
+            self.assertTrue(G.green(p)[0])
+
+    def test_gates_on_t4_archive(self):
+        """G1/G2 on t4's archived files (git only; no API). Skipped if the tag is not in this clone."""
+        r = subprocess.run(["git", "-C", str(G.ROOT), "rev-parse", "-q", "--verify", f"refs/tags/{G.T4_TAG}"],
+                           capture_output=True)
+        if r.returncode != 0:
+            self.skipTest(f"tag {G.T4_TAG} not available")
+        res = G.run_gates(log=lambda *_a: None)
+        self.assertTrue(res["G1"]["passes"], res["G1"]["examples"])
+        self.assertTrue(res["G2"]["passes"], res["G2"]["examples"])
+        self.assertTrue(res["both_pass"])
+
+
 if __name__ == "__main__":
     unittest.main()
