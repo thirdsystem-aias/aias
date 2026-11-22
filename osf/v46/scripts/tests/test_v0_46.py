@@ -795,5 +795,38 @@ class TestDescriptives68(unittest.TestCase):
         self.assertNotIn("8_answer_form_and_cost", S.score(recs, pred, draws=FAST, with_sens=False)["descriptives"])
 
 
+# =========================================================================== r3 task 3: v0.42's coder on v46_raw
+import code_predictors_v0_46 as CP  # noqa: E402
+
+
+class TestV42CoderOnV46Raw(unittest.TestCase):
+    def test_locked_coder_pinned(self):
+        self.assertEqual(CP.verify_coder(), "2d36735d512cf9e13b74010ba5a7f655fc7de0bc")
+        tmp = Path(tempfile.mkdtemp()) / "code_t4_v0_42.py"
+        tmp.write_bytes(CP.V42_CODER.read_bytes() + b"\n# edited\n")
+        with self.assertRaises(CP.CoderHalt):
+            CP.verify_coder(tmp)
+
+    def test_keyless_env(self):
+        env = CP.keyless_env({"PATH": "/bin", "ANTHROPIC_API_KEY": "x", "OPENAI_API_KEY": "y", "GEMINI_API_KEY": "z",
+                              "GOOGLE_APPLICATION_CREDENTIALS": "f", "HF_TOKEN": "t", "HOME": "/h"})
+        self.assertEqual(env, {"PATH": "/bin", "HOME": "/h"})
+
+    def test_predictor_lines_only(self):
+        raw = [{"part": "predictor", "phase": "A", "condition": "S0"},
+               {"part": "choice", "phase": "v0.46", "condition": "LIST"},
+               {"phase": "B", "condition": "S0"}, {"phase": "v0.46", "condition": "OPEN"}]
+        self.assertEqual(len(CP.predictor_lines(raw)), 2)
+
+    def test_judge_refused_and_no_api_import(self):
+        self.assertEqual(CP.main(["--judge"]), 2)
+        src = Path(CP.__file__).read_text(encoding="utf-8")
+        self.assertNotIn("import anthropic", src)
+        self.assertNotIn('"--judge"]', src)
+
+    def test_dry_run_on_fixture(self):
+        self.assertEqual(CP.dry_run(log=lambda *_a: None), [])
+
+
 if __name__ == "__main__":
     unittest.main()
