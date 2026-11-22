@@ -1,0 +1,70 @@
+{
+  "AQ1": {
+    "units": 40,
+    "unresolved": 0,
+    "none": 0,
+    "passed": true
+  },
+  "AQ2": {
+    "units_with_domain": 40,
+    "p1_status_200": 37,
+    "share_status_200": 0.925,
+    "p1_outcome_ok": 37,
+    "share_outcome_ok": 0.925,
+    "flag_below_0_80": false,
+    "outcomes": {
+      "blocked": 3,
+      "ok": 37
+    }
+  },
+  "AQ3": {
+    "pages_parsed": 37,
+    "ld_blocks": 37,
+    "ld_parse_errors": 0
+  },
+  "AQ4": {
+    "basis": "indicators (1)-(5) from P1 alone in both passes",
+    "units_ok_in_both": 37,
+    "changed": 1,
+    "share_changed": 0.02702702702702703,
+    "units_changed": [
+      "v19|B1"
+    ]
+  },
+  "S_KG": {
+    "statistic": "rho_w(SDRI_kg, G*), one-sided; units with SDRI_kg and a rated G* (P1 failures included)",
+    "seed": 113009,
+    "leg": {
+      "n": 40,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 8,
+        "v20": 8,
+        "v21": 8,
+        "v22": 8,
+        "v23": 8
+      },
+      "dropped_substrates": {},
+      "seed": 113009,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.4920381731865746,
+      "p": 0.0014998500149985001,
+      "ci90": {
+        "level": 90.0,
+        "lo": 0.24061573613266,
+        "hi": 0.6678235770941955,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      }
+    },
+    "band_reading_H7": "CONFIRMED",
+    "gating": false,
+    "note": "sensitivity named in protocol section 5; reported beside H7, never a verdict"
+  },
+  "synthetic_fixture": {
+    "scenario": "downgraded_h6",
+    "note": "SYNTHETIC: audit_checks_v1_13.run on synthetic records built from the scenario's SDRI table; see make_checks_fixtures_v1_13.py"
+  }
+}

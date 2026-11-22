@@ -231,6 +231,99 @@ def md_table(header, rows, align=None):
     return "\n".join(lines)
 
 
+OUTCOME_WORDS = {"blocked": "blocked by the site",
+                 "robots_unavailable": "not requested because the site's `robots.txt` could not be read (server "
+                                       "error or timeout)",
+                 "robots_disallowed": "disallowed by `robots.txt`", "error": "not fetched because of an error",
+                 "too_many_redirects": "redirected too many times"}
+
+
+def audit_checks(val, src, collected, has_checks, synthetic):
+    """Part II checks AQ1-AQ4 (protocol §6, DEVIATIONS Entry 2), pass 2 (Entry 16), the share of brands whose home
+    page could not be fetched (protocol §5, > 0.20 flagged) and sensitivity S-KG (protocol §5, Entry 1), all read from
+    audit/v1_13_audit_checks.json, the pass windows and the SDRI table. Reported only; no verdict reads them."""
+    if not has_checks:
+        val.word("AUDIT_CHECKS_PARAGRAPH", "", ["audit (checks not given)"])
+        val.word("S_KG_SENTENCE", "", ["audit (checks not given)"])
+        return
+    A = ["checks"]
+    ck = src["audit"]["checks"]
+    aq1, aq2 = ck["AQ1"], ck["AQ2"]
+    u1 = val.put("AQ1_UNITS", "audit", A + ["AQ1", "units"], VV.i0)
+    un1 = val.put("AQ1_UNRES", "audit", A + ["AQ1", "unresolved"], VV.i0)
+    no1 = val.put("AQ1_NONE", "audit", A + ["AQ1", "none"], VV.i0)
+    s1 = (f"AQ1 {'passed' if aq1.get('passed') else 'failed'}: each of the {u1} brand units had a row in the domain "
+          f"list; {un1} were unresolved and {no1} had no own domain{' (the defunct brands)' if aq1.get('none') else ''}.")
+    n2 = val.put("AQ2_N", "audit", A + ["AQ2", "units_with_domain"], VV.i0)
+    k2 = val.put("AQ2_200", "audit", A + ["AQ2", "p1_status_200"], VV.i0)
+    sh2 = val.put("AQ2_SHARE", "audit", A + ["AQ2", "share_status_200"], VV.r3)
+    others = []
+    for o in sorted(aq2.get("outcomes") or {}):
+        if o == "ok":
+            continue
+        c = val.put(f"AQ2_OUT_{o}", "audit", A + ["AQ2", "outcomes", o], VV.i0)
+        others.append(f"{c} {'was' if c == '1' else 'were'} {OUTCOME_WORDS.get(o, o.replace('_', ' '))}")
+    flag = bool(aq2.get("flag_below_0_80"))
+    s2 = (f"AQ2: the home page returned status 200 for {k2} of the {n2} brands with an own domain ({sh2}), "
+          + ("**below 0.80, so the audit is flagged**" if flag else "at or above 0.80, so the audit is not flagged")
+          + (f"; of the other home pages, {VV.joinand(others)}." if others else "."))
+    rows_s = src["sdri"]["rows"]
+    aud = [(i, r) for i, r in enumerate(rows_s) if str(r.get("phantom")) != "1"]
+    refs = [("sdri", ["rows", i, "SDRI"]) for i, _ in aud]
+    nm = val.derive("SDRI_NOTRATED_N", VV.d_count_missing, refs, VV.i0)
+    shm = val.derive("SDRI_NOTRATED_SHARE", VV.d_share_missing, refs, VV.pct0)
+    over = VV.d_share_missing(*[r.get("SDRI") for _, r in aud]) > 0.20 if aud else False
+    s2b = (f"SDRI was therefore not rated for {nm} of the {val.vals['SDRI_N_AUDITED']} ({shm}), "
+           + ("above the 0.20 at which protocol §5 flags this share (flagged); "
+              if over else "at or below the 0.20 at which protocol §5 flags this share; ")
+           + "they enter H7 only through the SDRI$_{\\text{kg}}$ sensitivity below.")
+    pg = val.put("AQ3_PAGES", "audit", A + ["AQ3", "pages_parsed"], VV.i0)
+    bl = val.put("AQ3_BLOCKS", "audit", A + ["AQ3", "ld_blocks"], VV.i0)
+    er = val.put("AQ3_ERRORS", "audit", A + ["AQ3", "ld_parse_errors"], VV.i0)
+    s3 = f"AQ3: pass 1 parsed {pg} pages holding {bl} JSON-LD blocks, of which {er} failed to parse."
+    aq4 = ck.get("AQ4") or {}
+    if "units_ok_in_both" in aq4:
+        if "window_pass2" in src["audit"] and "window_pass1" in src["audit"]:
+            t2 = val.put("PASS2_START", "audit", ["window_pass2", "start_utc"], VV.utc16)
+            gap = val.derive("PASS2_GAP", VV.d_hours_between, [("audit", ["window_pass1", "start_utc"]),
+                                                              ("audit", ["window_pass2", "start_utc"])], VV.dh)
+            when = (f"once, starting {t2}, {gap} after pass 1 began. The date the protocol sets (7 days after pass 1 "
+                    f"began) fell inside the period without requests, so pass 2 ran after that period ended "
+                    f"(DEVIATIONS Entry 16)")
+        else:
+            when = "once [synthetic run: pass windows not read]" if synthetic else "once"
+        b4 = val.put("AQ4_BOTH", "audit", A + ["AQ4", "units_ok_in_both"], VV.i0)
+        c4 = val.put("AQ4_CHANGED", "audit", A + ["AQ4", "changed"], VV.i0)
+        sh4 = _opt(val, "AQ4_SHARE", "audit", A + ["AQ4", "share_changed"], VV.pct0)
+        s4 = (f"AQ4: pass 2 re-fetched the home page only, {when}. Of the {b4} brands whose home page was fetched in both passes, {c4} ({sh4}) changed in "
+              f"indicators (1)--(5) read from the home page alone. Pass 2 enters no verdict: Stage C2 had already run "
+              f"on pass 1.")
+    else:
+        s4 = "AQ4 was not computed: pass 2 records were not given."
+    val.word("AUDIT_CHECKS_PARAGRAPH",
+             "**Audit checks (protocol §6; reported only, DEVIATIONS Entry 2).** " + " ".join([s1, s2, s2b, s3, s4]),
+             ["audit", "checks", "AQ1-AQ4", "window_pass1/2", "sdri"])
+    kg = ck.get("S_KG") or {}
+    if "leg" in kg:
+        L = A + ["S_KG", "leg"]
+        n = val.put("SKG_N", "audit", L + ["n"], VV.i0)
+        ns = val.put("SKG_NSUB", "audit", L + ["n_substrates"], VV.i0)
+        rho = val.put("SKG_RHO", "audit", L + ["rho_w"], VV.r3)
+        lo = val.put("SKG_LO", "audit", L + ["ci90", "lo"], VV.r3)
+        hi = val.put("SKG_HI", "audit", L + ["ci90", "hi"], VV.r3)
+        p = val.put("SKG_P", "audit", L + ["p"], VV.p4)
+        band = kg["band_reading_H7"]
+        val.word("S_KG_SENTENCE",
+                 f"Beside H7, the sensitivity named in protocol §5 (DEVIATIONS Entry 1) correlates SDRI$_{{\\text{{kg}}}}$ "
+                 f"(indicators (6)--(8) alone) with G\\*, including brands whose home page could not be fetched: across "
+                 f"{n} brands in {ns} categories, $\\rho_w(\\text{{SDRI}}_{{\\text{{kg}}}}, G^*) = {rho}$ (90% interval "
+                 f"{lo} to {hi}; one-sided $p = {p}$). Under H7's bands this reads {band}; it is a sensitivity, "
+                 f"reported beside H7 and never a verdict, and H7 stays **{val.vals['H7_WORD']}**.",
+                 ["audit", "checks", "S_KG", "band_reading_H7"])
+    else:
+        val.word("S_KG_SENTENCE", "", ["audit", "checks", "S_KG (not computed)"])
+
+
 def compute(src, synthetic, fig_dir, ctx):
     """ctx: prereg_commit, prereg_tag_utc, part2_locked, part2_commit, receipt_utc, deviations (sentence, status,
     basis), coi_cheil."""
@@ -463,7 +556,7 @@ def compute(src, synthetic, fig_dir, ctx):
     else:
         cases["CASE_PART2"] = "LOCKED_NOT_COLLECTED" if ctx["part2_locked"] else "NOT_LOCKED"
     if ctx["part2_locked"]:
-        val.word("PART2_TITLE_LINE", f"\\texttt{{v1.13-audit-r1}} (commit \\texttt{{ {ctx['part2_commit']} }})",
+        val.word("PART2_TITLE_LINE", f"\\texttt{{v1.13-audit-r1}} (commit \\texttt{{{ctx['part2_commit']}}})",
                  ["git", "refs/tags/v1.13-audit-r1"])
         val.word("PART2_LOCK_SENTENCE",
                  f"Part II was locked separately at tag `v1.13-audit-r1` (commit `{ctx['part2_commit']}`) with its own "
@@ -477,6 +570,11 @@ def compute(src, synthetic, fig_dir, ctx):
                  if c2 is not None else "Part II had not been locked when Stage C1 ran.",
                  ["git", "refs/tags/v1.13-audit-r1 (absent)"])
     rows_s = src["sdri"]["rows"]
+    ck = (src.get("audit") or {}).get("checks")
+    has_checks = collected and ck is not None
+    flags["AUDIT_CHECKS"] = has_checks
+    flags["AQ2_FLAG"] = bool(has_checks and (ck.get("AQ2") or {}).get("flag_below_0_80"))
+    flags["S_KG"] = bool(has_checks and "leg" in (ck.get("S_KG") or {}))
     if collected:
         aud = [r for r in rows_s if str(r.get("phantom")) != "1"]
         idx = {id(r): i for i, r in enumerate(rows_s)}
@@ -487,11 +585,12 @@ def compute(src, synthetic, fig_dir, ctx):
         n_sd = val.derive("SDRI_RATED", VV.d_count, [P(r, "SDRI") for r in aud], VV.i0)
         med = val.derive("SDRI_MEDIAN", VV.d_median, [P(r, "SDRI") for r in aud], VV.f1)
         flag = float(sum(1 for r in aud if r.get("p1_outcome") == "ok")) / len(aud) < 0.80 if aud else False
+        fetched = "" if has_checks else (
+            f" the home page was fetched for {n_ok} ({sh_ok}"
+            + (", below the 80% at which AQ2 flags the audit)," if flag else "; AQ2 flags a share below 80%),"))
         val.word("SDRI_SENTENCE",
-                 f"Part II's first pass recorded {n_aud} brands with an own domain; the home page was fetched for {n_ok} "
-                 f"({sh_ok}{', below the 80% at which AQ2 flags the audit' if flag else '; AQ2 flags a share below 80%'}), "
-                 f"SDRI was rated for {n_sd}, and the median SDRI was {med}. The table gives the indicators per "
-                 f"category.",
+                 f"Part II's first pass recorded {n_aud} brands with an own domain;{fetched} SDRI was rated for {n_sd}, "
+                 f"and the median SDRI was {med}. The table gives the indicators per category.",
                  ["sdri", "rows"])
         cl = Cells(val)
         rows = []
@@ -514,6 +613,7 @@ def compute(src, synthetic, fig_dir, ctx):
     else:
         val.word("SDRI_SENTENCE", "", ["sdri (not collected)"])
         val.word("TABLE_SDRI", "", ["sdri (not collected)"])
+    audit_checks(val, src, collected, has_checks, synthetic)
 
     # ---------------- legs table
     cl = Cells(val)
@@ -603,6 +703,8 @@ def compute(src, synthetic, fig_dir, ctx):
             val.derive(nm, fn, refs, VV.r3)
         else:
             val.word(nm, DASH, ["verdicts", "sensitivities", "S8 (not computed)"])
+    val.word("S8_REL_CLAUSE", f"and rel3 from {val.vals['S8_REL_LO']} to {val.vals['S8_REL_HI']}" if q8 else
+             "while rel3 could not be computed with any category left out", ["verdicts", "sensitivities", "S8", "rel3"])
 
     # ---------------- appendix: per-brand table
     cl = Cells(val)
@@ -669,7 +771,7 @@ def deviations_text(synthetic):
     if n:
         ent = f"{n} entr{'y' if n == 1 else 'ies'} after the lock"
         return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns.",
-                f"deviations recorded in `{rel}` ({ent}).", [rel])
+                f"deviations recorded in the deviations log under `osf/methodology/v1_13/` ({ent}).", [rel])
     return (f"No deviation after the lock is recorded in `{rel}` (its Entries 0 and 0a were written before the lock).",
             f"no deviation after the lock (`{rel}`).", [rel])
 
@@ -724,9 +826,28 @@ def synthetic_context(V):
             "receipt_utc": "synthetic run: receipt not read"}
 
 
+def check_audit_inputs(src, verdicts, sdri):
+    """Real mode: the checks file must have been computed (not test_only) from the very SDRI table and verdict file
+    the paper reads (SHA-256 recorded by audit_checks_v1_13.py)."""
+    import hashlib
+    ck = (src.get("audit") or {}).get("checks")
+    if ck is None:
+        return
+    inp = ck.get("inputs") or {}
+    if inp.get("test_only") is not False:
+        raise FillError("the audit checks file is a test-only run (inputs.test_only is not false)")
+    for key, path in (("sdri", sdri), ("verdicts", verdicts)):
+        want = (inp.get(key) or [None, None])[1]
+        got = hashlib.sha256(Path(path).read_bytes()).hexdigest() if path else None
+        if want != got:
+            raise FillError(f"the audit checks file was computed from another {key} file ({want} != {got})")
+
+
 def fill(verdicts, sdri=None, out=None, fig_dir=None, synthetic=False, interim=False, coi_cheil=False,
-         template=TEMPLATE):
-    src = VV.load_sources(verdicts, sdri)
+         template=TEMPLATE, checks=None):
+    src = VV.load_sources(verdicts, sdri, checks_path=checks)
+    if not synthetic:
+        check_audit_inputs(src, verdicts, sdri)
     try:
         src.update(V118.load())
     except V118.InputError as e:
@@ -747,7 +868,7 @@ def fill(verdicts, sdri=None, out=None, fig_dir=None, synthetic=False, interim=F
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(text, encoding="utf-8")
-        prov = {"verdicts": str(verdicts), "sdri": str(sdri), "synthetic": synthetic, "interim": interim,
+        prov = {"verdicts": str(verdicts), "sdri": str(sdri), "checks": str(checks), "synthetic": synthetic, "interim": interim,
                 "coi_cheil": coi_cheil, "cases": cases, "flags": flags, "values": val.prov}
         Path(str(out).replace(".md", "_provenance.json")).write_text(
             json.dumps(prov, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
@@ -758,6 +879,8 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description="Fill the v1.13 Grounding Paper A template from the scorers' outputs")
     ap.add_argument("--verdicts", type=Path, default=VV.VERDICTS_JSON)
     ap.add_argument("--sdri", type=Path, default=None, help=f"Part II SDRI table (default {VV.SDRI_CSV} if it exists)")
+    ap.add_argument("--checks", type=Path, default=None,
+                    help=f"Part II audit checks (default {VV.CHECKS_JSON} if it exists and an SDRI table is read)")
     ap.add_argument("--fig-dir", default=None, help="figure directory as the paper references it "
                                                      "(default ../../reports/figs/v113, relative to papers/v1_13)")
     ap.add_argument("--out", type=Path, default=HERE / "v1_13_paper_draft.md")
@@ -769,8 +892,11 @@ def main(argv=None):
     if a.synthetic and str(a.out.resolve()).startswith(str(ROOT.resolve())):
         sys.exit("[fill v1.13] REFUSED: synthetic output must be written outside the repository")
     sdri = a.sdri if a.sdri else (VV.SDRI_CSV if (not a.synthetic and VV.SDRI_CSV.exists()) else None)
+    checks = a.checks if a.checks else (VV.CHECKS_JSON if (not a.synthetic and sdri and VV.CHECKS_JSON.exists())
+                                        else None)
     try:
-        text, val, cases, flags = fill(a.verdicts, sdri, a.out, a.fig_dir, a.synthetic, a.interim, a.coi_cheil)
+        text, val, cases, flags = fill(a.verdicts, sdri, a.out, a.fig_dir, a.synthetic, a.interim, a.coi_cheil,
+                                       checks=checks)
     except (FillError, VV.Missing) as e:
         print(f"[fill v1.13] REFUSED: {e}", file=sys.stderr)
         return 3

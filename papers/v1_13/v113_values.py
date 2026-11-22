@@ -36,6 +36,7 @@ import score_v1_13 as S  # noqa: E402  (read-only: verdict functions and constan
 PREREG_TAG, AUDIT_TAG = "v1.13-prereg-r1", "v1.13-audit-r1"
 VERDICTS_JSON = DESIGN / "v1_13_verdicts.json"
 SDRI_CSV = DESIGN / "audit" / "v1_13_sdri.csv"
+CHECKS_JSON = DESIGN / "audit" / "v1_13_audit_checks.json"   # postlock/audit_checks_v1_13.py (Entries 1, 2; pass 2: 16)
 REGISTRY_CSV = DESIGN / "registries" / "brand_domains_v1_13.csv"
 GIT_ANCHOR = DESIGN / "anchor" / "git_anchor_v1_13.json"
 AUDIT_ANCHOR = DESIGN / "anchor" / "audit_anchor_v1_13.json"
@@ -136,7 +137,18 @@ def f1(x):
     return "0.0" if s == "-0.0" else s
 
 
-FORMATS = {f.__name__: f for f in (r3, r2, p4, pct0, pct1, i0, f1)}
+def utc16(x):
+    """An ISO timestamp as 'YYYY-MM-DD HH:MM UTC'."""
+    return str(x)[:16].replace("T", " ") + " UTC"
+
+
+def dh(x):
+    """Hours as 'D days H hours' (hours rounded)."""
+    d, h = divmod(int(round(float(x))), 24)
+    return f"{d} days {h} hours"
+
+
+FORMATS = {f.__name__: f for f in (r3, r2, p4, pct0, pct1, i0, f1, utc16, dh)}
 
 
 # --------------------------------------------------------------------------- derived values (named; tests recompute)
@@ -174,7 +186,23 @@ def d_sum(*xs):
     return float(sum(float(x) for x in xs if x not in (None, "")))
 
 
-DERIVE = {f.__name__: f for f in (d_min, d_max, d_count, d_count_eq, d_share_eq, d_median, d_sum)}
+def d_count_missing(*xs):
+    """Number of missing values (NOT RATED cells)."""
+    return float(sum(1 for x in xs if x in (None, "")))
+
+
+def d_share_missing(*xs):
+    return float(sum(1 for x in xs if x in (None, ""))) / len(xs) if xs else float("nan")
+
+
+def d_hours_between(a, b):
+    """Hours from ISO timestamp a to ISO timestamp b."""
+    from datetime import datetime
+    return (datetime.fromisoformat(str(b)) - datetime.fromisoformat(str(a))).total_seconds() / 3600.0
+
+
+DERIVE = {f.__name__: f for f in (d_min, d_max, d_count, d_count_eq, d_share_eq, d_median, d_sum, d_count_missing,
+                                  d_share_missing, d_hours_between)}
 
 
 class Values:
@@ -228,11 +256,20 @@ def read_rows(path):
     return list(csv.DictReader(Path(path).read_text(encoding="utf-8").splitlines()))
 
 
-def load_sources(verdicts_path, sdri_path=None, registry_path=REGISTRY_CSV):
+def load_sources(verdicts_path, sdri_path=None, registry_path=REGISTRY_CSV, checks_path=None):
+    """checks_path: Part II audit checks (audit/v1_13_audit_checks.json); the pass windows (window_pass1.json,
+    window_pass2.json) are read from the same directory when they exist. Source 'audit' = {} without it."""
     V = json.loads(Path(verdicts_path).read_text(encoding="utf-8"))
     sdri = {"rows": read_rows(sdri_path)} if sdri_path and Path(sdri_path).exists() else {"rows": []}
     reg = {f"{r['substrate']}|{r['brand_id']}": r for r in read_rows(registry_path)}
-    return {"verdicts": V, "sdri": sdri, "registry": reg}
+    audit = {}
+    if checks_path and Path(checks_path).exists():
+        audit["checks"] = json.loads(Path(checks_path).read_text(encoding="utf-8"))
+        for k in (1, 2):
+            w = Path(checks_path).parent / f"window_pass{k}.json"
+            if w.exists():
+                audit[f"window_pass{k}"] = json.loads(w.read_text(encoding="utf-8"))
+    return {"verdicts": V, "sdri": sdri, "registry": reg, "audit": audit}
 
 
 def is_synthetic(V):
@@ -416,6 +453,20 @@ def check_consistency(src):
             n = h7_expected_n(V, rows)
             if n != c2["leg"]["n"]:
                 errs.append(f"H7 n = {c2['leg']['n']} but the SDRI table and the rated G* give {n}")
+    ck = (src.get("audit") or {}).get("checks")
+    if ck is not None:
+        if c2 is None or "leg" not in c2:
+            errs.append("audit checks were given but Stage C2 recorded Part II as not collected")
+        aq2 = ck.get("AQ2") or {}
+        if aq2.get("share_status_200") is not None and \
+                bool(aq2.get("flag_below_0_80")) != (aq2["share_status_200"] < 0.80):
+            errs.append("AQ2 flag_below_0_80 differs from share_status_200 < 0.80")
+        kg = ck.get("S_KG") or {}
+        if "leg" in kg:
+            if S.struct_gap_verdict(kg["leg"], True) != kg.get("band_reading_H7"):
+                errs.append("S_KG band_reading_H7 differs from struct_gap_verdict(leg)")
+            if kg.get("gating") is not False:
+                errs.append("S_KG is marked gating (a sensitivity never gives a verdict)")
     n_rated = sum(1 for u in V["units"].values() if u["rated"])
     if V["MQ"]["MQ5"]["n_rated"] != n_rated:
         errs.append(f"MQ5 n_rated {V['MQ']['MQ5']['n_rated']} != rated units {n_rated}")

@@ -44,7 +44,7 @@ Third System™ (research entity; data archive and methodology venue)\\[8pt]
 Correspondence: pablou@pablou.com · pablou.com\\
 ORCID: \href{https://orcid.org/0009-0003-8968-9990}{0009-0003-8968-9990}\\[20pt]
 
-Pre-registration, Part I: \texttt{v1.13-prereg-r1} (commit \texttt{ {{PREREG_COMMIT}} }; deposited on OSF before any search record was read)\\
+Pre-registration, Part I: \texttt{v1.13-prereg-r1} (commit \texttt{\ignorespaces {{PREREG_COMMIT}}\unskip}; deposited on OSF before any search record was read)\\
 Pre-registration, Part II: {{PART2_TITLE_LINE}}\\
 Data and code: OSF \texttt{ec6wh}, \texttt{methodology/v1\_13}\\
 
@@ -87,7 +87,7 @@ The structured-data audit (Part II) and the conditional legs are reported at the
 
 # 1. Introduction
 
-AI Availability --- the discoverability and representation of a brand in the outputs of large language models (LLMs) --- has been proposed as a third layer of brand availability (González Castro, 2026a) beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Sharp & Romaniuk, 2021), within the Tri-System framework (González Castro, 2026l). The AIAS programme builds the components of an AI availability score one at a time, each pre-registered and locked before it is used, on the Presence measurement protocol (González Castro, 2026b, 2026c, 2026d, 2026e). Presence is whether and how often models name a brand (Methodology v1.6: González Castro, 2026f), anchored across five categories in AIAS 1.0 (González Castro, 2026j). Consistency is how evenly the models of a panel name it: the first Consistency instrument failed its separability test because it moved with Presence (v1.7: González Castro, 2026g); its replacement measures the dispersion statistic $\varphi$ (v1.8: González Castro, 2026h), scaled to $C^*$ (v1.9: González Castro, 2026i). The AIAS 2.0 synthesis (González Castro, 2026k) showed Consistency separable from Presence: within category, $|\rho(C^*, P)|$ was 0.073, 0.082 and 0.189 at the three waves $t_1$--$t_3$, as published under the uncentred pooled-rank convention that this study replaces (pre-registration §0).
+AI Availability, the discoverability and representation of a brand in the outputs of large language models (LLMs), has been proposed as a third layer of brand availability (González Castro, 2026a) beside the Mental and Physical Availability of the Ehrenberg-Bass tradition (Sharp, 2010; Sharp & Romaniuk, 2021), within the Tri-System framework (González Castro, 2026l). The AIAS programme builds the components of an AI availability score one at a time, each pre-registered and locked before it is used, on the Presence measurement protocol (González Castro, 2026b, 2026c, 2026d, 2026e). Presence is whether and how often models name a brand (Methodology v1.6: González Castro, 2026f), anchored across five categories in AIAS 1.0 (González Castro, 2026j). Consistency is how evenly the models of a panel name it: the first Consistency instrument failed its separability test because it moved with Presence (v1.7: González Castro, 2026g); its replacement measures the dispersion statistic $\varphi$ (v1.8: González Castro, 2026h), scaled to $C^*$ (v1.9: González Castro, 2026i). The AIAS 2.0 synthesis (González Castro, 2026k) showed Consistency separable from Presence: within category, $|\rho(C^*, P)|$ was 0.073, 0.082 and 0.189 at the three waves $t_1$--$t_3$, as published under the uncentred pooled-rank convention that this study replaces (pre-registration §0).
 
 When search is on, an AI answer about a category rests on what the model's search brings back. This study names that **retrieved grounding**: which sources the search record of an answer holds, and in particular whether they include the brand's own website. A second aspect, **structured grounding**, is whether the brand's own structured data (schema.org markup on its site, a Wikidata item) is in place for those systems to find. Whether a brand is named is Presence; how evenly models name it is Consistency; where it sits in a list is Ranking. Grounding must add information none of them carries, or it is not a component (§0).
 
@@ -109,7 +109,7 @@ Presence and Consistency at $t_4$ are read from v0.42's certified scorer, not re
 
 Each source URL is normalised to a host and a registrable domain (rules U1--U6 of the frozen file `source_classes_v1_13.md`) and assigned one class by a fixed precedence: brand-owned (the domain belongs to a registry brand of the same category), Wikipedia/reference, forum/UGC, news, review/editorial, retailer, host-pattern rules, other; an unparseable source is unresolved (§2.3). The domain lists were written before any $t_4$ answer existed and were not extended after any search record was read.
 
-A brand's own domains $D_b$ come from a frozen offline list, one row per brand unit, each domain taken from a dated public record (Wikidata's official website, else the English Wikipedia infobox, else web-search results corroborated by a directory) under the decision rules D1--D6 of §2.3; nothing was looked up at analysis time. The list holds 107 resolved units and 5 with no own domain (the five defunct automotive brands of the v0.22 registry), and no unresolved unit. A unit without an own domain is not rated and is reported apart. Three units take a house or portal domain under rule D4 --- Dior Beauty (dior.com), Chanel Beauty (chanel.com) and Lagavulin (malts.com) --- so any source on those domains counts as their own; their G\* is reported with that flag (§2.3).
+A brand's own domains $D_b$ come from a frozen offline list, one row per brand unit, each domain taken from a dated public record (Wikidata's official website, else the English Wikipedia infobox, else web-search results corroborated by a directory) under the decision rules D1--D6 of §2.3; nothing was looked up at analysis time. The list holds 107 resolved units and 5 with no own domain (the five defunct automotive brands of the v0.22 registry), and no unresolved unit. A unit without an own domain is not rated and is reported apart. Three units take a house or portal domain under rule D4: Dior Beauty (dior.com), Chanel Beauty (chanel.com) and Lagavulin (malts.com); any source on those domains counts as their own; their G\* is reported with that flag (§2.3).
 
 ## 2.4 The Grounding score
 
@@ -123,7 +123,7 @@ The floor of six is the Consistency floor. For every rated brand the source mix 
 
 ## 2.5 Structured-data audit (Part II)
 
-Part II fetches at most three public pages of each brand's own site (home page, the first about page and the first product page linked from it), under `robots.txt`, at least ten seconds between requests to one host, and no request between 17 and 22 November 2026, and reads the brand's public Wikidata record (protocol §3--§4). The structured-data richness index is SDRI $= 100 \times$ (sum of eight binary indicators)/8: (1) a schema.org Organization or subtype on the home page; (2) a Brand node; (3) a Product or subtype; (4) at least one `sameAs` on an Organization or Brand node; (5) a `sameAs` to Wikidata or Wikipedia; (6) a Wikidata item (adjudicated QID); (7) that item's official website in $D_b$; (8) an English Wikipedia article linked from the item. $\text{SDRI}_{\text{site}}$ uses (1)--(5) and $\text{SDRI}_{\text{kg}}$ (6)--(8). A brand whose home page could not be fetched has SDRI not rated; the five defunct brands are audited for (6)--(8) only and never enter H7 (protocol §1, §5).
+Part II fetches at most three public pages of each brand's own site (home page, the first about page and the first product page linked from it), under `robots.txt`, at least ten seconds between requests to one host, and no request between 17 and 22 November 2026, and reads the brand's public Wikidata record (protocol §3--§4). The structured-data richness index is SDRI $= 100 \times$ (sum of eight binary indicators)/8: (1) a schema.org Organization or subtype on the home page; (2) a Brand node; (3) a Product or subtype; (4) at least one `sameAs` on an Organization or Brand node; (5) a `sameAs` to Wikidata or Wikipedia; (6) a Wikidata item (adjudicated QID); (7) that item's official website in $D_b$; (8) an English Wikipedia article linked from the item. $\text{SDRI}_{\text{site}}$ uses (1)--(5) and $\text{SDRI}_{\text{kg}}$ (6)--(8). A brand whose home page could not be fetched has SDRI not rated; the five defunct brands are audited for (6)--(8) only and never enter H7 (protocol §1, §5). Such brands enter H7 only through a sensitivity on $\text{SDRI}_{\text{kg}}$ alone, reported beside H7 and never a verdict, and their share is reported (flagged above 0.20). A second pass re-fetches the home page only, 7 days after the first began, or at the end of the period without requests if that date falls inside it; it is a stability descriptive and enters no verdict. Four checks are reported, none of which gates (protocol §6): AQ1, every brand has a domain row and none is unresolved; AQ2, the share of home pages fetched with status 200 (flagged below 0.80); AQ3, JSON-LD blocks that do not parse; AQ4, the share of brands whose indicators (1)--(5), read from the home page alone, changed between the passes.
 
 ## 2.6 Statistics
 
@@ -149,7 +149,7 @@ H3 computes $G^*_r$ per run with a floor of three grounded answers ($g_{b,r} \ge
 
 **Activation of H4--H6 (§3).** A conditional leg is active only if the pre-registration of its score was tagged and pushed before the v1.13 lock commit; it is computed at Stage C1 if its score exists then, otherwise at Stage C2, and is UNDETERMINED (score not available, handed to the second paper) if the score does not exist by Stage C2. The lock record marks H4 active (v1.14-prereg-r2, the redesigned Ranking measure), H5 inactive (no locked Sentiment score on the $t_4$ answers was tagged before the lock; v1.11's score is defined on the archived waves only) and H6 active (v1.12-prereg-r1). H4 may downgrade the gate only when v1.14's Stage 1 interim verdict is SEPARABLE; otherwise it is computed where possible and reported, and neither gates nor downgrades (§12 (g)).
 
-**Gate rule (§3).** PASS if and only if H1, H2 and H3 are all CONFIRMED --- downgraded to MARGINAL if an active secondary separability leg (H4--H6; H4 only as above) is FALSIFIED; a leg computed at Stage C2 re-issues the gate verdict with its own timestamp, downgrade only. FAIL if H1, H2 or H3 is FALSIFIED. UNDETERMINED if H1 or H2 is UNDETERMINED (published as such; the instrument goes back to design). Otherwise MARGINAL: the pre-registrant decides, on the record, whether the second paper proceeds. H7 never changes the gate.
+**Gate rule (§3).** PASS if and only if H1, H2 and H3 are all CONFIRMED, downgraded to MARGINAL if an active secondary separability leg (H4--H6; H4 only as above) is FALSIFIED; a leg computed at Stage C2 re-issues the gate verdict with its own timestamp, downgrade only. FAIL if H1, H2 or H3 is FALSIFIED. UNDETERMINED if H1 or H2 is UNDETERMINED (published as such; the instrument goes back to design). Otherwise MARGINAL: the pre-registrant decides, on the record, whether the second paper proceeds. H7 never changes the gate.
 
 ## 2.8 Quality checks and sensitivity analyses
 
@@ -167,7 +167,7 @@ Part I was locked at git tag `v1.13-prereg-r1` (commit `{{PREREG_COMMIT}}`, tagg
 
 {% if STAGE_C1_ONLY %}[Interim: only Stage C1 has run; the conditional legs and H7 are reported at Stage C2.] {% endif %}{{MQ1_N}} answered search-on records were parsed in both fields without error (MQ1), and MQ7 passed (Stage C1 halts otherwise). {{N_CAT_ANSWERS}} answered category answers of the primary panel entered G\*. {% if ANY_DROPPED %}{{DROPPED_SENTENCE}}{% else %}No model left the primary score: every model's search returned sources often enough (MQ2) and Gemini's redirect sources were resolved (MQ4; unresolved share {{MQ4_UNRES}}).{% endif %} {% if MQ2_ANY_FLAG %}MQ2 flagged {{MQ2_FLAGGED}} as "search rarely used" (below 0.25); every result is read with that flag.{% else %}No model was flagged as using search rarely (MQ2).{% endif %} Of the distinct (answer, domain) source pairs, {{MQ3_SHARE}} were classed other or unresolved (MQ3){% if MQ3_LOW %}, above 0.60, so the source-mix descriptives below are labelled **low coverage**{% else %}{% if MQ3_FLAG %}, above the 0.40 flag{% else %}, within the 0.40 flag{% endif %}{% endif %}. {% if MQ6_FLAG %}MQ6 was flagged: $\rho_w(G^*, g_b) = {{MQ6_GSTAR_G}}$, so the share partly tracks the number of grounded answers.{% else %}G\* did not track the number of grounded answers ($\rho_w(G^*, g_b) = {{MQ6_GSTAR_G}}$, MQ6), while $\rho_w(g_b, \hat\pi_{S1}) = {{MQ6_G_PI}}$.{% endif %} {% if MQ5_FAILED %}MQ5 failed: {{MQ5_ZERO_SHARE}} of rated brands had G\* = 0 (limit 80%){{MQ5_FLAT_CLAUSE}}.{% else %}{{MQ5_ZERO_SHARE}} of rated brands had G\* = 0 (MQ5 limit 80%){{MQ5_FLAT_CLAUSE}}, so MQ5 passed.{% endif %}
 
-Table: Search use and source checks per model (MQ2, MQ4) and citations per provider (MQ8).
+Table: Search use and source checks per model (MQ2, MQ4); citations (MQ8) are in Appendix B.
 
 {{TABLE_MQ}}
 
@@ -275,6 +275,11 @@ Table: Every pre-registered leg: the comparator, its role, the number of units, 
 {% switch CASE_PART2 %}
 {% case COLLECTED %}
 {{SDRI_SENTENCE}}
+{% if AUDIT_CHECKS %}
+
+{{AUDIT_CHECKS_PARAGRAPH}}
+
+{% endif %}
 {% case LOCKED_NOT_COLLECTED %}
 Part II was locked, but its audit had not been collected when Stage C2 ran, so no website data enter this paper.
 {% case NOT_LOCKED %}
@@ -292,6 +297,10 @@ H7 is **UNDETERMINED**: Part II was not collected before Stage C2, and the test 
 {% case PENDING %}
 H7 is tested at Stage C2.
 {% endswitch %}
+{% if S_KG %}
+
+{{S_KG_SENTENCE}}
+{% endif %}
 
 {% if PART2_COLLECTED %}
 Table: Structured-data audit per category: brands audited (defunct brands excluded), home pages fetched, median SDRI and the share of brands with each indicator.
@@ -303,7 +312,7 @@ Table: Structured-data audit per category: brands audited (defunct brands exclud
 
 ## 3.7 Sensitivity analyses
 
-The table below gives the gate statistics under each pre-registered sensitivity. {{SENS_CHANGES_SENTENCE}} {{S11_SENTENCE}} Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from {{S8_H1_LO}} to {{S8_H1_HI}} and rel3 from {{S8_REL_LO}} to {{S8_REL_HI}} (Appendix). {{S7_SENTENCE}} Sensitivity S6 ($D_b$ as verified by Part II) is not computed by the locked scorer's core and is not reported here.
+The table below gives the gate statistics under each pre-registered sensitivity. {{SENS_CHANGES_SENTENCE}} {{S11_SENTENCE}} Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from {{S8_H1_LO}} to {{S8_H1_HI}} {{S8_REL_CLAUSE}} (Appendix). {{S7_SENTENCE}} Sensitivity S6 ($D_b$ as verified by Part II) is not computed by the locked scorer's core and is not reported here.
 
 Table: Pre-registered sensitivity analyses (§7): $\rho_w$ of G\* with P and $C^*$ in each condition, rel3, and the gate verdict each would give; a leg verdict different from the primary one is marked with its word. Sensitivities never change a verdict.
 
@@ -342,7 +351,7 @@ Inputs: v1.18's `v1_18_results.json` (SHA-256 `{{V118_SHA_RESULTS}}`…) and `de
 {% case PASS %}
 Grounding, measured as the share of a brand's grounded answers whose retrieved sources include its own site, passed its separability gate on $t_4$: it is separable from Presence and from Consistency in both search conditions, and it orders brands reproducibly across runs. Under the plan of record a second Grounding paper may now be pre-registered; it inherits the frozen parser, class lists, $D_b$, scorer and tests (§8) and studies source coverage over waves, phantom-brand grounding, identity load and a typology. Whether G\* enters a combined score is decided in the component calibration that follows the second papers, not here.
 {% case FAIL %}
-On this instrument Grounding did not pass its gate: {{FAIL_LEGS_PLAIN}} {{FAIL_VERB}} falsified. The pre-registered consequence is that no second Grounding paper follows on G\*; the instrument goes back to design, and a redesigned score needs its own pre-registration and its own gate. The result does not show that what answers retrieve is irrelevant to AI Availability; it shows that this share, on these categories and models, does not carry information separate from {{FAIL_LEGS_PLAIN}}. The parts of the instrument that do not depend on the score --- the source classification, the domain list and the baseline of §3.2 --- remain available to a redesign.
+On this instrument Grounding did not pass its gate: {{FAIL_LEGS_PLAIN}} {{FAIL_VERB}} falsified. The pre-registered consequence is that no second Grounding paper follows on G\*; the instrument goes back to design, and a redesigned score needs its own pre-registration and its own gate. The result does not show that what answers retrieve is irrelevant to AI Availability; it shows that this share, on these categories and models, does not carry information separate from {{FAIL_LEGS_PLAIN}}. The parts of the instrument that do not depend on the score (the source classification, the domain list and the baseline of §3.2) remain available to a redesign.
 {% case MARGINAL|MARGINAL_DOWNGRADED %}
 The gate's result is intermediate: no primary leg was falsified, but not every condition for a pass was met. Under the pre-registered rule a second paper proceeds only on the pre-registrant's recorded decision, with the condition that was not met as its first confirmatory test. Until then G\* is a candidate measure reported beside Presence and Consistency, not combined with them.
 {% case UNDETERMINED_MQ5|UNDETERMINED %}
@@ -359,7 +368,7 @@ The baseline of §3.2 describes, on the newest models, what category answers ret
 
 # 5. Limitations
 
-Recognition (the $C_P$ part of P) rests on one search-off brand answer per model. Search-on answers depend on the web on the day and on each provider's search back-end; they are reproducible only as recorded. The retrieved set includes results an answer did not use, and what it holds differs by provider, so model differences mix model and tool; the cited set (S2) is what the answer attributes. Own-domain retrieval needs the brand's site to be indexed and open to crawlers, so a low G\* can reflect robots policies as much as model behaviour. $D_b$ is a declared list and can miss regional or campaign domains. The study covers five categories, one market and one language (US English). The audit reads static HTML only, so structured data injected by JavaScript is missed (§9). The verdict file does not record the hashes of its inputs ($t_4$ raw file, coder tables, brand table); they are recorded in the deposit beside it. The exploratory v1.18 section (§3.8) rests on a domain table audited by two AI coders, not by a person.{% if MQ6_FLAG %} MQ6 was flagged (§3.1).{% endif %}{% if MQ3_LOW %} The source mix is labelled low coverage (MQ3).{% endif %}
+Recognition (the $C_P$ part of P) rests on one search-off brand answer per model. Search-on answers depend on the web on the day and on each provider's search back-end; they are reproducible only as recorded. The retrieved set includes results an answer did not use, and what it holds differs by provider, so model differences mix model and tool; the cited set (S2) is what the answer attributes. Own-domain retrieval needs the brand's site to be indexed and open to crawlers, so a low G\* can reflect robots policies as much as model behaviour. $D_b$ is a declared list and can miss regional or campaign domains. The study covers five categories, one market and one language (US English). The audit reads static HTML only, so structured data injected by JavaScript is missed (§9).{% if AQ2_FLAG %} The audit fetched fewer than 80% of the brands' home pages (AQ2 flagged, §3.6); the others were blocked or had an unreadable `robots.txt`, so SDRI is missing more often for sites that refuse automated requests, and H7 rests on fewer brands than it would otherwise.{% endif %} The verdict file does not record the hashes of its inputs ($t_4$ raw file, coder tables, brand table); they are recorded in the deposit beside it. The exploratory v1.18 section (§3.8) rests on a domain table audited by two AI coders, not by a person.{% if MQ6_FLAG %} MQ6 was flagged (§3.1).{% endif %}{% if MQ3_LOW %} The source mix is labelled low coverage (MQ3).{% endif %}
 
 # 6. What a second paper inherits
 
@@ -385,7 +394,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-Materials are deposited at OSF (osf.io/ec6wh), `methodology/v1_13/`: the locked pre-registration with the source-classification rule, the audit protocol and its dry-run record, the brand-domain list and the Wikidata word list, the scorer and audit scripts with their tests and synthetic fixtures, the lock manifest, the deviations record and the anchor records (`prereg/`, `registries/`, `anchor/`; the locked Part I text is at <https://osf.io/ec6wh/files/osfstorage/6af3d7c5ca45e46a8b9d8d42>). At publication the deposit adds the verdict file (`v1_13_verdicts.json`){% if PART2_COLLECTED %}, the audit's structured-data records and SDRI table (`audit/`; raw HTML is not deposited){% endif %} and the figure sources. The code is also in the programme's GitHub repository (github.com/thirdsystem-aias/aias) at tag `v1.13-prereg-r1`.
+Materials are deposited at OSF (osf.io/ec6wh), `methodology/v1_13/`: the locked pre-registration with the source-classification rule, the audit protocol and its dry-run record, the brand-domain list and the Wikidata word list, the scorer and audit scripts with their tests and synthetic fixtures, the lock manifest, the deviations record and the anchor records (`prereg/`, `registries/`, `anchor/`; the locked Part I text is at <https://osf.io/ec6wh/files/osfstorage/6af3d7c5ca45e46a8b9d8d42>). At publication the deposit adds the verdict file (`v1_13_verdicts.json`){% if PART2_COLLECTED %}, the audit's structured-data records of both passes, the SDRI table{% if AUDIT_CHECKS %} and the audit checks{% endif %} (`audit/`{% if AUDIT_CHECKS %}, with `v1_13_audit_checks.json`{% endif %}; raw HTML is not deposited){% endif %} and the figure sources. The code is also in the programme's GitHub repository (github.com/thirdsystem-aias/aias) at tag `v1.13-prereg-r1`.
 
 # References {-}
 

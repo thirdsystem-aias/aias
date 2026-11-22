@@ -56,6 +56,11 @@ def fx(name):
     return v, (s if s.exists() else None)
 
 
+def fxc(name):
+    c = FX / f"SYNTHETIC_{name}_v1_13_audit_checks.json"
+    return c if c.exists() else None
+
+
 def load(name):
     return json.loads(fx(name)[0].read_text(encoding="utf-8"))
 
@@ -166,7 +171,8 @@ class TestFixtures(unittest.TestCase):
         for s in SCEN:
             with self.subTest(s=s):
                 v, sd = fx(s)
-                VV.check_consistency(VV.load_sources(v, sd))
+                VV.check_consistency(VV.load_sources(v, sd, checks_path=fxc(s)))
+                self.assertEqual(fxc(s) is not None, sd is not None)
                 self.assertEqual(sd is not None, load(s)["synthetic_fixture"]["part2"] == "collected")
 
     def test_scenarios_cover_every_outcome(self):
@@ -222,15 +228,15 @@ class TestFill(unittest.TestCase):
         for s in SCEN:
             with self.subTest(s=s):
                 v, sd = fx(s)
-                text, val, cases, flags = F.fill(v, sd, None, "/tmp/figs", synthetic=True)
+                text, val, cases, flags = F.fill(v, sd, None, "/tmp/figs", synthetic=True, checks=fxc(s))
                 V = load(s)
                 self.check_render(text, val, V, s)
                 self.assertEqual(cases["CASE_GATE"], VV.case_gate(V))
 
     def test_provenance_re_resolves(self):
-        for s in ("scored", "dropped"):
+        for s in ("scored", "dropped", "h3_undetermined"):
             v, sd = fx(s)
-            text, val, cases, flags = F.fill(v, sd, None, "/tmp/figs", synthetic=True)
+            text, val, cases, flags = F.fill(v, sd, None, "/tmp/figs", synthetic=True, checks=fxc(s))
             n = 0
             for name, p in val.prov.items():
                 if p["kind"] == "json":
@@ -303,6 +309,40 @@ class TestFill(unittest.TestCase):
         t_p = F.fill(*fx("pass_reported"), None, "/tmp/figs", synthetic=True)[0]
         self.assertIn("neither gates nor downgrades", t_p)
         self.assertIn("**PASS**", t_p)
+
+    def test_audit_checks_wording(self):
+        """Part II checks AQ1-AQ4 (protocol section 6, Entry 2), the NOT RATED share (section 5) and S-KG (Entry 1),
+        filled from the checks file; AQ2 below 0.80 is flagged in 3.6 and in the limitations; S-KG is never a verdict."""
+        t = F.fill(*fx("scored"), None, "/tmp/figs", synthetic=True, checks=fxc("scored"))[0]
+        for s in ("AQ1 passed", "AQ2: the home page returned status 200", "at or above 0.80, so the audit is not flagged",
+                  "AQ3: pass 1 parsed", "AQ4: pass 2 re-fetched the home page only, once", "Pass 2 enters no verdict",
+                  "reported beside H7 and never a verdict", "Under H7's bands this reads CONFIRMED",
+                  "and the audit checks (`audit/`, with `v1_13_audit_checks.json`"):
+            self.assertIn(s, t)
+        self.assertNotIn("AQ2 flagged", t)
+        t = F.fill(*fx("h3_undetermined"), None, "/tmp/figs", synthetic=True, checks=fxc("h3_undetermined"))[0]
+        self.assertIn("**below 0.80, so the audit is flagged**", t)
+        self.assertIn("(AQ2 flagged, \u00a73.6)", t)
+        self.assertIn("above the 0.20 at which protocol \u00a75 flags this share (flagged)", t)
+        self.assertIn("H7 stays **UNDETERMINED**", t)
+        t = F.fill(*fx("scored"), None, "/tmp/figs", synthetic=True)[0]          # no checks file: no paragraph
+        self.assertNotIn("AQ1 passed", t)
+        with self.assertRaises(F.FillError):                                     # checks without Part II collected
+            F.fill(*fx("fail"), None, "/tmp/figs", synthetic=True, checks=fxc("scored"))
+
+    def test_real_mode_checks_must_match_inputs(self):
+        import hashlib
+        v, sd = fx("scored")
+        src = VV.load_sources(v, sd, checks_path=fxc("scored"))
+        src["audit"]["checks"]["inputs"] = {"test_only": False, "sdri": ["x", "0" * 64], "verdicts": ["y", "0" * 64]}
+        with self.assertRaises(F.FillError):
+            F.check_audit_inputs(src, v, sd)
+        h = lambda q: hashlib.sha256(Path(q).read_bytes()).hexdigest()                  # noqa: E731
+        src["audit"]["checks"]["inputs"] = {"test_only": False, "sdri": ["x", h(sd)], "verdicts": ["y", h(v)]}
+        F.check_audit_inputs(src, v, sd)
+        src["audit"]["checks"]["inputs"]["test_only"] = True
+        with self.assertRaises(F.FillError):
+            F.check_audit_inputs(src, v, sd)
 
     def test_cheil_switch_off_by_default(self):
         v, sd = fx("scored")

@@ -234,7 +234,7 @@ def chart_sep(V, key, h, comp, out):
     fig.subplots_adjust(top=0.86, bottom=0.14, left=0.27, right=0.97)
     _header(fig, key, "Primary with its 90% bootstrap interval; sensitivities (§7) and leave-one-category-out (S8) "
                       "as points.", "Shaded: |ρ_w| at most 0.30 (separable). Dotted: |ρ_w| = 0.50.")
-    _save(fig, key, f"{h}: {V['verdicts'][h]}", out)
+    _save(fig, key, f"{VV.SHORT[h]} ({VV.PLAIN[h]}): {V['verdicts'][h]}", out)
 
 
 def chart_06(V, out):
@@ -263,7 +263,7 @@ def chart_06(V, out):
     fig.subplots_adjust(top=0.80, bottom=0.19, left=0.10, right=0.97)
     _header(fig, 6, "Per-run G* (floor: three grounded answers per run); gray: pair below 30 units.",
             "Dotted: rel1 = 0.25 (rel3 = 0.50); dashed: rel1 = 0.125 (rel3 = 0.30).")
-    _save(fig, 6, f"H3_Run_Reliability: {V['verdicts']['H3_Run_Reliability']}", out)
+    _save(fig, 6, f"H3 (run reliability): {V['verdicts']['H3_Run_Reliability']}", out)
 
 
 def chart_07(V, out):
@@ -347,7 +347,7 @@ def chart_08(V, rows_s, out):
     fig.subplots_adjust(top=0.80, bottom=0.17, left=0.10, right=0.74)
     _header(fig, 8, "Brands with an SDRI (home page fetched) and a rated G*; defunct brands excluded.",
             "SDRI from Part II's first pass; G* from Part I.")
-    _save(fig, 8, f"H7_Struct_Gap: {s7['word']}", out)
+    _save(fig, 8, f"H7 (structured data): {s7['word']}", out)
 
 
 def chart_09(R, out):

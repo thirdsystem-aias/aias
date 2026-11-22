@@ -1,6 +1,7 @@
 {
  "verdicts": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/v1_13_verdicts.json",
  "sdri": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/audit/v1_13_sdri.csv",
+ "checks": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/audit/v1_13_audit_checks.json",
  "synthetic": false,
  "interim": false,
  "coi_cheil": false,
@@ -28,6 +29,9 @@
   "H7_IS_CONFIRMED": false,
   "H7_IS_FALSIFIED": false,
   "PART2_COLLECTED": true,
+  "AUDIT_CHECKS": true,
+  "AQ2_FLAG": true,
+  "S_KG": true,
   "COI_CHEIL": false
  },
  "values": {
@@ -73,7 +77,7 @@
    "basis": [
     "osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md"
    ],
-   "formatted": "deviations recorded in `osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md` (16 entries after the lock)."
+   "formatted": "deviations recorded in the deviations log under `osf/methodology/v1_13/` (16 entries after the lock)."
   },
   "GATE_FINAL": {
    "kind": "text",
@@ -2800,7 +2804,7 @@
     "git",
     "refs/tags/v1.13-audit-r1"
    ],
-   "formatted": "\\texttt{v1.13-audit-r1} (commit \\texttt{ 5e12e0da93 })"
+   "formatted": "\\texttt{v1.13-audit-r1} (commit \\texttt{5e12e0da93})"
   },
   "PART2_LOCK_SENTENCE": {
    "kind": "text",
@@ -6294,7 +6298,7 @@
     "sdri",
     "rows"
    ],
-   "formatted": "Part II's first pass recorded 107 brands with an own domain; the home page was fetched for 77 (72%, below the 80% at which AQ2 flags the audit), SDRI was rated for 77, and the median SDRI was 37.5. The table gives the indicators per category."
+   "formatted": "Part II's first pass recorded 107 brands with an own domain; SDRI was rated for 77, and the median SDRI was 37.5. The table gives the indicators per category."
   },
   "SDRI_v19_N": {
    "kind": "derived",
@@ -16357,6 +16361,2044 @@
    "formatted": "| Category | Audited | Home page | Median SDRI | (1) | (2) | (3) | (4) | (5) | (6) | (7) | (8) |\n|:--------------|-------:|---------:|-----------:|----:|----:|----:|----:|----:|----:|----:|----:|\n| Headphones | 16 | 12 | 18.8 | 58% | 25% | 25% | 25% | 0% | 25% | 25% | 25% |\n| Skincare | 24 | 15 | 50.0 | 80% | 40% | 27% | 67% | 0% | 58% | 50% | 46% |\n| Cosmetics | 24 | 21 | 37.5 | 86% | 19% | 24% | 76% | 0% | 50% | 46% | 50% |\n| Automotive | 19 | 11 | 37.5 | 18% | 27% | 0% | 18% | 9% | 79% | 74% | 74% |\n| Spirits | 24 | 18 | 31.2 | 61% | 11% | 6% | 33% | 6% | 42% | 38% | 42% |",
    "cells": []
   },
+  "AQ1_UNITS": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ1",
+    "units"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "AQ1_UNRES": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ1",
+    "unresolved"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "AQ1_NONE": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ1",
+    "none"
+   ],
+   "raw": 5,
+   "fmt": "i0",
+   "formatted": "5"
+  },
+  "AQ2_N": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ2",
+    "units_with_domain"
+   ],
+   "raw": 107,
+   "fmt": "i0",
+   "formatted": "107"
+  },
+  "AQ2_200": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ2",
+    "p1_status_200"
+   ],
+   "raw": 77,
+   "fmt": "i0",
+   "formatted": "77"
+  },
+  "AQ2_SHARE": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ2",
+    "share_status_200"
+   ],
+   "raw": 0.719626168224299,
+   "fmt": "r3",
+   "formatted": "0.720"
+  },
+  "AQ2_OUT_blocked": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ2",
+    "outcomes",
+    "blocked"
+   ],
+   "raw": 23,
+   "fmt": "i0",
+   "formatted": "23"
+  },
+  "AQ2_OUT_robots_unavailable": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ2",
+    "outcomes",
+    "robots_unavailable"
+   ],
+   "raw": 7,
+   "fmt": "i0",
+   "formatted": "7"
+  },
+  "SDRI_NOTRATED_N": {
+   "kind": "derived",
+   "fn": "d_count_missing",
+   "consts": [],
+   "refs": [
+    [
+     "sdri",
+     [
+      "rows",
+      0,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      1,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      2,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      3,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      4,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      5,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      6,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      7,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      8,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      9,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      10,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      11,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      12,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      13,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      14,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      15,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      16,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      17,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      18,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      19,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      20,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      21,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      22,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      23,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      24,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      25,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      26,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      27,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      28,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      29,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      30,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      31,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      32,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      33,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      34,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      35,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      36,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      37,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      38,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      39,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      40,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      41,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      42,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      43,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      44,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      45,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      46,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      47,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      48,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      49,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      50,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      51,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      52,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      53,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      54,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      55,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      56,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      57,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      58,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      59,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      60,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      61,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      62,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      63,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      64,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      65,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      66,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      67,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      68,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      69,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      70,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      71,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      72,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      73,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      74,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      75,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      76,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      77,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      78,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      79,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      80,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      81,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      82,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      88,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      89,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      90,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      91,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      92,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      93,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      94,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      95,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      96,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      97,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      98,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      99,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      100,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      101,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      102,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      103,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      104,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      105,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      106,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      107,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      108,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      109,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      110,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      111,
+      "SDRI"
+     ]
+    ]
+   ],
+   "raw": 30.0,
+   "fmt": "i0",
+   "formatted": "30"
+  },
+  "SDRI_NOTRATED_SHARE": {
+   "kind": "derived",
+   "fn": "d_share_missing",
+   "consts": [],
+   "refs": [
+    [
+     "sdri",
+     [
+      "rows",
+      0,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      1,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      2,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      3,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      4,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      5,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      6,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      7,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      8,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      9,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      10,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      11,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      12,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      13,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      14,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      15,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      16,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      17,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      18,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      19,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      20,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      21,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      22,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      23,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      24,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      25,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      26,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      27,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      28,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      29,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      30,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      31,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      32,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      33,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      34,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      35,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      36,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      37,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      38,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      39,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      40,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      41,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      42,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      43,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      44,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      45,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      46,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      47,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      48,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      49,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      50,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      51,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      52,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      53,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      54,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      55,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      56,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      57,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      58,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      59,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      60,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      61,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      62,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      63,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      64,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      65,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      66,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      67,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      68,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      69,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      70,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      71,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      72,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      73,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      74,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      75,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      76,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      77,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      78,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      79,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      80,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      81,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      82,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      88,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      89,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      90,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      91,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      92,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      93,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      94,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      95,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      96,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      97,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      98,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      99,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      100,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      101,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      102,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      103,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      104,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      105,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      106,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      107,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      108,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      109,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      110,
+      "SDRI"
+     ]
+    ],
+    [
+     "sdri",
+     [
+      "rows",
+      111,
+      "SDRI"
+     ]
+    ]
+   ],
+   "raw": 0.2803738317757009,
+   "fmt": "pct0",
+   "formatted": "28%"
+  },
+  "AQ3_PAGES": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ3",
+    "pages_parsed"
+   ],
+   "raw": 195,
+   "fmt": "i0",
+   "formatted": "195"
+  },
+  "AQ3_BLOCKS": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ3",
+    "ld_blocks"
+   ],
+   "raw": 233,
+   "fmt": "i0",
+   "formatted": "233"
+  },
+  "AQ3_ERRORS": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ3",
+    "ld_parse_errors"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "PASS2_START": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "window_pass2",
+    "start_utc"
+   ],
+   "raw": "2026-11-22T18:11:45.714129+00:00",
+   "fmt": "utc16",
+   "formatted": "2026-11-22 18:11 UTC"
+  },
+  "PASS2_GAP": {
+   "kind": "derived",
+   "fn": "d_hours_between",
+   "consts": [],
+   "refs": [
+    [
+     "audit",
+     [
+      "window_pass1",
+      "start_utc"
+     ]
+    ],
+    [
+     "audit",
+     [
+      "window_pass2",
+      "start_utc"
+     ]
+    ]
+   ],
+   "raw": 226.94574048944446,
+   "fmt": "dh",
+   "formatted": "9 days 11 hours"
+  },
+  "AQ4_BOTH": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ4",
+    "units_ok_in_both"
+   ],
+   "raw": 77,
+   "fmt": "i0",
+   "formatted": "77"
+  },
+  "AQ4_CHANGED": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ4",
+    "changed"
+   ],
+   "raw": 0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "AQ4_SHARE": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "AQ4",
+    "share_changed"
+   ],
+   "raw": 0.0,
+   "fmt": "pct0",
+   "formatted": "0%"
+  },
+  "AUDIT_CHECKS_PARAGRAPH": {
+   "kind": "text",
+   "basis": [
+    "audit",
+    "checks",
+    "AQ1-AQ4",
+    "window_pass1/2",
+    "sdri"
+   ],
+   "formatted": "**Audit checks (protocol §6; reported only, DEVIATIONS Entry 2).** AQ1 passed: each of the 112 brand units had a row in the domain list; 0 were unresolved and 5 had no own domain (the defunct brands). AQ2: the home page returned status 200 for 77 of the 107 brands with an own domain (0.720), **below 0.80, so the audit is flagged**; of the other home pages, 23 were blocked by the site and 7 were not requested because the site's `robots.txt` could not be read (server error or timeout). SDRI was therefore not rated for 30 of the 107 (28%), above the 0.20 at which protocol §5 flags this share (flagged); they enter H7 only through the SDRI$_{\\text{kg}}$ sensitivity below. AQ3: pass 1 parsed 195 pages holding 233 JSON-LD blocks, of which 0 failed to parse. AQ4: pass 2 re-fetched the home page only, once, starting 2026-11-22 18:11 UTC, 9 days 11 hours after pass 1 began. The date the protocol sets (7 days after pass 1 began) fell inside the period without requests, so pass 2 ran after that period ended (DEVIATIONS Entry 16). Of the 77 brands whose home page was fetched in both passes, 0 (0%) changed in indicators (1)--(5) read from the home page alone. Pass 2 enters no verdict: Stage C2 had already run on pass 1."
+  },
+  "SKG_N": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "SKG_NSUB": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "n_substrates"
+   ],
+   "raw": 5,
+   "fmt": "i0",
+   "formatted": "5"
+  },
+  "SKG_RHO": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "rho_w"
+   ],
+   "raw": -0.0352028861354703,
+   "fmt": "r3",
+   "formatted": "-0.035"
+  },
+  "SKG_LO": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "ci90",
+    "lo"
+   ],
+   "raw": -0.3039944383120549,
+   "fmt": "r3",
+   "formatted": "-0.304"
+  },
+  "SKG_HI": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "ci90",
+    "hi"
+   ],
+   "raw": 0.2611448679408312,
+   "fmt": "r3",
+   "formatted": "0.261"
+  },
+  "SKG_P": {
+   "kind": "json",
+   "source": "audit",
+   "path": [
+    "checks",
+    "S_KG",
+    "leg",
+    "p"
+   ],
+   "raw": 0.5844415558444156,
+   "fmt": "p4",
+   "formatted": "0.5844"
+  },
+  "S_KG_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "audit",
+    "checks",
+    "S_KG",
+    "band_reading_H7"
+   ],
+   "formatted": "Beside H7, the sensitivity named in protocol §5 (DEVIATIONS Entry 1) correlates SDRI$_{\\text{kg}}$ (indicators (6)--(8) alone) with G\\*, including brands whose home page could not be fetched: across 42 brands in 5 categories, $\\rho_w(\\text{SDRI}_{\\text{kg}}, G^*) = -0.035$ (90% interval -0.304 to 0.261; one-sided $p = 0.5844$). Under H7's bands this reads FALSIFIED; it is a sensitivity, reported beside H7 and never a verdict, and H7 stays **UNDETERMINED**."
+  },
   "TABLE_LEGS": {
    "kind": "table",
    "formatted": "| Leg | G\\* against | Role | $n$ | $\\rho_w$ | 90% interval | $p$ | Verdict |\n|:-----------|:-----------------|:---------------------|-------:|---------:|---------------:|------:|:----------------|\n| H1 (S1) | Presence $P$, S1 | gate | 42 | 0.307 | [0.008, 0.543] | 0.0819 | **MARGINAL** |\n| H1 (S0) | Presence $P$, S0 | gate | 42 | 0.395 | [0.095, 0.629] | 0.0250 | **MARGINAL** |\n| H2 (S1) | Consistency $C^*$, S1 | gate | 42 | -0.087 | [-0.370, 0.214] | 0.6285 | **CONFIRMED** |\n| H2 (S0) | Consistency $C^*$, S0 | gate | 40 | 0.049 | [-0.256, 0.353] | 0.7944 | **CONFIRMED** |\n| H3 | run against run | gate | 0 pairs | -- (rel3) | -- | -- | **UNDETERMINED** |\n| H4 | Ranking $R^*_{S1}$ | conditional, reported | 42 | 0.292 | [-0.048, 0.574] | 0.0928 | **CONFIRMED** |\n| H5 | Sentiment $S$ | conditional | -- | -- | -- | -- | **INACTIVE** |\n| H6 | Coverage Cov\\* | conditional, gating | 33 | -0.304 | [-0.645, 0.071] | 0.1637 | **MARGINAL** |\n| H7 | SDRI (one-sided) | secondary | 26 | 0.081 | [-0.309, 0.439] | 0.3507 | **UNDETERMINED** |",
@@ -17595,6 +19637,16 @@
     "S8 (not computed)"
    ],
    "formatted": "--"
+  },
+  "S8_REL_CLAUSE": {
+   "kind": "text",
+   "basis": [
+    "verdicts",
+    "sensitivities",
+    "S8",
+    "rel3"
+   ],
+   "formatted": "while rel3 could not be computed with any category left out"
   },
   "TABLE_BRANDS": {
    "kind": "table",
