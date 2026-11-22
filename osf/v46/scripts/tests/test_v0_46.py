@@ -326,5 +326,107 @@ class TestRules(unittest.TestCase):
         self.assertIn("skincare", ch["MC_Predictor"])
 
 
+# =========================================================================== predictors (task 1, Stage 1 code r2)
+import predictors_v0_46 as PR  # noqa: E402
+
+SYN_MODELS = ["mA", "mB", "mC"]
+
+
+def _raw_b(model, run, frame, text, status="ok"):
+    return {"call_id": f"v20|B|{frame}|{model}|S0|{run}", "substrate": "v20", "phase": "B", "probe_id": frame,
+            "frame_id": frame, "model_requested": model, "served_model": model, "condition": "S0", "run": run,
+            "text": text, "status": status, "error": None}
+
+
+def synthetic_predictor_world():
+    """v0.20 only. 3 models x 3 runs x 2 frames = 18 Phase B answers. CeraVe is listed first in every answer,
+    La Mer second in 17, Lancome third in the 9 q1 answers; Sisley second once (below the rating floor)."""
+    raw, cb, ca = [], [], []
+    for m in SYN_MODELS:
+        for run in (1, 2, 3):
+            for fr in ("q1", "q2"):
+                if fr == "q1":
+                    lines = ["1. CeraVe", "2. La Mer", "3. Lancôme"]
+                else:
+                    lines = ["1. CeraVe", "2. Sisley"] if (m, run) == ("mA", 1) else ["1. CeraVe", "2. La Mer"]
+                text = "Here are my picks:\n" + "\n".join(lines)
+                r = _raw_b(m, run, fr, text)
+                raw.append(r)
+                named = [ln.split(". ", 1)[1] for ln in lines]
+                for b in ("CeraVe", "La Mer", "Lancôme", "Sisley", "La Prairie"):
+                    cb.append({"call_id": r["call_id"], "substrate": "v0.20", "brand": b, "model": m,
+                               "condition": "S0", "run": run, "probe_id": fr, "frame_id": fr,
+                               "mentioned": int(b in named)})
+    for m, recog in zip(SYN_MODELS, (1, 1, 0)):
+        for b in ("CeraVe", "La Mer"):
+            ca.append({"call_id": f"v20|A|{b}|{m}|S0|1", "substrate": "v0.20", "brand": b, "brand_id": b,
+                       "model": m, "condition": "S0", "run": 1, "probe_id": b, "label": "yes",
+                       "recognized": recog if b == "CeraVe" else 1})
+    return raw, ca, cb
+
+
+class TestPredictors(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        cls.regs = PR.load_registries(("v0.20",))
+        raw, ca, cb = synthetic_predictor_world()
+        cls.pred, cls.meta = PR.compute(raw, ca, cb, SYN_MODELS, subs=("v0.20",), registries=cls.regs)
+
+    def test_reference_code_pinned(self):
+        self.assertEqual(PR.verify_reference(), [])
+        self.assertEqual(PR.REF_COMMIT[:7], "3129674")
+        self.assertEqual(PR.STAT, "MODE")
+        self.assertEqual(PR.RATING_FLOOR, 6)
+
+    def test_all_registries_hash_verified(self):
+        regs = PR.load_registries(PR.V46_SUBS)
+        self.assertEqual(sorted(len(u) for _r, u in regs.values()), [24, 24, 24, 24])
+
+    def test_presence_formula(self):
+        p = self.pred[("v0.20", "CeraVe")]
+        self.assertAlmostEqual(p["pi_hat"], 1.0)
+        self.assertEqual((p["recognized"], p["recognition_coded"]), (2, 3))
+        self.assertAlmostEqual(p["P"], 100.0 * (2 / 3 + 2.0 * 1.0) / 3.0, places=12)
+        lm = self.pred[("v0.20", "La Mer")]
+        self.assertAlmostEqual(lm["pi_hat"], 17 / 18)
+        self.assertAlmostEqual(lm["P"], 100.0 * (1.0 + 2.0 * 17 / 18) / 3.0, places=12)
+        self.assertIsNone(self.pred[("v0.20", "Lancôme")]["P"])       # no coded recognition -> not computed
+        self.assertEqual(self.pred[("v0.20", "La Prairie")]["pi_hat"], 0.0)
+        self.assertEqual(self.pred[("v0.20", "La Prairie")]["pi_hat_by_model"], {m: 0.0 for m in SYN_MODELS})
+
+    def test_ranking_mode_and_floor(self):
+        self.assertEqual(self.pred[("v0.20", "CeraVe")]["R_star"], -1.0)
+        self.assertEqual(self.pred[("v0.20", "La Mer")]["R_star"], -2.0)
+        self.assertEqual(self.pred[("v0.20", "Lancôme")]["n_ranked"], 9)
+        self.assertEqual(self.pred[("v0.20", "Lancôme")]["R_star"], -3.0)
+        s = self.pred[("v0.20", "Sisley")]
+        self.assertEqual((s["n_ranked"], s["rated"], s["R_star"]), (1, False, None))   # below the floor of 6
+        self.assertGreater(self.pred[("v0.20", "CeraVe")]["R_star"], self.pred[("v0.20", "La Mer")]["R_star"])
+
+    def test_missing_and_foreign_answers(self):
+        raw, ca, cb = synthetic_predictor_world()
+        raw.append(dict(_raw_b("mA", 1, "q3", ""), status="error"))
+        raw.append(_raw_b("mZ", 1, "q1", "1. CeraVe\n2. La Mer"))                 # not in the panel
+        raw.append(dict(_raw_b("mB", 2, "q4", "1. CeraVe\n2. La Mer"), served_model="other-model"))
+        pred, meta = PR.compute(raw, ca, cb, SYN_MODELS, subs=("v0.20",), registries=self.regs)
+        self.assertEqual(pred[("v0.20", "CeraVe")]["n_ranked"], 18)
+        self.assertEqual(len(meta["excluded_call_ids"]), 2)
+
+    def test_table_joins_probe_registry(self):
+        regs = PR.load_registries(PR.V46_SUBS)
+        names = {cb for cb in PR.unit_names(regs).values()}
+        for cat, units in B.registry_units().items():
+            for b, _cell in units:
+                self.assertIn((cat, b), names)
+        rows = PR.table_rows(self.pred, self.regs)
+        self.assertEqual(len(rows), 24)
+        r = [x for x in rows if x["brand"] == "CeraVe"][0]
+        self.assertEqual((r["category"], float(r["R_star"])), ("skincare", -1.0))
+
+    def test_bad_panel(self):
+        with self.assertRaises(PR.PredictorHalt):
+            PR.compute([], [], [], ["a", "a"], subs=("v0.20",), registries=self.regs)
+
+
 if __name__ == "__main__":
     unittest.main()
