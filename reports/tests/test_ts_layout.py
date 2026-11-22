@@ -268,6 +268,78 @@ class TestPages(unittest.TestCase):
         self.assertGreaterEqual(last, 2)
 
 
+class TestBriefPage(unittest.TestCase):
+    NUMS = [{"value": "0.5", "unit": "", "label": "Label", "source": "Source"}] * 3
+    SECS = [("Left heading", [WORDS, WORDS]), ("Right one", [WORDS]), ("Right two", [WORDS])]
+
+    def _front(self, **kw):
+        args = dict(kind="front", label="Sample label", page_no=1, kicker="Brief · sample", title="Sample brief title",
+                    standfirst="Sample standfirst for the brief.", numbers=self.NUMS, chart=CHART,
+                    pointer="Disclosures: page 2.", foot=200.0)
+        args.update(kw)
+        return L.brief_page(_canvas(), T, **args)
+
+    def test_brief_standfirst_style_in_brand_file(self):
+        s = T.style("brief_standfirst")
+        self.assertEqual((s["weight"], s["size_pt"], s["leading_pt"], s["color"]), ("Light", 13.5, 18.5, "soft_black"))
+        self.assertLess(s["size_pt"], T.style("finding_headline")["size_pt"])
+        self.assertEqual(T.pages["brief_page"]["front"]["standfirst_style"], "brief_standfirst")
+
+    def test_front_page_reserves_one_chart_above_the_notes(self):
+        g = self._front()
+        s = g["slot"]
+        self.assertIsNotNone(s)
+        self.assertEqual(s.page_index, 0)
+        self.assertEqual(s.scale, 1.0)
+        self.assertAlmostEqual(s.x + s.w / 2, T.page_w / 2, places=3)
+        self.assertGreaterEqual(s.y, 200.0)
+        self.assertGreaterEqual(g["bottom"], 200.0)
+        self.assertEqual(g["free_pt_above_notes"], round(g["bottom"] - 200.0, 1))
+        self.assertEqual(g["elements"][0], "number_row")
+        self.assertEqual(len(g["elements"]), 2)
+        self.assertGreater(g["words"], 10)
+
+    def test_front_page_without_chart_or_pointer(self):
+        g = self._front(chart=None, pointer=None)
+        self.assertIsNone(g["slot"])
+        self.assertEqual(g["elements"], ["number_row"])
+
+    def test_front_page_foot_callable_and_dict(self):
+        calls = []
+        g = self._front(foot=lambda: calls.append(1) or {"body_bottom": 150.0})
+        self.assertEqual(calls, [1])
+        self.assertEqual(g["body_bottom"], 150.0)
+        self.assertEqual(self._front(foot=None)["body_bottom"],
+                         T.pages["finding_page"]["body"]["bottom_from_bottom_pt"])
+
+    def test_front_page_overflow_raises(self):
+        with self.assertRaises(L.LayoutOverflow):
+            self._front(foot=T.page_h - 300)          # chart cannot fit above notes this high
+        with self.assertRaises(L.LayoutOverflow):
+            self._front(standfirst=WORDS * 12)        # standfirst runs past the large-type limit
+        with self.assertRaises(ValueError):
+            self._front(title=None)
+
+    def test_text_page_two_columns(self):
+        c = _canvas()
+        g = L.brief_page(c, T, kind="text", label="x", page_no=2, kicker="What we found", sections=self.SECS,
+                         split=1, foot=120.0, code="TS-BR-v1.20-r1")
+        self.assertIsNone(g["slot"])
+        self.assertGreaterEqual(g["bottom"], 120.0)
+        self.assertGreater(g["words"], 3 * L.count_words(WORDS))
+
+    def test_text_page_overflow_and_bad_args(self):
+        with self.assertRaises(L.LayoutOverflow):
+            L.brief_page(_canvas(), T, kind="text", label="x", page_no=2, kicker="k",
+                         sections=[("h", [WORDS * 40])], foot=120.0)
+        with self.assertRaises(ValueError):
+            L.brief_page(_canvas(), T, kind="text", label="x", page_no=2, kicker="k", sections=self.SECS, split=0)
+        with self.assertRaises(ValueError):
+            L.brief_page(_canvas(), T, kind="text", label="x", page_no=2, kicker="k", sections=[])
+        with self.assertRaises(ValueError):
+            L.brief_page(_canvas(), T, kind="cover", label="x", page_no=1, kicker="k")
+
+
 class TestPhotography(unittest.TestCase):
     def test_pool_and_treatment(self):
         ids = [p["id"] for p in T.photography["pool"]]

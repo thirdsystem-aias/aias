@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chart of the Sentiment Paper A brief (TS-CS-v1.20-r1): one chart, one insight (data-viz rules v2).
+"""Chart of the Sentiment Paper A brief (TS-BR-v1.20-r1): one chart, one insight (data-viz rules v2).
 
 Insight (Indigo): against Presence the within-category correlation reaches the 0.50 line at the third wave.
 Consistency, the second series, is in warm grey; the zone at or above the line is the fail zone (#E4E4E4).

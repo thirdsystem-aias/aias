@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-brief_v1_20_values.py -- every number printed in the Sentiment Paper A brief (TS-CS-v1.20-r1) and its chart.
+brief_v1_20_values.py -- every number printed in the Sentiment Paper A brief (TS-BR-v1.20-r1) and its chart.
 
 Numbers are read by code, never typed:
   * result values from the study's machine outputs, through papers/v1_20/v120_values.py (the paper's own loader
@@ -211,7 +211,7 @@ def chart_data(src):
 
 def write_provenance(v, extra=None):
     PROV_OUT.parent.mkdir(parents=True, exist_ok=True)
-    out = {"_note": "Every number printed in TS-CS-v1.20-r1 and its chart: name -> source file, JSON path (or locked "
+    out = {"_note": "Every number printed in TS-BR-v1.20-r1 and its chart: name -> source file, JSON path (or locked "
                     "scorer constant), raw value, format. Sources: osf/methodology/v1_20/outputs/ (verdicts "
                     "v1_20_verdicts.json, stage_j, comparison), osf/methodology/v1_11/outputs/ (frozen).",
            "sources_sha256": {k: VV.sha256(VV.source_path(OUTPUTS, k)) for k in ("verdicts", "stage_j", "comparison",

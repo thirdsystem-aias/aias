@@ -1,14 +1,15 @@
 #!/usr/bin/env python3
 """
-Sentiment Paper A brief (AIAS™ Methodology v1.11 scored under v1.20), report code TS-CS-v1.20-r1.
+Sentiment Paper A brief (AIAS™ Methodology v1.11 scored under v1.20), report code TS-BR-v1.20-r1
+(Tier 3 brief; re-coded from TS-CS-v1.20-r1, Pablo, Nov 22, 2026, decision 1).
 
 First short designed brief for a method/validity paper (Pablo, Sun Nov 22, 2026, 8:22 am): 1-2 pages, report design
 system v2 (brand v1.6 / report specs v1.2, reports/ts_layout.py), Tier 3 elements (no cover; title block, standfirst,
 three numbers, one chart), managerial register, small-print notes and a Disclosures block (reports/small_print.py),
 the registered report code on the last page, in the PDF metadata and in the file name (reports/report_code.py).
 
-ts_layout has no Tier 3 page function yet; this builder composes the two pages from its shared pieces
-(running_chrome, number_row, reserve_chart/overlay_charts, _block/_columns) without changing the module.
+Both pages are drawn by ts_layout.brief_page() (decision 2): kind="front" and kind="text"; geometry in
+report_specs page_templates.brief_page, standfirst style typography.number_scale.brief_standfirst (decision 3).
 
 Numbers: reports/brief_v1_20_values.py (read by code from osf/methodology/v1_20/outputs and the locked scorer's
 constants); text: reports/brief_v1_20_content.py with {KEY} placeholders; chart:
@@ -16,7 +17,7 @@ scripts/build_chart_brief_v1_20.py. After the build, every digit group in the PD
 the provenance or to a listed non-result token (versions, model names, dates, code, page numbers, axis ticks).
 
 Run from the worktree root:
-    AIAS_ROOT=$PWD ~/aias/venv/bin/python reports/build_brief_v1_20.py [--code TS-CS-v1.20-r1] [--out-dir DIR]
+    AIAS_ROOT=$PWD ~/aias/venv/bin/python reports/build_brief_v1_20.py [--code TS-BR-v1.20-r1] [--out-dir DIR]
 """
 from __future__ import annotations
 
@@ -84,75 +85,38 @@ def build(output: Path, code: str) -> dict:
     c.setSubject(RC.pdf_subject(code, PDF_SUBJECT))
     c.setKeywords(RC.pdf_keywords(code, "Third System", "AIAS Methodology v1.20", "Sentiment Paper A", t.website))
     slots, pages = [], []
-    ap = t.pages["at_a_glance"]
-    fp = t.pages["finding_page"]
 
     # ---------------------------------------------------------------- page 1: title block, standfirst, numbers, chart
-    L.running_chrome(c, t, C.RUNNING_LABEL, 1)
     ns1 = SP.NoteSeq(t)
     marks = [ns1.cite(F(n)) for n in C.NOTES_P1]
-    L._caps(c, t, t.margin, t.y(ap["kicker_baseline_from_top_pt"]), C.KICKER, t.style("kicker"))
-    hspec = t.style("finding_headline")
-    y = L._block(c, lambda: [L._para(t, C.TITLE, hspec)], t.margin, t.y(fp["kicker_baseline_from_top_pt"] + 8),
-                 t.content_w, t.page_h / 2, "brief title", runt=True)
-    sspec = dict(t.style("standfirst"), size_pt=13.5, leading_pt=18.5)  # brief standfirst: below the title's size
     standfirst = F(C.STANDFIRST, marks)
-    y = L._block(c, lambda: [L._para(t, standfirst, sspec)], t.margin, y - 12, ap["standfirst_width_pt"],
-                 t.page_h / 2, "brief standfirst", runt=True)
-    nr = ap["number_row"]
     numbers = [{k: F(x) for k, x in n.items()} for n in C.NUMBERS]
-    row = L.number_row(c, t, t.margin, y - 20, t.content_w, numbers)
-    fb1 = SP.foot_blocks(c, t, notes=ns1.notes)
-    cw, ch, sc = L.reserve_chart(CHART, t.content_w)
-    ctop = row["bottom"] - 16
-    pointer = SP.disclosure_pointer(2)
-    pbot = ctop - ch - 10
-    py = L._block(c, lambda: [L.paragraph(t, pointer, "small")], t.margin, pbot, t.content_w, fb1["body_bottom"],
-                  "pointer line")
-    if py < fb1["body_bottom"]:
-        raise L.LayoutOverflow("page 1 runs into its notes")
-    slots.append(L.ChartSlot(0, CHART, t.margin + (t.content_w - cw) / 2, ctop - ch, cw, ch, sc))
-    w1 = (L.count_words(C.KICKER) + L.count_words(C.TITLE) + L.count_words(standfirst)
-          + sum(L.count_words(" ".join([n["value"], n["label"], n["source"]])) for n in numbers)
-          + L.count_words(pointer))
-    pages.append({"page": 1, "words": w1, "elements": ["number_row", L.chart_element(t, cw, ch)],
-                  "free_pt_above_notes": round(py - fb1["body_bottom"], 1)})
+    g1 = L.brief_page(c, t, kind="front", label=C.RUNNING_LABEL, page_no=1, kicker=C.KICKER, title=C.TITLE,
+                      standfirst=standfirst, numbers=numbers, chart=CHART, pointer=SP.disclosure_pointer(2),
+                      foot=lambda: SP.foot_blocks(c, t, notes=ns1.notes))
+    slots.append(g1["slot"])
+    pages.append({"page": 1, "words": g1["words"], "elements": g1["elements"],
+                  "free_pt_above_notes": g1["free_pt_above_notes"]})
     c.showPage()
 
     # ---------------------------------------------------------------- page 2: findings in words, notes, Disclosures
-    L.running_chrome(c, t, C.RUNNING_LABEL, 2, code=code)
     ns2 = SP.NoteSeq(t)
     for n in C.NOTES_P2:
         ns2.cite(F(n))
     disclosures = {k: F(x) for k, x in C.DISCLOSURES.items()}
     if "Samsung" in json.dumps(disclosures):
         raise SystemExit("the employer is named only in the paper's Declarations")
-    tp = t.pages["text_page"]
-    L._caps(c, t, t.margin, t.y(tp["kicker_baseline_from_top_pt"]), C.KICKER_P2, t.style("kicker"))
-    fb2 = SP.foot_blocks(c, t, notes=ns2.notes, source_line=C.SOURCE_LINE, disclosures=disclosures)
     marks2 = [SP.marker(t, i) for i in range(1, len(ns2.notes) + 1)]
     secs = [(h, [F(p) for p in ps]) for h, ps in C.SECTIONS]
     # note markers: data note on the first section heading, OSF note on "How the result was reached"
     secs[0] = (secs[0][0] + marks2[0], secs[0][1])
     secs[2] = (secs[2][0] + marks2[1], secs[2][1])
-
-    def flow(sel):
-        fl = []
-        for i in sel:
-            h, ps = secs[i]
-            fl.append(L.paragraph(t, h, "subheading", space_after=3, space_before=0 if i == sel[0] else 7))
-            fl += [L.paragraph(t, p, "body", space_after=5) for p in ps]
-        return fl
-    colw = tp["column_width_pt"]
-    xs = [t.margin, t.margin + colw + tp["gutter_pt"]]
-    top2 = t.y(tp["heading_top_from_top_pt"])
     # left column: what we found; right column: what it means, how the result was reached, what comes next
-    lb = L._block(c, lambda: flow([0]), xs[0], top2, colw, fb2["body_bottom"], "brief page 2, left column")
-    rb = L._block(c, lambda: flow(list(range(1, len(secs)))), xs[1], top2, colw, fb2["body_bottom"],
-                  "brief page 2, right column")
-    cols = {"bottom": min(lb, rb)}
-    w2 = L.count_words(C.KICKER_P2) + sum(L.count_words(h) + sum(L.count_words(p) for p in ps) for h, ps in secs)
-    pages.append({"page": 2, "words": w2, "elements": [], "free_pt_above_notes": round(cols["bottom"] - fb2["body_bottom"], 1)})
+    g2 = L.brief_page(c, t, kind="text", label=C.RUNNING_LABEL, page_no=2, kicker=C.KICKER_P2, sections=secs,
+                      split=1, code=code,
+                      foot=lambda: SP.foot_blocks(c, t, notes=ns2.notes, source_line=C.SOURCE_LINE,
+                                                  disclosures=disclosures))
+    pages.append({"page": 2, "words": g2["words"], "elements": [], "free_pt_above_notes": g2["free_pt_above_notes"]})
     c.showPage()
     c.save()
 
@@ -178,7 +142,7 @@ def build(output: Path, code: str) -> dict:
 
 # Digit groups that are not results: identifiers, model names, dates, page numbers, chart axis ticks, the code.
 NON_RESULT = {
-    "versions": r"v\d+\.\d+(?:-prereg-r\d+)?", "code": r"TS-CS-v1\.20-r1", "osf": r"ec6wh", "files": r"v1_20|v1_20_verdicts",
+    "versions": r"v\d+\.\d+(?:-prereg-r\d+)?", "code": r"TS-BR-v1\.20-r1", "osf": r"ec6wh", "files": r"v1_20|v1_20_verdicts",
     "models": r"(?:Opus|Sol|GPT-6\.1|Opus 5\.5|5\.5|6\.1)", "years": r"\b20(?:17|18|21|22|24|25|26)\b",
     "dates": r"September 23|November 10", "tier": r"tier 2/3", "intervals": r"95%",
 }
@@ -211,7 +175,7 @@ def digit_audit(pdf, v) -> dict:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--code", default="TS-CS-v1.20-r1")
+    ap.add_argument("--code", default="TS-BR-v1.20-r1")
     ap.add_argument("--out-dir", type=Path, default=OUT_DIR)
     a = ap.parse_args()
     out = a.out_dir / RC.file_name(a.code, C.TITLE)

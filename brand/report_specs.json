@@ -8,7 +8,8 @@
       "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence.",
       "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
       "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
-      "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only."
+      "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only.",
+      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entry TS-BR-v1.20-r1."
     ]
   },
   "product_structure_summary": {
@@ -633,6 +634,30 @@
         "small_size_pt": 7.5,
         "small_leading_pt": 10.5,
         "small_space_after_pt": 2.5
+      },
+      "brief_page": {
+        "_note": "Tier 3 brief pages (Pablo's format approval of the Sentiment Paper A brief, Sun Nov 22, 2026, 10:47 am, decision 2). ts_layout.brief_page() draws both page kinds: 'front' (kicker, title, standfirst in the brief_standfirst style, three big numbers, one chart, the Disclosures pointer) and 'text' (kicker, sections in two columns). Notes and the Disclosures block come from small_print.foot_blocks; the values below are those of the approved TS-CS-v1.20-r1 layout.",
+        "front": {
+          "kicker_baseline_from_top_pt": 92,
+          "title_top_from_top_pt": 108,
+          "title_style": "finding_headline",
+          "standfirst_style": "brief_standfirst",
+          "standfirst_gap_below_title_pt": 12,
+          "standfirst_width_pt": 520,
+          "large_type_bottom_from_top_pt": 396,
+          "number_row_rule_gap_below_standfirst_pt": 20,
+          "chart_gap_below_number_row_pt": 16,
+          "pointer_gap_below_chart_pt": 10
+        },
+        "text": {
+          "kicker_baseline_from_top_pt": 92,
+          "columns_top_from_top_pt": 100,
+          "column_width_pt": 252,
+          "gutter_pt": 36,
+          "subheading_space_after_pt": 3,
+          "subheading_space_before_pt": 7,
+          "body_space_after_pt": 5
+        }
       },
       "small_print": {
         "_note": "Small-print notes and disclosure callouts (Pablo, Nov 15, 2026, 8:33 am; CLAUDE.md). New reports and briefs only: published locked reports are unchanged and papers are untouched. Main text stays light; source and method notes, definitions, caveats, sample sizes and model lists move to numbered notes at the foot of the same page or to a margin callout beside the text; a short Disclosures block (conflicts of interest, held-out brands, AI use, independence) closes the report in small print, with a one-line pointer in the main text. Material disclosures stay legible: colour is the body text colour (soft_black) or a token with contrast of at least min_contrast on the page ground. Code: reports/small_print.py; tests: reports/tests/test_small_print.py.",

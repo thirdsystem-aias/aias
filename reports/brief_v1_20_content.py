@@ -1,5 +1,5 @@
 """
-Text of the Sentiment Paper A brief (TS-CS-v1.20-r1). Managerial register: plain findings, no hypothesis labels.
+Text of the Sentiment Paper A brief (TS-BR-v1.20-r1). Managerial register: plain findings, no hypothesis labels.
 Every number is a {KEY} placeholder filled by reports/build_brief_v1_20.py from brief_v1_20_values.py (unknown key
 -> KeyError). Note markers are {N1}, {N2}, ... (small_print.NoteSeq, numbered per page).
 """

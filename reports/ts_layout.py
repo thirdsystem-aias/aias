@@ -20,6 +20,8 @@ Pages are drawn on a ReportLab canvas, one function per page type:
   section_opener()                            full-Indigo opener (Tier 1 only)
   text_page()                                 intro, limitations, closing
   closing_page()                              Tier 1 closing page: statement, colophon, Indigo band
+  brief_page()                                Tier 3 brief: front page (title, standfirst, numbers,
+                                              one chart) and text page (two columns)
 Shared pieces: lockup(), wordmark(), number_row(), icon(), running_chrome().
 
 Report code (decision 14, Pablo, Nov 13, 2026; reports/report_code.py): the Tier 1 closing band
@@ -68,7 +70,7 @@ __all__ = [
     "register_fonts", "font_name",
     "lockup", "wordmark", "icon", "number_row", "running_chrome", "last_page_footer",
     "cover_c2", "cover_c3", "at_a_glance", "contents_page", "finding_page",
-    "finding_evidence_page", "section_opener", "text_page", "closing_page", "colophon_paragraphs",
+    "finding_evidence_page", "section_opener", "text_page", "closing_page", "colophon_paragraphs", "brief_page",
     "table_flowable", "reserve_chart", "overlay_charts", "treated_photo",
     "count_words", "word_budget", "check_page_budget",
 ]
@@ -1123,6 +1125,99 @@ def text_page(c: Canvas, t: Tokens, *, label: str, page_no: int, sections: Seque
             y = _block(c, make, t.margin, y, sec.get("width", t.content_w), bottom, sec.get("heading") or "text") - sec.get("gap_after", 12)
         words += sum(count_words(p) for p in sec.get("paras", []))
     return {"bottom": y, "words": words}
+
+
+def _foot_bottom(foot: Callable[[], object] | float | None, default: float) -> float:
+    if foot is None:
+        return default
+    r = foot() if callable(foot) else foot
+    return float(r["body_bottom"] if isinstance(r, dict) else r)
+
+
+def brief_page(c: Canvas, t: Tokens, *, kind: str, label: str, page_no: int, kicker: str,
+               title: str | None = None, standfirst: str | None = None, numbers: Sequence[dict] | None = None,
+               chart: Path | str | None = None, pointer: str | None = None,
+               sections: Sequence[tuple[str, Sequence[str]]] | None = None, split: int = 1,
+               foot: Callable[[], object] | float | None = None, code: str | None = None,
+               page_index: int | None = None) -> dict:
+    """A Tier 3 brief page (report_specs page_templates.brief_page; Pablo, Nov 22, 2026, decision 2).
+
+    kind="front": kicker, title (finding_headline), standfirst (brief_standfirst), the row of
+    three big numbers, at most one chart (its footprint reserved from the chart PDF; the
+    returned ChartSlot goes to overlay_charts) and an optional one-line pointer below it.
+    kind="text": kicker, then sections [(heading, [paragraphs])] in two columns: sections[:split]
+    in the left column, the rest in the right.
+
+    foot draws the page's notes / Disclosures (small_print.foot_blocks) and returns their
+    result (a dict with body_bottom) or the body bottom itself; it is called where the
+    approved layout drew it, so the text order of the PDF stays the same. code= on the
+    last page (footer line 'thirdsystem.ai · CODE'). Raises LayoutOverflow when anything
+    would run into the notes. Returns bottom, free_pt_above_notes, words, elements, slot."""
+    bp = t.pages["brief_page"]
+    running_chrome(c, t, label, page_no, code)
+    default_bottom = t.pages["finding_page"]["body"]["bottom_from_bottom_pt"]
+    slot = None
+    elements: list[str] = []
+    if kind == "front":
+        fr = bp["front"]
+        if not title or not standfirst or numbers is None:
+            raise ValueError("a front brief page takes title, standfirst and numbers")
+        _caps(c, t, t.margin, t.y(fr["kicker_baseline_from_top_pt"]), kicker, t.style("kicker"))
+        lt = t.y(fr["large_type_bottom_from_top_pt"])
+        y = _block(c, lambda: [_para(t, title, t.style(fr["title_style"]))], t.margin,
+                   t.y(fr["title_top_from_top_pt"]), t.content_w, lt, "brief title", runt=True)
+        y = _block(c, lambda: [_para(t, standfirst, t.style(fr["standfirst_style"]))], t.margin,
+                   y - fr["standfirst_gap_below_title_pt"], fr["standfirst_width_pt"], lt, "brief standfirst", runt=True)
+        row = number_row(c, t, t.margin, y - fr["number_row_rule_gap_below_standfirst_pt"], t.content_w, numbers)
+        elements.append("number_row")
+        bottom = _foot_bottom(foot, default_bottom)
+        y = row["bottom"]
+        if chart is not None:
+            cw, ch, sc = reserve_chart(chart, t.content_w)
+            ctop = y - fr["chart_gap_below_number_row_pt"]
+            if ctop - ch < bottom - 0.01:
+                raise LayoutOverflow(f"brief chart: needs {ch:.0f} pt, {ctop - bottom:.0f} pt available")
+            slot = ChartSlot(page_no - 1 if page_index is None else page_index, Path(chart),
+                             t.margin + (t.content_w - cw) / 2, ctop - ch, cw, ch, sc)
+            elements.append(chart_element(t, cw, ch))
+            y = ctop - ch
+        if pointer:
+            y = _block(c, lambda: [paragraph(t, pointer, "small")], t.margin, y - fr["pointer_gap_below_chart_pt"],
+                       t.content_w, bottom, "pointer line")
+        words = (count_words(kicker) + count_words(title) + count_words(standfirst)
+                 + sum(count_words(" ".join([n["value"], n["label"], n["source"]])) for n in numbers)
+                 + count_words(pointer or ""))
+    elif kind == "text":
+        tx = bp["text"]
+        if not sections:
+            raise ValueError("a text brief page takes sections")
+        if not 0 < split <= len(sections):
+            raise ValueError(f"split must be 1..{len(sections)}")
+        _caps(c, t, t.margin, t.y(tx["kicker_baseline_from_top_pt"]), kicker, t.style("kicker"))
+        bottom = _foot_bottom(foot, default_bottom)
+        secs = [(h, list(ps)) for h, ps in sections]
+
+        def flow(sel):
+            fl = []
+            for i in sel:
+                h, ps = secs[i]
+                fl.append(paragraph(t, h, "subheading", space_after=tx["subheading_space_after_pt"],
+                                    space_before=0 if i == sel[0] else tx["subheading_space_before_pt"]))
+                fl += [paragraph(t, p, "body", space_after=tx["body_space_after_pt"]) for p in ps]
+            return fl
+        colw = tx["column_width_pt"]
+        top = t.y(tx["columns_top_from_top_pt"])
+        bots = []
+        for k, sel in enumerate([list(range(split)), list(range(split, len(secs)))]):
+            if sel:
+                bots.append(_block(c, lambda s=sel: flow(s), t.margin + k * (colw + tx["gutter_pt"]), top, colw,
+                                   bottom, f"brief page {page_no}, {'left' if k == 0 else 'right'} column"))
+        y = min(bots)
+        words = count_words(kicker) + sum(count_words(h) + sum(count_words(p) for p in ps) for h, ps in secs)
+    else:
+        raise ValueError(f"brief_page kind must be 'front' or 'text', not {kind!r}")
+    return {"bottom": y, "body_bottom": bottom, "free_pt_above_notes": round(y - bottom, 1), "words": words,
+            "elements": elements, "slot": slot}
 
 
 def colophon_paragraphs(t: Tokens) -> Callable[..., Paragraph]:

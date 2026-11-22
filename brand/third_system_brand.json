@@ -10,7 +10,8 @@
       "1.3 \u2014 added Black 10 grayscale tone; locked tier_color_semantics (Incumbent=Indigo, Mid-tier=Petro, Challenger=Copper Plate); added semantic_ui_colors (text/muted/grid) and python_constant_mapping for stable cross-chat constant naming.",
       "1.4 \u2014 added chart_sizing_specifications: locked figsize-by-column-span table, DPI targets (300 print/144 screen), font-size scaling per column span, title/subtitle/source positioning formulas, output filename convention. Default output is print-first (300 DPI vector PDF) which renders correctly for both print and screen.",
       "1.5 \u2014 citation byline corrected to surname-first Spanish convention (Gonzalez Castro, P. U.) in citation.format and citation.example; cleaned corrupted byline injection from disclaimers.diagnostic_pilot.",
-      "1.6 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: publication_tiers, typography.number_scale, cover_system (C2 for Tier 1, C3 for Tier 2, product lockup on every cover), photography (rules, licensed pool, usage record) and pictograms (draft set, none approved). Palette colours, logos, footers, disclaimers, the 6-column Letter grid and body text 9.4/13.2 are unchanged. Nov 12, 2026 (Pablo, AIAS 2.0 report r3): palette.measure_color_semantics adds roles over existing colours (Presence Indigo #37237B, Consistency Rust #BD4718, challengers keep Copper Plate #F36C35, waves light to dark Lavender Grey/Iris/Indigo, reference and failed greys, label ink), with python_constant_mapping.measure_semantics."
+      "1.6 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: publication_tiers, typography.number_scale, cover_system (C2 for Tier 1, C3 for Tier 2, product lockup on every cover), photography (rules, licensed pool, usage record) and pictograms (draft set, none approved). Palette colours, logos, footers, disclaimers, the 6-column Letter grid and body text 9.4/13.2 are unchanged. Nov 12, 2026 (Pablo, AIAS 2.0 report r3): palette.measure_color_semantics adds roles over existing colours (Presence Indigo #37237B, Consistency Rust #BD4718, challengers keep Copper Plate #F36C35, waves light to dark Lavender Grey/Iris/Indigo, reference and failed greys, label ink), with python_constant_mapping.measure_semantics.",
+      "1.6, Nov 22, 2026 \u2014 typography.number_scale.brief_standfirst (Light 13.5/18.5, soft_black), Pablo\u2019s decision 3 on the brief format (Nov 22, 10:47 am)."
     ]
   },
   "company": {
@@ -2375,6 +2376,13 @@
         "leading_pt": 26,
         "color": "soft_black",
         "_note": "no longer Bold Indigo"
+      },
+      "brief_standfirst": {
+        "weight": "Light",
+        "size_pt": 13.5,
+        "leading_pt": 18.5,
+        "color": "soft_black",
+        "_note": "Tier 3 brief standfirst, below the title size (Pablo, Nov 22, 2026, 10:47 am, decision 3); used by ts_layout.brief_page()."
       },
       "finding_number": {
         "weight": "Light",
