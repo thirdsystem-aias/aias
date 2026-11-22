@@ -1,0 +1,58 @@
+{
+  "phase": "v1.11",
+  "created_utc": "2026-11-22T08:45:55.592000+00:00",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "units_sha256": "1243e8e15e2dc6afc894197de9819d149d934e3883bc9f504e8fdfbbbb9c08b8",
+  "calibration": {
+    "calls": {
+      "J1": 209,
+      "J2": 200
+    },
+    "tokens_in_per_char": {
+      "J1": 0.3504884121815744,
+      "J2": 0.2184757307127843
+    },
+    "output_tokens_per_call": {
+      "J1": 80.70334928229666,
+      "J2": 42.71
+    }
+  },
+  "params": {
+    "e_cap": 36,
+    "j2_e_share": 0.1,
+    "e_half": false,
+    "e_none": false
+  },
+  "reductions_applied": [],
+  "steps": [
+    {
+      "params": {
+        "e_cap": 36,
+        "j2_e_share": 0.1,
+        "e_half": false,
+        "e_none": false
+      },
+      "calls": 11791,
+      "calls_by_role": {
+        "J1": 7957,
+        "J2": 3834
+      },
+      "tokens_in_by_role": {
+        "J1": 10727932,
+        "J2": 3457902
+      },
+      "tokens_out_by_role": {
+        "J1": 642156.550239279,
+        "J2": 163750.14000000243
+      },
+      "usd": 32.15408220239234,
+      "usd_with_overhead": 36.977194532751184,
+      "calls_with_overhead": 13560
+    }
+  ],
+  "fits": true,
+  "jobs_sha256": "661ab05659f545ff5bbac11672101e9f25012cca0f51e0dca7bf3d3b09169ef3"
+}
