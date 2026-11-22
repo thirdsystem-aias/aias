@@ -1,0 +1,111 @@
+{
+ "source": "git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl",
+ "prices_on": "2026-12-01",
+ "prices_file": "osf/v45/scripts/budget_v0_45.py (read 2026-11-11; re-read for cost r1 2026-11-14)",
+ "remeasure_by_model_class": {
+  "claude-fable-5-2|B-S0": {
+   "calls": 72,
+   "central": 2.07,
+   "high": 5.66,
+   "mean_call": 0.02819,
+   "p90_call": 0.07148
+  },
+  "claude-fable-5-2|A-yn": {
+   "calls": 72,
+   "central": 0.12,
+   "high": 0.2,
+   "mean_call": 0.00158,
+   "p90_call": 0.00255
+  },
+  "claude-fable-5-2|A-open": {
+   "calls": 24,
+   "central": 2.01,
+   "high": 2.48,
+   "mean_call": 0.08209,
+   "p90_call": 0.09391
+  },
+  "gpt-6-astra|B-S0": {
+   "calls": 72,
+   "central": 3.26,
+   "high": 7.57,
+   "mean_call": 0.04444,
+   "p90_call": 0.09561
+  },
+  "gpt-6-astra|A-yn": {
+   "calls": 72,
+   "central": 0.05,
+   "high": 0.08,
+   "mean_call": 0.00066,
+   "p90_call": 0.00102
+  },
+  "gpt-6-astra|A-open": {
+   "calls": 24,
+   "central": 4.69,
+   "high": 5.72,
+   "mean_call": 0.19151,
+   "p90_call": 0.21679
+  },
+  "gemini-4-argon|B-S0": {
+   "calls": 72,
+   "central": 1.95,
+   "high": 2.9,
+   "mean_call": 0.02661,
+   "p90_call": 0.03663
+  },
+  "gemini-4-argon|A-yn": {
+   "calls": 72,
+   "central": 0.02,
+   "high": 0.03,
+   "mean_call": 0.0003,
+   "p90_call": 0.00032
+  },
+  "gemini-4-argon|A-open": {
+   "calls": 24,
+   "central": 0.93,
+   "high": 1.12,
+   "mean_call": 0.03816,
+   "p90_call": 0.04245
+  }
+ },
+ "remeasure_total": {
+  "calls": 504,
+  "central": 15.11,
+  "high": 25.77
+ },
+ "judge": {
+  "answers": 72,
+  "usd": 0.22,
+  "price_in_out": [
+   2.0,
+   10.0
+  ],
+  "reserve_counted": 2.5,
+  "note": "the judge cost is inside the reserve"
+ },
+ "remeasure_with_reserve": {
+  "central": 17.61,
+  "high": 28.27
+ },
+ "choice_design_A_r1": {
+  "central": 26.53,
+  "high": 58.11
+ },
+ "stage1_total_design_A": {
+  "central": 44.14,
+  "high": 86.38
+ },
+ "stage1_total_design_E_one_square": {
+  "central": 34.47,
+  "high": 65.38
+ },
+ "stage1_total_design_F_four_squares_12_runs": {
+  "central": 70.66,
+  "high": 144.5
+ },
+ "checks": {
+  "central_below_pause_80": true,
+  "high_below_pause_80": false,
+  "high_below_cap_100": true,
+  "remeasure_calls_504": true
+ }
+}

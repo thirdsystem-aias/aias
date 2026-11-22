@@ -1,0 +1,18 @@
+source git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl; prices on 2026-12-01 from osf/v45/scripts/budget_v0_45.py (read 2026-11-11; re-read for cost r1 2026-11-14)
+  re-measure claude-fable-5-2|B-S0        72 calls  central $  2.07  high $  5.66  (mean/call $0.0282, p90/call $0.0715)
+  re-measure claude-fable-5-2|A-yn        72 calls  central $  0.12  high $  0.20  (mean/call $0.0016, p90/call $0.0026)
+  re-measure claude-fable-5-2|A-open      24 calls  central $  2.01  high $  2.48  (mean/call $0.0821, p90/call $0.0939)
+  re-measure gpt-6-astra|B-S0             72 calls  central $  3.26  high $  7.57  (mean/call $0.0444, p90/call $0.0956)
+  re-measure gpt-6-astra|A-yn             72 calls  central $  0.05  high $  0.08  (mean/call $0.0007, p90/call $0.0010)
+  re-measure gpt-6-astra|A-open           24 calls  central $  4.69  high $  5.72  (mean/call $0.1915, p90/call $0.2168)
+  re-measure gemini-4-argon|B-S0          72 calls  central $  1.95  high $  2.90  (mean/call $0.0266, p90/call $0.0366)
+  re-measure gemini-4-argon|A-yn          72 calls  central $  0.02  high $  0.03  (mean/call $0.0003, p90/call $0.0003)
+  re-measure gemini-4-argon|A-open        24 calls  central $  0.93  high $  1.12  (mean/call $0.0382, p90/call $0.0425)
+re-measure total 504 calls: central $15.11, high $25.77
+v0.23 judge 72 answers $0.22 at (2.0, 10.0); reserve $2.50 counted instead
+re-measure + judge reserve: central $17.61, high $28.27
+choice design A (cost r1): central $26.53, high $58.11
+stage1_total_design_A: central $44.14, high $86.38
+stage1_total_design_E_one_square: central $34.47, high $65.38
+stage1_total_design_F_four_squares_12_runs: central $70.66, high $144.50
+checks {'central_below_pause_80': True, 'high_below_pause_80': False, 'high_below_cap_100': True, 'remeasure_calls_504': True}
