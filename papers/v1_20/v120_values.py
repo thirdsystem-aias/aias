@@ -125,6 +125,12 @@ def usd2(x):
     return f"US\\${float(x):,.2f}"
 
 
+def sci1(x):
+    """e.g. 4.8e-05 -> $4.8 \\times 10^{-5}$"""
+    m, e = f"{float(x):.1e}".split("e")
+    return f"${m} \\times 10^{{{int(e)}}}$"
+
+
 def f1(x):
     return f"{float(x):.1f}"
 
@@ -239,7 +245,8 @@ class Values:
 # --------------------------------------------------------------------------- loading
 NAMES = {"verdicts": "v1_20_verdicts.json", "stage_j": "stage_j_v1_20.json",
          "comparison": "comparison_v1_11_v1_20.json", "frozen": "judge_outputs_frozen_v1_11.json",
-         "plan": "plan_v1_11.json", "run": "run_values_v1_20.json", "cutlist": "cut_units_v1_20.json"}
+         "plan": "plan_v1_11.json", "run": "run_values_v1_20.json", "cutlist": "cut_units_v1_20.json",
+         "xcheck": "v1_9_cross_check_v1_20.json"}
 V111_LOG = V111 / "outputs/stage_j_run_v1_11.log"
 
 
@@ -250,7 +257,7 @@ def source_path(outputs_dir, k):
     p = d / NAMES[k]
     if p.exists():
         return p
-    return {"frozen": V111 / "outputs", "plan": V111 / "data", "run": HERE,
+    return {"frozen": V111 / "outputs", "plan": V111 / "data", "run": HERE, "xcheck": HERE,
             "cutlist": DESIGN / "scoping"}.get(k, d) / NAMES[k]
 
 

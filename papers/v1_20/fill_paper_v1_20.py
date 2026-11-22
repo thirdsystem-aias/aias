@@ -340,6 +340,19 @@ def compute(src, synthetic, fig_dir, tags, deviations, halt_log):
     val.word("V120_STAGEJ_UTC", J["created_utc"].replace("T", " ")[:16], ["stage_j", "created_utc"])
     val.word("V120_STAGEC_UTC", V["created_utc"].replace("T", " ")[:16], ["verdicts", "created_utc"])
     val.derive("WINDOW_MISMATCH", VV.d_len, [("verdicts", ["F_window_count_vs_n_mentions", "mismatches"])], VV.i0)
+    # P/C* cross-check against the v1.9 unit table (v1.20 section 5 item 3): omitted by score_v1_20.run_stage_c,
+    # completed post hoc on 2026-11-22 by v1_9_cross_check_v1_20.py with v1.11's own comparison (never a verdict input)
+    X = src["xcheck"]
+    need(all(i.get("matches_pin") for i in X["inputs"].values()) and len(X["inputs"]) == 2,
+         "cross-check inputs match v1.11's input manifest")
+    need(X["keys"]["keys_in_both"] == X["P_Cstar_v1_9_cross_check"]["rows_compared"], "cross-check rows all joined")
+    xd = X["descriptive_at_v1_9_printed_precision_4dp"]
+    need(xd["rows_differing"] == 0, "every row agrees at the v1.9 table's 4 decimals ('all rows agree')")
+    val.derive("PC_DIFF", VV.d_len, [("xcheck", ["P_Cstar_v1_9_cross_check", "differences"])], VV.i0)
+    val.put("PC_ROWS", "xcheck", ["P_Cstar_v1_9_cross_check", "rows_compared"], VV.i0)
+    val.put("PC_MAXDP", "xcheck", ["descriptive_at_v1_9_printed_precision_4dp", "max_abs_diff_P"], VV.sci1)
+    val.put("PC_MAXDC", "xcheck", ["descriptive_at_v1_9_printed_precision_4dp", "max_abs_diff_Cstar"], VV.sci1)
+    val.put("PC_NC", "xcheck", ["descriptive_at_v1_9_printed_precision_4dp", "rows_with_Cstar_in_both"], VV.i0)
     rk = V["ranking"]
     need(rk.get("status") == "ACTIVE" and all(t.get("matches_v1_10_stage_s") for t in rk["rank_tables"].values()),
          "H5 active, rank tables match v1.10")

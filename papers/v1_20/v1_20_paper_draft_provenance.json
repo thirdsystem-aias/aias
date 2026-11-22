@@ -4271,6 +4271,67 @@
    "fmt": "i0",
    "formatted": "0"
   },
+  "PC_DIFF": {
+   "kind": "derived",
+   "fn": "d_len",
+   "consts": [],
+   "refs": [
+    [
+     "xcheck",
+     [
+      "P_Cstar_v1_9_cross_check",
+      "differences"
+     ]
+    ]
+   ],
+   "raw": 335.0,
+   "fmt": "i0",
+   "formatted": "335"
+  },
+  "PC_ROWS": {
+   "kind": "json",
+   "source": "xcheck",
+   "path": [
+    "P_Cstar_v1_9_cross_check",
+    "rows_compared"
+   ],
+   "raw": 336,
+   "fmt": "i0",
+   "formatted": "336"
+  },
+  "PC_MAXDP": {
+   "kind": "json",
+   "source": "xcheck",
+   "path": [
+    "descriptive_at_v1_9_printed_precision_4dp",
+    "max_abs_diff_P"
+   ],
+   "raw": 4.800000000670934e-05,
+   "fmt": "sci1",
+   "formatted": "$4.8 \\times 10^{-5}$"
+  },
+  "PC_MAXDC": {
+   "kind": "json",
+   "source": "xcheck",
+   "path": [
+    "descriptive_at_v1_9_printed_precision_4dp",
+    "max_abs_diff_Cstar"
+   ],
+   "raw": 4.6999999995023245e-05,
+   "fmt": "sci1",
+   "formatted": "$4.7 \\times 10^{-5}$"
+  },
+  "PC_NC": {
+   "kind": "json",
+   "source": "xcheck",
+   "path": [
+    "descriptive_at_v1_9_printed_precision_4dp",
+    "rows_with_Cstar_in_both"
+   ],
+   "raw": 163,
+   "fmt": "i0",
+   "formatted": "163"
+  },
   "RANK_TABLES": {
    "kind": "derived",
    "fn": "d_len",
