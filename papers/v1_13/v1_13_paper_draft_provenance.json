@@ -2,6 +2,7 @@
  "verdicts": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/v1_13_verdicts.json",
  "sdri": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/audit/v1_13_sdri.csv",
  "checks": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/audit/v1_13_audit_checks.json",
+ "c2": "/Users/pablou/aias/_worktrees/v1.13-paper/osf/methodology/v1_13/v1_13_c2_extras.json",
  "synthetic": false,
  "interim": false,
  "coi_cheil": false,
@@ -70,14 +71,14 @@
    "basis": [
     "osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md"
    ],
-   "formatted": "Deviations are recorded in `osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md` (16 entries after the lock), each before the step it concerns."
+   "formatted": "Deviations are recorded in `osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md` (17 entries after the lock), each with the date it was recorded."
   },
   "DEV_STATUS": {
    "kind": "text",
    "basis": [
     "osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md"
    ],
-   "formatted": "deviations recorded in the deviations log under `osf/methodology/v1_13/` (16 entries after the lock)."
+   "formatted": "deviations recorded in the deviations log under `osf/methodology/v1_13/` (17 entries after the lock)."
   },
   "GATE_FINAL": {
    "kind": "text",
@@ -18810,7 +18811,7 @@
   },
   "TABLE_SENS": {
    "kind": "table",
-   "formatted": "| Sensitivity | H1 S1 | H1 S0 | H2 S1 | H2 S0 | rel3 | Gate | Verdicts that differ |\n|:-----------------------|-----:|-----:|------:|------:|----:|:------------|:-----------------------|\n| S1 denominator $m_b$ | 0.278 | 0.404 | -0.094 | 0.064 | -- | MARGINAL | H4 MARGINAL |\n| S2 cited set | 0.196 | 0.315 | -0.039 | -0.075 | -- | MARGINAL | none |\n| S4 floor 3 | 0.489 | 0.516 | 0.114 | 0.108 | -- | FAIL | H1 FALSIFIED |\n| S4 floor 10 | 0.328 | 0.342 | -0.288 | 0.041 | -- | UNDETERMINED | H1, H2, H4 UNDETERMINED |\n| S5 Gemini dropped | 0.318 | 0.395 | -0.113 | 0.033 | -- | MARGINAL | none |\n| S9 URLs in the text | 0.286 | 0.380 | -0.083 | 0.073 | -- | MARGINAL | none |\n| S10 uncentred ranks | 0.390 | 0.467 | 0.042 | 0.126 | -- | MARGINAL | H4 MARGINAL |\n| S11 without Denon | 0.307 | 0.395 | -0.087 | 0.049 | -- | MARGINAL | none |",
+   "formatted": "| Sensitivity | H1 S1 | H1 S0 | H2 S1 | H2 S0 | rel3 | Gate | Verdicts that differ |\n|:-----------------------------|-----:|-----:|------:|------:|----:|:------------|:-----------------------|\n| S1 denominator $m_b$ | 0.278 | 0.404 | -0.094 | 0.064 | -- | MARGINAL | H4 MARGINAL |\n| S2 cited set | 0.196 | 0.315 | -0.039 | -0.075 | -- | MARGINAL | none |\n| S4 floor 3 | 0.489 | 0.516 | 0.114 | 0.108 | -- | FAIL | H1 FALSIFIED |\n| S4 floor 10 | 0.328 | 0.342 | -0.288 | 0.041 | -- | UNDETERMINED | H1, H2, H4 UNDETERMINED |\n| S5 Gemini dropped | 0.318 | 0.395 | -0.113 | 0.033 | -- | MARGINAL | none |\n| S6 $D_b$ verified by Part II | 0.307 | 0.395 | -0.087 | 0.049 | -- | MARGINAL | none |\n| S7 AIAS 2.0 $t_3$ comparators | 0.341 | 0.341 | 0.035 | 0.035 | -- | MARGINAL | none |\n| S9 URLs in the text | 0.286 | 0.380 | -0.083 | 0.073 | -- | MARGINAL | none |\n| S10 uncentred ranks | 0.390 | 0.467 | 0.042 | 0.126 | -- | MARGINAL | H4 MARGINAL |\n| S11 without Denon | 0.307 | 0.395 | -0.087 | 0.049 | -- | MARGINAL | none |",
    "cells": [
     {
      "formatted": "0.278",
@@ -19053,6 +19054,94 @@
      "fmt": "r3"
     },
     {
+     "formatted": "0.307",
+     "source": "c2",
+     "path": [
+      "S6_verified_D_b",
+      "rho",
+      "H1_Sep_Presence",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.395",
+     "source": "c2",
+     "path": [
+      "S6_verified_D_b",
+      "rho",
+      "H1_Sep_Presence",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "-0.087",
+     "source": "c2",
+     "path": [
+      "S6_verified_D_b",
+      "rho",
+      "H2_Sep_Consistency",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.049",
+     "source": "c2",
+     "path": [
+      "S6_verified_D_b",
+      "rho",
+      "H2_Sep_Consistency",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.341",
+     "source": "c2",
+     "path": [
+      "S7_legacy_t3",
+      "rho",
+      "H1_Sep_Presence",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.341",
+     "source": "c2",
+     "path": [
+      "S7_legacy_t3",
+      "rho",
+      "H1_Sep_Presence",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.035",
+     "source": "c2",
+     "path": [
+      "S7_legacy_t3",
+      "rho",
+      "H2_Sep_Consistency",
+      0
+     ],
+     "fmt": "r3"
+    },
+    {
+     "formatted": "0.035",
+     "source": "c2",
+     "path": [
+      "S7_legacy_t3",
+      "rho",
+      "H2_Sep_Consistency",
+      1
+     ],
+     "fmt": "r3"
+    },
+    {
      "formatted": "0.286",
      "source": "verdicts",
      "path": [
@@ -19202,6 +19291,8 @@
    "kind": "text",
    "basis": [
     "verdicts",
+    "verdict_changes",
+    "c2",
     "verdict_changes"
    ],
    "formatted": "A verdict would differ under S1, S4 and S10 (listed in the table); the primary verdicts stand."
@@ -19218,11 +19309,50 @@
   "S7_SENTENCE": {
    "kind": "text",
    "basis": [
-    "verdicts",
-    "sensitivities",
-    "S7_legacy_t3"
+    "c2",
+    "S7_legacy_t3",
+    "verdict_changes"
    ],
-   "formatted": "Sensitivity S7 (AIAS 2.0 $t_3$ comparators) was not computed: the scorer was given no $t_3$ profile input."
+   "formatted": "Sensitivity S7 (P and $C^*$ from AIAS 2.0 at $t_3$, cross-panel) was computed after Stage C2 by `postlock/c2_extras_v1_13.py` with the scorer's own functions (continued deviations log, Entry 6) and is reported in the table beside the verdicts; it changes no verdict."
+  },
+  "S6_N_UNITS": {
+   "kind": "json",
+   "source": "c2",
+   "path": [
+    "S6_verified_D_b",
+    "units_with_aliases"
+   ],
+   "raw": 11,
+   "fmt": "i0",
+   "formatted": "11"
+  },
+  "S6_N_BARE": {
+   "kind": "text",
+   "basis": [
+    "c2",
+    "S6_verified_D_b",
+    "aliases",
+    "aliases matching (co|com).xx (distinct, counted)"
+   ],
+   "formatted": "25"
+  },
+  "S6_N_BARE_UNITS": {
+   "kind": "text",
+   "basis": [
+    "c2",
+    "S6_verified_D_b",
+    "aliases",
+    "units with such an alias (counted)"
+   ],
+   "formatted": "5"
+  },
+  "S6_SENTENCE": {
+   "kind": "text",
+   "basis": [
+    "c2",
+    "S6_verified_D_b"
+   ],
+   "formatted": "Sensitivity S6 ($D_b$ as verified by Part II) was computed after Stage C2 by the same script (Entry 5): the $D_b$ of 11 units gained the registrable domains of their home pages' final URLs and of their Wikidata P856 values, and it changes no verdict. Among the added aliases were 25 bare country suffixes (`co.id`, `co.th`, `co.zm` and others, in 5 units), which S6 treated as brand aliases although they are not in the frozen alias list; no verdict changed, and S6 was not re-run without them (a deviation recorded on 2026-11-22, continued deviations log, Entry 17)."
   },
   "TABLE_S8": {
    "kind": "table",

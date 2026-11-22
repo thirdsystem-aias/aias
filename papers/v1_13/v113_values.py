@@ -36,6 +36,7 @@ import score_v1_13 as S  # noqa: E402  (read-only: verdict functions and constan
 PREREG_TAG, AUDIT_TAG = "v1.13-prereg-r1", "v1.13-audit-r1"
 VERDICTS_JSON = DESIGN / "v1_13_verdicts.json"
 SDRI_CSV = DESIGN / "audit" / "v1_13_sdri.csv"
+C2_EXTRAS_JSON = DESIGN / "v1_13_c2_extras.json"   # postlock/c2_extras_v1_13.py: S6, S7 (Entries 5, 6; 17)
 CHECKS_JSON = DESIGN / "audit" / "v1_13_audit_checks.json"   # postlock/audit_checks_v1_13.py (Entries 1, 2; pass 2: 16)
 REGISTRY_CSV = DESIGN / "registries" / "brand_domains_v1_13.csv"
 GIT_ANCHOR = DESIGN / "anchor" / "git_anchor_v1_13.json"
@@ -64,7 +65,8 @@ PLAIN = {"H1_Sep_Presence": "Presence", "H2_Sep_Consistency": "Consistency", "H3
          "H7_Struct_Gap": "structured-data richness"}
 SENS = [("S1_denominator_m", "S1 denominator $m_b$"), ("S2_citations", "S2 cited set"),
         ("S4_floor_3", "S4 floor 3"), ("S4_floor_10", "S4 floor 10"), ("S5_gemini_dropped", "S5 Gemini dropped"),
-        ("S5_gemini_kept", "S5 Gemini kept"), ("S7_legacy_t3", "S7 AIAS 2.0 $t_3$ comparators"),
+        ("S5_gemini_kept", "S5 Gemini kept"), ("S6_verified_D_b", "S6 $D_b$ verified by Part II"),
+        ("S7_legacy_t3", "S7 AIAS 2.0 $t_3$ comparators"),
         ("S9_text_urls", "S9 URLs in the text"), ("S10_uncentred", "S10 uncentred ranks"),
         ("S11_without_Denon", "S11 without Denon")]
 SYNTHETIC_MARK = "SYNTHETIC TEST — NOT RESULTS"
@@ -256,7 +258,7 @@ def read_rows(path):
     return list(csv.DictReader(Path(path).read_text(encoding="utf-8").splitlines()))
 
 
-def load_sources(verdicts_path, sdri_path=None, registry_path=REGISTRY_CSV, checks_path=None):
+def load_sources(verdicts_path, sdri_path=None, registry_path=REGISTRY_CSV, checks_path=None, c2_path=None):
     """checks_path: Part II audit checks (audit/v1_13_audit_checks.json); the pass windows (window_pass1.json,
     window_pass2.json) are read from the same directory when they exist. Source 'audit' = {} without it."""
     V = json.loads(Path(verdicts_path).read_text(encoding="utf-8"))
@@ -269,7 +271,8 @@ def load_sources(verdicts_path, sdri_path=None, registry_path=REGISTRY_CSV, chec
             w = Path(checks_path).parent / f"window_pass{k}.json"
             if w.exists():
                 audit[f"window_pass{k}"] = json.loads(w.read_text(encoding="utf-8"))
-    return {"verdicts": V, "sdri": sdri, "registry": reg, "audit": audit}
+    c2 = json.loads(Path(c2_path).read_text(encoding="utf-8")) if c2_path and Path(c2_path).exists() else {}
+    return {"verdicts": V, "sdri": sdri, "registry": reg, "audit": audit, "c2": c2}
 
 
 def is_synthetic(V):

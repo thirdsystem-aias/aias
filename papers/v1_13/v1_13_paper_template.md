@@ -312,7 +312,7 @@ Table: Structured-data audit per category: brands audited (defunct brands exclud
 
 ## 3.7 Sensitivity analyses
 
-The table below gives the gate statistics under each pre-registered sensitivity. {{SENS_CHANGES_SENTENCE}} {{S11_SENTENCE}} Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from {{S8_H1_LO}} to {{S8_H1_HI}} {{S8_REL_CLAUSE}} (Appendix). {{S7_SENTENCE}} Sensitivity S6 ($D_b$ as verified by Part II) is not computed by the locked scorer's core and is not reported here.
+The table below gives the gate statistics under each pre-registered sensitivity. {{SENS_CHANGES_SENTENCE}} {{S11_SENTENCE}} Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from {{S8_H1_LO}} to {{S8_H1_HI}} {{S8_REL_CLAUSE}} (Appendix). {{S7_SENTENCE}} {{S6_SENTENCE}}
 
 Table: Pre-registered sensitivity analyses (§7): $\rho_w$ of G\* with P and $C^*$ in each condition, rel3, and the gate verdict each would give; a leg verdict different from the primary one is marked with its word. Sensitivities never change a verdict.
 
@@ -434,7 +434,7 @@ Programme records cited by version, as the locked pre-registration names them (O
 
 Brand units rated on G\*, by category: answers naming the brand ($m_b$), grounded answers ($g_b$), answers retrieving the brand's own domain ($o_b$), G\*, the mean number of distinct resolved domains per grounded answer ($d_b$) and the source mix (shares of brand-owned, reference, review/editorial, retailer, news, forum/UGC and other domains). A dagger marks a house or portal domain (§2.3).
 
-\begingroup\small\setstretch{1.0}
+\begingroup\small\setstretch{1.0}\renewcommand{\arraystretch}{0.95}
 
 {{TABLE_BRANDS}}
 

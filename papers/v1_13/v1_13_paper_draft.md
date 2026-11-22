@@ -61,7 +61,7 @@ The structured-data audit (Part II) was collected, but too few brands had both s
 
 **JEL codes:** M31; L86, L15, D83, M37
 
-**Paper status:** Pre-registered methodology paper, re-analysis of stored $t_4$ answers (Part I) and new public web data (Part II); no model was called and nothing was spent. Gate verdict MARGINAL; deviations recorded in the deviations log under `osf/methodology/v1_13/` (16 entries after the lock). Part of the AIAS measurement programme.
+**Paper status:** Pre-registered methodology paper, re-analysis of stored $t_4$ answers (Part I) and new public web data (Part II); no model was called and nothing was spent. Gate verdict MARGINAL; deviations recorded in the deviations log under `osf/methodology/v1_13/` (17 entries after the lock). Part of the AIAS measurement programme.
 
 # 1. Introduction
 
@@ -137,7 +137,7 @@ Sensitivities (§7) never change a verdict; any verdict that would differ is lis
 
 ## 2.9 Pre-registration and lock
 
-Part I was locked at git tag `v1.13-prereg-r1` (commit `b83efb25a3`, tagged 2026-11-11 02:48 UTC) and deposited on OSF (`ec6wh`, `methodology/v1_13/`: `prereg/`, `registries/`, `anchor/`) with the SHA-256 of every locked file; its anchor record names the tag's commit and the activation of H4--H6. The text states that Part I would lock no earlier than 11 November 2026 at about 3 pm CT; it was locked earlier because the pre-registrant waived the 24-hour review on 10 November 2026 at 20:26 CT, as the deviations record states in an entry made before the tag (Entry 0a). The locked text is unchanged by it. Part II was locked separately at tag `v1.13-audit-r1` (commit `5e12e0da93`) with its own anchor record; its audit could start only 24 hours after the pre-registrant received the locked text (received 2026-11-12 03:55 UTC) and never between 17 and 22 November 2026 (protocol §4, §8). The scorer (`score_v1_13.py`) and the audit (`audit_v1_13.py`) were written and unit-tested on synthetic data before the lock; Stage C1 refuses to run without the tag, the anchor and matching hashes. Choices the text leaves open are listed in the scorers' notes and in the pre-registration's change log (§12). Deviations are recorded in `osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md` (16 entries after the lock), each before the step it concerns.
+Part I was locked at git tag `v1.13-prereg-r1` (commit `b83efb25a3`, tagged 2026-11-11 02:48 UTC) and deposited on OSF (`ec6wh`, `methodology/v1_13/`: `prereg/`, `registries/`, `anchor/`) with the SHA-256 of every locked file; its anchor record names the tag's commit and the activation of H4--H6. The text states that Part I would lock no earlier than 11 November 2026 at about 3 pm CT; it was locked earlier because the pre-registrant waived the 24-hour review on 10 November 2026 at 20:26 CT, as the deviations record states in an entry made before the tag (Entry 0a). The locked text is unchanged by it. Part II was locked separately at tag `v1.13-audit-r1` (commit `5e12e0da93`) with its own anchor record; its audit could start only 24 hours after the pre-registrant received the locked text (received 2026-11-12 03:55 UTC) and never between 17 and 22 November 2026 (protocol §4, §8). The scorer (`score_v1_13.py`) and the audit (`audit_v1_13.py`) were written and unit-tested on synthetic data before the lock; Stage C1 refuses to run without the tag, the anchor and matching hashes. Choices the text leaves open are listed in the scorers' notes and in the pre-registration's change log (§12). Deviations are recorded in `osf/methodology/v1_13/anchor/DEVIATIONS.md` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md` (17 entries after the lock), each with the date it was recorded.
 
 # 3. Results
 
@@ -256,17 +256,19 @@ Table: Structured-data audit per category: brands audited (defunct brands exclud
 
 ## 3.7 Sensitivity analyses
 
-The table below gives the gate statistics under each pre-registered sensitivity. A verdict would differ under S1, S4 and S10 (listed in the table); the primary verdicts stand. Without the Denon unit (S11) no verdict changes. Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from 0.211 to 0.405 while rel3 could not be computed with any category left out (Appendix). Sensitivity S7 (AIAS 2.0 $t_3$ comparators) was not computed: the scorer was given no $t_3$ profile input. Sensitivity S6 ($D_b$ as verified by Part II) is not computed by the locked scorer's core and is not reported here.
+The table below gives the gate statistics under each pre-registered sensitivity. A verdict would differ under S1, S4 and S10 (listed in the table); the primary verdicts stand. Without the Denon unit (S11) no verdict changes. Leaving one category out (S8), $\rho_w(G^*, P_{S1})$ ranged from 0.211 to 0.405 while rel3 could not be computed with any category left out (Appendix). Sensitivity S7 (P and $C^*$ from AIAS 2.0 at $t_3$, cross-panel) was computed after Stage C2 by `postlock/c2_extras_v1_13.py` with the scorer's own functions (continued deviations log, Entry 6) and is reported in the table beside the verdicts; it changes no verdict. Sensitivity S6 ($D_b$ as verified by Part II) was computed after Stage C2 by the same script (Entry 5): the $D_b$ of 11 units gained the registrable domains of their home pages' final URLs and of their Wikidata P856 values, and it changes no verdict. Among the added aliases were 25 bare country suffixes (`co.id`, `co.th`, `co.zm` and others, in 5 units), which S6 treated as brand aliases although they are not in the frozen alias list; no verdict changed, and S6 was not re-run without them (a deviation recorded on 2026-11-22, continued deviations log, Entry 17).
 
 Table: Pre-registered sensitivity analyses (§7): $\rho_w$ of G\* with P and $C^*$ in each condition, rel3, and the gate verdict each would give; a leg verdict different from the primary one is marked with its word. Sensitivities never change a verdict.
 
 | Sensitivity | H1 S1 | H1 S0 | H2 S1 | H2 S0 | rel3 | Gate | Verdicts that differ |
-|:-----------------------|-----:|-----:|------:|------:|----:|:------------|:-----------------------|
+|:-----------------------------|-----:|-----:|------:|------:|----:|:------------|:-----------------------|
 | S1 denominator $m_b$ | 0.278 | 0.404 | -0.094 | 0.064 | -- | MARGINAL | H4 MARGINAL |
 | S2 cited set | 0.196 | 0.315 | -0.039 | -0.075 | -- | MARGINAL | none |
 | S4 floor 3 | 0.489 | 0.516 | 0.114 | 0.108 | -- | FAIL | H1 FALSIFIED |
 | S4 floor 10 | 0.328 | 0.342 | -0.288 | 0.041 | -- | UNDETERMINED | H1, H2, H4 UNDETERMINED |
 | S5 Gemini dropped | 0.318 | 0.395 | -0.113 | 0.033 | -- | MARGINAL | none |
+| S6 $D_b$ verified by Part II | 0.307 | 0.395 | -0.087 | 0.049 | -- | MARGINAL | none |
+| S7 AIAS 2.0 $t_3$ comparators | 0.341 | 0.341 | 0.035 | 0.035 | -- | MARGINAL | none |
 | S9 URLs in the text | 0.286 | 0.380 | -0.083 | 0.073 | -- | MARGINAL | none |
 | S10 uncentred ranks | 0.390 | 0.467 | 0.042 | 0.126 | -- | MARGINAL | H4 MARGINAL |
 | S11 without Denon | 0.307 | 0.395 | -0.087 | 0.049 | -- | MARGINAL | none |
@@ -392,7 +394,7 @@ Programme records cited by version, as the locked pre-registration names them (O
 
 Brand units rated on G\*, by category: answers naming the brand ($m_b$), grounded answers ($g_b$), answers retrieving the brand's own domain ($o_b$), G\*, the mean number of distinct resolved domains per grounded answer ($d_b$) and the source mix (shares of brand-owned, reference, review/editorial, retailer, news, forum/UGC and other domains). A dagger marks a house or portal domain (§2.3).
 
-\begingroup\small\setstretch{1.0}
+\begingroup\small\setstretch{1.0}\renewcommand{\arraystretch}{0.95}
 
 | Category | Brand | $m$ | $g$ | $o$ | G\* | $d$ | own | ref | rev | ret | news | UGC | other |
 |:--------------|:-----------------------|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|----:|-----:|

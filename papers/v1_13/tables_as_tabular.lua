@@ -8,6 +8,13 @@
 -- pre-flight. Columns whose cells are long (over 45 characters) wrap in a p{} column; a table wider than the text
 -- block is scaled down to the text width (graphicx \resizebox).
 
+-- Fixed column widths (fractions of the line width; nil = natural width) for tables named by the start of their
+-- caption. Table 1 (the pre-registered hypotheses) was scaled down to fit the text block, which made its type
+-- smaller than the other tables; with wrapped columns it fits at the tables' normal size.
+local FIXED = {
+  ["Pre-registered hypotheses, quoted"] = {nil, nil, 0.33, 0.19, 0.17},
+}
+
 local function render(blocks)
   local s = pandoc.write(pandoc.Pandoc(blocks), 'latex')
   return (s:gsub('%s*\n%s*', ' '))
@@ -41,10 +48,18 @@ function Table(tbl)
   for _, b in ipairs(tbl.bodies) do for _, r in ipairs(b.body) do scan(r) end end
   local nlong = 0
   for i = 1, ncol do if maxlen[i] > 45 then nlong = nlong + 1 end end
+  local fixed = nil
+  local captext = pandoc.utils.stringify(tbl.caption.long)
+  for k, w in pairs(FIXED) do
+    if captext:sub(1, #k) == k then fixed = w end
+  end
   local spec = {}
   for i, cs in ipairs(tbl.colspecs) do
     local a = tostring(cs[1])
-    if maxlen[i] > 45 then
+    if fixed and fixed[i] then
+      spec[i] = string.format('>{\\raggedright\\arraybackslash}p{%.2f\\linewidth}', fixed[i])
+    elseif fixed then spec[i] = 'l'
+    elseif maxlen[i] > 45 then
       spec[i] = string.format('>{\\raggedright\\arraybackslash}p{%.2f\\linewidth}', 0.62 / nlong)
     elseif a == 'AlignRight' then spec[i] = 'r'
     elseif a == 'AlignCenter' then spec[i] = 'c'

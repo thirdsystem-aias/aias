@@ -655,30 +655,77 @@ def compute(src, synthetic, fig_dir, ctx):
     VC = V.get("verdict_changes") or {}
     cl = Cells(val)
     rows = []
+    C2 = src.get("c2") or {}                     # postlock/c2_extras_v1_13.py (S6, S7; Entries 5, 6, 17)
+    C2K = [k for k in ("S6_verified_D_b", "S7_legacy_t3") if k not in SN and "rho" in (C2.get(k) or {})]
     for key, label in VV.SENS:
-        if key not in SN:
+        if key in SN:
+            sname, sp, gate, ch = "verdicts", ["sensitivities", key], SN[key].get("gate", DASH), VC.get(key) or {}
+        elif key in C2K:
+            sname, sp, gate, ch = "c2", [key], C2[key].get("gate_H1_H3", DASH), C2[key].get("verdict_changes") or {}
+        else:
             continue
-        sp = ["sensitivities", key]
-        ch = VC.get(key) or {}
-        rows.append([label] + [cl.f("verdicts", sp + ["rho", h, i], VV.r3) for h in ("H1_Sep_Presence",
-                                                                                  "H2_Sep_Consistency")
+        rows.append([label] + [cl.f(sname, sp + ["rho", h, i], VV.r3) for h in ("H1_Sep_Presence",
+                                                                              "H2_Sep_Consistency")
                                for i in (0, 1)] +
-                    [cl.f("verdicts", sp + ["rel3"], VV.r3), SN[key].get("gate", DASH), _changes(ch)])
+                    [cl.f(sname, sp + ["rel3"], VV.r3), gate, _changes(ch)])
     val.table("TABLE_SENS", md_table(["Sensitivity", "H1 S1", "H1 S0", "H2 S1", "H2 S0", "rel3", "Gate",
                                       "Verdicts that differ"], rows, ["l", "r", "r", "r", "r", "r", "l", "l"]), cl.cells)
-    changed = sorted({k.split("_")[0] for k, v in VC.items() if v}, key=lambda x: int(x[1:]))
+    allch = list(VC.items()) + [(k, C2[k].get("verdict_changes")) for k in C2K]
+    changed = sorted({k.split("_")[0] for k, v in allch if v}, key=lambda x: int(x[1:]))
     val.word("SENS_CHANGES_SENTENCE",
              (f"A verdict would differ under {VV.joinand(changed)} (listed in the table); the primary verdicts stand."
               if changed else "No sensitivity analysis would change a verdict."),
-             ["verdicts", "verdict_changes"])
+             ["verdicts", "verdict_changes"] + (["c2", "verdict_changes"] if C2K else []))
     s11 = VC.get("S11_without_Denon") or {}
     val.word("S11_SENTENCE", ("Without the Denon unit (S11), " + VV.joinand(f"{VV.SHORT[h]} would be {w[0]}"
                                                                            for h, w in s11.items()) + "."
                               if s11 else "Without the Denon unit (S11) no verdict changes."),
              ["verdicts", "verdict_changes", "S11_without_Denon"])
-    val.word("S7_SENTENCE", "" if "S7_legacy_t3" in SN else
-             "Sensitivity S7 (AIAS 2.0 $t_3$ comparators) was not computed: the scorer was given no $t_3$ profile "
-             "input.", ["verdicts", "sensitivities", "S7_legacy_t3"])
+    script = "`postlock/c2_extras_v1_13.py`"
+    if "S7_legacy_t3" in SN:
+        val.word("S7_SENTENCE", "", ["verdicts", "sensitivities", "S7_legacy_t3"])
+    elif "S7_legacy_t3" in C2K:
+        ch7 = C2["S7_legacy_t3"].get("verdict_changes") or {}
+        val.word("S7_SENTENCE",
+                 "Sensitivity S7 (P and $C^*$ from AIAS 2.0 at $t_3$, cross-panel) was computed after Stage C2 by "
+                 f"{script} with the scorer\'s own functions (continued deviations log, Entry 6) and is reported in "
+                 "the table beside the verdicts; " + ("it changes no verdict." if not ch7 else
+                                                      f"under it {_changes(ch7)} (the primary verdicts stand)."),
+                 ["c2", "S7_legacy_t3", "verdict_changes"])
+    else:
+        val.word("S7_SENTENCE", "Sensitivity S7 (AIAS 2.0 $t_3$ comparators) was not computed: the scorer was given no "
+                 "$t_3$ profile input.", ["verdicts", "sensitivities", "S7_legacy_t3"])
+    if "S6_verified_D_b" in C2K:
+        s6 = C2["S6_verified_D_b"]
+        ch6 = s6.get("verdict_changes") or {}
+        nu = val.put("S6_N_UNITS", "c2", ["S6_verified_D_b", "units_with_aliases"], VV.i0)
+        bare = {}                                   # a bare country suffix (co.th, com.vn) taken as a brand alias
+        for k, al in (s6.get("aliases") or {}).items():
+            for d in al:
+                if re.fullmatch(r"(co|com)\.[a-z]{2}", d):
+                    bare.setdefault(d, set()).add(k)
+        if bare:
+            ex = sorted(bare, key=lambda d: (-len(bare[d]), d))[:3]
+            nb = val.word("S6_N_BARE", str(len(bare)), ["c2", "S6_verified_D_b", "aliases",
+                                                       "aliases matching (co|com).xx (distinct, counted)"])
+            nbu = val.word("S6_N_BARE_UNITS", str(len({k for v in bare.values() for k in v})),
+                           ["c2", "S6_verified_D_b", "aliases", "units with such an alias (counted)"])
+            note = (f" Among the added aliases were {nb} bare country suffixes ({', '.join(f'`{d}`' for d in ex)} "
+                    f"and others, in {nbu} units), which S6 treated as brand aliases although they are not in the frozen "
+                    "alias list; " + ("no verdict changed" if not ch6 else "the verdicts that differ are in the table")
+                    + ", and S6 was not re-run without them (a deviation recorded on 2026-11-22, continued deviations "
+                    "log, Entry 17).")
+        else:
+            note = ""
+        val.word("S6_SENTENCE",
+                 f"Sensitivity S6 ($D_b$ as verified by Part II) was computed after Stage C2 by the same script "
+                 f"(Entry 5): the $D_b$ of {nu} units gained the registrable domains of their home pages\' final URLs "
+                 "and of their Wikidata P856 values, and " + ("it changes no verdict." if not ch6 else
+                                                               f"under it {_changes(ch6)} (the primary verdicts stand).")
+                 + note, ["c2", "S6_verified_D_b"])
+    else:
+        val.word("S6_SENTENCE", "Sensitivity S6 ($D_b$ as verified by Part II) is not computed by the locked scorer\'s "
+                 "core and is not reported here.", ["c2", "S6_verified_D_b", "(not computed)"])
     lo = SN.get("S8_leave_one_substrate_out") or {}
     cl = Cells(val)
     rows = []
@@ -770,7 +817,7 @@ def deviations_text(synthetic):
         rel += "` and `osf/methodology/v1_13/postlock/DEVIATIONS_continued_v1_13.md"
     if n:
         ent = f"{n} entr{'y' if n == 1 else 'ies'} after the lock"
-        return (f"Deviations are recorded in `{rel}` ({ent}), each before the step it concerns.",
+        return (f"Deviations are recorded in `{rel}` ({ent}), each with the date it was recorded.",
                 f"deviations recorded in the deviations log under `osf/methodology/v1_13/` ({ent}).", [rel])
     return (f"No deviation after the lock is recorded in `{rel}` (its Entries 0 and 0a were written before the lock).",
             f"no deviation after the lock (`{rel}`).", [rel])
@@ -843,11 +890,28 @@ def check_audit_inputs(src, verdicts, sdri):
             raise FillError(f"the audit checks file was computed from another {key} file ({want} != {got})")
 
 
+def check_c2_inputs(src, verdicts):
+    """Real mode: S6/S7 (postlock/c2_extras_v1_13.py) must have been computed (not test_only) from the very verdict
+    file the paper reads (SHA-256 recorded by the script)."""
+    import hashlib
+    c2 = src.get("c2") or {}
+    if not c2:
+        return
+    inp = c2.get("inputs") or {}
+    if inp.get("test_only") is not False:
+        raise FillError("the S6/S7 extras file is a test-only run (inputs.test_only is not false)")
+    want = (inp.get("verdicts") or [None, None])[1]
+    got = hashlib.sha256(Path(verdicts).read_bytes()).hexdigest()
+    if want != got:
+        raise FillError(f"the S6/S7 extras file was computed from another verdict file ({want} != {got})")
+
+
 def fill(verdicts, sdri=None, out=None, fig_dir=None, synthetic=False, interim=False, coi_cheil=False,
-         template=TEMPLATE, checks=None):
-    src = VV.load_sources(verdicts, sdri, checks_path=checks)
+         template=TEMPLATE, checks=None, c2=None):
+    src = VV.load_sources(verdicts, sdri, checks_path=checks, c2_path=c2)
     if not synthetic:
         check_audit_inputs(src, verdicts, sdri)
+        check_c2_inputs(src, verdicts)
     try:
         src.update(V118.load())
     except V118.InputError as e:
@@ -868,7 +932,7 @@ def fill(verdicts, sdri=None, out=None, fig_dir=None, synthetic=False, interim=F
         out = Path(out)
         out.parent.mkdir(parents=True, exist_ok=True)
         out.write_text(text, encoding="utf-8")
-        prov = {"verdicts": str(verdicts), "sdri": str(sdri), "checks": str(checks), "synthetic": synthetic, "interim": interim,
+        prov = {"verdicts": str(verdicts), "sdri": str(sdri), "checks": str(checks), "c2": str(c2), "synthetic": synthetic, "interim": interim,
                 "coi_cheil": coi_cheil, "cases": cases, "flags": flags, "values": val.prov}
         Path(str(out).replace(".md", "_provenance.json")).write_text(
             json.dumps(prov, indent=1, ensure_ascii=False, default=str), encoding="utf-8")
@@ -881,6 +945,8 @@ def main(argv=None):
     ap.add_argument("--sdri", type=Path, default=None, help=f"Part II SDRI table (default {VV.SDRI_CSV} if it exists)")
     ap.add_argument("--checks", type=Path, default=None,
                     help=f"Part II audit checks (default {VV.CHECKS_JSON} if it exists and an SDRI table is read)")
+    ap.add_argument("--c2-extras", type=Path, default=None,
+                    help=f"S6/S7 extras (default {VV.C2_EXTRAS_JSON} if it exists; real mode only)")
     ap.add_argument("--fig-dir", default=None, help="figure directory as the paper references it "
                                                      "(default ../../reports/figs/v113, relative to papers/v1_13)")
     ap.add_argument("--out", type=Path, default=HERE / "v1_13_paper_draft.md")
@@ -894,9 +960,11 @@ def main(argv=None):
     sdri = a.sdri if a.sdri else (VV.SDRI_CSV if (not a.synthetic and VV.SDRI_CSV.exists()) else None)
     checks = a.checks if a.checks else (VV.CHECKS_JSON if (not a.synthetic and sdri and VV.CHECKS_JSON.exists())
                                         else None)
+    c2 = a.c2_extras if a.c2_extras else (VV.C2_EXTRAS_JSON if (not a.synthetic and VV.C2_EXTRAS_JSON.exists())
+                                          else None)
     try:
         text, val, cases, flags = fill(a.verdicts, sdri, a.out, a.fig_dir, a.synthetic, a.interim, a.coi_cheil,
-                                       checks=checks)
+                                       checks=checks, c2=c2)
     except (FillError, VV.Missing) as e:
         print(f"[fill v1.13] REFUSED: {e}", file=sys.stderr)
         return 3

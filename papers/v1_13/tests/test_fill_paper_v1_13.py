@@ -357,6 +357,67 @@ class TestFill(unittest.TestCase):
         self.assertEqual(set(names.values()), {"Chevrolet", "BMW", "Bentley", "Jack Daniel's", "Eucerin"})
 
 
+class TestC2Extras(unittest.TestCase):
+    """S6 and S7 from postlock/c2_extras_v1_13.py (Entries 5, 6, 17), on a SYNTHETIC extras file."""
+
+    def extras(self, d, changes=None):
+        c2 = {"note": "SYNTHETIC extras for the test", "inputs": {"test_only": True, "verdicts": ["x", "0" * 64]},
+              "S6_verified_D_b": {"gate_H1_H3": "MARGINAL", "rel3": None, "n_rated": 40,
+                                  "rho": {"H1_Sep_Presence": [0.111, 0.222], "H2_Sep_Consistency": [-0.033, 0.044]},
+                                  "verdict_changes": changes or {}, "units_with_aliases": 3,
+                                  "aliases": {"v22|C.1": ["co.th", "com.vn", "brand.de"], "v22|C.2": ["co.th"],
+                                              "v20|A.2": ["other.com"]}},
+              "S7_legacy_t3": {"gate_H1_H3": "MARGINAL", "rel3": None, "n_rated": 40,
+                               "rho": {"H1_Sep_Presence": [0.155, 0.155], "H2_Sep_Consistency": [0.066, 0.066]},
+                               "verdict_changes": {}}}
+        q = Path(d) / "SYNTHETIC_c2_extras.json"
+        q.write_text(json.dumps(c2), encoding="utf-8")
+        return q
+
+    def test_s6_s7_filled_from_the_extras_file(self):
+        v, sd = fx("scored")
+        text0 = F.fill(v, sd, None, "/tmp/figs", synthetic=True, checks=fxc("scored"))[0]
+        self.assertIn("S6 ($D_b$ as verified by Part II) is not computed", text0)
+        self.assertNotIn("| S6 $D_b$", text0)
+        with tempfile.TemporaryDirectory() as d:
+            q = self.extras(d)
+            text, val, cases, flags = F.fill(v, sd, None, "/tmp/figs", synthetic=True, checks=fxc("scored"), c2=q)
+            TestFill.check_render(self, text, val, load("scored"), "c2")
+            row6 = [l for l in text.splitlines() if l.startswith("| S6 $D_b$")]
+            row7 = [l for l in text.splitlines() if l.startswith("| S7 AIAS 2.0")]
+            self.assertEqual(len(row6), 1)
+            self.assertEqual(len(row7), 1)
+            self.assertIn("| 0.111 | 0.222 | -0.033 | 0.044 |", row6[0])
+            self.assertIn("| 0.155 | 0.155 | 0.066 | 0.066 |", row7[0])
+            self.assertIn("the $D_b$ of 3 units gained", text)
+            self.assertIn("2 bare country suffixes (`co.th`, `com.vn` and others, in 2 units)", text)
+            self.assertIn("Entry 17", text)
+            self.assertIn("no verdict changed", text)
+            self.assertNotIn("S7 (AIAS 2.0 $t_3$ comparators) was not computed", text)
+            cells = [c for c in val.prov["TABLE_SENS"]["cells"] if c["source"] == "c2"]
+            self.assertEqual(len(cells), 8)
+            for c in cells:
+                self.assertEqual(VV.FORMATS[c["fmt"]](VV.jget(val.src["c2"], c["path"])), c["formatted"])
+            q = self.extras(d, {"H1_Sep_Presence": ["CONFIRMED", "MARGINAL"]})
+            text = F.fill(v, sd, None, "/tmp/figs", synthetic=True, checks=fxc("scored"), c2=q)[0]
+            self.assertIn("A verdict would differ under", text)
+            self.assertIn("S6", text.split("A verdict would differ under")[1].split(".")[0])
+            self.assertNotIn("no verdict changed", text)
+
+    def test_real_mode_extras_must_match_the_verdict_file(self):
+        import hashlib
+        v, sd = fx("scored")
+        with tempfile.TemporaryDirectory() as d:
+            src = VV.load_sources(v, sd, c2_path=self.extras(d))
+        with self.assertRaises(F.FillError):
+            F.check_c2_inputs(src, v)                                   # test_only
+        src["c2"]["inputs"]["test_only"] = False
+        with self.assertRaises(F.FillError):
+            F.check_c2_inputs(src, v)                                   # another verdict file
+        src["c2"]["inputs"]["verdicts"] = ["y", hashlib.sha256(Path(v).read_bytes()).hexdigest()]
+        F.check_c2_inputs(src, v)
+
+
 class TestDeviations(unittest.TestCase):
     def test_entries_after_the_lock_are_counted_from_the_continuation(self):
         orig = VV.DEVIATIONS_CONT
