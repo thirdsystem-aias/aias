@@ -9,7 +9,7 @@
       "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
       "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
       "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only.",
-      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1 and TS-BR-v1.14-r1."
+      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1, TS-BR-v1.14-r1 and TS-BR-v0.43-r1."
     ]
   },
   "product_structure_summary": {
@@ -2305,6 +2305,28 @@
         "status": "current",
         "held": false,
         "note": "Tier 3 brief of the Ranking closing paper (AIAS Methodology v1.14 and v1.16, reported together), in the brief format approved by Pablo Nov 22, 2026, 10:47 am. Coded with the first study (v1.14): the catalogue has no code for a combined study (v0.27 and v0.28 are coded separately); v1.16 is named in the title block. To be deposited beside the paper in OSF methodology/v1_14/ and methodology/v1_16/ (osf.io/ec6wh; no paper deposit is recorded in the repo yet)."
+      },
+      {
+        "code": "TS-BR-v0.43-r1",
+        "type": "BR",
+        "study": "v0.43",
+        "rev": "r1",
+        "title": "Brands AI answers named more in June did not gain more search interest later",
+        "date": "2026-11-22",
+        "date_source": "PDF CreationDate 2026-11-22 (not yet deposited or published)",
+        "tier": 3,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": "5284b42",
+        "repo_path": "reports/briefs/v0_43/TS-BR-v0.43-r1_brands-ai-answers-named-more-in-june-did-not-gain-more.pdf",
+        "osf_path": null,
+        "osf_version": null,
+        "sha256": "160472bd8157ec91162dd272178e86bb79cc3d2a0a97df4499239dd70c7c2e22",
+        "sha256_source": "local build at 5284b42 (reports/briefs/v0_43/TS-BR-v0.43-r1_brands-ai-answers-named-more-in-june-did-not-gain-more.pdf)",
+        "website": null,
+        "status": "current",
+        "held": false,
+        "note": "Tier 3 brief of the v0.43 predictive-validity paper (Stage 1, a test on past data), in the brief format approved by Pablo Nov 22, 2026, 10:47 am. To be deposited beside the paper in OSF v43/ (osf.io/ec6wh; no paper deposit is recorded in the repo yet)."
       }
     ]
   }
