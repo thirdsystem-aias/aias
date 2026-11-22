@@ -1,0 +1,914 @@
+{
+ "_note": "Every number printed in TS-CS-v1.20-r1 and its chart: name -> source file, JSON path (or locked scorer constant), raw value, format. Sources: osf/methodology/v1_20/outputs/ (verdicts v1_20_verdicts.json, stage_j, comparison), osf/methodology/v1_11/outputs/ (frozen).",
+ "sources_sha256": {
+  "verdicts": "042ea8435c98e0579b29aa527568cf7078b503d686b8dd8254122fa523fc7ed6",
+  "stage_j": "3279416c58f2c37367abc6a899a7da49cde2ef746371a37dccfbc0270dc23f17",
+  "comparison": "6cd5332e2688c9b4c1907a4c7a2449900d3d06c75ee4f5837fb151e83cc0d3fc",
+  "frozen": "8f81b23b997694aef43cc0007ec8989285c283562049f37e506535bac81a1238"
+ },
+ "values": {
+  "ALPHA": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H1_Judge_Agreement",
+    "alpha_ordinal"
+   ],
+   "raw": 0.8735375049707651,
+   "fmt": "r3",
+   "formatted": "0.874"
+  },
+  "BRHO": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H1_Judge_Agreement",
+    "brand_rho",
+    "rho"
+   ],
+   "raw": 0.8741315978119655,
+   "fmt": "r3",
+   "formatted": "0.874"
+  },
+  "BRHO_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H1_Judge_Agreement",
+    "brand_rho",
+    "n"
+   ],
+   "raw": 163,
+   "fmt": "i0",
+   "formatted": "163"
+  },
+  "PAIRS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H1_Judge_Agreement",
+    "units_judged_by_both"
+   ],
+   "raw": 3650,
+   "fmt": "i0",
+   "formatted": "3,650"
+  },
+  "H9": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H9_Self_Preference",
+    "delta_points"
+   ],
+   "raw": -0.549996650701678,
+   "fmt": "pts2",
+   "formatted": "−0.55"
+  },
+  "H4": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H4_Stability_Short",
+    "rho"
+   ],
+   "raw": 0.7345480783237405,
+   "fmt": "r3",
+   "formatted": "0.735"
+  },
+  "H4_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H4_Stability_Short",
+    "n"
+   ],
+   "raw": 53,
+   "fmt": "i0",
+   "formatted": "53"
+  },
+  "H6": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H6_Stability_Long",
+    "rho"
+   ],
+   "raw": 0.7431354467480386,
+   "fmt": "r3",
+   "formatted": "0.743"
+  },
+  "H6_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H6_Stability_Long",
+    "n"
+   ],
+   "raw": 52,
+   "fmt": "i0",
+   "formatted": "52"
+  },
+  "H2_t1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t1",
+    "rho"
+   ],
+   "raw": 0.4771413565591314,
+   "fmt": "r3",
+   "formatted": "0.477"
+  },
+  "H2_t1_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t1",
+    "n"
+   ],
+   "raw": 55,
+   "fmt": "i0",
+   "formatted": "55"
+  },
+  "H3_t1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H3_Sep_Consistency",
+    "per_wave",
+    "t1",
+    "rho"
+   ],
+   "raw": 0.06002365411899284,
+   "fmt": "r3",
+   "formatted": "0.060"
+  },
+  "H2_t2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t2",
+    "rho"
+   ],
+   "raw": 0.44774041679209164,
+   "fmt": "r3",
+   "formatted": "0.448"
+  },
+  "H2_t2_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t2",
+    "n"
+   ],
+   "raw": 54,
+   "fmt": "i0",
+   "formatted": "54"
+  },
+  "H3_t2": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H3_Sep_Consistency",
+    "per_wave",
+    "t2",
+    "rho"
+   ],
+   "raw": -0.015567966533775825,
+   "fmt": "r3",
+   "formatted": "-0.016"
+  },
+  "H2_t3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t3",
+    "rho"
+   ],
+   "raw": 0.501287109373618,
+   "fmt": "r3",
+   "formatted": "0.501"
+  },
+  "H2_t3_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H2_Sep_Presence",
+    "per_wave",
+    "t3",
+    "n"
+   ],
+   "raw": 54,
+   "fmt": "i0",
+   "formatted": "54"
+  },
+  "H3_t3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H3_Sep_Consistency",
+    "per_wave",
+    "t3",
+    "rho"
+   ],
+   "raw": 0.14894520071399783,
+   "fmt": "r3",
+   "formatted": "0.149"
+  },
+  "H3_MAX": {
+   "kind": "derived",
+   "fn": "d_absmax",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H3_Sep_Consistency",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3_Sep_Consistency",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3_Sep_Consistency",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.14894520071399783,
+   "fmt": "r2",
+   "formatted": "0.15"
+  },
+  "H5_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.38545230059033103,
+   "fmt": "r3",
+   "formatted": "0.385"
+  },
+  "H5_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t1",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t2",
+      "rho"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H5_Sep_Ranking",
+      "per_wave",
+      "t3",
+      "rho"
+     ]
+    ]
+   ],
+   "raw": 0.43974974338504835,
+   "fmt": "r3",
+   "formatted": "0.440"
+  },
+  "H7": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "H7_Naming_Frequency",
+    "rho"
+   ],
+   "raw": 0.532296715744527,
+   "fmt": "r3",
+   "formatted": "0.532"
+  },
+  "SCUT_T3": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S_CUT_without_cut_answers",
+    "H2_Sep_Presence",
+    "per_wave",
+    "t3",
+    "rho"
+   ],
+   "raw": 0.488463592396282,
+   "fmt": "r3",
+   "formatted": "0.488"
+  },
+  "CUT_ANSWERS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "cut_list",
+    "answers_flagged"
+   ],
+   "raw": 66,
+   "fmt": "i0",
+   "formatted": "66"
+  },
+  "N_EARLY_CATS": {
+   "kind": "derived",
+   "fn": "d_unique",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "descriptives",
+      "baseline"
+     ]
+    ]
+   ],
+   "raw": 8.0,
+   "fmt": "i0",
+   "formatted": "8"
+  },
+  "V111_FAIL": {
+   "kind": "json",
+   "source": "comparison",
+   "path": [
+    "outcome_counts",
+    "v1.11 rule",
+    "J1",
+    "JUDGE_FAIL"
+   ],
+   "raw": 155,
+   "fmt": "i0",
+   "formatted": "155"
+  },
+  "UNITS": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "consts": [],
+   "refs": [
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "VALID"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "JUDGE_FAIL"
+     ]
+    ]
+   ],
+   "raw": 7578.0,
+   "fmt": "i0",
+   "formatted": "7,578"
+  },
+  "V111_SHARE": {
+   "kind": "derived",
+   "fn": "JUDGE_FAIL / (VALID + JUDGE_FAIL)",
+   "consts": [],
+   "refs": [
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "JUDGE_FAIL"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "VALID"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "JUDGE_FAIL"
+     ]
+    ]
+   ],
+   "raw": 0.0204539456320929,
+   "fmt": "pct2",
+   "formatted": "2.05%"
+  },
+  "V111_HALTS": {
+   "kind": "derived",
+   "fn": "d_len",
+   "consts": [],
+   "refs": [
+    [
+     "comparison",
+     [
+      "halts",
+      "v1.11 rule"
+     ]
+    ]
+   ],
+   "raw": 11.0,
+   "fmt": "i0",
+   "formatted": "11"
+  },
+  "SETS": {
+   "kind": "derived",
+   "fn": "d_count",
+   "consts": [],
+   "refs": [
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.14 premium_tea",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.9 finance",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.9 oliveoil",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.9 pm",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.9 running",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v0.9 skincare",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v1.0 household",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 EARLY-6 v1.0 knives",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t1 v0.19",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t1 v0.20",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t1 v0.21",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t1 v0.22",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t1 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t2 v0.19",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t2 v0.20",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t2 v0.21",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t2 v0.22",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t2 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t3 v0.19",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t3 v0.20",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t3 v0.21",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t3 v0.22",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 OMNI t3 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 R t1 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 R t2 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "judge_fail_by_judge_set",
+      "J1 R t3 v0.23",
+      "v1.11 rule",
+      "fail_share"
+     ]
+    ]
+   ],
+   "raw": 26.0,
+   "fmt": "i0",
+   "formatted": "26"
+  },
+  "V120_FAIL": {
+   "kind": "derived",
+   "fn": "d_signed",
+   "consts": [
+    [
+     1,
+     1,
+     -1
+    ]
+   ],
+   "refs": [
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "VALID"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.11 rule",
+      "J1",
+      "JUDGE_FAIL"
+     ]
+    ],
+    [
+     "comparison",
+     [
+      "outcome_counts",
+      "v1.20 rule",
+      "J1",
+      "VALID"
+     ]
+    ]
+   ],
+   "raw": 0.0,
+   "fmt": "i0",
+   "formatted": "0"
+  },
+  "CALLS": {
+   "kind": "json",
+   "source": "frozen",
+   "path": [
+    "records"
+   ],
+   "raw": 12336,
+   "fmt": "i0",
+   "formatted": "12,336"
+  },
+  "SPEND": {
+   "kind": "json",
+   "source": "frozen",
+   "path": [
+    "spend_usd"
+   ],
+   "raw": 33.92917,
+   "fmt": "usd",
+   "formatted": "US$33.93"
+  },
+  "BAND_LO": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "BAND_CONFIRMED_MAX",
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "BAND_HI": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "BAND_FALSIFIED_MIN",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "ALPHA_MIN": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "ALPHA_CONFIRMED_MIN",
+   "raw": 0.667,
+   "fmt": "r3",
+   "formatted": "0.667"
+  },
+  "BRHO_MIN": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "BRAND_AGREE_CONFIRMED_MIN",
+   "raw": 0.8,
+   "fmt": "r2",
+   "formatted": "0.80"
+  },
+  "STAB_MIN": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "STAB_CONFIRMED_MIN",
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "HALT": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "JUDGE_FAIL_HALT_SHARE",
+   "raw": 0.02,
+   "fmt": "pct0",
+   "formatted": "2%"
+  },
+  "NFLOOR": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "N_FLOOR",
+   "raw": 6,
+   "fmt": "i0",
+   "formatted": "6"
+  },
+  "SELFPREF_MAX": {
+   "kind": "rule",
+   "source": "scripts/score_v1_11.py",
+   "constant": "SELF_PREF_OK_MAX",
+   "raw": 5.0,
+   "fmt": "i0",
+   "formatted": "5"
+  },
+  "SD_SAME": {
+   "kind": "text",
+   "basis": "sensitivities.SD_without_Denon_v0_19.*.verdict == VERDICTS.*",
+   "formatted": "the same verdicts"
+  },
+  "CHEIL": {
+   "kind": "text",
+   "basis": "papers/v1_20/v1_20_paper_draft.md Declarations, Cheil sentence (v1.12 wording), employer's name replaced by 'the employer's group'",
+   "formatted": "Cheil Worldwide, a marketing company of the employer's group, or its agency Iris has done advertising, public-relations or search-marketing work for five registry brands: Chevrolet (for GM Korea, 2017), BMW (UK consumer public relations, 2018), Bentley (experiential agency of record in the Americas from 2021), Jack Daniel's (UK digital agency from 2022, since replaced) and Eucerin (search marketing for Beiersdorf from 2024)."
+  }
+ },
+ "report_code": "TS-CS-v1.20-r1",
+ "pdf": "reports/briefs/v1_20/TS-CS-v1.20-r1_sentiment-in-ai-answers-can-be-measured-reliably-but-it-is.pdf",
+ "keys_used_in_text": [
+  "ALPHA",
+  "ALPHA_MIN",
+  "BAND_HI",
+  "BAND_LO",
+  "BRHO",
+  "BRHO_MIN",
+  "BRHO_N",
+  "CALLS",
+  "CHEIL",
+  "CUT_ANSWERS",
+  "H2_t1",
+  "H2_t2",
+  "H2_t3",
+  "H2_t3_N",
+  "H3_MAX",
+  "H4",
+  "H4_N",
+  "H5_MAX",
+  "H5_MIN",
+  "H6",
+  "H6_N",
+  "H7",
+  "HALT",
+  "NFLOOR",
+  "N_EARLY_CATS",
+  "PAIRS",
+  "SCUT_T3",
+  "SD_SAME",
+  "SETS",
+  "SPEND",
+  "STAB_MIN",
+  "UNITS",
+  "V111_FAIL",
+  "V111_HALTS",
+  "V111_SHARE",
+  "V120_FAIL"
+ ],
+ "digit_audit": {
+  "checked": 80,
+  "unknown": []
+ }
+}
