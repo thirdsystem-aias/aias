@@ -1,0 +1,77 @@
+{
+ "batches_by_role": {
+  "J1": 29,
+  "J2": 11
+ },
+ "finish_reason_by_role": {
+  "J1": {
+   "end_turn": 8502
+  },
+  "J2": {
+   "completed": 3834
+  }
+ },
+ "first_utc": "2026-11-22T08:06:46.372392+00:00",
+ "last_utc": "2026-11-22T09:53:43.506360+00:00",
+ "matches_frozen_raw_sha256": true,
+ "mode": {
+  "batch": 12336
+ },
+ "raw_sha256": "0517f8e567b12f0fc849edfa702581371977f04b45a30efe6e4ac36c26ebd862",
+ "records": 12336,
+ "records_by_role": {
+  "J1": 8502,
+  "J2": 3834
+ },
+ "records_by_role_pass_attempt": {
+  "J1": {
+   "main|attempt 1": 7578,
+   "main|attempt 2": 329,
+   "main|attempt 3": 198,
+   "repeat|attempt 1": 379,
+   "repeat|attempt 2": 10,
+   "repeat|attempt 3": 8
+  },
+  "J2": {
+   "main|attempt 1": 3650,
+   "repeat|attempt 1": 184
+  }
+ },
+ "records_with_error_or_status_not_ok": 0,
+ "served_model_by_role": {
+  "J1": {
+   "claude-opus-5-5": 8502
+  },
+  "J2": {
+   "gpt-6.1-sol": 3834
+  }
+ },
+ "source": "osf/methodology/v1_11/data/judge_raw_v1_11.jsonl",
+ "status_by_role": {
+  "J1": {
+   "ok": 8502
+  },
+  "J2": {
+   "ok": 3834
+  }
+ },
+ "tokens_by_role": {
+  "J1": {
+   "input_tokens": 11435594,
+   "output_tokens": 675084,
+   "thinking_reported": 0,
+   "thinking_tokens": 0
+  },
+  "J2": {
+   "input_tokens": 3485547,
+   "output_tokens": 164319,
+   "thinking_reported": 3834,
+   "thinking_tokens": 12642
+  }
+ },
+ "usd_by_role": {
+  "J1": 29.622028,
+  "J2": 4.307142
+ },
+ "usd_total": 33.92917
+}
