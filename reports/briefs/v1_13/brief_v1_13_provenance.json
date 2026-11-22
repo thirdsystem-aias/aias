@@ -1,0 +1,1881 @@
+{
+ "_note": "Every number printed in TS-BR-v1.13-r1 and its chart: name -> source file, JSON path (or locked scorer constant), raw value, format. Sources: osf/methodology/v1_13/v1_13_verdicts.json (\"verdicts\") and osf/methodology/v1_13/v1_13_c2_extras.json (\"c2\"); decision lines: osf/methodology/v1_13/scripts/score_v1_13.py; disclosure wording: papers/v1_13/v1_13_paper_draft.md. Files checked out unchanged from 32b85a5 (branch v1.13-paper; verdict file with Stage C2 appended 2026-11-22 18:09 UTC).",
+ "sources_sha256": {
+  "osf/methodology/v1_13/v1_13_verdicts.json": "896f08d3c00abd0828e01bb775c6f041d10565a413ae5bcc53ef504f29f1cd57",
+  "osf/methodology/v1_13/v1_13_c2_extras.json": "01984f856564837fba7680e761263226472e0725e848d448c8ba30b25506f1e2",
+  "osf/methodology/v1_13/scripts/score_v1_13.py": "fee2e5530030730ca964bb080840db4ca3b66b68b8c1d1ae3bb988dbd17a8641",
+  "papers/v1_13/v1_13_paper_draft.md": "26a482f52e61d25682b18f3cfd10ac4f16f7253224f307d66a99daacc1d1cf0e"
+ },
+ "values": {
+  "UNITS": {
+   "kind": "derived",
+   "fn": "d_count",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Sennheiser",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Beyerdynamic",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Denon",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Grado",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Sony",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Audio-Technica",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Stax",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Koss",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Audeze",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|HiFiMan",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Focal",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Meze",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|ZMF Headphones",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Spirit Torino",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Final Audio",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Dan Clark Audio",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|A.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.8",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|B.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|B.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|B.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|B.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|B.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.6",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.7",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|D.1",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|D.2",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|D.3",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|D.4",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|D.5",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S01",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S02",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S03",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S04",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S05",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S06",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S07",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S08",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S09",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S10",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S11",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S12",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S13",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S14",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S15",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S16",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S17",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S18",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S19",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S20",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S21",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S22",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S23",
+      "m"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S24",
+      "m"
+     ]
+    ]
+   ],
+   "raw": 112.0,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "N_RATED": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ5",
+    "n_rated"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "ANSWERS": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ1_parsed_s1_records"
+   ],
+   "raw": 270,
+   "fmt": "i0",
+   "formatted": "270"
+  },
+  "ZERO_PCT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ5",
+    "zero_share"
+   ],
+   "raw": 0.40476190476190477,
+   "fmt": "pct0",
+   "formatted": "40%"
+  },
+  "ZERO_NUM": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ5",
+    "zero_share"
+   ],
+   "raw": 0.40476190476190477,
+   "fmt": "pnum0",
+   "formatted": "40"
+  },
+  "MQ3_PCT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ3",
+    "share"
+   ],
+   "raw": 0.7182442373712604,
+   "fmt": "pct0",
+   "formatted": "72%"
+  },
+  "GEM_PCT": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "MQ",
+    "MQ2",
+    "gemini-4-argon",
+    "share"
+   ],
+   "raw": 0.17777777777777778,
+   "fmt": "pct0",
+   "formatted": "18%"
+  },
+  "MED_v19": {
+   "kind": "derived",
+   "fn": "d_median",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Sennheiser",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Beyerdynamic",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Grado",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Sony",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Stax",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Audeze",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|HiFiMan",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Focal",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Meze",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v19|Dan Clark Audio",
+      "G_star"
+     ]
+    ]
+   ],
+   "raw": 12.173913043478262,
+   "fmt": "f1",
+   "formatted": "12.2"
+  },
+  "MED_v20": {
+   "kind": "derived",
+   "fn": "d_median",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.2",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.5",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|B.7",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.2",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.4",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.5",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v20|C.6",
+      "G_star"
+     ]
+    ]
+   ],
+   "raw": 7.974137931034482,
+   "fmt": "f1",
+   "formatted": "8.0"
+  },
+  "MED_v21": {
+   "kind": "derived",
+   "fn": "d_median",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|A.2",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.2",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.3",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.5",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.6",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|B.7",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.5",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v21|C.6",
+      "G_star"
+     ]
+    ]
+   ],
+   "raw": 0.0,
+   "fmt": "f1",
+   "formatted": "0.0"
+  },
+  "MED_v22": {
+   "kind": "derived",
+   "fn": "d_median",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.6",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|A.7",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.1",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.2",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v22|C.5",
+      "G_star"
+     ]
+    ]
+   ],
+   "raw": 0.0,
+   "fmt": "f1",
+   "formatted": "0.0"
+  },
+  "MED_v23": {
+   "kind": "derived",
+   "fn": "d_median",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S01",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S02",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S04",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S15",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S17",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S20",
+      "G_star"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "units",
+      "v23|S22",
+      "G_star"
+     ]
+    ]
+   ],
+   "raw": 28.57142857142857,
+   "fmt": "f1",
+   "formatted": "28.6"
+  },
+  "MED_MIN": {
+   "kind": "derived_of_values",
+   "fn": "d_min",
+   "values": [
+    "MED_v19",
+    "MED_v20",
+    "MED_v21",
+    "MED_v22",
+    "MED_v23"
+   ],
+   "raw": 0.0,
+   "fmt": "f1",
+   "formatted": "0.0"
+  },
+  "MED_MAX": {
+   "kind": "derived_of_values",
+   "fn": "d_max",
+   "values": [
+    "MED_v19",
+    "MED_v20",
+    "MED_v21",
+    "MED_v22",
+    "MED_v23"
+   ],
+   "raw": 28.57142857142857,
+   "fmt": "f1",
+   "formatted": "28.6"
+  },
+  "H1_S1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    0,
+    "rho_w"
+   ],
+   "raw": 0.30716191850680374,
+   "fmt": "r3",
+   "formatted": "0.307"
+  },
+  "H1_S0": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    1,
+    "rho_w"
+   ],
+   "raw": 0.3945349347419029,
+   "fmt": "r3",
+   "formatted": "0.395"
+  },
+  "H1_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    0,
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "H1_N0": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H1_Sep_Presence",
+    1,
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "H2_S1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    0,
+    "rho_w"
+   ],
+   "raw": -0.08701889123636815,
+   "fmt": "m3",
+   "formatted": "−0.087"
+  },
+  "H2_S0": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    1,
+    "rho_w"
+   ],
+   "raw": 0.049074480929963776,
+   "fmt": "r3",
+   "formatted": "0.049"
+  },
+  "H2_N1": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    0,
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "H2_N0": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H2_Sep_Consistency",
+    1,
+    "n"
+   ],
+   "raw": 40,
+   "fmt": "i0",
+   "formatted": "40"
+  },
+  "PAIR_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      0,
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      1,
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      2,
+      "n"
+     ]
+    ]
+   ],
+   "raw": 23.0,
+   "fmt": "i0",
+   "formatted": "23"
+  },
+  "PAIR_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "consts": [],
+   "refs": [
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      0,
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      1,
+      "n"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "H3",
+      "pairs",
+      2,
+      "n"
+     ]
+    ]
+   ],
+   "raw": 27.0,
+   "fmt": "i0",
+   "formatted": "27"
+  },
+  "H4": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H4_Sep_Ranking",
+    0,
+    "rho_w"
+   ],
+   "raw": 0.29155171377880806,
+   "fmt": "r3",
+   "formatted": "0.292"
+  },
+  "H4_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "legs",
+    "H4_Sep_Ranking",
+    0,
+    "n"
+   ],
+   "raw": 42,
+   "fmt": "i0",
+   "formatted": "42"
+  },
+  "H6": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "stage_C2",
+    "coverage",
+    "leg",
+    "rho_w"
+   ],
+   "raw": -0.3038114235873083,
+   "fmt": "m3",
+   "formatted": "−0.304"
+  },
+  "H6_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "stage_C2",
+    "coverage",
+    "leg",
+    "n"
+   ],
+   "raw": 33,
+   "fmt": "i0",
+   "formatted": "33"
+  },
+  "H7_N": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "stage_C2",
+    "leg",
+    "n"
+   ],
+   "raw": 26,
+   "fmt": "i0",
+   "formatted": "26"
+  },
+  "S4_3_H1_S0": {
+   "kind": "json",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S4_floor_3",
+    "rho",
+    "H1_Sep_Presence",
+    1
+   ],
+   "raw": 0.5155496256333667,
+   "fmt": "r3",
+   "formatted": "0.516"
+  },
+  "S6_N_BARE": {
+   "kind": "derived",
+   "fn": "d_bare_suffixes",
+   "consts": [],
+   "refs": [
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v20|A.2"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v20|C.6"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v21|C.5"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v21|C.6"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|A.2"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|A.7"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|C.1"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|C.2"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|C.6"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v22|C.7"
+     ]
+    ],
+    [
+     "c2",
+     [
+      "S6_verified_D_b",
+      "aliases",
+      "v23|S16"
+     ]
+    ]
+   ],
+   "raw": 25.0,
+   "fmt": "i0",
+   "formatted": "25"
+  },
+  "SEP_LO": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "SEP_CONFIRM",
+   "index": null,
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "SEP_HI": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "SEP_FALSIFY",
+   "index": null,
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "FLOOR_G": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "FLOOR_G",
+   "index": null,
+   "raw": 6,
+   "fmt": "i0",
+   "formatted": "6"
+  },
+  "FLOOR_RUN": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "FLOOR_G_RUN",
+   "index": null,
+   "raw": 3,
+   "fmt": "i0",
+   "formatted": "3"
+  },
+  "FLOOR_UNITS": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "FLOOR_UNITS",
+   "index": null,
+   "raw": 30,
+   "fmt": "i0",
+   "formatted": "30"
+  },
+  "FLOOR_S3": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "FLOOR_SENS",
+   "index": 0,
+   "raw": 3,
+   "fmt": "i0",
+   "formatted": "3"
+  },
+  "FLOOR_S10": {
+   "kind": "rule",
+   "source": "osf/methodology/v1_13/scripts/score_v1_13.py",
+   "constant": "FLOOR_SENS",
+   "index": 1,
+   "raw": 10,
+   "fmt": "i0",
+   "formatted": "10"
+  },
+  "AI_USE": {
+   "kind": "text",
+   "basis": "papers/v1_13/v1_13_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v1.13-r1",
+ "pdf": "reports/briefs/v1_13/TS-BR-v1.13-r1_how-often-ai-search-finds-a-brands-own-site-is-not-yet-a.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "ANSWERS",
+  "FLOOR_G",
+  "FLOOR_RUN",
+  "FLOOR_S10",
+  "FLOOR_S3",
+  "FLOOR_UNITS",
+  "GEM_PCT",
+  "H1_N",
+  "H1_S0",
+  "H1_S1",
+  "H2_N0",
+  "H2_N1",
+  "H2_S0",
+  "H2_S1",
+  "H4",
+  "H6",
+  "H6_N",
+  "H7_N",
+  "MED_MAX",
+  "MED_MIN",
+  "MQ3_PCT",
+  "N_RATED",
+  "PAIR_MAX",
+  "PAIR_MIN",
+  "S4_3_H1_S0",
+  "S6_N_BARE",
+  "SEP_HI",
+  "SEP_LO",
+  "UNITS",
+  "ZERO_NUM",
+  "ZERO_PCT"
+ ],
+ "digit_audit": {
+  "checked": 83,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 11,
+   "provenance value": 71,
+   "chart axis tick": 1
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 6,
+   "osf": 1,
+   "files": 4,
+   "pct": 1,
+   "models": 4,
+   "years": 5,
+   "dates": 2,
+   "tier": 1
+  }
+ }
+}

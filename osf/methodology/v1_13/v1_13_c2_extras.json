@@ -1,0 +1,1392 @@
+{
+  "panel_models": [
+    "claude-fable-5-2",
+    "gpt-6-astra",
+    "gemini-4-argon"
+  ],
+  "seeds": 113009,
+  "n_perm": 10000,
+  "note": "conditional legs H4-H6 are not recomputed here (their sources are read by the scorer only)",
+  "S6_verified_D_b": {
+    "verdicts": {
+      "H1_Sep_Presence": "MARGINAL",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H3_Run_Reliability": "UNDETERMINED"
+    },
+    "gate_H1_H3": "MARGINAL",
+    "rel3": null,
+    "rho": {
+      "H1_Sep_Presence": [
+        0.30716191850680374,
+        0.3945349347419029
+      ],
+      "H2_Sep_Consistency": [
+        -0.08701889123636815,
+        0.049074480929963776
+      ]
+    },
+    "verdict_changes": {},
+    "n_rated": 42,
+    "units_with_aliases": 11,
+    "aliases": {
+      "v20|A.2": [
+        "beautyliv.com"
+      ],
+      "v20|C.6": [
+        "co.id"
+      ],
+      "v21|C.5": [
+        "nyxcosmetics-benelux.com",
+        "nyxcosmetics-nordics.com",
+        "nyxcosmetics.ca",
+        "nyxcosmetics.cl",
+        "nyxcosmetics.co.uk",
+        "nyxcosmetics.com.au",
+        "nyxcosmetics.com.mx",
+        "nyxcosmetics.com.tr",
+        "nyxcosmetics.de",
+        "nyxcosmetics.es",
+        "nyxcosmetics.fr",
+        "nyxcosmetics.gr",
+        "nyxcosmetics.it",
+        "nyxcosmetics.pl"
+      ],
+      "v21|C.6": [
+        "eyeslipsface.com"
+      ],
+      "v22|A.2": [
+        "jaguar.fr"
+      ],
+      "v22|A.7": [
+        "bmw.com.br",
+        "bmw.com.mx",
+        "bmw.de",
+        "bmw.it",
+        "bmwgroup.com"
+      ],
+      "v22|C.1": [
+        "co.ma",
+        "co.mz",
+        "co.th",
+        "co.tz",
+        "co.ug",
+        "co.zm",
+        "co.zw",
+        "com.bd",
+        "com.bh",
+        "com.co",
+        "com.cy",
+        "com.eg",
+        "com.gt",
+        "com.jo",
+        "com.mk",
+        "com.pe",
+        "com.py",
+        "com.sa",
+        "com.sv",
+        "com.tn",
+        "com.uy",
+        "com.ve",
+        "com.vn",
+        "global.toyota",
+        "scion.com",
+        "toyota-africa.com",
+        "toyota-bishkek.kg",
+        "toyota-centralasia.com",
+        "toyota-europe.com",
+        "toyota-gabon.com",
+        "toyota-indus.com",
+        "toyota-kosovo.com",
+        "toyota-mauritanie.com",
+        "toyota-mongolia.mn",
+        "toyota-rdc.com",
+        "toyota.ae",
+        "toyota.at",
+        "toyota.az",
+        "toyota.ba",
+        "toyota.be",
+        "toyota.bf",
+        "toyota.bg",
+        "toyota.bj",
+        "toyota.bo",
+        "toyota.cg",
+        "toyota.ch",
+        "toyota.ci",
+        "toyota.cl",
+        "toyota.co.il",
+        "toyota.co.kr",
+        "toyota.co.nz",
+        "toyota.co.uk",
+        "toyota.co.za",
+        "toyota.com.ar",
+        "toyota.com.au",
+        "toyota.com.br",
+        "toyota.com.cn",
+        "toyota.com.my",
+        "toyota.com.ph",
+        "toyota.com.tr",
+        "toyota.com.tw",
+        "toyota.cz",
+        "toyota.de",
+        "toyota.dk",
+        "toyota.ee",
+        "toyota.es",
+        "toyota.fi",
+        "toyota.fr",
+        "toyota.ge",
+        "toyota.gm",
+        "toyota.gr",
+        "toyota.hr",
+        "toyota.hu",
+        "toyota.ie",
+        "toyota.iq",
+        "toyota.is",
+        "toyota.it",
+        "toyota.jp",
+        "toyota.lt",
+        "toyota.lu",
+        "toyota.lv",
+        "toyota.ly",
+        "toyota.md",
+        "toyota.mx",
+        "toyota.nl",
+        "toyota.no",
+        "toyota.pl",
+        "toyota.pt",
+        "toyota.re",
+        "toyota.ro",
+        "toyota.rs",
+        "toyota.ru",
+        "toyota.se",
+        "toyota.si",
+        "toyota.sk",
+        "toyota.sn",
+        "toyota.tg",
+        "toyota.ua",
+        "toyotaalbania.al",
+        "toyotaalgerie.com",
+        "toyotabharat.com",
+        "toyotacg.me",
+        "toyotacr.com",
+        "toyotaghana.com",
+        "toyotairan.com",
+        "toyotajamaica.com",
+        "toyotakenya.ke",
+        "toyotakz.com",
+        "toyotalebanon.com",
+        "toyotamalawi.com",
+        "toyotamauritius.com",
+        "toyotanigeria.com",
+        "toyotaoman.com",
+        "toyotapr.com",
+        "toyotaqatar.com",
+        "toyotarp.com",
+        "toyotarwanda.com",
+        "toyotayemen.com",
+        "weins-toyota-kanagawa.co.jp"
+      ],
+      "v22|C.2": [
+        "co.th",
+        "com.co",
+        "com.vn",
+        "global.honda",
+        "honda.ca",
+        "honda.co.uk",
+        "honda.com.tr",
+        "honda.es",
+        "honda.it",
+        "hondacarindia.com",
+        "hondaph.com"
+      ],
+      "v22|C.6": [
+        "co.zm",
+        "com.ng",
+        "volkswagen-dubai.com",
+        "volkswagen.co.in",
+        "volkswagen.co.jp",
+        "volkswagen.co.kr",
+        "volkswagen.co.nz",
+        "volkswagen.co.uk",
+        "volkswagen.com.au",
+        "volkswagen.com.my",
+        "volkswagen.de",
+        "volkswagen.es",
+        "volkswagen.fr",
+        "volkswagen.ie",
+        "volkswagen.it",
+        "volkswagen.nl",
+        "volkswagen.pl",
+        "volkswagen.ru",
+        "volkswagenghana.com",
+        "vw-eg.com",
+        "vw.ca",
+        "vw.co.za",
+        "vw.com.br",
+        "vw.com.mx"
+      ],
+      "v22|C.7": [
+        "co.id",
+        "nissan-global.com",
+        "nissan.co.jp",
+        "nissan.com.br",
+        "nissan.com.mx",
+        "nissan.de",
+        "nissan.fr",
+        "nissan.in"
+      ],
+      "v23|S16": [
+        "casamigostequila.com"
+      ]
+    }
+  },
+  "S7_legacy_t3": {
+    "verdicts": {
+      "H1_Sep_Presence": "MARGINAL",
+      "H2_Sep_Consistency": "CONFIRMED",
+      "H3_Run_Reliability": "UNDETERMINED"
+    },
+    "gate_H1_H3": "MARGINAL",
+    "rel3": null,
+    "rho": {
+      "H1_Sep_Presence": [
+        0.3413712628438635,
+        0.3413712628438635
+      ],
+      "H2_Sep_Consistency": [
+        0.035024388070128164,
+        0.035024388070128164
+      ]
+    },
+    "verdict_changes": {},
+    "n_rated": 42
+  },
+  "baseline_cited_set_all_N3": {
+    "per_substrate_model": {
+      "v19|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 5.111111111111111,
+        "domains_per_answer": 5.0,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.013333333333333334,
+          "forum_ugc": 0.0,
+          "news": 0.016666666666666666,
+          "review_editorial": 0.2078571428571428,
+          "retailer": 0.008333333333333333,
+          "other": 0.7538095238095238,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.05555555555555555,
+        "grounded": 15
+      },
+      "v19|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.1111111111111111,
+        "sources_per_answer": 0.5,
+        "domains_per_answer": 0.5,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.1,
+          "news": 0.0,
+          "review_editorial": 0.1,
+          "retailer": 0.575,
+          "other": 0.225,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 2
+      },
+      "v19|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.888888888888889,
+        "domains_per_answer": 4.388888888888889,
+        "mix": {
+          "brand_owned": 0.08333333333333333,
+          "reference": 0.08862433862433862,
+          "forum_ugc": 0.0,
+          "news": 0.04497354497354497,
+          "review_editorial": 0.31216931216931226,
+          "retailer": 0.05185185185185185,
+          "other": 0.41904761904761917,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.2222222222222222,
+        "share_reference": 0.3333333333333333,
+        "grounded": 18
+      },
+      "v20|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.444444444444445,
+        "domains_per_answer": 5.388888888888889,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.018518518518518517,
+          "forum_ugc": 0.0,
+          "news": 0.02962962962962963,
+          "review_editorial": 0.032407407407407406,
+          "retailer": 0.04365079365079365,
+          "other": 0.8757936507936497,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.1111111111111111,
+        "grounded": 18
+      },
+      "v20|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 1.1111111111111112,
+        "domains_per_answer": 1.1111111111111112,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.2272727272727273,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.08585858585858586,
+          "other": 0.6868686868686867,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v20|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.055555555555555,
+        "domains_per_answer": 4.5,
+        "mix": {
+          "brand_owned": 0.1200396825396825,
+          "reference": 0.08068783068783068,
+          "forum_ugc": 0.0,
+          "news": 0.09166666666666666,
+          "review_editorial": 0.1888888888888889,
+          "retailer": 0.02414021164021164,
+          "other": 0.4945767195767197,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.3333333333333333,
+        "share_reference": 0.2777777777777778,
+        "grounded": 18
+      },
+      "v21|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 5.111111111111111,
+        "domains_per_answer": 4.944444444444445,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.025,
+          "forum_ugc": 0.0,
+          "news": 0.059788359788359786,
+          "review_editorial": 0.13062169312169314,
+          "retailer": 0.0,
+          "other": 0.7845899470899469,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.1111111111111111,
+        "grounded": 18
+      },
+      "v21|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 0.5555555555555556,
+        "domains_per_answer": 0.5555555555555556,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.06666666666666667,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.3444444444444444,
+          "other": 0.5888888888888889,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v21|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 4.277777777777778,
+        "domains_per_answer": 3.611111111111111,
+        "mix": {
+          "brand_owned": 0.02976190476190476,
+          "reference": 0.018518518518518517,
+          "forum_ugc": 0.0,
+          "news": 0.011111111111111112,
+          "review_editorial": 0.3444444444444445,
+          "retailer": 0.04682539682539682,
+          "other": 0.5493386243386241,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.1111111111111111,
+        "share_reference": 0.05555555555555555,
+        "grounded": 18
+      },
+      "v22|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.5,
+        "sources_per_answer": 3.8333333333333335,
+        "domains_per_answer": 3.2777777777777777,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.08240740740740742,
+          "review_editorial": 0.24550264550264553,
+          "retailer": 0.0,
+          "other": 0.6720899470899474,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 9
+      },
+      "v22|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.2777777777777778,
+        "sources_per_answer": 2.1666666666666665,
+        "domains_per_answer": 2.1666666666666665,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.15555555555555553,
+          "news": 0.1622222222222222,
+          "review_editorial": 0.22444444444444445,
+          "retailer": 0.0,
+          "other": 0.457777777777778,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 5
+      },
+      "v22|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 0.7777777777777778,
+        "sources_per_answer": 3.111111111111111,
+        "domains_per_answer": 2.5,
+        "mix": {
+          "brand_owned": 0.08928571428571429,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.03571428571428571,
+          "review_editorial": 0.6428571428571429,
+          "retailer": 0.0,
+          "other": 0.23214285714285715,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.1111111111111111,
+        "share_reference": 0.0,
+        "grounded": 14
+      },
+      "v23|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 11.444444444444445,
+        "domains_per_answer": 7.444444444444445,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.04696248196248196,
+          "forum_ugc": 0.0,
+          "news": 0.07085137085137086,
+          "review_editorial": 0.1597987197987198,
+          "retailer": 0.0,
+          "other": 0.7223874273874263,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.3888888888888889,
+        "grounded": 15
+      },
+      "v23|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 2.4444444444444446,
+        "domains_per_answer": 2.4444444444444446,
+        "mix": {
+          "brand_owned": 0.017543859649122806,
+          "reference": 0.017543859649122806,
+          "forum_ugc": 0.0,
+          "news": 0.11414754835807467,
+          "review_editorial": 0.14192532613585243,
+          "retailer": 0.0,
+          "other": 0.7088394062078271,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.05555555555555555,
+        "share_reference": 0.05555555555555555,
+        "grounded": 3
+      },
+      "v23|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 11.333333333333334,
+        "domains_per_answer": 8.055555555555555,
+        "mix": {
+          "brand_owned": 0.03756613756613757,
+          "reference": 0.005050505050505051,
+          "forum_ugc": 0.024074074074074074,
+          "news": 0.05399430816097483,
+          "review_editorial": 0.16329365079365077,
+          "retailer": 0.019290123456790122,
+          "other": 0.6967312008978673,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.16666666666666666,
+        "share_reference": 0.05555555555555555,
+        "grounded": 18
+      }
+    },
+    "top_domains": [
+      [
+        "whowhatwear.com",
+        21
+      ],
+      [
+        "yahoo.com",
+        16
+      ],
+      [
+        "americansalon.com",
+        15
+      ],
+      [
+        "consumerreports.org",
+        15
+      ],
+      [
+        "forbes.com",
+        15
+      ],
+      [
+        "marieclaire.com",
+        15
+      ],
+      [
+        "cosmetify.com",
+        14
+      ],
+      [
+        "globalbrandsmagazine.com",
+        14
+      ],
+      [
+        "vinepair.com",
+        14
+      ],
+      [
+        "ringly.io",
+        13
+      ],
+      [
+        "rtings.com",
+        13
+      ],
+      [
+        "wikipedia.org",
+        12
+      ],
+      [
+        "yougov.com",
+        12
+      ],
+      [
+        "crutchfield.com",
+        11
+      ],
+      [
+        "ecoustics.com",
+        11
+      ],
+      [
+        "thewhiskeywash.com",
+        11
+      ],
+      [
+        "allure.com",
+        10
+      ],
+      [
+        "gobrandwave.com",
+        10
+      ],
+      [
+        "thespiritsbusiness.com",
+        10
+      ],
+      [
+        "vogue.com",
+        10
+      ]
+    ],
+    "g_star_by_substrate": {
+      "v19": {
+        "n": 10,
+        "median": 3.125,
+        "q1": 0.0,
+        "q3": 10.833333333333332,
+        "share_zero": 0.5,
+        "units": 16,
+        "rated": 10,
+        "g_b": [
+          29,
+          10,
+          3,
+          6,
+          23,
+          4,
+          6,
+          0,
+          19,
+          16,
+          20,
+          8,
+          1,
+          0,
+          0,
+          9
+        ]
+      },
+      "v20": {
+        "n": 8,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 14.073426573426573,
+        "share_zero": 0.625,
+        "units": 24,
+        "rated": 8,
+        "g_b": [
+          2,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          20,
+          3,
+          1,
+          9,
+          1,
+          12,
+          3,
+          13,
+          29,
+          4,
+          33,
+          22,
+          8,
+          2,
+          1
+        ]
+      },
+      "v21": {
+        "n": 11,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 0.0,
+        "share_zero": 0.8181818181818182,
+        "units": 24,
+        "rated": 11,
+        "g_b": [
+          16,
+          15,
+          0,
+          0,
+          0,
+          5,
+          0,
+          2,
+          26,
+          26,
+          9,
+          2,
+          23,
+          22,
+          7,
+          1,
+          17,
+          2,
+          0,
+          0,
+          12,
+          20,
+          3,
+          0
+        ]
+      },
+      "v22": {
+        "n": 6,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 6.818181818181818,
+        "share_zero": 0.6666666666666666,
+        "units": 24,
+        "rated": 6,
+        "g_b": [
+          6,
+          0,
+          3,
+          5,
+          5,
+          22,
+          26,
+          5,
+          1,
+          0,
+          0,
+          0,
+          24,
+          23,
+          0,
+          1,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "v23": {
+        "n": 7,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 13.571428571428571,
+        "share_zero": 0.5714285714285714,
+        "units": 24,
+        "rated": 7,
+        "g_b": [
+          6,
+          7,
+          3,
+          7,
+          4,
+          3,
+          0,
+          0,
+          3,
+          0,
+          2,
+          1,
+          1,
+          3,
+          8,
+          0,
+          14,
+          3,
+          1,
+          10,
+          3,
+          10,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "baseline_primary_panel": {
+    "per_substrate_model": {
+      "v19|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 12.166666666666666,
+        "domains_per_answer": 10.444444444444445,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.04756613756613756,
+          "forum_ugc": 0.00784313725490196,
+          "news": 0.043597883597883594,
+          "review_editorial": 0.1463071895424836,
+          "retailer": 0.04485294117647059,
+          "other": 0.7098327108621214,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.3333333333333333,
+        "grounded": 15
+      },
+      "v19|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.1111111111111111,
+        "sources_per_answer": 0.5,
+        "domains_per_answer": 0.5,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.1,
+          "news": 0.0,
+          "review_editorial": 0.1,
+          "retailer": 0.575,
+          "other": 0.225,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 2
+      },
+      "v19|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 60.388888888888886,
+        "domains_per_answer": 25.944444444444443,
+        "mix": {
+          "brand_owned": 0.04768551952875168,
+          "reference": 0.055017239921145634,
+          "forum_ugc": 0.043048532764991446,
+          "news": 0.04923013080729527,
+          "review_editorial": 0.22607327682843614,
+          "retailer": 0.026837448146891464,
+          "other": 0.5521078520024867,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.5555555555555556,
+        "share_reference": 0.8333333333333334,
+        "grounded": 18
+      },
+      "v20|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 10.38888888888889,
+        "domains_per_answer": 9.277777777777779,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.08822751322751324,
+          "forum_ugc": 0.022486772486772486,
+          "news": 0.06751543209876544,
+          "review_editorial": 0.028042328042328042,
+          "retailer": 0.03583553791887125,
+          "other": 0.7578924162257485,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.7222222222222222,
+        "grounded": 18
+      },
+      "v20|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 1.1111111111111112,
+        "domains_per_answer": 1.1111111111111112,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.2272727272727273,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.08585858585858586,
+          "other": 0.6868686868686867,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v20|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 55.22222222222222,
+        "domains_per_answer": 25.22222222222222,
+        "mix": {
+          "brand_owned": 0.04126081683662001,
+          "reference": 0.06528033304692413,
+          "forum_ugc": 0.05904527342471796,
+          "news": 0.05567670808518126,
+          "review_editorial": 0.07491726414751856,
+          "retailer": 0.029597910889001582,
+          "other": 0.6742216935700363,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.3888888888888889,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v21|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 11.722222222222221,
+        "domains_per_answer": 9.38888888888889,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.11136664261664257,
+          "forum_ugc": 0.003472222222222222,
+          "news": 0.04043410293410293,
+          "review_editorial": 0.08375420875420875,
+          "retailer": 0.003472222222222222,
+          "other": 0.7575006012506014,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.8333333333333334,
+        "grounded": 18
+      },
+      "v21|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 0.5555555555555556,
+        "domains_per_answer": 0.5555555555555556,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.06666666666666667,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.3444444444444444,
+          "other": 0.5888888888888889,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 3
+      },
+      "v21|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 51.55555555555556,
+        "domains_per_answer": 23.0,
+        "mix": {
+          "brand_owned": 0.0232024253467808,
+          "reference": 0.07453773112907361,
+          "forum_ugc": 0.07345814124704284,
+          "news": 0.01395411082672715,
+          "review_editorial": 0.08017214544769843,
+          "retailer": 0.04055871415901925,
+          "other": 0.6941167318436573,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.2777777777777778,
+        "share_reference": 1.0,
+        "grounded": 18
+      },
+      "v22|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.5,
+        "sources_per_answer": 8.666666666666666,
+        "domains_per_answer": 6.611111111111111,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.10295584045584044,
+          "review_editorial": 0.16118233618233613,
+          "retailer": 0.0,
+          "other": 0.735861823361823,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 9
+      },
+      "v22|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.2777777777777778,
+        "sources_per_answer": 2.1666666666666665,
+        "domains_per_answer": 2.1666666666666665,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.0,
+          "forum_ugc": 0.15555555555555553,
+          "news": 0.1622222222222222,
+          "review_editorial": 0.22444444444444445,
+          "retailer": 0.0,
+          "other": 0.457777777777778,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.0,
+        "grounded": 5
+      },
+      "v22|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 0.7777777777777778,
+        "sources_per_answer": 35.22222222222222,
+        "domains_per_answer": 13.61111111111111,
+        "mix": {
+          "brand_owned": 0.027513227513227514,
+          "reference": 0.06007376882376882,
+          "forum_ugc": 0.10143060643060643,
+          "news": 0.11997463515320658,
+          "review_editorial": 0.15079801151229724,
+          "retailer": 0.004464285714285714,
+          "other": 0.5357454648526075,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.1111111111111111,
+        "share_reference": 0.7222222222222222,
+        "grounded": 14
+      },
+      "v23|claude-fable-5-2": {
+        "answers": 18,
+        "share_with_source": 0.8333333333333334,
+        "sources_per_answer": 32.111111111111114,
+        "domains_per_answer": 17.72222222222222,
+        "mix": {
+          "brand_owned": 0.0,
+          "reference": 0.04389785577880298,
+          "forum_ugc": 0.008076463560334528,
+          "news": 0.06402853465975755,
+          "review_editorial": 0.09952990034889225,
+          "retailer": 0.005659309564233163,
+          "other": 0.7788079360879795,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.0,
+        "share_reference": 0.7222222222222222,
+        "grounded": 15
+      },
+      "v23|gemini-4-argon": {
+        "answers": 18,
+        "share_with_source": 0.16666666666666666,
+        "sources_per_answer": 2.4444444444444446,
+        "domains_per_answer": 2.4444444444444446,
+        "mix": {
+          "brand_owned": 0.017543859649122806,
+          "reference": 0.017543859649122806,
+          "forum_ugc": 0.0,
+          "news": 0.11414754835807467,
+          "review_editorial": 0.14192532613585243,
+          "retailer": 0.0,
+          "other": 0.7088394062078271,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.05555555555555555,
+        "share_reference": 0.05555555555555555,
+        "grounded": 3
+      },
+      "v23|gpt-6-astra": {
+        "answers": 18,
+        "share_with_source": 1.0,
+        "sources_per_answer": 207.55555555555554,
+        "domains_per_answer": 78.55555555555556,
+        "mix": {
+          "brand_owned": 0.01286915670042605,
+          "reference": 0.04265922655794377,
+          "forum_ugc": 0.025854422412928384,
+          "news": 0.05299962348879798,
+          "review_editorial": 0.04558750575581436,
+          "retailer": 0.023986816369260592,
+          "other": 0.7960432487148268,
+          "unresolved": 0.0
+        },
+        "share_any_brand_owned": 0.5,
+        "share_reference": 1.0,
+        "grounded": 18
+      }
+    },
+    "top_domains": [
+      [
+        "wikipedia.org",
+        119
+      ],
+      [
+        "reddit.com",
+        82
+      ],
+      [
+        "whowhatwear.com",
+        51
+      ],
+      [
+        "yahoo.com",
+        49
+      ],
+      [
+        "youtube.com",
+        46
+      ],
+      [
+        "marieclaire.com",
+        45
+      ],
+      [
+        "amazonaws.com",
+        35
+      ],
+      [
+        "apnews.com",
+        35
+      ],
+      [
+        "womanandhome.com",
+        35
+      ],
+      [
+        "tomsguide.com",
+        29
+      ],
+      [
+        "globalbrandsmagazine.com",
+        28
+      ],
+      [
+        "gobrandwave.com",
+        27
+      ],
+      [
+        "time.com",
+        27
+      ],
+      [
+        "whathifi.com",
+        27
+      ],
+      [
+        "forbes.com",
+        25
+      ],
+      [
+        "marieclaire.co.uk",
+        23
+      ],
+      [
+        "yougov.com",
+        23
+      ],
+      [
+        "axios.com",
+        22
+      ],
+      [
+        "creativebloq.com",
+        22
+      ],
+      [
+        "statista.com",
+        20
+      ]
+    ],
+    "g_star_by_substrate": {
+      "v19": {
+        "n": 10,
+        "median": 12.173913043478262,
+        "q1": 0.0,
+        "q3": 23.92241379310345,
+        "share_zero": 0.4,
+        "units": 16,
+        "rated": 10,
+        "g_b": [
+          29,
+          10,
+          3,
+          6,
+          23,
+          4,
+          6,
+          0,
+          19,
+          16,
+          20,
+          8,
+          1,
+          0,
+          0,
+          9
+        ]
+      },
+      "v20": {
+        "n": 8,
+        "median": 7.974137931034483,
+        "q1": 0.0,
+        "q3": 16.083916083916083,
+        "share_zero": 0.375,
+        "units": 24,
+        "rated": 8,
+        "g_b": [
+          2,
+          0,
+          4,
+          0,
+          1,
+          0,
+          0,
+          0,
+          0,
+          20,
+          3,
+          1,
+          9,
+          1,
+          12,
+          3,
+          13,
+          29,
+          4,
+          33,
+          22,
+          8,
+          2,
+          1
+        ]
+      },
+      "v21": {
+        "n": 11,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 6.458333333333334,
+        "share_zero": 0.5454545454545454,
+        "units": 24,
+        "rated": 11,
+        "g_b": [
+          16,
+          15,
+          0,
+          0,
+          0,
+          5,
+          0,
+          2,
+          26,
+          26,
+          9,
+          2,
+          23,
+          22,
+          7,
+          1,
+          17,
+          2,
+          0,
+          0,
+          12,
+          20,
+          3,
+          0
+        ]
+      },
+      "v22": {
+        "n": 6,
+        "median": 0.0,
+        "q1": 0.0,
+        "q3": 6.818181818181818,
+        "share_zero": 0.6666666666666666,
+        "units": 24,
+        "rated": 6,
+        "g_b": [
+          6,
+          0,
+          3,
+          5,
+          5,
+          22,
+          26,
+          5,
+          1,
+          0,
+          0,
+          0,
+          24,
+          23,
+          0,
+          1,
+          9,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "v23": {
+        "n": 7,
+        "median": 28.57142857142857,
+        "q1": 16.25,
+        "q3": 30.95238095238095,
+        "share_zero": 0.0,
+        "units": 24,
+        "rated": 7,
+        "g_b": [
+          6,
+          7,
+          3,
+          7,
+          4,
+          3,
+          0,
+          0,
+          3,
+          0,
+          2,
+          1,
+          1,
+          3,
+          8,
+          0,
+          14,
+          3,
+          1,
+          10,
+          3,
+          10,
+          2,
+          3
+        ]
+      }
+    }
+  },
+  "MQ2_kept": {
+    "status": "NOT_APPLICABLE",
+    "reason": "no model was dropped by MQ2"
+  },
+  "inputs": {
+    "t4": [
+      "/Users/pablou/aias/_worktrees/v0.42/osf/v42/data/t4_raw.jsonl",
+      "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf"
+    ],
+    "brand_table": [
+      "/Users/pablou/aias/_worktrees/v0.42/osf/v42/v42_brand_table.csv",
+      "792e14addb7ad1ef03a147ee16cee56e82cfecd58030d2e8e3cf3e3ea255af7f"
+    ],
+    "verdicts": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/v1_13_verdicts.json",
+      "896f08d3c00abd0828e01bb775c6f041d10565a413ae5bcc53ef504f29f1cd57"
+    ],
+    "records": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/audit/v1_13_audit_records.jsonl",
+      "1bd0fe854c11f0f59f27ec8f0f9356b59845d53037d7714797adb421c52c7234"
+    ],
+    "sdri": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/audit/v1_13_sdri.csv",
+      "28d4681452d4626105a2416ee370a5d8ea18f97a141fca9689296d0b0f2b0cd7"
+    ],
+    "profiles": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/aias_2_0/aias_2_0_profiles.csv",
+      "022ef56ecad9ddb60ad9ce0a2129698fd84ee9656630500e30b05f1e4b7e8c6e"
+    ],
+    "domains": [
+      "/Users/pablou/aias/_worktrees/v1.13/osf/methodology/v1_13/registries/brand_domains_v1_13.csv",
+      "38198fdfa92ccff58dbba3fcc2e06930310a8df55d5933c9ca6d77646f9a855a"
+    ],
+    "coded": {
+      "v19_phase_a.csv": "f88da1797d6df48b423469d7da3eaac4531c31a5d89cd208ed279b47b17703b5",
+      "v19_phase_b.csv": "347b740b23526dc6fc57e46e12468df5960a90bcd1fe3de55161d17670b247e0",
+      "v20_phase_a.csv": "9193c5fe190ba236e33b64bd9bbb4a1a2cbbf00a905cb4486173a654eb274f5d",
+      "v20_phase_b.csv": "4e431c5a114d7e3fd45caa93ee17de0924ee999570d6ae89c45a1bb3f33ef0f1",
+      "v21_phase_a.csv": "d0ec707ccbe8776281e7032ffb27a784b58bed8d2c1e146ec07c1b9d5f3b723d",
+      "v21_phase_b.csv": "2f24958d8ebd1a248d1ee5a887247c34d7130f010f201f183e9eb240eedd3b26",
+      "v22_phase_a.csv": "70895b1e3a149446c59eafbac96f50e4e72ff301726317b15c4729cc14efd19a",
+      "v22_phase_b.csv": "eb0eb4ca4997fd8735055f185a4d4b4e10bf73edd3bc19c2893603c443899e68",
+      "v23_phase_a.csv": "52a1c9d7a32ab1bd176eb39af68559a3336ec0442bd2ba52a5ef4a464802358e",
+      "v23_phase_b.csv": "1cb1b3c204e470be6dbb96d40bab7f90e6ec8be9b21aa2a1f39ba566c7a9f5a2"
+    },
+    "script_sha256": "ae1922bf5798d0e54ceb2d61db90c7cc43051bdc7464f40e23e8224a4bc1e6d8",
+    "test_only": false
+  },
+  "written_utc": "2026-11-22T18:10:12.922590+00:00"
+}
