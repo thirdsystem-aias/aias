@@ -1,0 +1,1373 @@
+{
+  "phase": "v1.20",
+  "successor_of": "v1.11",
+  "successor_of_tag": "v1.11-prereg-r1",
+  "status": "r1, final (Pablo's answers of 2026-11-14); locked by tag v1.20-prereg-r1",
+  "rule": "a judge reply counts when it holds exactly one complete JSON object that passes v1.11's checks; text around it, code fences included, is ignored (PRE_REGISTRATION_v1_20.md section 3)",
+  "switches": {
+    "Q1_study_id": "v1.20",
+    "Q2_scored_attempt": "first_counting",
+    "Q3_cap_cut_reply_invalid": true,
+    "Q4_reject_identical_objects": true,
+    "Q5_cut_answers": "keep_r4",
+    "Q6_case_b_result": true
+  },
+  "config_sha256": "015adfadd6923e8631ac16346c31a82bd1bc8f5d3e4f7ede4b34c2c762e2312f",
+  "created_utc": "2026-11-22T10:15:13+00:00",
+  "dry_run": false,
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "replacements": [],
+  "v1_11_frozen_sha256": "8f81b23b997694aef43cc0007ec8989285c283562049f37e506535bac81a1238",
+  "units_sha256": "1243e8e15e2dc6afc894197de9819d149d934e3883bc9f504e8fdfbbbb9c08b8",
+  "v1_11_stage_j": {
+    "state": "halted",
+    "case": "B",
+    "halt": [
+      "J1 EARLY-6 v0.14 premium_tea",
+      "J1 EARLY-6 v0.9 finance",
+      "J1 EARLY-6 v0.9 oliveoil",
+      "J1 EARLY-6 v0.9 pm",
+      "J1 EARLY-6 v0.9 running",
+      "J1 EARLY-6 v0.9 skincare",
+      "J1 EARLY-6 v1.0 household",
+      "J1 EARLY-6 v1.0 knives",
+      "J1 OMNI t1 v0.22",
+      "J1 OMNI t3 v0.19",
+      "J1 R t1 v0.23"
+    ],
+    "how_known": "v1.11's outcomes and fail_check recomputed on the frozen records"
+  },
+  "cut_list": {
+    "csv": "cut_units_v1_20.csv",
+    "csv_sha256": "e89cc7f4c11b9dd19f3a9fa0f2b3d23bc013576bae28b45202fa64e87c620116",
+    "json": "cut_units_v1_20.json",
+    "json_sha256": "0f7e605cfcaa9b4186152d7aac7467dc00616bd926ef3c56c544278fa594c94a",
+    "answers_flagged": 66,
+    "s_cut_m_cells": [
+      [
+        "F",
+        "v0.19",
+        "gemini-2.5-flash"
+      ],
+      [
+        "F",
+        "v0.19",
+        "gemini-2.5-flash-lite"
+      ],
+      [
+        "F",
+        "v0.23",
+        "gemini-2.5-flash"
+      ],
+      [
+        "R",
+        "v0.23",
+        "gemini-2.5-flash"
+      ]
+    ]
+  },
+  "primary_attempt_rule": "first_counting",
+  "primary_cut_answers": "keep_r4",
+  "stage": "J",
+  "judge_fail_by_judge_set": {
+    "J1 EARLY-6 v0.14 premium_tea": {
+      "v1.11 rule": {
+        "valid": 533,
+        "judge_fail": 13,
+        "unjudged": 0,
+        "fail_share": 0.023809523809523808
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 546,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 546,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v0.9 finance": {
+      "v1.11 rule": {
+        "valid": 464,
+        "judge_fail": 19,
+        "unjudged": 0,
+        "fail_share": 0.039337474120082816
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 483,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 483,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v0.9 oliveoil": {
+      "v1.11 rule": {
+        "valid": 494,
+        "judge_fail": 14,
+        "unjudged": 0,
+        "fail_share": 0.027559055118110236
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 508,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 508,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v0.9 pm": {
+      "v1.11 rule": {
+        "valid": 567,
+        "judge_fail": 19,
+        "unjudged": 0,
+        "fail_share": 0.032423208191126277
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 586,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 586,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v0.9 running": {
+      "v1.11 rule": {
+        "valid": 442,
+        "judge_fail": 12,
+        "unjudged": 0,
+        "fail_share": 0.02643171806167401
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 454,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 454,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v0.9 skincare": {
+      "v1.11 rule": {
+        "valid": 669,
+        "judge_fail": 14,
+        "unjudged": 0,
+        "fail_share": 0.020497803806734993
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 683,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 683,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v1.0 household": {
+      "v1.11 rule": {
+        "valid": 621,
+        "judge_fail": 14,
+        "unjudged": 0,
+        "fail_share": 0.02204724409448819
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 635,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 635,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 EARLY-6 v1.0 knives": {
+      "v1.11 rule": {
+        "valid": 460,
+        "judge_fail": 10,
+        "unjudged": 0,
+        "fail_share": 0.02127659574468085
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 470,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 470,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t1 v0.19": {
+      "v1.11 rule": {
+        "valid": 165,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.006024096385542169
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 166,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 166,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t1 v0.20": {
+      "v1.11 rule": {
+        "valid": 220,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.009009009009009009
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 222,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 222,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t1 v0.21": {
+      "v1.11 rule": {
+        "valid": 223,
+        "judge_fail": 3,
+        "unjudged": 0,
+        "fail_share": 0.01327433628318584
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 226,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 226,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t1 v0.22": {
+      "v1.11 rule": {
+        "valid": 212,
+        "judge_fail": 5,
+        "unjudged": 0,
+        "fail_share": 0.02304147465437788
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 217,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 217,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t1 v0.23": {
+      "v1.11 rule": {
+        "valid": 109,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.00909090909090909
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 110,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 110,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t2 v0.19": {
+      "v1.11 rule": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t2 v0.20": {
+      "v1.11 rule": {
+        "valid": 213,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.009302325581395349
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t2 v0.21": {
+      "v1.11 rule": {
+        "valid": 231,
+        "judge_fail": 3,
+        "unjudged": 0,
+        "fail_share": 0.01282051282051282
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 234,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 234,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t2 v0.22": {
+      "v1.11 rule": {
+        "valid": 218,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.00909090909090909
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 220,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 220,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t2 v0.23": {
+      "v1.11 rule": {
+        "valid": 102,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.009708737864077669
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 103,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 103,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t3 v0.19": {
+      "v1.11 rule": {
+        "valid": 152,
+        "judge_fail": 5,
+        "unjudged": 0,
+        "fail_share": 0.03184713375796178
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 157,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 157,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t3 v0.20": {
+      "v1.11 rule": {
+        "valid": 218,
+        "judge_fail": 3,
+        "unjudged": 0,
+        "fail_share": 0.013574660633484163
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 221,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 221,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t3 v0.21": {
+      "v1.11 rule": {
+        "valid": 212,
+        "judge_fail": 3,
+        "unjudged": 0,
+        "fail_share": 0.013953488372093023
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t3 v0.22": {
+      "v1.11 rule": {
+        "valid": 211,
+        "judge_fail": 3,
+        "unjudged": 0,
+        "fail_share": 0.014018691588785047
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 214,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 214,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 OMNI t3 v0.23": {
+      "v1.11 rule": {
+        "valid": 101,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.00980392156862745
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 102,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 102,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 R t1 v0.23": {
+      "v1.11 rule": {
+        "valid": 140,
+        "judge_fail": 4,
+        "unjudged": 0,
+        "fail_share": 0.027777777777777776
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 R t2 v0.23": {
+      "v1.11 rule": {
+        "valid": 143,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.006944444444444444
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J1 R t3 v0.23": {
+      "v1.11 rule": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.14 premium_tea": {
+      "v1.11 rule": {
+        "valid": 54,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 54,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 54,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.9 finance": {
+      "v1.11 rule": {
+        "valid": 49,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 49,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 49,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.9 oliveoil": {
+      "v1.11 rule": {
+        "valid": 52,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 52,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 52,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.9 pm": {
+      "v1.11 rule": {
+        "valid": 59,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 59,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 59,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.9 running": {
+      "v1.11 rule": {
+        "valid": 45,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 45,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 45,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v0.9 skincare": {
+      "v1.11 rule": {
+        "valid": 68,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 68,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 68,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v1.0 household": {
+      "v1.11 rule": {
+        "valid": 63,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 63,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 63,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 EARLY-6 v1.0 knives": {
+      "v1.11 rule": {
+        "valid": 47,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 47,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 47,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t1 v0.19": {
+      "v1.11 rule": {
+        "valid": 166,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 166,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 166,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t1 v0.20": {
+      "v1.11 rule": {
+        "valid": 222,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 222,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 222,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t1 v0.21": {
+      "v1.11 rule": {
+        "valid": 226,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 226,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 226,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t1 v0.22": {
+      "v1.11 rule": {
+        "valid": 217,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 217,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 217,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t1 v0.23": {
+      "v1.11 rule": {
+        "valid": 110,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 110,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 110,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t2 v0.19": {
+      "v1.11 rule": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 159,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t2 v0.20": {
+      "v1.11 rule": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t2 v0.21": {
+      "v1.11 rule": {
+        "valid": 234,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 234,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 234,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t2 v0.22": {
+      "v1.11 rule": {
+        "valid": 220,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 220,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 220,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t2 v0.23": {
+      "v1.11 rule": {
+        "valid": 103,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 103,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 103,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t3 v0.19": {
+      "v1.11 rule": {
+        "valid": 157,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 157,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 157,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t3 v0.20": {
+      "v1.11 rule": {
+        "valid": 221,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 221,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 221,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t3 v0.21": {
+      "v1.11 rule": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 215,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t3 v0.22": {
+      "v1.11 rule": {
+        "valid": 214,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 214,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 214,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 OMNI t3 v0.23": {
+      "v1.11 rule": {
+        "valid": 102,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 102,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 102,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 R t1 v0.23": {
+      "v1.11 rule": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 R t2 v0.23": {
+      "v1.11 rule": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "J2 R t3 v0.23": {
+      "v1.11 rule": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "v1.20 rule (first counting)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "S-ATT (v1.11 first)": {
+        "valid": 144,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    }
+  },
+  "halts": {
+    "v1.11 rule": [
+      "J1 EARLY-6 v0.14 premium_tea",
+      "J1 EARLY-6 v0.9 finance",
+      "J1 EARLY-6 v0.9 oliveoil",
+      "J1 EARLY-6 v0.9 pm",
+      "J1 EARLY-6 v0.9 running",
+      "J1 EARLY-6 v0.9 skincare",
+      "J1 EARLY-6 v1.0 household",
+      "J1 EARLY-6 v1.0 knives",
+      "J1 OMNI t1 v0.22",
+      "J1 OMNI t3 v0.19",
+      "J1 R t1 v0.23"
+    ],
+    "v1.20 rule (first counting)": [],
+    "S-ATT (v1.11 first)": []
+  },
+  "status_transitions_v1_11_to_v1_20": {
+    "J1 main: JUDGE_FAIL -> VALID": 155,
+    "J1 main: VALID -> VALID": 7423,
+    "J1 repeat: JUDGE_FAIL -> VALID": 7,
+    "J1 repeat: VALID -> VALID": 372,
+    "J2 main: VALID -> VALID": 3650,
+    "J2 repeat: VALID -> VALID": 184
+  },
+  "valid_under_both_from_a_different_attempt": {
+    "J1 main": {
+      "n": 174,
+      "unit_ids": [
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p2_contextual|3#Marukyu Koyamaen",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p3_constraint|2#Postcard Teas",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p4_identity|7#Postcard Teas",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p4_identity|8#Harney & Sons",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p4_identity|8#TWG Tea",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p6_comparison|5#Fortnum & Mason",
+        "EARLY-6 v0.14 premium_tea::claude-opus-4-7|p6_comparison|6#Marukyu Koyamaen",
+        "EARLY-6 v0.14 premium_tea::gpt-5.4-mini|p2_contextual|2#Glenburn Tea Estate",
+        "EARLY-6 v0.14 premium_tea::gpt-5.4-mini|p2_contextual|3#TWG Tea",
+        "EARLY-6 v0.14 premium_tea::gpt-5.4-mini|p2_contextual|6#Tea Box",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p4_identity|1#Marukyu Koyamaen",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p4_identity|4#Vahdam Teas",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p4_identity|5#Tea Box",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p4_identity|7#Yunnan Sourcing",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p4_identity|8#Yunnan Sourcing",
+        "EARLY-6 v0.14 premium_tea::gpt-5.5|p6_comparison|7#TWG Tea",
+        "EARLY-6 v0.14 premium_tea::grok-4-1-fast|p3_constraint|7#Rishi Tea",
+        "EARLY-6 v0.14 premium_tea::grok-4-1-fast|p4_identity|1#Postcard Teas",
+        "EARLY-6 v0.9 finance::claude-opus-4-7|p5_discovery|2#Quicken Simplifi",
+        "EARLY-6 v0.9 finance::claude-opus-4-7|p5_discovery|7#Tiller",
+        "EARLY-6 v0.9 finance::claude-opus-4-7|p5_discovery|8#Mint",
+        "EARLY-6 v0.9 finance::claude-sonnet-4-6|p2_contextual|6#EveryDollar",
+        "EARLY-6 v0.9 finance::claude-sonnet-4-6|p5_discovery|2#NerdWallet",
+        "EARLY-6 v0.9 finance::claude-sonnet-4-6|p6_comparison|1#Quicken Simplifi",
+        "EARLY-6 v0.9 finance::claude-sonnet-4-6|p6_comparison|2#EveryDollar",
+        "EARLY-6 v0.9 finance::gemini-2.5-flash|p1_functional|2#Goodbudget",
+        "EARLY-6 v0.9 finance::gemini-2.5-flash|p5_discovery|1#Monarch Money",
+        "EARLY-6 v0.9 finance::gemini-2.5-flash|p6_comparison|8#Rocket Money",
+        "EARLY-6 v0.9 finance::gpt-5.4-mini|p5_discovery|6#Mint",
+        "EARLY-6 v0.9 finance::gpt-5.4-mini|p5_discovery|6#Tiller",
+        "EARLY-6 v0.9 finance::gpt-5.5|p5_discovery|2#EveryDollar",
+        "EARLY-6 v0.9 finance::gpt-5.5|p5_discovery|2#Mint",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p1_functional|7#Goodbudget",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p3_constraint|4#Copilot",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p4_identity|5#Lunch Money",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p5_discovery|3#Copilot",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p5_discovery|3#Mint",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p5_discovery|5#NerdWallet",
+        "EARLY-6 v0.9 finance::grok-4-1-fast|p6_comparison|7#NerdWallet",
+        "EARLY-6 v0.9 oliveoil::claude-opus-4-7|p4_identity|1#Frescobaldi Laudemio",
+        "EARLY-6 v0.9 oliveoil::claude-opus-4-7|p4_identity|7#Partanna",
+        "EARLY-6 v0.9 oliveoil::claude-sonnet-4-6|p6_comparison|4#Brightland",
+        "EARLY-6 v0.9 oliveoil::gemini-2.5-flash|p3_constraint|8#Kosterina",
+        "EARLY-6 v0.9 oliveoil::gemini-2.5-flash|p4_identity|1#Frescobaldi Laudemio",
+        "EARLY-6 v0.9 oliveoil::gemini-2.5-flash|p4_identity|5#Goya",
+        "EARLY-6 v0.9 oliveoil::gemini-2.5-flash|p4_identity|8#Bertolli",
+        "EARLY-6 v0.9 oliveoil::gpt-5.4-mini|p4_identity|5#Lucini",
+        "EARLY-6 v0.9 oliveoil::gpt-5.5|p4_identity|2#Olio Verde",
+        "EARLY-6 v0.9 oliveoil::gpt-5.5|p4_identity|6#Filippo Berio",
+        "EARLY-6 v0.9 oliveoil::gpt-5.5|p5_discovery|4#Frantoio Muraglia",
+        "EARLY-6 v0.9 oliveoil::grok-4-1-fast|p4_identity|7#McEvoy Ranch",
+        "EARLY-6 v0.9 pm::claude-opus-4-7|p3_constraint|6#ClickUp",
+        "EARLY-6 v0.9 pm::claude-opus-4-7|p4_identity|1#Height",
+        "EARLY-6 v0.9 pm::claude-sonnet-4-6|p2_contextual|8#Monday",
+        "EARLY-6 v0.9 pm::claude-sonnet-4-6|p4_identity|3#Linear",
+        "EARLY-6 v0.9 pm::claude-sonnet-4-6|p5_discovery|8#Notion",
+        "EARLY-6 v0.9 pm::gemini-2.5-flash|p2_contextual|3#Confluence",
+        "EARLY-6 v0.9 pm::gemini-2.5-flash|p5_discovery|1#ClickUp",
+        "EARLY-6 v0.9 pm::gemini-2.5-flash|p5_discovery|1#Coda",
+        "EARLY-6 v0.9 pm::gemini-2.5-flash|p5_discovery|5#Coda",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p5_discovery|2#Notion",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p5_discovery|4#ClickUp",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p5_discovery|7#Wrike",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p5_discovery|8#Height",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p6_comparison|1#Jira",
+        "EARLY-6 v0.9 pm::gpt-5.4-mini|p6_comparison|4#Notion",
+        "EARLY-6 v0.9 pm::gpt-5.5|p5_discovery|5#Motion",
+        "EARLY-6 v0.9 pm::gpt-5.5|p5_discovery|7#Motion",
+        "EARLY-6 v0.9 pm::gpt-5.5|p6_comparison|5#Jira",
+        "EARLY-6 v0.9 pm::grok-4-1-fast|p2_contextual|3#ClickUp",
+        "EARLY-6 v0.9 pm::grok-4-1-fast|p4_identity|2#Monday",
+        "EARLY-6 v0.9 pm::grok-4-1-fast|p5_discovery|2#Notion",
+        "EARLY-6 v0.9 pm::grok-4-1-fast|p5_discovery|5#Motion",
+        "EARLY-6 v0.9 pm::grok-4-1-fast|p5_discovery|6#Airtable",
+        "EARLY-6 v0.9 running::claude-opus-4-7|p3_constraint|1#Hoka",
+        "EARLY-6 v0.9 running::claude-sonnet-4-6|p5_discovery|6#Topo Athletic",
+        "EARLY-6 v0.9 running::claude-sonnet-4-6|p5_discovery|8#Altra",
+        "EARLY-6 v0.9 running::gemini-2.5-flash|p5_discovery|6#Altra",
+        "EARLY-6 v0.9 running::gpt-5.4-mini|p2_contextual|1#Salomon",
+        "EARLY-6 v0.9 running::gpt-5.4-mini|p2_contextual|3#Adidas",
+        "EARLY-6 v0.9 running::gpt-5.4-mini|p5_discovery|1#Norda",
+        "EARLY-6 v0.9 running::gpt-5.5|p1_functional|8#On",
+        "EARLY-6 v0.9 running::gpt-5.5|p4_identity|4#Nike",
+        "EARLY-6 v0.9 running::gpt-5.5|p4_identity|5#Nike",
+        "EARLY-6 v0.9 running::grok-4-1-fast|p5_discovery|8#Hoka",
+        "EARLY-6 v0.9 skincare::claude-opus-4-7|p1_functional|4#Drunk Elephant",
+        "EARLY-6 v0.9 skincare::gemini-2.5-flash|p6_comparison|7#Paula's Choice",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p3_constraint|3#Bioderma",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p3_constraint|8#Aveeno",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p3_constraint|8#La Roche-Posay",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p4_identity|2#Cetaphil",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p4_identity|3#Eucerin",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p4_identity|5#EltaMD",
+        "EARLY-6 v0.9 skincare::gpt-5.4-mini|p4_identity|8#Eucerin",
+        "EARLY-6 v0.9 skincare::gpt-5.5|p1_functional|6#First Aid Beauty",
+        "EARLY-6 v0.9 skincare::gpt-5.5|p4_identity|5#Aveeno",
+        "EARLY-6 v0.9 skincare::gpt-5.5|p4_identity|5#Neutrogena",
+        "EARLY-6 v0.9 skincare::gpt-5.5|p6_comparison|2#Drunk Elephant",
+        "EARLY-6 v0.9 skincare::gpt-5.5|p6_comparison|8#Tatcha",
+        "EARLY-6 v0.9 skincare::grok-4-1-fast|p3_constraint|2#Bioderma",
+        "EARLY-6 v0.9 skincare::grok-4-1-fast|p6_comparison|6#La Mer",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p1_functional|1#Brooklinen",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p4_identity|8#Wayfair",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p5_discovery|5#Quince",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p5_discovery|6#HomeGoods",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p6_comparison|2#Walmart",
+        "EARLY-6 v1.0 household::claude-opus-4-7|p6_comparison|7#Wayfair",
+        "EARLY-6 v1.0 household::claude-sonnet-4-6|p1_functional|7#HomeGoods",
+        "EARLY-6 v1.0 household::claude-sonnet-4-6|p4_identity|7#Amazon",
+        "EARLY-6 v1.0 household::claude-sonnet-4-6|p5_discovery|3#Parachute",
+        "EARLY-6 v1.0 household::claude-sonnet-4-6|p5_discovery|5#Parachute",
+        "EARLY-6 v1.0 household::gemini-2.5-flash|p4_identity|3#At Home",
+        "EARLY-6 v1.0 household::gemini-2.5-flash|p6_comparison|1#Wayfair",
+        "EARLY-6 v1.0 household::gemini-2.5-flash|p6_comparison|4#Amazon",
+        "EARLY-6 v1.0 household::gpt-5.4-mini|p2_contextual|1#West Elm",
+        "EARLY-6 v1.0 household::gpt-5.5|p4_identity|3#HomeGoods",
+        "EARLY-6 v1.0 household::gpt-5.5|p5_discovery|2#At Home",
+        "EARLY-6 v1.0 household::grok-4-1-fast|p1_functional|3#Brooklinen",
+        "EARLY-6 v1.0 household::grok-4-1-fast|p1_functional|7#Walmart",
+        "EARLY-6 v1.0 household::grok-4-1-fast|p4_identity|1#Walmart",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p2_contextual|4#Misen",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p2_contextual|7#Mercer",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p2_contextual|8#Henckels",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p4_identity|2#Mercer",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p4_identity|5#Mercer",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p4_identity|7#Mercer",
+        "EARLY-6 v1.0 knives::claude-opus-4-7|p6_comparison|6#Henckels",
+        "EARLY-6 v1.0 knives::claude-sonnet-4-6|p4_identity|1#Misono",
+        "EARLY-6 v1.0 knives::gemini-2.5-flash|p2_contextual|2#Made In",
+        "EARLY-6 v1.0 knives::gemini-2.5-flash|p4_identity|4#Sakai Takayuki",
+        "EARLY-6 v1.0 knives::gemini-2.5-flash|p6_comparison|1#Wüsthof",
+        "EARLY-6 v1.0 knives::gpt-5.5|p6_comparison|6#Messermeister",
+        "OMNI t1 v0.20::claude-opus-4-5|q3|#Drunk Elephant",
+        "OMNI t1 v0.20::claude-sonnet-4-5|q5|#Augustinus Bader",
+        "OMNI t1 v0.21::claude-opus-4-5|q2|#Bobbi Brown",
+        "OMNI t1 v0.21::gpt-4o|q5|#Anastasia Beverly Hills",
+        "OMNI t1 v0.22::claude-opus-4-5|q2|#Rivian",
+        "OMNI t1 v0.22::claude-sonnet-4-5|q4|#Bentley",
+        "OMNI t1 v0.22::claude-sonnet-4-5|q5|#Bentley",
+        "OMNI t1 v0.22::claude-sonnet-4-5|q5|#Cadillac",
+        "OMNI t1 v0.22::gpt-4o-mini|q6|#Ford",
+        "OMNI t1 v0.22::gpt-4o|q5|#Jaguar",
+        "OMNI t1 v0.23::claude-sonnet-4-5|CC-2|#S05",
+        "OMNI t2 v0.19::claude-sonnet-4-5|q2_enthusiast|#ZMF Headphones",
+        "OMNI t2 v0.19::claude-sonnet-4-5|q3_reference|#Stax",
+        "OMNI t2 v0.20::claude-sonnet-4-5|q4|#Drunk Elephant",
+        "OMNI t2 v0.20::claude-sonnet-4-5|q6|#Drunk Elephant",
+        "OMNI t2 v0.20::gemini-2.5-flash-lite|q1|#Drunk Elephant",
+        "OMNI t2 v0.20::gpt-4o-mini|q3|#Paula's Choice",
+        "OMNI t2 v0.21::claude-sonnet-4-5|q2|#Maybelline",
+        "OMNI t2 v0.21::claude-sonnet-4-5|q5|#Tom Ford Beauty",
+        "OMNI t2 v0.21::gpt-4o-mini|q3|#Fenty Beauty",
+        "OMNI t2 v0.21::gpt-4o-mini|q6|#Kylie Cosmetics",
+        "OMNI t2 v0.22::claude-sonnet-4-5|q3|#Hyundai",
+        "OMNI t2 v0.22::gpt-4o-mini|q5|#Mercedes-Benz",
+        "OMNI t2 v0.23::claude-opus-4-5|EA-3|#S17",
+        "OMNI t3 v0.19::claude-sonnet-4-5|q4_famous|#Grado",
+        "OMNI t3 v0.20::claude-sonnet-4-5|q3|#La Roche-Posay",
+        "OMNI t3 v0.20::claude-sonnet-4-5|q5|#La Mer",
+        "OMNI t3 v0.20::claude-sonnet-4-5|q6|#Augustinus Bader",
+        "OMNI t3 v0.20::gemini-2.5-flash|q5|#La Roche-Posay",
+        "OMNI t3 v0.20::gpt-4o-mini|q2|#La Roche-Posay",
+        "OMNI t3 v0.20::gpt-4o|q6|#The Ordinary",
+        "OMNI t3 v0.21::claude-sonnet-4-5|q2|#MAC Cosmetics",
+        "OMNI t3 v0.21::claude-sonnet-4-5|q2|#NYX Professional Makeup",
+        "OMNI t3 v0.21::claude-sonnet-4-5|q5|#Giorgio Armani Beauty",
+        "OMNI t3 v0.21::gpt-4o-mini|q4|#Maybelline",
+        "OMNI t3 v0.21::gpt-4o-mini|q5|#Rare Beauty",
+        "OMNI t3 v0.21::gpt-4o|q6|#Rare Beauty",
+        "OMNI t3 v0.22::gpt-4o|q6|#BMW",
+        "R t1 v0.23::claude-opus-4-5|S08#S08",
+        "R t3 v0.23::claude-opus-4-5|S05#S05",
+        "R t3 v0.23::claude-opus-4-5|S06#S06",
+        "R t3 v0.23::claude-opus-4-5|S10#S10"
+      ]
+    },
+    "J1 repeat": {
+      "n": 3,
+      "unit_ids": [
+        "EARLY-6 v0.9 skincare::gpt-5.5|p3_constraint|2#Cetaphil",
+        "EARLY-6 v1.0 household::gpt-5.4-mini|p1_functional|2#Target",
+        "OMNI t1 v0.20::claude-opus-4-5|q1|#Paula's Choice"
+      ]
+    }
+  },
+  "outcome_counts": {
+    "v1.11 rule": {
+      "J1": {
+        "VALID": 7423,
+        "JUDGE_FAIL": 155
+      },
+      "J2": {
+        "VALID": 3650
+      }
+    },
+    "v1.20 rule": {
+      "J1": {
+        "VALID": 7578
+      },
+      "J2": {
+        "VALID": 3650
+      }
+    },
+    "S-ATT": {
+      "J1": {
+        "VALID": 7578
+      },
+      "J2": {
+        "VALID": 3650
+      }
+    }
+  },
+  "verdicts_side_by_side": {
+    "v1.11": null,
+    "v1.20": {
+      "H1": "CONFIRMED",
+      "H2": "FALSIFIED",
+      "H3": "CONFIRMED",
+      "H4": "CONFIRMED",
+      "H5": "MARGINAL",
+      "H6": "CONFIRMED",
+      "H7": "FALSIFIED",
+      "H8": "MARGINAL",
+      "H9": "CONFIRMED"
+    },
+    "role_of_v1_20_verdicts": "Sentiment Paper A's result (case B; switch Q6 = true)"
+  }
+}

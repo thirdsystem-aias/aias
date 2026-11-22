@@ -1,0 +1,4 @@
+command: python3 scripts/score_v1_20.py --stage J (repository root, branch sentiment-successor @ 5da5ef8, run once)
+started_utc: 2026-11-22T10:15:13Z
+[v1.20] Stage J: v1.11 Stage J halted (case B); JUDGE_FAIL halts: v1.11 rule ['J1 EARLY-6 v0.14 premium_tea', 'J1 EARLY-6 v0.9 finance', 'J1 EARLY-6 v0.9 oliveoil', 'J1 EARLY-6 v0.9 pm', 'J1 EARLY-6 v0.9 running', 'J1 EARLY-6 v0.9 skincare', 'J1 EARLY-6 v1.0 household', 'J1 EARLY-6 v1.0 knives', 'J1 OMNI t1 v0.22', 'J1 OMNI t3 v0.19', 'J1 R t1 v0.23'], v1.20 none; H1 CONFIRMED (alpha 0.874, brand rho 0.874, n 163); S_ATT_v1_11_first H1 CONFIRMED
+EXIT=0

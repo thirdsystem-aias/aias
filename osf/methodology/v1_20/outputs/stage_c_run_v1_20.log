@@ -1,0 +1,5 @@
+command: python3 scripts/score_v1_20.py --stage C (repository root, branch sentiment-successor @ 5da5ef8, run once)
+started_utc: 2026-11-22T10:16:04Z
+[v1.11] R* (MNP) computed with v1.10's locked code; 23 rank tables match
+[v1.20] Stage C verdicts: {'H1': 'CONFIRMED', 'H2': 'FALSIFIED', 'H3': 'CONFIRMED', 'H4': 'CONFIRMED', 'H5': 'MARGINAL', 'H6': 'CONFIRMED', 'H7': 'FALSIFIED', 'H8': 'MARGINAL', 'H9': 'CONFIRMED'} (noise guard off); case B: Sentiment Paper A's result (case B; switch Q6 = true); 3 sensitivity verdict changes; written to /Users/pablou/aias/_worktrees/sentiment-successor/osf/methodology/v1_20/outputs/v1_20_verdicts.json
+EXIT=0
