@@ -739,7 +739,7 @@
       "DG": "Diagnostic: TS-DG-{client code}-r1 (client work stays private)"
     },
     "study": "The program's own identifier as in its git tags: v0.22, v1.9 (OSF folders write v22, v1_9); the syntheses are AIAS1.0 and AIAS2.0, after Pablo's example TS-SY-AIAS2.0-r4.",
-    "rev": "The report revision: r1, r2, ... A code is never reused. A new revision gets the next rN of its study; the earlier code stays valid for the earlier PDF.",
+    "rev": "The report revision: r1, r2, ... A code is never reused. A new revision gets the next rN of its study and report type (revisions count per type, Pablo's default (a), in force Nov 23, 2026: TS-BR-v0.27-r1 beside TS-CS-v0.27-r1); the earlier code stays valid for the earlier PDF.",
     "where_it_appears": [
       "the last page, bottom: the closing band on Tier 1; the last page's footer line on Tiers 2 and 3, as 'thirdsystem.ai \u00b7 TS-CS-v0.22-r1'",
       "the Citation block",
@@ -764,7 +764,7 @@
       "sha256": "SHA-256 of the PDF as published (the OSF copy where it was deposited)",
       "website": "the website copy: path, SHA-256, first served (since) and site commit; path null when it has since been replaced",
       "variants": "other published byte copies of the same revision (pages identical)",
-      "status": "current, or superseded by the study's next revision"
+      "status": "current, or superseded by the next revision of the same study and type"
     },
     "entries": [
       {

@@ -11,8 +11,9 @@ Every report carries a catalogue code, so each one is easy to file, cite and fin
   REV    the report revision: r1, r2, ...
 
 Register: brand/report_specs.json report_catalogue.entries (code, title, date, tier, git tag, OSF path,
-SHA-256 of the PDF). A code is never reused: a new revision takes the study's next rN, and the earlier
-code stays valid for the earlier PDF. Published reports are registered without re-rendering; a
+SHA-256 of the PDF). A code is never reused: a new revision takes the next rN of its study and type
+(revisions count per report type, Nov 23, 2026: TS-BR-v0.27-r1 beside TS-CS-v0.27-r1), and the
+earlier code stays valid for the earlier PDF. Published reports are registered without re-rendering; a
 report's code appears on the PDF only from its next render: on the last page (Tier 1: the closing band;
 Tiers 2 and 3: the last footer line, "thirdsystem.ai · TS-CS-v0.22-r1"), in the Citation block, in the
 PDF metadata (Subject and Keywords) and in the file name, TS-CS-v0.22-r1_<title-slug>.pdf.
@@ -136,16 +137,19 @@ def registered_hashes(entry: dict) -> set[str]:
     return {h for h in hashes if h}
 
 
-def next_revision(study: str, entries: Iterable[dict]) -> int:
-    """The study's next revision number (revisions count per study, whatever the type)."""
-    revs = [parse_code(e["code"])["rev"] for e in entries if parse_code(e["code"])["study"] == study]
+def next_revision(study: str, entries: Iterable[dict], kind: str | None = None) -> int:
+    """The next revision number of a study's report of one type. Revisions count per report type
+    (Pablo's default (a), in force Nov 23, 2026): TS-BR-v0.27-r1 sits beside TS-CS-v0.27-r1.
+    With kind None the count runs over every type of the study (for a study with one type the same)."""
+    revs = [p["rev"] for p in (parse_code(e["code"]) for e in entries)
+            if p["study"] == study and (kind is None or p["type"] == kind)]
     return max(revs, default=0) + 1
 
 
 def check_code(code: str, entries: Sequence[dict], *, sha256: str | None = None) -> dict:
     """Refuse a code already in the catalogue for a different PDF (by SHA-256; with no hash, any
     registered code is refused: a published PDF is never re-rendered). A code not yet registered
-    must be its study's next revision, and a registered PDF cannot take a second code."""
+    must be the next revision of its study and type, and a registered PDF cannot take a second code."""
     p = parse_code(code)
     same = [e for e in entries if e.get("code") == code]
     if same:
@@ -154,11 +158,11 @@ def check_code(code: str, entries: Sequence[dict], *, sha256: str | None = None)
             raise ReportCodeError(
                 f"{code} is already in the catalogue for another PDF (SHA-256 "
                 f"{', '.join(sorted(h[:12] for h in known)) or 'not recorded'}); a new render takes "
-                f"r{next_revision(p['study'], entries)}")
+                f"r{next_revision(p['study'], entries, p['type'])}")
         return p
-    nxt = next_revision(p["study"], entries)
+    nxt = next_revision(p["study"], entries, p["type"])
     if p["rev"] != nxt:
-        raise ReportCodeError(f"{code}: the next revision of {p['study']} is r{nxt}")
+        raise ReportCodeError(f"{code}: the next {p['type']} revision of {p['study']} is r{nxt}")
     if sha256 is not None:
         clash = [e["code"] for e in entries if sha256 in registered_hashes(e)]
         if clash:

@@ -102,11 +102,12 @@ class TestRegister(unittest.TestCase):
         self.assertGreater(len(ENTRIES), 40)
 
     def test_revisions_run_from_r1_without_gaps_and_one_is_current(self):
+        # Revisions count per report type (Nov 23, 2026): a study's brief and its case study each run r1, r2, ...
         by_study = defaultdict(list)
         for e in ENTRIES:
             p = RC.parse_code(e["code"])
             self.assertEqual((e["type"], e["study"], e["rev"]), (p["type"], p["study"], f"r{p['rev']}"))
-            by_study[p["study"]].append(e)
+            by_study[(p["type"], p["study"])].append(e)
         for study, es in by_study.items():
             revs = sorted(RC.parse_code(e["code"])["rev"] for e in es)
             self.assertEqual(revs, list(range(1, len(revs) + 1)), study)
@@ -148,6 +149,19 @@ class TestUniqueness(unittest.TestCase):
         for bad in ("TS-SY-AIAS2.0-r5", "TS-FL-v0.40-r2", "TS-CS-v0.22-r1"):
             with self.assertRaises(RC.ReportCodeError, msg=bad):
                 RC.check_code(bad, ENTRIES)
+
+    def test_revisions_count_per_report_type(self):
+        # TS-CS-v0.27-r1 is registered; the study's first brief is TS-BR-v0.27-r1, not r2.
+        self.assertEqual(RC.next_revision("v0.27", ENTRIES, "CS"), 2)
+        self.assertEqual(RC.next_revision("v0.27", ENTRIES, "BR"), 1 + sum(
+            1 for e in ENTRIES if e["code"].startswith("TS-BR-v0.27-")))
+        synthetic = [{"code": "TS-CS-v9.9-r1"}, {"code": "TS-CS-v9.9-r2"}]
+        RC.check_code("TS-BR-v9.9-r1", synthetic)
+        RC.check_code("TS-CS-v9.9-r3", synthetic)
+        for bad in ("TS-BR-v9.9-r3", "TS-BR-v9.9-r2", "TS-CS-v9.9-r1"):
+            with self.assertRaises(RC.ReportCodeError, msg=bad):
+                RC.check_code(bad, synthetic)
+        self.assertEqual(RC.next_revision("v9.9", synthetic), 3)  # no type: across types
 
     def test_a_registered_pdf_takes_no_second_code(self):
         with self.assertRaises(RC.ReportCodeError):
