@@ -2,9 +2,10 @@
 """
 score_v1_21.py - AIAS v1.21, Sentiment redesigned: co-mention tone (TONE), confirmed blind on t5.
 
-STATUS: DRAFT scorer (2026-11-23) written for PRE_REGISTRATION_v1_21_DRAFT_r2.md (osf/methodology/v1_21/prereg/);
-to be locked with it at tag v1.21-prereg-r1. Rules are transcribed from that draft; each section is cited inline.
-Where the draft leaves a choice to the code, the most literal reading is taken and marked "READING (section):".
+STATUS: DRAFT scorer (2026-11-23) written for PRE_REGISTRATION_v1_21_DRAFT_r2.md and pointed at r3
+(PRE_REGISTRATION_v1_21_DRAFT_r3.md, osf/methodology/v1_21/prereg/), to be locked with it at tag v1.21-prereg-r1.
+Rules are transcribed from the draft; each section is cited inline. Where r2 left a choice to the code, the most
+literal reading was taken and marked "READING (section):"; r3 writes those choices into its text (r3 section 19).
 
 What is reused, unchanged (section 5, section 6 conventions)
   * v1.10's correlation machinery (scripts/score_v1_10.py): pooled within-category Spearman on centred ranks,
@@ -73,7 +74,7 @@ PHASE_ID = "v1.21"
 PREREG_TAG = "v1.21-prereg-r1"
 STATUS = "DRAFT (2026-11-23), not locked"
 V121 = "osf/methodology/v1_21"
-PREREG_REL = V121 + "/prereg/PRE_REGISTRATION_v1_21_DRAFT_r2.md"
+PREREG_REL = V121 + "/prereg/PRE_REGISTRATION_v1_21_DRAFT_r3.md"
 OUT_DIR = ROOT / V121 / "outputs"
 ANCHOR_FILE = ROOT / V121 / "anchor/git_anchor_v1_21.json"
 STAGE_J_NAME = "stage_j_v1_21.json"
