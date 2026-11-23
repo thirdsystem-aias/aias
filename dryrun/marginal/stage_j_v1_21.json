@@ -1,0 +1,4111 @@
+{
+  "phase": "v1.21",
+  "stage": "J",
+  "status": "DRAFT (2026-11-23), not locked",
+  "prereg": "osf/methodology/v1_21/prereg/PRE_REGISTRATION_v1_21_DRAFT_r2.md",
+  "prereg_tag": "v1.21-prereg-r1",
+  "created_utc": "2026-11-23T08:15:55+00:00",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "seeds": {
+    "unit_order": 121000,
+    "selfcon": 121003,
+    "shuffle": 121010,
+    "H4_perm": 121011,
+    "boot": 121020
+  },
+  "draws": {
+    "perm": 10000,
+    "shuffle": 10000,
+    "boot": 10000,
+    "ci": 0.95,
+    "preregistered": true
+  },
+  "rule": "v1.20 extraction rule (score_v1_20.outcomes, config_v1_20.json)",
+  "JUDGE_FAIL_check": {
+    "per_wave_judge_category": {
+      "t4 J1 v0.19": {
+        "valid": 247,
+        "judge_fail": 1,
+        "unjudged": 0,
+        "fail_share": 0.004032258064516129
+      },
+      "t4 J1 v0.20": {
+        "valid": 247,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J1 v0.21": {
+        "valid": 257,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.007722007722007722
+      },
+      "t4 J1 v0.22": {
+        "valid": 242,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.00819672131147541
+      },
+      "t4 J1 v0.23": {
+        "valid": 256,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J2 v0.19": {
+        "valid": 248,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J2 v0.20": {
+        "valid": 247,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J2 v0.21": {
+        "valid": 259,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J2 v0.22": {
+        "valid": 244,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t4 J2 v0.23": {
+        "valid": 256,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J1 v0.19": {
+        "valid": 262,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.007575757575757576
+      },
+      "t5 J1 v0.20": {
+        "valid": 254,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J1 v0.21": {
+        "valid": 236,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J1 v0.22": {
+        "valid": 244,
+        "judge_fail": 2,
+        "unjudged": 0,
+        "fail_share": 0.008130081300813009
+      },
+      "t5 J1 v0.23": {
+        "valid": 258,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J2 v0.19": {
+        "valid": 264,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J2 v0.20": {
+        "valid": 254,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J2 v0.21": {
+        "valid": 236,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J2 v0.22": {
+        "valid": 246,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      },
+      "t5 J2 v0.23": {
+        "valid": 258,
+        "judge_fail": 0,
+        "unjudged": 0,
+        "fail_share": 0.0
+      }
+    },
+    "halt": [],
+    "threshold": 0.02
+  },
+  "S_ref_vs_v1_11_brand_score": {
+    "t4": {
+      "matches_v1_11_brand_score": true,
+      "differences": []
+    },
+    "t5": {
+      "matches_v1_11_brand_score": true,
+      "differences": []
+    }
+  },
+  "H1_t5_Judge_Agreement": {
+    "verdict": "CONFIRMED",
+    "alpha_ordinal": 0.9548833923515337,
+    "windows_judged_by_both": 1254,
+    "brand_rho": {
+      "rho": 0.9891156462585035,
+      "abs_rho": 0.9891156462585035,
+      "n": 48,
+      "units_per_category": {
+        "v0.19": 9,
+        "v0.20": 10,
+        "v0.21": 10,
+        "v0.22": 10,
+        "v0.23": 9
+      },
+      "determinable": true,
+      "ci95": [
+        0.9300699300699301,
+        1.0
+      ]
+    },
+    "alpha_by_category": {
+      "v0.19": 0.9289241653555296,
+      "v0.20": 0.9578011912074622,
+      "v0.21": 0.9566577842307721,
+      "v0.22": 0.9515170018597864,
+      "v0.23": 0.966854333364326
+    },
+    "kappa_evaluative": 0.5441428139995302,
+    "confusion_J1_rows_J2_cols": {
+      "-2|-2": 109,
+      "-2|-1": 10,
+      "-1|-2": 17,
+      "-1|-1": 199,
+      "-1|0": 14,
+      "0|-1": 25,
+      "0|0": 337,
+      "0|1": 31,
+      "1|0": 24,
+      "1|1": 237,
+      "1|2": 29,
+      "2|1": 20,
+      "2|2": 202
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "self_consistency": {
+    "t4": {
+      "J1": {
+        "n": 56,
+        "exact_valence_agreement": 0.8571428571428571,
+        "alpha_ordinal": 0.9472325791497452,
+        "flag_below_0.90": true
+      },
+      "J2": {
+        "n": 56,
+        "exact_valence_agreement": 1.0,
+        "alpha_ordinal": 1.0,
+        "flag_below_0.90": false
+      }
+    },
+    "t5": {
+      "J1": {
+        "n": 47,
+        "exact_valence_agreement": 0.9574468085106383,
+        "alpha_ordinal": 0.9873692126523081,
+        "flag_below_0.90": false
+      },
+      "J2": {
+        "n": 47,
+        "exact_valence_agreement": 1.0,
+        "alpha_ordinal": 1.0,
+        "flag_below_0.90": false
+      }
+    }
+  },
+  "precision_at_realised_n": {
+    "n": 48,
+    "true_rho": [
+      0.0,
+      0.1,
+      0.15,
+      0.2,
+      0.25,
+      0.3
+    ],
+    "P_abs_rho_le_0.30": {
+      "0.00": 0.9621356931171929,
+      "0.10": 0.9161584697451631,
+      "0.15": 0.8535734411570968,
+      "0.20": 0.760594261784594,
+      "0.25": 0.6395153881314796,
+      "0.30": 0.4999756986381888
+    },
+    "method": "Fisher z, Bonett-Wright variance (1 + rho^2/2)/(n - 3)"
+  },
+  "MQ9_identification": {
+    "t4": {
+      "units_at_floor": 48,
+      "outside_main_component": 0,
+      "units": [],
+      "share": 0.0,
+      "flag": false
+    },
+    "t5": {
+      "units_at_floor": 48,
+      "outside_main_component": 0,
+      "units": [],
+      "share": 0.0,
+      "flag": false
+    }
+  },
+  "descriptives": {
+    "t4": {
+      "per_category": {
+        "v0.19": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 485,
+          "tied_pair_share": 0.2515463917525773,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": -0.04296494179525061,
+            "q25": -0.6334125713174289,
+            "q75": 1.2527108085641798,
+            "min": -2.675795865701167,
+            "max": 1.9778774843372267
+          }
+        },
+        "v0.20": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 453,
+          "tied_pair_share": 0.23399558498896247,
+          "brands": 10,
+          "rated_TONE": 9,
+          "TONE": {
+            "n": 9,
+            "median": -0.26803610636119996,
+            "q25": -0.4387026671577605,
+            "q75": 0.8676991698648423,
+            "min": -2.226208776972475,
+            "max": 1.894367294101401
+          }
+        },
+        "v0.21": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 53,
+          "pairs": 494,
+          "tied_pair_share": 0.2894736842105263,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": 0.040069113115416305,
+            "q25": -0.972829008224376,
+            "q75": 0.917631875235556,
+            "min": -2.0159458852271417,
+            "max": 1.61895073867658
+          }
+        },
+        "v0.22": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 50,
+          "pairs": 453,
+          "tied_pair_share": 0.2560706401766004,
+          "brands": 10,
+          "rated_TONE": 9,
+          "TONE": {
+            "n": 9,
+            "median": 0.2779559975149974,
+            "q25": -0.4094263006388448,
+            "q75": 1.5963797216601598,
+            "min": -2.284674028904073,
+            "max": 1.9763075478619507
+          }
+        },
+        "v0.23": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 53,
+          "pairs": 509,
+          "tied_pair_share": 0.2337917485265226,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": 0.04030057441520454,
+            "q25": -1.1048651772663194,
+            "q75": 1.0680495161506538,
+            "min": -2.2721813615198636,
+            "max": 2.001254378605619
+          }
+        }
+      },
+      "mean_u_by_model_J1": {
+        "claude-fable-5-2": {
+          "n": 412,
+          "mean_u": 64.38106796116504
+        },
+        "gemini-4-argon": {
+          "n": 405,
+          "mean_u": 47.71604938271605
+        },
+        "gpt-6-astra": {
+          "n": 395,
+          "mean_u": 50.063291139240505
+        }
+      }
+    },
+    "t5": {
+      "per_category": {
+        "v0.19": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 524,
+          "tied_pair_share": 0.24427480916030533,
+          "brands": 10,
+          "rated_TONE": 9,
+          "TONE": {
+            "n": 9,
+            "median": -0.08399873462648251,
+            "q25": -0.2912683341538747,
+            "q75": 1.4110766439513793,
+            "min": -2.643531782682297,
+            "max": 1.9227798531817306
+          }
+        },
+        "v0.20": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 515,
+          "tied_pair_share": 0.21553398058252426,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": 0.006697812223709437,
+            "q25": -0.9671490327323949,
+            "q75": 1.3380559788875623,
+            "min": -2.4310073888117762,
+            "max": 2.1528713035742104
+          }
+        },
+        "v0.21": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 409,
+          "tied_pair_share": 0.2665036674816626,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": -0.22585630539802184,
+            "q25": -0.7440806080182113,
+            "q75": 1.3383064519739174,
+            "min": -2.855942017512231,
+            "max": 1.9265259651452578
+          }
+        },
+        "v0.22": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 53,
+          "pairs": 454,
+          "tied_pair_share": 0.27312775330396477,
+          "brands": 10,
+          "rated_TONE": 10,
+          "TONE": {
+            "n": 10,
+            "median": -0.054332313819576455,
+            "q25": -0.7982761371916612,
+            "q75": 1.2640264839405653,
+            "min": -2.633139694036565,
+            "max": 1.7889220024193415
+          }
+        },
+        "v0.23": {
+          "answers_with_valid_window": 54,
+          "answers_ge2_valid_brands": 54,
+          "pairs": 493,
+          "tied_pair_share": 0.24949290060851928,
+          "brands": 10,
+          "rated_TONE": 9,
+          "TONE": {
+            "n": 9,
+            "median": -0.022072706722715066,
+            "q25": -0.6999953807380791,
+            "q75": 1.0496541534320951,
+            "min": -2.4465123103097812,
+            "max": 1.8780885137580299
+          }
+        }
+      },
+      "mean_u_by_model_J1": {
+        "claude-fable-5-2": {
+          "n": 412,
+          "mean_u": 63.592233009708735
+        },
+        "gemini-4-argon": {
+          "n": 404,
+          "mean_u": 47.95792079207921
+        },
+        "gpt-6-astra": {
+          "n": 407,
+          "mean_u": 54.60687960687961
+        }
+      }
+    }
+  },
+  "values": {
+    "t4": {
+      "TONE": {
+        "v0.19|B01": {
+          "value": -2.434116147939765,
+          "rated": true,
+          "n_contrib": 28,
+          "main_component": true,
+          "n_comparisons": 107.0
+        },
+        "v0.19|B02": {
+          "value": -2.675795865701167,
+          "rated": true,
+          "n_contrib": 16,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.19|B03": {
+          "value": 0.16740076474963086,
+          "rated": true,
+          "n_contrib": 18,
+          "main_component": true,
+          "n_comparisons": 83.0
+        },
+        "v0.19|B04": {
+          "value": 0.46452135440066195,
+          "rated": true,
+          "n_contrib": 31,
+          "main_component": true,
+          "n_comparisons": 119.0
+        },
+        "v0.19|B05": {
+          "value": -0.36858717214356035,
+          "rated": true,
+          "n_contrib": 42,
+          "main_component": true,
+          "n_comparisons": 158.0
+        },
+        "v0.19|B06": {
+          "value": -0.2533306483401321,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 132.0
+        },
+        "v0.19|B07": {
+          "value": -0.7216877043753851,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 29.0
+        },
+        "v0.19|B08": {
+          "value": 1.9778774843372267,
+          "rated": true,
+          "n_contrib": 40,
+          "main_component": true,
+          "n_comparisons": 147.0
+        },
+        "v0.19|B09": {
+          "value": 1.5154406266186857,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 102.0
+        },
+        "v0.19|Denon": {
+          "value": 1.570871139526441,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.20|B01": {
+          "value": -0.4387026671577605,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 125.0
+        },
+        "v0.20|B02": {
+          "value": 0.6966831993042868,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 144.0
+        },
+        "v0.20|B03": {
+          "value": 0.8676991698648423,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 43.0
+        },
+        "v0.20|B04": {
+          "value": -0.300798235805211,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 96.0
+        },
+        "v0.20|B05": {
+          "value": -0.26803610636119996,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 86.0
+        },
+        "v0.20|B06": {
+          "value": -2.226208776972475,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 90.0
+        },
+        "v0.20|B07": {
+          "value": 1.2736605375385883,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 92.0
+        },
+        "v0.20|B08": {
+          "value": 0.0796771683731295,
+          "rated": false,
+          "n_contrib": 3,
+          "main_component": true,
+          "n_comparisons": 15.0
+        },
+        "v0.20|B09": {
+          "value": -2.0955731263006143,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 64.0
+        },
+        "v0.20|Eucerin": {
+          "value": 1.894367294101401,
+          "rated": true,
+          "n_contrib": 43,
+          "main_component": true,
+          "n_comparisons": 151.0
+        },
+        "v0.21|B01": {
+          "value": 1.61895073867658,
+          "rated": true,
+          "n_contrib": 44,
+          "main_component": true,
+          "n_comparisons": 165.0
+        },
+        "v0.21|B02": {
+          "value": -2.0159458852271417,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 83.0
+        },
+        "v0.21|B03": {
+          "value": 0.9349879502324159,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 137.0
+        },
+        "v0.21|B04": {
+          "value": 0.3414940172239499,
+          "rated": true,
+          "n_contrib": 17,
+          "main_component": true,
+          "n_comparisons": 73.0
+        },
+        "v0.21|B05": {
+          "value": -1.439602734725043,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 52.0
+        },
+        "v0.21|B06": {
+          "value": -0.5153472348965298,
+          "rated": true,
+          "n_contrib": 42,
+          "main_component": true,
+          "n_comparisons": 165.0
+        },
+        "v0.21|B07": {
+          "value": 1.3599160829343035,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 103.0
+        },
+        "v0.21|B08": {
+          "value": 0.8655636502449765,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 44.0
+        },
+        "v0.21|B09": {
+          "value": -1.1253229326669913,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.21|B10": {
+          "value": -0.2613557909931173,
+          "rated": true,
+          "n_contrib": 35,
+          "main_component": true,
+          "n_comparisons": 136.0
+        },
+        "v0.22|B01": {
+          "value": 0.7175493331020637,
+          "rated": true,
+          "n_contrib": 32,
+          "main_component": true,
+          "n_comparisons": 126.0
+        },
+        "v0.22|B02": {
+          "value": 1.6342035516809483,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 41.0
+        },
+        "v0.22|B03": {
+          "value": -0.23330952496006294,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 140.0
+        },
+        "v0.22|B04": {
+          "value": -1.5005124343738478,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 21.0
+        },
+        "v0.22|B05": {
+          "value": 1.5963797216601598,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 106.0
+        },
+        "v0.22|B06": {
+          "value": -2.2354769857053305,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 36.0
+        },
+        "v0.22|B07": {
+          "value": 0.2779559975149974,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 84.0
+        },
+        "v0.22|BMW": {
+          "value": -2.284674028904073,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 97.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.4094263006388448,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 111.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.9763075478619507,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 144.0
+        },
+        "v0.23|B01": {
+          "value": -2.2721813615198636,
+          "rated": true,
+          "n_contrib": 29,
+          "main_component": true,
+          "n_comparisons": 119.0
+        },
+        "v0.23|B02": {
+          "value": -0.25942761716163976,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|B03": {
+          "value": -1.318010069085976,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 38.0
+        },
+        "v0.23|B04": {
+          "value": 1.5153707580237183,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 92.0
+        },
+        "v0.23|B05": {
+          "value": 1.0581386014706504,
+          "rated": true,
+          "n_contrib": 39,
+          "main_component": true,
+          "n_comparisons": 151.0
+        },
+        "v0.23|B06": {
+          "value": 1.0713531543773216,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.23|B07": {
+          "value": 2.001254378605619,
+          "rated": true,
+          "n_contrib": 46,
+          "main_component": true,
+          "n_comparisons": 178.0
+        },
+        "v0.23|B08": {
+          "value": -2.1749398289505733,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.23|B09": {
+          "value": -0.4654305018073495,
+          "rated": true,
+          "n_contrib": 35,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|S03": {
+          "value": 0.34002876599204884,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 56.0
+        }
+      },
+      "TONE_J2": {
+        "v0.19|B01": {
+          "value": -2.0677218972280533,
+          "rated": true,
+          "n_contrib": 28,
+          "main_component": true,
+          "n_comparisons": 107.0
+        },
+        "v0.19|B02": {
+          "value": -2.0783736084741684,
+          "rated": true,
+          "n_contrib": 16,
+          "main_component": true,
+          "n_comparisons": 64.0
+        },
+        "v0.19|B03": {
+          "value": 0.2270516543281193,
+          "rated": true,
+          "n_contrib": 18,
+          "main_component": true,
+          "n_comparisons": 83.0
+        },
+        "v0.19|B04": {
+          "value": 0.29338760254103236,
+          "rated": true,
+          "n_contrib": 31,
+          "main_component": true,
+          "n_comparisons": 120.0
+        },
+        "v0.19|B05": {
+          "value": -0.4954983622560442,
+          "rated": true,
+          "n_contrib": 42,
+          "main_component": true,
+          "n_comparisons": 159.0
+        },
+        "v0.19|B06": {
+          "value": -0.31547448616426865,
+          "rated": true,
+          "n_contrib": 35,
+          "main_component": true,
+          "n_comparisons": 136.0
+        },
+        "v0.19|B07": {
+          "value": -0.5626997456455722,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 29.0
+        },
+        "v0.19|B08": {
+          "value": 1.4989668942194598,
+          "rated": true,
+          "n_contrib": 40,
+          "main_component": true,
+          "n_comparisons": 148.0
+        },
+        "v0.19|B09": {
+          "value": 1.3514623407064952,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 102.0
+        },
+        "v0.19|Denon": {
+          "value": 1.919419962916447,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.20|B01": {
+          "value": -0.4171461304181144,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 125.0
+        },
+        "v0.20|B02": {
+          "value": 0.5486430079434308,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 144.0
+        },
+        "v0.20|B03": {
+          "value": 0.8070930414822364,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 43.0
+        },
+        "v0.20|B04": {
+          "value": -0.47085966029070114,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 96.0
+        },
+        "v0.20|B05": {
+          "value": 0.03629685094996193,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 86.0
+        },
+        "v0.20|B06": {
+          "value": -1.6508743010017226,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 90.0
+        },
+        "v0.20|B07": {
+          "value": 0.9435307981496102,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 92.0
+        },
+        "v0.20|B08": {
+          "value": 0.04164306534166424,
+          "rated": false,
+          "n_contrib": 3,
+          "main_component": true,
+          "n_comparisons": 15.0
+        },
+        "v0.20|B09": {
+          "value": -1.789416983359765,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 64.0
+        },
+        "v0.20|Eucerin": {
+          "value": 1.7318360242745157,
+          "rated": true,
+          "n_contrib": 43,
+          "main_component": true,
+          "n_comparisons": 151.0
+        },
+        "v0.21|B01": {
+          "value": 1.3998137396455153,
+          "rated": true,
+          "n_contrib": 44,
+          "main_component": true,
+          "n_comparisons": 167.0
+        },
+        "v0.21|B02": {
+          "value": -2.0273625002136373,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 89.0
+        },
+        "v0.21|B03": {
+          "value": 0.6991936141820309,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 139.0
+        },
+        "v0.21|B04": {
+          "value": 0.3355052620631343,
+          "rated": true,
+          "n_contrib": 17,
+          "main_component": true,
+          "n_comparisons": 74.0
+        },
+        "v0.21|B05": {
+          "value": -1.2547926989702507,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 52.0
+        },
+        "v0.21|B06": {
+          "value": -0.6906976195452922,
+          "rated": true,
+          "n_contrib": 42,
+          "main_component": true,
+          "n_comparisons": 165.0
+        },
+        "v0.21|B07": {
+          "value": 1.3863142750417297,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 104.0
+        },
+        "v0.21|B08": {
+          "value": 1.039207204017263,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.21|B09": {
+          "value": -0.8118187681925091,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.21|B10": {
+          "value": -0.28827664229065664,
+          "rated": true,
+          "n_contrib": 36,
+          "main_component": true,
+          "n_comparisons": 141.0
+        },
+        "v0.22|B01": {
+          "value": 0.6506084033957852,
+          "rated": true,
+          "n_contrib": 32,
+          "main_component": true,
+          "n_comparisons": 127.0
+        },
+        "v0.22|B02": {
+          "value": 1.4119157497554704,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 41.0
+        },
+        "v0.22|B03": {
+          "value": -0.10840966190577105,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 141.0
+        },
+        "v0.22|B04": {
+          "value": -1.4128947039965174,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 21.0
+        },
+        "v0.22|B05": {
+          "value": 1.544058087606589,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 107.0
+        },
+        "v0.22|B06": {
+          "value": -2.0977230505597055,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 41.0
+        },
+        "v0.22|B07": {
+          "value": 0.27292340353108313,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 85.0
+        },
+        "v0.22|BMW": {
+          "value": -1.95724580644669,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 97.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.541223655998538,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 112.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.966470230153042,
+          "rated": true,
+          "n_contrib": 39,
+          "main_component": true,
+          "n_comparisons": 146.0
+        },
+        "v0.23|B01": {
+          "value": -1.792005570066148,
+          "rated": true,
+          "n_contrib": 29,
+          "main_component": true,
+          "n_comparisons": 119.0
+        },
+        "v0.23|B02": {
+          "value": -0.3123939113771254,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|B03": {
+          "value": -1.1891178287775774,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 38.0
+        },
+        "v0.23|B04": {
+          "value": 1.37913636620004,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 92.0
+        },
+        "v0.23|B05": {
+          "value": 1.2167884459322227,
+          "rated": true,
+          "n_contrib": 39,
+          "main_component": true,
+          "n_comparisons": 151.0
+        },
+        "v0.23|B06": {
+          "value": 0.6710077048531657,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.23|B07": {
+          "value": 1.7055021536921984,
+          "rated": true,
+          "n_contrib": 46,
+          "main_component": true,
+          "n_comparisons": 178.0
+        },
+        "v0.23|B08": {
+          "value": -1.4986328400193925,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.23|B09": {
+          "value": -0.4683968251899047,
+          "rated": true,
+          "n_contrib": 35,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|S03": {
+          "value": 0.22198529476456935,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 56.0
+        }
+      },
+      "TONE_NV": {
+        "v0.19|B01": {
+          "value": -2.320776766153588,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 75.0
+        },
+        "v0.19|B02": {
+          "value": -2.5352133075147956,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.19|B03": {
+          "value": -0.026708574408547757,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 59.0
+        },
+        "v0.19|B04": {
+          "value": 0.6693158836484145,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.19|B05": {
+          "value": -0.42683645799925585,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 100.0
+        },
+        "v0.19|B06": {
+          "value": -0.024295070915195876,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 70.0
+        },
+        "v0.19|B07": {
+          "value": -0.846388302070197,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 19.0
+        },
+        "v0.19|B08": {
+          "value": 1.9538205739448342,
+          "rated": true,
+          "n_contrib": 36,
+          "main_component": true,
+          "n_comparisons": 111.0
+        },
+        "v0.19|B09": {
+          "value": 1.5025522509599774,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.19|Denon": {
+          "value": 1.3842130185583452,
+          "rated": false,
+          "n_contrib": 5,
+          "main_component": true,
+          "n_comparisons": 23.0
+        },
+        "v0.20|B01": {
+          "value": -0.10033591702584174,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.20|B02": {
+          "value": 0.4913223780802531,
+          "rated": true,
+          "n_contrib": 29,
+          "main_component": true,
+          "n_comparisons": 91.0
+        },
+        "v0.20|B03": {
+          "value": 0.8396782543345572,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 36.0
+        },
+        "v0.20|B04": {
+          "value": -0.43554358334784615,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 60.0
+        },
+        "v0.20|B05": {
+          "value": -0.3379864339245951,
+          "rated": true,
+          "n_contrib": 17,
+          "main_component": true,
+          "n_comparisons": 58.0
+        },
+        "v0.20|B06": {
+          "value": -2.0431497154235374,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.20|B07": {
+          "value": 1.5213685616399673,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 59.0
+        },
+        "v0.20|B08": {
+          "value": 0.021022532564563857,
+          "rated": false,
+          "n_contrib": 3,
+          "main_component": true,
+          "n_comparisons": 14.0
+        },
+        "v0.20|B09": {
+          "value": -2.197448933760101,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 52.0
+        },
+        "v0.20|Eucerin": {
+          "value": 1.7859011260044881,
+          "rated": true,
+          "n_contrib": 40,
+          "main_component": true,
+          "n_comparisons": 112.0
+        },
+        "v0.21|B01": {
+          "value": 1.3532765493935583,
+          "rated": true,
+          "n_contrib": 39,
+          "main_component": true,
+          "n_comparisons": 123.0
+        },
+        "v0.21|B02": {
+          "value": -2.0025056917224564,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 68.0
+        },
+        "v0.21|B03": {
+          "value": 0.8800300512011241,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 93.0
+        },
+        "v0.21|B04": {
+          "value": 0.4219044772813286,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 53.0
+        },
+        "v0.21|B05": {
+          "value": -1.193510339538791,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 27.0
+        },
+        "v0.21|B06": {
+          "value": -0.6757574818593719,
+          "rated": true,
+          "n_contrib": 35,
+          "main_component": true,
+          "n_comparisons": 115.0
+        },
+        "v0.21|B07": {
+          "value": 1.2926889324488564,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.21|B08": {
+          "value": 0.5892393538071234,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 33.0
+        },
+        "v0.21|B09": {
+          "value": -0.45463355262837407,
+          "rated": false,
+          "n_contrib": 5,
+          "main_component": true,
+          "n_comparisons": 17.0
+        },
+        "v0.21|B10": {
+          "value": -0.44842624278365584,
+          "rated": true,
+          "n_contrib": 32,
+          "main_component": true,
+          "n_comparisons": 102.0
+        },
+        "v0.22|B01": {
+          "value": 0.9618419276118391,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.22|B02": {
+          "value": 1.8073559594004938,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.22|B03": {
+          "value": -0.008464058742116204,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 61.0
+        },
+        "v0.22|B04": {
+          "value": -1.5660235623954182,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 18.0
+        },
+        "v0.22|B05": {
+          "value": 1.3992354317324935,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 62.0
+        },
+        "v0.22|B06": {
+          "value": -2.1637608939574453,
+          "rated": true,
+          "n_contrib": 7,
+          "main_component": true,
+          "n_comparisons": 26.0
+        },
+        "v0.22|B07": {
+          "value": -0.01087982551041966,
+          "rated": true,
+          "n_contrib": 13,
+          "main_component": true,
+          "n_comparisons": 49.0
+        },
+        "v0.22|BMW": {
+          "value": -2.6542973019091884,
+          "rated": true,
+          "n_contrib": 22,
+          "main_component": true,
+          "n_comparisons": 65.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.413130000380381,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.9973460885815657,
+          "rated": true,
+          "n_contrib": 30,
+          "main_component": true,
+          "n_comparisons": 91.0
+        },
+        "v0.23|B01": {
+          "value": -2.1509395257485506,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 91.0
+        },
+        "v0.23|B02": {
+          "value": -0.2664246387858589,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 94.0
+        },
+        "v0.23|B03": {
+          "value": -1.2419726519137537,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 23.0
+        },
+        "v0.23|B04": {
+          "value": 1.233072141773494,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 69.0
+        },
+        "v0.23|B05": {
+          "value": 0.8741795482308453,
+          "rated": true,
+          "n_contrib": 30,
+          "main_component": true,
+          "n_comparisons": 96.0
+        },
+        "v0.23|B06": {
+          "value": 1.141392534764064,
+          "rated": true,
+          "n_contrib": 7,
+          "main_component": true,
+          "n_comparisons": 27.0
+        },
+        "v0.23|B07": {
+          "value": 1.788716378230468,
+          "rated": true,
+          "n_contrib": 42,
+          "main_component": true,
+          "n_comparisons": 132.0
+        },
+        "v0.23|B08": {
+          "value": -1.9823758079486264,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 47.0
+        },
+        "v0.23|B09": {
+          "value": -0.19795765322082898,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 90.0
+        },
+        "v0.23|S03": {
+          "value": 0.2878341618884247,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 47.0
+        }
+      },
+      "CONTRAST": {
+        "v0.19|B01": {
+          "value": -38.316326530612244,
+          "rated": true,
+          "n_contrib": 28
+        },
+        "v0.19|B02": {
+          "value": -38.288690476190474,
+          "rated": true,
+          "n_contrib": 16
+        },
+        "v0.19|B03": {
+          "value": 3.280423280423281,
+          "rated": true,
+          "n_contrib": 18
+        },
+        "v0.19|B04": {
+          "value": 9.748463901689709,
+          "rated": true,
+          "n_contrib": 31
+        },
+        "v0.19|B05": {
+          "value": -9.441609977324264,
+          "rated": true,
+          "n_contrib": 42
+        },
+        "v0.19|B06": {
+          "value": -8.161764705882353,
+          "rated": true,
+          "n_contrib": 34
+        },
+        "v0.19|B07": {
+          "value": -10.575396825396824,
+          "rated": true,
+          "n_contrib": 6
+        },
+        "v0.19|B08": {
+          "value": 35.873511904761905,
+          "rated": true,
+          "n_contrib": 40
+        },
+        "v0.19|B09": {
+          "value": 21.273291925465834,
+          "rated": true,
+          "n_contrib": 23
+        },
+        "v0.19|Denon": {
+          "value": 22.916666666666668,
+          "rated": true,
+          "n_contrib": 6
+        },
+        "v0.20|B01": {
+          "value": -13.676470588235295,
+          "rated": true,
+          "n_contrib": 34
+        },
+        "v0.20|B02": {
+          "value": 8.092105263157896,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.20|B03": {
+          "value": 12.569444444444445,
+          "rated": true,
+          "n_contrib": 12
+        },
+        "v0.20|B04": {
+          "value": -8.974358974358976,
+          "rated": true,
+          "n_contrib": 26
+        },
+        "v0.20|B05": {
+          "value": -8.967391304347828,
+          "rated": true,
+          "n_contrib": 23
+        },
+        "v0.20|B06": {
+          "value": -38.65530303030303,
+          "rated": true,
+          "n_contrib": 22
+        },
+        "v0.20|B07": {
+          "value": 24.047619047619047,
+          "rated": true,
+          "n_contrib": 21
+        },
+        "v0.20|B08": {
+          "value": -9.583333333333334,
+          "rated": false,
+          "n_contrib": 3
+        },
+        "v0.20|B09": {
+          "value": -36.0,
+          "rated": true,
+          "n_contrib": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 31.637596899224807,
+          "rated": true,
+          "n_contrib": 43
+        },
+        "v0.21|B01": {
+          "value": 23.91098484848485,
+          "rated": true,
+          "n_contrib": 44
+        },
+        "v0.21|B02": {
+          "value": -36.41666666666667,
+          "rated": true,
+          "n_contrib": 20
+        },
+        "v0.21|B03": {
+          "value": 11.544117647058824,
+          "rated": true,
+          "n_contrib": 34
+        },
+        "v0.21|B04": {
+          "value": 1.9852941176470589,
+          "rated": true,
+          "n_contrib": 17
+        },
+        "v0.21|B05": {
+          "value": -23.333333333333332,
+          "rated": true,
+          "n_contrib": 12
+        },
+        "v0.21|B06": {
+          "value": -12.77777777777778,
+          "rated": true,
+          "n_contrib": 42
+        },
+        "v0.21|B07": {
+          "value": 17.483974358974358,
+          "rated": true,
+          "n_contrib": 26
+        },
+        "v0.21|B08": {
+          "value": 12.196969696969695,
+          "rated": true,
+          "n_contrib": 11
+        },
+        "v0.21|B09": {
+          "value": -21.5625,
+          "rated": true,
+          "n_contrib": 8
+        },
+        "v0.21|B10": {
+          "value": -9.988095238095235,
+          "rated": true,
+          "n_contrib": 35
+        },
+        "v0.22|B01": {
+          "value": 6.731770833333332,
+          "rated": true,
+          "n_contrib": 32
+        },
+        "v0.22|B02": {
+          "value": 15.625,
+          "rated": true,
+          "n_contrib": 10
+        },
+        "v0.22|B03": {
+          "value": -8.474903474903474,
+          "rated": true,
+          "n_contrib": 37
+        },
+        "v0.22|B04": {
+          "value": -22.767857142857142,
+          "rated": false,
+          "n_contrib": 4
+        },
+        "v0.22|B05": {
+          "value": 19.2283950617284,
+          "rated": true,
+          "n_contrib": 27
+        },
+        "v0.22|B06": {
+          "value": -38.101851851851855,
+          "rated": true,
+          "n_contrib": 9
+        },
+        "v0.22|B07": {
+          "value": 1.3377192982456139,
+          "rated": true,
+          "n_contrib": 19
+        },
+        "v0.22|BMW": {
+          "value": -42.095238095238095,
+          "rated": true,
+          "n_contrib": 25
+        },
+        "v0.22|Bentley": {
+          "value": -11.33241758241758,
+          "rated": true,
+          "n_contrib": 26
+        },
+        "v0.22|Chevrolet": {
+          "value": 31.008771929824558,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.23|B01": {
+          "value": -40.718390804597696,
+          "rated": true,
+          "n_contrib": 29
+        },
+        "v0.23|B02": {
+          "value": -7.120098039215687,
+          "rated": true,
+          "n_contrib": 34
+        },
+        "v0.23|B03": {
+          "value": -20.416666666666664,
+          "rated": true,
+          "n_contrib": 8
+        },
+        "v0.23|B04": {
+          "value": 17.196969696969695,
+          "rated": true,
+          "n_contrib": 22
+        },
+        "v0.23|B05": {
+          "value": 14.850427350427353,
+          "rated": true,
+          "n_contrib": 39
+        },
+        "v0.23|B06": {
+          "value": 9.500000000000002,
+          "rated": true,
+          "n_contrib": 10
+        },
+        "v0.23|B07": {
+          "value": 30.3713768115942,
+          "rated": true,
+          "n_contrib": 46
+        },
+        "v0.23|B08": {
+          "value": -31.011904761904766,
+          "rated": true,
+          "n_contrib": 14
+        },
+        "v0.23|B09": {
+          "value": -13.666666666666668,
+          "rated": true,
+          "n_contrib": 35
+        },
+        "v0.23|S03": {
+          "value": 4.097222222222221,
+          "rated": true,
+          "n_contrib": 12
+        }
+      },
+      "S_ref": {
+        "v0.19|B01": {
+          "value": 24.107142857142858,
+          "rated": true,
+          "n": 28
+        },
+        "v0.19|B02": {
+          "value": 20.3125,
+          "rated": true,
+          "n": 16
+        },
+        "v0.19|B03": {
+          "value": 61.111111111111114,
+          "rated": true,
+          "n": 18
+        },
+        "v0.19|B04": {
+          "value": 61.29032258064516,
+          "rated": true,
+          "n": 31
+        },
+        "v0.19|B05": {
+          "value": 47.023809523809526,
+          "rated": true,
+          "n": 42
+        },
+        "v0.19|B06": {
+          "value": 53.6764705882353,
+          "rated": true,
+          "n": 34
+        },
+        "v0.19|B07": {
+          "value": 41.666666666666664,
+          "rated": true,
+          "n": 6
+        },
+        "v0.19|B08": {
+          "value": 83.75,
+          "rated": true,
+          "n": 40
+        },
+        "v0.19|B09": {
+          "value": 80.43478260869566,
+          "rated": true,
+          "n": 23
+        },
+        "v0.19|Denon": {
+          "value": 75.0,
+          "rated": true,
+          "n": 6
+        },
+        "v0.20|B01": {
+          "value": 41.1764705882353,
+          "rated": true,
+          "n": 34
+        },
+        "v0.20|B02": {
+          "value": 59.21052631578947,
+          "rated": true,
+          "n": 38
+        },
+        "v0.20|B03": {
+          "value": 64.58333333333333,
+          "rated": true,
+          "n": 12
+        },
+        "v0.20|B04": {
+          "value": 44.23076923076923,
+          "rated": true,
+          "n": 26
+        },
+        "v0.20|B05": {
+          "value": 45.65217391304348,
+          "rated": true,
+          "n": 23
+        },
+        "v0.20|B06": {
+          "value": 21.59090909090909,
+          "rated": true,
+          "n": 22
+        },
+        "v0.20|B07": {
+          "value": 70.23809523809524,
+          "rated": true,
+          "n": 21
+        },
+        "v0.20|B08": {
+          "value": null,
+          "rated": false,
+          "n": 3
+        },
+        "v0.20|B09": {
+          "value": 15.0,
+          "rated": true,
+          "n": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 79.65116279069767,
+          "rated": true,
+          "n": 43
+        },
+        "v0.21|B01": {
+          "value": 77.77777777777777,
+          "rated": true,
+          "n": 45
+        },
+        "v0.21|B02": {
+          "value": 20.0,
+          "rated": true,
+          "n": 20
+        },
+        "v0.21|B03": {
+          "value": 63.23529411764706,
+          "rated": true,
+          "n": 34
+        },
+        "v0.21|B04": {
+          "value": 52.94117647058823,
+          "rated": true,
+          "n": 17
+        },
+        "v0.21|B05": {
+          "value": 39.583333333333336,
+          "rated": true,
+          "n": 12
+        },
+        "v0.21|B06": {
+          "value": 44.642857142857146,
+          "rated": true,
+          "n": 42
+        },
+        "v0.21|B07": {
+          "value": 75.0,
+          "rated": true,
+          "n": 26
+        },
+        "v0.21|B08": {
+          "value": 54.54545454545455,
+          "rated": true,
+          "n": 11
+        },
+        "v0.21|B09": {
+          "value": 40.625,
+          "rated": true,
+          "n": 8
+        },
+        "v0.21|B10": {
+          "value": 49.285714285714285,
+          "rated": true,
+          "n": 35
+        },
+        "v0.22|B01": {
+          "value": 58.59375,
+          "rated": true,
+          "n": 32
+        },
+        "v0.22|B02": {
+          "value": 67.5,
+          "rated": true,
+          "n": 10
+        },
+        "v0.22|B03": {
+          "value": 44.078947368421055,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B04": {
+          "value": null,
+          "rated": false,
+          "n": 4
+        },
+        "v0.22|B05": {
+          "value": 73.14814814814815,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B06": {
+          "value": 15.0,
+          "rated": true,
+          "n": 10
+        },
+        "v0.22|B07": {
+          "value": 46.05263157894737,
+          "rated": true,
+          "n": 19
+        },
+        "v0.22|BMW": {
+          "value": 15.384615384615385,
+          "rated": true,
+          "n": 26
+        },
+        "v0.22|Bentley": {
+          "value": 42.30769230769231,
+          "rated": true,
+          "n": 26
+        },
+        "v0.22|Chevrolet": {
+          "value": 75.64102564102564,
+          "rated": true,
+          "n": 39
+        },
+        "v0.23|B01": {
+          "value": 18.103448275862068,
+          "rated": true,
+          "n": 29
+        },
+        "v0.23|B02": {
+          "value": 50.0,
+          "rated": true,
+          "n": 34
+        },
+        "v0.23|B03": {
+          "value": 31.25,
+          "rated": true,
+          "n": 8
+        },
+        "v0.23|B04": {
+          "value": 73.86363636363636,
+          "rated": true,
+          "n": 22
+        },
+        "v0.23|B05": {
+          "value": 69.23076923076923,
+          "rated": true,
+          "n": 39
+        },
+        "v0.23|B06": {
+          "value": 65.0,
+          "rated": true,
+          "n": 10
+        },
+        "v0.23|B07": {
+          "value": 81.91489361702128,
+          "rated": true,
+          "n": 47
+        },
+        "v0.23|B08": {
+          "value": 23.214285714285715,
+          "rated": true,
+          "n": 14
+        },
+        "v0.23|B09": {
+          "value": 44.285714285714285,
+          "rated": true,
+          "n": 35
+        },
+        "v0.23|S03": {
+          "value": 58.333333333333336,
+          "rated": true,
+          "n": 12
+        }
+      },
+      "S_cat": {
+        "v0.19|B01": {
+          "value": -30.730137736487766,
+          "rated": true,
+          "n": 28
+        },
+        "v0.19|B02": {
+          "value": -34.524780593630624,
+          "rated": true,
+          "n": 16
+        },
+        "v0.19|B03": {
+          "value": 6.273830517480491,
+          "rated": true,
+          "n": 18
+        },
+        "v0.19|B04": {
+          "value": 6.453041987014537,
+          "rated": true,
+          "n": 31
+        },
+        "v0.19|B05": {
+          "value": -7.813471069821098,
+          "rated": true,
+          "n": 42
+        },
+        "v0.19|B06": {
+          "value": -1.1608100053953265,
+          "rated": true,
+          "n": 34
+        },
+        "v0.19|B07": {
+          "value": -13.17061392696396,
+          "rated": true,
+          "n": 6
+        },
+        "v0.19|B08": {
+          "value": 28.912719406369376,
+          "rated": true,
+          "n": 40
+        },
+        "v0.19|B09": {
+          "value": 25.597502015065032,
+          "rated": true,
+          "n": 23
+        },
+        "v0.19|Denon": {
+          "value": 20.162719406369376,
+          "rated": true,
+          "n": 6
+        },
+        "v0.20|B01": {
+          "value": -7.860578356306128,
+          "rated": true,
+          "n": 34
+        },
+        "v0.20|B02": {
+          "value": 10.173477371248048,
+          "rated": true,
+          "n": 38
+        },
+        "v0.20|B03": {
+          "value": 15.546284388791904,
+          "rated": true,
+          "n": 12
+        },
+        "v0.20|B04": {
+          "value": -4.8062797137721915,
+          "rated": true,
+          "n": 26
+        },
+        "v0.20|B05": {
+          "value": -3.3848750314979483,
+          "rated": true,
+          "n": 23
+        },
+        "v0.20|B06": {
+          "value": -27.446139853632335,
+          "rated": true,
+          "n": 22
+        },
+        "v0.20|B07": {
+          "value": 21.201046293553816,
+          "rated": true,
+          "n": 21
+        },
+        "v0.20|B08": {
+          "value": null,
+          "rated": false,
+          "n": 3
+        },
+        "v0.20|B09": {
+          "value": -34.037048944541425,
+          "rated": true,
+          "n": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 30.614113846156243,
+          "rated": true,
+          "n": 43
+        },
+        "v0.21|B01": {
+          "value": 26.01411701044053,
+          "rated": true,
+          "n": 45
+        },
+        "v0.21|B02": {
+          "value": -31.763660767337242,
+          "rated": true,
+          "n": 20
+        },
+        "v0.21|B03": {
+          "value": 11.471633350309816,
+          "rated": true,
+          "n": 34
+        },
+        "v0.21|B04": {
+          "value": 1.1775157032509895,
+          "rated": true,
+          "n": 17
+        },
+        "v0.21|B05": {
+          "value": -12.180327434003907,
+          "rated": true,
+          "n": 12
+        },
+        "v0.21|B06": {
+          "value": -7.1208036244800965,
+          "rated": true,
+          "n": 42
+        },
+        "v0.21|B07": {
+          "value": 23.236339232662758,
+          "rated": true,
+          "n": 26
+        },
+        "v0.21|B08": {
+          "value": 2.7817937781173043,
+          "rated": true,
+          "n": 11
+        },
+        "v0.21|B09": {
+          "value": -11.138660767337242,
+          "rated": true,
+          "n": 8
+        },
+        "v0.21|B10": {
+          "value": -2.4779464816229577,
+          "rated": true,
+          "n": 35
+        },
+        "v0.22|B01": {
+          "value": 9.959659952350009,
+          "rated": true,
+          "n": 32
+        },
+        "v0.22|B02": {
+          "value": 18.86590995235001,
+          "rated": true,
+          "n": 10
+        },
+        "v0.22|B03": {
+          "value": -4.555142679228936,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B04": {
+          "value": null,
+          "rated": false,
+          "n": 4
+        },
+        "v0.22|B05": {
+          "value": 24.51405810049816,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B06": {
+          "value": -33.63409004764999,
+          "rated": true,
+          "n": 10
+        },
+        "v0.22|B07": {
+          "value": -2.581458468702621,
+          "rated": true,
+          "n": 19
+        },
+        "v0.22|BMW": {
+          "value": -33.249474663034604,
+          "rated": true,
+          "n": 26
+        },
+        "v0.22|Bentley": {
+          "value": -6.3263977399576845,
+          "rated": true,
+          "n": 26
+        },
+        "v0.22|Chevrolet": {
+          "value": 27.006935593375644,
+          "rated": true,
+          "n": 39
+        },
+        "v0.23|B01": {
+          "value": -33.416159806200156,
+          "rated": true,
+          "n": 29
+        },
+        "v0.23|B02": {
+          "value": -1.51960808206222,
+          "rated": true,
+          "n": 34
+        },
+        "v0.23|B03": {
+          "value": -20.26960808206222,
+          "rated": true,
+          "n": 8
+        },
+        "v0.23|B04": {
+          "value": 22.34402828157414,
+          "rated": true,
+          "n": 22
+        },
+        "v0.23|B05": {
+          "value": 17.711161148707006,
+          "rated": true,
+          "n": 39
+        },
+        "v0.23|B06": {
+          "value": 13.48039191793778,
+          "rated": true,
+          "n": 10
+        },
+        "v0.23|B07": {
+          "value": 30.395285534959058,
+          "rated": true,
+          "n": 47
+        },
+        "v0.23|B08": {
+          "value": -28.305322367776505,
+          "rated": true,
+          "n": 14
+        },
+        "v0.23|B09": {
+          "value": -7.233893796347935,
+          "rated": true,
+          "n": 35
+        },
+        "v0.23|S03": {
+          "value": 6.813725251271116,
+          "rated": true,
+          "n": 12
+        }
+      }
+    },
+    "t5": {
+      "TONE": {
+        "v0.19|B01": {
+          "value": -2.347655488820326,
+          "rated": true,
+          "n_contrib": 24,
+          "main_component": true,
+          "n_comparisons": 104.0
+        },
+        "v0.19|B02": {
+          "value": -2.643531782682297,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.19|B03": {
+          "value": -0.08399873462648251,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 80.0
+        },
+        "v0.19|B04": {
+          "value": 1.0348776512262259,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 156.0
+        },
+        "v0.19|B05": {
+          "value": -0.18027093435300764,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 154.0
+        },
+        "v0.19|B06": {
+          "value": -0.2912683341538747,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 153.0
+        },
+        "v0.19|B07": {
+          "value": -1.2557338467027723,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 17.0
+        },
+        "v0.19|B08": {
+          "value": 1.9227798531817306,
+          "rated": true,
+          "n_contrib": 46,
+          "main_component": true,
+          "n_comparisons": 177.0
+        },
+        "v0.19|B09": {
+          "value": 1.7240170284841387,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 108.0
+        },
+        "v0.19|Denon": {
+          "value": 1.4110766439513793,
+          "rated": true,
+          "n_contrib": 13,
+          "main_component": true,
+          "n_comparisons": 54.0
+        },
+        "v0.20|B01": {
+          "value": -0.36432646350184894,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 153.0
+        },
+        "v0.20|B02": {
+          "value": 0.7455237452890823,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.20|B03": {
+          "value": 1.5355667234203891,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.20|B04": {
+          "value": -0.8206622242428466,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 125.0
+        },
+        "v0.20|B05": {
+          "value": 0.3777220879492678,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 60.0
+        },
+        "v0.20|B06": {
+          "value": -2.0317669001056005,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 105.0
+        },
+        "v0.20|B07": {
+          "value": 1.59718133574919,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 109.0
+        },
+        "v0.20|B08": {
+          "value": -1.0159779688955777,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 42.0
+        },
+        "v0.20|B09": {
+          "value": -2.4310073888117762,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 61.0
+        },
+        "v0.20|Eucerin": {
+          "value": 2.1528713035742104,
+          "rated": true,
+          "n_contrib": 45,
+          "main_component": true,
+          "n_comparisons": 174.0
+        },
+        "v0.21|B01": {
+          "value": 1.9265259651452578,
+          "rated": true,
+          "n_contrib": 41,
+          "main_component": true,
+          "n_comparisons": 145.0
+        },
+        "v0.21|B02": {
+          "value": -2.855942017512231,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.21|B03": {
+          "value": 1.0966383094889098,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 113.0
+        },
+        "v0.21|B04": {
+          "value": 0.035833143675037114,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 74.0
+        },
+        "v0.21|B05": {
+          "value": -2.2935684923914614,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 50.0
+        },
+        "v0.21|B06": {
+          "value": -0.4875457544710808,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 137.0
+        },
+        "v0.21|B07": {
+          "value": 1.4188624994689198,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.21|B08": {
+          "value": 1.8035854910076645,
+          "rated": true,
+          "n_contrib": 7,
+          "main_component": true,
+          "n_comparisons": 31.0
+        },
+        "v0.21|B09": {
+          "value": -0.8175949433171856,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 33.0
+        },
+        "v0.21|B10": {
+          "value": -0.5235376021212884,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 93.0
+        },
+        "v0.22|B01": {
+          "value": 1.0599073062823128,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 135.0
+        },
+        "v0.22|B02": {
+          "value": 1.3320662098266494,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.22|B03": {
+          "value": -0.5062014864195148,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 142.0
+        },
+        "v0.22|B04": {
+          "value": -0.6077625486866509,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 34.0
+        },
+        "v0.22|B05": {
+          "value": 1.5916439472934398,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 98.0
+        },
+        "v0.22|B06": {
+          "value": -2.3414287131988205,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 47.0
+        },
+        "v0.22|B07": {
+          "value": 0.3975368587803619,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 83.0
+        },
+        "v0.22|BMW": {
+          "value": -2.633139694036565,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 98.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.8617806666933313,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 87.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.7889220024193415,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 139.0
+        },
+        "v0.23|B01": {
+          "value": -1.700458547631062,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.23|B02": {
+          "value": -0.6999953807380791,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 126.0
+        },
+        "v0.23|B03": {
+          "value": -0.20695656538053536,
+          "rated": false,
+          "n_contrib": 3,
+          "main_component": true,
+          "n_comparisons": 16.0
+        },
+        "v0.23|B04": {
+          "value": 1.6179361900482794,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 109.0
+        },
+        "v0.23|B05": {
+          "value": 0.8069036027515962,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 121.0
+        },
+        "v0.23|B06": {
+          "value": 1.0496541534320951,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 66.0
+        },
+        "v0.23|B07": {
+          "value": 1.8780885137580299,
+          "rated": true,
+          "n_contrib": 43,
+          "main_component": true,
+          "n_comparisons": 162.0
+        },
+        "v0.23|B08": {
+          "value": -2.4465123103097812,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.23|B09": {
+          "value": -0.5879685071691394,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|S03": {
+          "value": -0.022072706722715066,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 86.0
+        }
+      },
+      "TONE_J2": {
+        "v0.19|B01": {
+          "value": -2.094973255036502,
+          "rated": true,
+          "n_contrib": 24,
+          "main_component": true,
+          "n_comparisons": 105.0
+        },
+        "v0.19|B02": {
+          "value": -2.5648399289182735,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 46.0
+        },
+        "v0.19|B03": {
+          "value": 0.03304316531140475,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.19|B04": {
+          "value": 0.8445642575415926,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 157.0
+        },
+        "v0.19|B05": {
+          "value": -0.13179521106720352,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 155.0
+        },
+        "v0.19|B06": {
+          "value": -0.0514183900644106,
+          "rated": true,
+          "n_contrib": 39,
+          "main_component": true,
+          "n_comparisons": 157.0
+        },
+        "v0.19|B07": {
+          "value": -0.836822645677657,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 17.0
+        },
+        "v0.19|B08": {
+          "value": 1.5489850380029164,
+          "rated": true,
+          "n_contrib": 46,
+          "main_component": true,
+          "n_comparisons": 179.0
+        },
+        "v0.19|B09": {
+          "value": 1.4256633433320767,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 109.0
+        },
+        "v0.19|Denon": {
+          "value": 0.963634510372222,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 60.0
+        },
+        "v0.20|B01": {
+          "value": -0.39455391070070917,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 153.0
+        },
+        "v0.20|B02": {
+          "value": 0.6015194004524713,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.20|B03": {
+          "value": 1.5165649573317304,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 63.0
+        },
+        "v0.20|B04": {
+          "value": -0.6263211106783089,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 125.0
+        },
+        "v0.20|B05": {
+          "value": 0.32804821433720066,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 60.0
+        },
+        "v0.20|B06": {
+          "value": -1.8591719198491934,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 105.0
+        },
+        "v0.20|B07": {
+          "value": 1.440832329812594,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 109.0
+        },
+        "v0.20|B08": {
+          "value": -0.9801819808265603,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 42.0
+        },
+        "v0.20|B09": {
+          "value": -2.0092691416726796,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 61.0
+        },
+        "v0.20|Eucerin": {
+          "value": 1.8767815979755338,
+          "rated": true,
+          "n_contrib": 45,
+          "main_component": true,
+          "n_comparisons": 174.0
+        },
+        "v0.21|B01": {
+          "value": 1.7962157853986378,
+          "rated": true,
+          "n_contrib": 41,
+          "main_component": true,
+          "n_comparisons": 145.0
+        },
+        "v0.21|B02": {
+          "value": -2.1127183081845673,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.21|B03": {
+          "value": 0.9817615412342495,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 113.0
+        },
+        "v0.21|B04": {
+          "value": -0.0028900364246250724,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 74.0
+        },
+        "v0.21|B05": {
+          "value": -2.34334637923152,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 50.0
+        },
+        "v0.21|B06": {
+          "value": -0.4951103278946974,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 137.0
+        },
+        "v0.21|B07": {
+          "value": 1.1910787762377513,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.21|B08": {
+          "value": 1.4202737488129153,
+          "rated": true,
+          "n_contrib": 7,
+          "main_component": true,
+          "n_comparisons": 31.0
+        },
+        "v0.21|B09": {
+          "value": -0.7724360761143287,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 33.0
+        },
+        "v0.21|B10": {
+          "value": -0.18792608788325882,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 93.0
+        },
+        "v0.22|B01": {
+          "value": 0.8859643673351378,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 136.0
+        },
+        "v0.22|B02": {
+          "value": 1.3994201490725922,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 49.0
+        },
+        "v0.22|B03": {
+          "value": -0.5932857415658317,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 143.0
+        },
+        "v0.22|B04": {
+          "value": -0.6426998920307744,
+          "rated": true,
+          "n_contrib": 8,
+          "main_component": true,
+          "n_comparisons": 34.0
+        },
+        "v0.22|B05": {
+          "value": 1.4618832002273587,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 99.0
+        },
+        "v0.22|B06": {
+          "value": -1.8126833746087896,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 48.0
+        },
+        "v0.22|B07": {
+          "value": 0.30337897172428074,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 84.0
+        },
+        "v0.22|BMW": {
+          "value": -2.0213517051564596,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 99.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.7256824457492425,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 88.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.5082958231085208,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 142.0
+        },
+        "v0.23|B01": {
+          "value": -1.3808117018652548,
+          "rated": true,
+          "n_contrib": 19,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.23|B02": {
+          "value": -0.6928938323124948,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 126.0
+        },
+        "v0.23|B03": {
+          "value": -0.2451962493327961,
+          "rated": false,
+          "n_contrib": 3,
+          "main_component": true,
+          "n_comparisons": 16.0
+        },
+        "v0.23|B04": {
+          "value": 1.36828673160768,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 109.0
+        },
+        "v0.23|B05": {
+          "value": 0.8664075915668302,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 121.0
+        },
+        "v0.23|B06": {
+          "value": 0.8914672985712064,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 66.0
+        },
+        "v0.23|B07": {
+          "value": 1.6264486123826813,
+          "rated": true,
+          "n_contrib": 43,
+          "main_component": true,
+          "n_comparisons": 162.0
+        },
+        "v0.23|B08": {
+          "value": -1.8488122270791625,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.23|B09": {
+          "value": -0.5962486269217442,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 138.0
+        },
+        "v0.23|S03": {
+          "value": -0.04186866112454914,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 86.0
+        }
+      },
+      "TONE_NV": {
+        "v0.19|B01": {
+          "value": -2.972679370833734,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 51.0
+        },
+        "v0.19|B02": {
+          "value": -2.3369836815372276,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 32.0
+        },
+        "v0.19|B03": {
+          "value": -0.012432710699092183,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 56.0
+        },
+        "v0.19|B04": {
+          "value": 0.9640813526250177,
+          "rated": true,
+          "n_contrib": 33,
+          "main_component": true,
+          "n_comparisons": 108.0
+        },
+        "v0.19|B05": {
+          "value": 0.13665053154825513,
+          "rated": true,
+          "n_contrib": 25,
+          "main_component": true,
+          "n_comparisons": 89.0
+        },
+        "v0.19|B06": {
+          "value": -0.17421677627315152,
+          "rated": true,
+          "n_contrib": 29,
+          "main_component": true,
+          "n_comparisons": 90.0
+        },
+        "v0.19|B07": {
+          "value": -1.459504085135796,
+          "rated": false,
+          "n_contrib": 4,
+          "main_component": true,
+          "n_comparisons": 15.0
+        },
+        "v0.19|B08": {
+          "value": 1.6749951398519438,
+          "rated": true,
+          "n_contrib": 41,
+          "main_component": true,
+          "n_comparisons": 119.0
+        },
+        "v0.19|B09": {
+          "value": 1.4319634517881057,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 72.0
+        },
+        "v0.19|Denon": {
+          "value": 1.4744468739457328,
+          "rated": true,
+          "n_contrib": 10,
+          "main_component": true,
+          "n_comparisons": 30.0
+        },
+        "v0.20|B01": {
+          "value": -0.3999250636074337,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.20|B02": {
+          "value": 1.0156135265873594,
+          "rated": true,
+          "n_contrib": 24,
+          "main_component": true,
+          "n_comparisons": 82.0
+        },
+        "v0.20|B03": {
+          "value": 1.9184641750562437,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 36.0
+        },
+        "v0.20|B04": {
+          "value": -0.7796140620978326,
+          "rated": true,
+          "n_contrib": 26,
+          "main_component": true,
+          "n_comparisons": 81.0
+        },
+        "v0.20|B05": {
+          "value": 0.01909527114220395,
+          "rated": true,
+          "n_contrib": 11,
+          "main_component": true,
+          "n_comparisons": 36.0
+        },
+        "v0.20|B06": {
+          "value": -1.8317297734895035,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 72.0
+        },
+        "v0.20|B07": {
+          "value": 1.669749973696441,
+          "rated": true,
+          "n_contrib": 20,
+          "main_component": true,
+          "n_comparisons": 65.0
+        },
+        "v0.20|B08": {
+          "value": -1.3167010254888503,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 31.0
+        },
+        "v0.20|B09": {
+          "value": -2.9639806957976553,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 36.0
+        },
+        "v0.20|Eucerin": {
+          "value": 2.639906707887704,
+          "rated": true,
+          "n_contrib": 37,
+          "main_component": true,
+          "n_comparisons": 108.0
+        },
+        "v0.21|B01": {
+          "value": 1.674707391450322,
+          "rated": true,
+          "n_contrib": 36,
+          "main_component": true,
+          "n_comparisons": 102.0
+        },
+        "v0.21|B02": {
+          "value": -2.4632417480278344,
+          "rated": true,
+          "n_contrib": 14,
+          "main_component": true,
+          "n_comparisons": 45.0
+        },
+        "v0.21|B03": {
+          "value": 1.0556583165387938,
+          "rated": true,
+          "n_contrib": 27,
+          "main_component": true,
+          "n_comparisons": 69.0
+        },
+        "v0.21|B04": {
+          "value": -0.11014353575326478,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 31.0
+        },
+        "v0.21|B05": {
+          "value": -1.7480429067674095,
+          "rated": true,
+          "n_contrib": 13,
+          "main_component": true,
+          "n_comparisons": 31.0
+        },
+        "v0.21|B06": {
+          "value": -0.6086792967273794,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 69.0
+        },
+        "v0.21|B07": {
+          "value": 1.356770325771791,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 42.0
+        },
+        "v0.21|B08": {
+          "value": 1.371885343735283,
+          "rated": false,
+          "n_contrib": 5,
+          "main_component": true,
+          "n_comparisons": 16.0
+        },
+        "v0.21|B09": {
+          "value": -0.627421263650781,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 16.0
+        },
+        "v0.21|B10": {
+          "value": -0.30923700069838944,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 61.0
+        },
+        "v0.22|B01": {
+          "value": 1.0846092527406876,
+          "rated": true,
+          "n_contrib": 31,
+          "main_component": true,
+          "n_comparisons": 94.0
+        },
+        "v0.22|B02": {
+          "value": 1.2094526822111362,
+          "rated": true,
+          "n_contrib": 9,
+          "main_component": true,
+          "n_comparisons": 34.0
+        },
+        "v0.22|B03": {
+          "value": -0.6711052024001611,
+          "rated": true,
+          "n_contrib": 30,
+          "main_component": true,
+          "n_comparisons": 98.0
+        },
+        "v0.22|B04": {
+          "value": -0.6097946142319474,
+          "rated": true,
+          "n_contrib": 6,
+          "main_component": true,
+          "n_comparisons": 25.0
+        },
+        "v0.22|B05": {
+          "value": 1.4657404066263546,
+          "rated": true,
+          "n_contrib": 24,
+          "main_component": true,
+          "n_comparisons": 72.0
+        },
+        "v0.22|B06": {
+          "value": -2.1668389222143603,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 39.0
+        },
+        "v0.22|B07": {
+          "value": 0.56884978975215,
+          "rated": true,
+          "n_contrib": 15,
+          "main_component": true,
+          "n_comparisons": 56.0
+        },
+        "v0.22|BMW": {
+          "value": -2.5643427331179494,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 73.0
+        },
+        "v0.22|Bentley": {
+          "value": -0.7986233463497316,
+          "rated": true,
+          "n_contrib": 13,
+          "main_component": true,
+          "n_comparisons": 41.0
+        },
+        "v0.22|Chevrolet": {
+          "value": 1.7874418058882762,
+          "rated": true,
+          "n_contrib": 34,
+          "main_component": true,
+          "n_comparisons": 108.0
+        },
+        "v0.23|B01": {
+          "value": -1.546896902473125,
+          "rated": true,
+          "n_contrib": 18,
+          "main_component": true,
+          "n_comparisons": 59.0
+        },
+        "v0.23|B02": {
+          "value": -0.5137552736614478,
+          "rated": true,
+          "n_contrib": 23,
+          "main_component": true,
+          "n_comparisons": 73.0
+        },
+        "v0.23|B03": {
+          "value": -0.11061308230713504,
+          "rated": false,
+          "n_contrib": 2,
+          "main_component": true,
+          "n_comparisons": 12.0
+        },
+        "v0.23|B04": {
+          "value": 1.5211513989807093,
+          "rated": true,
+          "n_contrib": 24,
+          "main_component": true,
+          "n_comparisons": 78.0
+        },
+        "v0.23|B05": {
+          "value": 0.7667962905922874,
+          "rated": true,
+          "n_contrib": 21,
+          "main_component": true,
+          "n_comparisons": 71.0
+        },
+        "v0.23|B06": {
+          "value": 1.001825409008544,
+          "rated": true,
+          "n_contrib": 12,
+          "main_component": true,
+          "n_comparisons": 43.0
+        },
+        "v0.23|B07": {
+          "value": 1.594813152137,
+          "rated": true,
+          "n_contrib": 38,
+          "main_component": true,
+          "n_comparisons": 110.0
+        },
+        "v0.23|B08": {
+          "value": -2.4936616783916903,
+          "rated": true,
+          "n_contrib": 16,
+          "main_component": true,
+          "n_comparisons": 55.0
+        },
+        "v0.23|B09": {
+          "value": -0.6493198518579717,
+          "rated": true,
+          "n_contrib": 29,
+          "main_component": true,
+          "n_comparisons": 85.0
+        },
+        "v0.23|S03": {
+          "value": -0.031662258616267494,
+          "rated": true,
+          "n_contrib": 16,
+          "main_component": true,
+          "n_comparisons": 54.0
+        }
+      },
+      "CONTRAST": {
+        "v0.19|B01": {
+          "value": -37.81746031746032,
+          "rated": true,
+          "n_contrib": 24
+        },
+        "v0.19|B02": {
+          "value": -47.63690476190476,
+          "rated": true,
+          "n_contrib": 10
+        },
+        "v0.19|B03": {
+          "value": -5.855263157894737,
+          "rated": true,
+          "n_contrib": 19
+        },
+        "v0.19|B04": {
+          "value": 12.031641604010025,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.19|B05": {
+          "value": -9.010617760617759,
+          "rated": true,
+          "n_contrib": 37
+        },
+        "v0.19|B06": {
+          "value": -10.786340852130326,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.19|B07": {
+          "value": -22.395833333333332,
+          "rated": false,
+          "n_contrib": 4
+        },
+        "v0.19|B08": {
+          "value": 25.469720496894414,
+          "rated": true,
+          "n_contrib": 46
+        },
+        "v0.19|B09": {
+          "value": 20.923809523809524,
+          "rated": true,
+          "n_contrib": 25
+        },
+        "v0.19|Denon": {
+          "value": 13.553113553113555,
+          "rated": true,
+          "n_contrib": 13
+        },
+        "v0.20|B01": {
+          "value": -13.27067669172932,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.20|B02": {
+          "value": 8.248556998557,
+          "rated": true,
+          "n_contrib": 33
+        },
+        "v0.20|B03": {
+          "value": 18.0484693877551,
+          "rated": true,
+          "n_contrib": 14
+        },
+        "v0.20|B04": {
+          "value": -17.34487734487735,
+          "rated": true,
+          "n_contrib": 33
+        },
+        "v0.20|B05": {
+          "value": 2.589285714285714,
+          "rated": true,
+          "n_contrib": 14
+        },
+        "v0.20|B06": {
+          "value": -39.78021978021978,
+          "rated": true,
+          "n_contrib": 26
+        },
+        "v0.20|B07": {
+          "value": 23.269400352733687,
+          "rated": true,
+          "n_contrib": 27
+        },
+        "v0.20|B08": {
+          "value": -17.546296296296298,
+          "rated": true,
+          "n_contrib": 9
+        },
+        "v0.20|B09": {
+          "value": -43.353174603174594,
+          "rated": true,
+          "n_contrib": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 38.43915343915344,
+          "rated": true,
+          "n_contrib": 45
+        },
+        "v0.21|B01": {
+          "value": 29.950638792102204,
+          "rated": true,
+          "n_contrib": 41
+        },
+        "v0.21|B02": {
+          "value": -37.56892230576441,
+          "rated": true,
+          "n_contrib": 19
+        },
+        "v0.21|B03": {
+          "value": 14.485294117647058,
+          "rated": true,
+          "n_contrib": 34
+        },
+        "v0.21|B04": {
+          "value": -2.291666666666667,
+          "rated": true,
+          "n_contrib": 20
+        },
+        "v0.21|B05": {
+          "value": -45.255102040816325,
+          "rated": true,
+          "n_contrib": 14
+        },
+        "v0.21|B06": {
+          "value": -11.250000000000004,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.21|B07": {
+          "value": 16.337719298245613,
+          "rated": true,
+          "n_contrib": 19
+        },
+        "v0.21|B08": {
+          "value": 21.819727891156464,
+          "rated": true,
+          "n_contrib": 7
+        },
+        "v0.21|B09": {
+          "value": -17.5,
+          "rated": true,
+          "n_contrib": 8
+        },
+        "v0.21|B10": {
+          "value": -8.256172839506174,
+          "rated": true,
+          "n_contrib": 27
+        },
+        "v0.22|B01": {
+          "value": 10.197072072072071,
+          "rated": true,
+          "n_contrib": 37
+        },
+        "v0.22|B02": {
+          "value": 17.78409090909091,
+          "rated": true,
+          "n_contrib": 11
+        },
+        "v0.22|B03": {
+          "value": -12.324561403508774,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.22|B04": {
+          "value": -17.65625,
+          "rated": true,
+          "n_contrib": 8
+        },
+        "v0.22|B05": {
+          "value": 21.61265432098766,
+          "rated": true,
+          "n_contrib": 27
+        },
+        "v0.22|B06": {
+          "value": -29.16666666666667,
+          "rated": true,
+          "n_contrib": 12
+        },
+        "v0.22|B07": {
+          "value": 1.583333333333333,
+          "rated": true,
+          "n_contrib": 20
+        },
+        "v0.22|BMW": {
+          "value": -38.15833333333333,
+          "rated": true,
+          "n_contrib": 25
+        },
+        "v0.22|Bentley": {
+          "value": -13.859126984126982,
+          "rated": true,
+          "n_contrib": 21
+        },
+        "v0.22|Chevrolet": {
+          "value": 27.471846846846848,
+          "rated": true,
+          "n_contrib": 37
+        },
+        "v0.23|B01": {
+          "value": -28.88157894736843,
+          "rated": true,
+          "n_contrib": 19
+        },
+        "v0.23|B02": {
+          "value": -16.944444444444443,
+          "rated": true,
+          "n_contrib": 33
+        },
+        "v0.23|B03": {
+          "value": -14.583333333333334,
+          "rated": false,
+          "n_contrib": 3
+        },
+        "v0.23|B04": {
+          "value": 23.780864197530864,
+          "rated": true,
+          "n_contrib": 27
+        },
+        "v0.23|B05": {
+          "value": 10.290404040404042,
+          "rated": true,
+          "n_contrib": 33
+        },
+        "v0.23|B06": {
+          "value": 16.61111111111111,
+          "rated": true,
+          "n_contrib": 15
+        },
+        "v0.23|B07": {
+          "value": 30.77519379844961,
+          "rated": true,
+          "n_contrib": 43
+        },
+        "v0.23|B08": {
+          "value": -38.375,
+          "rated": true,
+          "n_contrib": 20
+        },
+        "v0.23|B09": {
+          "value": -15.427631578947368,
+          "rated": true,
+          "n_contrib": 38
+        },
+        "v0.23|S03": {
+          "value": -2.437499999999999,
+          "rated": true,
+          "n_contrib": 20
+        }
+      },
+      "S_ref": {
+        "v0.19|B01": {
+          "value": 27.083333333333332,
+          "rated": true,
+          "n": 24
+        },
+        "v0.19|B02": {
+          "value": 20.0,
+          "rated": true,
+          "n": 10
+        },
+        "v0.19|B03": {
+          "value": 56.578947368421055,
+          "rated": true,
+          "n": 19
+        },
+        "v0.19|B04": {
+          "value": 71.71052631578948,
+          "rated": true,
+          "n": 38
+        },
+        "v0.19|B05": {
+          "value": 56.08108108108108,
+          "rated": true,
+          "n": 37
+        },
+        "v0.19|B06": {
+          "value": 51.31578947368421,
+          "rated": true,
+          "n": 38
+        },
+        "v0.19|B07": {
+          "value": null,
+          "rated": false,
+          "n": 4
+        },
+        "v0.19|B08": {
+          "value": 84.78260869565217,
+          "rated": true,
+          "n": 46
+        },
+        "v0.19|B09": {
+          "value": 78.0,
+          "rated": true,
+          "n": 25
+        },
+        "v0.19|Denon": {
+          "value": 71.15384615384616,
+          "rated": true,
+          "n": 13
+        },
+        "v0.20|B01": {
+          "value": 40.13157894736842,
+          "rated": true,
+          "n": 38
+        },
+        "v0.20|B02": {
+          "value": 56.81818181818182,
+          "rated": true,
+          "n": 33
+        },
+        "v0.20|B03": {
+          "value": 66.07142857142857,
+          "rated": true,
+          "n": 14
+        },
+        "v0.20|B04": {
+          "value": 37.121212121212125,
+          "rated": true,
+          "n": 33
+        },
+        "v0.20|B05": {
+          "value": 48.214285714285715,
+          "rated": true,
+          "n": 14
+        },
+        "v0.20|B06": {
+          "value": 18.26923076923077,
+          "rated": true,
+          "n": 26
+        },
+        "v0.20|B07": {
+          "value": 71.29629629629629,
+          "rated": true,
+          "n": 27
+        },
+        "v0.20|B08": {
+          "value": 27.77777777777778,
+          "rated": true,
+          "n": 9
+        },
+        "v0.20|B09": {
+          "value": 18.333333333333332,
+          "rated": true,
+          "n": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 77.77777777777777,
+          "rated": true,
+          "n": 45
+        },
+        "v0.21|B01": {
+          "value": 77.4390243902439,
+          "rated": true,
+          "n": 41
+        },
+        "v0.21|B02": {
+          "value": 23.68421052631579,
+          "rated": true,
+          "n": 19
+        },
+        "v0.21|B03": {
+          "value": 67.6470588235294,
+          "rated": true,
+          "n": 34
+        },
+        "v0.21|B04": {
+          "value": 52.5,
+          "rated": true,
+          "n": 20
+        },
+        "v0.21|B05": {
+          "value": 14.285714285714286,
+          "rated": true,
+          "n": 14
+        },
+        "v0.21|B06": {
+          "value": 42.10526315789474,
+          "rated": true,
+          "n": 38
+        },
+        "v0.21|B07": {
+          "value": 68.42105263157895,
+          "rated": true,
+          "n": 19
+        },
+        "v0.21|B08": {
+          "value": 78.57142857142857,
+          "rated": true,
+          "n": 7
+        },
+        "v0.21|B09": {
+          "value": 34.375,
+          "rated": true,
+          "n": 8
+        },
+        "v0.21|B10": {
+          "value": 50.925925925925924,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B01": {
+          "value": 68.42105263157895,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B02": {
+          "value": 61.36363636363637,
+          "rated": true,
+          "n": 11
+        },
+        "v0.22|B03": {
+          "value": 40.78947368421053,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B04": {
+          "value": 37.5,
+          "rated": true,
+          "n": 8
+        },
+        "v0.22|B05": {
+          "value": 75.92592592592592,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B06": {
+          "value": 12.5,
+          "rated": true,
+          "n": 12
+        },
+        "v0.22|B07": {
+          "value": 58.75,
+          "rated": true,
+          "n": 20
+        },
+        "v0.22|BMW": {
+          "value": 23.0,
+          "rated": true,
+          "n": 25
+        },
+        "v0.22|Bentley": {
+          "value": 40.476190476190474,
+          "rated": true,
+          "n": 21
+        },
+        "v0.22|Chevrolet": {
+          "value": 78.37837837837837,
+          "rated": true,
+          "n": 37
+        },
+        "v0.23|B01": {
+          "value": 34.21052631578947,
+          "rated": true,
+          "n": 19
+        },
+        "v0.23|B02": {
+          "value": 41.666666666666664,
+          "rated": true,
+          "n": 33
+        },
+        "v0.23|B03": {
+          "value": null,
+          "rated": false,
+          "n": 3
+        },
+        "v0.23|B04": {
+          "value": 81.48148148148148,
+          "rated": true,
+          "n": 27
+        },
+        "v0.23|B05": {
+          "value": 67.42424242424242,
+          "rated": true,
+          "n": 33
+        },
+        "v0.23|B06": {
+          "value": 71.66666666666667,
+          "rated": true,
+          "n": 15
+        },
+        "v0.23|B07": {
+          "value": 80.81395348837209,
+          "rated": true,
+          "n": 43
+        },
+        "v0.23|B08": {
+          "value": 23.75,
+          "rated": true,
+          "n": 20
+        },
+        "v0.23|B09": {
+          "value": 42.76315789473684,
+          "rated": true,
+          "n": 38
+        },
+        "v0.23|S03": {
+          "value": 57.5,
+          "rated": true,
+          "n": 20
+        }
+      },
+      "S_cat": {
+        "v0.19|B01": {
+          "value": -30.328459157978603,
+          "rated": true,
+          "n": 24
+        },
+        "v0.19|B02": {
+          "value": -37.411792491311935,
+          "rated": true,
+          "n": 10
+        },
+        "v0.19|B03": {
+          "value": -0.8328451228908804,
+          "rated": true,
+          "n": 19
+        },
+        "v0.19|B04": {
+          "value": 14.298733824477544,
+          "rated": true,
+          "n": 38
+        },
+        "v0.19|B05": {
+          "value": -1.3307114102308546,
+          "rated": true,
+          "n": 37
+        },
+        "v0.19|B06": {
+          "value": -6.096003017627723,
+          "rated": true,
+          "n": 38
+        },
+        "v0.19|B07": {
+          "value": null,
+          "rated": false,
+          "n": 4
+        },
+        "v0.19|B08": {
+          "value": 27.370816204340237,
+          "rated": true,
+          "n": 46
+        },
+        "v0.19|B09": {
+          "value": 20.588207508688065,
+          "rated": true,
+          "n": 25
+        },
+        "v0.19|Denon": {
+          "value": 13.742053662534225,
+          "rated": true,
+          "n": 13
+        },
+        "v0.20|B01": {
+          "value": -6.0495313653208385,
+          "rated": true,
+          "n": 38
+        },
+        "v0.20|B02": {
+          "value": 10.637071505492564,
+          "rated": true,
+          "n": 33
+        },
+        "v0.20|B03": {
+          "value": 19.890318258739313,
+          "rated": true,
+          "n": 14
+        },
+        "v0.20|B04": {
+          "value": -9.059898191477131,
+          "rated": true,
+          "n": 33
+        },
+        "v0.20|B05": {
+          "value": 2.033175401596459,
+          "rated": true,
+          "n": 14
+        },
+        "v0.20|B06": {
+          "value": -27.911879543458486,
+          "rated": true,
+          "n": 26
+        },
+        "v0.20|B07": {
+          "value": 25.115185983607034,
+          "rated": true,
+          "n": 27
+        },
+        "v0.20|B08": {
+          "value": -18.403332534911478,
+          "rated": true,
+          "n": 9
+        },
+        "v0.20|B09": {
+          "value": -27.847776979355924,
+          "rated": true,
+          "n": 15
+        },
+        "v0.20|Eucerin": {
+          "value": 31.596667465088515,
+          "rated": true,
+          "n": 45
+        },
+        "v0.21|B01": {
+          "value": 26.443556558980745,
+          "rated": true,
+          "n": 41
+        },
+        "v0.21|B02": {
+          "value": -27.311257304947365,
+          "rated": true,
+          "n": 19
+        },
+        "v0.21|B03": {
+          "value": 16.65159099226625,
+          "rated": true,
+          "n": 34
+        },
+        "v0.21|B04": {
+          "value": 1.5045321687368443,
+          "rated": true,
+          "n": 20
+        },
+        "v0.21|B05": {
+          "value": -36.70975354554887,
+          "rated": true,
+          "n": 14
+        },
+        "v0.21|B06": {
+          "value": -8.890204673368416,
+          "rated": true,
+          "n": 38
+        },
+        "v0.21|B07": {
+          "value": 17.42558480031579,
+          "rated": true,
+          "n": 19
+        },
+        "v0.21|B08": {
+          "value": 27.575960740165414,
+          "rated": true,
+          "n": 7
+        },
+        "v0.21|B09": {
+          "value": -16.620467831263156,
+          "rated": true,
+          "n": 8
+        },
+        "v0.21|B10": {
+          "value": -0.06954190533723192,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B01": {
+          "value": 18.710586885586885,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B02": {
+          "value": 11.653170617644307,
+          "rated": true,
+          "n": 11
+        },
+        "v0.22|B03": {
+          "value": -8.920992061781533,
+          "rated": true,
+          "n": 38
+        },
+        "v0.22|B04": {
+          "value": -12.21046574599206,
+          "rated": true,
+          "n": 8
+        },
+        "v0.22|B05": {
+          "value": 26.215460179933864,
+          "rated": true,
+          "n": 27
+        },
+        "v0.22|B06": {
+          "value": -37.21046574599206,
+          "rated": true,
+          "n": 12
+        },
+        "v0.22|B07": {
+          "value": 9.03953425400794,
+          "rated": true,
+          "n": 20
+        },
+        "v0.22|BMW": {
+          "value": -26.71046574599206,
+          "rated": true,
+          "n": 25
+        },
+        "v0.22|Bentley": {
+          "value": -9.234275269801586,
+          "rated": true,
+          "n": 21
+        },
+        "v0.22|Chevrolet": {
+          "value": 28.66791263238631,
+          "rated": true,
+          "n": 37
+        },
+        "v0.23|B01": {
+          "value": -21.486884232872264,
+          "rated": true,
+          "n": 19
+        },
+        "v0.23|B02": {
+          "value": -14.030743881995072,
+          "rated": true,
+          "n": 33
+        },
+        "v0.23|B03": {
+          "value": null,
+          "rated": false,
+          "n": 3
+        },
+        "v0.23|B04": {
+          "value": 25.784070932819745,
+          "rated": true,
+          "n": 27
+        },
+        "v0.23|B05": {
+          "value": 11.726831875580686,
+          "rated": true,
+          "n": 33
+        },
+        "v0.23|B06": {
+          "value": 15.969256118004935,
+          "rated": true,
+          "n": 15
+        },
+        "v0.23|B07": {
+          "value": 25.116542939710357,
+          "rated": true,
+          "n": 43
+        },
+        "v0.23|B08": {
+          "value": -31.947410548661736,
+          "rated": true,
+          "n": 20
+        },
+        "v0.23|B09": {
+          "value": -12.934252653924894,
+          "rated": true,
+          "n": 38
+        },
+        "v0.23|S03": {
+          "value": 1.8025894513382639,
+          "rated": true,
+          "n": 20
+        }
+      }
+    }
+  },
+  "fixture": "marginal",
+  "unit_outcomes_sha256": {
+    "t4": "9566bcae5f743a3af33e9fdfed2fba2876af58fc0d67569b9340c2f52365065c",
+    "t5": "bb783f6efcfab9f33039b8a3dca67c16473c9343ffdcba9950f40547db0ab807"
+  }
+}

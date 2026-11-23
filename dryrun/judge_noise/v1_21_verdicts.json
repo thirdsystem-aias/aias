@@ -1,0 +1,2184 @@
+{
+  "phase": "v1.21",
+  "stage": "C",
+  "status": "DRAFT (2026-11-23), not locked",
+  "prereg": "osf/methodology/v1_21/prereg/PRE_REGISTRATION_v1_21_DRAFT_r2.md",
+  "prereg_tag": "v1.21-prereg-r1",
+  "created_utc": "2026-11-23T08:29:07+00:00",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "seeds": {
+    "unit_order": 121000,
+    "selfcon": 121003,
+    "shuffle": 121010,
+    "H4_perm": 121011,
+    "boot": 121020
+  },
+  "draws": {
+    "perm": 10000,
+    "shuffle": 10000,
+    "boot": 10000,
+    "ci": 0.95,
+    "preregistered": true
+  },
+  "bands": {
+    "CONFIRMED_max_abs_rho": 0.3,
+    "FALSIFIED_min_abs_rho": 0.5
+  },
+  "VERDICTS": {
+    "H1_t5": "FALSIFIED",
+    "H2_t5": "UNDETERMINED",
+    "H3_t5": "UNDETERMINED",
+    "H4": "CONFIRMED",
+    "H5_t4": "UNDETERMINED",
+    "H6_t5": "CONFIRMED",
+    "H7_t5": "MARGINAL"
+  },
+  "verdicts_before_noise_guard": {
+    "H1_t5": "FALSIFIED",
+    "H2_t5": "CONFIRMED",
+    "H3_t5": "CONFIRMED",
+    "H4": "CONFIRMED",
+    "H5_t4": "CONFIRMED"
+  },
+  "noise_guard_applied": true,
+  "GATE": "FAIL",
+  "CONSEQUENCE": "NOT PASS: Sentiment is reported as not separable from Presence and not as a separate AIAS component. There is no further Sentiment redesign.",
+  "H1_t5_Judge_Agreement": {
+    "verdict": "FALSIFIED",
+    "alpha_ordinal": 0.0013247626690197079,
+    "windows_judged_by_both": 1264,
+    "brand_rho": {
+      "rho": 0.1709090909090909,
+      "abs_rho": 0.1709090909090909,
+      "n": 50,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10,
+        "v0.21": 10,
+        "v0.22": 10,
+        "v0.23": 10
+      },
+      "determinable": true,
+      "ci95": [
+        -0.14105123663573463,
+        0.44529954584984044
+      ]
+    },
+    "alpha_by_category": {
+      "v0.19": -0.039432480652753954,
+      "v0.20": 0.07356266538912859,
+      "v0.21": -0.022154735748883825,
+      "v0.22": -0.011619686254686235,
+      "v0.23": 0.019757806010947565
+    },
+    "kappa_evaluative": 0.0862428667852974,
+    "confusion_J1_rows_J2_cols": {
+      "-2|-2": 19,
+      "-2|-1": 29,
+      "-2|0": 32,
+      "-2|1": 23,
+      "-2|2": 18,
+      "-1|-2": 68,
+      "-1|-1": 59,
+      "-1|0": 46,
+      "-1|1": 47,
+      "-1|2": 55,
+      "0|-2": 63,
+      "0|-1": 73,
+      "0|0": 105,
+      "0|1": 75,
+      "0|2": 80,
+      "1|-2": 58,
+      "1|-1": 47,
+      "1|0": 58,
+      "1|1": 52,
+      "1|2": 59,
+      "2|-2": 43,
+      "2|-1": 48,
+      "2|0": 40,
+      "2|1": 31,
+      "2|2": 36
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "H2_t5_Sep_Presence": {
+    "rho": 0.0012121212121212121,
+    "abs_rho": 0.0012121212121212121,
+    "n": 50,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10,
+      "v0.21": 10,
+      "v0.22": 10,
+      "v0.23": 10
+    },
+    "determinable": true,
+    "ci95": [
+      -0.3040228520575342,
+      0.29650447973871835
+    ],
+    "verdict": "CONFIRMED"
+  },
+  "H3_t5_Sep_Consistency": {
+    "rho": 0.05696969696969697,
+    "abs_rho": 0.05696969696969697,
+    "n": 50,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10,
+      "v0.21": 10,
+      "v0.22": 10,
+      "v0.23": 10
+    },
+    "determinable": true,
+    "ci95": [
+      -0.2581453634085213,
+      0.361707493761906
+    ],
+    "verdict": "CONFIRMED"
+  },
+  "H4_Retest_t4_t5": {
+    "rho": 0.9727891156462585,
+    "abs_rho": 0.9727891156462585,
+    "n": 48,
+    "units_per_category": {
+      "v0.19": 9,
+      "v0.20": 10,
+      "v0.21": 10,
+      "v0.22": 9,
+      "v0.23": 10
+    },
+    "determinable": true,
+    "ci95": [
+      0.8899832720464772,
+      0.9943899018232819
+    ],
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 121011,
+    "p_shuffle": 9.999000099990002e-05,
+    "shuffled_mean_rho": -0.0003708843537414968,
+    "shuffle_seed": 121010,
+    "verdict": "CONFIRMED"
+  },
+  "H5_t4_Sep_Presence": {
+    "rho": -0.02585034013605442,
+    "abs_rho": 0.02585034013605442,
+    "n": 48,
+    "units_per_category": {
+      "v0.19": 9,
+      "v0.20": 10,
+      "v0.21": 10,
+      "v0.22": 9,
+      "v0.23": 10
+    },
+    "determinable": true,
+    "ci95": [
+      -0.3247135686448621,
+      0.28633558321881813
+    ],
+    "verdict": "CONFIRMED"
+  },
+  "H6_t5_Naming_Frequency": {
+    "rho": 0.08389096502784892,
+    "abs_rho": 0.08389096502784892,
+    "n": 50,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10,
+      "v0.21": 10,
+      "v0.22": 10,
+      "v0.23": 10
+    },
+    "determinable": true,
+    "ci95": [
+      -0.2272502444722365,
+      0.36776117202928055
+    ],
+    "verdict": "CONFIRMED"
+  },
+  "H7_t5_Self_Preference": {
+    "delta_points": 7.510953099188394,
+    "n_own_provider": 408,
+    "n_other": 819,
+    "j1_provider": "anthropic",
+    "mean_diff_own": 8.823529411764707,
+    "mean_diff_other": 1.3125763125763126,
+    "verdict": "MARGINAL"
+  },
+  "secondaries": {
+    "CONTRAST": {
+      "H2_t5": {
+        "rho": -0.0036363636363636364,
+        "abs_rho": 0.0036363636363636364,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3046856826801516,
+          0.29204701327433613
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5": {
+        "rho": 0.037575757575757575,
+        "abs_rho": 0.037575757575757575,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2759116520490622,
+          0.3443619758576872
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4": {
+        "rho": 0.9537414965986395,
+        "abs_rho": 0.9537414965986395,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8352221336008421,
+          0.9886524822695035
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.0016170154187118107,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_ref": {
+      "H2_t5": {
+        "rho": 0.025454545454545455,
+        "abs_rho": 0.025454545454545455,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2808988764044944,
+          0.3234015225380632
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5": {
+        "rho": 0.04,
+        "abs_rho": 0.04,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.277575267244714,
+          0.3441003856817583
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4": {
+        "rho": 0.964625850340136,
+        "abs_rho": 0.964625850340136,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8677918424753868,
+          0.988271504663868
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.10388416239500921,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_cat": {
+      "H2_t5": {
+        "rho": 0.025454545454545455,
+        "abs_rho": 0.025454545454545455,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2808988764044944,
+          0.3234015225380632
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5": {
+        "rho": 0.04,
+        "abs_rho": 0.04,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.277575267244714,
+          0.3441003856817583
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4": {
+        "rho": 0.964625850340136,
+        "abs_rho": 0.964625850340136,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8677918424753868,
+          0.988271504663868
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.10388416239500921,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "TONE_NV": {
+      "H2_t5": {
+        "rho": -0.04927536231884058,
+        "abs_rho": 0.04927536231884058,
+        "n": 47,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 9,
+          "v0.22": 10,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3613193403298351,
+          0.2825323885142627
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5": {
+        "rho": 0.0463768115942029,
+        "abs_rho": 0.0463768115942029,
+        "n": 47,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 9,
+          "v0.22": 10,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2680777990008815,
+          0.36024219286551123
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4": {
+        "rho": 0.95,
+        "abs_rho": 0.95,
+        "n": 45,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9,
+          "v0.21": 9,
+          "v0.22": 9,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          0.8207369250348463,
+          0.9827288428324698
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.0007483333333333333,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      }
+    },
+    "S_res": {
+      "H2_t5": {
+        "rho": 0.030303030303030304,
+        "abs_rho": 0.030303030303030304,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2795969773299748,
+          0.3225378811944086
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5": {
+        "rho": 0.0496969696969697,
+        "abs_rho": 0.0496969696969697,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2638226028620258,
+          0.34673493571261094
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4": "not defined: S_res exists at t5 only (coefficients fitted at t4)",
+      "t4_fits": {
+        "v0.19": {
+          "n_t4": 9,
+          "fitted": true,
+          "intercept": 52.90061235140899,
+          "slope": -0.029682908531037454
+        },
+        "v0.20": {
+          "n_t4": 10,
+          "fitted": true,
+          "intercept": 47.08313313611317,
+          "slope": -0.009466070940003308
+        },
+        "v0.21": {
+          "n_t4": 10,
+          "fitted": true,
+          "intercept": 46.262405022490114,
+          "slope": 0.00030534424545423873
+        },
+        "v0.22": {
+          "n_t4": 9,
+          "fitted": true,
+          "intercept": 63.74757596064993,
+          "slope": -0.18444351877780918
+        },
+        "v0.23": {
+          "n_t4": 10,
+          "fitted": true,
+          "intercept": 41.12078780648853,
+          "slope": 0.1534475244340563
+        }
+      }
+    }
+  },
+  "S_ref_replication_of_v1_20_H2": {
+    "S_ref_H2_t5": {
+      "rho": 0.025454545454545455,
+      "abs_rho": 0.025454545454545455,
+      "n": 50,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10,
+        "v0.21": 10,
+        "v0.22": 10,
+        "v0.23": 10
+      },
+      "determinable": true,
+      "ci95": [
+        -0.2808988764044944,
+        0.3234015225380632
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "v1_20_H2_per_wave": null
+  },
+  "checks": {
+    "Identity_S_cat_equals_S_ref": {
+      "passes": true,
+      "rho_pairs": {
+        "H2_t5": [
+          0.025454545454545455,
+          0.025454545454545455
+        ],
+        "H3_t5": [
+          0.04,
+          0.04
+        ],
+        "H4": [
+          0.964625850340136,
+          0.964625850340136
+        ]
+      }
+    },
+    "MQ6_positive_control_rho_w_n_named_P_S0_t5": {
+      "rho": 0.960490759014502,
+      "abs_rho": 0.960490759014502,
+      "n": 50,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10,
+        "v0.21": 10,
+        "v0.22": 10,
+        "v0.23": 10
+      },
+      "determinable": true,
+      "ci95": [
+        0.8595519027863676,
+        0.9893334022151345
+      ]
+    },
+    "MQ7_negative_control": {
+      "shuffled_mean_rho": -0.0003708843537414968,
+      "threshold": 0.2,
+      "flag_list_composition_driven": false
+    },
+    "MQ9_identification": {
+      "t4": {
+        "units_at_floor": 48,
+        "outside_main_component": 0,
+        "units": [],
+        "share": 0.0,
+        "flag": false
+      },
+      "t5": {
+        "units_at_floor": 50,
+        "outside_main_component": 0,
+        "units": [],
+        "share": 0.0,
+        "flag": false
+      }
+    }
+  },
+  "sensitivities": {
+    "SD_without_Denon": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": -3.372525111844382e-06,
+        "windows_judged_by_both": 1236,
+        "brand_rho": {
+          "rho": 0.1641025641025641,
+          "abs_rho": 0.1641025641025641,
+          "n": 49,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14361702127659576,
+            0.4246611486608594
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.05393466776712663,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.088173974404208,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 61,
+          "0|-1": 71,
+          "0|0": 103,
+          "0|1": 74,
+          "0|2": 78,
+          "1|-2": 55,
+          "1|-1": 45,
+          "1|0": 58,
+          "1|1": 50,
+          "1|2": 57,
+          "2|-2": 42,
+          "2|-1": 47,
+          "2|0": 37,
+          "2|1": 27,
+          "2|2": 35
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.002564102564102564,
+        "abs_rho": 0.002564102564102564,
+        "n": 49,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.30080188829195403,
+          0.30780685009615333
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.09743589743589744,
+        "abs_rho": 0.09743589743589744,
+        "n": 49,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.19893122174876904,
+          0.38153814737437347
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9742489270386266,
+        "abs_rho": 0.9742489270386266,
+        "n": 47,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8900673484943289,
+          0.9969558599695586
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0007527896995708157,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.030042918454935622,
+        "abs_rho": 0.030042918454935622,
+        "n": 47,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.34523809523809523,
+          0.2939482664482663
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S-COI_without_Denon_and_five_agency_brands": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": -0.0010390381142033611,
+        "windows_judged_by_both": 1112,
+        "brand_rho": {
+          "rho": 0.23235800344234078,
+          "abs_rho": 0.23235800344234078,
+          "n": 44,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 9,
+            "v0.21": 10,
+            "v0.22": 7,
+            "v0.23": 9
+          },
+          "determinable": true,
+          "ci95": [
+            -0.08704768510715523,
+            0.4838709677419355
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.05393466776712663,
+          "v0.20": 0.06101375470200987,
+          "v0.21": -0.022154735748883825,
+          "v0.22": 0.025024272339883136,
+          "v0.23": -0.0014411869173771574
+        },
+        "kappa_evaluative": 0.07705796587461085,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 31,
+          "-2|1": 22,
+          "-2|2": 16,
+          "-1|-2": 65,
+          "-1|-1": 52,
+          "-1|0": 45,
+          "-1|1": 45,
+          "-1|2": 55,
+          "0|-2": 55,
+          "0|-1": 62,
+          "0|0": 91,
+          "0|1": 69,
+          "0|2": 73,
+          "1|-2": 44,
+          "1|-1": 40,
+          "1|0": 53,
+          "1|1": 40,
+          "1|2": 49,
+          "2|-2": 36,
+          "2|-1": 42,
+          "2|0": 29,
+          "2|1": 21,
+          "2|2": 29
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.029259896729776247,
+        "abs_rho": 0.029259896729776247,
+        "n": 44,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9,
+          "v0.21": 10,
+          "v0.22": 7,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.31160576626580316,
+          0.36398263412187115
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.07056798623063683,
+        "abs_rho": 0.07056798623063683,
+        "n": 44,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9,
+          "v0.21": 10,
+          "v0.22": 7,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2513562386980108,
+          0.390990990990991
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9706422018348624,
+        "abs_rho": 0.9706422018348624,
+        "n": 43,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 10,
+          "v0.22": 7,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          0.870331363697716,
+          0.9962051132769824
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0002855045871559634,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.001834862385321101,
+        "abs_rho": 0.001834862385321101,
+        "n": 43,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9,
+          "v0.21": 10,
+          "v0.22": 7,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.33465511208085463,
+          0.3485736179529283
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "SU_uncentred_ranks": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.1709090909090909,
+          "abs_rho": 0.1709090909090909,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14105123663573463,
+            0.44529954584984044
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.0012121212121212121,
+        "abs_rho": 0.0012121212121212121,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3040228520575342,
+          0.29650447973871835
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.05696969696969697,
+        "abs_rho": 0.05696969696969697,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2581453634085213,
+          0.361707493761906
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9729957805907173,
+        "abs_rho": 0.9729957805907173,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8908504256456785,
+          0.9944338145764481
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.007226869198312237,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.018059071729957805,
+        "abs_rho": 0.018059071729957805,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3140943337745086,
+          0.29206187833697267
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S_w_pair_weight_1_over_k_minus_1": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.15636363636363637,
+          "abs_rho": 0.15636363636363637,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.17370402519278125,
+            0.4346228575667609
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.006060606060606061,
+        "abs_rho": 0.006060606060606061,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.29910197438711095,
+          0.3000031133250311
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.04727272727272727,
+        "abs_rho": 0.04727272727272727,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2696835558504021,
+          0.350065907710171
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9700680272108844,
+        "abs_rho": 0.9700680272108844,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8793810755912366,
+          0.9942857142857143
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.00012680272108843543,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.02312925170068027,
+        "abs_rho": 0.02312925170068027,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2859136277876644,
+          0.3286133837833555
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S_prior_lambda_0.1": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.1709090909090909,
+          "abs_rho": 0.1709090909090909,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14105123663573463,
+            0.44529954584984044
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.0012121212121212121,
+        "abs_rho": 0.0012121212121212121,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3040228520575342,
+          0.29650447973871835
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.05696969696969697,
+        "abs_rho": 0.05696969696969697,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2581453634085213,
+          0.361707493761906
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9755102040816327,
+        "abs_rho": 0.9755102040816327,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8984449331835243,
+          0.9971509971509972
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0003866666666666665,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.036734693877551024,
+        "abs_rho": 0.036734693877551024,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.33802866705181583,
+          0.2816991693752256
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S_prior_lambda_10": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.17333333333333334,
+          "abs_rho": 0.17333333333333334,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.13665794590267052,
+            0.44665138365809726
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.013333333333333334,
+        "abs_rho": 0.013333333333333334,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.31653649368278153,
+          0.28445006321112515
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.01575757575757576,
+        "abs_rho": 0.01575757575757576,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.28340041366202695,
+          0.31139980272891654
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.964625850340136,
+        "abs_rho": 0.964625850340136,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8695035460992908,
+          0.9914651493598862
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0005801360544217688,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.012244897959183673,
+        "abs_rho": 0.012244897959183673,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2859136277876644,
+          0.3125
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S_floor_3": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.1709090909090909,
+          "abs_rho": 0.1709090909090909,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14105123663573463,
+            0.44529954584984044
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.0012121212121212121,
+        "abs_rho": 0.0012121212121212121,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3040228520575342,
+          0.29650447973871835
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.05696969696969697,
+        "abs_rho": 0.05696969696969697,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2581453634085213,
+          0.361707493761906
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9717948717948718,
+        "abs_rho": 0.9717948717948718,
+        "n": 49,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.887248322147651,
+          0.9920529801324504
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.00022153846153846212,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.035897435897435895,
+        "abs_rho": 0.035897435897435895,
+        "n": 49,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3306775543329328,
+          0.27056880438285513
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S_floor_10": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.13829787234042554,
+          "abs_rho": 0.13829787234042554,
+          "n": 44,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 9,
+            "v0.21": 8,
+            "v0.22": 9,
+            "v0.23": 9
+          },
+          "determinable": true,
+          "ci95": [
+            -0.22284140154860438,
+            0.4735063308280857
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.09219858156028368,
+        "abs_rho": 0.09219858156028368,
+        "n": 44,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9,
+          "v0.21": 8,
+          "v0.22": 9,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.43390421214593283,
+          0.2765210919154645
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.014184397163120567,
+        "abs_rho": 0.014184397163120567,
+        "n": 44,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9,
+          "v0.21": 8,
+          "v0.22": 9,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.30597395674687783,
+          0.33699684293606946
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9780701754385965,
+        "abs_rho": 0.9780701754385965,
+        "n": 41,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 8,
+          "v0.21": 8,
+          "v0.22": 8,
+          "v0.23": 8
+        },
+        "determinable": true,
+        "ci95": [
+          0.8823460044395117,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0002978070175438595,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.1553030303030303,
+        "abs_rho": 0.1553030303030303,
+        "n": 43,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 8,
+          "v0.21": 9,
+          "v0.22": 8,
+          "v0.23": 9
+        },
+        "determinable": true,
+        "ci95": [
+          -0.18665887787090732,
+          0.4495223068123543
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "TONE_J2": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": 0.0013247626690197079,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.1709090909090909,
+          "abs_rho": 0.1709090909090909,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14105123663573463,
+            0.44529954584984044
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.039432480652753954,
+          "v0.20": 0.07356266538912859,
+          "v0.21": -0.022154735748883825,
+          "v0.22": -0.011619686254686235,
+          "v0.23": 0.019757806010947565
+        },
+        "kappa_evaluative": 0.0862428667852974,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 19,
+          "-2|-1": 29,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 59,
+          "-1|0": 46,
+          "-1|1": 47,
+          "-1|2": 55,
+          "0|-2": 63,
+          "0|-1": 73,
+          "0|0": 105,
+          "0|1": 75,
+          "0|2": 80,
+          "1|-2": 58,
+          "1|-1": 47,
+          "1|0": 58,
+          "1|1": 52,
+          "1|2": 59,
+          "2|-2": 43,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.18545454545454546,
+        "abs_rho": 0.18545454545454546,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.1453604674812646,
+          0.48692403486924035
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": -0.1296969696969697,
+        "abs_rho": 0.1296969696969697,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.4264418571405879,
+          0.20049813200498132
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": -0.11292517006802721,
+        "abs_rho": 0.11292517006802721,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.43224926902803484,
+          0.2111948051948051
+        ],
+        "p_perm": 0.768023197680232,
+        "perm_seed": 121011,
+        "p_shuffle": 0.7612238776122388,
+        "shuffled_mean_rho": -0.0011499319727891156,
+        "shuffle_seed": 121010,
+        "verdict": "FALSIFIED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.1292517006802721,
+        "abs_rho": 0.1292517006802721,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.20345088841334888,
+          0.43056752873563203
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "FALSIFIED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "FALSIFIED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    },
+    "S-ATT_v1_11_first_attempt_rule": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "FALSIFIED",
+        "alpha_ordinal": -0.0033528209932567332,
+        "windows_judged_by_both": 1264,
+        "brand_rho": {
+          "rho": 0.1684848484848485,
+          "abs_rho": 0.1684848484848485,
+          "n": 50,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10,
+            "v0.21": 10,
+            "v0.22": 10,
+            "v0.23": 10
+          },
+          "determinable": true,
+          "ci95": [
+            -0.14322220833247612,
+            0.43908629441624364
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": -0.03737942799433491,
+          "v0.20": 0.07789082046433038,
+          "v0.21": -0.030809562498937737,
+          "v0.22": -0.02437696461455441,
+          "v0.23": 0.012885652189801866
+        },
+        "kappa_evaluative": 0.08105432495978197,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 18,
+          "-2|-1": 30,
+          "-2|0": 32,
+          "-2|1": 23,
+          "-2|2": 18,
+          "-1|-2": 68,
+          "-1|-1": 58,
+          "-1|0": 48,
+          "-1|1": 48,
+          "-1|2": 55,
+          "0|-2": 64,
+          "0|-1": 72,
+          "0|0": 102,
+          "0|1": 75,
+          "0|2": 81,
+          "1|-2": 57,
+          "1|-1": 48,
+          "1|0": 59,
+          "1|1": 51,
+          "1|2": 58,
+          "2|-2": 44,
+          "2|-1": 48,
+          "2|0": 40,
+          "2|1": 31,
+          "2|2": 36
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.04,
+        "abs_rho": 0.04,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.2694323357826183,
+          0.3324969416562108
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.07151515151515152,
+        "abs_rho": 0.07151515151515152,
+        "n": 50,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 10,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.24445002091175236,
+          0.3695988621162605
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9591836734693877,
+        "abs_rho": 0.9591836734693877,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          0.8593530239099859,
+          0.9885877318116976
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0003303401360544218,
+        "shuffle_seed": 121010,
+        "verdict": "CONFIRMED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.04217687074829932,
+        "abs_rho": 0.04217687074829932,
+        "n": 48,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10,
+          "v0.21": 10,
+          "v0.22": 9,
+          "v0.23": 10
+        },
+        "determinable": true,
+        "ci95": [
+          -0.3371270067059541,
+          0.2711864406779661
+        ],
+        "verdict": "CONFIRMED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "CONFIRMED",
+        "H3_t5": "CONFIRMED",
+        "H4": "CONFIRMED",
+        "H5_t4": "CONFIRMED"
+      },
+      "verdicts": {
+        "H1_t5": "FALSIFIED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "CONFIRMED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": true,
+      "GATE": "FAIL"
+    }
+  },
+  "sensitivity_verdict_changes": [
+    {
+      "sensitivity": "TONE_J2",
+      "hypothesis": "H4",
+      "primary": "CONFIRMED",
+      "under_sensitivity": "FALSIFIED"
+    }
+  ],
+  "sensitivity_note": "A sensitivity never changes a verdict or the gate (section 10).",
+  "descriptives": {
+    "R_star_t5": "v1.14 Stage 2's t5 rank table not supplied"
+  },
+  "fixture": "judge_noise"
+}

@@ -1,0 +1,1778 @@
+{
+  "phase": "v1.21",
+  "stage": "C",
+  "status": "DRAFT (2026-11-23), not locked",
+  "prereg": "osf/methodology/v1_21/prereg/PRE_REGISTRATION_v1_21_DRAFT_r2.md",
+  "prereg_tag": "v1.21-prereg-r1",
+  "created_utc": "2026-11-23T08:30:58+00:00",
+  "roles": {
+    "J1": "claude-opus-5-5",
+    "J2": "gpt-6.1-sol"
+  },
+  "seeds": {
+    "unit_order": 121000,
+    "selfcon": 121003,
+    "shuffle": 121010,
+    "H4_perm": 121011,
+    "boot": 121020
+  },
+  "draws": {
+    "perm": 10000,
+    "shuffle": 10000,
+    "boot": 10000,
+    "ci": 0.95,
+    "preregistered": true
+  },
+  "bands": {
+    "CONFIRMED_max_abs_rho": 0.3,
+    "FALSIFIED_min_abs_rho": 0.5
+  },
+  "VERDICTS": {
+    "H1_t5": "UNDETERMINED",
+    "H2_t5": "UNDETERMINED",
+    "H3_t5": "UNDETERMINED",
+    "H4": "UNDETERMINED",
+    "H5_t4": "UNDETERMINED",
+    "H6_t5": "UNDETERMINED",
+    "H7_t5": "CONFIRMED"
+  },
+  "verdicts_before_noise_guard": {
+    "H1_t5": "UNDETERMINED",
+    "H2_t5": "UNDETERMINED",
+    "H3_t5": "UNDETERMINED",
+    "H4": "UNDETERMINED",
+    "H5_t4": "UNDETERMINED"
+  },
+  "noise_guard_applied": false,
+  "GATE": "UNDETERMINED",
+  "CONSEQUENCE": "NOT PASS: Sentiment is reported as not separable from Presence and not as a separate AIAS component. There is no further Sentiment redesign.",
+  "H1_t5_Judge_Agreement": {
+    "verdict": "UNDETERMINED",
+    "alpha_ordinal": 0.9516488046171441,
+    "windows_judged_by_both": 509,
+    "brand_rho": {
+      "rho": 0.9818181818181818,
+      "abs_rho": 0.9818181818181818,
+      "n": 20,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10
+      },
+      "determinable": false,
+      "ci95": [
+        0.8819875776397516,
+        1.0
+      ]
+    },
+    "alpha_by_category": {
+      "v0.19": 0.9417050507676022,
+      "v0.20": 0.95801296295741
+    },
+    "kappa_evaluative": 0.5044260662287228,
+    "confusion_J1_rows_J2_cols": {
+      "-2|-2": 54,
+      "-2|-1": 3,
+      "-1|-2": 9,
+      "-1|-1": 84,
+      "-1|0": 2,
+      "0|-1": 16,
+      "0|0": 136,
+      "0|1": 16,
+      "1|0": 8,
+      "1|1": 101,
+      "1|2": 11,
+      "2|1": 7,
+      "2|2": 62
+    },
+    "thresholds": {
+      "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+      "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+    }
+  },
+  "H2_t5_Sep_Presence": {
+    "rho": -0.012121212121212121,
+    "abs_rho": 0.012121212121212121,
+    "n": 20,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10
+    },
+    "determinable": false,
+    "ci95": [
+      -0.48125,
+      0.4603174603174603
+    ],
+    "verdict": "UNDETERMINED"
+  },
+  "H3_t5_Sep_Consistency": {
+    "rho": 0.17575757575757575,
+    "abs_rho": 0.17575757575757575,
+    "n": 20,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10
+    },
+    "determinable": false,
+    "ci95": [
+      -0.3396825396825397,
+      0.6329113924050633
+    ],
+    "verdict": "UNDETERMINED"
+  },
+  "H4_Retest_t4_t5": {
+    "rho": 0.9666666666666667,
+    "abs_rho": 0.9666666666666667,
+    "n": 18,
+    "units_per_category": {
+      "v0.19": 9,
+      "v0.20": 9
+    },
+    "determinable": false,
+    "ci95": [
+      0.7847533632286996,
+      1.0
+    ],
+    "p_perm": 9.999000099990002e-05,
+    "perm_seed": 121011,
+    "p_shuffle": 9.999000099990002e-05,
+    "shuffled_mean_rho": -0.003221666666666667,
+    "shuffle_seed": 121010,
+    "verdict": "UNDETERMINED"
+  },
+  "H5_t4_Sep_Presence": {
+    "rho": -0.03333333333333333,
+    "abs_rho": 0.03333333333333333,
+    "n": 18,
+    "units_per_category": {
+      "v0.19": 9,
+      "v0.20": 9
+    },
+    "determinable": false,
+    "ci95": [
+      -0.5565217391304348,
+      0.5
+    ],
+    "verdict": "UNDETERMINED"
+  },
+  "H6_t5_Naming_Frequency": {
+    "rho": -0.03647433262080387,
+    "abs_rho": 0.03647433262080387,
+    "n": 20,
+    "units_per_category": {
+      "v0.19": 10,
+      "v0.20": 10
+    },
+    "determinable": false,
+    "ci95": [
+      -0.5115748762376235,
+      0.4405264524375385
+    ],
+    "verdict": "UNDETERMINED"
+  },
+  "H7_t5_Self_Preference": {
+    "delta_points": 0.26933790838821553,
+    "n_own_provider": 171,
+    "n_other": 317,
+    "j1_provider": "anthropic",
+    "mean_diff_own": 0.5847953216374269,
+    "mean_diff_other": 0.31545741324921134,
+    "verdict": "CONFIRMED"
+  },
+  "secondaries": {
+    "CONTRAST": {
+      "H2_t5": {
+        "rho": -0.04242424242424243,
+        "abs_rho": 0.04242424242424243,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5112540192926045,
+          0.4392523364485981
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5": {
+        "rho": 0.15757575757575756,
+        "abs_rho": 0.15757575757575756,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.3754043681809961,
+          0.6329271169117067
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4": {
+        "rho": 0.95,
+        "abs_rho": 0.95,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7543589149084167,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.0009586185771721931,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      }
+    },
+    "S_ref": {
+      "H2_t5": {
+        "rho": -0.05454545454545454,
+        "abs_rho": 0.05454545454545454,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5064123376623376,
+          0.409234899328859
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5": {
+        "rho": 0.1696969696969697,
+        "abs_rho": 0.1696969696969697,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.35646687697160884,
+          0.6211180124223602
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4": {
+        "rho": 0.9666666666666667,
+        "abs_rho": 0.9666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7847533632286996,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.11449919557603143,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      }
+    },
+    "S_cat": {
+      "H2_t5": {
+        "rho": -0.05454545454545454,
+        "abs_rho": 0.05454545454545454,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5064123376623376,
+          0.409234899328859
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5": {
+        "rho": 0.1696969696969697,
+        "abs_rho": 0.1696969696969697,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.35646687697160884,
+          0.6211180124223602
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4": {
+        "rho": 0.9666666666666667,
+        "abs_rho": 0.9666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7847533632286996,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": 0.11449919557603143,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      }
+    },
+    "TONE_NV": {
+      "H2_t5": {
+        "rho": -0.1696969696969697,
+        "abs_rho": 0.1696969696969697,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5974842767295597,
+          0.31272872509327565
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5": {
+        "rho": 0.05454545454545454,
+        "abs_rho": 0.05454545454545454,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4534294295521411,
+          0.5256619937694701
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4": {
+        "rho": 0.95,
+        "abs_rho": 0.95,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.755431701524554,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0009750000000000004,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      }
+    },
+    "S_res": {
+      "H2_t5": {
+        "rho": 0.05454545454545454,
+        "abs_rho": 0.05454545454545454,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4,
+          0.49216300940438873
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5": {
+        "rho": 0.20606060606060606,
+        "abs_rho": 0.20606060606060606,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.31875,
+          0.6500272585669779
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4": "not defined: S_res exists at t5 only (coefficients fitted at t4)",
+      "t4_fits": {
+        "v0.19": {
+          "n_t4": 9,
+          "fitted": true,
+          "intercept": 50.35123468540498,
+          "slope": -0.03345179721391562
+        },
+        "v0.20": {
+          "n_t4": 9,
+          "fitted": true,
+          "intercept": 67.39721343567398,
+          "slope": -0.24611300463399655
+        }
+      }
+    }
+  },
+  "S_ref_replication_of_v1_20_H2": {
+    "S_ref_H2_t5": {
+      "rho": -0.05454545454545454,
+      "abs_rho": 0.05454545454545454,
+      "n": 20,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10
+      },
+      "determinable": false,
+      "ci95": [
+        -0.5064123376623376,
+        0.409234899328859
+      ],
+      "verdict": "UNDETERMINED"
+    },
+    "v1_20_H2_per_wave": null
+  },
+  "checks": {
+    "Identity_S_cat_equals_S_ref": {
+      "passes": true,
+      "rho_pairs": {
+        "H2_t5": [
+          -0.05454545454545454,
+          -0.05454545454545454
+        ],
+        "H3_t5": [
+          0.1696969696969697,
+          0.1696969696969697
+        ],
+        "H4": [
+          0.9666666666666667,
+          0.9666666666666667
+        ]
+      }
+    },
+    "MQ6_positive_control_rho_w_n_named_P_S0_t5": {
+      "rho": 0.9756883976065036,
+      "abs_rho": 0.9756883976065036,
+      "n": 20,
+      "units_per_category": {
+        "v0.19": 10,
+        "v0.20": 10
+      },
+      "determinable": false,
+      "ci95": [
+        0.8612669712624258,
+        1.0
+      ]
+    },
+    "MQ7_negative_control": {
+      "shuffled_mean_rho": -0.003221666666666667,
+      "threshold": 0.2,
+      "flag_list_composition_driven": false
+    },
+    "MQ9_identification": {
+      "t4": {
+        "units_at_floor": 18,
+        "outside_main_component": 0,
+        "units": [],
+        "share": 0.0,
+        "flag": false
+      },
+      "t5": {
+        "units_at_floor": 20,
+        "outside_main_component": 0,
+        "units": [],
+        "share": 0.0,
+        "flag": false
+      }
+    }
+  },
+  "sensitivities": {
+    "SD_without_Denon": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9504924513674724,
+        "windows_judged_by_both": 496,
+        "brand_rho": {
+          "rho": 0.9789473684210527,
+          "abs_rho": 0.9789473684210527,
+          "n": 19,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.863110321066286,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9390797954568261,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5007404664938911,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 97,
+          "1|2": 11,
+          "2|1": 5,
+          "2|2": 55
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.11578947368421053,
+        "abs_rho": 0.11578947368421053,
+        "n": 19,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.39098561621444905,
+          0.5579923273657287
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.0456140350877193,
+        "abs_rho": 0.0456140350877193,
+        "n": 19,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4779814946424663,
+          0.5311783107403539
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9803921568627451,
+        "abs_rho": 0.9803921568627451,
+        "n": 17,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.8375634517766497,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.004468627450980392,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.09803921568627451,
+        "abs_rho": 0.09803921568627451,
+        "n": 17,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.47150259067357514,
+          0.6326530612244898
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S-COI_without_Denon_and_five_agency_brands": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.949597020369712,
+        "windows_judged_by_both": 485,
+        "brand_rho": {
+          "rho": 0.975,
+          "abs_rho": 0.975,
+          "n": 18,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 9
+          },
+          "determinable": false,
+          "ci95": [
+            0.8421052631578947,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9390797954568261,
+          "v0.20": 0.9567401821056523
+        },
+        "kappa_evaluative": 0.49106852090846587,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 79,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 134,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 93,
+          "1|2": 11,
+          "2|1": 5,
+          "2|2": 55
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.11666666666666667,
+        "abs_rho": 0.11666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.43103448275862066,
+          0.6017325594759223
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.058333333333333334,
+        "abs_rho": 0.058333333333333334,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.441456907551328,
+          0.5466666666666666
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9803921568627451,
+        "abs_rho": 0.9803921568627451,
+        "n": 17,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.8375634517766497,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.004468627450980392,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.09803921568627451,
+        "abs_rho": 0.09803921568627451,
+        "n": 17,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.47150259067357514,
+          0.6326530612244898
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "SU_uncentred_ranks": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9818181818181818,
+          "abs_rho": 0.9818181818181818,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.8819875776397516,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.012121212121212121,
+        "abs_rho": 0.012121212121212121,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.48125,
+          0.4603174603174603
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.17575757575757575,
+        "abs_rho": 0.17575757575757575,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.3396825396825397,
+          0.6329113924050633
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9666666666666667,
+        "abs_rho": 0.9666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7847533632286996,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.003221666666666667,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.03333333333333333,
+        "abs_rho": 0.03333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5565217391304348,
+          0.5
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S_w_pair_weight_1_over_k_minus_1": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9939393939393939,
+          "abs_rho": 0.9939393939393939,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.9361022364217252,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.030303030303030304,
+        "abs_rho": 0.030303030303030304,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4504792332268371,
+          0.486091733344055
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.21212121212121213,
+        "abs_rho": 0.21212121212121213,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.30218068535825543,
+          0.6547457773367557
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9666666666666667,
+        "abs_rho": 0.9666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7847533632286996,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.002136666666666667,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.03333333333333333,
+        "abs_rho": 0.03333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5565217391304348,
+          0.5
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S_prior_lambda_0.1": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9878787878787879,
+          "abs_rho": 0.9878787878787879,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.9006211180124224,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.03636363636363636,
+        "abs_rho": 0.03636363636363636,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5185243055555555,
+          0.45048268449493156
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.15151515151515152,
+        "abs_rho": 0.15151515151515152,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.34177417397986004,
+          0.5938734177215186
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.975,
+        "abs_rho": 0.975,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7930810568741605,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0031524999999999995,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.03333333333333333,
+        "abs_rho": 0.03333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5565217391304348,
+          0.5
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S_prior_lambda_10": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9878787878787879,
+          "abs_rho": 0.9878787878787879,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.9044585987261147,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.012121212121212121,
+        "abs_rho": 0.012121212121212121,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.48125,
+          0.4603174603174603
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.17575757575757575,
+        "abs_rho": 0.17575757575757575,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.3396825396825397,
+          0.6329113924050633
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9583333333333334,
+        "abs_rho": 0.9583333333333334,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7309417040358744,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0030033333333333335,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.03333333333333333,
+        "abs_rho": 0.03333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5149000644745325,
+          0.5450840564499501
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S_floor_3": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9818181818181818,
+          "abs_rho": 0.9818181818181818,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.8819875776397516,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.012121212121212121,
+        "abs_rho": 0.012121212121212121,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.48125,
+          0.4603174603174603
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.17575757575757575,
+        "abs_rho": 0.17575757575757575,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.3396825396825397,
+          0.6329113924050633
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9696969696969697,
+        "abs_rho": 0.9696969696969697,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          0.8301886792452831,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.001998181818181818,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.006060606060606061,
+        "abs_rho": 0.006060606060606061,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.45513690015479846,
+          0.44654088050314467
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S_floor_10": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9916666666666667,
+          "abs_rho": 0.9916666666666667,
+          "n": 18,
+          "units_per_category": {
+            "v0.19": 9,
+            "v0.20": 9
+          },
+          "determinable": false,
+          "ci95": [
+            0.9111111111111111,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.13333333333333333,
+        "abs_rho": 0.13333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4051724137931034,
+          0.6347826086956522
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.16666666666666666,
+        "abs_rho": 0.16666666666666666,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.4133448275862068,
+          0.6506550218340611
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9880952380952381,
+        "abs_rho": 0.9880952380952381,
+        "n": 16,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 8
+        },
+        "determinable": false,
+        "ci95": [
+          0.8960869196163315,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.003814285714285714,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": 0.09803921568627451,
+        "abs_rho": 0.09803921568627451,
+        "n": 17,
+        "units_per_category": {
+          "v0.19": 8,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.47150259067357514,
+          0.6326530612244898
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "TONE_J2": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9516488046171441,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9818181818181818,
+          "abs_rho": 0.9818181818181818,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.8819875776397516,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9417050507676022,
+          "v0.20": 0.95801296295741
+        },
+        "kappa_evaluative": 0.5044260662287228,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 3,
+          "-1|-2": 9,
+          "-1|-1": 84,
+          "-1|0": 2,
+          "0|-1": 16,
+          "0|0": 136,
+          "0|1": 16,
+          "1|0": 8,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": 0.01818181818181818,
+        "abs_rho": 0.01818181818181818,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.46376300090576844,
+          0.4873417721518987
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.21212121212121213,
+        "abs_rho": 0.21212121212121213,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.28302808678016095,
+          0.6242336467495698
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9666666666666667,
+        "abs_rho": 0.9666666666666667,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.782608695652174,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0021950000000000003,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.03333333333333333,
+        "abs_rho": 0.03333333333333333,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5565217391304348,
+          0.5
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    },
+    "S-ATT_v1_11_first_attempt_rule": {
+      "H1_t5_Judge_Agreement": {
+        "verdict": "UNDETERMINED",
+        "alpha_ordinal": 0.9482103051157872,
+        "windows_judged_by_both": 509,
+        "brand_rho": {
+          "rho": 0.9818181818181818,
+          "abs_rho": 0.9818181818181818,
+          "n": 20,
+          "units_per_category": {
+            "v0.19": 10,
+            "v0.20": 10
+          },
+          "determinable": false,
+          "ci95": [
+            0.8819875776397516,
+            1.0
+          ]
+        },
+        "alpha_by_category": {
+          "v0.19": 0.9384322754927757,
+          "v0.20": 0.9548315875629064
+        },
+        "kappa_evaluative": 0.4821036923146497,
+        "confusion_J1_rows_J2_cols": {
+          "-2|-2": 54,
+          "-2|-1": 4,
+          "-1|-2": 9,
+          "-1|-1": 82,
+          "-1|0": 4,
+          "0|-1": 17,
+          "0|0": 133,
+          "0|1": 16,
+          "1|0": 9,
+          "1|1": 101,
+          "1|2": 11,
+          "2|1": 7,
+          "2|2": 62
+        },
+        "thresholds": {
+          "CONFIRMED": "alpha >= 0.667 AND brand rho >= 0.80",
+          "FALSIFIED": "alpha < 0.50 OR brand rho < 0.60"
+        }
+      },
+      "H2_t5_Sep_Presence": {
+        "rho": -0.012121212121212121,
+        "abs_rho": 0.012121212121212121,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.48125,
+          0.4603174603174603
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H3_t5_Sep_Consistency": {
+        "rho": 0.17575757575757575,
+        "abs_rho": 0.17575757575757575,
+        "n": 20,
+        "units_per_category": {
+          "v0.19": 10,
+          "v0.20": 10
+        },
+        "determinable": false,
+        "ci95": [
+          -0.3396825396825397,
+          0.6329113924050633
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "H4_Retest_t4_t5": {
+        "rho": 0.9583333333333334,
+        "abs_rho": 0.9583333333333334,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          0.7662337662337663,
+          1.0
+        ],
+        "p_perm": 9.999000099990002e-05,
+        "perm_seed": 121011,
+        "p_shuffle": 9.999000099990002e-05,
+        "shuffled_mean_rho": -0.0053375,
+        "shuffle_seed": 121010,
+        "verdict": "UNDETERMINED"
+      },
+      "H5_t4_Sep_Presence": {
+        "rho": -0.016666666666666666,
+        "abs_rho": 0.016666666666666666,
+        "n": 18,
+        "units_per_category": {
+          "v0.19": 9,
+          "v0.20": 9
+        },
+        "determinable": false,
+        "ci95": [
+          -0.5517241379310345,
+          0.537117903930131
+        ],
+        "verdict": "UNDETERMINED"
+      },
+      "verdicts_before_noise_guard": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "verdicts": {
+        "H1_t5": "UNDETERMINED",
+        "H2_t5": "UNDETERMINED",
+        "H3_t5": "UNDETERMINED",
+        "H4": "UNDETERMINED",
+        "H5_t4": "UNDETERMINED"
+      },
+      "noise_guard_applied": false,
+      "GATE": "UNDETERMINED"
+    }
+  },
+  "sensitivity_verdict_changes": [],
+  "sensitivity_note": "A sensitivity never changes a verdict or the gate (section 10).",
+  "descriptives": {
+    "R_star_t5": "v1.14 Stage 2's t5 rank table not supplied"
+  },
+  "fixture": "two_cats"
+}
