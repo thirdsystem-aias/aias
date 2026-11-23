@@ -1,0 +1,24 @@
+{
+ "tool": "osf_upload.py (WaterButler) + API sha256 check + anonymous re-download",
+ "project": "ec6wh",
+ "code": "TS-BR-v0.27-r1",
+ "remote_path": "v27_28/paper/TS-BR-v0.27-r1_ai-presence-did-not-match-a-commercial-visibility-score-and.pdf",
+ "file": "TS-BR-v0.27-r1_ai-presence-did-not-match-a-commercial-visibility-score-and.pdf",
+ "sha256_local": "f976cc2510836fb7f7493c2d5474a80337cafc9fda424882a214ab2a6d717f21",
+ "sha256_osf": "f976cc2510836fb7f7493c2d5474a80337cafc9fda424882a214ab2a6d717f21",
+ "sha256_redownload": "f976cc2510836fb7f7493c2d5474a80337cafc9fda424882a214ab2a6d717f21",
+ "verified": "match",
+ "size": 80003,
+ "osf_file_id": "6b04ccae6a5ed15be35e7039",
+ "osf_download_url": "https://osf.io/download/6b04ccae6a5ed15be35e7039/",
+ "osf_view_url": "https://osf.io/ec6wh/files/osfstorage/6b04ccae6a5ed15be35e7039",
+ "uploaded_utc": "2026-11-23T23:30:54Z",
+ "beside": {
+  "file": "v27_28/paper/v0_27_28_ssrn_paper.pdf",
+  "osf_file_id": "6af5730c24c9c3bcc8003317",
+  "sha256_osf": "542ead2c383e5dea45ef65c866a3e2609c5f13e99294af33908f50220f5946aa",
+  "sha256_local_c22617f": "542ead2c383e5dea45ef65c866a3e2609c5f13e99294af33908f50220f5946aa",
+  "deposited_utc": "2026-11-12T08:04:28Z",
+  "note": "The combined paper was already on OSF (deposited Nov 12); checked by API hash and re-download on Nov 23, not re-uploaded."
+ }
+}
