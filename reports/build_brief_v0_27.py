@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
 Brief of the combined construct-validity paper (AIAS™ v0.27 and v0.28, reported together: AI Brand Presence against
-a Commercial Visibility Score and Human Brand Norms), report code TS-BR-v0.27-r2 (Tier 3 brief). The catalogue has no
+a Commercial Visibility Score and Human Brand Norms), report code TS-BR-v0.27-r1 (Tier 3 brief). The catalogue has no
 code for a combined study (v0.27 and v0.28 are coded separately; the v1.14 + v1.16 brief took its first study's
 code), so the brief takes the first study's code and names v0.28 in its title block, running label and metadata.
-Revisions count per study whatever the type (report_code.next_revision), and the v0.27 case study is TS-CS-v0.27-r1,
-so the brief is r2.
+Revisions count per report type (report_code.next_revision; Pablo's default (a), in force Nov 23, 2026), so the
+brief is r1 beside the v0.27 case study TS-CS-v0.27-r1.
 
 Sixth short designed brief, in the format Pablo approved on Sun Nov 22, 2026, 10:47 am (decisions 1-7): 2 pages,
 report design system v2 (brand v1.6 / report specs v1.2), Tier 3 elements (no cover; title block, standfirst, three
@@ -21,7 +21,7 @@ scripts/build_chart_brief_v0_27.py. After the build, every digit group in the PD
 the provenance or to a listed non-result token (versions, model names, dates, code, page numbers, axis ticks).
 
 Run from the worktree root:
-    AIAS_ROOT=$PWD ~/aias/venv/bin/python reports/build_brief_v0_27.py [--code TS-BR-v0.27-r2] [--out-dir DIR]
+    AIAS_ROOT=$PWD ~/aias/venv/bin/python reports/build_brief_v0_27.py [--code TS-BR-v0.27-r1] [--out-dir DIR]
 """
 from __future__ import annotations
 
@@ -152,7 +152,7 @@ def build(output: Path, code: str) -> dict:
 
 # Digit groups that are not results: identifiers, model names, dates, page numbers, chart axis ticks, the code.
 NON_RESULT = {
-    "code": r"TS-BR-v0\.27-r2", "versions": r"v\d+\.\d+(?:-prereg-r\d+|-report-locked|-results-locked)?",
+    "code": r"TS-BR-v0\.27-r1", "versions": r"v\d+\.\d+(?:-prereg-r\d+|-report-locked|-results-locked)?",
     "osf": r"ec6wh", "files": r"v0\.27_verdicts|v28_verdicts|osf/v2[78]|\bv2[78]\b", "pct": r"\b95%",
     "revs": r"\br[1-5]\b",
     "years": r"\b20(?:25|26)\b",
@@ -194,7 +194,7 @@ def digit_audit(pdf, v) -> dict:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--code", default="TS-BR-v0.27-r2")
+    ap.add_argument("--code", default="TS-BR-v0.27-r1")
     ap.add_argument("--out-dir", type=Path, default=OUT_DIR)
     a = ap.parse_args()
     out = a.out_dir / RC.file_name(a.code, C.TITLE)

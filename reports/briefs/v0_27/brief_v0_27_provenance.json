@@ -1,5 +1,5 @@
 {
- "_note": "Every number printed in TS-BR-v0.27-r2 (brief of the combined v0.27 + v0.28 paper) and its chart: name -> source file, JSON path (or the locked scorer's source line), raw value, format. Sources: v27 = osf/v27/v0.27_verdicts.json, v28 = osf/v28/v28_verdicts.json; decision lines: scripts/score_v27.py, scripts/score_v28.py; disclosure wording: papers/v0_27_28/v0_27_28_combined_validity_paper.md. Files identical to c22617f (branch v0.27-28-combined); v0.27_verdicts.json as written by the v0.27 scoring run (85cab7b), v28_verdicts.json as written by the single v0.28 scoring run (65bb5ab).",
+ "_note": "Every number printed in TS-BR-v0.27-r1 (brief of the combined v0.27 + v0.28 paper) and its chart: name -> source file, JSON path (or the locked scorer's source line), raw value, format. Sources: v27 = osf/v27/v0.27_verdicts.json, v28 = osf/v28/v28_verdicts.json; decision lines: scripts/score_v27.py, scripts/score_v28.py; disclosure wording: papers/v0_27_28/v0_27_28_combined_validity_paper.md. Files identical to c22617f (branch v0.27-28-combined); v0.27_verdicts.json as written by the v0.27 scoring run (85cab7b), v28_verdicts.json as written by the single v0.28 scoring run (65bb5ab).",
  "sources_sha256": {
   "osf/v27/v0.27_verdicts.json": "d92fb0c53ac2826d9a0e120ef58029c23952e117b900f1bfaf08820c6c3d90bd",
   "osf/v28/v28_verdicts.json": "f4c6f6fa2cf23cbf6b68fa5e8ad82608b8d799c4609c4b701827d2c3245df71a",
@@ -379,8 +379,8 @@
    "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
   }
  },
- "report_code": "TS-BR-v0.27-r2",
- "pdf": "reports/briefs/v0_27/TS-BR-v0.27-r2_ai-presence-did-not-match-a-commercial-visibility-score-and.pdf",
+ "report_code": "TS-BR-v0.27-r1",
+ "pdf": "reports/briefs/v0_27/TS-BR-v0.27-r1_ai-presence-did-not-match-a-commercial-visibility-score-and.pdf",
  "keys_used_in_text": [
   "AI_USE",
   "ALPHA",

@@ -1,5 +1,5 @@
 """
-Text of the brief of the combined v0.27 + v0.28 validity paper (TS-BR-v0.27-r2; v0.28 named in the title block).
+Text of the brief of the combined v0.27 + v0.28 validity paper (TS-BR-v0.27-r1; v0.28 named in the title block).
 Managerial register: plain findings, no hypothesis labels. Every number is a {KEY} placeholder filled by
 reports/build_brief_v0_27.py from brief_v0_27_values.py (unknown key -> KeyError). Note markers are {N1}, {N2}, ...
 (small_print.NoteSeq, per page).

@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 brief_v0_27_values.py -- every number printed in the brief of the combined v0.27 + v0.28 validity paper
-(TS-BR-v0.27-r2; v0.28 named in the title block) and its chart.
+(TS-BR-v0.27-r1; v0.28 named in the title block) and its chart.
 
 Numbers are read by code, never typed:
   * Study 1 (v0.27, CV.03) results from its verdict file osf/v27/v0.27_verdicts.json and Study 2 (v0.28, CV.04)
@@ -254,7 +254,7 @@ def _sha(p):
 
 def write_provenance(v, extra=None):
     PROV_OUT.parent.mkdir(parents=True, exist_ok=True)
-    out = {"_note": "Every number printed in TS-BR-v0.27-r2 (brief of the combined v0.27 + v0.28 paper) and its "
+    out = {"_note": "Every number printed in TS-BR-v0.27-r1 (brief of the combined v0.27 + v0.28 paper) and its "
                     "chart: name -> source file, JSON path (or the locked scorer's source line), raw value, format. "
                     "Sources: v27 = osf/v27/v0.27_verdicts.json, v28 = osf/v28/v28_verdicts.json; decision lines: "
                     "scripts/score_v27.py, scripts/score_v28.py; disclosure wording: "

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Chart of the brief of the combined v0.27 + v0.28 paper (TS-BR-v0.27-r2): one chart, one insight (data-viz rules v2).
+"""Chart of the brief of the combined v0.27 + v0.28 paper (TS-BR-v0.27-r1): one chart, one insight (data-viz rules v2).
 
 Insight: the three gating rank correlations with their 95% intervals, each against its own pre-registered lines.
 Study 1 (convergent, higher means agreement): the zone at or above the 0.60 confirmation line is light grey, the
