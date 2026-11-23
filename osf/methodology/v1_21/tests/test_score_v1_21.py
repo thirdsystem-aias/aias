@@ -575,5 +575,88 @@ class TestPinsAndOrder(unittest.TestCase):
         self.assertFalse(any("__pycache__" in x for x in paths))
 
 
+
+class TestWriteAnchor(unittest.TestCase):
+    """--write-anchor on a throwaway repository with a bare remote (no network)."""
+
+    def _git(self, cwd, *args):
+        import subprocess
+        subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "init.defaultBranch=main",
+                        "-c", "tag.gpgSign=false", "-c", "commit.gpgSign=false", *args],
+                       cwd=cwd, check=True, capture_output=True)
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp())
+        self.remote = self.tmp / "remote.git"
+        self.repo = self.tmp / "repo"
+        self._git(self.tmp, "init", "--bare", str(self.remote))
+        self._git(self.tmp, "init", str(self.repo))
+        pre = self.repo / T.V121 / "prereg"
+        pre.mkdir(parents=True)
+        (pre / "PRE.md").write_text("prereg\n")
+        (self.repo / T.V121 / "anchor").mkdir()
+        (self.repo / T.V121 / "anchor" / "DEVIATIONS.md").write_text("Entry 0\n")
+        rel = T.V121 + "/prereg/PRE.md"
+        (self.repo / T.MANIFEST_REL).write_text(f"{T.sha256_file(pre / 'PRE.md')}  {rel}\n")
+        self._git(self.repo, "add", "-A")
+        self._git(self.repo, "commit", "-m", "lock")
+        self._git(self.repo, "remote", "add", "origin", str(self.remote))
+        self._git(self.repo, "push", "origin", "HEAD:main")
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def _tag(self, annotated=True):
+        if annotated:
+            self._git(self.repo, "tag", "-a", T.PREREG_TAG, "-m", "lock")
+        else:
+            self._git(self.repo, "tag", T.PREREG_TAG)
+
+    def test_refuses_before_tag(self):
+        with self.assertRaises(T.Halt):
+            T.write_anchor("osf", root=self.repo)
+
+    def test_refuses_unpushed_tag(self):
+        self._tag()
+        with self.assertRaisesRegex(T.Halt, "push the tag"):
+            T.write_anchor("osf", root=self.repo)
+
+    def test_refuses_lightweight_tag(self):
+        self._tag(annotated=False)
+        self._git(self.repo, "push", "origin", T.PREREG_TAG)
+        with self.assertRaisesRegex(T.Halt, "lightweight"):
+            T.write_anchor("osf", root=self.repo)
+
+    def test_refuses_without_osf_deposit(self):
+        self._tag()
+        self._git(self.repo, "push", "origin", T.PREREG_TAG)
+        with self.assertRaisesRegex(T.Halt, "osf-deposit"):
+            T.write_anchor("  ", root=self.repo)
+
+    def test_writes_once_with_v1_20_fields(self):
+        self._tag()
+        self._git(self.repo, "push", "origin", T.PREREG_TAG)
+        p = T.write_anchor("https://osf.io/x/", root=self.repo)
+        rec = json.loads(p.read_text())
+        for k in ("tag", "tag_object", "commit", "tree", "branch", "tagger_date", "remote_tag_ref",
+                  "recorded_utc", "repository", "osf_deposit", "locked_files"):
+            self.assertIn(k, rec)
+        self.assertEqual(rec["tag"], T.PREREG_TAG)
+        self.assertEqual(set(rec["locked_files"]),
+                         {T.V121 + "/prereg/PRE.md", T.MANIFEST_REL, T.DEVIATIONS_REL})
+        self.assertEqual(rec["locked_files"][T.V121 + "/prereg/PRE.md"]["sha256"],
+                         T.sha256_bytes(b"prereg\n"))
+        with self.assertRaisesRegex(T.Halt, "written once"):
+            T.write_anchor("https://osf.io/x/", root=self.repo)
+
+    def test_refuses_manifest_mismatch(self):
+        (self.repo / T.V121 / "prereg" / "PRE.md").write_text("changed\n")
+        self._git(self.repo, "commit", "-am", "edit")
+        self._tag()
+        self._git(self.repo, "push", "origin", T.PREREG_TAG)
+        with self.assertRaisesRegex(T.Halt, "manifest says"):
+            T.write_anchor("osf", root=self.repo)
+
+
 if __name__ == "__main__":
     unittest.main()

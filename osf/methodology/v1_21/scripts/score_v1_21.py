@@ -35,6 +35,8 @@ Modes (repository root; PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_21/
   --exploratory                        RQ3 on t1-t3 (refuses before the lock is anchored; section 10).
   --fixture DIR --out DIR [--draws N]  both stages on a synthetic fixture folder (tests and the dry run only).
   --lock-manifest                      prints the draft lock manifest (prereg/LOCK_MANIFEST_v1_21.sha256 format).
+  --write-anchor --osf-deposit TEXT    after tag + push + OSF deposit (section 13 step 2, last): checks the
+                                       pushed annotated tag and its manifest, writes the anchor once.
 Real stages refuse before tag v1.21-prereg-r1 exists, and each runs once (an existing output refuses).
 No network, no model call, no paid API.
 """
@@ -1309,6 +1311,81 @@ def lock_manifest_text(root: Path = ROOT) -> str:
     return "".join(f"{sha256_file(root / f)}  {f}\n" for f in lock_files(root))
 
 
+MANIFEST_REL = V121 + "/prereg/LOCK_MANIFEST_v1_21.sha256"
+DEVIATIONS_REL = V121 + "/anchor/DEVIATIONS.md"
+
+
+def _git(root: Path, *args: str) -> str:
+    r = subprocess.run(["git", "-C", str(root), *args], capture_output=True, text=True)
+    if r.returncode != 0:
+        raise Halt(f"git {' '.join(args)} failed: {r.stderr.strip()}")
+    return r.stdout.strip()
+
+
+def _git_bytes(root: Path, *args: str) -> bytes:
+    r = subprocess.run(["git", "-C", str(root), *args], capture_output=True)
+    if r.returncode != 0:
+        raise Halt(f"git {' '.join(args)} failed: {r.stderr.decode(errors='replace').strip()}")
+    return r.stdout
+
+
+def anchor_record(osf_deposit: str, root: Path = ROOT, tag: str = PREREG_TAG, remote: str = "origin") -> dict:
+    """Section 13 step 2, last: the git anchor (v1.20 / v1.11 format). Reads only the tag and the remote.
+    Refuses unless the tag exists, is annotated, is on the remote with the same object, and every file in the
+    manifest at the tag hashes to its manifest line."""
+    if not osf_deposit or not osf_deposit.strip():
+        raise Halt("--write-anchor needs --osf-deposit (the OSF deposit of prereg/, dryrun/ and anchor/)")
+    if not tag_exists(tag, root):
+        raise Halt(f"REFUSED: tag {tag} does not exist (lock first)")
+    tag_object = _git(root, "rev-parse", f"refs/tags/{tag}")
+    if _git(root, "cat-file", "-t", tag_object) != "tag":
+        raise Halt(f"REFUSED: {tag} is a lightweight tag; the lock needs an annotated tag")
+    remote_line = _git(root, "ls-remote", remote, f"refs/tags/{tag}")
+    if not remote_line or remote_line.split()[0] != tag_object:
+        raise Halt(f"REFUSED: {tag} is not on {remote} with object {tag_object[:12]} (push the tag first)")
+    manifest = _git_bytes(root, "show", f"{tag}:{MANIFEST_REL}").decode("utf-8")
+    locked: Dict[str, dict] = {}
+    for line in manifest.splitlines():
+        if not line.strip():
+            continue
+        want, rel = line.split("  ", 1)
+        got = sha256_bytes(_git_bytes(root, "show", f"{tag}:{rel}"))
+        if got != want:
+            raise Halt(f"REFUSED: {rel} at {tag} hashes {got[:12]}..., manifest says {want[:12]}...")
+        locked[rel] = {"sha256": got, "git_blob": _git(root, "rev-parse", f"{tag}:{rel}")}
+    extra = [MANIFEST_REL]
+    if subprocess.run(["git", "-C", str(root), "cat-file", "-e", f"{tag}:{DEVIATIONS_REL}"],
+                      capture_output=True).returncode == 0:
+        extra.append(DEVIATIONS_REL)
+    for rel in extra:
+        locked[rel] = {"sha256": sha256_bytes(_git_bytes(root, "show", f"{tag}:{rel}")),
+                       "git_blob": _git(root, "rev-parse", f"{tag}:{rel}")}
+    return {
+        "tag": tag,
+        "tag_object": tag_object,
+        "commit": _git(root, "rev-parse", f"{tag}^{{commit}}"),
+        "tree": _git(root, "rev-parse", f"{tag}^{{tree}}"),
+        "branch": _git(root, "rev-parse", "--abbrev-ref", "HEAD"),
+        "tagger_date": _git(root, "for-each-ref", "--format=%(taggerdate:iso-strict)", f"refs/tags/{tag}"),
+        "remote_tag_ref": remote_line,
+        "recorded_utc": datetime.now(timezone.utc).replace(microsecond=0).isoformat(),
+        "repository": _git(root, "remote", "get-url", remote),
+        "osf_deposit": osf_deposit.strip(),
+        "locked_files": locked,
+    }
+
+
+def write_anchor(osf_deposit: str, root: Path = ROOT, anchor: Optional[Path] = None,
+                 tag: str = PREREG_TAG, remote: str = "origin") -> Path:
+    anchor = anchor or (root / V121 / "anchor/git_anchor_v1_21.json")
+    if anchor.exists():
+        raise Halt(f"REFUSED: {anchor.name} already exists (the anchor is written once)")
+    rec = anchor_record(osf_deposit, root, tag, remote)
+    anchor.parent.mkdir(parents=True, exist_ok=True)
+    anchor.write_text(json.dumps(rec, indent=2) + "\n", encoding="utf-8")
+    return anchor
+
+
 def main(argv=None) -> int:
     ap = argparse.ArgumentParser(description="AIAS v1.21 scorer (DRAFT)")
     ap.add_argument("--stage", choices=("J", "C"))
@@ -1322,10 +1399,17 @@ def main(argv=None) -> int:
     ap.add_argument("--out", type=Path, default=OUT_DIR)
     ap.add_argument("--draws", type=int, help="fixtures / dry run only: perm, shuffle and bootstrap draws")
     ap.add_argument("--lock-manifest", action="store_true")
+    ap.add_argument("--write-anchor", action="store_true",
+                    help="after tag + push + OSF deposit: writes anchor/git_anchor_v1_21.json once")
+    ap.add_argument("--osf-deposit", help="--write-anchor: the OSF deposit (URL and folders)")
     a = ap.parse_args(argv)
     try:
         if a.lock_manifest:
             sys.stdout.write(lock_manifest_text())
+            return 0
+        if a.write_anchor:
+            p = write_anchor(a.osf_deposit or "")
+            print(f"[v1.21] anchor written: {p}")
             return 0
         if a.fixture:
             d = Draws(a.draws, a.draws, a.draws) if a.draws else Draws()
