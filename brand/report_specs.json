@@ -2371,6 +2371,29 @@
         "status": "current",
         "held": false,
         "note": "Tier 3 brief of the combined construct-validity paper (AIAS v0.27 and v0.28, reported together), in the brief format approved by Pablo Nov 22, 2026, 10:47 am. Coded with the first study (v0.27), as TS-BR-v1.14-r1 was; v0.28 is named in the title block. r1 beside the case study TS-CS-v0.27-r1: revisions count per report type (Pablo's default (a), in force Nov 23, 2026). Deposited beside the paper in OSF v27_28/paper/ (osf.io/ec6wh), verified by SHA-256 (API and re-download); receipt in reports/briefs/v0_27/osf_receipt.json."
+      },
+      {
+        "code": "TS-FL-v0.44-r1",
+        "type": "FL",
+        "study": "v0.44",
+        "rev": "r1",
+        "title": "Known, but not named",
+        "date": "2026-11-24",
+        "date_source": "PDF CreationDate 2026-11-24 08:29:01 CST (local build, not deposited)",
+        "tier": 1,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": "fe66ffe",
+        "repo_path": "reports/output/TS-FL-v0.44-r1_known-but-not-named.pdf",
+        "osf_path": null,
+        "osf_version": null,
+        "sha256": "eb7abe85f23ebc2e106c4e2f812cc69b326e4442dfad0c31f48efe58abea3490",
+        "sha256_source": "local build at fe66ffe (reports/build_report_v44_r1.py on branch v0.44-report, cover v0.44_clothing-department-stores.png)",
+        "website": null,
+        "status": "current",
+        "draft": true,
+        "held": false,
+        "note": "DRAFT (status current = the latest FL revision of v0.44, as the register's tests require; draft = not yet published) Tier 1 flagship report of the v0.44 industry-breadth wave (paper v0_44_paper.pdf, 22 pp), in report design system v2 like TS-FL-v0.40-r1. Row 32 review gate of 2026-11-24 (reviews/v0.44-report/2026-11-24.md; open items NP1-NP4 for Pablo). Not deposited on OSF, not on the website. Any rebuild changes the SHA-256 (CreationDate): remove this entry before rebuilding and re-register the new PDF."
       }
     ]
   }
