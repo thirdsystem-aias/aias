@@ -576,6 +576,146 @@ class TestPinsAndOrder(unittest.TestCase):
 
 
 
+def _git_t(cwd, *args):
+    import subprocess
+    subprocess.run(["git", "-c", "user.name=t", "-c", "user.email=t@t", "-c", "init.defaultBranch=main",
+                    "-c", "tag.gpgSign=false", "-c", "commit.gpgSign=false", *args],
+                   cwd=cwd, check=True, capture_output=True)
+
+
+class TestU0Misses(unittest.TestCase):
+    """n_named (H6_t5) takes U0's extraction misses; U0's record is required at t5 (no default of 0)."""
+
+    def _u0(self, d, misses, sha="abc", per_set=None):
+        (d / "prereg").mkdir(parents=True, exist_ok=True)
+        doc = {"units_file": {"path": "units_v1_21.csv", "sha256": sha}, "extraction_misses": misses}
+        if per_set is not None:
+            doc["per_set"] = per_set
+        (d / T.U0_T5_REL).write_text(json.dumps(doc))
+
+    def test_misses_counted_per_unit_and_zero_explicit(self):
+        d = Path(tempfile.mkdtemp(prefix="v121_u0_"))
+        self._u0(d, [{"set": "F t5 v0.19", "answer_id": "a1", "brand": "A"},
+                     {"set": "F t5 v0.19", "answer_id": "a2", "brand": "A"},
+                     {"set": "F t5 v0.20", "answer_id": "a3", "brand": "B"}],
+                 per_set={"F t5 v0.19": {"mentions": 100, "misses": 2}, "F t5 v0.20": {"mentions": 100, "misses": 1}})
+        r = T.load_u0_misses(d, "abc")
+        self.assertEqual(r["by_unit"], {"v0.19|A": 2, "v0.20|B": 1})
+        self.assertEqual(r["n_misses"], 3)
+        self.assertEqual(T.misses_from_stage_j({"t5_u0": r}), {("v0.19", "A"): 2, ("v0.20", "B"): 1})
+        self._u0(d, [])
+        self.assertEqual(T.load_u0_misses(d, "abc")["n_misses"], 0)
+
+    def test_refusals(self):
+        d = Path(tempfile.mkdtemp(prefix="v121_u0_"))
+        with self.assertRaisesRegex(T.Halt, "missing"):
+            T.load_u0_misses(d, "abc")
+        self._u0(d, [], sha="other")
+        with self.assertRaisesRegex(T.Halt, "another unit table"):
+            T.load_u0_misses(d, "abc")
+        (d / T.U0_T5_REL).write_text(json.dumps({"units_file": {"sha256": "abc"}}))
+        with self.assertRaisesRegex(T.Halt, "no extraction_misses"):
+            T.load_u0_misses(d, "abc")
+        self._u0(d, [{"set": "F t4 v0.19", "answer_id": "a1", "brand": "A"}])
+        with self.assertRaises(T.Halt):
+            T.load_u0_misses(d, "abc")
+        self._u0(d, [], per_set={"F t5 v0.19": {"mentions": 100, "misses": 6}})
+        with self.assertRaisesRegex(T.Halt, "above 5%"):
+            T.load_u0_misses(d, "abc")
+        with self.assertRaisesRegex(T.Halt, "no t5 U0 record"):
+            T.misses_from_stage_j({})
+
+    def test_misses_enter_n_named(self):
+        _, rows, _, _ = T.read_fixture(FX / "two_cats")
+        w5 = T.Wave("t5", rows["t5"])
+        k = (w5.rows[0]["category"], w5.rows[0]["brand"])
+        base = T.n_named_t5(w5)
+        self.assertEqual(T.n_named_t5(w5, {k: 2})[k], base[k] + 2)
+
+    def test_stage_c_passes_u0_misses(self):
+        """run_stage_c (lock, pins and P mocked) feeds Stage J's U0 misses into n_named and refuses without them."""
+        meta, rows, P, C = T.read_fixture(FX / "two_cats")
+        k = (rows["t5"][0]["category"], rows["t5"][0]["brand"])
+        for with_u0 in (True, False):
+            out = Path(tempfile.mkdtemp(prefix="v121_c_"))
+            extra = {"t5_u0": {"by_unit": {f"{k[0]}|{k[1]}": 3}, "n_misses": 3}} if with_u0 else {}
+            T.write_stage_j(out, rows, lambda ws: T.stage_j_core(ws, meta["roles"], D, extra))
+            seen = {}
+            real = T.stage_c_core
+
+            def spy(*a, **kw):
+                seen["misses"] = kw.get("misses")
+                return real(*a, **dict(kw, sensitivities=False))
+
+            with mock.patch.object(T, "tag_exists", return_value=True), \
+                    mock.patch.object(T, "verify_code_pins", return_value={}), \
+                    mock.patch.object(T, "v45_pins", return_value={"files": {}}), \
+                    mock.patch.object(T, "presence_t4", return_value=(P["t4"], C["t4"], "h4")), \
+                    mock.patch.object(T, "presence_t5", return_value=(P["t5"], C["t5"], "h5")), \
+                    mock.patch.object(T, "v120_h2", return_value=None), \
+                    mock.patch.object(T, "stage_c_core", side_effect=spy):
+                if with_u0:
+                    doc = T.run_stage_c(out, out / "s1.json", out / "p.csv", D, log=lambda *_: None)
+                    self.assertEqual(seen["misses"], {k: 3})
+                    self.assertEqual(doc["inputs"]["t5_u0_misses"]["n_misses"], 3)
+                else:
+                    with self.assertRaisesRegex(T.Halt, "no t5 U0 record"):
+                        T.run_stage_c(out, out / "s1.json", out / "p.csv", D, log=lambda *_: None)
+
+
+class TestV45Pins(unittest.TestCase):
+    """Section 9, Pins: v0.45's raw record (blob at v0.45-acquisition-locked), coded tables and scored unit table."""
+
+    def setUp(self):
+        self.tmp = Path(tempfile.mkdtemp(prefix="v121_v45_"))
+        self.repo = self.tmp / "v45"
+        _git_t(self.tmp, "init", str(self.repo))
+        raw = self.repo / T.V45_RAW_REL
+        raw.parent.mkdir(parents=True)
+        raw.write_text('{"id": 1}\n')
+        _git_t(self.repo, "add", "-A")
+        _git_t(self.repo, "commit", "-m", "acq")
+        _git_t(self.repo, "tag", "-a", T.V45_ACQ_TAG, "-m", "acq")
+        for rel in T.V45_CODED_REL:
+            p = self.repo / rel
+            p.parent.mkdir(parents=True, exist_ok=True)
+            p.write_text("substrate,brand\n")
+        (self.repo / T.V45_TABLE_REL).write_text("substrate,brand,P_t5_S0\n")
+        _git_t(self.repo, "add", "-A")
+        _git_t(self.repo, "commit", "-m", "coded and scored")
+        self.table = self.repo / T.V45_TABLE_REL
+
+    def tearDown(self):
+        shutil.rmtree(self.tmp, ignore_errors=True)
+
+    def test_records_every_file(self):
+        r = T.v45_pins(self.table)
+        self.assertEqual(set(r["files"]), {T.V45_RAW_REL, T.V45_TABLE_REL, *T.V45_CODED_REL})
+        self.assertEqual(len(r["files"]), 12)
+        self.assertEqual(r["files"][T.V45_RAW_REL]["sha256"], T.sha256_bytes(b'{"id": 1}\n'))
+        self.assertEqual(r["files"][T.V45_RAW_REL]["tag"], T.V45_ACQ_TAG)
+
+    def test_uncommitted_change_halts(self):
+        (self.repo / T.V45_CODED_REL[3]).write_text("changed\n")
+        with self.assertRaisesRegex(T.Halt, "committed at HEAD"):
+            T.v45_pins(self.table)
+
+    def test_missing_coded_file_halts(self):
+        (self.repo / T.V45_CODED_REL[0]).unlink()
+        with self.assertRaisesRegex(T.Halt, "missing v0.45 file"):
+            T.v45_pins(self.table)
+
+    def test_raw_changed_after_acquisition_tag_halts(self):
+        (self.repo / T.V45_RAW_REL).write_text('{"id": 2}\n')
+        _git_t(self.repo, "commit", "-am", "edit raw")
+        with self.assertRaisesRegex(T.Halt, "at tag"):
+            T.v45_pins(self.table)
+
+    def test_presence_path_must_be_v45_table(self):
+        with self.assertRaisesRegex(T.Halt, "must be"):
+            T.v45_pins(self.tmp / "elsewhere.csv")
+
+
 class TestWriteAnchor(unittest.TestCase):
     """--write-anchor on a throwaway repository with a bare remote (no network)."""
 

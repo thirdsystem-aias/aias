@@ -652,7 +652,9 @@ def h7_t5(w5: Wave, j1_model: str, excl=frozenset(), role1: str = "J1", role2: s
 def n_named_t5(w5: Wave, misses: Optional[Dict[Tuple[str, str], int]] = None) -> Dict[Tuple[str, str], float]:
     """n_named (H6_t5, MQ6): t5 S0 answers naming the brand. READING (6, H6): the certified record's count,
     i.e. answers with a window for the brand in the t5 unit table (every judged window, any outcome) plus the
-    U0 extraction misses for that brand when supplied (v1.11 counts named answers from the certified record)."""
+    U0 extraction misses for that brand (v1.11 counts named answers from the certified record). The real Stage C
+    always passes the misses from U0's record (prereg/u0_v1_21.json, via Stage J; it refuses without it); the
+    synthetic fixtures have no U0 record and pass none."""
     acc: Dict[tuple, set] = defaultdict(set)
     for r in w5.rows:
         acc[(r["category"], r["brand"])].add(r["answer_id"])
@@ -1088,6 +1090,92 @@ def load_wave_dir(d: Path, wave: str) -> Tuple[List[dict], Dict[str, str], dict]
     return rows, frozen["roles"], info
 
 
+# U0's record of the t5 unit build (sections 4.2, 6 H6_t5): v1.11 / v1.15's u0 format, written by U0 whether or not
+# there are misses. Its `extraction_misses` list ({set, answer_id, brand}; set "F t5 <category>") is the certified
+# record's part of n_named that has no window; an empty list records 0 misses explicitly. A missing file, a missing
+# list or a units_file hash that is not the unit table's refuses (no default of 0 misses).
+U0_T5_REL = "prereg/u0_v1_21.json"
+
+
+def load_u0_misses(t5_dir: Path, units_sha256: str, wave: str = "t5") -> dict:
+    p = Path(t5_dir) / U0_T5_REL
+    if not p.exists():
+        raise Halt(f"{wave}: missing {U0_T5_REL} (U0's record; its extraction_misses enter n_named, section 6)")
+    u0 = json.loads(p.read_text(encoding="utf-8"))
+    if not isinstance(u0.get("extraction_misses"), list):
+        raise Halt(f"{wave}: {U0_T5_REL} has no extraction_misses list")
+    if (u0.get("units_file") or {}).get("sha256") != units_sha256:
+        raise Halt(f"{wave}: {U0_T5_REL} names another unit table (units_file.sha256)")
+    by_unit: Counter = Counter()
+    for m in u0["extraction_misses"]:
+        parts = str(m.get("set", "")).split()
+        if len(parts) != 3 or parts[0] != "F" or parts[1] != wave or not m.get("brand"):
+            raise Halt(f"{wave}: extraction miss not of an F {wave} set: {m}")
+        by_unit[f"{parts[2]}|{m['brand']}"] += 1
+    per = {}
+    for s, r in (u0.get("per_set") or {}).items():
+        if s.startswith(f"F {wave} ") and "mentions" in r and "misses" in r:
+            per[s.split()[2]] = (int(r["mentions"]), int(r["misses"]))
+    chk = u0_miss_check({c: v[0] for c, v in per.items()}, {c: v[1] for c, v in per.items()}) if per else None
+    if chk and chk["halt"]:
+        raise Halt(f"U0: extraction misses above 5% in {chk['halt']} (section 9)")
+    return {"file": U0_T5_REL, "sha256": sha256_file(p), "n_misses": int(sum(by_unit.values())),
+            "by_unit": dict(sorted(by_unit.items())), "u0_check": chk}
+
+
+def misses_from_stage_j(sj: dict) -> Dict[Tuple[str, str], int]:
+    """Stage C: the U0 misses as Stage J recorded them (refuses if Stage J has no U0 record)."""
+    u0 = sj.get("t5_u0")
+    if not isinstance(u0, dict) or "by_unit" not in u0:
+        raise Halt("Stage J holds no t5 U0 record (t5_u0): n_named cannot be counted (section 6, H6_t5)")
+    return {tuple(k.split("|", 1)): int(n) for k, n in u0["by_unit"].items()}
+
+
+# v0.45's files (section 9, Pins): its raw record, its coded Phase A / B tables (v0.42's coder format) and its scored
+# unit table (the t5 P and C* source), all in the v0.45 checkout that holds the scored table.
+V45_TABLE_REL = "osf/v45/v45_unit_table.csv"
+V45_RAW_REL = "osf/v45/data/t5_raw.jsonl"
+V45_CODED_REL = tuple(f"osf/v45/data/coded/{s}_phase_{p}.csv" for s in ("v19", "v20", "v21", "v22", "v23")
+                      for p in ("a", "b"))
+V45_ACQ_TAG = "v0.45-acquisition-locked"
+
+
+def v45_pins(t5_presence: Path) -> dict:
+    """Section 9, Pins, for v0.45's inputs: each file exists, its SHA-256 and git blob are recorded, and its blob is
+    the one committed at the checkout's HEAD (no uncommitted change); the raw record's blob is also the one at tag
+    v0.45-acquisition-locked. Any failure halts before P or C* is read."""
+    tp = Path(t5_presence).resolve()
+    if not tp.as_posix().endswith("/" + V45_TABLE_REL):
+        raise Halt(f"Pins: --t5-presence must be <v0.45 checkout>/{V45_TABLE_REL}")
+    root = tp.parents[2]
+
+    def rev(spec: str) -> Optional[str]:
+        r = subprocess.run(["git", "-C", str(root), "rev-parse", "-q", "--verify", spec], capture_output=True, text=True)
+        return r.stdout.strip() if r.returncode == 0 else None
+
+    head = rev("HEAD")
+    if head is None:
+        raise Halt(f"Pins: {root} is not a git checkout")
+    files = {}
+    for rel in (V45_RAW_REL,) + V45_CODED_REL + (V45_TABLE_REL,):
+        p = root / rel
+        if not p.exists():
+            raise Halt(f"Pins: missing v0.45 file {rel}")
+        data = p.read_bytes()
+        blob = _git_blob_sha1(data)
+        committed = rev(f"HEAD:{rel}")
+        if committed != blob:
+            raise Halt(f"Pins: {rel} is not the blob committed at HEAD of {root}")
+        rec = {"sha256": sha256_bytes(data), "git_blob": blob}
+        if rel == V45_RAW_REL:
+            at_tag = rev(f"{V45_ACQ_TAG}:{rel}")
+            if at_tag != blob:
+                raise Halt(f"Pins: {rel} is not the blob at tag {V45_ACQ_TAG}")
+            rec["tag"] = V45_ACQ_TAG
+        files[rel] = rec
+    return {"checkout": str(root), "head": head, "files": files}
+
+
 def presence_t4(stage1: Path) -> Tuple[dict, dict, str]:
     """t4 P_S0 and C*_S0: v1.14 Stage 1's units[] (section 4.3), pinned."""
     h = sha256_file(stage1)
@@ -1171,9 +1259,10 @@ def run_stage_j(out: Path, t4_dir: Path, t5_dir: Path, draws: Draws, log=print) 
     pins = verify_code_pins()
     r4, roles4, i4 = load_wave_dir(t4_dir, "t4")
     r5, roles5, i5 = load_wave_dir(t5_dir, "t5")
+    u0 = load_u0_misses(t5_dir, i5["units_sha256"])          # section 4.2: U0's record, required (n_named, H6_t5)
     doc = write_stage_j(out, {"t4": r4, "t5": r5},
                         lambda ws: stage_j_core(ws, roles5, draws, {"roles_t4": roles4, "pins": pins,
-                                                                    "inputs": {"t4": i4, "t5": i5}}))
+                                                                    "inputs": {"t4": i4, "t5": i5}, "t5_u0": u0}))
     log(f"[v1.21] Stage J: H1_t5 {doc['H1_t5_Judge_Agreement']['verdict']}")
     return doc
 
@@ -1186,15 +1275,19 @@ def run_stage_c(out: Path, t4_stage1: Path, t5_presence: Path, draws: Draws, ran
         raise Halt("REFUSED: Stage C has run once already")
     verify_code_pins()
     sj, waves = read_stage_j(out)
+    misses = misses_from_stage_j(sj)             # U0's extraction misses enter n_named (section 6, H6_t5)
+    pins45 = v45_pins(t5_presence)               # section 9, Pins: v0.45's raw, coded and scored files
     P4, C4, h4 = presence_t4(t4_stage1)          # first read of P and C* (section 4.3, opening order)
     P5, C5, h5 = presence_t5(t5_presence)
     R5 = None
     if rank_t5 is not None:
         R5 = {(r["category"], r["brand"]): float(r["R_star"]) for r in _read_csv(rank_t5) if r.get("R_star")}
     doc = stage_c_core(waves, {"t4": P4, "t5": P5}, {"t4": C4, "t5": C5}, sj["roles"], draws, sj,
-                       rank_t5=R5, v120_h2=v120_h2())
+                       misses=misses, rank_t5=R5, v120_h2=v120_h2())
     doc["inputs"] = {"stage_j_sha256": sha256_file(out / STAGE_J_NAME), "t4_stage1_sha256": h4,
-                     "t5_presence_sha256": h5, "t5_rank_table": str(rank_t5) if rank_t5 else None}
+                     "t5_presence_sha256": h5, "t5_rank_table": str(rank_t5) if rank_t5 else None,
+                     "v45_pins": pins45,
+                     "t5_u0_misses": {"n_misses": sum(misses.values()), "units_with_misses": len(misses)}}
     _write_json(out / VERDICTS_NAME, doc)
     _write_json(out / VALUES_NAME, flatten_values(_clean(doc)))
     log(f"[v1.21] Stage C: {doc['VERDICTS']} GATE {doc['GATE']}")
@@ -1393,7 +1486,8 @@ def main(argv=None) -> int:
     ap.add_argument("--t4-dir", type=Path, help="Stage J: v1.15's study folder (osf/methodology/v1_15 of a v1.15 worktree)")
     ap.add_argument("--t5-dir", type=Path, help="Stage J: v1.21's t5 U0 + judge-record folder")
     ap.add_argument("--t4-stage1", type=Path, help="Stage C: osf/methodology/v1_14/outputs/stage1/stage1_v1_14.json")
-    ap.add_argument("--t5-presence", type=Path, help="Stage C: osf/v45/v45_unit_table.csv")
+    ap.add_argument("--t5-presence", type=Path, help="Stage C: <v0.45 checkout>/osf/v45/v45_unit_table.csv (its raw "
+                    "record and coded tables in the same checkout are pinned, section 9)")
     ap.add_argument("--t5-rank", type=Path, help="Stage C, optional: v1.14 Stage 2's t5 table (category, brand, R_star)")
     ap.add_argument("--exploratory", action="store_true")
     ap.add_argument("--fixture", type=Path)
