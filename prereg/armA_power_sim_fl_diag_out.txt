@@ -1,0 +1,11 @@
+seed=20261124 reps=10000 perms=2000; FL with pooled reduced model R ~ Gs
+scenario                               version             P(p<.025)  P(p<.05)  mean_partial
+base                                   within-group ranks     0.0352    0.0651         0.035
+base                                   latent, centred        0.0279    0.0529        -0.004
+weak size link                         within-group ranks     0.0278    0.0537         0.013
+weak size link                         latent, centred        0.0248    0.0509         0.001
+strong size link                       within-group ranks     0.0561    0.0954         0.076
+strong size link                       latent, centred        0.0242    0.0513        -0.001
+size drives all three (very strong)    within-group ranks     0.0865    0.1404         0.121
+size drives all three (very strong)    latent, centred        0.0257    0.0528        -0.003
+[runtime 27.6 s]

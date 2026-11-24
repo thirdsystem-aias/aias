@@ -21,6 +21,11 @@ The within-category permutation null of a rank statistic without ties does
 not depend on the data, so H_A1/H_A5/H_A7 use one precomputed null.
 Simulation seed 20261124 (deliberately not in the 610001+ range proposed for
 the analysis).
+
+r2 (2026-11-24): adds the Freedman-Lane version of H_A2 (Pablo, Tue 11/24 7:29 am CT,
+"ok Freedman-Lane"); see fl_null / fl_section. Usage: armA_power_sim.py [REPS] [FL_NULL_REPS]
+[FL_POWER_REPS]; r2 output: armA_power_sim_out_r2.txt (run with 16000 20000 4000).
+The r1 sections run first on the same stream, so their rows match armA_power_sim_out.txt.
 """
 import sys, time
 import numpy as np
@@ -107,6 +112,84 @@ def within_group_perms(rng, k, groups):
     return np.concatenate(idx, axis=1)
 
 
+def fl_null(rn, sn, gn, idx, groups, slopes="pooled"):
+    """Freedman-Lane null of the H_A2 statistic (r2, Pablo 2026-11-24 7:29 am CT).
+    Reduced model R ~ Gs on the within-group normalised ranks: 'pooled' = one intercept and one slope (the
+    model the partial correlation itself conditions on; group means of normalised ranks are equal by
+    construction); 'group' = intercept and slope per competitive group (sensitivity). Residuals of the
+    reduced model are permuted within group (idx), added back to the fitted values, and the same statistic
+    (partial correlation of R with S given Gs) is recomputed on each permuted R*. R* is not re-ranked."""
+    n = len(rn)
+    if slopes == "pooled":
+        X = np.column_stack([np.ones(n), gn])
+    else:
+        cols, i = [], 0
+        for g in groups:
+            d = np.zeros(n); d[i:i + g] = 1.0
+            cols += [d, d * gn]; i += g
+        X = np.column_stack(cols)
+    beta, *_ = np.linalg.lstsq(X, rn, rcond=None)
+    fit = X @ beta
+    res = rn - fit
+    rstar = fit[None, :] + res[idx]
+    return partial_r(rstar, sn[None, :], gn[None, :])
+
+
+def pval_perm(obs, nul):
+    if np.isnan(obs):
+        return np.nan
+    return (np.sum(nul >= obs - 1e-12) + 1) / (nul.shape[-1] + 1)
+
+
+def fl_section(rng, t0):
+    """r2 addition: size of the r1 within-group test and of Freedman-Lane, on the SAME simulated data and the
+    SAME within-group permutation indices (paired), under every null scenario; then FL power."""
+    n = sum(GROUPS)
+    null_reps = int(sys.argv[2]) if len(sys.argv) > 2 else 20000
+    pow_reps = int(sys.argv[3]) if len(sys.argv) > 3 else 4000
+    scen = [(0.6, 0.5, "base"), (0.3, 0.3, "weak size link"), (0.8, 0.7, "strong size link"),
+            (0.9, 0.85, "size drives all three (very strong)")]
+    print(f"\n=== r2: H_A2 Freedman-Lane (FL) vs r1 within-group permutation (WG); null reps={null_reps}, "
+          f"perms={PERMS_A2}, paired data and permutation indices ===")
+    print("FL = reduced model R ~ Gs (one intercept, one slope); FLg = intercept and slope per group (sensitivity)")
+    print("Size under H0 (true partial 0). MC SE at .025 with 20,000 reps ~ 0.0011; at .05 ~ 0.0015")
+    print("scenario                               test  P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial  undefined")
+    for rgs, rrg, lab in scen:
+        p_wg, p_fl, p_flg, ests = (np.empty(null_reps) for _ in range(4))
+        for i in range(null_reps):
+            r, s, g = gen_a2(rng, n, 0.0, rgs, rrg)
+            rn, sn, gn = norm_ranks(r, GROUPS), norm_ranks(s, GROUPS), norm_ranks(g, GROUPS)
+            obs = partial_r(rn, sn, gn)
+            idx = within_group_perms(rng, PERMS_A2, GROUPS)
+            p_wg[i] = pval_perm(obs, partial_r(rn[idx], sn[None, :], gn[None, :]))
+            p_fl[i] = pval_perm(obs, fl_null(rn, sn, gn, idx, GROUPS, "pooled"))
+            p_flg[i] = pval_perm(obs, fl_null(rn, sn, gn, idx, GROUPS, "group"))
+            ests[i] = obs
+        big = ests >= 0.30
+        for nm, ps in (("WG", p_wg), ("FL", p_fl), ("FLg", p_flg)):
+            print(f"{lab:37s}  {nm:4s}  {np.mean(ps<.025):9.4f}  {np.mean(ps<.05):8.4f}"
+                  f"  {np.mean((ps<.025)&big):14.4f}  {np.mean((ps<.05)&big):13.4f}  {np.nanmean(ests):12.3f}"
+                  f"  {int(np.isnan(ests).sum())}")
+        sys.stdout.flush()
+    print(f"[FL size runtime {time.time() - t0:.1f} s]")
+    print(f"\nH_A2 power with FL (pooled reduced model; reps={pow_reps})")
+    print("scenario                               rho_p  P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial")
+    for rgs, rrg, lab in scen:
+        for e in EFFECTS[1:]:
+            ps, ests = np.empty(pow_reps), np.empty(pow_reps)
+            for i in range(pow_reps):
+                r, s, g = gen_a2(rng, n, e, rgs, rrg)
+                rn, sn, gn = norm_ranks(r, GROUPS), norm_ranks(s, GROUPS), norm_ranks(g, GROUPS)
+                obs = partial_r(rn, sn, gn)
+                idx = within_group_perms(rng, PERMS_A2, GROUPS)
+                ps[i] = pval_perm(obs, fl_null(rn, sn, gn, idx, GROUPS, "pooled"))
+                ests[i] = obs
+            big = ests >= 0.30
+            print(f"{lab:37s}  {e:5.2f}  {np.mean(ps<.025):9.3f}  {np.mean(ps<.05):8.3f}"
+                  f"  {np.mean((ps<.025)&big):14.3f}  {np.mean((ps<.05)&big):13.3f}  {np.nanmean(ests):12.3f}")
+            sys.stdout.flush()
+
+
 def main():
     t0 = time.time()
     rng = np.random.default_rng(SEED)
@@ -158,6 +241,9 @@ def main():
                   f"  {np.mean((ps<.025)&big):14.3f}  {np.mean((ps<.05)&big):13.3f}  {np.nanmean(ests):12.3f}"
                   f"  undefined={int(np.isnan(ests).sum())}")
             sys.stdout.flush()
+    print(f"\n[r1 sections runtime {time.time() - t0:.1f} s]")
+    # r2: continues the same seeded stream after the r1 sections, so the r1 rows above reproduce unchanged
+    fl_section(rng, t0)
     print(f"\n[total runtime {time.time() - t0:.1f} s]")
 
 
