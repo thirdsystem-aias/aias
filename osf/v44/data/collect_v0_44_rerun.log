@@ -1,0 +1,8 @@
+prereg guard passed: v0.44-prereg-r1 -> 56c879b9f18af28a37be1c8224c84d5b5b9ddd3b; anchor /Users/pablou/aias/_worktrees/v0.44/osf/v44/anchor/osf_anchor_v0_44.json
+window ok: inside the window 2026-11-24..2026-11-28 US Central; deadline 2026-11-27T06:08:51.153589+00:00
+909 specs, 906 already done; budget {'actual_calls_usd': 9.7662, 'judge_reserve_usd': 0.0, 'spent_usd': 9.7662, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'approved_drop_run3': False, 'halted': None, 'halt_reason': None}
+block 4 ('A', 'S0', 1): 3 calls to send; {'actual_calls_usd': 9.7662, 'judge_reserve_usd': 0.0, 'spent_usd': 9.7662, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'approved_drop_run3': False, 'halted': None, 'halt_reason': None}
+  HOT|A|HOT_A_HOT03|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  HOT|A|HOT_A_HOT04|gemini-4-argon|S0|1 ok out=6 fr=FinishReason.STOP $0.0002
+  HOT|A|HOT_A_HOT05|gemini-4-argon|S0|1 ok out=5 fr=FinishReason.STOP $0.0001
+result: done {'actual_calls_usd': 9.7666, 'judge_reserve_usd': 0.0, 'spent_usd': 9.7666, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': False, 'approved_drop_run3': False, 'halted': None, 'halt_reason': None}
