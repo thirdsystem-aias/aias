@@ -1,0 +1,254 @@
+{
+ "_meta": {
+  "inputs": {
+   "osf/v44/v44_verdicts.json": "65ccc4933bc7bfa1b433f9ed2f6298855a79e269fdd0f18436f35f51983e1b62",
+   "osf/v44/v44_unit_table.csv": "ed51d2d3b350af4d88a9d5acc9b53743f411176de5fbeb33c8745f07ab68fb8d",
+   "papers/v0_44/v44_values.json": "328733ee84f250a7d3bc543c36af7bfae4c4f563a7982483ebb32214c356019c",
+   "osf/v44/scripts/score_v0_44.py": "ba1435ace27b07aacd7b8572294abf5ba7e243b1df791b8f31871ecfe5667b9b"
+  },
+  "script": "reports/v44_report_values.py"
+ },
+ "values": {
+  "rv.models.n": {
+   "value": 3,
+   "display": "three",
+   "source": "osf/v44/v44_verdicts.json:design.models_used (count)"
+  },
+  "rv.models.names": {
+   "value": [
+    "Claude Fable 5.2",
+    "GPT-6 Astra",
+    "Gemini 4 Argon"
+   ],
+   "display": "Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon",
+   "source": "osf/v44/v44_verdicts.json:design.models_used (display names)"
+  },
+  "rv.runs.n": {
+   "value": 3,
+   "display": "three",
+   "source": "osf/v44/v44_verdicts.json:design.runs_b (count)"
+  },
+  "rv.industries.n": {
+   "value": 8,
+   "display": "eight",
+   "source": "osf/v44/v44_verdicts.json:design.industries (count)"
+  },
+  "rv.questions_per_industry": {
+   "value": 6,
+   "display": "six",
+   "source": "osf/v44/v44_verdicts.json:design.expected.B / (industries x runs_b)"
+  },
+  "rv.tests.n": {
+   "value": 3,
+   "display": "three",
+   "source": "osf/v44/v44_verdicts.json:verdicts (count of primary tests)"
+  },
+  "rv.calls.B": {
+   "value": 432,
+   "display": "432",
+   "source": "osf/v44/v44_verdicts.json:design.expected.B x models"
+  },
+  "rv.calls.A": {
+   "value": 477,
+   "display": "477",
+   "source": "osf/v44/v44_verdicts.json:design.expected.A x models"
+  },
+  "rv.collection_date": {
+   "value": "2026-11-24",
+   "display": "24 November 2026",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.first_call_utc (date)"
+  },
+  "rv.collection_month": {
+   "value": "2026-11",
+   "display": "November 2026",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.first_call_utc (month)"
+  },
+  "rv.tier.S_gt_C": {
+   "value": [
+    "QSR"
+   ],
+   "display": "fast-food chains",
+   "source": "papers/v0_44/v44_values.json: industries with H_Tier.mean.<ind>.S > H_Tier.mean.<ind>.C"
+  },
+  "rv.tier.n.L": {
+   "value": 48,
+   "display": "48",
+   "source": "osf/v44/v44_unit_table.csv: rows with tier == L"
+  },
+  "rv.tier.n.C": {
+   "value": 64,
+   "display": "64",
+   "source": "osf/v44/v44_unit_table.csv: rows with tier == C"
+  },
+  "rv.tier.n.S": {
+   "value": 44,
+   "display": "44",
+   "source": "osf/v44/v44_unit_table.csv: rows with tier == S"
+  },
+  "rv.tier.n.G": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v44/v44_unit_table.csv: rows with tier == G"
+  },
+  "rv.rank.L.min": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v44/v44_unit_table.csv: min eligible_rank of tier L"
+  },
+  "rv.rank.L.max": {
+   "value": 6,
+   "display": "6",
+   "source": "osf/v44/v44_unit_table.csv: max eligible_rank of tier L"
+  },
+  "rv.rank.C.min": {
+   "value": 7,
+   "display": "7",
+   "source": "osf/v44/v44_unit_table.csv: min eligible_rank of tier C"
+  },
+  "rv.rank.C.max": {
+   "value": 14,
+   "display": "14",
+   "source": "osf/v44/v44_unit_table.csv: max eligible_rank of tier C"
+  },
+  "rv.gap.share.L": {
+   "value": 0.020833333333333332,
+   "display": "2%",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.L / osf/v44/v44_unit_table.csv tier count"
+  },
+  "rv.gap.share.C": {
+   "value": 0.1875,
+   "display": "19%",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.C / osf/v44/v44_unit_table.csv tier count"
+  },
+  "rv.gap.share.S": {
+   "value": 0.5,
+   "display": "50%",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.S / osf/v44/v44_unit_table.csv tier count"
+  },
+  "rv.gap.share.G": {
+   "value": 0.3333333333333333,
+   "display": "33%",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.G / osf/v44/v44_unit_table.csv tier count"
+  },
+  "rv.pi0.n": {
+   "value": 38,
+   "display": "38",
+   "source": "osf/v44/v44_unit_table.csv: rows with pi_hat == 0"
+  },
+  "rv.agree.min": {
+   "value": 0.8575336701560996,
+   "display": "0.858",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.*.rho_pw (min)"
+  },
+  "rv.agree.max": {
+   "value": 0.9246611690910778,
+   "display": "0.925",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.*.rho_pw (max)"
+  },
+  "rv.agree.min_pair": {
+   "value": "gpt-6-astra~gemini-4-argon",
+   "display": "GPT-6 Astra with Gemini 4 Argon",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement (pair with the lowest rho_pw)"
+  },
+  "rv.rel1.min": {
+   "value": 0.9485949388497752,
+   "display": "0.949",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.*.rel1 (min)"
+  },
+  "rv.rel1.max": {
+   "value": 0.9623046954244067,
+   "display": "0.962",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.*.rel1 (max)"
+  },
+  "rv.d6.GRO.TraderJoes": {
+   "value": 43,
+   "display": "43",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.GRO.top10['Trader Joe's']"
+  },
+  "rv.d6.GRO.Costco": {
+   "value": 37,
+   "display": "37",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.GRO.top10['Costco']"
+  },
+  "rv.d6.CVF.Buceees": {
+   "value": 39,
+   "display": "39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.CVF.top10['Buc-ee's']"
+  },
+  "rv.d6.QSR.RaisingCanes": {
+   "value": 26,
+   "display": "26",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.QSR.top10['Raising Cane's']"
+  },
+  "rv.d6.distinct_min": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.*.distinct (min)"
+  },
+  "rv.d6.distinct_max": {
+   "value": 202,
+   "display": "202",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.*.distinct (max)"
+  },
+  "rv.threshold.spread_sd": {
+   "value": 0.15,
+   "display": "0.15",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant SPREAD_SD"
+  },
+  "rv.threshold.tier_conf": {
+   "value": 0.4,
+   "display": "0.40",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant TIER_CONF"
+  },
+  "rv.threshold.tier_fals": {
+   "value": 0.2,
+   "display": "0.20",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant TIER_FALS"
+  },
+  "rv.threshold.alpha": {
+   "value": 0.05,
+   "display": "0.05",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant ALPHA"
+  },
+  "rv.threshold.sep_max": {
+   "value": 0.5,
+   "display": "0.50",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant SEP_MAX"
+  },
+  "rv.threshold.sep_ci": {
+   "value": 0.7,
+   "display": "0.70",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant SEP_CI"
+  },
+  "rv.threshold.sep_floor": {
+   "value": 40,
+   "display": "40",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant SEP_N_FLOOR"
+  },
+  "rv.threshold.complete_share": {
+   "value": 0.98,
+   "display": "98%",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant COMPLETE_SHARE"
+  },
+  "rv.threshold.rated_floor": {
+   "value": 0.16666666666666666,
+   "display": "1 in 6",
+   "source": "osf/v44/scripts/score_v0_44.py: module constant RATED_FLOOR"
+  },
+  "rv.threshold.spread_confirm": {
+   "value": 6,
+   "display": "6",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.thresholds.confirmed_at_least"
+  },
+  "rv.threshold.spread_falsify": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.thresholds.falsified_at_most"
+  },
+  "rv.budget.cap": {
+   "value": 100.0,
+   "display": "$100",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Budget.cap_usd"
+  }
+ }
+}
