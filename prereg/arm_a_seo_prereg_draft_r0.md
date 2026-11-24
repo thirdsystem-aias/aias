@@ -120,7 +120,7 @@ Eligible = brand-master IDs in the category, not `alternate_only`, status not cl
 **Planned pull (domains):** priority 1: 19; priority 2: 86 unique (88 brand units); priority 3: up to 91; priority 4: up to 70; up to 10 extra US-site domains (§3.3) → **up to 276 domains**. Priority 3 and 4 counts are eligible brand IDs; the domain count falls where rule R1 finds no domain (closed banks and airlines are likely), TO CONFIRM after resolution.
 
 **Not pulled (default; open decision D3):**
-- Technology brands (CAT-1020, v0.28, 24 IDs): excluded under the COI rule. The list includes Apple and Google (phones), Whirlpool (appliances), Corning (displays) and Lam Research (semiconductors), all Samsung categories, and the category has no common sales measure.
+- Technology brands (CAT-1020, v0.28, 24 IDs): excluded under the COI rule. The list includes Apple and Google (phones), Whirlpool (appliances), Corning (displays) and Lam Research (semiconductors), categories covered by the conflict-of-interest screen (Declarations §COI), and the category has no common sales measure.
 - Fragrance (24), home coffee roasters (30), commercial coffee roasters (36), premium tea (31), premium olive oil (20), household goods retail (21), premium cookware (4 eligible): outside the $50 after priorities 1–4. Fragrance carries the Ellis Brooklyn COI note and cookware the Hestan note; neither is pulled.
 - The eight v0.44 industries (registered; collection starts 2026-11-24 00:05 US Central): not measured at lock. Candidates for a later arm.
 
@@ -234,7 +234,7 @@ Priority 1 (cars) → priority 2 (spirits, headphones, skincare, cosmetics) → 
 ### §6.5 COI screen (pre-registered; DEVIATIONS Entry 0 at lock)
 
 - The employer's categories are out: technology brands (CAT-1020) are not pulled; no phones, TVs, appliances, semiconductors or displays enter any test.
-- The brand master flags one brand, Denon (BR-00303, v0.19), as a Samsung-group brand (Harman, since 2025-09-23). It is pulled and handled as in v0.62: kept, with every result also reported without it (sensitivity S-COI).
+- The brand master flags one brand, Denon (BR-00303, v0.19), under the conflict-of-interest screen (Declarations §COI). It is pulled and handled as in v0.62: kept, with every result also reported without it (sensitivity S-COI).
 - S-COI also drops the five omnibus brands for which Cheil Worldwide or its Iris unit has worked: Chevrolet, BMW, Bentley, Jack Daniel's, Eucerin (v0.62 DEVIATIONS Entry 0, Part F).
 - Entry 0 for priority 3–4 categories (airlines, banks, software, finance apps, knives, running shoes) has not been run; it is a pre-lock task (TO CONFIRM). A brand it flags is handled like Denon unless Pablo decides otherwise.
 
