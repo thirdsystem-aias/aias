@@ -946,5 +946,54 @@ class TestD7Fisker(unittest.TestCase):
         self.assertLess(src.index("d7_guard()"), src.index("require_keys_v46()"))
 
 
+# =========================================================================== D7 and P1 AI checks (preparation)
+class TestAIChecks(unittest.TestCase):
+    SCRIPT = str(HERE.parent / "ai_checks_v0_46.py")
+
+    def setUp(self):
+        import ai_checks_v0_46 as K
+        self.K = K
+
+    def test_p1_quote_read_and_outcome_rule(self):
+        K = self.K
+        q = K.manuscript_p1_quote()
+        self.assertTrue(q.startswith("In most categories"))
+        self.assertEqual(K.p1_outcome(q.replace("'", "’") + "  ", q), "match")
+        self.assertEqual(K.p1_outcome("Reinforcement. " + q, q), "contained")
+        self.assertEqual(K.p1_outcome(q.replace("most", "many", 1), q), "mismatch")
+        self.assertEqual(K.p1_outcome("", q, False), "not_found")
+        self.assertEqual(set(K.P1_DECISION), {"match", "contained", "mismatch", "not_found"})
+
+    def test_d7_reply_sources_must_come_from_search(self):
+        K = self.K
+        t = K.now_utc()
+        src = {"url": "https://a.org/x", "title": "t", "source_date": t.date().isoformat()}
+        body = json.dumps({"sells_new_cars_us": True, "finding": "f", "sources": [src]})
+        rec, _p = K.d7_record_from_reply({"text": body, "search_urls": ["https://a.org/x/"]}, t, "m")
+        self.assertEqual((rec["decision"], B.validate_d7(rec)), ("live", []))
+        rec, p = K.d7_record_from_reply({"text": body, "search_urls": ["https://b.org/"]}, t, "m")
+        self.assertIsNone(rec)
+        later = dict(src, source_date="2999-01-01")
+        rec, p = K.d7_record_from_reply({"text": json.dumps({"sells_new_cars_us": True, "sources": [later]}),
+                                         "search_urls": ["https://a.org/x"]}, t, "m")
+        self.assertIsNone(rec)
+        self.assertIsNone(K.d7_record_from_reply({"text": "no json"}, t, "m")[0])
+
+    def test_dry_run_subprocess_pass_and_keyless(self):
+        env = dict(os.environ, OPENAI_API_KEY="sk-test-not-a-key")
+        r = subprocess.run([sys.executable, self.SCRIPT, "--dry-run"], capture_output=True, text=True, timeout=120,
+                           env=env)
+        self.assertEqual(r.returncode, 0, r.stderr[-800:])
+        self.assertIn("AI checks dry run PASS", r.stdout)
+
+    def test_run_refused_without_key(self):
+        env = {k: v for k, v in os.environ.items() if k != "OPENAI_API_KEY"}
+        r = subprocess.run([sys.executable, self.SCRIPT, "--run", "d7"], capture_output=True, text=True, timeout=60,
+                           env=env)
+        self.assertEqual(r.returncode, 2)
+        self.assertIn("REFUSED", r.stderr)
+        self.assertFalse(B.D7_PATH.exists())
+
+
 if __name__ == "__main__":
     unittest.main()
