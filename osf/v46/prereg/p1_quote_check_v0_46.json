@@ -1,0 +1,17 @@
+{
+  "item": "P1 quotation (Appendix B item 14)",
+  "checked_utc": "2026-11-24T13:35:34+00:00",
+  "method": "ai_check_against_pdf",
+  "checker": "gpt-6-astra",
+  "pdf_url": "https://msi.org/working-paper/tri-system-brand-growth-the-ai-mediation-layer/",
+  "pdf_sha256": "eda8407cb78eae9c25b816c275b8d7ee874eb3b18b724da8abf55c90cd51eb9d",
+  "pdf_bytes": 1754835,
+  "checker_found": true,
+  "checker_page": 19,
+  "checker_text": "In most categories most of the time, AI-surfaced brand distributions track prior market shares more closely than they reorder them, and AI mediation amplifies rather than disrupts existing brand hierarchies.",
+  "manuscript_quote": "In most categories most of the time, AI-surfaced brand distributions track prior market shares more closely than they reorder them, and AI mediation amplifies rather than disrupts existing brand hierarchies.",
+  "outcome": "match",
+  "decision": "quotation stands; add the paper's public URL to the reference",
+  "response_id": "resp_0b6b474287e7014b006b0592a6f89c87d19927057b454008a4",
+  "limits": "AI check, no human check; one model (OpenAI) reading the PDF, blind to the manuscript's quotation; compared by code after typographic normalisation"
+}

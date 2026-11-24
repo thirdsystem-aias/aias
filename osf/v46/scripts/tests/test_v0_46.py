@@ -987,12 +987,14 @@ class TestAIChecks(unittest.TestCase):
         self.assertIn("AI checks dry run PASS", r.stdout)
 
     def test_run_refused_without_key(self):
+        # The real D7 record exists since 2026-11-24 (r3); a refused run must leave it as it was (or absent).
+        before = B.D7_PATH.read_bytes() if B.D7_PATH.exists() else None
         env = {k: v for k, v in os.environ.items() if k != "OPENAI_API_KEY"}
         r = subprocess.run([sys.executable, self.SCRIPT, "--run", "d7"], capture_output=True, text=True, timeout=60,
                            env=env)
         self.assertEqual(r.returncode, 2)
         self.assertIn("REFUSED", r.stderr)
-        self.assertFalse(B.D7_PATH.exists())
+        self.assertEqual(B.D7_PATH.read_bytes() if B.D7_PATH.exists() else None, before)
 
 
 if __name__ == "__main__":

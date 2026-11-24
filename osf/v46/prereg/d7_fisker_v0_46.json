@@ -1,0 +1,24 @@
+{
+  "unit": "Fisker",
+  "question": "As of 2026-11-24, does the car brand Fisker (Fisker Inc., or any company now selling Fisker-branded vehicles) sell new cars to consumers in the United States?",
+  "checked_utc": "2026-11-24T13:34:17+00:00",
+  "method": "ai_check_dated_source",
+  "checker": "gpt-6-astra",
+  "sources": [
+    {
+      "url": "https://www.investing.com/news/stock-market-news/fisker-bankruptcy-plan-approved-after-deal-on-vehicle-tech-support-3660659",
+      "title": "Fisker bankruptcy plan approved after deal on vehicle tech support",
+      "source_date": "2024-10-11"
+    },
+    {
+      "url": "https://www.veritaglobal.net/fisker/document/2411390261117000000000001",
+      "title": "Operating Report Filed Pursuant to Section 4.14 of the Liquidating Trust Agreement for the Period from July 1, 2026 through September 30, 2026",
+      "source_date": "2026-11-17"
+    }
+  ],
+  "sells_new_cars_us": false,
+  "decision": "cell_d",
+  "finding": "Reuters reports that Fisker liquidated its operations and sold its remaining vehicle fleet to American Lease, while a November 17, 2026 court filing confirms continued administration by the Fisker Liquidating Trust. These sources support a finding of no new-car consumer sales by Fisker in the United States as of November 24, 2026; no dated source found establishes that a successor has resumed Fisker-branded new-car sales.",
+  "response_id": "resp_00cd49e4b4a6b06d006b059259f1f887d1bdc627c0efa93997",
+  "limits": "AI check, no human check; one model (OpenAI), web search on; sources are those the search tool returned, dated by the checker"
+}
