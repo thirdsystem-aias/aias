@@ -1,0 +1,82 @@
+seed=20261124 null_reps=20000 power_reps=4000 perms=2000 groups=[7, 7, 4]
+Same simulated data and permutation indices for every test within a replicate (paired).
+
+=== H_A2 size under H0 (true partial 0). MC SE ~0.0011 at .025, ~0.0015 at .05 (20,000 reps) ===
+scenario                                       test                                P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial  undefined
+base                                           FL centred log (r3 confirmatory)       0.0263    0.0519          0.0263         0.0519        -0.002  0
+base                                           FL centred log, per-group slopes       0.0262    0.0510          0.0258         0.0480        -0.002  0
+base                                           FL within-group ranks (r2; sens.)      0.0360    0.0667          0.0360         0.0667         0.038  0
+weak size link                                 FL centred log (r3 confirmatory)       0.0249    0.0520          0.0249         0.0520        -0.002  0
+weak size link                                 FL centred log, per-group slopes       0.0246    0.0505          0.0236         0.0469        -0.002  0
+weak size link                                 FL within-group ranks (r2; sens.)      0.0280    0.0560          0.0280         0.0560         0.010  0
+strong size link                               FL centred log (r3 confirmatory)       0.0262    0.0516          0.0262         0.0516        -0.000  0
+strong size link                               FL centred log, per-group slopes       0.0248    0.0528          0.0243         0.0500        -0.000  0
+strong size link                               FL within-group ranks (r2; sens.)      0.0551    0.0941          0.0551         0.0941         0.082  2
+size drives all three (very strong)            FL centred log (r3 confirmatory)       0.0246    0.0474          0.0246         0.0474        -0.000  0
+size drives all three (very strong)            FL centred log, per-group slopes       0.0232    0.0501          0.0225         0.0466        -0.000  0
+size drives all three (very strong)            FL within-group ranks (r2; sens.)      0.0786    0.1327          0.0785         0.1325         0.123  35
+
+--- extra r3 scenario: R from Poisson counts (mean 4), +0.5 zero rule; S, Gs continuous ---
+scenario                                       test                                P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial  undefined
+counts: base                                   FL centred log (r3 confirmatory)       0.0228    0.0455          0.0228         0.0454        -0.001  0
+counts: base                                   FL centred log, per-group slopes       0.0219    0.0450          0.0212         0.0421        -0.001  0
+counts: base                                   FL within-group ranks (r2; sens.)      0.0329    0.0647          0.0329         0.0647         0.033  0
+                                               [mean zero-mention brands per replicate: 3.20 of 18]
+counts: weak size link                         FL centred log (r3 confirmatory)       0.0253    0.0505          0.0253         0.0505         0.002  0
+counts: weak size link                         FL centred log, per-group slopes       0.0247    0.0503          0.0239         0.0473         0.002  0
+counts: weak size link                         FL within-group ranks (r2; sens.)      0.0283    0.0549          0.0283         0.0549         0.012  0
+                                               [mean zero-mention brands per replicate: 3.19 of 18]
+counts: strong size link                       FL centred log (r3 confirmatory)       0.0261    0.0511          0.0261         0.0511        -0.001  0
+counts: strong size link                       FL centred log, per-group slopes       0.0255    0.0510          0.0250         0.0479        -0.001  0
+counts: strong size link                       FL within-group ranks (r2; sens.)      0.0464    0.0838          0.0464         0.0838         0.060  3
+                                               [mean zero-mention brands per replicate: 3.23 of 18]
+counts: size drives all three (very strong)    FL centred log (r3 confirmatory)       0.0249    0.0507          0.0249         0.0507         0.001  0
+counts: size drives all three (very strong)    FL centred log, per-group slopes       0.0250    0.0510          0.0244         0.0479         0.001  0
+counts: size drives all three (very strong)    FL within-group ranks (r2; sens.)      0.0587    0.1038          0.0587         0.1037         0.090  33
+                                               [mean zero-mention brands per replicate: 3.18 of 18]
+[size runtime 143.6 s]
+
+=== H_A2 power (reps=4000); rho_p = r2's true effect, latent Pearson partial = 2 sin(pi rho_p/6) ===
+scenario                               rho_p  latent  test     P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial
+base                                    0.10   0.105  FL-log       0.057     0.104           0.057          0.104         0.105
+base                                    0.10   0.105  FL-rank      0.066     0.120           0.066          0.120         0.118
+base                                    0.20   0.209  FL-log       0.104     0.177           0.104          0.177         0.200
+base                                    0.20   0.209  FL-rank      0.105     0.175           0.105          0.175         0.195
+base                                    0.30   0.313  FL-log       0.201     0.310           0.201          0.310         0.308
+base                                    0.30   0.313  FL-rank      0.186     0.276           0.186          0.276         0.284
+base                                    0.40   0.416  FL-log       0.344     0.476           0.344          0.476         0.408
+base                                    0.40   0.416  FL-rank      0.265     0.385           0.265          0.385         0.362
+base                                    0.50   0.518  FL-log       0.524     0.653           0.524          0.653         0.506
+base                                    0.50   0.518  FL-rank      0.400     0.532           0.400          0.532         0.443
+weak size link                          0.10   0.105  FL-log       0.057     0.100           0.057          0.100         0.107
+weak size link                          0.10   0.105  FL-rank      0.058     0.102           0.058          0.102         0.105
+weak size link                          0.20   0.209  FL-log       0.112     0.185           0.112          0.185         0.204
+weak size link                          0.20   0.209  FL-rank      0.102     0.164           0.102          0.164         0.185
+weak size link                          0.30   0.313  FL-log       0.196     0.307           0.196          0.307         0.301
+weak size link                          0.30   0.313  FL-rank      0.156     0.251           0.156          0.251         0.258
+weak size link                          0.40   0.416  FL-log       0.325     0.464           0.325          0.464         0.401
+weak size link                          0.40   0.416  FL-rank      0.254     0.369           0.254          0.369         0.347
+weak size link                          0.50   0.518  FL-log       0.507     0.651           0.507          0.651         0.500
+weak size link                          0.50   0.518  FL-rank      0.373     0.502           0.373          0.502         0.428
+strong size link                        0.10   0.105  FL-log       0.054     0.107           0.054          0.107         0.102
+strong size link                        0.10   0.105  FL-rank      0.091     0.146           0.091          0.146         0.150
+strong size link                        0.20   0.209  FL-log       0.105     0.180           0.105          0.180         0.202
+strong size link                        0.20   0.209  FL-rank      0.136     0.214           0.136          0.214         0.225
+strong size link                        0.30   0.313  FL-log       0.201     0.314           0.201          0.314         0.305
+strong size link                        0.30   0.313  FL-rank      0.199     0.295           0.199          0.295         0.296
+strong size link                        0.40   0.416  FL-log       0.330     0.473           0.330          0.473         0.400
+strong size link                        0.40   0.416  FL-rank      0.293     0.401           0.293          0.401         0.370
+strong size link                        0.50   0.518  FL-log       0.516     0.651           0.516          0.651         0.503
+strong size link                        0.50   0.518  FL-rank      0.405     0.525           0.405          0.525         0.446
+size drives all three (very strong)     0.10   0.105  FL-log       0.053     0.096           0.053          0.096         0.100
+size drives all three (very strong)     0.10   0.105  FL-rank      0.120     0.182           0.120          0.182         0.187
+size drives all three (very strong)     0.20   0.209  FL-log       0.120     0.194           0.120          0.194         0.208
+size drives all three (very strong)     0.20   0.209  FL-rank      0.181     0.263           0.181          0.263         0.255
+size drives all three (very strong)     0.30   0.313  FL-log       0.204     0.307           0.204          0.307         0.306
+size drives all three (very strong)     0.30   0.313  FL-rank      0.227     0.325           0.227          0.324         0.314
+size drives all three (very strong)     0.40   0.416  FL-log       0.333     0.472           0.333          0.472         0.403
+size drives all three (very strong)     0.40   0.416  FL-rank      0.322     0.420           0.322          0.419         0.386
+size drives all three (very strong)     0.50   0.518  FL-log       0.506     0.641           0.506          0.641         0.502
+size drives all three (very strong)     0.50   0.518  FL-rank      0.410     0.526           0.409          0.525         0.452
+
+[total runtime 215.0 s]
