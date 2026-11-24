@@ -1,0 +1,47 @@
+seed=20261124 reps=16000 null_draws=100000 perms_A2=2000
+
+H_A1 (n_c=18,11,26,12; pooled Fisher-z; within-category permutation)
+rho_s  P(p<.025)  P(p<.05)  P(rho_bar>=.30)  CONFIRMED@.025  CONFIRMED@.05  mean_rho_bar
+0.00      0.024     0.048            0.011           0.011          0.011        -0.001
+0.10      0.111     0.186            0.063           0.063          0.063         0.100
+0.20      0.325     0.447            0.221           0.221          0.221         0.198
+0.30      0.627     0.740            0.504           0.504          0.504         0.296
+0.40      0.883     0.932            0.807           0.807          0.807         0.396
+0.50      0.982     0.992            0.961           0.961          0.961         0.493
+
+H_A5 / H_A7 (Spearman n=18, one-sided permutation; verdict needs rho>0 and Holm p<.05)
+rho_s  P(p<.0125)  P(p<.025)  P(p<.05)   [secondary family: Holm first step for 4-6 tests ~ .0083-.0125]
+0.00       0.015      0.028     0.055
+0.10       0.033      0.060     0.109
+0.20       0.070      0.119     0.194
+0.30       0.136      0.215     0.327
+0.40       0.257      0.363     0.495
+0.50       0.431      0.550     0.680
+
+[H_A1/H_A5/H_A7 runtime 0.8 s]
+
+H_A2 (partial of R with S | Gs, within-group normalised ranks, groups 7/7/4; reps=4000)
+scenario           rho_p  P(p<.025)  P(p<.05)  CONFIRMED@.025  CONFIRMED@.05  mean_partial
+base                0.00      0.037     0.072           0.037          0.072         0.041  undefined=0
+base                0.10      0.074     0.120           0.074          0.120         0.115  undefined=0
+base                0.20      0.118     0.202           0.118          0.202         0.205  undefined=0
+base                0.30      0.187     0.275           0.187          0.275         0.272  undefined=0
+base                0.40      0.285     0.403           0.285          0.403         0.354  undefined=0
+base                0.50      0.411     0.534           0.411          0.534         0.437  undefined=0
+weak size link      0.00      0.033     0.063           0.033          0.063         0.020  undefined=0
+weak size link      0.10      0.050     0.096           0.050          0.096         0.088  undefined=0
+weak size link      0.20      0.106     0.174           0.106          0.174         0.181  undefined=0
+weak size link      0.30      0.165     0.256           0.165          0.256         0.265  undefined=0
+weak size link      0.40      0.257     0.377           0.257          0.377         0.348  undefined=0
+weak size link      0.50      0.386     0.519           0.386          0.519         0.433  undefined=0
+strong size link    0.00      0.068     0.113           0.068          0.113         0.084  undefined=0
+strong size link    0.10      0.100     0.155           0.100          0.155         0.152  undefined=0
+strong size link    0.20      0.161     0.239           0.161          0.239         0.223  undefined=1
+strong size link    0.30      0.229     0.321           0.229          0.321         0.294  undefined=2
+strong size link    0.40      0.321     0.432           0.321          0.432         0.376  undefined=0
+strong size link    0.50      0.445     0.558           0.445          0.558         0.450  undefined=0
+
+[total runtime 30.4 s]
+real 30.46
+user 30.31
+sys 0.10
