@@ -15,7 +15,7 @@ DECK = ("How the newest AI models name brands in {{v:rv.industries.n}} US servic
         "from market leaders to smaller brands")
 
 STANDFIRST = ("We asked {{v:rv.models.n}} of the newest AI models about {{v:reg.units_total}} brands in "
-              "{{v:rv.industries.n}} US industries the programme had not measured, from car insurance to fashion. "
+              "{{v:rv.industries.n}} US industries the program had not measured, from car insurance to fashion. "
               "They name market leaders far more often than smaller brands, and pass over many brands they know.")
 
 GLANCE_NUMBERS = [
@@ -23,7 +23,7 @@ GLANCE_NUMBERS = [
      "label": "Rank correlation of market tier with how often AI names a brand",
      "source": "within industries, {{v:H_Tier.n}} brands; pre-set bar {{v:rv.threshold.tier_conf}}"},
     {"value": "{{v:D2.gap.S}}", "unit": "",
-     "label": "Smaller brands every model recognised but no answer named",
+     "label": "Smaller brands every model recognized but no answer named",
      "source": "of {{v:rv.tier.n.S}} smaller brands; {{v:D2.gap.L}} of {{v:rv.tier.n.L}} leaders"},
     {"value": "{{v:H_Sep.rho}}", "unit": "",
      "label": "Rank correlation of Consistency with how often a brand is named",
@@ -33,7 +33,7 @@ GLANCE_NUMBERS = [
 MEASURED = ("{{v:rv.models.names}}, the newest flagship of {{v:rv.models.n}} providers, answered "
             "{{v:MC_Complete.answered}} questions on {{v:rv.collection_date}} with web search off: "
             "{{v:rv.calls.B}} open questions ({{v:rv.questions_per_industry}} per industry, asked {{v:rv.runs.n}} "
-            "times by each model) and {{v:rv.calls.A}} questions on whether they recognise a brand. Plan and "
+            "times by each model) and {{v:rv.calls.A}} questions on whether they recognize a brand. Plan and "
             "deviations record: osf.io/ec6wh (v44).")
 
 SUMMARY = [
@@ -45,7 +45,7 @@ SUMMARY = [
 ]
 
 INTRO_LEAD = ("Which insurer, hotel, grocer or pharmacy does an AI model name when asked? This study measured it in "
-              "{{v:rv.industries.n}} industries the programme had not covered.")
+              "{{v:rv.industries.n}} industries the program had not covered.")
 
 INTRO = [
     "AIAS™, the AI Availability Score, measures how AI answers represent brands. Its two components are Presence, "
@@ -61,10 +61,7 @@ INTRO = [
     "every result is reported here.",
     "All {{v:MC_Complete.answered}} of {{v:MC_Complete.expected}} planned questions were answered, "
     "{{v:raw.rerun_ok}} of them in the planned re-run of failed calls, for {{v:MC_Budget.spend_usd}} against a "
-    "{{v:rv.budget.cap}} cap, and every pre-set quality check passed. The collection script's own safeguards "
-    "stopped its first launch, whose keep-awake wrapper it read as a second collection, and the first start of the "
-    "re-run, which found no API keys; nothing had been sent, and both were restarted, the one under another "
-    "keep-awake wrapper, the other in a login shell (DEVIATIONS Entry 3). The study is independent: no brand is its "
+    "{{v:rv.budget.cap}} cap, and every pre-set quality check passed. The study is independent: no brand is its "
     "focus, no finding is addressed to a brand, and no brand was contacted (Disclosures, at the end).",
 ]
 
@@ -73,7 +70,7 @@ MEASURED_PARAS = [
     "The models were {{v:rv.models.names}}, the newest generally available flagship of each of {{v:rv.models.n}} "
     "providers, with web search off. Each answered {{v:rv.questions_per_industry}} open questions per industry "
     "{{v:rv.runs.n}} times, such as \"What are the best car insurance companies in the US?\", and, for each brand, "
-    "whether it recognised the brand as one of its industry. No question names a brand.",
+    "whether it recognized the brand as one of its industry. No question names a brand.",
     "A brand's naming rate (its Presence) is the share of answer cells, one per model, run and open question, "
     "that name it, from 0 (never) to 1 (every cell). Consistency, scored 0 to 100, is how evenly the "
     "{{v:rv.models.n}} models name a brand across the runs; it is rated only for brands named in at least "
@@ -98,7 +95,7 @@ FINDINGS = [
          "interval bound, {{v:H_Spread.ci_low_min}} ({{v:H_Spread.ci_low_min_ind}}), clears it.",
          "Every industry had brands that no answer named, from {{v:H_Spread.APR.share0}} of clothing and "
          "department stores to {{v:H_Spread.HOT.share0}} of hotel chains. The same models' answers about the "
-         "programme's earlier consumer-goods categories (AIAS v0.42) also cleared the bar in {{v:omni.n_spread}} "
+         "program's earlier consumer-goods categories (AIAS v0.42) also cleared the bar in {{v:omni.n_spread}} "
          "of {{v:omni.n_sub}}, a comparison made after scoring, with no verdict (paper, section 3.3).",
      ]},
     {"verdict": "{{v:H_Tier.verdict}}",
@@ -129,7 +126,7 @@ FINDINGS = [
          "brand did not follow how often they named it: a rank correlation of {{v:H_Sep.rho}} (95% interval "
          "{{v:H_Sep.ci}}), inside the pre-set limits (the correlation within ±{{v:rv.threshold.sep_max}}, its "
          "interval within ±{{v:rv.threshold.sep_ci}}). Presence and Consistency carry different information here, "
-         "as they did in the programme's consumer-goods studies (summarised in its AIAS 2.0 synthesis).",
+         "as they did in the program's consumer-goods studies (summarized in its AIAS 2.0 synthesis).",
          "The base is narrow. Rating needs a brand to be named often enough, so it left "
          "{{v:H_Sep.unrated.tier.S}} smaller brands unrated, against {{v:H_Sep.unrated.tier.L}} leaders. Rated "
          "brands scored from {{v:unit.cphi_min}} to {{v:unit.cphi_max}}, mostly high, so the test compares brands "
@@ -138,16 +135,16 @@ FINDINGS = [
     {"verdict": "DESCRIPTIVE",
      "title": "Many smaller brands are known but never named",
      "chart": "report_fig_04_known_not_named.pdf",
-     "caption": "Recognised: all {{v:rv.models.n}} models said yes when asked whether the brand belongs to its "
+     "caption": "Recognized: all {{v:rv.models.n}} models said yes when asked whether the brand belongs to its "
                 "industry. Naming rate zero: no open answer named it. A pre-set description, with no test.",
      "body": [
-         "Asked directly, the models recognised almost every brand: {{v:D2.claude-fable-5-2.all}} (Claude Fable "
+         "Asked directly, the models recognized almost every brand: {{v:D2.claude-fable-5-2.all}} (Claude Fable "
          "5.2), {{v:D2.gpt-6-astra.all}} (GPT-6 Astra) and {{v:D2.gemini-4-argon.all}} (Gemini 4 Argon). Asked "
-         "open questions, they passed many over: {{v:D2.gap.total}} brands were recognised by all "
+         "open questions, they passed many over: {{v:D2.gap.total}} brands were recognized by all "
          "{{v:rv.models.n}} yet never named in an open answer: {{v:D2.gap.S}} smaller brands, {{v:D2.gap.C}} "
          "challengers, {{v:D2.gap.L}} leader and {{v:D2.gap.G}} departed brand.",
          "This gap between being known and being named is what Presence was built to capture, and here it falls "
-         "mostly on smaller brands. Each departed brand was recognised by all {{v:rv.models.n}} models; in open "
+         "mostly on smaller brands. Each departed brand was recognized by all {{v:rv.models.n}} models; in open "
          "answers Esurance was never named, while A&amp;P (naming rate {{v:D3.AandP.pi}}) and Rite Aid "
          "({{v:D3.RiteAid.pi}}) were. Whether those answers presented them as current was not coded.",
      ]},
@@ -220,8 +217,9 @@ NEXT_HEAD = "What's next"
 NEXT = [
     "A retest on the same brands and questions, to see whether the industries' orders hold; a registry that adds "
     "the brands the models name outside the rankings; and a search-on arm.",
-    "Plan, registries, scripts and DEVIATIONS log: osf.io/ec6wh (v44). Answers, coding and values files: "
-    "github.com/thirdsystem-aias/aias, branch v0.44, planned for OSF with the data deposit.",
+    "Plan, registries, scripts and DEVIATIONS log: osf.io/ec6wh (v44). Answers, coding and logs are in "
+    "its folder v44/data, verdicts and the unit table in v44/scoring. Values files: "
+    "github.com/thirdsystem-aias/aias, branch v0.44.",
 ]
 
 DISCLOSURES = {

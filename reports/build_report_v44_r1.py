@@ -208,8 +208,8 @@ def build(output: Path, code: str) -> dict:
     right = lambda: [cp("Methodology", "head"), cp(meth, after=gap), cp("Underlying data", "head"),
                      cp("Tier sources: NAIC, ScrapeHero, HOTELS 325, NRF Top 100 Retailers, QSR 50, Drug Channels "
                         "Institute, CSP Top 40, Interbrand Best Global Brands, Lyst Index. Plan and registries: OSF "
-                        "ec6wh, folder v44; answers, coding, verdicts and values files: github.com/thirdsystem-aias/aias, "
-                        "branch v0.44, planned for OSF with the data deposit."),
+                        "ec6wh, folder v44; answers, coding and logs: v44/data; verdicts and unit table: "
+                        "v44/scoring; values files: github.com/thirdsystem-aias/aias, branch v0.44."),
                      cp("Cover image generated with AI.", before=gap - CLOSING["colophon_space_after_pt"]),
                      cp("<b>Inquiries:</b> hello@thirdsystem.ai", after=0)]
     g = L.closing_page(c, t, label=RUNNING_LABEL, page_no=pno["closing"], statement=f(C.CLOSING_STATEMENT),

@@ -167,7 +167,7 @@ def r4():
     ax.set_xticks([0, 0.25, 0.5, 0.75])
     ax.set_xticklabels(["0%", "25%", "50%", "75%"])
     ax.set_ylim(-0.6, n - 0.4)
-    ax.set_xlabel(f"Share of the tier's brands (recognised by all {d('rv.models.n')} models, naming rate 0)",
+    ax.set_xlabel(f"Share of the tier's brands (recognized by all {d('rv.models.n')} models, naming rate 0)",
                   fontsize=7.6)
     clean(ax, left=True)
     save(fig, "report_fig_04_known_not_named")
