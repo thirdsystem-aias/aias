@@ -2464,7 +2464,12 @@
         "osf_version": 1,
         "sha256": "93a11d05c288ceb874fb01619c633c317c37160884a5e46bf3084e624224ec8e",
         "sha256_source": "identical in: OSF v44/report/ v1 (verified by SHA-256 after re-list), local build at 39f566e (reports/output/TS-FL-v0.44-r1_known-but-not-named.pdf), website public/files/reports/v44_known_but_not_named_report.pdf (site 4bbe0eb)",
-        "website": "https://thirdsystem.ai/files/reports/v44_known_but_not_named_report.pdf",
+        "website": {
+          "path": "files/reports/v44_known_but_not_named_report.pdf",
+          "sha256": "93a11d05c288ceb874fb01619c633c317c37160884a5e46bf3084e624224ec8e",
+          "since": "2026-11-24",
+          "site_commit": "4bbe0eb"
+        },
         "status": "current",
         "draft": false,
         "held": false,
