@@ -4,12 +4,12 @@
     "purpose": "Defines the eight document types Third System produces. Each maps to an InDesign template family from design_tokens_template.json. The receiving chat should use these specs as production briefs.",
     "naming_convention": "Third System / [Document Type] / [Subject] / v[Version]",
     "version_history": [
-      "1.0 \u2014 initial spec, 8 document types",
-      "1.1 \u2014 added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product\u2192template mapping, persona logic, production sprint sequence.",
-      "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
-      "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
-      "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only.",
-      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1, TS-BR-v1.14-r1, TS-BR-v0.43-r1 and TS-BR-v1.13-r1."
+      "1.0 — initial spec, 8 document types",
+      "1.1 — added product_structure_summary at top level: three-layer offering model (public research / methodology / commercial), product→template mapping, persona logic, production sprint sequence.",
+      "1.2 — report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
+      "1.2, Nov 13, 2026 — Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
+      "1.2, Nov 15, 2026 — page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only.",
+      "1.2, Nov 22, 2026 — page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1, TS-BR-v1.14-r1, TS-BR-v0.43-r1 and TS-BR-v1.13-r1."
     ]
   },
   "product_structure_summary": {
@@ -30,7 +30,7 @@
         "purpose": "Free intellectual property published openly to establish that the measurement is rigorous and peer-reviewable.",
         "products": [
           "methodology_brief",
-          "tri_system_book_and_paper (separate spec \u2014 not in this file)"
+          "tri_system_book_and_paper (separate spec — not in this file)"
         ],
         "audience": "Academic peers, clients evaluating credibility, journalists fact-checking findings",
         "commercial_role": "No transaction. Establishes scientific defensibility."
@@ -43,7 +43,7 @@
           "capabilities_deck"
         ],
         "audience": "Paying clients (CMO, brand director, head of brand strategy)",
-        "commercial_role": "Generates revenue. Pricing per AI Brand Visibility Diagnostic Pilot: $10\u201315K initial, $20\u201330K post-validation, $40K+ later."
+        "commercial_role": "Generates revenue. Pricing per AI Brand Visibility Diagnostic Pilot: $10–15K initial, $20–30K post-validation, $40K+ later."
       }
     },
     "product_to_template_map": {
@@ -59,7 +59,7 @@
         [
           "cross_category_report",
           1,
-          "12\u201316 page report",
+          "12–16 page report",
           "C-Brochure",
           "Quarterly"
         ],
@@ -88,13 +88,13 @@
           "tri_system_book_and_paper",
           2,
           "Long-form publication",
-          "NOT InDesign \u2014 separate spec",
+          "NOT InDesign — separate spec",
           "One-time with revisions"
         ],
         [
           "brand_diagnostic_report",
           3,
-          "12\u201318 page client report",
+          "12–18 page client report",
           "C-Brochure (custom cover)",
           "Per engagement"
         ],
@@ -108,14 +108,14 @@
         [
           "capabilities_deck",
           3,
-          "10\u201314 slide presentation",
-          "NOT InDesign \u2014 Keynote/Slides",
+          "10–14 slide presentation",
+          "NOT InDesign — Keynote/Slides",
           "Built when warranted"
         ],
         [
           "quarterly_tracker",
           1,
-          "16\u201324 page longitudinal",
+          "16–24 page longitudinal",
           "C-Brochure",
           "Quarterly (Phase 2 future)"
         ]
@@ -127,7 +127,7 @@
       "C-Brochure": "Multi-page long-form report. Cover + body spreads. The flagship template family for any substantive publication. Most Third System reports use this.",
       "E-Tri-fold": "Single Letter sheet folded into 6 panels. Foldable physical artifact, suited to authority pieces designed for in-person distribution (conferences, SVA, client meetings).",
       "0-Cover": "Standalone cover treatments. Usable when a deliverable needs only a cover (rare). Not mapped to any current Third System product.",
-      "_unused_families": "The InDesign template includes additional master families (D-, F-, G- variants) not currently mapped to any Third System product. Don't introduce these until a product genuinely requires them \u2014 a smaller, intentionally-used template set is stronger than every possible layout half-used."
+      "_unused_families": "The InDesign template includes additional master families (D-, F-, G- variants) not currently mapped to any Third System product. Don't introduce these until a product genuinely requires them — a smaller, intentionally-used template set is stronger than every possible layout half-used."
     },
     "persona_logic": {
       "_note": "The InDesign template uses 'persona' to denote audience-tier variants of the same physical layout: Executive, Manager, Specialist. Third System maps these as follows.",
@@ -155,7 +155,7 @@
       }
     },
     "production_sprint_sequence": {
-      "_note": "Recommended build order. Not the same as production_priority_order below \u2014 that's a flat list. This is sprint-grouped so visual decisions cascade correctly.",
+      "_note": "Recommended build order. Not the same as production_priority_order below — that's a flat list. This is sprint-grouped so visual decisions cascade correctly.",
       "sprint_1_foundation_visual_system": {
         "products": [
           "cross_category_report",
@@ -167,7 +167,7 @@
         "products": [
           "category_snapshot (one per published category, ~5 to start)"
         ],
-        "rationale": "Lets Pablo start conversations. Strategy doc Week 3 calls for outreach \u2014 these are the artifacts that get attached to those messages."
+        "rationale": "Lets Pablo start conversations. Strategy doc Week 3 calls for outreach — these are the artifacts that get attached to those messages."
       },
       "sprint_3_authority_artifact": {
         "products": [
@@ -199,10 +199,10 @@
     "navigation_to_detailed_specs": {
       "_note": "The 'documents' block below contains the full spec for each product (page count, structure, logo use, footer type, disclaimer type, byline type, chart slots).",
       "see_also": [
-        "third_system_brand.json \u2014 brand layer (palette, typography, logos, copy boilerplate, chart specs)",
-        "design_tokens_template.json \u2014 InDesign template extract (master spreads, paragraph styles, geometry)",
-        "HANDOFF_PROMPT.md \u2014 instructions for the receiving chat",
-        "v06_source_text.md \u2014 body content for the cross_category_report priority 1 build"
+        "third_system_brand.json — brand layer (palette, typography, logos, copy boilerplate, chart specs)",
+        "design_tokens_template.json — InDesign template extract (master spreads, paragraph styles, geometry)",
+        "HANDOFF_PROMPT.md — instructions for the receiving chat",
+        "v06_source_text.md — body content for the cross_category_report priority 1 build"
       ]
     }
   },
@@ -219,20 +219,20 @@
   "documents": {
     "cross_category_report": {
       "priority": 1,
-      "status": "REDESIGN \u2014 source content exists at v06_source_text.md (extracted from report_v0_6_cross.pdf)",
+      "status": "REDESIGN — source content exists at v06_source_text.md (extracted from report_v0_6_cross.pdf)",
       "name": "Cross-Category Findings",
       "subtitle_pattern": "AI Presence Index v{version} across {N} Categories",
       "current_version": "v0.6",
       "purpose": "Flagship publication. Sets the visual system that every other deliverable inherits. Demonstrates pattern replication across categories.",
       "audience": "CMOs, brand strategists, researchers, journalists, prospective clients.",
-      "page_count_target": "12\u201316 pages",
-      "page_size": "Letter portrait (8.5\" \u00d7 11\")",
+      "page_count_target": "12–16 pages",
+      "page_size": "Letter portrait (8.5\" × 11\")",
       "template_family": "C-Brochure (long-form)",
       "preferred_master": "C-Brochure - Cover - Option 1 - Letter (cover) + C-Brochure - Product - AB - Letter (body)",
       "structure": [
         "Cover: title, version, date, byline_short, primary tagline, Third System / AI Presence Index lockup",
-        "Lead spread: 'For the first time, we can measure the moment that matters' standfirst, 5\u20136 sentence summary",
-        "Pattern sections (1 per pattern, 1\u20132 pages each): pattern statement, evidence across categories, strategic implication",
+        "Lead spread: 'For the first time, we can measure the moment that matters' standfirst, 5–6 sentence summary",
+        "Pattern sections (1 per pattern, 1–2 pages each): pattern statement, evidence across categories, strategic implication",
         "Limitations section",
         "What's next (Phase 2/3/4 roadmap)",
         "Footer page: byline_long, methodology disclaimer, citation, datasets, contact"
@@ -242,43 +242,43 @@
       "disclaimer_type": "methodology_standard",
       "byline_type": "report_masthead_long (cover) + report_cover_short (running)",
       "chart_size_default": "3-col span (265pt / 3.68\") for inline charts; 6-col span (540pt / 7.5\") for full-width hero charts",
-      "image_handling": "All photo placeholders in template MUST be either left empty or filled with appropriate imagery \u2014 DO NOT render placeholder green/gray as design fills. For v0.6 redesign, no photography needed; replace placeholder rectangles with data visualizations or leave as whitespace.",
+      "image_handling": "All photo placeholders in template MUST be either left empty or filled with appropriate imagery — DO NOT render placeholder green/gray as design fills. For v0.6 redesign, no photography needed; replace placeholder rectangles with data visualizations or leave as whitespace.",
       "chart_slots": {
         "_note": "Charts referenced by this report, by canonical filename. The receiving chat embeds these by filename at the position indicated.",
         "hero_p2_scatter": {
           "filename": "chart_p2_6col.pdf",
           "col_span": 6,
-          "position": "Pattern 2 section \u2014 full-width hero",
+          "position": "Pattern 2 section — full-width hero",
           "purpose": "Cross-category Comparison vs Discovery scatter showing CEP-driven divergence"
         },
         "hero_p4_country": {
           "filename": "chart_p4_spread.pdf",
           "col_span": "spread",
-          "position": "Pattern 4 section \u2014 full-width two-panel",
+          "position": "Pattern 4 section — full-width two-panel",
           "purpose": "Olive Oil + Skincare country-of-origin small multiples"
         },
         "inline_p1_variance": {
           "filename": "chart_p1_3col.pdf",
           "col_span": 3,
-          "position": "Pattern 1 section \u2014 inline alongside body text",
+          "position": "Pattern 1 section — inline alongside body text",
           "purpose": "Per-model variance for top brands across categories"
         },
         "inline_p3_awareness_gap": {
           "filename": "chart_p3_3col.pdf",
           "col_span": 3,
-          "position": "Pattern 3 section \u2014 inline",
+          "position": "Pattern 3 section — inline",
           "purpose": "AI Presence vs consumer awareness divergence"
         },
         "inline_p5_default_reinforcement": {
           "filename": "chart_p5_3col.pdf",
           "col_span": 3,
-          "position": "Pattern 5 section \u2014 inline",
+          "position": "Pattern 5 section — inline",
           "purpose": "Default Reinforcement intensity across discourse-prompt alignment"
         },
         "inline_p6_phantom": {
           "filename": "chart_p6_3col.pdf",
           "col_span": 3,
-          "position": "Pattern 6 section \u2014 inline",
+          "position": "Pattern 6 section — inline",
           "purpose": "Mint phantom-brand persistence comparison"
         }
       },
@@ -286,7 +286,7 @@
     },
     "category_snapshot": {
       "priority": 2,
-      "status": "NEW \u2014 produce a template, then one per published category",
+      "status": "NEW — produce a template, then one per published category",
       "name_pattern": "{Category} Snapshot",
       "example_names": [
         "Personal Finance Apps Snapshot",
@@ -308,7 +308,7 @@
       "disclaimer_type": "diagnostic_pilot",
       "byline_type": "report_cover_short",
       "chart_size_default": "3-col span (front), 6-col span if it's the hero",
-      "cta": "Curiosity-driven, not commercial. Sample: 'Want to know how your brand performs in AI mediation?' \u2192 hello@thirdsystem.ai",
+      "cta": "Curiosity-driven, not commercial. Sample: 'Want to know how your brand performs in AI mediation?' → hello@thirdsystem.ai",
       "tier": 3
     },
     "about_third_system_one_pager": {
@@ -323,9 +323,9 @@
       "preferred_master": "A-Snapshot - Front - 2 Columns - Letter - Portrait",
       "structure": [
         "Header: product lockup, tagline_primary",
-        "Block 1 (33%): What it is \u2014 descriptions.medium_100w",
-        "Block 2 (33%): What it measures \u2014 naming_hierarchy explained in plain language, the six AIAS components",
-        "Block 3 (33%): Who runs it \u2014 byline_long, brief credibility line (Sharp / Wharton / SVA references)",
+        "Block 1 (33%): What it is — descriptions.medium_100w",
+        "Block 2 (33%): What it measures — naming_hierarchy explained in plain language, the six AIAS components",
+        "Block 3 (33%): Who runs it — byline_long, brief credibility line (Sharp / Wharton / SVA references)",
         "Footer: contact, web, citation example"
       ],
       "logo_use": "Product lockup at top",
@@ -336,7 +336,7 @@
     },
     "methodology_brief": {
       "priority": 4,
-      "status": "NEW \u2014 source content from methodology.md (when finalized; for now, draft from v06 limitations + 'what's next' sections)",
+      "status": "NEW — source content from methodology.md (when finalized; for now, draft from v06 limitations + 'what's next' sections)",
       "name": "Methodology Brief",
       "subtitle_pattern": "AI Availability Score (AIAS) v{version}",
       "purpose": "Authority artifact. Folded tri-fold, distributable at SVA, conferences, in client meetings. Establishes that Third System has a real methodology.",
@@ -357,29 +357,29 @@
       "footer_type": "public_report",
       "disclaimer_type": "methodology_standard",
       "byline_type": "report_masthead_long",
-      "fold_orientation": "standard tri-fold (left flap \u2192 right flap \u2192 spread)",
+      "fold_orientation": "standard tri-fold (left flap → right flap → spread)",
       "tier": null
     },
     "brand_diagnostic_report": {
       "priority": 5,
-      "status": "NEW \u2014 produced per client engagement",
-      "name_pattern": "AI Brand Visibility Diagnostic \u2014 {Client}",
-      "purpose": "The $10\u201315K paid pilot deliverable. Same look and structure as Cross-Category Report but scoped to one client's category and competitive set.",
+      "status": "NEW — produced per client engagement",
+      "name_pattern": "AI Brand Visibility Diagnostic — {Client}",
+      "purpose": "The $10–15K paid pilot deliverable. Same look and structure as Cross-Category Report but scoped to one client's category and competitive set.",
       "audience": "Paying client (CMO, brand director, head of brand strategy).",
-      "page_count_target": "12\u201318 pages",
+      "page_count_target": "12–18 pages",
       "page_size": "Letter portrait",
       "template_family": "C-Brochure (long-form)",
       "preferred_master": "C-Brochure - Cover - Option 1 (custom-cover) + C-Brochure - Product - AB - Letter",
       "structure": [
         "Cover: client name, category, version, byline, CONFIDENTIAL marker",
         "Executive summary (1 page): 3 key findings, what to do about them",
-        "Category context (1\u20132 pages): competitive set, registry, prompt design",
-        "Findings (4\u20138 pages): per-pattern analysis specific to the client's position",
+        "Category context (1–2 pages): competitive set, registry, prompt design",
+        "Findings (4–8 pages): per-pattern analysis specific to the client's position",
         "Implications (2 pages): directional recommendations",
         "Methodology + caveats",
         "Appendix: full leaderboard, datasets reference"
       ],
-      "logo_use": "Wordmark only (not the AIPT lockup) \u2014 keeps the focus on the client's situation, not on Third System's product",
+      "logo_use": "Wordmark only (not the AIPT lockup) — keeps the focus on the client's situation, not on Third System's product",
       "footer_type": "client_diagnostic_confidential",
       "disclaimer_type": "diagnostic_pilot + methodology_standard",
       "byline_type": "report_masthead_long",
@@ -389,8 +389,8 @@
     },
     "sample_diagnostic": {
       "priority": 6,
-      "status": "NEW \u2014 produce after first paid pilot, anonymized",
-      "name": "Sample Diagnostic \u2014 Anonymized",
+      "status": "NEW — produce after first paid pilot, anonymized",
+      "name": "Sample Diagnostic — Anonymized",
       "purpose": "Sales tool. Send when prospect asks 'what does the deliverable look like?' Same structure as brand_diagnostic_report but with all identifying details replaced.",
       "audience": "Prospective clients in evaluation phase.",
       "page_count_target": "Same as brand_diagnostic_report",
@@ -398,32 +398,32 @@
       "logo_use": "Wordmark",
       "footer_type": "public_report",
       "byline_type": "report_cover_short",
-      "watermark": "SAMPLE \u2014 anonymized for illustrative purposes",
+      "watermark": "SAMPLE — anonymized for illustrative purposes",
       "tier": 2
     },
     "capabilities_deck": {
       "priority": 7,
-      "status": "DEFER until inbound warrants \u2014 not part of initial production",
+      "status": "DEFER until inbound warrants — not part of initial production",
       "name": "Third System Capabilities",
       "purpose": "16:9 slide deck for warm intro meetings, partner conversations, conference pitches.",
       "format": "Google Slides or Keynote, NOT InDesign",
-      "page_count_target": "10\u201314 slides",
-      "_note": "Don't build this until first 5 outreach conversations have happened \u2014 shape will become clear from what prospects actually ask about.",
+      "page_count_target": "10–14 slides",
+      "_note": "Don't build this until first 5 outreach conversations have happened — shape will become clear from what prospects actually ask about.",
       "tier": null
     },
     "quarterly_tracker": {
       "priority": 8,
-      "status": "FUTURE \u2014 Phase 2 deliverable",
-      "name_pattern": "AI Availability Tracker \u2014 Q{N} {Year}",
+      "status": "FUTURE — Phase 2 deliverable",
+      "name_pattern": "AI Availability Tracker — Q{N} {Year}",
       "purpose": "Longitudinal report once Phase 2 produces time-series data across categories.",
-      "page_count_target": "16\u201324 pages",
+      "page_count_target": "16–24 pages",
       "template_family": "C-Brochure (long-form)",
       "_note": "Not needed yet. Specifying it here for system completeness.",
       "tier": null
     }
   },
   "running_header": {
-    "label": "AIAS\u2122 Category Study \u00b7 v0.NN \u00b7 Month YYYY",
+    "label": "AIAS™ Category Study · v0.NN · Month YYYY",
     "retired": [
       "Focal-Brand Study"
     ],
@@ -521,8 +521,8 @@
         "size_pt": 6.5,
         "color": "warm_gray",
         "text": "third_system_brand.json footers.public_report",
-        "last_page_text": "{website} \u00b7 {code}",
-        "_last_page_note": "Tiers 2 and 3 (decision 14, Pablo, Nov 13, 2026): the last page's footer line reads 'thirdsystem.ai \u00b7 TS-CS-v0.22-r1' (the website in lower case, then the report code) in place of the standard footer text, with the page number on the right. The standard text (484.5 pt at 6.5 pt) and the code line (about 95 pt) do not fit on one line together."
+        "last_page_text": "{website} · {code}",
+        "_last_page_note": "Tiers 2 and 3 (decision 14, Pablo, Nov 13, 2026): the last page's footer line reads 'thirdsystem.ai · TS-CS-v0.22-r1' (the website in lower case, then the report code) in place of the standard footer text, with the page number on the right. The standard text (484.5 pt at 6.5 pt) and the code line (about 95 pt) do not fit on one line together."
       },
       "at_a_glance": {
         "kicker_baseline_from_top_pt": 92,
@@ -664,13 +664,83 @@
         "floor_pt": 6.5,
         "min_contrast": 4.5,
         "styles": {
-          "note": {"weight": "Regular", "size_pt": 7.0, "leading_pt": 8.8, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 1.6},
-          "source_line": {"weight": "Regular", "size_pt": 6.5, "leading_pt": 8.2, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 0},
-          "margin_callout": {"weight": "Regular", "size_pt": 7.5, "leading_pt": 9.9, "color": "soft_black", "band_pt": [7.5, 7.5], "space_after_pt": 0},
-          "margin_callout_label": {"weight": "Bold", "size_pt": 7.5, "leading_pt": 9.9, "color": "indigo", "band_pt": [7.5, 7.5], "space_after_pt": 1.5},
-          "disclosures": {"weight": "Regular", "size_pt": 7.5, "leading_pt": 9.9, "color": "soft_black", "band_pt": [7.5, 7.5], "space_after_pt": 2.4},
-          "disclosures_head": {"weight": "Bold", "size_pt": 7.5, "leading_pt": 9.9, "color": "indigo", "band_pt": [7.5, 7.5], "space_after_pt": 0},
-          "note_marker": {"weight": "Regular", "size_pt": 6.5, "leading_pt": 8.2, "color": "soft_black", "band_pt": [6.5, 7.0], "space_after_pt": 0}
+          "note": {
+            "weight": "Regular",
+            "size_pt": 7.0,
+            "leading_pt": 8.8,
+            "color": "soft_black",
+            "band_pt": [
+              6.5,
+              7.0
+            ],
+            "space_after_pt": 1.6
+          },
+          "source_line": {
+            "weight": "Regular",
+            "size_pt": 6.5,
+            "leading_pt": 8.2,
+            "color": "soft_black",
+            "band_pt": [
+              6.5,
+              7.0
+            ],
+            "space_after_pt": 0
+          },
+          "margin_callout": {
+            "weight": "Regular",
+            "size_pt": 7.5,
+            "leading_pt": 9.9,
+            "color": "soft_black",
+            "band_pt": [
+              7.5,
+              7.5
+            ],
+            "space_after_pt": 0
+          },
+          "margin_callout_label": {
+            "weight": "Bold",
+            "size_pt": 7.5,
+            "leading_pt": 9.9,
+            "color": "indigo",
+            "band_pt": [
+              7.5,
+              7.5
+            ],
+            "space_after_pt": 1.5
+          },
+          "disclosures": {
+            "weight": "Regular",
+            "size_pt": 7.5,
+            "leading_pt": 9.9,
+            "color": "soft_black",
+            "band_pt": [
+              7.5,
+              7.5
+            ],
+            "space_after_pt": 2.4
+          },
+          "disclosures_head": {
+            "weight": "Bold",
+            "size_pt": 7.5,
+            "leading_pt": 9.9,
+            "color": "indigo",
+            "band_pt": [
+              7.5,
+              7.5
+            ],
+            "space_after_pt": 0
+          },
+          "note_marker": {
+            "weight": "Regular",
+            "size_pt": 6.5,
+            "leading_pt": 8.2,
+            "color": "soft_black",
+            "band_pt": [
+              6.5,
+              7.0
+            ],
+            "space_after_pt": 0
+          }
         },
         "layout": {
           "notes_rule_color": "lavender_grey",
@@ -686,7 +756,12 @@
           "disclosures_gutter_pt": 36,
           "disclosures_head_gap_pt": 3
         },
-        "disclosure_items": ["conflicts_of_interest", "held_out_brands", "ai_use", "independence"]
+        "disclosure_items": [
+          "conflicts_of_interest",
+          "held_out_brands",
+          "ai_use",
+          "independence"
+        ]
       },
       "table": {
         "header_size_pt": 8.5,
@@ -722,7 +797,7 @@
         "band_text_style": "cover_kicker",
         "band_text_style_note": "typography.number_scale.cover_kicker, C2 variant (7.5 pt Regular, Lavender Grey, tracked 0.06 em)",
         "band_website_tracking_em": 0,
-        "band_separator": " \u00b7 ",
+        "band_separator": " · ",
         "band_code_case": "as_is",
         "band_code_case_note": "The code is set in the caps style and printed exactly as registered (TS-SY-AIAS2.0-r4): upper-casing would print 'R4' and 'V0.40', which is not the registered code. Set to 'upper' to force capitals."
       }
@@ -741,7 +816,7 @@
     "study": "The program's own identifier as in its git tags: v0.22, v1.9 (OSF folders write v22, v1_9); the syntheses are AIAS1.0 and AIAS2.0, after Pablo's example TS-SY-AIAS2.0-r4.",
     "rev": "The report revision: r1, r2, ... A code is never reused. A new revision gets the next rN of its study and report type (revisions count per type, Pablo's default (a), in force Nov 23, 2026: TS-BR-v0.27-r1 beside TS-CS-v0.27-r1); the earlier code stays valid for the earlier PDF.",
     "where_it_appears": [
-      "the last page, bottom: the closing band on Tier 1; the last page's footer line on Tiers 2 and 3, as 'thirdsystem.ai \u00b7 TS-CS-v0.22-r1'",
+      "the last page, bottom: the closing band on Tier 1; the last page's footer line on Tiers 2 and 3, as 'thirdsystem.ai · TS-CS-v0.22-r1'",
       "the Citation block",
       "the PDF metadata (Subject and Keywords)",
       "the file name: TS-CS-v0.22-r1_<title-slug>.pdf",
@@ -909,7 +984,7 @@
         "type": "CS",
         "study": "v0.11",
         "rev": "r1",
-        "title": "PM Software \u00d7 Google Trends Construct Validity",
+        "title": "PM Software × Google Trends Construct Validity",
         "date": "2026-05-10",
         "date_source": "OSF deposit, version 1, 2026-05-10T22:39:36Z",
         "tier": 2,
@@ -1087,7 +1162,7 @@
         "type": "CS",
         "study": "v0.17",
         "rev": "r1",
-        "title": "Premium Kitchenware: Recognition \u00d7 Recall Dissociation",
+        "title": "Premium Kitchenware: Recognition × Recall Dissociation",
         "date": "2026-05-19",
         "date_source": "PDF CreationDate D:20260519223008-04'00' (never deposited on OSF)",
         "tier": 2,
@@ -1328,7 +1403,7 @@
         "type": "CS",
         "study": "v0.24",
         "rev": "r1",
-        "title": "Your Marketing Language Is Now the Machine\u2019s Language",
+        "title": "Your Marketing Language Is Now the Machine’s Language",
         "date": "2026-05-27",
         "date_source": "PDF CreationDate D:20260527133921-04'00' (never deposited on OSF)",
         "tier": 2,
@@ -1355,7 +1430,7 @@
         "type": "CS",
         "study": "v0.25",
         "rev": "r1",
-        "title": "Your Marketing Language Is Now the Machine\u2019s Language",
+        "title": "Your Marketing Language Is Now the Machine’s Language",
         "date": "2026-05-27",
         "date_source": "OSF deposit, version 1, 2026-05-27T22:01:09Z",
         "tier": 2,
@@ -1426,7 +1501,7 @@
         "type": "CS",
         "study": "v0.27",
         "rev": "r1",
-        "title": "What AI Share-of-Voice Doesn\u2019t Capture",
+        "title": "What AI Share-of-Voice Doesn’t Capture",
         "date": "2026-05-31",
         "date_source": "OSF deposit, version 1, 2026-05-31T02:53:30Z",
         "tier": 2,
@@ -1537,7 +1612,7 @@
         "type": "CS",
         "study": "v0.30",
         "rev": "r1",
-        "title": "Recognition Saturates, Consistency Doesn\u2019t",
+        "title": "Recognition Saturates, Consistency Doesn’t",
         "date": "2026-06-03",
         "date_source": "OSF deposit, version 1, 2026-06-03T21:47:57Z",
         "tier": 2,
@@ -1685,7 +1760,7 @@
         "type": "CS",
         "study": "v0.35",
         "rev": "r1",
-        "title": "The Question the Instrument Couldn\u2019t Answer",
+        "title": "The Question the Instrument Couldn’t Answer",
         "date": "2026-06-11",
         "date_source": "OSF deposit, version 1, 2026-06-11T20:14:46Z",
         "tier": 2,
@@ -1706,7 +1781,7 @@
         "type": "CS",
         "study": "v0.35",
         "rev": "r2",
-        "title": "The Question the Instrument Couldn\u2019t Answer",
+        "title": "The Question the Instrument Couldn’t Answer",
         "date": "2026-06-11",
         "date_source": "OSF deposit, version 2, 2026-06-11T20:29:52Z",
         "tier": 2,
@@ -1732,7 +1807,7 @@
         "type": "CS",
         "study": "v0.36",
         "rev": "r1",
-        "title": "The Structure That Wasn\u2019t There",
+        "title": "The Structure That Wasn’t There",
         "date": "2026-06-12",
         "date_source": "OSF deposit, version 1, 2026-06-12T13:14:07Z",
         "tier": 2,
@@ -1753,7 +1828,7 @@
         "type": "CS",
         "study": "v0.36",
         "rev": "r2",
-        "title": "The Structure That Wasn\u2019t There",
+        "title": "The Structure That Wasn’t There",
         "date": "2026-06-12",
         "date_source": "OSF deposit, version 2, 2026-06-12T15:19:47Z",
         "tier": 2,
@@ -1774,7 +1849,7 @@
         "type": "CS",
         "study": "v0.36",
         "rev": "r3",
-        "title": "The Structure That Wasn\u2019t There",
+        "title": "The Structure That Wasn’t There",
         "date": "2026-06-12",
         "date_source": "OSF deposit, version 3, 2026-06-12T17:19:52Z",
         "tier": 2,
@@ -1827,7 +1902,7 @@
         "type": "CS",
         "study": "v0.38",
         "rev": "r1",
-        "title": "Aillio Wins the Expert Answer \u2014 With the Roaster It Replaced",
+        "title": "Aillio Wins the Expert Answer — With the Roaster It Replaced",
         "date": "2026-11-08",
         "date_source": "OSF deposit, version 1, 2026-11-08T06:14:14Z",
         "tier": 2,
@@ -1848,7 +1923,7 @@
         "type": "CS",
         "study": "v0.39",
         "rev": "r1",
-        "title": "Bellwether Owns the No-Vent Answer \u2014 On the Newest AI Assistants",
+        "title": "Bellwether Owns the No-Vent Answer — On the Newest AI Assistants",
         "date": "2026-11-08",
         "date_source": "OSF deposit, version 1, 2026-11-08T23:05:24Z",
         "tier": 2,
@@ -2379,21 +2454,21 @@
         "rev": "r1",
         "title": "Known, but not named",
         "date": "2026-11-24",
-        "date_source": "PDF CreationDate 2026-11-24 08:29:01 CST (local build, not deposited)",
+        "date_source": "OSF deposit, version 1, 2026-11-24T15:16:05Z",
         "tier": 1,
         "design": "v2",
         "git_tag": null,
-        "git_commit": "fe66ffe",
+        "git_commit": "39f566e",
         "repo_path": "reports/output/TS-FL-v0.44-r1_known-but-not-named.pdf",
-        "osf_path": null,
-        "osf_version": null,
+        "osf_path": "v44/report/TS-FL-v0.44-r1_known-but-not-named.pdf",
+        "osf_version": 1,
         "sha256": "93a11d05c288ceb874fb01619c633c317c37160884a5e46bf3084e624224ec8e",
-        "sha256_source": "local build at fe66ffe (reports/build_report_v44_r1.py on branch v0.44-report, cover v0.44_clothing-department-stores.png)",
-        "website": null,
+        "sha256_source": "identical in: OSF v44/report/ v1 (verified by SHA-256 after re-list), local build at 39f566e (reports/output/TS-FL-v0.44-r1_known-but-not-named.pdf), website public/files/reports/v44_known_but_not_named_report.pdf (site 4bbe0eb)",
+        "website": "https://thirdsystem.ai/files/reports/v44_known_but_not_named_report.pdf",
         "status": "current",
         "draft": false,
         "held": false,
-        "note": "DRAFT (status current = the latest FL revision of v0.44, as the register's tests require; draft = not yet published) Tier 1 flagship report of the v0.44 industry-breadth wave (paper v0_44_paper.pdf, 22 pp), in report design system v2 like TS-FL-v0.40-r1. Row 32 review gate of 2026-11-24 (reviews/v0.44-report/2026-11-24.md; open items NP1-NP4 for Pablo). Not deposited on OSF, not on the website. Any rebuild changes the SHA-256 (CreationDate): remove this entry before rebuilding and re-register the new PDF."
+        "note": "Tier 1 flagship report of the v0.44 industry-breadth wave (paper v0_44_paper.pdf, 22 pp), in report design system v2 like TS-FL-v0.40-r1. Row 32 review gate of 2026-11-24 (reviews/v0.44-report/2026-11-24.md). Approved by Pablo 2026-11-24, 8:55 am, with three fixes (OSF location of answers and coding, intro sentence on the refused starts cut, American spelling), applied in 39f566e. Deposited on OSF v44/report (osf.io/ec6wh), receipt reports/output/TS-FL-v0.44-r1_osf_receipt.json; linked on /studies/v0-44/ and the Studies list."
       }
     ]
   }
