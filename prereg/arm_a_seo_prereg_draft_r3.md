@@ -7,7 +7,7 @@
 **Design rules:** S&P work order section 11a (outcome rates by band; the shape written in advance; pooled and within category; each brand once and weighted by size; data as it stood; stability before fit; a reversion baseline). Pablo's OK of 🔴 item (o) is TO CONFIRM; this draft follows 11a either way.
 **Pre-registrant:** Pablo Ulpiano González Castro
 **Status:** **r3 DRAFT, not locked.** Written Tue 2026-11-24 (morning, US Central) by a runner lane for the coordinator, from r2 (b5caf6e, committed the same morning, 7:42 am US Central), after Pablo's decision D12 (b) at 8:13 am US Central ("As you suggest"). r3 changes only `H_A2`'s scale and the sections that describe it (change table below). Not locked. Nothing has been pulled for any study domain. The only DataForSEO calls so far are the coordinator's feasibility test on two domains outside the study (§4.2). The only paid model call is the blind domain cross-check (§3.4, item 3; $0.1161).
-**Lock:** D12 (b) changes `H_A2`'s statistic, so the 24-hour clock restarted with Pablo's decision of Tue 2026-11-24, 8:13 am US Central (§9): lock at the earliest Wed 2026-11-25, about 8:15 am US Central, unless he holds it (r2 said about 7:30 am). Pablo adds the $50 once, after the lock. No study domain is pulled before the lock.
+**Lock:** D12 (b) changes `H_A2`'s statistic, so the 24-hour clock restarts when r3 reaches Pablo (his instruction with D12, Tue 2026-11-24, 8:13 am US Central; §9). r3 was posted for him on the control panel Tue 2026-11-24, about 9:45 am US Central: lock at the earliest Wed 2026-11-25, about 9:45 am US Central, unless he holds it (r2 said about 7:30 am). Pablo adds the $50 once, after the lock. No study domain is pulled before the lock.
 
 ---
 
@@ -25,7 +25,7 @@ Pablo, Tue 2026-11-24, 8:13 am US Central, on D12: "As you suggest" (option b). 
 | §2.3 CONFIRMED / FALSIFIED | partial ρ ≥ 0.30 / ≤ 0 | partial r (confirmatory statistic) ≥ 0.30 / ≤ 0 | Same thresholds, new statistic |
 | §2.11 power | r2 rank-FL size table and base-case power (0.171 / 0.397 at .025) | r3 size table (4 r2 scenarios + R-from-counts scenario) and power table (4 scenarios × 5 effects, log and rank); r2 figures kept as record | Re-run for the new test, seed 20261124, `prereg/armA_power_sim_r3.py` |
 | §6.2 (1), §7 | Common shifts do not change ranks; sales measures used as ranks | Also: they do not change within-group shares or their logs; `H_A2` uses log shares (zero rule, offsets as sensitivity) | Consistency with the new scale |
-| Header, §9, §10 | r2 draft; lock earliest Wed 2026-11-25 ~7:30 am; D12 open | r3 DRAFT, not locked; lock earliest Wed 2026-11-25 ~8:15 am (24 h from 8:13 am); D12 decided (b); file `..._r3.md` | §9: a change to a hypothesis's test restarts the 24 hours |
+| Header, §9, §10 | r2 draft; lock earliest Wed 2026-11-25 ~7:30 am; D12 open | r3 DRAFT, not locked; lock earliest Wed 2026-11-25 ~9:45 am (24 h from r3 reaching Pablo, Tue ~9:45 am); D12 decided (b); file `..._r3.md` | §9: a change to a hypothesis's test restarts the 24 hours |
 
 ---
 
@@ -505,7 +505,7 @@ Cars → airlines → banks → B2B software → spirits → US-site extras, in 
 
 ## §9 Lock procedure and change log
 
-- **r3 draft** goes to the pre-registrant through the coordinator. The 24 hours restarted with his decision D12 (b) of Tue 2026-11-24, 8:13 am US Central (it changes `H_A2`'s statistic); it locks at the earliest Wed 2026-11-25, about 8:15 am US Central, unless he holds it (D1).
+- **r3 draft** goes to the pre-registrant through the coordinator. The 24 hours restart when r3 reaches him (his instruction with D12 (b), Tue 2026-11-24, 8:13 am US Central; it changes `H_A2`'s statistic); r3 was posted for him Tue 2026-11-24, about 9:45 am US Central, so it locks at the earliest Wed 2026-11-25, about 9:45 am US Central, unless he holds it (D1).
 - **Before lock:** the remaining pre-lock tasks of §3.4 and §6.5 are done and written into the lock text (or into the lock commit); every TO CONFIRM in §10 is closed or its default applied. Any further change to a hypothesis, test, threshold, category or brand list, pull calendar, pull mode or spending limit restarts the 24 hours (D12 (b), which changes `H_A2`'s statistic, did: r3).
 - **Lock:** a lock manifest (SHA-256 of this file, the domain list, the join and analysis scripts and their tests, the pull script); commit; tag (name TO CONFIRM, e.g. `arm-a-prereg-r1`); the coordinator pushes and deposits at OSF. Only then does Pablo add the $50, and only then may the pull script run.
 - **After lock:** a locked pre-registration never changes; any change is a dated DEVIATIONS entry, and any new idea is a labelled exploratory analysis.
@@ -539,7 +539,7 @@ Cars → airlines → banks → B2B software → spirits → US-site extras, in 
 
 ### §10.2 Open decisions (recommended default in bold)
 
-- **D1 Lock timing.** **At the earliest 24 h after Pablo's decision D12 (b) of Tue 2026-11-24, 8:13 am US Central: Wed 2026-11-25, about 8:15 am US Central, unless he holds it** (r2: 7:30 am, from his 7:29 am decisions); alternative: January with arm B (idea doc v1.1).
+- **D1 Lock timing.** **At the earliest 24 h after r3 reached Pablo (posted Tue 2026-11-24, about 9:45 am US Central, as he asked with D12 (b) at 8:13 am): Wed 2026-11-25, about 9:45 am US Central, unless he holds it** (r2: 7:30 am, from his 7:29 am decisions); alternative: January with arm B (idea doc v1.1).
 - **D2 Scope (decided by Pablo 2026-11-23, 10:28–10:33 pm).** 72 brands with public sales or share figures + 4 US-site extras = 76 domains (cars 18, airlines 11, banks 26, B2B software 12, spirits 5). Open only: **include the 5 spirits as descriptive** (adds $2.15 over three pulls in mode C); alternative: leave them out.
 - **D3 Broader snapshot.** **None in this arm**; a snapshot of the ~200 brands without sales data only later, on Pablo's go, with its own budget line.
 - **D4 Re-pull mode.** **Mode C: pull 2 incremental (3 months), pull 3 full history; $32.65 expected**; alternatives: mode B all incremental ($30.37), mode A all full ($34.84).
