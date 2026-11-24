@@ -1,0 +1,125 @@
+{
+ "source": "git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl",
+ "prices_on": "2026-12-01",
+ "d7_fisker_defunct": true,
+ "live_units": {
+  "skincare": 24,
+  "cosmetics": 24,
+  "cars": 18,
+  "spirits": 24
+ },
+ "live_units_total": 90,
+ "calls_per_model": {
+  "LIST": 180,
+  "OPEN": 72,
+  "predictor": 168
+ },
+ "calls_total": 1260,
+ "remeasure_total": {
+  "calls": 504,
+  "central": 15.11,
+  "high": 25.77
+ },
+ "judge": {
+  "answers": 72,
+  "usd": 0.22,
+  "price_in_out": [
+   2.0,
+   10.0
+  ],
+  "reserve_counted": 2.5
+ },
+ "remeasure_with_reserve": {
+  "central": 17.61,
+  "high": 28.27
+ },
+ "designs": {
+  "A": {
+   "choice_calls": 756,
+   "predictor_calls": 504,
+   "choice": {
+    "central": 26.31,
+    "high": 57.65
+   },
+   "total": {
+    "central": 43.92,
+    "high": 85.92
+   }
+  },
+  "E": {
+   "choice_calls": 486,
+   "predictor_calls": 504,
+   "choice": {
+    "central": 16.75,
+    "high": 36.88
+   },
+   "total": {
+    "central": 34.36,
+    "high": 65.15
+   }
+  },
+  "F": {
+   "choice_calls": 1512,
+   "predictor_calls": 504,
+   "choice": {
+    "central": 52.63,
+    "high": 115.3
+   },
+   "total": {
+    "central": 70.24,
+    "high": 143.57
+   }
+  }
+ },
+ "blocks": [
+  {
+   "block": "P1-P4 + judge reserve",
+   "calls": 504,
+   "central_cumulative": 17.61,
+   "high_cumulative": 28.27
+  },
+  {
+   "block": "C1 LIST square 1",
+   "calls": 270,
+   "central_block": 9.56,
+   "high_block": 20.77,
+   "central_cumulative": 27.17,
+   "high_cumulative": 49.04
+  },
+  {
+   "block": "C2 OPEN",
+   "calls": 216,
+   "central_block": 7.19,
+   "high_block": 16.12,
+   "central_cumulative": 34.36,
+   "high_cumulative": 65.16
+  },
+  {
+   "block": "C3 LIST square 2",
+   "calls": 270,
+   "central_block": 9.56,
+   "high_block": 20.77,
+   "central_cumulative": 43.92,
+   "high_cumulative": 85.93
+  }
+ ],
+ "projection_after_C1": {
+  "factor": "486/270",
+  "central": 44.38,
+  "high": 86.43
+ },
+ "checks": {
+  "central_below_pause_80": true,
+  "high_below_pause_80": false,
+  "high_below_cap_100": true,
+  "remeasure_calls_504": true,
+  "projection_high_below_cap_100": true
+ },
+ "check_fisker_live_reproduces_stage1_r1": {
+  "A_total": {
+   "central": 44.14,
+   "high": 86.38
+  },
+  "calls_total": 1266
+ }
+}

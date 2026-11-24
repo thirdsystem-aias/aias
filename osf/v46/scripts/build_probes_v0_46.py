@@ -9,8 +9,9 @@ The file has two parts, written in this order:
   1. PREDICTOR rows (section 3.4): the 120 rows of substrates v20-v23 of v0.45's probe file
      (osf/v45/prereg/probes_v0_45.jsonl, which reproduces t4's probe file; its SHA-256 is asserted against
      v0.45's parity record), copied BYTE FOR BYTE in source order (96 Phase A + 24 Phase B).
-  2. CHOICE rows (sections 3.5-3.6): one row per choice call, 254 per model slot, 762 in all, sorted by
-     (block, category, model_slot, brief, square, row, run).
+  2. CHOICE rows (sections 3.5-3.6): one row per choice call, sorted by (block, category, model_slot, brief,
+     square, row, run). With Fisker in Cell D (D7 record of 2026-11-24; manuscript r4): 252 per model slot, 756 in
+     all (1,260 calls with the predictor blocks); with Fisker live it was 254 / 762 / 1,266.
 
 Usage:
   python3 osf/v46/scripts/build_probes_v0_46.py            # writes osf/v46/prereg/probes_v0_46.jsonl + .sha256
@@ -65,8 +66,10 @@ MODEL_SLOTS = ["M1_anthropic", "M2_openai", "M3_google"]
 OPEN_RUNS = 6                                # section 3.6
 N_SQUARES = 2
 CELL_D = ("Pontiac", "Oldsmobile", "Plymouth", "Mercury", "Saturn")   # v0.22 Cell D "Defunct"
-# D7 (section 3.2): Fisker stays live unless a dated check moves it to Cell D. Pending; flag kept here.
-FISKER_DEFUNCT_DEFAULT = False
+# D7 (section 3.2): Fisker stays live unless a dated check moves it to Cell D. Manuscript r4: the default is read
+# from the logged D7 record (FISKER_DEFUNCT_DEFAULT, set below d7_outcome): a valid record -> its outcome; no record
+# or an invalid one (D7 pending) -> Fisker live. The record of 2026-11-24 says cell_d, so every default (probe file,
+# MC_Design, coder, scorer) is the Fisker-in-Cell-D design (18 live cars, 90 live units).
 # r3 task 5 -- D7's check (pre-registration D7: "its US market status is checked before the lock; if it sells no new
 # cars in the US, it is treated like Cell D by a logged clarification before any call"; manuscript section 3.2 note:
 # "an AI check with a dated source, logged, not a manual one"). The check itself needs a model with a source and is
@@ -133,6 +136,10 @@ def d7_outcome(path=D7_PATH):
     if probs:
         return None, rec, probs
     return (not rec["sells_new_cars_us"]), rec, []
+
+
+# r4: the default D7 outcome is the logged record's (pending -> False, Fisker live).
+FISKER_DEFUNCT_DEFAULT = bool(d7_outcome()[0])
 
 
 def fisker_in_probes(choice_rows):
@@ -319,10 +326,21 @@ def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__.split("\n")[0])
     ap.add_argument("--out", default=str(OUT_DEFAULT))
     ap.add_argument("--check", action="store_true", help="build in memory only; do not write")
-    ap.add_argument("--fisker-defunct", action="store_true", help="D7 outcome: treat Fisker as Cell D")
+    g = ap.add_mutually_exclusive_group()
+    g.add_argument("--fisker-defunct", dest="fisker", action="store_const", const=True, default=None,
+                   help="treat Fisker as Cell D (default: the logged D7 record's outcome)")
+    g.add_argument("--fisker-live", dest="fisker", action="store_const", const=False,
+                   help="treat Fisker as live (the design before D7; for comparison only)")
     a = ap.parse_args(argv)
-    body, choice, pred = build(a.fisker_defunct)
-    fails = mc_design(choice, a.fisker_defunct)
+    fd = FISKER_DEFUNCT_DEFAULT if a.fisker is None else a.fisker
+    if not a.check and fd != FISKER_DEFUNCT_DEFAULT:
+        print("[v46] refused: the probe file must follow the D7 record (use --check to compare designs)")
+        return 2
+    print(f"[v46] D7: Fisker {'Cell D' if fd else 'live'} "
+          f"({'D7 record' if a.fisker is None else 'flag'}; record {D7_PATH.name}: "
+          f"{'cell_d' if d7_outcome()[0] else ('live' if d7_outcome()[0] is False else 'pending')})")
+    body, choice, pred = build(fd)
+    fails = mc_design(choice, fd)
     mat = call_matrix(pred, choice)
     sha = sha256_bytes(body)
     print(f"[v46] predictor rows {len(pred)} (MC_Probes: source sha256 = t4 {SRC_SHA256[:12]}...)")

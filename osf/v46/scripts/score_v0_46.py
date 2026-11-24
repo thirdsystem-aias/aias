@@ -45,10 +45,20 @@ U_CONF, U_FALS = 0.70, 0.60
 OR_CONF, OR_FALS = 1.25, 1.05
 ALPHA = 0.05
 ROBUST_BAND = (0.45, 0.55)
-MIN_VALID = {"H1": 450, "H2": 120, "H3": 200, "H4": 200}
-MIN_VALID_NO_SPIRITS = {"H1": 331, "H2": 90, "H3": 147, "H4": 147}
-DESIGNED = {"LIST": 182, "OPEN": 72}                 # per model (section 5.4)
-DESIGNED_NO_SPIRITS = {"LIST": 134, "OPEN": 54}      # DECISION NEEDED: 2 x 67 live units; 3 categories x 18
+MIN_VALID = {"H1": 450, "H2": 120, "H3": 200, "H4": 200}   # fixed 2026-11-11 (section 5.4); not scaled by D7
+# r4 (D7 = cell_d): designed counts follow the live units of the probe builder (which follow the D7 record):
+# Fisker in Cell D -> 90 live units, LIST 180 per model (540 in all), choice calls 756; Fisker live it was
+# 91 / 182 / 546 / 762.
+_LIVE_N = {c: len(v) for c, v in B.live_units().items()}
+DESIGNED = {"LIST": B.N_SQUARES * sum(_LIVE_N.values()), "OPEN": len(B.CATEGORIES) * len(B.BRIEFS) * B.OPEN_RUNS}
+DESIGNED_NO_SPIRITS = {"LIST": B.N_SQUARES * (sum(_LIVE_N.values()) - _LIVE_N["spirits"]),   # DECISION NEEDED
+                       "OPEN": (len(B.CATEGORIES) - 1) * len(B.BRIEFS) * B.OPEN_RUNS}
+DESIGNED_CHOICE_CALLS = len(B.MODEL_SLOTS) * (DESIGNED["LIST"] + DESIGNED["OPEN"])
+# Section 5.4: without premium spirits, 450 and 200 are scaled by (designed LIST calls without spirits) / (designed
+# LIST calls), 120 by 3/4; rounded to the nearest integer. Fisker live: 402/546 -> 331, 147; Cell D: 396/540 -> 330, 147.
+_SCALE_LIST = DESIGNED_NO_SPIRITS["LIST"] / DESIGNED["LIST"]
+MIN_VALID_NO_SPIRITS = {"H1": round(MIN_VALID["H1"] * _SCALE_LIST), "H2": round(MIN_VALID["H2"] * 3 / 4),
+                        "H3": round(MIN_VALID["H3"] * _SCALE_LIST), "H4": round(MIN_VALID["H4"] * _SCALE_LIST)}
 ANSWERED_MIN, CODABLE_MIN, CODABLE_FLAG = 0.90, 0.70, 0.85
 MIN_RATED_UNITS = 5                                  # H3 (and, DECISION NEEDED, H4): categories entering
 RATING_FLOOR = 6
@@ -411,8 +421,9 @@ def checks(coded, cfg, shares):
     out["MC_Defunct"] = {"defunct_share_open": dfn, "flag": dfn is not None and dfn > 0.02}
     n_choice = len(coded)
     answered = sum(r["code"] != "MISSING" for r in coded)
-    out["MC_Complete_choice_part"] = {"answered": answered, "designed": 762, "share": answered / 762,
-                                      "pass": answered / 762 >= 0.98, "records": n_choice,
+    dc = DESIGNED_CHOICE_CALLS
+    out["MC_Complete_choice_part"] = {"answered": answered, "designed": dc, "share": answered / dc,
+                                      "pass": answered / dc >= 0.98, "records": n_choice,
                                       "note": "predictor part (504 calls) checked from the raw file, not here"}
     tr = defaultdict(lambda: [0, 0])
     for r in coded:

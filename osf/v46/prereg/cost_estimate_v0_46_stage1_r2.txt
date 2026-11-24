@@ -1,0 +1,14 @@
+source git v0.42-scoring-locked:osf/v42/data/t4_raw.jsonl; prices on 2026-12-01; D7 Fisker Cell D = True
+live units {'skincare': 24, 'cosmetics': 24, 'cars': 18, 'spirits': 24} = 90; calls per model {'LIST': 180, 'OPEN': 72, 'predictor': 168}; calls in all 1260
+re-measure {'calls': 504, 'central': 15.11, 'high': 25.77}; judge {'answers': 72, 'usd': 0.22, 'price_in_out': (2.0, 10.0), 'reserve_counted': 2.5}
+re-measure + judge reserve: {'central': 17.61, 'high': 28.27}
+design A: 756 choice + 504 predictor calls; choice {'central': 26.31, 'high': 57.65}; total {'central': 43.92, 'high': 85.92}
+design E: 486 choice + 504 predictor calls; choice {'central': 16.75, 'high': 36.88}; total {'central': 34.36, 'high': 65.15}
+design F: 1512 choice + 504 predictor calls; choice {'central': 52.63, 'high': 115.3}; total {'central': 70.24, 'high': 143.57}
+  block P1-P4 + judge reserve   504 calls  cumulative central $17.61  high $28.27
+  block C1 LIST square 1        270 calls  cumulative central $27.17  high $49.04
+  block C2 OPEN                 216 calls  cumulative central $34.36  high $65.16
+  block C3 LIST square 2        270 calls  cumulative central $43.92  high $85.93
+projection after C1 (spend + C1 x 486/270): central $44.38, high $86.43
+check (Fisker live, = stage1 r1): {'A_total': {'central': 44.14, 'high': 86.38}, 'calls_total': 1266}
+checks {'central_below_pause_80': True, 'high_below_pause_80': False, 'high_below_cap_100': True, 'remeasure_calls_504': True, 'projection_high_below_cap_100': True}

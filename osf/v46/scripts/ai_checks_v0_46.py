@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-AIAS v0.46 (#76) Stage 1 -- the two open AI checks before the lock (stage1_manuscript_r2.md Appendix B items 3, 14).
+AIAS v0.46 (#76) Stage 1 -- the two open AI checks before the lock (stage1_manuscript_r3.md 1.2, 3.2, App. B 3, 14).
 
 D7 (Fisker; section 3.2): "an AI check with a dated source, not a manual one", logged as the record whose schema and
 rule are build_probes_v0_46.validate_d7 / d7_outcome (code r3, commit 2d82cec). This script asks one model, with web
@@ -45,7 +45,7 @@ sys.path.insert(0, str(HERE))
 import build_probes_v0_46 as BP  # noqa: E402
 
 V46 = ROOT / "osf" / "v46"
-MANUSCRIPT = V46 / "stage1" / "stage1_manuscript_r2.md"
+MANUSCRIPT = V46 / "stage1" / "stage1_manuscript_r3.md"
 P1_PATH = V46 / "prereg" / "p1_quote_check_v0_46.json"
 LOG_PATH = V46 / "data" / "ai_checks_raw_v0_46.jsonl"
 

@@ -54,20 +54,25 @@ class TestProbeBuilder(unittest.TestCase):
     def test_counts_add_up(self):
         m = B.call_matrix(self.pred, self.choice)
         self.assertEqual((m["P1"], m["P2"], m["P3"], m["P4"]), (72, 288, 72, 72))
-        self.assertEqual((m["C1"], m["C2"], m["C3"]), (273, 216, 273))
-        self.assertEqual((m["predictor_total"], m["choice_total"], m["total"]), (504, 762, 1266))
+        # r4: D7 = cell_d (record of 2026-11-24): Fisker in Cell D (Fisker live it was 273 / 762 / 1,266, cars 19)
+        self.assertEqual((m["C1"], m["C2"], m["C3"]), (270, 216, 270))
+        self.assertEqual((m["predictor_total"], m["choice_total"], m["total"]), (504, 756, 1260))
         live = B.live_units()
         self.assertEqual({c: len(v) for c, v in live.items()},
-                         {"skincare": 24, "cosmetics": 24, "cars": 19, "spirits": 24})
+                         {"skincare": 24, "cosmetics": 24, "cars": 18, "spirits": 24})
         for slot in B.MODEL_SLOTS:
-            self.assertEqual(sum(d["model_slot"] == slot and d["condition"] == "LIST" for d in self.choice), 182)
+            self.assertEqual(sum(d["model_slot"] == slot and d["condition"] == "LIST" for d in self.choice), 180)
             self.assertEqual(sum(d["model_slot"] == slot and d["condition"] == "OPEN" for d in self.choice), 72)
 
     def test_brief_rotation(self):
         sev = []
+        live19 = B.build_choice_rows(fisker_defunct=False)    # r4: the uneven case (L = 19) needs Fisker live
         for slot in B.MODEL_SLOTS:
             for sq in (1, 2):
-                rs = [d for d in self.choice if d["category"] == "cars" and d["model_slot"] == slot
+                rs18 = [d for d in self.choice if d["category"] == "cars" and d["model_slot"] == slot
+                        and d["square"] == sq]
+                self.assertEqual(sorted(sum(d["brief"] == b for d in rs18) for b in B.BRIEF_IDS), [6, 6, 6])
+                rs = [d for d in live19 if d["category"] == "cars" and d["model_slot"] == slot
                       and d["square"] == sq]
                 cnt = {b: sum(d["brief"] == b for d in rs) for b in B.BRIEF_IDS}
                 self.assertEqual(sorted(cnt.values()), [6, 6, 7])
@@ -108,7 +113,7 @@ class TestProbeBuilder(unittest.TestCase):
         key = [(d["block"], cat_ix[d["category"]], d["model_slot"], B.BRIEF_IDS.index(d["brief"]), d["square"] or 0,
                 d["row"] or 0, d["run"] or 0) for d in self.choice]
         self.assertEqual(key, sorted(key))
-        self.assertEqual(len({d["probe_id"] for d in self.choice}), 762)
+        self.assertEqual(len({d["probe_id"] for d in self.choice}), 756)
 
     def test_fisker_d7(self):
         live = B.live_units(fisker_defunct=True)
@@ -150,7 +155,7 @@ class TestCoder(unittest.TestCase):
     def test_dry_run(self):
         fails, coded = C.dry_run(log=lambda *_a: None)
         self.assertEqual(fails, [])
-        self.assertEqual(len(coded), 762)
+        self.assertEqual(len(coded), 756)
 
     def test_google_enum_finish_reasons(self):
         # r3 task 1: str(google FinishReason) is "FinishReason.MAX_TOKENS"; it must count as a length stop
@@ -598,13 +603,14 @@ class TestAcquire(unittest.TestCase):
             anc.write_text(json.dumps({"commit": sha}))
             self.assertEqual(A.lock_guard(anchor=anc, ls_remote=ls), sha)
 
-    def test_dry_run_count_1266(self):
+    def test_dry_run_count_1260(self):
         out = A.dry_run(log=QUIET, cost=False)
         self.assertTrue(out["ok"])
-        self.assertEqual(out["total_calls"], 1266)
+        self.assertEqual(out["d7"], "Cell D")
+        self.assertEqual(out["total_calls"], 1260)
         self.assertEqual({b: sum(v.values()) for b, v in out["by_block"].items()}, A.EXPECTED)
-        self.assertEqual(len({s["call_id"] for s in self.specs}), 1266)
-        self.assertEqual(Counter(s["condition"] for s in self.specs), {"S0": 504, "LIST": 546, "OPEN": 216})
+        self.assertEqual(len({s["call_id"] for s in self.specs}), 1260)
+        self.assertEqual(Counter(s["condition"] for s in self.specs), {"S0": 504, "LIST": 540, "OPEN": 216})
         self.assertEqual([s["block"] for s in self.specs], sorted((s["block"] for s in self.specs),
                                                                   key=A.BLOCK_IDS.index))
 
@@ -614,7 +620,9 @@ class TestAcquire(unittest.TestCase):
         if r.returncode != 0:
             self.skipTest("t4 tag not available")
         pc = A.projected_cost()
-        self.assertEqual(pc["total"], {"central": 44.14, "high": 86.38})      # = manuscript section 3.9
+        self.assertEqual(pc["total"], {"central": 43.92, "high": 85.92})      # = manuscript r4 section 3.9
+        self.assertEqual(pc["choice_calls"], 756)
+        self.assertTrue(pc["d7_fisker_defunct"])
         self.assertEqual(pc["predictor_calls"], 504)
 
     def test_fork_chunks_verbatim(self):
@@ -721,7 +729,7 @@ class TestAcquire(unittest.TestCase):
             self.assertEqual(len(sent), 1)
         with tempfile.TemporaryDirectory() as d:
             specs, sent, runner, raw, state, sr = self._world(d)
-            led = A.BG.Ledger(raw, state, cap=5.5, pause_at=99)      # P1 + C1 fit; C1 x 489/273 does not
+            led = A.BG.Ledger(raw, state, cap=5.5, pause_at=99)      # P1 + C1 fit; C1 x 486/270 does not
             st = A.run_collection(specs, led, raw, {"batch": runner, "standard": runner}, sr, self.panel, log=QUIET)
             self.assertEqual(st, "pause")
             self.assertIn("projection", led.halt_reason)
@@ -921,9 +929,12 @@ class TestD7Fisker(unittest.TestCase):
         with self.assertRaises(A.Refused):                                   # pending
             A.d7_guard(Path(tempfile.mkdtemp()) / "none.json", raw_path=nores)
         live = self._write(dict(self.GOOD, sells_new_cars_us=True, decision="live"))
-        self.assertFalse(A.d7_guard(live, raw_path=nores))                   # committed probes have Fisker live
+        with self.assertRaises(A.Refused):                                   # r4: counts are for Cell D only
+            A.d7_guard(live, raw_path=nores)
+        self.assertTrue(A.d7_guard(self._write(self.GOOD), raw_path=nores))  # r4: committed probes have Cell D
+        _b, cho_live, _p = B.build(fisker_defunct=False)
         with self.assertRaises(A.Refused):                                   # Cell D, but the probes show Fisker
-            A.d7_guard(self._write(self.GOOD), raw_path=nores)
+            A.d7_guard(self._write(self.GOOD), probes=cho_live, raw_path=nores)
         _body, cho, _pred = B.build(fisker_defunct=True)
         self.assertFalse(B.fisker_in_probes(cho))
         self.assertTrue(A.d7_guard(self._write(self.GOOD), probes=cho, raw_path=nores))
@@ -933,10 +944,35 @@ class TestD7Fisker(unittest.TestCase):
 
     def test_coder_after_d7(self):
         rec = {"condition": "OPEN", "category": "cars", "text": "x\nCHOICE: Fisker"}
-        self.assertEqual(C.code_answer(rec)["code"], "VALID")
+        self.assertEqual(C.code_answer(rec, live=B.live_units(fisker_defunct=False))["code"], "VALID")
         got = C.code_answer(rec, live=B.live_units(fisker_defunct=True))
         self.assertEqual((got["code"], got["unit"]), ("DEFUNCT", "Fisker"))
-        self.assertEqual(len(B.live_units(True)["cars"]) + 1, len(B.live_units()["cars"]))
+        self.assertEqual(C.code_answer(rec)["code"], "DEFUNCT")             # r4: the default follows the record
+        self.assertEqual(len(B.live_units(True)["cars"]) + 1, len(B.live_units(False)["cars"]))
+
+    def test_cell_d_applied_r4(self):
+        """r4: the committed D7 record (cell_d), the probe file, the acquisition counts and the scorer agree."""
+        import acquire_v0_46 as A
+        defunct, rec, probs = B.d7_outcome()
+        self.assertEqual((defunct, probs, rec["decision"]), (True, [], "cell_d"))
+        self.assertTrue(B.FISKER_DEFUNCT_DEFAULT)
+        self.assertNotIn("Fisker", B.live_units()["cars"])
+        probes = A.load_probes()                                             # committed probe file
+        cho = [p for p in probes if p.get("part") == "choice"]
+        self.assertFalse(B.fisker_in_probes(cho))
+        self.assertTrue(A.d7_guard(raw_path=Path(tempfile.mkdtemp()) / "raw.jsonl"))
+        self.assertEqual(sum(len(v) for v in B.live_units().values()), 90)
+        self.assertEqual((len(probes), len(cho), A.EXPECTED_TOTAL), (876, 756, 1260))
+        self.assertEqual(A.EXPECTED, {"P1": 72, "P2": 288, "P3": 72, "P4": 72, "C1": 270, "C2": 216, "C3": 270})
+        self.assertAlmostEqual(A.PROJECTION_FACTOR, 486 / 270)
+        self.assertEqual((S.DESIGNED, S.DESIGNED_NO_SPIRITS, S.DESIGNED_CHOICE_CALLS),
+                         ({"LIST": 180, "OPEN": 72}, {"LIST": 132, "OPEN": 54}, 756))
+        self.assertEqual(S.MIN_VALID, {"H1": 450, "H2": 120, "H3": 200, "H4": 200})
+        self.assertEqual(S.MIN_VALID_NO_SPIRITS, {"H1": 330, "H2": 90, "H3": 147, "H4": 147})
+        # a probe file built with Fisker live (1,266-call design) is refused against this record
+        _b, cho_live, _p = B.build(fisker_defunct=False)
+        with self.assertRaises(A.Refused):
+            A.d7_guard(probes=cho_live, raw_path=Path(tempfile.mkdtemp()) / "raw.jsonl")
 
     def test_run_calls_d7_guard_before_panel(self):
         import acquire_v0_46 as A
