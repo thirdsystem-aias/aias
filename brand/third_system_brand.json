@@ -2995,6 +2995,21 @@
         "tool": "ChatGPT (OpenAI)",
         "generated_on": "2026-11-13",
         "tool_date_source": "tool and date per Pablo, Sat Nov 14, 2026, 8:54 am (via the control chat)"
+      },
+      {
+        "report": "v0.44 industry-breadth Tier 1 report, TS-FL-v0.44-r1 \u201cKnown, but not named\u201d",
+        "tier": 1,
+        "cover": "C2",
+        "photo": "G-v044-clothing-department-stores",
+        "photo_source": "AI-generated library image (photo_library_ai/selected/print/v0.44_clothing-department-stores.png); not an A-pool photo",
+        "credit": "Cover image generated with AI",
+        "generated": "AI",
+        "status": "used from the TS-FL-v0.44-r1 PDF on (cover set in reports/build_report_v44_r1.py, COVER_PHOTO); report approved by Pablo 2026-11-24, 8:55 am; published 2026-11-24 (OSF v44/report v1, website 4bbe0eb); AI credit in the colophon",
+        "recorded": "2026-11-24",
+        "source": "report_specs.json report_catalogue entry TS-FL-v0.44-r1; library_v2 entry v0.44_clothing-department-stores",
+        "recorded_in": "kept apart from usage_record because that list is for the licensed A-pool; library v2 images are listed in photo_library_ai/selected/library_manifest.json",
+        "tool": "ChatGPT (OpenAI)",
+        "generated_on": "2026-11-12"
       }
     ],
     "library_v2_dir": "Try system book/photo_library_ai/",
@@ -3175,7 +3190,7 @@
         "generated": "AI",
         "study": "v0.44",
         "category": "clothing-department-stores",
-        "status": "planned",
+        "status": "published",
         "file_web": "selected/web/v0.44_clothing-department-stores.png",
         "file_print": "selected/print/v0.44_clothing-department-stores.png",
         "credit": "Cover image generated with AI",
