@@ -1,0 +1,4257 @@
+{
+ "_meta": {
+  "inputs": {
+   "osf/v44/v44_verdicts.json": "65ccc4933bc7bfa1b433f9ed2f6298855a79e269fdd0f18436f35f51983e1b62",
+   "osf/v44/v44_unit_table.csv": "ed51d2d3b350af4d88a9d5acc9b53743f411176de5fbeb33c8745f07ab68fb8d",
+   "osf/v44/data/v44_raw.jsonl": "4b4f06b5e653d0216d06a40212affd66f027ff1900a9fbeabc9777572c95825e",
+   "osf/v44/data/coded/v44_phase_a.csv": "92f7a377af5347fe9b32626674c4438030140c90dbfe17e81ce2f9ae3c56a128",
+   "osf/v44/data/coded/v44_phase_b.csv": "8df7d49b7d36e141aaff352a181937820346e91bc06b3647b7de3e91a9307519",
+   "osf/v44/data/coded/v44_alias_audit.csv": "90e1a6d20093d1dfd8bdc9fe4822764bdedc98a35c0479ad7d77683a83d38c13",
+   "osf/v44/registries/industries_v0_44.csv": "f2984bc3665d79f270b47cd18d3e0fe66d10e9c5ee92963a2056ba0b83865060",
+   "osf/v44/data/v44_budget_state.json": "e82611477c7934a3f14624ecffa39204ea1544bba34643116747954f0839f7d2"
+  },
+  "v42_brand_table": {
+   "commit": "31c64c6",
+   "path": "osf/v42/v42_brand_table.csv",
+   "sha256": "19bbc17ece805c26d90426424821a4e8f61dfa0f763f1fe8ad9594dc1791d946"
+  },
+  "script": "papers/v0_44/values_v0_44.py"
+ },
+ "values": {
+  "design.expected_total": {
+   "value": 909,
+   "display": "909",
+   "source": "osf/v44/v44_verdicts.json:design.expected_total"
+  },
+  "design.models_used": {
+   "value": [
+    "claude-fable-5-2",
+    "gpt-6-astra",
+    "gemini-4-argon"
+   ],
+   "display": "claude-fable-5-2, gpt-6-astra, gemini-4-argon",
+   "source": "osf/v44/v44_verdicts.json:design.models_used"
+  },
+  "MC_Complete.answered": {
+   "value": 909,
+   "display": "909",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Complete.answered"
+  },
+  "MC_Complete.expected": {
+   "value": 909,
+   "display": "909",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Complete.expected"
+  },
+  "MC_Complete.share": {
+   "value": 1.0,
+   "display": "100.0%",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Complete.share"
+  },
+  "MC_Complete.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Complete.pass"
+  },
+  "MC_Served.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Served.pass"
+  },
+  "MC_Window.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.pass"
+  },
+  "MC_Budget.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Budget.pass"
+  },
+  "MC_Parity.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.passed"
+  },
+  "MC_Parity.P1": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.detail.P1"
+  },
+  "MC_Parity.P2": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.detail.P2.passed"
+  },
+  "MC_Parity.P2.lines_checked": {
+   "value": 912,
+   "display": "912",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.detail.P2.lines_checked"
+  },
+  "MC_Parity.P2.prompt_mismatches": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.detail.P2.prompt_mismatches"
+  },
+  "MC_Parity.P2.sha_short": {
+   "value": "107d9401c18d",
+   "display": "107d9401c18d",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Parity.detail.P2.probe_sha256"
+  },
+  "MC_Served.n_mismatched": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Served.n_mismatched"
+  },
+  "MC_Truncation.at_cap_total": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Truncation.<model>.at_cap (sum)"
+  },
+  "MC_Truncation.flagged": {
+   "value": false,
+   "display": "none flagged",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Truncation.<model>.flag_above_5pct"
+  },
+  "MC_Truncation.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Truncation.<model>.flag_above_5pct (none set)"
+  },
+  "MC_Window.first_ct": {
+   "value": "2026-11-24T06:08:51.153589+00:00",
+   "display": "00:08",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.first_call_utc (shown in US Central, UTC-6)"
+  },
+  "MC_Window.last_ct": {
+   "value": "2026-11-24T08:08:18.848369+00:00",
+   "display": "02:08",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.last_call_utc (shown in US Central, UTC-6)"
+  },
+  "MC_Window.first_utc": {
+   "value": "2026-11-24T06:08:51.153589+00:00",
+   "display": "06:08:51",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.first_call_utc"
+  },
+  "MC_Window.last_utc": {
+   "value": "2026-11-24T08:08:18.848369+00:00",
+   "display": "08:08:18",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.last_call_utc"
+  },
+  "MC_Window.span_hours": {
+   "value": 1.9910263277777778,
+   "display": "1.99",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Window.span_hours"
+  },
+  "MC_Budget.spend_usd": {
+   "value": 9.766626,
+   "display": "$9.77",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Budget.spend_usd"
+  },
+  "MC_Budget.raw_lines": {
+   "value": 912,
+   "display": "912",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Budget.raw_lines"
+  },
+  "MC_Budget.never_sent": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:manipulation_checks.MC_Budget.design_calls_never_sent"
+  },
+  "raw.lines": {
+   "value": 912,
+   "display": "912",
+   "source": "osf/v44/data/v44_raw.jsonl: line count"
+  },
+  "raw.main_ok": {
+   "value": 906,
+   "display": "906",
+   "source": "osf/v44/data/v44_raw.jsonl: status ok, excluding the re-run lines"
+  },
+  "raw.errors": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v44/data/v44_raw.jsonl: status error"
+  },
+  "raw.error_kind": {
+   "value": [
+    "ConnectTimeout"
+   ],
+   "display": "ConnectTimeout",
+   "source": "osf/v44/data/v44_raw.jsonl: error field of error lines"
+  },
+  "raw.error_model": {
+   "value": [
+    "gemini-4-argon"
+   ],
+   "display": "gemini-4-argon",
+   "source": "osf/v44/data/v44_raw.jsonl: model_requested of error lines"
+  },
+  "raw.error_probes": {
+   "value": [
+    "HOT_A_HOT03",
+    "HOT_A_HOT04",
+    "HOT_A_HOT05"
+   ],
+   "display": "HOT_A_HOT03, HOT_A_HOT04, HOT_A_HOT05",
+   "source": "osf/v44/data/v44_raw.jsonl: probe_id of error lines"
+  },
+  "raw.error_first_ct": {
+   "value": "2026-11-24T07:09:17.378811+00:00",
+   "display": "01:09",
+   "source": "osf/v44/data/v44_raw.jsonl: started_utc of error lines (US Central)"
+  },
+  "raw.rerun_ok": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v44/data/v44_raw.jsonl: re-run lines (call IDs of error lines, status ok)"
+  },
+  "raw.rerun_cost": {
+   "value": 0.000456,
+   "display": "$0.000456",
+   "source": "osf/v44/data/v44_raw.jsonl: sum of cost_usd over the re-run lines"
+  },
+  "raw.main_end_ct": {
+   "value": "2026-11-24T07:32:48.140117+00:00",
+   "display": "01:32",
+   "source": "osf/v44/data/v44_raw.jsonl: latest finished_utc of the main pass (US Central)"
+  },
+  "raw.rerun_start_ct": {
+   "value": "2026-11-24T08:07:58.473540+00:00",
+   "display": "02:07",
+   "source": "osf/v44/data/v44_raw.jsonl: earliest started_utc of the re-run lines (US Central)"
+  },
+  "raw.empty_retry": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/data/v44_raw.jsonl: lines with empty_retry true"
+  },
+  "raw.empty": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/data/v44_raw.jsonl: lines with status empty"
+  },
+  "budget.window": {
+   "value": [
+    "2026-11-24",
+    "2026-11-28"
+   ],
+   "display": "2026-11-24 to 2026-11-28",
+   "source": "osf/v44/data/v44_budget_state.json:window"
+  },
+  "coded.a_rows": {
+   "value": 477,
+   "display": "477",
+   "source": "osf/v44/data/coded/v44_phase_a.csv: data rows"
+  },
+  "coded.b_rows": {
+   "value": 8586,
+   "display": "8,586",
+   "source": "osf/v44/data/coded/v44_phase_b.csv: data rows"
+  },
+  "coded.b_mentions": {
+   "value": 2929,
+   "display": "2,929",
+   "source": "osf/v44/data/coded/v44_phase_b.csv: rows with mentioned = 1"
+  },
+  "alias.matches": {
+   "value": 1507,
+   "display": "1,507",
+   "source": "osf/v44/data/coded/v44_alias_audit.csv: data rows (MC_Alias)"
+  },
+  "alias.answers": {
+   "value": 361,
+   "display": "361",
+   "source": "osf/v44/data/coded/v44_alias_audit.csv: distinct call_id"
+  },
+  "alias.units": {
+   "value": 27,
+   "display": "27",
+   "source": "osf/v44/data/coded/v44_alias_audit.csv: distinct unit_id"
+  },
+  "alias.aliases": {
+   "value": 45,
+   "display": "45",
+   "source": "osf/v44/data/coded/v44_alias_audit.csv: distinct (unit_id, alias)"
+  },
+  "alias.by_unit": {
+   "value": [
+    {
+     "industry": "CVF",
+     "brand": "QuikTrip",
+     "n": 176,
+     "aliases": [
+      [
+       "QuikTrip",
+       98
+      ],
+      [
+       "QT",
+       78
+      ]
+     ]
+    },
+    {
+     "industry": "PHA",
+     "brand": "CVS Pharmacy",
+     "n": 143,
+     "aliases": [
+      [
+       "CVS",
+       115
+      ],
+      [
+       "CVS Pharmacy",
+       23
+      ],
+      [
+       "CVS Caremark",
+       5
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "Erie Insurance",
+     "n": 127,
+     "aliases": [
+      [
+       "Erie",
+       88
+      ],
+      [
+       "Erie Insurance",
+       39
+      ]
+     ]
+    },
+    {
+     "industry": "GRO",
+     "brand": "H-E-B",
+     "n": 124,
+     "aliases": [
+      [
+       "H-E-B",
+       124
+      ]
+     ]
+    },
+    {
+     "industry": "HOT",
+     "brand": "IHG",
+     "n": 110,
+     "aliases": [
+      [
+       "IHG",
+       83
+      ],
+      [
+       "IHG One Rewards",
+       14
+      ],
+      [
+       "IHG Hotels",
+       8
+      ],
+      [
+       "InterContinental Hotels Group",
+       5
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "USAA",
+     "n": 90,
+     "aliases": [
+      [
+       "USAA",
+       90
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "Progressive",
+     "n": 80,
+     "aliases": [
+      [
+       "Progressive",
+       80
+      ]
+     ]
+    },
+    {
+     "industry": "CVF",
+     "brand": "Love's",
+     "n": 80,
+     "aliases": [
+      [
+       "Love's",
+       53
+      ],
+      [
+       "Love's Travel Stops",
+       27
+      ]
+     ]
+    },
+    {
+     "industry": "HOT",
+     "brand": "Four Seasons",
+     "n": 71,
+     "aliases": [
+      [
+       "Four Seasons",
+       71
+      ]
+     ]
+    },
+    {
+     "industry": "FAS",
+     "brand": "The Row",
+     "n": 66,
+     "aliases": [
+      [
+       "The Row",
+       66
+      ]
+     ]
+    },
+    {
+     "industry": "FAS",
+     "brand": "Tiffany & Co.",
+     "n": 64,
+     "aliases": [
+      [
+       "Tiffany",
+       32
+      ],
+      [
+       "Tiffany & Co.",
+       16
+      ],
+      [
+       "Tiffany & Co",
+       16
+      ]
+     ]
+    },
+    {
+     "industry": "APR",
+     "brand": "Gap",
+     "n": 58,
+     "aliases": [
+      [
+       "Gap",
+       49
+      ],
+      [
+       "Gap Inc",
+       9
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "Travelers",
+     "n": 50,
+     "aliases": [
+      [
+       "Travelers",
+       50
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "Farmers Insurance",
+     "n": 43,
+     "aliases": [
+      [
+       "Farmers",
+       34
+      ],
+      [
+       "Farmers Insurance",
+       9
+      ]
+     ]
+    },
+    {
+     "industry": "QSR",
+     "brand": "Chipotle",
+     "n": 36,
+     "aliases": [
+      [
+       "Chipotle",
+       29
+      ],
+      [
+       "Chipotle Mexican Grill",
+       7
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "Nationwide",
+     "n": 34,
+     "aliases": [
+      [
+       "Nationwide",
+       34
+      ]
+     ]
+    },
+    {
+     "industry": "APR",
+     "brand": "Ross Dress for Less",
+     "n": 32,
+     "aliases": [
+      [
+       "Ross",
+       19
+      ],
+      [
+       "Ross Dress for Less",
+       13
+      ]
+     ]
+    },
+    {
+     "industry": "GRO",
+     "brand": "A&P",
+     "n": 30,
+     "aliases": [
+      [
+       "A&P",
+       27
+      ],
+      [
+       "Great Atlantic & Pacific Tea",
+       3
+      ]
+     ]
+    },
+    {
+     "industry": "GRO",
+     "brand": "Sprouts Farmers Market",
+     "n": 27,
+     "aliases": [
+      [
+       "Sprouts",
+       17
+      ],
+      [
+       "Sprouts Farmers Market",
+       10
+      ]
+     ]
+    },
+    {
+     "industry": "FAS",
+     "brand": "Coach",
+     "n": 15,
+     "aliases": [
+      [
+       "Coach",
+       15
+      ]
+     ]
+    },
+    {
+     "industry": "QSR",
+     "brand": "Domino's",
+     "n": 13,
+     "aliases": [
+      [
+       "Domino's",
+       13
+      ]
+     ]
+    },
+    {
+     "industry": "APR",
+     "brand": "Burlington",
+     "n": 12,
+     "aliases": [
+      [
+       "Burlington",
+       10
+      ],
+      [
+       "Burlington Coat Factory",
+       2
+      ]
+     ]
+    },
+    {
+     "industry": "FAS",
+     "brand": "Celine",
+     "n": 11,
+     "aliases": [
+      [
+       "Celine",
+       11
+      ]
+     ]
+    },
+    {
+     "industry": "QSR",
+     "brand": "Subway",
+     "n": 8,
+     "aliases": [
+      [
+       "Subway",
+       8
+      ]
+     ]
+    },
+    {
+     "industry": "INS",
+     "brand": "AAA",
+     "n": 5,
+     "aliases": [
+      [
+       "AAA",
+       4
+      ],
+      [
+       "Auto Club",
+       1
+      ]
+     ]
+    },
+    {
+     "industry": "QSR",
+     "brand": "Cava",
+     "n": 1,
+     "aliases": [
+      [
+       "Cava",
+       1
+      ]
+     ]
+    },
+    {
+     "industry": "FAS",
+     "brand": "Chloé",
+     "n": 1,
+     "aliases": [
+      [
+       "Chloé",
+       1
+      ]
+     ]
+    }
+   ],
+   "display": "",
+   "source": "osf/v44/data/coded/v44_alias_audit.csv: matches per unit and alias"
+  },
+  "reg.labels": {
+   "value": {
+    "INS": "Car insurance",
+    "HOT": "Hotel chains",
+    "GRO": "Grocery store chains",
+    "QSR": "Fast-food chains",
+    "APR": "Clothing and department stores",
+    "PHA": "Pharmacies",
+    "CVF": "Convenience stores and gas stations",
+    "FAS": "Fashion and luxury"
+   },
+   "display": "",
+   "source": "osf/v44/registries/industries_v0_44.csv: label"
+  },
+  "reg.units_total": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/registries/industries_v0_44.csv: sum of units"
+  },
+  "H_Spread.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.verdict"
+  },
+  "H_Spread.n_with_spread": {
+   "value": 8,
+   "display": "8",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.n_with_spread"
+  },
+  "H_Spread.n_industries": {
+   "value": 8,
+   "display": "8",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.n_industries"
+  },
+  "H_Spread.sd_min": {
+   "value": 0.2668637817434233,
+   "display": "0.267",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.sd (minimum)"
+  },
+  "H_Spread.sd_min_ind": {
+   "value": "FAS",
+   "display": "fashion and luxury",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry (argmin sd)"
+  },
+  "H_Spread.sd_max": {
+   "value": 0.3769095448964215,
+   "display": "0.377",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.sd (maximum)"
+  },
+  "H_Spread.sd_max_ind": {
+   "value": "CVF",
+   "display": "convenience stores and gas stations",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry (argmax sd)"
+  },
+  "H_Spread.ci_low_min": {
+   "value": 0.19113252591906468,
+   "display": "0.191",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.sd_ci95[0] (minimum lower bound)"
+  },
+  "H_Spread.ci_low_min_ind": {
+   "value": "APR",
+   "display": "clothing and department stores",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry (argmin of the lower bound)"
+  },
+  "H_Spread.INS.n": {
+   "value": 22,
+   "display": "22",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.n"
+  },
+  "H_Spread.INS.sd": {
+   "value": 0.33556627195545613,
+   "display": "0.336",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.sd"
+  },
+  "H_Spread.INS.ci": {
+   "value": [
+    0.26629672906170826,
+    0.3823280135631203
+   ],
+   "display": "0.266–0.382",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.sd_ci95"
+  },
+  "H_Spread.INS.range": {
+   "value": [
+    0.0,
+    1.0
+   ],
+   "display": "0.00–1.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.range"
+  },
+  "H_Spread.INS.share0": {
+   "value": 0.2727272727272727,
+   "display": "27%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.share_at_0"
+  },
+  "H_Spread.INS.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.INS.spread"
+  },
+  "H_Spread.HOT.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.n"
+  },
+  "H_Spread.HOT.sd": {
+   "value": 0.34327259840767704,
+   "display": "0.343",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.sd"
+  },
+  "H_Spread.HOT.ci": {
+   "value": [
+    0.2133591308367028,
+    0.4082451140869445
+   ],
+   "display": "0.213–0.408",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.sd_ci95"
+  },
+  "H_Spread.HOT.range": {
+   "value": [
+    0.0,
+    0.9814814814814815
+   ],
+   "display": "0.00–0.98",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.range"
+  },
+  "H_Spread.HOT.share0": {
+   "value": 0.45,
+   "display": "45%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.share_at_0"
+  },
+  "H_Spread.HOT.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.HOT.spread"
+  },
+  "H_Spread.GRO.n": {
+   "value": 19,
+   "display": "19",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.n"
+  },
+  "H_Spread.GRO.sd": {
+   "value": 0.3616864381190485,
+   "display": "0.362",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.sd"
+  },
+  "H_Spread.GRO.ci": {
+   "value": [
+    0.2192353177405847,
+    0.44099420417627827
+   ],
+   "display": "0.219–0.441",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.sd_ci95"
+  },
+  "H_Spread.GRO.range": {
+   "value": [
+    0.0,
+    1.0
+   ],
+   "display": "0.00–1.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.range"
+  },
+  "H_Spread.GRO.share0": {
+   "value": 0.42105263157894735,
+   "display": "42%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.share_at_0"
+  },
+  "H_Spread.GRO.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.GRO.spread"
+  },
+  "H_Spread.QSR.n": {
+   "value": 21,
+   "display": "21",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.n"
+  },
+  "H_Spread.QSR.sd": {
+   "value": 0.31458871729162474,
+   "display": "0.315",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.sd"
+  },
+  "H_Spread.QSR.ci": {
+   "value": [
+    0.21462103882868067,
+    0.372652330121728
+   ],
+   "display": "0.215–0.373",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.sd_ci95"
+  },
+  "H_Spread.QSR.range": {
+   "value": [
+    0.0,
+    0.9814814814814815
+   ],
+   "display": "0.00–0.98",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.range"
+  },
+  "H_Spread.QSR.share0": {
+   "value": 0.09523809523809523,
+   "display": "10%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.share_at_0"
+  },
+  "H_Spread.QSR.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.QSR.spread"
+  },
+  "H_Spread.APR.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.n"
+  },
+  "H_Spread.APR.sd": {
+   "value": 0.2781994292065258,
+   "display": "0.278",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.sd"
+  },
+  "H_Spread.APR.ci": {
+   "value": [
+    0.19113252591906468,
+    0.3381999600189236
+   ],
+   "display": "0.191–0.338",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.sd_ci95"
+  },
+  "H_Spread.APR.range": {
+   "value": [
+    0.0,
+    0.9444444444444444
+   ],
+   "display": "0.00–0.94",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.range"
+  },
+  "H_Spread.APR.share0": {
+   "value": 0.0625,
+   "display": "6%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.share_at_0"
+  },
+  "H_Spread.APR.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.APR.spread"
+  },
+  "H_Spread.PHA.n": {
+   "value": 15,
+   "display": "15",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.n"
+  },
+  "H_Spread.PHA.sd": {
+   "value": 0.3498949262009838,
+   "display": "0.350",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.sd"
+  },
+  "H_Spread.PHA.ci": {
+   "value": [
+    0.24821739084037509,
+    0.40317025949614677
+   ],
+   "display": "0.248–0.403",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.sd_ci95"
+  },
+  "H_Spread.PHA.range": {
+   "value": [
+    0.0,
+    0.9629629629629629
+   ],
+   "display": "0.00–0.96",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.range"
+  },
+  "H_Spread.PHA.share0": {
+   "value": 0.2,
+   "display": "20%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.share_at_0"
+  },
+  "H_Spread.PHA.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.PHA.spread"
+  },
+  "H_Spread.CVF.n": {
+   "value": 19,
+   "display": "19",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.n"
+  },
+  "H_Spread.CVF.sd": {
+   "value": 0.3769095448964215,
+   "display": "0.377",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.sd"
+  },
+  "H_Spread.CVF.ci": {
+   "value": [
+    0.28991399683957986,
+    0.4261956559290332
+   ],
+   "display": "0.290–0.426",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.sd_ci95"
+  },
+  "H_Spread.CVF.range": {
+   "value": [
+    0.0,
+    1.0
+   ],
+   "display": "0.00–1.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.range"
+  },
+  "H_Spread.CVF.share0": {
+   "value": 0.2631578947368421,
+   "display": "26%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.share_at_0"
+  },
+  "H_Spread.CVF.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.CVF.spread"
+  },
+  "H_Spread.FAS.n": {
+   "value": 24,
+   "display": "24",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.n"
+  },
+  "H_Spread.FAS.sd": {
+   "value": 0.2668637817434233,
+   "display": "0.267",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.sd"
+  },
+  "H_Spread.FAS.ci": {
+   "value": [
+    0.2034551550018814,
+    0.31012836510139774
+   ],
+   "display": "0.203–0.310",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.sd_ci95"
+  },
+  "H_Spread.FAS.range": {
+   "value": [
+    0.0,
+    0.8333333333333334
+   ],
+   "display": "0.00–0.83",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.range"
+  },
+  "H_Spread.FAS.share0": {
+   "value": 0.125,
+   "display": "12%",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.share_at_0"
+  },
+  "H_Spread.FAS.spread": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Spread.per_industry.FAS.spread"
+  },
+  "H_Tier.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.verdict"
+  },
+  "H_Tier.n": {
+   "value": 156,
+   "display": "156",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.n"
+  },
+  "H_Tier.rho": {
+   "value": 0.5583792996922062,
+   "display": "0.558",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.rho"
+  },
+  "H_Tier.ci": {
+   "value": [
+    0.4078308775879429,
+    0.6766124610813068
+   ],
+   "display": "0.408–0.677",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.ci95_rho"
+  },
+  "H_Tier.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.p_perm"
+  },
+  "H_Tier.p_exact": {
+   "value": 9.999000099990002e-05,
+   "display": "0.00010",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.p_perm"
+  },
+  "H_Tier.rho_unc": {
+   "value": 0.5834110620576624,
+   "display": "0.583",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.rho_uncentred_comparability"
+  },
+  "H_Tier.INS.rho": {
+   "value": 0.6792356108113244,
+   "display": "0.679",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.INS"
+  },
+  "H_Tier.HOT.rho": {
+   "value": 0.7752376264626503,
+   "display": "0.775",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.HOT"
+  },
+  "H_Tier.GRO.rho": {
+   "value": 0.5917936411309959,
+   "display": "0.592",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.GRO"
+  },
+  "H_Tier.QSR.rho": {
+   "value": 0.48412341087123845,
+   "display": "0.484",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.QSR"
+  },
+  "H_Tier.APR.rho": {
+   "value": 0.6579267794054469,
+   "display": "0.658",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.APR"
+  },
+  "H_Tier.PHA.rho": {
+   "value": 0.3931994451599934,
+   "display": "0.393",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.PHA"
+  },
+  "H_Tier.CVF.rho": {
+   "value": 0.5905381175727049,
+   "display": "0.591",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.CVF"
+  },
+  "H_Tier.FAS.rho": {
+   "value": 0.3738643700513891,
+   "display": "0.374",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho.FAS"
+  },
+  "H_Tier.elig.n": {
+   "value": 156,
+   "display": "156",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.n"
+  },
+  "H_Tier.elig.rho": {
+   "value": 0.5989433226446682,
+   "display": "0.599",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.rho"
+  },
+  "H_Tier.elig.ci": {
+   "value": [
+    0.4412743711799764,
+    0.7051296628034028
+   ],
+   "display": "0.441–0.705",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.ci95_rho"
+  },
+  "H_Tier.elig.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.p_perm"
+  },
+  "H_Tier.elig.rho_unc": {
+   "value": 0.6202940336238523,
+   "display": "0.620",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.rho_uncentred_comparability"
+  },
+  "H_Tier.nofas.n": {
+   "value": 132,
+   "display": "132",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_FAS.n"
+  },
+  "H_Tier.nofas.rho": {
+   "value": 0.6113950661174161,
+   "display": "0.611",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_FAS.rho"
+  },
+  "H_Tier.nofas.ci": {
+   "value": [
+    0.4579695634806118,
+    0.7276649561362568
+   ],
+   "display": "0.458–0.728",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_FAS.ci95_rho"
+  },
+  "H_Tier.nofas.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_FAS.p_perm"
+  },
+  "H_Tier.nofas.rho_unc": {
+   "value": 0.6283136879378699,
+   "display": "0.628",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_FAS.rho_uncentred_comparability"
+  },
+  "H_Tier.nopha.n": {
+   "value": 154,
+   "display": "154",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.n"
+  },
+  "H_Tier.nopha.rho": {
+   "value": 0.5643126498466464,
+   "display": "0.564",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.rho"
+  },
+  "H_Tier.nopha.ci": {
+   "value": [
+    0.4075106476566217,
+    0.6825134687584584
+   ],
+   "display": "0.408–0.683",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.ci95_rho"
+  },
+  "H_Tier.nopha.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.p_perm"
+  },
+  "H_Tier.nopha.rho_unc": {
+   "value": 0.594604140954876,
+   "display": "0.595",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.rho_uncentred_comparability"
+  },
+  "H_Tier.elig.INS.rho": {
+   "value": 0.6414052111492677,
+   "display": "0.641",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.INS"
+  },
+  "H_Tier.elig.HOT.rho": {
+   "value": 0.7739443243918633,
+   "display": "0.774",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.HOT"
+  },
+  "H_Tier.elig.GRO.rho": {
+   "value": 0.7135053767937137,
+   "display": "0.714",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.GRO"
+  },
+  "H_Tier.elig.QSR.rho": {
+   "value": 0.5734725264878551,
+   "display": "0.573",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.QSR"
+  },
+  "H_Tier.elig.APR.rho": {
+   "value": 0.6029411764705882,
+   "display": "0.603",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.APR"
+  },
+  "H_Tier.elig.PHA.rho": {
+   "value": 0.4496519242726204,
+   "display": "0.450",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.PHA"
+  },
+  "H_Tier.elig.CVF.rho": {
+   "value": 0.5772715132522499,
+   "display": "0.577",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.CVF"
+  },
+  "H_Tier.elig.FAS.rho": {
+   "value": 0.4784505604361844,
+   "display": "0.478",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.eligible_rank.per_industry_rho.FAS"
+  },
+  "H_Tier.nopha.PHA.rho": {
+   "value": 0.479107571237335,
+   "display": "0.479",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.without_pharmacy_units_from_other_metric.per_industry_rho.PHA"
+  },
+  "H_Tier.mean.APR.C": {
+   "value": 0.2708333333333333,
+   "display": "0.27",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.APR|C"
+  },
+  "H_Tier.mean.APR.L": {
+   "value": 0.6419753086419754,
+   "display": "0.64",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.APR|L"
+  },
+  "H_Tier.mean.APR.S": {
+   "value": 0.24074074074074073,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.APR|S"
+  },
+  "H_Tier.mean.CVF.C": {
+   "value": 0.49537037037037035,
+   "display": "0.50",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.CVF|C"
+  },
+  "H_Tier.mean.CVF.L": {
+   "value": 0.6327160493827161,
+   "display": "0.63",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.CVF|L"
+  },
+  "H_Tier.mean.CVF.S": {
+   "value": 0.1,
+   "display": "0.10",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.CVF|S"
+  },
+  "H_Tier.mean.FAS.C": {
+   "value": 0.3611111111111111,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.FAS|C"
+  },
+  "H_Tier.mean.FAS.L": {
+   "value": 0.4475308641975309,
+   "display": "0.45",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.FAS|L"
+  },
+  "H_Tier.mean.FAS.S": {
+   "value": 0.22037037037037038,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.FAS|S"
+  },
+  "H_Tier.mean.GRO.C": {
+   "value": 0.24537037037037038,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.GRO|C"
+  },
+  "H_Tier.mean.GRO.L": {
+   "value": 0.5432098765432098,
+   "display": "0.54",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.GRO|L"
+  },
+  "H_Tier.mean.GRO.S": {
+   "value": 0.0037037037037037034,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.GRO|S"
+  },
+  "H_Tier.mean.HOT.C": {
+   "value": 0.23842592592592593,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.HOT|C"
+  },
+  "H_Tier.mean.HOT.L": {
+   "value": 0.5648148148148149,
+   "display": "0.56",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.HOT|L"
+  },
+  "H_Tier.mean.HOT.S": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.HOT|S"
+  },
+  "H_Tier.mean.INS.C": {
+   "value": 0.3680555555555556,
+   "display": "0.37",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.INS|C"
+  },
+  "H_Tier.mean.INS.L": {
+   "value": 0.6944444444444445,
+   "display": "0.69",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.INS|L"
+  },
+  "H_Tier.mean.INS.S": {
+   "value": 0.13425925925925927,
+   "display": "0.13",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.INS|S"
+  },
+  "H_Tier.mean.PHA.C": {
+   "value": 0.3564814814814815,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.PHA|C"
+  },
+  "H_Tier.mean.PHA.L": {
+   "value": 0.4938271604938272,
+   "display": "0.49",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.PHA|L"
+  },
+  "H_Tier.mean.PHA.S": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.PHA|S"
+  },
+  "H_Tier.mean.QSR.C": {
+   "value": 0.2152777777777778,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.QSR|C"
+  },
+  "H_Tier.mean.QSR.L": {
+   "value": 0.5277777777777778,
+   "display": "0.53",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.QSR|L"
+  },
+  "H_Tier.mean.QSR.S": {
+   "value": 0.2619047619047619,
+   "display": "0.26",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier.QSR|S"
+  },
+  "H_Tier.count_L_gt_C": {
+   "value": 8,
+   "display": "8",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier (industries with L > C)"
+  },
+  "H_Tier.count_C_gt_S": {
+   "value": 7,
+   "display": "7",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.reported_alongside.mean_pi_by_industry_tier (industries with C > S)"
+  },
+  "H_Tier.ind_rho_min": {
+   "value": 0.3738643700513891,
+   "display": "0.374",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho (minimum)"
+  },
+  "H_Tier.ind_rho_min_ind": {
+   "value": "FAS",
+   "display": "fashion and luxury",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho (argmin)"
+  },
+  "H_Tier.ind_rho_max": {
+   "value": 0.7752376264626503,
+   "display": "0.775",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho (maximum)"
+  },
+  "H_Tier.ind_rho_max_ind": {
+   "value": "HOT",
+   "display": "hotel chains",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Tier.per_industry_rho (argmax)"
+  },
+  "H_Sep.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.verdict"
+  },
+  "H_Sep.n": {
+   "value": 85,
+   "display": "85",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.n_rated"
+  },
+  "H_Sep.rho": {
+   "value": 0.019422720145029607,
+   "display": "0.019",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.rho"
+  },
+  "H_Sep.ci": {
+   "value": [
+    -0.2491783477207996,
+    0.2693667683596842
+   ],
+   "display": "−0.249 to 0.269",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.ci95_rho"
+  },
+  "H_Sep.rho_unc": {
+   "value": 0.15582680710600874,
+   "display": "0.156",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.rho_uncentred_comparability"
+  },
+  "H_Sep.rho_raw_phi": {
+   "value": -0.019422720145029607,
+   "display": "−0.019",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.rho_with_raw_phi"
+  },
+  "H_Sep.INS.rho": {
+   "value": -0.3415492957746479,
+   "display": "−0.342",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.INS"
+  },
+  "H_Sep.HOT.rho": {
+   "value": -0.15569141404872366,
+   "display": "−0.156",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.HOT"
+  },
+  "H_Sep.GRO.rho": {
+   "value": -0.5575859980003354,
+   "display": "−0.558",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.GRO"
+  },
+  "H_Sep.QSR.rho": {
+   "value": 0.10334394242561097,
+   "display": "0.103",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.QSR"
+  },
+  "H_Sep.APR.rho": {
+   "value": -0.17272727272727273,
+   "display": "−0.173",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.APR"
+  },
+  "H_Sep.PHA.rho": {
+   "value": 0.35,
+   "display": "0.350",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.PHA"
+  },
+  "H_Sep.CVF.rho": {
+   "value": 0.3181818181818182,
+   "display": "0.318",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.CVF"
+  },
+  "H_Sep.FAS.rho": {
+   "value": 0.1487481590574374,
+   "display": "0.149",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.per_industry_rho.FAS"
+  },
+  "H_Sep.part_run.zero": {
+   "value": 134,
+   "display": "134",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.partition_counts_per_run.zero"
+  },
+  "H_Sep.part_run.saturated": {
+   "value": 26,
+   "display": "26",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.partition_counts_per_run.saturated"
+  },
+  "H_Sep.part_run.defined": {
+   "value": 317,
+   "display": "317",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.partition_counts_per_run.defined"
+  },
+  "H_Sep.part_run.total": {
+   "value": 477,
+   "display": "477",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.partition_counts_per_run (sum)"
+  },
+  "H_Sep.part_unit.zero": {
+   "value": 38,
+   "display": "38",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unit_partitions.zero"
+  },
+  "H_Sep.part_unit.saturated": {
+   "value": 6,
+   "display": "6",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unit_partitions.saturated"
+  },
+  "H_Sep.part_unit.defined": {
+   "value": 105,
+   "display": "105",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unit_partitions.defined"
+  },
+  "H_Sep.part_unit.undefined": {
+   "value": 10,
+   "display": "10",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unit_partitions.undefined"
+  },
+  "H_Sep.unrated.INS": {
+   "value": [
+    11,
+    23
+   ],
+   "display": "11 of 23",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.INS|* (summed over tiers)"
+  },
+  "H_Sep.unrated.HOT": {
+   "value": [
+    12,
+    20
+   ],
+   "display": "12 of 20",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.HOT|* (summed over tiers)"
+  },
+  "H_Sep.unrated.GRO": {
+   "value": [
+    12,
+    20
+   ],
+   "display": "12 of 20",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.GRO|* (summed over tiers)"
+  },
+  "H_Sep.unrated.QSR": {
+   "value": [
+    11,
+    21
+   ],
+   "display": "11 of 21",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.QSR|* (summed over tiers)"
+  },
+  "H_Sep.unrated.APR": {
+   "value": [
+    5,
+    16
+   ],
+   "display": "5 of 16",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.APR|* (summed over tiers)"
+  },
+  "H_Sep.unrated.PHA": {
+   "value": [
+    7,
+    16
+   ],
+   "display": "7 of 16",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.PHA|* (summed over tiers)"
+  },
+  "H_Sep.unrated.CVF": {
+   "value": [
+    8,
+    19
+   ],
+   "display": "8 of 19",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.CVF|* (summed over tiers)"
+  },
+  "H_Sep.unrated.FAS": {
+   "value": [
+    8,
+    24
+   ],
+   "display": "8 of 24",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.FAS|* (summed over tiers)"
+  },
+  "H_Sep.unrated.tier.L": {
+   "value": [
+    10,
+    48
+   ],
+   "display": "10 of 48",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.*|L (summed over industries)"
+  },
+  "H_Sep.unrated.tier.C": {
+   "value": [
+    30,
+    64
+   ],
+   "display": "30 of 64",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.*|C (summed over industries)"
+  },
+  "H_Sep.unrated.tier.S": {
+   "value": [
+    33,
+    44
+   ],
+   "display": "33 of 44",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.*|S (summed over industries)"
+  },
+  "H_Sep.unrated.tier.G": {
+   "value": [
+    1,
+    3
+   ],
+   "display": "1 of 3",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier.*|G (summed over industries)"
+  },
+  "H_Sep.rated_ind_min": {
+   "value": 8,
+   "display": "8",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier (units - unrated per industry, minimum)"
+  },
+  "H_Sep.rated_ind_max": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier (units - unrated per industry, maximum)"
+  },
+  "H_Sep.unrated.total": {
+   "value": 74,
+   "display": "74",
+   "source": "osf/v44/v44_verdicts.json:verdicts.H_Separation.reported_alongside.unrated_share_by_industry_tier (sum)"
+  },
+  "unit.rows": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_unit_table.csv: data rows"
+  },
+  "unit.rated": {
+   "value": 85,
+   "display": "85",
+   "source": "osf/v44/v44_unit_table.csv: rows with rated = 1"
+  },
+  "unit.rated_points": {
+   "value": [
+    [
+     "INS",
+     0.7962962962962963,
+     89.45054945054946
+    ],
+    [
+     "INS",
+     0.8333333333333334,
+     86.03174603174604
+    ],
+    [
+     "INS",
+     0.37037037037037035,
+     98.26839826839827
+    ],
+    [
+     "INS",
+     0.8333333333333334,
+     100.0
+    ],
+    [
+     "INS",
+     0.3333333333333333,
+     100.0
+    ],
+    [
+     "INS",
+     0.3148148148148148,
+     98.97435897435898
+    ],
+    [
+     "INS",
+     0.6296296296296297,
+     92.8932178932179
+    ],
+    [
+     "INS",
+     0.6851851851851852,
+     93.41880341880342
+    ],
+    [
+     "INS",
+     0.6851851851851852,
+     98.97435897435898
+    ],
+    [
+     "INS",
+     0.4444444444444444,
+     97.22222222222221
+    ],
+    [
+     "INS",
+     0.6666666666666666,
+     98.10855810855811
+    ],
+    [
+     "INS",
+     0.3888888888888889,
+     89.6103896103896
+    ],
+    [
+     "HOT",
+     0.9259259259259259,
+     93.75
+    ],
+    [
+     "HOT",
+     0.18518518518518517,
+     96.89102564102564
+    ],
+    [
+     "HOT",
+     0.3333333333333333,
+     91.66666666666667
+    ],
+    [
+     "HOT",
+     0.6296296296296297,
+     79.54545454545455
+    ],
+    [
+     "HOT",
+     0.3333333333333333,
+     89.65645465645466
+    ],
+    [
+     "HOT",
+     0.8518518518518519,
+     97.91666666666666
+    ],
+    [
+     "HOT",
+     0.2962962962962963,
+     97.94871794871794
+    ],
+    [
+     "HOT",
+     0.6851851851851852,
+     94.37229437229438
+    ],
+    [
+     "GRO",
+     0.35185185185185186,
+     95.64102564102565
+    ],
+    [
+     "GRO",
+     0.18518518518518517,
+     98.80952380952381
+    ],
+    [
+     "GRO",
+     0.7222222222222222,
+     96.92307692307692
+    ],
+    [
+     "GRO",
+     0.2037037037037037,
+     82.36111111111111
+    ],
+    [
+     "GRO",
+     0.35185185185185186,
+     96.35642135642135
+    ],
+    [
+     "GRO",
+     0.24074074074074073,
+     81.19658119658119
+    ],
+    [
+     "GRO",
+     0.16666666666666666,
+     100.0
+    ],
+    [
+     "GRO",
+     0.16666666666666666,
+     100.0
+    ],
+    [
+     "QSR",
+     0.5740740740740741,
+     98.26839826839827
+    ],
+    [
+     "QSR",
+     0.25925925925925924,
+     93.18681318681318
+    ],
+    [
+     "QSR",
+     0.9074074074074074,
+     85.66176470588236
+    ],
+    [
+     "QSR",
+     0.7592592592592593,
+     96.5934065934066
+    ],
+    [
+     "QSR",
+     0.46296296296296297,
+     99.13419913419914
+    ],
+    [
+     "QSR",
+     0.2037037037037037,
+     78.88888888888889
+    ],
+    [
+     "QSR",
+     0.37037037037037035,
+     99.16666666666667
+    ],
+    [
+     "QSR",
+     0.2962962962962963,
+     96.91808191808192
+    ],
+    [
+     "QSR",
+     0.5740740740740741,
+     95.79926246592913
+    ],
+    [
+     "QSR",
+     0.7777777777777778,
+     97.78388278388277
+    ],
+    [
+     "APR",
+     0.6666666666666666,
+     100.0
+    ],
+    [
+     "APR",
+     0.24074074074074073,
+     96.5934065934066
+    ],
+    [
+     "APR",
+     0.8703703703703703,
+     91.38888888888889
+    ],
+    [
+     "APR",
+     0.9444444444444444,
+     88.23529411764707
+    ],
+    [
+     "APR",
+     0.5370370370370371,
+     96.66506333173
+    ],
+    [
+     "APR",
+     0.5925925925925926,
+     95.55555555555556
+    ],
+    [
+     "APR",
+     0.5740740740740741,
+     82.27272727272728
+    ],
+    [
+     "APR",
+     0.4444444444444444,
+     98.3008658008658
+    ],
+    [
+     "APR",
+     0.5185185185185185,
+     54.59876543209876
+    ],
+    [
+     "APR",
+     0.2777777777777778,
+     93.84615384615384
+    ],
+    [
+     "APR",
+     0.4074074074074074,
+     94.93506493506494
+    ],
+    [
+     "PHA",
+     0.9444444444444444,
+     90.99264705882352
+    ],
+    [
+     "PHA",
+     0.9629629629629629,
+     88.23529411764707
+    ],
+    [
+     "PHA",
+     0.5370370370370371,
+     94.19592752926086
+    ],
+    [
+     "PHA",
+     0.3333333333333333,
+     98.10855810855811
+    ],
+    [
+     "PHA",
+     0.48148148148148145,
+     76.88271604938272
+    ],
+    [
+     "PHA",
+     0.7962962962962963,
+     97.61904761904762
+    ],
+    [
+     "PHA",
+     0.5185185185185185,
+     80.6986531986532
+    ],
+    [
+     "PHA",
+     0.8333333333333334,
+     100.0
+    ],
+    [
+     "PHA",
+     0.2777777777777778,
+     75.64935064935064
+    ],
+    [
+     "CVF",
+     0.48148148148148145,
+     90.0
+    ],
+    [
+     "CVF",
+     0.42592592592592593,
+     92.46753246753246
+    ],
+    [
+     "CVF",
+     0.9444444444444444,
+     90.99264705882352
+    ],
+    [
+     "CVF",
+     0.9259259259259259,
+     90.07352941176471
+    ],
+    [
+     "CVF",
+     0.8703703703703703,
+     95.83333333333334
+    ],
+    [
+     "CVF",
+     0.7962962962962963,
+     97.61904761904762
+    ],
+    [
+     "CVF",
+     0.6111111111111112,
+     94.8051948051948
+    ],
+    [
+     "CVF",
+     0.37037037037037035,
+     95.49062049062049
+    ],
+    [
+     "CVF",
+     0.3148148148148148,
+     70.5982905982906
+    ],
+    [
+     "CVF",
+     0.24074074074074073,
+     91.58730158730158
+    ],
+    [
+     "CVF",
+     0.25925925925925924,
+     74.23076923076923
+    ],
+    [
+     "FAS",
+     0.8333333333333334,
+     92.28174603174604
+    ],
+    [
+     "FAS",
+     0.5555555555555556,
+     90.63692480359147
+    ],
+    [
+     "FAS",
+     0.6296296296296297,
+     91.11111111111111
+    ],
+    [
+     "FAS",
+     0.2962962962962963,
+     71.45299145299145
+    ],
+    [
+     "FAS",
+     0.24074074074074073,
+     79.72527472527472
+    ],
+    [
+     "FAS",
+     0.6111111111111112,
+     94.75308641975309
+    ],
+    [
+     "FAS",
+     0.48148148148148145,
+     86.79012345679013
+    ],
+    [
+     "FAS",
+     0.3148148148148148,
+     98.97435897435898
+    ],
+    [
+     "FAS",
+     0.3888888888888889,
+     95.8008658008658
+    ],
+    [
+     "FAS",
+     0.8333333333333334,
+     86.03174603174604
+    ],
+    [
+     "FAS",
+     0.18518518518518517,
+     89.92063492063492
+    ],
+    [
+     "FAS",
+     0.5,
+     92.5925925925926
+    ],
+    [
+     "FAS",
+     0.16666666666666666,
+     91.11111111111111
+    ],
+    [
+     "FAS",
+     0.7037037037037037,
+     94.87179487179486
+    ],
+    [
+     "FAS",
+     0.35185185185185186,
+     99.13419913419914
+    ],
+    [
+     "FAS",
+     0.42592592592592593,
+     90.60445727112393
+    ]
+   ],
+   "display": "",
+   "source": "osf/v44/v44_unit_table.csv: industry, pi_hat, c_phi of rated rows"
+  },
+  "unit.cphi_min": {
+   "value": 54.59876543209876,
+   "display": "54.6",
+   "source": "osf/v44/v44_unit_table.csv: c_phi of rated rows (minimum)"
+  },
+  "unit.cphi_max": {
+   "value": 100.0,
+   "display": "100.0",
+   "source": "osf/v44/v44_unit_table.csv: c_phi of rated rows (maximum)"
+  },
+  "unit.ghosts_rated": {
+   "value": [
+    "A&P",
+    "Rite Aid"
+   ],
+   "display": "A&P and Rite Aid",
+   "source": "osf/v44/v44_unit_table.csv: rated rows with tier G"
+  },
+  "D1.claude-fable-5-2.INS.mean": {
+   "value": 0.357487922705314,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|all.mean"
+  },
+  "D1.claude-fable-5-2.INS.sd": {
+   "value": 0.3420071501531954,
+   "display": "0.34",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|all.sd"
+  },
+  "D1.claude-fable-5-2.INS.share_0": {
+   "value": 0.391304347826087,
+   "display": "0.39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|all.share_0"
+  },
+  "D1.claude-fable-5-2.INS.share_1": {
+   "value": 0.043478260869565216,
+   "display": "0.04",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|all.share_1"
+  },
+  "D1.claude-fable-5-2.INS.n": {
+   "value": 23,
+   "display": "23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|all.n"
+  },
+  "D1.claude-fable-5-2.INS.L.mean": {
+   "value": 0.7314814814814814,
+   "display": "0.73",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|L.mean"
+  },
+  "D1.claude-fable-5-2.INS.C.mean": {
+   "value": 0.33333333333333337,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|C.mean"
+  },
+  "D1.claude-fable-5-2.INS.S.mean": {
+   "value": 0.14583333333333331,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|S.mean"
+  },
+  "D1.claude-fable-5-2.INS.G.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|INS|G.mean"
+  },
+  "D1.claude-fable-5-2.HOT.mean": {
+   "value": 0.28055555555555556,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|all.mean"
+  },
+  "D1.claude-fable-5-2.HOT.sd": {
+   "value": 0.3563684284418633,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|all.sd"
+  },
+  "D1.claude-fable-5-2.HOT.share_0": {
+   "value": 0.45,
+   "display": "0.45",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|all.share_0"
+  },
+  "D1.claude-fable-5-2.HOT.share_1": {
+   "value": 0.05,
+   "display": "0.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|all.share_1"
+  },
+  "D1.claude-fable-5-2.HOT.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|all.n"
+  },
+  "D1.claude-fable-5-2.HOT.L.mean": {
+   "value": 0.6018518518518517,
+   "display": "0.60",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|L.mean"
+  },
+  "D1.claude-fable-5-2.HOT.C.mean": {
+   "value": 0.25,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|C.mean"
+  },
+  "D1.claude-fable-5-2.HOT.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|HOT|S.mean"
+  },
+  "D1.claude-fable-5-2.GRO.mean": {
+   "value": 0.26944444444444443,
+   "display": "0.27",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|all.mean"
+  },
+  "D1.claude-fable-5-2.GRO.sd": {
+   "value": 0.35498000291444,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|all.sd"
+  },
+  "D1.claude-fable-5-2.GRO.share_0": {
+   "value": 0.45,
+   "display": "0.45",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|all.share_0"
+  },
+  "D1.claude-fable-5-2.GRO.share_1": {
+   "value": 0.15,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|all.share_1"
+  },
+  "D1.claude-fable-5-2.GRO.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|all.n"
+  },
+  "D1.claude-fable-5-2.GRO.L.mean": {
+   "value": 0.5370370370370371,
+   "display": "0.54",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|L.mean"
+  },
+  "D1.claude-fable-5-2.GRO.C.mean": {
+   "value": 0.24999999999999997,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|C.mean"
+  },
+  "D1.claude-fable-5-2.GRO.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|S.mean"
+  },
+  "D1.claude-fable-5-2.GRO.G.mean": {
+   "value": 0.16666666666666666,
+   "display": "0.17",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|GRO|G.mean"
+  },
+  "D1.claude-fable-5-2.QSR.mean": {
+   "value": 0.2962962962962963,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|all.mean"
+  },
+  "D1.claude-fable-5-2.QSR.sd": {
+   "value": 0.3204445276132639,
+   "display": "0.32",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|all.sd"
+  },
+  "D1.claude-fable-5-2.QSR.share_0": {
+   "value": 0.2857142857142857,
+   "display": "0.29",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|all.share_0"
+  },
+  "D1.claude-fable-5-2.QSR.share_1": {
+   "value": 0.047619047619047616,
+   "display": "0.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|all.share_1"
+  },
+  "D1.claude-fable-5-2.QSR.n": {
+   "value": 21,
+   "display": "21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|all.n"
+  },
+  "D1.claude-fable-5-2.QSR.L.mean": {
+   "value": 0.5462962962962963,
+   "display": "0.55",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|L.mean"
+  },
+  "D1.claude-fable-5-2.QSR.C.mean": {
+   "value": 0.14583333333333334,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|C.mean"
+  },
+  "D1.claude-fable-5-2.QSR.S.mean": {
+   "value": 0.253968253968254,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|QSR|S.mean"
+  },
+  "D1.claude-fable-5-2.APR.mean": {
+   "value": 0.4479166666666667,
+   "display": "0.45",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|all.mean"
+  },
+  "D1.claude-fable-5-2.APR.sd": {
+   "value": 0.33360449040520795,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|all.sd"
+  },
+  "D1.claude-fable-5-2.APR.share_0": {
+   "value": 0.25,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|all.share_0"
+  },
+  "D1.claude-fable-5-2.APR.share_1": {
+   "value": 0.125,
+   "display": "0.12",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|all.share_1"
+  },
+  "D1.claude-fable-5-2.APR.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|all.n"
+  },
+  "D1.claude-fable-5-2.APR.L.mean": {
+   "value": 0.7037037037037037,
+   "display": "0.70",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|L.mean"
+  },
+  "D1.claude-fable-5-2.APR.C.mean": {
+   "value": 0.2986111111111111,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|C.mean"
+  },
+  "D1.claude-fable-5-2.APR.S.mean": {
+   "value": 0.2777777777777778,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|APR|S.mean"
+  },
+  "D1.claude-fable-5-2.PHA.mean": {
+   "value": 0.3958333333333333,
+   "display": "0.40",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|all.mean"
+  },
+  "D1.claude-fable-5-2.PHA.sd": {
+   "value": 0.35184423724703895,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|all.sd"
+  },
+  "D1.claude-fable-5-2.PHA.share_0": {
+   "value": 0.1875,
+   "display": "0.19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|all.share_0"
+  },
+  "D1.claude-fable-5-2.PHA.share_1": {
+   "value": 0.0625,
+   "display": "0.06",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|all.share_1"
+  },
+  "D1.claude-fable-5-2.PHA.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|all.n"
+  },
+  "D1.claude-fable-5-2.PHA.L.mean": {
+   "value": 0.47222222222222215,
+   "display": "0.47",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|L.mean"
+  },
+  "D1.claude-fable-5-2.PHA.C.mean": {
+   "value": 0.39583333333333337,
+   "display": "0.40",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|C.mean"
+  },
+  "D1.claude-fable-5-2.PHA.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|S.mean"
+  },
+  "D1.claude-fable-5-2.PHA.G.mean": {
+   "value": 0.3333333333333333,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|PHA|G.mean"
+  },
+  "D1.claude-fable-5-2.CVF.mean": {
+   "value": 0.4853801169590643,
+   "display": "0.49",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|all.mean"
+  },
+  "D1.claude-fable-5-2.CVF.sd": {
+   "value": 0.38567683738139363,
+   "display": "0.39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|all.sd"
+  },
+  "D1.claude-fable-5-2.CVF.share_0": {
+   "value": 0.2631578947368421,
+   "display": "0.26",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|all.share_0"
+  },
+  "D1.claude-fable-5-2.CVF.share_1": {
+   "value": 0.21052631578947367,
+   "display": "0.21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|all.share_1"
+  },
+  "D1.claude-fable-5-2.CVF.n": {
+   "value": 19,
+   "display": "19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|all.n"
+  },
+  "D1.claude-fable-5-2.CVF.L.mean": {
+   "value": 0.7222222222222222,
+   "display": "0.72",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|L.mean"
+  },
+  "D1.claude-fable-5-2.CVF.C.mean": {
+   "value": 0.513888888888889,
+   "display": "0.51",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|C.mean"
+  },
+  "D1.claude-fable-5-2.CVF.S.mean": {
+   "value": 0.15555555555555556,
+   "display": "0.16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|CVF|S.mean"
+  },
+  "D1.claude-fable-5-2.FAS.mean": {
+   "value": 0.32407407407407407,
+   "display": "0.32",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|all.mean"
+  },
+  "D1.claude-fable-5-2.FAS.sd": {
+   "value": 0.29773954057062085,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|all.sd"
+  },
+  "D1.claude-fable-5-2.FAS.share_0": {
+   "value": 0.25,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|all.share_0"
+  },
+  "D1.claude-fable-5-2.FAS.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|all.share_1"
+  },
+  "D1.claude-fable-5-2.FAS.n": {
+   "value": 24,
+   "display": "24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|all.n"
+  },
+  "D1.claude-fable-5-2.FAS.L.mean": {
+   "value": 0.49074074074074076,
+   "display": "0.49",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|L.mean"
+  },
+  "D1.claude-fable-5-2.FAS.C.mean": {
+   "value": 0.3263888888888889,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|C.mean"
+  },
+  "D1.claude-fable-5-2.FAS.S.mean": {
+   "value": 0.22222222222222224,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.claude-fable-5-2|FAS|S.mean"
+  },
+  "D1.gpt-6-astra.INS.mean": {
+   "value": 0.357487922705314,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|all.mean"
+  },
+  "D1.gpt-6-astra.INS.sd": {
+   "value": 0.3263462915800515,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|all.sd"
+  },
+  "D1.gpt-6-astra.INS.share_0": {
+   "value": 0.30434782608695654,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|all.share_0"
+  },
+  "D1.gpt-6-astra.INS.share_1": {
+   "value": 0.043478260869565216,
+   "display": "0.04",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|all.share_1"
+  },
+  "D1.gpt-6-astra.INS.n": {
+   "value": 23,
+   "display": "23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|all.n"
+  },
+  "D1.gpt-6-astra.INS.L.mean": {
+   "value": 0.638888888888889,
+   "display": "0.64",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|L.mean"
+  },
+  "D1.gpt-6-astra.INS.C.mean": {
+   "value": 0.39583333333333337,
+   "display": "0.40",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|C.mean"
+  },
+  "D1.gpt-6-astra.INS.S.mean": {
+   "value": 0.15277777777777776,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|S.mean"
+  },
+  "D1.gpt-6-astra.INS.G.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|INS|G.mean"
+  },
+  "D1.gpt-6-astra.HOT.mean": {
+   "value": 0.24722222222222223,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|all.mean"
+  },
+  "D1.gpt-6-astra.HOT.sd": {
+   "value": 0.34177956580951163,
+   "display": "0.34",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|all.sd"
+  },
+  "D1.gpt-6-astra.HOT.share_0": {
+   "value": 0.55,
+   "display": "0.55",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|all.share_0"
+  },
+  "D1.gpt-6-astra.HOT.share_1": {
+   "value": 0.05,
+   "display": "0.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|all.share_1"
+  },
+  "D1.gpt-6-astra.HOT.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|all.n"
+  },
+  "D1.gpt-6-astra.HOT.L.mean": {
+   "value": 0.5277777777777778,
+   "display": "0.53",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|L.mean"
+  },
+  "D1.gpt-6-astra.HOT.C.mean": {
+   "value": 0.2222222222222222,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|C.mean"
+  },
+  "D1.gpt-6-astra.HOT.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|HOT|S.mean"
+  },
+  "D1.gpt-6-astra.GRO.mean": {
+   "value": 0.2555555555555556,
+   "display": "0.26",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|all.mean"
+  },
+  "D1.gpt-6-astra.GRO.sd": {
+   "value": 0.3644715437079272,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|all.sd"
+  },
+  "D1.gpt-6-astra.GRO.share_0": {
+   "value": 0.5,
+   "display": "0.50",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|all.share_0"
+  },
+  "D1.gpt-6-astra.GRO.share_1": {
+   "value": 0.15,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|all.share_1"
+  },
+  "D1.gpt-6-astra.GRO.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|all.n"
+  },
+  "D1.gpt-6-astra.GRO.L.mean": {
+   "value": 0.5462962962962963,
+   "display": "0.55",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|L.mean"
+  },
+  "D1.gpt-6-astra.GRO.C.mean": {
+   "value": 0.20833333333333331,
+   "display": "0.21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|C.mean"
+  },
+  "D1.gpt-6-astra.GRO.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|S.mean"
+  },
+  "D1.gpt-6-astra.GRO.G.mean": {
+   "value": 0.16666666666666666,
+   "display": "0.17",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|GRO|G.mean"
+  },
+  "D1.gpt-6-astra.QSR.mean": {
+   "value": 0.3253968253968254,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|all.mean"
+  },
+  "D1.gpt-6-astra.QSR.sd": {
+   "value": 0.31996367476700227,
+   "display": "0.32",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|all.sd"
+  },
+  "D1.gpt-6-astra.QSR.share_0": {
+   "value": 0.2857142857142857,
+   "display": "0.29",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|all.share_0"
+  },
+  "D1.gpt-6-astra.QSR.share_1": {
+   "value": 0.047619047619047616,
+   "display": "0.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|all.share_1"
+  },
+  "D1.gpt-6-astra.QSR.n": {
+   "value": 21,
+   "display": "21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|all.n"
+  },
+  "D1.gpt-6-astra.QSR.L.mean": {
+   "value": 0.5185185185185185,
+   "display": "0.52",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|L.mean"
+  },
+  "D1.gpt-6-astra.QSR.C.mean": {
+   "value": 0.24305555555555552,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|C.mean"
+  },
+  "D1.gpt-6-astra.QSR.S.mean": {
+   "value": 0.25396825396825395,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|QSR|S.mean"
+  },
+  "D1.gpt-6-astra.APR.mean": {
+   "value": 0.4097222222222222,
+   "display": "0.41",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|all.mean"
+  },
+  "D1.gpt-6-astra.APR.sd": {
+   "value": 0.2804558403653982,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|all.sd"
+  },
+  "D1.gpt-6-astra.APR.share_0": {
+   "value": 0.0625,
+   "display": "0.06",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|all.share_0"
+  },
+  "D1.gpt-6-astra.APR.share_1": {
+   "value": 0.0625,
+   "display": "0.06",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|all.share_1"
+  },
+  "D1.gpt-6-astra.APR.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|all.n"
+  },
+  "D1.gpt-6-astra.APR.L.mean": {
+   "value": 0.6481481481481481,
+   "display": "0.65",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|L.mean"
+  },
+  "D1.gpt-6-astra.APR.C.mean": {
+   "value": 0.2777777777777778,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|C.mean"
+  },
+  "D1.gpt-6-astra.APR.S.mean": {
+   "value": 0.2222222222222222,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|APR|S.mean"
+  },
+  "D1.gpt-6-astra.PHA.mean": {
+   "value": 0.30208333333333337,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|all.mean"
+  },
+  "D1.gpt-6-astra.PHA.sd": {
+   "value": 0.35189563263193835,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|all.sd"
+  },
+  "D1.gpt-6-astra.PHA.share_0": {
+   "value": 0.4375,
+   "display": "0.44",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|all.share_0"
+  },
+  "D1.gpt-6-astra.PHA.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|all.share_1"
+  },
+  "D1.gpt-6-astra.PHA.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|all.n"
+  },
+  "D1.gpt-6-astra.PHA.L.mean": {
+   "value": 0.46296296296296297,
+   "display": "0.46",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|L.mean"
+  },
+  "D1.gpt-6-astra.PHA.C.mean": {
+   "value": 0.2569444444444444,
+   "display": "0.26",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|C.mean"
+  },
+  "D1.gpt-6-astra.PHA.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|S.mean"
+  },
+  "D1.gpt-6-astra.PHA.G.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|PHA|G.mean"
+  },
+  "D1.gpt-6-astra.CVF.mean": {
+   "value": 0.4239766081871345,
+   "display": "0.42",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|all.mean"
+  },
+  "D1.gpt-6-astra.CVF.sd": {
+   "value": 0.3854107309761737,
+   "display": "0.39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|all.sd"
+  },
+  "D1.gpt-6-astra.CVF.share_0": {
+   "value": 0.3157894736842105,
+   "display": "0.32",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|all.share_0"
+  },
+  "D1.gpt-6-astra.CVF.share_1": {
+   "value": 0.10526315789473684,
+   "display": "0.11",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|all.share_1"
+  },
+  "D1.gpt-6-astra.CVF.n": {
+   "value": 19,
+   "display": "19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|all.n"
+  },
+  "D1.gpt-6-astra.CVF.L.mean": {
+   "value": 0.6018518518518517,
+   "display": "0.60",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|L.mean"
+  },
+  "D1.gpt-6-astra.CVF.C.mean": {
+   "value": 0.5208333333333334,
+   "display": "0.52",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|C.mean"
+  },
+  "D1.gpt-6-astra.CVF.S.mean": {
+   "value": 0.05555555555555556,
+   "display": "0.06",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|CVF|S.mean"
+  },
+  "D1.gpt-6-astra.FAS.mean": {
+   "value": 0.34027777777777773,
+   "display": "0.34",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|all.mean"
+  },
+  "D1.gpt-6-astra.FAS.sd": {
+   "value": 0.30315237615549756,
+   "display": "0.30",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|all.sd"
+  },
+  "D1.gpt-6-astra.FAS.share_0": {
+   "value": 0.3333333333333333,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|all.share_0"
+  },
+  "D1.gpt-6-astra.FAS.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|all.share_1"
+  },
+  "D1.gpt-6-astra.FAS.n": {
+   "value": 24,
+   "display": "24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|all.n"
+  },
+  "D1.gpt-6-astra.FAS.L.mean": {
+   "value": 0.47222222222222227,
+   "display": "0.47",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|L.mean"
+  },
+  "D1.gpt-6-astra.FAS.C.mean": {
+   "value": 0.41666666666666663,
+   "display": "0.42",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|C.mean"
+  },
+  "D1.gpt-6-astra.FAS.S.mean": {
+   "value": 0.2,
+   "display": "0.20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gpt-6-astra|FAS|S.mean"
+  },
+  "D1.gemini-4-argon.INS.mean": {
+   "value": 0.35265700483091783,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|all.mean"
+  },
+  "D1.gemini-4-argon.INS.sd": {
+   "value": 0.3568998950195918,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|all.sd"
+  },
+  "D1.gemini-4-argon.INS.share_0": {
+   "value": 0.34782608695652173,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|all.share_0"
+  },
+  "D1.gemini-4-argon.INS.share_1": {
+   "value": 0.043478260869565216,
+   "display": "0.04",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|all.share_1"
+  },
+  "D1.gemini-4-argon.INS.n": {
+   "value": 23,
+   "display": "23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|all.n"
+  },
+  "D1.gemini-4-argon.INS.L.mean": {
+   "value": 0.7129629629629629,
+   "display": "0.71",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|L.mean"
+  },
+  "D1.gemini-4-argon.INS.C.mean": {
+   "value": 0.375,
+   "display": "0.38",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|C.mean"
+  },
+  "D1.gemini-4-argon.INS.S.mean": {
+   "value": 0.10416666666666666,
+   "display": "0.10",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|S.mean"
+  },
+  "D1.gemini-4-argon.INS.G.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|INS|G.mean"
+  },
+  "D1.gemini-4-argon.HOT.mean": {
+   "value": 0.2666666666666667,
+   "display": "0.27",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|all.mean"
+  },
+  "D1.gemini-4-argon.HOT.sd": {
+   "value": 0.35030850600965435,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|all.sd"
+  },
+  "D1.gemini-4-argon.HOT.share_0": {
+   "value": 0.5,
+   "display": "0.50",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|all.share_0"
+  },
+  "D1.gemini-4-argon.HOT.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|all.share_1"
+  },
+  "D1.gemini-4-argon.HOT.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|all.n"
+  },
+  "D1.gemini-4-argon.HOT.L.mean": {
+   "value": 0.5648148148148148,
+   "display": "0.56",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|L.mean"
+  },
+  "D1.gemini-4-argon.HOT.C.mean": {
+   "value": 0.24305555555555558,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|C.mean"
+  },
+  "D1.gemini-4-argon.HOT.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|HOT|S.mean"
+  },
+  "D1.gemini-4-argon.GRO.mean": {
+   "value": 0.2861111111111111,
+   "display": "0.29",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|all.mean"
+  },
+  "D1.gemini-4-argon.GRO.sd": {
+   "value": 0.3510456162542954,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|all.sd"
+  },
+  "D1.gemini-4-argon.GRO.share_0": {
+   "value": 0.4,
+   "display": "0.40",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|all.share_0"
+  },
+  "D1.gemini-4-argon.GRO.share_1": {
+   "value": 0.15,
+   "display": "0.15",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|all.share_1"
+  },
+  "D1.gemini-4-argon.GRO.n": {
+   "value": 20,
+   "display": "20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|all.n"
+  },
+  "D1.gemini-4-argon.GRO.L.mean": {
+   "value": 0.5462962962962963,
+   "display": "0.55",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|L.mean"
+  },
+  "D1.gemini-4-argon.GRO.C.mean": {
+   "value": 0.2777777777777778,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|C.mean"
+  },
+  "D1.gemini-4-argon.GRO.S.mean": {
+   "value": 0.01111111111111111,
+   "display": "0.01",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|S.mean"
+  },
+  "D1.gemini-4-argon.GRO.G.mean": {
+   "value": 0.16666666666666666,
+   "display": "0.17",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|GRO|G.mean"
+  },
+  "D1.gemini-4-argon.QSR.mean": {
+   "value": 0.3386243386243386,
+   "display": "0.34",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|all.mean"
+  },
+  "D1.gemini-4-argon.QSR.sd": {
+   "value": 0.3248048126871386,
+   "display": "0.32",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|all.sd"
+  },
+  "D1.gemini-4-argon.QSR.share_0": {
+   "value": 0.2857142857142857,
+   "display": "0.29",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|all.share_0"
+  },
+  "D1.gemini-4-argon.QSR.share_1": {
+   "value": 0.047619047619047616,
+   "display": "0.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|all.share_1"
+  },
+  "D1.gemini-4-argon.QSR.n": {
+   "value": 21,
+   "display": "21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|all.n"
+  },
+  "D1.gemini-4-argon.QSR.L.mean": {
+   "value": 0.5185185185185185,
+   "display": "0.52",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|L.mean"
+  },
+  "D1.gemini-4-argon.QSR.C.mean": {
+   "value": 0.2569444444444444,
+   "display": "0.26",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|C.mean"
+  },
+  "D1.gemini-4-argon.QSR.S.mean": {
+   "value": 0.2777777777777778,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|QSR|S.mean"
+  },
+  "D1.gemini-4-argon.APR.mean": {
+   "value": 0.3611111111111111,
+   "display": "0.36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|all.mean"
+  },
+  "D1.gemini-4-argon.APR.sd": {
+   "value": 0.28463752127665554,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|all.sd"
+  },
+  "D1.gemini-4-argon.APR.share_0": {
+   "value": 0.0625,
+   "display": "0.06",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|all.share_0"
+  },
+  "D1.gemini-4-argon.APR.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|all.share_1"
+  },
+  "D1.gemini-4-argon.APR.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|all.n"
+  },
+  "D1.gemini-4-argon.APR.L.mean": {
+   "value": 0.5740740740740741,
+   "display": "0.57",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|L.mean"
+  },
+  "D1.gemini-4-argon.APR.C.mean": {
+   "value": 0.2361111111111111,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|C.mean"
+  },
+  "D1.gemini-4-argon.APR.S.mean": {
+   "value": 0.2222222222222222,
+   "display": "0.22",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|APR|S.mean"
+  },
+  "D1.gemini-4-argon.PHA.mean": {
+   "value": 0.4444444444444444,
+   "display": "0.44",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|all.mean"
+  },
+  "D1.gemini-4-argon.PHA.sd": {
+   "value": 0.3480545579483797,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|all.sd"
+  },
+  "D1.gemini-4-argon.PHA.share_0": {
+   "value": 0.1875,
+   "display": "0.19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|all.share_0"
+  },
+  "D1.gemini-4-argon.PHA.share_1": {
+   "value": 0.125,
+   "display": "0.12",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|all.share_1"
+  },
+  "D1.gemini-4-argon.PHA.n": {
+   "value": 16,
+   "display": "16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|all.n"
+  },
+  "D1.gemini-4-argon.PHA.L.mean": {
+   "value": 0.5462962962962962,
+   "display": "0.55",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|L.mean"
+  },
+  "D1.gemini-4-argon.PHA.C.mean": {
+   "value": 0.41666666666666663,
+   "display": "0.42",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|C.mean"
+  },
+  "D1.gemini-4-argon.PHA.S.mean": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|S.mean"
+  },
+  "D1.gemini-4-argon.PHA.G.mean": {
+   "value": 0.5,
+   "display": "0.50",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|PHA|G.mean"
+  },
+  "D1.gemini-4-argon.CVF.mean": {
+   "value": 0.39473684210526316,
+   "display": "0.39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|all.mean"
+  },
+  "D1.gemini-4-argon.CVF.sd": {
+   "value": 0.38988791346861484,
+   "display": "0.39",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|all.sd"
+  },
+  "D1.gemini-4-argon.CVF.share_0": {
+   "value": 0.3684210526315789,
+   "display": "0.37",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|all.share_0"
+  },
+  "D1.gemini-4-argon.CVF.share_1": {
+   "value": 0.10526315789473684,
+   "display": "0.11",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|all.share_1"
+  },
+  "D1.gemini-4-argon.CVF.n": {
+   "value": 19,
+   "display": "19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|all.n"
+  },
+  "D1.gemini-4-argon.CVF.L.mean": {
+   "value": 0.5740740740740741,
+   "display": "0.57",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|L.mean"
+  },
+  "D1.gemini-4-argon.CVF.C.mean": {
+   "value": 0.4513888888888889,
+   "display": "0.45",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|C.mean"
+  },
+  "D1.gemini-4-argon.CVF.S.mean": {
+   "value": 0.08888888888888888,
+   "display": "0.09",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|CVF|S.mean"
+  },
+  "D1.gemini-4-argon.FAS.mean": {
+   "value": 0.30787037037037035,
+   "display": "0.31",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.mean"
+  },
+  "D1.gemini-4-argon.FAS.sd": {
+   "value": 0.25305701236858924,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.sd"
+  },
+  "D1.gemini-4-argon.FAS.share_0": {
+   "value": 0.16666666666666666,
+   "display": "0.17",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.share_0"
+  },
+  "D1.gemini-4-argon.FAS.share_1": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.share_1"
+  },
+  "D1.gemini-4-argon.FAS.n": {
+   "value": 24,
+   "display": "24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.n"
+  },
+  "D1.gemini-4-argon.FAS.L.mean": {
+   "value": 0.3796296296296297,
+   "display": "0.38",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|L.mean"
+  },
+  "D1.gemini-4-argon.FAS.C.mean": {
+   "value": 0.3402777777777778,
+   "display": "0.34",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|C.mean"
+  },
+  "D1.gemini-4-argon.FAS.S.mean": {
+   "value": 0.23888888888888893,
+   "display": "0.24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|S.mean"
+  },
+  "D1.sd_min": {
+   "value": 0.25305701236858924,
+   "display": "0.25",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.gemini-4-argon|FAS|all.sd (minimum over models and industries)"
+  },
+  "D1.sd_min_where": {
+   "value": [
+    "gemini-4-argon",
+    "FAS"
+   ],
+   "display": "Gemini 4 Argon, fashion and luxury",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier (argmin of sd)"
+  },
+  "D1.max_model_gap": {
+   "value": 0.14236111111111105,
+   "display": "0.14",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier.<model>|<industry>|all.mean (largest max-min across models)"
+  },
+  "D1.max_model_gap_ind": {
+   "value": "PHA",
+   "display": "pharmacies",
+   "source": "osf/v44/v44_verdicts.json:descriptives.1_presence_by_model_industry_tier (industry of the largest gap)"
+  },
+  "D2.claude-fable-5-2.INS": {
+   "value": [
+    22,
+    23
+   ],
+   "display": "22/23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|INS"
+  },
+  "D2.claude-fable-5-2.HOT": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|HOT"
+  },
+  "D2.claude-fable-5-2.GRO": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|GRO"
+  },
+  "D2.claude-fable-5-2.QSR": {
+   "value": [
+    19,
+    21
+   ],
+   "display": "19/21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|QSR"
+  },
+  "D2.claude-fable-5-2.APR": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|APR"
+  },
+  "D2.claude-fable-5-2.PHA": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|PHA"
+  },
+  "D2.claude-fable-5-2.CVF": {
+   "value": [
+    19,
+    19
+   ],
+   "display": "19/19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|CVF"
+  },
+  "D2.claude-fable-5-2.FAS": {
+   "value": [
+    24,
+    24
+   ],
+   "display": "24/24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|FAS"
+  },
+  "D2.claude-fable-5-2.all": {
+   "value": [
+    156,
+    159
+   ],
+   "display": "156/159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.claude-fable-5-2|* (summed)"
+  },
+  "D2.gpt-6-astra.INS": {
+   "value": [
+    22,
+    23
+   ],
+   "display": "22/23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|INS"
+  },
+  "D2.gpt-6-astra.HOT": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|HOT"
+  },
+  "D2.gpt-6-astra.GRO": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|GRO"
+  },
+  "D2.gpt-6-astra.QSR": {
+   "value": [
+    20,
+    21
+   ],
+   "display": "20/21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|QSR"
+  },
+  "D2.gpt-6-astra.APR": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|APR"
+  },
+  "D2.gpt-6-astra.PHA": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|PHA"
+  },
+  "D2.gpt-6-astra.CVF": {
+   "value": [
+    18,
+    19
+   ],
+   "display": "18/19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|CVF"
+  },
+  "D2.gpt-6-astra.FAS": {
+   "value": [
+    24,
+    24
+   ],
+   "display": "24/24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|FAS"
+  },
+  "D2.gpt-6-astra.all": {
+   "value": [
+    156,
+    159
+   ],
+   "display": "156/159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gpt-6-astra|* (summed)"
+  },
+  "D2.gemini-4-argon.INS": {
+   "value": [
+    22,
+    23
+   ],
+   "display": "22/23",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|INS"
+  },
+  "D2.gemini-4-argon.HOT": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|HOT"
+  },
+  "D2.gemini-4-argon.GRO": {
+   "value": [
+    20,
+    20
+   ],
+   "display": "20/20",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|GRO"
+  },
+  "D2.gemini-4-argon.QSR": {
+   "value": [
+    18,
+    21
+   ],
+   "display": "18/21",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|QSR"
+  },
+  "D2.gemini-4-argon.APR": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|APR"
+  },
+  "D2.gemini-4-argon.PHA": {
+   "value": [
+    16,
+    16
+   ],
+   "display": "16/16",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|PHA"
+  },
+  "D2.gemini-4-argon.CVF": {
+   "value": [
+    18,
+    19
+   ],
+   "display": "18/19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|CVF"
+  },
+  "D2.gemini-4-argon.FAS": {
+   "value": [
+    24,
+    24
+   ],
+   "display": "24/24",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|FAS"
+  },
+  "D2.gemini-4-argon.all": {
+   "value": [
+    154,
+    159
+   ],
+   "display": "154/159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.share_per_model_industry.gemini-4-argon|* (summed)"
+  },
+  "D2.gap.L": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.L"
+  },
+  "D2.gap.C": {
+   "value": 12,
+   "display": "12",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.C"
+  },
+  "D2.gap.S": {
+   "value": 22,
+   "display": "22",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.S"
+  },
+  "D2.gap.G": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier.G"
+  },
+  "D2.gap.total": {
+   "value": 36,
+   "display": "36",
+   "source": "osf/v44/v44_verdicts.json:descriptives.2_recognition.recognised_by_all_three_with_pi_0_by_tier (sum)"
+  },
+  "D3.Esurance.pi": {
+   "value": 0.0,
+   "display": "0.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.INS|Esurance.pi"
+  },
+  "D3.Esurance.rec": {
+   "value": 3,
+   "display": "3 of 3",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.INS|Esurance.recognition (sum over models)"
+  },
+  "D3.AandP.pi": {
+   "value": 0.16666666666666666,
+   "display": "0.17",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.GRO|A&P.pi"
+  },
+  "D3.AandP.rec": {
+   "value": 3,
+   "display": "3 of 3",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.GRO|A&P.recognition (sum over models)"
+  },
+  "D3.RiteAid.pi": {
+   "value": 0.2777777777777778,
+   "display": "0.28",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.PHA|Rite Aid.pi"
+  },
+  "D3.RiteAid.rec": {
+   "value": 3,
+   "display": "3 of 3",
+   "source": "osf/v44/v44_verdicts.json:descriptives.3_ghosts.PHA|Rite Aid.recognition (sum over models)"
+  },
+  "D4.claude-fable-5-2.rel1": {
+   "value": 0.9485949388497752,
+   "display": "0.949",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.claude-fable-5-2.rel1"
+  },
+  "D4.claude-fable-5-2.rel3": {
+   "value": 0.9822569236673429,
+   "display": "0.982",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.claude-fable-5-2.rel3"
+  },
+  "D4.gpt-6-astra.rel1": {
+   "value": 0.9623046954244067,
+   "display": "0.962",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.gpt-6-astra.rel1"
+  },
+  "D4.gpt-6-astra.rel3": {
+   "value": 0.9871109951662117,
+   "display": "0.987",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.gpt-6-astra.rel3"
+  },
+  "D4.gemini-4-argon.rel1": {
+   "value": 0.9490337793878453,
+   "display": "0.949",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.gemini-4-argon.rel1"
+  },
+  "D4.gemini-4-argon.rel3": {
+   "value": 0.9824137223931088,
+   "display": "0.982",
+   "source": "osf/v44/v44_verdicts.json:descriptives.4_run_reliability.gemini-4-argon.rel3"
+  },
+  "D5.claude-fable-5-2.gpt-6-astra": {
+   "value": 0.9056740276598773,
+   "display": "0.906",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.claude-fable-5-2~gpt-6-astra.rho_pw"
+  },
+  "D5.claude-fable-5-2.gpt-6-astra.n": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.claude-fable-5-2~gpt-6-astra.n"
+  },
+  "D5.claude-fable-5-2.gemini-4-argon": {
+   "value": 0.9246611690910778,
+   "display": "0.925",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.claude-fable-5-2~gemini-4-argon.rho_pw"
+  },
+  "D5.claude-fable-5-2.gemini-4-argon.n": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.claude-fable-5-2~gemini-4-argon.n"
+  },
+  "D5.gpt-6-astra.gemini-4-argon": {
+   "value": 0.8575336701560996,
+   "display": "0.858",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.gpt-6-astra~gemini-4-argon.rho_pw"
+  },
+  "D5.gpt-6-astra.gemini-4-argon.n": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.5_model_agreement.gpt-6-astra~gemini-4-argon.n"
+  },
+  "D6.INS.distinct": {
+   "value": 115,
+   "display": "115",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.INS.distinct"
+  },
+  "D6.INS.top10": {
+   "value": [
+    [
+     "Flo",
+     6
+    ],
+    [
+     "LiMu Emu and Doug",
+     5
+    ],
+    [
+     "Mayhem",
+     5
+    ],
+    [
+     "Cons",
+     4
+    ],
+    [
+     "Pros",
+     4
+    ],
+    [
+     "The Catch",
+     4
+    ],
+    [
+     "Chubb",
+     4
+    ],
+    [
+     "Bottom line",
+     4
+    ],
+    [
+     "Best for",
+     3
+    ],
+    [
+     "If you have military ties",
+     3
+    ]
+   ],
+   "display": "Flo (6); LiMu Emu and Doug (5); Mayhem (5); Cons (4); Pros (4); The Catch (4); Chubb (4); Bottom line (4); Best for (3); If you have military ties (3)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.INS.top10"
+  },
+  "D6.HOT.distinct": {
+   "value": 149,
+   "display": "149",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.HOT.distinct"
+  },
+  "D6.HOT.top10": {
+   "value": [
+    [
+     "Drury Hotels",
+     24
+    ],
+    [
+     "The Ritz-Carlton",
+     21
+    ],
+    [
+     "Waldorf Astoria",
+     16
+    ],
+    [
+     "Residence Inn",
+     15
+    ],
+    [
+     "Holiday Inn Express",
+     15
+    ],
+    [
+     "Ritz-Carlton",
+     12
+    ],
+    [
+     "Kimpton",
+     12
+    ],
+    [
+     "Hampton Inn",
+     11
+    ],
+    [
+     "Westin",
+     10
+    ],
+    [
+     "Holiday Inn",
+     8
+    ]
+   ],
+   "display": "Drury Hotels (24); The Ritz-Carlton (21); Waldorf Astoria (16); Residence Inn (15); Holiday Inn Express (15); Ritz-Carlton (12); Kimpton (12); Hampton Inn (11); Westin (10); Holiday Inn (8)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.HOT.top10"
+  },
+  "D6.GRO.distinct": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.GRO.distinct"
+  },
+  "D6.GRO.top10": {
+   "value": [
+    [
+     "Trader Joe's",
+     43
+    ],
+    [
+     "Costco",
+     37
+    ],
+    [
+     "Whole Foods Market",
+     26
+    ],
+    [
+     "Market Basket",
+     24
+    ],
+    [
+     "Walmart",
+     9
+    ],
+    [
+     "Whole Foods",
+     8
+    ],
+    [
+     "Central Market",
+     8
+    ],
+    [
+     "Target",
+     6
+    ],
+    [
+     "Winn-Dixie",
+     6
+    ],
+    [
+     "Meijer",
+     6
+    ]
+   ],
+   "display": "Trader Joe's (43); Costco (37); Whole Foods Market (26); Market Basket (24); Walmart (9); Whole Foods (8); Central Market (8); Target (6); Winn-Dixie (6); Meijer (6)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.GRO.top10"
+  },
+  "D6.QSR.distinct": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.QSR.distinct"
+  },
+  "D6.QSR.top10": {
+   "value": [
+    [
+     "Raising Cane's",
+     26
+    ],
+    [
+     "Shake Shack",
+     20
+    ],
+    [
+     "Whataburger",
+     19
+    ],
+    [
+     "Five Guys",
+     15
+    ],
+    [
+     "White Castle",
+     7
+    ],
+    [
+     "KFC",
+     6
+    ],
+    [
+     "Jersey Mike's",
+     5
+    ],
+    [
+     "My short list",
+     4
+    ],
+    [
+     "Bojangles",
+     4
+    ],
+    [
+     "Jersey Mike's Subs",
+     4
+    ]
+   ],
+   "display": "Raising Cane's (26); Shake Shack (20); Whataburger (19); Five Guys (15); White Castle (7); KFC (6); Jersey Mike's (5); My short list (4); Bojangles (4); Jersey Mike's Subs (4)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.QSR.top10"
+  },
+  "D6.APR.distinct": {
+   "value": 148,
+   "display": "148",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.APR.distinct"
+  },
+  "D6.APR.top10": {
+   "value": [
+    [
+     "Bloomingdale's",
+     39
+    ],
+    [
+     "Uniqlo",
+     31
+    ],
+    [
+     "Target",
+     22
+    ],
+    [
+     "J.Crew",
+     21
+    ],
+    [
+     "Old Navy",
+     21
+    ],
+    [
+     "Zara",
+     16
+    ],
+    [
+     "Patagonia",
+     14
+    ],
+    [
+     "Banana Republic",
+     13
+    ],
+    [
+     "Neiman Marcus",
+     13
+    ],
+    [
+     "Brooks Brothers",
+     13
+    ]
+   ],
+   "display": "Bloomingdale's (39); Uniqlo (31); Target (22); J.Crew (21); Old Navy (21); Zara (16); Patagonia (14); Banana Republic (13); Neiman Marcus (13); Brooks Brothers (13)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.APR.top10"
+  },
+  "D6.PHA.distinct": {
+   "value": 202,
+   "display": "202",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.PHA.distinct"
+  },
+  "D6.PHA.top10": {
+   "value": [
+    [
+     "Amazon Pharmacy",
+     27
+    ],
+    [
+     "Mark Cuban Cost Plus Drug Company",
+     15
+    ],
+    [
+     "Sam's Club Pharmacy",
+     14
+    ],
+    [
+     "Wegmans",
+     13
+    ],
+    [
+     "H-E-B Pharmacy",
+     12
+    ],
+    [
+     "Sam's Club",
+     9
+    ],
+    [
+     "H-E-B",
+     9
+    ],
+    [
+     "Mark Cuban Cost Plus Drugs",
+     8
+    ],
+    [
+     "Independent pharmacies",
+     7
+    ],
+    [
+     "Duane Reade",
+     7
+    ]
+   ],
+   "display": "Amazon Pharmacy (27); Mark Cuban Cost Plus Drug Company (15); Sam's Club Pharmacy (14); Wegmans (13); H-E-B Pharmacy (12); Sam's Club (9); H-E-B (9); Mark Cuban Cost Plus Drugs (8); Independent pharmacies (7); Duane Reade (7)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.PHA.top10"
+  },
+  "D6.CVF.distinct": {
+   "value": 130,
+   "display": "130",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.CVF.distinct"
+  },
+  "D6.CVF.top10": {
+   "value": [
+    [
+     "Buc-ee's",
+     39
+    ],
+    [
+     "Costco",
+     13
+    ],
+    [
+     "The Vibe",
+     8
+    ],
+    [
+     "Sinclair",
+     7
+    ],
+    [
+     "Primary Region",
+     7
+    ],
+    [
+     "Stuckey's",
+     6
+    ],
+    [
+     "Texaco",
+     6
+    ],
+    [
+     "Breakfast Pizza",
+     6
+    ],
+    [
+     "Speedway",
+     5
+    ],
+    [
+     "Shell",
+     5
+    ]
+   ],
+   "display": "Buc-ee's (39); Costco (13); The Vibe (8); Sinclair (7); Primary Region (7); Stuckey's (6); Texaco (6); Breakfast Pizza (6); Speedway (5); Shell (5)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.CVF.top10"
+  },
+  "D6.FAS.distinct": {
+   "value": 128,
+   "display": "128",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.FAS.distinct"
+  },
+  "D6.FAS.top10": {
+   "value": [
+    [
+     "Tom Ford",
+     15
+    ],
+    [
+     "Thom Browne",
+     14
+    ],
+    [
+     "Loro Piana",
+     13
+    ],
+    [
+     "Oscar de la Renta",
+     12
+    ],
+    [
+     "Gabriela Hearst",
+     10
+    ],
+    [
+     "Brunello Cucinelli",
+     10
+    ],
+    [
+     "Toteme",
+     8
+    ],
+    [
+     "Purple Label",
+     8
+    ],
+    [
+     "Carolina Herrera",
+     7
+    ],
+    [
+     "Alaïa",
+     7
+    ]
+   ],
+   "display": "Tom Ford (15); Thom Browne (14); Loro Piana (13); Oscar de la Renta (12); Gabriela Hearst (10); Brunello Cucinelli (10); Toteme (8); Purple Label (8); Carolina Herrera (7); Alaïa (7)",
+   "source": "osf/v44/v44_verdicts.json:descriptives.6_non_registry_names_in_phase_b.FAS.top10"
+  },
+  "D7.Kroger.GRO": {
+   "value": 0.35185185185185186,
+   "display": "0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Kroger.GRO:Kroger"
+  },
+  "D7.Kroger.PHA": {
+   "value": 0.3333333333333333,
+   "display": "0.33",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Kroger.PHA:Kroger Pharmacy"
+  },
+  "D7.Publix.GRO": {
+   "value": 1.0,
+   "display": "1.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Publix.GRO:Publix"
+  },
+  "D7.Publix.PHA": {
+   "value": 0.7962962962962963,
+   "display": "0.80",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Publix.PHA:Publix Pharmacy"
+  },
+  "D7.Albertsons.GRO": {
+   "value": 0.18518518518518517,
+   "display": "0.19",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Albertsons.GRO:Albertsons"
+  },
+  "D7.Albertsons.PHA": {
+   "value": 0.12962962962962962,
+   "display": "0.13",
+   "source": "osf/v44/v44_verdicts.json:descriptives.7_units_in_two_industries.Albertsons.PHA:Albertsons Pharmacy"
+  },
+  "D8.claude-fable-5-2.wB": {
+   "value": 249.9375,
+   "display": "250",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.words_B_mean"
+  },
+  "D8.claude-fable-5-2.wA": {
+   "value": 15.251572327044025,
+   "display": "15.3",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.words_A_mean"
+  },
+  "D8.claude-fable-5-2.units": {
+   "value": 6.993055555555555,
+   "display": "6.99",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.registry_units_per_B_answer"
+  },
+  "D8.claude-fable-5-2.finish": {
+   "value": {
+    "end_turn": 303
+   },
+   "display": "end_turn 303",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.finish_reasons"
+  },
+  "D8.claude-fable-5-2.refusals": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.refusals"
+  },
+  "D8.claude-fable-5-2.unanswered": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.unanswered"
+  },
+  "D8.claude-fable-5-2.phase_A_ambiguous": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.claude-fable-5-2.phase_A_ambiguous"
+  },
+  "D8.gpt-6-astra.wB": {
+   "value": 367.6041666666667,
+   "display": "368",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.words_B_mean"
+  },
+  "D8.gpt-6-astra.wA": {
+   "value": 1.0,
+   "display": "1.0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.words_A_mean"
+  },
+  "D8.gpt-6-astra.units": {
+   "value": 6.590277777777778,
+   "display": "6.59",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.registry_units_per_B_answer"
+  },
+  "D8.gpt-6-astra.finish": {
+   "value": {
+    "completed": 303
+   },
+   "display": "completed 303",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.finish_reasons"
+  },
+  "D8.gpt-6-astra.refusals": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.refusals"
+  },
+  "D8.gpt-6-astra.unanswered": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.unanswered"
+  },
+  "D8.gpt-6-astra.phase_A_ambiguous": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gpt-6-astra.phase_A_ambiguous"
+  },
+  "D8.gemini-4-argon.wB": {
+   "value": 777.9583333333334,
+   "display": "778",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.words_B_mean"
+  },
+  "D8.gemini-4-argon.wA": {
+   "value": 1.3459119496855345,
+   "display": "1.3",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.words_A_mean"
+  },
+  "D8.gemini-4-argon.units": {
+   "value": 6.756944444444445,
+   "display": "6.76",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.registry_units_per_B_answer"
+  },
+  "D8.gemini-4-argon.finish": {
+   "value": {
+    "FinishReason.STOP": 303
+   },
+   "display": "STOP 303",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.finish_reasons"
+  },
+  "D8.gemini-4-argon.refusals": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.refusals"
+  },
+  "D8.gemini-4-argon.unanswered": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.unanswered"
+  },
+  "D8.gemini-4-argon.phase_A_ambiguous": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.8_answer_form.gemini-4-argon.phase_A_ambiguous"
+  },
+  "D9.total": {
+   "value": 9.766626,
+   "display": "$9.77",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.total_usd"
+  },
+  "D9.claude-fable-5-2.B.usd": {
+   "value": 2.6556,
+   "display": "$2.66",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.usd"
+  },
+  "D9.claude-fable-5-2.B.in": {
+   "value": 4950,
+   "display": "4,950",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.input_tokens"
+  },
+  "D9.claude-fable-5-2.B.out": {
+   "value": 131790,
+   "display": "131,790",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.output_tokens"
+  },
+  "D9.claude-fable-5-2.B.think": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.thinking_tokens"
+  },
+  "D9.claude-fable-5-2.B.lines": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.raw_lines"
+  },
+  "D9.claude-fable-5-2.B.billed": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|B.billed_requests"
+  },
+  "D9.claude-fable-5-2.A.usd": {
+   "value": 0.346836,
+   "display": "$0.35",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.usd"
+  },
+  "D9.claude-fable-5-2.A.in": {
+   "value": 6629,
+   "display": "6,629",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.input_tokens"
+  },
+  "D9.claude-fable-5-2.A.out": {
+   "value": 16016,
+   "display": "16,016",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.output_tokens"
+  },
+  "D9.claude-fable-5-2.A.think": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.thinking_tokens"
+  },
+  "D9.claude-fable-5-2.A.lines": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.raw_lines"
+  },
+  "D9.claude-fable-5-2.A.billed": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A.billed_requests"
+  },
+  "D9.gpt-6-astra.B.usd": {
+   "value": 4.92536,
+   "display": "$4.93",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.usd"
+  },
+  "D9.gpt-6-astra.B.in": {
+   "value": 3426,
+   "display": "3,426",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.input_tokens"
+  },
+  "D9.gpt-6-astra.B.out": {
+   "value": 97822,
+   "display": "97,822",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.output_tokens"
+  },
+  "D9.gpt-6-astra.B.think": {
+   "value": 22111,
+   "display": "22,111",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.thinking_tokens"
+  },
+  "D9.gpt-6-astra.B.lines": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.raw_lines"
+  },
+  "D9.gpt-6-astra.B.billed": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|B.billed_requests"
+  },
+  "D9.gpt-6-astra.A.usd": {
+   "value": 0.12233,
+   "display": "$0.12",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.usd"
+  },
+  "D9.gpt-6-astra.A.in": {
+   "value": 3823,
+   "display": "3,823",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.input_tokens"
+  },
+  "D9.gpt-6-astra.A.out": {
+   "value": 1682,
+   "display": "1,682",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.output_tokens"
+  },
+  "D9.gpt-6-astra.A.think": {
+   "value": 650,
+   "display": "650",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.thinking_tokens"
+  },
+  "D9.gpt-6-astra.A.lines": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.raw_lines"
+  },
+  "D9.gpt-6-astra.A.billed": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A.billed_requests"
+  },
+  "D9.gemini-4-argon.B.usd": {
+   "value": 1.69176,
+   "display": "$1.69",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.usd"
+  },
+  "D9.gemini-4-argon.B.in": {
+   "value": 7020,
+   "display": "7,020",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.input_tokens"
+  },
+  "D9.gemini-4-argon.B.out": {
+   "value": 167772,
+   "display": "167,772",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.output_tokens"
+  },
+  "D9.gemini-4-argon.B.think": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.thinking_tokens"
+  },
+  "D9.gemini-4-argon.B.lines": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.raw_lines"
+  },
+  "D9.gemini-4-argon.B.billed": {
+   "value": 144,
+   "display": "144",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|B.billed_requests"
+  },
+  "D9.gemini-4-argon.A.usd": {
+   "value": 0.024739999999999998,
+   "display": "$0.02",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.usd"
+  },
+  "D9.gemini-4-argon.A.in": {
+   "value": 7825,
+   "display": "7,825",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.input_tokens"
+  },
+  "D9.gemini-4-argon.A.out": {
+   "value": 909,
+   "display": "909",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.output_tokens"
+  },
+  "D9.gemini-4-argon.A.think": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.thinking_tokens"
+  },
+  "D9.gemini-4-argon.A.lines": {
+   "value": 162,
+   "display": "162",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.raw_lines"
+  },
+  "D9.gemini-4-argon.A.billed": {
+   "value": 159,
+   "display": "159",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A.billed_requests"
+  },
+  "D9.est_parts": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.*.estimated_worst_case_parts (sum)"
+  },
+  "D9.claude-fable-5-2.usd": {
+   "value": 3.0024360000000003,
+   "display": "$3.00",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.claude-fable-5-2|A+B usd"
+  },
+  "D9.gpt-6-astra.usd": {
+   "value": 5.04769,
+   "display": "$5.05",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gpt-6-astra|A+B usd"
+  },
+  "D9.gemini-4-argon.usd": {
+   "value": 1.7165,
+   "display": "$1.72",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.gemini-4-argon|A+B usd"
+  },
+  "D9.A.usd": {
+   "value": 0.49390599999999996,
+   "display": "$0.49",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.*|A.usd (sum)"
+  },
+  "D9.B.usd": {
+   "value": 9.27272,
+   "display": "$9.27",
+   "source": "osf/v44/v44_verdicts.json:descriptives.9_cost.per_model_phase.*|B.usd (sum)"
+  },
+  "omni.sha": {
+   "value": "19bbc17ece805c26d90426424821a4e8f61dfa0f763f1fe8ad9594dc1791d946",
+   "display": "19bbc17ece80…",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv"
+  },
+  "omni.v0.19.sd": {
+   "value": 0.2935323012011157,
+   "display": "0.294",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  },
+  "omni.v0.19.n": {
+   "value": 16,
+   "display": "16",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; units with a value"
+  },
+  "omni.v0.19.name": {
+   "value": "headphones",
+   "display": "headphones",
+   "source": "category name of the omnibus substrate"
+  },
+  "omni.v0.20.sd": {
+   "value": 0.30758209220648886,
+   "display": "0.308",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  },
+  "omni.v0.20.n": {
+   "value": 24,
+   "display": "24",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; units with a value"
+  },
+  "omni.v0.20.name": {
+   "value": "skincare",
+   "display": "skincare",
+   "source": "category name of the omnibus substrate"
+  },
+  "omni.v0.21.sd": {
+   "value": 0.29377787738989614,
+   "display": "0.294",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  },
+  "omni.v0.21.n": {
+   "value": 24,
+   "display": "24",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; units with a value"
+  },
+  "omni.v0.21.name": {
+   "value": "cosmetics",
+   "display": "cosmetics",
+   "source": "category name of the omnibus substrate"
+  },
+  "omni.v0.22.sd": {
+   "value": 0.2752932440470608,
+   "display": "0.275",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  },
+  "omni.v0.22.n": {
+   "value": 24,
+   "display": "24",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; units with a value"
+  },
+  "omni.v0.22.name": {
+   "value": "cars",
+   "display": "cars",
+   "source": "category name of the omnibus substrate"
+  },
+  "omni.v0.23.sd": {
+   "value": 0.15606270209995668,
+   "display": "0.156",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  },
+  "omni.v0.23.n": {
+   "value": 24,
+   "display": "24",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; units with a value"
+  },
+  "omni.v0.23.name": {
+   "value": "spirits",
+   "display": "spirits",
+   "source": "category name of the omnibus substrate"
+  },
+  "omni.n_spread": {
+   "value": 5,
+   "display": "5",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate; substrates with SD >= 0.15"
+  },
+  "omni.n_sub": {
+   "value": 5,
+   "display": "5",
+   "source": "git show 31c64c6:osf/v42/v42_brand_table.csv (sha256 19bbc17ece80), column pi_N3_S0; population SD per substrate"
+  }
+ }
+}
