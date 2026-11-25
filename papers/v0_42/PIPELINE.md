@@ -158,3 +158,21 @@ The pre-registration's verdict words are CONFIRMED, MARGINAL, FALSIFIED and UNDE
 - The "Use of AI tools" statement is CLAUDE.md's, verbatim.
 - ™ marks the first mention of AIAS and of Third System.
 - Background numbers in §1 are read from `osf/v41/v41_verdicts.json` (tag `v0.41-scoring-locked`).
+
+
+## Revision r2 (25 November 2026): the apostrophe correction
+
+The coder missed "Paula’s Choice" and "L’Oréal Paris" written with U+2019 (OSF `v42/ERRATUM_2026-11-25.md`). The paper (r2) and the report (TS-FL-v0.42-r2) are rebuilt from the re-coded verdicts and brand table, `papers/v0_42/corrected_2026-11-25/` (copies of OSF `v45/sensitivity/t4_SQ/`, v0.45 commit 47f1748; the table is OSF `v42/v42_brand_table_corrected_2026-11-25.csv`). The published `osf/v42/` files are unchanged; run without the options below, every step still rebuilds r1.
+
+```
+C=papers/v0_42/corrected_2026-11-25
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_charts_v42.py --verdicts $C/v42_verdicts_SQ.json --table $C/v42_brand_table_SQ.csv --report-out <scratch>
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_charts_v42_report_v2.py --verdicts $C/v42_verdicts_SQ.json --table $C/v42_brand_table_SQ.csv
+PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/fill_paper_v0_42.py --verdicts $C/v42_verdicts_SQ.json --table $C/v42_brand_table_SQ.csv
+PYTHONDONTWRITEBYTECODE=1 python3 papers/v0_42/post_fill_real_v0_42.py --verdicts $C/v42_verdicts_SQ.json
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/build_paper_v0_42.py
+AIAS_ROOT=$PWD AIAS_V42_VERDICTS=$PWD/$C/v42_verdicts_SQ.json PYTHONDONTWRITEBYTECODE=1 python3 reports/build_report_v42_tier1.py \
+    --code TS-FL-v0.42-r2 --photo "<Try system book>/photo_library_ai/selected/print/v0.42_t4-wave.png" --out-dir <dir>
+```
+
+With the corrected verdicts, `post_fill_real_v0_42.py` reuses its hand-written text with the moved numbers replaced (`R2_SUBS`) and adds the dated correction paragraph after "Paper status"; the report builder adds a one-line pointer on each page whose printed numbers changed and the dated correction note in the closing page's small print. Both check every number they print against the corrected and the published verdicts and tables, and refuse otherwise.
