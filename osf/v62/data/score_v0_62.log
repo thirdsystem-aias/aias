@@ -1,0 +1,77 @@
+ACQUIRED by r1125 v0.62 scoring (memory free 60%, swap free 1462M)
+[2026-11-25 08:48:59 CST] gate P2: prepare on t4 English answers
+P2: 990 records -> /Users/pablou/aias/_worktrees/_runner_tmp/r1125/p2_work/p2_pre.jsonl and p2_ref.jsonl; now code both with v0.42's coder
+coded 876 calls -> 264 Phase A rows, 12096 Phase B rows in /Users/pablou/aias/_worktrees/_runner_tmp/r1125/p2_work/pre  (v0.23 Phase A judge OFF: not coded)
+coded 876 calls -> 264 Phase A rows, 12096 Phase B rows in /Users/pablou/aias/_worktrees/_runner_tmp/r1125/p2_work/ref  (v0.23 Phase A judge OFF: not coded)
+{
+ "gate": "P2 (pre-step inert on English; both sides normalised)",
+ "pre_vs_ref": {
+  "cells": 12360,
+  "only_in_first": 0,
+  "only_in_second": 0,
+  "different": 0,
+  "by_unit": {},
+  "equal": true
+ },
+ "result": "PASS",
+ "apostrophe_delta_ref_vs_locked": {
+  "cells": 12432,
+  "only_in_first": 0,
+  "only_in_second": 72,
+  "different": 118,
+  "by_unit": {
+   "v0.20 | Paula's Choice": 37,
+   "v0.21 | L'Oréal Paris": 9,
+   "v0.23 | S01": 3,
+   "v0.23 | S02": 3,
+   "v0.23 | S03": 3,
+   "v0.23 | S04": 3,
+   "v0.23 | S05": 3,
+   "v0.23 | S06": 3,
+   "v0.23 | S07": 3,
+   "v0.23 | S08": 3,
+   "v0.23 | S09": 3,
+   "v0.23 | S10": 3,
+   "v0.23 | S11": 3,
+   "v0.23 | S12": 3,
+   "v0.23 | S13": 3,
+   "v0.23 | S14": 3,
+   "v0.23 | S15": 3,
+   "v0.23 | S16": 3,
+   "v0.23 | S17": 3,
+   "v0.23 | S18": 3,
+   "v0.23 | S19": 3,
+   "v0.23 | S20": 3,
+   "v0.23 | S21": 3,
+   "v0.23 | S22": 3,
+   "v0.23 | S23": 3,
+   "v0.23 | S24": 3
+  },
+  "equal": false,
+  "only_apostrophe_units": false
+ }
+}
+[2026-11-25 08:49:04 CST] gate P2 exit 0
+[2026-11-25 08:49:04 CST] coding: pre-step
+prepared {'es': 534, 'ko': 535, 'zh': 534} lines; 110 collision-prone alias matches exported -> osf/v62/data/coded
+[2026-11-25 08:49:05 CST] coding: v0.42 coder on es
+coded 534 calls -> 264 Phase A rows, 6048 Phase B rows in osf/v62/data/coded/es  (v0.23 Phase A judge OFF: not coded)
+[2026-11-25 08:49:06 CST] coding: v0.42 coder on ko
+coded 534 calls -> 264 Phase A rows, 6048 Phase B rows in osf/v62/data/coded/ko  (v0.23 Phase A judge OFF: not coded)
+[2026-11-25 08:49:07 CST] coding: v0.42 coder on zh
+coded 534 calls -> 264 Phase A rows, 6048 Phase B rows in osf/v62/data/coded/zh  (v0.23 Phase A judge OFF: not coded)
+[2026-11-25 08:49:08 CST] scoring (once)
+{
+ "H_Lang_Presence_es": "CONFIRMED",
+ "H_Lang_Phi_es": "CONFIRMED",
+ "H_Lang_Rank_es": "NOT TESTED",
+ "H_Lang_Presence_ko": "CONFIRMED",
+ "H_Lang_Phi_ko": "MARGINAL",
+ "H_Lang_Rank_ko": "NOT TESTED",
+ "H_Lang_Presence_zh": "CONFIRMED",
+ "H_Lang_Phi_zh": "MARGINAL",
+ "H_Lang_Rank_zh": "NOT TESTED"
+} Language-robust
+[2026-11-25 08:50:58 CST] scorer exit 0
+RELEASED (was: r1125 v0.62 scoring since 08:48:59)
+[2026-11-25 08:50:58 CST] ALL DONE

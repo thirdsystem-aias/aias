@@ -1,0 +1,62 @@
+{
+ "P1_real": {
+  "source": "v0.42 worktree osf/v42/data/coded/*_phase_b.csv (S0 rows)",
+  "rows": 6048,
+  "units": 112,
+  "mismatches": 0,
+  "first": [],
+  "partitions": {
+   "defined": 79,
+   "zero": 25,
+   "saturated": 2,
+   "undefined": 6
+  },
+  "pinned": {
+   "commit": "58d1891bf2fa65b2a0f2f1e2adfcffc93fd56e0f",
+   "files": {
+    "v42": "osf/v42/scripts/score_v0_42.py",
+    "v41": "osf/v41/scripts/score_v41.py"
+   },
+   "functions": {
+    "v42": [
+     "pi_hat",
+     "phi_runs",
+     "phi_panel"
+    ],
+    "v41": [
+     "phi_m",
+     "phi_of"
+    ]
+   }
+  },
+  "result": "PASS",
+  "vs_v42_brand_table": {
+   "units_compared": 112,
+   "differences": 0,
+   "first": []
+  }
+ },
+ "P3": {
+  "files": {
+   "osf/v62/translations/probes_es_v0_62_r2.jsonl": {
+    "sha256": "8484ae76127ae9f538e95b1ad7355c3f2b672045afb6514c68336a52292a3dcf",
+    "manifest": "8484ae76127ae9f538e95b1ad7355c3f2b672045afb6514c68336a52292a3dcf",
+    "equal": true
+   },
+   "osf/v62/translations/probes_ko_v0_62_r2.jsonl": {
+    "sha256": "ba24ca0112045b887c0e0e2c76bdb4394537cdd03b1f55ffb8986d2e6e797bb8",
+    "manifest": "ba24ca0112045b887c0e0e2c76bdb4394537cdd03b1f55ffb8986d2e6e797bb8",
+    "equal": true
+   },
+   "osf/v62/translations/probes_zh_v0_62_r2.jsonl": {
+    "sha256": "e897dc87b702092a3f867d5c7f70ad327d83ddac4d6d19f120f12cce06ef8753",
+    "manifest": "e897dc87b702092a3f867d5c7f70ad327d83ddac4d6d19f120f12cce06ef8753",
+    "equal": true
+   }
+  },
+  "prompt_mismatches": 0,
+  "prompts_checked": 1603,
+  "first": [],
+  "result": "PASS"
+ }
+}

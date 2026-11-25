@@ -1,0 +1,48 @@
+{
+ "gate": "P2 (pre-step inert on English; both sides normalised)",
+ "pre_vs_ref": {
+  "cells": 12360,
+  "only_in_first": 0,
+  "only_in_second": 0,
+  "different": 0,
+  "by_unit": {},
+  "equal": true
+ },
+ "result": "PASS",
+ "apostrophe_delta_ref_vs_locked": {
+  "cells": 12432,
+  "only_in_first": 0,
+  "only_in_second": 72,
+  "different": 118,
+  "by_unit": {
+   "v0.20 | Paula's Choice": 37,
+   "v0.21 | L'Oréal Paris": 9,
+   "v0.23 | S01": 3,
+   "v0.23 | S02": 3,
+   "v0.23 | S03": 3,
+   "v0.23 | S04": 3,
+   "v0.23 | S05": 3,
+   "v0.23 | S06": 3,
+   "v0.23 | S07": 3,
+   "v0.23 | S08": 3,
+   "v0.23 | S09": 3,
+   "v0.23 | S10": 3,
+   "v0.23 | S11": 3,
+   "v0.23 | S12": 3,
+   "v0.23 | S13": 3,
+   "v0.23 | S14": 3,
+   "v0.23 | S15": 3,
+   "v0.23 | S16": 3,
+   "v0.23 | S17": 3,
+   "v0.23 | S18": 3,
+   "v0.23 | S19": 3,
+   "v0.23 | S20": 3,
+   "v0.23 | S21": 3,
+   "v0.23 | S22": 3,
+   "v0.23 | S23": 3,
+   "v0.23 | S24": 3
+  },
+  "equal": false,
+  "only_apostrophe_units": false
+ }
+}
