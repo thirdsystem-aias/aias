@@ -10,6 +10,10 @@ Reads only scored, recorded or archived files (nothing is typed by hand):
   osf/v62/data/v62_raw.jsonl, collect_v0_62.log, collect_v0_62_rerun.log, v62_budget_state.json
   osf/v62/data/gates/gate_P1real_P3_v0_62.json, gate_P2_v0_62.json, osf/v62/data/coded/v62_alias_audit.csv
   osf/v62/scripts/budget_v0_62.py                   (locked; only its worst_case() price rule is called)
+  osf/v62/data/v62_planned_items_summary_v0_62.json, v62_planned_items_v0_62.json,
+  v62_planned_category_labels_v0_62.csv, v62_planned_top10_shift_v0_62.csv, v62_planned_checks_v0_62.csv
+                                                    (DEVIATIONS Entry 7; commit 69e1aa9; CSVs cross-checked against the JSON)
+  osf/v62/DEVIATIONS.md                             (entry count; Entry 8 figures checked against the recomputed ones)
 
 Computed here (no output file holds them; each is labelled "computed for the paper" in its source field):
 the strict worst-case charge of the timed-out call under pre-registration section 6.5 rule 2 (by the locked
@@ -350,7 +354,290 @@ def gates():
     put("alias.matches", len(rows) - 1, str(len(rows) - 1), "osf/v62/data/coded/v62_alias_audit.csv (rows after the header)")
 
 
-def main():
+MNAME = {"claude-fable-5-2": "Claude Fable 5.2", "gpt-6-astra": "GPT-6 Astra", "gemini-4-argon": "Gemini 4 Argon"}
+LABELS = ["language-stable", "level-shifted", "intermediate", "language-sensitive"]
+
+
+def f2(x):
+    return f"{x:.2f}"
+
+
+def planned(V):
+    """DEVIATIONS Entry 7 (commit 69e1aa9): the pre-registered items the locked scorer did not compute."""
+    S = load("data/v62_planned_items_summary_v0_62.json")
+    I = load("data/v62_planned_items_v0_62.json")
+    ss = "osf/v62/data/v62_planned_items_summary_v0_62.json"
+    si = "osf/v62/data/v62_planned_items_v0_62.json"
+    assert S["deviation_entry"] == 7 and I["deviation_entry"] == 7
+    assert S["no_model_called"] and S["locked_verdicts_stand"] and not S["bears_on_a_verdict"]
+    assert I["reproduced_locked_verdicts_byte_for_byte"]
+    put("E7.entry", S["deviation_entry"], str(S["deviation_entry"]), ss + " deviation_entry")
+    # 2.2 per-model rho_c, readings (i) and (ii)
+    pm = []
+    for L in LANGS:
+        for m in MODELS:
+            r = S["per_model_rho_c"][f"{L}|{m}"]
+            full = I["2.2_per_model_rho_c"][f"{L}|{m}"]
+            for rd, k in (("i", "i_same_model_english"), ("ii", "ii_n3_english")):
+                assert full[k]["rho_c"] == r[k]
+                put(f"E7.pm.{L}.{m}.{rd}", r[k], f3(r[k]), f"{ss} per_model_rho_c.{L}|{m}.{k}")
+                pm.append(r[k])
+            n = full["i_same_model_english"]["n"]
+            assert n == full["ii_n3_english"]["n"] == V["n_units"]
+    put("E7.pm.n", V["n_units"], str(V["n_units"]), si + " 2.2_per_model_rho_c.*.n (112 in every cell)")
+    put("E7.pm.min", min(pm), f3(min(pm)), ss + " per_model_rho_c (minimum of 18)")
+    put("E7.pm.max", max(pm), f3(max(pm)), ss + " per_model_rho_c (maximum of 18)")
+    n70 = sum(x < 0.70 for x in pm)
+    put("E7.pm.n_below70", n70, str(n70), ss + " per_model_rho_c (count < 0.70)")
+    # 2.3 |rho_c(phi_L, pi_L)| flag
+    mx = 0.0
+    for L in LANGS:
+        f = S["phi_pi_flag"][L]
+        for part, k in (("def", "phi_L_defined"), ("hlp", "h_lang_phi_units")):
+            assert f[k]["flag"] is False
+            put(f"E7.phipi.{L}.{part}.abs", abs(f[k]["rho_c"]), f3(abs(f[k]["rho_c"])), f"{ss} phi_pi_flag.{L}.{k}.rho_c (absolute)")
+            put(f"E7.phipi.{L}.{part}.rho", f[k]["rho_c"], f3(f[k]["rho_c"]), f"{ss} phi_pi_flag.{L}.{k}.rho_c")
+            put(f"E7.phipi.{L}.{part}.n", f[k]["n"], str(f[k]["n"]), f"{ss} phi_pi_flag.{L}.{k}.n")
+            mx = max(mx, abs(f[k]["rho_c"]))
+    put("E7.phipi.max_abs", mx, f3(mx), ss + " phi_pi_flag (largest absolute value of six)")
+    # 2.5 per-category labels (summary JSON and CSV must agree)
+    rows = list(csv.DictReader(_read("data/v62_planned_category_labels_v0_62.csv").splitlines()))
+    sc = "osf/v62/data/v62_planned_category_labels_v0_62.csv"
+    assert len(rows) == 15
+    cnt = Counter()
+    for row in rows:
+        L, c = row["language"], row["category"]
+        d = S["category_labels"][f"{L}|{c}"]
+        assert d["label"] == row["label"] and d["n_moved_gt_1_6"] == int(row["n_moved_gt_1_6"])
+        assert abs(d["rho_c"] - float(row["rho_c"])) < 1e-9 and abs(d["delta_L"] - float(row["delta_L"])) < 1e-9
+        s = f"{ss} category_labels.{L}|{c} (= {sc})"
+        put(f"E7.cat.{L}.{c}.rho", d["rho_c"], f3(d["rho_c"]), s + ".rho_c")
+        put(f"E7.cat.{L}.{c}.dL", d["delta_L"], sgn3(d["delta_L"]), s + ".delta_L")
+        lo, hi = d["delta_L_ci95"]
+        put(f"E7.cat.{L}.{c}.dL_ci", [lo, hi], f"{sgn3(lo)} to {sgn3(hi)}", s + ".delta_L_ci95")
+        put(f"E7.cat.{L}.{c}.moved", d["n_moved_gt_1_6"], f"{d['n_moved_gt_1_6']} of {d['n']}", s + ".n_moved_gt_1_6 of n")
+        put(f"E7.cat.{L}.{c}.label", d["label"], d["label"], s + ".label")
+        cnt[d["label"]] += 1
+    for lab in LABELS:
+        put(f"E7.cat.n.{lab}", cnt[lab], str(cnt[lab]), f"{ss} category_labels (count of label {lab!r} of 15)")
+    assert sum(cnt.values()) == 15 and set(cnt) <= set(LABELS)
+    for pair, d in S["language_pairs"].items():
+        s = f"{ss} language_pairs.{pair}"
+        put(f"E7.pair.{pair}.rho", d["rho_c"], f3(d["rho_c"]), s + ".rho_c")
+        put(f"E7.pair.{pair}.ci", d["ci95_rho_c"], f"{f3(d['ci95_rho_c'][0])}–{f3(d['ci95_rho_c'][1])}", s + ".ci95_rho_c")
+        put(f"E7.pair.{pair}.p", d["p_perm"], pfmt(d["p_perm"]), s + ".p_perm")
+        put(f"E7.pair.{pair}.n", d["n"], str(d["n"]), s + ".n")
+    # 2.5 ten largest shifts (CSV and summary JSON must agree)
+    top = list(csv.DictReader(_read("data/v62_planned_top10_shift_v0_62.csv").splitlines()))
+    st = "osf/v62/data/v62_planned_top10_shift_v0_62.csv"
+    for L in LANGS:
+        rl = [r for r in top if r["language"] == L]
+        assert [int(r["rank"]) for r in rl] == list(range(1, 11))
+        for r, j in zip(rl, S["top10_shift"][L]):
+            assert r["name"] == j[1] and abs(float(r["shift"]) - j[4]) < 1e-9
+            i = int(r["rank"])
+            put(f"E7.top.{L}.{i}.name", r["name"], r["name"], f"{st} language={L} rank={i} name")
+            put(f"E7.top.{L}.{i}.shift", float(r["shift"]), sgn3(float(r["shift"])), f"{st} language={L} rank={i} shift")
+        ties = I["2.5_top10_shift"][L]["units_tied_with_10th_not_listed"]
+        put(f"E7.top.{L}.ties", ties, str(ties), f"{si} 2.5_top10_shift.{L}.units_tied_with_10th_not_listed")
+    # 2.7 time benchmark
+    tb = I["2.7_benchmark_for_time"]
+    put("E7.time.status", tb["status"], tb["status"], si + " 2.7_benchmark_for_time.status")
+    # 2.8 manipulation checks
+    M = I["2.8_manipulation_checks"]
+    sm = si + " 2.8_manipulation_checks"
+    c = M["MC_Complete"]
+    put("E7.mc.complete.answered", c["answered"], f"{c['answered']:,}", sm + ".MC_Complete.answered")
+    put("E7.mc.complete.sent", c["calls_sent"], f"{c['calls_sent']:,}", sm + ".MC_Complete.calls_sent")
+    put("E7.mc.complete.lines", c["attempt_lines"], f"{c['attempt_lines']:,}", sm + ".MC_Complete.attempt_lines")
+    put("E7.mc.complete.share", c["share"], f"{100 * c['share']:.0f}%", sm + ".MC_Complete.share")
+    c = M["MC_Served"]
+    put("E7.mc.served.checked", c["answered_calls_checked"], f"{c['answered_calls_checked']:,}", sm + ".MC_Served.answered_calls_checked")
+    put("E7.mc.served.mismatched", c["n_mismatched"], str(c["n_mismatched"]), sm + ".MC_Served.n_mismatched")
+    put("E7.mc.served.pass", c["pass"], "PASS" if c["pass"] else "FAIL", sm + ".MC_Served.pass")
+    chk = list(csv.DictReader(_read("data/v62_planned_checks_v0_62.csv").splitlines()))
+    sk = "osf/v62/data/v62_planned_checks_v0_62.csv"
+    lang = M["MC_Language"]["per_model_language"]
+    for row in chk:
+        if row["check"] != "MC_Language":
+            continue
+        L, m, ph = row["cell"].split("|")
+        d = lang[row["cell"]]
+        assert d["answers"] == int(row["n"]) and d["in_language"] == int(row["count"])
+        assert d["flag_below_95pct"] == (row["flag"] == "True")
+        s = f"{sk} MC_Language {row['cell']} (= {sm}.MC_Language.per_model_language)"
+        put(f"E7.mc.lang.{L}.{m}.{ph}", d["share"], f4(d["share"]), s + " share")
+        put(f"E7.mc.lang.{L}.{m}.{ph}.count", d["in_language"], f"{d['in_language']} of {d['answers']}", s + " count of n")
+        put(f"E7.mc.lang.{L}.{m}.{ph}.flag", d["flag_below_95pct"], "flagged" if d["flag_below_95pct"] else "not flagged",
+            s + " flag (below 95%)")
+    fl_all = sorted(k for k, d in lang.items() if k.endswith("|all") and d["flag_below_95pct"])
+    assert fl_all == sorted(M["MC_Language"]["flagged_all_answers"])
+    assert not M["MC_Language"]["flagged_phase_B"]
+    put("E7.mc.lang.n_flagged_all", len(fl_all), str(len(fl_all)), sm + ".MC_Language.flagged_all_answers (count)")
+    put("E7.mc.lang.flagged_all_langs", sorted({k.split("|")[0] for k in fl_all}),
+        ", ".join(sorted({k.split("|")[0].upper() for k in fl_all})), sm + ".MC_Language.flagged_all_answers (languages)")
+    fl_a = sorted(k for k, d in lang.items() if k.endswith("|A") and d["flag_below_95pct"])
+    put("E7.mc.lang.n_flagged_A", len(fl_a), str(len(fl_a)), sm + ".MC_Language.per_model_language (Phase A cells flagged)")
+    put("E7.mc.lang.n_flagged_B", 0, "0", sm + ".MC_Language.flagged_phase_B (count)")
+    off = lang["zh|claude-fable-5-2|B"]["off_language_call_ids"]
+    probes = sorted({x.split("|")[3] for x in off})
+    assert len(probes) == 1
+    put("E7.mc.lang.zh_off_probe", probes[0], probes[0], sm + ".MC_Language.per_model_language.zh|claude-fable-5-2|B.off_language_call_ids")
+    put("E7.mc.lang.zh_off_n", len(off), str(len(off)), sm + ".MC_Language.per_model_language.zh|claude-fable-5-2|B.off_language_call_ids (count)")
+    sc_ = M["MC_Script"]["per_model"]
+    nscript = sum(sc_[f"zh|{m}|all"]["with_traditional_only_characters"] for m in MODELS)
+    assert not M["MC_Script"]["flagged_all_answers"]
+    put("E7.mc.script.n", nscript, str(nscript), sm + ".MC_Script.per_model.zh|*|all.with_traditional_only_characters (sum)")
+    a = M["MC_Alias"]
+    put("E7.mc.alias.matches", a["matches_exported"], str(a["matches_exported"]), sm + ".MC_Alias.matches_exported")
+    put("E7.mc.alias.calls", a["calls_with_a_match"], str(a["calls_with_a_match"]), sm + ".MC_Alias.calls_with_a_match")
+    assert a["matches_exported"] == V_alias_matches()
+    for L in ("ko", "zh"):
+        parts = [x for x in a["by_language_alias_unit"] if x["language"] == L]
+        put(f"E7.mc.alias.{L}", [[x["unit"], x["matches"]] for x in parts],
+            ", ".join(f"{x['unit']} {x['matches']}" for x in parts), sm + f".MC_Alias.by_language_alias_unit (language {L})")
+    t = M["MC_Truncation"]
+    ncap = sum(d["at_cap"] for d in t["per_model_language"].values())
+    assert not t["flagged"]
+    put("E7.mc.trunc.n", ncap, str(ncap), sm + ".MC_Truncation.per_model_language.*.at_cap (sum)")
+    fr = sorted(k.replace("FinishReason.", "") for k in t["finish_reasons"])
+    put("E7.mc.trunc.reasons", fr, ", ".join(fr), sm + ".MC_Truncation.finish_reasons (keys)")
+    w = M["MC_Window"]
+    put("E7.mc.window.h", w["span_hours"], f"{w['span_hours']:.2f}", sm + ".MC_Window.span_hours")
+    b = M["MC_Budget"]
+    put("E7.mc.budget.spend", b["spend_from_recorded_usage_usd"], usd(b["spend_from_recorded_usage_usd"], 6),
+        sm + ".MC_Budget.spend_from_recorded_usage_usd")
+    put("E7.mc.budget.not_sent", b["calls_not_sent"], str(b["calls_not_sent"]), sm + ".MC_Budget.calls_not_sent")
+    # 7.5 S-Language, S-Script, S-Alias (Presence)
+    sens = I["7.5_sensitivities"]
+    for k, d in sens.items():
+        name, L = k.rsplit("_", 1)
+        assert d["verdict"] == d["primary_verdict"] == V["tests"][f"H_Lang_Presence_{L}"]["verdict"]
+        assert d["rho_c"] == S["sensitivities"][k]["rho_c"]
+        put_test(f"E7.{name}.{L}", d, f"{si} 7.5_sensitivities.{k}")
+        if "excluded_calls" in d:
+            put(f"E7.{name}.{L}.excluded", len(d["excluded_calls"]), str(len(d["excluded_calls"])),
+                f"{si} 7.5_sensitivities.{k}.excluded_calls (count)")
+        if "cells_differing_from_primary" in d:
+            put(f"E7.{name}.{L}.cells", d["cells_differing_from_primary"], str(d["cells_differing_from_primary"]),
+                f"{si} 7.5_sensitivities.{k}.cells_differing_from_primary")
+    assert sens["S-Language_zh"]["excluded_calls"] == off
+    # 2.9 descriptives
+    D = I["2.9_descriptives"]
+    sd = si + " 2.9_descriptives"
+    for key, d in D["1_run_reliability"].items():
+        L, m = key.split("|")
+        for r in ("rel1", "rel3"):
+            put(f"E7.rel.{L}.{m}.{r}", d[r], f3(d[r]), f"{sd}.1_run_reliability.{key}.{r}")
+        if L == "en":
+            assert d["transcription_equals_t4_locked"]
+    rec = D["2_recognition"]
+    for L, k in (("en", "en_t4_same_88_units"), ("es", "es"), ("ko", "ko"), ("zh", "zh")):
+        for m in MODELS:
+            r = rec[k][m]
+            assert r["coded_answers"] == r["rows"] == 88
+            put(f"E7.rec.{L}.{m}", r["recognized"], str(r["recognized"]), f"{sd}.2_recognition.{k}.{m}.recognized (of 88 coded)")
+    rr_ = [rec[L][m]["recognized"] for L in LANGS for m in MODELS]
+    put("E7.rec.min", min(rr_), str(min(rr_)), f"{sd}.2_recognition.{{es,ko,zh}}.*.recognized (minimum of 9)")
+    put("E7.rec.max", max(rr_), str(max(rr_)), f"{sd}.2_recognition.{{es,ko,zh}}.*.recognized (maximum of 9)")
+    lf = D["3_measured_language_factor"]
+    pl0 = D["3_planning_language_factors_section_6_2"]["central"]
+    below = all(lf[f"{L}|pooled|{ph}"]["cost_factor"] < pl0[L] for L in LANGS for ph in ("A", "B"))
+    put("E7.lf.pooled_below_plan", below, "yes" if below else "no",
+        f"{sd}.3_measured_language_factor.*|pooled|* < 3_planning_language_factors_section_6_2.central (all six)")
+    for L in LANGS:
+        for m in MODELS + ["pooled"]:
+            for ph in ("B", "A"):
+                x = lf[f"{L}|{m}|{ph}"]["cost_factor"]
+                put(f"E7.lf.{L}.{m}.{ph}", x, f2(x), f"{sd}.3_measured_language_factor.{L}|{m}|{ph}.cost_factor")
+        pl = D["3_planning_language_factors_section_6_2"]
+        put(f"E7.lf.{L}.plan", pl["central"][L], f2(pl["central"][L]),
+            f"{sd}.3_planning_language_factors_section_6_2.central.{L}")
+        put(f"E7.lf.{L}.plan_high", pl["conservative_high"][L], f2(pl["conservative_high"][L]),
+            f"{sd}.3_planning_language_factors_section_6_2.conservative_high.{L}")
+    af = D["3_answer_form"]
+    nref = 0
+    for L in ["en"] + LANGS:
+        for m in MODELS:
+            for ph in ("B", "A"):
+                nref += af[f"{L}|{m}|{ph}"]["refusals_by_finish_reason"]
+            d = af[f"{L}|{m}|B"]
+            s = f"{sd}.3_answer_form.{L}|{m}|B"
+            put(f"E7.form.{L}.{m}.chars", d["characters_per_answer_mean"], f"{d['characters_per_answer_mean']:,.0f}",
+                s + ".characters_per_answer_mean")
+            put(f"E7.form.{L}.{m}.brands", d["registry_brands_named_per_phase_B_answer"],
+                f"{d['registry_brands_named_per_phase_B_answer']:.1f}", s + ".registry_brands_named_per_phase_B_answer")
+    put("E7.form.refusals", nref, str(nref), sd + ".3_answer_form.*.refusals_by_finish_reason (sum)")
+    for L in ("ko", "zh"):
+        d = D["4_script_of_mentions"][L]["all_models"]
+        s = f"{sd}.4_script_of_mentions.{L}.all_models"
+        for k in ("mentions", "latin_only", "native_only", "both"):
+            put(f"E7.script.{L}.{k}", d[k], f"{d[k]:,}", f"{s}.{k}")
+        for k in ("share_with_latin_form", "share_with_native_form", "share_native_only"):
+            put(f"E7.script.{L}.{k}", d[k], f"{100 * d[k]:.1f}%", f"{s}.{k}")
+    h = D["5_home_language"]
+    put("E7.home.status", h["status"], h["status"], sd + ".5_home_language.status")
+    cost = D["6_cost"]
+    for L in LANGS:
+        for m in MODELS:
+            x = cost[f"{L}|{m}"]["usd"]
+            put(f"E7.cost.{L}.{m}", x, usd(x), f"{sd}.6_cost.{L}|{m}.usd")
+    put("E7.cost.total", cost["total_usd"], usd(cost["total_usd"]), sd + ".6_cost.total_usd")
+    assert abs(cost["total_usd"] - VALS["raw.cost_sum"]["value"]) < 1e-6
+
+
+def V_alias_matches():
+    return VALS["alias.matches"]["value"]
+
+
+def deviations():
+    """The deviations record itself: the entries it holds and the Entry 8 statements the paper repeats."""
+    txt = _read("DEVIATIONS.md")
+    src = "osf/v62/DEVIATIONS.md"
+    entries = [int(x) for x in re.findall(r"^## Entry (\d+) ", txt, re.M)]
+    assert entries == list(range(len(entries)))
+    put("dev.n_entries", len(entries), str(len(entries)), src + " ('## Entry N' headings)")
+    put("dev.last", entries[-1], str(entries[-1]), src + " ('## Entry N' headings, last)")
+    e8 = txt[txt.index("## Entry 8 "):]
+    assert "$0.16784" in e8 and "$28.297192" in e8 and "$28.129352" in e8
+    assert "would not have paused without the approval" in e8
+
+
+def entry8(total):
+    """Entry 8 figures recomputed from the raw file, the re-run log and the locked budget module."""
+    raw = [json.loads(l) for l in (V62 / "data/v62_raw.jsonl").read_text(encoding="utf-8").splitlines() if l.strip()]
+    src = "osf/v62/data/v62_raw.jsonl"
+    import budget_v0_62 as B   # noqa: E402  (path set by collection())
+    put("raw.cost_sum6", total, usd(total, 6), src + " sum of cost_usd over all lines")
+    rr = [r for r in raw if r["call_id"] == VALS["err.call_id"]["value"] and r["status"] == "ok"][0]
+    main = round(total - rr["cost_usd"], 6)
+    put("cost.main_recorded", main, usd(main, 6), "raw.cost_sum - re-run line cost_usd (computed for the paper)")
+    wc = VALS["cost.worst_case"]["value"]
+    put("cost.main_strict", main + wc, usd(main + wc, 6), "cost.main_recorded + cost.worst_case (computed for the paper)")
+    put("cost.strict_total4", total + wc, usd(total + wc, 4), "raw.cost_sum + cost.worst_case (computed for the paper)")
+    ax = [r for r in raw if r["status"] == "ok" and r["attempts"] > 1
+          and any(p.get("worst_case") for p in r["usage_parts"])]
+    assert len(ax) == 1
+    a = ax[0]
+    wa = B.worst_case(a["model_requested"], "S0", "standard", a["started_utc"])
+    put("cost.astra_call", a["call_id"], a["call_id"], src + " the one answered line with a worst-case usage part")
+    put("cost.astra_wc", wa, usd(wa, 4), "budget_v0_62.worst_case(gpt-6-astra, S0, standard, that line's started_utc) "
+        "(computed for the paper)")
+    st = load("data/v62_budget_state.json")
+    ap = st["approvals"]["projection"]
+    given = re.search(r"(\d{1,2}:\d{2} [ap]m) CT", ap["note"]).group(1)
+    put("budget.rerun_note_given", given, given, "osf/v62/data/v62_budget_state.json approvals.projection.note (time given)")
+    t = datetime.fromisoformat(ap["utc"]).astimezone(CT)
+    put("budget.rerun_note_time_ct", ap["utc"], t.strftime("%H:%M:%S"), "osf/v62/data/v62_budget_state.json "
+        "approvals.projection.utc, US Central")
+    rl = (V62 / "data/collect_v0_62_rerun.log").read_text(encoding="utf-8")
+    s1 = re.search(r"start CT \S+ (\S+)", rl).group(1)
+    s2 = re.search(r"collector exit 0 at CT \S+ (\S+)", rl).group(1)
+    put("log.rerun_start_s", s1, s1, "osf/v62/data/collect_v0_62_rerun.log start line")
+    put("log.rerun_end_s", s2, s2, "osf/v62/data/collect_v0_62_rerun.log collector exit line")
+
+
+def build():
     V = verdicts()
     coi106(V)
     ai_sens(V)
@@ -359,6 +646,13 @@ def main():
     total = collection()
     logs(total, ai_spend)
     gates()
+    planned(V)
+    deviations()
+    entry8(total)
+
+
+def main():
+    build()
     meta = {"written_by": "papers/v0_62/values_v0_62.py", "inputs_sha256": INPUTS, "n_values": len(VALS)}
     OUT_JSON.write_text(json.dumps({"_meta": meta, "values": VALS}, indent=1, ensure_ascii=False) + "\n", encoding="utf-8")
     print(f"wrote {OUT_JSON.relative_to(ROOT)}: {len(VALS)} values from {len(INPUTS)} files")

@@ -32,7 +32,7 @@ LIGHT = "#CCCCCC"
 FAIL = "#E4E4E4"
 INK = "#1A1A1A"
 SOURCE = ("Source: AIAS™ v0.62, osf/v62/v62_verdicts.json (score_v0_62.py, one run) and the sensitivity files of "
-          "DEVIATIONS Entries 4–6;\npre-registration v0.62-prereg-r1 (OSF ec6wh/v62). Third System™")
+          "DEVIATIONS Entries 4–7;\npre-registration v0.62-prereg-r1 (OSF ec6wh/v62). Third System™")
 LANGS = ["es", "ko", "zh"]
 LNAME = {"es": "Spanish", "ko": "Korean", "zh": "Chinese"}
 CATS = ["v0.19", "v0.20", "v0.21", "v0.22", "v0.23"]
@@ -173,15 +173,19 @@ SPECS = [  # (label, key prefix or None when not computed for that language)
     ("S-AliasAI", "SAliasAI.{L}"),
     ("Corrected comparator", "ENC.P.{L}"),
     ("Corrected, S-COI (106)", "ENC.S-COI106.{L}"),
+    ("S-Language (Entry 7)", "E7.S-Language.{L}"),
+    ("S-Script (Entry 7)", "E7.S-Script.{L}"),
+    ("S-Alias (Entry 7)", "E7.S-Alias.{L}"),
 ]
 
 
 def fig4_sens():
-    fig, axes = plt.subplots(1, 3, figsize=(7.5, 4.6), sharey=True)
-    fig.subplots_adjust(left=0.24, right=0.98, top=0.76, bottom=0.16, wspace=0.12)
+    fig, axes = plt.subplots(1, 3, figsize=(7.5, 5.4), sharey=True)
+    fig.subplots_adjust(left=0.24, right=0.98, top=0.80, bottom=0.14, wspace=0.12)
     header(fig, "Rank agreement of recall Presence with English under each specification",
            "ρc and bootstrap 95% interval per specification and language. S-AliasAI applies to Korean and Chinese "
-           "only. Dashed line:\n0.70, the confirmation threshold; every specification is CONFIRMED in every language.")
+           "only, S-Script to\nChinese only. Dashed line: 0.70, the confirmation threshold; every specification is "
+           "CONFIRMED in every language.")
     n = len(SPECS)
     for ax, L in zip(axes, LANGS):
         ax.axvline(0.70, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)), zorder=1)

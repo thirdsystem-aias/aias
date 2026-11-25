@@ -14,9 +14,15 @@
    "osf/v62/data/v62_budget_state.json": "22e908533d1a26cffcc14def28ae8f2c0427f5cff80fdf8a41d645be8febc3df",
    "osf/v62/data/gates/gate_P1real_P3_v0_62.json": "4cad75b6dcf07e1658bd9d518d24aaf986edbda20fe50cea94784aa6a7ec149e",
    "osf/v62/data/gates/gate_P2_v0_62.json": "7ec596348d117ec806a2808338cb2f8cd8493daf504414a1e4f445a3be7344d3",
-   "osf/v62/data/coded/v62_alias_audit.csv": "95e24c8cbab658003bdb70c9c07646c1566f15d6aa7251df377facf390051624"
+   "osf/v62/data/coded/v62_alias_audit.csv": "95e24c8cbab658003bdb70c9c07646c1566f15d6aa7251df377facf390051624",
+   "osf/v62/data/v62_planned_items_summary_v0_62.json": "0b5429c025ea85c4a4508180850ea320d308590f926d4028d7ba87e08ec4a1dd",
+   "osf/v62/data/v62_planned_items_v0_62.json": "034f46c8ec6d9f17828b38684a417dcc60a2fc60f42342b85f34ecd08e5393c7",
+   "osf/v62/data/v62_planned_category_labels_v0_62.csv": "db41d97489cf988729e97239b0839c24d0031e623619cde02c300c1b1c86b7bf",
+   "osf/v62/data/v62_planned_top10_shift_v0_62.csv": "f94baf26aa942c9b9012a42cbd9814eb7aa51f6569b55b3b8eb1573b4502acca",
+   "osf/v62/data/v62_planned_checks_v0_62.csv": "dbe405fba65e2c49a3dd93efde15adeb75f03ca80ea6cbbc4756fcd33191c1ed",
+   "osf/v62/DEVIATIONS.md": "9f70aeb37b1ace4880552cedd82ce9db21c1ab5062a883f4351506fb4356f4bc"
   },
-  "n_values": 919
+  "n_values": 1455
  },
  "values": {
   "design.n_units": {
@@ -4937,6 +4943,2818 @@
    "value": 110,
    "display": "110",
    "source": "osf/v62/data/coded/v62_alias_audit.csv (rows after the header)"
+  },
+  "E7.entry": {
+   "value": 7,
+   "display": "7",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json deviation_entry"
+  },
+  "E7.pm.es.claude-fable-5-2.i": {
+   "value": 0.9164613783173058,
+   "display": "0.916",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|claude-fable-5-2.i_same_model_english"
+  },
+  "E7.pm.es.claude-fable-5-2.ii": {
+   "value": 0.9012175835232464,
+   "display": "0.901",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|claude-fable-5-2.ii_n3_english"
+  },
+  "E7.pm.es.gpt-6-astra.i": {
+   "value": 0.8223296509609131,
+   "display": "0.822",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|gpt-6-astra.i_same_model_english"
+  },
+  "E7.pm.es.gpt-6-astra.ii": {
+   "value": 0.858814549851807,
+   "display": "0.859",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|gpt-6-astra.ii_n3_english"
+  },
+  "E7.pm.es.gemini-4-argon.i": {
+   "value": 0.8916542726216964,
+   "display": "0.892",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|gemini-4-argon.i_same_model_english"
+  },
+  "E7.pm.es.gemini-4-argon.ii": {
+   "value": 0.8982334219240105,
+   "display": "0.898",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.es|gemini-4-argon.ii_n3_english"
+  },
+  "E7.pm.ko.claude-fable-5-2.i": {
+   "value": 0.8895461206889492,
+   "display": "0.890",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|claude-fable-5-2.i_same_model_english"
+  },
+  "E7.pm.ko.claude-fable-5-2.ii": {
+   "value": 0.8605237972764419,
+   "display": "0.861",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|claude-fable-5-2.ii_n3_english"
+  },
+  "E7.pm.ko.gpt-6-astra.i": {
+   "value": 0.7435156988341901,
+   "display": "0.744",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|gpt-6-astra.i_same_model_english"
+  },
+  "E7.pm.ko.gpt-6-astra.ii": {
+   "value": 0.7945685605021263,
+   "display": "0.795",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|gpt-6-astra.ii_n3_english"
+  },
+  "E7.pm.ko.gemini-4-argon.i": {
+   "value": 0.7499629723256193,
+   "display": "0.750",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|gemini-4-argon.i_same_model_english"
+  },
+  "E7.pm.ko.gemini-4-argon.ii": {
+   "value": 0.7700140903415117,
+   "display": "0.770",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.ko|gemini-4-argon.ii_n3_english"
+  },
+  "E7.pm.zh.claude-fable-5-2.i": {
+   "value": 0.8552012376922328,
+   "display": "0.855",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|claude-fable-5-2.i_same_model_english"
+  },
+  "E7.pm.zh.claude-fable-5-2.ii": {
+   "value": 0.8106107149565726,
+   "display": "0.811",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|claude-fable-5-2.ii_n3_english"
+  },
+  "E7.pm.zh.gpt-6-astra.i": {
+   "value": 0.7189425059698648,
+   "display": "0.719",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|gpt-6-astra.i_same_model_english"
+  },
+  "E7.pm.zh.gpt-6-astra.ii": {
+   "value": 0.7496460614093589,
+   "display": "0.750",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|gpt-6-astra.ii_n3_english"
+  },
+  "E7.pm.zh.gemini-4-argon.i": {
+   "value": 0.7272023293135425,
+   "display": "0.727",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|gemini-4-argon.i_same_model_english"
+  },
+  "E7.pm.zh.gemini-4-argon.ii": {
+   "value": 0.7252325943060258,
+   "display": "0.725",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c.zh|gemini-4-argon.ii_n3_english"
+  },
+  "E7.pm.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.2_per_model_rho_c.*.n (112 in every cell)"
+  },
+  "E7.pm.min": {
+   "value": 0.7189425059698648,
+   "display": "0.719",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c (minimum of 18)"
+  },
+  "E7.pm.max": {
+   "value": 0.9164613783173058,
+   "display": "0.916",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c (maximum of 18)"
+  },
+  "E7.pm.n_below70": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json per_model_rho_c (count < 0.70)"
+  },
+  "E7.phipi.es.def.abs": {
+   "value": 0.04577725644011435,
+   "display": "0.046",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.phi_L_defined.rho_c (absolute)"
+  },
+  "E7.phipi.es.def.rho": {
+   "value": 0.04577725644011435,
+   "display": "0.046",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.phi_L_defined.rho_c"
+  },
+  "E7.phipi.es.def.n": {
+   "value": 78,
+   "display": "78",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.phi_L_defined.n"
+  },
+  "E7.phipi.es.hlp.abs": {
+   "value": 0.06928065824939475,
+   "display": "0.069",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.h_lang_phi_units.rho_c (absolute)"
+  },
+  "E7.phipi.es.hlp.rho": {
+   "value": 0.06928065824939475,
+   "display": "0.069",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.h_lang_phi_units.rho_c"
+  },
+  "E7.phipi.es.hlp.n": {
+   "value": 75,
+   "display": "75",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.es.h_lang_phi_units.n"
+  },
+  "E7.phipi.ko.def.abs": {
+   "value": 0.02249656997061437,
+   "display": "0.022",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.phi_L_defined.rho_c (absolute)"
+  },
+  "E7.phipi.ko.def.rho": {
+   "value": 0.02249656997061437,
+   "display": "0.022",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.phi_L_defined.rho_c"
+  },
+  "E7.phipi.ko.def.n": {
+   "value": 71,
+   "display": "71",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.phi_L_defined.n"
+  },
+  "E7.phipi.ko.hlp.abs": {
+   "value": 0.0011839951112779864,
+   "display": "0.001",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.h_lang_phi_units.rho_c (absolute)"
+  },
+  "E7.phipi.ko.hlp.rho": {
+   "value": -0.0011839951112779864,
+   "display": "−0.001",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.h_lang_phi_units.rho_c"
+  },
+  "E7.phipi.ko.hlp.n": {
+   "value": 66,
+   "display": "66",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.ko.h_lang_phi_units.n"
+  },
+  "E7.phipi.zh.def.abs": {
+   "value": 0.23709310174980575,
+   "display": "0.237",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.phi_L_defined.rho_c (absolute)"
+  },
+  "E7.phipi.zh.def.rho": {
+   "value": -0.23709310174980575,
+   "display": "−0.237",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.phi_L_defined.rho_c"
+  },
+  "E7.phipi.zh.def.n": {
+   "value": 79,
+   "display": "79",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.phi_L_defined.n"
+  },
+  "E7.phipi.zh.hlp.abs": {
+   "value": 0.20892633699068125,
+   "display": "0.209",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.h_lang_phi_units.rho_c (absolute)"
+  },
+  "E7.phipi.zh.hlp.rho": {
+   "value": -0.20892633699068125,
+   "display": "−0.209",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.h_lang_phi_units.rho_c"
+  },
+  "E7.phipi.zh.hlp.n": {
+   "value": 70,
+   "display": "70",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag.zh.h_lang_phi_units.n"
+  },
+  "E7.phipi.max_abs": {
+   "value": 0.23709310174980575,
+   "display": "0.237",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json phi_pi_flag (largest absolute value of six)"
+  },
+  "E7.cat.es.v0.19.rho": {
+   "value": 0.9493799846686368,
+   "display": "0.949",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.es.v0.19.dL": {
+   "value": -0.009259259259259262,
+   "display": "−0.009",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.es.v0.19.dL_ci": {
+   "value": [
+    -0.03819444444444446,
+    0.019675925925925934
+   ],
+   "display": "−0.038 to +0.020",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.es.v0.19.moved": {
+   "value": 0,
+   "display": "0 of 16",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.es.v0.19.label": {
+   "value": "language-stable",
+   "display": "language-stable",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.es.v0.20.rho": {
+   "value": 0.9575923572450848,
+   "display": "0.958",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.es.v0.20.dL": {
+   "value": 0.05169753086419752,
+   "display": "+0.052",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.es.v0.20.dL_ci": {
+   "value": [
+    0.005401234567901231,
+    0.10802469135802469
+   ],
+   "display": "+0.005 to +0.108",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.es.v0.20.moved": {
+   "value": 3,
+   "display": "3 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.es.v0.20.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.es.v0.21.rho": {
+   "value": 0.9389521336178058,
+   "display": "0.939",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.es.v0.21.dL": {
+   "value": 0.09645061728395062,
+   "display": "+0.096",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.es.v0.21.dL_ci": {
+   "value": [
+    0.0447337962962963,
+    0.1558641975308642
+   ],
+   "display": "+0.045 to +0.156",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.es.v0.21.moved": {
+   "value": 4,
+   "display": "4 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.es.v0.21.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.es.v0.22.rho": {
+   "value": 0.972346506419375,
+   "display": "0.972",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.es.v0.22.dL": {
+   "value": 0.002314814814814816,
+   "display": "+0.002",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.es.v0.22.dL_ci": {
+   "value": [
+    -0.012364969135802465,
+    0.019290123456790115
+   ],
+   "display": "−0.012 to +0.019",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.es.v0.22.moved": {
+   "value": 0,
+   "display": "0 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.es.v0.22.label": {
+   "value": "language-stable",
+   "display": "language-stable",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.es.v0.23.rho": {
+   "value": 0.8497816593886462,
+   "display": "0.850",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.es.v0.23.dL": {
+   "value": 0.02391975308641976,
+   "display": "+0.024",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.es.v0.23.dL_ci": {
+   "value": [
+    -0.004629629629629625,
+    0.05246913580246915
+   ],
+   "display": "−0.005 to +0.052",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.es.v0.23.moved": {
+   "value": 0,
+   "display": "0 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.es.v0.23.label": {
+   "value": "language-stable",
+   "display": "language-stable",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.es|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.ko.v0.19.rho": {
+   "value": 0.9427177274901473,
+   "display": "0.943",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.ko.v0.19.dL": {
+   "value": -0.06712962962962964,
+   "display": "−0.067",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.ko.v0.19.dL_ci": {
+   "value": [
+    -0.10416666666666666,
+    -0.030092592592592594
+   ],
+   "display": "−0.104 to −0.030",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.ko.v0.19.moved": {
+   "value": 1,
+   "display": "1 of 16",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.ko.v0.19.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.ko.v0.20.rho": {
+   "value": 0.9019270779552134,
+   "display": "0.902",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.ko.v0.20.dL": {
+   "value": -0.057870370370370385,
+   "display": "−0.058",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.ko.v0.20.dL_ci": {
+   "value": [
+    -0.11111111111111112,
+    -0.00615354938271633
+   ],
+   "display": "−0.111 to −0.006",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.ko.v0.20.moved": {
+   "value": 5,
+   "display": "5 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.ko.v0.20.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.ko.v0.21.rho": {
+   "value": 0.7200056347292492,
+   "display": "0.720",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.ko.v0.21.dL": {
+   "value": -0.12191358024691357,
+   "display": "−0.122",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.ko.v0.21.dL_ci": {
+   "value": [
+    -0.21141975308641978,
+    -0.03935185185185185
+   ],
+   "display": "−0.211 to −0.039",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.ko.v0.21.moved": {
+   "value": 9,
+   "display": "9 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.ko.v0.21.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.ko.v0.22.rho": {
+   "value": 0.9802086875268903,
+   "display": "0.980",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.ko.v0.22.dL": {
+   "value": -0.0640432098765432,
+   "display": "−0.064",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.ko.v0.22.dL_ci": {
+   "value": [
+    -0.08719135802469136,
+    -0.04166666666666665
+   ],
+   "display": "−0.087 to −0.042",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.ko.v0.22.moved": {
+   "value": 1,
+   "display": "1 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.ko.v0.22.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.ko.v0.23.rho": {
+   "value": 0.8458546936065101,
+   "display": "0.846",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.ko.v0.23.dL": {
+   "value": -0.05787037037037037,
+   "display": "−0.058",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.ko.v0.23.dL_ci": {
+   "value": [
+    -0.09413580246913578,
+    -0.026234567901234563
+   ],
+   "display": "−0.094 to −0.026",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.ko.v0.23.moved": {
+   "value": 3,
+   "display": "3 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.ko.v0.23.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.ko|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.zh.v0.19.rho": {
+   "value": 0.9107233610480981,
+   "display": "0.911",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.zh.v0.19.dL": {
+   "value": 0.004629629629629626,
+   "display": "+0.005",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.zh.v0.19.dL_ci": {
+   "value": [
+    -0.052083333333333336,
+    0.057870370370370364
+   ],
+   "display": "−0.052 to +0.058",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.zh.v0.19.moved": {
+   "value": 3,
+   "display": "3 of 16",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.zh.v0.19.label": {
+   "value": "language-stable",
+   "display": "language-stable",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.19 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.zh.v0.20.rho": {
+   "value": 0.672219123513549,
+   "display": "0.672",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.zh.v0.20.dL": {
+   "value": -0.017746913580246916,
+   "display": "−0.018",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.zh.v0.20.dL_ci": {
+   "value": [
+    -0.0949074074074074,
+    0.06558641975308642
+   ],
+   "display": "−0.095 to +0.066",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.zh.v0.20.moved": {
+   "value": 8,
+   "display": "8 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.zh.v0.20.label": {
+   "value": "intermediate",
+   "display": "intermediate",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.20 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.zh.v0.21.rho": {
+   "value": 0.7481752724661775,
+   "display": "0.748",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.zh.v0.21.dL": {
+   "value": -0.10108024691358025,
+   "display": "−0.101",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.zh.v0.21.dL_ci": {
+   "value": [
+    -0.18672839506172836,
+    -0.020061728395061738
+   ],
+   "display": "−0.187 to −0.020",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.zh.v0.21.moved": {
+   "value": 10,
+   "display": "10 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.zh.v0.21.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.21 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.zh.v0.22.rho": {
+   "value": 0.9066041187212812,
+   "display": "0.907",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.zh.v0.22.dL": {
+   "value": -0.06172839506172839,
+   "display": "−0.062",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.zh.v0.22.dL_ci": {
+   "value": [
+    -0.0979938271604938,
+    -0.027006172839506168
+   ],
+   "display": "−0.098 to −0.027",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.zh.v0.22.moved": {
+   "value": 2,
+   "display": "2 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.zh.v0.22.label": {
+   "value": "level-shifted",
+   "display": "level-shifted",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.22 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.zh.v0.23.rho": {
+   "value": 0.8927013900059144,
+   "display": "0.893",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).rho_c"
+  },
+  "E7.cat.zh.v0.23.dL": {
+   "value": -0.020833333333333332,
+   "display": "−0.021",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L"
+  },
+  "E7.cat.zh.v0.23.dL_ci": {
+   "value": [
+    -0.052469135802469126,
+    0.01080246913580247
+   ],
+   "display": "−0.052 to +0.011",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).delta_L_ci95"
+  },
+  "E7.cat.zh.v0.23.moved": {
+   "value": 0,
+   "display": "0 of 24",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).n_moved_gt_1_6 of n"
+  },
+  "E7.cat.zh.v0.23.label": {
+   "value": "language-stable",
+   "display": "language-stable",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels.zh|v0.23 (= osf/v62/data/v62_planned_category_labels_v0_62.csv).label"
+  },
+  "E7.cat.n.language-stable": {
+   "value": 5,
+   "display": "5",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels (count of label 'language-stable' of 15)"
+  },
+  "E7.cat.n.level-shifted": {
+   "value": 9,
+   "display": "9",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels (count of label 'level-shifted' of 15)"
+  },
+  "E7.cat.n.intermediate": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels (count of label 'intermediate' of 15)"
+  },
+  "E7.cat.n.language-sensitive": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json category_labels (count of label 'language-sensitive' of 15)"
+  },
+  "E7.pair.ES-KO.rho": {
+   "value": 0.8544215078410201,
+   "display": "0.854",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-KO.rho_c"
+  },
+  "E7.pair.ES-KO.ci": {
+   "value": [
+    0.7444688291430637,
+    0.9177519765650104
+   ],
+   "display": "0.744–0.918",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-KO.ci95_rho_c"
+  },
+  "E7.pair.ES-KO.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-KO.p_perm"
+  },
+  "E7.pair.ES-KO.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-KO.n"
+  },
+  "E7.pair.ES-ZH.rho": {
+   "value": 0.8237590286406573,
+   "display": "0.824",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-ZH.rho_c"
+  },
+  "E7.pair.ES-ZH.ci": {
+   "value": [
+    0.6984886729291573,
+    0.8991203316950711
+   ],
+   "display": "0.698–0.899",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-ZH.ci95_rho_c"
+  },
+  "E7.pair.ES-ZH.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-ZH.p_perm"
+  },
+  "E7.pair.ES-ZH.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.ES-ZH.n"
+  },
+  "E7.pair.KO-ZH.rho": {
+   "value": 0.8881612194523402,
+   "display": "0.888",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.KO-ZH.rho_c"
+  },
+  "E7.pair.KO-ZH.ci": {
+   "value": [
+    0.8032904717197475,
+    0.9316899871222633
+   ],
+   "display": "0.803–0.932",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.KO-ZH.ci95_rho_c"
+  },
+  "E7.pair.KO-ZH.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.KO-ZH.p_perm"
+  },
+  "E7.pair.KO-ZH.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_summary_v0_62.json language_pairs.KO-ZH.n"
+  },
+  "E7.top.es.1.name": {
+   "value": "L'Oréal Paris",
+   "display": "L'Oréal Paris",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=1 name"
+  },
+  "E7.top.es.1.shift": {
+   "value": 0.5555555556,
+   "display": "+0.556",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=1 shift"
+  },
+  "E7.top.es.2.name": {
+   "value": "Paula's Choice",
+   "display": "Paula's Choice",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=2 name"
+  },
+  "E7.top.es.2.shift": {
+   "value": 0.4444444444,
+   "display": "+0.444",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=2 shift"
+  },
+  "E7.top.es.3.name": {
+   "value": "Bioderma",
+   "display": "Bioderma",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=3 name"
+  },
+  "E7.top.es.3.shift": {
+   "value": 0.3703703704,
+   "display": "+0.370",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=3 shift"
+  },
+  "E7.top.es.4.name": {
+   "value": "NYX Professional Makeup",
+   "display": "NYX Professional Makeup",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=4 name"
+  },
+  "E7.top.es.4.shift": {
+   "value": 0.3518518519,
+   "display": "+0.352",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=4 shift"
+  },
+  "E7.top.es.5.name": {
+   "value": "Eucerin",
+   "display": "Eucerin",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=5 name"
+  },
+  "E7.top.es.5.shift": {
+   "value": 0.3333333333,
+   "display": "+0.333",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=5 shift"
+  },
+  "E7.top.es.6.name": {
+   "value": "MAC Cosmetics",
+   "display": "MAC Cosmetics",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=6 name"
+  },
+  "E7.top.es.6.shift": {
+   "value": 0.2777777778,
+   "display": "+0.278",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=6 shift"
+  },
+  "E7.top.es.7.name": {
+   "value": "NARS",
+   "display": "NARS",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=7 name"
+  },
+  "E7.top.es.7.shift": {
+   "value": 0.2222222222,
+   "display": "+0.222",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=7 shift"
+  },
+  "E7.top.es.8.name": {
+   "value": "Kylie Cosmetics",
+   "display": "Kylie Cosmetics",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=8 name"
+  },
+  "E7.top.es.8.shift": {
+   "value": 0.1666666667,
+   "display": "+0.167",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=8 shift"
+  },
+  "E7.top.es.9.name": {
+   "value": "Mezcal Vago",
+   "display": "Mezcal Vago",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=9 name"
+  },
+  "E7.top.es.9.shift": {
+   "value": 0.1666666667,
+   "display": "+0.167",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=9 shift"
+  },
+  "E7.top.es.10.name": {
+   "value": "Anastasia Beverly Hills",
+   "display": "Anastasia Beverly Hills",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=10 name"
+  },
+  "E7.top.es.10.shift": {
+   "value": 0.1481481481,
+   "display": "+0.148",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=es rank=10 shift"
+  },
+  "E7.top.es.ties": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.5_top10_shift.es.units_tied_with_10th_not_listed"
+  },
+  "E7.top.ko.1.name": {
+   "value": "e.l.f. Cosmetics",
+   "display": "e.l.f. Cosmetics",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=1 name"
+  },
+  "E7.top.ko.1.shift": {
+   "value": -0.6481481481,
+   "display": "−0.648",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=1 shift"
+  },
+  "E7.top.ko.2.name": {
+   "value": "Maybelline",
+   "display": "Maybelline",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=2 name"
+  },
+  "E7.top.ko.2.shift": {
+   "value": -0.6111111111,
+   "display": "−0.611",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=2 shift"
+  },
+  "E7.top.ko.3.name": {
+   "value": "NYX Professional Makeup",
+   "display": "NYX Professional Makeup",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=3 name"
+  },
+  "E7.top.ko.3.shift": {
+   "value": -0.462962963,
+   "display": "−0.463",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=3 shift"
+  },
+  "E7.top.ko.4.name": {
+   "value": "Rhode",
+   "display": "Rhode",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=4 name"
+  },
+  "E7.top.ko.4.shift": {
+   "value": -0.3703703704,
+   "display": "−0.370",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=4 shift"
+  },
+  "E7.top.ko.5.name": {
+   "value": "MAC Cosmetics",
+   "display": "MAC Cosmetics",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=5 name"
+  },
+  "E7.top.ko.5.shift": {
+   "value": -0.3518518519,
+   "display": "−0.352",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=5 shift"
+  },
+  "E7.top.ko.6.name": {
+   "value": "SkinCeuticals",
+   "display": "SkinCeuticals",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=6 name"
+  },
+  "E7.top.ko.6.shift": {
+   "value": -0.3148148148,
+   "display": "−0.315",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=6 shift"
+  },
+  "E7.top.ko.7.name": {
+   "value": "Del Maguey",
+   "display": "Del Maguey",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=7 name"
+  },
+  "E7.top.ko.7.shift": {
+   "value": -0.2962962963,
+   "display": "−0.296",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=7 shift"
+  },
+  "E7.top.ko.8.name": {
+   "value": "Drunk Elephant",
+   "display": "Drunk Elephant",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=8 name"
+  },
+  "E7.top.ko.8.shift": {
+   "value": -0.2777777778,
+   "display": "−0.278",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=8 shift"
+  },
+  "E7.top.ko.9.name": {
+   "value": "Paula's Choice",
+   "display": "Paula's Choice",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=9 name"
+  },
+  "E7.top.ko.9.shift": {
+   "value": 0.2777777778,
+   "display": "+0.278",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=9 shift"
+  },
+  "E7.top.ko.10.name": {
+   "value": "Haus Labs",
+   "display": "Haus Labs",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=10 name"
+  },
+  "E7.top.ko.10.shift": {
+   "value": -0.2407407407,
+   "display": "−0.241",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=ko rank=10 shift"
+  },
+  "E7.top.ko.ties": {
+   "value": 2,
+   "display": "2",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.5_top10_shift.ko.units_tied_with_10th_not_listed"
+  },
+  "E7.top.zh.1.name": {
+   "value": "e.l.f. Cosmetics",
+   "display": "e.l.f. Cosmetics",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=1 name"
+  },
+  "E7.top.zh.1.shift": {
+   "value": -0.5925925926,
+   "display": "−0.593",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=1 shift"
+  },
+  "E7.top.zh.2.name": {
+   "value": "Estée Lauder",
+   "display": "Estée Lauder",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=2 name"
+  },
+  "E7.top.zh.2.shift": {
+   "value": 0.5,
+   "display": "+0.500",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=2 shift"
+  },
+  "E7.top.zh.3.name": {
+   "value": "NYX Professional Makeup",
+   "display": "NYX Professional Makeup",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=3 name"
+  },
+  "E7.top.zh.3.shift": {
+   "value": -0.462962963,
+   "display": "−0.463",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=3 shift"
+  },
+  "E7.top.zh.4.name": {
+   "value": "Maybelline",
+   "display": "Maybelline",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=4 name"
+  },
+  "E7.top.zh.4.shift": {
+   "value": -0.4444444444,
+   "display": "−0.444",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=4 shift"
+  },
+  "E7.top.zh.5.name": {
+   "value": "Lancôme",
+   "display": "Lancôme",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=5 name"
+  },
+  "E7.top.zh.5.shift": {
+   "value": 0.4074074074,
+   "display": "+0.407",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=5 shift"
+  },
+  "E7.top.zh.6.name": {
+   "value": "Rhode",
+   "display": "Rhode",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=6 name"
+  },
+  "E7.top.zh.6.shift": {
+   "value": -0.3888888889,
+   "display": "−0.389",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=6 shift"
+  },
+  "E7.top.zh.7.name": {
+   "value": "La Mer",
+   "display": "La Mer",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=7 name"
+  },
+  "E7.top.zh.7.shift": {
+   "value": 0.3333333333,
+   "display": "+0.333",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=7 shift"
+  },
+  "E7.top.zh.8.name": {
+   "value": "The Ordinary",
+   "display": "The Ordinary",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=8 name"
+  },
+  "E7.top.zh.8.shift": {
+   "value": -0.2962962963,
+   "display": "−0.296",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=8 shift"
+  },
+  "E7.top.zh.9.name": {
+   "value": "Rare Beauty",
+   "display": "Rare Beauty",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=9 name"
+  },
+  "E7.top.zh.9.shift": {
+   "value": -0.2962962963,
+   "display": "−0.296",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=9 shift"
+  },
+  "E7.top.zh.10.name": {
+   "value": "Hyundai",
+   "display": "Hyundai",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=10 name"
+  },
+  "E7.top.zh.10.shift": {
+   "value": -0.2777777778,
+   "display": "−0.278",
+   "source": "osf/v62/data/v62_planned_top10_shift_v0_62.csv language=zh rank=10 shift"
+  },
+  "E7.top.zh.ties": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.5_top10_shift.zh.units_tied_with_10th_not_listed"
+  },
+  "E7.time.status": {
+   "value": "not available",
+   "display": "not available",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.7_benchmark_for_time.status"
+  },
+  "E7.mc.complete.answered": {
+   "value": 1602,
+   "display": "1,602",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Complete.answered"
+  },
+  "E7.mc.complete.sent": {
+   "value": 1602,
+   "display": "1,602",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Complete.calls_sent"
+  },
+  "E7.mc.complete.lines": {
+   "value": 1603,
+   "display": "1,603",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Complete.attempt_lines"
+  },
+  "E7.mc.complete.share": {
+   "value": 1.0,
+   "display": "100%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Complete.share"
+  },
+  "E7.mc.served.checked": {
+   "value": 1602,
+   "display": "1,602",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Served.answered_calls_checked"
+  },
+  "E7.mc.served.mismatched": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Served.n_mismatched"
+  },
+  "E7.mc.served.pass": {
+   "value": true,
+   "display": "PASS",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Served.pass"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.all": {
+   "value": 0.6292134831460674,
+   "display": "0.6292",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.all.count": {
+   "value": 112,
+   "display": "112 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.all.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.A": {
+   "value": 0.25,
+   "display": "0.2500",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.A.count": {
+   "value": 22,
+   "display": "22 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.claude-fable-5-2.A.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gpt-6-astra.all": {
+   "value": 0.5056179775280899,
+   "display": "0.5056",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gpt-6-astra.all.count": {
+   "value": 90,
+   "display": "90 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gpt-6-astra.all.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gpt-6-astra.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gpt-6-astra.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gpt-6-astra.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gpt-6-astra.A": {
+   "value": 0.0,
+   "display": "0.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gpt-6-astra.A.count": {
+   "value": 0,
+   "display": "0 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gpt-6-astra.A.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gemini-4-argon.all": {
+   "value": 0.5112359550561798,
+   "display": "0.5112",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gemini-4-argon.all.count": {
+   "value": 91,
+   "display": "91 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gemini-4-argon.all.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gemini-4-argon.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gemini-4-argon.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gemini-4-argon.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.es.gemini-4-argon.A": {
+   "value": 0.011363636363636364,
+   "display": "0.0114",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.es.gemini-4-argon.A.count": {
+   "value": 1,
+   "display": "1 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.es.gemini-4-argon.A.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language es|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.all": {
+   "value": 0.9943820224719101,
+   "display": "0.9944",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.all.count": {
+   "value": 177,
+   "display": "177 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.A": {
+   "value": 0.9886363636363636,
+   "display": "0.9886",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.A.count": {
+   "value": 87,
+   "display": "87 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.claude-fable-5-2.A.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.all": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.all.count": {
+   "value": 178,
+   "display": "178 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.A": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.A.count": {
+   "value": 88,
+   "display": "88 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gpt-6-astra.A.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.all": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.all.count": {
+   "value": 178,
+   "display": "178 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.A": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.A.count": {
+   "value": 88,
+   "display": "88 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.ko.gemini-4-argon.A.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language ko|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.all": {
+   "value": 0.9550561797752809,
+   "display": "0.9551",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.all.count": {
+   "value": 170,
+   "display": "170 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.B": {
+   "value": 0.9666666666666667,
+   "display": "0.9667",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.B.count": {
+   "value": 87,
+   "display": "87 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.A": {
+   "value": 0.9431818181818182,
+   "display": "0.9432",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.A.count": {
+   "value": 83,
+   "display": "83 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.claude-fable-5-2.A.flag": {
+   "value": true,
+   "display": "flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|claude-fable-5-2|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.all": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.all.count": {
+   "value": 178,
+   "display": "178 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.A": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.A.count": {
+   "value": 88,
+   "display": "88 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gpt-6-astra.A.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gpt-6-astra|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.all": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.all.count": {
+   "value": 178,
+   "display": "178 of 178",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.all.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|all (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.B": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.B.count": {
+   "value": 90,
+   "display": "90 of 90",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.B.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|B (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.A": {
+   "value": 1.0,
+   "display": "1.0000",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) share"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.A.count": {
+   "value": 88,
+   "display": "88 of 88",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) count of n"
+  },
+  "E7.mc.lang.zh.gemini-4-argon.A.flag": {
+   "value": false,
+   "display": "not flagged",
+   "source": "osf/v62/data/v62_planned_checks_v0_62.csv MC_Language zh|gemini-4-argon|A (= osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language) flag (below 95%)"
+  },
+  "E7.mc.lang.n_flagged_all": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.flagged_all_answers (count)"
+  },
+  "E7.mc.lang.flagged_all_langs": {
+   "value": [
+    "es"
+   ],
+   "display": "ES",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.flagged_all_answers (languages)"
+  },
+  "E7.mc.lang.n_flagged_A": {
+   "value": 4,
+   "display": "4",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language (Phase A cells flagged)"
+  },
+  "E7.mc.lang.n_flagged_B": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.flagged_phase_B (count)"
+  },
+  "E7.mc.lang.zh_off_probe": {
+   "value": "EA-1",
+   "display": "EA-1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language.zh|claude-fable-5-2|B.off_language_call_ids"
+  },
+  "E7.mc.lang.zh_off_n": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Language.per_model_language.zh|claude-fable-5-2|B.off_language_call_ids (count)"
+  },
+  "E7.mc.script.n": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Script.per_model.zh|*|all.with_traditional_only_characters (sum)"
+  },
+  "E7.mc.alias.matches": {
+   "value": 110,
+   "display": "110",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Alias.matches_exported"
+  },
+  "E7.mc.alias.calls": {
+   "value": 87,
+   "display": "87",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Alias.calls_with_a_match"
+  },
+  "E7.mc.alias.ko": {
+   "value": [
+    [
+     "NARS",
+     73
+    ],
+    [
+     "Rhode",
+     7
+    ],
+    [
+     "Jaguar",
+     1
+    ]
+   ],
+   "display": "NARS 73, Rhode 7, Jaguar 1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Alias.by_language_alias_unit (language ko)"
+  },
+  "E7.mc.alias.zh": {
+   "value": [
+    [
+     "Redbreast",
+     12
+    ],
+    [
+     "Grado",
+     11
+    ],
+    [
+     "Nissan",
+     4
+    ],
+    [
+     "Koss",
+     2
+    ]
+   ],
+   "display": "Redbreast 12, Grado 11, Nissan 4, Koss 2",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Alias.by_language_alias_unit (language zh)"
+  },
+  "E7.mc.trunc.n": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Truncation.per_model_language.*.at_cap (sum)"
+  },
+  "E7.mc.trunc.reasons": {
+   "value": [
+    "STOP",
+    "completed",
+    "end_turn"
+   ],
+   "display": "STOP, completed, end_turn",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Truncation.finish_reasons (keys)"
+  },
+  "E7.mc.window.h": {
+   "value": 8.642275843055556,
+   "display": "8.64",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Window.span_hours"
+  },
+  "E7.mc.budget.spend": {
+   "value": 28.129352,
+   "display": "$28.129352",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Budget.spend_from_recorded_usage_usd"
+  },
+  "E7.mc.budget.not_sent": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.8_manipulation_checks.MC_Budget.calls_not_sent"
+  },
+  "E7.S-Language.es.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.rho": {
+   "value": 0.9306777940164922,
+   "display": "0.931",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.rho4": {
+   "value": 0.9306777940164922,
+   "display": "0.9307",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.ci": {
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "display": "0.864–0.959",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.ci4": {
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "display": "0.8638–0.9588",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.unc": {
+   "value": 0.9336738025772365,
+   "display": "0.934",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.cat.v0.19": {
+   "value": 0.9493799846686368,
+   "display": "0.949",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.cat.v0.20": {
+   "value": 0.9575923572450848,
+   "display": "0.958",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.cat.v0.21": {
+   "value": 0.9389521336178058,
+   "display": "0.939",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.cat.v0.22": {
+   "value": 0.972346506419375,
+   "display": "0.972",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.cat.v0.23": {
+   "value": 0.8497816593886462,
+   "display": "0.850",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es"
+  },
+  "E7.S-Language.es.excluded": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_es.excluded_calls (count)"
+  },
+  "E7.S-Language.ko.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.rho": {
+   "value": 0.8671799990587867,
+   "display": "0.867",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.rho4": {
+   "value": 0.8671799990587867,
+   "display": "0.8672",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.ci": {
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "display": "0.764–0.924",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.ci4": {
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "display": "0.7636–0.9245",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.unc": {
+   "value": 0.8729716847808232,
+   "display": "0.873",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.cat.v0.19": {
+   "value": 0.9427177274901473,
+   "display": "0.943",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.cat.v0.20": {
+   "value": 0.9019270779552134,
+   "display": "0.902",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.cat.v0.21": {
+   "value": 0.7200056347292492,
+   "display": "0.720",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.cat.v0.22": {
+   "value": 0.9802086875268903,
+   "display": "0.980",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.cat.v0.23": {
+   "value": 0.8458546936065101,
+   "display": "0.846",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko"
+  },
+  "E7.S-Language.ko.excluded": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_ko.excluded_calls (count)"
+  },
+  "E7.S-Language.zh.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.rho": {
+   "value": 0.8065091390159961,
+   "display": "0.807",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.rho4": {
+   "value": 0.8065091390159961,
+   "display": "0.8065",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.ci": {
+   "value": [
+    0.6794792336073566,
+    0.881651461463958
+   ],
+   "display": "0.679–0.882",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.ci4": {
+   "value": [
+    0.6794792336073566,
+    0.881651461463958
+   ],
+   "display": "0.6795–0.8817",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.unc": {
+   "value": 0.8149138262777877,
+   "display": "0.815",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.cat.v0.19": {
+   "value": 0.9107233610480981,
+   "display": "0.911",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.cat.v0.20": {
+   "value": 0.672219123513549,
+   "display": "0.672",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.cat.v0.21": {
+   "value": 0.7481752724661775,
+   "display": "0.748",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.cat.v0.22": {
+   "value": 0.9066041187212812,
+   "display": "0.907",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.cat.v0.23": {
+   "value": 0.8707083164870306,
+   "display": "0.871",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh"
+  },
+  "E7.S-Language.zh.excluded": {
+   "value": 3,
+   "display": "3",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Language_zh.excluded_calls (count)"
+  },
+  "E7.S-Script.zh.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.rho": {
+   "value": 0.8117306919025745,
+   "display": "0.812",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.rho4": {
+   "value": 0.8117306919025745,
+   "display": "0.8117",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.ci": {
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "display": "0.685–0.885",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.ci4": {
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "display": "0.6850–0.8852",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.unc": {
+   "value": 0.8199065661504534,
+   "display": "0.820",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.cat.v0.19": {
+   "value": 0.9107233610480981,
+   "display": "0.911",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.cat.v0.20": {
+   "value": 0.672219123513549,
+   "display": "0.672",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.cat.v0.21": {
+   "value": 0.7481752724661775,
+   "display": "0.748",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.cat.v0.22": {
+   "value": 0.9066041187212812,
+   "display": "0.907",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.cat.v0.23": {
+   "value": 0.8927013900059144,
+   "display": "0.893",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh"
+  },
+  "E7.S-Script.zh.excluded": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Script_zh.excluded_calls (count)"
+  },
+  "E7.S-Alias.es.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.rho": {
+   "value": 0.9306777940164922,
+   "display": "0.931",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.rho4": {
+   "value": 0.9306777940164922,
+   "display": "0.9307",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.ci": {
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "display": "0.864–0.959",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.ci4": {
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "display": "0.8638–0.9588",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.unc": {
+   "value": 0.9336738025772365,
+   "display": "0.934",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.cat.v0.19": {
+   "value": 0.9493799846686368,
+   "display": "0.949",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.cat.v0.20": {
+   "value": 0.9575923572450848,
+   "display": "0.958",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.cat.v0.21": {
+   "value": 0.9389521336178058,
+   "display": "0.939",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.cat.v0.22": {
+   "value": 0.972346506419375,
+   "display": "0.972",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.es.cat.v0.23": {
+   "value": 0.8497816593886462,
+   "display": "0.850",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_es"
+  },
+  "E7.S-Alias.ko.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.rho": {
+   "value": 0.8634594527218883,
+   "display": "0.863",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.rho4": {
+   "value": 0.8634594527218883,
+   "display": "0.8635",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.ci": {
+   "value": [
+    0.7588808120768077,
+    0.9217720501537354
+   ],
+   "display": "0.759–0.922",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.ci4": {
+   "value": [
+    0.7588808120768077,
+    0.9217720501537354
+   ],
+   "display": "0.7589–0.9218",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.unc": {
+   "value": 0.8694257216402046,
+   "display": "0.869",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cat.v0.19": {
+   "value": 0.9427177274901473,
+   "display": "0.943",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cat.v0.20": {
+   "value": 0.9019270779552134,
+   "display": "0.902",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cat.v0.21": {
+   "value": 0.7200056347292492,
+   "display": "0.720",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cat.v0.22": {
+   "value": 0.9651288102507279,
+   "display": "0.965",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cat.v0.23": {
+   "value": 0.8458546936065101,
+   "display": "0.846",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko"
+  },
+  "E7.S-Alias.ko.cells": {
+   "value": 1,
+   "display": "1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_ko.cells_differing_from_primary"
+  },
+  "E7.S-Alias.zh.n": {
+   "value": 112,
+   "display": "112",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.rho": {
+   "value": 0.8126195144441888,
+   "display": "0.813",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.rho4": {
+   "value": 0.8126195144441888,
+   "display": "0.8126",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.ci": {
+   "value": [
+    0.6861892226305671,
+    0.8858471792729167
+   ],
+   "display": "0.686–0.886",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.ci4": {
+   "value": [
+    0.6861892226305671,
+    0.8858471792729167
+   ],
+   "display": "0.6862–0.8858",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.p": {
+   "value": 9.999000099990002e-05,
+   "display": "< 0.001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.p4": {
+   "value": 9.999000099990002e-05,
+   "display": "0.0001",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.unc": {
+   "value": 0.8207563919680183,
+   "display": "0.821",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.verdict": {
+   "value": "CONFIRMED",
+   "display": "CONFIRMED",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cat.v0.19": {
+   "value": 0.9107233610480981,
+   "display": "0.911",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cat.v0.20": {
+   "value": 0.672219123513549,
+   "display": "0.672",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cat.v0.21": {
+   "value": 0.7481752724661775,
+   "display": "0.748",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cat.v0.22": {
+   "value": 0.910505304044015,
+   "display": "0.911",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cat.v0.23": {
+   "value": 0.8927013900059144,
+   "display": "0.893",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh"
+  },
+  "E7.S-Alias.zh.cells": {
+   "value": 4,
+   "display": "4",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 7.5_sensitivities.S-Alias_zh.cells_differing_from_primary"
+  },
+  "E7.rel.en.claude-fable-5-2.rel1": {
+   "value": 0.9119767862628557,
+   "display": "0.912",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|claude-fable-5-2.rel1"
+  },
+  "E7.rel.en.claude-fable-5-2.rel3": {
+   "value": 0.9688297943020296,
+   "display": "0.969",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|claude-fable-5-2.rel3"
+  },
+  "E7.rel.es.claude-fable-5-2.rel1": {
+   "value": 0.9380793595456832,
+   "display": "0.938",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|claude-fable-5-2.rel1"
+  },
+  "E7.rel.es.claude-fable-5-2.rel3": {
+   "value": 0.9784710627952138,
+   "display": "0.978",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|claude-fable-5-2.rel3"
+  },
+  "E7.rel.ko.claude-fable-5-2.rel1": {
+   "value": 0.894373972566565,
+   "display": "0.894",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|claude-fable-5-2.rel1"
+  },
+  "E7.rel.ko.claude-fable-5-2.rel3": {
+   "value": 0.9621242114699641,
+   "display": "0.962",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|claude-fable-5-2.rel3"
+  },
+  "E7.rel.zh.claude-fable-5-2.rel1": {
+   "value": 0.8914954877342115,
+   "display": "0.891",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|claude-fable-5-2.rel1"
+  },
+  "E7.rel.zh.claude-fable-5-2.rel3": {
+   "value": 0.9610115472086553,
+   "display": "0.961",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|claude-fable-5-2.rel3"
+  },
+  "E7.rel.en.gpt-6-astra.rel1": {
+   "value": 0.9039834862313767,
+   "display": "0.904",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|gpt-6-astra.rel1"
+  },
+  "E7.rel.en.gpt-6-astra.rel3": {
+   "value": 0.9658056826486064,
+   "display": "0.966",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|gpt-6-astra.rel3"
+  },
+  "E7.rel.es.gpt-6-astra.rel1": {
+   "value": 0.9219771037695731,
+   "display": "0.922",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|gpt-6-astra.rel1"
+  },
+  "E7.rel.es.gpt-6-astra.rel3": {
+   "value": 0.972565347211431,
+   "display": "0.973",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|gpt-6-astra.rel3"
+  },
+  "E7.rel.ko.gpt-6-astra.rel1": {
+   "value": 0.857933776054693,
+   "display": "0.858",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|gpt-6-astra.rel1"
+  },
+  "E7.rel.ko.gpt-6-astra.rel3": {
+   "value": 0.9476902974024025,
+   "display": "0.948",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|gpt-6-astra.rel3"
+  },
+  "E7.rel.zh.gpt-6-astra.rel1": {
+   "value": 0.8802026450621598,
+   "display": "0.880",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|gpt-6-astra.rel1"
+  },
+  "E7.rel.zh.gpt-6-astra.rel3": {
+   "value": 0.9566015340694971,
+   "display": "0.957",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|gpt-6-astra.rel3"
+  },
+  "E7.rel.en.gemini-4-argon.rel1": {
+   "value": 0.8798498845356457,
+   "display": "0.880",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|gemini-4-argon.rel1"
+  },
+  "E7.rel.en.gemini-4-argon.rel3": {
+   "value": 0.9564626135020521,
+   "display": "0.956",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.en|gemini-4-argon.rel3"
+  },
+  "E7.rel.es.gemini-4-argon.rel1": {
+   "value": 0.9098232661951536,
+   "display": "0.910",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|gemini-4-argon.rel1"
+  },
+  "E7.rel.es.gemini-4-argon.rel3": {
+   "value": 0.9680184261505995,
+   "display": "0.968",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.es|gemini-4-argon.rel3"
+  },
+  "E7.rel.ko.gemini-4-argon.rel1": {
+   "value": 0.9063438060271461,
+   "display": "0.906",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|gemini-4-argon.rel1"
+  },
+  "E7.rel.ko.gemini-4-argon.rel3": {
+   "value": 0.9667022410979902,
+   "display": "0.967",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.ko|gemini-4-argon.rel3"
+  },
+  "E7.rel.zh.gemini-4-argon.rel1": {
+   "value": 0.8906361273081748,
+   "display": "0.891",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|gemini-4-argon.rel1"
+  },
+  "E7.rel.zh.gemini-4-argon.rel3": {
+   "value": 0.9606784727707603,
+   "display": "0.961",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.1_run_reliability.zh|gemini-4-argon.rel3"
+  },
+  "E7.rec.en.claude-fable-5-2": {
+   "value": 85,
+   "display": "85",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.en_t4_same_88_units.claude-fable-5-2.recognized (of 88 coded)"
+  },
+  "E7.rec.en.gpt-6-astra": {
+   "value": 87,
+   "display": "87",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.en_t4_same_88_units.gpt-6-astra.recognized (of 88 coded)"
+  },
+  "E7.rec.en.gemini-4-argon": {
+   "value": 87,
+   "display": "87",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.en_t4_same_88_units.gemini-4-argon.recognized (of 88 coded)"
+  },
+  "E7.rec.es.claude-fable-5-2": {
+   "value": 83,
+   "display": "83",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.es.claude-fable-5-2.recognized (of 88 coded)"
+  },
+  "E7.rec.es.gpt-6-astra": {
+   "value": 87,
+   "display": "87",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.es.gpt-6-astra.recognized (of 88 coded)"
+  },
+  "E7.rec.es.gemini-4-argon": {
+   "value": 86,
+   "display": "86",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.es.gemini-4-argon.recognized (of 88 coded)"
+  },
+  "E7.rec.ko.claude-fable-5-2": {
+   "value": 81,
+   "display": "81",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.ko.claude-fable-5-2.recognized (of 88 coded)"
+  },
+  "E7.rec.ko.gpt-6-astra": {
+   "value": 82,
+   "display": "82",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.ko.gpt-6-astra.recognized (of 88 coded)"
+  },
+  "E7.rec.ko.gemini-4-argon": {
+   "value": 85,
+   "display": "85",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.ko.gemini-4-argon.recognized (of 88 coded)"
+  },
+  "E7.rec.zh.claude-fable-5-2": {
+   "value": 83,
+   "display": "83",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.zh.claude-fable-5-2.recognized (of 88 coded)"
+  },
+  "E7.rec.zh.gpt-6-astra": {
+   "value": 85,
+   "display": "85",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.zh.gpt-6-astra.recognized (of 88 coded)"
+  },
+  "E7.rec.zh.gemini-4-argon": {
+   "value": 86,
+   "display": "86",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.zh.gemini-4-argon.recognized (of 88 coded)"
+  },
+  "E7.rec.min": {
+   "value": 81,
+   "display": "81",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.{es,ko,zh}.*.recognized (minimum of 9)"
+  },
+  "E7.rec.max": {
+   "value": 87,
+   "display": "87",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.2_recognition.{es,ko,zh}.*.recognized (maximum of 9)"
+  },
+  "E7.lf.pooled_below_plan": {
+   "value": true,
+   "display": "yes",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.*|pooled|* < 3_planning_language_factors_section_6_2.central (all six)"
+  },
+  "E7.lf.es.claude-fable-5-2.B": {
+   "value": 1.225601060725865,
+   "display": "1.23",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|claude-fable-5-2|B.cost_factor"
+  },
+  "E7.lf.es.claude-fable-5-2.A": {
+   "value": 1.121487705424441,
+   "display": "1.12",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|claude-fable-5-2|A.cost_factor"
+  },
+  "E7.lf.es.gpt-6-astra.B": {
+   "value": 1.3124846720410115,
+   "display": "1.31",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|gpt-6-astra|B.cost_factor"
+  },
+  "E7.lf.es.gpt-6-astra.A": {
+   "value": 1.097219964233458,
+   "display": "1.10",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|gpt-6-astra|A.cost_factor"
+  },
+  "E7.lf.es.gemini-4-argon.B": {
+   "value": 0.9557949694733083,
+   "display": "0.96",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|gemini-4-argon|B.cost_factor"
+  },
+  "E7.lf.es.gemini-4-argon.A": {
+   "value": 1.4261584454409566,
+   "display": "1.43",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|gemini-4-argon|A.cost_factor"
+  },
+  "E7.lf.es.pooled.B": {
+   "value": 1.227272040932248,
+   "display": "1.23",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|pooled|B.cost_factor"
+  },
+  "E7.lf.es.pooled.A": {
+   "value": 1.1324012671594508,
+   "display": "1.13",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.es|pooled|A.cost_factor"
+  },
+  "E7.lf.es.plan": {
+   "value": 1.25,
+   "display": "1.25",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.central.es"
+  },
+  "E7.lf.es.plan_high": {
+   "value": 1.5,
+   "display": "1.50",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.conservative_high.es"
+  },
+  "E7.lf.ko.claude-fable-5-2.B": {
+   "value": 1.2997603698728994,
+   "display": "1.30",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|claude-fable-5-2|B.cost_factor"
+  },
+  "E7.lf.ko.claude-fable-5-2.A": {
+   "value": 1.6477449647843814,
+   "display": "1.65",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|claude-fable-5-2|A.cost_factor"
+  },
+  "E7.lf.ko.gpt-6-astra.B": {
+   "value": 1.3075533544826203,
+   "display": "1.31",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|gpt-6-astra|B.cost_factor"
+  },
+  "E7.lf.ko.gpt-6-astra.A": {
+   "value": 1.338156397333767,
+   "display": "1.34",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|gpt-6-astra|A.cost_factor"
+  },
+  "E7.lf.ko.gemini-4-argon.B": {
+   "value": 0.8864083944150609,
+   "display": "0.89",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|gemini-4-argon|B.cost_factor"
+  },
+  "E7.lf.ko.gemini-4-argon.A": {
+   "value": 1.2956651718983556,
+   "display": "1.30",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|gemini-4-argon|A.cost_factor"
+  },
+  "E7.lf.ko.pooled.B": {
+   "value": 1.2370894551472378,
+   "display": "1.24",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|pooled|B.cost_factor"
+  },
+  "E7.lf.ko.pooled.A": {
+   "value": 1.5474128827877505,
+   "display": "1.55",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.ko|pooled|A.cost_factor"
+  },
+  "E7.lf.ko.plan": {
+   "value": 1.75,
+   "display": "1.75",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.central.ko"
+  },
+  "E7.lf.ko.plan_high": {
+   "value": 2.5,
+   "display": "2.50",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.conservative_high.ko"
+  },
+  "E7.lf.zh.claude-fable-5-2.B": {
+   "value": 1.2387893499255902,
+   "display": "1.24",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|claude-fable-5-2|B.cost_factor"
+  },
+  "E7.lf.zh.claude-fable-5-2.A": {
+   "value": 1.2415420733967628,
+   "display": "1.24",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|claude-fable-5-2|A.cost_factor"
+  },
+  "E7.lf.zh.gpt-6-astra.B": {
+   "value": 1.3536624921876852,
+   "display": "1.35",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|gpt-6-astra|B.cost_factor"
+  },
+  "E7.lf.zh.gpt-6-astra.A": {
+   "value": 1.2272801170541376,
+   "display": "1.23",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|gpt-6-astra|A.cost_factor"
+  },
+  "E7.lf.zh.gemini-4-argon.B": {
+   "value": 1.0605210795734763,
+   "display": "1.06",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|gemini-4-argon|B.cost_factor"
+  },
+  "E7.lf.zh.gemini-4-argon.A": {
+   "value": 1.1204783258594915,
+   "display": "1.12",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|gemini-4-argon|A.cost_factor"
+  },
+  "E7.lf.zh.pooled.B": {
+   "value": 1.269806756720028,
+   "display": "1.27",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|pooled|B.cost_factor"
+  },
+  "E7.lf.zh.pooled.A": {
+   "value": 1.2309947201689546,
+   "display": "1.23",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_measured_language_factor.zh|pooled|A.cost_factor"
+  },
+  "E7.lf.zh.plan": {
+   "value": 1.5,
+   "display": "1.50",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.central.zh"
+  },
+  "E7.lf.zh.plan_high": {
+   "value": 2.25,
+   "display": "2.25",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_planning_language_factors_section_6_2.conservative_high.zh"
+  },
+  "E7.form.en.claude-fable-5-2.chars": {
+   "value": 1922.5111111111112,
+   "display": "1,923",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|claude-fable-5-2|B.characters_per_answer_mean"
+  },
+  "E7.form.en.claude-fable-5-2.brands": {
+   "value": 6.177777777777778,
+   "display": "6.2",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|claude-fable-5-2|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.en.gpt-6-astra.chars": {
+   "value": 2989.988888888889,
+   "display": "2,990",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|gpt-6-astra|B.characters_per_answer_mean"
+  },
+  "E7.form.en.gpt-6-astra.brands": {
+   "value": 5.466666666666667,
+   "display": "5.5",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|gpt-6-astra|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.en.gemini-4-argon.chars": {
+   "value": 5556.966666666666,
+   "display": "5,557",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|gemini-4-argon|B.characters_per_answer_mean"
+  },
+  "E7.form.en.gemini-4-argon.brands": {
+   "value": 6.622222222222222,
+   "display": "6.6",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.en|gemini-4-argon|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.es.claude-fable-5-2.chars": {
+   "value": 2112.6222222222223,
+   "display": "2,113",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|claude-fable-5-2|B.characters_per_answer_mean"
+  },
+  "E7.form.es.claude-fable-5-2.brands": {
+   "value": 7.833333333333333,
+   "display": "7.8",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|claude-fable-5-2|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.es.gpt-6-astra.chars": {
+   "value": 3156.8444444444444,
+   "display": "3,157",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|gpt-6-astra|B.characters_per_answer_mean"
+  },
+  "E7.form.es.gpt-6-astra.brands": {
+   "value": 6.111111111111111,
+   "display": "6.1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|gpt-6-astra|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.es.gemini-4-argon.chars": {
+   "value": 4971.144444444444,
+   "display": "4,971",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|gemini-4-argon|B.characters_per_answer_mean"
+  },
+  "E7.form.es.gemini-4-argon.brands": {
+   "value": 6.7444444444444445,
+   "display": "6.7",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.es|gemini-4-argon|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.ko.claude-fable-5-2.chars": {
+   "value": 1129.8,
+   "display": "1,130",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|claude-fable-5-2|B.characters_per_answer_mean"
+  },
+  "E7.form.ko.claude-fable-5-2.brands": {
+   "value": 5.144444444444445,
+   "display": "5.1",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|claude-fable-5-2|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.ko.gpt-6-astra.chars": {
+   "value": 1516.7555555555555,
+   "display": "1,517",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|gpt-6-astra|B.characters_per_answer_mean"
+  },
+  "E7.form.ko.gpt-6-astra.brands": {
+   "value": 3.511111111111111,
+   "display": "3.5",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|gpt-6-astra|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.ko.gemini-4-argon.chars": {
+   "value": 2173.6111111111113,
+   "display": "2,174",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|gemini-4-argon|B.characters_per_answer_mean"
+  },
+  "E7.form.ko.gemini-4-argon.brands": {
+   "value": 4.622222222222222,
+   "display": "4.6",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.ko|gemini-4-argon|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.zh.claude-fable-5-2.chars": {
+   "value": 945.9,
+   "display": "946",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|claude-fable-5-2|B.characters_per_answer_mean"
+  },
+  "E7.form.zh.claude-fable-5-2.brands": {
+   "value": 5.833333333333333,
+   "display": "5.8",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|claude-fable-5-2|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.zh.gpt-6-astra.chars": {
+   "value": 1320.4666666666667,
+   "display": "1,320",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|gpt-6-astra|B.characters_per_answer_mean"
+  },
+  "E7.form.zh.gpt-6-astra.brands": {
+   "value": 4.366666666666666,
+   "display": "4.4",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|gpt-6-astra|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.zh.gemini-4-argon.chars": {
+   "value": 2202.0444444444443,
+   "display": "2,202",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|gemini-4-argon|B.characters_per_answer_mean"
+  },
+  "E7.form.zh.gemini-4-argon.brands": {
+   "value": 5.211111111111111,
+   "display": "5.2",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.zh|gemini-4-argon|B.registry_brands_named_per_phase_B_answer"
+  },
+  "E7.form.refusals": {
+   "value": 0,
+   "display": "0",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.3_answer_form.*.refusals_by_finish_reason (sum)"
+  },
+  "E7.script.ko.mentions": {
+   "value": 1195,
+   "display": "1,195",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.mentions"
+  },
+  "E7.script.ko.latin_only": {
+   "value": 161,
+   "display": "161",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.latin_only"
+  },
+  "E7.script.ko.native_only": {
+   "value": 188,
+   "display": "188",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.native_only"
+  },
+  "E7.script.ko.both": {
+   "value": 846,
+   "display": "846",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.both"
+  },
+  "E7.script.ko.share_with_latin_form": {
+   "value": 0.8426778242677824,
+   "display": "84.3%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.share_with_latin_form"
+  },
+  "E7.script.ko.share_with_native_form": {
+   "value": 0.8652719665271966,
+   "display": "86.5%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.share_with_native_form"
+  },
+  "E7.script.ko.share_native_only": {
+   "value": 0.15732217573221757,
+   "display": "15.7%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.ko.all_models.share_native_only"
+  },
+  "E7.script.zh.mentions": {
+   "value": 1387,
+   "display": "1,387",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.mentions"
+  },
+  "E7.script.zh.latin_only": {
+   "value": 468,
+   "display": "468",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.latin_only"
+  },
+  "E7.script.zh.native_only": {
+   "value": 134,
+   "display": "134",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.native_only"
+  },
+  "E7.script.zh.both": {
+   "value": 785,
+   "display": "785",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.both"
+  },
+  "E7.script.zh.share_with_latin_form": {
+   "value": 0.9033886085075703,
+   "display": "90.3%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.share_with_latin_form"
+  },
+  "E7.script.zh.share_with_native_form": {
+   "value": 0.6625811103100216,
+   "display": "66.3%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.share_with_native_form"
+  },
+  "E7.script.zh.share_native_only": {
+   "value": 0.0966113914924297,
+   "display": "9.7%",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.4_script_of_mentions.zh.all_models.share_native_only"
+  },
+  "E7.home.status": {
+   "value": "not computed",
+   "display": "not computed",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.5_home_language.status"
+  },
+  "E7.cost.es.claude-fable-5-2": {
+   "value": 3.021124,
+   "display": "$3.0211",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.es|claude-fable-5-2.usd"
+  },
+  "E7.cost.es.gpt-6-astra": {
+   "value": 5.04455,
+   "display": "$5.0446",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.es|gpt-6-astra.usd"
+  },
+  "E7.cost.es.gemini-4-argon": {
+   "value": 1.143116,
+   "display": "$1.1431",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.es|gemini-4-argon.usd"
+  },
+  "E7.cost.ko.claude-fable-5-2": {
+   "value": 3.278124,
+   "display": "$3.2781",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.ko|claude-fable-5-2.usd"
+  },
+  "E7.cost.ko.gpt-6-astra": {
+   "value": 5.0406699999999995,
+   "display": "$5.0407",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.ko|gpt-6-astra.usd"
+  },
+  "E7.cost.ko.gemini-4-argon": {
+   "value": 1.05977,
+   "display": "$1.0598",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.ko|gemini-4-argon.usd"
+  },
+  "E7.cost.zh.claude-fable-5-2": {
+   "value": 3.071112,
+   "display": "$3.0711",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.zh|claude-fable-5-2.usd"
+  },
+  "E7.cost.zh.gpt-6-astra": {
+   "value": 5.2087,
+   "display": "$5.2087",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.zh|gpt-6-astra.usd"
+  },
+  "E7.cost.zh.gemini-4-argon": {
+   "value": 1.262186,
+   "display": "$1.2622",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.zh|gemini-4-argon.usd"
+  },
+  "E7.cost.total": {
+   "value": 28.129352,
+   "display": "$28.1294",
+   "source": "osf/v62/data/v62_planned_items_v0_62.json 2.9_descriptives.6_cost.total_usd"
+  },
+  "dev.n_entries": {
+   "value": 9,
+   "display": "9",
+   "source": "osf/v62/DEVIATIONS.md ('## Entry N' headings)"
+  },
+  "dev.last": {
+   "value": 8,
+   "display": "8",
+   "source": "osf/v62/DEVIATIONS.md ('## Entry N' headings, last)"
+  },
+  "raw.cost_sum6": {
+   "value": 28.129352,
+   "display": "$28.129352",
+   "source": "osf/v62/data/v62_raw.jsonl sum of cost_usd over all lines"
+  },
+  "cost.main_recorded": {
+   "value": 28.121898,
+   "display": "$28.121898",
+   "source": "raw.cost_sum - re-run line cost_usd (computed for the paper)"
+  },
+  "cost.main_strict": {
+   "value": 28.289738,
+   "display": "$28.289738",
+   "source": "cost.main_recorded + cost.worst_case (computed for the paper)"
+  },
+  "cost.strict_total4": {
+   "value": 28.297192000000003,
+   "display": "$28.2972",
+   "source": "raw.cost_sum + cost.worst_case (computed for the paper)"
+  },
+  "cost.astra_call": {
+   "value": "es|v23|B|CC-3|gpt-6-astra|S0|1",
+   "display": "es|v23|B|CC-3|gpt-6-astra|S0|1",
+   "source": "osf/v62/data/v62_raw.jsonl the one answered line with a worst-case usage part"
+  },
+  "cost.astra_wc": {
+   "value": 0.8392,
+   "display": "$0.8392",
+   "source": "budget_v0_62.worst_case(gpt-6-astra, S0, standard, that line's started_utc) (computed for the paper)"
+  },
+  "budget.rerun_note_given": {
+   "value": "7:15 am",
+   "display": "7:15 am",
+   "source": "osf/v62/data/v62_budget_state.json approvals.projection.note (time given)"
+  },
+  "budget.rerun_note_time_ct": {
+   "value": "2026-11-25T14:38:45.893753+00:00",
+   "display": "08:38:45",
+   "source": "osf/v62/data/v62_budget_state.json approvals.projection.utc, US Central"
+  },
+  "log.rerun_start_s": {
+   "value": "08:38:44",
+   "display": "08:38:44",
+   "source": "osf/v62/data/collect_v0_62_rerun.log start line"
+  },
+  "log.rerun_end_s": {
+   "value": "08:39:04",
+   "display": "08:39:04",
+   "source": "osf/v62/data/collect_v0_62_rerun.log collector exit line"
   }
  }
 }

@@ -37,14 +37,7 @@ class TestValuesAndFill(unittest.TestCase):
         """values_v0_62.py, re-run in memory, gives the same values as the committed file."""
         mod = load_module(P / "values_v0_62.py", "values_v0_62_test")
         mod.VALS.clear()
-        V = mod.verdicts()
-        mod.coi106(V)
-        mod.ai_sens(V)
-        mod.en_corrected(V)
-        ai = mod.ai_check()
-        tot = mod.collection()
-        mod.logs(tot, ai)
-        mod.gates()
+        mod.build()
         fresh = json.loads(json.dumps(mod.VALS, ensure_ascii=False))
         self.assertEqual(fresh, VALUES)
 
@@ -63,7 +56,7 @@ class TestValuesAndFill(unittest.TestCase):
         ab = section(TEMPLATE, "# Abstract {-}", "**Keywords:**")
         bare = re.sub(r"\{\{v:[^}]+\}\}", " ", ab)
         nums = set(re.findall(r"\d+(?:\.\d+)?", bare))
-        allowed = {"30", "88", "95", "100", "0", "6", "4", "5.2"}   # questions, yes/no items, CI %, cap, Entries 0--6, Claude Fable 5.2 / GPT-6 / Gemini 4
+        allowed = {"30", "88", "95", "100", "0", "7", "8", "6", "4", "5.2"}   # questions, yes/no items, CI %, cap, Entries 0--8 and 7, Claude Fable 5.2 / GPT-6 / Gemini 4
         self.assertTrue(nums <= allowed, nums - allowed)
 
     def test_locked_headline_figures(self):
@@ -128,9 +121,13 @@ class TestCaptionClaims(unittest.TestCase):
 
 
 class TestConventions(unittest.TestCase):
-    def test_draft_banner(self):
-        self.assertIn("DRAFT r1", section(DRAFT, "\\begin{titlepage}", "\\end{titlepage}"))
-        self.assertIn("\\fancyhead[C]{\\footnotesize\\textbf{DRAFT r1}", DRAFT)
+    def test_r2_without_draft_banner_or_notes(self):
+        self.assertIn("November 2026 (r2)", section(DRAFT, "\\begin{titlepage}", "\\end{titlepage}"))
+        self.assertIn("**Paper status:** r2", DRAFT)
+        self.assertNotIn("fancyhead[C]", DRAFT)
+        for w in ("DRAFT", "this draft", "in r1", "not for circulation", "Open for this draft",
+                  "four questions", "not yet reviewed"):
+            self.assertNotIn(w, DRAFT, w)
 
     def test_samsung_only_in_declarations_coi(self):
         coi = section(DRAFT, "## Conflict of interest {-}", "## Funding {-}")
@@ -160,10 +157,14 @@ class TestConventions(unittest.TestCase):
         for w in ("CONFIRMED", "MARGINAL", "NOT TESTED", "Language-robust"):
             self.assertIn(w, table)
 
-    def test_deviations_section_cites_entries_0_to_6(self):
+    def test_deviations_section_cites_entries_0_to_8(self):
         dev = section(DRAFT, "# 4. Deviations", "# 5. Discussion")
-        for e in range(7):
+        self.assertEqual(VALUES["dev.n_entries"]["value"], 9)
+        for e in range(9):
             self.assertRegex(dev, rf"\n\| {e} \|")
+        self.assertIn("DEVIATIONS Entries 0--8", dev)
+        self.assertIn("holds 9 entries", dev)
+        self.assertNotIn("not covered by an entry", dev)
 
     def test_chart_titles_do_not_repeat_finding_headings(self):
         src = (ROOT / "scripts/build_charts_v62_paper.py").read_text(encoding="utf-8")
@@ -183,6 +184,180 @@ class TestConventions(unittest.TestCase):
         self.assertEqual(len(set(figs)), 4)
         for f in figs:
             self.assertTrue((ROOT / f).exists(), f)
+
+
+MODELS = ["claude-fable-5-2", "gpt-6-astra", "gemini-4-argon"]
+E7_SUMMARY = ROOT / "osf/v62/data/v62_planned_items_summary_v0_62.json"
+
+
+class TestEntries7And8(unittest.TestCase):
+    """r2: the DEVIATIONS Entry 7 items and the Entry 8 cost record, read from the files and printed in the paper."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.S = json.loads(E7_SUMMARY.read_text(encoding="utf-8"))
+        cls.meta = json.loads((P / "v62_values.json").read_text(encoding="utf-8"))["_meta"]
+
+    def test_new_sources_in_provenance(self):
+        ins = self.meta["inputs_sha256"]
+        for f in ("v62_planned_items_summary_v0_62.json", "v62_planned_items_v0_62.json",
+                  "v62_planned_category_labels_v0_62.csv", "v62_planned_top10_shift_v0_62.csv",
+                  "v62_planned_checks_v0_62.csv"):
+            self.assertIn(f"osf/v62/data/{f}", ins)
+        self.assertIn("osf/v62/DEVIATIONS.md", ins)
+        self.assertEqual(ins["osf/v62/data/v62_planned_items_summary_v0_62.json"],
+                         "0b5429c025ea85c4a4508180850ea320d308590f926d4028d7ba87e08ec4a1dd")   # Entry 7
+        self.assertEqual(ins["osf/v62/data/v62_planned_items_v0_62.json"],
+                         "034f46c8ec6d9f17828b38684a417dcc60a2fc60f42342b85f34ecd08e5393c7")   # Entry 7
+
+    def test_per_model_values_match_summary_both_readings(self):
+        for L in LANGS:
+            for m in MODELS:
+                r = self.S["per_model_rho_c"][f"{L}|{m}"]
+                self.assertEqual(VALUES[f"E7.pm.{L}.{m}.i"]["value"], r["i_same_model_english"])
+                self.assertEqual(VALUES[f"E7.pm.{L}.{m}.ii"]["value"], r["ii_n3_english"])
+                self.assertIn(VALUES[f"E7.pm.{L}.{m}.i"]["display"], DRAFT)
+        # appendix claims: every cell >= 0.70; Claude Fable 5.2 highest in each language under both readings
+        self.assertEqual(VALUES["E7.pm.n_below70"]["value"], 0)
+        for L in LANGS:
+            for rd in ("i", "ii"):
+                vals = {m: VALUES[f"E7.pm.{L}.{m}.{rd}"]["value"] for m in MODELS}
+                self.assertEqual(max(vals, key=vals.get), "claude-fable-5-2", (L, rd))
+        app = section(DRAFT, "# Appendix A.", "## A.2")
+        self.assertIn("Reading (i)", app)
+        self.assertIn("Reading (ii)", app)
+
+    def test_phi_pi_flag_not_raised(self):
+        for L in LANGS:
+            for k in ("phi_L_defined", "h_lang_phi_units"):
+                self.assertFalse(self.S["phi_pi_flag"][L][k]["flag"])
+        self.assertLess(VALUES["E7.phipi.max_abs"]["value"], 0.50)
+        self.assertIn("The flag is not raised in any language", DRAFT)
+
+    def test_category_labels_table(self):
+        for k, d in self.S["category_labels"].items():
+            L, c = k.split("|")
+            self.assertEqual(VALUES[f"E7.cat.{L}.{c}.label"]["value"], d["label"])
+            self.assertEqual(VALUES[f"E7.cat.{L}.{c}.rho"]["value"], d["rho_c"])
+        self.assertEqual(VALUES["E7.cat.n.language-sensitive"]["value"], 0)
+        self.assertEqual(VALUES["E7.cat.zh.v0.20.label"]["value"], "intermediate")   # named in the text
+        self.assertEqual(VALUES["E7.cat.n.intermediate"]["value"], 1)
+        tab = section(DRAFT, "## A.2", "## A.3")
+        self.assertEqual(tab.count("language-stable |") + tab.count("level-shifted |") + tab.count("intermediate |"), 15)
+
+    def test_language_pairs(self):
+        for p, d in self.S["language_pairs"].items():
+            self.assertEqual(VALUES[f"E7.pair.{p}.rho"]["value"], d["rho_c"])
+            self.assertIn(VALUES[f"E7.pair.{p}.rho"]["display"], section(DRAFT, "## A.2", "## A.3"))
+
+    def test_top10_and_erratum_units(self):
+        self.assertEqual({VALUES["E7.top.es.1.name"]["value"], VALUES["E7.top.es.2.name"]["value"]},
+                         {"L'Oréal Paris", "Paula's Choice"})
+        self.assertEqual(VALUES["E7.top.ko.9.name"]["value"], "Paula's Choice")
+        for i in (2, 5):   # "skincare brands that the English answers did not name at all"
+            row = [r for r in self.S["top10_shift"]["zh"] if r[1] == VALUES[f"E7.top.zh.{i}.name"]["value"]][0]
+            self.assertEqual(row[0], "v0.20")
+            self.assertEqual(row[2], 0.0)
+        a = section(DRAFT, "## A.2", "## A.3")
+        self.assertIn("two units of t₄'s apostrophe erratum", a)
+        self.assertIn("measured here against the locked English comparator", a)
+        for L in LANGS:
+            for i in range(1, 11):
+                self.assertIn(VALUES[f"E7.top.{L}.{i}.name"]["display"], a)
+
+    def test_manipulation_checks(self):
+        mc = self.S["checks"]
+        self.assertEqual(VALUES["E7.mc.served.mismatched"]["value"], mc["MC_Served"]["n_mismatched"])
+        self.assertEqual(sorted(mc["MC_Language"]["flagged_all_answers"]),
+                         [f"es|{m}|all" for m in sorted(MODELS)])
+        self.assertEqual(mc["MC_Language"]["flagged_phase_B"], [])
+        self.assertEqual(VALUES["E7.mc.lang.zh.claude-fable-5-2.B"]["display"], "0.9667")
+        self.assertEqual(VALUES["E7.mc.lang.zh.claude-fable-5-2.B.flag"]["value"], False)
+        for m in MODELS:
+            self.assertTrue(VALUES[f"E7.mc.lang.es.{m}.all.flag"]["value"])
+            for L in LANGS:
+                self.assertGreaterEqual(VALUES[f"E7.mc.lang.{L}.{m}.B"]["value"], 0.95)
+        self.assertEqual(VALUES["E7.mc.alias.matches"]["value"], VALUES["alias.matches"]["value"])
+        self.assertEqual(VALUES["E7.mc.script.n"]["value"], 0)
+        self.assertEqual(VALUES["E7.mc.trunc.n"]["value"], 0)
+        a = section(DRAFT, "## A.3", "## A.4")
+        self.assertIn('"Sí."', a)
+        self.assertIn("flags every Spanish model", a)
+        # the three off-language Chinese category answers: one question, runs 1-3 (text says so)
+        I = json.loads((ROOT / "osf/v62/data/v62_planned_items_v0_62.json").read_text(encoding="utf-8"))
+        off = I["7.5_sensitivities"]["S-Language_zh"]["excluded_calls"]
+        self.assertEqual(sorted(int(x.split("|")[-1]) for x in off), [1, 2, 3])
+        self.assertEqual({x.split("|")[4] for x in off}, {"claude-fable-5-2"})
+        self.assertEqual({x.split("|")[1] for x in off}, {"v23"})
+
+    def test_entry7_sensitivities_confirmed_and_in_table4(self):
+        for k, d in self.S["sensitivities"].items():
+            name, L = k.rsplit("_", 1)
+            self.assertEqual(VALUES[f"E7.{name}.{L}.verdict"]["value"], "CONFIRMED")
+            self.assertEqual(VALUES[f"E7.{name}.{L}.rho"]["value"], d["rho_c"])
+            self.assertLess(VALUES[f"E7.{name}.{L}.p"]["value"], 0.001)
+        t4 = section(DRAFT, "| Specification | n |", "![Rank agreement of recall Presence with English under each")
+        for s in ("S-Language, Entry 7", "S-Script, Entry 7", "S-Alias, Entry 7"):
+            self.assertIn(s, t4)
+        src = (ROOT / "scripts/build_charts_v62_paper.py").read_text(encoding="utf-8")
+        for s in ("E7.S-Language.{L}", "E7.S-Script.{L}", "E7.S-Alias.{L}"):
+            self.assertIn(s, src)
+
+    def test_descriptives(self):
+        for L in LANGS:
+            for m in MODELS:
+                self.assertEqual(VALUES[f"E7.rec.{L}.{m}"]["value"], self.S["recognition"][L][m]["recognized"])
+                self.assertEqual(VALUES[f"E7.rel.{L}.{m}.rel1"]["value"], self.S["rel1_rel3"][f"{L}|{m}"]["rel1"])
+                self.assertEqual(VALUES[f"E7.cost.{L}.{m}"]["value"], self.S["cost"][f"{L}|{m}"]["usd"])
+        self.assertTrue(VALUES["E7.lf.pooled_below_plan"]["value"])
+        above = sorted((L, m, ph) for L in LANGS for m in MODELS for ph in ("A", "B")
+                       if VALUES[f"E7.lf.{L}.{m}.{ph}"]["value"] > VALUES[f"E7.lf.{L}.plan"]["value"])
+        self.assertEqual(above, [("es", "gemini-4-argon", "A"), ("es", "gpt-6-astra", "B")])   # named in A.4
+        self.assertEqual([VALUES[f"E7.lf.{L}.plan"]["value"] for L in LANGS], [1.25, 1.75, 1.5])
+        self.assertEqual(VALUES["E7.home.status"]["value"], "not computed")
+        self.assertEqual(VALUES["E7.time.status"]["value"], "not available")
+        self.assertIn("Home-language descriptive (§2.9 item 5): not computed", DRAFT)
+        self.assertIn("Benchmark for time (§2.7): not available", DRAFT)
+        self.assertAlmostEqual(VALUES["E7.cost.total"]["value"], VALUES["raw.cost_sum"]["value"], places=6)
+
+    def test_entry7_labelled_as_post_scoring(self):
+        app = section(DRAFT, "# Appendix A.", "## A.1")
+        self.assertIn("after the one scoring run", app)
+        self.assertIn("No item here changes a verdict", app)
+        s310 = section(DRAFT, "## 3.10", "# 4. Deviations")
+        self.assertIn("DEVIATIONS Entry 7", s310)
+        self.assertIn("none bears on a verdict", s310)
+
+    def test_entry8_cost_note(self):
+        self.assertEqual(VALUES["err.cost"]["display"], "$0")
+        self.assertEqual(VALUES["cost.worst_case"]["display"], "$0.16784")
+        self.assertEqual(VALUES["cost.strict_total"]["display"], "$28.297192")
+        self.assertEqual(VALUES["raw.cost_sum6"]["display"], "$28.129352")
+        self.assertEqual(VALUES["log.rerun_start_s"]["value"], "08:38:44")
+        self.assertEqual(VALUES["log.rerun_end_s"]["value"], "08:39:04")
+        self.assertEqual(VALUES["budget.rerun_note_given"]["value"], "7:15 am")
+        self.assertEqual(VALUES["cost.astra_wc"]["display"], "$0.8392")
+        note = section(DRAFT, "**Cost note (DEVIATIONS Entry 8).**", "## 3.2")
+        for s in ("$0.16784", "$28.297192", "$28.129352", "would not have paused without the approval",
+                  "projection approval", "7:15 am"):
+            self.assertIn(s, note)
+        self.assertIn("08:38:44 to 08:39:04 US Central", DRAFT)
+
+    def test_jack_reference(self):
+        refs = section(DRAFT, "# References {-}", "# Appendix A.")
+        self.assertIn("Jack, W., Lehman, N., Maloney, K., & Xu, S. (2026). *Persona Conditioning of Brand "
+                      "Recommendations in Retrieval-Augmented Commercial Chat: A Prominence-Stratified Cross-Provider "
+                      "Audit*. arXiv 2605.30207 (v1, 28 May 2026; cs.AI).", refs)
+        self.assertIn("(Jack et al., 2026)", section(DRAFT, "# 6. Limitations", "# 7."))
+
+    def test_data_availability_cites_entry_7_8_commit(self):
+        da = section(DRAFT, "## Data and code availability {-}", "# References {-}")
+        self.assertIn("`69e1aa9`", da)
+        self.assertIn("branch `v0.62-nohand`", da)
+        for f in ("v62_planned_items_v0_62.json", "v62_planned_items_summary_v0_62.json",
+                  "v62_planned_category_labels_v0_62.csv", "v62_planned_top10_shift_v0_62.csv",
+                  "v62_planned_checks_v0_62.csv"):
+            self.assertIn(f, da)
 
 
 if __name__ == "__main__":

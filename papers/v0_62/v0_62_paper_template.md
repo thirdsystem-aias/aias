@@ -14,7 +14,6 @@ header-includes: |
   \usepackage{fancyhdr}
   \pagestyle{fancy}
   \fancyhf{}
-  \fancyhead[C]{\footnotesize\textbf{DRAFT r1} (25 November 2026) --- not for circulation}
   \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}{0pt}
   \captionsetup{justification=raggedright,singlelinecheck=false}
@@ -40,8 +39,6 @@ header-includes: |
 \setlength{\parskip}{0pt}
 \begin{center}
 
-\fbox{\parbox{0.86\textwidth}{\centering\small \textbf{DRAFT r1} (25 November 2026). Written from the locked outputs and the post-scoring sensitivity files of v0.62. Not yet reviewed by the author; not for circulation or citation.}}\\[26pt]
-
 {\LARGE \textbf{Does AI Brand Presence Hold Across Languages?}\par}\vspace{8pt}
 
 {\large Spanish, Korean and Chinese against the English t₄ Wave:\\ A Pre-Registered Non-English Wave (AIAS™ v0.62)}\\[28pt]
@@ -55,20 +52,20 @@ ORCID: \href{https://orcid.org/0009-0003-8968-9990}{0009-0003-8968-9990}\\[20pt]
 Pre-registration: \texttt{v0.62-prereg-r1} (commit \texttt{e449b6c})\\
 locked on 12 November 2026 and deposited on OSF before the first study call\\[4pt]
 Data and code: OSF \texttt{ec6wh}, \texttt{v62}\\[4pt]
-November 2026
+November 2026 (r2)
 
 \end{center}
 \end{titlepage}
 
 # Abstract {-}
 
-Every AI Availability measurement of the AIAS programme so far was taken in US English. This pre-registered wave asks whether AI brand Presence holds when the same questions are asked in other languages. The 30 open category questions of the English t₄ wave (five consumer categories, {{v:design.n_units}} brand units) were translated into Spanish, Korean and Simplified Chinese and asked of the same three models (Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon), without web search, three times each; 88 yes/no brand questions per language were collected last. All {{v:raw.ok}} of {{v:design.expected}} planned calls were answered ({{v:raw.per_lang}} per language and {{v:raw.per_model}} per model), one of them in the logged re-run pass after a connection timeout, for {{v:cost.spend}} of recorded spend against a $100 cap. Recall Presence ordered the brands as it does in English in all three languages: centred within-category Spearman ρ_c = {{v:P.es.rho}} in Spanish (95% CI {{v:P.es.ci}}), {{v:P.ko.rho}} in Korean ({{v:P.ko.ci}}) and {{v:P.zh.rho}} in Chinese ({{v:P.zh.ci}}), permutation p {{v:P.es.p}} in each; H_Lang_Presence is {{v:P.es.verdict}} in each language, and the pre-registered joint reading is {{v:joint}}. Spanish answers named the registry brands slightly more often than English answers (mean difference in Presence {{v:P.es.dL}}), Korean ({{v:P.ko.dL}}) and Chinese ({{v:P.zh.dL}}) answers less often. Consistency (φ) ordered the brands alike in Spanish (ρ_c = {{v:Phi.es.rho}}; H_Lang_Phi {{v:Phi.es.verdict}}) but only weakly in Korean ({{v:Phi.ko.rho}}) and Chinese ({{v:Phi.zh.rho}}), both {{v:Phi.ko.verdict}}. Ranking was {{v:Rank.es.verdict}}, because its instrument has not passed its own test. No verdict changed under any sensitivity: without Denon, without the headphones category, without the units with a disclosed conflict-of-interest tie (on {{v:COI.n_as_run}} units as run and on {{v:COI.n_106}} units after a key mismatch was corrected), without translation-flagged questions, without an alias that an independent AI check judged unused, or with a corrected English comparator, under which Chinese Consistency agreement falls to {{v:ENC.Phi.zh.rho4}} and stays {{v:ENC.Phi.zh.verdict}}. The translations were model-made and checked by independent AI models only, without native review. DEVIATIONS Entries 0--6 are recorded and reported.
+Every AI Availability measurement of the AIAS programme so far was taken in US English. This pre-registered wave asks whether AI brand Presence holds when the same questions are asked in other languages. The 30 open category questions of the English t₄ wave (five consumer categories, {{v:design.n_units}} brand units) were translated into Spanish, Korean and Simplified Chinese and asked of the same three models (Claude Fable 5.2, GPT-6 Astra, Gemini 4 Argon), without web search, three times each; 88 yes/no brand questions per language were collected last. All {{v:raw.ok}} of {{v:design.expected}} planned calls were answered ({{v:raw.per_lang}} per language and {{v:raw.per_model}} per model), one of them in the logged re-run pass after a connection timeout, for {{v:cost.spend}} of recorded spend against a $100 cap. Recall Presence ordered the brands as it does in English in all three languages: centred within-category Spearman ρ_c = {{v:P.es.rho}} in Spanish (95% CI {{v:P.es.ci}}), {{v:P.ko.rho}} in Korean ({{v:P.ko.ci}}) and {{v:P.zh.rho}} in Chinese ({{v:P.zh.ci}}), permutation p {{v:P.es.p}} in each; H_Lang_Presence is {{v:P.es.verdict}} in each language, and the pre-registered joint reading is {{v:joint}}. Spanish answers named the registry brands slightly more often than English answers (mean difference in Presence {{v:P.es.dL}}), Korean ({{v:P.ko.dL}}) and Chinese ({{v:P.zh.dL}}) answers less often. Consistency (φ) ordered the brands alike in Spanish (ρ_c = {{v:Phi.es.rho}}; H_Lang_Phi {{v:Phi.es.verdict}}) but only weakly in Korean ({{v:Phi.ko.rho}}) and Chinese ({{v:Phi.zh.rho}}), both {{v:Phi.ko.verdict}}. Ranking was {{v:Rank.es.verdict}}, because its instrument has not passed its own test. No verdict changed under any sensitivity: without Denon, without the headphones category, without the units with a disclosed conflict-of-interest tie (on {{v:COI.n_as_run}} units as run and on {{v:COI.n_106}} units after a key mismatch was corrected), without translation-flagged questions, without an alias that an independent AI check judged unused, or with a corrected English comparator, under which Chinese Consistency agreement falls to {{v:ENC.Phi.zh.rho4}} and stays {{v:ENC.Phi.zh.verdict}}. The pre-registered checks, secondary analyses and descriptives that the locked scorer did not compute were computed afterwards from the archived data, with no model called, and change no verdict (DEVIATIONS Entry 7; Appendix A). The translations were model-made and checked by independent AI models only, without native review. DEVIATIONS Entries 0--8 are recorded and reported.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; multilingual; cross-language measurement; Spanish; Korean; Chinese; measurement invariance
 
 **JEL codes:** M31; L86, L15, D83, M37
 
-**Paper status:** DRAFT r1. Pre-registered confirmatory study (tag `v0.62-prereg-r1`, locked on 12 November 2026 and deposited on OSF before the first study call); collected on 25 November 2026; scored once (`score_v0_62.py`, commit `262464d`); post-scoring sensitivities in commit `4ac1aa9`; deviations recorded in `osf/v62/DEVIATIONS.md`, Entries 0--6 (§4). Part of the AIAS measurement programme.
+**Paper status:** r2 (25 November 2026). Pre-registered confirmatory study (tag `v0.62-prereg-r1`, locked on 12 November 2026 and deposited on OSF before the first study call); collected on 25 November 2026; scored once (`score_v0_62.py`, commit `262464d`); post-scoring sensitivities in commit `4ac1aa9`; post-scoring computation of the remaining pre-registered items and the cost record in commit `69e1aa9`; deviations recorded in `osf/v62/DEVIATIONS.md`, Entries 0--{{v:dev.last}} (§4). Part of the AIAS measurement programme.
 
 # 1. Introduction
 
@@ -110,7 +107,7 @@ The budget was at most $100 of paid calls with a pause at $80, both from recorde
 
 **Joint reading (§2.6).** Language-robust if H_Lang_Presence is CONFIRMED in all three languages; language-dependent if it is FALSIFIED in any; partly robust otherwise. H_Lang_Phi and H_Lang_Rank do not change it.
 
-**Sensitivities (§7.5; DEVIATIONS Entries 2, 4--6).** Reported beside the tests and never changing a verdict: S-Denon (111 units, without the one headphone brand owned by a group disclosed in the Declarations); S-Headphones (96 units, without the headphones category); S-COI (without the six units with a tie disclosed in the Declarations, 106 units; §3.7 and Entry 4); S-Trans (without translation-flagged questions, Entry 2); S-AliasAI (without aliases the AI check judged unused, Entry 2); and, added after scoring, the corrected English comparator (Entry 6). If a primary verdict differed under S-Denon, S-Headphones, S-COI, S-Trans or S-AliasAI, the abstract would report both.
+**Sensitivities (§7.5; DEVIATIONS Entries 2, 4--7).** Reported beside the tests and never changing a verdict: S-Denon (111 units, without the one headphone brand owned by a group disclosed in the Declarations); S-Headphones (96 units, without the headphones category); S-COI (without the six units with a tie disclosed in the Declarations, 106 units; §3.7 and Entry 4); S-Trans (without translation-flagged questions, Entry 2); S-AliasAI (without aliases the AI check judged unused, Entry 2); and, added after scoring, the corrected English comparator (Entry 6). The three further Presence sensitivities of §7.5, which the locked scorer does not compute, were computed after scoring under Entry 7: S-Language (without category answers the pre-step marks as not in the asked language), S-Script (Chinese, without answers containing a Traditional-only character) and S-Alias (Korean and Chinese re-coded with the 13 collision-prone aliases switched off). If a primary verdict differed under S-Denon, S-Headphones, S-COI, S-Trans or S-AliasAI, the abstract would report both.
 
 ## 2.5 Lock and gates
 
@@ -120,9 +117,9 @@ The pre-registration (r3) was locked as tag `v0.62-prereg-r1` on commit `e449b6c
 
 ## 3.1 Collection
 
-The collection ran on 25 November 2026. The first call started at {{v:win.first_ct}} US Central ({{v:win.first_utc}} UTC). The main pass ended at {{v:log.main_end_ct}} with {{v:log.main_spend}} recorded and all calls answered but one: the Korean answer of {{v:err.model}} to the headphones question {{v:err.probe}} in run {{v:err.run}} ended at {{v:err.time_ct}} with a {{v:err.kind}} error, before any answer or usage was recorded. Recorded spend before blocks 2, 3 and 4 was {{v:log.before_block2}}, {{v:log.before_block3}} and {{v:log.before_block4}}; block 1 thus cost less than the $25.83 at which the projection pause would have stopped the collection, and neither the $80 pause nor the $100 stop was reached. After the pre-registrant's approval at 7:15 am US Central (recorded in `v62_budget_state.json`), the re-run pass started at {{v:log.rerun_start_ct}} and answered the one call for {{v:err.rerun_cost}}. The last call ended at {{v:win.last_ct}}, {{v:win.span_h}} hours after the first, inside the window ({{v:budget.window}}, DEVIATIONS Entry {{v:budget.window_entry}}) and the 72-hour rule. The raw file holds {{v:raw.lines}} lines: the {{v:raw.ok}} answered calls ({{v:raw.per_lang}} per language, {{v:raw.per_model}} per model) and the one error. Recorded spend was {{v:cost.spend}}.
+The collection ran on 25 November 2026. The first call started at {{v:win.first_ct}} US Central ({{v:win.first_utc}} UTC). The main pass ended at {{v:log.main_end_ct}} with {{v:log.main_spend}} recorded and all calls answered but one: the Korean answer of {{v:err.model}} to the headphones question {{v:err.probe}} in run {{v:err.run}} ended at {{v:err.time_ct}} with a {{v:err.kind}} error, before any answer or usage was recorded. Recorded spend before blocks 2, 3 and 4 was {{v:log.before_block2}}, {{v:log.before_block3}} and {{v:log.before_block4}}; block 1 thus cost less than the $25.83 at which the projection pause would have stopped the collection, and neither the $80 pause nor the $100 stop was reached. The logged re-run pass of §5.3 ran from {{v:log.rerun_start_s}} to {{v:log.rerun_end_s}} US Central and answered the one call for {{v:err.rerun_cost}} (DEVIATIONS Entry 8). The last call ended at {{v:win.last_ct}}, {{v:win.span_h}} hours after the first, inside the window ({{v:budget.window}}, DEVIATIONS Entry {{v:budget.window_entry}}) and the 72-hour rule. The raw file holds {{v:raw.lines}} lines: the {{v:raw.ok}} answered calls ({{v:raw.per_lang}} per language, {{v:raw.per_model}} per model) and the one error. Recorded spend was {{v:cost.spend}}.
 
-**Cost note.** The guard charged the timed-out attempt {{v:err.cost}}: its raw line records no usage ({{v:err.usage_parts}} usage parts), and the guard's ledger costs a line from its recorded usage. Pre-registration §6.5 rule 2 states that every synchronous attempt that returned no usage is costed at the request's worst case (2,000 input and 16,384 output tokens). Under that strict rule, at Gemini 4 Argon's price on the date of the request ({{v:cost.wc_price}} per million input and output tokens), the attempt would have been charged {{v:cost.worst_case}}, for a total of {{v:cost.strict_total}} (about {{v:cost.strict_total2}}). Either figure is far below the $80 pause and the $100 cap; no pause, stop or decision depended on the difference. The independent translation and alias check (§3.8) was paid outside the acquisition guard under its own $8 cap and cost {{v:AIC.spend}} in {{v:AIC.requests}} requests; acquisition and check together cost {{v:cost.with_check}}.
+**Cost note (DEVIATIONS Entry 8).** The guard charged the timed-out attempt {{v:err.cost}}: its raw line records no usage ({{v:err.usage_parts}} usage parts). Pre-registration §6.5 rule 2 states that every attempt of a synchronous call that returned no usage is costed at the request's worst case (2,000 input and 16,384 output tokens). The locked code turns only Google's server errors and rate-limit responses into a transient error, so the connection timeout was recorded as a final non-transient error, not retried within the call, and counted as not billed. (A GPT-6 Astra call that started ten seconds later also lost its first attempt; the OpenAI path classes that failure as transient, so it was retried and answered, and its failed attempt was charged at the worst case, {{v:cost.astra_wc}}, as rule 2 requires; that charge is in the recorded spend.) Under strict rule 2, at Gemini 4 Argon's price on the date of the request ({{v:cost.wc_price}} per million input and output tokens), the timed-out attempt costs {{v:cost.worst_case}}: the main pass would have recorded {{v:cost.main_strict}} instead of {{v:cost.main_recorded}}, and the total is {{v:cost.strict_total}} against {{v:raw.cost_sum6}} recorded. This paper reports {{v:cost.spend}} from recorded usage, with {{v:cost.strict_total4}} under strict rule 2 beside it. No guard decision would have differed: while the call was in flight its reservation of two worst cases was held, the projection stayed below the pause either way, and the $80 pause and $100 stop were never near. The re-run pass ran under the pre-registrant's projection approval of {{v:budget.rerun_note_given}} US Central, recorded in `v62_budget_state.json` when the pass started. Entry 8 records that, read against the locked collection rule, the projection pause applies only while calls of later blocks remain unsent; none did, so the re-run pass would not have paused without the approval either. The independent translation and alias check (§3.8) was paid outside the acquisition guard under its own $8 cap and cost {{v:AIC.spend}} in {{v:AIC.requests}} requests; acquisition and check together cost {{v:cost.with_check}}.
 
 ## 3.2 Gates and manipulation checks
 
@@ -137,10 +134,13 @@ All four gates passed (Table 1). The pre-step was inert on English: on t₄'s En
 | MC_Complete | {{v:raw.ok}} of {{v:design.expected}} calls answered; every model, language and phase complete | met |
 | MC_Window | {{v:win.first_ct}} to {{v:win.last_ct}} US Central on 25 November ({{v:win.span_h}} h), inside {{v:budget.window}} | met |
 | MC_Budget | {{v:cost.spend}} recorded against the $100 cap; no pause or stop; 0 calls not sent | met |
-| MC_Alias | {{v:alias.matches}} collision-prone alias matches exported for audit (`data/coded/v62_alias_audit.csv`) | reported (no verdict) |
-| MC_Served, MC_Language, MC_Script, MC_Truncation | not computed by the locked scorer (§3.10) | not available in r1 |
+| MC_Alias | {{v:alias.matches}} collision-prone alias matches in {{v:E7.mc.alias.calls}} calls exported for audit (`data/coded/v62_alias_audit.csv`) | reported (no verdict) |
+| MC_Served | {{v:E7.mc.served.mismatched}} served-model mismatches in {{v:E7.mc.served.checked}} answered calls | {{v:E7.mc.served.pass}} |
+| MC_Language | category answers: every model-language cell at or above 95% (lowest {{v:E7.mc.lang.zh.claude-fable-5-2.B}}, Chinese, Claude Fable 5.2); all answers: the {{v:E7.mc.lang.n_flagged_all}} Spanish cells below 95%, because the fixed rule does not count a short yes/no answer such as "Sí." as Spanish (Appendix A.3) | flagged (Spanish, all answers); no code changed |
+| MC_Script | {{v:E7.mc.script.n}} Chinese answers with a Traditional-only character | not flagged |
+| MC_Truncation | {{v:E7.mc.trunc.n}} calls at the output cap | not flagged |
 
-: Gates and pre-registered manipulation checks (`data/gates/`, `data/v62_raw.jsonl`, the collection logs). MC_Complete, MC_Window and MC_Budget are read from the raw file and logs; the locked scorer writes no manipulation-check record.
+: Gates and pre-registered manipulation checks (`data/gates/`, `data/v62_raw.jsonl`, the collection logs). MC_Complete, MC_Window and MC_Budget are read from the raw file and logs; MC_Served, MC_Language, MC_Script, MC_Truncation and the call count of MC_Alias were computed after scoring under DEVIATIONS Entry 7 (`data/v62_planned_items_v0_62.json`), since the locked scorer writes no manipulation-check record. Under §2.8 none of these checks changes a code or a verdict.
 
 ## 3.3 H_Lang_Presence: brands keep their Presence order in all three languages ({{v:P.es.verdict}} in each)
 
@@ -166,13 +166,13 @@ Per category (descriptive), {{v:P.cat_n70}} of the 15 category-language values w
 
 ## 3.4 Level: Spanish answers name the registry brands a little more often, Korean and Chinese answers less often (reported alongside)
 
-The order held, but the level moved (Figure 2). The mean difference in π̂ between the language and English, over the 112 units, was {{v:P.es.dL}} in Spanish (95% CI {{v:P.es.dL_ci}}), {{v:P.ko.dL}} in Korean ({{v:P.ko.dL_ci}}) and {{v:P.zh.dL}} in Chinese ({{v:P.zh.dL_ci}}). π̂ is a share of the 54 model-run-question cells of a brand's category, so these shifts amount to a few of the 54 cells per brand on average. No interval contains zero. Under the corrected English comparator the shifts are {{v:ENC.P.es.dL}}, {{v:ENC.P.ko.dL}} and {{v:ENC.P.zh.dL}}. By the descriptive labels of pre-registration §2.5, applied to the pooled values, every language reads as "level-shifted" (ρ_c ≥ 0.70 and an interval of Δ_L that excludes zero) rather than "language-stable"; the per-category labels need per-category Δ_L, which the locked scorer does not compute (§3.10).
+The order held, but the level moved (Figure 2). The mean difference in π̂ between the language and English, over the 112 units, was {{v:P.es.dL}} in Spanish (95% CI {{v:P.es.dL_ci}}), {{v:P.ko.dL}} in Korean ({{v:P.ko.dL_ci}}) and {{v:P.zh.dL}} in Chinese ({{v:P.zh.dL_ci}}). π̂ is a share of the 54 model-run-question cells of a brand's category, so these shifts amount to a few of the 54 cells per brand on average. No interval contains zero. Under the corrected English comparator the shifts are {{v:ENC.P.es.dL}}, {{v:ENC.P.ko.dL}} and {{v:ENC.P.zh.dL}}. By the descriptive labels of pre-registration §2.5, applied to the pooled values, every language reads as "level-shifted" (ρ_c ≥ 0.70 and an interval of Δ_L that excludes zero) rather than "language-stable". Per category (computed after scoring under DEVIATIONS Entry 7; Appendix A.2, Table A2), {{v:E7.cat.n.level-shifted}} of the 15 category-language cells read as level-shifted, {{v:E7.cat.n.language-stable}} as language-stable, {{v:E7.cat.n.intermediate}} as intermediate (skincare in Chinese) and {{v:E7.cat.n.language-sensitive}} as language-sensitive.
 
 ![Mean difference in recall Presence from English per language, under the locked and the corrected English comparator.](../../reports/figs/v62/paper/fig_02_level.pdf){#fig:level width=100%}
 
 ## 3.5 H_Lang_Phi: Consistency carries over in Spanish, only weakly in Korean and Chinese (ES {{v:Phi.es.verdict}}; KO, ZH {{v:Phi.ko.verdict}})
 
-How evenly the three models named a brand carried over to Spanish but much less to Korean and Chinese (Table 3, Figure 3). Over the units with φ defined in both languages, ρ_c was {{v:Phi.es.rho}} in Spanish (n = {{v:Phi.es.n}}; 95% CI {{v:Phi.es.ci}}; p {{v:Phi.es.p}}), {{v:Phi.ko.rho}} in Korean (n = {{v:Phi.ko.n}}; {{v:Phi.ko.ci}}; p = {{v:Phi.ko.p}}) and {{v:Phi.zh.rho}} in Chinese (n = {{v:Phi.zh.n}}; {{v:Phi.zh.ci}}; p = {{v:Phi.zh.p}}). H_Lang_Phi is **{{v:Phi.es.verdict}}** in Spanish and **{{v:Phi.ko.verdict}}** in Korean and in Chinese ({{v:Phi.zh.verdict}}): both are significant and above the 0.30 falsification line, below the 0.50 confirmation threshold, and both intervals span the marginal band. Per category the Korean and Chinese values varied widely, from {{v:Phi.cat_min}} (skincare in Chinese) upward; {{v:Phi.cat_nneg}} of the 15 category-language values were negative.
+How evenly the three models named a brand carried over to Spanish but much less to Korean and Chinese (Table 3, Figure 3). Over the units with φ defined in both languages, ρ_c was {{v:Phi.es.rho}} in Spanish (n = {{v:Phi.es.n}}; 95% CI {{v:Phi.es.ci}}; p {{v:Phi.es.p}}), {{v:Phi.ko.rho}} in Korean (n = {{v:Phi.ko.n}}; {{v:Phi.ko.ci}}; p = {{v:Phi.ko.p}}) and {{v:Phi.zh.rho}} in Chinese (n = {{v:Phi.zh.n}}; {{v:Phi.zh.ci}}; p = {{v:Phi.zh.p}}). H_Lang_Phi is **{{v:Phi.es.verdict}}** in Spanish and **{{v:Phi.ko.verdict}}** in Korean and in Chinese ({{v:Phi.zh.verdict}}): both are significant and above the 0.30 falsification line, below the 0.50 confirmation threshold, and both intervals span the marginal band. Per category the Korean and Chinese values varied widely, from {{v:Phi.cat_min}} (skincare in Chinese) upward; {{v:Phi.cat_nneg}} of the 15 category-language values were negative. The pre-registered flag for φ tracking Presence within a language (|ρ_c(φ, π̂)| of 0.50 or more, §2.3), computed after scoring under DEVIATIONS Entry 7, is not raised in any language: the largest absolute value was {{v:E7.phipi.max_abs}} (Chinese; Appendix A.1).
 
 | | Spanish | Korean | Chinese |
 |---|---:|---:|---:|
@@ -199,7 +199,7 @@ H_Lang_Rank was to be tested only if the Ranking instrument (Methodology v1.14) 
 
 ## 3.7 Sensitivities: no specification changes a verdict
 
-Every pre-registered and added sensitivity left every verdict as scored (Table 4, Figure 4). Without Denon (S-Denon, 111 units), without the headphones category (S-Headphones, 96 units), without the units with a disclosed tie (S-COI), without translation-flagged questions (S-Trans), without the alias the AI check judged unused (S-AliasAI) and with the corrected English comparator, H_Lang_Presence stayed CONFIRMED in every language, and the joint reading stayed {{v:joint}}. None of the abstract rules of §7.5 and Entry 2 (b)--(c) was triggered.
+Every pre-registered and added sensitivity left every verdict as scored (Table 4, Figure 4). Without Denon (S-Denon, 111 units), without the headphones category (S-Headphones, 96 units), without the units with a disclosed tie (S-COI), without translation-flagged questions (S-Trans), without the alias the AI check judged unused (S-AliasAI) and with the corrected English comparator, H_Lang_Presence stayed CONFIRMED in every language, and the joint reading stayed {{v:joint}}. None of the abstract rules of §7.5 and Entry 2 (b)--(c) was triggered. The three §7.5 sensitivities computed after scoring under Entry 7 also give the primary verdict in every language: S-Language excludes no Spanish or Korean category answer and {{v:E7.S-Language.zh.excluded}} Chinese answers (Claude Fable 5.2, spirits question {{v:E7.mc.lang.zh_off_probe}}, runs 1--3); S-Script excludes no answer; S-Alias changes {{v:E7.S-Alias.ko.cells}} coded Korean cell and {{v:E7.S-Alias.zh.cells}} Chinese cells (Spanish has no alias, so its line is the primary one). §7.5's abstract rule does not cover these three.
 
 | Specification | n | Spanish | Korean | Chinese |
 |---|---:|---|---|---|
@@ -211,8 +211,11 @@ Every pre-registered and added sensitivity left every verdict as scored (Table 4
 | S-Trans (both lines) | {{v:STrans.flagged.P.es.n}} | {{v:STrans.flagged.P.es.rho}} ({{v:STrans.flagged.P.es.ci}}) | {{v:STrans.flagged.P.ko.rho}} ({{v:STrans.flagged.P.ko.ci}}) | {{v:STrans.flagged.P.zh.rho}} ({{v:STrans.flagged.P.zh.ci}}) |
 | S-AliasAI | {{v:SAliasAI.ko.n}} | not applicable | {{v:SAliasAI.ko.rho}} ({{v:SAliasAI.ko.ci}}) | {{v:SAliasAI.zh.rho}} ({{v:SAliasAI.zh.ci}}) |
 | Corrected comparator | {{v:ENC.P.es.n}} | {{v:ENC.P.es.rho}} ({{v:ENC.P.es.ci}}) | {{v:ENC.P.ko.rho}} ({{v:ENC.P.ko.ci}}) | {{v:ENC.P.zh.rho}} ({{v:ENC.P.zh.ci}}) |
+| S-Language, Entry 7 | {{v:E7.S-Language.es.n}} | {{v:E7.S-Language.es.rho}} ({{v:E7.S-Language.es.ci}}) | {{v:E7.S-Language.ko.rho}} ({{v:E7.S-Language.ko.ci}}) | {{v:E7.S-Language.zh.rho}} ({{v:E7.S-Language.zh.ci}}) |
+| S-Script, Entry 7 | {{v:E7.S-Script.zh.n}} | not applicable | not applicable | {{v:E7.S-Script.zh.rho}} ({{v:E7.S-Script.zh.ci}}) |
+| S-Alias, Entry 7 | {{v:E7.S-Alias.ko.n}} | {{v:E7.S-Alias.es.rho}} ({{v:E7.S-Alias.es.ci}}) | {{v:E7.S-Alias.ko.rho}} ({{v:E7.S-Alias.ko.ci}}) | {{v:E7.S-Alias.zh.rho}} ({{v:E7.S-Alias.zh.ci}}) |
 
-: H_Lang_Presence under each specification: ρ_c (bootstrap 95% CI); permutation p {{v:P.es.p}} and verdict {{v:P.es.verdict}} in every cell (the verdict field of each source record). S-COI, Entry 4: Jack Daniel's removed; S-Trans: the flagged and the strictly flagged line are identical; corrected comparator: DEVIATIONS Entry 6. Sources: `v62_verdicts.json` (`sensitivities`), `data/v62_sens_coi106_v0_62.json`, `data/v62_sens_ai_check_v0_62.json` and `data/v62_sens_en_corrected_v0_62.json`.
+: H_Lang_Presence under each specification: ρ_c (bootstrap 95% CI); permutation p {{v:P.es.p}} and verdict {{v:P.es.verdict}} in every cell (the verdict field of each source record). S-COI, Entry 4: Jack Daniel's removed; S-Trans: the flagged and the strictly flagged line are identical; corrected comparator: DEVIATIONS Entry 6; S-Language, S-Script and S-Alias: computed after scoring under DEVIATIONS Entry 7 (S-Alias in Spanish is the primary line, as Spanish has no alias). Sources: `v62_verdicts.json` (`sensitivities`), `data/v62_sens_coi106_v0_62.json`, `data/v62_sens_ai_check_v0_62.json`, `data/v62_sens_en_corrected_v0_62.json` and `data/v62_planned_items_v0_62.json`.
 
 ![Rank agreement of recall Presence with English under each specification, by language.](../../reports/figs/v62/paper/fig_04_sensitivity.pdf){#fig:sensitivity width=100%}
 
@@ -250,6 +253,8 @@ The questions were checked, before collection, by models of two providers other 
 
 ## 3.9 Summary of verdicts
 
+Table 7 lists every pre-registered test with its verdict as written by the locked scorer. No sensitivity, and no item computed after scoring (§3.10), changes any of them.
+
 | Test | Spanish | Korean | Chinese |
 |---|---|---|---|
 | H_Lang_Presence (primary): ρ_c ≥ 0.70 and p < 0.05 | {{v:P.es.verdict}} ({{v:P.es.rho}}) | {{v:P.ko.verdict}} ({{v:P.ko.rho}}) | {{v:P.zh.verdict}} ({{v:P.zh.rho}}) |
@@ -259,13 +264,13 @@ The questions were checked, before collection, by models of two providers other 
 
 : Verdicts as written by `score_v0_62.py` (`v62_verdicts.json`). No sensitivity changes any of them (§3.7).
 
-## 3.10 Pre-registered items not computed by the locked scorer
+## 3.10 Pre-registered items computed after scoring (DEVIATIONS Entry 7)
 
-The locked scorer writes the nine tests, the per-category values, Δ_L, the uncentred values and the S-Denon, S-Headphones and S-COI sensitivities; Entries 4--6 added the files of §3.7. The following pre-registered items are in none of these outputs and are not reported in this draft: per-model ρ_c (§2.2); the per-category level labels, the share of units whose π̂ moves by more than 1/6, the agreement between pairs of languages and the ten units that move most (§2.5); |ρ_c(φ, π̂)| per language (§2.3); MC_Served, MC_Language, MC_Script and MC_Truncation (§2.8); the sensitivities S-Language, S-Script and S-Alias (§7.5); and the six descriptives of §2.9 (run-to-run reliability, recognition from the 88 yes/no questions per language, answer form and token use, script of brand mentions, the home-language descriptive and cost per model and language). The time benchmark of §2.7 is not available because the English t₅ wave had not been scored. Whether these are computed, and under which DEVIATIONS entry, is open (§7).
+The locked scorer writes the nine tests, the per-category values, Δ_L, the uncentred values and the S-Denon, S-Headphones and S-COI sensitivities. The other items the pre-registration plans were computed afterwards, under DEVIATIONS Entry 7, by a script that imports the locked modules unchanged, first re-ran the locked scorer and reproduced the verdict file byte for byte, read only archived files and called no model. They are secondary or descriptive, none bears on a verdict, and Appendix A reports them in full. In brief: per-model ρ_c with English Presence ranged from {{v:E7.pm.min}} to {{v:E7.pm.max}} across the 18 model-language-reading cells, {{v:E7.pm.n_below70}} of them below 0.70 (A.1); the languages agreed with one another at ρ_c {{v:E7.pair.ES-KO.rho}} (Spanish--Korean), {{v:E7.pair.ES-ZH.rho}} (Spanish--Chinese) and {{v:E7.pair.KO-ZH.rho}} (Korean--Chinese) (A.2); no category is language-sensitive by the labels of §2.5 (A.2); the two units that moved most in Spanish are the two units of t₄'s apostrophe erratum, measured against the locked comparator (A.2); MC_Language flags every Spanish model on all answers because the fixed rule does not count a short "Sí." as Spanish, while every category answer passes (A.3); S-Language, S-Script and S-Alias give the primary verdict everywhere (§3.7); each model recognised between {{v:E7.rec.min}} and {{v:E7.rec.max}} of the 88 yes/no brands per language (A.4); and the pooled measured cost factors of the three languages were below the central planning factors of pre-registration §6.2 (A.4). The home-language descriptive of §2.9 was not computed, because the country column it requires was not built before the lock, and the time benchmark of §2.7 awaits the scoring of the English t₅ wave.
 
 # 4. Deviations
 
-The deviations record (`osf/v62/DEVIATIONS.md`) holds seven entries. Entry 0 was written before the lock; Entries 1--3 after the lock and before any study call; Entries 4--6 after the single scoring run. None changes a hypothesis, threshold, unit set, model, question, seed or scored verdict.
+The deviations record (`osf/v62/DEVIATIONS.md`) holds {{v:dev.n_entries}} entries. Entry 0 was written before the lock; Entries 1--3 after the lock and before any study call; Entries 4--8 after the single scoring run. None changes a hypothesis, threshold, unit set, model, question, seed or scored verdict.
 
 | Entry | Date | What it records | Used in |
 |---|---|---|---|
@@ -276,16 +281,16 @@ The deviations record (`osf/v62/DEVIATIONS.md`) holds seven entries. Entry 0 was
 | 4 | 25 Nov | S-COI ran on 107 units: Jack Daniel's left in by a key mismatch; the 106-unit S-COI reported beside it. Approved by the pre-registrant. | §3.7, Table 4 |
 | 5 | 25 Nov | Run wrapper for S-Trans and S-AliasAI, whose committed functions had no entry point; procedure only. Approved by the pre-registrant. | §3.7 |
 | 6 | 25 Nov | Sensitivity with t₄'s corrected English table (erratum of 25 November) beside the locked comparison. Approved by the pre-registrant. | §3.7, Table 5, Figures 2--3 |
+| 7 | 25 Nov | Pre-registered items the locked scorer did not compute (per-model ρ_c, the φ--π̂ flag, the §2.5 labels, pairs and largest shifts, five manipulation checks, S-Language, S-Script, S-Alias and the §2.9 descriptives), computed from the archived data with the locked modules unchanged; the readings chosen where the text is open are recorded. Home-language descriptive not computed; time benchmark not available. Approved by the pre-registrant. | §3.2, §3.4, §3.7, §3.10, Appendix A |
+| 8 | 25 Nov | The one timed-out call: charged $0 by the guard, not the §6.5 worst case; strict figures reported beside the recorded spend; the re-run pass and its approval recorded. No spend record changed. Approved by the pre-registrant. | §3.1 |
 
-: DEVIATIONS Entries 0--6 (`osf/v62/DEVIATIONS.md`). Entries 4--6 were approved by the pre-registrant on 25 November 2026 before this draft.
-
-Three further points arose in writing this draft and are not covered by an entry. (1) The guard charged the one timed-out attempt $0, where pre-registration §6.5 rule 2 prices an attempt without usage at its worst case (§3.1, cost note). (2) Several pre-registered checks, sensitivities and descriptives are not computed by the locked scorer (§3.10). (3) The re-run pass was started under the projection approval the acquisition script asks for, after the pre-registrant's approval; this is recorded in `v62_budget_state.json` but not in DEVIATIONS.
+: DEVIATIONS Entries 0--8 (`osf/v62/DEVIATIONS.md`). Entries 4--8 were approved by the pre-registrant on 25 November 2026; Entries 7 and 8 are in commit `69e1aa9`.
 
 # 5. Discussion
 
 Asked in Spanish, Korean or Chinese, the three newest flagship models named the omnibus brands in much the same order as in English. Presence agreement was highest in Spanish and lowest in Chinese, and all three cleared the confirmation threshold, under every sensitivity. For Presence as the programme measures it, an English measurement is therefore a good guide to the order of brands that the same models make available in these three languages, at least for the five consumer categories of the omnibus and for questions that name no market. The order is not the whole picture: the level moved, upward in Spanish and downward in Korean and Chinese, so a brand's absolute Presence in one language is not its Presence in another, even where its rank among competitors holds.
 
-Consistency is a different matter. Whether the three models agree in naming a brand carried over to Spanish with a moderate correlation and only weakly to Korean and Chinese, with large differences between categories, including negative values. Two readings are open and this wave cannot separate them. φ is noisier than π̂, because it depends on three models and on at least two defined runs, so a weaker correlation is expected from measurement alone; and the models may genuinely agree differently in different languages, for example where one model knows a brand's Korean or Chinese name and another does not. The alias table, which names only the forms the runner could list (§2.2; limitation 7), adds a third possibility for Korean and Chinese: a brand named in a script the table does not cover is a missed mention for one model and not another.
+Consistency is a different matter. Whether the three models agree in naming a brand carried over to Spanish with a moderate correlation and only weakly to Korean and Chinese, with large differences between categories, including negative values. Two readings are open and this wave cannot separate them. φ is noisier than π̂, because it depends on three models and on at least two defined runs, so a weaker correlation is expected from measurement alone; and the models may genuinely agree differently in different languages, for example where one model knows a brand's Korean or Chinese name and another does not. The alias table, which names only the forms the runner could list (§2.2; limitation 7), adds a third possibility for Korean and Chinese: a brand named in a script the table does not cover is a missed mention for one model and not another. The script descriptive computed after scoring (Appendix A.4) shows how much the alias table carries: {{v:E7.script.ko.share_native_only}} of the coded Korean mentions and {{v:E7.script.zh.share_native_only}} of the Chinese ones were found only through a Hangul or Han alias.
 
 The study also shows how small coding details reach a cross-language comparison. A typographic apostrophe in two English brand names moved English values enough to shift Chinese Consistency agreement from {{v:Phi.zh.rho4}} to {{v:ENC.Phi.zh.rho4}}, and a key mismatch left one unit in a sensitivity it was meant to leave. Neither changed a verdict; both are reported beside the locked results.
 
@@ -295,16 +300,16 @@ The study also shows how small coding details reach a cross-language comparison.
 2. The forward translator belongs to the same provider as one of the measured models; the two checkers are also measured models (they saw translations, never answers).
 3. Language is varied without a market: the registries are US-market selections, and the results describe what these three models answer when asked in each language, not what users in any country receive from locally available assistants.
 4. One variety per language: neutral Latin American Spanish, standard South Korean and Simplified Mainland Chinese.
-5. Time and language are confounded: t₄ was collected from 11 November 2026, this wave on 25 November; the t₅ benchmark that would separate them was not available (§3.10).
+5. Time and language are confounded: t₄ was collected from 11 November 2026, this wave on 25 November; the t₅ benchmark that would separate them is not yet available (§3.10).
 6. No web search; one model per provider; three runs, as t₄.
 7. Korean and Chinese coding rests on a new alias table whose forms were mostly unconfirmed on brand sites before the lock; 38 units have no Chinese alias and are matched in Latin script only, which under-counts Han-script mentions the table does not list.
-8. Recognition (block 4) was collected but is not reported in this draft (§3.10).
+8. The pre-registered checks, Presence sensitivities S-Language, S-Script and S-Alias, and descriptives of Appendix A were computed after the scoring run (Entry 7), under readings of the text chosen then and recorded in that entry; the home-language descriptive was not computed, and the fixed language rule of MC_Language does not recognise short Spanish yes/no answers.
 9. No buyer persona: as at t₄, every question is asked without a description of the asker. Outside audits find that a stated persona changes which mid-market brands are recommended (Jack et al., 2026) and that U.S.-developed models favour American entities (Rienecker et al., 2026); whether the language results hold with a persona is not tested.
-10. The as-run S-COI kept one unit it was meant to drop (Entry 4), and the S-Trans and S-AliasAI sensitivities were run after scoring by a wrapper (Entry 5); the English comparator was corrected after scoring (Entry 6). All three are reported beside the locked results and none changes a verdict.
+10. The as-run S-COI kept one unit it was meant to drop (Entry 4), and the S-Trans and S-AliasAI sensitivities were run after scoring by a wrapper (Entry 5); the English comparator was corrected after scoring (Entry 6); and the guard charged the one timed-out attempt nothing where pre-registration §6.5 prices it at its worst case (Entry 8). All four are reported beside the locked results and none changes a verdict.
 
 # 7. Future Research and Open Items
 
-The non-English results invite three follow-ups. A Consistency test with more models or runs per language would show whether the weak Korean and Chinese agreement is noise or a real difference in how models agree. A wave with questions that name a market (for example "in Korea" or "in Mexico") would separate language from market, which this wave held apart by design. The English t₅ wave, once scored, gives the time benchmark of §2.7: how much of the gap between English and each language is time rather than language. Open for this draft: whether the pre-registered items listed in §3.10 are computed after scoring, under a new DEVIATIONS entry, before the paper is finalised.
+The non-English results invite three follow-ups. A Consistency test with more models or runs per language would show whether the weak Korean and Chinese agreement is noise or a real difference in how models agree. A wave with questions that name a market (for example "in Korea" or "in Mexico") would separate language from market, which this wave held apart by design. The English t₅ wave, once scored, gives the time benchmark of §2.7: how much of the gap between English and each language is time rather than language. A home-language descriptive (§2.9) needs a country-of-origin column built from cited sources before data; a later wave can fix one at its lock.
 
 # Declarations {-}
 
@@ -326,7 +331,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 
 ## Data and code availability {-}
 
-The locked pre-registration, English source and translated probe files, alias table, cost estimate, scripts and tests, deviations record and lock manifest are deposited at OSF (osf.io/ec6wh), `v62/`. The raw answers (`data/v62_raw.jsonl`), collection logs, gate records, coded tables (`data/coded/`), verdict file (`v62_verdicts.json`), the AI check results (`ai_check/results/`) and the three sensitivity files of Entries 4--6 are in the programme's repository (github.com/thirdsystem-aias/aias, branch `v0.62-nohand`, `osf/v62/`) and are planned for OSF with the study's data deposit. Every number in this paper is read from `papers/v0_62/v62_values.json`, written by `papers/v0_62/values_v0_62.py` from those files, which names the source file and field of each value; the figures are drawn by `scripts/build_charts_v62_paper.py`.
+The locked pre-registration, English source and translated probe files, alias table, cost estimate, scripts and tests, deviations record and lock manifest are deposited at OSF (osf.io/ec6wh), `v62/`. The raw answers (`data/v62_raw.jsonl`), collection logs, gate records, coded tables (`data/coded/`), verdict file (`v62_verdicts.json`), the AI check results (`ai_check/results/`), the three sensitivity files of Entries 4--6 (commit `4ac1aa9`), and the files of Entries 7 and 8 (commit `69e1aa9`: `scripts/post_scoring_planned_items_v62.py`, `data/v62_planned_items_v0_62.json`, `data/v62_planned_items_summary_v0_62.json`, `data/v62_planned_category_labels_v0_62.csv`, `data/v62_planned_top10_shift_v0_62.csv`, `data/v62_planned_checks_v0_62.csv`, and the re-coded tables `data/s_alias_off/` and `data/latin_only/`) are in the programme's repository (github.com/thirdsystem-aias/aias, branch `v0.62-nohand`, `osf/v62/`) and are planned for OSF with the study's data deposit. Every number in this paper is read from `papers/v0_62/v62_values.json`, written by `papers/v0_62/values_v0_62.py` from those files, which names the source file and field of each value; the figures are drawn by `scripts/build_charts_v62_paper.py`.
 
 # References {-}
 
@@ -352,7 +357,7 @@ González Castro, P. U. (2026k). *Presence and Consistency: A Two-Component Meas
 
 González Castro, P. U. (2026l). *Tri-System Brand Growth: The AI Mediation Layer*. MSI Working Paper, Report No. 26-132. Marketing Science Institute.
 
-Jack, Lehman, Maloney & Xu (2026). arXiv 2605.30207 (May 2026; cited by its identifier in the pre-registration, §8 limitation 11).
+Jack, W., Lehman, N., Maloney, K., & Xu, S. (2026). *Persona Conditioning of Brand Recommendations in Retrieval-Augmented Commercial Chat: A Prominence-Stratified Cross-Provider Audit*. arXiv 2605.30207 (v1, 28 May 2026; cs.AI).
 
 Rienecker et al. (2026). *Auditing Preferences for Brands and Cultures in LLMs* (ChoiceEval). arXiv 2603.18300.
 
@@ -361,3 +366,135 @@ Romaniuk, J., & Sharp, B. (2016). *How Brands Grow: Part 2*. Oxford University P
 Sharp, B. (2010). *How Brands Grow: What Marketers Don't Know*. Oxford University Press.
 
 Programme records cited by version (OSF `ec6wh`; github.com/thirdsystem-aias/aias): the omnibus registries and phase papers of v0.19 (audiophile headphones, SSRN 6809182), v0.20 (skincare, SSRN 6811441), v0.21 (cosmetics, SSRN 6815378), v0.22 (automotive, SSRN 6829118) and v0.23 (premium spirits, SSRN 6834298); the English t₄ wave v0.42 (pre-registration `v0.42-prereg-r1`, OSF `ec6wh/v42`), whose panel, settings, coder and scored brand table this wave uses, and its erratum of 25 November 2026; and the Ranking instrument v1.14 (Stage 1, commit `{{v:Rank.v114_commit}}`).
+
+\clearpage
+\setcounter{table}{0}
+\renewcommand{\thetable}{A\arabic{table}}
+
+# Appendix A. Pre-registered items computed after scoring (DEVIATIONS Entry 7) {-}
+
+Everything in this appendix was computed after the one scoring run (commit `262464d`), under DEVIATIONS Entry 7 (commit `69e1aa9`), from archived files only: no model or API was called and nothing was paid. The script (`osf/v62/scripts/post_scoring_planned_items_v62.py`) imports the locked scorer, coder, parameter and budget modules unchanged, first re-ran the locked scorer on the locked inputs and reproduced `v62_verdicts.json` byte for byte, and wrote `data/v62_planned_items_v0_62.json` and its summary and tables. No item here changes a verdict, the joint reading, a coded table or a locked file; under the pre-registration's own rules none of them bears on a verdict. Where the pre-registration's text is open, Entry 7 records the reading chosen; the readings that matter for a table are stated with it.
+
+## A.1 Per-model agreement and the Consistency--Presence flag {-}
+
+Per-model ρ_c (pre-registration §2.2) is reported under two readings, both on all {{v:E7.pm.n}} units and as point values, like the locked per-category ρ_c. Reading (i) compares each model with itself: x is that model's own English t₄ π̂ (t₄'s coded rows), y is the same model's π̂ in the language. Reading (ii) compares each model with the panel: x is the three-model English π̂ of the locked t₄ table, y is the model's π̂ in the language. Under both readings every model clears 0.70 in every language; Claude Fable 5.2 agrees most closely with English in each language.
+
+| Model | Spanish (i) / (ii) | Korean (i) / (ii) | Chinese (i) / (ii) |
+|---|---|---|---|
+| Claude Fable 5.2 | {{v:E7.pm.es.claude-fable-5-2.i}} / {{v:E7.pm.es.claude-fable-5-2.ii}} | {{v:E7.pm.ko.claude-fable-5-2.i}} / {{v:E7.pm.ko.claude-fable-5-2.ii}} | {{v:E7.pm.zh.claude-fable-5-2.i}} / {{v:E7.pm.zh.claude-fable-5-2.ii}} |
+| GPT-6 Astra | {{v:E7.pm.es.gpt-6-astra.i}} / {{v:E7.pm.es.gpt-6-astra.ii}} | {{v:E7.pm.ko.gpt-6-astra.i}} / {{v:E7.pm.ko.gpt-6-astra.ii}} | {{v:E7.pm.zh.gpt-6-astra.i}} / {{v:E7.pm.zh.gpt-6-astra.ii}} |
+| Gemini 4 Argon | {{v:E7.pm.es.gemini-4-argon.i}} / {{v:E7.pm.es.gemini-4-argon.ii}} | {{v:E7.pm.ko.gemini-4-argon.i}} / {{v:E7.pm.ko.gemini-4-argon.ii}} | {{v:E7.pm.zh.gemini-4-argon.i}} / {{v:E7.pm.zh.gemini-4-argon.ii}} |
+
+: Per-model ρ_c with English recall Presence (n = {{v:E7.pm.n}}): reading (i), the model's own English t₄ π̂; reading (ii), the three-model English π̂ of the locked t₄ table (`data/v62_planned_items_summary_v0_62.json`, `per_model_rho_c`).
+
+The pre-registration (§2.3) flags a language if φ and π̂ in that language are correlated at |ρ_c| of 0.50 or more, which would mean that Consistency is tracking Presence. On the units with φ defined in the language, |ρ_c(φ, π̂)| was {{v:E7.phipi.es.def.abs}} in Spanish (n = {{v:E7.phipi.es.def.n}}), {{v:E7.phipi.ko.def.abs}} in Korean (n = {{v:E7.phipi.ko.def.n}}) and {{v:E7.phipi.zh.def.abs}} in Chinese (ρ_c = {{v:E7.phipi.zh.def.rho}}, n = {{v:E7.phipi.zh.def.n}}); on the units of the H_Lang_Phi test it was {{v:E7.phipi.es.hlp.abs}}, {{v:E7.phipi.ko.hlp.abs}} and {{v:E7.phipi.zh.hlp.abs}} (n = {{v:E7.phipi.es.hlp.n}}, {{v:E7.phipi.ko.hlp.n}}, {{v:E7.phipi.zh.hlp.n}}). The flag is not raised in any language.
+
+## A.2 Level labels, agreement between languages and the largest shifts (§2.5) {-}
+
+Table A2 applies the descriptive labels of pre-registration §2.5 per category. Δ_L is the mean of π̂ in the language minus English π̂ over the category's units, with a 95% percentile interval from 10,000 bootstrap resamples of those units (seed 620131, the seed of the locked Δ_L interval); a unit "moves" if its π̂ in the language differs from its English π̂ by more than 1/6. No category-language cell is language-sensitive. Skincare in Chinese is the one intermediate cell: its ρ_c is below 0.70 and a third of its units move.
+
+| Language | Category | ρ_c | Δ_L (95% CI) | Units moving > 1/6 | Label |
+|---|---|---:|---|---|---|
+| Spanish | Headphones (v0.19) | {{v:E7.cat.es.v0.19.rho}} | {{v:E7.cat.es.v0.19.dL}} ({{v:E7.cat.es.v0.19.dL_ci}}) | {{v:E7.cat.es.v0.19.moved}} | {{v:E7.cat.es.v0.19.label}} |
+| Spanish | Skincare (v0.20) | {{v:E7.cat.es.v0.20.rho}} | {{v:E7.cat.es.v0.20.dL}} ({{v:E7.cat.es.v0.20.dL_ci}}) | {{v:E7.cat.es.v0.20.moved}} | {{v:E7.cat.es.v0.20.label}} |
+| Spanish | Cosmetics (v0.21) | {{v:E7.cat.es.v0.21.rho}} | {{v:E7.cat.es.v0.21.dL}} ({{v:E7.cat.es.v0.21.dL_ci}}) | {{v:E7.cat.es.v0.21.moved}} | {{v:E7.cat.es.v0.21.label}} |
+| Spanish | Automotive (v0.22) | {{v:E7.cat.es.v0.22.rho}} | {{v:E7.cat.es.v0.22.dL}} ({{v:E7.cat.es.v0.22.dL_ci}}) | {{v:E7.cat.es.v0.22.moved}} | {{v:E7.cat.es.v0.22.label}} |
+| Spanish | Spirits (v0.23) | {{v:E7.cat.es.v0.23.rho}} | {{v:E7.cat.es.v0.23.dL}} ({{v:E7.cat.es.v0.23.dL_ci}}) | {{v:E7.cat.es.v0.23.moved}} | {{v:E7.cat.es.v0.23.label}} |
+| Korean | Headphones (v0.19) | {{v:E7.cat.ko.v0.19.rho}} | {{v:E7.cat.ko.v0.19.dL}} ({{v:E7.cat.ko.v0.19.dL_ci}}) | {{v:E7.cat.ko.v0.19.moved}} | {{v:E7.cat.ko.v0.19.label}} |
+| Korean | Skincare (v0.20) | {{v:E7.cat.ko.v0.20.rho}} | {{v:E7.cat.ko.v0.20.dL}} ({{v:E7.cat.ko.v0.20.dL_ci}}) | {{v:E7.cat.ko.v0.20.moved}} | {{v:E7.cat.ko.v0.20.label}} |
+| Korean | Cosmetics (v0.21) | {{v:E7.cat.ko.v0.21.rho}} | {{v:E7.cat.ko.v0.21.dL}} ({{v:E7.cat.ko.v0.21.dL_ci}}) | {{v:E7.cat.ko.v0.21.moved}} | {{v:E7.cat.ko.v0.21.label}} |
+| Korean | Automotive (v0.22) | {{v:E7.cat.ko.v0.22.rho}} | {{v:E7.cat.ko.v0.22.dL}} ({{v:E7.cat.ko.v0.22.dL_ci}}) | {{v:E7.cat.ko.v0.22.moved}} | {{v:E7.cat.ko.v0.22.label}} |
+| Korean | Spirits (v0.23) | {{v:E7.cat.ko.v0.23.rho}} | {{v:E7.cat.ko.v0.23.dL}} ({{v:E7.cat.ko.v0.23.dL_ci}}) | {{v:E7.cat.ko.v0.23.moved}} | {{v:E7.cat.ko.v0.23.label}} |
+| Chinese | Headphones (v0.19) | {{v:E7.cat.zh.v0.19.rho}} | {{v:E7.cat.zh.v0.19.dL}} ({{v:E7.cat.zh.v0.19.dL_ci}}) | {{v:E7.cat.zh.v0.19.moved}} | {{v:E7.cat.zh.v0.19.label}} |
+| Chinese | Skincare (v0.20) | {{v:E7.cat.zh.v0.20.rho}} | {{v:E7.cat.zh.v0.20.dL}} ({{v:E7.cat.zh.v0.20.dL_ci}}) | {{v:E7.cat.zh.v0.20.moved}} | {{v:E7.cat.zh.v0.20.label}} |
+| Chinese | Cosmetics (v0.21) | {{v:E7.cat.zh.v0.21.rho}} | {{v:E7.cat.zh.v0.21.dL}} ({{v:E7.cat.zh.v0.21.dL_ci}}) | {{v:E7.cat.zh.v0.21.moved}} | {{v:E7.cat.zh.v0.21.label}} |
+| Chinese | Automotive (v0.22) | {{v:E7.cat.zh.v0.22.rho}} | {{v:E7.cat.zh.v0.22.dL}} ({{v:E7.cat.zh.v0.22.dL_ci}}) | {{v:E7.cat.zh.v0.22.moved}} | {{v:E7.cat.zh.v0.22.label}} |
+| Chinese | Spirits (v0.23) | {{v:E7.cat.zh.v0.23.rho}} | {{v:E7.cat.zh.v0.23.dL}} ({{v:E7.cat.zh.v0.23.dL_ci}}) | {{v:E7.cat.zh.v0.23.moved}} | {{v:E7.cat.zh.v0.23.label}} |
+
+: Per-category level labels of pre-registration §2.5 against the locked English comparator (`data/v62_planned_category_labels_v0_62.csv`).
+
+Agreement between pairs of languages (§2.5), on the {{v:E7.pair.ES-KO.n}} units with a 95% bootstrap interval and permutation p (10,000 each, seed 620141): Spanish--Korean ρ_c = {{v:E7.pair.ES-KO.rho}} ({{v:E7.pair.ES-KO.ci}}; p {{v:E7.pair.ES-KO.p}}), Spanish--Chinese {{v:E7.pair.ES-ZH.rho}} ({{v:E7.pair.ES-ZH.ci}}; p {{v:E7.pair.ES-ZH.p}}) and Korean--Chinese {{v:E7.pair.KO-ZH.rho}} ({{v:E7.pair.KO-ZH.ci}}; p {{v:E7.pair.KO-ZH.p}}).
+
+Table A3 lists the ten units whose π̂ moved most from English in each language. The two largest Spanish shifts, {{v:E7.top.es.1.name}} and {{v:E7.top.es.2.name}}, are the two units of t₄'s apostrophe erratum (§3.7, DEVIATIONS Entry 6): they are measured here against the locked English comparator, in which t₄'s coder missed their typographic apostrophes, so part of each shift reflects the English coding rather than the Spanish answers. {{v:E7.top.ko.9.name}} also appears in the Korean list (ninth). In Chinese, two skincare brands that the English answers did not name at all rank second and fifth ({{v:E7.top.zh.2.name}} and {{v:E7.top.zh.5.name}}). Units tied with the tenth are counted, not listed: {{v:E7.top.es.ties}} in Spanish, {{v:E7.top.ko.ties}} in Korean and {{v:E7.top.zh.ties}} in Chinese.
+
+| Rank | Spanish | Korean | Chinese |
+|---:|---|---|---|
+| 1 | {{v:E7.top.es.1.name}} ({{v:E7.top.es.1.shift}}) | {{v:E7.top.ko.1.name}} ({{v:E7.top.ko.1.shift}}) | {{v:E7.top.zh.1.name}} ({{v:E7.top.zh.1.shift}}) |
+| 2 | {{v:E7.top.es.2.name}} ({{v:E7.top.es.2.shift}}) | {{v:E7.top.ko.2.name}} ({{v:E7.top.ko.2.shift}}) | {{v:E7.top.zh.2.name}} ({{v:E7.top.zh.2.shift}}) |
+| 3 | {{v:E7.top.es.3.name}} ({{v:E7.top.es.3.shift}}) | {{v:E7.top.ko.3.name}} ({{v:E7.top.ko.3.shift}}) | {{v:E7.top.zh.3.name}} ({{v:E7.top.zh.3.shift}}) |
+| 4 | {{v:E7.top.es.4.name}} ({{v:E7.top.es.4.shift}}) | {{v:E7.top.ko.4.name}} ({{v:E7.top.ko.4.shift}}) | {{v:E7.top.zh.4.name}} ({{v:E7.top.zh.4.shift}}) |
+| 5 | {{v:E7.top.es.5.name}} ({{v:E7.top.es.5.shift}}) | {{v:E7.top.ko.5.name}} ({{v:E7.top.ko.5.shift}}) | {{v:E7.top.zh.5.name}} ({{v:E7.top.zh.5.shift}}) |
+| 6 | {{v:E7.top.es.6.name}} ({{v:E7.top.es.6.shift}}) | {{v:E7.top.ko.6.name}} ({{v:E7.top.ko.6.shift}}) | {{v:E7.top.zh.6.name}} ({{v:E7.top.zh.6.shift}}) |
+| 7 | {{v:E7.top.es.7.name}} ({{v:E7.top.es.7.shift}}) | {{v:E7.top.ko.7.name}} ({{v:E7.top.ko.7.shift}}) | {{v:E7.top.zh.7.name}} ({{v:E7.top.zh.7.shift}}) |
+| 8 | {{v:E7.top.es.8.name}} ({{v:E7.top.es.8.shift}}) | {{v:E7.top.ko.8.name}} ({{v:E7.top.ko.8.shift}}) | {{v:E7.top.zh.8.name}} ({{v:E7.top.zh.8.shift}}) |
+| 9 | {{v:E7.top.es.9.name}} ({{v:E7.top.es.9.shift}}) | {{v:E7.top.ko.9.name}} ({{v:E7.top.ko.9.shift}}) | {{v:E7.top.zh.9.name}} ({{v:E7.top.zh.9.shift}}) |
+| 10 | {{v:E7.top.es.10.name}} ({{v:E7.top.es.10.shift}}) | {{v:E7.top.ko.10.name}} ({{v:E7.top.ko.10.shift}}) | {{v:E7.top.zh.10.name}} ({{v:E7.top.zh.10.shift}}) |
+
+: The ten largest shifts in π̂ from English per language (π̂ in the language minus English π̂; locked English comparator; `data/v62_planned_top10_shift_v0_62.csv`).
+
+## A.3 Manipulation checks (§2.8) {-}
+
+MC_Complete: {{v:E7.mc.complete.answered}} of {{v:E7.mc.complete.sent}} calls answered ({{v:E7.mc.complete.lines}} attempt lines, the extra line being the timed-out attempt), {{v:E7.mc.complete.share}} in every model, language and phase. MC_Served: {{v:E7.mc.served.mismatched}} mismatches between the requested and the served model in {{v:E7.mc.served.checked}} answered calls ({{v:E7.mc.served.pass}}). MC_Script: {{v:E7.mc.script.n}} Chinese answers with any of the 24 Traditional-only characters, for every model. MC_Alias: {{v:E7.mc.alias.matches}} matches of collision-prone aliases exported in {{v:E7.mc.alias.calls}} calls (Korean aliases of {{v:E7.mc.alias.ko}}; Chinese aliases of {{v:E7.mc.alias.zh}}); these are counts only, and no match was read for Entry 7. MC_Truncation: {{v:E7.mc.trunc.n}} calls at the output cap; the only finish reasons recorded are {{v:E7.mc.trunc.reasons}}. MC_Window: {{v:E7.mc.window.h}} hours from the first call to the last. MC_Budget: {{v:E7.mc.budget.spend}} from recorded usage, {{v:E7.mc.budget.not_sent}} calls not sent, no pause or stop (Entry 8 adds the strict figure, §3.1).
+
+MC_Language (Table A4) applies the pre-registered fixed rule (`code_v0_62.in_language`) and flags a model-language cell below 95%. Read on all answers, the unit the pre-registration names, it flags every Spanish model: the rule counts an answer as Spanish only if Spanish function words outnumber English ones, and a short yes/no answer such as "Sí." contains none of the listed words, so most Spanish yes/no answers fail it. The category answers, on which every test rests, pass in every cell; the lowest is Chinese Claude Fable 5.2 at {{v:E7.mc.lang.zh.claude-fable-5-2.B}} ({{v:E7.mc.lang.zh.claude-fable-5-2.B.count}}), not flagged; its three off-language answers are the three runs of one spirits question ({{v:E7.mc.lang.zh_off_probe}}), which S-Language drops (§3.7). Read on the yes/no answers alone, the rule also flags Chinese Claude Fable 5.2 ({{v:E7.mc.lang.zh.claude-fable-5-2.A}}). Under §2.8 an MC_Language flag changes no code and no verdict.
+
+| Model | Language | All answers | Category answers (Phase B) | Yes/no answers (Phase A) |
+|---|---|---|---|---|
+| Claude Fable 5.2 | Spanish | {{v:E7.mc.lang.es.claude-fable-5-2.all}} ({{v:E7.mc.lang.es.claude-fable-5-2.all.flag}}) | {{v:E7.mc.lang.es.claude-fable-5-2.B}} ({{v:E7.mc.lang.es.claude-fable-5-2.B.flag}}) | {{v:E7.mc.lang.es.claude-fable-5-2.A}} ({{v:E7.mc.lang.es.claude-fable-5-2.A.flag}}) |
+| GPT-6 Astra | Spanish | {{v:E7.mc.lang.es.gpt-6-astra.all}} ({{v:E7.mc.lang.es.gpt-6-astra.all.flag}}) | {{v:E7.mc.lang.es.gpt-6-astra.B}} ({{v:E7.mc.lang.es.gpt-6-astra.B.flag}}) | {{v:E7.mc.lang.es.gpt-6-astra.A}} ({{v:E7.mc.lang.es.gpt-6-astra.A.flag}}) |
+| Gemini 4 Argon | Spanish | {{v:E7.mc.lang.es.gemini-4-argon.all}} ({{v:E7.mc.lang.es.gemini-4-argon.all.flag}}) | {{v:E7.mc.lang.es.gemini-4-argon.B}} ({{v:E7.mc.lang.es.gemini-4-argon.B.flag}}) | {{v:E7.mc.lang.es.gemini-4-argon.A}} ({{v:E7.mc.lang.es.gemini-4-argon.A.flag}}) |
+| Claude Fable 5.2 | Korean | {{v:E7.mc.lang.ko.claude-fable-5-2.all}} ({{v:E7.mc.lang.ko.claude-fable-5-2.all.flag}}) | {{v:E7.mc.lang.ko.claude-fable-5-2.B}} ({{v:E7.mc.lang.ko.claude-fable-5-2.B.flag}}) | {{v:E7.mc.lang.ko.claude-fable-5-2.A}} ({{v:E7.mc.lang.ko.claude-fable-5-2.A.flag}}) |
+| GPT-6 Astra | Korean | {{v:E7.mc.lang.ko.gpt-6-astra.all}} ({{v:E7.mc.lang.ko.gpt-6-astra.all.flag}}) | {{v:E7.mc.lang.ko.gpt-6-astra.B}} ({{v:E7.mc.lang.ko.gpt-6-astra.B.flag}}) | {{v:E7.mc.lang.ko.gpt-6-astra.A}} ({{v:E7.mc.lang.ko.gpt-6-astra.A.flag}}) |
+| Gemini 4 Argon | Korean | {{v:E7.mc.lang.ko.gemini-4-argon.all}} ({{v:E7.mc.lang.ko.gemini-4-argon.all.flag}}) | {{v:E7.mc.lang.ko.gemini-4-argon.B}} ({{v:E7.mc.lang.ko.gemini-4-argon.B.flag}}) | {{v:E7.mc.lang.ko.gemini-4-argon.A}} ({{v:E7.mc.lang.ko.gemini-4-argon.A.flag}}) |
+| Claude Fable 5.2 | Chinese | {{v:E7.mc.lang.zh.claude-fable-5-2.all}} ({{v:E7.mc.lang.zh.claude-fable-5-2.all.flag}}) | {{v:E7.mc.lang.zh.claude-fable-5-2.B}} ({{v:E7.mc.lang.zh.claude-fable-5-2.B.flag}}) | {{v:E7.mc.lang.zh.claude-fable-5-2.A}} ({{v:E7.mc.lang.zh.claude-fable-5-2.A.flag}}) |
+| GPT-6 Astra | Chinese | {{v:E7.mc.lang.zh.gpt-6-astra.all}} ({{v:E7.mc.lang.zh.gpt-6-astra.all.flag}}) | {{v:E7.mc.lang.zh.gpt-6-astra.B}} ({{v:E7.mc.lang.zh.gpt-6-astra.B.flag}}) | {{v:E7.mc.lang.zh.gpt-6-astra.A}} ({{v:E7.mc.lang.zh.gpt-6-astra.A.flag}}) |
+| Gemini 4 Argon | Chinese | {{v:E7.mc.lang.zh.gemini-4-argon.all}} ({{v:E7.mc.lang.zh.gemini-4-argon.all.flag}}) | {{v:E7.mc.lang.zh.gemini-4-argon.B}} ({{v:E7.mc.lang.zh.gemini-4-argon.B.flag}}) | {{v:E7.mc.lang.zh.gemini-4-argon.A}} ({{v:E7.mc.lang.zh.gemini-4-argon.A.flag}}) |
+
+: MC_Language: share of answers in the asked language by the fixed rule, flagged below 95% (`data/v62_planned_checks_v0_62.csv`). Category answers: 90 per cell; yes/no answers: 88.
+
+## A.4 Descriptives (§2.9) {-}
+
+**Run-to-run reliability and recognition.** rel1 and rel3 are v0.42's run-to-run reliability of recall Presence per model and language: rel1 is the mean ρ_c over the three pairs of runs, rel3 its Spearman--Brown step-up to the mean of three runs (on t₄'s English rows the transcription reproduces v0.42's locked rel1 exactly). Recognition is the number of the 88 yes/no brand questions of v0.19--v0.22 answered "yes"; English is recomputed on the same 88 questions from t₄'s coded tables. No yes/no answer was a non-answer.
+
+| Model | Measure | English (t₄) | Spanish | Korean | Chinese |
+|---|---|---:|---:|---:|---:|
+| Claude Fable 5.2 | rel1 | {{v:E7.rel.en.claude-fable-5-2.rel1}} | {{v:E7.rel.es.claude-fable-5-2.rel1}} | {{v:E7.rel.ko.claude-fable-5-2.rel1}} | {{v:E7.rel.zh.claude-fable-5-2.rel1}} |
+| | rel3 | {{v:E7.rel.en.claude-fable-5-2.rel3}} | {{v:E7.rel.es.claude-fable-5-2.rel3}} | {{v:E7.rel.ko.claude-fable-5-2.rel3}} | {{v:E7.rel.zh.claude-fable-5-2.rel3}} |
+| | recognised (of 88) | {{v:E7.rec.en.claude-fable-5-2}} | {{v:E7.rec.es.claude-fable-5-2}} | {{v:E7.rec.ko.claude-fable-5-2}} | {{v:E7.rec.zh.claude-fable-5-2}} |
+| GPT-6 Astra | rel1 | {{v:E7.rel.en.gpt-6-astra.rel1}} | {{v:E7.rel.es.gpt-6-astra.rel1}} | {{v:E7.rel.ko.gpt-6-astra.rel1}} | {{v:E7.rel.zh.gpt-6-astra.rel1}} |
+| | rel3 | {{v:E7.rel.en.gpt-6-astra.rel3}} | {{v:E7.rel.es.gpt-6-astra.rel3}} | {{v:E7.rel.ko.gpt-6-astra.rel3}} | {{v:E7.rel.zh.gpt-6-astra.rel3}} |
+| | recognised (of 88) | {{v:E7.rec.en.gpt-6-astra}} | {{v:E7.rec.es.gpt-6-astra}} | {{v:E7.rec.ko.gpt-6-astra}} | {{v:E7.rec.zh.gpt-6-astra}} |
+| Gemini 4 Argon | rel1 | {{v:E7.rel.en.gemini-4-argon.rel1}} | {{v:E7.rel.es.gemini-4-argon.rel1}} | {{v:E7.rel.ko.gemini-4-argon.rel1}} | {{v:E7.rel.zh.gemini-4-argon.rel1}} |
+| | rel3 | {{v:E7.rel.en.gemini-4-argon.rel3}} | {{v:E7.rel.es.gemini-4-argon.rel3}} | {{v:E7.rel.ko.gemini-4-argon.rel3}} | {{v:E7.rel.zh.gemini-4-argon.rel3}} |
+| | recognised (of 88) | {{v:E7.rec.en.gemini-4-argon}} | {{v:E7.rec.es.gemini-4-argon}} | {{v:E7.rec.ko.gemini-4-argon}} | {{v:E7.rec.zh.gemini-4-argon}} |
+
+: Run-to-run reliability of recall Presence and recognition of the 88 yes/no brands (`data/v62_planned_items_v0_62.json`, `2.9_descriptives`).
+
+**Answer form and the language factor.** The measured language factor is the mean recorded cost per answered call in the language over the same in English (t₄'s answers to the same questions without search); "pooled" sums the three models' means. Pre-registration §6.2 planned the budget with central factors applied to the whole per-call cost. Every pooled factor is below its central planning factor; individual models were above it in a few cells (GPT-6 Astra on Spanish category questions, Gemini 4 Argon on Spanish yes/no questions).
+
+| Language | Claude Fable 5.2 | GPT-6 Astra | Gemini 4 Argon | Pooled, category | Pooled, yes/no | §6.2 central (high) |
+|---|---:|---:|---:|---:|---:|---:|
+| Spanish | {{v:E7.lf.es.claude-fable-5-2.B}} | {{v:E7.lf.es.gpt-6-astra.B}} | {{v:E7.lf.es.gemini-4-argon.B}} | {{v:E7.lf.es.pooled.B}} | {{v:E7.lf.es.pooled.A}} | {{v:E7.lf.es.plan}} ({{v:E7.lf.es.plan_high}}) |
+| Korean | {{v:E7.lf.ko.claude-fable-5-2.B}} | {{v:E7.lf.ko.gpt-6-astra.B}} | {{v:E7.lf.ko.gemini-4-argon.B}} | {{v:E7.lf.ko.pooled.B}} | {{v:E7.lf.ko.pooled.A}} | {{v:E7.lf.ko.plan}} ({{v:E7.lf.ko.plan_high}}) |
+| Chinese | {{v:E7.lf.zh.claude-fable-5-2.B}} | {{v:E7.lf.zh.gpt-6-astra.B}} | {{v:E7.lf.zh.gemini-4-argon.B}} | {{v:E7.lf.zh.pooled.B}} | {{v:E7.lf.zh.pooled.A}} | {{v:E7.lf.zh.plan}} ({{v:E7.lf.zh.plan_high}}) |
+
+: Measured cost factor per answered call relative to English (per-model columns: category questions) against the planning factors of pre-registration §6.2.
+
+| Model | English (t₄) | Spanish | Korean | Chinese |
+|---|---|---|---|---|
+| Claude Fable 5.2 | {{v:E7.form.en.claude-fable-5-2.chars}}; {{v:E7.form.en.claude-fable-5-2.brands}} | {{v:E7.form.es.claude-fable-5-2.chars}}; {{v:E7.form.es.claude-fable-5-2.brands}} | {{v:E7.form.ko.claude-fable-5-2.chars}}; {{v:E7.form.ko.claude-fable-5-2.brands}} | {{v:E7.form.zh.claude-fable-5-2.chars}}; {{v:E7.form.zh.claude-fable-5-2.brands}} |
+| GPT-6 Astra | {{v:E7.form.en.gpt-6-astra.chars}}; {{v:E7.form.en.gpt-6-astra.brands}} | {{v:E7.form.es.gpt-6-astra.chars}}; {{v:E7.form.es.gpt-6-astra.brands}} | {{v:E7.form.ko.gpt-6-astra.chars}}; {{v:E7.form.ko.gpt-6-astra.brands}} | {{v:E7.form.zh.gpt-6-astra.chars}}; {{v:E7.form.zh.gpt-6-astra.brands}} |
+| Gemini 4 Argon | {{v:E7.form.en.gemini-4-argon.chars}}; {{v:E7.form.en.gemini-4-argon.brands}} | {{v:E7.form.es.gemini-4-argon.chars}}; {{v:E7.form.es.gemini-4-argon.brands}} | {{v:E7.form.ko.gemini-4-argon.chars}}; {{v:E7.form.ko.gemini-4-argon.brands}} | {{v:E7.form.zh.gemini-4-argon.chars}}; {{v:E7.form.zh.gemini-4-argon.brands}} |
+
+: Answer form of the category answers: mean characters per answer; mean registry brands named per answer. Characters are not comparable across scripts (a Hangul syllable or a Han character carries more than a Latin letter). Finish reasons: {{v:E7.mc.trunc.reasons}} only; {{v:E7.form.refusals}} refusals.
+
+**Script of brand mentions.** For each brand mention coded in a Korean or Chinese category answer, the script descriptive asks whether it would also be coded without any alias (Latin form) and whether an alias form occurs. Korean: {{v:E7.script.ko.mentions}} mentions, {{v:E7.script.ko.latin_only}} in Latin script only, {{v:E7.script.ko.native_only}} in Hangul only and {{v:E7.script.ko.both}} in both ({{v:E7.script.ko.share_with_latin_form}} with a Latin form, {{v:E7.script.ko.share_with_native_form}} with a Hangul form). Chinese: {{v:E7.script.zh.mentions}} mentions, {{v:E7.script.zh.latin_only}} Latin only, {{v:E7.script.zh.native_only}} Han only and {{v:E7.script.zh.both}} both ({{v:E7.script.zh.share_with_latin_form}} with a Latin form, {{v:E7.script.zh.share_with_native_form}} with a Han form).
+
+**Cost per model and language** (recorded usage): Spanish Claude Fable 5.2 {{v:E7.cost.es.claude-fable-5-2}}, GPT-6 Astra {{v:E7.cost.es.gpt-6-astra}}, Gemini 4 Argon {{v:E7.cost.es.gemini-4-argon}}; Korean {{v:E7.cost.ko.claude-fable-5-2}}, {{v:E7.cost.ko.gpt-6-astra}}, {{v:E7.cost.ko.gemini-4-argon}}; Chinese {{v:E7.cost.zh.claude-fable-5-2}}, {{v:E7.cost.zh.gpt-6-astra}}, {{v:E7.cost.zh.gemini-4-argon}} (same model order); total {{v:E7.cost.total}}. Strict §6.5 pricing of the one timed-out attempt would add {{v:cost.worst_case}} to Korean Gemini 4 Argon (§3.1, Entry 8).
+
+## A.5 Items not computed {-}
+
+**Home-language descriptive (§2.9 item 5): {{v:E7.home.status}}.** It requires a country-of-origin column built from cited sources before the lock. No such column was built: it is not among the files of the lock manifest, and no v0.62 file holds it. Building it after scoring would not meet the pre-registered condition, so the descriptive is not reported.
+
+**Benchmark for time (§2.7): {{v:E7.time.status}}.** It needs the English t₅ wave, which had not been scored before v0.62; until it is, time and language are not separated (limitation 5).
+
