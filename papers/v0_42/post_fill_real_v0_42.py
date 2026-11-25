@@ -114,20 +114,241 @@ LIMITS_NEW = ("The search-on results of Gemini 4 Argon rest on calls that rarely
 EDITS.append((LIMITS_OLD, LIMITS_NEW))
 
 
-def main():
-    if hashlib.sha256(VERDICTS.read_bytes()).hexdigest() != VERDICTS_SHA256:
-        sys.exit("[post-fill v42] REFUSED: v42_verdicts.json is not the file this text was written for")
+# ---------------------------------------------------------------------------------------------------------------
+# Revision r2 (25 November 2026): the apostrophe correction. The paper is filled from the re-coded verdicts and
+# brand table (papers/v0_42/corrected_2026-11-25/, copies of OSF v45/sensitivity/t4_SQ/v42_verdicts_SQ.json and
+# v42_brand_table_SQ.csv, v0.45 commit 47f1748; the table is OSF v42/v42_brand_table_corrected_2026-11-25.csv):
+#
+#   python3 papers/v0_42/fill_paper_v0_42.py --verdicts papers/v0_42/corrected_2026-11-25/v42_verdicts_SQ.json \
+#       --table papers/v0_42/corrected_2026-11-25/v42_brand_table_SQ.csv
+#   python3 papers/v0_42/post_fill_real_v0_42.py --verdicts papers/v0_42/corrected_2026-11-25/v42_verdicts_SQ.json
+#
+# The hand-written text above is reused with the numbers that moved replaced (R2_SUBS). Every replacement number is
+# checked against a leaf of the corrected verdicts at run time (the paths beside each substitution); the published
+# values quoted in the correction paragraph are the leaves of osf/v42/v42_verdicts.json and v42_brand_table.csv and
+# are checked the same way. The published mode (no --verdicts) is unchanged and still reproduces r1.
+CORRECTED_VERDICTS = ROOT / "papers/v0_42/corrected_2026-11-25/v42_verdicts_SQ.json"
+CORRECTED_TABLE = ROOT / "papers/v0_42/corrected_2026-11-25/v42_brand_table_SQ.csv"
+CORRECTED_SHA256 = "093825a90d42c1117a923586d210246969dabb0a748f0be73cdd13cdbbc57162"
+CORRECTED_TABLE_SHA256 = "de8559cbe21db91e8922337c7ab5bdfaa7d1d2325f6bbe0870e6abcd812a5c4d"
+PUBLISHED_TABLE = ROOT / "osf/v42/v42_brand_table.csv"
+ERRATUM_URL = "https://osf.io/ec6wh/files/osfstorage/6b067ee7bf5e720c41dfd9cb"
+
+GP = ("verdicts", "H_Gen_Presence")
+GF = ("verdicts", "H_Gen_Phi")
+SP = ("verdicts", "H_Search_Presence")
+PAIRS = GP + ("reported_alongside", "per_provider_generation_pairs")
+REL = ("descriptives", "1_run_reliability")
+FLOOR = ("descriptives", "3_floor_persistence")
+FORM = ("descriptives", "4_answer_form")
+F3 = "{:.3f}".format
+FS = "{:+.3f}".format
+F4 = "{:.4f}".format
+F1 = "{:.1f}".format
+PCT = lambda x: f"{100 * x:.0f}%"
+INT = "{:d}".format
+
+# Abstract edits for r2: the fill's anchors carry the corrected numbers, so the two tuples are restated in full.
+R2_ABSTRACT = [
+    ("(`H_Gen_Phi` MARGINAL: ρ = 0.304, p = 0.0070, n = 73).",
+     "(`H_Gen_Phi` MARGINAL: ρ = 0.304, just above the falsification bar of 0.30, 95% interval 0.047 to 0.516, "
+     "p = 0.0070, n = 73).",
+     [(GF + ("rho",), F3), (GF + ("ci95_rho", 0), F3), (GF + ("ci95_rho", 1), F3), (GF + ("p_perm",), F4)]),
+    ("Turning on each provider's web search left the Presence ordering intact (search-robust: ρ = 0.910, 95% "
+     "interval 0.829 to 0.945).",
+     "Turning on each provider's web search left the Presence ordering of the three-model panel intact "
+     "(search-robust: ρ = 0.910, 95% interval 0.829 to 0.945), although per model the correlation ranged from "
+     "0.710 to 0.915 and Gemini 4 Argon searched in only 17.8% of its search-on calls.",
+     [(SP + ("rho",), F3), (SP + ("ci95_rho", 0), F3), (SP + ("ci95_rho", 1), F3),
+      (SP + ("per_model", "claude-fable-5-2", "rho"), F3), (SP + ("per_model", "gemini-4-argon", "rho"), F3),
+      (("manipulation_checks", "MC_Search", "gemini-4-argon", "share"), lambda x: f"{100 * x:.1f}%")]),
+]
+
+# Discussion for r2: (published text, corrected text, leaves of the corrected verdicts that the corrected text prints).
+R2_SUBS = [
+    (r"($\rho_{\text{pw}} = 0.828$, 95% interval 0.722 to 0.890)",
+     r"($\rho_{\text{pw}} = 0.827$, 95% interval 0.718 to 0.889)",
+     [(GP + ("rho",), F3), (GP + ("ci95_rho", 0), F3), (GP + ("ci95_rho", 1), F3)]),
+    (r"($\Delta = +0.046$)", r"($\Delta = +0.051$)", [(GP + ("delta",), FS)]),
+    ("(per-substrate $\\rho$ from 0.855 to 0.943 with search off)",
+     "(per-substrate $\\rho$ from 0.845 to 0.943 with search off)",
+     [(GP + ("per_substrate", "v0.21", "rho"), F3), (GP + ("per_substrate", "v0.22", "rho"), F3)]),
+    ("0.715 for Google and 0.566 for OpenAI", "0.707 for Google and 0.588 for OpenAI",
+     [(PAIRS + ("Google: legacy pair -> gemini-4-argon", "rho"), F3),
+      (PAIRS + ("OpenAI: legacy pair -> gpt-6-astra", "rho"), F3)]),
+    ("(0.566 and 0.715) than the three-model panel departs from the six-model panel (0.828)",
+     "(0.588 and 0.707) than the three-model panel departs from the six-model panel (0.827)",
+     [(PAIRS + ("OpenAI: legacy pair -> gpt-6-astra", "rho"), F3),
+      (PAIRS + ("Google: legacy pair -> gemini-4-argon", "rho"), F3), (GP + ("rho",), F3)]),
+    ("the panels (0.848)", "the panels (0.848)",
+     [(PAIRS + ("Anthropic: legacy pair -> claude-fable-5-2", "rho"), F3)]),
+    (r"$\rho_{\text{pw}} = 0.310$ against a bar of 0.30, with a 95% interval (0.051 to 0.520)",
+     r"$\rho_{\text{pw}} = 0.304$ against a bar of 0.30, with a 95% interval (0.047 to 0.516)",
+     [(GF + ("rho",), F3), (GF + ("ci95_rho", 0), F3), (GF + ("ci95_rho", 1), F3)]),
+    ("The permutation $p$-value (0.0056)", "The permutation $p$-value (0.0070)", [(GF + ("p_perm",), F4)]),
+    ("from 0.058 (cosmetics) and 0.075 (skincare) to 0.809 (automotive)",
+     "from 0.049 (cosmetics) and 0.057 (skincare) to 0.809 (automotive)",
+     [(GF + ("per_substrate", "v0.21", "rho"), F3), (GF + ("per_substrate", "v0.20", "rho"), F3),
+      (GF + ("per_substrate", "v0.22", "rho"), F3)]),
+    (r"|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.101$)", r"|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.103$)",
+     [(GF + ("reported_alongside", "mean_independence_S0", "N3", "abs"), F3)]),
+    ("($\\rho_S = 0.909$; the interval's lower bound, 0.827, clears",
+     "($\\rho_S = 0.910$; the interval's lower bound, 0.829, clears",
+     [(SP + ("rho",), F3), (SP + ("ci95_rho", 0), F3)]),
+    ("was 0.909 for Gemini 4 Argon, 0.858 for GPT-6 Astra and 0.710 for Claude Fable 5.2",
+     "was 0.915 for Gemini 4 Argon, 0.860 for GPT-6 Astra and 0.710 for Claude Fable 5.2",
+     [(SP + ("per_model", "gemini-4-argon", "rho"), F3), (SP + ("per_model", "gpt-6-astra", "rho"), F3),
+      (SP + ("per_model", "claude-fable-5-2", "rho"), F3)]),
+    ("(rel3 0.969 with search off and 0.963 with search on)", "(rel3 0.969 with search off and 0.963 with search on)",
+     [(REL + ("claude-fable-5-2|S0", "rel3"), F3), (REL + ("claude-fable-5-2|S1", "rel3"), F3)]),
+    ("searched in 17.8% of its search-on calls", "searched in 17.8% of its search-on calls",
+     [(("manipulation_checks", "MC_Search", "gemini-4-argon", "share"), lambda x: f"{100 * x:.1f}%")]),
+    (r"($\Delta = -0.012$)", r"($\Delta = -0.016$)", [(SP + ("per_model", "gemini-4-argon", "delta"), F3)]),
+    (r"($\Delta = -0.052$ for Claude Fable 5.2 and $-0.058$ for GPT-6 Astra)",
+     r"($\Delta = -0.052$ for Claude Fable 5.2 and $-0.062$ for GPT-6 Astra)",
+     [(SP + ("per_model", "claude-fable-5-2", "delta"), F3), (SP + ("per_model", "gpt-6-astra", "delta"), F3)]),
+    ("(from 6.2 to 5.0 and from 5.5 to 4.2)", "(from 6.2 to 5.0 and from 5.6 to 4.2)",
+     [(FORM + ("claude-fable-5-2|S0", "registry_brands_named_per_phase_B_answer"), F1),
+      (FORM + ("claude-fable-5-2|S1", "registry_brands_named_per_phase_B_answer"), F1),
+      (FORM + ("gpt-6-astra|S0", "registry_brands_named_per_phase_B_answer"), F1),
+      (FORM + ("gpt-6-astra|S1", "registry_brands_named_per_phase_B_answer"), F1)]),
+    ("rel1 from 0.845 to 0.915 and rel3 from 0.942 to 0.970", "rel1 from 0.850 to 0.916 and rel3 from 0.944 to 0.970",
+     [(REL + ("gpt-6-astra|S1", "rel1"), F3), (REL + ("gemini-4-argon|S1", "rel1"), F3),
+      (REL + ("gpt-6-astra|S1", "rel3"), F3), (REL + ("gemini-4-argon|S1", "rel3"), F3)]),
+    ("of the 58 brands below the recall floor on the retiring panel, 43 (74%) were still below it",
+     "of the 58 brands below the recall floor on the retiring panel, 42 (72%) were still below it",
+     [(FLOOR + ("below_floor_t3",), INT), (FLOOR + ("below_both",), INT),
+      (FLOOR + ("share_below_t3_still_below_t4",), PCT)]),
+    ("and 11% of the brands above the floor fell below it", "and 11% of the brands above the floor fell below it",
+     [(FLOOR + ("share_above_t3_now_below_t4",), PCT)]),
+    ("at $t_4$ (49) than at $t_3$ (58)", "at $t_4$ (48) than at $t_3$ (58)",
+     [(FLOOR + ("below_floor_t4",), INT), (FLOOR + ("below_floor_t3",), INT)]),
+]
+
+# The dated correction paragraph (after "Paper status"). Corrected values: leaves of the corrected verdicts and table;
+# published values: leaves of osf/v42/v42_verdicts.json and v42_brand_table.csv (CORRECTION_CHECKS).
+CORRECTION_ANCHOR = "Part of the AIAS measurement programme.\n"
+CORRECTION = (
+    "\n**Correction (25 November 2026).** This is revision r2 of the paper. It corrects a coding error found after "
+    "publication. The brand matchers looked for the only two registry names that contain an apostrophe, Paula's "
+    "Choice (skincare) and L'Oréal Paris (cosmetics), with a straight apostrophe (U+0027) only, so an answer that "
+    "wrote either name with a typographic apostrophe (U+2019) was coded as not naming the brand: 46 of the 12,096 "
+    "brand-answer cells "
+    "of the category questions, all in these two brands' rows; no recognition code changed. The answers were "
+    "re-coded with the typographic apostrophe read as an apostrophe and the locked coder otherwise unchanged; no "
+    "model was called. Every number in this revision comes from the re-coded verdicts and brand table. No verdict "
+    "changes. Corrected values, with the published ones in brackets: `H_Gen_Presence` ρ = 0.827, 95% interval "
+    "0.718 to 0.889 [0.828, 0.722 to 0.890], CONFIRMED; `H_Gen_Phi` ρ = 0.304, p = 0.0070 [0.310, p = 0.0056], "
+    "MARGINAL; `H_Search_Presence` ρ = 0.910, 95% interval 0.829 to 0.945 [0.909, 0.827 to 0.945], search-robust. "
+    "Other figures move slightly, among them the level shift $\\Delta$ of the newest models against the retiring "
+    "panel (+0.051 [+0.046]) and of search on against search off ($-0.043$ [$-0.041$]), the OpenAI and Google "
+    "generation pairs (0.588 [0.566]; 0.707 [0.715]), the range of rel1 (0.850 to 0.916 [0.845 to 0.915]) and floor "
+    "persistence (42 of 58, 72% [43 of 58, 74%]). The two brands' own rows change substantially: the three models "
+    "named Paula's Choice in a share $\\hat\\pi$ = 0.759 [0.315] of their search-off answers, and GPT-6 Astra named "
+    "it in 13 of its 18 search-off answers, not in none. Figures 1 to 5 are redrawn from the corrected table. The "
+    "erratum on OSF (`v42/ERRATUM_2026-11-25.md`)^[\\url{" + ERRATUM_URL + "}] lists the changes. The published "
+    "`v42_verdicts.json` and `v42_brand_table.csv` and the first version of this paper stay on OSF unchanged, beside "
+    "`v42_brand_table_corrected_2026-11-25.csv`; the corrected verdicts and the list of all 74 changed values are in "
+    "`v45/sensitivity/t4_SQ/`.\n")
+# (which file, path or brand-table cell, formatter): every value printed in CORRECTION.
+CORRECTION_CHECKS = [
+    ("C", GP + ("rho",), F3), ("C", GP + ("ci95_rho", 0), F3), ("C", GP + ("ci95_rho", 1), F3),
+    ("P", GP + ("rho",), F3), ("P", GP + ("ci95_rho", 0), F3), ("P", GP + ("ci95_rho", 1), F3),
+    ("C", GF + ("rho",), F3), ("C", GF + ("p_perm",), F4), ("P", GF + ("rho",), F3), ("P", GF + ("p_perm",), F4),
+    ("C", SP + ("rho",), F3), ("C", SP + ("ci95_rho", 0), F3), ("C", SP + ("ci95_rho", 1), F3),
+    ("P", SP + ("rho",), F3), ("P", SP + ("ci95_rho", 0), F3), ("P", SP + ("ci95_rho", 1), F3),
+    ("C", GP + ("delta",), FS), ("P", GP + ("delta",), FS), ("C", SP + ("delta",), F3), ("P", SP + ("delta",), F3),
+    ("C", PAIRS + ("OpenAI: legacy pair -> gpt-6-astra", "rho"), F3),
+    ("P", PAIRS + ("OpenAI: legacy pair -> gpt-6-astra", "rho"), F3),
+    ("C", PAIRS + ("Google: legacy pair -> gemini-4-argon", "rho"), F3),
+    ("P", PAIRS + ("Google: legacy pair -> gemini-4-argon", "rho"), F3),
+    ("C", REL + ("gpt-6-astra|S1", "rel1"), F3), ("C", REL + ("gemini-4-argon|S1", "rel1"), F3),
+    ("P", REL + ("gpt-6-astra|S1", "rel1"), F3), ("P", REL + ("gemini-4-argon|S1", "rel1"), F3),
+    ("C", FLOOR + ("below_both",), INT), ("C", FLOOR + ("share_below_t3_still_below_t4",), PCT),
+    ("P", FLOOR + ("below_both",), INT), ("P", FLOOR + ("share_below_t3_still_below_t4",), PCT),
+    ("C", FLOOR + ("below_floor_t3",), INT),
+    ("CT", ("v0.20", "Paula's Choice", "pi_N3_S0"), F3), ("PT", ("v0.20", "Paula's Choice", "pi_N3_S0"), F3),
+    ("CT", ("v0.20", "Paula's Choice", "pi_gpt-6-astra_S0"), lambda x: f"{round(18 * x):d} of its 18"),
+    ("PT", ("v0.20", "Paula's Choice", "pi_gpt-6-astra_S0"), lambda x: "not in none" if x == 0 else "MISMATCH"),
+]
+
+
+def _leaf(obj, path):
+    for k in path:
+        obj = obj[k]
+    return obj
+
+
+def _table_cell(csv_path, substrate, brand, column):
+    import csv
+    with open(csv_path, encoding="utf-8", newline="") as fh:
+        rows = [r for r in csv.DictReader(fh) if r.get("substrate") == substrate and r.get("brand") == brand]
+    if len(rows) != 1:
+        sys.exit(f"[post-fill v42] REFUSED: brand-table row {substrate}/{brand} found {len(rows)} times")
+    return float(rows[0][column])
+
+
+def r2_texts(corrected, published):
+    """The r2 edits and Discussion, after checking every printed number against its leaf."""
+    def check(text, checks, src):
+        for path, fmt in checks:
+            s = fmt(_leaf(src, path))
+            if s not in text:
+                sys.exit(f"[post-fill v42] REFUSED: {'.'.join(map(str, path))} = {s!r} is not in {text[:60]!r}")
+    edits = []
+    for old, new, checks in R2_ABSTRACT:
+        check(new, checks, corrected)
+        edits.append((old, new))
+    edits += EDITS[2:]
+    disc = DISCUSSION
+    for old, new, checks in R2_SUBS:
+        if disc.count(old) != 1:
+            sys.exit(f"[post-fill v42] REFUSED: Discussion text not found exactly once: {old[:60]!r}")
+        check(new, checks, corrected)
+        disc = disc.replace(old, new)
+    for which, path, fmt in CORRECTION_CHECKS:
+        if which in ("C", "P"):
+            v = _leaf(corrected if which == "C" else published, path)
+        else:
+            v = _table_cell(CORRECTED_TABLE if which == "CT" else PUBLISHED_TABLE, *path)
+        s = fmt(v)
+        if s not in CORRECTION:
+            sys.exit(f"[post-fill v42] REFUSED: correction paragraph lacks {which}:{path} = {s!r}")
+    edits.append((CORRECTION_ANCHOR, CORRECTION_ANCHOR + CORRECTION))
+    return edits, disc
+
+
+def main(argv=None):
+    import argparse
+    import json
+    ap = argparse.ArgumentParser(description="Hand-written text of the v0.42 paper, applied after the fill")
+    ap.add_argument("--verdicts", type=Path, default=VERDICTS,
+                    help="osf/v42/v42_verdicts.json (r1, as published) or the corrected file of 25 Nov 2026 (r2)")
+    a = ap.parse_args(argv)
+    sha = hashlib.sha256(a.verdicts.read_bytes()).hexdigest()
+    if sha == VERDICTS_SHA256:
+        edits, discussion = EDITS, DISCUSSION
+    elif sha == CORRECTED_SHA256:
+        if hashlib.sha256(CORRECTED_TABLE.read_bytes()).hexdigest() != CORRECTED_TABLE_SHA256:
+            sys.exit("[post-fill v42] REFUSED: the corrected brand table is not the file of 25 November 2026")
+        if hashlib.sha256(VERDICTS.read_bytes()).hexdigest() != VERDICTS_SHA256:
+            sys.exit("[post-fill v42] REFUSED: osf/v42/v42_verdicts.json is not the published file")
+        edits, discussion = r2_texts(json.loads(a.verdicts.read_text(encoding="utf-8")),
+                                     json.loads(VERDICTS.read_text(encoding="utf-8")))
+    else:
+        sys.exit("[post-fill v42] REFUSED: the verdicts file is neither the published nor the corrected one")
     t = DRAFT.read_text(encoding="utf-8")
-    for old, new in EDITS:
+    for old, new in edits:
         if t.count(old) != 1:
             sys.exit(f"[post-fill v42] REFUSED: anchor not found exactly once: {old[:70]!r}")
         t = t.replace(old, new)
-    a, b = t.index("# 4. Discussion"), t.index("# 5. Limitations")
-    t = t[:a] + DISCUSSION + t[b:]
+    a_, b_ = t.index("# 4. Discussion"), t.index("# 5. Limitations")
+    t = t[:a_] + discussion + t[b_:]
     if t.count("Samsung") != t.split("# Declarations")[1].count("Samsung"):
         sys.exit("[post-fill v42] REFUSED: Samsung outside the Declarations")
     DRAFT.write_text(t, encoding="utf-8")
-    print(f"[post-fill v42] applied {len(EDITS)} edits and the Discussion to {DRAFT}")
+    print(f"[post-fill v42] applied {len(edits)} edits and the Discussion to {DRAFT}"
+          f" ({'r2, corrected' if sha == CORRECTED_SHA256 else 'r1, published'} verdicts)")
 
 
 if __name__ == "__main__":

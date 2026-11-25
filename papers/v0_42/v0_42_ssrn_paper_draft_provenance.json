@@ -1,6 +1,6 @@
 {
- "verdicts": "/Users/pablou/aias/_worktrees/t4-paper/osf/v42/v42_verdicts.json",
- "table": "/Users/pablou/aias/_worktrees/t4-paper/osf/v42/v42_brand_table.csv",
+ "verdicts": "papers/v0_42/corrected_2026-11-25/v42_verdicts_SQ.json",
+ "table": "papers/v0_42/corrected_2026-11-25/v42_brand_table_SQ.csv",
  "synthetic": false,
  "cases": {
   "CASE_GEN": "CONFIRMED",
@@ -752,9 +752,9 @@
     "H_Gen_Presence",
     "rho"
    ],
-   "raw": 0.8284919892883065,
+   "raw": 0.8273557953122223,
    "fmt": "r3",
-   "formatted": "0.828"
+   "formatted": "0.827"
   },
   "GEN_CI_LO": {
    "kind": "json",
@@ -765,9 +765,9 @@
     "ci95_rho",
     0
    ],
-   "raw": 0.7222986264997935,
+   "raw": 0.7184376466957136,
    "fmt": "r3",
-   "formatted": "0.722"
+   "formatted": "0.718"
   },
   "GEN_CI_HI": {
    "kind": "json",
@@ -778,9 +778,9 @@
     "ci95_rho",
     1
    ],
-   "raw": 0.8895823409442499,
+   "raw": 0.8889826296867162,
    "fmt": "r3",
-   "formatted": "0.890"
+   "formatted": "0.889"
   },
   "GEN_P": {
    "kind": "json",
@@ -826,9 +826,9 @@
     "H_Gen_Presence",
     "rho_uncentred_v041"
    ],
-   "raw": 0.8359290730581618,
+   "raw": 0.8348421492900219,
    "fmt": "r3",
-   "formatted": "0.836"
+   "formatted": "0.835"
   },
   "GEN_DELTA": {
    "kind": "json",
@@ -838,9 +838,9 @@
     "H_Gen_Presence",
     "delta"
    ],
-   "raw": 0.046378968253968256,
+   "raw": 0.05133928571428571,
    "fmt": "sr3",
-   "formatted": "+0.046"
+   "formatted": "+0.051"
   },
   "GEN_D_LO": {
    "kind": "json",
@@ -851,9 +851,9 @@
     "ci95_delta",
     0
    ],
-   "raw": 0.022730654761904754,
+   "raw": 0.028852513227513227,
    "fmt": "sr3",
-   "formatted": "+0.023"
+   "formatted": "+0.029"
   },
   "GEN_D_HI": {
    "kind": "json",
@@ -864,9 +864,9 @@
     "ci95_delta",
     1
    ],
-   "raw": 0.07060185185185185,
+   "raw": 0.0748181216931217,
    "fmt": "sr3",
-   "formatted": "+0.071"
+   "formatted": "+0.075"
   },
   "FIG1_CAPTION": {
    "kind": "text",
@@ -887,9 +887,9 @@
     "N3_S1",
     "rho"
    ],
-   "raw": 0.7961176482932437,
+   "raw": 0.7954985431296433,
    "fmt": "r3",
-   "formatted": "0.796"
+   "formatted": "0.795"
   },
   "GEN_S1_CI_LO": {
    "kind": "json",
@@ -903,7 +903,7 @@
     "ci95_rho",
     0
    ],
-   "raw": 0.6691553979002491,
+   "raw": 0.6688540100002341,
    "fmt": "r3",
    "formatted": "0.669"
   },
@@ -919,7 +919,7 @@
     "ci95_rho",
     1
    ],
-   "raw": 0.861481910568164,
+   "raw": 0.8611090492181575,
    "fmt": "r3",
    "formatted": "0.861"
   },
@@ -988,9 +988,9 @@
     "OpenAI: legacy pair -> gpt-6-astra",
     "rho"
    ],
-   "raw": 0.5655977971700592,
+   "raw": 0.5881529593300582,
    "fmt": "r3",
-   "formatted": "0.566"
+   "formatted": "0.588"
   },
   "PAIR_GOOGLE": {
    "kind": "json",
@@ -1003,9 +1003,9 @@
     "Google: legacy pair -> gemini-4-argon",
     "rho"
    ],
-   "raw": 0.7148209681951023,
+   "raw": 0.7067551437253228,
    "fmt": "r3",
-   "formatted": "0.715"
+   "formatted": "0.707"
   },
   "PAIRS_SENTENCE": {
    "kind": "text",
@@ -1015,11 +1015,11 @@
     "reported_alongside",
     "per_provider_generation_pairs"
    ],
-   "formatted": "$\\rho_{\\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\\rho_{\\text{pw}} = 0.566$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\\rho_{\\text{pw}} = 0.715$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon)"
+   "formatted": "$\\rho_{\\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\\rho_{\\text{pw}} = 0.588$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\\rho_{\\text{pw}} = 0.707$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon)"
   },
   "TABLE_GEN_SUB": {
    "kind": "table",
-   "formatted": "| Substrate | Brands | $\\rho$, search off | $\\rho$, search on |\n|:----------------------|------:|-------------:|------------:|\n| Headphones (v0.19) | 16 | 0.911 | 0.949 |\n| Skincare (v0.20) | 24 | 0.888 | 0.878 |\n| Cosmetics (v0.21) | 24 | 0.855 | 0.801 |\n| Automotive (v0.22) | 24 | 0.943 | 0.923 |\n| Spirits (v0.23) | 24 | 0.607 | 0.540 |",
+   "formatted": "| Substrate | Brands | $\\rho$, search off | $\\rho$, search on |\n|:----------------------|------:|-------------:|------------:|\n| Headphones (v0.19) | 16 | 0.911 | 0.949 |\n| Skincare (v0.20) | 24 | 0.893 | 0.880 |\n| Cosmetics (v0.21) | 24 | 0.845 | 0.797 |\n| Automotive (v0.22) | 24 | 0.943 | 0.923 |\n| Spirits (v0.23) | 24 | 0.607 | 0.540 |",
    "cells": [
     {
      "formatted": "16",
@@ -1073,7 +1073,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.888",
+     "formatted": "0.893",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1085,7 +1085,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.878",
+     "formatted": "0.880",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1112,7 +1112,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.855",
+     "formatted": "0.845",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1124,7 +1124,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.801",
+     "formatted": "0.797",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1317,9 +1317,9 @@
     "H_Gen_Phi",
     "rho"
    ],
-   "raw": 0.3095026294006812,
+   "raw": 0.30415408165758184,
    "fmt": "r3",
-   "formatted": "0.310"
+   "formatted": "0.304"
   },
   "PHI_CI_LO": {
    "kind": "json",
@@ -1330,9 +1330,9 @@
     "ci95_rho",
     0
    ],
-   "raw": 0.050937288710226306,
+   "raw": 0.04667620695258562,
    "fmt": "r3",
-   "formatted": "0.051"
+   "formatted": "0.047"
   },
   "PHI_CI_HI": {
    "kind": "json",
@@ -1343,9 +1343,9 @@
     "ci95_rho",
     1
    ],
-   "raw": 0.5195119799948973,
+   "raw": 0.5158653954011709,
    "fmt": "r3",
-   "formatted": "0.520"
+   "formatted": "0.516"
   },
   "PHI_P": {
    "kind": "json",
@@ -1355,9 +1355,9 @@
     "H_Gen_Phi",
     "p_perm"
    ],
-   "raw": 0.005599440055994401,
+   "raw": 0.006999300069993001,
    "fmt": "p4",
-   "formatted": "0.0056"
+   "formatted": "0.0070"
   },
   "PHI_RHO_UNC": {
    "kind": "json",
@@ -1367,9 +1367,9 @@
     "H_Gen_Phi",
     "rho_uncentred_v041"
    ],
-   "raw": 0.35544333391562905,
+   "raw": 0.3504506399518852,
    "fmt": "r3",
-   "formatted": "0.355"
+   "formatted": "0.350"
   },
   "FIG2_CAPTION": {
    "kind": "text",
@@ -1543,9 +1543,9 @@
     "N3",
     "abs"
    ],
-   "raw": 0.10094553012299576,
+   "raw": 0.10317022500173946,
    "fmt": "r3",
-   "formatted": "0.101"
+   "formatted": "0.103"
   },
   "MI_N": {
    "kind": "json",
@@ -1573,13 +1573,13 @@
     "N3",
     "rho_pw_phi_pi_uncentred_v041"
    ],
-   "raw": -0.013858007370286592,
+   "raw": -0.015906723313683334,
    "fmt": "r3",
-   "formatted": "-0.014"
+   "formatted": "-0.016"
   },
   "TABLE_PHI_SUB": {
    "kind": "table",
-   "formatted": "| Substrate | Brands ($\\varphi$ defined on both) | $\\rho$ |\n|:----------------------|--------------------------:|-----:|\n| Headphones (v0.19) | 10 | 0.492 |\n| Skincare (v0.20) | 14 | 0.075 |\n| Cosmetics (v0.21) | 17 | 0.058 |\n| Automotive (v0.22) | 15 | 0.809 |\n| Spirits (v0.23) | 17 | 0.312 |",
+   "formatted": "| Substrate | Brands ($\\varphi$ defined on both) | $\\rho$ |\n|:----------------------|--------------------------:|-----:|\n| Headphones (v0.19) | 10 | 0.492 |\n| Skincare (v0.20) | 14 | 0.057 |\n| Cosmetics (v0.21) | 17 | 0.049 |\n| Automotive (v0.22) | 15 | 0.809 |\n| Spirits (v0.23) | 17 | 0.312 |",
    "cells": [
     {
      "formatted": "10",
@@ -1618,7 +1618,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.075",
+     "formatted": "0.057",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1642,7 +1642,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.058",
+     "formatted": "0.049",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1720,9 +1720,9 @@
     "H_Search_Presence",
     "rho"
    ],
-   "raw": 0.9087314554322161,
+   "raw": 0.909759839357336,
    "fmt": "r3",
-   "formatted": "0.909"
+   "formatted": "0.910"
   },
   "S_N": {
    "kind": "json",
@@ -1745,9 +1745,9 @@
     "ci95_rho",
     0
    ],
-   "raw": 0.8265811324455337,
+   "raw": 0.8285626083366413,
    "fmt": "r3",
-   "formatted": "0.827"
+   "formatted": "0.829"
   },
   "S_CI_HI": {
    "kind": "json",
@@ -1758,7 +1758,7 @@
     "ci95_rho",
     1
    ],
-   "raw": 0.9451205033003187,
+   "raw": 0.9452797215707014,
    "fmt": "r3",
    "formatted": "0.945"
   },
@@ -1770,9 +1770,9 @@
     "H_Search_Presence",
     "rho_uncentred_v041"
    ],
-   "raw": 0.9126726374987766,
+   "raw": 0.9136566132351736,
    "fmt": "r3",
-   "formatted": "0.913"
+   "formatted": "0.914"
   },
   "S_DELTA": {
    "kind": "json",
@@ -1782,9 +1782,9 @@
     "H_Search_Presence",
     "delta"
    ],
-   "raw": -0.04083994708994709,
+   "raw": -0.043154761904761904,
    "fmt": "sr3",
-   "formatted": "-0.041"
+   "formatted": "-0.043"
   },
   "S_D_LO": {
    "kind": "json",
@@ -1795,9 +1795,9 @@
     "ci95_delta",
     0
    ],
-   "raw": -0.05671296296296297,
+   "raw": -0.05985449735449735,
    "fmt": "sr3",
-   "formatted": "-0.057"
+   "formatted": "-0.060"
   },
   "S_D_HI": {
    "kind": "json",
@@ -1808,9 +1808,9 @@
     "ci95_delta",
     1
    ],
-   "raw": -0.02496693121693122,
+   "raw": -0.026951058201058205,
    "fmt": "sr3",
-   "formatted": "-0.025"
+   "formatted": "-0.027"
   },
   "S_WHY": {
    "kind": "text",
@@ -1853,7 +1853,7 @@
     "v0.20",
     "rho"
    ],
-   "raw": 0.9300713365889235,
+   "raw": 0.9296272824773986,
    "fmt": "r3",
    "formatted": "0.930"
   },
@@ -1867,9 +1867,9 @@
     "v0.21",
     "rho"
    ],
-   "raw": 0.9316601123532909,
+   "raw": 0.9365102123229484,
    "fmt": "r3",
-   "formatted": "0.932"
+   "formatted": "0.937"
   },
   "S_SUB_v022": {
    "kind": "json",
@@ -1906,11 +1906,11 @@
     "H_Search_Presence",
     "per_substrate"
    ],
-   "formatted": "Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.932, automotive 0.976 and spirits 0.785."
+   "formatted": "Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.937, automotive 0.976 and spirits 0.785."
   },
   "TABLE_SEARCH_MODEL": {
    "kind": "table",
-   "formatted": "| Model | Brands | $\\rho_{\\text{pw}}$ | Uncentred (v0.41) | $\\Delta$ (on minus off) |\n|:--------------------|------:|-----:|-----------------:|----------------:|\n| Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |\n| GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |\n| Gemini 4 Argon$^{\\dagger}$ | 112 | 0.909 | 0.913 | -0.012 |",
+   "formatted": "| Model | Brands | $\\rho_{\\text{pw}}$ | Uncentred (v0.41) | $\\Delta$ (on minus off) |\n|:--------------------|------:|-----:|-----------------:|----------------:|\n| Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |\n| GPT-6 Astra | 112 | 0.860 | 0.867 | -0.062 |\n| Gemini 4 Argon$^{\\dagger}$ | 112 | 0.915 | 0.919 | -0.016 |",
    "cells": [
     {
      "formatted": "112",
@@ -1973,7 +1973,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.858",
+     "formatted": "0.860",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1985,7 +1985,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.865",
+     "formatted": "0.867",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -1997,7 +1997,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "-0.058",
+     "formatted": "-0.062",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -2021,7 +2021,7 @@
      "fmt": "i0"
     },
     {
-     "formatted": "0.909",
+     "formatted": "0.915",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -2033,7 +2033,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.913",
+     "formatted": "0.919",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -2045,7 +2045,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "-0.012",
+     "formatted": "-0.016",
      "source": "verdicts",
      "path": [
       "verdicts",
@@ -2118,9 +2118,9 @@
      ]
     ]
    ],
-   "raw": 0.8449021908360117,
+   "raw": 0.8495203228397749,
    "fmt": "r3",
-   "formatted": "0.845"
+   "formatted": "0.850"
   },
   "REL1_MAX": {
    "kind": "derived",
@@ -2182,9 +2182,9 @@
      ]
     ]
    ],
-   "raw": 0.9148666810295984,
+   "raw": 0.9160663283927404,
    "fmt": "r3",
-   "formatted": "0.915"
+   "formatted": "0.916"
   },
   "REL3_MIN": {
    "kind": "derived",
@@ -2246,9 +2246,9 @@
      ]
     ]
    ],
-   "raw": 0.9423386287044498,
+   "raw": 0.9442469762724383,
    "fmt": "r3",
-   "formatted": "0.942"
+   "formatted": "0.944"
   },
   "REL3_MAX": {
    "kind": "derived",
@@ -2310,7 +2310,7 @@
      ]
     ]
    ],
-   "raw": 0.969914720548635,
+   "raw": 0.9703637923152492,
    "fmt": "r3",
    "formatted": "0.970"
   },
@@ -2320,7 +2320,7 @@
     "descriptives",
     "1_run_reliability"
    ],
-   "formatted": "rel1 ranged from 0.845 to 0.915 and rel3 from 0.942 to 0.970."
+   "formatted": "rel1 ranged from 0.850 to 0.916 and rel3 from 0.944 to 0.970."
   },
   "FIG4_CAPTION": {
    "kind": "text",
@@ -2332,7 +2332,7 @@
   },
   "TABLE_REL": {
    "kind": "table",
-   "formatted": "| Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |\n|:--------------------|:-----|-----:|-----:|-----------------------:|\n| Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |\n| Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |\n| GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |\n| GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |\n| Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | 0.915 | 0.970 | 0.919 |",
+   "formatted": "| Model | Cond. | rel1 | rel3 | rel1, uncentred (v0.41) |\n|:--------------------|:-----|-----:|-----:|-----------------------:|\n| Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |\n| Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |\n| GPT-6 Astra | S0 | 0.905 | 0.966 | 0.909 |\n| GPT-6 Astra | S1 | 0.850 | 0.944 | 0.857 |\n| Gemini 4 Argon | S0 | 0.892 | 0.961 | 0.897 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | 0.916 | 0.970 | 0.920 |",
    "cells": [
     {
      "formatted": "0.912",
@@ -2401,7 +2401,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.904",
+     "formatted": "0.905",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2434,7 +2434,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.845",
+     "formatted": "0.850",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2445,7 +2445,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.942",
+     "formatted": "0.944",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2456,7 +2456,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.853",
+     "formatted": "0.857",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2467,7 +2467,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.880",
+     "formatted": "0.892",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2478,7 +2478,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.956",
+     "formatted": "0.961",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2489,7 +2489,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.885",
+     "formatted": "0.897",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2500,7 +2500,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.915",
+     "formatted": "0.916",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2522,7 +2522,7 @@
      "fmt": "r3"
     },
     {
-     "formatted": "0.919",
+     "formatted": "0.920",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -2892,9 +2892,9 @@
     "3_floor_persistence",
     "below_floor_t4"
    ],
-   "raw": 49,
+   "raw": 48,
    "fmt": "i0",
-   "formatted": "49"
+   "formatted": "48"
   },
   "FL_BOTH": {
    "kind": "json",
@@ -2904,9 +2904,9 @@
     "3_floor_persistence",
     "below_both"
    ],
-   "raw": 43,
+   "raw": 42,
    "fmt": "i0",
-   "formatted": "43"
+   "formatted": "42"
   },
   "FL_SHARE": {
    "kind": "json",
@@ -2916,9 +2916,9 @@
     "3_floor_persistence",
     "share_below_t3_still_below_t4"
    ],
-   "raw": 0.7413793103448276,
+   "raw": 0.7241379310344828,
    "fmt": "pct0",
-   "formatted": "74%"
+   "formatted": "72%"
   },
   "FL_REV": {
    "kind": "json",
@@ -2928,7 +2928,7 @@
     "3_floor_persistence",
     "reverse_share_below_t4_that_were_below_t3"
    ],
-   "raw": 0.8775510204081632,
+   "raw": 0.875,
    "fmt": "pct0",
    "formatted": "88%"
   },
@@ -2950,7 +2950,7 @@
     "descriptives",
     "3_floor_persistence"
    ],
-   "formatted": "Of the 58 brands below the recall floor at $t_3$, 43 were still below it on the newest models with search off at $t_4$ (74%). Of the 49 brands below the floor at $t_4$, 43 had been below it at $t_3$ (88%), and 11% of the brands above the floor at $t_3$ fell below it at $t_4$ (Figure 5; clarification C2)."
+   "formatted": "Of the 58 brands below the recall floor at $t_3$, 42 were still below it on the newest models with search off at $t_4$ (72%). Of the 48 brands below the floor at $t_4$, 42 had been below it at $t_3$ (88%), and 11% of the brands above the floor at $t_3$ fell below it at $t_4$ (Figure 5; clarification C2)."
   },
   "FIG5_CAPTION": {
    "kind": "text",
@@ -2962,7 +2962,7 @@
   },
   "TABLE_FORM": {
    "kind": "table",
-   "formatted": "| Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |\n|:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|\n| Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\\_turn 202 | 0 / 0 / 0 |\n| Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\\_turn 90 | 0 / 0 / 0 |\n| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |\n| GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |\n| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |",
+   "formatted": "| Model | Cond. | Words (A) | Words (B) | Brands per B | Finish reasons | Non-answers / refusals / unanswered |\n|:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|\n| Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\\_turn 202 | 0 / 0 / 0 |\n| Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\\_turn 90 | 0 / 0 / 0 |\n| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.6 | completed 202 | 0 / 0 / 0 |\n| GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |\n| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.8 | FinishReason.STOP 202 | 0 / 0 / 0 |\n| Gemini 4 Argon$^{\\dagger}$ | S1 | -- | 858.1 | 6.5 | FinishReason.STOP 90 | 0 / 0 / 0 |",
    "cells": [
     {
      "formatted": "202",
@@ -3150,7 +3150,7 @@
      "fmt": "f1"
     },
     {
-     "formatted": "5.5",
+     "formatted": "5.6",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -3301,7 +3301,7 @@
      "fmt": "f1"
     },
     {
-     "formatted": "6.6",
+     "formatted": "6.8",
      "source": "verdicts",
      "path": [
       "descriptives",
@@ -3371,7 +3371,7 @@
      "fmt": "f1"
     },
     {
-     "formatted": "6.3",
+     "formatted": "6.5",
      "source": "verdicts",
      "path": [
       "descriptives",

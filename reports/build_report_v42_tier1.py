@@ -88,6 +88,79 @@ GLANCE_NUMBERS = [
 ]
 
 
+# Revision r2 (25 November 2026): the apostrophe correction (OSF v42/ERRATUM_2026-11-25.md). When the content module
+# reads the corrected verdicts (papers/v0_42/corrected_2026-11-25/, copies of OSF v45/sensitivity/t4_SQ/), the report
+# carries a dated correction note in the small print of the closing page and a one-line pointer on each page where a
+# printed number changed. Every number in them is read from the corrected and the published verdicts and brand
+# tables, formatted as the report formats it. With the published verdicts nothing is added (r1 unchanged).
+CORRECTED_SHA256 = "093825a90d42c1117a923586d210246969dabb0a748f0be73cdd13cdbbc57162"
+PUBLISHED_VERDICTS = AIAS_ROOT / "osf" / "v42" / "v42_verdicts.json"
+PUBLISHED_TABLE = AIAS_ROOT / "osf" / "v42" / "v42_brand_table.csv"
+CORRECTED_TABLE = AIAS_ROOT / "papers" / "v0_42" / "corrected_2026-11-25" / "v42_brand_table_SQ.csv"
+CORRECTION_DATE = "25 November 2026"
+
+
+def _pc_share(table: Path) -> float:
+    import csv
+    with open(table, encoding="utf-8", newline="") as fh:
+        rows = [r for r in csv.DictReader(fh) if r["substrate"] == "v0.20" and r["brand"] == "Paula's Choice"]
+    if len(rows) != 1:
+        raise SystemExit("Paula's Choice row not found once in " + str(table))
+    return float(rows[0]["pi_N3_S0"])
+
+
+def correction_r2(closing_page: int) -> dict | None:
+    import hashlib
+    if hashlib.sha256(Path(content._VERDICTS).read_bytes()).hexdigest() != CORRECTED_SHA256:
+        return None
+    new, old = content.V, json.loads(PUBLISHED_VERDICTS.read_text(encoding="utf-8"))
+    f = content.r2
+
+    def pair(*path):
+        a, b = new, old
+        for k in path:
+            a, b = a[k], b[k]
+        return a, b
+
+    def rel1(V):
+        vals = [d["rel1"] for d in V["descriptives"]["1_run_reliability"].values() if isinstance(d, dict) and "rel1" in d]
+        return f"{f(min(vals))} to {f(max(vals))}"
+
+    phi = pair("verdicts", "H_Gen_Phi", "rho")
+    oa = pair("verdicts", "H_Gen_Presence", "reported_alongside", "per_provider_generation_pairs",
+              "OpenAI: legacy pair -> gpt-6-astra", "rho")
+    gem = pair("verdicts", "H_Search_Presence", "per_model", "gemini-4-argon", "rho")
+    cos = pair("verdicts", "H_Search_Presence", "per_substrate", "v0.21", "rho")
+    both = pair("descriptives", "3_floor_persistence", "below_both")
+    t3 = pair("descriptives", "3_floor_persistence", "below_floor_t3")
+    t4 = pair("descriptives", "3_floor_persistence", "below_floor_t4")
+    pc = (_pc_share(CORRECTED_TABLE), _pc_share(PUBLISHED_TABLE))
+    r1n, r1o = rel1(new), rel1(old)
+    pct = lambda x: f"{100 * x:.0f}%"
+    see = f"see the note on page {closing_page}."
+    lead = f"Corrected on {CORRECTION_DATE}:"
+    notes = {
+        "glance": f"{lead} Consistency order {f(phi[0])} (was {f(phi[1])}; {phi[0]:.3f} to three decimals); {see}",
+        "f1": f"{lead} OpenAI {f(oa[0])} (was {f(oa[1])}); {see}",
+        "f2": (f"{lead} {f(phi[0])} (was {f(phi[1])}); to three decimals {phi[0]:.3f}, still above the 0.30 line; "
+               f"{see}"),
+        "f3": f"{lead} Gemini 4 Argon {f(gem[0])} (was {f(gem[1])}), cosmetics {f(cos[0])} (was {f(cos[1])}); {see}",
+        "f4": f"{lead} {r1n} (was {r1o}); {see}",
+        "f5": f"{lead} {both[0]} of {t3[0]} and {t4[0]} (were {both[1]} of {t3[1]} and {t4[1]}); {see}",
+        "scored": f"P2, P4 and P5 carry numbers corrected on {CORRECTION_DATE}; {see}",
+    }
+    notes["colophon"] = (
+        f"<b>Correction ({CORRECTION_DATE}).</b> This is revision r2. Answers that wrote Paula's Choice or L'Oréal "
+        "Paris with a typographic apostrophe had been counted as not naming the brand (46 of 12,096 brand-answer "
+        "cells). They were re-coded with no other change and no new model calls. No finding changes its status. "
+        f"Corrected values, r1 in brackets: Consistency order {f(phi[0])} [{f(phi[1])}]; OpenAI pair {f(oa[0])} "
+        f"[{f(oa[1])}]; search off vs on, Gemini 4 Argon {f(gem[0])} [{f(gem[1])}], cosmetics {f(cos[0])} "
+        f"[{f(cos[1])}]; repeated runs {r1n} [{r1o}]; floor {both[0]} of {t3[0]} and {t4[0]} [{both[1]} and "
+        f"{t4[1]}]. The newest models named Paula's Choice in {pct(pc[0])} [{pct(pc[1])}] of their search-off "
+        "answers. r1 stays on OSF; erratum: osf.io/ec6wh, v42/ERRATUM_2026-11-25.md.")
+    return notes
+
+
 def _sentences(text: str, n: int) -> str:
     parts = re.split(r"(?<=[.?!])\s+(?=[A-Z])", text)
     return " ".join(parts[:n])
@@ -137,6 +210,7 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
     plan = ["cover", "glance", "contents", "intro", "part1"] + [f"f{i}" for i in range(1, 6)] + \
            ["scored", "part2", "limits", "closing"]
     pno = {k: i + 1 for i, k in enumerate(plan)}
+    R2 = correction_r2(pno["closing"])
 
     fd, base_pdf = tempfile.mkstemp(suffix=".pdf", prefix="v42_t1_base_")
     os.close(fd)
@@ -161,7 +235,8 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
     # 2 At a glance
     measured = _sentences(wwm["paragraphs"][0], 2)
     g = L.at_a_glance(c, t, label=RUNNING_LABEL, page_no=pno["glance"], standfirst=content.LEAD_DECK,
-                      numbers=GLANCE_NUMBERS, measured=measured, summary=[content.EXEC_SUMMARY[0]],
+                      numbers=GLANCE_NUMBERS, measured=measured,
+                      summary=[content.EXEC_SUMMARY[0]] + ([R2["glance"]] if R2 else []),
                       kicker=PRESENTATIONAL["glance_kicker"], measured_heading=wwm["heading"].upper(), icons=False)
     gw = g["words"]
     done("at a glance", g, ("number_row",), sum(gw.values()),
@@ -206,7 +281,8 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
         kicker = PRESENTATIONAL["finding_kicker"].format(nn=f"{i:02d}", verdict=verdicts[i - 1])
         g = L.finding_page(c, t, label=RUNNING_LABEL, page_no=pno[f"f{i}"], page_index=pno[f"f{i}"] - 1,
                            number=i, kicker=kicker, headline=f["title"], chart_path=chart_path,
-                           caption=caption, body=f["paragraphs"], slots=slots)
+                           caption=caption, body=list(f["paragraphs"]) + ([R2[f"f{i}"]] if R2 else []),
+                           slots=slots)
         el = L.chart_element(t, g["chart"]["w"], g["chart"]["h"])
         w = g["words"]
         done(f"finding {i:02d}", g, ("section_opener", el), w["head"] + w["body"],
@@ -220,9 +296,11 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
     tbl = lambda: [L.table_flowable(t, ["<b>#</b>", "<b>Proposition</b>", "<b>Status</b>"], rows_t, [44, 300, 196])]
     g = L.text_page(c, t, label=RUNNING_LABEL, page_no=pno["scored"],
                     sections=[{"heading": scoring["heading"], "paras": [], "flowables":
-                               lambda: [L.paragraph(t, scoring["intro"], "body", space_after=10)] + tbl(), "columns": 1}])
+                               lambda: [L.paragraph(t, scoring["intro"], "body", space_after=10)] +
+                               ([L.paragraph(t, R2["scored"], "body", space_after=10)] if R2 else []) +
+                               tbl(), "columns": 1}])
     sw = L.count_words(scoring["heading"]) + L.count_words(scoring["intro"]) + 3 + \
-        sum(L.count_words(" ".join(r[:3])) for r in scoring["rows"])
+        sum(L.count_words(" ".join(r[:3])) for r in scoring["rows"]) + (L.count_words(R2["scored"]) if R2 else 0)
     done("scored table", g, ("section_opener",), sw)
 
     # 12 Part 2 opener
@@ -248,7 +326,8 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
     credit = [cpara(AI_CREDIT, before=after_gap, after=0)] if from_library else []
     left = lambda: ([cpara(about, "head"), cpara(overview, after=gap), cpara("Authored by", "head")] +
                     [cpara(ln) for ln in clo["byline_long"]] +
-                    [cpara("Citation", "head", before=after_gap), cpara(cite), cpara(decl, after=0)] + credit)
+                    [cpara("Citation", "head", before=after_gap), cpara(cite)] +
+                    ([cpara(decl), cpara(R2["colophon"], after=0)] if R2 else [cpara(decl, after=0)]) + credit)
     right = lambda: ([cpara("Methodology", "head"), cpara(methodology_text, after=gap), cpara("Underlying datasets", "head")] +
                      [cpara(ds) for ds in DATASETS] +
                      [cpara(f"<b>Methodology log:</b> {METHODOLOGY_LOG}.", before=after_gap),
@@ -257,7 +336,8 @@ def build(output: Path, code: str, photo: Path, chart_dir: Path = CHART_DIR, tes
           sum(L.count_words(x) for x in clo["byline_long"]) + 1 + L.count_words(cite) + L.count_words(decl) +
           (L.count_words(AI_CREDIT) if from_library else 0) + 1 + L.count_words(methodology_text) + 2 +
           sum(L.count_words(x) for x in DATASETS) + L.count_words(f"Methodology log: {METHODOLOGY_LOG}.") + 2 +
-          L.count_words(f"Third System {t.website} {code}"))
+          L.count_words(f"Third System {t.website} {code}") +
+          (L.count_words(re.sub(r"<[^>]+>", "", R2["colophon"])) if R2 else 0))
     g = L.closing_page(c, t, label=RUNNING_LABEL, page_no=pno["closing"], statement=clo["closing_text"],
                        left=left, right=right, code=code)
     done("closing", g, ("section_opener",), cw,

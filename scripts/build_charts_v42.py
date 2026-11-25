@@ -186,6 +186,10 @@ def chart_02(V, rows, out_dirs):
     pts = _rows(rows, "t3_phi", "phi_N3_S0")
     allv = [v for s in VV.SUBS for v in pts[s][0] + pts[s][1]]
     lim = max(1.0, math.ceil(2 * max(allv) * 1.04) / 2) if allv else 1.0
+    # keep the statistics box (upper left, about 62% wide and 24% tall) clear of every point (r2, 25 Nov 2026)
+    xy = [(x, y) for s in VV.SUBS for x, y in zip(*pts[s])]
+    while any(x < 0.64 * lim and y > 0.74 * lim for x, y in xy):
+        lim += 0.5
     ax.plot([0, lim], [0, lim], color=cs.PALETTE["gray_light"], lw=0.8, ls="--", zorder=1)
     for s in VV.SUBS:
         x, y = pts[s]

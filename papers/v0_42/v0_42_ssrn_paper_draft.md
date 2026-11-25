@@ -52,16 +52,18 @@ Data and code: OSF \texttt{ec6wh/v42}\\
 # Abstract {-}
 
 Brand measures read from the answers of large language models (LLMs) can serve as a tracking metric only if they survive the replacement of the models that produce them. This pre-registered study is the fourth wave (t₄) of the AIAS measurement programme's five-category omnibus (audiophile headphones, skincare, cosmetics, automotive and premium spirits; 112 brands) and the first on the newest generally available flagship model of each provider: Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon. The 30 category questions were asked verbatim with web search off and on, in three runs each, and the 112 brand questions once with search off (876 calls); the answers were compared with the third wave (t₃), collected on 9 November 2026 on a retiring six-model panel. 876 of the 876 calls were answered.
-Recall Presence ordered brands on the newest models as it had on the retiring panel (`H_Gen_Presence` CONFIRMED: pooled within-category ρ = 0.828, 95% interval 0.722 to 0.890, p = 0.0001, n = 112).
-The brand order of the Consistency instrument φ fell between the pre-registered bars (`H_Gen_Phi` MARGINAL: ρ = 0.310, just above the falsification bar of 0.30, 95% interval 0.051 to 0.520, p = 0.0056, n = 73).
-Turning on each provider's web search left the Presence ordering of the three-model panel intact (search-robust: ρ = 0.909, 95% interval 0.827 to 0.945), although per model the correlation ranged from 0.710 to 0.909 and Gemini 4 Argon searched in only 17.8% of its search-on calls.
-Run-to-run reliability of recall, the noise floor for the planned t₅ and t₆ waves, ranged from 0.845 to 0.915 (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
+Recall Presence ordered brands on the newest models as it had on the retiring panel (`H_Gen_Presence` CONFIRMED: pooled within-category ρ = 0.827, 95% interval 0.718 to 0.889, p = 0.0001, n = 112).
+The brand order of the Consistency instrument φ fell between the pre-registered bars (`H_Gen_Phi` MARGINAL: ρ = 0.304, just above the falsification bar of 0.30, 95% interval 0.047 to 0.516, p = 0.0070, n = 73).
+Turning on each provider's web search left the Presence ordering of the three-model panel intact (search-robust: ρ = 0.910, 95% interval 0.829 to 0.945), although per model the correlation ranged from 0.710 to 0.915 and Gemini 4 Argon searched in only 17.8% of its search-on calls.
+Run-to-run reliability of recall, the noise floor for the planned t₅ and t₆ waves, ranged from 0.850 to 0.916 (one run against another) across models and conditions. Ranking, Sentiment, Coverage and Grounding analyses of the same answers are pre-registered separately and are not reported here.
 
 **Keywords:** AI availability; brand availability; AIAS; pre-registration; Ehrenberg-Bass; large language models; model generations; cross-generation stability; web search; test--retest reliability; brand recall; consistency
 
 **JEL codes:** M31; L86, L15, D83, M37
 
 **Paper status:** Pre-registered prospective re-acquisition (tag `v0.42-prereg-r1`; revision r2 with clarifications C1--C28, deposited on OSF before the first $t_4$ call); 876 of 876 design calls answered; deviations recorded in `osf/v42/DEVIATIONS.md` (1 entry). Part of the AIAS measurement programme.
+
+**Correction (25 November 2026).** This is revision r2 of the paper. It corrects a coding error found after publication. The brand matchers looked for the only two registry names that contain an apostrophe, Paula's Choice (skincare) and L'Oréal Paris (cosmetics), with a straight apostrophe (U+0027) only, so an answer that wrote either name with a typographic apostrophe (U+2019) was coded as not naming the brand: 46 of the 12,096 brand-answer cells of the category questions, all in these two brands' rows; no recognition code changed. The answers were re-coded with the typographic apostrophe read as an apostrophe and the locked coder otherwise unchanged; no model was called. Every number in this revision comes from the re-coded verdicts and brand table. No verdict changes. Corrected values, with the published ones in brackets: `H_Gen_Presence` ρ = 0.827, 95% interval 0.718 to 0.889 [0.828, 0.722 to 0.890], CONFIRMED; `H_Gen_Phi` ρ = 0.304, p = 0.0070 [0.310, p = 0.0056], MARGINAL; `H_Search_Presence` ρ = 0.910, 95% interval 0.829 to 0.945 [0.909, 0.827 to 0.945], search-robust. Other figures move slightly, among them the level shift $\Delta$ of the newest models against the retiring panel (+0.051 [+0.046]) and of search on against search off ($-0.043$ [$-0.041$]), the OpenAI and Google generation pairs (0.588 [0.566]; 0.707 [0.715]), the range of rel1 (0.850 to 0.916 [0.845 to 0.915]) and floor persistence (42 of 58, 72% [43 of 58, 74%]). The two brands' own rows change substantially: the three models named Paula's Choice in a share $\hat\pi$ = 0.759 [0.315] of their search-off answers, and GPT-6 Astra named it in 13 of its 18 search-off answers, not in none. Figures 1 to 5 are redrawn from the corrected table. The erratum on OSF (`v42/ERRATUM_2026-11-25.md`)^[\url{https://osf.io/ec6wh/files/osfstorage/6b067ee7bf5e720c41dfd9cb}] lists the changes. The published `v42_verdicts.json` and `v42_brand_table.csv` and the first version of this paper stay on OSF unchanged, beside `v42_brand_table_corrected_2026-11-25.csv`; the corrected verdicts and the list of all 74 changed values are in `v45/sensitivity/t4_SQ/`.
 
 # 1. Introduction
 
@@ -175,18 +177,18 @@ Table: Calls answered, output-cap endings and search use, by model and condition
 
 ## 3.2 Cross-generation stability of Presence (`H_Gen_Presence`)
 
-Across the 112 brands, recall Presence on the newest models with search off correlated with recall Presence on the retiring panel at $\rho_{\text{pw}} = 0.828$ (95% interval 0.722 to 0.890; one-sided $p_{\text{perm}} = 0.0001$ from 10,000 draws); v0.41's uncentred statistic gives 0.836. The level shift was $\Delta = +0.046$ (95% interval +0.023 to +0.071): on average the newest models named a brand in a larger share of category answers than the retiring panel.
+Across the 112 brands, recall Presence on the newest models with search off correlated with recall Presence on the retiring panel at $\rho_{\text{pw}} = 0.827$ (95% interval 0.718 to 0.889; one-sided $p_{\text{perm}} = 0.0001$ from 10,000 draws); v0.41's uncentred statistic gives 0.835. The level shift was $\Delta = +0.051$ (95% interval +0.029 to +0.075): on average the newest models named a brand in a larger share of category answers than the retiring panel.
 The correlation meets both conditions of the confirmation rule ($\rho_{\text{gen}} \geq 0.70$ and $p < .05$), and the verdict is **CONFIRMED**.
 
-With search on in place of search off, the same comparison gives $\rho_{\text{pw}} = 0.796$ (95% interval 0.669 to 0.861; $p_{\text{perm}} = 0.0001$), which would read CONFIRMED under the primary rule; this variant is reported alongside and decides nothing. Per provider, the legacy pair pooled against its new model gives $\rho_{\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\rho_{\text{pw}} = 0.566$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\rho_{\text{pw}} = 0.715$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon). Table 3 gives the per-substrate correlations and Figure 1 the per-brand values.
+With search on in place of search off, the same comparison gives $\rho_{\text{pw}} = 0.795$ (95% interval 0.669 to 0.861; $p_{\text{perm}} = 0.0001$), which would read CONFIRMED under the primary rule; this variant is reported alongside and decides nothing. Per provider, the legacy pair pooled against its new model gives $\rho_{\text{pw}} = 0.848$ for Anthropic (Claude Opus 4.5 + Claude Sonnet 4.5 against Claude Fable 5.2); $\rho_{\text{pw}} = 0.588$ for OpenAI (GPT-4o + GPT-4o mini against GPT-6 Astra); and $\rho_{\text{pw}} = 0.707$ for Google (Gemini 2.5 Flash + Flash-Lite against Gemini 4 Argon). Table 3 gives the per-substrate correlations and Figure 1 the per-brand values.
 
 Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Spearman $\rho$ within each substrate, search off (primary test) and search on (reported alongside). Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).
 
 | Substrate | Brands | $\rho$, search off | $\rho$, search on |
 |:----------------------|------:|-------------:|------------:|
 | Headphones (v0.19) | 16 | 0.911 | 0.949 |
-| Skincare (v0.20) | 24 | 0.888 | 0.878 |
-| Cosmetics (v0.21) | 24 | 0.855 | 0.801 |
+| Skincare (v0.20) | 24 | 0.893 | 0.880 |
+| Cosmetics (v0.21) | 24 | 0.845 | 0.797 |
 | Automotive (v0.22) | 24 | 0.943 | 0.923 |
 | Spirits (v0.23) | 24 | 0.607 | 0.540 |
 
@@ -195,18 +197,18 @@ Table: Recall Presence, $t_3$ (retiring panel) against $t_4$ (newest models), Sp
 ## 3.3 Cross-generation stability of Consistency (`H_Gen_Phi`)
 
 73 brands had $\varphi$ defined on both panels (10 headphones, 14 skincare, 17 cosmetics, 15 automotive and 17 spirits).
-Their $\varphi$ values on the newest models with search off correlated with their $t_3$ values at $\rho_{\text{pw}} = 0.310$ (95% interval 0.051 to 0.520; one-sided $p_{\text{perm}} = 0.0056$); v0.41's uncentred statistic gives 0.355.
+Their $\varphi$ values on the newest models with search off correlated with their $t_3$ values at $\rho_{\text{pw}} = 0.304$ (95% interval 0.047 to 0.516; one-sided $p_{\text{perm}} = 0.0070$); v0.41's uncentred statistic gives 0.350.
 The correlation does not meet the confirmation rule ($\rho \geq 0.50$ with $p < .05$) and is not below the falsification bar of 0.30, and the verdict is **MARGINAL**.
 
-On the newest models with search off, 79 brands had $\varphi$ defined, 25 were in the zero partition in every run, 2 in the saturated partition in every run and 6 were undefined (fewer than two defined runs); with search on, 83 brands had $\varphi$ defined, 22 were in the zero partition in every run, 0 in the saturated partition in every run and 7 were undefined (fewer than two defined runs); at $t_3$, 83 of the 112 brands had $\varphi$ defined on the retiring panel. On N3 with search off, $|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.101$ ($n = 79$; uncentred -0.014), below the v1.7 ceiling of 0.50, so the mean-independence flag is not raised. Table 4 gives the per-substrate correlations and Figure 2 the per-brand values.
+On the newest models with search off, 79 brands had $\varphi$ defined, 25 were in the zero partition in every run, 2 in the saturated partition in every run and 6 were undefined (fewer than two defined runs); with search on, 83 brands had $\varphi$ defined, 22 were in the zero partition in every run, 0 in the saturated partition in every run and 7 were undefined (fewer than two defined runs); at $t_3$, 83 of the 112 brands had $\varphi$ defined on the retiring panel. On N3 with search off, $|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.103$ ($n = 79$; uncentred -0.016), below the v1.7 ceiling of 0.50, so the mean-independence flag is not raised. Table 4 gives the per-substrate correlations and Figure 2 the per-brand values.
 
 Table: Consistency $\varphi$, $t_3$ against $t_4$ (newest models, search off), Spearman $\rho$ within each substrate, over brands with $\varphi$ defined on both panels.
 
 | Substrate | Brands ($\varphi$ defined on both) | $\rho$ |
 |:----------------------|--------------------------:|-----:|
 | Headphones (v0.19) | 10 | 0.492 |
-| Skincare (v0.20) | 14 | 0.075 |
-| Cosmetics (v0.21) | 17 | 0.058 |
+| Skincare (v0.20) | 14 | 0.057 |
+| Cosmetics (v0.21) | 17 | 0.049 |
 | Automotive (v0.22) | 15 | 0.809 |
 | Spirits (v0.23) | 17 | 0.312 |
 
@@ -214,23 +216,23 @@ Table: Consistency $\varphi$, $t_3$ against $t_4$ (newest models, search off), S
 
 ## 3.4 Web search and Presence (`H_Search_Presence`)
 
-On Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, recall Presence with search on correlated with recall Presence with search off at $\rho_S = 0.909$ across 112 brands (95% interval 0.827 to 0.945; uncentred 0.913). The level shift was $\Delta = -0.041$ (95% interval -0.057 to -0.025).
+On Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, recall Presence with search on correlated with recall Presence with search off at $\rho_S = 0.910$ across 112 brands (95% interval 0.829 to 0.945; uncentred 0.914). The level shift was $\Delta = -0.043$ (95% interval -0.060 to -0.027).
 The interval's lower bound is at least 0.80, and the pre-declared label is **search-robust**.
-The search-on answers of Gemini 4 Argon are flagged "search rarely used" (§3.1). Table 5 gives the result per model. Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.932, automotive 0.976 and spirits 0.785. Figure 3 shows the per-brand values.
+The search-on answers of Gemini 4 Argon are flagged "search rarely used" (§3.1). Table 5 gives the result per model. Within substrate, the Spearman correlation between search off and search on was headphones 0.956, skincare 0.930, cosmetics 0.937, automotive 0.976 and spirits 0.785. Figure 3 shows the per-brand values.
 
 Table: Recall Presence with search off against search on, per model (newest models, three runs each). $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
 | Model | Brands | $\rho_{\text{pw}}$ | Uncentred (v0.41) | $\Delta$ (on minus off) |
 |:--------------------|------:|-----:|-----------------:|----------------:|
 | Claude Fable 5.2 | 112 | 0.710 | 0.723 | -0.052 |
-| GPT-6 Astra | 112 | 0.858 | 0.865 | -0.058 |
-| Gemini 4 Argon$^{\dagger}$ | 112 | 0.909 | 0.913 | -0.012 |
+| GPT-6 Astra | 112 | 0.860 | 0.867 | -0.062 |
+| Gemini 4 Argon$^{\dagger}$ | 112 | 0.915 | 0.919 | -0.016 |
 
 ![Left: per-brand recall Presence on the newest models with search off and on (mean of three runs each). Right: $\rho_S$ with its 95% interval and the correlation per model and per substrate, against the pre-declared zones. Statistics in §3.4. Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).](../../reports/figs/v42/chart_03_search_s0_s1.pdf){#fig:search width=100%}
 
 ## 3.5 Pre-registered descriptives
 
-**Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: rel1 ranged from 0.845 to 0.915 and rel3 from 0.942 to 0.970. Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
+**Run-to-run reliability.** Table 6 and Figure 4 give rel1 and rel3 per model and condition: rel1 ranged from 0.850 to 0.916 and rel3 from 0.944 to 0.970. Recognition agreement across runs is not computed, because Phase A has one run in revision r2.
 
 Table: Run-to-run reliability of recall per model and condition (descriptive 1). rel1: mean $\rho_{\text{pw}}$ over the three run pairs; rel3: the reliability of the three-run mean. $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
@@ -238,10 +240,10 @@ Table: Run-to-run reliability of recall per model and condition (descriptive 1).
 |:--------------------|:-----|-----:|-----:|-----------------------:|
 | Claude Fable 5.2 | S0 | 0.912 | 0.969 | 0.916 |
 | Claude Fable 5.2 | S1 | 0.897 | 0.963 | 0.902 |
-| GPT-6 Astra | S0 | 0.904 | 0.966 | 0.909 |
-| GPT-6 Astra | S1 | 0.845 | 0.942 | 0.853 |
-| Gemini 4 Argon | S0 | 0.880 | 0.956 | 0.885 |
-| Gemini 4 Argon$^{\dagger}$ | S1 | 0.915 | 0.970 | 0.919 |
+| GPT-6 Astra | S0 | 0.905 | 0.966 | 0.909 |
+| GPT-6 Astra | S1 | 0.850 | 0.944 | 0.857 |
+| Gemini 4 Argon | S0 | 0.892 | 0.961 | 0.897 |
+| Gemini 4 Argon$^{\dagger}$ | S1 | 0.916 | 0.970 | 0.920 |
 
 ![rel1 (one run against another) and rel3 (mean of three runs) per model and condition. Descriptive; no verdict. Search-on values include the answers of Gemini 4 Argon, marked "search rarely used" (§3.1).](../../reports/figs/v42/chart_04_run_reliability.pdf){#fig:rel width=100%}
 
@@ -261,7 +263,7 @@ Table: Share of the 112 brands coded as recognized (descriptive 2): newest model
 | Gemini 2.5 Flash | $t_3$ | 104 | 112 | 92.9% |
 | Gemini 2.5 Flash-Lite | $t_3$ | 106 | 112 | 94.6% |
 
-**Floor persistence.** Of the 58 brands below the recall floor at $t_3$, 43 were still below it on the newest models with search off at $t_4$ (74%). Of the 49 brands below the floor at $t_4$, 43 had been below it at $t_3$ (88%), and 11% of the brands above the floor at $t_3$ fell below it at $t_4$ (Figure 5; clarification C2).
+**Floor persistence.** Of the 58 brands below the recall floor at $t_3$, 42 were still below it on the newest models with search off at $t_4$ (72%). Of the 48 brands below the floor at $t_4$, 42 had been below it at $t_3$ (88%), and 11% of the brands above the floor at $t_3$ fell below it at $t_4$ (Figure 5; clarification C2).
 
 ![Brands below the recall floor at $t_3$ (mean $k$ per model below 1) and at $t_4$ (newest models, search off; mean $k$ per model-run below 1). Counts in §3.5.](../../reports/figs/v42/chart_05_floor.pdf){#fig:floor width=100%}
 
@@ -273,10 +275,10 @@ Table: Answer form per model and condition (descriptive 4). Words: mean words pe
 |:--------------------|:-----|---------:|---------:|------------:|:---------------------|-----------------------------------:|
 | Claude Fable 5.2 | S0 | 160.8 | 290.8 | 6.2 | end\_turn 202 | 0 / 0 / 0 |
 | Claude Fable 5.2 | S1 | -- | 282.3 | 5.0 | end\_turn 90 | 0 / 0 / 0 |
-| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.5 | completed 202 | 0 / 0 / 0 |
+| GPT-6 Astra | S0 | 490.5 | 431.1 | 5.6 | completed 202 | 0 / 0 / 0 |
 | GPT-6 Astra | S1 | -- | 380.7 | 4.2 | completed 90 | 0 / 0 / 0 |
-| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.6 | FinishReason.STOP 202 | 0 / 0 / 0 |
-| Gemini 4 Argon$^{\dagger}$ | S1 | -- | 858.1 | 6.3 | FinishReason.STOP 90 | 0 / 0 / 0 |
+| Gemini 4 Argon | S0 | 258.3 | 820.7 | 6.8 | FinishReason.STOP 202 | 0 / 0 / 0 |
+| Gemini 4 Argon$^{\dagger}$ | S1 | -- | 858.1 | 6.5 | FinishReason.STOP 90 | 0 / 0 / 0 |
 
 Table: Search records per model, answered S1 calls (descriptive 5). $^{\dagger}$ Search rarely used (`MC_Search`, §3.1).
 
@@ -300,17 +302,17 @@ Table: Recorded usage and spend per model and condition (descriptive 6), all bil
 
 # 4. Discussion
 
-The primary result is that the ordering of brands by recall Presence carried over from the retiring model generation to the newest flagship models ($\rho_{\text{pw}} = 0.828$, 95% interval 0.722 to 0.890). Under the pre-registered rationale, the programme's record on the legacy panel can therefore be bridged to the new panel for Presence: the brand standings measured since May 2026 remain interpretable on current models. The bridge is an ordering, not a level. The newest models named the average brand in a larger share of category answers ($\Delta = +0.046$), so comparisons of absolute Presence across the change of panel would need to account for the shift. The study does not explain it: answer length is a descriptive of the $t_4$ answers only (Table 8), not of the legacy answers.
+The primary result is that the ordering of brands by recall Presence carried over from the retiring model generation to the newest flagship models ($\rho_{\text{pw}} = 0.827$, 95% interval 0.718 to 0.889). Under the pre-registered rationale, the programme's record on the legacy panel can therefore be bridged to the new panel for Presence: the brand standings measured since May 2026 remain interpretable on current models. The bridge is an ordering, not a level. The newest models named the average brand in a larger share of category answers ($\Delta = +0.051$), so comparisons of absolute Presence across the change of panel would need to account for the shift. The study does not explain it: answer length is a descriptive of the $t_4$ answers only (Table 8), not of the legacy answers.
 
-The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.855 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the only one whose category questions include no direct request for the best (the other four each open with "What are the best ...?"): its six questions ask which brands critics, competitions, bartenders and enthusiast communities favour, which have become cultural phenomena and which are hidden gems not yet mainstream (§2.3). Such frames may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.715 for Google and 0.566 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, for OpenAI and Google a user of the provider's newest model meets a brand order that departs further from that provider's legacy models (0.566 and 0.715) than the three-model panel departs from the six-model panel (0.828), most of all for OpenAI; for Anthropic the pair agrees slightly more closely than the panels (0.848).
+The bridge is not uniform. Four substrates kept their order closely (per-substrate $\rho$ from 0.845 to 0.943 with search off), while premium spirits reached 0.607. The spirits substrate is also the only one whose category questions include no direct request for the best (the other four each open with "What are the best ...?"): its six questions ask which brands critics, competitions, bartenders and enthusiast communities favour, which have become cultural phenomena and which are hidden gems not yet mainstream (§2.3). Such frames may leave a new generation more room to choose differently; the design does not test this. Per provider, the legacy pair against its new model gave $\rho_{\text{pw}} = 0.848$ for Anthropic, 0.707 for Google and 0.588 for OpenAI. These single-model comparisons are reported alongside and decide nothing, and one model's Presence rests on fewer answers than the panel's. Still, for OpenAI and Google a user of the provider's newest model meets a brand order that departs further from that provider's legacy models (0.588 and 0.707) than the three-model panel departs from the six-model panel (0.827), most of all for OpenAI; for Anthropic the pair agrees slightly more closely than the panels (0.848).
 
-For Consistency the result is intermediate and close to the falsification bar: $\rho_{\text{pw}} = 0.310$ against a bar of 0.30, with a 95% interval (0.051 to 0.520) that reaches below the falsification bar and above the confirmation bar. The permutation $p$-value (0.0056) indicates more agreement between the two generations' $\varphi$ orderings than chance would give, but the pre-registered effect-size rule decides, and the data neither support nor rule out a quantitative bridge for $\varphi$. The per-substrate correlations range widely, from 0.058 (cosmetics) and 0.075 (skincare) to 0.809 (automotive), each on 10 to 17 brands. With three models $\varphi$ carries less information per brand than with six (§2.8), so part of the shortfall may reflect the smaller panel rather than the change of generation; the design cannot separate the two. On the new panel $\varphi$ did not track Presence ($|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.101$), so the weak carry-over is not a by-product of the Presence result.
+For Consistency the result is intermediate and close to the falsification bar: $\rho_{\text{pw}} = 0.304$ against a bar of 0.30, with a 95% interval (0.047 to 0.516) that reaches below the falsification bar and above the confirmation bar. The permutation $p$-value (0.0070) indicates more agreement between the two generations' $\varphi$ orderings than chance would give, but the pre-registered effect-size rule decides, and the data neither support nor rule out a quantitative bridge for $\varphi$. The per-substrate correlations range widely, from 0.049 (cosmetics) and 0.057 (skincare) to 0.809 (automotive), each on 10 to 17 brands. With three models $\varphi$ carries less information per brand than with six (§2.8), so part of the shortfall may reflect the smaller panel rather than the change of generation; the design cannot separate the two. On the new panel $\varphi$ did not track Presence ($|\rho_{\text{pw}}(\varphi, \hat\pi)| = 0.103$), so the weak carry-over is not a by-product of the Presence result.
 
-Web search left the panel's Presence ordering intact ($\rho_S = 0.909$; the interval's lower bound, 0.827, clears the 0.80 bar). Two qualifications bound this reading. First, it describes the three-model mean. Per model, the correlation between search off and search on was 0.909 for Gemini 4 Argon, 0.858 for GPT-6 Astra and 0.710 for Claude Fable 5.2. For Claude Fable 5.2 this is well below the reliability of a three-run mean in either condition (rel3 0.969 with search off and 0.963 with search on), which suggests that its search reorders brands beyond run-to-run noise. Second, Gemini 4 Argon searched in 17.8% of its search-on calls, so most of its search-on answers are close to a further search-off run; it contributes the highest per-model correlation and the smallest level shift ($\Delta = -0.012$). Where search was used on most calls, it lowered Presence ($\Delta = -0.052$ for Claude Fable 5.2 and $-0.058$ for GPT-6 Astra) and the number of registry brands named per category answer (from 6.2 to 5.0 and from 5.5 to 4.2). The pre-registered label therefore holds for the panel as collected, not for every model's use of search.
+Web search left the panel's Presence ordering intact ($\rho_S = 0.910$; the interval's lower bound, 0.829, clears the 0.80 bar). Two qualifications bound this reading. First, it describes the three-model mean. Per model, the correlation between search off and search on was 0.915 for Gemini 4 Argon, 0.860 for GPT-6 Astra and 0.710 for Claude Fable 5.2. For Claude Fable 5.2 this is well below the reliability of a three-run mean in either condition (rel3 0.969 with search off and 0.963 with search on), which suggests that its search reorders brands beyond run-to-run noise. Second, Gemini 4 Argon searched in 17.8% of its search-on calls, so most of its search-on answers are close to a further search-off run; it contributes the highest per-model correlation and the smallest level shift ($\Delta = -0.016$). Where search was used on most calls, it lowered Presence ($\Delta = -0.052$ for Claude Fable 5.2 and $-0.062$ for GPT-6 Astra) and the number of registry brands named per category answer (from 6.2 to 5.0 and from 5.6 to 4.2). The pre-registered label therefore holds for the panel as collected, not for every model's use of search.
 
-The run-to-run reliabilities of §3.5 set the noise floor of the new panel's series: rel1 from 0.845 to 0.915 and rel3 from 0.942 to 0.970 across models and conditions. A correlation between the three-run means of two waves in the range of rel3 would be consistent with no change in brand order beyond the variation recorded here between runs of the same model on the same questions; the $t_5$ and $t_6$ waves are to be read against these values.
+The run-to-run reliabilities of §3.5 set the noise floor of the new panel's series: rel1 from 0.850 to 0.916 and rel3 from 0.944 to 0.970 across models and conditions. A correlation between the three-run means of two waves in the range of rel3 would be consistent with no change in brand order beyond the variation recorded here between runs of the same model on the same questions; the $t_5$ and $t_6$ waves are to be read against these values.
 
-Brands with little Presence mostly stayed so: of the 58 brands below the recall floor on the retiring panel, 43 (74%) were still below it on the newest models, and 11% of the brands above the floor fell below it. Fewer brands were below the floor at $t_4$ (49) than at $t_3$ (58), in line with the upward level shift.
+Brands with little Presence mostly stayed so: of the 58 brands below the recall floor on the retiring panel, 42 (72%) were still below it on the newest models, and 11% of the brands above the floor fell below it. Fewer brands were below the floor at $t_4$ (48) than at $t_3$ (58), in line with the upward level shift.
 
 # 5. Limitations
 
