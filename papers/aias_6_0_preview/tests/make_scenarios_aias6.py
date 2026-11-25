@@ -62,7 +62,16 @@ RUNS = {
                                            "v111": {"H2": "FALSIFIED"},
                                            "v042": {"H_Gen_Presence": "FALSIFIED", "H_Gen_Phi": "UNDETERMINED"}}),
     "not_run": ({}, {"drop_refs": ["v1.14", "v1.12", "v1.13"]}),          # no component output by the data lock
+    # the state of the inputs on Nov 25: v1.14 Stage 1 MARGINAL (Ranking under review), v1.13 GATE MARGINAL
+    # (Grounding under review), no S_t4 (Sentiment NOT RUN), v1.12 GATE PASS (Coverage in K): K = P, C, Cov.
+    # Stored apart from the paper fixtures, under papers/aias_6_0_preview/synthetic/ (report pipeline exercise).
+    "SYNTHETIC_nov25_inputs": ({"h5_gates": False}, {"stage1": {"STAGE1_VERDICT": "MARGINAL",
+                                                                "H1_Sep_Presence": {"verdict": "MARGINAL", "rho": 0.41,
+                                                                                    "n": 70}},
+                                                     "v113_gate": "MARGINAL"}),
 }
+# run scenarios kept outside tests/fixtures (and outside SCENARIOS): written to papers/aias_6_0_preview/synthetic/
+SYNTHETIC_DIR_SCENARIOS = ("SYNTHETIC_nov25_inputs",)
 # derived scenarios: (base run scenario, statistics changed); "*" = every other S-test / I-test of K
 DERIVED = {
     "ranking_marginal_confirmed": ("ranking_marginal", {"S": {"*": 0.08}, "I": {"*": 0.10},
@@ -75,7 +84,7 @@ DERIVED = {
     "six_undetermined": ("six_parts", {"S": {"*": 0.07}, "n": {"PxC": 20},
                                        "I": {"*": 0.12, "R": None, "S": None, "Cov": None, "G": None}}),
 }
-SCENARIOS = list(RUNS) + list(DERIVED)
+SCENARIOS = [s for s in RUNS if s not in SYNTHETIC_DIR_SCENARIOS] + list(DERIVED)
 
 
 def sha(b):

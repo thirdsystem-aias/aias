@@ -38,13 +38,21 @@ STANDFIRST = [
 GLANCE_NUMBERS = [
     {"value": "{{v:pv.K.n}}", "unit": "",
      "label": "Parts included in the structure test (provisional)",
-     "source": "{{v:pv.K.names}}"},
-    {"requires": ["STRUCT"], "value": "{{v:pv.pc.rho}}", "unit": "",
+     "source": "of six parts; the state of each in finding 03"},   # the names overflow the number row at k >= 5
+    {"requires": ["STRUCT"], "value": "{{v:pv.pc.rho_2dp}}", "unit": "",
      "label": "Rank correlation of Presence with Consistency on the newest models",
      "source": "within categories, {{v:pv.pc.n}} brands; pre-set bar {{v:pv.band.confirm}}"},
     {"requires": ["STRUCT"], "value": "{{v:pv.uk.n}}", "unit": "",
      "label": "Brands rated on every included part",
      "source": "of {{v:pv.units}} brands in five categories"},
+    # no structure test (section 4.3): the number row still takes three numbers (ts_layout.number_row); big numbers
+    # print two decimals (a signed three-decimal value is wider than its column)
+    {"requires": ["!STRUCT"], "value": "{{v:pv.units}}", "unit": "",
+     "label": "Brands in the five category registries",
+     "source": "each part read from its own locked study"},
+    {"requires": ["!STRUCT"], "value": "{{v:pv.bridge.rho_P_2dp}}", "unit": "",
+     "label": "Rank correlation of Presence now with Presence in AIAS 2.0",
+     "source": "within categories, {{v:pv.bridge.n_P}} brands; descriptive"},
 ]
 
 MEASURED = ("Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, the newest flagship of three providers, in the "
@@ -120,8 +128,9 @@ FINDINGS = [
     {"requires": ["STRUCT"],
      "verdict": "{{v:pv.structure.verdict}}",
      "title_by_class": [
-         {"requires": ["CLASS=A"], "text": "On the newest models, the parts are separate readings of a brand"},
-         {"requires": ["CLASS=A_k"], "text": "The parts measured so far are separate readings of a brand"},
+         # titles under 58 characters (contents page); "of a brand" is in the body's section 6.6 headline
+         {"requires": ["CLASS=A"], "text": "On the newest models, the parts are separate readings"},
+         {"requires": ["CLASS=A_k"], "text": "The parts measured so far are separate readings"},
          {"requires": ["CLASS=B"], "text": "Most parts are separate readings; some overlap"},
          {"requires": ["CLASS=U"], "text": "How the parts relate could not be determined"},
      ],

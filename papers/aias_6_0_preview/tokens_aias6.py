@@ -117,6 +117,7 @@ TOKEN_MAP = {
     "pv.pc.n": ("results", ["structure", "S_tests", "PxC", "n"], "i0", "STRUCT"),
     "pv.pc.lo": ("results", ["structure", "S_tests", "PxC", "ci90", 0], "r2m", "STRUCT"),
     "pv.pc.hi": ("results", ["structure", "S_tests", "PxC", "ci90", 1], "r2m", "STRUCT"),
+    "pv.pc.rho_2dp": ("results", ["structure", "S_tests", "PxC", "rho"], "r2m", "STRUCT"),   # report big number
     # complete-profile set and coverage (D9, section 8)
     "pv.uk.n": ("results", ["structure", "U_K", "n"], "i0", "STRUCT"),
     # dimensions (D3) and bridge to AIAS 2.0 (D5); descriptive
@@ -124,6 +125,7 @@ TOKEN_MAP = {
     "pv.d3.members": ("results", ["descriptives", "D3_dimensions", "members"], "len", "STRUCT"),
     "pv.bridge.rho_P": ("results", ["descriptives", "D5_bridge", "rho_P", "rho"], "r3m"),
     "pv.bridge.n_P": ("results", ["descriptives", "D5_bridge", "rho_P", "n"], "i0"),
+    "pv.bridge.rho_P_2dp": ("results", ["descriptives", "D5_bridge", "rho_P", "rho"], "r2m"),  # report big number
     # the composite check (section 7.2; descriptive, nothing adopted)
     "pv.comp.rho_AP": ("results", ["structure", "composite_check", "rho_A_P"], "r3", "STRUCT"),
     "pv.comp.k2": ("results", ["structure", "composite_check", "K2_passes"], "passes", "STRUCT"),
