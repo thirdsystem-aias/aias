@@ -1,0 +1,55 @@
+{
+  "_note": "DRAFT, pre-data (Nov 25, 2026; branch preview-6.0-draft in ~/aias, copy in the website repo at content/pending/aias-6-0-preview.json on branch site-preview-6.0-draft). Website study page content for the AIAS 6.0 Preview in the site's format (CLAUDE.md ship step 7): one Studies DATA entry, its SLUGS line, its abstract (content/abstracts.json) and plain summary (content/plain.json), its LEDGER rows (scripts/methodology_data.py), its report code beside the download, and the Claims Register rows to add. {{v:KEY}} tokens resolve from the locked scorer's outputs through papers/aias_6_0_preview/tokens_aias6.py; {{build:KEY}} tokens are build facts known only after the PDFs exist (BUILD_KEYS in tests/test_tokens_aias6.py). A dict with 'requires' is kept only when the paper fill's flags or cases satisfy it. Nothing here is live: not in the boards, not built, not pushed to main, not before Tue Dec 15.",
+  "slug": "aias-6-0-preview",
+  "slugs_line": "'AIAS 6.0 Preview': 'aias-6-0-preview'",
+  "held": false,
+  "studies_entry": {
+    "id": "AIAS 6.0 Preview",
+    "date": "{{build:month}}",
+    "type": "Synthesis",
+    "title": "{{build:paper_title}}",
+    "topic": "All parts on one panel, provisional",
+    "report": "files/reports/{{build:report_file}}",
+    "reportPages": "{{build:report_pages}}",
+    "reportCode": "{{build:report_code}}",
+    "paper": "files/papers/aias_6_0_preview_paper.pdf",
+    "paperPages": "{{build:paper_pages}}",
+    "found": "{{build:plain_found}}",
+    "short": "{{build:plain_short}}",
+    "ind": ["Headphones", "Skincare", "Cosmetics", "Cars", "Spirits"]
+  },
+  "abstract": "{{build:abstract_verbatim}}",
+  "plain_draft": {
+    "_rule": "content/plain.json: found and short are drawn only from the paper's abstract as published; these drafts are re-derived from it at hand-off and checked against it.",
+    "found": [
+      {"requires": ["STRUCT"], "text": "{{v:pv.headline}}"},
+      {"requires": ["!STRUCT"], "text": "How the provisional parts of AI Availability relate on the newest models could not yet be determined."}
+    ],
+    "short": [
+      "We read every part of AI Availability measured so far on the newest models of three providers, for the same {{v:pv.units}} brands in five categories, and tested, with rules fixed in advance, whether each part is a separate reading of a brand. {{v:pv.k_sentence}}",
+      {"requires": ["STRUCT"], "text": "{{v:pv.headline}} {{v:pv.w1}}"},
+      "No combined score is published; every part other than Presence and Consistency stays provisional."
+    ]
+  },
+  "ledger": {
+    "_rule": "scripts/methodology_data.py LEDGER: tests from the deposited verdict file, verdict words unchanged; a new word goes into CLASS; PART_BY_ID needs a line for 'AIAS 6.0 Preview' (open question: which part, or a new 'all parts' group).",
+    "verdict_file": "osf/aias_6_0_preview/outputs/results_aias_6_0_preview.json",
+    "rows": [
+      {"requires": ["STRUCT"], "test": "H_Structure", "path": ["structure", "H_Structure", "verdict"], "verdict": "{{v:pv.structure.verdict}}"},
+      {"requires": ["STRUCT"], "test": "H_PC_N3", "path": ["structure", "H_PC_N3"], "verdict": "{{v:pv.pc.verdict}}"}
+    ]
+  },
+  "page_lines": {
+    "in_short_head": "{{v:pv.title}}",
+    "status_line": "{{v:pv.validation_line}}",
+    "report_download": "Report · PDF, {{build:report_pages}} pages · {{build:report_code}}",
+    "data_line": "Plan, scorer, outputs and deviations record: osf.io/ec6wh (aias_6_0_preview), pre-registration {{v:pv.prereg_tag}}."
+  },
+  "claims_register_rows": [
+    "Studies list entry: title, topic, found (source: paper abstract)",
+    "Study page: In short (source: paper abstract)",
+    "Study page: status line (source: pre-registration section 5, validation status line)",
+    "Methodology ledger: H_Structure and H_PC_N3 rows (source: results_aias_6_0_preview.json)",
+    "Methodology 'Where the score stands today' and Home status line, if the result changes their wording (keeps-up rule, Nov 11)"
+  ]
+}

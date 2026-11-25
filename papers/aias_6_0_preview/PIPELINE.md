@@ -101,3 +101,29 @@ v1.14's Stage 1 on t4 (commit 3129674 on origin/v1.14) is MARGINAL. Under §4.1 
 - Addenda (§4.4) need a new scorer run and fill; the template has no addendum section yet.
 - Sentiment Paper B's verdict enters only through the scorer's `sentiment_paper_b` input; the paper's Sentiment sentences cover PASS (qualifier removed) and FAIL, not "any other Paper B verdict printed beside the qualifier".
 - The class C options memo is not drafted by this pipeline.
+
+## Draft for the Tue Dec 15 Preview (branch `preview-6.0-draft`, Nov 25, 2026)
+
+Branch `preview-6.0-draft` from `aias-6.0-preview-paper` (d00e716). Nothing built, published, pushed to the website or deposited; Preview target Tue 2026-12-15 (the day after the v0.40 launch).
+
+**What feeds what.** One scorer run after the data lock (§11.4: after v1.14 Stage 2 if its output exists by Fri 2026-12-11, else on Dec 11 with Stage 2 by dated addendum) writes the four outputs above. The paper fill reads them (its `{{NAME}}` values, cases and flags); `tokens_aias6.py` reads the same four files and the paper fill's values, so the report and the website page print the same outcome in the same words.
+
+| Output | Paper (template `{{NAME}}`) | Report (`{{v:KEY}}`) | Site page | Figures |
+|---|---|---|---|---|
+| `results`: `gate_states`, `labels`, `K`, `validation_status_line` | 3.2 gate table, state sentences, K caption | finding 03, at a glance | status line, short | chart 03 (report) |
+| `results.structure`: `S_tests`, `I_tests`, `status`, `H_Structure`, `wording_class`, `H_PC_N3` | 3.3-3.5, headline (§6.6), W1 | findings 01-02, scored rows, closing | found, ledger rows | paper chart_01; report charts 01-02 |
+| `results.structure.descriptive_marginal_pairs` | 3.6 (parts under review) | finding 01 chart's lower band | - | paper chart_01 lower band |
+| `results.structure.U_K`, `descriptives.D9_coverage` | 3.8, appendix D9 | finding 04 | - | paper chart_02; report chart 04 |
+| `results.structure.composite_check` (D8) | 3.7 | finding 05 | - | report chart 05 |
+| `results.descriptives` D1-D7 | 3.8, appendix D1 | - | - | - |
+| `results.sensitivities` SA-SH | 3.9 | - | - | - |
+| `gates` (H_Gen_Presence, H_Gen_Phi, v1.14, v1.12/v1.13 gates, v1.11 H1-H5) | bridge labels, R/S/Cov/G legs | via `labels` | - | - |
+| `inputs` (refs, blobs, SHA-256) | 3.1 checks, data availability | methodology log | data line | - |
+| `profile` CSV (D4) | - | - | deposited, linked | report chart 02 (scatter) |
+| `outputs/components/` (stage1_v1_14, v112, v1_13 verdicts) | MARGINAL leg named (§4.2) | - | - | - |
+
+**Files added on this branch.** `tokens_aias6.py` (the token map: 51 keys, 17 of them conditional on a paper flag, each naming its output file and JSON path or the paper value, and its format); `tests/test_tokens_aias6.py` (13 tests: every paper `{{NAME}}` is computed by the fill; every report and site `{{v:KEY}}` is in the map and every `{{build:KEY}}` in the hand-off list; each key resolves on every synthetic scenario where its flag holds; a conditional key is used only under its flag; report and page fill in all 12 scenarios; AI-use verbatim; employer, Harman and Cheil not named in the report or page; held studies absent; chart titles never repeat or paraphrase a finding title; "provisional" on every chart and caption; no typed number in the report text); `site/aias-6-0-preview.json` (the website study page content; the same bytes sit in the website repo at `content/pending/aias-6-0-preview.json`, branch `site-preview-6.0-draft`, local only); `reports/aias6_preview_report_content.py` (Tier 1 report content, managerial register, five findings with one chart each). Paper template: COI conformed to the locked pre-registration §15 (Denon/Harman correction verbatim with its source) plus the Cheil Worldwide / Iris sentence as in the dated v1.12 Declarations revision; v1.16 named in the introduction; release names (AIAS 3.0 to 5.0) in Future Research.
+
+**Tests.** `PYTHONDONTWRITEBYTECODE=1 python3 papers/aias_6_0_preview/tests/test_tokens_aias6.py` (13, OK) and the paper suite (22, OK).
+
+**Not yet built (after the data lock, CPU-heavy):** report builder fork of `reports/build_report_v44_r1.py` with `ts_layout.py` and `small_print.py` from `v0.44-report`; report chart builder (five charts); a synthetic scenario with the inputs as they stand on Nov 25 (Ranking and Grounding MARGINAL, Sentiment NOT RUN, Coverage PASS: K = P, C, Cov); PDFs, page-by-page pre-flight, Fable review.

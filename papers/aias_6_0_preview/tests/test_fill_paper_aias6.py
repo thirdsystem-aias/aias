@@ -76,8 +76,14 @@ class TestTemplate(unittest.TestCase):
     def test_ai_use_coi_and_citations(self):
         self.assertEqual(TPL.count(AI_USE), 1)
         coi = section(TPL, "## Conflict of interest", "## Funding")
-        for s in ("a Samsung subsidiary since March 2017", "Sound United brands, Denon included, on September 23, 2025",
-                  "already a Samsung-group brand", "tier-2/3", "Samsung SDI", "Samsung Display", "had no role"):
+        # Denon/Harman correction verbatim from the locked pre-registration, section 15; Cheil sentence as in the
+        # dated v1.12 Declarations revision (Pablo, Wed Nov 18, 2026: "on everywhere").
+        for s in ("Correction (November 10, 2026): Denon, which replaced AKG in the v0.19 registry, has itself been "
+                  "owned by Harman International, a wholly owned subsidiary of Samsung Electronics, since September "
+                  "23, 2025, when Harman completed its acquisition of Sound United from Masimo",
+                  "includes one Samsung-group brand", "Business Wire, September 23, 2025",
+                  "tier-2/3", "Samsung SDI", "Samsung Display", "Cheil Worldwide", "Chevrolet", "Eucerin",
+                  "v0.62, DEVIATIONS Entry 0, Part F", "had no role"):
             self.assertIn(s, coi)
         self.assertNotIn("7685126", TPL)
         refs = section(TPL, "# References", "\\clearpage\n\n# Appendix")
