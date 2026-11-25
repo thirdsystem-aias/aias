@@ -237,3 +237,55 @@ Also in Addendum 2: once a same-day model check existed, the test `test_run_refu
 **Reason (for the record).** 2026-11-29 was chosen only so that this collection would come after v0.44's booking of the Mac (2026-11-24..28, r1 §5.5). v0.44 finished early, so the Mac is free now. The guard prices each request at the UTC date it starts (§6.1, §6.5 rule 1); Gemini 4 Argon costs $2 / $10 per 1M tokens through 2026-11-30 and $4 / $20 from 2026-12-01. Under the 72-hour rule a collection whose first call is on 2026-11-25 ends by Sat 2026-11-28, so every Gemini 4 Argon request is billed at the November price; a start on 2026-11-29 could run into December prices. Block 5 stays off, so the v0.23 recognition judge (Claude Sonnet 4.5, retiring 2026-11-30) is not used. The earlier start makes no other difference to the design; the projection pause uses the November ratio (3.0975) when block 1 starts in November, as the locked code does.
 
 **Lock record.** Appended after Entries 1 and 2; `prereg/LOCK_MANIFEST_v0_62.sha256` and `anchor/osf_anchor_v0_62.json` keep the tag-tree hash of this file and are not regenerated. This entry is committed, pushed and deposited on OSF (`osf.io/ec6wh`, `v62/`) before the first call.
+
+
+---
+
+## Entry 4 — S-COI ran on 107 units, not 106: Jack Daniel's left in by a key mismatch; the 106-unit S-COI reported beside it (dated Wed 2026-11-25; written after the one scoring run, commit 262464d; a record and an added sensitivity)
+
+**Type:** post-scoring record of a bug in the locked sensitivity S-COI (PRE_REGISTRATION §7.5, §9 item 8; DEVIATIONS Entry 0, Parts F–G), with a corrected sensitivity reported beside the as-run one. Approved by the pre-registrant: "Pablo, Wed 2026-11-25 9:40 am CT, control chat: Ok to all". Written by the runner. **The locked verdicts stand as scored**; no locked file is modified (`score_v0_62.py` keeps SHA-256 `fe8ce8ea…`, `params_v0_62.py` keeps `dc7a07dc…`, as in `prereg/LOCK_MANIFEST_v0_62.sha256`).
+
+**The bug.** S-COI is defined as the primary H_Lang_Presence test without the six units with a Samsung-group tie (106 units). `params_v0_62.COI_FLAGGED` names the v0.23 unit by brand name, `("v0.23", "Jack Daniel's")`, while the English t₄ table (`v42_brand_table.csv`) and the v0.62 coded tables key v0.23 units by registry id (S01–S24). `score_v0_62.unit_set(..., "S-COI")` therefore did not find Jack Daniel's (registry id **S03**, `osf/v23/scripts/score_v0_23.py`) and removed only five units: the as-run S-COI in `v62_verdicts.json` has n = 107 in every language. The unit tests use synthetic brand names and did not catch it. Recorded in the scoring commit message (262464d).
+
+**What is added (no model called).** `osf/v62/scripts/sens_coi106_en_corrected_v0_62.py` (SHA-256 `9252d95799be21a2977c8152ac8583ed8dfcb18b7ae1a11d7037a458145310f2`) imports the locked modules unchanged. It first re-runs `score_v0_62.score()` on the locked inputs and checks that the JSON equals `v62_verdicts.json` byte for byte (it does), then maps `COI_FLAGGED` to the table keys with v0.23's registry and recomputes S-COI on 106 units exactly as `score_v0_62.score()` computes S-COI (H_Lang_Presence `rank_test`, the primary seed per language, 10,000 permutations and bootstrap draws, `verdict_presence`, the 90% drop rule). Output: `osf/v62/data/v62_sens_coi106_v0_62.json` (SHA-256 `28bb3a746fb392b1bab8da3553cf4ddb56eb1b3a46350e447e92d6ddeaf31ea4`).
+
+**Result (ρc, 95% bootstrap interval, permutation p; English comparator as locked).**
+
+| Language | S-COI as run (107 units) | S-COI (106 units, Jack Daniel's removed) |
+|---|---|---|
+| ES | 0.9249 (0.8488–0.9556), p 0.0001, CONFIRMED | 0.9304 (0.8589–0.9594), p 0.0001, CONFIRMED |
+| KO | 0.8541 (0.7372–0.9187), p 0.0001, CONFIRMED | 0.8550 (0.7375–0.9205), p 0.0001, CONFIRMED |
+| ZH | 0.8020 (0.6693–0.8810), p 0.0001, CONFIRMED | 0.7999 (0.6649–0.8809), p 0.0001, CONFIRMED |
+
+No verdict differs from the primary H_Lang_Presence verdicts (CONFIRMED in ES, KO, ZH), so the abstract rule of §7.5 is not triggered. The paper reports both S-COI lines and this entry.
+
+
+---
+
+## Entry 5 — Run wrapper for the Entry 2 sensitivities S-Trans and S-AliasAI (dated Wed 2026-11-25; written after the one scoring run, commit 262464d; a deviation in procedure only)
+
+**Type:** post-scoring addition of a run entry point. Entry 2 (d) put S-Trans and S-AliasAI in `score_ai_sens_v0_62.py` (commit d75ff81, SHA-256 `b328995c…`, unchanged), which has functions but no run entry point, so the scoring run did not compute them (scoring commit 262464d). Approved by the pre-registrant: "Pablo, Wed 2026-11-25 9:40 am CT, control chat: Ok to all". Written by the runner. **The locked verdicts stand as scored**; no locked file and no Entry 2 file is modified.
+
+**The wrapper.** `osf/v62/scripts/run_ai_sens_v0_62.py` (SHA-256 `07daab208cd446e377eea9c3fa76b00b4f2281a1d5b69a435e24d16efbac6e43`) only reads files and calls existing functions: (1) `--prepare-alias-ai`: `score_ai_sens_v0_62.alias_ai_aliaser()` on the archived C4 result (`ai_check/results/s_alias_ai_off_v0_62.json`), `code_v0_62.prepare_raw()` on `data/v62_raw.jsonl` with that aliaser, and v0.42's coder unchanged (judge off) on Korean and Chinese, as in `data/gates/run_v62_score.sh`; (2) `--score`: `score_ai_sens_v0_62.score()` with the archived S-Trans flags (`ai_check/results/s_trans_flags_v0_62.json`), t₄'s locked coded English Phase B rows (`osf/v42/data/coded`) as `en_B`, the locked English comparator (`v42_brand_table.csv`) and the same `--rank-status`. **No model was called**: the C1–C4 results are those archived on Sat 2026-11-21 and no new alias or translation check was needed.
+
+**Inputs as archived.** S-Trans: no Phase B question is flagged or strictly flagged in any language (the one Chinese flag of the AI check is a v0.23 label, `label__Multi-spirit craft`, not a Phase B question; labels are outside S-Trans's question set), so both S-Trans lines run on all 30 questions. S-AliasAI: one Korean alias is coded "not used for this brand" (v0.23 Del Maguey, 델 마과이), none in Chinese. The alias occurs in no Korean answer: the re-coded tables (`osf/v62/data/s_alias_ai/ko/`, `.../zh/`, 20 files) and the prepared Korean and Chinese texts are byte-identical to the primary ones.
+
+**Result.** Output `osf/v62/data/v62_sens_ai_check_v0_62.json` (SHA-256 `5989757708f640cf53932d34c7a1b086ef4f56ab5c104ca2a8e546956d1b2bf3`); its `tests`, `sensitivities` and `joint_reading` equal `v62_verdicts.json`. S-Trans (flagged and strictly flagged lines) reproduces every primary statistic exactly (the English comparator recomputed from `en_B` equals the table), H_Lang_Presence ES 0.9307, KO 0.8672, ZH 0.8117; H_Lang_Phi ES 0.6230, KO 0.3433, ZH 0.3304; `presence_differs` false in every language; joint reading Language-robust. S-AliasAI KO 0.8672 (0.7636–0.9245), ZH 0.8117 (0.6850–0.8852), p 0.0001, CONFIRMED, equal to the primary values. No verdict differs; the abstract rule of Entry 2 (b)–(c) is not triggered.
+
+
+---
+
+## Entry 6 — Sensitivity with the corrected English comparator (v0.42 apostrophe erratum of 2026-11-25) (dated Wed 2026-11-25; written after the one scoring run, commit 262464d; an added sensitivity)
+
+**Type:** post-scoring sensitivity. §7.3 fixes the English comparator as v0.42's locked `v42_brand_table.csv` (SHA-256 `792e14ad…`), and the scoring used it. v0.42's erratum of 2026-11-25 (`osf/v42/ERRATUM_2026-11-25.md`) found that v0.42's coder missed typographic apostrophes in "Paula's Choice" and "L'Oréal Paris" (46 English cells) and published `v42_brand_table_corrected_2026-11-25.csv` (SHA-256 `de8559cbe21db91e8922337c7ab5bdfaa7d1d2325f6bbe0870e6abcd812a5c4d`, identical to `papers/v0_42/corrected_2026-11-25/v42_brand_table_SQ.csv` on branch t4-paper; 14 cells of these two rows differ, of which π̂ and φ at N3/S0 enter this study). The v0.62 pre-step already reads U+2019/U+2018 as an apostrophe (`code_v0_62.normalise`), so the corrected table is the like-for-like comparator; gate P2 reported the delta and did not correct it (§7.3, §9 item 6). Approved by the pre-registrant: "Pablo, Wed 2026-11-25 9:40 am CT, control chat: Ok to all". **The locked verdicts stand as scored.**
+
+**Computed (no model called).** `sens_coi106_en_corrected_v0_62.py` (Entry 4) runs `score_v0_62.score()` unchanged with the corrected table, plus Entry 4's 106-unit S-COI on it. Output `osf/v62/data/v62_sens_en_corrected_v0_62.json` (SHA-256 `a638947314d9b630ab90d458a3586d1c91ca086e491b51e9ad2a997420178e01`).
+
+| Test | ES locked → corrected | KO locked → corrected | ZH locked → corrected |
+|---|---|---|---|
+| H_Lang_Presence ρc (95% CI) | 0.9307 (0.8638–0.9588) → 0.9383 (0.8749–0.9630) | 0.8672 (0.7636–0.9245) → 0.8681 (0.7633–0.9266) | 0.8117 (0.6850–0.8852) → 0.8116 (0.6856–0.8852) |
+| Δ_L (95% CI) | +0.0360 (+0.0188, +0.0554) → +0.0311 (+0.0157, +0.0478) | −0.0742 (−0.0987, −0.0509) → −0.0792 (−0.1030, −0.0565) | −0.0425 (−0.0704, −0.0142) → −0.0475 (−0.0766, −0.0182) |
+| H_Lang_Phi ρc (n; p) | 0.6230 (75; 0.0001) → 0.6569 (75; 0.0001) | 0.3433 (66; 0.0045) → 0.3537 (66; 0.0039) | 0.3304 (70; 0.0054) → 0.3048 (70; 0.0089) |
+| S-COI 107 / 106 units | 0.9249 / 0.9304 → 0.9329 / 0.9386 | 0.8541 / 0.8550 → 0.8549 / 0.8559 | 0.8020 / 0.7999 → 0.8015 / 0.7994 |
+
+Presence permutation p is 0.0001 in every cell. Every verdict is the same under both comparators (Presence CONFIRMED ES, KO, ZH; Phi ES CONFIRMED, KO and ZH MARGINAL; S-Denon, S-Headphones, S-COI CONFIRMED everywhere; joint reading Language-robust). Chinese H_Lang_Phi moves closer to the 0.30 falsification threshold (0.3048) but stays MARGINAL. The paper reports the corrected comparison beside the locked one.
