@@ -40,7 +40,7 @@ __all__ = [
     "TYPES", "TYPE_TIER", "ReportCodeError", "make_code", "parse_code", "title_slug", "file_name",
     "load_specs", "catalogue", "registered_hashes", "next_revision", "check_code", "validate_catalogue",
     "pdf_subject", "pdf_keywords", "cite", "website", "website_lower", "upper_keep_website",
-    "sha256_file", "preflight",
+    "sha256_file", "preflight", "DISTRIBUTIONS", "distribution", "distribution_problems",
 ]
 
 TYPES = {
@@ -206,7 +206,57 @@ def validate_catalogue(entries: Sequence[dict]) -> list[str]:
                 seen_hashes[h] = e["code"]
         if not e.get("sha256"):
             problems.append(f"{e['code']}: no SHA-256")
+        problems.extend(distribution_problems(e, p["type"]))
     return problems
+
+
+# ---------------------------------------------------------------------------
+# Sharing level (S&P lesson 2; standing rule 3, Pablo, Nov 23, 2026, 7:58 am)
+# ---------------------------------------------------------------------------
+
+DISTRIBUTIONS = ("confidential", "private", "public")
+DEFAULT_DISTRIBUTION = "confidential"   # an entry without the field is never treated as shareable
+CLIENT_TYPES = ("DG",)                  # client work: confidential or private, never public (item (c))
+
+
+def distribution(entry: dict) -> str:
+    """The entry's sharing level; confidential when the field is missing."""
+    return entry.get("distribution", DEFAULT_DISTRIBUTION)
+
+
+def distribution_problems(entry: dict, kind: str | None = None) -> list[str]:
+    """Problems with one entry's sharing level: a known value; a public-study report (FL, SY, CS,
+    BR, held ones included) states public explicitly; client work is never public; a private
+    entry lists its recipients; distribution_history rows are complete and end at the current level."""
+    code = entry.get("code") or "entry"
+    if kind is None:
+        kind = parse_code(code)["type"]
+    out = []
+    level = distribution(entry)
+    if level not in DISTRIBUTIONS:
+        out.append(f"{code}: distribution must be one of {', '.join(DISTRIBUTIONS)}, not {level!r}")
+        return out
+    if kind in CLIENT_TYPES:
+        if level == "public":
+            out.append(f"{code}: client work is never public (the public level is off)")
+    elif entry.get("distribution") != "public":
+        out.append(f"{code}: a public-study report states distribution: public")
+    if level == "private":
+        rec = entry.get("recipients")
+        if not rec or not all(isinstance(r, dict) and r.get("party") and r.get("requested") for r in rec):
+            out.append(f"{code}: a private report lists its recipients (party, requested)")
+    elif entry.get("recipients"):
+        out.append(f"{code}: recipients are listed only for a private report")
+    hist = entry.get("distribution_history") or []
+    for k, row in enumerate(hist):
+        if not all(row.get(f) for f in ("date", "from", "to", "ref")):
+            out.append(f"{code}: distribution_history row {k} needs date, from, to and ref")
+        elif row["from"] not in DISTRIBUTIONS or row["to"] not in DISTRIBUTIONS:
+            out.append(f"{code}: distribution_history row {k} has an unknown level")
+    if hist and hist[-1].get("to") != level:
+        out.append(f"{code}: the last distribution_history row ends at {hist[-1].get('to')!r}, "
+                   f"the entry says {level!r}")
+    return out
 
 
 # ---------------------------------------------------------------------------

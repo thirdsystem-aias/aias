@@ -175,6 +175,54 @@ class TestUniqueness(unittest.TestCase):
         self.assertTrue(any("Tier" in p for p in RC.validate_catalogue([dict(e, tier=1)])))
 
 
+class TestDistribution(unittest.TestCase):
+    """Sharing level (S&P lesson 2; standing rule 3, Pablo, Nov 23, 2026, 7:58 am)."""
+
+    DG = {"code": "TS-DG-ACME-r1", "title": "t", "date": "2026-12-01", "tier": 2, "git_tag": None,
+          "osf_path": None, "sha256": "0" * 64}
+
+    def test_every_register_entry_is_public(self):
+        self.assertEqual({RC.distribution(e) for e in ENTRIES}, {"public"})
+        self.assertTrue(all("distribution" in e for e in ENTRIES))
+
+    def test_held_studies_are_public_and_held(self):
+        for code in ("TS-CS-v0.38-r1", "TS-CS-v0.39-r1"):
+            e = _entry(code)
+            self.assertEqual((e["distribution"], e["held"]), ("public", True))
+
+    def test_missing_field_reads_confidential(self):
+        self.assertEqual(RC.distribution({"code": "TS-DG-ACME-r1"}), "confidential")
+        self.assertEqual(RC.distribution_problems(dict(self.DG)), [])
+
+    def test_public_study_must_say_public(self):
+        e = {k: v for k, v in _entry("TS-CS-v0.22-r1").items() if k != "distribution"}
+        self.assertTrue(any("states distribution: public" in p for p in RC.validate_catalogue([e])))
+        self.assertTrue(RC.distribution_problems(dict(e, distribution="confidential")))
+
+    def test_client_work_never_public(self):
+        self.assertTrue(any("never public" in p
+                            for p in RC.distribution_problems(dict(self.DG, distribution="public"))))
+
+    def test_unknown_level_refused(self):
+        self.assertTrue(RC.distribution_problems(dict(self.DG, distribution="internal")))
+
+    def test_private_lists_its_recipients(self):
+        e = dict(self.DG, distribution="private")
+        self.assertTrue(any("recipients" in p for p in RC.distribution_problems(e)))
+        e["recipients"] = [{"party": "agency", "requested": "2026-12-02"}]
+        e["distribution_history"] = [{"date": "2026-12-02", "from": "confidential", "to": "private",
+                                      "ref": "client's written request"}]
+        self.assertEqual(RC.distribution_problems(e), [])
+        self.assertTrue(RC.distribution_problems(dict(self.DG, recipients=e["recipients"])))
+
+    def test_history_ends_at_the_current_level(self):
+        e = dict(self.DG, distribution_history=[{"date": "2026-12-02", "from": "confidential",
+                                                  "to": "private", "ref": "x"}])
+        self.assertTrue(any("last distribution_history" in p for p in RC.distribution_problems(e)))
+        e["distribution_history"] = [{"date": "2026-12-02", "from": "confidential"}]
+        self.assertTrue(any("needs date" in p for p in RC.distribution_problems(e)))
+
+
 class TestWebsiteLowerCase(unittest.TestCase):
     def test_caps_keep_the_website_lower_case(self):
         self.assertEqual(SITE, "thirdsystem.ai")
