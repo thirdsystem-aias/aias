@@ -9,7 +9,7 @@
       "1.2 \u2014 report design system v2, approved by Pablo on Nov 11, 2026: a tier on each document (see third_system_brand.json publication_tiers), section_template per tier, word_budget, and the running-header label ('Focal-Brand Study' retired). Nov 12, 2026: section_template.page_templates.closing_page (Tier 1 closing page with colophon and Indigo band), approved with the AIAS 2.0 report r3.",
       "1.2, Nov 13, 2026 \u2014 Pablo's decisions 13 (updated) and 14 (Nov 13, 7:13 am): report_catalogue (every report's catalogue code TS-{TYPE}-{STUDY}-{REV}; the published reports backfilled without re-rendering); closing_page band line (wordmark, thirdsystem.ai in lower case, the report code, the page number); footer.last_page_text (Tiers 2 and 3). The website is printed in lower case everywhere.",
       "1.2, Nov 15, 2026 \u2014 page_templates.small_print (Pablo, Nov 15, 8:33 am): type scale and layout of numbered notes, margin callouts and the closing Disclosures block, for new reports only.",
-      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1, TS-BR-v1.14-r1, TS-BR-v0.43-r1 and TS-BR-v1.13-r1."
+      "1.2, Nov 22, 2026 \u2014 page_templates.brief_page (Pablo's approval of the brief format, Nov 22, 10:47 am): Tier 3 front and text pages drawn by ts_layout.brief_page(); report_catalogue entries TS-BR-v1.20-r1, TS-BR-v1.12-r1, TS-BR-v1.19-r1, TS-BR-v1.14-r1, TS-BR-v0.43-r1, TS-BR-v1.13-r1 and TS-BR-v0.62-r1."
     ]
   },
   "product_structure_summary": {
@@ -2349,6 +2349,28 @@
         "status": "current",
         "held": false,
         "note": "Tier 3 brief of Grounding Paper A (AIAS Methodology v1.13), in the brief format approved by Pablo Nov 22, 2026, 10:47 am. Deposited in OSF methodology/v1_13/paper/ (osf.io/ec6wh), verified by SHA-256; receipt in reports/briefs/v1_13/osf_receipt.json."
+      },
+      {
+        "code": "TS-BR-v0.62-r1",
+        "type": "BR",
+        "study": "v0.62",
+        "rev": "r1",
+        "title": "Asked in Spanish, Korean or Chinese, AI models kept the English order of brands",
+        "date": "2026-11-25",
+        "date_source": "PDF CreationDate 2026-11-25 (not yet deposited or published)",
+        "tier": 3,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": "b181a9a",
+        "repo_path": "reports/briefs/v0_62/TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf",
+        "osf_path": "v62/paper/TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf",
+        "osf_version": null,
+        "sha256": "8dfe91101cb554b35181331640a36a0dc8b3181abdf4d956ffadb9fc21dab4b8",
+        "sha256_source": "local build at b181a9a (reports/briefs/v0_62/TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf)",
+        "website": null,
+        "status": "current",
+        "held": false,
+        "note": "Tier 3 brief of the v0.62 non-English wave paper (r2, 5749211), in the brief format approved by Pablo Nov 22, 2026, 10:47 am; requested by Pablo Wed Nov 25, 2026, 4:41 pm. Review gate record reviews/TS-BR-v0.62-r1/2026-11-25.md. osf_path is the planned location beside the paper in OSF v62/paper/ (osf.io/ec6wh); not yet deposited."
       }
     ]
   }
