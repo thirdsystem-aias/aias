@@ -6,6 +6,7 @@ import json
 import math
 import sys
 import unittest
+from collections import Counter
 from pathlib import Path
 
 import numpy as np
@@ -406,6 +407,103 @@ def synthetic_predictor_world():
                        "model": m, "condition": "S0", "run": 1, "probe_id": b, "label": "yes",
                        "recognized": recog if b == "CeraVe" else 1})
     return raw, ca, cb
+
+
+class TestSamsungGroupOpen(unittest.TestCase):
+    """r6 (author's decision 2026-11-24; DEVIATIONS Entry 0 item (b)): an OPEN choice of any Samsung-group brand
+    (Samsung, Harman and its brands) is coded and reported but excluded from every test."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.recs, cls.pred, _t = S.synth_world(squares=2, seed=31)
+
+    @staticmethod
+    def open_rec(cat, line, cond="OPEN", **kw):
+        return dict({"condition": cond, "category": cat, "text": f"A good pick.\nCHOICE: {line}"}, **kw)
+
+    def test_terms_are_v062_samsung_and_harman_terms(self):
+        # the r0 terms of v0.62's screen as recorded by the v0.46 re-run (osf/v46/data/coi_screen_v0_46_r1.txt):
+        # Samsung, Harman and its audio brands, the Sound United brands (Masimo, the seller, left out), before Cheil
+        txt = (HERE.parent.parent / "data" / "coi_screen_v0_46_r1.txt").read_text(encoding="utf-8")
+        r0 = [ln for ln in txt.splitlines() if ln.startswith("terms r0: ")][0][len("terms r0: "):].split("; ")
+        want = tuple(t for t in r0[:r0.index("Cheil")] if t != "Masimo")
+        self.assertEqual(C.SAMSUNG_GROUP_TERMS, want)
+        self.assertEqual(len(C.SAMSUNG_GROUP_TERMS), 21)
+
+    def test_coder_flags_open_choices_and_keeps_the_code(self):
+        cases = [("cars", "JBL", "OTHER", None, "JBL"), ("cosmetics", "Samsung", "OTHER", None, "Samsung"),
+                 ("cars", "Harman Kardon", "OTHER", None, "Harman"),
+                 ("spirits", "**Bowers & Wilkins**", "OTHER", None, "Bowers & Wilkins"),
+                 ("skincare", "Classé", "OTHER", None, "Classé"),
+                 ("cars", "Samsung SDI", "OTHER", None, "Samsung"),
+                 ("cars", "BMW with the Harman Kardon sound system", "VALID", "BMW", "Harman"),
+                 ("cars", "Denon (https://www.denon.com)", "OTHER", None, "Denon")]
+        for cat, line, code, unit, term in cases:
+            with self.subTest(line=line):
+                got = C.code_answer(self.open_rec(cat, line))
+                self.assertEqual((got["code"], got["unit"], got["samsung_group"]), (code, unit, term))
+
+    def test_coder_does_not_flag(self):
+        none_cases = [self.open_rec("cars", "Toyota"),
+                      {"condition": "OPEN", "category": "cars", "text": "Samsung makes my phone.\nCHOICE: Toyota"},
+                      self.open_rec("cars", "Polkadot Motors"), self.open_rec("cars", "denon"),
+                      self.open_rec("cars", "Masimo"),
+                      self.open_rec("cars", "JBL", cond="LIST", order=["Tesla", "Toyota"])]
+        for rec in none_cases:
+            with self.subTest(text=rec["text"], cond=rec["condition"]):
+                self.assertIsNone(C.code_answer(rec)["samsung_group"])
+        self.assertEqual(C.code_answer(none_cases[-1])["code"], "OFF_LIST")
+        for cat, units in B.live_units().items():   # no live unit is a Samsung-group name (screen r1: 0 matches)
+            for u in units:
+                self.assertIsNone(C.samsung_group_term(u), (cat, u))
+
+    def _flag(self, n):
+        recs = [dict(r) for r in self.recs]
+        k = 0
+        for r in recs:
+            if r["condition"] == "OPEN" and r["code"] == "VALID" and k < n:
+                if k % 2:
+                    r["samsung_group"] = "Harman"          # coder flag (r6)
+                else:
+                    r["choice_line"] = f"{r['unit']} with JBL audio"   # record coded before r6: no flag field
+                k += 1
+        return recs, k
+
+    def test_scorer_excludes_from_every_test_and_reports(self):
+        base = S.score(self.recs, self.pred, draws=0.01, with_sens=True)
+        recs, k = self._flag(10)
+        self.assertEqual(k, 10)
+        res = S.score(recs, self.pred, draws=0.01, with_sens=True)
+        self.assertEqual(res["tests"]["H2"]["n"], base["tests"]["H2"]["n"] - 10)
+        self.assertEqual(res["tests"]["H1"]["n"], base["tests"]["H1"]["n"])
+        flagged_by_model = Counter(S.mkey(r) for r in recs if S.samsung_group(r))
+        for m, n in flagged_by_model.items():
+            self.assertEqual(res["sensitivities"][f"S-Model-{m}"]["H2"]["n"],
+                             base["sensitivities"][f"S-Model-{m}"]["H2"]["n"] - n)
+        n_not_coi = sum(1 for r in recs if S.samsung_group(r) and (r["category"], r["unit"]) not in S.COI_UNITS)
+        self.assertEqual(res["sensitivities"]["S-COI"]["H2"]["n"], base["sensitivities"]["S-COI"]["H2"]["n"] - n_not_coi)
+        for c in res["categories"]:
+            n_c = sum(1 for r in recs if S.samsung_group(r) and r["category"] != c)
+            self.assertEqual(res["sensitivities"][f"S-LOCO-{c}"]["H2"]["n"],
+                             base["sensitivities"][f"S-LOCO-{c}"]["H2"]["n"] - n_c)
+        rep = res["descriptives"]["2_open_samsung_group"]
+        self.assertEqual((rep["n"], rep["by_code"]), (10, {"VALID": 10}))
+        self.assertEqual(sum(res["checks"]["exclusions_samsung_group"].values()), 10)
+        self.assertEqual(res["drops"], base["drops"])   # drop rules unchanged (answered and codable as before)
+        self.assertEqual(base["descriptives"]["2_open_samsung_group"]["n"], 0)
+
+    def test_end_to_end_flagged_choice_left_out(self):
+        raw, pred, _t = S.synth_world(squares=2, seed=21, as_text=True)
+        coded0 = C.code_all(raw)
+        i = next(j for j, r in enumerate(raw) if r["condition"] == "OPEN" and r["category"] == "cars"
+                 and coded0[j]["code"] == "VALID")
+        raw[i] = dict(raw[i], text=raw[i]["text"] + " with the Harman Kardon system")
+        coded = C.code_all(raw)
+        self.assertEqual((coded[i]["code"], coded[i]["samsung_group"]), ("VALID", "Harman"))
+        a = S.score(coded, pred, draws=FAST, with_sens=False)
+        b = S.score(coded0, pred, draws=FAST, with_sens=False)
+        self.assertEqual(a["tests"]["H2"]["n"], b["tests"]["H2"]["n"] - 1)
+        self.assertEqual(a["descriptives"]["2_open_samsung_group"]["records"][0]["call_id"], raw[i]["call_id"])
 
 
 class TestPredictors(unittest.TestCase):

@@ -74,6 +74,11 @@ LANDSCAPE_SECTIONS = ["## 6. Study design summary table"]
 TABLE_WIDTHS = {  # header row prefix -> dash counts per column
     "| # | Question | Decision": [3, 14, 60, 16],
     "| True Ū_P | Choices | r |": [12, 14, 6, 11, 14, 13, 14],   # r5: H1 power table (headers no longer touch)
+    # r6 final: the block, category and cost tables get a wide text column, so that their rows do not wrap and the
+    # block table no longer splits across pages (r5 left its Total row alone on the next page)
+    "| Block (collection order) | Content per model |": [16, 52, 14, 14],
+    "| Category (registry) | Units |": [20, 8, 16, 40],
+    "| Part | Calls | Central, US$ |": [44, 14, 14, 14],
 }
 
 

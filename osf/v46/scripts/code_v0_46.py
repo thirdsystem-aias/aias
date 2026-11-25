@@ -10,6 +10,8 @@ Codes each CHOICE answer (blocks C1-C3) to the category's registry, deterministi
   NONE       no codable choice, a refusal, or a choice line with nothing on it
   MISSING    not an outcome: unanswered call, served by another model (MC_Served), or cut at the output limit
              before a CHOICE line (section 3.10: "treated as missing, never as NONE")
+r6 (2026-11-24, author's decision; DEVIATIONS Entry 0 item (b)): an OPEN choice line naming a Samsung-group brand
+(SAMSUNG_GROUP_TERMS) keeps its code and is flagged `samsung_group`; the scorer excludes it from every test.
 Matching uses the certified functions unchanged: v0.20-v0.22 `detect_mention` (score_v20/21/22) and the v0.23
 patterns (`score_v0_23.find_brand_mentions`, the deterministic part of score_phase_b that v0.42's coder runs).
 
@@ -75,6 +77,29 @@ REFUSAL_TEXT_RE = re.compile(
     r"(?:choice|decision|selection|pick))\b"
     r"|\bi\s+(?:must|have\s+to)\s+(?:respectfully\s+)?decline\b",
     re.I)
+
+
+# r6 (author's decision, 2026-11-24; DEVIATIONS Entry 0 item (b)): an OPEN choice of any Samsung-group brand (Samsung,
+# Harman and its brands) is coded as usual and reported, but excluded from every test. The coder keeps the code it
+# would give anyway and sets `samsung_group` to the first term found on the choice line (None otherwise); the scorer
+# leaves every flagged record out of H1-H5 and the sensitivities. Terms: the Samsung and Harman terms of v0.62's
+# registry string screen (osf/v62/scripts/coi_screen_v0_62.py, TERMS r0, v0.62 commit f09068f, git blob
+# b128979f61ae275042c62c46da9fdaa42f91c542; v0.62 DEVIATIONS Entry 0: "Samsung; Harman and its audio brands; the Sound
+# United brands and Masimo; ..."), in v0.62's order, with Masimo left out (the seller of Sound United, not a Samsung-group
+# company). "Samsung" also covers every "Samsung X" company name of v0.62's r3 list. Match = v0.62's screen(): whole
+# word, case-sensitive. LIST is not flagged: a non-listed brand there is OFF_LIST and never enters a test.
+SAMSUNG_GROUP_TERMS = ("Samsung", "Harman", "Harman Kardon", "JBL", "AKG", "Infinity", "Mark Levinson", "Revel",
+                       "Arcam", "Lexicon", "Roon", "Sound United", "Denon", "Marantz", "Bowers & Wilkins", "B&W",
+                       "Polk", "Definitive Technology", "Boston Acoustics", "Classé", "HEOS")
+_SG_RES = [(t, re.compile(r"(?<![A-Za-z])" + re.escape(t) + r"(?![A-Za-z])")) for t in SAMSUNG_GROUP_TERMS]
+
+
+def samsung_group_term(line):
+    """The first Samsung-group term (SAMSUNG_GROUP_TERMS order) on `line`, else None. v0.62 screen() match."""
+    for t, rx in _SG_RES:
+        if rx.search(line or ""):
+            return t
+    return None
 
 
 def strip_urls(text):
@@ -161,7 +186,8 @@ def code_answer(rec, live=None):
     out = {k: rec.get(k) for k in ("call_id", "condition", "category", "brief", "model", "model_slot",
                                    "square", "row", "run", "probe_id")}
     out.update(code=None, unit=None, reason=None, choice_line=None, other_text=None, position=None, L=None,
-               order=rec.get("order"), at_limit=bool(at_length_limit(rec)) if is_answered(rec) else False)
+               samsung_group=None, order=rec.get("order"),
+               at_limit=bool(at_length_limit(rec)) if is_answered(rec) else False)
     if rec.get("order"):
         out["L"] = len(rec["order"])
     if not served_ok(rec.get("model"), rec.get("served_model")):
@@ -180,6 +206,8 @@ def code_answer(rec, live=None):
         return out
     line = strip_urls(line).strip()
     out["choice_line"] = line
+    if cond == "OPEN":
+        out["samsung_group"] = samsung_group_term(line)   # r6: flag only; the code below is unchanged
     hits = registry_matches(cat, line)
     if len(hits) >= 2:
         out.update(code="AMBIGUOUS", reason="two_or_more_units")
@@ -355,7 +383,8 @@ def main(argv=None):
     with open(a.out, "w", encoding="utf-8") as f:
         for d in coded:
             f.write(json.dumps(d, ensure_ascii=False, sort_keys=True) + "\n")
-    print(f"[v46] coded {len(coded)} -> {a.out}: {dict(Counter(d['code'] for d in coded))}")
+    print(f"[v46] coded {len(coded)} -> {a.out}: {dict(Counter(d['code'] for d in coded))}; "
+          f"OPEN Samsung-group flagged (excluded from every test): {sum(bool(d['samsung_group']) for d in coded)}")
     return 0
 
 

@@ -9,6 +9,8 @@ per-model recall is supplied; 6, refusals and cannot-buy hedges, and 8, answer f
 lines are supplied, r2). Verdict rules exactly as section 2; seeds as section 5.1.
 
 The scorer joins predictors to choices only here, after coding (blinding, section 5.3). NO MODEL IS CALLED.
+r6 (2026-11-24, author's decision; DEVIATIONS Entry 0 item (b)): OPEN choices of a Samsung-group brand (the coder's
+`samsung_group` flag) are reported (checks.exclusions_samsung_group, descriptive 2) and excluded from every test.
 
 The predictor table is computed from the raw predictor answers by predictors_v0_46.py (v1.14's code at 3129674,
 r2), certified by the code-parity gates G1, G2 (gates_v0_46.py). This script takes the table as input;
@@ -33,6 +35,7 @@ from scipy.stats import rankdata
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 import build_probes_v0_46 as B  # noqa: E402
+import code_v0_46 as C  # noqa: E402  (r6: SAMSUNG_GROUP_TERMS and their match; no matcher is loaded on import)
 
 SEEDS = {"H1": 460001, "H2": 460002, "H3": 460003, "H4": 460004, "BOOT": 460005, "H5": 460006}
 N_PERM = 10_000          # H1-H3 permutation draws
@@ -69,6 +72,27 @@ COI_UNITS = {("cars", "Chevrolet"), ("cars", "BMW"), ("cars", "Bentley"), ("spir
 # the power analysis (UNDETERMINED <= 0.7%) does not do. Codable here = a choice was coded to a brand or to
 # OTHER/OFF_LIST/DEFUNCT; AMBIGUOUS, NONE and MISSING are not codable.
 CODABLE = {"VALID", "OTHER", "OFF_LIST", "DEFUNCT"}
+
+
+# =========================================================================== r6: Samsung-group OPEN choices
+def samsung_group(r):
+    """r6 (author's decision 2026-11-24; DEVIATIONS Entry 0 item (b)): the Samsung-group term of an OPEN choice, else
+    None. The coder's flag is used; for a record without it (coded before r6), the coder's own function is applied to
+    the stored choice line. Flagged records are coded and reported, and excluded from every test (H1-H5 and every
+    sensitivity)."""
+    if r.get("condition") != "OPEN":
+        return None
+    if r.get("samsung_group"):
+        return r["samsung_group"]
+    return C.samsung_group_term(r.get("choice_line") or "")
+
+
+def samsung_group_report(coded):
+    """Every flagged OPEN record, for the report (descriptive 2): count by code and the records themselves."""
+    rows = [{"call_id": r.get("call_id"), "model": mkey(r), "category": r.get("category"), "brief": r.get("brief"),
+             "code": r.get("code"), "unit": r.get("unit"), "term": t, "choice_line": r.get("choice_line")}
+            for r in coded for t in [samsung_group(r)] if t]
+    return {"n": len(rows), "by_code": dict(Counter(x["code"] for x in rows)), "records": rows}
 
 
 # =========================================================================== predictor formulas (for tests)
@@ -443,6 +467,9 @@ def checks(coded, cfg, shares):
     out["refusals"] = sum(r.get("reason") == "refusal" for r in coded)
     out["exclusions"] = {f"{k[0]}/{k[1]}/{k[2]}/{k[3]}": v for k, v in sorted(Counter(
         (r["condition"], mkey(r), r["category"], r["code"]) for r in coded if r["code"] != "VALID").items())}
+    # r6: OPEN choices of a Samsung-group brand, excluded from every test whatever their code (counted here too)
+    out["exclusions_samsung_group"] = {f"{k[0]}/{k[1]}/{k[2]}/{k[3]}": v for k, v in sorted(Counter(
+        (r["condition"], mkey(r), r["category"], r["code"]) for r in coded if samsung_group(r)).items())}
     return out
 
 
@@ -468,7 +495,8 @@ def run_tests(coded, cfg, draws=1.0, apply_minimum=True, drops=None, pos_a=False
         drops, _ = drop_rules(coded, cfg)
     mins = MIN_VALID_NO_SPIRITS if cfg["spirits_out"] else MIN_VALID
     ok = [r for r in coded if r["code"] == "VALID" and r["category"] in cfg["cats"] and mkey(r) in cfg["models"]
-          and (r["category"], r["unit"]) not in cfg["drop_units"] and r["unit"] in cfg["live"][r["category"]]]
+          and (r["category"], r["unit"]) not in cfg["drop_units"] and r["unit"] in cfg["live"][r["category"]]
+          and not samsung_group(r)]   # r6: Samsung-group OPEN choices are excluded from every test
     lst = [r for r in ok if r["condition"] == "LIST"]
     opn = [r for r in ok if r["condition"] == "OPEN"]
     if pos_a:   # S-Pos-a: choices of the brand shown first or last are left out
@@ -517,7 +545,8 @@ def sensitivities(coded, cfg, drops, draws):
         s[f"S-Model-{m}"] = run_tests(coded, dict(cfg, models=[m]), **kw)
     s["S-Pos-a"] = run_tests(coded, cfg, pos_a=True, **kw)
     lst = [(r["category"], r["unit"], mkey(r), r["order"]) for r in coded if r["code"] == "VALID"
-           and r["condition"] == "LIST" and r["category"] in cfg["cats"] and mkey(r) in cfg["models"]]
+           and r["condition"] == "LIST" and r["category"] in cfg["cats"] and mkey(r) in cfg["models"]
+           and not samsung_group(r)]
     s["S-Pos-b"] = position_logit(cfg, lst)
     dropped = set(drops["LIST"]) | set(drops["OPEN"])
     if dropped:
@@ -540,6 +569,7 @@ def descriptives(coded, cfg):
     d["2_open_other_share"] = sum(r["code"] == "OTHER" for r in opn) / len(opn) if opn else None
     d["2_open_other_top10"] = {c: Counter(r["other_text"] for r in opn if r["category"] == c and
                                           r["code"] == "OTHER").most_common(10) for c in cfg["cats"]}
+    d["2_open_samsung_group"] = samsung_group_report([r for r in coded if r["category"] in cfg["cats"]])
 
     def modal(rs):
         cnt = Counter(r["unit"] for r in rs)
