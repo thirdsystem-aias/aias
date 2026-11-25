@@ -39,22 +39,26 @@ TIER = 1                                      # CLAUDE.md: Tier 1 Flagship inclu
 COVER = "A04"
 
 TITLE = "All the Parts at Once"               # decided (Pablo, Wed 2026-11-25, 7:15 am CT, call 6); every outcome class
-DECK = ("{{v:pv.title}}: how the provisional parts of AI Availability relate when all are measured on the same "
+DECK = ("{{v:pv.title}}: how the parts of AI Availability relate when all are measured on the same "
         "brands, models and week")
 
 STANDFIRST = [
     {"requires": ["STRUCT"],
      "text": "We read every part of AI Availability that has been measured on the newest AI models, for the same "
-             "{{v:pv.units}} brands, and asked whether they are separate readings of a brand. {{v:pv.headline}}"},
+             "{{v:pv.units}} brands, and asked whether they are separate readings of a brand. {{v:pv.report_headline}}"},
     {"requires": ["!STRUCT"],
      "text": "We read every part of AI Availability that has been measured on the newest AI models, for the same "
-             "{{v:pv.units}} brands. {{v:pv.headline}}"},
+             "{{v:pv.units}} brands. {{v:pv.report_headline}}"},
 ]
 
 GLANCE_NUMBERS = [
-    {"value": "{{v:pv.K.n}}", "unit": "",
+    {"requires": ["STRUCT"], "value": "{{v:pv.K.n}}", "unit": "",
      "label": "Parts included in the structure test (provisional)",
      "source": "of six parts; the state of each in finding 03"},   # the names overflow the number row at k >= 5
+    # no structure test: no "structure test" count (Pablo, Wed 2026-11-25, 8:38 am CT, Preview report point 3)
+    {"requires": ["!STRUCT"], "value": "{{v:pv.K.n}}", "unit": "",
+     "label": "Parts that passed their own first test or are published",
+     "source": "of six parts; the state of each in finding 03"},
     {"requires": ["STRUCT"], "value": "{{v:pv.pc.rho_2dp}}", "unit": "",
      "label": "Rank correlation of Presence with Consistency on the newest models",
      "source": "within categories, {{v:pv.pc.n}} brands; pre-set bar {{v:pv.band.confirm}}"},
@@ -79,7 +83,7 @@ MEASURED = ("Claude Fable 5.2, GPT-6 Astra and Gemini 4 Argon, the newest flagsh
 SUMMARY = [
     "AIAS™ describes how AI answers treat a brand in parts. Presence and Consistency are published; the others "
     "are provisional and each has had one test of its own. This preview is the first time the parts are read "
-    "together, on the same brands and the same three models. {{v:pv.k_sentence}} {{v:pv.headline}}",
+    "together, on the same brands and the same three models. {{v:pv.k_sentence}} {{v:pv.report_headline}}",
     {"requires": ["STRUCT"], "text": "{{v:pv.w1}} No single AIAS number per brand is published: the parts are "
                                      "shown side by side."},
 ]
@@ -139,7 +143,7 @@ CHARTS = {
 }
 
 # Findings (P1-P5). Titles are fixed per outcome, written before the data; the body carries the section 6.6
-# headline verbatim through {{v:pv.headline}}. Class C has no report: drafting pauses (pre-registration 6.6).
+# report-only headline through {{v:pv.report_headline}} (8:38 am, point 2). Class C has no report: drafting pauses (pre-registration 6.6).
 FINDINGS = [
     {"requires": ["STRUCT"],
      "verdict": "{{v:pv.structure.verdict}}",
@@ -154,7 +158,7 @@ FINDINGS = [
      "caption": "Dot: rank correlation within category of each pair of included parts; bar: its 90% interval; "
                 "shaded: the pre-set bars. Parts under review are shown below, descriptive only. Provisional.",
      "body": [
-         "{{v:pv.headline}}",
+         "{{v:pv.report_headline}}",
          "The test compared every pair of included parts, and each part with all earlier parts together. Of the "
          "{{v:pv.structure.k}} included parts, {{v:pv.structure.d}} were separate or partly separate readings "
          "(Presence counted as the anchor). Separate: {{v:pv.structure.distinct}}. Partly separate: "
@@ -292,6 +296,6 @@ DISCLOSURES = {
 }
 
 CLOSING_STATEMENT = [
-    {"requires": ["STRUCT"], "text": "{{v:pv.headline}}"},
+    {"requires": ["STRUCT"], "text": "{{v:pv.report_headline}}"},
     {"requires": ["!STRUCT"], "text": "The parts are shown side by side; how they relate is not yet determined."},
 ]

@@ -100,6 +100,7 @@ TOKEN_MAP = {
     # the headline and the wording rules, as the paper fill computed them (section 6.6, W1-W3)
     "pv.class": ("results", ["structure", "wording_class"], "word"),
     "pv.headline": ("paper", "HEADLINE", "word"),
+    "pv.report_headline": ("paper", "REPORT_HEADLINE", "word"),   # report only (Pablo, Nov 25, 8:38 am, points 2-3)
     "pv.w1": ("paper", "W1_SENTENCE", "word", "STRUCT"),
     "pv.k_sentence": ("paper", "K_SENTENCE", "word"),
     "pv.structure.verdict": ("results", ["structure", "H_Structure", "verdict"], "word"),

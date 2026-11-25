@@ -369,6 +369,27 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations, cla
     else:
         head = f"On the newest models, how the parts relate could not be determined: {cause}."
     val.word("HEADLINE", head, ["results", "structure", "wording_class"], [n for n in val.vals if n.startswith("OVL_")])
+    # Report-only headline (Pablo, Wed 2026-11-25, 8:38 am CT, Preview report points 2 and 3): Presence and
+    # Consistency are published, so the report does not call them provisional; the no-structure-test outcome is
+    # said without paper wording or section numbers. Not used by the paper template (paper text unchanged).
+    if cls == "A":
+        rhead = ("On the newest models, Presence, Consistency and the four provisional parts are six separate "
+                 "readings of a brand.")
+    elif cls == "A_k":
+        rhead = (f"On the newest models, the {kword} parts measured so far ({names(K)}) are separate readings of a "
+                 f"brand" + (f"; {outside}." if outside else "."))
+    elif cls == "U":
+        if not panel_ok:
+            ucause = "one of the three models was dropped under a rule set in advance, so the test was not run"
+        elif k < 3:
+            ucause = f"the test needs at least three parts, and only {names(K)} were included"
+        else:
+            ucause = "fewer than three of the included parts had a determined result"
+        rhead = f"On the newest models, how the parts relate could not be determined: {ucause}."
+    else:
+        rhead = head
+    val.word("REPORT_HEADLINE", rhead, ["results", "structure", "wording_class"],
+             [n for n in val.vals if n.startswith("OVL_")])
 
     # ---------------- Ranking (W3: "retest pending" until v1.14's final gate exists) and the marginal legs
     val.word("R_GATE_SOURCE", "Stage 1 interim verdict" if r_pending else "final gate after its retest",

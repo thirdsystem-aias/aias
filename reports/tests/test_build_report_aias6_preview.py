@@ -241,5 +241,54 @@ class TestPreviewCalls(unittest.TestCase):
         self.assertIn("A Pre-Registered Structure Test of Six Provisional Components on the Newest Models", flat)
 
 
+class TestReportPoints(unittest.TestCase):
+    """Pablo's 8:38 am answers (control panel, Wed 2026-11-25, "Ok to all" to the 7:40 am list), points 1-3."""
+
+    def test_point1_titles_glance_two_decimals(self):
+        for s in ["SYNTHETIC_nov25_inputs"] + MS.SCENARIOS:
+            ctx = T.context(SCEN if s.startswith("SYNTHETIC_") else FIX / s, synthetic=True)
+            if ctx["src"]["results"]["structure"]["wording_class"] == "C":
+                continue
+            F, _ = B.fill_all(ctx)
+            self.assertEqual(len(F["GLANCE_NUMBERS"]), 3, s)                # two extra numbers when no test ran
+            for g in F["GLANCE_NUMBERS"]:
+                if "." in g["value"]:
+                    self.assertRegex(g["value"], r"^[−-]?\d\.\d\d$", s)     # big numbers: two decimals
+            for fi in F["FINDINGS"]:
+                self.assertLess(len(fi["title"]), 58, s)                    # shortened finding titles
+        titles = {t["requires"][0]: t["text"] for t in B.C.FINDINGS[0]["title_by_class"]}
+        self.assertEqual(titles["CLASS=A_k"], "The parts measured so far are separate readings")
+
+    def test_point2_report_headline_not_provisional_paper_unchanged(self):
+        ctx = T.context(SCEN, synthetic=True)
+        self.assertEqual(ctx["paper"]["REPORT_HEADLINE"],
+                         "On the newest models, the three parts measured so far (Presence, Consistency and Coverage) "
+                         "are separate readings of a brand; Ranking and Grounding are under review; Sentiment is "
+                         "pending.")
+        self.assertIn("three provisional parts", ctx["paper"]["HEADLINE"])          # paper wording unchanged
+        for s in ("six_confirmed", "ranking_marginal_confirmed"):
+            rh = T.context(FIX / s, synthetic=True)["paper"]["REPORT_HEADLINE"]
+            self.assertNotIn("provisional parts measured", rh, s)
+            self.assertFalse(re.search(r"six provisional parts", rh), s)
+        F, _ = B.fill_all(ctx)
+        self.assertIn(ctx["paper"]["REPORT_HEADLINE"], F["STANDFIRST"])
+        self.assertNotIn(ctx["paper"]["HEADLINE"], json.dumps(F, ensure_ascii=False))
+
+    def test_point3_no_structure_outcome_in_plain_words(self):
+        for s in ("reduced_panel", "not_run"):
+            ctx = T.context(FIX / s, synthetic=True)
+            if ctx["flags"]["STRUCT"]:
+                continue
+            F, _ = B.fill_all(ctx)
+            text = json.dumps(F, ensure_ascii=False)
+            self.assertNotIn("§", text, s)
+            self.assertNotIn("drop rule", text, s)
+            self.assertNotIn("v0.42", text, s)
+            self.assertNotIn("structure test", F["GLANCE_NUMBERS"][0]["label"], s)
+        rh = T.context(FIX / "reduced_panel", synthetic=True)["paper"]["REPORT_HEADLINE"]
+        self.assertEqual(rh, "On the newest models, how the parts relate could not be determined: one of the three "
+                             "models was dropped under a rule set in advance, so the test was not run.")
+
+
 if __name__ == "__main__":
     unittest.main(verbosity=1)
