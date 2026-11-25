@@ -1,0 +1,10 @@
+ACQUIRED by r1125 v0.62 re-run pass (memory free 61%, swap free 1462M)
+start CT 2026-11-25 08:38:44 CST  UTC 2026-11-25T14:38:44Z
+prereg guard passed: v0.62-prereg-r1 -> 02f0d442d58ce30e5528393ee38a2b258159fee4; anchor /Users/pablou/aias/_worktrees/v0.62-nohand/osf/v62/anchor/osf_anchor_v0_62.json
+window ok: inside the window 2026-11-25..2026-12-02 US Central; deadline 2026-11-28T06:00:30.813641+00:00
+1602 specs (headphones option A), 1601 already done; budget {'actual_calls_usd': 28.1219, 'judge_reserve_usd': 0.0, 'spent_usd': 28.1219, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': True, 'approved_drop_run3': False, 'approved_drop_phase_a': False, 'halted': None, 'halt_reason': None}
+block 1 ('B', 'S0', 1): 1 calls to send; {'actual_calls_usd': 28.1219, 'judge_reserve_usd': 0.0, 'spent_usd': 28.1219, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': True, 'approved_drop_run3': False, 'approved_drop_phase_a': False, 'halted': None, 'halt_reason': None}
+  ko|v19|B|phase_b__q6_iconic|gemini-4-argon|S0|1 ok out=736 fr=FinishReason.STOP $0.0075
+result: done {'actual_calls_usd': 28.1294, 'judge_reserve_usd': 0.0, 'spent_usd': 28.1294, 'reserved_in_flight_usd': 0, 'pause_at_usd': 80.0, 'cap_usd': 100.0, 'approved_past_80': False, 'approved_projection': True, 'approved_drop_run3': False, 'approved_drop_phase_a': False, 'halted': None, 'halt_reason': None}
+collector exit 0 at CT 2026-11-25 08:39:04 CST  UTC 2026-11-25T14:39:04Z
+RELEASED (was: r1125 v0.62 re-run pass since 08:38:44)
