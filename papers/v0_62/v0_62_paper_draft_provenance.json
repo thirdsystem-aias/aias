@@ -1,0 +1,1627 @@
+{
+ "template": "papers/v0_62/v0_62_paper_template.md",
+ "values_file": "papers/v0_62/v62_values.json",
+ "values_inputs": {
+  "written_by": "papers/v0_62/values_v0_62.py",
+  "inputs_sha256": {
+   "osf/v62/v62_verdicts.json": "c6bf66a31c7abf2d04863b426ba0a636f435835c4776719d27778cc348dcd916",
+   "osf/v62/data/v62_sens_coi106_v0_62.json": "28bb3a746fb392b1bab8da3553cf4ddb56eb1b3a46350e447e92d6ddeaf31ea4",
+   "osf/v62/data/v62_sens_ai_check_v0_62.json": "5989757708f640cf53932d34c7a1b086ef4f56ab5c104ca2a8e546956d1b2bf3",
+   "osf/v62/data/v62_sens_en_corrected_v0_62.json": "a638947314d9b630ab90d458a3586d1c91ca086e491b51e9ad2a997420178e01",
+   "osf/v62/ai_check/results/ai_check_analysis_v0_62.json": "5f2740f2bed04b3877d4b143bc8b0c3dce9c702a6a3be86cea2b8f5fd4a77d2f",
+   "osf/v62/data/v62_raw.jsonl": "3ff04f7411dad753263e2d32c8a0e4138e4e29fa53929ca45fc3f574c3bb3be4",
+   "osf/v62/scripts/budget_v0_62.py": "a3b3aa425bb94691480645dca615c33356f6ceeb2ab0f5a23229fd3f70eef16e",
+   "osf/v62/data/collect_v0_62.log": "1353d764d685c136d90592e3a82d4273b46582055aad695d8a30a2e462fe0d5c",
+   "osf/v62/data/collect_v0_62_rerun.log": "d16add95addde945189bb9d753aad181950c96f5c4e36003562d0dc34d181a10",
+   "osf/v62/data/v62_budget_state.json": "22e908533d1a26cffcc14def28ae8f2c0427f5cff80fdf8a41d645be8febc3df",
+   "osf/v62/data/gates/gate_P1real_P3_v0_62.json": "4cad75b6dcf07e1658bd9d518d24aaf986edbda20fe50cea94784aa6a7ec149e",
+   "osf/v62/data/gates/gate_P2_v0_62.json": "7ec596348d117ec806a2808338cb2f8cd8493daf504414a1e4f445a3be7344d3",
+   "osf/v62/data/coded/v62_alias_audit.csv": "95e24c8cbab658003bdb70c9c07646c1566f15d6aa7251df377facf390051624"
+  },
+  "n_values": 919
+ },
+ "synthetic": false,
+ "n_keys": 290,
+ "abstract_keys": [
+  "design.n_units",
+  "raw.ok",
+  "design.expected",
+  "raw.per_lang",
+  "raw.per_model",
+  "cost.spend",
+  "P.es.rho",
+  "P.es.ci",
+  "P.ko.rho",
+  "P.ko.ci",
+  "P.zh.rho",
+  "P.zh.ci",
+  "P.es.p",
+  "P.es.verdict",
+  "joint",
+  "P.es.dL",
+  "P.ko.dL",
+  "P.zh.dL",
+  "Phi.es.rho",
+  "Phi.es.verdict",
+  "Phi.ko.rho",
+  "Phi.zh.rho",
+  "Phi.ko.verdict",
+  "Rank.es.verdict",
+  "COI.n_as_run",
+  "COI.n_106",
+  "ENC.Phi.zh.rho4",
+  "ENC.Phi.zh.verdict"
+ ],
+ "keys": {
+  "AIC.alias.ko.acceptable_variant": {
+   "display": "16",
+   "value": 16,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.usage_counts (absent = 0)"
+  },
+  "AIC.alias.ko.n": {
+   "display": "94",
+   "value": 94,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.n_aliases"
+  },
+  "AIC.alias.ko.not_used_for_this_brand": {
+   "display": "1",
+   "value": 1,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.usage_counts (absent = 0)"
+  },
+  "AIC.alias.ko.off_brand": {
+   "display": "Del Maguey",
+   "value": "Del Maguey",
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.not_used_for_this_brand"
+  },
+  "AIC.alias.ko.standard": {
+   "display": "77",
+   "value": 77,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.usage_counts (absent = 0)"
+  },
+  "AIC.alias.zh.acceptable_variant": {
+   "display": "5",
+   "value": 5,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.usage_counts (absent = 0)"
+  },
+  "AIC.alias.zh.n": {
+   "display": "48",
+   "value": 48,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.n_aliases"
+  },
+  "AIC.alias.zh.not_used_for_this_brand": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.usage_counts (absent = 0)"
+  },
+  "AIC.alias.zh.standard": {
+   "display": "43",
+   "value": 43,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.usage_counts (absent = 0)"
+  },
+  "AIC.es.c2_vs_c3.agree": {
+   "display": "38%",
+   "value": 38.0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.c2_vs_c3.agreement_pct"
+  },
+  "AIC.es.c2_vs_c3.kappa": {
+   "display": "0.04",
+   "value": 0.04202719406674891,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.c2_vs_c3.kappa"
+  },
+  "AIC.es.claude_vs_c2.agree": {
+   "display": "66%",
+   "value": 65.71428571428571,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.claude_vs_c2.agreement_pct"
+  },
+  "AIC.es.claude_vs_c2.kappa": {
+   "display": "0.09",
+   "value": 0.09482758620689655,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.claude_vs_c2.kappa"
+  },
+  "AIC.es.claude_vs_c3.agree": {
+   "display": "54%",
+   "value": 54.285714285714285,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.claude_vs_c3.agreement_pct"
+  },
+  "AIC.es.claude_vs_c3.kappa": {
+   "display": "0.22",
+   "value": 0.21787709497206692,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.pairs.claude_vs_c3.kappa"
+  },
+  "AIC.es.flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.flagged (count)"
+  },
+  "AIC.es.nat.acceptable": {
+   "display": "8",
+   "value": 8,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.c2_naturalness (absent = 0)"
+  },
+  "AIC.es.nat.natural": {
+   "display": "42",
+   "value": 42,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.c2_naturalness (absent = 0)"
+  },
+  "AIC.es.phase_b_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.phase_b_flagged (count)"
+  },
+  "AIC.es.strictly_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.es.strictly_flagged (count)"
+  },
+  "AIC.ko.c2_vs_c3.agree": {
+   "display": "84%",
+   "value": 84.0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.c2_vs_c3.agreement_pct"
+  },
+  "AIC.ko.c2_vs_c3.kappa": {
+   "display": "0.13",
+   "value": 0.12663755458515152,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.c2_vs_c3.kappa"
+  },
+  "AIC.ko.claude_vs_c2.agree": {
+   "display": "71%",
+   "value": 71.42857142857143,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.claude_vs_c2.agreement_pct"
+  },
+  "AIC.ko.claude_vs_c2.kappa": {
+   "display": "0.21",
+   "value": 0.20814479638009034,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.claude_vs_c2.kappa"
+  },
+  "AIC.ko.claude_vs_c3.agree": {
+   "display": "83%",
+   "value": 82.85714285714286,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.claude_vs_c3.agreement_pct"
+  },
+  "AIC.ko.claude_vs_c3.kappa": {
+   "display": "0.57",
+   "value": 0.5679012345679014,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.pairs.claude_vs_c3.kappa"
+  },
+  "AIC.ko.flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.flagged (count)"
+  },
+  "AIC.ko.nat.acceptable": {
+   "display": "20",
+   "value": 20,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.c2_naturalness (absent = 0)"
+  },
+  "AIC.ko.nat.natural": {
+   "display": "30",
+   "value": 30,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.c2_naturalness (absent = 0)"
+  },
+  "AIC.ko.phase_b_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.phase_b_flagged (count)"
+  },
+  "AIC.ko.strictly_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.ko.strictly_flagged (count)"
+  },
+  "AIC.requests": {
+   "display": "11",
+   "value": 11,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json n_requests"
+  },
+  "AIC.spend": {
+   "display": "$1.3346",
+   "value": 1.334628,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json recorded_spend_usd"
+  },
+  "AIC.zh.c2_vs_c3.agree": {
+   "display": "26%",
+   "value": 26.0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.c2_vs_c3.agreement_pct"
+  },
+  "AIC.zh.c2_vs_c3.kappa": {
+   "display": "0.03",
+   "value": 0.028871391076115364,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.c2_vs_c3.kappa"
+  },
+  "AIC.zh.claude_vs_c2.agree": {
+   "display": "60%",
+   "value": 60.0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.claude_vs_c2.agreement_pct"
+  },
+  "AIC.zh.claude_vs_c2.kappa": {
+   "display": "0.13",
+   "value": 0.13427561837455826,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.claude_vs_c2.kappa"
+  },
+  "AIC.zh.claude_vs_c3.agree": {
+   "display": "49%",
+   "value": 48.57142857142857,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.claude_vs_c3.agreement_pct"
+  },
+  "AIC.zh.claude_vs_c3.kappa": {
+   "display": "0.05",
+   "value": 0.0483383685800603,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.pairs.claude_vs_c3.kappa"
+  },
+  "AIC.zh.flagged": {
+   "display": "1",
+   "value": 1,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.flagged (count)"
+  },
+  "AIC.zh.nat.acceptable": {
+   "display": "11",
+   "value": 11,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.c2_naturalness (absent = 0)"
+  },
+  "AIC.zh.nat.natural": {
+   "display": "39",
+   "value": 39,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.c2_naturalness (absent = 0)"
+  },
+  "AIC.zh.phase_b_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.phase_b_flagged (count)"
+  },
+  "AIC.zh.strictly_flagged": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json languages.zh.strictly_flagged (count)"
+  },
+  "COI.left_in_id": {
+   "display": "S03",
+   "value": "S03",
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json unit_left_in_by_locked_code"
+  },
+  "COI.n_106": {
+   "display": "106",
+   "value": 106,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json n_units_106"
+  },
+  "COI.n_as_run": {
+   "display": "107",
+   "value": 107,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json n_units_as_run"
+  },
+  "COI.n_flagged": {
+   "display": "6",
+   "value": 6,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json coi_flagged_params"
+  },
+  "ENC.P.es.ci": {
+   "display": "0.875–0.963",
+   "value": [
+    0.8749184296973669,
+    0.9629681307153108
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.ci4": {
+   "display": "0.8749–0.9630",
+   "value": [
+    0.8749184296973669,
+    0.9629681307153108
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.dL": {
+   "display": "+0.031",
+   "value": 0.031084656084656083,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.dL4": {
+   "display": "+0.0311",
+   "value": 0.031084656084656083,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.n": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.rho": {
+   "display": "0.938",
+   "value": 0.938294489079224,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.rho4": {
+   "display": "0.9383",
+   "value": 0.938294489079224,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.es.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_es"
+  },
+  "ENC.P.ko.ci": {
+   "display": "0.763–0.927",
+   "value": [
+    0.7632871475051745,
+    0.9265677020651083
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.ci4": {
+   "display": "0.7633–0.9266",
+   "value": [
+    0.7632871475051745,
+    0.9265677020651083
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.dL": {
+   "display": "−0.079",
+   "value": -0.07919973544973545,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.dL4": {
+   "display": "−0.0792",
+   "value": -0.07919973544973545,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.rho": {
+   "display": "0.868",
+   "value": 0.8681153001543023,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.rho4": {
+   "display": "0.8681",
+   "value": 0.8681153001543023,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.ko.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_ko"
+  },
+  "ENC.P.zh.ci": {
+   "display": "0.686–0.885",
+   "value": [
+    0.6856459638581517,
+    0.8852256798232784
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.ci4": {
+   "display": "0.6856–0.8852",
+   "value": [
+    0.6856459638581517,
+    0.8852256798232784
+   ],
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.dL": {
+   "display": "−0.047",
+   "value": -0.047453703703703706,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.dL4": {
+   "display": "−0.0475",
+   "value": -0.047453703703703706,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.rho": {
+   "display": "0.812",
+   "value": 0.8116272405941054,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.rho4": {
+   "display": "0.8116",
+   "value": 0.8116272405941054,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.P.zh.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Presence_zh"
+  },
+  "ENC.Phi.es.p4": {
+   "display": "0.0001",
+   "value": 9.999000099990002e-05,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_es"
+  },
+  "ENC.Phi.es.rho4": {
+   "display": "0.6569",
+   "value": 0.6568773941421201,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_es"
+  },
+  "ENC.Phi.es.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_es"
+  },
+  "ENC.Phi.ko.p4": {
+   "display": "0.0039",
+   "value": 0.0038996100389961006,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_ko"
+  },
+  "ENC.Phi.ko.rho4": {
+   "display": "0.3537",
+   "value": 0.3537480199613894,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_ko"
+  },
+  "ENC.Phi.ko.verdict": {
+   "display": "MARGINAL",
+   "value": "MARGINAL",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_ko"
+  },
+  "ENC.Phi.zh.p": {
+   "display": "0.0089",
+   "value": 0.008899110088991101,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_zh"
+  },
+  "ENC.Phi.zh.p4": {
+   "display": "0.0089",
+   "value": 0.008899110088991101,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_zh"
+  },
+  "ENC.Phi.zh.rho4": {
+   "display": "0.3048",
+   "value": 0.30482759212458627,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_zh"
+  },
+  "ENC.Phi.zh.verdict": {
+   "display": "MARGINAL",
+   "value": "MARGINAL",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.tests.H_Lang_Phi_zh"
+  },
+  "ENC.S-COI.es.rho4": {
+   "display": "0.9329",
+   "value": 0.9328742553390693,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.sensitivities.S-COI_es"
+  },
+  "ENC.S-COI.ko.rho4": {
+   "display": "0.8549",
+   "value": 0.8549420700564953,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.sensitivities.S-COI_ko"
+  },
+  "ENC.S-COI.zh.rho4": {
+   "display": "0.8015",
+   "value": 0.8015144037504381,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.sensitivities.S-COI_zh"
+  },
+  "ENC.S-COI106.es.rho4": {
+   "display": "0.9386",
+   "value": 0.9386155944740662,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json s_coi_106_corrected.S-COI-106_es"
+  },
+  "ENC.S-COI106.ko.rho4": {
+   "display": "0.8559",
+   "value": 0.85589122203528,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json s_coi_106_corrected.S-COI-106_ko"
+  },
+  "ENC.S-COI106.zh.rho4": {
+   "display": "0.7994",
+   "value": 0.7993692456438889,
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json s_coi_106_corrected.S-COI-106_zh"
+  },
+  "ENC.joint": {
+   "display": "Language-robust",
+   "value": "Language-robust",
+   "source": "osf/v62/data/v62_sens_en_corrected_v0_62.json result_corrected.joint_reading"
+  },
+  "P.cat_max": {
+   "display": "0.980",
+   "value": 0.9802086875268903,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_*.per_category_rho_c (maximum of 15)"
+  },
+  "P.cat_min": {
+   "display": "0.672",
+   "value": 0.672219123513549,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_*.per_category_rho_c (minimum of 15)"
+  },
+  "P.cat_n70": {
+   "display": "14",
+   "value": 14,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_*.per_category_rho_c (count >= 0.70)"
+  },
+  "P.es.cat.v0.19": {
+   "display": "0.949",
+   "value": 0.9493799846686368,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.cat.v0.20": {
+   "display": "0.958",
+   "value": 0.9575923572450848,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.cat.v0.21": {
+   "display": "0.939",
+   "value": 0.9389521336178058,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.cat.v0.22": {
+   "display": "0.972",
+   "value": 0.972346506419375,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.cat.v0.23": {
+   "display": "0.850",
+   "value": 0.8497816593886462,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.ci": {
+   "display": "0.864–0.959",
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.ci4": {
+   "display": "0.8638–0.9588",
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.dL": {
+   "display": "+0.036",
+   "value": 0.03604497354497354,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.dL4": {
+   "display": "+0.0360",
+   "value": 0.03604497354497354,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.dL_ci": {
+   "display": "+0.019 to +0.055",
+   "value": [
+    0.018849206349206348,
+    0.05539021164021164
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.n": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.p": {
+   "display": "< 0.001",
+   "value": 9.999000099990002e-05,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.rho": {
+   "display": "0.931",
+   "value": 0.9306777940164922,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.rho4": {
+   "display": "0.9307",
+   "value": 0.9306777940164922,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.unc": {
+   "display": "0.934",
+   "value": 0.9336738025772365,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.ko.cat.v0.19": {
+   "display": "0.943",
+   "value": 0.9427177274901473,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.cat.v0.20": {
+   "display": "0.902",
+   "value": 0.9019270779552134,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.cat.v0.21": {
+   "display": "0.720",
+   "value": 0.7200056347292492,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.cat.v0.22": {
+   "display": "0.980",
+   "value": 0.9802086875268903,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.cat.v0.23": {
+   "display": "0.846",
+   "value": 0.8458546936065101,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.ci": {
+   "display": "0.764–0.924",
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.ci4": {
+   "display": "0.7636–0.9245",
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.dL": {
+   "display": "−0.074",
+   "value": -0.07423941798941801,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.dL4": {
+   "display": "−0.0742",
+   "value": -0.07423941798941801,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.dL_ci": {
+   "display": "−0.099 to −0.051",
+   "value": [
+    -0.09871031746031746,
+    -0.05092592592592593
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.rho": {
+   "display": "0.867",
+   "value": 0.8671799990587867,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.rho4": {
+   "display": "0.8672",
+   "value": 0.8671799990587867,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.unc": {
+   "display": "0.873",
+   "value": 0.8729716847808232,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.ko.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_ko"
+  },
+  "P.zh.cat.v0.19": {
+   "display": "0.911",
+   "value": 0.9107233610480981,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.cat.v0.20": {
+   "display": "0.672",
+   "value": 0.672219123513549,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.cat.v0.21": {
+   "display": "0.748",
+   "value": 0.7481752724661775,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.cat.v0.22": {
+   "display": "0.907",
+   "value": 0.9066041187212812,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.cat.v0.23": {
+   "display": "0.893",
+   "value": 0.8927013900059144,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.ci": {
+   "display": "0.685–0.885",
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.ci4": {
+   "display": "0.6850–0.8852",
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.dL": {
+   "display": "−0.042",
+   "value": -0.04249338624338624,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.dL4": {
+   "display": "−0.0425",
+   "value": -0.04249338624338624,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.dL_ci": {
+   "display": "−0.070 to −0.014",
+   "value": [
+    -0.07043650793650794,
+    -0.01421957671957672
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.rho": {
+   "display": "0.812",
+   "value": 0.8117306919025745,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.rho4": {
+   "display": "0.8117",
+   "value": 0.8117306919025745,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.unc": {
+   "display": "0.820",
+   "value": 0.8199065661504534,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "P.zh.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_zh"
+  },
+  "Phi.cat_min": {
+   "display": "−0.409",
+   "value": -0.4094087803573969,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_*.per_category_rho_c (minimum of 15)"
+  },
+  "Phi.cat_nneg": {
+   "display": "2",
+   "value": 2,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_*.per_category_rho_c (count < 0)"
+  },
+  "Phi.es.cat.v0.19": {
+   "display": "0.502",
+   "value": 0.5022883414749454,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.cat.v0.20": {
+   "display": "0.589",
+   "value": 0.5894097180200701,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.cat.v0.21": {
+   "display": "0.698",
+   "value": 0.6975460122699386,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.cat.v0.22": {
+   "display": "0.472",
+   "value": 0.47175058648392787,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.cat.v0.23": {
+   "display": "0.690",
+   "value": 0.6904024767801857,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.ci": {
+   "display": "0.399–0.765",
+   "value": [
+    0.3993271007134788,
+    0.7650288091276359
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.n": {
+   "display": "75",
+   "value": 75,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.p": {
+   "display": "< 0.001",
+   "value": 9.999000099990002e-05,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.p4": {
+   "display": "0.0001",
+   "value": 9.999000099990002e-05,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.part.defined": {
+   "display": "78",
+   "value": 78,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es.partitions (absent = 0)"
+  },
+  "Phi.es.part.saturated": {
+   "display": "3",
+   "value": 3,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es.partitions (absent = 0)"
+  },
+  "Phi.es.part.undefined": {
+   "display": "5",
+   "value": 5,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es.partitions (absent = 0)"
+  },
+  "Phi.es.part.zero": {
+   "display": "26",
+   "value": 26,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es.partitions (absent = 0)"
+  },
+  "Phi.es.rho": {
+   "display": "0.623",
+   "value": 0.6230297082605862,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.rho4": {
+   "display": "0.6230",
+   "value": 0.6230297082605862,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.unc": {
+   "display": "0.647",
+   "value": 0.6469308547422811,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.es.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_es"
+  },
+  "Phi.ko.cat.v0.19": {
+   "display": "0.318",
+   "value": 0.31799441532717476,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.cat.v0.20": {
+   "display": "0.133",
+   "value": 0.13259870882635919,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.cat.v0.21": {
+   "display": "−0.007",
+   "value": -0.006600664060208366,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.cat.v0.22": {
+   "display": "0.506",
+   "value": 0.5061903000502711,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.cat.v0.23": {
+   "display": "0.563",
+   "value": 0.5631906079948963,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.ci": {
+   "display": "0.060–0.563",
+   "value": [
+    0.060444158717163944,
+    0.5632105393270364
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.n": {
+   "display": "66",
+   "value": 66,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.p": {
+   "display": "0.0045",
+   "value": 0.0044995500449955,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.p4": {
+   "display": "0.0045",
+   "value": 0.0044995500449955,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.part.defined": {
+   "display": "71",
+   "value": 71,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko.partitions (absent = 0)"
+  },
+  "Phi.ko.part.saturated": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko.partitions (absent = 0)"
+  },
+  "Phi.ko.part.undefined": {
+   "display": "6",
+   "value": 6,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko.partitions (absent = 0)"
+  },
+  "Phi.ko.part.zero": {
+   "display": "35",
+   "value": 35,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko.partitions (absent = 0)"
+  },
+  "Phi.ko.rho": {
+   "display": "0.343",
+   "value": 0.3433436664331132,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.rho4": {
+   "display": "0.3433",
+   "value": 0.3433436664331132,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.unc": {
+   "display": "0.400",
+   "value": 0.39981932445731255,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.ko.verdict": {
+   "display": "MARGINAL",
+   "value": "MARGINAL",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_ko"
+  },
+  "Phi.zh.cat.v0.19": {
+   "display": "0.347",
+   "value": 0.34703558138268953,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.cat.v0.20": {
+   "display": "−0.409",
+   "value": -0.4094087803573969,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.cat.v0.21": {
+   "display": "0.482",
+   "value": 0.4818484763952107,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.cat.v0.22": {
+   "display": "0.200",
+   "value": 0.19972451790633608,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.cat.v0.23": {
+   "display": "0.543",
+   "value": 0.5432207631327942,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.ci": {
+   "display": "0.078–0.521",
+   "value": [
+    0.07801034480414404,
+    0.5205759127673064
+   ],
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.n": {
+   "display": "70",
+   "value": 70,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.p": {
+   "display": "0.0054",
+   "value": 0.0053994600539946005,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.p4": {
+   "display": "0.0054",
+   "value": 0.0053994600539946005,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.part.defined": {
+   "display": "79",
+   "value": 79,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh.partitions (absent = 0)"
+  },
+  "Phi.zh.part.saturated": {
+   "display": "1",
+   "value": 1,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh.partitions (absent = 0)"
+  },
+  "Phi.zh.part.undefined": {
+   "display": "5",
+   "value": 5,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh.partitions (absent = 0)"
+  },
+  "Phi.zh.part.zero": {
+   "display": "27",
+   "value": 27,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh.partitions (absent = 0)"
+  },
+  "Phi.zh.rho": {
+   "display": "0.330",
+   "value": 0.33044335616866916,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.rho4": {
+   "display": "0.3304",
+   "value": 0.33044335616866916,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.unc": {
+   "display": "0.399",
+   "value": 0.3992736592395598,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Phi.zh.verdict": {
+   "display": "MARGINAL",
+   "value": "MARGINAL",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Phi_zh"
+  },
+  "Rank.es.verdict": {
+   "display": "NOT TESTED",
+   "value": "NOT TESTED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Rank_es"
+  },
+  "Rank.ko.verdict": {
+   "display": "NOT TESTED",
+   "value": "NOT TESTED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Rank_ko"
+  },
+  "Rank.reason": {
+   "display": "v1.14 status: MARGINAL (v1.14 Stage 1, commit 3129674; not PASS)",
+   "value": "v1.14 status: MARGINAL (v1.14 Stage 1, commit 3129674; not PASS)",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Rank_*.reason"
+  },
+  "Rank.v114_commit": {
+   "display": "3129674",
+   "value": "3129674",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Rank_*.reason"
+  },
+  "Rank.zh.verdict": {
+   "display": "NOT TESTED",
+   "value": "NOT TESTED",
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Rank_zh"
+  },
+  "S-COI.es.ci": {
+   "display": "0.849–0.956",
+   "value": [
+    0.8487936325220259,
+    0.9556212994623221
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_es"
+  },
+  "S-COI.es.n": {
+   "display": "107",
+   "value": 107,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_es"
+  },
+  "S-COI.es.rho": {
+   "display": "0.925",
+   "value": 0.9249358935116313,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_es"
+  },
+  "S-COI.es.rho4": {
+   "display": "0.9249",
+   "value": 0.9249358935116313,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_es"
+  },
+  "S-COI.ko.ci": {
+   "display": "0.737–0.919",
+   "value": [
+    0.737202654975113,
+    0.9187227326851304
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_ko"
+  },
+  "S-COI.ko.rho": {
+   "display": "0.854",
+   "value": 0.8541155256893389,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_ko"
+  },
+  "S-COI.ko.rho4": {
+   "display": "0.8541",
+   "value": 0.8541155256893389,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_ko"
+  },
+  "S-COI.zh.ci": {
+   "display": "0.669–0.881",
+   "value": [
+    0.6692706548936219,
+    0.8809874211522584
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_zh"
+  },
+  "S-COI.zh.rho": {
+   "display": "0.802",
+   "value": 0.801984086963887,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_zh"
+  },
+  "S-COI.zh.rho4": {
+   "display": "0.8020",
+   "value": 0.801984086963887,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-COI_zh"
+  },
+  "S-COI106.es.ci": {
+   "display": "0.859–0.959",
+   "value": [
+    0.8588753273999485,
+    0.9593936856430385
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.es.ci4": {
+   "display": "0.8589–0.9594",
+   "value": [
+    0.8588753273999485,
+    0.9593936856430385
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.es.n": {
+   "display": "106",
+   "value": 106,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.es.rho": {
+   "display": "0.930",
+   "value": 0.9304149185876167,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.es.rho4": {
+   "display": "0.9304",
+   "value": 0.9304149185876167,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.es.verdict": {
+   "display": "CONFIRMED",
+   "value": "CONFIRMED",
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_es"
+  },
+  "S-COI106.ko.ci": {
+   "display": "0.738–0.921",
+   "value": [
+    0.7375302500250396,
+    0.9205084175798067
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_ko"
+  },
+  "S-COI106.ko.ci4": {
+   "display": "0.7375–0.9205",
+   "value": [
+    0.7375302500250396,
+    0.9205084175798067
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_ko"
+  },
+  "S-COI106.ko.rho": {
+   "display": "0.855",
+   "value": 0.8550370391789573,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_ko"
+  },
+  "S-COI106.ko.rho4": {
+   "display": "0.8550",
+   "value": 0.8550370391789573,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_ko"
+  },
+  "S-COI106.zh.ci": {
+   "display": "0.665–0.881",
+   "value": [
+    0.6648537830503043,
+    0.880903792993501
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_zh"
+  },
+  "S-COI106.zh.ci4": {
+   "display": "0.6649–0.8809",
+   "value": [
+    0.6648537830503043,
+    0.880903792993501
+   ],
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_zh"
+  },
+  "S-COI106.zh.rho": {
+   "display": "0.800",
+   "value": 0.7998544838232008,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_zh"
+  },
+  "S-COI106.zh.rho4": {
+   "display": "0.7999",
+   "value": 0.7998544838232008,
+   "source": "osf/v62/data/v62_sens_coi106_v0_62.json sensitivities.S-COI-106_zh"
+  },
+  "S-Denon.es.ci": {
+   "display": "0.860–0.957",
+   "value": [
+    0.8598269375211076,
+    0.9574576549233532
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_es"
+  },
+  "S-Denon.es.n": {
+   "display": "111",
+   "value": 111,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_es"
+  },
+  "S-Denon.es.rho": {
+   "display": "0.930",
+   "value": 0.9300000454101596,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_es"
+  },
+  "S-Denon.ko.ci": {
+   "display": "0.764–0.926",
+   "value": [
+    0.7636799222165286,
+    0.9264109966904053
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_ko"
+  },
+  "S-Denon.ko.rho": {
+   "display": "0.868",
+   "value": 0.8677879545754436,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_ko"
+  },
+  "S-Denon.zh.ci": {
+   "display": "0.680–0.884",
+   "value": [
+    0.6800204907827924,
+    0.8844281866901572
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_zh"
+  },
+  "S-Denon.zh.rho": {
+   "display": "0.810",
+   "value": 0.8096104789133667,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Denon_zh"
+  },
+  "S-Headphones.es.ci": {
+   "display": "0.859–0.959",
+   "value": [
+    0.8585852524994286,
+    0.9589321024481208
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_es"
+  },
+  "S-Headphones.es.n": {
+   "display": "96",
+   "value": 96,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_es"
+  },
+  "S-Headphones.es.rho": {
+   "display": "0.929",
+   "value": 0.9292902791244743,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_es"
+  },
+  "S-Headphones.ko.ci": {
+   "display": "0.756–0.924",
+   "value": [
+    0.7558603237698093,
+    0.923705144030854
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_ko"
+  },
+  "S-Headphones.ko.rho": {
+   "display": "0.862",
+   "value": 0.8615096278148557,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_ko"
+  },
+  "S-Headphones.zh.ci": {
+   "display": "0.674–0.886",
+   "value": [
+    0.6740356733743393,
+    0.8861147869888678
+   ],
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_zh"
+  },
+  "S-Headphones.zh.rho": {
+   "display": "0.804",
+   "value": 0.8043347092823642,
+   "source": "osf/v62/v62_verdicts.json sensitivities.S-Headphones_zh"
+  },
+  "SAliasAI.ko.ci": {
+   "display": "0.764–0.924",
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-AliasAI.S-AliasAI_ko"
+  },
+  "SAliasAI.ko.n": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-AliasAI.S-AliasAI_ko"
+  },
+  "SAliasAI.ko.rho": {
+   "display": "0.867",
+   "value": 0.8671799990587867,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-AliasAI.S-AliasAI_ko"
+  },
+  "SAliasAI.zh.ci": {
+   "display": "0.685–0.885",
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-AliasAI.S-AliasAI_zh"
+  },
+  "SAliasAI.zh.rho": {
+   "display": "0.812",
+   "value": 0.8117306919025745,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-AliasAI.S-AliasAI_zh"
+  },
+  "STrans.flagged.P.es.ci": {
+   "display": "0.864–0.959",
+   "value": [
+    0.8638134335419682,
+    0.958828090171836
+   ],
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_es"
+  },
+  "STrans.flagged.P.es.n": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_es"
+  },
+  "STrans.flagged.P.es.rho": {
+   "display": "0.931",
+   "value": 0.9306777940164922,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_es"
+  },
+  "STrans.flagged.P.ko.ci": {
+   "display": "0.764–0.924",
+   "value": [
+    0.7635847191078351,
+    0.9244761932729159
+   ],
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_ko"
+  },
+  "STrans.flagged.P.ko.rho": {
+   "display": "0.867",
+   "value": 0.8671799990587867,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_ko"
+  },
+  "STrans.flagged.P.zh.ci": {
+   "display": "0.685–0.885",
+   "value": [
+    0.6850061585980521,
+    0.8851836456269334
+   ],
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_zh"
+  },
+  "STrans.flagged.P.zh.rho": {
+   "display": "0.812",
+   "value": 0.8117306919025745,
+   "source": "osf/v62/data/v62_sens_ai_check_v0_62.json sensitivities_ai_check.S-Trans.flagged.tests.H_Lang_Presence_zh"
+  },
+  "alias.matches": {
+   "display": "110",
+   "value": 110,
+   "source": "osf/v62/data/coded/v62_alias_audit.csv (rows after the header)"
+  },
+  "budget.window": {
+   "display": "2026-11-25 to 2026-12-02",
+   "value": [
+    "2026-11-25",
+    "2026-12-02"
+   ],
+   "source": "osf/v62/data/v62_budget_state.json window"
+  },
+  "budget.window_entry": {
+   "display": "3",
+   "value": "3",
+   "source": "osf/v62/data/v62_budget_state.json window_deviation_entry"
+  },
+  "cost.spend": {
+   "display": "$28.1294",
+   "value": 28.1294,
+   "source": "osf/v62/data/collect_v0_62_rerun.log result line (recorded spend after the re-run pass)"
+  },
+  "cost.strict_total": {
+   "display": "$28.297192",
+   "value": 28.297192000000003,
+   "source": "raw.cost_sum + cost.worst_case (computed for the paper)"
+  },
+  "cost.strict_total2": {
+   "display": "$28.30",
+   "value": 28.297192000000003,
+   "source": "raw.cost_sum + cost.worst_case (computed for the paper)"
+  },
+  "cost.wc_price": {
+   "display": "$2 / $10",
+   "value": [
+    2.0,
+    10.0
+   ],
+   "source": "budget_v0_62.prices(gemini-4-argon, standard, error line date)"
+  },
+  "cost.with_check": {
+   "display": "$29.4640",
+   "value": 29.464028,
+   "source": "cost.spend + AIC.spend (computed for the paper)"
+  },
+  "cost.worst_case": {
+   "display": "$0.16784",
+   "value": 0.16784,
+   "source": "budget_v0_62.worst_case(gemini-4-argon, S0, standard, error line started_utc): 2,000 input and 16,384 output tokens at that date's price (computed for the paper)"
+  },
+  "design.expected": {
+   "display": "1,602",
+   "value": 1602,
+   "source": "pre-registration header and section 5.2 (adopted design)"
+  },
+  "design.n_units": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/v62_verdicts.json n_units"
+  },
+  "err.cost": {
+   "display": "$0",
+   "value": 0,
+   "source": "osf/v62/data/v62_raw.jsonl error line cost_usd"
+  },
+  "err.kind": {
+   "display": "ConnectTimeout",
+   "value": "ConnectTimeout",
+   "source": "osf/v62/data/v62_raw.jsonl error line error"
+  },
+  "err.model": {
+   "display": "gemini-4-argon",
+   "value": "gemini-4-argon",
+   "source": "osf/v62/data/v62_raw.jsonl error line model_requested"
+  },
+  "err.probe": {
+   "display": "q6_iconic",
+   "value": "phase_b__q6_iconic",
+   "source": "osf/v62/data/v62_raw.jsonl error line probe_id"
+  },
+  "err.rerun_cost": {
+   "display": "$0.0075",
+   "value": 0.007454,
+   "source": "osf/v62/data/v62_raw.jsonl re-run line cost_usd"
+  },
+  "err.run": {
+   "display": "1",
+   "value": 1,
+   "source": "osf/v62/data/v62_raw.jsonl error line run"
+  },
+  "err.time_ct": {
+   "display": "00:14",
+   "value": "2026-11-25T06:14:02.148673+00:00",
+   "source": "osf/v62/data/v62_raw.jsonl error line started_utc, US Central"
+  },
+  "err.usage_parts": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/data/v62_raw.jsonl error line usage_parts (count)"
+  },
+  "gate.P1.mismatches": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P1_real.mismatches"
+  },
+  "gate.P1.result": {
+   "display": "PASS",
+   "value": "PASS",
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P1_real.result"
+  },
+  "gate.P1.table_diffs": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P1_real.vs_v42_brand_table.differences"
+  },
+  "gate.P1.units": {
+   "display": "112",
+   "value": 112,
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P1_real.units"
+  },
+  "gate.P2.apos_diff": {
+   "display": "118",
+   "value": 118,
+   "source": "osf/v62/data/gates/gate_P2_v0_62.json apostrophe_delta_ref_vs_locked.different"
+  },
+  "gate.P2.apos_only2": {
+   "display": "72",
+   "value": 72,
+   "source": "osf/v62/data/gates/gate_P2_v0_62.json apostrophe_delta_ref_vs_locked.only_in_second"
+  },
+  "gate.P2.cells": {
+   "display": "12,360",
+   "value": 12360,
+   "source": "osf/v62/data/gates/gate_P2_v0_62.json pre_vs_ref.cells"
+  },
+  "gate.P2.diff": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/data/gates/gate_P2_v0_62.json pre_vs_ref.different"
+  },
+  "gate.P2.result": {
+   "display": "PASS",
+   "value": "PASS",
+   "source": "osf/v62/data/gates/gate_P2_v0_62.json result"
+  },
+  "gate.P3.checked": {
+   "display": "1,603",
+   "value": 1603,
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P3.prompts_checked"
+  },
+  "gate.P3.mismatches": {
+   "display": "0",
+   "value": 0,
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P3.prompt_mismatches"
+  },
+  "gate.P3.result": {
+   "display": "PASS",
+   "value": "PASS",
+   "source": "osf/v62/data/gates/gate_P1real_P3_v0_62.json P3.result"
+  },
+  "joint": {
+   "display": "Language-robust",
+   "value": "Language-robust",
+   "source": "osf/v62/v62_verdicts.json joint_reading"
+  },
+  "log.before_block2": {
+   "display": "$9.5328",
+   "value": 9.5328,
+   "source": "osf/v62/data/collect_v0_62.log 'block 2' line, spent before it"
+  },
+  "log.before_block3": {
+   "display": "$18.3448",
+   "value": 18.3448,
+   "source": "osf/v62/data/collect_v0_62.log 'block 3' line, spent before it"
+  },
+  "log.before_block4": {
+   "display": "$27.1960",
+   "value": 27.196,
+   "source": "osf/v62/data/collect_v0_62.log 'block 4' line, spent before it"
+  },
+  "log.main_end_ct": {
+   "display": "03:22",
+   "value": "2026-11-25 03:22:57",
+   "source": "osf/v62/data/collect_v0_62.log collector exit line"
+  },
+  "log.main_spend": {
+   "display": "$28.1219",
+   "value": 28.1219,
+   "source": "osf/v62/data/collect_v0_62.log result line"
+  },
+  "log.rerun_start_ct": {
+   "display": "08:38",
+   "value": "2026-11-25 08:38:44",
+   "source": "osf/v62/data/collect_v0_62_rerun.log start line"
+  },
+  "raw.A": {
+   "display": "792",
+   "value": 792,
+   "source": "osf/v62/data/v62_raw.jsonl ok calls, phase A"
+  },
+  "raw.B": {
+   "display": "810",
+   "value": 810,
+   "source": "osf/v62/data/v62_raw.jsonl ok calls, phase B"
+  },
+  "raw.lines": {
+   "display": "1,603",
+   "value": 1603,
+   "source": "osf/v62/data/v62_raw.jsonl (lines)"
+  },
+  "raw.ok": {
+   "display": "1,602",
+   "value": 1602,
+   "source": "osf/v62/data/v62_raw.jsonl status == ok"
+  },
+  "raw.per_lang": {
+   "display": "534",
+   "value": 534,
+   "source": "osf/v62/data/v62_raw.jsonl ok calls per language (equal for es, ko, zh)"
+  },
+  "raw.per_model": {
+   "display": "534",
+   "value": 534,
+   "source": "osf/v62/data/v62_raw.jsonl ok calls per model (equal for the three)"
+  },
+  "win.first_ct": {
+   "display": "00:00",
+   "value": "2026-11-25T06:00:30.813641+00:00",
+   "source": "osf/v62/data/v62_raw.jsonl min started_utc, US Central"
+  },
+  "win.first_utc": {
+   "display": "06:00",
+   "value": "2026-11-25T06:00:30.813641+00:00",
+   "source": "osf/v62/data/v62_raw.jsonl min started_utc, UTC"
+  },
+  "win.last_ct": {
+   "display": "08:39",
+   "value": "2026-11-25T14:39:03.006676+00:00",
+   "source": "osf/v62/data/v62_raw.jsonl max finished_utc, US Central"
+  },
+  "win.span_h": {
+   "display": "8.6",
+   "value": 8.642275843055556,
+   "source": "osf/v62/data/v62_raw.jsonl last - first, hours"
+  }
+ }
+}

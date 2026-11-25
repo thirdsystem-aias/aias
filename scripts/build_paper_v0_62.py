@@ -1,0 +1,137 @@
+#!/usr/bin/env python3
+"""
+AIAS v0.62 -- SSRN-format paper builder (thin pandoc wrapper; forked from scripts/build_paper_v0_44.py on branch v0.44, 0af9cb9).
+Reads the FILLED paper (papers/v0_62/v0_62_paper_draft.md, written by papers/v0_62/fill_paper_v0_62.py from the
+values file), applies the Unicode->LaTeX substitutions for Carlito glyph gaps, runs pandoc + xelatex, writes the PDF.
+Refuses a source that still contains template syntax. Root is derived from this file (works in a worktree).
+
+Usage:  python3 scripts/build_paper_v0_62.py
+"""
+
+import argparse
+import json
+import re
+import subprocess
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+PAPER_DIR = ROOT / "papers" / "v0_62"
+sys.path.insert(0, str(ROOT / "scripts"))
+
+# Unicode -> LaTeX substitutions (Carlito glyph gaps): the v0.41/v0.42 list, plus ₄ ₅ ₆ for t4-t6.
+# Curly quotes ‘ ’ “ ” are deliberately NOT substituted: Carlito has the glyphs, and the old ` / `` / '' forms
+# were read by pandoc as code-span openers (quoted words garbled, text swallowed).
+UNICODE_SUBS = [
+    (" ", r"\,"),
+    ("–", "--"),
+    ("—", "---"),
+    ("…", r"\ldots{}"),
+    ("™", r"\textsuperscript{TM}"),
+    ("×", r"$\times$"),
+    ("≥", r"$\geq$"),
+    ("≤", r"$\leq$"),
+    ("≠", r"$\neq$"),
+    ("∞", r"$\infty$"),
+    ("∈", r"$\in$"),
+    ("⊆", r"$\subseteq$"),
+    ("▶", r"$\blacktriangleright$"),
+    ("∧", r"$\wedge$"),
+    ("✓", r"\checkmark"),
+    ("ρ", r"$\rho$"),
+    ("Δ", r"$\Delta$"),
+    ("·", r"$\cdot$"),
+    ("μ", r"$\mu$"),
+    ("′", r"$'$"),
+    ("−", "-"),
+    ("≫", r"$\gg$"),
+    ("→", r"$\rightarrow$"),
+    ("≈", r"$\approx$"),
+    ("±", r"\textpm{}"),
+    ("₁", r"$_{1}$"),
+    ("₂", r"$_{2}$"),
+    ("₃", r"$_{3}$"),
+    ("₄", r"$_{4}$"),
+    ("₅", r"$_{5}$"),
+    ("₆", r"$_{6}$"),
+    ("ₜ", r"$_{t}$"),
+    ("φ", r"$\varphi$"),
+    ("π̂", r"$\hat\pi$"),
+    ("⁻", "-"),
+    ("β", r"$\beta$"),
+    ("δ", r"$\delta$"),
+    ("θ", r"$\theta$"),
+    ("π", r"$\pi$"),
+    ("κ", r"$\kappa$"),
+]
+
+
+# v0.62: symbols with subscripts, typeset as math (a bare "_" would otherwise open emphasis in pandoc).
+SUBSCRIPT_SUBS = [
+    ("ρ_c", r"$\rho_{c}$"),
+    ("Δ_L", r"$\Delta_{L}$"),
+    ("ρ_pw", r"$\rho_{\mathrm{pw}}$"),
+    ("ρ_tier", r"$\rho_{\mathrm{tier}}$"),
+    ("ρ_sep", r"$\rho_{\mathrm{sep}}$"),
+    ("π̂_b", r"$\hat\pi_b$"),
+    ("φ_b", r"$\varphi_b$"),
+    ("φ_max", r"$\varphi_{\max}$"),
+    ("C_φ", r"$C_{\varphi}$"),
+    ("SD_i", r"SD$_i$"),
+]
+
+
+def apply_subs(text: str) -> str:
+    """Substitutions apply to the body only: the YAML header (title, subtitle) keeps ™ for the PDF metadata."""
+    m = re.match(r"\A---\n.*?\n---\n", text, re.DOTALL)
+    head, body = (text[:m.end()], text[m.end():]) if m else ("", text)
+    body = re.sub(r"\$(?=\d)", r"\\$", body)   # v0.62: a dollar amount is text, never a math opener
+    for old, new in SUBSCRIPT_SUBS:   # before the single-glyph substitutions (they share ρ, φ, π̂)
+        body = body.replace(old, new)
+    for old, new in UNICODE_SUBS:
+        body = body.replace(old, new)
+    body = re.sub(r"(?<=Cov)\*", r"\\*", body)   # "Cov*" in running text: a literal asterisk, never emphasis
+    body = re.sub(r"(?<![\w$\-])-(\d+\.\d+)", r"\\mbox{-\1}", body)   # never break a negative number
+    return head + body
+
+
+def main(argv=None):
+    ap = argparse.ArgumentParser(description="Build the v0.62 paper PDF")
+    ap.add_argument("--source", type=Path, default=PAPER_DIR / "v0_62_paper_draft.md")
+    ap.add_argument("--output", type=Path, default=PAPER_DIR / "v0_62_paper.pdf")
+    ap.add_argument("--watermark", default=None)
+    a = ap.parse_args(argv)
+    if not a.source.exists():
+        sys.exit(f"ERROR: source not found: {a.source}")
+    raw = a.source.read_text(encoding="utf-8")
+    for bad in ("{{", "{%"):
+        if bad in raw:
+            sys.exit(f"ERROR: {a.source} still contains template syntax {bad!r}; run fill_paper_v0_62.py first")
+    prov = Path(str(a.source).replace(".md", "_provenance.json"))
+    synthetic = json.loads(prov.read_text())["synthetic"] if prov.exists() else False
+    if synthetic and not a.watermark:
+        sys.exit("ERROR: synthetic source: --watermark is required")
+    a.output.parent.mkdir(parents=True, exist_ok=True)
+    tmp = a.output.parent / "_build_tmp_v0_62.md"
+    tmp.write_text(apply_subs(raw), encoding="utf-8")
+    cmd = ["pandoc", str(tmp), "-o", str(a.output), "--pdf-engine=xelatex",
+           f"--resource-path={PAPER_DIR}:{a.source.parent}", "--standalone",
+           f"--lua-filter={PAPER_DIR / 'tables_as_tabular.lua'}"]
+    print(f"Building: {a.source} -> {a.output}")
+    r = subprocess.run(cmd, capture_output=True, text=True, cwd=str(PAPER_DIR))
+    tmp.unlink(missing_ok=True)
+    if r.returncode != 0:
+        print(f"ERROR: pandoc failed (exit {r.returncode})\n{r.stderr}")
+        sys.exit(1)
+    missing = sorted(set(re.findall(r"Missing character: There is no (.) ", r.stderr)))
+    if missing:
+        print(f"WARNING: Carlito glyph gaps (add to UNICODE_SUBS): {missing}")
+    if a.watermark:
+        sys.exit("ERROR: no watermark module for v0.62 (the v0.62 paper is built from real data only)")
+    from pypdf import PdfReader
+    print(f"Built: {a.output} ({a.output.stat().st_size / 1024:.0f} KB, {len(PdfReader(str(a.output)).pages)} pages)")
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
