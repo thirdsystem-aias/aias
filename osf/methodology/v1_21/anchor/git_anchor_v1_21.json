@@ -1,0 +1,150 @@
+{
+  "tag": "v1.21-prereg-r1",
+  "tag_object": "dd359e46d7c0905e155c576e44b232c1733c0a84",
+  "commit": "2b39fc558597f179f85c3bdf1cb8457d0876e004",
+  "tree": "ce958b7fbf3e5b0feea7f342ea16e387e1b41051",
+  "branch": "sentiment-redesign",
+  "tagger_date": "2026-11-24T22:01:38-06:00",
+  "remote_tag_ref": "dd359e46d7c0905e155c576e44b232c1733c0a84\trefs/tags/v1.21-prereg-r1",
+  "recorded_utc": "2026-11-25T04:14:41+00:00",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: methodology/v1_21/prereg, dryrun, anchor, scripts, tests; deposited 2026-11-24 22:02-22:13 CT from tag v1.21-prereg-r1, 65 files verified by SHA-256; anchor/git_anchor_v1_21.json added to methodology/v1_21/anchor after this record)",
+  "locked_files": {
+    "osf/methodology/v1_21/prereg/PRE_REGISTRATION_v1_21.md": {
+      "sha256": "8b9b0e6323febab0345a129e2bf98df1d3fd964e9c2e22a71b0ff6de14dcae39",
+      "git_blob": "80f003524279cbbce22d7322ba205f3db955f8a2"
+    },
+    "osf/methodology/v1_21/scripts/score_v1_21.py": {
+      "sha256": "2792f429952f5db78475bb1b8079ca397bd4e8381daee7ebbd3151fe4394c3e4",
+      "git_blob": "dd476a8fac9eadf76fb7619ccfcdf122f84ef526"
+    },
+    "osf/methodology/v1_21/tests/fixtures/build_fixtures_v1_21.py": {
+      "sha256": "6dba84a840df69e1d07d54721d40244d3940fe513c21c1721c7b4eedd54c5302",
+      "git_blob": "bca01cf382009ac3a10fbd6961effff5f8cbfb87"
+    },
+    "osf/methodology/v1_21/tests/fixtures/confirmed/fixture.json": {
+      "sha256": "f3bb27e41e4d26036aad3707875c1061517f6fd99400d2249428af46fa37b84c",
+      "git_blob": "12b8df7b17a9dbb6d0af458e449f4b1f06e9d8d1"
+    },
+    "osf/methodology/v1_21/tests/fixtures/confirmed/presence.csv": {
+      "sha256": "f56567261178a11781d0f68ff364ea4423450f04b92f72b7e7b25ce993592f5e",
+      "git_blob": "ba89e6898aecc57233259c44d66ed10c49634646"
+    },
+    "osf/methodology/v1_21/tests/fixtures/confirmed/unit_outcomes_t4.csv": {
+      "sha256": "66738ccf92c57558a79d586cd9b6e33dfc51bd1186b7b20365f1887a47a7937f",
+      "git_blob": "1e910392ac15e7d1962bc583baf3e0b9170ddc0c"
+    },
+    "osf/methodology/v1_21/tests/fixtures/confirmed/unit_outcomes_t5.csv": {
+      "sha256": "bc6e67e35850f92c399b9806094e8becc8efa6e49c2279f4565ba8b33917b305",
+      "git_blob": "196e9225bdd0525f222d5f29394b5e83dd190e82"
+    },
+    "osf/methodology/v1_21/tests/fixtures/falsified/fixture.json": {
+      "sha256": "5352c884e3744d76c68c8b6d9eb2634c122c7de5584a3884f94a13e068c33b20",
+      "git_blob": "786152a49022daa867bf0abf57575d72b5fdb2a6"
+    },
+    "osf/methodology/v1_21/tests/fixtures/falsified/presence.csv": {
+      "sha256": "cab30fc897fabb73e3bd5437134bf7747cdfd7cde65bb6f36411f708da44b802",
+      "git_blob": "4383d5bb4c62695068c48b5863dc9d0e4afce2cb"
+    },
+    "osf/methodology/v1_21/tests/fixtures/falsified/unit_outcomes_t4.csv": {
+      "sha256": "3785c3a265e42f6d45690ef72f9c7b85cc1a434da94b90543adcb38b1eca5dd6",
+      "git_blob": "84ec678aa5a14154dd74ab763f3c01a72c0dc64c"
+    },
+    "osf/methodology/v1_21/tests/fixtures/falsified/unit_outcomes_t5.csv": {
+      "sha256": "57a61419da30c6de95bd4b6854b1a31393def56f8768692f34cb33a9f9f1d85c",
+      "git_blob": "681fc2d35468d41abc673582ba615e9873b26441"
+    },
+    "osf/methodology/v1_21/tests/fixtures/judge_noise/fixture.json": {
+      "sha256": "cdcf00452a05f3afbecb36ddae23e809911cd728121bd4d264156bab65121234",
+      "git_blob": "caccf8df739a0beaee14a977fde1f8ee134f68c8"
+    },
+    "osf/methodology/v1_21/tests/fixtures/judge_noise/presence.csv": {
+      "sha256": "1edf8819aa0ea637ec6e1dc4465e752a6e4f7b7559c50b0476a6a7d93ac573a8",
+      "git_blob": "9bbba248c88eb1b7c2cc7934bc5c78a96947a3e4"
+    },
+    "osf/methodology/v1_21/tests/fixtures/judge_noise/unit_outcomes_t4.csv": {
+      "sha256": "393edf5ad6a212c5b404a5cf5cd56fb3cf28a9800090b79ed91d0e0314e59a96",
+      "git_blob": "2bef78b4424478197aa9adaa81cf2be9e29500b7"
+    },
+    "osf/methodology/v1_21/tests/fixtures/judge_noise/unit_outcomes_t5.csv": {
+      "sha256": "8d9178a887833cafa35237165254ab2c5ce63d293b87c2c5ad72c0971be99996",
+      "git_blob": "4379f93ff0376a50a84190644d024dfbc2d387b7"
+    },
+    "osf/methodology/v1_21/tests/fixtures/marginal/fixture.json": {
+      "sha256": "f48bbff7c17c5a8a53a59a2a7e8b50f18514f2010e074cb1711b0356c60e68c3",
+      "git_blob": "0b6676cffd9b4cc8a3dcd1b321f42c35e2ef8e87"
+    },
+    "osf/methodology/v1_21/tests/fixtures/marginal/presence.csv": {
+      "sha256": "d3c9dc857ae358c9b17af192069997a20ee34bb139b2b2fa55a820ba2c072972",
+      "git_blob": "0baff4bc3950d808f7513f50a6b7fd05bb079cd1"
+    },
+    "osf/methodology/v1_21/tests/fixtures/marginal/unit_outcomes_t4.csv": {
+      "sha256": "bc154ea261b608beca4b92ce66ff2126b728c1696c9ae3be47d90a445682dfeb",
+      "git_blob": "7d83c2e8d559fd9f222148d862eb3710c1618023"
+    },
+    "osf/methodology/v1_21/tests/fixtures/marginal/unit_outcomes_t5.csv": {
+      "sha256": "df3caeda0307786136930f1706b89c61364a836265c07d3f15eaffee210e8181",
+      "git_blob": "974c03b958bf1e0800892bdfd403df7c950c98df"
+    },
+    "osf/methodology/v1_21/tests/fixtures/retest_fail/fixture.json": {
+      "sha256": "5c24fceef8240f17dbeaa2d7265cc0f06abf080258a87534a3559d74328e3a72",
+      "git_blob": "0f3930fd94431e07896ec0e9902d4424ea5697d2"
+    },
+    "osf/methodology/v1_21/tests/fixtures/retest_fail/presence.csv": {
+      "sha256": "63aae2767e76e884de62aed2031deee719e4215b051d387431b8002e4cae15fe",
+      "git_blob": "71dc523a5fb6b0049b7fe1145113a13133c6538e"
+    },
+    "osf/methodology/v1_21/tests/fixtures/retest_fail/unit_outcomes_t4.csv": {
+      "sha256": "88d79494474c7c2064abd63e6a743b20f6f1876b582cce7a875e2c9d3fb1c881",
+      "git_blob": "ad18216c7f38e82793b2552e7032d48757e9e561"
+    },
+    "osf/methodology/v1_21/tests/fixtures/retest_fail/unit_outcomes_t5.csv": {
+      "sha256": "ed8c0ea1509f1f8dd931207c2aea6e05acfefa36f2447d77297f64605991ad43",
+      "git_blob": "4ea416d52cb46ead899bf2781d0a435e084f3d37"
+    },
+    "osf/methodology/v1_21/tests/fixtures/two_cats/fixture.json": {
+      "sha256": "4158b98165c463aaeb20cb3ee73ac549ac14ed523b1a7aaffef548f19ea9b808",
+      "git_blob": "e6ed68627eb541229a939171f63854faa54f8ad5"
+    },
+    "osf/methodology/v1_21/tests/fixtures/two_cats/presence.csv": {
+      "sha256": "5ef2188a7dbf0e4107e733f8d1450a285c77ac51a984bfc170b96747b415dcf1",
+      "git_blob": "3c90b7186670ae29c816a7818f486076f04de5bc"
+    },
+    "osf/methodology/v1_21/tests/fixtures/two_cats/unit_outcomes_t4.csv": {
+      "sha256": "ee994a2536462ade935a4f7f25c1aa5efcc300957428f89d5df55156f3f46807",
+      "git_blob": "09d16b68d96d9f05681de8a146fc4486135c90c6"
+    },
+    "osf/methodology/v1_21/tests/fixtures/two_cats/unit_outcomes_t5.csv": {
+      "sha256": "a77408b8e44253fa54959fc9f73b0042a1be098a1f28bd1aa1c8d60b8f563b81",
+      "git_blob": "f6f4132ae2937771e4b84027382e187846d948f2"
+    },
+    "osf/methodology/v1_21/tests/test_score_v1_21.py": {
+      "sha256": "d091f4a0b0a83a84aed45d3f0816bceaadf3bc33aa14abed68d5a79899ac97cb",
+      "git_blob": "d867d46b5d172c3c6146ee15764b909ca0a1ec2c"
+    },
+    "scripts/score_v1_10.py": {
+      "sha256": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+      "git_blob": "0f8b981b2895a325b50629c85f8e0e6ce8e876f5"
+    },
+    "scripts/score_v1_11.py": {
+      "sha256": "9cea3b59697acd713c8a432cb54dbf92949bc51a58cac1c96185a54fc4745d1d",
+      "git_blob": "5e46e8632044268b5d30a2184600718961caa838"
+    },
+    "scripts/score_v1_20.py": {
+      "sha256": "ef89d1ddf363f63fb5ca9f562dd5c8e49e3398d4640e89e215213e3f0c59a544",
+      "git_blob": "4b160ae41c1ede6988018789047fa5220928d2ef"
+    },
+    "osf/methodology/v1_20/prereg/config_v1_20.json": {
+      "sha256": "015adfadd6923e8631ac16346c31a82bd1bc8f5d3e4f7ede4b34c2c762e2312f",
+      "git_blob": "5be8ea16fe7f9d3eb4ac7ad3f6972dfa80d5bea6"
+    },
+    "osf/methodology/v1_21/prereg/LOCK_MANIFEST_v1_21.sha256": {
+      "sha256": "8c3fe922ceaaf91bc51df6b339e41112e49ca9db860cfc36bb1f1eca206d9f1d",
+      "git_blob": "a6f2c055a477fb5f8ff3230b1cba0bdb66df15f4"
+    },
+    "osf/methodology/v1_21/anchor/DEVIATIONS.md": {
+      "sha256": "3f250f30e467825edbd575ba2bf19442c0ef7f1bcb94852ea7127913e35c7c9d",
+      "git_blob": "a4cef65deae8c077e08d5a8e572cee5ba8851ca9"
+    }
+  }
+}
