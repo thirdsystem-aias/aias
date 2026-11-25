@@ -316,8 +316,8 @@ class TestEntries7And8(unittest.TestCase):
         self.assertEqual([VALUES[f"E7.lf.{L}.plan"]["value"] for L in LANGS], [1.25, 1.75, 1.5])
         self.assertEqual(VALUES["E7.home.status"]["value"], "not computed")
         self.assertEqual(VALUES["E7.time.status"]["value"], "not available")
-        self.assertIn("Home-language descriptive (§2.9 item 5): not computed", DRAFT)
-        self.assertIn("Benchmark for time (§2.7): not available", DRAFT)
+        self.assertIn("Home-language descriptive (pre-registration §2.9 item 5): not computed", DRAFT)
+        self.assertIn("Benchmark for time (pre-registration §2.7): not available", DRAFT)
         self.assertAlmostEqual(VALUES["E7.cost.total"]["value"], VALUES["raw.cost_sum"]["value"], places=6)
 
     def test_entry7_labelled_as_post_scoring(self):
@@ -358,6 +358,78 @@ class TestEntries7And8(unittest.TestCase):
                   "v62_planned_category_labels_v0_62.csv", "v62_planned_top10_shift_v0_62.csv",
                   "v62_planned_checks_v0_62.csv"):
             self.assertIn(f, da)
+
+
+class TestReviewFixes(unittest.TestCase):
+    """Fixes from the review record reviews/v0.62-paper/2026-11-25.md (F1-F9, N1-N5)."""
+
+    def test_f1_zh_phase_a_flag_in_main_text(self):
+        self.assertEqual(VALUES["E7.mc.lang.zh.claude-fable-5-2.A"]["display"], "0.9432")
+        self.assertTrue(VALUES["E7.mc.lang.zh.claude-fable-5-2.A.flag"]["value"])
+        self.assertIn("flagged (Spanish, all answers; Chinese Claude Fable 5.2, yes/no answers 0.9432); no code changed",
+                      DRAFT)
+        self.assertIn("also flags Chinese Claude Fable 5.2 (0.9432)", section(DRAFT, "## 3.10", "# 4. Deviations"))
+
+    def test_f2_figure4_subtitle(self):
+        src = (ROOT / "scripts/build_charts_v62_paper.py").read_text(encoding="utf-8")
+        self.assertIn("Every specification gives \"\n           \"the primary verdict in every language", src)
+        self.assertNotIn("is \"\n           \"CONFIRMED in every language", src)
+        self.assertNotIn("every specification is", src)
+
+    def test_f3_f4_f9_wording(self):
+        self.assertIn("Every result in this paper is read from", DRAFT)
+        self.assertIn("design constants (budget, alias counts, seeds, manifest size) are quoted from the locked "
+                      "pre-registration", DRAFT)
+        self.assertIn("the forms that could be listed before the lock", DRAFT)
+        self.assertNotIn("runner could list", DRAFT)
+        self.assertIn("(the forward translator is of the same provider; limitation 2)", DRAFT)
+        lim2 = section(DRAFT, "\n2. The forward translator", "\n3. ")
+        self.assertIn("same provider as one of the measured models", lim2)
+
+    def test_f5_phi_wording_and_intervals(self):
+        s35 = section(DRAFT, "## 3.5 H_Lang_Phi", "| | Spanish |")
+        self.assertNotIn("(MARGINAL)", s35)
+        self.assertIn("both intervals reach below 0.30 and above 0.50", s35)
+        for L in ("ko", "zh"):
+            lo, hi = VALUES[f"Phi.{L}.ci"]["value"]
+            self.assertLess(lo, 0.30)
+            self.assertGreater(hi, 0.50)
+            self.assertLess(VALUES[f"Phi.{L}.p"]["value"], 0.05)
+            self.assertTrue(0.30 < VALUES[f"Phi.{L}.rho"]["value"] < 0.50)
+
+    def test_f6_prereg_section_references_prefixed(self):
+        for s in ("re-run pass of pre-registration §5.3", "(primary, pre-registration §2.2)",
+                  "(secondary, pre-registration §2.3)", "(secondary, conditional, pre-registration §2.4)",
+                  "Joint reading (pre-registration §2.6)", "Sensitivities (pre-registration §7.5;",
+                  "four gates had to pass (pre-registration §7.3)", "Under pre-registration §2.8"):
+            self.assertIn(s, DRAFT)
+        for bad in ("pass of §5.3", "(primary, §2.2)", "Joint reading (§2.6)", "of §7.5", "Under §2.8"):
+            self.assertNotIn(bad, DRAFT)
+
+    def test_f7_f8_references_and_keyword(self):
+        refs = section(DRAFT, "# References {-}", "# Appendix A.")
+        self.assertIn("Rienecker, J., Mpofu, K., Goel, N., Datta, S., Zhao, J., Danielsson, O., & Thorsen, F. (2026).",
+                      refs)
+        self.assertIn("arXiv 2603.18300 (v1, 18 March 2026; cs.HC)", refs)
+        self.assertIn("Qi, J., Fernández, R., & Bisazza, A. (2023).", refs)
+        self.assertIn("Steenkamp, J.-B. E. M., & Baumgartner, H. (1998).", refs)
+        self.assertIn("Brislin, R. W. (1970).", refs)
+        body = DRAFT.split("# References {-}")[0]
+        for c in ("(Qi, Fernández & Bisazza, 2023)", "(Steenkamp & Baumgartner, 1998)", "(Brislin, 1970)"):
+            self.assertIn(c, body)
+        self.assertIn("cross-language rank agreement", DRAFT)
+        self.assertNotIn("measurement invariance\n", DRAFT)
+        self.assertNotIn("; measurement invariance", DRAFT)
+
+    def test_n1_n2_n3_n5(self):
+        self.assertIn("p was 0.0001 in each (1/10,001, the smallest value 10,000 draws allow)", DRAFT)
+        self.assertIn("88 Korean and 44 Chinese rows", DRAFT)
+        refs = section(DRAFT, "# References {-}", "# Appendix A.")
+        letters = re.findall(r"González Castro, P\. U\. \(2026([a-z])\)", refs)
+        self.assertEqual(letters, [chr(ord("a") + i) for i in range(len(letters))])
+        body = DRAFT.split("# References {-}")[0].split("\n---\n", 1)[1]
+        self.assertNotIn(" --- ", body)
+        self.assertNotIn("—", body)
 
 
 if __name__ == "__main__":

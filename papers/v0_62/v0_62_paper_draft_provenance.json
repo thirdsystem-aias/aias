@@ -27,7 +27,7 @@
   "n_values": 1455
  },
  "synthetic": false,
- "n_keys": 690,
+ "n_keys": 693,
  "abstract_keys": [
   "design.n_units",
   "raw.ok",
@@ -79,6 +79,11 @@
    "value": "Del Maguey",
    "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.not_used_for_this_brand"
   },
+  "AIC.alias.ko.rows": {
+   "display": "88",
+   "value": 88,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.ko.n_rows"
+  },
   "AIC.alias.ko.standard": {
    "display": "77",
    "value": 77,
@@ -98,6 +103,11 @@
    "display": "0",
    "value": 0,
    "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.usage_counts (absent = 0)"
+  },
+  "AIC.alias.zh.rows": {
+   "display": "44",
+   "value": 44,
+   "source": "osf/v62/ai_check/results/ai_check_analysis_v0_62.json aliases.zh.n_rows"
   },
   "AIC.alias.zh.standard": {
    "display": "43",
@@ -2662,6 +2672,11 @@
   },
   "P.es.p": {
    "display": "< 0.001",
+   "value": 9.999000099990002e-05,
+   "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
+  },
+  "P.es.p4": {
+   "display": "0.0001",
    "value": 9.999000099990002e-05,
    "source": "osf/v62/v62_verdicts.json tests.H_Lang_Presence_es"
   },

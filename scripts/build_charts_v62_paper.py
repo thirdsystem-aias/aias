@@ -169,10 +169,10 @@ SPECS = [  # (label, key prefix or None when not computed for that language)
     ("S-Headphones (96)", "S-Headphones.{L}"),
     ("S-COI as run (107)", "S-COI.{L}"),
     ("S-COI, Entry 4 (106)", "S-COI106.{L}"),
-    ("S-Trans (flagged)", "STrans.flagged.P.{L}"),
-    ("S-AliasAI", "SAliasAI.{L}"),
-    ("Corrected comparator", "ENC.P.{L}"),
-    ("Corrected, S-COI (106)", "ENC.S-COI106.{L}"),
+    ("S-Trans, flagged (Entry 5)", "STrans.flagged.P.{L}"),
+    ("S-AliasAI (Entry 5)", "SAliasAI.{L}"),
+    ("Corrected comparator (Entry 6)", "ENC.P.{L}"),
+    ("Corrected, S-COI 106 (Entry 6)", "ENC.S-COI106.{L}"),
     ("S-Language (Entry 7)", "E7.S-Language.{L}"),
     ("S-Script (Entry 7)", "E7.S-Script.{L}"),
     ("S-Alias (Entry 7)", "E7.S-Alias.{L}"),
@@ -184,8 +184,8 @@ def fig4_sens():
     fig.subplots_adjust(left=0.24, right=0.98, top=0.80, bottom=0.14, wspace=0.12)
     header(fig, "Rank agreement of recall Presence with English under each specification",
            "ρc and bootstrap 95% interval per specification and language. S-AliasAI applies to Korean and Chinese "
-           "only, S-Script to\nChinese only. Dashed line: 0.70, the confirmation threshold; every specification is "
-           "CONFIRMED in every language.")
+           "only, S-Script to\nChinese only. Dashed line: 0.70, the confirmation threshold. Every specification gives "
+           "the primary verdict in every language;\nthe rows marked Entry 4 to Entry 7 were computed after scoring.")
     n = len(SPECS)
     for ax, L in zip(axes, LANGS):
         ax.axvline(0.70, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)), zorder=1)
