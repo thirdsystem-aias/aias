@@ -64,11 +64,13 @@ RUNS = {
     "not_run": ({}, {"drop_refs": ["v1.14", "v1.12", "v1.13"]}),          # no component output by the data lock
     # the state of the inputs on Nov 25: v1.14 Stage 1 MARGINAL (Ranking under review), v1.13 GATE MARGINAL
     # (Grounding under review), no S_t4 (Sentiment NOT RUN), v1.12 GATE PASS (Coverage in K): K = P, C, Cov.
+    # v1.11 issued no verdict file (its judge stage halted), so its ref is dropped: the legacy-panel fallback (SG)
+    # is not read and prints as pending with that cause (Pablo, Wed 2026-11-25, 7:15 am CT, Preview call 2).
     # Stored apart from the paper fixtures, under papers/aias_6_0_preview/synthetic/ (report pipeline exercise).
     "SYNTHETIC_nov25_inputs": ({"h5_gates": False}, {"stage1": {"STAGE1_VERDICT": "MARGINAL",
                                                                 "H1_Sep_Presence": {"verdict": "MARGINAL", "rho": 0.41,
                                                                                     "n": 70}},
-                                                     "v113_gate": "MARGINAL"}),
+                                                     "v113_gate": "MARGINAL", "drop_refs": ["v1.11"]}),
 }
 # run scenarios kept outside tests/fixtures (and outside SCENARIOS): written to papers/aias_6_0_preview/synthetic/
 SYNTHETIC_DIR_SCENARIOS = ("SYNTHETIC_nov25_inputs",)

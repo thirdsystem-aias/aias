@@ -32,7 +32,8 @@
     ]
   },
   "ledger": {
-    "_rule": "scripts/methodology_data.py LEDGER: tests from the deposited verdict file, verdict words unchanged; a new word goes into CLASS; PART_BY_ID needs a line for 'AIAS 6.0 Preview' (open question: which part, or a new 'all parts' group).",
+    "_rule": "scripts/methodology_data.py LEDGER: tests from the deposited verdict file, verdict words unchanged; a new word goes into CLASS. PART_BY_ID: 'AIAS 6.0 Preview' -> 'all', a new 'all parts' group in PARTS (Pablo, Wed 2026-11-25, 7:15 am CT, Preview call 8; added on website branch site-preview-6.0-draft, shown only once the Preview is in Studies).",
+    "_prelim": "Every score on this page is labelled provisional; under Preview call 7 (Pablo, Wed 2026-11-25, 7:15 am CT) 'provisional' meets the '(prelim)' rule, so no separate '(prelim)' label is added.",
     "verdict_file": "osf/aias_6_0_preview/outputs/results_aias_6_0_preview.json",
     "rows": [
       {"requires": ["STRUCT"], "test": "H_Structure", "path": ["structure", "H_Structure", "verdict"], "verdict": "{{v:pv.structure.verdict}}"},

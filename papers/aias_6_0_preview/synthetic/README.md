@@ -7,7 +7,7 @@ published or copied to the website.
 
 | Folder | What it exercises |
 |---|---|
-| `SYNTHETIC_nov25_inputs/` | The component states as they stood on Nov 25, 2026: Ranking MARGINAL (v1.14 Stage 1), Grounding MARGINAL (v1.13 gate), Sentiment NOT RUN (no S_t4), Coverage PASS (v1.12 gate). K = Presence, Consistency, Coverage; class A_k. Used by the report pipeline (`scripts/build_charts_aias6_report.py`, `reports/build_report_aias6_preview.py`) and its tests. |
+| `SYNTHETIC_nov25_inputs/` | The component states as they stood on Nov 25, 2026: Ranking MARGINAL (v1.14 Stage 1), Grounding MARGINAL (v1.13 gate), Sentiment NOT RUN (no S_t4; v1.11's ref dropped because v1.11 issued no verdict file, so the legacy-panel fallback SG prints as pending with that cause: Preview call 2, Pablo, Wed 2026-11-25, 7:15 am CT), Coverage PASS (v1.12 gate). K = Presence, Consistency, Coverage; class A_k. Used by the report pipeline (`scripts/build_charts_aias6_report.py`, `reports/build_report_aias6_preview.py`) and its tests. |
 
 Regenerate (about 10 s):
 

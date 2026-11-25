@@ -15,14 +15,30 @@ is plotted and never repeats or paraphrases its finding's title (CLAUDE.md, Nov 
 author's employer by name (brand file, byline.commercial_outputs_disclosure) and the small-print COI carries
 every item of record from the paper's Declarations in employer-neutral words; AI-use statement verbatim.
 Builder (to fork after the data lock, not before): reports/build_report_v44_r1.py with reports/ts_layout.py and
-reports/small_print.py from branch v0.44-report. Report code: see REPORT_CODE (proposed, open question).
+reports/small_print.py from branch v0.44-report. Report code: see REPORT_CODE.
+
+Pablo's nine Preview calls (control panel, Wed 2026-11-25, 7:15 am CT, "Ok to all", as drafted at ~0:35 am):
+(1) Sentiment stays NOT RUN (v1.11 issued no verdict file); v1.20/v1.21 are named in one exploratory sentence with
+a dated note (paper, section 3.2). (2) Its legacy-panel fallback prints as "pending" with the cause (paper and
+finding 03). (3) Ranking is analysed as locked and described as reported within Presence (finding 03). (4) The
+locked "six parts" name stays, with the drafted subtitle (paper title page: "Are the Six Parts of AI Availability
+Separate Readings of a Brand?" / "A Pre-Registered Structure Test of Six Provisional Components on the Newest
+Models"). (5) REPORT_CODE. (6) TITLE. (7) "provisional" meets the S&P "(prelim)" rule (standing rule 1, Pablo, Mon
+2026-11-23): every Preview score and chart already carries "provisional", so no separate "(prelim)" label is added.
+(8) A new "all parts" group in the website's Methodology ledger (scripts/methodology_data.py, website branch
+site-preview-6.0-draft). (9) COVER.
 """
 
-REPORT_CODE = "TS-SY-AIAS6.0Preview-r1"      # proposed; report_code.CODE_RE accepts it; Pablo to confirm
+REPORT_CODE = "TS-SY-AIAS6.0Preview-r1"      # decided (Pablo, Wed 2026-11-25, 7:15 am CT, call 5)
 TIER = 1                                      # CLAUDE.md: Tier 1 Flagship includes the AIAS 6.0 Preview
-COVER = "A-pool (synthesis rule, photo library v2); image to pick, not yet chosen"
+# Call 9 (Pablo, Wed 2026-11-25, 7:15 am CT): the next unused A-pool image. A04 ("Wave facade"): first id in pool order
+# never used on a published page or report (A01-A03, A07-A11 and A14 were on the website's category study pages on
+# Nov 11-12, 2026, website commit 384fe34, replaced by d8d0d3a; A17 Literature 2.0; A18 AIAS 2.0 r3; A05/A06 are C3
+# only); A04 was only reserved for v0.40 and freed when v0.40 took v0.40_airlines (brand file usage_record). The
+# brand file's usage_record entry is added with the real build (locked file: diff to Pablo first).
+COVER = "A04"
 
-TITLE = "All the Parts at Once"               # proposed; holds for every outcome class (open question)
+TITLE = "All the Parts at Once"               # decided (Pablo, Wed 2026-11-25, 7:15 am CT, call 6); every outcome class
 DECK = ("{{v:pv.title}}: how the provisional parts of AI Availability relate when all are measured on the same "
         "brands, models and week")
 
@@ -172,10 +188,17 @@ FINDINGS = [
          "Coverage: {{v:pv.state.Cov}} ({{v:pv.label.Cov}}). Grounding: {{v:pv.state.G}} ({{v:pv.label.G}}).",
          {"requires": ["CASE_R=MARGINAL|PASS_RETEST_PENDING"],
           "text": "Ranking's final reading needs the retest wave; until then every Ranking "
-                  "result here is provisional, retest pending. The published score reports Ranking as part of "
-                  "Presence."},
-         {"requires": ["W2"],
+                  "result here is provisional, retest pending."},
+         # call 3: Ranking analysed as locked, described as reported within Presence
+         "Ranking is read here as this preview's locked plan defines it; the published score reports Ranking as "
+         "part of Presence.",
+         {"requires": ["W2", "!S_FALLBACK_PENDING"],
           "text": "Sentiment has no score yet on the newest models' answers, so it is not in the structure test."},
+         # call 2: the legacy-panel fallback printed as pending, with its cause
+         {"requires": ["W2", "S_FALLBACK_PENDING"],
+          "text": "Sentiment has no score yet on the newest models' answers, so it is not in the structure test. "
+                  "The planned fallback, Sentiment on the older model panel, is pending: that study issued no "
+                  "verdict file, because its judging step stopped under its own pre-set rule."},
      ]},
     {"requires": ["STRUCT"],
      "verdict": "",

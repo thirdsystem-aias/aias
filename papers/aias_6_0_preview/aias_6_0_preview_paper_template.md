@@ -192,7 +192,12 @@ Sentiment's gate read as FAIL (a primary hypothesis of v1.11 was FALSIFIED); it 
 {% case UNDETERMINED %}
 Sentiment's gate read as UNDETERMINED from v1.11's primary hypotheses; it is not shown in the profile.
 {% case NOT_RUN %}
+{% if S_FALLBACK_PENDING %}
+No Sentiment score on the $t_4$ answers was locked and scored by the data lock, so Sentiment is NOT RUN: it is not on the Preview's panel and enters no structure test. The plan's fallback, v1.11's score on the legacy panel reported beside the profile (sensitivity SG), is pending: {{S_FALLBACK_CAUSE}}. A Sentiment score enters by dated addendum when it exists (§4.4).
+{% else %}
 No Sentiment score on the $t_4$ answers was locked and scored by the data lock, so Sentiment is not on the Preview's panel: it is reported beside the profile as a separate reading on the legacy panel (v1.11's score at $t_3$; sensitivity SG) and enters no structure test.
+{% endif %}
+*Exploratory note, dated November 25, 2026 (outside the locked plan): two later Sentiment studies, v1.20 (a re-scoring of v1.11's judge replies) and v1.21 (a redesigned measure, locked on November 24, 2026, and confirmed blind on $t_5$), are not inputs of this Preview and enter none of its results.*
 {% endswitch %}
 {% switch CASE_COV %}
 {% case PASS %}

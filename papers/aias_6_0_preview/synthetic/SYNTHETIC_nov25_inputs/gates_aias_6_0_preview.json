@@ -1,7 +1,7 @@
 {
  "phase": "AIAS 6.0 Preview",
  "title": "AIAS™ 6.0 Preview (provisional)",
- "created_utc": "2026-11-25T13:09:59+00:00",
+ "created_utc": "2026-11-25T14:47:31+00:00",
  "gate_states": {
   "R": "MARGINAL",
   "S": "NOT_RUN",
@@ -60,13 +60,7 @@
  },
  "v1.12_GATE": "PASS",
  "v1.13_GATE": "MARGINAL",
- "v1.11_H1_H5": {
-  "H1_Judge_Agreement": "CONFIRMED",
-  "H2_Sep_Presence": "CONFIRMED",
-  "H3_Sep_Consistency": "CONFIRMED",
-  "H4_Stability_Short": "CONFIRMED",
-  "H5_Sep_Ranking": "PENDING"
- },
+ "v1.11_H1_H5": null,
  "S_t4": false,
  "synthetic_fixture": "SYNTHETIC TEST DATA - NOT RESULTS (papers/aias_6_0_preview/tests/make_scenarios_aias6.py, scenario SYNTHETIC_nov25_inputs)"
 }

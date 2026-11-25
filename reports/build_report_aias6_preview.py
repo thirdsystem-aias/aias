@@ -16,10 +16,11 @@ word budgets). What changes:
   - SYNTHETIC mode (outputs marked synthetic_fixture or without a verified MQ_Lock): the running label starts with
     "SYNTHETIC TEST", the cover has a plain placeholder instead of a photo, every page is stamped
     (scripts/watermark_aias6.py: diagonal, header and footer lines), the file name starts with SYNTHETIC_, and the
-    output folder must be outside the repository. Real mode refuses synthetic outputs and needs --cover-photo.
+    output folder must be outside the repository. Real mode refuses synthetic outputs; its cover is COVER in the
+    content module (A04, Pablo's call 9 of Wed 2026-11-25, 7:15 am CT) unless --cover-photo names another.
 
-Report code: REPORT_CODE in the content module (proposed; Pablo to confirm). The catalogue entry is added after the
-real build only.
+Report code: REPORT_CODE in the content module (TS-SY-AIAS6.0Preview-r1, Pablo's call 5 of Wed 2026-11-25). The
+catalogue entry and the cover's usage_record entry are added after the real build only.
 
   AIAS_ROOT=$PWD ~/aias/venv/bin/python reports/build_report_aias6_preview.py --outputs DIR --charts DIR \
       --out-dir DIR [--synthetic] [--cover-photo ID]
@@ -113,8 +114,10 @@ def build(outputs: Path, charts: Path, out_dir: Path, synthetic: bool = False, c
     out_dir = Path(out_dir).resolve()
     if synthetic and str(out_dir).startswith(str(ROOT)):
         raise BuildError(f"REFUSED: a synthetic report must be written outside the repository ({out_dir})")
-    if not synthetic and not cover_photo:
-        raise BuildError("REFUSED: a real build needs --cover-photo (the A-pool image Pablo picks)")
+    if not synthetic:
+        cover_photo = cover_photo or C.COVER               # call 9: the next unused A-pool image (A04)
+        if not re.fullmatch(r"A\d\d", cover_photo or ""):
+            raise BuildError(f"REFUSED: the Preview's cover is an A-pool image (call 9), not {cover_photo!r}")
     ctx = T.context(outputs, synthetic=synthetic)          # the paper fill's refusals apply (mode, class C, ...)
     if ctx["src"]["results"]["structure"]["wording_class"] == "C":
         raise BuildError("REFUSED: class C has no report; drafting pauses (pre-registration section 6.6)")

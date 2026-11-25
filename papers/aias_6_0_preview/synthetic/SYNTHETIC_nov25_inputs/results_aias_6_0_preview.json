@@ -2,7 +2,7 @@
  "phase": "AIAS 6.0 Preview",
  "title": "AIAS™ 6.0 Preview (provisional)",
  "prereg_tag": "aias-6-0-preview-prereg-r1",
- "created_utc": "2026-11-25T13:10:03+00:00",
+ "created_utc": "2026-11-25T14:47:35+00:00",
  "validation_status_line": "Presence is the published AIAS component and Consistency its second (AIAS 2.0). Ranking, Sentiment, Coverage and Grounding are provisional: the profile shows each with the state of its first test; none has completed its validation.",
  "refs": {
   "v0.42": {
@@ -20,10 +20,6 @@
   "v1.13": {
    "ref": "scenario-overlay",
    "commit": "764ddf9450564ba627de4362b57b67d5a0d84120"
-  },
-  "v1.11": {
-   "ref": "v111-scored",
-   "commit": "7fd5330ae1807a1ba8d59c3753fbac5a1ec12434"
   }
  },
  "MQ_Lock": {
@@ -73,13 +69,6 @@
     "duplicates": [],
     "extra": [],
     "units_not_listed": 7,
-    "ok": true
-   },
-   "v1.11 Stage J scores (F, t3)": {
-    "rows": 102,
-    "duplicates": [],
-    "extra": [],
-    "units_not_listed": 10,
     "ok": true
    }
   }
@@ -1804,42 +1793,7 @@
    "status": "not applicable: Ranking is not in K"
   },
   "SG_Sentiment_legacy_panel": {
-   "H_Structure": "CONFIRMED",
-   "H_PC_N3": "CONFIRMED",
-   "status": {
-    "P": "DISTINCT",
-    "C": "DISTINCT",
-    "S": "DISTINCT",
-    "Cov": "DISTINCT"
-   },
-   "S_tests": {
-    "PxC": [
-     0.09363772487490023,
-     "CONFIRMED"
-    ],
-    "PxS": [
-     0.1251833088921477,
-     "CONFIRMED"
-    ],
-    "PxCov": [
-     -0.046834549305718995,
-     "CONFIRMED"
-    ],
-    "CxS": [
-     0.020408222088119283,
-     "CONFIRMED"
-    ],
-    "CxCov": [
-     -0.22233419713491615,
-     "CONFIRMED"
-    ],
-    "SxCov": [
-     -0.13720875500117674,
-     "CONFIRMED"
-    ]
-   },
-   "state_of_Sentiment": "PASS_AI_JUDGED",
-   "label": "cross-panel (legacy six-model panel, t3); descriptive"
+   "status": "not applicable: v1.11's legacy-panel S not read"
   },
   "SH_search_on_variants": {
    "H_Structure": "PARTIAL",
@@ -1865,12 +1819,6 @@
    }
   },
   "verdict_changes": [
-   {
-    "sensitivity": "SG_Sentiment_legacy_panel",
-    "test": "status S",
-    "primary": null,
-    "under_sensitivity": "DISTINCT"
-   },
    {
     "sensitivity": "SH_search_on_variants",
     "test": "H_Structure",

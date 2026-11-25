@@ -273,7 +273,11 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations, cla
              "CASE_COV": states["Cov"], "CASE_G": states["G"], "CLASS": cls,
              "CASE_HS": st["H_Structure"]["verdict"]}
     r_pending = not (G.get("v1.14") or {}).get("GATE")
+    # Preview call 2 (Pablo, Wed 2026-11-25, 7:15 am CT): without v1.11's verdicts (v1.11 issued no verdict file)
+    # the plan's legacy-panel fallback for Sentiment (section 3.4, SG) is printed as pending, with that cause.
+    s_fallback_pending = states["S"] == "NOT_RUN" and G.get("v1.11_H1_H5") is None
     flags = {"SYNTHETIC": synthetic, "CLASS_C_DRAFT": cls == "C", "STRUCT": struct, "W2": states["S"] == "NOT_RUN",
+             "S_FALLBACK_PENDING": s_fallback_pending,
              "RANK_SHOWN": states["R"] != "NOT_RUN", "R_PENDING": r_pending,
              "ANY_EXPLORATORY": any("label" in t for t in list((st.get("S_tests") or {}).values())
                                     + list((st.get("I_tests") or {}).values())),
@@ -318,7 +322,11 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations, cla
           None: "Presence and Consistency were not tested on the newest models (no structure test, §4.3)."}[hpc]
     val.word("W1_SENTENCE", w1, ["results", "structure", "H_PC_N3"],
              ["HPC_RHO"] if hpc in ("MARGINAL", "FALSIFIED") else [])
-    val.word("W2_SENTENCE", "Sentiment is not on the Preview's panel: it is reported beside the profile as a separate "
+    val.word("S_FALLBACK_CAUSE", "v1.11 issued no verdict file, because its judge stage halted under its own "
+             "pre-registered rule", ["gates", "v1.11_H1_H5"])
+    val.word("W2_SENTENCE", ("Sentiment is not on the Preview's panel (NOT RUN), and its legacy-panel fallback is "
+                             "pending: " + val.vals["S_FALLBACK_CAUSE"] + ".") if s_fallback_pending else
+             "Sentiment is not on the Preview's panel: it is reported beside the profile as a separate "
              "reading on the legacy panel.", ["results", "gate_states", "S"])
     hs = st["H_Structure"]
     for k in ("k", "d", "u"):
@@ -386,6 +394,8 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations, cla
                 "FAIL": f"Ranking{rp} did not pass its {val.vals['R_GATE_SOURCE']} and is not in the profile.",
                 "UNDETERMINED": f"Ranking's {val.vals['R_GATE_SOURCE']} was UNDETERMINED{rp}; it is not in the profile.",
                 "NOT_RUN": ""}[states["R"]]
+    if rank_abs:  # Preview call 3 (Pablo, Wed 2026-11-25, 7:15 am CT): analysed as locked, described within Presence
+        rank_abs += " The published score reports Ranking as part of Presence (v1.16)."
     val.word("RANK_ABSTRACT", rank_abs, ["results", "gate_states", "R"])
     rank_disc = {"PASS": "Ranking enters with its final gate; its place in the structure is as tested above.",
                  "PASS_RETEST_PENDING": "Every Ranking result above is provisional, retest pending: v1.14's final gate "
@@ -547,6 +557,8 @@ def compute(src, synthetic, fig_dir, prereg_commit, prereg_date, deviations, cla
             s = sens.get(key) or {}
             if "H_Structure" in s:
                 rows.append([nm, s["H_Structure"], str(s.get("H_PC_N3"))])
+            elif key == "SG_Sentiment_legacy_panel" and s_fallback_pending:
+                rows.append([nm, "--", "pending: " + esc(val.vals["S_FALLBACK_CAUSE"])])
             else:
                 rows.append([nm, "--", esc(s.get("status", "--"))])
         loo = sens.get("SC_leave_one_category_out") or {}
