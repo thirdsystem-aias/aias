@@ -2,8 +2,8 @@
 """
 score_v1_21.py - AIAS v1.21, Sentiment redesigned: co-mention tone (TONE), confirmed blind on t5.
 
-STATUS: DRAFT scorer (2026-11-23) written for PRE_REGISTRATION_v1_21_DRAFT_r2.md and pointed at r3
-(PRE_REGISTRATION_v1_21_DRAFT_r3.md, osf/methodology/v1_21/prereg/), to be locked with it at tag v1.21-prereg-r1.
+STATUS: LOCKED scorer (2026-11-24), locked with PRE_REGISTRATION_v1_21.md (osf/methodology/v1_21/prereg/; the text of
+draft r3) at tag v1.21-prereg-r1. Written for draft r2 and pointed at r3 before the lock (2026-11-23).
 Rules are transcribed from the draft; each section is cited inline. Where r2 left a choice to the code, the most
 literal reading was taken and marked "READING (section):"; r3 writes those choices into its text (r3 section 19).
 
@@ -35,7 +35,7 @@ Modes (repository root; PYTHONDONTWRITEBYTECODE=1 python3 osf/methodology/v1_21/
                                        descriptives -> v1_21_verdicts.json and values_v1_21.json.
   --exploratory                        RQ3 on t1-t3 (refuses before the lock is anchored; section 10).
   --fixture DIR --out DIR [--draws N]  both stages on a synthetic fixture folder (tests and the dry run only).
-  --lock-manifest                      prints the draft lock manifest (prereg/LOCK_MANIFEST_v1_21.sha256 format).
+  --lock-manifest                      prints the lock manifest (prereg/LOCK_MANIFEST_v1_21.sha256 format).
   --write-anchor --osf-deposit TEXT    after tag + push + OSF deposit (section 13 step 2, last): checks the
                                        pushed annotated tag and its manifest, writes the anchor once.
 Real stages refuse before tag v1.21-prereg-r1 exists, and each runs once (an existing output refuses).
@@ -72,9 +72,9 @@ import score_v1_20 as R20  # noqa: E402  v1.20's extraction rule (tag v1.20-prer
 # ======================================================================================
 PHASE_ID = "v1.21"
 PREREG_TAG = "v1.21-prereg-r1"
-STATUS = "DRAFT (2026-11-23), not locked"
+STATUS = "LOCKED (2026-11-24), tag v1.21-prereg-r1"
 V121 = "osf/methodology/v1_21"
-PREREG_REL = V121 + "/prereg/PRE_REGISTRATION_v1_21_DRAFT_r3.md"
+PREREG_REL = V121 + "/prereg/PRE_REGISTRATION_v1_21.md"
 OUT_DIR = ROOT / V121 / "outputs"
 ANCHOR_FILE = ROOT / V121 / "anchor/git_anchor_v1_21.json"
 STAGE_J_NAME = "stage_j_v1_21.json"
@@ -1481,7 +1481,7 @@ def write_anchor(osf_deposit: str, root: Path = ROOT, anchor: Optional[Path] = N
 
 
 def main(argv=None) -> int:
-    ap = argparse.ArgumentParser(description="AIAS v1.21 scorer (DRAFT)")
+    ap = argparse.ArgumentParser(description="AIAS v1.21 scorer (locked at tag v1.21-prereg-r1)")
     ap.add_argument("--stage", choices=("J", "C"))
     ap.add_argument("--t4-dir", type=Path, help="Stage J: v1.15's study folder (osf/methodology/v1_15 of a v1.15 worktree)")
     ap.add_argument("--t5-dir", type=Path, help="Stage J: v1.21's t5 U0 + judge-record folder")
