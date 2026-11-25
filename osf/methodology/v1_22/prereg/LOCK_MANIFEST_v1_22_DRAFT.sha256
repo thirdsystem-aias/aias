@@ -1,8 +1,9 @@
-# v1.22 DRAFT lock manifest (draft r1, 2026-11-25; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_22.sha256 at the lock, tag v1.22-prereg-r1)
+# v1.22 DRAFT lock manifest (draft r2, 2026-11-25; r2 adds the r2 pre-registration line; NOT the lock manifest: rebuilt as LOCK_MANIFEST_v1_22.sha256 at the lock, tag v1.22-prereg-r1)
 # check: shasum -a 256 -c <(grep -v "^#" osf/methodology/v1_22/prereg/LOCK_MANIFEST_v1_22_DRAFT.sha256)
 # inputs read from tags (not in this tree): 9b67e89231f4cab8ef6916a04acb886e8bab723fe71f4b308f9406938cb873cb  v1.19-prereg-r1:osf/methodology/v1_19/prereg/phantom_roster_v1_19.csv
 #   7aa246ee1b28a9bf4f55b8a5c124f099a75bb4ca029c0e42bf2ba1459c6323aa  v0.42-prereg-r1:osf/v42/prereg/probes_v0_42.jsonl
 #   6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a  v0.45-prereg-r1:osf/v45/scripts/score_v0_45.py
+d5e14da116d7af6b997e3e134433a70b3565553e97633494efaaf1dcf0023b44  osf/methodology/v1_22/prereg/PRE_REGISTRATION_v1_22_DRAFT_r2.md
 e96f35c0f1ffc792468a077ce60cf44add66d86107f0e49f4c3869e1d0ff837f  osf/methodology/v1_22/prereg/PRE_REGISTRATION_v1_22_DRAFT_r1.md
 2eb82b57745e3599b8b11506110792bee45122188d6201fe5eab0c0ab911cbe0  osf/methodology/v1_22/prereg/PRE_REGISTRATION_v1_22_DRAFT_r0.md
 cb6b1d36c260c73121e0b078308015ff8e739375eea8ff0a196a32cecc886b4b  osf/methodology/v1_22/anchor/DEVIATIONS.md
