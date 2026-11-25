@@ -1,0 +1,219 @@
+{
+  "study": "Arm A (Does AI presence pay?: Google visibility, AI presence and sales)",
+  "revision": "r5",
+  "tag": "arm-a-prereg-r1",
+  "tag_object": "51c8f3baf19ddb67e1d05a2a984bd37e263becb7",
+  "commit": "76b10881440e6c2e5cdabd56e5a7168bcd635f89",
+  "tree": "a20899ba09794624a42c31d3f8e749469773b502",
+  "branch": "arma-seo-prereg",
+  "tagger_date": "2026-11-24T23:41:04-06:00",
+  "remote_tag_refs": "51c8f3baf19ddb67e1d05a2a984bd37e263becb7\trefs/tags/arm-a-prereg-r1\n76b10881440e6c2e5cdabd56e5a7168bcd635f89\trefs/tags/arm-a-prereg-r1^{}",
+  "recorded_utc": "2026-11-25T05:45:14Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: arm_a, with prereg, registries, scripts, tests, tests/fixtures, drafting, drafting/armA_crosscheck)",
+  "osf_verification": {
+    "receipt": "_worktrees/_runner_tmp/r1125/arma_receipts/arm_a.osf_receipt.json",
+    "status": "ok",
+    "finished_utc": "2026-11-25T05:45:02+00:00",
+    "verification": {
+      "match": 40,
+      "mismatch": 0,
+      "missing": 0,
+      "other": 0,
+      "local_files": 40,
+      "failed_uploads": []
+    },
+    "files": 40
+  },
+  "decisions_at_lock": "Pablo, Tue 2026-11-24 US Central: 10:09 pm $50 credit funded; 10:37 pm pull 1 Tue 2026-12-01 (fallback to Thu 2026-12-31; pulls 2 and 3 Mon 2027-01-04, Mon 2027-03-01; one-off exception: pull 1 may run on Dec 1 beside another paid collection); 11:33 pm lock now (24-hour wait waived), calls (a), (b), (c) yes (pre-registration r5 lock table; DEVIATIONS Entry 0 Part G)",
+  "locked_files": {
+    "osf/arm_a/DEVIATIONS.md": {
+      "sha256": "563fea42f3f35f95c3dab4542464cf5ae192dd6b1e6160af05805eff818cbb68",
+      "git_blob": "1692a73b5b777c5b55efa5b1300393687583a9ae"
+    },
+    "osf/arm_a/LOCK_MANIFEST_arm_a.sha256": {
+      "sha256": "ebc72144449bd53463e5d5a53c873f0ee2ac63e6e691c972a8e0f4da344e718d",
+      "git_blob": "bc2afdef1cd5d7d6131c88b7890199fcb41e7ad6"
+    },
+    "osf/arm_a/prereg/PRE_REGISTRATION_arm_a.md": {
+      "sha256": "769fc96e9037b1557e29954d621a6aad25c2488d51f9220ed04578d3e05f2cbb",
+      "git_blob": "ad814a0bc1cb200c86b443ba635dee609922def2"
+    },
+    "osf/arm_a/prereg/coi_screen_arm_a.txt": {
+      "sha256": "e212df80eb4050ca949ff5f868805d2123de26b4afa33be9e948c0e0fca77178",
+      "git_blob": "a3b1763f8911e231af937e0059915f750b7a614a"
+    },
+    "osf/arm_a/prereg/dry_run_arm_a.json": {
+      "sha256": "86b3c33ae091f29c8e5d235255e7eb70f7d7095cf35e517c9817c4d3b184dc8a",
+      "git_blob": "88d57eef86cabd8219a7d6ee9cc8a2b5d769d52a"
+    },
+    "osf/arm_a/prereg/dry_run_arm_a.txt": {
+      "sha256": "f3f653efcf8ab08344234bbde8d38d4867603305cce0babb25a8db829dd8db89",
+      "git_blob": "339bc71f3a464e4a6c0df51b3056dafc2e162b3f"
+    },
+    "osf/arm_a/prereg/prelock_sources_arm_a.json": {
+      "sha256": "d7709f8cc3da03d771a1fa2e779b579f01bf727076cf0e8db62b8b4713b2143e",
+      "git_blob": "330d171f3c14b8afaa635a943650137d9bab3cbd"
+    },
+    "osf/arm_a/prereg/tests_arm_a.txt": {
+      "sha256": "95415dba13c3639b2127bda7728fcac180954dffb0c7d99c59851b0d61cb18a8",
+      "git_blob": "eca9bc96a2144674f4fc2526a37c9c876db27944"
+    },
+    "osf/arm_a/registries/arm_a_cars_sales_r1.csv": {
+      "sha256": "1d7a515f264b0517cdfb1097676ece5203428378b6be523630276a28a7b70669",
+      "git_blob": "bc0a0951367af954c4004ffba72d363b0b180a6d"
+    },
+    "osf/arm_a/registries/arm_a_domains_r1.csv": {
+      "sha256": "e0720007f5cdb038cfad2b6de28b24e8f60e57346b6d71b3e0e4bf33ea73525d",
+      "git_blob": "4341afaaa597694abfe26da735052e7fe225842d"
+    },
+    "osf/arm_a/registries/arm_a_presence_r1.csv": {
+      "sha256": "5fbb8e14772425261eaf931021f5eb475fc1df1d664828060cfebadb9a4ab3a2",
+      "git_blob": "61774b29a7324ed331fc9436479d5b35c36d2319"
+    },
+    "osf/arm_a/registries/arm_a_sales_sources_r1.csv": {
+      "sha256": "b54286ed8c917f535b63b7d12966a6945bbfd2e17f6789c732bbce51ec2b632a",
+      "git_blob": "b928aa4d06f5681fa48127c422da93f6e5e41c40"
+    },
+    "osf/arm_a/registries/arm_a_shift_r1.csv": {
+      "sha256": "0bee34a021158f806f0d10a8725dc34a75599e504b16a5e863f624693b79a00b",
+      "git_blob": "0789e5a51703359c34a276e3768afe7127ce388b"
+    },
+    "osf/arm_a/scripts/analyze_arm_a.py": {
+      "sha256": "bb1f256be468525369f800123031a47b2688aadfa79f0f27ea2c15d35fcdbee0",
+      "git_blob": "545d460296bf6e861ceeb6065c2ef7a4c69a2448"
+    },
+    "osf/arm_a/scripts/build_inputs_arm_a.py": {
+      "sha256": "378b9e138772bc5ca8fd60e4ab3399dba567ff44cd73db71dba35d6715d77fad",
+      "git_blob": "35b2946beec9008a57f8189befd19727a60f676f"
+    },
+    "osf/arm_a/scripts/coi_screen_arm_a.py": {
+      "sha256": "622158aaa7221a5522141f01414f5e9a2941a3dc842fa14601c2626e8feff692",
+      "git_blob": "853632955ed8233908bfe67dd144480976c53d44"
+    },
+    "osf/arm_a/scripts/dry_run_arm_a.py": {
+      "sha256": "de84ea91582e53b00f0d96b10e39a1c924c79edbb3029b55600e78a627217776",
+      "git_blob": "5c40a58681f7310e3159a6efe45d1130e16a2b13"
+    },
+    "osf/arm_a/scripts/fetch_sales_arm_a.py": {
+      "sha256": "9c341505c1a5dd267ad52b07f73acbb737c458103e900835363b1b3bc2261499",
+      "git_blob": "46854158c57fd450628612ebef4b506df24f0a68"
+    },
+    "osf/arm_a/scripts/join_arm_a.py": {
+      "sha256": "d856585787a609179b57a98386a9f45983aa9f5fcdc9a4822f260f17227c1e91",
+      "git_blob": "b97747700a380e1edc842bf855838d613d3c89e0"
+    },
+    "osf/arm_a/scripts/lock_manifest_arm_a.py": {
+      "sha256": "ad0db98eea6c13c3829dcb579b61f539ec8b10a73a3e252aa6ebc13b8ef63ee6",
+      "git_blob": "7dea81a192124afc45a0a401f375a20e893fde32"
+    },
+    "osf/arm_a/scripts/params_arm_a.py": {
+      "sha256": "128bf237a910bd4d63aeed8f6d5d5e4a55ea0c6f85f1efe285ba74d3753d2eca",
+      "git_blob": "5926d06076752ca0a93f6764ba5960a17960f808"
+    },
+    "osf/arm_a/scripts/prelock_sources_arm_a.py": {
+      "sha256": "a9472d10ca3f8724ee4c54608ed087834e080b1a091da54aa9f2f3503ae1b4a2",
+      "git_blob": "daf7edaff8e1f9fca571d060b47758168f6a6645"
+    },
+    "osf/arm_a/scripts/pull_arm_a.py": {
+      "sha256": "3a2e21f6096cac4bba69b2a2f334a493c77ff406307113e457ff6f86237df749",
+      "git_blob": "8e7c1100f97c9920ba3dd29c09744b7b2f466bf1"
+    },
+    "osf/arm_a/scripts/simulate_google_arm_a.py": {
+      "sha256": "e06fa8b4ac219b01675c0018c699b7eee9e3c2caf680a6c784e458d45f3c38a9",
+      "git_blob": "94d867780222014a11ff2436cabfa9e3149f6010"
+    },
+    "osf/arm_a/scripts/stats_arm_a.py": {
+      "sha256": "668846905a1f8a96537599780b5b10322cdaf000bffb13a3d03593519d5bb599",
+      "git_blob": "ca60f2ab053f733a755f451475a5530462034ae0"
+    },
+    "osf/arm_a/tests/fixtures/hro_datefrom_allrecipes.com_20261124T040453Z.json": {
+      "sha256": "3321374bf3fa0f1cf819c1d2d02b5c877e1639bce673c6905907806299f592b2",
+      "git_blob": "2743ae3c16051e1677fe07bf62acc7cba428f1d0"
+    },
+    "osf/arm_a/tests/fixtures/hro_nasa.gov_20261124T040421Z.json": {
+      "sha256": "837facba8cacf829fdb05dece83255a2fc50da1841ae62844fe17b6f4d6a4cec",
+      "git_blob": "340fdef9fc70f04cedc6d38cffe85e2486c2f11a"
+    },
+    "osf/arm_a/tests/run_all_arm_a.py": {
+      "sha256": "83213cc4ba533600104f1eaa60a274aaf5a813307ddd68fa1127a3cc980207f7",
+      "git_blob": "5f8a68807dff0c9740717c4654fa33732c0376b8"
+    },
+    "osf/arm_a/tests/test_analyze_arm_a.py": {
+      "sha256": "2d4fcd0e52919b9488f6c8632190024f28e1af06ad643f50cdb7eb5320394b22",
+      "git_blob": "236f03b4b5258de94b573dc8ae31e26561b62061"
+    },
+    "osf/arm_a/tests/test_join_arm_a.py": {
+      "sha256": "99022536bd302a08f5766e0dc8429c5b0a11ca936b0cea02384b8923ec0a9dec",
+      "git_blob": "9c856317995b570db9a9f1507b751a0c43bd603c"
+    },
+    "osf/arm_a/tests/test_pull_arm_a.py": {
+      "sha256": "35f21fd6ab80278cc76cafd11c1e96462d94ed79457b67c57937fd66bab5e848",
+      "git_blob": "06ce5a00e70ede4dcc9df3253dd2cd92c41539ab"
+    },
+    "osf/arm_a/tests/test_registries_arm_a.py": {
+      "sha256": "26f02043304ae01baa30f69ef505449def8c5ec0ce1a7ce5bdf6ad91fe5b883a",
+      "git_blob": "7697754d51aaa72416e6f2a42f1e56ee28623aef"
+    },
+    "prereg/armA_crosscheck/armA_domain_crosscheck.py": {
+      "sha256": "dc399338a12db4ff7e5dc470211de4108a8383662a013b67c25b324c0b26f4ae",
+      "git_blob": "e0b63c34a002032b9f44751aa42b73c5aafb6eae"
+    },
+    "prereg/armA_crosscheck/crosscheck_20261124T133629Z.csv": {
+      "sha256": "dc5441363e611cf491ab9612a4a01d6adc1f1b8c31c032e8bbddb5a832e9a004",
+      "git_blob": "4f4ab54b52b8461a7954b3fcba8fd13913186357"
+    },
+    "prereg/armA_crosscheck/raw_responses_20261124T133629Z.jsonl": {
+      "sha256": "22668e9464551bc9cc50db310c89dca8b8c5c66d7fb66392c5ccb37f59100c0d",
+      "git_blob": "dd7dabdea967d7977db6d1515505e9c3abf0c0dc"
+    },
+    "prereg/armA_crosscheck/summary_20261124T133629Z.json": {
+      "sha256": "d428b7e7144ac2d55a7ab037dc5ad47208da391cadf1550278f4e78cac1a41fd",
+      "git_blob": "a109ad5c8d925532352e6cdce54ba1c675f5bf87"
+    },
+    "prereg/armA_power_sim_out_r3.txt": {
+      "sha256": "e5424f6c6e9573037d781a67a44d503e4b9b70c6044b41013ea092e77fb2b6c6",
+      "git_blob": "0e814f676fbcc6da73d892aa2ebee8b6bf63a617"
+    },
+    "prereg/armA_power_sim_r3.py": {
+      "sha256": "31d0931aa3664d4584c6bba258d71dc0f5d49c051539d9f7bbe6826a7ec1b960",
+      "git_blob": "35aab71b2774d1324aed00e3896ae5c9d89533b5"
+    },
+    "prereg/armA_prelock_notes_r1.md": {
+      "sha256": "d589f64b2a38a0ab992e9a0690956d2d4b8ec7f9da08934e432cfa7d2165c878",
+      "git_blob": "a15a842b4bd6e72d5761d2dba6deb764f20b6845"
+    },
+    "prereg/arm_a_seo_prereg_draft_r5.md": {
+      "sha256": "769fc96e9037b1557e29954d621a6aad25c2488d51f9220ed04578d3e05f2cbb",
+      "git_blob": "ad814a0bc1cb200c86b443ba635dee609922def2"
+    }
+  },
+  "inputs_by_ref": [
+    {
+      "sha256": "dd239926886f24f3c9e5b12c27ea89c9c8e12a222ff7dce4070b51fd49923219",
+      "ref_path": "aias-2-0-data-locked:osf/v41/v41_three_wave_table.csv"
+    },
+    {
+      "sha256": "792e14addb7ad1ef03a147ee16cee56e82cfecd58030d2e8e3cf3e3ea255af7f",
+      "ref_path": "v0.42-scoring-locked:osf/v42/v42_brand_table.csv"
+    },
+    {
+      "sha256": "aab2442f12e73f89cf0ba4b498f2aa8be3b3777dba91c8b961f6a918bb0cc00c",
+      "ref_path": "0f40d4f:osf/v40/v40_postscore.json"
+    },
+    {
+      "sha256": "2f7eb7208693ed0f67b9cde127dd368bed25abcd245729fbc6bea498911cb573",
+      "ref_path": "cc36d7a:osf/v25/data/v25_merged_presence_trends.csv"
+    },
+    {
+      "sha256": "261cc2cb7a2247e421b12f231f8fe8ea040ac96a6de4789ca1a590dfc64f1910",
+      "ref_path": "240b2cf:content/explorers.json  (website repository)"
+    }
+  ],
+  "collection": {
+    "raw_dir": "osf/arm_a/data/raw/pull{1,2,3}/",
+    "exists_at_anchor": false,
+    "pull_1_planned": "2026-12-01",
+    "command": "pull_arm_a.py --pull 1 --collect (refuses unless this anchor exists)"
+  }
+}
