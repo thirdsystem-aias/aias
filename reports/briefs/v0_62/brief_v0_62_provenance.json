@@ -1,0 +1,1404 @@
+{
+ "_note": "Every number printed in TS-BR-v0.62-r1 and its chart: name -> source file, JSON path (or locked constant), raw value, format. Sources: verdicts = osf/v62/v62_verdicts.json; coi106, aichk, encorr, planned = osf/v62/data/v62_sens_coi106_v0_62.json, v62_sens_ai_check_v0_62.json, v62_sens_en_corrected_v0_62.json, v62_planned_items_summary_v0_62.json (DEVIATIONS Entries 4-7); paper_values = papers/v0_62/v62_values.json (Entry 8 strict charge); decision lines: osf/v62/scripts/score_v0_62.py, budget_v0_62.py. Files unchanged from 5749211 (branch v0.62-paper; DEVIATIONS Entries 4-8 from v0.62-nohand 69e1aa9).",
+ "sources_sha256": {
+  "osf/v62/v62_verdicts.json": "c6bf66a31c7abf2d04863b426ba0a636f435835c4776719d27778cc348dcd916",
+  "osf/v62/data/v62_sens_coi106_v0_62.json": "28bb3a746fb392b1bab8da3553cf4ddb56eb1b3a46350e447e92d6ddeaf31ea4",
+  "osf/v62/data/v62_sens_ai_check_v0_62.json": "5989757708f640cf53932d34c7a1b086ef4f56ab5c104ca2a8e546956d1b2bf3",
+  "osf/v62/data/v62_sens_en_corrected_v0_62.json": "a638947314d9b630ab90d458a3586d1c91ca086e491b51e9ad2a997420178e01",
+  "osf/v62/data/v62_planned_items_summary_v0_62.json": "0b5429c025ea85c4a4508180850ea320d308590f926d4028d7ba87e08ec4a1dd",
+  "papers/v0_62/v62_values.json": "ae414542df07371b0290a4756736754532a91e199df0ecb935e63d6cd3dc81b5",
+  "osf/v62/scripts/score_v0_62.py": "fe8ce8ea621a5c5c9984f4dd26516e9f0c4fc14eddaf58aefb46378687eda315",
+  "osf/v62/scripts/budget_v0_62.py": "a3b3aa425bb94691480645dca615c33356f6ceeb2ab0f5a23229fd3f70eef16e",
+  "papers/v0_62/v0_62_paper_draft.md": "025700969910ab8c3bec015babaa063f239735972a0232f5050cfd82f3308ecb"
+ },
+ "values": {
+  "N_UNITS": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "n_units"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "PRES_ES": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "rho_c"
+   ],
+   "raw": 0.9306777940164922,
+   "fmt": "r3",
+   "formatted": "0.931"
+  },
+  "PRES_ES_LO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "ci95_rho_c",
+    0
+   ],
+   "raw": 0.8638134335419682,
+   "fmt": "r3",
+   "formatted": "0.864"
+  },
+  "PRES_ES_HI": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "ci95_rho_c",
+    1
+   ],
+   "raw": 0.958828090171836,
+   "fmt": "r3",
+   "formatted": "0.959"
+  },
+  "PRES_ES_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "P_ES": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "p_perm"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "r4",
+   "formatted": "0.0001"
+  },
+  "DL_ES": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_es",
+    "delta_L"
+   ],
+   "raw": 0.03604497354497354,
+   "fmt": "s3",
+   "formatted": "+0.036"
+  },
+  "PHI_ES": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_es",
+    "rho_c"
+   ],
+   "raw": 0.6230297082605862,
+   "fmt": "r3",
+   "formatted": "0.623"
+  },
+  "PHI_ES_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_es",
+    "n"
+   ],
+   "raw": 75,
+   "fmt": "i0",
+   "formatted": "75"
+  },
+  "COI_ES": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-COI_es",
+    "rho_c"
+   ],
+   "raw": 0.9249358935116313,
+   "fmt": "r3",
+   "formatted": "0.925"
+  },
+  "COI106_ES": {
+   "kind": "value",
+   "source": "coi106",
+   "path": [
+    "sensitivities",
+    "S-COI-106_es",
+    "rho_c"
+   ],
+   "raw": 0.9304149185876167,
+   "fmt": "r3",
+   "formatted": "0.930"
+  },
+  "CORR_ES": {
+   "kind": "value",
+   "source": "encorr",
+   "path": [
+    "result_corrected",
+    "tests",
+    "H_Lang_Presence_es",
+    "rho_c"
+   ],
+   "raw": 0.938294489079224,
+   "fmt": "r3",
+   "formatted": "0.938"
+  },
+  "PRES_KO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "rho_c"
+   ],
+   "raw": 0.8671799990587867,
+   "fmt": "r3",
+   "formatted": "0.867"
+  },
+  "PRES_KO_LO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "ci95_rho_c",
+    0
+   ],
+   "raw": 0.7635847191078351,
+   "fmt": "r3",
+   "formatted": "0.764"
+  },
+  "PRES_KO_HI": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "ci95_rho_c",
+    1
+   ],
+   "raw": 0.9244761932729159,
+   "fmt": "r3",
+   "formatted": "0.924"
+  },
+  "PRES_KO_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "P_KO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "p_perm"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "r4",
+   "formatted": "0.0001"
+  },
+  "DL_KO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_ko",
+    "delta_L"
+   ],
+   "raw": -0.07423941798941801,
+   "fmt": "s3",
+   "formatted": "−0.074"
+  },
+  "PHI_KO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_ko",
+    "rho_c"
+   ],
+   "raw": 0.3433436664331132,
+   "fmt": "r3",
+   "formatted": "0.343"
+  },
+  "PHI_KO_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_ko",
+    "n"
+   ],
+   "raw": 66,
+   "fmt": "i0",
+   "formatted": "66"
+  },
+  "COI_KO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-COI_ko",
+    "rho_c"
+   ],
+   "raw": 0.8541155256893389,
+   "fmt": "r3",
+   "formatted": "0.854"
+  },
+  "COI106_KO": {
+   "kind": "value",
+   "source": "coi106",
+   "path": [
+    "sensitivities",
+    "S-COI-106_ko",
+    "rho_c"
+   ],
+   "raw": 0.8550370391789573,
+   "fmt": "r3",
+   "formatted": "0.855"
+  },
+  "CORR_KO": {
+   "kind": "value",
+   "source": "encorr",
+   "path": [
+    "result_corrected",
+    "tests",
+    "H_Lang_Presence_ko",
+    "rho_c"
+   ],
+   "raw": 0.8681153001543023,
+   "fmt": "r3",
+   "formatted": "0.868"
+  },
+  "PRES_ZH": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "rho_c"
+   ],
+   "raw": 0.8117306919025745,
+   "fmt": "r3",
+   "formatted": "0.812"
+  },
+  "PRES_ZH_LO": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "ci95_rho_c",
+    0
+   ],
+   "raw": 0.6850061585980521,
+   "fmt": "r3",
+   "formatted": "0.685"
+  },
+  "PRES_ZH_HI": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "ci95_rho_c",
+    1
+   ],
+   "raw": 0.8851836456269334,
+   "fmt": "r3",
+   "formatted": "0.885"
+  },
+  "PRES_ZH_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "n"
+   ],
+   "raw": 112,
+   "fmt": "i0",
+   "formatted": "112"
+  },
+  "P_ZH": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "p_perm"
+   ],
+   "raw": 9.999000099990002e-05,
+   "fmt": "r4",
+   "formatted": "0.0001"
+  },
+  "DL_ZH": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Presence_zh",
+    "delta_L"
+   ],
+   "raw": -0.04249338624338624,
+   "fmt": "s3",
+   "formatted": "−0.042"
+  },
+  "PHI_ZH": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_zh",
+    "rho_c"
+   ],
+   "raw": 0.33044335616866916,
+   "fmt": "r3",
+   "formatted": "0.330"
+  },
+  "PHI_ZH_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "tests",
+    "H_Lang_Phi_zh",
+    "n"
+   ],
+   "raw": 70,
+   "fmt": "i0",
+   "formatted": "70"
+  },
+  "COI_ZH": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-COI_zh",
+    "rho_c"
+   ],
+   "raw": 0.801984086963887,
+   "fmt": "r3",
+   "formatted": "0.802"
+  },
+  "COI106_ZH": {
+   "kind": "value",
+   "source": "coi106",
+   "path": [
+    "sensitivities",
+    "S-COI-106_zh",
+    "rho_c"
+   ],
+   "raw": 0.7998544838232008,
+   "fmt": "r3",
+   "formatted": "0.800"
+  },
+  "CORR_ZH": {
+   "kind": "value",
+   "source": "encorr",
+   "path": [
+    "result_corrected",
+    "tests",
+    "H_Lang_Presence_zh",
+    "rho_c"
+   ],
+   "raw": 0.8116272405941054,
+   "fmt": "r3",
+   "formatted": "0.812"
+  },
+  "CAT_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "inputs": [
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ]
+   ],
+   "raw": 0.672219123513549,
+   "fmt": "r3",
+   "formatted": "0.672"
+  },
+  "CAT_MAX": {
+   "kind": "derived",
+   "fn": "d_max",
+   "inputs": [
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_es",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_ko",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.19"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.20"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.21"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.22"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "tests",
+      "H_Lang_Presence_zh",
+      "per_category_rho_c",
+      "v0.23"
+     ]
+    ]
+   ],
+   "raw": 0.9802086875268903,
+   "fmt": "r3",
+   "formatted": "0.980"
+  },
+  "COI_N_RUN": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-COI_es",
+    "n"
+   ],
+   "raw": 107,
+   "fmt": "i0",
+   "formatted": "107"
+  },
+  "COI_N_106": {
+   "kind": "value",
+   "source": "coi106",
+   "path": [
+    "sensitivities",
+    "S-COI-106_es",
+    "n"
+   ],
+   "raw": 106,
+   "fmt": "i0",
+   "formatted": "106"
+  },
+  "DENON_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-Denon_es",
+    "n"
+   ],
+   "raw": 111,
+   "fmt": "i0",
+   "formatted": "111"
+  },
+  "HP_N": {
+   "kind": "value",
+   "source": "verdicts",
+   "path": [
+    "sensitivities",
+    "S-Headphones_es",
+    "n"
+   ],
+   "raw": 96,
+   "fmt": "i0",
+   "formatted": "96"
+  },
+  "SLANG_ZH": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "sensitivities",
+    "S-Language_zh",
+    "rho_c"
+   ],
+   "raw": 0.8065091390159961,
+   "fmt": "r3",
+   "formatted": "0.807"
+  },
+  "SLANG_ZH_X": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "sensitivities",
+    "S-Language_zh",
+    "n_excluded_calls"
+   ],
+   "raw": 3,
+   "fmt": "i0",
+   "formatted": "3"
+  },
+  "SALIAS_KO": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "sensitivities",
+    "S-Alias_ko",
+    "rho_c"
+   ],
+   "raw": 0.8634594527218883,
+   "fmt": "r3",
+   "formatted": "0.863"
+  },
+  "SALIAS_ZH": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "sensitivities",
+    "S-Alias_zh",
+    "rho_c"
+   ],
+   "raw": 0.8126195144441888,
+   "fmt": "r3",
+   "formatted": "0.813"
+  },
+  "CORR_PHI_ZH": {
+   "kind": "value",
+   "source": "encorr",
+   "path": [
+    "result_corrected",
+    "tests",
+    "H_Lang_Phi_zh",
+    "rho_c"
+   ],
+   "raw": 0.30482759212458627,
+   "fmt": "r4",
+   "formatted": "0.3048"
+  },
+  "SENS_MIN": {
+   "kind": "derived",
+   "fn": "d_min",
+   "inputs": [
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Denon_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Headphones_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-COI_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Denon_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Headphones_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-COI_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Denon_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-Headphones_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "verdicts",
+     [
+      "sensitivities",
+      "S-COI_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "coi106",
+     [
+      "sensitivities",
+      "S-COI-106_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "coi106",
+     [
+      "sensitivities",
+      "S-COI-106_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "coi106",
+     [
+      "sensitivities",
+      "S-COI-106_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "flagged",
+      "tests",
+      "H_Lang_Presence_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "flagged",
+      "tests",
+      "H_Lang_Presence_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "flagged",
+      "tests",
+      "H_Lang_Presence_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "strictly_flagged",
+      "tests",
+      "H_Lang_Presence_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "strictly_flagged",
+      "tests",
+      "H_Lang_Presence_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-Trans",
+      "strictly_flagged",
+      "tests",
+      "H_Lang_Presence_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-AliasAI",
+      "S-AliasAI_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "aichk",
+     [
+      "sensitivities_ai_check",
+      "S-AliasAI",
+      "S-AliasAI_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Language_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Language_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Language_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Script_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Alias_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Alias_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "planned",
+     [
+      "sensitivities",
+      "S-Alias_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "tests",
+      "H_Lang_Presence_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "tests",
+      "H_Lang_Presence_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "tests",
+      "H_Lang_Presence_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Denon_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Headphones_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-COI_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Denon_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Headphones_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-COI_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Denon_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-Headphones_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "result_corrected",
+      "sensitivities",
+      "S-COI_zh",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "s_coi_106_corrected",
+      "S-COI-106_es",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "s_coi_106_corrected",
+      "S-COI-106_ko",
+      "rho_c"
+     ]
+    ],
+    [
+     "encorr",
+     [
+      "s_coi_106_corrected",
+      "S-COI-106_zh",
+      "rho_c"
+     ]
+    ]
+   ],
+   "raw": 0.7993692456438889,
+   "fmt": "r3",
+   "formatted": "0.799"
+  },
+  "CALLS": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "checks",
+    "MC_Complete",
+    "answered"
+   ],
+   "raw": 1602,
+   "fmt": "i0",
+   "formatted": "1,602"
+  },
+  "CALLS_SENT": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "checks",
+    "MC_Complete",
+    "calls_sent"
+   ],
+   "raw": 1602,
+   "fmt": "i0",
+   "formatted": "1,602"
+  },
+  "SPEND": {
+   "kind": "value",
+   "source": "planned",
+   "path": [
+    "checks",
+    "MC_Budget",
+    "spend_from_recorded_usage_usd"
+   ],
+   "raw": 28.129352,
+   "fmt": "usd2",
+   "formatted": "$28.13"
+  },
+  "SPEND_STRICT": {
+   "kind": "derived",
+   "fn": "d_sum",
+   "inputs": [
+    [
+     "planned",
+     [
+      "checks",
+      "MC_Budget",
+      "spend_from_recorded_usage_usd"
+     ]
+    ],
+    [
+     "paper_values",
+     [
+      "values",
+      "cost.worst_case",
+      "value"
+     ]
+    ]
+   ],
+   "raw": 28.297192000000003,
+   "fmt": "usd2",
+   "formatted": "$28.30"
+  },
+  "CAP": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/budget_v0_62.py",
+   "constant": "BUDGET_CAP_USD",
+   "index": null,
+   "raw": 100.0,
+   "fmt": "usd0",
+   "formatted": "$100"
+  },
+  "PRES_CONF": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/score_v0_62.py",
+   "constant": "PRES",
+   "index": 0,
+   "raw": 0.7,
+   "fmt": "r2",
+   "formatted": "0.70"
+  },
+  "PRES_FALS": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/score_v0_62.py",
+   "constant": "PRES",
+   "index": 1,
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "PHI_CONF": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/score_v0_62.py",
+   "constant": "PHI",
+   "index": 0,
+   "raw": 0.5,
+   "fmt": "r2",
+   "formatted": "0.50"
+  },
+  "PHI_FALS": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/score_v0_62.py",
+   "constant": "PHI",
+   "index": 1,
+   "raw": 0.3,
+   "fmt": "r2",
+   "formatted": "0.30"
+  },
+  "ALPHA": {
+   "kind": "rule",
+   "source": "osf/v62/scripts/score_v0_62.py",
+   "constant": "ALPHA",
+   "index": null,
+   "raw": 0.05,
+   "fmt": "r2",
+   "formatted": "0.05"
+  },
+  "AI_USE": {
+   "kind": "wording",
+   "source": "papers/v0_62/v0_62_paper_draft.md Declarations, Use of AI tools, verbatim",
+   "raw": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it.",
+   "fmt": "verbatim",
+   "formatted": "During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it."
+  }
+ },
+ "report_code": "TS-BR-v0.62-r1",
+ "pdf": "reports/briefs/v0_62/TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf",
+ "keys_used_in_text": [
+  "AI_USE",
+  "ALPHA",
+  "CALLS",
+  "CALLS_SENT",
+  "CAP",
+  "CAT_MAX",
+  "CAT_MIN",
+  "COI106_ES",
+  "COI106_KO",
+  "COI106_ZH",
+  "COI_ES",
+  "COI_KO",
+  "COI_N_106",
+  "COI_N_RUN",
+  "COI_ZH",
+  "CORR_ES",
+  "CORR_KO",
+  "CORR_PHI_ZH",
+  "CORR_ZH",
+  "DENON_N",
+  "DL_ES",
+  "DL_KO",
+  "DL_ZH",
+  "HP_N",
+  "N_UNITS",
+  "PHI_CONF",
+  "PHI_ES",
+  "PHI_ES_N",
+  "PHI_FALS",
+  "PHI_KO",
+  "PHI_KO_N",
+  "PHI_ZH",
+  "PHI_ZH_N",
+  "PRES_CONF",
+  "PRES_ES",
+  "PRES_ES_HI",
+  "PRES_ES_LO",
+  "PRES_FALS",
+  "PRES_KO",
+  "PRES_KO_HI",
+  "PRES_KO_LO",
+  "PRES_ZH",
+  "PRES_ZH_HI",
+  "PRES_ZH_LO",
+  "P_ES",
+  "SALIAS_KO",
+  "SALIAS_ZH",
+  "SENS_MIN",
+  "SLANG_ZH",
+  "SLANG_ZH_X",
+  "SPEND",
+  "SPEND_STRICT"
+ ],
+ "digit_audit": {
+  "checked": 94,
+  "unknown": [],
+  "by_kind": {
+   "page number or note marker": 13,
+   "provenance value": 76,
+   "chart axis tick": 5
+  },
+  "non_result_tokens_removed": {
+   "code": 1,
+   "versions": 7,
+   "osf": 1,
+   "files": 4,
+   "pct": 5,
+   "models": 3,
+   "years": 6,
+   "dates": 3,
+   "tier": 1,
+   "entries": 1
+  }
+ }
+}
