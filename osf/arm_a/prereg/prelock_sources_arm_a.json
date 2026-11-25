@@ -1,0 +1,734 @@
+{
+ "run_utc": "2026-11-25T04:54:24+00:00",
+ "script": "osf/arm_a/scripts/prelock_sources_arm_a.py",
+ "software": [
+  {
+   "brand_id": "BR-00418",
+   "brand": "Salesforce",
+   "cik": "0001108524",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-01-31",
+    "filingDate": "2025-03-05",
+    "accessionNumber": "0001108524-25-000006",
+    "primaryDocument": "crm-20250131.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00419",
+   "brand": "HubSpot",
+   "cik": "0001404655",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-11",
+    "accessionNumber": "0001193125-26-046646",
+    "primaryDocument": "hubs-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00420",
+   "brand": "ServiceNow",
+   "cik": "0001373715",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-01-29",
+    "accessionNumber": "0001373715-26-000007",
+    "primaryDocument": "now-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00421",
+   "brand": "Workday",
+   "cik": "0001327811",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-01-31",
+    "filingDate": "2025-03-11",
+    "accessionNumber": "0001327811-25-000056",
+    "primaryDocument": "wday-20250131.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00422",
+   "brand": "SAP",
+   "cik": "0001000184",
+   "form": "20-F",
+   "filing": {
+    "form": "20-F",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-26",
+    "accessionNumber": "0001104659-26-020058",
+    "primaryDocument": "sap-20251231x20f.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00423",
+   "brand": "Oracle",
+   "cik": "0001341439",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-05-31",
+    "filingDate": "2025-06-18",
+    "accessionNumber": "0000950170-25-087926",
+    "primaryDocument": "orcl-20250531.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00425",
+   "brand": "Figma",
+   "cik": "0001579878",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-18",
+    "accessionNumber": "0001628280-26-009228",
+    "primaryDocument": "fig-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00428",
+   "brand": "Datadog",
+   "cik": "0001561550",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-18",
+    "accessionNumber": "0001628280-26-008819",
+    "primaryDocument": "ddog-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00429",
+   "brand": "Snowflake",
+   "cik": "0001640147",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-01-31",
+    "filingDate": "2025-03-21",
+    "accessionNumber": "0001640147-25-000052",
+    "primaryDocument": "snow-20250131.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00431",
+   "brand": "Twilio",
+   "cik": "0001447669",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-24",
+    "accessionNumber": "0001447669-26-000021",
+    "primaryDocument": "twlo-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00432",
+   "brand": "Cloudflare",
+   "cik": "0001477333",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-12-31",
+    "filingDate": "2026-02-26",
+    "accessionNumber": "0001477333-26-000016",
+    "primaryDocument": "cloud-20251231.htm"
+   }
+  },
+  {
+   "brand_id": "BR-00433",
+   "brand": "MongoDB",
+   "cik": "0001441816",
+   "form": "10-K",
+   "filing": {
+    "form": "10-K",
+    "reportDate": "2025-01-31",
+    "filingDate": "2025-03-21",
+    "accessionNumber": "0001441816-25-000057",
+    "primaryDocument": "mdb-20250131.htm"
+   }
+  }
+ ],
+ "banks": [
+  {
+   "brand_id": "BR-00463",
+   "holder_rssd": "1039502",
+   "holder_name": "JPMORGAN CHASE & CO.",
+   "certs": [
+    {
+     "cert": "628",
+     "name": "JPMorgan Chase Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "21761",
+     "name": "JPMorgan Chase Bank, Dearborn",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00464",
+   "holder_rssd": "1073757",
+   "holder_name": "BANK OF AMERICA CORPORATION",
+   "certs": [
+    {
+     "cert": "3510",
+     "name": "Bank of America, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "25178",
+     "name": "Bank of America California, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00465",
+   "holder_rssd": "1120754",
+   "holder_name": "WELLS FARGO & COMPANY",
+   "certs": [
+    {
+     "cert": "3511",
+     "name": "Wells Fargo Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "5146",
+     "name": "Wells Fargo Bank South Central, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "27389",
+     "name": "Wells Fargo National Bank West",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00466",
+   "holder_rssd": "1951350",
+   "holder_name": "CITIGROUP INC.",
+   "certs": [
+    {
+     "cert": "7213",
+     "name": "Citibank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00467",
+   "holder_rssd": "1119794",
+   "holder_name": "U.S. BANCORP",
+   "certs": [
+    {
+     "cert": "6548",
+     "name": "U.S. Bank National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00468",
+   "holder_rssd": "2277860",
+   "holder_name": "CAPITAL ONE FINANCIAL CORPORATION",
+   "certs": [
+    {
+     "cert": "4297",
+     "name": "Capital One, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00469",
+   "holder_rssd": "2162966",
+   "holder_name": "MORGAN STANLEY",
+   "certs": [
+    {
+     "cert": "32992",
+     "name": "Morgan Stanley Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "34221",
+     "name": "Morgan Stanley Private Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00470",
+   "holder_rssd": "2380443",
+   "holder_name": "GOLDMAN SACHS GROUP, INC., THE",
+   "certs": [
+    {
+     "cert": "33124",
+     "name": "Goldman Sachs Bank USA",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00471",
+   "holder_rssd": "1069778",
+   "holder_name": "PNC FINANCIAL SERVICES GROUP, INC., THE",
+   "certs": [
+    {
+     "cert": "6384",
+     "name": "PNC Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00472",
+   "holder_rssd": "1074156",
+   "holder_name": "TRUIST FINANCIAL CORPORATION",
+   "certs": [
+    {
+     "cert": "9846",
+     "name": "Truist Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00473",
+   "holder_rssd": "1238565",
+   "holder_name": "TORONTO-DOMINION BANK, THE",
+   "certs": [
+    {
+     "cert": "18409",
+     "name": "TD Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "33947",
+     "name": "TD Bank USA, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00474",
+   "holder_rssd": "1026632",
+   "holder_name": "CHARLES SCHWAB CORPORATION, THE",
+   "certs": [
+    {
+     "cert": "33497",
+     "name": "Charles Schwab Premier Bank, SSB",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "57450",
+     "name": "Charles Schwab Bank, SSB",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "59108",
+     "name": "Charles Schwab Trust Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00475",
+   "holder_rssd": "1070345",
+   "holder_name": "FIFTH THIRD BANCORP",
+   "certs": [
+    {
+     "cert": "6672",
+     "name": "Fifth Third Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00476",
+   "holder_rssd": "1068191",
+   "holder_name": "HUNTINGTON BANCSHARES INCORPORATED",
+   "certs": [
+    {
+     "cert": "6560",
+     "name": "The Huntington National Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00477",
+   "holder_rssd": "1231333",
+   "holder_name": "BANK OF MONTREAL",
+   "certs": [
+    {
+     "cert": "16571",
+     "name": "BMO Bank National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "58216",
+     "name": "BMO Harris Central National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00478",
+   "holder_rssd": "1132449",
+   "holder_name": "CITIZENS FINANCIAL GROUP, INC.",
+   "certs": [
+    {
+     "cert": "57957",
+     "name": "Citizens Bank, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00479",
+   "holder_rssd": "1075612",
+   "holder_name": "FIRST CITIZENS BANCSHARES, INC.",
+   "certs": [
+    {
+     "cert": "11063",
+     "name": "First-Citizens Bank & Trust Company",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00480",
+   "holder_rssd": "1037003",
+   "holder_name": "M&T BANK CORPORATION",
+   "certs": [
+    {
+     "cert": "588",
+     "name": "Manufacturers and Traders Trust Company",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "34069",
+     "name": "Wilmington Trust, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00481",
+   "holder_rssd": "1275216",
+   "holder_name": "AMERICAN EXPRESS COMPANY",
+   "certs": [
+    {
+     "cert": "27471",
+     "name": "American Express National  Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00482",
+   "holder_rssd": "1068025",
+   "holder_name": "KEYCORP",
+   "certs": [
+    {
+     "cert": "17534",
+     "name": "KeyBank National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00483",
+   "holder_rssd": "1562859",
+   "holder_name": "ALLY FINANCIAL INC.",
+   "certs": [
+    {
+     "cert": "57803",
+     "name": "Ally Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00484",
+   "holder_rssd": "1857108",
+   "holder_name": "HSBC HOLDINGS PLC",
+   "certs": [
+    {
+     "cert": "57890",
+     "name": "HSBC Bank USA, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    },
+    {
+     "cert": "58188",
+     "name": "HSBC Trust Company (Delaware), National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00485",
+   "holder_rssd": "3242838",
+   "holder_name": "REGIONS FINANCIAL CORPORATION",
+   "certs": [
+    {
+     "cert": "12368",
+     "name": "Regions Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00486",
+   "holder_rssd": "4795461",
+   "holder_name": "UBS GROUP AG",
+   "certs": [
+    {
+     "cert": "57565",
+     "name": "UBS Bank USA, National Association",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  },
+  {
+   "brand_id": "BR-00487",
+   "holder_rssd": "6073350",
+   "holder_name": "PINNACLE FINANCIAL PARTNERS, INC.",
+   "certs": [
+    {
+     "cert": "35583",
+     "name": "Pinnacle Bank",
+     "active_now": 1,
+     "call_report_20251231": true
+    }
+   ]
+  }
+ ],
+ "airlines": {
+  "file": "~/aias/osf/v40/data/raw/bts/T100D_SEGMENT_US_2025.zip",
+  "sha256": "32874d207067affc2fd98e608d5297972d62839f03c58191826d27914d1ebf19",
+  "bytes": 2225465,
+  "member": "T_T100D_SEGMENT_US_CARRIER_ONLY.csv",
+  "columns": [
+   "PASSENGERS",
+   "DISTANCE",
+   "UNIQUE_CARRIER",
+   "UNIQUE_CARRIER_NAME",
+   "YEAR",
+   "MONTH",
+   "CLASS"
+  ],
+  "years": [
+   "2025"
+  ],
+  "months_by_carrier": {
+   "AA": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "AS": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "B6": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "DL": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "F9": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "G4": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "HA": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "MX": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "SY": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "UA": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ],
+   "WN": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+   ]
+  }
+ },
+ "ecb": {
+  "series": "EXR.A.USD.EUR.SP00.A",
+  "url": "https://data-api.ecb.europa.eu/service/data/EXR/A.USD.EUR.SP00.A?startPeriod=2025&endPeriod=2025&format=csvdata",
+  "obs_2025": 1
+ }
+}

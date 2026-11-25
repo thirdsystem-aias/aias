@@ -1,0 +1,828 @@
+{
+ "primary": {
+  "results": {
+   "H_A1": {
+    "rho_bar": 0.08049623435724006,
+    "rho_c": {
+     "cars": -0.043501062626308235,
+     "airlines": 0.296969696969697,
+     "banks": -0.029287144922932613,
+     "software": 0.36363636363636365
+    },
+    "n_c": {
+     "cars": 18,
+     "airlines": 10,
+     "banks": 25,
+     "software": 12
+    },
+    "pooled_categories": [
+     "cars",
+     "airlines",
+     "banks",
+     "software"
+    ],
+    "p": 0.2703729627037296,
+    "ci95": [
+     -0.2104094619616231,
+     0.36735711066879256
+    ],
+    "analysable_categories": 4
+   },
+   "H_A2": {
+    "n": 18,
+    "partial_r": -0.1536279267500933,
+    "p": 0.6928307169283072,
+    "groups": {
+     "luxury": 7,
+     "mass": 7,
+     "electric": 4
+    },
+    "sensitivity": {
+     "i_ranks": {
+      "partial": 0.14361657002679426,
+      "p": 0.30556944305569445,
+      "undefined_perms": 0
+     },
+     "ii_per_group_slopes": {
+      "partial": -0.1536279267500933,
+      "p": 0.6322367763223677
+     },
+     "iii_offset_0.25": {
+      "partial": -0.14322810965591082,
+      "p": 0.6774322567743226
+     },
+     "iii_offset_1.0": {
+      "partial": -0.16644966449030077,
+      "p": 0.7135286471352865
+     }
+    },
+    "headline": {
+     "ai_over_google": {
+      "n": 11,
+      "share_sales_over_google": 0.6363636363636364
+     },
+     "other": {
+      "n": 7,
+      "share_sales_over_google": 0.2857142857142857
+     }
+    }
+   },
+   "H_A3": {
+    "rho_Gs_S": 0.3684210526315789,
+    "rho_R_S": 0.08609460320922784,
+    "diff": 0.2823264494223511,
+    "ci95": [
+     -0.60682899038583,
+     1.0237571850335572
+    ],
+    "p_boot_two_sided": 0.5112,
+    "reading": "no difference detected",
+    "n": 18
+   },
+   "H_A4": {
+    "n": 18,
+    "J": 34.0,
+    "p": 0.953004699530047,
+    "band_means": [
+     0.04821211013474347,
+     0.006389135128427981,
+     -0.01833010054327507
+    ],
+    "best_band": 0,
+    "spread": -0.06654221067801853,
+    "spread_ci95": [
+     -0.12038971985848637,
+     0.0004372801135123221
+    ],
+    "hit_rate_top": 0.16666666666666666,
+    "band_n": [
+     6,
+     6,
+     6
+    ],
+    "baseline_a": {
+     "spread": 0.05240347059635771,
+     "diff": -0.11894568127437624,
+     "diff_ci95": [
+      -0.20251739369440275,
+      -0.03579169429528792
+     ]
+    },
+    "placebo_b": {
+     "spread": 0.04462014878818425,
+     "spread_ci95": [
+      -0.017595393817923216,
+      0.11263861326350226
+     ]
+    }
+   },
+   "H_A5": {
+    "n": 18,
+    "rho": -0.5034750221240278,
+    "p": 0.9836016398360165
+   },
+   "H_A7": {
+    "status": "UNDETERMINED",
+    "p": null,
+    "rho": null,
+    "exploratory_t4_t5": null
+   },
+   "H_A6": {
+    "airlines": {
+     "category": "airlines",
+     "n": 10,
+     "rho_g_sales": -0.17575757575757575,
+     "rho_P_sales": 0.2606060606060606,
+     "partial": 0.33275872557024794,
+     "p": 0.1912808719128087
+    },
+    "banks": {
+     "category": "banks",
+     "n": 25,
+     "rho_g_sales": 0.04692307692307692,
+     "rho_P_sales": -0.20655144314068266,
+     "partial": -0.20549159866529568,
+     "p": 0.8376162383761624
+    },
+    "software": {
+     "category": "software",
+     "n": 12,
+     "rho_g_sales": 0.07692307692307693,
+     "rho_P_sales": -0.22377622377622378,
+     "partial": -0.2710523708715754,
+     "p": 0.7917208279172083
+    }
+   }
+  },
+  "holm_primary": {
+   "H_A1": 0.5407459254074592,
+   "H_A2": 0.6928307169283072
+  },
+  "holm_secondary": {
+   "H_A3": 1.0,
+   "H_A4": 1.0,
+   "H_A5": 1.0,
+   "H_A7": null,
+   "H_A6_airlines": 1.0,
+   "H_A6_banks": 1.0,
+   "H_A6_software": 1.0
+  },
+  "verdicts": {
+   "H_A1": "UNDETERMINED",
+   "H_A2": "FALSIFIED",
+   "H_A3": "no difference detected",
+   "H_A4": "NOT SUPPORTED",
+   "H_A5": "NOT SUPPORTED",
+   "H_A7": "UNDETERMINED",
+   "H_A6_airlines": "NOT SUPPORTED",
+   "H_A6_banks": "NOT SUPPORTED",
+   "H_A6_software": "NOT SUPPORTED"
+  }
+ },
+ "size_weighted_A1": {
+  "cars": 0.31072426363083044,
+  "airlines": 0.6607691494152859,
+  "banks": 0.3859018954835289,
+  "software": 0.7463648888194451
+ },
+ "S-COI": {
+  "results": {
+   "H_A1": {
+    "rho_bar": 0.13552702956508206,
+    "rho_c": {
+     "cars": 0.15619616143105694,
+     "airlines": 0.296969696969697,
+     "banks": -0.029287144922932613,
+     "software": 0.36363636363636365
+    },
+    "n_c": {
+     "cars": 15,
+     "airlines": 10,
+     "banks": 25,
+     "software": 12
+    },
+    "pooled_categories": [
+     "cars",
+     "airlines",
+     "banks",
+     "software"
+    ],
+    "p": 0.1683831616838316,
+    "ci95": [
+     -0.17111155535955566,
+     0.4323147251541822
+    ],
+    "analysable_categories": 4
+   },
+   "H_A2": {
+    "n": 15,
+    "partial_r": -0.07453137740277532,
+    "p": 0.5634436556344365,
+    "groups": {
+     "luxury": 5,
+     "mass": 6,
+     "electric": 4
+    },
+    "sensitivity": {
+     "i_ranks": {
+      "partial": 0.31205978576168597,
+      "p": 0.15758424157584242,
+      "undefined_perms": 0
+     },
+     "ii_per_group_slopes": {
+      "partial": -0.07453137740277532,
+      "p": 0.5188481151884812
+     },
+     "iii_offset_0.25": {
+      "partial": -0.06813415716965726,
+      "p": 0.5547445255474452
+     },
+     "iii_offset_1.0": {
+      "partial": -0.0817526734731289,
+      "p": 0.5749425057494251
+     }
+    },
+    "headline": {
+     "ai_over_google": {
+      "n": 9,
+      "share_sales_over_google": 0.6666666666666666
+     },
+     "other": {
+      "n": 6,
+      "share_sales_over_google": 0.16666666666666666
+     }
+    }
+   },
+   "H_A3": {
+    "rho_Gs_S": 0.22319054652880355,
+    "rho_R_S": 0.3076928710751003,
+    "diff": -0.08450232454629675,
+    "ci95": [
+     -0.8293983516253555,
+     0.8743862194273264
+    ],
+    "p_boot_two_sided": 0.8204,
+    "reading": "no difference detected",
+    "n": 15
+   },
+   "H_A4": {
+    "n": 15,
+    "J": 28.0,
+    "p": 0.8521147885211479,
+    "band_means": [
+     0.04656683944062685,
+     -0.00045990785727845207,
+     0.0016676607937039733
+    ],
+    "best_band": 0,
+    "spread": -0.04489917864692288,
+    "spread_ci95": [
+     -0.10021267613090848,
+     0.028101154220595073
+    ],
+    "hit_rate_top": 0.2,
+    "band_n": [
+     5,
+     5,
+     5
+    ],
+    "baseline_a": {
+     "spread": 0.05459128814753349,
+     "diff": -0.09949046679445636,
+     "diff_ci95": [
+      -0.16373267947991418,
+      -0.031107570340635656
+     ]
+    },
+    "placebo_b": {
+     "spread": 0.0426575666190093,
+     "spread_ci95": [
+      -0.02817842453205557,
+      0.11812761351841479
+     ]
+    }
+   },
+   "H_A5": {
+    "n": 15,
+    "rho": -0.3906046103420556,
+    "p": 0.926007399260074
+   },
+   "H_A7": {
+    "status": "UNDETERMINED",
+    "p": null,
+    "rho": null,
+    "exploratory_t4_t5": null
+   },
+   "H_A6": {
+    "airlines": {
+     "category": "airlines",
+     "n": 10,
+     "rho_g_sales": -0.17575757575757575,
+     "rho_P_sales": 0.2606060606060606,
+     "partial": 0.33275872557024794,
+     "p": 0.1912808719128087
+    },
+    "banks": {
+     "category": "banks",
+     "n": 25,
+     "rho_g_sales": 0.04692307692307692,
+     "rho_P_sales": -0.20655144314068266,
+     "partial": -0.20549159866529568,
+     "p": 0.8376162383761624
+    },
+    "software": {
+     "category": "software",
+     "n": 12,
+     "rho_g_sales": 0.07692307692307693,
+     "rho_P_sales": -0.22377622377622378,
+     "partial": -0.2710523708715754,
+     "p": 0.7917208279172083
+    }
+   }
+  },
+  "holm_primary": {
+   "H_A1": 0.3367663233676632,
+   "H_A2": 0.5634436556344365
+  },
+  "holm_secondary": {
+   "H_A3": 1.0,
+   "H_A4": 1.0,
+   "H_A5": 1.0,
+   "H_A7": null,
+   "H_A6_airlines": 1.0,
+   "H_A6_banks": 1.0,
+   "H_A6_software": 1.0
+  },
+  "verdicts": {
+   "H_A1": "UNDETERMINED",
+   "H_A2": "FALSIFIED",
+   "H_A3": "no difference detected",
+   "H_A4": "NOT SUPPORTED",
+   "H_A5": "NOT SUPPORTED",
+   "H_A7": "UNDETERMINED",
+   "H_A6_airlines": "NOT SUPPORTED",
+   "H_A6_banks": "NOT SUPPORTED",
+   "H_A6_software": "NOT SUPPORTED"
+  },
+  "label": "robustness or sensitivity; no verdict"
+ },
+ "flagged_months_dropped": {
+  "results": {
+   "H_A1": {
+    "rho_bar": 0.08049623435724006,
+    "rho_c": {
+     "cars": -0.043501062626308235,
+     "airlines": 0.296969696969697,
+     "banks": -0.029287144922932613,
+     "software": 0.36363636363636365
+    },
+    "n_c": {
+     "cars": 18,
+     "airlines": 10,
+     "banks": 25,
+     "software": 12
+    },
+    "pooled_categories": [
+     "cars",
+     "airlines",
+     "banks",
+     "software"
+    ],
+    "p": 0.2703729627037296,
+    "ci95": [
+     -0.2104094619616231,
+     0.36735711066879256
+    ],
+    "analysable_categories": 4
+   },
+   "H_A2": {
+    "n": 18,
+    "partial_r": -0.1536279267500933,
+    "p": 0.6928307169283072,
+    "groups": {
+     "luxury": 7,
+     "mass": 7,
+     "electric": 4
+    },
+    "sensitivity": {
+     "i_ranks": {
+      "partial": 0.14361657002679426,
+      "p": 0.30556944305569445,
+      "undefined_perms": 0
+     },
+     "ii_per_group_slopes": {
+      "partial": -0.1536279267500933,
+      "p": 0.6322367763223677
+     },
+     "iii_offset_0.25": {
+      "partial": -0.14322810965591082,
+      "p": 0.6774322567743226
+     },
+     "iii_offset_1.0": {
+      "partial": -0.16644966449030077,
+      "p": 0.7135286471352865
+     }
+    },
+    "headline": {
+     "ai_over_google": {
+      "n": 11,
+      "share_sales_over_google": 0.6363636363636364
+     },
+     "other": {
+      "n": 7,
+      "share_sales_over_google": 0.2857142857142857
+     }
+    }
+   },
+   "H_A3": {
+    "rho_Gs_S": 0.3684210526315789,
+    "rho_R_S": 0.08609460320922784,
+    "diff": 0.2823264494223511,
+    "ci95": [
+     -0.60682899038583,
+     1.0237571850335572
+    ],
+    "p_boot_two_sided": 0.5112,
+    "reading": "no difference detected",
+    "n": 18
+   },
+   "H_A4": {
+    "n": 18,
+    "J": 34.0,
+    "p": 0.953004699530047,
+    "band_means": [
+     0.04821211013474347,
+     0.006389135128427981,
+     -0.01833010054327507
+    ],
+    "best_band": 0,
+    "spread": -0.06654221067801853,
+    "spread_ci95": [
+     -0.12038971985848637,
+     0.0004372801135123221
+    ],
+    "hit_rate_top": 0.16666666666666666,
+    "band_n": [
+     6,
+     6,
+     6
+    ],
+    "baseline_a": {
+     "spread": 0.05240347059635771,
+     "diff": -0.11894568127437624,
+     "diff_ci95": [
+      -0.20251739369440275,
+      -0.03579169429528792
+     ]
+    },
+    "placebo_b": {
+     "spread": 0.043343013419653964,
+     "spread_ci95": [
+      -0.018089800052811775,
+      0.11165331877758576
+     ]
+    }
+   },
+   "H_A5": {
+    "n": 18,
+    "rho": -0.5034750221240278,
+    "p": 0.9836016398360165
+   },
+   "H_A7": {
+    "status": "UNDETERMINED",
+    "p": null,
+    "rho": null,
+    "exploratory_t4_t5": null
+   },
+   "H_A6": {
+    "airlines": {
+     "category": "airlines",
+     "n": 10,
+     "rho_g_sales": -0.17575757575757575,
+     "rho_P_sales": 0.2606060606060606,
+     "partial": 0.33275872557024794,
+     "p": 0.1912808719128087
+    },
+    "banks": {
+     "category": "banks",
+     "n": 25,
+     "rho_g_sales": 0.04692307692307692,
+     "rho_P_sales": -0.20655144314068266,
+     "partial": -0.20549159866529568,
+     "p": 0.8376162383761624
+    },
+    "software": {
+     "category": "software",
+     "n": 12,
+     "rho_g_sales": 0.07692307692307693,
+     "rho_P_sales": -0.22377622377622378,
+     "partial": -0.2710523708715754,
+     "p": 0.7917208279172083
+    }
+   }
+  },
+  "holm_primary": {
+   "H_A1": 0.5407459254074592,
+   "H_A2": 0.6928307169283072
+  },
+  "holm_secondary": {
+   "H_A3": 1.0,
+   "H_A4": 1.0,
+   "H_A5": 1.0,
+   "H_A7": null,
+   "H_A6_airlines": 1.0,
+   "H_A6_banks": 1.0,
+   "H_A6_software": 1.0
+  },
+  "verdicts": {
+   "H_A1": "UNDETERMINED",
+   "H_A2": "FALSIFIED",
+   "H_A3": "no difference detected",
+   "H_A4": "NOT SUPPORTED",
+   "H_A5": "NOT SUPPORTED",
+   "H_A7": "UNDETERMINED",
+   "H_A6_airlines": "NOT SUPPORTED",
+   "H_A6_banks": "NOT SUPPORTED",
+   "H_A6_software": "NOT SUPPORTED"
+  },
+  "label": "robustness or sensitivity; no verdict"
+ },
+ "R1_domains": {
+  "results": {
+   "H_A1": {
+    "rho_bar": 0.1370906890523474,
+    "rho_c": {
+     "cars": 0.0818234273209131,
+     "airlines": 0.296969696969697,
+     "banks": 0.023121430202315222,
+     "software": 0.36363636363636365
+    },
+    "n_c": {
+     "cars": 18,
+     "airlines": 10,
+     "banks": 25,
+     "software": 12
+    },
+    "pooled_categories": [
+     "cars",
+     "airlines",
+     "banks",
+     "software"
+    ],
+    "p": 0.15378462153784622,
+    "ci95": [
+     -0.15482375798013479,
+     0.4209185467647627
+    ],
+    "analysable_categories": 4
+   },
+   "H_A2": {
+    "n": 18,
+    "partial_r": -0.2465908815469112,
+    "p": 0.7941205879412059,
+    "groups": {
+     "luxury": 7,
+     "mass": 7,
+     "electric": 4
+    },
+    "sensitivity": {
+     "i_ranks": {
+      "partial": 0.07992959728466749,
+      "p": 0.38606139386061394,
+      "undefined_perms": 0
+     },
+     "ii_per_group_slopes": {
+      "partial": -0.2465908815469112,
+      "p": 0.7741225877412259
+     },
+     "iii_offset_0.25": {
+      "partial": -0.22808235580264885,
+      "p": 0.7668233176682332
+     },
+     "iii_offset_1.0": {
+      "partial": -0.2687031228289652,
+      "p": 0.821017898210179
+     }
+    },
+    "headline": {
+     "ai_over_google": {
+      "n": 10,
+      "share_sales_over_google": 0.5
+     },
+     "other": {
+      "n": 8,
+      "share_sales_over_google": 0.375
+     }
+    }
+   },
+   "H_A3": {
+    "rho_Gs_S": 0.1315789473684211,
+    "rho_R_S": 0.08609460320922784,
+    "diff": 0.045484344159193266,
+    "ci95": [
+     -0.7023074721290712,
+     0.7460376687988629
+    ],
+    "p_boot_two_sided": 0.8852,
+    "reading": "no difference detected",
+    "n": 18
+   },
+   "H_A4": {
+    "n": 18,
+    "J": 34.0,
+    "p": 0.9502049795020497,
+    "band_means": [
+     0.03279197779195364,
+     -0.01490167545659619,
+     -0.0236919890223876
+    ],
+    "best_band": 0,
+    "spread": -0.056483966814341244,
+    "spread_ci95": [
+     -0.1099737331129501,
+     0.00756413625773903
+    ],
+    "hit_rate_top": 0.3333333333333333,
+    "band_n": [
+     6,
+     6,
+     6
+    ],
+    "baseline_a": {
+     "spread": 0.04225608080543797,
+     "diff": -0.09874004761977921,
+     "diff_ci95": [
+      -0.17298730034924895,
+      -0.023751559098999595
+     ]
+    },
+    "placebo_b": {
+     "spread": 0.03226211900203957,
+     "spread_ci95": [
+      -0.01901120633284588,
+      0.08956897875287495
+     ]
+    }
+   },
+   "H_A5": {
+    "n": 18,
+    "rho": -0.2853025125369491,
+    "p": 0.8753124687531247
+   },
+   "H_A7": {
+    "status": "UNDETERMINED",
+    "p": null,
+    "rho": null,
+    "exploratory_t4_t5": null
+   },
+   "H_A6": {
+    "airlines": {
+     "category": "airlines",
+     "n": 10,
+     "rho_g_sales": -0.17575757575757575,
+     "rho_P_sales": 0.2606060606060606,
+     "partial": 0.33275872557024794,
+     "p": 0.1912808719128087
+    },
+    "banks": {
+     "category": "banks",
+     "n": 25,
+     "rho_g_sales": -0.04846153846153846,
+     "rho_P_sales": -0.20655144314068266,
+     "partial": -0.20572759659935397,
+     "p": 0.8398160183981602
+    },
+    "software": {
+     "category": "software",
+     "n": 12,
+     "rho_g_sales": 0.07692307692307693,
+     "rho_P_sales": -0.22377622377622378,
+     "partial": -0.2710523708715754,
+     "p": 0.7917208279172083
+    }
+   }
+  },
+  "holm_primary": {
+   "H_A1": 0.30756924307569244,
+   "H_A2": 0.7941205879412059
+  },
+  "holm_secondary": {
+   "H_A3": 1.0,
+   "H_A4": 1.0,
+   "H_A5": 1.0,
+   "H_A7": null,
+   "H_A6_airlines": 1.0,
+   "H_A6_banks": 1.0,
+   "H_A6_software": 1.0
+  },
+  "verdicts": {
+   "H_A1": "UNDETERMINED",
+   "H_A2": "FALSIFIED",
+   "H_A3": "no difference detected",
+   "H_A4": "NOT SUPPORTED",
+   "H_A5": "NOT SUPPORTED",
+   "H_A7": "UNDETERMINED",
+   "H_A6_airlines": "NOT SUPPORTED",
+   "H_A6_banks": "NOT SUPPORTED",
+   "H_A6_software": "NOT SUPPORTED"
+  },
+  "label": "robustness or sensitivity; no verdict"
+ },
+ "break_flags": {
+  "1": {
+   "2024-12": {
+    "median_dg": 0.5958355626845222,
+    "share_up": 1.0,
+    "share_down": 0.0,
+    "n": 76,
+    "flagged": true
+   }
+  },
+  "2": {},
+  "3": {
+   "2024-12": {
+    "median_dg": 0.5958355626845222,
+    "share_up": 1.0,
+    "share_down": 0.0,
+    "n": 76,
+    "flagged": true
+   }
+  }
+ },
+ "restatement_pull1_pull3": {
+  "domain_months": 1900,
+  "share_gt_1pct": 0.0,
+  "share_gt_10pct": 0.0,
+  "rerun_on_pull3": false
+ },
+ "pull_summaries": {
+  "1": {
+   "plan": {
+    "pull": 1,
+    "pull_day": "2026-12-07",
+    "date_from": "2024-11-01",
+    "mode": "full",
+    "months": 26,
+    "per_request": 0.1512,
+    "n_domains": 76,
+    "expected": 11.4912
+   },
+   "price_read": [
+    0.12,
+    0.0012
+   ],
+   "requests": 76,
+   "pull_spent": 11.4912,
+   "cumulative_spent": 11.4912,
+   "pull_failed": [],
+   "stopped": null,
+   "finished_utc": "2026-12-07T15:05:06+00:00"
+  },
+  "2": {
+   "plan": {
+    "pull": 2,
+    "pull_day": "2027-01-04",
+    "date_from": "2026-11-01",
+    "mode": "incremental",
+    "months": 3,
+    "per_request": 0.1236,
+    "n_domains": 76,
+    "expected": 9.3936
+   },
+   "price_read": [
+    0.12,
+    0.0012
+   ],
+   "requests": 76,
+   "pull_spent": 9.3936,
+   "cumulative_spent": 20.8848,
+   "pull_failed": [],
+   "stopped": null,
+   "finished_utc": "2027-01-04T15:05:06+00:00"
+  },
+  "3": {
+   "plan": {
+    "pull": 3,
+    "pull_day": "2027-03-01",
+    "date_from": "2024-11-01",
+    "mode": "full",
+    "months": 29,
+    "per_request": 0.1548,
+    "n_domains": 76,
+    "expected": 11.7648
+   },
+   "price_read": [
+    0.12,
+    0.0012
+   ],
+   "requests": 76,
+   "pull_spent": 11.7648,
+   "cumulative_spent": 32.6496,
+   "pull_failed": [],
+   "stopped": null,
+   "finished_utc": "2027-03-01T15:05:06+00:00"
+  }
+ },
+ "note": "SIMULATED Google and sales data; real AI-side registries; no API call; results mean nothing",
+ "seconds": 17.5
+}

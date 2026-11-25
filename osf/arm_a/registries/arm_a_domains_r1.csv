@@ -1,0 +1,77 @@
+row,category,group,brand,brand_id,domain,role,status,domain_source,access_date,pull_order
+1,cars,luxury,Mercedes-Benz,BR-00370,mercedes-benz.com,sensitivity,RESOLVED,Wikidata P856 Q36008 (brand item) via brand_domains_v1_13.csv,2026-11-10,1
+2,cars,luxury,"Mercedes-Benz, US site",BR-00370,mbusa.com,primary,RESOLVED,US-site rule; HTTP 301 to /en/home 2026-11-23; blind cross-check agrees 2026-11-24,2026-11-24,73
+3,cars,luxury,BMW,BR-00376,bmw.com,sensitivity,RESOLVED,Wikidata P856 Q26678 via brand_domains_v1_13.csv,2026-11-10,2
+4,cars,luxury,"BMW, US site",BR-00376,bmwusa.com,primary,RESOLVED,US-site rule; search index shows the US site 2026-11-23; blind cross-check agrees 2026-11-24,2026-11-24,74
+5,cars,luxury,Cadillac,BR-00372,cadillac.com,primary,RESOLVED,Wikidata P856 Q27436 via brand_domains_v1_13.csv,2026-11-10,3
+6,cars,luxury,Porsche,BR-00375,porsche.com,primary,RESOLVED,Wikidata P856 Q40993 via brand_domains_v1_13.csv,2026-11-10,4
+7,cars,luxury,Jaguar,BR-00371,jaguar.com,sensitivity,RESOLVED,v1.13 R1 web-search fallback (no P856) via brand_domains_v1_13.csv,2026-11-10,5
+8,cars,luxury,"Jaguar, US site",BR-00371,jaguarusa.com,primary,RESOLVED,US-site rule; HTTP 302 to /en-us/ 2026-11-23; blind cross-check agrees 2026-11-24,2026-11-24,75
+9,cars,luxury,Rolls-Royce,BR-00373,rolls-roycemotorcars.com,primary,RESOLVED,Wikidata P856 Q234803 via brand_domains_v1_13.csv,2026-11-10,6
+10,cars,luxury,Bentley,BR-00374,bentleymotors.com,primary,RESOLVED,Wikidata P856 Q27224 via brand_domains_v1_13.csv,2026-11-10,7
+11,cars,mass,Toyota,BR-00382,toyota.com,primary,RESOLVED,"Wikidata P856 Q53268, US-first, via brand_domains_v1_13.csv",2026-11-10,8
+12,cars,mass,Honda,BR-00383,honda.com,primary,RESOLVED,"Wikidata P856 Q9584, US-first, via brand_domains_v1_13.csv",2026-11-10,9
+13,cars,mass,Ford,BR-00384,ford.com,primary,RESOLVED,Wikidata P856 Q44294 via brand_domains_v1_13.csv,2026-11-10,10
+14,cars,mass,Chevrolet,BR-00385,chevrolet.com,primary,RESOLVED,Wikidata P856 Q29570 via brand_domains_v1_13.csv,2026-11-10,11
+15,cars,mass,Hyundai,BR-00386,hyundaiusa.com,primary,RESOLVED,"Wikidata P856 Q55931, US-first, via brand_domains_v1_13.csv",2026-11-10,12
+16,cars,mass,Volkswagen,BR-00387,vw.com,primary,RESOLVED,"Wikidata P856 Q246, US-first, via brand_domains_v1_13.csv",2026-11-10,13
+17,cars,mass,Nissan,BR-00388,nissanusa.com,primary,RESOLVED,Wikidata P856 Q20165 via brand_domains_v1_13.csv,2026-11-10,14
+18,cars,electric,Tesla,BR-00377,tesla.com,primary,RESOLVED,Wikidata P856 Q478214 via brand_domains_v1_13.csv,2026-11-10,15
+19,cars,electric,Rivian,BR-00378,rivian.com,primary,RESOLVED,Wikidata P856 Q125552500 via brand_domains_v1_13.csv,2026-11-10,16
+20,cars,electric,Lucid,BR-00379,lucidmotors.com,primary,RESOLVED,Wikidata P856 Q28027517 via brand_domains_v1_13.csv,2026-11-10,17
+21,cars,electric,Polestar,BR-00380,polestar.com,primary,RESOLVED,Wikidata P856 Q4047174 via brand_domains_v1_13.csv,2026-11-10,18
+22,airlines,,American Airlines,BR-00488,aa.com,primary,RESOLVED,Wikidata P856 Q32396,2026-11-23,19
+23,airlines,,Delta Air Lines,BR-00489,delta.com,primary,RESOLVED,Wikidata P856 Q188920 (www. and language subdomains),2026-11-23,20
+24,airlines,,United Airlines,BR-00490,united.com,primary,RESOLVED,Wikidata P856 Q174769,2026-11-23,21
+25,airlines,,Southwest Airlines,BR-00491,southwest.com,primary,RESOLVED,Wikidata P856 Q503308,2026-11-23,22
+26,airlines,,Alaska Airlines,BR-00492,alaskaair.com,primary,RESOLVED,Wikidata P856 Q822614,2026-11-23,23
+27,airlines,,JetBlue,BR-00493,jetblue.com,primary,RESOLVED,Wikidata P856 Q161086,2026-11-23,24
+28,airlines,,Frontier Airlines,BR-00494,flyfrontier.com,primary,RESOLVED,Wikidata P856 Q1139541,2026-11-23,25
+29,airlines,,Allegiant Air,BR-00495,allegiantair.com,primary,RESOLVED,Wikidata P856 Q1319601,2026-11-23,26
+30,airlines,,Breeze Airways,BR-00496,flybreeze.com,primary,RESOLVED,Wikidata P856 Q55641146,2026-11-23,27
+31,airlines,,Hawaiian Airlines,BR-00497,hawaiianairlines.com,primary,RESOLVED,Wikidata P856 Q642610,2026-11-23,28
+32,airlines,,Sun Country Airlines,BR-00498,suncountry.com,primary,RESOLVED,Wikidata P856 Q866289,2026-11-23,29
+33,banks,,Chase,BR-00463,chase.com,primary,RESOLVED,Wikidata P856 Q524629 (Chase Bank),2026-11-23,30
+34,banks,,Bank of America,BR-00464,bankofamerica.com,primary,RESOLVED,Wikidata P856 Q487907,2026-11-23,31
+35,banks,,Wells Fargo,BR-00465,wellsfargo.com,primary,RESOLVED,Wikidata P856 Q744149,2026-11-23,32
+36,banks,,Citi,BR-00466,citi.com,primary,RESOLVED,Wikidata P856 Q857063 (Citibank),2026-11-23,33
+37,banks,,U.S. Bank,BR-00467,usbank.com,primary,RESOLVED,Wikidata P856 Q739084 (U.S. Bancorp),2026-11-23,34
+38,banks,,Capital One,BR-00468,capitalone.com,primary,RESOLVED,Wikidata P856 Q1034654,2026-11-23,35
+39,banks,,Morgan Stanley,BR-00469,morganstanley.com,primary,RESOLVED,Wikidata P856 Q334204,2026-11-23,36
+40,banks,,Goldman Sachs / Marcus,BR-00470,goldmansachs.com,sensitivity,RESOLVED,Wikidata P856 Q193326,2026-11-23,37
+41,banks,,"Marcus, US consumer site",BR-00470,marcus.com,primary,RESOLVED,US-site rule (consumer brand of BR-00470); search shows marcus.com/us/en 2026-11-23; blind cross-check agrees 2026-11-24,2026-11-24,76
+42,banks,,PNC,BR-00471,pnc.com,primary,RESOLVED,Wikidata P856 Q38928,2026-11-23,38
+43,banks,,Truist,BR-00472,truist.com,primary,RESOLVED,Wikidata P856 Q795486,2026-11-23,39
+44,banks,,TD Bank,BR-00473,td.com,primary,RESOLVED,Wikidata P856 Q7669891 (TD Bank US); www.td.com 301 to /us/en/personal-banking 2026-11-24; blind cross-check agrees,2026-11-24,40
+45,banks,,Charles Schwab,BR-00474,schwab.com,primary,RESOLVED,Wikidata P856 Q1066028,2026-11-23,41
+46,banks,,Fifth Third,BR-00475,53.com,primary,RESOLVED,Wikidata P856 Q1411810,2026-11-23,42
+47,banks,,Huntington,BR-00476,huntington.com,primary,RESOLVED,Wikidata P856 Q798819,2026-11-23,43
+48,banks,,BMO,BR-00477,bmo.com,primary,RESOLVED,Wikidata P856 Q806693 (Bank of Montreal); bmo.com 301 to /en-us/main/personal/ 2026-11-24; blind cross-check agrees,2026-11-24,44
+49,banks,,Citizens,BR-00478,citizensbank.com,primary,RESOLVED,Wikidata P856 Q5122694,2026-11-23,45
+50,banks,,First Citizens,BR-00479,firstcitizens.com,primary,RESOLVED,Wikidata P856 Q5452733 (ir.firstcitizens.com; root domain); firstcitizens.com 301 to www 2026-11-24; blind cross-check agrees,2026-11-24,46
+51,banks,,M&T Bank,BR-00480,mtb.com,primary,RESOLVED,Wikidata P856 Q3272257 (www3.mtb.com; root domain),2026-11-23,47
+52,banks,,American Express,BR-00481,americanexpress.com,primary,RESOLVED,Wikidata P856 Q194360,2026-11-23,48
+53,banks,,KeyBank,BR-00482,key.com,primary,RESOLVED,Wikidata P856 Q1740314,2026-11-23,49
+54,banks,,Ally,BR-00483,ally.com,primary,RESOLVED,Wikidata P856 Q2032800,2026-11-23,50
+55,banks,,HSBC,BR-00484,hsbc.com,primary,RESOLVED,Wikidata P856 Q190464 (global); us.hsbc.com recorded not pulled (subdomain targets undocumented),2026-11-24,51
+56,banks,,Regions,BR-00485,regions.com,primary,RESOLVED,Wikidata P856 Q917131,2026-11-23,52
+57,banks,,UBS,BR-00486,ubs.com,primary,RESOLVED,Wikidata P856 Q193199,2026-11-23,53
+58,banks,,Pinnacle,BR-00487,pnfp.com,primary,RESOLVED,Wikidata P856 Q7196294,2026-11-23,54
+59,banks,,Discover,BR-00521,discover.com,primary,RESOLVED,Wikidata P856 Q5281775,2026-11-23,55
+60,software,,Salesforce,BR-00418,salesforce.com,primary,RESOLVED,Wikidata P856 Q941127,2026-11-23,56
+61,software,,HubSpot,BR-00419,hubspot.com,primary,RESOLVED,Wikidata P856 Q5926631,2026-11-23,57
+62,software,,ServiceNow,BR-00420,servicenow.com,primary,RESOLVED,Wikidata P856 Q7455653,2026-11-23,58
+63,software,,Workday,BR-00421,workday.com,primary,RESOLVED,Wikidata P856 Q8034666,2026-11-23,59
+64,software,,SAP,BR-00422,sap.com,primary,RESOLVED,Wikidata P856 Q552581,2026-11-23,60
+65,software,,Oracle,BR-00423,oracle.com,primary,RESOLVED,Wikidata P856 Q19900,2026-11-23,61
+66,software,,Figma,BR-00425,figma.com,primary,RESOLVED,Wikidata P856 Q96186334 (product item),2026-11-23,62
+67,software,,Datadog,BR-00428,datadoghq.com,primary,RESOLVED,Wikidata P856 Q16248637,2026-11-23,63
+68,software,,Snowflake,BR-00429,snowflake.com,primary,RESOLVED,Wikidata P856 Q22078063 (also lists snowflake.net),2026-11-23,64
+69,software,,Twilio,BR-00431,twilio.com,primary,RESOLVED,Wikidata P856 Q7858039,2026-11-23,65
+70,software,,Cloudflare,BR-00432,cloudflare.com,primary,RESOLVED,Wikidata P856 Q4778915,2026-11-23,66
+71,software,,MongoDB,BR-00433,mongodb.com,primary,RESOLVED,Wikidata P856 Q4546965 (MongoDB Inc.),2026-11-23,67
+72,spirits,,Jack Daniel's,BR-00396,jackdaniels.com,primary,RESOLVED,Wikidata P856 via brand_domains_v1_13.csv,2026-11-10,68
+73,spirits,,Jameson,BR-00401,jamesonwhiskey.com,primary,RESOLVED,Wikidata P856 via brand_domains_v1_13.csv,2026-11-10,69
+74,spirits,,Grey Goose,BR-00398,greygoose.com,primary,RESOLVED,Wikidata P856 via brand_domains_v1_13.csv,2026-11-10,70
+75,spirits,,Hennessy,BR-00395,hennessy.com,primary,RESOLVED,Wikidata P856 via brand_domains_v1_13.csv,2026-11-10,71
+76,spirits,,Rémy Martin,BR-00408,remymartin.com,primary,RESOLVED,Wikidata P856 via brand_domains_v1_13.csv,2026-11-10,72

@@ -1,0 +1,5 @@
+Arm A dry run (simulated Google data), 2026-11-25T04:53:57+00:00
+permutations 10000, bootstrap 10000, 17.5 s
+pulls: pull 1: 76 requests, $11.4912, cumulative $11.4912, failed 0, stopped None; pull 2: 76 requests, $9.3936, cumulative $20.8848, failed 0, stopped None; pull 3: 76 requests, $11.7648, cumulative $32.6496, failed 0, stopped None
+break flags: {"1": {"2024-12": {"median_dg": 0.5958355626845222, "share_up": 1.0, "share_down": 0.0, "n": 76, "flagged": true}}, "2": {}, "3": {"2024-12": {"median_dg": 0.5958355626845222, "share_up": 1.0, "share_down": 0.0, "n": 76, "flagged": true}}}
+verdicts (meaningless, simulated): {"H_A1": "UNDETERMINED", "H_A2": "FALSIFIED", "H_A3": "no difference detected", "H_A4": "NOT SUPPORTED", "H_A5": "NOT SUPPORTED", "H_A7": "UNDETERMINED", "H_A6_airlines": "NOT SUPPORTED", "H_A6_banks": "NOT SUPPORTED", "H_A6_software": "NOT SUPPORTED"}

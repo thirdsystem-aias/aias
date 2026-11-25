@@ -1,0 +1,7 @@
+Arm A COI screens (Entry 0, Part E): 188 names (brands, domains, v0.40 holder names) x 70 terms (30 r0 + 40 r3 of v0.62)
+Part E brands: airlines 11; banks 26; software 12
+string-screen matches: 0
+record screen: 52 distinct DEVIATIONS files under the worktrees; lines naming a Part E brand and a Samsung-group term (Samsung, Harman, Cheil, Iris, McKinney, Barbarian, Shilla): 2
+  arma-seo-prereg/osf/arm_a/DEVIATIONS.md | brands Discover | terms Samsung | **Context.** The pre-registrant is Director, Corporate Brand Creative and Governance at Samsung Electronics America. Arm A selects 72 brands with public US sales or share figures in five categories (pre-registration r4, §3.2): passenger car
+  arma-seo-prereg/osf/arm_a/DEVIATIONS.md | brands Marcus | terms Samsung,Harman,Cheil,Iris,McKinney,Barbarian,Shilla | **Against what, and how.** (1) **String screen:** `python3 osf/arm_a/scripts/coi_screen_arm_a.py` → `prereg/coi_screen_arm_a.txt`: whole-word, case-sensitive match against the 70 Samsung-group terms of the v0.62 r3 screen (30 r0 + 40 r3 ter
+S-COI (params_arm_a.COI_FLAGGED, from v0.62 Entry 0 Part F): BR-00385, BR-00376, BR-00374, BR-00396
