@@ -1,0 +1,34 @@
+{
+  "passed": true,
+  "units": 112,
+  "unit_mismatches": [],
+  "n_unit_mismatches": 0,
+  "legs": {
+    "H1_Sep_Presence_S1": {
+      "recomputed": 0.30716191850680374,
+      "paper_A": 0.30716191850680374,
+      "match": true
+    },
+    "H1_Sep_Presence_S0": {
+      "recomputed": 0.3945349347419029,
+      "paper_A": 0.3945349347419029,
+      "match": true
+    },
+    "H2_Sep_Consistency_S1": {
+      "recomputed": -0.08701889123636815,
+      "paper_A": -0.08701889123636815,
+      "match": true
+    },
+    "H2_Sep_Consistency_S0": {
+      "recomputed": 0.049074480929963776,
+      "paper_A": 0.049074480929963776,
+      "match": true
+    }
+  },
+  "inputs_sha256": {
+    "raw": "f3109091f51af7899098d83a1d7b2080a26a06824caa5f6fc0486f3d6196d4bf",
+    "brand_table": "792e14addb7ad1ef03a147ee16cee56e82cfecd58030d2e8e3cf3e3ea255af7f",
+    "c5_raw": null
+  },
+  "channels_attached": 1.0
+}

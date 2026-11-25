@@ -1,0 +1,1381 @@
+{
+  "phase": "v1.22",
+  "stage": 1,
+  "status": "RUN",
+  "prereg_tag": "v1.22-prereg-r1",
+  "paper_A_verdict": "MARGINAL",
+  "decision": {
+    "go": true,
+    "date": "2026-11-25",
+    "text": "synthetic dry-run decision record"
+  },
+  "labels": {
+    "all": "conditional on a MARGINAL Paper A gate (H1 MARGINAL, H3 UNDETERMINED)",
+    "pool_tests": "partly seen (t4 half published in Paper A)",
+    "reduced_panel": null,
+    "class_based_low_coverage": null
+  },
+  "verdicts": {
+    "HB1": "CONFIRMED",
+    "HB4": "CONFIRMED",
+    "HB3": "MARGINAL",
+    "HB2": "FALSIFIED",
+    "GB": "FAIL",
+    "HB44": "FALSIFIED",
+    "HB44b": "FALSIFIED",
+    "HB46": "FALSIFIED",
+    "HB46b": "FALSIFIED",
+    "HB47": "MARGINAL",
+    "HB47b": "FALSIFIED",
+    "HB48": "FALSIFIED",
+    "HB48b": "NO TYPOLOGY"
+  },
+  "results": {
+    "panel_t4": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "panel_t5": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "common_panel": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "reduced_panel": false,
+    "MQ5_t5": {
+      "failed": false,
+      "zero_share": 0.13559322033898305,
+      "flat_substrates": [],
+      "n_rated": 59
+    },
+    "rated": {
+      "t4": 63,
+      "t5": 59,
+      "pool": 81
+    },
+    "HB1": {
+      "legs": [
+        {
+          "n": 59,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 11,
+            "v20": 13,
+            "v21": 11,
+            "v22": 13,
+            "v23": 11
+          },
+          "dropped_substrates": {},
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.060782048962176975,
+          "p": 0.6637336266373363,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.2774316984192637,
+            "hi": 0.16219338698456823,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 59,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 11,
+            "v20": 13,
+            "v21": 11,
+            "v22": 13,
+            "v23": 11
+          },
+          "dropped_substrates": {},
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.14906073912152926,
+          "p": 0.27987201279872015,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.356977924488154,
+            "hi": 0.09578783305751055,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB4": {
+      "legs": [
+        {
+          "n": 59,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 11,
+            "v20": 13,
+            "v21": 11,
+            "v22": 13,
+            "v23": 11
+          },
+          "dropped_substrates": {},
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": 0.12590567285022375,
+          "p": 0.36536346365363465,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.08545703516453972,
+            "hi": 0.32492023210676874,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 59,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 11,
+            "v20": 13,
+            "v21": 11,
+            "v22": 13,
+            "v23": 11
+          },
+          "dropped_substrates": {},
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": 0.11722252299848417,
+          "p": 0.40075992400759924,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.09645179840654175,
+            "hi": 0.30983044625935413,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB3": {
+      "pairs": [
+        {
+          "n": 38,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 6,
+            "v20": 9,
+            "v21": 9,
+            "v22": 8,
+            "v23": 6
+          },
+          "dropped_substrates": {},
+          "pair": [
+            1,
+            2
+          ],
+          "rho_w": 0.24932340877294726,
+          "qualifies": true
+        },
+        {
+          "n": 41,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 7,
+            "v20": 8,
+            "v21": 10,
+            "v22": 10,
+            "v23": 6
+          },
+          "dropped_substrates": {},
+          "pair": [
+            1,
+            3
+          ],
+          "rho_w": 0.0614616679326865,
+          "qualifies": true
+        },
+        {
+          "n": 37,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 7,
+            "v20": 7,
+            "v21": 10,
+            "v22": 7,
+            "v23": 6
+          },
+          "dropped_substrates": {},
+          "pair": [
+            2,
+            3
+          ],
+          "rho_w": 0.27317729901445637,
+          "qualifies": true
+        }
+      ],
+      "n_qualifying_pairs": 3,
+      "rel1": 0.19465412524003003,
+      "rel3": 0.4203259971416051,
+      "p": 0.03469653034696531,
+      "seed": 122003,
+      "verdict": "MARGINAL"
+    },
+    "HB2": {
+      "n": 52,
+      "rho_pw": -0.042871923703093597,
+      "p_perm_one_sided": 0.5975402459754025,
+      "ci95": [
+        -0.33635033041780943,
+        0.26371178959866004
+      ],
+      "seed": 450046,
+      "n_perm": 10000,
+      "n_boot": 10000,
+      "v045_verdict": "FALSIFIED",
+      "verdict": "FALSIFIED",
+      "inputs_sha256": {
+        "t4": "8e010e05bb1e57e9fddb13b9ebc46738214067172681cdfddd43ed2290d335ce",
+        "t5": "32005b1a5c6776fac9513c014311ec17a08db0a98b969a081107ab995e8228ab"
+      },
+      "v045_tag": "v0.45-prereg-r1",
+      "v045_commit": "f827d9d7eff6f756c3a10bfae886d9d624d2f958",
+      "v045_scorer_sha256": "6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a",
+      "files": [
+        "../dryrun/_hb2_null/g_star_t4_v1_22.csv",
+        "../dryrun/_hb2_null/g_star_t5_v1_22.csv"
+      ],
+      "v122_band_check": "FALSIFIED"
+    },
+    "R": "FAILED",
+    "HB44": {
+      "n": 55,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 10,
+        "v20": 13,
+        "v21": 11,
+        "v22": 9,
+        "v23": 12
+      },
+      "dropped_substrates": {},
+      "seed": 122441,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.061578583533931024,
+      "p": 0.33826617338266174,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.20248996337546268,
+        "hi": 0.3367858339801958,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "FALSIFIED"
+    },
+    "HB44b": {
+      "n": 45,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 9,
+        "v20": 9,
+        "v21": 10,
+        "v22": 8,
+        "v23": 9
+      },
+      "dropped_substrates": {},
+      "seed": 122442,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": -0.054456112837546394,
+      "p": 0.6374362563743625,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.3288359413702213,
+        "hi": 0.21714947961492426,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "FALSIFIED"
+    },
+    "HB46": {
+      "n": 81,
+      "n_F": 32,
+      "n_nonF": 49,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": -0.02040816326530612,
+      "p": 0.8967103289671033,
+      "seed": 122461,
+      "n_perm": 10000,
+      "verdict": "FALSIFIED",
+      "arm": "G*"
+    },
+    "HB46b": {
+      "n": 81,
+      "n_F": 32,
+      "n_nonF": 49,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": -0.061224489795918366,
+      "p": 0.6831316868313169,
+      "seed": 122462,
+      "n_perm": 10000,
+      "verdict": "FALSIFIED",
+      "arm": "rank residuals given P_S1"
+    },
+    "HB47": {
+      "n": 49,
+      "per_category": {
+        "v20": 20,
+        "v21": 14,
+        "v22": 15
+      },
+      "min_category_units": 14,
+      "categories": [
+        "v20",
+        "v21",
+        "v22"
+      ],
+      "seed": 122471,
+      "n_perm": 10000,
+      "dbar": 2.6657657061724076,
+      "sd": 23.25213105094486,
+      "p": 0.21377862213778623,
+      "verdict": "MARGINAL"
+    },
+    "HB47b": {
+      "n": 52,
+      "n_substrates": 3,
+      "per_substrate": {
+        "v20": 21,
+        "v21": 14,
+        "v22": 17
+      },
+      "dropped_substrates": {},
+      "seed": 122472,
+      "centred": true,
+      "sided": "two",
+      "below_n_floor": false,
+      "rho_w": -0.12353153718551578,
+      "p": 0.41525847415258477,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.36223898209246075,
+        "hi": 0.1486909640059378,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "eligible_il_units": 72,
+      "verdict": "FALSIFIED"
+    },
+    "HB48": {
+      "n": 52,
+      "n_categories": 5,
+      "R": 0.018119658119658114,
+      "per_class": {
+        "brand_owned": 0.03794871794871795,
+        "reference": 0.1282051282051282,
+        "forum_ugc": -0.23897435897435898,
+        "news": 0.06256410256410257,
+        "review_editorial": 0.15897435897435896,
+        "retailer": -0.04
+      },
+      "classes_defined": [
+        "brand_owned",
+        "reference",
+        "forum_ugc",
+        "news",
+        "review_editorial",
+        "retailer"
+      ],
+      "p": 0.39486051394860516,
+      "seed": 122481,
+      "n_perm": 10000,
+      "verdict": "FALSIFIED"
+    },
+    "HB48b": {
+      "cell": "NO TYPOLOGY",
+      "reason": "HB48 is FALSIFIED"
+    }
+  },
+  "six_run_pairs": [
+    {
+      "pair": [
+        "t4r1",
+        "t4r2"
+      ],
+      "within_wave": true,
+      "n": 44,
+      "rho_w": 0.4133418021456014
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 43,
+      "rho_w": 0.23240832182572
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 43,
+      "rho_w": 0.07005468242940951
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 40,
+      "rho_w": -0.20910119011792763
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 43,
+      "rho_w": -0.38192688432956723
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 38,
+      "rho_w": -0.024591242941384275
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 38,
+      "rho_w": -0.12864077669902912
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 38,
+      "rho_w": 0.014637673392050913
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 39,
+      "rho_w": -0.1396909522729884
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 40,
+      "rho_w": 0.15715234615932924
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 39,
+      "rho_w": 0.10781040175081724
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 39,
+      "rho_w": 0.0308424254327437
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r2"
+      ],
+      "within_wave": true,
+      "n": 38,
+      "rho_w": 0.24932340877294726
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 41,
+      "rho_w": 0.0614616679326865
+    },
+    {
+      "pair": [
+        "t5r2",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 37,
+      "rho_w": 0.27317729901445637
+    }
+  ],
+  "descriptives": {
+    "D44": {
+      "rich_top_tercile": {
+        "units": 25,
+        "rated": 18,
+        "median_g_star_pool": 31.600831600831604,
+        "mean_profile": {
+          "brand_owned": 0.12092632220809446,
+          "reference": 0.09843352441142497,
+          "forum_ugc": 0.08088844633064363,
+          "news": 0.11994958059351421,
+          "review_editorial": 0.21378955999654475,
+          "retailer": 0.07497455797669182
+        }
+      },
+      "sparse_bottom_tercile": {
+        "units": 25,
+        "rated": 15,
+        "median_g_star_pool": 25.0,
+        "mean_profile": {
+          "brand_owned": 0.12756887873063702,
+          "reference": 0.10018120287682854,
+          "forum_ugc": 0.08619597888495736,
+          "news": 0.11059635722079857,
+          "review_editorial": 0.2126221593996635,
+          "retailer": 0.07522368449371447
+        }
+      }
+    },
+    "D45_t4_t5": {
+      "jaccard_top20_domains_by_model": {
+        "claude-fable-5-2": 0.14285714285714285,
+        "gemini-4-argon": 0.0,
+        "gpt-6-astra": 0.08108108108108109
+      },
+      "jaccard_top10_by_class": {
+        "claude-fable-5-2": {
+          "brand_owned": 0.1111111111111111,
+          "reference": 0.0,
+          "forum_ugc": 0.05263157894736842,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.05263157894736842
+        },
+        "gemini-4-argon": {
+          "brand_owned": 0.05263157894736842,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.0
+        },
+        "gpt-6-astra": {
+          "brand_owned": 0.17647058823529413,
+          "reference": 0.05263157894736842,
+          "forum_ugc": 0.0,
+          "news": 0.05263157894736842,
+          "review_editorial": 0.05263157894736842,
+          "retailer": 0.0
+        }
+      },
+      "class_mix_by_category": {
+        "v19": {
+          "t4": {
+            "brand_owned": 0.1302095127095127,
+            "reference": 0.0885791985791986,
+            "forum_ugc": 0.08315846851561141,
+            "news": 0.09874779981922842,
+            "review_editorial": 0.18698967698967686,
+            "retailer": 0.05815949923092779,
+            "other": 0.35415584415584384,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.1079638252061959,
+            "reference": 0.06752576199170628,
+            "forum_ugc": 0.06662912938454735,
+            "news": 0.11768382116679332,
+            "review_editorial": 0.186046216057273,
+            "retailer": 0.06727893991604739,
+            "other": 0.38687230627743585,
+            "unresolved": 0.0
+          }
+        },
+        "v20": {
+          "t4": {
+            "brand_owned": 0.09246352250738217,
+            "reference": 0.104414688625215,
+            "forum_ugc": 0.06290479947278191,
+            "news": 0.12323199664208435,
+            "review_editorial": 0.23113567718830844,
+            "retailer": 0.07493699445453829,
+            "other": 0.3109123211096891,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.11121866654700287,
+            "reference": 0.12263600036738377,
+            "forum_ugc": 0.06320497098360874,
+            "news": 0.12652020050993487,
+            "review_editorial": 0.19337044737892048,
+            "retailer": 0.04971195814849065,
+            "other": 0.3333377560646582,
+            "unresolved": 0.0
+          }
+        },
+        "v21": {
+          "t4": {
+            "brand_owned": 0.1546365647228097,
+            "reference": 0.09863194903774297,
+            "forum_ugc": 0.07187018446195803,
+            "news": 0.09300901479472912,
+            "review_editorial": 0.20875980903955235,
+            "retailer": 0.06006861768139962,
+            "other": 0.31302386026180756,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.12333588143430081,
+            "reference": 0.10225015770986932,
+            "forum_ugc": 0.09942503475377847,
+            "news": 0.13228570625507238,
+            "review_editorial": 0.18645242661761302,
+            "retailer": 0.0845347865430968,
+            "other": 0.2717160066862691,
+            "unresolved": 0.0
+          }
+        },
+        "v22": {
+          "t4": {
+            "brand_owned": 0.10595375517624325,
+            "reference": 0.12962099038654065,
+            "forum_ugc": 0.06213911907691811,
+            "news": 0.12766508699523052,
+            "review_editorial": 0.24029463138314794,
+            "retailer": 0.05839203991117866,
+            "other": 0.27593437707074053,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.1071068737477407,
+            "reference": 0.11993794090994811,
+            "forum_ugc": 0.07097771497603798,
+            "news": 0.11255782997914061,
+            "review_editorial": 0.22768132566894156,
+            "retailer": 0.06541011579388772,
+            "other": 0.29632819892430307,
+            "unresolved": 0.0
+          }
+        },
+        "v23": {
+          "t4": {
+            "brand_owned": 0.14389046300811004,
+            "reference": 0.0819741444741445,
+            "forum_ugc": 0.08459509709509709,
+            "news": 0.11891100199923732,
+            "review_editorial": 0.21985302500008358,
+            "retailer": 0.07592206195147372,
+            "other": 0.2748542064718533,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.08345251752697075,
+            "reference": 0.10354115033406958,
+            "forum_ugc": 0.12417944487129545,
+            "news": 0.09199952607397932,
+            "review_editorial": 0.22626367205039907,
+            "retailer": 0.0651866950254047,
+            "other": 0.3053769941178807,
+            "unresolved": 0.0
+          }
+        }
+      },
+      "own_domain_retrieved_at_one_wave_only": {
+        "units_grounded_at_both": 102,
+        "units": 31,
+        "share": 0.30392156862745096
+      }
+    },
+    "D46": {
+      "class_mix_answers_naming_F": {
+        "brand_owned": 0.11800351010942091,
+        "reference": 0.10353531734541203,
+        "forum_ugc": 0.07909292231193413,
+        "news": 0.11658488814488724,
+        "review_editorial": 0.21214773453557248,
+        "retailer": 0.0690807304737122,
+        "other": 0.3015548970790662,
+        "unresolved": 0.0
+      },
+      "class_mix_answers_naming_nonF": {
+        "brand_owned": 0.11660763083672919,
+        "reference": 0.10189111360977479,
+        "forum_ugc": 0.07871927884963001,
+        "news": 0.11480796495739219,
+        "review_editorial": 0.21074217983560034,
+        "retailer": 0.06629875470616926,
+        "other": 0.31093307720470914,
+        "unresolved": 0.0
+      },
+      "defunct_D": {
+        "v22|Pontiac": {
+          "s1_answers": 7,
+          "class_mix": {
+            "brand_owned": 0.06118881118881119,
+            "reference": 0.17239010989010983,
+            "forum_ugc": 0.06118881118881119,
+            "news": 0.09850566100566101,
+            "review_editorial": 0.2433191808191808,
+            "retailer": 0.022727272727272728,
+            "other": 0.34068015318015304,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Oldsmobile": {
+          "s1_answers": 42,
+          "class_mix": {
+            "brand_owned": 0.08635995374717179,
+            "reference": 0.13373390133258553,
+            "forum_ugc": 0.07857434701889589,
+            "news": 0.106171298417539,
+            "review_editorial": 0.23384060592707187,
+            "retailer": 0.07549564835749047,
+            "other": 0.28582424519924493,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Plymouth": {
+          "s1_answers": 42,
+          "class_mix": {
+            "brand_owned": 0.089201453517243,
+            "reference": 0.12600162410688737,
+            "forum_ugc": 0.07046567467620098,
+            "news": 0.12772207909050015,
+            "review_editorial": 0.21882497619339714,
+            "retailer": 0.06708269508269507,
+            "other": 0.3007014973330759,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Mercury": {
+          "s1_answers": 9,
+          "class_mix": {
+            "brand_owned": 0.07735122020836308,
+            "reference": 0.06408591408591409,
+            "forum_ugc": 0.055311355311355316,
+            "news": 0.20935255220969506,
+            "review_editorial": 0.2736810808239379,
+            "retailer": 0.07527472527472527,
+            "other": 0.24494315208600922,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Saturn": {
+          "s1_answers": 11,
+          "class_mix": {
+            "brand_owned": 0.114271025549221,
+            "reference": 0.17821384964242107,
+            "forum_ugc": 0.0256593865616422,
+            "news": 0.1938279765347434,
+            "review_editorial": 0.2259283740486747,
+            "retailer": 0.046294307196562835,
+            "other": 0.21580508046673458,
+            "unresolved": 0.0
+          }
+        }
+      }
+    },
+    "D48": {
+      "own-site-led and named": 17,
+      "own-site-led and seldom named": 22,
+      "third-party-led and named": 22,
+      "third-party-led and seldom named": 20
+    }
+  },
+  "MQ": {
+    "t4": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 74,
+          "share": 0.8222222222222222,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 88,
+          "share": 0.9777777777777777,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 14,
+          "share": 0.15555555555555556,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 2170,
+        "other_or_unresolved": 664,
+        "share": 0.30599078341013825,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.07936507936507936,
+        "flat_substrates": [],
+        "n_rated": 63
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "t5": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 75,
+          "share": 0.8333333333333334,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 86,
+          "share": 0.9555555555555556,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 17,
+          "share": 0.18888888888888888,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 2243,
+        "other_or_unresolved": 716,
+        "share": 0.31921533660276413,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.13559322033898305,
+        "flat_substrates": [],
+        "n_rated": 59
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "pool": {
+      "MQ3": {
+        "pairs": 4413,
+        "other_or_unresolved": 1380,
+        "share": 0.3127124405166553,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.024691358024691357,
+        "flat_substrates": [],
+        "n_rated": 81
+      }
+    }
+  },
+  "seeds": {
+    "HB1": 122001,
+    "HB2": 450046,
+    "HB3": 122003,
+    "HB4": 122004,
+    "HB44": 122441,
+    "HB44b": 122442,
+    "HB45_t5t6": 122451,
+    "HB45_t4t6": 122452,
+    "HB46": 122461,
+    "HB46b": 122462,
+    "HB47": 122471,
+    "HB47b": 122472,
+    "HB48": 122481,
+    "HB48b_full": 122482,
+    "HB48b_resid": 122483
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 2000,
+    "HB2_bootstrap": 10000,
+    "gap_references": 500
+  },
+  "sensitivities": {
+    "S-COI": {
+      "options": {
+        "exclude": 6
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "MARGINAL",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-House": {
+      "options": {
+        "exclude": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Floor3": {
+      "options": {
+        "floor": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Floor10": {
+      "options": {
+        "floor": 10
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "MARGINAL",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-m": {
+      "options": {
+        "denominator": "m"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "MARGINAL",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Uncentred": {
+      "options": {
+        "centred": false
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "FALSIFIED",
+        "GB": "MARGINAL",
+        "HB44": "MARGINAL",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-NoGemini": {
+      "options": {
+        "drop_models": [
+          "gemini-4-argon"
+        ]
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Wave": {
+      "options": {
+        "structure_on": "t5"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-AllChannels": {
+      "options": {
+        "channel_subs": [
+          "v19",
+          "v20",
+          "v21",
+          "v22",
+          "v23"
+        ]
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-F-noD": {
+      "options": {
+        "exclude": 5
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-LOCO": {
+      "v19": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "v20": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "v21": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "v22": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "FALSIFIED",
+        "GB": "MARGINAL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "v23": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "MARGINAL",
+        "HB2": "FALSIFIED",
+        "GB": "FAIL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "MARGINAL",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      }
+    },
+    "_not_available": [
+      "S-Cited",
+      "S-C5",
+      "S-SDRI-t5",
+      "S-SDRI-kg",
+      "S-SDRI-site",
+      "S-IL-t1"
+    ]
+  },
+  "verdict_changes": {
+    "S-COI": {
+      "HB44": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-Floor3": {
+      "HB46": [
+        "MARGINAL",
+        "FALSIFIED"
+      ],
+      "HB46b": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-Floor10": {
+      "HB44": [
+        "MARGINAL",
+        "FALSIFIED"
+      ],
+      "HB44b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-m": {
+      "HB47b": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-Uncentred": {
+      "HB3": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "GB": [
+        "MARGINAL",
+        "FAIL"
+      ],
+      "HB44": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-Wave": {
+      "HB46b": [
+        "MARGINAL",
+        "FALSIFIED"
+      ],
+      "HB47": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v20": {
+      "HB47": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v21": {
+      "HB3": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v22": {
+      "HB3": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "GB": [
+        "MARGINAL",
+        "FAIL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    }
+  }
+}

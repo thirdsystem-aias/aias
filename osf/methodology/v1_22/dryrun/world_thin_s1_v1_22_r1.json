@@ -1,0 +1,1384 @@
+{
+  "phase": "v1.22",
+  "stage": 1,
+  "status": "RUN",
+  "prereg_tag": "v1.22-prereg-r1",
+  "paper_A_verdict": "MARGINAL",
+  "decision": {
+    "go": true,
+    "date": "2026-11-25",
+    "text": "synthetic dry-run decision record"
+  },
+  "labels": {
+    "all": "conditional on a MARGINAL Paper A gate (H1 MARGINAL, H3 UNDETERMINED)",
+    "pool_tests": "partly seen (t4 half published in Paper A)",
+    "reduced_panel": "reduced panel",
+    "class_based_low_coverage": null
+  },
+  "verdicts": {
+    "HB1": "UNDETERMINED",
+    "HB4": "UNDETERMINED",
+    "HB3": "UNDETERMINED",
+    "HB2": "UNDETERMINED",
+    "GB": "UNDETERMINED",
+    "HB44": "FALSIFIED",
+    "HB44b": "UNDETERMINED",
+    "HB46": "FALSIFIED",
+    "HB46b": "MARGINAL",
+    "HB47": "FALSIFIED",
+    "HB47b": "UNDETERMINED",
+    "HB48": "UNDETERMINED",
+    "HB48b": "NO TYPOLOGY"
+  },
+  "results": {
+    "panel_t4": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "panel_t5": [
+      "claude-fable-5-2",
+      "gemini-4-argon"
+    ],
+    "common_panel": [
+      "claude-fable-5-2",
+      "gemini-4-argon"
+    ],
+    "reduced_panel": true,
+    "MQ5_t5": {
+      "failed": false,
+      "zero_share": 0.12903225806451613,
+      "flat_substrates": [],
+      "n_rated": 31
+    },
+    "rated": {
+      "t4": 58,
+      "t5": 31,
+      "pool": 71
+    },
+    "HB1": {
+      "legs": [
+        {
+          "n": 24,
+          "n_substrates": 3,
+          "per_substrate": {
+            "v20": 9,
+            "v21": 8,
+            "v23": 7
+          },
+          "dropped_substrates": {
+            "v19": 4,
+            "v22": 3
+          },
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": true,
+          "rho_w": 0.05109248249075664,
+          "p": 0.8302169783021698,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.39360365370251155,
+            "hi": 0.4779873887511799,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 24,
+          "n_substrates": 3,
+          "per_substrate": {
+            "v20": 9,
+            "v21": 8,
+            "v23": 7
+          },
+          "dropped_substrates": {
+            "v19": 4,
+            "v22": 3
+          },
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": true,
+          "rho_w": 0.11397553786399557,
+          "p": 0.6262373762623737,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.3253046841030783,
+            "hi": 0.5099490309303584,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "UNDETERMINED"
+    },
+    "HB4": {
+      "legs": [
+        {
+          "n": 24,
+          "n_substrates": 3,
+          "per_substrate": {
+            "v20": 9,
+            "v21": 8,
+            "v23": 7
+          },
+          "dropped_substrates": {
+            "v19": 4,
+            "v22": 3
+          },
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": true,
+          "rho_w": 0.027511336725792035,
+          "p": 0.9143085691430857,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.31206999488337556,
+            "hi": 0.3693618577774351,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 24,
+          "n_substrates": 3,
+          "per_substrate": {
+            "v20": 9,
+            "v21": 8,
+            "v23": 7
+          },
+          "dropped_substrates": {
+            "v19": 4,
+            "v22": 3
+          },
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": true,
+          "rho_w": 0.027511336725792035,
+          "p": 0.9137086291370863,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.31623065420542734,
+            "hi": 0.3675321769337022,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "UNDETERMINED"
+    },
+    "HB3": {
+      "pairs": [
+        {
+          "n": 0,
+          "n_substrates": 0,
+          "per_substrate": {},
+          "dropped_substrates": {
+            "v19": 2,
+            "v20": 3,
+            "v21": 2
+          },
+          "pair": [
+            1,
+            2
+          ],
+          "rho_w": null,
+          "qualifies": false
+        },
+        {
+          "n": 0,
+          "n_substrates": 0,
+          "per_substrate": {},
+          "dropped_substrates": {
+            "v19": 2,
+            "v20": 2,
+            "v21": 2,
+            "v23": 1
+          },
+          "pair": [
+            1,
+            3
+          ],
+          "rho_w": null,
+          "qualifies": false
+        },
+        {
+          "n": 6,
+          "n_substrates": 1,
+          "per_substrate": {
+            "v20": 6
+          },
+          "dropped_substrates": {
+            "v19": 2,
+            "v21": 2,
+            "v22": 1,
+            "v23": 3
+          },
+          "pair": [
+            2,
+            3
+          ],
+          "rho_w": 0.08956221510397983,
+          "qualifies": false
+        }
+      ],
+      "n_qualifying_pairs": 0,
+      "rel1": null,
+      "rel3": null,
+      "p": null,
+      "seed": 122003,
+      "verdict": "UNDETERMINED"
+    },
+    "HB2": {
+      "n": 25,
+      "rho_pw": 0.6816892205569909,
+      "p_perm_one_sided": 0.000999900009999,
+      "ci95": [
+        0.39890014124552864,
+        0.8812021902246506
+      ],
+      "seed": 450046,
+      "n_perm": 10000,
+      "n_boot": 10000,
+      "v045_verdict": "UNDETERMINED",
+      "verdict": "UNDETERMINED",
+      "inputs_sha256": {
+        "t4": "375188ba9e9bd000c7acb6f3a8aa6be177cba8ddc12797f344090fa07f1d7e51",
+        "t5": "276b2214bb9e73097d9ee722ebac0932e5bfd4ea20efb42f26e208b93141a75d"
+      },
+      "v045_tag": "v0.45-prereg-r1",
+      "v045_commit": "f827d9d7eff6f756c3a10bfae886d9d624d2f958",
+      "v045_scorer_sha256": "6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a",
+      "files": [
+        "../dryrun/_hb2_thin_s1/g_star_t4_v1_22.csv",
+        "../dryrun/_hb2_thin_s1/g_star_t5_v1_22.csv"
+      ],
+      "v122_band_check": "UNDETERMINED"
+    },
+    "R": "OPEN",
+    "HB44": {
+      "n": 49,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 8,
+        "v20": 10,
+        "v21": 14,
+        "v22": 6,
+        "v23": 11
+      },
+      "dropped_substrates": {},
+      "seed": 122441,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.0041819183676122034,
+      "p": 0.48805119488051196,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.3090471130111773,
+        "hi": 0.3093156515048116,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "FALSIFIED"
+    },
+    "HB44b": {
+      "n": 14,
+      "n_substrates": 2,
+      "per_substrate": {
+        "v20": 7,
+        "v21": 7
+      },
+      "dropped_substrates": {
+        "v19": 4,
+        "v22": 1,
+        "v23": 4
+      },
+      "seed": 122442,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": true,
+      "rho_w": -0.5987849508520958,
+      "p": 0.9842015798420158,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.9128344366177603,
+        "hi": -0.07735958362306757,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "UNDETERMINED"
+    },
+    "HB46": {
+      "n": 71,
+      "n_F": 28,
+      "n_nonF": 43,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v23"
+      ],
+      "delta": -0.1415525114155251,
+      "p": 0.38036196380361964,
+      "seed": 122461,
+      "n_perm": 10000,
+      "verdict": "FALSIFIED",
+      "arm": "G*",
+      "label": "Presence-sensitive"
+    },
+    "HB46b": {
+      "n": 71,
+      "n_F": 28,
+      "n_nonF": 43,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v23"
+      ],
+      "delta": -0.2328767123287671,
+      "p": 0.15358464153584642,
+      "seed": 122462,
+      "n_perm": 10000,
+      "verdict": "MARGINAL",
+      "arm": "rank residuals given P_S1"
+    },
+    "HB47": {
+      "n": 40,
+      "per_category": {
+        "v20": 14,
+        "v21": 15,
+        "v22": 11
+      },
+      "min_category_units": 11,
+      "categories": [
+        "v20",
+        "v21",
+        "v22"
+      ],
+      "seed": 122471,
+      "n_perm": 10000,
+      "dbar": -3.2474626462762997,
+      "sd": 18.743227137242386,
+      "p": 0.8552144785521448,
+      "verdict": "FALSIFIED"
+    },
+    "HB47b": {
+      "n": 44,
+      "n_substrates": 3,
+      "per_substrate": {
+        "v20": 16,
+        "v21": 17,
+        "v22": 11
+      },
+      "dropped_substrates": {},
+      "seed": 122472,
+      "centred": true,
+      "sided": "two",
+      "below_n_floor": false,
+      "rho_w": -0.12011663849529511,
+      "p": 0.46095390460953906,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.3961099336365783,
+        "hi": 0.17407114519741584,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "eligible_il_units": 72,
+      "verdict": "UNDETERMINED"
+    },
+    "HB48": {
+      "n": 23,
+      "n_categories": 3,
+      "R": -0.013452847619536829,
+      "per_class": {
+        "brand_owned": -0.03571428571428571,
+        "reference": 0.21428571428571427,
+        "forum_ugc": -0.290828468259268,
+        "news": 0.10714285714285714,
+        "review_editorial": -0.20535714285714285,
+        "retailer": 0.12975423968490418
+      },
+      "classes_defined": [
+        "brand_owned",
+        "reference",
+        "forum_ugc",
+        "news",
+        "review_editorial",
+        "retailer"
+      ],
+      "p": 0.545945405459454,
+      "seed": 122481,
+      "n_perm": 10000,
+      "verdict": "UNDETERMINED"
+    },
+    "HB48b": {
+      "cell": "NO TYPOLOGY",
+      "reason": "HB48 is UNDETERMINED"
+    }
+  },
+  "six_run_pairs": [
+    {
+      "pair": [
+        "t4r1",
+        "t4r2"
+      ],
+      "within_wave": true,
+      "n": 35,
+      "rho_w": 0.27832298207804895
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 31,
+      "rho_w": 0.17062167331048045
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 6,
+      "rho_w": 0.5523003264745422
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 15,
+      "rho_w": 0.5626221100633075
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 36,
+      "rho_w": 0.16869383067629998
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 5,
+      "rho_w": -0.3952847075210474
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 7,
+      "rho_w": 0.17937304161172324
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 14,
+      "rho_w": 0.20175438596491227
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 5,
+      "rho_w": 0.125
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 10,
+      "rho_w": -0.2440467650459882
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 14,
+      "rho_w": 0.6444989690214229
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r2"
+      ],
+      "within_wave": true,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t5r2",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 6,
+      "rho_w": 0.08956221510397983
+    }
+  ],
+  "descriptives": {
+    "D44": {
+      "rich_top_tercile": {
+        "units": 25,
+        "rated": 14,
+        "median_g_star_pool": 25.543478260869563,
+        "mean_profile": {
+          "brand_owned": 0.11701070262060646,
+          "reference": 0.11387102162147993,
+          "forum_ugc": 0.0533917265514442,
+          "news": 0.1169851392509711,
+          "review_editorial": 0.22740504605410444,
+          "retailer": 0.06852702747134536
+        }
+      },
+      "sparse_bottom_tercile": {
+        "units": 25,
+        "rated": 18,
+        "median_g_star_pool": 24.03846153846154,
+        "mean_profile": {
+          "brand_owned": 0.11966515050445498,
+          "reference": 0.1158547825517875,
+          "forum_ugc": 0.0504578615555548,
+          "news": 0.1282233232787212,
+          "review_editorial": 0.2168442630129675,
+          "retailer": 0.07274104328584946
+        }
+      }
+    },
+    "D45_t4_t5": {
+      "jaccard_top20_domains_by_model": {
+        "claude-fable-5-2": 0.14285714285714285,
+        "gemini-4-argon": 0.08108108108108109
+      },
+      "jaccard_top10_by_class": {
+        "claude-fable-5-2": {
+          "brand_owned": 0.3333333333333333,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.05263157894736842
+        },
+        "gemini-4-argon": {
+          "brand_owned": 0.17647058823529413,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.0
+        }
+      },
+      "class_mix_by_category": {
+        "v19": {
+          "t4": {
+            "brand_owned": 0.10703878013566592,
+            "reference": 0.07048237950054559,
+            "forum_ugc": 0.04184850616511516,
+            "news": 0.1073567844112827,
+            "review_editorial": 0.24336057541074835,
+            "retailer": 0.05241998966047408,
+            "other": 0.37749298471616816,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.1040355284550331,
+            "reference": 0.12070899087152957,
+            "forum_ugc": 0.03470908176790529,
+            "news": 0.12177731539186647,
+            "review_editorial": 0.17880539652985475,
+            "retailer": 0.030718954248366015,
+            "other": 0.4092447327354444,
+            "unresolved": 0.0
+          }
+        },
+        "v20": {
+          "t4": {
+            "brand_owned": 0.15301260769305874,
+            "reference": 0.10814642750732975,
+            "forum_ugc": 0.06941905838522379,
+            "news": 0.0968015422338731,
+            "review_editorial": 0.2257716448129979,
+            "retailer": 0.046302636377824336,
+            "other": 0.30054608298969177,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.19375718901841182,
+            "reference": 0.10002358709402051,
+            "forum_ugc": 0.018624451528863294,
+            "news": 0.12367738449201293,
+            "review_editorial": 0.18691523711067043,
+            "retailer": 0.07187801448637361,
+            "other": 0.3051241362696468,
+            "unresolved": 0.0
+          }
+        },
+        "v21": {
+          "t4": {
+            "brand_owned": 0.08659567771409875,
+            "reference": 0.14748296294348912,
+            "forum_ugc": 0.06626538666012351,
+            "news": 0.12241789643105427,
+            "review_editorial": 0.18891850108955355,
+            "retailer": 0.091339544957966,
+            "other": 0.2969800302037144,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.06725097174497328,
+            "reference": 0.08619406264530105,
+            "forum_ugc": 0.020089285714285712,
+            "news": 0.15657685322933,
+            "review_editorial": 0.2650073207880869,
+            "retailer": 0.06644598628925255,
+            "other": 0.33843551958877033,
+            "unresolved": 0.0
+          }
+        },
+        "v22": {
+          "t4": {
+            "brand_owned": 0.09304945785208947,
+            "reference": 0.08617515525410267,
+            "forum_ugc": 0.0801524864024864,
+            "news": 0.09407193683509475,
+            "review_editorial": 0.21127848759427698,
+            "retailer": 0.08347690321374533,
+            "other": 0.3517955728482043,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.06925262237762239,
+            "reference": 0.07384785353535353,
+            "forum_ugc": 0.03432765151515152,
+            "news": 0.108842026029526,
+            "review_editorial": 0.2749125874125875,
+            "retailer": 0.04602272727272727,
+            "other": 0.39279453185703195,
+            "unresolved": 0.0
+          }
+        },
+        "v23": {
+          "t4": {
+            "brand_owned": 0.10314765875911389,
+            "reference": 0.1064446494013058,
+            "forum_ugc": 0.07205905955905956,
+            "news": 0.09887946288875088,
+            "review_editorial": 0.19615330280964935,
+            "retailer": 0.07465028567969745,
+            "other": 0.34866558090242283,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.1088475121369858,
+            "reference": 0.11575266838424735,
+            "forum_ugc": 0.04143692564745196,
+            "news": 0.1400907571960204,
+            "review_editorial": 0.17009021680074315,
+            "retailer": 0.11840206577048686,
+            "other": 0.30537985406406437,
+            "unresolved": 0.0
+          }
+        }
+      },
+      "own_domain_retrieved_at_one_wave_only": {
+        "units_grounded_at_both": 87,
+        "units": 34,
+        "share": 0.39080459770114945
+      }
+    },
+    "D46": {
+      "class_mix_answers_naming_F": {
+        "brand_owned": 0.11242823015018634,
+        "reference": 0.10743296850741876,
+        "forum_ugc": 0.05498276153952328,
+        "news": 0.11575074944183253,
+        "review_editorial": 0.21534703227214355,
+        "retailer": 0.0675310011907241,
+        "other": 0.3265272568981767,
+        "unresolved": 0.0
+      },
+      "class_mix_answers_naming_nonF": {
+        "brand_owned": 0.11020017283634388,
+        "reference": 0.10324113875806844,
+        "forum_ugc": 0.05486230088345282,
+        "news": 0.11209773735896036,
+        "review_editorial": 0.21323506304907558,
+        "retailer": 0.06896845286418316,
+        "other": 0.33739513424992046,
+        "unresolved": 0.0
+      },
+      "defunct_D": {
+        "v22|Pontiac": {
+          "s1_answers": 23,
+          "class_mix": {
+            "brand_owned": 0.07239598008828778,
+            "reference": 0.07988763373378757,
+            "forum_ugc": 0.06178351562966948,
+            "news": 0.11557331557331556,
+            "review_editorial": 0.23933246240938566,
+            "retailer": 0.06584526584526586,
+            "other": 0.3651818267202885,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Oldsmobile": {
+          "s1_answers": 16,
+          "class_mix": {
+            "brand_owned": 0.07041569541569541,
+            "reference": 0.09153651903651902,
+            "forum_ugc": 0.08372766122766122,
+            "news": 0.12457070707070708,
+            "review_editorial": 0.17546231546231544,
+            "retailer": 0.15466783216783217,
+            "other": 0.29961926961926955,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Plymouth": {
+          "s1_answers": 4,
+          "class_mix": {
+            "brand_owned": 0.11973443223443224,
+            "reference": 0.09409340659340659,
+            "forum_ugc": 0.025641025641025644,
+            "news": 0.020833333333333332,
+            "review_editorial": 0.4157509157509158,
+            "retailer": 0.09523809523809523,
+            "other": 0.2287087912087912,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Mercury": {
+          "s1_answers": 17,
+          "class_mix": {
+            "brand_owned": 0.0726641414141414,
+            "reference": 0.07193181818181818,
+            "forum_ugc": 0.07992424242424243,
+            "news": 0.09385101010101009,
+            "review_editorial": 0.3023737373737375,
+            "retailer": 0.037247474747474744,
+            "other": 0.342007575757576,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Saturn": {
+          "s1_answers": 9,
+          "class_mix": {
+            "brand_owned": 0.10846930846930847,
+            "reference": 0.0822066822066822,
+            "forum_ugc": 0.030303030303030304,
+            "news": 0.10909090909090909,
+            "review_editorial": 0.17443667443667443,
+            "retailer": 0.08391608391608392,
+            "other": 0.41157731157731137,
+            "unresolved": 0.0
+          }
+        }
+      }
+    },
+    "D48": {
+      "own-site-led and named": 19,
+      "own-site-led and seldom named": 14,
+      "third-party-led and named": 15,
+      "third-party-led and seldom named": 23
+    }
+  },
+  "MQ": {
+    "t4": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 80,
+          "share": 0.8888888888888888,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 86,
+          "share": 0.9555555555555556,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 16,
+          "share": 0.17777777777777778,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 2125,
+        "other_or_unresolved": 705,
+        "share": 0.33176470588235296,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.034482758620689655,
+        "flat_substrates": [],
+        "n_rated": 58
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "t5": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 75,
+          "share": 0.8333333333333334,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 13,
+          "share": 0.14444444444444443,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 1117,
+        "other_or_unresolved": 396,
+        "share": 0.35452103849597133,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.12903225806451613,
+        "flat_substrates": [],
+        "n_rated": 31
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 59,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [
+        "gpt-6-astra"
+      ],
+      "panel": [
+        "claude-fable-5-2",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": true,
+      "C5_arm_used": false
+    },
+    "pool": {
+      "MQ3": {
+        "pairs": 3242,
+        "other_or_unresolved": 1101,
+        "share": 0.33960518198642814,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.04225352112676056,
+        "flat_substrates": [],
+        "n_rated": 71
+      }
+    }
+  },
+  "seeds": {
+    "HB1": 122001,
+    "HB2": 450046,
+    "HB3": 122003,
+    "HB4": 122004,
+    "HB44": 122441,
+    "HB44b": 122442,
+    "HB45_t5t6": 122451,
+    "HB45_t4t6": 122452,
+    "HB46": 122461,
+    "HB46b": 122462,
+    "HB47": 122471,
+    "HB47b": 122472,
+    "HB48": 122481,
+    "HB48b_full": 122482,
+    "HB48b_resid": 122483
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 2000,
+    "HB2_bootstrap": 10000,
+    "gap_references": 500
+  },
+  "sensitivities": {
+    "S-COI": {
+      "options": {
+        "exclude": 6
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-House": {
+      "options": {
+        "exclude": 3
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-Floor3": {
+      "options": {
+        "floor": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "MARGINAL",
+        "GB": "MARGINAL",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Floor10": {
+      "options": {
+        "floor": 10
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-m": {
+      "options": {
+        "denominator": "m"
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-Uncentred": {
+      "options": {
+        "centred": false
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "MARGINAL",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-NoGemini": {
+      "options": {
+        "drop_models": [
+          "gemini-4-argon"
+        ]
+      },
+      "verdicts": {
+        "HB1": "NOT MEASURED",
+        "HB4": "NOT MEASURED",
+        "HB3": "NOT MEASURED",
+        "HB2": "NOT MEASURED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "CONFIRMED_REVERSED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "NOT MEASURED"
+      },
+      "skipped": null
+    },
+    "S-Wave": {
+      "options": {
+        "structure_on": "t5"
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "UNDETERMINED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "UNDETERMINED",
+        "HB46b": "UNDETERMINED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-AllChannels": {
+      "options": {
+        "channel_subs": [
+          "v19",
+          "v20",
+          "v21",
+          "v22",
+          "v23"
+        ]
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-F-noD": {
+      "options": {
+        "exclude": 5
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-LOCO": {
+      "v19": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v20": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v21": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v22": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v23": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      }
+    },
+    "_not_available": [
+      "S-Cited",
+      "S-C5",
+      "S-SDRI-t5",
+      "S-SDRI-kg",
+      "S-SDRI-site",
+      "S-IL-t1"
+    ]
+  },
+  "verdict_changes": {
+    "S-House": {
+      "HB46": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-Floor3": {
+      "HB1": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ],
+      "HB4": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ],
+      "HB2": [
+        "MARGINAL",
+        "UNDETERMINED"
+      ],
+      "GB": [
+        "MARGINAL",
+        "UNDETERMINED"
+      ],
+      "HB44b": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "HB47b": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "HB48": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-Uncentred": {
+      "HB44": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-NoGemini": {
+      "HB1": [
+        "NOT MEASURED",
+        "UNDETERMINED"
+      ],
+      "HB4": [
+        "NOT MEASURED",
+        "UNDETERMINED"
+      ],
+      "HB3": [
+        "NOT MEASURED",
+        "UNDETERMINED"
+      ],
+      "HB2": [
+        "NOT MEASURED",
+        "UNDETERMINED"
+      ],
+      "HB46": [
+        "MARGINAL",
+        "FALSIFIED"
+      ],
+      "HB46b": [
+        "CONFIRMED_REVERSED",
+        "MARGINAL"
+      ],
+      "HB48": [
+        "NOT MEASURED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-Wave": {
+      "HB44": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB46": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB46b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v19": {
+      "HB46": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v20": {
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v21": {
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v22": {
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v23": {
+      "HB46": [
+        "MARGINAL",
+        "FALSIFIED"
+      ]
+    }
+  }
+}

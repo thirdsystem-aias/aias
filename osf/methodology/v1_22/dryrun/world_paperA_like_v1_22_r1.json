@@ -1,0 +1,1468 @@
+{
+  "phase": "v1.22",
+  "stage": 1,
+  "status": "RUN",
+  "prereg_tag": "v1.22-prereg-r1",
+  "paper_A_verdict": "MARGINAL",
+  "decision": {
+    "go": true,
+    "date": "2026-11-25",
+    "text": "synthetic dry-run decision record"
+  },
+  "labels": {
+    "all": "conditional on a MARGINAL Paper A gate (H1 MARGINAL, H3 UNDETERMINED)",
+    "pool_tests": "partly seen (t4 half published in Paper A)",
+    "reduced_panel": null,
+    "class_based_low_coverage": null
+  },
+  "verdicts": {
+    "HB1": "CONFIRMED",
+    "HB4": "CONFIRMED",
+    "HB3": "UNDETERMINED",
+    "HB2": "UNDETERMINED",
+    "GB": "UNDETERMINED",
+    "HB44": "FALSIFIED",
+    "HB44b": "UNDETERMINED",
+    "HB46": "MARGINAL",
+    "HB46b": "MARGINAL",
+    "HB47": "FALSIFIED",
+    "HB47b": "UNDETERMINED",
+    "HB48": "UNDETERMINED",
+    "HB48b": "NO TYPOLOGY"
+  },
+  "results": {
+    "panel_t4": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "panel_t5": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "common_panel": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "reduced_panel": false,
+    "MQ5_t5": {
+      "failed": false,
+      "zero_share": 0.14285714285714285,
+      "flat_substrates": [],
+      "n_rated": 35
+    },
+    "rated": {
+      "t4": 34,
+      "t5": 35,
+      "pool": 58
+    },
+    "HB1": {
+      "legs": [
+        {
+          "n": 32,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 6,
+            "v21": 5,
+            "v22": 11,
+            "v23": 10
+          },
+          "dropped_substrates": {
+            "v19": 3
+          },
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": 0.05245184622345341,
+          "p": 0.8116188381161884,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.282280381292289,
+            "hi": 0.39480782766365935,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 32,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 6,
+            "v21": 5,
+            "v22": 11,
+            "v23": 10
+          },
+          "dropped_substrates": {
+            "v19": 3
+          },
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": 0.1299893580320367,
+          "p": 0.5548445155484452,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.21414656347088518,
+            "hi": 0.449305766697071,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB4": {
+      "legs": [
+        {
+          "n": 32,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 6,
+            "v21": 5,
+            "v22": 11,
+            "v23": 10
+          },
+          "dropped_substrates": {
+            "v19": 3
+          },
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.18700223436187738,
+          "p": 0.3722627737226277,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.49889382000950466,
+            "hi": 0.18714327720855212,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 32,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 6,
+            "v21": 5,
+            "v22": 11,
+            "v23": 10
+          },
+          "dropped_substrates": {
+            "v19": 3
+          },
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.1299893580320367,
+          "p": 0.5371462853714628,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.46452819350584507,
+            "hi": 0.22363411061975583,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB3": {
+      "pairs": [
+        {
+          "n": 5,
+          "n_substrates": 1,
+          "per_substrate": {
+            "v23": 5
+          },
+          "dropped_substrates": {
+            "v19": 1,
+            "v20": 4,
+            "v21": 3,
+            "v22": 4
+          },
+          "pair": [
+            1,
+            2
+          ],
+          "rho_w": 0.6842105263157895,
+          "qualifies": false
+        },
+        {
+          "n": 5,
+          "n_substrates": 1,
+          "per_substrate": {
+            "v22": 5
+          },
+          "dropped_substrates": {
+            "v19": 2,
+            "v20": 3,
+            "v21": 3,
+            "v23": 4
+          },
+          "pair": [
+            1,
+            3
+          ],
+          "rho_w": 0.15789473684210525,
+          "qualifies": false
+        },
+        {
+          "n": 0,
+          "n_substrates": 0,
+          "per_substrate": {},
+          "dropped_substrates": {
+            "v19": 1,
+            "v20": 3,
+            "v21": 2,
+            "v22": 4,
+            "v23": 4
+          },
+          "pair": [
+            2,
+            3
+          ],
+          "rho_w": null,
+          "qualifies": false
+        }
+      ],
+      "n_qualifying_pairs": 0,
+      "rel1": null,
+      "rel3": null,
+      "p": null,
+      "seed": 122003,
+      "verdict": "UNDETERMINED"
+    },
+    "HB2": {
+      "n": 26,
+      "rho_pw": 0.45544802497176307,
+      "p_perm_one_sided": 0.0334966503349665,
+      "ci95": [
+        -0.06277644937440256,
+        0.7970969289337644
+      ],
+      "seed": 450046,
+      "n_perm": 10000,
+      "n_boot": 10000,
+      "v045_verdict": "UNDETERMINED",
+      "verdict": "UNDETERMINED",
+      "inputs_sha256": {
+        "t4": "ab6577cfedcd377e55f9dd421e65c602e167dce91bffd2afe3cf373064ccfc1e",
+        "t5": "25623c73073431bf3d740864261f41fa0d219650160556ecbff6994d74ec79f9"
+      },
+      "v045_tag": "v0.45-prereg-r1",
+      "v045_commit": "f827d9d7eff6f756c3a10bfae886d9d624d2f958",
+      "v045_scorer_sha256": "6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a",
+      "files": [
+        "../dryrun/_hb2_paperA_like/g_star_t4_v1_22.csv",
+        "../dryrun/_hb2_paperA_like/g_star_t5_v1_22.csv"
+      ],
+      "v122_band_check": "UNDETERMINED"
+    },
+    "R": "OPEN",
+    "HB44": {
+      "n": 38,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 7,
+        "v20": 6,
+        "v21": 9,
+        "v22": 8,
+        "v23": 8
+      },
+      "dropped_substrates": {},
+      "seed": 122441,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": -0.07957671660641397,
+      "p": 0.667033296670333,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.40445338982832046,
+        "hi": 0.2435693608535951,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "FALSIFIED"
+    },
+    "HB44b": {
+      "n": 12,
+      "n_substrates": 2,
+      "per_substrate": {
+        "v22": 6,
+        "v23": 6
+      },
+      "dropped_substrates": {
+        "v19": 3,
+        "v20": 2,
+        "v21": 4
+      },
+      "seed": 122442,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": true,
+      "rho_w": -0.014388861576723854,
+      "p": 0.5347465253474653,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.71875,
+        "hi": 0.6250650050287649,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "UNDETERMINED"
+    },
+    "HB46": {
+      "n": 58,
+      "n_F": 18,
+      "n_nonF": 40,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": 0.16417910447761194,
+      "p": 0.37276272372762725,
+      "seed": 122461,
+      "n_perm": 10000,
+      "verdict": "MARGINAL",
+      "arm": "G*"
+    },
+    "HB46b": {
+      "n": 58,
+      "n_F": 18,
+      "n_nonF": 40,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": 0.1791044776119403,
+      "p": 0.3388661133886611,
+      "seed": 122462,
+      "n_perm": 10000,
+      "verdict": "MARGINAL",
+      "arm": "rank residuals given P_S1"
+    },
+    "HB47": {
+      "n": 33,
+      "per_category": {
+        "v20": 10,
+        "v21": 9,
+        "v22": 14
+      },
+      "min_category_units": 9,
+      "categories": [
+        "v20",
+        "v21",
+        "v22"
+      ],
+      "seed": 122471,
+      "n_perm": 10000,
+      "dbar": -2.7259429439005083,
+      "sd": 29.310283864717235,
+      "p": 0.6956304369563043,
+      "verdict": "FALSIFIED"
+    },
+    "HB47b": {
+      "n": 36,
+      "n_substrates": 3,
+      "per_substrate": {
+        "v20": 11,
+        "v21": 10,
+        "v22": 15
+      },
+      "dropped_substrates": {},
+      "seed": 122472,
+      "centred": true,
+      "sided": "two",
+      "below_n_floor": false,
+      "rho_w": 0.019077925541005097,
+      "p": 0.9202079792020798,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.32903702324871015,
+        "hi": 0.3641845926588735,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "eligible_il_units": 72,
+      "verdict": "UNDETERMINED"
+    },
+    "HB48": {
+      "n": 19,
+      "n_categories": 3,
+      "R": 0.16786570743405274,
+      "per_class": {
+        "brand_owned": 0.3669064748201439,
+        "reference": 0.09352517985611511,
+        "forum_ugc": -0.3381294964028777,
+        "news": 0.6402877697841727,
+        "review_editorial": 0.1223021582733813,
+        "retailer": 0.1223021582733813
+      },
+      "classes_defined": [
+        "brand_owned",
+        "reference",
+        "forum_ugc",
+        "news",
+        "review_editorial",
+        "retailer"
+      ],
+      "p": 0.08349165083491651,
+      "seed": 122481,
+      "n_perm": 10000,
+      "verdict": "UNDETERMINED"
+    },
+    "HB48b": {
+      "cell": "NO TYPOLOGY",
+      "reason": "HB48 is UNDETERMINED"
+    }
+  },
+  "six_run_pairs": [
+    {
+      "pair": [
+        "t4r1",
+        "t4r2"
+      ],
+      "within_wave": true,
+      "n": 5,
+      "rho_w": 0.5642880936468347
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 5,
+      "rho_w": 0.36273812505500586
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 6,
+      "rho_w": 0.6087595874350709
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 5,
+      "rho_w": 0.7
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 0,
+      "rho_w": null
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 5,
+      "rho_w": 0.20519567041703082
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 11,
+      "rho_w": 0.6355417746376502
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 6,
+      "rho_w": -0.3592106040535498
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r2"
+      ],
+      "within_wave": true,
+      "n": 5,
+      "rho_w": 0.6842105263157895
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 5,
+      "rho_w": 0.15789473684210525
+    },
+    {
+      "pair": [
+        "t5r2",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 0,
+      "rho_w": null
+    }
+  ],
+  "descriptives": {
+    "D44": {
+      "rich_top_tercile": {
+        "units": 25,
+        "rated": 9,
+        "median_g_star_pool": 14.285714285714285,
+        "mean_profile": {
+          "brand_owned": 0.10173504677479073,
+          "reference": 0.126025140703964,
+          "forum_ugc": 0.06506897175369827,
+          "news": 0.09847891952847969,
+          "review_editorial": 0.18775124732935927,
+          "retailer": 0.04977234591496963
+        }
+      },
+      "sparse_bottom_tercile": {
+        "units": 25,
+        "rated": 15,
+        "median_g_star_pool": 42.1875,
+        "mean_profile": {
+          "brand_owned": 0.1152397847214814,
+          "reference": 0.10446270858487458,
+          "forum_ugc": 0.05670004033388023,
+          "news": 0.10588235891660329,
+          "review_editorial": 0.18776485021575062,
+          "retailer": 0.05138130820000599
+        }
+      }
+    },
+    "D45_t4_t5": {
+      "jaccard_top20_domains_by_model": {
+        "claude-fable-5-2": 0.1111111111111111,
+        "gemini-4-argon": 0.05263157894736842,
+        "gpt-6-astra": 0.1111111111111111
+      },
+      "jaccard_top10_by_class": {
+        "claude-fable-5-2": {
+          "brand_owned": 0.3333333333333333,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.0,
+          "review_editorial": 0.0,
+          "retailer": 0.0
+        },
+        "gemini-4-argon": {
+          "brand_owned": 0.11764705882352941,
+          "reference": 0.0,
+          "forum_ugc": 0.0,
+          "news": 0.0625,
+          "review_editorial": 0.0,
+          "retailer": 0.0
+        },
+        "gpt-6-astra": {
+          "brand_owned": 0.25,
+          "reference": 0.0,
+          "forum_ugc": 0.05263157894736842,
+          "news": 0.0,
+          "review_editorial": 0.05263157894736842,
+          "retailer": 0.0
+        }
+      },
+      "class_mix_by_category": {
+        "v19": {
+          "t4": {
+            "brand_owned": 0.0323015873015873,
+            "reference": 0.10336487586487589,
+            "forum_ugc": 0.02630748880748881,
+            "news": 0.1271413771413771,
+            "review_editorial": 0.141464553964554,
+            "retailer": 0.04471139971139971,
+            "other": 0.5247087172087173,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.0562066201772084,
+            "reference": 0.07778977558389324,
+            "forum_ugc": 0.06148239015886075,
+            "news": 0.08368975795446387,
+            "review_editorial": 0.17936361024596317,
+            "retailer": 0.08153447859330211,
+            "other": 0.459933367286308,
+            "unresolved": 0.0
+          }
+        },
+        "v20": {
+          "t4": {
+            "brand_owned": 0.11041697633393142,
+            "reference": 0.12001030015735899,
+            "forum_ugc": 0.06433441126347703,
+            "news": 0.11834086232875164,
+            "review_editorial": 0.1540030183196273,
+            "retailer": 0.031305593675835894,
+            "other": 0.4015888379210176,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.08899853707546015,
+            "reference": 0.08321987841218612,
+            "forum_ugc": 0.06617791040867964,
+            "news": 0.10834642565411794,
+            "review_editorial": 0.20043112158496762,
+            "retailer": 0.05023430984969447,
+            "other": 0.4025918170148936,
+            "unresolved": 0.0
+          }
+        },
+        "v21": {
+          "t4": {
+            "brand_owned": 0.10748098702644157,
+            "reference": 0.1061887607342153,
+            "forum_ugc": 0.07028358846540665,
+            "news": 0.061073186073186084,
+            "review_editorial": 0.19345797300342743,
+            "retailer": 0.04282216100397918,
+            "other": 0.4186933436933433,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.0631704010275439,
+            "reference": 0.09701599987314274,
+            "forum_ugc": 0.06169822241250814,
+            "news": 0.10873903873903877,
+            "review_editorial": 0.17367132867132865,
+            "retailer": 0.030317460317460316,
+            "other": 0.4653875489589767,
+            "unresolved": 0.0
+          }
+        },
+        "v22": {
+          "t4": {
+            "brand_owned": 0.10175287675287678,
+            "reference": 0.11732017982017985,
+            "forum_ugc": 0.04745300995300995,
+            "news": 0.11946263612930282,
+            "review_editorial": 0.1872346789013454,
+            "retailer": 0.05414623956290622,
+            "other": 0.37263037888037875,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.09777273214996485,
+            "reference": 0.10415329072152127,
+            "forum_ugc": 0.07589919187918714,
+            "news": 0.09895379465515217,
+            "review_editorial": 0.18107387351254917,
+            "retailer": 0.04625201344658357,
+            "other": 0.3958951036350414,
+            "unresolved": 0.0
+          }
+        },
+        "v23": {
+          "t4": {
+            "brand_owned": 0.1380999391690182,
+            "reference": 0.08696158008658007,
+            "forum_ugc": 0.053280986192170386,
+            "news": 0.12678972526012006,
+            "review_editorial": 0.14123345039463459,
+            "retailer": 0.08279806998556996,
+            "other": 0.3708362489119069,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.12010171188713352,
+            "reference": 0.10017737200172097,
+            "forum_ugc": 0.039697415082135534,
+            "news": 0.1103323103220663,
+            "review_editorial": 0.19710632012011534,
+            "retailer": 0.037031211771696194,
+            "other": 0.3955536588151319,
+            "unresolved": 0.0
+          }
+        }
+      },
+      "own_domain_retrieved_at_one_wave_only": {
+        "units_grounded_at_both": 84,
+        "units": 21,
+        "share": 0.25
+      }
+    },
+    "D46": {
+      "class_mix_answers_naming_F": {
+        "brand_owned": 0.10117550636077491,
+        "reference": 0.10330500805919147,
+        "forum_ugc": 0.05896018320921325,
+        "news": 0.11446562754563298,
+        "review_editorial": 0.1843626775672089,
+        "retailer": 0.04763887177327235,
+        "other": 0.39009212548470834,
+        "unresolved": 0.0
+      },
+      "class_mix_answers_naming_nonF": {
+        "brand_owned": 0.10112294768459111,
+        "reference": 0.10481678811516021,
+        "forum_ugc": 0.057878989641205865,
+        "news": 0.10893273390537303,
+        "review_editorial": 0.17839690201406724,
+        "retailer": 0.050214869067903886,
+        "other": 0.398636769571701,
+        "unresolved": 0.0
+      },
+      "defunct_D": {
+        "v22|Pontiac": {
+          "s1_answers": 15,
+          "class_mix": {
+            "brand_owned": 0.09491782727076845,
+            "reference": 0.0650046409096183,
+            "forum_ugc": 0.07686728806638309,
+            "news": 0.09699516170104405,
+            "review_editorial": 0.1834867997763926,
+            "retailer": 0.08594154714064217,
+            "other": 0.3967867351351512,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Oldsmobile": {
+          "s1_answers": 2,
+          "class_mix": {
+            "brand_owned": 0.05555555555555555,
+            "reference": 0.13888888888888887,
+            "forum_ugc": 0.08333333333333333,
+            "news": 0.29166666666666663,
+            "review_editorial": 0.09722222222222221,
+            "retailer": 0.0,
+            "other": 0.3333333333333333,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Plymouth": {
+          "s1_answers": 7,
+          "class_mix": {
+            "brand_owned": 0.07539682539682539,
+            "reference": 0.05555555555555555,
+            "forum_ugc": 0.21031746031746026,
+            "news": 0.18253968253968253,
+            "review_editorial": 0.13095238095238093,
+            "retailer": 0.10317460317460318,
+            "other": 0.242063492063492,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Mercury": {
+          "s1_answers": 14,
+          "class_mix": {
+            "brand_owned": 0.09886064618684937,
+            "reference": 0.1222431460399375,
+            "forum_ugc": 0.019416857652151766,
+            "news": 0.13374486476090752,
+            "review_editorial": 0.22889709814843498,
+            "retailer": 0.052933845714594384,
+            "other": 0.34390354149712454,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Saturn": {
+          "s1_answers": 10,
+          "class_mix": {
+            "brand_owned": 0.05845216874628639,
+            "reference": 0.08446455505279037,
+            "forum_ugc": 0.05147058823529411,
+            "news": 0.1881732102320338,
+            "review_editorial": 0.19576991635815166,
+            "retailer": 0.050402212166918044,
+            "other": 0.37126734920852583,
+            "unresolved": 0.0
+          }
+        }
+      }
+    },
+    "D48": {
+      "own-site-led and named": 8,
+      "own-site-led and seldom named": 20,
+      "third-party-led and named": 20,
+      "third-party-led and seldom named": 10
+    }
+  },
+  "MQ": {
+    "t4": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 77,
+          "share": 0.8555555555555555,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 82,
+          "share": 0.9111111111111111,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 14,
+          "share": 0.15555555555555556,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 1680,
+        "other_or_unresolved": 694,
+        "share": 0.41309523809523807,
+        "flag": true,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.14705882352941177,
+        "flat_substrates": [],
+        "n_rated": 34
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "t5": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 80,
+          "share": 0.8888888888888888,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 87,
+          "share": 0.9666666666666667,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 14,
+          "share": 0.15555555555555556,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 1831,
+        "other_or_unresolved": 779,
+        "share": 0.4254505734571273,
+        "flag": true,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.14285714285714285,
+        "flat_substrates": [],
+        "n_rated": 35
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "pool": {
+      "MQ3": {
+        "pairs": 3511,
+        "other_or_unresolved": 1473,
+        "share": 0.41953859299344914,
+        "flag": true,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.1206896551724138,
+        "flat_substrates": [],
+        "n_rated": 58
+      }
+    }
+  },
+  "seeds": {
+    "HB1": 122001,
+    "HB2": 450046,
+    "HB3": 122003,
+    "HB4": 122004,
+    "HB44": 122441,
+    "HB44b": 122442,
+    "HB45_t5t6": 122451,
+    "HB45_t4t6": 122452,
+    "HB46": 122461,
+    "HB46b": 122462,
+    "HB47": 122471,
+    "HB47b": 122472,
+    "HB48": 122481,
+    "HB48b_full": 122482,
+    "HB48b_resid": 122483
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 2000,
+    "HB2_bootstrap": 10000,
+    "gap_references": 500
+  },
+  "sensitivities": {
+    "S-COI": {
+      "options": {
+        "exclude": 6
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-House": {
+      "options": {
+        "exclude": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-Floor3": {
+      "options": {
+        "floor": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "FALSIFIED",
+        "HB44b": "FALSIFIED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "FALSIFIED",
+        "HB48": "FALSIFIED"
+      },
+      "skipped": null
+    },
+    "S-Floor10": {
+      "options": {
+        "floor": 10
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "UNDETERMINED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-m": {
+      "options": {
+        "denominator": "m"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-Uncentred": {
+      "options": {
+        "centred": false
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-NoGemini": {
+      "options": {
+        "drop_models": [
+          "gemini-4-argon"
+        ]
+      },
+      "verdicts": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-Wave": {
+      "options": {
+        "structure_on": "t5"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "UNDETERMINED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "UNDETERMINED",
+        "HB46b": "UNDETERMINED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-AllChannels": {
+      "options": {
+        "channel_subs": [
+          "v19",
+          "v20",
+          "v21",
+          "v22",
+          "v23"
+        ]
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-F-noD": {
+      "options": {
+        "exclude": 5
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-LOCO": {
+      "v19": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v20": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v21": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "UNDETERMINED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "FALSIFIED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v22": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "v23": {
+        "HB1": "UNDETERMINED",
+        "HB4": "UNDETERMINED",
+        "HB3": "UNDETERMINED",
+        "HB2": "UNDETERMINED",
+        "GB": "UNDETERMINED",
+        "HB44": "FALSIFIED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "FALSIFIED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      }
+    },
+    "_not_available": [
+      "S-Cited",
+      "S-C5",
+      "S-SDRI-t5",
+      "S-SDRI-kg",
+      "S-SDRI-site",
+      "S-IL-t1"
+    ]
+  },
+  "verdict_changes": {
+    "S-COI": {
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-House": {
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-Floor3": {
+      "HB2": [
+        "CONFIRMED",
+        "UNDETERMINED"
+      ],
+      "GB": [
+        "PASS",
+        "UNDETERMINED"
+      ],
+      "HB44b": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ],
+      "HB48": [
+        "FALSIFIED",
+        "UNDETERMINED"
+      ]
+    },
+    "S-Floor10": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-NoGemini": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-Wave": {
+      "HB44": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB46": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v19": {
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v20": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v21": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v22": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "FALSIFIED"
+      ]
+    },
+    "S-LOCO:v23": {
+      "HB1": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB4": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ]
+    }
+  }
+}

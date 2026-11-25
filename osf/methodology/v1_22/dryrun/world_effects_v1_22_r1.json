@@ -1,0 +1,1475 @@
+{
+  "phase": "v1.22",
+  "stage": 1,
+  "status": "RUN",
+  "prereg_tag": "v1.22-prereg-r1",
+  "paper_A_verdict": "MARGINAL",
+  "decision": {
+    "go": true,
+    "date": "2026-11-25",
+    "text": "synthetic dry-run decision record"
+  },
+  "labels": {
+    "all": "conditional on a MARGINAL Paper A gate (H1 MARGINAL, H3 UNDETERMINED)",
+    "pool_tests": "partly seen (t4 half published in Paper A)",
+    "reduced_panel": null,
+    "class_based_low_coverage": null
+  },
+  "verdicts": {
+    "HB1": "CONFIRMED",
+    "HB4": "CONFIRMED",
+    "HB3": "CONFIRMED",
+    "HB2": "CONFIRMED",
+    "GB": "PASS",
+    "HB44": "CONFIRMED",
+    "HB44b": "CONFIRMED",
+    "HB46": "MARGINAL",
+    "HB46b": "MARGINAL",
+    "HB47": "CONFIRMED",
+    "HB47b": "MARGINAL",
+    "HB48": "MARGINAL",
+    "HB48b": "UNSTRUCTURED [provisional: replication MARGINAL]"
+  },
+  "results": {
+    "panel_t4": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "panel_t5": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "common_panel": [
+      "claude-fable-5-2",
+      "gpt-6-astra",
+      "gemini-4-argon"
+    ],
+    "reduced_panel": false,
+    "MQ5_t5": {
+      "failed": false,
+      "zero_share": 0.07017543859649122,
+      "flat_substrates": [],
+      "n_rated": 57
+    },
+    "rated": {
+      "t4": 57,
+      "t5": 57,
+      "pool": 83
+    },
+    "HB1": {
+      "legs": [
+        {
+          "n": 57,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 6,
+            "v20": 13,
+            "v21": 14,
+            "v22": 12,
+            "v23": 12
+          },
+          "dropped_substrates": {},
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.015487620491041198,
+          "p": 0.9174082591740826,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.23028333784551436,
+            "hi": 0.20626048625780874,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 57,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 6,
+            "v20": 13,
+            "v21": 14,
+            "v22": 12,
+            "v23": 12
+          },
+          "dropped_substrates": {},
+          "seed": 122001,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.15980408415756145,
+          "p": 0.27287271272872715,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.36798266965386006,
+            "hi": 0.06755275886823649,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB4": {
+      "legs": [
+        {
+          "n": 57,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 6,
+            "v20": 13,
+            "v21": 14,
+            "v22": 12,
+            "v23": 12
+          },
+          "dropped_substrates": {},
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.2231625316209118,
+          "p": 0.12478752124787522,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.4497943560571428,
+            "hi": 0.04047802326650821,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S1"
+        },
+        {
+          "n": 57,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 6,
+            "v20": 13,
+            "v21": 14,
+            "v22": 12,
+            "v23": 12
+          },
+          "dropped_substrates": {},
+          "seed": 122004,
+          "centred": true,
+          "sided": "two",
+          "below_n_floor": false,
+          "rho_w": -0.19711516988597888,
+          "p": 0.1718828117188281,
+          "ci90": {
+            "level": 90.0,
+            "lo": -0.4451058745562885,
+            "hi": 0.06135940445036819,
+            "draws": 2000,
+            "dropped_nonfinite": 0
+          },
+          "condition": "S0"
+        }
+      ],
+      "verdict": "CONFIRMED"
+    },
+    "HB3": {
+      "pairs": [
+        {
+          "n": 33,
+          "n_substrates": 5,
+          "per_substrate": {
+            "v19": 5,
+            "v20": 7,
+            "v21": 9,
+            "v22": 7,
+            "v23": 5
+          },
+          "dropped_substrates": {},
+          "pair": [
+            1,
+            2
+          ],
+          "rho_w": 0.548806328971634,
+          "qualifies": true
+        },
+        {
+          "n": 31,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 8,
+            "v21": 10,
+            "v22": 6,
+            "v23": 7
+          },
+          "dropped_substrates": {
+            "v19": 4
+          },
+          "pair": [
+            1,
+            3
+          ],
+          "rho_w": 0.5931498321342565,
+          "qualifies": true
+        },
+        {
+          "n": 32,
+          "n_substrates": 4,
+          "per_substrate": {
+            "v20": 11,
+            "v21": 8,
+            "v22": 7,
+            "v23": 6
+          },
+          "dropped_substrates": {
+            "v19": 4
+          },
+          "pair": [
+            2,
+            3
+          ],
+          "rho_w": 0.6199594587214724,
+          "qualifies": true
+        }
+      ],
+      "n_qualifying_pairs": 3,
+      "rel1": 0.587305206609121,
+      "rel3": 0.8102212741729101,
+      "p": 9.999000099990002e-05,
+      "seed": 122003,
+      "verdict": "CONFIRMED"
+    },
+    "HB2": {
+      "n": 51,
+      "rho_pw": 0.7037600260226264,
+      "p_perm_one_sided": 9.999000099990002e-05,
+      "ci95": [
+        0.42785196732695163,
+        0.8388753648870184
+      ],
+      "seed": 450046,
+      "n_perm": 10000,
+      "n_boot": 10000,
+      "v045_verdict": "CONFIRMED",
+      "verdict": "CONFIRMED",
+      "inputs_sha256": {
+        "t4": "772433a571bdb63f29e906b50dcd5cbfcb5a941c36ba39097a2388b278ef1143",
+        "t5": "baefd0d1cb5f131550f6728faef9717e1ddf7dcd3f99769751e6ab3e2c3facda"
+      },
+      "v045_tag": "v0.45-prereg-r1",
+      "v045_commit": "f827d9d7eff6f756c3a10bfae886d9d624d2f958",
+      "v045_scorer_sha256": "6fa26930daf801f05ddb7bc49b76080eb93ab5367783f61e3b2f61067926fd2a",
+      "files": [
+        "../dryrun/_hb2_effects/g_star_t4_v1_22.csv",
+        "../dryrun/_hb2_effects/g_star_t5_v1_22.csv"
+      ],
+      "v122_band_check": "CONFIRMED"
+    },
+    "R": "MET",
+    "HB44": {
+      "n": 58,
+      "n_substrates": 5,
+      "per_substrate": {
+        "v19": 9,
+        "v20": 10,
+        "v21": 17,
+        "v22": 8,
+        "v23": 14
+      },
+      "dropped_substrates": {},
+      "seed": 122441,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.4134355963356882,
+      "p": 0.0033996600339966003,
+      "ci90": {
+        "level": 90.0,
+        "lo": 0.12893227838859078,
+        "hi": 0.6213122732713003,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "CONFIRMED"
+    },
+    "HB44b": {
+      "n": 37,
+      "n_substrates": 4,
+      "per_substrate": {
+        "v20": 9,
+        "v21": 13,
+        "v22": 6,
+        "v23": 9
+      },
+      "dropped_substrates": {
+        "v19": 3
+      },
+      "seed": 122442,
+      "centred": true,
+      "sided": "one",
+      "below_n_floor": false,
+      "rho_w": 0.38207972234166604,
+      "p": 0.020597940205979402,
+      "ci90": {
+        "level": 90.0,
+        "lo": 0.014477658028469927,
+        "hi": 0.6580710664207583,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "verdict": "CONFIRMED"
+    },
+    "HB46": {
+      "n": 83,
+      "n_F": 34,
+      "n_nonF": 49,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": 0.2672955974842767,
+      "p": 0.052094790520947905,
+      "seed": 122461,
+      "n_perm": 10000,
+      "verdict": "MARGINAL",
+      "arm": "G*"
+    },
+    "HB46b": {
+      "n": 83,
+      "n_F": 34,
+      "n_nonF": 49,
+      "categories_with_both": [
+        "v19",
+        "v20",
+        "v21",
+        "v22",
+        "v23"
+      ],
+      "delta": 0.27672955974842767,
+      "p": 0.04609539046095391,
+      "seed": 122462,
+      "n_perm": 10000,
+      "verdict": "MARGINAL",
+      "arm": "rank residuals given P_S1"
+    },
+    "HB47": {
+      "n": 48,
+      "per_category": {
+        "v20": 15,
+        "v21": 18,
+        "v22": 15
+      },
+      "min_category_units": 15,
+      "categories": [
+        "v20",
+        "v21",
+        "v22"
+      ],
+      "seed": 122471,
+      "n_perm": 10000,
+      "dbar": 7.452444136627321,
+      "sd": 25.538072905106038,
+      "p": 0.027297270272972702,
+      "verdict": "CONFIRMED"
+    },
+    "HB47b": {
+      "n": 52,
+      "n_substrates": 3,
+      "per_substrate": {
+        "v20": 17,
+        "v21": 19,
+        "v22": 16
+      },
+      "dropped_substrates": {},
+      "seed": 122472,
+      "centred": true,
+      "sided": "two",
+      "below_n_floor": false,
+      "rho_w": -0.21880361218896555,
+      "p": 0.1307869213078692,
+      "ci90": {
+        "level": 90.0,
+        "lo": -0.4455740564106509,
+        "hi": 0.03804984045411571,
+        "draws": 2000,
+        "dropped_nonfinite": 0
+      },
+      "eligible_il_units": 72,
+      "verdict": "MARGINAL"
+    },
+    "HB48": {
+      "n": 51,
+      "n_categories": 5,
+      "R": 0.13598191214470287,
+      "per_class": {
+        "brand_owned": -0.001937984496124031,
+        "reference": 0.05232558139534884,
+        "forum_ugc": 0.0755813953488372,
+        "news": 0.5116279069767442,
+        "review_editorial": 0.43992248062015504,
+        "retailer": -0.2616279069767442
+      },
+      "classes_defined": [
+        "brand_owned",
+        "reference",
+        "forum_ugc",
+        "news",
+        "review_editorial",
+        "retailer"
+      ],
+      "p": 0.025697430256974303,
+      "seed": 122481,
+      "n_perm": 10000,
+      "verdict": "MARGINAL"
+    },
+    "HB48b": {
+      "n": 83,
+      "full": {
+        "k": 1,
+        "gap": [
+          0.5998569982532391,
+          0.5977086972877066,
+          0.6073610264439999,
+          0.6307924695474503,
+          0.6334314093408953,
+          0.6442236297309911,
+          0.663076596065344,
+          0.6755301725227767
+        ],
+        "silhouette": null,
+        "silhouette_null_p95": null,
+        "n_null": 0,
+        "internal_structure": false
+      },
+      "ari_vs_presence_tiers": 0.0,
+      "p_ari": 1.0,
+      "inheritance": false,
+      "autonomy": false,
+      "residual": {
+        "k": 1,
+        "gap": [
+          0.7452859460949783,
+          0.7456566266507023,
+          0.7410645092819728,
+          0.749236179543681,
+          0.7582391100638111,
+          0.7701273817424052,
+          0.7848724421163871,
+          0.800174233187195
+        ],
+        "silhouette": null,
+        "silhouette_null_p95": null,
+        "n_null": 0,
+        "internal_structure": false
+      },
+      "residual_structure": false,
+      "cell": "UNSTRUCTURED [provisional: replication MARGINAL]",
+      "types": {
+        "type 1": {
+          "n": 83,
+          "mean_profile": {
+            "brand_owned": -1.2540169705856437e-18,
+            "reference": -2.2154299813679703e-18,
+            "forum_ugc": 1.0032135764685149e-18,
+            "news": 1.939546247839129e-17,
+            "review_editorial": -1.3877787807814457e-17,
+            "retailer": -8.192910874492872e-18
+          }
+        }
+      },
+      "features": "6 centred class shares + centred ranks of G*_pool, P_S1, C*_S0; z-scored"
+    }
+  },
+  "six_run_pairs": [
+    {
+      "pair": [
+        "t4r1",
+        "t4r2"
+      ],
+      "within_wave": true,
+      "n": 35,
+      "rho_w": 0.6119758546402324
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 38,
+      "rho_w": 0.5752253760678379
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 37,
+      "rho_w": 0.5357629710035632
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 35,
+      "rho_w": 0.7027732985015038
+    },
+    {
+      "pair": [
+        "t4r1",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 33,
+      "rho_w": 0.5229000965791123
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t4r3"
+      ],
+      "within_wave": true,
+      "n": 31,
+      "rho_w": 0.6855860475914617
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 34,
+      "rho_w": 0.522211674150268
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 33,
+      "rho_w": 0.5936329588014981
+    },
+    {
+      "pair": [
+        "t4r2",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 27,
+      "rho_w": 0.5052943384019384
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r1"
+      ],
+      "within_wave": false,
+      "n": 30,
+      "rho_w": 0.5343451051128144
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r2"
+      ],
+      "within_wave": false,
+      "n": 35,
+      "rho_w": 0.6721636636350372
+    },
+    {
+      "pair": [
+        "t4r3",
+        "t5r3"
+      ],
+      "within_wave": false,
+      "n": 29,
+      "rho_w": 0.5841687237817865
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r2"
+      ],
+      "within_wave": true,
+      "n": 33,
+      "rho_w": 0.548806328971634
+    },
+    {
+      "pair": [
+        "t5r1",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 31,
+      "rho_w": 0.5931498321342565
+    },
+    {
+      "pair": [
+        "t5r2",
+        "t5r3"
+      ],
+      "within_wave": true,
+      "n": 32,
+      "rho_w": 0.6199594587214724
+    }
+  ],
+  "descriptives": {
+    "D44": {
+      "rich_top_tercile": {
+        "units": 25,
+        "rated": 18,
+        "median_g_star_pool": 56.111111111111114,
+        "mean_profile": {
+          "brand_owned": 0.08927055963212883,
+          "reference": 0.04566950801785815,
+          "forum_ugc": 0.17727673413409067,
+          "news": 0.20483542505010133,
+          "review_editorial": 0.228636759915272,
+          "retailer": 0.07523540661667003
+        }
+      },
+      "sparse_bottom_tercile": {
+        "units": 25,
+        "rated": 21,
+        "median_g_star_pool": 20.833333333333336,
+        "mean_profile": {
+          "brand_owned": 0.07830777213192046,
+          "reference": 0.043167985544252184,
+          "forum_ugc": 0.17811863382205995,
+          "news": 0.21579917650341782,
+          "review_editorial": 0.23526690597852884,
+          "retailer": 0.07920278058648919
+        }
+      }
+    },
+    "D45_t4_t5": {
+      "jaccard_top20_domains_by_model": {
+        "claude-fable-5-2": 0.05263157894736842,
+        "gemini-4-argon": 0.05263157894736842,
+        "gpt-6-astra": 0.08108108108108109
+      },
+      "jaccard_top10_by_class": {
+        "claude-fable-5-2": {
+          "brand_owned": 0.25,
+          "reference": 0.05263157894736842,
+          "forum_ugc": 0.05263157894736842,
+          "news": 0.1111111111111111,
+          "review_editorial": 0.05263157894736842,
+          "retailer": 0.0
+        },
+        "gemini-4-argon": {
+          "brand_owned": 0.1111111111111111,
+          "reference": 0.0,
+          "forum_ugc": 0.17647058823529413,
+          "news": 0.17647058823529413,
+          "review_editorial": 0.0,
+          "retailer": 0.17647058823529413
+        },
+        "gpt-6-astra": {
+          "brand_owned": 0.25,
+          "reference": 0.1111111111111111,
+          "forum_ugc": 0.1111111111111111,
+          "news": 0.1111111111111111,
+          "review_editorial": 0.17647058823529413,
+          "retailer": 0.1111111111111111
+        }
+      },
+      "class_mix_by_category": {
+        "v19": {
+          "t4": {
+            "brand_owned": 0.06523280639918144,
+            "reference": 0.04258025310589586,
+            "forum_ugc": 0.08042491272804911,
+            "news": 0.19926739832649104,
+            "review_editorial": 0.28464920618642475,
+            "retailer": 0.09021982098977661,
+            "other": 0.23762560226418064,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.06299524668550403,
+            "reference": 0.027803777275284623,
+            "forum_ugc": 0.08557714055416263,
+            "news": 0.2377050514683544,
+            "review_editorial": 0.24321119771826033,
+            "retailer": 0.08664290674352598,
+            "other": 0.25606467955490775,
+            "unresolved": 0.0
+          }
+        },
+        "v20": {
+          "t4": {
+            "brand_owned": 0.09093859033059215,
+            "reference": 0.052283858771069,
+            "forum_ugc": 0.23951465075028755,
+            "news": 0.21811039961150924,
+            "review_editorial": 0.13904015297783376,
+            "retailer": 0.04009037648307586,
+            "other": 0.22002197107563262,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.08690440503560776,
+            "reference": 0.045620101400641225,
+            "forum_ugc": 0.24286531318088406,
+            "news": 0.22707453699645386,
+            "review_editorial": 0.17360029803178745,
+            "retailer": 0.04560897715255522,
+            "other": 0.17832636820207054,
+            "unresolved": 0.0
+          }
+        },
+        "v21": {
+          "t4": {
+            "brand_owned": 0.07837666653901332,
+            "reference": 0.03918556220589796,
+            "forum_ugc": 0.1870137894859719,
+            "news": 0.21959659694998812,
+            "review_editorial": 0.21257545984967818,
+            "retailer": 0.07883606174827026,
+            "other": 0.1844158632211795,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.07619361641516838,
+            "reference": 0.04553906587876317,
+            "forum_ugc": 0.19670839922896452,
+            "news": 0.22437255009741996,
+            "review_editorial": 0.2096151829569971,
+            "retailer": 0.06234312183240455,
+            "other": 0.18522806359028043,
+            "unresolved": 0.0
+          }
+        },
+        "v22": {
+          "t4": {
+            "brand_owned": 0.0853606354057642,
+            "reference": 0.04061207483085988,
+            "forum_ugc": 0.08785247347797194,
+            "news": 0.25155830021717307,
+            "review_editorial": 0.2734182108834216,
+            "retailer": 0.07698418373074606,
+            "other": 0.18421412145406213,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.09330970802469106,
+            "reference": 0.04376859982307427,
+            "forum_ugc": 0.10127576184640935,
+            "news": 0.24525976181905976,
+            "review_editorial": 0.26086078885719827,
+            "retailer": 0.06989834173118037,
+            "other": 0.18562703789838664,
+            "unresolved": 0.0
+          }
+        },
+        "v23": {
+          "t4": {
+            "brand_owned": 0.07637606404515541,
+            "reference": 0.05156130652394986,
+            "forum_ugc": 0.17540492735744675,
+            "news": 0.14717508773725982,
+            "review_editorial": 0.264415793942102,
+            "retailer": 0.10748041103643775,
+            "other": 0.17758640935764794,
+            "unresolved": 0.0
+          },
+          "t5": {
+            "brand_owned": 0.07233996777798796,
+            "reference": 0.06894649769351316,
+            "forum_ugc": 0.13146940003015756,
+            "news": 0.14780261625915306,
+            "review_editorial": 0.28840452698709246,
+            "retailer": 0.1033320351800849,
+            "other": 0.1877049560720101,
+            "unresolved": 0.0
+          }
+        }
+      },
+      "own_domain_retrieved_at_one_wave_only": {
+        "units_grounded_at_both": 98,
+        "units": 20,
+        "share": 0.20408163265306123
+      }
+    },
+    "D46": {
+      "class_mix_answers_naming_F": {
+        "brand_owned": 0.07996546642239316,
+        "reference": 0.04514658253492483,
+        "forum_ugc": 0.15985131566306857,
+        "news": 0.2112521841447182,
+        "review_editorial": 0.23700945855650757,
+        "retailer": 0.07650971011579735,
+        "other": 0.19026528256259745,
+        "unresolved": 0.0
+      },
+      "class_mix_answers_naming_nonF": {
+        "brand_owned": 0.07871263703892416,
+        "reference": 0.045483955887259446,
+        "forum_ugc": 0.15402794282779855,
+        "news": 0.21119810907146047,
+        "review_editorial": 0.23508321516430733,
+        "retailer": 0.07679738765141454,
+        "other": 0.19869675235884277,
+        "unresolved": 0.0
+      },
+      "defunct_D": {
+        "v22|Pontiac": {
+          "s1_answers": 2,
+          "class_mix": {
+            "brand_owned": 0.14945652173913043,
+            "reference": 0.04257246376811594,
+            "forum_ugc": 0.0625,
+            "news": 0.2536231884057971,
+            "review_editorial": 0.38496376811594185,
+            "retailer": 0.06340579710144927,
+            "other": 0.043478260869565216,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Oldsmobile": {
+          "s1_answers": 10,
+          "class_mix": {
+            "brand_owned": 0.05848143236074269,
+            "reference": 0.03668803418803419,
+            "forum_ugc": 0.10106542882404952,
+            "news": 0.25393972885352206,
+            "review_editorial": 0.3034040671971709,
+            "retailer": 0.04843869731800766,
+            "other": 0.19798261125847327,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Plymouth": {
+          "s1_answers": 3,
+          "class_mix": {
+            "brand_owned": 0.0,
+            "reference": 0.0,
+            "forum_ugc": 0.04,
+            "news": 0.31875,
+            "review_editorial": 0.29374999999999996,
+            "retailer": 0.11375,
+            "other": 0.23375,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Mercury": {
+          "s1_answers": 54,
+          "class_mix": {
+            "brand_owned": 0.08739863909754565,
+            "reference": 0.04206417646470923,
+            "forum_ugc": 0.12400256344718419,
+            "news": 0.23805778304783518,
+            "review_editorial": 0.2706410420425871,
+            "retailer": 0.06469468043784384,
+            "other": 0.17314111546229427,
+            "unresolved": 0.0
+          }
+        },
+        "v22|Saturn": {
+          "s1_answers": 27,
+          "class_mix": {
+            "brand_owned": 0.08574175456098687,
+            "reference": 0.033421523322069005,
+            "forum_ugc": 0.05193106811043792,
+            "news": 0.3187792576800311,
+            "review_editorial": 0.2719564149191805,
+            "retailer": 0.08974574210696681,
+            "other": 0.14842423930032783,
+            "unresolved": 0.0
+          }
+        }
+      }
+    },
+    "D48": {
+      "own-site-led and named": 16,
+      "own-site-led and seldom named": 23,
+      "third-party-led and named": 24,
+      "third-party-led and seldom named": 20
+    }
+  },
+  "MQ": {
+    "t4": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 76,
+          "share": 0.8444444444444444,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 85,
+          "share": 0.9444444444444444,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 20,
+          "share": 0.2222222222222222,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 3875,
+        "other_or_unresolved": 739,
+        "share": 0.19070967741935485,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.07017543859649122,
+        "flat_substrates": [],
+        "n_rated": 57
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "t5": {
+      "MQ2": {
+        "claude-fable-5-2": {
+          "answers": 90,
+          "with_source": 69,
+          "share": 0.7666666666666667,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gpt-6-astra": {
+          "answers": 90,
+          "with_source": 89,
+          "share": 0.9888888888888889,
+          "flag_search_rarely_used": false,
+          "dropped_from_g_star": false
+        },
+        "gemini-4-argon": {
+          "answers": 90,
+          "with_source": 13,
+          "share": 0.14444444444444443,
+          "flag_search_rarely_used": true,
+          "dropped_from_g_star": false
+        }
+      },
+      "MQ3": {
+        "pairs": 3615,
+        "other_or_unresolved": 692,
+        "share": 0.1914246196403873,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.07017543859649122,
+        "flat_substrates": [],
+        "n_rated": 57
+      },
+      "MQ10_answered_by_model": {
+        "claude-fable-5-2": 90,
+        "gpt-6-astra": 90,
+        "gemini-4-argon": 90
+      },
+      "dropped_models": [],
+      "panel": [
+        "claude-fable-5-2",
+        "gpt-6-astra",
+        "gemini-4-argon"
+      ],
+      "reduced_panel": false,
+      "C5_arm_used": false
+    },
+    "pool": {
+      "MQ3": {
+        "pairs": 7490,
+        "other_or_unresolved": 1431,
+        "share": 0.19105473965287048,
+        "flag": false,
+        "low_coverage": false
+      },
+      "MQ5": {
+        "failed": false,
+        "zero_share": 0.07228915662650602,
+        "flat_substrates": [],
+        "n_rated": 83
+      }
+    }
+  },
+  "seeds": {
+    "HB1": 122001,
+    "HB2": 450046,
+    "HB3": 122003,
+    "HB4": 122004,
+    "HB44": 122441,
+    "HB44b": 122442,
+    "HB45_t5t6": 122451,
+    "HB45_t4t6": 122452,
+    "HB46": 122461,
+    "HB46b": 122462,
+    "HB47": 122471,
+    "HB47b": 122472,
+    "HB48": 122481,
+    "HB48b_full": 122482,
+    "HB48b_resid": 122483
+  },
+  "draws": {
+    "permutation": 10000,
+    "bootstrap": 2000,
+    "HB2_bootstrap": 10000,
+    "gap_references": 500
+  },
+  "sensitivities": {
+    "S-COI": {
+      "options": {
+        "exclude": 6
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-House": {
+      "options": {
+        "exclude": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-Floor3": {
+      "options": {
+        "floor": 3
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "CONFIRMED",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "CONFIRMED"
+      },
+      "skipped": null
+    },
+    "S-Floor10": {
+      "options": {
+        "floor": 10
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "UNDETERMINED",
+        "GB": "PASS",
+        "HB44": "MARGINAL",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "CONFIRMED",
+        "HB47": "CONFIRMED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "UNDETERMINED"
+      },
+      "skipped": null
+    },
+    "S-m": {
+      "options": {
+        "denominator": "m"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-Uncentred": {
+      "options": {
+        "centred": false
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-NoGemini": {
+      "options": {
+        "drop_models": [
+          "gemini-4-argon"
+        ]
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "MARGINAL",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "MARGINAL",
+        "HB47b": "MARGINAL",
+        "HB48": "CONFIRMED"
+      },
+      "skipped": null
+    },
+    "S-Wave": {
+      "options": {
+        "structure_on": "t5"
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "CONFIRMED",
+        "HB47": "CONFIRMED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-AllChannels": {
+      "options": {
+        "channel_subs": [
+          "v19",
+          "v20",
+          "v21",
+          "v22",
+          "v23"
+        ]
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-F-noD": {
+      "options": {
+        "exclude": 5
+      },
+      "verdicts": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "skipped": null
+    },
+    "S-LOCO": {
+      "v19": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "CONFIRMED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "MARGINAL"
+      },
+      "v20": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "v21": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "FALSIFIED",
+        "HB46b": "MARGINAL",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "FALSIFIED"
+      },
+      "v22": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "CONFIRMED",
+        "HB46": "CONFIRMED",
+        "HB46b": "CONFIRMED",
+        "HB47": "UNDETERMINED",
+        "HB47b": "UNDETERMINED",
+        "HB48": "MARGINAL"
+      },
+      "v23": {
+        "HB1": "CONFIRMED",
+        "HB4": "CONFIRMED",
+        "HB3": "UNDETERMINED",
+        "HB2": "CONFIRMED",
+        "GB": "PASS",
+        "HB44": "CONFIRMED",
+        "HB44b": "UNDETERMINED",
+        "HB46": "MARGINAL",
+        "HB46b": "MARGINAL",
+        "HB47": "CONFIRMED",
+        "HB47b": "MARGINAL",
+        "HB48": "FALSIFIED"
+      }
+    },
+    "_not_available": [
+      "S-Cited",
+      "S-C5",
+      "S-SDRI-t5",
+      "S-SDRI-kg",
+      "S-SDRI-site",
+      "S-IL-t1"
+    ]
+  },
+  "verdict_changes": {
+    "S-Floor3": {
+      "HB46": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "HB48": [
+        "CONFIRMED",
+        "MARGINAL"
+      ]
+    },
+    "S-Floor10": {
+      "HB2": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44": [
+        "MARGINAL",
+        "CONFIRMED"
+      ],
+      "HB44b": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB46b": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB48": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ]
+    },
+    "S-NoGemini": {
+      "HB44b": [
+        "MARGINAL",
+        "CONFIRMED"
+      ],
+      "HB47": [
+        "MARGINAL",
+        "CONFIRMED"
+      ],
+      "HB48": [
+        "CONFIRMED",
+        "MARGINAL"
+      ]
+    },
+    "S-Wave": {
+      "HB46b": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v20": {
+      "HB3": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44b": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB48": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v21": {
+      "HB3": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44b": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB46": [
+        "FALSIFIED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ],
+      "HB48": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v22": {
+      "HB3": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB46": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "HB46b": [
+        "CONFIRMED",
+        "MARGINAL"
+      ],
+      "HB47": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB47b": [
+        "UNDETERMINED",
+        "MARGINAL"
+      ]
+    },
+    "S-LOCO:v23": {
+      "HB3": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB44b": [
+        "UNDETERMINED",
+        "CONFIRMED"
+      ],
+      "HB48": [
+        "FALSIFIED",
+        "MARGINAL"
+      ]
+    }
+  }
+}
