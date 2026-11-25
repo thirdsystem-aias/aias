@@ -1,10 +1,10 @@
 # v0.46 (proposed) "From named to chosen" — DEVIATIONS
 
-DRAFT r0 — for Pablo's review; not locked. Entries are written ex ante; Entry 0 is completed in r1, before the lock.
+DRAFT r1 (Entry 0 r1, 2026-11-24) — for Pablo's review; not locked. Entries are written ex ante; Entry 0 r1 completes to-do item (a) below; items (b) and (c) await the pre-registrant's decision.
 
-## Entry 0 — Pre-acquisition COI screen of the registries used (ex ante, 2026-11-11; to be completed in r1)
+## Entry 0 — Pre-acquisition COI screen of the registries used (ex ante, r0 2026-11-11; r1 2026-11-24)
 
-**Subject.** The author's employer, Samsung Electronics America, and the Samsung group (Samsung Electronics and its subsidiaries, including Harman International; Samsung affiliates including Cheil Worldwide and its Iris agency). Registries used: v0.20 skincare, v0.21 cosmetics, v0.22 automotive, v0.23 premium spirits (91 live units). Not used: v0.19 audiophile headphones.
+**Subject.** The author's employer, Samsung Electronics America, and the Samsung group (Samsung Electronics and its subsidiaries, including Harman International; Samsung affiliates including Cheil Worldwide and its Iris agency). Registries used: v0.20 skincare, v0.21 cosmetics, v0.22 automotive, v0.23 premium spirits (90 live units: skincare 24, cosmetics 24, cars 18, spirits 24). r0 said 91; the count is 90 since the D7 record of 2026-11-24 moved Fisker to Cell D (manuscript r4, commit 3c98818: 90 live units, 756 choice calls, 1,260 calls in all). Not used: v0.19 audiophile headphones.
 
 **Handling carried forward from the source phases (conformed to their locked records, not paraphrased from memory).**
 - v0.20 skincare: the v0.20 Entry 0 screen found "none of the 24 brands in the locked registry is affiliated with Samsung" (`papers/v0_20/v0_20_ssrn_paper_draft.md`, Entry 0, 2026-05-21).
@@ -19,4 +19,17 @@ DRAFT r0 — for Pablo's review; not locked. Entries are written ex ante; Entry 
 
 **Category exclusion.** Audiophile headphones (v0.19) are excluded because the Samsung group competes in the category: Harman International owns AKG and JBL and, since September 23, 2025, the Sound United brands Bowers & Wilkins, Denon, Marantz, Polk Audio and others (What Hi-Fi, 2025-09-23, opened 2026-11-11). The v0.19 registry holds Denon, a Samsung-group brand (programme correction of 2026-11-10), and an OPEN choice could name any Harman brand.
 
-**To do in r1 (before the lock).** Re-run v0.62's string screen (`coi_screen_v0_62.py`, 70 terms) on the 91 live units and on the OTHER-coding exclusion list; add a rule that an OPEN choice of any Samsung-group brand (Samsung, Harman and its brands) is coded and reported but excluded from every test. Conform the final wording to the v0.62 record once v0.62 is locked.
+**To do in r1 (before the lock), as written in r0.** Re-run v0.62's string screen (`coi_screen_v0_62.py`, 70 terms) on the 91 live units and on the OTHER-coding exclusion list; add a rule that an OPEN choice of any Samsung-group brand (Samsung, Harman and its brands) is coded and reported but excluded from every test. Conform the final wording to the v0.62 record once v0.62 is locked.
+
+**r1 (2026-11-24, Tue), item (a): string screen re-run — done.**
+- *Script.* v0.62's `osf/v62/scripts/coi_screen_v0_62.py` as committed on branch v0.62 at f09068f (git blob `b128979f61ae275042c62c46da9fdaa42f91c542`, SHA-256 `853c89eb9a981b22afe4be75d22b477f66907f4a47ba243a4e2bd66ca16a14ff`; the same file in the v0.62, v0.62-nohand and v0.65 worktrees). Its own term lists and match function are imported unchanged by `osf/v46/scripts/coi_screen_v0_46_r1.py`, which halts if the blob differs. Run offline; no model called, no key used.
+- *Terms.* 70 (30 r0 + 40 r3), whole-word, case-sensitive, names only.
+- *Units.* The 90 live units (`build_probes_v0_46.live_units()`, Fisker in Cell D), checked to equal the units on the LIST orders of `osf/v46/prereg/probes_v0_46.jsonl` (SHA-256 `1b6a4bc9…db30e01`).
+- *Result.* **0 hits** (`matches: 0`). Output `osf/v46/data/coi_screen_v0_46_r1.txt`, SHA-256 `65a752eb2c8ed66eed4f57084217e6b7a4bd696e88a7919b0576f414c36c26d2` (also in `coi_screen_v0_46_r1.sha256`). Meaning: no live unit's name contains a Samsung-group name of record. v0.62's single match (Denon) belongs to v0.19, which #76 does not use. A name check is not an ownership check; the five agency ties found by sources (Chevrolet, BMW, Bentley, Jack Daniel's, Eucerin) and the supply ties above are not string matches and stand as recorded above.
+- *OTHER-coding exclusion list.* Not screened. v0.62's screen reads registry names only (its alias table) and has no OTHER list; #76 has no OTHER-coding exclusion list in the prereg, the r5 manuscript or the code, and OTHER text exists only after collection. Whether such a list is to be screened belongs with item (b).
+
+**Pending author decision (1) — item (b), not done in r1.** A rule that an OPEN choice of any Samsung-group brand (Samsung, Harman and its brands) is coded and reported but excluded from every test. Awaits the pre-registrant; manuscript and code unchanged on this point.
+
+**Pending author decision (2) — item (c), not done in r1.** Whether the supply ties beyond v0.22's record (Tesla, Hyundai; above) are added to the manuscript's conflict-of-interest declaration. Awaits the pre-registrant; the Declarations carry no Tesla/Hyundai line.
+
+The final wording is still to be conformed to the v0.62 record once v0.62 is locked.
