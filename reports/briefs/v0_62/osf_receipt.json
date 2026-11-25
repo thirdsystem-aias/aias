@@ -1,0 +1,27 @@
+{
+ "tool": "osf_deposit.py 1.0 (WaterButler upload, API sha256 check) + anonymous re-download",
+ "project": "ec6wh",
+ "code": "TS-BR-v0.62-r1",
+ "remote_path": "v62/paper/TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf",
+ "file": "TS-BR-v0.62-r1_asked-in-spanish-korean-or-chinese-ai-models-kept-the.pdf",
+ "sha256_local": "8dfe91101cb554b35181331640a36a0dc8b3181abdf4d956ffadb9fc21dab4b8",
+ "sha256_osf": "8dfe91101cb554b35181331640a36a0dc8b3181abdf4d956ffadb9fc21dab4b8",
+ "sha256_redownload": "8dfe91101cb554b35181331640a36a0dc8b3181abdf4d956ffadb9fc21dab4b8",
+ "verified": "match",
+ "size": 80405,
+ "osf_file_id": "6b076d9d3eb40ade1d0588c4",
+ "osf_version": 1,
+ "osf_download_url": "https://osf.io/download/6b076d9d3eb40ade1d0588c4/",
+ "osf_view_url": "https://osf.io/ec6wh/files/osfstorage/6b076d9d3eb40ade1d0588c4",
+ "uploaded_utc": "2026-11-25T23:22:05Z",
+ "deposit_receipt": "~/aias/_worktrees/_runner_tmp/briefs_osf/v62_brief_stage.osf_receipt.json (status ok, exit 0; 2 match, 0 mismatch; lock ~/aias/_worktrees/_runner_tmp/osf.lock; no --allow-new-versions)",
+ "beside": {
+  "file": "v62/paper/v0_62_paper.pdf",
+  "osf_file_id": "6b074ef6f656d89ea60589c2",
+  "sha256_osf": "76f294f782045774e0f179fe4c33279647539541d3fc2ff54528aba79d009939",
+  "sha256_redownload": "76f294f782045774e0f179fe4c33279647539541d3fc2ff54528aba79d009939",
+  "sha256_local_5749211": "76f294f782045774e0f179fe4c33279647539541d3fc2ff54528aba79d009939",
+  "deposited_utc": "2026-11-25T21:11:18Z",
+  "note": "The paper r2 (27 pp) was already on OSF; staged beside the brief, planned skip (identical), checked by API hash and re-download; not re-uploaded."
+ }
+}
