@@ -5,7 +5,8 @@
   python3 osf/arm_a/scripts/pull_arm_a.py --pull 1 --collect     # the pull (refuses before the lock anchor exists)
 
 Rules implemented (each is unit-tested with a fake transport; tests/test_pull_arm_a.py):
-  * The pull starts only if the lock anchor exists, no other paid-collection lock is held, the published price read
+  * The pull starts only if the lock anchor exists, no other paid collection is running (one-off exception: pull 1
+    on 2026-12-01, params_arm_a.CONCURRENT_OK), the published price read
     before the pull equals $0.12 per request + $0.0012 per month, and the whole pull's expected cost fits under the
     per-pull limit ($13.00) and, with everything already spent, under the $48.00 hard stop. Otherwise nothing is sent.
   * Before every request (retries included): cumulative spend + this request's expected cost <= $48.00, and this
@@ -137,9 +138,12 @@ def preflight(pull, pull_day, price, ps_lines=None, n=P.N_DOMAINS):
     if abs(price[0] - P.PRICE_PER_REQUEST) > 1e-9 or abs(price[1] - P.PRICE_PER_MONTH) > 1e-9:
         raise Refuse(f"published price {price} differs from $0.12 + $0.0012 per month; the case goes to Pablo")
     others = other_paid_collections(ps_lines)
-    if others:
+    allowed = P.CONCURRENT_OK.get(pull) == pull_day.isoformat()   # section 5.4: pull 1 on 2026-12-01 only
+    if others and not allowed:
         raise Refuse("another paid collection is running: " + "; ".join(others)[:300])
     pl = plan(pull, pull_day, n)
+    if others:
+        pl["concurrent_paid_collections"] = others   # recorded; allowed only by the one-off exception
     if pl["expected"] > P.PER_PULL_LIMIT:
         raise Refuse(f"expected ${pl['expected']:.4f} above the per-pull limit ${P.PER_PULL_LIMIT:.2f}")
     if spent() + pl["expected"] > P.HARD_STOP:

@@ -1,4 +1,4 @@
-Arm A tests, 2026-11-25T05:11:17+00:00: 82 of 82 passed (failures 0, errors 0); no API call, simulated Google data only
+Arm A tests, 2026-11-25T05:39:47+00:00: 84 of 84 passed (failures 0, errors 0); no API call, simulated Google data only
 test_end_to_end_on_simulated_data (test_analyze_arm_a.TestDryRun.test_end_to_end_on_simulated_data) ... ok
 test_h_a1_pooling_needs_n8_and_three_categories (test_analyze_arm_a.TestHypotheses.test_h_a1_pooling_needs_n8_and_three_categories) ... ok
 test_h_a2_detects_a_built_effect_and_not_a_null (test_analyze_arm_a.TestHypotheses.test_h_a2_detects_a_built_effect_and_not_a_null) ... ok
@@ -54,6 +54,8 @@ test_request_above_020_stops (test_pull_arm_a.TestPull.test_request_above_020_st
 test_request_body_has_no_other_parameter (test_pull_arm_a.TestPull.test_request_body_has_no_other_parameter) ... ok
 test_transport_error_retried_and_counted_at_expected (test_pull_arm_a.TestPull.test_transport_error_retried_and_counted_at_expected) ... ok
 test_date_outside_window (test_pull_arm_a.TestRefusals.test_date_outside_window) ... ok
+test_dec_1_exception_pull_1_only (test_pull_arm_a.TestRefusals.test_dec_1_exception_pull_1_only)
+Section 5.4 one-off exception: pull 1 on Tue 2026-12-01 may run beside another paid collection. ... ok
 test_existing_manifest (test_pull_arm_a.TestRefusals.test_existing_manifest) ... ok
 test_hard_stop_allows_exact_fit (test_pull_arm_a.TestRefusals.test_hard_stop_allows_exact_fit) ... ok
 test_hard_stop_before_start (test_pull_arm_a.TestRefusals.test_hard_stop_before_start) ... ok
@@ -69,6 +71,7 @@ test_cars_and_spirits_match_v1_13_registry (test_registries_arm_a.TestDomains.te
 test_coi_flagged_ids_exist (test_registries_arm_a.TestDomains.test_coi_flagged_ids_exist) ... ok
 test_counts (test_registries_arm_a.TestDomains.test_counts) ... ok
 test_domains_match_the_preregistration_table (test_registries_arm_a.TestDomains.test_domains_match_the_preregistration_table) ... ok
+test_locked_copy_is_r5_byte_for_byte (test_registries_arm_a.TestDomains.test_locked_copy_is_r5_byte_for_byte) ... ok
 test_one_primary_per_brand (test_registries_arm_a.TestDomains.test_one_primary_per_brand) ... ok
 test_quotes_are_verbatim_in_the_source_records_and_in_entry_0 (test_registries_arm_a.TestEntry0Conformed.test_quotes_are_verbatim_in_the_source_records_and_in_entry_0) ... ok
 test_fdic_and_bts (test_registries_arm_a.TestFetchSales.test_fdic_and_bts) ... ok
@@ -83,6 +86,6 @@ test_sales_sources_fixed (test_registries_arm_a.TestInputs.test_sales_sources_fi
 test_shift_counts_match_the_shift_doc (test_registries_arm_a.TestInputs.test_shift_counts_match_the_shift_doc) ... ok
 
 ----------------------------------------------------------------------
-Ran 82 tests in 1.011s
+Ran 84 tests in 1.015s
 
 OK

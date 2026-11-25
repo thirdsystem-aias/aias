@@ -20,7 +20,8 @@ import fetch_sales_arm_a as FS      # noqa: E402
 import params_arm_a as P            # noqa: E402
 import prelock_sources_arm_a as PS  # noqa: E402
 
-PREREG = P.ROOT / "prereg" / "arm_a_seo_prereg_draft_r5.md"
+PREREG = P.ARM / "prereg" / "PRE_REGISTRATION_arm_a.md"          # the locked copy of r5 (section 9)
+PREREG_R5 = P.ROOT / "prereg" / "arm_a_seo_prereg_draft_r5.md"
 
 
 def rows(name):
@@ -48,6 +49,12 @@ class TestDomains(unittest.TestCase):
         self.assertEqual(len(set(prim)), 72)
         sens = {r["domain"] for r in self.d if r["role"] == "sensitivity"}
         self.assertEqual(sens, {"mercedes-benz.com", "bmw.com", "jaguar.com", "goldmansachs.com"})
+
+    def test_locked_copy_is_r5_byte_for_byte(self):
+        self.assertEqual(PREREG.read_bytes(), PREREG_R5.read_bytes())
+        text = PREREG.read_text(encoding="utf-8")
+        self.assertIn("| **Tue 2026-12-01** (Pablo", text)                 # section 5.2 pull 1 row
+        self.assertNotIn("| Mon 2026-12-07 (first weekday", text)            # the old row is gone
 
     def test_domains_match_the_preregistration_table(self):
         text = PREREG.read_text(encoding="utf-8")

@@ -18,7 +18,7 @@ import params_arm_a as P            # noqa: E402
 import pull_arm_a as PL             # noqa: E402
 import simulate_google_arm_a as SIM  # noqa: E402
 
-DAY1 = date(2026, 12, 7)
+DAY1 = date(2026, 12, 1)
 PRICE = (0.12, 0.0012)
 
 
@@ -34,7 +34,7 @@ class Sandbox(unittest.TestCase):
         self.template = SIM.load_template()
         self.domains = PL.load_domains()
         self.sleeps = []
-        t = [datetime(2026, 12, 7, 15, 0, tzinfo=timezone.utc)]
+        t = [datetime(2026, 12, 1, 15, 0, tzinfo=timezone.utc)]
 
         def now():
             t[0] += timedelta(seconds=1)
@@ -75,7 +75,10 @@ class Sandbox(unittest.TestCase):
 
 class TestPlan(unittest.TestCase):
     def test_section_5_2_arithmetic(self):
-        p1 = PL.plan(1, date(2026, 12, 7))
+        p1 = PL.plan(1, date(2026, 12, 1))
+        self.assertEqual(P.PULLS[1]["planned"], "2026-12-01")          # r5: Tue 2026-12-01 (was Mon 2026-12-07)
+        self.assertEqual(P.PULLS[1]["latest"], "2026-12-31")
+        self.assertEqual((P.PULLS[2]["planned"], P.PULLS[3]["planned"]), ("2027-01-04", "2027-03-01"))
         p2 = PL.plan(2, date(2027, 1, 4))
         p3 = PL.plan(3, date(2027, 3, 1))
         self.assertEqual((p1["months"], p2["months"], p3["months"]), (26, 3, 29))
@@ -144,11 +147,21 @@ class TestRefusals(Sandbox):
         self.assertRefused("could not be read", price=None)
 
     def test_date_outside_window(self):
-        self.assertRefused("outside", day=date(2026, 12, 6))
+        self.assertRefused("outside", day=date(2026, 11, 30))
         self.assertRefused("outside", day=date(2027, 1, 1))
 
     def test_other_paid_collection(self):
-        self.assertRefused("another paid collection", ps=["4242 python3 osf/v46/scripts/acquire_v0_46.py --collect"])
+        ps = ["4242 python3 osf/v46/scripts/acquire_v0_46.py --collect"]
+        self.assertRefused("another paid collection", ps=ps, day=date(2026, 12, 2))   # pull 1, any day but Dec 1
+        self.assertRefused("another paid collection", ps=ps, pull=2, day=date(2027, 1, 4))
+
+    def test_dec_1_exception_pull_1_only(self):
+        """Section 5.4 one-off exception: pull 1 on Tue 2026-12-01 may run beside another paid collection."""
+        self.assertEqual(P.CONCURRENT_OK, {1: "2026-12-01"})
+        ps = ["4242 python3 osf/v62/scripts/acquire_v0_62.py --collect"]
+        pl = PL.preflight(1, date(2026, 12, 1), PRICE, ps_lines=ps)
+        self.assertEqual(pl["months"], 26)
+        self.assertEqual(pl["concurrent_paid_collections"], ps)
 
     def test_per_pull_limit_before_start(self):
         many = self.domains + [dict(self.domains[0], domain=f"x{i}.com") for i in range(10)]   # 86 x 0.1512 = 13.0032
@@ -266,7 +279,7 @@ class TestPull(Sandbox):
     def test_raw_never_overwritten(self):
         f = P.RAW / "pull1"
         f.mkdir(parents=True)
-        when = datetime(2026, 12, 7, 15, 0, 1, tzinfo=timezone.utc)
+        when = datetime(2026, 12, 1, 15, 0, 1, tzinfo=timezone.utc)
         a, _ = PL.save_raw(f, "x.com", when, b"one")
         b, _ = PL.save_raw(f, "x.com", when, b"two")
         self.assertNotEqual(a, b)

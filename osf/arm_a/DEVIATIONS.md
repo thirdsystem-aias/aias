@@ -4,7 +4,7 @@ Entries are added in order and never edited after the lock (tag `arm-a-prereg-r1
 
 ## Entry 0 (ex ante, before the lock): conflict-of-interest screen
 
-**Date:** 2026-11-24, evening US Central (runner lane). **Status:** ex ante; written before the lock, before any study domain is pulled and before any sales value is read. DRAFT until the lock; the coordinator checks it first.
+**Date:** 2026-11-24, evening US Central (runner lane). **Status:** ex ante; written before the lock, before any study domain is pulled and before any sales value is read. Locked with the pre-registration (r5, tag `arm-a-prereg-r1`, Tue 2026-11-24, late evening US Central); Part G records the pre-registrant's decisions at the lock.
 
 **Context.** The pre-registrant is Director, Corporate Brand Creative and Governance at Samsung Electronics America. Arm A selects 72 brands with public US sales or share figures in five categories (pre-registration r4, §3.2): passenger cars (18, the v0.22 registry less Fisker and the five closed brands), US airlines (11) and US retail banks (26) (the v0.40 registry's current brands, plus Discover), B2B software (12, the listed companies of the v0.24 registry) and premium spirits (5, descriptive only, from the v0.23 registry). Samsung appears only in the paper's Declarations §COI and in this log.
 
@@ -61,3 +61,9 @@ No documented tie was found for the other bank brands in that check. **Method li
 ### Part F — Source records conformed (CLAUDE.md rule: conform from the locked record, not memory)
 
 Each quotation in Parts B and C was copied from the record named beside it, read at its ref on 2026-11-24 (evening US Central), and checked word for word against that record: v0.22 DEVIATIONS Entry 0, Part B (tag `v0.22-acquisition-locked`, file SHA-256 `aaa585a1…96e5`); v0.22 Declarations §COI (commit `de2223c`, `bad05ba3…75cc`); v0.62 DEVIATIONS Entry 0, Parts B, F and G (tag `v0.62-prereg-r1`, `584a5cc6…43bc5`). The pre-registration's Declarations §COI (r5, §8) uses the same wording. Independence rule: no brand is focal; no lesson is addressed to a brand; no brand, agency or Samsung company has been or will be contacted.
+
+### Part G — Decisions at the lock (Pablo, Tue 2026-11-24, US Central; recorded before the lock commit)
+
+- **10:09 pm:** the $50 DataForSEO credit is funded; it is the ceiling for the whole Arm A study. Nothing has been pulled.
+- **10:37 pm:** pull 1 moves to **Tue 2026-12-01** (was Mon 2026-12-07); fallback unchanged, any day to Thu 2026-12-31; pulls 2 and 3 unchanged (Mon 2027-01-04, Mon 2027-03-01). One-off exception to the one-paid-collection rule: pull 1 (about 76 DataForSEO requests, about $11, no AI model) may run on Dec 1 even if another paid collection runs that day, outside the Mac's heavy-job slot (pre-registration §5.4; `params_arm_a.CONCURRENT_OK`).
+- **11:33 pm** ("Ok" to both, as recommended): lock now, the 24-hour wait waived; **call (a)** yes: airlines and banks use v0.40's published per-unit AI share (search off, nine models) as Presence; **call (b)** yes: the three §6.7 rows as written (`H_A6` by Freedman–Lane on ranks, `H_A3`'s bootstrap p for Holm, the `Gs` missing-month rule); **call (c)** yes: **TD Bank flagged in this COI record, kept in, and every bank result also reported without TD Bank; Chase and American Express disclosed** (Part E).

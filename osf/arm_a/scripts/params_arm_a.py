@@ -32,11 +32,14 @@ CEILING = 50.00              # the balance Pablo adds once; never fully drawn
 # months planned = calendar months from date_from to the pull month, both included (the partial pull month is
 # returned and charged); a pull run on a fallback date has its own planned count by the same rule.
 PULLS = {
-    1: {"planned": "2026-12-07", "latest": "2026-12-31", "date_from": "2024-11-01", "mode": "full"},
+    1: {"planned": "2026-12-01", "latest": "2026-12-31", "date_from": "2024-11-01", "mode": "full"},
     2: {"planned": "2027-01-04", "latest": "2027-01-29", "date_from": "2026-11-01", "mode": "incremental"},
     3: {"planned": "2027-03-01", "latest": "2027-04-05", "date_from": "2024-11-01", "mode": "full"},
 }
 N_DOMAINS = 76
+# One-off exception (Pablo, Tue 2026-11-24, 10:37 pm US Central; section 5.4): pull 1 may run on Tue 2026-12-01 even
+# if another paid collection runs that day. Only that pull on that day; every other pull and day keeps the rule.
+CONCURRENT_OK = {1: "2026-12-01"}
 
 # --- analysis (sections 2.1-2.12, 6.2-6.4) --------------------------------------------------------------------
 SEEDS = {"H_A1": 610001, "H_A2": 610002, "H_A3": 610003, "H_A4": 610004, "H_A5": 610005, "H_A6": 610006,

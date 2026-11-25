@@ -59,7 +59,7 @@ class PullSandbox(unittest.TestCase):
         P.ROOT, P.RAW, P.ANCHOR = self.saved
         self.td.cleanup()
 
-    def pull(self, etv_fn, domains, status=lambda d, k: "Ok.", pull=1, day=date(2026, 12, 7)):
+    def pull(self, etv_fn, domains, status=lambda d, k: "Ok.", pull=1, day=date(2026, 12, 1)):
         tpl = SIM.load_template()
         t = [datetime(day.year, day.month, day.day, 15, tzinfo=timezone.utc)]
         n = {"k": 0}

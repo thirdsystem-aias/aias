@@ -3,7 +3,7 @@
 
   python3 osf/arm_a/scripts/dry_run_arm_a.py [--perm N] [--boot N]   -> osf/arm_a/prereg/dry_run_arm_a.json + .txt
 
-It runs the real pull script (pull 1 on 2026-12-07, pull 2 on 2027-01-04, pull 3 on 2027-03-01) in a temporary
+It runs the real pull script (pull 1 on 2026-12-01, pull 2 on 2027-01-04, pull 3 on 2027-03-01) in a temporary
 sandbox against a fake transport that answers in DataForSEO's exact response shape (simulate_google_arm_a.py), then the
 join and the full analysis on those files. AI-side inputs are the real registries (published Presence and Shift
 counts); Google values and the airline, bank and software sales values are simulated. Results mean nothing; the run
