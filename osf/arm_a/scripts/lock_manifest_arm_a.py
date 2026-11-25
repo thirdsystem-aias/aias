@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_inputs_arm_a as BI   # noqa: E402
 import params_arm_a as P          # noqa: E402
 
-PREREG_FILES = ["prereg/arm_a_seo_prereg_draft_r4.md", "prereg/armA_prelock_notes_r1.md",
+PREREG_FILES = ["prereg/arm_a_seo_prereg_draft_r5.md", "prereg/armA_prelock_notes_r1.md",
                 "prereg/armA_power_sim_r3.py", "prereg/armA_power_sim_out_r3.txt",
                 "prereg/armA_crosscheck/armA_domain_crosscheck.py",
                 "prereg/armA_crosscheck/crosscheck_20261124T133629Z.csv",

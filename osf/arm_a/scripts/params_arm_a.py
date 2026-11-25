@@ -61,5 +61,6 @@ CATEGORY_WAVE = {"cars": "t1", "airlines": "v0.40", "banks": "v0.40", "software"
 H_A7_DEADLINE = "2027-03-31"
 
 CAR_GROUPS = {"luxury": 7, "mass": 7, "electric": 4}
-# S-COI (section 6.5): sample brands with a recorded Cheil Worldwide / Iris tie (v0.62 DEVIATIONS Entry 0, Part F)
-COI_FLAGGED = ("BR-00385", "BR-00376", "BR-00374", "BR-00396")    # Chevrolet, BMW, Bentley, Jack Daniel's
+# S-COI (section 6.5): sample brands with a recorded Cheil Worldwide / Iris tie (v0.62 DEVIATIONS Entry 0, Part F),
+# plus TD Bank (r5: issues and services the Samsung Financing Program Account; Arm A DEVIATIONS Entry 0, Part E)
+COI_FLAGGED = ("BR-00385", "BR-00376", "BR-00374", "BR-00396", "BR-00473")   # Chevrolet, BMW, Bentley, Jack Daniel's, TD Bank

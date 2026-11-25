@@ -20,7 +20,7 @@ import fetch_sales_arm_a as FS      # noqa: E402
 import params_arm_a as P            # noqa: E402
 import prelock_sources_arm_a as PS  # noqa: E402
 
-PREREG = P.ROOT / "prereg" / "arm_a_seo_prereg_draft_r4.md"
+PREREG = P.ROOT / "prereg" / "arm_a_seo_prereg_draft_r5.md"
 
 
 def rows(name):
@@ -87,7 +87,7 @@ class TestDomains(unittest.TestCase):
 
     def test_coi_flagged_ids_exist(self):
         ids = {r["brand_id"]: r["brand"] for r in self.d if "site" not in r["brand"]}
-        self.assertEqual([ids[b] for b in P.COI_FLAGGED], ["Chevrolet", "BMW", "Bentley", "Jack Daniel's"])
+        self.assertEqual([ids[b] for b in P.COI_FLAGGED], ["Chevrolet", "BMW", "Bentley", "Jack Daniel's", "TD Bank"])
 
 
 class TestInputs(unittest.TestCase):

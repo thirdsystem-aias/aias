@@ -1,4 +1,4 @@
-Arm A tests, 2026-11-25T04:54:48+00:00: 82 of 82 passed (failures 0, errors 0); no API call, simulated Google data only
+Arm A tests, 2026-11-25T05:11:17+00:00: 82 of 82 passed (failures 0, errors 0); no API call, simulated Google data only
 test_end_to_end_on_simulated_data (test_analyze_arm_a.TestDryRun.test_end_to_end_on_simulated_data) ... ok
 test_h_a1_pooling_needs_n8_and_three_categories (test_analyze_arm_a.TestHypotheses.test_h_a1_pooling_needs_n8_and_three_categories) ... ok
 test_h_a2_detects_a_built_effect_and_not_a_null (test_analyze_arm_a.TestHypotheses.test_h_a2_detects_a_built_effect_and_not_a_null) ... ok
@@ -83,6 +83,6 @@ test_sales_sources_fixed (test_registries_arm_a.TestInputs.test_sales_sources_fi
 test_shift_counts_match_the_shift_doc (test_registries_arm_a.TestInputs.test_shift_counts_match_the_shift_doc) ... ok
 
 ----------------------------------------------------------------------
-Ran 82 tests in 0.998s
+Ran 82 tests in 1.011s
 
 OK

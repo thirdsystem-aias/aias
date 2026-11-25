@@ -100,7 +100,8 @@ def main(out=None):
     lines += [f"record screen: {files} distinct DEVIATIONS files under the worktrees; lines naming a Part E brand and "
               f"a Samsung-group term ({', '.join(RECORD_TERMS)}): {len(rec)}"]
     lines += ["  %s | brands %s | terms %s | %s" % (f, ",".join(b), ",".join(t), ln) for f, b, t, ln in rec]
-    lines += ["S-COI (params_arm_a.COI_FLAGGED, from v0.62 Entry 0 Part F): " + ", ".join(P.COI_FLAGGED)]
+    lines += ["S-COI (params_arm_a.COI_FLAGGED: Cheil/Iris brands of v0.62 Entry 0 Part F, plus TD Bank from the "
+              "coordinator's sourced web check, Arm A Entry 0 Part E): " + ", ".join(P.COI_FLAGGED)]
     out = Path(out or (P.ARM / "prereg" / "coi_screen_arm_a.txt"))
     out.write_text("\n".join(lines) + "\n", encoding="utf-8")
     print("\n".join(lines))
