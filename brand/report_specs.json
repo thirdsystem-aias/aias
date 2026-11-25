@@ -2160,6 +2160,27 @@
         "sha256": "858003a4d83db5c7431252832fed9da1c095d97ed916643ed6be157545f14091",
         "sha256_source": "identical in: OSF v42/report/TS-FL-v0.42-r1_new-models-same-standings.pdf v1 and the local build (reports/build_report_v42_tier1.py in t4-paper at 023f1be, cover v0.42_t4-wave.png)",
         "website": null,
+        "status": "superseded",
+        "held": false
+      },
+      {
+        "code": "TS-FL-v0.42-r2",
+        "type": "FL",
+        "study": "v0.42",
+        "rev": "r2",
+        "title": "New Models, Same Standings?",
+        "date": "2026-11-25",
+        "date_source": "PDF CreationDate 2026-11-25 04:19:50 CST (built by the runner); deposited on OSF Wed Nov 25, 2026 (receipt 10:22:44 UTC, 1 of 1 file verified)",
+        "tier": 1,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": "ffdfd27",
+        "repo_path": null,
+        "osf_path": "v42/report/TS-FL-v0.42-r2_new-models-same-standings.pdf",
+        "osf_version": 1,
+        "sha256": "71ac68c3b8799d0e6f6bb5e497f44657632d7c4b1d076c8eaecfd943b08e2012",
+        "sha256_source": "identical in: OSF v42/report/TS-FL-v0.42-r2_new-models-same-standings.pdf v1 and the local build (reports/build_report_v42_tier1.py in t4-paper at ffdfd27, corrected verdicts papers/v0_42/corrected_2026-11-25/, cover v0.42_t4-wave.png). Revision for the apostrophe correction of 25 Nov 2026 (OSF v42/ERRATUM_2026-11-25.md); r1 stays on OSF",
+        "website": null,
         "status": "current",
         "held": false
       }
