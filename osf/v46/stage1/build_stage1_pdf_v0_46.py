@@ -73,6 +73,7 @@ HEADER_TEX = r"""
 LANDSCAPE_SECTIONS = ["## 6. Study design summary table"]
 TABLE_WIDTHS = {  # header row prefix -> dash counts per column
     "| # | Question | Decision": [3, 14, 60, 16],
+    "| True Ū_P | Choices | r |": [12, 14, 6, 11, 14, 13, 14],   # r5: H1 power table (headers no longer touch)
 }
 
 
@@ -80,6 +81,8 @@ def layout(text: str) -> str:
     lines = text.split("\n")
     for head, widths in TABLE_WIDTHS.items():
         idx = [i for i, l in enumerate(lines) if l.startswith(head)]
+        if not idx:             # r5: Appendix B (the decisions table) is not in the submission manuscript
+            continue
         assert len(idx) == 1, head
         sep = lines[idx[0] + 1]
         assert sep.startswith("|-") and sep.count("|") == len(widths) + 1, sep
