@@ -344,6 +344,8 @@ No category is language-sensitive. Pairs of languages (n 112; 95% interval; p): 
 
 **What changes:** the paper can report these items, marked as computed after the scoring run under this entry. **What does not change:** every verdict, the joint reading, `v62_verdicts.json`, the coded tables, the raw file and every locked file. Under the pre-registration's own rules none of these items bears on a verdict: §7.5's abstract rule covers S-Denon, S-Headphones and S-COI only, and S-Language, S-Script and S-Alias give the primary verdict in every language anyway; the §2.3 flag is not raised; MC_Language flags (ES, all answers) and MC_Alias change no code (§2.8).
 
+**Dated note to Entry 7 (Wed 2026-11-25, about 8:15 pm CT = Thu 2026-11-26, 02:15 UTC; written by the runner; a completeness record, nothing recomputed).** The MC_Language paragraph above gives the Phase A (yes/no) shares for Spanish only. `data/v62_planned_items_v0_62.json` (`2.8_manipulation_checks.MC_Language.per_model_language`, key `zh|claude-fable-5-2|A`) also flags one Chinese cell: Claude Fable 5.2, yes/no answers, 83 of 88 in Chinese, share 0.9432, `flag_below_95pct` true. Its all-answers share (170 of 178, 0.9551) and its Phase B share (87 of 90, 0.9667) are not flagged, as stated above; every other KO and ZH cell is 1.0000 or unflagged. The paper (v0.62-paper, §3.10) already reports this flag ("also flags Chinese Claude Fable 5.2 (0.9432)"). Under §2.8 an MC_Language flag changes no code, so this note changes no verdict, coded table or locked file; the sentence "MC_Language flags (ES, all answers)" above should be read as "MC_Language flags (ES, all answers; ZH Claude Fable 5.2, yes/no answers)".
+
 
 ---
 
