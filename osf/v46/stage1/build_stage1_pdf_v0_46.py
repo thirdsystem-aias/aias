@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
-"""build_stage1_pdf_v0_46.py -- AIAS(TM) v0.46 (#76) Stage 1 Registered Report PDF builder (PCI RR).
+"""build_stage1_pdf_v0_46.py -- AIAS(TM) v0.46 (#76) Stage 1 manuscript PDF builder (programme pre-registration).
 
 Compiles osf/v46/stage1/stage1_manuscript_rN.md -> stage1_manuscript_rN.pdf with the house academic
 pipeline (CLAUDE.md, "SSRN paper build": pandoc + xelatex + Carlito, 11pt, letterpaper, 1in margins,
 \\setstretch{1.36}, \\parskip 8pt, \\parindent 0pt, booktabs/caption/float), plus continuous line numbers
-(lineno), which PCI RR asks for so reviewers can cite lines.
+(lineno), so that readers can cite lines.
 
 The manuscript is not changed: its YAML carries only title, author and date; everything else (fonts,
 geometry, packages) is passed here on the pandoc command line and in a generated header file.
@@ -67,7 +67,7 @@ HEADER_TEX = r"""
 \newcommand{\elandscape}{\end{landscape}}
 """
 
-# Layout only (no text changes). The seven-column study design table (PCI RR's required table) is set on a
+# Layout only (no text changes). The seven-column study design table (Section 6) is set on a
 # landscape page in footnotesize; tables whose columns differ much in length get relative widths (pandoc reads
 # them from the dash counts of the separator row).
 LANDSCAPE_SECTIONS = ["## 6. Study design summary table"]
@@ -164,7 +164,7 @@ def build(source: Path, output: Path, keep_temp: bool) -> int:
 
 
 def main() -> int:
-    ap = argparse.ArgumentParser(description="AIAS v0.46 (#76) Stage 1 manuscript PDF (PCI RR; pandoc + xelatex + Carlito)")
+    ap = argparse.ArgumentParser(description="AIAS v0.46 (#76) Stage 1 manuscript PDF (programme pre-registration; pandoc + xelatex + Carlito)")
     ap.add_argument("--source", default=str(DEFAULT_SOURCE))
     ap.add_argument("--output", default=None, help="default: the source name with .pdf")
     ap.add_argument("--keep-temp", action="store_true")

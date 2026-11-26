@@ -65,7 +65,7 @@ STATE_PATH = DATA / "v46_budget_state.json"
 STOPRULE_PATH = DATA / "v46_stoprule.jsonl"
 PANEL_PATH = DATA / "v46_panel_verification.json"
 ANCHOR_PATH = V46 / "anchor" / "osf_anchor_v0_46.json"
-PREREG_TAG = "v0.46-stage1-ipa"   # DECISION: name of the lock tag (IPA replaces the programme's lock; Appendix A)
+PREREG_TAG = "v0.46-stage1-ipa"   # DECISION: name of the lock tag (kept at the programme lock of 2026-11-27; the name does not mean in-principle acceptance; Appendix A)
 
 
 # Verbatim chunks of acquire_v0_45.py (1-based inclusive line ranges) and the only substitutions applied to them.

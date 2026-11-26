@@ -1,4 +1,4 @@
-# v0.46 (proposed) "From named to chosen" — DEVIATIONS
+# v0.46 "From named to chosen" — DEVIATIONS
 
 Entry 0 r2 (final, 2026-11-24), deposited with the Stage 1 manuscript r6. Entries are written ex ante. Entry 0 r1 completed item (a) below; r2 records the author's decisions on items (b) and (c) and how they were applied.
 
