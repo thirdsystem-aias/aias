@@ -1,0 +1,62 @@
+{
+  "_note": "DRAFT, pre-data (Nov 26, 2026; branch aias-3.0-draft in ~/aias; the same bytes sit in the website repo at content/pending/aias-3-0.json on branch site-aias-3.0-draft, local only). Website study page content for the AIAS 3.0 (Coverage) release in the site's format (CLAUDE.md ship step 7): one Studies DATA entry, its SLUGS line, its abstract (content/abstracts.json) and plain summary (content/plain.json), its LEDGER rows and PART_BY_ID line (scripts/methodology_data.py), the lines that keep up with the research, and the Claims Register rows to add. {{L:KEY}} tokens are copied from locked records by papers/aias_3_0/sources_aias3.py; {{P:KEY}} tokens are placeholders mapped in papers/aias_3_0/tokens_aias3.py (filled at the release data lock and the website hand-off). Nothing here is live: not in the boards, not built, not pushed to main.",
+  "slug": "aias-3-0",
+  "slugs_line": "'AIAS 3.0': 'aias-3-0'",
+  "held": false,
+  "studies_entry": {
+    "id": "AIAS 3.0",
+    "date": "{{P:MONTH}}",
+    "type": "Synthesis",
+    "title": "Named in Which Situations",
+    "topic": "Five categories, the newest models, Coverage added",
+    "report": "files/reports/{{P:REPORT_FILE}}",
+    "reportPages": "{{P:REPORT_PAGES}}",
+    "reportCode": "{{P:REPORT_CODE}}",
+    "paper": "files/papers/aias_3_0_release_paper.pdf",
+    "paperPages": "{{P:PAPER_PAGES}}",
+    "found": "{{P:PLAIN_FOUND}}",
+    "short": "{{P:PLAIN_SHORT}}",
+    "ind": ["Headphones", "Skincare", "Cosmetics", "Cars", "Spirits"]
+  },
+  "abstract": "{{P:ABSTRACT_VERBATIM}}",
+  "plain_draft": {
+    "_rule": "content/plain.json: found and short are drawn only from the paper's abstract as published; these drafts are re-derived from it at hand-off and checked against it.",
+    "found": "{{P:REPORT_HEADLINE}}",
+    "short": [
+      "AIAS 3.0 adds a third score, Coverage: whether AI answers name a brand across the buying situations of its category or only in a few, read against how often the brand is named at all. Asked {{L:a.cep_per_cat}} questions per category that name no brand, the newest models' answers gave a Coverage score that did not follow Presence (rank correlation {{L:a.h1.rho}} within category) or Consistency ({{L:a.h2.rho}}).",
+      "{{P:CAL_COMPOSITE_SENTENCE}} {{P:REPORT_HEADLINE}}",
+      "The score depends on which situations are asked. {{P:PRED_SENTENCE}}"
+    ]
+  },
+  "ledger": {
+    "_rule": "scripts/methodology_data.py LEDGER: tests from the deposited verdict files, verdict words unchanged; a new word goes into CLASS. PART_BY_ID gets 'AIAS 3.0': 'coverage'. The release's own verdict files do not exist yet; v1.12 and v1.19 are already in the ledger.",
+    "verdict_files": ["osf/aias_3_0/outputs/aias_3_0_calibration.json", "osf/aias_3_0/outputs/aias_3_0_dissociation.json"],
+    "rows": [
+      {"test": "Release dissociation (Presence, Consistency, Coverage)", "verdict": "{{P:DIS_VERDICT}}"},
+      {"requires": ["RETEST_RUN"], "test": "Coverage retest", "verdict": "{{P:RETEST_SENTENCE}}"}
+    ],
+    "part_by_id_line": "'AIAS 3.0': 'coverage'",
+    "parts_row_change": "('coverage', 'Coverage', 'AIAS 3.0', 'Published', ...) replaces its 'Planned' row only when the release ships"
+  },
+  "page_lines": {
+    "in_short_head": "AIAS 3.0: Coverage added",
+    "report_download": "Report · PDF, {{P:REPORT_PAGES}} pages · {{P:REPORT_CODE}}",
+    "data_line": "Plan, scorer, outputs and deviations record: {{P:DEPOSIT}}, pre-registration {{P:PREREG_TAG}}. Coverage Paper A: osf.io/ec6wh (methodology/v1_12); Paper B: osf.io/ec6wh (methodology/v1_19)."
+  },
+  "keeps_up": {
+    "_rule": "CLAUDE.md step 7 (Nov 11): every page whose wording the release confirms, changes or replaces, words and numbers only from the published paper; claude/messaging-standard.md decides names and status wording. Each changed line gets a Claims Register row; replaced rows are marked Cut.",
+    "pages": [
+      "Home: status line and findings (three published scores instead of two)",
+      "Methodology: 'Where the score stands today', 'What comes next', the Coverage status chip (Planned to Published, AIAS 3.0), the versions list, the glossary entry for Coverage",
+      "The idea, About, the tools, the sample diagnostic: any 'two published scores' line",
+      "claude/messaging-standard.md status line: Coverage published (AIAS 3.0); Sentiment and Grounding planned"
+    ]
+  },
+  "claims_register_rows": [
+    "Studies list entry: title, topic, found (source: paper abstract)",
+    "Study page: In short (source: paper abstract)",
+    "Methodology ledger: the release's verdict rows (source: aias_3_0 outputs)",
+    "Methodology status chip and 'Where the score stands today' (source: paper abstract and Section 5)",
+    "Home status line, if the release changes its wording (keeps-up rule, Nov 11)"
+  ]
+}
