@@ -30,7 +30,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-AIAS_ROOT = Path.home() / "aias"
+AIAS_ROOT = Path(__file__).resolve().parents[2]  # repo root of this checkout (was Path.home() / "aias")
 PAPER_DIR = AIAS_ROOT / "papers" / "aias_1_0"
 FIGS_DIR  = AIAS_ROOT / "reports" / "figs" / "aias_1_0"
 

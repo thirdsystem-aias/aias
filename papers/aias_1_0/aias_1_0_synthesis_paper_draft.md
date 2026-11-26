@@ -50,8 +50,14 @@ header-includes:
 Correspondence: \texttt{pablou@pablou.com} · \texttt{pablou.com}\\
 ORCID: \href{https://orcid.org/0009-0003-8968-9990}{0009-0003-8968-9990}\\
 \vspace{2cm}
-May 2026
+May 2026 · revised November 25, 2026
 \end{center}
+\vspace{1.2cm}
+{\small\raggedright
+\textbf{Notice of revision (November 25, 2026).} This revision changes only the Declarations: the declaration of interest now states the ties between three phase registries and the author's employer group as the phase records state them, and the statement on the use of AI tools is added. All other text, data, numbers and figures are as first posted on May 23, 2026.
+
+\vspace{0.6em}
+\textbf{Erratum.} The paper describes parts of phases v0.16 to v0.19 wrongly, and it presents v0.21's H\_IdentityLoad\_Direct CONFIRMED as a confirmatory result although the test was specified after the v0.21 data had been scored; that verdict is retrospective and exploratory. The corrections are listed in the erratum notes deposited at osf.io/ec6wh/aias\_1\_0/paper/ (ERRATUM\_2026-11-12.md and ERRATUM\_2026-11-25.md). The data, scoring, numbers and verdicts are unchanged.\par}
 \end{titlepage}
 
 # Abstract
@@ -264,7 +270,7 @@ Sharp, B., & Romaniuk, J. (2021). *How Brands Grow Part 2: Including Emerging Ma
 
 # Declarations
 
-**Declaration of interest.** The author is employed by Samsung Electronics America (Director, Corporate Brand Creative and Governance). The AIAS™ Presence Measurement Protocol and the synthesis work reported here are the author's independent academic research, conducted outside the scope of employment, in the author's role as faculty at the School of Visual Arts MPS Branding Program and founder of Third System. Samsung had no role in the design, execution, analysis, or interpretation of this work. Each phase in the v0.16–v0.21 corpus included a pre-acquisition COI screen confirming no brand in the phase panel is affiliated with Samsung Electronics America; the synthesis introduces no new panel and inherits the per-phase COI screens as documented at each phase's `osf.io/ec6wh/v<NN>/` deposit.
+**Declaration of interest.** The author is employed by Samsung Electronics America (Director, Corporate Brand Creative and Governance). The AIAS™ Presence Measurement Protocol and the synthesis work reported here are the author's independent academic research, conducted outside the scope of employment, in the author's role as faculty at the School of Visual Arts MPS Branding Program and founder of Third System. Samsung had no role in the design, execution, analysis, or interpretation of this work. The synthesis introduces no new panel; it uses the phase registries of v0.16–v0.21. As first posted, this declaration stated that each phase's COI screen confirmed that no brand in the phase panel is affiliated with Samsung; that statement was wrong. Three registries include brands with ties to the Samsung group, as the phases' own records state. *Headphones (v0.19).* AKG was replaced by Denon in the v0.19 headphones registry before the pre-registration lock, to avoid the appearance of a conflict of interest, because AKG belongs to Harman International, a subsidiary of Samsung Electronics since March 2017 (the acquisition was agreed in November 2016). Denon has itself been owned by Harman International, a wholly owned subsidiary of Samsung Electronics, since September 23, 2025, when Harman completed its acquisition of Sound United from Masimo (HARMAN press release, Business Wire, September 23, 2025). The v0.19 headphones registry therefore includes one Samsung-group brand. The substitution did not achieve its purpose, and this was not noticed until November 10, 2026 (osf.io/ec6wh/v19/, ERRATUM\_COI\_2026-11-24.md). *Fragrance (v0.18).* The v0.18 records hold no brand-level conflict-of-interest screen. A screen of the 24 v0.18 brands, recorded in v0.63 DEVIATIONS Entry 0, item 5 (November 11, 2026), found one tie. Ellis Brooklyn (Cell B) was launched exclusively in Korea by Samsung C&T's fashion division through LABEL C (Asia Economy, December 28, 2022). Samsung C&T's fashion division later withdrew from LABEL C (Dealsite, March 17, 2025); whether the distribution continued is not established. This is a distribution relationship, not ownership. No tie was found for the other 23 brands in the sources checked, which is not a finding that they are unaffiliated (osf.io/ec6wh/v18/, ERRATUM\_COI\_2026-11-11.md). *Kitchenware (v0.17).* Hestan (American cell) also sells home appliances, including ranges, wall ovens, refrigeration and ventilation (Hestan, home.hestan.com and hestanappliances.com, read November 11, 2026). Home appliances are a Samsung Electronics product category. This was not noticed until November 10, 2026 (osf.io/ec6wh/v17/, ERRATUM\_COI\_2026-11-11.md). None of these ties changes a result reported here. Apart from the AKG substitution, the author's affiliation played no role in registry construction, scoring, or the resulting verdicts.
 
 **Funder.** Self-funded.
 
@@ -274,3 +280,6 @@ Sharp, B., & Romaniuk, J. (2021). *How Brands Grow Part 2: Including Emerging Ma
 
 **Trademark notice.** AIAS™ and Third System™ are trademarks of the research program.
 
+## Use of AI tools {-}
+
+During the preparation of this work the author used AI tools (Anthropic's Claude) to assist with study design, analysis and writing. The author reviewed and edited all content and takes full responsibility for it.
