@@ -50,7 +50,8 @@ INPUTS = {
         "pablo": "new pre-registration (his go on scope: panel N3 vs AIAS 2.0 legacy set, whether a Coverage retest "
                  "wave is part of it, how the predictive leg is reported)",
         "earliest": "lock about 24 h after he receives the draft; it must lock before the AIAS 6.0 Preview scoring "
-                    "run (data lock Fri 2026-12-11) if the release reads the Preview's Coverage tests blind",
+                    "run (data lock the day v1.14 Stage 2 exists, ~Fri 2026-12-04 to Sat 12/5) if the release reads the Preview's "
+                    "Coverage tests blind",
     },
     "I1_calibration": {
         "what": "Two -> three-score calibration (the N -> N+1 step, as v1.9 did for two scores): Cov* scale and "
@@ -72,7 +73,7 @@ INPUTS = {
         "prereg": "NOT PRE-REGISTERED (to be fixed in I0); the AIAS 6.0 Preview (tag aias-6-0-preview-prereg-r1) "
                   "already locks the pairwise and all-earlier-parts tests that include Coverage, on t4",
         "pablo": "inside I0",
-        "earliest": "same day as I0's lock on t4 data alone; Fri 2026-12-11 if it reads the Preview's outputs",
+        "earliest": "same day as I0's lock on t4 data alone; ~Fri 2026-12-04 to Sat 12/5 if it reads the Preview's outputs",
     },
     "I3_preview_outputs": {
         "what": "AIAS 6.0 Preview scorer outputs (results/gates/inputs JSON), with the Coverage pairs and its "
@@ -81,8 +82,9 @@ INPUTS = {
         "step": "score_aias_6_0_preview.py --run, once, at the Preview data lock",
         "prereg": "LOCKED (aias-6-0-preview-prereg-r1, Nov 11, 2026)",
         "pablo": "no",
-        "earliest": "Fri 2026-12-11 (Preview data lock: after v1.14 Stage 2 if it exists by then, else Dec 11 with "
-                    "Stage 2 by addendum; control panel, Pablo Tue 11/24, 11:15 pm); public Tue 2026-12-15",
+        "earliest": "~Fri 2026-12-04 to Sat 12/5 (Preview data lock the day v1.14 Stage 2 exists; control chat, "
+                    "Pablo Thu 11/26, 7:13 am; was Fri 12/11); public ~Thu 2026-12-10 (Pablo Thu 11/26, 7:39 am; "
+                    "was Tue 12/15)",
     },
     "I4_cov_retest": {
         "what": "OPTIONAL: a second Coverage wave (v1.12's 75 probes re-asked to panel N3) for the temporal "
