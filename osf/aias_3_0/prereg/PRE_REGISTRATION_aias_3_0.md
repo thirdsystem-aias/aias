@@ -154,7 +154,7 @@ v1.9 adopted nothing without a blind confirmation wave (t3). Coverage has no sec
 
 **Verdict.** CONFIRMED iff R_adj ≤ 0.30; FALSIFIED iff R_adj ≥ 0.50; MARGINAL otherwise; UNDETERMINED below the n floor (§2). (`joint.statistic` = R_adj; `joint.n` = n; DIS_JOINT, DIS_N.)
 
-**Precision.** Not simulated for j = 2 at n ≈ 47. The nearest record is the Preview's synthetic note (`osf/aias_6_0_preview/prereg/precision_aias_6_0_preview.json`, tag `aias-6-0-preview-prereg-r1`; five predecessors, five categories): with no true overlap, CONFIRMED with probability 0.821 at n = 40 and 0.903 at n = 55. With two predecessors the adjustment charges less, so these are conservative for j = 2 `[OPEN: run a synthetic-only precision note for j = 2 before the lock, or lock without it; §17, choice 4]`.
+**Precision.** A synthetic-only note (`prereg/precision_aias_3_0.json`, written by `prereg/precision_aias_3_0.py`: the Preview's generator at tag `aias-6-0-preview-prereg-r1`, method unchanged, with j = 2, five categories, 4,000 replications per cell, seed 330040; no program data) gives, with no true overlap and these bands (0.30/0.50), CONFIRMED with probability 0.912 at n = 40 and 0.945 at n = 47, and FALSIFIED with probability 0.002 and 0.0003. The json also holds true R² = 0.04, 0.09, 0.25 and 0.49 and the 0.50/0.70 bands.
 
 ### 5.3 Pairwise rows on U3 — SECONDARY (they never set the class alone)
 
@@ -346,7 +346,7 @@ During the preparation of this work the author used AI tools (Anthropic's Claude
 1. **Lock time.** 24 hours after this draft reaches him (expected Fri 2026-11-27 morning → lock Sat 2026-11-28 morning), unless he holds it. **Default: as stated.**
 2. **A passing composite.** Not adopted in 3.0, reported as a candidate (§4.6) (**default**); or adopted as provisional with "one wave" on every use.
 3. **The calibration's reliability criterion.** Split-half over the two locked situation halves (**default**, §4.5); or no selection at all (report the eight rows only).
-4. **Precision note for H3_Cov_Joint.** Run a synthetic-only note (j = 2, n = 40 and 47, five categories, Preview's generator and bands) before the lock and add it as `prereg/precision_aias_3_0.json` (**default**; adds about one session and moves the lock only if it is not ready by the 24 hours) or lock without it.
+4. **Precision note for H3_Cov_Joint.** Run a synthetic-only note (j = 2, n = 40 and 47, five categories, Preview's generator and bands) before the lock and add it as `prereg/precision_aias_3_0.json` (**default**; adds about one session and moves the lock only if it is not ready by the 24 hours) or lock without it. **Done 2026-11-27 (default): `prereg/precision_aias_3_0.json`, reported in §5.2.**
 5. **Minimum n of the predictive Coverage test.** 30 units, v0.43's floor for its rated-only tests (**default**); or v0.43's general floor of 60, which Cov\*'s 51 rated units cannot meet (the test would be UNDETERMINED by construction).
 6. **Tier of H_Pred_Coverage_Confirm in v0.43.** SECONDARY, like H_Pred_Presence_NewPanel on the same panel (**default**); or PRIMARY.
 7. **Erratum notes for v1.12 and v1.19.** For t4, a dated erratum note and a corrections-log row followed the sensitivity (Nov 25). Here the default is: decide after S-Q is computed; if any published Coverage value or brand row is wrong under S-Q, a dated OSF note beside each paper and a corrections-log row the same day (S&P rule 2), papers unchanged.

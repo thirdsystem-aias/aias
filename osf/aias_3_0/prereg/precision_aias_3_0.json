@@ -1,0 +1,108 @@
+{
+ "what": "synthetic operating characteristics of H3_Cov_Joint, j = 2 (no program data)",
+ "seed": 330040,
+ "reps_per_cell": 4000,
+ "categories": 5,
+ "rows": [
+  {
+   "n": 40,
+   "k_predecessors": 2,
+   "true_R2": 0.0,
+   "P_CONFIRMED_bands_030_050": 0.91225,
+   "P_FALSIFIED_bands_030_050": 0.00225,
+   "P_CONFIRMED_bands_050_070": 0.99775,
+   "P_FALSIFIED_bands_050_070": 0.0,
+   "median_R_adj": 0.0
+  },
+  {
+   "n": 40,
+   "k_predecessors": 2,
+   "true_R2": 0.04,
+   "P_CONFIRMED_bands_030_050": 0.80425,
+   "P_FALSIFIED_bands_030_050": 0.0185,
+   "P_CONFIRMED_bands_050_070": 0.9815,
+   "P_FALSIFIED_bands_050_070": 0.0,
+   "median_R_adj": 0.059432533076611956
+  },
+  {
+   "n": 40,
+   "k_predecessors": 2,
+   "true_R2": 0.09,
+   "P_CONFIRMED_bands_030_050": 0.66075,
+   "P_FALSIFIED_bands_030_050": 0.0475,
+   "P_CONFIRMED_bands_050_070": 0.9525,
+   "P_FALSIFIED_bands_050_070": 0.00025,
+   "median_R_adj": 0.21142758115723084
+  },
+  {
+   "n": 40,
+   "k_predecessors": 2,
+   "true_R2": 0.25,
+   "P_CONFIRMED_bands_030_050": 0.24325,
+   "P_FALSIFIED_bands_030_050": 0.27625,
+   "P_CONFIRMED_bands_050_070": 0.72375,
+   "P_FALSIFIED_bands_050_070": 0.013,
+   "median_R_adj": 0.41534602586563024
+  },
+  {
+   "n": 40,
+   "k_predecessors": 2,
+   "true_R2": 0.49,
+   "P_CONFIRMED_bands_030_050": 0.021,
+   "P_FALSIFIED_bands_030_050": 0.7905,
+   "P_CONFIRMED_bands_050_070": 0.2095,
+   "P_FALSIFIED_bands_050_070": 0.17625,
+   "median_R_adj": 0.6016098746134529
+  },
+  {
+   "n": 47,
+   "k_predecessors": 2,
+   "true_R2": 0.0,
+   "P_CONFIRMED_bands_030_050": 0.9445,
+   "P_FALSIFIED_bands_030_050": 0.00025,
+   "P_CONFIRMED_bands_050_070": 0.99975,
+   "P_FALSIFIED_bands_050_070": 0.0,
+   "median_R_adj": 0.0
+  },
+  {
+   "n": 47,
+   "k_predecessors": 2,
+   "true_R2": 0.04,
+   "P_CONFIRMED_bands_030_050": 0.8315,
+   "P_FALSIFIED_bands_030_050": 0.01075,
+   "P_CONFIRMED_bands_050_070": 0.98925,
+   "P_FALSIFIED_bands_050_070": 0.0,
+   "median_R_adj": 0.1038072487700044
+  },
+  {
+   "n": 47,
+   "k_predecessors": 2,
+   "true_R2": 0.09,
+   "P_CONFIRMED_bands_030_050": 0.67,
+   "P_FALSIFIED_bands_030_050": 0.03825,
+   "P_CONFIRMED_bands_050_070": 0.96175,
+   "P_FALSIFIED_bands_050_070": 0.0005,
+   "median_R_adj": 0.21998405746418037
+  },
+  {
+   "n": 47,
+   "k_predecessors": 2,
+   "true_R2": 0.25,
+   "P_CONFIRMED_bands_030_050": 0.20525,
+   "P_FALSIFIED_bands_030_050": 0.2835,
+   "P_CONFIRMED_bands_050_070": 0.7165,
+   "P_FALSIFIED_bands_050_070": 0.008,
+   "median_R_adj": 0.42552704904658667
+  },
+  {
+   "n": 47,
+   "k_predecessors": 2,
+   "true_R2": 0.49,
+   "P_CONFIRMED_bands_030_050": 0.0075,
+   "P_FALSIFIED_bands_030_050": 0.84175,
+   "P_CONFIRMED_bands_050_070": 0.15825,
+   "P_FALSIFIED_bands_050_070": 0.18075,
+   "median_R_adj": 0.6183917968707292
+  }
+ ]
+}
