@@ -61,20 +61,39 @@ def clean(ax, left=False):
     ax.tick_params(axis="both", labelsize=7.5, length=0)
 
 
-def hdots(ax, rows, xlim, refs, xlabel, fmt):
+def crosses(ax, text, xs, pad=0.004):
+    """True when the rendered text's horizontal extent contains any of the data x positions xs."""
+    ax.figure.canvas.draw()
+    bb = text.get_window_extent(ax.figure.canvas.get_renderer()).transformed(ax.transData.inverted())
+    span = ax.get_xlim()[1] - ax.get_xlim()[0]
+    return any(bb.x0 - pad * span <= xr <= bb.x1 + pad * span for xr in xs)
+
+
+def hdots(ax, rows, xlim, refs, xlabel, fmt, fix=False):
     """rows: (label, value_key_base, highlighted)."""
     n = len(rows)
+    ax.set_xlim(*xlim)
+    ax.set_ylim(-0.6, n + 0.7)
     for i, (lab, base, hi) in enumerate(rows):
         y = n - 1 - i
         x = v(base[0])
         ax.plot(xlim, [y, y], color="#EFEFEF", linewidth=0.6, zorder=0)
         ax.scatter([x], [y], s=52, zorder=3, color=INDIGO if hi else "white", edgecolor=INDIGO if hi else GREY,
                    linewidth=1.3)
-        ax.text(x + (xlim[1] - xlim[0]) * 0.015, y + 0.12, fmt(base), fontsize=7, color=INK if hi else GREY, ha="left", va="bottom")
+        off = (xlim[1] - xlim[0]) * 0.015
+        t = ax.text(x + off, y + 0.12, fmt(base), fontsize=7, color=INK if hi else GREY, ha="left", va="bottom")
+        if fix and crosses(ax, t, [r[0] for r in refs]):      # r2: never let a value label sit on a reference line
+            t.set_ha("right")
+            t.set_x(x - off)
     for xr, lab in refs:
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
-        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
-                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
+        # r2: reference-line label sits above the plot area, clear of the dots and their labels
+        if fix:
+            ax.text(xr, 1.0, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                    transform=ax.get_xaxis_transform(), zorder=4)
+        else:
+            ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                    bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
     ax.set_yticks(range(n)[::-1])
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(*xlim)
@@ -96,7 +115,7 @@ def r1():
             ("Banks, older models", ("sensitivity.S-Arm.legacy.H_Reinforce.bank.rho",), False),
             ("Banks, newest models", ("sensitivity.S-Arm.current.H_Reinforce.bank.rho",), False)]
     hdots(ax, rows, (0, 1), [(v("thresholds.reinforce_rho"), "pass bar " + d("thresholds.reinforce_rho"))],
-          "Spearman rank correlation (1 = same order as the market)", lambda b: d(b[0]))
+          "Spearman rank correlation (1 = same order as the market)", lambda b: d(b[0]), fix=True)
     save(fig, "report_fig_01_share_order")
 
 
@@ -115,6 +134,8 @@ def r2():
             ("JPMorgan Chase, newest models", "sensitivity.S-Arm.current.H_Amplify.bank", "ceiling.specs.current.bank")]
     xlim = (0, 1.6)
     n = len(rows)
+    ax.set_xlim(*xlim)
+    ax.set_ylim(-0.6, n + 0.7)
     for i, (lab, base, cb) in enumerate(rows):
         assert v(base + ".k") == v(cb + ".k") and v(base + ".n") == v(cb + ".n"), (base, cb)
         y = n - 1 - i
@@ -125,12 +146,18 @@ def r2():
         ax.plot([c, c], [y - 0.28, y + 0.28], color=INDIGO if hi else GREY, linewidth=1.8, zorder=2)
         ax.scatter([x], [y], s=52, zorder=3, color="white", edgecolor=INDIGO if hi else GREY, linewidth=1.3)
         ax.text(x, y + 0.3, d(base + ".ratio"), fontsize=7, color=INK if hi else GREY, ha="center", va="bottom")
-        ax.text(c + 0.02, y, "most " + d(cb + ".ceiling_ratio"), fontsize=7, color=INDIGO if hi else GREY,
-                ha="left", va="center", bbox=dict(facecolor="white", edgecolor="none", pad=0.3), zorder=4)
+        mt = ax.text(c + 0.02, y, "most " + d(cb + ".ceiling_ratio"), fontsize=7, color=INDIGO if hi else GREY,
+                     ha="left", va="center", zorder=4)
+        refs2 = (1.0, v("thresholds.amplify_ratio"))
+        for _ in range(2):   # r2: keep the label off the reference lines: start it just past the line it would cross
+            hit = [xr for xr in refs2 if xr >= c and crosses(ax, mt, (xr,))]
+            if not hit:
+                break
+            mt.set_x(max(hit) + 0.02)
     for xr, lab in ((1.0, "same as market"), (v("thresholds.amplify_ratio"), "amplified " + d("thresholds.amplify_ratio"))):
         ax.axvline(xr, color=GREY, linewidth=0.8, linestyle=(0, (3, 2)))
-        ax.text(xr, n + 0.1, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
-                bbox=dict(facecolor="white", edgecolor="none", pad=0.4), zorder=4)
+        ax.text(xr, 1.0, lab, fontsize=6.8, color=GREY, ha="center", va="bottom",
+                transform=ax.get_xaxis_transform(), zorder=4)
     ax.set_yticks(range(n)[::-1])
     ax.set_yticklabels([r[0] for r in rows], fontsize=7.8)
     ax.set_xlim(*xlim)
@@ -225,7 +252,7 @@ def r6():
              f"{d('H_Search.s0_only_flagged')} of {d('H_Search.paired_cells')} cells")]
     for i, (k, n, txt) in enumerate(rows):
         y = 2 - i
-        ax.barh(y, k / n, height=0.5, color=LIGHT)
+        ax.barh(y, k / n, height=0.5, color=LIGHT if i == 0 else INDIGO)   # r2: the changed cells are the insight
         ax.text(k / n + 0.01, y, txt, fontsize=7.5, va="center", color=INK)
     ax.set_yticks([2, 1, 0])
     ax.set_yticklabels(labs, fontsize=7.6)

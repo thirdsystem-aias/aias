@@ -81,7 +81,7 @@ def build(output: Path, code: str) -> dict:
 
     fd, base_pdf = tempfile.mkstemp(suffix=".pdf", prefix="v40_r1_base_")
     os.close(fd)
-    c = Canvas(base_pdf, pagesize=(t.page_w, t.page_h))
+    c = Canvas(base_pdf, pagesize=(t.page_w, t.page_h), initialFontName=L.font_name("Regular"))
     c.setTitle(f"{C.TITLE} — AIAS™ v0.40")
     c.setAuthor("Pablo Ulpiano González Castro")
     c.setSubject(RC.pdf_subject(code, PDF_SUBJECT))
@@ -199,6 +199,7 @@ def build(output: Path, code: str) -> dict:
     output.parent.mkdir(parents=True, exist_ok=True)
     L.overlay_charts(base_pdf, slots, output)
     os.unlink(base_pdf)
+    _drop_unused_helvetica(output)
     pf = RC.preflight(output, code, C.TITLE, t.catalogue, t.website)
     sizes = SP.check_pdf_min_size(output)
     budget = []
@@ -210,6 +211,31 @@ def build(output: Path, code: str) -> dict:
         budget.append({**p, "budget": chk["budget"], "ok": chk["ok"]})
     return {"output": str(output), "pages": len(pages), "budget": budget, "preflight": pf, "min_size": sizes,
             "value_keys": sorted(USED_KEYS)}
+
+
+def _drop_unused_helvetica(pdf: Path) -> None:
+    """r2: reportlab leaves an unembedded Helvetica font resource on each page, selected only by a no-op
+    "BT /Fn size Tf leading TL ET" and never used to show text. Point that resource at an embedded font of the
+    same page so every font in the file is embedded. The page content is not touched."""
+    import re
+    from pypdf import PdfReader, PdfWriter
+    from pypdf.generic import NameObject
+    w = PdfWriter(clone_from=PdfReader(str(pdf)))
+    for pg in w.pages:
+        fonts = pg["/Resources"].get("/Font")
+        if fonts is None:
+            continue
+        fonts = fonts.get_object()
+        content = pg.get_contents().get_data().decode("latin-1") if pg.get_contents() else ""
+        helv = [k for k in fonts if fonts[k].get_object().get("/BaseFont") == "/Helvetica"]
+        good = [k for k in fonts if k not in helv]
+        for k in helv:
+            rest = re.sub(r"BT\s+" + re.escape(k) + r"\s+[\d.]+\s+Tf\s+[\d.]+\s+TL\s+ET", "", content)
+            if re.search(re.escape(k) + r"\s", rest) or not good:
+                raise RuntimeError(f"Helvetica {k} is used to show text on a page; not replacing it")
+            fonts[NameObject(k)] = fonts.raw_get(good[0])
+    with open(pdf, "wb") as f:
+        w.write(f)
 
 
 def main():
