@@ -1,0 +1,46 @@
+{
+  "study": "AIAS 3.0 (Coverage) release pre-registration",
+  "tag": "aias-3-0-prereg-r1",
+  "tag_object": "90128e8475c7bb33f3fdbc64e30684f48e78d0b1",
+  "commit": "2545427655a31d0a82623101e7bb5d8d3d34a1ea",
+  "tree": "5b8b2b8d098c7aa3fb7338fea9ad1b2de0f84b65",
+  "branch": "aias-3.0-prereg",
+  "branch_on_origin": "2545427655a31d0a82623101e7bb5d8d3d34a1ea\trefs/heads/aias-3.0-prereg",
+  "remote_tag_refs": "90128e8475c7bb33f3fdbc64e30684f48e78d0b1\trefs/tags/aias-3-0-prereg-r1\n2545427655a31d0a82623101e7bb5d8d3d34a1ea\trefs/tags/aias-3-0-prereg-r1^{}",
+  "lock_time": "Fri 2026-11-27, 10:40 AM CT",
+  "lock_time_utc": "2026-11-27T16:40:04Z",
+  "go": "Pablo, Fri 2026-11-27 10:29 am CT, control chat: \"Can do 3.0 now?\" (before the 24 hours of section 17 choice 1)",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "osf_deposit": "https://osf.io/ec6wh/ osfstorage aias_3_0/ (prereg/, anchor/) and v43/prereg/AMENDMENT_v0_43_coverage.md",
+  "files": [
+    {
+      "path": "osf/aias_3_0/anchor/DEVIATIONS.md",
+      "sha256": "e38d0dceaf9bba1bc752dbc541e601331e1a5e1cc4537585110f452a8300f144",
+      "git_blob": "637002fb4cbbbbf4b16d104a0ea2af2f493adb31"
+    },
+    {
+      "path": "osf/aias_3_0/prereg/AMENDMENT_v0_43_coverage.md",
+      "sha256": "6f205ab13fb4732e8c7a355ae7dca840ff2e98b107e7c86c2bec000ea6fe56e8",
+      "git_blob": "3d3bc2aebbafec29a4221726c5ba221fa79e3ba0"
+    },
+    {
+      "path": "osf/aias_3_0/prereg/PRE_REGISTRATION_aias_3_0.md",
+      "sha256": "1807c113aa90a73b2c155faac0e34afe2a6e71539c8110a0a44365d2dcde61c9",
+      "git_blob": "22a193547b117195326b30f0f5e73e3f930e83ba"
+    },
+    {
+      "path": "osf/aias_3_0/prereg/precision_aias_3_0.json",
+      "sha256": "792718e38cf818c242e0e050ea53db8a50f0d249daa4f79a4c7278b7cfc2985c",
+      "git_blob": "7d10afe04a104864dc2485a46ff8d6d4510b7c28"
+    },
+    {
+      "path": "osf/aias_3_0/prereg/precision_aias_3_0.py",
+      "sha256": "48891af51a45047c2cd4571d20e030de19965905646044f56be506e7b126488d",
+      "git_blob": "06bf1f115a89ca8346ba01ec9db5267aeb40f49b"
+    },
+    {
+      "path": "osf/aias_3_0/prereg/LOCK_MANIFEST_aias_3_0.sha256",
+      "git_blob": "fd73bd9622b62c5b9e93da3f2e6ce02562a48715"
+    }
+  ]
+}
