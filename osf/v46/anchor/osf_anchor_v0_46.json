@@ -1,0 +1,234 @@
+{
+  "study": "v0.46 (#76) From named to chosen: Stage 1 manuscript r10, program pre-registration",
+  "revision": "r10 (commit 0fc1da719abd7d13620939b635dae27e30cf2221)",
+  "route": "ordinary program pre-registration (Pablo, Thu 2026-11-26 8:36 am CT; PCI RR desk rejection 8:23 am; option A 11:24 am); the tag name keeps 'ipa' because the locked code expects it, not in-principle acceptance",
+  "tag": "v0.46-stage1-ipa",
+  "tag_object": "8421fb637f5b928b443b432a2d4a34ffcbe29444",
+  "commit": "0f63f07b0f20d8d0ca6894a1a221e289632f84de",
+  "tree": "efc95d6d1952141d78d3ec99dee7a6d826907d89",
+  "branch": "v0.46-stage1",
+  "branch_on_origin": "0f63f07b0f20d8d0ca6894a1a221e289632f84de\trefs/heads/v0.46-stage1",
+  "tagger_date": "2026-11-27T08:41:26-06:00",
+  "remote_tag_refs": "8421fb637f5b928b443b432a2d4a34ffcbe29444\trefs/tags/v0.46-stage1-ipa\n0f63f07b0f20d8d0ca6894a1a221e289632f84de\trefs/tags/v0.46-stage1-ipa^{}",
+  "recorded_utc": "2026-11-27T14:49:16Z",
+  "repository": "https://github.com/thirdsystem-aias/aias.git",
+  "manuscript": {
+    "md": {
+      "path": "osf/v46/stage1/stage1_manuscript_r10.md",
+      "sha256": "7e57cf902f830a624e3947b99dcbc78dc960d3c733e7e2de8e0a8d5f398204ce"
+    },
+    "pdf": {
+      "path": "osf/v46/stage1/stage1_manuscript_r10.pdf",
+      "sha256": "13f91ca1784288920bb16ae6aa1b9f2270ff41b44bef8f9f6a1939e811de53d8"
+    }
+  },
+  "osf_deposit": "https://osf.io/ec6wh/ (osfstorage: v46-stage1-lock/, staged from tag v0.46-stage1-ipa plus the r6 dependencies; this anchor file added to v46-stage1-lock/osf/v46/anchor after this record)",
+  "osf_verification": {
+    "remote_path": "v46-stage1-lock",
+    "status": "ok",
+    "finished_utc": "2026-11-27T14:47:06+00:00",
+    "verification": {
+      "match": 55,
+      "mismatch": 0,
+      "missing": 0,
+      "other": 0,
+      "local_files": 55,
+      "failed_uploads": []
+    },
+    "receipt": "_worktrees/_runner_tmp/r1127_v046_lock/receipts/v046_main.json"
+  },
+  "locked_files": {
+    "osf/v46/DEVIATIONS.md": {
+      "sha256": "83643d161983e12e019d17cf14786500a7acae98c4bf17a2ac43b28dcab34eec",
+      "git_blob": "2415991b5a1839e4b12c30736d329d422d0714ca"
+    },
+    "osf/v46/data/ai_checks_raw_v0_46.jsonl": {
+      "sha256": "85f1eef74dabc757d6d0c0bb93b1283a39190375d9acf0c186fc87bec1a4ba9e",
+      "git_blob": "50ae7f97dcaedb7ccbb6f49bcbd2105215f45b7a"
+    },
+    "osf/v46/data/coi_screen_v0_46_r1.sha256": {
+      "sha256": "90c11ba164b49e184298f72cbd5ea37836cdd62d7c2b874a07dd8ed14b4a4fcd",
+      "git_blob": "3d3a4d8d5f7821ea74afcea9f0404e8fe885579b"
+    },
+    "osf/v46/data/coi_screen_v0_46_r1.txt": {
+      "sha256": "65a752eb2c8ed66eed4f57084217e6b7a4bd696e88a7919b0576f414c36c26d2",
+      "git_blob": "e3d256bb84f27112fb6d6d7a7a723fc4635d2a9a"
+    },
+    "osf/v46/prereg/LOCK_MANIFEST_v0_46.sha256": {
+      "sha256": "4873e2c18048afaa5dfb339b8188f261715d94c1c398f8afaec7453b7e23f25c",
+      "git_blob": "49e1009b5edb301e0862caf2b37d417035f4a46e"
+    },
+    "osf/v46/prereg/PRE_REGISTRATION_v0_46.md": {
+      "sha256": "0460e35ae48c60ec6a1286869e3e6709fa731346336fa501495e771c60626e2b",
+      "git_blob": "ddab96df55b6fec8f6e919601df98e47c6ddaede"
+    },
+    "osf/v46/prereg/code_parity_v0_46.json": {
+      "sha256": "142d8db1f53355519ddc3233ecefac5a4228c42e078a7d9a1125d14c4c1937aa",
+      "git_blob": "9002feb795bafc6189b4c9432b67fedbc60484b2"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_r0.json": {
+      "sha256": "14bc64934528986d68a60dcc7447b2524ee13ccbc6585236747aa7ae9db177e2",
+      "git_blob": "9f7444638d268382d214b0105d7c5537119f5ed0"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_r0.txt": {
+      "sha256": "a4ecc84bd82590d87c68d49669db4eba1aeb7a986c32a449d494e636a6d599c3",
+      "git_blob": "d38d1b6631a56a29987c5549a08128151187f3d8"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_r1.json": {
+      "sha256": "4350e40a94d5af835809e898b36ac67cc21031386aff3849242d1dc9dc740717",
+      "git_blob": "2e7b9feadc81ab7edc3efc810ca5ff4f2196a179"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_r1.txt": {
+      "sha256": "1bc01eff89219b1ea989eecbb18181b9746c13ffc64ba06e902615526ef72029",
+      "git_blob": "b1ed78b21e1b724f0f887478db7f31241b70dc76"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_stage1_r1.json": {
+      "sha256": "29e41573a4ac1e3f4446577d24219a03de57148f4aa2dc42aa76332d6e12b91d",
+      "git_blob": "c4bc85847c56b3c69c1098a339c76a77ace68cd3"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_stage1_r1.txt": {
+      "sha256": "60e5b1fdae922204dd2221de8450b0a3846d8a79b40472b74bc8bb01408df690",
+      "git_blob": "7d7b525fd888133a1188ee420407c2ff0c803f93"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_stage1_r2.json": {
+      "sha256": "8c8fa5d1ecd3fa074350606b4f816402554ef40b134ef212851a77df54776e2c",
+      "git_blob": "dffe1201b67aebf4e2623f1f3233a1d3ddc0b3c0"
+    },
+    "osf/v46/prereg/cost_estimate_v0_46_stage1_r2.txt": {
+      "sha256": "8cab0b9e2dbf634fcaa4825b6cb513a12876b2e0cea62f73b6b896daa4ccfdfc",
+      "git_blob": "307f24a74bf8e9cbbc49d2942b3eca562be9b974"
+    },
+    "osf/v46/prereg/d7_fisker_v0_46.json": {
+      "sha256": "bd2a7b2bee2bbe1b7ff38be2adec8839f2fab0d886718a8533409b7e0ea9f353",
+      "git_blob": "1e314f9e7d4ca0982b126b93f6542ea964f21b74"
+    },
+    "osf/v46/prereg/p1_quote_check_v0_46.json": {
+      "sha256": "01ee15f25fad7e21f53c49ef435f7ec1f267cce73a1733635fafcc34d14e25e0",
+      "git_blob": "1944202474121274a09fd1ad69e296a55d0356ce"
+    },
+    "osf/v46/prereg/power_analysis_v0_46_stage1_r1.json": {
+      "sha256": "9012af5f26e9c4bf03df8dbf4f9e651a4077ee49e63a71c8bed087b675002710",
+      "git_blob": "4f5f0dfa50f84024435f8d88b51118d90ea0a0c9"
+    },
+    "osf/v46/prereg/power_analysis_v0_46_stage1_r1.txt": {
+      "sha256": "e96fd3cc9190235b36b499b3870ba417b9d1efc0ba83da2250cc1e6c72fbb85d",
+      "git_blob": "0bee0826dea908c7b92ee2ae906dcb280b129be9"
+    },
+    "osf/v46/prereg/power_analysis_v0_46_stage1_r2.json": {
+      "sha256": "571e8e80e81487c77487b34519845e7c8e4981226a5eec737132af7b9eb90bcc",
+      "git_blob": "4cb5912249a183c2ab85bd520548fb381e19da0d"
+    },
+    "osf/v46/prereg/power_analysis_v0_46_stage1_r2.txt": {
+      "sha256": "ae5d9babafba5341a2afadeead92c61dc2cc460eee9ef9636da533c26b426e1f",
+      "git_blob": "e433ede562513c4bc10eba34285740781a6f958c"
+    },
+    "osf/v46/prereg/probes_v0_46.jsonl": {
+      "sha256": "1b6a4bc9fff4b3cff9befd9e4b302fd0eca363e7e9e640b061f717d01db30e01",
+      "git_blob": "472679bce36d3b9e35dbd8efc6ef22823d66fcea"
+    },
+    "osf/v46/prereg/probes_v0_46.sha256": {
+      "sha256": "a475b95e3f3a47c7af01b4752ba010075f1be402c0483dd5f04ce4ed960d90fb",
+      "git_blob": "fa1ed591e7656794f5371956dfcad4d3152b78e5"
+    },
+    "osf/v46/prereg/vendor_checks_v0_46_lock.txt": {
+      "sha256": "370d14b63b20c3128e4392dad47cabbc24868711893de0400812e8f75681641b",
+      "git_blob": "11255a7bce07ccf08a7335d5911ca20aa369c613"
+    },
+    "osf/v46/scripts/acquire_v0_46.py": {
+      "sha256": "32be70ff610034996a26cacc059fc930ddf8e934dfec2f41b521e94a3605fc6e",
+      "git_blob": "38f5b47f99a551399868c7fcc6255b0c8392ccf9"
+    },
+    "osf/v46/scripts/ai_checks_v0_46.py": {
+      "sha256": "1a61e7664284e544bd830ae41c1764f3fbc0a8e38cea2278d82c372a147a302e",
+      "git_blob": "18bc21b60ba3d27e400f4e96b5026602e7f27f95"
+    },
+    "osf/v46/scripts/build_probes_v0_46.py": {
+      "sha256": "e06e80792f3efd0886ce6ae7fbf239710c0c5143d112f82c75c6fc9b5ac021a5",
+      "git_blob": "21b0a6a37b9d6656bf267bbcb281a246f9dee33d"
+    },
+    "osf/v46/scripts/code_predictors_v0_46.py": {
+      "sha256": "6b3ebaa91b53e1bbb73f27a577579bc61474a5a844c0614545e34d2505e47f36",
+      "git_blob": "d3d0f68ba974a0db8eaf46545c606936ec21d24b"
+    },
+    "osf/v46/scripts/code_v0_46.py": {
+      "sha256": "51bb52918aebbf47ae57ff612687c00c46e3f8ed3ba09ce14c3c9712603f99fc",
+      "git_blob": "f6649e9ae4cd7a2f47def9858ac72a0de8742776"
+    },
+    "osf/v46/scripts/coi_screen_v0_46_r1.py": {
+      "sha256": "7825d19831026bd608e97fcfb70551d57f5364e5d8aa14391636af3b31bfe7b8",
+      "git_blob": "3edc922622eb00b42bf95f4b6ba5c16141b423f8"
+    },
+    "osf/v46/scripts/cost_estimate_v0_46.py": {
+      "sha256": "8ecb8d08b99e6172ebee5e93faa30fbdb3713fa59e013aebe03a046a6e486931",
+      "git_blob": "4be404fc6e0ad48ede1cec02450529a1eaead64e"
+    },
+    "osf/v46/scripts/cost_estimate_v0_46_r1.py": {
+      "sha256": "3d85f5761d3a8a7cef70f3afd19dec2d18fc2fa6ebc168e01dff80025c1aa617",
+      "git_blob": "074e8c4b4acdbed2596c3481d8c1d64567b0e59e"
+    },
+    "osf/v46/scripts/cost_estimate_v0_46_stage1_r1.py": {
+      "sha256": "f6bf0e176255bb4c07f1393248ec40421d0b38d2b81c7ccab47dc41d4be2fbae",
+      "git_blob": "e1e9d55c954cc518e23d652c02f5ed594e3644cb"
+    },
+    "osf/v46/scripts/cost_estimate_v0_46_stage1_r2.py": {
+      "sha256": "667dcda4f34dd76af733a3de3a59f8e29d09e6efee2c42e24ef4c25a2708874e",
+      "git_blob": "133a86518556ef93cb852146e37e83c1b9c72bbb"
+    },
+    "osf/v46/scripts/gates_v0_46.py": {
+      "sha256": "ee8fa124b05029cb27bbfaab0857f8fb162db3cc834127ab3c0168ff5b0989c8",
+      "git_blob": "c47edf9892f63d45760338122d9ff22d82688881"
+    },
+    "osf/v46/scripts/judge_spirits_v0_46.py": {
+      "sha256": "5462ad28b726e7d00d73c473de22809d03f388ef77f8b77dc934e30853b38cf3",
+      "git_blob": "639cd1067d2d8642e31b14aacea768588631db11"
+    },
+    "osf/v46/scripts/power_analysis_v0_46_stage1.py": {
+      "sha256": "4292ae2c1cfb3e6a58de8d7d4959aa24675a91f84178a297d14a3113d596b779",
+      "git_blob": "6deb04b489cbd81777e26b7fda78681a0d18979b"
+    },
+    "osf/v46/scripts/power_analysis_v0_46_stage1_r2.py": {
+      "sha256": "06e247dde9d3077a75115fcbef5dc85b82d9b178ec2f19154b3bcafa45f925b3",
+      "git_blob": "c1739e4f3d430f2b827d79f175492075449054c4"
+    },
+    "osf/v46/scripts/precision_sim_v0_46.py": {
+      "sha256": "e9805bd44e146254b7787b1ba1368132c6186379b1715390c83e94582f3c14ae",
+      "git_blob": "88f57141b11176bd9475d861bd2430ddeefaa5f4"
+    },
+    "osf/v46/scripts/predictors_v0_46.py": {
+      "sha256": "ecc33d782d6fd2d0fac5d8a736ee59e6d9c3208c7cc3a609ee045563846e1425",
+      "git_blob": "cd36ac3200069703322612cc50c12ab2b719e920"
+    },
+    "osf/v46/scripts/ref_v1_14/score_v1_10.py": {
+      "sha256": "651cb8c240e914e2a82f9b31aa5e46eb5d9d61dbb7a8b4d7072b91d2997975a5",
+      "git_blob": "0f8b981b2895a325b50629c85f8e0e6ce8e876f5"
+    },
+    "osf/v46/scripts/ref_v1_14/score_v1_14.py": {
+      "sha256": "b087fc818105710079e8fea3c8c279373f787efe48c62cbccdcfb0392e1484ce",
+      "git_blob": "7aeb18316a23c699a0a6a4358e52ab09f9546ca9"
+    },
+    "osf/v46/scripts/score_v0_46.py": {
+      "sha256": "a2efd8a6382969a61a6cef7f1e40c3fcba2a0688469c8271e7ac25b655805363",
+      "git_blob": "393f7b5fa04f74a56c46632bfd93164bbc512f01"
+    },
+    "osf/v46/scripts/tests/test_v0_46.py": {
+      "sha256": "64b948420d30e9cf58095a3f19fac98cac5998be3e983839804a25377d869d41",
+      "git_blob": "22b44bb7c34f87bb2cf34988899e592106cc8696"
+    },
+    "osf/v46/stage1/build_stage1_pdf_v0_46.py": {
+      "sha256": "cbf1a7fccf49499cda0551ee74e2e5d1fa52f0ed7368a151583a8dbd82f6eac7",
+      "git_blob": "ebc559efe40f9015054f50422cea914a987df6f6"
+    },
+    "osf/v46/stage1/stage1_manuscript_r10.md": {
+      "sha256": "7e57cf902f830a624e3947b99dcbc78dc960d3c733e7e2de8e0a8d5f398204ce",
+      "git_blob": "ffe85f061b7925107ef60638cc82d98e62397b7b"
+    },
+    "osf/v46/stage1/stage1_manuscript_r10.pdf": {
+      "sha256": "13f91ca1784288920bb16ae6aa1b9f2270ff41b44bef8f9f6a1939e811de53d8",
+      "git_blob": "7b4e11882026f9dd2c5b6501208951767488efc9"
+    }
+  },
+  "data": {
+    "exists_at_anchor": false,
+    "guard": "acquire_v0_46.py --run refuses unless tag v0.46-stage1-ipa is on origin and this file names its commit"
+  }
+}
