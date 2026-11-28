@@ -2,8 +2,8 @@
  "study": "v0.46 (#76)",
  "record": "panel verification, Stage 1 manuscript r10 Section 3.3 (DEVIATIONS Entry 3)",
  "script": "osf/v46/scripts/panel_check_v0_46.py",
- "started_utc": "2026-11-28T10:15:51+00:00",
- "finished_utc": "2026-11-28T10:15:55+00:00",
+ "started_utc": "2026-11-28T13:41:36+00:00",
+ "finished_utc": "2026-11-28T13:41:40+00:00",
  "rule": "newest generally available flagship per provider, as the provider's own pages state it on the day",
  "manual_steps": "none",
  "panel": {
@@ -50,38 +50,38 @@
    "pages": [
     {
      "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
-     "utc": "2026-11-28T10:15:51+00:00",
+     "utc": "2026-11-28T13:41:36+00:00",
      "status": 200,
      "served_url": "https://platform.claude.com/docs/en/models/overview",
-     "bytes": 685544,
-     "sha256": "18658f7b8999aa73c3e113eb824cee890aebb3434580ef711e318bc74b4276d2",
+     "bytes": 684733,
+     "sha256": "e495604788ecbacdac5b0ff7a20da7c332a0d14b80b82cf04feb7a43d8557924",
      "key": "overview"
     },
     {
      "url": "https://platform.claude.com/docs/en/release-notes/overview",
-     "utc": "2026-11-28T10:15:51+00:00",
+     "utc": "2026-11-28T13:41:36+00:00",
      "status": 200,
      "served_url": "https://platform.claude.com/docs/en/release-notes/overview",
-     "bytes": 1114634,
-     "sha256": "c87281d5d3007f8b9bbd4200a8f4ebd5d68f1e83e135bb8c7c5f23c86945fa28",
+     "bytes": 1114482,
+     "sha256": "81ec0c490a9a8cdd7dcc7211a8c485689762022aabc94b70b10c1b55df9cffbc",
      "key": "changelog"
     },
     {
      "url": "https://platform.claude.com/docs/en/about-claude/pricing",
-     "utc": "2026-11-28T10:15:52+00:00",
+     "utc": "2026-11-28T13:41:37+00:00",
      "status": 200,
      "served_url": "https://platform.claude.com/docs/en/about-claude/pricing",
      "bytes": 799086,
-     "sha256": "b52f8de9be6aee432bc5ba522b23043387ba30570631489b35f8f04ef521fb36",
+     "sha256": "ed32a4ca07990a090f09410eddf069b48f38400e1c01e750fc047fde3e6c4b3a",
      "key": "pricing"
     },
     {
      "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
-     "utc": "2026-11-28T10:15:52+00:00",
+     "utc": "2026-11-28T13:41:37+00:00",
      "status": 200,
      "served_url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
-     "bytes": 520618,
-     "sha256": "3b90d4931db585e4c05e8a27ff417845738b2299c8668b86a842dcd7387751db",
+     "bytes": 520694,
+     "sha256": "4bdea83652f16fad0e97f9cc631d072a122a19f03c45d9e9ffff7ad36c586226",
      "key": "model"
     }
    ]
@@ -128,7 +128,7 @@
    "pages": [
     {
      "url": "https://developers.openai.com/api/docs/models",
-     "utc": "2026-11-28T10:15:52+00:00",
+     "utc": "2026-11-28T13:41:37+00:00",
      "status": 200,
      "served_url": "https://developers.openai.com/api/docs/models",
      "bytes": 428250,
@@ -137,7 +137,7 @@
     },
     {
      "url": "https://developers.openai.com/api/docs/changelog",
-     "utc": "2026-11-28T10:15:53+00:00",
+     "utc": "2026-11-28T13:41:38+00:00",
      "status": 200,
      "served_url": "https://developers.openai.com/api/docs/changelog",
      "bytes": 596430,
@@ -146,7 +146,7 @@
     },
     {
      "url": "https://developers.openai.com/api/docs/pricing",
-     "utc": "2026-11-28T10:15:53+00:00",
+     "utc": "2026-11-28T13:41:38+00:00",
      "status": 200,
      "served_url": "https://developers.openai.com/api/docs/pricing",
      "bytes": 653845,
@@ -155,7 +155,7 @@
     },
     {
      "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
-     "utc": "2026-11-28T10:15:53+00:00",
+     "utc": "2026-11-28T13:41:38+00:00",
      "status": 200,
      "served_url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
      "bytes": 489037,
@@ -206,47 +206,47 @@
    "pages": [
     {
      "url": "https://ai.google.dev/gemini-api/docs/models",
-     "utc": "2026-11-28T10:15:53+00:00",
+     "utc": "2026-11-28T13:41:39+00:00",
      "status": 200,
      "served_url": "https://aistudio.google.com/docs/models",
      "bytes": 63182,
-     "sha256": "bd1899b0d03611a228417558dc33f750901db67a3a854ac5bb9bb1fdc12fd00a",
+     "sha256": "ef2fd18b73ebcc4c072666231c124a84ebe52c8d58dcd3b4451f3628ab21f1f1",
      "key": "overview"
     },
     {
      "url": "https://ai.google.dev/gemini-api/docs/changelog",
-     "utc": "2026-11-28T10:15:54+00:00",
+     "utc": "2026-11-28T13:41:39+00:00",
      "status": 200,
      "served_url": "https://aistudio.google.com/docs/changelog",
      "bytes": 110337,
-     "sha256": "933ef96ea85c4e856d854056fadfc149df58a4e677ede51dc905b887359847f5",
+     "sha256": "1f5384502a305b38a78a049babebfd8c073da38b9abeb6b7ff01994698c1255a",
      "key": "changelog"
     },
     {
      "url": "https://ai.google.dev/gemini-api/docs/pricing",
-     "utc": "2026-11-28T10:15:54+00:00",
+     "utc": "2026-11-28T13:41:39+00:00",
      "status": 200,
      "served_url": "https://aistudio.google.com/docs/pricing",
      "bytes": 157022,
-     "sha256": "96329d5881776e8bc915c3e943b353e8e3cb7dd2137ab983c1733f1fc004a12a",
+     "sha256": "208e91e9afad84ea2e943b16ff780060ba2d6fb56c8bd6fe355b11753730534c",
      "key": "pricing"
     },
     {
      "url": "https://ai.google.dev/gemini-api/docs/deprecations",
-     "utc": "2026-11-28T10:15:54+00:00",
+     "utc": "2026-11-28T13:41:40+00:00",
      "status": 200,
      "served_url": "https://aistudio.google.com/docs/deprecations",
-     "bytes": 54794,
-     "sha256": "5a1f151eb7f5282b674181934ef4aa38aed6119df3a0fc1e7f843d5d47429c9f",
+     "bytes": 54814,
+     "sha256": "2e54c133cbe20e4ee35daa1e25f54fc974c95acb470b6ad227465b00a259d434",
      "key": "deprecations"
     },
     {
      "url": "https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon",
-     "utc": "2026-11-28T10:15:55+00:00",
+     "utc": "2026-11-28T13:41:40+00:00",
      "status": 200,
      "served_url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
-     "bytes": 45611,
-     "sha256": "72059260d817bea10bfbec5a4aa1e76c0673fb9a50953792c7d514d669e41d6d",
+     "bytes": 45613,
+     "sha256": "4ecb62dbc236c8506e2a8775b5df5cfbc680580e248c69742c4f5bfa8eab4431",
      "key": "model"
     }
    ]

@@ -1,0 +1,255 @@
+{
+ "study": "v0.46 (#76)",
+ "record": "panel verification, Stage 1 manuscript r10 Section 3.3 (DEVIATIONS Entry 3)",
+ "script": "osf/v46/scripts/panel_check_v0_46.py",
+ "started_utc": "2026-11-28T10:15:51+00:00",
+ "finished_utc": "2026-11-28T10:15:55+00:00",
+ "rule": "newest generally available flagship per provider, as the provider's own pages state it on the day",
+ "manual_steps": "none",
+ "panel": {
+  "M1_anthropic": "claude-fable-5-2",
+  "M2_openai": "gpt-6.2-astra",
+  "M3_google": "gemini-4-carbon"
+ },
+ "all_available": true,
+ "models": {
+  "M1_anthropic": {
+   "provider": "anthropic",
+   "model_id": "claude-fable-5-2",
+   "available": true,
+   "tests": {
+    "T1_flagship": true,
+    "T2_model_page": true,
+    "T4_priced": true,
+    "T5_no_qualifier": true,
+    "T3_generally_available": true,
+    "all_pages_200": true
+   },
+   "wording": {
+    "T1_flagship": [
+     "Latest models If you’re unsure which model to use, start with Claude Opus 5.5 for most workloads. Use Claude Fable 5.2 for demanding reasoning and long-horizon agentic work, or when your evals on Claude Opus 5.5 at higher effort still fall short. All current models support text and image input, text output, multilingual capabilities, vision, and tool use. Feature Claude Fable 5.2 For demanding rea",
+     "Claude API ID claude-fable-5-2 claude-opus-5-5 claude-sonnet-5-5 claude-haiku-5-5 Capabilities Thinking Adaptive (always on) Adaptive (always on) Adap"
+    ],
+    "T3_ga": [],
+    "T4_price": {
+     "standard": "Claude Fable 5.2 For demanding reasoning and long-horizon agentic work $8 / MTok $40 / MTok",
+     "batch": "of requests with a 50 percent discount on both input and output tokens. Model Batch tokens Name Input Output Claude Fable 5.2 For demanding reasoning and long-horizon agentic work $4 / MTok $20 / MTok"
+    },
+    "T5_qualifiers_found": {
+     "overview": [],
+     "model": [],
+     "pricing": []
+    },
+    "T5_third_party_listings_not_tested": {},
+    "changelog": [
+     "our Anthropic account team. November 9, 2026 We’ve launched Claude Fable 5.2 ( claude-fable-5-2 ), built for demanding reasoning and long-horizon agentic work. Claude Mythos 5.2 ( claude-mythos-5-2 ) offers the same capabilities only to organizations verified through Anthropic’s verification programs, such as the C"
+    ]
+   },
+   "name": "Claude Fable 5.2",
+   "ga_basis": "listed without qualification on the models and pricing pages",
+   "pages": [
+    {
+     "url": "https://platform.claude.com/docs/en/about-claude/models/overview",
+     "utc": "2026-11-28T10:15:51+00:00",
+     "status": 200,
+     "served_url": "https://platform.claude.com/docs/en/models/overview",
+     "bytes": 685544,
+     "sha256": "18658f7b8999aa73c3e113eb824cee890aebb3434580ef711e318bc74b4276d2",
+     "key": "overview"
+    },
+    {
+     "url": "https://platform.claude.com/docs/en/release-notes/overview",
+     "utc": "2026-11-28T10:15:51+00:00",
+     "status": 200,
+     "served_url": "https://platform.claude.com/docs/en/release-notes/overview",
+     "bytes": 1114634,
+     "sha256": "c87281d5d3007f8b9bbd4200a8f4ebd5d68f1e83e135bb8c7c5f23c86945fa28",
+     "key": "changelog"
+    },
+    {
+     "url": "https://platform.claude.com/docs/en/about-claude/pricing",
+     "utc": "2026-11-28T10:15:52+00:00",
+     "status": 200,
+     "served_url": "https://platform.claude.com/docs/en/about-claude/pricing",
+     "bytes": 799086,
+     "sha256": "b52f8de9be6aee432bc5ba522b23043387ba30570631489b35f8f04ef521fb36",
+     "key": "pricing"
+    },
+    {
+     "url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+     "utc": "2026-11-28T10:15:52+00:00",
+     "status": 200,
+     "served_url": "https://platform.claude.com/docs/en/models/fable-5-2/overview",
+     "bytes": 520618,
+     "sha256": "3b90d4931db585e4c05e8a27ff417845738b2299c8668b86a842dcd7387751db",
+     "key": "model"
+    }
+   ]
+  },
+  "M2_openai": {
+   "provider": "openai",
+   "model_id": "gpt-6.2-astra",
+   "available": true,
+   "tests": {
+    "T1_flagship": true,
+    "T2_model_page": true,
+    "T4_priced": true,
+    "T5_no_qualifier": true,
+    "T3_generally_available": true,
+    "all_pages_200": true
+   },
+   "wording": {
+    "T1_flagship": [
+     "use GPT-6.2 Astra , our flagship model for complex reasoning and coding.",
+     "Flagship models Compare model capabilities and specifications. View all Compare models Astra GPT-6.2 Astra Our most capable model for your hardest projects, from start to finish. Model ID gpt-6.2-astra"
+    ],
+    "T3_ga": [],
+    "T4_price": {
+     "standard": "gpt-6.2-astra $8.00 $40.00",
+     "batch": "gpt-6.2-astra $4.00 $20.00",
+     "group": "Flagship models"
+    },
+    "T5_qualifiers_found": {
+     "overview": [],
+     "model": [],
+     "pricing": []
+    },
+    "T5_third_party_listings_not_tested": {
+     "model": [
+      "Cloud providers Model IDs across cloud providers. Provider Model ID Google Cloud Private preview gpt-6.2-astra "
+     ]
+    },
+    "changelog": [
+     "will be regularly updated. Read more here . Nov 24 Feature gpt-6.2-astra-healthcare gpt-6.2-sol-healthcare gpt-6-astra-healthcare gpt-6.1-sol-healthcare v1/responses Released Healthcare model configurations for the Responses API, pairing select OpenAI models with a harness tailored to clinical questions. When t"
+    ]
+   },
+   "name": "GPT-6.2 Astra",
+   "ga_basis": "listed without qualification on the models and pricing pages",
+   "pages": [
+    {
+     "url": "https://developers.openai.com/api/docs/models",
+     "utc": "2026-11-28T10:15:52+00:00",
+     "status": 200,
+     "served_url": "https://developers.openai.com/api/docs/models",
+     "bytes": 428250,
+     "sha256": "70d2d876df04cc924ff37efa07724211c631e40139c055d042ce80baf12b14e9",
+     "key": "overview"
+    },
+    {
+     "url": "https://developers.openai.com/api/docs/changelog",
+     "utc": "2026-11-28T10:15:53+00:00",
+     "status": 200,
+     "served_url": "https://developers.openai.com/api/docs/changelog",
+     "bytes": 596430,
+     "sha256": "0defdc12ad32e2849a209dd764a52200263f59bf1823943d3fc6fc681def7320",
+     "key": "changelog"
+    },
+    {
+     "url": "https://developers.openai.com/api/docs/pricing",
+     "utc": "2026-11-28T10:15:53+00:00",
+     "status": 200,
+     "served_url": "https://developers.openai.com/api/docs/pricing",
+     "bytes": 653845,
+     "sha256": "5f81fbb96f3f2cddde509ea1da6ddeac3937ba8726ca6d58f5a01149ebb7b5b7",
+     "key": "pricing"
+    },
+    {
+     "url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+     "utc": "2026-11-28T10:15:53+00:00",
+     "status": 200,
+     "served_url": "https://developers.openai.com/api/docs/models/gpt-6.2-astra",
+     "bytes": 489037,
+     "sha256": "c10c4382c57bc76ab478010ac8744ece88c9d4c5ca2781fb9996110117f2a81e",
+     "key": "model"
+    }
+   ]
+  },
+  "M3_google": {
+   "provider": "google",
+   "model_id": "gemini-4-carbon",
+   "available": true,
+   "tests": {
+    "T1_flagship": true,
+    "T2_model_page": true,
+    "T4_priced": true,
+    "T5_no_qualifier": true,
+    "T3_generally_available": true,
+    "all_pages_200": true
+   },
+   "wording": {
+    "T1_flagship": [
+     "Gemini 4 Carbon: \"Our strongest reasoning model, built for complex software engineering, multimodal knowledge work, scientific reasoning, and cybersecurity defense.\"",
+     "Model code* **gemini-4-carbon**"
+    ],
+    "T3_ga": [
+     "changelog heading November 10, 2026: **Gemini 4 Carbon (`gemini-4-carbon`) generally available (GA)**: Released [Gemini 4 Carbon](/docs/models/gemini-4-carbon) (`gemini-4-carbon`), our most capable reasoning model built for sustained agentic coding, multimodal",
+     "Stable: `gemini-4-carbon`"
+    ],
+    "T4_price": {
+     "standard": "input: $2.00 through November 30, 2026. $4.00 starting December 1, 2026. | output (including thinking tokens): $10.00 through November 30, 2026. $20.00 starting December 1, 2026.",
+     "lead": "Our most capable reasoning model, built for complex software engineering, deep mathematical and scientific problem solving, high factual accuracy, autonomous multi-step agents, and long-decode generation up to 1M tokens.",
+     "note": "Gemini 4 Carbon is not available on the Free tier. Every token the model processes is counted and billed, including thinking tokens and internal tool system instructions and function declarations when using grounding."
+    },
+    "T5_qualifiers_found": {
+     "overview": [],
+     "model": [],
+     "pricing": []
+    },
+    "T5_third_party_listings_not_tested": {},
+    "changelog": [
+     "get started. ## November 10, 2026 {% id=\"11-10-2026\" %} * **Gemini 4 Carbon (`gemini-4-carbon`) generally available (GA)**: Released [Gemini 4 Carbon](/docs/models/gemini-4-carbon) (`gemini-4-carbon`), our most capable reasoning model built for sustained agentic coding, multimodal knowledge work, scientific reason"
+    ],
+    "deprecations_row": "`gemini-4-carbon` * November 10, 2026 * No shutdown date announced *"
+   },
+   "name": "Gemini 4 Carbon",
+   "ga_basis": "stated GA in the provider's changelog",
+   "pages": [
+    {
+     "url": "https://ai.google.dev/gemini-api/docs/models",
+     "utc": "2026-11-28T10:15:53+00:00",
+     "status": 200,
+     "served_url": "https://aistudio.google.com/docs/models",
+     "bytes": 63182,
+     "sha256": "bd1899b0d03611a228417558dc33f750901db67a3a854ac5bb9bb1fdc12fd00a",
+     "key": "overview"
+    },
+    {
+     "url": "https://ai.google.dev/gemini-api/docs/changelog",
+     "utc": "2026-11-28T10:15:54+00:00",
+     "status": 200,
+     "served_url": "https://aistudio.google.com/docs/changelog",
+     "bytes": 110337,
+     "sha256": "933ef96ea85c4e856d854056fadfc149df58a4e677ede51dc905b887359847f5",
+     "key": "changelog"
+    },
+    {
+     "url": "https://ai.google.dev/gemini-api/docs/pricing",
+     "utc": "2026-11-28T10:15:54+00:00",
+     "status": 200,
+     "served_url": "https://aistudio.google.com/docs/pricing",
+     "bytes": 157022,
+     "sha256": "96329d5881776e8bc915c3e943b353e8e3cb7dd2137ab983c1733f1fc004a12a",
+     "key": "pricing"
+    },
+    {
+     "url": "https://ai.google.dev/gemini-api/docs/deprecations",
+     "utc": "2026-11-28T10:15:54+00:00",
+     "status": 200,
+     "served_url": "https://aistudio.google.com/docs/deprecations",
+     "bytes": 54794,
+     "sha256": "5a1f151eb7f5282b674181934ef4aa38aed6119df3a0fc1e7f843d5d47429c9f",
+     "key": "deprecations"
+    },
+    {
+     "url": "https://ai.google.dev/gemini-api/docs/models/gemini-4-carbon",
+     "utc": "2026-11-28T10:15:55+00:00",
+     "status": 200,
+     "served_url": "https://aistudio.google.com/docs/models/gemini-4-carbon",
+     "bytes": 45611,
+     "sha256": "72059260d817bea10bfbec5a4aa1e76c0673fb9a50953792c7d514d669e41d6d",
+     "key": "model"
+    }
+   ]
+  }
+ }
+}
