@@ -1,0 +1,103 @@
+{
+ "check": "v0.46 length check (Section 3.10 evidence; DEVIATIONS Entry 7)",
+ "evaluated_utc": "2026-11-28T10:37:15.352638+00:00",
+ "questions": "v0.39 probes_v0_39.json, tiers ['G', 'C', 'R', 'K'], search off",
+ "limit": 16384,
+ "models": {
+  "gemini-4-carbon": {
+   "planned": 24,
+   "raw_lines": 24,
+   "answered": 24,
+   "errors_or_empty": [],
+   "missing": [],
+   "served_models": [
+    "gemini-4-carbon"
+   ],
+   "served_equals_requested": true,
+   "finish_reasons": [
+    "FinishReason.STOP"
+   ],
+   "at_limit": 0,
+   "cut_before_brand": [],
+   "named_zero": 0,
+   "input_tokens": {
+    "sum": 1141,
+    "max": 55
+   },
+   "output_tokens": {
+    "sum": 25954,
+    "max": 1568
+   },
+   "thinking_tokens": {
+    "sum": 24379,
+    "max": 1521,
+    "reported_on": 24
+   },
+   "billed_output": {
+    "sum": 50333,
+    "mean": 2097.2083333333335,
+    "p90": 2792,
+    "max": 3043
+   },
+   "cost_usd": 0.505612,
+   "paired_vs_2026_11_13": {
+    "old_model": "gemini-4-argon",
+    "pairs": 24,
+    "billed_output_ratio_of_sums": 2.072681601054192,
+    "billed_output_ratio_of_p90": 1.959298245614035,
+    "input_ratio_of_sums": 1.0,
+    "old_billed_output_sum": 24284,
+    "new_billed_output_sum": 50333
+   }
+  },
+  "gpt-6.2-astra": {
+   "planned": 24,
+   "raw_lines": 24,
+   "answered": 24,
+   "errors_or_empty": [],
+   "missing": [],
+   "served_models": [
+    "gpt-6.2-astra"
+   ],
+   "served_equals_requested": true,
+   "finish_reasons": [
+    "completed"
+   ],
+   "at_limit": 0,
+   "cut_before_brand": [],
+   "named_zero": 5,
+   "input_tokens": {
+    "sum": 519,
+    "max": 28
+   },
+   "output_tokens": {
+    "sum": 6104,
+    "max": 410
+   },
+   "thinking_tokens": {
+    "sum": 860,
+    "max": 147,
+    "reported_on": 24
+   },
+   "billed_output": {
+    "sum": 6104,
+    "mean": 254.33333333333334,
+    "p90": 344,
+    "max": 410
+   },
+   "cost_usd": 0.248312,
+   "paired_vs_2026_11_13": {
+    "old_model": "gpt-6-astra",
+    "pairs": 24,
+    "billed_output_ratio_of_sums": 0.4524833209785026,
+    "billed_output_ratio_of_p90": 0.42786069651741293,
+    "input_ratio_of_sums": 1.0,
+    "old_billed_output_sum": 13490,
+    "new_billed_output_sum": 6104
+   }
+  }
+ },
+ "raw": "osf/v46/data/v46_length_check_raw.jsonl",
+ "verdict": "PASS",
+ "spend_usd": 0.753924
+}

@@ -1,0 +1,234 @@
+{
+ "status": "DRAFT, not a deposit record",
+ "panel": [
+  "claude-fable-5-2",
+  "gpt-6.2-astra",
+  "gemini-4-carbon"
+ ],
+ "locked_panel_check": {
+  "central": 43.92,
+  "high": 85.92
+ },
+ "variants": {
+  "measured": {
+   "multipliers": {
+    "claude-fable-5-2": {
+     "central": 1.0,
+     "high": 1.0
+    },
+    "gpt-6.2-astra": {
+     "central": 0.4524833209785026,
+     "high": 0.4524833209785026
+    },
+    "gemini-4-carbon": {
+     "central": 2.072681601054192,
+     "high": 2.072681601054192
+    }
+   },
+   "A": {
+    "central": 41.95,
+    "high": 75.84
+   },
+   "E": {
+    "central": 32.4,
+    "high": 57.19
+   },
+   "remeasure_with_reserve": {
+    "central": 15.61,
+    "high": 24.05
+   },
+   "blocks": [
+    {
+     "block": "P1-P4 + judge reserve",
+     "calls": 504,
+     "central_cumulative": 15.61,
+     "high_cumulative": 24.05
+    },
+    {
+     "block": "C1 LIST square 1",
+     "calls": 270,
+     "central_block": 9.55,
+     "high_block": 18.66,
+     "central_cumulative": 25.16,
+     "high_cumulative": 42.71
+    },
+    {
+     "block": "C2 OPEN",
+     "calls": 216,
+     "central_block": 7.23,
+     "high_block": 14.48,
+     "central_cumulative": 32.39,
+     "high_cumulative": 57.19
+    },
+    {
+     "block": "C3 LIST square 2",
+     "calls": 270,
+     "central_block": 9.55,
+     "high_block": 18.66,
+     "central_cumulative": 41.94,
+     "high_cumulative": 75.85
+    }
+   ],
+   "projection_after_C1": {
+    "factor": "486/270",
+    "central": 42.35,
+    "high": 76.3
+   },
+   "checks": {
+    "central_below_pause_80": true,
+    "high_below_pause_80": true,
+    "high_below_cap_100": true,
+    "remeasure_calls_504": true,
+    "projection_high_below_cap_100": true
+   }
+  },
+  "measured_floor_1": {
+   "multipliers": {
+    "claude-fable-5-2": {
+     "central": 1.0,
+     "high": 1.0
+    },
+    "gpt-6.2-astra": {
+     "central": 1.0,
+     "high": 1.0
+    },
+    "gemini-4-carbon": {
+     "central": 2.072681601054192,
+     "high": 2.072681601054192
+    }
+   },
+   "A": {
+    "central": 50.14,
+    "high": 92.87
+   },
+   "E": {
+    "central": 38.91,
+    "high": 70.21
+   },
+   "remeasure_with_reserve": {
+    "central": 19.09,
+    "high": 29.88
+   },
+   "blocks": [
+    {
+     "block": "P1-P4 + judge reserve",
+     "calls": 504,
+     "central_cumulative": 19.09,
+     "high_cumulative": 29.88
+    },
+    {
+     "block": "C1 LIST square 1",
+     "calls": 270,
+     "central_block": 11.24,
+     "high_block": 22.65,
+     "central_cumulative": 30.33,
+     "high_cumulative": 52.53
+    },
+    {
+     "block": "C2 OPEN",
+     "calls": 216,
+     "central_block": 8.58,
+     "high_block": 17.68,
+     "central_cumulative": 38.91,
+     "high_cumulative": 70.21
+    },
+    {
+     "block": "C3 LIST square 2",
+     "calls": 270,
+     "central_block": 11.24,
+     "high_block": 22.65,
+     "central_cumulative": 50.15,
+     "high_cumulative": 92.86
+    }
+   ],
+   "projection_after_C1": {
+    "factor": "486/270",
+    "central": 50.56,
+    "high": 93.3
+   },
+   "checks": {
+    "central_below_pause_80": true,
+    "high_below_pause_80": false,
+    "high_below_cap_100": true,
+    "remeasure_calls_504": true,
+    "projection_high_below_cap_100": true
+   }
+  },
+  "assumed_r0": {
+   "multipliers": {
+    "claude-fable-5-2": {
+     "central": 1.0,
+     "high": 1.0
+    },
+    "gpt-6.2-astra": {
+     "central": 1.0,
+     "high": 1.0
+    },
+    "gemini-4-carbon": {
+     "central": 2.0,
+     "high": 3.0
+    }
+   },
+   "A": {
+    "central": 49.45,
+    "high": 105.84
+   },
+   "E": {
+    "central": 38.38,
+    "high": 79.88
+   },
+   "remeasure_with_reserve": {
+    "central": 18.88,
+    "high": 33.59
+   },
+   "blocks": [
+    {
+     "block": "P1-P4 + judge reserve",
+     "calls": 504,
+     "central_cumulative": 18.88,
+     "high_cumulative": 33.59
+    },
+    {
+     "block": "C1 LIST square 1",
+     "calls": 270,
+     "central_block": 11.06,
+     "high_block": 25.96,
+     "central_cumulative": 29.94,
+     "high_cumulative": 59.55
+    },
+    {
+     "block": "C2 OPEN",
+     "calls": 216,
+     "central_block": 8.44,
+     "high_block": 20.33,
+     "central_cumulative": 38.38,
+     "high_cumulative": 79.88
+    },
+    {
+     "block": "C3 LIST square 2",
+     "calls": 270,
+     "central_block": 11.06,
+     "high_block": 25.96,
+     "central_cumulative": 49.44,
+     "high_cumulative": 105.84
+    }
+   ],
+   "projection_after_C1": {
+    "factor": "486/270",
+    "central": 49.85,
+    "high": 106.28
+   },
+   "checks": {
+    "central_below_pause_80": true,
+    "high_below_pause_80": false,
+    "high_below_cap_100": false,
+    "remeasure_calls_504": true,
+    "projection_high_below_cap_100": false
+   }
+  }
+ },
+ "rule_section_3_3": {
+  "design_A_high_measured": 75.84,
+  "design": "A"
+ }
+}

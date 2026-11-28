@@ -54,6 +54,7 @@ ROOT = Path(os.environ.get("AIAS_ROOT", str(HERE.parents[2])))
 sys.path.insert(0, str(ROOT / "osf" / "v45" / "scripts"))
 sys.path.insert(0, str(HERE))
 import budget_v0_45 as BG  # noqa: E402  (v0.45's guard and price table, unchanged; section 3.9)
+import prices_v0_46_collection  # noqa: E402,F401  (DEVIATIONS Entry 2: adds the rule models' prices, read 2026-11-28)
 
 V46 = ROOT / "osf" / "v46"
 PROBES_PATH = V46 / "prereg" / "probes_v0_46.jsonl"
@@ -65,6 +66,9 @@ STATE_PATH = DATA / "v46_budget_state.json"
 STOPRULE_PATH = DATA / "v46_stoprule.jsonl"
 PANEL_PATH = DATA / "v46_panel_verification.json"
 ANCHOR_PATH = V46 / "anchor" / "osf_anchor_v0_46.json"
+# DEVIATIONS Entry 4: the gate reads the code-parity record regenerated for the collection (the locked
+# prereg/code_parity_v0_46.json is kept unchanged; it fingerprints predictors_v0_46.py before 9bbd96f's docstrings)
+PARITY_PATH = V46 / "prereg" / "code_parity_v0_46_collection.json"
 PREREG_TAG = "v0.46-stage1-ipa"   # DECISION: name of the lock tag (kept at the programme lock of 2026-11-27; the name does not mean in-principle acceptance; Appendix A)
 
 
@@ -1039,7 +1043,7 @@ def lock_guard(tag=PREREG_TAG, anchor=None, ls_remote=None):
 def gates_guard(path=None):
     """Sections 3.4 / 5.6: G1 and G2 must both pass, for the predictor code as it now stands."""
     import gates_v0_46 as GT
-    ok, why = GT.green(GT.RESULT if path is None else path)
+    ok, why = GT.green(PARITY_PATH if path is None else path)
     if not ok:
         raise Refused(f"code-parity gates not green: {why}")
     return why
@@ -1158,6 +1162,14 @@ def dry_run(log=print, cost=True, panel_path=None):
     return out
 
 
+LENGTH_CHECK_RAW = DATA / "v46_length_check_raw.jsonl"
+
+
+def length_check_spend(path=None):
+    """USD of every raw line of the v0.46 length check (length_check_v0_46.py; DEVIATIONS Entry 7)."""
+    return sum(BG.record_cost(r) for r in _raw_lines(LENGTH_CHECK_RAW if path is None else path))
+
+
 def run(approve_past_80=None, approve_projection=None, log=print):
     """--run: every guard in the documented order, then the collection."""
     global DEADLINE, WINDOW_HARD_END
@@ -1173,6 +1185,9 @@ def run(approve_past_80=None, approve_projection=None, log=print):
     DEADLINE = collection_deadline(RAW_PATH)
     log(f"collection window: no new request after {DEADLINE.isoformat()}")
     ledger = BG.Ledger(RAW_PATH, STATE_PATH)
+    lc = length_check_spend()             # DEVIATIONS Entry 7: the length check's spend counts toward the cap
+    ledger.settle(None, lc)
+    log(f"length check spend carried into the ledger: ${lc:.4f}")
     if approve_past_80:
         ledger.approve("past_80", approve_past_80)
     if approve_projection:

@@ -661,16 +661,19 @@ class TestAcquire(unittest.TestCase):
     def test_refuses_run_before_lock(self):
         tmp = Path(tempfile.mkdtemp())
         raw = tmp / "raw.jsonl"
-        old = A.RAW_PATH
+        old, old_state = A.RAW_PATH, A.STATE_PATH
         A.RAW_PATH = raw
+        A.STATE_PATH = tmp / "no_window_state.json"   # never a real window: this test must not reach a paid call
         try:
             err = io.StringIO()
             with contextlib.redirect_stderr(err), contextlib.redirect_stdout(io.StringIO()):
                 code = A.main(["--run"])
         finally:
-            A.RAW_PATH = old
+            A.RAW_PATH, A.STATE_PATH = old, old_state
         self.assertEqual(code, 2)
-        self.assertIn("not locked", err.getvalue())
+        # 2026-11-28 (collection prep): the study is locked since 2026-11-27, so --run now refuses at a later guard
+        # (window record, panel, ...) instead of "not locked"; what is tested is that it refuses and writes nothing.
+        self.assertIn("REFUSED", err.getvalue())
         self.assertFalse(raw.exists())
         self.assertFalse(A.RAW_PATH.exists())
         with contextlib.redirect_stderr(io.StringIO()), self.assertRaises(SystemExit):
@@ -986,8 +989,10 @@ class TestSpiritsJudge(unittest.TestCase):
     def test_run_refused_before_lock(self):
         r = subprocess.run([sys.executable, self.SCRIPT, "--run", "--raw", "x", "--coded-dir", "y"],
                            capture_output=True, text=True, timeout=60)
-        self.assertEqual(r.returncode, 3)
-        self.assertIn("REFUSED", r.stderr)
+        # 2026-11-28: after the lock (2026-11-27) the lock guard passes and the judge refuses for want of a J1
+        # record (exit 4, "not run"); before the lock it was exit 3 "REFUSED". Either way no model is called.
+        self.assertIn(r.returncode, (3, 4))
+        self.assertTrue("REFUSED" in r.stderr or "not run" in r.stderr, r.stderr[-400:])
 
 
 # =========================================================================== r3 task 5: D7 (Fisker)

@@ -1,0 +1,19 @@
+probe file osf/v46/prereg/probes_v0_46.jsonl SHA-256 1b6a4bc9fff4b3cff9befd9e4b302fd0eca363e7e9e640b061f717d01db30e01 (matches probes_v0_46.sha256)
+panel (orientation result of 2026-11-14; rule applied at collection): M1_anthropic=claude-fable-5-2 (batch), M2_openai=gpt-6-astra (standard), M3_google=gemini-4-argon (standard)
+sampling params sent: none (temperature/top_p/top_k not sent); search: never (S0 only)
+block   M1_anthropic     M2_openai     M3_google   total  expected
+P1                24            24            24      72        72
+P2                96            96            96     288       288
+P3                24            24            24      72        72
+P4                24            24            24      72        72
+C1                90            90            90     270       270
+C2                72            72            72     216       216
+C3                90            90            90     270       270
+TOTAL planned calls: 1260 (expected 1260) -> OK
+D7 (Fisker): record and probe file agree: Fisker Cell D
+budget (budget_v0_45): hard stop $100, pause $80, judge reserve $2.50 counted as spent; projection pause after C1 at spend + C1 x 486/270 > cap
+  worst-case reservation per request claude-fable-5-2   batch    $0.3357
+  worst-case reservation per request gpt-6-astra        standard $0.8392
+  worst-case reservation per request gemini-4-argon     standard $0.1678
+projected cost (cost_estimate_v0_46_stage1_r2.py, prices on 2026-12-01, models ['claude-fable-5-2', 'gpt-6-astra', 'gemini-4-argon']): predictor 504 calls central $15.11 high $25.77; judge reserve $2.50; choice central $26.31 high $57.65; TOTAL central $43.92, high $85.92 (cap $100)
+nothing sent.
