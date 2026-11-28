@@ -49,7 +49,7 @@ def _pdf_text(draw, meta=None):
 def _colophon():
     p = L.colophon_paragraphs(T)
     left = lambda: [p("About Third System", "head"), p("Sample colophon text for the layout test."),
-                    p("Citation", "head"), p(RC.cite("Author, A. (2026).", "Sample Title", "TS-FL-v0.40-r1",
+                    p("Citation", "head"), p(RC.cite("Author, A. (2026).", "Sample Title", "TS-FL-v0.99-r1",
                                                     "ThirdSystem.ai/studies/sample"))]
     right = lambda: [p("Inquiries", "head"), p("hello@thirdsystem.ai", after=0)]
     return left, right
@@ -57,7 +57,7 @@ def _colophon():
 
 class TestFormat(unittest.TestCase):
     def test_spec_examples_parse(self):
-        for code, kind, study, rev in [("TS-FL-v0.40-r1", "FL", "v0.40", 1), ("TS-SY-AIAS2.0-r4", "SY", "AIAS2.0", 4),
+        for code, kind, study, rev in [("TS-FL-v0.99-r1", "FL", "v0.99", 1), ("TS-SY-AIAS2.0-r4", "SY", "AIAS2.0", 4),
                                        ("TS-CS-v0.22-r1", "CS", "v0.22", 1), ("TS-BR-v0.44-r1", "BR", "v0.44", 1),
                                        ("TS-DG-ACME01-r1", "DG", "ACME01", 1), ("TS-CS-v1.9-r12", "CS", "v1.9", 12)]:
             p = RC.parse_code(code)
@@ -144,8 +144,8 @@ class TestUniqueness(unittest.TestCase):
 
     def test_new_code_is_the_next_revision(self):
         RC.check_code("TS-SY-AIAS2.0-r4", ENTRIES)
-        RC.check_code("TS-FL-v0.40-r1", ENTRIES)
-        for bad in ("TS-SY-AIAS2.0-r5", "TS-FL-v0.40-r2", "TS-CS-v0.22-r1"):
+        RC.check_code("TS-FL-v0.99-r1", ENTRIES)
+        for bad in ("TS-SY-AIAS2.0-r5", "TS-FL-v0.99-r2", "TS-CS-v0.22-r1"):
             with self.assertRaises(RC.ReportCodeError, msg=bad):
                 RC.check_code(bad, ENTRIES)
 
@@ -209,7 +209,7 @@ class TestClosingBand(unittest.TestCase):
         self.assertEqual(b["website"]["text"], "thirdsystem.ai")
         self.assertIn("thirdsystem.ai · TS-SY-AIAS2.0-r4", text)  # printed exactly as registered
         self.assertIn("thirdsystem.ai/studies/sample", text)            # colophon: website lower case
-        self.assertIn("(Report TS-FL-v0.40-r1)", text)                   # citation carries the code
+        self.assertIn("(Report TS-FL-v0.99-r1)", text)                   # citation carries the code
         self.assertNotRegex(text, r"THIRDSYSTEM\.AI|ThirdSystem\.ai")
         self.assertNotIn("© 2026", text)  # the band replaces the footer line on this page
         self.assertLess(res["colophon"]["rule_y"], res["statement_bottom"])
@@ -237,7 +237,7 @@ class TestLastPageFooter(unittest.TestCase):
 
 
 class TestMetadataAndPreflight(unittest.TestCase):
-    CODE, TITLE = "TS-FL-v0.40-r1", "Sample Flagship Title"
+    CODE, TITLE = "TS-FL-v0.99-r1", "Sample Flagship Title"
 
     def _render(self, folder, name=None, subject=True, band_site=None):
         left, right = _colophon()
@@ -275,10 +275,10 @@ class TestMetadataAndPreflight(unittest.TestCase):
             self.assertFalse(bad["checks"]["metadata_keywords"])
             bad = RC.preflight(self._render(d, band_site="THIRDSYSTEM.AI"), self.CODE, self.TITLE, ENTRIES, SITE)
             self.assertFalse(bad["checks"]["website_lower_case_throughout"])
-            used = [dict(_entry("TS-CS-v0.22-r1"), code=self.CODE, study="v0.40", type="FL", tier=1)]
+            used = [dict(_entry("TS-CS-v0.22-r1"), code=self.CODE, study="v0.99", type="FL", tier=1)]
             bad = RC.preflight(self._render(d), self.CODE, self.TITLE, used, SITE)
             self.assertFalse(bad["checks"]["register"])  # the code is already in use for another PDF
-            self.assertFalse(RC.preflight(self._render(d), "TS-FL-v0.40-r1", "Other Title", ENTRIES, SITE)["checks"]["file_name"])
+            self.assertFalse(RC.preflight(self._render(d), "TS-FL-v0.99-r1", "Other Title", ENTRIES, SITE)["checks"]["file_name"])
 
 
 if __name__ == "__main__":

@@ -240,7 +240,7 @@ def _drop_unused_helvetica(pdf: Path) -> None:
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--code", default="TS-FL-v0.40-r1")
+    ap.add_argument("--code", default="TS-FL-v0.40-r2")
     ap.add_argument("--out-dir", type=Path, default=ROOT / "reports" / "output")
     a = ap.parse_args()
     out = a.out_dir / RC.file_name(a.code, C.TITLE)

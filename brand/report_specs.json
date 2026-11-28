@@ -2192,6 +2192,48 @@
         "website": null,
         "status": "current",
         "held": false
+      },
+      {
+        "code": "TS-FL-v0.40-r1",
+        "type": "FL",
+        "study": "v0.40",
+        "rev": "r1",
+        "title": "Leaders, challengers and ghosts",
+        "date": "2026-11-22",
+        "date_source": "OSF deposit receipt v40_deposit_nov21 (time_utc 2026-11-22T01:27:37Z; 9 of 9 files verified)",
+        "tier": 1,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": null,
+        "repo_path": "reports/output/TS-FL-v0.40-r1_leaders-challengers-and-ghosts.pdf",
+        "osf_path": "v40/reports/TS-FL-v0.40-r1_leaders-challengers-and-ghosts.pdf",
+        "osf_version": 1,
+        "sha256": "fb8b0fa4c0c5b0451e39f09410771b3189294ca989d9802ec44c83daae931562",
+        "sha256_source": "identical in: OSF v40/reports/ v1 (receipt) and the local build reports/output/",
+        "website": null,
+        "status": "superseded",
+        "held": false
+      },
+      {
+        "code": "TS-FL-v0.40-r2",
+        "type": "FL",
+        "study": "v0.40",
+        "rev": "r2",
+        "title": "Leaders, challengers and ghosts",
+        "date": "2026-11-28",
+        "date_source": "PDF CreationDate 2026-11-28 04:10:19 CST; not yet deposited on OSF (date to be replaced by the OSF receipt date at deposit)",
+        "tier": 1,
+        "design": "v2",
+        "git_tag": null,
+        "git_commit": null,
+        "repo_path": "reports/output/r2/TS-FL-v0.40-r2_leaders-challengers-and-ghosts.pdf",
+        "osf_path": "v40/reports/TS-FL-v0.40-r2_leaders-challengers-and-ghosts.pdf",
+        "osf_version": null,
+        "sha256": "5026a3070c88dddba96c774e21202a686efacbaa0cc39770bb71b2dd4196aaf2",
+        "sha256_source": "local build of branch v0.40-paper-r2 (reports/build_report_v40_r1.py --code TS-FL-v0.40-r2); changes from r1: presentation of charts 01, 02, 06, fonts embedded, report code",
+        "website": null,
+        "status": "current",
+        "held": false
       }
     ]
   }
